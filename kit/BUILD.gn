@@ -1,0 +1,600 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/multi-product_diff.gni")
+
+ohos_cj_library("kit.AbilityKit") {
+  sources = [ "AbilityKit/index.cj" ]
+
+  cj_deps = [
+    "../api/ability:ohos.ability",
+    "../api/ability:ohos.ability.interop",
+    "../api/ability_access_ctrl:ohos.ability_access_ctrl",
+    "../api/bundle_manager:ohos.bundle_manager",
+    "../api/eventhub:ohos.eventhub",
+    "../api/screen_lock_file_manager:ohos.screen_lock_file_manager",
+  ]
+
+  kit = true
+  lib_name = "AbilityKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.AdsKit") {
+  sources = [ "AdsKit/index.cj" ]
+
+  cj_deps = [ "../api/advertising/advertising:ohos.advertising.advertising" ]
+
+  kit = true
+  lib_name = "AdsKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ArkWeb") {
+  sources = [ "ArkWeb/index.cj" ]
+
+  cj_deps = [
+    "../api/web/net_error_list:ohos.web.net_error_list",
+    "../api/webview:ohos.webview",
+  ]
+
+  kit = true
+  lib_name = "ArkWeb"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.UIKit") {
+  sources = [ "UIKit/index.cj" ]
+
+  cj_deps = [
+    "../api/arkui/cj:ohos.animator",
+    "../api/arkui/cj:ohos.base",
+    "../api/arkui/cj:ohos.component",
+    "../api/arkui/cj:ohos.component_snapshot",
+    "../api/arkui/cj:ohos.concurrency",
+    "../api/arkui/cj:ohos.curves",
+    "../api/arkui/cj:ohos.font",
+    "../api/arkui/cj:ohos.matrix4",
+    "../api/arkui/cj:ohos.measure",
+    "../api/arkui/cj:ohos.observer",
+    "../api/arkui/cj:ohos.prompt_action",
+    "../api/arkui/cj:ohos.router",
+    "../api/arkui/cj:ohos.state_manage",
+    "../api/arkui/cj:ohos.ui_resource",
+  ]
+
+  kit = true
+  lib_name = "UIKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ArkData") {
+  sources = [ "ArkData/index.cj" ]
+
+  cj_deps = [
+    "../api/data_share_predicates:ohos.data_share_predicates",
+    "../api/distributed_kv_store:ohos.distributed_kv_store",
+    "../api/preferences:ohos.preferences",
+    "../api/relational_store:ohos.relational_store",
+    "../api/udmf:ohos.unifiedDataChannel",
+    "../api/udmf:ohos.uniformTypeDescriptor",
+    "../api/values_bucket:ohos.values_bucket",
+  ]
+
+  kit = true
+  lib_name = "ArkData"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.HybridUIKit") {
+  sources = [ "HybridUIKit/index.cj" ]
+
+  cj_deps = [
+    "../api/arkui/cj:ohos.base",
+    "../api/arkui/cj_ndk:ohos.hybrid_base",
+  ]
+
+  kit = true
+  lib_name = "HybridUIKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ArkUI") {
+  sources = [ "ArkUI/index.cj" ]
+
+  cj_deps = [
+    "../api/display_runtime:ohos.display",
+    "../api/screenshot:ohos.screenshot",
+    "../api/window:ohos.window",
+  ]
+
+  kit = true
+  lib_name = "ArkUI"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.CryptoArchitectureKit") {
+  sources = [ "CryptoArchitectureKit/index.cj" ]
+
+  cj_deps = [ "../api/crypto:ohos.crypto" ]
+
+  kit = true
+  lib_name = "CryptoArchitectureKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.DistributedServiceKit") {
+  sources = [ "DistributedServiceKit/index.cj" ]
+
+  cj_deps = [ "../api/distributed_device_manager:ohos.distributed_device_manager" ]
+
+  kit = true
+  lib_name = "DistributedServiceKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.FormKit") {
+  sources = [ "FormKit/index.cj" ]
+
+  cj_deps = [
+    "../api/form_binding_data:ohos.app.form.formBindingData",
+    "../api/form/form_extension_ability:ohos.form.form_extension_ability",
+    "../api/form/form_info:ohos.form.form_info",
+    "../api/form/form_provider:ohos.form.form_provider",
+  ]
+
+  kit = true
+  lib_name = "FormKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.UniversalKeystoreKit") {
+  sources = [ "UniversalKeystoreKit/index.cj" ]
+
+  cj_deps = [ "../api/security_huks:ohos.security_huks" ]
+
+  kit = true
+  lib_name = "UniversalKeystoreKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.AssetStoreKit") {
+  sources = [ "AssetStoreKit/index.cj" ]
+
+  cj_deps = [ "../api/security_asset:ohos.asset_store" ]
+
+  kit = true
+  lib_name = "AssetStoreKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.UserAuthenticationKit") {
+  sources = [ "UserAuthenticationKit/index.cj" ]
+
+  cj_deps = [ "../api/useriam_user_auth_framework:ohos.user_auth" ]
+
+  kit = true
+  lib_name = "UserAuthenticationKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.DeviceCertificateKit") {
+  sources = [ "DeviceCertificateKit/index.cj" ]
+
+  cj_deps = [
+    "../api/security_certificate_framework:ohos.cert",
+    "../api/security_certificate_manager:ohos.cert_manager",
+  ]
+
+  kit = true
+  lib_name = "DeviceCertificateKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.NetworkKit") {
+  sources = [ "NetworkKit/index.cj" ]
+
+  cj_deps = [
+    "../api/net/connection:ohos.net.connection",
+    "../api/net/connection:ohos.net.connection.interop",
+    "../api/net/http:ohos.net.http",
+    "../api/net/websocket:ohos.net.webSocket",
+    "../api/net/network_security:ohos.net.network_security",
+  ]
+
+  kit = true
+  lib_name = "NetworkKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.InputKit") {
+  sources = [ "InputKit/index.cj" ]
+
+  cj_deps = [
+    "../api/input/inputEvent:ohos.multimodalInput.inputEvent",
+    "../api/input/keyCode:ohos.multimodalInput.keyCode",
+    "../api/input/keyEvent:ohos.multimodalInput.keyEvent",
+  ]
+
+  kit = true
+  lib_name = "InputKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.NotificationKit") {
+  sources = [ "NotificationKit/index.cj" ]
+
+  cj_deps = [ "../api/notification_manager:ohos.notification_manager" ]
+
+  kit = true
+  lib_name = "NotificationKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.TelephonyKit") {
+  sources = [ "TelephonyKit/index.cj" ]
+
+  cj_deps = [
+    "../api/telephony/telephony_call:ohos.telephony_call",
+    "../api/telephony/telephony_data:ohos.telephony_data",
+    "../api/telephony/telephony_observer:ohos.telephony_observer",
+    "../api/telephony/telephony_radio:ohos.telephony_radio",
+    "../api/telephony/telephony_sim:ohos.telephony_sim",
+    "../api/telephony/telephony_sms:ohos.telephony_sms",
+  ]
+
+  kit = true
+  lib_name = "TelephonyKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.AudioKit") {
+  sources = [ "AudioKit/index.cj" ]
+
+  cj_deps = [
+    "../api/multimedia/audio:ohos.multimedia.audio",
+    "../api/multimedia/audio_haptic:ohos.multimedia.audio_haptic",
+  ]
+
+  kit = true
+  lib_name = "AudioKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.MediaLibraryKit") {
+  sources = [ "MediaLibraryKit/index.cj" ]
+
+  cj_deps = [ "../api/multimedia/media_library:ohos.multimedia.photo_accesshelper" ]
+
+  kit = true
+  lib_name = "MediaLibraryKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.BasicServicesKit") {
+  sources = [ "BasicServicesKit/index.cj" ]
+
+  cj_deps = [
+    "../api/account/appAccount:ohos.account.appAccount",
+    "../api/account/osaccount:ohos.account.osAccount",
+    "../api/battery_info:ohos.battery_info",
+    "../api/common_event_manager:ohos.common_event_manager",
+    "../api/device_info:ohos.device_info",
+    "../api/distributedAccount:ohos.account_distributedAccount",
+    "../api/emitter:ohos.emitter",
+    "../api/pasteboard:ohos.pasteboard",
+    "../api/power:ohos.power",
+    "../api/request:ohos.request.agent",
+    "../api/running_lock:ohos.running_lock",
+    "../api/settings:ohos.settings",
+    "../api/system_date_time:ohos.system_date_time",
+    "../api/system_parameter_enhance:ohos.system_parameter_enhance",
+    "../api/zlib:ohos.zlib",
+    "../api/thermal:ohos.thermal"
+  ]
+
+  kit = true
+  lib_name = "BasicServicesKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.BackgroundTasksKit") {
+  sources = [ "BackgroundTasksKit/index.cj" ]
+
+  cj_deps = [
+    "../api/background_task_mgr:ohos.background_task_mgr",
+    "../api/work_scheduler:ohos.work_scheduler",
+  ]
+
+  kit = true
+  lib_name = "BackgroundTasksKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ConnectivityKit") {
+  sources = [ "ConnectivityKit/index.cj" ]
+
+  cj_deps = [
+    "../api/bluetooth:ohos.bluetooth",
+    "../api/bluetooth:ohos.bluetooth.a2dp",
+    "../api/bluetooth:ohos.bluetooth.access",
+    "../api/bluetooth:ohos.bluetooth.baseProfile",
+    "../api/bluetooth:ohos.bluetooth.ble",
+    "../api/bluetooth:ohos.bluetooth.connection",
+    "../api/bluetooth:ohos.bluetooth.constant",
+    "../api/bluetooth:ohos.bluetooth.hfp",
+    "../api/bluetooth:ohos.bluetooth.hid",
+    "../api/bluetooth:ohos.bluetooth.socket",
+    "../api/wifi_manager:ohos.wifi_manager",
+  ]
+
+  if (build_ohos_sdk || communication_nfc_enable) {
+    sources += [ "ConnectivityKit/nfc.cj" ]
+    cj_deps += [ "../api/nfc_cardEmulation:ohos.nfc.cardEmulation" ]
+  }
+
+  if (build_ohos_sdk || communication_secure_element_enable) {
+    sources += [ "ConnectivityKit/security_element.cj" ]
+    cj_deps += [ "../api/security_element:ohos.security_element" ]
+  }
+
+  kit = true
+  lib_name = "ConnectivityKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.CoreFileKit") {
+  sources = [ "CoreFileKit/index.cj" ]
+
+  cj_deps = [
+    "../api/file_fileuri:ohos.file_fileuri",
+    "../api/file_fs:ohos.file_fs",
+    "../api/file_fs:ohos.file_fs.interop",
+    "../api/file_picker:ohos.file_picker",
+    "../api/file_storage_statistics:ohos.file_storage_statistics",
+    "../api/statvfs:ohos.file_statvfs",
+    "../api/file_grant_permission:ohos.file_grant_permission",
+  ]
+
+  kit = true
+  lib_name = "CoreFileKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.PerformanceAnalysisKit") {
+  sources = [ "PerformanceAnalysisKit/index.cj" ]
+
+  cj_deps = [
+    "../api/faultlogger:ohos.faultlogger",
+    "../api/hi_tracechain:ohos.hi_tracechain",
+    "../api/cj_leakwatcher:ohos.cj_leakwatcher",
+    "../api/hi_tracemeter:ohos.hi_tracemeter",
+    "../api/hiappevent:ohos.hiappevent",
+    "../api/hidebug:ohos.hidebug",
+    "../api/hilog:ohos.hilog",
+  ]
+
+  kit = true
+  lib_name = "PerformanceAnalysisKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ImageKit") {
+  sources = [ "ImageKit/index.cj" ]
+
+  cj_deps = [
+    "../api/image:ohos.image",
+    "../api/image:ohos.image.interop",
+  ]
+
+  kit = true
+  lib_name = "ImageKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ArkGraphics2D") {
+  sources = [ "ArkGraphics2D/index.cj" ]
+
+  cj_deps = [
+    "../api/arkui/cj:ohos.component",
+    "../api/color_manager:ohos.color_manager",
+    "../api/displaySync:ohos.displaySync",
+    "../api/effect_kit:ohos.effect_kit",
+  ]
+
+  kit = true
+  lib_name = "ArkGraphics2D"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.LocalizationKit") {
+  sources = [ "LocalizationKit/index.cj" ]
+
+  cj_deps = [
+    "../api/i18n:ohos.i18n",
+    "../api/intl:ohos.intl",
+    "../api/resource_manager:ohos.resource_manager",
+  ]
+
+  kit = true
+  lib_name = "LocalizationKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.LocationKit") {
+  sources = [ "LocationKit/index.cj" ]
+
+  cj_deps = [ "../api/geo_location_manager:ohos.geo_location_manager" ]
+
+  kit = true
+  lib_name = "LocationKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.SensorServiceKit") {
+  sources = [ "SensorServiceKit/index.cj" ]
+
+  cj_deps = [
+    "../api/sensor:ohos.sensor",
+    "../api/vibrator:ohos.vibrator",
+  ]
+
+  kit = true
+  lib_name = "SensorServiceKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.TestKit") {
+  sources = [ "TestKit/index.cj" ]
+
+  cj_deps = [
+    "../api/ability:ohos.ability_delegator_registry",
+    "../api/ui_test:ohos.ui_test",
+  ]
+
+  kit = true
+  lib_name = "TestKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.IMEKit") {
+  sources = [ "IMEKit/index.cj" ]
+
+  cj_deps = [ "../api/input_method:ohos.input_method" ]
+
+  kit = true
+  lib_name = "IMEKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.MediaKit") {
+  sources = [ "MediaKit/index.cj" ]
+
+  cj_deps = [ "../api/multimedia_media:ohos.multimedia_media" ]
+
+  kit = true
+  lib_name = "MediaKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.AVSessionKit") {
+  sources = [ "AVSessionKit/index.cj" ]
+
+  cj_deps = [
+    "../api/multimedia/avcast_picker_param:ohos.multimedia.avcast_picker_param",
+    "../api/multimedia_avsession:ohos.multimedia_avsession",
+  ]
+
+  kit = true
+  lib_name = "AVSessionKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.ContactsKit") {
+  sources = [ "ContactsKit/index.cj" ]
+
+  cj_deps = [ "../api/contacts:ohos.contact" ]
+
+  kit = true
+  lib_name = "ContactsKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.AccessibilityKit") {
+  sources = [ "AccessibilityKit/index.cj" ]
+
+  cj_deps = [ "../api/accessibility:ohos.accessibility" ]
+
+  kit = true
+  lib_name = "AccessibilityKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.CalendarKit") {
+  sources = [ "CalendarKit/index.cj" ]
+ 
+  cj_deps = [
+    "../api/calendar_manager:ohos.calendar_manager",
+  ]
+ 
+  kit = true
+  lib_name = "CalendarKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.IPCKit") {
+  sources = [ "IPCKit/index.cj" ]
+
+  cj_deps = [
+    "../api/rpc:ohos.rpc",
+    "../api/rpc:ohos.rpc.interop",
+  ]
+
+  kit = true
+  lib_name = "IPCKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("kit.CameraKit") {
+  sources = [ "CameraKit/index.cj" ]
+
+  cj_deps = [
+    "../api/multimedia/camera:ohos.multimedia.camera",
+    "../api/multimedia/camera_picker:ohos.multimedia.camera_picker",
+  ]
+
+  kit = true
+  lib_name = "CameraKit"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}

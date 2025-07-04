@@ -1,0 +1,568 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.bluetooth.ble
+
+import ohos.base.*
+import ohos.bluetooth.*
+import ohos.ffi.*
+import std.collection.{ArrayList, HashMap}
+import ohos.bluetooth.common_util.*
+import std.sync.AtomicBool
+import ohos.labels.*
+
+/**
+ * create a Gatt server instance.
+ *
+ * @returns { GattServer } Returns a Gatt server instance {@code GattServer}.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func createGattServer(): GattServer {
+    var errorCode: Int32 = 0
+    let id = unsafe { FfiBluetoothBleCreateGattServer(inout errorCode) }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+    return GattServer(id)
+}
+
+/**
+ * create a Gatt client device instance.
+ *
+ * @param { String } deviceId - Indicates device ID. For example, "11:22:33:AA:BB:FF".
+ * @returns { GattClientDevice } Returns a Gatt client device instance {@code GattClientDevice}.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func createGattClientDevice(deviceId: String): GattClientDevice {
+    var id = 0
+    var errorCode: Int32 = 0
+    unsafe {
+        try (cDeviceId = LibC.mallocCString(deviceId).asResource()) {
+            id = FfiBluetoothBleCreateGattClientDevice(cDeviceId.value, inout errorCode)
+            if (errorCode != SUCCESS_CODE) {
+                throw BusinessException(errorCode, getErrorMsg(errorCode))
+            }
+        }
+    }
+    return GattClientDevice(id)
+}
+
+/**
+ * Obtains the list of devices in the connected status.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @returns { Array<String> } Returns the list of device address.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func getConnectedBLEDevices(): Array<String> {
+    var errorCode: Int32 = 0
+    var devices = Array<String>()
+    unsafe {
+        // MAC address translation does not throw exception.
+        let cDevices = FfiBluetoothBleGetConnectedBleDevices(inout errorCode)
+        devices = cArr2cjArr<CString, String>(cDevices.size, cDevices.head) {str: CString => str.toString()}
+        cDevices.free()
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+    return devices
+}
+
+/**
+ * Starts scanning for specified BLE devices with filters.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { Array<ScanFilter> } filters - Indicates the list of filters used to filter out specified devices.
+ * If you do not want to use filter, set this parameter to {@code null}.
+ * @param { ScanOptions } options - Indicates the parameters for scanning and if the user does not assign a value, the default value will be used.
+ * {@link ScanOptions#interval} set to 0, {@link ScanOptions#dutyMode} set to {@link SCAN_MODE_LOW_POWER}
+ * and {@link ScanOptions#matchMode} set to {@link MATCH_MODE_AGGRESSIVE}.
+ * and {@link ScanOptions#phyType} set to {@link PHY_LE_ALL_SUPPORTED}.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = None): Unit {
+    var errorCode: Int32 = 0
+    unsafe {
+        let filtersSize = filters.size
+        let arr = if (filtersSize == 0) {
+            CPointer<NativeScanFilter>()
+        } else {
+            safeMalloc<NativeScanFilter>(count: filtersSize)
+        }
+        for (i in 0..filtersSize) {
+            arr.write(i, filters[i].toNative())
+        }
+        let cFilters = CArrNativeScanFilter(arr, filtersSize)
+
+        var cOptions = CPointer<NativeScanOptions>()
+        if (let Some(v) <- options) {
+            cOptions = safeMalloc<NativeScanOptions>(count: 1)
+            cOptions.write(v.toNative())
+        }
+        FfiBluetoothBleStartBleScan(cFilters, cOptions, inout errorCode)
+        cFilters.free()
+        LibC.free(cOptions)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+/**
+ * Stops BLE scanning.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func stopBLEScan(): Unit {
+    var errorCode: Int32 = 0
+    unsafe {
+        FfiBluetoothBleStopBleScan(inout errorCode)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+/**
+ * Starts BLE advertising.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { AdvertiseSetting } setting - Indicates the settings for BLE advertising.
+ * @param { AdvertiseData } advData - Indicates the advertising data.
+ * @param { AdvertiseData } advResponse - Indicates the scan response associated with the advertising data.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse!: ?AdvertiseData = None): Unit {
+    var errorCode: Int32 = 0
+    let cSetting: NativeAdvertiseSetting = setting.toNative()
+    let cAdvData: NativeAdvertiseData = advData.toNative()
+    var cAdvResponse: CPointer<NativeAdvertiseData> = CPointer<NativeAdvertiseData>()
+    unsafe {
+        if (let Some(v) <- advResponse) {
+            cAdvResponse = safeMalloc<NativeAdvertiseData>(count: 1)
+            cAdvResponse.write(v.toNative())
+        }
+
+        FfiBluetoothBleStartAdvertising(cSetting, cAdvData, cAdvResponse, inout errorCode)
+
+        cAdvData.free()
+        if (cAdvResponse.isNotNull()) {
+            cAdvResponse.read().free()
+        }
+        LibC.free(cAdvResponse)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+/**
+ * Stops BLE advertising.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func stopAdvertising(): Unit {
+    var errorCode: Int32 = 0
+    unsafe {
+        FfiBluetoothBleStopAdvertising(inout errorCode)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+/**
+ * Starts BLE advertising.
+ * The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising
+ * using the API {@link enableAdvertising} or {@link disableAdvertising}.
+ * To completely stop the advertising corresponding to the ID, invoke the API {@link stopAdvertising} with ID.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { AdvertisingParams } advertisingParams - Indicates the params for BLE advertising.
+ * @returns { UInt32 } Returns advertise ID.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func startAdvertising(advertisingParams: AdvertisingParams): UInt32 {
+    var errorCode: Int32 = 0
+    let id: Int32
+    unsafe {
+        let cAdvertisingParams: NativeAdvertisingParams = advertisingParams.toNative()
+        id = FfiBluetoothBleStartAdvertisingWithId(cAdvertisingParams, inout errorCode)
+        cAdvertisingParams.free()
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+    if (id < 0) {
+        throw BusinessException(OPERATION_FAILED, getErrorMsg(OPERATION_FAILED))
+    }
+    // for usability
+    return UInt32(id)
+}
+
+/**
+ * Enable the advertising with a specific ID temporarily.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { AdvertisingEnableParams } advertisingEnableParams - Indicates the params for enable advertising.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Unit {
+    var errorCode: Int32 = 0
+    unsafe {
+        let cAdvertisingEnableParams: NativeAdvertisingEnableParams = advertisingEnableParams.toNative()
+        FfiBluetoothBleEnableAdvertising(cAdvertisingEnableParams, inout errorCode)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+/**
+ * Disable the advertising with a specific ID temporarily.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { AdvertisingDisableParams } advertisingDisableParams - Indicates the params for disable advertising.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Unit {
+    var errorCode: Int32 = 0
+    unsafe {
+        let cAdvertisingDisableParams: NativeAdvertisingDisableParams = advertisingDisableParams.toNative()
+        FfiBluetoothBleDisableAdvertising(cAdvertisingDisableParams, inout errorCode)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+/**
+ * Stops BLE advertising.
+ * Completely stop the advertising corresponding to the ID.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { UInt32 } advertisingId - Indicates the ID for this BLE advertising.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func stopAdvertising(advertisingId: UInt32): Unit {
+    var errorCode: Int32 = 0
+    unsafe {
+        FfiBluetoothBleStopAdvertisingWithId(advertisingId, inout errorCode)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+private let GLOBAL_CALLBACK_MAP = HashMap<BluetoothBleCallbackType, ArrayList<CallbackObject>>()
+private let GLOBAL_REGISTER_MAP = HashMap<BluetoothBleCallbackType, Bool>(
+    [(ADVERTISING_STATE_CHANGE, false), (BLE_DEVICE_FIND, false)])
+
+private func findCallbackObject(callbackType: BluetoothBleCallbackType, callback: CallbackObject, remove!: Bool = false): Int64 {
+    let callbackList = GLOBAL_CALLBACK_MAP.get(callbackType) ?? return -1
+    for (idx in 0..callbackList.size) {
+        if (refEq(callback, callbackList[idx])) {
+            if (remove) {
+                callbackList.remove(at: idx)
+            }
+            return idx
+        }
+    }
+    return -1
+}
+
+private func register(callbackType: BluetoothBleCallbackType, id: Int64) {
+    var errorCode: Int32 = 0
+    unsafe {
+        FfiBluetoothBleOn(callbackType.getValue(), id, inout errorCode)
+    }
+    if (errorCode != SUCCESS_CODE) {
+        throw BusinessException(errorCode, getErrorMsg(errorCode))
+    }
+}
+
+private func argWrapper1<CT, T>(callbackType: BluetoothBleCallbackType, ctor: (CT) -> T): Int64 where CT <: CType {
+    let wrapper = {
+        ctype: CT =>
+        let cjType = ctor(ctype)
+        let callbackList = GLOBAL_CALLBACK_MAP.get(callbackType) ?? ArrayList<CallbackObject>()
+        for (caller in callbackList) {
+            (caller as Callback1Argument<T>)?.invoke(cjType)
+        }
+    }
+    let registerCall = Callback1Param<CT, Unit>(wrapper)
+    registerCall.getID()
+}
+
+private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleCallbackType, callback: CallbackObject,
+    ctor: (CT) -> T) where CT <: CType {
+    BLUETOOTH_LOG.debug("subscribe ${callbackType}")
+    if (!GLOBAL_REGISTER_MAP[callbackType]) {
+        register(callbackType, argWrapper1<CT, T>(callbackType, ctor))
+        GLOBAL_REGISTER_MAP[callbackType] = true
+    } else {
+        if (findCallbackObject(callbackType, callback) >= 0) {
+            BLUETOOTH_LOG.info("The ${callbackType} callback is registered, no need to re-registered")
+            return
+        }
+    }
+    GLOBAL_CALLBACK_MAP.addIfAbsent(callbackType, ArrayList<CallbackObject>())
+    GLOBAL_CALLBACK_MAP[callbackType].add(callback)
+}
+
+/**
+ * Subscribing to advertising state change event.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { BluetoothBleCallbackType } type - Type of the advertising state to listen for.
+ * @param { Callback1Argument<AdvertisingStateChangeInfo> } callback - Callback used to listen for the advertising state.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<AdvertisingStateChangeInfo>): Unit {
+    if (`type` != ADVERTISING_STATE_CHANGE) {
+        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is ADVERTISING_STATE_CHANGE")
+        throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
+    }
+
+    commonSubscribe1Arg(`type`, callback) {
+        info: CAdvertisingStateChangeInfo => info.toObject()
+    }
+    return
+}
+
+/**
+ * Subscribe BLE scan result.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { BluetoothBleCallbackType } type - Type of the scan result event to listen for.
+ * @param { Callback1Argument<Array<ScanResult>> } callback - Callback used to listen for the scan result event.
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Array<ScanResult>>): Unit {
+    if (`type` != BLE_DEVICE_FIND) {
+        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BLE_DEVICE_FIND")
+        throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
+    }
+
+    commonSubscribe1Arg(`type`, callback) {
+        result: CArrScanResult => unsafe {
+            cArr2cjArr<NativeScanResult, ScanResult>(result.size, result.head) {
+                r: NativeScanResult => r.toObject()
+            }
+        }
+    }
+    return
+}
+
+/**
+ * Unsubscribe from callback event.
+ *
+ * @permission ohos.permission.ACCESS_BLUETOOTH
+ * @param { BluetoothBleCallbackType } type - Type of the callback.
+ * @param { ?CallbackObject } callback - Callback.
+ * @throws { BusinessException} 201 - Permission denied.
+ * @throws { BusinessException} 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+ * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException} 801 - Capability not supported.
+ * @throws { BusinessException} 2900099 - Operation failed.
+ * @syscap SystemCapability.Communication.Bluetooth.Core
+ */
+@!APILevel[
+    19,
+    atomicservice: true,
+    crossplatform: true,
+    permission: "ohos.ACCESS_BLUETOOTH",
+    stagemodelonly: true,
+    syscap: "SystemCapability.Communication.Bluetooth.Core"
+]
+public func off(`type`: BluetoothBleCallbackType, callback!: ?CallbackObject = None): Unit {
+    BLUETOOTH_LOG.debug("unsubscribe stateChange")
+    if (!GLOBAL_CALLBACK_MAP.contains(`type`)) {
+        return
+    }
+    if (let Some(v) <- callback) {
+        findCallbackObject(`type`, v, remove: true)
+        return
+    }
+    GLOBAL_CALLBACK_MAP[`type`].clear()
+    return
+}

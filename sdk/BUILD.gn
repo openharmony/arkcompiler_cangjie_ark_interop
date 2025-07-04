@@ -1,0 +1,129 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("../sdk_config.gni")
+
+template("cj_ohos_sdk") {
+  ohos_copy(target_name) {
+    forward_variables_from(invoker, [
+      "toolchain",
+      "platform",
+      "module_name",
+      "dyn_extension",
+      "inputs",
+      "is_macro",
+    ])
+    deps = []
+    sources = []
+    if (!defined(is_macro)) {
+      is_macro = false
+    }
+
+    foreach(item, inputs) {
+      deps += [
+        "${item.label}(${toolchain})",
+      ]
+      is_native = defined(item.is_native) && item.is_native
+      t_out = get_label_info(deps[0], "root_out_dir")
+      if (!is_native) {
+        deps += ["${item.label}_cjo(${toolchain})",]
+        tmp = ""
+        tmp = string_split(item.label, ":")
+        out_path = "${t_out}/obj/${tmp[0]}"
+
+        if (is_macro) {
+          sources += [ "${out_path}/lib-macro_${module_name}.${item.lib_name}${dyn_extension}" ]
+        } else if (item.lib_name == "ohos") {
+          sources += [ "${out_path}/lib${item.lib_name}${dyn_extension}" ]
+        } else {
+          sources += [ "${out_path}/lib${module_name}.${item.lib_name}${dyn_extension}" ]
+        }
+        if (defined(item.cjo_name)) {
+          sources += [ "${out_path}/${item.cjo_name}.cjo" ]
+        } else if (item.lib_name == "ohos") {
+          sources += [ "${out_path}/${item.lib_name}.cjo" ]
+        } else {
+          sources += [ "${out_path}/${module_name}.${item.lib_name}.cjo" ]
+        }
+      } else {
+        sources += [
+          "${t_out}/${item.path}"
+        ]
+      }
+    }
+
+    outputs =
+    [ "${target_out_dir}/build/${platform}/${module_name}/{{source_file_part}}" ]
+    module_source_dir = "${target_out_dir}/build/${platform}/${module_name}/"
+    module_install_name = ""
+  }
+}
+
+cangjie_ohos_libs += [
+  {
+    label = "ark_interop_loader:ark_interop_loader"
+    lib_name = "ark_interop_loader"
+    is_native = true
+    path = "arkcompiler/cangjie_api/libark_interop_loader.so"
+  },
+]
+
+cj_ohos_sdk("sdk_ohos_aarch64") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
+  platform = "linux_ohos_aarch64_cjnative"
+  dyn_extension = ".so"
+  inputs = cangjie_ohos_libs
+  module_name = "ohos"
+}
+
+cj_ohos_sdk("sdk_kit_aarch64") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
+  platform = "linux_ohos_aarch64_cjnative"
+  dyn_extension = ".so"
+  inputs = cangjie_kits
+  module_name = "kit"
+}
+
+cj_ohos_sdk("sdk_ohos_x86_64") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
+  platform = "linux_ohos_x86_64_cjnative"
+  dyn_extension = ".so"
+  inputs = cangjie_ohos_libs
+  module_name = "ohos"
+}
+
+cj_ohos_sdk("sdk_kit_x86_64") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
+  platform = "linux_ohos_x86_64_cjnative"
+  dyn_extension = ".so"
+  inputs = cangjie_kits
+  module_name = "kit"
+}
+
+cj_ohos_sdk("sdk_mingw_x86_64") {
+  toolchain = "//build/toolchain/mingw:mingw_x86_64"
+  platform = "x86_64-w64-mingw32"
+  dyn_extension = ".dll"
+  inputs = cangjie_macro_libs
+  is_macro = true
+  module_name = "ohos"
+}
+
+cj_ohos_sdk("sdk_linux_x86_64") {
+  toolchain = "//build/toolchain/linux:clang_x64"
+  platform = "x86_64-linux-gnu"
+  dyn_extension = ".so"
+  inputs = cangjie_macro_libs
+  is_macro = true
+  module_name = "ohos"
+}

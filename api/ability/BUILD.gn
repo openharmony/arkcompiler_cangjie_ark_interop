@@ -1,0 +1,176 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+
+ohos_cj_library("ohos.ability") {
+  sources = [
+    "ability/ability.cj",
+    "ability/ability_configuration.cj",
+    "ability/ability_constant.cj",
+    "ability/ability_context.cj",
+    "ability/ability_error_manager.cj",
+    "ability/ability_error_observer.cj",
+    "ability/ability_error_observer_ffi.cj",
+    "ability/ability_errorcode.cj",
+    "ability/ability_stage.cj",
+    "ability/ability_stage_context.cj",
+    "ability/action_extension_ability.cj",
+    "ability/app_manager.cj",
+    "ability/app_recovery.cj",
+    "ability/application.cj",
+    "ability/application_context.cj",
+    "ability/base_ability.cj",
+    "ability/callback_utils.cj",
+    "ability/callee.cj",
+    "ability/caller.cj",
+    "ability/configuration.cj",
+    "ability/connect_options.cj",
+    "ability/context.cj",
+    "ability/context_constant.cj",
+    "ability/data_uri_utils.cj",
+    "ability/element_name.cj",
+    "ability/embeddable_uiability.cj",
+    "ability/embeddable_uiability_context.cj",
+    "ability/embedded_ui_extension_ability.cj",
+    "ability/extension_ability.cj",
+    "ability/extension_context.cj",
+    "ability/hilog.cj",
+    "ability/insight_intent_context.cj",
+    "ability/insight_intent_executor.cj",
+    "ability/parse_json.cj",
+    "ability/photo_editor_extension_ability.cj",
+    "ability/photo_editor_extension_context.cj",
+    "ability/process_information.cj",
+    "ability/share_extension_ability.cj",
+    "ability/ui_extension_ability.cj",
+    "ability/ui_extension_content_session.cj",
+    "ability/ui_extension_context.cj",
+    "ability/want.cj",
+    "ability/want_agent.cj",
+    "ability/want_constant.cj",
+  ]
+
+  cj_deps = [
+    "../arkui/cj:ohos.base",
+    "../bundle_manager:ohos.bundle_manager",
+    "../encoding:ohos.encoding.json",
+    "../eventhub:ohos.eventhub",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../image:ohos.image",
+    "../resource_manager:ohos.resource_manager",
+    "../rpc:ohos.rpc",
+    "../window:ohos.window",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [
+    "ability_runtime:abilitykit_native",
+    "ability_runtime:appkit_native",
+    "ability_runtime:cj_ability_context_native",
+    "ability_runtime:cj_ability_ffi",
+    "ability_runtime:cj_abilitykit_native_ffi",
+    "ability_runtime:cj_app_manager_ffi",
+    "ability_runtime:cj_app_recovery_ffi",
+    "ability_runtime:cj_context_ffi",
+    "ability_runtime:cj_errormanager_ffi",
+    "ability_runtime:cj_extensionkit_native",
+    "ability_runtime:cj_insight_intent_executor",
+    "ability_runtime:cj_insightintentcontext",
+    "ability_runtime:cj_photo_editor_extension",
+    "ability_runtime:cj_ui_extension",
+    "ability_runtime:cj_want_agent_ffi",
+    "ability_runtime:uiabilitykit_native",
+    "access_token:cj_ability_access_ctrl_ffi",
+  ]
+
+  lib_name = "ability"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("ohos.test_runner") {
+  sources = [
+    "test_runner/hilog.cj",
+    "test_runner/test_runner.cj",
+  ]
+
+  cj_deps = [
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "ability_runtime:appkit_delegator" ]
+
+  lib_name = "test_runner"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("ohos.ability_delegator_registry") {
+  sources = [
+    "ability_delegator_registry/ability_delegator_registry.cj",
+    "ability_delegator_registry/ability_monitor.cj",
+    "ability_delegator_registry/ability_stage_monitor.cj",
+    "ability_delegator_registry/hilog.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.ability",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../rpc:ohos.rpc",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "ability_runtime:cj_ability_ffi" ]
+
+  lib_name = "ability_delegator_registry"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+ohos_cj_library("ohos.ability.interop") {
+  sources = [
+    "ability/interop/arkts_system_obj_context.cj",
+    "ability/interop/arkts_system_obj_wantagent.cj",
+    "ability/interop/system_object_interop.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.ability",
+    "../ffi_bind:ohos.ffi",
+    "../interop:ohos.ark_interop",
+    "../interop:ohos.ark_interop_helper",
+    "../labels:ohos.labels",
+  ]
+  external_deps = [
+    "ability_runtime:abilitykit_native",
+    "ability_runtime:appkit_native",
+    "ability_runtime:cj_ability_ffi",
+    "ability_runtime:cj_context_ffi",
+    "ability_runtime:cj_photo_editor_extension",
+    "ability_runtime:cj_ui_extension",
+    "ability_runtime:cj_want_agent_ffi",
+  ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "ability.interop"
+}

@@ -1,0 +1,170 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.crypto
+
+import ohos.ffi.*
+import ohos.labels.*
+
+foreign {
+    func FFiOHOSCryptoMacConstructor(algName: CString, errCode: CPointer<Int32>): Int64
+
+    func FfiOHOSCryptoMacInit(id: Int64, symKeyId: Int64): Int32
+
+    func FfiOHOSCryptoMacUpdate(id: Int64, input: CPointer<HcfBlob>): Int32
+
+    func FfiOHOSCryptoMacDoFinal(id: Int64, errCode: CPointer<Int32>): HcfBlob
+
+    func FfiOHOSCryptoGetMacLength(id: Int64): UInt32
+}
+
+/**
+ * @brief createMac(algName: string): Mac
+ */
+@!APILevel[
+    12,
+    atomicservice: true,
+    crossplatform: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Security.CryptoFramework.Mac"
+]
+public func createMac(algName: String): Mac {
+    unsafe {
+        let cstr = LibC.mallocCString(algName)
+        var errCode: Int32 = 0
+        let id = FFiOHOSCryptoMacConstructor(cstr, inout errCode)
+        LibC.free(cstr)
+        checkRet(errCode, "[Mac] createMd: ")
+        return Mac(id, algName)
+    }
+}
+
+@!APILevel[
+    12,
+    atomicservice: true,
+    crossplatform: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Security.CryptoFramework.Mac"
+]
+public class Mac <: RemoteDataLite {
+    private let _algName: String
+
+    init(id: Int64, algName: String) {
+        super(id)
+        _algName = algName
+    }
+
+    ~init() {
+        releaseFFIData(myDataId)
+    }
+
+    /**
+     * @brief algName: string
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Security.CryptoFramework.Mac"
+    ]
+    public prop algName: String {
+        get() {
+            return _algName
+        }
+    }
+
+    /**
+     * @brief init(key : SymKey) : Promise<void>
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Security.CryptoFramework.Mac"
+    ]
+    public func `init`(key: SymKey): Unit {
+        unsafe {
+            let errCode = FfiOHOSCryptoMacInit(getID(), key.getID())
+            checkRet(errCode, "[Mac] init: ")
+        }
+    }
+
+    /**
+     * @brief update(input : DataBlob) : Promise<void>
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Security.CryptoFramework.Mac"
+    ]
+    public func update(input: DataBlob): Unit {
+        unsafe {
+            let cp = safeMalloc<HcfBlob>()
+            let chb: HcfBlob
+            try {
+                chb = HcfBlob(input)
+            } catch (e: Exception) {
+                LibC.free(cp)
+                throw e
+            }
+            cp.write(chb)
+            let errCode = FfiOHOSCryptoMacUpdate(getID(), cp)
+            chb.free()
+            LibC.free(cp)
+            checkRet(errCode, "[Mac] update: ")
+        }
+    }
+
+    /**
+     * @brief doFinal() : Promise<DataBlob>
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Security.CryptoFramework.Mac"
+    ]
+    public func doFinal(): DataBlob {
+        unsafe {
+            var errCode: Int32 = 0
+            let returnBlob: HcfBlob = FfiOHOSCryptoMacDoFinal(getID(), inout errCode)
+            checkRet(errCode, "[Mac] doFinal: ")
+            let blob = returnBlob.toDataBlob()
+            returnBlob.free()
+            return blob
+        }
+    }
+
+    /**
+     * @brief getMacLength() : number
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Security.CryptoFramework.Mac"
+    ]
+    public func getMacLength(): UInt32 {
+        unsafe {
+            return FfiOHOSCryptoGetMacLength(getID())
+        }
+    }
+}

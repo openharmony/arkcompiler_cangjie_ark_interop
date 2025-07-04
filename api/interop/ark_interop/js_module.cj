@@ -1,0 +1,237 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.ark_interop
+
+import std.collection.*
+import std.convert.*
+
+@C
+struct CJModuleCallbacks {
+    CJModuleCallbacks(
+        let exporter: CFunc<(JSEnv, CString, JSValue_) -> JSValue_>,
+        let hasModule: CFunc<(CString) -> Bool>,
+        let throwJSError: CFunc<(JSEnv, JSValue_) -> Unit>,
+        let throwNativeError: CFunc<(CString) -> Unit>,
+        let deleteBuffer: CFunc<(CPointer<Byte>, Int64) -> Unit>,
+        let deleteExternal: CFunc<(Int64, JSEnv) -> Unit>,
+        let invokeLambda: CFunc<(JSCallInfoPrivate, Int64) -> JSValue_>,
+        let deleteLambda: CFunc<(JSEnv, Int64) -> Unit>,
+        let invokeAsync: CFunc<(JSEnv, Int64) -> Unit>,
+        let deleteContext: CFunc<(JSEnv) -> Unit>
+    ) {}
+}
+
+foreign func ARKTS_SetCJModuleCallback(callbacks: CPointer<CJModuleCallbacks>): Unit
+
+public type ModuleRegister = (JSContext, JSObject) -> Unit
+
+public type ClassRegister = (JSContext) -> JSClass
+
+public type FuncRegister = (JSContext) -> JSFunction
+
+@C
+func loadArkInteropModule(env: JSEnv, cname: CString, exports: JSValue_): JSValue_ {
+    let context = JSContext.getOrCreate(env)
+    try {
+        let name = cname.toString()
+        let module = match (JSModule.getCachedModule(name)) {
+            case Some(mod) => mod
+            case None => JSModule.finishLoad(name)
+        }
+        let exportObj = JSValue(context, exports).asObject()
+        module.fillInto(context, exportObj)
+        exports
+    } catch (err: Exception) {
+        context.throwJSError(err)
+        context.undefined().toJSValue().value
+    }
+}
+
+@C
+func hasArkInteropModule(cname: CString): Bool {
+    let name = cname.toString()
+    JSModule.loadedModules_.contains(name)
+}
+
+@C
+func throwJSErrorToCJ(env: JSEnv, rawError: JSValue_): Unit {
+    let context = JSContext.getOrCreate(env)
+    let error = JSValue(context, rawError)
+
+    if (error.isString()) {
+        let errorMsg = error.toString()
+        throw JSCodeError(errorMsg, [])
+    } else if (!error.isObject()) {
+        throw Exception("unknown js error")
+    }
+    let errObJ = error.asObject()
+    let errName = if (errObJ["name"].isString()) {
+        errObJ["name"].toString()
+    } else {
+        "[unknown]"
+    }
+    let errMsg = if (errObJ["message"].isString()) {
+        errObJ["message"].toString()
+    } else {
+        "[unknown]"
+    }
+    let errStack: Array<String> = if (errObJ["stack"].isArray()) {
+        let errStack = errObJ["stack"].asArray()
+        let stackSize = errStack.size
+        Array<String>(stackSize) {
+            idx => if (errStack[idx].isString()) {
+                errStack[idx].toString()
+            } else {
+                "..."
+            }
+        }
+    } else {
+        []
+    }
+    let errCode: Int32 = if (errObJ["code"].isNumber()) {
+        Int32(errObJ["code"].toNumber())
+    } else if (errObJ["code"].isString()) {
+        let code = Int32.tryParse(errObJ["code"].toString())
+        if (let Some(v) <- code) {
+            v
+        } else {
+            0
+        }
+    } else {
+        0
+    }
+    throw JSCodeError(errCode, "${errName}\n${errMsg}", errStack)
+}
+
+@C
+func throwNativeErrorToCJ(message: CString): Unit {
+    let msg = unsafe { message.toString() }
+    throw JSInteropNativeError(msg)
+}
+
+@!APILevel[
+    13,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+]
+public class JSModule {
+    private static var lastModule_ = JSModule()
+    static let loadedModules_ = HashMap<String, JSModule>()
+
+    static init() {
+        var moduleCallbacks = CJModuleCallbacks(
+            loadArkInteropModule,
+            hasArkInteropModule,
+            throwJSErrorToCJ,
+            throwNativeErrorToCJ,
+            JSBufferFinalizerStub,
+            cjExternalDestructor,
+            cjLambdaInvoker,
+            cjLambdaDestructor,
+            asyncCallbackExecutor,
+            disposeJSContext
+        )
+        unsafe { ARKTS_SetCJModuleCallback(inout moduleCallbacks) }
+    }
+
+    @!APILevel[
+        13,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    ]
+    public static func registerModule(register: ModuleRegister): Unit {
+        lastModule_.addExporter(register)
+    }
+
+    @!APILevel[
+        13,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    ]
+    public static func registerClass(name: String, register: ClassRegister): Unit {
+        lastModule_.addClass(name, register)
+    }
+
+    @!APILevel[
+        13,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    ]
+    public static func registerFunc(name: String, register: FuncRegister): Unit {
+        lastModule_.addFunc(name, register)
+    }
+
+    @!APILevel[
+        13,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    ]
+    public static func registerFunc(name: String, lambda: JSLambda): Unit {
+        lastModule_.addRawFunc(name, lambda)
+    }
+
+    static func getCachedModule(name: String): ?JSModule {
+        loadedModules_.get(name)
+    }
+
+    static func finishLoad(name: String): JSModule {
+        let result = lastModule_
+        lastModule_ = JSModule()
+        loadedModules_.add(name, result)
+        result
+    }
+
+    private let classes_ = HashMap<String, ClassRegister>()
+    private let funcs_ = HashMap<String, FuncRegister>()
+    private let rawFuncs_ = HashMap<String, JSLambda>()
+    private let exports_ = ArrayList<ModuleRegister>()
+
+    func addClass(name: String, register: ClassRegister): Unit {
+        classes_.add(name, register)
+    }
+
+    func addFunc(name: String, register: FuncRegister): Unit {
+        funcs_.add(name, register)
+    }
+
+    func addRawFunc(name: String, rawFunc: JSLambda): Unit {
+        rawFuncs_.add(name, rawFunc)
+    }
+
+    func addExporter(register: ModuleRegister): Unit {
+        exports_.add(register)
+    }
+
+    func fillInto(context: JSContext, object: JSObject): Unit {
+        for ((k, v) in classes_) {
+            object[k] = v(context).toJSValue()
+        }
+        for ((k, v) in funcs_) {
+            object[k] = v(context).toJSValue()
+        }
+        for ((k, v) in rawFuncs_) {
+            object[k] = context.function(v).toJSValue()
+        }
+        for (exporter in exports_) {
+            exporter(context, object)
+        }
+    }
+}

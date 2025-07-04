@@ -1,0 +1,51 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+
+ohos_cj_library("ohos.multimedia.photo_accesshelper") {
+  sources = [
+    "src/album.cj",
+    "src/fetch_result.cj",
+    "src/media_album_change_request.cj",
+    "src/media_asset_change_request.cj",
+    "src/media_asset_data_handler.cj",
+    "src/media_asset_manager.cj",
+    "src/moving_photo.cj",
+    "src/photo_accesshelper.cj",
+    "src/photo_accesshelper_ffi.cj",
+    "src/photo_accesshelper_utils.cj",
+    "src/photo_asset.cj",
+    "src/photo_view_picker.cj",
+  ]
+
+  cj_deps = [
+    "../../ability:ohos.ability",
+    "../../arkui/cj:ohos.base",
+    "../../bundle_manager:ohos.bundle_manager",
+    "../../data_share_predicates:ohos.data_share_predicates",
+    "../../ffi_bind:ohos.ffi",
+    "../../hilog:ohos.hilog",
+    "../../image:ohos.image",
+    "../../resource_manager:ohos.resource_manager",
+    "../fetchdata:ohos.multimedia.fetchdata",
+    "../../labels:ohos.labels",
+  ]
+
+  external_deps = [ "media_library:cj_photoaccesshelper_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "multimedia.photo_accesshelper"
+}

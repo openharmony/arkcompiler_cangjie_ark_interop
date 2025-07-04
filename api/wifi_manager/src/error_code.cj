@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.wifi_manager
+
+import ohos.base.*
+import ohos.ffi.*
+import std.collection.HashMap
+
+const WIFI_OPT_FAILED = 1i32
+const WIFI_OPT_NOT_SUPPORTED = 2i32
+const WIFI_OPT_INVALID_PARAM = 3i32
+const WIFI_OPT_FORBID_AIRPLANE = 4i32
+const WIFI_OPT_FORBID_POWSAVING = 5i32
+const WIFI_OPT_PERMISSION_DENIED = 6i32
+const WIFI_OPT_OPEN_FAIL_WHEN_CLOSING = 7i32
+const WIFI_OPT_OPEN_SUCC_WHEN_OPENED = 8i32
+const WIFI_OPT_CLOSE_FAIL_WHEN_OPENING = 9i32
+const WIFI_OPT_CLOSE_SUCC_WHEN_CLOSED = 10i32
+const WIFI_OPT_STA_NOT_OPENED = 11i32
+const WIFI_OPT_SCAN_NOT_OPENED = 12i32
+const WIFI_OPT_AP_NOT_OPENED = 13i32
+const WIFI_OPT_INVALID_CONFIG = 14i32
+const WIFI_OPT_P2P_NOT_OPENED = 15i32
+const WIFI_OPT_P2P_MAC_NOT_FOUND = 16i32
+const WIFI_OPT_P2P_ERR_MAC_FORMAT = 17i32
+const WIFI_OPT_P2P_ERR_INTENT = 18i32
+const WIFI_OPT_P2P_ERR_SIZE_NW_NAME = 19i32
+const WIFI_OPT_MOVING_FREEZE_CTRL = 20i32
+const WIFI_OPT_NON_SYSTEMAPP = 21i32
+const WIFI_ERRCODE_OPERATION_FAILED = 1000i32 /* failed */
+const WIFI_ERRCODE_WIFI_NOT_OPENED = 1001i32 /* sta service not opened */
+const WIFI_ERRCODE_OPEN_FAIL_WHEN_CLOSING = 1003i32 /* forbid when current airplane opened */
+const WIFI_ERRCODE_CLOSE_FAIL_WHEN_OPENING = 1004i32 /* forbid when current powersaving opened */
+
+const WIFI_ERRMSG_OPERATION_FAILED = "Operation failed."
+const WIFI_ERRMSG_WIFI_NOT_OPENED = "WIFI doesn't open."
+const WIFI_ERRMSG_PERMISSION_DENIED = "Permission denied."
+const WIFI_ERRMSG_NON_SYSTEMAPP = "non-system application."
+const WIFI_ERRMSG_INVALID_PARAM = "Parameter error."
+const WIFI_ERRMSG_NOT_SUPPORTED = "Capability not supported."
+const WIFI_ERRMSG_OPEN_FAIL_WHEN_CLOSING = "Failed for wifi is closing."
+const WIFI_ERRMSG_CLOSE_FAIL_WHEN_OPENING = "Failed for wifi is opening."
+let CODE_MAP = HashMap<Int32, Int32>(
+    [
+        (WIFI_OPT_FAILED, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_NOT_SUPPORTED, ERR_NOT_SUPPOERTED),
+        (WIFI_OPT_INVALID_PARAM, ERR_PARAMETER_ERROR),
+        (WIFI_OPT_FORBID_AIRPLANE, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_FORBID_POWSAVING, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_PERMISSION_DENIED, ERR_NO_PERMISSION),
+        (WIFI_OPT_NON_SYSTEMAPP, ERR_NOT_SYSTEM_APP),
+        (WIFI_OPT_OPEN_FAIL_WHEN_CLOSING, WIFI_ERRCODE_OPEN_FAIL_WHEN_CLOSING),
+        (WIFI_OPT_OPEN_SUCC_WHEN_OPENED, WIFI_ERRCODE_CLOSE_FAIL_WHEN_OPENING),
+        (WIFI_OPT_CLOSE_FAIL_WHEN_OPENING, WIFI_ERRCODE_CLOSE_FAIL_WHEN_OPENING),
+        (WIFI_OPT_CLOSE_SUCC_WHEN_CLOSED, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_STA_NOT_OPENED, WIFI_ERRCODE_WIFI_NOT_OPENED),
+        (WIFI_OPT_SCAN_NOT_OPENED, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_AP_NOT_OPENED, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_INVALID_CONFIG, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_P2P_NOT_OPENED, WIFI_ERRCODE_WIFI_NOT_OPENED),
+        (WIFI_OPT_P2P_MAC_NOT_FOUND, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_P2P_ERR_MAC_FORMAT, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_P2P_ERR_INTENT, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_P2P_ERR_SIZE_NW_NAME, WIFI_ERRCODE_OPERATION_FAILED),
+        (WIFI_OPT_MOVING_FREEZE_CTRL, WIFI_ERRCODE_OPERATION_FAILED)
+    ]
+)
+let ERR_MSG_MAP = HashMap<Int32, String>(
+    [
+        (ERR_NO_PERMISSION, WIFI_ERRMSG_PERMISSION_DENIED),
+        (ERR_NOT_SYSTEM_APP, WIFI_ERRMSG_NON_SYSTEMAPP),
+        (ERR_PARAMETER_ERROR, WIFI_ERRMSG_INVALID_PARAM),
+        (ERR_NOT_SUPPOERTED, WIFI_ERRMSG_NOT_SUPPORTED),
+        (WIFI_ERRCODE_OPERATION_FAILED, WIFI_ERRMSG_OPERATION_FAILED),
+        (WIFI_ERRCODE_WIFI_NOT_OPENED, WIFI_ERRMSG_WIFI_NOT_OPENED),
+        (WIFI_ERRCODE_OPEN_FAIL_WHEN_CLOSING, WIFI_ERRMSG_OPEN_FAIL_WHEN_CLOSING),
+        (WIFI_ERRCODE_CLOSE_FAIL_WHEN_OPENING, WIFI_ERRMSG_CLOSE_FAIL_WHEN_OPENING)
+    ]
+)
+
+func getCodeAndMsg(value: Int32, syscap: Int32): (Int32, String) {
+    match (CODE_MAP.get(value)) {
+        case Some(v) =>
+            if (v == ERR_NO_PERMISSION || v == ERR_NOT_SYSTEM_APP || v == ERR_PARAMETER_ERROR || v == ERR_NOT_SUPPOERTED) {
+                (v, ERR_MSG_MAP[v])
+            } else {
+                (syscap + v, ERR_MSG_MAP[v])
+            }
+        case None => (value, ERR_MSG_MAP[WIFI_ERRCODE_OPERATION_FAILED])
+    }
+}

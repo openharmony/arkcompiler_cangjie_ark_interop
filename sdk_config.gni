@@ -1,0 +1,808 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("cjc.gni")
+import("multi-product_diff.gni")
+
+cangjie_systemapi = "//vendor/huawei/arkcompiler/cangjie_api"
+cangjie_systemapi_api = "${cangjie_systemapi}/api"
+
+cangjie_systemapi_libs = [
+  {
+    label = "${cangjie_systemapi_api}/labels:ohos.labels"
+    lib_name = "labels"
+  },
+  {
+    label = "${cangjie_systemapi_api}/eventhub:ohos.eventhub"
+    lib_name = "eventhub"
+  },
+  {
+    label = "${cangjie_systemapi_api}/account/osaccount:ohos.account.osAccount"
+    lib_name = "account.osAccount"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.a2dp"
+    lib_name = "bluetooth.a2dp"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth"
+    lib_name = "bluetooth"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.access"
+    lib_name = "bluetooth.access"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.baseProfile"
+    lib_name = "bluetooth.baseProfile"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.ble"
+    lib_name = "bluetooth.ble"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.constant"
+    lib_name = "bluetooth.constant"
+  },
+  {
+    label =
+        "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.common_util"
+    lib_name = "bluetooth.common_util"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.connection"
+    lib_name = "bluetooth.connection"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.hfp"
+    lib_name = "bluetooth.hfp"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.hid"
+    lib_name = "bluetooth.hid"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.socket"
+    lib_name = "bluetooth.socket"
+  },
+  {
+    label = "${cangjie_systemapi_api}/battery_info:ohos.battery_info"
+    lib_name = "battery_info"
+  },
+  {
+    label = "${cangjie_systemapi_api}/running_lock:ohos.running_lock"
+    lib_name = "running_lock"
+  },
+  {
+    label = "${cangjie_systemapi_api}/color_manager:ohos.color_manager"
+    lib_name = "color_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/common_event_manager:ohos.common_event_manager"
+    lib_name = "common_event_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/hilog:ohos.hilog"
+    lib_name = "hilog"
+  },
+  {
+    label = "${cangjie_systemapi_api}/ffi_bind:ohos.ffi"
+    lib_name = "ffi"
+  },
+  {
+    label = "${cangjie_systemapi_api}/encoding:ohos.encoding.json"
+    lib_name = "encoding.json"
+  },
+  {
+    label =
+        "${cangjie_systemapi_api}/relational_store:ohos.relational_store"
+    lib_name = "relational_store"
+  },
+  {
+    label = "${cangjie_systemapi_api}/geo_location_manager:ohos.geo_location_manager"
+    lib_name = "geo_location_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/webview:ohos.webview"
+    lib_name = "webview"
+  },
+  {
+    label = "${cangjie_systemapi_api}/crypto:ohos.crypto"
+    lib_name = "crypto"
+  },
+  {
+    label = "${cangjie_systemapi_api}/emitter:ohos.emitter"
+    lib_name = "emitter"
+  },
+  {
+    label = "${cangjie_systemapi_api}/file_fs:ohos.file_fs"
+    lib_name = "file_fs"
+  },
+  {
+    label = "${cangjie_systemapi_api}/file_fs:ohos.file_fs.interop"
+    lib_name = "file_fs.interop"
+  },
+  {
+    label = "${cangjie_systemapi_api}/file_fileuri:ohos.file_fileuri"
+    lib_name = "file_fileuri"
+  },
+  {
+    label = "${cangjie_systemapi_api}/file_picker:ohos.file_picker"
+    lib_name = "file_picker"
+  },
+  {
+    label = "${cangjie_systemapi_api}/file_grant_permission:ohos.file_grant_permission"
+    lib_name = "file_grant_permission"
+  },
+  {
+    label = "${cangjie_systemapi_api}/form_binding_data:ohos.app.form.formBindingData"
+    lib_name = "app.form.formBindingData"
+  },
+  {
+    label = "${cangjie_systemapi_api}/form/form_extension_ability:ohos.form.form_extension_ability"
+    lib_name = "form.form_extension_ability"
+  },
+  {
+    label = "${cangjie_systemapi_api}/form/form_info:ohos.form.form_info"
+    lib_name = "form.form_info"
+  },
+  {
+    label = "${cangjie_systemapi_api}/form/form_provider:ohos.form.form_provider"
+    lib_name = "form.form_provider"
+  },
+  {
+    label = "${cangjie_systemapi_api}/preferences:ohos.preferences"
+    lib_name = "preferences"
+  },
+  {
+    label = "${cangjie_systemapi_api}/distributed_kv_store:ohos.distributed_kv_store"
+    lib_name = "distributed_kv_store"
+  },
+  {
+    label = "${cangjie_systemapi_api}/udmf:ohos.unifiedDataChannel"
+    lib_name = "unifiedDataChannel"
+  },
+  {
+    label = "${cangjie_systemapi_api}/udmf:ohos.uniformTypeDescriptor"
+    lib_name = "uniformTypeDescriptor"
+  },
+  {
+    label = "${cangjie_systemapi_api}/graphics/common2D:ohos.graphics.common2D"
+    lib_name = "graphics.common2D"
+  },
+  {
+    label = "${cangjie_systemapi_api}/graphics/drawing:ohos.graphics.drawing"
+    lib_name = "graphics.drawing"
+  },
+  {
+    label = "${cangjie_systemapi_api}/image:ohos.image"
+    lib_name = "image"
+  },
+  {
+    label = "${cangjie_systemapi_api}/image:ohos.image.interop"
+    lib_name = "image.interop"
+  },
+  {
+    label = "${cangjie_systemapi_api}/security_asset:ohos.asset_store"
+    lib_name = "asset_store"
+  },
+  {
+    label = "${cangjie_systemapi_api}/security_huks:ohos.security_huks"
+    lib_name = "security_huks"
+  },
+  {
+    label = "${cangjie_systemapi_api}/useriam_user_auth_framework:ohos.user_auth"
+    lib_name = "user_auth"
+  },
+  {
+    label =
+        "${cangjie_systemapi_api}/resource_manager:ohos.resource_manager"
+    lib_name = "resource_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/rpc:ohos.rpc"
+    lib_name = "rpc"
+  },
+  {
+    label = "${cangjie_systemapi_api}/rpc:ohos.rpc.interop"
+    lib_name = "rpc.interop"
+  },
+  {
+    label = "${cangjie_systemapi_api}/i18n:ohos.i18n"
+    lib_name = "i18n"
+  },
+  {
+    label = "${cangjie_systemapi_api}/request:ohos.request.agent"
+    lib_name = "request.agent"
+  },
+  {
+    label = "${cangjie_systemapi_api}/work_scheduler:ohos.work_scheduler"
+    lib_name = "work_scheduler"
+  },
+  {
+    label = "${cangjie_systemapi_api}/background_task_mgr:ohos.background_task_mgr"
+    lib_name = "background_task_mgr"
+  },
+  {
+    label = "${cangjie_systemapi_api}/common_event_manager:ohos.common_event_manager"
+    lib_name = "common_event_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/display_runtime:ohos.display"
+    lib_name = "display"
+  },
+  {
+    label = "${cangjie_systemapi_api}/screenshot:ohos.screenshot"
+    lib_name = "screenshot"
+  },
+  {
+    label = "${cangjie_systemapi_api}/telephony/telephony_call:ohos.telephony_call"
+    lib_name = "telephony_call"
+  },
+  {
+    label = "${cangjie_systemapi_api}/telephony/telephony_data:ohos.telephony_data"
+    lib_name = "telephony_data"
+  },
+  {
+    label = "${cangjie_systemapi_api}/telephony/telephony_observer:ohos.telephony_observer"
+    lib_name = "telephony_observer"
+  },
+  {
+    label = "${cangjie_systemapi_api}/telephony/telephony_radio:ohos.telephony_radio"
+    lib_name = "telephony_radio"
+  },
+  {
+    label = "${cangjie_systemapi_api}/telephony/telephony_sim:ohos.telephony_sim"
+    lib_name = "telephony_sim"
+  },
+  {
+    label = "${cangjie_systemapi_api}/telephony/telephony_sms:ohos.telephony_sms"
+    lib_name = "telephony_sms"
+  },
+  {
+    label =
+        "${cangjie_systemapi_api}/system_date_time:ohos.system_date_time"
+    lib_name = "system_date_time"
+  },
+  {
+    label = "${cangjie_systemapi_api}/system_parameter_enhance:ohos.system_parameter_enhance"
+    lib_name = "system_parameter_enhance"
+  },
+  {
+    label = "${cangjie_systemapi_api}/net/connection:ohos.net.connection"
+    lib_name = "net.connection"
+  },
+  {
+    label = "${cangjie_systemapi_api}/net/connection:ohos.net.connection.interop"
+    lib_name = "net.connection.interop"
+  },
+  {
+    label = "${cangjie_systemapi_api}/net/http:ohos.net.http"
+    lib_name = "net.http"
+  },
+  {
+    label = "${cangjie_systemapi_api}/net/network_security:ohos.net.network_security"
+    lib_name = "net.network_security"
+  },
+  {
+    label = "${cangjie_systemapi_api}/device_info:ohos.device_info"
+    lib_name = "device_info"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bundle_manager:ohos.bundle_manager"
+    lib_name = "bundle_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/bundle_manager/common:ohos.bundle_manager.common"
+    lib_name = "bundle_manager.common"
+  },
+  {
+    label = "${cangjie_systemapi_api}/notification_manager:ohos.notification_manager"
+    lib_name = "notification_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/pasteboard:ohos.pasteboard"
+    lib_name = "pasteboard"
+  },
+  {
+    label = "${cangjie_systemapi_api}/hiappevent:ohos.hiappevent"
+    lib_name = "hiappevent"
+  },
+  {
+    label = "${cangjie_systemapi_api}/ability_access_ctrl:ohos.ability_access_ctrl"
+    lib_name = "ability_access_ctrl"
+  },
+  {
+    label = "${cangjie_systemapi_api}/hi_tracemeter:ohos.hi_tracemeter"
+    lib_name = "hi_tracemeter"
+  },
+  {
+    label = "${cangjie_systemapi_api}/hi_tracechain:ohos.hi_tracechain"
+    lib_name = "hi_tracechain"
+  },
+  {
+    label = "${cangjie_systemapi_api}/cj_leakwatcher:ohos.cj_leakwatcher"
+    lib_name = "cj_leakwatcher"
+  },
+  {
+    label = "${cangjie_systemapi_api}/ui_test:ohos.ui_test"
+    lib_name = "ui_test"
+  },
+  {
+    label = "${cangjie_systemapi_api}/sensor:ohos.sensor"
+    lib_name = "sensor"
+  },
+  {
+    label = "${cangjie_systemapi_api}/wifi_manager:ohos.wifi_manager"
+    lib_name = "wifi_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/input_method:ohos.input_method"
+    lib_name = "input_method"
+  },
+  {
+    label =
+        "${cangjie_systemapi_api}/multimedia/audio:ohos.multimedia.audio"
+    lib_name = "multimedia.audio"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia/audio_haptic:ohos.multimedia.audio_haptic"
+    lib_name = "multimedia.audio_haptic"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia_avsession:ohos.multimedia_avsession"
+    lib_name = "multimedia_avsession"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia/avcast_picker_param:ohos.multimedia.avcast_picker_param"
+    lib_name = "multimedia.avcast_picker_param"
+  },
+  {
+    label =
+        "${cangjie_systemapi_api}/multimedia_media:ohos.multimedia_media"
+    lib_name = "multimedia_media"
+  },
+  {
+    label = "${cangjie_systemapi_api}/hidebug:ohos.hidebug"
+    lib_name = "hidebug"
+  },
+  {
+    label = "${cangjie_systemapi_api}/vibrator:ohos.vibrator"
+    lib_name = "vibrator"
+  },
+  {
+    label = "${cangjie_systemapi_api}/power:ohos.power"
+    lib_name = "power"
+  },
+  {
+    label = "${cangjie_systemapi_api}/faultlogger:ohos.faultlogger"
+    lib_name = "faultlogger"
+  },
+  {
+    label = "${cangjie_systemapi_api}/settings:ohos.settings"
+    lib_name = "settings"
+  },
+  {
+    label = "${cangjie_systemapi_api}/distributedAccount:ohos.account_distributedAccount"
+    lib_name = "account_distributedAccount"
+  },
+  {
+    label = "${cangjie_systemapi_api}/account/appAccount:ohos.account.appAccount"
+    lib_name = "account.appAccount"
+  },
+  {
+    label = "${cangjie_systemapi_api}/accessibility:ohos.accessibility"
+    lib_name = "accessibility"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia/camera:ohos.multimedia.camera"
+    lib_name = "multimedia.camera"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia/camera_picker:ohos.multimedia.camera_picker"
+    lib_name = "multimedia.camera_picker"
+  },
+  {
+    label = "${cangjie_systemapi_api}/security_element:ohos.security_element"
+    lib_name = "security_element"
+    enable = communication_secure_element_enable
+  },
+  {
+    label = "${cangjie_systemapi_api}/statvfs:ohos.file_statvfs"
+    lib_name = "file_statvfs"
+  },
+  {
+    label = "${cangjie_systemapi_api}/file_storage_statistics:ohos.file_storage_statistics"
+    lib_name = "file_storage_statistics"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.observer"
+    lib_name = "observer"
+  },
+  {
+    label = "${cangjie_systemapi_api}/web/net_error_list:ohos.web.net_error_list"
+    lib_name = "web.net_error_list"
+  },
+  {
+    label = "${cangjie_systemapi_api}/intl:ohos.intl"
+    lib_name = "intl"
+  },
+  {
+    label = "${cangjie_systemapi_api}/screen_lock_file_manager:ohos.screen_lock_file_manager"
+    lib_name = "screen_lock_file_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/data_share_predicates:ohos.data_share_predicates"
+    lib_name = "data_share_predicates"
+  },
+  {
+    label = "${cangjie_systemapi_api}/values_bucket:ohos.values_bucket"
+    lib_name = "values_bucket"
+  },
+  {
+    label = "${cangjie_systemapi_api}/displaySync:ohos.displaySync"
+    lib_name = "displaySync"
+  },
+  {
+    label = "${cangjie_systemapi_api}/net/websocket:ohos.net.webSocket"
+    lib_name = "net.webSocket"
+  },
+  {
+    label = "${cangjie_systemapi_api}/input/keyCode:ohos.multimodalInput.keyCode"
+    lib_name = "multimodalInput.keyCode"
+  },
+  {
+    label = "${cangjie_systemapi_api}/input/inputEvent:ohos.multimodalInput.inputEvent"
+    lib_name = "multimodalInput.inputEvent"
+  },
+  {
+    label = "${cangjie_systemapi_api}/input/keyEvent:ohos.multimodalInput.keyEvent"
+    lib_name = "multimodalInput.keyEvent"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia/media_library:ohos.multimedia.photo_accesshelper"
+    lib_name = "multimedia.photo_accesshelper"
+  },
+  {
+    label = "${cangjie_systemapi_api}/multimedia/fetchdata:ohos.multimedia.fetchdata"
+    lib_name = "multimedia.fetchdata"
+  },
+  {
+    label = "${cangjie_systemapi_api}/security_certificate_manager:ohos.cert_manager"
+    lib_name = "cert_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/security_certificate_framework:ohos.cert"
+    lib_name = "cert"
+  },
+  {
+    label = "${cangjie_systemapi_api}/effect_kit:ohos.effect_kit"
+    lib_name = "effect_kit"
+  },
+  {
+    label = "${cangjie_systemapi_api}/nfc_cardEmulation:ohos.nfc.cardEmulation"
+    lib_name = "nfc.cardEmulation"
+    enable = communication_nfc_enable
+  },
+  {
+    label = "${cangjie_systemapi_api}/advertising/advertising:ohos.advertising.advertising"
+    lib_name = "advertising.advertising"
+  },
+  {
+    label = "${cangjie_systemapi_api}/calendar_manager:ohos.calendar_manager"
+    lib_name = "calendar_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/contacts:ohos.contact"
+    lib_name = "contact"
+  },
+  {
+    label = "${cangjie_systemapi_api}/distributed_device_manager:ohos.distributed_device_manager"
+    lib_name = "distributed_device_manager"
+  },
+  {
+    label = "${cangjie_systemapi_api}/zlib:ohos.zlib"
+    lib_name = "zlib"
+  },
+  {
+    label = "${cangjie_systemapi_api}/thermal:ohos.thermal"
+    lib_name = "thermal"
+  },
+]
+
+cangjie_kits = [
+  {
+    label = "${cangjie_systemapi}/kit:kit.AbilityKit"
+    lib_name = "AbilityKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.AdsKit"
+    lib_name = "AdsKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ArkWeb"
+    lib_name = "ArkWeb"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ArkData"
+    lib_name = "ArkData"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ArkUI"
+    lib_name = "ArkUI"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.CryptoArchitectureKit"
+    lib_name = "CryptoArchitectureKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.UniversalKeystoreKit"
+    lib_name = "UniversalKeystoreKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.DeviceCertificateKit"
+    lib_name = "DeviceCertificateKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.AssetStoreKit"
+    lib_name = "AssetStoreKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.UserAuthenticationKit"
+    lib_name = "UserAuthenticationKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.NetworkKit"
+    lib_name = "NetworkKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.NotificationKit"
+    lib_name = "NotificationKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.TelephonyKit"
+    lib_name = "TelephonyKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.BasicServicesKit"
+    lib_name = "BasicServicesKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.InputKit"
+    lib_name = "InputKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.AudioKit"
+    lib_name = "AudioKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.MediaLibraryKit"
+    lib_name = "MediaLibraryKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ConnectivityKit"
+    lib_name = "ConnectivityKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.CoreFileKit"
+    lib_name = "CoreFileKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.BackgroundTasksKit"
+    lib_name = "BackgroundTasksKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.PerformanceAnalysisKit"
+    lib_name = "PerformanceAnalysisKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.DistributedServiceKit"
+    lib_name = "DistributedServiceKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ImageKit"
+    lib_name = "ImageKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ArkGraphics2D"
+    lib_name = "ArkGraphics2D"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.LocalizationKit"
+    lib_name = "LocalizationKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.LocationKit"
+    lib_name = "LocationKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.TestKit"
+    lib_name = "TestKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.UIKit"
+    lib_name = "UIKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.SensorServiceKit"
+    lib_name = "SensorServiceKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.IMEKit"
+    lib_name = "IMEKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.AVSessionKit"
+    lib_name = "AVSessionKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.MediaKit"
+    lib_name = "MediaKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.ContactsKit"
+    lib_name = "ContactsKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.AccessibilityKit"
+    lib_name = "AccessibilityKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.CalendarKit"
+    lib_name = "CalendarKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.IPCKit"
+    lib_name = "IPCKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.CameraKit"
+    lib_name = "CameraKit"
+  },
+  {
+    label = "${cangjie_systemapi}/kit:kit.FormKit"
+    lib_name = "FormKit"
+  },
+]
+
+cangjie_hybird_libs = [
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj_ndk:ohos.hybrid_base"
+    lib_name = "hybrid_base"
+  },
+]
+
+cangjie_ui_libs = [
+  # napi
+  {
+    label = "${cangjie_systemapi_api}/interop:ohos.hitrace"
+    lib_name = "hitrace"
+  },
+  {
+    label = "${cangjie_systemapi_api}/interop:ohos.ark_interop"
+    lib_name = "ark_interop"
+  },
+  {
+    label = "${cangjie_systemapi_api}/interop:ohos.ark_interop_helper"
+    lib_name = "ark_interop_helper"
+  },
+
+  # window manager
+  {
+    label = "${cangjie_systemapi_api}/window:ohos.window"
+    lib_name = "window"
+  },
+
+  # ability
+  {
+    label = "${cangjie_systemapi_api}/ability:ohos.ability"
+    lib_name = "ability"
+  },
+
+  {
+    label = "${cangjie_systemapi_api}/ability:ohos.ability.interop"
+    lib_name = "ability.interop"
+  },
+
+  {
+    label =
+        "${cangjie_systemapi_api}/ability:ohos.ability_delegator_registry"
+    lib_name = "ability_delegator_registry"
+  },
+
+  {
+    label = "${cangjie_systemapi_api}/ability:ohos.test_runner"
+    lib_name = "test_runner"
+  },
+
+  # components
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.base"
+    lib_name = "base"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.component"
+    lib_name = "component"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.router"
+    lib_name = "router"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.state_manage"
+    lib_name = "state_manage"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.animator"
+    lib_name = "animator"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.curves"
+    lib_name = "curves"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.prompt_action"
+    lib_name = "prompt_action"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.font"
+    lib_name = "font"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.matrix4"
+    lib_name = "matrix4"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.concurrency"
+    lib_name = "concurrency"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.measure"
+    lib_name = "measure"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos"
+    lib_name = "ohos"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.ui_resource"
+    lib_name = "ui_resource"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj_ndk:ohos.hybrid_base"
+    lib_name = "hybrid_base"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.component_utils"
+    lib_name = "component_utils"
+  },
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:ohos.component_snapshot"
+    lib_name = "component_snapshot"
+  },
+]
+
+cangjie_macro_libs = [
+  {
+    label = "${cangjie_systemapi_api}/arkui/cj:state_macro_manage"
+    lib_name = "state_macro_manage"
+  },
+  {
+    label = "${cangjie_systemapi_api}/interop:ark_interop_macro"
+    lib_name = "ark_interop_macro"
+  },
+]
+
+cangjie_ohos_libs = cangjie_systemapi_libs
+cangjie_ohos_libs += cangjie_hybird_libs
+cangjie_ohos_libs += cangjie_ui_libs

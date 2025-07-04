@@ -1,0 +1,46 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+
+ohos_cj_library("ohos.form.form_extension_ability") {
+  sources = [
+    "src/form_extension_ability.cj",
+    "src/form_extension_context.cj",
+    "src/form_extension_ffi.cj",
+    "src/hilog.cj"
+  ]
+
+  cj_deps = [
+    "../form_info:ohos.form.form_info",
+    "../../ability:ohos.ability",
+    "../../arkui/cj:ohos.base",
+    "../../bundle_manager:ohos.bundle_manager",
+    "../../encoding:ohos.encoding.json",
+    "../../eventhub:ohos.eventhub",
+    "../../ffi_bind:ohos.ffi",
+    "../../form_binding_data:ohos.app.form.formBindingData",
+    "../../hilog:ohos.hilog",
+    "../../labels:ohos.labels",
+    "../../resource_manager:ohos.resource_manager",
+  ]
+
+  external_deps = [ 
+    "ability_runtime:cj_form_extension",
+  ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "form.form_extension_ability"
+}

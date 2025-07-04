@@ -1,0 +1,66 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+
+ohos_cj_library("ohos.image") {
+  sources = [
+    "src/cj_image_common.cj",
+    "src/cj_image_enum.cj",
+    "src/cj_image_log.cj",
+    "src/cj_image_utils.cj",
+    "src/image.cj",
+    "src/image_creator.cj",
+    "src/image_packer.cj",
+    "src/image_receiver.cj",
+    "src/image_source.cj",
+    "src/metadata.cj",
+    "src/picture.cj",
+    "src/pixel_map.cj",
+  ]
+
+  cj_deps = [
+    "../arkui/cj:ohos.base",
+    "../color_manager:ohos.color_manager",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../resource_manager:ohos.resource_manager",
+    "../labels:ohos.labels",
+    "../rpc:ohos.rpc",
+  ]
+
+  external_deps = [ "image_framework:cj_image_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "image"
+}
+
+ohos_cj_library("ohos.image.interop") {
+  sources = [ "src/interop/system_object_interop.cj" ]
+
+  cj_deps = [
+    ":ohos.image",
+    "../ffi_bind:ohos.ffi",
+    "../interop:ohos.ark_interop",
+    "../interop:ohos.ark_interop_helper",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "image_framework:cj_image_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "image.interop"
+}

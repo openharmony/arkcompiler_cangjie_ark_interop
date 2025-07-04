@@ -1,0 +1,236 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/ohos.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+
+ohos_cj_library("ohos.bluetooth") {
+  sources = [ "error_code/error_message.cj" ]
+
+  cj_deps = [
+    "../arkui/cj:ohos.base",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+    "../ffi_bind:ohos.ffi",
+    ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth"
+}
+
+ohos_cj_library("ohos.bluetooth.a2dp") {
+  sources = [
+    "a2dp/a2dp.cj",
+    "a2dp/native.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    ":ohos.bluetooth.baseProfile",
+    ":ohos.bluetooth.common_util",
+    ":ohos.bluetooth.constant",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_a2dp_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.a2dp"
+}
+
+ohos_cj_library("ohos.bluetooth.hfp") {
+  sources = [
+    "hfp/hands_free_audio_gateway_profile.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    ":ohos.bluetooth.baseProfile",
+    ":ohos.bluetooth.common_util",
+    ":ohos.bluetooth.constant",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_hfp_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.hfp"
+}
+
+ohos_cj_library("ohos.bluetooth.hid") {
+  sources = [
+    "hid/hid_host_profile.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    ":ohos.bluetooth.baseProfile",
+    ":ohos.bluetooth.common_util",
+    ":ohos.bluetooth.constant",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_hid_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.hid"
+}
+
+ohos_cj_library("ohos.bluetooth.socket") {
+  sources = [
+    "socket/socket.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_socket_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.socket"
+}
+
+ohos_cj_library("ohos.bluetooth.access") {
+  sources = [
+    "access/access.cj",
+    "access/callback.cj",
+    "access/native.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_access_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.access"
+}
+
+ohos_cj_library("ohos.bluetooth.baseProfile") {
+  sources = [ "baseProfile/base_profile.cj" ]
+
+  cj_deps = [
+    ":ohos.bluetooth.common_util",
+    ":ohos.bluetooth.constant",
+    "../arkui/cj:ohos.base",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = []
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.baseProfile"
+}
+
+ohos_cj_library("ohos.bluetooth.ble") {
+  sources = [
+    "ble/ble.cj",
+    "ble/gatt_client_device.cj",
+    "ble/gatt_server.cj",
+    "ble/gatt_util.cj",
+    "ble/native.cj",
+    "ble/util.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    ":ohos.bluetooth.common_util",
+    ":ohos.bluetooth.constant",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_ble_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.ble"
+}
+
+ohos_cj_library("ohos.bluetooth.common_util") {
+  sources = [ "common_util/util.cj" ]
+
+  cj_deps = [
+    ":ohos.bluetooth.constant",
+    "../ffi_bind:ohos.ffi",
+  ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.common_util"
+}
+
+ohos_cj_library("ohos.bluetooth.connection") {
+  sources = [
+    "connection/callback.cj",
+    "connection/connection.cj",
+    "connection/native.cj",
+    "connection/util.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.bluetooth",
+    ":ohos.bluetooth.common_util",
+    ":ohos.bluetooth.constant",
+    "../arkui/cj:ohos.base",
+    "../ffi_bind:ohos.ffi",
+    "../hilog:ohos.hilog",
+    "../labels:ohos.labels",
+  ]
+
+  external_deps = [ "bluetooth:cj_bluetooth_connection_ffi" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.connection"
+}
+
+ohos_cj_library("ohos.bluetooth.constant") {
+  sources = [ "constant/constant.cj" ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+  lib_name = "bluetooth.constant"
+
+  cj_deps = [
+    "../labels:ohos.labels",
+  ]
+}
