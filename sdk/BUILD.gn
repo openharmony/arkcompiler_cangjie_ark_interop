@@ -127,3 +127,81 @@ cj_ohos_sdk("sdk_linux_x86_64") {
   is_macro = true
   module_name = "ohos"
 }
+
+if (host_os == "mac") {
+  if (host_cpu == "arm64") {
+    cj_ohos_sdk("sdk_darwin_aarch64") {
+      toolchain = "//build/toolchain/mac:clang_arm64"
+      platform = "aarch64-apple-darwin"
+      dyn_extension = ".dylib"
+      inputs = cangjie_macro_libs
+      is_macro = true
+      module_name = "ohos"
+    }
+  } else if (host_cpu == "x64") {
+    cj_ohos_sdk("sdk_darwin_aarch64") {
+      toolchain = "//build/toolchain/mac:clang_arm64"
+      platform = "aarch64-apple-darwin"
+      dyn_extension = ".dylib"
+      inputs = cangjie_macro_libs
+      is_macro = true
+      module_name = "ohos"
+    }
+  }
+}
+
+ohos_copy("sdk_api") {
+  all_sources = [
+    {
+      path = "linux_ohos_aarch64_cjnative/ohos"
+      label = ":sdk_ohos_aarch64"
+    },
+    {
+      path = "linux_ohos_aarch64_cjnative/ohos"
+      label = ":sdk_kit_aarch64"
+    }
+  ]
+  if (host_cpu == "x64") {
+   all_sources += [
+    {
+      path = "linux_ohos_aarch64_cjnative/ohos"
+      label = ":sdk_ohos_x86_64"
+    },
+    {
+      path = "linux_ohos_aarch64_cjnative/ohos"
+      label = ":sdk_kit_x86_64"
+    }
+   ]
+  }
+  if (host_cpu == "x64") {
+   all_sources += [
+    {
+      path = "linux_ohos_aarch64_cjnative/ohos"
+      label = ":sdk_ohos_x86_64"
+    },
+    {
+      path = "linux_ohos_aarch64_cjnative/ohos"
+      label = ":sdk_kit_x86_64"
+    }
+   ]
+  }
+  if (host_os == "mac") {
+    if (host_cpu == "arm64") {
+      all_sources += [
+      {
+        path = "aarch64-apple-darwin/macro/ohos"
+        label = ":sdk_darwin_aarch64"
+      }
+      ]
+    }
+  }
+  deps = []
+  sources = ["//vendor/huawei/arkcompiler/cangjie_api/LICENSE"]
+  foreach(item, all_sources) {
+    deps += [item.label]
+  }
+
+  outputs = [ "${target_out_dir}/build/"]
+  module_source_dir = "${target_out_dir}/build"
+  module_install_name = ""
+}

@@ -247,6 +247,11 @@ template("cj_target") {
             "--cjc=${cjc_bin}",
             "--root_out_dir=${root_dir_abs}"
         ]
+        if (is_mac) {
+            args += [
+                "--is_mac=true"
+            ]
+        }
         outputs = outputs_
         deps = deps_
         external_deps = external_deps_
