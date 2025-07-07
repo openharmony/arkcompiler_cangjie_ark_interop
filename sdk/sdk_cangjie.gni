@@ -1,0 +1,213 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("../sdk_config.gni")
+import("../cjc.gni")
+
+template("cj_ohos_sdk") {
+  ohos_copy(target_name) {
+    forward_variables_from(invoker, [
+      "toolchain",
+      "platform",
+      "module_name",
+      "dyn_extension",
+      "inputs",
+      "is_macro",
+    ])
+    deps = []
+    sources = []
+    if (!defined(is_macro)) {
+      is_macro = false
+    }
+
+    _output_path = "lib/${platform}"
+
+    foreach(item, inputs) {
+      deps += [
+        "${item.label}(${toolchain})",
+      ]
+      is_native = defined(item.is_native) && item.is_native
+      t_out = get_label_info(deps[0], "root_out_dir")
+      if (!is_native) {
+        deps += ["${item.label}_cjo(${toolchain})",]
+        tmp = ""
+        tmp = string_split(item.label, ":")
+        out_path = "${t_out}/obj/${tmp[0]}"
+
+        if (is_macro) {
+          sources += [ "${out_path}/lib-macro_${module_name}.${item.lib_name}${dyn_extension}" ]
+          _output_path = "macro"
+        } else if (item.lib_name == "ohos") {
+          sources += [ "${out_path}/lib${item.lib_name}${dyn_extension}" ]
+        } else {
+          sources += [ "${out_path}/lib${module_name}.${item.lib_name}${dyn_extension}" ]
+        }
+        if (defined(item.cjo_name)) {
+          sources += [ "${out_path}/${item.cjo_name}.cjo" ]
+        } else if (item.lib_name == "ohos") {
+          sources += [ "${out_path}/${item.lib_name}.cjo" ]
+        } else {
+          sources += [ "${out_path}/${module_name}.${item.lib_name}.cjo" ]
+        }
+      } else {
+        sources += [
+          "${t_out}/${item.path}"
+        ]
+      }
+    }
+
+    outputs =
+    [ "${target_out_dir}/cangjie_sdk/api/${_output_path}/${platform}/${module_name}/{{source_file_part}}" ]
+    module_source_dir = "${target_out_dir}/cangjie_sdk/api/${_output_path}/${platform}/${module_name}/"
+    module_install_name = ""
+  }
+}
+
+template("cj_ohos_sdk_header") {
+    ohos_copy(target_name) {
+        forward_variables_from(invoker, [
+            "platform"
+        ])
+
+        sources = [ "cjdecl" ]
+        outputs = [ "${target_out_dir}/cangjie_sdk/api/modules/${platform}" ]
+        module_source_dir = "${target_out_dir}/cangjie_sdk/api/modules/${platform}"
+        module_install_name = ""
+    }
+}
+
+template("cj_ohos_sdk_lib_cjo") {
+  ohos_copy(target_name) {
+    forward_variables_from(invoker, [
+      "toolchain",
+      "platform",
+      "module_name",
+      "inputs",
+    ])
+    deps = []
+    sources = []
+
+    foreach(item, inputs) {
+        deps += ["${item.label}_cjo(${toolchain})",]
+        tmp = ""
+        tmp = string_split(item.label, ":")
+        t_out = get_label_info(deps[0], "root_out_dir")
+        out_path = "${t_out}/obj/${tmp[0]}"
+
+        if (item.lib_name == "ohos") {
+          sources += [ "${out_path}/${item.lib_name}.cjo" ]
+        } else {
+          sources += [ "${out_path}/${module_name}.${item.lib_name}.cjo" ]
+        }
+      } 
+
+    _output_path = "${target_out_dir}/cangjie_sdk/api/lib/${platform}/${module_name}"
+    outputs = [ "${_output_path}/{{source_file_part}}" ]
+    module_source_dir = "${_output_path}"
+    module_install_name = ""
+  }
+}
+
+flatc_path = "//prebuilts/cangjie-compiler/mac-aarch64/tools/flatc"
+
+template("cj_ohos_sdk_lib_json_to_cjo") {
+    forward_variables_from(invoker, [
+      "module_name",
+      "inputs",
+    ])
+
+    action_foreach(target_name) {
+      script = "cjo/cjo_processor.py"
+      sources = inputs
+      inputs = []
+
+      outputs = [ "${target_out_dir}/cangjie_sdk/lib/${module_name}/{{source_name_part}}.json" ]
+
+      args = [
+        "--flatc",
+        rebase_path("${flatc_path}", root_build_dir),
+        "--fbs",
+        rebase_path("cjo/ModuleFormat.fbs", root_build_dir),
+        "--input",
+        "{{source}}",
+        "--output_path",
+        rebase_path("${target_out_dir}/cangjie_sdk/lib/${module_name}/{{source_name_part}}.cjo", root_build_dir)
+      ]
+    }
+}
+
+template("cj_ohos_sdk_shared_lib_mock") {
+    forward_variables_from(invoker, [
+      "toolchain",
+      "platform",
+      "module_name",
+      "inputs",
+    ])
+    _output_path = "${target_out_dir}/cangjie_sdk/api/lib/${platform}/${module_name}"
+    copy_deps = []
+    foreach(item, inputs) {
+      tmp = ""
+      tmp = string_split(item.label, ":")
+      _target_shared_lib_name = tmp[1]
+      copy("${target_name}__${_target_shared_lib_name}") {
+        deps = [ "lib:ohos.mock(${toolchain})" ]
+        _mock_t_out = get_label_info(deps[0], "target_out_dir")
+        _mock_so_target = "${_mock_t_out}/libohos.mock.so"
+        sources = [ "${_mock_so_target}" ]
+        outputs = [ "${_output_path}/lib${_target_shared_lib_name}.so" ]
+      }
+      copy_deps += [ ":${target_name}__${_target_shared_lib_name}" ]
+    }
+    group(target_name){
+      deps = copy_deps
+    } 
+}
+
+template("cj_ohos_sdk_shared_lib_interop") {
+  ohos_copy(target_name) {
+    forward_variables_from(invoker, [
+      "toolchain",
+      "platform",
+      "module_name",
+    ])
+    deps = ["ark_interop_loader:ark_interop_loader(${toolchain})"]
+    t_out = get_label_info(deps[0], "root_out_dir")
+    sources = [ "${t_out}/arkcompiler/cangjie_api/libark_interop_loader.so" ]
+
+    _output_path = "cangjie_sdk/api/lib/${platform}/${module_name}"
+    outputs = [ "${target_out_dir}/${_output_path}/libark_interop_loader.so" ]
+    module_source_dir = "${target_out_dir}/${_output_path}"
+    module_install_name = ""
+  }
+}
+
+template("cj_ohos_sdk_copy") {
+  _module_info_target = "${target_name}_info"
+
+  group(target_name) {
+    deps = []
+    if (defined(invoker.deps)) {
+      deps = invoker.deps
+    }
+    deps += [ ":${_module_info_target}" ]
+  }
+
+  _target_name = target_name
+  generate_module_info(_module_info_target) {
+    module_type = "unknown"
+    module_install_name = ""
+    module_name = _target_name
+    module_source_dir = "${target_out_dir}/cangjie_sdk/api"
+    install_enable = false
+  }
+}

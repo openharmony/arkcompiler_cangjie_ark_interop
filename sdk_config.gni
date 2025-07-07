@@ -14,7 +14,7 @@
 import("cjc.gni")
 import("multi-product_diff.gni")
 
-cangjie_systemapi = "//vendor/huawei/arkcompiler/cangjie_api"
+cangjie_systemapi = "//arkcompiler/cangjie_api"
 cangjie_systemapi_api = "${cangjie_systemapi}/api"
 
 cangjie_systemapi_libs = [
@@ -363,10 +363,6 @@ cangjie_ui_libs = [
   {
     label = "${cangjie_systemapi_api}/arkui/cj:ohos.ui_resource"
     lib_name = "ui_resource"
-  },
-  {
-    label = "${cangjie_systemapi_api}/arkui/cj_ndk:ohos.hybrid_base"
-    lib_name = "hybrid_base"
   },
   {
     label = "${cangjie_systemapi_api}/arkui/cj:ohos.component_utils"

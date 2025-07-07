@@ -14,7 +14,8 @@
 import("//build/ohos.gni")
 
 cjc_binary_version = "0.61.4"
-cjc_script_root = "//vendor/huawei/arkcompiler/cangjie_api"
+cjc_script_root = "//arkcompiler/cangjie_api"
+
 if (host_os == "mac") {
     if (host_cpu == "arm64") {
         cjc_host_arch = "mac-aarch64"
@@ -31,10 +32,12 @@ if (host_os == "mac") {
     }
 }
 
-cjc_binary_root = "//vendor/huawei/binary/artifacts/arkcompiler/cangjie_runtime/cangjie/cangjie-${cjc_host_arch}-${cjc_binary_version}/cangjie"
+
+cjc_cangjie_sdk_path = "//prebuilts/cangjie-sdk" 
+cjc_cangjie_compiler_home_path = "${cjc_cangjie_sdk_path}/${cjc_host_arch}/cangjie" # TODO
 
 cjc_wrapper = rebase_path("${cjc_script_root}/cjc_wrapper.py")
-cjc_bin = rebase_path("${cjc_binary_root}/bin/cjc")
+cjc_bin = rebase_path("${cjc_cangjie_compiler_home_path}/bin/cjc")
 source_collect_scripit = "${cjc_script_root}/collect_dir_sources.py"
 
 cjc_toolchain_ohos_arm64 = {
@@ -129,6 +132,7 @@ if (is_ohos) {
         cjc_toolchain = cjc_toolchain_mac_arm64
     } else {
         print("unsupported mac platform ${host_cpu}")
+        assert(false)
     }
 } else if (is_linux) {
     if (host_cpu == "x64") {

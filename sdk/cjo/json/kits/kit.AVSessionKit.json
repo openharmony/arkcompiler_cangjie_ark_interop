@@ -1,0 +1,102 @@
+{
+  version: "0.61.10",
+  cjoVersion: {
+    major_num: 0,
+    minor_num: 1,
+    patch_num: 0
+  },
+  fullPkgName: "kit.AVSessionKit",
+  pkgDepInfo: "{\"package\":\"kit.AVSessionKit\",\"isMacro\":false,\"accessLevel\":\"public\",\"dependencies\":[{\"package\":\"ohos.multimedia.avcast_picker_param\",\"isStd\":false,\"imports\":[{\"file\":\"index.cj\",\"begin\":{\"line\":19,\"column\":1},\"end\":{\"line\":19,\"column\":52}}]},{\"package\":\"ohos.multimedia_avsession\",\"isStd\":false,\"imports\":[{\"file\":\"index.cj\",\"begin\":{\"line\":18,\"column\":1},\"end\":{\"line\":18,\"column\":42}}]}]}",
+  imports: [
+    "ohos.multimedia_avsession",
+    "ohos.multimedia.avcast_picker_param"
+  ],
+  allFiles: [
+    "kit.AVSessionKit/index.cj"
+  ],
+  allFileImports: [
+    {
+      importSpecs: [
+        {
+          begin: {
+            file: 1,
+            pkgId: 0,
+            line: 18,
+            column: 1,
+            ignore: false
+          },
+          end: {
+            file: 1,
+            pkgId: 0,
+            line: 18,
+            column: 42,
+            ignore: false
+          },
+          prefixPaths: [
+            "ohos",
+            "multimedia_avsession"
+          ],
+          identifier: "*",
+          asIdentifier: "",
+          reExport: "Public"
+        },
+        {
+          begin: {
+            file: 1,
+            pkgId: 0,
+            line: 19,
+            column: 1,
+            ignore: false
+          },
+          end: {
+            file: 1,
+            pkgId: 0,
+            line: 19,
+            column: 52,
+            ignore: false
+          },
+          prefixPaths: [
+            "ohos",
+            "multimedia",
+            "avcast_picker_param"
+          ],
+          identifier: "*",
+          asIdentifier: "",
+          reExport: "Public"
+        },
+        {
+          begin: {
+            file: 1,
+            pkgId: 0,
+            line: 0,
+            column: 0,
+            ignore: false
+          },
+          end: {
+            file: 1,
+            pkgId: 0,
+            line: 0,
+            column: 0,
+            ignore: false
+          },
+          prefixPaths: [
+            "std",
+            "core"
+          ],
+          identifier: "*",
+          asIdentifier: ""
+        }
+      ]
+    }
+  ],
+  allTypes: [
+
+  ],
+  allDecls: [
+
+  ],
+  allExprs: [
+
+  ],
+  moduleName: ""
+}

@@ -13,7 +13,7 @@
 
 import("//build/ohos.gni")
 
-import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+import("//arkcompiler/cangjie_api/cjc.gni")
 
 template("cj_ace_library") {
   base_native_deps = []
@@ -51,7 +51,7 @@ template("cj_ace_library") {
     if (defined(invoker.cross_native_exts)) {
       cross_native_exts = invoker.cross_native_exts
     }
-    enable_strip = true
+    enable_strip = false
     part_name = "cangjie_api"
     subsystem_name = "arkcompiler"
   }

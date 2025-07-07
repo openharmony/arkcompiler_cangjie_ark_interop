@@ -1,0 +1,54 @@
+{
+  version: "0.61.10",
+  cjoVersion: {
+    major_num: 0,
+    minor_num: 1,
+    patch_num: 0
+  },
+  fullPkgName: "ohos",
+  pkgDepInfo: "{\"package\":\"ohos\",\"isMacro\":false,\"accessLevel\":\"public\",\"dependencies\":[]}",
+  imports: [
+
+  ],
+  allFiles: [
+    "ohos/ohos.cj"
+  ],
+  allFileImports: [
+    {
+      importSpecs: [
+        {
+          begin: {
+            file: 1,
+            pkgId: 0,
+            line: 0,
+            column: 0,
+            ignore: false
+          },
+          end: {
+            file: 1,
+            pkgId: 0,
+            line: 0,
+            column: 0,
+            ignore: false
+          },
+          prefixPaths: [
+            "std",
+            "core"
+          ],
+          identifier: "*",
+          asIdentifier: ""
+        }
+      ]
+    }
+  ],
+  allTypes: [
+
+  ],
+  allDecls: [
+
+  ],
+  allExprs: [
+
+  ],
+  moduleName: ""
+}

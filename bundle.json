@@ -93,7 +93,7 @@
         },
         "build": {
             "sub_component": [
-                "//vendor/huawei/arkcompiler/cangjie_api:cangjie_systemapi_packages"
+                "//arkcompiler/cangjie_api:cangjie_systemapi_packages"
             ],
             "group_type": {
                 "base_group": [],
@@ -101,6 +101,18 @@
                 "service_group": []
               },
             "inner_kits": [
+                {
+                    "name": "//arkcompiler/cangjie_api/api/arkui/cj:ohos.base"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ffi_bind:ohos.ffi"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/hilog:ohos.hilog"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/labels:ohos.labels"
+                }
             ],
             "test": []
         }

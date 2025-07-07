@@ -15,7 +15,7 @@ import("cjc_toolchain.gni")
 
 declare_args() {
     # Enable cjc Source-based Code Coverage.
-    use_cjc_coverage = false
+    enable_cjc_coverge = false
 }
 
 template("cj_target") {
@@ -82,7 +82,7 @@ template("cj_target") {
     }
 
     # coverage support
-    if (use_cjc_coverage) {
+    if (enable_cjc_coverge) {
         cjc_args_ += ["-O0", "--coverage"]
     } else {
         if (defined(source_dir)) {
@@ -284,7 +284,7 @@ template("cj_target") {
         }
 
         if (!defined(enable_strip)) {
-            enable_strip = true
+            enable_strip = false
         }
 
         if (is_cj_test) {

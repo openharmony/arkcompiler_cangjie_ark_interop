@@ -12,105 +12,87 @@
 # limitations under the License.
 
 import("../sdk_config.gni")
+import("sdk_cangjie.gni")
+import("../cjc_toolchain.gni")
 
-template("cj_ohos_sdk") {
-  ohos_copy(target_name) {
-    forward_variables_from(invoker, [
-      "toolchain",
-      "platform",
-      "module_name",
-      "dyn_extension",
-      "inputs",
-      "is_macro",
-    ])
-    deps = []
-    sources = []
-    if (!defined(is_macro)) {
-      is_macro = false
-    }
-
-    foreach(item, inputs) {
-      deps += [
-        "${item.label}(${toolchain})",
-      ]
-      is_native = defined(item.is_native) && item.is_native
-      t_out = get_label_info(deps[0], "root_out_dir")
-      if (!is_native) {
-        deps += ["${item.label}_cjo(${toolchain})",]
-        tmp = ""
-        tmp = string_split(item.label, ":")
-        out_path = "${t_out}/obj/${tmp[0]}"
-
-        if (is_macro) {
-          sources += [ "${out_path}/lib-macro_${module_name}.${item.lib_name}${dyn_extension}" ]
-        } else if (item.lib_name == "ohos") {
-          sources += [ "${out_path}/lib${item.lib_name}${dyn_extension}" ]
-        } else {
-          sources += [ "${out_path}/lib${module_name}.${item.lib_name}${dyn_extension}" ]
-        }
-        if (defined(item.cjo_name)) {
-          sources += [ "${out_path}/${item.cjo_name}.cjo" ]
-        } else if (item.lib_name == "ohos") {
-          sources += [ "${out_path}/${item.lib_name}.cjo" ]
-        } else {
-          sources += [ "${out_path}/${module_name}.${item.lib_name}.cjo" ]
-        }
-      } else {
-        sources += [
-          "${t_out}/${item.path}"
-        ]
-      }
-    }
-
-    outputs =
-    [ "${target_out_dir}/build/${platform}/${module_name}/{{source_file_part}}" ]
-    module_source_dir = "${target_out_dir}/build/${platform}/${module_name}/"
-    module_install_name = ""
-  }
+cj_ohos_sdk_header("sdk_header_ohos_aarch64") {
+  platform = "linux_ohos_aarch64_cjnative"
 }
 
-cangjie_ohos_libs += [
-  {
-    label = "ark_interop_loader:ark_interop_loader"
-    lib_name = "ark_interop_loader"
-    is_native = true
-    path = "arkcompiler/cangjie_api/libark_interop_loader.so"
-  },
-]
-
-cj_ohos_sdk("sdk_ohos_aarch64") {
+# libs
+cj_ohos_sdk_shared_lib_mock("sdk_ohos_aarch64_libs") {
   toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
   platform = "linux_ohos_aarch64_cjnative"
-  dyn_extension = ".so"
   inputs = cangjie_ohos_libs
   module_name = "ohos"
 }
 
-cj_ohos_sdk("sdk_kit_aarch64") {
+cj_ohos_sdk_shared_lib_mock("sdk_kit_aarch64_libs") {
   toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
   platform = "linux_ohos_aarch64_cjnative"
-  dyn_extension = ".so"
   inputs = cangjie_kits
   module_name = "kit"
 }
 
-cj_ohos_sdk("sdk_ohos_x86_64") {
+cj_ohos_sdk_shared_lib_mock("sdk_ohos_x86_64_libs") {
   toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
   platform = "linux_ohos_x86_64_cjnative"
-  dyn_extension = ".so"
   inputs = cangjie_ohos_libs
   module_name = "ohos"
 }
 
-cj_ohos_sdk("sdk_kit_x86_64") {
+cj_ohos_sdk_shared_lib_mock("sdk_kit_x86_64_libs") {
   toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
   platform = "linux_ohos_x86_64_cjnative"
-  dyn_extension = ".so"
   inputs = cangjie_kits
   module_name = "kit"
 }
 
-cj_ohos_sdk("sdk_mingw_x86_64") {
+# cjo
+cj_ohos_sdk_lib_cjo("sdk_ohos_aarch64_cjo") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
+  platform = "linux_ohos_aarch64_cjnative"
+  inputs = cangjie_ohos_libs
+  module_name = "ohos"
+}
+
+cj_ohos_sdk_lib_cjo("sdk_kit_aarch64_cjo") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
+  platform = "linux_ohos_aarch64_cjnative"
+  inputs = cangjie_kits
+  module_name = "kit"
+}
+
+cj_ohos_sdk_lib_cjo("sdk_ohos_x86_64_cjo") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
+  platform = "linux_ohos_x86_64_cjnative"
+  inputs = cangjie_ohos_libs
+  module_name = "ohos"
+}
+
+cj_ohos_sdk_lib_cjo("sdk_kit_x86_64_cjo") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
+  platform = "linux_ohos_x86_64_cjnative"
+  inputs = cangjie_kits
+  module_name = "kit"
+}
+
+# interop
+cj_ohos_sdk_shared_lib_interop("sdk_ohos_aarch64_ark_interop_loader") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_arm64"
+  platform = "linux_ohos_aarch64_cjnative"
+  module_name = "ohos"
+}
+
+cj_ohos_sdk_shared_lib_interop("sdk_ohos_x86_64_ark_interop_loader") {
+  toolchain = "//build/toolchain/ohos:ohos_clang_x86_64"
+  platform = "linux_ohos_x86_64_cjnative"
+  module_name = "ohos"
+}
+
+
+# macro
+cj_ohos_sdk("sdk_windows_x86_64_macro") {
   toolchain = "//build/toolchain/mingw:mingw_x86_64"
   platform = "x86_64-w64-mingw32"
   dyn_extension = ".dll"
@@ -119,7 +101,7 @@ cj_ohos_sdk("sdk_mingw_x86_64") {
   module_name = "ohos"
 }
 
-cj_ohos_sdk("sdk_linux_x86_64") {
+cj_ohos_sdk("sdk_linux_x86_64_macro") {
   toolchain = "//build/toolchain/linux:clang_x64"
   platform = "x86_64-linux-gnu"
   dyn_extension = ".so"
@@ -128,9 +110,10 @@ cj_ohos_sdk("sdk_linux_x86_64") {
   module_name = "ohos"
 }
 
+
 if (host_os == "mac") {
   if (host_cpu == "arm64") {
-    cj_ohos_sdk("sdk_darwin_aarch64") {
+    cj_ohos_sdk("sdk_darwin_aarch64_macro") {
       toolchain = "//build/toolchain/mac:clang_arm64"
       platform = "aarch64-apple-darwin"
       dyn_extension = ".dylib"
@@ -139,9 +122,9 @@ if (host_os == "mac") {
       module_name = "ohos"
     }
   } else if (host_cpu == "x64") {
-    cj_ohos_sdk("sdk_darwin_aarch64") {
-      toolchain = "//build/toolchain/mac:clang_arm64"
-      platform = "aarch64-apple-darwin"
+    cj_ohos_sdk("sdk_darwin_x86_64_macro") {
+      toolchain = "//build/toolchain/mac:clang_x64"
+      platform = "x86_64-apple-darwin"
       dyn_extension = ".dylib"
       inputs = cangjie_macro_libs
       is_macro = true
@@ -150,58 +133,77 @@ if (host_os == "mac") {
   }
 }
 
-ohos_copy("sdk_api") {
-  all_sources = [
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_ohos_aarch64"
-    },
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_kit_aarch64"
-    }
+group("ohos_aarch64_libs") {
+  deps = [
+    ":sdk_ohos_aarch64_libs",
+    ":sdk_kit_aarch64_libs",
+    ":sdk_ohos_aarch64_cjo",
+    ":sdk_kit_aarch64_cjo",
+    ":sdk_ohos_aarch64_ark_interop_loader",
   ]
+}
+
+group("ohos_x86_64_libs") {
+  deps = [
+    ":sdk_ohos_x86_64_libs",
+    ":sdk_kit_x86_64_libs",
+    ":sdk_ohos_x86_64_cjo",
+    ":sdk_kit_x86_64_cjo",
+    ":sdk_ohos_x86_64_ark_interop_loader",
+  ]
+}
+
+group("sdk_cangjie_api") {
+  deps = [ ":ohos_aarch64_libs" ]
   if (host_cpu == "x64") {
-   all_sources += [
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_ohos_x86_64"
-    },
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_kit_x86_64"
-    }
-   ]
-  }
-  if (host_cpu == "x64") {
-   all_sources += [
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_ohos_x86_64"
-    },
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_kit_x86_64"
-    }
-   ]
-  }
-  if (host_os == "mac") {
-    if (host_cpu == "arm64") {
-      all_sources += [
-      {
-        path = "aarch64-apple-darwin/macro/ohos"
-        label = ":sdk_darwin_aarch64"
-      }
-      ]
-    }
-  }
-  deps = []
-  sources = ["//vendor/huawei/arkcompiler/cangjie_api/LICENSE"]
-  foreach(item, all_sources) {
-    deps += [item.label]
+    deps += [ ":ohos_x86_64_libs" ]
   }
 
-  outputs = [ "${target_out_dir}/build/"]
-  module_source_dir = "${target_out_dir}/build"
+  if (is_mingw) {
+    deps += [
+      ":sdk_windows_x86_64_macro",
+      ":sdk_header_ohos_aarch64"
+    ]
+  } else if (host_os == "mac") {
+    deps += [ ":sdk_header_ohos_aarch64" ]
+    if (host_cpu == "arm64") {
+      deps += [ ":sdk_darwin_aarch64_macro" ]
+    } else if (host_cpu == "x64") {
+      deps += [ ":sdk_darwin_x86_64_macro" ]
+    }
+  } else if (is_linux) {
+    deps += [":sdk_linux_x86_64_macro"]
+  }
+}
+
+cj_ohos_sdk_copy("sdk_api") {
+  deps = [":sdk_cangjie_api"]
+}
+
+ohos_copy("sdk_compiler") {
+  sources = []
+  print("1111111111sdk_compiler  current_os = ${current_os}")
+  print("1111111111sdk_compiler  is_linux= ${is_linux}")
+  print("1111111111sdk_compiler  is_mac = ${is_mac}")
+  if (is_mingw) {
+    sources += [ "${cjc_cangjie_sdk_path}/windows-x64/cangjie" ]
+  } else if (is_mac) {
+    if (host_cpu == "arm64") {
+      sources += [ "${cjc_cangjie_sdk_path}/mac-aarch64/cangjie" ]
+    } else if (host_cpu == "x64") {
+      sources += [ "${cjc_cangjie_sdk_path}/mac-x64/cangjie" ]
+    }
+  } else if (is_linux) {
+    sources += [ "${cjc_cangjie_sdk_path}/linux-x64/cangjie" ]
+  } else {
+    assert(false && "unsupported platform %{target_cpu}")
+  }
+
+  outputs = ["${target_out_dir}/${target_name}"]
+  module_source_dir = "${target_out_dir}/${target_name}"
   module_install_name = ""
 }
+
+
+
+

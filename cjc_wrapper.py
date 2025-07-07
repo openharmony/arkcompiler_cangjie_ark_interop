@@ -23,7 +23,7 @@ def find_mac_sdk_root():
     child = subprocess.Popen(["xcrun", "--sdk", "macosx", "--show-sdk-path"], stdout=subprocess.PIPE)
     code = child.wait()
     if code != 0:
-        raise Exception("failed to detect mac sdk root: 'xcrun -sdk macosx --show-sdk-patt'")
+        raise Exception("failed to detect mac sdk root: 'xcrun --sdk macosx --show-sdk-path'")
     output = child.stdout.read().decode("utf-8").replace("\n", "")
     return output
 

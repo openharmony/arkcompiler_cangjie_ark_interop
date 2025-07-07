@@ -13,7 +13,7 @@
 
 import("//build/ohos.gni")
 
-import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+import("//arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.hybrid_base") {
   sources = [ "hybrid_base/hybrid_component_base.cj" ]
@@ -27,7 +27,7 @@ ohos_cj_library("ohos.hybrid_base") {
 
   lib_name = "hybrid_base"
 
-  enable_strip = true
+  enable_strip = false
   part_name = "cangjie_api"
   subsystem_name = "arkcompiler"
 }

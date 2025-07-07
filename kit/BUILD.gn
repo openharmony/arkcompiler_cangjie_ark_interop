@@ -12,8 +12,8 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
-import("//vendor/huawei/arkcompiler/cangjie_api/multi-product_diff.gni")
+import("//arkcompiler/cangjie_api/cjc.gni")
+import("//arkcompiler/cangjie_api/multi-product_diff.gni")
 
 ohos_cj_library("kit.AbilityKit") {
   sources = [ "AbilityKit/index.cj" ]
