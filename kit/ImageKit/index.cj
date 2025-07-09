@@ -16,4 +16,3 @@
 package kit.ImageKit
 
 public import ohos.image.*
-public import ohos.image.interop.*

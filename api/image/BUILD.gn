@@ -46,21 +46,3 @@ ohos_cj_library("ohos.image") {
   part_name = "cangjie_api"
   lib_name = "image"
 }
-
-ohos_cj_library("ohos.image.interop") {
-  sources = [ "src/interop/system_object_interop.cj" ]
-
-  cj_deps = [
-    ":ohos.image",
-    "../ffi_bind:ohos.ffi",
-    "../interop:ohos.ark_interop",
-    "../interop:ohos.ark_interop_helper",
-    "../labels:ohos.labels",
-  ]
-
-  external_deps = [ "image_framework:cj_image_ffi" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "image.interop"
-}

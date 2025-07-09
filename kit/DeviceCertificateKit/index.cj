@@ -15,5 +15,4 @@
 
 package kit.DeviceCertificateKit
 
-public import ohos.cert_manager.*
 public import ohos.cert.*

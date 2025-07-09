@@ -16,4 +16,3 @@
 package kit.SensorServiceKit
 
 public import ohos.sensor.*
-public import ohos.vibrator.*

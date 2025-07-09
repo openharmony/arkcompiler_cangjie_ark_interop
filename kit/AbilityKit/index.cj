@@ -17,7 +17,6 @@ package kit.AbilityKit
 
 public import ohos.ability.*
 public import ohos.ability.PermissionRequestResult as AbilityPermissionRequestResult
-public import ohos.ability.interop.*
 
 // ability_access_ctrl
 public import ohos.ability_access_ctrl.*
@@ -28,6 +27,3 @@ public import ohos.bundle_manager.*
 
 // eventhub
 public import ohos.eventhub.*
-
-// screen_lock_file_manager
-public import ohos.screen_lock_file_manager.*

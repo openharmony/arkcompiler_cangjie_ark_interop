@@ -16,4 +16,3 @@
 package kit.CameraKit
 
 public import ohos.multimedia.camera.*
-public import ohos.multimedia.camera_picker.*

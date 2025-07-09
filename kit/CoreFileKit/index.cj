@@ -17,8 +17,3 @@ package kit.CoreFileKit
 
 public import ohos.file_fileuri.*
 public import ohos.file_fs.*
-public import ohos.file_fs.interop.*
-public import ohos.file_picker.*
-public import ohos.file_storage_statistics.*
-public import ohos.file_statvfs.*
-public import ohos.file_grant_permission.*

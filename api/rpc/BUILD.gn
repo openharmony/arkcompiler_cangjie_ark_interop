@@ -43,21 +43,3 @@ ohos_cj_library("ohos.rpc") {
   part_name = "cangjie_api"
   lib_name = "rpc"
 }
-
-ohos_cj_library("ohos.rpc.interop") {
-  sources = [ "src/interop/system_object_interop.cj" ]
-
-  cj_deps = [
-    ":ohos.rpc",
-    "../arkui/cj:ohos.base",
-    "../ffi_bind:ohos.ffi",
-    "../interop:ohos.ark_interop",
-    "../interop:ohos.ark_interop_helper",
-    "../labels:ohos.labels",
-  ]
-  external_deps = [ "ipc:cj_ipc_ffi" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "rpc.interop"
-}
