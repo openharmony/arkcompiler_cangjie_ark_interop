@@ -16,20 +16,11 @@
 package kit.BasicServicesKit
 
 public import ohos.device_info.*
-public import ohos.pasteboard.*
-public import ohos.running_lock.*
 public import ohos.request.agent.*
 public import ohos.settings.{DomainName, Date, Display, DisplayAutoScreenBrightnessMode, General, Input, Phone, Sound, 
     TTS, Wireless, WirelessAirplantMode, getValue, registerKeyObserver, unregisterKeyObserver, getUriSync}
 public import ohos.settings.Network as SettingsNetwork
 public import ohos.common_event_manager.*
-public import ohos.emitter.*
 public import ohos.system_date_time.*
 public import ohos.system_parameter_enhance.*
 public import ohos.battery_info.*
-public import ohos.account.appAccount.*
-public import ohos.power.*
-public import ohos.account.osAccount.*
-public import ohos.account_distributedAccount.*
-public import ohos.zlib.*
-public import ohos.thermal.*

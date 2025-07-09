@@ -16,5 +16,4 @@
 package kit.LocalizationKit
 
 public import ohos.i18n.*
-public import ohos.intl.*
 public import ohos.resource_manager.*

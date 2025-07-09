@@ -25,8 +25,6 @@ ohos_cj_library("ohos.net.connection") {
     "../../arkui/cj:ohos.base",
     "../../ffi_bind:ohos.ffi",
     "../../hilog:ohos.hilog",
-    "../../interop:ohos.ark_interop",
-    "../../interop:ohos.ark_interop_helper",
     "../../labels:ohos.labels",
   ]
 
@@ -35,24 +33,4 @@ ohos_cj_library("ohos.net.connection") {
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
   lib_name = "net.connection"
-}
-
-ohos_cj_library("ohos.net.connection.interop") {
-  sources = [
-    "src/interop/system_object_interop.cj",
-  ]
-
-  cj_deps = [
-    ":ohos.net.connection",
-    "../../ffi_bind:ohos.ffi",
-    "../../interop:ohos.ark_interop",
-    "../../interop:ohos.ark_interop_helper",
-    "../../labels:ohos.labels",
-  ]
-
-  external_deps = [ "netmanager_base:cj_net_connection_ffi" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "net.connection.interop"
 }

@@ -16,4 +16,3 @@
 package kit.AudioKit
 
 public import ohos.multimedia.audio.*
-public import ohos.multimedia.audio_haptic.*

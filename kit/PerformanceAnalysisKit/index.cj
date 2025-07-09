@@ -15,10 +15,7 @@
 
 package kit.PerformanceAnalysisKit
 
-public import ohos.hi_tracechain.*
 public import ohos.cj_leakwatcher.*
 public import ohos.hi_tracemeter.*
 public import ohos.hiappevent.*
 public import ohos.hilog.*
-public import ohos.hidebug.*
-public import ohos.faultlogger.*

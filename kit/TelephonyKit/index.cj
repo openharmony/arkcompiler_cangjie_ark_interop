@@ -16,8 +16,3 @@
 package kit.TelephonyKit
 
 public import ohos.telephony_call.*
-public import ohos.telephony_data.*
-public import ohos.telephony_observer.*
-public import ohos.telephony_sim.*
-public import ohos.telephony_radio.*
-public import ohos.telephony_sms.*

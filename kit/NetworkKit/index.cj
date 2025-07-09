@@ -16,7 +16,4 @@
 package kit.NetworkKit
 
 public import ohos.net.connection.*
-public import ohos.net.connection.interop.*
 public import ohos.net.http.*
-public import ohos.net.webSocket.*
-public import ohos.net.network_security.*

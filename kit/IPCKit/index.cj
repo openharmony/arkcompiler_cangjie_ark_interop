@@ -16,4 +16,3 @@
 package kit.IPCKit
 
 public import ohos.rpc.*
-public import ohos.rpc.interop.*
