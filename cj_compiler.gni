@@ -14,307 +14,313 @@
 import("cjc_toolchain.gni")
 
 declare_args() {
-    # Enable cjc Source-based Code Coverage.
-    enable_cjc_coverge = false
+  # Enable cjc Source-based Code Coverage.
+  enable_cjc_coverge = false
 }
 
 template("cj_target") {
-    forward_variables_from(invoker, [
-        "cjc_args",
-        "deps",
-        "cj_deps",
-        "source_dir",
-        "sources",
-        "enable_strip",
-        "part_name",
-        "subsystem_name",
-        "outname",
-        "module_name",
-        "is_cj_test",
-        "optLevel",
-        "enable_reflect",
-    ])
-    if (!defined(invoker.output_type)) {
-        assert(false && "output_type is required")
+  forward_variables_from(invoker,
+                         [
+                           "cjc_args",
+                           "deps",
+                           "cj_deps",
+                           "source_dir",
+                           "sources",
+                           "enable_strip",
+                           "part_name",
+                           "subsystem_name",
+                           "outname",
+                           "module_name",
+                           "is_cj_test",
+                           "optLevel",
+                           "enable_reflect",
+                         ])
+  if (!defined(invoker.output_type)) {
+    assert(false && "output_type is required")
+  }
+  output_type = invoker.output_type
+  if (output_type != "test" && output_type != "macro" &&
+      output_type != "dylib" && output_type != "staticlib" &&
+      output_type != "exe") {
+    assert(false &&
+           "output_type must be one of [test, macro, dylib, staticlib, exe]")
+  }
+  if (!defined(is_cj_test)) {
+    is_cj_test = output_type == "test"
+  }
+  if (defined(optLevel)) {
+    if (optLevel != "0" && optLevel != "1" && optLevel != "2" &&
+        optLevel != "3" && optLevel != "z" && optLevel != "s") {
+      assert(false && "unsupport optimization level '${optLevel}'")
     }
-    output_type = invoker.output_type
-    if (output_type != "test" && output_type != "macro" && output_type != "dylib" && output_type != "staticlib" && output_type != "exe") {
-        assert(false && "output_type must be one of [test, macro, dylib, staticlib, exe]")
+  }
+  if (defined(cjc_args)) {
+    foreach(cjc_arg, cjc_args) {
+      if (cjc_arg == "-O0" || cjc_arg == "-O1" || cjc_arg == "-O2" ||
+          cjc_arg == "-O3" || cjc_arg == "-Oz" || cjc_arg == "-Os") {
+        assert(false &&
+               "optimization level should be defined by gn arg 'optLevel'")
+      }
     }
-    if (!defined(is_cj_test)) {
-        is_cj_test = output_type == "test"
-    }
-    if (defined(optLevel)) {
-        if (optLevel != "0" && optLevel != "1" && optLevel != "2" && optLevel != "3" && optLevel != "z" && optLevel != "s") {
-            assert(false && "unsupport optimization level '${optLevel}'")
-        }
-    }
-    if (defined(cjc_args)) {
-        foreach(cjc_arg, cjc_args) {
-            if (cjc_arg == "-O0" || cjc_arg == "-O1" || cjc_arg == "-O2" || cjc_arg == "-O3" || cjc_arg == "-Oz" || cjc_arg == "-Os") {
-                assert(false && "optimization level should be defined by gn arg 'optLevel'")
-            }
-        }
-    } else {
-        cjc_args = []
-    }
-    cjc_args_ = []
-    if (output_type == "dylib") {
-        cjc_args_ += [
-            "--dy-std",
-            "--dy-libs",
-        ]
-    }
-    if (!defined(enable_reflect) || enable_reflect == "false") {
-        cjc_args_ += [
-            "--disable-reflection",
-        ]
-    }
-    # sources check
-    if (defined(sources)) {
-        sources_ = sources
-        sources = []
-        foreach(src, sources_) {
-            cjc_args_ += [rebase_path(src)]
-        }
-    } else {
-        assert(false && "'sources' is required")
-    }
-
-    # coverage support
-    if (enable_cjc_coverge) {
-        cjc_args_ += ["-O0", "--coverage"]
-    } else {
-        if (defined(source_dir)) {
-            trimpath = rebase_path(source_dir)
-        } else {
-            trimpath = rebase_path(get_path_info(sources_[0], "dir"))
-        }
-        cjc_args_ += ["--trimpath", trimpath]
-        if (defined(optLevel)) {
-            cjc_args_ += ["-O${optLevel}"]
-        } else {
-            cjc_args_ += ["-O2"]
-        }
-
-        if (use_clang_coverage) {
-            cjc_args_ += ["-lclang_rt.profile"]
-        }
-    }
-
-    # asan support
-#    if (is_asan) {
-#        if (use_hwasan) {
-#            cjc_args_ += [
-#                "--sanitize=hwaddress",
-#                "-lclang_rt.hwasan",
-#            ]
-#        } else {
-#            cjc_args_ += [
-#                "--sanitize=address",
-#                "-lclang_rt.asan",
-#            ]
-#        }
-#    }
-#
-    if (!defined(outname)) {
-        outname = target_name
-    }
-    module_prefix = ""
-    base_outdir = "${root_out_dir}/cangjie_libraries"
-    base_outdir_abs = rebase_path(base_outdir)
-    if (defined(module_name) && module_name != "") {
-        module_prefix = "${module_name}."
-        outdir = "${base_outdir}/${module_name}"
-    } else {
-        outdir = base_outdir
-    }
-    outdir_abs = rebase_path(outdir)
-    is_library = false
-    if (output_type == "macro") {
-        cjc_args_ += ["--compile-macro"]
-        outfile_name = "lib-macro_${module_prefix}${outname}${cjc_toolchain.dyn_extension}"
-        if (defined(module_name) && module_name != "") {
-            cjc_args_ += [
-                "--output-dir",
-                "${base_outdir_abs}/${module_name}"
-            ]
-        } else {
-            cjc_args_ += [
-                "--output-dir",
-                "${base_outdir_abs}"
-            ]
-        }
-
-        is_library = true
-    } else if (output_type == "test") {
-        cjc_args_ += ["--test"]
-        outfile_name = "${module_prefix}${outname}${cjc_toolchain.exe_extension}"
-        cjc_args_ += [
-            "-o",
-            "${outdir_abs}/${outfile_name}"
-        ]
-    } else {
-        cjc_args_ += ["--output-type=${output_type}"]
-        if (output_type == "dylib") {
-            is_library = true
-            outfile_name = "lib${module_prefix}${outname}${cjc_toolchain.dyn_extension}"
-        } else if (output_type == "staticlib") {
-            is_library = true
-            outfile_name = "lib${module_prefix}${outname}${cjc_toolchain.static_extension}"
-        } else if (output_type == "exe") {
-            outfile_name = "${module_prefix}${outname}${cjc_toolchain.exe_extension}"
-        }
-        cjc_args_ += [
-            "-o",
-            "${outdir_abs}/${outfile_name}"
-        ]
-    }
-
-    outputs_ = ["${outdir}/${outfile_name}"]
-    if (is_library) {
-        outputs_ += [
-            "${outdir}/${module_prefix}${outname}.cjo",
-        ]
-    }
-
+  } else {
+    cjc_args = []
+  }
+  cjc_args_ = []
+  if (output_type == "dylib") {
     cjc_args_ += [
-        "--target=${cjc_toolchain.target_platform}"
+      "--dy-std",
+      "--dy-libs",
     ]
-    if (defined(cjc_toolchain.cjc_args)) {
-        cjc_args_ += cjc_toolchain.cjc_args
-    }
-    deps_ = []
-    external_deps_ = []
-    if (defined(deps)) {
-        deps_ += deps
-        deps = []
-    }
-    if (defined(cjc_toolchain.deps)) {
-        deps_ += cjc_toolchain.deps
-    }
-    if (defined(cjc_toolchain.external_deps)) {
-        external_deps_ += cjc_toolchain.external_deps
-    }
-    if (!defined(cj_deps)) {
-        cj_deps = []
-    }
+  }
+  if (!defined(enable_reflect) || enable_reflect == "false") {
+    cjc_args_ += [ "--disable-reflection" ]
+  }
 
-    # external_deps support
-    if (defined(invoker.external_deps)) {
-        external_deps_ += invoker.external_deps
+  # sources check
+  if (defined(sources)) {
+    sources_ = sources
+    sources = []
+    foreach(src, sources_) {
+      cjc_args_ += [ rebase_path(src) ]
     }
+  } else {
+    assert(false && "'sources' is required")
+  }
 
-    cjc_args_ += cjc_args
-
-    save_config = {
-        outname = outname
-        output_type = output_type
-        outfile = "${outdir_abs}/${outfile_name}"
-        import_path = rebase_path(base_outdir_abs)
-        args = cjc_args_
-        native_deps = []
-        foreach(dep, deps_) {
-            t_name = get_label_info(dep, "name")
-            t_out_dir = get_label_info(dep, "target_out_dir")
-            t_config = rebase_path("${t_out_dir}/${t_name}_module_info.json")
-            native_deps += [t_config]
-        }
-        if (external_deps_ != []) {
-            external_deps = external_deps_
-        }
-        cjc_deps = []
-        foreach(dep, cj_deps) {
-            t_name = get_label_info(dep, "name")
-            t_out_dir = get_label_info(dep, "target_out_dir")
-            t_config = rebase_path("${t_out_dir}/${t_name}_cjc_config.json")
-            cjc_deps += [t_config]
-        }
+  # coverage support
+  if (enable_cjc_coverge) {
+    cjc_args_ += [
+      "-O0",
+      "--coverage",
+    ]
+  } else {
+    if (defined(source_dir)) {
+      trimpath = rebase_path(source_dir)
+    } else {
+      trimpath = rebase_path(get_path_info(sources_[0], "dir"))
+    }
+    cjc_args_ += [
+      "--trimpath",
+      trimpath,
+    ]
+    if (defined(optLevel)) {
+      cjc_args_ += [ "-O${optLevel}" ]
+    } else {
+      cjc_args_ += [ "-O2" ]
     }
 
-    config_path = "${target_out_dir}/${target_name}_cjc_config.json"
-    config_path_abs = rebase_path(config_path)
-    write_file(config_path, save_config, "json")
+    if (use_clang_coverage) {
+      cjc_args_ += [ "-lclang_rt.profile" ]
+    }
+  }
 
-    compile_target_name = "compile_cj_target_${target_name}"
-
-    action(compile_target_name) {
-        sources = sources_
-        script = cjc_wrapper
-        root_dir_abs = rebase_path(root_build_dir)
-        args = [
-            "--config=${config_path_abs}",
-            "--cjc=${cjc_bin}",
-            "--root_out_dir=${root_dir_abs}"
-        ]
-        if (is_mac) {
-            args += [
-                "--is_mac=true"
-            ]
-        }
-        outputs = outputs_
-        deps = deps_
-        external_deps = external_deps_
-        deps += cj_deps
+  # asan support
+  #    if (is_asan) {
+  #        if (use_hwasan) {
+  #            cjc_args_ += [
+  #                "--sanitize=hwaddress",
+  #                "-lclang_rt.hwasan",
+  #            ]
+  #        } else {
+  #            cjc_args_ += [
+  #                "--sanitize=address",
+  #                "-lclang_rt.asan",
+  #            ]
+  #        }
+  #    }
+  #
+  if (!defined(outname)) {
+    outname = target_name
+  }
+  module_prefix = ""
+  base_outdir = "${root_out_dir}/cangjie_libraries"
+  base_outdir_abs = rebase_path(base_outdir)
+  if (defined(module_name) && module_name != "") {
+    module_prefix = "${module_name}."
+    outdir = "${base_outdir}/${module_name}"
+  } else {
+    outdir = base_outdir
+  }
+  outdir_abs = rebase_path(outdir)
+  is_library = false
+  if (output_type == "macro") {
+    cjc_args_ += [ "--compile-macro" ]
+    outfile_name =
+        "lib-macro_${module_prefix}${outname}${cjc_toolchain.dyn_extension}"
+    if (defined(module_name) && module_name != "") {
+      cjc_args_ += [
+        "--output-dir",
+        "${base_outdir_abs}/${module_name}",
+      ]
+    } else {
+      cjc_args_ += [
+        "--output-dir",
+        "${base_outdir_abs}",
+      ]
     }
 
-    ohos_copy(target_name) {
-        deps = [
-            ":${compile_target_name}"
-        ]
-        sources = [ outputs_[0] ]
+    is_library = true
+  } else if (output_type == "test") {
+    cjc_args_ += [ "--test" ]
+    outfile_name = "${module_prefix}${outname}${cjc_toolchain.exe_extension}"
+    cjc_args_ += [
+      "-o",
+      "${outdir_abs}/${outfile_name}",
+    ]
+  } else {
+    cjc_args_ += [ "--output-type=${output_type}" ]
+    if (output_type == "dylib") {
+      is_library = true
+      outfile_name =
+          "lib${module_prefix}${outname}${cjc_toolchain.dyn_extension}"
+    } else if (output_type == "staticlib") {
+      is_library = true
+      outfile_name =
+          "lib${module_prefix}${outname}${cjc_toolchain.static_extension}"
+    } else if (output_type == "exe") {
+      outfile_name = "${module_prefix}${outname}${cjc_toolchain.exe_extension}"
+    }
+    cjc_args_ += [
+      "-o",
+      "${outdir_abs}/${outfile_name}",
+    ]
+  }
 
-        if (defined(invoker.part_name)) {
-            part_name = invoker.part_name
-            subsystem_name = invoker.subsystem_name
-        }
+  outputs_ = [ "${outdir}/${outfile_name}" ]
+  if (is_library) {
+    outputs_ += [ "${outdir}/${module_prefix}${outname}.cjo" ]
+  }
 
-        prebuilt = true
-        install_enable = false
+  cjc_args_ += [ "--target=${cjc_toolchain.target_platform}" ]
+  if (defined(cjc_toolchain.cjc_args)) {
+    cjc_args_ += cjc_toolchain.cjc_args
+  }
+  deps_ = []
+  external_deps_ = []
+  if (defined(deps)) {
+    deps_ += deps
+    deps = []
+  }
+  if (defined(cjc_toolchain.deps)) {
+    deps_ += cjc_toolchain.deps
+  }
+  if (defined(cjc_toolchain.external_deps)) {
+    external_deps_ += cjc_toolchain.external_deps
+  }
+  if (!defined(cj_deps)) {
+    cj_deps = []
+  }
 
-        if (!is_cj_test) {
-            if (output_type == "dylib" || output_type == "exe") {
-                install_enable = true
-            }
-            if (output_type == "exe") {
-                module_type = "exe"
-            } else {
-                module_type = "lib"
-            }
-        }
+  # external_deps support
+  if (defined(invoker.external_deps)) {
+    external_deps_ += invoker.external_deps
+  }
 
-        if (!defined(enable_strip)) {
-            enable_strip = false
-        }
+  cjc_args_ += cjc_args
 
-        if (is_cj_test) {
-            testonly = true
-            test_out_path = "${root_out_dir}/tests/unittest/${subsystem_name}/${part_name}"
-            outputs = ["${test_out_path}/${outfile_name}"]
-            write_file("$test_out_path/${target_name}_path.txt",
-                get_label_info(":$target_name", "dir"), "string")
-            bypass_module_info_generation = true
-        } else {
-            outputs = ["${target_out_dir}/${outfile_name}"]
-        }
-        if (install_enable) {
-            relative_install_dir = "platformsdk/cjsdk"
-            innerapi_tags = [ "platformsdk/cjsdk" ]
-            install_images = [ "system" ]
-        }
+  save_config = {
+    outname = outname
+    output_type = output_type
+    outfile = "${outdir_abs}/${outfile_name}"
+    import_path = rebase_path(base_outdir_abs)
+    args = cjc_args_
+    native_deps = []
+    foreach(dep, deps_) {
+      t_name = get_label_info(dep, "name")
+      t_out_dir = get_label_info(dep, "target_out_dir")
+      t_config = rebase_path("${t_out_dir}/${t_name}_module_info.json")
+      native_deps += [ t_config ]
+    }
+    if (external_deps_ != []) {
+      external_deps = external_deps_
+    }
+    cjc_deps = []
+    foreach(dep, cj_deps) {
+      t_name = get_label_info(dep, "name")
+      t_out_dir = get_label_info(dep, "target_out_dir")
+      t_config = rebase_path("${t_out_dir}/${t_name}_cjc_config.json")
+      cjc_deps += [ t_config ]
+    }
+  }
+
+  config_path = "${target_out_dir}/${target_name}_cjc_config.json"
+  config_path_abs = rebase_path(config_path)
+  write_file(config_path, save_config, "json")
+
+  compile_target_name = "compile_cj_target_${target_name}"
+
+  action(compile_target_name) {
+    sources = sources_
+    script = cjc_wrapper
+    root_dir_abs = rebase_path(root_build_dir)
+    args = [
+      "--config=${config_path_abs}",
+      "--cjc=${cjc_bin}",
+      "--root_out_dir=${root_dir_abs}",
+    ]
+    if (is_mac) {
+      args += [ "--is_mac=true" ]
+    }
+    outputs = outputs_
+    deps = deps_
+    external_deps = external_deps_
+    deps += cj_deps
+  }
+
+  ohos_copy(target_name) {
+    deps = [ ":${compile_target_name}" ]
+    sources = [ outputs_[0] ]
+
+    if (defined(invoker.part_name)) {
+      part_name = invoker.part_name
+      subsystem_name = invoker.subsystem_name
     }
 
-    if (is_library) {
-        ohos_copy("${target_name}_cjo") {
-            prebuilt = true
-            deps = [
-                ":${compile_target_name}"
-            ]
-            sources = [ outputs_[1] ]
-            outputs = [ "${target_out_dir}/${module_prefix}${outname}.cjo" ]
-        }
+    prebuilt = true
+    install_enable = false
+
+    if (!is_cj_test) {
+      if (output_type == "dylib" || output_type == "exe") {
+        install_enable = true
+      }
+      if (output_type == "exe") {
+        module_type = "exe"
+      } else {
+        module_type = "lib"
+      }
     }
 
+    if (!defined(enable_strip)) {
+      enable_strip = false
+    }
+
+    if (is_cj_test) {
+      testonly = true
+      test_out_path =
+          "${root_out_dir}/tests/unittest/${subsystem_name}/${part_name}"
+      outputs = [ "${test_out_path}/${outfile_name}" ]
+      write_file("$test_out_path/${target_name}_path.txt",
+                 get_label_info(":$target_name", "dir"),
+                 "string")
+      bypass_module_info_generation = true
+    } else {
+      outputs = [ "${target_out_dir}/${outfile_name}" ]
+    }
+    if (install_enable) {
+      relative_install_dir = "platformsdk/cjsdk"
+      innerapi_tags = [ "platformsdk/cjsdk" ]
+      install_images = [ "system" ]
+    }
+  }
+
+  if (is_library) {
+    ohos_copy("${target_name}_cjo") {
+      prebuilt = true
+      deps = [ ":${compile_target_name}" ]
+      sources = [ outputs_[1] ]
+      outputs = [ "${target_out_dir}/${module_prefix}${outname}.cjo" ]
+    }
+  }
 }
 
 host_toolchain_label = "${current_os}_${current_cpu}"

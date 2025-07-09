@@ -145,4 +145,6 @@ cj_macro_library("ark_interop_macro") {
     "ark_interop_macro/ark_idl_interface.cj",
   ]
   compilation_config = "pipeline=NG"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
 }

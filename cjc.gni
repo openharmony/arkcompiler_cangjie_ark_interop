@@ -18,22 +18,23 @@ template("cj_library") {
   cj_target(target_name) {
     output_type = "dylib"
 
-    forward_variables_from(invoker, [
-      "deps",
-      "cj_deps",
-      "external_deps",
-      "link_dirs",
-      "link_libs",
-      "cjc_args",
-      "enable_strip",
-      "part_name",
-      "subsystem_name",
-      "outname",
-      "module_name",
-      "kit",
-      "sources",
-      "optLevel",
-    ])
+    forward_variables_from(invoker,
+                           [
+                             "deps",
+                             "cj_deps",
+                             "external_deps",
+                             "link_dirs",
+                             "link_libs",
+                             "cjc_args",
+                             "enable_strip",
+                             "part_name",
+                             "subsystem_name",
+                             "outname",
+                             "module_name",
+                             "kit",
+                             "sources",
+                             "optLevel",
+                           ])
     if (!defined(cjc_args)) {
       cjc_args = []
     }
@@ -48,12 +49,12 @@ template("cj_library") {
 
     if (defined(link_dirs)) {
       foreach(dir, link_dirs) {
-        cjc_args += ["-L${dir}"]
+        cjc_args += [ "-L${dir}" ]
       }
     }
     if (defined(link_libs)) {
       foreach(lib, link_libs) {
-        cjc_args += ["-l${lib}"]
+        cjc_args += [ "-l${lib}" ]
       }
     }
   }
@@ -62,22 +63,21 @@ template("cj_library") {
 template("cj_macro_library") {
   cj_target(target_name) {
     output_type = "macro"
-    part_name = "cangjie_api"
-    subsystem_name = "arkcompiler"
-    forward_variables_from(invoker, [
-      "deps",
-      "cj_deps",
-      "external_deps",
-      "link_dirs",
-      "link_libs",
-      "cjc_args",
-      "enable_strip",
-      "part_name",
-      "subsystem_name",
-      "module_name",
-      "sources",
-      "optLevel",
-    ])
+    forward_variables_from(invoker,
+                           [
+                             "deps",
+                             "cj_deps",
+                             "external_deps",
+                             "link_dirs",
+                             "link_libs",
+                             "cjc_args",
+                             "enable_strip",
+                             "part_name",
+                             "subsystem_name",
+                             "module_name",
+                             "sources",
+                             "optLevel",
+                           ])
     if (!defined(module_name)) {
       module_name = "ohos"
     }
@@ -87,12 +87,12 @@ template("cj_macro_library") {
 
     if (defined(link_dirs)) {
       foreach(dir, link_dirs) {
-        cjc_args += ["-L${dir}"]
+        cjc_args += [ "-L${dir}" ]
       }
     }
     if (defined(link_libs)) {
       foreach(lib, link_libs) {
-        cjc_args += ["-l${lib}"]
+        cjc_args += [ "-l${lib}" ]
       }
     }
 
@@ -120,15 +120,16 @@ template("ohos_cj_library") {
     cross_native_exts = invoker.cross_native_exts
   }
   cj_library(target_name) {
-    forward_variables_from(invoker, [
-      "part_name",
-      "subsystem_name",
-      "enable_strip",
-      "module_name",
-      "kit",
-      "sources",
-      "optLevel",
-    ])
+    forward_variables_from(invoker,
+                           [
+                             "part_name",
+                             "subsystem_name",
+                             "enable_strip",
+                             "module_name",
+                             "kit",
+                             "sources",
+                             "optLevel",
+                           ])
     outname = target_name
     if (defined(invoker.lib_name)) {
       outname = invoker.lib_name
@@ -150,7 +151,7 @@ template("ohos_cj_library") {
           subsystem_part = []
           subsystem_part = string_split(label, ":")
           libname = subsystem_part[1]
-          deps += ["${cjc_script_root}/mocks:${libname}"]
+          deps += [ "${cjc_script_root}/mocks:${libname}" ]
         }
       } else {
         external_deps = invoker.external_deps
@@ -159,19 +160,19 @@ template("ohos_cj_library") {
 
     foreach(dep, cross_native_deps) {
       if (build_ohos_sdk && is_ohos) {
-        deps += ["${cjc_script_root}/mocks:${dep.libname}"]
+        deps += [ "${cjc_script_root}/mocks:${dep.libname}" ]
       } else {
-        deps += [dep.label]
+        deps += [ dep.label ]
       }
     }
     foreach(dep, native_deps) {
       if (!build_ohos_sdk) {
-        deps += [dep.label]
+        deps += [ dep.label ]
       } else if (defined(dep.libname)) {
-        deps += ["${cjc_script_root}/mocks:${dep.libname}"]
+        deps += [ "${cjc_script_root}/mocks:${dep.libname}" ]
       } else {
         dep_target_name = get_label_info(dep.label, "name")
-        deps += ["${cjc_script_root}/mocks:${dep_target_name}"]
+        deps += [ "${cjc_script_root}/mocks:${dep_target_name}" ]
       }
     }
     if (!defined(external_deps)) {
@@ -179,14 +180,14 @@ template("ohos_cj_library") {
     }
     foreach(dep, cross_native_exts) {
       if (build_ohos_sdk && is_ohos) {
-        deps += ["${cjc_script_root}/mocks:${dep.libname}"]
+        deps += [ "${cjc_script_root}/mocks:${dep.libname}" ]
       } else {
-        external_deps += [dep.label]
+        external_deps += [ dep.label ]
       }
     }
 
     if ((!build_ohos_sdk || !is_ohos) && !is_asan) {
-      cjc_args += ["--link-options=--no-undefined"]
+      cjc_args += [ "--link-options=--no-undefined" ]
     }
   }
 }

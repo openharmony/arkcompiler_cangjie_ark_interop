@@ -331,6 +331,9 @@ cj_macro_library("state_macro_manage") {
     "../../encoding:ohos.json.static",
   ]
   compilation_config = "pipeline=NG"
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
 }
 
 cj_ace_library("ohos.router") {

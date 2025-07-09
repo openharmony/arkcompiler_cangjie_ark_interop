@@ -66,9 +66,8 @@ template("cj_ohos_sdk") {
       }
     }
 
-    outputs =
-    [ "${target_out_dir}/cangjie_sdk/api/${_output_path}/${platform}/${module_name}/{{source_file_part}}" ]
-    module_source_dir = "${target_out_dir}/cangjie_sdk/api/${_output_path}/${platform}/${module_name}/"
+    outputs = [ "${target_out_dir}/cangjie_sdk/api/${_output_path}/${module_name}/{{source_file_part}}" ]
+    module_source_dir = "${target_out_dir}/cangjie_sdk/api/${_output_path}//${module_name}/"
     module_install_name = ""
   }
 }
