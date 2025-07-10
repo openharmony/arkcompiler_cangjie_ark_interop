@@ -460,16 +460,4 @@ struct CChangeNotification {
         var deleteEntries: CArrEntry,
         var deviceId: CString
     ) {}
-
-    func toChangeNotificationAndFree(): ChangeNotification {
-        let res = ChangeNotification(insertEntries.toArray(), updateEntries.toArray(), deleteEntries.toArray(),
-            deviceId.toString())
-        insertEntries.free()
-        updateEntries.free()
-        deleteEntries.free()
-        unsafe {
-            LibC.free(deviceId)
-        }
-        return res
-    }
 }

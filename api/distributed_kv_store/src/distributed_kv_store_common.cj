@@ -63,69 +63,6 @@ public let MAX_QUERY_LENGTH: Int64 = 512000
 public let MAX_BATCH_SIZE: Int64 = 128
 
 @!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-]
-public enum SyncMode {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    PULL_ONLY
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    PUSH_ONLY
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    PUSH_PULL
-    | ...
-}
-
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-]
-public enum SubscribeType {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    SUBSCRIBE_TYPE_LOCAL
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    SUBSCRIBE_TYPE_REMOTE
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    SUBSCRIBE_TYPE_ALL
-    | ...
-
-    func getValue(): UInt8 {
-        match (this) {
-            case SUBSCRIBE_TYPE_LOCAL => 0
-            case SUBSCRIBE_TYPE_REMOTE => 1
-            case SUBSCRIBE_TYPE_ALL => 2
-            case _ => throw IllegalArgumentException("The type is not supported yet.")
-        }
-    }
-}
-
-@!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
@@ -266,7 +203,7 @@ public enum SecurityLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
-    public func getValue(): Int32 {
+    func getValue(): Int32 {
         match (this) {
             case S1 => 2
             case S2 => 3
@@ -434,54 +371,5 @@ func getErrorMsg(code: Int32): String {
         return ERROR_CODE_MAP[errCode]
     } else {
         return "Unknown error code ${errCode}"
-    }
-}
-
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-]
-public class ChangeNotification <: ToString {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public let insertEntries: ArrayList<Entry>
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public let updateEntries: ArrayList<Entry>
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public let deleteEntries: ArrayList<Entry>
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public let deviceId: String
-
-    init(insertEntries: ArrayList<Entry>, updateEntries: ArrayList<Entry>, deleteEntries: ArrayList<Entry>,
-        deviceId: String) {
-        this.insertEntries = insertEntries
-        this.updateEntries = updateEntries
-        this.deleteEntries = deleteEntries
-        this.deviceId = deviceId
-    }
-
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public func toString(): String {
-        return "{deviceId = ${deviceId}, insertEntries = ${insertEntries}, updateEntries = ${updateEntries}, deleteEntries = ${deleteEntries}}"
     }
 }

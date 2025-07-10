@@ -19,17 +19,8 @@ ohos_cj_library("ohos.wifi_manager") {
     "src/common.cj",
     "src/error_code.cj",
     "src/ip_info.cj",
-    "src/ipv6_info.cj",
-    "src/wifi_device_config.cj",
-    "src/wifi_eap_config.cj",
     "src/wifi_info_elem.cj",
-    "src/wifi_linked_info.cj",
-    "src/wifi_p2p_config.cj",
-    "src/wifi_p2p_device.cj",
-    "src/wifi_p2p_group_info.cj",
-    "src/wifi_p2p_linked_info.cj",
     "src/wifi_scan_info.cj",
-    "src/wifi_wapi_config.cj",
     "src/wifi.cj",
   ]
 

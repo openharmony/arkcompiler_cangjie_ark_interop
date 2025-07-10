@@ -46,8 +46,6 @@ foreign {
 
     func FfiWifiRemoveGroup(): Int32
 
-    func FfiWifiP2pConnect(cfg: CWifiP2PConfig): Int32
-
     func FfiWifiP2pCancelConnect(): Int32
 
     func FfiWifiStartDiscoverDevices(): Int32
@@ -55,14 +53,6 @@ foreign {
     func FfiWifiStopDiscoverDevices(): Int32
 
     func FfiWifiGetP2pLinkedInfo(info: CPointer<CWifiP2pLinkedInfo>): Int32
-
-    func FfiWifiGetCurrentGroup(info: CPointer<CWifiP2pGroupInfo>): Int32
-
-    func FfiWifiGetP2pPeerDevices(code: CPointer<Int32>): WifiP2pDeviceArr
-
-    func FfiWifiGetP2pLocalDevice(info: CPointer<CWifiP2pDevice>): Int32
-
-    func FfiWifiCreateGroup(cfg: CWifiP2PConfig): Int32
 
     func FfiWifiGetLinkedInfo(info: CPointer<CWifiLinkedInfo>): Int32
 
@@ -151,36 +141,7 @@ struct CWifiDeviceConfig {
     var eapConfig: CWifiEapConfig = CWifiEapConfig()
     var wapiConfig: CWifiWapiConfig = CWifiWapiConfig()
 
-    init(cfg: WifiDeviceConfig) {
-        this.securityType = cfg.securityType.getValue()
-        this.bssidType = cfg.bssidType?.getValue() ?? 0
-        this.isHiddenSsid = cfg.isHiddenSsid ?? false
-        try {
-            this.ssid = unsafe { LibC.mallocCString(cfg.ssid) }
-            this.preSharedKey = unsafe { LibC.mallocCString(cfg.preSharedKey) }
-            match (cfg.bssid) {
-                case Some(v) => this.bssid = unsafe { LibC.mallocCString(v) }
-                case None => ()
-            }
-            match (cfg.eapConfig) {
-                case Some(v) => this.eapConfig = CWifiEapConfig(v)
-                case None => ()
-            }
-            match (cfg.wapiConfig) {
-                case Some(v) => this.wapiConfig = CWifiWapiConfig(v)
-                case None => ()
-            }
-        } catch (e: Exception) {
-            unsafe {
-                LibC.free(bssid)
-                LibC.free(ssid)
-                LibC.free(preSharedKey)
-                eapConfig.free()
-                wapiConfig.free()
-            }
-            throw e
-        }
-    }
+    init() {}
 
     func free() {
         unsafe {
@@ -231,42 +192,6 @@ struct CWifiEapConfig {
 
     init() {}
 
-    init(cfg: WifiEapConfig) {
-        this.eapMethod = cfg.eapMethod.getValue()
-        this.phase2Method = cfg.phase2Method.getValue()
-        this.eapSubId = cfg.eapSubId
-        try {
-            this.identity = unsafe { LibC.mallocCString(cfg.identity) }
-            this.anonymousIdentity = unsafe { LibC.mallocCString(cfg.identity) }
-            this.password = unsafe { LibC.mallocCString(cfg.identity) }
-            this.caCertAlias = unsafe { LibC.mallocCString(cfg.identity) }
-            this.caPath = unsafe { LibC.mallocCString(cfg.identity) }
-            this.clientCertAlias = unsafe { LibC.mallocCString(cfg.identity) }
-            this.certEntry = unsafe { CArrUI8(cjArr2CArr<UInt8, UInt8>(cfg.certEntry) {i => i}, cfg.certEntry.size) }
-            this.certPassword = unsafe { LibC.mallocCString(cfg.identity) }
-            this.altSubjectMatch = unsafe { LibC.mallocCString(cfg.identity) }
-            this.domainSuffixMatch = unsafe { LibC.mallocCString(cfg.identity) }
-            this.realm = unsafe { LibC.mallocCString(cfg.identity) }
-            this.plmn = unsafe { LibC.mallocCString(cfg.identity) }
-        } catch (e: Exception) {
-            unsafe {
-                LibC.free(identity)
-                LibC.free(anonymousIdentity)
-                LibC.free(password)
-                LibC.free(caCertAlias)
-                LibC.free(caPath)
-                LibC.free(clientCertAlias)
-                LibC.free(certPassword)
-                LibC.free(altSubjectMatch)
-                LibC.free(domainSuffixMatch)
-                LibC.free(realm)
-                LibC.free(plmn)
-                LibC.free(certEntry.head)
-            }
-            throw e
-        }
-    }
-
     func free() {
         unsafe {
             LibC.free(identity)
@@ -294,75 +219,12 @@ struct CWifiWapiConfig {
 
     init() {}
 
-    init(cfg: WifiWapiConfig) {
-        this.wapiPskType = cfg.wapiPskType.getValue()
-        this.wapiAsCert = unsafe { LibC.mallocCString(cfg.wapiAsCert) }
-        try {
-            this.wapiUserCert = unsafe { LibC.mallocCString(cfg.wapiUserCert) }
-        } catch (e: Exception) {
-            unsafe { LibC.free(wapiAsCert) }
-            throw e
-        }
-    }
-
     func free() {
         unsafe {
             LibC.free(wapiAsCert)
             LibC.free(wapiUserCert)
         }
     }
-}
-
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.WiFi.STA"
-]
-public class IpInfo {
-    IpInfo(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let ipAddress: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let gateway: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let netmask: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let primaryDns: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let secondDns: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let serverIp: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let leaseDuration: UInt32
-    ) {}
 }
 
 @C
@@ -376,10 +238,6 @@ struct CIpInfo {
         let serverIp: UInt32,
         let leaseDuration: UInt32
     ) {}
-
-    func toIpInfo(): IpInfo {
-        IpInfo(ipAddress, gateway, netmask, primaryDns, secondDns, serverIp, leaseDuration)
-    }
 }
 
 @C
@@ -424,119 +282,6 @@ struct CWifiP2pLinkedInfo {
     }
 }
 
-@C
-struct CWifiP2pGroupInfo {
-    CWifiP2pGroupInfo(
-        let isP2pGo: Bool,
-        let ownerInfo: CWifiP2pDevice,
-        let passphrase: CString,
-        let interfaceName: CString,
-        let groupName: CString,
-        let networkId: Int32,
-        let frequency: Int32,
-        let clientDevices: CPointer<CWifiP2pDevice>,
-        let clientSize: Int64,
-        let goIpAddress: CString
-    ) {}
-
-    func free() {
-        unsafe {
-            ownerInfo.free()
-            LibC.free(passphrase)
-            LibC.free(interfaceName)
-            LibC.free(groupName)
-            LibC.free(goIpAddress)
-            LibC.free(clientDevices)
-            if (clientDevices.isNotNull()) {
-                for (i in 0..clientSize) {
-                    clientDevices.read(i).free()
-                }
-            }
-        }
-    }
-}
-
-@C
-struct CWifiP2pDevice {
-    CWifiP2pDevice(
-        let deviceName: CString,
-        let deviceAddress: CString,
-        let primaryDeviceType: CString,
-        let deviceStatus: Int32,
-        let groupCapabilities: Int32,
-        let deviceAddressType: Int32
-    ) {}
-
-    func free() {
-        unsafe {
-            LibC.free(deviceName)
-            LibC.free(deviceAddress)
-            LibC.free(primaryDeviceType)
-        }
-    }
-}
-
-@C
-struct WifiP2pDeviceArr {
-    WifiP2pDeviceArr(
-        let head: CPointer<CWifiP2pDevice>,
-        let size: Int64
-    ) {}
-
-    func toCjArrAndFree(): Array<WifiP2pDevice> {
-        var arr: Array<WifiP2pDevice> = Array<WifiP2pDevice>()
-        // ffi return information may be invalid UTF8 and may be parsed abnormally.
-        try {
-            arr = unsafe { cArr2cjArr<CWifiP2pDevice, WifiP2pDevice>(size, head) {
-                ct => WifiP2pDevice(ct)
-            } }
-        } finally {
-            if (head.isNotNull()) {
-                for (i in 0..size) {
-                    unsafe { head.read(i).free() }
-                }
-            }
-            unsafe { LibC.free(head) }
-        }
-        arr
-    }
-}
-
-@C
-struct CWifiP2PConfig {
-    var deviceAddress: CString = CString(CPointer<UInt8>())
-    var passphrase: CString = CString(CPointer<UInt8>())
-    var groupName: CString = CString(CPointer<UInt8>())
-    let goBand: Int32
-    let netId: Int32
-    let deviceAddressType: Int32
-
-    init(cfg: WifiP2PConfig) {
-        this.netId = cfg.netId
-        this.goBand = cfg.goBand.getValue()
-        this.deviceAddressType = cfg.deviceAddressType.getValue()
-        try {
-            this.deviceAddress = unsafe { LibC.mallocCString(cfg.deviceAddress) }
-            this.passphrase = unsafe { LibC.mallocCString(cfg.passphrase) }
-            this.groupName = unsafe { LibC.mallocCString(cfg.groupName) }
-        } catch (e: Exception) {
-            unsafe {
-                LibC.free(deviceAddress)
-                LibC.free(passphrase)
-                LibC.free(groupName)
-            }
-            throw e
-        }
-    }
-
-    func free() {
-        unsafe {
-            LibC.free(deviceAddress)
-            LibC.free(passphrase)
-            LibC.free(groupName)
-        }
-    }
-}
 
 @C
 struct CWifiLinkedInfo {

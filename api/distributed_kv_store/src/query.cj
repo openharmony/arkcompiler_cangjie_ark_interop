@@ -41,38 +41,4 @@ public class Query <: RemoteDataLite {
     ~init() {
         releaseFFIData(myDataId)
     }
-
-    /**
-     * @brief  prefixKey(prefix: string): Query
-     */
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public func prefixKey(prefix: String): Query {
-        unsafe {
-            try (cPrefix = LibC.mallocCString(prefix).asResource()) {
-                FfiOHOSDistributedKVStoreQueryPrefixKey(this.getID(), cPrefix.value)
-            }
-            return this
-        }
-    }
-
-    /**
-     * @brief  getSqlLike(): string
-     */
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
-    ]
-    public func getSqlLike(): String {
-        let retData = unsafe {
-            FfiOHOSDistributedKVStoreQueryGetSqlLike(this.getID())
-        }
-        let ret = retData.toString()
-        unsafe { LibC.free(retData) }
-        return ret
-    }
 }

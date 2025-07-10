@@ -117,12 +117,6 @@ public enum CallState {
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     CALL_STATE_OFFHOOK
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Telephony.CallManager"
-    ]
-    CALL_STATE_ANSWERED
     | ...
 
     @!APILevel[
@@ -136,7 +130,6 @@ public enum CallState {
             case CALL_STATE_IDLE => 0
             case CALL_STATE_RINGING => 1
             case CALL_STATE_OFFHOOK => 2
-            case CALL_STATE_ANSWERED => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -147,7 +140,6 @@ public enum CallState {
             case 0 => CALL_STATE_IDLE
             case 1 => CALL_STATE_RINGING
             case 2 => CALL_STATE_OFFHOOK
-            case 3 => CALL_STATE_ANSWERED
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

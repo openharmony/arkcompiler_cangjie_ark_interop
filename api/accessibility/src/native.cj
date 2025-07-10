@@ -66,15 +66,7 @@ struct CAccessibilityAbilityInfo {
 @C
 struct CArrAccessibilityAbilityInfo {
     CArrAccessibilityAbilityInfo(let head: CPointer<CAccessibilityAbilityInfo>, let size: Int64) {}
-    func toArrAccessibilityAbilityInfo(): Array<AccessibilityAbilityInfo> {
-        var res = ArrayList<AccessibilityAbilityInfo>()
-        if (head.isNotNull()) {
-            for (i in 0..size) {
-                unsafe { res.add(AccessibilityAbilityInfo(head.read(i))) }
-            }
-        }
-        return res.toArray()
-    }
+    
     func free() {
         unsafe {
             if (head.isNotNull()) {
@@ -158,27 +150,6 @@ struct CEventInfo {
             LibC.free(textAnnouncedForAccessibility_)
             LibC.free(customId_)
             contents_.free()
-        }
-    }
-}
-
-@C
-struct CCaptionsStyle {
-    var fontFamily_: CString = CString(CPointer())
-    var fontScale_: Int32
-    var fontColor_: UInt32
-    var fontEdgeType_: CString = CString(CPointer())
-    var backgroundColor_: UInt32
-    var windowColor_: UInt32
-
-    init(cap: CaptionsStyle) {
-        unsafe {
-            fontFamily_ = LibC.mallocCString(cap.fontFamily.value)
-            fontScale_ = cap.fontScale
-            fontColor_ = cap.fontColor
-            fontEdgeType_ = LibC.mallocCString(cap.fontEdgeType.value)
-            backgroundColor_ = cap.backgroundColor
-            windowColor_ = cap.windowColor
         }
     }
 }
