@@ -16,30 +16,18 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.crypto") {
   sources = [
-    "src/asy_key_generator.cj",
-    "src/asy_key_generator_by_spec.cj",
     "src/cipher.cj",
     "src/cj_crypto_common.cj",
     "src/cj_crypto_enum.cj",
     "src/cj_crypto_interface.cj",
     "src/cj_crypto_log.cj",
-    "src/cj_crypto_utils.cj",
-    "src/dhkey_util.cj",
-    "src/ecckey_util.cj",
-    "src/kdf.cj",
-    "src/key_agreement.cj",
-    "src/key_pair.cj",
+    "src/cj_crypto_native.cj",
     "src/mac.cj",
     "src/md.cj",
-    "src/pri_key.cj",
-    "src/pub_key.cj",
     "src/random.cj",
     "src/sign.cj",
-    "src/sm2_crypto_util.cj",
-    "src/sym_key.cj",
     "src/sym_key_generator.cj",
-    "src/verify.cj",
-    "src/cj_crypto_native.cj",
+    "src/sym_key.cj",
   ]
 
   cj_deps = [

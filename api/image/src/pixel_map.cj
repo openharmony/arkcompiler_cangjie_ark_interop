@@ -19,7 +19,6 @@ import ohos.color_manager.*
 import ohos.labels.*
 import ohos.ffi.*
 import ohos.base.*
-import ohos.rpc.MessageSequence
 
 const BASE_MEDIA_ERR: Int32 = 62980096
 const ARG_SIZE_ONE: UIntNative = 1
@@ -106,17 +105,16 @@ foreign {
  */
 @!APILevel[
     12,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
-public func createPixelMap(colors: Array<UInt8>, opts: InitializationOptions): PixelMap {
+public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions): PixelMap {
     if (colors.size == 0) {
         throw BusinessException(BASE_MEDIA_ERR, "[PixelMap] createPixelMap: create failed!")
     }
     unsafe {
         let arrPtr = acquireArrayRawData(colors)
-        let id = FfiOHOSCreatePixelMapV2(arrPtr.pointer, UInt32(colors.size), opts.toExternal())
+        let id = FfiOHOSCreatePixelMapV2(arrPtr.pointer, UInt32(colors.size), options.toExternal())
         releaseArrayRawData(arrPtr)
         if (id == -1) {
             throw BusinessException(BASE_MEDIA_ERR, "[PixelMap] createPixelMap: create failed!")
@@ -126,175 +124,10 @@ public func createPixelMap(colors: Array<UInt8>, opts: InitializationOptions): P
 }
 
 /**
- * Create an empty pixelmap.
- *
- * @param { InitializationOptions } options Initialization options for pixelmap.
- * @returns { PixelMap } Returns the instance if the operation is successful;Otherwise, return undefined.
- * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
- * 2.Incorrect parameter types. 3.Parameter verification failed.
- * @syscap SystemCapability.Multimedia.Image.Core
- * @crossplatform
- */
-@!APILevel[
-    19,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.Core"
-]
-public func createPixelMap(opts: InitializationOptions): PixelMap {
-    unsafe {
-        let id = FfiImagePixelMapImplCreatePixelMap(opts.toExternal())
-        if (id == -1) {
-            throw BusinessException(BASE_MEDIA_ERR, "[PixelMap] createPixelMap: create failed!")
-        }
-        return PixelMap(id)
-    }
-}
-
-/**
- * Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha format.
- *
- * @param { PixelMap } src The source pixelMap.
- * @param { PixelMap } dst The destination pixelmap.
- * If the operation fails, an error message is returned.
- * @throws { BusinessException } 62980103 - The image data is not supported.
- * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
- * 2.Incorrect parameter types. 3.Parameter verification failed.
- * @throws { BusinessException } 62980246 - Failed to read the pixelMap.
- * @throws { BusinessException } 62980248 - Pixelmap not allow modify.
- * @syscap SystemCapability.Multimedia.Image.Core
- * @crossplatform
- */
-@!APILevel[
-    19,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.Core"
-]
-public func createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Unit {
-    let errCode = unsafe { FfiImagePixelMapImplCreatePremultipliedPixelMap(src.getID(), dst.getID()) }
-    checkRet(errCode, "[PixelMap] createPremultipliedPixelMap:")
-}
-
-/**
- * Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha format.
- *
- * @param { PixelMap } src The source pixelmap.
- * @param { PixelMap } dst The destination pixelmap.
- * If the operation fails, an error message is returned.
- * @throws { BusinessException } 62980103 - The image data is not supported.
- * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
- * 2.Incorrect parameter types. 3.Parameter verification failed.
- * @throws { BusinessException } 62980246 - Failed to read the pixelMap.
- * @throws { BusinessException } 62980248 - Pixelmap not allow modify.
- * @syscap SystemCapability.Multimedia.Image.Core
- * @crossplatform
- */
-@!APILevel[
-    19,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.Core"
-]
-public func createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Unit {
-    let errCode = unsafe { FfiImagePixelMapImplCreateUnpremultipliedPixelMap(src.getID(), dst.getID()) }
-    checkRet(errCode, "[PixelMap] createUnpremultipliedPixelMap:")
-}
-
-/**
- * Creates a PixelMap object based on MessageSequence parameter.
- *
- * @param { MessageSequence } sequence - MessageSequence parameter.
- * @returns { PixelMap } Returns the instance if the operation is successful;Otherwise, an exception will be thrown.
- * @throws { BusinessException } 62980096 - Operation failed.
- * @throws { BusinessException } 62980097 - IPC error.
- * @throws { BusinessException } 62980115 - Invalid input parameter.
- * @throws { BusinessException } 62980105 - Failed to get the data.
- * @throws { BusinessException } 62980177 - Abnormal API environment.
- * @throws { BusinessException } 62980178 - Failed to create the PixelMap.
- * @throws { BusinessException } 62980179 - Abnormal buffer size.
- * @throws { BusinessException } 62980180 - FD mapping failed.
- * @throws { BusinessException } 62980246 - Failed to read the PixelMap.
- * @syscap SystemCapability.Multimedia.Image.Core
- * @relation createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap;
- */
-@!APILevel[
-    20,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.Core"
-]
-public func createPixelMapFromParcel(sequence: MessageSequence): PixelMap {
-    var errCode: UInt32 = 0
-    let pixelMap = unsafe { FfiImagePixelMapImplCreatePixelMapFromParcel(sequence.getID(), inout errCode) }
-    checkRetFor20(errCode)
-    return PixelMap(pixelMap)
-}
-
-/**
- * Creates a PixelMap object from surface id.
- *
- * @param { String } surfaceId - surface id.
- * @param { Region } region - The region to surface.
- * @returns { PixelMap } Returns the instance if the operation is successful;Otherwise, an exception will be thrown.
- * @throws { BusinessException } 62980115 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
- *     2.Incorrect parameter types. 3.Parameter verification failed.
- * @throws { BusinessException } 62980105 - Failed to get the data.
- * @throws { BusinessException } 62980178 - Failed to create the PixelMap.
- * @relation createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap;
- */
-@!APILevel[
-    20,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.Core"
-]
-public func createPixelMapFromSurface(surfaceId: String, region: Region): PixelMap {
-    var errCode: UInt32 = 0
-    unsafe {
-        let id = LibC.mallocCString(surfaceId)
-        let pixelMap = FfiImagePixelMapImplCreatePixelMapFromSurface(id, region.toExternal(), ARG_SIZE_TWO,
-            inout errCode)
-        LibC.free(id)
-        checkRetFor20(errCode)
-        return PixelMap(pixelMap)
-    }
-}
-
-/**
- * Creates a PixelMap object from surface id.
- *
- * @param { String } surfaceId - surface id.
- * @returns { PixelMap } Returns the instance if the operation is successful;Otherwise, an exception will be thrown.
- * @throws { BusinessException } 62980115 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
- *     2.Incorrect parameter types. 3.Parameter verification failed.
- * @throws { BusinessException } 62980105 - Failed to get the data.
- * @throws { BusinessException } 62980178 - Failed to create the PixelMap.
- * @relation createPixelMapFromSurfaceSync(surfaceId: string): PixelMap;
- */
-@!APILevel[
-    20,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.Core"
-]
-public func createPixelMapFromSurface(surfaceId: String): PixelMap {
-    var errCode: UInt32 = 0
-    unsafe {
-        let id = LibC.mallocCString(surfaceId)
-        let pixelMap = FfiImagePixelMapImplCreatePixelMapFromSurface(id, CRegion(CSize(0, 0), 0, 0), ARG_SIZE_ONE,
-            inout errCode)
-        LibC.free(id)
-        checkRetFor20(errCode)
-        return PixelMap(pixelMap)
-    }
-}
-
-/**
  * PixelMap instance.
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -317,9 +150,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -343,7 +173,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -358,34 +187,8 @@ public class PixelMap <: RemoteDataLite {
         }
     }
 
-    /**
-     * Releases this PixelMap object. This method return the result.
-     *
-     * @brief release(): Promise<void>
-     */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
-        deprecated: 19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func Release(): Unit {
-        unsafe {
-            let ret = FfiOHOSPixelMapRelease(getID())
-            checkRet(ret, "[PixelMap] Release:")
-            releaseFFIData(getID())
-        }
-        IMAGE_LOG.info("[PixelMap] ffi release success")
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -407,9 +210,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -431,9 +231,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -455,9 +252,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -482,9 +276,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -505,9 +296,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -528,9 +316,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -551,9 +336,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -573,42 +355,12 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public func scale(x: Float32, y: Float32): Unit {
         unsafe {
             let ret = FfiOHOSScale(getID(), x, y)
-            checkRet(ret, "[PixelMap] scale:")
-        }
-    }
-
-    /**
-     * Image zoom in width and height width with anti-aliasing. This method uses a promise to return the result.
-     *
-     * @param { Float32 } x The zoom value of width.
-     * @param { Float32 } y The zoom value of height.
-     * @param { AntiAliasingLevel } level The anti-aliasing algorithm to be used.
-     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
-     * 2.Incorrect parameter types. 3.Parameter verification failed.
-     * @throws { BusinessException } 501 - Resource Unavailable.
-     * @syscap SystemCapability.Multimedia.Image.Core
-     * @crossplatform
-     * @form
-     * @atomicservice
-     */
-    @!APILevel[
-        19,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func scale(x: Float32, y: Float32, level: AntiAliasingLevel): Unit {
-        unsafe {
-            let ret = FfiImagePixelMapImplScale(getID(), x, y, level.value)
             checkRet(ret, "[PixelMap] scale:")
         }
     }
@@ -622,9 +374,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -643,9 +392,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -665,9 +411,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -686,9 +429,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -708,9 +448,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -735,9 +472,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -763,9 +497,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -788,7 +519,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -809,7 +539,6 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -834,91 +563,13 @@ public class PixelMap <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    public func applyColorSpace(colorSpace: ColorSpaceManager): Unit {
+    public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit {
         unsafe {
-            let ret = FfiOHOSPixelMapApplyColorSpace(getID(), colorSpace.getID())
+            let ret = FfiOHOSPixelMapApplyColorSpace(getID(), targetColorSpace.getID())
             checkRet(ret, "[PixelMap] applyColorSpace:")
         }
-    }
-
-    /**
-     * Convert pixelmap to standard dynamic range.
-     *
-     * @throws { BusinessException } 62980137 - Invalid image operation.
-     * @syscap SystemCapability.Multimedia.Image.Core
-     */
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func toSdr(): Unit {
-        let errCode = unsafe { FfiImagePixelMapImplToSdr(getID()) }
-        checkRet(errCode, "[PixelMap] toSdr:")
-    }
-
-    /**
-     * Marshalling pixelmap and write into MessageSequence.
-     *
-     * @param { MessageSequence } sequence MessageSequence parameter.
-     * @throws { BusinessException } 62980115 - Invalid image parameter.
-     * @throws { BusinessException } 62980097 - IPC error.
-     * @relation marshalling(sequence: rpc.MessageSequence): void;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func marshalling(sequence: MessageSequence): Unit {
-        let errCode = unsafe { FfiImagePixelMapImplMarshalling(getID(), sequence.getID()) }
-        checkRetFor20(errCode)
-    }
-
-    /**
-     * Creates a PixelMap object based on MessageSequence parameter.
-     *
-     * @param { MessageSequence } sequence MessageSequence parameter.
-     * @returns { PixelMap } Return the PixelMap object.
-     * @throws { BusinessException } 62980115 - Invalid image parameter.
-     * @throws { BusinessException } 62980097 - IPC error.
-     * @throws { BusinessException } 62980096 - The operation failed.
-     * @relation unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func unmarshalling(sequence: MessageSequence): PixelMap {
-        var errCode: UInt32 = 0
-        let pixelMap = unsafe { FfiImagePixelMapImplUnmarshalling(getID(), sequence.getID(), inout errCode) }
-        checkRetFor20(errCode)
-        return PixelMap(pixelMap)
-    }
-
-    /**
-     * The method is used for the transformation of the image formats. Pixel data will be changed by calling this method.
-     *
-     * @param { PixelMapFormat } targetPixelFormat - The pixel format for pixelmap conversion.
-     * @throws { BusinessException } 62980115 - Invalid input parameter.
-     * @throws { BusinessException } 62980111 - The image source data is incomplete.
-     * @throws { BusinessException } 62980274 - The conversion failed.
-     * @throws { BusinessException } 62980276 - The type to be converted is an unsupported target pixel format.
-     * @throws { BusinessException } 62980178 - Failed to create the pixelmap.
-     * @relation onvertPixelFormat(targetPixelFormat: PixelMapFormat): Promise<void>;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func convertPixelFormat(targetPixelFormat: PixelMapFormat): Unit {
-        let errCode = unsafe { FfiImagePixelMapImplConvertPixelMapFormat(getID(), targetPixelFormat.getValue()) }
-        checkRetFor20(errCode)
     }
 }

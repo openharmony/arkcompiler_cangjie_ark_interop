@@ -99,17 +99,6 @@ public class ImageCreator <: RemoteDataLite {
 
     @!APILevel[
         12,
-        deprecated: 19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageCreator"
-    ]
-    public func Release(): Unit {
-        unsafe { FFiOHOSImageCreatorRelease(getID()) }
-        releaseFFIData(getID())
-    }
-
-    @!APILevel[
-        12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageCreator"
     ]
@@ -127,29 +116,9 @@ public class ImageCreator <: RemoteDataLite {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageCreator"
 ]
-public func createImageCreator(width: Int32, height: Int32, format: Int32, capacity: Int32): ImageCreator {
-    if (width <= 0 || height <= 0 || format < 0 || capacity < 0) {
+public func createImageCreator(size: Size, format: Int32, capacity: Int32): ImageCreator {
+    if (size.width <= 0 || size.height <= 0 || format < 0 || capacity < 0) {
         throw BusinessException(ERR_PARAMETER_ERROR, "[createImageCreator] createImageCreator: Invalid param.")
     }
-    return ImageCreator(width, height, format, capacity)
-}
-
-/**
- * Creates an ImageCreator instance.
- *
- * @param { Size } size - The default {@link Size} in pixels of the Images that this creator will produce.
- * @param { ImageFormat } format - The format of the Image that this creator will produce. This must be one of the
- *            {@link ImageFormat} constants.
- * @param { Int32 } capacity - The maximum number of images the user will want to access simultaneously.
- * @returns { ImageCreator } Returns the ImageCreator instance if the operation is successful; returns null otherwise.
- * @throws { BusinessException } 401 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;
- * @syscap SystemCapability.Multimedia.Image.ImageCreator
- */
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.ImageCreator"
-]
-public func createImageCreator(size: Size, format: Int32, capacity: Int32): ImageCreator {
-    createImageCreator(size.width, size.height, format, capacity)
+    return ImageCreator(size.width, size.height, format, capacity)
 }

@@ -35,14 +35,14 @@ foreign {
 
     func FfiOHOSImagePackerGetSupportedFormats(packerId: Int64): RetDataCArrString
 
-    func FfiOHOSImagePackerPackPixelMapToFile(packerId: Int64, sourceId: Int64, fd: IntNative, option: CPackingOption): UInt32
+    func FfiOHOSImagePackerPackPixelMapToFile(packerId: Int64, sourceId: Int64, fd: Int32, option: CPackingOption): UInt32
 
-    func FfiOHOSImagePackerPackPixelMapToFileV2(packerId: Int64, sourceId: Int64, fd: IntNative,
+    func FfiOHOSImagePackerPackPixelMapToFileV2(packerId: Int64, sourceId: Int64, fd: Int32,
         option: CPackingOptionV2): UInt32
 
-    func FfiOHOSImagePackerImageSourcePackToFile(packerId: Int64, sourceId: Int64, fd: IntNative, option: CPackingOption): UInt32
+    func FfiOHOSImagePackerImageSourcePackToFile(packerId: Int64, sourceId: Int64, fd: Int32, option: CPackingOption): UInt32
 
-    func FfiOHOSImagePackerImageSourcePackToFileV2(packerId: Int64, sourceId: Int64, fd: IntNative,
+    func FfiOHOSImagePackerImageSourcePackToFileV2(packerId: Int64, sourceId: Int64, fd: Int32,
         option: CPackingOptionV2): UInt32
 
     func FFiOHOSImagePackerRelease(id: Int64): Unit
@@ -53,14 +53,12 @@ foreign {
 
     func FfiImageImagePackerImplPackingPicture(packerId: Int64, sourceId: Int64, option: CPackingOptionV2): RetDataCArrUI8
 
-    func FfiImageImagePackerImplPackToFilePicture(packerId: Int64, sourceId: Int64, fd: IntNative,
+    func FfiImageImagePackerImplPackToFilePicture(packerId: Int64, sourceId: Int64, fd: Int32,
         option: CPackingOptionV2): UInt32
 }
 
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImagePacker"
 ]
@@ -75,7 +73,6 @@ public class ImagePacker <: RemoteDataLite {
 
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -85,33 +82,6 @@ public class ImagePacker <: RemoteDataLite {
             checkRet(UInt32(cValue.code), "[ImagePacker] supportedFormats:")
             let arr = cValue.getDataAndFree()
             return arr
-        }
-    }
-
-    /**
-     * Compresses or packs an image and uses a promise to return the result.
-     *
-     * @param { ImageSource } source Image to be processed.
-     * @param { PackingOption } option Option for image packing.
-     * @returns { Array<UInt8> } Return the compressed or packed data.
-     * @relation packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>;
-     */
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        deprecated: 20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImagePacker"
-    ]
-    public func packing(source: ImageSource, option: PackingOption): Array<UInt8> {
-        let cOption = CPackingOptionV2(option)
-        let cValue = unsafe { FfiOHOSImagePackerPackingImageSourceV2(this.getID(), source.getID(), cOption) }
-        cOption.free()
-        try {
-            return parsePackingRes(cValue)
-        } finally {
-            unsafe { LibC.free(cValue.data.head) }
         }
     }
 
@@ -134,41 +104,12 @@ public class ImagePacker <: RemoteDataLite {
      */
     @!APILevel[
         20,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
     public func packToData(source: ImageSource, option: PackingOption): Array<UInt8> {
         let cOption = CPackingOptionV2(option)
         let cValue = unsafe { FfiImageImagePackerImplPackToDataImageSource(this.getID(), source.getID(), cOption) }
-        cOption.free()
-        try {
-            return parsePackingResFor20(cValue)
-        } finally {
-            unsafe { LibC.free(cValue.data.head) }
-        }
-    }
-
-    /**
-     * Compresses or packs an image and uses a promise to return the result.
-     *
-     * @param { PixelMap } source PixelMap to be processed.
-     * @param { PackingOption } option Option for image packing.
-     * @returns { Array<UInt8> } Return the compressed or packed data.
-     * @relation packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>;
-     */
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        deprecated: 20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImagePacker"
-    ]
-    public func packing(source: PixelMap, option: PackingOption): Array<UInt8> {
-        let cOption = CPackingOptionV2(option)
-        let cValue = unsafe { FfiOHOSImagePackerPackingPixelMapV2(this.getID(), source.getID(), cOption) }
         cOption.free()
         try {
             return parsePackingRes(cValue)
@@ -196,8 +137,6 @@ public class ImagePacker <: RemoteDataLite {
      */
     @!APILevel[
         20,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -206,50 +145,13 @@ public class ImagePacker <: RemoteDataLite {
         let cValue = unsafe { FfiImageImagePackerImplPackToDataPixelMap(this.getID(), source.getID(), cOption) }
         cOption.free()
         try {
-            return parsePackingResFor20(cValue)
-        } finally {
-            unsafe { LibC.free(cValue.data.head) }
-        }
-    }
-
-    /**
-     * Compresses or packs an image and uses a promise to return the result.
-     *
-     * @param { Picture } picture Picture to be processed.
-     * @param { PackingOption } options Option for image packing.
-     * @returns { Array<UInt8> } Return the compressed or packed data.
-     * @throws { BusinessException } 62980115 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.
-     * 2.Incorrect parameter types. 3.Parameter verification failed.
-     * @throws { BusinessException } 7800301 - Encode failed.
-     * @relation packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImagePacker"
-    ]
-    public func packing(source: Picture, option: PackingOption): Array<UInt8> {
-        let cOption = CPackingOptionV2(option)
-        let cValue = unsafe { FfiImageImagePackerImplPackingPicture(getID(), source.getID(), cOption) }
-        cOption.free()
-        try {
-            return parsePackingResFor20(cValue)
+            return parsePackingRes(cValue)
         } finally {
             unsafe { LibC.free(cValue.data.head) }
         }
     }
 
     func parsePackingRes(cValue: RetDataCArrUI8): Array<UInt8> {
-        checkRet(UInt32(cValue.code), "[ImagePacker] packing:")
-        let cArray = cValue.data
-        let array = Array<UInt8>(cArray.size, repeat: 0)
-        for (i in 0..cArray.size) {
-            array[i] = unsafe { cArray.head.read(i) }
-        }
-        return array
-    }
-
-    func parsePackingResFor20(cValue: RetDataCArrUI8): Array<UInt8> {
         checkRetFor20(UInt32(cValue.code))
         let cArray = cValue.data
         if (cArray.head.isNull()) {
@@ -281,11 +183,10 @@ public class ImagePacker <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
-    public func packToFile(source: PixelMap, fd: IntNative, option: PackingOption): Unit {
+    public func packToFile(source: PixelMap, fd: Int32, option: PackingOption): Unit {
         let cOption = CPackingOptionV2(option)
         let ret = unsafe { FfiOHOSImagePackerPackPixelMapToFileV2(this.getID(), source.getID(), fd, cOption) }
         cOption.free()
@@ -311,55 +212,18 @@ public class ImagePacker <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
-    public func packToFile(source: ImageSource, fd: IntNative, option: PackingOption): Unit {
+    public func packToFile(source: ImageSource, fd: Int32, option: PackingOption): Unit {
         let cOption = CPackingOptionV2(option)
         let ret = unsafe { FfiOHOSImagePackerImageSourcePackToFileV2(this.getID(), source.getID(), fd, cOption) }
         cOption.free()
         checkRet(ret, "[ImagePacker] packToFile:")
     }
 
-    /**
-     * Compresses or packs an image into a file and uses a promise to return the result.
-     *
-     * @param { Picture } picture Picture to be processed.
-     * @param { IntNative } fd ID of a file descriptor.
-     * @param { PackingOption } options Options for image packing.
-     * @throws { BusinessException } 62980115 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.
-     * 2.Incorrect parameter types. 3.Parameter verification failed.
-     * @throws { BusinessException } 7800301 - Encode failed.
-     * @relation packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImagePacker"
-    ]
-    public func packToFile(source: Picture, fd: IntNative, option: PackingOption): Unit {
-        let cOption = CPackingOptionV2(option)
-        let ret = unsafe { FfiImageImagePackerImplPackToFilePicture(getID(), source.getID(), fd, cOption) }
-        cOption.free()
-        checkRetFor20(ret)
-    }
-
     @!APILevel[
         12,
-        crossplatform: true,
-        deprecated: 19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImagePacker"
-    ]
-    public func Release(): Unit {
-        unsafe { FFiOHOSImagePackerRelease(getID()) }
-        releaseFFIData(getID())
-    }
-
-    @!APILevel[
-        12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -371,8 +235,6 @@ public class ImagePacker <: RemoteDataLite {
 
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImagePacker"
 ]

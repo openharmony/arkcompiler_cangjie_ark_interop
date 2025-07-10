@@ -25,8 +25,6 @@ ohos_cj_library("ohos.image") {
     "src/image_packer.cj",
     "src/image_receiver.cj",
     "src/image_source.cj",
-    "src/metadata.cj",
-    "src/picture.cj",
     "src/pixel_map.cj",
   ]
 
@@ -37,7 +35,6 @@ ohos_cj_library("ohos.image") {
     "../hilog:ohos.hilog",
     "../resource_manager:ohos.resource_manager",
     "../labels:ohos.labels",
-    "../rpc:ohos.rpc",
   ]
 
   external_deps = [ "image_framework:cj_image_ffi" ]
