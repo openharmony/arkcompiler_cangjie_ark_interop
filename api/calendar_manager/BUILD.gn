@@ -17,20 +17,14 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 ohos_cj_library("ohos.calendar_manager") {
   sources = [
     "src/calendar_manager.cj",
-    "src/calendar.cj",
-    "src/calendar_manager_ffi.cj",
     "src/event.cj",
-    "src/event_filter.cj"
   ]
 
   cj_deps = [
-    "../ability:ohos.ability",
     "../arkui/cj:ohos.base",
-    "../ffi_bind:ohos.ffi",
-    "../hilog:ohos.hilog",
-    "../labels:ohos.labels",
-    "../data_share_predicates:ohos.data_share_predicates",
     "../encoding:ohos.encoding.json",
+    "../ffi_bind:ohos.ffi",
+    "../labels:ohos.labels",
   ]
 
   external_deps = [ "calendar_data:cj_calendar_manager_ffi" ]

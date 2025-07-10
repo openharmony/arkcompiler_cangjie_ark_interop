@@ -108,39 +108,6 @@ public class WebCookieManager {
     }
 
     /**
-     * Set a single cookie (key-value pair) for the given URL.
-     *
-     * @param { String } url - The URL for which the cookie is to be set.
-     * @param { String } value - The cookie as a string, using the format of the 'Set-Cookie' HTTP response header.
-     * @param { Bool } incognito - {@code true} gets all cookies for the given URL
-     *                                in incognito mode; {@code false} otherwise.
-     * @param { Bool } includeHttpOnly - {@code true} HTTP-only cookies can also be overwritten;
-     *                                      {@code false} otherwise.
-     * @throws { BusinessException } 401 - Invalid input parameter.
-     * @throws { BusinessException } 17100002 - Invalid url.
-     * @throws { BusinessException } 17100005 - Invalid cookie value.
-     * @relation static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void;
-     */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public static func configCookie(url: String, value: String, incognito!: Bool, includeHttpOnly!: Bool): Unit {
-        if (url.size > MAX_STRING_LENGTH || value.size > MAX_STRING_LENGTH) {
-            throw BusinessException(ERR_PARAMETER_ERROR, "Invalid input parameter: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
-        }
-        var errCode: Int32 = 0
-        unsafe {
-            try (curl = LibC.mallocCString(url).asResource(), cvalue = LibC.mallocCString(value).asResource()) {
-                errCode = FfiOHOSCookieMgrCfgCookieSync(curl.value, cvalue.value, incognito, includeHttpOnly)
-            }
-        }
-        throwIfNotSuccess(errCode, "WebCookieManager", "configCookie")
-    }
-
-    /**
      * Set whether the instance should send and accept cookies.
      * By default this is set to be true.
      *
@@ -266,23 +233,6 @@ public class WebCookieManager {
     public static func clearSessionCookie(): Unit {
         unsafe {
             FfiOHOSCookieMgrClearSessionCookieSync()
-        }
-    }
-
-    /**
-     * Save the cookies Asynchronously.
-     * @brief static saveCookieAsync(callback: AsyncCallback<void>): void
-     */
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Web.Webview.Core"
-    ]
-    public static func saveCookie(callback: () -> Unit): Unit {
-        unsafe {
-            let lambdaData = Callback0Param<Unit>(callback)
-            FfiOHOSCookieMgrSaveCookieAsync(lambdaData.getID())
         }
     }
 }

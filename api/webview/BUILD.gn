@@ -16,23 +16,8 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.webview") {
   sources = [
-    "src/ads_block_manager.cj",
-    "src/back_forward_cache_options.cj",
-    "src/back_forward_cache_supported_features.cj",
     "src/geolocation_permissions.cj",
-    "src/js_message_ext.cj",
     "src/web_cookie_manager.cj",
-    "src/web_data_base.cj",
-    "src/web_download_delegate.cj",
-    "src/web_download_item.cj",
-    "src/web_download_manager.cj",
-    "src/web_interceptor_handler.cj",
-    "src/web_media_player_bridge.cj",
-    "src/web_media_player_handler.cj",
-    "src/web_message_ext.cj",
-    "src/web_message_port.cj",
-    "src/web_scheme_handler_response.cj",
-    "src/web_storage.cj",
     "src/webview_common.cj",
     "src/webview_controller.cj",
     "src/webview_ffi.cj",
@@ -45,10 +30,9 @@ ohos_cj_library("ohos.webview") {
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../image:ohos.image",
+    "../labels:ohos.labels",
     "../resource_manager:ohos.resource_manager",
     "../web/net_error_list:ohos.web.net_error_list",
-    "../labels:ohos.labels",
-    "../security_certificate_framework:ohos.cert"
   ]
 
   external_deps = [ "webview:cj_webview_ffi" ]
