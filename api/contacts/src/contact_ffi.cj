@@ -154,42 +154,6 @@ struct CachedKeysValuesBucket {
     }
 }
 
-// one holder resides in one ValuesBucket
-type CHolders = CContactData
-
-// one holder resides in one ValuesBucket
-type CGroups = CContactData
-
-@C
-struct CContactData {
-    static let NULL = CPointer<CContactData>()
-
-    CContactData(let data: CPointer<CachedKeysValuesBucket>, let bucketCount: Int64) {}
-
-    func free(alsoFreeKeysContent!: Bool = false) {
-        unsafe {
-            for (i in 0..bucketCount) {
-                data.read(i).free(alsoFreeKeysContent: alsoFreeKeysContent)
-            }
-            LibC.free(data)
-        }
-    }
-}
-
-@C
-struct CContactsData {
-    CContactsData(let contacts: CPointer<CContactData>, let contactsCount: Int64) {}
-
-    func free(alsoFreeKeysContent!: Bool = false) {
-        unsafe {
-            for (i in 0..contactsCount) {
-                contacts.read(i).free(alsoFreeKeysContent: alsoFreeKeysContent)
-            }
-            LibC.free(contacts)
-        }
-    }
-}
-
 func calloc<T>(count!: Int64 = 1): CPointer<T> where T <: CType {
     return CPointer<T>(unsafe { calloc(UIntNative(count), sizeOf<T>()) })
 }
@@ -206,25 +170,4 @@ func mallocCString(str: String): Option<CString> {
 
 foreign {
     func calloc(nitems: UIntNative, size: UIntNative): CPointer<Unit>
-
-    func FfiOHOSContactAddContact(contextId: Int64, rawContact: CPointer<CachedKeysValuesBucket>,
-        contactData: CPointer<CContactData>, errCode: CPointer<Int32>): Int64
-
-    func FfiOHOSContactDeleteContact(contextId: Int64, predicatesId: Int64, errCode: CPointer<Int32>): Unit
-
-    func FfiOHOSContactUpdateContact(contextId: Int64, contactId: Int64, contactData: CPointer<CContactData>,
-        predicatesId: Int64, errCode: CPointer<Int32>): Unit
-
-    func FfiOHOSContactIsLocalContact(contextId: Int64, contactId: Int64, errCode: CPointer<Int32>): Bool
-
-    func FfiOHOSContactIsMyCard(contextId: Int64, contactId: Int64, errCode: CPointer<Int32>): Bool
-
-    func FfiOHOSContactQueryMyCard(contextId: Int64, predicatesId: Int64, errCode: CPointer<Int32>): CPointer<CContactsData>
-
-    func FfiOHOSContactQueryHolders(contextId: Int64, errCode: CPointer<Int32>): CPointer<CHolders>
-
-    // is used for contact, contacts, contactsByEmail, contactsByPhone and also for queryKey
-    func FfiOHOSContactQueryContacts(contextId: Int64, predicatesId: Int64, errCode: CPointer<Int32>): CPointer<CContactsData>
-
-    func FfiOHOSContactQueryGroups(contextId: Int64, predicatesId: Int64, errCode: CPointer<Int32>): CPointer<CGroups>
 }

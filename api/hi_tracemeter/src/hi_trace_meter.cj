@@ -24,8 +24,6 @@ foreign {
     func FfiOHOSHiTraceStartAsyncTrace(name: CString, taskId: Int32): Unit
 
     func FfiOHOSHiTraceFinishAsyncTrace(name: CString, taskId: Int32): Unit
-
-    func FfiOHOSHiTraceCountTrace(name: CString, taskId: Int32): Unit
 }
 
 @!APILevel[
@@ -56,19 +54,6 @@ public class HiTraceMeter {
         unsafe {
             try (cName = LibC.mallocCString(name).asResource()) {
                 FfiOHOSHiTraceFinishAsyncTrace(cName.value, taskId)
-            }
-        }
-    }
-
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiTrace"
-    ]
-    public static func traceByValue(name: String, count: Int32): Unit {
-        unsafe {
-            try (cName = LibC.mallocCString(name).asResource()) {
-                FfiOHOSHiTraceCountTrace(cName.value, count)
             }
         }
     }

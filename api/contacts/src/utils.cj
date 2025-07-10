@@ -114,34 +114,11 @@ func equals(cString: CString, chars: CPointer<UInt8>): Bool {
     return cmpRet == 0
 }
 
-// EMPTY bucket is returned for empty value produced by detail_info
-func singleStringAsValuesBucket(content_type: String, detail_info: () -> String): Option<CachedKeysValuesBucket> {
-    let valueString = detail_info()
-    if (valueString.size > 0 && let Some(cContentTypeStr) <- CS_CONTENT_TYPE && let Some(cDetailInfoStr) <- CS_DETAIL_INFO) {
-        CachedKeysValuesBucket.create([(cContentTypeStr, content_type), (cDetailInfoStr, valueString)])
-    } else {
-        CachedKeysValuesBucket.EMPTY
-    }
-}
-
 func createStrFromCPointer(chars: CPointer<UInt8>): String {
     if (chars.isNotNull()) {
         CString(chars).toString()
     } else {
         LOG.error("createStrFromCPointer gets the null pointer, so it returns empty string")
         ""
-    }
-}
-
-func detailInfoFromValuesBucket(bucket: CachedKeysValuesBucket): String {
-    match (bucket.lookupKey(CS_DETAIL_INFO, reverse: true)) {
-        case Some(cStr) => createStrFromCPointer(cStr.string)
-        case None => ""
-    }
-}
-
-func appendNonEmptyAttr(list: ArrayList<(CString, String)>, aKey: Option<CString>, aVal: String): Unit {
-    if (aVal.size > 0 && let Some(cAKeyStr) <- aKey) {
-        list.add((cAKeyStr, aVal))
     }
 }
