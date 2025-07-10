@@ -781,28 +781,6 @@ public class RdbPredicates <: RemoteDataLite {
         }
         return this
     }
-
-    /**
-     * @brief  indexedBy(field: string): RdbPredicates
-     */
-    @!APILevel[
-        19,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
-    ]
-    public func indexedBy(field: String): RdbPredicates {
-        if (field.isEmpty()) {
-            RELATIONAL_STORE_LOG.error("RdbPredicates indexedBy failed: ${paramError("field", "not empty string")}")
-            throw BusinessException(getErrorCode(ERR_PARAMETER_ERROR),
-                "RdbPredicates indexedBy failed: ${paramError("field", "not empty string")}")
-        }
-        try (cfield = unsafe { LibC.mallocCString(field).asResource() }) {
-            let code = unsafe { FfiOHOSRelationalStoreIndexedBy(getID(), cfield.value) }
-            throwIfNotSuccess(code, "RdbPredicates", "indexedBy")
-        }
-        return this
-    }
 }
 
 func createRdbPredicates(name: String): Int64 {
