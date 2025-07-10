@@ -18,6 +18,7 @@ ohos_cj_library("ohos.webview") {
   sources = [
     "src/geolocation_permissions.cj",
     "src/web_cookie_manager.cj",
+    "src/web_storage.cj",
     "src/webview_common.cj",
     "src/webview_controller.cj",
     "src/webview_ffi.cj",
@@ -32,7 +33,6 @@ ohos_cj_library("ohos.webview") {
     "../image:ohos.image",
     "../labels:ohos.labels",
     "../resource_manager:ohos.resource_manager",
-    "../web/net_error_list:ohos.web.net_error_list",
   ]
 
   external_deps = [ "webview:cj_webview_ffi" ]

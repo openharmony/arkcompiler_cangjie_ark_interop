@@ -719,3 +719,220 @@ public enum RecurrenceFrequency {
         }
     }
 }
+
+/**
+ * Defines event service information
+ *
+ * @relation export interface EventService
+ */
+@!APILevel[
+    20,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Applications.CalendarData"
+]
+public class EventService {
+    /**
+     * Type of the EventService.
+     *
+     * @relation type: ServiceType;
+     */
+    @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    public var `type`: ServiceType
+    /**
+     * Uri of the EventService.
+     *
+     * @relation uri: string;
+     */
+    @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    public var uri: String
+    /**
+     * Description of the EventService.
+     *
+     * @relation description?: string;
+     */
+    @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    public var description: String
+
+    @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    public EventService(`type`: ServiceType, uri: String, description!: String = "") {
+        this.`type` = `type`
+        this.uri = uri
+        this.description = description
+    }
+}
+
+/**
+ * Defines event service type
+ *
+ * @relation export enum ServiceType
+ */
+@!APILevel[
+    20,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Applications.CalendarData"
+]
+public enum ServiceType <: ToString {
+    /**
+     * Meeting event.
+     *
+     * @relation MEETING = 'Meeting'
+     */
+    @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Meeting
+    |
+        /**
+         * Watch drama event.
+         *
+         * @relation WATCHING = 'Watching'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Watching
+    |
+        /**
+         * Repayment event.
+         *
+         * @relation REPAYMENT = 'Repayment'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Repayment
+    |
+        /**
+         * Live event.
+         *
+         * @relation LIVE = 'Live'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Live
+    |
+        /**
+         * Shopping event.
+         *
+         * @relation SHOPPING = 'Shopping'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Shopping
+    |
+        /**
+         * trip event.
+         *
+         * @relation TRIP = 'Trip'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Trip
+    |
+        /**
+         * Class event.
+         *
+         * @relation CLASS = 'Class'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    Class
+    |
+        /**
+         * Sports game event.
+         *
+         * @relation SPORTS_EVENTS = 'SportsEvents'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    SportsEvents
+    |
+        /**
+         * Sports exercise event.
+         *
+         * @relation SPORTS_EXERCISE = 'SportsExercise'
+         */
+        @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    SportsExercise
+    | ...
+
+    func getValue(): String {
+        match (this) {
+            case Meeting => "Meeting"
+            case Watching => "Watching"
+            case Repayment => "Repayment"
+            case Live => "Live"
+            case Shopping => "Shopping"
+            case Trip => "Trip"
+            case Class => "Class"
+            case SportsEvents => "SportsEvents"
+            case SportsExercise => "SportsExercise"
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+
+    static func parse(val: String): ServiceType {
+        match (val) {
+            case "Meeting" => Meeting
+            case "Watching" => Watching
+            case "Repayment" => Repayment
+            case "Live" => Live
+            case "Shopping" => Shopping
+            case "Trip" => Trip
+            case "Class" => Class
+            case "SportsEvents" => SportsEvents
+            case "SportsExercise" => SportsExercise
+            case _ => throw IllegalArgumentException("ServiceType: unknown value ${val}")
+        }
+    }
+
+    @!APILevel[
+        20,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Applications.CalendarData"
+    ]
+    public func toString(): String {
+        getValue()
+    }
+}

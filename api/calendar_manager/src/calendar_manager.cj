@@ -15,7 +15,6 @@
 
 package ohos.calendar_manager
 
-import ohos.ability.*
 import ohos.base.*
 import std.collection.*
 import ohos.labels.*

@@ -99,6 +99,13 @@ public enum WebHitTestType {
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     Email
+    | @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    Unknown
     | ...
 
     static func fromInt32(code: Int32): WebHitTestType {
@@ -106,6 +113,61 @@ public enum WebHitTestType {
             case 0 => EditText
             case 1 => Email
             case _ => Unknown
+        }
+    }
+}
+
+@Derive[ToString, Equatable]
+@!APILevel[
+    19,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public enum OfflineResourceType {
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    IMAGE
+    | @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    CSS
+    | @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    CLASSIC_JS
+    | @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    MODULE_JS
+    | ...
+
+    static func fromInt32(code: Int32): OfflineResourceType {
+        match (code) {
+            case 0 => IMAGE
+            case 1 => CSS
+            case 2 => CLASSIC_JS
+            case 3 => MODULE_JS
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+
+    func getValue(): Int32 {
+        match (this) {
+            case IMAGE => 0
+            case CSS => 1
+            case CLASSIC_JS => 2
+            case MODULE_JS => 3
+            case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
@@ -146,6 +208,103 @@ public class WebHeader {
 }
 
 @!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public class CacheOptions {
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public CacheOptions(
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var responseHeaders: Array<WebHeader>
+    ) {}
+}
+
+@!APILevel[
+    19,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public class SnapshotInfo {
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public SnapshotInfo(
+        @!APILevel[
+            19,
+            atomicservice: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var id!: String = "",
+        @!APILevel[
+            19,
+            atomicservice: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var size!: SizeOptions = SizeOptions()
+    ) {}
+}
+
+@!APILevel[
+    19,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public class SnapshotResult {
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public SnapshotResult(
+        @!APILevel[
+            19,
+            atomicservice: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var id: ?String,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var image: ?PixelMap,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var status: ?Bool,
+        @!APILevel[
+            19,
+            atomicservice: true,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        public var size: ?SizeOptions
+    ) {}
+}
+
+@!APILevel[
     12,
     atomicservice: true,
     stagemodelonly: true,
@@ -168,6 +327,66 @@ public class HitTestValue {
         ]
         public let extra: String
     ) {}
+}
+
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public class OfflineResourceMap {
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public OfflineResourceMap(
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        var urlList: Array<String>,
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        var resource: Array<UInt8>,
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        var responseHeaders: Array<WebHeader>,
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Web.Webview.Core"
+        ]
+        var _type: OfflineResourceType
+    ) {}
+
+    func toCOfflineResourceMap(): COfflineResourceMap {
+        var resOfflineResourceMap = COfflineResourceMap()
+        try {
+            unsafe {
+                let arr: CPointer<CString> = cjArr2CArr<String, CString>(this.urlList, {str => LibC.mallocCString(str)}) {
+                    cstr => LibC.free(cstr)
+                }
+                resOfflineResourceMap.urlList = CArrString(arr, this.urlList.size)
+
+                resOfflineResourceMap.resourceSize = this.resource.size
+                resOfflineResourceMap.resource = LibC.malloc(count: this.resource.size)
+                resOfflineResourceMap.resource = cjArr2CArr<UInt8, UInt8>(this.resource, {byte: UInt8 => byte})
+                resOfflineResourceMap.responseHeaders = ArrWebHeader(this.responseHeaders) {}
+                resOfflineResourceMap._type = this._type.getValue()
+            }
+        } catch (e: Exception) {
+            resOfflineResourceMap.free()
+        }
+        return resOfflineResourceMap
+    }
 }
 
 @!APILevel[
@@ -218,4 +437,142 @@ public class HistoryItem {
         ]
         public let title: String
     ) {}
+}
+
+/**
+ * Defines the configuration of web custom scheme, related to {@link customizeSchemes} method.
+ *
+ * @relation interface WebCustomScheme
+ */
+@!APILevel[
+    20,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Web.Webview.Core"
+]
+public class WebCustomScheme {
+
+    /**
+     * Name of the custom scheme.
+     *
+     * @relation schemeName: string;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var schemeName: String
+    /**
+     * Whether Cross-Origin Resource Sharing is supported.
+     *
+     * @relation isSupportCORS: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isSupportCORS: Bool = true
+    /**
+     * Whether fetch request is supported.
+     *
+     * @relation isSupportFetch: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isSupportFetch: Bool = true
+    /**
+     * If isStandard is true, the scheme will be handled as a standard scheme. The standard
+     * schemes needs to comply with the URL normalization and parsing rules defined in Section 3.1 of RFC 1738,
+     *
+     * @relation isStandard?: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isStandard: Bool = true
+    /**
+     * If isLocal is true, the same security rules as those applied to the "file" URL will be
+     * used to handle the scheme.
+     *
+     * @relation isLocal?: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isLocal: Bool = true
+    /**
+     * If isDisplayIsolated is true, then the scheme can only be displayed from other content
+     * hosted using the same scheme.
+     *
+     * @relation isDisplayIsolated?: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isDisplayIsolated: Bool = true
+    /**
+     * If isSecure is true, the same security rules as those applied to the "https" URL will be
+     * used to handle the scheme.
+     *
+     * @relation isSecure?: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isSecure: Bool = true
+    /**
+     * If isCspBypassing is true, then this scheme can bypass Content Security Policy (CSP)
+     * checks. In most cases, this value should not be true when isStandard is true.
+     *
+     * @relation isCspBypassing?: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isCspBypassing: Bool = true
+    /**
+     * If isCodeCacheSupported is true, then the js of this scheme can generate code cache.
+     *
+     * @relation isCodeCacheSupported?: boolean;
+     */
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var isCodeCacheSupported: Bool = false
+
+    @!APILevel[
+        20,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(schemeName: String) {
+        this.schemeName = schemeName
+    }
 }

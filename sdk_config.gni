@@ -19,7 +19,8 @@ cangjie_systemapi_api = "${cangjie_systemapi}/api"
 
 cangjie_systemapi_libs = [
   {
-    label = "${cangjie_systemapi_api}/ability_access_ctrl:ohos.ability_access_ctrl"
+    label =
+        "${cangjie_systemapi_api}/ability_access_ctrl:ohos.ability_access_ctrl"
     lib_name = "ability_access_ctrl"
   },
   {
@@ -115,8 +116,7 @@ cangjie_systemapi_libs = [
     lib_name = "image"
   },
   {
-    label =
-        "${cangjie_systemapi_api}/multimedia/audio:ohos.multimedia.audio"
+    label = "${cangjie_systemapi_api}/multimedia/audio:ohos.multimedia.audio"
     lib_name = "multimedia.audio"
   },
   {
@@ -128,8 +128,7 @@ cangjie_systemapi_libs = [
     lib_name = "multimedia.photo_accesshelper"
   },
   {
-    label =
-        "${cangjie_systemapi_api}/multimedia_media:ohos.multimedia_media"
+    label = "${cangjie_systemapi_api}/multimedia_media:ohos.multimedia_media"
     lib_name = "multimedia_media"
   },
   {
@@ -145,8 +144,7 @@ cangjie_systemapi_libs = [
     lib_name = "preferences"
   },
   {
-    label =
-        "${cangjie_systemapi_api}/relational_store:ohos.relational_store"
+    label = "${cangjie_systemapi_api}/relational_store:ohos.relational_store"
     lib_name = "relational_store"
   },
   {
@@ -154,8 +152,7 @@ cangjie_systemapi_libs = [
     lib_name = "request.agent"
   },
   {
-    label =
-        "${cangjie_systemapi_api}/resource_manager:ohos.resource_manager"
+    label = "${cangjie_systemapi_api}/resource_manager:ohos.resource_manager"
     lib_name = "resource_manager"
   },
   {
@@ -175,8 +172,7 @@ cangjie_systemapi_libs = [
     lib_name = "settings"
   },
   {
-    label =
-        "${cangjie_systemapi_api}/system_date_time:ohos.system_date_time"
+    label = "${cangjie_systemapi_api}/system_date_time:ohos.system_date_time"
     lib_name = "system_date_time"
   },
   {
@@ -184,7 +180,8 @@ cangjie_systemapi_libs = [
     lib_name = "system_parameter_enhance"
   },
   {
-    label = "${cangjie_systemapi_api}/telephony/telephony_call:ohos.telephony_call"
+    label =
+        "${cangjie_systemapi_api}/telephony/telephony_call:ohos.telephony_call"
     lib_name = "telephony_call"
   },
   {
@@ -259,10 +256,6 @@ cangjie_kits = [
     lib_name = "CryptoArchitectureKit"
   },
   {
-    label = "${cangjie_systemapi}/kit:kit.DeviceCertificateKit"
-    lib_name = "DeviceCertificateKit"
-  },
-  {
     label = "${cangjie_systemapi}/kit:kit.ImageKit"
     lib_name = "ImageKit"
   },
@@ -309,7 +302,7 @@ cangjie_kits = [
   {
     label = "${cangjie_systemapi}/kit:kit.UniversalKeystoreKit"
     lib_name = "UniversalKeystoreKit"
-  }
+  },
 ]
 
 cangjie_hybird_libs = [

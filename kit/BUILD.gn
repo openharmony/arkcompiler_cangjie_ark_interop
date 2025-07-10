@@ -108,9 +108,7 @@ ohos_cj_library("kit.ArkWeb") {
 ohos_cj_library("kit.AudioKit") {
   sources = [ "AudioKit/index.cj" ]
 
-  cj_deps = [
-    "../api/multimedia/audio:ohos.multimedia.audio",
-  ]
+  cj_deps = [ "../api/multimedia/audio:ohos.multimedia.audio" ]
 
   kit = true
   lib_name = "AudioKit"
@@ -122,13 +120,13 @@ ohos_cj_library("kit.BasicServicesKit") {
   sources = [ "BasicServicesKit/index.cj" ]
 
   cj_deps = [
+    "../api/battery_info:ohos.battery_info",
+    "../api/common_event_manager:ohos.common_event_manager",
     "../api/device_info:ohos.device_info",
     "../api/request:ohos.request.agent",
     "../api/settings:ohos.settings",
-    "../api/common_event_manager:ohos.common_event_manager",
     "../api/system_date_time:ohos.system_date_time",
     "../api/system_parameter_enhance:ohos.system_parameter_enhance",
-    "../api/battery_info:ohos.battery_info",
   ]
 
   kit = true
@@ -139,11 +137,9 @@ ohos_cj_library("kit.BasicServicesKit") {
 
 ohos_cj_library("kit.CalendarKit") {
   sources = [ "CalendarKit/index.cj" ]
- 
-  cj_deps = [
-    "../api/calendar_manager:ohos.calendar_manager",
-  ]
- 
+
+  cj_deps = [ "../api/calendar_manager:ohos.calendar_manager" ]
+
   kit = true
   lib_name = "CalendarKit"
   subsystem_name = "arkcompiler"
@@ -153,9 +149,7 @@ ohos_cj_library("kit.CalendarKit") {
 ohos_cj_library("kit.CameraKit") {
   sources = [ "CameraKit/index.cj" ]
 
-  cj_deps = [
-    "../api/multimedia/camera:ohos.multimedia.camera",
-  ]
+  cj_deps = [ "../api/multimedia/camera:ohos.multimedia.camera" ]
 
   kit = true
   lib_name = "CameraKit"
@@ -217,19 +211,6 @@ ohos_cj_library("kit.CryptoArchitectureKit") {
   part_name = "cangjie_api"
 }
 
-ohos_cj_library("kit.DeviceCertificateKit") {
-  sources = [ "DeviceCertificateKit/index.cj" ]
-
-  cj_deps = [
-    "../api/security_certificate_framework:ohos.cert",
-  ]
-
-  kit = true
-  lib_name = "DeviceCertificateKit"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
 ohos_cj_library("kit.HybridUIKit") {
   sources = [ "HybridUIKit/index.cj" ]
 
@@ -247,9 +228,7 @@ ohos_cj_library("kit.HybridUIKit") {
 ohos_cj_library("kit.ImageKit") {
   sources = [ "ImageKit/index.cj" ]
 
-  cj_deps = [
-    "../api/image:ohos.image",
-  ]
+  cj_deps = [ "../api/image:ohos.image" ]
 
   kit = true
   lib_name = "ImageKit"
@@ -260,9 +239,7 @@ ohos_cj_library("kit.ImageKit") {
 ohos_cj_library("kit.IPCKit") {
   sources = [ "IPCKit/index.cj" ]
 
-  cj_deps = [
-    "../api/rpc:ohos.rpc",
-  ]
+  cj_deps = [ "../api/rpc:ohos.rpc" ]
 
   kit = true
   lib_name = "IPCKit"
@@ -309,7 +286,8 @@ ohos_cj_library("kit.MediaKit") {
 ohos_cj_library("kit.MediaLibraryKit") {
   sources = [ "MediaLibraryKit/index.cj" ]
 
-  cj_deps = [ "../api/multimedia/media_library:ohos.multimedia.photo_accesshelper" ]
+  cj_deps =
+      [ "../api/multimedia/media_library:ohos.multimedia.photo_accesshelper" ]
 
   kit = true
   lib_name = "MediaLibraryKit"
@@ -350,9 +328,7 @@ ohos_cj_library("kit.PerformanceAnalysisKit") {
 ohos_cj_library("kit.SensorServiceKit") {
   sources = [ "SensorServiceKit/index.cj" ]
 
-  cj_deps = [
-    "../api/sensor:ohos.sensor",
-  ]
+  cj_deps = [ "../api/sensor:ohos.sensor" ]
 
   kit = true
   lib_name = "SensorServiceKit"
@@ -363,9 +339,7 @@ ohos_cj_library("kit.SensorServiceKit") {
 ohos_cj_library("kit.TelephonyKit") {
   sources = [ "TelephonyKit/index.cj" ]
 
-  cj_deps = [
-    "../api/telephony/telephony_call:ohos.telephony_call",
-  ]
+  cj_deps = [ "../api/telephony/telephony_call:ohos.telephony_call" ]
 
   kit = true
   lib_name = "TelephonyKit"
