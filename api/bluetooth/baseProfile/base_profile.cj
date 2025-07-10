@@ -17,7 +17,6 @@ package ohos.bluetooth.baseProfile
 
 import std.deriving.*
 import ohos.base.*
-import ohos.bluetooth.common_util.*
 import ohos.bluetooth.constant.ProfileConnectionState
 import ohos.labels.*
 

@@ -23,8 +23,6 @@ foreign {
 
     func FfiBluetoothBleCreateGattClientDevice(deviceId: CString, errCode: CPointer<Int32>): Int64
 
-    func FfiBluetoothBleGetConnectedBleDevices(errCode: CPointer<Int32>): CArrString
-
     func FfiBluetoothBleStartBleScan(filters: CArrNativeScanFilter, options: CPointer<NativeScanOptions>,
         errCode: CPointer<Int32>): Unit
 
@@ -36,16 +34,6 @@ foreign {
     func FfiBluetoothBleStopAdvertising(errCode: CPointer<Int32>): Int64
 
     func FfiBluetoothBleStartAdvertisingWithId(advertisingParams: NativeAdvertisingParams, errCode: CPointer<Int32>): Int32
-
-    func FfiBluetoothBleEnableAdvertising(
-        advertisingEnableParams: NativeAdvertisingEnableParams,
-        errCode: CPointer<Int32>
-    ): Unit
-
-    func FfiBluetoothBleDisableAdvertising(
-        advertisingDisableParams: NativeAdvertisingDisableParams,
-        errCode: CPointer<Int32>
-    ): Unit
 
     func FfiBluetoothBleStopAdvertisingWithId(advertisingId: UInt32, errCode: CPointer<Int32>): Unit
 

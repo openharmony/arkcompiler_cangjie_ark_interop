@@ -17,7 +17,6 @@ package ohos.bluetooth.ble
 
 import std.deriving.*
 import ohos.bluetooth.constant.*
-import ohos.bluetooth.common_util.*
 import ohos.labels.*
 import ohos.bluetooth.*
 import ohos.base.*

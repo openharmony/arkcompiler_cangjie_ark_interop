@@ -20,42 +20,5 @@ import ohos.ffi.*
 
 foreign {
     // global ffi function
-    func FfiBluetoothConPairDevice(deviceId: CString, errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConGetRemoteDeviceName(deviceId: CString, errCode: CPointer<Int32>): CString
-
-    func FfiBluetoothConGetRemoteDeviceClass(deviceId: CString, errCode: CPointer<Int32>): CDeviceClass
-
-    func FfiBluetoothConGetRemoteProfileUuids(deviceId: CString, errCode: CPointer<Int32>): CArrString
-
-    func FfiBluetoothConGetLocalName(errCode: CPointer<Int32>): CString
-
-    func FfiBluetoothConGetPairedDevices(errCode: CPointer<Int32>): CArrString
-
-    func FfiBluetoothConGetPairState(deviceId: CString, errCode: CPointer<Int32>): Int32
-
-    func FfiBluetoothConGetProfileConnectionState(profileId: Int32, errCode: CPointer<Int32>): Int32
-
-    func FfiBluetoothConSetDevicePairingConfirmation(deviceId: CString, accept: Bool, errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConSetDevicePinCode(deviceId: CString, code: CString, errCode: CPointer<Int32>): Unit
-
     func FfiBluetoothConSetLocalName(name: CString, errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConSetBluetoothScanMode(mode: Int32, duration: Int32, errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConGetBluetoothScanMode(errCode: CPointer<Int32>): Int32
-
-    func FfiBluetoothConStartBluetoothDiscovery(errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConStopBluetoothDiscovery(errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConIsBluetoothDiscovering(errCode: CPointer<Int32>): Bool
-
-    func FfiBluetoothConSetRemoteDeviceName(deviceId: CString, name: CString, errCode: CPointer<Int32>): Unit
-
-    func FfiBluetoothConGetRemoteDeviceBatteryInfo(deviceId: CString, errCode: CPointer<Int32>): CBatteryInfo
-
-    // new on/off
-    func FfiBluetoothConOn(callbackType: Int32, id: Int64, errCode: CPointer<Int32>): Unit
 }
