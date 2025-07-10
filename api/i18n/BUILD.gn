@@ -16,20 +16,9 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.i18n") {
   sources = [
-    "src/break_iterator.cj",
     "src/calendar.cj",
-    "src/entity_recognizer.cj",
-    "src/holiday_manager.cj",
-    "src/i18_nutil.cj",
-    "src/i18n_addon.cj",
     "src/i18n_common.cj",
-    "src/i18n_phone_number_format.cj",
-    "src/index_util.cj",
-    "src/normalizer.cj",
     "src/system.cj",
-    "src/time_zone.cj",
-    "src/transliterator.cj",
-    "src/unicode.cj",
   ]
 
   cj_deps = [

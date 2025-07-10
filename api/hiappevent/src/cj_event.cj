@@ -266,55 +266,6 @@ public enum Event {
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
     APP_FREEZE
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    APP_LAUNCH
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    SCROLL_JANK
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    CPU_USAGE_HIGH
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    BATTERY_USAGE
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    RESOURCE_OVERLIMIT
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    ADDRESS_SANITIZER
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    MAIN_THREAD_JANK
     | ...
 
     @!APILevel[
@@ -331,13 +282,6 @@ public enum Event {
                 case DISTRIBUTED_SERVICE_START => "hiappevent.distributed_service_start"
                 case APP_CRASH => "APP_CRASH"
                 case APP_FREEZE => "APP_FREEZE"
-                case APP_LAUNCH => "APP_LAUNCH"
-                case SCROLL_JANK => "SCROLL_JANK"
-                case CPU_USAGE_HIGH => "CPU_USAGE_HIGH"
-                case BATTERY_USAGE => "BATTERY_USAGE"
-                case RESOURCE_OVERLIMIT => "RESOURCE_OVERLIMIT"
-                case ADDRESS_SANITIZER => "ADDRESS_SANITIZER"
-                case MAIN_THREAD_JANK => "MAIN_THREAD_JANK"
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -1033,42 +977,4 @@ func readValueType(valueType: UInt8, value: CPointer<Unit>, size: Int64): ValueT
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
-}
-
-@!APILevel[
-    20,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-]
-public enum ParamType {
-    @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    FLOAT(Float64)
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    STRING(String)
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    BOOL(Bool)
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    ARRSTRING(Array<String>)
-    | ...
 }

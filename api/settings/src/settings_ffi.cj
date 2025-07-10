@@ -21,19 +21,6 @@ import ohos.ffi.*
 type StageContext = CPointer<Unit>
 
 foreign {
-    func FfiSettingsSetValue(context: StageContext, name: CString, value: CString, domainName: CString,
-        ret: CPointer<Int32>): Bool
-
     func FfiSettingsGetValue(context: StageContext, name: CString, value: CString, domainName: CString,
         ret: CPointer<Int32>): CString
-
-    func FfiSettingsRegisterKeyObserver(context: StageContext, name: CString, domainName: CString, observer: Int64): Bool
-
-    func FfiSettingsUnregisterKeyObserver(context: StageContext, name: CString, domainName: CString): Bool
-
-    func FfiSettingsEnableAirplaneMode(enable: Bool, ret: CPointer<Int32>): Unit
-
-    func FfiSettingsCanShowFloating(ret: CPointer<Int32>): Bool
-
-    func FfiSettingsGetUriSync(name: CString, domainName: CString): CString
 }
