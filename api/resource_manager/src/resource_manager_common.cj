@@ -20,7 +20,6 @@ import std.collection.*
 import ohos.base.*
 import ohos.labels.*
 import std.deriving.Derive
-import ohos.bundle_manager.common.{getAPITargetVersion, API_VERSION_20}
 
 @!APILevel[
     12,
@@ -226,19 +225,15 @@ public class Configuration <: ToString {
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     public func toString(): String {
-        if (getAPITargetVersion() < API_VERSION_20) {
-            "direction:${direction.getValue()}, locale ${locale}"
-        } else {
-            let builder = StringBuilder("Configuration(")
-            builder.append("direction: ${direction.getValue()}, ")
-            builder.append("locale: ${locale}, ")
-            builder.append("deviceType: ${deviceType.getValue()}, ")
-            builder.append("screenDensity: ${screenDensity.getValue()}, ")
-            builder.append("colorMode: ${colorMode}, ")
-            builder.append("mcc: ${mcc}, ")
-            builder.append("mnc: ${mnc})")
-            builder.toString()
-        }
+        let builder = StringBuilder("Configuration(")
+        builder.append("direction: ${direction.getValue()}, ")
+        builder.append("locale: ${locale}, ")
+        builder.append("deviceType: ${deviceType.getValue()}, ")
+        builder.append("screenDensity: ${screenDensity.getValue()}, ")
+        builder.append("colorMode: ${colorMode}, ")
+        builder.append("mcc: ${mcc}, ")
+        builder.append("mnc: ${mnc})")
+        builder.toString()
     }
 
     func toRetConfigurationEx(): RetConfigurationEx {

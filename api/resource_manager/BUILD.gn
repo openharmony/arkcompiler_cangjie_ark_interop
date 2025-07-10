@@ -25,7 +25,6 @@ ohos_cj_library("ohos.resource_manager") {
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
-    "../bundle_manager/common:ohos.bundle_manager.common"
   ]
 
   external_deps = [ "resource_management:cj_resource_manager_ffi" ]
