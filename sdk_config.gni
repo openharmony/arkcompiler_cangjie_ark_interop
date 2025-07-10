@@ -83,6 +83,10 @@ cangjie_systemapi_libs = [
     lib_name = "distributed_kv_store"
   },
   {
+    label = "${cangjie_systemapi_api}/eventhub:ohos.eventhub"
+    lib_name = "eventhub"
+  },
+  {
     label = "${cangjie_systemapi_api}/file_fileuri:ohos.file_fileuri"
     lib_name = "file_fileuri"
   },

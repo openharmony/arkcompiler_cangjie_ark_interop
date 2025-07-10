@@ -66,37 +66,12 @@ func connectOptionsRelease(id: Int64): Unit {
     }
 }
 
-@!APILevel[
-    12,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public class ConnectOptions <: FFIData {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public var onConnect: (ElementName, IRemoteObject) -> Unit
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public var onDisconnect: (ElementName) -> Unit
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public var onFailed: (Int32) -> Unit
+class ConnectOptions <: FFIData {
+    var onConnect: (ElementName, IRemoteObject) -> Unit
+    var onDisconnect: (ElementName) -> Unit
+    var onFailed: (Int32) -> Unit
 
-    @!APILevel[
-        12,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public init(
+    init(
         onDisconnect: (ElementName) -> Unit,
         onFailed: (Int32) -> Unit
     ) {
@@ -107,12 +82,7 @@ public class ConnectOptions <: FFIData {
         registerSelf()
     }
 
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public init(
+    init(
         onConnect: (ElementName, IRemoteObject) -> Unit,
         onDisconnect: (ElementName) -> Unit,
         onFailed: (Int32) -> Unit

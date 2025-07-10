@@ -79,19 +79,13 @@ func abilityStageOnCreate(id: Int64): Unit {
 }
 
 @C
-func abilityStageOnDestroy(id: Int64): Unit {
-    let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
-    if (let Some(stage) <- optStage) {
-        stage.onDestroy()
-    }
-}
+func abilityStageOnDestroy(id: Int64): Unit {}
 
 @C
 func abilityStageOnAcceptWant(id: Int64, wantHandle: WantHandle): CString {
     let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
     if (let Some(stage) <- optStage) {
-        let want = Want(wantHandle)
-        let result = stage.onAcceptWant(want)
+        let result = ""
         unsafe { LibC.mallocCString(result) }
     } else {
         throw NoneValueException("No such AbilityStage!")
@@ -102,8 +96,7 @@ func abilityStageOnAcceptWant(id: Int64, wantHandle: WantHandle): CString {
 func abilityStageOnNewProcessRequest(id: Int64, wantHandle: WantHandle): CString {
     let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
     if (let Some(stage) <- optStage) {
-        let want = Want(wantHandle)
-        let result = stage.onNewProcessRequest(want)
+        let result = ""
         unsafe { LibC.mallocCString(result) }
     } else {
         throw NoneValueException("No such AbilityStage!")
@@ -116,23 +109,10 @@ func abilityStageOnConfigurationUpdated(_: Int64, _: CJConfiguration): Unit {
 }
 
 @C
-func abilityStageOnConfigurationUpdated2(id: Int64, cConfiguration: CConfiguration): Unit {
-    let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
-    if (let Some(stage) <- optStage) {
-        let config = cConfiguration.toConfiguration()
-        unsafe { cConfiguration.free() }
-        stage.contextUpdateConfig(config)
-        stage.onConfigurationUpdate(config)
-    }
-}
+func abilityStageOnConfigurationUpdated2(id: Int64, cConfiguration: CConfiguration): Unit {}
 
 @C
-func abilityStageOnMemoryLevel(id: Int64, level: Int32): Unit {
-    let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
-    if (let Some(stage) <- optStage) {
-        stage.onMemoryLevel(MemoryLevel.parse(level))
-    }
-}
+func abilityStageOnMemoryLevel(id: Int64, level: Int32): Unit {}
 
 @!APILevel[
     12,
@@ -205,14 +185,6 @@ public open class AbilityStage <: FFIData {
         abilityStageContext = Option<AbilityStageContext>.Some(value)
     }
 
-    func contextUpdateConfig(newConfig: AbilityConfiguration): Unit {
-        if (let Some(ctx) <- abilityStageContext) {
-            ctx.onConfigurationUpdated(newConfig)
-        } else {
-            throw Exception("Invalid context")
-        }
-    }
-
     @!APILevel[
         12,
         atomicservice: true,
@@ -221,50 +193,6 @@ public open class AbilityStage <: FFIData {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onCreate(): Unit {}
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onAcceptWant(want: Want): String {
-        ""
-    }
-
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    func onNewProcessRequest(_: Want): String {
-        ""
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onConfigurationUpdate(newConfig: AbilityConfiguration): Unit {}
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onMemoryLevel(level: MemoryLevel): Unit {}
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onDestroy(): Unit {}
 }
 
 @C

@@ -115,66 +115,31 @@ public class Configuration <: ToString {
      *
      * @relation deviceType: DeviceType
      */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var deviceType: DeviceType
+    var deviceType: DeviceType
     /**
      * Indicates the screen density.
      *
      * @relation screenDensity: ScreenDensity
      */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var screenDensity: ScreenDensity
+    var screenDensity: ScreenDensity
     /**
      * Indicates the color mode.
      *
      * @relation colorMode: ColorMode
      */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var colorMode: ColorMode
+    var colorMode: ColorMode
     /**
      * Indicates the mcc.
      *
      * @relation mcc: number
      */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var mcc: UInt32
+    var mcc: UInt32
     /**
      * Indicates the mnc.
      *
      * @relation mnc: number
      */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var mnc: UInt32
+    var mnc: UInt32
 
     @!APILevel[
         12,
@@ -193,14 +158,7 @@ public class Configuration <: ToString {
         this.mnc = 0
     }
 
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public init(
+    init(
         direction: Direction,
         locale: String,
         deviceType: DeviceType,
@@ -587,46 +545,21 @@ public enum Direction {
     }
 }
 
-/**
- * Enumerates color mode types.
- *
- * @relation export enum ColorMode
- */
 @Derive[Equatable, ToString]
-@!APILevel[
-    20,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Global.ResourceManager"
-]
-public enum ColorMode {
+enum ColorMode {
     /**
      * Indicates dark mode.
      *
      * @relation DARK = 0
      */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
+    
     Dark
     /**
      * Indicates light mode.
      *
      * @relation LIGHT = 1
      */
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    Light
+    | Light
     | ...
 
     static func parse(val: Int32): ColorMode {
