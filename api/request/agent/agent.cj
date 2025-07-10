@@ -1189,46 +1189,6 @@ public enum Faults <: ToString {
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     FSIO
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Request.FileTransferAgent"
-    ]
-    PARAM
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Request.FileTransferAgent"
-    ]
-    REDIRECT
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Request.FileTransferAgent"
-    ]
-    TCP
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Request.FileTransferAgent"
-    ]
-    SSL
-    | @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Request.FileTransferAgent"
-    ]
-    DNS
     | ...
 
     prop value: Int32 {
@@ -1238,12 +1198,7 @@ public enum Faults <: ToString {
                 case DISCONNECTED => 0x00
                 case TIMEOUT => 0x10
                 case PROTOCOL => 0x20
-                case PARAM => 0x30
                 case FSIO => 0x40
-                case DNS => 0x50
-                case TCP => 0x60
-                case SSL => 0x70
-                case REDIRECT => 0x80
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -1263,11 +1218,6 @@ public enum Faults <: ToString {
             case TIMEOUT => "TIMEOUT"
             case PROTOCOL => "PROTOCOL"
             case FSIO => "FSIO"
-            case PARAM => "PARAM"
-            case DNS => "DNS"
-            case TCP => "TCP"
-            case SSL => "SSL"
-            case REDIRECT => "REDIRECT"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1278,12 +1228,7 @@ public enum Faults <: ToString {
             case 0x00 => DISCONNECTED
             case 0x10 => TIMEOUT
             case 0x20 => PROTOCOL
-            case 0x30 => PARAM
             case 0x40 => FSIO
-            case 0x50 => DNS
-            case 0x60 => TCP
-            case 0x70 => SSL
-            case 0x80 => REDIRECT
             case _ => throw Exception("Never reach here!")
         }
     }

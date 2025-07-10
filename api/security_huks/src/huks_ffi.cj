@@ -99,10 +99,4 @@ foreign {
     ): Int32
 
     func FfiOHOSGetSdkVersion(sdkVersion: CPointer<OhosHksBlob>): Int32
-
-    func FfiOHOSListAliases(
-        paramSet: CPointer<OhosHksParamSet>,
-        retAliasesCnt: CPointer<UInt32>,
-        retAliases: CPointer<CPointer<OhosHksBlob>>
-    ): Int32
 }
