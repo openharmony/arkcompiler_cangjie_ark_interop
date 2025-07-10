@@ -18,6 +18,8 @@ ohos_cj_library("ohos.multimedia.photo_accesshelper") {
   sources = [
     "src/album.cj",
     "src/fetch_result.cj",
+    "src/media_album_change_request.cj",
+    "src/media_asset_change_request.cj",
     "src/photo_accesshelper.cj",
     "src/photo_accesshelper_ffi.cj",
     "src/photo_accesshelper_utils.cj",
