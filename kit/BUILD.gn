@@ -94,10 +94,7 @@ ohos_cj_library("kit.ArkUI") {
 ohos_cj_library("kit.ArkWeb") {
   sources = [ "ArkWeb/index.cj" ]
 
-  cj_deps = [
-    "../api/web/net_error_list:ohos.web.net_error_list",
-    "../api/webview:ohos.webview",
-  ]
+  cj_deps = [ "../api/webview:ohos.webview" ]
 
   kit = true
   lib_name = "ArkWeb"

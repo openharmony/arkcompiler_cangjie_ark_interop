@@ -17,7 +17,6 @@ package ohos.webview
 
 import ohos.ui_resource.*
 import ohos.resource_manager.AppResource
-import ohos.web.net_error_list.*
 import ohos.labels.*
 import ohos.ffi.*
 import ohos.base.*
