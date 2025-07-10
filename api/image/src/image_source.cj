@@ -85,8 +85,6 @@ foreign {
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -114,9 +112,6 @@ public func createImageSource(uri: String): ImageSource {
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -143,8 +138,6 @@ public func createImageSource(uri: String, options: SourceOptions): ImageSource 
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -166,9 +159,6 @@ public func createImageSource(fd: Int32): ImageSource {
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -189,9 +179,6 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource {
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -219,9 +206,6 @@ public func createImageSource(buf: Array<UInt8>): ImageSource {
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -250,12 +234,10 @@ public func createImageSource(buf: Array<UInt8>, options: SourceOptions): ImageS
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
-public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOptions = SourceOptions()): ImageSource {
+public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOptions = SourceOptions(0)): ImageSource {
     unsafe {
         var errCode: UInt32 = 0
         let id = FfiOHOSCreateImageSourceByRawFile(Int32(rawfile.fd), Int32(rawfile.offset), Int32(rawfile.length),
@@ -274,11 +256,10 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
  */
 @!APILevel[
     12,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
-public func CreateIncrementalSource(buf: Array<UInt8>, options!: SourceOptions = SourceOptions()): ImageSource {
+public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions = SourceOptions(0)): ImageSource {
     if (buf.size > 0xFFFF_FFFF) {
         throw IllegalArgumentException("[ImageSource] CreateIncrementalSource: buf too large")
     }
@@ -297,9 +278,6 @@ public func CreateIncrementalSource(buf: Array<UInt8>, options!: SourceOptions =
  */
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -312,7 +290,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -358,7 +335,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -378,9 +354,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -408,7 +381,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -439,7 +411,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -466,7 +437,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -490,9 +460,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -519,7 +486,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -551,7 +517,6 @@ public class ImageSource <: RemoteDataLite {
      */
     @!APILevel[
         12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -567,177 +532,8 @@ public class ImageSource <: RemoteDataLite {
         }
     }
 
-    /**
-     * Obtains the array of disposal type in a gif image. This method uses a promise to return the array.
-     *
-     * @returns { Array<Int32> } A Promise instance used to return the array.
-     * @throws { BusinessException } 62980096 - The operation failed.
-     * @throws { BusinessException } 62980101 - The image data is abnormal.
-     * @throws { BusinessException } 62980137 - Invalid media operation.
-     * @throws { BusinessException } 62980149 - Invalid MIME type for the image source.
-     * @syscap SystemCapability.Multimedia.Image.ImageSource
-     * @crossplatform
-     */
-    @!APILevel[
-        19,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageSource"
-    ]
-    public func getDisposalTypeList(): Array<Int32> {
-        unsafe {
-            var errCode: UInt32 = 0
-            let cArr = FfiImageImageSourceImplGetDisposalTypeList(getID(), inout errCode)
-            checkRet(errCode, "[ImageSource] getDelayTimeList:")
-            let data = cArr.head
-            let arr = Array<Int32>(cArr.size, {i => data.read(i)})
-            LibC.free(data)
-            return arr
-        }
-    }
-
-    /**
-     * Obtains the value of properties in an image. This method uses a promise to return the property values in array
-     * of records.
-     *
-     * @param { key: Array<PropertyKey> } key - Name of the properties whose value is to be obtained.
-     * @returns { Array<(PropertyKey, String)> } Array of Records instance used to return the
-     * property values. If the operation fails, the null is returned.
-     * @throws { BusinessException } 401 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed;
-     * @throws { BusinessException } 62980096 - The operation failed.
-     * @throws { BusinessException } 62980110 - The image source data is incorrect.
-     * @throws { BusinessException } 62980113 - Unknown image format.
-     * @throws { BusinessException } 62980116 - Failed to decode the image.
-     * @syscap SystemCapability.Multimedia.Image.ImageSource
-     * @crossplatform
-     */
-    @!APILevel[
-        19,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageSource"
-    ]
-    public func getImageProperties(key: Array<PropertyKey>): Array<(PropertyKey, String)> {
-        if (key.size == 0) {
-            return Array<(PropertyKey, String)>()
-        }
-        let keyPointer = safeMalloc<CString>(count: key.size)
-        var i = 0i64
-        try {
-            for (it in key) {
-                unsafe { keyPointer.write(i, LibC.mallocCString(it.toString())) }
-                i++
-            }
-        } catch (e: Exception) {
-            for (j in 0..i) {
-                unsafe { LibC.free(keyPointer.read(j)) }
-            }
-            unsafe { LibC.free(keyPointer) }
-            throw e
-        }
-
-        let cKey = CArrString(keyPointer, key.size)
-        let valuePointer = try {
-            safeMalloc<CString>(count: key.size)
-        } catch (e: Exception) {
-            cKey.free()
-            throw e
-        }
-        let errCode = unsafe { FfiImageImageSourceImplGetImageProperties(getID(), cKey, valuePointer) }
-        cKey.free()
-        checkRet(errCode, "[ImageSource] getImageProperties:", handle: unsafe { {=> LibC.free(valuePointer)} })
-        let cValue = CArrString(valuePointer, key.size)
-        let value = cValue.toStringArray()
-        cValue.free()
-        return Array<(PropertyKey, String)>(key.size, {i => (key[i], value[i])})
-    }
-
-    /**
-     * Modify the value of properties in an image with the specified keys.
-     *
-     * @param { Array<(PropertyKey, String)> } records - Array of the property Records whose values are to
-     * be modified.
-     * @returns { Promise<void> } A Promise instance used to return the operation result. If the operation fails, an
-     * error message is returned.
-     * @throws { BusinessException } 401 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed;
-     * @throws { BusinessException } 62980123 - The image does not support EXIF decoding.
-     * @throws { BusinessException } 62980133 - The EXIF data is out of range.
-     * @throws { BusinessException } 62980135 - The EXIF value is invalid.
-     * @throws { BusinessException } 62980146 - The EXIF data failed to be written to the file.
-     * @syscap SystemCapability.Multimedia.Image.ImageSource
-     * @crossplatform
-     */
-    @!APILevel[
-        19,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageSource"
-    ]
-    public func modifyImageProperties(records: Array<(PropertyKey, String)>): Unit {
-        if (records.size == 0) {
-            return
-        }
-        let keyPointer = safeMalloc<CString>(count: records.size)
-        let valuePointer = try {
-            safeMalloc<CString>(count: records.size)
-        } catch (e: Exception) {
-            unsafe { LibC.free(keyPointer) }
-            throw e
-        }
-        var i = 0i64
-        try {
-            for (it in records) {
-                unsafe {
-                    keyPointer.write(i, LibC.mallocCString(it[0].toString()))
-                    valuePointer.write(i, LibC.mallocCString(it[1]))
-                }
-                i++
-            }
-        } catch (e: Exception) {
-            for (j in 0..i + 1) {
-                unsafe {
-                    LibC.free(keyPointer.read(j))
-                    LibC.free(valuePointer.read(j))
-                }
-            }
-            unsafe {
-                LibC.free(keyPointer)
-                LibC.free(valuePointer)
-            }
-            throw e
-        }
-
-        let cKey = CArrString(keyPointer, records.size)
-        let cValue = CArrString(valuePointer, records.size)
-        let errCode = unsafe { FfiImageImageSourceImplModifyImageProperties(getID(), cKey, cValue) }
-        cKey.free()
-        cValue.free()
-        checkRet(errCode, "[ImageSource] modifyImageProperties:")
-    }
-
-    /**
-     * Releases an ImageSource instance and uses a promise to return the result.
-     *
-     * @brief release(): Promise<void>
-     */
     @!APILevel[
         12,
-        crossplatform: true,
-        deprecated: 19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageSource"
-    ]
-    public func Release(): Unit {
-        unsafe {
-            let ret = FfiOHOSRelease(getID())
-            checkRet(ret, "[ImageSource] Release:")
-            releaseFFIData(getID())
-        }
-    }
-
-    @!APILevel[
-        12,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]

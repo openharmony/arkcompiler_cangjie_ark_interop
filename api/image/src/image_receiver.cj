@@ -48,8 +48,8 @@ foreign {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
 ]
-public func createImageReceiver(width: Int32, height: Int32, format: ImageFormat, capacity: Int32): ImageReceiver {
-    let id = unsafe { FfiOHOSCreateImageReceiver(width, height, format.getValue(), capacity) }
+public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32): ImageReceiver {
+    let id = unsafe { FfiOHOSCreateImageReceiver(size.width, size.height, format.getValue(), capacity) }
     if (id < 0) {
         throw Exception("ERROR: [createImageReceiver] ret ${id}")
     }
@@ -153,75 +153,11 @@ public class ImageReceiver <: RemoteDataLite {
 
     @!APILevel[
         12,
-        deprecated: 19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
-    ]
-    public func Release(): Unit {
-        unsafe { FfiOHOSReceiverRelease(getID()) }
-        releaseFFIData(getID())
-    }
-
-    @!APILevel[
-        12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
     ]
     public func release(): Unit {
         unsafe { FfiOHOSReceiverRelease(getID()) }
         releaseFFIData(getID())
-    }
-
-    /**
-     * Subscribe callback when receiving an image
-     *
-     * @param { ReceiveType } type Callback used to return the next image.
-     * @param { Callback0Argument } callback Callback used to return image.
-     * @relation on(type: 'imageArrival', callback: AsyncCallback<void>): void;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
-    ]
-    public func on(onType: ReceiveType, callback: Callback0Argument): Unit {
-        let wrapper = {=> callback.invoke()}
-        let lambdaData = Callback0Param(wrapper)
-        try (cType = unsafe { LibC.mallocCString(onType.toString()).asResource() }) {
-            unsafe { FfiImageReceiverImplOn(getID(), cType.value, lambdaData.getID()) }
-        }
-    }
-}
-
-/**
- * The enum of Callback.
- */
-@!APILevel[
-    20,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
-]
-public enum ReceiveType <: ToString {
-    /**
-     * ImageArrival
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
-    ]
-    ImageArrival
-    | ...
-
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
-    ]
-    public func toString(): String {
-        match (this) {
-            case ImageArrival => "imageArrival"
-            case _ => throw IllegalArgumentException("The type is not supported yet.")
-        }
     }
 }

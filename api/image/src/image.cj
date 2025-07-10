@@ -88,25 +88,6 @@ public class Image <: RemoteDataLite {
         }
     }
 
-    /**
-     * Image timestamp.
-     *
-     * @type { Int64 }
-     * @syscap SystemCapability.Multimedia.Image.Core
-     */
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public prop timestamp: Int64 {
-        get() {
-            unsafe {
-                return FfiImageImageImplGetTimestamp(getID())
-            }
-        }
-    }
-
     init(id: Int64) {
         super(id)
         IMAGE_LOG.info("[Image] construct success")
@@ -134,18 +115,7 @@ public class Image <: RemoteDataLite {
                 }
             }
         }
-        throw Exception()
-    }
-
-    @!APILevel[
-        12,
-        deprecated: 19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Image.Core"
-    ]
-    public func Release(): Unit {
-        unsafe { FfiOHOSImageRelease(getID()) }
-        releaseFFIData(getID())
+        throw Exception("Unreachable Code.")
     }
 
     @!APILevel[
