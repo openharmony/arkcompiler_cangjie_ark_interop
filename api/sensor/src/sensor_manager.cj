@@ -191,6 +191,7 @@ func emitOneSensorTypeCallbacks(sensorTypeId: Int32, callbackList: Array<Callbac
     }
 }
 
+
 func emitCallbackFunc<T>(callback: CallbackObject, responseData: Response): Unit {
     let callbackInstOpt = (callback as Callback1Argument<T>)
     if (let Some(callbackInst) <- callbackInstOpt) {
