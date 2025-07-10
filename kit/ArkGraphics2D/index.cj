@@ -16,4 +16,3 @@
 package kit.ArkGraphics2D
 
 public import ohos.color_manager.*
-public import ohos.effect_kit.*

@@ -17,9 +17,7 @@ package kit.BasicServicesKit
 
 public import ohos.device_info.*
 public import ohos.request.agent.*
-public import ohos.settings.{DomainName, Date, Display, DisplayAutoScreenBrightnessMode, General, Input, Phone, Sound, 
-    TTS, Wireless, WirelessAirplantMode, getValue, registerKeyObserver, unregisterKeyObserver, getUriSync}
-public import ohos.settings.Network as SettingsNetwork
+public import ohos.settings.*
 public import ohos.common_event_manager.*
 public import ohos.system_date_time.*
 public import ohos.system_parameter_enhance.*

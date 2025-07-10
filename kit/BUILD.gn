@@ -67,7 +67,6 @@ ohos_cj_library("kit.ArkGraphics2D") {
   cj_deps = [
     "../api/arkui/cj:ohos.component",
     "../api/color_manager:ohos.color_manager",
-    "../api/effect_kit:ohos.effect_kit",
   ]
 
   kit = true

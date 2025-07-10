@@ -42,8 +42,6 @@ foreign func FfiOHOSHiAppEventAddWatcher(Watcher: RetWatcher): RetDataI64
 
 foreign func FfiOHOSHiAppEventRemoveWatcher(watcher: RetWatcher): Int32
 
-foreign func FfiOHOSHiAppEventSetEventParam(eventParams: CArrEventParameters, domain: CString, name: CString): Int32
-
 @!APILevel[
     12,
     atomicservice: true,
@@ -276,58 +274,6 @@ public class HiAppEvent {
             case _ =>
                 HI_APP_EVENT_LOG.error(getErrorInfo(code))
                 throw BusinessException(code, getErrorInfo(code))
-        }
-    }
-
-    /**
-     * It is used to set custom parameters for events, including both system-subscribed events and custom events.
-     * Existing parameter will be overwritten, and non-existing parameter will be created.
-     *
-     * @param { HashMap<String, ParamType> } params Custom parameter object. The parameter name and value are defined as
-     * follows:
-     * <br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters
-     * (a to z), underscore (_), and dollar sign ($). It must start with a letter or dollar sign ($) and end with a digit
-     * or letter.
-     * <br>- The parameter value is of the ParamType and contains a maximum of 1024 characters.
-     * <br>- The number of parameters must be less than 64.
-     * @param { String } domain Event domain. The event domain can be associated with application events and system
-     * events (Domain.OS).
-     * @param { String } name Event name. The default value is an empty string, which indicates all event names in the
-     * associated event domain. The event name can be associated with application events and system events. System events
-     * can be associated only with crash events (Event.APP_CRASH) and freeze events
-     * (Event.APP_FREEZE).
-     * @throws { BusinessException } 11101001 - Invalid event domain.
-     * @throws { BusinessException } 11101002 - Invalid event name.
-     * @throws { BusinessException } 11101003 - Invalid number of event parameters.
-     * @throws { BusinessException } 11101004 - Invalid string length of the event parameter.
-     * @throws { BusinessException } 11101005 - Invalid event parameter name.
-     * @throws { BusinessException } 11101007 - The number of parameter keys exceeds the limit.
-     * @relation setEventParam(params: Record<string, ParamType>, domain: string, name?: string): Promise<void>
-     */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-    ]
-    public static func setEventParam(params: HashMap<String, ParamType>, domain: String, name!: String = ""): Unit {
-        unsafe {
-            try (
-                cdomain = LibC.mallocCString(domain).asResource(),
-                cname = LibC.mallocCString(name).asResource()
-            ) {
-                let paramsArr = params.toArray()
-                let eventParams = Array<EventParameters>(params.size) {
-                    i => EventParameters(paramsArr[i][0], paramsArr[i][1])
-                }
-                let CEventParams = toCArrEventParameters(eventParams)
-                let code = FfiOHOSHiAppEventSetEventParam(CEventParams, cdomain.value, cname.value)
-                CEventParams.free()
-                if (code != SUCCESS_CODE) {
-                    HI_APP_EVENT_LOG.error(getErrorInfo(code))
-                    throw BusinessException(code, getErrorInfo(code))
-                }
-            }
         }
     }
 }
