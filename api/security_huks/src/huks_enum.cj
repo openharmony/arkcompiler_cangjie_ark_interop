@@ -38,12 +38,6 @@ public class HuksExceptionErrCode {
     ]
     public static const HUKS_ERR_CODE_PERMISSION_FAIL: Int32 = 201
     @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_ERR_CODE_NOT_SYSTEM_APP: Int32 = 202
-    @!APILevel[
         15,
         atomicservice: true,
         stagemodelonly: true,
@@ -413,20 +407,6 @@ public class HuksKeyPadding {
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.uint32(5)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_PADDING_ISO_IEC_9796_2: HuksParamValue = HuksParamValue.uint32(6)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_PADDING_ISO_IEC_9797_1: HuksParamValue = HuksParamValue.uint32(7)
 }
 
 /**
@@ -473,13 +453,6 @@ public class HuksCipherMode {
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.uint32(4)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_MODE_CFB: HuksParamValue = HuksParamValue.uint32(5)
     /**
      * @syscap SystemCapability.Security.Huks.Extension
      */
@@ -700,27 +673,6 @@ public class HuksKeySize {
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_DES_KEY_SIZE_64: HuksParamValue = HuksParamValue.uint32(64)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_3DES_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_3DES_KEY_SIZE_192: HuksParamValue = HuksParamValue.uint32(192)
 }
 
 /**
@@ -873,27 +825,6 @@ public class HuksKeyAlg {
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.uint32(152)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_ALG_DES: HuksParamValue = HuksParamValue.uint32(160)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_ALG_3DES: HuksParamValue = HuksParamValue.uint32(161)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Core"
-    ]
-    public static const HUKS_ALG_CMAC: HuksParamValue = HuksParamValue.uint32(162)
 }
 
 /**
@@ -1220,41 +1151,6 @@ public class HuksUserAuthType {
 }
 
 /**
- * Enum for huks user auth mode.
- *
- * @enum { number }
- * @syscap SystemCapability.Security.Huks.Extension
- */
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Security.Huks.Extension"
-]
-public class HuksUserAuthMode {
-    /**
-     * Auth mode for local scenarios.
-     */
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Extension"
-    ]
-    public static const HUKS_USER_AUTH_MODE_LOCAL: HuksParamValue = HuksParamValue.uint32(0)
-    /**
-     * Auth mode for co-auth scenarios.
-     */
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Extension"
-    ]
-    public static const HUKS_USER_AUTH_MODE_COAUTH: HuksParamValue = HuksParamValue.uint32(1)
-}
-
-/**
  * Enum for huks auth access type.
  *
  * @enum { number }
@@ -1281,13 +1177,6 @@ public class HuksAuthAccessType {
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.uint32(1 << 1)
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Extension"
-    ]
-    public static const HUKS_AUTH_ACCESS_ALWAYS_VALID: HuksParamValue = HuksParamValue.uint32(1 << 2)
 }
 /**
  * Enum for huks auth access challenge type.
@@ -1966,32 +1855,6 @@ public enum HuksTag {
     ]
     HUKS_TAG_KEY_AUTH_PURPOSE
     |
-        /**
-         * Security level of access control for key file storage, whose optional values are from enum HuksAuthStorageLevel.
-         *
-         * @syscap SystemCapability.Security.Huks.Extension
-         */
-        @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Extension"
-    ]
-    HUKS_TAG_AUTH_STORAGE_LEVEL
-    |
-        /**
-         * Authentication mode of the user authtoken, whose optional values are from enum HuksUserAuthMode.
-         *
-         * @syscap SystemCapability.Security.Huks.Extension
-         */
-        @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.Huks.Extension"
-    ]
-    HUKS_TAG_USER_AUTH_MODE
-    |
         /* Attestation related TAG: 501 - 600 */
         /**
          * @syscap SystemCapability.Security.Huks.Extension
@@ -2532,8 +2395,6 @@ public enum HuksTag {
             case HUKS_TAG_CHALLENGE_TYPE => HuksTagType.HUKS_TAG_TYPE_UINT | 309
             case HUKS_TAG_CHALLENGE_POS => HuksTagType.HUKS_TAG_TYPE_UINT | 310
             case HUKS_TAG_KEY_AUTH_PURPOSE => HuksTagType.HUKS_TAG_TYPE_UINT | 311
-            case HUKS_TAG_AUTH_STORAGE_LEVEL => HuksTagType.HUKS_TAG_TYPE_UINT | 316
-            case HUKS_TAG_USER_AUTH_MODE => HuksTagType.HUKS_TAG_TYPE_UINT | 319
             case HUKS_TAG_ATTESTATION_CHALLENGE => HuksTagType.HUKS_TAG_TYPE_BYTES | 501
             case HUKS_TAG_ATTESTATION_APPLICATION_ID => HuksTagType.HUKS_TAG_TYPE_BYTES | 502
             case HUKS_TAG_ATTESTATION_ID_BRAND => HuksTagType.HUKS_TAG_TYPE_BYTES | 503
@@ -2634,8 +2495,6 @@ public enum HuksTag {
             case 0x20000135 => HUKS_TAG_CHALLENGE_TYPE
             case 0x20000136 => HUKS_TAG_CHALLENGE_POS
             case 0x20000137 => HUKS_TAG_KEY_AUTH_PURPOSE
-            case 0x2000013c => HUKS_TAG_AUTH_STORAGE_LEVEL
-            case 0x2000013f => HUKS_TAG_USER_AUTH_MODE
             case 0x500001f5 => HUKS_TAG_ATTESTATION_CHALLENGE
             case 0x500001f6 => HUKS_TAG_ATTESTATION_APPLICATION_ID
             case 0x500001f7 => HUKS_TAG_ATTESTATION_ID_BRAND
