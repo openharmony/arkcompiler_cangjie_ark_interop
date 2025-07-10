@@ -451,6 +451,164 @@ func removeAllCallback(`type`: SensorId): Int64 {
 }
 
 /**
+ * Indicates sensor information.
+ * @typedef Sensor
+ * @syscap SystemCapability.Sensors.Sensor
+ */
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Sensors.Sensor"
+]
+public class Sensor {
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public Sensor(
+        /**
+         * Sensor name.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var sensorName: String,
+
+        /**
+         * Sensor vendor.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var vendorName: String,
+
+        /**
+         * Sensor firmware version.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var firmwareVersion: String,
+
+        /**
+         * Sensor hardware version.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var hardwareVersion: String,
+
+        /**
+         * Sensor type ID, {@code SensorType}.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var sensorId: SensorId,
+
+        /**
+         * Maximum measurement range of the sensor.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var maxRange: Float32,
+
+        /**
+         * Minimum sample period allowed, in ns.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var minSamplePeriod: Int64,
+
+        /**
+         * Maximum sample period allowed, in ns.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var maxSamplePeriod: Int64,
+
+        /**
+         * Sensor accuracy.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var precision: Float32,
+
+        /**
+         * Sensor power.
+         */
+        @!APILevel[
+            19,
+            stagemodelonly: true,
+            syscap: "SystemCapability.Sensors.Sensor"
+        ]
+        public var power: Float32
+    ) {}
+
+    init(data: CSensor) {
+        sensorName = data.sensorName.toString()
+        vendorName = data.vendorName.toString()
+        firmwareVersion = data.firmwareVersion.toString()
+        hardwareVersion = data.hardwareVersion.toString()
+        sensorId = SensorId.parse(data.sensorId)
+        maxRange = data.maxRange
+        minSamplePeriod = data.minSamplePeriod
+        maxSamplePeriod = data.maxSamplePeriod
+        precision = data.precision
+        power = data.power
+    }
+}
+
+/**
+ * Obtains all sensor information on the device.
+ * @returns { Array<Sensor> } used to return the result.
+ * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+ * <br> 2. Incorrect parameter types; 3. Parameter verification failed.
+ * @throws { BusinessException } 14500101 - Service exception.
+ * @syscap SystemCapability.Sensors.Sensor
+ */
+@!APILevel[
+    19,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Sensors.Sensor"
+]
+public func getSensorList(): Array<Sensor> {
+    var result = CSensorArray()
+    let ret = unsafe { FfiSensorGetAllSensors(inout result) }
+    if (ret != SUCCESS_CODE) {
+        throw BusinessException(ret, getErrorMsg(ret))
+    }
+    try {
+        result.asArray()
+    } finally {
+        result.free()
+    }
+}
+
+/**
  * Synchronously obtains the sensor information of a specified type.
  * @param { SensorId } type - Indicate the sensor type, {@code SensorId}.
  * @returns { Sensor } Returns sensor information.
