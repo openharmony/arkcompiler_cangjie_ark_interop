@@ -16,10 +16,7 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.file_fs") {
   sources = [
-    "src/cj_copy.cj",
     "src/cj_file_fs.cj",
-    "src/cj_watcher.cj",
-    "src/common.cj",
     "src/conflict_file_exception.cj",
     "src/file.cj",
     "src/native.cj",

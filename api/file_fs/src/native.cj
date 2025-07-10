@@ -26,8 +26,6 @@ foreign {
 
     func FfiOHOSFileFsTaskSignalCancel(id: Int64): Int64
 
-    func FfiOHOSFileFsCopy(src: CString, dest: CString, opt: Int64): Unit
-
     // Stat
     func FfiOHOSFileFsStatByID(file: Int32): RetDataI64
 
@@ -62,8 +60,6 @@ foreign {
     func FfiOHOSStatIsSocket(id: Int64): Bool
 
     func FfiOHOSStatIsSymbolicLink(id: Int64): Bool
-
-    func FfiOHOSStatGetLocation(id: Int64): RetDataI32
 
     // Stream
     func FfiOHOSFileFsCreateStream(path: CString, mode: CString): RetDataI64
@@ -116,14 +112,6 @@ foreign {
 
     func FfiOHOSFILEFsGetParent(id: Int64): RetDataCString
 
-    // Watcher
-
-    func FfiOHOSFileFsCreateWatcher(path: CString, events: UInt32, id: Int64): RetDataI64
-
-    func FfiOHOSFileFsWatcherStart(id: Int64): Int32
-
-    func FfiOHOSFileFsWatcherStop(id: Int64): Int32
-
     func FfiOHOSFileFsLstat(path: CString): RetDataI64
 
     func FfiOHOSFileFsMkdir(path: CString, recursion: Bool, isTwoArgs: Bool): Int32
@@ -137,8 +125,6 @@ foreign {
     func FfiOHOSFileFsUnlink(path: CString): Int32
 
     func FfiOHOSFileFsAccess(path: CString): RetDataBool
-
-    func FfiOHOSFileFsAccessExt(path: CString, mode: Int32, flag: Int32): RetDataBool
 
     func FfiOHOSFileFsRead(fd: Int32, buffer: CPointer<Byte>, size: Int64, length: UIntNative, offset: Int64): RetDataI64
 
@@ -187,10 +173,4 @@ foreign {
     func FfiOHOSFileFsReadText(path: CString, offset: Int64, hasLen: Bool, len: Int64, encoding: CString): RetDataCString
 
     func FfiOHOSFileFsUtimes(path: CString, mtime: Float64): Int32
-
-    func FfiOHOSFileFsSetXattr(path: CString, key: CString, value: CString): Int32
-
-    func FfiOHOSFileFsGetXattr(path: CString, key: CString): RetDataCString
-
-    func FfiOHOSFileFsReleaseCString(str: CString): Unit
 }
