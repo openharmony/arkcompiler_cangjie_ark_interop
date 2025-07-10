@@ -21,16 +21,10 @@ import std.collection.*
 import ohos.image.*
 
 foreign {
-    func FfiOHOSWebviewOnce(onceType: CString, funcId: Int64): Int32
-
     // WebviewController
     func FfiOHOSWebviewCtlConstructor(): Int64
 
     func FfiOHOSWebviewCtlConstructorWithWebTag(webTag: CString): Int64
-
-    func FfiOHOSWebviewCtlInitializeWebEngine(): Unit
-
-    func FfiOHOSWebviewCtlSetHttpDns(secureDnsMode: Int32, secureDnsConfig: CString): Unit
 
     func FfiOHOSWebviewCtlSetWebDebuggingAccess(webDebuggingAccess: Bool): Unit
 
@@ -38,19 +32,9 @@ foreign {
 
     func FfiOHOSWebviewCtlLoadUrlWithHeaders(id: Int64, url: CString, headers: ArrWebHeader): Int32
 
-    func FfiOHOSWebviewCtlLoadData(id: Int64, loadDatas: LoadDatas): Int32
-
-    func FfiOHOSWebviewCtlPreFetchPage(id: Int64, url: CString): Int32
-
-    func FfiOHOSWebviewCtlPreFetchPageWithHeaders(id: Int64, url: CString, headers: ArrWebHeader): Int32
-
-    func FfiOHOSWebviewCtlSetAudioMuted(id: Int64, mute: Bool): Int32
-
     func FfiOHOSWebviewCtlRefresh(id: Int64): Int32
 
     func FfiOHOSWebviewCtlGetUserAgent(id: Int64, errCode: CPointer<Int32>): CString
-
-    func FfiOHOSWebviewCtlAccessForward(id: Int64, errCode: CPointer<Int32>): Bool
 
     func FfiOHOSWebviewCtlAccessBackward(id: Int64, errCode: CPointer<Int32>): Bool
 
@@ -60,14 +44,7 @@ foreign {
 
     func FfiOHOSWebviewCtlRunJavaScript(id: Int64, cScript: CString, funcId: Int64): Int32
 
-    func FfiOHOSWebviewCtlRunJavaScriptExt(id: Int64, cScript: CString, funcId: Int64): Int32
-
-    func FfiOHOSWebviewCtlRunJavaScriptExtArr(id: Int64, cScript: CArrUI8, funcId: Int64): Int32
-
     func FfiOHOSWebviewCtlRegisterJavaScriptProxy(id: Int64, cFuncIds: CArrI64, cName: CString, cMethodList: CArrString): Int32
-
-    func FfiOHOSWebviewCtlRegisterJavaScriptProxyEx(id: Int64, cFuncIds: CArrI64, cName: CString,
-        cMethodList: CArrString, cPermission: CString): Int32
 
     func FfiOHOSWebviewCtlGetUrl(id: Int64): RetDataCString
 
@@ -77,25 +54,9 @@ foreign {
 
     func FfiOHOSWebviewCtlPageDown(id: Int64, bottom: Bool): Int32
 
-    func FfiOHOSWebviewCtlSetConnectionTimeout(timeout: Int32): Int32
-
-    func FfiOHOSWebviewCtlClearClientAuthenticationCache(id: Int64): Int32
-
-    func FfiOHOSWebviewCtlClearSslCache(id: Int64): Int32
-
-    func FfiOHOSWebviewCtlSearchNext(id: Int64, forward: Bool): Int32
-
-    func FfiOHOSWebviewCtlClearMatches(id: Int64): Int32
-
-    func FfiOHOSWebviewCtlSearchAllAsync(id: Int64, searchString: CString): Int32
-
-    func FfiOHOSWebviewCtlDeleteJavaScriptRegister(id: Int64, name: CString): Int32
-
     func FfiOHOSCookieMgrFetchCookieSync(url: CString, incognitoMode: Bool, errCode: CPointer<Int32>): CString
 
     func FfiOHOSCookieMgrConfigCookieSync(url: CString, value: CString, incognitoMode: Bool): Int32
-
-    func FfiOHOSCookieMgrCfgCookieSync(url: CString, value: CString, incognitoMode: Bool, includeHttpOnly: Bool): Int32
 
     func FfiOHOSCookieMgrPutAcceptCookieEnabled(accept: Bool): Unit
 
@@ -110,8 +71,6 @@ foreign {
     func FfiOHOSCookieMgrClearAllCookiesSync(incognitoMode: Bool): Unit
 
     func FfiOHOSCookieMgrClearSessionCookieSync(): Unit
-
-    func FfiOHOSCookieMgrSaveCookieAsync(funcId: Int64): Unit
 
     func FfiOHOSWebviewCtlScrollTo(id: Int64, x: Float32, y: Float32): Int32
 
@@ -140,8 +99,6 @@ foreign {
     func FfiOHOSWebviewCtlZoomOut(id: Int64): Int32
 
     func FfiOHOSWebviewCtlAccessStep(id: Int64, errCode: CPointer<Int32>, step: Int32): Bool
-
-    func FfiOHOSWebviewCtlOnActive(id: Int64): Int32
 
     func FfiOHOSWebviewCtlOnInactive(id: Int64): Int32
 
@@ -587,9 +544,6 @@ foreign {
     func FfiOHOSNmphhandleMutedChanged(id: Int64, muted: Bool): Int32
 
     func FfiOHOSNmphhandleVolumeChanged(id: Int64, volume: Float64): Int32
-
-    // NativeMediaPlayerBridge
-    func FfiOHOSNativeMediaPlayerBridgeRegisterCJFuncs(cjFuncs: AtCMediaPlayer): Unit
 }
 
 @C

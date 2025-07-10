@@ -19,8 +19,6 @@ import ohos.base.*
 import ohos.ffi.*
 import std.collection.*
 import std.time.*
-import ohos.encoding.json.*
-import ohos.data_share_predicates.DataSharePredicates as DSPredicates
 import ohos.labels.*
 
 /**
@@ -240,57 +238,6 @@ public class Event {
         }
         this.identifier = identifier
         this.isLunar = isLunar
-    }
-
-    func toString(): String {
-        var eventstr = "{\"type\":${this.`type`.getValue()},\"startTime\":${this.startTime},\"endTime\":${this.endTime}"
-        if (let Some(v) <- this.id) {
-            eventstr = eventstr + ",\"id\":${v}"
-        }
-        eventstr = eventstr + ",\"title\":${this.title}"
-        if (let Some(v) <- this.location) {
-            eventstr = eventstr + ",\"location\":{"
-            eventstr = eventstr + "\"location\":${v.location},"
-            eventstr = eventstr + "\"longitude\":${v.longitude},"
-            eventstr = eventstr + "\"latitude\":${v.latitude}"
-            eventstr = eventstr + "}"
-        }
-        eventstr = eventstr + ",\"isAllDay\":${this.isAllDay}"
-        if (let Some(v) <- this.attendee) {
-            eventstr = eventstr + ",\"attendee\":["
-            for (att in v) {
-                eventstr = eventstr + "${att.toString()},"
-            }
-            eventstr = eventstr + "]"
-        }
-        eventstr = eventstr + ",\"timeZone\":${this.timeZone}"
-        eventstr = eventstr + ",\"reminderTime\":${this.reminderTime}"
-        if (let Some(v) <- this.recurrenceRule) {
-            eventstr = eventstr + "\"recurrenceRule\":{\"recurrenceFrequency\":${v.recurrenceFrequency.getValue()}"
-            eventstr = eventstr + ",\"expire\":${v.expire}"
-            eventstr = eventstr + ",\"count\":${v.count}"
-            eventstr = eventstr + ",\"interval\":${v.interval}"
-            eventstr = eventstr + ",\"excludedDates\":${v.excludedDates}"
-            eventstr = eventstr + ",\"daysOfWeek\":${v.daysOfWeek}"
-            eventstr = eventstr + ",\"daysOfMonth\":${v.daysOfMonth}"
-            eventstr = eventstr + ",\"daysOfYear\":${v.daysOfYear}"
-            eventstr = eventstr + ",\"weeksOfMonth\":${v.weeksOfMonth}"
-            eventstr = eventstr + ",\"weeksOfYear\":${v.weeksOfYear}"
-            eventstr = eventstr + ",\"monthsOfYear\":${v.monthsOfYear}"
-            eventstr = eventstr + "}"
-        }
-        eventstr = eventstr + ",\"description\":${this.description}"
-        if (let Some(v) <- this.service) {
-            eventstr = eventstr + ",\"service\":{\"type\":${v.`type`.toString()},\"uri\":${v.uri}"
-            eventstr = eventstr + ",\"description\":${v.description}"
-            eventstr = eventstr + "}"
-        }
-        if (let Some(v) <- this.identifier) {
-            eventstr = eventstr + ",\"identifier\":${v}"
-        }
-        eventstr = eventstr + ",\"isLunar\":${this.isLunar}"
-        eventstr = eventstr + "}"
-        return eventstr
     }
 }
 

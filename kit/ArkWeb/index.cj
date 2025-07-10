@@ -16,4 +16,3 @@
 package kit.ArkWeb
 
 public import ohos.webview.*
-public import ohos.web.net_error_list.*
