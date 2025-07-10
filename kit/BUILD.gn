@@ -50,8 +50,6 @@ ohos_cj_library("kit.ArkData") {
     "../api/distributed_kv_store:ohos.distributed_kv_store",
     "../api/preferences:ohos.preferences",
     "../api/relational_store:ohos.relational_store",
-    "../api/udmf:ohos.unifiedDataChannel",
-    "../api/udmf:ohos.uniformTypeDescriptor",
     "../api/values_bucket:ohos.values_bucket",
   ]
 

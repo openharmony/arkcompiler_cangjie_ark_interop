@@ -581,28 +581,6 @@ public enum NetCap {
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
     NET_CAPABILITY_VALIDATED
-    |
-        /**
-         * Indicates that the network is portal.
-         */
-        @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.NetManager.Core"
-    ]
-    NET_CAPABILITY_PORTAL
-    |
-        /**
-         * Indicates that the network is checking connectivity.
-         */
-        @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.NetManager.Core"
-    ]
-    NET_CAPABILITY_CHECKING_CONNECTIVITY
     | ...
 
     func getValue(): Int32 {
@@ -612,8 +590,6 @@ public enum NetCap {
             case NET_CAPABILITY_INTERNET => 12
             case NET_CAPABILITY_NOT_VPN => 15
             case NET_CAPABILITY_VALIDATED => 16
-            case NET_CAPABILITY_PORTAL => 17
-            case NET_CAPABILITY_CHECKING_CONNECTIVITY => 31
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -625,8 +601,6 @@ public enum NetCap {
             case 12 => NET_CAPABILITY_INTERNET
             case 15 => NET_CAPABILITY_NOT_VPN
             case 16 => NET_CAPABILITY_VALIDATED
-            case 17 => NET_CAPABILITY_PORTAL
-            case 31 => NET_CAPABILITY_CHECKING_CONNECTIVITY
             case _ => throw IllegalArgumentException("Unknown value ${val}")
         }
     }
@@ -668,18 +642,6 @@ public enum NetBearType {
     BEARER_WIFI
     |
         /**
-         * Indicates that the network is based on a bluetooth network.
-         */
-        @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.NetManager.Core"
-    ]
-    BEARER_BLUETOOTH
-    |
-        /**
          * Indicates that the network is an Ethernet network.
          */
         @!APILevel[
@@ -690,27 +652,13 @@ public enum NetBearType {
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
     BEARER_ETHERNET
-    |
-        /**
-         * Indicates that the network is based on a VPN network.
-         */
-        @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.NetManager.Core"
-    ]
-    BEARER_VPN
     | ...
 
     func getValue(): Int32 {
         match (this) {
             case BEARER_CELLULAR => 0
             case BEARER_WIFI => 1
-            case BEARER_BLUETOOTH => 2
             case BEARER_ETHERNET => 3
-            case BEARER_VPN => 4
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -719,9 +667,7 @@ public enum NetBearType {
         match (val) {
             case 0 => BEARER_CELLULAR
             case 1 => BEARER_WIFI
-            case 2 => BEARER_BLUETOOTH
             case 3 => BEARER_ETHERNET
-            case 4 => BEARER_VPN
             case _ => throw IllegalArgumentException("Unknown value ${val}")
         }
     }
