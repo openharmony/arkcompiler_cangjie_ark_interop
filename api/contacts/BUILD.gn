@@ -16,28 +16,14 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.contact") {
   sources = [
-    "src/contact.cj",
-    "src/contact_api.cj",
-    "src/contact_attributes.cj",
     "src/contact_ffi.cj",
-    "src/email.cj",
-    "src/event.cj",
-    "src/group.cj",
-    "src/holder.cj",
-    "src/im_address.cj",
-    "src/name.cj",
-    "src/organization.cj",
     "src/phone_number.cj",
-    "src/postal_address.cj",
-    "src/relation.cj",
-    "src/sip_address.cj",
     "src/utils.cj",
   ]
 
   cj_deps = [
     "../ability:ohos.ability",
     "../arkui/cj:ohos.base",
-    "../data_share_predicates:ohos.data_share_predicates",
     "../encoding:ohos.encoding.json",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",

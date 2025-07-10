@@ -26,31 +26,6 @@ import ohos.ability.*
 import ohos.resource_manager.ResourceManager
 
 /**
- * Returns an instance of PhotoAccessHelper
- *
- * @param { Context } context - Hap context information
- * @returns { PhotoAccessHelper } Instance of PhotoAccessHelper
- * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
- * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
- * @StageModelOnly
- * @crossplatform
- * @atomicservice
- */
-@!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-]
-public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper {
-    unsafe {
-        let ret = FfiPhotoAccessHelperGetPhotoAccessHelper(context.getID())
-        PhotoAccessHelper(ret, context)
-    }
-}
-
-/**
  * Helper functions to access photos and albums.
  *
  * @interface PhotoAccessHelper
