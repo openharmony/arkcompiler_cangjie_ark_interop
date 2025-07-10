@@ -19,7 +19,6 @@ import ohos.base.*
 import ohos.bluetooth.*
 import ohos.ffi.*
 import std.collection.{ArrayList, HashMap}
-import ohos.bluetooth.common_util.*
 import std.sync.AtomicBool
 import ohos.labels.*
 
@@ -74,40 +73,6 @@ public func createGattClientDevice(deviceId: String): GattClientDevice {
         }
     }
     return GattClientDevice(id)
-}
-
-/**
- * Obtains the list of devices in the connected status.
- *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @returns { Array<String> } Returns the list of device address.
- * @throws { BusinessException } 201 - Permission denied.
- * @throws { BusinessException } 801 - Capability not supported.
- * @throws { BusinessException } 2900001 - Service stopped.
- * @throws { BusinessException } 2900003 - Bluetooth disabled.
- * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
- */
-@!APILevel[
-    19,
-    crossplatform: true,
-    permission: "ohos.ACCESS_BLUETOOTH",
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.Bluetooth.Core"
-]
-public func getConnectedBLEDevices(): Array<String> {
-    var errorCode: Int32 = 0
-    var devices = Array<String>()
-    unsafe {
-        // MAC address translation does not throw exception.
-        let cDevices = FfiBluetoothBleGetConnectedBleDevices(inout errorCode)
-        devices = cArr2cjArr<CString, String>(cDevices.size, cDevices.head) {str: CString => str.toString()}
-        cDevices.free()
-    }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
-    return devices
 }
 
 /**
@@ -312,68 +277,6 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32 {
     }
     // for usability
     return UInt32(id)
-}
-
-/**
- * Enable the advertising with a specific ID temporarily.
- *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { AdvertisingEnableParams } advertisingEnableParams - Indicates the params for enable advertising.
- * @throws { BusinessException } 201 - Permission denied.
- * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types.
- * @throws { BusinessException } 801 - Capability not supported.
- * @throws { BusinessException } 2900001 - Service stopped.
- * @throws { BusinessException } 2900003 - Bluetooth disabled.
- * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
- */
-@!APILevel[
-    19,
-    permission: "ohos.ACCESS_BLUETOOTH",
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.Bluetooth.Core"
-]
-public func enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Unit {
-    var errorCode: Int32 = 0
-    unsafe {
-        let cAdvertisingEnableParams: NativeAdvertisingEnableParams = advertisingEnableParams.toNative()
-        FfiBluetoothBleEnableAdvertising(cAdvertisingEnableParams, inout errorCode)
-    }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
-}
-
-/**
- * Disable the advertising with a specific ID temporarily.
- *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { AdvertisingDisableParams } advertisingDisableParams - Indicates the params for disable advertising.
- * @throws { BusinessException } 201 - Permission denied.
- * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types.
- * @throws { BusinessException } 801 - Capability not supported.
- * @throws { BusinessException } 2900001 - Service stopped.
- * @throws { BusinessException } 2900003 - Bluetooth disabled.
- * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
- */
-@!APILevel[
-    19,
-    permission: "ohos.ACCESS_BLUETOOTH",
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.Bluetooth.Core"
-]
-public func disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Unit {
-    var errorCode: Int32 = 0
-    unsafe {
-        let cAdvertisingDisableParams: NativeAdvertisingDisableParams = advertisingDisableParams.toNative()
-        FfiBluetoothBleDisableAdvertising(cAdvertisingDisableParams, inout errorCode)
-    }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
 }
 
 /**

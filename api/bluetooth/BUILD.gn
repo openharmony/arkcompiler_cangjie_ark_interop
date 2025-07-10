@@ -33,7 +33,6 @@ ohos_cj_library("ohos.bluetooth.baseProfile") {
   sources = [ "baseProfile/base_profile.cj" ]
 
   cj_deps = [
-    ":ohos.bluetooth.common_util",
     ":ohos.bluetooth.constant",
     "../arkui/cj:ohos.base",
     "../labels:ohos.labels",
@@ -58,7 +57,6 @@ ohos_cj_library("ohos.bluetooth.ble") {
 
   cj_deps = [
     ":ohos.bluetooth",
-    ":ohos.bluetooth.common_util",
     ":ohos.bluetooth.constant",
     "../arkui/cj:ohos.base",
     "../ffi_bind:ohos.ffi",
@@ -73,31 +71,14 @@ ohos_cj_library("ohos.bluetooth.ble") {
   lib_name = "bluetooth.ble"
 }
 
-ohos_cj_library("ohos.bluetooth.common_util") {
-  sources = [ "common_util/util.cj" ]
-
-  cj_deps = [
-    ":ohos.bluetooth.constant",
-    "../ffi_bind:ohos.ffi",
-  ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "bluetooth.common_util"
-}
-
 ohos_cj_library("ohos.bluetooth.connection") {
   sources = [
-    "connection/callback.cj",
     "connection/connection.cj",
     "connection/native.cj",
-    "connection/util.cj",
   ]
 
   cj_deps = [
     ":ohos.bluetooth",
-    ":ohos.bluetooth.common_util",
-    ":ohos.bluetooth.constant",
     "../arkui/cj:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
