@@ -42,7 +42,7 @@ struct CSensorCallbackData {
 
     func convertToResponseOption(): ?Response {
         try {
-            match (sensorTypeId) {               
+            match (sensorTypeId) {
                 case 259 => RotationVectorResponse(this)
                 case _ => None
             }

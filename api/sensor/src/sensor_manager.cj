@@ -86,7 +86,6 @@ class CallbackList {
 }
 
 class SensorManager {
-
     private let sensorMap: HashMap<Int32, CallbackList>
     private let mutex: Mutex
 
@@ -120,7 +119,7 @@ class SensorManager {
 
     static func isMatchType(`type`: SensorId, callback: CallbackObject): Bool {
         match (`type`) {
-            case ROTATION_VECTOR => callback is Callback1Argument<RotationVectorResponse>        
+            case ROTATION_VECTOR => callback is Callback1Argument<RotationVectorResponse>
             case _ => false
         }
     }
@@ -190,7 +189,6 @@ func emitOneSensorTypeCallbacks(sensorTypeId: Int32, callbackList: Array<Callbac
         }
     }
 }
-
 
 func emitCallbackFunc<T>(callback: CallbackObject, responseData: Response): Unit {
     let callbackInstOpt = (callback as Callback1Argument<T>)
