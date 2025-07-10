@@ -136,25 +136,6 @@ public class Stat <: RemoteDataLite {
     }
 
     /**
-     *  @relation readonly location: LocationType;
-     */
-    @!APILevel[
-        20,
-        stagemodelonly: true,
-        syscap: "SystemCapability.FileManagement.File.FileIO"
-    ]
-    public prop location: LocationType {
-        get() {
-            let ret = unsafe { FfiOHOSStatGetLocation(getID()) }
-            if (ret.code != SUCCESS_CODE) {
-                FS_LOG.error(getErrorInfo(ret.code))
-                throw BusinessException(ret.code, getErrorInfo(ret.code))
-            }
-            LocationType.parse(ret.data)
-        }
-    }
-
-    /**
      *  @brief isBlockDevice(): boolean
      */
     @!APILevel[
