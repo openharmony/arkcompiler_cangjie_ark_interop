@@ -31,6 +31,10 @@ cangjie_systemapi_libs = [
     lib_name = "battery_info"
   },
   {
+    label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth"
+    lib_name = "bluetooth"
+  },
+  {
     label = "${cangjie_systemapi_api}/bluetooth:ohos.bluetooth.baseProfile"
     lib_name = "bluetooth.baseProfile"
   },
