@@ -86,6 +86,7 @@ class CallbackList {
 }
 
 class SensorManager {
+
     private let sensorMap: HashMap<Int32, CallbackList>
     private let mutex: Mutex
 
@@ -119,27 +120,7 @@ class SensorManager {
 
     static func isMatchType(`type`: SensorId, callback: CallbackObject): Bool {
         match (`type`) {
-            case ACCELEROMETER => callback is Callback1Argument<AccelerometerResponse>
-            case ACCELEROMETER_UNCALIBRATED => callback is Callback1Argument<AccelerometerUncalibratedResponse>
-            case AMBIENT_LIGHT => callback is Callback1Argument<LightResponse>
-            case AMBIENT_TEMPERATURE => callback is Callback1Argument<AmbientTemperatureResponse>
-            case BAROMETER => callback is Callback1Argument<BarometerResponse>
-            case GRAVITY => callback is Callback1Argument<GravityResponse>
-            case GYROSCOPE => callback is Callback1Argument<GyroscopeResponse>
-            case GYROSCOPE_UNCALIBRATED => callback is Callback1Argument<GyroscopeUncalibratedResponse>
-            case HALL => callback is Callback1Argument<HallResponse>
-            case HEART_RATE => callback is Callback1Argument<HeartRateResponse>
-            case HUMIDITY => callback is Callback1Argument<HumidityResponse>
-            case LINEAR_ACCELEROMETER => callback is Callback1Argument<LinearAccelerometerResponse>
-            case MAGNETIC_FIELD => callback is Callback1Argument<MagneticFieldResponse>
-            case MAGNETIC_FIELD_UNCALIBRATED => callback is Callback1Argument<MagneticFieldUncalibratedResponse>
-            case ORIENTATION => callback is Callback1Argument<OrientationResponse>
-            case PEDOMETER => callback is Callback1Argument<PedometerResponse>
-            case PEDOMETER_DETECTION => callback is Callback1Argument<PedometerDetectionResponse>
-            case PROXIMITY => callback is Callback1Argument<ProximityResponse>
-            case ROTATION_VECTOR => callback is Callback1Argument<RotationVectorResponse>
-            case SIGNIFICANT_MOTION => callback is Callback1Argument<SignificantMotionResponse>
-            case WEAR_DETECTION => callback is Callback1Argument<WearDetectionResponse>
+            case ROTATION_VECTOR => callback is Callback1Argument<RotationVectorResponse>        
             case _ => false
         }
     }
@@ -204,27 +185,7 @@ func emitSensorCallback(sensorTypeId: Int32, callbackListOpt: ?Array<CallbackObj
 func emitOneSensorTypeCallbacks(sensorTypeId: Int32, callbackList: Array<CallbackObject>, responseData: Response): Unit {
     for (callback in callbackList) {
         match (sensorTypeId) {
-            case 1 => emitCallbackFunc<AccelerometerResponse>(callback, responseData)
-            case 2 => emitCallbackFunc<GyroscopeResponse>(callback, responseData)
-            case 5 => emitCallbackFunc<LightResponse>(callback, responseData)
-            case 6 => emitCallbackFunc<MagneticFieldResponse>(callback, responseData)
-            case 8 => emitCallbackFunc<BarometerResponse>(callback, responseData)
-            case 10 => emitCallbackFunc<HallResponse>(callback, responseData)
-            case 12 => emitCallbackFunc<ProximityResponse>(callback, responseData)
-            case 13 => emitCallbackFunc<HumidityResponse>(callback, responseData)
-            case 256 => emitCallbackFunc<OrientationResponse>(callback, responseData)
-            case 257 => emitCallbackFunc<GravityResponse>(callback, responseData)
-            case 258 => emitCallbackFunc<LinearAccelerometerResponse>(callback, responseData)
             case 259 => emitCallbackFunc<RotationVectorResponse>(callback, responseData)
-            case 260 => emitCallbackFunc<AmbientTemperatureResponse>(callback, responseData)
-            case 261 => emitCallbackFunc<MagneticFieldUncalibratedResponse>(callback, responseData)
-            case 263 => emitCallbackFunc<GyroscopeUncalibratedResponse>(callback, responseData)
-            case 264 => emitCallbackFunc<SignificantMotionResponse>(callback, responseData)
-            case 265 => emitCallbackFunc<PedometerDetectionResponse>(callback, responseData)
-            case 266 => emitCallbackFunc<PedometerResponse>(callback, responseData)
-            case 278 => emitCallbackFunc<HeartRateResponse>(callback, responseData)
-            case 280 => emitCallbackFunc<WearDetectionResponse>(callback, responseData)
-            case 281 => emitCallbackFunc<AccelerometerUncalibratedResponse>(callback, responseData)
             case _ => return
         }
     }

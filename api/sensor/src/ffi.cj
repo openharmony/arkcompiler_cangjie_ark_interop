@@ -90,36 +90,6 @@ func toCArrayFloat32(arr: Array<Float32>): CArrFloat32 {
     }
 }
 
-@C
-struct CSensorArray {
-    var head: CPointer<CSensor> = CPointer()
-    var size: Int64 = 0
-
-    init() {}
-
-    func asArray(): Array<Sensor> {
-        if (head.isNull() || size <= 0) {
-            return Array<Sensor>()
-        }
-        Array<Sensor>(size) {
-            i =>
-            let data = unsafe { head.read(i) }
-            Sensor(data)
-        }
-    }
-
-    func free(): Unit {
-        if (head.isNull()) {
-            return
-        }
-
-        for (i in 0..size) {
-            unsafe { head.read(i).free() }
-        }
-        unsafe { LibC.free(head) }
-    }
-}
-
 foreign {
     // func FfiSensorSubscribeSensor(sensorId: Int32, interval: Int64, callback: Int64): Int32
 
