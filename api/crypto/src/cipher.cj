@@ -53,7 +53,7 @@ foreign {
  * @throws { BusinessException } 401 - invalid parameters.
  * @throws { BusinessException } 801 - this operation is not supported.
  * @throws { BusinessException } 17620001 - memory error.
- * @brief createCipher(transformation: string): Cipher
+ * @relation createCipher(transformation: string): Cipher
  */
 @!APILevel[
     12,
@@ -76,6 +76,7 @@ public func createCipher(transformation: String): Cipher {
 /**
  * Provides the Cipher type, which is used for encryption and decryption operations.
  *
+ * @relation interface Cipher
  */
 @!APILevel[
     12,
@@ -100,7 +101,7 @@ public class Cipher <: RemoteDataLite {
      * Indicates the algorithm name.
      *
      * @type { String }
-     * @brief algName : string
+     * @relation algName : string
      */
     @!APILevel[
         12,
@@ -145,7 +146,7 @@ public class Cipher <: RemoteDataLite {
      * @throws { BusinessException } 17620001 - memory error.
      * @throws { BusinessException } 17620002 - runtime error.
      * @throws { BusinessException } 17630001 - crypto operation error.
-     * @brief init(opMode : CryptoMode, key : Key, params : ParamsSpec) : Promise<void>
+     * @relation init(opMode : CryptoMode, key : Key, params : ParamsSpec) : Promise<void>
      */
     @!APILevel[
         12,
@@ -202,7 +203,7 @@ public class Cipher <: RemoteDataLite {
      * @throws { BusinessException } 17620001 - memory error.
      * @throws { BusinessException } 17620002 - runtime error.
      * @throws { BusinessException } 17630001 - crypto operation error.
-     * @brief update(data : DataBlob) : Promise<DataBlob>
+     * @relation update(data : DataBlob) : Promise<DataBlob>
      */
     @!APILevel[
         12,
@@ -238,7 +239,7 @@ public class Cipher <: RemoteDataLite {
      * @throws { BusinessException } 17620001 - memory error.
      * @throws { BusinessException } 17620002 - runtime error.
      * @throws { BusinessException } 17630001 - crypto operation error.
-     * @brief doFinal(data : DataBlob) : Promise<DataBlob>
+     * @relation doFinal(data : DataBlob) : Promise<DataBlob>
      */
     @!APILevel[
         12,

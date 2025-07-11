@@ -35,7 +35,7 @@ foreign {
  * @returns { SymKeyGenerator } the symmetric key generator instance.
  * @throws { BusinessException } 401 - invalid parameters.
  * @throws { BusinessException } 801 - this operation is not supported.
- * @brief createSymKeyGenerator(algName: string): SymKeyGenerator
+ * @relation createSymKeyGenerator(algName: string): SymKeyGenerator
  */
 @!APILevel[
     12,
@@ -58,6 +58,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator {
 /**
  * Provides the SymKeyGenerator type, which is used for generating symmetric key.
  *
+ * @relation interface SymKeyGenerator
  */
 @!APILevel[
     12,
@@ -79,10 +80,10 @@ public class SymKeyGenerator <: RemoteDataLite {
     }
 
     /**
-     * Indicates the algorithm name.
+     * Indicates the algorithm name of the SymKeyGenerator object.
      *
      * @type { String }
-     * @brief algName : string
+     * @relation algName : string
      */
     @!APILevel[
         12,
@@ -102,7 +103,7 @@ public class SymKeyGenerator <: RemoteDataLite {
      *
      * @returns { SymKey } the SymKey returned by the function.
      * @throws { BusinessException } 17620001 - memory error.
-     * @brief generateSymKey() : Promise<SymKey>
+     * @relation generateSymKeySync(): SymKey;
      */
     @!APILevel[
         12,
@@ -127,7 +128,7 @@ public class SymKeyGenerator <: RemoteDataLite {
      * @returns { SymKey } the SymKey  returned by the function.
      * @throws { BusinessException } 401 - invalid parameters.
      * @throws { BusinessException } 17620001 - memory error.
-     * @brief convertKey(key: DataBlob): Promise<SymKey>;
+     * @relation convertKeySync(key: DataBlob): SymKey;
      */
     @!APILevel[
         12,

@@ -34,12 +34,22 @@ foreign {
     func FfiImageImageImplGetTimestamp(id: Int64): Int64
 }
 
+/**
+ * Provides basic image operations, including obtaining image information, and reading and writing image data.
+ *
+ * @relation interface Image
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class Image <: RemoteDataLite {
+    /**
+     * Sets or gets the image area to crop, default is size.
+     *
+     * @relation clipRect: Region;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -56,6 +66,11 @@ public class Image <: RemoteDataLite {
         }
     }
 
+    /**
+     * Image size.
+     *
+     * @relation readonly size: Size;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -72,6 +87,11 @@ public class Image <: RemoteDataLite {
         }
     }
 
+    /**
+     * Image format.
+     *
+     * @relation readonly format: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -97,6 +117,11 @@ public class Image <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Get component buffer from image.
+     *
+     * @relation getComponent(componentType: ComponentType): Promise<Component>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -118,6 +143,11 @@ public class Image <: RemoteDataLite {
         throw Exception("Unreachable Code.")
     }
 
+    /**
+     * Release current image to receive another.
+     *
+     * @relation release(): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,

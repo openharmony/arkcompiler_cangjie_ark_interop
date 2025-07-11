@@ -41,7 +41,10 @@ foreign {
 }
 
 /**
- * @brief createImageReceiver(width: number, height: number, format: number, capacity: number): ImageReceiver
+ * Creates an ImageReceiver instance.
+ *
+ * @throws { BusinessException } 401 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;
+ * @relation function createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver;
  */
 @!APILevel[
     12,
@@ -56,12 +59,22 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
     return ImageReceiver(id)
 }
 
+/**
+ * Image receiver object.
+ *
+ * @relation interface ImageReceiver
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
 ]
 public class ImageReceiver <: RemoteDataLite {
+    /**
+     * Image size.
+     *
+     * @relation readonly size: Size;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -78,6 +91,11 @@ public class ImageReceiver <: RemoteDataLite {
         }
     }
 
+    /**
+     * Image capacity.
+     *
+     * @relation readonly capacity: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -94,6 +112,11 @@ public class ImageReceiver <: RemoteDataLite {
         }
     }
 
+    /**
+     * Image format.
+     *
+     * @relation readonly format: ImageFormat;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -119,6 +142,11 @@ public class ImageReceiver <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Get an id which indicates a surface and can be used to set to Camera or other component can receive a surface.
+     *
+     * @relation getReceivingSurfaceId(): Promise<string>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -137,20 +165,11 @@ public class ImageReceiver <: RemoteDataLite {
         return ret
     }
 
-    func readNextImage(): Image {
-        let retImageID = unsafe {
-            FfiOHOSReadNextImage(getID())
-        }
-        return Image(retImageID)
-    }
-
-    func readLatestImage(): Image {
-        let retImageID = unsafe {
-            FfiOHOSReadLatestImage(getID())
-        }
-        return Image(retImageID)
-    }
-
+    /**
+     * Release image receiver instance.
+     *
+     * @relation release(): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,

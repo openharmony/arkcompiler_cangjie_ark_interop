@@ -20,12 +20,22 @@ import ohos.color_manager.*
 import ohos.ffi.*
 import ohos.base.*
 
+/**
+ * Describes image information.
+ *
+ * @relation interface ImageInfo
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class ImageInfo {
+    /**
+     * Indicates image dimensions.
+     *
+     * @relation size: Size;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -33,6 +43,11 @@ public class ImageInfo {
     ]
     public var size: Size
 
+    /**
+     * Indicates image default density.
+     *
+     * @relation density: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -40,51 +55,61 @@ public class ImageInfo {
     ]
     public var density: Int32
 
+    /**
+     * The number of byte per row.
+     *
+     * @relation stride: number;
+     */
     @!APILevel[
         19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var stride: Int32
 
+    /**
+     * Indicates image format.
+     *
+     * @relation pixelFormat: PixelMapFormat;
+     */
     @!APILevel[
         19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var pixelFormat: PixelMapFormat
 
+    /**
+     * Indicates image alpha type.
+     *
+     * @relation alphaType: AlphaType;
+     */
     @!APILevel[
         19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var alphaType: AlphaType
 
+    /**
+     * Indicates image mime type.
+     *
+     * @relation mimeType: string;
+     */
     @!APILevel[
         19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var mimeType: String
 
+    /**
+     * Indicates image alpha type.
+     *
+     * @relation alphaType: AlphaType;
+     */
     @!APILevel[
         19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -102,24 +127,46 @@ public class ImageInfo {
     }
 }
 
+/**
+ * Initialization options for ImageSource.
+ *
+ * @relation interface SourceOptions
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class SourceOptions {
+    /**
+     * The density for ImageSource.
+     *
+     * @relation sourceDensity: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var sourceDensity: Int32
+
+    /**
+     * PixelMap expected format.
+     *
+     * @relation sourcePixelFormat?: PixelMapFormat;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var sourcePixelFormat: PixelMapFormat
+
+    /**
+     * PixelMap size.
+     *
+     * @relation sourceSize?: Size;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -127,6 +174,10 @@ public class SourceOptions {
     ]
     public var sourceSize: Size
 
+    /**
+     * Constructor of SourceOptions.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -143,12 +194,22 @@ public class SourceOptions {
     }
 }
 
+/**
+ * Initialization options for pixelmap.
+ *
+ * @relation interface InitializationOptions
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class InitializationOptions {
+    /**
+     * PixelMap expected alpha type.
+     *
+     * @relation alphaType?: AlphaType;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -156,6 +217,11 @@ public class InitializationOptions {
     ]
     public var alphaType: AlphaType
 
+    /**
+     * Editable or not.
+     *
+     * @relation editable?: boolean
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -163,16 +229,23 @@ public class InitializationOptions {
     ]
     public var editable: Bool
 
+    /**
+     * PixelMap source format.
+     *
+     * @relation srcPixelFormat?: PixelMapFormat;
+     */
     @!APILevel[
         19,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var srcPixelFormat: PixelMapFormat
 
+    /**
+     * PixelMap expected format.
+     *
+     * @relation pixelFormat?: PixelMapFormat;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -180,6 +253,11 @@ public class InitializationOptions {
     ]
     public var pixelFormat: PixelMapFormat
 
+    /**
+     * PixelMap expected scaling effect.
+     *
+     * @relation scaleMode?: ScaleMode;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -194,6 +272,10 @@ public class InitializationOptions {
     ]
     public var size: Size
 
+    /**
+     * Constructor of InitializationOptions.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -218,66 +300,131 @@ public class InitializationOptions {
     }
 }
 
+/**
+ * Describes image decoding parameters.
+ *
+ * @relation interface DecodingOptions
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class DecodingOptions {
+    /**
+     * Sampling ratio of the image pixel map.
+     *
+     * @relation sampleSize?: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var sampleSize: UInt32
+
+    /**
+     * Rotation angle of the image pixel map. The value ranges from 0 to 360.
+     *
+     * @relation rotate?: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var rotate: UInt32
+
+    /**
+     * Whether the image pixel map is editable.
+     *
+     * @relation editable?: boolean;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var editable: Bool
+
+    /**
+     * Width and height of the image pixel map. The value (0, 0) indicates that the pixels are decoded
+     * based on the original image size.
+     *
+     * @relation desiredSize?: Size;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var desiredSize: Size
+
+    /**
+     * Cropping region of the image pixel map.
+     *
+     * @relation desiredRegion?: Region;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var desiredRegion: Region
+
+    /**
+     * Data format of the image pixel map.
+     *
+     * @relation desiredPixelFormat?: PixelMapFormat;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var desiredPixelFormat: PixelMapFormat
+
+    /**
+     * Number of image frames.
+     *
+     * @relation index?: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var index: UInt32
+
+    /**
+     * The density for image pixel map.
+     *
+     * @relation fitDensity?: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var fitDensity: Int32
+
+    /**
+     * Color space of the image pixel map.
+     *
+     * @relation desiredColorSpace?: colorSpaceManager.ColorSpaceManager;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var desiredColorSpace: ?ColorSpaceManager
+
+    /**
+     * The desired dynamic range of the image pixelmap.
+     *
+     * @relation desiredDynamicRange?: DecodingDynamicRange;
+     */
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -285,6 +432,10 @@ public class DecodingOptions {
     ]
     public var desiredDynamicRange: DecodingDynamicRange
 
+    /**
+     * Constructor of DecodingOptions.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -325,12 +476,22 @@ public class DecodingOptions {
     }
 }
 
+/**
+ * Describes area information in an image.
+ *
+ * @relation interface PositionArea
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class PositionArea {
+    /**
+     * Image data that will be read or written.
+     *
+     * @relation pixels: ArrayBuffer;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -338,6 +499,11 @@ public class PositionArea {
     ]
     public var pixels: Array<UInt8>
 
+    /**
+     * Offset for data reading.
+     *
+     * @relation offset: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -345,6 +511,11 @@ public class PositionArea {
     ]
     public var offset: UInt32
 
+    /**
+     * Number of bytes to read.
+     *
+     * @relation stride: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -352,6 +523,11 @@ public class PositionArea {
     ]
     public var stride: UInt32
 
+    /**
+     * Region to read.
+     *
+     * @relation region: Region;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -359,6 +535,10 @@ public class PositionArea {
     ]
     public var region: Region
 
+    /**
+     * Constructor of PositionArea.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -372,12 +552,22 @@ public class PositionArea {
     }
 }
 
+/**
+ * Describes the size of an image.
+ *
+ * @relation interface Size
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class Size {
+    /**
+     * Height.
+     *
+     * @relation height: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -385,6 +575,11 @@ public class Size {
     ]
     public var height: Int32
 
+    /**
+     * Width.
+     *
+     * @relation width: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -392,6 +587,10 @@ public class Size {
     ]
     public var width: Int32
 
+    /**
+     * Constructor of Size.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -412,12 +611,22 @@ public class Size {
     }
 }
 
+/**
+ * Describes region information.
+ *
+ * @relation interface Region
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class Region {
+    /**
+     * Image size.
+     *
+     * @relation size: Size;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -425,6 +634,11 @@ public class Region {
     ]
     public var size: Size
 
+    /**
+     * x-coordinate at the upper left corner of the image.
+     *
+     * @relation x: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -432,6 +646,11 @@ public class Region {
     ]
     public var x: Int32
 
+    /**
+     * y-coordinate at the upper left corner of the image.
+     *
+     * @relation y: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -439,6 +658,10 @@ public class Region {
     ]
     public var y: Int32
 
+    /**
+     * Constructor of Region.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -461,12 +684,22 @@ public class Region {
     }
 }
 
+/**
+ * Describes image color components.
+ *
+ * @relation interface Component
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class Component {
+    /**
+     * Component type.
+     *
+     * @relation readonly componentType: ComponentType;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -474,6 +707,11 @@ public class Component {
     ]
     public let componentType: ComponentType
 
+    /**
+     * Row stride.
+     *
+     * @relation readonly rowStride: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -481,6 +719,11 @@ public class Component {
     ]
     public let rowStride: Int32
 
+    /**
+     * Pixel stride.
+     *
+     * @relation readonly pixelStride: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -488,6 +731,11 @@ public class Component {
     ]
     public let pixelStride: Int32
 
+    /**
+     * Component buffer.
+     *
+     * @relation readonly byteBuffer: ArrayBuffer;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -513,12 +761,22 @@ public class Component {
     }
 }
 
+/**
+ * Describes the option for image packing.
+ *
+ * @relation interface PackingOption
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class PackingOption {
+    /**
+     * Multipurpose Internet Mail Extensions (MIME) format of the target image, for example, image/jpeg.
+     *
+     * @relation format: string;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -526,6 +784,11 @@ public class PackingOption {
     ]
     public var format: String
 
+    /**
+     * Quality of the target image. The value is an integer ranging from 0 to 100. A larger value indicates better.
+     *
+     * @relation quality: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -533,6 +796,12 @@ public class PackingOption {
     ]
     public var quality: UInt8
 
+    /**
+     * BufferSize of the target image.
+     * If this bufferSize is less than or equal to 0, it will be converted to 10MB.
+     *
+     * @relation quality: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -540,6 +809,11 @@ public class PackingOption {
     ]
     public var bufferSize: UInt64
 
+    /**
+     * The desired dynamic range of the target image.
+     *
+     * @relation desiredDynamicRange?: PackingDynamicRange;
+     */
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -547,6 +821,11 @@ public class PackingOption {
     ]
     public var desiredDynamicRange: PackingDynamicRange
 
+    /**
+     * Whether the image properties can be saved, like Exif.
+     *
+     * @relation needsPackProperties?: boolean;
+     */
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -554,13 +833,17 @@ public class PackingOption {
     ]
     public var needsPackProperties: Bool
 
+    /**
+     * Constructor of PackingOption.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public init(format: String, quality: UInt8, desiredDynamicRange: PackingDynamicRange, needsPackProperties: Bool,
-        bufferSize!: UInt64 = 25 * 1024 * 1024) {
+        bufferSize!: UInt64 = 10  * 1024  * 1024) {
         this.format = format
         this.quality = quality
         this.bufferSize = bufferSize
@@ -569,30 +852,51 @@ public class PackingOption {
     }
 }
 
+/**
+ * Describes image properties.
+ *
+ * @relation interface ImagePropertyOptions
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public class ImagePropertyOptions {
+    /**
+     * Index of an image.
+     *
+     * @relation index?: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var index: UInt32
+
+    /**
+     * Default property value.
+     *
+     * @relation defaultValue?: string;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var defaultValue: String
+
+    /**
+     * Constructor of ImagePropertyOptions.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    public ImagePropertyOptions(index!: UInt32 = 0, defaultValue!: String = "") {
+    public init(index!: UInt32 = 0, defaultValue!: String = "") {
         this.index = index
         this.defaultValue = defaultValue
     }
@@ -771,7 +1075,7 @@ protected struct CPackingOptionV2 {
         this.format = unsafe { LibC.mallocCString(option.format) }
         this.quality = option.quality
         this.bufferSize = option.bufferSize
-        this.desiredDynamicRange = 1
+        this.desiredDynamicRange = option.desiredDynamicRange.value
         this.needsPackProperties = option.needsPackProperties
     }
 

@@ -33,6 +33,8 @@ foreign {
 
 /**
  * Provides the SymKey type, which is used for symmetric cryptography.
+ *
+ * @relation interface SymKey extends Key
  */
 @!APILevel[
     12,
@@ -57,7 +59,7 @@ public class SymKey <: RemoteDataLite & Key {
      * Indicates the algorithm name.
      *
      * @type { String }
-     * @brief algName : string
+     * @relation algName : string
      */
     @!APILevel[
         12,
@@ -76,7 +78,7 @@ public class SymKey <: RemoteDataLite & Key {
      * Indicates the format of the key object.
      *
      * @type { String }
-     * @brief format: string
+     * @relation format: string
      */
     @!APILevel[
         12,
@@ -104,7 +106,7 @@ public class SymKey <: RemoteDataLite & Key {
      * @throws { BusinessException } 801 - this operation is not supported.
      * @throws { BusinessException } 17620001 - memory error.
      * @throws { BusinessException } 17630001 - crypto operation error.
-     * @brief algName : getEncoded(): DataBlob
+     * @relation algName : getEncoded(): DataBlob
      */
     @!APILevel[
         12,
@@ -131,7 +133,7 @@ public class SymKey <: RemoteDataLite & Key {
     /**
      * Reset the key data to zero in the memory.
      *
-     * @brief clearMem(): void
+     * @relation clearMem(): void
      */
     @!APILevel[
         12,

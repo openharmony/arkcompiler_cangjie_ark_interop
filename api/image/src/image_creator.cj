@@ -34,6 +34,11 @@ foreign {
     func FFiOHOSImageCreatorRelease(id: Int64): Unit
 }
 
+/**
+ * Image creator object.
+ *
+ * @relation interface ImageCreator
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
@@ -48,6 +53,11 @@ public class ImageCreator <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Image capacity.
+     *
+     * @relation readonly capacity: number;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -61,6 +71,11 @@ public class ImageCreator <: RemoteDataLite {
         }
     }
 
+    /**
+     * Image format.
+     *
+     * @relation readonly format: ImageFormat;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -74,6 +89,11 @@ public class ImageCreator <: RemoteDataLite {
         }
     }
 
+    /**
+     * Apply for new graphic buffer from free queue.
+     *
+     * @relation dequeueImage(): Promise<Image>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -88,6 +108,11 @@ public class ImageCreator <: RemoteDataLite {
         }
     }
 
+    /**
+     * Queue buffer to dirty queue.
+     *
+     * @relation queueImage(interface: Image): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -97,6 +122,11 @@ public class ImageCreator <: RemoteDataLite {
         unsafe { FFiOHOSImageCreatorQueueImage(getID(), image.getID()) }
     }
 
+    /**
+     * Releases buffer in bufferqueue instance.
+     *
+     * @relation release(): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -109,7 +139,10 @@ public class ImageCreator <: RemoteDataLite {
 }
 
 /**
- * @brief  function createImageCreator(width: number, height: number, format: number, capacity: number): ImageCreator
+ * Creates an ImageCreator instance.
+ *
+ * @throws { BusinessException } 401 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;
+ * @relation function createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator;
  */
 @!APILevel[
     12,

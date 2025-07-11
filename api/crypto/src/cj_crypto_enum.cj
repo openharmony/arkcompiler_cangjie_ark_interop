@@ -21,6 +21,11 @@ import ohos.ffi.*
 import std.math.numeric.*
 import ohos.labels.*
 
+/**
+ * Enum for result code.
+ *
+ * @relation enum Result
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -29,6 +34,11 @@ import ohos.labels.*
     syscap: "SystemCapability.Security.CryptoFramework"
 ]
 public enum Result <: ToString {
+    /**
+     * Indicates that input parameters is invalid.
+     *
+     * @relation INVALID_PARAMS = 401,
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -36,41 +46,69 @@ public enum Result <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
-    INVALID_PARAMS
-    | @!APILevel[
+    InvalidParams
+    |
+    /**
+     * Indicates that function or algorithm is not supported.
+     *
+     * @relation NOT_SUPPORT = 801,
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
-    NOT_SUPPORT
-    | @!APILevel[
+    NotSupport
+    |
+    /**
+     * Indicates the memory error.
+     *
+     * @relation ERR_OUT_OF_MEMORY = 17620001,
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
-    ERR_OUT_OF_MEMORY
-    | @!APILevel[
+    ErrOutOfMemory
+    |
+    /**
+     * Indicates that runtime error.
+     *
+     * @relation ERR_RUNTIME_ERROR = 17620002,
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
-    ERR_RUNTIME_ERROR
-    | @!APILevel[
+    ErrRuntimeError
+    |
+    /**
+     * Indicates that crypto operation error.
+     *
+     * @relation ERR_CRYPTO_OPERATION = 17630001
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
-    ERR_CRYPTO_OPERATION
+    ErrCryptoOperation
     | ...
 
+    /**
+     * Return the value of the enumeration value.
+     *
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -80,15 +118,19 @@ public enum Result <: ToString {
     ]
     public func getValue(): Int32 {
         return match (this) {
-            case INVALID_PARAMS => 401
-            case NOT_SUPPORT => 801
-            case ERR_OUT_OF_MEMORY => 17620001
-            case ERR_RUNTIME_ERROR => 17620002
-            case ERR_CRYPTO_OPERATION => 17630001
+            case InvalidParams => 401
+            case NotSupport => 801
+            case ErrOutOfMemory => 17620001
+            case ErrRuntimeError => 17620002
+            case ErrCryptoOperation => 17630001
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
+    /**
+     * Return the string of the enumeration value.
+     *
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -98,11 +140,11 @@ public enum Result <: ToString {
     ]
     public func toString(): String {
         return match (this) {
-            case INVALID_PARAMS => "Parameter error."
-            case NOT_SUPPORT => "Capability not supported."
-            case ERR_OUT_OF_MEMORY => "Memory error."
-            case ERR_RUNTIME_ERROR => "Runtime error."
-            case ERR_CRYPTO_OPERATION => "Crypto operation error."
+            case InvalidParams => "Parameter error."
+            case NotSupport => "Capability not supported."
+            case ErrOutOfMemory => "Memory error."
+            case ErrRuntimeError => "Runtime error."
+            case ErrCryptoOperation => "Crypto operation error."
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -110,11 +152,11 @@ public enum Result <: ToString {
 
 func getError(errCode: Int32): Result {
     match {
-        case errCode == -10001 => return INVALID_PARAMS
-        case errCode == -10002 => return NOT_SUPPORT
-        case errCode == -20001 => return ERR_OUT_OF_MEMORY
-        case errCode == -20002 => return ERR_RUNTIME_ERROR
-        case errCode == -30001 => return ERR_CRYPTO_OPERATION
+        case errCode == -10001 => return InvalidParams
+        case errCode == -10002 => return NotSupport
+        case errCode == -20001 => return ErrOutOfMemory
+        case errCode == -20002 => return ErrRuntimeError
+        case errCode == -30001 => return ErrCryptoOperation
         case _ => throw Exception("Unrecognized error code: ${errCode}!")
     }
 }
@@ -126,6 +168,11 @@ func checkRet(errCode: Int32, message: String) {
     }
 }
 
+/**
+ * Enum for obtain the crypto operation.
+ *
+ * @relation enum CryptoMode
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
@@ -135,6 +182,11 @@ func checkRet(errCode: Int32, message: String) {
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
 public enum CryptoMode {
+    /**
+     * The value of encryption operation for AES, 3DES and RSA.
+     *
+     * @relation ENCRYPT_MODE = 0,
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -142,26 +194,37 @@ public enum CryptoMode {
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
-    ENCRYPT_MODE
-    | @!APILevel[
+    EncryptMode
+    |
+    /**
+     * The value of decryption operation for AES, 3DES and RSA.
+     *
+     * @relation DECRYPT_MODE = 1
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
-    DECRYPT_MODE
+    DecrtpyMode
     | ...
 
     func getValue(): Int32 {
         return match (this) {
-            case ENCRYPT_MODE => 0
-            case DECRYPT_MODE => 1
+            case EncryptMode => 0
+            case DecrtpyMode => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Enum for encryption specified parameters.
+ *
+ * @relation enum CipherSpecItem
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
@@ -171,6 +234,11 @@ public enum CryptoMode {
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
 public enum CipherSpecItem {
+    /**
+     * Indicates the algorithm name of the message digest function. It is used during RSA encryption.
+     *
+     * @relation OAEP_MD_NAME_STR = 100,
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -178,40 +246,58 @@ public enum CipherSpecItem {
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
-    OAEP_MD_NAME_STR
-    | @!APILevel[
+    OaepMdNameStr
+    |
+    /**
+     * Indicates the algorithm name for the mask generation function. It is used during RSA encryption.
+     *
+     * @relation OAEP_MGF_NAME_STR = 101,
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
-    OAEP_MGF_NAME_STR
-    | @!APILevel[
+    OaepMgfNameStr
+    |
+    /**
+     * Indicates the message digest parameter for the MGF1 mask generation function. It is used during RSA encryption.
+     *
+     * @relation OAEP_MGF1_MD_STR = 102,
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
-    OAEP_MGF1_MD_STR
-    | @!APILevel[
+    OaepMgf1MdStr
+    |
+    /**
+     * Indicates the source of the encoding input P. It is used during RSA encryption.
+     *
+     * @relation OAEP_MGF1_PSRC_UINT8ARR = 103,
+     */
+    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
-    OAEP_MGF1_PSRC_UINT8ARR
+    OaepMgf1PsrcUint8Arr
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case OAEP_MD_NAME_STR => 100
-                case OAEP_MGF_NAME_STR => 101
-                case OAEP_MGF1_MD_STR => 102
-                case OAEP_MGF1_PSRC_UINT8ARR => 103
+                case OaepMdNameStr => 100
+                case OaepMgfNameStr => 101
+                case OaepMgf1MdStr => 102
+                case OaepMgf1PsrcUint8Arr => 103
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }

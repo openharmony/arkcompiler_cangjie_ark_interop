@@ -36,6 +36,7 @@ foreign {
  * @returns { Md } returns the created md instance.
  * @throws { BusinessException } 401 - invalid parameters.
  * @throws { BusinessException } 17620001 - memory error.
+ * @relation function createMd(algName: string): Md;
  */
 @!APILevel[
     12,
@@ -57,6 +58,8 @@ public func createMd(algName: String): Md {
 
 /**
  * Provides the Md type, which is used for Md generation.
+ *
+ * @relation interface Md
  */
 @!APILevel[
     12,
@@ -81,7 +84,7 @@ public class Md <: RemoteDataLite {
      * Indicates the algorithm name.
      *
      * @type { String }
-     * @brief algName : string
+     * @relation algName : string
      */
     @!APILevel[
         12,
@@ -100,8 +103,10 @@ public class Md <: RemoteDataLite {
      * Update md with DataBlob.
      *
      * @param { DataBlob } input - indicates the DataBlob.
-     * @throws { BusinessException } 401 - invalid parameters.
+     * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
      * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation updateSync(input: DataBlob): void;
      */
     @!APILevel[
         12,
@@ -131,8 +136,12 @@ public class Md <: RemoteDataLite {
     /**
      * Output the result of md calculation.
      *
+     * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
      * @throws { BusinessException } 17620001 - memory error.
+     * @throws { BusinessException } 17620002 - runtime error.
      * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation digestSync(): DataBlob;
      */
     @!APILevel[
         12,
@@ -157,6 +166,7 @@ public class Md <: RemoteDataLite {
      *
      * @returns { UInt32 } returns the length of the hmac result.
      * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation getMdLength(): number;
      */
     @!APILevel[
         12,

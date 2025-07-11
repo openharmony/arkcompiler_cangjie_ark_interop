@@ -24,6 +24,7 @@ import std.sync.*
 import std.collection.*
 import ohos.ability.*
 import ohos.resource_manager.ResourceManager
+import ohos.data_share_predicates.*
 
 /**
  * Helper functions to access photos and albums.
@@ -163,7 +164,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions()): FetchResult<Album> {
+    public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions([], DataSharePredicates())): FetchResult<Album> {
         if (options.fetchColumns.size == 0) {
             options.fetchColumns = ["uri", "album_name"]
         }
