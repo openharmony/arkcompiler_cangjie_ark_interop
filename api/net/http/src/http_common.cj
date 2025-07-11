@@ -1101,10 +1101,10 @@ public class HttpRequestOptions {
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public init(method: RequestMethod, usingCache: Bool, priority: UInt32, readTimeout: UInt32, connectTimeout: UInt32,
-        maxLimit: UInt32, extraData!: ?HttpData = None, expectDataType!: ?HttpDataType = None,
-        header!: ?HashMap<String, String> = None, usingProtocol!: ?HttpProtocol = None, usingProxy: UsingProxy,
-        caPath!: ?String = None, resumeFrom!: ?Int64 = None, resumeTo!: ?Int64 = None, clientCert!: ?ClientCert = None,
-        dnsOverHttps!: ?String = None, dnsServers!: ?Array<String> = None, multiFormDataList!: ?Array<MultiFormData> = None) {
+        maxLimit: UInt32, usingProxy: UsingProxy, extraData!: ?HttpData = None, expectDataType!: ?HttpDataType = None,
+        header!: ?HashMap<String, String> = None, usingProtocol!: ?HttpProtocol = None, caPath!: ?String = None,
+        resumeFrom!: ?Int64 = None, resumeTo!: ?Int64 = None, clientCert!: ?ClientCert = None, dnsOverHttps!: ?String = None,
+        dnsServers!: ?Array<String> = None, multiFormDataList!: ?Array<MultiFormData> = None) {
         this.method = method
         this.extraData = extraData
         this.expectDataType = expectDataType
@@ -1213,8 +1213,8 @@ public class HttpResponse <: ToString {
             this.responseCode = ResponseCode.parse(resp.responseCode)
             this.resultType = HttpDataType.parse(resp.resultType)
             this.result = match (resultType) {
-                case STRING => STRING_DATA(CString(resp.result.head).toString())
-                case ARRAY_BUFFER => ARRAY_DATA(cArr2cjArr<UInt8, UInt8>(resp.result.size, resp.result.head, {i => i}))
+                case StringValue => StringData(CString(resp.result.head).toString())
+                case ArrayBuffer => ArrayData(cArr2cjArr<UInt8, UInt8>(resp.result.size, resp.result.head, {i => i}))
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
             this.header = cArrString2Map(resp.header)
@@ -1633,7 +1633,7 @@ public class MultiFormData {
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public init(name: String, contentType: String,  remoteFileName!: ?String = None,
-        data: ?HttpData = None, filePath!: ?String = None) {
+        data!: ?HttpData = None, filePath!: ?String = None) {
         this.name = name
         this.contentType = contentType
         this.remoteFileName = remoteFileName
