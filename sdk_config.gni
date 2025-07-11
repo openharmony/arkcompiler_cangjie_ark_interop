@@ -24,10 +24,6 @@ cangjie_systemapi_libs = [
     lib_name = "ability_access_ctrl"
   },
   {
-    label = "${cangjie_systemapi_api}/accessibility:ohos.accessibility"
-    lib_name = "accessibility"
-  },
-  {
     label = "${cangjie_systemapi_api}/battery_info:ohos.battery_info"
     lib_name = "battery_info"
   },
@@ -116,10 +112,6 @@ cangjie_systemapi_libs = [
     lib_name = "image"
   },
   {
-    label = "${cangjie_systemapi_api}/multimedia/audio:ohos.multimedia.audio"
-    lib_name = "multimedia.audio"
-  },
-  {
     label = "${cangjie_systemapi_api}/multimedia/camera:ohos.multimedia.camera"
     lib_name = "multimedia.camera"
   },
@@ -204,10 +196,6 @@ cangjie_kits = [
     lib_name = "AbilityKit"
   },
   {
-    label = "${cangjie_systemapi}/kit:kit.AccessibilityKit"
-    lib_name = "AccessibilityKit"
-  },
-  {
     label = "${cangjie_systemapi}/kit:kit.ArkData"
     lib_name = "ArkData"
   },
@@ -222,10 +210,6 @@ cangjie_kits = [
   {
     label = "${cangjie_systemapi}/kit:kit.ArkWeb"
     lib_name = "ArkWeb"
-  },
-  {
-    label = "${cangjie_systemapi}/kit:kit.AudioKit"
-    lib_name = "AudioKit"
   },
   {
     label = "${cangjie_systemapi}/kit:kit.BasicServicesKit"
