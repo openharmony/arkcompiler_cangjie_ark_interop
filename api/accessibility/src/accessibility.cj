@@ -45,7 +45,7 @@ public class EventInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    public var `type`: EventType
+    public let `type`: EventType
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -57,7 +57,7 @@ public class EventInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    public var bundleName: String
+    public let bundleName: String
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -81,7 +81,7 @@ public class EventInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    public var triggerAction: Action
+    public let triggerAction: Action
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -148,7 +148,7 @@ public class EventInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    public init(`type`!: EventType, bundleName!: String, triggerAction!: Action) {
+    public init(`type`: EventType, bundleName: String, triggerAction: Action) {
         var cEventInfo: CEventInfo
         var errorCode = SUCCESS_CODE
         let cType = unsafe { LibC.mallocCString(`type`.value) }

@@ -41,167 +41,167 @@ public enum Action {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_ACCESSIBILITYFOCUS
+    AccessibilityFocus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_CLEARACCESSIBILITYFOCUS
+    ClearAccessibilityFocus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_FOCUS
+    Focus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_CLEARFOCUS
+    ClearFocus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_CLEARSELECTION
+    ClearSelection
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_CLICK
+    Click
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_LONGCLICK
+    LongClick
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_CUT
+    Cut
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_COPY
+    Copy
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_PASTE
+    Paste
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_SELECT
+    Select
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_SETTEXT
+    SetText
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_DELETE
+    Delete
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_SCROLLFORWARD
+    ScrollForward
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_SCROLLBACKWARD
+    ScrollBackward
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_SETSELECTION
+    SetSelection
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_SETCURSORPOSITION
+    SetCursorPosition
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_HOME
+    Home
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_BACK
+    Back
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_RECENTTASK
+    RecentTask
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_NOTIFICATIONCENTER
+    NotificationCenter
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_CONTROLCENTER
+    ControlCenter
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    ACTION_COMMON
+    Common
     | ...
 
     prop value: String {
         get() {
             match (this) {
-                case ACTION_ACCESSIBILITYFOCUS => 'accessibilityfocus'
-                case ACTION_CLEARACCESSIBILITYFOCUS => 'clearaccessibilityfocus'
-                case ACTION_FOCUS => 'focus'
-                case ACTION_CLEARFOCUS => 'clearfocus'
-                case ACTION_CLEARSELECTION => 'clearselection'
-                case ACTION_CLICK => 'click'
-                case ACTION_LONGCLICK => 'longclick'
-                case ACTION_CUT => 'cut'
-                case ACTION_COPY => 'copy'
-                case ACTION_PASTE => 'paste'
-                case ACTION_SELECT => 'select'
-                case ACTION_SETTEXT => 'settext'
-                case ACTION_DELETE => 'delete'
-                case ACTION_SCROLLFORWARD => 'scrollforward'
-                case ACTION_SCROLLBACKWARD => 'scrollbackward'
-                case ACTION_SETSELECTION => 'setselection'
-                case ACTION_SETCURSORPOSITION => 'setcursorposition'
-                case ACTION_HOME => 'home'
-                case ACTION_BACK => 'back'
-                case ACTION_RECENTTASK => 'recenttask'
-                case ACTION_NOTIFICATIONCENTER => 'notificationcenter'
-                case ACTION_CONTROLCENTER => 'controlcenter'
-                case ACTION_COMMON => 'common'
+                case AccessibilityFocus => 'accessibilityfocus'
+                case ClearAccessibilityFocus => 'clearaccessibilityfocus'
+                case Focus => 'focus'
+                case ClearFocus => 'clearfocus'
+                case ClearSelection => 'clearselection'
+                case Click => 'click'
+                case LongClick => 'longclick'
+                case Cut => 'cut'
+                case Copy => 'copy'
+                case Paste => 'paste'
+                case Select => 'select'
+                case SetText => 'settext'
+                case Delete => 'delete'
+                case ScrollForward => 'scrollforward'
+                case ScrollBackward => 'scrollbackward'
+                case SetSelection => 'setselection'
+                case SetCursorPosition => 'setcursorposition'
+                case Home => 'home'
+                case Back => 'back'
+                case RecentTask => 'recenttask'
+                case NotificationCenter => 'notificationcenter'
+                case ControlCenter => 'controlcenter'
+                case Common => 'common'
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -209,29 +209,29 @@ public enum Action {
 
     static func parse(action: String): Action {
         match (action) {
-            case 'accessibilityFocus' => ACTION_ACCESSIBILITYFOCUS
-            case 'clearAccessibilityFocus' => ACTION_CLEARACCESSIBILITYFOCUS
-            case 'focus' => ACTION_FOCUS
-            case 'clearFocus' => ACTION_CLEARFOCUS
-            case 'clearSelection' => ACTION_CLEARSELECTION
-            case 'click' => ACTION_CLICK
-            case 'longClick' => ACTION_LONGCLICK
-            case 'cut' => ACTION_CUT
-            case 'copy' => ACTION_COPY
-            case 'paste' => ACTION_PASTE
-            case 'select' => ACTION_SELECT
-            case 'setText' => ACTION_SETTEXT
-            case 'delete' => ACTION_DELETE
-            case 'scrollForward' => ACTION_SCROLLFORWARD
-            case 'scrollBackward' => ACTION_SCROLLBACKWARD
-            case 'setSelection' => ACTION_SETSELECTION
-            case 'setCursorPosition' => ACTION_SETCURSORPOSITION
-            case 'home' => ACTION_HOME
-            case 'back' => ACTION_BACK
-            case 'recentTask' => ACTION_RECENTTASK
-            case 'notificationCenter' => ACTION_NOTIFICATIONCENTER
-            case 'controlCenter' => ACTION_CONTROLCENTER
-            case 'common' => ACTION_COMMON
+            case 'accessibilityFocus' => AccessibilityFocus
+            case 'clearAccessibilityFocus' => ClearAccessibilityFocus
+            case 'focus' => Focus
+            case 'clearFocus' => ClearFocus
+            case 'clearSelection' => ClearSelection
+            case 'click' => Click
+            case 'longClick' => LongClick
+            case 'cut' => Cut
+            case 'copy' => Copy
+            case 'paste' => Paste
+            case 'select' => Select
+            case 'setText' => SetText
+            case 'delete' => Delete
+            case 'scrollForward' => ScrollForward
+            case 'scrollBackward' => ScrollBackward
+            case 'setSelection' => SetSelection
+            case 'setCursorPosition' => SetCursorPosition
+            case 'home' => Home
+            case 'back' => Back
+            case 'recentTask' => RecentTask
+            case 'notificationCenter' => NotificationCenter
+            case 'controlCenter' => ControlCenter
+            case 'common' => Common
             case _ => throw NoneValueException("Action parse enum value error")
         }
     }
@@ -259,97 +259,97 @@ public enum EventType {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_ACCESSIBILITYFOCUS
+    AccessibilityFocus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_ACCESSIBILITYFOCUSCLEAR
+    AccessibilityFocusClear
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_CLICK
+    Click
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_LONGCLICK
+    LongClick
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_FOCUS
+    Focus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_SELECT
+    Select
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_HOVERENTER
+    HoverEnter
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_HOVEREXIT
+    HoverExit
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_TEXTUPDATE
+    TextUpdate
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_TEXTSELECTIONUPDATE
+    TextSelectionUpdate
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_SCROLL
+    Scroll
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_REQUESTFOCUSFORACCESSIBILITY
+    RequestFocusForAccessibility
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    EVENTTYPE_ANNOUNCEFORACCESSIBILITY
+    AnnounceForAccessibility
     | ...
 
     prop value: String {
         get() {
             match (this) {
-                case EVENTTYPE_ACCESSIBILITYFOCUS => 'accessibilityFocus'
-                case EVENTTYPE_ACCESSIBILITYFOCUSCLEAR => 'accessibilityFocusClear'
-                case EVENTTYPE_CLICK => 'click'
-                case EVENTTYPE_LONGCLICK => 'longClick'
-                case EVENTTYPE_FOCUS => 'focus'
-                case EVENTTYPE_SELECT => 'select'
-                case EVENTTYPE_HOVERENTER => 'hoverEnter'
-                case EVENTTYPE_HOVEREXIT => 'hoverExit'
-                case EVENTTYPE_TEXTUPDATE => 'textUpdate'
-                case EVENTTYPE_TEXTSELECTIONUPDATE => 'textSelectionUpdate'
-                case EVENTTYPE_SCROLL => 'scroll'
-                case EVENTTYPE_REQUESTFOCUSFORACCESSIBILITY => 'requestFocusForAccessibility'
-                case EVENTTYPE_ANNOUNCEFORACCESSIBILITY => 'announceForAccessibility'
+                case AccessibilityFocus => 'accessibilityFocus'
+                case AccessibilityFocusClear => 'accessibilityFocusClear'
+                case Click => 'click'
+                case LongClick => 'longClick'
+                case Focus => 'focus'
+                case Select => 'select'
+                case HoverEnter => 'hoverEnter'
+                case HoverExit => 'hoverExit'
+                case TextUpdate => 'textUpdate'
+                case TextSelectionUpdate => 'textSelectionUpdate'
+                case Scroll => 'scroll'
+                case RequestFocusForAccessibility => 'requestFocusForAccessibility'
+                case AnnounceForAccessibility => 'announceForAccessibility'
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -357,19 +357,19 @@ public enum EventType {
 
     static func parse(evenType: String): EventType {
         match (evenType) {
-            case 'accessibilityFocus' => EVENTTYPE_ACCESSIBILITYFOCUS
-            case 'accessibilityFocusClear' => EVENTTYPE_ACCESSIBILITYFOCUSCLEAR
-            case 'click' => EVENTTYPE_CLICK
-            case 'longClick' => EVENTTYPE_LONGCLICK
-            case 'focus' => EVENTTYPE_FOCUS
-            case 'select' => EVENTTYPE_SELECT
-            case 'hoverEnter' => EVENTTYPE_HOVERENTER
-            case 'hoverExit' => EVENTTYPE_HOVEREXIT
-            case 'textUpdate' => EVENTTYPE_TEXTUPDATE
-            case 'textSelectionUpdate' => EVENTTYPE_TEXTSELECTIONUPDATE
-            case 'scroll' => EVENTTYPE_SCROLL
-            case 'requestFocusForAccessibility' => EVENTTYPE_REQUESTFOCUSFORACCESSIBILITY
-            case 'announceForAccessibility' => EVENTTYPE_ANNOUNCEFORACCESSIBILITY
+            case 'accessibilityFocus' => AccessibilityFocus
+            case 'accessibilityFocusClear' => AccessibilityFocusClear
+            case 'click' => Click
+            case 'longClick' => LongClick
+            case 'focus' => Focus
+            case 'select' => Select
+            case 'hoverEnter' => HoverEnter
+            case 'hoverExit' => HoverExit
+            case 'textUpdate' => TextUpdate
+            case 'textSelectionUpdate' => TextSelectionUpdate
+            case 'scroll' => Scroll
+            case 'requestFocusForAccessibility' => RequestFocusForAccessibility
+            case 'announceForAccessibility' => AnnounceForAccessibility
             case _ => throw NoneValueException("EventType parse enum value error(${evenType})")
         }
     }
@@ -395,41 +395,41 @@ public enum WindowUpdateType {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    WINDOWUPDATETYPE_ADD
+    Add
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    WINDOWUPDATETYPE_REMOVE
+    Remove
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    WINDOWUPDATETYPE_BOUNDS
+    Bounds
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    WINDOWUPDATETYPE_ACTIVE
+    Active
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    WINDOWUPDATETYPE_FOCUS
+    Focus
     | ...
 
     prop value: String {
         get() {
             match (this) {
-                case WINDOWUPDATETYPE_ADD => 'add'
-                case WINDOWUPDATETYPE_REMOVE => 'remove'
-                case WINDOWUPDATETYPE_BOUNDS => 'bounds'
-                case WINDOWUPDATETYPE_ACTIVE => 'active'
-                case WINDOWUPDATETYPE_FOCUS => 'focus'
+                case Add => 'add'
+                case Remove => 'remove'
+                case Bounds => 'bounds'
+                case Active => 'active'
+                case Focus => 'focus'
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -437,11 +437,11 @@ public enum WindowUpdateType {
 
     static func parse(windowUpdateType: String): WindowUpdateType {
         match (windowUpdateType) {
-            case 'add' => WINDOWUPDATETYPE_ADD
-            case 'remove' => WINDOWUPDATETYPE_REMOVE
-            case 'bounds' => WINDOWUPDATETYPE_BOUNDS
-            case 'active' => WINDOWUPDATETYPE_ACTIVE
-            case 'focus' => WINDOWUPDATETYPE_FOCUS
+            case 'add' => Add
+            case 'remove' => Remove
+            case 'bounds' => Bounds
+            case 'active' => Active
+            case 'focus' => Focus
             case _ => throw NoneValueException("WindowUpdateType parse enum value error(${windowUpdateType})")
         }
     }
@@ -465,41 +465,41 @@ public enum TextMoveUnit {
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    TEXTMOVEUNIT_CHAR
+    Char
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    TEXTMOVEUNIT_WORD
+    Word
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    TEXTMOVEUNIT_LINE
+    Line
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    TEXTMOVEUNIT_PAGE
+    Page
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BarrierFree.Accessibility.Core"
     ]
-    TEXTMOVEUNIT_PARAGRAPH
+    Paragraph
     | ...
 
     prop value: String {
         get() {
             match (this) {
-                case TEXTMOVEUNIT_CHAR => 'char'
-                case TEXTMOVEUNIT_WORD => 'word'
-                case TEXTMOVEUNIT_LINE => 'line'
-                case TEXTMOVEUNIT_PAGE => 'page'
-                case TEXTMOVEUNIT_PARAGRAPH => 'paragraph'
+                case Char => 'char'
+                case Word => 'word'
+                case Line => 'line'
+                case Page => 'page'
+                case Paragraph => 'paragraph'
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -507,11 +507,11 @@ public enum TextMoveUnit {
 
     static func parse(text: String): TextMoveUnit {
         match (text) {
-            case 'char' => TEXTMOVEUNIT_CHAR
-            case 'word' => TEXTMOVEUNIT_WORD
-            case 'line' => TEXTMOVEUNIT_LINE
-            case 'page' => TEXTMOVEUNIT_PAGE
-            case 'paragraph' => TEXTMOVEUNIT_PARAGRAPH
+            case 'char' => Char
+            case 'word' => Word
+            case 'line' => Line
+            case 'page' => Page
+            case 'paragraph' => Paragraph
             case _ => throw NoneValueException("TextMoveUnit parse enum value error")
         }
     }

@@ -50,36 +50,36 @@ public enum DeviceAddressType <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    RANDOM_DEVICE_ADDRESS
+    RandomDeviceAddress
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    REAL_DEVICE_ADDRESS
+    RealDeviceAddress
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case RANDOM_DEVICE_ADDRESS => 0
-            case REAL_DEVICE_ADDRESS => 1
+            case RandomDeviceAddress => 0
+            case RealDeviceAddress => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): DeviceAddressType {
         match (val) {
-            case 0 => RANDOM_DEVICE_ADDRESS
-            case 1 => REAL_DEVICE_ADDRESS
+            case 0 => RandomDeviceAddress
+            case 1 => RealDeviceAddress
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func tryParse(val: Int32): ?DeviceAddressType {
         match (val) {
-            case 0 => RANDOM_DEVICE_ADDRESS
-            case 1 => REAL_DEVICE_ADDRESS
+            case 0 => RandomDeviceAddress
+            case 1 => RealDeviceAddress
             case _ => None
         }
     }
@@ -91,8 +91,8 @@ public enum DeviceAddressType <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case RANDOM_DEVICE_ADDRESS => "RANDOM_DEVICE_ADDRESS"
-            case REAL_DEVICE_ADDRESS => "REAL_DEVICE_ADDRESS"
+            case RandomDeviceAddress => "RandomDeviceAddress"
+            case RealDeviceAddress => "RealDeviceAddress"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -110,92 +110,92 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_INVALID
+    WifiSecTypeInvalid
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_OPEN
+    WifiSecTypeOpen
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_WEP
+    WifiSecTypeWep
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_PSK
+    WifiSecTypePsk
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_SAE
+    WifiSecTypeSae
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_EAP
+    WifiSecTypeEap
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_EAP_SUITE_B
+    WifiSecTypeEapSuiteB
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_OWE
+    WifiSecTypeOwe
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_WAPI_CERT
+    WifiSecTypeWapiCert
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_WAPI_PSK
+    WifiSecTypeWapiPsk
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case WIFI_SEC_TYPE_INVALID => 0
-            case WIFI_SEC_TYPE_OPEN => 1
-            case WIFI_SEC_TYPE_WEP => 2
-            case WIFI_SEC_TYPE_PSK => 3
-            case WIFI_SEC_TYPE_SAE => 4
-            case WIFI_SEC_TYPE_EAP => 5
-            case WIFI_SEC_TYPE_EAP_SUITE_B => 6
-            case WIFI_SEC_TYPE_OWE => 7
-            case WIFI_SEC_TYPE_WAPI_CERT => 8
-            case WIFI_SEC_TYPE_WAPI_PSK => 9
+            case WifiSecTypeInvalid => 0
+            case WifiSecTypeOpen => 1
+            case WifiSecTypeWep => 2
+            case WifiSecTypePsk => 3
+            case WifiSecTypeSae => 4
+            case WifiSecTypeEap => 5
+            case WifiSecTypeEapSuiteB => 6
+            case WifiSecTypeOwe => 7
+            case WifiSecTypeWapiCert => 8
+            case WifiSecTypeWapiPsk => 9
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): WifiSecurityType {
         match (val) {
-            case 0 => WIFI_SEC_TYPE_INVALID
-            case 1 => WIFI_SEC_TYPE_OPEN
-            case 2 => WIFI_SEC_TYPE_WEP
-            case 3 => WIFI_SEC_TYPE_PSK
-            case 4 => WIFI_SEC_TYPE_SAE
-            case 5 => WIFI_SEC_TYPE_EAP
-            case 6 => WIFI_SEC_TYPE_EAP_SUITE_B
-            case 7 => WIFI_SEC_TYPE_OWE
-            case 8 => WIFI_SEC_TYPE_WAPI_CERT
-            case 9 => WIFI_SEC_TYPE_WAPI_PSK
+            case 0 => WifiSecTypeInvalid
+            case 1 => WifiSecTypeOpen
+            case 2 => WifiSecTypeWep
+            case 3 => WifiSecTypePsk
+            case 4 => WifiSecTypeSae
+            case 5 => WifiSecTypeEap
+            case 6 => WifiSecTypeEapSuiteB
+            case 7 => WifiSecTypeOwe
+            case 8 => WifiSecTypeWapiCert
+            case 9 => WifiSecTypeWapiPsk
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -207,16 +207,16 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
     ]
     public operator func ==(that: WifiSecurityType): Bool {
         match ((this, that)) {
-            case (WIFI_SEC_TYPE_INVALID, WIFI_SEC_TYPE_INVALID) => true
-            case (WIFI_SEC_TYPE_OPEN, WIFI_SEC_TYPE_OPEN) => true
-            case (WIFI_SEC_TYPE_WEP, WIFI_SEC_TYPE_WEP) => true
-            case (WIFI_SEC_TYPE_PSK, WIFI_SEC_TYPE_PSK) => true
-            case (WIFI_SEC_TYPE_SAE, WIFI_SEC_TYPE_SAE) => true
-            case (WIFI_SEC_TYPE_EAP, WIFI_SEC_TYPE_EAP) => true
-            case (WIFI_SEC_TYPE_EAP_SUITE_B, WIFI_SEC_TYPE_EAP_SUITE_B) => true
-            case (WIFI_SEC_TYPE_OWE, WIFI_SEC_TYPE_OWE) => true
-            case (WIFI_SEC_TYPE_WAPI_CERT, WIFI_SEC_TYPE_WAPI_CERT) => true
-            case (WIFI_SEC_TYPE_WAPI_PSK, WIFI_SEC_TYPE_WAPI_PSK) => true
+            case (WifiSecTypeInvalid, WifiSecTypeInvalid) => true
+            case (WifiSecTypeOpen, WifiSecTypeOpen) => true
+            case (WifiSecTypeWep, WifiSecTypeWep) => true
+            case (WifiSecTypePsk, WifiSecTypePsk) => true
+            case (WifiSecTypeSae, WifiSecTypeSae) => true
+            case (WifiSecTypeEap, WifiSecTypeEap) => true
+            case (WifiSecTypeEapSuiteB, WifiSecTypeEapSuiteB) => true
+            case (WifiSecTypeOwe, WifiSecTypeOwe) => true
+            case (WifiSecTypeWapiCert, WifiSecTypeWapiCert) => true
+            case (WifiSecTypeWapiPsk, WifiSecTypeWapiPsk) => true
             case _ => false
         }
     }
@@ -228,16 +228,16 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
     ]
     public func toString(): String {
         match (this) {
-            case WIFI_SEC_TYPE_INVALID => "WIFI_SEC_TYPE_INVALID"
-            case WIFI_SEC_TYPE_OPEN => "WIFI_SEC_TYPE_OPEN"
-            case WIFI_SEC_TYPE_WEP => "WIFI_SEC_TYPE_WEP"
-            case WIFI_SEC_TYPE_PSK => "WIFI_SEC_TYPE_PSK"
-            case WIFI_SEC_TYPE_SAE => "WIFI_SEC_TYPE_SAE"
-            case WIFI_SEC_TYPE_EAP => "WIFI_SEC_TYPE_EAP"
-            case WIFI_SEC_TYPE_EAP_SUITE_B => "WIFI_SEC_TYPE_EAP_SUITE_B"
-            case WIFI_SEC_TYPE_OWE => "WIFI_SEC_TYPE_OWE"
-            case WIFI_SEC_TYPE_WAPI_CERT => "WIFI_SEC_TYPE_WAPI_CERT"
-            case WIFI_SEC_TYPE_WAPI_PSK => "WIFI_SEC_TYPE_WAPI_PSK"
+            case WifiSecTypeInvalid => "WifiSecTypeInvalid"
+            case WifiSecTypeOpen => "WifiSecTypeOpen"
+            case WifiSecTypeWep => "WifiSecTypeWep"
+            case WifiSecTypePsk => "WifiSecTypePsk"
+            case WifiSecTypeSae => "WifiSecTypeSae"
+            case WifiSecTypeEap => "WifiSecTypeEap"
+            case WifiSecTypeEapSuiteB => "WifiSecTypeEapSuiteB"
+            case WifiSecTypeOwe => "WifiSecTypeOwe"
+            case WifiSecTypeWapiCert => "WifiSecTypeWapiCert"
+            case WifiSecTypeWapiPsk => "WifiSecTypeWapiPsk"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -254,35 +254,35 @@ public enum WifiCategory <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
-    DEFAULT
+    Default
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
-    WIFI6
+    Wifi6
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
-    WIFI6_PLUS
+    Wifi6Plus
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case DEFAULT => 1
-            case WIFI6 => 2
-            case WIFI6_PLUS => 3
+            case Default => 1
+            case Wifi6 => 2
+            case Wifi6Plus => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): WifiCategory {
         match (val) {
-            case 1 => DEFAULT
-            case 2 => WIFI6
-            case 3 => WIFI6_PLUS
+            case 1 => Default
+            case 2 => Wifi6
+            case 3 => Wifi6Plus
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -294,9 +294,9 @@ public enum WifiCategory <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case DEFAULT => "DEFAULT"
-            case WIFI6 => "WIFI6"
-            case WIFI6_PLUS => "WIFI6_PLUS"
+            case Default => "Default"
+            case Wifi6 => "Wifi6"
+            case Wifi6Plus => "Wifi6Plus"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
