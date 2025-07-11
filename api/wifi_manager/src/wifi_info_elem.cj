@@ -25,20 +25,25 @@ import ohos.ffi.*
     syscap: "SystemCapability.Communication.WiFi.STA"
 ]
 public class WifiInfoElem <: ToString {
-    WifiInfoElem(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let eid: UInt32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let content: Array<UInt8>
-    ) {}
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let eid: UInt32
+    
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let content: Array<UInt8>
+
+    init(eid: UInt32, content: Array<UInt8>) {
+        this.eid = eid
+        this.content = content
+    }
 
     init(info: CWifiInfoElem) {
         this.eid = info.eid
