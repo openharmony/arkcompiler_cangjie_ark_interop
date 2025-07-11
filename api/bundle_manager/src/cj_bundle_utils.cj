@@ -941,7 +941,7 @@ public class ExtensionAbilityInfo {
         this.extensionAbilityType = try {
             ExtensionAbilityType.parse(ret.extensionAbilityType)
         } catch (_: IllegalArgumentException) {
-            UNSPECIFIED
+            Unspecified
         }
         this.permissions = readArrStr(ret.permissions)
         this.applicationInfo = ApplicationInfo(ret.applicationInfo)

@@ -56,10 +56,6 @@ cangjie_systemapi_libs = [
     lib_name = "common_event_manager"
   },
   {
-    label = "${cangjie_systemapi_api}/contacts:ohos.contact"
-    lib_name = "contact"
-  },
-  {
     label = "${cangjie_systemapi_api}/crypto:ohos.crypto"
     lib_name = "crypto"
   },
@@ -226,10 +222,6 @@ cangjie_kits = [
   {
     label = "${cangjie_systemapi}/kit:kit.ConnectivityKit"
     lib_name = "ConnectivityKit"
-  },
-  {
-    label = "${cangjie_systemapi}/kit:kit.ContactsKit"
-    lib_name = "ContactsKit"
   },
   {
     label = "${cangjie_systemapi}/kit:kit.CoreFileKit"

@@ -136,17 +136,6 @@ ohos_cj_library("kit.ConnectivityKit") {
   part_name = "cangjie_api"
 }
 
-ohos_cj_library("kit.ContactsKit") {
-  sources = [ "ContactsKit/index.cj" ]
-
-  cj_deps = [ "../api/contacts:ohos.contact" ]
-
-  kit = true
-  lib_name = "ContactsKit"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
 ohos_cj_library("kit.CoreFileKit") {
   sources = [ "CoreFileKit/index.cj" ]
 

@@ -38,41 +38,41 @@ struct CConfigOption {
 func getValue(value: ValueType): (UInt8, CPointer<Unit>, Int64) {
     unsafe {
         match (value) {
-            case INT(v) =>
+            case IntVaule(v) =>
                 let ptr = safeMalloc<Int32>()
                 ptr.write(v)
                 return (0, CPointer<Unit>(ptr), 1)
-            case FLOAT(v) =>
+            case FloatValue(v) =>
                 let ptr = safeMalloc<Float64>(count: 1)
                 ptr.write(v)
                 return (1, CPointer<Unit>(ptr), 1)
-            case STRING(v) =>
+            case StringValue(v) =>
                 let ptr = LibC.mallocCString(v).getChars()
                 return (2, CPointer<Unit>(ptr), 1)
-            case BOOL(v) =>
+            case BoolValue(v) =>
                 let ptr = safeMalloc<Bool>(count: 1)
                 ptr.write(v)
                 return (3, CPointer<Unit>(ptr), 1)
-            case ARRAYI32(v) =>
+            case ArrI32(v) =>
                 let constructor = {p: Int32 => p}
                 let ptr = cjArr2CArr<Int32, Int32>(v, constructor)
                 return (4, CPointer<Unit>(ptr), v.size)
-            case ARRAYF64(v) =>
+            case ArrF64(v) =>
                 let constructor = {p: Float64 => p}
                 let ptr = cjArr2CArr<Float64, Float64>(v, constructor)
                 return (5, CPointer<Unit>(ptr), v.size)
-            case ARRSTRING(v) =>
+            case ArrString(v) =>
                 let ptr = cjArr2CArr<String, CString>(v, FUNCTION_S2CS, FUNCTION_CS_FREE)
                 return (6, CPointer<Unit>(ptr), v.size)
-            case ARRAYBOOL(v) =>
+            case ArrBool(v) =>
                 let constructor = {p: Bool => p}
                 let ptr = cjArr2CArr<Bool, Bool>(v, constructor)
                 return (7, CPointer<Unit>(ptr), v.size)
-            case INT64(v) =>
+            case Int64Value(v) =>
                 let ptr = safeMalloc<Int64>()
                 ptr.write(v)
                 return (8, CPointer<Unit>(ptr), 1)
-            case ARRAYINT64(v) =>
+            case ArrInt64(v) =>
                 let constructor = {p: Int64 => p}
                 let ptr = cjArr2CArr<Int64, Int64>(v, constructor)
                 return (9, CPointer<Unit>(ptr), v.size)
