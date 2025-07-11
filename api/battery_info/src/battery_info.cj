@@ -19,15 +19,13 @@ import std.deriving.*
 import ohos.labels.*
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public class BatteryInfo {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -38,8 +36,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -51,7 +48,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -63,7 +60,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -75,7 +72,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -86,7 +83,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -97,7 +94,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -111,7 +108,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -122,7 +119,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -133,7 +130,7 @@ public class BatteryInfo {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -147,31 +144,31 @@ public class BatteryInfo {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryPluggedType {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     None
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     AC
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     USB
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -191,36 +188,31 @@ public enum BatteryPluggedType {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryChargeState {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     None
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Enable
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Disable
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -240,43 +232,43 @@ public enum BatteryChargeState {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryHealthState {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Unknown
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Good
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Overheat
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Overvoltage
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     cold
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -298,49 +290,49 @@ public enum BatteryHealthState {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryCapacityLevel {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelFull
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelHigh
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelNormal
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelLow
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelWarning
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelCritical
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
@@ -363,61 +355,61 @@ public enum BatteryCapacityLevel {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum CommonEventBatteryChangedKey {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraSoc
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraChargeState
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraHealthState
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraPluggedType
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraVoltage
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraTechnology
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraTemperature
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraPresent
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
