@@ -20,6 +20,8 @@ import ohos.ffi.*
 
 /**
  * Provides the Key type, which is the common parent class of keys.
+ *
+ * @relation interface Key
  */
 @!APILevel[
     12,
@@ -29,6 +31,11 @@ import ohos.ffi.*
     syscap: "SystemCapability.Security.CryptoFramework.Key"
 ]
 public interface Key {
+    /**
+     * Indicates the format of the key object.
+     *
+     * @relation readonly format: string;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -38,6 +45,11 @@ public interface Key {
     ]
     prop format: String
 
+    /**
+     * Indicates the algorithm name of the key object.
+     *
+     * @relation readonly algName: string;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -47,6 +59,14 @@ public interface Key {
     ]
     prop algName: String
 
+    /**
+     * Encode the key object to binary data.
+     *
+     * @throws { BusinessException } 801 - this operation is not supported.
+     * @throws { BusinessException } 17620001 - memory error.
+     * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation getEncoded(): DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -57,6 +77,11 @@ public interface Key {
     func getEncoded(): DataBlob
 }
 
+/**
+ * Provides the ParamsSpec type, including the algorithm name.
+ *
+ * @relation interface ParamsSpec
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -65,6 +90,11 @@ public interface Key {
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
 public interface ParamsSpec {
+    /**
+     * Indicates the algorithm name. Should be set before initialization of a cipher object.
+     *
+     * @relation algName: string;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -73,13 +103,4 @@ public interface ParamsSpec {
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
     mut prop algName: String
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.CryptoFramework.Cipher"
-    ]
-    mut prop iv: DataBlob
 }

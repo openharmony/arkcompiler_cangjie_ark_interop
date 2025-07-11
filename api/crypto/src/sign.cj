@@ -38,7 +38,13 @@ foreign {
 }
 
 /**
- * @brief createSign(algName: string): Sign
+ * Create a sign object for generating signatures.
+ *
+ * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+ * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - this operation is not supported.
+ * @throws { BusinessException } 17620001 - memory error.
+ * @relation function createSign(algName: string): Sign;
  */
 @!APILevel[
     12,
@@ -58,6 +64,11 @@ public func createSign(algName: String): Sign {
     }
 }
 
+/**
+ * Provides the Sign type, which is used for generating signatures.
+ *
+ * @relation interface Sign
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -78,7 +89,10 @@ public class Sign <: RemoteDataLite {
     }
 
     /**
-     * @brief algName: string
+     * Indicates the algorithm name of the sign object.
+     *
+     * @type { String }
+     * @relation algName : string
      */
     @!APILevel[
         12,

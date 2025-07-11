@@ -41,8 +41,7 @@ foreign {
  * @brief function create(colorSpaceName: ColorSpace): ColorSpaceManager
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
 ]
@@ -70,8 +69,7 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager {
  * @brief function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManager
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
 ]
@@ -94,8 +92,7 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
  * Defines a color space object and manages its key information
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
 ]
@@ -116,8 +113,7 @@ public class ColorSpaceManager <: RemoteDataLite {
      * @brief getColorSpaceName(): ColorSpace
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
@@ -126,7 +122,7 @@ public class ColorSpaceManager <: RemoteDataLite {
             var errCode: Int32 = 0
             let res = CJ_ColorMgrGetColorSpaceName(getID(), inout errCode)
             checkRet(errCode, "[ColorSpaceManager] getColorSpaceName: ")
-            return ColorSpace.parseInner(res)
+            return ColorSpace.parse(res)
         }
     }
 
@@ -138,8 +134,7 @@ public class ColorSpaceManager <: RemoteDataLite {
      * @brief getWhitePoint(): Array<number>
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
@@ -165,8 +160,7 @@ public class ColorSpaceManager <: RemoteDataLite {
      * @brief getGamma(): number
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]

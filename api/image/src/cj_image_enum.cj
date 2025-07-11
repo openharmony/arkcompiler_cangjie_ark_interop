@@ -21,110 +21,168 @@ import ohos.color_manager.*
 import ohos.ffi.*
 import ohos.base.*
 
+/**
+ * Enumerates pixel map formats.
+ *
+ * @relation enum PixelMapFormat
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum PixelMapFormat {
+    /**
+     * Indicates an unknown format.
+     *
+     * @relation UNKNOWN = 0,
+     */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     UNKNOWN
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 16 bits. Only the R, G, and B components are encoded
+     * from the higher-order to the lower-order bits: red is stored with 5 bits of precision,
+     * green is stored with 6 bits of precision, and blue is stored with 5 bits of precision.
+     *
+     * @relation RGB_565 = 2,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     RGB_565
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 32 bits. Each pixel contains 4 components：B(8bits), G(8bits), R(8bits), A(8bits)
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation RGBA_8888 = 3,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     RGBA_8888
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 32 bits. Each pixel contains 4 components：B(8bits), G(8bits), R(8bits), A(8bits)
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation BGRA_8888 = 4,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     BGRA_8888
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 24 bits. Each pixel contains 3 components：R(8bits), G(8bits), B(8bits)
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation RGB_888 = 5,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     RGB_888
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 8 bits. Each pixel contains 1 component：ALPHA(8bits)
+     * and is stored from the higher-order to the lower-order bits.
+     *
+     * @relation ALPHA_8 = 6,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     ALPHA_8
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 32 bits. Each pixel contains 4 components：B(8bits), G(8bits), R(8bits), A(8bits)
+     * and are stored from the higher-order to the lower-order bits in F16.
+     *
+     * @relation RGBA_F16 = 7,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     RGBA_F16
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the storage order is to store Y first and then V U alternately each occupies 8 bits
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation NV21 = 8,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     NV21
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the storage order is to store Y first and then U V alternately each occupies 8 bits
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation NV12 = 9,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     NV12
-    | @!APILevel[
+    |
+    /**
+     * Indicates that each pixel is stored on 32 bits. Each pixel contains 4 components：
+     * R(10bits), G(10bits), B(10bits), A(2bits) and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation RGBA_1010102 = 10,
+     */
+    @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     RGBA_1010102
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the storage order is to store Y first and then U V alternately each occupies 10 bits
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation YCBCR_P010 = 11,
+     */
+    @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     YCBCR_P010
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the storage order is to store Y first and then V U alternately each occupies 10 bits
+     * and are stored from the higher-order to the lower-order bits.
+     *
+     * @relation YCRCB_P010 = 12
+     */
+    @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
@@ -169,48 +227,61 @@ public enum PixelMapFormat {
     }
 }
 
+/**
+ * Enumerates alpha types.
+ *
+ * @relation enum AlphaType
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum AlphaType {
+    /**
+     * Indicates an unknown alpha type.
+     *
+     * @relation UNKNOWN = 0,
+     */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     UNKNOWN
-    | @!APILevel[
+    |
+    /**
+     * Indicates that the image has no alpha channel, or all pixels in the image are fully opaque.
+     *
+     * @relation OPAQUE = 1,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     OPAQUE
-    | @!APILevel[
+    |
+    /**
+     * Indicates that RGB components of each pixel in the image are premultiplied by alpha.
+     *
+     * @relation PREMUL = 2,
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     PREMUL
-    | @!APILevel[
+    |
+    /**
+     * Indicates that RGB components of each pixel in the image are independent of alpha and are not premultiplied by alpha.
+     *
+     * @relation UNPREMUL = 3
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -238,30 +309,37 @@ public enum AlphaType {
     }
 }
 
+/**
+ * Enum for image scale mode.
+ *
+ * @relation enum ScaleMode
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum ScaleMode {
+    /**
+     * Indicates the effect that fits the image into the target size.
+     *
+     * @relation FIT_TARGET_SIZE = 0,
+     */
     @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     FIT_TARGET_SIZE
-    | @!APILevel[
+    |
+    /**
+     * Indicates the effect that scales an image to fill the target image area and center-crops the part outside the area.
+     *
+     * @relation CENTER_CROP = 1
+     */
+    @!APILevel[
         12,
-        atomicservice: true,
-        crossplatform: true,
-        form: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -277,6 +355,11 @@ public enum ScaleMode {
     }
 }
 
+/**
+ * Enum for image formats.
+ *
+ * @relation enum ImageFormat
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
@@ -284,13 +367,24 @@ public enum ScaleMode {
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum ImageFormat {
+    /**
+     * YCBCR422 semi-planar format.
+     *
+     * @relation YCBCR_422_SP = 1000,
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     YCBCR_422_SP
-    | @!APILevel[
+    |
+    /**
+     * JPEG encoding format.
+     *
+     * @relation JPEG = 2000
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
@@ -315,6 +409,11 @@ public enum ImageFormat {
     }
 }
 
+/**
+ * The component type of image.
+ *
+ * @relation enum ComponentType
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     12,
@@ -322,25 +421,48 @@ public enum ImageFormat {
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum ComponentType {
+    /**
+     * Luma info.
+     *
+     * @relation YUV_Y = 1,
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     YUV_Y
-    | @!APILevel[
+    |
+    /**
+     * Chrominance info.
+     *
+     * @relation YUV_U = 2,
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     YUV_U
-    | @!APILevel[
+    |
+    /**
+     * Chroma info.
+     *
+     * @relation YUV_V = 3,
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     YUV_V
-    | @!APILevel[
+    |
+    /**
+     * Jpeg type.
+     *
+     * @relation JPEG = 4
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
@@ -369,6 +491,11 @@ public enum ComponentType {
     }
 }
 
+/**
+ * Enumerates exchangeable image file format (Exif) information types of an image.
+ *
+ * @relation enum PropertyKey
+ */
 @Derive[Equatable]
 @!APILevel[
     12,
@@ -376,314 +503,624 @@ public enum ComponentType {
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum PropertyKey <: ToString {
+    /**
+     * Image width.
+     *
+     * @relation IMAGE_WIDTH = 'ImageWidth',
+     */
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    IMAGE_WIDTH
-    | @!APILevel[
+    ImageWidth
+    |
+    /**
+     * Image length.
+     *
+     * @relation IMAGE_LENGTH = 'ImageLength',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    IMAGE_LENGTH
-    | @!APILevel[
+    ImageLength
+    |
+    /**
+     * Number of bits in each pixel of an image.
+     *
+     * @relation BITS_PER_SAMPLE = 'BitsPerSample',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    BITS_PER_SAMPLE
-    | @!APILevel[
+    BitsPerSample
+    |
+    /**
+     * Image description.
+     *
+     * @relation IMAGE_DESCRIPTION = 'ImageDescription',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    IMAGE_DESCRIPTION
-    | @!APILevel[
+    ImageDescription
+    |
+    /**
+     * Make.
+     *
+     * @relation MAKE = 'Make',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    MAKE
-    | @!APILevel[
+    Make
+    |
+    /**
+     * Model.
+     *
+     * @relation MODEL = 'Model',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    MODEL
-    | @!APILevel[
+    Model
+    |
+    /**
+     * Image rotation mode.
+     *
+     * @relation ORIENTATION = 'Orientation',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    ORIENTATION
-    | @!APILevel[
+    Orientation
+    |
+    /**
+     * Date time.
+     *
+     * @relation DATE_TIME = 'DateTime',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    DATE_TIME
-    | @!APILevel[
+    DateTime
+    |
+    /**
+     * Photo mode.
+     *
+     * @relation PHOTO_MODE = 'PhotoMode',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    PHOTO_MODE
-    | @!APILevel[
+    PhotoMode
+    |
+    /**
+     * Exposure time.
+     *
+     * @relation EXPOSURE_TIME = 'ExposureTime',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    EXPOSURE_TIME
-    | @!APILevel[
+    ExposureTime
+    |
+    /**
+     * Aperture value.
+     *
+     * @relation F_NUMBER = 'FNumber',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    F_NUMBER
-    | @!APILevel[
+    FNumber
+    |
+    /**
+     * GPS latitude reference. For example, N indicates north latitude and S indicates south latitude.
+     *
+     * @relation GPS_LATITUDE_REF = 'GPSLatitudeRef',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    GPS_LATITUDE_REF
-    | @!APILevel[
+    GPSLatitudeRef
+    |
+    /**
+     * GPS latitude.
+     *
+     * @relation GPS_LATITUDE = 'GPSLatitude',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    GPS_LATITUDE
-    | @!APILevel[
+    GPSLatitude
+    |
+    /**
+     * GPS longitude reference. For example, E indicates east longitude and W indicates west longitude.
+     *
+     * @relation GPS_LONGITUDE_REF = 'GPSLongitudeRef',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    GPS_LONGITUDE_REF
-    | @!APILevel[
+    GPSLongitudeRef
+    |
+    /**
+     * GPS longitude.
+     *
+     * @relation GPS_LONGITUDE = 'GPSLongitude',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    GPS_LONGITUDE
-    | @!APILevel[
+    GPSLongitude
+    |
+    /**
+     * GPS time stamp.
+     *
+     * @relation GPS_TIME_STAMP = 'GPSTimeStamp',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    GPS_TIME_STAMP
-    | @!APILevel[
+    GPSTimeStamp
+    |
+    /**
+     * GPS date stamp.
+     *
+     * @relation GPS_DATE_STAMP = 'GPSDateStamp',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    GPS_DATE_STAMP
-    | @!APILevel[
+    GPSDateStamp
+    |
+    /**
+     * ISO speedratings.
+     *
+     * @relation ISO_SPEED_RATINGS = 'ISOSpeedRatings',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    ISO_SPEED_RATINGS
-    | @!APILevel[
+    ISOSpeedRatings
+    |
+    /**
+     * Sensitivity type.
+     *
+     * @relation SENSITIVITY_TYPE = 'SensitivityType',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SENSITIVITY_TYPE
-    | @!APILevel[
+    SensitivityType
+    |
+    /**
+     * Standard output sensitivity.
+     *
+     * @relation STANDARD_OUTPUT_SENSITIVITY = 'StandardOutputSensitivity',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    STANDARD_OUTPUT_SENSITIVITY
-    | @!APILevel[
+    StandardOutputSensitivity
+    |
+    /**
+     * Recommended exposure index.
+     *
+     * @relation RECOMMENDED_EXPOSURE_INDEX = 'RecommendedExposureIndex',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    RECOMMENDED_EXPOSURE_INDEX
-    | @!APILevel[
+    RecommendedExposureIndex
+    |
+    /**
+     * ISO speed.
+     *
+     * @relation ISO_SPEED = 'ISOSpeedRatings',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    ISO_SPEED
-    | @!APILevel[
+    ISOSpeed
+    |
+    /**
+     * Shooting time.
+     *
+     * @relation DATE_TIME_ORIGINAL = 'DateTimeOriginal',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    DATE_TIME_ORIGINAL
-    | @!APILevel[
+    DateTimeOriginal
+    |
+    /**
+     * Aperture value.
+     *
+     * @relation APERTURE_VALUE = 'ApertureValue',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    APERTURE_VALUE
-    | @!APILevel[
+    ApertureValue
+    |
+    /**
+     * Exposure bias value.
+     *
+     * @relation EXPOSURE_BIAS_VALUE = 'ExposureBiasValue',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    EXPOSURE_BIAS_VALUE
-    | @!APILevel[
+    ExposureBiasValue
+    |
+    /**
+     * Metering mode.
+     *
+     * @relation METERING_MODE = 'MeteringMode',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    METERING_MODE
-    | @!APILevel[
+    MeteringMode
+    |
+    /**
+     * Light source.
+     *
+     * @relation LIGHT_SOURCE = 'LightSource',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    LIGHT_SOURCE
-    | @!APILevel[
+    LightSource
+    |
+    /**
+     * Flash.
+     *
+     * @relation FLASH = 'Flash',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    FLASH
-    | @!APILevel[
+    Flash
+    |
+    /**
+     * Focal length.
+     *
+     * @relation FOCAL_LENGTH = 'FocalLength',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    FOCAL_LENGTH
-    | @!APILevel[
+    FocalLength
+    |
+    /**
+     * Capture Scene: Food.
+     *
+     * @relation SCENE_FOOD_CONF = 'HwMnoteSceneFoodConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_FOOD_CONF
-    | @!APILevel[
+    SceneFoodConf
+    |
+    /**
+     * Capture Scene: Stage.
+     *
+     * @relation SCENE_STAGE_CONF = 'HwMnoteSceneStageConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_STAGE_CONF
-    | @!APILevel[
+    SceneStageConf
+    |
+    /**
+     * Capture Scene: Blue Sky.
+     *
+     * @relation SCENE_BLUE_SKY_CONF = 'HwMnoteSceneBlueSkyConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_BLUE_SKY_CONF
-    | @!APILevel[
+    SceneBlueSkyConf
+    |
+    /**
+     * Capture Scene: Green Plant.
+     *
+     * @relation SCENE_GREEN_PLANT_CONF = 'HwMnoteSceneGreenPlantConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_GREEN_PLANT_CONF
-    | @!APILevel[
+    SceneGreenPlantConf
+    |
+    /**
+     * Capture Scene: Beach.
+     *
+     * @relation SCENE_BEACH_CONF = 'HwMnoteSceneBeachConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_BEACH_CONF
-    | @!APILevel[
+    SceneBeachConf
+    |
+    /**
+     * Capture Scene: Snow.
+     *
+     * @relation SCENE_SNOW_CONF = 'HwMnoteSceneSnowConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_SNOW_CONF
-    | @!APILevel[
+    SceneSnowConf
+    |
+    /**
+     * Capture Scene: Sunset.
+     *
+     * @relation SCENE_SUNSET_CONF = 'HwMnoteSceneSunsetConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_SUNSET_CONF
-    | @!APILevel[
+    SceneSunsetConf
+    |
+    /**
+     * Capture Scene: Flowers.
+     *
+     * @relation SCENE_FLOWERS_CONF = 'HwMnoteSceneFlowersConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_FLOWERS_CONF
-    | @!APILevel[
+    SceneFlowersConf
+    |
+    /**
+     * Capture Scene: Night.
+     *
+     * @relation SCENE_NIGHT_CONF = 'HwMnoteSceneNightConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_NIGHT_CONF
-    | @!APILevel[
+    SceneNightConf
+    |
+    /**
+     * Capture Scene: Text.
+     *
+     * @relation SCENE_TEXT_CONF = 'HwMnoteSceneTextConf',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_TEXT_CONF
-    | @!APILevel[
+    SceneTextConf
+    |
+    /**
+     * Face Count.
+     *
+     * @relation FACE_COUNT = 'HwMnoteFaceCount',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    FACE_COUNT
-    | @!APILevel[
+    FaceCount
+    |
+    /**
+     * Capture mode.
+     *
+     * @relation CAPTURE_MODE = 'HwMnoteCaptureMode',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    CAPTURE_MODE
-    | @!APILevel[
+    CaptureMode
+    |
+    /**
+     * Roll Angle.
+     *
+     * @relation ROLL_ANGLE = 'HwMnoteRollAngle',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    ROLL_ANGLE
-    | @!APILevel[
+    RollAngle
+    |
+    /**
+     * Pitch Angle.
+     *
+     * @relation PITCH_ANGLE = 'HwMnotePitchAngle',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    PITCH_ANGLE
-    | @!APILevel[
+    PitchAngle
+    |
+    /**
+     * Physical aperture.
+     *
+     * @relation PHYSICAL_APERTURE = 'HwMnotePhysicalAperture',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    PHYSICAL_APERTURE
-    | @!APILevel[
+    PhysicalAperture
+    |
+    /**
+     * Focus Mode.
+     *
+     * @relation FOCUS_MODE = 'HwMnoteFocusMode',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    FOCUS_MODE
-    | @!APILevel[
+    FocusMode
+    |
+    /**
+     * User comment.
+     *
+     * @relation USER_COMMENT = 'UserComment',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    USER_COMMENT
-    | @!APILevel[
+    UserComment
+    |
+    /**
+     * Pixel x dimension.
+     *
+     * @relation PIXEL_X_DIMENSION = 'PixelXDimension',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    PIXEL_X_DIMENSION
-    | @!APILevel[
+    PixelXDimension
+    |
+    /**
+     * Pixel y dimension.
+     *
+     * @relation PIXEL_Y_DIMENSION = 'PixelYDimension',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    PIXEL_Y_DIMENSION
-    | @!APILevel[
+    PixelYDimension
+    |
+    /**
+     * Scene type.
+     *
+     * @relation SCENE_TYPE = 'SceneType',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    SCENE_TYPE
-    | @!APILevel[
+    SceneType
+    |
+    /**
+     * White balance.
+     *
+     * @relation WHITE_BALANCE = 'WhiteBalance',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    WHITE_BALANCE
-    | @!APILevel[
+    WhiteBalance
+    |
+    /**
+     * Focal length in 35mm film.
+     *
+     * @relation FOCAL_LENGTH_IN_35_MM_FILM = 'FocalLengthIn35mmFilm',
+     */
+    @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
-    FOCAL_LENGTH_IN_35_MM_FILM
+    FocalLengthIn35mmFilm
     | ...
 
+
+    /**
+     * Return a string of enumeration values.
+     *
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -691,62 +1128,68 @@ public enum PropertyKey <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case IMAGE_WIDTH => "ImageWidth"
-            case IMAGE_LENGTH => "ImageLength"
-            case BITS_PER_SAMPLE => "BitsPerSample"
-            case IMAGE_DESCRIPTION => "ImageDescription"
-            case MAKE => "Make"
-            case MODEL => "Model"
-            case ORIENTATION => "Orientation"
-            case DATE_TIME => "DateTime"
-            case PHOTO_MODE => "PhotoMode"
-            case EXPOSURE_TIME => "ExposureTime"
-            case F_NUMBER => "FNumber"
-            case GPS_LATITUDE_REF => "GPSLatitudeRef"
-            case GPS_LATITUDE => "GPSLatitude"
-            case GPS_LONGITUDE_REF => "GPSLongitudeRef"
-            case GPS_LONGITUDE => "GPSLongitude"
-            case GPS_TIME_STAMP => "GPSTimeStamp"
-            case GPS_DATE_STAMP => "GPSDateStamp"
-            case ISO_SPEED_RATINGS => "ISOSpeedRatings"
-            case SENSITIVITY_TYPE => "SensitivityType"
-            case STANDARD_OUTPUT_SENSITIVITY => "StandardOutputSensitivity"
-            case RECOMMENDED_EXPOSURE_INDEX => "RecommendedExposureIndex"
-            case ISO_SPEED => "ISOSpeedRatings"
-            case DATE_TIME_ORIGINAL => "DateTimeOriginal"
-            case APERTURE_VALUE => "ApertureValue"
-            case EXPOSURE_BIAS_VALUE => "ExposureBiasValue"
-            case METERING_MODE => "MeteringMode"
-            case LIGHT_SOURCE => "LightSource"
-            case FLASH => "Flash"
-            case FOCAL_LENGTH => "FocalLength"
-            case SCENE_FOOD_CONF => "HwMnoteSceneFoodConf"
-            case SCENE_STAGE_CONF => "HwMnoteSceneStageConf"
-            case SCENE_BLUE_SKY_CONF => "HwMnoteSceneBlueSkyConf"
-            case SCENE_GREEN_PLANT_CONF => "HwMnoteSceneGreenPlantConf"
-            case SCENE_BEACH_CONF => "HwMnoteSceneBeachConf"
-            case SCENE_SNOW_CONF => "HwMnoteSceneSnowConf"
-            case SCENE_SUNSET_CONF => "HwMnoteSceneSunsetConf"
-            case SCENE_FLOWERS_CONF => "HwMnoteSceneFlowersConf"
-            case SCENE_NIGHT_CONF => "HwMnoteSceneNightConf"
-            case SCENE_TEXT_CONF => "HwMnoteSceneTextConf"
-            case FACE_COUNT => "HwMnoteFaceCount"
-            case CAPTURE_MODE => "HwMnoteCaptureMode"
-            case ROLL_ANGLE => "HwMnoteRollAngle"
-            case PITCH_ANGLE => "HwMnotePitchAngle"
-            case PHYSICAL_APERTURE => "HwMnotePhysicalAperture"
-            case FOCUS_MODE => "HwMnoteFocusMode"
-            case USER_COMMENT => "UserComment"
-            case PIXEL_X_DIMENSION => "PixelXDimension"
-            case PIXEL_Y_DIMENSION => "PixelYDimension"
-            case SCENE_TYPE => "SceneType"
-            case WHITE_BALANCE => "WhiteBalance"
-            case FOCAL_LENGTH_IN_35_MM_FILM => "FocalLengthIn35mmFilm"
+            case ImageWidth => "ImageWidth"
+            case ImageLength => "ImageLength"
+            case BitsPerSample => "BitsPerSample"
+            case ImageDescription => "ImageDescription"
+            case Make => "Make"
+            case Model => "Model"
+            case Orientation => "Orientation"
+            case DateTime => "DateTime"
+            case PhotoMode => "PhotoMode"
+            case ExposureTime => "ExposureTime"
+            case FNumber => "FNumber"
+            case GPSLatitudeRef => "GPSLatitudeRef"
+            case GPSLatitude => "GPSLatitude"
+            case GPSLongitudeRef => "GPSLongitudeRef"
+            case GPSLongitude => "GPSLongitude"
+            case GPSTimeStamp => "GPSTimeStamp"
+            case GPSDateStamp => "GPSDateStamp"
+            case ISOSpeedRatings => "ISOSpeedRatings"
+            case SensitivityType => "SensitivityType"
+            case StandardOutputSensitivity => "StandardOutputSensitivity"
+            case RecommendedExposureIndex => "RecommendedExposureIndex"
+            case ISOSpeed => "ISOSpeedRatings"
+            case DateTimeOriginal => "DateTimeOriginal"
+            case ApertureValue => "ApertureValue"
+            case ExposureBiasValue => "ExposureBiasValue"
+            case MeteringMode => "MeteringMode"
+            case LightSource => "LightSource"
+            case Flash => "Flash"
+            case FocalLength => "FocalLength"
+            case SceneFoodConf => "HwMnoteSceneFoodConf"
+            case SceneStageConf => "HwMnoteSceneStageConf"
+            case SceneBlueSkyConf => "HwMnoteSceneBlueSkyConf"
+            case SceneGreenPlantConf => "HwMnoteSceneGreenPlantConf"
+            case SceneBeachConf => "HwMnoteSceneBeachConf"
+            case SceneSnowConf => "HwMnoteSceneSnowConf"
+            case SceneSunsetConf => "HwMnoteSceneSunsetConf"
+            case SceneFlowersConf => "HwMnoteSceneFlowersConf"
+            case SceneNightConf => "HwMnoteSceneNightConf"
+            case SceneTextConf => "HwMnoteSceneTextConf"
+            case FaceCount => "HwMnoteFaceCount"
+            case CaptureMode => "HwMnoteCaptureMode"
+            case RollAngle => "HwMnoteRollAngle"
+            case PitchAngle => "HwMnotePitchAngle"
+            case PhysicalAperture => "HwMnotePhysicalAperture"
+            case FocusMode => "HwMnoteFocusMode"
+            case UserComment => "UserComment"
+            case PixelXDimension => "PixelXDimension"
+            case PixelYDimension => "PixelYDimension"
+            case SceneType => "SceneType"
+            case WhiteBalance => "WhiteBalance"
+            case FocalLengthIn35mmFilm => "FocalLengthIn35mmFilm"
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
 }
 
+
+/**
+ * Enumerates decoding dynamic range.
+ *
+ * @relation enum DecodingDynamicRange
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     19,
@@ -754,19 +1197,36 @@ public enum PropertyKey <: ToString {
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum DecodingDynamicRange {
+    /**
+     * Decoding according to the content of the image.
+     *
+     * @relation AUTO = 0,
+     */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     AUTO
-    | @!APILevel[
+    |
+    /**
+     * Decoding to standard dynamic range.
+     *
+     * @relation SDR = 1,
+     */
+    @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     SDR
-    | @!APILevel[
+    |
+    /**
+     * Decoding to high dynamic range.
+     *
+     * @relation HDR = 2
+     */
+    @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
@@ -786,6 +1246,12 @@ public enum DecodingDynamicRange {
     }
 }
 
+
+/**
+ * Enumerates packing dynamic range.
+ *
+ * @relation enum PackingDynamicRange
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     19,
@@ -793,13 +1259,24 @@ public enum DecodingDynamicRange {
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
 public enum PackingDynamicRange {
+    /**
+     * Packing according to the content of the image.
+     *
+     * @relation AUTO = 0,
+     */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     AUTO
-    | @!APILevel[
+    |
+    /**
+     * Packing to standard dynamic range.
+     *
+     * @relation SDR = 1
+     */
+    @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
