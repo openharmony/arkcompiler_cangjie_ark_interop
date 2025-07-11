@@ -53,3 +53,15 @@ protected struct CConfiguration {
         LibC.free(mnc)
     }
 }
+
+@C
+struct CJConfiguration {
+    CJConfiguration(
+        let isValid: Bool,
+        let language: CString,
+        let colorMode: Int32,
+        let direction: Int32,
+        let screenDensity: Int32,
+        let displayId: Int32
+    ) {}
+}

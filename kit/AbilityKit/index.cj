@@ -16,11 +16,9 @@
 package kit.AbilityKit
 
 public import ohos.ability.*
-public import ohos.ability.PermissionRequestResult as AbilityPermissionRequestResult
 
 // ability_access_ctrl
 public import ohos.ability_access_ctrl.*
-public import ohos.ability_access_ctrl.PermissionRequestResult as AccessCtrlPermissionRequestResult
 
 // bundle_manager
 public import ohos.bundle_manager.*

@@ -36,7 +36,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    ABILITY_BACK_TO_OTHER_MISSION_STACK
+    AbilityBackToOtherMissionStack
     |
 
         /**
@@ -48,7 +48,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    ABILITY_RECOVERY_RESTART
+    AbilityRecoveryRestart
     |
 
         /**
@@ -60,7 +60,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    CONTENT_TITLE_KEY
+    ContentTitleKey
     |
 
         /**
@@ -72,7 +72,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    SHARE_ABSTRACT_KEY
+    ShareAbstractKey
     |
 
         /**
@@ -84,7 +84,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    SHARE_URL_KEY
+    ShareUrlKey
     |
 
         /**
@@ -98,7 +98,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    SUPPORT_CONTINUE_PAGE_STACK_KEY
+    SupportContinuePageStackKey
     |
 
         /**
@@ -112,7 +112,7 @@ public enum Params {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    SUPPORT_CONTINUE_SOURCE_EXIT_KEY
+    SupportContinueSourceExitKey
     | ...
 
     @!APILevel[
@@ -123,12 +123,13 @@ public enum Params {
     ]
     public func getValue(): String {
         match (this) {
-            case ABILITY_BACK_TO_OTHER_MISSION_STACK => "ability.params.backToOtherMissionStack"
-            case ABILITY_RECOVERY_RESTART => "ohos.ability.params.abilityRecoveryRestart"
-            case CONTENT_TITLE_KEY => "ohos.extra.param.key.contentTitle"
-            case SHARE_ABSTRACT_KEY => "ohos.extra.param.key.shareAbstract"
-            case SHARE_URL_KEY => "ohos.extra.param.key.shareUrl"
-            case SUPPORT_CONTINUE_PAGE_STACK_KEY => "ohos.extra.param.key.supportContinuePageStack"
+            case AbilityBackToOtherMissionStack => "ability.params.backToOtherMissionStack"
+            case AbilityRecoveryRestart => "ohos.ability.params.abilityRecoveryRestart"
+            case ContentTitleKey => "ohos.extra.param.key.contentTitle"
+            case ShareAbstractKey => "ohos.extra.param.key.shareAbstract"
+            case ShareUrlKey => "ohos.extra.param.key.shareUrl"
+            case SupportContinuePageStackKey => "ohos.extra.param.key.supportContinuePageStack"
+            case SupportContinueSourceExitKey => "ohos.extra.param.key.supportContinueSourceExit"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -151,7 +152,7 @@ public enum Flags {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    FLAG_AUTH_READ_URI_PERMISSION
+    FlagAuthReadUriPermission
     |
 
         /**
@@ -163,7 +164,7 @@ public enum Flags {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    FLAG_AUTH_WRITE_URI_PERMISSION
+    FlagAuthWriteUriPermission
     |
 
         /**
@@ -175,7 +176,7 @@ public enum Flags {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    FLAG_AUTH_PERSISTABLE_URI_PERMISSION
+    FlagAuthPersistableUriPermission
     |
 
         /**
@@ -187,7 +188,7 @@ public enum Flags {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    FLAG_INSTALL_ON_DEMAND
+    FlagInstallOnDemand
     |
 
         /**
@@ -198,7 +199,7 @@ public enum Flags {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    FLAG_START_WITHOUT_TIPS
+    FlagStartWithoutTips
     | ...
 
     @!APILevel[
@@ -209,11 +210,11 @@ public enum Flags {
     ]
     public func getValue(): UInt32 {
         match (this) {
-            case FLAG_AUTH_READ_URI_PERMISSION => 0x00000001
-            case FLAG_AUTH_WRITE_URI_PERMISSION => 0x00000002
-            case FLAG_AUTH_PERSISTABLE_URI_PERMISSION => 0x00000040
-            case FLAG_INSTALL_ON_DEMAND => 0x00000800
-            case FLAG_START_WITHOUT_TIPS => 0x40000000
+            case FlagAuthReadUriPermission => 0x00000001
+            case FlagAuthWriteUriPermission => 0x00000002
+            case FlagAuthPersistableUriPermission => 0x00000040
+            case FlagInstallOnDemand => 0x00000800
+            case FlagStartWithoutTips => 0x40000000
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

@@ -47,13 +47,7 @@ public class ErrorObject {
     ]
     public let stack: Option<String>
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public init(name: String, message: String, stack!: Option<String> = None) {
+    init(name: String, message: String, stack!: Option<String> = None) {
         this.name = name
         this.message = message
         this.stack = stack

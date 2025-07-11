@@ -32,8 +32,8 @@ const INT_ARRAY_SIGNATURE = "I"
 const STRING_ARRAY_SIGNATURE = "T"
 
 enum BracketKinds {
-    | BRACES
-    | SQUARE
+    | Braces
+    | Square
 }
 
 func getJsonType(ob: JsonValue): String {
@@ -157,16 +157,16 @@ protected func jsonObjectWrapper(jsObj: JsonObject): JsonObject {
 
 func addSlashesInString(jsString: String, brakinds: BracketKinds): String {
     let quoString = match (brakinds) {
-        case BRACES => "\"9\":\"{"
-        case SQUARE => "\"9\":\"["
+        case Braces => "\"9\":\"{"
+        case Square => "\"9\":\"["
     }
     let leftBraByte = match (brakinds) {
-        case BRACES => b'{'
-        case SQUARE => b'['
+        case Braces => b'{'
+        case Square => b'['
     }
     let rightBraByte = match (brakinds) {
-        case BRACES => b'}'
-        case SQUARE => b']'
+        case Braces => b'}'
+        case Square => b']'
     }
     let count = jsString.count(quoString)
     if (count == 0) {
@@ -209,8 +209,8 @@ protected func jsonStringUnWrapper(jsString: String): JsonObject {
     if (jsString == "") {
         return JsonObject()
     }
-    let stringSlashesB = addSlashesInString(jsString, BRACES)
-    let stringSlashesS = addSlashesInString(stringSlashesB, SQUARE)
+    let stringSlashesB = addSlashesInString(jsString, Braces)
+    let stringSlashesS = addSlashesInString(stringSlashesB, Square)
     let jsObj = JsonValue.fromStr(stringSlashesS).asObject()
     let map = jsObj.getFields()
     let newMap = HashMap<String, JsonValue>()

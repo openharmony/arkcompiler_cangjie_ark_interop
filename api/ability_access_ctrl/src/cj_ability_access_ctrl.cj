@@ -77,7 +77,7 @@ public enum GrantStatus {
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
-    PERMISSION_DENIED
+    PermissionDenied
     | @!APILevel[
         12,
         atomicservice: true,
@@ -85,14 +85,14 @@ public enum GrantStatus {
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
-    PERMISSION_GRANTED
+    PermissionGranted
     | ...
 
     static func toGrantStatus(code: Int32): GrantStatus {
         if (code == -1) {
-            return PERMISSION_DENIED
+            return PermissionDenied
         } else {
-            return PERMISSION_GRANTED
+            return PermissionGranted
         }
     }
 }
@@ -131,14 +131,7 @@ public class PermissionRequestResult {
     ]
     public var dialogShownResults: ?Array<Bool> = None
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.AccessToken"
-    ]
-    public init(
+    init(
         permissions: Array<String>,
         authResults: Array<Int32>
     ) {
@@ -262,7 +255,7 @@ public class AtManager {
         syscap: "SystemCapability.Security.AccessToken"
     ]
     public func requestPermissionsFromUser(context: StageContext, permissionList: Array<Permissions>,
-        callback: AsyncCallback<PermissionRequestResult>): Unit {
+        requestCallback: AsyncCallback<PermissionRequestResult>): Unit {
         if (context.isNull()) {
             throw BusinessException(INVALID_PARA, getErrorInfo(INVALID_PARA))
         }
@@ -272,17 +265,17 @@ public class AtManager {
                 value: RetDataCPermissionRequestResult => if (value.code == 0) {
                     try {
                         let data = PermissionRequestResult.fromCPermissionRequestResult(value.data)
-                        callback(None, data)
+                        requestCallback(None, data)
                     } catch (e: BusinessException) {
-                        callback(AsyncError(OUT_MEMORY_ERR), None)
+                        requestCallback(AsyncError(OUT_MEMORY_ERR), None)
                     }
                 } else {
                     try {
                         // free memory
                         PermissionRequestResult.fromCPermissionRequestResult(value.data)
-                        callback(AsyncError(value.code), None)
+                        requestCallback(AsyncError(value.code), None)
                     } catch (e: BusinessException) {
-                        callback(AsyncError(OUT_MEMORY_ERR), None)
+                        requestCallback(AsyncError(OUT_MEMORY_ERR), None)
                     }
                 }
             }

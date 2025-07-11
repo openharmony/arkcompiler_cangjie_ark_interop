@@ -203,22 +203,26 @@ public class OpenLinkOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public OpenLinkOptions(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
-        public let appLinkingOnly!: Bool = false,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
-        public let parameters!: String = ""
-    ) {}
+    public var appLinkingOnly: Bool
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var parameters: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public init(appLinkingOnly!: Bool = false, parameters!: String = "") {
+        this.appLinkingOnly = appLinkingOnly
+        this.parameters = parameters
+    }
 }
 
 unsafe func toCJOpenLinkOptions(option: ?OpenLinkOptions): CJOpenLinkOptions {
@@ -229,6 +233,8 @@ unsafe func toCJOpenLinkOptions(option: ?OpenLinkOptions): CJOpenLinkOptions {
         return CJOpenLinkOptions(false, false, CString(CPointer<UInt8>()))
     }
 }
+
+class StartOptionsImpl {}
 
 @!APILevel[
     12,
@@ -242,7 +248,7 @@ public open class StartOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public var windowMode: WindowMode = WINDOW_MODE_UNDEFINED
+    public var windowMode: WindowMode = WindowModeUndefined
     @!APILevel[
         12,
         atomicservice: true,
@@ -257,6 +263,7 @@ public open class StartOptions {
     var windowHeight: Int32 = 0
     var processMode: ?ProcessMode = None
     var startupVisibility: ?StartupVisibility = None
+    private let impl_: StartOptionsImpl = StartOptionsImpl()
 
     @!APILevel[
         12,
@@ -265,7 +272,7 @@ public open class StartOptions {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(
-        windowMode!: WindowMode = WINDOW_MODE_UNDEFINED,
+        windowMode!: WindowMode = WindowModeUndefined,
         displayId!: Int32 = 0
     ) {
         this.windowMode = windowMode
@@ -294,41 +301,6 @@ public open class StartOptions {
 @!APILevel[
     12,
     atomicservice: true,
-    crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Security.AccessToken"
-]
-public class PermissionRequestResult {
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Security.AccessToken"
-    ]
-    public PermissionRequestResult(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Security.AccessToken"
-        ]
-        public let permissions: Array<String>,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Security.AccessToken"
-        ]
-        public let authResults: Array<Int32>
-    ) {}
-}
-
-@!APILevel[
-    12,
-    atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
@@ -339,22 +311,26 @@ public class AbilityResult {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    public AbilityResult(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
-        public let resultCode: Int32,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
-        public let want: Want
-    ) {}
+    public var resultCode: Int32
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var want: Want
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public init(resultCode: Int32, want!: Want = Want()) {
+        this.resultCode = resultCode
+        this.want = want
+    }
 }
 
 @!APILevel[
@@ -368,19 +344,19 @@ public enum ResultCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    RESULT_OK
+    ResultOk
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    RESULT_CANCEL
+    ResultCancel
     | ...
 
     static func parse(value: Int32): ResultCode {
         match (value) {
-            case 0 => RESULT_OK
-            case 1 => RESULT_CANCEL
+            case 0 => ResultOk
+            case 1 => ResultCancel
             case _ =>
                 ABILITY_LOG.error("No corresponding ResultCode: ${value}")
                 throw Exception("No corresponding ResultCode: ${value}")
@@ -389,8 +365,8 @@ public enum ResultCode {
 
     func getValue(): Int32 {
         match (this) {
-            case RESULT_OK => 0
-            case RESULT_CANCEL => 1
+            case ResultOk => 0
+            case ResultCancel => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -401,21 +377,25 @@ public enum ResultCode {
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
-public class DialogRequestResult {
-    DialogRequestResult(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
-        public var resultCode: ResultCode,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
-        public var want: ?Want
-    ) {}
+public class RequestResult {
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var resultCode: ResultCode
+
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var want: ?Want
+
+    init(resultCode: ResultCode, want: ?Want) {
+        this.resultCode = resultCode
+        this.want = want
+    }
 }
 
 type StageContext = CPointer<Unit>
@@ -446,6 +426,8 @@ public func getNapiValue(env: CPointer<Unit>, context: StageContext): CPointer<U
     }
 }
 
+class UIAbilityContextImpl {}
+
 @!APILevel[
     12,
     atomicservice: true,
@@ -466,6 +448,8 @@ public open class UIAbilityContext <: Context {
     private static var filesDir_: ?String = None
 
     var windowStage_: ?WindowStage = None
+
+    private let UIAbilityContextImpl_ = UIAbilityContextImpl()
 
     init(id: Int64) {
         super(UIAbilityContext.create(id))
@@ -491,27 +475,6 @@ public open class UIAbilityContext <: Context {
 
         ABILITY_LOG.error("Invalid id, failed to create UIAbilityContext")
         throw Exception("Invalid id, failed to create UIAbilityContext")
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public prop filesDir: String {
-        get() {
-            match (filesDir_) {
-                case Some(v) => v
-                case _ =>
-                    let callback: CFunc<(CString) -> Unit> = {
-                        content => filesDir_ = content.toString()
-                    }
-                    unsafe { FFIAbilityContextGetFilesDir(getID(), callback) }
-                    filesDir_.getOrThrow()
-            }
-        }
     }
 
     @!APILevel[
@@ -802,41 +765,16 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    func requestPermissionsFromUser(
-        permissions: Array<String>,
-        requestCallback: AsyncCallback<PermissionRequestResult>
-    ): Unit {
-        let requestCode = genRequestCode()
-        let permissionsSize: Int64 = permissions.size
-        var nativePermissions = FFIVectorString(permissionsSize)
-        for (i in 0..permissionsSize) {
-            nativePermissions.setElement(i, permissions[i])
-        }
-
-        let lambdaData = ResultCallbackForPermissionRequestResult(requestCallback)
-        let lambdaId = lambdaData.getID()
-        let errorCode = unsafe {
-            BROKER.requestPermissionsFromUser(
-                this.getID(),
-                nativePermissions.getNativeHandle(),
-                requestCode,
-                lambdaId
-            )
-        }
-        ABILITY_LOG.info("requestPermissionsFromUser: errorCode is ${errorCode}")
-        nativePermissions.free()
-    }
-
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public func requestDialogService(want: Want, callback: AsyncCallback<DialogRequestResult>): Unit {
+    public func requestDialogService(want: Want, result: AsyncCallback<RequestResult>): Unit {
         let wantHandle = want.createWantHandle()
         let errorCode = unsafe {
             FFIAbilityContextRequestDialogService(this.getID(), wantHandle,
-                ResultCallbackForDialogRequestResult(callback).getID())
+                ResultCallbackForDialogRequestResult(result).getID())
         }
         unsafe { Want.releaseWantHandle(wantHandle) }
         ABILITY_LOG.info("requestDialogService: errorCode is ${errorCode}")
@@ -847,20 +785,20 @@ public open class UIAbilityContext <: Context {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public func requestDialogService(want: Want): Future<DialogRequestResult> {
+    public func requestDialogService(want: Want): Future<RequestResult> {
         spawn {
             let mutex = Mutex()
             let flag = Box<AtomicBool>(AtomicBool(false))
             let condition: Condition = synchronized(mutex) {
                 mutex.condition()
             }
-            let result: DialogRequestResult = DialogRequestResult(ResultCode.RESULT_CANCEL, None)
+            let result: RequestResult = RequestResult(ResultCode.ResultCancel, None)
             let wantHandle = want.createWantHandle()
-            let callback: AsyncCallback<DialogRequestResult> = {
-                err: Option<AsyncError>, data: Option<DialogRequestResult> =>
+            let callback: AsyncCallback<RequestResult> = {
+                err: Option<AsyncError>, data: Option<RequestResult> =>
                 match (err) {
                     case None =>
-                        result.resultCode = ResultCode.RESULT_OK
+                        result.resultCode = ResultCode.ResultOk
                         result.want = data.getOrThrow().want
                     case _ => ABILITY_LOG.info("requestDialogService callback error")
                 }
@@ -889,6 +827,3 @@ public open class UIAbilityContext <: Context {
         curRequestCode.load()
     }
 }
-
-@Deprecated["Use UIAbilityContext instead", since: "19"]
-public type AbilityContext = UIAbilityContext
