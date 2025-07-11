@@ -20,7 +20,11 @@ import std.collection.*
 import ohos.base.*
 import ohos.labels.*
 import std.deriving.Derive
-
+/**
+ * Contains rawFile descriptor information.
+ *
+ * @relation export interface RawFileDescriptor
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -29,6 +33,11 @@ import std.deriving.Derive
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public class RawFileDescriptor {
+    /**
+     * rawfile descriptor
+     *
+     * @relation fd: number
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -36,32 +45,46 @@ public class RawFileDescriptor {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public RawFileDescriptor(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let fd: Int32,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let offset: Int64,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let length: Int64
-    ) {}
+    public var fd: Int32
+    /**
+     * the offset from where the raw file starts in the HAP
+     *
+     * @relation offset: number
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var offset: Int64
+    /**
+     * the length of the raw file in the HAP
+     *
+     * @relation length: number
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var length: Int64
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public init(fd: Int32, offset: Int64, length: Int64) {
+        this.fd = fd
+        this.offset = offset
+        this.length = length
+    }
 
     init(raw: RetDataRawFileDescriptor) {
         this.fd = raw.fd
@@ -150,8 +173,8 @@ public class Configuration <: ToString {
     public init(direction: Direction, locale: String) {
         this.direction = direction
         this.locale = locale
-        this.deviceType = DeviceType.DEVICE_TYPE_PHONE
-        this.screenDensity = ScreenDensity.SCREEN_SDPI
+        this.deviceType = DeviceType.DeviceTypePhone
+        this.screenDensity = ScreenDensity.ScreenSDPI
         this.colorMode = ColorMode.Dark
         this.mcc = 0
         this.mnc = 0
@@ -209,6 +232,8 @@ public class Configuration <: ToString {
 
 /**
  * Provides the device capability.
+ *
+ * @relation export class DeviceCapability
  */
 @!APILevel[
     12,
@@ -218,6 +243,11 @@ public class Configuration <: ToString {
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public class DeviceCapability <: ToString {
+    /**
+     * Indicates the screen density of the current device.
+     *
+     * @relation screenDensity: ScreenDensity
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -225,26 +255,32 @@ public class DeviceCapability <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public DeviceCapability(
-        // Indicates the screen density of the current device.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let screenDensity: ScreenDensity,
-        // Indicates the type of the current device.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let deviceType: DeviceType
-    ) {}
+    public var screenDensity: ScreenDensity
+    /**
+     * Indicates the type of the current device.
+     *
+     * @relation deviceType: DeviceType
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var deviceType: DeviceType
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public init(screenDensity: ScreenDensity, deviceType: DeviceType) {
+        this.screenDensity = screenDensity
+        this.deviceType = deviceType
+    }
 
     init(ret: RetDeviceCapability) {
         this.screenDensity = ScreenDensity.parse(ret.screenDensity)
@@ -265,6 +301,8 @@ public class DeviceCapability <: ToString {
 
 /**
  * Enumerates screen density types.
+ *
+ * export enum ScreenDensity
  */
 @!APILevel[
     12,
@@ -274,6 +312,11 @@ public class DeviceCapability <: ToString {
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum ScreenDensity {
+    /**
+     * Indicates small screen density.
+     *
+     * SCREEN_SDPI = 120
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -281,7 +324,12 @@ public enum ScreenDensity {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    SCREEN_SDPI
+    ScreenSDPI
+    /**
+     * Indicates medium screen density.
+     *
+     * SCREEN_MDPI = 160
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -289,7 +337,12 @@ public enum ScreenDensity {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    SCREEN_MDPI
+    ScreenMDPI
+    /**
+     * Indicates large screen density.
+     *
+     * SCREEN_LDPI = 240
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -297,7 +350,12 @@ public enum ScreenDensity {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    SCREEN_LDPI
+    ScreenLDPI
+    /**
+     * Indicates extra-large screen density.
+     *
+     * SCREEN_XLDPI = 320
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -305,7 +363,12 @@ public enum ScreenDensity {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    SCREEN_XLDPI
+    ScreenXLDPI
+    /**
+     * Indicates extra-extra-large screen density.
+     *
+     * SCREEN_XXLDPI = 480
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -313,7 +376,12 @@ public enum ScreenDensity {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    SCREEN_XXLDPI
+    ScreenXXLDPI
+    /**
+     * Indicates extra-extra-extra-large screen density.
+     *
+     * SCREEN_XXXLDPI = 640
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -321,7 +389,7 @@ public enum ScreenDensity {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    SCREEN_XXXLDPI
+    ScreenXXXLDPI
     | ...
 
     @!APILevel[
@@ -333,12 +401,12 @@ public enum ScreenDensity {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case SCREEN_SDPI => 120
-            case SCREEN_MDPI => 160
-            case SCREEN_LDPI => 240
-            case SCREEN_XLDPI => 320
-            case SCREEN_XXLDPI => 480
-            case SCREEN_XXXLDPI => 640
+            case ScreenSDPI => 120
+            case ScreenMDPI => 160
+            case ScreenLDPI => 240
+            case ScreenXLDPI => 320
+            case ScreenXXLDPI => 480
+            case ScreenXXXLDPI => 640
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -352,12 +420,12 @@ public enum ScreenDensity {
     ]
     public static func parse(val: Int32): ScreenDensity {
         match (val) {
-            case 120 => SCREEN_SDPI
-            case 160 => SCREEN_MDPI
-            case 240 => SCREEN_LDPI
-            case 320 => SCREEN_XLDPI
-            case 480 => SCREEN_XXLDPI
-            case 640 => SCREEN_XXXLDPI
+            case 120 => ScreenSDPI
+            case 160 => ScreenMDPI
+            case 240 => ScreenLDPI
+            case 320 => ScreenXLDPI
+            case 480 => ScreenXXLDPI
+            case 640 => ScreenXXXLDPI
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -365,6 +433,8 @@ public enum ScreenDensity {
 
 /**
  * Enumerates device types.
+ *
+ * @relation export enum DeviceType
  */
 @!APILevel[
     12,
@@ -374,7 +444,11 @@ public enum ScreenDensity {
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum DeviceType {
-    //Indicates a phone.
+    /**
+     * Indicates a phone.
+     *
+     * @relation DEVICE_TYPE_PHONE = 0x00
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -382,8 +456,12 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_PHONE
-    // Indicates a tablet.
+    DeviceTypePhone
+    /**
+     * Indicates a tablet.
+     *
+     * @relation DEVICE_TYPE_TABLET = 0x01
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -391,8 +469,12 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_TABLET
-    // Indicates a car.
+    DeviceTypeTablet
+    /**
+     * Indicates a car.
+     *
+     * @relation DEVICE_TYPE_CAR = 0x02
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -400,8 +482,12 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_CAR
-    // Indicates a PC.
+    DeviceTypeCar
+    /**
+     * Indicates a PC.
+     *
+     * @relation DEVICE_TYPE_PC = 0x03
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -409,8 +495,12 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_PC
-    // Indicates a smart TV.
+    DeviceTypePC
+    /**
+     * Indicates a smart TV.
+     *
+     * @relation DEVICE_TYPE_TV = 0x04
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -418,8 +508,12 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_TV
-    // Indicates a wearable device.
+    DeviceTypeTV
+    /**
+     * Indicates a wearable device.
+     *
+     * @relation DEVICE_TYPE_WEARABLE = 0x06
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -427,8 +521,12 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_WEARABLE
-    // Indicates a 2in1 device.
+    DeviceTypeWearable
+    /**
+     * Indicates a 2in1 device.
+     *
+     * @relation DEVICE_TYPE_2IN1 = 0x07
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -436,7 +534,7 @@ public enum DeviceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DEVICE_TYPE_2IN1
+    DeviceType2In1
     | ...
 
     @!APILevel[
@@ -448,13 +546,13 @@ public enum DeviceType {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case DEVICE_TYPE_PHONE => 0
-            case DEVICE_TYPE_TABLET => 1
-            case DEVICE_TYPE_CAR => 2
-            case DEVICE_TYPE_PC => 3
-            case DEVICE_TYPE_TV => 4
-            case DEVICE_TYPE_WEARABLE => 6
-            case DEVICE_TYPE_2IN1 => 7
+            case DeviceTypePhone => 0
+            case DeviceTypeTablet => 1
+            case DeviceTypeCar => 2
+            case DeviceTypePC => 3
+            case DeviceTypeTV => 4
+            case DeviceTypeWearable => 6
+            case DeviceType2In1 => 7
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -468,13 +566,13 @@ public enum DeviceType {
     ]
     public static func parse(val: Int32): DeviceType {
         match (val) {
-            case 0 => DEVICE_TYPE_PHONE
-            case 1 => DEVICE_TYPE_TABLET
-            case 2 => DEVICE_TYPE_CAR
-            case 3 => DEVICE_TYPE_PC
-            case 4 => DEVICE_TYPE_TV
-            case 6 => DEVICE_TYPE_WEARABLE
-            case 7 => DEVICE_TYPE_2IN1
+            case 0 => DeviceTypePhone
+            case 1 => DeviceTypeTablet
+            case 2 => DeviceTypeCar
+            case 3 => DeviceTypePC
+            case 4 => DeviceTypeTV
+            case 6 => DeviceTypeWearable
+            case 7 => DeviceType2In1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -482,6 +580,8 @@ public enum DeviceType {
 
 /**
  * Enumerates screen directions.
+ *
+ * @relation export enum Direction
  */
 @!APILevel[
     12,
@@ -491,6 +591,11 @@ public enum DeviceType {
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum Direction {
+    /**
+     * Enumerates screen directions.
+     *
+     * @relation DIRECTION_VERTICAL = 0
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -498,7 +603,12 @@ public enum Direction {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DIRECTION_VERTICAL
+    DirectionVertical
+    /**
+     * Indicates the horizontal direction.
+     *
+     * @relation DIRECTION_HORIZONTAL = 1
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -506,7 +616,7 @@ public enum Direction {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    DIRECTION_HORIZONTAL
+    DirectionHorizontal
     | ...
 
     @!APILevel[
@@ -518,8 +628,8 @@ public enum Direction {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case DIRECTION_VERTICAL => 0
-            case DIRECTION_HORIZONTAL => 1
+            case DirectionVertical => 0
+            case DirectionHorizontal => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -533,8 +643,8 @@ public enum Direction {
     ]
     public static func parse(val: Int32): Direction {
         match (val) {
-            case 0 => DIRECTION_VERTICAL
-            case 1 => DIRECTION_HORIZONTAL
+            case 0 => DirectionVertical
+            case 1 => DirectionHorizontal
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -547,7 +657,6 @@ enum ColorMode {
      *
      * @relation DARK = 0
      */
-    
     Dark
     /**
      * Indicates light mode.
@@ -574,49 +683,91 @@ enum ColorMode {
     }
 }
 
+/**
+ * Contains resource descriptor information.
+ *
+ * @relation export interface Resource
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public class AppResource <: Length & ResourceColor {
+    /**
+     * bundle name in hap
+     *
+     * @relation bundleName: string
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public AppResource(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let bundleName: String,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let moduleName: String,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let id: Int32,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let params!: ?Array<Any> = None,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Global.ResourceManager"
-        ]
-        public let resType!: ?Int32 = None
-    ) {}
+    public var bundleName: String
+    /**
+     * module name in hap
+     *
+     * @relation moduleName: string
+     */
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var moduleName: String
+    /**
+     * resource id in hap
+     *
+     * @relation id: number
+     */
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var id: UInt32
+    /**
+     * Set params.
+     *
+     * @relation params?: any[]
+     */
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var params: ?Array<Any> = None
+    /**
+     * Set type.
+     *
+     * @relation type?: number
+     */
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public var resType: ?Int32 = None
+
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Global.ResourceManager"
+    ]
+    public init(
+        bundleName: String,
+        moduleName: String,
+        id: UInt32,
+        params!: ?Array<Any> = None,
+        resType!: ?Int32 = None
+    ) {
+        this.bundleName = bundleName
+        this.moduleName = moduleName
+        this.id = id
+        this.params = params
+        this.resType = resType
+    }
 
     protected init(ret: CResource) {
         this.bundleName = ret.bundleName.toString()
@@ -642,7 +793,7 @@ public func __GenerateResource__(
     bundleName: String,
     moudleType: String,
     moduleName: String,
-    resId: Int32,
+    resId: UInt32,
     resStr: String,
     params: Array<Any>,
     resType: Int32
@@ -738,7 +889,7 @@ public enum Number {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    INT(Int32)
+    Int32Value(Int32)
     | @!APILevel[
         12,
         atomicservice: true,
@@ -746,7 +897,7 @@ public enum Number {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    FLOAT(Float32)
+    Float32Value(Float32)
     | ...
 }
 
@@ -761,26 +912,26 @@ public enum FormatArgs {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    INT(Int32)
+    Int32Value(Int32)
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    FLOAT(Float32)
+    Float32Value(Float32)
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    STRING(String)
+    StringValue(String)
     | ...
 
     func shouldFormat(r: Rune): Bool {
         let l: Rune = match (this) {
-            case INT(_) => r'd'
-            case FLOAT(_) => r'f'
-            case STRING(_) => r's'
+            case Int32Value(_) => r'd'
+            case Float32Value(_) => r'f'
+            case StringValue(_) => r's'
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
         return l == r
@@ -788,9 +939,9 @@ public enum FormatArgs {
 
     func toString(): String {
         match (this) {
-            case INT(v) => v.toString()
-            case FLOAT(v) => v.toString()
-            case STRING(v) => v
+            case Int32Value(v) => v.toString()
+            case Float32Value(v) => v.toString()
+            case StringValue(v) => v
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

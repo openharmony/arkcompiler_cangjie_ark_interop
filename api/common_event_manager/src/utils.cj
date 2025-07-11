@@ -44,28 +44,28 @@ public enum ValueType {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    INT(Int32)
+    Int32Value(Int32)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    FLOAT64(Float64)
+    Float64Value(Float64)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    STRING(String)
+    StringValue(String)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    BOOL(Bool)
+    BoolValue(Bool)
     | @!APILevel[
         12,
         atomicservice: true,
@@ -79,42 +79,42 @@ public enum ValueType {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ARRSTRING(Array<String>)
+    ArrayString(Array<String>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ARRAYI32(Array<Int32>)
+    ArrayInt32(Array<Int32>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ARRAYI64(Array<Int64>)
+    ArrayInt64(Array<Int64>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ARRAYBOOL(Array<Bool>)
+    ArrayBool(Array<Bool>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ARRAYF64(Array<Float64>)
+    ArrayFloat64(Array<Float64>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ARRAYFD(Array<Int32>)
+    ArrayFD(Array<Int32>)
     | ...
 }
 

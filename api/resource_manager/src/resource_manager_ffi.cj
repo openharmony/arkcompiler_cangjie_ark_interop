@@ -174,9 +174,9 @@ struct RetGetNumber {
 
     func toNumber(): Number {
         if (isInt) {
-            Number.INT(intValue)
+            Number.Int32Value(intValue)
         } else {
-            Number.FLOAT(floatValue)
+            Number.Float32Value(floatValue)
         }
     }
 }

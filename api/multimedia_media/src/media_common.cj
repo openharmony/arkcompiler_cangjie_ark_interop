@@ -88,10 +88,7 @@ func throwIfNotSuccess(code: Int32, className: String, funcName: String): Unit {
  * Media file descriptor. The caller needs to ensure that the fd is valid and
  * the offset and length are correct.
  *
- * @typedef AVFileDescriptor
- * @syscap SystemCapability.Multimedia.Media.Core
- * @crossplatform
- * @atomicservice
+ * @relation interface AVFileDescriptor
  */
 @!APILevel[
     19,
@@ -101,6 +98,12 @@ func throwIfNotSuccess(code: Int32, className: String, funcName: String): Unit {
     syscap: "SystemCapability.Multimedia.Media.Core"
 ]
 public class AVFileDescriptor {
+    /**
+     * The file descriptor of audio or video source from file system. The caller
+     * is responsible to close the file descriptor.
+     *
+     * @relation fd: number
+     */
     @!APILevel[
         19,
         atomicservice: true,
@@ -108,56 +111,52 @@ public class AVFileDescriptor {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
-    public AVFileDescriptor(
-        /**
-         * The file descriptor of audio or video source from file system. The caller
-         * is responsible to close the file descriptor.
-         * @type { Int32 }
-         * @syscap SystemCapability.Multimedia.Media.Core
-         * @crossplatform
-         * @atomicservice
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Multimedia.Media.Core"
-        ]
-        public var fd: Int32,
-        /**
-         * The offset into the file where the data to be read, in bytes. By default,
-         * the offset is zero.
-         * @type { ?Int64 }
-         * @syscap SystemCapability.Multimedia.Media.Core
-         * @crossplatform
-         * @atomicservice
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Multimedia.Media.Core"
-        ]
-        public var offset: ?Int64,
-        /**
-         * The length in bytes of the data to be read. By default, the length is the
-         * rest of bytes in the file from the offset.
-         * @type { ?Int64 }
-         * @syscap SystemCapability.Multimedia.Media.Core
-         * @crossplatform
-         * @atomicservice
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Multimedia.Media.Core"
-        ]
-        public var length: ?Int64
-    ) {}
+    public var fd: Int32
+    /**
+     * The offset into the file where the data to be read, in bytes. By default,
+     * the offset is zero.
+     *
+     * @relation offset?: number
+     */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Multimedia.Media.Core"
+    ]
+    public var offset: ?Int64
+    /**
+     * The length in bytes of the data to be read. By default, the length is the
+     * rest of bytes in the file from the offset.
+     *
+     * @relation length?: number
+     */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Multimedia.Media.Core"
+    ]
+    public var length: ?Int64
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Multimedia.Media.Core"
+    ]
+    public init(
+        fd: Int32,
+        offset: ?Int64,
+        length: ?Int64
+    ) {
+        this.fd = fd
+        this.offset = offset
+        this.length = length
+    }
 
     @!APILevel[
         19,
@@ -195,7 +194,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
-    SERVER_IP_ADDRESS
+    ServerIPAddress
     |
         /**
          * Average download rate during playing except for suspend downloading.
@@ -206,7 +205,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
-    AVG_DOWNLOAD_RATE
+    AvgDownloadRate
     |
         /**
          * Current download rate of the last second except for suspend downloading.
@@ -217,7 +216,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
-    DOWNLOAD_RATE
+    DownloadRate
     |
         /**
          * Boolean value, true for current is downloading, false for suspend downloading.
@@ -228,7 +227,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
-    IS_DOWNLOADING
+    IsDownloading
     |
         /**
          * Cached duration in milliseconds.
@@ -239,7 +238,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
-    BUFFER_DURATION
+    BufferDuration
     | ...
 
     static func parse(val: Int32): PlaybackInfoKey {
@@ -260,11 +259,11 @@ public enum PlaybackInfoKey <: ToString & Hashable {
     ]
     public func toString(): String {
         match (this) {
-            case SERVER_IP_ADDRESS => "server_ip_address"
-            case AVG_DOWNLOAD_RATE => "average_download_rate"
-            case DOWNLOAD_RATE => "download_rate"
-            case IS_DOWNLOADING => "is_downloading"
-            case BUFFER_DURATION => "buffer_duration"
+            case ServerIPAddress => "server_ip_address"
+            case AvgDownloadRate => "average_download_rate"
+            case DownloadRate => "download_rate"
+            case IsDownloading => "is_downloading"
+            case BufferDuration => "buffer_duration"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -288,50 +287,70 @@ public enum ValueType {
         19,
         stagemodelonly: true
     ]
-    INT(Int32)
+    Int32Value(Int32)
     | @!APILevel[
         19,
         stagemodelonly: true
     ]
-    INT64(Int64)
+    Int64Value(Int64)
     | @!APILevel[
         19,
         stagemodelonly: true
     ]
-    DOUBLE(Float64)
+    Float64Value(Float64)
     | @!APILevel[
         19,
         stagemodelonly: true
     ]
-    STRING(String)
+    StringValue(String)
     | ...
 }
 
+/**
+ * Defines the format parameters of the video thumbnail to be obtained.
+ *
+ * @relation interface PixelMapParams
+ */
 @!APILevel[
     19,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
 public class PixelMapParams {
+    /**
+     * Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original
+     * video. Otherwise, the returned thumbnail will not be scaled.
+     *
+     * @relation width?: number
+     */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
-    public PixelMapParams(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
-        ]
-        public var width: Int32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
-        ]
-        public var height: Int32
-    ) {}
+    public var width: Int32
+    /**
+     * Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original
+     * video. Otherwise, the returned thumbnail will not be scaled.
+     *
+     * @relation height?: number
+     */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
+    ]
+    public var height: Int32
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
+    ]
+    public init(width!: Int32 = -1, height!: Int32 = -1) {
+        this.width = width
+        this.height = height
+    }
 }
 
 @Derive[ToString, Equatable]
@@ -346,33 +365,33 @@ public enum AVImageQueryOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
-    AV_IMAGE_QUERY_NEXT_SYNC
+    AVImageQueryNextSync
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
-    AV_IMAGE_QUERY_PREVIOUS_SYNC
+    AVImageQueryPreviousSync
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
-    AV_IMAGE_QUERY_CLOSEST_SYNC
+    AVImageQueryClosestSync
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
-    AV_IMAGE_QUERY_CLOSEST
+    AVImageQueryClosest
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case AV_IMAGE_QUERY_NEXT_SYNC => 0
-            case AV_IMAGE_QUERY_PREVIOUS_SYNC => 1
-            case AV_IMAGE_QUERY_CLOSEST_SYNC => 2
-            case AV_IMAGE_QUERY_CLOSEST => 3
+            case AVImageQueryNextSync => 0
+            case AVImageQueryPreviousSync => 1
+            case AVImageQueryClosestSync => 2
+            case AVImageQueryClosest => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
