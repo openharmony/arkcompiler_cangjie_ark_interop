@@ -172,7 +172,7 @@ func getCJErrorCode(code: Int32): Int32 {
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
 ]
-public struct Options {
+public class Options {
     @!APILevel[
         12,
         atomicservice: true,

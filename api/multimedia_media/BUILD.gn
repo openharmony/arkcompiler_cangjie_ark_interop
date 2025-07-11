@@ -17,18 +17,8 @@ import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 ohos_cj_library("ohos.multimedia_media") {
   sources = [
     "src/avimage_generator.cj",
-    "src/avmetadata_extractor.cj",
-    "src/avplayer.cj",
-    "src/avrecorder.cj",
-    "src/avscreen_capture_record_config.cj",
-    "src/avscreen_capture_recorder.cj",
-    "src/media_avscreen_capture_ffi.cj",
-    "src/avtranscoder_config.cj",
-    "src/avtranscoder.cj",
     "src/media_common.cj",
     "src/media_ffi.cj",
-    "src/media_source.cj",
-    "src/sound_pool.cj",
   ]
 
   cj_deps = [
@@ -36,8 +26,6 @@ ohos_cj_library("ohos.multimedia_media") {
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../image:ohos.image",
-    "../multimedia/audio:ohos.multimedia.audio",
-    "../multimedia/media_library:ohos.multimedia.photo_accesshelper",
     "../labels:ohos.labels",
   ]
 

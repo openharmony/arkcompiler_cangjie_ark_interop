@@ -407,7 +407,7 @@ public enum ColorSpace <: ToString {
     stagemodelonly: true,
     syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
 ]
-public struct ColorSpacePrimaries {
+public class ColorSpacePrimaries {
     @!APILevel[
         12,
         crossplatform: true,

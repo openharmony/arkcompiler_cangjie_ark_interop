@@ -31,17 +31,6 @@ ohos_cj_library("kit.AbilityKit") {
   part_name = "cangjie_api"
 }
 
-ohos_cj_library("kit.AccessibilityKit") {
-  sources = [ "AccessibilityKit/index.cj" ]
-
-  cj_deps = [ "../api/accessibility:ohos.accessibility" ]
-
-  kit = true
-  lib_name = "AccessibilityKit"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
 ohos_cj_library("kit.ArkData") {
   sources = [ "ArkData/index.cj" ]
 
@@ -95,17 +84,6 @@ ohos_cj_library("kit.ArkWeb") {
 
   kit = true
   lib_name = "ArkWeb"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
-ohos_cj_library("kit.AudioKit") {
-  sources = [ "AudioKit/index.cj" ]
-
-  cj_deps = [ "../api/multimedia/audio:ohos.multimedia.audio" ]
-
-  kit = true
-  lib_name = "AudioKit"
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
 }

@@ -24,7 +24,7 @@ import ohos.labels.*
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
-public struct ErrorObject {
+public class ErrorObject {
     @!APILevel[
         12,
         atomicservice: true,
@@ -76,7 +76,7 @@ public struct ErrorObject {
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
-public struct ErrorObserver {
+public class ErrorObserver {
     @!APILevel[
         12,
         atomicservice: true,

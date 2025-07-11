@@ -84,7 +84,7 @@ public class Metadata {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct ModuleMetadata {
+public class ModuleMetadata {
     @!APILevel[
         12,
         atomicservice: true,
@@ -118,7 +118,7 @@ public struct ModuleMetadata {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct UsedScene {
+public class UsedScene {
     @!APILevel[
         12,
         atomicservice: true,
@@ -157,7 +157,7 @@ public struct UsedScene {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct ReqPermissionDetail {
+public class ReqPermissionDetail {
     @!APILevel[
         12,
         atomicservice: true,
@@ -258,7 +258,7 @@ public class SignatureInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct MultiAppMode {
+public class MultiAppMode {
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -285,7 +285,7 @@ public struct MultiAppMode {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct ApplicationInfo {
+public class ApplicationInfo {
     @!APILevel[
         12,
         atomicservice: true,
@@ -542,7 +542,7 @@ public struct ApplicationInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct WindowSize {
+public class WindowSize {
     @!APILevel[
         12,
         atomicservice: true,
@@ -961,7 +961,7 @@ public class ExtensionAbilityInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct PreloadItem {
+public class PreloadItem {
     @!APILevel[
         12,
         atomicservice: true,
@@ -981,7 +981,7 @@ public struct PreloadItem {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct Dependency {
+public class Dependency {
     @!APILevel[
         12,
         atomicservice: true,
@@ -1018,7 +1018,7 @@ public struct Dependency {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct HapModuleInfo {
+public class HapModuleInfo {
     @!APILevel[
         12,
         atomicservice: true,
@@ -1207,7 +1207,7 @@ public struct HapModuleInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct DataItem {
+public class DataItem {
     @!APILevel[
         19,
         atomicservice: true,
@@ -1235,7 +1235,7 @@ public struct DataItem {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct RouterItem {
+public class RouterItem {
     @!APILevel[
         19,
         atomicservice: true,
@@ -1425,7 +1425,7 @@ public class BundleInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct Skill {
+public class Skill {
     @!APILevel[
         19,
         atomicservice: true,
@@ -1469,7 +1469,7 @@ public struct Skill {
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
-public struct SkillUri {
+public class SkillUri {
     @!APILevel[
         19,
         atomicservice: true,

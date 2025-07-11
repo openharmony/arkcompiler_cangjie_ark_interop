@@ -309,3 +309,49 @@ public enum MemoryLevel {
         }
     }
 }
+
+@Derive[ToString, Equatable]
+enum StateType {
+    CONTINUATION
+    | APP_RECOVERY
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case CONTINUATION => 0
+            case APP_RECOVERY => 1
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+
+    static func parse(value: Int32): StateType {
+        match (value) {
+            case 0 => CONTINUATION
+            case 1 => APP_RECOVERY
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
+
+@Derive[ToString, Equatable]
+enum OnSaveResult {
+    ALL_AGREE
+    | CONTINUATION_REJECT
+    | CONTINUATION_MISMATCH
+    | RECOVERY_AGREE
+    | RECOVERY_REJECT
+    | ALL_REJECT
+    | ...
+
+    func getValue(): Int32 {
+        match (this) {
+            case ALL_AGREE => 0
+            case CONTINUATION_REJECT => 1
+            case CONTINUATION_MISMATCH => 2
+            case RECOVERY_AGREE => 3
+            case RECOVERY_REJECT => 4
+            case ALL_REJECT => 5
+            case _ => throw IllegalArgumentException("The type is not supported.")
+        }
+    }
+}
