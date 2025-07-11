@@ -20,6 +20,11 @@ import ohos.hilog.*
 import ohos.labels.*
 import ohos.base.*
 
+/**
+ * Indicates time type.
+ *
+ * @relation enum TimeType
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -28,6 +33,11 @@ import ohos.base.*
     syscap: "SystemCapability.MiscServices.Time"
 ]
 public enum TimeType {
+    /**
+     * Indicates the time elapsed since the system was booted, including deep sleep time.
+     *
+     * @relation STARTUP
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -35,7 +45,12 @@ public enum TimeType {
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]
-    STARTUP
+    StartUp
+    /**
+     * Indicates the time elapsed since the system was booted, including deep sleep time.
+     *
+     * @relation ACTIVE
+     */
     | @!APILevel[
         12,
         atomicservice: true,
@@ -43,13 +58,13 @@ public enum TimeType {
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]
-    ACTIVE
+    Active
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case STARTUP => 0
-            case ACTIVE => 1
+            case StartUp => 0
+            case Active => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

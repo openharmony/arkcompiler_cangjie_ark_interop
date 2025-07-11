@@ -174,9 +174,9 @@ struct RetGetNumber {
 
     func toNumber(): Number {
         if (isInt) {
-            Number.INT(intValue)
+            Number.Int32Value(intValue)
         } else {
-            Number.FLOAT(floatValue)
+            Number.Float32Value(floatValue)
         }
     }
 }
@@ -185,7 +185,7 @@ struct RetGetNumber {
 protected struct CResource {
     protected let bundleName: CString
     protected let moduleName: CString
-    protected let resId: Int32
+    protected let resId: UInt32
 
     protected init(resource: AppResource) {
         unsafe {
