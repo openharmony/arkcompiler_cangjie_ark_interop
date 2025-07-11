@@ -1100,12 +1100,11 @@ public class HttpRequestOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    public init(method: RequestMethod, extraData!: ?HttpData = None, expectDataType!: ?HttpDataType = None,
-        usingCache: Bool = true, priority: UInt32, header!: ?HashMap<String, String> = None, readTimeout: UInt32,
-        connectTimeout: UInt32, usingProtocol!: ?HttpProtocol = None, usingProxy: UsingProxy, caPath!: ?String = None,
-        resumeFrom!: ?Int64 = None, resumeTo!: ?Int64 = None, clientCert!: ?ClientCert = None,
-        dnsOverHttps!: ?String = None, dnsServers!: ?Array<String> = None, maxLimit: UInt32
-        multiFormDataList!: ?Array<MultiFormData> = None) {
+    public init(method: RequestMethod, usingCache: Bool, priority: UInt32, readTimeout: UInt32, connectTimeout: UInt32,
+        maxLimit: UInt32, extraData!: ?HttpData = None, expectDataType!: ?HttpDataType = None,
+        header!: ?HashMap<String, String> = None, usingProtocol!: ?HttpProtocol = None, usingProxy: UsingProxy,
+        caPath!: ?String = None, resumeFrom!: ?Int64 = None, resumeTo!: ?Int64 = None, clientCert!: ?ClientCert = None,
+        dnsOverHttps!: ?String = None, dnsServers!: ?Array<String> = None, multiFormDataList!: ?Array<MultiFormData> = None) {
         this.method = method
         this.extraData = extraData
         this.expectDataType = expectDataType
@@ -1337,6 +1336,12 @@ public class PerformanceTiming <: ToString {
     ]
     public var totalTiming: Float64
 
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
     public init(dnsTiming: Float64, tcpTiming: Float64, tlsTiming: Float64,
         firstSendTiming: Float64, firstReceiveTiming: Float64, totalFinishTiming: Float64,
         redirectTiming: Float64, responseHeaderTiming: Float64, responseBodyTiming: Float64,
