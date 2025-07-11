@@ -809,14 +809,14 @@ struct COfflineResourceMap {
     var resource: CPointer<UInt8>
     var resourceSize: Int64
     var responseHeaders: ArrWebHeader
-    var _type: Int32
+    var type_: Int32
 
     init() {
         urlList = CArrString(CPointer<CString>(), 0)
         resource = CPointer<UInt8>()
         resourceSize = 0
         responseHeaders = ArrWebHeader(Array<WebHeader>()) {}
-        _type = 0
+        type_ = 0
     }
 
     func free() {

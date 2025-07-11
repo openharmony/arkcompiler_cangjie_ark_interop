@@ -21,39 +21,49 @@ import ohos.base.*
 import std.collection.*
 
 @!APILevel[
-    19,
+    21,
     atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class WebStorageOrigin {
     @!APILevel[
-        19,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public WebStorageOrigin(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var origin: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var quota: Int64,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var usage: Int64
-    ) {}
+    public var origin: String
+
+    @!APILevel[
+        21,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var quota: Int64
+
+    @!APILevel[
+        21,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var usage: Int64
+
+    @!APILevel[
+        21,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(
+        origin: String,
+        quota: Int64,
+        usage: Int64
+    ) {
+        this.origin = origin
+        this.quota = quota
+        this.usage = usage
+    }
 }

@@ -26,9 +26,7 @@ const MAX_STRING_LENGTH: Int64 = 40960
  *
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
@@ -45,9 +43,7 @@ public class WebCookieManager {
      * @brief static fetchCookieSync(url: string, incognito?: boolean): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -85,8 +81,7 @@ public class WebCookieManager {
      * @brief static configCookieSync(url: string, value: string, incognito?: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -115,8 +110,7 @@ public class WebCookieManager {
      * @brief static putAcceptCookieEnabled(accept: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -133,8 +127,7 @@ public class WebCookieManager {
      * @brief static isCookieAllowed(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -152,8 +145,7 @@ public class WebCookieManager {
      * @brief static putAcceptCookieEnabled(accept: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -170,8 +162,7 @@ public class WebCookieManager {
      * @brief static isThirdPartyCookieAllowed(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -190,8 +181,7 @@ public class WebCookieManager {
      * @brief static existCookie(incognito?: boolean): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -209,8 +199,7 @@ public class WebCookieManager {
      * @brief static clearAllCookiesSync(incognito?: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -225,8 +214,7 @@ public class WebCookieManager {
      * @brief static clearSessionCookieSync(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

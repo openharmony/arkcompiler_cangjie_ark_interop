@@ -31,77 +31,68 @@ foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public enum SecurityLevel {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    NONE
+    NoneLevel
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    SECURE
+    Secure
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    WARNING
+    Warning
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    DANGEROUS
+    Dangeous
     | ...
 
     static func fromInt32(code: Int32): SecurityLevel {
         match (code) {
-            case 1 => SECURE
-            case 2 => WARNING
-            case 3 => DANGEROUS
-            case _ => NONE
+            case 1 => Secure
+            case 2 => Warning
+            case 3 => Dangeous
+            case _ => NoneLevel
         }
     }
 }
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public enum WebHitTestType {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     EditText
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     Email
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -119,253 +110,261 @@ public enum WebHitTestType {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public enum OfflineResourceType {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    IMAGE
+    Image
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    CSS
+    Css
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    CLASSIC_JS
+    ClassicJS
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    MODULE_JS
+    ModuleJs
     | ...
 
     static func fromInt32(code: Int32): OfflineResourceType {
         match (code) {
-            case 0 => IMAGE
-            case 1 => CSS
-            case 2 => CLASSIC_JS
-            case 3 => MODULE_JS
+            case 0 => Image
+            case 1 => Css
+            case 2 => ClassicJS
+            case 3 => ModuleJs
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case IMAGE => 0
-            case CSS => 1
-            case CLASSIC_JS => 2
-            case MODULE_JS => 3
+            case Image => 0
+            case Css => 1
+            case ClassicJS => 2
+            case ModuleJs => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class WebHeader {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public WebHeader(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var headerKey: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var headerValue: String
-    ) {}
+    public var headerKey: String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var headerValue: String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(headerKey: String, headerValue: String) {
+        this.headerKey = headerKey
+        this.headerValue = headerValue
+    }
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class CacheOptions {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public CacheOptions(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var responseHeaders: Array<WebHeader>
-    ) {}
+    public var responseHeaders: Array<WebHeader>
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(responseHeaders: Array<WebHeader>) {
+        this.responseHeaders = responseHeaders
+    }
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class SnapshotInfo {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public SnapshotInfo(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var id!: String = "",
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var size!: SizeOptions = SizeOptions()
-    ) {}
+    public var id: String = ""
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var size: SizeOptions = SizeOptions()
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(id!: String = "", size!: SizeOptions = SizeOptions()) {
+        this.id = id
+        this.size = size
+    }
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class SnapshotResult {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public SnapshotResult(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var id: ?String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var image: ?PixelMap,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var status: ?Bool,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public var size: ?SizeOptions
-    ) {}
+    public var id: ?String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var image: ?PixelMap
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var status: ?Bool
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public var size: ?SizeOptions
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(id: ?String, image: ?PixelMap, status: ?Bool, size: ?SizeOptions) {
+        this.id = id
+        this.image = image
+        this.status = status
+        this.size = size
+    }
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class HitTestValue {
-    HitTestValue(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public let hitTestType: WebHitTestType,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public let extra: String
-    ) {}
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public let hitTestType: WebHitTestType
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public let extra: String
+
+    init(hitTestType: WebHitTestType, extra: String) {
+        this.hitTestType = hitTestType
+        this.extra = extra
+    }
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class OfflineResourceMap {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public OfflineResourceMap(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        var urlList: Array<String>,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        var resource: Array<UInt8>,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        var responseHeaders: Array<WebHeader>,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        var _type: OfflineResourceType
-    ) {}
+    var urlList: Array<String>
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    var resource: Array<UInt8>
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    var responseHeaders: Array<WebHeader>
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    var type_: OfflineResourceType
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(urlList: Array<String>, resource: Array<UInt8>, responseHeaders: Array<WebHeader>, `type`: OfflineResourceType) {
+        this.urlList = urlList
+        this.resource = resource
+        this.responseHeaders = responseHeaders
+        this.type_ = `type`
+    }
 
     func toCOfflineResourceMap(): COfflineResourceMap {
         var resOfflineResourceMap = COfflineResourceMap()
@@ -380,7 +379,7 @@ public class OfflineResourceMap {
                 resOfflineResourceMap.resource = LibC.malloc(count: this.resource.size)
                 resOfflineResourceMap.resource = cjArr2CArr<UInt8, UInt8>(this.resource, {byte: UInt8 => byte})
                 resOfflineResourceMap.responseHeaders = ArrWebHeader(this.responseHeaders) {}
-                resOfflineResourceMap._type = this._type.getValue()
+                resOfflineResourceMap.type_ = this.type_.getValue()
             }
         } catch (e: Exception) {
             resOfflineResourceMap.free()
@@ -390,53 +389,50 @@ public class OfflineResourceMap {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class HistoryItem {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
-    public HistoryItem(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public let icon: ?PixelMap,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public let historyUrl: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public let historyRawUrl: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Web.Webview.Core"
-        ]
-        public let title: String
-    ) {}
+    public let icon: ?PixelMap
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public let historyUrl: String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public let historyRawUrl: String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public let title: String
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Web.Webview.Core"
+    ]
+    public init(icon: ?PixelMap, historyUrl: String, historyRawUrl: String, title: String) {
+        this.icon = icon
+        this.historyUrl = historyUrl
+        this.historyRawUrl = historyRawUrl
+        this.title = title
+    }
 }
 
 /**
@@ -446,12 +442,10 @@ public class HistoryItem {
  */
 @!APILevel[
     20,
-    atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class WebCustomScheme {
-
     /**
      * Name of the custom scheme.
      *
@@ -459,7 +453,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -471,7 +464,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -483,7 +475,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -496,7 +487,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -509,7 +499,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -522,7 +511,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -535,7 +523,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -548,7 +535,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -560,7 +546,6 @@ public class WebCustomScheme {
      */
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -568,7 +553,6 @@ public class WebCustomScheme {
 
     @!APILevel[
         20,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

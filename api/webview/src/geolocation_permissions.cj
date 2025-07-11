@@ -21,9 +21,7 @@ import ohos.base.*
 import std.collection.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
@@ -37,9 +35,7 @@ public class BackForwardList <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -55,9 +51,7 @@ public class BackForwardList <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -82,9 +76,7 @@ public class BackForwardList <: RemoteDataLite {
      * @brief getItemAtIndex(index: number): HistoryItem
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
