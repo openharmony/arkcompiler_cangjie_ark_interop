@@ -31,7 +31,7 @@ import ohos.base.*
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.ContactsData"
 ]
-public struct PhoneNumber {
+public class PhoneNumber {
     @!APILevel[
         19,
         atomicservice: true,

@@ -427,7 +427,7 @@ struct CRequestResult {
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
-public struct RequestResult {
+public class RequestResult {
     @!APILevel[
         19,
         stagemodelonly: true,

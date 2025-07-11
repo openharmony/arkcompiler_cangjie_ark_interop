@@ -179,7 +179,7 @@ public class AVFileDescriptor {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
-public struct PixelMapParams {
+public class PixelMapParams {
     @!APILevel[
         19,
         stagemodelonly: true,
@@ -1183,7 +1183,7 @@ public class PlaybackStrategy {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.Core"
 ]
-public struct MediaDescriptionKey {
+public class MediaDescriptionKey {
     MediaDescriptionKey(let key: String) {}
     /**
      * key for track index, value type is number.

@@ -803,7 +803,7 @@ public enum ResourceType {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
-public struct PhotoCreationConfig {
+public class PhotoCreationConfig {
     @!APILevel[
         19,
         atomicservice: true,
@@ -962,7 +962,7 @@ public class ChangeData {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
-public struct CreateOptions {
+public class CreateOptions {
     @!APILevel[
         19,
         atomicservice: true,
@@ -1032,7 +1032,7 @@ public class RequestOptions {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
-public struct PhotoSelectResult {
+public class PhotoSelectResult {
     @!APILevel[
         19,
         atomicservice: true,
@@ -1073,7 +1073,7 @@ public struct PhotoSelectResult {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
-public struct TextContextInfo {
+public class TextContextInfo {
     @!APILevel[
         19,
         atomicservice: true,
@@ -1103,7 +1103,7 @@ public struct TextContextInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
-public struct RecommendationOptions {
+public class RecommendationOptions {
     @!APILevel[
         19,
         atomicservice: true,

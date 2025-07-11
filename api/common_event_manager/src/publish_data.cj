@@ -26,7 +26,7 @@ import ohos.labels.*
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
-public struct CommonEventPublishData {
+public class CommonEventPublishData {
     @!APILevel[
         12,
         atomicservice: true,
@@ -93,7 +93,7 @@ public struct CommonEventPublishData {
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
-public struct CommonEventData {
+public class CommonEventData {
     @!APILevel[
         12,
         atomicservice: true,

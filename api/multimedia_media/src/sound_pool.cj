@@ -119,7 +119,7 @@ public enum SoundPoolEvent <: ToString {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.SoundPool"
 ]
-public struct PlayParameters {
+public class PlayParameters {
     @!APILevel[
         19,
         stagemodelonly: true,

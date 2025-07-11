@@ -405,7 +405,7 @@ public enum ConflictResolution {
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
-public struct Asset {
+public class Asset {
     @!APILevel[
         12,
         crossplatform: true,

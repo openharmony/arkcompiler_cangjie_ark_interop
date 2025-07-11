@@ -342,7 +342,7 @@ public enum Param {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct Parameters {
+public class Parameters {
     @!APILevel[
         12,
         atomicservice: true,
@@ -378,7 +378,7 @@ public struct Parameters {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct AppEventInfo {
+public class AppEventInfo {
     @!APILevel[
         12,
         atomicservice: true,
@@ -452,7 +452,7 @@ public struct AppEventInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct ConfigOption {
+public class ConfigOption {
     @!APILevel[
         12,
         atomicservice: true,
@@ -486,7 +486,7 @@ public struct ConfigOption {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct AppEventReportConfig {
+public class AppEventReportConfig {
     @!APILevel[
         12,
         atomicservice: true,
@@ -687,7 +687,7 @@ public class AppEventPackage {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct TriggerCondition {
+public class TriggerCondition {
     @!APILevel[
         12,
         atomicservice: true,
@@ -729,7 +729,7 @@ public struct TriggerCondition {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct AppEventFilter {
+public class AppEventFilter {
     @!APILevel[
         12,
         atomicservice: true,
@@ -771,7 +771,7 @@ public struct AppEventFilter {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct AppEventGroup {
+public class AppEventGroup {
     @!APILevel[
         12,
         atomicservice: true,
@@ -810,7 +810,7 @@ public struct AppEventGroup {
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
-public struct Watcher {
+public class Watcher {
     @!APILevel[
         12,
         atomicservice: true,
