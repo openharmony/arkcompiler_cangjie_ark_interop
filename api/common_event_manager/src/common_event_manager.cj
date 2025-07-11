@@ -108,7 +108,7 @@ public class CommonEventManager {
      * @param { CommonEventSubscriber } subscriber - Subscriber instance..
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
+     * @relation subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
      */
     @!APILevel[
         21,
@@ -132,7 +132,7 @@ public class CommonEventManager {
      * @param { CommonEventSubscriber } subscriber - Subscriber instance..
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
-     * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
+     * @relation unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void
      */
     @!APILevel[
         21,

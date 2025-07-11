@@ -273,7 +273,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
         let labelId = bundleInfo.appInfo.labelId
         let stgContext = getStageContext(context)
         let resourceMgrObject = ResourceManager.getResourceManager(stgContext)
-        let appName = resourceMgrObject.getString(labelId)
+        let appName = resourceMgrObject.getString(UInt32(labelId))
 
         FfiBundleInfo(bundleName, appName, appId)
     }

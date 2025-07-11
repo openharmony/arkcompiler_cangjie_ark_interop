@@ -23,1139 +23,1343 @@ import ohos.labels.*
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
-public class Support {
+public enum Support {
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_ABILITY_ADDED: String = "common.event.ABILITY_ADDED"
-    @!APILevel[
+    CommonEventAbilityAdded
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_ABILITY_REMOVED: String = "common.event.ABILITY_REMOVED"
-    @!APILevel[
+    CommonEventAbilityRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_ABILITY_UPDATED: String = "common.event.ABILITY_UPDATED"
-    @!APILevel[
+    CommonEventAbilityUpdated
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_ACCOUNT_DELETED: String = "usual.event.data.ACCOUNT_DELETED"
-    @!APILevel[
+    CommonEventAccountDeleted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_AIRPLANE_MODE_CHANGED: String = "usual.event.AIRPLANE_MODE"
-    @!APILevel[
+    CommonEventAirplaneModeChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_AUDIO_QUALITY_CHANGE: String = "usual.event.AUDIO_QUALITY_CHANGE"
-    @!APILevel[
+    CommonEventAudioQualityChange
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BATTERY_CHANGED: String = "usual.event.BATTERY_CHANGED"
-    @!APILevel[
+    CommonEventBatteryChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BATTERY_LOW: String = "usual.event.BATTERY_LOW"
-    @!APILevel[
+    CommonEventBatteryLow
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BATTERY_OKAY: String = "usual.event.BATTERY_OKAY"
-    @!APILevel[
+    CommonEventBatteryOkay
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeAgConnectStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE: String = "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeAgCurrentDeviceUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE: String = "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeAgAudioStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsourceConnectStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE: String = "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsourceCurrentDeviceUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsourcePlayingStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsourceAvrcpConnectStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE: String = "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsourceCodecValueUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED: String = "usual.event.bluetooth.remotedevice.DISCOVERED"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceDiscovered
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE: String = "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceClassValueUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED: String = "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceAclConnected
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED: String = "usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceAclDisconnected
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE: String = "usual.event.bluetooth.remotedevice.NAME_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceNameUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE: String = "usual.event.bluetooth.remotedevice.PAIR_STATE"
-    @!APILevel[
+    CommonEventBluetoothRemotedevicePairState
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE: String = "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceBatteryValueUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT: String = "usual.event.bluetooth.remotedevice.SDP_RESULT"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceSdpResult
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE: String = "usual.event.bluetooth.remotedevice.UUID_VALUE"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceUuidValue
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ: String = "usual.event.bluetooth.remotedevice.PAIRING_REQ"
-    @!APILevel[
+    CommonEventBluetoothRemotedevicePairingReq
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL: String = "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
-    @!APILevel[
+    CommonEventBluetoothRemotedevicePairingCancel
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ: String = "usual.event.bluetooth.remotedevice.CONNECT_REQ"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceConnectReq
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY: String = "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceConnectReply
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL: String = "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
-    @!APILevel[
+    CommonEventBluetoothRemotedeviceConnectCancel
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeunitConnectStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE: String = "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeunitAudioStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT: String = "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeunitAgCommonEvent
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE: String = "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHandsfreeunitAgCallStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE: String = "usual.event.bluetooth.host.STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHostStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE: String = "usual.event.bluetooth.host.REQ_DISCOVERABLE"
-    @!APILevel[
+    CommonEventBluetoothHostReqDiscoverable
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE: String = "usual.event.bluetooth.host.REQ_ENABLE"
-    @!APILevel[
+    CommonEventBluetoothHostReqEnable
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE: String = "usual.event.bluetooth.host.REQ_DISABLE"
-    @!APILevel[
+    CommonEventBluetoothHostReqDisable
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE: String = "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHostScanModeUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED: String = "usual.event.bluetooth.host.DISCOVERY_STARTED"
-    @!APILevel[
+    CommonEventBluetoothHostDiscoveryStarted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED: String = "usual.event.bluetooth.host.DISCOVERY_FINISHED"
-    @!APILevel[
+    CommonEventBluetoothHostDiscoveryFinished
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE: String = "usual.event.bluetooth.host.NAME_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothHostNameUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsinkConnectStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsinkPlayingStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE"
-    @!APILevel[
+    CommonEventBluetoothA2DpsinkAudioStateUpdate
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BUNDLE_REMOVED: String = "usual.event.BUNDLE_REMOVED"
-    @!APILevel[
+    CommonEventBundleRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_BOOT_COMPLETED: String = "usual.event.BOOT_COMPLETED"
-    @!APILevel[
+    CommonEventBootCompleted
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CONNECTIVITY_CHANGE: String = "usual.event.CONNECTIVITY_CHANGE"
-    @!APILevel[
+    CommonEventConnectivityChange
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED: String = "usual.event.CELLULAR_DATA_STATE_CHANGED"
-    @!APILevel[
+    CommonEventCellularDataStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CALL_STATE_CHANGED: String = "usual.event.CALL_STATE_CHANGED"
-    @!APILevel[
+    CommonEventCallStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED: String = "usual.event.CHARGE_IDLE_MODE_CHANGED"
-    @!APILevel[
+    CommonEventChargeIdleModeChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CHARGE_TYPE_CHANGED: String = "usual.event.CHARGE_TYPE_CHANGED"
-    @!APILevel[
+    CommonEventChargeTypeChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CHARGING: String = "usual.event.CHARGING"
-    @!APILevel[
+    CommonEventCharging
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CONFIGURATION_CHANGED: String = "usual.event.CONFIGURATION_CHANGED"
-    @!APILevel[
+    CommonEventConfigurationChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_CLOSE_SYSTEM_DIALOGS: String = "usual.event.CLOSE_SYSTEM_DIALOGS"
-    @!APILevel[
+    CommonEventCloseSystemDialogs
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED: String = "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
-    @!APILevel[
+    CommonEventDeviceIdleExemptionListUpdated
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED: String = "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
-    @!APILevel[
+    CommonEventDomainAccountStatusChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISK_EJECT: String = "usual.event.data.DISK_EJECT"
-    @!APILevel[
+    CommonEventDiskEject
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISK_UNMOUNTABLE: String = "usual.event.data.DISK_UNMOUNTABLE"
-    @!APILevel[
+    CommonEventDiskUnmountable
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISK_BAD_REMOVAL: String = "usual.event.data.DISK_BAD_REMOVAL"
-    @!APILevel[
+    CommonEventDiskBadRemoval
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISK_MOUNTED: String = "usual.event.data.DISK_MOUNTED"
-    @!APILevel[
+    CommonEventDiskMounted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISK_UNMOUNTED: String = "usual.event.data.DISK_UNMOUNTED"
-    @!APILevel[
+    CommonEventDiskUnmounted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISK_REMOVED: String = "usual.event.data.DISK_REMOVED"
-    @!APILevel[
+    CommonEventDiskRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED: String = "usual.event.DEVICE_IDLE_MODE_CHANGED"
-    @!APILevel[
+    CommonEventDeviceIdleModeChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISCHARGING: String = "usual.event.DISCHARGING"
-    @!APILevel[
+    CommonEventDischarging
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF: String = "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
-    @!APILevel[
+    CommonEventDistributedAccountLogoff
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID: String = "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
-    @!APILevel[
+    CommonEventDistributedAccountTokenInvalid
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT: String = "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
-    @!APILevel[
+    CommonEventDistributedAccountLogout
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN: String = "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
-    @!APILevel[
+    CommonEventDistributedAccountLogin
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DRIVE_MODE: String = "common.event.DRIVE_MODE"
-    @!APILevel[
+    CommonEventDriveMode
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_DATE_CHANGED: String = "usual.event.DATE_CHANGED"
-    @!APILevel[
+    CommonEventDateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE: String = "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
-    @!APILevel[
+    CommonEventExternalApplicationsUnavailable
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE: String = "usual.event.EXTERNAL_APPLICATIONS_AVAILABLE"
-    @!APILevel[
+    CommonEventExternalApplicationsAvailable
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_FOUNDATION_READY: String = "common.event.FOUNDATION_READY"
-    @!APILevel[
+    CommonEventFoundationReady
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_HOME_MODE: String = "common.event.HOME_MODE"
-    @!APILevel[
+    CommonEventHomeMode
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_HTTP_PROXY_CHANGE: String = "usual.event.HTTP_PROXY_CHANGE"
-    @!APILevel[
+    CommonEventHttpProxyChange
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_SLEEP: String = "common.event.IVI_SLEEP"
-    @!APILevel[
+    CommonEventIviSleep
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_PAUSE: String = "common.event.IVI_PAUSE"
-    @!APILevel[
+    CommonEventIviPause
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_STANDBY: String = "common.event.IVI_STANDBY"
-    @!APILevel[
+    CommonEventIviStandby
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_LASTMODE_SAVE: String = "common.event.IVI_LASTMODE_SAVE"
-    @!APILevel[
+    CommonEventIviLastmodeSave
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_VOLTAGE_ABNORMAL: String = "common.event.IVI_VOLTAGE_ABNORMAL"
-    @!APILevel[
+    CommonEventIviVoltageAbnormal
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_HIGH_TEMPERATURE: String = "common.event.IVI_HIGH_TEMPERATURE"
-    @!APILevel[
+    CommonEventIviHighTemperature
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_EXTREME_TEMPERATURE: String = "common.event.IVI_EXTREME_TEMPERATURE"
-    @!APILevel[
+    CommonEventIviExtremeTemperature
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL: String = "common.event.IVI_TEMPERATURE_ABNORMAL"
-    @!APILevel[
+    CommonEventIviTemperatureAbnormal
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_VOLTAGE_RECOVERY: String = "common.event.IVI_VOLTAGE_RECOVERY"
-    @!APILevel[
+    CommonEventIviVoltageRecovery
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_TEMPERATURE_RECOVERY: String = "common.event.IVI_TEMPERATURE_RECOVERY"
-    @!APILevel[
+    CommonEventIviTemperatureRecovery
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_IVI_ACTIVE: String = "common.event.IVI_ACTIVE"
-    @!APILevel[
+    CommonEventIviActive
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_INCOMING_CALL_MISSED: String = "usual.event.INCOMING_CALL_MISSED"
-    @!APILevel[
+    CommonEventIncomingCallMissed
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_LOCKED_BOOT_COMPLETED: String = "usual.event.LOCKED_BOOT_COMPLETED"
-    @!APILevel[
+    CommonEventLockedBootCompleted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_LOCALE_CHANGED: String = "usual.event.LOCALE_CHANGED"
-    @!APILevel[
+    CommonEventLocaleChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_LOCATION_MODE_STATE_CHANGED: String = "usual.event.location.MODE_STATE_CHANGED"
-    @!APILevel[
+    CommonEventLocationModeStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_MY_PACKAGE_REPLACED: String = "usual.event.MY_PACKAGE_REPLACED"
-    @!APILevel[
+    CommonEventMyPackageReplaced
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_MY_PACKAGE_SUSPENDED: String = "usual.event.MY_PACKAGE_SUSPENDED"
-    @!APILevel[
+    CommonEventMyPackageSuspended
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_MY_PACKAGE_UNSUSPENDED: String = "usual.event.MY_PACKAGE_UNSUSPENDED"
-    @!APILevel[
+    CommonEventMyPackageUnsuspended
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_MANAGE_PACKAGE_STORAGE: String = "usual.event.MANAGE_PACKAGE_STORAGE"
-    @!APILevel[
+    CommonEventManagePackageStorage
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED: String = "usual.event.nfc.action.ADAPTER_STATE_CHANGED"
-    @!APILevel[
+    CommonEventNfcActionAdapterStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED: String = "usual.event.nfc.action.RF_FIELD_ON_DETECTED"
-    @!APILevel[
+    CommonEventNfcActionRfFieldOnDetected
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED: String = "usual.event.nfc.action.RF_FIELD_OFF_DETECTED"
-    @!APILevel[
+    CommonEventNfcActionRfFieldOffDetected
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_NETWORK_STATE_CHANGED: String = "usual.event.NETWORK_STATE_CHANGED"
-    @!APILevel[
+    CommonEventNetworkStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_OFFICE_MODE: String = "common.event.OFFICE_MODE"
-    @!APILevel[
+    CommonEventOfficeMode
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_OPERATOR_CONFIG_CHANGED: String = "usual.event.OPERATOR_CONFIG_CHANGED"
-    @!APILevel[
+    CommonEventOperatorConfigChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_POWER_CONNECTED: String = "usual.event.POWER_CONNECTED"
-    @!APILevel[
+    CommonEventPowerConnected
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_POWER_DISCONNECTED: String = "usual.event.POWER_DISCONNECTED"
-    @!APILevel[
+    CommonEventPowerDisconnected
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_ADDED: String = "usual.event.PACKAGE_ADDED"
-    @!APILevel[
+    CommonEventPackageAdded
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_REPLACED: String = "usual.event.PACKAGE_REPLACED"
-    @!APILevel[
+    CommonEventPackageReplaced
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_REMOVED: String = "usual.event.PACKAGE_REMOVED"
-    @!APILevel[
+    CommonEventPackageRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_FULLY_REMOVED: String = "usual.event.PACKAGE_FULLY_REMOVED"
-    @!APILevel[
+    CommonEventPackageFullyRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_CHANGED: String = "usual.event.PACKAGE_CHANGED"
-    @!APILevel[
+    CommonEventPackageChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_RESTARTED: String = "usual.event.PACKAGE_RESTARTED"
-    @!APILevel[
+    CommonEventPackageRestarted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_DATA_CLEARED: String = "usual.event.PACKAGE_DATA_CLEARED"
-    @!APILevel[
+    CommonEventPackageDataCleared
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_CACHE_CLEARED: String = "usual.event.PACKAGE_CACHE_CLEARED"
-    @!APILevel[
+    CommonEventPackageCacheCleared
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGES_SUSPENDED: String = "usual.event.PACKAGES_SUSPENDED"
-    @!APILevel[
+    CommonEventPackagesSuspended
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGES_UNSUSPENDED: String = "usual.event.PACKAGES_UNSUSPENDED"
-    @!APILevel[
+    CommonEventPackagesUnsuspended
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_FIRST_LAUNCH: String = "usual.event.PACKAGE_FIRST_LAUNCH"
-    @!APILevel[
+    CommonEventPackageFirstLaunch
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION: String = "usual.event.PACKAGE_NEEDS_VERIFICATION"
-    @!APILevel[
+    CommonEventPackageNeedsVerification
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PACKAGE_VERIFIED: String = "usual.event.PACKAGE_VERIFIED"
-    @!APILevel[
+    CommonEventPackageVerified
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_POWER_SAVE_MODE_CHANGED: String = "usual.event.POWER_SAVE_MODE_CHANGED"
-    @!APILevel[
+    CommonEventPowerSaveModeChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PRIVACY_STATE_CHANGED: String = "usual.event.PRIVACY_STATE_CHANGED"
-    @!APILevel[
+    CommonEventPrivacyStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_PRIMARY_SLOT_ROAMING: String = "usual.event.PRIMARY_SLOT_ROAMING"
-    @!APILevel[
+    CommonEventPrimarySlotRoaming
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_QUICK_FIX_APPLY_RESULT: String = "usual.event.QUICK_FIX_APPLY_RESULT"
-    @!APILevel[
+    CommonEventQuickFixApplyResult
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT: String = "usual.event.QUICK_FIX_REVOKE_RESULT"
-    @!APILevel[
+    CommonEventQuickFixRevokeResult
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_RADIO_STATE_CHANGE: String = "usual.event.RADIO_STATE_CHANGE"
-    @!APILevel[
+    CommonEventRadioStateChange
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SHUTDOWN: String = "usual.event.SHUTDOWN"
-    @!APILevel[
+    CommonEventShutdown
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
-    @!APILevel[
+    CommonEventScreenOff
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SCREEN_ON: String = "usual.event.SCREEN_ON"
-    @!APILevel[
+    CommonEventScreenOn
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SPLIT_SCREEN: String = "common.event.SPLIT_SCREEN"
-    @!APILevel[
+    CommonEventSplitScreen
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SLOT_CHANGE: String = "usual.event.SLOT_CHANGE"
-    @!APILevel[
+    CommonEventSlotChange
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SPN_INFO_CHANGED: String = "usual.event.SPN_INFO_CHANGED"
-    @!APILevel[
+    CommonEventSpnInfoChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SIGNAL_INFO_CHANGED: String = "usual.event.SIGNAL_INFO_CHANGED"
-    @!APILevel[
+    CommonEventSignalInfoChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SIM_STATE_CHANGED: String = "usual.event.SIM_STATE_CHANGED"
-    @!APILevel[
+    CommonEventSimStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_STK_SESSION_END: String = "usual.event.STK_SESSION_END"
-    @!APILevel[
+    CommonEventStkSessionEnd
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED: String = "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
-    @!APILevel[
+    CommonEventSmsEmergencyCbReceiveCompleted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_STK_COMMAND: String = "usual.event.STK_COMMAND"
-    @!APILevel[
+    CommonEventStkCommand
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_STK_ALPHA_IDENTIFIER: String = "usual.event.STK_ALPHA_IDENTIFIER"
-    @!APILevel[
+    CommonEventStkAlphaIdentifier
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
-    @!APILevel[
+    CommonEventSimCardDefaultVoiceSubscriptionChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED"
-    @!APILevel[
+    CommonEventSimCardDefaultMainSubscriptionChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_STK_CARD_STATE_CHANGED: String = "usual.event.STK_CARD_STATE_CHANGED"
-    @!APILevel[
+    CommonEventStkCardStateChanged
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SCREEN_LOCKED: String = "usual.event.SCREEN_LOCKED"
-    @!APILevel[
+    CommonEventScreenLocked
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
-    @!APILevel[
+    CommonEventSimCardDefaultDataSubscriptionChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SMS_RECEIVE_COMPLETED: String = "usual.event.SMS_RECEIVE_COMPLETED"
-    @!APILevel[
+    CommonEventSmsReceiveCompleted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED: String = "usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED"
-    @!APILevel[
+    CommonEventSmsWappushReceiveCompleted
+    | @!APILevel[
         21,
+        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SCREEN_UNLOCKED: String = "usual.event.SCREEN_UNLOCKED"
-    @!APILevel[
+    CommonEventScreenUnlocked
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
-    @!APILevel[
+    CommonEventSimCardDefaultSmsSubscriptionChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED: String = "usual.event.SMS_CB_RECEIVE_COMPLETED"
-    @!APILevel[
+    CommonEventSmsCbReceiveCompleted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SPECIAL_CODE: String = "common.event.SPECIAL_CODE"
-    @!APILevel[
+    CommonEventSpecialCode
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_SET_PRIMARY_SLOT_STATUS: String = "usual.event.SET_PRIMARY_SLOT_STATUS"
-    @!APILevel[
+    CommonEventSetPrimarySlotStatus
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_THERMAL_LEVEL_CHANGED: String = "usual.event.THERMAL_LEVEL_CHANGED"
-    @!APILevel[
+    CommonEventThermalLevelChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_TIME_TICK: String = "usual.event.TIME_TICK"
-    @!APILevel[
+    CommonEventTimeTick
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_TIME_CHANGED: String = "usual.event.TIME_CHANGED"
-    @!APILevel[
+    CommonEventTimeChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_TIMEZONE_CHANGED: String = "usual.event.TIMEZONE_CHANGED"
-    @!APILevel[
+    CommonEventTimezoneChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_UID_REMOVED: String = "usual.event.UID_REMOVED"
-    @!APILevel[
+    CommonEventUidRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_STARTED: String = "usual.event.USER_STARTED"
-    @!APILevel[
+    CommonEventUserStarted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_BACKGROUND: String = "usual.event.USER_BACKGROUND"
-    @!APILevel[
+    CommonEventUserBackground
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_FOREGROUND: String = "usual.event.USER_FOREGROUND"
-    @!APILevel[
+    CommonEventUserForeground
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_SWITCHED: String = "usual.event.USER_SWITCHED"
-    @!APILevel[
+    CommonEventUserSwitched
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_STARTING: String = "usual.event.USER_STARTING"
-    @!APILevel[
+    CommonEventUserStarting
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_UNLOCKED: String = "usual.event.USER_UNLOCKED"
-    @!APILevel[
+    CommonEventUserUnlocked
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_STOPPING: String = "usual.event.USER_STOPPING"
-    @!APILevel[
+    CommonEventUserStopping
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_STOPPED: String = "usual.event.USER_STOPPED"
-    @!APILevel[
+    CommonEventUserStopped
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_ADDED: String = "usual.event.USER_ADDED"
-    @!APILevel[
+    CommonEventUserAdded
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_REMOVED: String = "usual.event.USER_REMOVED"
-    @!APILevel[
+    CommonEventUserRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USB_STATE: String = "usual.event.hardware.usb.action.USB_STATE"
-    @!APILevel[
+    CommonEventUsbState
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USB_PORT_CHANGED: String = "usual.event.hardware.usb.action.USB_PORT_CHANGED"
-    @!APILevel[
+    CommonEventUsbPortChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USB_DEVICE_ATTACHED: String = "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED"
-    @!APILevel[
+    CommonEventUsbDeviceAttached
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USB_DEVICE_DETACHED: String = "usual.event.hardware.usb.action.USB_DEVICE_DETACHED"
-    @!APILevel[
+    CommonEventUsbDeviceDetached
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USB_ACCESSORY_ATTACHED: String = "usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED"
-    @!APILevel[
+    CommonEventUsbAccessoryAttached
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USB_ACCESSORY_DETACHED: String = "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
-    @!APILevel[
+    CommonEventUsbAccessoryDetached
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_USER_INFO_UPDATED: String = "usual.event.USER_INFO_UPDATED"
-    @!APILevel[
+    CommonEventUserInfoUpdated
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_VOLUME_REMOVED: String = "usual.event.data.VOLUME_REMOVED"
-    @!APILevel[
+    CommonEventVolumeRemoved
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_VOLUME_UNMOUNTED: String = "usual.event.data.VOLUME_UNMOUNTED"
-    @!APILevel[
+    CommonEventVolumeUnmounted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_VOLUME_MOUNTED: String = "usual.event.data.VOLUME_MOUNTED"
-    @!APILevel[
+    CommonEventVolumeMounted
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_VOLUME_BAD_REMOVAL: String = "usual.event.data.VOLUME_BAD_REMOVAL"
-    @!APILevel[
+    CommonEventVolumeBadRemoval
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_VOLUME_EJECT: String = "usual.event.data.VOLUME_EJECT"
-    @!APILevel[
+    CommonEventVolumeEject
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED: String = "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
-    @!APILevel[
+    CommonEventVisibleAccountsUpdated
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_POWER_STATE: String = "usual.event.wifi.POWER_STATE"
-    @!APILevel[
+    CommonEventWifiPowerState
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_SCAN_FINISHED: String = "usual.event.wifi.SCAN_FINISHED"
-    @!APILevel[
+    CommonEventWifiScanFinished
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_RSSI_VALUE: String = "usual.event.wifi.RSSI_VALUE"
-    @!APILevel[
+    CommonEventWifiRssiValue
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_CONN_STATE: String = "usual.event.wifi.CONN_STATE"
-    @!APILevel[
+    CommonEventWifiConnState
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_HOTSPOT_STATE: String = "usual.event.wifi.HOTSPOT_STATE"
-    @!APILevel[
+    CommonEventWifiHotspotState
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_AP_STA_JOIN: String = "usual.event.wifi.WIFI_HS_STA_JOIN"
-    @!APILevel[
+    CommonEventWifiApStaJoin
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_AP_STA_LEAVE: String = "usual.event.wifi.WIFI_HS_STA_LEAVE"
-    @!APILevel[
+    CommonEventWifiApStaLeave
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE: String = "usual.event.wifi.mplink.STATE_CHANGE"
-    @!APILevel[
+    CommonEventWifiMplinkStateChange
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_P2P_CONN_STATE: String = "usual.event.wifi.p2p.CONN_STATE_CHANGE"
-    @!APILevel[
+    CommonEventWifiP2PConnState
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_P2P_STATE_CHANGED: String = "usual.event.wifi.p2p.STATE_CHANGE"
-    @!APILevel[
+    CommonEventWifiP2PStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED: String = "usual.event.wifi.p2p.DEVICES_CHANGE"
-    @!APILevel[
+    CommonEventWifiP2PPeersStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED: String = "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
-    @!APILevel[
+    CommonEventWifiP2PPeersDiscoveryStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED: String = "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
-    @!APILevel[
+    CommonEventWifiP2PCurrentDeviceStateChanged
+    | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public static const COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED: String = "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
+    CommonEventWifiP2PGroupStateChanged
+    | ...
+
+    public func toString(): String {
+        match (this) {
+            case CommonEventAbilityAdded => "common.event.ABILITY_ADDED"
+            case CommonEventAbilityRemoved => "common.event.ABILITY_REMOVED"
+            case CommonEventAbilityUpdated => "common.event.ABILITY_UPDATED"
+            case CommonEventAccountDeleted => "usual.event.data.ACCOUNT_DELETED"
+            case CommonEventAirplaneModeChanged => "usual.event.AIRPLANE_MODE"
+            case CommonEventAudioQualityChange => "usual.event.AUDIO_QUALITY_CHANGE"
+            case CommonEventBatteryChanged => "usual.event.BATTERY_CHANGED"
+            case CommonEventBatteryLow => "usual.event.BATTERY_LOW"
+            case CommonEventBatteryOkay => "usual.event.BATTERY_OKAY"
+            case CommonEventBluetoothHandsfreeAgConnectStateUpdate => "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"
+            case CommonEventBluetoothHandsfreeAgCurrentDeviceUpdate => "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
+            case CommonEventBluetoothHandsfreeAgAudioStateUpdate => "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
+            case CommonEventBluetoothA2DpsourceConnectStateUpdate => "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
+            case CommonEventBluetoothA2DpsourceCurrentDeviceUpdate => "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
+            case CommonEventBluetoothA2DpsourcePlayingStateUpdate => "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
+            case CommonEventBluetoothA2DpsourceAvrcpConnectStateUpdate => "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
+            case CommonEventBluetoothA2DpsourceCodecValueUpdate => "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
+            case CommonEventBluetoothRemotedeviceDiscovered => "usual.event.bluetooth.remotedevice.DISCOVERED"
+            case CommonEventBluetoothRemotedeviceClassValueUpdate => "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
+            case CommonEventBluetoothRemotedeviceAclConnected => "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
+            case CommonEventBluetoothRemotedeviceAclDisconnected => "usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"
+            case CommonEventBluetoothRemotedeviceNameUpdate => "usual.event.bluetooth.remotedevice.NAME_UPDATE"
+            case CommonEventBluetoothRemotedevicePairState => "usual.event.bluetooth.remotedevice.PAIR_STATE"
+            case CommonEventBluetoothRemotedeviceBatteryValueUpdate => "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
+            case CommonEventBluetoothRemotedeviceSdpResult => "usual.event.bluetooth.remotedevice.SDP_RESULT"
+            case CommonEventBluetoothRemotedeviceUuidValue => "usual.event.bluetooth.remotedevice.UUID_VALUE"
+            case CommonEventBluetoothRemotedevicePairingReq => "usual.event.bluetooth.remotedevice.PAIRING_REQ"
+            case CommonEventBluetoothRemotedevicePairingCancel => "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
+            case CommonEventBluetoothRemotedeviceConnectReq => "usual.event.bluetooth.remotedevice.CONNECT_REQ"
+            case CommonEventBluetoothRemotedeviceConnectReply => "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
+            case CommonEventBluetoothRemotedeviceConnectCancel => "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
+            case CommonEventBluetoothHandsfreeunitConnectStateUpdate => "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
+            case CommonEventBluetoothHandsfreeunitAudioStateUpdate => "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
+            case CommonEventBluetoothHandsfreeunitAgCommonEvent => "usual.event.bluetooth.handsfreeunit.AG_CommonEvent"
+            case CommonEventBluetoothHandsfreeunitAgCallStateUpdate => "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
+            case CommonEventBluetoothHostStateUpdate => "usual.event.bluetooth.host.STATE_UPDATE"
+            case CommonEventBluetoothHostReqDiscoverable => "usual.event.bluetooth.host.REQ_DISCOVERABLE"
+            case CommonEventBluetoothHostReqEnable => "usual.event.bluetooth.host.REQ_ENABLE"
+            case CommonEventBluetoothHostReqDisable => "usual.event.bluetooth.host.REQ_DISABLE"
+            case CommonEventBluetoothHostScanModeUpdate => "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
+            case CommonEventBluetoothHostDiscoveryStarted => "usual.event.bluetooth.host.DISCOVERY_STARTED"
+            case CommonEventBluetoothHostDiscoveryFinished => "usual.event.bluetooth.host.DISCOVERY_FINISHED"
+            case CommonEventBluetoothHostNameUpdate => "usual.event.bluetooth.host.NAME_UPDATE"
+            case CommonEventBluetoothA2DpsinkConnectStateUpdate => "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
+            case CommonEventBluetoothA2DpsinkPlayingStateUpdate => "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
+            case CommonEventBluetoothA2DpsinkAudioStateUpdate => "usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE"
+            case CommonEventBundleRemoved => "usual.event.BUNDLE_REMOVED"
+            case CommonEventBootCompleted => "usual.event.BOOT_COMPLETED"
+            case CommonEventConnectivityChange => "usual.event.CONNECTIVITY_CHANGE"
+            case CommonEventCellularDataStateChanged => "usual.event.CELLULAR_DATA_STATE_CHANGED"
+            case CommonEventCallStateChanged => "usual.event.CALL_STATE_CHANGED"
+            case CommonEventChargeIdleModeChanged => "usual.event.CHARGE_IDLE_MODE_CHANGED"
+            case CommonEventChargeTypeChanged => "usual.event.CHARGE_TYPE_CHANGED"
+            case CommonEventCharging => "usual.event.CHARGING"
+            case CommonEventConfigurationChanged => "usual.event.CONFIGURATION_CHANGED"
+            case CommonEventCloseSystemDialogs => "usual.event.CLOSE_SYSTEM_DIALOGS"
+            case CommonEventDeviceIdleExemptionListUpdated => "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
+            case CommonEventDomainAccountStatusChanged => "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
+            case CommonEventDiskEject => "usual.event.data.DISK_EJECT"
+            case CommonEventDiskUnmountable => "usual.event.data.DISK_UNMOUNTABLE"
+            case CommonEventDiskBadRemoval => "usual.event.data.DISK_BAD_REMOVAL"
+            case CommonEventDiskMounted => "usual.event.data.DISK_MOUNTED"
+            case CommonEventDiskUnmounted => "usual.event.data.DISK_UNMOUNTED"
+            case CommonEventDiskRemoved => "usual.event.data.DISK_REMOVED"
+            case CommonEventDeviceIdleModeChanged => "usual.event.DEVICE_IDLE_MODE_CHANGED"
+            case CommonEventDischarging => "usual.event.DISCHARGING"
+            case CommonEventDistributedAccountLogoff => "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
+            case CommonEventDistributedAccountTokenInvalid => "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
+            case CommonEventDistributedAccountLogout => "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
+            case CommonEventDistributedAccountLogin => "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
+            case CommonEventDriveMode => "common.event.DRIVE_MODE"
+            case CommonEventDateChanged => "usual.event.DATE_CHANGED"
+            case CommonEventExternalApplicationsUnavailable => "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
+            case CommonEventExternalApplicationsAvailable => "usual.event.EXTERNAL_APPLICATIONS_AVAILABLE"
+            case CommonEventFoundationReady => "common.event.FOUNDATION_READY"
+            case CommonEventHomeMode => "common.event.HOME_MODE"
+            case CommonEventHttpProxyChange => "usual.event.HTTP_PROXY_CHANGE"
+            case CommonEventIviSleep => "common.event.IVI_SLEEP"
+            case CommonEventIviPause => "common.event.IVI_PAUSE"
+            case CommonEventIviStandby => "common.event.IVI_STANDBY"
+            case CommonEventIviLastmodeSave => "common.event.IVI_LASTMODE_SAVE"
+            case CommonEventIviVoltageAbnormal => "common.event.IVI_VOLTAGE_ABNORMAL"
+            case CommonEventIviHighTemperature => "common.event.IVI_HIGH_TEMPERATURE"
+            case CommonEventIviExtremeTemperature => "common.event.IVI_EXTREME_TEMPERATURE"
+            case CommonEventIviTemperatureAbnormal => "common.event.IVI_TEMPERATURE_ABNORMAL"
+            case CommonEventIviVoltageRecovery => "common.event.IVI_VOLTAGE_RECOVERY"
+            case CommonEventIviTemperatureRecovery => "common.event.IVI_TEMPERATURE_RECOVERY"
+            case CommonEventIviActive => "common.event.IVI_ACTIVE"
+            case CommonEventIncomingCallMissed => "usual.event.INCOMING_CALL_MISSED"
+            case CommonEventLockedBootCompleted => "usual.event.LOCKED_BOOT_COMPLETED"
+            case CommonEventLocaleChanged => "usual.event.LOCALE_CHANGED"
+            case CommonEventLocationModeStateChanged => "usual.event.location.MODE_STATE_CHANGED"
+            case CommonEventMyPackageReplaced => "usual.event.MY_PACKAGE_REPLACED"
+            case CommonEventMyPackageSuspended => "usual.event.MY_PACKAGE_SUSPENDED"
+            case CommonEventMyPackageUnsuspended => "usual.event.MY_PACKAGE_UNSUSPENDED"
+            case CommonEventManagePackageStorage => "usual.event.MANAGE_PACKAGE_STORAGE"
+            case CommonEventNfcActionAdapterStateChanged => "usual.event.nfc.action.ADAPTER_STATE_CHANGED"
+            case CommonEventNfcActionRfFieldOnDetected => "usual.event.nfc.action.RF_FIELD_ON_DETECTED"
+            case CommonEventNfcActionRfFieldOffDetected => "usual.event.nfc.action.RF_FIELD_OFF_DETECTED"
+            case CommonEventNetworkStateChanged => "usual.event.NETWORK_STATE_CHANGED"
+            case CommonEventOfficeMode => "common.event.OFFICE_MODE"
+            case CommonEventOperatorConfigChanged => "usual.event.OPERATOR_CONFIG_CHANGED"
+            case CommonEventPowerConnected => "usual.event.POWER_CONNECTED"
+            case CommonEventPowerDisconnected => "usual.event.POWER_DISCONNECTED"
+            case CommonEventPackageAdded => "usual.event.PACKAGE_ADDED"
+            case CommonEventPackageReplaced => "usual.event.PACKAGE_REPLACED"
+            case CommonEventPackageRemoved => "usual.event.PACKAGE_REMOVED"
+            case CommonEventPackageFullyRemoved => "usual.event.PACKAGE_FULLY_REMOVED"
+            case CommonEventPackageChanged => "usual.event.PACKAGE_CHANGED"
+            case CommonEventPackageRestarted => "usual.event.PACKAGE_RESTARTED"
+            case CommonEventPackageDataCleared => "usual.event.PACKAGE_DATA_CLEARED"
+            case CommonEventPackageCacheCleared => "usual.event.PACKAGE_CACHE_CLEARED"
+            case CommonEventPackagesSuspended => "usual.event.PACKAGES_SUSPENDED"
+            case CommonEventPackagesUnsuspended => "usual.event.PACKAGES_UNSUSPENDED"
+            case CommonEventPackageFirstLaunch => "usual.event.PACKAGE_FIRST_LAUNCH"
+            case CommonEventPackageNeedsVerification => "usual.event.PACKAGE_NEEDS_VERIFICATION"
+            case CommonEventPackageVerified => "usual.event.PACKAGE_VERIFIED"
+            case CommonEventPowerSaveModeChanged => "usual.event.POWER_SAVE_MODE_CHANGED"
+            case CommonEventPrivacyStateChanged => "usual.event.PRIVACY_STATE_CHANGED"
+            case CommonEventPrimarySlotRoaming => "usual.event.PRIMARY_SLOT_ROAMING"
+            case CommonEventQuickFixApplyResult => "usual.event.QUICK_FIX_APPLY_RESULT"
+            case CommonEventQuickFixRevokeResult => "usual.event.QUICK_FIX_REVOKE_RESULT"
+            case CommonEventRadioStateChange => "usual.event.RADIO_STATE_CHANGE"
+            case CommonEventShutdown => "usual.event.SHUTDOWN"
+            case CommonEventScreenOff => "usual.event.SCREEN_OFF"
+            case CommonEventScreenOn => "usual.event.SCREEN_ON"
+            case CommonEventSplitScreen => "common.event.SPLIT_SCREEN"
+            case CommonEventSlotChange => "usual.event.SLOT_CHANGE"
+            case CommonEventSpnInfoChanged => "usual.event.SPN_INFO_CHANGED"
+            case CommonEventSignalInfoChanged => "usual.event.SIGNAL_INFO_CHANGED"
+            case CommonEventSimStateChanged => "usual.event.SIM_STATE_CHANGED"
+            case CommonEventStkSessionEnd => "usual.event.STK_SESSION_END"
+            case CommonEventSmsEmergencyCbReceiveCompleted => "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
+            case CommonEventStkCommand => "usual.event.STK_COMMAND"
+            case CommonEventStkAlphaIdentifier => "usual.event.STK_ALPHA_IDENTIFIER"
+            case CommonEventSimCardDefaultVoiceSubscriptionChanged => "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
+            case CommonEventSimCardDefaultMainSubscriptionChanged => "usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED"
+            case CommonEventStkCardStateChanged => "usual.event.STK_CARD_STATE_CHANGED"
+            case CommonEventScreenLocked => "usual.event.SCREEN_LOCKED"
+            case CommonEventSimCardDefaultDataSubscriptionChanged => "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
+            case CommonEventSmsReceiveCompleted => "usual.event.SMS_RECEIVE_COMPLETED"
+            case CommonEventSmsWappushReceiveCompleted => "usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED"
+            case CommonEventScreenUnlocked => "usual.event.SCREEN_UNLOCKED"
+            case CommonEventSimCardDefaultSmsSubscriptionChanged => "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
+            case CommonEventSmsCbReceiveCompleted => "usual.event.SMS_CB_RECEIVE_COMPLETED"
+            case CommonEventSpecialCode => "common.event.SPECIAL_CODE"
+            case CommonEventSetPrimarySlotStatus => "usual.event.SET_PRIMARY_SLOT_STATUS"
+            case CommonEventThermalLevelChanged => "usual.event.THERMAL_LEVEL_CHANGED"
+            case CommonEventTimeTick => "usual.event.TIME_TICK"
+            case CommonEventTimeChanged => "usual.event.TIME_CHANGED"
+            case CommonEventTimezoneChanged => "usual.event.TIMEZONE_CHANGED"
+            case CommonEventUidRemoved => "usual.event.UID_REMOVED"
+            case CommonEventUserStarted => "usual.event.USER_STARTED"
+            case CommonEventUserBackground => "usual.event.USER_BACKGROUND"
+            case CommonEventUserForeground => "usual.event.USER_FOREGROUND"
+            case CommonEventUserSwitched => "usual.event.USER_SWITCHED"
+            case CommonEventUserStarting => "usual.event.USER_STARTING"
+            case CommonEventUserUnlocked => "usual.event.USER_UNLOCKED"
+            case CommonEventUserStopping => "usual.event.USER_STOPPING"
+            case CommonEventUserStopped => "usual.event.USER_STOPPED"
+            case CommonEventUserAdded => "usual.event.USER_ADDED"
+            case CommonEventUserRemoved => "usual.event.USER_REMOVED"
+            case CommonEventUsbState => "usual.event.hardware.usb.action.USB_STATE"
+            case CommonEventUsbPortChanged => "usual.event.hardware.usb.action.USB_PORT_CHANGED"
+            case CommonEventUsbDeviceAttached => "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED"
+            case CommonEventUsbDeviceDetached => "usual.event.hardware.usb.action.USB_DEVICE_DETACHED"
+            case CommonEventUsbAccessoryAttached => "usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED"
+            case CommonEventUsbAccessoryDetached => "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
+            case CommonEventUserInfoUpdated => "usual.event.USER_INFO_UPDATED"
+            case CommonEventVolumeRemoved => "usual.event.data.VOLUME_REMOVED"
+            case CommonEventVolumeUnmounted => "usual.event.data.VOLUME_UNMOUNTED"
+            case CommonEventVolumeMounted => "usual.event.data.VOLUME_MOUNTED"
+            case CommonEventVolumeBadRemoval => "usual.event.data.VOLUME_BAD_REMOVAL"
+            case CommonEventVolumeEject => "usual.event.data.VOLUME_EJECT"
+            case CommonEventVisibleAccountsUpdated => "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
+            case CommonEventWifiPowerState => "usual.event.wifi.POWER_STATE"
+            case CommonEventWifiScanFinished => "usual.event.wifi.SCAN_FINISHED"
+            case CommonEventWifiRssiValue => "usual.event.wifi.RSSI_VALUE"
+            case CommonEventWifiConnState => "usual.event.wifi.CONN_STATE"
+            case CommonEventWifiHotspotState => "usual.event.wifi.HOTSPOT_STATE"
+            case CommonEventWifiApStaJoin => "usual.event.wifi.WIFI_HS_STA_JOIN"
+            case CommonEventWifiApStaLeave => "usual.event.wifi.WIFI_HS_STA_LEAVE"
+            case CommonEventWifiMplinkStateChange => "usual.event.wifi.mplink.STATE_CHANGE"
+            case CommonEventWifiP2PConnState => "usual.event.wifi.p2p.CONN_STATE_CHANGE"
+            case CommonEventWifiP2PStateChanged => "usual.event.wifi.p2p.STATE_CHANGE"
+            case CommonEventWifiP2PPeersStateChanged => "usual.event.wifi.p2p.DEVICES_CHANGE"
+            case CommonEventWifiP2PPeersDiscoveryStateChanged => "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
+            case CommonEventWifiP2PCurrentDeviceStateChanged => "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
+            case CommonEventWifiP2PGroupStateChanged => "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
+            case _ => throw IllegalArgumentException("Unknown value")
+        }
+    }
 }

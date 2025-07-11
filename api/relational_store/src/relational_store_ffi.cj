@@ -443,20 +443,20 @@ struct RetValueType {
                 CPointer<UInt8>(), 0), RetAsset(), RetAssets(CPointer<RetAsset>(), 0))
         var tag: UInt8 = 0
         match (value) {
-            case null => tag = 0
-            case integer(n) =>
+            case Null => tag = 0
+            case Integer(n) =>
                 tag = 1
                 integer = n
-            case double(n) =>
+            case Double(n) =>
                 tag = 2
                 double = n
-            case string(str) =>
+            case StringValue(str) =>
                 tag = 3
                 match (mallocCString(str)) {
                     case Some(v) => string = v.getChars()
                     case None => return None
                 }
-            case boolean(b) =>
+            case Boolean(b) =>
                 tag = 4
                 boolean = b
             case Uint8Array(uint8Arr) =>
@@ -546,11 +546,11 @@ func convert(value: RetValueType): ValueType {
         let assets = value.assets.head
         let assetsSize = value.assets.size
         match (tag) {
-            case 0 => ValueType.null
-            case 1 => ValueType.integer(integer)
-            case 2 => ValueType.double(double)
-            case 3 => ValueType.string(CString(string).toString())
-            case 4 => ValueType.boolean(boolean)
+            case 0 => ValueType.Null
+            case 1 => ValueType.Integer(integer)
+            case 2 => ValueType.Double(double)
+            case 3 => ValueType.StringValue(CString(string).toString())
+            case 4 => ValueType.Boolean(boolean)
             case 5 =>
                 if (uint8Array.isNull()) {
                     return ValueType.Uint8Array(Array<UInt8>())

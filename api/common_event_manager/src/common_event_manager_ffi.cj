@@ -232,30 +232,30 @@ func throwIfEmpty<T>(arr: Array<T>): Unit {
 func getValue(value: ValueType): (Int8, CPointer<Unit>, Int64) {
     unsafe {
         match (value) {
-            case INT(v) => return (INT_TYPE, createPtr<Int32>(v), 1)
-            case FLOAT64(v) => return (F64_TYPE, createPtr<Float64>(v), 1)
-            case STRING(v) =>
+            case Int32Value(v) => return (INT_TYPE, createPtr<Int32>(v), 1)
+            case Float64Value(v) => return (F64_TYPE, createPtr<Float64>(v), 1)
+            case StringValue(v) =>
                 let ptr = LibC.mallocCString(v).getChars()
                 return (STRING_TYPE, CPointer<Unit>(ptr), 1)
-            case BOOL(v) => return (BOOL_TYPE, createPtr<Bool>(v), 1)
+            case BoolValue(v) => return (BOOL_TYPE, createPtr<Bool>(v), 1)
             case FD(v) => return (FD_TYPE, createPtr<Int32>(v), 1)
-            case ARRSTRING(v) =>
+            case ArrayString(v) =>
                 throwIfEmpty(v)
                 let ptr = createCpCString(v)
                 return (ARRSTRING_TYPE, CPointer<Unit>(ptr), v.size)
-            case ARRAYI32(v) =>
+            case ArrayInt32(v) =>
                 throwIfEmpty(v)
                 return (ARRAYI32_TYPE, createArrPtr<Int32>(v), v.size)
-            case ARRAYI64(v) =>
+            case ArrayInt64(v) =>
                 throwIfEmpty(v)
                 return (ARRAYI64_TYPE, createArrPtr<Int64>(v), v.size)
-            case ARRAYBOOL(v) =>
+            case ArrayBool(v) =>
                 throwIfEmpty(v)
                 return (ARRAYBOOL_TYPE, createArrPtr<Bool>(v), v.size)
-            case ARRAYF64(v) =>
+            case ArrayFloat64(v) =>
                 throwIfEmpty(v)
                 return (ARRAYF64_TYPE, createArrPtr<Float64>(v), v.size)
-            case ARRAYFD(v) =>
+            case ArrayFD(v) =>
                 throwIfEmpty(v)
                 return (ARRAYFD_TYPE, createArrPtr<Int32>(v), v.size)
             case _ => throw IllegalArgumentException("The type is not supported.")

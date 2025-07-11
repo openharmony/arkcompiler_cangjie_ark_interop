@@ -84,13 +84,13 @@ public enum ChangeType {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    DATA_CHANGE
+    DataChange
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_CHANGE
+    AssetChange
     | ...
 
     @!APILevel[
@@ -100,16 +100,16 @@ public enum ChangeType {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case DATA_CHANGE => 0
-            case ASSET_CHANGE => 1
+            case DataChange => 0
+            case AssetChange => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): ChangeType {
         match (val) {
-            case 0 => DATA_CHANGE
-            case 1 => ASSET_CHANGE
+            case 0 => DataChange
+            case 1 => AssetChange
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -126,37 +126,37 @@ public class StoreConfig {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let securityLevel: SecurityLevel
+    public var securityLevel: SecurityLevel
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let encrypt: Bool
+    public var encrypt: Bool
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let dataGroupId: String
+    public var dataGroupId: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let customDir: String
+    public var customDir: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    public let autoCleanDirtyData: Bool
+    public var autoCleanDirtyData: Bool
 
     @!APILevel[
         21,
@@ -185,37 +185,37 @@ public enum AssetStatus {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_NORMAL
+    AssetNormal
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_INSERT
+    AssetInsert
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_UPDATE
+    AssetUpdate
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_DELETE
+    AssetDelete
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_ABNORMAL
+    AssetAbnormal
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ASSET_DOWNLOADING
+    AssetDownloading
     | ...
 
     @!APILevel[
@@ -225,24 +225,24 @@ public enum AssetStatus {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case ASSET_NORMAL => 1
-            case ASSET_INSERT => 2
-            case ASSET_UPDATE => 3
-            case ASSET_DELETE => 4
-            case ASSET_ABNORMAL => 5
-            case ASSET_DOWNLOADING => 6
+            case AssetNormal => 1
+            case AssetInsert => 2
+            case AssetUpdate => 3
+            case AssetDelete => 4
+            case AssetAbnormal => 5
+            case AssetDownloading => 6
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): AssetStatus {
         match (val) {
-            case 1 => ASSET_NORMAL
-            case 2 => ASSET_INSERT
-            case 3 => ASSET_UPDATE
-            case 4 => ASSET_DELETE
-            case 5 => ASSET_ABNORMAL
-            case 6 => ASSET_DOWNLOADING
+            case 1 => AssetNormal
+            case 2 => AssetInsert
+            case 3 => AssetUpdate
+            case 4 => AssetDelete
+            case 5 => AssetAbnormal
+            case 6 => AssetDownloading
             case _ => throw IllegalArgumentException("Unknown value")
         }
     }
@@ -259,37 +259,37 @@ public enum Field {
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    CURSOR_FIELD
+    CursorField
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    ORIGIN_FIELD
+    OriginField
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    DELETED_FLAG_FIELD
+    DeletedFlagField
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    OWNER_FIELD
+    OwnerField
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    PRIVILEGE_FIELD
+    PrivilegeField
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    SHARING_RESOURCE_FIELD
+    SharingResourceField
     | ...
 
     @!APILevel[
@@ -299,12 +299,12 @@ public enum Field {
     ]
     public func getValue(): String {
         match (this) {
-            case CURSOR_FIELD => "#_cursor"
-            case ORIGIN_FIELD => "#_origin"
-            case DELETED_FLAG_FIELD => "#_deleted_flag"
-            case OWNER_FIELD => "#_cloud_owner"
-            case PRIVILEGE_FIELD => "#_cloud_privilege"
-            case SHARING_RESOURCE_FIELD => "#_sharing_resource_field"
+            case CursorField => "#_cursor"
+            case OriginField => "#_origin"
+            case DeletedFlagField => "#_deleted_flag"
+            case OwnerField => "#_cloud_owner"
+            case PrivilegeField => "#_cloud_privilege"
+            case SharingResourceField => "#_sharing_resource_field"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -321,37 +321,37 @@ public enum ConflictResolution {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ON_CONFLICT_NONE
+    OnConflictNone
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ON_CONFLICT_ROLLBACK
+    OnConflictRollback
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ON_CONFLICT_ABORT
+    OnConflictAbort
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ON_CONFLICT_FAIL
+    OnConflictFail
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ON_CONFLICT_IGNORE
+    OnConflictIgnore
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    ON_CONFLICT_REPLACE
+    OnConflictReplace
     | ...
 
     @!APILevel[
@@ -361,12 +361,12 @@ public enum ConflictResolution {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case ON_CONFLICT_NONE => 0
-            case ON_CONFLICT_ROLLBACK => 1
-            case ON_CONFLICT_ABORT => 2
-            case ON_CONFLICT_FAIL => 3
-            case ON_CONFLICT_IGNORE => 4
-            case ON_CONFLICT_REPLACE => 5
+            case OnConflictNone => 0
+            case OnConflictRollback => 1
+            case OnConflictAbort => 2
+            case OnConflictFail => 3
+            case OnConflictIgnore => 4
+            case OnConflictReplace => 5
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -383,43 +383,43 @@ public class Asset {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let uri: String
+    public var uri: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let path: String
+    public var path: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let createTime: String
+    public var createTime: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let modifyTime: String
+    public var modifyTime: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let size: String
+    public var size: String
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    public let status: AssetStatus
+    public var status: AssetStatus
 
     @!APILevel[
         21,
@@ -427,7 +427,7 @@ public class Asset {
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String,
-        status!: AssetStatus = AssetStatus.ASSET_NORMAL) {
+        status!: AssetStatus = AssetStatus.AssetNormal) {
         this.name = name
         this.uri = uri
         this.path = path
@@ -449,31 +449,31 @@ public enum ValueType {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    null
+    Null
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    integer(Int64)
+    Integer(Int64)
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    double(Float64)
+    Double(Float64)
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    string(String)
+    StringValue(String)
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    boolean(Bool)
+    Boolean(Bool)
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -512,13 +512,13 @@ public enum DistributedType {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    DISTRIBUTED_DEVICE
+    DistributedDevice
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    DISTRIBUTED_CLOUD
+    DistributedCloud
     | ...
 
     @!APILevel[
@@ -528,8 +528,8 @@ public enum DistributedType {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case DISTRIBUTED_DEVICE => 0
-            case DISTRIBUTED_CLOUD => 1
+            case DistributedDevice => 0
+            case DistributedCloud => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -546,31 +546,31 @@ public enum SyncMode {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SYNC_MODE_PUSH
+    SyncModePush
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SYNC_MODE_PULL
+    SyncModePull
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    SYNC_MODE_TIME_FIRST
+    SyncModeTimeFirst
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    SYNC_MODE_NATIVE_FIRST
+    SyncModeNativeFirst
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    SYNC_MODE_CLOUD_FIRST
+    SyncModeCloudFirst
     | ...
 
     @!APILevel[
@@ -580,11 +580,11 @@ public enum SyncMode {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case SYNC_MODE_PUSH => 0
-            case SYNC_MODE_PULL => 1
-            case SYNC_MODE_TIME_FIRST => 4
-            case SYNC_MODE_NATIVE_FIRST => 5
-            case SYNC_MODE_CLOUD_FIRST => 6
+            case SyncModePush => 0
+            case SyncModePull => 1
+            case SyncModeTimeFirst => 4
+            case SyncModeNativeFirst => 5
+            case SyncModeCloudFirst => 6
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -601,19 +601,19 @@ public enum Progress {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SYNC_BEGIN
+    SyncBegin
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SYNC_IN_PROGRESS
+    SyncInProgress
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SYNC_FINISH
+    SyncInFinish
     | ...
 
     @!APILevel[
@@ -623,18 +623,18 @@ public enum Progress {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case SYNC_BEGIN => 0
-            case SYNC_IN_PROGRESS => 1
-            case SYNC_FINISH => 2
+            case SyncBegin => 0
+            case SyncInProgress => 1
+            case SyncInFinish => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): Progress {
         match (val) {
-            case 0 => SYNC_BEGIN
-            case 1 => SYNC_IN_PROGRESS
-            case 2 => SYNC_FINISH
+            case 0 => SyncBegin
+            case 1 => SyncInProgress
+            case 2 => SyncInFinish
             case _ => throw IllegalArgumentException("Unknown value")
         }
     }
@@ -651,43 +651,43 @@ public enum ProgressCode {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SUCCESS
+    Success
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    UNKNOWN_ERROR
+    UnknownError
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    NETWORK_ERROR
+    NetworkError
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    CLOUD_DISABLED
+    CloudDisabled
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    LOCKED_BY_OTHERS
+    LockedByOthers
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    RECORD_LIMIT_EXCEEDED
+    RecordLimitExceeded
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    NO_SPACE_FOR_ASSET
+    NoSpaceForAsset
     | ...
 
     @!APILevel[
@@ -697,26 +697,26 @@ public enum ProgressCode {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case SUCCESS => 0
-            case UNKNOWN_ERROR => 1
-            case NETWORK_ERROR => 2
-            case CLOUD_DISABLED => 3
-            case LOCKED_BY_OTHERS => 4
-            case RECORD_LIMIT_EXCEEDED => 5
-            case NO_SPACE_FOR_ASSET => 6
+            case Success => 0
+            case UnknownError => 1
+            case NetworkError => 2
+            case CloudDisabled => 3
+            case LockedByOthers => 4
+            case RecordLimitExceeded => 5
+            case NoSpaceForAsset => 6
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): ProgressCode {
         match (val) {
-            case 0 => SUCCESS
-            case 1 => UNKNOWN_ERROR
-            case 2 => NETWORK_ERROR
-            case 3 => CLOUD_DISABLED
-            case 4 => LOCKED_BY_OTHERS
-            case 5 => RECORD_LIMIT_EXCEEDED
-            case 6 => NO_SPACE_FOR_ASSET
+            case 0 => Success
+            case 1 => UnknownError
+            case 2 => NetworkError
+            case 3 => CloudDisabled
+            case 4 => LockedByOthers
+            case 5 => RecordLimitExceeded
+            case 6 => NoSpaceForAsset
             case _ => throw IllegalArgumentException("Unknown value")
         }
     }
@@ -733,19 +733,19 @@ public enum SubscribeType {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    SUBSCRIBE_TYPE_REMOTE
+    SubscribeTypeRemote
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    SUBSCRIBE_TYPE_CLOUD
+    SubscribeTypeCloud
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
-    SUBSCRIBE_TYPE_CLOUD_DETAILS
+    SubscribeTypeCloudDetails
     | ...
 
     @!APILevel[
@@ -755,9 +755,9 @@ public enum SubscribeType {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case SUBSCRIBE_TYPE_REMOTE => 0
-            case SUBSCRIBE_TYPE_CLOUD => 1
-            case SUBSCRIBE_TYPE_CLOUD_DETAILS => 2
+            case SubscribeTypeRemote => 0
+            case SubscribeTypeCloud => 1
+            case SubscribeTypeCloudDetails => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -774,19 +774,19 @@ public enum Origin {
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    LOCAL
+    Local
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    CLOUD
+    Cloud
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
-    REMOTE
+    Remote
     | ...
 
     @!APILevel[
@@ -796,9 +796,9 @@ public enum Origin {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case LOCAL => 0
-            case CLOUD => 1
-            case REMOTE => 2
+            case Local => 0
+            case Cloud => 1
+            case Remote => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

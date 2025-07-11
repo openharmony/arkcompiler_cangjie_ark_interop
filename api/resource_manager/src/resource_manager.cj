@@ -49,15 +49,7 @@ public class ResourceManager <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
-    /**
-     * this is temporarily replaces context.resourceManager cause we don`t have contest in CJ
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: false,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public static func getResourceManager(context: StageContext): ResourceManager {
+    protected static func getResourceManager(context: StageContext): ResourceManager {
         let ptrAddr = context.toUIntNative()
         match (RES_MGR_MAP.get(ptrAddr)) {
             case Some(v) => v
@@ -255,12 +247,9 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getColor(resId: Int32): UInt32 {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getColor failed: AppResource id invalid.")
-        }
+    public func getColor(resId: UInt32): UInt32 {
         var data: UInt32 = 0
-        let retCode = unsafe { CJ_GetColor(getID(), UInt32(resId), inout data) }
+        let retCode = unsafe { CJ_GetColor(getID(), resId, inout data) }
         throwIfNotSuccess(retCode, "Resource Manager: getColor failed: ${getErrorMsg(retCode)}")
         data
     }
@@ -281,12 +270,9 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getBoolean(resId: Int32): Bool {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getBoolean failed: AppResource id invalid.")
-        }
+    public func getBoolean(resId: UInt32): Bool {
         var data = true
-        let retCode = unsafe { CJ_GetBoolean(getID(), UInt32(resId), inout data) }
+        let retCode = unsafe { CJ_GetBoolean(getID(), resId, inout data) }
         throwIfNotSuccess(retCode, "Resource Manager: getBoolean failed: ${getErrorMsg(retCode)}")
         data
     }
@@ -361,13 +347,10 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getNumber(resId: Int32): Number {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getNumber failed: AppResource id invalid.")
-        }
+    public func getNumber(resId: UInt32): Number {
         unsafe {
             var data = RetGetNumber(true, 0, 0.0)
-            let retCode = CJ_GetNumber(getID(), UInt32(resId), inout data)
+            let retCode = CJ_GetNumber(getID(), resId, inout data)
             throwIfNotSuccess(retCode, "Resource Manager: getNumber failed: ${getErrorMsg(retCode)}")
             data.toNumber()
         }
@@ -488,11 +471,8 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getMediaContent(resId: Int32, density: UInt32): Array<UInt8> {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getMediaContent failed: AppResource id invalid.")
-        }
-        let ret = unsafe { CJ_GetMediaContent(getID(), UInt32(resId), density) }
+    public func getMediaContent(resId: UInt32, density: UInt32): Array<UInt8> {
+        let ret = unsafe { CJ_GetMediaContent(getID(), resId, density) }
         getMediaContentResult(ret)
     }
 
@@ -537,11 +517,8 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getMediaContentBase64(resId: Int32, density!: UInt32 = 0): String {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getMediaContentBase64 failed: AppResource id invalid.")
-        }
-        let retData = unsafe { CJ_GetMediaContentBase64(getID(), UInt32(resId), density) }
+    public func getMediaContentBase64(resId: UInt32, density!: UInt32 = 0): String {
+        let retData = unsafe { CJ_GetMediaContentBase64(getID(), resId, density) }
         throwIfNotSuccess(retData.code, "Resource Manager: getMediaContentBase64 failed: ${getErrorMsg(retData.code)}")
         throwIfNull(retData.data)
         let ret = retData.data.toString()
@@ -624,11 +601,8 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getPluralStringValue(resId: Int32, num: Int64): String {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getPluralStringValue failed: AppResource id invalid.")
-        }
-        let retData = unsafe { CJ_GetPluralStringValue(getID(), UInt32(resId), num) }
+    public func getPluralStringValue(resId: UInt32, num: Int64): String {
+        let retData = unsafe { CJ_GetPluralStringValue(getID(), resId, num) }
         throwIfNotSuccess(retData.code, "Resource Manager: getPluralStringValue failed: ${getErrorMsg(retData.code)}")
         throwIfNull(retData.data)
         let ret = retData.data.toString()
@@ -715,11 +689,8 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getStringArrayValue(resId: Int32): Array<String> {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getStringArrayValue failed: AppResource id invalid.")
-        }
-        let retData = unsafe { CJ_GetStringArrayValue(getID(), UInt32(resId)) }
+    public func getStringArrayValue(resId: UInt32): Array<String> {
+        let retData = unsafe { CJ_GetStringArrayValue(getID(), resId) }
         throwIfNotSuccess(retData.code, "Resource Manager: getStringArrayValue failed: ${getErrorMsg(retData.code)}")
         return retData.getDataAndFree()
     }
@@ -791,11 +762,8 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getString(resId: Int32): String {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getString failed: AppResource id invalid.")
-        }
-        let retData = unsafe { CJ_GetString(getID(), UInt32(resId)) }
+    public func getString(resId: UInt32): String {
+        let retData = unsafe { CJ_GetString(getID(), resId) }
         throwIfNotSuccess(retData.code, "Resource Manager: getString failed: ${getErrorMsg(retData.code)}")
         throwIfNull(retData.data)
         let ret = retData.data.toString()
@@ -820,10 +788,7 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getString(resId: Int32, args: Array<FormatArgs>): String {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getString failed: AppResource id invalid.")
-        }
+    public func getString(resId: UInt32, args: Array<FormatArgs>): String {
         return formatString(getString(resId), args)
     }
 
@@ -978,11 +943,8 @@ public class ResourceManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
-    public func getDrawableDescriptor(resId: Int32, density!: UInt32 = 0): DrawableDescriptor {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getDrawableDescriptor failed: AppResource id invalid.")
-        }
-        let retData = unsafe { CJ_GetDrawableDescriptor(getID(), UInt32(resId), density) }
+    public func getDrawableDescriptor(resId: UInt32, density!: UInt32 = 0): DrawableDescriptor {
+        let retData = unsafe { CJ_GetDrawableDescriptor(getID(), resId, density) }
         throwIfNotSuccess(retData.code, "Resource Manager: getDrawableDescriptor failed: ${getErrorMsg(retData.code)}")
         return DrawableDescriptor(retData.data)
     }

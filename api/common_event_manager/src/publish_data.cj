@@ -19,99 +19,191 @@ import std.collection.*
 import ohos.base.*
 import ohos.labels.*
 
+/**
+ * The CommonEventPublishData module provides APIs for defining common event content and attributes.
+ *
+ * @relation export interface CommonEventPublishData
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventPublishData {
+    /**
+     * Bundle name of the subscriber that can receive the common event.
+     *
+     * @relation bundleName?: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public CommonEventPublishData(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let bundleName: String,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let data: String,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let code: Int32,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let subscriberPermissions!: Array<String> = Array<String>(),
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let isOrdered!: Bool = false,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let isSticky!: Bool = false,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Notification.CommonEvent"
-        ]
-        public let parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
-    ) {}
+    public var bundleName: String
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    /**
+     * Common event data transferred by the publisher. The data size cannot exceed 64 KB.
+     *
+     * @relation data?: string
+     */
+    public var data: String
+    /**
+     * Common event data transferred by the publisher. The default value is 0.
+     *
+     * @relation code?: number
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public var code: Int32
+    /**
+     * Permissions required for subscribers to receive the common event.
+     *
+     * @relation subscriberPermissions?: Array<string>
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public var subscriberPermissions: Array<String> = Array<String>()
+    /**
+     * Whether the common event is an ordered one.
+     *
+     * @relation isOrdered?: boolean
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public var isOrdered: Bool = false
+    /**
+     * Whether the common event is a sticky one. Only system applications and system services are allowed to send sticky events.
+     *
+     * @relation isSticky?: boolean
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public var isSticky: Bool = false
+    /**
+     * Additional information about the common event transferred by the publisher.
+     *
+     * @relation parameters?: { [key: string]: any }
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public var parameters: HashMap<String, ValueType> = HashMap<String, ValueType>()
+
+    @!APILevel[
+        21,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Notification.CommonEvent"
+    ]
+    public init(
+        bundleName!: String = "",
+        data!: String = "",
+        code!: Int32 = 0,
+        subscriberPermissions!: Array<String> = Array<String>(),
+        isOrdered!: Bool = false,
+        isSticky!: Bool = false,
+        parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
+    ) {
+        this.bundleName = bundleName
+        this.data = data
+        this.code = code
+        this.subscriberPermissions = subscriberPermissions
+        this.isOrdered = isOrdered
+        this.isSticky = isSticky
+        this.parameters = parameters
+    }
 }
 
+/**
+ * Common event data.
+ *
+ * @relation export interface CommonEventData
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventData {
+    /**
+     * Name of the common event that is being received.
+     *
+     * @relation event: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public let event: String
+    public var event: String
+    /**
+     * Bundle name. This parameter is left empty by default.
+     *
+     * @relation bundleName?: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public let bundleName: String
+    public var bundleName: String
+    /**
+     * Common event data received by the subscriber. The value of this field is the same as that of the code field in
+     * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event. The default value is 0.
+     *
+     * @relation code?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public let code: Int32
+    public var code: Int32
+    /**
+     * Common event data received by the subscriber. The value of this field is the same as that of the data field in
+     * CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
+     *
+     * @relation data?: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public let data: String
+    public var data: String
+    /**
+     * Additional information about the common event received by the subscriber. The value of this field is the same as
+     * that of the parameters field in CommonEventPublishData when the publisher uses commonEventManager.publish to publish a common event.
+     *
+     * @relation parameters?: { [key: string]: any }
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
-    public let parameters: HashMap<String, ValueType>
+    public var parameters: HashMap<String, ValueType>
+
     init(eventData: CCommonEventData) {
         event = eventData.event.toString()
         bundleName = eventData.bundleName.toString()
