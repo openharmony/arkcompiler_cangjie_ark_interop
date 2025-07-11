@@ -130,7 +130,7 @@ public class TelephonyCall {
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     public static func isEmergencyPhoneNumber(phoneNumber: String): Bool {
-        return isEmergencyPhoneNumber(phoneNumber, EmergencyNumberOptions.SLOT_ID_ONE)
+        return isEmergencyPhoneNumber(phoneNumber, EmergencyNumberOptions.SlotIdOne)
     }
 
     /**

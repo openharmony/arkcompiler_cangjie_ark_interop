@@ -69,19 +69,19 @@ public enum EmergencyNumberOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
-    SLOT_ID_ONE
+    SlotIdOne
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
-    SLOT_ID_TWO
+    SlotIdTwo
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case SLOT_ID_ONE => 0
-            case SLOT_ID_TWO => 1
+            case SlotIdOne => 0
+            case SlotIdTwo => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -98,25 +98,31 @@ public enum CallState {
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
-    CALL_STATE_UNKNOWN
+    CallStateUnknown
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
-    CALL_STATE_IDLE
+    CallStateIdle
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
-    CALL_STATE_RINGING
+    CallStateRinging
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
-    CALL_STATE_OFFHOOK
+    CallStateOffhook
+    | @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Telephony.CallManager"
+    ]
+    CallStateAnswered
     | ...
 
     @!APILevel[
@@ -126,20 +132,22 @@ public enum CallState {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case CALL_STATE_UNKNOWN => -1
-            case CALL_STATE_IDLE => 0
-            case CALL_STATE_RINGING => 1
-            case CALL_STATE_OFFHOOK => 2
+            case CallStateUnknown => -1
+            case CallStateIdle => 0
+            case CallStateRinging => 1
+            case CallStateOffhook => 2
+            case CallStateAnswered => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     protected static func parse(val: Int32): CallState {
         match (val) {
-            case -1 => CALL_STATE_UNKNOWN
-            case 0 => CALL_STATE_IDLE
-            case 1 => CALL_STATE_RINGING
-            case 2 => CALL_STATE_OFFHOOK
+            case -1 => CallStateUnknown
+            case 0 => CallStateIdle
+            case 1 => CallStateRinging
+            case 2 => CallStateOffhook
+            case 3 => CallStateAnswered
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
