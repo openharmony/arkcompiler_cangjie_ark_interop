@@ -19,7 +19,7 @@ import std.deriving.*
 import ohos.labels.*
 import ohos.ffi.*
 import ohos.base.*
-import std.collection.{ArrayList, HashMap}
+import std.collection.HashMap
 
 const BLE_ADV_DEFAULT_INTERVAL: UInt16 = 1600
 const BLE_ADV_TX_POWER_MEDIUM_VALUE: Int8 = -7
@@ -392,7 +392,7 @@ public class ScanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public var dutyMode: ScanDuty = SCAN_MODE_LOW_POWER
+    public var dutyMode: ScanDuty = ScanModeLowPower
 
     /**
      * Match mode for Bluetooth LE scan filters hardware match
@@ -406,7 +406,7 @@ public class ScanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public var matchMode: MatchMode = MATCH_MODE_AGGRESSIVE
+    public var matchMode: MatchMode = MatchModeAggressive
 
     /**
      * Physical Layer used during scan.
@@ -421,7 +421,7 @@ public class ScanOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public var phyType: PhyType = PHY_LE_1M
+    public var phyType: PhyType = PhyLe1M
     @!APILevel[
         19,
         atomicservice: true,
@@ -620,40 +620,50 @@ public class AdvertiseData {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public AdvertiseData(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuids: Array<String>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var manufactureData: Array<ManufactureData>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceData: Array<ServiceData>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var includeDeviceName!: Bool = false
-    ) {}
+    public var serviceUuids: Array<String>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var manufactureData: Array<ManufactureData>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var serviceData: Array<ServiceData>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var includeDeviceName: Bool
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        serviceUuids: Array<String>,
+        manufactureData: Array<ManufactureData>,
+        serviceData: Array<ServiceData>,
+        includeDeviceName!: Bool = false
+    ) {
+        this.serviceUuids = serviceUuids
+        this.manufactureData = manufactureData
+        this.serviceData = serviceData
+        this.includeDeviceName = includeDeviceName
+    }
 
     func toNative(): NativeAdvertiseData {
         var cServiceUuids: CArrString = CArrString(CPointer(), 0)
@@ -717,24 +727,30 @@ public class ManufactureData {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public ManufactureData(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var manufactureId: UInt16,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var manufactureValue: Array<Byte>
-    ) {}
+    public var manufactureId: UInt16
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var manufactureValue: Array<Byte>
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        manufactureId: UInt16,
+        manufactureValue: Array<Byte>
+    ) {
+        this.manufactureId = manufactureId
+        this.manufactureValue = manufactureValue
+    }
 
     func toNative(): NativeManufactureData {
         unsafe {
@@ -780,24 +796,30 @@ public class ServiceData {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public ServiceData(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceValue: Array<Byte>
-    ) {}
+    public var serviceUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var serviceValue: Array<Byte>
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        serviceUuid: String,
+        serviceValue: Array<Byte>
+    ) {
+        this.serviceUuid = serviceUuid
+        this.serviceValue = serviceValue
+    }
 
     func toNative(): NativeServiceData {
         var cUuid: CString = CString(CPointer())
@@ -844,35 +866,45 @@ public class AdvertisingParams {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public AdvertisingParams(
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingSettings: AdvertiseSetting,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingData: AdvertiseData,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingResponse: AdvertiseData,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var duration!: UInt16 = 0
-    ) {}
+    public var advertisingSettings: AdvertiseSetting
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var advertisingData: AdvertiseData
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var advertisingResponse: AdvertiseData
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var duration: UInt16 = 0
+
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        advertisingSettings: AdvertiseSetting,
+        advertisingData: AdvertiseData,
+        advertisingResponse: AdvertiseData,
+        duration!: UInt16 = 0
+    ) {
+        this.advertisingSettings = advertisingSettings
+        this.advertisingData = advertisingData
+        this.advertisingResponse = advertisingResponse
+        this.duration = duration
+    }
 
     func toNative(): NativeAdvertisingParams {
         var cAdvertisingData: NativeAdvertiseData = advertisingData.toNative()
@@ -922,22 +954,25 @@ struct CAdvertisingStateChangeInfo {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class AdvertisingStateChangeInfo {
-    AdvertisingStateChangeInfo(
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingId: Int32,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var state: AdvertisingState
-    ) {}
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var advertisingId: Int32
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var state: AdvertisingState
+
+    init(advertisingId: Int32, state: AdvertisingState) {
+        this.advertisingId = advertisingId
+        this.state = state
+    }
 }
 
 @C
@@ -977,48 +1012,60 @@ struct NativeScanResult {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class ScanResult {
-    ScanResult(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let rssi: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let data: Array<Byte>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceName: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let connectable: Bool
-    ) {}
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var rssi: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var data: Array<Byte>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var deviceName: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var connectable: Bool
+
+    init(
+        deviceId: String,
+        rssi: Int32,
+        data: Array<Byte>,
+        deviceName: String,
+        connectable: Bool
+    ) {
+        this.deviceId = deviceId
+        this.rssi = rssi
+        this.data = data
+        this.deviceName = deviceName
+        this.connectable = connectable
+    }
 }
 
 /**
@@ -1042,7 +1089,7 @@ public enum ScanDuty {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    SCAN_MODE_LOW_POWER
+    ScanModeLowPower
     | @!APILevel[
         19,
         atomicservice: true,
@@ -1050,7 +1097,7 @@ public enum ScanDuty {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    SCAN_MODE_BALANCED
+    ScanModeBalanced
     | @!APILevel[
         19,
         atomicservice: true,
@@ -1058,14 +1105,14 @@ public enum ScanDuty {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    SCAN_MODE_LOW_LATENCY
+    ScanModeLowLatency
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case SCAN_MODE_LOW_POWER => 0
-            case SCAN_MODE_BALANCED => 1
-            case SCAN_MODE_LOW_LATENCY => 2
+            case ScanModeLowPower => 0
+            case ScanModeBalanced => 1
+            case ScanModeLowLatency => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1091,20 +1138,20 @@ public enum MatchMode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    MATCH_MODE_AGGRESSIVE
+    MatchModeAggressive
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    MATCH_MODE_STICKY
+    MatchModeSticky
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case MATCH_MODE_AGGRESSIVE => 1
-            case MATCH_MODE_STICKY => 2
+            case MatchModeAggressive => 1
+            case MatchModeSticky => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1112,10 +1159,10 @@ public enum MatchMode {
 
 let ADVERTISING_STATE_MAP = HashMap<Int32, AdvertisingState>(
     [
-        (1, STARTED),
-        (2, ENABLED),
-        (3, DISABLED),
-        (4, STOPPED)
+        (1, Started),
+        (2, Enabled),
+        (3, Disabled),
+        (4, Stopped)
     ]
 )
 
@@ -1138,26 +1185,26 @@ public enum AdvertisingState {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    STARTED
+    Started
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    ENABLED
+    Enabled
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    DISABLED
+    Disabled
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    STOPPED
+    Stopped
     | ...
 
     static func parse(state: Int32) {
@@ -1186,7 +1233,7 @@ public enum PhyType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    PHY_LE_1M
+    PhyLe1M
     | @!APILevel[
         19,
         atomicservice: true,
@@ -1194,13 +1241,13 @@ public enum PhyType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    PHY_LE_ALL_SUPPORTED
+    PhyLeAllSupported
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case PHY_LE_1M => 1
-            case PHY_LE_ALL_SUPPORTED => 255
+            case PhyLe1M => 1
+            case PhyLeAllSupported => 255
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1224,7 +1271,7 @@ public enum BluetoothBleCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    ADVERTISING_STATE_CHANGE
+    AdvertisingStateChange
     | @!APILevel[
         19,
         atomicservice: true,
@@ -1233,13 +1280,13 @@ public enum BluetoothBleCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    BLE_DEVICE_FIND
+    BleDeviceFind
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case ADVERTISING_STATE_CHANGE => 0
-            case BLE_DEVICE_FIND => 1
+            case AdvertisingStateChange => 0
+            case BleDeviceFind => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

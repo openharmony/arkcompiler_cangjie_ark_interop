@@ -18,7 +18,6 @@ package ohos.bluetooth.ble
 import std.deriving.*
 import ohos.bluetooth.constant.*
 import ohos.labels.*
-import ohos.bluetooth.*
 import ohos.base.*
 import ohos.ffi.*
 
@@ -113,39 +112,49 @@ public class GattService {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public GattService(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var isPrimary: Bool,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristics: Array<BLECharacteristic>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var includeServices: Array<GattService>
-    ) {}
+    public var serviceUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var isPrimary: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristics: Array<BLECharacteristic>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var includeServices: Array<GattService>
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        serviceUuid: String,
+        isPrimary: Bool,
+        characteristics: Array<BLECharacteristic>,
+        includeServices: Array<GattService>
+    ) {
+        this.serviceUuid = serviceUuid
+        this.isPrimary = isPrimary
+        this.characteristics = characteristics
+        this.includeServices = includeServices
+    }
 
     unsafe func toNative(): NativeGattService {
         var cServiceUuid: CString = CString(CPointer())
@@ -274,48 +283,60 @@ public class BLECharacteristic {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public BLECharacteristic(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicValue: Array<Byte>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var descriptors: Array<BLEDescriptor>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var properties: GattProperties
-    ) {}
+    public var serviceUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicValue: Array<Byte>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var descriptors: Array<BLEDescriptor>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var properties: GattProperties
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        serviceUuid: String,
+        characteristicUuid: String,
+        characteristicValue: Array<Byte>,
+        descriptors: Array<BLEDescriptor>,
+        properties: GattProperties
+    ) {
+        this.serviceUuid = serviceUuid
+        this.characteristicUuid = characteristicUuid
+        this.characteristicValue = characteristicValue
+        this.descriptors = descriptors
+        this.properties = properties
+    }
 
     unsafe func toNative(): NativeBLECharacteristic {
         var cServiceUuid: CString = CString(CPointer())
@@ -405,40 +426,50 @@ public class BLEDescriptor {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public BLEDescriptor(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var descriptorUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var descriptorValue: Array<Byte>
-    ) {}
+    public var serviceUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var descriptorUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var descriptorValue: Array<Byte>
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        serviceUuid: String,
+        characteristicUuid: String,
+        descriptorUuid: String,
+        descriptorValue: Array<Byte>
+    ) {
+        this.serviceUuid = serviceUuid
+        this.characteristicUuid = characteristicUuid
+        this.descriptorUuid = descriptorUuid
+        this.descriptorValue = descriptorValue
+    }
 
     unsafe func toNative(): NativeBLEDescriptor {
         var nativeServiceUuid: CString = CString(CPointer())
@@ -525,13 +556,59 @@ public class GattProperties {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public GattProperties(
-        let write!: Bool = true,
-        let writeNoResponse!: Bool = true,
-        let read!: Bool = true,
-        let notify!: Bool = false,
-        let indicate!: Bool = false
-    ) {}
+    public var write: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var writeNoResponse: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var read: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var notify: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var indicate: Bool
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        write!: Bool = true,
+        writeNoResponse!: Bool = true,
+        read!: Bool = true,
+        notify!: Bool = false,
+        indicate!: Bool = false
+    ) {
+        this.write = write
+        this.writeNoResponse = writeNoResponse
+        this.read = read
+        this.notify = notify
+        this.indicate = indicate
+    }
 
     unsafe func toNative(): NativeGattProperties {
         NativeGattProperties(
@@ -581,39 +658,49 @@ public class NotifyCharacteristic {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public NotifyCharacteristic(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicValue: Array<Byte>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var confirm: Bool
-    ) {}
+    public var serviceUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicValue: Array<Byte>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var confirm: Bool
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        serviceUuid: String,
+        characteristicUuid: String,
+        characteristicValue: Array<Byte>,
+        confirm: Bool
+    ) {
+        this.serviceUuid = serviceUuid
+        this.characteristicUuid = characteristicUuid
+        this.characteristicValue = characteristicValue
+        this.confirm = confirm
+    }
 
     unsafe func toNative(): NativeNotifyCharacteristic {
         var cServiceUuid: CString = CString(CPointer())
@@ -676,47 +763,59 @@ public class ServerResponse {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public ServerResponse(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let status: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let value: Array<Byte>
-    ) {}
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var transId: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var status: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var offset: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var value: Array<Byte>
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        deviceId: String,
+        transId: Int32,
+        status: Int32,
+        offset: Int32,
+        value: Array<Byte>
+    ) {
+        this.deviceId = deviceId
+        this.transId = transId
+        this.status = status
+        this.offset = offset
+        this.value = value
+    }
 
     unsafe func toNative(): NativeServerResponse {
         var cDeviceId = CString(CPointer())
@@ -760,7 +859,7 @@ public enum GattWriteType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    WRITE
+    Write
     | @!APILevel[
         19,
         atomicservice: true,
@@ -768,13 +867,13 @@ public enum GattWriteType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    WRITE_NO_RESPONSE
+    WriteNoResponse
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case WRITE => 0
-            case WRITE_NO_RESPONSE => 1
+            case Write => 0
+            case WriteNoResponse => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -824,48 +923,60 @@ public class CharacteristicReadRequest {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public CharacteristicReadRequest(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    ) {}
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var transId: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var offset: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var serviceUuid: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        deviceId: String,
+        transId: Int32,
+        offset: Int32,
+        characteristicUuid: String,
+        serviceUuid: String
+    ) {
+        this.deviceId = deviceId
+        this.transId = transId
+        this.offset = offset
+        this.characteristicUuid = characteristicUuid
+        this.serviceUuid = serviceUuid
+    }
 }
 
 @C
@@ -918,69 +1029,87 @@ public class CharacteristicWriteRequest {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public CharacteristicWriteRequest(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let isPrepared: Bool,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let needRsp: Bool,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let value: Array<Byte>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    ) {}
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var transId: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var offset: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var isPrepared: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var needRsp: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var value: Array<Byte>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var serviceUuid: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        deviceId: String,
+        transId: Int32,
+        offset: Int32,
+        isPrepared: Bool,
+        needRsp: Bool,
+        value: Array<Byte>,
+        characteristicUuid: String,
+        serviceUuid: String
+    ) {
+        this.deviceId = deviceId
+        this.transId = transId
+        this.offset = offset
+        this.isPrepared = isPrepared
+        this.needRsp = needRsp
+        this.value = value
+        this.characteristicUuid = characteristicUuid
+        this.serviceUuid = serviceUuid
+    }
 }
 
 @C
@@ -1029,55 +1158,69 @@ public class DescriptorReadRequest {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public DescriptorReadRequest(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let descriptorUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    ) {}
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var transId: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var offset: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var descriptorUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var serviceUuid: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        deviceId: String,
+        transId: Int32,
+        offset: Int32,
+        descriptorUuid: String,
+        characteristicUuid: String,
+        serviceUuid: String
+    ) {
+        this.deviceId = deviceId
+        this.transId = transId
+        this.offset = offset
+        this.descriptorUuid = descriptorUuid
+        this.characteristicUuid = characteristicUuid
+        this.serviceUuid = serviceUuid
+    }
 }
 
 @C
@@ -1132,77 +1275,97 @@ public class DescriptorWriteRequest {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public DescriptorWriteRequest(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let isPrepared: Bool,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let needRsp: Bool,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let value: Array<Byte>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let descriptorUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    ) {}
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var transId: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var offset: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var isPrepared: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var needRsp: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var value: Array<Byte>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var descriptorUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var characteristicUuid: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var serviceUuid: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        deviceId: String,
+        transId: Int32,
+        offset: Int32,
+        isPrepared: Bool,
+        needRsp: Bool,
+        value: Array<Byte>,
+        descriptorUuid: String,
+        characteristicUuid: String,
+        serviceUuid: String
+    ) {
+        this.deviceId = deviceId
+        this.transId = transId
+        this.offset = offset
+        this.isPrepared = isPrepared
+        this.needRsp = needRsp
+        this.value = value
+        this.descriptorUuid = descriptorUuid
+        this.characteristicUuid = characteristicUuid
+        this.serviceUuid = serviceUuid
+    }
 }
 
 @C
@@ -1242,24 +1405,30 @@ public class BLEConnectionChangeState {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public BLEConnectionChangeState(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var state: ProfileConnectionState
-    ) {}
+    public var deviceId: String
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var state: ProfileConnectionState
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public init(
+        deviceId: String,
+        state: ProfileConnectionState
+    ) {
+        this.deviceId = deviceId
+        this.state = state
+    }
 }
 
 @Derive[ToString, Hashable, Equatable]
@@ -1278,7 +1447,7 @@ public enum BluetoothBleGattServerCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CHARACTERISTIC_READ
+    CharacteristicRead
     | @!APILevel[
         19,
         crossplatform: true,
@@ -1286,7 +1455,7 @@ public enum BluetoothBleGattServerCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CHARACTERISTIC_WRITE
+    CharacteristicWrite
     | @!APILevel[
         19,
         crossplatform: true,
@@ -1294,7 +1463,7 @@ public enum BluetoothBleGattServerCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    DESCRIPTOR_READ
+    DescriptorRead
     | @!APILevel[
         19,
         crossplatform: true,
@@ -1302,7 +1471,7 @@ public enum BluetoothBleGattServerCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    DESCRIPTOR_WRITE
+    DescriptorWrite
     | @!APILevel[
         19,
         crossplatform: true,
@@ -1310,7 +1479,7 @@ public enum BluetoothBleGattServerCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CONNECTION_STATE_CHANGE
+    ConnectionStateChange
     | @!APILevel[
         19,
         crossplatform: true,
@@ -1318,17 +1487,17 @@ public enum BluetoothBleGattServerCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    BLE_MTU_CHANGE
+    BleMtuChange
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case CHARACTERISTIC_READ => 0
-            case CHARACTERISTIC_WRITE => 1
-            case DESCRIPTOR_READ => 2
-            case DESCRIPTOR_WRITE => 3
-            case CONNECTION_STATE_CHANGE => 4
-            case BLE_MTU_CHANGE => 5
+            case CharacteristicRead => 0
+            case CharacteristicWrite => 1
+            case DescriptorRead => 2
+            case DescriptorWrite => 3
+            case ConnectionStateChange => 4
+            case BleMtuChange => 5
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1350,7 +1519,7 @@ public enum BluetoothBleGattClientDeviceCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    BLE_CHARACTERISTIC_CHANGE
+    BleCharacteristicChange
     | @!APILevel[
         19,
         atomicservice: true,
@@ -1358,7 +1527,7 @@ public enum BluetoothBleGattClientDeviceCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    BLE_CONNECTION_STATE_CHANGE
+    BleConnectionStateChange
     | @!APILevel[
         19,
         atomicservice: true,
@@ -1366,14 +1535,14 @@ public enum BluetoothBleGattClientDeviceCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    BLE_MTU_CHANGE
+    BleMtuChange
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case BLE_CHARACTERISTIC_CHANGE => 0
-            case BLE_CONNECTION_STATE_CHANGE => 1
-            case BLE_MTU_CHANGE => 2
+            case BleCharacteristicChange => 0
+            case BleConnectionStateChange => 1
+            case BleMtuChange => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

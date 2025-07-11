@@ -16,7 +16,6 @@
 package ohos.file_fs
 
 import ohos.ffi.*
-import ohos.base.*
 
 foreign {
     // Copy

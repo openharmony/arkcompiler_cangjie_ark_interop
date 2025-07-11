@@ -37,7 +37,7 @@ public enum ProfileConnectionState {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    STATE_DISCONNECTED
+    StateDisconnected
     | @!APILevel[
         19,
         atomicservice: true,
@@ -45,7 +45,7 @@ public enum ProfileConnectionState {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    STATE_CONNECTING
+    StateConnecting
     | @!APILevel[
         19,
         atomicservice: true,
@@ -53,7 +53,7 @@ public enum ProfileConnectionState {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    STATE_CONNECTED
+    StateConnected
     | @!APILevel[
         19,
         atomicservice: true,
@@ -61,15 +61,15 @@ public enum ProfileConnectionState {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    STATE_DISCONNECTING
+    StateDisconnecting
     | ...
 
     protected static func parse(state: Int32): ProfileConnectionState {
         match (state) {
-            case 0i32 => STATE_DISCONNECTED
-            case 1i32 => STATE_CONNECTING
-            case 2i32 => STATE_CONNECTED
-            case 3i32 => STATE_DISCONNECTING
+            case 0i32 => StateDisconnected
+            case 1i32 => StateConnecting
+            case 2i32 => StateConnected
+            case 3i32 => StateDisconnecting
             case _ => throw NoneValueException("Value does not exist!")
         }
     }

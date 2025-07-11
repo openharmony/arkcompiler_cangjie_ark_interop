@@ -19,7 +19,6 @@ import ohos.hilog.*
 import ohos.ffi.*
 import ohos.base.*
 import ohos.labels.*
-import std.collection.*
 
 @!APILevel[
     12,
