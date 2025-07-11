@@ -26,21 +26,6 @@ import ohos.labels.*
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 abstract sealed class BaseAbility <: FFIData {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onConfigurationUpdate(newConfig: AbilityConfiguration): Unit {}
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onMemoryLevel(level: MemoryLevel): Unit {}
-
     private static let CREATORS = HashMap<String, () -> BaseAbility>()
 
     @!APILevel[

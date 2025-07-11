@@ -44,19 +44,7 @@ struct CJAbilityFuncs {
         let abilityOnBackground: CFunc<(Int64) -> Unit>,
         let abilityOnConfigurationUpdated: CFunc<(Int64, CJConfiguration) -> Unit>,
         let abilityOnNewWant: CFunc<(Int64, WantHandle, CJLaunchParam) -> Unit>,
-        let abilityDump: CFunc<(Int64, VectorStringHandle) -> VectorStringHandle>,
-        let abilityOnContinue: CFunc<(Int64, CString) -> Int32>,
-        let abilityInit: CFunc<(Int64, AbilityHandle) -> Unit>,
-        let abilityOnBackPress: CFunc<(Int64) -> Bool>,
-        let abilityOnSceneWillDestroy: CFunc<(Int64, WindowStageHandle) -> Unit>,
-        let abilityOnConfigurationUpdate: CFunc<(Int64, CConfiguration) -> Unit>,
-        let abilityOnMemoryLevel: CFunc<(Int64, Int32) -> Unit>,
-        let abilityOnPrepareTerminate: CFunc<(Int64) -> Bool>,
-        let abilityOnSaveState: CFunc<(Int64, Int32, CString) -> CJNumberParmas>,
-        let abilityOnShare: CFunc<(Int64, CString) -> CString>,
-        let abilityOnContinueWithParams: CFunc<(Int64, CString) -> CJNumberParmas>,
-        let abilityOnCallRequest: CFunc<(Int64) -> Int64>,
-        let abilityOnSetCalleeFlag: CFunc<(Int64, Bool) -> Unit>
+        let abilityInit: CFunc<(Int64, AbilityHandle) -> Unit>
     ) {}
 }
 
@@ -101,13 +89,8 @@ public class LaunchParam {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var lastExitReason: LastExitReason = LastExitReason.NORMAL
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public var lastExitMessage: String = ""
+
+    var lastExitMessage: String = ""
 
     @!APILevel[
         12,
@@ -124,14 +107,7 @@ public class LaunchParam {
         this.lastExitReason = lastExitReason
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public init(lastExitMessage: String, launchReason!: LaunchReason = LaunchReason.UNKNOWN,
+    init(lastExitMessage: String, launchReason!: LaunchReason = LaunchReason.UNKNOWN,
         lastExitReason!: LastExitReason = LastExitReason.NORMAL) {
         this.lastExitMessage = lastExitMessage
         this.launchReason = launchReason
@@ -241,20 +217,6 @@ func abilityOnSceneDestroyed(id: Int64): Unit {
 }
 
 @C
-func abilityOnSceneWillDestroy(id: Int64, windowStageHandle: WindowStageHandle): Unit {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let windowStage = WindowStage(windowStageHandle)
-            ability.context.windowStage_ = windowStage
-            ability.onWindowStageWillDestroy(windowStage)
-    }
-}
-
-@C
 func abilityOnForeground(id: Int64, wantHandle: WantHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
@@ -276,17 +238,6 @@ func abilityOnBackground(id: Int64): Unit {
             ABILITY_LOG.error("No such Ability: " + id.toString())
             throw NoneValueException("No such Ability: " + id.toString())
         case Some(ability) => ability.onBackground()
-    }
-}
-
-@C
-func abilityOnBackPress(id: Int64): Bool {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) => ability.onBackPressed()
     }
 }
 
@@ -324,41 +275,6 @@ func abilityOnNewWant(id: Int64, wantHandle: WantHandle, launchParams: CJLaunchP
 }
 
 @C
-func abilityDump(id: Int64, params: VectorStringHandle): VectorStringHandle {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None => return FFIVectorString(0).getNativeHandle()
-        case Some(ability) =>
-            var unsafeParams = FFIVectorString(params)
-            var paramsSize = unsafeParams.getSize()
-            let arrayParams = Array<String>(paramsSize, repeat: "")
-            for (i in 0..paramsSize) {
-                arrayParams[i] = unsafeParams.getElement(i)
-            }
-            let info = ability.onDump(arrayParams)
-            let vecFfi = FFIVectorString(info.size)
-            for (i in 0..info.size) {
-                vecFfi.setElement(i, info[i])
-            }
-            return vecFfi.getNativeHandle()
-    }
-}
-
-@C
-func abilityOnContinue(id: Int64, params: CString): Int32 {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let jsonValue = jsonStringUnWrapper(params.toString())
-            let res = ability.onContinue(jsonValue.toString())
-            return res.getValue()
-    }
-}
-
-@C
 func abilityInit(id: Int64, abilityHandle: AbilityHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
@@ -366,118 +282,6 @@ func abilityInit(id: Int64, abilityHandle: AbilityHandle): Unit {
             ABILITY_LOG.error("No such Ability: " + id.toString())
             throw NoneValueException("No such Ability: " + id.toString())
         case Some(ability) => ability.abilityInit(abilityHandle)
-    }
-}
-
-@C
-func abilityOnConfigurationUpdate(id: Int64, configuration: CConfiguration): Unit {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let cfg = configuration.toConfiguration()
-            unsafe { configuration.free() }
-            ability.onConfigurationUpdate(cfg)
-    }
-}
-
-@C
-func abilityOnMemoryLevel(id: Int64, level: Int32): Unit {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let memLevel = MemoryLevel.parse(level)
-            ability.onMemoryLevel(memLevel)
-    }
-}
-
-@C
-func abilityOnPrepareTerminate(id: Int64): Bool {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) => ability.onPrepareToTerminate()
-    }
-}
-
-@C
-func abilityOnSaveState(id: Int64, reason: Int32, params: CString): CJNumberParmas {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let reasonType = StateType.parse(reason)
-            let wantParam = jsonStringUnWrapper(params.toString())
-            let saveState = ability.onSaveState(reasonType, wantParam.toString())
-            let jsonCString = unsafe {
-                LibC.mallocCString(jsonObjectWrapper(wantParam).toString())
-            }
-            return CJNumberParmas(saveState.getValue(), jsonCString)
-    }
-}
-
-@C
-func abilityOnShare(id: Int64, params: CString): CString {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let wantParam = jsonStringUnWrapper(params.toString())
-            ability.onShare(wantParam.toString())
-            let jsonCString = unsafe {
-                LibC.mallocCString(jsonObjectWrapper(wantParam).toString())
-            }
-            return jsonCString
-    }
-}
-
-@C
-func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None =>
-            ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let wantParam = jsonStringUnWrapper(params.toString())
-            let continueResult = ability.onContinue(wantParam.toString())
-            let jsonCString = unsafe {
-                LibC.mallocCString(jsonObjectWrapper(wantParam).toString())
-            }
-            return CJNumberParmas(continueResult.getValue(), jsonCString)
-    }
-}
-
-@C
-func abilityOnCallRequest(id: Int64): Int64 {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None => throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            let callee = ability.onCallRequest()
-            return callee.getID()
-    }
-}
-
-@C
-func abilityOnSetCalleeFlag(id: Int64, flag: Bool): Unit {
-    let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-    match (optAbility) {
-        case None => throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            ability.callee.setNewRuleFlag(flag)
-            return
     }
 }
 
@@ -533,17 +337,6 @@ public open class UIAbility <: BaseAbility {
                     throw Exception("Invalid context")
                 case Some(value) => return value
             }
-        }
-    }
-
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public prop callee: Callee {
-        get() {
-            callee_
         }
     }
 
@@ -610,24 +403,6 @@ public open class UIAbility <: BaseAbility {
     public open func onBackground(): Unit {}
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onBackPressed(): Bool {
-        return true
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onWindowStageWillDestroy(windowStage: WindowStage): Unit {}
-
-    @!APILevel[
         12,
         atomicservice: true,
         crossplatform: true,
@@ -635,58 +410,6 @@ public open class UIAbility <: BaseAbility {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onNewWant(want: Want, launchParams: LaunchParam): Unit {}
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onContinue(wantParams: String): OnContinueResult {
-        OnContinueResult.AGREE
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onPrepareToTerminate(): Bool {
-        return false
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onSaveState(reason: StateType, wantParam: String): OnSaveResult {
-        return OnSaveResult.RECOVERY_AGREE
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onShare(wantParam: String): Unit {}
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onDump(params: Array<String>): Array<String> {
-        return Array<String>()
-    }
-
-    func onCallRequest(): Callee {
-        return this.callee
-    }
 
     func abilityInit(remote: AbilityHandle): Unit {
         if (remote == 0) {
@@ -727,19 +450,7 @@ func abilityCjFuncsRegister(result: CPointer<CJAbilityFuncs>): Unit {
         abilityOnBackground,
         abilityOnConfigurationUpdated,
         abilityOnNewWant,
-        abilityDump,
-        abilityOnContinue,
-        abilityInit,
-        abilityOnBackPress,
-        abilityOnSceneWillDestroy,
-        abilityOnConfigurationUpdate,
-        abilityOnMemoryLevel,
-        abilityOnPrepareTerminate,
-        abilityOnSaveState,
-        abilityOnShare,
-        abilityOnContinueWithParams,
-        abilityOnCallRequest,
-        abilityOnSetCalleeFlag
+        abilityInit
     )
     unsafe { result.write(atCFuncs) }
 }

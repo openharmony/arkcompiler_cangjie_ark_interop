@@ -71,18 +71,3 @@ struct RetDataI32 {
         let data: Int32
     ) {}
 }
-
-@C
-struct CLoopObserver {
-    var onLoopTimeOut: Int64
-
-    init(obsever: LoopObserver) {
-        if (let Some(v) <- obsever.onLoopTimeOut) {
-            let wrapper = {timeout: Int64 => v(timeout)}
-            let lambdaData = Callback1Param<Int64, Unit>(wrapper)
-            this.onLoopTimeOut = lambdaData.getID()
-        } else {
-            this.onLoopTimeOut = 0
-        }
-    }
-}

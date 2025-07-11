@@ -61,40 +61,6 @@ public enum LaunchReason {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     CONTINUATION
-    | @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    APP_RECOVERY
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    SHARE
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    AUTO_STARTUP
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    INSIGHT_INTENT
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    PREPARE_CONTINUATION
     | ...
 
     static func parse(value: Int32): LaunchReason {
@@ -103,11 +69,6 @@ public enum LaunchReason {
             case 1 => START_ABILITY
             case 2 => CALL
             case 3 => CONTINUATION
-            case 4 => APP_RECOVERY
-            case 5 => SHARE
-            case 8 => AUTO_STARTUP
-            case 9 => INSIGHT_INTENT
-            case 10 => PREPARE_CONTINUATION
             case _ => throw Exception("No corresponding LaunchReason: ${value}")
         }
     }
@@ -118,11 +79,6 @@ public enum LaunchReason {
             case START_ABILITY => 1
             case CALL => 2
             case CONTINUATION => 3
-            case APP_RECOVERY => 4
-            case SHARE => 5
-            case AUTO_STARTUP => 8
-            case INSIGHT_INTENT => 9
-            case PREPARE_CONTINUATION => 10
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -171,41 +127,6 @@ public enum LastExitReason {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     CPP_CRASH
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    CJ_ERROR
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    APP_FREEZE
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    PERFORMANCE_CONTROL
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    RESOURCE_CONTROL
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    UPGRADE
     | ...
 
     static func parse(value: Int32): LastExitReason {
@@ -214,11 +135,6 @@ public enum LastExitReason {
             case 1 => ABILITY_NOT_RESPONDING
             case 2 => NORMAL
             case 3 => CPP_CRASH
-            case 4 => CJ_ERROR
-            case 5 => APP_FREEZE
-            case 6 => PERFORMANCE_CONTROL
-            case 7 => RESOURCE_CONTROL
-            case 8 => UPGRADE
             case _ =>
                 ABILITY_LOG.info("No corresponding LastExitReason: ${value}")
                 UNKNOWN
@@ -231,11 +147,6 @@ public enum LastExitReason {
             case ABILITY_NOT_RESPONDING => 1
             case NORMAL => 2
             case CPP_CRASH => 3
-            case CJ_ERROR => 4
-            case APP_FREEZE => 5
-            case PERFORMANCE_CONTROL => 6
-            case RESOURCE_CONTROL => 7
-            case UPGRADE => 8
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -394,145 +305,6 @@ public enum MemoryLevel {
             case MEMORY_LEVEL_MODERATE => 0
             case MEMORY_LEVEL_LOW => 1
             case MEMORY_LEVEL_CRITICAL => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-@Derive[ToString, Equatable]
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum ContinueState {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    ACTIVE
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    INACTIVE
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case ACTIVE => 0
-            case INACTIVE => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-@Derive[ToString, Equatable]
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum StateType {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    CONTINUATION
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    APP_RECOVERY
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case CONTINUATION => 0
-            case APP_RECOVERY => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-
-    static func parse(value: Int32): StateType {
-        match (value) {
-            case 0 => CONTINUATION
-            case 1 => APP_RECOVERY
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-@Derive[ToString, Equatable]
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum OnSaveResult {
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    ALL_AGREE
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    CONTINUATION_REJECT
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    CONTINUATION_MISMATCH
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    RECOVERY_AGREE
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    RECOVERY_REJECT
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    ALL_REJECT
-    | ...
-
-    func getValue(): Int32 {
-        match (this) {
-            case ALL_AGREE => 0
-            case CONTINUATION_REJECT => 1
-            case CONTINUATION_MISMATCH => 2
-            case RECOVERY_AGREE => 3
-            case RECOVERY_REJECT => 4
-            case ALL_REJECT => 5
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

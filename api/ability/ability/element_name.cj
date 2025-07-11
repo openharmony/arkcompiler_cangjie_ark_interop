@@ -142,30 +142,6 @@ public class ElementName {
         }
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public prop shortName: String {
-        get() {
-            this.shortName_
-        }
-    }
-
-    @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public prop uri: String {
-        get() {
-            this.deviceId_ + "/" + this.bundleName_ + "/" + this.moduleName_ + "/" + this.abilityName_
-        }
-    }
-
     // protected function: available only for this package.
     static func release(elementNameHandle: ElementNameHandle): Unit {
         unsafe { FFICJElementNameDelete(elementNameHandle) }

@@ -76,26 +76,6 @@ public class ResourceManager <: RemoteDataLite {
         }
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public static func getSystemResourceManager(): ResourceManager {
-        return match (sysResMgr) {
-            case Some(v) => v
-            case _ => synchronized(SYS_MUTEX) {
-                let ret = unsafe { CJ_GetSystemResMgr() }
-                throwIfNotSuccess(ret.code,
-                    "Resource Manager: getSystemResourceManager failed: ${getErrorMsg(ret.code)}")
-                sysResMgr = ResourceManager(ret.data)
-                sysResMgr.getOrThrow()
-            }
-        }
-    }
-
     /**
      * Obtains the raw file resource descriptor corresponding to the specified resource path.
      *
@@ -1029,29 +1009,6 @@ public class ResourceManager <: RemoteDataLite {
     }
 
     /**
-     * Get the current override Configuration related to the specified override ResourceManager.
-     *
-     * @returns { Configuration } The Configuration object is returned.
-     * @relation getOverrideConfiguration(): Configuration
-     */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getOverrideConfiguration(): Configuration {
-        unsafe {
-            var cfg = RetConfigurationEx(0, 0, 0, 0, 0, 0, CString(CPointer<UInt8>()))
-            let retCode = FfiResMgrGetOverrideConfiguration(getID(), inout cfg)
-            let configuration = cfg.toConfiguration()
-            FfiResMgrFreeConfiguration(inout cfg)
-            throwIfNotSuccess(retCode, "Resource Manager: getOverrideConfiguration failed: ${getErrorMsg(retCode)}")
-            return configuration
-        }
-    }
-    /**
      * Obtains the device capability.
      *
      * @returns { DeviceCapability } the device capability.
@@ -1226,113 +1183,5 @@ public class ResourceManager <: RemoteDataLite {
         let retData = unsafe { CJ_GetLocales(getID(), includeSystem) }
         throwIfNotSuccess(retData.code, "Resource Manager: getLocales failed: ${getErrorMsg(retData.code)}")
         return retData.getDataAndFree()
-    }
-
-    /**
-     * Obtains symbol value associated with a specified resource ID.
-     *
-     * @param { Int32 } resId - Indicates the resource ID.
-     * @returns { UInt32 } Indicates return the symbol value representing the resource.
-     * @throws { BusinessException } 401 - If the input parameter invalid.
-     * @throws { BusinessException } 9001001 - If the resId invalid.
-     * @throws { BusinessException } 9001002 - If the resource not found by resId.
-     * @throws { BusinessException } 9001006 - If the resource re-ref too much.
-     * @brief getSymbol(resId: number): UInt32
-     */
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getSymbol(resId: Int32): UInt32 {
-        if (resId < 0) {
-            throw BusinessException(9001001, "Resource Manager: getSymbol failed: Resource id invalid.")
-        }
-        let retData = unsafe { CJ_GetSymbol(getID(), UInt32(resId)) }
-        throwIfNotSuccess(retData.code, "Resource Manager: getSymbol failed: ${getErrorMsg(retData.code)}")
-        let ret = retData.data
-        return ret
-    }
-
-    /**
-     * Obtains symbol value associated with a specified resource.
-     *
-     * @param { AppResource } resource - Indicates the resource object.
-     * @returns { UInt32 } Indicates return the symbol value representing the resource.
-     * @throws { BusinessException } 401 - If the input parameter invalid.
-     * @throws { BusinessException } 9001001 - If the resId invalid.
-     * @throws { BusinessException } 9001002 - If the resource not found by resId.
-     * @throws { BusinessException } 9001006 - If the resource re-ref too much.
-     * @brief getSymbol(resource: AppResource): UInt32
-     */
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getSymbol(resource: AppResource): UInt32 {
-        let cResource = CResource(resource)
-        let retData = unsafe { CJ_GetSymbolByResource(getID(), cResource) }
-        cResource.free()
-        throwIfNotSuccess(retData.code, "Resource Manager: getSymbol failed: ${getErrorMsg(retData.code)}")
-        let ret = retData.data
-        return ret
-    }
-
-    /**
-     * Obtains symbol value associated with a specified resource name.
-     *
-     * @param { String } resName - Indicates the resource name.
-     * @returns { UInt32 } Indicates return the symbol value representing the resource.
-     * @throws { BusinessException } 401 - If the input parameter invalid.
-     * @throws { BusinessException } 9001003 - If the resName invalid.
-     * @throws { BusinessException } 9001004 - If the resource not found by resName.
-     * @throws { BusinessException } 9001006 - If the resource re-ref too much.
-     * @brief getSymbolByName(resName: String): UInt32
-     */
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getSymbolByName(resName: String): UInt32 {
-        let cName = unsafe { LibC.mallocCString(resName) }
-        let retData = unsafe { CJ_GetSymbolByName(getID(), cName) }
-        unsafe { LibC.free(cName) }
-        throwIfNotSuccess(retData.code, "Resource Manager: getSymbolByName failed: ${getErrorMsg(retData.code)}")
-        let ret = retData.data
-        return ret
-    }
-
-    /**
-     * Get the override ResourceManager object related to the specified Configuration.
-     *
-     * @returns { ResourceManager } The ResourceManager object is returned.
-     * @throws { BusinessException } 401 - If the input parameter invalid. Possible causes: Incorrect parameter types.
-     * @relation getOverrideResourceManager(configuration?: Configuration): ResourceManager
-     */
-    @!APILevel[
-        20,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getOverrideResourceManager(configuration!: ?Configuration = None): ResourceManager {
-        let config = if (let Some(cfg) <- configuration) {
-            cfg.toRetConfigurationEx()
-        } else {
-            RetConfigurationEx(-1, -1, -1, -1, 0, 0, CString(CPointer<UInt8>()))
-        }
-        let retData = unsafe { FfiGetOverrideResMgr(getID(), config) }
-        config.free()
-        throwIfNotSuccess(retData.code, "Resource Manager: getSymbolByName failed: ${getErrorMsg(retData.code)}")
-        ResourceManager(retData.data)
     }
 }

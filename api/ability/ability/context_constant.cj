@@ -22,13 +22,7 @@ const PROCESS_MODE_UNSPECIFIED: Int32 = 0
 const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0
 
 @Derive[ToString, Equatable]
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum AreaMode {
+enum AreaMode {
     @!APILevel[
         19,
         atomicservice: true,
@@ -36,34 +30,10 @@ public enum AreaMode {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     EL1
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    EL2
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    EL3
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    EL4
-    | @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    EL5
+    | EL2
+    | EL3
+    | EL4
+    | EL5
     | ...
 
     static func parse(value: Int32): AreaMode {
@@ -90,30 +60,11 @@ public enum AreaMode {
 }
 
 @Derive[ToString, Equatable]
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum ProcessMode {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
+enum ProcessMode {
+    
     NEW_PROCESS_ATTACH_TO_PARENT
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    ATTACH_TO_STATUS_BAR_ITEM
+    | NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM
+    | ATTACH_TO_STATUS_BAR_ITEM
     | ...
 
     func getValue(): Int32 {
@@ -127,24 +78,9 @@ public enum ProcessMode {
 }
 
 @Derive[ToString, Equatable]
-@!APILevel[
-    19,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum StartupVisibility {
-    @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
+enum StartupVisibility {
     STARTUP_HIDE
-    | @!APILevel[
-        19,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    STARTUP_SHOW
+    | STARTUP_SHOW
     | ...
 
     func getValue(): Int32 {
