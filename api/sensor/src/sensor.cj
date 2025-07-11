@@ -322,34 +322,37 @@ public enum SensorAccuracy {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public abstract class Response {
+    /**
+        * The timestamp of the reported sensor data.
+        */
     @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    public Response(
-        /**
-         * The timestamp of the reported sensor data.
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var timestamp: Int64,
-        /**
-         * The accuracy levels of data reported by a sensor.
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var accuracy: SensorAccuracy
-    ) {}
+    public var timestamp: Int64
+    /**
+        * The accuracy levels of data reported by a sensor.
+        */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var accuracy: SensorAccuracy
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public init(timestamp: Int64, accuracy: SensorAccuracy) {
+        this.timestamp = timestamp
+        this.accuracy = accuracy
+    }
 
     init() {
         this(0, SensorAccuracy.AccuracyUnreliable)
@@ -373,52 +376,58 @@ public abstract class Response {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public class RotationVectorResponse <: Response {
+
+    /**
+        * Rotation vector x-axis component.
+        */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    public RotationVectorResponse(
-        /**
-         * Rotation vector x-axis component.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var x: Float32,
+    public var x: Float32
 
-        /**
-         * Rotation vector y-axis component.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var y: Float32,
+    /**
+        * Rotation vector y-axis component.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var y: Float32
 
-        /**
-         * Rotation vector z-axis component.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var z: Float32,
+    /**
+        * Rotation vector z-axis component.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var z: Float32
 
-        /**
-         * Scalar quantity.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var w: Float32
-    ) {}
+    /**
+        * Scalar quantity.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var w: Float32
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public init(x: Float32, y: Float32, z: Float32, w: Float32) {
+        this.x = x
+        this.y = y
+        this.z = z
+        this.w = w
+    }
 
     init(v: CSensorCallbackData) {
         super(v.timestamp, SensorAccuracy.parse(v.option))
@@ -461,112 +470,125 @@ func removeAllCallback(`type`: SensorId): Int64 {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public class Sensor {
+    /**
+        * Sensor name.
+        */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    public Sensor(
-        /**
-         * Sensor name.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var sensorName: String,
+    public var sensorName: String
 
-        /**
-         * Sensor vendor.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var vendorName: String,
+    /**
+        * Sensor vendor.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var vendorName: String
 
-        /**
-         * Sensor firmware version.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var firmwareVersion: String,
+    /**
+        * Sensor firmware version.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var firmwareVersion: String
 
-        /**
-         * Sensor hardware version.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var hardwareVersion: String,
+    /**
+        * Sensor hardware version.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var hardwareVersion: String
 
-        /**
-         * Sensor type ID, {@code SensorType}.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var sensorId: SensorId,
+    /**
+        * Sensor type ID, {@code SensorType}.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var sensorId: SensorId
 
-        /**
-         * Maximum measurement range of the sensor.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var maxRange: Float32,
+    /**
+        * Maximum measurement range of the sensor.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var maxRange: Float32
 
-        /**
-         * Minimum sample period allowed, in ns.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var minSamplePeriod: Int64,
+    /**
+        * Minimum sample period allowed, in ns.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var minSamplePeriod: Int64
 
-        /**
-         * Maximum sample period allowed, in ns.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var maxSamplePeriod: Int64,
+    /**
+        * Maximum sample period allowed, in ns.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var maxSamplePeriod: Int64
 
-        /**
-         * Sensor accuracy.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var precision: Float32,
+    /**
+        * Sensor accuracy.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var precision: Float32
 
-        /**
-         * Sensor power.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var power: Float32
-    ) {}
+    /**
+        * Sensor power.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var power: Float32
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public init(sensorName: String, vendorName: String, firmwareVersion: String,
+        hardwareVersion: String, sensorId: SensorId, maxRange: Float32, minSamplePeriod: Int64,
+        maxSamplePeriod: Int64, precision: Float32, power: Float32) {
+        this.sensorName = sensorName
+        this.vendorName = vendorName
+        this.firmwareVersion = firmwareVersion
+        this.hardwareVersion = hardwareVersion
+        this.sensorId = sensorId
+        this.maxRange = maxRange
+        this.minSamplePeriod = minSamplePeriod
+        this.maxSamplePeriod = maxSamplePeriod
+        this.precision = precision
+        this.power = power
+    }
 
     init(data: CSensor) {
         sensorName = data.sensorName.toString()

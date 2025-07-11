@@ -385,36 +385,41 @@ public class AppEventInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public AppEventInfo(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let domain: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let name: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let event: EventType,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let params: Array<Parameters>
-    ) {}
+    public var domain: String
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public var name: String
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public var event: EventType
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public var params: Array<Parameters>
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public init(domain: String, name: String, event: EventType, params: Array<Parameters>) {
+        this.domain = domain
+        this.name = name
+        this.event = event
+        this.params = params
+    }
 
     init(ret: CAppEventInfo) {
         this.domain = ret.domain.toString()
@@ -459,14 +464,14 @@ public class ConfigOption {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let disable: Bool
+    public var disable: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let maxStorage: String
+    public var maxStorage: String
 
     @!APILevel[
         12,
@@ -474,7 +479,7 @@ public class ConfigOption {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public ConfigOption(maxStorage: String, disable!: Bool = false) {
+    public init(disable!: Bool = false, maxStorage!: String = "10M") {
         this.disable = disable
         this.maxStorage = maxStorage
     }
@@ -493,21 +498,21 @@ public class AppEventReportConfig {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let domain: String
+    public var domain: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let isRealTime: Bool
+    public var isRealTime: Bool
 
     @!APILevel[
         12,
@@ -535,77 +540,77 @@ public class Processor {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let debugMode: Bool
+    public var debugMode: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let routeInfo: String
+    public var routeInfo: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let appId: String
+    public var appId: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onStartReport: Bool
+    public var onStartReport: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onBackgroundReport: Bool
+    public var onBackgroundReport: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let periodReport: Int64
+    public var periodReport: Int64
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let batchReport: Int64
+    public var batchReport: Int64
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let userIds: Array<String>
+    public var userIds: Array<String>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let userProperties: Array<String>
+    public var userProperties: Array<String>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let eventConfigs: Array<AppEventReportConfig>
+    public var eventConfigs: Array<AppEventReportConfig>
 
     @!APILevel[
         12,
@@ -644,28 +649,28 @@ public class AppEventPackage {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let packageId: Int32
+    public var packageId: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let row: Int32
+    public var row: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let size: Int32
+    public var size: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let data: Array<String>
+    public var data: Array<String>
 
     @!APILevel[
         12,
@@ -694,21 +699,21 @@ public class TriggerCondition {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let row: Int32
+    public var row: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let size: Int32
+    public var size: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let timeOut: Int32
+    public var timeOut: Int32
 
     @!APILevel[
         12,
@@ -736,21 +741,21 @@ public class AppEventFilter {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let domain: String
+    public var domain: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let eventTypes: Array<EventType>
+    public var eventTypes: Array<EventType>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let names: Array<String>
+    public var names: Array<String>
 
     @!APILevel[
         12,
@@ -778,14 +783,14 @@ public class AppEventGroup {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let appEventInfos: Array<AppEventInfo>
+    public var appEventInfos: Array<AppEventInfo>
 
     @!APILevel[
         12,
@@ -817,35 +822,35 @@ public class Watcher {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let triggerCondition: TriggerCondition
+    public var triggerCondition: TriggerCondition
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let appEventFilters: Array<AppEventFilter>
+    public var appEventFilters: Array<AppEventFilter>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onTrigger: Option<(Int32, Int32, AppEventPackageHolder) -> Unit>
+    public var onTrigger: Option<(Int32, Int32, AppEventPackageHolder) -> Unit>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onReceive: Option<(String, Array<AppEventGroup>) -> Unit>
+    public var onReceive: Option<(String, Array<AppEventGroup>) -> Unit>
 
     @!APILevel[
         12,

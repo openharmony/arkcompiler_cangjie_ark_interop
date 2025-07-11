@@ -30,25 +30,25 @@ public enum ApplicationType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    BROWSER
+    Browser
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    IMAGE
+    Image
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    AUDIO
+    Audio
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    VIDEO
+    Video
     | @!APILevel[
         19,
         stagemodelonly: true,
@@ -60,13 +60,13 @@ public enum ApplicationType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    WORD
+    Word
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    EXCEL
+    Excel
     | @!APILevel[
         19,
         stagemodelonly: true,
@@ -78,7 +78,7 @@ public enum ApplicationType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
-    EMAIL
+    Email
     | ...
 
     @!APILevel[
@@ -88,15 +88,15 @@ public enum ApplicationType {
     ]
     public func getValue(): String {
         match (this) {
-            case BROWSER => "Web Browser"
-            case IMAGE => "Image Gallery"
-            case AUDIO => "Audio Player"
-            case VIDEO => "Video Player"
+            case Browser => "Web Browser"
+            case Image => "Image Gallery"
+            case Audio => "Audio Player"
+            case Video => "Video Player"
             case PDF => "PDF Viewer"
-            case WORD => "Word Viewer"
-            case EXCEL => "Excel Viewer"
+            case Word => "Word Viewer"
+            case Excel => "Excel Viewer"
             case PPT => "PPT Viewer"
-            case EMAIL => "Email"
+            case Email => "Email"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
