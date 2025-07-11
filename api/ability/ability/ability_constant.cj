@@ -39,46 +39,55 @@ public enum LaunchReason {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    UNKNOWN
+    Unknown
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    START_ABILITY
+    StartAbility
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    CALL
+    Call
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    CONTINUATION
+    Continuation
+    | @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AppRecovery
     | ...
 
     static func parse(value: Int32): LaunchReason {
         match (value) {
-            case 0 => UNKNOWN
-            case 1 => START_ABILITY
-            case 2 => CALL
-            case 3 => CONTINUATION
+            case 0 => Unknown
+            case 1 => StartAbility
+            case 2 => Call
+            case 3 => Continuation
+            case 4 => AppRecovery
             case _ => throw Exception("No corresponding LaunchReason: ${value}")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case UNKNOWN => 0
-            case START_ABILITY => 1
-            case CALL => 2
-            case CONTINUATION => 3
+            case Unknown => 0
+            case StartAbility => 1
+            case Call => 2
+            case Continuation => 3
+            case AppRecovery => 4
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -105,48 +114,48 @@ public enum LastExitReason {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    UNKNOWN
-    | @!APILevel[
-        12,
-        deprecated: 10,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    ABILITY_NOT_RESPONDING
+    Unknown
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    NORMAL
+    Normal
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    CPP_CRASH
+    CppCrash
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AppFreeze
     | ...
 
     static func parse(value: Int32): LastExitReason {
         match (value) {
-            case 0 => UNKNOWN
-            case 1 => ABILITY_NOT_RESPONDING
-            case 2 => NORMAL
-            case 3 => CPP_CRASH
+            case 0 => Unknown
+            case 2 => Normal
+            case 3 => CppCrash
+            case 5 => AppFreeze
             case _ =>
                 ABILITY_LOG.info("No corresponding LastExitReason: ${value}")
-                UNKNOWN
+                Unknown
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case UNKNOWN => 0
-            case ABILITY_NOT_RESPONDING => 1
-            case NORMAL => 2
-            case CPP_CRASH => 3
+            case Unknown => 0
+            case Normal => 2
+            case CppCrash => 3
+            case AppFreeze => 5
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -170,28 +179,28 @@ public enum OnContinueResult {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    AGREE
+    Agree
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    REJECT
+    Reject
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    MISMATCH
+    Mismatch
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case AGREE => 0
-            case REJECT => 1
-            case MISMATCH => 2
+            case Agree => 0
+            case Reject => 1
+            case Mismatch => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -213,43 +222,43 @@ public enum WindowMode {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    WINDOW_MODE_UNDEFINED
+    WindowModeUndefined
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    WINDOW_MODE_FULLSCREEN
+    WindowModeFullscreen
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    WINDOW_MODE_SPLIT_PRIMARY
+    WindowModeSplitPrimary
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    WINDOW_MODE_SPLIT_SECONDARY
+    WindowModeSplitSecondary
     | ...
 
     static func parse(value: Int32): WindowMode {
         match (value) {
-            case 0 => WINDOW_MODE_UNDEFINED
-            case 1 => WINDOW_MODE_FULLSCREEN
-            case 100 => WINDOW_MODE_SPLIT_PRIMARY
-            case 101 => WINDOW_MODE_SPLIT_SECONDARY
+            case 0 => WindowModeUndefined
+            case 1 => WindowModeFullscreen
+            case 100 => WindowModeSplitPrimary
+            case 101 => WindowModeSplitSecondary
             case _ => throw Exception("Unknown windowMode type of value: ${value}")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case WINDOW_MODE_UNDEFINED => 0
-            case WINDOW_MODE_FULLSCREEN => 1
-            case WINDOW_MODE_SPLIT_PRIMARY => 100
-            case WINDOW_MODE_SPLIT_SECONDARY => 101
+            case WindowModeUndefined => 0
+            case WindowModeFullscreen => 1
+            case WindowModeSplitPrimary => 100
+            case WindowModeSplitSecondary => 101
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -274,37 +283,37 @@ public enum MemoryLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    MEMORY_LEVEL_MODERATE
+    MemoryLevelModerate
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    MEMORY_LEVEL_LOW
+    MemoryLevelLow
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    MEMORY_LEVEL_CRITICAL
+    MemoryLevelCritical
     | ...
 
     static func parse(value: Int32): MemoryLevel {
         match (value) {
-            case 0 => MEMORY_LEVEL_MODERATE
-            case 1 => MEMORY_LEVEL_LOW
-            case 2 => MEMORY_LEVEL_CRITICAL
+            case 0 => MemoryLevelModerate
+            case 1 => MemoryLevelLow
+            case 2 => MemoryLevelCritical
             case _ => throw Exception("No corresponding MemoryLevel: ${value}")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case MEMORY_LEVEL_MODERATE => 0
-            case MEMORY_LEVEL_LOW => 1
-            case MEMORY_LEVEL_CRITICAL => 2
+            case MemoryLevelModerate => 0
+            case MemoryLevelLow => 1
+            case MemoryLevelCritical => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -312,22 +321,22 @@ public enum MemoryLevel {
 
 @Derive[ToString, Equatable]
 enum StateType {
-    CONTINUATION
-    | APP_RECOVERY
+    Continuation
+    | AppRecovery
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case CONTINUATION => 0
-            case APP_RECOVERY => 1
+            case Continuation => 0
+            case AppRecovery => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(value: Int32): StateType {
         match (value) {
-            case 0 => CONTINUATION
-            case 1 => APP_RECOVERY
+            case 0 => Continuation
+            case 1 => AppRecovery
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -335,22 +344,22 @@ enum StateType {
 
 @Derive[ToString, Equatable]
 enum OnSaveResult {
-    ALL_AGREE
-    | CONTINUATION_REJECT
-    | CONTINUATION_MISMATCH
-    | RECOVERY_AGREE
-    | RECOVERY_REJECT
-    | ALL_REJECT
+    AllAgree
+    | ContinuationReject
+    | ContinuationMismatch
+    | RecoveryAgree
+    | RecoveryReject
+    | AllReject
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case ALL_AGREE => 0
-            case CONTINUATION_REJECT => 1
-            case CONTINUATION_MISMATCH => 2
-            case RECOVERY_AGREE => 3
-            case RECOVERY_REJECT => 4
-            case ALL_REJECT => 5
+            case AllAgree => 0
+            case ContinuationReject => 1
+            case ContinuationMismatch => 2
+            case RecoveryAgree => 3
+            case RecoveryReject => 4
+            case AllReject => 5
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

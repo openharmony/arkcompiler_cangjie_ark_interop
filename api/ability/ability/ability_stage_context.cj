@@ -59,8 +59,6 @@ foreign func FFICJGetConfiguration(id: Int64): CConfiguration
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityStageContext <: Context {
-    private var currentHapModuleInfo_: ?HapModuleInfo = None
-
     @!APILevel[
         19,
         atomicservice: true,
@@ -68,17 +66,13 @@ public class AbilityStageContext <: Context {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public prop currentHapModuleInfo: HapModuleInfo {
-        get() {
-            return currentHapModuleInfo_.getOrThrow()
-        }
-    }
+    public var currentHapModuleInfo: HapModuleInfo
 
     init(id: Int64) {
         super(id)
         unsafe {
             let hapInfo = FFICJGetHapModuleInfo(id)
-            this.currentHapModuleInfo_ = Some(HapModuleInfo(hapInfo))
+            this.currentHapModuleInfo = HapModuleInfo(hapInfo)
             hapInfo.free()
         }
     }

@@ -51,11 +51,13 @@ foreign func FFICJElementNameParamsDelete(elementNameParams: CPointer<ElementNam
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class ElementName {
-    private var deviceId_: String
-    private var bundleName_: String
-    private var abilityName_: String
-    private var moduleName_: String = ""
-    private var shortName_: String = ""
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
+    ]
+    public var deviceId: String
 
     @!APILevel[
         12,
@@ -63,22 +65,37 @@ public class ElementName {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    public init(deviceId: String, bundleName: String, abilityName: String, moduleName: String) {
-        this.deviceId_ = deviceId
-        this.bundleName_ = bundleName
-        this.abilityName_ = abilityName
-        this.moduleName_ = moduleName
+    public var bundleName: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
+    ]
+    public var abilityName: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
+    ]
+    public var moduleName: String
+    private var shortName_: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
+    ]
+    public init(bundleName: String, abilityName: String, deviceId!: String = "", moduleName!: String = "") {
+        this.bundleName = bundleName
+        this.abilityName = abilityName
+        this.deviceId = deviceId
+        this.moduleName = moduleName
         this.shortName_ = ""
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public init(deviceId: String, bundleName: String, abilityName: String) {
-        this(deviceId, bundleName, abilityName, "")
     }
 
     // protected function: available only for this package.
@@ -86,60 +103,12 @@ public class ElementName {
         var paramsHandle = unsafe { FFICJElementNameGetElementNameInfo(elementNameHandle) }
         let params = unsafe { paramsHandle.read() }
 
-        this.deviceId_ = params.deviceId.toString()
-        this.bundleName_ = params.bundleName.toString()
-        this.abilityName_ = params.abilityName.toString()
-        this.moduleName_ = params.moduleName.toString()
+        this.deviceId = params.deviceId.toString()
+        this.bundleName = params.bundleName.toString()
+        this.abilityName = params.abilityName.toString()
+        this.moduleName = params.moduleName.toString()
         this.shortName_ = ""
         unsafe { FFICJElementNameParamsDelete(paramsHandle) }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public prop deviceId: String {
-        get() {
-            this.deviceId_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public prop bundleName: String {
-        get() {
-            this.bundleName_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public prop abilityName: String {
-        get() {
-            this.abilityName_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.BundleManager.BundleFramework.Core"
-    ]
-    public prop moduleName: String {
-        get() {
-            this.moduleName_
-        }
     }
 
     // protected function: available only for this package.
@@ -152,10 +121,10 @@ public class ElementName {
         unsafe {
             var handle: ElementNameHandle = 0
             try (
-                id = LibC.mallocCString(this.deviceId_).asResource(),
-                bundle = LibC.mallocCString(this.bundleName_).asResource(),
-                ability = LibC.mallocCString(this.abilityName_).asResource(),
-                module = LibC.mallocCString(this.moduleName_).asResource()
+                id = LibC.mallocCString(this.deviceId).asResource(),
+                bundle = LibC.mallocCString(this.bundleName).asResource(),
+                ability = LibC.mallocCString(this.abilityName).asResource(),
+                module = LibC.mallocCString(this.moduleName).asResource()
             ) {
                 handle = FFICJElementNameCreateWithContent(id.value, bundle.value, ability.value, module.value)
             }

@@ -114,6 +114,8 @@ func abilityStageOnConfigurationUpdated2(id: Int64, cConfiguration: CConfigurati
 @C
 func abilityStageOnMemoryLevel(id: Int64, level: Int32): Unit {}
 
+class AbilityStageImpl {}
+
 @!APILevel[
     12,
     atomicservice: true,
@@ -125,6 +127,7 @@ public open class AbilityStage <: FFIData {
     // Store methods of creating AbilityStage in different module.
     private static let CREATORS = HashMap<String, () -> AbilityStage>()
     private var abilityStageContext: Option<AbilityStageContext> = Option<AbilityStageContext>.None
+    private let impl_: AbilityStageImpl = AbilityStageImpl()
 
     @!APILevel[
         12,

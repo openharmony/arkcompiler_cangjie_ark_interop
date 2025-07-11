@@ -51,45 +51,13 @@ class ResultCallbackForAbilityResult {
     }
 }
 
-class ResultCallbackForPermissionRequestResult {
-    private static var callbacks = HashMap<Int64, AsyncCallback<PermissionRequestResult>>()
-    private static var id = AtomicInt64(0)
-    private static var mtx = Mutex()
-    private var id_: Int64
-
-    init(callback: AsyncCallback<PermissionRequestResult>) {
-        synchronized(mtx) {
-            id.fetchAdd(1)
-            id_ = id.load()
-            setCallback(callback)
-        }
-    }
-
-    static func getCallback(callbackId: Int64): Option<AsyncCallback<PermissionRequestResult>> {
-        callbacks.get(callbackId)
-    }
-
-    static func deleteCallback(callbackId: Int64): Unit {
-        callbacks.remove(callbackId)
-    }
-
-    func getID(): Int64 {
-        return id_
-    }
-
-    func setCallback(callback: AsyncCallback<PermissionRequestResult>): Unit {
-        let instanceId = id.load()
-        callbacks.add(instanceId, callback)
-    }
-}
-
 class ResultCallbackForDialogRequestResult {
-    private static var callbacks = HashMap<Int64, AsyncCallback<DialogRequestResult>>()
+    private static var callbacks = HashMap<Int64, AsyncCallback<RequestResult>>()
     private static var id = AtomicInt64(0)
     private static var mtx = Mutex()
     private var id_: Int64
 
-    init(callback: AsyncCallback<DialogRequestResult>) {
+    init(callback: AsyncCallback<RequestResult>) {
         synchronized(mtx) {
             id.fetchAdd(1)
             id_ = id.load()
@@ -97,7 +65,7 @@ class ResultCallbackForDialogRequestResult {
         }
     }
 
-    static func getCallback(callbackId: Int64): Option<AsyncCallback<DialogRequestResult>> {
+    static func getCallback(callbackId: Int64): Option<AsyncCallback<RequestResult>> {
         callbacks.get(callbackId)
     }
 
@@ -109,7 +77,7 @@ class ResultCallbackForDialogRequestResult {
         return id_
     }
 
-    func setCallback(callback: AsyncCallback<DialogRequestResult>): Unit {
+    func setCallback(callback: AsyncCallback<RequestResult>): Unit {
         let instanceId = id.load()
         callbacks.add(instanceId, callback)
     }
@@ -131,7 +99,7 @@ func invokeAbilityResultCallback(id: Int64, error: Int32, cjAbilityResult: CPoin
             }
 
             let cjResult = unsafe { cjAbilityResult.read() }
-            let abilityResult = AbilityResult(cjResult.resultCode, Want(cjResult.wantHandle))
+            let abilityResult = AbilityResult(cjResult.resultCode, want: Want(cjResult.wantHandle))
             callback(Option<AsyncError>.None, Option<AbilityResult>.Some(abilityResult))
             ResultCallbackForAbilityResult.deleteCallback(id)
             ABILITY_LOG.info("Invoke ResultCallbackForAbilityResult end")
@@ -143,43 +111,7 @@ func invokePermissionRequestResultCallback(
     id: Int64,
     error: Int32,
     cjPermissionRequestResult: CPointer<CJPermissionRequestResult>
-): Unit {
-    let res = ResultCallbackForPermissionRequestResult.getCallback(id)
-    match (res) {
-        case None =>
-            ABILITY_LOG.error("Invalid id, failed to get ResultCallbackForPermissionRequestResult")
-            throw Exception("Invalid id, failed to get ResultCallbackForPermissionRequestResult")
-        case Some(callback) =>
-            if (error != 0 || cjPermissionRequestResult.isNull()) {
-                callback(Option<AsyncError>.Some(AsyncError(error)), Option<PermissionRequestResult>.None)
-                ResultCallbackForPermissionRequestResult.deleteCallback(id)
-                ABILITY_LOG.info("Invoke ResultCallbackForPermissionRequestResult end, error code is ${error}")
-                return
-            }
-
-            // Get permissions.
-            let nativeResult = unsafe { cjPermissionRequestResult.read() }
-            let nativePermission = FFIVectorString(nativeResult.permissions)
-            let len = nativePermission.getSize()
-            var cjPermissions = Array<String>(len, repeat: "")
-            for (i in 0..len) {
-                cjPermissions[i] = nativePermission.getElement(i)
-            }
-
-            // Get authResults.
-            let ffiResult = FFIVectorInt32(nativeResult.authResults)
-            let resultSize = ffiResult.getSize()
-            var cjResult = Array<Int32>(resultSize, repeat: 0)
-            for (i in 0..resultSize) {
-                cjResult[i] = ffiResult.getElement(i)
-            }
-
-            let request = PermissionRequestResult(cjPermissions, cjResult)
-            callback(Option<AsyncError>.None, Option<PermissionRequestResult>.Some(request))
-            ResultCallbackForPermissionRequestResult.deleteCallback(id)
-            ABILITY_LOG.info("Invoke ResultCallbackForPermissionRequestResult end")
-    }
-}
+): Unit {}
 
 @C
 func invokeDialogRequestResultCallback(
@@ -194,15 +126,15 @@ func invokeDialogRequestResultCallback(
             throw Exception("Invalid id, failed to get ResultCallbackForDialogRequestResult")
         case Some(callback) =>
             if (error != 0 || cjDialogRequestResult.isNull()) {
-                callback(Option<AsyncError>.Some(AsyncError(error)), Option<DialogRequestResult>.None)
-                ResultCallbackForPermissionRequestResult.deleteCallback(id)
-                ABILITY_LOG.info("Invoke ResultCallbackForPermissionRequestResult end, error code is ${error}")
+                callback(Option<AsyncError>.Some(AsyncError(error)), Option<RequestResult>.None)
+                ResultCallbackForDialogRequestResult.deleteCallback(id)
+                ABILITY_LOG.info("Invoke ResultCallbackForDialogRequestResult end, error code is ${error}")
                 return
             }
 
             let nativeResult = unsafe { cjDialogRequestResult.read() }
-            let result = DialogRequestResult(ResultCode.parse(nativeResult.result), Want(nativeResult.wantHandle))
-            callback(Option<AsyncError>.None, Option<DialogRequestResult>.Some(result))
+            let result = RequestResult(ResultCode.parse(nativeResult.result), Want(nativeResult.wantHandle))
+            callback(Option<AsyncError>.None, Option<RequestResult>.Some(result))
             ResultCallbackForDialogRequestResult.deleteCallback(id)
             ABILITY_LOG.info("Invoke ResultCallbackForDialogRequestResult end")
     }

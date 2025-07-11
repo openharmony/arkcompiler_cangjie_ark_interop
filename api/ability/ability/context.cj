@@ -54,6 +54,8 @@ foreign {
     func FfiContextCreateModuleContext(id: Int64, contextType: Int32, moduleName: CString): Int64
 }
 
+class ContextImpl {}
+
 @!APILevel[
     12,
     atomicservice: true,
@@ -75,6 +77,7 @@ public open class Context <: RemoteData {
     private var cloudFileDir_: ?String = None
     private var area_: ?AreaMode = None
     private static var applicationContext_: ?ApplicationContext = None
+    private let impl_: ContextImpl = ContextImpl()
 
     @!APILevel[
         12,
@@ -87,5 +90,132 @@ public open class Context <: RemoteData {
 
     init(id: Int64) {
         super(id)
+    }
+
+    /**
+     * Indicates the capability of accessing application resources.
+     *
+     * @type { ResourceManager }
+     * @syscap SystemCapability.Ability.AbilityRuntime.Core
+     * @stagemodelonly
+     * @crossplatform
+     * @atomicservice
+     * @brief resourceManager: resmgr.ResourceManager
+     */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public prop resourceManager: ResourceManager {
+        get() {
+            match (resourceManager_) {
+                case Some(v) => v
+                case _ =>
+                    let ctx = unsafe { FfiContextGetContext(getID(), 0) }
+                    resourceManager_ = ResourceManager.getResourceManager(ctx)
+                    resourceManager_.getOrThrow()
+            }
+        }
+    }
+
+    /**
+     * Indicates configuration information about an application.
+     *
+     * @type { ApplicationInfo }
+     * @syscap SystemCapability.Ability.AbilityRuntime.Core
+     * @stagemodelonly
+     * @crossplatform
+     * @atomicservice
+     * @brief applicationInfo: ApplicationInfo
+     */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public prop applicationInfo: ApplicationInfo {
+        get() {
+            match (applicationInfo_) {
+                case Some(v) => v
+                case _ => unsafe {
+                    let retApplicationInfo = FfiContextGetApplicationInfo(getID(), 0)
+                    applicationInfo_ = ApplicationInfo(retApplicationInfo)
+                    retApplicationInfo.free()
+                    return applicationInfo_.getOrThrow()
+                }
+            }
+        }
+    }
+
+    /**
+     * Indicates app files dir.
+     *
+     * @type { String }
+     * @syscap SystemCapability.Ability.AbilityRuntime.Core
+     * @stagemodelonly
+     * @crossplatform
+     * @atomicservice
+     * @brief filesDir: String
+     */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public prop filesDir: String {
+        get() {
+            match (filesDir_) {
+                case Some(v) => v
+                case _ =>
+                    unsafe {
+                        let cString = FfiContextGetFilesDir(getID(), 0)
+                        filesDir_ = cString.toString()
+                        LibC.free(cString)
+                    }
+                    filesDir_.getOrThrow()
+            }
+        }
+    }
+
+    /**
+     * Indicates file area.
+     *
+     * @type { AreaMode }
+     * @syscap SystemCapability.Ability.AbilityRuntime.Core
+     * @stagemodelonly
+     * @brief area: contextConstant.AreaMode
+     */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public mut prop area: AreaMode {
+        get() {
+            match (area_) {
+                case Some(v) => v
+                case _ =>
+                    unsafe {
+                        let areaCode = FfiContextGetArea(getID(), 0)
+                        try {
+                            area_ = AreaMode.parse(areaCode)
+                        } catch (e: Exception) {
+                            throw BusinessException(ERROR_CODE_INVALID_CONTEXT, getErrorMsg(ERROR_CODE_INVALID_CONTEXT))
+                        }
+                    }
+                    area_.getOrThrow()
+            }
+        }
+
+        set(area) {
+            area_ = area
+        }
     }
 }
