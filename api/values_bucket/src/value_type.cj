@@ -19,44 +19,42 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.*
 
+/**
+ * Indicates possible value types
+ * @relation export type ValueType = number | string | boolean;
+ */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
 ]
 public enum ValueType {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
     Null
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
     Integer(Int64)
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
     Double(Float64)
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
     Str(String)
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
