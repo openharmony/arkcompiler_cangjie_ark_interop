@@ -133,6 +133,7 @@ if (host_os == "mac") {
   }
 }
 
+
 group("ohos_aarch64_libs") {
   deps = [
     ":sdk_ohos_aarch64_libs",

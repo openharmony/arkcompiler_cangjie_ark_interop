@@ -112,12 +112,6 @@
                 },
                 {
                     "name": "//arkcompiler/cangjie_api/api/labels:ohos.labels"
-                },
-                {
-                    "name": "//arkcompiler/cangjie_api/api/arkui/cj:state_macro_manage"
-                },
-                {
-                    "name": "//arkcompiler/cangjie_api/api/interop:ark_interop_macro"
                 }
             ],
             "test": []
