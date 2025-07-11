@@ -23,7 +23,7 @@ import ohos.labels.*
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
-public struct Support {
+public class Support {
     @!APILevel[
         12,
         stagemodelonly: true,

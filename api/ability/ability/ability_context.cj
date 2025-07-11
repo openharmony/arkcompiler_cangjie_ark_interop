@@ -451,7 +451,7 @@ public class PermissionRequestResult {
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
-public struct AbilityResult {
+public class AbilityResult {
     @!APILevel[
         12,
         atomicservice: true,

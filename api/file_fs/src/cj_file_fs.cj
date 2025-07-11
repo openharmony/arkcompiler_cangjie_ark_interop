@@ -139,7 +139,7 @@ public enum OpenMode {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct Options {
+public class Options {
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -191,7 +191,7 @@ public class ReaderIterator <: RemoteDataLite {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct ReaderIteratorResult {
+public class ReaderIteratorResult {
     ReaderIteratorResult(
         @!APILevel[
             12,
@@ -223,7 +223,7 @@ struct RetReaderIteratorResult {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct WriteOptions {
+public class WriteOptions {
     @!APILevel[
         12,
         atomicservice: true,
@@ -261,7 +261,7 @@ public struct WriteOptions {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct ReadOptions {
+public class ReadOptions {
     @!APILevel[
         12,
         atomicservice: true,
@@ -292,7 +292,7 @@ public struct ReadOptions {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct ReadTextOptions {
+public class ReadTextOptions {
     @!APILevel[
         12,
         atomicservice: true,
@@ -372,7 +372,7 @@ public enum WhenceType {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct ConflictFiles {
+public class ConflictFiles {
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -460,7 +460,7 @@ struct RetDataCArrStringN {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct Filter {
+public class Filter {
     @!APILevel[
         12,
         atomicservice: true,
@@ -574,7 +574,7 @@ struct CFilter {
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
-public struct ListFileOptions {
+public class ListFileOptions {
     @!APILevel[
         12,
         atomicservice: true,
