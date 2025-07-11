@@ -19,7 +19,6 @@ import ohos.base.*
 import ohos.bluetooth.*
 import ohos.ffi.*
 import std.collection.{ArrayList, HashMap}
-import std.sync.AtomicBool
 import ohos.labels.*
 
 /**
@@ -82,9 +81,9 @@ public func createGattClientDevice(deviceId: String): GattClientDevice {
  * @param { Array<ScanFilter> } filters - Indicates the list of filters used to filter out specified devices.
  * If you do not want to use filter, set this parameter to {@code null}.
  * @param { ScanOptions } options - Indicates the parameters for scanning and if the user does not assign a value, the default value will be used.
- * {@link ScanOptions#interval} set to 0, {@link ScanOptions#dutyMode} set to {@link SCAN_MODE_LOW_POWER}
- * and {@link ScanOptions#matchMode} set to {@link MATCH_MODE_AGGRESSIVE}.
- * and {@link ScanOptions#phyType} set to {@link PHY_LE_ALL_SUPPORTED}.
+ * {@link ScanOptions#interval} set to 0, {@link ScanOptions#dutyMode} set to {@link ScanModeLowPower}
+ * and {@link ScanOptions#matchMode} set to {@link MatchModeAggressive}.
+ * and {@link ScanOptions#phyType} set to {@link PhyLeAllSupported}.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
  * <br>2. Incorrect parameter types. 3. Parameter verification failed.
@@ -313,7 +312,7 @@ public func stopAdvertising(advertisingId: UInt32): Unit {
 
 private let GLOBAL_CALLBACK_MAP = HashMap<BluetoothBleCallbackType, ArrayList<CallbackObject>>()
 private let GLOBAL_REGISTER_MAP = HashMap<BluetoothBleCallbackType, Bool>(
-    [(ADVERTISING_STATE_CHANGE, false), (BLE_DEVICE_FIND, false)])
+    [(AdvertisingStateChange, false), (BleDeviceFind, false)])
 
 private func findCallbackObject(callbackType: BluetoothBleCallbackType, callback: CallbackObject, remove!: Bool = false): Int64 {
     let callbackList = GLOBAL_CALLBACK_MAP.get(callbackType) ?? return -1
@@ -388,8 +387,8 @@ private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleCallbackType, 
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<AdvertisingStateChangeInfo>): Unit {
-    if (`type` != ADVERTISING_STATE_CHANGE) {
-        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is ADVERTISING_STATE_CHANGE")
+    if (`type` != AdvertisingStateChange) {
+        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is AdvertisingStateChange")
         throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
     }
 
@@ -421,8 +420,8 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Adv
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Array<ScanResult>>): Unit {
-    if (`type` != BLE_DEVICE_FIND) {
-        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BLE_DEVICE_FIND")
+    if (`type` != BleDeviceFind) {
+        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleDeviceFind")
         throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
     }
 

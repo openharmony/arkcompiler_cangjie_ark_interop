@@ -128,17 +128,17 @@ struct Parameters {
         this._key = c.key.toString()
         this._value = unsafe {
             match {
-                case c.valueType == INT_TYPE => INT(CPointer<Int32>(c.value).read())
-                case c.valueType == F64_TYPE => FLOAT64(CPointer<Float64>(c.value).read())
-                case c.valueType == STRING_TYPE => STRING(CString(CPointer<UInt8>(c.value)).toString())
-                case c.valueType == BOOL_TYPE => BOOL(CPointer<Bool>(c.value).read())
+                case c.valueType == INT_TYPE => Int32Value(CPointer<Int32>(c.value).read())
+                case c.valueType == F64_TYPE => Float64Value(CPointer<Float64>(c.value).read())
+                case c.valueType == STRING_TYPE => StringValue(CString(CPointer<UInt8>(c.value)).toString())
+                case c.valueType == BOOL_TYPE => BoolValue(CPointer<Bool>(c.value).read())
                 case c.valueType == FD_TYPE => FD(CPointer<Int32>(c.value).read())
-                case c.valueType == ARRSTRING_TYPE => ARRSTRING(c.toArrString())
-                case c.valueType == ARRAYI32_TYPE => ARRAYI32(c.toArr<Int32>())
-                case c.valueType == ARRAYI64_TYPE => ARRAYI64(c.toArr<Int64>())
-                case c.valueType == ARRAYBOOL_TYPE => ARRAYBOOL(c.toArr<Bool>())
-                case c.valueType == ARRAYF64_TYPE => ARRAYF64(c.toArr<Float64>())
-                case _ => ARRAYFD(c.toArr<Int32>())
+                case c.valueType == ARRSTRING_TYPE => ArrayString(c.toArrString())
+                case c.valueType == ARRAYI32_TYPE => ArrayInt32(c.toArr<Int32>())
+                case c.valueType == ARRAYI64_TYPE => ArrayInt64(c.toArr<Int64>())
+                case c.valueType == ARRAYBOOL_TYPE => ArrayBool(c.toArr<Bool>())
+                case c.valueType == ARRAYF64_TYPE => ArrayFloat64(c.toArr<Float64>())
+                case _ => ArrayFD(c.toArr<Int32>())
             }
         }
     }

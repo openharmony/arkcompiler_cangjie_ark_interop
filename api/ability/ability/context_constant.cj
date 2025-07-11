@@ -22,38 +22,68 @@ const PROCESS_MODE_UNSPECIFIED: Int32 = 0
 const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0
 
 @Derive[ToString, Equatable]
-enum AreaMode {
+@!APILevel[
+    19,
+    atomicservice: true,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public enum AreaMode {
     @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    EL1
-    | EL2
-    | EL3
-    | EL4
-    | EL5
+    El1
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    El2
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    El3
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    El4
+    | @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    El5
     | ...
 
     static func parse(value: Int32): AreaMode {
         match (value) {
-            case 0 => EL1
-            case 1 => EL2
-            case 2 => EL3
-            case 3 => EL4
-            case 4 => EL5
+            case 0 => El1
+            case 1 => El2
+            case 2 => El3
+            case 3 => El4
+            case 4 => El5
             case _ => throw IllegalArgumentException("No corresponding AreaMode: ${value}")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case EL1 => 0
-            case EL2 => 1
-            case EL3 => 2
-            case EL4 => 3
-            case EL5 => 4
+            case El1 => 0
+            case El2 => 1
+            case El3 => 2
+            case El4 => 3
+            case El5 => 4
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -62,16 +92,16 @@ enum AreaMode {
 @Derive[ToString, Equatable]
 enum ProcessMode {
     
-    NEW_PROCESS_ATTACH_TO_PARENT
-    | NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM
-    | ATTACH_TO_STATUS_BAR_ITEM
+    NewProcessAttachToParent
+    | NewProcessAttachToStatusBarItem
+    | AttachToStatusBarItem
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case NEW_PROCESS_ATTACH_TO_PARENT => 1
-            case NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM => 2
-            case ATTACH_TO_STATUS_BAR_ITEM => 3
+            case NewProcessAttachToParent => 1
+            case NewProcessAttachToStatusBarItem => 2
+            case AttachToStatusBarItem => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -79,14 +109,14 @@ enum ProcessMode {
 
 @Derive[ToString, Equatable]
 enum StartupVisibility {
-    STARTUP_HIDE
-    | STARTUP_SHOW
+    StartupHide
+    | StartupShow
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case STARTUP_HIDE => 0
-            case STARTUP_SHOW => 1
+            case StartupHide => 0
+            case StartupShow => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

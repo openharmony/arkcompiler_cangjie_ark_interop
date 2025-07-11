@@ -37,7 +37,7 @@ public enum LogLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
-    DEBUG
+    Debug
     | @!APILevel[
         12,
         atomicservice: true,
@@ -45,7 +45,7 @@ public enum LogLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
-    INFO
+    Info
     | @!APILevel[
         12,
         atomicservice: true,
@@ -53,7 +53,7 @@ public enum LogLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
-    WARN
+    Warn
     | @!APILevel[
         12,
         atomicservice: true,
@@ -61,7 +61,7 @@ public enum LogLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
-    ERROR
+    Error
     | @!APILevel[
         12,
         atomicservice: true,
@@ -69,16 +69,16 @@ public enum LogLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
-    FATAL
+    Fatal
     | ...
 
     func getValue(): UInt32 {
         match (this) {
-            case DEBUG => 3
-            case INFO => 4
-            case WARN => 5
-            case ERROR => 6
-            case FATAL => 7
+            case Debug => 3
+            case Info => 4
+            case Warn => 5
+            case Error => 6
+            case Fatal => 7
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -135,7 +135,7 @@ public class Hilog {
                 cTag = LibC.mallocCString(tag).asResource(),
                 cFormat = LibC.mallocCString(format).asResource()
             ) {
-                HiLogPrint(DEFAULT_LOG_TYPE, LogLevel.DEBUG.getValue(), domain, cTag.value, STANDARD_FORMAT,
+                HiLogPrint(DEFAULT_LOG_TYPE, LogLevel.Debug.getValue(), domain, cTag.value, STANDARD_FORMAT,
                     cFormat.value)
             }
         }
@@ -156,7 +156,7 @@ public class Hilog {
             ) {
                 HiLogPrint(
                     DEFAULT_LOG_TYPE,
-                    LogLevel.INFO.getValue(),
+                    LogLevel.Info.getValue(),
                     domain,
                     cTag.value,
                     STANDARD_FORMAT,
@@ -181,7 +181,7 @@ public class Hilog {
             ) {
                 HiLogPrint(
                     DEFAULT_LOG_TYPE,
-                    LogLevel.WARN.getValue(),
+                    LogLevel.Warn.getValue(),
                     domain,
                     cTag.value,
                     STANDARD_FORMAT,
@@ -204,7 +204,7 @@ public class Hilog {
                 cTag = LibC.mallocCString(tag).asResource(),
                 cFormat = LibC.mallocCString(format).asResource()
             ) {
-                HiLogPrint(DEFAULT_LOG_TYPE, LogLevel.ERROR.getValue(), domain, cTag.value, STANDARD_FORMAT,
+                HiLogPrint(DEFAULT_LOG_TYPE, LogLevel.Error.getValue(), domain, cTag.value, STANDARD_FORMAT,
                     cFormat.value)
             }
         }
@@ -223,7 +223,7 @@ public class Hilog {
                 cTag = LibC.mallocCString(tag).asResource(),
                 cFormat = LibC.mallocCString(format).asResource()
             ) {
-                HiLogPrint(DEFAULT_LOG_TYPE, LogLevel.FATAL.getValue(), domain, cTag.value, STANDARD_FORMAT,
+                HiLogPrint(DEFAULT_LOG_TYPE, LogLevel.Fatal.getValue(), domain, cTag.value, STANDARD_FORMAT,
                     cFormat.value)
             }
         }

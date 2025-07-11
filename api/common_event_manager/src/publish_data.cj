@@ -124,13 +124,13 @@ public class CommonEventPublishData {
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public init(
-        public var bundleName!: String = "",
-        public var data!: String = "",
-        public var code!: Int32 = 0,
-        public var subscriberPermissions!: Array<String> = Array<String>(),
-        public var isOrdered!: Bool = false,
-        public var isSticky!: Bool = false,
-        public var parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
+        bundleName!: String = "",
+        data!: String = "",
+        code!: Int32 = 0,
+        subscriberPermissions!: Array<String> = Array<String>(),
+        isOrdered!: Bool = false,
+        isSticky!: Bool = false,
+        parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
     ) {
         this.bundleName = bundleName
         this.data = data

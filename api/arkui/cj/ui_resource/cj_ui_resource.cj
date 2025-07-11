@@ -33,7 +33,7 @@ public struct NativeResourceObject {
     public NativeResourceObject(
         public let bundleName: CString,
         public let moduleName: CString,
-        public let id: Int32,
+        public let id: UInt32,
         public let resType: Int32,
         public let paramsJsonStr: CString
     ) {}

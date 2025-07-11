@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.CommonEvent_manager
+package ohos.common_event_manager
 
 import ohos.base.*
 import ohos.labels.*
@@ -1359,6 +1359,7 @@ public enum Support {
             case CommonEventWifiP2PPeersDiscoveryStateChanged => "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE"
             case CommonEventWifiP2PCurrentDeviceStateChanged => "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE"
             case CommonEventWifiP2PGroupStateChanged => "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
+            case _ => throw IllegalArgumentException("Unknown value")
         }
     }
 }

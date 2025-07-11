@@ -58,13 +58,92 @@ foreign func FFICJWantAddEntity(want: WantHandle, entity: CString): Unit
 ]
 public class Want {
     private var elementName_: ElementName
-    private var flags_: UInt32
-    private var uri_: String
-    private var action_: String
-    private var entities_: Array<String>
-    private var type_: String
-    private var parameters_: String
     private var paramJsonObj_: JsonObject
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var deviceId: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var bundleName: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var abilityName: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var moduleName: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var flags: UInt32
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var uri: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var action: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var entities: Array<String>
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var `type`: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var parameters: String
 
     @!APILevel[
         12,
@@ -85,13 +164,17 @@ public class Want {
         `type`!: String = "",
         parameters!: String = ""
     ) {
-        this.elementName_ = ElementName(deviceId, bundleName, abilityName, moduleName)
-        this.flags_ = flags
-        this.uri_ = uri
-        this.action_ = action
-        this.entities_ = entities
-        this.type_ = `type`
-        this.parameters_ = parameters
+        this.elementName_ = ElementName(bundleName, abilityName, deviceId: deviceId, moduleName: moduleName)
+        this.deviceId = deviceId
+        this.bundleName = bundleName
+        this.abilityName = abilityName
+        this.moduleName = moduleName
+        this.flags = flags
+        this.uri = uri
+        this.action = action
+        this.entities = entities
+        this.`type` = `type`
+        this.parameters = parameters
         this.paramJsonObj_ = jsStringToJsObject(parameters)
     }
 
@@ -108,143 +191,22 @@ public class Want {
         var entitiesSize = unsafeEntities.getSize()
 
         this.elementName_ = ElementName(params.elementName)
-        this.flags_ = params.flags
-        this.uri_ = params.uri.toString()
-        this.action_ = params.action.toString()
-        this.entities_ = Array<String>(entitiesSize, repeat: "")
+        this.deviceId = elementName_.deviceId
+        this.bundleName = elementName_.bundleName
+        this.abilityName = elementName_.abilityName
+        this.moduleName = elementName_.moduleName
+        this.flags = params.flags
+        this.uri = params.uri.toString()
+        this.action = params.action.toString()
+        this.entities = Array<String>(entitiesSize, repeat: "")
         for (i in 0..entitiesSize) {
-            this.entities_[i] = unsafeEntities.getElement(i)
+            this.entities[i] = unsafeEntities.getElement(i)
         }
-        this.type_ = params.wantType.toString()
+        this.`type` = params.wantType.toString()
         this.paramJsonObj_ = jsonStringUnWrapper(params.parameters.toString())
-        this.parameters_ = paramJsonObj_.toString()
+        this.parameters = paramJsonObj_.toString()
 
         unsafe { FFICJWantParamsDelete(paramsHandle) }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop deviceId: String {
-        get() {
-            this.elementName_.deviceId
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop bundleName: String {
-        get() {
-            this.elementName_.bundleName
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop abilityName: String {
-        get() {
-            this.elementName_.abilityName
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop moduleName: String {
-        get() {
-            this.elementName_.moduleName
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop flags: UInt32 {
-        get() {
-            this.flags_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop uri: String {
-        get() {
-            this.uri_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop action: String {
-        get() {
-            this.action_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop entities: Array<String> {
-        get() {
-            this.entities_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop `type`: String {
-        get() {
-            this.type_
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public prop parameters: String {
-        get() {
-            this.parameters_
-        }
     }
 
     // available only for this package.
@@ -257,9 +219,9 @@ public class Want {
         var wantHandle: WantHandle = NULL_PTR
         unsafe {
             try (
-                unsafeUri = LibC.mallocCString(uri_).asResource(),
-                unsafeAction = LibC.mallocCString(action_).asResource(),
-                unsafeType = LibC.mallocCString(type_).asResource(),
+                unsafeUri = LibC.mallocCString(uri).asResource(),
+                unsafeAction = LibC.mallocCString(action).asResource(),
+                unsafeType = LibC.mallocCString(`type`).asResource(),
                 unsafeParameters = LibC.mallocCString(jsonObjectWrapper(paramJsonObj_).toString()).asResource()
             ) {
                 let elementNameHandle = this.elementName_.createElementNameHandle()

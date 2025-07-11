@@ -112,36 +112,4 @@ public class ApplicationContext <: Context {
         super(id)
         RemoteDataManager.getInstance().register(this)
     }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public func getApplicationInfo(): ApplicationInfo {
-        unsafe {
-            let retApplicationInfo = FfiContextGetApplicationInfo(getID(), 0)
-            let applicationInfo = ApplicationInfo(retApplicationInfo)
-            retApplicationInfo.free()
-            return applicationInfo
-        }
-    }
-
-    @!APILevel[
-        12,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public func getArea(): Int64 {
-        return unsafe { FFIGetArea(this.getID()) }
-    }
-}
-
-func throwIfNotSuccess(code: Int32): Unit {
-    if (code != SUCCESS_CODE) {
-        throw BusinessException(code, getErrorMsg(code))
-    }
 }

@@ -31,7 +31,12 @@ foreign {
 }
 
 /**
- * @brief createMac(algName: string): Mac
+ * Provides the mac create func.
+ *
+ * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+ * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+ * @throws { BusinessException } 17620001 - memory error.
+ * @relation createMac(algName: string): Mac
  */
 @!APILevel[
     12,
@@ -51,6 +56,11 @@ public func createMac(algName: String): Mac {
     }
 }
 
+/**
+ * Provides the Mac type, which is used for Mac generation.
+ *
+ * @relation interface Mac
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -71,7 +81,9 @@ public class Mac <: RemoteDataLite {
     }
 
     /**
-     * @brief algName: string
+     * Indicates the algorithm name.
+     *
+     * @relation algName: string;
      */
     @!APILevel[
         12,
@@ -87,7 +99,12 @@ public class Mac <: RemoteDataLite {
     }
 
     /**
-     * @brief init(key : SymKey) : Promise<void>
+     * Init hmac with given SymKey.
+     *
+     * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+     * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation initSync(key: SymKey): void;
      */
     @!APILevel[
         12,
@@ -104,7 +121,12 @@ public class Mac <: RemoteDataLite {
     }
 
     /**
-     * @brief update(input : DataBlob) : Promise<void>
+     * Update hmac with DataBlob.
+     *
+     * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+     * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation updateSync(input: DataBlob): void;
      */
     @!APILevel[
         12,
@@ -132,7 +154,14 @@ public class Mac <: RemoteDataLite {
     }
 
     /**
-     * @brief doFinal() : Promise<DataBlob>
+     * Output the result of hmac calculation.
+     *
+     * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+     * @throws { BusinessException } 17620001 - memory error.
+     * @throws { BusinessException } 17620002 - runtime error.
+     * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation doFinalSync(): DataBlob;
      */
     @!APILevel[
         12,
@@ -153,7 +182,10 @@ public class Mac <: RemoteDataLite {
     }
 
     /**
-     * @brief getMacLength() : number
+     * Output the length of hmac result.
+     *
+     * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation getMacLength(): number;
      */
     @!APILevel[
         12,

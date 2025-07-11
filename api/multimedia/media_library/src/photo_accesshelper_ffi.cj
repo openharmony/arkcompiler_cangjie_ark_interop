@@ -185,11 +185,11 @@ struct PhotoAssetMember {
 
     func toMemberType(): MemberType {
         match (memberType) {
-            case 0 => INT64(intValue)
+            case 0 => Int64Value(intValue)
             case 1 =>
                 let str = stringValue.toString()
-                STRING(str)
-            case 2 => BOOL(boolValue)
+                StringValue(str)
+            case 2 => BoolValue(boolValue)
             case _ => throw IllegalArgumentException("Invalid member type")
         }
     }

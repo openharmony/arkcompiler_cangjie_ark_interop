@@ -801,7 +801,7 @@ public func __GenerateResource__(
     if (moudleType == HAR_TYPE) {
         let paramsArr: ArrayList<Any> = ArrayList<Any>([resStr])
         paramsArr.add(all: params)
-        return AppResource(DEFAULT_HAR_BUNDLE_NAME, DEFAULT_HAR_MODULE_NAME, -1, params: paramsArr.toArray(),
+        return AppResource(DEFAULT_HAR_BUNDLE_NAME, DEFAULT_HAR_MODULE_NAME, 0, params: paramsArr.toArray(),
             resType: resType)
     } else if (resType == RAWFILE_TYPE) {
         return AppResource(bundleName, moduleName, resId, params: [resStr], resType: resType)

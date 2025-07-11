@@ -21,6 +21,11 @@ import ohos.ffi.*
 
 foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<UInt8>, count: UIntNative): Int32
 
+/**
+ * Provides the data blob type.
+ *
+ * @relation interface DataBlob
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -29,6 +34,11 @@ foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<
     syscap: "SystemCapability.Security.CryptoFramework"
 ]
 public class DataBlob {
+    /**
+     * Indicates the content of data blob.
+     *
+     * @relation data: Uint8Array;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -36,18 +46,29 @@ public class DataBlob {
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
-    public DataBlob(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Security.CryptoFramework"
-        ]
-        public let data: Array<UInt8>
-    ) {}
+    public var data: Array<UInt8>
+
+    /**
+     * Constructor of DataBlob.
+     *
+     */
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Security.CryptoFramework"
+    ]
+    public init(data: Array<UInt8>) {
+        this.data = data
+    }
 }
 
+/**
+ * Provides the IvParamsSpec type, including the parameter iv.
+ *
+ * @relation interface IvParamsSpec extends ParamsSpec
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -59,6 +80,11 @@ public class IvParamsSpec <: ParamsSpec {
     var _algName: String
     var _iv: DataBlob
 
+    /**
+     * Indicates the algorithm name. Should be set before initialization of a cipher object.
+     *
+     * @relation algName: string;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -75,6 +101,11 @@ public class IvParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the algorithm parameters such as iv.
+     *
+     * @relation iv: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -91,6 +122,10 @@ public class IvParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Constructor of IvParamsSpec.
+     *
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -104,6 +139,11 @@ public class IvParamsSpec <: ParamsSpec {
     }
 }
 
+/**
+ * Provides the GcmParamsSpec type, including the parameter iv, aad and authTag.
+ *
+ * @relation interface IvParamsSpec extends ParamsSpec
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -117,6 +157,11 @@ public class GcmParamsSpec <: ParamsSpec {
     var _authTag: DataBlob
     var _iv: DataBlob
 
+    /**
+     * Indicates the algorithm name. Should be set before initialization of a cipher object.
+     *
+     * @relation algName: string;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -133,6 +178,11 @@ public class GcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the additional Authenticated Data in GCM mode.
+     *
+     * @relation aad: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -149,6 +199,11 @@ public class GcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the algorithm parameters such as iv.
+     *
+     * @relation iv: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -165,6 +220,11 @@ public class GcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the output tag from the encryption operation. The tag is used for integrity check.
+     *
+     * @relation authTag: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -181,6 +241,10 @@ public class GcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Constructor of GcmParamsSpec.
+     *
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -196,6 +260,11 @@ public class GcmParamsSpec <: ParamsSpec {
     }
 }
 
+/**
+ * Provides the CcmParamsSpec type, including the parameter iv, aad and authTag.
+ *
+ * @relation interface CcmParamsSpec extends ParamsSpec
+ */
 @!APILevel[
     12,
     atomicservice: true,
@@ -209,6 +278,11 @@ public class CcmParamsSpec <: ParamsSpec {
     var _iv: DataBlob
     var _authTag: DataBlob
 
+    /**
+     * Indicates the algorithm name. Should be set before initialization of a cipher object.
+     *
+     * @relation algName: string;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -225,6 +299,11 @@ public class CcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the output tag from the encryption operation. The tag is used for integrity check.
+     *
+     * @relation authTag: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -241,6 +320,11 @@ public class CcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the Additional Authenticated Data in CCM mode.
+     *
+     * @relation aad: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -257,6 +341,11 @@ public class CcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Indicates the GCM algorithm parameters such as IV.
+     *
+     * @relation iv: DataBlob;
+     */
     @!APILevel[
         12,
         atomicservice: true,
@@ -273,6 +362,10 @@ public class CcmParamsSpec <: ParamsSpec {
         }
     }
 
+    /**
+     * Constructor of CcmParamsSpec.
+     *
+     */
     @!APILevel[
         12,
         atomicservice: true,

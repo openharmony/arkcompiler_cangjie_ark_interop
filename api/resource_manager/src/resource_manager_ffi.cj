@@ -185,7 +185,7 @@ struct RetGetNumber {
 protected struct CResource {
     protected let bundleName: CString
     protected let moduleName: CString
-    protected let resId: Int32
+    protected let resId: UInt32
 
     protected init(resource: AppResource) {
         unsafe {

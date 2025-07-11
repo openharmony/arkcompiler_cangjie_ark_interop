@@ -21,13 +21,10 @@ import ohos.base.*
 
 /**
  * The interface of system parameters class.
- *
- * @namespace systemParameter
- * @syscap SystemCapability.Startup.SystemInfo
- * @systemapi Hide this for inner system use.
+ * @relation declare namespace systemParameterEnhance
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Startup.SystemInfo"
 ]
@@ -35,16 +32,16 @@ public class Systemparameter {
 
     /**
      * Gets the value of the attribute with the specified key.
-     *
      * @param { String } key Key of the system attribute.
      * @param { String } def Default value.
      * @returns { String } if the parameter is empty or doesn't exist, empty string will be returned.
-     * @syscap SystemCapability.Startup.SystemInfo
-     * @systemapi Hide this for inner system use.
-     * @brief getSync(key: string, def?: string): string
+     * @throws { BusinessException } 14700101 - System parameter not found.
+     * @throws { BusinessException } 14700103 - The operation on the system permission is denied.
+     * @throws { BusinessException } 14700104 - System internal error such as out memory or deadlock.
+     * @relation function getSync(key: string, def?: string): string;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -71,15 +68,15 @@ public class Systemparameter {
 
     /**
      * Sets a value for the attribute with the specified key.
-     *
      * @param { String } key Key of the system attribute.
      * @param { String } value value System attribute value to set.
-     * @syscap SystemCapability.Startup.SystemInfo
-     * @systemapi Hide this for inner system use.
-     * @brief setSync(key: string, value: string): void
+     * @throws { BusinessException } 14700102 - Invalid system parameter value.
+     * @throws { BusinessException } 14700103 - The operation on the system permission is denied.
+     * @throws { BusinessException } 14700104 - System internal error such as out memory or deadlock.
+     * @relation function setSync(key: string, value: string): void;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]

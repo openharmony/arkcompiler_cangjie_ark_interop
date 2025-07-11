@@ -24,10 +24,14 @@ import ohos.labels.*
 
 let LOGGER = HilogChannel(0, 0xD001560, "CJ-wifi")
 
+/**
+ * Query the Wi-Fi status
+ * @throws {BusinessException} 801 - Capability not supported.
+ * @throws {BusinessException} 2501000 - Operation failed.
+ * @relation function isWifiActive(): boolean;
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.STA"
 ]
@@ -41,9 +45,15 @@ public func isWifiActive(): Bool {
     ret
 }
 
+/**
+ * Obtain the scanned station list. If does't have the permission of ohos.permission.GET_WIFI_PEERS_MAC, return random bssid.
+ * @throws {BusinessException} 201 - Permission denied.
+ * @throws {BusinessException} 801 - Capability not supported.
+ * @throws {BusinessException} 2501000 - Operation failed.
+ * @relation function getScanInfoList(): Array<WifiScanInfo>;
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     permission: "ohos.GET_WIFI_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.STA"
@@ -69,8 +79,16 @@ public func getScanInfoList(): Array<WifiScanInfo> {
     arr
 }
 
+/**
+ * Stop an ongoing p2p connection that is being established.
+ * @throws {BusinessException} 201 - Permission denied.
+ * @throws {BusinessException} 801 - Capability not supported.
+ * @throws {BusinessException} 2801000 - Operation failed.
+ * @throws {BusinessException} 2801001 - Wi-Fi STA disabled.
+ * @relation function p2pCancelConnect(): void;
+ */
 @!APILevel[
-    19,
+    21,
     permission: "ohos.GET_WIFI_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.P2P"
@@ -83,8 +101,16 @@ public func p2pCancelConnect(): Unit {
     }
 }
 
+/**
+ * Start discover Wi-Fi P2P devices.
+ * @throws {BusinessException} 201 - Permission denied.
+ * @throws {BusinessException} 801 - Capability not supported.
+ * @throws {BusinessException} 2801000 - Operation failed.
+ * @throws {BusinessException} 2801001 - Wi-Fi STA disabled.
+ * @relation function startDiscoverDevices(): void;
+ */
 @!APILevel[
-    19,
+    21,
     permission: "ohos.GET_WIFI_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.P2P"

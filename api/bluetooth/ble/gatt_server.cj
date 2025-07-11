@@ -15,7 +15,6 @@
 
 package ohos.bluetooth.ble
 
-import std.sync.AtomicBool
 import ohos.labels.*
 import ohos.base.*
 import std.collection.{ArrayList, HashMap}
@@ -39,12 +38,12 @@ public class GattServer <: RemoteDataLite {
     private let callbackMap = HashMap<BluetoothBleGattServerCallbackType, ArrayList<CallbackObject>>()
     private let registerMap = HashMap<BluetoothBleGattServerCallbackType, Bool>(
         [
-            (CHARACTERISTIC_READ, false),
-            (CHARACTERISTIC_WRITE, false),
-            (DESCRIPTOR_READ, false),
-            (DESCRIPTOR_WRITE, false),
-            (CONNECTION_STATE_CHANGE, false),
-            (BLE_MTU_CHANGE, false)
+            (CharacteristicRead, false),
+            (CharacteristicWrite, false),
+            (DescriptorRead, false),
+            (DescriptorWrite, false),
+            (ConnectionStateChange, false),
+            (BleMtuChange, false)
         ]
     )
 
@@ -249,8 +248,8 @@ public class GattServer <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicReadRequest>): Unit {
-        if (`type` != CHARACTERISTIC_READ) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CHARACTERISTIC_READ")
+        if (`type` != CharacteristicRead) {
+            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CharacteristicRead")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
 
@@ -281,8 +280,8 @@ public class GattServer <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicWriteRequest>): Unit {
-        if (`type` != CHARACTERISTIC_WRITE) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CHARACTERISTIC_WRITE")
+        if (`type` != CharacteristicWrite) {
+            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CharacteristicWrite")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         commonSubscribe1Arg(`type`, callback) {
@@ -312,8 +311,8 @@ public class GattServer <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorReadRequest>): Unit {
-        if (`type` != DESCRIPTOR_READ) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is DESCRIPTOR_READ")
+        if (`type` != DescriptorRead) {
+            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is DescriptorRead")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         commonSubscribe1Arg(`type`, callback) {
@@ -343,8 +342,8 @@ public class GattServer <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorWriteRequest>): Unit {
-        if (`type` != DESCRIPTOR_WRITE) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is DESCRIPTOR_WRITE")
+        if (`type` != DescriptorWrite) {
+            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is DescriptorWrite")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         commonSubscribe1Arg(`type`, callback) {
@@ -374,8 +373,8 @@ public class GattServer <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<BLEConnectionChangeState>): Unit {
-        if (`type` != CONNECTION_STATE_CHANGE) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CONNECTION_STATE_CHANGE")
+        if (`type` != ConnectionStateChange) {
+            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is ConnectionStateChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         commonSubscribe1Arg(`type`, callback) {
@@ -404,8 +403,8 @@ public class GattServer <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<Int32>): Unit {
-        if (`type` != BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BLE_MTU_CHANGE")
+        if (`type` != BluetoothBleGattServerCallbackType.BleMtuChange) {
+            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleMtuChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         commonSubscribe1Arg(`type`, callback) {

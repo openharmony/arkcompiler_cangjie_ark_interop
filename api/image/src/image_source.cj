@@ -81,7 +81,7 @@ foreign {
  * Creates an ImageSource instance based on the URI.
  *
  * @param { String } uri - Image source URI.
- * @brief createImageSource(uri: string): ImageSource
+ * @relation createImageSource(uri: string): ImageSource
  */
 @!APILevel[
     12,
@@ -108,7 +108,7 @@ public func createImageSource(uri: String): ImageSource {
  *
  * @param { String } uri - Image source URI.
  * @param { SourceOptions } options - The config of Image source.
- * @brief createImageSource(uri: string, options: SourceOptions): ImageSource
+ * @relation createImageSource(uri: string, options: SourceOptions): ImageSource
  */
 @!APILevel[
     12,
@@ -134,7 +134,7 @@ public func createImageSource(uri: String, options: SourceOptions): ImageSource 
  * Creates an ImageSource instance based on the file descriptor.
  *
  * @param { Int32 } fd - ID of a file descriptor.
- * @brief createImageSource(fd: number): ImageSource
+ * @relation createImageSource(fd: number): ImageSource
  */
 @!APILevel[
     12,
@@ -155,7 +155,7 @@ public func createImageSource(fd: Int32): ImageSource {
  *
  * @param { Int32 } fd - ID of a file descriptor.
  * @param { SourceOptions } options - The config of Image source.
- * @brief createImageSource(fd: number, options: SourceOptions): ImageSource
+ * @relation createImageSource(fd: number, options: SourceOptions): ImageSource
  */
 @!APILevel[
     12,
@@ -175,7 +175,7 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource {
  * Creates an ImageSource instance based on the buffer.
  *
  * @param { Array<UInt8> } buf - The buffer of the image.
- * @brief createImageSource(buf: ArrayBuffer): ImageSource
+ * @relation createImageSource(buf: ArrayBuffer): ImageSource
  */
 @!APILevel[
     12,
@@ -202,7 +202,7 @@ public func createImageSource(buf: Array<UInt8>): ImageSource {
  *
  * @param { Array<UInt8> } buf - The buffer of the image.
  * @param { SourceOptions } options - The config of Image source.
- * @brief createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+ * @relation createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
  */
 @!APILevel[
     12,
@@ -230,7 +230,7 @@ public func createImageSource(buf: Array<UInt8>, options: SourceOptions): ImageS
  *
  * @param { resourceManager.RawFileDescriptor } rawfile - The raw file descriptor of the image.
  * @param { SourceOptions } options - The config of Image source.
- * @brief function createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+ * @relation function createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
  */
 @!APILevel[
     12,
@@ -252,7 +252,7 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
  *
  * @param { Array<UInt8> } buf - Image buffer array.
  * @param { SourceOptions } options - The config of Image source.
- * @brief function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+ * @relation function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
  */
 @!APILevel[
     12,
@@ -275,6 +275,8 @@ public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions =
 
 /**
  * ImageSource instance.
+ *
+ * @relation interface ImageSource
  */
 @!APILevel[
     12,
@@ -282,11 +284,10 @@ public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions =
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
 public class ImageSource <: RemoteDataLite {
-
     /**
      * Supported image formats.
      *
-     * @brief readonly supportedFormats: Array<string>
+     * @relation readonly supportedFormats: Array<string>
      */
     @!APILevel[
         12,
@@ -321,7 +322,7 @@ public class ImageSource <: RemoteDataLite {
     }
 
     /**
-     * Obtains the count of frame in an image. This method uses a promise to return the number.
+     * Obtains the count of frame in an image.
      *
      * @returns { UInt32> } An instance used to return the number.
      * @throws { BusinessException } 62980096 - If the operation failed.
@@ -331,7 +332,7 @@ public class ImageSource <: RemoteDataLite {
      * @throws { BusinessException } 62980116 - If the image decode failed.
      * @throws { BusinessException } 62980118 - If the image plugin create failed.
      * @throws { BusinessException } 62980122 - If the image decode head abnormal.
-     * @brief getFrameCount(): Promise<number>
+     * @relation getFrameCount(): Promise<number>
      */
     @!APILevel[
         12,
@@ -350,7 +351,7 @@ public class ImageSource <: RemoteDataLite {
      * @param { Int32 } index Sequence number of an image. If this parameter is not specified,
      *  the default value 0 is used.
      * @returns { ImageInfo } An instance used to return the image information.
-     * @brief getImageInfo(index?: number): Promise<ImageInfo>
+     * @relation getImageInfo(index?: number): Promise<ImageInfo>
      */
     @!APILevel[
         12,
@@ -371,13 +372,12 @@ public class ImageSource <: RemoteDataLite {
     }
 
     /**
-     * Obtains the value of a property in an image with the specified index. This method return the property value in a
-     * string.
+     * Obtains the value of a property in an image with the specified index. This method return the property value in a string.
      *
      * @param { string } key Name of the property whose value is to be obtained.
      * @param { GetImagePropertyOptions } options Index of the image.
      * @returns { String } return the property value. If the operation fails, the default value is returned.
-     * @brief getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>
+     * @relation getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>
      */
     @!APILevel[
         12,
@@ -402,12 +402,16 @@ public class ImageSource <: RemoteDataLite {
     }
 
     /**
-     * Modify the value of a property in an image with the specified key. This method uses a
-     * promise to return the property value in a string.
+     * Modify the value of a property in an image with the specified key. 
      *
+     * @throws { BusinessException } 401 - Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;
+     * @throws { BusinessException } 62980123 - The image does not support EXIF decoding.
+     * @throws { BusinessException } 62980133 - The EXIF data is out of range.
+     * @throws { BusinessException } 62980135 - The EXIF value is invalid.
+     * @throws { BusinessException } 62980146 - The EXIF data failed to be written to the file.
      * @param { String } key Name of the property whose value is to be modified.
      * @param { String } value The value to be set to property.
-     * @brief modifyImageProperty(key: string, value: string): Promise<void>
+     * @relation modifyImageProperty(key: string, value: string): Promise<void>
      */
     @!APILevel[
         12,
@@ -433,7 +437,7 @@ public class ImageSource <: RemoteDataLite {
      * @param { Bool } isFinished If is it finished.
      * @param { UInt32 } value The offset of data.
      * @param { UInt32 } length The length fo buf.
-     * @brief updateData(buf: ArrayBuffer, isFinished: boolean, value: number, length: number): Promise<void>
+     * @relation updateData(buf: ArrayBuffer, isFinished: boolean, value: number, length: number): Promise<void>
      */
     @!APILevel[
         12,
@@ -451,12 +455,11 @@ public class ImageSource <: RemoteDataLite {
     }
 
     /**
-     * Creates a PixelMap object based on image decoding parameters. This method uses a promise to
-     * return the object.
+     * Creates a PixelMap object based on image decoding parameters.
      *
      * @param { DecodingOptions } options Image decoding parameters.
      * @returns { PixelMap } An instance used to return the PixelMap object.
-     * @brief createPixelMap(options?: DecodingOptions): Promise<PixelMap>
+     * @relation createPixelMap(options?: DecodingOptions): Promise<PixelMap>
      */
     @!APILevel[
         12,
@@ -472,17 +475,28 @@ public class ImageSource <: RemoteDataLite {
     }
 
     /**
-     * Creates a PixelMap array based on image decoding parameters. This method uses a promise to
-     * return the array.
+     * Creates a PixelMap array based on image decoding parameters.
      *
      * @param { DecodingOptions } options Image decoding parameters.
      * @returns { Array<PixelMap> } An instance used to return the PixelMap array.
-     * @throws { BusinessException } 62980096 - If the operation failed.
-     * @throws { BusinessException } 62980103 - If the image data unsupport.
-     * @throws { BusinessException } 62980110 - If the image source data error.
-     * @throws { BusinessException } 62980111 - If the image source data incomplete.
-     * @throws { BusinessException } 62980118 - If the image plugin create failed.
-     * @brief createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
+     * @throws { BusinessException } 62980096 - The operation failed.
+     * @throws { BusinessException } 62980099 - The shared memory data is abnormal.
+     * @throws { BusinessException } 62980101 - The image data is abnormal.
+     * @throws { BusinessException } 62980103 - The image data is not supported.
+     * @throws { BusinessException } 62980106 - The image is too large.
+     * @throws { BusinessException } 62980109 - Failed to crop the image.
+     * @throws { BusinessException } 62980110 - The image source data is incorrect.
+     * @throws { BusinessException } 62980111 - The image source data is incomplete.
+     * @throws { BusinessException } 62980112 - The image format does not match.
+     * @throws { BusinessException } 62980113 - Unknown image format.
+     * @throws { BusinessException } 62980115 - Invalid image parameter.
+     * @throws { BusinessException } 62980116 - Failed to decode the image.
+     * @throws { BusinessException } 62980118 - Failed to create the image plugin.
+     * @throws { BusinessException } 62980122 - Failed to decode the image header.
+     * @throws { BusinessException } 62980137 - Invalid media operation.
+     * @throws { BusinessException } 62980173 - The DMA memory does not exist.
+      * @throws { BusinessException } 62980174 - The DMA memory data is abnormal.
+     * @relation createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
      */
     @!APILevel[
         12,
@@ -503,17 +517,20 @@ public class ImageSource <: RemoteDataLite {
     }
 
     /**
-     * Obtains the array of delay time in an image. This method uses a promise to return the array.
+     * Obtains the array of delay time in an image. 
      *
      * @returns { Array<UInt32> } An instance used to return the array.
-     * @throws { BusinessException } 62980096 - If the operation failed.
-     * @throws { BusinessException } 62980110 - If the image source data error.
-     * @throws { BusinessException } 62980111 - If the image source data incomplete.
-     * @throws { BusinessException } 62980113 - If the image format unknown.
-     * @throws { BusinessException } 62980116 - If the image decode failed.
-     * @throws { BusinessException } 62980118 - If the image plugin create failed.
-     * @throws { BusinessException } 62980122 - If the image decode head abnormal.
-     * @brief getDelayTimeList(): Promise<Array<number>>;
+     * @throws { BusinessException } 62980096 - The operation failed.
+     * @throws { BusinessException } 62980110 - The image source data is incorrect.
+     * @throws { BusinessException } 62980111 - The image source data is incomplete.
+     * @throws { BusinessException } 62980112 - The image format does not match.
+     * @throws { BusinessException } 62980113 - Unknown image format.
+     * @throws { BusinessException } 62980115 - Invalid image parameter.
+     * @throws { BusinessException } 62980116 - Failed to decode the image.
+     * @throws { BusinessException } 62980118 - Failed to create the image plugin.
+     * @throws { BusinessException } 62980122 - Failed to decode the image header.
+     * @throws { BusinessException } 62980137 - Invalid media operation.
+     * @relation getDelayTimeList(): Promise<Array<number>>;
      */
     @!APILevel[
         12,
@@ -532,6 +549,11 @@ public class ImageSource <: RemoteDataLite {
         }
     }
 
+    /**
+     * Releases an ImageSource instance.
+     *
+     * @relation release(): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,

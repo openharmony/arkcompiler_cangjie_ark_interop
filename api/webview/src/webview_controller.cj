@@ -24,9 +24,7 @@ import std.collection.*
 import ohos.image.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
@@ -38,8 +36,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief constructor(webTag?: string)
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -55,8 +52,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief constructor(webTag?: string)
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -76,8 +72,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief static setWebDebuggingAccess(webDebuggingAccess: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -102,9 +97,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -131,9 +124,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -155,9 +146,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -191,9 +180,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -219,9 +206,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief refresh(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -241,8 +226,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getUserAgent(): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -264,9 +248,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief accessBackward(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -289,9 +271,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief setCustomUserAgent(userAgent: string): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -313,9 +293,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getCustomUserAgent(): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -339,9 +317,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief runJavaScript(script: string, callback: AsyncCallback<string>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -380,8 +356,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief registerJavaScriptProxy(object: object, name: string, methodList: Array<string>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -444,9 +419,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief runJavaScript(script: string, callback: AsyncCallback<string>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -467,8 +440,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief runJavaScript(script: string, callback: AsyncCallback<string>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -492,8 +464,7 @@ public class WebviewController <: RemoteDataLite {
      * brief pageUp(top: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -516,8 +487,7 @@ public class WebviewController <: RemoteDataLite {
      * brief pageDown(bottom: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -541,9 +511,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief scrollTo(x: number, y: number): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -570,9 +538,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief scrollBy(deltaX: number, deltaY: number): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -596,9 +562,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief forward(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -618,9 +582,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief backward(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -641,9 +603,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief backOrForward(step: number): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -663,7 +623,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getPageHeight(): number
      */
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -687,9 +647,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getTitle(): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -713,9 +671,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief zoom(factor: number): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -740,8 +696,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief zoomIn(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -762,8 +717,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief zoomOut(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -783,8 +737,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getHitTestValue(): HitTestValue
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -806,9 +759,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief clearHistory(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -830,19 +781,16 @@ public class WebviewController <: RemoteDataLite {
      * @brief accessStep(step: number): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public func accessStep(step: Int32): Bool {
-        unsafe {
-            var code: Int32 = 0
-            let result = FfiOHOSWebviewCtlAccessStep(getID(), inout code, step)
-            throwIfNotSuccess(code, "WebviewController", "accessStep")
-            return result
-        }
+        
+        var code: Int32 = 0
+        let result = unsafe { FfiOHOSWebviewCtlAccessStep(getID(), inout code, step) }
+        throwIfNotSuccess(code, "WebviewController", "accessStep")
+        return result
     }
 
     /**
@@ -854,8 +802,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getHitTest(): WebHitTestType
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -887,8 +834,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<string>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -921,8 +867,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief enableSafeBrowsing(enable: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -942,8 +887,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief isSafeBrowsingEnabled(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -966,8 +910,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getSecurityLevel(): SecurityLevel
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -990,8 +933,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief isIncognitoMode(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1016,9 +958,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief removeCache(clearRom: boolean): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1038,9 +978,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief getBackForwardEntries(): BackForwardList
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -1062,9 +1000,7 @@ public class WebviewController <: RemoteDataLite {
      * @brief stop(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

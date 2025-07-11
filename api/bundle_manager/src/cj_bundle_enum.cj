@@ -32,84 +32,84 @@ public enum BundleFlag {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_DEFAULT
+    GetBundleInfoDefault
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_APPLICATION
+    GetBundleInfoWithApplication
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_HAP_MODULE
+    GetBundleInfoWithHapModule
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_ABILITY
+    GetBundleInfoWithAbility
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+    GetBundleInfoWithExtensionAbility
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
+    GetBundleInfoWithRequestedPermission
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_METADATA
+    GetBundleInfoWithMetadata
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_DISABLE
+    GetBundleInfoWithDisable
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_SIGNATURE
+    GetBundleInfoWithSignature
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_MENU
+    GetBundleInfoWithMenu
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_ROUTER_MAP
+    GetBundleInfoWithRouterMap
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_BUNDLE_INFO_WITH_SKILL
+    GetBundleInfoWithSkill
     | ...
 
     @!APILevel[
@@ -120,18 +120,18 @@ public enum BundleFlag {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case GET_BUNDLE_INFO_DEFAULT => 0x00000000
-            case GET_BUNDLE_INFO_WITH_APPLICATION => 0x00000001
-            case GET_BUNDLE_INFO_WITH_HAP_MODULE => 0x00000002
-            case GET_BUNDLE_INFO_WITH_ABILITY => 0x00000004
-            case GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY => 0x00000008
-            case GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION => 0x00000010
-            case GET_BUNDLE_INFO_WITH_METADATA => 0x00000020
-            case GET_BUNDLE_INFO_WITH_DISABLE => 0x00000040
-            case GET_BUNDLE_INFO_WITH_SIGNATURE => 0x00000080
-            case GET_BUNDLE_INFO_WITH_MENU => 0x00000100
-            case GET_BUNDLE_INFO_WITH_ROUTER_MAP => 0x00000200
-            case GET_BUNDLE_INFO_WITH_SKILL => 0x00000800
+            case GetBundleInfoDefault => 0x00000000
+            case GetBundleInfoWithApplication => 0x00000001
+            case GetBundleInfoWithHapModule => 0x00000002
+            case GetBundleInfoWithAbility => 0x00000004
+            case GetBundleInfoWithExtensionAbility => 0x00000008
+            case GetBundleInfoWithRequestedPermission => 0x00000010
+            case GetBundleInfoWithMetadata => 0x00000020
+            case GetBundleInfoWithDisable => 0x00000040
+            case GetBundleInfoWithSignature => 0x00000080
+            case GetBundleInfoWithMenu => 0x00000100
+            case GetBundleInfoWithRouterMap => 0x00000200
+            case GetBundleInfoWithSkill => 0x00000800
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -148,25 +148,25 @@ public enum ApplicationFlag {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_APPLICATION_INFO_DEFAULT
+    GetApplicationInfoDefault
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_APPLICATION_INFO_WITH_PERMISSION
+    GetApplicationInfoWithPermission
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_APPLICATION_INFO_WITH_METADATA
+    GetApplicationInfoWithMetadata
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_APPLICATION_INFO_WITH_DISABLE
+    GetApplicationInfoWithDisable
     | ...
 }
 
@@ -181,37 +181,37 @@ public enum AbilityFlag {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_ABILITY_INFO_DEFAULT
+    GetAbilityInfoDefault
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_ABILITY_INFO_WITH_PERMISSION
+    GetAbilityInfoWithPermission
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_ABILITY_INFO_WITH_APPLICATION
+    GetAbilityInfoWithApplication
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_ABILITY_INFO_WITH_METADATA
+    GetAbilityInfoWithMetadata
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_ABILITY_INFO_WITH_DISABLE
+    GetAbilityInfoWithDisable
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_ABILITY_INFO_ONLY_SYSTEM_APP
+    GetAbilityInfoOnlySystemApp
     | ...
 }
 
@@ -226,25 +226,25 @@ public enum ExtensionAbilityFlag {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_EXTENSION_ABILITY_INFO_DEFAULT
+    GetExtensionAbilityInfoDefault
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
+    GetExtensionAbilityInfoWithPermission
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION
+    GetExtensionAbilityInfoWithApplication
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    GET_EXTENSION_ABILITY_INFO_WITH_METADATA
+    GetExtensionAbilityInfoWithMetadata
     | ...
 }
 
@@ -261,7 +261,7 @@ public enum CompatiblePolicy {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    BACKWARD_COMPATIBILITY | ...
+    BackwardCompatibility | ...
 }
 
 @!APILevel[
@@ -275,7 +275,7 @@ public enum ProfileType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    INTENT_PROFILE | ...
+    IntentProfile | ...
 }
 
 @!APILevel[
@@ -291,20 +291,20 @@ public enum BundleType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    APP
+    App
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    ATOMIC_SERVICE
+    AtomicService
     | ...
 
     protected static func parse(val: Int32): BundleType {
         match (val) {
-            case 0 => APP
-            case 1 => ATOMIC_SERVICE
+            case 0 => App
+            case 1 => AtomicService
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -321,19 +321,19 @@ public enum PermissionGrantState {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PERMISSION_DENIED
+    PermissionDenied
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PERMISSION_GRANTED
+    PermissionGranted
     | ...
 
     static func parse(val: Int32): PermissionGrantState {
         match (val) {
-            case -1 => PERMISSION_DENIED
-            case 0 => PERMISSION_GRANTED
+            case -1 => PermissionDenied
+            case 0 => PermissionGranted
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -350,19 +350,19 @@ public enum AbilityType {
         stagemodelonly: false,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PAGE
+    Page
     | @!APILevel[
         12,
         stagemodelonly: false,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    SERVICE
+    Service
     | @!APILevel[
         12,
         stagemodelonly: false,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    DATA
+    Data
     | ...
 }
 
@@ -379,124 +379,124 @@ public enum DisplayOrientation {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    UNSPECIFIED
+    Unspecified
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    LANDSCAPE
+    Landscape
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PORTRAIT
+    Portrait
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    FOLLOW_RECENT
+    FollowRecent
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    LANDSCAPE_INVERTED
+    LandscapeInverted
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PORTRAIT_INVERTED
+    PortraitInverted
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION
+    AutoRotation
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION_LANDSCAPE
+    AutoRotationLandscape
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION_PORTRAIT
+    AutoRotationPortrait
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION_RESTRICTED
+    AutoRotationRestricted
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION_LANDSCAPE_RESTRICTED
+    AutoRotationLandscapeRestricted
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION_PORTRAIT_RESTRICTED
+    AutoRotationPortraitRestricted
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    LOCKED
+    Locked
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    AUTO_ROTATION_UNSPECIFIED
+    AutoRotationUnspecified
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    FOLLOW_DESKTOP
+    FollowDesktop
     | ...
 
     static func parse(val: Int32): DisplayOrientation {
         match (val) {
-            case 0 => UNSPECIFIED
-            case 1 => LANDSCAPE
-            case 2 => PORTRAIT
-            case 3 => FOLLOW_RECENT
-            case 4 => LANDSCAPE_INVERTED
-            case 5 => PORTRAIT_INVERTED
-            case 6 => AUTO_ROTATION
-            case 7 => AUTO_ROTATION_LANDSCAPE
-            case 8 => AUTO_ROTATION_PORTRAIT
-            case 9 => AUTO_ROTATION_RESTRICTED
-            case 10 => AUTO_ROTATION_LANDSCAPE_RESTRICTED
-            case 11 => AUTO_ROTATION_PORTRAIT_RESTRICTED
-            case 12 => LOCKED
-            case 13 => AUTO_ROTATION_UNSPECIFIED
-            case 14 => FOLLOW_DESKTOP
+            case 0 => Unspecified
+            case 1 => Landscape
+            case 2 => Portrait
+            case 3 => FollowRecent
+            case 4 => LandscapeInverted
+            case 5 => PortraitInverted
+            case 6 => AutoRotation
+            case 7 => AutoRotationLandscape
+            case 8 => AutoRotationPortrait
+            case 9 => AutoRotationRestricted
+            case 10 => AutoRotationLandscapeRestricted
+            case 11 => AutoRotationPortraitRestricted
+            case 12 => Locked
+            case 13 => AutoRotationUnspecified
+            case 14 => FollowDesktop
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -511,20 +511,20 @@ public enum DisplayOrientation {
 public enum SupportWindowMode {
     @!APILevel[12, atomicservice: true, stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"]
-    FULL_SCREEN
+    FullScreen
     | @!APILevel[12, atomicservice: true, stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"]
-    SPLIT
+    Split
     | @!APILevel[12, atomicservice: true, stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"]
-    FLOATING
+    Floating
     | ...
 
     static func parse(val: Int32): SupportWindowMode {
         match (val) {
-            case 0 => FULL_SCREEN
-            case 1 => SPLIT
-            case 2 => FLOATING
+            case 0 => FullScreen
+            case 1 => Split
+            case 2 => Floating
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -545,7 +545,7 @@ public enum LaunchType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    SINGLETON
+    Singleton
     | @!APILevel[
         12,
         atomicservice: true,
@@ -553,21 +553,21 @@ public enum LaunchType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    MULTITON
+    Multiton
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    SPECIFIED
+    Specified
     | ...
 
     static func parse(val: Int32): LaunchType {
         match (val) {
-            case 0 => SINGLETON
-            case 1 => MULTITON
-            case 2 => SPECIFIED
+            case 0 => Singleton
+            case 1 => Multiton
+            case 2 => Specified
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -586,166 +586,166 @@ public enum ExtensionAbilityType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    FORM
+    Form
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    WORK_SCHEDULER
+    WorkScheduler
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    INPUT_METHOD
+    InputMethod
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    SERVICE
+    Service
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    ACCESSIBILITY
+    Accessibility
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    DATA_SHARE
+    DataShare
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    FILE_SHARE
+    FileShare
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    STATIC_SUBSCRIBER
+    StaticSubscriber
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    WALLPAPER
+    Wallpaper
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    BACKUP
+    Backup
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    WINDOW
+    Window
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    ENTERPRISE_ADMIN
+    EnterpriseAdmin
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    THUMBNAIL
+    Thumbnail
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PREVIEW
+    Preview
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PRINT
+    Print
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    SHARE
+    Share
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    PUSH
+    Push
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    DRIVER
+    Driver
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    ACTION
+    Action
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    ADS_SERVICE
+    AdsService
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    EMBEDDED_UI
+    EmbeddedUI
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    INSIGHT_INTENT_UI
+    InsightIntentUI
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    UNSPECIFIED
+    Unspecified
     | ...
 
     static func parse(val: Int32): ExtensionAbilityType {
         match (val) {
-            case 0 => FORM
-            case 1 => WORK_SCHEDULER
-            case 2 => INPUT_METHOD
-            case 3 => SERVICE
-            case 4 => ACCESSIBILITY
-            case 5 => DATA_SHARE
-            case 6 => FILE_SHARE
-            case 7 => STATIC_SUBSCRIBER
-            case 8 => WALLPAPER
-            case 9 => BACKUP
-            case 10 => WINDOW
-            case 11 => ENTERPRISE_ADMIN
-            case 13 => THUMBNAIL
-            case 14 => PREVIEW
-            case 15 => PRINT
-            case 16 => SHARE
-            case 17 => PUSH
-            case 18 => DRIVER
-            case 19 => ACTION
-            case 20 => ADS_SERVICE
-            case 21 => EMBEDDED_UI
-            case 22 => INSIGHT_INTENT_UI
-            case 255 => UNSPECIFIED
+            case 0 => Form
+            case 1 => WorkScheduler
+            case 2 => InputMethod
+            case 3 => Service
+            case 4 => Accessibility
+            case 5 => DataShare
+            case 6 => FileShare
+            case 7 => StaticSubscriber
+            case 8 => Wallpaper
+            case 9 => Backup
+            case 10 => Window
+            case 11 => EnterpriseAdmin
+            case 13 => Thumbnail
+            case 14 => Preview
+            case 15 => Print
+            case 16 => Share
+            case 17 => Push
+            case 18 => Driver
+            case 19 => Action
+            case 20 => AdsService
+            case 21 => EmbeddedUI
+            case 22 => InsightIntentUI
+            case 255 => Unspecified
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -764,28 +764,28 @@ public enum ModuleType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    ENTRY
+    Entry
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    FEATURE
+    Feature
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    SHARED
+    Shared
     | ...
 
     static func parse(val: Int32): ModuleType {
         match (val) {
-            case 1 => ENTRY
-            case 2 => FEATURE
-            case 3 => SHARED
+            case 1 => Entry
+            case 2 => Feature
+            case 3 => Shared
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -802,26 +802,26 @@ public enum MultiAppModeType {
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    UNSPECIFIED
+    Unspecified
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    MULTI_INSTANCE
+    MultiInstance
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
-    APP_CLONE
+    AppClone
     | ...
 
     static func parse(val: UInt8): MultiAppModeType {
         match (val) {
-            case 0 => UNSPECIFIED
-            case 1 => MULTI_INSTANCE
-            case 2 => APP_CLONE
+            case 0 => Unspecified
+            case 1 => MultiInstance
+            case 2 => AppClone
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }

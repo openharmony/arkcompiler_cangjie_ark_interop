@@ -24,8 +24,7 @@ import std.sync.*
 import ohos.labels.*
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Location.Location.Core"
 ]
@@ -34,8 +33,7 @@ public class GeoLocationManager {
      * @brief getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.APPROXIMATELY_LOCATION",
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
@@ -57,8 +55,7 @@ public class GeoLocationManager {
      * @brief getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.APPROXIMATELY_LOCATION",
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
@@ -82,8 +79,7 @@ public class GeoLocationManager {
      * @brief getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.APPROXIMATELY_LOCATION",
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
@@ -107,8 +103,7 @@ public class GeoLocationManager {
      * @brief isLocationEnabled(): boolean
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]

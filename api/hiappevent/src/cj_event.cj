@@ -36,28 +36,28 @@ public enum EventType {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    FAULT
+    Fault
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    STATISTIC
+    Statistic
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    SECURITY
+    Security
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    BEHAVIOR
+    Behavior
     | ...
 
     @!APILevel[
@@ -69,10 +69,10 @@ public enum EventType {
     public prop value: UInt32 {
         get() {
             match (this) {
-                case FAULT => 1
-                case STATISTIC => 2
-                case SECURITY => 3
-                case BEHAVIOR => 4
+                case Fault => 1
+                case Statistic => 2
+                case Security => 3
+                case Behavior => 4
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -80,10 +80,10 @@ public enum EventType {
 
     static func parse(val: UInt32): EventType {
         match (val) {
-            case 1 => FAULT
-            case 2 => STATISTIC
-            case 3 => SECURITY
-            case 4 => BEHAVIOR
+            case 1 => Fault
+            case 2 => Statistic
+            case 3 => Security
+            case 4 => Behavior
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -102,70 +102,70 @@ public enum ValueType {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    INT(Int32)
+    IntVaule(Int32)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    FLOAT(Float64)
+    FloatValue(Float64)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    STRING(String)
+    StringValue(String)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    BOOL(Bool)
+    BoolValue(Bool)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    ARRSTRING(Array<String>)
+    ArrString(Array<String>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    ARRAYI32(Array<Int32>)
+    ArrI32(Array<Int32>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    ARRAYBOOL(Array<Bool>)
+    ArrBool(Array<Bool>)
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    ARRAYF64(Array<Float64>)
+    ArrF64(Array<Float64>)
     | @!APILevel[
         20,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    INT64(Int64)
+    Int64Value(Int64)
     | @!APILevel[
         20,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    ARRAYINT64(Array<Int64>)
+    ArrInt64(Array<Int64>)
     | ...
 
     @!APILevel[
@@ -177,16 +177,16 @@ public enum ValueType {
     public prop value: String {
         get() {
             match (this) {
-                case INT(v) => v.toString()
-                case FLOAT(v) => v.toString()
-                case STRING(v) => v.toString()
-                case BOOL(v) => v.toString()
-                case ARRSTRING(v) => v.toString()
-                case ARRAYI32(v) => v.toString()
-                case ARRAYBOOL(v) => v.toString()
-                case ARRAYF64(v) => v.toString()
-                case INT64(v) => v.toString()
-                case ARRAYINT64(v) => v.toString()
+                case IntVaule(v) => v.toString()
+                case FloatValue(v) => v.toString()
+                case StringValue(v) => v.toString()
+                case BoolValue(v) => v.toString()
+                case ArrString(v) => v.toString()
+                case ArrI32(v) => v.toString()
+                case ArrBool(v) => v.toString()
+                case ArrF64(v) => v.toString()
+                case Int64Value(v) => v.toString()
+                case ArrInt64(v) => v.toString()
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -206,7 +206,7 @@ public enum Domain {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    OS | ...
+    Os | ...
 
     @!APILevel[
         12,
@@ -217,7 +217,7 @@ public enum Domain {
     public prop value: String {
         get() {
             match (this) {
-                case OS => "OS"
+                case Os => "OS"
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -237,35 +237,35 @@ public enum Event {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    USER_LOGIN
+    UserLogin
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    USER_LOGOUT
+    UserLogout
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    DISTRIBUTED_SERVICE_START
+    DistributedServiceStart
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    APP_CRASH
+    AppCrash
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    APP_FREEZE
+    AppFreeze
     | ...
 
     @!APILevel[
@@ -277,11 +277,11 @@ public enum Event {
     public prop value: String {
         get() {
             match (this) {
-                case USER_LOGIN => "hiappevent.user_login"
-                case USER_LOGOUT => "hiappevent.user_logout"
-                case DISTRIBUTED_SERVICE_START => "hiappevent.distributed_service_start"
-                case APP_CRASH => "APP_CRASH"
-                case APP_FREEZE => "APP_FREEZE"
+                case UserLogin => "hiappevent.user_login"
+                case UserLogout => "hiappevent.user_logout"
+                case DistributedServiceStart => "hiappevent.distributed_service_start"
+                case AppCrash => "APP_CRASH"
+                case AppFreeze => "APP_FREEZE"
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -301,21 +301,21 @@ public enum Param {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    USER_ID
+    UserId
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    DISTRIBUTED_SERVICE_NAME
+    DistributedServiceName
     | @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    DISTRIBUTED_SERVICE_INSTANCE_ID
+    DistributedServiceInstanceId
     | ...
 
     @!APILevel[
@@ -327,9 +327,9 @@ public enum Param {
     public prop value: String {
         get() {
             match (this) {
-                case USER_ID => "user_id"
-                case DISTRIBUTED_SERVICE_NAME => "ds_name"
-                case DISTRIBUTED_SERVICE_INSTANCE_ID => "ds_instance_id"
+                case UserId => "user_id"
+                case DistributedServiceName => "ds_name"
+                case DistributedServiceInstanceId => "ds_instance_id"
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -385,36 +385,41 @@ public class AppEventInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public AppEventInfo(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let domain: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let name: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let event: EventType,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.HiviewDFX.HiAppEvent"
-        ]
-        public let params: Array<Parameters>
-    ) {}
+    public var domain: String
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public var name: String
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public var event: EventType
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public var params: Array<Parameters>
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.HiviewDFX.HiAppEvent"
+    ]
+    public init(domain: String, name: String, event: EventType, params: Array<Parameters>) {
+        this.domain = domain
+        this.name = name
+        this.event = event
+        this.params = params
+    }
 
     init(ret: CAppEventInfo) {
         this.domain = ret.domain.toString()
@@ -459,14 +464,14 @@ public class ConfigOption {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let disable: Bool
+    public var disable: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let maxStorage: String
+    public var maxStorage: String
 
     @!APILevel[
         12,
@@ -474,7 +479,7 @@ public class ConfigOption {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public ConfigOption(maxStorage: String, disable!: Bool = false) {
+    public init(disable!: Bool = false, maxStorage!: String = "10M") {
         this.disable = disable
         this.maxStorage = maxStorage
     }
@@ -493,21 +498,21 @@ public class AppEventReportConfig {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let domain: String
+    public var domain: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let isRealTime: Bool
+    public var isRealTime: Bool
 
     @!APILevel[
         12,
@@ -535,77 +540,77 @@ public class Processor {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let debugMode: Bool
+    public var debugMode: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let routeInfo: String
+    public var routeInfo: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let appId: String
+    public var appId: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onStartReport: Bool
+    public var onStartReport: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onBackgroundReport: Bool
+    public var onBackgroundReport: Bool
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let periodReport: Int64
+    public var periodReport: Int64
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let batchReport: Int64
+    public var batchReport: Int64
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let userIds: Array<String>
+    public var userIds: Array<String>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let userProperties: Array<String>
+    public var userProperties: Array<String>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let eventConfigs: Array<AppEventReportConfig>
+    public var eventConfigs: Array<AppEventReportConfig>
 
     @!APILevel[
         12,
@@ -644,28 +649,28 @@ public class AppEventPackage {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let packageId: Int32
+    public var packageId: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let row: Int32
+    public var row: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let size: Int32
+    public var size: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let data: Array<String>
+    public var data: Array<String>
 
     @!APILevel[
         12,
@@ -694,21 +699,21 @@ public class TriggerCondition {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let row: Int32
+    public var row: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let size: Int32
+    public var size: Int32
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let timeOut: Int32
+    public var timeOut: Int32
 
     @!APILevel[
         12,
@@ -736,21 +741,21 @@ public class AppEventFilter {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let domain: String
+    public var domain: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let eventTypes: Array<EventType>
+    public var eventTypes: Array<EventType>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let names: Array<String>
+    public var names: Array<String>
 
     @!APILevel[
         12,
@@ -778,14 +783,14 @@ public class AppEventGroup {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let appEventInfos: Array<AppEventInfo>
+    public var appEventInfos: Array<AppEventInfo>
 
     @!APILevel[
         12,
@@ -817,35 +822,35 @@ public class Watcher {
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let name: String
+    public var name: String
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let triggerCondition: TriggerCondition
+    public var triggerCondition: TriggerCondition
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let appEventFilters: Array<AppEventFilter>
+    public var appEventFilters: Array<AppEventFilter>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onTrigger: Option<(Int32, Int32, AppEventPackageHolder) -> Unit>
+    public var onTrigger: Option<(Int32, Int32, AppEventPackageHolder) -> Unit>
     @!APILevel[
         12,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
-    public let onReceive: Option<(String, Array<AppEventGroup>) -> Unit>
+    public var onReceive: Option<(String, Array<AppEventGroup>) -> Unit>
 
     @!APILevel[
         12,
@@ -903,68 +908,68 @@ func readValueType(valueType: UInt8, value: CPointer<Unit>, size: Int64): ValueT
                     throw IllegalMemoryException("Out of Memory!")
                 }
                 var res = CPointer<Int32>(value).read()
-                return INT(res)
+                return IntVaule(res)
             case 1 =>
                 if (value.isNull()) {
                     throw IllegalMemoryException("Out of Memory!")
                 }
                 var res = CPointer<Float64>(value).read()
-                return FLOAT(res)
+                return FloatValue(res)
             case 2 =>
                 if (value.isNull()) {
-                    return STRING("")
+                    return StringValue("")
                 }
                 var res = CString(CPointer<UInt8>(value))
-                return STRING(res.toString())
+                return StringValue(res.toString())
             case 3 =>
                 if (value.isNull()) {
                     throw IllegalMemoryException("Out of Memory!")
                 }
                 var res = CPointer<Bool>(value).read()
-                return BOOL(res)
+                return BoolValue(res)
             case 4 =>
                 var res = ArrayList<Int32>()
                 if (value.isNull()) {
-                    return ARRAYI32(res.toArray())
+                    return ArrI32(res.toArray())
                 }
                 for (i in 0..size) {
                     res.add(CPointer<Int32>(value).read(i))
                 }
-                return ARRAYI32(res.toArray())
+                return ArrI32(res.toArray())
             case 5 =>
                 var res = ArrayList<Float64>()
                 if (value.isNull()) {
-                    return ARRAYF64(res.toArray())
+                    return ArrF64(res.toArray())
                 }
                 for (i in 0..size) {
                     res.add(CPointer<Float64>(value).read(i))
                 }
-                return ARRAYF64(res.toArray())
+                return ArrF64(res.toArray())
             case 6 =>
                 var res = ArrayList<String>()
                 if (value.isNull()) {
-                    return ARRSTRING(res.toArray())
+                    return ArrString(res.toArray())
                 }
                 let data = (CPointer<CString>(value))
                 for (i in 0..size) {
                     res.add(data.read(i).toString())
                 }
-                return ARRSTRING(res.toArray())
+                return ArrString(res.toArray())
             case 7 =>
                 var res = ArrayList<Bool>()
                 if (value.isNull()) {
-                    return ARRAYBOOL(res.toArray())
+                    return ArrBool(res.toArray())
                 }
                 for (i in 0..size) {
                     res.add(CPointer<Bool>(value).read(i))
                 }
-                return ARRAYBOOL(res.toArray())
+                return ArrBool(res.toArray())
             case 8 =>
                 if (value.isNull()) {
                     throw IllegalMemoryException("Out of Memory!")
                 }
                 var res = CPointer<Int64>(value).read()
-                return INT64(res)
+                return Int64Value(res)
             case 9 =>
                 var res = ArrayList<Int64>()
                 if (value.isNull()) {
@@ -973,7 +978,7 @@ func readValueType(valueType: UInt8, value: CPointer<Unit>, size: Int64): ValueT
                 for (i in 0..size) {
                     res.add(CPointer<Int64>(value).read(i))
                 }
-                return ARRAYINT64(res.toArray())
+                return ArrInt64(res.toArray())
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }

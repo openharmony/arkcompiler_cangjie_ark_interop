@@ -34,6 +34,7 @@ foreign {
  *
  * @returns { Random } returns the created rand instance.
  * @throws { BusinessException } 17620001 - memory error.
+ * @relation function createRandom(): Random;
  */
 @!APILevel[
     12,
@@ -54,6 +55,7 @@ public func createRandom(): Random {
 /**
  * Provides the random interface.
  *
+ * @relation interface Random
  */
 @!APILevel[
     12,
@@ -72,10 +74,10 @@ public class Random <: RemoteDataLite {
     }
 
     /**
-     * Indicates the algorithm name.
+     * Indicates the random generation algorithm name.
      *
      * @type { String }
-     * @brief algName : string
+     * @relation algName : string
      */
     @!APILevel[
         12,
@@ -101,9 +103,11 @@ public class Random <: RemoteDataLite {
      *
      * @param { Int32 } len - indicates the length of random DataBlob.
      * @returns { DataBlob } return the generated random blob.
-     * @throws { BusinessException } 401 - invalid parameters.
+     * @throws { BusinessException } 401 - invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
      * @throws { BusinessException } 17620001 - memory error.
      * @throws { BusinessException } 17630001 - crypto operation error.
+     * @relation generateRandomSync(len: number): DataBlob;
      */
     @!APILevel[
         12,
@@ -128,6 +132,7 @@ public class Random <: RemoteDataLite {
      *
      * @param { DataBlob } seed - indicates the seed DataBlob.
      * @throws { BusinessException } 17620001 - memory error.
+     * @relation setSeed(seed: DataBlob): void;
      */
     @!APILevel[
         12,

@@ -161,28 +161,28 @@ public enum MemberType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    INT64(Int64)
+    Int64Value(Int64)
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    STRING(String)
+    StringValue(String)
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    BOOL(Bool)
+    BoolValue(Bool)
     | ...
 
     func getType(): String {
         match (this) {
-            case INT64(v) => "getNumber()"
-            case STRING(v) => "getString()"
-            case BOOL(v) => "getBool()"
+            case Int64Value(v) => "getNumber()"
+            case StringValue(v) => "getString()"
+            case BoolValue(v) => "getBool()"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -195,7 +195,7 @@ public enum MemberType {
     ]
     public func getNumber(): Int64 {
         match (this) {
-            case INT64(v) => v
+            case Int64Value(v) => v
             case _ => throw IllegalArgumentException(
                 "This data is not Int64 type. Please use ${getType()} to obtain the value.")
         }
@@ -209,7 +209,7 @@ public enum MemberType {
     ]
     public func getString(): String {
         match (this) {
-            case STRING(v) => v
+            case StringValue(v) => v
             case _ => throw IllegalArgumentException(
                 "This data is not String type. Please use ${getType()} to obtain the value.")
         }
@@ -223,7 +223,7 @@ public enum MemberType {
     ]
     public func getBool(): Bool {
         match (this) {
-            case BOOL(v) => v
+            case BoolValue(v) => v
             case _ => throw IllegalArgumentException(
                 "This data is not Bool type. Please use ${getType()} to obtain the value.")
         }
@@ -250,22 +250,26 @@ public class FetchOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public FetchOptions(
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var fetchColumns!: Array<String> = [],
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var predicates!: DataSharePredicates = DataSharePredicates()
-    ) {}
+    public var fetchColumns: Array<String>
+
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var predicates: DataSharePredicates
+
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(fetchColumns: Array<String>, predicates: DataSharePredicates) {
+        this.fetchColumns = fetchColumns
+        this.predicates = predicates
+    }
 
     func toCFetchOptions(): CFetchOptions {
         unsafe {
@@ -296,21 +300,21 @@ public enum AlbumType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    USER
+    User
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    SYSTEM
+    System
     | ...
 
     protected prop value: Int32 {
         get() {
             match (this) {
-                case USER => 0
-                case SYSTEM => 1024
+                case User => 0
+                case System => 1024
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -318,8 +322,8 @@ public enum AlbumType {
 
     static func parse(value: Int32): AlbumType {
         match (value) {
-            case 0 => USER
-            case 1024 => SYSTEM
+            case 0 => User
+            case 1024 => System
             case _ => throw IllegalArgumentException("Invalid AlbumType value.")
         }
     }
@@ -346,45 +350,45 @@ public enum AlbumSubtype {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    USER_GENERIC
+    UserGeneric
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    FAVORITE
+    Favorite
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    VIDEO
+    Video
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    IMAGE
+    Image
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    ANY
+    Any
     | ...
 
     protected prop value: Int32 {
         get() {
             match (this) {
-                case USER_GENERIC => 1
-                case FAVORITE => 1025
-                case VIDEO => 1026
-                case IMAGE => 1031
-                case ANY => 2147483647
+                case UserGeneric => 1
+                case Favorite => 1025
+                case Video => 1026
+                case Image => 1031
+                case Any => 2147483647
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -392,11 +396,11 @@ public enum AlbumSubtype {
 
     static func parse(value: Int32): AlbumSubtype {
         match (value) {
-            case 1 => USER_GENERIC
-            case 1025 => FAVORITE
-            case 1026 => VIDEO
-            case 1031 => IMAGE
-            case 2147483647 => ANY
+            case 1 => UserGeneric
+            case 1025 => Favorite
+            case 1026 => Video
+            case 1031 => Image
+            case 2147483647 => Any
             case _ => throw IllegalArgumentException("Invalid AlbumSubtype value.")
         }
     }
@@ -426,7 +430,7 @@ public enum PhotoType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    IMAGE
+    Image
     | @!APILevel[
         19,
         atomicservice: true,
@@ -434,14 +438,14 @@ public enum PhotoType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    VIDEO
+    Video
     | ...
 
     protected prop value: Int32 {
         get() {
             match (this) {
-                case IMAGE => 1
-                case VIDEO => 2
+                case Image => 1
+                case Video => 2
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -449,8 +453,8 @@ public enum PhotoType {
 
     static func parse(value: Int32): PhotoType {
         match (value) {
-            case 1 => IMAGE
-            case 2 => VIDEO
+            case 1 => Image
+            case 2 => Video
             case _ => throw IllegalArgumentException("Invalid PhotoType value.")
         }
     }
@@ -477,29 +481,29 @@ public enum PhotoSubtype {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DEFAULT
+    Default
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    MOVING_PHOTO
+    MovingPhoto
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    BURST
+    Burst
     | ...
 
     protected prop value: Int32 {
         get() {
             match (this) {
-                case DEFAULT => 0
-                case MOVING_PHOTO => 3
-                case BURST => 4
+                case Default => 0
+                case MovingPhoto => 3
+                case Burst => 4
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -524,27 +528,27 @@ public enum DeliveryMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    FAST_MODE
+    FastMode
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    HIGH_QUALITY_MODE
+    HighQualityMode
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    BALANCE_MODE
+    BalanceMode
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case FAST_MODE => 0
-                case HIGH_QUALITY_MODE => 1
-                case BALANCE_MODE => 2
+                case FastMode => 0
+                case HighQualityMode => 1
+                case BalanceMode => 2
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -575,7 +579,7 @@ public enum PhotoViewMIMETypes {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    IMAGE_TYPE
+    ImageType
     | @!APILevel[
         19,
         atomicservice: true,
@@ -583,7 +587,7 @@ public enum PhotoViewMIMETypes {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    VIDEO_TYPE
+    VideoType
     | @!APILevel[
         19,
         atomicservice: true,
@@ -591,23 +595,23 @@ public enum PhotoViewMIMETypes {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    IMAGE_VIDEO_TYPE
+    ImageVideoType
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    MOVING_PHOTO_IMAGE_TYPE
+    MovingPhotoImageType
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case IMAGE_TYPE => 0
-                case VIDEO_TYPE => 1
-                case IMAGE_VIDEO_TYPE => 2
-                case MOVING_PHOTO_IMAGE_TYPE => 3
+                case ImageType => 0
+                case VideoType => 1
+                case ImageVideoType => 2
+                case MovingPhotoImageType => 3
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -635,85 +639,85 @@ public enum RecommendationType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    QR_OR_BAR_CODE
+    QrOrBarCode
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    QR_CODE
+    QrCode
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    BAR_CODE
+    BarCode
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    ID_CARD
+    IDCard
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    PROFILE_PICTURE
+    ProfilePicture
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    PASSPORT
+    PassPort
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    BANK_CARD
+    BankCard
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DRIVER_LICENSE
+    DriverLicense
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DRIVING_LICENSE
+    DrivingLicense
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    FEATURED_SINGLE_PORTRAIT
+    FeaturedSinglePortrait
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case QR_OR_BAR_CODE => 1
-                case QR_CODE => 2
-                case BAR_CODE => 3
-                case ID_CARD => 4
-                case PROFILE_PICTURE => 5
-                case PASSPORT => 6
-                case BANK_CARD => 7
-                case DRIVER_LICENSE => 8
-                case DRIVING_LICENSE => 9
-                case FEATURED_SINGLE_PORTRAIT => 10
+                case QrOrBarCode => 1
+                case QrCode => 2
+                case BarCode => 3
+                case IDCard => 4
+                case ProfilePicture => 5
+                case PassPort => 6
+                case BankCard => 7
+                case DriverLicense => 8
+                case DrivingLicense => 9
+                case FeaturedSinglePortrait => 10
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -738,13 +742,13 @@ public enum DynamicRangeType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    SDR
+    Sdr
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    HDR
+    Hdr
     | ...
 }
 
@@ -769,21 +773,21 @@ public enum ResourceType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    IMAGE_RESOURCE
+    ImageResource
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    VIDEO_RESOURCE
+    VideoResource
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case IMAGE_RESOURCE => 1
-                case VIDEO_RESOURCE => 2
+                case ImageResource => 1
+                case VideoResource => 2
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -810,36 +814,44 @@ public class PhotoCreationConfig {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public PhotoCreationConfig(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let fileNameExtension: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let photoType: PhotoType,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let title!: String = "",
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let subtype!: PhotoSubtype = DEFAULT
-    ) {}
+    public var fileNameExtension: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var photoType: PhotoType
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var title: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var subtype: PhotoSubtype
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(fileNameExtension: String, photoType: PhotoType, title!: String = "", subtype!: PhotoSubtype = Default) {
+        this.fileNameExtension = fileNameExtension
+        this.photoType = photoType
+        this.title = title
+        this.subtype = subtype
+    }
 
     func toCPhotoCreationConfig(): CPhotoCreationConfig {
         var cFileNameExtension: CString = CString(CPointer())
@@ -876,40 +888,40 @@ public enum NotifyType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    NOTIFY_ADD
+    NotifyAdd
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    NOTIFY_UPDATE
+    NotifyUpdate
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    NOTIFY_REMOVE
+    NotifyRemove
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    NOTIFY_ALBUM_ADD_ASSET
+    NotifyAlbumAddAsset
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    NOTIFY_ALBUM_REMOVE_ASSET
+    NotifyAlbumRemoveAsset
     | ...
 
     static func parse(value: Int32): NotifyType {
         match (value) {
-            case 0 => NOTIFY_ADD
-            case 1 => NOTIFY_UPDATE
-            case 2 => NOTIFY_REMOVE
-            case 3 => NOTIFY_ALBUM_ADD_ASSET
-            case 4 => NOTIFY_ALBUM_REMOVE_ASSET
+            case 0 => NotifyAdd
+            case 1 => NotifyUpdate
+            case 2 => NotifyRemove
+            case 3 => NotifyAlbumAddAsset
+            case 4 => NotifyAlbumRemoveAsset
             case _ => throw IllegalArgumentException("Invalid NotifyType value.")
         }
     }
@@ -927,26 +939,32 @@ public enum NotifyType {
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
 public class ChangeData {
-    protected ChangeData(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let `type`: NotifyType,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let uris: Array<String>,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let extraUris: Array<String>
-    ) {}
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var `type`: NotifyType
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var uris: Array<String>
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var extraUris: Array<String>
+
+    protected ChangeData(`type`: NotifyType, uris: Array<String>, extraUris: Array<String>) {
+        this.`type` = `type`
+        this.uris = uris
+        this.extraUris = extraUris
+    }
 }
 
 /**
@@ -969,22 +987,26 @@ public class CreateOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public CreateOptions(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var title!: ?String = None,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var subtype!: ?PhotoSubtype = None
-    ) {}
+    public var title: ?String = None
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var subtype: ?PhotoSubtype
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(title!: ?String = None, subtype!: ?PhotoSubtype = None) {
+        this.title = title
+        this.subtype = subtype
+    }
 }
 
 /**
@@ -1004,14 +1026,16 @@ public class RequestOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public RequestOptions(
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var deliveryMode: DeliveryMode
-    ) {}
+    public var deliveryMode: DeliveryMode
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(deliveryMode: DeliveryMode) {
+        this.deliveryMode = deliveryMode
+    }
 
     func toCRequestOptions(): CRequestOptions {
         return CRequestOptions(deliveryMode.value)
@@ -1040,24 +1064,28 @@ public class PhotoSelectResult {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public PhotoSelectResult(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var photoUris: Array<String>,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var isOriginalPhoto: Bool
-    ) {}
+    public var photoUris: Array<String>
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var isOriginalPhoto: Bool
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(photoUris: Array<String>, isOriginalPhoto: Bool) {
+        this.photoUris = photoUris
+        this.isOriginalPhoto = isOriginalPhoto
+    }
 }
 
 /**
@@ -1080,15 +1108,17 @@ public class TextContextInfo {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public TextContextInfo(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public let text!: String = ""
-    ) {}
+    public var text: String
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(text!: String = "") {
+        this.text = text
+    }
 }
 
 /**
@@ -1110,22 +1140,26 @@ public class RecommendationOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public RecommendationOptions(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var recommendationType!: ?RecommendationType = None,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var textContextInfo!: ?TextContextInfo = None
-    ) {}
+    public var recommendationType: ?RecommendationType
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var textContextInfo: ?TextContextInfo
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(recommendationType!: ?RecommendationType = None, textContextInfo!: ?TextContextInfo = None) {
+        this.recommendationType = recommendationType
+        this.textContextInfo = textContextInfo
+    }
 }
 
 /**
@@ -1150,58 +1184,72 @@ public open class BaseSelectOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public BaseSelectOptions(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var maxSelectNumber!: Int32 = 50,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var isPhotoTakingSupported!: Bool = true,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var isSearchSupported!: Bool = true,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var preselectedUris!: Array<String> = Array<String>(),
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
-        ]
-        public var isPreviewForSingleSelectionSupported!: Bool = true
-    ) {}
+    public var MIMEType: PhotoViewMIMETypes
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var maxSelectNumber: Int32
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var isPhotoTakingSupported: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var isSearchSupported: Bool
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var recommendationOptions: RecommendationOptions
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var preselectedUris: Array<String>
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public var isPreviewForSingleSelectionSupported: Bool
+
+    private let impl_: BaseSelectOptionsImpl = BaseSelectOptionsImpl()
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+    ]
+    public init(MIMEType!: PhotoViewMIMETypes = ImageVideoType, maxSelectNumber!: Int32 = 50,
+        isPhotoTakingSupported!: Bool = true, isSearchSupported!: Bool = true,
+        recommendationOptions!: RecommendationOptions = RecommendationOptions(), preselectedUris!: Array<String> = Array<String>(),
+        isPreviewForSingleSelectionSupported!: Bool = true
+    ) {
+        this.MIMEType = MIMEType
+        this.maxSelectNumber = maxSelectNumber
+        this.isPhotoTakingSupported = isPhotoTakingSupported
+        this.isSearchSupported = isSearchSupported
+        this.recommendationOptions = recommendationOptions
+        this.preselectedUris = preselectedUris
+        this.isPreviewForSingleSelectionSupported = isPreviewForSingleSelectionSupported
+    }
 }
 
 /**
@@ -1226,21 +1274,24 @@ public class PhotoSelectOptions <: BaseSelectOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public var isEditSupported: Bool = true
+    public var isEditSupported: Bool
+
     @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public var isOriginalSupported: Bool = false
+    public var isOriginalSupported: Bool
+
     @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public var subWindowName: ?String = None
+    public var subWindowName: ?String
+
     @!APILevel[
         19,
         atomicservice: true,
@@ -1248,7 +1299,7 @@ public class PhotoSelectOptions <: BaseSelectOptions {
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
     public init(
-        MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
+        MIMEType!: PhotoViewMIMETypes = ImageVideoType,
         maxSelectNumber!: Int32 = 50,
         isPhotoTakingSupported!: Bool = true,
         isSearchSupported!: Bool = true,
@@ -1295,141 +1346,141 @@ public enum PhotoKeys <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    URI
+    Uri
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    PHOTO_TYPE
+    PhotoType
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DISPLAY_NAME
+    DisplayName
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    SIZE
+    Size
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DATE_ADDED
+    DateAdded
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DATE_MODIFIED
+    DateModified
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DURATION
+    Duration
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    WIDTH
+    Width
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    HEIGHT
+    Height
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DATE_TAKEN
+    DateToken
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    ORIENTATION
+    Orientation
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    FAVORITE
+    Favorite
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    TITLE
+    Title
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DATE_ADDED_MS
+    DateAddedMs
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DATE_MODIFIED_MS
+    DateModifiedMs
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    PHOTO_SUBTYPE
+    PhotoSubType
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DYNAMIC_RANGE_TYPE
+    DynamicRangeType
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    COVER_POSITION
+    CoverPosition
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    BURST_KEY
+    BurstKey
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    LCD_SIZE
+    LcdSize
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    THM_SIZE
+    ThmSize
     | ...
 
     @!APILevel[
@@ -1440,27 +1491,27 @@ public enum PhotoKeys <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case URI => 'uri'
-            case PHOTO_TYPE => 'media_type'
-            case DISPLAY_NAME => 'media_type'
-            case SIZE => 'size'
-            case DATE_ADDED => 'date_added'
-            case DATE_MODIFIED => 'date_modified'
-            case DURATION => 'duration'
-            case WIDTH => 'width'
-            case HEIGHT => 'height'
-            case DATE_TAKEN => 'date_taken'
-            case ORIENTATION => 'orientation'
-            case FAVORITE => 'is_favorite'
-            case TITLE => 'title'
-            case DATE_ADDED_MS => 'date_added_ms'
-            case DATE_MODIFIED_MS => 'date_modified_ms'
-            case PHOTO_SUBTYPE => 'subtype'
-            case DYNAMIC_RANGE_TYPE => 'dynamic_range_type'
-            case COVER_POSITION => 'cover_position'
-            case BURST_KEY => 'burst_key'
-            case LCD_SIZE => 'lcd_size'
-            case THM_SIZE => 'thumb_size'
+            case Uri => 'uri'
+            case PhotoType => 'media_type'
+            case DisplayName => 'media_type'
+            case Size => 'size'
+            case DateAdded => 'date_added'
+            case DateModified => 'date_modified'
+            case Duration => 'duration'
+            case Width => 'width'
+            case Height => 'height'
+            case DateToken => 'date_taken'
+            case Orientation => 'orientation'
+            case Favorite => 'is_favorite'
+            case Title => 'title'
+            case DateAddedMs => 'date_added_ms'
+            case DateModifiedMs => 'date_modified_ms'
+            case PhotoSubType => 'subtype'
+            case DynamicRangeType => 'dynamic_range_type'
+            case CoverPosition => 'cover_position'
+            case BurstKey => 'burst_key'
+            case LcdSize => 'lcd_size'
+            case ThmSize => 'thumb_size'
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1484,13 +1535,13 @@ public enum DefaultChangeUri <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DEFAULT_PHOTO_URI
+    DefaultPhotoUri
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    DEFAULT_ALBUM_URI
+    DefaultAlbumUri
     | ...
 
     @!APILevel[
@@ -1500,8 +1551,8 @@ public enum DefaultChangeUri <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case DEFAULT_PHOTO_URI => 'file://media/Photo'
-            case DEFAULT_ALBUM_URI => 'file://media/PhotoAlbum'
+            case DefaultPhotoUri => 'file://media/Photo'
+            case DefaultAlbumUri => 'file://media/PhotoAlbum'
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1528,14 +1579,14 @@ public enum AlbumKeys <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    URI
+    Uri
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    ALBUM_NAME
+    AlbumName
     | ...
 
     @!APILevel[
@@ -1546,9 +1597,11 @@ public enum AlbumKeys <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case URI => 'uri'
-            case ALBUM_NAME => 'album_name'
+            case Uri => 'uri'
+            case AlbumName => 'album_name'
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
+
+class BaseSelectOptionsImpl {}

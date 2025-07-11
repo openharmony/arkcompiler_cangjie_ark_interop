@@ -57,6 +57,11 @@ foreign {
         option: CPackingOptionV2): UInt32
 }
 
+/**
+ * ImagePacker instance.
+ *
+ * @relation interface ImagePacker
+ */
 @!APILevel[
     12,
     stagemodelonly: true,
@@ -71,6 +76,11 @@ public class ImagePacker <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Supported image formats.
+     *
+     * @relation readonly supportedFormats: Array<string>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -86,7 +96,7 @@ public class ImagePacker <: RemoteDataLite {
     }
 
     /**
-     * Compresses or packs an image and uses a promise to return the result.
+     * Compresses or packs an image.
      *
      * @param { ImageSource } source Image to be processed.
      * @param { PackingOption } option Option for image packing.
@@ -119,7 +129,7 @@ public class ImagePacker <: RemoteDataLite {
     }
 
     /**
-     * Compresses or packs an image and uses a promise to return the result.
+     * Compresses or packs an image.
      *
      * @param { PixelMap } source PixelMap to be processed.
      * @param { PackingOption } option Option for image packing.
@@ -194,7 +204,7 @@ public class ImagePacker <: RemoteDataLite {
     }
 
     /**
-     * Compresses or packs an image into a file and uses a promise to return the result.
+     * Compresses or packs an image into a file.
      *
      * @param { ImageSource } source Image to be processed.
      * @param { IntNative } fd ID of a file descriptor.
@@ -222,6 +232,11 @@ public class ImagePacker <: RemoteDataLite {
         checkRet(ret, "[ImagePacker] packToFile:")
     }
 
+    /**
+     * Releases an ImagePacker instance
+     *
+     * @relation release(): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -233,6 +248,11 @@ public class ImagePacker <: RemoteDataLite {
     }
 }
 
+/**
+ * Creates an ImagePacker instance.
+ *
+ * @relation function createImagePacker(): ImagePacker;
+ */
 @!APILevel[
     12,
     stagemodelonly: true,

@@ -37,266 +37,345 @@ const SYSCAP_WIFI_CORE = 2400000i32
 const SYSCAP_WIFI_STA = 2500000i32
 const SYSCAP_WIFI_P2P = 2800000i32
 
+/**
+ * Wi-Fi device address( mac / bssid ) type.
+ * @relation enum DeviceAddressType
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.Core"
 ]
 public enum DeviceAddressType <: ToString {
+    /**
+     * random device address
+     * @relation RANDOM_DEVICE_ADDRESS
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    RANDOM_DEVICE_ADDRESS
-    | @!APILevel[
-        19,
-        atomicservice: true,
+    RandomDeviceAddress
+    |
+        /**
+         * real device address
+         * @relation REAL_DEVICE_ADDRESS
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    REAL_DEVICE_ADDRESS
+    RealDeviceAddress
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case RANDOM_DEVICE_ADDRESS => 0
-            case REAL_DEVICE_ADDRESS => 1
+            case RandomDeviceAddress => 0
+            case RealDeviceAddress => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): DeviceAddressType {
         match (val) {
-            case 0 => RANDOM_DEVICE_ADDRESS
-            case 1 => REAL_DEVICE_ADDRESS
+            case 0 => RandomDeviceAddress
+            case 1 => RealDeviceAddress
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func tryParse(val: Int32): ?DeviceAddressType {
         match (val) {
-            case 0 => RANDOM_DEVICE_ADDRESS
-            case 1 => REAL_DEVICE_ADDRESS
+            case 0 => RandomDeviceAddress
+            case 1 => RealDeviceAddress
             case _ => None
         }
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     public func toString(): String {
         match (this) {
-            case RANDOM_DEVICE_ADDRESS => "RANDOM_DEVICE_ADDRESS"
-            case REAL_DEVICE_ADDRESS => "REAL_DEVICE_ADDRESS"
+            case RandomDeviceAddress => "RandomDeviceAddress"
+            case RealDeviceAddress => "RealDeviceAddress"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Describes the wifi security type.
+ * @relation enum WifiSecurityType
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.Core"
 ]
 public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
+    /**
+     * Invalid security type
+     * @relation WIFI_SEC_TYPE_INVALID = 0
+     */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_INVALID
-    | @!APILevel[
-        19,
-        atomicservice: true,
+    WifiSecTypeInvalid
+    |
+        /**
+         * Open
+         * @relation WIFI_SEC_TYPE_OPEN = 1
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_OPEN
-    | @!APILevel[
-        19,
+    WifiSecTypeOpen
+    |
+        /**
+         * Wired Equivalent Privacy (WEP)
+         * @relation WIFI_SEC_TYPE_WEP = 2
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_WEP
-    | @!APILevel[
-        19,
+    WifiSecTypeWep
+    |
+        /**
+         * Pre-shared key (PSK)
+         * @relation WIFI_SEC_TYPE_PSK = 3
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_PSK
-    | @!APILevel[
-        19,
+    WifiSecTypePsk
+    |
+        /**
+        * Simultaneous Authentication of Equals (SAE)
+        * @relation WIFI_SEC_TYPE_SAE = 4
+        */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_SAE
-    | @!APILevel[
-        19,
+    WifiSecTypeSae
+    |
+        /**
+        * EAP authentication.
+        * @relation WIFI_SEC_TYPE_EAP = 5
+        */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_EAP
-    | @!APILevel[
-        19,
+    WifiSecTypeEap
+    |
+        /**
+         * SUITE_B_192 192 bit level.
+         * @relation WIFI_SEC_TYPE_EAP_SUITE_B = 6
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_EAP_SUITE_B
-    | @!APILevel[
-        19,
+    WifiSecTypeEapSuiteB
+    |
+        /**
+         * Opportunistic Wireless Encryption.
+         * @relation WIFI_SEC_TYPE_OWE = 7
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_OWE
-    | @!APILevel[
-        19,
+    WifiSecTypeOwe
+    |
+        /**
+         * WAPI certificate to be specified.
+         * @relation WIFI_SEC_TYPE_WAPI_CERT = 8
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_WAPI_CERT
-    | @!APILevel[
-        19,
+    WifiSecTypeWapiCert
+    |
+        /**
+         * WAPI pre-shared key to be specified.
+         * @relation WIFI_SEC_TYPE_WAPI_PSK = 9
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WIFI_SEC_TYPE_WAPI_PSK
+    WifiSecTypeWapiPsk
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case WIFI_SEC_TYPE_INVALID => 0
-            case WIFI_SEC_TYPE_OPEN => 1
-            case WIFI_SEC_TYPE_WEP => 2
-            case WIFI_SEC_TYPE_PSK => 3
-            case WIFI_SEC_TYPE_SAE => 4
-            case WIFI_SEC_TYPE_EAP => 5
-            case WIFI_SEC_TYPE_EAP_SUITE_B => 6
-            case WIFI_SEC_TYPE_OWE => 7
-            case WIFI_SEC_TYPE_WAPI_CERT => 8
-            case WIFI_SEC_TYPE_WAPI_PSK => 9
+            case WifiSecTypeInvalid => 0
+            case WifiSecTypeOpen => 1
+            case WifiSecTypeWep => 2
+            case WifiSecTypePsk => 3
+            case WifiSecTypeSae => 4
+            case WifiSecTypeEap => 5
+            case WifiSecTypeEapSuiteB => 6
+            case WifiSecTypeOwe => 7
+            case WifiSecTypeWapiCert => 8
+            case WifiSecTypeWapiPsk => 9
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): WifiSecurityType {
         match (val) {
-            case 0 => WIFI_SEC_TYPE_INVALID
-            case 1 => WIFI_SEC_TYPE_OPEN
-            case 2 => WIFI_SEC_TYPE_WEP
-            case 3 => WIFI_SEC_TYPE_PSK
-            case 4 => WIFI_SEC_TYPE_SAE
-            case 5 => WIFI_SEC_TYPE_EAP
-            case 6 => WIFI_SEC_TYPE_EAP_SUITE_B
-            case 7 => WIFI_SEC_TYPE_OWE
-            case 8 => WIFI_SEC_TYPE_WAPI_CERT
-            case 9 => WIFI_SEC_TYPE_WAPI_PSK
+            case 0 => WifiSecTypeInvalid
+            case 1 => WifiSecTypeOpen
+            case 2 => WifiSecTypeWep
+            case 3 => WifiSecTypePsk
+            case 4 => WifiSecTypeSae
+            case 5 => WifiSecTypeEap
+            case 6 => WifiSecTypeEapSuiteB
+            case 7 => WifiSecTypeOwe
+            case 8 => WifiSecTypeWapiCert
+            case 9 => WifiSecTypeWapiPsk
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     public operator func ==(that: WifiSecurityType): Bool {
         match ((this, that)) {
-            case (WIFI_SEC_TYPE_INVALID, WIFI_SEC_TYPE_INVALID) => true
-            case (WIFI_SEC_TYPE_OPEN, WIFI_SEC_TYPE_OPEN) => true
-            case (WIFI_SEC_TYPE_WEP, WIFI_SEC_TYPE_WEP) => true
-            case (WIFI_SEC_TYPE_PSK, WIFI_SEC_TYPE_PSK) => true
-            case (WIFI_SEC_TYPE_SAE, WIFI_SEC_TYPE_SAE) => true
-            case (WIFI_SEC_TYPE_EAP, WIFI_SEC_TYPE_EAP) => true
-            case (WIFI_SEC_TYPE_EAP_SUITE_B, WIFI_SEC_TYPE_EAP_SUITE_B) => true
-            case (WIFI_SEC_TYPE_OWE, WIFI_SEC_TYPE_OWE) => true
-            case (WIFI_SEC_TYPE_WAPI_CERT, WIFI_SEC_TYPE_WAPI_CERT) => true
-            case (WIFI_SEC_TYPE_WAPI_PSK, WIFI_SEC_TYPE_WAPI_PSK) => true
+            case (WifiSecTypeInvalid, WifiSecTypeInvalid) => true
+            case (WifiSecTypeOpen, WifiSecTypeOpen) => true
+            case (WifiSecTypeWep, WifiSecTypeWep) => true
+            case (WifiSecTypePsk, WifiSecTypePsk) => true
+            case (WifiSecTypeSae, WifiSecTypeSae) => true
+            case (WifiSecTypeEap, WifiSecTypeEap) => true
+            case (WifiSecTypeEapSuiteB, WifiSecTypeEapSuiteB) => true
+            case (WifiSecTypeOwe, WifiSecTypeOwe) => true
+            case (WifiSecTypeWapiCert, WifiSecTypeWapiCert) => true
+            case (WifiSecTypeWapiPsk, WifiSecTypeWapiPsk) => true
             case _ => false
         }
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     public func toString(): String {
         match (this) {
-            case WIFI_SEC_TYPE_INVALID => "WIFI_SEC_TYPE_INVALID"
-            case WIFI_SEC_TYPE_OPEN => "WIFI_SEC_TYPE_OPEN"
-            case WIFI_SEC_TYPE_WEP => "WIFI_SEC_TYPE_WEP"
-            case WIFI_SEC_TYPE_PSK => "WIFI_SEC_TYPE_PSK"
-            case WIFI_SEC_TYPE_SAE => "WIFI_SEC_TYPE_SAE"
-            case WIFI_SEC_TYPE_EAP => "WIFI_SEC_TYPE_EAP"
-            case WIFI_SEC_TYPE_EAP_SUITE_B => "WIFI_SEC_TYPE_EAP_SUITE_B"
-            case WIFI_SEC_TYPE_OWE => "WIFI_SEC_TYPE_OWE"
-            case WIFI_SEC_TYPE_WAPI_CERT => "WIFI_SEC_TYPE_WAPI_CERT"
-            case WIFI_SEC_TYPE_WAPI_PSK => "WIFI_SEC_TYPE_WAPI_PSK"
+            case WifiSecTypeInvalid => "WifiSecTypeInvalid"
+            case WifiSecTypeOpen => "WifiSecTypeOpen"
+            case WifiSecTypeWep => "WifiSecTypeWep"
+            case WifiSecTypePsk => "WifiSecTypePsk"
+            case WifiSecTypeSae => "WifiSecTypeSae"
+            case WifiSecTypeEap => "WifiSecTypeEap"
+            case WifiSecTypeEapSuiteB => "WifiSecTypeEapSuiteB"
+            case WifiSecTypeOwe => "WifiSecTypeOwe"
+            case WifiSecTypeWapiCert => "WifiSecTypeWapiCert"
+            case WifiSecTypeWapiPsk => "WifiSecTypeWapiPsk"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
+/**
+ * Wi-Fi Category.
+ * @relation enum WifiCategory
+ */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.STA"
 ]
 public enum WifiCategory <: ToString {
+    /**
+     * Default.
+     * @relation DEFAULT = 1
+     */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
-    DEFAULT
-    | @!APILevel[
-        19,
+    Default
+    |
+        /**
+         * Wifi6.
+         * @relation WIFI6 = 2
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
-    WIFI6
-    | @!APILevel[
-        19,
+    Wifi6
+    |
+        /**
+         * Wifi6+.
+         * @relation WIFI6_PLUS = 3
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
-    WIFI6_PLUS
+    Wifi6Plus
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case DEFAULT => 1
-            case WIFI6 => 2
-            case WIFI6_PLUS => 3
+            case Default => 1
+            case Wifi6 => 2
+            case Wifi6Plus => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): WifiCategory {
         match (val) {
-            case 1 => DEFAULT
-            case 2 => WIFI6
-            case 3 => WIFI6_PLUS
+            case 1 => Default
+            case 2 => Wifi6
+            case 3 => Wifi6Plus
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
     public func toString(): String {
         match (this) {
-            case DEFAULT => "DEFAULT"
-            case WIFI6 => "WIFI6"
-            case WIFI6_PLUS => "WIFI6_PLUS"
+            case Default => "Default"
+            case Wifi6 => "Wifi6"
+            case Wifi6Plus => "Wifi6Plus"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

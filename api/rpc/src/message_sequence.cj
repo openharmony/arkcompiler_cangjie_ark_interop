@@ -41,7 +41,7 @@ const BYTE_SIZE_64: UIntNative = 8
  * Bool, BoolArray, UInt8, UInt8Array, String, StringArray,
  * {@link Parcelable}, and ParcelableArray.
  *
- * @syscap SystemCapability.Communication.IPC.Core
+ * @relation class MessageSequence
  */
 @!APILevel[
     19,
@@ -61,7 +61,7 @@ public class MessageSequence <: RemoteDataLite {
      * Creates an empty {@link MessageSequence} object.
      *
      * @returns { MessageSequence } Return the object created.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation static create(): MessageSequence;
      */
     @!APILevel[
         19,
@@ -79,7 +79,7 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reclaim the {@link MessageSequence} object.
      *
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation reclaim(): void;
      */
     @!APILevel[
         19,
@@ -100,7 +100,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The String length exceeds 40960 bytes;
      *     4.The number of bytes copied to the buffer is different from the length of the obtained String.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeInterfaceToken(token: string): void;
      */
     @!APILevel[
         19,
@@ -120,7 +120,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { String } Return a String value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readInterfaceToken(): string;
      */
     @!APILevel[
         19,
@@ -142,7 +142,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the size of data (in bytes) contained in the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the size of data contained in the {@link MessageSequence} object.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation getSize(): number;
      */
     @!APILevel[
         19,
@@ -160,7 +160,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the storage capacity (in bytes) of the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the storage capacity of the {@link MessageSequence} object.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation getCapacity(): number;
      */
     @!APILevel[
         19,
@@ -183,7 +183,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation setSize(size: number): void;
      */
     @!APILevel[
         19,
@@ -206,7 +206,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900011 - Memory allocation failed.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation setCapacity(size: number): void;
      */
     @!APILevel[
         19,
@@ -225,7 +225,7 @@ public class MessageSequence <: RemoteDataLite {
      * the {@link MessageSequence}.
      *
      * @returns { UInt32 } Return the writable data space of the {@link MessageSequence} object.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation getWritableBytes(): number;
      */
     @!APILevel[
         19,
@@ -244,7 +244,7 @@ public class MessageSequence <: RemoteDataLite {
      * <p>Readable data space = Size of data contained in the {@link MessageSequence} – Size of data that has been read.
      *
      * @returns { UInt32 } Return the readable data space of the {@link MessageSequence} object.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation getReadableBytes(): number;
      */
     @!APILevel[
         19,
@@ -262,7 +262,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the current read position in the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the current read position in the {@link MessageSequence} object.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation getReadPosition(): number;
      */
     @!APILevel[
         19,
@@ -280,7 +280,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the current write position in the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the current write position in the {@link MessageSequence} object.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation getWritePosition(): number;
      */
     @!APILevel[
         19,
@@ -303,7 +303,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation rewindWrite(pos: number): void;
      */
     @!APILevel[
         19,
@@ -325,7 +325,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation rewindRead(pos: number): void;
      */
     @!APILevel[
         19,
@@ -344,7 +344,7 @@ public class MessageSequence <: RemoteDataLite {
      * {@link MessageSequence}.
      *
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeNoException(): void;
      */
     @!APILevel[
         19,
@@ -364,7 +364,7 @@ public class MessageSequence <: RemoteDataLite {
      * if {@link writeNoException} was invoked in server side.
      *
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readException(): void;
      */
     @!APILevel[
         19,
@@ -392,7 +392,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeByte(val: number): void;
      */
     @!APILevel[
         19,
@@ -413,7 +413,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeShort(val: number): void;
      */
     @!APILevel[
         19,
@@ -434,7 +434,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeInt(val: number): void;
      */
     @!APILevel[
         19,
@@ -455,7 +455,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeLong(val: number): void;
      */
     @!APILevel[
         19,
@@ -476,7 +476,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeFloat(val: number): void;
      */
     @!APILevel[
         19,
@@ -497,7 +497,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeDouble(val: number): void;
      */
     @!APILevel[
         19,
@@ -518,7 +518,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeBoolean(val: boolean): void;
      */
     @!APILevel[
         19,
@@ -544,7 +544,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeChar(val: number): void;
      */
     @!APILevel[
         19,
@@ -567,7 +567,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The String length exceeds 40960 bytes;
      *     4.The number of bytes copied to the buffer is different from the length of the obtained String.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeString(val: string): void;
      */
     @!APILevel[
         19,
@@ -593,7 +593,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array.
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeParcelable(val: Parcelable): void;
      */
     @!APILevel[
         19,
@@ -621,7 +621,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeByteArray(byteArray: number[]): void;
      */
     @!APILevel[
         19,
@@ -649,7 +649,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeIntArray(intArray: number[]): void;
      */
     @!APILevel[
         19,
@@ -677,7 +677,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeLongArray(longArray: number[]): void;
      */
     @!APILevel[
         19,
@@ -705,7 +705,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeFloatArray(floatArray: number[]): void;
      */
     @!APILevel[
         19,
@@ -733,8 +733,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
-
+     * @relation writeDoubleArray(doubleArray: number[]): void;
      */
     @!APILevel[
         19,
@@ -761,8 +760,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The parameter type does not match;
      *     4.The element does not exist in the array.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
-
+     * @relation writeBooleanArray(booleanArray: boolean[]): void;
      */
     @!APILevel[
         19,
@@ -799,7 +797,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The parameter type does not match;
      *     4.The element does not exist in the array.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeCharArray(charArray: number[]): void;
      */
     @!APILevel[
         19,
@@ -827,7 +825,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The String length exceeds 40960 bytes;
      *     5.The number of bytes copied to the buffer is different from the length of the obtained String.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeStringArray(stringArray: string[]): void;
      */
     @!APILevel[
         19,
@@ -847,7 +845,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int8 } Return a Int8 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readByte(): number;
      */
     @!APILevel[
         19,
@@ -866,7 +864,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int16 } Return a Int16 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readShort(): number;
      */
     @!APILevel[
         19,
@@ -885,7 +883,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int32 } Return an Int32 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readInt(): number;
      */
     @!APILevel[
         19,
@@ -904,7 +902,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int64 } Return a Int64 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readLong(): number;
      */
     @!APILevel[
         19,
@@ -923,7 +921,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Float32 } Return a Float32 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readFloat(): number;
      */
     @!APILevel[
         19,
@@ -942,7 +940,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Float64 } Return a Float64 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readDouble(): number;
      */
     @!APILevel[
         19,
@@ -961,7 +959,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Bool } Return a Bool value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readBoolean(): boolean;
      */
     @!APILevel[
         19,
@@ -984,7 +982,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { UInt8 } Return a UInt8 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readChar(): number;
      */
     @!APILevel[
         19,
@@ -1003,7 +1001,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { String } Return a String value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readString(): string;
      */
     @!APILevel[
         19,
@@ -1030,7 +1028,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readByteArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1048,7 +1046,7 @@ public class MessageSequence <: RemoteDataLite {
      * @returns { Array<Int8> } Return a Int8 array.
      * @throws { BusinessException } 401 - check param failed
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readByteArray(): number[];
      */
     @!APILevel[
         19,
@@ -1073,7 +1071,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readShortArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1090,7 +1088,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Int16> } Return a Int16 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readShortArray(): number[];
      */
     @!APILevel[
         19,
@@ -1115,7 +1113,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readIntArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1132,7 +1130,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Int32> } Return an Int32 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readIntArray(): number[];
      */
     @!APILevel[
         19,
@@ -1157,7 +1155,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readLongArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1174,7 +1172,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Int64> } Return a Int64 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readLongArray(): number[];
      */
     @!APILevel[
         19,
@@ -1199,7 +1197,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readFloatArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1216,7 +1214,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Float32> } Return a Float32 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readFloatArray(): number[];
      */
     @!APILevel[
         19,
@@ -1241,7 +1239,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readDoubleArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1258,7 +1256,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Float64> } Return a Float64 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readDoubleArray(): number[];
      */
     @!APILevel[
         19,
@@ -1283,7 +1281,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readBooleanArray(dataIn: boolean[]): void;
      */
     @!APILevel[
         19,
@@ -1300,7 +1298,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Bool> } Return a Bool array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readBooleanArray(): boolean[];
      */
     @!APILevel[
         19,
@@ -1325,7 +1323,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readCharArray(dataIn: number[]): void;
      */
     @!APILevel[
         19,
@@ -1342,7 +1340,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<UInt8> } Return a UInt8 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readCharArray(): number[];
      */
     @!APILevel[
         19,
@@ -1367,7 +1365,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readStringArray(dataIn: string[]): void;
      */
     @!APILevel[
         19,
@@ -1384,7 +1382,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<String> } Return a String array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readStringArray(): string[];
      */
     @!APILevel[
         19,
@@ -1409,7 +1407,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation static closeFileDescriptor(fd: number): void;
      */
     @!APILevel[
         19,
@@ -1429,7 +1427,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900013 - Failed to call dup.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation static dupFileDescriptor(fd: number): number;
      */
     @!APILevel[
         19,
@@ -1449,7 +1447,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Bool } Return {@code true} if the {@link MessageSequence} object contains a file descriptor;
      *                      return {@code false} otherwise.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation containFileDescriptors(): boolean;
      */
     @!APILevel[
         19,
@@ -1471,7 +1469,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeFileDescriptor(fd: number): void;
      */
     @!APILevel[
         19,
@@ -1489,7 +1487,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int32 } Return a file descriptor obtained.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readFileDescriptor(): number;
      */
     @!APILevel[
         19,
@@ -1511,7 +1509,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter is not an instance of the Ashmem object.
      * @throws { BusinessException } 1900003 - Failed to write data to the shared memory.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeAshmem(ashmem: Ashmem): void;
      */
     @!APILevel[
         19,
@@ -1530,7 +1528,7 @@ public class MessageSequence <: RemoteDataLite {
      * @returns { Ashmem } Return the anonymous share object obtained.
      * @throws { BusinessException } 401 - check param failed
      * @throws { BusinessException } 1900004 - Failed to read data from the shared memory.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readAshmem(): Ashmem;
      */
     @!APILevel[
         19,
@@ -1547,8 +1545,8 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Obtains the maximum amount of raw data that can be sent in a time.
      *
-     * @returns { number } 128 MB.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @returns { UInt32 } 128 MB.
+     * @relation getRawDataCapacity(): number;
      */
     @!APILevel[
         19,
@@ -1563,7 +1561,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<Int8> object into this {@Link MessageSequence} object.
      *
      * @param { Array<Int8> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1571,9 +1569,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1596,7 +1594,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<UInt8> object into this {@Link MessageSequence} object.
      *
      * @param { Array<UInt8> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1604,9 +1602,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1629,7 +1627,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<Int16> object into this {@Link MessageSequence} object.
      *
      * @param { Array<Int16> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1637,9 +1635,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1662,7 +1660,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<UInt16> object into this {@Link MessageSequence} object.
      *
      * @param { Array<UInt16> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1670,9 +1668,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1695,7 +1693,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<Int32> object into this {@Link MessageSequence} object.
      *
      * @param { Array<Int32> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1703,9 +1701,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1728,7 +1726,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<UInt32> object into this {@Link MessageSequence} object.
      *
      * @param { Array<UInt32> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1736,9 +1734,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1761,7 +1759,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<Int64> object into this {@Link MessageSequence} object.
      *
      * @param { Array<Int64> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1769,9 +1767,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1794,7 +1792,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<UInt64> object into this {@Link MessageSequence} object.
      *
      * @param { Array<UInt64> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1802,9 +1800,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1827,7 +1825,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<Float32> object into this {@Link MessageSequence} object.
      *
      * @param { Array<Float32> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1835,9 +1833,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1860,7 +1858,7 @@ public class MessageSequence <: RemoteDataLite {
     }
 
     /**
-     * Writes the data in an ArrayBuffer object into this {@Link MessageSequence} object.
+     * Writes the data in an Array<Float64> object into this {@Link MessageSequence} object.
      *
      * @param { Array<Float64> } buf - Data to write.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
@@ -1868,9 +1866,9 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match;
      *     4.The obtained value of typeCode is incorrect;
-     *     5.Failed to obtain arrayBuffer information.
+     *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
         19,
@@ -1895,13 +1893,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<Int8> } Returns the Arraybuffer obtained.
+     * @returns { Array<Int8> } Returns the Array<Int8> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -1920,13 +1918,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<UInt8> } Returns the Arraybuffer obtained.
+     * @returns { Array<UInt8> } Returns the Array<UInt8> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -1945,13 +1943,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<Int16> } Returns the Arraybuffer obtained.
+     * @returns { Array<Int16> } Returns the Array<Int16> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -1970,13 +1968,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<UInt16> } Returns the Arraybuffer obtained.
+     * @returns { Array<UInt16> } Returns the Array<UInt16> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -1995,13 +1993,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<Int32> } Returns the Arraybuffer obtained.
+     * @returns { Array<Int32> } Returns the Array<Int32> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -2020,13 +2018,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<UInt32> } Returns the Arraybuffer obtained.
+     * @returns { Array<UInt32> } Returns the Array<UInt32> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -2045,13 +2043,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<Int64> } Returns the Arraybuffer obtained.
+     * @returns { Array<Int64> } Returns the Array<Int64> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -2070,13 +2068,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<UInt64> } Returns the Arraybuffer obtained.
+     * @returns { Array<UInt64> } Returns the Array<UInt64> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -2095,13 +2093,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<Float32> } Returns the Arraybuffer obtained.
+     * @returns { Array<Float32> } Returns the Array<Float32> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -2120,13 +2118,13 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reads raw data from this {@link MessageSequence} object.
      *
-     * @returns { Array<Float64> } Returns the Arraybuffer obtained.
+     * @returns { Array<Float64> } Returns the Array<Float64> obtained.
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
         19,
@@ -2150,7 +2148,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeParcelable(val: Parcelable): void;
      */
     @!APILevel[
         19,
@@ -2177,7 +2175,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
      * @throws { BusinessException } 1900012 - Failed to call the JS callback function.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readParcelable(dataIn: Parcelable): void;
      */
     @!APILevel[
         19,
@@ -2203,7 +2201,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The parameter type does not match;
      *     4.The element does not exist in the array.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeParcelableArray(parcelableArray: Parcelable[]): void;
      */
     @!APILevel[
         19,
@@ -2239,7 +2237,7 @@ public class MessageSequence <: RemoteDataLite {
      *     5.The element does not exist in the array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
      * @throws { BusinessException } 1900012 - Failed to call the JS callback function.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readParcelableArray(parcelableArray: Parcelable[]): void;
      */
     @!APILevel[
         19,
@@ -2267,12 +2265,12 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match;
-     *     3.Failed to obtain arrayBuffer information;
+     *     3.Failed to obtain array information;
      *     4.The transferred size cannot be obtained;
      *     5.The transferred size is less than or equal to 0;
-     *     6.The transferred size is greater than the byte length of ArrayBuffer.
+     *     6.The transferred size is greater than the byte length of rawData.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation writeRawDataBuffer(rawData: ArrayBuffer, size: number): void;
      */
     @!APILevel[
         19,
@@ -2301,7 +2299,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @syscap SystemCapability.Communication.IPC.Core
+     * @relation readRawDataBuffer(size: number): ArrayBuffer;
      */
     @!APILevel[
         19,

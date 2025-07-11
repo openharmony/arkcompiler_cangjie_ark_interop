@@ -243,11 +243,11 @@ public enum PlaybackInfoKey <: ToString & Hashable {
 
     static func parse(val: Int32): PlaybackInfoKey {
         match (val) {
-            case 0 => SERVER_IP_ADDRESS
-            case 1 => AVG_DOWNLOAD_RATE
-            case 2 => DOWNLOAD_RATE
-            case 3 => IS_DOWNLOADING
-            case 4 => BUFFER_DURATION
+            case 0 => ServerIPAddress
+            case 1 => AvgDownloadRate
+            case 2 => DownloadRate
+            case 3 => IsDownloading
+            case 4 => BufferDuration
             case _ => throw IllegalArgumentException("Unknown value")
         }
     }

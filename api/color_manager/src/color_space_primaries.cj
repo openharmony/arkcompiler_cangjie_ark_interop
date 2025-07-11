@@ -19,7 +19,7 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
+    21,
     atomicservice: true,
     crossplatform: true,
     stagemodelonly: true,
@@ -27,451 +27,382 @@ import ohos.labels.*
 ]
 public enum ColorSpace <: ToString {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    UNKNOWN
+    Unknown
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    ADOBE_RGB_1998
+    AdobeRgb1998
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DCI_P3
+    DciP3
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DISPLAY_P3
+    DisplayP3
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    SRGB
+    Srgb
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    CUSTOM
+    Custom
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT709
+    Bt709
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT601_EBU
+    Bt601Ebu
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT601_SMPTE_C
+    Bt601SmpteC
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT2020_HLG
+    Bt2020Hlg
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT2020_PQ
+    Bt2020Pq
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    P3_HLG
+    P3Hlg
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    P3_PQ
+    P3Pq
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    ADOBE_RGB_1998_LIMIT
+    AdobeRgb1998Limit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DISPLAY_P3_LIMIT
+    DisplayP3Limit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    SRGB_LIMIT
+    SrgbLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT709_LIMIT
+    Bt709Limit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT601_EBU_LIMIT
+    Bt601EbuLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT601_SMPTE_C_LIMIT
+    Bt601SmpteCLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT2020_HLG_LIMIT
+    Bt2020HlgLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    BT2020_PQ_LIMIT
+    Bt2020PqLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    P3_HLG_LIMIT
+    P3HlgLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    P3_PQ_LIMIT
+    P3PqLimit
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    LINEAR_P3
+    LinearP3
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    LINEAR_SRGB
+    LinearSrgb
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    LINEAR_BT709
+    LinearBt709
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    LINEAR_BT2020
+    LinearBt2020
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DISPLAY_SRGB
+    DisplaySrgb
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DISPLAY_P3_SRGB
+    DisplayP3Srgb
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DISPLAY_P3_HLG
+    DisplayP3Hlg
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    DISPLAY_P3_PQ
+    DisplayP3Pq
     | ...
 
     func getValue(): UInt32 {
         return match (this) {
-            case UNKNOWN => 0
-            case ADOBE_RGB_1998 => 1
-            case DCI_P3 => 2
-            case DISPLAY_P3 => 3
-            case SRGB => 4
-            case CUSTOM => 5
-            case BT709 => 6
-            case BT601_EBU => 7
-            case BT601_SMPTE_C => 8
-            case BT2020_HLG => 9
-            case BT2020_PQ => 10
-            case P3_HLG => 11
-            case P3_PQ => 12
-            case ADOBE_RGB_1998_LIMIT => 13
-            case DISPLAY_P3_LIMIT => 14
-            case SRGB_LIMIT => 15
-            case BT709_LIMIT => 16
-            case BT601_EBU_LIMIT => 17
-            case BT601_SMPTE_C_LIMIT => 18
-            case BT2020_HLG_LIMIT => 19
-            case BT2020_PQ_LIMIT => 20
-            case P3_HLG_LIMIT => 21
-            case P3_PQ_LIMIT => 22
-            case LINEAR_P3 => 23
-            case LINEAR_SRGB => 24
-            case LINEAR_BT709 => 24
-            case LINEAR_BT2020 => 25
-            case DISPLAY_SRGB => 4
-            case DISPLAY_P3_SRGB => 3
-            case DISPLAY_P3_HLG => 11
-            case DISPLAY_P3_PQ => 12
+            case Unknown => 0
+            case AdobeRgb1998 => 1
+            case DciP3 => 2
+            case DisplayP3 => 3
+            case Srgb => 4
+            case Custom => 5
+            case Bt709 => 6
+            case Bt601Ebu => 7
+            case Bt601SmpteC => 8
+            case Bt2020Hlg => 9
+            case Bt2020Pq => 10
+            case P3Hlg => 11
+            case P3Pq => 12
+            case AdobeRgb1998Limit => 13
+            case DisplayP3Limit => 14
+            case SrgbLimit => 15
+            case Bt709Limit => 16
+            case Bt601EbuLimit => 17
+            case Bt601SmpteCLimit => 18
+            case Bt2020HlgLimit => 19
+            case Bt2020PqLimit => 20
+            case P3HlgLimit => 21
+            case P3PqLimit => 22
+            case LinearP3 => 23
+            case LinearSrgb => 24
+            case LinearBt709 => 24
+            case LinearBt2020 => 25
+            case DisplaySrgb => 4
+            case DisplayP3Srgb => 3
+            case DisplayP3Hlg => 11
+            case DisplayP3Pq => 12
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
-    @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-    ]
-    public static func parse(cs: UInt32): ColorSpace {
-        return ColorSpace.parseInner(cs)
-    }
-
-    static func parseInner(cs: UInt32): ColorSpace {
+    static func parse(cs: UInt32): ColorSpace {
         return match (cs) {
-            case 0 => UNKNOWN
-            case 1 => ADOBE_RGB_1998
-            case 2 => DCI_P3
-            case 3 => DISPLAY_P3
-            case 4 => SRGB
-            case 5 => CUSTOM
-            case 6 => BT709
-            case 7 => BT601_EBU
-            case 8 => BT601_SMPTE_C
-            case 9 => BT2020_HLG
-            case 10 => BT2020_PQ
-            case 11 => P3_HLG
-            case 12 => P3_PQ
-            case 13 => ADOBE_RGB_1998_LIMIT
-            case 14 => DISPLAY_P3_LIMIT
-            case 15 => SRGB_LIMIT
-            case 16 => BT709_LIMIT
-            case 17 => BT601_EBU_LIMIT
-            case 18 => BT601_SMPTE_C_LIMIT
-            case 19 => BT2020_HLG_LIMIT
-            case 20 => BT2020_PQ_LIMIT
-            case 21 => P3_HLG_LIMIT
-            case 22 => P3_PQ_LIMIT
-            case 23 => LINEAR_P3
-            case 24 => LINEAR_SRGB
-            case 25 => LINEAR_BT2020
+            case 0 => Unknown
+            case 1 => AdobeRgb1998
+            case 2 => DciP3
+            case 3 => DisplayP3
+            case 4 => Srgb
+            case 5 => Custom
+            case 6 => Bt709
+            case 7 => Bt601Ebu
+            case 8 => Bt601SmpteC
+            case 9 => Bt2020Hlg
+            case 10 => Bt2020Pq
+            case 11 => P3Hlg
+            case 12 => P3Pq
+            case 13 => AdobeRgb1998Limit
+            case 14 => DisplayP3Limit
+            case 15 => SrgbLimit
+            case 16 => Bt709Limit
+            case 17 => Bt601EbuLimit
+            case 18 => Bt601SmpteCLimit
+            case 19 => Bt2020HlgLimit
+            case 20 => Bt2020PqLimit
+            case 21 => P3HlgLimit
+            case 22 => P3PqLimit
+            case 23 => LinearP3
+            case 24 => LinearSrgb
+            case 25 => LinearBt2020
             case _ => throw IllegalArgumentException("Unrecognized ColorSpace type: ${cs}")
         }
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
     public func toString(): String {
         return match (this) {
-            case UNKNOWN => "UNKNOWN"
-            case ADOBE_RGB_1998 => "ADOBE_RGB_1998"
-            case DCI_P3 => "DCI_P3"
-            case DISPLAY_P3 => "DISPLAY_P3"
-            case SRGB => "SRGB"
-            case CUSTOM => "CUSTOM"
-            case BT709 => "BT709"
-            case BT601_EBU => "BT601_EBU"
-            case BT601_SMPTE_C => "BT601_SMPTE_C"
-            case BT2020_HLG => "BT2020_HLG"
-            case BT2020_PQ => "BT2020_PQ"
-            case P3_HLG => "P3_HLG"
-            case P3_PQ => "P3_PQ"
-            case ADOBE_RGB_1998_LIMIT => "ADOBE_RGB_1998_LIMIT"
-            case DISPLAY_P3_LIMIT => "DISPLAY_P3_LIMIT"
-            case SRGB_LIMIT => "SRGB_LIMIT"
-            case BT709_LIMIT => "BT709_LIMIT"
-            case BT601_EBU_LIMIT => "BT601_EBU_LIMIT"
-            case BT601_SMPTE_C_LIMIT => "BT601_SMPTE_C_LIMIT"
-            case BT2020_HLG_LIMIT => "BT2020_HLG_LIMIT"
-            case BT2020_PQ_LIMIT => "BT2020_PQ_LIMIT"
-            case P3_HLG_LIMIT => "P3_HLG_LIMIT"
-            case P3_PQ_LIMIT => "P3_PQ_LIMIT"
-            case LINEAR_P3 => "LINEAR_P3"
-            case LINEAR_SRGB => "LINEAR_SRGB"
-            case LINEAR_BT709 => "LINEAR_BT709"
-            case LINEAR_BT2020 => "LINEAR_BT2020"
-            case DISPLAY_SRGB => "DISPLAY_SRGB"
-            case DISPLAY_P3_SRGB => "DISPLAY_P3_SRGB"
-            case DISPLAY_P3_HLG => "DISPLAY_P3_HLG"
-            case DISPLAY_P3_PQ => "DISPLAY_P3_PQ"
+            case Unknown => "UNKNOWN"
+            case AdobeRgb1998 => "ADOBE_RGB_1998"
+            case DciP3 => "DCI_P3"
+            case DisplayP3 => "DISPLAY_P3"
+            case Srgb => "SRGB"
+            case Custom => "CUSTOM"
+            case Bt709 => "BT709"
+            case Bt601Ebu => "BT601_EBU"
+            case Bt601SmpteC => "BT601_SMPTE_C"
+            case Bt2020Hlg => "BT2020_HLG"
+            case Bt2020Pq => "BT2020_PQ"
+            case P3Hlg => "P3_HLG"
+            case P3Pq => "P3_PQ"
+            case AdobeRgb1998Limit => "ADOBE_RGB_1998_LIMIT"
+            case DisplayP3Limit => "DISPLAY_P3_LIMIT"
+            case SrgbLimit => "SRGB_LIMIT"
+            case Bt709Limit => "BT709_LIMIT"
+            case Bt601EbuLimit => "BT601_EBU_LIMIT"
+            case Bt601SmpteCLimit => "BT601_SMPTE_C_LIMIT"
+            case Bt2020HlgLimit => "BT2020_HLG_LIMIT"
+            case Bt2020PqLimit => "BT2020_PQ_LIMIT"
+            case P3HlgLimit => "P3_HLG_LIMIT"
+            case P3PqLimit => "P3_PQ_LIMIT"
+            case LinearP3 => "LINEAR_P3"
+            case LinearSrgb => "LINEAR_SRGB"
+            case LinearBt709 => "LINEAR_BT709"
+            case LinearBt2020 => "LINEAR_BT2020"
+            case DisplaySrgb => "DISPLAY_SRGB"
+            case DisplayP3Srgb => "DISPLAY_P3_SRGB"
+            case DisplayP3Hlg => "DISPLAY_P3_HLG"
+            case DisplayP3Pq => "DISPLAY_P3_PQ"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
 ]
 public class ColorSpacePrimaries {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
     ]
-    public ColorSpacePrimaries(
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let redX!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let redY!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let greenX!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let greenY!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let blueX!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let blueY!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let whitePointX!: Float32,
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
-        ]
-        public let whitePointY!: Float32
-    ) {}
+    public var redX: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var redY: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var greenX: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var greenY: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var blueX: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var blueY: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var whitePointX: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public var whitePointY: Float32
+
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
+    ]
+    public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blueX: Float32, blueY: Float32, whitePointX: Float32, whitePointY: Float32) {
+        this.redX = redX
+        this.redY = redY
+        this.greenX = greenX
+        this.greenY = greenY
+        this.blueX = blueX
+        this.blueY = blueY
+        this.whitePointX = whitePointX
+        this.whitePointY = whitePointY
+    }
 }
 
 @C

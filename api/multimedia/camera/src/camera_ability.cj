@@ -420,32 +420,32 @@ sealed interface AutoExposure <: AutoExposureQuery {
 
 func parseColorSpace(value: Int32): ColorSpace {
     return match (value) {
-        case 0 => UNKNOWN
-        case 1 => ADOBE_RGB_1998
-        case 2 => DCI_P3
-        case 3 => DISPLAY_P3
-        case 4 => SRGB
-        case 5 => CUSTOM
-        case 6 => BT709
-        case 7 => BT601_EBU
-        case 8 => BT601_SMPTE_C
-        case 9 => BT2020_HLG
-        case 10 => BT2020_PQ
-        case 11 => P3_HLG
-        case 12 => P3_PQ
-        case 13 => ADOBE_RGB_1998_LIMIT
-        case 14 => DISPLAY_P3_LIMIT
-        case 15 => SRGB_LIMIT
-        case 16 => BT709_LIMIT
-        case 17 => BT601_EBU_LIMIT
-        case 18 => BT601_SMPTE_C_LIMIT
-        case 19 => BT2020_HLG_LIMIT
-        case 20 => BT2020_PQ_LIMIT
-        case 21 => P3_HLG_LIMIT
-        case 22 => P3_PQ_LIMIT
-        case 23 => LINEAR_P3
-        case 24 => LINEAR_SRGB
-        case 25 => LINEAR_BT2020
+        case 0 => Unknown
+        case 1 => AdobeRgb1998
+        case 2 => DciP3
+        case 3 => DisplayP3
+        case 4 => Srgb
+        case 5 => Custom
+        case 6 => Bt709
+        case 7 => Bt601Ebu
+        case 8 => Bt601SmpteC
+        case 9 => Bt2020Hlg
+        case 10 => Bt2020Pq
+        case 11 => P3Hlg
+        case 12 => P3Pq
+        case 13 => AdobeRgb1998Limit
+        case 14 => DisplayP3Limit
+        case 15 => SrgbLimit
+        case 16 => Bt709Limit
+        case 17 => Bt601EbuLimit
+        case 18 => Bt601SmpteCLimit
+        case 19 => Bt2020HlgLimit
+        case 20 => Bt2020PqLimit
+        case 21 => P3HlgLimit
+        case 22 => P3PqLimit
+        case 23 => LinearP3
+        case 24 => LinearSrgb
+        case 25 => LinearBt2020
         case _ => throw IllegalArgumentException("The type is not supported yet.")
     }
 }

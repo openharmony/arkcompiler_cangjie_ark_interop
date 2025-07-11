@@ -101,7 +101,7 @@ foreign {
  * @param {Array<UInt8> } colors The image color buffer.
  * @param { InitializationOptions } options Initialization options for pixelmap.
  * @returns { PixelMap } A Promise instance used to return the PixelMap object.
- * @brief createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise<PixelMap>
+ * @relation createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise<PixelMap>
  */
 @!APILevel[
     12,
@@ -125,6 +125,8 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
 
 /**
  * PixelMap instance.
+ *
+ * @relation interface PixelMap
  */
 @!APILevel[
     12,
@@ -146,7 +148,7 @@ public class PixelMap <: RemoteDataLite {
      *
      * @type { Bool }
      *
-     * @brief readonly isEditable: boolean
+     * @relation readonly isEditable: boolean
      */
     @!APILevel[
         12,
@@ -169,7 +171,7 @@ public class PixelMap <: RemoteDataLite {
      *
      * @type { Bool }
      *
-     * @brief readonly isEditable: boolean
+     * @relation readonly isEditable: boolean
      */
     @!APILevel[
         12,
@@ -187,6 +189,11 @@ public class PixelMap <: RemoteDataLite {
         }
     }
 
+    /**
+     * Releases this PixelMap object.
+     *
+     * @relation release(): Promise<void>;
+     */
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -202,11 +209,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Reads image pixel map data and writes the data to an ArrayBuffer. This method uses
-     * a promise to return the result.
+     * Reads image pixel map data and writes the data to an ArrayBuffer.
      *
      * @param { Array<UInt8> } dst A buffer to which the image pixel map data will be written.
-     * @brief readPixelsToBuffer(dst: ArrayBuffer): Promise<void>
+     * @relation readPixelsToBuffer(dst: ArrayBuffer): Promise<void>
      */
     @!APILevel[
         12,
@@ -223,11 +229,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Reads image data in an ArrayBuffer and writes the data to a PixelMap object. This method
-     * uses a promise to return the result.
+     * Reads image data in an ArrayBuffer and writes the data to a PixelMap object. 
      *
      * @param { Array<UInt8> } src A buffer from which the image data will be read.
-     * @brief writeBufferToPixels(src: ArrayBuffer): Promise<void>
+     * @relation writeBufferToPixels(src: ArrayBuffer): Promise<void>
      */
     @!APILevel[
         12,
@@ -244,11 +249,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Obtains pixel map information about this image. This method uses a promise to return the information.
+     * Obtains pixel map information about this image. 
      *
-     * @returns { ImageInfo } An instance used to return the image pixel map information. If the operation fails,
-     *  an error message is returned.
-     * @brief getImageInfo(): Promise<ImageInfo>
+     * @returns { ImageInfo } An instance used to return the image pixel map information. 
+     * @relation getImageInfo(): Promise<ImageInfo>
      */
     @!APILevel[
         12,
@@ -272,7 +276,7 @@ public class PixelMap <: RemoteDataLite {
      * Obtains the number of bytes in each line of the image pixel map.
      *
      * @returns { UInt32 } Number of bytes in each line.
-     * @brief getBytesNumberPerRow(): number
+     * @relation getBytesNumberPerRow(): number
      */
     @!APILevel[
         12,
@@ -292,7 +296,7 @@ public class PixelMap <: RemoteDataLite {
      * Obtains the total number of bytes of the image pixel map.
      *
      * @returns { UInt32 } Total number of bytes.
-     * @brief getPixelBytesNumber(): number
+     * @relation getPixelBytesNumber(): number
      */
     @!APILevel[
         12,
@@ -312,7 +316,7 @@ public class PixelMap <: RemoteDataLite {
      * Obtains the density of the image pixel map.
      *
      * @returns { Int32 } The number of density.
-     * @brief getDensity():number
+     * @relation getDensity():number
      */
     @!APILevel[
         12,
@@ -329,10 +333,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Set the transparent rate of pixel map. This method return the operation result.
+     * Set the transparent rate of pixel map.
      *
      * @param { Float32 } rate The value of transparent rate.
-     * @brief opacity(rate: number): Promise<void>
+     * @relation opacity(rate: number): Promise<void>
      */
     @!APILevel[
         12,
@@ -347,11 +351,11 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Image zoom in width and height. This method return the operation result.
+     * Image zoom in width and height.
      *
      * @param { Float32 } x The zoom value of width.
      * @param { Float32 } y The zoom value of height.
-     * @brief scale(x: number, y: number): Promise<void>
+     * @relation scale(x: number, y: number): Promise<void>
      */
     @!APILevel[
         12,
@@ -366,11 +370,11 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Image position transformation. This method return the operation result.
+     * Image position transformation.
      *
      * @param { Float32 } x The position value of width.
      * @param { Float32 } y The position value of height.
-     * @brief translate(x: number, y: number): Promise<void>
+     * @relation translate(x: number, y: number): Promise<void>
      */
     @!APILevel[
         12,
@@ -385,10 +389,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Image rotation. This method return the operation result.
+     * Image rotation.
      *
      * @param { Float32 } angle The rotation angle.
-     * @brief rotate(angle: number): Promise<void>
+     * @relation rotate(angle: number): Promise<void>
      */
     @!APILevel[
         12,
@@ -403,11 +407,11 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Image flipping. This method return the operation result.
+     * Image flipping. 
      *
      * @param { Bool } horizontal Is flip in horizontal.
      * @param { Bool } vertical Is flip in vertical.
-     * @brief flip(horizontal: boolean, vertical: boolean): Promise<void>
+     * @relation flip(horizontal: boolean, vertical: boolean): Promise<void>
      */
     @!APILevel[
         12,
@@ -422,10 +426,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Crop the image. This method return the operation result.
+     * Crop the image.
      *
      * @param { Region } region The region to crop.
-     * @brief crop(region: Region): Promise<void>
+     * @relation crop(region: Region): Promise<void>
      */
     @!APILevel[
         12,
@@ -440,11 +444,10 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Writes image pixel map data to the specified area. This method uses a promise to return
-     * the operation result.
+     * Writes image pixel map data to the specified area. 
      *
      * @param { PositionArea } area Area to which the image pixel map data will be written.
-     * @brief writePixels(area: PositionArea): Promise<void>
+     * @relation writePixels(area: PositionArea): Promise<void>
      */
     @!APILevel[
         12,
@@ -489,11 +492,11 @@ public class PixelMap <: RemoteDataLite {
     }
 
     /**
-     * Obtains new pixel map with alpha information. This method uses a promise to return the information.
+     * Obtains new pixel map with alpha information. 
      *
      * @returns { PixelMap } An instance used to return the new image pixel map. If the operation fails,
      *  an error message is returned.
-     * @brief createAlphaPixelmap(): PixelMap
+     * @relation createAlphaPixelmap(): PixelMap
      */
     @!APILevel[
         12,
@@ -515,7 +518,7 @@ public class PixelMap <: RemoteDataLite {
      * @param { ColorSpaceManager } colorSpace The color space for pixel map.
      * @throws { BusinessException } 62980111 - If the operation invalid.
      * @throws { BusinessException } 62980115 - If the image parameter invalid.
-     * @brief setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
+     * @relation setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
      */
     @!APILevel[
         12,
@@ -535,7 +538,7 @@ public class PixelMap <: RemoteDataLite {
      * @throws { BusinessException } 62980101 - If the image data abnormal.
      * @throws { BusinessException } 62980103 - If the image data unsupport.
      * @throws { BusinessException } 62980115 - If the image parameter invalid.
-     * @brief getColorSpace(): colorSpaceManager.ColorSpaceManager
+     * @relation getColorSpace(): colorSpaceManager.ColorSpaceManager
      */
     @!APILevel[
         12,
@@ -559,7 +562,7 @@ public class PixelMap <: RemoteDataLite {
      * @throws { BusinessException } 62980104 - Failed to initialize the internal object.
      * @throws { BusinessException } 62980108 - Failed to convert the color space.
      * @throws { BusinessException } 62980115 - Invalid image parameter.
-     * @brief applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>
+     * @relation applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>
      */
     @!APILevel[
         12,

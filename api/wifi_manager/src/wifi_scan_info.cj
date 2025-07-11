@@ -19,112 +19,202 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.*
 
+/**
+ * Describes the scanned Wi-Fi information.
+ * @relation interface WifiScanInfo
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.STA"
 ]
 public class WifiScanInfo <: ToString {
-    WifiScanInfo(
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let ssid: String, // the maximum length is 32
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let bssid: String, // the length is 6
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let bssidType: DeviceAddressType,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let capabilities: String,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let securityType: WifiSecurityType,
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let rssi: Int32, // Received signal strength indicator
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let band: Int32, // Frequency band, 1: 2.4G, 2: 5G
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let frequency: Int32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let channelWidth: Int32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let centerFrequency0: Int32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let centerFrequency1: Int32,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let infoElems: Array<WifiInfoElem>,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let timestamp: Int64,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let supportedWifiCategory: WifiCategory,
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.WiFi.STA"
-        ]
-        public let isHiLinkNetwork: Bool
-    ) {}
+    /**
+     * Wi-Fi SSID: the maximum length is 32 
+     * @relation ssid: string;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let ssid: String
+
+    /**
+     * Wi-Fi bssid(MAC): the length is 6
+     * @relation bssid: string;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let bssid: String
+
+    /**
+     * Wi-Fi bssid type
+     * @relation bssidType: DeviceAddressType;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let bssidType: DeviceAddressType
+
+    /**
+     * Hotspot capability
+     * @relation capabilities: string;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let capabilities: String
+
+    /**
+     * Security type: reference definition of WifiSecurityType
+     * @relation securityType: WifiSecurityType;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let securityType: WifiSecurityType
+
+    /**
+     * Received signal strength indicator (RSSI)
+     * @relation rssi: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let rssi: Int32 // Received signal strength indicator
+
+    /**
+     * Frequency band, 1: 2.4G, 2: 5G
+     * @relation band: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let band: Int32 // Frequency band, 1: 2.4G, 2: 5G
+
+    /**
+     * Frequency
+     * @relation frequency: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let frequency: Int32
+
+    /**
+     * Channel width
+     * @relation channelWidth: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let channelWidth: Int32
+
+    /**
+     * Center frequency 0.
+     * @relation centerFrequency0: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let centerFrequency0: Int32
+
+    /**
+     * Center frequency 1.
+     * @relation centerFrequency1: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let centerFrequency1: Int32
+
+    /**
+     * Information elements.
+     * @relation infoElems: Array<WifiInfoElem>;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let infoElems: Array<WifiInfoElem>
+
+    /**
+     * Time stamp
+     * @relation timestamp: number;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let timestamp: Int64
+
+    /**
+     * Supported wifi category
+     * @relation supportedWifiCategory: WifiCategory;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let supportedWifiCategory: WifiCategory
+
+    /**
+     * Whether the Wi-Fi hotspot is HiLink network.
+     * @relation isHiLinkNetwork: boolean;
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.WiFi.STA"
+    ]
+    public let isHiLinkNetwork: Bool
+
+    init(ssid: String, bssid: String, bssidType: DeviceAddressType, capabilities: String,
+        securityType: WifiSecurityType, rssi: Int32, band: Int32, frequency: Int32,
+        channelWidth: Int32, centerFrequency0: Int32, centerFrequency1: Int32,
+        infoElems: Array<WifiInfoElem>, timestamp: Int64, supportedWifiCategory: WifiCategory,
+        isHiLinkNetwork: Bool) {
+        this.ssid = ssid
+        this.bssid = bssid
+        this.bssidType = bssidType
+        this.capabilities = capabilities
+        this.securityType = securityType
+        this.rssi = rssi
+        this.band = band
+        this.frequency = frequency
+        this.channelWidth = channelWidth
+        this.centerFrequency0 = centerFrequency0
+        this.centerFrequency1 = centerFrequency1
+        this.infoElems = infoElems
+        this.timestamp = timestamp
+        this.supportedWifiCategory = supportedWifiCategory
+        this.isHiLinkNetwork = isHiLinkNetwork
+    }
 
     init(info: CWifiScanInfo) {
         this.supportedWifiCategory = WifiCategory.parse(info.supportedWifiCategory)
@@ -149,7 +239,7 @@ public class WifiScanInfo <: ToString {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]

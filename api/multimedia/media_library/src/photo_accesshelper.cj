@@ -24,6 +24,7 @@ import std.sync.*
 import std.collection.*
 import ohos.ability.*
 import ohos.resource_manager.ResourceManager
+import ohos.data_share_predicates.*
 
 /**
  * Helper functions to access photos and albums.
@@ -163,7 +164,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
-    public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions()): FetchResult<Album> {
+    public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions([], DataSharePredicates())): FetchResult<Album> {
         if (options.fetchColumns.size == 0) {
             options.fetchColumns = ["uri", "album_name"]
         }
@@ -266,18 +267,17 @@ public class PhotoAccessHelper <: RemoteDataLite {
     }
 
     func getSelfBundleInfo(): FfiBundleInfo {
-        let bundleFlags = BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | // for appName
-            BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE.getValue() | // for appName
-                BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE
-            .getValue() | // for appId
-                BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION.getValue() // for appInfo
+        let bundleFlags = BundleFlag.GetBundleInfoWithAbility.getValue() | // for appName
+            BundleFlag.GetBundleInfoWithHapModule.getValue() | // for appName
+                BundleFlag.GetBundleInfoWithSignature.getValue() | // for appId
+                BundleFlag.GetBundleInfoWithApplication.getValue() // for appInfo
         let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
         let bundleName = bundleInfo.name
         let appId = bundleInfo.signatureInfo.appId
         let labelId = bundleInfo.appInfo.labelId
         let stgContext = getStageContext(context)
         let resourceMgrObject = ResourceManager.getResourceManager(stgContext)
-        let appName = resourceMgrObject.getString(labelId)
+        let appName = resourceMgrObject.getString(UInt32(labelId))
 
         FfiBundleInfo(bundleName, appName, appId)
     }

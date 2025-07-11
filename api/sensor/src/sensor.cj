@@ -36,7 +36,7 @@ public enum SensorId {
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ACCELEROMETER
+    Accelerometer
     | @!APILevel[
         19,
         atomicservice: true,
@@ -44,162 +44,162 @@ public enum SensorId {
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    GYROSCOPE
+    Gyroscope
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    AMBIENT_LIGHT
+    AmbientLight
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    MAGNETIC_FIELD
+    MagneticField
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    BAROMETER
+    Barometer
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    HALL
+    Hall
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    PROXIMITY
+    Proximity
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    HUMIDITY
+    Humidity
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ORIENTATION
+    Orientation
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    GRAVITY
+    Gravity
     | @!APILevel[
         19,
         permission: "ohos.permission.ACCELEROMETER",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    LINEAR_ACCELEROMETER
+    LinearAccelerometer
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ROTATION_VECTOR
+    RotationVector
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    AMBIENT_TEMPERATURE
+    AmbientTemperature
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    MAGNETIC_FIELD_UNCALIBRATED
+    MagneticFieldUncalibrated
     | @!APILevel[
         19,
         permission: "ohos.permission.GYROSCOPE",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    GYROSCOPE_UNCALIBRATED
+    GyroscopeUncalibrated
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    SIGNIFICANT_MOTION
-    | @!APILevel[
-        19,
-        permission: "ohos.permission.ACTIVITY_MOTION",
-        stagemodelonly: true,
-        syscap: "SystemCapability.Sensors.Sensor"
-    ]
-    PEDOMETER_DETECTION
+    SignificantMotion
     | @!APILevel[
         19,
         permission: "ohos.permission.ACTIVITY_MOTION",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    PEDOMETER
+    PedometerDetection
+    | @!APILevel[
+        19,
+        permission: "ohos.permission.ACTIVITY_MOTION",
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    Pedometer
     | @!APILevel[
         19,
         permission: "ohos.permission.READ_HEALTH_DATA",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    HEART_RATE
+    HeartRate
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    WEAR_DETECTION
+    WearDetection
     | @!APILevel[
         19,
         permission: "ohos.permission.ACCELEROMETER",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ACCELEROMETER_UNCALIBRATED
+    AccelerometerUncalibrated
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    UNSUPPORTED
+    Unsupported
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case ACCELEROMETER => 1
-                case GYROSCOPE => 2
-                case AMBIENT_LIGHT => 5
-                case MAGNETIC_FIELD => 6
-                case BAROMETER => 8
-                case HALL => 10
-                case PROXIMITY => 12
-                case HUMIDITY => 13
-                case ORIENTATION => 256
-                case GRAVITY => 257
-                case LINEAR_ACCELEROMETER => 258
-                case ROTATION_VECTOR => 259
-                case AMBIENT_TEMPERATURE => 260
-                case MAGNETIC_FIELD_UNCALIBRATED => 261
-                case GYROSCOPE_UNCALIBRATED => 263
-                case SIGNIFICANT_MOTION => 264
-                case PEDOMETER_DETECTION => 265
-                case PEDOMETER => 266
-                case HEART_RATE => 278
-                case WEAR_DETECTION => 280
-                case ACCELEROMETER_UNCALIBRATED => 281
-                case UNSUPPORTED => -1
+                case Accelerometer => 1
+                case Gyroscope => 2
+                case AmbientLight => 5
+                case MagneticField => 6
+                case Barometer => 8
+                case Hall => 10
+                case Proximity => 12
+                case Humidity => 13
+                case Orientation => 256
+                case Gravity => 257
+                case LinearAccelerometer => 258
+                case RotationVector => 259
+                case AmbientTemperature => 260
+                case MagneticFieldUncalibrated => 261
+                case GyroscopeUncalibrated => 263
+                case SignificantMotion => 264
+                case PedometerDetection => 265
+                case Pedometer => 266
+                case HeartRate => 278
+                case WearDetection => 280
+                case AccelerometerUncalibrated => 281
+                case Unsupported => -1
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -207,28 +207,28 @@ public enum SensorId {
 
     static func parse(v: Int32): SensorId {
         match (v) {
-            case 1 => ACCELEROMETER
-            case 2 => GYROSCOPE
-            case 5 => AMBIENT_LIGHT
-            case 6 => MAGNETIC_FIELD
-            case 8 => BAROMETER
-            case 10 => HALL
-            case 12 => PROXIMITY
-            case 13 => HUMIDITY
-            case 256 => ORIENTATION
-            case 257 => GRAVITY
-            case 258 => LINEAR_ACCELEROMETER
-            case 259 => ROTATION_VECTOR
-            case 260 => AMBIENT_TEMPERATURE
-            case 261 => MAGNETIC_FIELD_UNCALIBRATED
-            case 263 => GYROSCOPE_UNCALIBRATED
-            case 264 => SIGNIFICANT_MOTION
-            case 265 => PEDOMETER_DETECTION
-            case 266 => PEDOMETER
-            case 278 => HEART_RATE
-            case 280 => WEAR_DETECTION
-            case 281 => ACCELEROMETER_UNCALIBRATED
-            case _ => UNSUPPORTED
+            case 1 => Accelerometer
+            case 2 => Gyroscope
+            case 5 => AmbientLight
+            case 6 => MagneticField
+            case 8 => Barometer
+            case 10 => Hall
+            case 12 => Proximity
+            case 13 => Humidity
+            case 256 => Orientation
+            case 257 => Gravity
+            case 258 => LinearAccelerometer
+            case 259 => RotationVector
+            case 260 => AmbientTemperature
+            case 261 => MagneticFieldUncalibrated
+            case 263 => GyroscopeUncalibrated
+            case 264 => SignificantMotion
+            case 265 => PedometerDetection
+            case 266 => Pedometer
+            case 278 => HeartRate
+            case 280 => WearDetection
+            case 281 => AccelerometerUncalibrated
+            case _ => Unsupported
         }
     }
 }
@@ -253,7 +253,7 @@ public enum SensorAccuracy {
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ACCURACY_UNRELIABLE
+    AccuracyUnreliable
     |
 
         /**
@@ -265,7 +265,7 @@ public enum SensorAccuracy {
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ACCURACY_LOW
+    AccuracyLow
     |
 
         /**
@@ -277,7 +277,7 @@ public enum SensorAccuracy {
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ACCURACY_MEDIUM
+    AccuracyMedium
     |
 
         /**
@@ -289,16 +289,16 @@ public enum SensorAccuracy {
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    ACCURACY_HIGH
+    AccuracyHigh
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case ACCURACY_UNRELIABLE => 0
-                case ACCURACY_LOW => 1
-                case ACCURACY_MEDIUM => 2
-                case ACCURACY_HIGH => 3
+                case AccuracyUnreliable => 0
+                case AccuracyLow => 1
+                case AccuracyMedium => 2
+                case AccuracyHigh => 3
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -306,11 +306,11 @@ public enum SensorAccuracy {
 
     static func parse(v: Int32): SensorAccuracy {
         match (v) {
-            case 0 => ACCURACY_UNRELIABLE
-            case 1 => ACCURACY_LOW
-            case 2 => ACCURACY_MEDIUM
-            case 3 => ACCURACY_HIGH
-            case _ => ACCURACY_UNRELIABLE
+            case 0 => AccuracyUnreliable
+            case 1 => AccuracyLow
+            case 2 => AccuracyMedium
+            case 3 => AccuracyHigh
+            case _ => AccuracyUnreliable
         }
     }
 }
@@ -322,37 +322,40 @@ public enum SensorAccuracy {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public abstract class Response {
+    /**
+        * The timestamp of the reported sensor data.
+        */
     @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    public Response(
-        /**
-         * The timestamp of the reported sensor data.
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var timestamp: Int64,
-        /**
-         * The accuracy levels of data reported by a sensor.
-         */
-        @!APILevel[
-            19,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var accuracy: SensorAccuracy
-    ) {}
+    public var timestamp: Int64
+    /**
+        * The accuracy levels of data reported by a sensor.
+        */
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var accuracy: SensorAccuracy
+
+    @!APILevel[
+        19,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public init(timestamp: Int64, accuracy: SensorAccuracy) {
+        this.timestamp = timestamp
+        this.accuracy = accuracy
+    }
 
     init() {
-        this(0, SensorAccuracy.ACCURACY_UNRELIABLE)
+        this(0, SensorAccuracy.AccuracyUnreliable)
     }
 
     static func parseCResponseData<T>(data: CPointer<UInt8>, dataLen: Int32): T where T <: CType {
@@ -373,52 +376,58 @@ public abstract class Response {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public class RotationVectorResponse <: Response {
+
+    /**
+        * Rotation vector x-axis component.
+        */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    public RotationVectorResponse(
-        /**
-         * Rotation vector x-axis component.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var x: Float32,
+    public var x: Float32
 
-        /**
-         * Rotation vector y-axis component.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var y: Float32,
+    /**
+        * Rotation vector y-axis component.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var y: Float32
 
-        /**
-         * Rotation vector z-axis component.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var z: Float32,
+    /**
+        * Rotation vector z-axis component.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var z: Float32
 
-        /**
-         * Scalar quantity.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var w: Float32
-    ) {}
+    /**
+        * Scalar quantity.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var w: Float32
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public init(x: Float32, y: Float32, z: Float32, w: Float32) {
+        this.x = x
+        this.y = y
+        this.z = z
+        this.w = w
+    }
 
     init(v: CSensorCallbackData) {
         super(v.timestamp, SensorAccuracy.parse(v.option))
@@ -461,112 +470,125 @@ func removeAllCallback(`type`: SensorId): Int64 {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public class Sensor {
+    /**
+        * Sensor name.
+        */
     @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
-    public Sensor(
-        /**
-         * Sensor name.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var sensorName: String,
+    public var sensorName: String
 
-        /**
-         * Sensor vendor.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var vendorName: String,
+    /**
+        * Sensor vendor.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var vendorName: String
 
-        /**
-         * Sensor firmware version.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var firmwareVersion: String,
+    /**
+        * Sensor firmware version.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var firmwareVersion: String
 
-        /**
-         * Sensor hardware version.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var hardwareVersion: String,
+    /**
+        * Sensor hardware version.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var hardwareVersion: String
 
-        /**
-         * Sensor type ID, {@code SensorType}.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var sensorId: SensorId,
+    /**
+        * Sensor type ID, {@code SensorType}.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var sensorId: SensorId
 
-        /**
-         * Maximum measurement range of the sensor.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var maxRange: Float32,
+    /**
+        * Maximum measurement range of the sensor.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var maxRange: Float32
 
-        /**
-         * Minimum sample period allowed, in ns.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var minSamplePeriod: Int64,
+    /**
+        * Minimum sample period allowed, in ns.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var minSamplePeriod: Int64
 
-        /**
-         * Maximum sample period allowed, in ns.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var maxSamplePeriod: Int64,
+    /**
+        * Maximum sample period allowed, in ns.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var maxSamplePeriod: Int64
 
-        /**
-         * Sensor accuracy.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var precision: Float32,
+    /**
+        * Sensor accuracy.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var precision: Float32
 
-        /**
-         * Sensor power.
-         */
-        @!APILevel[
-            19,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Sensors.Sensor"
-        ]
-        public var power: Float32
-    ) {}
+    /**
+        * Sensor power.
+        */
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public var power: Float32
+
+    @!APILevel[
+        19,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Sensors.Sensor"
+    ]
+    public init(sensorName: String, vendorName: String, firmwareVersion: String,
+        hardwareVersion: String, sensorId: SensorId, maxRange: Float32, minSamplePeriod: Int64,
+        maxSamplePeriod: Int64, precision: Float32, power: Float32) {
+        this.sensorName = sensorName
+        this.vendorName = vendorName
+        this.firmwareVersion = firmwareVersion
+        this.hardwareVersion = hardwareVersion
+        this.sensorId = sensorId
+        this.maxRange = maxRange
+        this.minSamplePeriod = minSamplePeriod
+        this.maxSamplePeriod = maxSamplePeriod
+        this.precision = precision
+        this.power = power
+    }
 
     init(data: CSensor) {
         sensorName = data.sensorName.toString()
@@ -624,7 +646,7 @@ public func getSensorList(): Array<Sensor> {
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public func getSingleSensor(`type`: SensorId): Sensor {
-    if (`type` == SensorId.UNSUPPORTED) {
+    if (`type` == SensorId.Unsupported) {
         throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
     }
 
