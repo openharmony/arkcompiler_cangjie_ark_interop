@@ -129,7 +129,7 @@ public enum ValueType <: ToString {
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
-public struct KVManagerConfig {
+public class KVManagerConfig {
     let context: StageContext
     let bundleName: String
 
@@ -219,7 +219,7 @@ public enum SecurityLevel {
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
 ]
-public struct FieldNode {
+public class FieldNode {
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -253,7 +253,7 @@ public struct FieldNode {
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
 ]
-public struct Schema {
+public class Schema {
     @!APILevel[
         12,
         stagemodelonly: true,
@@ -313,7 +313,7 @@ public class Options {
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
-public struct Entry <: ToString {
+public class Entry <: ToString {
     @!APILevel[
         12,
         stagemodelonly: true,

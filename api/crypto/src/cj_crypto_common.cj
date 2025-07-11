@@ -28,7 +28,7 @@ foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework"
 ]
-public struct DataBlob {
+public class DataBlob {
     @!APILevel[
         12,
         atomicservice: true,
@@ -55,7 +55,7 @@ public struct DataBlob {
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
-public struct IvParamsSpec <: ParamsSpec {
+public class IvParamsSpec <: ParamsSpec {
     var _algName: String
     var _iv: DataBlob
 
@@ -111,7 +111,7 @@ public struct IvParamsSpec <: ParamsSpec {
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
-public struct GcmParamsSpec <: ParamsSpec {
+public class GcmParamsSpec <: ParamsSpec {
     var _algName: String
     var _aad: DataBlob
     var _authTag: DataBlob
@@ -203,7 +203,7 @@ public struct GcmParamsSpec <: ParamsSpec {
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
-public struct CcmParamsSpec <: ParamsSpec {
+public class CcmParamsSpec <: ParamsSpec {
     var _algName: String
     var _aad: DataBlob
     var _iv: DataBlob

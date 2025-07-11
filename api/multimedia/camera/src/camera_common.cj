@@ -186,7 +186,7 @@ public enum CameraErrorCode {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct Rect {
+public class Rect {
     /**
      * X coordinator of top left point.
      *
@@ -539,7 +539,7 @@ public enum CameraStatus {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct TorchStatusInfo {
+public class TorchStatusInfo {
     /**
      * is torch available
      *
@@ -598,7 +598,7 @@ public struct TorchStatusInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct FrameRateRange {
+public class FrameRateRange {
     /**
      * Min frame rate.
      *
@@ -643,7 +643,7 @@ public struct FrameRateRange {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct Size {
+public class Size {
     /**
      * Height.
      *
@@ -937,7 +937,7 @@ public enum FoldStatus {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct FoldStatusInfo {
+public class FoldStatusInfo {
     /**
      * Gets supported camera devices under the current fold status.
      *
@@ -1255,7 +1255,7 @@ public class CameraDevice {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct CameraStatusInfo {
+public class CameraStatusInfo {
     /**
      * Camera instance.
      *
@@ -1732,7 +1732,7 @@ public enum QualityLevel {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct Location {
+public class Location {
     /**
      * Latitude.
      *
@@ -1797,7 +1797,7 @@ public struct Location {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct PhotoCaptureSetting {
+public class PhotoCaptureSetting {
     /**
      * Photo image quality.
      *
@@ -1923,7 +1923,7 @@ public enum VideoCodecType {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct CaptureStartInfo {
+public class CaptureStartInfo {
     /**
      * Capture id.
      *
@@ -1966,7 +1966,7 @@ public struct CaptureStartInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct FrameShutterInfo {
+public class FrameShutterInfo {
     /**
      * Capture id.
      *
@@ -2009,7 +2009,7 @@ public struct FrameShutterInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct CaptureEndInfo {
+public class CaptureEndInfo {
     /**
      * Capture id.
      *
@@ -2052,7 +2052,7 @@ public struct CaptureEndInfo {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct FrameShutterEndInfo {
+public class FrameShutterEndInfo {
     /**
      * Capture id.
      *

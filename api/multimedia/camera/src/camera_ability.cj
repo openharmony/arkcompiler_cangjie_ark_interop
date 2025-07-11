@@ -96,7 +96,7 @@ struct CPoint {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct Point {
+public class Point {
     /**
      * x co-ordinate
      *
@@ -1307,7 +1307,7 @@ sealed interface Stabilization <: StabilizationQuery {
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public struct SmoothZoomInfo {
+public class SmoothZoomInfo {
     /**
      * The duration of smooth zoom.
      *
