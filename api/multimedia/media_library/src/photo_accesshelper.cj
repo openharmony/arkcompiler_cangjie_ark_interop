@@ -266,11 +266,10 @@ public class PhotoAccessHelper <: RemoteDataLite {
     }
 
     func getSelfBundleInfo(): FfiBundleInfo {
-        let bundleFlags = BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY.getValue() | // for appName
-            BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE.getValue() | // for appName
-                BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE
-            .getValue() | // for appId
-                BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION.getValue() // for appInfo
+        let bundleFlags = BundleFlag.GetBundleInfoWithAbility.getValue() | // for appName
+            BundleFlag.GetBundleInfoWithHapModule.getValue() | // for appName
+                BundleFlag.GetBundleInfoWithSignature.getValue() | // for appId
+                BundleFlag.GetBundleInfoWithApplication.getValue() // for appInfo
         let bundleInfo = BundleManager.getBundleInfoForSelf(bundleFlags)
         let bundleName = bundleInfo.name
         let appId = bundleInfo.signatureInfo.appId

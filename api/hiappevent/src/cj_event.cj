@@ -912,7 +912,7 @@ func readValueType(valueType: UInt8, value: CPointer<Unit>, size: Int64): ValueT
                 return FloatValue(res)
             case 2 =>
                 if (value.isNull()) {
-                    return STRING("")
+                    return StringValue("")
                 }
                 var res = CString(CPointer<UInt8>(value))
                 return StringValue(res.toString())
