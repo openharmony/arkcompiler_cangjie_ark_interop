@@ -37,23 +37,33 @@ const SYSCAP_WIFI_CORE = 2400000i32
 const SYSCAP_WIFI_STA = 2500000i32
 const SYSCAP_WIFI_P2P = 2800000i32
 
+/**
+ * Wi-Fi device address( mac / bssid ) type.
+ * @relation enum DeviceAddressType
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.Core"
 ]
 public enum DeviceAddressType <: ToString {
+    /**
+     * random device address
+     * @relation RANDOM_DEVICE_ADDRESS
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     RandomDeviceAddress
-    | @!APILevel[
-        19,
-        atomicservice: true,
+    |
+        /**
+         * real device address
+         * @relation REAL_DEVICE_ADDRESS
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
@@ -85,7 +95,7 @@ public enum DeviceAddressType <: ToString {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
@@ -98,70 +108,121 @@ public enum DeviceAddressType <: ToString {
     }
 }
 
+/**
+ * Describes the wifi security type.
+ * @relation enum WifiSecurityType
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.Core"
 ]
 public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
+    /**
+     * Invalid security type
+     * @relation WIFI_SEC_TYPE_INVALID = 0
+     */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeInvalid
-    | @!APILevel[
-        19,
-        atomicservice: true,
+    |
+        /**
+         * Open
+         * @relation WIFI_SEC_TYPE_OPEN = 1
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeOpen
-    | @!APILevel[
-        19,
+    |
+        /**
+         * Wired Equivalent Privacy (WEP)
+         * @relation WIFI_SEC_TYPE_WEP = 2
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeWep
-    | @!APILevel[
-        19,
+    |
+        /**
+         * Pre-shared key (PSK)
+         * @relation WIFI_SEC_TYPE_PSK = 3
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypePsk
-    | @!APILevel[
-        19,
+    |
+        /**
+        * Simultaneous Authentication of Equals (SAE)
+        * @relation WIFI_SEC_TYPE_SAE = 4
+        */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeSae
-    | @!APILevel[
-        19,
+    |
+        /**
+        * EAP authentication.
+        * @relation WIFI_SEC_TYPE_EAP = 5
+        */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeEap
-    | @!APILevel[
-        19,
+    |
+        /**
+         * SUITE_B_192 192 bit level.
+         * @relation WIFI_SEC_TYPE_EAP_SUITE_B = 6
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeEapSuiteB
-    | @!APILevel[
-        19,
+    |
+        /**
+         * Opportunistic Wireless Encryption.
+         * @relation WIFI_SEC_TYPE_OWE = 7
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeOwe
-    | @!APILevel[
-        19,
+    |
+        /**
+         * WAPI certificate to be specified.
+         * @relation WIFI_SEC_TYPE_WAPI_CERT = 8
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
     WifiSecTypeWapiCert
-    | @!APILevel[
-        19,
+    |
+        /**
+         * WAPI pre-shared key to be specified.
+         * @relation WIFI_SEC_TYPE_WAPI_PSK = 9
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
@@ -201,7 +262,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
@@ -222,7 +283,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
@@ -243,26 +304,44 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
     }
 }
 
+/**
+ * Wi-Fi Category.
+ * @relation enum WifiCategory
+ */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.WiFi.STA"
 ]
 public enum WifiCategory <: ToString {
+    /**
+     * Default.
+     * @relation DEFAULT = 1
+     */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
     Default
-    | @!APILevel[
-        19,
+    |
+        /**
+         * Wifi6.
+         * @relation WIFI6 = 2
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
     Wifi6
-    | @!APILevel[
-        19,
+    |
+        /**
+         * Wifi6+.
+         * @relation WIFI6_PLUS = 3
+         */
+        @!APILevel[
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
@@ -288,7 +367,7 @@ public enum WifiCategory <: ToString {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
     ]
