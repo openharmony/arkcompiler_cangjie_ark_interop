@@ -44,7 +44,7 @@ const BYTE_SIZE_64: UIntNative = 8
  * @relation class MessageSequence
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
@@ -64,7 +64,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation static create(): MessageSequence;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -82,7 +82,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation reclaim(): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -103,7 +103,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeInterfaceToken(token: string): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -123,7 +123,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readInterfaceToken(): string;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -145,7 +145,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getSize(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -163,7 +163,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getCapacity(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -186,7 +186,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation setSize(size: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -209,7 +209,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation setCapacity(size: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -228,7 +228,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getWritableBytes(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -247,7 +247,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getReadableBytes(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -265,7 +265,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getReadPosition(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -283,7 +283,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getWritePosition(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -306,7 +306,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation rewindWrite(pos: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -328,7 +328,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation rewindRead(pos: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -347,7 +347,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeNoException(): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -367,7 +367,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readException(): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -395,7 +395,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeByte(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -416,7 +416,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeShort(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -437,7 +437,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeInt(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -458,7 +458,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeLong(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -479,7 +479,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeFloat(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -500,7 +500,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeDouble(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -521,7 +521,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeBoolean(val: boolean): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -547,7 +547,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeChar(val: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -570,7 +570,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeString(val: string): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -596,7 +596,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeParcelable(val: Parcelable): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -624,7 +624,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeByteArray(byteArray: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -652,7 +652,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeIntArray(intArray: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -680,7 +680,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeLongArray(longArray: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -708,7 +708,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeFloatArray(floatArray: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -736,7 +736,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeDoubleArray(doubleArray: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -763,7 +763,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeBooleanArray(booleanArray: boolean[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -800,7 +800,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeCharArray(charArray: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -828,7 +828,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeStringArray(stringArray: string[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -848,7 +848,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readByte(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -867,7 +867,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readShort(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -886,7 +886,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readInt(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -905,7 +905,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readLong(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -924,7 +924,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readFloat(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -943,7 +943,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readDouble(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -962,7 +962,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readBoolean(): boolean;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -985,7 +985,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readChar(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1004,7 +1004,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readString(): string;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1031,7 +1031,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readByteArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1049,7 +1049,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readByteArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1074,7 +1074,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readShortArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1091,7 +1091,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readShortArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1116,7 +1116,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readIntArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1133,7 +1133,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readIntArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1158,7 +1158,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readLongArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1175,7 +1175,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readLongArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1200,7 +1200,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readFloatArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1217,7 +1217,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readFloatArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1242,7 +1242,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readDoubleArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1259,7 +1259,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readDoubleArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1284,7 +1284,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readBooleanArray(dataIn: boolean[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1301,7 +1301,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readBooleanArray(): boolean[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1326,7 +1326,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readCharArray(dataIn: number[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1343,7 +1343,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readCharArray(): number[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1368,7 +1368,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readStringArray(dataIn: string[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1385,7 +1385,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readStringArray(): string[];
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1410,7 +1410,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation static closeFileDescriptor(fd: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1430,7 +1430,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation static dupFileDescriptor(fd: number): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1450,7 +1450,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation containFileDescriptors(): boolean;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1472,7 +1472,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeFileDescriptor(fd: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1490,7 +1490,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readFileDescriptor(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1512,7 +1512,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeAshmem(ashmem: Ashmem): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1531,7 +1531,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readAshmem(): Ashmem;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1549,7 +1549,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation getRawDataCapacity(): number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1574,7 +1574,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1607,7 +1607,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1640,7 +1640,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1673,7 +1673,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1706,7 +1706,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1739,7 +1739,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1772,7 +1772,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1805,7 +1805,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1838,7 +1838,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1871,7 +1871,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1902,7 +1902,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1927,7 +1927,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1952,7 +1952,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -1977,7 +1977,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2002,7 +2002,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2027,7 +2027,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2052,7 +2052,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2077,7 +2077,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2102,7 +2102,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2127,7 +2127,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2151,7 +2151,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeParcelable(val: Parcelable): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2178,7 +2178,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readParcelable(dataIn: Parcelable): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2204,7 +2204,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeParcelableArray(parcelableArray: Parcelable[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2240,7 +2240,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readParcelableArray(parcelableArray: Parcelable[]): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2273,7 +2273,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation writeRawDataBuffer(rawData: ArrayBuffer, size: number): void;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -2302,7 +2302,7 @@ public class MessageSequence <: RemoteDataLite {
      * @relation readRawDataBuffer(size: number): ArrayBuffer;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

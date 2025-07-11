@@ -47,7 +47,7 @@ foreign {
  * @relation function createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver;
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
 ]
@@ -65,7 +65,7 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
  * @relation interface ImageReceiver
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
 ]
@@ -76,7 +76,7 @@ public class ImageReceiver <: RemoteDataLite {
      * @relation readonly size: Size;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
     ]
@@ -97,7 +97,7 @@ public class ImageReceiver <: RemoteDataLite {
      * @relation readonly capacity: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
     ]
@@ -118,7 +118,7 @@ public class ImageReceiver <: RemoteDataLite {
      * @relation readonly format: ImageFormat;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
     ]
@@ -148,7 +148,7 @@ public class ImageReceiver <: RemoteDataLite {
      * @relation getReceivingSurfaceId(): Promise<string>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
     ]
@@ -171,7 +171,7 @@ public class ImageReceiver <: RemoteDataLite {
      * @relation release(): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageReceiver"
     ]

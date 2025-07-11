@@ -23,152 +23,147 @@ import ohos.labels.*
 // Enum for obtain the type of sensor.
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]
 public enum SensorId {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.permission.[ACCELEROMETER]",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Accelerometer
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.permission.GYROSCOPE",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Gyroscope
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     AmbientLight
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     MagneticField
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Barometer
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Hall
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Proximity
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Humidity
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Orientation
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Gravity
     | @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.ACCELEROMETER",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     LinearAccelerometer
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     RotationVector
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     AmbientTemperature
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     MagneticFieldUncalibrated
     | @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.GYROSCOPE",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     GyroscopeUncalibrated
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     SignificantMotion
     | @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.ACTIVITY_MOTION",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     PedometerDetection
     | @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.ACTIVITY_MOTION",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     Pedometer
     | @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.READ_HEALTH_DATA",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     HeartRate
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     WearDetection
     | @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.ACCELEROMETER",
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     AccelerometerUncalibrated
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -238,8 +233,7 @@ public enum SensorId {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]
@@ -248,8 +242,7 @@ public enum SensorAccuracy {
      * The sensor data is unreliable. It is possible that the sensor does not contact with the device to measure.
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -260,8 +253,7 @@ public enum SensorAccuracy {
          * The sensor data is at a low accuracy level. The data must be calibrated based on the environment before being used.
          */
         @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -272,8 +264,7 @@ public enum SensorAccuracy {
          * The sensor data is at a medium accuracy level. You are advised to calibrate the data based on the environment before using it.
          */
         @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -284,8 +275,7 @@ public enum SensorAccuracy {
          * The sensor data is at a high accuracy level. The data can be used directly.
          */
         @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -316,8 +306,7 @@ public enum SensorAccuracy {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]
@@ -326,8 +315,7 @@ public abstract class Response {
         * The timestamp of the reported sensor data.
         */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -336,16 +324,14 @@ public abstract class Response {
         * The accuracy levels of data reported by a sensor.
         */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     public var accuracy: SensorAccuracy
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -371,7 +357,7 @@ public abstract class Response {
  * Rotation vector sensor event data.
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]
@@ -381,7 +367,7 @@ public class RotationVectorResponse <: Response {
         * Rotation vector x-axis component.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -391,7 +377,7 @@ public class RotationVectorResponse <: Response {
         * Rotation vector y-axis component.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -401,7 +387,7 @@ public class RotationVectorResponse <: Response {
         * Rotation vector z-axis component.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -411,14 +397,14 @@ public class RotationVectorResponse <: Response {
         * Scalar quantity.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     public var w: Float32
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -465,7 +451,7 @@ func removeAllCallback(`type`: SensorId): Int64 {
  * @syscap SystemCapability.Sensors.Sensor
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]
@@ -474,7 +460,7 @@ public class Sensor {
         * Sensor name.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -484,7 +470,7 @@ public class Sensor {
         * Sensor vendor.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -494,7 +480,7 @@ public class Sensor {
         * Sensor firmware version.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -504,7 +490,7 @@ public class Sensor {
         * Sensor hardware version.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -514,7 +500,7 @@ public class Sensor {
         * Sensor type ID, {@code SensorType}.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -524,7 +510,7 @@ public class Sensor {
         * Maximum measurement range of the sensor.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -534,7 +520,7 @@ public class Sensor {
         * Minimum sample period allowed, in ns.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -544,7 +530,7 @@ public class Sensor {
         * Maximum sample period allowed, in ns.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -554,7 +540,7 @@ public class Sensor {
         * Sensor accuracy.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -564,14 +550,14 @@ public class Sensor {
         * Sensor power.
         */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
     public var power: Float32
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Sensors.Sensor"
     ]
@@ -613,7 +599,7 @@ public class Sensor {
  * @syscap SystemCapability.Sensors.Sensor
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]
@@ -641,7 +627,7 @@ public func getSensorList(): Array<Sensor> {
  * @syscap SystemCapability.Sensors.Sensor
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Sensors.Sensor"
 ]

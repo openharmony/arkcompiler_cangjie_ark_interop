@@ -37,7 +37,7 @@ import ohos.base.BusinessException
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -96,8 +96,7 @@ public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -150,8 +149,7 @@ public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksPa
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -235,8 +233,7 @@ public func attestKeyItem(keyAlias: String, options: HuksOptions): Array<String>
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -315,8 +312,7 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -376,8 +372,7 @@ public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -439,8 +434,7 @@ public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, opt
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -487,8 +481,7 @@ public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -535,8 +528,7 @@ public func deleteKeyItem(keyAlias: String, _: HuksOptions): Unit {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]

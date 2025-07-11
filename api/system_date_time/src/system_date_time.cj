@@ -36,8 +36,7 @@ foreign func FfiOHOSSysSetTimezone(Timezone: CString): RetCode
 foreign func FfiOHOSSysGetTimezone(): RetDataCString
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.MiscServices.Time"
 ]
@@ -46,7 +45,7 @@ public class SystemDateTime {
      *  @brief getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void
      */
     @!APILevel[
-        12,
+        21,
         deprecated: 12,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
@@ -61,7 +60,7 @@ public class SystemDateTime {
      *  @brief getRealActiveTime(isNano?: boolean): Promise<number>
      */
     @!APILevel[
-        12,
+        21,
         deprecated: 12,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
@@ -76,7 +75,7 @@ public class SystemDateTime {
      *  @brief getRealTime(isNano?: boolean): Promise<number>
      */
     @!APILevel[
-        12,
+        21,
         deprecated: 12,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
@@ -91,8 +90,7 @@ public class SystemDateTime {
      *  @brief getTime(isNanoseconds?: boolean): number
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]
@@ -106,8 +104,7 @@ public class SystemDateTime {
      *  @brief getUptime(timeType: TimeType, isNanoseconds?: boolean): number
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]
@@ -121,8 +118,7 @@ public class SystemDateTime {
      *  @brief getTimezone(callback: AsyncCallback<string>): void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]

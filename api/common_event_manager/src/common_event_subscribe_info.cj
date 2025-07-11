@@ -45,9 +45,7 @@ foreign {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
@@ -59,9 +57,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     var hasBundleName: Bool = false
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -106,9 +102,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -135,8 +129,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -155,8 +148,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -175,8 +167,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -190,8 +181,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -205,8 +195,7 @@ public class CommonEventSubscribeInfo <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]

@@ -28,8 +28,7 @@ import ohos.multimedia.fetchdata.*
  * @crossplatform
  */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -50,8 +49,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -72,8 +70,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -94,8 +91,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -125,8 +121,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -148,7 +143,7 @@ public class Album <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -171,8 +166,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -192,8 +186,7 @@ public class Album <: RemoteDataLite {
      * @since 12
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -212,8 +205,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -238,8 +230,7 @@ public class Album <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -267,7 +258,7 @@ public class Album <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -281,15 +272,13 @@ public class Album <: RemoteDataLite {
 }
 
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
 extend Album <: FetchData<Album> {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]

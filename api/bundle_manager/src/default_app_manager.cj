@@ -20,61 +20,61 @@ import ohos.ffi.*
 import ohos.base.*
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
 ]
 public enum ApplicationType {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     Browser
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     Image
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     Audio
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     Video
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     PDF
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     Word
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     Excel
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
     PPT
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
@@ -82,7 +82,7 @@ public enum ApplicationType {
     | ...
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]
@@ -105,7 +105,7 @@ public enum ApplicationType {
 foreign func FfiBundleManagerIsDefaultApplication(appType: CString): RetDataBool
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
 ]
@@ -121,7 +121,7 @@ public class DefaultAppManager {
      * @since 10
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.DefaultApp"
     ]

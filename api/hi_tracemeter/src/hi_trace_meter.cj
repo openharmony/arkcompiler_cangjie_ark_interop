@@ -27,13 +27,13 @@ foreign {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiTrace"
 ]
 public class HiTraceMeter {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiTrace"
     ]
@@ -46,7 +46,7 @@ public class HiTraceMeter {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiTrace"
     ]

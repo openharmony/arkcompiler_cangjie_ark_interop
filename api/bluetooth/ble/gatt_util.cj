@@ -98,49 +98,38 @@ struct CArrGattService {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class GattService {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var isPrimary: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristics: Array<BLECharacteristic>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var includeServices: Array<GattService>
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -269,58 +258,44 @@ struct CArrBLEDescriptor {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class BLECharacteristic {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicValue: Array<Byte>
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var descriptors: Array<BLEDescriptor>
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var properties: GattProperties
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -412,50 +387,38 @@ struct NativeBLEDescriptor {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class BLEDescriptor {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var descriptorUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var descriptorValue: Array<Byte>
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -542,57 +505,44 @@ struct NativeGattProperties {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class GattProperties {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var write: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var writeNoResponse: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var read: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var notify: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var indicate: Bool
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -644,49 +594,38 @@ struct NativeNotifyCharacteristic {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class NotifyCharacteristic {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicValue: Array<Byte>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var confirm: Bool
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -749,57 +688,44 @@ struct NativeServerResponse {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class ServerResponse {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var transId: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var status: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var offset: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var value: Array<Byte>
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -845,25 +771,19 @@ public class ServerResponse {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum GattWriteType {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     Write
     | @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -909,58 +829,44 @@ struct NativeCharacteristicReadRequest {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class CharacteristicReadRequest {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var transId: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var offset: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -1015,79 +921,62 @@ struct NativeCharacteristicWriteRequest {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class CharacteristicWriteRequest {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var transId: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var offset: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var isPrepared: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var needRsp: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var value: Array<Byte>
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -1144,65 +1033,50 @@ struct NativeDescriptorReadRequest {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class DescriptorReadRequest {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var transId: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var offset: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var descriptorUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -1261,87 +1135,68 @@ struct NativeDescriptorWriteRequest {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class DescriptorWriteRequest {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var transId: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var offset: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var isPrepared: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var needRsp: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var value: Array<Byte>
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var descriptorUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var characteristicUuid: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -1391,34 +1246,26 @@ struct NativeBLEConnectionChangeState {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class BLEConnectionChangeState {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var state: ProfileConnectionState
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -1433,56 +1280,49 @@ public class BLEConnectionChangeState {
 
 @Derive[ToString, Hashable, Equatable]
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum BluetoothBleGattServerCallbackType {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     CharacteristicRead
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     CharacteristicWrite
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     DescriptorRead
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     DescriptorWrite
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectionStateChange
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -1505,32 +1345,28 @@ public enum BluetoothBleGattServerCallbackType {
 
 @Derive[ToString, Hashable, Equatable]
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum BluetoothBleGattClientDeviceCallbackType {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     BleCharacteristicChange
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     BleConnectionStateChange
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"

@@ -31,8 +31,7 @@ const PARAM_INVALID_ERR_MSG: String = "Parameter error: The timeout cannot be le
 const CALLER_ERROR_ERR_MSG: String = "Caller error. Caller from non-main thread."
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -47,8 +46,7 @@ public class ErrorManager {
      * @brief on(type: 'error', observer: ErrorObserver): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -82,8 +80,7 @@ public class ErrorManager {
      * @brief off(type: 'error', observerId: number): Promise<void>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

@@ -92,7 +92,7 @@ struct CPoint {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -104,7 +104,7 @@ public class Point {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -117,14 +117,14 @@ public class Point {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     public var y: Float32
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -151,7 +151,7 @@ public class Point {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -162,7 +162,7 @@ public enum ExposureMode {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -174,7 +174,7 @@ public enum ExposureMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -186,7 +186,7 @@ public enum ExposureMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -221,7 +221,7 @@ public enum ExposureMode {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -235,7 +235,7 @@ sealed interface AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -258,7 +258,7 @@ sealed interface AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -281,7 +281,7 @@ sealed interface AutoExposureQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -294,7 +294,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -316,7 +316,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -337,7 +337,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -359,7 +359,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -382,7 +382,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -403,7 +403,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -494,7 +494,7 @@ func getColorSpaceValue(space: ColorSpace): Int32 {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -507,7 +507,7 @@ sealed interface ColorManagementQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -540,7 +540,7 @@ sealed interface ColorManagementQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -556,7 +556,7 @@ sealed interface ColorManagement <: ColorManagementQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -577,7 +577,7 @@ sealed interface ColorManagement <: ColorManagementQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -600,7 +600,7 @@ sealed interface ColorManagement <: ColorManagementQuery {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -611,7 +611,7 @@ public enum FlashMode {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -623,7 +623,7 @@ public enum FlashMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -635,7 +635,7 @@ public enum FlashMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -647,7 +647,7 @@ public enum FlashMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -684,7 +684,7 @@ public enum FlashMode {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -697,7 +697,7 @@ sealed interface FlashQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -720,7 +720,7 @@ sealed interface FlashQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -743,7 +743,7 @@ sealed interface FlashQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -756,7 +756,7 @@ sealed interface Flash <: FlashQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -777,7 +777,7 @@ sealed interface Flash <: FlashQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -800,7 +800,7 @@ sealed interface Flash <: FlashQuery {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -811,7 +811,7 @@ public enum FocusState {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -823,7 +823,7 @@ public enum FocusState {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -835,7 +835,7 @@ public enum FocusState {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -871,7 +871,7 @@ public enum FocusState {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -882,7 +882,7 @@ public enum FocusMode {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -894,7 +894,7 @@ public enum FocusMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -906,7 +906,7 @@ public enum FocusMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -918,7 +918,7 @@ public enum FocusMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -955,7 +955,7 @@ public enum FocusMode {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -969,7 +969,7 @@ sealed interface FocusQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -992,7 +992,7 @@ sealed interface FocusQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1005,7 +1005,7 @@ sealed interface Focus <: FocusQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1023,7 +1023,7 @@ sealed interface Focus <: FocusQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1045,7 +1045,7 @@ sealed interface Focus <: FocusQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1066,7 +1066,7 @@ sealed interface Focus <: FocusQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1088,7 +1088,7 @@ sealed interface Focus <: FocusQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1111,7 +1111,7 @@ sealed interface Focus <: FocusQuery {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1122,7 +1122,7 @@ public enum VideoStabilizationMode {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1134,7 +1134,7 @@ public enum VideoStabilizationMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1146,7 +1146,7 @@ public enum VideoStabilizationMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1158,7 +1158,7 @@ public enum VideoStabilizationMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1170,7 +1170,7 @@ public enum VideoStabilizationMode {
          * @syscap SystemCapability.Multimedia.Camera.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1209,7 +1209,7 @@ public enum VideoStabilizationMode {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1223,7 +1223,7 @@ sealed interface StabilizationQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1246,7 +1246,7 @@ sealed interface StabilizationQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1259,7 +1259,7 @@ sealed interface Stabilization <: StabilizationQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1282,7 +1282,7 @@ sealed interface Stabilization <: StabilizationQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1303,7 +1303,7 @@ sealed interface Stabilization <: StabilizationQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1315,7 +1315,7 @@ public class SmoothZoomInfo {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1330,7 +1330,7 @@ public class SmoothZoomInfo {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1341,7 +1341,7 @@ public enum SmoothZoomMode {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1371,7 +1371,7 @@ public enum SmoothZoomMode {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1384,7 +1384,7 @@ sealed interface ZoomQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1409,7 +1409,7 @@ sealed interface ZoomQuery {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -1422,7 +1422,7 @@ sealed interface Zoom <: ZoomQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1443,7 +1443,7 @@ sealed interface Zoom <: ZoomQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1466,7 +1466,7 @@ sealed interface Zoom <: ZoomQuery {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -1480,7 +1480,7 @@ sealed interface Zoom <: ZoomQuery {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]

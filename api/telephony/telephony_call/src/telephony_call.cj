@@ -24,7 +24,7 @@ import std.collection.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Telephony.CallManager"
 ]
@@ -36,7 +36,7 @@ public class TelephonyCall {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -63,8 +63,7 @@ public class TelephonyCall {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -82,8 +81,7 @@ public class TelephonyCall {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -101,7 +99,7 @@ public class TelephonyCall {
      *  callback: AsyncCallback<boolean>): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -125,7 +123,7 @@ public class TelephonyCall {
      * @brief  isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boolean>): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -137,7 +135,7 @@ public class TelephonyCall {
      * @brief  hasCallSync(): boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -149,7 +147,7 @@ public class TelephonyCall {
      * @brief  getCallStateSync(): CallState
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -162,7 +160,7 @@ public class TelephonyCall {
      * @brief  hasVoiceCapability(): boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -179,7 +177,7 @@ public class TelephonyCall {
      * @brief  formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): Promise<string>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]

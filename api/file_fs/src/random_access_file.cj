@@ -20,7 +20,7 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
@@ -34,7 +34,7 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -45,7 +45,7 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -59,7 +59,7 @@ public class RandomAccessFile <: RemoteDataLite {
      *  @brief setFilePointer(): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -72,7 +72,7 @@ public class RandomAccessFile <: RemoteDataLite {
      *  @brief close(): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -86,7 +86,7 @@ public class RandomAccessFile <: RemoteDataLite {
      *                   options?: { offset?: number; length?: number; encoding?: string; }): number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -100,7 +100,7 @@ public class RandomAccessFile <: RemoteDataLite {
      *                   options?: { offset?: number; length?: number; encoding?: string; }): number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -127,7 +127,7 @@ public class RandomAccessFile <: RemoteDataLite {
      *  @brief readSync(buffer: ArrayBuffer, options?: { offset?: number; length?: number; }): number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]

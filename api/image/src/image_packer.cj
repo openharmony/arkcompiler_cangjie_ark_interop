@@ -63,7 +63,7 @@ foreign {
  * @relation interface ImagePacker
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImagePacker"
 ]
@@ -82,7 +82,7 @@ public class ImagePacker <: RemoteDataLite {
      * @relation readonly supportedFormats: Array<string>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -113,7 +113,7 @@ public class ImagePacker <: RemoteDataLite {
      * @relation packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -146,7 +146,7 @@ public class ImagePacker <: RemoteDataLite {
      * @relation packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -192,7 +192,7 @@ public class ImagePacker <: RemoteDataLite {
      * @relation packToFile(source: PixelMap, fd: number, options: PackingOption): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -221,7 +221,7 @@ public class ImagePacker <: RemoteDataLite {
      * @relation packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -238,7 +238,7 @@ public class ImagePacker <: RemoteDataLite {
      * @relation release(): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImagePacker"
     ]
@@ -254,7 +254,7 @@ public class ImagePacker <: RemoteDataLite {
  * @relation function createImagePacker(): ImagePacker;
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImagePacker"
 ]

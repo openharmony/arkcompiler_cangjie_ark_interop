@@ -20,7 +20,7 @@ import ohos.ffi.*
 import ohos.base.BusinessException
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
@@ -41,7 +41,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -54,7 +54,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -67,7 +67,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -80,7 +80,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -100,7 +100,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -131,7 +131,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -148,7 +148,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -162,7 +162,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -177,7 +177,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -201,7 +201,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -218,7 +218,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -235,7 +235,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -256,7 +256,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -281,7 +281,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -312,7 +312,7 @@ public class Ashmem <: RemoteDataLite {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

@@ -21,8 +21,7 @@ import std.collection.*
 import ohos.base.*
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
@@ -36,8 +35,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -63,8 +61,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -80,8 +77,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -97,8 +93,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -114,8 +109,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -131,8 +125,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -148,8 +141,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -165,8 +157,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -182,8 +173,7 @@ public class ResultSet <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -202,8 +192,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getDouble(columnIndex: number): number
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -220,8 +209,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  goToRow(position: number): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -237,8 +225,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  goToPreviousRow(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -254,8 +241,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  goToLastRow(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -271,8 +257,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getColumnName(columnIndex: number): string
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -295,8 +280,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  isColumnNull(columnIndex: number): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -313,8 +297,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getAsset(columnIndex: number): Asset
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -344,8 +327,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  close(): void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -358,8 +340,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getColumnIndex(columnName: string): number
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -385,8 +366,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getString(columnIndex: number): string
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -405,8 +385,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  goToFirstRow(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -422,8 +401,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getAssets(columnIndex: number): Assets
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -459,8 +437,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getLong(columnIndex: number): number
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -477,8 +454,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  goToNextRow(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -494,8 +470,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getBlob(columnIndex: number): Uint8Array
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -522,8 +497,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  goTo(offset:number): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -539,8 +513,7 @@ public class ResultSet <: RemoteDataLite {
      * @brief  getRow(): ValuesBucket
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]

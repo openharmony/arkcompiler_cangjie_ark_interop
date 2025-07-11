@@ -21,57 +21,49 @@ import ohos.base.*
 import std.collection.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
 ]
 public enum ValueType {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     integer(Int64)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     double(Float64)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     string(String)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     bool(Bool)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     boolArray(Array<Bool>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     doubleArray(Array<Float64>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -80,18 +72,14 @@ public enum ValueType {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
 ]
 public let MAX_KEY_LENGTH: Int64 = 1024
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
 ]
@@ -166,34 +154,26 @@ func getCJErrorCode(code: Int32): Int32 {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
 ]
 public class Options {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     public let name: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
     public let dataGroupId: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -203,9 +183,7 @@ public class Options {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]

@@ -28,7 +28,7 @@ import ohos.base.*
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -39,7 +39,7 @@ public enum PixelMapFormat {
      * @relation UNKNOWN = 0,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -53,7 +53,7 @@ public enum PixelMapFormat {
      * @relation RGB_565 = 2,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -66,7 +66,7 @@ public enum PixelMapFormat {
      * @relation RGBA_8888 = 3,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -79,7 +79,7 @@ public enum PixelMapFormat {
      * @relation BGRA_8888 = 4,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -92,7 +92,7 @@ public enum PixelMapFormat {
      * @relation RGB_888 = 5,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -105,7 +105,7 @@ public enum PixelMapFormat {
      * @relation ALPHA_8 = 6,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -118,7 +118,7 @@ public enum PixelMapFormat {
      * @relation RGBA_F16 = 7,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -131,7 +131,7 @@ public enum PixelMapFormat {
      * @relation NV21 = 8,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -144,7 +144,7 @@ public enum PixelMapFormat {
      * @relation NV12 = 9,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -157,7 +157,7 @@ public enum PixelMapFormat {
      * @relation RGBA_1010102 = 10,
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -170,7 +170,7 @@ public enum PixelMapFormat {
      * @relation YCBCR_P010 = 11,
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -183,7 +183,7 @@ public enum PixelMapFormat {
      * @relation YCRCB_P010 = 12
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -234,7 +234,7 @@ public enum PixelMapFormat {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -245,7 +245,7 @@ public enum AlphaType {
      * @relation UNKNOWN = 0,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -257,7 +257,7 @@ public enum AlphaType {
      * @relation OPAQUE = 1,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -269,7 +269,7 @@ public enum AlphaType {
      * @relation PREMUL = 2,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -281,7 +281,7 @@ public enum AlphaType {
      * @relation UNPREMUL = 3
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -316,7 +316,7 @@ public enum AlphaType {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -327,7 +327,7 @@ public enum ScaleMode {
      * @relation FIT_TARGET_SIZE = 0,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -339,7 +339,7 @@ public enum ScaleMode {
      * @relation CENTER_CROP = 1
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -362,7 +362,7 @@ public enum ScaleMode {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -373,7 +373,7 @@ public enum ImageFormat {
      * @relation YCBCR_422_SP = 1000,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -385,7 +385,7 @@ public enum ImageFormat {
      * @relation JPEG = 2000
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -416,7 +416,7 @@ public enum ImageFormat {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -427,7 +427,7 @@ public enum ComponentType {
      * @relation YUV_Y = 1,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -439,7 +439,7 @@ public enum ComponentType {
      * @relation YUV_U = 2,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -451,7 +451,7 @@ public enum ComponentType {
      * @relation YUV_V = 3,
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -463,7 +463,7 @@ public enum ComponentType {
      * @relation JPEG = 4
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -498,7 +498,7 @@ public enum ComponentType {
  */
 @Derive[Equatable]
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -509,7 +509,7 @@ public enum PropertyKey <: ToString {
      * @relation IMAGE_WIDTH = 'ImageWidth',
      */
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -521,7 +521,7 @@ public enum PropertyKey <: ToString {
      * @relation IMAGE_LENGTH = 'ImageLength',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -533,7 +533,7 @@ public enum PropertyKey <: ToString {
      * @relation BITS_PER_SAMPLE = 'BitsPerSample',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -545,7 +545,7 @@ public enum PropertyKey <: ToString {
      * @relation IMAGE_DESCRIPTION = 'ImageDescription',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -557,7 +557,7 @@ public enum PropertyKey <: ToString {
      * @relation MAKE = 'Make',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -569,7 +569,7 @@ public enum PropertyKey <: ToString {
      * @relation MODEL = 'Model',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -581,7 +581,7 @@ public enum PropertyKey <: ToString {
      * @relation ORIENTATION = 'Orientation',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -593,7 +593,7 @@ public enum PropertyKey <: ToString {
      * @relation DATE_TIME = 'DateTime',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -605,7 +605,7 @@ public enum PropertyKey <: ToString {
      * @relation PHOTO_MODE = 'PhotoMode',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -617,7 +617,7 @@ public enum PropertyKey <: ToString {
      * @relation EXPOSURE_TIME = 'ExposureTime',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -629,7 +629,7 @@ public enum PropertyKey <: ToString {
      * @relation F_NUMBER = 'FNumber',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -641,7 +641,7 @@ public enum PropertyKey <: ToString {
      * @relation GPS_LATITUDE_REF = 'GPSLatitudeRef',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -653,7 +653,7 @@ public enum PropertyKey <: ToString {
      * @relation GPS_LATITUDE = 'GPSLatitude',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -665,7 +665,7 @@ public enum PropertyKey <: ToString {
      * @relation GPS_LONGITUDE_REF = 'GPSLongitudeRef',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -677,7 +677,7 @@ public enum PropertyKey <: ToString {
      * @relation GPS_LONGITUDE = 'GPSLongitude',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -689,7 +689,7 @@ public enum PropertyKey <: ToString {
      * @relation GPS_TIME_STAMP = 'GPSTimeStamp',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -701,7 +701,7 @@ public enum PropertyKey <: ToString {
      * @relation GPS_DATE_STAMP = 'GPSDateStamp',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -713,7 +713,7 @@ public enum PropertyKey <: ToString {
      * @relation ISO_SPEED_RATINGS = 'ISOSpeedRatings',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -725,7 +725,7 @@ public enum PropertyKey <: ToString {
      * @relation SENSITIVITY_TYPE = 'SensitivityType',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -737,7 +737,7 @@ public enum PropertyKey <: ToString {
      * @relation STANDARD_OUTPUT_SENSITIVITY = 'StandardOutputSensitivity',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -749,7 +749,7 @@ public enum PropertyKey <: ToString {
      * @relation RECOMMENDED_EXPOSURE_INDEX = 'RecommendedExposureIndex',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -761,7 +761,7 @@ public enum PropertyKey <: ToString {
      * @relation ISO_SPEED = 'ISOSpeedRatings',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -773,7 +773,7 @@ public enum PropertyKey <: ToString {
      * @relation DATE_TIME_ORIGINAL = 'DateTimeOriginal',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -785,7 +785,7 @@ public enum PropertyKey <: ToString {
      * @relation APERTURE_VALUE = 'ApertureValue',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -797,7 +797,7 @@ public enum PropertyKey <: ToString {
      * @relation EXPOSURE_BIAS_VALUE = 'ExposureBiasValue',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -809,7 +809,7 @@ public enum PropertyKey <: ToString {
      * @relation METERING_MODE = 'MeteringMode',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -821,7 +821,7 @@ public enum PropertyKey <: ToString {
      * @relation LIGHT_SOURCE = 'LightSource',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -833,7 +833,7 @@ public enum PropertyKey <: ToString {
      * @relation FLASH = 'Flash',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -845,7 +845,7 @@ public enum PropertyKey <: ToString {
      * @relation FOCAL_LENGTH = 'FocalLength',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -857,7 +857,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_FOOD_CONF = 'HwMnoteSceneFoodConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -869,7 +869,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_STAGE_CONF = 'HwMnoteSceneStageConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -881,7 +881,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_BLUE_SKY_CONF = 'HwMnoteSceneBlueSkyConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -893,7 +893,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_GREEN_PLANT_CONF = 'HwMnoteSceneGreenPlantConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -905,7 +905,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_BEACH_CONF = 'HwMnoteSceneBeachConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -917,7 +917,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_SNOW_CONF = 'HwMnoteSceneSnowConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -929,7 +929,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_SUNSET_CONF = 'HwMnoteSceneSunsetConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -941,7 +941,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_FLOWERS_CONF = 'HwMnoteSceneFlowersConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -953,7 +953,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_NIGHT_CONF = 'HwMnoteSceneNightConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -965,7 +965,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_TEXT_CONF = 'HwMnoteSceneTextConf',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -977,7 +977,7 @@ public enum PropertyKey <: ToString {
      * @relation FACE_COUNT = 'HwMnoteFaceCount',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -989,7 +989,7 @@ public enum PropertyKey <: ToString {
      * @relation CAPTURE_MODE = 'HwMnoteCaptureMode',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1001,7 +1001,7 @@ public enum PropertyKey <: ToString {
      * @relation ROLL_ANGLE = 'HwMnoteRollAngle',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1013,7 +1013,7 @@ public enum PropertyKey <: ToString {
      * @relation PITCH_ANGLE = 'HwMnotePitchAngle',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1025,7 +1025,7 @@ public enum PropertyKey <: ToString {
      * @relation PHYSICAL_APERTURE = 'HwMnotePhysicalAperture',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1037,7 +1037,7 @@ public enum PropertyKey <: ToString {
      * @relation FOCUS_MODE = 'HwMnoteFocusMode',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1049,7 +1049,7 @@ public enum PropertyKey <: ToString {
      * @relation USER_COMMENT = 'UserComment',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1061,7 +1061,7 @@ public enum PropertyKey <: ToString {
      * @relation PIXEL_X_DIMENSION = 'PixelXDimension',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1073,7 +1073,7 @@ public enum PropertyKey <: ToString {
      * @relation PIXEL_Y_DIMENSION = 'PixelYDimension',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1085,7 +1085,7 @@ public enum PropertyKey <: ToString {
      * @relation SCENE_TYPE = 'SceneType',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1097,7 +1097,7 @@ public enum PropertyKey <: ToString {
      * @relation WHITE_BALANCE = 'WhiteBalance',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1109,7 +1109,7 @@ public enum PropertyKey <: ToString {
      * @relation FOCAL_LENGTH_IN_35_MM_FILM = 'FocalLengthIn35mmFilm',
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1122,7 +1122,7 @@ public enum PropertyKey <: ToString {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1192,7 +1192,7 @@ public enum PropertyKey <: ToString {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -1203,7 +1203,7 @@ public enum DecodingDynamicRange {
      * @relation AUTO = 0,
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1215,7 +1215,7 @@ public enum DecodingDynamicRange {
      * @relation SDR = 1,
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1227,7 +1227,7 @@ public enum DecodingDynamicRange {
      * @relation HDR = 2
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1254,7 +1254,7 @@ public enum DecodingDynamicRange {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -1265,7 +1265,7 @@ public enum PackingDynamicRange {
      * @relation AUTO = 0,
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -1277,7 +1277,7 @@ public enum PackingDynamicRange {
      * @relation SDR = 1
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]

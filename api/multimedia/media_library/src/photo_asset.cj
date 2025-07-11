@@ -30,9 +30,7 @@ import ohos.image.*
  * @atomicservice
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -47,9 +45,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -72,8 +68,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -94,8 +89,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -131,8 +125,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -163,7 +156,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @example : set(PhotoKeys.TITLE.toString(), "newTitle"), call commitModify after set
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -195,8 +188,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.WRITE_IMAGEVIDEO",
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
@@ -220,7 +212,7 @@ public class PhotoAsset <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         permission: "ohos.WRITE_IMAGEVIDEO",
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
@@ -238,9 +230,7 @@ public class PhotoAsset <: RemoteDataLite {
 
 extend PhotoAsset <: FetchData<PhotoAsset> {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]

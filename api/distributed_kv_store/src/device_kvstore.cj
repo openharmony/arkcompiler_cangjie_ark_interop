@@ -21,7 +21,7 @@ import ohos.ffi.*
 import std.collection.*
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
 ]
@@ -39,7 +39,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  get(key: string): Promise<boolean | string | number | Uint8Array>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -52,7 +52,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Array>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -82,7 +82,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getEntries(keyPrefix: string): Promise<Entry[]>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -95,7 +95,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -125,7 +125,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getEntries(query: Query): Promise<Entry[]>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -138,7 +138,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getEntries(deviceId: string, query: Query): Promise<Entry[]>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -164,7 +164,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -177,7 +177,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getResultSet(deviceId: string, keyPrefix: string): Promise<KVStoreResultSet>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -206,7 +206,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getResultSet(query: Query): Promise<KVStoreResultSet>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -219,7 +219,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getResultSet(deviceId: string, query: Query): Promise<KVStoreResultSet>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -243,7 +243,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getResultSize(query: Query): Promise<number>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -256,7 +256,7 @@ public class DeviceKVStore <: SingleKVStore {
      * @brief  getResultSize(deviceId: string, query: Query): Promise<number>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]

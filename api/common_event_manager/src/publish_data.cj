@@ -20,65 +20,55 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventPublishData {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public CommonEventPublishData(
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
         public let bundleName: String,
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
         public let data: String,
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
         public let code: Int32,
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
         public let subscriberPermissions!: Array<String> = Array<String>(),
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
         public let isOrdered!: Bool = false,
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
         public let isSticky!: Bool = false,
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Notification.CommonEvent"
         ]
@@ -87,46 +77,37 @@ public class CommonEventPublishData {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public class CommonEventData {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public let event: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public let bundleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public let code: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public let data: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]

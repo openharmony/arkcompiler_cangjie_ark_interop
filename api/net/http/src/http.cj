@@ -34,9 +34,7 @@ const MAX_CACHE_SIZE: UInt32 = 10 * 1024 * 1024
  * @brief createHttp(): HttpRequest;
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
@@ -55,9 +53,7 @@ public func createHttp(): HttpRequest {
  * @brief createHttpResponseCache(cacheSize?: number): HttpResponseCache;
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
@@ -77,9 +73,7 @@ public func createHttpResponseCache(cacheSize!: UInt32 = MAX_CACHE_SIZE): HttpRe
  * you must call createHttp() to create an HttpRequestTask object.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
@@ -133,9 +127,7 @@ public class HttpRequest {
      * @brief request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.permission.INTERNET",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
@@ -186,9 +178,7 @@ public class HttpRequest {
      * @brief destroy(): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -242,8 +232,7 @@ public class HttpRequest {
      * @brief requestInStream(url: string, options?: HttpRequestOptions): Promise<number>;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         permission: "ohos.permission.INTERNET",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
@@ -325,9 +314,7 @@ public class HttpRequest {
      * @brief on(type: "headersReceive", callback: Callback<Object>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -346,9 +333,7 @@ public class HttpRequest {
      * @brief off(type: "headersReceive", callback?: Callback<Object>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -366,9 +351,7 @@ public class HttpRequest {
      * @brief once(type: "headersReceive", callback: Callback<Object>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -396,8 +379,7 @@ public class HttpRequest {
      * @brief on(type: "dataReceive", callback: Callback<ArrayBuffer>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -422,8 +404,7 @@ public class HttpRequest {
      * @brief off(type: "dataReceive", callback?: Callback<ArrayBuffer>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -440,8 +421,7 @@ public class HttpRequest {
      * @brief on(type: "dataEnd", callback: Callback<void>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -459,8 +439,7 @@ public class HttpRequest {
      * @brief off(type: "dataEnd", callback?: Callback<void>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -477,9 +456,7 @@ public class HttpRequest {
      * @brief on(type: 'dataReceiveProgress', callback: Callback<DataReceiveProgressInfo>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -500,9 +477,7 @@ public class HttpRequest {
      * @brief off(type: 'dataReceiveProgress', callback?: Callback<DataReceiveProgressInfo>): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -519,8 +494,7 @@ public class HttpRequest {
      * @brief on(type: 'dataSendProgress', callback: Callback<DataSendProgressInfo>): void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -541,8 +515,7 @@ public class HttpRequest {
      * @brief off(type: 'dataSendProgress', callback?: Callback<DataSendProgressInfo>): void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -561,9 +534,7 @@ public class HttpRequest {
  * @atomicservice
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
@@ -579,9 +550,7 @@ public class HttpResponseCache {
      * @since 11
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -604,9 +573,7 @@ public class HttpResponseCache {
      * @brief delete(): Promise<void>;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]

@@ -24,23 +24,20 @@ import std.collection.*
  * Provides an instance that bear data network capabilities.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class NetSpecifier {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
     public NetSpecifier(
         // The transmission capacity and support of the network's global proxy storage data network.
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -48,8 +45,7 @@ public class NetSpecifier {
         // Network identifier, the identifier for Wi Fi networks is "wifi",
         // and the identifier for cellular networks is "simId1" (corresponding to SIM card 1).
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -61,17 +57,13 @@ public class NetSpecifier {
  * Receive information about changes in network capabilities.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class NetCapabilityInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -80,9 +72,7 @@ public class NetCapabilityInfo {
          * Defines the handle of the data network.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -91,9 +81,7 @@ public class NetCapabilityInfo {
          * Defines the network capability set.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -110,48 +98,41 @@ public class NetCapabilityInfo {
  * Defines the network capability set.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class NetCapabilities {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
     public NetCapabilities(
         // Network type.
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
         public let bearerTypes: Array<NetBearType>,
         // Uplink (device-to-network) bandwidth.
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
         public let linkUpBandwidthKbps!: ?UInt32 = None,
         // Downstream (network-to-device) bandwidth.
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
         public let linkDownBandwidthKbps!: ?UInt32 = None,
         // Network-specific capabilities.
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -187,13 +168,13 @@ public class NetCapabilities {
  * Defines the network connection properties.
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class ConnectionProperties {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -202,7 +183,7 @@ public class ConnectionProperties {
          * Network card name.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -211,7 +192,7 @@ public class ConnectionProperties {
          * Domain. The default value is "".
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -220,7 +201,7 @@ public class ConnectionProperties {
          * Link information.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -229,7 +210,7 @@ public class ConnectionProperties {
          * Network address, refer to [NetAddress].
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -238,7 +219,7 @@ public class ConnectionProperties {
          * Routing information.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -247,7 +228,7 @@ public class ConnectionProperties {
          * Maximum transmission unit.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -272,13 +253,13 @@ public class ConnectionProperties {
  * Defines network route information.
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class RouteInfo {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -287,7 +268,7 @@ public class RouteInfo {
          * Network card name.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -297,7 +278,7 @@ public class RouteInfo {
          * Destination Address
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -307,7 +288,7 @@ public class RouteInfo {
          * Gateway address.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -317,7 +298,7 @@ public class RouteInfo {
          * Whether a gateway is present.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -327,7 +308,7 @@ public class RouteInfo {
          * Whether the route is the default route.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -348,13 +329,13 @@ public class RouteInfo {
  * Defines network link information.
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class LinkAddress {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -363,7 +344,7 @@ public class LinkAddress {
          * Link address.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -372,7 +353,7 @@ public class LinkAddress {
          * The length of the link address prefix.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -389,15 +370,13 @@ public class LinkAddress {
  * Defines a network address.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class NetAddress {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -406,8 +385,7 @@ public class NetAddress {
          * Network address.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -416,8 +394,7 @@ public class NetAddress {
          * Address family identifier. The value is 1 for IPv4 and 2 for IPv6. The default value is 1.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -426,8 +403,7 @@ public class NetAddress {
          * Port number. The value ranges from 0 to 65535.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -446,15 +422,13 @@ public class NetAddress {
  * Network Global Proxy Configuration Information.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class HttpProxy {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -463,8 +437,7 @@ public class HttpProxy {
          * Proxy server host name.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -473,8 +446,7 @@ public class HttpProxy {
          * Host port.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -483,8 +455,7 @@ public class HttpProxy {
          * Do not use a blocking list for proxy servers.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.NetManager.Core"
         ]
@@ -521,8 +492,7 @@ public class HttpProxy {
  * Defines the network capability.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -531,8 +501,7 @@ public enum NetCap {
      * Indicates that the network can access the carrier's MMSC to send and receive multimedia messages.
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -542,8 +511,7 @@ public enum NetCap {
          * Indicates that the network traffic is not metered.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -553,8 +521,7 @@ public enum NetCap {
          * Indicates that the network can access the Internet.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -564,8 +531,7 @@ public enum NetCap {
          * Indicates that the network does not use a VPN.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -575,8 +541,7 @@ public enum NetCap {
          * Indicates that the network is available.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -610,9 +575,7 @@ public enum NetCap {
  * Enumerates network types.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -621,9 +584,7 @@ public enum NetBearType {
      * Indicates that the network is based on a cellular network.
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -633,9 +594,7 @@ public enum NetBearType {
          * Indicates that the network is based on a Wi-Fi network.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -645,9 +604,7 @@ public enum NetBearType {
          * Indicates that the network is an Ethernet network.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]

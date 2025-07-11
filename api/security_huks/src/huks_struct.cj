@@ -25,29 +25,25 @@ import ohos.base.BusinessException
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksParam {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public HuksParam(
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
         public let tag: HuksTag,
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
@@ -58,43 +54,37 @@ public class HuksParam {
 type Bytes = Array<UInt8>
 
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public enum HuksParamValue {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     boolean(Bool)
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     int32(Int32)
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     uint32(UInt32)
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     uint64(UInt64)
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -102,8 +92,7 @@ public enum HuksParamValue {
     | ...
 
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -114,8 +103,7 @@ public enum HuksParamValue {
         }
     }
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -126,8 +114,7 @@ public enum HuksParamValue {
         }
     }
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -138,8 +125,7 @@ public enum HuksParamValue {
         }
     }
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -150,8 +136,7 @@ public enum HuksParamValue {
         }
     }
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -162,8 +147,7 @@ public enum HuksParamValue {
         }
     }
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -185,37 +169,32 @@ public enum HuksParamValue {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksOptions {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public HuksOptions(
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
         public var properties: Option<Array<HuksParam>>,
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
         public var inData: Option<Bytes>
     ) {}
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -229,29 +208,25 @@ public class HuksOptions {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksSessionHandle {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public HuksSessionHandle(
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
         public let handle: HuksHandle,
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
@@ -260,7 +235,7 @@ public class HuksSessionHandle {
 }
 
 @!APILevel[
-    15,
+    21,
     deprecated: 9,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
@@ -276,36 +251,31 @@ public class HuksHandle {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksReturnResult {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public HuksReturnResult(
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
         public let outData: Option<Bytes>,
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]
         public let properties: Option<Array<HuksParam>>,
         @!APILevel[
-            15,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Security.Huks.Core"
         ]

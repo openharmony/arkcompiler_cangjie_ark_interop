@@ -22,14 +22,12 @@ import std.collection.*
 
 @!APILevel[
     21,
-    atomicservice: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
 public class WebStorageOrigin {
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -37,7 +35,6 @@ public class WebStorageOrigin {
 
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -45,7 +42,6 @@ public class WebStorageOrigin {
 
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -53,7 +49,6 @@ public class WebStorageOrigin {
 
     @!APILevel[
         21,
-        atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

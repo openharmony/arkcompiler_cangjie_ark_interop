@@ -33,7 +33,7 @@ foreign {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
@@ -48,7 +48,7 @@ public func createAVImageGenerator(): AVImageGenerator {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
@@ -62,7 +62,7 @@ public class AVImageGenerator <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
@@ -86,7 +86,7 @@ public class AVImageGenerator <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
@@ -100,7 +100,7 @@ public class AVImageGenerator <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]

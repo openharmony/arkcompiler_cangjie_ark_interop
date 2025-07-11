@@ -26,7 +26,7 @@ const HKS_MAX_VERSION_SIZE: UInt32 = 64
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
+    21,
     deprecated: 11,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"

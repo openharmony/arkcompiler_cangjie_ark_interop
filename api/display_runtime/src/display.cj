@@ -29,28 +29,28 @@ extend ColorSpace {
     static func parseFromDisplay(cs: UInt32): ColorSpace {
         return match (cs) {
             case 0 => UNKNOWN
-            case 2228482 => Unknown
-            case 2294019 => Bt601SmpteC
-            case 2162945 => Bt709
-            case 2360580 => Bt2020Hlg
-            case 2360324 => Bt2020Pq
-            case 4325634 => Bt601Ebu
-            case 4391171 => Bt601SmpteC
-            case 4260097 => Bt709
-            case 4457732 => Bt2020Hlg
-            case 4457476 => Bt2020Pq
-            case 2294273 => Srgb
-            case 2294278 => DisplayP3
-            case 2295046 => P3Hlg
-            case 2294790 => P3Pq
-            case 2098711 => AdobeRgb1998
-            case 4391425 => Srgb
-            case 4391430 => DisplayP3
-            case 4391942 => P3Pq
-            case 4195863 => AdobeRgb1998
-            case 769 => LinearSrgb
-            case 774 => LinearP3
-            case 772 => LinearBt2020
+            case 2228482 => BT601_EBU
+            case 2294019 => BT601_SMPTE_C
+            case 2162945 => BT709
+            case 2360580 => BT2020_HLG
+            case 2360324 => BT2020_PQ
+            case 4325634 => BT601_EBU
+            case 4391171 => BT601_SMPTE_C
+            case 4260097 => BT709
+            case 4457732 => BT2020_HLG
+            case 4457476 => BT2020_PQ
+            case 2294273 => SRGB
+            case 2294278 => DISPLAY_P3
+            case 2295046 => P3_HLG
+            case 2294790 => P3_PQ
+            case 2098711 => ADOBE_RGB_1998
+            case 4391425 => SRGB
+            case 4391430 => DISPLAY_P3
+            case 4391942 => P3_PQ
+            case 4195863 => ADOBE_RGB_1998
+            case 769 => LINEAR_SRGB
+            case 774 => LINEAR_P3
+            case 772 => LINEAR_BT2020
             case _ => throw Exception("Unrecognized ColorSpace type: ${cs}")
         }
     }

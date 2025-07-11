@@ -21,7 +21,7 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
@@ -38,7 +38,7 @@ public class Stream <: RemoteDataLite {
      *  @brief closeSync(file: number | File): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -56,7 +56,7 @@ public class Stream <: RemoteDataLite {
      *  @brief flushSync(): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -74,9 +74,7 @@ public class Stream <: RemoteDataLite {
      *                   options?: { offset?: number; length?: number; encoding?: string; }): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -109,7 +107,7 @@ public class Stream <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -144,7 +142,7 @@ public class Stream <: RemoteDataLite {
      *  @brief readSync(buffer: ArrayBuffer, options?: { offset?: number; length?: number; }): number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]

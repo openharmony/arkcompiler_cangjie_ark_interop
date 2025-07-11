@@ -101,9 +101,7 @@ func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Un
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]

@@ -53,9 +53,7 @@ foreign {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.I18n"
 ]
@@ -69,9 +67,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -82,9 +78,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -95,9 +89,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -109,9 +101,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -124,9 +114,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -140,9 +128,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -153,9 +139,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -166,9 +150,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -179,9 +161,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -192,9 +172,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -208,9 +186,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -226,9 +202,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -243,9 +217,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -262,9 +234,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]
@@ -275,9 +245,7 @@ public class Calendar <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]

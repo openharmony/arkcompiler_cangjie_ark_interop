@@ -39,8 +39,7 @@ import ohos.base.BusinessException
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -124,8 +123,7 @@ func getHuksHandle(handle: OhosHksBlob): HuksHandle {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -134,8 +132,7 @@ public func updateSession(handle: HuksHandle, options: HuksOptions): Option<Byte
 }
 
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -167,8 +164,7 @@ public func updateSession(handle: HuksHandle, options: HuksOptions, token: Bytes
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -177,8 +173,7 @@ public func finishSession(handle: HuksHandle, options: HuksOptions): Option<Byte
 }
 
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
@@ -277,8 +272,7 @@ func processRet(retCode: Int32, outBlob: OhosHksBlob, handleBlob: OhosHksBlob, i
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]

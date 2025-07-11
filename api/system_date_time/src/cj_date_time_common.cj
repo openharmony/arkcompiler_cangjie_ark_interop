@@ -21,25 +21,19 @@ import ohos.labels.*
 import ohos.base.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.MiscServices.Time"
 ]
 public enum TimeType {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]
     STARTUP
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]

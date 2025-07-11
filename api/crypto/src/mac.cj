@@ -39,9 +39,7 @@ foreign {
  * @relation createMac(algName: string): Mac
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Mac"
 ]
@@ -62,9 +60,7 @@ public func createMac(algName: String): Mac {
  * @relation interface Mac
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Mac"
 ]
@@ -86,9 +82,7 @@ public class Mac <: RemoteDataLite {
      * @relation algName: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Mac"
     ]
@@ -107,9 +101,7 @@ public class Mac <: RemoteDataLite {
      * @relation initSync(key: SymKey): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Mac"
     ]
@@ -129,9 +121,7 @@ public class Mac <: RemoteDataLite {
      * @relation updateSync(input: DataBlob): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Mac"
     ]
@@ -164,9 +154,7 @@ public class Mac <: RemoteDataLite {
      * @relation doFinalSync(): DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Mac"
     ]
@@ -188,9 +176,7 @@ public class Mac <: RemoteDataLite {
      * @relation getMacLength(): number;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Mac"
     ]

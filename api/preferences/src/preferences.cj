@@ -27,9 +27,7 @@ let PREFERENCES_LOG = HilogChannel(0, 0xD002B25, "CJ-Preferences")
 type StageContext = CPointer<Unit>
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
 ]
@@ -66,9 +64,7 @@ public class Preferences <: RemoteDataLite {
      * @brief getPreferences(context: Context, name: string, callback: AsyncCallback<Preferences>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -80,9 +76,7 @@ public class Preferences <: RemoteDataLite {
      * @brief getPreferencesSync(context: Context, options: Options): Preferences
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -94,9 +88,7 @@ public class Preferences <: RemoteDataLite {
      * @brief deletePreferences(context: Context, name: string, callback: AsyncCallback<Preferences>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -108,9 +100,7 @@ public class Preferences <: RemoteDataLite {
      * @brief deletePreferences(context: Context, options: Options): Promise<void>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -137,9 +127,7 @@ public class Preferences <: RemoteDataLite {
      * @brief removePreferencesFromCacheSync(context: Context, name: string): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -151,9 +139,7 @@ public class Preferences <: RemoteDataLite {
      * @brief removePreferencesFromCache(context: Context, options: Options): Promise<void>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -180,9 +166,7 @@ public class Preferences <: RemoteDataLite {
      * @brief flush(): Promise<void>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -194,9 +178,7 @@ public class Preferences <: RemoteDataLite {
      * @brief clear(): Promise<void>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -208,9 +190,7 @@ public class Preferences <: RemoteDataLite {
      * @brief getSync(key: string, defValue: ValueType): ValueType
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -232,9 +212,7 @@ public class Preferences <: RemoteDataLite {
      * @brief putSync(key: string, value: ValueType): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -259,9 +237,7 @@ public class Preferences <: RemoteDataLite {
      * @brief getAllSync(): Object
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -278,9 +254,7 @@ public class Preferences <: RemoteDataLite {
      * @brief deleteSync(key: string): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -303,9 +277,7 @@ public class Preferences <: RemoteDataLite {
      * @brief hasSync(key: string): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -329,9 +301,7 @@ public class Preferences <: RemoteDataLite {
      * @brief on(type: ‘change’, callback: ( key : string ) => void): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -366,9 +336,7 @@ public class Preferences <: RemoteDataLite {
      * @brief off(type: ‘change’, callback?: ( key : string ) => void): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]
@@ -406,9 +374,7 @@ public class Preferences <: RemoteDataLite {
      * @brief off(type: ‘change’, callback?: ( key : string ) => void): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.Preferences.Core"
     ]

@@ -94,17 +94,13 @@ func throwIfNotSuccess(code: Int32, className: String, funcName: String): Unit {
  * @atomicservice
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.Core"
 ]
 public class AVFileDescriptor {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -118,9 +114,7 @@ public class AVFileDescriptor {
          * @atomicservice
          */
         @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Multimedia.Media.Core"
         ]
@@ -134,9 +128,7 @@ public class AVFileDescriptor {
          * @atomicservice
          */
         @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Multimedia.Media.Core"
         ]
@@ -150,9 +142,7 @@ public class AVFileDescriptor {
          * @atomicservice
          */
         @!APILevel[
-            19,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Multimedia.Media.Core"
         ]
@@ -160,9 +150,7 @@ public class AVFileDescriptor {
     ) {}
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -181,7 +169,7 @@ public class AVFileDescriptor {
  */
 @Derive[Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.Core"
 ]
@@ -191,7 +179,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
      * @syscap SystemCapability.Multimedia.Media.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -202,7 +190,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -213,7 +201,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -224,7 +212,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -235,7 +223,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -254,7 +242,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -270,7 +258,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -280,27 +268,27 @@ public enum PlaybackInfoKey <: ToString & Hashable {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true
 ]
 public enum ValueType {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     INT(Int32)
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     INT64(Int64)
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     DOUBLE(Float64)
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     STRING(String)
@@ -308,25 +296,25 @@ public enum ValueType {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
 public class PixelMapParams {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     public PixelMapParams(
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
         ]
         public var width: Int32,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
         ]
@@ -336,31 +324,31 @@ public class PixelMapParams {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
 public enum AVImageQueryOptions {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     AV_IMAGE_QUERY_NEXT_SYNC
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     AV_IMAGE_QUERY_PREVIOUS_SYNC
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     AV_IMAGE_QUERY_CLOSEST_SYNC
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]

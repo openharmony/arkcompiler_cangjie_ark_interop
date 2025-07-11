@@ -32,7 +32,7 @@ class RemoteObjectLite <: RemoteDataLite {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
@@ -44,7 +44,7 @@ public open class RemoteObject <: IRemoteObject {
         lite = RemoteObjectLite(id)
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -58,7 +58,7 @@ public open class RemoteObject <: IRemoteObject {
         lite = RemoteObjectLite(id)
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -75,7 +75,7 @@ public open class RemoteObject <: IRemoteObject {
         checkRet(errCode)
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -88,7 +88,7 @@ public open class RemoteObject <: IRemoteObject {
         remoteBroker = localInterface
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -102,7 +102,7 @@ public open class RemoteObject <: IRemoteObject {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -110,7 +110,7 @@ public open class RemoteObject <: IRemoteObject {
         return unsafe { FfiRpcRemoteObjectGetCallingUid() }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -118,7 +118,7 @@ public open class RemoteObject <: IRemoteObject {
         return unsafe { FfiRpcRemoteObjectGetCallingPid() }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -126,7 +126,7 @@ public open class RemoteObject <: IRemoteObject {
         remoteBroker.getOrThrow({=> Exception("failed to get IRemoteBroker.")})
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -134,7 +134,7 @@ public open class RemoteObject <: IRemoteObject {
         throw BusinessException(ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR, "only proxy object permitted")
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -142,7 +142,7 @@ public open class RemoteObject <: IRemoteObject {
         throw BusinessException(ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR, "only proxy object permitted")
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

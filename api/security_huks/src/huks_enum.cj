@@ -24,134 +24,115 @@ import ohos.labels.*
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksExceptionErrCode {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_PERMISSION_FAIL: Int32 = 201
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_ILLEGAL_ARGUMENT: Int32 = 401
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_NOT_SUPPORTED_API: Int32 = 801
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED: Int32 = 12000001
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT: Int32 = 12000002
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT: Int32 = 12000003
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_FILE_OPERATION_FAIL: Int32 = 12000004
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_COMMUNICATION_FAIL: Int32 = 12000005
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_CRYPTO_FAIL: Int32 = 12000006
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED: Int32 = 12000007
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED: Int32 = 12000008
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_KEY_AUTH_TIME_OUT: Int32 = 12000009
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_SESSION_LIMIT: Int32 = 12000010
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_ITEM_NOT_EXIST: Int32 = 12000011
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_EXTERNAL_ERROR: Int32 = 12000012
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST: Int32 = 12000013
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ERR_CODE_INSUFFICIENT_MEMORY: Int32 = 12000014
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -165,24 +146,21 @@ public class HuksExceptionErrCode {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksKeyPurpose {
     /* Usable with RSA, EC and AES keys. */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.uint32(1)
     /* Usable with RSA, EC and AES keys. */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -192,8 +170,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -203,8 +180,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -214,8 +190,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -225,8 +200,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -236,8 +210,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -247,8 +220,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -258,8 +230,7 @@ public class HuksKeyPurpose {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -273,22 +244,19 @@ public class HuksKeyPurpose {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksKeyDigest {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.uint32(0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -297,43 +265,37 @@ public class HuksKeyDigest {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.uint32(2)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.uint32(10)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.uint32(11)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.uint32(12)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.uint32(13)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -347,15 +309,13 @@ public class HuksKeyDigest {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksKeyPadding {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -364,8 +324,7 @@ public class HuksKeyPadding {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -374,8 +333,7 @@ public class HuksKeyPadding {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -384,8 +342,7 @@ public class HuksKeyPadding {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -394,15 +351,13 @@ public class HuksKeyPadding {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.uint32(4)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -416,29 +371,25 @@ public class HuksKeyPadding {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksCipherMode {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.uint32(2)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -447,8 +398,7 @@ public class HuksCipherMode {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -457,15 +407,13 @@ public class HuksCipherMode {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.uint32(31)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -479,8 +427,7 @@ public class HuksCipherMode {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -489,8 +436,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -499,8 +445,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -509,8 +454,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -519,8 +463,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -529,8 +472,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -539,8 +481,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -549,8 +490,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -559,8 +499,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -569,8 +508,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -579,36 +517,31 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.uint32(521)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.uint32(192)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -617,8 +550,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -627,8 +559,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -637,8 +568,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -647,8 +577,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -657,8 +586,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -667,8 +595,7 @@ public class HuksKeySize {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -682,8 +609,7 @@ public class HuksKeySize {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -692,8 +618,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -702,8 +627,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -712,15 +636,13 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.uint32(3)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -729,8 +651,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -739,8 +660,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -749,8 +669,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -759,8 +678,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -769,8 +687,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -779,8 +696,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -789,8 +705,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -799,8 +714,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -809,8 +723,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -819,8 +732,7 @@ public class HuksKeyAlg {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -834,22 +746,19 @@ public class HuksKeyAlg {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksUnwrapSuite {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -863,8 +772,7 @@ public class HuksUnwrapSuite {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -874,8 +782,7 @@ public class HuksAuthStorageLevel {
      * @syscap SystemCapability.Security.Huks.Core
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -885,8 +792,7 @@ public class HuksAuthStorageLevel {
      * @syscap SystemCapability.Security.Huks.Core
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -896,8 +802,7 @@ public class HuksAuthStorageLevel {
      * @syscap SystemCapability.Security.Huks.Core
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -911,29 +816,25 @@ public class HuksAuthStorageLevel {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksKeyGenerateType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.uint32(0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -946,36 +847,31 @@ public class HuksKeyGenerateType {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksKeyFlag {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.uint32(2)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.uint32(3)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -988,8 +884,7 @@ public class HuksKeyFlag {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -999,8 +894,7 @@ public class HuksKeyStorageType {
      * @deprecated
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1010,8 +904,7 @@ public class HuksKeyStorageType {
      * @deprecated
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1022,8 +915,7 @@ public class HuksKeyStorageType {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1034,8 +926,7 @@ public class HuksKeyStorageType {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1048,29 +939,25 @@ public class HuksKeyStorageType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksImportKeyType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.uint32(0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1083,8 +970,7 @@ public class HuksImportKeyType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
@@ -1095,8 +981,7 @@ public class HuksRsaPssSaltLenType {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1107,8 +992,7 @@ public class HuksRsaPssSaltLenType {
      * @syscap SystemCapability.Security.Huks.Extension
      */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1121,29 +1005,25 @@ public class HuksRsaPssSaltLenType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
 public class HuksUserAuthType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.uint32(1 << 0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.uint32(1 << 1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1157,22 +1037,19 @@ public class HuksUserAuthType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
 public class HuksAuthAccessType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.uint32(1 << 0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1185,29 +1062,25 @@ public class HuksAuthAccessType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
 public class HuksChallengeType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.uint32(0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1220,36 +1093,31 @@ public class HuksChallengeType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
 public class HuksChallengePosition {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.uint32(0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.uint32(1)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.uint32(2)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1262,15 +1130,13 @@ public class HuksChallengePosition {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Extension"
 ]
 public class HuksSecureSignType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1283,22 +1149,19 @@ public class HuksSecureSignType {
  * @syscap SystemCapability.Security.Huks.Extension
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksSendType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.uint32(0)
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1311,50 +1174,43 @@ public class HuksSendType {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public class HuksTagType {
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1367,15 +1223,14 @@ public class HuksTagType {
  * @syscap SystemCapability.Security.Huks.Core
  */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.Huks.Core"
 ]
 public enum HuksTag {
     /* Store unknown value */
     @!APILevel[
-        15,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1388,7 +1243,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -1397,22 +1252,19 @@ public enum HuksTag {
     |
         /* Base algrithom TAG: 1 - 200 */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_ALGORITHM
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_PURPOSE
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1422,50 +1274,43 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_DIGEST
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_PADDING
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_BLOCK_MODE
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_KEY_TYPE
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_ASSOCIATED_DATA
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_NONCE
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1473,8 +1318,7 @@ public enum HuksTag {
     |
         /* Key derivation TAG */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1484,8 +1328,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1496,7 +1339,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -1507,8 +1350,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1516,8 +1358,7 @@ public enum HuksTag {
     |
         /* choose from enum HuksKeyGenerateType */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1528,7 +1369,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1540,7 +1381,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1552,7 +1393,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1563,8 +1404,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1574,8 +1414,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1585,8 +1424,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1596,15 +1434,13 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
     HUKS_TAG_AGREE_PUBLIC_KEY
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1614,8 +1450,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1627,8 +1462,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1638,8 +1472,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1651,8 +1484,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1664,8 +1496,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1681,7 +1512,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1695,7 +1526,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -1709,7 +1540,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -1723,7 +1554,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -1735,8 +1566,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1746,8 +1576,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1757,8 +1586,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -1768,8 +1596,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1779,8 +1606,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1790,8 +1616,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1802,8 +1627,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1813,8 +1637,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1824,8 +1647,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1835,8 +1657,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1848,8 +1669,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1860,8 +1680,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1871,8 +1690,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -1883,7 +1701,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1895,7 +1713,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1907,7 +1725,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1919,7 +1737,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1931,7 +1749,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1943,7 +1761,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1955,7 +1773,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1967,7 +1785,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1978,7 +1796,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -1990,7 +1808,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -2002,7 +1820,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -2013,8 +1831,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -2024,29 +1841,25 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     HUKS_TAG_ATTESTATION_ID_VERSION_INFO
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     HUKS_TAG_ATTESTATION_BASE64
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     HUKS_TAG_ATTESTATION_MODE
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
@@ -2058,8 +1871,7 @@ public enum HuksTag {
          * Extention TAG: 1001 - 9999
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2067,8 +1879,7 @@ public enum HuksTag {
     |
         /* choose from enum HuksKeyStorageType */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2078,8 +1889,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2089,8 +1899,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2100,8 +1909,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2111,8 +1919,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2120,8 +1927,7 @@ public enum HuksTag {
     |
         /* choose from enum HuksKeyFlag */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2131,8 +1937,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2143,7 +1948,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -2155,15 +1960,14 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     HUKS_TAG_SECURE_KEY_UUID
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2175,7 +1979,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -2187,7 +1991,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -2199,7 +2003,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -2211,7 +2015,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -2223,15 +2027,14 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     HUKS_TAG_CRYPTO_CTX
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2242,7 +2045,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
@@ -2254,15 +2057,14 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Extension"
     ]
     HUKS_TAG_PAYLOAD_LEN
     | @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2273,8 +2075,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2286,8 +2087,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2298,7 +2098,7 @@ public enum HuksTag {
          * @deprecated
          */
         @!APILevel[
-        15,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
@@ -2312,8 +2112,7 @@ public enum HuksTag {
          * TAGs used for paramSetOut
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2323,8 +2122,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2334,8 +2132,7 @@ public enum HuksTag {
          * @syscap SystemCapability.Security.Huks.Extension
          */
         @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2343,8 +2140,7 @@ public enum HuksTag {
     | ...
 
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]
@@ -2444,8 +2240,7 @@ public enum HuksTag {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.Huks.Core"
     ]

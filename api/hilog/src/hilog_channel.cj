@@ -18,9 +18,7 @@ package ohos.hilog
 import ohos.labels.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiLog"
 ]
@@ -40,9 +38,7 @@ public class HilogChannel {
     private let tag_: CString
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -57,9 +53,7 @@ public class HilogChannel {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -68,9 +62,7 @@ public class HilogChannel {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -78,9 +70,7 @@ public class HilogChannel {
         dolog(message.toString(), LEVEL_DEBUG)
     }
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -89,9 +79,7 @@ public class HilogChannel {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -100,9 +88,7 @@ public class HilogChannel {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -111,9 +97,7 @@ public class HilogChannel {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]

@@ -30,9 +30,7 @@ let RES_LOG = HilogChannel(0, 0xD001E00, "CJ-ResourceManager")
  * Provides resource related APIs.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -55,7 +53,7 @@ public class ResourceManager <: RemoteDataLite {
      * this is temporarily replaces context.resourceManager cause we don`t have contest in CJ
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: false,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -86,9 +84,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getRawFdSync(path: string): RawFileDescriptor
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -113,9 +109,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief closeRawFdSync(path: string): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -138,9 +132,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getRawFileContentSync(path: string): Uint8Array
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -170,9 +162,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getRawFileListSync(path: string): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -207,9 +197,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getColorByNameSync(resName: string): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -236,9 +224,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getColorSync(resource: AppResource): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -265,9 +251,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getColorSync(resId: number): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -293,9 +277,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getBoolean(resId: number): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -321,9 +303,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getBoolean(resource: AppResource): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -350,9 +330,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getBooleanByName(resName: string): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -379,9 +357,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getNumber(resId: number): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -409,9 +385,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getNumber(resource: AppResource): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -438,9 +412,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getNumberByName(resName: string): number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -468,9 +440,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getMediaByNameSync(resName: string, density?: number): Uint8Array
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -514,9 +484,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getMediaContentSync(resId: number, density?: number): Uint8Array
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -541,9 +509,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getMediaContentSync(resource: AppResource, density?: number): Uint8Array
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -567,9 +533,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getMediaContentBase64Sync(resId: number, density?: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -598,9 +562,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getMediaContentBase64Sync(resource: AppResource, density?: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -628,9 +590,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getMediaBase64ByNameSync(resName: string, density?: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -660,9 +620,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getPluralStringValueSync(resId: number, num: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -693,9 +651,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getPluralStringValueSync(resource: AppResource, num: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -725,9 +681,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getPluralStringByNameSync(resName: string, num: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -757,9 +711,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringArrayValueSync(resId: number): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -784,9 +736,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringArrayValueSync(resource: AppResource): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -810,9 +760,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringArrayByNameSync(resName: string): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -839,9 +787,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringSync(resId: number): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -870,9 +816,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringSync(resId: number, ...args: Array<string | number>): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -895,9 +839,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringSync(resource: AppResource): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -922,9 +864,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringSync(resource: AppResource, ...args: Array<string | number>): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -944,9 +884,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringByNameSync(resName: string): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -974,9 +912,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getStringByNameSync(resName: string): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -991,9 +927,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getConfigurationSync(): Configuration
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1015,9 +949,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getDeviceCapabilitySync(): DeviceCapability
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1042,9 +974,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getDrawableDescriptor(resId: number, density?: number): DrawableDescriptor
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1070,9 +1000,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getDrawableDescriptor(resId: Resource, density?: number): DrawableDescriptor
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1097,9 +1025,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getDrawableDescriptor(resId: number, density?: number): DrawableDescriptor
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1122,9 +1048,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief addResource(path: string): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1145,9 +1069,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief removeResource(path: string): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -1173,9 +1095,7 @@ public class ResourceManager <: RemoteDataLite {
      * @brief getLocales(includeSystem?: boolean): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]

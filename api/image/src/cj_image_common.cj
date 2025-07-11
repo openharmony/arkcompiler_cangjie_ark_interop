@@ -26,7 +26,7 @@ import ohos.base.*
  * @relation interface ImageInfo
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -37,7 +37,7 @@ public class ImageInfo {
      * @relation size: Size;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -49,7 +49,7 @@ public class ImageInfo {
      * @relation density: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -61,7 +61,7 @@ public class ImageInfo {
      * @relation stride: number;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -73,7 +73,7 @@ public class ImageInfo {
      * @relation pixelFormat: PixelMapFormat;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -85,7 +85,7 @@ public class ImageInfo {
      * @relation alphaType: AlphaType;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -97,7 +97,7 @@ public class ImageInfo {
      * @relation mimeType: string;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -109,7 +109,7 @@ public class ImageInfo {
      * @relation alphaType: AlphaType;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -133,7 +133,7 @@ public class ImageInfo {
  * @relation interface SourceOptions
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -144,7 +144,7 @@ public class SourceOptions {
      * @relation sourceDensity: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -156,7 +156,7 @@ public class SourceOptions {
      * @relation sourcePixelFormat?: PixelMapFormat;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -168,7 +168,7 @@ public class SourceOptions {
      * @relation sourceSize?: Size;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -179,7 +179,7 @@ public class SourceOptions {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -200,7 +200,7 @@ public class SourceOptions {
  * @relation interface InitializationOptions
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -211,7 +211,7 @@ public class InitializationOptions {
      * @relation alphaType?: AlphaType;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -223,7 +223,7 @@ public class InitializationOptions {
      * @relation editable?: boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -235,7 +235,7 @@ public class InitializationOptions {
      * @relation srcPixelFormat?: PixelMapFormat;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -247,7 +247,7 @@ public class InitializationOptions {
      * @relation pixelFormat?: PixelMapFormat;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -259,14 +259,14 @@ public class InitializationOptions {
      * @relation scaleMode?: ScaleMode;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
     public var scaleMode: ScaleMode
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -277,7 +277,7 @@ public class InitializationOptions {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -306,7 +306,7 @@ public class InitializationOptions {
  * @relation interface DecodingOptions
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -317,7 +317,7 @@ public class DecodingOptions {
      * @relation sampleSize?: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -329,7 +329,7 @@ public class DecodingOptions {
      * @relation rotate?: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -341,7 +341,7 @@ public class DecodingOptions {
      * @relation editable?: boolean;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -354,7 +354,7 @@ public class DecodingOptions {
      * @relation desiredSize?: Size;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -366,7 +366,7 @@ public class DecodingOptions {
      * @relation desiredRegion?: Region;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -378,7 +378,7 @@ public class DecodingOptions {
      * @relation desiredPixelFormat?: PixelMapFormat;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -390,7 +390,7 @@ public class DecodingOptions {
      * @relation index?: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -402,7 +402,7 @@ public class DecodingOptions {
      * @relation fitDensity?: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -414,7 +414,7 @@ public class DecodingOptions {
      * @relation desiredColorSpace?: colorSpaceManager.ColorSpaceManager;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -426,7 +426,7 @@ public class DecodingOptions {
      * @relation desiredDynamicRange?: DecodingDynamicRange;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -437,7 +437,7 @@ public class DecodingOptions {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -482,7 +482,7 @@ public class DecodingOptions {
  * @relation interface PositionArea
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -493,7 +493,7 @@ public class PositionArea {
      * @relation pixels: ArrayBuffer;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -505,7 +505,7 @@ public class PositionArea {
      * @relation offset: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -517,7 +517,7 @@ public class PositionArea {
      * @relation stride: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -529,7 +529,7 @@ public class PositionArea {
      * @relation region: Region;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -540,7 +540,7 @@ public class PositionArea {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -558,7 +558,7 @@ public class PositionArea {
  * @relation interface Size
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -569,7 +569,7 @@ public class Size {
      * @relation height: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -581,7 +581,7 @@ public class Size {
      * @relation width: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -592,7 +592,7 @@ public class Size {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -617,7 +617,7 @@ public class Size {
  * @relation interface Region
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -628,7 +628,7 @@ public class Region {
      * @relation size: Size;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -640,7 +640,7 @@ public class Region {
      * @relation x: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -652,7 +652,7 @@ public class Region {
      * @relation y: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -663,7 +663,7 @@ public class Region {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -690,7 +690,7 @@ public class Region {
  * @relation interface Component
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -701,7 +701,7 @@ public class Component {
      * @relation readonly componentType: ComponentType;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -713,7 +713,7 @@ public class Component {
      * @relation readonly rowStride: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -725,7 +725,7 @@ public class Component {
      * @relation readonly pixelStride: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -737,7 +737,7 @@ public class Component {
      * @relation readonly byteBuffer: ArrayBuffer;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -767,7 +767,7 @@ public class Component {
  * @relation interface PackingOption
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -778,7 +778,7 @@ public class PackingOption {
      * @relation format: string;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -790,7 +790,7 @@ public class PackingOption {
      * @relation quality: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -803,7 +803,7 @@ public class PackingOption {
      * @relation quality: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -815,7 +815,7 @@ public class PackingOption {
      * @relation desiredDynamicRange?: PackingDynamicRange;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -827,7 +827,7 @@ public class PackingOption {
      * @relation needsPackProperties?: boolean;
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -838,7 +838,7 @@ public class PackingOption {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -858,7 +858,7 @@ public class PackingOption {
  * @relation interface ImagePropertyOptions
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -869,7 +869,7 @@ public class ImagePropertyOptions {
      * @relation index?: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -881,7 +881,7 @@ public class ImagePropertyOptions {
      * @relation defaultValue?: string;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -892,7 +892,7 @@ public class ImagePropertyOptions {
      *
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]

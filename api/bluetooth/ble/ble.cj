@@ -28,9 +28,7 @@ import ohos.labels.*
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -54,9 +52,7 @@ public func createGattServer(): GattServer {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -94,9 +90,7 @@ public func createGattClientDevice(deviceId: String): GattClientDevice {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -141,9 +135,7 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -175,9 +167,7 @@ public func stopBLEScan(): Unit {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -218,9 +208,7 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -254,8 +242,7 @@ public func stopAdvertising(): Unit {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -294,8 +281,7 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32 {
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -380,8 +366,7 @@ private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleCallbackType, 
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -412,9 +397,7 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Adv
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -449,9 +432,7 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Arr
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"

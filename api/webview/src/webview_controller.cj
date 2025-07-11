@@ -624,8 +624,6 @@ public class WebviewController <: RemoteDataLite {
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

@@ -27,8 +27,7 @@ foreign func FfiOHOSHiAppEventSetSize(id: Int64, size: Int32): Int32
 foreign func FfiOHOSHiAppEventTakeNext(id: Int64): ReTakeNext
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
@@ -49,8 +48,7 @@ public class AppEventPackageHolder <: RemoteDataLite {
      * @brief  constructor(watcherName: string)
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -77,8 +75,7 @@ public class AppEventPackageHolder <: RemoteDataLite {
      * @brief  setSize(size: number): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -98,8 +95,7 @@ public class AppEventPackageHolder <: RemoteDataLite {
      * @brief  takeNext(): AppEventPackage
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]

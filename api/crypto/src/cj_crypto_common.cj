@@ -27,9 +27,7 @@ foreign func memcpy_s(dest: CPointer<UInt8>, destMax: UIntNative, src: CPointer<
  * @relation interface DataBlob
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework"
 ]
@@ -40,9 +38,7 @@ public class DataBlob {
      * @relation data: Uint8Array;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -53,9 +49,7 @@ public class DataBlob {
      *
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -70,9 +64,7 @@ public class DataBlob {
  * @relation interface IvParamsSpec extends ParamsSpec
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -86,9 +78,7 @@ public class IvParamsSpec <: ParamsSpec {
      * @relation algName: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -107,9 +97,7 @@ public class IvParamsSpec <: ParamsSpec {
      * @relation iv: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -127,9 +115,7 @@ public class IvParamsSpec <: ParamsSpec {
      *
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -145,9 +131,7 @@ public class IvParamsSpec <: ParamsSpec {
  * @relation interface IvParamsSpec extends ParamsSpec
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -163,9 +147,7 @@ public class GcmParamsSpec <: ParamsSpec {
      * @relation algName: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -184,9 +166,7 @@ public class GcmParamsSpec <: ParamsSpec {
      * @relation aad: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -205,9 +185,7 @@ public class GcmParamsSpec <: ParamsSpec {
      * @relation iv: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -226,9 +204,7 @@ public class GcmParamsSpec <: ParamsSpec {
      * @relation authTag: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -246,9 +222,7 @@ public class GcmParamsSpec <: ParamsSpec {
      *
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -266,9 +240,7 @@ public class GcmParamsSpec <: ParamsSpec {
  * @relation interface CcmParamsSpec extends ParamsSpec
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -284,9 +256,7 @@ public class CcmParamsSpec <: ParamsSpec {
      * @relation algName: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -305,9 +275,7 @@ public class CcmParamsSpec <: ParamsSpec {
      * @relation authTag: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -326,9 +294,7 @@ public class CcmParamsSpec <: ParamsSpec {
      * @relation aad: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -347,9 +313,7 @@ public class CcmParamsSpec <: ParamsSpec {
      * @relation iv: DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -367,9 +331,7 @@ public class CcmParamsSpec <: ParamsSpec {
      *
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]

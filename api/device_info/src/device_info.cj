@@ -92,15 +92,13 @@ foreign {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Startup.SystemInfo"
 ]
 public class DeviceInfo {
     @!APILevel[
-        12,
+        21,
         deprecated: 9,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
@@ -114,9 +112,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -129,9 +125,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -144,9 +138,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -159,9 +151,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -174,9 +164,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.permission.sec_ACCESS_UDID",
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
@@ -191,9 +179,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -206,9 +192,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -221,9 +205,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -236,9 +218,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -251,9 +231,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -266,9 +244,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -281,9 +257,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -294,9 +268,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -307,9 +279,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -320,9 +290,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -333,9 +301,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -346,9 +312,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -359,9 +323,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -374,9 +336,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.permission.sec_ACCESS_UDID",
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
@@ -390,9 +350,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -405,9 +363,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -420,9 +376,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -435,9 +389,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -450,9 +402,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -465,9 +415,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -480,9 +428,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -495,9 +441,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -510,9 +454,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -525,8 +467,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -539,7 +480,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -552,7 +493,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -565,7 +506,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -576,7 +517,7 @@ public class DeviceInfo {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -596,7 +537,7 @@ public class DeviceInfo {
      * @relation const ODID: string
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]
@@ -616,7 +557,7 @@ public class DeviceInfo {
      * @relation const distributionOSApiName: string
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Startup.SystemInfo"
     ]

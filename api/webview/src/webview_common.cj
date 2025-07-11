@@ -441,7 +441,7 @@ public class HistoryItem {
  * @relation interface WebCustomScheme
  */
 @!APILevel[
-    20,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Web.Webview.Core"
 ]
@@ -452,7 +452,7 @@ public class WebCustomScheme {
      * @relation schemeName: string;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -463,7 +463,7 @@ public class WebCustomScheme {
      * @relation isSupportCORS: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -474,7 +474,7 @@ public class WebCustomScheme {
      * @relation isSupportFetch: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -486,7 +486,7 @@ public class WebCustomScheme {
      * @relation isStandard?: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -498,7 +498,7 @@ public class WebCustomScheme {
      * @relation isLocal?: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -510,7 +510,7 @@ public class WebCustomScheme {
      * @relation isDisplayIsolated?: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -522,7 +522,7 @@ public class WebCustomScheme {
      * @relation isSecure?: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -534,7 +534,7 @@ public class WebCustomScheme {
      * @relation isCspBypassing?: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
@@ -545,14 +545,14 @@ public class WebCustomScheme {
      * @relation isCodeCacheSupported?: boolean;
      */
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]
     public var isCodeCacheSupported: Bool = false
 
     @!APILevel[
-        20,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Web.Webview.Core"
     ]

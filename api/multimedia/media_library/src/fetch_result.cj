@@ -28,8 +28,7 @@ import ohos.multimedia.fetchdata.*
  * @crossplatform
  */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -43,8 +42,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
     }
 
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -65,8 +63,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -92,8 +89,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -118,8 +114,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -146,8 +141,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -172,8 +166,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -199,8 +192,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -225,8 +217,7 @@ public class FetchResult<T> <: RemoteDataLite where T <: RemoteDataLite & FetchD
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
