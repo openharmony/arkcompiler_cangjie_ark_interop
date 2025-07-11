@@ -129,17 +129,6 @@ ohos_cj_library("kit.BasicServicesKit") {
   part_name = "cangjie_api"
 }
 
-ohos_cj_library("kit.CalendarKit") {
-  sources = [ "CalendarKit/index.cj" ]
-
-  cj_deps = [ "../api/calendar_manager:ohos.calendar_manager" ]
-
-  kit = true
-  lib_name = "CalendarKit"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
 ohos_cj_library("kit.CameraKit") {
   sources = [ "CameraKit/index.cj" ]
 

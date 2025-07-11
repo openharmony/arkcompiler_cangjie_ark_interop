@@ -56,10 +56,6 @@ cangjie_systemapi_libs = [
     lib_name = "bundle_manager"
   },
   {
-    label = "${cangjie_systemapi_api}/calendar_manager:ohos.calendar_manager"
-    lib_name = "calendar_manager"
-  },
-  {
     label = "${cangjie_systemapi_api}/common_event_manager:ohos.common_event_manager"
     lib_name = "common_event_manager"
   },
@@ -238,10 +234,6 @@ cangjie_kits = [
   {
     label = "${cangjie_systemapi}/kit:kit.BasicServicesKit"
     lib_name = "BasicServicesKit"
-  },
-  {
-    label = "${cangjie_systemapi}/kit:kit.CalendarKit"
-    lib_name = "CalendarKit"
   },
   {
     label = "${cangjie_systemapi}/kit:kit.CameraKit"

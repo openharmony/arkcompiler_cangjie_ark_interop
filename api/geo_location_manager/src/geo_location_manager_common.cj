@@ -39,46 +39,46 @@ public enum LocationSourceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    GNSS
+    Gnss
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    NETWORK
+    Network
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    INDOOR
+    Indoor
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    RTK
+    Rtk
     | ...
 
     static func parse(value: Int32): LocationSourceType {
         match (value) {
-            case 1 => GNSS
-            case 2 => NETWORK
-            case 3 => INDOOR
-            case 4 => RTK
+            case 1 => Gnss
+            case 2 => Network
+            case 3 => Indoor
+            case 4 => Rtk
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case GNSS => 1
-            case NETWORK => 2
-            case INDOOR => 3
-            case RTK => 4
+            case Gnss => 1
+            case Network => 2
+            case Indoor => 3
+            case Rtk => 4
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -239,36 +239,36 @@ public enum LocationRequestPriority {
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    UNSET
+    Unset
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    ACCURACY
+    Accuracy
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    LOW_POWER
+    LowPower
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    FIRST_FIX
+    FirstFix
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case UNSET => 0x200
-            case ACCURACY => 0x201
-            case LOW_POWER => 0x202
-            case FIRST_FIX => 0x203
+            case Unset => 0x200
+            case Accuracy => 0x201
+            case LowPower => 0x202
+            case FirstFix => 0x203
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -287,52 +287,52 @@ public enum LocationRequestScenario {
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    UNSET
+    Unset
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    NAVIGATION
+    Navigation
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    TRAJECTORY_TRACKING
+    TrajectoryTracking
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    CAR_HAILING
+    CarHailing
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    DAILY_LIFE_SERVICE
+    DailyLifeService
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    NO_POWER
+    NoPower
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case UNSET => 0x300
-            case NAVIGATION => 0x301
-            case TRAJECTORY_TRACKING => 0x302
-            case CAR_HAILING => 0x303
-            case DAILY_LIFE_SERVICE => 0x304
-            case NO_POWER => 0x305
+            case Unset => 0x300
+            case Navigation => 0x301
+            case TrajectoryTracking => 0x302
+            case CarHailing => 0x303
+            case DailyLifeService => 0x304
+            case NoPower => 0x305
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -403,20 +403,20 @@ public enum LocatingPriority {
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    PRIORITY_ACCURACY
+    PriorityAccuracy
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    PRIORITY_LOCATING_SPEED
+    PriorityLocatingSpeed
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case PRIORITY_ACCURACY => 0x501
-            case PRIORITY_LOCATING_SPEED => 0x502
+            case PriorityAccuracy => 0x501
+            case PriorityLocatingSpeed => 0x502
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }

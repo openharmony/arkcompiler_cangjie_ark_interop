@@ -157,7 +157,7 @@ public enum BatteryPluggedType {
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    NONE
+    None
     | @!APILevel[
         19,
         stagemodelonly: true,
@@ -175,15 +175,15 @@ public enum BatteryPluggedType {
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    WIRELESS
+    Wireless
     | ...
 
     static func parse(value: Int32): BatteryPluggedType {
         match (value) {
-            case 0 => NONE
+            case 0 => None
             case 1 => AC
             case 2 => USB
-            case 3 => WIRELESS
+            case 3 => Wireless
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -203,36 +203,36 @@ public enum BatteryChargeState {
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    NONE
+    None
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    ENABLE
+    Enable
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    DISABLE
+    Disable
     | @!APILevel[
         19,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    FULL
+    Full
     | ...
 
     static func parse(value: Int32): BatteryChargeState {
         match (value) {
-            case 0 => NONE
-            case 1 => ENABLE
-            case 2 => DISABLE
-            case 3 => FULL
+            case 0 => None
+            case 1 => Enable
+            case 2 => Disable
+            case 3 => Full
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -250,47 +250,47 @@ public enum BatteryHealthState {
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    UNKNOWN
+    Unknown
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    GOOD
+    Good
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    OVERHEAT
+    Overheat
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    OVERVOLTAGE
+    Overvoltage
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    COLD
+    cold
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    DEAD
+    Dead
     | ...
 
     static func parse(value: Int32): BatteryHealthState {
         match (value) {
-            case 0 => UNKNOWN
-            case 1 => GOOD
-            case 2 => OVERHEAT
-            case 3 => OVERVOLTAGE
-            case 4 => COLD
-            case 5 => DEAD
+            case 0 => Unknown
+            case 1 => Good
+            case 2 => Overheat
+            case 3 => Overvoltage
+            case 4 => cold
+            case 5 => Dead
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -308,54 +308,54 @@ public enum BatteryCapacityLevel {
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_FULL
+    LevelFull
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_HIGH
+    LevelHigh
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_NORMAL
+    LevelNormal
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_LOW
+    LevelLow
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_WARNING
+    LevelWarning
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_CRITICAL
+    LevelCritical
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    LEVEL_SHUTDOWN
+    LevelShutdown
     | ...
 
     static func parse(value: Int32): BatteryCapacityLevel {
         match (value) {
-            case 1 => LEVEL_FULL
-            case 2 => LEVEL_HIGH
-            case 3 => LEVEL_NORMAL
-            case 4 => LEVEL_LOW
-            case 5 => LEVEL_WARNING
-            case 6 => LEVEL_CRITICAL
-            case 7 => LEVEL_SHUTDOWN
+            case 1 => LevelFull
+            case 2 => LevelHigh
+            case 3 => LevelNormal
+            case 4 => LevelLow
+            case 5 => LevelWarning
+            case 6 => LevelCritical
+            case 7 => LevelShutdown
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
@@ -373,54 +373,54 @@ public enum CommonEventBatteryChangedKey {
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_SOC
+    ExtraSoc
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_CHARGE_STATE
+    ExtraChargeState
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_HEALTH_STATE
+    ExtraHealthState
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_PLUGGED_TYPE
+    ExtraPluggedType
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_VOLTAGE
+    ExtraVoltage
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_TECHNOLOGY
+    ExtraTechnology
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_TEMPERATURE
+    ExtraTemperature
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_PRESENT
+    ExtraPresent
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
-    EXTRA_CAPACITY_LEVEL
+    ExtraCapacityLevel
     | ...
 }
