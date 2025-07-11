@@ -174,9 +174,9 @@ struct CHttpRequestOptions {
 func parseUsingProxy(usingProxy: UsingProxy): (Bool, CPointer<CHttpProxy>) {
     unsafe {
         match (usingProxy) {
-            case NOT_USE => (false, CPointer<CHttpProxy>())
-            case USE_DEFAULT => (true, CPointer<CHttpProxy>())
-            case USE_SPECIFIED(proxy) =>
+            case NotUse => (false, CPointer<CHttpProxy>())
+            case UseDefault => (true, CPointer<CHttpProxy>())
+            case UseSpecified(proxy) =>
                 let useProxy = safeMalloc<CHttpProxy>()
                 try {
                     useProxy.write(CHttpProxy(proxy))
