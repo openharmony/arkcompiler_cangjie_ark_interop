@@ -233,7 +233,7 @@ public class RdbStore <: RemoteDataLite {
             throw BusinessException(getErrorCode(ERR_PARAMETER_ERROR),
                 "RdbStore insert failed: ${paramError("table", "not empty string")}")
         }
-        return insert(table, values, ConflictResolution.ON_CONFLICT_NONE)
+        return insert(table, values, ConflictResolution.OnConflictNone)
     }
 
     /**
@@ -279,7 +279,7 @@ public class RdbStore <: RemoteDataLite {
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public func update(values: Map<String, ValueType>, predicates: RdbPredicates): Int64 {
-        return update(values, predicates, ConflictResolution.ON_CONFLICT_NONE)
+        return update(values, predicates, ConflictResolution.OnConflictNone)
     }
 
     /**
