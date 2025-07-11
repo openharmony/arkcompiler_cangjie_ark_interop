@@ -227,7 +227,7 @@ public class PhotoAsset <: RemoteDataLite {
     ]
     public func getThumbnail(size!: ?Size = None): PixelMap {
         var errCode = 0i32
-        let tSize = size ?? Size(height: -1, width: -1)
+        let tSize = size ?? Size(-1, -1)
         unsafe {
             let ret = FfiPhotoAssetGetThumbnail(getID(), tSize.toExternal(), inout errCode)
             checkRet(errCode, "getThumbnail")
