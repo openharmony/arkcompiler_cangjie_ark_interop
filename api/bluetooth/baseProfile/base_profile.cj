@@ -34,52 +34,52 @@ public enum DisconnectCause {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    USER_DISCONNECT
+    UserDisconnect
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CONNECT_FROM_KEYBOARD
+    ConnectFromKeyboard
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CONNECT_FROM_MOUSE
+    ConnectFromMouse
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CONNECT_FROM_CAR
+    ConnectFromCar
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    TOO_MANY_CONNECTED_DEVICES
+    TooManyConnectedDevices
     | @!APILevel[
         19,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CONNECT_FAIL_INTERNAL
+    ConnectFailInternal
     | ...
 
     static func parse(cause: Int32) {
         match (cause) {
-            case 0 => USER_DISCONNECT
-            case 1 => CONNECT_FROM_KEYBOARD
-            case 2 => CONNECT_FROM_MOUSE
-            case 3 => CONNECT_FROM_CAR
-            case 4 => TOO_MANY_CONNECTED_DEVICES
-            case 5 => CONNECT_FAIL_INTERNAL
+            case 0 => UserDisconnect
+            case 1 => ConnectFromKeyboard
+            case 2 => ConnectFromMouse
+            case 3 => ConnectFromCar
+            case 4 => TooManyConnectedDevices
+            case 5 => ConnectFailInternal
             case _ => throw NoneValueException("Value does not exist!")
         }
     }
@@ -109,29 +109,37 @@ protected struct NativeStateChangeParam {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class StateChangeParam {
-    StateChangeParam(
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let state: ProfileConnectionState,
-        @!APILevel[
-            19,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let cause: DisconnectCause
-    ) {}
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var deviceId: String
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var state: ProfileConnectionState
+    @!APILevel[
+        19,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.Bluetooth.Core"
+    ]
+    public var cause: DisconnectCause
+
+    init(
+        deviceId: String,
+        state: ProfileConnectionState,
+        cause: DisconnectCause
+    ) {
+        this.deviceId = deviceId
+        this.state = state
+        this.cause = cause
+    }
 }
 
 @!APILevel[
@@ -202,11 +210,11 @@ public enum ProfileCallbackType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    CONNECTION_STATE_CHANGE | ...
+    ConnectionStateChange | ...
 
     protected func getValue(): Int32 {
         match (this) {
-            case CONNECTION_STATE_CHANGE => 0
+            case ConnectionStateChange => 0
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }

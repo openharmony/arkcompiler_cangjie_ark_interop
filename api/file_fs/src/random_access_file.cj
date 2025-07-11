@@ -18,7 +18,6 @@ package ohos.file_fs
 import ohos.ffi.*
 import ohos.base.*
 import ohos.labels.*
-import std.collection.*
 
 @!APILevel[
     12,

@@ -19,7 +19,6 @@ import ohos.ffi.*
 import ohos.hilog.*
 import ohos.base.*
 import ohos.labels.*
-import std.collection.*
 
 let FS_LOG = HilogChannel(0, FILEIO_DOMAIN_ID, "CJ-fs")
 
@@ -38,7 +37,7 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    READ_ONLY
+    ReadOnly
     | @!APILevel[
         12,
         atomicservice: true,
@@ -46,7 +45,7 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    WRITE_ONLY
+    WriteOnly
     | @!APILevel[
         12,
         atomicservice: true,
@@ -54,7 +53,7 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    READ_WRITE
+    ReadWrite
     | @!APILevel[
         12,
         atomicservice: true,
@@ -62,7 +61,7 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    CREATE
+    Create
     | @!APILevel[
         12,
         atomicservice: true,
@@ -70,7 +69,7 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    TRUNC
+    Trunc
     | @!APILevel[
         12,
         atomicservice: true,
@@ -78,7 +77,7 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    APPEND
+    Append
     | @!APILevel[
         12,
         atomicservice: true,
@@ -86,28 +85,28 @@ public enum OpenMode {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    NONBLOCK
+    NonBlock
     | @!APILevel[
         12,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    DIR
+    Dir
     | @!APILevel[
         12,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    NOFOLLOW
+    NoFollow
     | @!APILevel[
         12,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    SYNC
+    Sync
     | ...
 
     @!APILevel[
@@ -118,16 +117,16 @@ public enum OpenMode {
     public prop mode: Int64 {
         get() {
             match (this) {
-                case READ_ONLY => 0o0
-                case WRITE_ONLY => 0o1
-                case READ_WRITE => 0o2
-                case CREATE => 0o100
-                case TRUNC => 0o1000
-                case APPEND => 0o2000
-                case NONBLOCK => 0o4000
-                case DIR => 0o200000
-                case NOFOLLOW => 0o400000
-                case SYNC => 0o4010000
+                case ReadOnly => 0o0
+                case WriteOnly => 0o1
+                case ReadWrite => 0o2
+                case Create => 0o100
+                case Trunc => 0o1000
+                case Append => 0o2000
+                case NonBlock => 0o4000
+                case Dir => 0o200000
+                case NoFollow => 0o400000
+                case Sync => 0o4010000
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -145,14 +144,18 @@ public class Options {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public Options(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var encoding!: String = "utf-8"
-    ) {}
+    public var encoding: String
+
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public init(
+        encoding!: String = "utf-8"
+    ) {
+        this.encoding = encoding
+    }
 }
 
 @!APILevel[
@@ -192,20 +195,26 @@ public class ReaderIterator <: RemoteDataLite {
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class ReaderIteratorResult {
-    ReaderIteratorResult(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let done: Bool,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let value: String
-    ) {}
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var done: Bool
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var value: String
+
+    init(
+        done: Bool,
+        value: String
+    ) {
+        this.done = done
+        this.value = value
+    }
 }
 
 @C
@@ -230,29 +239,37 @@ public class WriteOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public WriteOptions(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var length!: Option<UIntNative> = None,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var offset!: Option<Int64> = None,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var encoding!: String = "utf-8"
-    ) {}
+    public var length: Option<UIntNative>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var offset: Option<Int64>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var encoding: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public init(
+        length!: Option<UIntNative> = None,
+        offset!: Option<Int64> = None,
+        encoding!: String = "utf-8"
+    ) {
+        this.length = length
+        this.offset = offset
+        this.encoding = encoding
+    }
 }
 
 @!APILevel[
@@ -268,22 +285,28 @@ public class ReadOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public ReadOptions(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var length!: Option<UIntNative> = None,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var offset!: Option<Int64> = None
-    ) {}
+    public var offset: Option<Int64>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var length: Option<UIntNative>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+
+    public init(
+        offset!: Option<Int64> = None,
+        length!: Option<UIntNative> = None
+    ) {
+        this.offset = offset
+        this.length = length
+    }
 }
 
 @!APILevel[
@@ -299,29 +322,37 @@ public class ReadTextOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public ReadTextOptions(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var length!: Option<Int64> = None,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var offset!: Int64 = 0,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var encoding!: String = "utf-8"
-    ) {}
+    public var offset: Int64
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var length: Option<Int64>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var encoding: String
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public init(
+        offset!: Int64 = 0,
+        length!: Option<Int64> = None,
+        encoding!: String = "utf-8"
+    ) {
+        this.offset = offset
+        this.length = length
+        this.encoding = encoding
+    }
 }
 
 @!APILevel[
@@ -335,19 +366,19 @@ public enum WhenceType {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    SEEK_SET
+    SeekSet
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    SEEK_CUR
+    SeekCur
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    SEEK_END
+    SeekEnd
     | ...
 
     @!APILevel[
@@ -358,9 +389,9 @@ public enum WhenceType {
     public prop whenceType: Int32 {
         get() {
             match (this) {
-                case SEEK_SET => 0
-                case SEEK_CUR => 1
-                case SEEK_END => 2
+                case SeekSet => 0
+                case SeekCur => 1
+                case SeekEnd => 2
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -378,20 +409,26 @@ public class ConflictFiles {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public ConflictFiles(
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let srcFile: String,
-        @!APILevel[
-            12,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let destFile: String
-    ) {}
+    public var srcFile: String
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var destFile: String
+
+    @!APILevel[
+        12,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public init(
+        srcFile: String,
+        destFile: String
+    ) {
+        this.srcFile = srcFile
+        this.destFile = destFile
+    }
 
     func toString(): String {
         return "srcFile: ${srcFile}, destFile: ${destFile}"
@@ -468,60 +505,73 @@ public class Filter {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public Filter(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var suffix!: Array<String> = Array<String>(),
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var displayName!: Array<String> = Array<String>(),
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var mimeType!: Array<String> = Array<String>(),
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var fileSizeOver!: ?Int64 = None,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var lastModifiedAfter!: ?Float64 = None,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public var excludeMedia!: Bool = false
+    public var suffix: Array<String>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var displayName: Array<String>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var mimeType: Array<String>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var fileSizeOver: ?Int64
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var lastModifiedAfter: ?Float64
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var excludeMedia: Bool
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public init(
+        suffix!: Array<String> = Array<String>(),
+        displayName!: Array<String> = Array<String>(),
+        mimeType!: Array<String> = Array<String>(),
+        fileSizeOver!: ?Int64 = None,
+        lastModifiedAfter!: ?Float64 = None,
+        excludeMedia!: Bool = false
     ) {
         if (((fileSizeOver ?? 0) < 0) || ((lastModifiedAfter ?? 0.0) < 0.0)) {
             FS_LOG.error(getErrorInfo(FILEIO_INVALID_ARGUMENT))
             throw BusinessException(FILEIO_INVALID_ARGUMENT, getErrorInfo(FILEIO_INVALID_ARGUMENT))
         }
+        this.suffix = suffix
+        this.displayName = displayName
+        this.mimeType = mimeType
+        this.fileSizeOver = fileSizeOver
+        this.lastModifiedAfter = lastModifiedAfter
+        this.excludeMedia = excludeMedia
     }
 
     func toCFilter(): CFilter {
@@ -581,29 +631,37 @@ public class ListFileOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public ListFileOptions(
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let recursion!: Bool = false,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let listNum!: Int32 = 0,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.FileManagement.File.FileIO"
-        ]
-        public let filter!: Filter = Filter()
-    ) {}
+    public var recursion: Bool
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var listNum: Int32
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public var filter: Filter
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.FileManagement.File.FileIO"
+    ]
+    public init(
+        recursion!: Bool = false,
+        listNum!: Int32 = 0,
+        filter!: Filter = Filter()
+    ) {
+        this.recursion = recursion
+        this.listNum = listNum
+        this.filter = filter
+    }
 
     func toCListFileOptions(): CListFileOptions {
         return unsafe { CListFileOptions(recursion, listNum, filter.toCFilter()) }
@@ -795,7 +853,7 @@ public class FileFs {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public static func open(path: String, mode!: Int64 = READ_ONLY.mode): File {
+    public static func open(path: String, mode!: Int64 = ReadOnly.mode): File {
         let pathCString = unsafe { LibC.mallocCString(path) }
         let cValue = unsafe { FfiOHOSFileFsOpen(pathCString, mode) }
         unsafe {
@@ -1423,7 +1481,7 @@ public class FileFs {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-    public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SEEK_SET): Int64 {
+    public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SeekSet): Int64 {
         let ret: RetDataI64
         unsafe {
             ret = FfiOHOSFileFsLseek(fd, offset, whence.whenceType)

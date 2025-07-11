@@ -15,8 +15,6 @@
 
 package ohos.bluetooth.ble
 
-import ohos.ffi.*
-
 foreign {
     // global ffi function
     func FfiBluetoothBleCreateGattServer(errCode: CPointer<Int32>): Int64
