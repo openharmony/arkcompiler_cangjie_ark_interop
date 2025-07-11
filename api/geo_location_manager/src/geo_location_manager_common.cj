@@ -206,7 +206,7 @@ public class Location {
 
     init(cjLocation: CJLocation, additions!: Array<String> = Array<String>(),
         additionsMap!: Map<String, String> = HashMap<String, String>(),
-        sourceType!: LocationSourceType = LocationSourceType.GNSS) {
+        sourceType!: LocationSourceType = LocationSourceType.Gnss) {
         this.latitude = cjLocation.latitude
         this.longitude = cjLocation.longitude
         this.altitude = cjLocation.altitude
@@ -380,8 +380,8 @@ public class CurrentLocationRequest {
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public init(priority!: LocationRequestPriority = LocationRequestPriority.FIRST_FIX,
-        scenario!: LocationRequestScenario = LocationRequestScenario.UNSET, maxAccuracy!: Float32 = 0.0,
+    public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFix,
+        scenario!: LocationRequestScenario = LocationRequestScenario.Unset, maxAccuracy!: Float32 = 0.0,
         timeoutMs!: Int32 = 5000) {
         this.priority = priority
         this.scenario = scenario
