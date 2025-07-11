@@ -39,7 +39,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    OPTIONS
+    Options
     | @!APILevel[
         12,
         atomicservice: true,
@@ -47,7 +47,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    GET
+    Get
     | @!APILevel[
         12,
         atomicservice: true,
@@ -55,7 +55,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    HEAD
+    Head
     | @!APILevel[
         12,
         atomicservice: true,
@@ -63,7 +63,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    POST
+    Post
     | @!APILevel[
         12,
         atomicservice: true,
@@ -71,7 +71,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PUT
+    Put
     | @!APILevel[
         12,
         atomicservice: true,
@@ -79,7 +79,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    DELETE
+    Delete
     | @!APILevel[
         12,
         atomicservice: true,
@@ -87,7 +87,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    TRACE
+    Trace
     | @!APILevel[
         12,
         atomicservice: true,
@@ -95,7 +95,7 @@ public enum RequestMethod {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    CONNECT
+    Connect
     | ...
 
     @!APILevel[
@@ -105,14 +105,14 @@ public enum RequestMethod {
     ]
     public func getValue(): String {
         match (this) {
-            case OPTIONS => "OPTIONS"
-            case GET => "GET"
-            case HEAD => "HEAD"
-            case POST => "POST"
-            case PUT => "PUT"
-            case DELETE => "DELETE"
-            case TRACE => "TRACE"
-            case CONNECT => "CONNECT"
+            case Options => "OPTIONS"
+            case Get => "GET"
+            case Head => "HEAD"
+            case Post => "POST"
+            case Put => "PUT"
+            case Delete => "DELETE"
+            case Trace => "TRACE"
+            case Connect => "CONNECT"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -136,7 +136,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    OK
+    Ok
     | @!APILevel[
         12,
         atomicservice: true,
@@ -144,7 +144,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    CREATED
+    Created
     | @!APILevel[
         12,
         atomicservice: true,
@@ -152,7 +152,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    ACCEPTED
+    Accepted
     | @!APILevel[
         12,
         atomicservice: true,
@@ -160,7 +160,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_AUTHORITATIVE
+    NotAuthoritative
     | @!APILevel[
         12,
         atomicservice: true,
@@ -168,7 +168,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NO_CONTENT
+    NoContent
     | @!APILevel[
         12,
         atomicservice: true,
@@ -176,7 +176,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    RESET
+    Reset
     | @!APILevel[
         12,
         atomicservice: true,
@@ -184,7 +184,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PARTIAL
+    Partial
     | @!APILevel[
         12,
         atomicservice: true,
@@ -192,7 +192,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    MULT_CHOICE
+    MultChoice
     | @!APILevel[
         12,
         atomicservice: true,
@@ -200,7 +200,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    MOVED_PERM
+    MovedPerm
     | @!APILevel[
         12,
         atomicservice: true,
@@ -208,7 +208,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    MOVED_TEMP
+    MovedTemp
     | @!APILevel[
         12,
         atomicservice: true,
@@ -216,7 +216,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    SEE_OTHER
+    SeeOther
     | @!APILevel[
         12,
         atomicservice: true,
@@ -224,7 +224,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_MODIFIED
+    NotModified
     | @!APILevel[
         12,
         atomicservice: true,
@@ -232,7 +232,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    USE_PROXY
+    UseProxy
     | @!APILevel[
         12,
         atomicservice: true,
@@ -240,7 +240,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    BAD_REQUEST
+    BadRequest
     | @!APILevel[
         12,
         atomicservice: true,
@@ -248,7 +248,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    UNAUTHORIZED
+    Unauthorized
     | @!APILevel[
         12,
         atomicservice: true,
@@ -256,7 +256,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PAYMENT_REQUIRED
+    PaymentRequired
     | @!APILevel[
         12,
         atomicservice: true,
@@ -264,7 +264,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    FORBIDDEN
+    Forbidden
     | @!APILevel[
         12,
         atomicservice: true,
@@ -272,7 +272,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_FOUND
+    NotFound
     | @!APILevel[
         12,
         atomicservice: true,
@@ -280,7 +280,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    BAD_METHOD
+    BadMethod
     | @!APILevel[
         12,
         atomicservice: true,
@@ -288,7 +288,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_ACCEPTABLE
+    NotAcceptable
     | @!APILevel[
         12,
         atomicservice: true,
@@ -296,7 +296,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PROXY_AUTH
+    ProxyAuth
     | @!APILevel[
         12,
         atomicservice: true,
@@ -304,7 +304,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    CLIENT_TIMEOUT
+    ClientTimeout
     | @!APILevel[
         12,
         atomicservice: true,
@@ -312,7 +312,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    CONFLICT
+    Conflict
     | @!APILevel[
         12,
         atomicservice: true,
@@ -320,7 +320,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    GONE
+    Gone
     | @!APILevel[
         12,
         atomicservice: true,
@@ -328,7 +328,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    LENGTH_REQUIRED
+    LengthRequired
     | @!APILevel[
         12,
         atomicservice: true,
@@ -336,7 +336,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PRECON_FAILED
+    PreconFailed
     | @!APILevel[
         12,
         atomicservice: true,
@@ -344,7 +344,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    ENTITY_TOO_LARGE
+    EntityTooLarge
     | @!APILevel[
         12,
         atomicservice: true,
@@ -352,7 +352,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    REQ_TOO_LONG
+    ReqTooLong
     | @!APILevel[
         12,
         atomicservice: true,
@@ -360,7 +360,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    UNSUPPORTED_TYPE
+    UnsupportedType
     | @!APILevel[
         12,
         atomicservice: true,
@@ -368,7 +368,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    REQUESTED_RANGE_NOT_SATISFIABLE
+    RequestedRangeNotSatisfiable
     | @!APILevel[
         12,
         atomicservice: true,
@@ -376,7 +376,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    EXPECTATION_FAILED
+    ExpectationFailed
     | @!APILevel[
         12,
         atomicservice: true,
@@ -384,7 +384,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    TEAPOT
+    Teapot
     | @!APILevel[
         12,
         atomicservice: true,
@@ -392,7 +392,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    MISDIRECTED_REQUEST
+    MisdirectedRequest
     | @!APILevel[
         12,
         atomicservice: true,
@@ -400,7 +400,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    UNPROCESSABLE_ENTITY
+    UnprocessableEntity
     | @!APILevel[
         12,
         atomicservice: true,
@@ -408,7 +408,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    LOCKED
+    Locked
     | @!APILevel[
         12,
         atomicservice: true,
@@ -416,7 +416,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    FAILED_DEPENDENCY
+    FailedDependency
     | @!APILevel[
         12,
         atomicservice: true,
@@ -424,7 +424,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    TOO_EARLY
+    TooEarly
     | @!APILevel[
         12,
         atomicservice: true,
@@ -432,7 +432,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    UPGRADE_REQUIRED
+    UpgradeRequired
     | @!APILevel[
         12,
         atomicservice: true,
@@ -440,7 +440,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PRECONDITION_REQUIRED
+    PreconditionRequired
     | @!APILevel[
         12,
         atomicservice: true,
@@ -448,7 +448,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    TOO_MANY_REQUESTS
+    TooManyRequests
     | @!APILevel[
         12,
         atomicservice: true,
@@ -456,7 +456,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    REQUEST_HEADER_FIELDS_TOO_LARGE
+    RequestHeaderFieldsTooLarge
     | @!APILevel[
         12,
         atomicservice: true,
@@ -464,7 +464,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    UNAVAILABLE_FOR_LEGAL_REASONS
+    UnavailableForLegalReasons
     | @!APILevel[
         12,
         atomicservice: true,
@@ -472,7 +472,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    INTERNAL_ERROR
+    InternalError
     | @!APILevel[
         12,
         atomicservice: true,
@@ -480,7 +480,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_IMPLEMENTED
+    NotImplemented
     | @!APILevel[
         12,
         atomicservice: true,
@@ -488,7 +488,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    BAD_GATEWAY
+    BadGateway
     | @!APILevel[
         12,
         atomicservice: true,
@@ -496,7 +496,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    UNAVAILABLE
+    Unavailable
     | @!APILevel[
         12,
         atomicservice: true,
@@ -504,7 +504,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    GATEWAY_TIMEOUT
+    GatewayTimeout
     | @!APILevel[
         12,
         atomicservice: true,
@@ -512,7 +512,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    VERSION
+    Version
     | @!APILevel[
         12,
         atomicservice: true,
@@ -520,7 +520,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    VARIANT_ALSO_NEGOTIATES
+    VariantAlsoNegotiates
     | @!APILevel[
         12,
         atomicservice: true,
@@ -528,7 +528,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    INSUFFICIENT_STORAGE
+    InsufficientStorage
     | @!APILevel[
         12,
         atomicservice: true,
@@ -536,7 +536,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    LOOP_DETECTED
+    LoopDetected
     | @!APILevel[
         12,
         atomicservice: true,
@@ -544,7 +544,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_EXTENDED
+    NotExtended
     | @!APILevel[
         12,
         atomicservice: true,
@@ -552,7 +552,7 @@ public enum ResponseCode {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NETWORK_AUTHENTICATION_REQUIRED
+    NetworkAuthenticationRequired
     | ...
 
     @!APILevel[
@@ -562,59 +562,59 @@ public enum ResponseCode {
     ]
     public func getValue(): UInt32 {
         match (this) {
-            case OK => 200
-            case CREATED => 201
-            case ACCEPTED => 202
-            case NOT_AUTHORITATIVE => 203
-            case NO_CONTENT => 204
-            case RESET => 205
-            case PARTIAL => 206
-            case MULT_CHOICE => 300
-            case MOVED_PERM => 301
-            case MOVED_TEMP => 302
-            case SEE_OTHER => 303
-            case NOT_MODIFIED => 304
-            case USE_PROXY => 305
-            case BAD_REQUEST => 400
-            case UNAUTHORIZED => 401
-            case PAYMENT_REQUIRED => 402
-            case FORBIDDEN => 403
-            case NOT_FOUND => 404
-            case BAD_METHOD => 405
-            case NOT_ACCEPTABLE => 406
-            case PROXY_AUTH => 407
-            case CLIENT_TIMEOUT => 408
-            case CONFLICT => 409
-            case GONE => 410
-            case LENGTH_REQUIRED => 411
-            case PRECON_FAILED => 412
-            case ENTITY_TOO_LARGE => 413
-            case REQ_TOO_LONG => 414
-            case UNSUPPORTED_TYPE => 415
-            case REQUESTED_RANGE_NOT_SATISFIABLE => 416
-            case EXPECTATION_FAILED => 417
-            case TEAPOT => 418
-            case MISDIRECTED_REQUEST => 421
-            case UNPROCESSABLE_ENTITY => 422
-            case LOCKED => 423
-            case FAILED_DEPENDENCY => 424
-            case TOO_EARLY => 425
-            case UPGRADE_REQUIRED => 426
-            case PRECONDITION_REQUIRED => 428
-            case TOO_MANY_REQUESTS => 429
-            case REQUEST_HEADER_FIELDS_TOO_LARGE => 431
-            case UNAVAILABLE_FOR_LEGAL_REASONS => 451
-            case INTERNAL_ERROR => 500
-            case NOT_IMPLEMENTED => 501
-            case BAD_GATEWAY => 502
-            case UNAVAILABLE => 503
-            case GATEWAY_TIMEOUT => 504
-            case VERSION => 505
-            case VARIANT_ALSO_NEGOTIATES => 506
-            case INSUFFICIENT_STORAGE => 507
-            case LOOP_DETECTED => 508
-            case NOT_EXTENDED => 510
-            case NETWORK_AUTHENTICATION_REQUIRED => 511
+            case Ok => 200
+            case Created => 201
+            case Accepted => 202
+            case NotAuthoritative => 203
+            case NoContent => 204
+            case Reset => 205
+            case Partial => 206
+            case MultChoice => 300
+            case MovedPerm => 301
+            case MovedTemp => 302
+            case SeeOther => 303
+            case NotModified => 304
+            case UseProxy => 305
+            case BadRequest => 400
+            case Unauthorized => 401
+            case PaymentRequired => 402
+            case Forbidden => 403
+            case NotFound => 404
+            case BadMethod => 405
+            case NotAcceptable => 406
+            case ProxyAuth => 407
+            case ClientTimeout => 408
+            case Conflict => 409
+            case Gone => 410
+            case LengthRequired => 411
+            case PreconFailed => 412
+            case EntityTooLarge => 413
+            case ReqTooLong => 414
+            case UnsupportedType => 415
+            case RequestedRangeNotSatisfiable => 416
+            case ExpectationFailed => 417
+            case Teapot => 418
+            case MisdirectedRequest => 421
+            case UnprocessableEntity => 422
+            case Locked => 423
+            case FailedDependency => 424
+            case TooEarly => 425
+            case UpgradeRequired => 426
+            case PreconditionRequired => 428
+            case TooManyRequests => 429
+            case RequestHeaderFieldsTooLarge => 431
+            case UnavailableForLegalReasons => 451
+            case InternalError => 500
+            case NotImplemented => 501
+            case BadGateway => 502
+            case Unavailable => 503
+            case GatewayTimeout => 504
+            case Version => 505
+            case VariantAlsoNegotiates => 506
+            case InsufficientStorage => 507
+            case LoopDetected => 508
+            case NotExtended => 510
+            case NetworkAuthenticationRequired => 511
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -626,59 +626,59 @@ public enum ResponseCode {
     ]
     public static func parse(code: UInt32): ResponseCode {
         match (code) {
-            case 200 => OK
-            case 201 => CREATED
-            case 202 => ACCEPTED
-            case 203 => NOT_AUTHORITATIVE
-            case 204 => NO_CONTENT
-            case 205 => RESET
-            case 206 => PARTIAL
-            case 300 => MULT_CHOICE
-            case 301 => MOVED_PERM
-            case 302 => MOVED_TEMP
-            case 303 => SEE_OTHER
-            case 304 => NOT_MODIFIED
-            case 305 => USE_PROXY
-            case 400 => BAD_REQUEST
-            case 401 => UNAUTHORIZED
-            case 402 => PAYMENT_REQUIRED
-            case 403 => FORBIDDEN
-            case 404 => NOT_FOUND
-            case 405 => BAD_METHOD
-            case 406 => NOT_ACCEPTABLE
-            case 407 => PROXY_AUTH
-            case 408 => CLIENT_TIMEOUT
-            case 409 => CONFLICT
-            case 410 => GONE
-            case 411 => LENGTH_REQUIRED
-            case 412 => PRECON_FAILED
-            case 413 => ENTITY_TOO_LARGE
-            case 414 => REQ_TOO_LONG
-            case 415 => UNSUPPORTED_TYPE
-            case 416 => REQUESTED_RANGE_NOT_SATISFIABLE
-            case 417 => EXPECTATION_FAILED
-            case 418 => TEAPOT
-            case 421 => MISDIRECTED_REQUEST
-            case 422 => UNPROCESSABLE_ENTITY
-            case 423 => LOCKED
-            case 424 => FAILED_DEPENDENCY
-            case 425 => TOO_EARLY
-            case 426 => UPGRADE_REQUIRED
-            case 428 => PRECONDITION_REQUIRED
-            case 429 => TOO_MANY_REQUESTS
-            case 431 => REQUEST_HEADER_FIELDS_TOO_LARGE
-            case 451 => UNAVAILABLE_FOR_LEGAL_REASONS
-            case 500 => INTERNAL_ERROR
-            case 501 => NOT_IMPLEMENTED
-            case 502 => BAD_GATEWAY
-            case 503 => UNAVAILABLE
-            case 504 => GATEWAY_TIMEOUT
-            case 505 => VERSION
-            case 506 => VARIANT_ALSO_NEGOTIATES
-            case 507 => INSUFFICIENT_STORAGE
-            case 508 => LOOP_DETECTED
-            case 510 => NOT_EXTENDED
-            case 511 => NETWORK_AUTHENTICATION_REQUIRED
+            case 200 => Ok
+            case 201 => Created
+            case 202 => Accepted
+            case 203 => NotAuthoritative
+            case 204 => NoContent
+            case 205 => Reset
+            case 206 => Partial
+            case 300 => MultChoice
+            case 301 => MovedPerm
+            case 302 => MovedTemp
+            case 303 => SeeOther
+            case 304 => NotModified
+            case 305 => UseProxy
+            case 400 => BadRequest
+            case 401 => Unauthorized
+            case 402 => PaymentRequired
+            case 403 => Forbidden
+            case 404 => NotFound
+            case 405 => BadMethod
+            case 406 => NotAcceptable
+            case 407 => ProxyAuth
+            case 408 => ClientTimeout
+            case 409 => Conflict
+            case 410 => Gone
+            case 411 => LengthRequired
+            case 412 => PreconFailed
+            case 413 => EntityTooLarge
+            case 414 => ReqTooLong
+            case 415 => UnsupportedType
+            case 416 => RequestedRangeNotSatisfiable
+            case 417 => ExpectationFailed
+            case 418 => Teapot
+            case 421 => MisdirectedRequest
+            case 422 => UnprocessableEntity
+            case 423 => Locked
+            case 424 => FailedDependency
+            case 425 => TooEarly
+            case 426 => UpgradeRequired
+            case 428 => PreconditionRequired
+            case 429 => TooManyRequests
+            case 431 => RequestHeaderFieldsTooLarge
+            case 451 => UnavailableForLegalReasons
+            case 500 => InternalError
+            case 501 => NotImplemented
+            case 502 => BadGateway
+            case 503 => Unavailable
+            case 504 => GatewayTimeout
+            case 505 => Version
+            case 506 => VariantAlsoNegotiates
+            case 507 => InsufficientStorage
+            case 508 => LoopDetected
+            case 510 => NotExtended
+            case 511 => NetworkAuthenticationRequired
             case _ => throw IllegalArgumentException("Unknown code ${code}")
         }
     }
@@ -702,7 +702,7 @@ public enum HttpProtocol {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    HTTP1_1
+    Http1_1
     | @!APILevel[
         12,
         atomicservice: true,
@@ -710,7 +710,7 @@ public enum HttpProtocol {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    HTTP2
+    Http2
     | @!APILevel[
         12,
         atomicservice: true,
@@ -718,14 +718,14 @@ public enum HttpProtocol {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    HTTP3
+    Http3
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case HTTP1_1 => 0
-            case HTTP2 => 1
-            case HTTP3 => 2
+            case Http1_1 => 0
+            case Http2 => 1
+            case Http3 => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -750,7 +750,7 @@ public enum HttpDataType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    STRING
+    StringValue
     | @!APILevel[
         12,
         atomicservice: true,
@@ -758,22 +758,22 @@ public enum HttpDataType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    ARRAY_BUFFER
+    ArrayBuffer
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case STRING => 0
-            case ARRAY_BUFFER => 2
+            case StringValue => 0
+            case ArrayBuffer => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): HttpDataType {
         return if (val == 0) {
-            STRING
+            StringValue
         } else {
-            ARRAY_BUFFER
+            ArrayBuffer
         }
     }
 }
@@ -789,19 +789,19 @@ public enum HttpData <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    STRING_DATA(String)
+    StringData(String)
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    ARRAY_DATA(Array<Byte>)
+    ArrayData(Array<Byte>)
     | ...
 
     func getData(): Array<UInt8> {
         match (this) {
-            case STRING_DATA(str) => unsafe { str.rawData() }
-            case ARRAY_DATA(arr) => arr
+            case StringData(str) => unsafe { str.rawData() }
+            case ArrayData(arr) => arr
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -818,8 +818,8 @@ public enum HttpData <: ToString {
     ]
     public func toString(): String {
         match (this) {
-            case STRING_DATA(str) => str
-            case ARRAY_DATA(arr) => "${arr}"
+            case StringData(str) => str
+            case ArrayData(arr) => "${arr}"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -836,19 +836,19 @@ public enum UsingProxy {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    NOT_USE
+    NotUse
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    USE_DEFAULT
+    UseDefault
     | @!APILevel[
         12,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    USE_SPECIFIED(HttpProxy)
+    UseSpecified(HttpProxy)
     | ...
 }
 
@@ -865,14 +865,14 @@ public enum CertType {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    PEM
+    Pem
     | @!APILevel[
         12,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    DER
+    Der
     | @!APILevel[
         12,
         crossplatform: true,
@@ -889,8 +889,8 @@ public enum CertType {
     ]
     func getValue(): String {
         match (this) {
-            case PEM => "PEM"
-            case DER => "DER"
+            case Pem => "PEM"
+            case Der => "DER"
             case P12 => "P12"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
@@ -915,193 +915,216 @@ public class HttpRequestOptions {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    public HttpRequestOptions(
-        //default GET
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let method!: RequestMethod = RequestMethod.GET,
+    public var method: RequestMethod = RequestMethod.Get
 
-        //Additional data of the request.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let extraData!: ?HttpData = None,
+    //Additional data of the request.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var extraData: ?HttpData = None
 
-        // Data type to be returned. If this parameter is set, the system preferentially returns the specified type.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let expectDataType!: ?HttpDataType = None,
+    // Data type to be returned. If this parameter is set, the system preferentially returns the specified type.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var expectDataType: ?HttpDataType = None
 
-        // default true
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let usingCache!: Bool = true,
+    // default true
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var usingCache: Bool = true
 
-        // default 1
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let priority!: UInt32 = 1,
+    // default 1
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var priority: UInt32 = 1
 
-        // default is 'content-type': 'application/json'
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let header!: ?HashMap<String, String> = None,
+    // default is 'content-type': 'application/json'
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var header: ?HashMap<String, String> = None
 
-        // The default value is 60,000, in ms.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let readTimeout!: UInt32 = 60000,
+    // The default value is 60,000, in ms.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var readTimeout: UInt32 = 60000
 
-        // The default value is 60,000, in ms.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let connectTimeout!: UInt32 = 60000,
+    // The default value is 60,000, in ms.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var connectTimeout: UInt32 = 60000
 
-        // default is automatically specified by the system.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let usingProtocol!: ?HttpProtocol = None,
+    // default is automatically specified by the system.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var usingProtocol: ?HttpProtocol = None
 
-        // If this parameter is set as type of boolean, the system will use default proxy or not use proxy.
-        // If this parameter is set as type of HttpProxy, the system will use the specified HttpProxy.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let usingProxy!: UsingProxy = USE_DEFAULT,
+    // If this parameter is set as type of boolean, the system will use default proxy or not use proxy.
+    // If this parameter is set as type of HttpProxy, the system will use the specified HttpProxy.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var usingProxy: UsingProxy = UseDefault
 
-        // If this parameter is set, the system will use ca path specified by user,
-        // or else use preset ca by the system.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let caPath!: ?String = None,
+    // If this parameter is set, the system will use ca path specified by user,
+    // or else use preset ca by the system.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var caPath: ?String = None
 
-        // Used to set to uploading or downloading the start bytes. The default value is 0.
-        // HTTP standard (RFC 7233 section 3.1) allows servers to ignore range requests.
-        // For HTTP PUT uploads this option should not be used, since it may conflict with other options.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let resumeFrom!: ?Int64 = None,
+    // Used to set to uploading or downloading the start bytes. The default value is 0.
+    // HTTP standard (RFC 7233 section 3.1) allows servers to ignore range requests.
+    // For HTTP PUT uploads this option should not be used, since it may conflict with other options.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var resumeFrom: ?Int64 = None
 
-        // Used to set to uploading or downloading the end bytes. Translate to the end if not set.
-        // HTTP standard (RFC 7233 section 3.1) allows servers to ignore range requests.
-        // For HTTP PUT uploads this option should not be used, since it may conflict with other options.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let resumeTo!: ?Int64 = None,
+    // Used to set to uploading or downloading the end bytes. Translate to the end if not set.
+    // HTTP standard (RFC 7233 section 3.1) allows servers to ignore range requests.
+    // For HTTP PUT uploads this option should not be used, since it may conflict with other options.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var resumeTo: ?Int64 = None
 
-        // Support the application to pass in client certificates, allowing the server to verify the client's identity.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let clientCert!: ?ClientCert = None,
+    // Support the application to pass in client certificates, allowing the server to verify the client's identity.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var clientCert: ?ClientCert = None
 
-        // If this parameter is set, incoming DNS resolution server URL for the DoH server to use for name resolving.
-        // The parameter must be URL-encoded in the following format: "https://host:port/path".
-        // It MUST specify an HTTPS URL.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let dnsOverHttps!: ?String = None,
+    // If this parameter is set, incoming DNS resolution server URL for the DoH server to use for name resolving.
+    // The parameter must be URL-encoded in the following format: "https://host:port/path".
+    // It MUST specify an HTTPS URL.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var dnsOverHttps: ?String = None
 
-        // If this parameter is set, use the specified DNS server for DNS resolution.
-        // Multiple DNS resolution servers can be set up, with a maximum of 3 servers.
-        // Only take the first three if there are more than three.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let dnsServers!: ?Array<String> = None,
+    // If this parameter is set, use the specified DNS server for DNS resolution.
+    // Multiple DNS resolution servers can be set up, with a maximum of 3 servers.
+    // Only take the first three if there are more than three.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var dnsServers: ?Array<String> = None
 
-        // The maximum limit of the response body. The default value is 5 * 1024 * 1024, in Byte.
-        // The maximum value is 100 * 1024 *1024, in Byte.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let maxLimit!: UInt32 = 5 * 1024 * 1024,
+    // The maximum limit of the response body. The default value is 5 * 1024 * 1024, in Byte.
+    // The maximum value is 100 * 1024 *1024, in Byte.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var maxLimit: UInt32 = 5 * 1024 * 1024
 
-        // The data fields which is supported by the HTTP protocol to post
-        // forms and by the SMTP and IMAP protocols to provide
-        // the email data to send/upload.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let multiFormDataList!: ?Array<MultiFormData> = None
-    ) {}
+    // The data fields which is supported by the HTTP protocol to post
+    // forms and by the SMTP and IMAP protocols to provide
+    // the email data to send/upload.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var multiFormDataList: ?Array<MultiFormData> = None
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public init(method: RequestMethod, extraData!: ?HttpData = None, expectDataType!: ?HttpDataType = None,
+        usingCache: Bool = true, priority: UInt32, header!: ?HashMap<String, String> = None, readTimeout: UInt32,
+        connectTimeout: UInt32, usingProtocol!: ?HttpProtocol = None, usingProxy: UsingProxy, caPath!: ?String = None,
+        resumeFrom!: ?Int64 = None, resumeTo!: ?Int64 = None, clientCert!: ?ClientCert = None,
+        dnsOverHttps!: ?String = None, dnsServers!: ?Array<String> = None, maxLimit: UInt32
+        multiFormDataList!: ?Array<MultiFormData> = None) {
+        this.method = method
+        this.extraData = extraData
+        this.expectDataType = expectDataType
+        this.usingCache = usingCache
+        this.priority = priority
+        this.header = header
+        this.readTimeout = readTimeout
+        this.connectTimeout = connectTimeout
+        this.usingProtocol = usingProtocol
+        this.usingProxy = usingProxy
+        this.caPath = caPath
+        this.resumeFrom = resumeFrom
+        this.resumeTo = resumeTo
+        this.clientCert = clientCert
+        this.dnsOverHttps = dnsOverHttps
+        this.dnsServers = dnsServers
+        this.maxLimit = maxLimit
+        this.multiFormDataList = multiFormDataList
+    }
 }
 
 /**
@@ -1115,66 +1138,76 @@ public class HttpRequestOptions {
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class HttpResponse <: ToString {
-    HttpResponse(
-        // result can be a string (API 6) or an ArrayBuffer(API 8). Object is deprecated from API 8.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let result: HttpData,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let resultType: HttpDataType,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let responseCode: ResponseCode,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let header: HashMap<String, String>,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let cookies: String,
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let setCookie: Array<String>,
+    // result can be a string (API 6) or an ArrayBuffer(API 8). Object is deprecated from API 8.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var result: HttpData
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var resultType: HttpDataType
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var responseCode: ResponseCode
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var header: HashMap<String, String>
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var cookies: String
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var setCookie: Array<String>
 
-        //The time taken of various stages of HTTP request.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let performanceTiming: PerformanceTiming
-    ) {}
+    //The time taken of various stages of HTTP request.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var performanceTiming: PerformanceTiming
+
+    public init(result: HttpData, resultType: HttpDataType, responseCode: ResponseCode,
+        header: HashMap<String, String>, cookies: String, setCookie: Array<String>,
+        performanceTiming: PerformanceTiming) {
+        this.result = result
+        this.resultType = resultType
+        this.responseCode = responseCode
+        this.header = header
+        this.cookies = cookies
+        this.setCookie = setCookie
+        this.performanceTiming = performanceTiming
+    }
 
     init(resp: CHttpResponse) {
         unsafe {
@@ -1214,97 +1247,111 @@ public class HttpResponse <: ToString {
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class PerformanceTiming <: ToString {
-    PerformanceTiming(
-        // Time taken from startup to DNS resolution completion, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let dnsTiming: Float64,
+    // Time taken from startup to DNS resolution completion, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var dnsTiming: Float64
 
-        // Time taken from startup to TCP connection completion, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let tcpTiming: Float64,
+    // Time taken from startup to TCP connection completion, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var tcpTiming: Float64
 
-        // Time taken from startup to TLS connection completion, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let tlsTiming: Float64,
+    // Time taken from startup to TLS connection completion, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var tlsTiming: Float64
 
-        // Time taken from startup to start sending the first byte, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let firstSendTiming: Float64,
+    // Time taken from startup to start sending the first byte, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var firstSendTiming: Float64
 
-        // Time taken from startup to receiving the first byte, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let firstReceiveTiming: Float64,
+    // Time taken from startup to receiving the first byte, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var firstReceiveTiming: Float64
 
-        // Time taken from startup to the completion of the request, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let totalFinishTiming: Float64,
+    // Time taken from startup to the completion of the request, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var totalFinishTiming: Float64
 
-        // Time taken from startup to completion of all redirection steps, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let redirectTiming: Float64,
+    // Time taken from startup to completion of all redirection steps, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var redirectTiming: Float64
 
-        // Time taken from HTTP request to header completion, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let responseHeaderTiming: Float64,
+    // Time taken from HTTP request to header completion, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var responseHeaderTiming: Float64
 
-        // Time taken from HTTP Request to body completion, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let responseBodyTiming: Float64,
+    // Time taken from HTTP Request to body completion, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var responseBodyTiming: Float64
 
-        // Time taken from HTTP Request to callback to the application, in milliseconds.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let totalTiming: Float64
-    ) {}
+    // Time taken from HTTP Request to callback to the application, in milliseconds.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var totalTiming: Float64
+
+    public init(dnsTiming: Float64, tcpTiming: Float64, tlsTiming: Float64,
+        firstSendTiming: Float64, firstReceiveTiming: Float64, totalFinishTiming: Float64,
+        redirectTiming: Float64, responseHeaderTiming: Float64, responseBodyTiming: Float64,
+        totalTiming: Float64) {
+        this.dnsTiming = dnsTiming
+        this.tcpTiming = tcpTiming
+        this.tlsTiming = tlsTiming
+        this.firstSendTiming = firstSendTiming
+        this.firstReceiveTiming = firstReceiveTiming
+        this.totalFinishTiming = totalFinishTiming
+        this.redirectTiming = redirectTiming
+        this.responseHeaderTiming = responseHeaderTiming
+        this.responseBodyTiming = responseBodyTiming
+        this.totalTiming = totalTiming
+    }
 
     init(timing: CPerformanceTiming) {
         this.dnsTiming = timing.dnsTiming
@@ -1351,27 +1398,37 @@ public class PerformanceTiming <: ToString {
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class DataReceiveProgressInfo {
-    DataReceiveProgressInfo(
-        // Number of data bytes received.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let receiveSize: UInt32,
+    // Number of data bytes received.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var receiveSize: UInt32
 
-        // Total number of bytes to receive.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let totalSize: UInt32
-    ) {}
+    // Total number of bytes to receive.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var totalSize: UInt32
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public init(receiveSize: UInt32, totalSize: UInt32) {
+        this.receiveSize = receiveSize
+        this.totalSize = totalSize
+    }
 
     init(info: CDataReceiveProgressInfo) {
         this.receiveSize = info.receiveSize
@@ -1390,27 +1447,37 @@ public class DataReceiveProgressInfo {
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class DataSendProgressInfo {
-    DataSendProgressInfo(
-        // Used to specify the data size to be sent.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let sendSize: UInt32,
+    // Used to specify the data size to be sent.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var sendSize: UInt32
 
-        // Total number of bytes to send.
-        @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let totalSize: UInt32
-    ) {}
+    // Total number of bytes to send.
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var totalSize: UInt32
+
+    @!APILevel[
+        12,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public init(sendSize: UInt32, totalSize: UInt32) {
+        this.sendSize = sendSize
+        this.totalSize = totalSize
+    }
 
     init(info: CDataSendProgressInfo) {
         this.sendSize = info.sendSize
@@ -1430,49 +1497,54 @@ public class DataSendProgressInfo {
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class ClientCert {
+    // The path to the client certificate file.
     @!APILevel[
         12,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    public ClientCert(
-        // The path to the client certificate file.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let certPath: String,
+    public var certPath: String
 
-        // The path of the client certificate private key file.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let keyPath: String,
+    // The path of the client certificate private key file.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var keyPath: String
 
-        // The type of the client certificate.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let certType!: CertType = CertType.PEM,
+    // The type of the client certificate.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var certType: CertType = CertType.Pem
 
-        // Password required to use the client certificate private key.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let keyPassword!: ?String = None
-    ) {}
+    // Password required to use the client certificate private key.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var keyPassword: ?String = None
+
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public init(certPath: String, keyPath: String, certType: CertType, keyPassword!: ?String = None) {
+        this.certPath = certPath
+        this.keyPath = keyPath
+        this.certType = certType
+        this.keyPassword = keyPassword
+    }
 
     func toCClientCert(): CClientCert {
         var cert = CClientCert(CString(CPointer()), CString(CPointer()), CString(CPointer()), CString(CPointer()))
@@ -1501,61 +1573,68 @@ public class ClientCert {
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class MultiFormData {
+    // MIME name for the data field.
     @!APILevel[
         12,
         crossplatform: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
-    public MultiFormData(
-        // MIME name for the data field.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let name: String,
+    public var name: String
 
-        // Content type of the data field.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let contentType: String,
+    // Content type of the data field.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var contentType: String
 
-        // Remote file name for the data field.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let remoteFileName!: ?String = None,
+    // Remote file name for the data field.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var remoteFileName: ?String = None
 
-        // This parameter sets a mime part's body content from memory data.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let data!: ?HttpData = None,
+    // This parameter sets a mime part's body content from memory data.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var data: ?HttpData = None
 
-        // This parameter sets a mime part's body content from the file's contents.
-        // This is an alternative to curl_mime_data for setting data to a mime part.
-        // If data is empty, filePath must be set.
-        // If data has a value, filePath does not take effect.
-        @!APILevel[
-            12,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.NetStack"
-        ]
-        public let filePath!: ?String = None
-    ) {}
+    // This parameter sets a mime part's body content from the file's contents.
+    // This is an alternative to curl_mime_data for setting data to a mime part.
+    // If data is empty, filePath must be set.
+    // If data has a value, filePath does not take effect.
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public var filePath: ?String = None
+
+    @!APILevel[
+        12,
+        crossplatform: true,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetStack"
+    ]
+    public init(name: String, contentType: String,  remoteFileName!: ?String = None,
+        data: ?HttpData = None, filePath!: ?String = None) {
+        this.name = name
+        this.contentType = contentType
+        this.remoteFileName = remoteFileName
+        this.data = data
+        this.filePath = filePath
+    }
 }
 
 func cArrString2Map(cArrString: CArrString): HashMap<String, String> {
