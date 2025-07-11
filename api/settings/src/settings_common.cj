@@ -30,13 +30,13 @@ public enum DomainName <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    DEVICE_SHARED
+    DeviceShared
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    USER_PROPERTY
+    UserProperty
     | ...
 
     @!APILevel[
@@ -46,8 +46,8 @@ public enum DomainName <: ToString {
     ]
     public override func toString(): String {
         match (this) {
-            case DEVICE_SHARED => "global"
-            case USER_PROPERTY => "system"
+            case DeviceShared => "global"
+            case UserProperty => "system"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -64,25 +64,25 @@ public enum Date <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    DATE_FORMAT
+    DateFormat
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    TIME_FORMAT
+    TimeFormat
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    AUTO_GAIN_TIME
+    AutoGainTime
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    AUTO_GAIN_TIME_ZONE
+    AutoGainTimeZone
     | ...
 
     @!APILevel[
@@ -92,10 +92,10 @@ public enum Date <: ToString {
     ]
     public override func toString(): String {
         match (this) {
-            case DATE_FORMAT => "settings.date.date_format"
-            case TIME_FORMAT => "settings.date.time_format"
-            case AUTO_GAIN_TIME => "settings.date.auto_gain_time"
-            case AUTO_GAIN_TIME_ZONE => "settings.date.auto_gain_time_zone"
+            case DateFormat => "settings.date.date_format"
+            case TimeFormat => "settings.date.time_format"
+            case AutoGainTime => "settings.date.auto_gain_time"
+            case AutoGainTimeZone => "settings.date.auto_gain_time_zone"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -112,55 +112,55 @@ public enum Display <: ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    FONT_SCALE
+    FontScale
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    SCREEN_BRIGHTNESS_STATUS
+    ScreenBrightnessStatus
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    AUTO_SCREEN_BRIGHTNESS
+    AutoScreenBrightness
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    SCREEN_OFF_TIMEOUT
+    ScreenOffTimeout
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    DEFAULT_SCREEN_ROTATION
+    DefaultScreenRotation
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    ANIMATOR_DURATION_SCALE
+    Animator_Duration_Scale
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    TRANSITION_ANIMATION_SCALE
+    TransitionAnimationScale
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    WINDOW_ANIMATION_SCALE
+    WindowAnimationScale
     | @!APILevel[
         19,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    DISPLAY_INVERSION_STATUS
+    DisplayInversionStatus
     | ...
 
     @!APILevel[
@@ -170,15 +170,15 @@ public enum Display <: ToString {
     ]
     public override func toString(): String {
         match (this) {
-            case FONT_SCALE => "settings.display.font_scale"
-            case SCREEN_BRIGHTNESS_STATUS => "settings.display.screen_brightness_status"
-            case AUTO_SCREEN_BRIGHTNESS => "settings.display.auto_screen_brightness"
-            case SCREEN_OFF_TIMEOUT => "settings.display.screen_off_timeout"
-            case DEFAULT_SCREEN_ROTATION => "settings.display.default_screen_rotation"
-            case ANIMATOR_DURATION_SCALE => "settings.display.animator_duration_scale"
-            case TRANSITION_ANIMATION_SCALE => "settings.display.transition_animation_scale"
-            case WINDOW_ANIMATION_SCALE => "settings.display.window_animation_scale"
-            case DISPLAY_INVERSION_STATUS => "settings.display.display_inversion_status"
+            case FontScale => "settings.display.font_scale"
+            case ScreenBrightnessStatus => "settings.display.screen_brightness_status"
+            case AutoScreenBrightness => "settings.display.auto_screen_brightness"
+            case ScreenOffTimeout => "settings.display.screen_off_timeout"
+            case DefaultScreenRotation => "settings.display.default_screen_rotation"
+            case Animator_Duration_Scale => "settings.display.animator_duration_scale"
+            case TransitionAnimationScale => "settings.display.transition_animation_scale"
+            case WindowAnimationScale => "settings.display.window_animation_scale"
+            case DisplayInversionStatus => "settings.display.display_inversion_status"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
