@@ -29,10 +29,6 @@ public import ohos.distributed_kv_store.ValueType as KVValueType
 public import ohos.distributed_kv_store.Options as KVOptions
 public import ohos.distributed_kv_store.MAX_VALUE_LENGTH as KV_MAX_VALUE_LENGTH
 public import ohos.distributed_kv_store.MAX_KEY_LENGTH as KV_MAX_KEY_LENGTH
-public import ohos.unifiedDataChannel.*
-public import ohos.unifiedDataChannel.ValueType as UnifiedDataChannelValueType
-public import ohos.unifiedDataChannel.*
-public import ohos.uniformTypeDescriptor.*
 public import ohos.data_share_predicates.*
 public import ohos.values_bucket.*
 public import ohos.values_bucket.ValueType as VBValueType
