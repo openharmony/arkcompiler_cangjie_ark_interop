@@ -23,8 +23,7 @@ import ohos.base.*
  * @brief  getRdbStore(context: Context, config: StoreConfig): Promise<RdbStore>
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
@@ -44,8 +43,7 @@ public func getRdbStore(context: StageContext, config: StoreConfig): RdbStore {
  * @brief  deleteRdbStore(context: Context, name: string): Promise<void>
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
@@ -63,8 +61,7 @@ public func deleteRdbStore(context: StageContext, name: String): Unit {
  * @brief  deleteRdbStore(context: Context, config: StoreConfig): Promise<void>
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]

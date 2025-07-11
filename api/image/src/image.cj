@@ -40,7 +40,7 @@ foreign {
  * @relation interface Image
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -51,7 +51,7 @@ public class Image <: RemoteDataLite {
      * @relation clipRect: Region;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -72,7 +72,7 @@ public class Image <: RemoteDataLite {
      * @relation readonly size: Size;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -93,7 +93,7 @@ public class Image <: RemoteDataLite {
      * @relation readonly format: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -123,7 +123,7 @@ public class Image <: RemoteDataLite {
      * @relation getComponent(componentType: ComponentType): Promise<Component>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -149,7 +149,7 @@ public class Image <: RemoteDataLite {
      * @relation release(): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]

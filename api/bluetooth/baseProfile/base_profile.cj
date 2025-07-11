@@ -22,50 +22,43 @@ import ohos.labels.*
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum DisconnectCause {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     UserDisconnect
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectFromKeyboard
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectFromMouse
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectFromCar
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     TooManyConnectedDevices
     | @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -103,29 +96,25 @@ protected struct NativeStateChangeParam {
 }
 
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class StateChangeParam {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var state: ProfileConnectionState
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -143,16 +132,14 @@ public class StateChangeParam {
 }
 
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public interface BaseProfile {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -160,8 +147,7 @@ public interface BaseProfile {
     func getConnectedDevices(): Array<String>
 
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -169,8 +155,7 @@ public interface BaseProfile {
     func getConnectionState(deviceId: String): ProfileConnectionState
 
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -178,8 +163,7 @@ public interface BaseProfile {
     func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
 
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -187,8 +171,7 @@ public interface BaseProfile {
     func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
 
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -198,15 +181,13 @@ public interface BaseProfile {
 
 @Derive[ToString, Hashable, Equatable]
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum ProfileCallbackType {
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]

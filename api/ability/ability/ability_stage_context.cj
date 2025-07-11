@@ -52,17 +52,13 @@ foreign func FFICJGetHapModuleInfo(id: Int64): RetHapModuleInfoV2
 foreign func FFICJGetConfiguration(id: Int64): CConfiguration
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityStageContext <: Context {
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

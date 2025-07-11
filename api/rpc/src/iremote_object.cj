@@ -21,44 +21,44 @@ import ohos.ffi.*
 import ohos.base.BusinessException
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public interface IRemoteObject {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func getLocalInterface(descriptor: String): IRemoteBroker
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func sendMessageRequest(code: UInt32, data: MessageSequence, reply: MessageSequence, options: MessageOption,
         callback: Callback1Argument<RequestResult>): Unit
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func registerDeathRecipient(recipient: DeathRecipient, flags: Int32): Unit
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func unregisterDeathRecipient(recipient: DeathRecipient, flags: Int32): Unit
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func getDescriptor(): String
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

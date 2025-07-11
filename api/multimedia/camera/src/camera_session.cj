@@ -28,7 +28,7 @@ import std.sync.*
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -41,7 +41,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -60,7 +60,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -80,7 +80,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -106,7 +106,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -129,7 +129,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -152,7 +152,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -178,7 +178,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -202,7 +202,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -223,7 +223,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -241,7 +241,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -259,7 +259,7 @@ sealed interface Session {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -292,7 +292,7 @@ func getCameraOutputType(cameraOutput: CameraOutput): Int32 {
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -327,7 +327,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -346,7 +346,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -365,7 +365,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -381,7 +381,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -398,7 +398,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @since 11
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -414,7 +414,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -430,7 +430,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -446,7 +446,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -461,7 +461,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -478,7 +478,7 @@ public class PhotoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -513,7 +513,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -532,7 +532,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -551,7 +551,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -567,7 +567,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -584,7 +584,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @since 11
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -600,7 +600,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -616,7 +616,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -632,7 +632,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -647,7 +647,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -664,7 +664,7 @@ public class VideoSession <: RemoteDataLite & Session & Flash & AutoExposure & F
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -685,7 +685,7 @@ public class SecureSession <: RemoteDataLite & Session & Flash & AutoExposure & 
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -707,7 +707,7 @@ public class SecureSession <: RemoteDataLite & Session & Flash & AutoExposure & 
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -723,7 +723,7 @@ public class SecureSession <: RemoteDataLite & Session & Flash & AutoExposure & 
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -740,7 +740,7 @@ public class SecureSession <: RemoteDataLite & Session & Flash & AutoExposure & 
      * @since 11
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -756,7 +756,7 @@ public class SecureSession <: RemoteDataLite & Session & Flash & AutoExposure & 
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -771,7 +771,7 @@ public class SecureSession <: RemoteDataLite & Session & Flash & AutoExposure & 
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]

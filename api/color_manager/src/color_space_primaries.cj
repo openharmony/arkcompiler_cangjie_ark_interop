@@ -20,8 +20,6 @@ import ohos.labels.*
 
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true,
     syscap: "SystemCapability.Graphic.Graphic2D.ColorManager.Core"
 ]

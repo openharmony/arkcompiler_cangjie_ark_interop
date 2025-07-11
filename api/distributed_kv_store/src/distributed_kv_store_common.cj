@@ -21,85 +21,85 @@ import ohos.base.*
 import ohos.ffi.*
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public let MAX_KEY_LENGTH: Int64 = 1024
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public let MAX_VALUE_LENGTH: Int64 = 4194303
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public let MAX_KEY_LENGTH_DEVICE: Int64 = 896
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public let MAX_STORE_ID_LENGTH: Int64 = 128
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public let MAX_QUERY_LENGTH: Int64 = 512000
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public let MAX_BATCH_SIZE: Int64 = 128
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public enum ValueType <: ToString {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     STRING(String)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     INTEGER(Int32)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     FLOAT(Float32)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     BYTE_ARRAY(Array<Byte>)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     BOOLEAN(Bool)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -107,7 +107,7 @@ public enum ValueType <: ToString {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -125,7 +125,7 @@ public enum ValueType <: ToString {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
@@ -134,7 +134,7 @@ public class KVManagerConfig {
     let bundleName: String
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -157,31 +157,31 @@ enum KVStoreType {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public enum SecurityLevel {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     S1
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     S2
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     S3
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -199,7 +199,7 @@ public enum SecurityLevel {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -215,31 +215,31 @@ public enum SecurityLevel {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
 ]
 public class FieldNode {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
     public var nullable: Bool = true
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
     public var default: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
     public var type_: Int32 = 0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -249,31 +249,31 @@ public class FieldNode {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
 ]
 public class Schema {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
     public var root: FieldNode = FieldNode("undefined")
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
     public var indexes: Array<String> = []
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
     public var mode: Int32 = 0
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
     ]
@@ -281,7 +281,7 @@ public class Schema {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
@@ -293,7 +293,7 @@ public class Options {
     let securityLevel: SecurityLevel
     let schema: Schema
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -309,25 +309,25 @@ public class Options {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
 public class Entry <: ToString {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     public var key: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
     public var value: ValueType
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -336,7 +336,7 @@ public class Entry <: ToString {
         this.value = value
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]

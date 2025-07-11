@@ -36,7 +36,7 @@ func getErrorMsg(code: Int32): String {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
@@ -60,7 +60,7 @@ public func getValue<T>(context: StageContext, name: T, defValue: String): Strin
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]

@@ -26,9 +26,7 @@ import ohos.base.*
  * @relation enum TimeType
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.MiscServices.Time"
 ]
@@ -39,9 +37,7 @@ public enum TimeType {
      * @relation STARTUP
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]
@@ -52,9 +48,7 @@ public enum TimeType {
      * @relation ACTIVE
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.MiscServices.Time"
     ]

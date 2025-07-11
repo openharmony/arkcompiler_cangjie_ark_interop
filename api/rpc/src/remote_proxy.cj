@@ -25,7 +25,7 @@ import ohos.labels.*
 let CALLBACK_MANAGER = HashMap<Int64, DeathRecipient>()
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
@@ -39,7 +39,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -53,7 +53,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -67,7 +67,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -82,7 +82,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -96,7 +96,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
      * @syscap SystemCapability.Communication.IPC.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -110,7 +110,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
         releaseFFIData(myDataId)
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -127,7 +127,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
         checkRet(errCode)
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -140,7 +140,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
         return descriptor
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -155,7 +155,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
         }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -180,7 +180,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
         return (-1, false)
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -188,7 +188,7 @@ public class RemoteProxy <: RemoteDataLite & IRemoteObject {
         return unsafe { FfiRpcRemoteProxyIsObjectDead(getID()) }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

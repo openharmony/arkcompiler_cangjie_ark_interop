@@ -25,73 +25,55 @@ import std.collection.*
  * Defines an HTTP request method.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum RequestMethod {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Options
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Get
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Head
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Post
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Put
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Delete
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Trace
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -99,7 +81,7 @@ public enum RequestMethod {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -122,433 +104,325 @@ public enum RequestMethod {
  * Enumerates the response codes for an HTTP request.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum ResponseCode {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Ok
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Created
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Accepted
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotAuthoritative
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NoContent
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Reset
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Partial
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     MultChoice
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     MovedPerm
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     MovedTemp
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     SeeOther
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotModified
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     UseProxy
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     BadRequest
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Unauthorized
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     PaymentRequired
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Forbidden
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotFound
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     BadMethod
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotAcceptable
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     ProxyAuth
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     ClientTimeout
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Conflict
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Gone
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     LengthRequired
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     PreconFailed
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     EntityTooLarge
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     ReqTooLong
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     UnsupportedType
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     RequestedRangeNotSatisfiable
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     ExpectationFailed
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Teapot
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     MisdirectedRequest
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     UnprocessableEntity
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Locked
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     FailedDependency
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     TooEarly
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     UpgradeRequired
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     PreconditionRequired
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     TooManyRequests
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     RequestHeaderFieldsTooLarge
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     UnavailableForLegalReasons
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     InternalError
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotImplemented
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     BadGateway
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Unavailable
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     GatewayTimeout
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Version
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     VariantAlsoNegotiates
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     InsufficientStorage
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     LoopDetected
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotExtended
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -556,7 +430,7 @@ public enum ResponseCode {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -620,7 +494,7 @@ public enum ResponseCode {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -688,33 +562,25 @@ public enum ResponseCode {
  * Supported protocols.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum HttpProtocol {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Http1_1
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Http2
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -736,25 +602,19 @@ public enum HttpProtocol {
  * 3 is not set
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum HttpDataType {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     StringValue
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -779,19 +639,19 @@ public enum HttpDataType {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum HttpData <: ToString {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     StringData(String)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -812,7 +672,7 @@ public enum HttpData <: ToString {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -826,25 +686,25 @@ public enum HttpData <: ToString {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum UsingProxy {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     NotUse
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     UseDefault
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -853,29 +713,25 @@ public enum UsingProxy {
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public enum CertType {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Pem
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     Der
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -883,7 +739,7 @@ public enum CertType {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -901,17 +757,13 @@ public enum CertType {
  * Specifies the type and value range of the optional parameters in the HTTP request.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class HttpRequestOptions {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -919,9 +771,7 @@ public class HttpRequestOptions {
 
     //Additional data of the request.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -929,9 +779,7 @@ public class HttpRequestOptions {
 
     // Data type to be returned. If this parameter is set, the system preferentially returns the specified type.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -939,9 +787,7 @@ public class HttpRequestOptions {
 
     // default true
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -949,9 +795,7 @@ public class HttpRequestOptions {
 
     // default 1
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -959,9 +803,7 @@ public class HttpRequestOptions {
 
     // default is 'content-type': 'application/json'
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -969,9 +811,7 @@ public class HttpRequestOptions {
 
     // The default value is 60,000, in ms.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -979,9 +819,7 @@ public class HttpRequestOptions {
 
     // The default value is 60,000, in ms.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -989,9 +827,7 @@ public class HttpRequestOptions {
 
     // default is automatically specified by the system.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1000,9 +836,7 @@ public class HttpRequestOptions {
     // If this parameter is set as type of boolean, the system will use default proxy or not use proxy.
     // If this parameter is set as type of HttpProxy, the system will use the specified HttpProxy.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1011,9 +845,7 @@ public class HttpRequestOptions {
     // If this parameter is set, the system will use ca path specified by user,
     // or else use preset ca by the system.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1023,8 +855,7 @@ public class HttpRequestOptions {
     // HTTP standard (RFC 7233 section 3.1) allows servers to ignore range requests.
     // For HTTP PUT uploads this option should not be used, since it may conflict with other options.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1034,8 +865,7 @@ public class HttpRequestOptions {
     // HTTP standard (RFC 7233 section 3.1) allows servers to ignore range requests.
     // For HTTP PUT uploads this option should not be used, since it may conflict with other options.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1043,8 +873,7 @@ public class HttpRequestOptions {
 
     // Support the application to pass in client certificates, allowing the server to verify the client's identity.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1054,8 +883,7 @@ public class HttpRequestOptions {
     // The parameter must be URL-encoded in the following format: "https://host:port/path".
     // It MUST specify an HTTPS URL.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1065,8 +893,7 @@ public class HttpRequestOptions {
     // Multiple DNS resolution servers can be set up, with a maximum of 3 servers.
     // Only take the first three if there are more than three.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1075,8 +902,7 @@ public class HttpRequestOptions {
     // The maximum limit of the response body. The default value is 5 * 1024 * 1024, in Byte.
     // The maximum value is 100 * 1024 *1024, in Byte.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1086,17 +912,14 @@ public class HttpRequestOptions {
     // forms and by the SMTP and IMAP protocols to provide
     // the email data to send/upload.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var multiFormDataList: ?Array<MultiFormData> = None
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1130,58 +953,44 @@ public class HttpRequestOptions {
  * Defines the response to an HTTP request.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class HttpResponse <: ToString {
     // result can be a string (API 6) or an ArrayBuffer(API 8). Object is deprecated from API 8.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var result: HttpData
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var resultType: HttpDataType
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var responseCode: ResponseCode
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var header: HashMap<String, String>
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var cookies: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1189,8 +998,7 @@ public class HttpResponse <: ToString {
 
     //The time taken of various stages of HTTP request.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1227,7 +1035,7 @@ public class HttpResponse <: ToString {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1240,16 +1048,14 @@ public class HttpResponse <: ToString {
  * Counting the time taken of various stages of HTTP request.
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class PerformanceTiming <: ToString {
     // Time taken from startup to DNS resolution completion, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1257,8 +1063,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from startup to TCP connection completion, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1266,8 +1071,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from startup to TLS connection completion, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1275,8 +1079,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from startup to start sending the first byte, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1284,8 +1087,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from startup to receiving the first byte, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1293,8 +1095,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from startup to the completion of the request, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1302,8 +1103,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from startup to completion of all redirection steps, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1311,8 +1111,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from HTTP request to header completion, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1320,8 +1119,7 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from HTTP Request to body completion, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1329,16 +1127,14 @@ public class PerformanceTiming <: ToString {
 
     // Time taken from HTTP Request to callback to the application, in milliseconds.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var totalTiming: Float64
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1372,7 +1168,7 @@ public class PerformanceTiming <: ToString {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1396,18 +1192,14 @@ public class PerformanceTiming <: ToString {
  * This interface is used to obtain the progress information of file upload or download.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class DataReceiveProgressInfo {
     // Number of data bytes received.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1415,18 +1207,14 @@ public class DataReceiveProgressInfo {
 
     // Total number of bytes to receive.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var totalSize: UInt32
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1445,18 +1233,14 @@ public class DataReceiveProgressInfo {
  * This interface is used to monitor the progress of sending data.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class DataSendProgressInfo {
     // Used to specify the data size to be sent.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1464,18 +1248,14 @@ public class DataSendProgressInfo {
 
     // Total number of bytes to send.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var totalSize: UInt32
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1496,16 +1276,14 @@ public class DataSendProgressInfo {
  * and passphrase (keyPassword).
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class ClientCert {
     // The path to the client certificate file.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1513,8 +1291,7 @@ public class ClientCert {
 
     // The path of the client certificate private key file.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1522,8 +1299,7 @@ public class ClientCert {
 
     // The type of the client certificate.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1531,16 +1307,14 @@ public class ClientCert {
 
     // Password required to use the client certificate private key.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var keyPassword: ?String = None
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1572,16 +1346,14 @@ public class ClientCert {
  * Represents the properties of a form object.
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetStack"
 ]
 public class MultiFormData {
     // MIME name for the data field.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1589,8 +1361,7 @@ public class MultiFormData {
 
     // Content type of the data field.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1598,8 +1369,7 @@ public class MultiFormData {
 
     // Remote file name for the data field.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1607,8 +1377,7 @@ public class MultiFormData {
 
     // This parameter sets a mime part's body content from memory data.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
@@ -1619,16 +1388,14 @@ public class MultiFormData {
     // If data is empty, filePath must be set.
     // If data has a value, filePath does not take effect.
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]
     public var filePath: ?String = None
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetStack"
     ]

@@ -104,7 +104,7 @@ foreign {
  * @relation createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise<PixelMap>
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -129,7 +129,7 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
  * @relation interface PixelMap
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.Core"
 ]
@@ -151,7 +151,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation readonly isEditable: boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -174,7 +174,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation readonly isEditable: boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -195,7 +195,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation release(): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -215,7 +215,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation readPixelsToBuffer(dst: ArrayBuffer): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -235,7 +235,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation writeBufferToPixels(src: ArrayBuffer): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -255,7 +255,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation getImageInfo(): Promise<ImageInfo>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -279,7 +279,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation getBytesNumberPerRow(): number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -299,7 +299,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation getPixelBytesNumber(): number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -319,7 +319,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation getDensity():number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -339,7 +339,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation opacity(rate: number): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -358,7 +358,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation scale(x: number, y: number): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -377,7 +377,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation translate(x: number, y: number): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -395,7 +395,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation rotate(angle: number): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -414,7 +414,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation flip(horizontal: boolean, vertical: boolean): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -432,7 +432,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation crop(region: Region): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -450,7 +450,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation writePixels(area: PositionArea): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -474,7 +474,7 @@ public class PixelMap <: RemoteDataLite {
      * readPixels(area: PositionArea): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -499,7 +499,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation createAlphaPixelmap(): PixelMap
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -521,7 +521,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -541,7 +541,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation getColorSpace(): colorSpaceManager.ColorSpaceManager
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]
@@ -565,7 +565,7 @@ public class PixelMap <: RemoteDataLite {
      * @relation applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.Core"
     ]

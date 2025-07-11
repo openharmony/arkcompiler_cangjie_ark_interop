@@ -31,8 +31,7 @@ foreign func FfiOHOSFILEUriToString(id: Int64): CString
 foreign func FfiOHOSFILEUriGetUriFromPath(cPath: CString): CString
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.AppFileService"
 ]
@@ -46,8 +45,7 @@ public class FileUri <: RemoteDataLite & ToString {
      * @brief constructor(uriOrPath: string)
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.AppFileService"
     ]
@@ -81,8 +79,7 @@ public class FileUri <: RemoteDataLite & ToString {
      * @brief readonly path: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.AppFileService"
     ]
@@ -105,8 +102,7 @@ public class FileUri <: RemoteDataLite & ToString {
      * @brief readonly name: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.AppFileService"
     ]
@@ -128,8 +124,7 @@ public class FileUri <: RemoteDataLite & ToString {
      * @brief toString(): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.AppFileService"
     ]
@@ -150,8 +145,7 @@ public class FileUri <: RemoteDataLite & ToString {
      * @brief getUriFromPath(path: string): string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.AppFileService"
     ]

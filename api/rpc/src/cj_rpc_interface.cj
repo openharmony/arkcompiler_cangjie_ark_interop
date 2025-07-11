@@ -19,19 +19,19 @@ import ohos.labels.*
 import ohos.ffi.*
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public interface Parcelable {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func marshalling(dataOut: MessageSequence): Bool
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -39,13 +39,13 @@ public interface Parcelable {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public interface IRemoteBroker {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -53,13 +53,13 @@ public interface IRemoteBroker {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public abstract class DeathRecipient {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

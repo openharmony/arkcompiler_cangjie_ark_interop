@@ -91,9 +91,7 @@ func throwIfNotSuccess(code: Int32, className: String, funcName: String): Unit {
  * @relation interface AVFileDescriptor
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.Core"
 ]
@@ -105,9 +103,7 @@ public class AVFileDescriptor {
      * @relation fd: number
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -119,9 +115,7 @@ public class AVFileDescriptor {
      * @relation offset?: number
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -133,18 +127,14 @@ public class AVFileDescriptor {
      * @relation length?: number
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
     public var length: ?Int64
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -159,9 +149,7 @@ public class AVFileDescriptor {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -180,7 +168,7 @@ public class AVFileDescriptor {
  */
 @Derive[Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.Core"
 ]
@@ -190,7 +178,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
      * @syscap SystemCapability.Multimedia.Media.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -201,7 +189,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -212,7 +200,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -223,7 +211,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -234,7 +222,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
          * @syscap SystemCapability.Multimedia.Media.Core
          */
         @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -253,7 +241,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -269,7 +257,7 @@ public enum PlaybackInfoKey <: ToString & Hashable {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.Core"
     ]
@@ -279,27 +267,27 @@ public enum PlaybackInfoKey <: ToString & Hashable {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true
 ]
 public enum ValueType {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     Int32Value(Int32)
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     Int64Value(Int64)
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     Float64Value(Float64)
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true
     ]
     StringValue(String)
@@ -312,7 +300,7 @@ public enum ValueType {
  * @relation interface PixelMapParams
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
@@ -324,7 +312,7 @@ public class PixelMapParams {
      * @relation width?: number
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
@@ -336,14 +324,14 @@ public class PixelMapParams {
      * @relation height?: number
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     public var height: Int32
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
@@ -355,31 +343,31 @@ public class PixelMapParams {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
 ]
 public enum AVImageQueryOptions {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     AVImageQueryNextSync
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     AVImageQueryPreviousSync
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]
     AVImageQueryClosestSync
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Media.AVImageGenerator"
     ]

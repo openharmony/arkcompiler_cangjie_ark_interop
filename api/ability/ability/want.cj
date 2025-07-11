@@ -50,9 +50,7 @@ foreign func FFICJWantParseUri(uri: CString): WantHandle
 foreign func FFICJWantAddEntity(want: WantHandle, entity: CString): Unit
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
@@ -61,94 +59,77 @@ public class Want {
     private var paramJsonObj_: JsonObject
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var deviceId: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var bundleName: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var abilityName: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var moduleName: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var flags: UInt32
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var uri: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var action: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var entities: Array<String>
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var `type`: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var parameters: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]

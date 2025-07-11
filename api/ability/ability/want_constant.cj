@@ -20,8 +20,7 @@ import ohos.labels.*
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
@@ -31,8 +30,7 @@ public enum Params {
      * mission stack
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -43,8 +41,7 @@ public enum Params {
          * Indicates the param of ability failure restart recovery identification
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -55,8 +52,7 @@ public enum Params {
          * Indicates the param of extra content title
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -67,8 +63,7 @@ public enum Params {
          * Indicates the param of extra shared abstract
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -79,8 +74,7 @@ public enum Params {
          * Indicates the param of extra shareURL
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -93,8 +87,7 @@ public enum Params {
          * and the system will automatically flow the page stack information by default.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -107,8 +100,7 @@ public enum Params {
          * and the system will exit the source application by default.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -116,8 +108,7 @@ public enum Params {
     | ...
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -137,8 +128,7 @@ public enum Params {
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
@@ -147,8 +137,7 @@ public enum Flags {
      * Indicates the grant to perform read operations on the URI.
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -159,8 +148,7 @@ public enum Flags {
          * Indicates the grant to perform write operations on the URI.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -171,8 +159,7 @@ public enum Flags {
          * Indicates the grant for possible persisting on the URI.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -183,8 +170,7 @@ public enum Flags {
          * Install the specified ability if it's not installed.
          */
         @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -195,7 +181,7 @@ public enum Flags {
          * Indicates that if implicit start ability couldn't match any application, no tip dialog will be pulled up.
          */
         @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -203,8 +189,7 @@ public enum Flags {
     | ...
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]

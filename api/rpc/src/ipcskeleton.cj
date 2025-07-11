@@ -22,13 +22,13 @@ const REMOTE_OBJECT: Int32 = 0
 const REMOTE_PROXY: Int32 = 1
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public class IPCSkeleton {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -46,7 +46,7 @@ public class IPCSkeleton {
         }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -54,7 +54,7 @@ public class IPCSkeleton {
         return unsafe { FfiRpcIPCSkeletonGetCallingPid() }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -62,7 +62,7 @@ public class IPCSkeleton {
         return unsafe { FfiRpcIPCSkeletonGetCallingUid() }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -70,7 +70,7 @@ public class IPCSkeleton {
         return unsafe { FfiRpcIPCSkeletonGetCallingTokenId() }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -81,7 +81,7 @@ public class IPCSkeleton {
         return id
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -92,7 +92,7 @@ public class IPCSkeleton {
         return id
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
@@ -100,7 +100,7 @@ public class IPCSkeleton {
         return unsafe { FfiRpcIPCSkeletonIsLocalCalling() }
     }
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]

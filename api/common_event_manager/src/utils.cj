@@ -32,85 +32,73 @@ const ARRAYF64_TYPE: Int8 = 9
 const ARRAYFD_TYPE: Int8 = 10
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public enum ValueType {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     Int32Value(Int32)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     Float64Value(Float64)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     StringValue(String)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     BoolValue(Bool)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     FD(Int32)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ArrayString(Array<String>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ArrayInt32(Array<Int32>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ArrayInt64(Array<Int64>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ArrayBool(Array<Bool>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ArrayFloat64(Array<Float64>)
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]

@@ -36,7 +36,7 @@ import ohos.labels.*
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    12,
+    21,
     deprecated: 19,
     permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,

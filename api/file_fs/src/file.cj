@@ -20,9 +20,7 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
@@ -36,9 +34,7 @@ public class File <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -49,7 +45,7 @@ public class File <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -63,7 +59,7 @@ public class File <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -77,7 +73,7 @@ public class File <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -90,7 +86,7 @@ public class File <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -106,7 +102,7 @@ public class File <: RemoteDataLite {
      *  @brief getParent(): string
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]

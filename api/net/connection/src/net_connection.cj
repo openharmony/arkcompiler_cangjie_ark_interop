@@ -32,9 +32,7 @@ let CONNECTION_LOG = HilogChannel(0, 0xD0015B0, "CJ-net-Connection")
  * @returns { NetConnection } the NetConnection of the NetSpecifier.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -63,8 +61,7 @@ public func createNetConnection(netSpecifier!: ?NetSpecifier = None, timeout!: U
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -95,7 +92,7 @@ public func getDefaultNet(): NetHandle {
  * @syscap SystemCapability.Communication.NetManager.Core
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -125,7 +122,7 @@ public func getDefaultHttpProxy(): HttpProxy {
  * @brief getAppNetSync(): NetHandle;
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -157,7 +154,7 @@ public func getAppNet(): NetHandle {
  * @brief setAppNet(netHandle: NetHandle): Promise<void>;
  */
 @!APILevel[
-    12,
+    21,
     permission: "ohos.permission.INTERNET",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -183,7 +180,7 @@ public func setAppNet(netHandle: NetHandle): Unit {
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -216,7 +213,7 @@ public func getAllNets(): Array<NetHandle> {
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -253,8 +250,7 @@ public func getConnectionProperties(netHandle: NetHandle): ConnectionProperties 
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -287,7 +283,7 @@ public func getNetCapabilities(netHandle: NetHandle): NetCapabilities {
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -314,8 +310,7 @@ public func isDefaultNetMetered(): Bool {
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -344,7 +339,7 @@ public func hasDefaultNet(): Bool {
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO & ohos.permission.INTERNET",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -371,7 +366,7 @@ public func reportNetConnected(netHandle: NetHandle): Unit {
  * @throws { BusinessException } 2100003 - System internal error.
  */
 @!APILevel[
-    12,
+    21,
     permission: "ohos.permission.GET_NETWORK_INFO & ohos.permission.INTERNET",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -400,8 +395,7 @@ public func reportNetDisconnected(netHandle: NetHandle): Unit {
  * @brief getAddressesByName(host: string): Promise<Array<NetAddress>>;
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     permission: "ohos.permission.INTERNET",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
@@ -411,9 +405,7 @@ public func getAddressesByName(host: String): Array<NetAddress> {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -428,9 +420,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.permission.GET_NETWORK_INFO",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
@@ -446,9 +436,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -463,9 +451,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -482,9 +468,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -501,9 +485,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -522,7 +504,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -542,9 +524,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -561,9 +541,7 @@ public class NetConnection <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -580,9 +558,7 @@ public class NetConnection <: RemoteDataLite {
  */
 @Derive[ToString]
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
@@ -590,9 +566,7 @@ public class NetHandle {
     // Network ID, a value of 0 means that there is no default network,
     // and the other values must be greater than or equal to 100.
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -610,8 +584,7 @@ public class NetHandle {
      * @throws { BusinessException } 2100003 - System internal error.
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
@@ -652,8 +625,7 @@ public class NetHandle {
      * @throws { BusinessException } 2100003 - System internal error.
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]

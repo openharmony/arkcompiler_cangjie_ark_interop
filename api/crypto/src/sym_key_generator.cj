@@ -38,9 +38,7 @@ foreign {
  * @relation createSymKeyGenerator(algName: string): SymKeyGenerator
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
 ]
@@ -61,9 +59,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator {
  * @relation interface SymKeyGenerator
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
 ]
@@ -86,9 +82,7 @@ public class SymKeyGenerator <: RemoteDataLite {
      * @relation algName : string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
     ]
@@ -106,9 +100,7 @@ public class SymKeyGenerator <: RemoteDataLite {
      * @relation generateSymKeySync(): SymKey;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
     ]
@@ -131,9 +123,7 @@ public class SymKeyGenerator <: RemoteDataLite {
      * @relation convertKeySync(key: DataBlob): SymKey;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
     ]

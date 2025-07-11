@@ -26,7 +26,7 @@ import ohos.ffi.*
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -38,7 +38,7 @@ sealed interface CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]

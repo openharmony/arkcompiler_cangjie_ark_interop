@@ -24,8 +24,7 @@ import ohos.labels.*
 import ohos.base.*
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
@@ -48,8 +47,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief  query(predicates: RdbPredicates, columns?: Array<string>):Promise<ResultSet>
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -91,8 +89,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief delete(predicates: RdbPredicates, callback: AsyncCallback<number>):void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -110,8 +107,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief backup(destName:string, callback: AsyncCallback<void>):void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -133,8 +129,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief restore(srcName:string, callback: AsyncCallback<void>):void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -156,8 +151,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief commit():void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -170,8 +164,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief rollBack():void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -184,8 +177,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief beginTransaction():void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -198,8 +190,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief executeSql(sql: string, callback: AsyncCallback<void>):void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -222,8 +213,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief  insert(table: string, values: ValuesBucket):Promise<number>
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -241,8 +231,7 @@ public class RdbStore <: RemoteDataLite {
      *  callback: AsyncCallback<number>): void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -273,8 +262,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief  update(values: ValuesBucket, predicates: RdbPredicates):Promise<number>
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -287,8 +275,7 @@ public class RdbStore <: RemoteDataLite {
      *  callback: AsyncCallback<number>):void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -312,8 +299,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief batchInsert(table: string, values: Array<ValuesBucket>):Promise<number>
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -362,8 +348,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief  querySql(sql: string, bindArgs?: Array<ValueType>):Promise<ResultSet>
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -409,8 +394,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void>):void
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -465,7 +449,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief on(event: string, interProcess: boolean, observer: Callback<void>): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -508,7 +492,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief off(event: string, interProcess: boolean, observer?: Callback<void>): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -531,7 +515,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief off(event: string, interProcess: boolean, observer?: Callback<void>): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -585,7 +569,7 @@ public class RdbStore <: RemoteDataLite {
      * @brief emit(event: string): void
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]

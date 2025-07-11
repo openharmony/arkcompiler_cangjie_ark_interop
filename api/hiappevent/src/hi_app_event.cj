@@ -43,15 +43,13 @@ foreign func FfiOHOSHiAppEventAddWatcher(Watcher: RetWatcher): RetDataI64
 foreign func FfiOHOSHiAppEventRemoveWatcher(watcher: RetWatcher): Int32
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiAppEvent"
 ]
 public class HiAppEvent {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -67,8 +65,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -84,8 +81,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -101,8 +97,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -116,8 +111,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -138,8 +132,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -160,8 +153,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -182,8 +174,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -204,8 +195,7 @@ public class HiAppEvent {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -229,8 +219,7 @@ public class HiAppEvent {
      * @brief addWatcher(watcher: Watcher): AppEventPackageHolder
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]
@@ -260,8 +249,7 @@ public class HiAppEvent {
      * @brief removeWatcher(watcher: Watcher): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiAppEvent"
     ]

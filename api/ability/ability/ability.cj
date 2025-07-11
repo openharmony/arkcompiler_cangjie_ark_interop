@@ -22,8 +22,7 @@ import ohos.labels.*
 class AbilityImpl {}
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -32,8 +31,7 @@ abstract sealed class Ability <: FFIData {
     private let impl_ = AbilityImpl()
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

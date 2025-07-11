@@ -37,9 +37,7 @@ foreign {
  * @relation interface SymKey extends Key
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
 ]
@@ -62,9 +60,7 @@ public class SymKey <: RemoteDataLite & Key {
      * @relation algName : string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key"
     ]
@@ -81,9 +77,7 @@ public class SymKey <: RemoteDataLite & Key {
      * @relation format: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key"
     ]
@@ -109,9 +103,7 @@ public class SymKey <: RemoteDataLite & Key {
      * @relation algName : getEncoded(): DataBlob
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key"
     ]
@@ -136,9 +128,7 @@ public class SymKey <: RemoteDataLite & Key {
      * @relation clearMem(): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key.SymKey"
     ]

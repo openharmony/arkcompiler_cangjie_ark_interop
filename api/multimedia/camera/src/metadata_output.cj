@@ -28,7 +28,7 @@ import std.sync.*
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -47,7 +47,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -64,7 +64,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -79,7 +79,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -96,7 +96,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -128,7 +128,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -160,7 +160,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -182,7 +182,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -196,7 +196,7 @@ public class MetadataOutput <: RemoteDataLite & CameraOutput {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]

@@ -21,17 +21,13 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventBase {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -39,9 +35,7 @@ public abstract class EventBase {
         (this as Event0).getOrThrow({=> BusinessException(ERR_NOT_SUPPOERTED, "Capability not supported.")})
     }
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -49,9 +43,7 @@ public abstract class EventBase {
         (this as Event1<A>).getOrThrow({=> BusinessException(ERR_NOT_SUPPOERTED, "Capability not supported.")})
     }
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -59,9 +51,7 @@ public abstract class EventBase {
         (this as Event2<A1, A2>).getOrThrow({=> BusinessException(ERR_NOT_SUPPOERTED, "Capability not supported.")})
     }
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -69,9 +59,7 @@ public abstract class EventBase {
         (this as Event3<A1, A2, A3>).getOrThrow({=> BusinessException(ERR_NOT_SUPPOERTED, "Capability not supported.")})
     }
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -80,9 +68,7 @@ public abstract class EventBase {
             {=> BusinessException(ERR_NOT_SUPPOERTED, "Capability not supported.")})
     }
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -93,17 +79,13 @@ public abstract class EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventCallBack0 {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -111,17 +93,13 @@ public abstract class EventCallBack0 {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventCallBack1<A> {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -129,17 +107,13 @@ public abstract class EventCallBack1<A> {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventCallBack2<A1, A2> {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -147,17 +121,13 @@ public abstract class EventCallBack2<A1, A2> {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventCallBack3<A1, A2, A3> {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -165,17 +135,13 @@ public abstract class EventCallBack3<A1, A2, A3> {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventCallBack4<A1, A2, A3, A4> {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -183,17 +149,13 @@ public abstract class EventCallBack4<A1, A2, A3, A4> {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class EventCallBack5<A1, A2, A3, A4, A5> {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -201,9 +163,7 @@ public abstract class EventCallBack5<A1, A2, A3, A4, A5> {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -211,9 +171,7 @@ public class Event0 <: EventBase {
     private let allFuncs: ArrayList<EventCallBack0> = ArrayList()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -231,9 +189,7 @@ public class Event0 <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -253,9 +209,7 @@ public class Event0 <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -264,9 +218,7 @@ public class Event0 <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -278,9 +230,7 @@ public class Event0 <: EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -288,9 +238,7 @@ public class Event1<A> <: EventBase {
     private let allFuncs: ArrayList<EventCallBack1<A>> = ArrayList()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -308,9 +256,7 @@ public class Event1<A> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -330,9 +276,7 @@ public class Event1<A> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -341,9 +285,7 @@ public class Event1<A> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -355,9 +297,7 @@ public class Event1<A> <: EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -365,9 +305,7 @@ public class Event2<A1, A2> <: EventBase {
     private let allFuncs: ArrayList<EventCallBack2<A1, A2>> = ArrayList()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -385,9 +323,7 @@ public class Event2<A1, A2> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -407,9 +343,7 @@ public class Event2<A1, A2> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -418,9 +352,7 @@ public class Event2<A1, A2> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -432,9 +364,7 @@ public class Event2<A1, A2> <: EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -442,9 +372,7 @@ public class Event3<A1, A2, A3> <: EventBase {
     private let allFuncs: ArrayList<EventCallBack3<A1, A2, A3>> = ArrayList()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -462,9 +390,7 @@ public class Event3<A1, A2, A3> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -484,9 +410,7 @@ public class Event3<A1, A2, A3> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -495,9 +419,7 @@ public class Event3<A1, A2, A3> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -509,9 +431,7 @@ public class Event3<A1, A2, A3> <: EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -519,9 +439,7 @@ public class Event4<A1, A2, A3, A4> <: EventBase {
     private let allFuncs: ArrayList<EventCallBack4<A1, A2, A3, A4>> = ArrayList()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -539,9 +457,7 @@ public class Event4<A1, A2, A3, A4> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -561,9 +477,7 @@ public class Event4<A1, A2, A3, A4> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -572,9 +486,7 @@ public class Event4<A1, A2, A3, A4> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -586,9 +498,7 @@ public class Event4<A1, A2, A3, A4> <: EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -596,9 +506,7 @@ public class Event5<A1, A2, A3, A4, A5> <: EventBase {
     private let allFuncs: ArrayList<EventCallBack5<A1, A2, A3, A4, A5>> = ArrayList()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -616,9 +524,7 @@ public class Event5<A1, A2, A3, A4, A5> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -638,9 +544,7 @@ public class Event5<A1, A2, A3, A4, A5> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -649,9 +553,7 @@ public class Event5<A1, A2, A3, A4, A5> <: EventBase {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -663,9 +565,7 @@ public class Event5<A1, A2, A3, A4, A5> <: EventBase {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -673,9 +573,7 @@ public class EventHub {
     private static var allEvents: HashMap<String, EventBase> = HashMap<String, EventBase>()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -692,9 +590,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -711,9 +607,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -730,9 +624,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -749,9 +641,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -768,9 +658,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -787,9 +675,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -798,9 +684,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -809,9 +693,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -820,9 +702,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -831,9 +711,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -842,9 +720,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -854,9 +730,7 @@ public class EventHub {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

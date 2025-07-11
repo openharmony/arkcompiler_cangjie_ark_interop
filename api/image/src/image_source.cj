@@ -84,7 +84,7 @@ foreign {
  * @relation createImageSource(uri: string): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -111,7 +111,7 @@ public func createImageSource(uri: String): ImageSource {
  * @relation createImageSource(uri: string, options: SourceOptions): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -137,7 +137,7 @@ public func createImageSource(uri: String, options: SourceOptions): ImageSource 
  * @relation createImageSource(fd: number): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -158,7 +158,7 @@ public func createImageSource(fd: Int32): ImageSource {
  * @relation createImageSource(fd: number, options: SourceOptions): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -178,7 +178,7 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource {
  * @relation createImageSource(buf: ArrayBuffer): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -205,7 +205,7 @@ public func createImageSource(buf: Array<UInt8>): ImageSource {
  * @relation createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -233,7 +233,7 @@ public func createImageSource(buf: Array<UInt8>, options: SourceOptions): ImageS
  * @relation function createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -255,7 +255,7 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
  * @relation function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -279,7 +279,7 @@ public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions =
  * @relation interface ImageSource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageSource"
 ]
@@ -290,7 +290,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation readonly supportedFormats: Array<string>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -335,7 +335,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation getFrameCount(): Promise<number>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -354,7 +354,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation getImageInfo(index?: number): Promise<ImageInfo>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -380,7 +380,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -414,7 +414,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation modifyImageProperty(key: string, value: string): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -440,7 +440,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation updateData(buf: ArrayBuffer, isFinished: boolean, value: number, length: number): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -462,7 +462,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation createPixelMap(options?: DecodingOptions): Promise<PixelMap>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -499,7 +499,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -533,7 +533,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation getDelayTimeList(): Promise<Array<number>>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]
@@ -555,7 +555,7 @@ public class ImageSource <: RemoteDataLite {
      * @relation release(): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageSource"
     ]

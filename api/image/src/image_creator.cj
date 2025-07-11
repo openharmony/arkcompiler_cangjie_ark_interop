@@ -40,7 +40,7 @@ foreign {
  * @relation interface ImageCreator
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageCreator"
 ]
@@ -59,7 +59,7 @@ public class ImageCreator <: RemoteDataLite {
      * @relation readonly capacity: number;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageCreator"
     ]
@@ -77,7 +77,7 @@ public class ImageCreator <: RemoteDataLite {
      * @relation readonly format: ImageFormat;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageCreator"
     ]
@@ -95,7 +95,7 @@ public class ImageCreator <: RemoteDataLite {
      * @relation dequeueImage(): Promise<Image>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageCreator"
     ]
@@ -114,7 +114,7 @@ public class ImageCreator <: RemoteDataLite {
      * @relation queueImage(interface: Image): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageCreator"
     ]
@@ -128,7 +128,7 @@ public class ImageCreator <: RemoteDataLite {
      * @relation release(): Promise<void>;
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Image.ImageCreator"
     ]
@@ -145,7 +145,7 @@ public class ImageCreator <: RemoteDataLite {
  * @relation function createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator;
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Image.ImageCreator"
 ]

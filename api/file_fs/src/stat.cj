@@ -19,9 +19,7 @@ import ohos.ffi.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
@@ -35,8 +33,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -47,9 +44,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -60,8 +55,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -72,8 +66,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -84,9 +77,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -97,9 +88,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -110,9 +99,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -123,8 +110,7 @@ public class Stat <: RemoteDataLite {
     }
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -138,8 +124,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isBlockDevice(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -151,8 +136,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isCharacterDevice(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -164,9 +148,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isDirectory(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -178,8 +160,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isFIFO(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -191,9 +172,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isFile(): boolean
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -205,8 +184,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isSocket(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -218,8 +196,7 @@ public class Stat <: RemoteDataLite {
      *  @brief isSymbolicLink(): boolean
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]

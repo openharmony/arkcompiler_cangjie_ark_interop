@@ -27,9 +27,7 @@ import ohos.labels.*
  * @relation enum Result
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework"
 ]
@@ -40,9 +38,7 @@ public enum Result <: ToString {
      * @relation INVALID_PARAMS = 401,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -54,9 +50,7 @@ public enum Result <: ToString {
      * @relation NOT_SUPPORT = 801,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -68,9 +62,7 @@ public enum Result <: ToString {
      * @relation ERR_OUT_OF_MEMORY = 17620001,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -82,9 +74,7 @@ public enum Result <: ToString {
      * @relation ERR_RUNTIME_ERROR = 17620002,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -96,9 +86,7 @@ public enum Result <: ToString {
      * @relation ERR_CRYPTO_OPERATION = 17630001
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -110,9 +98,7 @@ public enum Result <: ToString {
      *
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -132,9 +118,7 @@ public enum Result <: ToString {
      *
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework"
     ]
@@ -175,9 +159,7 @@ func checkRet(errCode: Int32, message: String) {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -188,9 +170,7 @@ public enum CryptoMode {
      * @relation ENCRYPT_MODE = 0,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -202,9 +182,7 @@ public enum CryptoMode {
      * @relation DECRYPT_MODE = 1
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -227,9 +205,7 @@ public enum CryptoMode {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -240,9 +216,7 @@ public enum CipherSpecItem {
      * @relation OAEP_MD_NAME_STR = 100,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -254,9 +228,7 @@ public enum CipherSpecItem {
      * @relation OAEP_MGF_NAME_STR = 101,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -268,9 +240,7 @@ public enum CipherSpecItem {
      * @relation OAEP_MGF1_MD_STR = 102,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -282,9 +252,7 @@ public enum CipherSpecItem {
      * @relation OAEP_MGF1_PSRC_UINT8ARR = 103,
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]

@@ -26,7 +26,7 @@ import ohos.base.*
  * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -40,7 +40,7 @@ public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -64,7 +64,7 @@ public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -89,7 +89,7 @@ public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -111,7 +111,7 @@ public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -134,7 +134,7 @@ public class MediaAlbumChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]

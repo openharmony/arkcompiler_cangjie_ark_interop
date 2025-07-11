@@ -50,8 +50,7 @@ foreign {
  * @relation export interface CommonEventSubscriber
  */
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]

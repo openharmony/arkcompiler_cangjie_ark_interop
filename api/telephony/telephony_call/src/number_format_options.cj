@@ -59,19 +59,19 @@ protected func getErrorMsg(code: Int32): String {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Telephony.CallManager"
 ]
 public enum EmergencyNumberOptions {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     SlotIdOne
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -88,37 +88,37 @@ public enum EmergencyNumberOptions {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Telephony.CallManager"
 ]
 public enum CallState {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     CallStateUnknown
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     CallStateIdle
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     CallStateRinging
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     CallStateOffhook
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -126,7 +126,7 @@ public enum CallState {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
@@ -154,20 +154,20 @@ public enum CallState {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Telephony.CallManager"
 ]
 public class NumberFormatOptions {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]
     public let countryCode: String
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Telephony.CallManager"
     ]

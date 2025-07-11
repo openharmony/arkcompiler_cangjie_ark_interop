@@ -191,31 +191,27 @@ struct CJAtomicServiceOptions {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class OpenLinkOptions {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var appLinkingOnly: Bool
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var parameters: String
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -237,21 +233,19 @@ unsafe func toCJOpenLinkOptions(option: ?OpenLinkOptions): CJOpenLinkOptions {
 class StartOptionsImpl {}
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class StartOptions {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var windowMode: WindowMode = WindowModeUndefined
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -266,8 +260,7 @@ public open class StartOptions {
     private let impl_: StartOptionsImpl = StartOptionsImpl()
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -299,31 +292,27 @@ public open class StartOptions {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class AbilityResult {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var resultCode: Int32
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var want: Want
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
@@ -334,19 +323,19 @@ public class AbilityResult {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum ResultCode {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     ResultOk
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -373,20 +362,20 @@ public enum ResultCode {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class RequestResult {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var resultCode: ResultCode
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -401,9 +390,7 @@ public class RequestResult {
 type StageContext = CPointer<Unit>
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -414,9 +401,7 @@ public func getStageContext(abilityContext: UIAbilityContext): StageContext {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -429,9 +414,7 @@ public func getNapiValue(env: CPointer<Unit>, context: StageContext): CPointer<U
 class UIAbilityContextImpl {}
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -478,9 +461,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -494,9 +475,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -570,9 +549,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -584,8 +561,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -599,8 +575,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -671,9 +646,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -689,9 +662,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -766,7 +737,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -781,7 +752,7 @@ public open class UIAbilityContext <: Context {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

@@ -39,9 +39,7 @@ foreign {
  * @relation function createMd(algName: string): Md;
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.MessageDigest"
 ]
@@ -62,9 +60,7 @@ public func createMd(algName: String): Md {
  * @relation interface Md
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.MessageDigest"
 ]
@@ -87,9 +83,7 @@ public class Md <: RemoteDataLite {
      * @relation algName : string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.MessageDigest"
     ]
@@ -109,9 +103,7 @@ public class Md <: RemoteDataLite {
      * @relation updateSync(input: DataBlob): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.MessageDigest"
     ]
@@ -144,9 +136,7 @@ public class Md <: RemoteDataLite {
      * @relation digestSync(): DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.MessageDigest"
     ]
@@ -169,9 +159,7 @@ public class Md <: RemoteDataLite {
      * @relation getMdLength(): number;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.MessageDigest"
     ]

@@ -29,25 +29,19 @@ const EXCEPTION_SERVICE: Int32 = 13400003
 const EXCEPTION_OTHERS: Int32 = 13499999
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum Action <: ToString {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     DOWNLOAD
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -65,9 +59,7 @@ public enum Action <: ToString {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -89,24 +81,19 @@ public enum Action <: ToString {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum Mode <: ToString {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     BACKGROUND
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -124,9 +111,7 @@ public enum Mode <: ToString {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -156,33 +141,25 @@ public enum Mode <: ToString {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum Network <: ToString {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     ANY
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     WIFI
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -210,9 +187,7 @@ public enum Network <: ToString {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -227,7 +202,7 @@ public enum Network <: ToString {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -235,7 +210,7 @@ public enum BroadcastEvent {
     COMPLETE | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -250,17 +225,13 @@ public enum BroadcastEvent {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class FileSpec {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -269,9 +240,7 @@ public class FileSpec {
          * A relative path string, like "./xxx/yyy/zzz.html", "xxx/yyy/zzz.html", in the caller's cache directory.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -282,9 +251,7 @@ public class FileSpec {
          * The default is obtained by the suffix of the filename.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -294,9 +261,7 @@ public class FileSpec {
          * The filename, the default is obtained by path.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -306,9 +271,7 @@ public class FileSpec {
          * The extras for the file information.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -335,33 +298,25 @@ public class FileSpec {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum FormItemValueType {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     STR(String)
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     FILE(FileSpec)
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -384,17 +339,13 @@ public enum FormItemValueType {
  * The extras for the file information.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class FormItem {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -403,9 +354,7 @@ public class FormItem {
          * The item's name.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -417,9 +366,7 @@ public class FormItem {
          * @throws { BusinessError } 401 - Parameter error.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -433,25 +380,19 @@ public class FormItem {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum ConfigDataType {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     STR(String)
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -475,17 +416,13 @@ public enum ConfigDataType {
  * If without emphasis, an option is for any task.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class Config {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -494,9 +431,7 @@ public class Config {
          * The task action, upload or download.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -505,9 +440,7 @@ public class Config {
          * The task action, upload or download.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -518,9 +451,7 @@ public class Config {
          * The default is upload or download, consistent with its action.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -531,9 +462,7 @@ public class Config {
          * The default is empty string.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -546,9 +475,7 @@ public class Config {
          * The cross-platform default is FOREGROUND.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -560,9 +487,7 @@ public class Config {
          * false, go to fail.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -574,9 +499,7 @@ public class Config {
          * For download, use GET/POST, the default is GET.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -587,9 +510,7 @@ public class Config {
          * For download request, the default `Content-Type` is `application/json`.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -601,9 +522,7 @@ public class Config {
          * there must be one `FileSpec` item at least or will be a parameter error.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -615,9 +534,7 @@ public class Config {
          * 2: uri path, like "datashare://bundle/xxx/yyy/zzz.html", the data provider must allow the caller's access.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -627,9 +544,7 @@ public class Config {
          * The default is Network.ANY
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -639,9 +554,7 @@ public class Config {
          * The default is false.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -651,9 +564,7 @@ public class Config {
          * The default is true.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -663,8 +574,7 @@ public class Config {
          * The frontend task is always fast-fail.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -674,9 +584,7 @@ public class Config {
          * The default is true.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -687,9 +595,7 @@ public class Config {
          * The default is 0.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -702,9 +608,7 @@ public class Config {
          * The default is 0.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -717,9 +621,7 @@ public class Config {
          * The default is -1 indicating the end of the data for upload or download.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -730,8 +632,7 @@ public class Config {
          * If true, emits every progress, completed or failed notifications.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -742,9 +643,7 @@ public class Config {
          * The default is false, set size as -1 indicating the case.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -759,9 +658,7 @@ public class Config {
          * Or leave it empty.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -773,7 +670,7 @@ public class Config {
          * The default is 0.
          */
         @!APILevel[
-            12,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -782,9 +679,7 @@ public class Config {
          * The extras for the configuration.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -819,81 +714,61 @@ public class Config {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum State <: ToString {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     INITIALIZED
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     WAITING
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     RUNNING
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     RETRYING
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     PAUSED
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     STOPPED
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     COMPLETED
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     FAILED
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -918,9 +793,7 @@ public enum State <: ToString {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -966,17 +839,13 @@ public enum State <: ToString {
  * If fetch file size in failure, the size of the file in sizes will be set as -1.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class Progress {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -985,9 +854,7 @@ public class Progress {
          * The current state of the task.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -996,9 +863,7 @@ public class Progress {
          * The current processing file index in a task.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1007,9 +872,7 @@ public class Progress {
          * The processed data size for the current file in a task.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1018,9 +881,7 @@ public class Progress {
          * The sizes of files in a task.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1033,9 +894,7 @@ public class Progress {
          * The "body" field is not supported in cross-platform scenarios.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1059,9 +918,7 @@ public class Progress {
  * @atomicservice
  */
 @!APILevel[
-    15,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -1076,9 +933,7 @@ public class HttpResponseMessage {
          * @atomicservice
          */
         @!APILevel[
-            15,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1092,9 +947,7 @@ public class HttpResponseMessage {
          * @atomicservice
          */
         @!APILevel[
-            15,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1108,9 +961,7 @@ public class HttpResponseMessage {
          * @atomicservice
          */
         @!APILevel[
-            15,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1124,9 +975,7 @@ public class HttpResponseMessage {
          * @atomicservice
          */
         @!APILevel[
-            15,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1142,49 +991,37 @@ public class HttpResponseMessage {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public enum Faults <: ToString {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     OTHERS
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     DISCONNECTED
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     TIMEOUT
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     PROTOCOL
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1205,9 +1042,7 @@ public enum Faults <: ToString {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1239,17 +1074,13 @@ public enum Faults <: ToString {
  * Invalid value may cause a parameter error.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class Filter {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1266,9 +1097,7 @@ public class Filter {
          * The default is the moment of calling.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1278,9 +1107,7 @@ public class Filter {
          * The default is "`before` - 24 hours".
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1290,9 +1117,7 @@ public class Filter {
          * The default is any state.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1302,9 +1127,7 @@ public class Filter {
          * The default is upload and download.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1314,9 +1137,7 @@ public class Filter {
          * The default is FOREGROUND and BACKGROUND.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1329,206 +1150,160 @@ public class Filter {
  * Provides common query and advanced query, visible range of fields is different.
  */
 @!APILevel[
-    15,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class TaskInfo {
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let uid: ?String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let bundle: ?String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let saveas: ?String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let url: ?String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let data: ?ConfigDataType
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let tid: String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let title: String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let description: String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let action: Action
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let mode: Mode
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let priority: UInt32
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let mimeType: String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let progress: Progress
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let gauge: Bool
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let ctime: UInt64
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let mtime: UInt64
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let retry: Bool
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let tries: UInt32
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let faults: ?Faults
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let reason: String
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
     public let extras: ?HashMap<String, String>
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1689,17 +1464,13 @@ class EventManage {
  * Can `stop` a running/waiting/retrying task and dequeue it.
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
 public class Task {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1709,9 +1480,7 @@ public class Task {
          * Generated automatically by system.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1720,9 +1489,7 @@ public class Task {
          * The configurations for the task.
          */
         @!APILevel[
-            12,
-            atomicservice: true,
-            crossplatform: true,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Request.FileTransferAgent"
         ]
@@ -1739,9 +1506,7 @@ public class Task {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1775,9 +1540,7 @@ public class Task {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1813,9 +1576,7 @@ public class Task {
     }
 
     @!APILevel[
-        15,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1855,9 +1616,7 @@ public class Task {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.permission.INTERNET",
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
@@ -1874,7 +1633,7 @@ public class Task {
     }
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1890,7 +1649,7 @@ public class Task {
     }
 
     @!APILevel[
-        12,
+        21,
         permission: "ohos.permission.INTERNET",
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
@@ -1907,9 +1666,7 @@ public class Task {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Request.FileTransferAgent"
     ]
@@ -1940,9 +1697,7 @@ func checkPara(config: Config): Unit {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     permission: "ohos.permission.INTERNET",
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
@@ -1961,9 +1716,7 @@ public func create(context: StageContext, config: Config): Task {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -1979,7 +1732,7 @@ public func remove(id: String): Unit {
 }
 
 @!APILevel[
-    15,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -2000,8 +1753,7 @@ public func getTask(context: StageContext, id: String, token!: ?String = None): 
 }
 
 @!APILevel[
-    15,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -2018,8 +1770,7 @@ public func show(id: String): TaskInfo {
 }
 
 @!APILevel[
-    15,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -2041,8 +1792,7 @@ public func touch(id: String, token: String): TaskInfo {
 }
 
 @!APILevel[
-    15,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]
@@ -2051,8 +1801,7 @@ public func search(): Array<String> {
 }
 
 @!APILevel[
-    15,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Request.FileTransferAgent"
 ]

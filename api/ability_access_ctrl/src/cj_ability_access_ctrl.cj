@@ -63,25 +63,19 @@ let ACCESS_LOG = HilogChannel(0, SECURITY_DOMAIN_ACCESSTOKEN, "CJ-AbilityAccessC
 
 @Derive[ToString, Equatable]
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.AccessToken"
 ]
 public enum GrantStatus {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
     PermissionDenied
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
@@ -98,34 +92,27 @@ public enum GrantStatus {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.AccessToken"
 ]
 public class PermissionRequestResult {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
     public var permissions: Array<String>
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
     public var authResults: Array<Int32>
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
@@ -198,9 +185,7 @@ struct RetDataCPermissionRequestResult {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.AccessToken"
 ]
@@ -214,9 +199,7 @@ public class AbilityAccessCtrl {
      * @bref createAtManager(): AtManager
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
@@ -226,8 +209,7 @@ public class AbilityAccessCtrl {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.AccessToken"
 ]
@@ -248,9 +230,7 @@ public class AtManager {
      *       permissionList: Array<Permissions>) : Promise<PermissionRequestResult>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]
@@ -300,9 +280,7 @@ public class AtManager {
      * @bref checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.AccessToken"
     ]

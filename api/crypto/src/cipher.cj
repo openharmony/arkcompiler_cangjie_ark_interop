@@ -56,9 +56,7 @@ foreign {
  * @relation createCipher(transformation: string): Cipher
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -79,9 +77,7 @@ public func createCipher(transformation: String): Cipher {
  * @relation interface Cipher
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -104,9 +100,7 @@ public class Cipher <: RemoteDataLite {
      * @relation algName : string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -149,9 +143,7 @@ public class Cipher <: RemoteDataLite {
      * @relation init(opMode : CryptoMode, key : Key, params : ParamsSpec) : Promise<void>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -206,9 +198,7 @@ public class Cipher <: RemoteDataLite {
      * @relation update(data : DataBlob) : Promise<DataBlob>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]
@@ -242,9 +232,7 @@ public class Cipher <: RemoteDataLite {
      * @relation doFinal(data : DataBlob) : Promise<DataBlob>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]

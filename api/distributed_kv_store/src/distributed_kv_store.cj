@@ -27,7 +27,7 @@ let KV_STORE_LOG = HilogChannel(0, 0xD001650, "CJ-DistributedKVStore")
 type StageContext = CPointer<Unit>
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.DistributedKVStore"
 ]
@@ -36,7 +36,7 @@ public class DistributedKVStore {
      * @brief  createKVManager(config: KVManagerConfig): KVManager
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -51,7 +51,7 @@ public class DistributedKVStore {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
@@ -90,7 +90,7 @@ public class KVManager <: RemoteDataLite {
      * @brief  getKVStore<T>(storeId: string, options: Options): Promise<T>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -103,7 +103,7 @@ public class KVManager <: RemoteDataLite {
      * @brief  getKVStore<T>(storeId: string, options: Options): Promise<T>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -116,7 +116,7 @@ public class KVManager <: RemoteDataLite {
      * @brief  closeKVStore(appId: string, storeId: string): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -141,7 +141,7 @@ public class KVManager <: RemoteDataLite {
      * @brief  deleteKVStore(appId: string, storeId: string): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -166,7 +166,7 @@ public class KVManager <: RemoteDataLite {
      * @brief  getAllKVStoreId(appId: string): Promise<string[]>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]

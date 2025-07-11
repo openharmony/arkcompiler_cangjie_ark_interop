@@ -24,9 +24,7 @@ import ohos.ffi.*
  * @relation interface Key
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Key"
 ]
@@ -37,9 +35,7 @@ public interface Key {
      * @relation readonly format: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key"
     ]
@@ -51,9 +47,7 @@ public interface Key {
      * @relation readonly algName: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key"
     ]
@@ -68,9 +62,7 @@ public interface Key {
      * @relation getEncoded(): DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Key"
     ]
@@ -83,9 +75,7 @@ public interface Key {
  * @relation interface ParamsSpec
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Cipher"
 ]
@@ -96,9 +86,7 @@ public interface ParamsSpec {
      * @relation algName: string;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Cipher"
     ]

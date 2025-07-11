@@ -29,7 +29,7 @@ class SingleKVStoreFinalizer {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
 ]
@@ -49,7 +49,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  put(key: string, value: Uint8Array | string | number | boolean): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -73,7 +73,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  putBatch(entries: Entry[]): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -94,7 +94,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  delete(key: string): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -115,7 +115,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  deleteBatch(keys: string[]): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -136,7 +136,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  get(key: string): Promise<boolean | string | number | Uint8Array>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -161,7 +161,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  backup(file:string): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -182,7 +182,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  restore(file:string): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -203,7 +203,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  startTransaction(): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -223,7 +223,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  commit(): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -242,7 +242,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  rollback(): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -261,7 +261,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  enableSync(enabled: boolean): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]
@@ -280,7 +280,7 @@ public open class SingleKVStore <: RemoteDataLite {
      * @brief  setSyncParam(defaultAllowedDelayMs: number): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.KVStore.Core"
     ]

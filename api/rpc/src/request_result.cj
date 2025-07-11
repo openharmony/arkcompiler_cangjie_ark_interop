@@ -423,37 +423,37 @@ struct CRequestResult {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public class RequestResult {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     public RequestResult(
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.IPC.Core"
         ]
         public let errCode: Int32,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.IPC.Core"
         ]
         public let code: UInt32,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.IPC.Core"
         ]
         public let data: MessageSequence,
         @!APILevel[
-            19,
+            21,
             stagemodelonly: true,
             syscap: "SystemCapability.Communication.IPC.Core"
         ]

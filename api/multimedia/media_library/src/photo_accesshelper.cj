@@ -35,9 +35,7 @@ import ohos.data_share_predicates.*
  * @atomicservice
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -66,7 +64,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -94,8 +92,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -124,7 +121,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -159,8 +156,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -191,7 +187,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -233,7 +229,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -295,8 +291,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -339,8 +334,7 @@ public class PhotoAccessHelper <: RemoteDataLite {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]

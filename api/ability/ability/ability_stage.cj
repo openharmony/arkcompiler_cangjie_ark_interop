@@ -117,9 +117,7 @@ func abilityStageOnMemoryLevel(id: Int64, level: Int32): Unit {}
 class AbilityStageImpl {}
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -130,9 +128,7 @@ public open class AbilityStage <: FFIData {
     private let impl_: AbilityStageImpl = AbilityStageImpl()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -159,9 +155,7 @@ public open class AbilityStage <: FFIData {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -189,9 +183,7 @@ public open class AbilityStage <: FFIData {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

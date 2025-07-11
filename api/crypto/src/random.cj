@@ -37,9 +37,7 @@ foreign {
  * @relation function createRandom(): Random;
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Rand"
 ]
@@ -58,9 +56,7 @@ public func createRandom(): Random {
  * @relation interface Random
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Rand"
 ]
@@ -80,9 +76,7 @@ public class Random <: RemoteDataLite {
      * @relation algName : string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Rand"
     ]
@@ -110,9 +104,7 @@ public class Random <: RemoteDataLite {
      * @relation generateRandomSync(len: number): DataBlob;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Rand"
     ]
@@ -135,9 +127,7 @@ public class Random <: RemoteDataLite {
      * @relation setSeed(seed: DataBlob): void;
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Rand"
     ]

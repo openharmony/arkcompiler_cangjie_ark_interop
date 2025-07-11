@@ -24,9 +24,7 @@ import ohos.labels.*
 let CES_LOG = HilogChannel(0, 0xD001200, "CJ-CommonEventManager")
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
@@ -42,9 +40,7 @@ public class CommonEventManager {
      * @brief publish(event: string, callback: AsyncCallback<void>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -69,9 +65,7 @@ public class CommonEventManager {
      * @brief publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -95,9 +89,7 @@ public class CommonEventManager {
      * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -119,9 +111,7 @@ public class CommonEventManager {
      * @relation subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -145,9 +135,7 @@ public class CommonEventManager {
      * @relation unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]

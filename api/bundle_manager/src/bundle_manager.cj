@@ -57,7 +57,7 @@ func checkToCache(uid: Int32, callingUid: Int32, query: BMQuery, bundleInfo: Bun
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
@@ -71,8 +71,7 @@ public class BundleManager {
      *  @brief getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -107,7 +106,7 @@ public class BundleManager {
      * @brief verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean): Promise<void>
      */
     @!APILevel[
-        12,
+        21,
         permission: "ohos.permission.RUN_DYN_CODE",
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
@@ -142,8 +141,7 @@ public class BundleManager {
      * @brief getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: string, metadataName?: string): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -184,8 +182,7 @@ public class BundleManager {
      * @brief getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: string): Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -220,8 +217,7 @@ public class BundleManager {
      * @brief function canOpenLink(link: string): boolean;
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -249,7 +245,7 @@ public class BundleManager {
      * @relation function getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): BundleInfo;
      */
     @!APILevel[
-        20,
+        21,
         permission: "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED" | "ohos.permission.GET_BUNDLE_INFO",
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
@@ -291,7 +287,7 @@ public class BundleManager {
      * @relation function getBundleNameByUidSync(uid: number): string;
      */
     @!APILevel[
-        20,
+        21,
         permission: "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED" | "ohos.permission.GET_BUNDLE_INFO",
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"

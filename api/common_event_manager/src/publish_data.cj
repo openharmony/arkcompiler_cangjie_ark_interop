@@ -25,9 +25,7 @@ import ohos.labels.*
  * @relation export interface CommonEventPublishData
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
@@ -38,16 +36,13 @@ public class CommonEventPublishData {
      * @relation bundleName?: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var bundleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -63,8 +58,7 @@ public class CommonEventPublishData {
      * @relation code?: number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -75,8 +69,7 @@ public class CommonEventPublishData {
      * @relation subscriberPermissions?: Array<string>
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -87,7 +80,7 @@ public class CommonEventPublishData {
      * @relation isOrdered?: boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -98,7 +91,7 @@ public class CommonEventPublishData {
      * @relation isSticky?: boolean
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -109,15 +102,14 @@ public class CommonEventPublishData {
      * @relation parameters?: { [key: string]: any }
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     public var parameters: HashMap<String, ValueType> = HashMap<String, ValueType>()
 
     @!APILevel[
-        12,
+        21,
         atomicservice: true,
         crossplatform: true,
         stagemodelonly: true,
@@ -148,9 +140,7 @@ public class CommonEventPublishData {
  * @relation export interface CommonEventData
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
@@ -161,9 +151,7 @@ public class CommonEventData {
      * @relation event: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -174,8 +162,7 @@ public class CommonEventData {
      * @relation bundleName?: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -187,8 +174,7 @@ public class CommonEventData {
      * @relation code?: number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -200,9 +186,7 @@ public class CommonEventData {
      * @relation data?: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
@@ -214,8 +198,7 @@ public class CommonEventData {
      * @relation parameters?: { [key: string]: any }
      */
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]

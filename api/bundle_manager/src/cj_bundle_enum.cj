@@ -20,92 +20,79 @@ import ohos.ffi.*
 import ohos.base.*
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum BundleFlag {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoDefault
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithApplication
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithHapModule
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithAbility
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithExtensionAbility
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithRequestedPermission
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithMetadata
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithDisable
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithSignature
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithMenu
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetBundleInfoWithRouterMap
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -113,8 +100,7 @@ public enum BundleFlag {
     | ...
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -138,31 +124,31 @@ public enum BundleFlag {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum ApplicationFlag {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetApplicationInfoDefault
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetApplicationInfoWithPermission
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetApplicationInfoWithMetadata
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -171,43 +157,43 @@ public enum ApplicationFlag {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum AbilityFlag {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetAbilityInfoDefault
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetAbilityInfoWithPermission
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetAbilityInfoWithApplication
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetAbilityInfoWithMetadata
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetAbilityInfoWithDisable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -216,31 +202,31 @@ public enum AbilityFlag {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum ExtensionAbilityFlag {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetExtensionAbilityInfoDefault
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetExtensionAbilityInfoWithPermission
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     GetExtensionAbilityInfoWithApplication
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -249,15 +235,13 @@ public enum ExtensionAbilityFlag {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum CompatiblePolicy {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -265,13 +249,13 @@ public enum CompatiblePolicy {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum ProfileType {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -279,22 +263,19 @@ public enum ProfileType {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum BundleType {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     App
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -311,19 +292,19 @@ public enum BundleType {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum PermissionGrantState {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     PermissionDenied
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -340,25 +321,25 @@ public enum PermissionGrantState {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: false,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum AbilityType {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: false,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Page
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: false,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Service
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: false,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -367,113 +348,97 @@ public enum AbilityType {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum DisplayOrientation {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Unspecified
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Landscape
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Portrait
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     FollowRecent
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     LandscapeInverted
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     PortraitInverted
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotation
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotationLandscape
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotationPortrait
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotationRestricted
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotationLandscapeRestricted
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotationPortraitRestricted
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Locked
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AutoRotationUnspecified
     | @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -503,8 +468,7 @@ public enum DisplayOrientation {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
@@ -531,32 +495,25 @@ public enum SupportWindowMode {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum LaunchType {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Singleton
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Multiton
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -574,147 +531,145 @@ public enum LaunchType {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum ExtensionAbilityType {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Form
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     WorkScheduler
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     InputMethod
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Service
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Accessibility
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     DataShare
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     FileShare
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     StaticSubscriber
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Wallpaper
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Backup
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Window
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     EnterpriseAdmin
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Thumbnail
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Preview
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Print
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Share
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Push
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Driver
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Action
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     AdsService
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     EmbeddedUI
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     InsightIntentUI
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -752,29 +707,25 @@ public enum ExtensionAbilityType {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum ModuleType {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Entry
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Feature
     | @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -792,25 +743,25 @@ public enum ModuleType {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public enum MultiAppModeType {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     Unspecified
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     MultiInstance
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]

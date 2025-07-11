@@ -21,15 +21,13 @@ import std.collection.*
 import ohos.base.*
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public class RdbPredicates <: RemoteDataLite {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -45,7 +43,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  inAllDevices(): RdbPredicates
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -61,8 +59,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  beginWrap(): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -78,8 +75,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  endWrap(): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -95,8 +91,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  or(): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -112,8 +107,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  and(): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -129,8 +123,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  contains(field: string, value: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -154,8 +147,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  beginsWith(field: string, value: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -179,8 +171,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  endsWith(field: string, value: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -204,8 +195,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  isNull(field: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -229,8 +219,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  isNotNull(field: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -254,8 +243,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  like(field: string, value: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -279,8 +267,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  glob(field: string, value: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -304,8 +291,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  orderByAsc(field: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -329,8 +315,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  orderByDesc(field: string): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -354,8 +339,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  distinct(): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -371,8 +355,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  limitAs(value: number): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -388,8 +371,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  offsetAs(rowOffset: number): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -405,8 +387,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  groupBy(fields: Array<string>): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -441,8 +422,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -471,8 +451,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  equalTo(field: string, value: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -500,8 +479,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -530,8 +508,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  greaterThan(field: string, value: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -560,8 +537,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  lessThan(field: string, value: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -589,8 +565,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  notEqualTo(field: string, value: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -619,8 +594,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -657,8 +631,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  between(field: string, low: ValueType, high: ValueType): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -694,8 +667,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  in(field: string, value: Array<ValueType>): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -740,8 +712,7 @@ public class RdbPredicates <: RemoteDataLite {
      * @brief  notIn(field: string, value: Array<ValueType>): RdbPredicates
      */
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]

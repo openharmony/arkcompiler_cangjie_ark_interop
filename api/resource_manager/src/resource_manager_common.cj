@@ -26,9 +26,7 @@ import std.deriving.Derive
  * @relation export interface RawFileDescriptor
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -39,9 +37,7 @@ public class RawFileDescriptor {
      * @relation fd: number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -52,9 +48,7 @@ public class RawFileDescriptor {
      * @relation offset: number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -65,9 +59,7 @@ public class RawFileDescriptor {
      * @relation length: number
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -99,9 +91,7 @@ public class RawFileDescriptor {
  * @relation export class Configuration
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -112,9 +102,7 @@ public class Configuration <: ToString {
      * @relation direction: Direction
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -125,9 +113,7 @@ public class Configuration <: ToString {
      * @relation locale: string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -164,9 +150,7 @@ public class Configuration <: ToString {
     var mnc: UInt32
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -199,9 +183,7 @@ public class Configuration <: ToString {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -236,9 +218,7 @@ public class Configuration <: ToString {
  * @relation export class DeviceCapability
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -249,9 +229,7 @@ public class DeviceCapability <: ToString {
      * @relation screenDensity: ScreenDensity
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -262,18 +240,14 @@ public class DeviceCapability <: ToString {
      * @relation deviceType: DeviceType
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     public var deviceType: DeviceType
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -288,9 +262,7 @@ public class DeviceCapability <: ToString {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -305,9 +277,7 @@ public class DeviceCapability <: ToString {
  * export enum ScreenDensity
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -318,9 +288,7 @@ public enum ScreenDensity {
      * SCREEN_SDPI = 120
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -331,9 +299,7 @@ public enum ScreenDensity {
      * SCREEN_MDPI = 160
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -344,9 +310,7 @@ public enum ScreenDensity {
      * SCREEN_LDPI = 240
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -357,9 +321,7 @@ public enum ScreenDensity {
      * SCREEN_XLDPI = 320
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -370,9 +332,7 @@ public enum ScreenDensity {
      * SCREEN_XXLDPI = 480
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -383,9 +343,7 @@ public enum ScreenDensity {
      * SCREEN_XXXLDPI = 640
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -393,9 +351,7 @@ public enum ScreenDensity {
     | ...
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -412,9 +368,7 @@ public enum ScreenDensity {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -437,9 +391,7 @@ public enum ScreenDensity {
  * @relation export enum DeviceType
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -450,9 +402,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_PHONE = 0x00
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -463,9 +413,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_TABLET = 0x01
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -476,9 +424,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_CAR = 0x02
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -489,9 +435,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_PC = 0x03
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -502,9 +446,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_TV = 0x04
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -515,9 +457,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_WEARABLE = 0x06
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -528,9 +468,7 @@ public enum DeviceType {
      * @relation DEVICE_TYPE_2IN1 = 0x07
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -538,9 +476,7 @@ public enum DeviceType {
     | ...
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -558,9 +494,7 @@ public enum DeviceType {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -584,9 +518,7 @@ public enum DeviceType {
  * @relation export enum Direction
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -597,9 +529,7 @@ public enum Direction {
      * @relation DIRECTION_VERTICAL = 0
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -610,9 +540,7 @@ public enum Direction {
      * @relation DIRECTION_HORIZONTAL = 1
      */
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -620,9 +548,7 @@ public enum Direction {
     | ...
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -635,9 +561,7 @@ public enum Direction {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -689,7 +613,7 @@ enum ColorMode {
  * @relation export interface Resource
  */
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -700,7 +624,7 @@ public class AppResource <: Length & ResourceColor {
      * @relation bundleName: string
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -711,7 +635,7 @@ public class AppResource <: Length & ResourceColor {
      * @relation moduleName: string
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -722,7 +646,7 @@ public class AppResource <: Length & ResourceColor {
      * @relation id: number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -733,7 +657,7 @@ public class AppResource <: Length & ResourceColor {
      * @relation params?: any[]
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -744,14 +668,14 @@ public class AppResource <: Length & ResourceColor {
      * @relation type?: number
      */
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     public var resType: ?Int32 = None
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -784,8 +708,7 @@ const DEFAULT_HAR_BUNDLE_NAME = "__harDefaultBundleName__"
 const DEFAULT_HAR_MODULE_NAME = "__harDefaultModuleName__"
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -811,9 +734,7 @@ public func __GenerateResource__(
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
@@ -875,25 +796,19 @@ func getErrorMsg(code: Int32): String {
  * for some API returns two type : Int32 Float32
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum Number {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     Int32Value(Int32)
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
@@ -902,25 +817,25 @@ public enum Number {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum FormatArgs {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     Int32Value(Int32)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     Float32Value(Float32)
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]

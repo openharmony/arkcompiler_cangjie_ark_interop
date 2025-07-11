@@ -24,18 +24,13 @@ foreign {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
-    form: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.I18n"
 ]
 public class System {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.I18n"
     ]

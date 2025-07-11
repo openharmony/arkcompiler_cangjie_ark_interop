@@ -57,9 +57,7 @@ foreign {
 class ContextImpl {}
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
@@ -80,9 +78,7 @@ public open class Context <: RemoteData {
     private let impl_: ContextImpl = ContextImpl()
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -103,9 +99,7 @@ public open class Context <: RemoteData {
      * @brief resourceManager: resmgr.ResourceManager
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -132,9 +126,7 @@ public open class Context <: RemoteData {
      * @brief applicationInfo: ApplicationInfo
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -163,9 +155,7 @@ public open class Context <: RemoteData {
      * @brief filesDir: String
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
@@ -193,7 +183,7 @@ public open class Context <: RemoteData {
      * @brief area: contextConstant.AreaMode
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]

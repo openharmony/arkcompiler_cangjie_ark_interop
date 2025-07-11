@@ -66,8 +66,7 @@ private func createDataSharePredicates(): Int64 {
  * @crossplatform
  */
 @!APILevel[
-    19,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
 ]
@@ -78,8 +77,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @syscap SystemCapability.DistributedDataManager.DataShare.Core
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
@@ -106,8 +104,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
@@ -141,8 +138,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
@@ -167,8 +163,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
@@ -199,8 +194,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
@@ -232,8 +226,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]
@@ -264,8 +257,7 @@ public class DataSharePredicates <: RemoteDataLite {
      * @crossplatform
      */
     @!APILevel[
-        19,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.DataShare.Core"
     ]

@@ -26,42 +26,32 @@ const UNSPECIFIED_USERID = -2i32
 const GET_BUNDLE_INFO = "GetBundleInfo"
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class Metadata {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var name: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var value: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var resource: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -79,22 +69,19 @@ public class Metadata {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class ModuleMetadata {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let moduleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -113,30 +100,26 @@ public class ModuleMetadata {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class UsedScene {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var abilities: Array<String>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var when: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -152,51 +135,44 @@ public class UsedScene {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class ReqPermissionDetail {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var name: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var moduleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var reason: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var reasonId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var usedScene: UsedScene
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -218,29 +194,25 @@ public class ReqPermissionDetail {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class SignatureInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let appId: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let fingerprint: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -254,19 +226,19 @@ public class SignatureInfo {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class MultiAppMode {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let multiAppModeType: MultiAppModeType
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -279,224 +251,187 @@ public class MultiAppMode {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class ApplicationInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let name: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let description: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let descriptionId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let enabled: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let label: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let labelId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let icon: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let iconId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let process: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let permissions: Array<String>
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let codePath: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let metadataArray: Array<ModuleMetadata>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let removable: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let accessTokenId: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let uid: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let iconResource: AppResource
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let labelResource: AppResource
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let descriptionResource: AppResource
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let appDistributionType: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let appProvisionType: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let systemApp: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let bundleType: BundleType
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let debug: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let dataUnclearable: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let cloudFileSyncEnabled: Bool
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let nativeLibraryPath: String
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let multiAppMode: MultiAppMode
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let appIndex: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let installSource: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -537,50 +472,43 @@ public class ApplicationInfo {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class WindowSize {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let maxWindowRatio: Float64
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let minWindowRatio: Float64
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let maxWindowWidth: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let minWindowWidth: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let maxWindowHeight: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -597,181 +525,145 @@ public class WindowSize {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class AbilityInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let bundleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let moduleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let name: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let label: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let labelId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let description: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let descriptionId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let icon: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let iconId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let process: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let exported: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let orientation: DisplayOrientation
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let launchType: LaunchType
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let permissions: Array<String>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let deviceTypes: Array<String>
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let applicationInfo: ApplicationInfo
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let metadata: Array<Metadata>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let enabled: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let supportWindowModes: Array<SupportWindowMode>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let windowSize: WindowSize
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let excludeFromDock: Bool
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let skills: Array<Skill>
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -805,126 +697,109 @@ public class AbilityInfo {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class ExtensionAbilityInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let bundleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let moduleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let name: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let labelId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let descriptionId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let iconId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let exported: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let extensionAbilityType: ExtensionAbilityType
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let permissions: Array<String>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let applicationInfo: ApplicationInfo
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let metadata: Array<Metadata>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let enabled: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let readPermission: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let writePermission: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let extensionAbilityTypeName: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let skills: Array<Skill>
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -956,15 +831,13 @@ public class ExtensionAbilityInfo {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class PreloadItem {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -976,29 +849,25 @@ public class PreloadItem {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class Dependency {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let bundleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let moduleName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -1012,165 +881,133 @@ public class Dependency {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class HapModuleInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let name: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let icon: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let iconId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let label: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let labelId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let description: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let descriptionId: Int32
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let mainElementName: String
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let abilitiesInfo: Array<AbilityInfo>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let metadata: Array<Metadata>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let deviceTypes: Array<String>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let installationFree: Bool
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let hashValue: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let moduleType: ModuleType
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let preloads: Array<PreloadItem>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let dependencies: Array<Dependency>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let fileContextMenuConfig: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let routerMap: Array<RouterItem>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let codePath: String
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -1202,22 +1039,19 @@ public class HapModuleInfo {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class DataItem {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let key: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -1230,43 +1064,37 @@ public class DataItem {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class RouterItem {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let name: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let pageSourceFile: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let buildFunction: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let data: Array<DataItem>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -1282,118 +1110,103 @@ public class RouterItem {
 }
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class BundleInfo {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let name: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let vendor: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let versionCode: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let versionName: String
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let minCompatibleVersionCode: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let targetVersion: UInt32
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let appInfo: ApplicationInfo
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let hapModulesInfo: Array<HapModuleInfo>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let reqPermissionDetails: Array<ReqPermissionDetail>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let permissionGrantStates: Array<PermissionGrantState>
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let signatureInfo: SignatureInfo
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let installTime: Int64
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let updateTime: Int64
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let uid: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let routerMap: Array<RouterItem>
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -1420,36 +1233,31 @@ public class BundleInfo {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class Skill {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let actions: Array<String>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let entities: Array<String>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let uris: Array<SkillUri>
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -1464,78 +1272,67 @@ public class Skill {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class SkillUri {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let scheme: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let host: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let port: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let path: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let pathStartWith: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let pathRegex: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let uriType: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let utd: String
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public let maxFileSupported: Int32
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]

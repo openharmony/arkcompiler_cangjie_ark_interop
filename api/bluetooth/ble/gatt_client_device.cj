@@ -28,9 +28,7 @@ import ohos.bluetooth.*
  * @syscap SystemCapability.Communication.Bluetooth.Core
  */
 @!APILevel[
-    19,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -65,9 +63,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -94,9 +90,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -124,9 +118,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -155,9 +147,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -194,9 +184,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -233,9 +221,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -283,9 +269,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -331,9 +315,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -375,9 +357,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -414,8 +394,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2900099 - Operation failed.
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -451,9 +430,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -484,8 +461,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -519,8 +495,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -553,8 +528,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @since 12
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -583,9 +557,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -617,9 +589,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -648,9 +618,7 @@ public class GattClientDevice <: RemoteDataLite {
      * @syscap SystemCapability.Communication.Bluetooth.Core
      */
     @!APILevel[
-        19,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         permission: "ohos.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"

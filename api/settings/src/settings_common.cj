@@ -20,19 +20,19 @@ import ohos.ffi.*
 import ohos.labels.*
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
 public enum DomainName <: ToString {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     DeviceShared
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
@@ -40,7 +40,7 @@ public enum DomainName <: ToString {
     | ...
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Applications.Settings.Core"
     ]
@@ -54,31 +54,31 @@ public enum DomainName <: ToString {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
 public enum Date <: ToString {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     DateFormat
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     TimeFormat
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     AutoGainTime
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
@@ -86,7 +86,7 @@ public enum Date <: ToString {
     | ...
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Applications.Settings.Core"
     ]
@@ -102,61 +102,61 @@ public enum Date <: ToString {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
 public enum Display <: ToString {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     FontScale
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ScreenBrightnessStatus
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     AutoScreenBrightness
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ScreenOffTimeout
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     DefaultScreenRotation
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     Animator_Duration_Scale
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     TransitionAnimationScale
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     WindowAnimationScale
     | @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
@@ -164,7 +164,7 @@ public enum Display <: ToString {
     | ...
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Applications.Settings.Core"
     ]

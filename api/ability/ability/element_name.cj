@@ -45,39 +45,34 @@ foreign func FFICJElementNameGetElementNameInfo(elementName: ElementNameHandle):
 foreign func FFICJElementNameParamsDelete(elementNameParams: CPointer<ElementNameParams>): Unit
 
 @!APILevel[
-    12,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.BundleManager.BundleFramework.Core"
 ]
 public class ElementName {
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var deviceId: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var bundleName: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
     public var abilityName: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]
@@ -85,8 +80,7 @@ public class ElementName {
     private var shortName_: String
 
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.BundleManager.BundleFramework.Core"
     ]

@@ -22,8 +22,7 @@ import ohos.ability.*
 import ohos.ability.*
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -37,8 +36,7 @@ public interface MediaChangeRequest {}
  * @atomicservice
  */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
 ]
@@ -52,8 +50,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -82,8 +79,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -100,7 +96,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -133,7 +129,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @systemapi
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -174,7 +170,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         permission: "ohos.WRITE_IMAGEVIDEO",
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
@@ -203,7 +199,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         permission: "ohos.WRITE_IMAGEVIDEO",
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
@@ -226,8 +222,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -253,8 +248,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -278,7 +272,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         permission: "ohos.WRITE_IMAGEVIDEO",
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
@@ -304,8 +298,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -331,8 +324,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @atomicservice
      */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -351,7 +343,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]
@@ -368,7 +360,7 @@ public class MediaAssetChangeRequest <: RemoteDataLite & MediaChangeRequest {
      * @syscap SystemCapability.FileManagement.PhotoAccessHelper.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.PhotoAccessHelper.Core"
     ]

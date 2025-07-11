@@ -35,22 +35,19 @@ foreign {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public interface JSSystemObjectInteropType<T> {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     static func fromJSValue(context: JSContext, input: JSValue): T
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -58,15 +55,13 @@ public interface JSSystemObjectInteropType<T> {
 }
 
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 extend File <: JSSystemObjectInteropType<File> {
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -78,8 +73,7 @@ extend File <: JSSystemObjectInteropType<File> {
     }
 
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -90,13 +84,13 @@ extend File <: JSSystemObjectInteropType<File> {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 extend RandomAccessFile <: JSSystemObjectInteropType<RandomAccessFile> {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -108,7 +102,7 @@ extend RandomAccessFile <: JSSystemObjectInteropType<RandomAccessFile> {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -119,13 +113,13 @@ extend RandomAccessFile <: JSSystemObjectInteropType<RandomAccessFile> {
 }
 
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 extend Stream <: JSSystemObjectInteropType<Stream> {
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
@@ -137,7 +131,7 @@ extend Stream <: JSSystemObjectInteropType<Stream> {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]

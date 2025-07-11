@@ -47,9 +47,7 @@ foreign {
  * @relation function createSign(algName: string): Sign;
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Signature"
 ]
@@ -70,9 +68,7 @@ public func createSign(algName: String): Sign {
  * @relation interface Sign
  */
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Security.CryptoFramework.Signature"
 ]
@@ -95,9 +91,7 @@ public class Sign <: RemoteDataLite {
      * @relation algName : string
      */
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Security.CryptoFramework.Signature"
     ]

@@ -28,7 +28,7 @@ import std.sync.*
  * @syscap SystemCapability.Multimedia.Camera.Core
  */
 @!APILevel[
-    19,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
@@ -59,7 +59,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -74,7 +74,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -89,7 +89,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -104,7 +104,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -123,7 +123,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -139,7 +139,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -160,7 +160,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -188,7 +188,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -217,7 +217,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.CAMERA",
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
@@ -245,7 +245,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         permission: "ohos.permission.CAMERA",
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
@@ -271,7 +271,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -299,7 +299,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -328,7 +328,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -355,7 +355,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -379,7 +379,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -409,7 +409,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -435,7 +435,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -456,7 +456,7 @@ public class CameraManager <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -480,7 +480,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -514,7 +514,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -548,7 +548,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -582,7 +582,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -603,7 +603,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -624,7 +624,7 @@ public class CameraManager <: RemoteDataLite {
      * @syscap SystemCapability.Multimedia.Camera.Core
      */
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
@@ -638,7 +638,7 @@ public class CameraManager <: RemoteDataLite {
     }
 
     @!APILevel[
-        19,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]

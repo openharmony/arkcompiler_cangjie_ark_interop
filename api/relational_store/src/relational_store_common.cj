@@ -25,36 +25,31 @@ const UINT64_MAX: UInt64 = 0xffff_ffff_ffff_ffff
 let RELATIONAL_STORE_LOG = HilogChannel(0, 0xD001650, "CJ-Relational_Store")
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum SecurityLevel {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     S1
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     S2
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     S3
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -62,8 +57,7 @@ public enum SecurityLevel {
     | ...
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -79,20 +73,20 @@ public enum SecurityLevel {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum ChangeType {
     @!APILevel[
-        12,
+        21,
         permission: "ohos.DISTRIBUTED_DATASYNC",
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     DataChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -100,7 +94,7 @@ public enum ChangeType {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -122,55 +116,50 @@ public enum ChangeType {
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public class StoreConfig {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var name: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var securityLevel: SecurityLevel
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var encrypt: Bool
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var dataGroupId: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var customDir: String
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     public var autoCleanDirtyData: Bool
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -186,50 +175,43 @@ public class StoreConfig {
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum AssetStatus {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     AssetNormal
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     AssetInsert
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     AssetUpdate
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     AssetDelete
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     AssetAbnormal
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -237,8 +219,7 @@ public enum AssetStatus {
     | ...
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -268,43 +249,43 @@ public enum AssetStatus {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.CloudSync.Client"
 ]
 public enum Field {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     CursorField
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     OriginField
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     DeletedFlagField
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     OwnerField
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     PrivilegeField
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
@@ -312,7 +293,7 @@ public enum Field {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
@@ -330,50 +311,43 @@ public enum Field {
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum ConflictResolution {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     OnConflictNone
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     OnConflictRollback
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     OnConflictAbort
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     OnConflictFail
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     OnConflictIgnore
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -381,8 +355,7 @@ public enum ConflictResolution {
     | ...
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -400,65 +373,56 @@ public enum ConflictResolution {
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public class Asset {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var name: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var uri: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var path: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var createTime: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var modifyTime: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var size: String
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     public var status: AssetStatus
 
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -475,64 +439,55 @@ public class Asset {
 }
 
 @!APILevel[
-    12,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum ValueType {
     @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Null
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Integer(Int64)
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Double(Float64)
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     StringValue(String)
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Boolean(Bool)
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Uint8Array(Array<UInt8>)
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     AssetEnum(Asset)
     | @!APILevel[
-        12,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -547,19 +502,19 @@ enum DataPosition {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum DistributedType {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     DistributedDevice
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
@@ -567,7 +522,7 @@ public enum DistributedType {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -581,37 +536,37 @@ public enum DistributedType {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum SyncMode {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     SyncModePush
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     SyncModePull
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     SyncModeTimeFirst
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     SyncModeNativeFirst
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
@@ -619,7 +574,7 @@ public enum SyncMode {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -636,25 +591,25 @@ public enum SyncMode {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum Progress {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     SyncBegin
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     SyncInProgress
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -662,7 +617,7 @@ public enum Progress {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -686,49 +641,49 @@ public enum Progress {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum ProgressCode {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Success
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     UnknownError
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     NetworkError
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     CloudDisabled
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     LockedByOthers
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     RecordLimitExceeded
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -736,7 +691,7 @@ public enum ProgressCode {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -768,25 +723,25 @@ public enum ProgressCode {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum SubscribeType {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     SubscribeTypeRemote
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
     SubscribeTypeCloud
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.CloudSync.Client"
     ]
@@ -794,7 +749,7 @@ public enum SubscribeType {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -809,25 +764,25 @@ public enum SubscribeType {
 }
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
 ]
 public enum Origin {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Local
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
     Cloud
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]
@@ -835,7 +790,7 @@ public enum Origin {
     | ...
 
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.DistributedDataManager.RelationalStore.Core"
     ]

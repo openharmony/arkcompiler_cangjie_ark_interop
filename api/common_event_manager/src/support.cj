@@ -19,1149 +19,1149 @@ import ohos.base.*
 import ohos.labels.*
 
 @!APILevel[
-    12,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.Notification.CommonEvent"
 ]
 public enum Support {
     @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventAbilityAdded
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventAbilityRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventAbilityUpdated
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventAccountDeleted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventAirplaneModeChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventAudioQualityChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBatteryChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBatteryLow
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBatteryOkay
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeAgConnectStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeAgCurrentDeviceUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeAgAudioStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsourceConnectStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsourceCurrentDeviceUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsourcePlayingStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsourceAvrcpConnectStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsourceCodecValueUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceDiscovered
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceClassValueUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceAclConnected
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceAclDisconnected
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceNameUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedevicePairState
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceBatteryValueUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceSdpResult
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceUuidValue
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedevicePairingReq
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedevicePairingCancel
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceConnectReq
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceConnectReply
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothRemotedeviceConnectCancel
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeunitConnectStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeunitAudioStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeunitAgCommonEvent
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHandsfreeunitAgCallStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostReqDiscoverable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostReqEnable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostReqDisable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostScanModeUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostDiscoveryStarted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostDiscoveryFinished
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothHostNameUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsinkConnectStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsinkPlayingStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBluetoothA2DpsinkAudioStateUpdate
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBundleRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventBootCompleted
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventConnectivityChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventCellularDataStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventCallStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventChargeIdleModeChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventChargeTypeChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventCharging
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventConfigurationChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventCloseSystemDialogs
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDeviceIdleExemptionListUpdated
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDomainAccountStatusChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDiskEject
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDiskUnmountable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDiskBadRemoval
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDiskMounted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDiskUnmounted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDiskRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDeviceIdleModeChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDischarging
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDistributedAccountLogoff
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDistributedAccountTokenInvalid
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDistributedAccountLogout
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDistributedAccountLogin
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDriveMode
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventDateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventExternalApplicationsUnavailable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventExternalApplicationsAvailable
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventFoundationReady
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventHomeMode
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventHttpProxyChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviSleep
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviPause
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviStandby
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviLastmodeSave
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviVoltageAbnormal
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviHighTemperature
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviExtremeTemperature
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviTemperatureAbnormal
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviVoltageRecovery
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviTemperatureRecovery
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIviActive
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventIncomingCallMissed
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventLockedBootCompleted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventLocaleChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventLocationModeStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventMyPackageReplaced
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventMyPackageSuspended
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventMyPackageUnsuspended
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventManagePackageStorage
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventNfcActionAdapterStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventNfcActionRfFieldOnDetected
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventNfcActionRfFieldOffDetected
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventNetworkStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventOfficeMode
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventOperatorConfigChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPowerConnected
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPowerDisconnected
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageAdded
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageReplaced
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageFullyRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageRestarted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageDataCleared
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageCacheCleared
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackagesSuspended
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackagesUnsuspended
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageFirstLaunch
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageNeedsVerification
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPackageVerified
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPowerSaveModeChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPrivacyStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventPrimarySlotRoaming
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventQuickFixApplyResult
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventQuickFixRevokeResult
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventRadioStateChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventShutdown
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventScreenOff
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventScreenOn
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSplitScreen
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSlotChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSpnInfoChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSignalInfoChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSimStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventStkSessionEnd
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSmsEmergencyCbReceiveCompleted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventStkCommand
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventStkAlphaIdentifier
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSimCardDefaultVoiceSubscriptionChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSimCardDefaultMainSubscriptionChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventStkCardStateChanged
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventScreenLocked
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSimCardDefaultDataSubscriptionChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSmsReceiveCompleted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSmsWappushReceiveCompleted
     | @!APILevel[
-        12,
+        21,
         atomicservice: true,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventScreenUnlocked
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSimCardDefaultSmsSubscriptionChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSmsCbReceiveCompleted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSpecialCode
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventSetPrimarySlotStatus
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventThermalLevelChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventTimeTick
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventTimeChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventTimezoneChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUidRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserStarted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserBackground
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserForeground
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserSwitched
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserStarting
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserUnlocked
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserStopping
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserStopped
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserAdded
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUsbState
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUsbPortChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUsbDeviceAttached
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUsbDeviceDetached
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUsbAccessoryAttached
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUsbAccessoryDetached
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventUserInfoUpdated
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventVolumeRemoved
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventVolumeUnmounted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventVolumeMounted
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventVolumeBadRemoval
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventVolumeEject
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventVisibleAccountsUpdated
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiPowerState
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiScanFinished
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiRssiValue
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiConnState
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiHotspotState
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiApStaJoin
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiApStaLeave
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiMplinkStateChange
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiP2PConnState
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiP2PStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiP2PPeersStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiP2PPeersDiscoveryStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]
     CommonEventWifiP2PCurrentDeviceStateChanged
     | @!APILevel[
-        12,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.Notification.CommonEvent"
     ]

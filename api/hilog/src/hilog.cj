@@ -23,49 +23,37 @@ foreign func HiLogIsLoggable(domain: UInt32, tag: CString, level: UInt32): Bool
 foreign func HiLogPrint(ty: UInt32, level: UInt32, domain: UInt32, tag: CString, format: CString, content: CString): Unit
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiLog"
 ]
 public enum LogLevel {
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Debug
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Info
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Warn
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Error
     | @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -87,9 +75,7 @@ public enum LogLevel {
 let DEFAULT_LOG_TYPE: UInt32 = 0
 
 @!APILevel[
-    12,
-    atomicservice: true,
-    crossplatform: true,
+    21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiLog"
 ]
@@ -108,8 +94,7 @@ public class Hilog {
         }
     }
     @!APILevel[
-        12,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -123,9 +108,7 @@ public class Hilog {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -142,9 +125,7 @@ public class Hilog {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -167,9 +148,7 @@ public class Hilog {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -192,9 +171,7 @@ public class Hilog {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
@@ -211,9 +188,7 @@ public class Hilog {
     }
 
     @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
+        21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
