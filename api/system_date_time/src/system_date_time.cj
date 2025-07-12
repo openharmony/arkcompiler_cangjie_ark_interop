@@ -36,6 +36,11 @@ foreign {
     func FfiOHOSSysGetTimezone(): RetDataCString
 }
 
+/**
+ * System time and timezone.
+ *
+ * @relation declare interface Stat
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
