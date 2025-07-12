@@ -15,25 +15,26 @@
 
 package ohos.system_date_time
 
-import ohos.ffi.*
-import ohos.base.*
-import ohos.labels.*
+import ohos.ffi.{ RetCode, RetDataCString, RetDataI64 }
+import ohos.labels.APILevel
 
-foreign func FfiOHOSSysDateTimeSetTime(time: Int64): RetCode
+foreign {
+    func FfiOHOSSysDateTimeSetTime(time: Int64): RetCode
 
-foreign func FfiOHOSSysDateTimegetCurrentTime(isNano: Bool): RetDataI64
+    func FfiOHOSSysDateTimegetCurrentTime(isNano: Bool): RetDataI64
 
-foreign func FfiOHOSSysDateTimegetRealActiveTime(isNano: Bool): RetDataI64
+    func FfiOHOSSysDateTimegetRealActiveTime(isNano: Bool): RetDataI64
 
-foreign func FfiOHOSSysDateTimegetRealTime(isNano: Bool): RetDataI64
+    func FfiOHOSSysDateTimegetRealTime(isNano: Bool): RetDataI64
 
-foreign func FfiOHOSSysDateTimeGetTime(isNano: Bool): RetDataI64
+    func FfiOHOSSysDateTimeGetTime(isNano: Bool): RetDataI64
 
-foreign func FfiOHOSSysDateTimeGetUptime(timeType: Int32, isNano: Bool): RetDataI64
+    func FfiOHOSSysDateTimeGetUptime(timeType: Int32, isNano: Bool): RetDataI64
 
-foreign func FfiOHOSSysSetTimezone(Timezone: CString): RetCode
+    func FfiOHOSSysSetTimezone(Timezone: CString): RetCode
 
-foreign func FfiOHOSSysGetTimezone(): RetDataCString
+    func FfiOHOSSysGetTimezone(): RetDataCString
+}
 
 @!APILevel[
     21,
@@ -42,7 +43,12 @@ foreign func FfiOHOSSysGetTimezone(): RetDataCString
 ]
 public class SystemDateTime {
     /**
-     *  @brief getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void
+     * Obtains the number of milliseconds that have elapsed since the Unix epoch.
+     *
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types;
+     * @relation function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void;
+     * @relation function getCurrentTime(callback: AsyncCallback<number>): void;
+     * @relation function getCurrentTime(isNano?: boolean): Promise<number>;
      */
     @!APILevel[
         21,
@@ -57,7 +63,12 @@ public class SystemDateTime {
     }
 
     /**
-     *  @brief getRealActiveTime(isNano?: boolean): Promise<number>
+     * Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
+     *
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types;
+     * @relation function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void;
+     * @relation function getRealActiveTime(callback: AsyncCallback<number>): void;
+     * @relation function getRealActiveTime(isNano?: boolean): Promise<number>;
      */
     @!APILevel[
         21,
@@ -72,7 +83,12 @@ public class SystemDateTime {
     }
 
     /**
-     *  @brief getRealTime(isNano?: boolean): Promise<number>
+     * Obtains the number of milliseconds elapsed since the system was booted, including deep sleep time.
+     *
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types;
+     * @relation function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void;
+     * @relation function getRealTime(callback: AsyncCallback<number>): void;
+     * @relation function getRealTime(isNano?: boolean): Promise<number>;
      */
     @!APILevel[
         21,
@@ -87,7 +103,9 @@ public class SystemDateTime {
     }
 
     /**
-     *  @brief getTime(isNanoseconds?: boolean): number
+     * Obtains the number of timestamp that have elapsed since the Unix epoch.
+     *
+     * @relation function getTime(isNanoseconds?: boolean): number;
      */
     @!APILevel[
         21,
@@ -101,7 +119,11 @@ public class SystemDateTime {
     }
 
     /**
-     *  @brief getUptime(timeType: TimeType, isNanoseconds?: boolean): number
+     * Obtains the number of milliseconds since the system has been running.
+     *
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;
+     *     3. Parameter verification failed. This error code was added due to missing issues.
+     * @relation function getUptime(timeType: TimeType, isNanoseconds?: boolean): number;
      */
     @!APILevel[
         21,
@@ -115,7 +137,9 @@ public class SystemDateTime {
     }
 
     /**
-     *  @brief getTimezone(callback: AsyncCallback<string>): void
+     * Obtains the number of milliseconds since the system has been running.
+     *
+     * @relation function getTimezoneSync(): string;
      */
     @!APILevel[
         21,

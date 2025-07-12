@@ -15,10 +15,7 @@
 
 package ohos.system_date_time
 
-import ohos.ffi.*
-import ohos.hilog.*
-import ohos.labels.*
-import ohos.base.*
+import ohos.labels.APILevel
 
 /**
  * Indicates time type.
