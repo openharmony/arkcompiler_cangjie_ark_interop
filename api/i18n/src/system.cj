@@ -23,12 +23,22 @@ foreign {
     func FfiI18nSystemGetAppPreferredLanguage(): CString
 }
 
+/**
+ * Provides system functions.
+ *
+ * @relation export class System
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.I18n"
 ]
 public class System {
+    /**
+     * Obtains the preferred language of an application.
+     *
+     * @relation static getAppPreferredLanguage(): string;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

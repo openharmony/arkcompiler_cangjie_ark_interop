@@ -52,6 +52,11 @@ foreign {
     func FfiOHOSCalendarCompareDays(id: Int64, date: CDate): Int32
 }
 
+/**
+ * Provides the API for accessing Calendar name, time and date related information.
+ *
+ * @relation export class Calendar
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -66,6 +71,11 @@ public class Calendar <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Sets the date and time for a Calendar object.
+     *
+     * @relation setTime(date: Date): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -77,6 +87,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Sets the date and time for a Calendar object.
+     *
+     * @relation setTime(time: number): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -88,6 +103,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Sets the year, month, day, hour, minute, and second for this Calendar object.
+     *
+     * @relation set(year: number, month: number, date: number, hour?: number, minute?: number, second?: number): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -100,6 +120,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Sets the time zone of this Calendar object.
+     *
+     * @relation setTimeZone(timezone: string): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -113,6 +138,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Obtains the time zone ID of this Calendar object.
+     *
+     * @relation getTimeZone(): string;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -127,6 +157,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Obtains the first day of a week for this Calendar object.
+     *
+     * @relation getFirstDayOfWeek(): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -138,6 +173,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Sets the first day of a week for this Calendar object.
+     *
+     * @relation setFirstDayOfWeek(value: number): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -149,6 +189,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Obtains the minimum number of days in the first week for this Calendar object.
+     *
+     * @relation getMinimalDaysInFirstWeek(): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -160,6 +205,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Sets the minimum number of days in the first week for this Calendar object.
+     *
+     * @relation setMinimalDaysInFirstWeek(value: number): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -171,6 +221,14 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Obtains the values of the calendar attributes in this Calendar object.
+     *
+     * @param { string } field - Calendar attributes. The following table lists the supported attribute values.
+     * @returns { number } Value of the calendar attribute. For example, if the year of the internal date of the
+     *                     current Calendar object is 1990, get('year') returns 1990.
+     * @relation get(field: string): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -185,6 +243,14 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Obtains calendar display name in the specified language.
+     *
+     * @param { string } locale - System locale, which consists of the language, script, and country/region.
+     * @returns { string } Calendar display name in the specified language. For example, buddhist is displayed as
+     *                     Buddhist Calendar if the locale is en-US.
+     * @relation getDisplayName(locale: string): string;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -201,6 +267,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Checks whether a given date is a weekend in this Calendar object.
+     *
+     * @relation isWeekend(date?: Date): boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -216,6 +287,14 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Performs addition or subtraction on the calendar attributes of this Calendar object.
+     *
+     * @throws { BusinessError } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;
+     *                                 2.Incorrect parameter types.
+     * @throws { BusinessError } 890001 - Invalid parameter. Possible causes: Parameter verification failed.
+     * @relation add(field: string, amount: number): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -233,6 +312,11 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Obtains the timestamp of this Calendar object.
+     *
+     * @relation getTimeInMillis(): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -244,6 +328,13 @@ public class Calendar <: RemoteDataLite {
         }
     }
 
+    /**
+     * Compares the current date of this Calendar object with the specified date for the difference in the number of days.
+     *
+     * @throws { BusinessError } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;
+     *                                 2.Incorrect parameter types.
+     * @relation compareDays(date: Date): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
