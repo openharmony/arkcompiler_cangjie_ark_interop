@@ -20,6 +20,12 @@ import ohos.ffi.*
 import ohos.base.*
 import ohos.labels.*
 
+/**
+ * Provides API for stream operations. Before calling any API of Stream,
+ * you need to create a Stream instance by using createStream or fdopenStream.
+ *
+ * @relation declare interface Stream
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -35,7 +41,15 @@ public class Stream <: RemoteDataLite {
     }
 
     /**
-     *  @brief closeSync(file: number | File): void
+     * Close stream.
+     *
+     * @throws { BusinessError } 13900004 - Interrupted system call
+     * @throws { BusinessError } 13900005 - I/O error
+     * @throws { BusinessError } 13900008 - Bad file descriptor
+     * @throws { BusinessError } 13900025 - No space left on device
+     * @throws { BusinessError } 13900041 - Quota exceeded
+     * @throws { BusinessError } 13900042 - Unknown error
+     * @relation closeSync(): void;
      */
     @!APILevel[
         21,
@@ -53,7 +67,21 @@ public class Stream <: RemoteDataLite {
     }
 
     /**
-     *  @brief flushSync(): void
+     * Flushes this stream.
+     *
+     * @throws { BusinessError } 13900001 - Operation not permitted
+     * @throws { BusinessError } 13900004 - Interrupted system call
+     * @throws { BusinessError } 13900005 - I/O error
+     * @throws { BusinessError } 13900008 - Bad file descriptor
+     * @throws { BusinessError } 13900010 - Try again
+     * @throws { BusinessError } 13900013 - Bad address
+     * @throws { BusinessError } 13900020 - Invalid argument
+     * @throws { BusinessError } 13900024 - File too large
+     * @throws { BusinessError } 13900025 - No space left on device
+     * @throws { BusinessError } 13900034 - Operation would block
+     * @throws { BusinessError } 13900041 - Quota exceeded
+     * @throws { BusinessError } 13900042 - Unknown error
+     * @relation flushSync(): void;
      */
     @!APILevel[
         21,
@@ -70,8 +98,21 @@ public class Stream <: RemoteDataLite {
     }
 
     /**
-     *  @brief writeSync(fd: number, buffer: ArrayBuffer | string,
-     *                   options?: { offset?: number; length?: number; encoding?: string; }): number
+     * Writes data to this stream.
+     *
+     * @throws { BusinessError } 13900001 - Operation not permitted
+     * @throws { BusinessError } 13900004 - Interrupted system call
+     * @throws { BusinessError } 13900005 - I/O error
+     * @throws { BusinessError } 13900008 - Bad file descriptor
+     * @throws { BusinessError } 13900010 - Try again
+     * @throws { BusinessError } 13900013 - Bad address
+     * @throws { BusinessError } 13900020 - Invalid argument
+     * @throws { BusinessError } 13900024 - File too large
+     * @throws { BusinessError } 13900025 - No space left on device
+     * @throws { BusinessError } 13900034 - Operation would block
+     * @throws { BusinessError } 13900041 - Quota exceeded
+     * @throws { BusinessError } 13900042 - Unknown error
+     * @relation writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number;
      */
     @!APILevel[
         21,
@@ -106,6 +147,23 @@ public class Stream <: RemoteDataLite {
         return writeBytes
     }
 
+    /**
+     * Writes data to this stream.
+     *
+     * @throws { BusinessError } 13900001 - Operation not permitted
+     * @throws { BusinessError } 13900004 - Interrupted system call
+     * @throws { BusinessError } 13900005 - I/O error
+     * @throws { BusinessError } 13900008 - Bad file descriptor
+     * @throws { BusinessError } 13900010 - Try again
+     * @throws { BusinessError } 13900013 - Bad address
+     * @throws { BusinessError } 13900020 - Invalid argument
+     * @throws { BusinessError } 13900024 - File too large
+     * @throws { BusinessError } 13900025 - No space left on device
+     * @throws { BusinessError } 13900034 - Operation would block
+     * @throws { BusinessError } 13900041 - Quota exceeded
+     * @throws { BusinessError } 13900042 - Unknown error
+     * @relation writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -139,7 +197,19 @@ public class Stream <: RemoteDataLite {
     }
 
     /**
-     *  @brief readSync(buffer: ArrayBuffer, options?: { offset?: number; length?: number; }): number
+     * Reads data from this stream.
+     *
+     * @throws { BusinessError } 13900004 - Interrupted system call
+     * @throws { BusinessError } 13900005 - I/O error
+     * @throws { BusinessError } 13900008 - Bad file descriptor
+     * @throws { BusinessError } 13900010 - Try again
+     * @throws { BusinessError } 13900013 - Bad address
+     * @throws { BusinessError } 13900019 - Is a directory
+     * @throws { BusinessError } 13900020 - Invalid argument
+     * @throws { BusinessError } 13900034 - Operation would block
+     * @throws { BusinessError } 13900042 - Unknown error
+     * @throws { BusinessError } 13900044 - Network is unreachable
+     * @relation readSync(buffer: ArrayBuffer, options?: ReadOptions): number;
      */
     @!APILevel[
         21,

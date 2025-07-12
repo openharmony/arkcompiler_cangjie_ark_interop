@@ -38,23 +38,3 @@ ohos_cj_library("ohos.file_fs") {
   part_name = "cangjie_api"
   lib_name = "file_fs"
 }
-
-ohos_cj_library("ohos.file_fs.interop") {
-  sources = [
-    "src/interop/system_object_interop.cj",
-  ]
-
-  cj_deps = [
-    ":ohos.file_fs",
-    "../ffi_bind:ohos.ffi",
-    "../interop:ohos.ark_interop",
-    "../interop:ohos.ark_interop_helper",
-    "../labels:ohos.labels",
-  ]
-
-  external_deps = [ "file_api:cj_file_fs_ffi" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "file_fs.interop"
-}
