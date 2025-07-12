@@ -35,6 +35,11 @@ func getErrorMsg(code: Int32): String {
     }
 }
 
+/**
+ * Get value from settingsdata.
+ *
+ * @relation function getValueSync(context: Context, name: string, defValue: string): string;
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -59,8 +64,15 @@ public func getValue<T>(context: StageContext, name: T, defValue: String): Strin
     value
 }
 
+/**
+ * Get value from settingsdata(synchronous method).
+ * [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission.
+ *
+ * @relation function getValueSync(context: Context, name: string, defValue: string, domainName: string): string;
+ */
 @!APILevel[
     21,
+    permission: "ohos.permission.MANAGE_SECURE_SETTINGS",
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]

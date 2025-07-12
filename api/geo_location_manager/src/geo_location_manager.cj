@@ -23,15 +23,29 @@ import std.collection.*
 import std.sync.*
 import ohos.labels.*
 
+/**
+ * Provides interfaces for acquiring location information, managing location switches,
+ * geocoding, reverse geocoding, country code, fencing and other functions.
+ *
+ * @relation declare namespace geoLocationManager
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Location.Location.Core"
 ]
 public class GeoLocationManager {
-    /**
-     * @brief getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
-     */
+     /**
+      * Subscribe location changed.
+      *
+      * @throws { BusinessException } 201 - Permission verification failed. The   application does not have the permission required to call the API.
+      * @throws { BusinessException } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
+      * @throws { BusinessException } 3301000 - The location service is   unavailable.
+      * @throws { BusinessException } 3301100 - The location switch is off.
+      * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
+      * @relation function getCurrentLocation(callback:   AsyncCallback<Location>): void;
+      */
     @!APILevel[
         21,
         permission: "ohos.APPROXIMATELY_LOCATION",
@@ -52,8 +66,17 @@ public class GeoLocationManager {
     }
 
     /**
-     * @brief getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
-     */
+      * Obtain current location.
+      *
+      * @throws { BusinessException } 201 - Permission verification failed. The   application does not have the permission required to call the API.
+      * @throws { BusinessException } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
+      * @throws { BusinessException } 3301000 - The location service is   unavailable.
+      * @throws { BusinessException } 3301100 - The location switch is off.
+      * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
+      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>;
+      * @relation function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, callback: AsyncCallback<Location>): void;
+      */
     @!APILevel[
         21,
         permission: "ohos.APPROXIMATELY_LOCATION",
@@ -76,8 +99,17 @@ public class GeoLocationManager {
     }
 
     /**
-     * @brief getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
-     */
+      * Obtain current location.
+      *
+      * @throws { BusinessException } 201 - Permission verification failed. The   application does not have the permission required to call the API.
+      * @throws { BusinessException } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
+      * @throws { BusinessException } 3301000 - The location service is   unavailable.
+      * @throws { BusinessException } 3301100 - The location switch is off.
+      * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
+      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>;
+      * @relation function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, callback: AsyncCallback<Location>): void;
+      */
     @!APILevel[
         21,
         permission: "ohos.APPROXIMATELY_LOCATION",
@@ -100,8 +132,12 @@ public class GeoLocationManager {
     }
 
     /**
-     * @brief isLocationEnabled(): boolean
-     */
+      * Obtain current location switch status.
+      *
+      * @throws { BusinessException } 801 - Capability not supported. Failed to call ${geoLocationManager.isLocationEnabled} due to limited device capabilities.
+      * @throws { BusinessException } 3301000 - The location service is unavailable.
+      * @relation function isLocationEnabled(): boolean;
+      */
     @!APILevel[
         21,
         stagemodelonly: true,

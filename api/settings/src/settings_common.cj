@@ -19,18 +19,33 @@ import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.*
 
+/**
+ * Provide domain name for query.
+ *
+ * @relation namespace domainName
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
 public enum DomainName <: ToString {
+    /**
+     * Provide the domain name for device shared Key.
+     *
+     * @relation const DEVICE_SHARED: string;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     DeviceShared
+    /**
+     * Provide the domain name for user property.
+     *
+     * @relation const USER_PROPERTY: string;
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -39,6 +54,9 @@ public enum DomainName <: ToString {
     UserProperty
     | ...
 
+    /**
+     * Obtains the string of DomainName.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -53,30 +71,56 @@ public enum DomainName <: ToString {
     }
 }
 
+/**
+ * Provides methods for setting time and date formats.
+ *
+ * @relation namespace date
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
 public enum Date <: ToString {
+    /**
+     * Indicates the date format.
+     *
+     * @relation const DATE_FORMAT: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     DateFormat
+    /**
+     * Specifies whether the time is displayed in 12-hour or 24-hour format.
+     *
+     * @relation const TIME_FORMAT: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     TimeFormat
+    /**
+     * Specifies whether the date, time, and time zone are automatically obtained from the Network
+     * Identity and Time Zone (NITZ).
+     *
+     * @relation const AUTO_GAIN_TIME: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     AutoGainTime
+    /**
+     * Specifies whether the time zone is automatically obtained from NITZ.
+     *
+     * @relation const AUTO_GAIN_TIME_ZONE: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -85,6 +129,9 @@ public enum Date <: ToString {
     AutoGainTimeZone
     | ...
 
+    /**
+     * Obtains the string of Date.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -101,60 +148,114 @@ public enum Date <: ToString {
     }
 }
 
+/**
+ * Provides methods for setting the display effect, including the font size, screen brightness, screen rotation,
+ * animation factor, and display color.
+ *
+ * @relation namespace display
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
 public enum Display <: ToString {
+    /**
+     * Indicates the scaling factor of fonts, which is a float number.
+     *
+     * @relation const FONT_SCALE: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     FontScale
+    /**
+     * Indicates the screen brightness. The value ranges from 0 to 255.
+     *
+     * @relation const SCREEN_BRIGHTNESS_STATUS: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ScreenBrightnessStatus
+    /**
+     * Specifies whether automatic screen brightness adjustment is enabled.
+     *
+     * @relation const AUTO_SCREEN_BRIGHTNESS: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     AutoScreenBrightness
+    /**
+     * Indicates the duration that the device waits before going to sleep after a period of inactivity, in milliseconds.
+     *
+     * @relation const SCREEN_OFF_TIMEOUT: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     ScreenOffTimeout
+    /**
+     * Indicates the screen rotation when no other policy is available.
+     *
+     * @relation const DEFAULT_SCREEN_ROTATION: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     DefaultScreenRotation
+    /**
+     * Indicates the scaling factor for the animation duration.
+     *
+     * @relation const ANIMATOR_DURATION_SCALE: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
-    Animator_Duration_Scale
+    AnimatorDurationScale
+    /**
+     * Indicates the scaling factor for transition animations.
+     * If the value is 0, transition animations are disabled.
+     *
+     * @relation const TRANSITION_ANIMATION_SCALE: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     TransitionAnimationScale
+    /**
+     * Indicates the scaling factor for normal window animations.
+     * If the value is 0, window animations are disabled.
+     *
+     * @relation const WINDOW_ANIMATION_SCALE: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Audio.Core"
     ]
     WindowAnimationScale
+    /**
+     * Specifies whether display color inversion is enabled.
+     * If the value is 1, display color inversion is enabled. If the value is 0, display color inversion is disabled.
+     *
+     * @relation const DISPLAY_INVERSION_STATUS: string
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -163,6 +264,9 @@ public enum Display <: ToString {
     DisplayInversionStatus
     | ...
 
+    /**
+     * Obtains the string of Display.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -175,7 +279,7 @@ public enum Display <: ToString {
             case AutoScreenBrightness => "settings.display.auto_screen_brightness"
             case ScreenOffTimeout => "settings.display.screen_off_timeout"
             case DefaultScreenRotation => "settings.display.default_screen_rotation"
-            case Animator_Duration_Scale => "settings.display.animator_duration_scale"
+            case AnimatorDurationScale => "settings.display.animator_duration_scale"
             case TransitionAnimationScale => "settings.display.transition_animation_scale"
             case WindowAnimationScale => "settings.display.window_animation_scale"
             case DisplayInversionStatus => "settings.display.display_inversion_status"

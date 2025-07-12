@@ -18,12 +18,24 @@ package ohos.battery_info
 import std.deriving.*
 import ohos.labels.*
 
+/**
+ * Obtains battery information of a device.
+ * Battery information includes the remaining battery power,
+ * voltage, temperature, model, and charger type.
+ *
+ * @relation declare namespace batteryInfo
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public class BatteryInfo {
+    /**
+     * Battery state of charge (SoC) of the current device, in percent.
+     *
+     * @relation const batterySOC: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -35,6 +47,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery charging status of the current device.
+     *
+     * @relation const chargingStatus: BatteryChargeState;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -47,6 +64,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery health state of the current device.
+     *
+     * @relation const healthStatus: BatteryHealthState;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -59,6 +81,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Charger type of the current device.
+     *
+     * @relation const pluggedType: BatteryPluggedType;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -71,6 +98,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery voltage of the current device, in µV.
+     *
+     * @relation const voltage: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -82,6 +114,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery immediate current of the current device, in mA.
+     *
+     * @relation const nowCurrent: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -93,6 +130,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery total energy of the current device, in mAh.
+     *
+     * @relation const totalEnergy: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -107,6 +149,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery temperature of the current device, in 0.1℃.
+     *
+     * @relation const batteryTemperature: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -118,6 +165,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery present state of the current device.
+     *
+     * @relation const isBatteryPresent: boolean;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -129,6 +181,11 @@ public class BatteryInfo {
         }
     }
 
+    /**
+     * Battery capacity level of the current device.
+     *
+     * @relation const batteryCapacityLevel: BatteryCapacityLevel;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -142,6 +199,11 @@ public class BatteryInfo {
     }
 }
 
+/**
+ * Charger type of a device.
+ *
+ * @relation export enum BatteryPluggedType
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -149,24 +211,44 @@ public class BatteryInfo {
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryPluggedType {
+    /**
+     * Unknown type
+     *
+     * @relation NONE,
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     None
+    /**
+     * AC charger
+     *
+     * @relation AC,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     AC
+    /**
+     * USB charger
+     *
+     * @relation USB,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     USB
+    /**
+     * Wireless charger
+     *
+     * @relation WIRELESS
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -186,6 +268,11 @@ public enum BatteryPluggedType {
     }
 }
 
+/**
+ * Battery charging status of a device.
+ *
+ * @relation export enum BatteryChargeState
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -193,24 +280,44 @@ public enum BatteryPluggedType {
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryChargeState {
+    /**
+     * Unknown state.
+     *
+     * @relation NONE,
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     None
+    /**
+     * The battery is being charged.
+     *
+     * @relation ENABLE,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Enable
+    /**
+     * The battery is not being charged.
+     *
+     * @relation DISABLE,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Disable
+    /**
+     * The battery is fully charged.
+     *
+     * @relation FULL
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -230,6 +337,11 @@ public enum BatteryChargeState {
     }
 }
 
+/**
+ * Battery health status of a device.
+ *
+ * @relation export enum BatteryHealthState
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -237,36 +349,66 @@ public enum BatteryChargeState {
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryHealthState {
+    /**
+     * Unknown state.
+     *
+     * @relation UNKNOWN,
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Unknown
+    /**
+     * The battery is in healthy state.
+     *
+     * @relation GOOD,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Good
+    /**
+     * The battery is overheated.
+     *
+     * @relation OVERHEAT,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Overheat
+    /**
+     * The battery voltage is over high.
+     *
+     * @relation OVERVOLTAGE,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     Overvoltage
+    /**
+     * The battery temperature is low.
+     *
+     * @relation COLD,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     cold
+    /**
+     * The battery is dead.
+     *
+     * @relation DEAD
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -288,6 +430,11 @@ public enum BatteryHealthState {
     }
 }
 
+/**
+ * Battery capacity level of a device.
+ *
+ * @relation export enum BatteryCapacityLevel
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -295,42 +442,77 @@ public enum BatteryHealthState {
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum BatteryCapacityLevel {
+    /**
+     * The battery is in full capacity level.
+     *
+     * @relation LEVEL_FULL,
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelFull
+    /**
+     * The battery is in high capacity level.
+     *
+     * @relation LEVEL_HIGH,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelHigh
+    /**
+     * The battery is in normal capacity level.
+     *
+     * @relation LEVEL_NORMAL,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelNormal
+    /**
+     * The battery is in low capacity level.
+     *
+     * @relation LEVEL_LOW,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelLow
+    /**
+     * The battery is in warning low capacity level.
+     *
+     * @relation LEVEL_WARNING,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelWarning
+    /**
+     * The battery is in critical low capacity level.
+     *
+     * @relation LEVEL_CRITICAL,
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     LevelCritical
+    /**
+     * The battery is in the lowest capacity level, system will shut down automatically in a few seconds.
+     *
+     * @relation LEVEL_SHUTDOWN
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -353,6 +535,11 @@ public enum BatteryCapacityLevel {
     }
 }
 
+/**
+ * Extra key of common event COMMON_EVENT_BATTERY_CHANGED.
+ *
+ * @relation export enum CommonEventBatteryChangedKey
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -360,54 +547,99 @@ public enum BatteryCapacityLevel {
     syscap: "SystemCapability.PowerManager.BatteryManager.Core"
 ]
 public enum CommonEventBatteryChangedKey {
+    /**
+     * Extra code of batterySOC.
+     *
+     * @relation EXTRA_SOC = 'soc',
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraSoc
+    /**
+     * Extra code of chargingStatus.
+     *
+     * @relation EXTRA_CHARGE_STATE = 'chargeState',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraChargeState
+    /**
+     * Extra code of healthStatus.
+     *
+     * @relation EXTRA_HEALTH_STATE = 'healthState',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraHealthState
+    /**
+     * Extra code of pluggedType.
+     *
+     * @relation EXTRA_PLUGGED_TYPE = 'pluggedType',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraPluggedType
+    /**
+     * Extra code of voltage.
+     *
+     * @relation EXTRA_VOLTAGE = 'voltage',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraVoltage
+    /**
+     * Extra code of technology.
+     *
+     * @relation EXTRA_TECHNOLOGY = 'technology',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraTechnology
+    /**
+     * Extra code of batteryTemperature.
+     *
+     * @relation EXTRA_TEMPERATURE = 'temperature',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraTemperature
+    /**
+     * Extra code of isBatteryPresent.
+     *
+     * @relation EXTRA_PRESENT = 'present',
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.PowerManager.BatteryManager.Core"
     ]
     ExtraPresent
+    /**
+     * Extra code of batteryCapacityLevel.
+     *
+     * @relation EXTRA_CAPACITY_LEVEL = 'capacityLevel'
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
