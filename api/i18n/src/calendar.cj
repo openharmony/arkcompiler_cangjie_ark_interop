@@ -225,7 +225,7 @@ public class Calendar <: RemoteDataLite {
      * Obtains the values of the calendar attributes in this Calendar object.
      *
      * @param { string } field - Calendar attributes. The following table lists the supported attribute values.
-     * @returns { number } Value of the calendar attribute. For example, if the year of the internal date of the
+     * @returns { Int32 } Value of the calendar attribute. For example, if the year of the internal date of the
      *                     current Calendar object is 1990, get('year') returns 1990.
      * @relation get(field: string): number;
      */
