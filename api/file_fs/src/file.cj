@@ -19,6 +19,11 @@ import ohos.ffi.*
 import ohos.base.*
 import ohos.labels.*
 
+/**
+ * File object.
+ *
+ * @relation interface File
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -33,6 +38,11 @@ public class File <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * FD of the file.
+     *
+     * @relation readonly fd: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -44,6 +54,11 @@ public class File <: RemoteDataLite {
         }
     }
 
+    /**
+     * Path of the file.
+     *
+     * @relation readonly path: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -58,6 +73,11 @@ public class File <: RemoteDataLite {
         }
     }
 
+    /**
+     * Name of the file.
+     *
+     * @relation readonly name: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -72,6 +92,17 @@ public class File <: RemoteDataLite {
         }
     }
 
+    /**
+     * Applies an exclusive lock or a shared lock on this file in non-blocking mode.
+     *
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900043 - No record locks available
+     * @relation tryLock(exclusive?: boolean): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -85,6 +116,17 @@ public class File <: RemoteDataLite {
         }
     }
 
+    /**
+     * Unlocks a file.
+     *
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900043 - No record locks available
+     * @relation unlock(): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -99,7 +141,12 @@ public class File <: RemoteDataLite {
     }
 
     /**
-     *  @brief getParent(): string
+     * Unlocks a file.
+     *
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 14300002 - Invalid URI
+     * @relation getParent(): string
      */
     @!APILevel[
         21,

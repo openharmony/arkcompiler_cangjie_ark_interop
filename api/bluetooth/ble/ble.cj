@@ -24,8 +24,7 @@ import ohos.labels.*
 /**
  * create a Gatt server instance.
  *
- * @returns { GattServer } Returns a Gatt server instance {@code GattServer}.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function createGattServer(): GattServer
  */
 @!APILevel[
     21,
@@ -45,11 +44,10 @@ public func createGattServer(): GattServer {
  * create a Gatt client device instance.
  *
  * @param { String } deviceId - Indicates device ID. For example, "11:22:33:AA:BB:FF".
- * @returns { GattClientDevice } Returns a Gatt client device instance {@code GattClientDevice}.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException } 801 - Capability not supported.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function createGattClientDevice(deviceId: string): GattClientDevice
  */
 @!APILevel[
     21,
@@ -73,25 +71,19 @@ public func createGattClientDevice(deviceId: String): GattClientDevice {
 /**
  * Starts scanning for specified BLE devices with filters.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { Array<ScanFilter> } filters - Indicates the list of filters used to filter out specified devices.
- * If you do not want to use filter, set this parameter to {@code null}.
- * @param { ScanOptions } options - Indicates the parameters for scanning and if the user does not assign a value, the default value will be used.
- * {@link ScanOptions#interval} set to 0, {@link ScanOptions#dutyMode} set to {@link ScanModeLowPower}
- * and {@link ScanOptions#matchMode} set to {@link MatchModeAggressive}.
- * and {@link ScanOptions#phyType} set to {@link PhyLeAllSupported}.
+ * @param { ?ScanOptions } options - Indicates the parameters for scanning and if the user does not assign a value, the default value will be used.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900001 - Service stopped.
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function startBLEScan(filters: Array<ScanFilter>, options?: ScanOptions): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -126,17 +118,16 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
 /**
  * Stops BLE scanning.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900001 - Service stopped.
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function stopBLEScan(): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -153,22 +144,18 @@ public func stopBLEScan(): Unit {
 /**
  * Starts BLE advertising.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { AdvertiseSetting } setting - Indicates the settings for BLE advertising.
- * @param { AdvertiseData } advData - Indicates the advertising data.
- * @param { AdvertiseData } advResponse - Indicates the scan response associated with the advertising data.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900001 - Service stopped.
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?: AdvertiseData): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -199,17 +186,16 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
 /**
  * Stops BLE advertising.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900001 - Service stopped.
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function stopAdvertising(): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -225,25 +211,20 @@ public func stopAdvertising(): Unit {
 
 /**
  * Starts BLE advertising.
- * The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising
- * using the API {@link enableAdvertising} or {@link disableAdvertising}.
- * To completely stop the advertising corresponding to the ID, invoke the API {@link stopAdvertising} with ID.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { AdvertisingParams } advertisingParams - Indicates the params for BLE advertising.
- * @returns { UInt32 } Returns advertise ID.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900001 - Service stopped.
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function startAdvertising(advertisingParams: AdvertisingParams): Promise<number>
+ * @relation function startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback<number>): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -269,20 +250,19 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32 {
  * Stops BLE advertising.
  * Completely stop the advertising corresponding to the ID.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { UInt32 } advertisingId - Indicates the ID for this BLE advertising.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types.
+ * 2. Incorrect parameter types.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900001 - Service stopped.
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function stopAdvertising(advertisingId: number): Promise<void>
+ * relation function stopAdvertising(advertisingId: number, callback: AsyncCallback<void>): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -355,19 +335,16 @@ private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleCallbackType, 
 /**
  * Subscribing to advertising state change event.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { BluetoothBleCallbackType } type - Type of the advertising state to listen for.
- * @param { Callback1Argument<AdvertisingStateChangeInfo> } callback - Callback used to listen for the advertising state.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function on(type: 'advertisingStateChange', callback: Callback<AdvertisingStateChangeInfo>): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -386,19 +363,16 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Adv
 /**
  * Subscribe BLE scan result.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { BluetoothBleCallbackType } type - Type of the scan result event to listen for.
- * @param { Callback1Argument<Array<ScanResult>> } callback - Callback used to listen for the scan result event.
  * @throws { BusinessException } 201 - Permission denied.
  * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException } 801 - Capability not supported.
  * @throws { BusinessException } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function on(type: 'BLEDeviceFind', callback: Callback<Array<ScanResult>>): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -421,15 +395,13 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Arr
 /**
  * Unsubscribe from callback event.
  *
- * @permission ohos.permission.ACCESS_BLUETOOTH
- * @param { BluetoothBleCallbackType } type - Type of the callback.
- * @param { ?CallbackObject } callback - Callback.
  * @throws { BusinessException} 201 - Permission denied.
  * @throws { BusinessException} 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+ * 2. Incorrect parameter types. 3. Parameter verification failed.
  * @throws { BusinessException} 801 - Capability not supported.
  * @throws { BusinessException} 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation function off(type: 'advertisingStateChange', callback?: Callback<AdvertisingStateChangeInfo>): void
+ * relation function off(type: 'BLEDeviceFind', callback?: Callback<Array<ScanResult>>): void
  */
 @!APILevel[
     21,

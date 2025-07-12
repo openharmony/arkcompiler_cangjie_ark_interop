@@ -22,10 +22,9 @@ import ohos.ffi.*
 import ohos.bluetooth.*
 
 /**
- * Manages GATT client. Before calling an Gatt client method, you must use {@link createGattClientDevice} to create an GattClientDevice instance.
+ * Manages GATT client. Before calling an Gatt client method, you must use createGattClientDevice to create an GattClientDevice instance.
  *
- * @typedef GattClientDevice
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface GattClientDevice
  */
 @!APILevel[
     21,
@@ -52,19 +51,17 @@ public class GattClientDevice <: RemoteDataLite {
 
     /**
      * Connects to a BLE peripheral device.
-     * <p>The 'BLEConnectionStateChange' event is subscribed to return the connection state.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900003 - Bluetooth disabled.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation connect(): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -81,17 +78,16 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Disconnects from or stops an ongoing connection to a BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900003 - Bluetooth disabled.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation disconnect(): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -107,19 +103,18 @@ public class GattClientDevice <: RemoteDataLite {
 
     /**
      * Disables a BLE peripheral device.
-     * <p> This method unregisters the device and clears the registered callbacks and handles.
+     * This method unregisters the device and clears the registered callbacks and handles.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900003 - Bluetooth disabled.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation close(): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -136,19 +131,18 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Obtains the name of BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @returns { String } Returns a string representation of the name if obtained;
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter.Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types.
+     * 2. Incorrect parameter types.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation getDeviceName(): Promise<string>
+     * @relation getDeviceName(callback: AsyncCallback<string>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -173,19 +167,18 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Starts discovering services.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @returns { Array<GattService> } Returns the list of services {@link GattService} of the BLE peripheral device.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation getServices(): Promise<Array<GattService>>
+     * @relation getServices(callback: AsyncCallback<Array<GattService>>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -208,21 +201,19 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Reads the characteristic of a BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BLECharacteristic } characteristic - Indicates the characteristic to read.
-     * @param { (?BusinessException, ?BLECharacteristic) -> Unit } callback - Callback invoked to return the characteristic value read.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2901000 - Read forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>
+     * @relation readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -256,21 +247,19 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Reads the descriptor of a BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BLEDescriptor } descriptor - Indicates the descriptor to read.
-     * @param { (?BusinessException, ?BLEDescriptor) -> Unit } callback - Callback invoked to return the descriptor read.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2901000 - Read forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>
+     * @relation readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -301,22 +290,19 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Writes the characteristic of a BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BLECharacteristic } characteristic - Indicates the characteristic to write.
-     * @param { GattWriteType } writeType - Write type of the characteristic.
-     * @param { (?BusinessException) -> Unit } callback - Callback used to return the result.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2901001 - Write forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType): Promise<void>
+     * @relation writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -344,21 +330,19 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Writes the descriptor of a BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BLEDescriptor } descriptor - Indicates the descriptor to write.
-     * @param { (?BusinessException) -> Unit } callback - Callback used to return the result.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2901001 - Write forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation writeDescriptorValue(descriptor: BLEDescriptor): Promise<void>
+     * @relation writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -385,17 +369,18 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Get the RSSI value of this BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
      * @param { (?BusinessException, ?Int32) -> Unit } callback - Callback invoked to return the RSSI, in dBm.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types.
+     * 2. Incorrect parameter types.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900099 - Operation failed.
+     * @relation getRssiValue(): Promise<number>
+     * @relation getRssiValue(callback: AsyncCallback<number>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -419,19 +404,17 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Set the mtu size of a BLE peripheral device.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { Int32 } mtu - The maximum transmission unit.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation setBLEMtuSize(mtu: number): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -448,21 +431,18 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Enables or disables indication of a characteristic when value changed.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BLECharacteristic } characteristic - Indicates the characteristic to indicate.
-     * @param { Bool } enable - Specifies whether to enable indication of the characteristic. The value {@code true} indicates
-     * that indication is enabled, and the value {@code false} indicates that indication is disabled.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean): Promise<void>
+     * @relation setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -482,21 +462,18 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Enables or disables indication of a characteristic when value changed.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BLECharacteristic } characteristic - Indicates the characteristic to indicate.
-     * @param { Bool } enable - Specifies whether to enable indication of the characteristic. The value {@code true} indicates
-     * that indication is enabled, and the value {@code false} indicates that indication is disabled.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise<void>
+     * @relation setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -516,20 +493,15 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Subscribe characteristic value changed event.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BluetoothBleGattClientDeviceCallbackType } type - Type of the characteristic value changed event to listen for.
-     * @param { Callback1Argument<BLECharacteristic>} callback - Callback used to listen for the characteristic value changed event.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
-     * @atomicservice
-     * @since 12
+     * @relation on(type: 'BLECharacteristicChange', callback: Callback<BLECharacteristic>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -547,18 +519,15 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Subscribe client connection state changed event.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BluetoothBleGattClientDeviceCallbackType } type - Type of the connection state changed event to listen for.
-     * @param { Callback1Argument<BLEConnectionChangeState> } callback - Callback used to listen for the connection state changed event.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation on(type: 'BLEConnectionStateChange', callback: Callback<BLEConnectionChangeState>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -579,18 +548,15 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Subscribe mtu changed event.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BluetoothBleGattClientDeviceCallbackType } type - Type of the mtu changed event to listen for.
-     * @param { Callback1Argument<Int32> } callback - Callback used to listen for the mtu changed event.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation on(type: 'BLEMtuChange', callback: Callback<number>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
@@ -608,18 +574,17 @@ public class GattClientDevice <: RemoteDataLite {
     /**
      * Unsubscribe mtu changed event.
      *
-     * @permission ohos.permission.ACCESS_BLUETOOTH
-     * @param { BluetoothBleGattClientDeviceCallbackType } type - Type of the mtu changed event to listen for.
-     * @param { CallbackObject} callback - Callback event.
      * @throws { BusinessException } 201 - Permission denied.
      * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
-     * <br>2. Incorrect parameter types. 3. Parameter verification failed.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
      * @throws { BusinessException } 801 - Capability not supported.
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation off(type: 'BLECharacteristicChange', callback?: Callback<BLECharacteristic>): void
+     * @relation off(type: 'BLEConnectionStateChange', callback?: Callback<BLEConnectionChangeState>): void
+     * @relation off(type: 'BLEMtuChange', callback?: Callback<number>): void
      */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]

@@ -22,67 +22,131 @@ import ohos.labels.*
 
 let FS_LOG = HilogChannel(0, FILEIO_DOMAIN_ID, "CJ-fs")
 
+/**
+ * Mode Indicates the open flags.
+ *
+ * @relation namespace OpenMode
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public enum OpenMode {
+    /**
+     * Read only Permission.
+     *
+     * @relation const READ_ONLY = 0o0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     ReadOnly
-    | @!APILevel[
+    | 
+    /**
+     * Write only Permission.
+     *
+     * @relation const WRITE_ONLY = 0o1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     WriteOnly
-    | @!APILevel[
+    | 
+    /**
+     * Write and Read Permission.
+     *
+     * @relation const READ_WRITE = 0o2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     ReadWrite
-    | @!APILevel[
+    | 
+    /**
+     * If not exist, create file.
+     *
+     * @relation const CREATE = 0o100
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     Create
-    | @!APILevel[
+    | 
+    /**
+     * File truncate len 0.
+     *
+     * @relation const TRUNC = 0o1000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     Trunc
-    | @!APILevel[
+    | 
+    /**
+     * File append write.
+     *
+     * @relation const APPEND = 0o2000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     Append
-    | @!APILevel[
+    | 
+    /**
+     * File open in nonblocking mode.
+     *
+     * @relation const NONBLOCK = 0o4000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     NonBlock
-    | @!APILevel[
+    | 
+    /**
+     * File is Dir.
+     *
+     * @relation const DIR = 0o200000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     Dir
-    | @!APILevel[
+    | 
+    /**
+     * File is not symbolic link.
+     *
+     * @relation const NOFOLLOW = 0o400000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     NoFollow
-    | @!APILevel[
+    | 
+    /**
+     * SYNC IO.
+     *
+     * @relation const SYNC = 0o4010000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
@@ -90,6 +154,9 @@ public enum OpenMode {
     Sync
     | ...
 
+    /**
+     * Get the corresponding mapping value.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -114,12 +181,22 @@ public enum OpenMode {
     }
 }
 
+/**
+ * Defines the options used in readLines().
+ *
+ * @relation interface Options
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class Options {
+    /**
+     * File encoding format.
+     *
+     * @relation encoding?: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -127,6 +204,9 @@ public class Options {
     ]
     public var encoding: String
 
+    /**
+     * Options constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -139,6 +219,11 @@ public class Options {
     }
 }
 
+/**
+ * Provides a ReaderIterator object.
+ *
+ * @relation interface ReaderIterator
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -153,6 +238,14 @@ public class ReaderIterator <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Obtains the ReaderIterator result.
+     *
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900037 - No data available
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation next(): ReaderIteratorResult
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -170,18 +263,34 @@ public class ReaderIterator <: RemoteDataLite {
     }
 }
 
+/**
+ * Represents the information obtained by the ReaderIterator object.
+ *
+ * @relation interface ReaderIteratorResult
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class ReaderIteratorResult {
+    /**
+     * Whether the iteration is complete.
+     * The value true means the iteration is complete; the value false means the iteration is not complete.
+     *
+     * @relation done: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var done: Bool
+    /**
+     * File text content read line by line.
+     *
+     * @relation value: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -207,24 +316,44 @@ struct RetReaderIteratorResult {
     ) {}
 }
 
+/**
+ * Defines the options use din write().
+ *
+ * @relation interface WriteOptions extends Options
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class WriteOptions {
+    /**
+     * Length of the data to write, in bytes.
+     *
+     * @relation length?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var length: Option<UIntNative>
+    /**
+     * Start position of the file to write (current filePointer plus offset), in bytes.
+     *
+     * @relation offset?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var offset: Option<Int64>
+    /**
+     * File encoding format.
+     *
+     * @relation encoding?: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -232,6 +361,9 @@ public class WriteOptions {
     ]
     public var encoding: String
 
+    /**
+     * WriteOptions constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -248,30 +380,47 @@ public class WriteOptions {
     }
 }
 
+/**
+ * Defines the options used in read().
+ *
+ * @relation interface ReadOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class ReadOptions {
+    /**
+     * Start position of the file to read (current filePointer plus offset), in bytes.
+     *
+     * @relation offset?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var offset: Option<Int64>
+    /**
+     * Length of the data to read, in bytes.
+     *
+     * @relation length?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var length: Option<UIntNative>
+    /**
+     * ReadOptions constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
-
     public init(
         offset!: Option<Int64> = None,
         length!: Option<UIntNative> = None
@@ -281,24 +430,44 @@ public class ReadOptions {
     }
 }
 
+/**
+ * Defines the options used in readText().
+ *
+ * @relation interface ReadTextOptions extends ReadOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class ReadTextOptions {
+    /**
+     * Start position of the file to read (current filePointer plus offset), in bytes.
+     *
+     * @relation offset?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var offset: Int64
+    /**
+     * Length of the data to read, in bytes.
+     *
+     * @relation length?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var length: Option<Int64>
+    /**
+     * File encoding format.
+     *
+     * @relation encoding?: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -306,6 +475,9 @@ public class ReadTextOptions {
     ]
     public var encoding: String
 
+    /**
+     * ReadTextOptions constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -322,25 +494,47 @@ public class ReadTextOptions {
     }
 }
 
+/**
+ * Enumerates the types of the relative offset position used in lseek().
+ *
+ * @relation enum WhenceType
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public enum WhenceType {
+    /**
+     * Starting position of the file offset.
+     *
+     * @relation SEEK_SET = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     SeekSet
-    | @!APILevel[
+    | 
+    /**
+     * Current position of the file offset.
+     *
+     * @relation SEEK_CUR = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     SeekCur
-    | @!APILevel[
+    | 
+    /**
+     * Ending position of the file offset.
+     *
+     * @relation SEEK_END = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
@@ -348,6 +542,9 @@ public enum WhenceType {
     SeekEnd
     | ...
 
+    /**
+     * Get the corrsponding mapping value.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -365,18 +562,33 @@ public enum WhenceType {
     }
 }
 
+/**
+ * EDefines conflicting file information used in copyDir() or moveDir().
+ *
+ * @relation interface ConflictFiles
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class ConflictFiles {
+    /**
+     * The path of the source file.
+     *
+     * @relation srcFile: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var srcFile: String
+    /**
+     * The path of the destination file.
+     *
+     * @relation destFile: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -384,6 +596,9 @@ public class ConflictFiles {
     ]
     public var destFile: String
 
+    /**
+     * ConflictFiles constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -457,42 +672,79 @@ struct RetDataCArrStringN {
     ) {}
 }
 
+/**
+ * Defines the file filtering configuration used by listFile().
+ *
+ * @relation interface Filter
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class Filter {
+    /**
+     * Locate files that fully match the specified file name extensions, which are of the OR relationship.
+     *
+     * @relation suffix?: Array<string>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var suffix: Array<String>
+    /**
+     * Locate files that fuzzy match the specified file names, which are of the OR relationship.
+     * Currently, only the wildcard * is supported.
+     *
+     * @relation displayName?: Array<string>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var displayName: Array<String>
+    /**
+     * Locate files that fully match the specified MIME types, which are of the OR relationship.
+     *
+     * @relation mimeType?: Array<string>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var mimeType: Array<String>
+    /**
+     * Locate files that are greater than or equal to the specified size.
+     *
+     * @relation fileSizeOver?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var fileSizeOver: ?Int64
+    /**
+     * Locate files whose last modification time is the same or later than the specified time.
+     *
+     * @relation lastModifiedAfter?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var lastModifiedAfter: ?Float64
+    /**
+     * Whether to exclude the files already in Media. The value true means to exclude the files already in Media;
+     * the value false means not to exclude the files already in Media.
+     *
+     * @relation excludeMedia?: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -500,6 +752,9 @@ public class Filter {
     ]
     public var excludeMedia: Bool
 
+    /**
+     * Filter constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -569,24 +824,47 @@ struct CFilter {
     }
 }
 
+/**
+ * ListFileOptions type
+ *
+ * @relation interface ListFileOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.FileManagement.File.FileIO"
 ]
 public class ListFileOptions {
+    /**
+     * Whether to list all files in the subdirectories recursively. This parameter is optional.
+     * The default value is false. If recursion is false, the names of files and directories that meet the filtering
+     * requirements in the current directory are returned. If recursion is true, relative paths (starting with /)
+     * of all files that meet the specified conditions in the current directory are returned.
+     *
+     * @relation recursion?: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var recursion: Bool
+    /**
+     * Number of file names to list. This parameter is optional. The default value is 0, which means to list all files.
+     *
+     * @relation listNum?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
     public var listNum: Int32
+    /**
+     * File filtering configuration. This parameter is optional. It specifies the file filtering conditions.
+     *
+     * @relation filter?: Filter
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -594,6 +872,9 @@ public class ListFileOptions {
     ]
     public var filter: Filter
 
+    /**
+     * ListFileOptions constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -643,6 +924,12 @@ unsafe func getArrStringAndFree(cArr: CArrString): Array<String> {
     return ret
 }
 
+
+/**
+ * FileFs
+ *
+ * @relation namespace fileIo
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -651,7 +938,22 @@ unsafe func getArrStringAndFree(cArr: CArrString): Array<String> {
 public class FileFs {
 
     /**
-     *  @brief statSync(file: string | number): Stat
+     *  Obtains detailed attribute information of a file or directory.
+     *
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function statSync(file: string | number): Stat
      */
     @!APILevel[
         21,
@@ -671,7 +973,22 @@ public class FileFs {
     }
 
     /**
-     *  @brief statSync(file: string | number): Stat
+     *  Obtains detailed attribute information of a file or directory.
+     *
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function statSync(file: string | number): Stat
      */
     @!APILevel[
         21,
@@ -690,7 +1007,45 @@ public class FileFs {
     }
 
     /**
-     *  @brief createStreamSync(path: string, mode: string): Stream
+     *  Creates a stream based on a file path.
+     *
+     * @param { String } mode - r: Open a file for reading. The file must exist.
+     * r+: Open a file for both reading and writing. The file must exist.
+     * w: Open a file for writing. If the file exists, clear its content. If the file does not exist, create a file.
+     * w+: Open a file for both reading and writing. If the file exists, clear its content. If the file does not exist, create a file.
+     * a: Open a file in append mode for writing at the end of the file. If the file does not exist, create a file.
+     * If the file exists, write data to the end of the file (the original content of the file is reserved).
+     * a+: Open a file in append mode for reading or updating at the end of the file.
+     * If the file does not exist, create a file.
+     * If the file exists, write data to the end of the file (the original content of the file is reserved).
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900006 - No such device or address
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900017 - No such device
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900029 - Resource deadlock would occur
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900042 - Network is unreachable
+     * @relation function createStreamSync(path: string, mode: string): Stream
      */
     @!APILevel[
         21,
@@ -716,7 +1071,44 @@ public class FileFs {
     }
 
     /**
-     *  @brief fdopenStreamSync(fd: number, mode: string): Stream
+     *  Opens a stream based on an FD.
+     *
+     * @param { String } mode - r: Open a file for reading. The file must exist.
+     * r+: Open a file for both reading and writing. The file must exist.
+     * w: Open a file for writing. If the file exists, clear its content. If the file does not exist, create a file.
+     * w+: Open a file for both reading and writing. If the file exists, clear its content. If the file does not exist, create a file.
+     * a: Open a file in append mode for writing at the end of the file. If the file does not exist, create a file.
+     * If the file exists, write data to the end of the file (the original content of the file is reserved).
+     * a+: Open a file in append mode for reading or updating at the end of the file. If the file does not exist,
+     * create a file. If the file exists, write data to the end of the file (the original content of the file is reserved).
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900006 - No such device or address
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900017 - No such device
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900029 - Resource deadlock would occur
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function fdopenStreamSync(fd: number, mode: string): Stream
      */
     @!APILevel[
         21,
@@ -739,7 +1131,19 @@ public class FileFs {
     }
 
     /**
-     *  @brief lstatSync(path: string): Stat
+     *  Obtains information about a symbolic link that is used to refer to a file or directory.
+     *
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function lstatSync(path: string): Stat
      */
     @!APILevel[
         21,
@@ -762,7 +1166,21 @@ public class FileFs {
     }
 
     /**
-     *  @brief accessSync(path: string): boolean
+     *  Checks whether a file or directory exists or has the operation permission.
+     *
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation ffunction accessSync(path: string, mode?: AccessModeType): boolean
      */
     @!APILevel[
         21,
@@ -784,7 +1202,36 @@ public class FileFs {
     }
 
     /**
-     *  openSync(path: string, mode?: number): File
+     *  Opens a file or directory.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900006 - No such device or address
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900017 - No such device
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900029 - Resource deadlock would occur
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function openSync(path: string, mode?: number): File
      */
     @!APILevel[
         21,
@@ -805,7 +1252,16 @@ public class FileFs {
     }
 
     /**
-     *  dup(fd: number): File
+     *  Opens a File object based on an FD.
+     *
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function dup(fd: number): File
      */
     @!APILevel[
         21,
@@ -824,7 +1280,19 @@ public class FileFs {
     }
 
     /**
-     *  readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
+     *  Reads data from a file.
+     *
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
      */
     @!APILevel[
         21,
@@ -858,7 +1326,21 @@ public class FileFs {
     }
 
     /**
-     *  writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
+     *  Writes data to a file.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number;
      */
     @!APILevel[
         21,
@@ -892,7 +1374,21 @@ public class FileFs {
     }
 
     /**
-     *  writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
+     *  Writes data to a file.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number;
      */
     @!APILevel[
         21,
@@ -927,7 +1423,24 @@ public class FileFs {
     }
 
     /**
-     *  @brief mkdirSync(path: string): void
+     *  Creates a directory.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900028 - Too many links
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function mkdirSync(path: string): void
      */
     @!APILevel[
         21,
@@ -946,7 +1459,24 @@ public class FileFs {
     }
 
     /**
-     *  @brief mkdirSync(path: string, recursion: boolean): void
+     *  Creates a directory.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900028 - Too many links
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function mkdirSync(path: string, recursion: boolean): void
      */
     @!APILevel[
         21,
@@ -965,7 +1495,21 @@ public class FileFs {
     }
 
     /**
-     *  @brief rmdirSync(path: string): void
+     *  Removes a directory.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900027 - Read-only file system1
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900032 - Directory not empty
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function rmdirSync(path: string): void
      */
     @!APILevel[
         21,
@@ -984,7 +1528,44 @@ public class FileFs {
     }
 
     /**
-     *  @brief moveDirSync(src: string, dest: string, mode?: number): void
+     *  Moves the source directory to the destination directory.
+     *
+     * @param { Int32 } [mode!: Int32 = 0] - Move mode. The default value is 0.
+     * 0: Throw an exception if a directory conflict occurs.
+     * An exception will be thrown if the destination directory contains a non-empty directory with the same name as the source directory.
+     * 1: Throw an exception if a file conflict occurs.
+     * An exception will be thrown if the destination directory contains a directory with the same name as the source directory,
+     * and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory
+     * will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained.
+     * The data attribute in the error returned provides information about the conflicting files in the Array<ConflictFiles> format.
+     * 2: Forcibly overwrite the conflicting files in the destination directory.
+     * When the destination directory contains a directory with the same name as the source directory,
+     * the files with the same names in the destination directory are overwritten forcibly;
+     * the files without conflicts in the destination directory are retained.
+     * 3: Forcibly overwrite the conflicting directory.
+     * The source directory is moved to the destination directory, and the content of the moved directory is the
+     * same as that of the source directory. If the destination directory contains a directory with the same name
+     * as the source directory, all original files in the directory will be deleted.
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900016 - Cross-device link
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900028 - Too many links
+     * @throws { BusinessExecption } 13900032 - Directory not empty
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function moveDirSync(src: string, dest: string, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1011,7 +1592,28 @@ public class FileFs {
     }
 
     /**
-     *  @brief renameSync(oldPath: string, newPath: string): void
+     *  Renames a file or directory.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900016 - Cross-device link
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900028 - Too many links
+     * @throws { BusinessExecption } 13900032 - Directory not empty
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function renameSync(oldPath: string, newPath: string): void
      */
     @!APILevel[
         21,
@@ -1034,7 +1636,24 @@ public class FileFs {
     }
 
     /**
-     *  @brief unlinkSync(path: string): void
+     *  Deletes a file.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function unlinkSync(path: string): void
      */
     @!APILevel[
         21,
@@ -1053,7 +1672,36 @@ public class FileFs {
     }
 
     /**
-     *  @brief createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
+     *  Creates a RandomAccessFile instance based on a file path or file object.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900006 - No such device or address
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900017 - No such device
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900029 - Resource deadlock would occur
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
      */
     @!APILevel[
         21,
@@ -1072,7 +1720,36 @@ public class FileFs {
     }
 
     /**
-     *  @brief createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
+     *  Creates a RandomAccessFile instance based on a file path or file object.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900006 - No such device or address
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900017 - No such device
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900029 - Resource deadlock would occur
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
      */
     @!APILevel[
         21,
@@ -1089,7 +1766,38 @@ public class FileFs {
     }
 
     /**
-     *  @brief copyDirSync(src: string, dest: string, mode?: number): void
+     *  Copies the source directory to the destination directory.
+     *
+     * @param { Int32 } [mode!: Int32 = 0] - Copy mode. The default value is 0.
+     * 0: Throw an exception if a file conflict occurs.
+     * An exception will be thrown if the destination directory contains a directory with the same name as the source directory,
+     * and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved
+     * to the destination directory, and the non-conflicting files in the destination directory will be retained.
+     * The data attribute in the error returned provides information about the conflicting files in the Array<ConflictFiles> format.
+     * 1: Forcibly overwrite the files with the same name in the destination directory.
+     * When the destination directory contains a directory with the same name as the source directory,
+     * the files with the same names in the destination directory are overwritten forcibly;
+     * the files without conflicts in the destination directory are retained.
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function copyDirSync(src: string, dest: string, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1127,7 +1835,30 @@ public class FileFs {
     }
 
     /**
-     *  @brief copyFileSync(src: string | number, dest: string | number, mode?: number): void
+     *  Copies a file.
+     *
+     * @param { number } [mode = 0] - Whether to overwrite the file with the same name in the destination directory.
+     * The default value is 0, which is the only value supported.
+     * 0: overwrite the file with the same name and truncate the part that is not overwritten.
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function copyFileSync(src: string | number, dest: string | number, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1150,7 +1881,30 @@ public class FileFs {
     }
 
     /**
-     *  @brief copyFileSync(src: string | number, dest: string | number, mode?: number): void
+     *  Copies a file.
+     *
+     * @param { number } [mode = 0] - Whether to overwrite the file with the same name in the destination directory.
+     * The default value is 0, which is the only value supported.
+     * 0: overwrite the file with the same name and truncate the part that is not overwritten.
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function copyFileSync(src: string | number, dest: string | number, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1171,7 +1925,30 @@ public class FileFs {
     }
 
     /**
-     *  @brief copyFileSync(src: string | number, dest: string | number, mode?: number): void
+     *  Copies a file.
+     *
+     * @param { number } [mode = 0] - Whether to overwrite the file with the same name in the destination directory.
+     * The default value is 0, which is the only value supported.
+     * 0: overwrite the file with the same name and truncate the part that is not overwritten.
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function copyFileSync(src: string | number, dest: string | number, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1192,7 +1969,30 @@ public class FileFs {
     }
 
     /**
-     *  @brief copyFileSync(src: string | number, dest: string | number, mode?: number): void
+     *  Copies a file.
+     *
+     * @param { number } [mode = 0] - Whether to overwrite the file with the same name in the destination directory.
+     * The default value is 0, which is the only value supported.
+     * 0: overwrite the file with the same name and truncate the part that is not overwritten.
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900031 - Function not implemented
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function copyFileSync(src: string | number, dest: string | number, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1211,7 +2011,31 @@ public class FileFs {
     }
 
     /**
-     *  @brief moveFileSync(src: string, dest: string, mode?: number): void
+     *  Moves a file.
+     *
+     * @param { Int32 } [mode!: Int32 = 0] - Move mode.
+     * The value 0 means to overwrite the file with the same name in the destination directory;
+     * the value 1 means to throw an exception. The default value is 0.
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900014 - Device or resource busy
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900016 - Cross-device link
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900028 - Too many links
+     * @throws { BusinessExecption } 13900032 - Directory not empty
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function moveFileSync(src: string, dest: string, mode?: number): void
      */
     @!APILevel[
         21,
@@ -1245,7 +2069,24 @@ public class FileFs {
     }
 
     /**
-     *  @brief mkdtempSync(prefix: string): string
+     *  Creates a temporary directory.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900028 - Too many links
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function mkdtempSync(prefix: string): string
      */
     @!APILevel[
         21,
@@ -1269,7 +2110,26 @@ public class FileFs {
     }
 
     /**
-     *  @brief truncateSync(file: string | number, len?: number): void
+     *  Creates a stream based on a file path.
+     *
+     * @param { Int64 } [len!: Int64 = 0] - File length, in bytes, after truncation. The default value is 0.
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function truncateSync(file: string | number, len?: number): void
      */
     @!APILevel[
         21,
@@ -1291,7 +2151,26 @@ public class FileFs {
     }
 
     /**
-     *  @brief truncateSync(file: string | number, len?: number): void
+     *  Creates a stream based on a file path.
+     *
+     * @param { Int64 } [len!: Int64 = 0] - File length, in bytes, after truncation. The default value is 0.
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900023 - Text file busy
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function truncateSync(file: string | number, len?: number): void
      */
     @!APILevel[
         21,
@@ -1308,7 +2187,15 @@ public class FileFs {
     }
 
     /**
-     *  @brief closeSync(file: number | File): void
+     *  Closes a file or directory.
+     *
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function closeSync(file: number | File): void
      */
     @!APILevel[
         21,
@@ -1325,7 +2212,15 @@ public class FileFs {
     }
 
     /**
-     *  @brief closeSync(file: number | File): void
+     *  Closes a file or directory.
+     *
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function closeSync(file: number | File): void
      */
     @!APILevel[
         21,
@@ -1352,7 +2247,22 @@ public class FileFs {
     }
 
     /**
-     *  @brief readLinesSync(filePath: string, options?: Options): ReaderIterator
+     *  Reads the text content of a file line by line.
+     *
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900015 - File exists
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900022 - Too many open files
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900030 - File name too long
+     * @throws { BusinessExecption } 13900033 - Too many symbolic links encountered
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function readLinesSync(filePath: string, options?: Options): ReaderIterator
      */
     @!APILevel[
         21,
@@ -1378,7 +2288,14 @@ public class FileFs {
     }
 
     /**
-     *  @brief lseek(fd: number, offset: number, whence?: WhenceType): number
+     *  Adjusts the position of the file offset pointer.
+     *
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900026 - Illegal seek
+     * @throws { BusinessExecption } 13900038 - Value too large for defined data type
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function lseek(fd: number, offset: number, whence?: WhenceType): number
      */
     @!APILevel[
         21,
@@ -1398,7 +2315,16 @@ public class FileFs {
     }
 
     /**
-     *  @brief fdatasyncSync(fd: number): void
+     *  Synchronizes the data of a file.
+     *
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function fdatasyncSync(fd: number): void
      */
     @!APILevel[
         21,
@@ -1417,7 +2343,16 @@ public class FileFs {
     }
 
     /**
-     *  @brief fsyncSync(fd: number): void
+     *  Synchronizes the cached data of a file to storage.
+     *
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function fsyncSync(fd: number): void
      */
     @!APILevel[
         21,
@@ -1436,8 +2371,15 @@ public class FileFs {
     }
 
     /**
-     *  @brief function listFileSync(path: string,
-     *                               options?: {recursion?: boolean; listNum?: number; filter?: Filter;}): string[]
+     *  Lists all file names in a directory.
+     *
+     * @param { String } path - Application sandbox path of the directory.
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900011 - Out of memory
+     * @throws { BusinessExecption } 13900018 - Not a directory
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation declare function listFileSync(path: string, options?: ListFileOptions): string[]
      */
     @!APILevel[
         21,
@@ -1462,7 +2404,23 @@ public class FileFs {
     }
 
     /**
-     *  @brief readTextSync(filePath: string, options?: ReadTextOptions): string
+     *  Reads the text of a file.
+     *
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900004 - Interrupted system call
+     * @throws { BusinessExecption } 13900005 - I/O error
+     * @throws { BusinessExecption } 13900008 - Bad file descriptor
+     * @throws { BusinessExecption } 13900010 - Try again
+     * @throws { BusinessExecption } 13900013 - Bad address
+     * @throws { BusinessExecption } 13900019 - Is a directory
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900024 - File too large
+     * @throws { BusinessExecption } 13900025 - No space left on device
+     * @throws { BusinessExecption } 13900034 - Operation would block
+     * @throws { BusinessExecption } 13900041 - Quota exceeded
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @throws { BusinessExecption } 13900044 - Network is unreachable
+     * @relation function readTextSync(filePath: string, options?: ReadTextOptions): string
      */
     @!APILevel[
         21,
@@ -1499,7 +2457,16 @@ public class FileFs {
     }
 
     /**
-     *  @brief utimes(path: string, mtime: number): void
+     *  Updates the latest access timestamp of a file.
+     *
+     * @param { number } mtime - New timestamp. The value is the number of milliseconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970)
+     * @throws { BusinessExecption } 13900001 - Operation not permitted
+     * @throws { BusinessExecption } 13900002 - No such file or directory
+     * @throws { BusinessExecption } 13900012 - Permission denied
+     * @throws { BusinessExecption } 13900020 - Invalid argument
+     * @throws { BusinessExecption } 13900027 - Read-only file system
+     * @throws { BusinessExecption } 13900042 - Unknown error
+     * @relation function utimes(path: string, mtime: number): void
      */
     @!APILevel[
         21,
