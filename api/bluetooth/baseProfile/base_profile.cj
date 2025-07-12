@@ -20,6 +20,11 @@ import ohos.base.*
 import ohos.bluetooth.constant.ProfileConnectionState
 import ohos.labels.*
 
+/**
+ * Enum for cause of disconnect.
+ *
+ * @releation enum DisconnectCause
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -27,37 +32,72 @@ import ohos.labels.*
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum DisconnectCause {
+    /**
+     * User disconnect device.
+     *
+     * @releation USER_DISCONNECT
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     UserDisconnect
-    | @!APILevel[
+    | 
+    /**
+     * The connection needs to be initiated from the keyboard side.
+     *
+     * @releation CONNECT_FROM_KEYBOARD
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectFromKeyboard
-    | @!APILevel[
+    | 
+    /**
+     * The connection needs to be initiated from the mouse side.
+     *
+     * @releation CONNECT_FROM_MOUSE
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectFromMouse
-    | @!APILevel[
+    | 
+    /**
+     * The connection needs to be initiated from the car side.
+     *
+     * @releation CONNECT_FROM_CAR
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ConnectFromCar
-    | @!APILevel[
+    | 
+    /**
+     * Too many devices are currently connected.
+     *
+     * @releation TOO_MANY_CONNECTED_DEVICES
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     TooManyConnectedDevices
-    | @!APILevel[
+    | 
+    /**
+     * Connection failed due to an internal error.
+     *
+     * @releation CONNECT_FAIL_INTERNAL
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -95,24 +135,44 @@ protected struct NativeStateChangeParam {
     }
 }
 
+/**
+ * Profile state change parameters.
+ *
+ * @relation interface StateChangeParam
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class StateChangeParam {
+    /**
+     * The address of device.
+     *
+     * @relation deviceId: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
+    /**
+     * Profile state value.
+     *
+     * @relation state: ProfileConnectionState
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var state: ProfileConnectionState
+    /**
+     * Cause of disconnect.
+     *
+     * @relation cause: DisconnectCause
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -131,54 +191,112 @@ public class StateChangeParam {
     }
 }
 
+/**
+ * Base interface of profile.
+ *
+ * @relation interface BaseProfile
+ */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public interface BaseProfile {
+    /**
+     * Get connection strategy of this profile.
+     *
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @throws { BusinessException } 2900001 - Service stopped.
+     * @throws { BusinessException } 2900003 - Bluetooth disabled.
+     * @throws { BusinessException } 2900004 - Profile not supported.
+     * @throws { BusinessException } 2900099 - Operation failed.
+     * @relation getConnectedDevices(): Array<string>
+     */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     func getConnectedDevices(): Array<String>
 
+    /**
+     * Obtains the profile connection state.
+     *
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessError } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @throws { BusinessException } 2900001 - Service stopped.
+     * @throws { BusinessException } 2900003 - Bluetooth disabled.
+     * @throws { BusinessException } 2900004 - Profile not supported.
+     * @throws { BusinessException } 2900099 - Operation failed.
+     * @relation getConnectionState(deviceId: string): ProfileConnectionState
+     */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     func getConnectionState(deviceId: String): ProfileConnectionState
 
+    /**
+     * Subscribe the event reported when the profile connection state changes.
+     *
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @relation on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void
+     */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
 
+    /**
+     * Unsubscribe the event reported when the profile connection state changes.
+     *
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @relation off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void
+     */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
 
+    /**
+     * Unsubscribe the event reported when the profile connection state changes.
+     *
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
+     * 2. Incorrect parameter types. 3. Parameter verification failed.
+     * @throws { BusinessException } 801 - Capability not supported.
+     * @relation off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void
+     */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     func off(`type`: ProfileCallbackType): Unit
 }
 
+/**
+ * Type of the profile connection state changes event to listen for.
+ */
 @Derive[ToString, Hashable, Equatable]
 @!APILevel[
     21,
@@ -186,6 +304,9 @@ public interface BaseProfile {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum ProfileCallbackType {
+    /**
+     * Connection State Change.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

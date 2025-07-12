@@ -75,6 +75,9 @@ func getErrorInfo(code: Int32): String {
     }
 }
 
+/**
+ * ConflictFile Exception
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -86,6 +89,9 @@ public class ConflictFileException <: BusinessException {
         stagemodelonly: true,
         syscap: "SystemCapability.FileManagement.File.FileIO"
     ]
+    /**
+     * Array of conflicting file
+     */
     public let data: Array<ConflictFiles>
     init(code: Int32, msg: String, data: Array<ConflictFiles>) {
         super(code, msg)

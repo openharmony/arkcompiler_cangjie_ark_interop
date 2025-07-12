@@ -27,8 +27,7 @@ const BLE_ADV_TX_POWER_MEDIUM_VALUE: Int8 = -7
 /**
  * Describes the criteria for filtering scanning results can be set.
  *
- * @typedef ScanFilter
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface ScanFilter
  */
 @!APILevel[
     21,
@@ -39,8 +38,7 @@ public class ScanFilter {
     /**
      * The address of a BLE peripheral device
      *
-     * @type { ?String }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation deviceId?: string
      */
     @!APILevel[
         21,
@@ -51,8 +49,7 @@ public class ScanFilter {
     /**
      * The name of a BLE peripheral device
      *
-     * @type { ?String }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation name?: string
      */
     @!APILevel[
         21,
@@ -63,8 +60,7 @@ public class ScanFilter {
     /**
      * The service UUID of a BLE peripheral device
      *
-     * @type { ?String }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation serviceUuid?: string
      */
     @!APILevel[
         21,
@@ -76,8 +72,7 @@ public class ScanFilter {
     /**
      * Service UUID mask.
      *
-     * @type { ?String }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation serviceUuidMask?: string
      */
     @!APILevel[
         21,
@@ -89,8 +84,7 @@ public class ScanFilter {
     /**
      * Service solicitation UUID.
      *
-     * @type { ?String }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation serviceSolicitationUuid?: string
      */
     @!APILevel[
         21,
@@ -102,8 +96,7 @@ public class ScanFilter {
     /**
      * Service solicitation UUID mask.
      *
-     * @type { ?String }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation serviceSolicitationUuidMask?: string
      */
     @!APILevel[
         21,
@@ -115,8 +108,7 @@ public class ScanFilter {
     /**
      * Service data.
      *
-     * @type { ?Array<Byte> }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation serviceData?: ArrayBuffer
      */
     @!APILevel[
         21,
@@ -128,8 +120,7 @@ public class ScanFilter {
     /**
      * Service data mask.
      *
-     * @type { ?Array<Byte> }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation serviceDataMask?: ArrayBuffer
      */
     @!APILevel[
         21,
@@ -141,8 +132,7 @@ public class ScanFilter {
     /**
      * Manufacture id.
      *
-     * @type { UInt16 }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation manufactureId?: number
      */
     @!APILevel[
         21,
@@ -154,8 +144,7 @@ public class ScanFilter {
     /**
      * Manufacture data.
      *
-     * @type { ?Array<Byte> }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation manufactureData?: ArrayBuffer
      */
     @!APILevel[
         21,
@@ -167,8 +156,7 @@ public class ScanFilter {
     /**
      * Manufacture data mask.
      *
-     * @type { ?Array<Byte> }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation manufactureDataMask?: ArrayBuffer
      */
     @!APILevel[
         21,
@@ -177,6 +165,9 @@ public class ScanFilter {
     ]
     public var manufactureDataMask: ?Array<Byte> = None
 
+    /**
+     * ScanFilter constructor.
+     */    
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -327,8 +318,7 @@ struct NativeScanOptions {
 /**
  * Describes the parameters for scan.
  *
- * @typedef ScanOptions
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface ScanOptions
  */
 @!APILevel[
     21,
@@ -339,8 +329,7 @@ public class ScanOptions {
     /**
      * Time of delay for reporting the scan result
      *
-     * @type { Int32 }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation interval?: number
      */
     @!APILevel[
         21,
@@ -352,8 +341,7 @@ public class ScanOptions {
     /**
      * Bluetooth LE scan mode
      *
-     * @type { ScanDuty }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation dutyMode?: ScanDuty
      */
     @!APILevel[
         21,
@@ -365,8 +353,7 @@ public class ScanOptions {
     /**
      * Match mode for Bluetooth LE scan filters hardware match
      *
-     * @type { MatchMode }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation matchMode?: MatchMode
      */
     @!APILevel[
         21,
@@ -378,8 +365,7 @@ public class ScanOptions {
     /**
      * Physical Layer used during scan.
      *
-     * @type { PhyType }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation phyType?: PhyType
      */
     @!APILevel[
         21,
@@ -387,6 +373,10 @@ public class ScanOptions {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var phyType: PhyType = PhyLe1M
+
+    /**
+     * ScanOptions constructor.
+     */    
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -421,8 +411,7 @@ struct NativeAdvertiseSetting {
 /**
  * Describes the settings for BLE advertising.
  *
- * @typedef AdvertiseSetting
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface AdvertiseSetting
  */
 @!APILevel[
     21,
@@ -431,12 +420,11 @@ struct NativeAdvertiseSetting {
 ]
 public class AdvertiseSetting {
     /**
-     * Minimum slot value for the advertising interval, which is {@code 32} (20 ms)
-     * Maximum slot value for the advertising interval, which is {@code 16777215} (10485.759375s)
-     * Default slot value for the advertising interval, which is {@code 1600} (1s)
+     * Minimum slot value for the advertising interval, which is 32 (20 ms)
+     * Maximum slot value for the advertising interval, which is 16777215} (10485.759375s)
+     * Default slot value for the advertising interval, which is 1600 (1s)
      *
-     * @type { UInt16 }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation interval?: number
      */
     @!APILevel[
         21,
@@ -446,12 +434,11 @@ public class AdvertiseSetting {
     public var interval: UInt16 = BLE_ADV_DEFAULT_INTERVAL
 
     /**
-     * Minimum transmission power level for advertising, which is {@code -127}
-     * Maximum transmission power level for advertising, which is {@code 1}
-     * Default transmission power level for advertising, which is {@code -7}
+     * Minimum transmission power level for advertising, which is -127
+     * Maximum transmission power level for advertising, which is 1
+     * Default transmission power level for advertising, which is -7
      *
-     * @type { Int8 }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation txPower?: number
      */
     @!APILevel[
         21,
@@ -461,10 +448,9 @@ public class AdvertiseSetting {
     public var txPower: Int8 = BLE_ADV_TX_POWER_MEDIUM_VALUE
 
     /**
-     * Indicates whether the BLE is connectable, default is {@code true}
+     * Indicates whether the BLE is connectable, default is true
      *
-     * @type { Bool }
-     * @syscap SystemCapability.Communication.Bluetooth.Core
+     * @relation connectable?: boolean
      */
     @!APILevel[
         21,
@@ -472,6 +458,10 @@ public class AdvertiseSetting {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var connectable: Bool = true
+    
+    /**
+     * AdvertiseSetting constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -557,8 +547,7 @@ struct NativeAdvertiseData {
 /**
  * Describes the advertising data.
  *
- * @typedef AdvertiseData
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface AdvertiseData
  */
 @!APILevel[
     21,
@@ -566,24 +555,44 @@ struct NativeAdvertiseData {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class AdvertiseData {
+    /**
+     * The specified service UUID list to this advertisement
+     *
+     * @relation serviceUuids: Array<string>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuids: Array<String>
+    /**
+     * The specified manufacturer data list to this advertisement
+     *
+     * @relation manufactureData: Array<ManufactureData>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var manufactureData: Array<ManufactureData>
+    /**
+     * The specified service data list to this advertisement
+     *
+     * @relation serviceData: Array<ServiceData>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceData: Array<ServiceData>
+    /**
+     * Indicates whether the device name will be included in the advertisement packet.
+     *
+     * @relation includeDeviceName?: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -591,6 +600,9 @@ public class AdvertiseData {
     ]
     public var includeDeviceName: Bool
 
+    /**
+     * AdvertiseData constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -652,8 +664,7 @@ struct NativeManufactureData {
 /**
  * Describes the manufacturer data.
  *
- * @typedef ManufactureData
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface ManufactureData
  */
 @!APILevel[
     21,
@@ -661,12 +672,22 @@ struct NativeManufactureData {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class ManufactureData {
+    /**
+     * Indicates the manufacturer ID assigned by Bluetooth SIG
+     *
+     * @relation manufactureId: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var manufactureId: UInt16
+    /**
+     * Indicates the manufacturer data to add
+     *
+     * @relation manufactureValue: ArrayBuffer
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -674,6 +695,9 @@ public class ManufactureData {
     ]
     public var manufactureValue: Array<Byte>
 
+    /**
+     * ManufactureData constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -713,8 +737,7 @@ struct NativeServiceData {
 /**
  * Describes the service data.
  *
- * @typedef ServiceData
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface ServiceData
  */
 @!APILevel[
     21,
@@ -722,12 +745,22 @@ struct NativeServiceData {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class ServiceData {
+    /**
+     * Indicates the UUID of the service data to add
+     *
+     * @relation serviceUuid: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var serviceUuid: String
+    /**
+     * Indicates the service data to add
+     *
+     * @relation serviceValue: ArrayBuffer
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -735,6 +768,9 @@ public class ServiceData {
     ]
     public var serviceValue: Array<Byte>
 
+    /**
+     * ServiceData constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -780,30 +816,57 @@ struct NativeAdvertisingParams {
     }
 }
 
+/**
+ * Describes the advertising parameters.
+ *
+ * @relation interface AdvertisingParams
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class AdvertisingParams {
+    /**
+     * Indicates the advertising settings.
+     *
+     * @relation advertisingSettings: AdvertiseSetting
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var advertisingSettings: AdvertiseSetting
+    /**
+     * Indicates the advertising data.
+     *
+     * @relation advertisingData: AdvertiseData
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var advertisingData: AdvertiseData
+    /**
+     * Indicates the advertising response.
+     *
+     * @relation advertisingResponse?: AdvertiseData
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var advertisingResponse: AdvertiseData
+    /**
+     * Indicates the duration for advertising continuously.
+     * The duration, in 10ms unit. Valid range is from 1 (10ms) to 65535 (655,350 ms).
+     * If this parameter is not specified or is set to 0, advertisement is continuously sent.
+     *
+     * @relation duration?: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -811,6 +874,9 @@ public class AdvertisingParams {
     ]
     public var duration: UInt16 = 0
 
+    /**
+     * AdvertisingParams constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -865,8 +931,7 @@ struct CAdvertisingStateChangeInfo {
 /**
  * Advertising state change information.
  *
- * @typedef AdvertisingStateChangeInfo
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface AdvertisingStateChangeInfo
  */
 @!APILevel[
     21,
@@ -874,12 +939,22 @@ struct CAdvertisingStateChangeInfo {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class AdvertisingStateChangeInfo {
+    /**
+     * Indicates the ID of current advertising.
+     *
+     * @relation advertisingId: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var advertisingId: Int32
+    /**
+     * Indicates the advertising state.
+     *
+     * @relation state: AdvertisingState
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -919,8 +994,7 @@ struct NativeScanResult {
 /**
  * Describes the contents of the scan results.
  *
- * @typedef ScanResult
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation interface ScanResult
  */
 @!APILevel[
     21,
@@ -928,30 +1002,55 @@ struct NativeScanResult {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public class ScanResult {
+    /**
+     * Address of the scanned device
+     *
+     * @relation deviceId: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceId: String
+    /**
+     * RSSI of the remote device
+     *
+     * @relation rssi: number
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var rssi: Int32
+    /**
+     * The raw data of broadcast packet
+     *
+     * @relation data: ArrayBuffer
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var data: Array<Byte>
+    /**
+     * The local name of the BLE device
+     *
+     * @relation deviceName: string
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public var deviceName: String
+    /**
+     * Connectable of the remote device
+     *
+     * @relation connectable: boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -977,7 +1076,7 @@ public class ScanResult {
 /**
  * The enum of scan duty.
  *
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation enum ScanDuty
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -986,19 +1085,36 @@ public class ScanResult {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum ScanDuty {
+    /**
+     * low power mode
+     *
+     * @relation SCAN_MODE_LOW_POWER
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ScanModeLowPower
-    | @!APILevel[
+    | 
+    /**
+     * balanced power mode
+     *
+     * @relation SCAN_MODE_BALANCED
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     ScanModeBalanced
-    | @!APILevel[
+    | 
+    /**
+     * Scan using highest duty cycle
+     *
+     * @relation SCAN_MODE_LOW_LATENCY
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -1019,8 +1135,7 @@ public enum ScanDuty {
 /**
  * The enum of BLE match mode.
  *
- * @syscap SystemCapability.Communication.Bluetooth.Core
- * @atomicservice
+ * @relation enum MatchMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1029,13 +1144,24 @@ public enum ScanDuty {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum MatchMode {
+    /**
+     * aggressive mode
+     *
+     * @relation MATCH_MODE_AGGRESSIVE
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     MatchModeAggressive
-    | @!APILevel[
+    | 
+    /**
+     * sticky mode
+     *
+     * @relation MATCH_MODE_STICKY
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -1064,7 +1190,7 @@ let ADVERTISING_STATE_MAP = HashMap<Int32, AdvertisingState>(
 /**
  * The enum of BLE advertising state.
  *
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation enum AdvertisingState
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1073,25 +1199,48 @@ let ADVERTISING_STATE_MAP = HashMap<Int32, AdvertisingState>(
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum AdvertisingState {
+    /**
+     * advertising started.
+     *
+     * @relation STARTED = 1
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     Started
-    | @!APILevel[
+    | 
+    /**
+     * advertising temporarily enabled.
+     *
+     * @relation ENABLED = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     Enabled
-    | @!APILevel[
+    | 
+    /**
+     * advertising temporarily disabled.
+     *
+     * @relation DISABLED = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     Disabled
-    | @!APILevel[
+    | 
+    /**
+     * advertising stopped.
+     *
+     * @relation STOPPED = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -1107,7 +1256,7 @@ public enum AdvertisingState {
 /**
  * Phy type used during scan.
  *
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @relation enum PhyType
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1116,13 +1265,24 @@ public enum AdvertisingState {
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum PhyType {
+    /**
+     * Use 1M phy for scanning.
+     *
+     * @relation PHY_LE_1M = 1
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     PhyLe1M
-    | @!APILevel[
+    | 
+    /**
+     * Use all supported Phys for scanning.
+     *
+     * @relation PHY_LE_ALL_SUPPORTED = 255
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
@@ -1139,24 +1299,34 @@ public enum PhyType {
     }
 }
 
+/**
+ * Bluetooth Ble CallbackType
+ */
 @Derive[ToString, Hashable, Equatable]
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
 public enum BluetoothBleCallbackType {
+    /**
+     * Advertising State Change
+     */
     @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     AdvertisingStateChange
-    | @!APILevel[
+    | 
+    /**
+     * Ble Device Find
+     */
+    @!APILevel[
         21,
-        permission: "ohos.ACCESS_BLUETOOTH",
+        permission: "ohos.permission.ACCESS_BLUETOOTH",
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
