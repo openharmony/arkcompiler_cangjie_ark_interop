@@ -15,10 +15,9 @@
 
 package ohos.system_date_time
 
-import ohos.ffi.*
-import ohos.base.*
-import std.collection.*
-import ohos.hilog.*
+import ohos.base.{ BusinessException, getUniversalErrorMsg }
+import ohos.ffi.SUCCESS_CODE
+import ohos.hilog.Hilog
 
 let SYSTEM_DATE_TIME_DOMAIN_ID: UInt32 = 0xD001C04
 const SYSTEM_ERROR: Int32 = -1
