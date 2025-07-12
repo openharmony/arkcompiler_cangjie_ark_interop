@@ -19,6 +19,12 @@ import ohos.ffi.*
 import ohos.base.*
 import ohos.labels.*
 
+/**
+ * Provides APIs for randomly reading and writing a stream. Before invoking any API of RandomAccessFile,
+ * you need to use createRandomAccessFile() to create a RandomAccessFile instance.
+ *
+ * @relation export interface RandomAccessFileOptions
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -33,6 +39,11 @@ public class RandomAccessFile <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * FD of the file.
+     *
+     * @relation readonly fd: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -44,6 +55,11 @@ public class RandomAccessFile <: RemoteDataLite {
         }
     }
 
+    /**
+     * Offset pointer to the RandomAccessFile instance.
+     *
+     * @relation readonly filePointer: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -56,7 +72,9 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     /**
-     *  @brief setFilePointer(): void
+     * Sets the file offset pointer.
+     *
+     * @relation setFilePointer(filePointer: number): void;
      */
     @!APILevel[
         21,
@@ -69,7 +87,9 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     /**
-     *  @brief close(): void
+     * Closes this RandomAccessFile instance.
+     *
+     * @relation close(): void;
      */
     @!APILevel[
         21,
@@ -82,8 +102,21 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     /**
-     *  @brief writeSync(buffer: ArrayBuffer | string,
-     *                   options?: { offset?: number; length?: number; encoding?: string; }): number
+     * Write randomAccessFile.
+     *
+     * @throws { BusinessException } 13900001 - Operation not permitted
+     * @throws { BusinessException } 13900004 - Interrupted system call
+     * @throws { BusinessException } 13900005 - I/O error
+     * @throws { BusinessException } 13900008 - Bad file descriptor
+     * @throws { BusinessException } 13900010 - Try again
+     * @throws { BusinessException } 13900013 - Bad address
+     * @throws { BusinessException } 13900020 - Invalid argument
+     * @throws { BusinessException } 13900024 - File too large
+     * @throws { BusinessException } 13900025 - No space left on device
+     * @throws { BusinessException } 13900034 - Operation would block
+     * @throws { BusinessException } 13900041 - Quota exceeded
+     * @throws { BusinessException } 13900042 - Unknown error
+     * @relation writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number;
      */
     @!APILevel[
         21,
@@ -96,8 +129,21 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     /**
-     *  @brief writeSync(buffer: ArrayBuffer | string,
-     *                   options?: { offset?: number; length?: number; encoding?: string; }): number
+     * Write randomAccessFile.
+     *
+     * @throws { BusinessException } 13900001 - Operation not permitted
+     * @throws { BusinessException } 13900004 - Interrupted system call
+     * @throws { BusinessException } 13900005 - I/O error
+     * @throws { BusinessException } 13900008 - Bad file descriptor
+     * @throws { BusinessException } 13900010 - Try again
+     * @throws { BusinessException } 13900013 - Bad address
+     * @throws { BusinessException } 13900020 - Invalid argument
+     * @throws { BusinessException } 13900024 - File too large
+     * @throws { BusinessException } 13900025 - No space left on device
+     * @throws { BusinessException } 13900034 - Operation would block
+     * @throws { BusinessException } 13900041 - Quota exceeded
+     * @throws { BusinessException } 13900042 - Unknown error
+     * @relation writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number;
      */
     @!APILevel[
         21,
@@ -124,7 +170,19 @@ public class RandomAccessFile <: RemoteDataLite {
     }
 
     /**
-     *  @brief readSync(buffer: ArrayBuffer, options?: { offset?: number; length?: number; }): number
+     * Reads data from a file.
+     *
+     * @throws { BusinessException } 13900004 - Interrupted system call
+     * @throws { BusinessException } 13900005 - I/O error
+     * @throws { BusinessException } 13900008 - Bad file descriptor
+     * @throws { BusinessException } 13900010 - Try again
+     * @throws { BusinessException } 13900013 - Bad address
+     * @throws { BusinessException } 13900019 - Is a directory
+     * @throws { BusinessException } 13900020 - Invalid argument
+     * @throws { BusinessException } 13900034 - Operation would block
+     * @throws { BusinessException } 13900042 - Unknown error
+     * @throws { BusinessException } 13900044 - Network is unreachable
+     * @relation readSync(buffer: ArrayBuffer, options?: ReadOptions): number;
      */
     @!APILevel[
         21,
