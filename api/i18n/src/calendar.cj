@@ -290,9 +290,9 @@ public class Calendar <: RemoteDataLite {
     /**
      * Performs addition or subtraction on the calendar attributes of this Calendar object.
      *
-     * @throws { BusinessError } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;
      *                                 2.Incorrect parameter types.
-     * @throws { BusinessError } 890001 - Invalid parameter. Possible causes: Parameter verification failed.
+     * @throws { BusinessException } 890001 - Invalid parameter. Possible causes: Parameter verification failed.
      * @relation add(field: string, amount: number): void;
      */
     @!APILevel[
@@ -331,7 +331,7 @@ public class Calendar <: RemoteDataLite {
     /**
      * Compares the current date of this Calendar object with the specified date for the difference in the number of days.
      *
-     * @throws { BusinessError } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;
      *                                 2.Incorrect parameter types.
      * @relation compareDays(date: Date): number;
      */

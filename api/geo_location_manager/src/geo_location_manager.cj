@@ -38,12 +38,12 @@ public class GeoLocationManager {
      /**
       * Subscribe location changed.
       *
-      * @throws { BusinessError } 201 - Permission verification failed. The   application does not have the permission required to call the API.
-      * @throws { BusinessError } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
-      * @throws { BusinessError } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
-      * @throws { BusinessError } 3301000 - The location service is   unavailable.
-      * @throws { BusinessError } 3301100 - The location switch is off.
-      * @throws { BusinessError } 3301200 - Failed to obtain the   geographical location.
+      * @throws { BusinessException } 201 - Permission verification failed. The   application does not have the permission required to call the API.
+      * @throws { BusinessException } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
+      * @throws { BusinessException } 3301000 - The location service is   unavailable.
+      * @throws { BusinessException } 3301100 - The location switch is off.
+      * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
       * @relation function getCurrentLocation(callback:   AsyncCallback<Location>): void;
       */
     @!APILevel[
@@ -68,12 +68,12 @@ public class GeoLocationManager {
     /**
       * Obtain current location.
       *
-      * @throws { BusinessError } 201 - Permission verification failed. The   application does not have the permission required to call the API.
-      * @throws { BusinessError } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
-      * @throws { BusinessError } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
-      * @throws { BusinessError } 3301000 - The location service is   unavailable.
-      * @throws { BusinessError } 3301100 - The location switch is off.
-      * @throws { BusinessError } 3301200 - Failed to obtain the   geographical location.
+      * @throws { BusinessException } 201 - Permission verification failed. The   application does not have the permission required to call the API.
+      * @throws { BusinessException } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
+      * @throws { BusinessException } 3301000 - The location service is   unavailable.
+      * @throws { BusinessException } 3301100 - The location switch is off.
+      * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
       * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>;
       * @relation function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, callback: AsyncCallback<Location>): void;
       */
@@ -101,12 +101,12 @@ public class GeoLocationManager {
     /**
       * Obtain current location.
       *
-      * @throws { BusinessError } 201 - Permission verification failed. The   application does not have the permission required to call the API.
-      * @throws { BusinessError } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
-      * @throws { BusinessError } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
-      * @throws { BusinessError } 3301000 - The location service is   unavailable.
-      * @throws { BusinessError } 3301100 - The location switch is off.
-      * @throws { BusinessError } 3301200 - Failed to obtain the   geographical location.
+      * @throws { BusinessException } 201 - Permission verification failed. The   application does not have the permission required to call the API.
+      * @throws { BusinessException } 401 - Parameter error. Possible causes:   1. Mandatory parameters are left unspecified; 2. Incorrect parameter   types; 3. Parameter verification failed.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to   call ${geoLocationManager.getCurrentLocation} due to limited device   capabilities.
+      * @throws { BusinessException } 3301000 - The location service is   unavailable.
+      * @throws { BusinessException } 3301100 - The location switch is off.
+      * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
       * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>;
       * @relation function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, callback: AsyncCallback<Location>): void;
       */
@@ -134,8 +134,8 @@ public class GeoLocationManager {
     /**
       * Obtain current location switch status.
       *
-      * @throws { BusinessError } 801 - Capability not supported. Failed to call ${geoLocationManager.isLocationEnabled} due to limited device capabilities.
-      * @throws { BusinessError } 3301000 - The location service is unavailable.
+      * @throws { BusinessException } 801 - Capability not supported. Failed to call ${geoLocationManager.isLocationEnabled} due to limited device capabilities.
+      * @throws { BusinessException } 3301000 - The location service is unavailable.
       * @relation function isLocationEnabled(): boolean;
       */
     @!APILevel[
