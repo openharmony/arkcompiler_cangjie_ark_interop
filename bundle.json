@@ -93,7 +93,7 @@
         },
         "build": {
             "sub_component": [
-                "//arkcompiler/cangjie_api:cangjie_systemapi_packages"
+                "//arkcompiler/cangjie_api/api/labels:ohos.labels"
             ],
             "group_type": {
                 "base_group": [],
@@ -101,6 +101,9 @@
                 "service_group": []
               },
             "inner_kits": [
+                {
+                    "name": "//arkcompiler/cangjie_api/api/labels:ohos.labels"
+                }
             ],
             "test": []
         }
