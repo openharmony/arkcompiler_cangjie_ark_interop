@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import("sdk_mock.gni")
+import("//build/cangjie/cj_compiler.gni")
 
 config("mock_stub_config") {
   include_dirs = ["."]
@@ -28,7 +29,7 @@ ohos_shared_library("mock_stub") {
   subsystem_name = "arkcompiler"
 }
 
-if (build_ohos_sdk) {
+if (build_ohos_sdk || build_ohos_split_test) {
   mock_sources = [
     "cj_userauth_ffi.sym",
     "cj_hidebug_ffi.sym",

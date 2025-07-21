@@ -11,10 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("cjc.gni")
+import("//build/cangjie/cjc.gni")
 import("multi-product_diff.gni")
 
-cangjie_systemapi = "//vendor/huawei/arkcompiler/cangjie_api"
+cangjie_systemapi = "//arkcompiler/cangjie_api"
 cangjie_systemapi_api = "${cangjie_systemapi}/api"
 
 cangjie_systemapi_libs = [

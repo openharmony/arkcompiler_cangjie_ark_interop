@@ -28,7 +28,7 @@ ohos_cj_library("ohos.hitrace") {
   lib_name = "hitrace"
 }
 
-if (!build_ohos_sdk) {
+if (!build_ohos_sdk && !build_ohos_split_test) {
   ohos_shared_library("utf16string") {
     include_dirs = [ "utf16string" ]
 

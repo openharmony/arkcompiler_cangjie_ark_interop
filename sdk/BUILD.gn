@@ -196,7 +196,7 @@ ohos_copy("sdk_api") {
     }
   }
   deps = []
-  sources = ["//vendor/huawei/arkcompiler/cangjie_api/LICENSE"]
+  sources = ["//arkcompiler/cangjie_api/LICENSE"]
   foreach(item, all_sources) {
     deps += [item.label]
   }
