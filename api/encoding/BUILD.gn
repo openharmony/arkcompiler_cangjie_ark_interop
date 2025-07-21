@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.encoding.json") {
   sources = [
@@ -20,6 +20,7 @@ ohos_cj_library("ohos.encoding.json") {
     "json/src/json_object.cj",
     "json/src/json_value.cj",
     "json/src/native.cj",
+    "json/src/parse_json.cj",
     "json/src/write_buffer.cj",
   ]
 

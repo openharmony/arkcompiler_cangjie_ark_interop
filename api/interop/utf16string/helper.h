@@ -15,59 +15,76 @@
 
 #ifndef ARKCOMPILER_CANGJIE_API_HELPER_H
 #define ARKCOMPILER_CANGJIE_API_HELPER_H
+#define CHAR_SHIFT_BASE 3
+#define CHAR_SHIFT_MASK 7
+#define CHAR16_T_SHIFT_BASE 2
+#define CHAR16_T_SHIFT_MASK 3
+#define CHAR32_T_SHIFT_BASE 1
+#define CHAR32_T_SHIFT_MASK 1
+#define SHIFT_BITS_2 2
+#define SHIFT_BITS_10 10
 
 #include <cstdint>
 
 template <typename T>
 struct CharHelper {
-    static constexpr bool Supported = false;
+    static constexpr bool supported = false;
 };
 
 template<>
 struct CharHelper<char> {
-    static constexpr bool Supported = true;
-    static constexpr uint64_t GetSingleMask() {
+    static constexpr bool supported = true;
+    static constexpr uint64_t GetSingleMask()
+    {
         return 0x80;
     }
-    static constexpr uint64_t GetShiftBase() {
-        return 3;
+    static constexpr uint64_t GetShiftBase()
+    {
+        return CHAR_SHIFT_BASE;
     }
-    static constexpr uint64_t GetShiftMask() {
-        return 7;
+    static constexpr uint64_t GetShiftMask()
+    {
+        return CHAR_SHIFT_MASK;
     }
 };
 
 template<>
 struct CharHelper<char16_t> {
-    static constexpr bool Supported = true;
-    static constexpr uint64_t GetSingleMask() {
+    static constexpr bool supported = true;
+    static constexpr uint64_t GetSingleMask()
+    {
         return 0xFF00 | 0x80;
     }
-    static constexpr uint64_t GetShiftBase() {
-        return 2;
+    static constexpr uint64_t GetShiftBase()
+    {
+        return CHAR16_T_SHIFT_BASE;
     }
-    static constexpr uint64_t GetShiftMask() {
-        return 3;
+    static constexpr uint64_t GetShiftMask()
+    {
+        return CHAR16_T_SHIFT_MASK;
     }
 };
 
 template<>
 struct CharHelper<char32_t> {
-    static constexpr bool Supported = true;
-    static constexpr uint64_t GetSingleMask() {
+    static constexpr bool supported = true;
+    static constexpr uint64_t GetSingleMask()
+    {
         return 0xFFFFFF00 | 0x80;
     }
-    static constexpr uint64_t GetShiftBase() {
-        return 1;
+    static constexpr uint64_t GetShiftBase()
+    {
+        return CHAR32_T_SHIFT_BASE;
     }
-    static constexpr uint64_t GetShiftMask() {
-        return 1;
+    static constexpr uint64_t GetShiftMask()
+    {
+        return CHAR32_T_SHIFT_MASK;
     }
 };
 
 template <typename T>
 struct EncodingHelper {
-    static_assert(CharHelper<T>::Supported && "Only support char, char16_t, char32_t");
+    static_assert(CharHelper<T>::supported && "Only support char, char16_t, char32_t");
 
 private:
     template <uint8_t Count>
@@ -75,19 +92,19 @@ private:
     {
         static_assert(Count * sizeof(T) <= 8);
 
-        constexpr auto BitsPerByte = 8;
-        constexpr auto ShiftBase = sizeof(T) * BitsPerByte;
+        constexpr auto bitsPerByte = 8;
+        constexpr auto shiftBase = sizeof(T) * bitsPerByte;
         if constexpr (Count == 0) {
             return 0;
         } else {
             constexpr uint64_t base = CharHelper<T>::GetSingleMask();
-            return base << ((Count - 1) * ShiftBase) | GetLatin1Mask<Count - 1>();
+            return base << ((Count - 1) * shiftBase) | GetLatin1Mask<Count - 1>();
         }
     }
 
     static bool IsWordsLatin1(const uint64_t* src, uint32_t length)
     {
-        constexpr auto wordMask = GetLatin1Mask<8/sizeof(T)>();
+        constexpr auto wordMask = GetLatin1Mask<8 / sizeof(T)>();
         for (uint32_t i = 0; i < length; i++) {
             if (*src & wordMask) {
                 return false;
@@ -140,7 +157,7 @@ struct Utf16 {
                 }
             }
         }
-        return Diff(a + (fullWords << 2), b + (fullWords << 2), restChars);
+        return Diff(a + (fullWords << 2), b + (fullWords << SHIFT_BITS_2), restChars);
     }
 
     struct Iter {
@@ -158,7 +175,7 @@ struct Utf16 {
             if (const auto nextChar = *current++; nextChar < 0xD800 || nextChar >= 0xE000) {
                 code = nextChar;
             } else {
-                code = 0x10000 | (((nextChar & 0x3FF) << 10) | (*current++ & 0x3FF));
+                code = 0x10000 | (((nextChar & 0x3FF) << SHIFT_BITS_10) | (*current++ & 0x3FF));
             }
             return code;
         }
@@ -187,7 +204,7 @@ struct Utf16 {
             if (const auto nextChar = *--current; nextChar < 0xD800 || nextChar >= 0xE000) {
                 code = nextChar;
             } else {
-                code = 0x10000 | ((*--current & 0x3FF) << 10) | (nextChar & 0x3FF);
+                code = 0x10000 | ((*--current & 0x3FF) << SHIFT_BITS_10) | (nextChar & 0x3FF);
             }
             return code;
         }
@@ -226,9 +243,9 @@ private:
             return code;
         }
         if (code < 0xDC00) {
-            code = 0x10000 | (((code & 0x3FF) << 10) | (src[1] & 0x3FF));
+            code = 0x10000 | (((code & 0x3FF) << SHIFT_BITS_10) | (src[1] & 0x3FF));
         } else {
-            code = 0x10000 | (((src[- 1] & 0x3FF) << 10) | (code & 0x3FF));
+            code = 0x10000 | (((src[-1] & 0x3FF) << SHIFT_BITS_10) | (code & 0x3FF));
         }
         return code;
     }

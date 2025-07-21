@@ -13,7 +13,7 @@
 
 import("//build/ohos.gni")
 
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.system_date_time") {
   sources = [
@@ -22,7 +22,7 @@ ohos_cj_library("ohos.system_date_time") {
     "src/system_date_time.cj",
   ]
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",

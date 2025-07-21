@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.rpc") {
   sources = [
@@ -21,9 +21,7 @@ ohos_cj_library("ohos.rpc") {
     "src/cj_rpc_interface.cj",
     "src/cj_rpc_utils.cj",
     "src/error_code.cj",
-    "src/ipcskeleton.cj",
     "src/iremote_object.cj",
-    "src/message_option.cj",
     "src/message_sequence.cj",
     "src/remote_object.cj",
     "src/remote_proxy.cj",
@@ -31,7 +29,7 @@ ohos_cj_library("ohos.rpc") {
   ]
 
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",

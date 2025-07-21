@@ -12,17 +12,21 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.resource_manager") {
   sources = [
-    "src/resource_manager.cj",
     "src/resource_manager_common.cj",
+    "src/resource_manager_errors.cj",
     "src/resource_manager_ffi.cj",
+    "src/resource_manager.cj",
   ]
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
+    "../global/drawable_descriptor:ohos.drawable_descriptor",
+    "../global/raw_file_descriptor:ohos.raw_file_descriptor",
+    "../global/resource:ohos.resource",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
   ]

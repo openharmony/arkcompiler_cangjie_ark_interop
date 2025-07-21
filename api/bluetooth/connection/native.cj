@@ -15,9 +15,6 @@
 
 package ohos.bluetooth.connection
 
-import ohos.base.*
-import ohos.ffi.*
-
 foreign {
     // global ffi function
     func FfiBluetoothConSetLocalName(name: CString, errCode: CPointer<Int32>): Unit

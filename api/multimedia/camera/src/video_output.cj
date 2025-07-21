@@ -24,8 +24,7 @@ import std.sync.*
 /**
  * Video output object.
  *
- * @interface VideoOutput
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface VideoOutput extends CameraOutput
  */
 @!APILevel[
     21,
@@ -48,6 +47,12 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Release output instance.
+     *
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation release(): Promise<void>
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -63,7 +68,7 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      *
      * @throws { BusinessException } 7400103 - Session not config.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation start(): Promise<void>
      */
     @!APILevel[
         21,
@@ -80,7 +85,8 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
     /**
      * Stop video output.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation stop(): Promise<void>
      */
     @!APILevel[
         21,
@@ -98,7 +104,8 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      * Get supported frame rates which can be set during session running.
      *
      * @returns { Array<FrameRateRange> } The array of supported frame rate range.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation getSupportedFrameRates(): Array<FrameRateRange>
      */
     @!APILevel[
         21,
@@ -125,7 +132,7 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      * @param { Int32 } maxFps - Maximum frame rate per second.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400110 - Unresolved conflicts with current configurations.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setFrameRate(minFps: int, maxFps: int): void
      */
     @!APILevel[
         21,
@@ -141,7 +148,8 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      * Get active frame rate range which has been set before.
      *
      * @returns { FrameRateRange } The active frame rate range.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation getActiveFrameRate(): FrameRateRange
      */
     @!APILevel[
         21,
@@ -162,7 +170,7 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      *
      * @returns { VideoProfile } The current preconfig type.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getActiveProfile(): VideoProfile
      */
     @!APILevel[
         21,
@@ -185,7 +193,7 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      * @returns { ImageRotation } The video rotation angle.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getVideoRotation(deviceDegree: int): ImageRotation
      */
     @!APILevel[
         21,
@@ -203,20 +211,23 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
 
     /**
      * Subscribes frame start event callback.
-     * Unsubscribes from frame end event callback.
+     * Subscribes from frame end event callback.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * @param { CameraEvents } event - Event type.
      * @param { Callback0Argument } callback - Callback used to return the result.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation on(type: 'frameStart', callback: AsyncCallback<void>): void
+     * @relation on(type: 'frameEnd', callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func on(`type`: CameraCallbackType, callback: Callback0Argument): Unit {
-        match (`type`) {
-            case CameraCallbackType.FrameStart => synchronized(frameStartMutex) {
+    public func on(event: CameraEvents, callback: Callback0Argument): Unit {
+        match (event) {
+            case CameraEvents.FrameStart => synchronized(frameStartMutex) {
                 let callbackList = frameStartCallbackList
                 if (findCallbackObject(callbackList, callback)) {
                     CAMERA_LOG.error("VideoOutput on failed: ${paramError("callback object", "different")}")
@@ -230,7 +241,7 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
                     callbackList.add((callback, lambdaData.getID()))
                 }
             }
-            case CameraCallbackType.FrameEnd => synchronized(frameEndMutex) {
+            case CameraEvents.FrameEnd => synchronized(frameEndMutex) {
                 let callbackList = frameEndCallbackList
                 if (findCallbackObject(callbackList, callback)) {
                     CAMERA_LOG.error("VideoOutput on failed: ${paramError("callback object", "different")}")
@@ -244,28 +255,32 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
                     callbackList.add((callback, lambdaData.getID()))
                 }
             }
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "VideoOutput on failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 
     /**
-     * Subscribes to error events.
+     * Registers a listener for errors in the metadata stream to get the result by registering
+     * a callback function. This API uses an asynchronous callback to return the result.
+     * 
+     * Description: Currently, it is not allowed to use off() to unregister the callback
+     * within the callback method of on().
      *
-     * @param { CameraCallbackType } type - Event type.
+     * @param { CameraEvents } event - Event type.
      * @param { Callback1Argument<BusinessException> } callback - Callback used to get the video output errors.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation on(type: 'error', callback: ErrorCallback): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit {
-        match (`type`) {
-            case CameraCallbackType.CameraError => ()
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "VideoOutput on failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+    public func on(event: CameraEvents, callback: Callback1Argument<BusinessException>): Unit {
+        match (event) {
+            case CameraEvents.CameraError => ()
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         synchronized(errorMutex) {
             let callbackList = errorCallbackList
@@ -287,62 +302,74 @@ public class VideoOutput <: RemoteDataLite & CameraOutput {
      * Unsubscribes from frame start event callback.
      * Unsubscribes from frame end event callback.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * @param { CameraEvents } event - Event type.
      * @param { Callback0Argument } callback - Callback used to return the result.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'frameStart', callback?: AsyncCallback<void>): void
+     * @relation off(type: 'frameEnd', callback?: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType, callback: Callback0Argument): Unit {
-        match (`type`) {
-            case CameraCallbackType.FrameStart => off(IdClassInfo(this.getID(), "VideoOutput"), frameStartCallbackList,
+    public func off(event: CameraEvents, callback: Callback0Argument): Unit {
+        match (event) {
+            case CameraEvents.FrameStart => off(IdClassInfo(this.getID(), "VideoOutput"), frameStartCallbackList,
                 frameStartMutex, callback, FfiCameraVideoOutputOffFrameStart)
-            case CameraCallbackType.FrameEnd => off(IdClassInfo(this.getID(), "VideoOutput"), frameEndCallbackList,
+            case CameraEvents.FrameEnd => off(IdClassInfo(this.getID(), "VideoOutput"), frameEndCallbackList,
                 frameEndMutex, callback, FfiCameraVideoOutputOffFrameEnd)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "VideoOutput off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 
     /**
      * Unsubscribes from error events.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * @param { CameraEvents } event - Event type.
      * @param { Callback1Argument<BusinessException> } callback - Callback used to get the video output errors.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'error', callback?: ErrorCallback): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit {
-        match (`type`) {
-            case CameraCallbackType.CameraError => off(IdClassInfo(this.getID(), "VideoOutput"), errorCallbackList,
+    public func off(event: CameraEvents, callback: Callback1Argument<BusinessException>): Unit {
+        match (event) {
+            case CameraEvents.CameraError => off(IdClassInfo(this.getID(), "VideoOutput"), errorCallbackList,
                 errorMutex, callback, FfiCameraVideoOutputOffError)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "VideoOutput off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 
+    /**
+     * Unsubscribes all callbacks from the event specified by the param.
+     *
+     * @param { CameraEvents } event - Event type.
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'frameStart', callback?: AsyncCallback<void>): void
+     * @relation off(type: 'frameEnd', callback?: AsyncCallback<void>): void
+     * @relation off(type: 'error', callback?: ErrorCallback): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType): Unit {
-        match (`type`) {
-            case CameraCallbackType.FrameStart => offAll(IdClassInfo(this.getID(), "VideoOutput"),
+    public func off(event: CameraEvents): Unit {
+        match (event) {
+            case CameraEvents.FrameStart => offAll(IdClassInfo(this.getID(), "VideoOutput"),
                 frameStartCallbackList, frameStartMutex, FfiCameraVideoOutputOffAllFrameStart)
-            case CameraCallbackType.FrameEnd => offAll(IdClassInfo(this.getID(), "VideoOutput"), frameEndCallbackList,
+            case CameraEvents.FrameEnd => offAll(IdClassInfo(this.getID(), "VideoOutput"), frameEndCallbackList,
                 frameEndMutex, FfiCameraVideoOutputOffAllFrameEnd)
-            case CameraCallbackType.CameraError => offAll(IdClassInfo(this.getID(), "VideoOutput"), errorCallbackList,
+            case CameraEvents.CameraError => offAll(IdClassInfo(this.getID(), "VideoOutput"), errorCallbackList,
                 errorMutex, FfiCameraVideoOutputOffAllError)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "VideoOutput off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 }

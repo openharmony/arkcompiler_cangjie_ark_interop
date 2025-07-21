@@ -32,13 +32,14 @@ public class Systemparameter {
 
     /**
      * Gets the value of the attribute with the specified key.
-     * @param { String } key Key of the system attribute.
+     * @param { String } key Key of the system attribute, cannot exceed 128 characters,
+     * only allow alphanumeric, plus '.', '-', '@', ':', or '_', don't allow '..'.
      * @param { String } def Default value.
      * @returns { String } if the parameter is empty or doesn't exist, empty string will be returned.
      * @throws { BusinessException } 14700101 - System parameter not found.
      * @throws { BusinessException } 14700103 - The operation on the system permission is denied.
      * @throws { BusinessException } 14700104 - System internal error such as out memory or deadlock.
-     * @relation function getSync(key: string, def?: string): string;
+     * @relation function getSync(key: string, def?: string): string
      */
     @!APILevel[
         21,
@@ -68,12 +69,13 @@ public class Systemparameter {
 
     /**
      * Sets a value for the attribute with the specified key.
-     * @param { String } key Key of the system attribute.
-     * @param { String } value value System attribute value to set.
+     * @param { String } key Key of the system attribute, cannot exceed 128 characters,
+     * only allow alphanumeric, plus '.', '-', '@', ':', or '_', don't allow '..'.
+     * @param { String } value value System attribute value to set, cannot exceed 96 characters.
      * @throws { BusinessException } 14700102 - Invalid system parameter value.
      * @throws { BusinessException } 14700103 - The operation on the system permission is denied.
      * @throws { BusinessException } 14700104 - System internal error such as out memory or deadlock.
-     * @relation function setSync(key: string, value: string): void;
+     * @relation function setSync(key: string, value: string): void
      */
     @!APILevel[
         21,

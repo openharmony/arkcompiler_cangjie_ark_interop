@@ -15,9 +15,8 @@
 
 package ohos.net.http
 
-import ohos.base.*
 import ohos.ffi.*
-import ohos.net.connection.{HttpProxy, CHttpProxy}
+import ohos.net.connection.CHttpProxy
 import std.collection.*
 
 foreign {

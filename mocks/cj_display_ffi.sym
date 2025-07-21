@@ -13,9 +13,7 @@
 
 FfiOHOSGetDefaultDisplaySync;
 FfiOHOSGetAllDisplays;
-FfiOHOSHasPrivateWindow;
 FfiOHOSIsFoldable;
-FfiOHOSSetFoldDisplayMode;
 FfiOHOSGetFoldStatus;
 FfiOHOSGetFoldDisplayMode;
 FfiOHOSGetCurrentFoldCreaseRegion;

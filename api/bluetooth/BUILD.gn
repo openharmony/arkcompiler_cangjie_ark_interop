@@ -12,13 +12,13 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.bluetooth") {
-  sources = [ "error_code/error_message.cj" ]
+  sources = [ "error_message.cj" ]
 
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
     "../ffi_bind:ohos.ffi",
@@ -27,79 +27,4 @@ ohos_cj_library("ohos.bluetooth") {
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
   lib_name = "bluetooth"
-}
-
-ohos_cj_library("ohos.bluetooth.baseProfile") {
-  sources = [ "baseProfile/base_profile.cj" ]
-
-  cj_deps = [
-    ":ohos.bluetooth.constant",
-    "../arkui/cj:ohos.base",
-    "../labels:ohos.labels",
-  ]
-
-  external_deps = []
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "bluetooth.baseProfile"
-}
-
-ohos_cj_library("ohos.bluetooth.ble") {
-  sources = [
-    "ble/ble.cj",
-    "ble/gatt_client_device.cj",
-    "ble/gatt_server.cj",
-    "ble/gatt_util.cj",
-    "ble/native.cj",
-    "ble/util.cj",
-  ]
-
-  cj_deps = [
-    ":ohos.bluetooth",
-    ":ohos.bluetooth.constant",
-    "../arkui/cj:ohos.base",
-    "../ffi_bind:ohos.ffi",
-    "../hilog:ohos.hilog",
-    "../labels:ohos.labels",
-  ]
-
-  external_deps = [ "bluetooth:cj_bluetooth_ble_ffi" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "bluetooth.ble"
-}
-
-ohos_cj_library("ohos.bluetooth.connection") {
-  sources = [
-    "connection/connection.cj",
-    "connection/native.cj",
-  ]
-
-  cj_deps = [
-    ":ohos.bluetooth",
-    "../arkui/cj:ohos.base",
-    "../ffi_bind:ohos.ffi",
-    "../hilog:ohos.hilog",
-    "../labels:ohos.labels",
-  ]
-
-  external_deps = [ "bluetooth:cj_bluetooth_connection_ffi" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "bluetooth.connection"
-}
-
-ohos_cj_library("ohos.bluetooth.constant") {
-  sources = [ "constant/constant.cj" ]
-
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-  lib_name = "bluetooth.constant"
-
-  cj_deps = [
-    "../labels:ohos.labels",
-  ]
 }

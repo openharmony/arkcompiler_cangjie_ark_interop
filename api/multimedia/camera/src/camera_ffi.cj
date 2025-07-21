@@ -15,8 +15,6 @@
 
 package ohos.multimedia.camera
 
-import std.collection.*
-import ohos.base.*
 import ohos.ffi.*
 
 foreign {
@@ -470,18 +468,18 @@ struct CFrameRateRange {
 struct CLocation {
     CLocation(
         let latitude: Float64,
-        let longtitude: Float64,
+        let longitude: Float64,
         let altitude: Float64
     ) {}
 
     init(location: Location) {
         this.latitude = location.latitude
-        this.longtitude = location.longtitude
+        this.longitude = location.longitude
         this.altitude = location.altitude
     }
 
     func toLocation(): Location {
-        return Location(latitude, longtitude, altitude)
+        return Location(latitude, longitude, altitude)
     }
 }
 
@@ -602,14 +600,10 @@ struct CRect {
 @C
 struct CMetadataObject {
     CMetadataObject(
-        let `type`: Int32,
+        let objType: Int32,
         let timestamp: Int32,
         let boundingBox: CRect
     ) {}
-
-    func toMetadataObject(): MetadataObject {
-        return MetadataObject(MetadataObjectType.parse(`type`), timestamp, boundingBox.toRect())
-    }
 }
 
 @C
@@ -618,12 +612,4 @@ struct CArrCMetadataObject {
         let head: CPointer<CMetadataObject>,
         let size: Int64
     ) {}
-
-    func toArray(): Array<MetadataObject> {
-        unsafe {
-            cArr2cjArr<CMetadataObject, MetadataObject>(size, head) {
-                item => item.toMetadataObject()
-            }
-        }
-    }
 }

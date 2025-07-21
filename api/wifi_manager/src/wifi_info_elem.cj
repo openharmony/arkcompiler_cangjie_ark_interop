@@ -16,7 +16,6 @@
 package ohos.wifi_manager
 
 import ohos.labels.*
-import ohos.base.*
 import ohos.ffi.*
 
 /**
@@ -31,7 +30,7 @@ import ohos.ffi.*
 public class WifiInfoElem <: ToString {
     /**
      * Element id
-     * @relation eid: number;
+     * @relation eid: number
      */
     @!APILevel[
         21,
@@ -42,7 +41,7 @@ public class WifiInfoElem <: ToString {
 
     /**
      * Element content
-     * @relation content: Uint8Array;
+     * @relation content: Uint8Array
      */
     @!APILevel[
         21,
@@ -65,6 +64,9 @@ public class WifiInfoElem <: ToString {
         }
     }
 
+    /**
+     * Obtain the string representation of WifiInfoElem.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

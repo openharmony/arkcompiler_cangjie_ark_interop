@@ -15,7 +15,7 @@
 
 package ohos.bluetooth.ble
 
-import std.deriving.*
+import std.deriving.Derive
 import ohos.labels.*
 import ohos.ffi.*
 import ohos.base.*
@@ -1088,7 +1088,7 @@ public enum ScanDuty {
     /**
      * low power mode
      *
-     * @relation SCAN_MODE_LOW_POWER
+     * @relation SCAN_MODE_LOW_POWER = 0
      */
     @!APILevel[
         21,
@@ -1100,7 +1100,7 @@ public enum ScanDuty {
     /**
      * balanced power mode
      *
-     * @relation SCAN_MODE_BALANCED
+     * @relation SCAN_MODE_BALANCED = 1
      */
     @!APILevel[
         21,
@@ -1112,7 +1112,7 @@ public enum ScanDuty {
     /**
      * Scan using highest duty cycle
      *
-     * @relation SCAN_MODE_LOW_LATENCY
+     * @relation SCAN_MODE_LOW_LATENCY = 2
      */
     @!APILevel[
         21,
@@ -1122,6 +1122,9 @@ public enum ScanDuty {
     ScanModeLowLatency
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case ScanModeLowPower => 0
@@ -1147,7 +1150,7 @@ public enum MatchMode {
     /**
      * aggressive mode
      *
-     * @relation MATCH_MODE_AGGRESSIVE
+     * @relation MATCH_MODE_AGGRESSIVE = 1
      */
     @!APILevel[
         21,
@@ -1159,7 +1162,7 @@ public enum MatchMode {
     /**
      * sticky mode
      *
-     * @relation MATCH_MODE_STICKY
+     * @relation MATCH_MODE_STICKY = 2
      */
     @!APILevel[
         21,
@@ -1169,6 +1172,9 @@ public enum MatchMode {
     MatchModeSticky
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case MatchModeAggressive => 1
@@ -1248,6 +1254,10 @@ public enum AdvertisingState {
     Stopped
     | ...
 
+
+    /**
+     * @throws NoneValueException - Value conversion failed.
+     */
     static func parse(state: Int32) {
         ADVERTISING_STATE_MAP.get(state) ?? throw NoneValueException("Unknown state value")
     }
@@ -1290,6 +1300,9 @@ public enum PhyType {
     PhyLeAllSupported
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case PhyLe1M => 1
@@ -1333,6 +1346,9 @@ public enum BluetoothBleCallbackType {
     BleDeviceFind
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case AdvertisingStateChange => 0

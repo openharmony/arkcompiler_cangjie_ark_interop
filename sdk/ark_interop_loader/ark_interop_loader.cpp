@@ -158,9 +158,9 @@ static napi_value LoadCJModule(napi_env env, napi_callback_info info)
     if (napi_get_undefined(env, &result) != napi_ok) {
         return result;
     }
-    constexpr size_t BUF_SIZE = 256;
-    char nameBuf[BUF_SIZE];
-    size_t realSize = BUF_SIZE;
+    constexpr size_t buf_size = 256;
+    char nameBuf[buf_size];
+    size_t realSize = buf_size;
     void *arkInteropHandle = GetArkInteropLibHandle(env);
     if (!ParseLoadParams(env, info, nameBuf, realSize)) {
         return result;

@@ -15,11 +15,11 @@
 
 package ohos.settings
 
-import std.collection.HashMap
-import ohos.ability.*
+import ohos.app.ability.ui_ability.{UIAbilityContext, getStageContext}
 import ohos.base.*
-import ohos.ffi.*
 import ohos.labels.*
+
+import std.collection.HashMap
 
 const SYSTEM_INTERNAL_ERROR: Int32 = 14700104
 let ERROR_CODE_MAP = HashMap<Int32, String>(
@@ -45,7 +45,11 @@ func getErrorMsg(code: Int32): String {
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
-public func getValue<T>(context: StageContext, name: T, defValue: String): String where T <: ToString {
+public func getValue<T>(context: UIAbilityContext, name: T, defValue: String): String where T <: ToString {
+    let stageContext = getStageContext(context)
+    if (stageContext.isNull()) {
+        throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
+    }
     var ret: Int32 = 0
     var value: String = ""
     unsafe {
@@ -53,7 +57,7 @@ public func getValue<T>(context: StageContext, name: T, defValue: String): Strin
             cName = LibC.mallocCString(name.toString()).asResource(),
             cDefValue = LibC.mallocCString(defValue).asResource()
         ) {
-            let result = FfiSettingsGetValue(context, cName.value, cDefValue.value, CString(CPointer()), inout ret)
+            let result = FfiSettingsGetValue(stageContext, cName.value, cDefValue.value, CString(CPointer()), inout ret)
             if (result.isNull()) {
                 throw BusinessException(ret, getErrorMsg(ret))
             }
@@ -76,8 +80,12 @@ public func getValue<T>(context: StageContext, name: T, defValue: String): Strin
     stagemodelonly: true,
     syscap: "SystemCapability.Applications.Settings.Core"
 ]
-public func getValue<T, P>(context: StageContext, name: T, defValue: String, domainName: P): String where T <: ToString,
+public func getValue<T, P>(context: UIAbilityContext, name: T, defValue: String, domainName: P): String where T <: ToString,
     P <: ToString {
+    let stageContext = getStageContext(context)
+    if (stageContext.isNull()) {
+        throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
+    }
     var ret: Int32 = 0
     var value: String = ""
     unsafe {
@@ -86,7 +94,7 @@ public func getValue<T, P>(context: StageContext, name: T, defValue: String, dom
             cDefValue = LibC.mallocCString(defValue).asResource(),
             cDomainName = LibC.mallocCString(domainName.toString()).asResource()
         ) {
-            let result = FfiSettingsGetValue(context, cName.value, cDefValue.value, cDomainName.value, inout ret)
+            let result = FfiSettingsGetValue(stageContext, cName.value, cDefValue.value, cDomainName.value, inout ret)
             if (result.isNull()) {
                 throw BusinessException(ret, getErrorMsg(ret))
             }

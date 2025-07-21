@@ -16,7 +16,6 @@
 package ohos.wifi_manager
 
 import ohos.base.*
-import ohos.ffi.*
 import std.collection.HashMap
 
 const WIFI_OPT_FAILED = 1i32

@@ -15,10 +15,10 @@
 
 package ohos.bluetooth.connection
 
-import ohos.base.*
-import ohos.bluetooth.*
-import ohos.ffi.*
-import ohos.labels.*
+import ohos.base.BusinessException
+import ohos.bluetooth.checkRet
+import ohos.ffi.SUCCESS_CODE
+import ohos.labels.APILevel
 
 /**
  * Sets the Bluetooth friendly name of a device. It is used only by system applications for security.
@@ -26,19 +26,18 @@ import ohos.labels.*
  *
  * @permission ohos.permission.ACCESS_BLUETOOTH
  * @param { String } name - Indicates a valid Bluetooth name.
- * @throws { BusinessError } 201 - Permission denied.
- * @throws { BusinessError } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.
- * <br>2. Incorrect parameter types. 3. Parameter verification failed.
- * @throws { BusinessError } 801 - Capability not supported.
- * @throws { BusinessError } 2900001 - Service stopped.
- * @throws { BusinessError } 2900003 - Bluetooth disabled.
- * @throws { BusinessError } 2900099 - Operation failed.
- * @syscap SystemCapability.Communication.Bluetooth.Core
+ * @throws { BusinessException } 201 - Permission denied.
+ * @throws { BusinessException } 401 - Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed.
+ * @throws { BusinessException } 801 - Capability not supported.
+ * @throws { BusinessException } 2900001 - Service stopped.
+ * @throws { BusinessException } 2900003 - Bluetooth disabled.
+ * @throws { BusinessException } 2900099 - Operation failed.
+ * @relation function setLocalName(name: string): void
  */
 @!APILevel[
     21,
     deprecated: 19,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
@@ -49,7 +48,5 @@ public func setLocalName(name: String): Unit {
             FfiBluetoothConSetLocalName(cName.value, inout errorCode)
         }
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }

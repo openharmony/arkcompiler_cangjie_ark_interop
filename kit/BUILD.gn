@@ -12,17 +12,29 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
-import("//arkcompiler/cangjie_api/multi-product_diff.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/multi-product_diff.gni")
 
 ohos_cj_library("kit.AbilityKit") {
   sources = [ "AbilityKit/index.cj" ]
 
   cj_deps = [
-    "../api/ability:ohos.ability",
+    "../api/app/ability/ability_constant:ohos.app.ability.ability_constant",
+    "../api/app/ability/ability_stage:ohos.app.ability.ability_stage",
+    "../api/app/ability/app_recovery:ohos.app.ability.app_recovery",
+    "../api/app/ability/common:ohos.app.ability.common",
+    "../api/app/ability/completion_handler:ohos.app.ability.completion_handler",
+    "../api/app/ability/configuration:ohos.app.ability.configuration",
+    "../api/app/ability/context_constant:ohos.app.ability.context_constant",
+    "../api/app/ability/dialog_request:ohos.app.ability.dialog_request",
+    "../api/app/ability/error_manager:ohos.app.ability.error_manager",
+    "../api/app/ability/open_link_options:ohos.app.ability.open_link_options",
+    "../api/app/ability/start_options:ohos.app.ability.start_options",
+    "../api/app/ability/ui_ability:ohos.app.ability.ui_ability",
+    "../api/app/ability/want:ohos.app.ability.want",
+    "../api/app/ability/want_constant:ohos.app.ability.want_constant",
     "../api/ability_access_ctrl:ohos.ability_access_ctrl",
-    "../api/bundle_manager:ohos.bundle_manager",
-    "../api/eventhub:ohos.eventhub",
+    "../api/bundle/bundle_manager:ohos.bundle.bundle_manager",
   ]
 
   kit = true
@@ -35,11 +47,11 @@ ohos_cj_library("kit.ArkData") {
   sources = [ "ArkData/index.cj" ]
 
   cj_deps = [
-    "../api/data_share_predicates:ohos.data_share_predicates",
-    "../api/distributed_kv_store:ohos.distributed_kv_store",
-    "../api/preferences:ohos.preferences",
-    "../api/relational_store:ohos.relational_store",
-    "../api/values_bucket:ohos.values_bucket",
+    "../api/data/data_share_predicates:ohos.data.data_share_predicates",
+    "../api/data/distributed_kv_store:ohos.data.distributed_kv_store",
+    "../api/data/preferences:ohos.data.preferences",
+    "../api/data/relational_store:ohos.data.relational_store",
+    "../api/data/values_bucket:ohos.data.values_bucket",
   ]
 
   kit = true
@@ -52,8 +64,8 @@ ohos_cj_library("kit.ArkGraphics2D") {
   sources = [ "ArkGraphics2D/index.cj" ]
 
   cj_deps = [
-    "../api/arkui/cj:ohos.component",
-    "../api/color_manager:ohos.color_manager",
+    "../api/ohos/arkui/component:ohos.arkui.component",
+    "../api/graphics/color_space_manager:ohos.graphics.color_space_manager",
   ]
 
   kit = true
@@ -66,9 +78,21 @@ ohos_cj_library("kit.ArkUI") {
   sources = [ "ArkUI/index.cj" ]
 
   cj_deps = [
-    "../api/display_runtime:ohos.display",
-    "../api/screenshot:ohos.screenshot",
-    "../api/window:ohos.window",
+    "../api/ohos/animator:ohos.animator",
+    "../api/ohos/base:ohos.base",
+    "../api/ohos/arkui/component:ohos.arkui.component",
+    "../api/ohos/arkui/component_snapshot:ohos.arkui.component_snapshot",
+    "../api/ohos/curves:ohos.curves",
+    "../api/ohos/font:ohos.font",
+    "../api/ohos/matrix4:ohos.matrix4",
+    "../api/ohos/measure:ohos.measure",
+    "../api/ohos/arkui/observer:ohos.arkui.observer",
+    "../api/ohos/prompt_action:ohos.prompt_action",
+    "../api/ohos/router:ohos.router",
+    "../api/ohos/arkui/state_management:ohos.arkui.state_management",
+    "../api/ohos/display:ohos.display",
+    "../api/ohos/screenshot:ohos.screenshot",
+    "../api/ohos/window:ohos.window",
   ]
 
   kit = true
@@ -80,7 +104,7 @@ ohos_cj_library("kit.ArkUI") {
 ohos_cj_library("kit.ArkWeb") {
   sources = [ "ArkWeb/index.cj" ]
 
-  cj_deps = [ "../api/webview:ohos.webview" ]
+  cj_deps = [ "../api/web/webview:ohos.web.webview" ]
 
   kit = true
   lib_name = "ArkWeb"
@@ -95,7 +119,7 @@ ohos_cj_library("kit.BasicServicesKit") {
     "../api/battery_info:ohos.battery_info",
     "../api/common_event_manager:ohos.common_event_manager",
     "../api/device_info:ohos.device_info",
-    "../api/request:ohos.request.agent",
+    "../api/request:ohos.request",
     "../api/settings:ohos.settings",
     "../api/system_date_time:ohos.system_date_time",
     "../api/system_parameter_enhance:ohos.system_parameter_enhance",
@@ -123,10 +147,10 @@ ohos_cj_library("kit.ConnectivityKit") {
 
   cj_deps = [
     "../api/bluetooth:ohos.bluetooth",
-    "../api/bluetooth:ohos.bluetooth.baseProfile",
-    "../api/bluetooth:ohos.bluetooth.ble",
-    "../api/bluetooth:ohos.bluetooth.connection",
-    "../api/bluetooth:ohos.bluetooth.constant",
+    "../api/bluetooth/base_profile:ohos.bluetooth.base_profile",
+    "../api/bluetooth/ble:ohos.bluetooth.ble",
+    "../api/bluetooth/connection:ohos.bluetooth.connection",
+    "../api/bluetooth/constant:ohos.bluetooth.constant",
     "../api/wifi_manager:ohos.wifi_manager",
   ]
 
@@ -140,8 +164,8 @@ ohos_cj_library("kit.CoreFileKit") {
   sources = [ "CoreFileKit/index.cj" ]
 
   cj_deps = [
-    "../api/file_fileuri:ohos.file_fileuri",
-    "../api/file_fs:ohos.file_fs",
+    "../api/file/fileuri:ohos.file.fileuri",
+    "../api/file/fs:ohos.file.fs",
   ]
 
   kit = true
@@ -153,7 +177,7 @@ ohos_cj_library("kit.CoreFileKit") {
 ohos_cj_library("kit.CryptoArchitectureKit") {
   sources = [ "CryptoArchitectureKit/index.cj" ]
 
-  cj_deps = [ "../api/crypto:ohos.crypto" ]
+  cj_deps = ["../api/security/crypto_framework:ohos.security.crypto_framework"]
 
   kit = true
   lib_name = "CryptoArchitectureKit"
@@ -161,24 +185,10 @@ ohos_cj_library("kit.CryptoArchitectureKit") {
   part_name = "cangjie_api"
 }
 
-ohos_cj_library("kit.HybridUIKit") {
-  sources = [ "HybridUIKit/index.cj" ]
-
-  cj_deps = [
-    "../api/arkui/cj:ohos.base",
-    "../api/arkui/cj_ndk:ohos.hybrid_base",
-  ]
-
-  kit = true
-  lib_name = "HybridUIKit"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
 ohos_cj_library("kit.ImageKit") {
   sources = [ "ImageKit/index.cj" ]
 
-  cj_deps = [ "../api/image:ohos.image" ]
+  cj_deps = [ "../api/multimedia/image:ohos.multimedia.image" ]
 
   kit = true
   lib_name = "ImageKit"
@@ -225,8 +235,7 @@ ohos_cj_library("kit.LocationKit") {
 ohos_cj_library("kit.MediaKit") {
   sources = [ "MediaKit/index.cj" ]
 
-  cj_deps = [ "../api/multimedia_media:ohos.multimedia_media" ]
-
+  cj_deps = [ "../api/multimedia/media:ohos.multimedia.media" ]
   kit = true
   lib_name = "MediaKit"
   subsystem_name = "arkcompiler"
@@ -236,8 +245,10 @@ ohos_cj_library("kit.MediaKit") {
 ohos_cj_library("kit.MediaLibraryKit") {
   sources = [ "MediaLibraryKit/index.cj" ]
 
-  cj_deps =
-      [ "../api/multimedia/media_library:ohos.multimedia.photo_accesshelper" ]
+  cj_deps = [
+    "../api/file/photo_access_helper:ohos.file.photo_access_helper",
+    "../api/app/ability/ui_ability:ohos.app.ability.ui_ability",
+  ]
 
   kit = true
   lib_name = "MediaLibraryKit"
@@ -263,9 +274,9 @@ ohos_cj_library("kit.PerformanceAnalysisKit") {
   sources = [ "PerformanceAnalysisKit/index.cj" ]
 
   cj_deps = [
-    "../api/cj_leakwatcher:ohos.cj_leakwatcher",
-    "../api/hi_tracemeter:ohos.hi_tracemeter",
-    "../api/hiappevent:ohos.hiappevent",
+    "../api/cj_leak_watcher:ohos.cj_leak_watcher",
+    "../api/hi_trace_meter:ohos.hi_trace_meter",
+    "../api/hiviewdfx/hi_app_event:ohos.hiviewdfx.hi_app_event",
     "../api/hilog:ohos.hilog",
   ]
 
@@ -289,7 +300,7 @@ ohos_cj_library("kit.SensorServiceKit") {
 ohos_cj_library("kit.TelephonyKit") {
   sources = [ "TelephonyKit/index.cj" ]
 
-  cj_deps = [ "../api/telephony/telephony_call:ohos.telephony_call" ]
+  cj_deps = [ "../api/telephony/call:ohos.telephony.call" ]
 
   kit = true
   lib_name = "TelephonyKit"
@@ -297,36 +308,10 @@ ohos_cj_library("kit.TelephonyKit") {
   part_name = "cangjie_api"
 }
 
-ohos_cj_library("kit.UIKit") {
-  sources = [ "UIKit/index.cj" ]
-
-  cj_deps = [
-    "../api/arkui/cj:ohos.animator",
-    "../api/arkui/cj:ohos.base",
-    "../api/arkui/cj:ohos.component",
-    "../api/arkui/cj:ohos.component_snapshot",
-    "../api/arkui/cj:ohos.concurrency",
-    "../api/arkui/cj:ohos.curves",
-    "../api/arkui/cj:ohos.font",
-    "../api/arkui/cj:ohos.matrix4",
-    "../api/arkui/cj:ohos.measure",
-    "../api/arkui/cj:ohos.observer",
-    "../api/arkui/cj:ohos.prompt_action",
-    "../api/arkui/cj:ohos.router",
-    "../api/arkui/cj:ohos.state_manage",
-    "../api/arkui/cj:ohos.ui_resource",
-  ]
-
-  kit = true
-  lib_name = "UIKit"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
-}
-
 ohos_cj_library("kit.UniversalKeystoreKit") {
   sources = [ "UniversalKeystoreKit/index.cj" ]
 
-  cj_deps = [ "../api/security_huks:ohos.security_huks" ]
+  cj_deps = [ "../api/security/huks:ohos.security.huks" ]
 
   kit = true
   lib_name = "UniversalKeystoreKit"

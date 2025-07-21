@@ -15,6 +15,38 @@
 
 package kit.ArkUI
 
+// ui component
+public import ohos.base.*
+public import ohos.arkui.component.*
+public import ohos.arkui.state_management.*
+
+// font
+public import ohos.font.*
+
+// measure
+public import ohos.measure.*
+
+// observer
+public import ohos.arkui.observer.*
+
+// prompt_action
+public import ohos.prompt_action.*
+
+// router
+public import ohos.router.*
+
+// animator
+public import ohos.animator.*
+
+// curves
+public import ohos.curves.*
+
+// matrix4
+public import ohos.matrix4.*
+
+// component snapshot
+public import ohos.arkui.component_snapshot.*
+
 public import ohos.display.*
 public import ohos.display.Rect as DisplayRect
 public import ohos.display.Orientation as DisplayOrientation

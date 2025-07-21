@@ -50,10 +50,8 @@ public class SystemDateTime {
     /**
      * Obtains the number of milliseconds that have elapsed since the Unix epoch.
      *
-     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types;
-     * @relation function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void;
-     * @relation function getCurrentTime(callback: AsyncCallback<number>): void;
-     * @relation function getCurrentTime(isNano?: boolean): Promise<number>;
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types.
+     * @relation function getCurrentTime(isNano?: boolean): Promise<number>
      */
     @!APILevel[
         21,
@@ -70,10 +68,8 @@ public class SystemDateTime {
     /**
      * Obtains the number of milliseconds elapsed since the system was booted, not including deep sleep time.
      *
-     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types;
-     * @relation function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void;
-     * @relation function getRealActiveTime(callback: AsyncCallback<number>): void;
-     * @relation function getRealActiveTime(isNano?: boolean): Promise<number>;
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types.
+     * @relation function getRealActiveTime(isNano?: boolean): Promise<number>
      */
     @!APILevel[
         21,
@@ -90,10 +86,8 @@ public class SystemDateTime {
     /**
      * Obtains the number of milliseconds elapsed since the system was booted, including deep sleep time.
      *
-     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types;
-     * @relation function getRealTime(isNano: boolean, callback: AsyncCallback<number>): void;
-     * @relation function getRealTime(callback: AsyncCallback<number>): void;
-     * @relation function getRealTime(isNano?: boolean): Promise<number>;
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Incorrect parameter types.
+     * @relation function getRealTime(isNano?: boolean): Promise<number>
      */
     @!APILevel[
         21,
@@ -110,7 +104,7 @@ public class SystemDateTime {
     /**
      * Obtains the number of timestamp that have elapsed since the Unix epoch.
      *
-     * @relation function getTime(isNanoseconds?: boolean): number;
+     * @relation function getTime(isNanoseconds?: boolean): number
      */
     @!APILevel[
         21,
@@ -128,7 +122,7 @@ public class SystemDateTime {
      *
      * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;
      *     3. Parameter verification failed. This error code was added due to missing issues.
-     * @relation function getUptime(timeType: TimeType, isNanoseconds?: boolean): number;
+     * @relation function getUptime(timeType: TimeType, isNanoseconds?: boolean): number
      */
     @!APILevel[
         21,
@@ -144,7 +138,7 @@ public class SystemDateTime {
     /**
      * Obtains the number of milliseconds since the system has been running.
      *
-     * @relation function getTimezoneSync(): string;
+     * @relation function getTimezoneSync(): string
      */
     @!APILevel[
         21,

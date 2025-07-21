@@ -15,7 +15,6 @@
 
 package ohos.wifi_manager
 
-import ohos.base.*
 import ohos.ffi.*
 import ohos.labels.*
 
@@ -31,7 +30,7 @@ import ohos.labels.*
 public class WifiScanInfo <: ToString {
     /**
      * Wi-Fi SSID: the maximum length is 32 
-     * @relation ssid: string;
+     * @relation ssid: string
      */
     @!APILevel[
         21,
@@ -42,7 +41,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Wi-Fi bssid(MAC): the length is 6
-     * @relation bssid: string;
+     * @relation bssid: string
      */
     @!APILevel[
         21,
@@ -53,7 +52,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Wi-Fi bssid type
-     * @relation bssidType: DeviceAddressType;
+     * @relation bssidType: DeviceAddressType
      */
     @!APILevel[
         21,
@@ -64,7 +63,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Hotspot capability
-     * @relation capabilities: string;
+     * @relation capabilities: string
      */
     @!APILevel[
         21,
@@ -75,7 +74,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Security type: reference definition of WifiSecurityType
-     * @relation securityType: WifiSecurityType;
+     * @relation securityType: WifiSecurityType
      */
     @!APILevel[
         21,
@@ -86,7 +85,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Received signal strength indicator (RSSI)
-     * @relation rssi: number;
+     * @relation rssi: number
      */
     @!APILevel[
         21,
@@ -97,7 +96,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Frequency band, 1: 2.4G, 2: 5G
-     * @relation band: number;
+     * @relation band: number
      */
     @!APILevel[
         21,
@@ -108,7 +107,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Frequency
-     * @relation frequency: number;
+     * @relation frequency: number
      */
     @!APILevel[
         21,
@@ -119,7 +118,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Channel width
-     * @relation channelWidth: number;
+     * @relation channelWidth: number
      */
     @!APILevel[
         21,
@@ -130,7 +129,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Center frequency 0.
-     * @relation centerFrequency0: number;
+     * @relation centerFrequency0: number
      */
     @!APILevel[
         21,
@@ -141,7 +140,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Center frequency 1.
-     * @relation centerFrequency1: number;
+     * @relation centerFrequency1: number
      */
     @!APILevel[
         21,
@@ -152,7 +151,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Information elements.
-     * @relation infoElems: Array<WifiInfoElem>;
+     * @relation infoElems: Array<WifiInfoElem>
      */
     @!APILevel[
         21,
@@ -163,7 +162,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Time stamp
-     * @relation timestamp: number;
+     * @relation timestamp: number
      */
     @!APILevel[
         21,
@@ -174,7 +173,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Supported wifi category
-     * @relation supportedWifiCategory: WifiCategory;
+     * @relation supportedWifiCategory: WifiCategory
      */
     @!APILevel[
         21,
@@ -185,7 +184,7 @@ public class WifiScanInfo <: ToString {
 
     /**
      * Whether the Wi-Fi hotspot is HiLink network.
-     * @relation isHiLinkNetwork: boolean;
+     * @relation isHiLinkNetwork: boolean
      */
     @!APILevel[
         21,
@@ -238,6 +237,9 @@ public class WifiScanInfo <: ToString {
         this.capabilities = info.capabilities.toString()
     }
 
+    /**
+     * Obtain the string representation of WifiScanInfo.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

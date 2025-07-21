@@ -15,4 +15,4 @@
 
 package kit.MediaKit
 
-public import ohos.multimedia_media.*
+public import ohos.multimedia.media.*

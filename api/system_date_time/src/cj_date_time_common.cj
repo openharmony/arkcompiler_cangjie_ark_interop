@@ -31,7 +31,7 @@ public enum TimeType {
     /**
      * Indicates the time elapsed since the system was booted, including deep sleep time.
      *
-     * @relation STARTUP
+     * @relation STARTUP = 0
      */
     @!APILevel[
         21,
@@ -42,7 +42,7 @@ public enum TimeType {
     /**
      * Indicates the time elapsed since the system was booted, including deep sleep time.
      *
-     * @relation ACTIVE
+     * @relation ACTIVE = 1
      */
     | @!APILevel[
         21,

@@ -15,11 +15,12 @@
 
 package ohos.bluetooth.ble
 
-import ohos.labels.*
-import ohos.base.*
+import ohos.base.{ BusinessException, Callback1Argument, CallbackObject, CStringExtend, ERR_PARAMETER_ERROR }
+import ohos.bluetooth.{ BLUETOOTH_LOG, checkRet, getErrorMsg }
+import ohos.ffi.{ Callback1Param, RemoteDataLite, RetDataI32, SUCCESS_CODE, cArr2cjArr, releaseFFIData }
+import ohos.labels.APILevel
+
 import std.collection.{ArrayList, HashMap}
-import ohos.ffi.*
-import ohos.bluetooth.*
 
 /**
  * Manages GATT client. Before calling an Gatt client method, you must use createGattClientDevice to create an GattClientDevice instance.
@@ -70,9 +71,7 @@ public class GattClientDevice <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattClientDeviceConnect(getID(), inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -96,9 +95,7 @@ public class GattClientDevice <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattClientDeviceDisconnect(getID(), inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -123,9 +120,7 @@ public class GattClientDevice <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattClientDeviceClose(getID(), inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -138,7 +133,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation getDeviceName(): Promise<string>
-     * @relation getDeviceName(callback: AsyncCallback<string>): void
      */
     @!APILevel[
         21,
@@ -158,9 +152,7 @@ public class GattClientDevice <: RemoteDataLite {
                 name.free()
             }
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
         return outName
     }
 
@@ -174,7 +166,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation getServices(): Promise<Array<GattService>>
-     * @relation getServices(callback: AsyncCallback<Array<GattService>>): void
      */
     @!APILevel[
         21,
@@ -192,9 +183,7 @@ public class GattClientDevice <: RemoteDataLite {
             }
             nativeServices.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
         return outServices
     }
 
@@ -209,7 +198,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2901000 - Read forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>
-     * @relation readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void
      */
     @!APILevel[
         21,
@@ -239,9 +227,7 @@ public class GattClientDevice <: RemoteDataLite {
                 inout errorCode)
             inputCharacteristic.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -255,7 +241,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2901000 - Read forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>
-     * @relation readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void
      */
     @!APILevel[
         21,
@@ -282,9 +267,7 @@ public class GattClientDevice <: RemoteDataLite {
                 inout errorCode)
             inputDescriptor.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -298,7 +281,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2901001 - Write forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType): Promise<void>
-     * @relation writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -322,9 +304,7 @@ public class GattClientDevice <: RemoteDataLite {
                 registerCall.getID(), inout errorCode)
             inputCharacteristic.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -338,7 +318,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2901001 - Write forbidden.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation writeDescriptorValue(descriptor: BLEDescriptor): Promise<void>
-     * @relation writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -361,9 +340,7 @@ public class GattClientDevice <: RemoteDataLite {
                 inout errorCode)
             inputDescriptor.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -376,7 +353,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 801 - Capability not supported.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation getRssiValue(): Promise<number>
-     * @relation getRssiValue(callback: AsyncCallback<number>): void
      */
     @!APILevel[
         21,
@@ -396,9 +372,7 @@ public class GattClientDevice <: RemoteDataLite {
         }
         let registerCall = Callback1Param<RetDataI32, Unit>(wrapper)
         unsafe { FfiBluetoothBleGattClientDeviceGetRssiValue(getID(), registerCall.getID(), inout errorCode) }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -423,9 +397,7 @@ public class GattClientDevice <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattClientDeviceSetBLEMtuSize(getID(), mtu, inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -438,7 +410,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean): Promise<void>
-     * @relation setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -454,9 +425,7 @@ public class GattClientDevice <: RemoteDataLite {
                 inout errorCode)
             inputCharacteristic.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -469,7 +438,6 @@ public class GattClientDevice <: RemoteDataLite {
      * @throws { BusinessException } 2900001 - Service stopped.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise<void>
-     * @relation setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -485,9 +453,7 @@ public class GattClientDevice <: RemoteDataLite {
                 inout errorCode)
             inputCharacteristic.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -505,12 +471,12 @@ public class GattClientDevice <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<BLECharacteristic>): Unit {
-        if (`type` != BleCharacteristicChange) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleCharacteristicChange")
+    public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<BLECharacteristic>): Unit {
+        if (eventType != BleCharacteristicChange) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is BleCharacteristicChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             characteristic: NativeBLECharacteristic => characteristic.toObject()
         }
         return
@@ -532,14 +498,14 @@ public class GattClientDevice <: RemoteDataLite {
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
     public func on(
-        `type`: BluetoothBleGattClientDeviceCallbackType,
+        eventType: BluetoothBleGattClientDeviceCallbackType,
         callback: Callback1Argument<BLEConnectionChangeState>
     ): Unit {
-        if (`type` != BleConnectionStateChange) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleConnectionStateChange")
+        if (eventType != BleConnectionStateChange) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is BleConnectionStateChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             state: NativeBLEConnectionChangeState => state.toObject()
         }
         return
@@ -560,12 +526,12 @@ public class GattClientDevice <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<Int32>): Unit {
-        if (`type` != BluetoothBleGattClientDeviceCallbackType.BleMtuChange) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleMtuChange")
+    public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<Int32>): Unit {
+        if (eventType != BluetoothBleGattClientDeviceCallbackType.BleMtuChange) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is BleMtuChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             i: Int32 => i
         }
         return
@@ -588,16 +554,16 @@ public class GattClientDevice <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func off(`type`: BluetoothBleGattClientDeviceCallbackType, callback!: ?CallbackObject = None): Unit {
-        BLUETOOTH_LOG.debug("unsubscribe ${`type`}")
-        if (!callbackMap.contains(`type`)) {
+    public func off(eventType: BluetoothBleGattClientDeviceCallbackType, callback!: ?CallbackObject = None): Unit {
+        BLUETOOTH_LOG.debug("unsubscribe ${eventType}")
+        if (!callbackMap.contains(eventType)) {
             return
         }
         if (let Some(v) <- callback) {
-            findCallbackObject(`type`, v, remove: true)
+            findCallbackObject(eventType, v, remove: true)
             return
         }
-        callbackMap[`type`].clear()
+        callbackMap[eventType].clear()
         return
     }
 
@@ -633,9 +599,7 @@ public class GattClientDevice <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattClientDeviceOn(getID(), callbackType.getValue(), id, inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleGattClientDeviceCallbackType,

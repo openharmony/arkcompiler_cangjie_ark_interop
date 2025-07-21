@@ -15,18 +15,15 @@
 
 package ohos.i18n
 
-import std.deriving.Derive
 import std.time.DateTime
-import ohos.base.*
-import ohos.ffi.*
-import ohos.labels.*
+import ohos.base.getUniversalErrorMsg
 import std.collection.HashMap
 
-protected const INVALID_PARAMETER = 890001i32
+const INVALID_PARAMETER = 890001i32
 let ERROR_CODE_MAP = HashMap<Int32, String>(
     [(INVALID_PARAMETER, "Invalid parameter. Possible causes: Parameter verification failed.")])
 
-protected func getErrorMsg(code: Int32): String {
+func getErrorMsg(code: Int32): String {
     if (let Some(v) <- getUniversalErrorMsg(code)) {
         return v
     } else if (ERROR_CODE_MAP.contains(code)) {

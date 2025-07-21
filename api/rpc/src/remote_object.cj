@@ -15,11 +15,7 @@
 
 package ohos.rpc
 
-import std.sync.*
-import ohos.labels.*
-import ohos.base.Callback1Argument
 import ohos.ffi.*
-import ohos.base.BusinessException
 
 class RemoteObjectLite <: RemoteDataLite {
     protected init(id: Int64) {
@@ -31,126 +27,19 @@ class RemoteObjectLite <: RemoteDataLite {
     }
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.IPC.Core"
-]
-public open class RemoteObject <: IRemoteObject {
-    private var remoteBroker: ?IRemoteBroker = None
+protected open class RemoteObject <: IRemoteObject {
     private var lite: ?RemoteObjectLite = None
+    private let impl_: RemoteObjectImpl = RemoteObjectImpl()
 
     protected init(id: Int64) {
         lite = RemoteObjectLite(id)
     }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public init(descriptor: String) {
-        let stringValue = unsafe { LibC.mallocCString(descriptor) }
-        let id = unsafe { FfiRpcRemoteObjectConstructor(stringValue) }
-        unsafe { LibC.free(stringValue) }
-        if (id <= 0) {
-            throw BusinessException(ErrorCode.CHECK_PARAM_ERROR, "Parameter error.")
-        }
-        lite = RemoteObjectLite(id)
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func sendMessageRequest(code: UInt32, data: MessageSequence, reply: MessageSequence, options: MessageOption,
-        callback: Callback1Argument<RequestResult>): Unit {
-        let wrapper = {
-            data: CRequestResult => callback.invoke(data.toCJ())
-        }
-        let funRegisterCall = Callback1Param<CRequestResult, Unit>(wrapper)
-        let errCode = unsafe {
-            FfiRpcRemoteObjectSendMessageRequest(getID(), code, data.getID(), reply.getID(),
-                MesOption(options.getFlags(), options.getWaitTime()), funRegisterCall.getID())
-        }
-        checkRet(errCode)
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func modifyLocalInterface(localInterface: IRemoteBroker, descriptor: String): Unit {
-        let stringValue = unsafe { LibC.mallocCString(descriptor) }
-        var errCode = 0i32
-        unsafe { FfiRpcRemoteObjectModifyLocalInterface(getID(), stringValue, inout errCode) }
-        unsafe { LibC.free(stringValue) }
-        checkRet(errCode)
-        remoteBroker = localInterface
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func getDescriptor(): String {
-        var errCode: Int32 = 0
-        let stringValue = unsafe { FfiRpcRemoteObjectGetDescriptor(getID(), inout errCode) }
-        checkRet(errCode)
-        let descriptor = stringValue.toString()
-        unsafe { LibC.free(stringValue) }
-        return descriptor
-    }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func getCallingUid(): Int32 {
-        return unsafe { FfiRpcRemoteObjectGetCallingUid() }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func getCallingPid(): Int32 {
-        return unsafe { FfiRpcRemoteObjectGetCallingPid() }
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func getLocalInterface(descriptor: String): IRemoteBroker {
-        remoteBroker.getOrThrow({=> Exception("failed to get IRemoteBroker.")})
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func registerDeathRecipient(recipient: DeathRecipient, flags: Int32): Unit {
-        throw BusinessException(ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR, "only proxy object permitted")
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func unregisterDeathRecipient(recipient: DeathRecipient, flags: Int32): Unit {
-        throw BusinessException(ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR, "only proxy object permitted")
-    }
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public func isObjectDead(): Bool {
-        return false
-    }
+    protected init(_: String) {}
 
     protected func getID(): Int64 {
-        return lite.getOrThrow().getID()
+        return lite?.getID() ?? 0
     }
 }
+
+class RemoteObjectImpl {}

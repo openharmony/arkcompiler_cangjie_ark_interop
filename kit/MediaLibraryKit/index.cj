@@ -15,4 +15,4 @@
 
 package kit.MediaLibraryKit
 
-public import ohos.multimedia.photo_accesshelper.*
+public import ohos.file.photo_access_helper.*

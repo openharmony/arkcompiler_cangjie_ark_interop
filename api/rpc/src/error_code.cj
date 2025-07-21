@@ -15,102 +15,217 @@
 
 package ohos.rpc
 
-import std.deriving.*
 import ohos.labels.*
-import ohos.ffi.*
 
+import std.deriving.Derive
+
+/**
+ * The error code of rpc.
+ *
+ * @relation enum ErrorCode
+ */
+@Derive[ToString, Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
-public class ErrorCode {
+public enum ErrorCode {
+    /**
+     * Parameter error.
+     *
+     * @relation CHECK_PARAM_ERROR = 401
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const CHECK_PARAM_ERROR: Int32 = 401
+    CheckParamError
+    |
+    /**
+     * Failed to call mmap.
+     *
+     * @relation OS_MMAP_ERROR = 1900001
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const OS_MMAP_ERROR: Int32 = 1900001
+    OsMmapError
+    |
+    /**
+     * Failed to call ioctl.
+     *
+     * @relation OS_IOCTL_ERROR = 1900002
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const OS_IOCTL_ERROR: Int32 = 1900002
+    OsIoctlError
+    |
+    /**
+     * Failed to write data to the shared memory.
+     *
+     * @relation WRITE_TO_ASHMEM_ERROR = 1900003
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const WRITE_TO_ASHMEM_ERROR: Int32 = 1900003
+    WriteToAshmemError
+    |
+    /**
+     * Failed to read data from the shared memory.
+     *
+     * @relation READ_FROM_ASHMEM_ERROR = 1900004
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const READ_FROM_ASHMEM_ERROR: Int32 = 1900004
+    ReadFromAshmemError
+    |
+    /**
+     * Operation allowed only for the proxy object.
+     *
+     * @relation ONLY_PROXY_OBJECT_PERMITTED_ERROR = 1900005
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const ONLY_PROXY_OBJECT_PERMITTED_ERROR: Int32 = 1900005
+    OnlyProxyObjectPermittedError
+    |
+    /**
+     * Operation allowed only for the remote object.
+     *
+     * @relation ONLY_REMOTE_OBJECT_PERMITTED_ERROR = 1900006
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const ONLY_REMOTE_OBJECT_PERMITTED_ERROR: Int32 = 1900006
+    OnlyRemoteObjectPermittedError
+    |
+    /**
+     * Communication failed.
+     *
+     * @relation COMMUNICATION_ERROR = 1900007
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const COMMUNICATION_ERROR: Int32 = 1900007
+    CommunicationError
+    |
+    /**
+     * The proxy or remote object is invalid.
+     *
+     * @relation PROXY_OR_REMOTE_OBJECT_INVALID_ERROR = 1900008
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const PROXY_OR_REMOTE_OBJECT_INVALID_ERROR: Int32 = 1900008
+    ProxyOrRemoteObjectInvalidError
+    |
+    /**
+     * Failed to write data to the message sequence. 
+     *
+     * @relation WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR = 1900009
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR: Int32 = 1900009
+    WriteDataToMessageSequenceError
+    |
+    /**
+     * Failed to read data from the message sequence.
+     *
+     * @relation READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR = 1900010
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR: Int32 = 1900010
+    ReadDataFromMessageSequenceError
+    |
+    /**
+     * Memory allocation failed.
+     *
+     * @relation PARCEL_MEMORY_ALLOC_ERROR = 1900011
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const PARCEL_MEMORY_ALLOC_ERROR: Int32 = 1900011
+    ParcelMemoryAllocError
+    |
+    /**
+     * Call cj method failed
+     *
+     * @relation CALL_JS_METHOD_ERROR = 1900012
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const CALL_JS_METHOD_ERROR: Int32 = 1900012
+    CallCjMethodError
+    |
+    /**
+     * Os dup function failed.
+     *
+     * @relation OS_DUP_ERROR = 1900013
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    public static const OS_DUP_ERROR: Int32 = 1900013
+    OsDupError
+
+    prop value: Int32 {
+        get() {
+            match (this) {
+                case CheckParamError => 401
+                case OsMmapError => 1900001
+                case OsIoctlError => 1900002
+                case WriteToAshmemError => 1900003
+                case ReadFromAshmemError => 1900004
+                case OnlyProxyObjectPermittedError => 1900005
+                case OnlyRemoteObjectPermittedError => 1900006
+                case CommunicationError => 1900008
+                case ProxyOrRemoteObjectInvalidError => 1900009
+                case WriteDataToMessageSequenceError => 1900010
+                case ReadDataFromMessageSequenceError => 1900011
+                case ParcelMemoryAllocError => 1900012
+                case CallCjMethodError => 1900013
+                case OsDupError => throw IllegalArgumentException("The type is not supported.")
+            }
+        }
+    }
 }
 
+/**
+ * Enumerates the types of the Array.
+ *
+ * @relation enum TypeCode
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     21,
@@ -118,81 +233,140 @@ public class ErrorCode {
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public enum TypeCode {
+    /**
+     * Int8Array
+     *
+     * @relation INT8_ARRAY = 0
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    INT8_ARRAY
-    | @!APILevel[
+    Int8Array
+    |
+    /**
+     * Uint8Array
+     *
+     * @relation UINT8_ARRAY = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    UINT8_ARRAY
-    | @!APILevel[
+    Uint8Array
+    |
+    /**
+     * Int16Array
+     *
+     * @relation INT16_ARRAY = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    INT16_ARRAY
-    | @!APILevel[
+    Int16Array
+    |
+    /**
+     * Uint16Array
+     *
+     * @relation UINT16_ARRAY = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    UINT16_ARRAY
-    | @!APILevel[
+    Uint16Array
+    |
+    /**
+     * Int32Array
+     *
+     * @relation INT32_ARRAY = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    INT32_ARRAY
-    | @!APILevel[
+    Int32Array
+    |
+    /**
+     * Uint32Array
+     *
+     * @relation UINT32_ARRAY = 5
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    UINT32_ARRAY
-    | @!APILevel[
+    Uint32Array
+    |
+    /**
+     * Float32Array
+     *
+     * @relation FLOAT32_ARRAY = 6
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    FLOAT32_ARRAY
-    | @!APILevel[
+    Float32Array
+    |
+    /**
+     * Float64Array
+     *
+     * @relation FLOAT64_ARRAY = 7
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    FLOAT64_ARRAY
-    | @!APILevel[
+    Float64Array
+    |
+    /**
+     * BigInt64Array
+     *
+     * @relation BIGINT64_ARRAY = 8
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    BIGINT64_ARRAY
-    | @!APILevel[
+    BigInt64Array
+    |
+    /**
+     * BigUint64Array
+     *
+     * @relation BIGUINT64_ARRAY = 9
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
-    BIGUINT64_ARRAY
+    BigUint64Array
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case INT8_ARRAY => 0
-                case UINT8_ARRAY => 1
-                case INT16_ARRAY => 2
-                case UINT16_ARRAY => 3
-                case INT32_ARRAY => 4
-                case UINT32_ARRAY => 5
-                case FLOAT32_ARRAY => 6
-                case FLOAT64_ARRAY => 7
-                case BIGINT64_ARRAY => 8
-                case BIGUINT64_ARRAY => 9
+                case Int8Array => 0
+                case Uint8Array => 1
+                case Int16Array => 2
+                case Uint16Array => 3
+                case Int32Array => 4
+                case Uint32Array => 5
+                case Float32Array => 6
+                case Float64Array => 7
+                case BigInt64Array => 8
+                case BigUint64Array => 9
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }

@@ -15,55 +15,9 @@
 
 package ohos.rpc
 
-import ohos.base.Callback1Argument
-import ohos.labels.*
-import ohos.ffi.*
 import ohos.base.BusinessException
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.IPC.Core"
-]
-public interface IRemoteObject {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func getLocalInterface(descriptor: String): IRemoteBroker
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func sendMessageRequest(code: UInt32, data: MessageSequence, reply: MessageSequence, options: MessageOption,
-        callback: Callback1Argument<RequestResult>): Unit
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func registerDeathRecipient(recipient: DeathRecipient, flags: Int32): Unit
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func unregisterDeathRecipient(recipient: DeathRecipient, flags: Int32): Unit
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func getDescriptor(): String
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func isObjectDead(): Bool
-}
+protected interface IRemoteObject {}
 
 foreign func FfiRpcGetRemoteType(objectId: Int64): Int32
 

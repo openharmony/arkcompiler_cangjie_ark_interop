@@ -16,7 +16,7 @@
 package kit.BasicServicesKit
 
 public import ohos.device_info.*
-public import ohos.request.agent.*
+public import ohos.request.*
 public import ohos.settings.*
 public import ohos.common_event_manager.*
 public import ohos.system_date_time.*

@@ -15,4 +15,4 @@
 
 package kit.TelephonyKit
 
-public import ohos.telephony_call.*
+public import ohos.telephony.call.*

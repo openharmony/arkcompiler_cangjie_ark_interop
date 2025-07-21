@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.hitrace") {
   sources = [ "hitrace/hitrace.cj" ]
@@ -98,7 +98,7 @@ ohos_cj_library("ohos.ark_interop") {
     },
   ]
 
-  enable_strip = false
+  enable_strip = true
   part_name = "cangjie_api"
   subsystem_name = "arkcompiler"
   lib_name = "ark_interop"
@@ -117,8 +117,7 @@ ohos_cj_library("ohos.ark_interop_helper") {
 
   cj_deps = [
     ":ohos.ark_interop",
-    "../ability:ohos.ability",
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
@@ -145,6 +144,4 @@ cj_macro_library("ark_interop_macro") {
     "ark_interop_macro/ark_idl_interface.cj",
   ]
   compilation_config = "pipeline=NG"
-  subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
 }

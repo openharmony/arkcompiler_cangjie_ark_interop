@@ -15,12 +15,11 @@
 
 package ohos.multimedia.camera
 
-import std.deriving.*
-import ohos.color_manager.ColorSpace
+import ohos.graphics.color_space_manager.ColorSpace
 import ohos.labels.*
-import ohos.base.*
 import ohos.ffi.*
-import std.collection.*
+
+import std.deriving.Derive
 
 foreign {
     func FfiCameraAutoExposureIsExposureModeSupported(id: Int64, aeMode: Int32, errCode: CPointer<Int32>): Bool
@@ -86,10 +85,9 @@ struct CPoint {
 }
 
 /**
- * Point parameter.
+ * Point coordinates are used for focus and exposure configuration.
  *
- * @typedef Point
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Point
  */
 @!APILevel[
     21,
@@ -100,8 +98,7 @@ public class Point {
     /**
      * x co-ordinate
      *
-     * @type { Float32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation x: double
      */
     @!APILevel[
         21,
@@ -113,8 +110,7 @@ public class Point {
     /**
      * y co-ordinate
      *
-     * @type { Float32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation y: double
      */
     @!APILevel[
         21,
@@ -123,6 +119,9 @@ public class Point {
     ]
     public var y: Float32
 
+    /**
+     * Point constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -146,8 +145,7 @@ public class Point {
 /**
  * Enum for exposure mode.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum ExposureMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -159,46 +157,46 @@ public enum ExposureMode {
     /**
      * Lock exposure mode.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation EXPOSURE_MODE_LOCKED = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    EXPOSURE_MODE_LOCKED
+    ExposureModeLocked
     |
-        /**
-         * Auto exposure mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Auto exposure mode. Exposure area center point can be set by AutoExposure.setMeteringPoint interface.
+     *
+     * @relation EXPOSURE_MODE_AUTO = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    EXPOSURE_MODE_AUTO
+    ExposureModeAuto
     |
-        /**
-         * Continuous automatic exposure.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Continuous automatic exposure.
+     *
+     * @relation EXPOSURE_MODE_CONTINUOUS_AUTO = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    EXPOSURE_MODE_CONTINUOUS_AUTO
+    ExposureModeContinuousAuto
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case EXPOSURE_MODE_LOCKED => 0
-                case EXPOSURE_MODE_AUTO => 1
-                case EXPOSURE_MODE_CONTINUOUS_AUTO => 2
+                case ExposureModeLocked => 0
+                case ExposureModeAuto => 1
+                case ExposureModeContinuousAuto => 2
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -206,9 +204,9 @@ public enum ExposureMode {
 
     static func parse(value: Int32): ExposureMode {
         return match (value) {
-            case 0 => EXPOSURE_MODE_LOCKED
-            case 1 => EXPOSURE_MODE_AUTO
-            case 2 => EXPOSURE_MODE_CONTINUOUS_AUTO
+            case 0 => ExposureModeLocked
+            case 1 => ExposureModeAuto
+            case 2 => ExposureModeContinuousAuto
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -217,8 +215,7 @@ public enum ExposureMode {
 /**
  * AutoExposureQuery object.
  *
- * @interface AutoExposureQuery
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface AutoExposureQuery
  */
 @!APILevel[
     21,
@@ -232,7 +229,7 @@ sealed interface AutoExposureQuery {
      * @param { ExposureMode } aeMode - Exposure mode
      * @returns { Bool } Is the exposure mode supported.
      * @throws { BusinessException } 7400103 - Session not config, only throw in session usage.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation isExposureModeSupported(aeMode: ExposureMode): boolean
      */
     @!APILevel[
         21,
@@ -255,7 +252,7 @@ sealed interface AutoExposureQuery {
      *
      * @returns { Array<Float32> } The array of compensation range.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getExposureBiasRange(): Array<double>
      */
     @!APILevel[
         21,
@@ -277,8 +274,7 @@ sealed interface AutoExposureQuery {
 /**
  * AutoExposure object.
  *
- * @interface AutoExposure
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface AutoExposure extends AutoExposureQuery
  */
 @!APILevel[
     21,
@@ -291,7 +287,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      *
      * @returns { ExposureMode } The current exposure mode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getExposureMode(): ExposureMode
      */
     @!APILevel[
         21,
@@ -304,7 +300,6 @@ sealed interface AutoExposure <: AutoExposureQuery {
             FfiCameraAutoExposureGetExposureMode((this as RemoteDataLite).getOrThrow().getID(), inout errCode)
         }
         successOrThrow(errCode)
-
         return ExposureMode.parse(ret)
     }
 
@@ -312,8 +307,9 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * Sets Exposure mode.
      *
      * @param { ExposureMode } aeMode - Exposure mode
+     * @throws { BusinessException } 7400102 - Operation not allowed.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setExposureMode(aeMode: ExposureMode): void
      */
     @!APILevel[
         21,
@@ -334,7 +330,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      *
      * @returns { Point } The current metering point.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getMeteringPoint(): Point
      */
     @!APILevel[
         21,
@@ -347,7 +343,6 @@ sealed interface AutoExposure <: AutoExposureQuery {
             FfiCameraAutoExposureGetMeteringPoint((this as RemoteDataLite).getOrThrow().getID(), inout errCode)
         }
         successOrThrow(errCode)
-
         return Point(cPoint)
     }
 
@@ -356,7 +351,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      *
      * @param { Point } point - metering point
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setMeteringPoint(point: Point): void
      */
     @!APILevel[
         21,
@@ -365,7 +360,6 @@ sealed interface AutoExposure <: AutoExposureQuery {
     ]
     func setMeteringPoint(point: Point): Unit {
         var errCode: Int32 = 0
-
         unsafe {
             FfiCameraAutoExposureSetMeteringPoint((this as RemoteDataLite).getOrThrow().getID(), point.asCPoint(),
                 inout errCode)
@@ -379,7 +373,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      * @param { Float32 } exposureBias - Exposure compensation
      * @throws { BusinessException } 7400102 - Operation not allowed.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setExposureBias(exposureBias: double): void
      */
     @!APILevel[
         21,
@@ -400,7 +394,7 @@ sealed interface AutoExposure <: AutoExposureQuery {
      *
      * @returns { Float32 } The exposure value.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getExposureValue(): double
      */
     @!APILevel[
         21,
@@ -413,85 +407,14 @@ sealed interface AutoExposure <: AutoExposureQuery {
             FfiCameraAutoExposureGetExposureValue((this as RemoteDataLite).getOrThrow().getID(), inout errCode)
         }
         successOrThrow(errCode)
-
         return ret
-    }
-}
-
-func parseColorSpace(value: Int32): ColorSpace {
-    return match (value) {
-        case 0 => Unknown
-        case 1 => AdobeRgb1998
-        case 2 => DciP3
-        case 3 => DisplayP3
-        case 4 => Srgb
-        case 5 => Custom
-        case 6 => Bt709
-        case 7 => Bt601Ebu
-        case 8 => Bt601SmpteC
-        case 9 => Bt2020Hlg
-        case 10 => Bt2020Pq
-        case 11 => P3Hlg
-        case 12 => P3Pq
-        case 13 => AdobeRgb1998Limit
-        case 14 => DisplayP3Limit
-        case 15 => SrgbLimit
-        case 16 => Bt709Limit
-        case 17 => Bt601EbuLimit
-        case 18 => Bt601SmpteCLimit
-        case 19 => Bt2020HlgLimit
-        case 20 => Bt2020PqLimit
-        case 21 => P3HlgLimit
-        case 22 => P3PqLimit
-        case 23 => LinearP3
-        case 24 => LinearSrgb
-        case 25 => LinearBt2020
-        case _ => throw IllegalArgumentException("The type is not supported yet.")
-    }
-}
-
-func getColorSpaceValue(space: ColorSpace): Int32 {
-    return match (space) {
-        case UNKNOWN => 0
-        case ADOBE_RGB_1998 => 1
-        case DCI_P3 => 2
-        case DISPLAY_P3 => 3
-        case SRGB => 4
-        case CUSTOM => 5
-        case BT709 => 6
-        case BT601_EBU => 7
-        case BT601_SMPTE_C => 8
-        case BT2020_HLG => 9
-        case BT2020_PQ => 10
-        case P3_HLG => 11
-        case P3_PQ => 12
-        case ADOBE_RGB_1998_LIMIT => 13
-        case DISPLAY_P3_LIMIT => 14
-        case SRGB_LIMIT => 15
-        case BT709_LIMIT => 16
-        case BT601_EBU_LIMIT => 17
-        case BT601_SMPTE_C_LIMIT => 18
-        case BT2020_HLG_LIMIT => 19
-        case BT2020_PQ_LIMIT => 20
-        case P3_HLG_LIMIT => 21
-        case P3_PQ_LIMIT => 22
-        case LINEAR_P3 => 23
-        case LINEAR_SRGB => 24
-        case LINEAR_BT709 => 24
-        case LINEAR_BT2020 => 25
-        case DISPLAY_SRGB => 4
-        case DISPLAY_P3_SRGB => 3
-        case DISPLAY_P3_HLG => 11
-        case DISPLAY_P3_PQ => 12
-        case _ => throw IllegalArgumentException("The type is not supported.")
     }
 }
 
 /**
  * Color Management Query object.
  *
- * @interface ColorManagementQuery
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface ColorManagementQuery
  */
 @!APILevel[
     21,
@@ -504,7 +427,7 @@ sealed interface ColorManagementQuery {
      *
      * @returns { Array<colorSpaceManager.ColorSpace> } The array of the supported color space for the session.
      * @throws { BusinessException } 7400103 - Session not config, only throw in session usage.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getSupportedColorSpaces(): Array<colorSpaceManager.ColorSpace>
      */
     @!APILevel[
         21,
@@ -519,12 +442,11 @@ sealed interface ColorManagementQuery {
                 inout errCode
             )
         }
-
         try {
             return unsafe {
                 successOrThrow(errCode)
                 cArr2cjArr<Int32, ColorSpace>(colorSpaces.size, colorSpaces.head) {
-                    it => parseColorSpace(it)
+                    it => ColorSpace.parse(UInt32(it))
                 }
             }
         } finally {
@@ -536,8 +458,7 @@ sealed interface ColorManagementQuery {
 /**
  * Color Management object.
  *
- * @interface ColorManagement
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface ColorManagement extends ColorManagementQuery
  */
 @!APILevel[
     21,
@@ -553,7 +474,7 @@ sealed interface ColorManagement <: ColorManagementQuery {
      * @throws { BusinessException } 7400102 - The colorSpace does not match the format.
      * @throws { BusinessException } 7400103 - Session not config.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void
      */
     @!APILevel[
         21,
@@ -564,7 +485,7 @@ sealed interface ColorManagement <: ColorManagementQuery {
         var errCode: Int32 = 0
         unsafe {
             FfiCameraColorManagementSetColorSpace((this as RemoteDataLite).getOrThrow().getID(),
-                getColorSpaceValue(colorSpace), inout errCode)
+                Int32(colorSpace.getValue()), inout errCode)
         }
         successOrThrow(errCode)
     }
@@ -574,7 +495,7 @@ sealed interface ColorManagement <: ColorManagementQuery {
      *
      * @returns { colorSpaceManager.ColorSpace } Current color space.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getActiveColorSpace(): colorSpaceManager.ColorSpace
      */
     @!APILevel[
         21,
@@ -588,15 +509,14 @@ sealed interface ColorManagement <: ColorManagementQuery {
         }
         successOrThrow(errCode)
 
-        return parseColorSpace(ret)
+        return ColorSpace.parse(UInt32(ret))
     }
 }
 
 /**
  * Enum for flash mode.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum FlashMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -608,59 +528,59 @@ public enum FlashMode {
     /**
      * Close mode.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation FLASH_MODE_CLOSE = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FLASH_MODE_CLOSE
+    FlashModeClose
     |
-        /**
-         * Open mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Open mode.
+     *
+     * @relation FLASH_MODE_OPEN = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FLASH_MODE_OPEN
+    FlashModeOpen
     |
-        /**
-         * Auto mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Auto mode.
+     *
+     * @relation FLASH_MODE_AUTO = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FLASH_MODE_AUTO
+    FlashModeAuto
     |
-        /**
-         * Always open mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Always open mode.
+     *
+     * @relation FLASH_MODE_ALWAYS_OPEN = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FLASH_MODE_ALWAYS_OPEN
+    FlashModeAlwaysOpen
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case FLASH_MODE_CLOSE => 0
-                case FLASH_MODE_OPEN => 1
-                case FLASH_MODE_AUTO => 2
-                case FLASH_MODE_ALWAYS_OPEN => 3
+                case FlashModeClose => 0
+                case FlashModeOpen => 1
+                case FlashModeAuto => 2
+                case FlashModeAlwaysOpen => 3
                 case _ => throw IllegalArgumentException("The type is not supported yet.")
             }
         }
@@ -668,20 +588,19 @@ public enum FlashMode {
 
     static func parse(value: Int32): FlashMode {
         return match (value) {
-            case 0 => FLASH_MODE_CLOSE
-            case 1 => FLASH_MODE_OPEN
-            case 2 => FLASH_MODE_AUTO
-            case 3 => FLASH_MODE_ALWAYS_OPEN
+            case 0 => FlashModeClose
+            case 1 => FlashModeOpen
+            case 2 => FlashModeAuto
+            case 3 => FlashModeAlwaysOpen
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
-    }
+    } 
 }
 
 /**
  * Flash Query object.
  *
- * @interface FlashQuery
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface FlashQuery
  */
 @!APILevel[
     21,
@@ -694,7 +613,7 @@ sealed interface FlashQuery {
      *
      * @returns { Bool } The flash light support status.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation hasFlash(): boolean
      */
     @!APILevel[
         21,
@@ -717,7 +636,7 @@ sealed interface FlashQuery {
      * @param { FlashMode } flashMode - Flash mode
      * @returns { Bool } Is the flash mode supported.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation isFlashModeSupported(flashMode: FlashMode): boolean
      */
     @!APILevel[
         21,
@@ -739,8 +658,7 @@ sealed interface FlashQuery {
 /**
  * Flash object.
  *
- * @interface Flash
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Flash extends FlashQuery
  */
 @!APILevel[
     21,
@@ -753,7 +671,7 @@ sealed interface Flash <: FlashQuery {
      *
      * @param { FlashMode } flashMode - Target flash mode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setFlashMode(flashMode: FlashMode): void
      */
     @!APILevel[
         21,
@@ -765,7 +683,6 @@ sealed interface Flash <: FlashQuery {
         unsafe {
             FfiCameraFlashSetFlashMode((this as RemoteDataLite).getOrThrow().getID(), flashMode.value, inout errCode)
         }
-
         successOrThrow(errCode)
     }
 
@@ -774,7 +691,7 @@ sealed interface Flash <: FlashQuery {
      *
      * @returns { FlashMode } The current flash mode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getFlashMode(): FlashMode
      */
     @!APILevel[
         21,
@@ -795,8 +712,7 @@ sealed interface Flash <: FlashQuery {
 /**
  * Enum for focus state.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum FocusState
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -808,46 +724,46 @@ public enum FocusState {
     /**
      * Scan state.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation FOCUS_STATE_SCAN = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCUS_STATE_SCAN
+    FocusStateScan
     |
-        /**
-         * Focused state.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Focused state.
+     *
+     * @relation FOCUS_STATE_FOCUSED = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCUS_STATE_FOCUSED
+    FocusStateFocused
     |
-        /**
-         * Unfocused state.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Unfocused state.
+     *
+     * @relation FOCUS_STATE_UNFOCUSED = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCUS_STATE_UNFOCUSED
+    FocusStateUnfocused
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case FOCUS_STATE_SCAN => 0
-                case FOCUS_STATE_FOCUSED => 1
-                case FOCUS_STATE_UNFOCUSED => 2
+                case FocusStateScan => 0
+                case FocusStateFocused => 1
+                case FocusStateUnfocused => 2
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -855,9 +771,9 @@ public enum FocusState {
 
     static func parse(value: Int32): FocusState {
         return match (value) {
-            case 0 => FOCUS_STATE_SCAN
-            case 1 => FOCUS_STATE_FOCUSED
-            case 2 => FOCUS_STATE_UNFOCUSED
+            case 0 => FocusStateScan
+            case 1 => FocusStateFocused
+            case 2 => FocusStateUnfocused
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -866,8 +782,7 @@ public enum FocusState {
 /**
  * Enum for focus mode.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum FocusMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -879,59 +794,59 @@ public enum FocusMode {
     /**
      * Manual mode.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation FOCUS_MODE_MANUAL = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCOS_MODE_MANUAL
+    FocosModeManual
     |
-        /**
-         * Continuous auto mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Continuous auto mode.
+     *
+     * @relation FOCUS_MODE_CONTINUOUS_AUTO = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCOS_MODE_CONTINUOUS_AUTO
+    FocosModeContinuousAuto
     |
-        /**
-         * Auto mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Auto mode.
+     *
+     * @relation FOCUS_MODE_AUTO = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCOS_MODE_AUTO
+    FocosModeAuto
     |
-        /**
-         * Locked mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Locked mode.
+     *
+     * @relation FOCUS_MODE_LOCKED = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOCUS_MODE_LOCKED
+    FocusModeLocked
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case FOCOS_MODE_MANUAL => 0
-                case FOCOS_MODE_CONTINUOUS_AUTO => 1
-                case FOCOS_MODE_AUTO => 2
-                case FOCUS_MODE_LOCKED => 3
+                case FocosModeManual => 0
+                case FocosModeContinuousAuto => 1
+                case FocosModeAuto => 2
+                case FocusModeLocked => 3
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -939,10 +854,10 @@ public enum FocusMode {
 
     static func parse(value: Int32): FocusMode {
         return match (value) {
-            case 0 => FOCOS_MODE_MANUAL
-            case 1 => FOCOS_MODE_CONTINUOUS_AUTO
-            case 2 => FOCOS_MODE_AUTO
-            case 3 => FOCUS_MODE_LOCKED
+            case 0 => FocosModeManual
+            case 1 => FocosModeContinuousAuto
+            case 2 => FocosModeAuto
+            case 3 => FocusModeLocked
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -951,8 +866,7 @@ public enum FocusMode {
 /**
  * Focus Query object.
  *
- * @interface FocusQuery
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface FocusQuery
  */
 @!APILevel[
     21,
@@ -966,7 +880,7 @@ sealed interface FocusQuery {
      * @param { FocusMode } afMode - Focus mode.
      * @returns { Bool } Is the focus mode supported.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation isFocusModeSupported(afMode: FocusMode): boolean
      */
     @!APILevel[
         21,
@@ -979,7 +893,6 @@ sealed interface FocusQuery {
             FfiCameraFocusIsFocusModeSupported((this as RemoteDataLite).getOrThrow().getID(), afMode.value,
                 inout errCode)
         }
-
         successOrThrow(errCode)
         return ret
     }
@@ -988,8 +901,7 @@ sealed interface FocusQuery {
 /**
  * Focus object.
  *
- * @interface Focus
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Focus extends FocusQuery
  */
 @!APILevel[
     21,
@@ -1002,7 +914,7 @@ sealed interface Focus <: FocusQuery {
      *
      * @param { FocusMode } afMode - Target focus mode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setFocusMode(afMode: FocusMode): void
      */
     @!APILevel[
         21,
@@ -1020,7 +932,7 @@ sealed interface Focus <: FocusQuery {
      *
      * @returns { FocusMode } The current focus mode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getFocusMode(): FocusMode
      */
     @!APILevel[
         21,
@@ -1032,7 +944,6 @@ sealed interface Focus <: FocusQuery {
         let ret: Int32 = unsafe {
             FfiCameraFocusGetFocusMode((this as RemoteDataLite).getOrThrow().getID(), inout errCode)
         }
-
         successOrThrow(errCode)
         return FocusMode.parse(ret)
     }
@@ -1042,7 +953,7 @@ sealed interface Focus <: FocusQuery {
      *
      * @param { Point } point - Target focus point.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setFocusPoint(point: Point): void
      */
     @!APILevel[
         21,
@@ -1054,16 +965,16 @@ sealed interface Focus <: FocusQuery {
         unsafe {
             FfiCameraFocusSetFocusPoint((this as RemoteDataLite).getOrThrow().getID(), point.asCPoint(), inout errCode)
         }
-
         successOrThrow(errCode)
     }
 
     /**
      * Gets current focus point.
      *
-     * @returns { Point } The current focus point.
+     * @returns { Point } Used to get the current focus. Failure of the interface call will return the
+     * corresponding error code, which is of type CameraErrorCode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getFocusPoint(): Point
      */
     @!APILevel[
         21,
@@ -1075,7 +986,6 @@ sealed interface Focus <: FocusQuery {
         let cPoint: CPoint = unsafe {
             FfiCameraFocusGetFocusPoint((this as RemoteDataLite).getOrThrow().getID(), inout errCode)
         }
-
         successOrThrow(errCode)
         return Point(cPoint)
     }
@@ -1085,7 +995,7 @@ sealed interface Focus <: FocusQuery {
      *
      * @returns { Float32 } The current focal point.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getFocalLength(): double
      */
     @!APILevel[
         21,
@@ -1097,7 +1007,6 @@ sealed interface Focus <: FocusQuery {
         let ret: Float32 = unsafe {
             FfiCameraFocusGetFocalLength((this as RemoteDataLite).getOrThrow().getID(), inout errCode)
         }
-
         successOrThrow(errCode)
         return ret
     }
@@ -1106,8 +1015,7 @@ sealed interface Focus <: FocusQuery {
 /**
  * Enum for video stabilization mode.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum VideoStabilizationMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1119,72 +1027,72 @@ public enum VideoStabilizationMode {
     /**
      * Turn off video stablization.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation OFF = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    OFF
+    Off
     |
-        /**
-         * LOW mode provides basic stabilization effect.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * LOW mode provides basic stabilization effect.
+     *
+     * @relation LOW = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    LOW
+    Low
     |
-        /**
-         * MIDDLE mode means algorithms can achieve better effects than LOW mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * MIDDLE mode means algorithms can achieve better effects than LOW mode.
+     *
+     * @relation MIDDLE = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    MIDDLE
+    Middle
     |
-        /**
-         * HIGH mode means algorithms can achieve better effects than MIDDLE mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * HIGH mode means algorithms can achieve better effects than MIDDLE mode.
+     *
+     * @relation HIGH = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    HIGH
+    High
     |
-        /**
-         * Camera HDF can select mode automatically.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * The stabilization algorithm is selected automatically. Selection of the stabilization algorithm is performed automatically.
+     *
+     * @relation AUTO = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    AUTO
+    Auto
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case OFF => 0
-                case LOW => 1
-                case MIDDLE => 2
-                case HIGH => 3
-                case AUTO => 4
+                case Off => 0
+                case Low => 1
+                case Middle => 2
+                case High => 3
+                case Auto => 4
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -1192,11 +1100,11 @@ public enum VideoStabilizationMode {
 
     static func parse(value: Int32): VideoStabilizationMode {
         return match (value) {
-            case 0 => OFF
-            case 1 => LOW
-            case 2 => MIDDLE
-            case 3 => HIGH
-            case 4 => AUTO
+            case 0 => Off
+            case 1 => Low
+            case 2 => Middle
+            case 3 => High
+            case 4 => Auto
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -1205,8 +1113,7 @@ public enum VideoStabilizationMode {
 /**
  * Stabilization Query object.
  *
- * @interface StabilizationQuery
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface StabilizationQuery
  */
 @!APILevel[
     21,
@@ -1218,9 +1125,9 @@ sealed interface StabilizationQuery {
      * Check whether the specified video stabilization mode is supported.
      *
      * @param { VideoStabilizationMode } vsMode - Video Stabilization mode.
-     * @returns { Bool } Is flash mode supported.
-     * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @returns { Bool } Is video stabilization mode supported.
+     * @throws { BusinessException } 7400103 - Session not config, only throw in session usage.
+     * @relation isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
      */
     @!APILevel[
         21,
@@ -1242,8 +1149,7 @@ sealed interface StabilizationQuery {
 /**
  * Stabilization object.
  *
- * @interface Stabilization
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Stabilization extends StabilizationQuery
  */
 @!APILevel[
     21,
@@ -1256,7 +1162,7 @@ sealed interface Stabilization <: StabilizationQuery {
      *
      * @returns { VideoStabilizationMode } The current video stabilization mode.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getActiveVideoStabilizationMode(): VideoStabilizationMode
      */
     @!APILevel[
         21,
@@ -1279,7 +1185,7 @@ sealed interface Stabilization <: StabilizationQuery {
      *
      * @param { VideoStabilizationMode } mode - video stabilization mode to set.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setVideoStabilizationMode(mode: VideoStabilizationMode): void
      */
     @!APILevel[
         21,
@@ -1299,8 +1205,7 @@ sealed interface Stabilization <: StabilizationQuery {
 /**
  * SmoothZoomInfo object
  *
- * @typedef SmoothZoomInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface SmoothZoomInfo
  */
 @!APILevel[
     21,
@@ -1311,22 +1216,33 @@ public class SmoothZoomInfo {
     /**
      * The duration of smooth zoom.
      *
-     * @type { FLoat32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation duration: int
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public SmoothZoomInfo(public var duration: Int32) {}
+    public var duration: Int32
+
+    /**
+     * SmoothZoomInfo constructor.
+     *
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Multimedia.Camera.Core"
+    ]
+    public init(duration: Int32) {
+        this.duration = duration
+    }
 }
 
 /**
  * Enum for smooth zoom mode.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum SmoothZoomMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1338,19 +1254,20 @@ public enum SmoothZoomMode {
     /**
      * Normal zoom mode.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation NORMAL = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    NORMAL | ...
+    Normal
+    | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case NORMAL => 0
+                case Normal => 0
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -1358,7 +1275,7 @@ public enum SmoothZoomMode {
 
     static func parse(value: Int32): SmoothZoomMode {
         return match (value) {
-            case 0 => NORMAL
+            case 0 => Normal
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -1367,8 +1284,7 @@ public enum SmoothZoomMode {
 /**
  * Zoom query object.
  *
- * @interface ZoomQuery
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface ZoomQuery
  */
 @!APILevel[
     21,
@@ -1380,8 +1296,8 @@ sealed interface ZoomQuery {
      * Gets all supported zoom ratio range.
      *
      * @returns { Array<Float32> } The zoom ratio range.
-     * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 7400103 - Session not config, only throw in session usage.
+     * @relation getZoomRatioRange(): Array<double>
      */
     @!APILevel[
         21,
@@ -1405,8 +1321,7 @@ sealed interface ZoomQuery {
 /**
  * Zoom object.
  *
- * @interface Zoom
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Zoom extends ZoomQuery
  */
 @!APILevel[
     21,
@@ -1415,11 +1330,11 @@ sealed interface ZoomQuery {
 ]
 sealed interface Zoom <: ZoomQuery {
     /**
-     * Gets zoom ratio.
+     * Sets zoom ratio.
      *
-     * @returns { Float32 } The zoom ratio value.
+     * @returns { Float32 } Target zoom ratio.
      * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setZoomRatio(zoomRatio: double): void
      */
     @!APILevel[
         21,
@@ -1440,7 +1355,7 @@ sealed interface Zoom <: ZoomQuery {
      * @returns { Float32 } The zoom ratio value.
      * @throws { BusinessException } 7400103 - Session not config.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getZoomRatio(): double
      */
     @!APILevel[
         21,
@@ -1462,8 +1377,7 @@ sealed interface Zoom <: ZoomQuery {
      *
      * @param { Float32 } targetRatio - Target zoom ratio.
      * @param { SmoothZoomMode } mode - Smooth zoom mode.
-     * @throws { BusinessException } 7400103 - Session not config.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setSmoothZoom(targetRatio: double, mode?: SmoothZoomMode): void
      */
     @!APILevel[
         21,
@@ -1479,12 +1393,18 @@ sealed interface Zoom <: ZoomQuery {
         successOrThrow(errCode)
     }
 
+    /**
+     * Sets target zoom ratio by smooth method.
+     *
+     * @param { Float32 } targetRatio - Target zoom ratio.
+     * @relation setSmoothZoom(targetRatio: double, mode?: SmoothZoomMode): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     func setSmoothZoom(targetRatio: Float32): Unit {
-        setSmoothZoom(targetRatio, SmoothZoomMode.NORMAL)
+        setSmoothZoom(targetRatio, SmoothZoomMode.Normal)
     }
 }

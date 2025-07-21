@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.ability_access_ctrl") {
   sources = [
@@ -21,11 +21,12 @@ ohos_cj_library("ohos.ability_access_ctrl") {
   ]
 
   cj_deps = [
-    "../ability:ohos.ability",
-    "../arkui/cj:ohos.base",
+    "../app/ability/ui_ability:ohos.app.ability.ui_ability",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
+    "../security/permission_request_result:ohos.security.permission_request_result",
   ]
 
   external_deps = [ "access_token:cj_ability_access_ctrl_ffi" ]

@@ -17,10 +17,10 @@ package ohos.net.connection
 
 import ohos.ffi.*
 import ohos.hilog.*
-import std.collection.*
 import ohos.base.*
-import std.deriving.*
 import ohos.labels.*
+
+import std.deriving.Derive
 
 let CONNECTION_LOG = HilogChannel(0, 0xD0015B0, "CJ-net-Connection")
 
@@ -30,6 +30,7 @@ let CONNECTION_LOG = HilogChannel(0, 0xD0015B0, "CJ-net-Connection")
  * @param { UInt32 } timeout - The time in milliseconds to attempt looking for a suitable network before
  * {@link NetConnection#netUnavailable} is called.
  * @returns { NetConnection } the NetConnection of the NetSpecifier.
+ * @relation createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection;
  */
 @!APILevel[
     21,
@@ -59,6 +60,7 @@ public func createNetConnection(netSpecifier!: ?NetSpecifier = None, timeout!: U
  * @throws { BusinessException } 401 - Parameter error.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation getDefaultNet(): Promise<NetHandle>;
  */
 @!APILevel[
     21,
@@ -89,7 +91,7 @@ public func getDefaultNet(): NetHandle {
  * @returns { HttpProxy } the promise returned by the function.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
- * @syscap SystemCapability.Communication.NetManager.Core
+ * @relation getDefaultHttpProxy(): Promise<HttpProxy>;
  */
 @!APILevel[
     21,
@@ -118,8 +120,7 @@ public func getDefaultHttpProxy(): HttpProxy {
  * @throws { BusinessException } 401 - Parameter error.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
- * @syscap SystemCapability.Communication.NetManager.Core
- * @brief getAppNetSync(): NetHandle;
+ * @relation function getAppNetSync(): NetHandle;
  */
 @!APILevel[
     21,
@@ -150,8 +151,7 @@ public func getAppNet(): NetHandle {
  * @throws { BusinessException } 2100001 - Invalid parameter value.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
- * @syscap SystemCapability.Communication.NetManager.Core
- * @brief setAppNet(netHandle: NetHandle): Promise<void>;
+ * @relation setAppNet(netHandle: NetHandle): Promise<void>;
  */
 @!APILevel[
     21,
@@ -178,6 +178,7 @@ public func setAppNet(netHandle: NetHandle): Unit {
  * @throws { BusinessException } 401 - Parameter error.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation getAllNets(): Promise<Array<NetHandle>>;
  */
 @!APILevel[
     21,
@@ -211,6 +212,7 @@ public func getAllNets(): Array<NetHandle> {
  * @throws { BusinessException } 2100001 - Invalid parameter value.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation getConnectionProperties(netHandle: NetHandle): Promise<ConnectionProperties>;
  */
 @!APILevel[
     21,
@@ -248,6 +250,7 @@ public func getConnectionProperties(netHandle: NetHandle): ConnectionProperties 
  * @throws { BusinessException } 2100001 - Invalid parameter value.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback<NetCapabilities>): void;
  */
 @!APILevel[
     21,
@@ -281,6 +284,7 @@ public func getNetCapabilities(netHandle: NetHandle): NetCapabilities {
  * @throws { BusinessException } 401 - Parameter error.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation isDefaultNetMetered(): Promise<boolean>;
  */
 @!APILevel[
     21,
@@ -308,6 +312,7 @@ public func isDefaultNetMetered(): Bool {
  * @throws { BusinessException } 401 - Parameter error.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation hasDefaultNet(): Promise<boolean>;
  */
 @!APILevel[
     21,
@@ -337,6 +342,7 @@ public func hasDefaultNet(): Bool {
  * @throws { BusinessException } 2100001 - Invalid parameter value.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation reportNetConnected(netHandle: NetHandle): Promise<void>;
  */
 @!APILevel[
     21,
@@ -364,6 +370,7 @@ public func reportNetConnected(netHandle: NetHandle): Unit {
  * @throws { BusinessException } 2100001 - Invalid parameter value.
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
+ * @relation reportNetDisconnected(netHandle: NetHandle): Promise<void>;
  */
 @!APILevel[
     21,
@@ -392,7 +399,7 @@ public func reportNetDisconnected(netHandle: NetHandle): Unit {
  * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
  * @throws { BusinessException } 2100003 - System internal error.
  * @syscap SystemCapability.Communication.NetManager.Core
- * @brief getAddressesByName(host: string): Promise<Array<NetAddress>>;
+ * @relation getAddressesByName(host: string): Promise<Array<NetAddress>>;
  */
 @!APILevel[
     21,
@@ -404,6 +411,11 @@ public func getAddressesByName(host: String): Array<NetAddress> {
     getDefaultNet().getAddressesByName(host)
 }
 
+/**
+ * Represents the network connection handle.
+ * 
+ * @relation export interface NetConnection
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -419,6 +431,18 @@ public class NetConnection <: RemoteDataLite {
         releaseFFIData(myDataId)
     }
 
+    /**
+     * Receives status change notifications of a specified network.
+     * @permission ohos.permission.GET_NETWORK_INFO
+     * @param { AsyncCallback<void> } callback - the callback of register.
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 2100002 - Failed to connect to the service.
+     * @throws { BusinessException } 2100003 - System internal error.
+     * @throws { BusinessException } 2101008 - The callback already exists.
+     * @throws { BusinessException } 2101022 - The number of requests exceeded the maximum allowed.
+     * @relation register(callback: AsyncCallback<void>): void;
+     */
     @!APILevel[
         21,
         permission: "ohos.permission.GET_NETWORK_INFO",
@@ -435,6 +459,14 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("register success")
     }
 
+    /**
+     * Cancels listening for network status changes.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 2100002 - Failed to connect to the service.
+     * @throws { BusinessException } 2100003 - System internal error.
+     * @throws { BusinessException } 2101007 - The callback does not exist.
+     * @relation unregister(callback: AsyncCallback<void>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -450,6 +482,11 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("unregister success")
     }
 
+    /**
+     * Registers a listener for netAvailable events.
+     *
+     * @relation on(type: 'netAvailable', callback: Callback<NetHandle>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -467,6 +504,11 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("onNetAvailable register success")
     }
 
+    /**
+     * Registers a listener for netBlockStatusChange events.
+     *
+     * @relation on(type: 'netBlockStatusChange', callback: Callback<NetBlockStatusInfo>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -484,6 +526,11 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("onNetBlockStatusChange register success")
     }
 
+    /**
+     * Registers a listener for **netCapabilitiesChange** events.
+     *
+     * @relation on(type: 'netCapabilitiesChange', callback: Callback<NetCapabilityInfo>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -503,6 +550,11 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("onNetCapabilitiesChange register success")
     }
 
+    /**
+     * Registers a listener for netConnectionPropertiesChange events.
+     *
+     * @relation on(type: 'netConnectionPropertiesChange', callback: Callback<NetConnectionPropertyInfo>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -523,6 +575,11 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("onNetConnectionPropertiesChange register success")
     }
 
+    /**
+     * Registers a listener for **netLost** events.
+     *
+     * @relation on(type: 'netLost', callback: Callback<NetHandle>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -540,6 +597,11 @@ public class NetConnection <: RemoteDataLite {
         CONNECTION_LOG.info("onNetLost register success")
     }
 
+    /**
+     * Registers a listener for netUnavailable events.
+     *
+     * @relation on(type: 'netUnavailable', callback: Callback<void>): void;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -555,6 +617,8 @@ public class NetConnection <: RemoteDataLite {
 
 /**
  * Defines the handle of the data network.
+ * 
+ * @relation export interface NetHandle
  */
 @Derive[ToString]
 @!APILevel[
@@ -563,14 +627,29 @@ public class NetConnection <: RemoteDataLite {
     syscap: "SystemCapability.Communication.NetManager.Core"
 ]
 public class NetHandle {
-    // Network ID, a value of 0 means that there is no default network,
-    // and the other values must be greater than or equal to 100.
+    /**
+     * Network ID, a value of 0 means that there is no default network, and the other values must be greater than or equal to 100.
+     *
+     * @relation netId: number;
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.NetManager.Core"
     ]
-    public NetHandle(public let netId: Int32) {}
+    public var netId: Int32
+    /**
+     * NetHandle constructor
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Communication.NetManager.Core"
+    ]
+    public init(netId: Int32 ) {
+        this.netId = netId
+    }
+
 
     /**
      * Resolves a host name to obtain all IP addresses based on the specified NetHandle.
@@ -582,6 +661,7 @@ public class NetHandle {
      * @throws { BusinessException } 2100001 - Invalid parameter value.
      * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
      * @throws { BusinessException } 2100003 - System internal error.
+     * @relation getAddressesByName(host: string): Promise<Array<NetAddress>>;
      */
     @!APILevel[
         21,
@@ -623,6 +703,7 @@ public class NetHandle {
      * @throws { BusinessException } 2100001 - Invalid parameter value.
      * @throws { BusinessException } 2100002 - Operation failed. Cannot connect to service.
      * @throws { BusinessException } 2100003 - System internal error.
+     * @relation getAddressByName(host: string): Promise<NetAddress>;
      */
     @!APILevel[
         21,

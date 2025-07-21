@@ -15,13 +15,23 @@
 
 package kit.AbilityKit
 
-public import ohos.ability.*
+public import ohos.app.ability.ability_constant.*
+public import ohos.app.ability.ability_stage.*
+public import ohos.app.ability.app_recovery.*
+public import ohos.app.ability.common.*
+public import ohos.app.ability.completion_handler.*
+public import ohos.app.ability.configuration.*
+public import ohos.app.ability.context_constant.*
+public import ohos.app.ability.dialog_request.*
+public import ohos.app.ability.error_manager.*
+public import ohos.app.ability.open_link_options.*
+public import ohos.app.ability.start_options.*
+public import ohos.app.ability.ui_ability.*
+public import ohos.app.ability.want.*
+public import ohos.app.ability.want_constant.*
 
 // ability_access_ctrl
 public import ohos.ability_access_ctrl.*
 
 // bundle_manager
-public import ohos.bundle_manager.*
-
-// eventhub
-public import ohos.eventhub.*
+public import ohos.bundle.bundle_manager.*

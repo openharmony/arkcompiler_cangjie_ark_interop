@@ -16,8 +16,6 @@
 package ohos.rpc
 
 import ohos.ffi.*
-import std.collection.*
-import ohos.labels.*
 
 @C
 struct ByteArray {
@@ -405,73 +403,5 @@ struct RemoteObjectArray {
                 this.len = UInt32(arr.size)
             }
         }
-    }
-}
-
-@C
-struct CRequestResult {
-    CRequestResult(
-        let errCode: Int32,
-        let code: UInt32,
-        let data: Int64,
-        let reply: Int64
-    ) {}
-
-    func toCJ(): RequestResult {
-        return RequestResult(errCode, code, MessageSequence(data), MessageSequence(reply))
-    }
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.IPC.Core"
-]
-public class RequestResult {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public RequestResult(
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.IPC.Core"
-        ]
-        public let errCode: Int32,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.IPC.Core"
-        ]
-        public let code: UInt32,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.IPC.Core"
-        ]
-        public let data: MessageSequence,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.IPC.Core"
-        ]
-        public let reply: MessageSequence
-    ) {}
-}
-
-@C
-struct MesOption {
-    let flags: Int32
-    let waitTime: Int32
-
-    MesOption(flags: Int32, waitTime: Int32) {
-        this.flags = flags
-        this.waitTime = waitTime
-    }
-
-    func toMessageOption(): MessageOption {
-        return MessageOption(flags, waitTime)
     }
 }

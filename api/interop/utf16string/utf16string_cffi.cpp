@@ -127,7 +127,8 @@ CJUtf16StringHandle CJUtf16StringJoin(const CJUtf16StringHandle* src, uint32_t l
     return Utf16String::Join(src, length, delimiter);
 }
 
-CJUtf16StringHandle CJUtf16StringReplace(CJUtf16StringHandle handle, CJUtf16StringHandle from, CJUtf16StringHandle to, uint32_t count)
+CJUtf16StringHandle CJUtf16StringReplace(CJUtf16StringHandle handle, CJUtf16StringHandle from, CJUtf16StringHandle to,
+                                         uint32_t count)
 {
     return handle->Replace(from, to, count);
 }

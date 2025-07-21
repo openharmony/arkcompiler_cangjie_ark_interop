@@ -12,17 +12,18 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
-ohos_cj_library("ohos.request.agent") {
+ohos_cj_library("ohos.request") {
   sources = [
-    "agent/agent.cj",
-    "agent/error.cj",
-    "agent/ffi.cj",
+    "src/agent.cj",
+    "src/error.cj",
+    "src/ffi.cj",
   ]
 
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../app/ability/ui_ability:ohos.app.ability.ui_ability",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
@@ -32,5 +33,5 @@ ohos_cj_library("ohos.request.agent") {
 
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
-  lib_name = "request.agent"
+  lib_name = "request"
 }

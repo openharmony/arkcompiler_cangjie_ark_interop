@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.multimedia.camera") {
   sources = [
@@ -24,16 +24,15 @@ ohos_cj_library("ohos.multimedia.camera") {
     "src/camera_manager.cj",
     "src/camera_output.cj",
     "src/camera_session.cj",
-    "src/metadata_output.cj",
     "src/photo_output.cj",
     "src/preview_output.cj",
     "src/video_output.cj",
   ]
 
   cj_deps = [
-    "../../ability:ohos.ability",
-    "../../arkui/cj:ohos.base",
-    "../../color_manager:ohos.color_manager",
+    "../../app/ability/ui_ability:ohos.app.ability.ui_ability",
+    "../../ohos/base:ohos.base",
+    "../../graphics/color_space_manager:ohos.graphics.color_space_manager",
     "../../ffi_bind:ohos.ffi",
     "../../hilog:ohos.hilog",
     "../../labels:ohos.labels",

@@ -17,10 +17,9 @@ package ohos.geo_location_manager
 
 import ohos.base.*
 import ohos.hilog.*
-import ohos.ffi.*
-import std.collection.*
 import ohos.labels.*
-import ohos.i18n.*
+
+import std.collection.*
 
 const LOG_CORE: UInt32 = 3
 const LOCATION_LOG_DOMAIN: UInt32 = 0xD002300
@@ -40,18 +39,18 @@ public enum LocationSourceType {
     /**
      * The location is obtained from the GNSS.
      *
-     * @relation GNSS = 1,
+     * @relation GNSS = 1
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    Gnss
+    GNSS
     /**
      * The location comes from the network positioning technology.
      *
-     * @relation NETWORK = 2,
+     * @relation NETWORK = 2
      */
     | @!APILevel[
         21,
@@ -62,7 +61,7 @@ public enum LocationSourceType {
     /**
      * The location comes from the indoor positioning technology.
      *
-     * @relation INDOOR = 3,
+     * @relation INDOOR = 3
      */
     | @!APILevel[
         21,
@@ -80,25 +79,25 @@ public enum LocationSourceType {
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    Rtk
+    RTK
     | ...
 
     static func parse(value: Int32): LocationSourceType {
         match (value) {
-            case 1 => Gnss
+            case 1 => GNSS
             case 2 => Network
             case 3 => Indoor
-            case 4 => Rtk
+            case 4 => RTK
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case Gnss => 1
+            case GNSS => 1
             case Network => 2
             case Indoor => 3
-            case Rtk => 4
+            case RTK => 4
             case _ => throw IllegalArgumentException("The type is not supported yet.")
         }
     }
@@ -120,7 +119,7 @@ public class Location {
      * A positive value indicates north latitude,
      * and a negative value indicates south latitude.
      *
-     * @relation latitude: number;
+     * @relation latitude: number
      */
     @!APILevel[
         21,
@@ -133,7 +132,7 @@ public class Location {
      * A positive value indicates east longitude ,
      * and a negative value indicates west longitude.
      *
-     * @relation longitude: number;
+     * @relation longitude: number
      */
     @!APILevel[
         21,
@@ -144,7 +143,7 @@ public class Location {
     /**
      * Indicates location altitude, in meters.
      *
-     * @relation altitude: number;
+     * @relation altitude: number
      */
     @!APILevel[
         21,
@@ -155,7 +154,7 @@ public class Location {
     /**
      * Indicates location accuracy, in meters.
      *
-     * @relation accuracy: number;
+     * @relation accuracy: number
      */
     @!APILevel[
         21,
@@ -166,7 +165,7 @@ public class Location {
     /**
      * Indicates speed, in m/s.
      *
-     * @relation speed: number;
+     * @relation speed: number
      */
     @!APILevel[
         21,
@@ -177,7 +176,7 @@ public class Location {
     /**
      * Indicates location timestamp in the UTC format.
      *
-     * @relation timeStamp: number;
+     * @relation timeStamp: number
      */
     @!APILevel[
         21,
@@ -188,7 +187,7 @@ public class Location {
     /**
      * Indicates direction information.
      *
-     * @relation direction: number;
+     * @relation direction: number
      */
     @!APILevel[
         21,
@@ -199,7 +198,7 @@ public class Location {
     /**
      * Indicates location timestamp since boot.
      *
-     * @relation timeSinceBoot: number;
+     * @relation timeSinceBoot: number
      */
     @!APILevel[
         21,
@@ -210,95 +209,95 @@ public class Location {
     /**
      * Indicates additional information.
      *
-     * @relation additions?: Array<string>;
+     * @relation additions?: Array<string>
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var additions: Array<String>
+    public var additions: ?Array<String>
     /**
      * Indicates the amount of additional descriptive information.
      *
-     * @relation additionSize?: number;
+     * @relation additionSize?: number
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var additionSize: Int64
+    public var additionSize: ?Int64
     /**
      * Indicates additional information map.
      *
-     * @relation additionsMap?: Map<string, string>;
+     * @relation additionsMap?: Map<string, string>
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var additionsMap: Map<String, String>
+    public var additionsMap: ?Map<String, String>
     /**
      * Indicates vertical position accuracy in meters.
      *
-     * @relation altitudeAccuracy?: number;
+     * @relation altitudeAccuracy?: number
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var altitudeAccuracy: Float64
+    public var altitudeAccuracy: ?Float64
     /**
      * Indicates speed accuracy in meter per seconds.
      *
-     * @relation speedAccuracy?: number;
+     * @relation speedAccuracy?: number
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var speedAccuracy: Float64
+    public var speedAccuracy: ?Float64
     /**
      * Indicates direction accuracy in degrees.
      *
-     * @relation directionAccuracy?: number;
+     * @relation directionAccuracy?: number
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var directionAccuracy: Float64
+    public var directionAccuracy: ?Float64
     /**
      * Time uncertainty Of timeSinceBoot in nanosecond.
      *
-     * @relation uncertaintyOfTimeSinceBoot?: number;
+     * @relation uncertaintyOfTimeSinceBoot?: number
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var uncertaintyOfTimeSinceBoot: Int64
+    public var uncertaintyOfTimeSinceBoot: ?Int64
     /**
      * Indicates the source of the location.
      *
-     * @relation sourceType?: LocationSourceType;
+     * @relation sourceType?: LocationSourceType
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
-    public var sourceType: LocationSourceType
+    public var sourceType: ?LocationSourceType
 
     init(cjLocation: CJLocation, additions!: Array<String> = Array<String>(),
-        additionsMap!: Map<String, String> = HashMap<String, String>(),
-        sourceType!: LocationSourceType = LocationSourceType.Gnss) {
+        additionsMap!: HashMap<String, String> = HashMap<String, String>(),
+        sourceType!: LocationSourceType = LocationSourceType.GNSS) {
         this.latitude = cjLocation.latitude
         this.longitude = cjLocation.longitude
         this.altitude = cjLocation.altitude
@@ -332,7 +331,7 @@ public enum LocationRequestPriority {
     /**
      * Default priority.
      *
-     * @relation UNSET = 0x200,
+     * @relation UNSET = 0x200
      */
     @!APILevel[
         21,
@@ -343,7 +342,7 @@ public enum LocationRequestPriority {
     /**
      * Preferentially ensure the locating accuracy.
      *
-     * @relation ACCURACY,
+     * @relation ACCURACY = 0x201
      */
     | @!APILevel[
         21,
@@ -354,7 +353,7 @@ public enum LocationRequestPriority {
     /**
      * Preferentially ensure low power consumption for locating.
      *
-     * @relation LOW_POWER,
+     * @relation LOW_POWER = 0x202
      */
     | @!APILevel[
         21,
@@ -365,7 +364,7 @@ public enum LocationRequestPriority {
     /**
      * Preferentially ensure that the first location is time-consuming.
      *
-     * @relation FIRST_FIX
+     * @relation FIRST_FIX = 0x203
      */
     | @!APILevel[
         21,
@@ -400,7 +399,7 @@ public enum LocationRequestScenario {
     /**
      * Default scenario.
      *
-     * @relation UNSET = 0x300,
+     * @relation UNSET = 0x300
      */
     @!APILevel[
         21,
@@ -411,7 +410,7 @@ public enum LocationRequestScenario {
     /**
      * Navigation scenario. High positioning precision and real-time performance are required.
      *
-     * @relation NAVIGATION,
+     * @relation NAVIGATION = 0x301
      */
     | @!APILevel[
         21,
@@ -422,7 +421,7 @@ public enum LocationRequestScenario {
     /**
      * Trajectory tracking scenario. High positioning precision is required.
      *
-     * @relation TRAJECTORY_TRACKING,
+     * @relation TRAJECTORY_TRACKING = 0x302
      */
     | @!APILevel[
         21,
@@ -433,7 +432,7 @@ public enum LocationRequestScenario {
     /**
      * Car hailing scenario. High positioning precision and real-time performance are required.
      *
-     * @relation CAR_HAILING,
+     * @relation CAR_HAILING = 0x303
      */
     | @!APILevel[
         21,
@@ -444,7 +443,7 @@ public enum LocationRequestScenario {
     /**
      * Daily life scenarios. Low requirements on positioning precision and real-time performance.
      *
-     * @relation DAILY_LIFE_SERVICE,
+     * @relation DAILY_LIFE_SERVICE = 0x304
      */
     | @!APILevel[
         21,
@@ -455,7 +454,7 @@ public enum LocationRequestScenario {
     /**
      * Power saving scenarios.
      *
-     * @relation NO_POWER
+     * @relation NO_POWER = 0x305
      */
     | @!APILevel[
         21,
@@ -492,7 +491,7 @@ public class CurrentLocationRequest {
     /**
      * Priority of the location request.
      *
-     * @relation priority?: LocationRequestPriority;
+     * @relation priority?: LocationRequestPriority
      */
     @!APILevel[
         21,
@@ -503,7 +502,7 @@ public class CurrentLocationRequest {
     /**
      * User scenario of the location request.
      *
-     * @relation scenario?: LocationRequestScenario;
+     * @relation scenario?: LocationRequestScenario
      */
     @!APILevel[
         21,
@@ -514,7 +513,7 @@ public class CurrentLocationRequest {
     /**
      * Accuracy requirements for reporting locations.
      *
-     * @relation maxAccuracy?: number;
+     * @relation maxAccuracy?: number
      */
     @!APILevel[
         21,
@@ -525,7 +524,7 @@ public class CurrentLocationRequest {
     /**
      * Timeout interval of a single location request.
      *
-     * @relation timeoutMs?: number;
+     * @relation timeoutMs?: number
      */
     @!APILevel[
         21,
@@ -566,7 +565,7 @@ public enum LocatingPriority {
     /**
      * Preferentially ensure the highest locating accuracy.
      *
-     * @relation PRIORITY_ACCURACY = 0x501,
+     * @relation PRIORITY_ACCURACY = 0x501
      */
     @!APILevel[
         21,
@@ -610,7 +609,7 @@ public class SingleLocationRequest {
     /**
      * Priority of the location request.
      *
-     * @relation locatingPriority: LocatingPriority;
+     * @relation locatingPriority: LocatingPriority
      */
     @!APILevel[
         21,
@@ -621,7 +620,7 @@ public class SingleLocationRequest {
     /**
      * Timeout of a single location request, in milliseconds.
      *
-     * @relation locatingTimeoutMs: number;
+     * @relation locatingTimeoutMs: number
      */
     @!APILevel[
         21,

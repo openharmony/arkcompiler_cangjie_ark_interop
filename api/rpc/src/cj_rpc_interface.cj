@@ -16,20 +16,37 @@
 package ohos.rpc
 
 import ohos.labels.*
-import ohos.ffi.*
 
+
+/**
+ * During inter-process communication, objects of the class are written to the {@link MessageSequence} and
+ * they are recovered from the {@link MessageSequence}.
+ *
+ * @relation interface Parcelable
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.IPC.Core"
 ]
 public interface Parcelable {
+    /**
+     * Marshal this {@code Parcelable} object into a {@link MessageSequence}.
+     *
+     * @relation marshalling(dataOut: MessageSequence): boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.IPC.Core"
     ]
     func marshalling(dataOut: MessageSequence): Bool
+
+    /**
+     * Unmarshal this {@code Parcelable} object from a {@link MessageSequence}.
+     *
+     * @relation unmarshalling(dataIn: MessageSequence): boolean
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -38,30 +55,3 @@ public interface Parcelable {
     func unmarshalling(dataIn: MessageSequence): Bool
 }
 
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.IPC.Core"
-]
-public interface IRemoteBroker {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    func asObject(): IRemoteObject
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Communication.IPC.Core"
-]
-public abstract class DeathRecipient {
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.IPC.Core"
-    ]
-    public open func onRemoteDied(): Unit
-}

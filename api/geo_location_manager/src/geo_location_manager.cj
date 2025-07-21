@@ -16,11 +16,7 @@
 package ohos.geo_location_manager
 
 import ohos.base.*
-import ohos.hilog.*
 import ohos.ffi.*
-import ohos.i18n.*
-import std.collection.*
-import std.sync.*
 import ohos.labels.*
 
 /**
@@ -44,11 +40,11 @@ public class GeoLocationManager {
       * @throws { BusinessException } 3301000 - The location service is   unavailable.
       * @throws { BusinessException } 3301100 - The location switch is off.
       * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
-      * @relation function getCurrentLocation(callback:   AsyncCallback<Location>): void;
+      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
       */
     @!APILevel[
         21,
-        permission: "ohos.APPROXIMATELY_LOCATION",
+        permission: "ohos.permission.APPROXIMATELY_LOCATION",
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
@@ -74,12 +70,11 @@ public class GeoLocationManager {
       * @throws { BusinessException } 3301000 - The location service is   unavailable.
       * @throws { BusinessException } 3301100 - The location switch is off.
       * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
-      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>;
-      * @relation function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, callback: AsyncCallback<Location>): void;
+      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
       */
     @!APILevel[
         21,
-        permission: "ohos.APPROXIMATELY_LOCATION",
+        permission: "ohos.permission.APPROXIMATELY_LOCATION",
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
@@ -107,12 +102,11 @@ public class GeoLocationManager {
       * @throws { BusinessException } 3301000 - The location service is   unavailable.
       * @throws { BusinessException } 3301100 - The location switch is off.
       * @throws { BusinessException } 3301200 - Failed to obtain the   geographical location.
-      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>;
-      * @relation function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, callback: AsyncCallback<Location>): void;
+      * @relation function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Promise<Location>
       */
     @!APILevel[
         21,
-        permission: "ohos.APPROXIMATELY_LOCATION",
+        permission: "ohos.permission.APPROXIMATELY_LOCATION",
         stagemodelonly: true,
         syscap: "SystemCapability.Location.Location.Core"
     ]
@@ -136,7 +130,7 @@ public class GeoLocationManager {
       *
       * @throws { BusinessException } 801 - Capability not supported. Failed to call ${geoLocationManager.isLocationEnabled} due to limited device capabilities.
       * @throws { BusinessException } 3301000 - The location service is unavailable.
-      * @relation function isLocationEnabled(): boolean;
+      * @relation function isLocationEnabled(): boolean
       */
     @!APILevel[
         21,

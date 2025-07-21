@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.hilog") {
   sources = [
@@ -35,7 +35,7 @@ ohos_cj_library("ohos.hilog") {
     "../labels:ohos.labels",
   ]
 
-  enable_strip = false
+  enable_strip = true
 
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"

@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.system_parameter_enhance") {
   sources = [
@@ -21,7 +21,7 @@ ohos_cj_library("ohos.system_parameter_enhance") {
   ]
 
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",

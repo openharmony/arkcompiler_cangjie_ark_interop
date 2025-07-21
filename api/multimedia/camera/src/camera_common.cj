@@ -20,7 +20,7 @@ import ohos.hilog.*
 import ohos.base.*
 import std.collection.*
 import std.sync.*
-import std.deriving.*
+import std.deriving.Derive
 import ohos.labels.*
 
 const LOG_DOMAIN: UInt32 = 0xD002B00
@@ -74,8 +74,7 @@ func findCallbackObject(list: ArrayList<(CallbackObject, Int64)>, callback: Call
 /**
  * Enum for camera error code.
  *
- * @enum CameraErrorCode
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum CameraErrorCode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -84,74 +83,142 @@ func findCallbackObject(list: ArrayList<(CallbackObject, Int64)>, callback: Call
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
 public enum CameraErrorCode {
+    /**
+     * Parameter missing or parameter type incorrect.
+     *
+     * @relation INVALID_ARGUMENT = 7400101
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    INVALID_ARGUMENT
-    | @!APILevel[
+    InvalidArgument
+    |
+    /**
+     * Operation not allowed.
+     *
+     * @relation OPERATION_NOT_ALLOWED = 7400102
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    OPERATION_NOT_ALLOWED
-    | @!APILevel[
+    OperationNotAllowed
+    |
+    /**
+     * Session not config.
+     *
+     * @relation SESSION_NOT_CONFIG = 7400103
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    SESSION_NOT_CONFIG
-    | @!APILevel[
+    SessionNotConfig
+    |
+    /**
+     * Session not running.
+     *
+     * @relation SESSION_NOT_RUNNING = 7400104
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    SESSION_NOT_RUNNING
-    | @!APILevel[
+    SessionNotRunning
+    |
+    /**
+     * Session config locked.
+     *
+     * @relation SESSION_CONFIG_LOCKED = 7400105
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    SESSION_CONFIG_LOCKED
-    | @!APILevel[
+    SessionConfigLocked
+    |
+    /**
+     * Device setting locked.
+     *
+     * @relation DEVICE_SETTING_LOCKED = 7400106
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    DEVICE_SETTING_LOCKED
-    | @!APILevel[
+    DeviceSettingLocked
+    |
+    /**
+     * Can not use camera cause of conflict.
+     *
+     * @relation CONFLICT_CAMERA = 7400107
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CONFLICT_CAMERA
-    | @!APILevel[
+    ConflictCamera
+    |
+    /**
+     * Camera disabled cause of security reason.
+     *
+     * @relation DEVICE_DISABLED = 7400108
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    DEVICE_DISABLED
-    | @!APILevel[
+    DeviceDisabled
+    |
+    /**
+     * Can not use camera cause of preempted.
+     *
+     * @relation DEVICE_PREEMPTED = 7400109
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    DEVICE_PREEMPTED
-    | @!APILevel[
+    DevicePreempted
+    |
+    /**
+     * Unresolved conflicts with current configurations.
+     *
+     * @relation UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS
-    | @!APILevel[
+    UnresolvedConflictsWithCurrentConfigurations
+    |
+    /**
+     * Camera service fatal error.
+     *
+     * @relation SERVICE_FATAL_ERROR = 7400201
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    SERVICE_FATAL_ERROR
+    ServiceFatalError
     | ...
 
+    /**
+     * Get the CameraErrorCode value.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -159,17 +226,17 @@ public enum CameraErrorCode {
     ]
     public func getValue(): Int32 {
         match (this) {
-            case INVALID_ARGUMENT => 7400101
-            case OPERATION_NOT_ALLOWED => 7400102
-            case SESSION_NOT_CONFIG => 7400103
-            case SESSION_NOT_RUNNING => 7400104
-            case SESSION_CONFIG_LOCKED => 7400105
-            case DEVICE_SETTING_LOCKED => 7400106
-            case CONFLICT_CAMERA => 7400107
-            case DEVICE_DISABLED => 7400108
-            case DEVICE_PREEMPTED => 7400109
-            case UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS => 7400110
-            case SERVICE_FATAL_ERROR => 7400201
+            case InvalidArgument => 7400101
+            case OperationNotAllowed => 7400102
+            case SessionNotConfig => 7400103
+            case SessionNotRunning => 7400104
+            case SessionConfigLocked => 7400105
+            case DeviceSettingLocked => 7400106
+            case ConflictCamera => 7400107
+            case DeviceDisabled => 7400108
+            case DevicePreempted => 7400109
+            case UnresolvedConflictsWithCurrentConfigurations => 7400110
+            case ServiceFatalError => 7400201
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -178,8 +245,7 @@ public enum CameraErrorCode {
 /**
  * Rectangle definition.
  *
- * @typedef Rect
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Rect
  */
 @!APILevel[
     21,
@@ -190,8 +256,7 @@ public class Rect {
     /**
      * X coordinator of top left point.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation topLeftX: double
      */
     @!APILevel[
         21,
@@ -202,8 +267,7 @@ public class Rect {
     /**
      * Y coordinator of top left point.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation topLeftY: double
      */
     @!APILevel[
         21,
@@ -214,8 +278,7 @@ public class Rect {
     /**
      * Width of this rectangle.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation width: double
      */
     @!APILevel[
         21,
@@ -226,8 +289,7 @@ public class Rect {
     /**
      * Height of this rectangle.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation height: double
      */
     @!APILevel[
         21,
@@ -245,69 +307,9 @@ public class Rect {
 }
 
 /**
- * Metadata object basis.
- *
- * @typedef MetadataObject
- * @syscap SystemCapability.Multimedia.Camera.Core
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Multimedia.Camera.Core"
-]
-public class MetadataObject {
-    /**
-     * Metadata object type.
-     *
-     * @type { MetadataObjectType }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Camera.Core"
-    ]
-    public let `type`: MetadataObjectType
-    /**
-     * Metadata object timestamp in milliseconds.
-     *
-     * @type { Int32 }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Camera.Core"
-    ]
-    public let timestamp: Int32
-    /**
-     * The axis-aligned bounding box of detected metadata object.
-     *
-     * @type { Rect }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Camera.Core"
-    ]
-    public let boundingBox: Rect
-
-    init(`type`: MetadataObjectType, timestamp: Int32, boundingBox: Rect) {
-        this.`type` = `type`
-        this.timestamp = timestamp
-        this.boundingBox = boundingBox
-    }
-}
-
-/**
  * Enum for torch mode.
  *
- * @enum { TorchMode }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum TorchMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -319,54 +321,54 @@ public enum TorchMode {
     /**
      * The device torch is always off.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation OFF = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    OFF
+    Off
     |
-        /**
-         * The device torch is always on.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * The device torch is always on.
+     *
+     * @relation ON = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    ON
+    On
     |
-        /**
-         * The device continuously monitors light levels and uses the torch when necessary.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * The device continuously monitors light levels and uses the torch when necessary.
+     *
+     * @relation AUTO = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    AUTO
+    Auto
     | ...
 
     static func parse(val: Int32) {
         match (val) {
-            case 0 => OFF
-            case 1 => ON
-            case 2 => AUTO
+            case 0 => Off
+            case 1 => On
+            case 2 => Auto
             case _ => throw IllegalArgumentException("Unkown value.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case OFF => 0
-            case ON => 1
-            case AUTO => 2
+            case Off => 0
+            case On => 1
+            case Auto => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -375,8 +377,7 @@ public enum TorchMode {
 /**
  * Enumerates the image rotation angles.
  *
- * @enum { ImageRotation }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum ImageRotation
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -388,68 +389,68 @@ public enum ImageRotation {
     /**
      * The capture image rotates 0 degrees.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation ROTATION_0 = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    ROTATION_0
+    Rotation0
     |
-        /**
-         * The capture image rotates 90 degrees.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * The capture image rotates 90 degrees.
+     *
+     * @relation ROTATION_90 = 90
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    ROTATION_90
+    Rotation90
     |
-        /**
-         * The capture image rotates 180 degrees.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * The capture image rotates 180 degrees.
+     *
+     * @relation ROTATION_180 = 180
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    ROTATION_180
+    Rotation180
     |
-        /**
-         * The capture image rotates 270 degrees.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * The capture image rotates 270 degrees.
+     *
+     * @relation ROTATION_270 = 270
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    ROTATION_270
+    Rotation270
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case ROTATION_0 => 0
-            case ROTATION_90 => 90
-            case ROTATION_180 => 180
-            case ROTATION_270 => 270
+            case Rotation0 => 0
+            case Rotation90 => 90
+            case Rotation180 => 180
+            case Rotation270 => 270
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32) {
         match (val) {
-            case 0 => ROTATION_0
-            case 90 => ROTATION_90
-            case 180 => ROTATION_180
-            case 270 => ROTATION_270
+            case 0 => Rotation0
+            case 90 => Rotation90
+            case 180 => Rotation180
+            case 270 => Rotation270
             case _ => throw IllegalArgumentException("Unkown value.")
         }
     }
@@ -458,8 +459,7 @@ public enum ImageRotation {
 /**
  * Enum for camera status.
  *
- * @enum { CameraStatus }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum CameraStatus
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -471,58 +471,58 @@ public enum CameraStatus {
     /**
      * Appear status.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation CAMERA_STATUS_APPEAR = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_STATUS_APPEAR
+    CameraStatusAppear
     |
-        /**
-         * Disappear status.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Disappear status.
+     *
+     * @relation CAMERA_STATUS_DISAPPEAR = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_STATUS_DISAPPEAR
+    CameraStatusDisappear
     |
-        /**
-         * Available status.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Available status.
+     *
+     * @relation CAMERA_STATUS_AVAILABLE = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_STATUS_AVAILABLE
+    CameraStatusAvailable
     |
-        /**
-         * Unavailable status.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Unavailable status.
+     *
+     * @relation CAMERA_STATUS_UNAVAILABLE = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_STATUS_UNAVAILABL
+    CameraStatusUnavailabl
     | ...
 
     static func parse(val: Int32) {
         match (val) {
-            case 0 => CAMERA_STATUS_APPEAR
-            case 1 => CAMERA_STATUS_DISAPPEAR
-            case 2 => CAMERA_STATUS_AVAILABLE
-            case 3 => CAMERA_STATUS_UNAVAILABL
+            case 0 => CameraStatusAppear
+            case 1 => CameraStatusDisappear
+            case 2 => CameraStatusAvailable
+            case 3 => CameraStatusUnavailabl
             case _ => throw IllegalArgumentException("Unkown value.")
         }
     }
@@ -531,8 +531,7 @@ public enum CameraStatus {
 /**
  * Torch status info.
  *
- * @typedef TorchStatusInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface TorchStatusInfo
  */
 @!APILevel[
     21,
@@ -543,9 +542,7 @@ public class TorchStatusInfo {
     /**
      * is torch available
      *
-     * @type { Bool }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly isTorchAvailable: boolean
      */
     @!APILevel[
         21,
@@ -556,9 +553,7 @@ public class TorchStatusInfo {
     /**
      * is torch active
      *
-     * @type { Bool }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly isTorchActive: boolean
      */
     @!APILevel[
         21,
@@ -569,9 +564,7 @@ public class TorchStatusInfo {
     /**
      * the current torch brightness level.
      *
-     * @type { Float32 }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly torchLevel: double
      */
     @!APILevel[
         21,
@@ -590,8 +583,7 @@ public class TorchStatusInfo {
 /**
  * Frame rate range.
  *
- * @typedef FrameRateRange
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface FrameRateRange
  */
 @!APILevel[
     21,
@@ -602,9 +594,7 @@ public class FrameRateRange {
     /**
      * Min frame rate.
      *
-     * @type { Int32 }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly min: int
      */
     @!APILevel[
         21,
@@ -615,9 +605,7 @@ public class FrameRateRange {
     /**
      * Max frame rate.
      *
-     * @type { Int32 }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly max: int
      */
     @!APILevel[
         21,
@@ -635,8 +623,7 @@ public class FrameRateRange {
 /**
  * Size parameter.
  *
- * @typedef Size
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Size
  */
 @!APILevel[
     21,
@@ -647,8 +634,7 @@ public class Size {
     /**
      * Height.
      *
-     * @type { UInt32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation width: int
      */
     @!APILevel[
         21,
@@ -659,8 +645,7 @@ public class Size {
     /**
      * Width.
      *
-     * @type { UInt32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation height: int
      */
     @!APILevel[
         21,
@@ -675,11 +660,12 @@ public class Size {
     }
 }
 
+class ProfileImpl {}
+
 /**
  * Profile for camera streams.
  *
- * @typedef Profile
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Profile
  */
 @!APILevel[
     21,
@@ -690,9 +676,7 @@ public open class Profile {
     /**
      * Camera format.
      *
-     * @type { CameraFormat }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly format: CameraFormat
      */
     @!APILevel[
         21,
@@ -703,9 +687,7 @@ public open class Profile {
     /**
      * Picture size.
      *
-     * @type { Size }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly size: Size
      */
     @!APILevel[
         21,
@@ -713,6 +695,8 @@ public open class Profile {
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     public let size: Size
+
+    let impl: ProfileImpl = ProfileImpl()
 
     init(cameraFormat: Int32, width: UInt32, height: UInt32) {
         format = CameraFormat.parse(cameraFormat)
@@ -723,8 +707,7 @@ public open class Profile {
 /**
  * Video profile.
  *
- * @typedef VideoProfile
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface VideoProfile extends Profile
  */
 @!APILevel[
     21,
@@ -735,9 +718,7 @@ public class VideoProfile <: Profile {
     /**
      * Frame rate in unit fps (frames per second).
      *
-     * @type { FrameRateRange }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly frameRateRange: FrameRateRange
      */
     @!APILevel[
         21,
@@ -755,8 +736,7 @@ public class VideoProfile <: Profile {
 /**
  * Metadata object type.
  *
- * @enum { MetadataObjectType }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum MetadataObjectType
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -768,25 +748,26 @@ public enum MetadataObjectType {
     /**
      * Face detection type.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation FACE_DETECTION = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FACE_DETECTION | ...
+    FaceDetection
+    | ...
 
     func getValue(): Int32 {
         match (this) {
-            case MetadataObjectType.FACE_DETECTION => 0
+            case MetadataObjectType.FaceDetection => 0
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): MetadataObjectType {
         match (val) {
-            case 0 => MetadataObjectType.FACE_DETECTION
+            case 0 => MetadataObjectType.FaceDetection
             case _ => throw IllegalArgumentException("Unknown MetadataObjectType value ${val}")
         }
     }
@@ -795,8 +776,7 @@ public enum MetadataObjectType {
 /**
  * Camera output capability.
  *
- * @typedef CameraOutputCapability
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CameraOutputCapability
  */
 @!APILevel[
     21,
@@ -807,9 +787,7 @@ public class CameraOutputCapability {
     /**
      * Preview profiles.
      *
-     * @type { Array<Profile> }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly previewProfiles: Array<Profile>
      */
     @!APILevel[
         21,
@@ -820,9 +798,7 @@ public class CameraOutputCapability {
     /**
      * Photo profiles.
      *
-     * @type { Array<Profile> }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly photoProfiles: Array<Profile>
      */
     @!APILevel[
         21,
@@ -833,9 +809,7 @@ public class CameraOutputCapability {
     /**
      * Video profiles.
      *
-     * @type { Array<VideoProfile> }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly videoProfiles: Array<VideoProfile>
      */
     @!APILevel[
         21,
@@ -846,9 +820,7 @@ public class CameraOutputCapability {
     /**
      * All the supported metadata Object Types.
      *
-     * @type { Array<MetadataObjectType> }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly supportedMetadataObjectTypes: Array<MetadataObjectType>
      */
     @!APILevel[
         21,
@@ -869,8 +841,7 @@ public class CameraOutputCapability {
 /**
  * Enum for fold status.
  *
- * @enum { FoldStatus }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum FoldStatus
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -882,45 +853,45 @@ public enum FoldStatus {
     /**
      * Non-foldable status.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation NON_FOLDABLE = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    NON_FOLDABLE
+    NonFoldable
     |
-        /**
-         * Expanded status.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Expanded status.
+     *
+     * @relation EXPANDED = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    EXPANDED
+    Expanded
     |
-        /**
-         * Folded status.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Folded status.
+     *
+     * @relation FOLDED = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    FOLDED
+    Folded
     | ...
 
     static func parse(val: Int32): FoldStatus {
         match (val) {
-            case 0 => NON_FOLDABLE
-            case 1 => EXPANDED
-            case 2 => FOLDED
+            case 0 => NonFoldable
+            case 1 => Expanded
+            case 2 => Folded
             case _ => throw IllegalArgumentException("Unknown value ${val}")
         }
     }
@@ -929,8 +900,7 @@ public enum FoldStatus {
 /**
  * Fold status info.
  *
- * @typedef FoldStatusInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface FoldStatusInfo
  */
 @!APILevel[
     21,
@@ -941,9 +911,7 @@ public class FoldStatusInfo {
     /**
      * Gets supported camera devices under the current fold status.
      *
-     * @type { Array<CameraDevice> }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly supportedCameras: Array<CameraDevice>
      */
     @!APILevel[
         21,
@@ -954,9 +922,7 @@ public class FoldStatusInfo {
     /**
      * Current fold status.
      *
-     * @type { FoldStatus }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly foldStatus: FoldStatus
      */
     @!APILevel[
         21,
@@ -965,6 +931,9 @@ public class FoldStatusInfo {
     ]
     public let foldStatus: FoldStatus
 
+    /**
+     * FoldStatusInfo constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -979,8 +948,7 @@ public class FoldStatusInfo {
 /**
  * Enum for camera connection type.
  *
- * @enum { ConnectionType }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum ConnectionType
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -992,54 +960,54 @@ public enum ConnectionType {
     /**
      * Built-in camera.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation CAMERA_CONNECTION_BUILT_IN = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_CONNECTION_BUILT_IN
+    CameraConnectionBuiltIn
     |
-        /**
-         * Camera connected using USB
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Camera connected using USB
+     *
+     * @relation CAMERA_CONNECTION_USB_PLUGIN = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_CONNECTION_USB_PLUGIN
+    CameraConnectionUsbPlugin
     |
-        /**
-         * Remote camera
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Remote camera
+     *
+     * @relation CAMERA_CONNECTION_REMOTE = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_CONNECTION_REMOTE
+    CameraConnectionRemote
     | ...
 
     static func parse(val: Int32): ConnectionType {
         match (val) {
-            case 0 => CAMERA_CONNECTION_BUILT_IN
-            case 1 => CAMERA_CONNECTION_USB_PLUGIN
-            case 2 => CAMERA_CONNECTION_REMOTE
+            case 0 => CameraConnectionBuiltIn
+            case 1 => CameraConnectionUsbPlugin
+            case 2 => CameraConnectionRemote
             case _ => throw IllegalArgumentException("Unknown value ${val}")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case CAMERA_CONNECTION_BUILT_IN => 0
-            case CAMERA_CONNECTION_USB_PLUGIN => 1
-            case CAMERA_CONNECTION_REMOTE => 2
+            case CameraConnectionBuiltIn => 0
+            case CameraConnectionUsbPlugin => 1
+            case CameraConnectionRemote => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1048,8 +1016,7 @@ public enum ConnectionType {
 /**
  * Enum for camera format type.
  *
- * @enum { CameraFormat }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum CameraFormat
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1059,98 +1026,98 @@ public enum ConnectionType {
 ]
 public enum CameraFormat {
     /**
-     * YCRCB P010 Format.
+     * YCBCR P010 Format.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation CAMERA_FORMAT_YCBCR_P010 = 2001
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_FORMAT_YCRCB_P010
+    CameraFormatYcbcrP010
     |
-        /**
-         * YCBCR P010 Format.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * YCRCB P010 Format.
+     *
+     * @relation CAMERA_FORMAT_YCRCB_P010 = 2002
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_FORMAT_YCBCR_P010
+    CameraFormatYcrcbP010
     |
-        /**
-         * HEIC Format.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * HEIC Format.
+     *
+     * @relation CAMERA_FORMAT_HEIC = 2003
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_FORMAT_HEIC
+    CameraFormatHeic
     |
-        /**
-         * JPEG Format.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * JPEG Format.
+     *
+     * @relation CAMERA_FORMAT_JPEG = 2000
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_FORMAT_JPEG
+    CameraFormatJpeg
     |
-        /**
-         * YUV 420 Format.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * YUV 420 Format.
+     *
+     * @relation CAMERA_FORMAT_YUV_420_SP = 1003
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_FORMAT_YUV_420_SP
+    CameraFormatYuv420Sp
     |
-        /**
-         * RGBA 8888 Format.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * RGBA 8888 Format.
+     *
+     * @relation CAMERA_FORMAT_RGBA_8888 = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_FORMAT_RGBA_8888
+    CameraFormatRgba8888
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case CAMERA_FORMAT_YCRCB_P010 => 2002
-            case CAMERA_FORMAT_YCBCR_P010 => 2001
-            case CAMERA_FORMAT_HEIC => 2003
-            case CAMERA_FORMAT_JPEG => 2000
-            case CAMERA_FORMAT_YUV_420_SP => 1003
-            case CAMERA_FORMAT_RGBA_8888 => 3
+            case CameraFormatYcrcbP010 => 2002
+            case CameraFormatYcbcrP010 => 2001
+            case CameraFormatHeic => 2003
+            case CameraFormatJpeg => 2000
+            case CameraFormatYuv420Sp => 1003
+            case CameraFormatRgba8888 => 3
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
     static func parse(val: Int32): CameraFormat {
         match (val) {
-            case 2002 => CAMERA_FORMAT_YCRCB_P010
-            case 2001 => CAMERA_FORMAT_YCBCR_P010
-            case 2003 => CAMERA_FORMAT_HEIC
-            case 2000 => CAMERA_FORMAT_JPEG
-            case 1003 => CAMERA_FORMAT_YUV_420_SP
-            case 3 => CAMERA_FORMAT_RGBA_8888
+            case 2002 => CameraFormatYcrcbP010
+            case 2001 => CameraFormatYcbcrP010
+            case 2003 => CameraFormatHeic
+            case 2000 => CameraFormatJpeg
+            case 1003 => CameraFormatYuv420Sp
+            case 3 => CameraFormatRgba8888
             case _ => throw IllegalArgumentException("Unknown value ${val}")
         }
     }
@@ -1159,8 +1126,7 @@ public enum CameraFormat {
 /**
  * Camera device object.
  *
- * @typedef CameraDevice
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CameraDevice
  */
 @!APILevel[
     21,
@@ -1169,11 +1135,9 @@ public enum CameraFormat {
 ]
 public class CameraDevice {
     /**
-     * Camera id attribute.
+     * Camera ID attribute.
      *
-     * @type { String }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly cameraId: string
      */
     @!APILevel[
         21,
@@ -1184,9 +1148,7 @@ public class CameraDevice {
     /**
      * Camera position attribute.
      *
-     * @type { CameraPosition }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly cameraPosition: CameraPosition
      */
     @!APILevel[
         21,
@@ -1197,9 +1159,7 @@ public class CameraDevice {
     /**
      * Camera type attribute.
      *
-     * @type { CameraType }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly cameraType: CameraType
      */
     @!APILevel[
         21,
@@ -1210,9 +1170,7 @@ public class CameraDevice {
     /**
      * Camera connection type attribute.
      *
-     * @type { ConnectionType }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly connectionType: ConnectionType
      */
     @!APILevel[
         21,
@@ -1223,9 +1181,7 @@ public class CameraDevice {
     /**
      * Camera sensor orientation attribute.
      *
-     * @type { UInt32 }
-     * @readonly
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation readonly cameraOrientation: int
      */
     @!APILevel[
         21,
@@ -1247,8 +1203,7 @@ public class CameraDevice {
 /**
  * Camera status info.
  *
- * @typedef CameraStatusInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CameraStatusInfo
  */
 @!APILevel[
     21,
@@ -1259,8 +1214,7 @@ public class CameraStatusInfo {
     /**
      * Camera instance.
      *
-     * @type { CameraDevice }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation camera: CameraDevice
      */
     @!APILevel[
         21,
@@ -1271,8 +1225,7 @@ public class CameraStatusInfo {
     /**
      * Current camera status.
      *
-     * @type { CameraStatus }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation status: CameraStatus
      */
     @!APILevel[
         21,
@@ -1281,6 +1234,9 @@ public class CameraStatusInfo {
     ]
     public var status: CameraStatus
 
+    /**
+     * CameraStatusInfo constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1292,98 +1248,160 @@ public class CameraStatusInfo {
     }
 }
 
+/**
+ * camera event type.
+ */
 @Derive[Equatable]
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Multimedia.Camera.Core"
 ]
-public enum CameraCallbackType <: ToString {
+public enum CameraEvents <: ToString {
+    /**
+     * camera error event.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     CameraError
-    | @!APILevel[
+    |
+    /**
+     * camera status event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     CameraStatus
-    | @!APILevel[
+    |
+    /**
+     * fold status change event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     FoldStatusChange
-    | @!APILevel[
+    |
+    /**
+     * torch status change event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     TorchStatusChange
-    | @!APILevel[
+    |
+    /**
+     * frame start event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     FrameStart
-    | @!APILevel[
+    |
+    /**
+     * frame end event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     FrameEnd
-    | @!APILevel[
+    |
+    /**
+     * capture start withInfo event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     CaptureStartWithInfo
-    | @!APILevel[
+    |
+    /**
+     * frame shutter event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     FrameShutter
-    | @!APILevel[
+    |
+    /**
+     * capture end event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     CaptureEnd
-    | @!APILevel[
+    |
+    /**
+     * frame shutter end event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     FrameShutterEnd
-    | @!APILevel[
+    |
+    /**
+     * capture ready event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     CaptureReady
-    | @!APILevel[
+    |
+    /**
+     * estimated capture duration event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     EstimatedCaptureDuration
-    | @!APILevel[
+    |
+    /**
+     * metadata objects available event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     MetadataObjectsAvailable
-    | @!APILevel[
+    |
+    /**
+     * focus state change event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     FocusStateChange
-    | @!APILevel[
+    |
+    /**
+     * smooth zoom info available event.
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
@@ -1391,6 +1409,11 @@ public enum CameraCallbackType <: ToString {
     SmoothZoomInfoAvailable
     | ...
 
+    /**
+     * Obtaining the string value of CameraEvents.
+     *
+     * @throws IllegalArgumentException - The type is not supported.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -1421,9 +1444,7 @@ public enum CameraCallbackType <: ToString {
 /**
  * Enum for camera position.
  *
- * @enum { CameraPosition }
- * @syscap SystemCapability.Multimedia.Camera.Core
- * @atomicservice
+ * @relation enum CameraPosition
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1435,57 +1456,54 @@ public enum CameraPosition {
     /**
      * Unspecified position.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
-     * @atomicservice
+     * @relation CAMERA_POSITION_UNSPECIFIED = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_POSITION_UNSPECIFIED
+    CameraPositionUnspecified
     |
-        /**
-         * Back position.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         * @atomicservice
-         */
-        @!APILevel[
+    /**
+     * Back position.
+     *
+     * @relation CAMERA_POSITION_BACK = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_POSITION_BACK
+    CameraPositionBack
     |
-        /**
-         * Front position.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         * @atomicservice
-         */
-        @!APILevel[
+    /**
+     * Front position.
+     *
+     * @relation CAMERA_POSITION_FRONT = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_POSITION_FRONT
+    CameraPositionFront
     | ...
 
     static func parse(code: Int32): CameraPosition {
         match (code) {
-            case 0 => CAMERA_POSITION_UNSPECIFIED
-            case 1 => CAMERA_POSITION_BACK
-            case 2 => CAMERA_POSITION_FRONT
+            case 0 => CameraPositionUnspecified
+            case 1 => CameraPositionBack
+            case 2 => CameraPositionFront
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case CAMERA_POSITION_UNSPECIFIED => 0
-            case CAMERA_POSITION_BACK => 1
-            case CAMERA_POSITION_FRONT => 2
+            case CameraPositionUnspecified => 0
+            case CameraPositionBack => 1
+            case CameraPositionFront => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1494,8 +1512,7 @@ public enum CameraPosition {
 /**
  * Enum for camera type.
  *
- * @enum { CameraType }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum CameraType
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1507,82 +1524,82 @@ public enum CameraType {
     /**
      * Default camera type
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation CAMERA_TYPE_DEFAULT = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_TYPE_DEFAULT
+    CameraTypeDefault
     |
-        /**
-         * Wide camera
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Wide camera
+     *
+     * @reelation CAMERA_TYPE_WIDE_ANGLE = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_TYPE_WIDE_ANGLE
+    CameraTypeWideAngle
     |
-        /**
-         * Ultra wide camera
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Ultra wide camera
+     *
+     * @relation CAMERA_TYPE_ULTRA_WIDE = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_TYPE_ULTRA_WIDE
+    CameraTypeUltraWide
     |
-        /**
-         * Telephoto camera
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Telephoto camera
+     *
+     * @relation CAMERA_TYPE_TELEPHOTO = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_TYPE_TELEPHOTO
+    CameraTypeTelephoto
     |
-        /**
-         * True depth camera
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * True depth camera
+     *
+     * @relation CAMERA_TYPE_TRUE_DEPTH = 4
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    CAMERA_TYPE_TRUE_DEPTH
+    CameraTypeTrueDepth
     | ...
 
     static func parse(code: Int32): CameraType {
         match (code) {
-            case 0 => CAMERA_TYPE_DEFAULT
-            case 1 => CAMERA_TYPE_WIDE_ANGLE
-            case 2 => CAMERA_TYPE_ULTRA_WIDE
-            case 3 => CAMERA_TYPE_TELEPHOTO
-            case 4 => CAMERA_TYPE_TRUE_DEPTH
+            case 0 => CameraTypeDefault
+            case 1 => CameraTypeWideAngle
+            case 2 => CameraTypeUltraWide
+            case 3 => CameraTypeTelephoto
+            case 4 => CameraTypeTrueDepth
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case CAMERA_TYPE_DEFAULT => 0
-            case CAMERA_TYPE_WIDE_ANGLE => 1
-            case CAMERA_TYPE_ULTRA_WIDE => 2
-            case CAMERA_TYPE_TELEPHOTO => 3
-            case CAMERA_TYPE_TRUE_DEPTH => 4
+            case CameraTypeDefault => 0
+            case CameraTypeWideAngle => 1
+            case CameraTypeUltraWide => 2
+            case CameraTypeTelephoto => 3
+            case CameraTypeTrueDepth => 4
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1591,8 +1608,7 @@ public enum CameraType {
 /**
  * Enumerates the camera scene modes.
  *
- * @enum { SceneMode }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum SceneMode
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1604,54 +1620,54 @@ public enum SceneMode {
     /**
      * Normal photo mode.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation NORMAL_PHOTO = 1
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    NORMAL_PHOTO
+    NormalPhoto
     |
-        /**
-         * Normal video mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Normal video mode.
+     *
+     * @relation NORMAL_VIDEO = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    NORMAL_VIDEO
+    NormalVideo
     |
-        /**
-         * Secure camera mode.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Secure camera mode.
+     *
+     * @relation SECURE_PHOTO = 12
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    SECURE_PHOTO
+    SecurePhoto
     | ...
 
     static func parse(code: Int32): SceneMode {
         match (code) {
-            case 1 => NORMAL_PHOTO
-            case 2 => NORMAL_VIDEO
-            case 12 => SECURE_PHOTO
+            case 1 => NormalPhoto
+            case 2 => NormalVideo
+            case 12 => SecurePhoto
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
 
     func getValue(): Int32 {
         match (this) {
-            case NORMAL_PHOTO => 1
-            case NORMAL_VIDEO => 2
-            case SECURE_PHOTO => 12
+            case NormalPhoto => 1
+            case NormalVideo => 2
+            case SecurePhoto => 12
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1660,8 +1676,7 @@ public enum SceneMode {
 /**
  * Enumerates the image quality levels.
  *
- * @enum { QualityLevel }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum QualityLevel
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1673,45 +1688,45 @@ public enum QualityLevel {
     /**
      * High image quality.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation QUALITY_LEVEL_HIGH = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    QUALITY_LEVEL_HIGH
+    QualityLevelHigh
     |
-        /**
-         * Medium image quality.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Medium image quality.
+     *
+     * @relation QUALITY_LEVEL_MEDIUM = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    QUALITY_LEVEL_MEDIUM
+    QualityLevelMedium
     |
-        /**
-         * Low image quality.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Low image quality.
+     *
+     * @relation QUALITY_LEVEL_LOW = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    QUALITY_LEVEL_LOW
+    QualityLevelLow
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case QUALITY_LEVEL_HIGH => 0
-            case QUALITY_LEVEL_MEDIUM => 1
-            case QUALITY_LEVEL_LOW => 2
+            case QualityLevelHigh => 0
+            case QualityLevelMedium => 1
+            case QualityLevelLow => 2
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1720,8 +1735,7 @@ public enum QualityLevel {
 /**
  * Photo capture location
  *
- * @typedef Location
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface Location
  */
 @!APILevel[
     21,
@@ -1732,8 +1746,7 @@ public class Location {
     /**
      * Latitude.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation latitude: double
      */
     @!APILevel[
         21,
@@ -1744,20 +1757,18 @@ public class Location {
     /**
      * Longitude.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation longitude: double
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public var longtitude: Float64
+    public var longitude: Float64
     /**
      * Altitude.
      *
-     * @type { Float64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation altitude: double
      */
     @!APILevel[
         21,
@@ -1766,27 +1777,29 @@ public class Location {
     ]
     public var altitude: Float64
 
+    /**
+     * Location constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public init(latitude: Float64, longtitude: Float64, altitude: Float64) {
+    public init(latitude: Float64, longitude: Float64, altitude: Float64) {
         this.latitude = latitude
-        this.longtitude = longtitude
+        this.longitude = longitude
         this.altitude = altitude
     }
 
     func toExternal(): CLocation {
-        return CLocation(latitude, longtitude, altitude)
+        return CLocation(latitude, longitude, altitude)
     }
 }
 
 /**
  * Photo capture options to set.
  *
- * @typedef PhotoCaptureSetting
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface PhotoCaptureSetting
  */
 @!APILevel[
     21,
@@ -1797,8 +1810,7 @@ public class PhotoCaptureSetting {
     /**
      * Photo image quality.
      *
-     * @type { QualityLevel }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation quality?: QualityLevel
      */
     @!APILevel[
         21,
@@ -1809,8 +1821,7 @@ public class PhotoCaptureSetting {
     /**
      * Photo rotation.
      *
-     * @type { ImageRotation }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation rotation?: ImageRotation
      */
     @!APILevel[
         21,
@@ -1821,8 +1832,7 @@ public class PhotoCaptureSetting {
     /**
      * Photo location.
      *
-     * @type { Location }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation location?: Location
      */
     @!APILevel[
         21,
@@ -1831,10 +1841,11 @@ public class PhotoCaptureSetting {
     ]
     public var location: Location
     /**
-     * Set the mirror photo function switch, default to false.
+     * Mirror enable switch (default off).
+     * It is necessary to utilize the function isMirrorSupported to ascertain whether it is supported
+     * prior to its implementation.
      *
-     * @type { Bool }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation mirror?: boolean
      */
     @!APILevel[
         21,
@@ -1843,14 +1854,17 @@ public class PhotoCaptureSetting {
     ]
     public var mirror: Bool
 
+    /**
+     * PhotoCaptureSetting constructor.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
     public init(
-        quality!: QualityLevel = QualityLevel.QUALITY_LEVEL_MEDIUM,
-        rotation!: ImageRotation = ImageRotation.ROTATION_0,
+        quality!: QualityLevel = QualityLevel.QualityLevelMedium,
+        rotation!: ImageRotation = ImageRotation.Rotation0,
         location!: Location = Location(-1.0, -1.0, -1.0),
         mirror!: Bool = false
     ) {
@@ -1864,8 +1878,7 @@ public class PhotoCaptureSetting {
 /**
  * Enumerates the camera video codec type.
  *
- * @enum { VideoCodecType }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum VideoCodecType
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -1875,34 +1888,34 @@ public class PhotoCaptureSetting {
 ]
 public enum VideoCodecType {
     /**
-     * Codec type AVC.
+     * Video encoding type AVC.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation AVC = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    AVC
+    Avc
     |
-        /**
-         * Codec type HEVC.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Video encoding type HEVC.
+     *
+     * @relation HEVC = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    HEVC
+    Hevc
     | ...
 
     func getValue(): Int32 {
         match (this) {
-            case AVC => 0
-            case HEVC => 1
+            case Avc => 0
+            case Hevc => 1
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -1911,8 +1924,7 @@ public enum VideoCodecType {
 /**
  * Capture start info.
  *
- * @typedef CaptureStartInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CaptureStartInfo
  */
 @!APILevel[
     21,
@@ -1923,8 +1935,7 @@ public class CaptureStartInfo {
     /**
      * Capture id.
      *
-     * @type { Int32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation captureId: int
      */
     @!APILevel[
         21,
@@ -1935,8 +1946,7 @@ public class CaptureStartInfo {
     /**
      * Time(in milliseconds) is the shutter time for the photo.
      *
-     * @type { UInt32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation time: long
      */
     @!APILevel[
         21,
@@ -1954,8 +1964,7 @@ public class CaptureStartInfo {
 /**
  * Frame shutter callback info.
  *
- * @typedef FrameShutterInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface FrameShutterInfo
  */
 @!APILevel[
     21,
@@ -1966,8 +1975,7 @@ public class FrameShutterInfo {
     /**
      * Capture id.
      *
-     * @type { Int32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation captureId: int
      */
     @!APILevel[
         21,
@@ -1978,8 +1986,7 @@ public class FrameShutterInfo {
     /**
      * Timestamp for frame.
      *
-     * @type { UInt64 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation timestamp: long
      */
     @!APILevel[
         21,
@@ -1997,8 +2004,7 @@ public class FrameShutterInfo {
 /**
  * Capture end info.
  *
- * @typedef CaptureEndInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CaptureEndInfo
  */
 @!APILevel[
     21,
@@ -2009,8 +2015,7 @@ public class CaptureEndInfo {
     /**
      * Capture id.
      *
-     * @type { Int32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation captureId: int
      */
     @!APILevel[
         21,
@@ -2021,8 +2026,7 @@ public class CaptureEndInfo {
     /**
      * Frame count.
      *
-     * @type { Int32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation frameCount: int
      */
     @!APILevel[
         21,
@@ -2040,8 +2044,7 @@ public class CaptureEndInfo {
 /**
  * Frame shutter end callback info.
  *
- * @typedef FrameShutterEndInfo
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface FrameShutterEndInfo
  */
 @!APILevel[
     21,
@@ -2052,8 +2055,7 @@ public class FrameShutterEndInfo {
     /**
      * Capture id.
      *
-     * @type { Int32 }
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation captureId: int
      */
     @!APILevel[
         21,
@@ -2071,8 +2073,7 @@ public class FrameShutterEndInfo {
  * Types of preconfig, which used to configure session conveniently.
  * Preconfig type contains common use cases of camera output.
  *
- * @enum { Int32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum PreconfigType
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -2084,59 +2085,59 @@ public enum PreconfigType {
     /**
      * 720P output for preconfig.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation PRECONFIG_720P = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_720P
+    Preconfig720p
     |
-        /**
-         * 1080P output for preconfig.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * 1080P output for preconfig.
+     *
+     * @relation PRECONFIG_1080P = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_1080P
+    Preconfig1080p
     |
-        /**
-         * 4K output for preconfig.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * 4K output for preconfig.
+     *
+     * @relation PRECONFIG_4K = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_4K
+    Preconfig4k
     |
-        /**
-         * high quality output for preconfig.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * high quality output for preconfig.
+     *
+     * @relation PRECONFIG_HIGH_QUALITY = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_HIGH_QUALITY
+    PreconfigHighQuality
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case PRECONFIG_720P => 0
-                case PRECONFIG_1080P => 1
-                case PRECONFIG_4K => 2
-                case PRECONFIG_HIGH_QUALITY => 3
+                case Preconfig720p => 0
+                case Preconfig1080p => 1
+                case Preconfig4k => 2
+                case PreconfigHighQuality => 3
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -2144,10 +2145,10 @@ public enum PreconfigType {
 
     static func parse(value: Int32): PreconfigType {
         return match (value) {
-            case 0 => PRECONFIG_720P
-            case 1 => PRECONFIG_1080P
-            case 2 => PRECONFIG_4K
-            case 3 => PRECONFIG_HIGH_QUALITY
+            case 0 => Preconfig720p
+            case 1 => Preconfig1080p
+            case 2 => Preconfig4k
+            case 3 => PreconfigHighQuality
             case _ => throw IllegalArgumentException("Invalid PreconfigType ${value}")
         }
     }
@@ -2156,8 +2157,7 @@ public enum PreconfigType {
 /**
  * The aspect ratios of preconfig, which used to configure session conveniently.
  *
- * @enum { Float32 }
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation enum PreconfigRatio
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -2169,46 +2169,46 @@ public enum PreconfigRatio {
     /**
      * Aspect ratio 1:1 for preconfig.
      *
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation PRECONFIG_RATIO_1_1 = 0
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_RATIO_1_1
+    PreconfigRatio11
     |
-        /**
-         * Aspect ratio 4:3 for preconfig.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Aspect ratio 4:3 for preconfig.
+     *
+     * @relation PRECONFIG_RATIO_4_3 = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_RATIO_4_3
+    PreconfigRatio43
     |
-        /**
-         * Aspect ratio 16:9 for preconfig.
-         *
-         * @syscap SystemCapability.Multimedia.Camera.Core
-         */
-        @!APILevel[
+    /**
+     * Aspect ratio 16:9 for preconfig.
+     *
+     * @relation PRECONFIG_RATIO_16_9 = 2
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    PRECONFIG_RATIO_16_9
+    PreconfigRatio169
     | ...
 
     prop value: Int32 {
         get() {
             match (this) {
-                case PRECONFIG_RATIO_1_1 => 0
-                case PRECONFIG_RATIO_4_3 => 1
-                case PRECONFIG_RATIO_16_9 => 2
+                case PreconfigRatio11 => 0
+                case PreconfigRatio43 => 1
+                case PreconfigRatio169 => 2
                 case _ => throw IllegalArgumentException("The type is not supported.")
             }
         }
@@ -2216,9 +2216,9 @@ public enum PreconfigRatio {
 
     static func parse(value: Int32): PreconfigRatio {
         return match (value) {
-            case 0 => PRECONFIG_RATIO_1_1
-            case 1 => PRECONFIG_RATIO_4_3
-            case 2 => PRECONFIG_RATIO_16_9
+            case 0 => PreconfigRatio11
+            case 1 => PreconfigRatio43
+            case 2 => PreconfigRatio169
             case _ => throw IllegalArgumentException("Invalid PreconfigRatio ${value}")
         }
     }

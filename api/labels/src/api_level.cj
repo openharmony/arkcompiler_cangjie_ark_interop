@@ -21,8 +21,8 @@ public interface PermissionValue {
 }
 
 public class PermissionAnd <: PermissionValue {
-    let lhs: PermissionValue
-    let rhs: PermissionValue
+    public let lhs: PermissionValue
+    public let rhs: PermissionValue
     public const init(lhs: PermissionValue, rhs: PermissionValue) {
         this.lhs = lhs
         this.rhs = rhs
@@ -36,8 +36,8 @@ public class PermissionAnd <: PermissionValue {
 }
 
 public class PermissionOr <: PermissionValue {
-    let lhs: PermissionValue
-    let rhs: PermissionValue
+    public let lhs: PermissionValue
+    public let rhs: PermissionValue
     public const init(lhs: PermissionValue, rhs: PermissionValue) {
         this.lhs = lhs
         this.rhs = rhs

@@ -37,12 +37,14 @@ public:
         }
     }
 
-    static void DestroyAll(Utf16StringHandle handle) {
+    static void DestroyAll(Utf16StringHandle handle)
+    {
         Destroy(handle);
     }
 
     template <typename A, typename ...ARGS>
-    static void DestroyAll(A f, ARGS ...src) {
+    static void DestroyAll(A f, ARGS ...src)
+    {
         Destroy(f);
         DestroyAll(src...);
     }
@@ -72,10 +74,10 @@ private:
 
     struct CharCode {
         enum Kind {
-            Latin1,
-            Char16,
-            Char16_x2,
-            Invalid
+            LATIN1,
+            CHAR16,
+            CHAR16_X2,
+            INVALID
         };
         Kind kind;
         char32_t value;
@@ -167,7 +169,8 @@ public:
         uint32_t x;
         uint32_t y;
 
-        size_t Distance() const {
+        size_t Distance() const
+        {
             return y - x;
         }
     };

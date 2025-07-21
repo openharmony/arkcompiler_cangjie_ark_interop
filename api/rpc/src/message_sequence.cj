@@ -61,7 +61,8 @@ public class MessageSequence <: RemoteDataLite {
      * Creates an empty {@link MessageSequence} object.
      *
      * @returns { MessageSequence } Return the object created.
-     * @relation static create(): MessageSequence;
+     * @throws { BusinessException } 0 - Inner error.
+     * @relation static create(): MessageSequence
      */
     @!APILevel[
         21,
@@ -79,7 +80,7 @@ public class MessageSequence <: RemoteDataLite {
     /**
      * Reclaim the {@link MessageSequence} object.
      *
-     * @relation reclaim(): void;
+     * @relation reclaim(): void
      */
     @!APILevel[
         21,
@@ -100,7 +101,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The String length exceeds 40960 bytes;
      *     4.The number of bytes copied to the buffer is different from the length of the obtained String.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeInterfaceToken(token: string): void;
+     * @relation writeInterfaceToken(token: string): void
      */
     @!APILevel[
         21,
@@ -120,7 +121,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { String } Return a String value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readInterfaceToken(): string;
+     * @relation readInterfaceToken(): string
      */
     @!APILevel[
         21,
@@ -142,7 +143,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the size of data (in bytes) contained in the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the size of data contained in the {@link MessageSequence} object.
-     * @relation getSize(): number;
+     * @relation getSize(): number
      */
     @!APILevel[
         21,
@@ -160,7 +161,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the storage capacity (in bytes) of the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the storage capacity of the {@link MessageSequence} object.
-     * @relation getCapacity(): number;
+     * @relation getCapacity(): number
      */
     @!APILevel[
         21,
@@ -183,7 +184,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @relation setSize(size: number): void;
+     * @relation setSize(size: number): void
      */
     @!APILevel[
         21,
@@ -206,7 +207,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900011 - Memory allocation failed.
-     * @relation setCapacity(size: number): void;
+     * @relation setCapacity(size: number): void
      */
     @!APILevel[
         21,
@@ -225,7 +226,7 @@ public class MessageSequence <: RemoteDataLite {
      * the {@link MessageSequence}.
      *
      * @returns { UInt32 } Return the writable data space of the {@link MessageSequence} object.
-     * @relation getWritableBytes(): number;
+     * @relation getWritableBytes(): number
      */
     @!APILevel[
         21,
@@ -244,7 +245,7 @@ public class MessageSequence <: RemoteDataLite {
      * <p>Readable data space = Size of data contained in the {@link MessageSequence} – Size of data that has been read.
      *
      * @returns { UInt32 } Return the readable data space of the {@link MessageSequence} object.
-     * @relation getReadableBytes(): number;
+     * @relation getReadableBytes(): number
      */
     @!APILevel[
         21,
@@ -262,7 +263,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the current read position in the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the current read position in the {@link MessageSequence} object.
-     * @relation getReadPosition(): number;
+     * @relation getReadPosition(): number
      */
     @!APILevel[
         21,
@@ -280,7 +281,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the current write position in the {@link MessageSequence} object.
      *
      * @returns { UInt32 } Return the current write position in the {@link MessageSequence} object.
-     * @relation getWritePosition(): number;
+     * @relation getWritePosition(): number
      */
     @!APILevel[
         21,
@@ -303,7 +304,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @relation rewindWrite(pos: number): void;
+     * @relation rewindWrite(pos: number): void
      */
     @!APILevel[
         21,
@@ -325,7 +326,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @relation rewindRead(pos: number): void;
+     * @relation rewindRead(pos: number): void
      */
     @!APILevel[
         21,
@@ -344,7 +345,7 @@ public class MessageSequence <: RemoteDataLite {
      * {@link MessageSequence}.
      *
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeNoException(): void;
+     * @relation writeNoException(): void
      */
     @!APILevel[
         21,
@@ -364,7 +365,7 @@ public class MessageSequence <: RemoteDataLite {
      * if {@link writeNoException} was invoked in server side.
      *
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readException(): void;
+     * @relation readException(): void
      */
     @!APILevel[
         21,
@@ -392,7 +393,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeByte(val: number): void;
+     * @relation writeByte(val: number): void
      */
     @!APILevel[
         21,
@@ -413,7 +414,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeShort(val: number): void;
+     * @relation writeShort(val: number): void
      */
     @!APILevel[
         21,
@@ -434,7 +435,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeInt(val: number): void;
+     * @relation writeInt(val: number): void
      */
     @!APILevel[
         21,
@@ -455,7 +456,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeLong(val: number): void;
+     * @relation writeLong(val: number): void
      */
     @!APILevel[
         21,
@@ -476,7 +477,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeFloat(val: number): void;
+     * @relation writeFloat(val: number): void
      */
     @!APILevel[
         21,
@@ -497,7 +498,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeDouble(val: number): void;
+     * @relation writeDouble(val: number): void
      */
     @!APILevel[
         21,
@@ -518,7 +519,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeBoolean(val: boolean): void;
+     * @relation writeBoolean(val: boolean): void
      */
     @!APILevel[
         21,
@@ -544,7 +545,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeChar(val: number): void;
+     * @relation writeChar(val: number): void
      */
     @!APILevel[
         21,
@@ -567,7 +568,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The String length exceeds 40960 bytes;
      *     4.The number of bytes copied to the buffer is different from the length of the obtained String.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeString(val: string): void;
+     * @relation writeString(val: string): void
      */
     @!APILevel[
         21,
@@ -593,7 +594,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array.
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeParcelable(val: Parcelable): void;
+     * @relation writeByteArray(byteArray: number[]): void
      */
     @!APILevel[
         21,
@@ -621,7 +622,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeByteArray(byteArray: number[]): void;
+     * @relation writeShortArray(shortArray: number[]): void
      */
     @!APILevel[
         21,
@@ -649,7 +650,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeIntArray(intArray: number[]): void;
+     * @relation writeIntArray(intArray: number[]): void
      */
     @!APILevel[
         21,
@@ -677,7 +678,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeLongArray(longArray: number[]): void;
+     * @relation writeLongArray(longArray: number[]): void
      */
     @!APILevel[
         21,
@@ -705,7 +706,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeFloatArray(floatArray: number[]): void;
+     * @relation writeFloatArray(floatArray: number[]): void
      */
     @!APILevel[
         21,
@@ -733,7 +734,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The element does not exist in the array;
      *     5.The type of the element in the array is incorrect.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeDoubleArray(doubleArray: number[]): void;
+     * @relation writeDoubleArray(doubleArray: number[]): void
      */
     @!APILevel[
         21,
@@ -760,7 +761,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The parameter type does not match;
      *     4.The element does not exist in the array.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeBooleanArray(booleanArray: boolean[]): void;
+     * @relation writeBooleanArray(booleanArray: boolean[]): void
      */
     @!APILevel[
         21,
@@ -797,7 +798,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The parameter type does not match;
      *     4.The element does not exist in the array.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeCharArray(charArray: number[]): void;
+     * @relation writeCharArray(charArray: number[]): void
      */
     @!APILevel[
         21,
@@ -825,7 +826,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The String length exceeds 40960 bytes;
      *     5.The number of bytes copied to the buffer is different from the length of the obtained String.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeStringArray(stringArray: string[]): void;
+     * @relation writeStringArray(stringArray: string[]): void
      */
     @!APILevel[
         21,
@@ -845,7 +846,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int8 } Return a Int8 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readByte(): number;
+     * @relation readByte(): number
      */
     @!APILevel[
         21,
@@ -864,7 +865,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int16 } Return a Int16 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readShort(): number;
+     * @relation readShort(): number
      */
     @!APILevel[
         21,
@@ -883,7 +884,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int32 } Return an Int32 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readInt(): number;
+     * @relation readInt(): number
      */
     @!APILevel[
         21,
@@ -902,7 +903,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int64 } Return a Int64 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readLong(): number;
+     * @relation readLong(): number
      */
     @!APILevel[
         21,
@@ -921,7 +922,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Float32 } Return a Float32 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readFloat(): number;
+     * @relation readFloat(): number
      */
     @!APILevel[
         21,
@@ -940,7 +941,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Float64 } Return a Float64 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readDouble(): number;
+     * @relation readDouble(): number
      */
     @!APILevel[
         21,
@@ -959,7 +960,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Bool } Return a Bool value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readBoolean(): boolean;
+     * @relation readBoolean(): boolean
      */
     @!APILevel[
         21,
@@ -982,7 +983,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { UInt8 } Return a UInt8 value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readChar(): number;
+     * @relation readChar(): number
      */
     @!APILevel[
         21,
@@ -1001,7 +1002,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { String } Return a String value.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readString(): string;
+     * @relation readString(): string
      */
     @!APILevel[
         21,
@@ -1028,7 +1029,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readByteArray(dataIn: number[]): void;
+     * @relation readByteArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1046,7 +1047,7 @@ public class MessageSequence <: RemoteDataLite {
      * @returns { Array<Int8> } Return a Int8 array.
      * @throws { BusinessException } 401 - check param failed
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readByteArray(): number[];
+     * @relation readByteArray(): number[]
      */
     @!APILevel[
         21,
@@ -1071,7 +1072,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readShortArray(dataIn: number[]): void;
+     * @relation readShortArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1088,7 +1089,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Int16> } Return a Int16 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readShortArray(): number[];
+     * @relation readShortArray(): number[]
      */
     @!APILevel[
         21,
@@ -1113,7 +1114,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readIntArray(dataIn: number[]): void;
+     * @relation readIntArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1130,7 +1131,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Int32> } Return an Int32 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readIntArray(): number[];
+     * @relation readIntArray(): number[]
      */
     @!APILevel[
         21,
@@ -1155,7 +1156,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readLongArray(dataIn: number[]): void;
+     * @relation readLongArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1172,7 +1173,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Int64> } Return a Int64 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readLongArray(): number[];
+     * @relation readLongArray(): number[]
      */
     @!APILevel[
         21,
@@ -1197,7 +1198,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readFloatArray(dataIn: number[]): void;
+     * @relation readFloatArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1214,7 +1215,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Float32> } Return a Float32 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readFloatArray(): number[];
+     * @relation readFloatArray(): number[]
      */
     @!APILevel[
         21,
@@ -1239,7 +1240,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readDoubleArray(dataIn: number[]): void;
+     * @relation readDoubleArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1256,7 +1257,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Float64> } Return a Float64 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readDoubleArray(): number[];
+     * @relation readDoubleArray(): number[]
      */
     @!APILevel[
         21,
@@ -1281,7 +1282,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readBooleanArray(dataIn: boolean[]): void;
+     * @relation readBooleanArray(dataIn: boolean[]): void
      */
     @!APILevel[
         21,
@@ -1298,7 +1299,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<Bool> } Return a Bool array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readBooleanArray(): boolean[];
+     * @relation readBooleanArray(): boolean[]
      */
     @!APILevel[
         21,
@@ -1323,7 +1324,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readCharArray(dataIn: number[]): void;
+     * @relation readCharArray(dataIn: number[]): void
      */
     @!APILevel[
         21,
@@ -1340,7 +1341,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<UInt8> } Return a UInt8 array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readCharArray(): number[];
+     * @relation readCharArray(): number[]
      */
     @!APILevel[
         21,
@@ -1365,7 +1366,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The number of parameters is incorrect;
      *     3.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readStringArray(dataIn: string[]): void;
+     * @relation readStringArray(dataIn: string[]): void
      */
     @!APILevel[
         21,
@@ -1382,7 +1383,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Array<String> } Return a String array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readStringArray(): string[];
+     * @relation readStringArray(): string[]
      */
     @!APILevel[
         21,
@@ -1407,7 +1408,7 @@ public class MessageSequence <: RemoteDataLite {
      * @throws { BusinessException } 401 - Parameter error. Possible causes:
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
-     * @relation static closeFileDescriptor(fd: number): void;
+     * @relation static closeFileDescriptor(fd: number): void
      */
     @!APILevel[
         21,
@@ -1427,7 +1428,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900013 - Failed to call dup.
-     * @relation static dupFileDescriptor(fd: number): number;
+     * @relation static dupFileDescriptor(fd: number): number
      */
     @!APILevel[
         21,
@@ -1437,7 +1438,7 @@ public class MessageSequence <: RemoteDataLite {
     public static func dupFileDescriptor(fd: Int32): Int32 {
         let dupFd = unsafe { FfiRpcMessageSequenceImplDupFileDescriptor(fd) }
         if (dupFd < 0) {
-            throw BusinessException(ErrorCode.OS_DUP_ERROR, ERR_CODE_MAP[ErrorCode.OS_DUP_ERROR])
+            throw BusinessException(ErrorCode.OsDupError.value, ERR_CODE_MAP[ErrorCode.OsDupError.value])
         }
         return dupFd
     }
@@ -1447,7 +1448,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Bool } Return {@code true} if the {@link MessageSequence} object contains a file descriptor;
      *                      return {@code false} otherwise.
-     * @relation containFileDescriptors(): boolean;
+     * @relation containFileDescriptors(): boolean
      */
     @!APILevel[
         21,
@@ -1469,7 +1470,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeFileDescriptor(fd: number): void;
+     * @relation writeFileDescriptor(fd: number): void
      */
     @!APILevel[
         21,
@@ -1487,7 +1488,7 @@ public class MessageSequence <: RemoteDataLite {
      *
      * @returns { Int32 } Return a file descriptor obtained.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readFileDescriptor(): number;
+     * @relation readFileDescriptor(): number
      */
     @!APILevel[
         21,
@@ -1509,7 +1510,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter is not an instance of the Ashmem object.
      * @throws { BusinessException } 1900003 - Failed to write data to the shared memory.
-     * @relation writeAshmem(ashmem: Ashmem): void;
+     * @relation writeAshmem(ashmem: Ashmem): void
      */
     @!APILevel[
         21,
@@ -1528,7 +1529,7 @@ public class MessageSequence <: RemoteDataLite {
      * @returns { Ashmem } Return the anonymous share object obtained.
      * @throws { BusinessException } 401 - check param failed
      * @throws { BusinessException } 1900004 - Failed to read data from the shared memory.
-     * @relation readAshmem(): Ashmem;
+     * @relation readAshmem(): Ashmem
      */
     @!APILevel[
         21,
@@ -1546,7 +1547,7 @@ public class MessageSequence <: RemoteDataLite {
      * Obtains the maximum amount of raw data that can be sent in a time.
      *
      * @returns { UInt32 } 128 MB.
-     * @relation getRawDataCapacity(): number;
+     * @relation getRawDataCapacity(): number
      */
     @!APILevel[
         21,
@@ -1571,7 +1572,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1580,13 +1581,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeInt8Array(buf: Array<Int8>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeInt8Array: Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), INT8_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Int8Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size), inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1604,7 +1605,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1613,13 +1614,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeUInt8Array(buf: Array<UInt8>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeUInt8Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), UINT8_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Uint8Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size), inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1637,7 +1638,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1646,13 +1647,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeInt16Array(buf: Array<Int16>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeInt16Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), INT16_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Int16Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_16, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1670,7 +1671,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1679,13 +1680,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeUInt16Array(buf: Array<UInt16>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeUInt16Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), UINT16_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Uint16Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_16, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1703,7 +1704,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1712,13 +1713,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeInt32Array(buf: Array<Int32>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeInt32Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), INT32_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Int32Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_32, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1736,7 +1737,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1745,13 +1746,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeUInt32Array(buf: Array<UInt32>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeUInt32Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), UINT32_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Uint32Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_32, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1769,7 +1770,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1778,13 +1779,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeInt64Array(buf: Array<Int64>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeInt64Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), BIGINT64_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), BigInt64Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_64, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1802,7 +1803,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1811,13 +1812,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeUInt64Array(buf: Array<UInt64>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeUInt64Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), BIGUINT64_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), BigUint64Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_64, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1835,7 +1836,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1844,13 +1845,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeFloat32Array(buf: Array<Float32>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeFloat32Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), FLOAT32_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Float32Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_32, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1868,7 +1869,7 @@ public class MessageSequence <: RemoteDataLite {
      *     4.The obtained value of typeCode is incorrect;
      *     5.Failed to obtain array information.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void;
+     * @relation writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
      */
     @!APILevel[
         21,
@@ -1877,13 +1878,13 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeFloat64Array(buf: Array<Float64>): Unit {
         if (buf.size == 0) {
-            throw BusinessException(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR,
+            throw BusinessException(ErrorCode.WriteDataToMessageSequenceError.value,
                 "MessageSequence writeFloat64Array:  Write data to message sequence failed.")
         }
         let cp = unsafe { acquireArrayRawData(buf) }
         var errCode = 0i32
         unsafe {
-            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), FLOAT64_ARRAY.value, CPointer<Unit>(cp.pointer),
+            FfiRpcMessageSequenceImplWriteArrayBuffer(getID(), Float64Array.value, CPointer<Unit>(cp.pointer),
                 UIntNative(buf.size) * BYTE_SIZE_64, inout errCode)
         }
         unsafe { releaseArrayRawData(cp) }
@@ -1899,7 +1900,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -1924,7 +1925,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -1949,7 +1950,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -1974,7 +1975,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -1999,7 +2000,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2024,7 +2025,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2049,7 +2050,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2074,7 +2075,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2099,7 +2100,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2124,7 +2125,7 @@ public class MessageSequence <: RemoteDataLite {
      *     2.The parameter type does not match;
      *     3.The obtained value of typeCode is incorrect;
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer;
+     * @relation readArrayBuffer(typeCode: TypeCode): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2148,7 +2149,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeParcelable(val: Parcelable): void;
+     * @relation writeParcelable(val: Parcelable): void
      */
     @!APILevel[
         21,
@@ -2162,7 +2163,7 @@ public class MessageSequence <: RemoteDataLite {
             val.marshalling(this)
         } catch (e: BusinessException) {
             rewindWrite(pos)
-            checkRet(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR)
+            checkRet(ErrorCode.WriteDataToMessageSequenceError.value)
         }
     }
 
@@ -2175,7 +2176,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
      * @throws { BusinessException } 1900012 - Failed to call the JS callback function.
-     * @relation readParcelable(dataIn: Parcelable): void;
+     * @relation readParcelable(dataIn: Parcelable): void
      */
     @!APILevel[
         21,
@@ -2188,7 +2189,7 @@ public class MessageSequence <: RemoteDataLite {
             dataIn.unmarshalling(this)
             return
         }
-        checkRet(ErrorCode.CALL_JS_METHOD_ERROR)
+        checkRet(ErrorCode.CallCjMethodError.value)
     }
 
     /**
@@ -2201,7 +2202,7 @@ public class MessageSequence <: RemoteDataLite {
      *     3.The parameter type does not match;
      *     4.The element does not exist in the array.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeParcelableArray(parcelableArray: Parcelable[]): void;
+     * @relation writeParcelableArray(parcelableArray: Parcelable[]): void
      */
     @!APILevel[
         21,
@@ -2212,7 +2213,7 @@ public class MessageSequence <: RemoteDataLite {
         let pos = getWritePosition()
         let result = unsafe { FfiRpcMessageSequenceImplWriteUint32(getID(), UInt32(parcelableArray.size)) }
         if (!result) {
-            checkRet(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR)
+            checkRet(ErrorCode.WriteDataToMessageSequenceError.value)
         }
         for (i in 0..parcelableArray.size) {
             try {
@@ -2220,7 +2221,7 @@ public class MessageSequence <: RemoteDataLite {
                 parcelableArray[i].marshalling(this)
             } catch (e: BusinessException) {
                 rewindWrite(pos)
-                checkRet(ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR)
+                checkRet(ErrorCode.WriteDataToMessageSequenceError.value)
             }
         }
     }
@@ -2237,7 +2238,7 @@ public class MessageSequence <: RemoteDataLite {
      *     5.The element does not exist in the array.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
      * @throws { BusinessException } 1900012 - Failed to call the JS callback function.
-     * @relation readParcelableArray(parcelableArray: Parcelable[]): void;
+     * @relation readParcelableArray(parcelableArray: Parcelable[]): void
      */
     @!APILevel[
         21,
@@ -2247,7 +2248,7 @@ public class MessageSequence <: RemoteDataLite {
     public func readParcelableArray(parcelableArray: Array<Parcelable>): Unit {
         let arrayLength = readInt()
         if (Int64(arrayLength) != parcelableArray.size) {
-            throw BusinessException(ErrorCode.CHECK_PARAM_ERROR, "Parameter error.")
+            throw BusinessException(ErrorCode.CheckParamError.value, "Parameter error.")
         }
         for (i in 0..parcelableArray.size) {
             let len = readInt()
@@ -2270,7 +2271,7 @@ public class MessageSequence <: RemoteDataLite {
      *     5.The transferred size is less than or equal to 0;
      *     6.The transferred size is greater than the byte length of rawData.
      * @throws { BusinessException } 1900009 - Failed to write data to the message sequence.
-     * @relation writeRawDataBuffer(rawData: ArrayBuffer, size: number): void;
+     * @relation writeRawDataBuffer(rawData: ArrayBuffer, size: number): void
      */
     @!APILevel[
         21,
@@ -2279,7 +2280,7 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit {
         if (size <= 0 || size > rawData.size) {
-            throw BusinessException(ErrorCode.CHECK_PARAM_ERROR, "Parameter error.")
+            throw BusinessException(ErrorCode.CheckParamError.value, "Parameter error.")
         }
         unsafe {
             let cp = acquireArrayRawData(rawData)
@@ -2299,7 +2300,7 @@ public class MessageSequence <: RemoteDataLite {
      *     1.The number of parameters is incorrect;
      *     2.The parameter type does not match.
      * @throws { BusinessException } 1900010 - Failed to read data from the message sequence.
-     * @relation readRawDataBuffer(size: number): ArrayBuffer;
+     * @relation readRawDataBuffer(size: number): ArrayBuffer
      */
     @!APILevel[
         21,
@@ -2308,7 +2309,7 @@ public class MessageSequence <: RemoteDataLite {
     ]
     public func readRawDataBuffer(size: Int64): Array<Byte> {
         if (size <= 0) {
-            throw BusinessException(ErrorCode.CHECK_PARAM_ERROR, "Parameter error.")
+            throw BusinessException(ErrorCode.CheckParamError.value, "Parameter error.")
         }
         unsafe {
             var errCode: Int32 = 0

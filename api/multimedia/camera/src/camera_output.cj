@@ -15,15 +15,12 @@
 
 package ohos.multimedia.camera
 
-import ohos.labels.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.labels.APILevel
 
 /**
  * Camera output object.
  *
- * @interface CameraOutput
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CameraOutput
  */
 @!APILevel[
     21,
@@ -35,7 +32,7 @@ sealed interface CameraOutput {
      * Release output instance.
      *
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation release(): Promise<void>
      */
     @!APILevel[
         21,

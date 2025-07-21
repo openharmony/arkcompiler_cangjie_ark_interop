@@ -16,23 +16,15 @@
 package ohos.ark_interop_helper
 
 internal import ohos.ark_interop.*
-internal import ohos.ability.*
 internal import ohos.labels.*
 import std.collection.*
-
-public type FAContext = CPointer<Unit>
-
-public type StageContext = CPointer<Unit>
 
 foreign func ArkTsValuetoNapiValue(env: napi_env, ark_value: JSValue_): napi_value
 
 foreign func IsStageMode(context: napi_value, env: napi_env): Bool
 // foreign func GetContextFAMode(env: napi_env): FAContext
-foreign func GetContextStageMode(env: napi_env, object: napi_value): StageContext
 
 foreign func NapiValueToArkTsValue(value: CPointer<Unit>): JSValue_
-
-foreign func FFICreateNapiValueJsAbilityContext(env: CPointer<Unit>, context: StageContext): CPointer<Unit>
 
 @!APILevel[
     19,
@@ -56,38 +48,6 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
     unsafe {
         ArkTsValuetoNapiValue(env, ark_value.value)
     }
-}
-
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-]
-public func getContextStageMode(env: napi_env, object: napi_value): StageContext {
-    unsafe {
-        GetContextStageMode(env, object)
-    }
-}
-
-@!APILevel[
-    19,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-]
-public func getJSContext(runtime: JSRuntime, abilityContext: UIAbilityContext): JSValue {
-    let stageContext = getStageContext(abilityContext)
-    let napiValue = unsafe {
-        FFICreateNapiValueJsAbilityContext(runtime.getNapiEnv(), stageContext)
-    }
-    return JSValue(runtime.mainContext, unsafe {
-        NapiValueToArkTsValue(napiValue)
-    })
-}
-
-protected func getJSContext(abilityContext: UIAbilityContext): JSValue {
-    getJSContext(getGlobalRuntime(), abilityContext)
 }
 
 @!APILevel[

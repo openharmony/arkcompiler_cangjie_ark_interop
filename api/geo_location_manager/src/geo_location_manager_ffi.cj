@@ -15,9 +15,6 @@
 
 package ohos.geo_location_manager
 
-import ohos.base.*
-import ohos.ffi.*
-import ohos.i18n.*
 import std.collection.*
 
 foreign {

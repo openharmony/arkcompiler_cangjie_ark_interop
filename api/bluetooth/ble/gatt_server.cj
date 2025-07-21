@@ -15,11 +15,12 @@
 
 package ohos.bluetooth.ble
 
-import ohos.labels.*
-import ohos.base.*
+import ohos.base.{ BusinessException, Callback1Argument, CallbackObject, ERR_PARAMETER_ERROR }
+import ohos.bluetooth.{ BLUETOOTH_LOG, getErrorMsg, checkRet }
+import ohos.ffi.{ SUCCESS_CODE , RemoteDataLite, releaseFFIData, Callback1Param}
+import ohos.labels.APILevel
+
 import std.collection.{ArrayList, HashMap}
-import ohos.ffi.*
-import ohos.bluetooth.*
 
 /**
  * Manages GATT server. Before calling an Gatt server method, you must use createGattServer to create an GattServer instance.
@@ -78,9 +79,7 @@ public class GattServer <: RemoteDataLite {
             FfiBluetoothBleGattServerAddService(getID(), cGattService, inout errorCode)
             cGattService.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -109,9 +108,7 @@ public class GattServer <: RemoteDataLite {
                 FfiBluetoothBleGattServerRemoveService(getID(), serviceUuidCString.value, inout errorCode)
             }
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -135,9 +132,7 @@ public class GattServer <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattServerClose(getID(), inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -153,7 +148,6 @@ public class GattServer <: RemoteDataLite {
      * @throws { BusinessException } 2900003 - Bluetooth disabled.
      * @throws { BusinessException } 2900099 - Operation failed.
      * @relation notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): Promise<void>
-     * @relation notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -171,9 +165,7 @@ public class GattServer <: RemoteDataLite {
                 cNotifyCharacteristic.free()
             }
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -201,9 +193,7 @@ public class GattServer <: RemoteDataLite {
             FfiBluetoothBleGattServerSendResponse(getID(), cServerResponse, inout errorCode)
             cServerResponse.free()
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     /**
@@ -221,13 +211,13 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicReadRequest>): Unit {
-        if (`type` != CharacteristicRead) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CharacteristicRead")
+    public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicReadRequest>): Unit {
+        if (eventType != CharacteristicRead) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is CharacteristicRead")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
 
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             request: NativeCharacteristicReadRequest => request.toObject()
         }
         return
@@ -248,12 +238,12 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicWriteRequest>): Unit {
-        if (`type` != CharacteristicWrite) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is CharacteristicWrite")
+    public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicWriteRequest>): Unit {
+        if (eventType != CharacteristicWrite) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is CharacteristicWrite")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             request: NativeCharacteristicWriteRequest => request.toObject()
         }
         return
@@ -274,12 +264,12 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorReadRequest>): Unit {
-        if (`type` != DescriptorRead) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is DescriptorRead")
+    public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorReadRequest>): Unit {
+        if (eventType != DescriptorRead) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is DescriptorRead")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             request: NativeDescriptorReadRequest => request.toObject()
         }
         return
@@ -300,12 +290,12 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorWriteRequest>): Unit {
-        if (`type` != DescriptorWrite) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is DescriptorWrite")
+    public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorWriteRequest>): Unit {
+        if (eventType != DescriptorWrite) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is DescriptorWrite")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             request: NativeDescriptorWriteRequest => request.toObject()
         }
         return
@@ -326,12 +316,12 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<BLEConnectionChangeState>): Unit {
-        if (`type` != ConnectionStateChange) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is ConnectionStateChange")
+    public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<BLEConnectionChangeState>): Unit {
+        if (eventType != ConnectionStateChange) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is ConnectionStateChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             request: NativeBLEConnectionChangeState => request.toObject()
         }
         return
@@ -352,12 +342,12 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<Int32>): Unit {
-        if (`type` != BluetoothBleGattServerCallbackType.BleMtuChange) {
-            BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleMtuChange")
+    public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<Int32>): Unit {
+        if (eventType != BluetoothBleGattServerCallbackType.BleMtuChange) {
+            BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is BleMtuChange")
             throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
-        commonSubscribe1Arg(`type`, callback) {
+        commonSubscribe1Arg(eventType, callback) {
             i: Int32 => i
         }
         return
@@ -383,16 +373,16 @@ public class GattServer <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.Bluetooth.Core"
     ]
-    public func off(`type`: BluetoothBleGattServerCallbackType, callback!: ?CallbackObject = None): Unit {
-        BLUETOOTH_LOG.debug("unsubscribe ${`type`}")
-        if (!callbackMap.contains(`type`)) {
+    public func off(eventType: BluetoothBleGattServerCallbackType, callback!: ?CallbackObject = None): Unit {
+        BLUETOOTH_LOG.debug("unsubscribe ${eventType}")
+        if (!callbackMap.contains(eventType)) {
             return
         }
         if (let Some(v) <- callback) {
-            findCallbackObject(`type`, v, remove: true)
+            findCallbackObject(eventType, v, remove: true)
             return
         }
-        callbackMap[`type`].clear()
+        callbackMap[eventType].clear()
         return
     }
 
@@ -428,9 +418,7 @@ public class GattServer <: RemoteDataLite {
         unsafe {
             FfiBluetoothBleGattServerOn(getID(), callbackType.getValue(), id, inout errorCode)
         }
-        if (errorCode != SUCCESS_CODE) {
-            throw BusinessException(errorCode, getErrorMsg(errorCode))
-        }
+        checkRet(errorCode)
     }
 
     private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleGattServerCallbackType, callback: CallbackObject,

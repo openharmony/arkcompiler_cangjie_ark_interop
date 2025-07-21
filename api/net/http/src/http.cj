@@ -18,9 +18,7 @@ package ohos.net.http
 import ohos.base.*
 import ohos.ffi.*
 import ohos.hilog.*
-import ohos.net.connection.{HttpProxy, CHttpProxy}
 import std.collection.*
-import ohos.encoding.json.*
 import ohos.labels.*
 
 let HTTP_LOG = HilogChannel(0, 0xD0015B0, "CJ-net-Http")
@@ -28,10 +26,7 @@ const MAX_CACHE_SIZE: UInt32 = 10 * 1024 * 1024
 /**
  * Creates an HTTP request task.
  * @returns { HttpRequest } the HttpRequest of the createHttp.
- * @syscap SystemCapability.Communication.NetStack
- * @crossplatform
- * @atomicservice
- * @brief createHttp(): HttpRequest;
+ * @relation createHttp(): HttpRequest;
  */
 @!APILevel[
     21,
@@ -47,10 +42,7 @@ public func createHttp(): HttpRequest {
  * Creates a default {@code HttpResponseCache} object to store the responses of HTTP access requests.
  * @param { UInt32 } cacheSize - the size of cache(max value is 10MB), default is 10*1024*1024(10MB).
  * @returns { HttpResponseCache } the HttpResponseCache of the createHttpResponseCache.
- * @syscap SystemCapability.Communication.NetStack
- * @crossplatform
- * @atomicservice
- * @brief createHttpResponseCache(cacheSize?: number): HttpResponseCache;
+ * @relation createHttpResponseCache(cacheSize?: number): HttpResponseCache;
  */
 @!APILevel[
     21,
@@ -71,6 +63,7 @@ public func createHttpResponseCache(cacheSize!: UInt32 = MAX_CACHE_SIZE): HttpRe
 /**
  * Defines an HTTP request task. Before invoking APIs provided by HttpRequest,
  * you must call createHttp() to create an HttpRequestTask object.
+ * @relation export interface HttpRequest
  */
 @!APILevel[
     21,
@@ -90,41 +83,38 @@ public class HttpRequest {
      * @param { String } url - URL for initiating an HTTP request.
      * @param { HttpRequestOptions } options - Optional parameters {@link HttpRequestOptions}.
      * @param { HttpResponse } callback - the callback of request.
-     * @throws { BusinessError } 401 - Parameter error.
-     * @throws { BusinessError } 201 - Permission denied.
-     * @throws { BusinessError } 2300001 - Unsupported protocol.
-     * @throws { BusinessError } 2300003 - URL using bad/illegal format or missing URL.
-     * @throws { BusinessError } 2300005 - Couldn't resolve proxy name.
-     * @throws { BusinessError } 2300006 - Couldn't resolve host name.
-     * @throws { BusinessError } 2300007 - Couldn't connect to server.
-     * @throws { BusinessError } 2300008 - Weird server reply.
-     * @throws { BusinessError } 2300009 - Access denied to remote resource.
-     * @throws { BusinessError } 2300016 - Error in the HTTP2 framing layer.
-     * @throws { BusinessError } 2300018 - Transferred a partial file.
-     * @throws { BusinessError } 2300023 - Failed writing received data to disk/application.
-     * @throws { BusinessError } 2300025 - Upload failed.
-     * @throws { BusinessError } 2300026 - Failed to open/read local data from file/application.
-     * @throws { BusinessError } 2300027 - Out of memory.
-     * @throws { BusinessError } 2300028 - Timeout was reached.
-     * @throws { BusinessError } 2300047 - Number of redirects hit maximum amount.
-     * @throws { BusinessError } 2300052 - Server returned nothing (no headers, no data).
-     * @throws { BusinessError } 2300055 - Failed sending data to the peer.
-     * @throws { BusinessError } 2300056 - Failure when receiving data from the peer.
-     * @throws { BusinessError } 2300058 - Problem with the local SSL certificate.
-     * @throws { BusinessError } 2300059 - Couldn't use specified SSL cipher.
-     * @throws { BusinessError } 2300060 - SSL peer certificate or SSH remote key was not OK.
-     * @throws { BusinessError } 2300061 - Unrecognized or bad HTTP Content or Transfer-Encoding.
-     * @throws { BusinessError } 2300063 - Maximum file size exceeded.
-     * @throws { BusinessError } 2300070 - Disk full or allocation exceeded.
-     * @throws { BusinessError } 2300073 - Remote file already exists.
-     * @throws { BusinessError } 2300077 - Problem with the SSL CA cert (path? access rights?).
-     * @throws { BusinessError } 2300078 - Remote file not found.
-     * @throws { BusinessError } 2300094 - An authentication function returned an error.
-     * @throws { BusinessError } 2300999 - Unknown Other Error.
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @atomicservice
-     * @brief request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 2300001 - Unsupported protocol.
+     * @throws { BusinessException } 2300003 - URL using bad/illegal format or missing URL.
+     * @throws { BusinessException } 2300005 - Couldn't resolve proxy name.
+     * @throws { BusinessException } 2300006 - Couldn't resolve host name.
+     * @throws { BusinessException } 2300007 - Couldn't connect to server.
+     * @throws { BusinessException } 2300008 - Weird server reply.
+     * @throws { BusinessException } 2300009 - Access denied to remote resource.
+     * @throws { BusinessException } 2300016 - Error in the HTTP2 framing layer.
+     * @throws { BusinessException } 2300018 - Transferred a partial file.
+     * @throws { BusinessException } 2300023 - Failed writing received data to disk/application.
+     * @throws { BusinessException } 2300025 - Upload failed.
+     * @throws { BusinessException } 2300026 - Failed to open/read local data from file/application.
+     * @throws { BusinessException } 2300027 - Out of memory.
+     * @throws { BusinessException } 2300028 - Timeout was reached.
+     * @throws { BusinessException } 2300047 - Number of redirects hit maximum amount.
+     * @throws { BusinessException } 2300052 - Server returned nothing (no headers, no data).
+     * @throws { BusinessException } 2300055 - Failed sending data to the peer.
+     * @throws { BusinessException } 2300056 - Failure when receiving data from the peer.
+     * @throws { BusinessException } 2300058 - Problem with the local SSL certificate.
+     * @throws { BusinessException } 2300059 - Couldn't use specified SSL cipher.
+     * @throws { BusinessException } 2300060 - SSL peer certificate or SSH remote key was not OK.
+     * @throws { BusinessException } 2300061 - Unrecognized or bad HTTP Content or Transfer-Encoding.
+     * @throws { BusinessException } 2300063 - Maximum file size exceeded.
+     * @throws { BusinessException } 2300070 - Disk full or allocation exceeded.
+     * @throws { BusinessException } 2300073 - Remote file already exists.
+     * @throws { BusinessException } 2300077 - Problem with the SSL CA cert (path? access rights?).
+     * @throws { BusinessException } 2300078 - Remote file not found.
+     * @throws { BusinessException } 2300094 - An authentication function returned an error.
+     * @throws { BusinessException } 2300999 - Unknown Other Error.
+     * @relation request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
      */
     @!APILevel[
         21,
@@ -172,10 +162,7 @@ public class HttpRequest {
 
     /**
      * Destroys an HTTP request.
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @atomicservice
-     * @brief destroy(): void;
+     * @relation destroy(): void;
      */
     @!APILevel[
         21,
@@ -196,40 +183,38 @@ public class HttpRequest {
      * @permission ohos.permission.INTERNET
      * @param { String } url - URL for initiating an HTTP request.
      * @param { HttpRequestOptions } options - Optional parameters {@link HttpRequestOptions}.
-     * @returns { UInt32 } the promise returned by the function.
-     * @throws { BusinessError } 401 - Parameter error.
-     * @throws { BusinessError } 201 - Permission denied.
-     * @throws { BusinessError } 2300001 - Unsupported protocol.
-     * @throws { BusinessError } 2300003 - URL using bad/illegal format or missing URL.
-     * @throws { BusinessError } 2300005 - Couldn't resolve proxy name.
-     * @throws { BusinessError } 2300006 - Couldn't resolve host name.
-     * @throws { BusinessError } 2300007 - Couldn't connect to server.
-     * @throws { BusinessError } 2300008 - Weird server reply.
-     * @throws { BusinessError } 2300009 - Access denied to remote resource.
-     * @throws { BusinessError } 2300016 - Error in the HTTP2 framing layer.
-     * @throws { BusinessError } 2300018 - Transferred a partial file.
-     * @throws { BusinessError } 2300023 - Failed writing received data to disk/application.
-     * @throws { BusinessError } 2300025 - Upload failed.
-     * @throws { BusinessError } 2300026 - Failed to open/read local data from file/application.
-     * @throws { BusinessError } 2300027 - Out of memory.
-     * @throws { BusinessError } 2300028 - Timeout was reached.
-     * @throws { BusinessError } 2300047 - Number of redirects hit maximum amount.
-     * @throws { BusinessError } 2300052 - Server returned nothing (no headers, no data).
-     * @throws { BusinessError } 2300055 - Failed sending data to the peer.
-     * @throws { BusinessError } 2300056 - Failure when receiving data from the peer.
-     * @throws { BusinessError } 2300058 - Problem with the local SSL certificate.
-     * @throws { BusinessError } 2300059 - Couldn't use specified SSL cipher.
-     * @throws { BusinessError } 2300060 - SSL peer certificate or SSH remote key was not OK.
-     * @throws { BusinessError } 2300061 - Unrecognized or bad HTTP Content or Transfer-Encoding.
-     * @throws { BusinessError } 2300063 - Maximum file size exceeded.
-     * @throws { BusinessError } 2300070 - Disk full or allocation exceeded.
-     * @throws { BusinessError } 2300073 - Remote file already exists.
-     * @throws { BusinessError } 2300077 - Problem with the SSL CA cert (path? access rights?).
-     * @throws { BusinessError } 2300078 - Remote file not found.
-     * @throws { BusinessError } 2300094 - An authentication function returned an error.
-     * @throws { BusinessError } 2300999 - Unknown Other Error.
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief requestInStream(url: string, options?: HttpRequestOptions): Promise<number>;
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 201 - Permission denied.
+     * @throws { BusinessException } 2300001 - Unsupported protocol.
+     * @throws { BusinessException } 2300003 - URL using bad/illegal format or missing URL.
+     * @throws { BusinessException } 2300005 - Couldn't resolve proxy name.
+     * @throws { BusinessException } 2300006 - Couldn't resolve host name.
+     * @throws { BusinessException } 2300007 - Couldn't connect to server.
+     * @throws { BusinessException } 2300008 - Weird server reply.
+     * @throws { BusinessException } 2300009 - Access denied to remote resource.
+     * @throws { BusinessException } 2300016 - Error in the HTTP2 framing layer.
+     * @throws { BusinessException } 2300018 - Transferred a partial file.
+     * @throws { BusinessException } 2300023 - Failed writing received data to disk/application.
+     * @throws { BusinessException } 2300025 - Upload failed.
+     * @throws { BusinessException } 2300026 - Failed to open/read local data from file/application.
+     * @throws { BusinessException } 2300027 - Out of memory.
+     * @throws { BusinessException } 2300028 - Timeout was reached.
+     * @throws { BusinessException } 2300047 - Number of redirects hit maximum amount.
+     * @throws { BusinessException } 2300052 - Server returned nothing (no headers, no data).
+     * @throws { BusinessException } 2300055 - Failed sending data to the peer.
+     * @throws { BusinessException } 2300056 - Failure when receiving data from the peer.
+     * @throws { BusinessException } 2300058 - Problem with the local SSL certificate.
+     * @throws { BusinessException } 2300059 - Couldn't use specified SSL cipher.
+     * @throws { BusinessException } 2300060 - SSL peer certificate or SSH remote key was not OK.
+     * @throws { BusinessException } 2300061 - Unrecognized or bad HTTP Content or Transfer-Encoding.
+     * @throws { BusinessException } 2300063 - Maximum file size exceeded.
+     * @throws { BusinessException } 2300070 - Disk full or allocation exceeded.
+     * @throws { BusinessException } 2300073 - Remote file already exists.
+     * @throws { BusinessException } 2300077 - Problem with the SSL CA cert (path? access rights?).
+     * @throws { BusinessException } 2300078 - Remote file not found.
+     * @throws { BusinessException } 2300094 - An authentication function returned an error.
+     * @throws { BusinessException } 2300999 - Unknown Other Error.
+     * @relation requestInStream(url: string, options?: HttpRequestOptions): Promise<number>;
      */
     @!APILevel[
         21,
@@ -308,10 +293,7 @@ public class HttpRequest {
     /**
      * Registers an observer for HTTP Response Header events.
      * @param { (HashMap<String, String>) -> Unit } callback - the callback used to return the result.
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @atomicservice
-     * @brief on(type: "headersReceive", callback: Callback<Object>): void;
+     * @relation on(type: "headersReceive", callback: Callback<Object>): void;
      */
     @!APILevel[
         21,
@@ -326,11 +308,7 @@ public class HttpRequest {
 
     /**
      * Unregisters the observer for HTTP Response Header events.
-     * !! remove specific callback is not supported !!
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @atomicservice
-     * @brief off(type: "headersReceive", callback?: Callback<Object>): void;
+     * @relation off(type: "headersReceive", callback?: Callback<Object>): void;
      */
     @!APILevel[
         21,
@@ -346,9 +324,7 @@ public class HttpRequest {
     /**
      * Registers a one-time observer for HTTP Response Header events.
      * @param { (HashMap<String, String>) -> Unit } callback - the callback used to return the result.
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @brief once(type: "headersReceive", callback: Callback<Object>): void;
+     * @relation once(type: "headersReceive", callback: Callback<Object>): void;
      */
     @!APILevel[
         21,
@@ -375,8 +351,7 @@ public class HttpRequest {
     /**
      * Registers an observer for receiving HTTP Response data events continuously.
      * @param { callback: (Array<Byte>) -> Unit } callback - the callback used to return the result.
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief on(type: "dataReceive", callback: Callback<ArrayBuffer>): void;
+     * @relation on(type: "dataReceive", callback: Callback<ArrayBuffer>): void;
      */
     @!APILevel[
         21,
@@ -399,9 +374,7 @@ public class HttpRequest {
 
     /**
      * Unregisters an observer for receiving HTTP Response data events continuously.
-     * !! remove specific callback is not supported !!
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief off(type: "dataReceive", callback?: Callback<ArrayBuffer>): void;
+     * @relation off(type: "dataReceive", callback?: Callback<ArrayBuffer>): void;
      */
     @!APILevel[
         21,
@@ -417,8 +390,7 @@ public class HttpRequest {
     /**
      * Registers an observer for receiving HTTP Response data ends events.
      * @param { () -> Unit } callback - the callback used to return the result.
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief on(type: "dataEnd", callback: Callback<void>): void;
+     * @relation on(type: "dataEnd", callback: Callback<void>): void;
      */
     @!APILevel[
         21,
@@ -434,9 +406,7 @@ public class HttpRequest {
 
     /**
      * Unregisters an observer for receiving HTTP Response data ends events.
-     * !! remove specific callback is not supported !!
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief off(type: "dataEnd", callback?: Callback<void>): void;
+     * @relation off(type: "dataEnd", callback?: Callback<void>): void;
      */
     @!APILevel[
         21,
@@ -452,8 +422,7 @@ public class HttpRequest {
     /**
      * Registers an observer for progress of receiving HTTP Response data events.
      * @param { (DataReceiveProgressInfo) -> Unit } callback - the callback used to return the result.
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief on(type: 'dataReceiveProgress', callback: Callback<DataReceiveProgressInfo>): void;
+     * @relation on(type: 'dataReceiveProgress', callback: Callback<DataReceiveProgressInfo>): void;
      */
     @!APILevel[
         21,
@@ -472,9 +441,7 @@ public class HttpRequest {
 
     /**
      * Unregisters an observer for progress of receiving HTTP Response data events.
-     * !! remove specific callback is not supported !!
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief off(type: 'dataReceiveProgress', callback?: Callback<DataReceiveProgressInfo>): void;
+     * @relation off(type: 'dataReceiveProgress', callback?: Callback<DataReceiveProgressInfo>): void;
      */
     @!APILevel[
         21,
@@ -490,8 +457,7 @@ public class HttpRequest {
     /**
      * Registers an observer for progress of sendSize HTTP Response data events.
      * @param { (DataSendProgressInfo) -> Unit } callback - the callback of on.
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief on(type: 'dataSendProgress', callback: Callback<DataSendProgressInfo>): void
+     * @relation on(type: 'dataSendProgress', callback: Callback<DataSendProgressInfo>): void
      */
     @!APILevel[
         21,
@@ -510,9 +476,7 @@ public class HttpRequest {
 
     /**
      * Unregisters an observer for progress of sendSize HTTP Response data events.
-     * !! remove specific callback is not supported !!
-     * @syscap SystemCapability.Communication.NetStack
-     * @brief off(type: 'dataSendProgress', callback?: Callback<DataSendProgressInfo>): void
+     * @relation off(type: 'dataSendProgress', callback?: Callback<DataSendProgressInfo>): void
      */
     @!APILevel[
         21,
@@ -528,10 +492,7 @@ public class HttpRequest {
 
 /**
  * Defines an object that stores the response to an HTTP request.
- * @interface HttpResponseCache
- * @syscap SystemCapability.Communication.NetStack
- * @crossplatform
- * @atomicservice
+ * @relation export interface HttpResponseCache
  */
 @!APILevel[
     21,
@@ -541,13 +502,9 @@ public class HttpRequest {
 public class HttpResponseCache {
     init() {}
     /**
-     * Writes data in the cache to the file system so that all the cached data can be accessed in the next HTTP
-     * request.
+     * Writes data in the cache to the file system so that all the cached data can be accessed in the next HTTP request.
      * @returns { Unit } The promise returned by the flush.
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @atomicservice
-     * @since 11
+     * @relation flush(callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -567,10 +524,7 @@ public class HttpResponseCache {
     /**
      * Disables a cache and deletes the data in it.
      * @returns { Unit } The promise returned by the delete.
-     * @syscap SystemCapability.Communication.NetStack
-     * @crossplatform
-     * @atomicservice
-     * @brief delete(): Promise<void>;
+     * @relation delete(): Promise<void>;
      */
     @!APILevel[
         21,

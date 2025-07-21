@@ -15,75 +15,18 @@
 
 package ohos.resource_manager
 
-import ohos.ffi.*
-import std.collection.*
-import ohos.base.*
-import ohos.labels.*
+import ohos.labels.APILevel
 import std.deriving.Derive
-/**
- * Contains rawFile descriptor information.
- *
- * @relation export interface RawFileDescriptor
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Global.ResourceManager"
-]
-public class RawFileDescriptor {
-    /**
-     * rawfile descriptor
-     *
-     * @relation fd: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var fd: Int32
-    /**
-     * the offset from where the raw file starts in the HAP
-     *
-     * @relation offset: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var offset: Int64
-    /**
-     * the length of the raw file in the HAP
-     *
-     * @relation length: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var length: Int64
+import ohos.hilog.HilogChannel
+import ohos.base.BusinessException
 
-    @!APILevel[
-        12,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public init(fd: Int32, offset: Int64, length: Int64) {
-        this.fd = fd
-        this.offset = offset
-        this.length = length
-    }
-
-    init(raw: RetDataRawFileDescriptor) {
-        this.fd = raw.fd
-        this.offset = raw.offset
-        this.length = raw.length
-    }
-}
+type StageContext = CPointer<Unit>
+const ESCAPE_CHARACTER: Rune = r'%'
+const RAWFILE_TYPE: Int32 = 30000
+const HAR_TYPE = "har"
+const DEFAULT_HAR_BUNDLE_NAME = "__harDefaultBundleName__"
+const DEFAULT_HAR_MODULE_NAME = "__harDefaultModuleName__"
+let RES_LOG = HilogChannel(0, 0xD001E00, "CJ-ResourceManager")
 
 /**
  * Provides the device configuration.
@@ -95,7 +38,7 @@ public class RawFileDescriptor {
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
-public class Configuration <: ToString {
+public class Configuration {
     /**
      * Indicates the screen direction of the current device.
      *
@@ -118,97 +61,13 @@ public class Configuration <: ToString {
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     public var locale: String
-    /**
-     * Indicates the device type.
-     *
-     * @relation deviceType: DeviceType
-     */
-    var deviceType: DeviceType
-    /**
-     * Indicates the screen density.
-     *
-     * @relation screenDensity: ScreenDensity
-     */
-    var screenDensity: ScreenDensity
-    /**
-     * Indicates the color mode.
-     *
-     * @relation colorMode: ColorMode
-     */
-    var colorMode: ColorMode
-    /**
-     * Indicates the mcc.
-     *
-     * @relation mcc: number
-     */
-    var mcc: UInt32
-    /**
-     * Indicates the mnc.
-     *
-     * @relation mnc: number
-     */
-    var mnc: UInt32
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public init(direction: Direction, locale: String) {
+    /**
+     * Configuration constructor.
+     */
+    init(direction: Direction, locale: String) {
         this.direction = direction
         this.locale = locale
-        this.deviceType = DeviceType.DeviceTypePhone
-        this.screenDensity = ScreenDensity.ScreenSDPI
-        this.colorMode = ColorMode.Dark
-        this.mcc = 0
-        this.mnc = 0
-    }
-
-    init(
-        direction: Direction,
-        locale: String,
-        deviceType: DeviceType,
-        screenDensity: ScreenDensity,
-        colorMode: ColorMode,
-        mcc: UInt32,
-        mnc: UInt32
-    ) {
-        this.direction = direction
-        this.locale = locale
-        this.deviceType = deviceType
-        this.screenDensity = screenDensity
-        this.colorMode = colorMode
-        this.mcc = mcc
-        this.mnc = mnc
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func toString(): String {
-        let builder = StringBuilder("Configuration(")
-        builder.append("direction: ${direction.getValue()}, ")
-        builder.append("locale: ${locale}, ")
-        builder.append("deviceType: ${deviceType.getValue()}, ")
-        builder.append("screenDensity: ${screenDensity.getValue()}, ")
-        builder.append("colorMode: ${colorMode}, ")
-        builder.append("mcc: ${mcc}, ")
-        builder.append("mnc: ${mnc})")
-        builder.toString()
-    }
-
-    func toRetConfigurationEx(): RetConfigurationEx {
-        RetConfigurationEx(
-            direction.getValue(),
-            deviceType.getValue(),
-            screenDensity.getValue(),
-            colorMode.getValue(),
-            mcc,
-            mnc,
-            unsafe { LibC.mallocCString(locale) }
-        )
     }
 }
 
@@ -222,7 +81,7 @@ public class Configuration <: ToString {
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
-public class DeviceCapability <: ToString {
+public class DeviceCapability {
     /**
      * Indicates the screen density of the current device.
      *
@@ -246,28 +105,12 @@ public class DeviceCapability <: ToString {
     ]
     public var deviceType: DeviceType
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public init(screenDensity: ScreenDensity, deviceType: DeviceType) {
+    /**
+     * DeviceCapability constructor.
+     */
+    init(screenDensity: ScreenDensity, deviceType: DeviceType) {
         this.screenDensity = screenDensity
         this.deviceType = deviceType
-    }
-
-    init(ret: RetDeviceCapability) {
-        this.screenDensity = ScreenDensity.parse(ret.screenDensity)
-        this.deviceType = DeviceType.parse(ret.deviceType)
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func toString(): String {
-        "screenDensity:${screenDensity.getValue()}, deviceType ${deviceType.getValue()}"
     }
 }
 
@@ -350,6 +193,9 @@ public enum ScreenDensity {
     ScreenXXXLDPI
     | ...
 
+    /**
+     * Gets the corresponding mapping value.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -367,12 +213,10 @@ public enum ScreenDensity {
         }
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public static func parse(val: Int32): ScreenDensity {
+    /**
+     * Parses ScreenDensity from the corresponding mapping value.
+     */
+    static func parse(val: Int32): ScreenDensity {
         match (val) {
             case 120 => ScreenSDPI
             case 160 => ScreenMDPI
@@ -475,30 +319,10 @@ public enum DeviceType {
     DeviceType2In1
     | ...
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getValue(): Int32 {
-        match (this) {
-            case DeviceTypePhone => 0
-            case DeviceTypeTablet => 1
-            case DeviceTypeCar => 2
-            case DeviceTypePC => 3
-            case DeviceTypeTV => 4
-            case DeviceTypeWearable => 6
-            case DeviceType2In1 => 7
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public static func parse(val: Int32): DeviceType {
+    /**
+     * Parses DeviceType from the corresponding mapping value.
+     */
+    static func parse(val: Int32): DeviceType {
         match (val) {
             case 0 => DeviceTypePhone
             case 1 => DeviceTypeTablet
@@ -547,248 +371,15 @@ public enum Direction {
     DirectionHorizontal
     | ...
 
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public func getValue(): Int32 {
-        match (this) {
-            case DirectionVertical => 0
-            case DirectionHorizontal => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public static func parse(val: Int32): Direction {
+    /**
+     * Parses Direction from the corresponding mapping value.
+     */
+    static func parse(val: Int32): Direction {
         match (val) {
             case 0 => DirectionVertical
             case 1 => DirectionHorizontal
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
-    }
-}
-
-@Derive[Equatable, ToString]
-enum ColorMode {
-    /**
-     * Indicates dark mode.
-     *
-     * @relation DARK = 0
-     */
-    Dark
-    /**
-     * Indicates light mode.
-     *
-     * @relation LIGHT = 1
-     */
-    | Light
-    | ...
-
-    static func parse(val: Int32): ColorMode {
-        match (val) {
-            case 0 => Dark
-            case 1 => Light
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-
-    func getValue(): Int32 {
-        match (this) {
-            case Dark => 0
-            case Light => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-/**
- * Contains resource descriptor information.
- *
- * @relation export interface Resource
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Global.ResourceManager"
-]
-public class AppResource <: Length & ResourceColor {
-    /**
-     * bundle name in hap
-     *
-     * @relation bundleName: string
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var bundleName: String
-    /**
-     * module name in hap
-     *
-     * @relation moduleName: string
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var moduleName: String
-    /**
-     * resource id in hap
-     *
-     * @relation id: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var id: UInt32
-    /**
-     * Set params.
-     *
-     * @relation params?: any[]
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var params: ?Array<Any> = None
-    /**
-     * Set type.
-     *
-     * @relation type?: number
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public var resType: ?Int32 = None
-
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Global.ResourceManager"
-    ]
-    public init(
-        bundleName: String,
-        moduleName: String,
-        id: UInt32,
-        params!: ?Array<Any> = None,
-        resType!: ?Int32 = None
-    ) {
-        this.bundleName = bundleName
-        this.moduleName = moduleName
-        this.id = id
-        this.params = params
-        this.resType = resType
-    }
-
-    protected init(ret: CResource) {
-        this.bundleName = ret.bundleName.toString()
-        this.moduleName = ret.moduleName.toString()
-        this.id = ret.resId
-        this.params = None
-        this.resType = None
-    }
-}
-
-const RAWFILE_TYPE: Int32 = 30000
-const HAR_TYPE = "har"
-const DEFAULT_HAR_BUNDLE_NAME = "__harDefaultBundleName__"
-const DEFAULT_HAR_MODULE_NAME = "__harDefaultModuleName__"
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Global.ResourceManager"
-]
-public func __GenerateResource__(
-    bundleName: String,
-    moudleType: String,
-    moduleName: String,
-    resId: UInt32,
-    resStr: String,
-    params: Array<Any>,
-    resType: Int32
-): AppResource {
-    if (moudleType == HAR_TYPE) {
-        let paramsArr: ArrayList<Any> = ArrayList<Any>([resStr])
-        paramsArr.add(all: params)
-        return AppResource(DEFAULT_HAR_BUNDLE_NAME, DEFAULT_HAR_MODULE_NAME, 0, params: paramsArr.toArray(),
-            resType: resType)
-    } else if (resType == RAWFILE_TYPE) {
-        return AppResource(bundleName, moduleName, resId, params: [resStr], resType: resType)
-    } else {
-        return AppResource(bundleName, moduleName, resId, params: params, resType: resType)
-    }
-}
-
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Global.ResourceManager"
-]
-public class DrawableDescriptor <: RemoteDataLite {
-    init(id: Int64) {
-        super(id)
-        RES_LOG.info("DrawableDescriptor construct success")
-    }
-
-    ~init() {
-        releaseFFIData(myDataId)
-    }
-}
-
-let ERROR_CODE_MAP = HashMap<Int32, String>(
-    [
-        (9001001, "AppResource id invalid."),
-        (9001002, "AppResource not found by id."),
-        (9001003, "AppResource name invalid."),
-        (9001004, "AppResource not found by name."),
-        (9001005, "Rawfile path is invalid."),
-        (9001006, "AppResource re-ref too much."),
-        (9001007, "AppResource obtained by resId formatting error."),
-        (9001008, "AppResource obtained by resName formatting error."),
-        (9001009, "Get system resource manager failed."),
-        (9001010, "Overlay resource path is invalid.")
-    ]
-)
-const ERROR_CODE_RES_ID_FORMAT_ERROR: Int32 = 9001007
-const ESCAPE_CHARACTER: Rune = r'%'
-const ERROR_OUT_OF_MEMORY: Int32 = 10
-
-func throwIfNotSuccess(code: Int32, errorMsg: String): Unit {
-    if (code != SUCCESS_CODE) {
-        if (code == -1) {
-            throw IllegalStateException("invalid instance")
-        }
-        throw BusinessException(code, errorMsg)
-    }
-}
-
-func throwIfNull(ptr: CString): Unit {
-    if (ptr.isNull()) {
-        throw IllegalMemoryException("Out of memory.")
-    }
-}
-
-func getErrorMsg(code: Int32): String {
-    if (let Some(v) <- getUniversalErrorMsg(code)) {
-        return v
-    } else if (ERROR_CODE_MAP.contains(code)) {
-        return ERROR_CODE_MAP[code]
-    } else {
-        return "Unknown error code ${code}"
     }
 }
 
@@ -801,12 +392,18 @@ func getErrorMsg(code: Int32): String {
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum Number {
+    /**
+     * Represents Int32.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     Int32Value(Int32)
+    /**
+     * Represents Float32.
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -816,24 +413,36 @@ public enum Number {
     | ...
 }
 
+/**
+ * For the formatting parameter using.
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.Global.ResourceManager"
 ]
 public enum FormatArgs {
+    /**
+     * Formats %d.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     Int32Value(Int32)
+    /**
+     * Formats %f.
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Global.ResourceManager"
     ]
     Float32Value(Float32)
+    /**
+     * Formats %s.
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,

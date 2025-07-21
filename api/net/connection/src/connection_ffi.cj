@@ -16,8 +16,6 @@
 package ohos.net.connection
 
 import ohos.ffi.*
-import ohos.base.*
-import std.collection.*
 
 foreign {
     func CJ_CreateNetConnection(netSpecifier: CNetSpecifier, timeout: UInt32): Int64

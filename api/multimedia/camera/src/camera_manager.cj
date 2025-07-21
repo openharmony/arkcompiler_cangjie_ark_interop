@@ -24,8 +24,7 @@ import std.sync.*
 /**
  * Camera manager object.
  *
- * @interface CameraManager
- * @syscap SystemCapability.Multimedia.Camera.Core
+ * @relation interface CameraManager
  */
 @!APILevel[
     21,
@@ -53,10 +52,10 @@ public class CameraManager <: RemoteDataLite {
     }
 
     /**
-     * Determine whether camera is muted.
+     * Queries whether the current camera is muted.
      *
      * @returns { Bool } Is camera muted.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation isCameraMuted(): boolean
      */
     @!APILevel[
         21,
@@ -71,7 +70,7 @@ public class CameraManager <: RemoteDataLite {
      * Check if a specifies torch mode is supported.
      * @param { TorchMode } mode - torch mode.
      * @returns { Bool } is torch mode supported.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation isTorchModeSupported(mode: TorchMode): boolean
      */
     @!APILevel[
         21,
@@ -86,7 +85,7 @@ public class CameraManager <: RemoteDataLite {
      * Check if the device has a torch.
      *
      * @returns { Bool } this value that specifies whether the device has a torch.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation isTorchSupported(): boolean
      */
     @!APILevel[
         21,
@@ -101,7 +100,7 @@ public class CameraManager <: RemoteDataLite {
      * Get current torch mode.
      *
      * @returns { TorchMode } torch mode.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getTorchMode(): TorchMode
      */
     @!APILevel[
         21,
@@ -117,10 +116,9 @@ public class CameraManager <: RemoteDataLite {
      * Set torch mode to the device.
      *
      * @param { TorchMode } mode - torch mode.
-     * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400102 - Operation not allowed.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation setTorchMode(mode: TorchMode): void
      */
     @!APILevel[
         21,
@@ -133,10 +131,10 @@ public class CameraManager <: RemoteDataLite {
     }
 
     /**
-     * Gets supported camera descriptions.
+     * Gets the supported camera device objects and return the results synchronously.
      *
      * @returns { Array<CameraDevice> } An array of supported cameras.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getSupportedCameras(): Array<CameraDevice>
      */
     @!APILevel[
         21,
@@ -157,7 +155,7 @@ public class CameraManager <: RemoteDataLite {
      *
      * @param { CameraDevice } camera - Camera device.
      * @returns { Array<SceneMode> } An array of supported scene mode of camera.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getSupportedSceneModes(camera: CameraDevice): Array<SceneMode>
      */
     @!APILevel[
         21,
@@ -182,10 +180,10 @@ public class CameraManager <: RemoteDataLite {
     /**
      * Gets supported output capability for specific camera.
      *
-     * @param { CameraDevice } camera - Camera device.
-     * @param { SceneMode } mode - Scene mode.
+     * @param { CameraDevice } camera - Camera device, obtained through the getSupportedCameras interface.
+     * @param { SceneMode } mode - Scene mode, obtained through the getSupportedSceneModes interface.
      * @returns { CameraOutputCapability } The camera output capability.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
      */
     @!APILevel[
         21,
@@ -208,13 +206,18 @@ public class CameraManager <: RemoteDataLite {
     /**
      * Creates a CameraInput instance by camera.
      *
+     * Before using this interface, first through the getSupportedCameras interface to query the current list of camera
+     * devices supported by the device, the developer needs to be based on specific scenarios to choose the camera device
+     * that meets the needs of the developer, and then use this interface to create a CameraInput instance.
+     *
      * @permission ohos.permission.CAMERA
      * @param { CameraDevice } camera - Camera device used to create the instance.
-     * @returns { CameraInput } The CameraInput instance.
+     * @returns { CameraInput } Returns a CameraInput instance. Failure of an interface call returns the corresponding
+     * error code, which is of type CameraErrorCode.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400102 - Operation not allowed.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createCameraInput(camera: CameraDevice): CameraInput
      */
     @!APILevel[
         21,
@@ -236,13 +239,18 @@ public class CameraManager <: RemoteDataLite {
      * Creates a CameraInput instance by camera position and type.
      *
      * @permission ohos.permission.CAMERA
-     * @param { CameraPosition } position - Target camera position.
-     * @param { CameraType } type - Target camera type.
-     * @returns { CameraInput } The CameraInput instance.
+     * @param { CameraPosition } position - Camera position, first get the supported camera device
+     * objects through the getSupportedCameras interface, and then get the device position information
+     * based on the returned camera device objects.
+     * @param { CameraType } type - camera type, first get the supported camera device object through
+     * the getSupportedCameras interface, then get the device type information based on the returned
+     * camera device object.
+     * @returns { CameraInput } Returns a CameraInput instance. Failure of an interface call returns
+     * the corresponding error code, which is of type CameraErrorCode.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400102 - Operation not allowed.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createCameraInput(position: CameraPosition, type: CameraType): CameraInput
      */
     @!APILevel[
         21,
@@ -250,11 +258,11 @@ public class CameraManager <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func createCameraInput(position: CameraPosition, `type`: CameraType): CameraInput {
+    public func createCameraInput(position: CameraPosition, cameraType: CameraType): CameraInput {
         unsafe {
             var errCode: Int32 = 0
             let cameraInputId = FfiCameraManagerCreateCameraInputWithCameraDeviceInfo(getID(), position.getValue(),
-                `type`.getValue(), inout errCode)
+                cameraType.getValue(), inout errCode)
             successOrThrow(errCode)
             return CameraInput(cameraInputId)
         }
@@ -263,12 +271,13 @@ public class CameraManager <: RemoteDataLite {
     /**
      * Creates a PreviewOutput instance.
      *
-     * @param { Profile } profile - Preview output profile.
+     * @param { Profile } profile - Supported preview configuration information,
+     * obtained through the getSupportedOutputCapability API.
      * @param { String } surfaceId - Surface object id used in camera photo output.
      * @returns { PreviewOutput } The PreviewOutput instance.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
      */
     @!APILevel[
         21,
@@ -296,7 +305,7 @@ public class CameraManager <: RemoteDataLite {
      * @returns { PreviewOutput } The PreviewOutput instance.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createPreviewOutput(surfaceId: string): PreviewOutput
      */
     @!APILevel[
         21,
@@ -325,7 +334,7 @@ public class CameraManager <: RemoteDataLite {
      * @returns { PhotoOutput } The PhotoOutput instance.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createPhotoOutput(profile?: Profile): PhotoOutput
      */
     @!APILevel[
         21,
@@ -352,7 +361,7 @@ public class CameraManager <: RemoteDataLite {
      * @returns { PhotoOutput } The PhotoOutput instance.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createPhotoOutput(profile?: Profile): PhotoOutput
      */
     @!APILevel[
         21,
@@ -376,7 +385,7 @@ public class CameraManager <: RemoteDataLite {
      * @returns { VideoOutput } The VideoOutput instance.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
      */
     @!APILevel[
         21,
@@ -406,7 +415,7 @@ public class CameraManager <: RemoteDataLite {
      * @returns { VideoOutput } The VideoOutput instance.
      * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createVideoOutput(surfaceId: string): VideoOutput
      */
     @!APILevel[
         21,
@@ -426,35 +435,18 @@ public class CameraManager <: RemoteDataLite {
     }
 
     /**
-     * Creates a MetadataOutput instance.
+     * Gets a Session instance by specific scene mode.
      *
-     * @param { Array<MetadataObjectType> } metadataObjectTypes - Array of MetadataObjectType.
-     * @returns { MetadataOutput } The MetadataOutput instance.
-     * @throws { BusinessException } 7400101 - Parameter missing or parameter type incorrect.
+     * @param { SceneMode } mode - The modes supported by the camera. If the passed parameters are
+     * abnormal (e.g. out of range, passed null or undefined, etc.), the actual interface will not take effect.
+     * @returns { Session } Session instance. Failure of an interface call returns the appropriate error code,
+     * which is of type CameraErrorCode.
+     * @throws { BusinessException } 7400101 - Parameter error. Possible causes:
+     * 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;
+     * 3. Parameter verification failed.
      * @throws { BusinessException } 7400201 - Camera service fatal error.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @relation createSession<T extends Session>(mode: SceneMode): T
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Camera.Core"
-    ]
-    public func createMetadataOutput(metadataObjectTypes: Array<MetadataObjectType>): MetadataOutput {
-        unsafe {
-            let size = metadataObjectTypes.size
-            let ptr = safeMalloc<Int32>(count: size)
-            for (i in 0..size) {
-                ptr.write(i, metadataObjectTypes[i].getValue())
-            }
-            let typesArrI32 = CArrI32(ptr, size)
-            var errCode: Int32 = 0
-            let metadataOutputId = FfiCameraManagerCreateMetadataOutput(typesArrI32, inout errCode)
-            LibC.free(ptr)
-            successOrThrow(errCode)
-            return MetadataOutput(metadataOutputId)
-        }
-    }
-
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -465,30 +457,34 @@ public class CameraManager <: RemoteDataLite {
         let id = unsafe { FfiCameraManagerCreateSession(mode.getValue(), inout errCode) }
         successOrThrow(errCode)
         match (mode) {
-            case SceneMode.NORMAL_PHOTO => return PhotoSession(id)
-            case SceneMode.NORMAL_VIDEO => return VideoSession(id)
-            case SceneMode.SECURE_PHOTO => return SecureSession(id)
+            case SceneMode.NormalPhoto => return PhotoSession(id)
+            case SceneMode.NormalVideo => return VideoSession(id)
             case _ => throw IllegalArgumentException("Unknown value.")
         }
     }
 
     /**
-     * Subscribes camera status change event callback.
+     * Camera state callback to get the state change of the camera by registering a callback
+     * function. This API uses an asynchronous callback to return the result.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * Description: Currently, it is not allowed to use off() to unregister the callback
+     * within the callback method of on().
+     *
+     * @param { CameraEvents } event - Event type.
      * @param { Callback1Argument<CameraStatusInfo> } callback - Callback used to get the camera status change.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation on(type: 'cameraStatus', callback: AsyncCallback<CameraStatusInfo>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func on(`type`: CameraCallbackType, callback: Callback1Argument<CameraStatusInfo>): Unit {
-        match (`type`) {
-            case CameraCallbackType.CameraStatus => ()
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager on failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+    public func on(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit {
+        match (event) {
+            case CameraEvents.CameraStatus => ()
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         synchronized(cameraStatusMutex) {
             let callbackList = cameraStatusList
@@ -507,22 +503,26 @@ public class CameraManager <: RemoteDataLite {
     }
 
     /**
-     * Subscribes fold status change event callback.
+     * Registers a listener for fold state changes. This API uses an asynchronous callback to return the result.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * Description: Currently, it is not allowed to use off() to unregister the callback
+     * within the callback method of on().
+     *
+     * @param { CameraEvents } event - Event type.
      * @param { Callback1Argument<FoldStatusInfo> } callback - Callback used to get the fold status change.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation on(type: 'foldStatusChange', callback: AsyncCallback<FoldStatusInfo>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func on(`type`: CameraCallbackType, callback: Callback1Argument<FoldStatusInfo>): Unit {
-        match (`type`) {
-            case CameraCallbackType.FoldStatusChange => ()
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager on failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+    public func on(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit {
+        match (event) {
+            case CameraEvents.FoldStatusChange => ()
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         synchronized(foldStatusMutex) {
             let callbackList = foldStatusList
@@ -541,22 +541,27 @@ public class CameraManager <: RemoteDataLite {
     }
 
     /**
-     * Subscribes torch status change event callback.
+     * Registers a listener for flashlight state changes to get flashlight state change by registering
+     * a callback function. This API uses an asynchronous callback to return the result.
      *
-     * @param { CameraCallbackType } type - Event type
+     * Description: Currently, it is not allowed to use off() to unregister the callback
+     * within the callback method of on().
+     *
+     * @param { CameraEvents } event - Event type
      * @param { Callback1Argument<TorchStatusInfo> } callback - Callback used to return the torch status change
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation on(type: 'torchStatusChange', callback: AsyncCallback<TorchStatusInfo>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func on(`type`: CameraCallbackType, callback: Callback1Argument<TorchStatusInfo>): Unit {
-        match (`type`) {
-            case CameraCallbackType.TorchStatusChange => ()
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager on failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+    public func on(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit {
+        match (event) {
+            case CameraEvents.TorchStatusChange => ()
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
         synchronized(torchStatusMutex) {
             let callbackList = torchStatusList
@@ -577,81 +582,93 @@ public class CameraManager <: RemoteDataLite {
     /**
      * Unsubscribes from camera status change event callback.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * @param { CameraEvents } event - Event type.
      * @param { Callback1Argument<CameraStatusInfo> } callback - Callback used to get the camera status change.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'cameraStatus', callback?: AsyncCallback<CameraStatusInfo>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType, callback: Callback1Argument<CameraStatusInfo>): Unit {
-        match (`type`) {
-            case CameraCallbackType.CameraStatus => off(IdClassInfo(this.getID(), "CameraManager"), cameraStatusList,
+    public func off(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit {
+        match (event) {
+            case CameraEvents.CameraStatus => off(IdClassInfo(this.getID(), "CameraManager"), cameraStatusList,
                 cameraStatusMutex, callback, FfiCameraManagerOffCameraStatusChanged)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 
     /**
      * Unsubscribes from fold status change event callback.
      *
-     * @param { CameraCallbackType } type - Event type.
+     * @param { CameraEvents } event - Event type.
      * @param { Callback1Argument<FoldStatusInfo> } callback - Callback used to get the fold status change.
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'foldStatusChange', callback?: AsyncCallback<FoldStatusInfo>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType, callback: Callback1Argument<FoldStatusInfo>): Unit {
-        match (`type`) {
-            case CameraCallbackType.FoldStatusChange => off(IdClassInfo(this.getID(), "CameraManager"), foldStatusList,
+    public func off(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit {
+        match (event) {
+            case CameraEvents.FoldStatusChange => off(IdClassInfo(this.getID(), "CameraManager"), foldStatusList,
                 foldStatusMutex, callback, FfiCameraManagerOffFoldStatusChanged)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 
     /**
      * Unsubscribes torch status change event callback.
      *
-     * @param { CameraCallbackType } type - Event type
+     * @param { CameraEvents } event - Event type
      * @param { Callback1Argument<TorchStatusInfo> } callback - Callback used to return the torch status change
-     * @syscap SystemCapability.Multimedia.Camera.Core
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'torchStatusChange', callback?: AsyncCallback<TorchStatusInfo>): void
      */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType, callback: Callback1Argument<TorchStatusInfo>): Unit {
-        match (`type`) {
-            case CameraCallbackType.TorchStatusChange => off(IdClassInfo(this.getID(), "CameraManager"), torchStatusList,
+    public func off(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit {
+        match (event) {
+            case CameraEvents.TorchStatusChange => off(IdClassInfo(this.getID(), "CameraManager"), torchStatusList,
                 torchStatusMutex, callback, FfiCameraManagerOffTorchStatusChange)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 
+    /**
+     * Unsubscribes callback.
+     *
+     * @param { CameraEvents } event - Event type
+     * @throws { BusinessException } 401 - The parameter check failed.
+     * @throws { BusinessException } 7400201 - Camera service fatal error.
+     * @relation off(type: 'torchStatusChange', callback?: AsyncCallback<TorchStatusInfo>): void
+     * @relation off(type: 'foldStatusChange', callback?: AsyncCallback<FoldStatusInfo>): void
+     * @relation off(type: 'torchStatusChange', callback?: AsyncCallback<TorchStatusInfo>): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Multimedia.Camera.Core"
     ]
-    public func off(`type`: CameraCallbackType): Unit {
-        match (`type`) {
-            case CameraCallbackType.CameraStatus => offAll(IdClassInfo(this.getID(), "CameraManager"), cameraStatusList,
+    public func off(event: CameraEvents): Unit {
+        match (event) {
+            case CameraEvents.CameraStatus => offAll(IdClassInfo(this.getID(), "CameraManager"), cameraStatusList,
                 cameraStatusMutex, FfiCameraManagerOffAllCameraStatusChanged)
-            case CameraCallbackType.FoldStatusChange => offAll(IdClassInfo(this.getID(), "CameraManager"),
+            case CameraEvents.FoldStatusChange => offAll(IdClassInfo(this.getID(), "CameraManager"),
                 foldStatusList, foldStatusMutex, FfiCameraManagerOffAllFoldStatusChanged)
-            case CameraCallbackType.TorchStatusChange => offAll(IdClassInfo(this.getID(), "CameraManager"),
+            case CameraEvents.TorchStatusChange => offAll(IdClassInfo(this.getID(), "CameraManager"),
                 torchStatusList, torchStatusMutex, FfiCameraManagerOffAllTorchStatusChange)
-            case _ => throw BusinessException(ERR_PARAMETER_ERROR,
-                "CameraManager off failed: ${getErrorMsg(ERR_PARAMETER_ERROR)}")
+            case _ => throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
         }
     }
 }

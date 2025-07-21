@@ -15,11 +15,12 @@
 
 package ohos.bluetooth.ble
 
-import std.deriving.*
-import ohos.bluetooth.constant.*
-import ohos.labels.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.base.CStringExtend
+import ohos.bluetooth.constant.ProfileConnectionState
+import ohos.ffi.{ CArrUI8, cArr2cjArr, cjArr2CArr}
+import ohos.labels.APILevel
+
+import std.deriving.Derive
 
 @C
 struct NativeGattService {
@@ -476,7 +477,7 @@ public class BLEDescriptor {
     /**
      * The value of the BLEDescriptor instance
      *
-     * @relation escriptorValue: ArrayBuffer
+     * @relation descriptorValue: ArrayBuffer
      */
     @!APILevel[
         21,
@@ -949,6 +950,9 @@ public enum GattWriteType {
     WriteNoResponse
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case Write => 0
@@ -1675,6 +1679,9 @@ public enum BluetoothBleGattServerCallbackType {
     BleMtuChange
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case CharacteristicRead => 0
@@ -1733,6 +1740,9 @@ public enum BluetoothBleGattClientDeviceCallbackType {
     BleMtuChange
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case BleCharacteristicChange => 0

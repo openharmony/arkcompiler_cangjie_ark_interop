@@ -199,9 +199,6 @@ foreign {
 
     func FfiRpcRemoteObjectConstructor(stringValue: CString): Int64
 
-    func FfiRpcRemoteObjectSendMessageRequest(id: Int64, code: UInt32, dataId: Int64, replyId: Int64, opt: MesOption,
-        funcId: Int64): Int32
-
     func FfiRpcRemoteObjectGetCallingPid(): Int32
 
     func FfiRpcRemoteObjectGetCallingUid(): Int32
@@ -209,9 +206,6 @@ foreign {
     func FfiRpcRemoteObjectGetDescriptor(id: Int64, errCode: CPointer<Int32>): CString
 
     func FfiRpcRemoteObjectModifyLocalInterface(id: Int64, stringValue: CString, errCode: CPointer<Int32>): Unit
-
-    func FfiRpcRemoteProxySendMessageRequest(id: Int64, code: UInt32, dataId: Int64, replyId: Int64, opt: MesOption,
-        funcId: Int64): Int32
 
     func FfiRpcRemoteProxyRegisterDeathRecipient(id: Int64, funcId: Int64, flag: Int32, errCode: CPointer<Int32>): Unit
 

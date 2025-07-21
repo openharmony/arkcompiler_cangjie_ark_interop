@@ -19,26 +19,13 @@ import os.path
 import subprocess
 import re
 
-def find_mac_sdk_root():
-    child = subprocess.Popen(["xcrun", "--sdk", "macosx", "--show-sdk-path"], stdout=subprocess.PIPE)
-    code = child.wait()
-    if code != 0:
-        raise Exception("failed to detect mac sdk root: 'xcrun --sdk macosx --show-sdk-path'")
-    output = child.stdout.read().decode("utf-8").replace("\n", "")
-    return output
 
 def compile(cmd_options):
     config_file = cmd_options.config
     with open(config_file, 'r') as file:
         data = json.load(file)
         (args, cwd) = build_args(data, cmd_options)
-        if cmd_options.is_mac:
-            macenv = os.environ.copy()
-            macenv["SDKROOT"] = find_mac_sdk_root()
-            child = subprocess.Popen(args, cwd=cwd, env=macenv, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        else:
-            child = subprocess.Popen(args, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if child.wait()!=0:
+        if subprocess.call(args, cwd=cwd) != 0:
             raise Exception("failed to run cjc: {}".format(" ".join(args)))
 
 
@@ -116,6 +103,5 @@ if __name__ == "__main__":
     parser.add_argument("--config", required=True, help="json config for cj target")
     parser.add_argument("--cjc", required=True, help="cjc executable path")
     parser.add_argument("--root_out_dir", required=True, help="gn root output dir")
-    parser.add_argument("--is_mac", required=False, type=bool, default=False, help="is build mac target")
     options = parser.parse_args()
     compile(options)

@@ -15,10 +15,7 @@
 
 package ohos.wifi_manager
 
-import std.collection.HashMap
-import ohos.labels.*
-import ohos.base.*
-import ohos.ffi.*
+import ohos.labels.APILevel
 
 const EVENT_STA_POWER_STATE_CHANGE = "wifiStateChange"
 const EVENT_STA_CONN_STATE_CHANGE = "wifiConnectionChange"
@@ -49,7 +46,7 @@ const SYSCAP_WIFI_P2P = 2800000i32
 public enum DeviceAddressType <: ToString {
     /**
      * random device address
-     * @relation RANDOM_DEVICE_ADDRESS
+     * @relation RANDOM_DEVICE_ADDRESS = 0
      */
     @!APILevel[
         21,
@@ -58,11 +55,11 @@ public enum DeviceAddressType <: ToString {
     ]
     RandomDeviceAddress
     |
-        /**
-         * real device address
-         * @relation REAL_DEVICE_ADDRESS
-         */
-        @!APILevel[
+    /**
+     * real device address
+     * @relation REAL_DEVICE_ADDRESS = 1
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
@@ -70,6 +67,9 @@ public enum DeviceAddressType <: ToString {
     RealDeviceAddress
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case RandomDeviceAddress => 0
@@ -78,6 +78,9 @@ public enum DeviceAddressType <: ToString {
         }
     }
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     static func parse(val: Int32): DeviceAddressType {
         match (val) {
             case 0 => RandomDeviceAddress
@@ -94,6 +97,11 @@ public enum DeviceAddressType <: ToString {
         }
     }
 
+    /**
+     * Obtain the string representation of DeviceAddressType.
+     *
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -149,7 +157,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WifiSecTypeWep
+    WifiSecTypeWEP
     |
         /**
          * Pre-shared key (PSK)
@@ -160,7 +168,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WifiSecTypePsk
+    WifiSecTypePSK
     |
         /**
         * Simultaneous Authentication of Equals (SAE)
@@ -171,7 +179,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WifiSecTypeSae
+    WifiSecTypeSAE
     |
         /**
         * EAP authentication.
@@ -182,7 +190,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WifiSecTypeEap
+    WifiSecTypeEAP
     |
         /**
          * SUITE_B_192 192 bit level.
@@ -204,7 +212,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WifiSecTypeOwe
+    WifiSecTypeOWE
     |
         /**
          * WAPI certificate to be specified.
@@ -226,41 +234,50 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.Core"
     ]
-    WifiSecTypeWapiPsk
+    WifiSecTypeWapiPSK
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case WifiSecTypeInvalid => 0
             case WifiSecTypeOpen => 1
-            case WifiSecTypeWep => 2
-            case WifiSecTypePsk => 3
-            case WifiSecTypeSae => 4
-            case WifiSecTypeEap => 5
+            case WifiSecTypeWEP => 2
+            case WifiSecTypePSK => 3
+            case WifiSecTypeSAE => 4
+            case WifiSecTypeEAP => 5
             case WifiSecTypeEapSuiteB => 6
-            case WifiSecTypeOwe => 7
+            case WifiSecTypeOWE => 7
             case WifiSecTypeWapiCert => 8
-            case WifiSecTypeWapiPsk => 9
+            case WifiSecTypeWapiPSK => 9
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     static func parse(val: Int32): WifiSecurityType {
         match (val) {
             case 0 => WifiSecTypeInvalid
             case 1 => WifiSecTypeOpen
-            case 2 => WifiSecTypeWep
-            case 3 => WifiSecTypePsk
-            case 4 => WifiSecTypeSae
-            case 5 => WifiSecTypeEap
+            case 2 => WifiSecTypeWEP
+            case 3 => WifiSecTypePSK
+            case 4 => WifiSecTypeSAE
+            case 5 => WifiSecTypeEAP
             case 6 => WifiSecTypeEapSuiteB
-            case 7 => WifiSecTypeOwe
+            case 7 => WifiSecTypeOWE
             case 8 => WifiSecTypeWapiCert
-            case 9 => WifiSecTypeWapiPsk
+            case 9 => WifiSecTypeWapiPSK
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
 
+    /**
+     * Perform a classification operation on the WifiSecurityType.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -270,18 +287,23 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         match ((this, that)) {
             case (WifiSecTypeInvalid, WifiSecTypeInvalid) => true
             case (WifiSecTypeOpen, WifiSecTypeOpen) => true
-            case (WifiSecTypeWep, WifiSecTypeWep) => true
-            case (WifiSecTypePsk, WifiSecTypePsk) => true
-            case (WifiSecTypeSae, WifiSecTypeSae) => true
-            case (WifiSecTypeEap, WifiSecTypeEap) => true
+            case (WifiSecTypeWEP, WifiSecTypeWEP) => true
+            case (WifiSecTypePSK, WifiSecTypePSK) => true
+            case (WifiSecTypeSAE, WifiSecTypeSAE) => true
+            case (WifiSecTypeEAP, WifiSecTypeEAP) => true
             case (WifiSecTypeEapSuiteB, WifiSecTypeEapSuiteB) => true
-            case (WifiSecTypeOwe, WifiSecTypeOwe) => true
+            case (WifiSecTypeOWE, WifiSecTypeOWE) => true
             case (WifiSecTypeWapiCert, WifiSecTypeWapiCert) => true
-            case (WifiSecTypeWapiPsk, WifiSecTypeWapiPsk) => true
+            case (WifiSecTypeWapiPSK, WifiSecTypeWapiPSK) => true
             case _ => false
         }
     }
 
+    /**
+     * Obtain the string representation of WifiSecurityType.
+     *
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -291,14 +313,14 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
         match (this) {
             case WifiSecTypeInvalid => "WifiSecTypeInvalid"
             case WifiSecTypeOpen => "WifiSecTypeOpen"
-            case WifiSecTypeWep => "WifiSecTypeWep"
-            case WifiSecTypePsk => "WifiSecTypePsk"
-            case WifiSecTypeSae => "WifiSecTypeSae"
-            case WifiSecTypeEap => "WifiSecTypeEap"
+            case WifiSecTypeWEP => "WifiSecTypeWEP"
+            case WifiSecTypePSK => "WifiSecTypePSK"
+            case WifiSecTypeSAE => "WifiSecTypeSAE"
+            case WifiSecTypeEAP => "WifiSecTypeEAP"
             case WifiSecTypeEapSuiteB => "WifiSecTypeEapSuiteB"
-            case WifiSecTypeOwe => "WifiSecTypeOwe"
+            case WifiSecTypeOWE => "WifiSecTypeOWE"
             case WifiSecTypeWapiCert => "WifiSecTypeWapiCert"
-            case WifiSecTypeWapiPsk => "WifiSecTypeWapiPsk"
+            case WifiSecTypeWapiPSK => "WifiSecTypeWapiPSK"
             case _ => throw IllegalArgumentException("The type is not supported.")
         }
     }
@@ -336,11 +358,11 @@ public enum WifiCategory <: ToString {
     ]
     Wifi6
     |
-        /**
-         * Wifi6+.
-         * @relation WIFI6_PLUS = 3
-         */
-        @!APILevel[
+    /**
+     * Wifi6+.
+     * @relation WIFI6_PLUS = 3
+     */
+    @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.Communication.WiFi.STA"
@@ -348,6 +370,9 @@ public enum WifiCategory <: ToString {
     Wifi6Plus
     | ...
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     func getValue(): Int32 {
         match (this) {
             case Default => 1
@@ -357,6 +382,9 @@ public enum WifiCategory <: ToString {
         }
     }
 
+    /**
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     static func parse(val: Int32): WifiCategory {
         match (val) {
             case 1 => Default
@@ -366,6 +394,11 @@ public enum WifiCategory <: ToString {
         }
     }
 
+    /**
+     * Obtain the string representation of WifiCategory.
+     *
+     * @throws IllegalArgumentException - Value conversion failed.
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

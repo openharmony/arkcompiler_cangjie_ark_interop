@@ -15,8 +15,6 @@
 
 package ohos.settings
 
-import ohos.base.*
-import ohos.ffi.*
 import ohos.labels.*
 
 /**
@@ -38,7 +36,7 @@ public enum DomainName <: ToString {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     DeviceShared
     /**
@@ -49,7 +47,7 @@ public enum DomainName <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     UserProperty
     | ...
@@ -90,7 +88,7 @@ public enum Date <: ToString {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     DateFormat
     /**
@@ -101,7 +99,7 @@ public enum Date <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     TimeFormat
     /**
@@ -113,7 +111,7 @@ public enum Date <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     AutoGainTime
     /**
@@ -124,7 +122,7 @@ public enum Date <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     AutoGainTimeZone
     | ...
@@ -168,7 +166,7 @@ public enum Display <: ToString {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     FontScale
     /**
@@ -179,7 +177,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     ScreenBrightnessStatus
     /**
@@ -190,7 +188,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     AutoScreenBrightness
     /**
@@ -201,7 +199,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     ScreenOffTimeout
     /**
@@ -212,7 +210,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     DefaultScreenRotation
     /**
@@ -223,7 +221,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     AnimatorDurationScale
     /**
@@ -235,7 +233,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     TransitionAnimationScale
     /**
@@ -247,7 +245,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     WindowAnimationScale
     /**
@@ -259,7 +257,7 @@ public enum Display <: ToString {
     | @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Multimedia.Audio.Core"
+        syscap: "SystemCapability.Applications.Settings.Core"
     ]
     DisplayInversionStatus
     | ...

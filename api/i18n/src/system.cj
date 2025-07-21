@@ -15,9 +15,7 @@
 
 package ohos.i18n
 
-import ohos.base.*
-import ohos.ffi.*
-import ohos.labels.*
+import ohos.labels.APILevel
 
 foreign {
     func FfiI18nSystemGetAppPreferredLanguage(): CString
@@ -37,7 +35,7 @@ public class System {
     /**
      * Obtains the preferred language of an application.
      *
-     * @relation static getAppPreferredLanguage(): string;
+     * @relation static getAppPreferredLanguage(): string
      */
     @!APILevel[
         21,

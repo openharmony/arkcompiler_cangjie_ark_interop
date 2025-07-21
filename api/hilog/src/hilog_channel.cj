@@ -15,8 +15,11 @@
 
 package ohos.hilog
 
-import ohos.labels.*
+import ohos.labels.APILevel
 
+/**
+ * Provides class to generate logs.
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -37,6 +40,9 @@ public class HilogChannel {
     private let domain_: UInt32
     private let tag_: CString
 
+    /**
+     * HilogChannel constructor
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -52,6 +58,9 @@ public class HilogChannel {
         unsafe { LibC.free(tag_) }
     }
 
+    /**
+     * Checks whether logs of the specified tag, and level can be printed.
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -61,6 +70,9 @@ public class HilogChannel {
         unsafe { HiLogIsLoggable(domain_, tag_, level) }
     }
 
+    /**
+     * Outputs debug-level logs.
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -69,6 +81,10 @@ public class HilogChannel {
     public func debug<T>(message: T): Unit where T <: ToString {
         dolog(message.toString(), LEVEL_DEBUG)
     }
+
+    /**
+     * Outputs info-level logs.
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -78,6 +94,9 @@ public class HilogChannel {
         dolog(message.toString(), LEVEL_INFO)
     }
 
+    /**
+     * Outputs warning-level logs.
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -87,6 +106,9 @@ public class HilogChannel {
         dolog(message.toString(), LEVEL_WARN)
     }
 
+    /**
+     * Outputs error-level logs.
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -96,6 +118,9 @@ public class HilogChannel {
         dolog(message.toString(), LEVEL_ERROR)
     }
 
+    /**
+     * Outputs fatal-level logs.
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,

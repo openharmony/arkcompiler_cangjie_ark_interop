@@ -15,9 +15,6 @@
 
 package ohos.settings
 
-import ohos.base.*
-import ohos.ffi.*
-
 type StageContext = CPointer<Unit>
 
 foreign {

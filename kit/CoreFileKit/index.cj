@@ -15,5 +15,5 @@
 
 package kit.CoreFileKit
 
-public import ohos.file_fileuri.*
-public import ohos.file_fs.*
+public import ohos.file.fileuri.*
+public import ohos.file.fs.*

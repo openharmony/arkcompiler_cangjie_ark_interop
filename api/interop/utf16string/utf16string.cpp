@@ -17,15 +17,25 @@
 
 #include "helper.h"
 #include "utf16string_dfx.h"
+#define SHIFT_BITS_3 3
+#define SHIFT_BITS_6 6
+#define SHIFT_BITS_10 10
+#define SHIFT_BITS_12 12
+#define SHIFT_BITS_18 18
+#define SHIFT_BITS_24 24
+#define SHIFT_BITS_30 30
+#define RESIZE_FACTOR_2 2
+#define RESIZE_FACTOR_3 3
+#define RESIZE_FACTOR_4 4
 
 static size_t AlignedSize(size_t src)
 {
     auto fullWords = src >> 3;
     auto rest = src & 0x7;
     if (rest == 0) {
-        return fullWords << 3;
+        return fullWords << SHIFT_BITS_3;
     } else {
-        return (fullWords + 1) << 3;
+        return (fullWords + 1) << SHIFT_BITS_3;
     }
 }
 
@@ -74,37 +84,37 @@ uint32_t Utf16String::Utf8ToUtf16(char16_t *dst, const char *src, uint32_t lengt
         if ((nextChar & 0x80) == 0) {
             code = nextChar;
         } else if ((nextChar & 0xE0) == 0xC0) {
-            code = (nextChar & 0x1F) << 6;
+            code = (nextChar & 0x1F) << SHIFT_BITS_6;
             code |= *src++ & 0x3F;
         } else if ((nextChar & 0xF0) == 0xE0) {
-            code = (nextChar & 0x0F) << 12;
-            code |= (*src++ & 0x3F) << 6;
+            code = (nextChar & 0x0F) << SHIFT_BITS_12;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_6;
             code |= *src++ & 0x3F;
         } else if ((nextChar & 0xF8) == 0xF0) {
-            code = (nextChar & 0x07) << 18;
-            code |= (*src++ & 0x3F) << 12;
-            code |= (*src++ & 0x3F) << 6;
+            code = (nextChar & 0x07) << SHIFT_BITS_18;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_12;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_6;
             code |= *src++ & 0x3F;
         } else if ((nextChar & 0xFC) == 0xF8) {
-            code = (nextChar & 0x03) << 24;
-            code |= (*src++ & 0x3F) << 18;
-            code |= (*src++ & 0x3F) << 12;
-            code |= (*src++ & 0x3F) << 6;
+            code = (nextChar & 0x03) << SHIFT_BITS_24;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_18;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_12;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_6;
             code |= *src++ & 0x3F;
-        } else /*if ((nextChar & 0xFC) == 0xFC)*/ {
+        } else { /*if ((nextChar & 0xFC) == 0xFC)*/
             // ignored one error 0x2
-            code = (nextChar & 0x01) << 30;
-            code |= (*src++ & 0x3F) << 24;
-            code |= (*src++ & 0x3F) << 18;
-            code |= (*src++ & 0x3F) << 12;
-            code |= (*src++ & 0x3F) << 6;
+            code = (nextChar & 0x01) << SHIFT_BITS_30;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_24;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_18;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_12;
+            code |= (*src++ & 0x3F) << SHIFT_BITS_6;
             code |= *src++ & 0x3F;
         }
         if (code < 0x10000) {
             *dst++ = code;
         } else {
             code -= 0x10000;
-            *dst++ = 0xD800 + ((code & 0xFFC00) >> 10);
+            *dst++ = 0xD800 + ((code & 0xFFC00) >> SHIFT_BITS_10);
             *dst++ = 0xDC00 + (code & 0x3FF);
         }
     }
@@ -166,9 +176,8 @@ Utf16StringHandle Utf16String::RawSubstr(uint32_t start, uint32_t end) const
     }
 
     const auto isCompressable = EncodingHelper<char16_t>::IsLatin1(
-            Utf16Data() + start,
+        Utf16Data() + start,
             length);
-
     if (isCompressable) {
         auto src = malloc(AlignedSize(sizeof(Utf16String) + length));
         if (!src) {
@@ -213,10 +222,10 @@ void Utf16String::CompressUtf16ToLatin1(uint8_t *dst, const char16_t *src, uint3
         auto srcStart = reinterpret_cast<const uint64_t*>(src);
         for (uint32_t i = 0; i < fullWords; i++) {
             auto srcWord = *srcStart++;
-            uint32_t dstWord = (srcWord & 0xFF)
-                               | ((srcWord & 0xFF0000) >> 8)
-                               | ((srcWord & 0xFF'0000'0000) >> 16)
-                               | ((srcWord & 0xFF'0000'0000'0000) >> 24);
+            uint32_t dstWord = (srcWord & 0xFF) | 
+                               ((srcWord & 0xFF0000) >> 8) |
+                               ((srcWord & 0xFF'0000'0000) >> 16) | 
+                               ((srcWord & 0xFF'0000'0000'0000) >> 24);
             *dstStart++ = dstWord;
         }
     }
@@ -291,14 +300,14 @@ Utf16StringHandle Utf16String::CreateUtf16(const char16_t *src, uint32_t length,
         }
         auto data = reinterpret_cast<char16_t*>(static_cast<char*>(str) + sizeof(Utf16String));
         auto result = new (str)Utf16String(true, false, length, data, isConstObJ);
-        __builtin_memcpy(data, src, length * 2);
+        __builtin_memcpy(data, src, length * RESIZE_FACTOR_2);
 
         return result;
     }
 }
 
 Utf16String::Utf16String(bool isLatin1, bool isConst, uint32_t length, const void *src, bool isConstObj)
-        : isLatin1_(isLatin1), isConstSrc_(isConst), isConstObj_(isConstObj), length_(length), src_(src)
+    : isLatin1_(isLatin1), isConstSrc_(isConst), isConstObj_(isConstObj), length_(length), src_(src)
 {
     if (!isConstObj) {
         Utf16StringRecorder::New(this);
@@ -346,7 +355,7 @@ std::string Utf16String::ToString() const
     if (isLatin1_) {
         result.resize(length_);
     } else {
-        result.resize(length_ * 4);
+        result.resize(length_ * RESIZE_FACTOR_4);
     }
     result.resize(WriteToUtf8(result.data()));
     return result;
@@ -371,34 +380,34 @@ uint32_t Utf16String::Utf16ToUtf8(char *dst, const char16_t *src, uint32_t lengt
         if (nextChar < 0xD800 || nextChar >= 0xE000) {
             code = nextChar;
         } else {
-            code = 0x10000 | (((nextChar & 0x3FF) << 10) | (*src++ & 0x3FF));
+            code = 0x10000 | (((nextChar & 0x3FF) << SHIFT_BITS_10) | (*src++ & 0x3FF));
         }
         if (code < 0x80) {
             *dst++ = code;
         } else if (code < 0x800) {
-            *dst++ = 0xC0 | ((code & 0x7C0) >> 6);
+            *dst++ = 0xC0 | ((code & 0x7C0) >> SHIFT_BITS_6);
             *dst++ = 0x80 | (code & 0x3F);
         } else if (code < 0x10000) {
-            *dst++ = 0xE0 | ((code & 0xF000) >> 12);
-            *dst++ = 0x80 | ((code & 0xFC0) >> 6);
+            *dst++ = 0xE0 | ((code & 0xF000) >> SHIFT_BITS_12);
+            *dst++ = 0x80 | ((code & 0xFC0) >> SHIFT_BITS_6);
             *dst++ = 0x80 | (code & 0x3F);
         } else if (code < 0x20'0000) {
-            *dst++ = 0xF0 | ((code & 0x1C'0000) >> 18);
-            *dst++ = 0x80 | ((code & 0x3'F000) >> 12);
-            *dst++ = 0x80 | ((code & 0xFC0) >> 6);
+            *dst++ = 0xF0 | ((code & 0x1C'0000) >> SHIFT_BITS_18);
+            *dst++ = 0x80 | ((code & 0x3'F000) >> SHIFT_BITS_12);
+            *dst++ = 0x80 | ((code & 0xFC0) >> SHIFT_BITS_6);
             *dst++ = 0x80 | (code & 0x3F);
         } else if (code < 0x400'0000) {
-            *dst++ = 0xF8 | ((code & 0x300'0000) >> 24);
-            *dst++ = 0x80 | ((code & 0xFC'0000) >> 18);
-            *dst++ = 0x80 | ((code & 0x3'F000) >> 12);
-            *dst++ = 0x80 | ((code & 0xFC0) >> 6);
+            *dst++ = 0xF8 | ((code & 0x300'0000) >> SHIFT_BITS_24);
+            *dst++ = 0x80 | ((code & 0xFC'0000) >> SHIFT_BITS_18);
+            *dst++ = 0x80 | ((code & 0x3'F000) >> SHIFT_BITS_12);
+            *dst++ = 0x80 | ((code & 0xFC0) >> SHIFT_BITS_6);
             *dst++ = 0x80 | (code & 0x3F);
         } else {
-            *dst++ = 0xFC | ((code & 0x4000'0000) >> 30);
-            *dst++ = 0x80 | ((code & 0x3F00'0000) >> 24);
-            *dst++ = 0x80 | ((code & 0xFC'0000) >> 18);
-            *dst++ = 0x80 | ((code & 0x3'F000) >> 12);
-            *dst++ = 0x80 | ((code & 0xFC0) >> 6);
+            *dst++ = 0xFC | ((code & 0x4000'0000) >> SHIFT_BITS_30);
+            *dst++ = 0x80 | ((code & 0x3F00'0000) >> SHIFT_BITS_24);
+            *dst++ = 0x80 | ((code & 0xFC'0000) >> SHIFT_BITS_18);
+            *dst++ = 0x80 | ((code & 0x3'F000) >> SHIFT_BITS_12);
+            *dst++ = 0x80 | ((code & 0xFC0) >> SHIFT_BITS_6);
             *dst++ = 0x80 | (code & 0x3F);
         }
     }
@@ -538,7 +547,7 @@ std::vector<Utf16StringHandle> Utf16String::SplitEmpty(uint32_t maxCount) const
     std::vector<Utf16StringHandle> result;
     maxCount = std::min(maxCount, length_);
     if (isLatin1_) {
-        for (uint32_t i = 0;i < maxCount - 1;++i) {
+        for (uint32_t i = 0; i < maxCount - 1; ++i) {
             result.push_back(SubString(i, i + 1));
         }
         result.push_back(SubString(maxCount - 1, length_));
@@ -592,32 +601,32 @@ std::vector<Utf16StringHandle> Utf16String::Split(Utf16StringHandle separator, u
 Utf16String::CharCode Utf16String::CharCodeAt(const uint32_t index) const
 {
     if (index >= length_) {
-        return {CharCode::Invalid, 0};
+        return {CharCode::INVALID, 0};
     }
     char32_t code;
     if (isLatin1_) {
         code = Latin1Data()[index];
-        return {CharCode::Latin1, code};
+        return {CharCode::LATIN1, code};
     }
     const auto src = Utf16Data();
     code = src[index];
     if (code < 0xD800 || code >= 0xE000) {
-        return {CharCode::Char16, code};
+        return {CharCode::CHAR16, code};
     }
     if (code < 0xDC00) {
         if (index < length_ - 1) {
-            code = 0x10000 | (((code & 0x3FF) << 10) | (src[index + 1] & 0x3FF));
+            code = 0x10000 | (((code & 0x3FF) << SHIFT_BITS_10) | (src[index + 1] & 0x3FF));
         } else {
-            return {CharCode::Invalid, 0};
+            return {CharCode::INVALID, 0};
         }
     } else {
         if (index > 0) {
-            code = 0x10000 | (((src[index - 1] & 0x3FF) << 10) | (code & 0x3FF));
+            code = 0x10000 | (((src[index - 1] & 0x3FF) << SHIFT_BITS_10) | (code & 0x3FF));
         } else {
-            return {CharCode::Invalid, 0};
+            return {CharCode::INVALID, 0};
         }
     }
-    return {CharCode::Char16_x2, code};
+    return {CharCode::CHAR16_X2, code};
 }
 
 template <typename T>
@@ -645,7 +654,7 @@ const T* RFindChar(const T* src, uint32_t length, char32_t target)
 
 int64_t Utf16String::RawIndexOf(const CharCode code, uint32_t start) const
 {
-    if (code.kind == CharCode::Latin1) {
+    if (code.kind == CharCode::LATIN1) {
         if (isLatin1_) {
             if (auto location = FindChar(Latin1Data() + start, length_ - start, code.value)) {
                 return location - Latin1Data();
@@ -660,7 +669,7 @@ int64_t Utf16String::RawIndexOf(const CharCode code, uint32_t start) const
     if (isLatin1_) {
         return -1;
     }
-    if (code.kind == CharCode::Char16) {
+    if (code.kind == CharCode::CHAR16) {
         if (auto location = FindChar(Utf16Data() + start, length_ - start, code.value)) {
             return location - Utf16Data();
         }
@@ -684,7 +693,7 @@ int64_t Utf16String::RawIndexOf(const CharCode code, uint32_t start) const
 
 int64_t Utf16String::RawLastIndexOf(const CharCode code, uint32_t start) const
 {
-    if (code.kind == CharCode::Latin1) {
+    if (code.kind == CharCode::LATIN1) {
         if (isLatin1_) {
             if (auto location = RFindChar(Latin1Data() + start, start, code.value)) {
                 return location - Latin1Data();
@@ -699,7 +708,7 @@ int64_t Utf16String::RawLastIndexOf(const CharCode code, uint32_t start) const
     if (isLatin1_) {
         return -1;
     }
-    if (code.kind == CharCode::Char16) {
+    if (code.kind == CharCode::CHAR16) {
         if (auto location = RFindChar(Utf16Data() + start, start, code.value)) {
             return location - Utf16Data();
         }
@@ -881,7 +890,7 @@ bool Utf16String::Contains(Utf16StringHandle separator) const
 
 bool Utf16EqualsLatin1(const char16_t* src, const char* dst, uint32_t length)
 {
-    constexpr uint64_t H_MASK = 0xFF00FF00FF00FF00;
+    constexpr uint64_t hMask = 0xFF00FF00FF00FF00;
     auto wSrc = reinterpret_cast<const uint64_t*>(src);
     auto wDst = reinterpret_cast<const uint64_t*>(dst);
     auto fullWords = length >> 3;
@@ -889,24 +898,24 @@ bool Utf16EqualsLatin1(const char16_t* src, const char* dst, uint32_t length)
     for (uint32_t i = 0; i < fullWords; i++) {
         auto l = *wSrc++;
         auto r = *wSrc++;
-        if ((l & H_MASK) || (r & H_MASK)) {
+        if ((l & hMask) || (r & hMask)) {
             return false;
         }
-        uint64_t a = ((r & 0xFF'0000'0000'0000) << 8)
-                     | ((r & 0xFF'0000'0000) << 16)
-                     | ((r & 0xFF'0000) << 24)
-                     | ((r & 0xFF) << 32);
-        uint64_t b = ((l & 0xFF'0000'0000'0000) >> 24)
-                 | ((l & 0xFF'0000'0000) >> 16)
-                 | ((l & 0xFF'0000) >> 8)
-                 | (l & 0xFF);
+        uint64_t a = ((r & 0xFF'0000'0000'0000) << 8) | 
+                     ((r & 0xFF'0000'0000) << 16) | 
+                     ((r & 0xFF'0000) << 24) | 
+                     ((r & 0xFF) << 32);
+        uint64_t b = ((l & 0xFF'0000'0000'0000) >> 24) | 
+                     ((l & 0xFF'0000'0000) >> 16) | 
+                     ((l & 0xFF'0000) >> 8) | 
+                     (l & 0xFF);
         auto c = *wDst++;
         if ((a | b) != c) {
             return false;
         }
     }
-    src += (fullWords << 3);
-    dst += (fullWords << 3);
+    src += (fullWords << RESIZE_FACTOR_3);
+    dst += (fullWords << RESIZE_FACTOR_3);
     for (uint32_t i = 0; i < restChars; i++) {
         if (*src++ != *dst++) {
             return false;
@@ -924,7 +933,7 @@ bool Utf16String::RawStartsWith(Utf16StringHandle subject, uint32_t start) const
         if (isLatin1_) {
             return memcmp(Latin1Data() + start, subject->Latin1Data(), subject->length_) == 0;
         } else {
-            return memcmp(Utf16Data() + start, subject->Utf16Data(), subject->length_ * 2) == 0;
+            return memcmp(Utf16Data() + start, subject->Utf16Data(), subject->length_ * RESIZE_FACTOR_2) == 0;
         }
     }
     if (isLatin1_) {

@@ -15,43 +15,72 @@
 
 package ohos.hilog
 
-import std.collection.*
-import ohos.labels.*
+import ohos.labels.APILevel
 
 foreign func HiLogIsLoggable(domain: UInt32, tag: CString, level: UInt32): Bool
 
 foreign func HiLogPrint(ty: UInt32, level: UInt32, domain: UInt32, tag: CString, format: CString, content: CString): Unit
 
+/**
+ * Log level define
+ *
+ * @relation enum LogLevel
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
     syscap: "SystemCapability.HiviewDFX.HiLog"
 ]
 public enum LogLevel {
+    /**
+     * DEBUG Log level define
+     *
+     * @relation DEBUG = 3
+     */
     @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Debug
+    /**
+     * INFO Log level define
+     *
+     * @relation INFO = 4
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Info
+    /**
+     * WARN Log level define
+     *
+     * @relation WARN = 5
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Warn
+    /**
+     * ERROR Log level define
+     *
+     * @relation ERROR = 6
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
         syscap: "SystemCapability.HiviewDFX.HiLog"
     ]
     Error
+    /**
+     * FATAL Log level define
+     *
+     * @relation FATAL = 7
+     */
     | @!APILevel[
         21,
         stagemodelonly: true,
@@ -74,6 +103,11 @@ public enum LogLevel {
 
 let DEFAULT_LOG_TYPE: UInt32 = 0
 
+/**
+ * Provides interfaces to generate system logs.
+ *
+ * @relation declare namespace hilog
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -93,6 +127,12 @@ public class Hilog {
             }
         }
     }
+
+    /**
+     * Checks whether logs of the specified tag, and level can be printed.
+     *
+     * @relation function isLoggable(domain: number, tag: string, level: LogLevel): boolean
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -107,6 +147,11 @@ public class Hilog {
         }
     }
 
+    /**
+     * Outputs debug-level logs.
+     *
+     * @relation function debug(domain: number, tag: string, format: string, ...args: (Object | undefined | null)[]): void
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -124,6 +169,11 @@ public class Hilog {
         }
     }
 
+    /**
+     * Outputs info-level logs.
+     *
+     * @relation function info(domain: number, tag: string, format: string, ...args: (Object | undefined | null)[]): void
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -147,6 +197,11 @@ public class Hilog {
         }
     }
 
+    /**
+     * Outputs warning-level logs.
+     *
+     * @relation function warn(domain: number, tag: string, format: string, ...args: (Object | undefined | null)[]): void
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -170,6 +225,11 @@ public class Hilog {
         }
     }
 
+    /**
+     * Outputs error-level logs.
+     *
+     * @relation function error(domain: number, tag: string, format: string, ...args: (Object | undefined | null)[]): void
+     */ 
     @!APILevel[
         21,
         stagemodelonly: true,
@@ -187,6 +247,11 @@ public class Hilog {
         }
     }
 
+    /**
+     * Outputs fatal-level logs.
+     *
+     * @relation function fatal(domain: number, tag: string, format: string, ...args: (Object | undefined | null)[]): void
+     */
     @!APILevel[
         21,
         stagemodelonly: true,

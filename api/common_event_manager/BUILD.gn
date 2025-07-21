@@ -12,25 +12,27 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//arkcompiler/cangjie_api/cjc.gni")
+import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
 
 ohos_cj_library("ohos.common_event_manager") {
   sources = [
-    "src/common_event_manager.cj",
+    "src/common_event_manager_errors.cj",
     "src/common_event_manager_ffi.cj",
-    "src/common_event_subscribe_info.cj",
-    "src/common_event_subscriber.cj",
-    "src/errors.cj",
-    "src/publish_data.cj",
+    "src/common_event_manager_utils.cj",
+    "src/common_event_manager.cj",
     "src/support.cj",
-    "src/utils.cj",
   ]
 
   cj_deps = [
-    "../arkui/cj:ohos.base",
+    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
     "../hilog:ohos.hilog",
     "../labels:ohos.labels",
+    "../common_event/common_event_data:ohos.common_event_data",
+    "../common_event/common_event_publish_data:ohos.common_event_publish_data",
+    "../common_event/common_event_subscribe_info:ohos.common_event_subscribe_info",
+    "../common_event/common_event_subscriber:ohos.common_event_subscriber",
+    "../common_event/value_type:ohos.value_type"
   ]
 
   external_deps = [ "common_event_service:cj_common_event_manager_ffi" ]

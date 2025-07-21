@@ -15,20 +15,20 @@
 
 package kit.ArkData
 
-public import ohos.preferences.*
-public import ohos.preferences.ValueType as PreferencesValueType
-public import ohos.preferences.Options as PreferencesOptions
-public import ohos.preferences.MAX_VALUE_LENGTH as PREFERENCES_MAX_VALUE_LENGTH
-public import ohos.preferences.MAX_KEY_LENGTH as PREFERENCES_MAX_KEY_LENGTH
-public import ohos.relational_store.*
-public import ohos.relational_store.SecurityLevel as RelationalStoreSecurityLevel
-public import ohos.relational_store.ValueType as RelationalStoreValueType
-public import ohos.distributed_kv_store.*
-public import ohos.distributed_kv_store.SecurityLevel as KVSecurityLevel
-public import ohos.distributed_kv_store.ValueType as KVValueType
-public import ohos.distributed_kv_store.Options as KVOptions
-public import ohos.distributed_kv_store.MAX_VALUE_LENGTH as KV_MAX_VALUE_LENGTH
-public import ohos.distributed_kv_store.MAX_KEY_LENGTH as KV_MAX_KEY_LENGTH
-public import ohos.data_share_predicates.*
-public import ohos.values_bucket.*
-public import ohos.values_bucket.ValueType as VBValueType
+public import ohos.data.preferences.*
+public import ohos.data.preferences.ValueType as PreferencesValueType
+public import ohos.data.preferences.Options as PreferencesOptions
+public import ohos.data.preferences.MAX_VALUE_LENGTH as PREFERENCES_MAX_VALUE_LENGTH
+public import ohos.data.preferences.MAX_KEY_LENGTH as PREFERENCES_MAX_KEY_LENGTH
+public import ohos.data.relational_store.*
+public import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
+public import ohos.data.relational_store.ValueType as RelationalStoreValueType
+public import ohos.data.distributed_kv_store.*
+public import ohos.data.distributed_kv_store.SecurityLevel as KVSecurityLevel
+public import ohos.data.distributed_kv_store.ValueType as KVValueType
+public import ohos.data.distributed_kv_store.Options as KVOptions
+public import ohos.data.distributed_kv_store.MAX_VALUE_LENGTH as KV_MAX_VALUE_LENGTH
+public import ohos.data.distributed_kv_store.MAX_KEY_LENGTH as KV_MAX_KEY_LENGTH
+public import ohos.data.data_share_predicates.*
+public import ohos.data.values_bucket.*
+public import ohos.data.values_bucket.ValueType as VBValueType

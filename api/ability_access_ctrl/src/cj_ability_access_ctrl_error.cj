@@ -15,9 +15,9 @@
 
 package ohos.ability_access_ctrl
 
+import ohos.base.getUniversalErrorMsg
+
 import std.collection.HashMap
-import ohos.labels.*
-import ohos.base.*
 
 let ERROR_CODE_MAP: HashMap<Int32, String> = HashMap<Int32, String>(
     (12100001, "The parameter is invalid."),

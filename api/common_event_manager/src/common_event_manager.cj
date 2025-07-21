@@ -15,14 +15,21 @@
 
 package ohos.common_event_manager
 
-import ohos.ffi.*
-import ohos.hilog.*
-import std.collection.*
-import ohos.base.*
-import ohos.labels.*
+import ohos.labels.APILevel
+import ohos.ffi.{Callback1Param, INVALID_CODE}
+import ohos.base.BusinessException
+import ohos.common_event_data.CCommonEventData
+import ohos.common_event_publish_data.CCommonEventPublishData
+public import ohos.common_event_data.CommonEventData
+public import ohos.common_event_publish_data.CommonEventPublishData
+public import ohos.common_event_subscribe_info.CommonEventSubscribeInfo
+public import ohos.common_event_subscriber.CommonEventSubscriber
+public import ohos.value_type.ValueType
 
-let CES_LOG = HilogChannel(0, 0xD001200, "CJ-CommonEventManager")
-
+/**
+ * The CommonEventManager module provides common event capabilities, including the capabilities to publish, subscribe to, and unsubscribe from common events.
+ * @relation declare namespace commonEventManager
+ */
 @!APILevel[
     21,
     stagemodelonly: true,
@@ -30,14 +37,14 @@ let CES_LOG = HilogChannel(0, 0xD001200, "CJ-CommonEventManager")
 ]
 public class CommonEventManager {
     /**
-     * Publishes a common event.
+     * Publishes an ordered, sticky, or standard common event.
      *
-     * @param { String } event - Name of the common event to publish.
+     * @param { String } event - name of the common event.
      * @throws { BusinessException } 1500004 - If not System services.
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @throws { BusinessException } 1500009 - If error obtaining system parameters.
-     * @brief publish(event: string, callback: AsyncCallback<void>): void
+     * @relation publish(event: string, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -54,7 +61,7 @@ public class CommonEventManager {
     }
 
     /**
-     * Publishes a common event with given attributes.
+     * Publishes an ordered, sticky, or standard common event.
      *
      * @param { String } event - Name of the common event to publish.
      * @param { CommonEventPublishData } options - Attributes of the common event to publish.
@@ -62,7 +69,7 @@ public class CommonEventManager {
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @throws { BusinessException } 1500009 - If error obtaining system parameters.
-     * @brief publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
+     * @relation publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
      */
     @!APILevel[
         21,
@@ -82,11 +89,11 @@ public class CommonEventManager {
     }
 
     /**
-     * Creates a subscriber.
+     * create the CommonEventSubscriber for the SubscriberInfo.
      *
-     * @param { CommonEventSubscribeInfo } subscribeInfo - Subscriber information.
+     * @param { CommonEventSubscribeInfo } subscribeInfo - Indicates the information of the subscriber.
      * @returns { CommonEventSubscriber } CommonEventSubscriber instance.
-     * @brief createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
+     * @relation createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
      */
     @!APILevel[
         21,
@@ -96,16 +103,16 @@ public class CommonEventManager {
     public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber {
         let ret = unsafe { CJ_CreateSubscriber(subscribeInfo.getID()) }
         if (ret == Int64(INVALID_CODE)) {
-            throw BusinessException(getErrorCode(INVALID_CODE),
-                "CommonEventManager: createSubscriber failed: ${getErrorMsg(INVALID_CODE)}")
+            throw BusinessException(getErrorCode(ERROR_CES_UNINITIALIZED),
+                "CommonEventManager: createSubscriber failed: ${getErrorMsg(ERROR_CES_UNINITIALIZED)}")
         }
         return CommonEventSubscriber(ret)
     }
 
     /**
-     * Creates a subscriber.
+     * subscribe an ordered, sticky, or standard common event.
      *
-     * @param { CommonEventSubscriber } subscriber - Subscriber instance..
+     * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @relation subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
@@ -127,9 +134,9 @@ public class CommonEventManager {
     }
 
     /**
-     * Creates a subscriber.
+     * unsubscribe from an ordered, sticky, or standard common event.
      *
-     * @param { CommonEventSubscriber } subscriber - Subscriber instance..
+     * @param { CommonEventSubscriber } subscriber - Indicate the subscriber of the common event.
      * @throws { BusinessException } 1500007 - If error sending message to Common Event Service.
      * @throws { BusinessException } 1500008 - If Common Event Service does not complete initialization.
      * @relation unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void

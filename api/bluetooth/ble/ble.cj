@@ -15,11 +15,12 @@
 
 package ohos.bluetooth.ble
 
-import ohos.base.*
-import ohos.bluetooth.*
-import ohos.ffi.*
+import ohos.base.{ BusinessException, Callback1Argument, CallbackObject, ERR_PARAMETER_ERROR }
+import ohos.bluetooth.{ BLUETOOTH_LOG, OPERATION_FAILED, checkRet, getErrorMsg }
+import ohos.ffi.{ Callback1Param, SUCCESS_CODE, safeMalloc, cArr2cjArr }
+import ohos.labels.APILevel
+
 import std.collection.{ArrayList, HashMap}
-import ohos.labels.*
 
 /**
  * create a Gatt server instance.
@@ -34,9 +35,7 @@ import ohos.labels.*
 public func createGattServer(): GattServer {
     var errorCode: Int32 = 0
     let id = unsafe { FfiBluetoothBleCreateGattServer(inout errorCode) }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
     return GattServer(id)
 }
 
@@ -60,9 +59,7 @@ public func createGattClientDevice(deviceId: String): GattClientDevice {
     unsafe {
         try (cDeviceId = LibC.mallocCString(deviceId).asResource()) {
             id = FfiBluetoothBleCreateGattClientDevice(cDeviceId.value, inout errorCode)
-            if (errorCode != SUCCESS_CODE) {
-                throw BusinessException(errorCode, getErrorMsg(errorCode))
-            }
+            checkRet(errorCode)
         }
     }
     return GattClientDevice(id)
@@ -110,9 +107,7 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
         cFilters.free()
         LibC.free(cOptions)
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }
 
 /**
@@ -136,9 +131,7 @@ public func stopBLEScan(): Unit {
     unsafe {
         FfiBluetoothBleStopBleScan(inout errorCode)
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }
 
 /**
@@ -178,9 +171,7 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
         }
         LibC.free(cAdvResponse)
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }
 
 /**
@@ -204,9 +195,7 @@ public func stopAdvertising(): Unit {
     unsafe {
         FfiBluetoothBleStopAdvertising(inout errorCode)
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }
 
 /**
@@ -220,7 +209,6 @@ public func stopAdvertising(): Unit {
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
  * @relation function startAdvertising(advertisingParams: AdvertisingParams): Promise<number>
- * @relation function startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback<number>): void
  */
 @!APILevel[
     21,
@@ -236,9 +224,7 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32 {
         id = FfiBluetoothBleStartAdvertisingWithId(cAdvertisingParams, inout errorCode)
         cAdvertisingParams.free()
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
     if (id < 0) {
         throw BusinessException(OPERATION_FAILED, getErrorMsg(OPERATION_FAILED))
     }
@@ -258,7 +244,6 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32 {
  * @throws { BusinessException } 2900003 - Bluetooth disabled.
  * @throws { BusinessException } 2900099 - Operation failed.
  * @relation function stopAdvertising(advertisingId: number): Promise<void>
- * relation function stopAdvertising(advertisingId: number, callback: AsyncCallback<void>): void
  */
 @!APILevel[
     21,
@@ -271,9 +256,7 @@ public func stopAdvertising(advertisingId: UInt32): Unit {
     unsafe {
         FfiBluetoothBleStopAdvertisingWithId(advertisingId, inout errorCode)
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }
 
 private let GLOBAL_CALLBACK_MAP = HashMap<BluetoothBleCallbackType, ArrayList<CallbackObject>>()
@@ -298,9 +281,7 @@ private func register(callbackType: BluetoothBleCallbackType, id: Int64) {
     unsafe {
         FfiBluetoothBleOn(callbackType.getValue(), id, inout errorCode)
     }
-    if (errorCode != SUCCESS_CODE) {
-        throw BusinessException(errorCode, getErrorMsg(errorCode))
-    }
+    checkRet(errorCode)
 }
 
 private func argWrapper1<CT, T>(callbackType: BluetoothBleCallbackType, ctor: (CT) -> T): Int64 where CT <: CType {
@@ -348,13 +329,13 @@ private func commonSubscribe1Arg<CT, T>(callbackType: BluetoothBleCallbackType, 
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
-public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<AdvertisingStateChangeInfo>): Unit {
-    if (`type` != AdvertisingStateChange) {
-        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is AdvertisingStateChange")
+public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<AdvertisingStateChangeInfo>): Unit {
+    if (eventType != AdvertisingStateChange) {
+        BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is AdvertisingStateChange")
         throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
     }
 
-    commonSubscribe1Arg(`type`, callback) {
+    commonSubscribe1Arg(eventType, callback) {
         info: CAdvertisingStateChangeInfo => info.toObject()
     }
     return
@@ -376,13 +357,13 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Adv
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
-public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Array<ScanResult>>): Unit {
-    if (`type` != BleDeviceFind) {
-        BLUETOOTH_LOG.error("Invalid name ${`type`}, valid name is BleDeviceFind")
+public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<Array<ScanResult>>): Unit {
+    if (eventType != BleDeviceFind) {
+        BLUETOOTH_LOG.error("Invalid name ${eventType}, valid name is BleDeviceFind")
         throw BusinessException(ERR_PARAMETER_ERROR, getErrorMsg(ERR_PARAMETER_ERROR))
     }
 
-    commonSubscribe1Arg(`type`, callback) {
+    commonSubscribe1Arg(eventType, callback) {
         result: CArrScanResult => unsafe {
             cArr2cjArr<NativeScanResult, ScanResult>(result.size, result.head) {
                 r: NativeScanResult => r.toObject()
@@ -401,23 +382,23 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Arr
  * @throws { BusinessException} 801 - Capability not supported.
  * @throws { BusinessException} 2900099 - Operation failed.
  * @relation function off(type: 'advertisingStateChange', callback?: Callback<AdvertisingStateChangeInfo>): void
- * relation function off(type: 'BLEDeviceFind', callback?: Callback<Array<ScanResult>>): void
+ * @relation function off(type: 'BLEDeviceFind', callback?: Callback<Array<ScanResult>>): void
  */
 @!APILevel[
     21,
-    permission: "ohos.ACCESS_BLUETOOTH",
+    permission: "ohos.permission.ACCESS_BLUETOOTH",
     stagemodelonly: true,
     syscap: "SystemCapability.Communication.Bluetooth.Core"
 ]
-public func off(`type`: BluetoothBleCallbackType, callback!: ?CallbackObject = None): Unit {
+public func off(eventType: BluetoothBleCallbackType, callback!: ?CallbackObject = None): Unit {
     BLUETOOTH_LOG.debug("unsubscribe stateChange")
-    if (!GLOBAL_CALLBACK_MAP.contains(`type`)) {
+    if (!GLOBAL_CALLBACK_MAP.contains(eventType)) {
         return
     }
     if (let Some(v) <- callback) {
-        findCallbackObject(`type`, v, remove: true)
+        findCallbackObject(eventType, v, remove: true)
         return
     }
-    GLOBAL_CALLBACK_MAP[`type`].clear()
+    GLOBAL_CALLBACK_MAP[eventType].clear()
     return
 }

@@ -16,25 +16,24 @@
 package ohos.rpc
 
 import std.collection.HashMap
-import ohos.ffi.*
 import ohos.base.BusinessException
 
 let ERR_CODE_MAP = HashMap<Int32, String>(
     [
-        (ErrorCode.CHECK_PARAM_ERROR, "Parameter error."),
-        (ErrorCode.OS_MMAP_ERROR, "Call mmap function failed."),
-        (ErrorCode.OS_IOCTL_ERROR, "Call os ioctl function failed."),
-        (ErrorCode.WRITE_TO_ASHMEM_ERROR, "Write to ashmem failed."),
-        (ErrorCode.READ_FROM_ASHMEM_ERROR, "Read from ashmem failed."),
-        (ErrorCode.ONLY_PROXY_OBJECT_PERMITTED_ERROR, "Only proxy object permitted."),
-        (ErrorCode.ONLY_REMOTE_OBJECT_PERMITTED_ERROR, "Only remote object permitted."),
-        (ErrorCode.COMMUNICATION_ERROR, "Communication failed."),
-        (ErrorCode.PROXY_OR_REMOTE_OBJECT_INVALID_ERROR, "Proxy or remote object is invalid."),
-        (ErrorCode.WRITE_DATA_TO_MESSAGE_SEQUENCE_ERROR, "Write data to message sequence failed."),
-        (ErrorCode.READ_DATA_FROM_MESSAGE_SEQUENCE_ERROR, "Read data from message sequence failed."),
-        (ErrorCode.PARCEL_MEMORY_ALLOC_ERROR, "Sequence memory alloc failed."),
-        (ErrorCode.CALL_JS_METHOD_ERROR, "Call JS callback function failed."),
-        (ErrorCode.OS_DUP_ERROR, "Call os dup function failed.")
+        (ErrorCode.CheckParamError.value, "Parameter error."),
+        (ErrorCode.OsMmapError.value, "Call mmap function failed."),
+        (ErrorCode.OsIoctlError.value, "Call os ioctl function failed."),
+        (ErrorCode.WriteToAshmemError.value, "Write to ashmem failed."),
+        (ErrorCode.ReadFromAshmemError.value, "Read from ashmem failed."),
+        (ErrorCode.OnlyProxyObjectPermittedError.value, "Only proxy object permitted."),
+        (ErrorCode.OnlyRemoteObjectPermittedError.value, "Only remote object permitted."),
+        (ErrorCode.CommunicationError.value, "Communication failed."),
+        (ErrorCode.ProxyOrRemoteObjectInvalidError.value, "Proxy or remote object is invalid."),
+        (ErrorCode.WriteDataToMessageSequenceError.value, "Write data to message sequence failed."),
+        (ErrorCode.ReadDataFromMessageSequenceError.value, "Read data from message sequence failed."),
+        (ErrorCode.ParcelMemoryAllocError.value, "Sequence memory alloc failed."),
+        (ErrorCode.CallCjMethodError.value, "Call CJ callback function failed."),
+        (ErrorCode.OsDupError.value, "Call os dup function failed.")
     ]
 )
 

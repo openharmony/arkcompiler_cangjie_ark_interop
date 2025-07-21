@@ -15,4 +15,4 @@
 
 package kit.ImageKit
 
-public import ohos.image.*
+public import ohos.multimedia.image.*
