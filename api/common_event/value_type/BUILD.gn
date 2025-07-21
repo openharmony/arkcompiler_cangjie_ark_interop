@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+import("//build/cangjie/cjc.gni")
 
 ohos_cj_library("ohos.value_type") {
   sources = [

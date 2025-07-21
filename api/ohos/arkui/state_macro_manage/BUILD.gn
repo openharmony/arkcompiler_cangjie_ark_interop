@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//vendor/huawei/arkcompiler/cangjie_api/cjc.gni")
+import("//build/cangjie/cjc.gni")
 
 cj_macro_library("arkui.state_macro_manage") {
   sources = [
@@ -47,5 +47,7 @@ cj_macro_library("arkui.state_macro_manage") {
     "../../../encoding:ohos.json.static",
   ]
   compilation_config = "pipeline=NG"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
 }
 

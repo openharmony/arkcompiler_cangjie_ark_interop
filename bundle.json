@@ -5,7 +5,7 @@
     "license": "Apache License 2.0",
     "publishAs": "code-segment",
     "segment": {
-        "destPath": "vendor/huawei/arkcompiler/cangjie_api"
+        "destPath": "arkcompiler/cangjie_api"
     },
     "dirs": {},
     "scripts": {},
@@ -93,7 +93,7 @@
         },
         "build": {
             "sub_component": [
-                "//vendor/huawei/arkcompiler/cangjie_api:cangjie_systemapi_packages"
+                "//arkcompiler/cangjie_api:cangjie_systemapi_packages"
             ],
             "group_type": {
                 "base_group": [],
