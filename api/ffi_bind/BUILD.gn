@@ -28,7 +28,8 @@ ohos_cj_library("ohos.ffi") {
     "src/utility.cj",
   ]
 
-  cj_deps = [ "../hilog:ohos.hilog" ]
+  cj_external_deps = [ "hiviewdfx_cangjie_api:ohos.hilog" ]
+
   external_deps = [ "napi:cj_bind_ffi" ]
 
   subsystem_name = "arkcompiler"

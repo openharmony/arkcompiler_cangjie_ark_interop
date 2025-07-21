@@ -103,6 +103,15 @@
             "inner_kits": [
                 {
                     "name": "//arkcompiler/cangjie_api/api/labels:ohos.labels"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/encoding:ohos.encoding.json"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/encoding:ohos.json.static"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ffi_bind:ohos.ffi"
                 }
             ],
             "test": []
