@@ -112,6 +112,12 @@
                 },
                 {
                     "name": "//arkcompiler/cangjie_api/api/ffi_bind:ohos.ffi"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/interop:ohos.ark_interop"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/interop:ohos.ark_interop_helper"
                 }
             ],
             "test": []
