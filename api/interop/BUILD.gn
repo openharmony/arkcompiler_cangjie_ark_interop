@@ -117,10 +117,13 @@ ohos_cj_library("ohos.ark_interop_helper") {
 
   cj_deps = [
     ":ohos.ark_interop",
-    "../ohos/base:ohos.base",
     "../ffi_bind:ohos.ffi",
-    "../hilog:ohos.hilog",
     "../labels:ohos.labels",
+  ]
+
+  cj_external_deps = [
+    "arkui_cangjie_api:ohos.base",
+    "hiviewdfx_cangjie_api:ohos.hilog",
   ]
 
   external_deps = [
