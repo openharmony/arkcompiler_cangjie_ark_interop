@@ -93,7 +93,13 @@
         },
         "build": {
             "sub_component": [
-                "//arkcompiler/cangjie_api/api/labels:ohos.labels"
+                "//arkcompiler/cangjie_api/api/ohos/ffi_bind:ohos.ffi",
+                "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.encoding.json",
+                "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.json.static",
+                "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop",
+                "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop_helper",
+                "//arkcompiler/cangjie_api/api/ohos/interop:ohos.hitrace",
+                "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels"
             ],
             "group_type": {
                 "base_group": [],
@@ -102,22 +108,22 @@
               },
             "inner_kits": [
                 {
-                    "name": "//arkcompiler/cangjie_api/api/labels:ohos.labels"
+                    "name": "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_api/api/encoding:ohos.encoding.json"
+                    "name": "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.encoding.json"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_api/api/encoding:ohos.json.static"
+                    "name": "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.json.static"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_api/api/ffi_bind:ohos.ffi"
+                    "name": "//arkcompiler/cangjie_api/api/ohos/ffi_bind:ohos.ffi"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_api/api/interop:ohos.ark_interop"
+                    "name": "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_api/api/interop:ohos.ark_interop_helper"
+                    "name": "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop_helper"
                 }
             ],
             "test": []
