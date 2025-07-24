@@ -38,7 +38,6 @@ cj_target("ohos.json.static") {
     "json/src/write_buffer.cj",
   ]
 
-  outname = "ohos.json.static"
   output_type = "staticlib"
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
