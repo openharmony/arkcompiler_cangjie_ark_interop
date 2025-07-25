@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
-
 import("//build/cangjie/cjc.gni")
 
 ohos_cj_library("ohos.ffi") {
@@ -34,5 +32,4 @@ ohos_cj_library("ohos.ffi") {
 
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
-  lib_name = "ffi"
 }

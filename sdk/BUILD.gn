@@ -15,14 +15,15 @@ import("../sdk_config.gni")
 
 template("cj_ohos_sdk") {
   ohos_copy(target_name) {
-    forward_variables_from(invoker, [
-      "toolchain",
-      "platform",
-      "module_name",
-      "dyn_extension",
-      "inputs",
-      "is_macro",
-    ])
+    forward_variables_from(invoker,
+                           [
+                             "toolchain",
+                             "platform",
+                             "module_name",
+                             "dyn_extension",
+                             "inputs",
+                             "is_macro",
+                           ])
     deps = []
     sources = []
     if (!defined(is_macro)) {
@@ -30,13 +31,11 @@ template("cj_ohos_sdk") {
     }
 
     foreach(item, inputs) {
-      deps += [
-        "${item.label}(${toolchain})",
-      ]
+      deps += [ "${item.label}(${toolchain})" ]
       is_native = defined(item.is_native) && item.is_native
       t_out = get_label_info(deps[0], "root_out_dir")
       if (!is_native) {
-        deps += ["${item.label}_cjo(${toolchain})",]
+        deps += [ "${item.label}_cjo(${toolchain})" ]
         tmp = ""
         tmp = string_split(item.label, ":")
         out_path = "${t_out}/obj/${tmp[0]}"
@@ -46,7 +45,9 @@ template("cj_ohos_sdk") {
         } else if (item.lib_name == "ohos") {
           sources += [ "${out_path}/lib${item.lib_name}${dyn_extension}" ]
         } else {
-          sources += [ "${out_path}/lib${module_name}.${item.lib_name}${dyn_extension}" ]
+          sources += [
+            "${out_path}/lib${module_name}.${item.lib_name}${dyn_extension}",
+          ]
         }
         if (defined(item.cjo_name)) {
           sources += [ "${out_path}/${item.cjo_name}.cjo" ]
@@ -56,14 +57,13 @@ template("cj_ohos_sdk") {
           sources += [ "${out_path}/${module_name}.${item.lib_name}.cjo" ]
         }
       } else {
-        sources += [
-          "${t_out}/${item.path}"
-        ]
+        sources += [ "${t_out}/${item.path}" ]
       }
     }
 
-    outputs =
-    [ "${target_out_dir}/build/${platform}/${module_name}/{{source_file_part}}" ]
+    outputs = [
+      "${target_out_dir}/build/${platform}/${module_name}/{{source_file_part}}",
+    ]
     module_source_dir = "${target_out_dir}/build/${platform}/${module_name}/"
     module_install_name = ""
   }
@@ -159,49 +159,49 @@ ohos_copy("sdk_api") {
     {
       path = "linux_ohos_aarch64_cjnative/ohos"
       label = ":sdk_kit_aarch64"
-    }
+    },
   ]
   if (host_cpu == "x64") {
-   all_sources += [
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_ohos_x86_64"
-    },
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_kit_x86_64"
-    }
-   ]
+    all_sources += [
+      {
+        path = "linux_ohos_aarch64_cjnative/ohos"
+        label = ":sdk_ohos_x86_64"
+      },
+      {
+        path = "linux_ohos_aarch64_cjnative/ohos"
+        label = ":sdk_kit_x86_64"
+      },
+    ]
   }
   if (host_cpu == "x64") {
-   all_sources += [
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_ohos_x86_64"
-    },
-    {
-      path = "linux_ohos_aarch64_cjnative/ohos"
-      label = ":sdk_kit_x86_64"
-    }
-   ]
+    all_sources += [
+      {
+        path = "linux_ohos_aarch64_cjnative/ohos"
+        label = ":sdk_ohos_x86_64"
+      },
+      {
+        path = "linux_ohos_aarch64_cjnative/ohos"
+        label = ":sdk_kit_x86_64"
+      },
+    ]
   }
   if (host_os == "mac") {
     if (host_cpu == "arm64") {
       all_sources += [
-      {
-        path = "aarch64-apple-darwin/macro/ohos"
-        label = ":sdk_darwin_aarch64"
-      }
+        {
+          path = "aarch64-apple-darwin/macro/ohos"
+          label = ":sdk_darwin_aarch64"
+        },
       ]
     }
   }
   deps = []
-  sources = ["//arkcompiler/cangjie_api/LICENSE"]
+  sources = [ "//arkcompiler/cangjie_api/LICENSE" ]
   foreach(item, all_sources) {
-    deps += [item.label]
+    deps += [ item.label ]
   }
 
-  outputs = [ "${target_out_dir}/build/"]
+  outputs = [ "${target_out_dir}/build/" ]
   module_source_dir = "${target_out_dir}/build"
   module_install_name = ""
 }

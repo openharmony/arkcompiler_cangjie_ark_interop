@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//build/cangjie/cjc.gni")
 
 ohos_cj_library("ohos.hitrace") {
@@ -19,13 +18,10 @@ ohos_cj_library("ohos.hitrace") {
 
   external_deps = [ "napi:ark_interop" ]
 
-  cj_deps = [
-    "../labels:ohos.labels",
-  ]
+  cj_deps = [ "../labels:ohos.labels" ]
 
   part_name = "cangjie_api"
   subsystem_name = "arkcompiler"
-  lib_name = "hitrace"
 }
 
 if (!build_ohos_sdk && !build_ohos_split_test) {
@@ -35,7 +31,7 @@ if (!build_ohos_sdk && !build_ohos_split_test) {
     sources = [
       "utf16string/utf16string.cpp",
       "utf16string/utf16string_cffi.cpp",
-      "utf16string/utf16string_dfx.cpp"
+      "utf16string/utf16string_dfx.cpp",
     ]
 
     cflags = [
@@ -88,9 +84,7 @@ ohos_cj_library("ohos.ark_interop") {
   ]
 
   external_deps = [ "napi:ark_interop" ]
-  cj_deps = [
-    "../labels:ohos.labels",
-  ]
+  cj_deps = [ "../labels:ohos.labels" ]
 
   native_deps = [
     {
@@ -98,10 +92,8 @@ ohos_cj_library("ohos.ark_interop") {
     },
   ]
 
-  enable_strip = false
   part_name = "cangjie_api"
   subsystem_name = "arkcompiler"
-  lib_name = "ark_interop"
 }
 
 ohos_cj_library("ohos.ark_interop_helper") {
@@ -133,7 +125,6 @@ ohos_cj_library("ohos.ark_interop_helper") {
 
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
-  lib_name = "ark_interop_helper"
 }
 
 cj_macro_library("ark_interop_macro") {

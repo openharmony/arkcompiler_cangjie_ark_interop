@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//build/cangjie/cjc.gni")
 
 ohos_cj_library("ohos.encoding.json") {
@@ -26,10 +25,9 @@ ohos_cj_library("ohos.encoding.json") {
 
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
-  lib_name = "encoding.json"
 }
 
-cj_target("ohos.json.static") {
+ohos_cangjie_static_library("ohos.json.static") {
   sources = [
     "json/src/json_exception.cj",
     "json/src/json_object.cj",
@@ -38,7 +36,6 @@ cj_target("ohos.json.static") {
     "json/src/write_buffer.cj",
   ]
 
-  output_type = "staticlib"
   subsystem_name = "arkcompiler"
   part_name = "cangjie_api"
 }
