@@ -57,11 +57,13 @@ protected func getGlobalContext(): JSContext {
     getGlobalRuntime().mainContext
 }
 
+/**
+ * The ArkTS runtime created by Cangjie. 
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSRuntime {
     static var globalRuntime_: ?JSRuntime = None
@@ -69,11 +71,15 @@ public class JSRuntime {
     private let engine_: JSEngine
     private let threadId_: UInt64
 
+    /**
+     * Init JSRuntime.
+     *
+     * @throws { Exception } - ArkTS Engine is Null.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init() {
         let engine = unsafe { CJ_MRT_ARKTS_CreateEngineStub() }
@@ -112,11 +118,13 @@ public class JSRuntime {
         unsafe { ARKTS_DestroyEngine(engine_) }
     }
 
+    /**
+     * ArkTS interop context.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public prop mainContext: JSContext {
         get() {
@@ -125,11 +133,13 @@ public class JSRuntime {
         }
     }
 
+    /**
+     * Get napi environment pointer.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func getNapiEnv(): CPointer<Unit> {
         unsafe { ARKTS_GetNAPIEnv(engine_) }

@@ -17,186 +17,141 @@ package ohos.ark_interop
 
 import std.collection.*
 
-/**
- * Saves the JSContext of a single function call.
- */
-@!APILevel[
-    15,
-    atomicservice: true,
-    deprecated: 16,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-]
-public class JSCurrentJSContext {
-    /**
-     * Thread-related global variables.
-     */
-    private static let currentJSContext = ThreadLocal<JSContext>()
-
-    /**
-     * Called when JSStringEx\JSArrayEx\JSHashMapEx init.
-     */
-    @!APILevel[
-        15,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public static func get() {
-        let content = currentJSContext.get() ?? throw Exception("Ark Interop: get current context failed.")
-        content
-    }
-
-    /**
-     * Set on each interop call.
-     */
-    @!APILevel[
-        15,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public static func set(input: ?JSContext) {
-        currentJSContext.set(input)
-    }
-
-    /**
-     * Unset at the end of each interop call.
-     */
-    @!APILevel[
-        15,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public static func unset() {
-        currentJSContext.set(None)
-    }
+enum JSSource<T, J> {
+    | JS(JSContext, J)
+    | CJ(T)
 }
 
+/**
+ * Function and performance expansion of JSString.
+ */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & ToString {
-    private var string_: JSString
-    private let context_: JSContext
+    private var source_: JSSource<String, JSString>
 
+    /**
+     * Init JSStringEx.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(str: String) {
-        let context = JSCurrentJSContext.get()
-        context_ = context
-        string_ = context.string(str)
+        source_ = CJ(str)
     }
 
     private init(context: JSContext, str: JSString) {
-        context_ = context
-        string_ = str
+        source_ = JS(context, str)
     }
 
+    /**
+     * Return true if and only if the two string are identical.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
-    public prop size: Int64 {
-        get() {
-            string_.toString().size
+    public operator func ==(str: JSStringEx): Bool {
+        return toString() == str.toString()
+    }
+
+    /**
+     * Return true if and only if the two string are not identical.
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Utils.Cangjie"
+    ]
+    public operator func !=(str: JSStringEx): Bool {
+        return toString() != str.toString()
+    }
+
+    /**
+     * Convert JSStringEx to String.
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Utils.Cangjie"
+    ]
+    public func toString(): String {
+        match (source_) {
+            case CJ(src) => src
+            case JS(_, j) => j.toString()
         }
     }
 
+    /**
+     * Convert JSStringEx to JSValue.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public operator func ==(str: JSStringEx): Bool {
-        return string_.toString() == str.toString()
-    }
-
-    @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public operator func !=(str: JSStringEx): Bool {
-        return string_.toString() != str.toString()
-    }
-
-    @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func toString(): String {
-        return string_.toString()
-    }
-
-    @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toJSValue(_: JSContext): JSValue {
-        return string_.toJSValue(context_)
+        match (source_) {
+            case JS(_, j) => j.toJSValue()
+            case CJ(src) =>
+                let j = context.string(src)
+                source_ = JS(context, j)
+                j.toJSValue()
+        }
     }
 
+    /**
+     * Init JSStringEx from JSValue.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSString.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx {
         let jsStr = input.asString(context)
         return JSStringEx(context, jsStr)
     }
 
+    /**
+     * Get corresponding ArkTS type name of JSStringEx.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public static func toArkTsType(): String {
         "string"
     }
 }
 
-enum JSArraySource<T> {
-    | JS(JSContext, JSArray)
-    | CJ(Array<T>)
-}
-
+/**
+ * Function and performance expansion of JSArray.
+ */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropType<T> {
     private var source_: JSArraySource<T>
 
+    /**
+     * Init JSArrayEx<T>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(arr: Array<T>) {
         source_ = CJ(arr)
@@ -206,31 +161,37 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         source_ = JS(context, arr)
     }
 
+    /**
+     * Clone JSArrayEx<T>. A deep copy of JSArrayEx<T> data will be peformed. 
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func clone(): JSArrayEx<T> {
         JSArrayEx<T>(this.toArray())
     }
 
+    /**
+     * Create a new JSArrayEx, with content being the concatenation of the current JSArrayEx follow by other JSArrayEx.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func concat(other: JSArrayEx<T>): JSArrayEx<T> {
         JSArrayEx<T>(this.toArray().concat(other.toArray()))
     }
 
+    /**
+     * The size of JSArrayEx.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public prop size: Int64 {
         get() {
@@ -241,11 +202,13 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         }
     }
 
+    /**
+     * Get the element at index.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func get(index: Int64): Option<T> {
         if (UInt64(index) >= UInt64(this.size)) {
@@ -254,31 +217,41 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         return this[index]
     }
 
+    /**
+     * Set the element at index.
+     *
+     * @throws {IndexOutOfBoundsException} if `index` is negative or greater than or equal to the size of array.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func set(index: Int64, element: T): Unit {
         this[index] = element
     }
 
+    /**
+     * Check whether the size is empty. If yes, true is returned. Otherwise, false is returned.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func isEmpty(): Bool {
         this.size == 0
     }
 
+    /**
+     * Get the element at index.
+     *
+     * @throws {IndexOutOfBoundsException} if `index` is negative or greater than or equal to the size of array.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](index: Int64): T {
         match (source_) {
@@ -287,11 +260,15 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         }
     }
 
+    /**
+     * Set the element at index.
+     *
+     * @throws {IndexOutOfBoundsException} if `index` is negative or greater than or equal to the size of array.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](index: Int64, value!: T) {
         match (source_) {
@@ -300,11 +277,13 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         }
     }
 
+    /**
+     * Convert JSArrayEx<T> to Array<T>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toArray(): Array<T> {
         match (source_) {
@@ -315,11 +294,13 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         }
     }
 
+    /**
+     * Convert JSArrayEx<T> to JSValue.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         let jsArr = match (source_) {
@@ -334,171 +315,178 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
         return jsArr.toJSValue()
     }
 
+    /**
+     * Init JSArrayEx<T> from JSValue.
+     *
+     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArray.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T> {
         let jsArr = input.asArray(context)
         return JSArrayEx<T>(context, jsArr)
     }
 
+    /**
+     * Get corresponding ArkTS type name of JSArrayEx<T>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public static func toArkTsType(): String {
         "Array"
     }
 }
 
-class JSMapFuncs {
-    let clazz: JSClass
-
-    let delete: JSFunction
-    let get: JSFunction
-    let has: JSFunction
-    let set: JSFunction
-    let clear: JSFunction
-    let keys: JSFunction
-
-    init(context: JSContext) {
-        clazz = context.global["Map"].asClass(context)
-        let proto = clazz.prototype
-        delete = proto["delete"].asFunction(context)
-        get = proto["get"].asFunction(context)
-        has = proto["has"].asFunction(context)
-        set = proto["set"].asFunction(context)
-        clear = proto["clear"].asFunction(context)
-        keys = proto["keys"].asFunction(context)
-    }
-}
-
+/**
+ * Function and performance expansion of JSMap.
+ */
 @!APILevel[
-    15,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
-public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JSKeyable & Hashable & Equatable<K> & JSInteropType<K>,
-    V <: JSInteropType<V> {
-    private var obj_: JSObject
-    private let context_: JSContext
+public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JSKeyable & Hashable & Equatable<K> &
+    JSInteropType<K>, V <: JSInteropType<V> {
 
+    private var source_: JSSource<HashMap<K, V>, JSMap>
+
+    /**
+     * Init JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(map: HashMap<K, V>) {
-        let context = JSCurrentJSContext.get()
-        context_ = context
-        obj_ = context.constants.mapFuncs.clazz.new().asObject()
-        for ((k, v) in map) {
-            context.constants.mapFuncs.set.call([k.toJSValue(context), v.toJSValue(context)], thisArg: obj_.toJSValue())
-        }
+        source_ = CJ(map)
     }
 
+    /**
+     * Init JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init() {
-        let context = JSCurrentJSContext.get()
-        context_ = context
-        obj_ = context.constants.mapFuncs.clazz.new().asObject()
+        source_ = CJ(HashMap<K, V>())
     }
 
     private init(context: JSContext, obj: JSValue) {
-        context_ = context
-        obj_ = obj.asObject()
+        source_ = JS(context, obj.asMap())
     }
 
+    /**
+     * Get the value corresponding to the key.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func get(key: K): Option<V> {
-        Option<V>.fromJSValue(context_,
-            context_.constants.mapFuncs.get.call(key.toJSValue(context_), thisArg: obj_.toJSValue()))
+        match (source_) {
+            case CJ(src) => src.get(key)
+            case JS(c, j) =>
+                let value = j.get(key)
+                Option<V>.fromJSValue(c, value)
+        }
     }
 
+    /**
+     * Clear JSHashMapEx.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func clear(): Unit {
-        context_.constants.mapFuncs.clear.call(thisArg: obj_.toJSValue())
+        match (source_) {
+            case CJ(src) => src.clear()
+            case JS(_, j) => j.clear()
+        }
     }
 
+    /**
+     * Clone JSHashMapEx<K, V>. A deep copy of JSHashMapEx<K, V> data will be peformed. 
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func clone(): JSHashMapEx<K, V> {
         JSHashMapEx<K, V>(this.toHashMap())
     }
 
+    /**
+     * Checks whether the mapping relationship corresponding to the collection key exists in this JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         deprecated: 16,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func contiansAll(keys: Collection<K>): Bool {
         this.toHashMap().contains(all: keys)
     }
 
+    /**
+     * Checks whether the mapping relationship corresponding to the collection key exists in this JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func containsAll(keys: Collection<K>): Bool {
         this.toHashMap().contains(all: keys)
     }
 
+    /**
+     * Check whether the size if empty. If yes, true is returned. Otherwise, false is returned.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func isEmpty(): Bool {
         this.size == 0
     }
 
+    /**
+     * Set value corresponding to the key.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func set(key: K, value: V): Unit {
-        context_.constants.mapFuncs.set.call([key.toJSValue(context_), value.toJSValue(context_)],
-            thisArg: obj_.toJSValue())
+        match (source_) {
+            case CJ(src) => src.add(key, value)
+            case JS(c, j) => j.set(key, value.toJSValue(c))
+        }
     }
 
+    /**
+     * Set value corresponding to the key in collection.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func setAll(elements: Collection<(K, V)>): Unit {
         for ((k, v) in elements) {
@@ -506,11 +494,13 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
         }
     }
 
+    /**
+     * Set value corresponding to the key if key does not exists in this JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func setIfAbsent(key: K, value: V): Bool {
         if (this.has(key)) {
@@ -521,22 +511,28 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
         }
     }
 
+    /**
+     * Delete key in this JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func delete(key: K): Bool {
-        Bool.fromJSValue(context_,
-            context_.constants.mapFuncs.delete.call(key.toJSValue(context_), thisArg: obj_.toJSValue()))
+        match (source_) {
+            case CJ(src) => src.remove(key).isSome()
+            case JS(_, j) => j.remove(key)
+        }
     }
 
+    /**
+     * Delete keys in this JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func deleteAll(keys: Collection<K>): Unit {
         for (key in keys) {
@@ -544,11 +540,15 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
         }
     }
 
+    /**
+     * Delete keys that do not meet the predicate condition.
+     *
+     * @throws { Exception } - Get value failed.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func deleteIf(predicate: (K, V) -> Bool): Unit {
         let keys = this.keys().toArray()
@@ -560,76 +560,106 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
         }
     }
 
+    /**
+     * Return keys.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func keys(): EquatableCollection<K> {
-        let it = context_.constants.mapFuncs.keys.call(thisArg: obj_.toJSValue()).asObject(context_)
-        let retArray = HashMap<K, Int64>()
-        while (true) {
-            let next = it["next"].asFunction(context_).call(thisArg: it.toJSValue()).asObject(context_)
-            if (Bool.fromJSValue(context_, next["done"]) == true) {
-                break
-            }
-            retArray.add(K.fromJSValue(context_, next["value"]), 0)
+        match (source_) {
+            case CJ(src) => src.keys()
+            case JS(c, j) =>
+                let it = j.rawkeys().asObject()
+                let result = HashMap<K, Int32>()
+                let builtinText = c.constants.builtinText
+                while (true) {
+                    let ret = it.callMethod(builtinText.next).asObject()
+                    if (ret[builtinText.done].toBoolean()) {
+                        break;
+                    }
+                    let value = K.fromJSValue(c, ret[builtinText.value])
+                    result.add(value, 0)
+                }
+                result.keys()
         }
-        retArray.keys()
     }
 
+    /**
+     * Return values.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func values(): Collection<V> {
         this.toHashMap().values()
     }
 
+    /**
+     * The size of JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public prop size: Int64 {
         get() {
-            Int64.fromJSValue(context_, obj_["size"])
+            match (source_) {
+                case CJ(src) => src.size
+                case JS(_, j) => j.size
+            }
         }
     }
 
+    /**
+     * Checks whether the mapping relationship corresponding to the key exists in this JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func has(key: K): Bool {
-        Bool.fromJSValue(context_,
-            context_.constants.mapFuncs.has.call(key.toJSValue(context_), thisArg: obj_.toJSValue()))
-    }
-
-    @!APILevel[
-        15,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func toHashMap(): HashMap<K, V> {
-        let keys = this.keys().toArray()
-        HashMap<K, V>(this.size) {
-            index: Int64 => (keys[index], this.get(keys[index]) ?? throw Exception("JSHashMapEx: get value failed."))
+        match (source_) {
+            case CJ(src) => src.contains(key)
+            case JS(_, j) => j.has(key)
         }
     }
 
+    /**
+     * Convert JSHashMapEx<K, V> to HashMap<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
+    ]
+    public func toHashMap(): HashMap<K, V> {
+        match (source_) {
+            case CJ(src) => src
+            case JS(c, j) =>
+                let result = HashMap<K, V>()
+                for (k in keys()) {
+                    result[k] = V.fromJSValue(c, j.get(k))
+                }
+                result
+        }
+    }
+
+    /**
+     * Get the value corresponding to the key.
+     *
+     * @throws { NoneValueException } - Value does not exist.
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](key: K): V {
         return match (get(key)) {
@@ -638,41 +668,55 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K, V>> where K <: JS
         }
     }
 
+    /**
+     * Set value corresponding to the key.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](key: K, value!: V): Unit {
         set(key, value)
     }
 
+    /**
+     * Convert JSHashMapEx<K, V> to JSValue.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
-    public func toJSValue(_: JSContext): JSValue {
-        obj_.toJSValue()
+    public func toJSValue(c: JSContext): JSValue {
+        match (source_) {
+            case JS(_, j) => j.toJSValue()
+            case CJ(src) =>
+                let j = JSMap.fromHashMap(c, src)
+                source_ = JS(c, j)
+                j.toJSValue()
+        }
     }
 
+    /**
+     * Init JSHashMapEx<K, V> from JSValue.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<K, V> {
         return JSHashMapEx<K, V>(context, input)
     }
 
+    /**
+     * Get corresponding ArkTS type name of JSHashMapEx<K, V>.
+     */
     @!APILevel[
-        15,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public static func toArkTsType(): String {
         "Map"
