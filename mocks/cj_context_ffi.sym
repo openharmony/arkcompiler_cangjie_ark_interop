@@ -23,6 +23,7 @@ FfiContextGetBundleCodeDir;
 FfiContextGetDistributedFilesDir;
 FfiContextGetCloudFileDir;
 FfiContextGetArea;
+FfiContextSwitchArea;
 FfiContextGetApplicationContext;
 FfiContextGetGroupDir;
 FfiContextCreateModuleContext;
