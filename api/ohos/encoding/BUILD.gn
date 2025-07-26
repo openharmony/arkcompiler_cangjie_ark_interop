@@ -32,6 +32,7 @@ ohos_cangjie_static_library("ohos.json.static") {
     "json/src/json_exception.cj",
     "json/src/json_object.cj",
     "json/src/json_value.cj",
+    "json/src/parse_json.cj",
     "json/src/native.cj",
     "json/src/write_buffer.cj",
   ]
