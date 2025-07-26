@@ -226,9 +226,7 @@ class IDLClass {
             $(initFuncTokens)
             public static func $(constructorName)(context: JSContext, callInfo: JSCallInfo): JSValue {
                 $(argx)
-                JSCurrentJSContext.set(context)
                 let clazz = $(identifier_)($callArgs)
-                JSCurrentJSContext.unset()
                 let thisArg = callInfo.thisArg
                 let thisObject = thisArg.asObject(context)
                 let jsExternal = context.external(clazz)
@@ -251,9 +249,7 @@ class IDLClass {
         return quote(
             public static func $(genGetFuncName(identifier))(context: JSContext, callInfo: JSCallInfo): JSValue {
                 $(genClazzTokens(quote(clazz)))
-                JSCurrentJSContext.set(context)
                 let RET = clazz.$(identifier)
-                JSCurrentJSContext.unset()
                 return $(IDLUtil.cangjie2JSValue(declType, Tokens(), quote(RET), quote(context)))
             }
         )
@@ -264,9 +260,7 @@ class IDLClass {
             public static func $(genSetFuncName(identifier))(context: JSContext, callInfo: JSCallInfo): JSValue {
                 $(genClazzTokens(quote(clazz)))
                 $(IDLUtil.jsvalue2Cangjie(declType, quote(value), quote(callInfo[0]), quote(context)))
-                JSCurrentJSContext.set(context)
                 clazz.$(identifier) = value
-                JSCurrentJSContext.unset()
                 return context.undefined().toJSValue()
             }
         )
@@ -312,9 +306,7 @@ class IDLClass {
             public static func $(newFuncIdentifier)(context: JSContext, callInfo: JSCallInfo): JSValue {
                 $(genClazzTokens(quote(clazz)))
                 $(argx)
-                JSCurrentJSContext.set(context)
                 let RET = clazz.$(identifier)($callArgs)
-                JSCurrentJSContext.unset()
                 $(IDLUtil.cangjie2JSValue(funcDecl.declType, Tokens(), quote(RET), quote(context)))
             }
         )

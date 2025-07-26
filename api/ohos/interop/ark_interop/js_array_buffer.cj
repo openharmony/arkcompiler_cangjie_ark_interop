@@ -48,10 +48,9 @@ func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
 }
 
 @!APILevel[
-    13,
-    atomicservice: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    21,
+    syscap: "SystemCapability.Utils.Cangjie",
+    stagemodelonly: true
 ]
 public class JSArrayBuffer <: JSHeapObject {
     static var bufferFinalizers_ = SlabMT<JSBufferFinalizer>()
@@ -138,11 +137,13 @@ public class JSArrayBuffer <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
+    /**
+     * Binding memory's size in byte.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public prop byteLength: Int32 {
         get() {
@@ -156,11 +157,13 @@ public class JSArrayBuffer <: JSHeapObject {
         }
     }
 
+    /**
+     * Read binding memory in bytes.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func readBytes(): Array<Byte> {
         if (let Some(bytes) <- buffer_) {
@@ -178,11 +181,13 @@ public class JSArrayBuffer <: JSHeapObject {
         }
     }
 
+    /**
+     * Read binding memory to Array<bytes>.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toUInt8Array(): Array<UInt8> {
         let size = Int64(byteLength)
@@ -195,11 +200,13 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<Int8>.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toInt8Array(): Array<Int8> {
         let size = Int64(byteLength)
@@ -212,11 +219,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<UInt16>.
+     *
+     * @throws { Exception } - Binding memory's size is not pow of 2.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toUInt16Array(): Array<UInt16> {
         if ((byteLength % 2) != 0) {
@@ -232,11 +243,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<Int16>.
+     *
+     * @throws { Exception} - Binding memory's size is not pow of 2.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toInt16Array(): Array<Int16> {
         if ((byteLength % 2) != 0) {
@@ -252,11 +267,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<Int32>.
+     *
+     * @throws { Exception} - Binding memory's size is not pow of 4.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toInt32Array(): Array<Int32> {
         if ((byteLength % 4) != 0) {
@@ -272,11 +291,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<UInt32>.
+     * 
+     * @throws { Exception } - Binding memory's size is not pow of 4.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toUInt32Array(): Array<UInt32> {
         if ((byteLength % 4) != 0) {
@@ -292,11 +315,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<Float32>.
+     *
+     * @throws { Exception } - Binding memory's size is not pow of 4.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toFloat32Array(): Array<Float32> {
         if ((byteLength % 4) != 0) {
@@ -312,11 +339,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<UInt64>.
+     *
+     * @throws { Exception } - Binding memory's size is not pow of 8.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toUInt64Array(): Array<UInt64> {
         if ((byteLength % 8) != 0) {
@@ -332,11 +363,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<Int64>.
+     * 
+     * @throws { Exception } - Binding memory's size is not pow of 8.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toInt64Array(): Array<Int64> {
         if ((byteLength % 8) != 0) {
@@ -352,11 +387,15 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Read binding memory to Array<Float64>.
+     *
+     * @throws { Exception } - Binding memory's size is not pow of 8.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toFloat64Array(): Array<Float64> {
         if ((byteLength % 8) != 0) {
@@ -372,11 +411,13 @@ public class JSArrayBuffer <: JSHeapObject {
         bytes
     }
 
+    /**
+     * Return the JSValue of arrayBuffer in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        21,
+        syscap: "SystemCapability.Utils.Cangjie",
+        stagemodelonly: true
     ]
     public func toArrayBufferJSValue(): JSValue {
         let arrayBufferCls = context.constants.typedArray.arrayBuffer.data
@@ -401,11 +442,13 @@ public class JSArrayBuffer <: JSHeapObject {
         return [object["buffer"], object["byteOffset"], object["byteLength"]]
     }
 
+    /**
+     * Return the JSValue of uint8Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toUInt8ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint8Array.data
@@ -415,11 +458,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of uint8ClampedArray in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toUInt8ClampedArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint8Clamped.data
@@ -429,11 +474,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of int8Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toInt8ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int8Array.data
@@ -443,11 +490,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of uint16Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toUInt16ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint16Array.data
@@ -457,11 +506,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of int16Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toInt16ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int16Array.data
@@ -471,11 +522,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of uint32Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toUInt32ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint32Array.data
@@ -485,11 +538,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of int32Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toInt32ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int32Array.data
@@ -499,11 +554,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of uint64Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toUInt64ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint64Array.data
@@ -513,11 +570,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of int64Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toInt64ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int64Array.data
@@ -527,11 +586,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of float32Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toFloat32ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.float32Array.data
@@ -541,11 +602,13 @@ public class JSArrayBuffer <: JSHeapObject {
         clazz.new(toArrayJSValue())
     }
 
+    /**
+     * Return the JSValue of float64Array in ArkTS.
+     */
     @!APILevel[
-        19,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func toFloat64ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.float64Array.data

@@ -77,9 +77,7 @@ class IDLFunction {
         } else {
             callSrcFunc.append(
                 quote(
-                JSCurrentJSContext.set(context)
                 let RET = $(identifier_)($callArgs)
-                JSCurrentJSContext.unset()
                 $(IDLUtil.cangjie2JSValue(retType_, Tokens(), quote(RET), quote(context)))
             )
             )
