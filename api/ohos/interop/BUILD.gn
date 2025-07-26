@@ -13,17 +13,6 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("ohos.hitrace") {
-  sources = [ "hitrace/hitrace.cj" ]
-
-  external_deps = [ "napi:ark_interop" ]
-
-  cj_deps = [ "../labels:ohos.labels" ]
-
-  part_name = "cangjie_api"
-  subsystem_name = "arkcompiler"
-}
-
 if (!build_ohos_sdk && !build_ohos_split_test) {
   ohos_shared_library("utf16string") {
     include_dirs = [ "utf16string" ]
@@ -81,6 +70,7 @@ ohos_cj_library("ohos.ark_interop") {
     "ark_interop/jsstring.cj",
     "ark_interop/slab.cj",
     "ark_interop/utf16_string.cj",
+    "ark_interop/js_map.cj",
   ]
 
   external_deps = [ "napi:ark_interop" ]

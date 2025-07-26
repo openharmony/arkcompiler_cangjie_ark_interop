@@ -54,6 +54,9 @@ class JSBuiltinText {
     let prototype: JSString
     let __proto__: JSString
     let __cj_object__: JSSymbol
+    let next: JSString
+    let done: JSString
+    let value: JSString
 
     init(context: JSContext) {
         WeakSet = context.string("WeakSet")
@@ -71,6 +74,31 @@ class JSBuiltinText {
         prototype = context.string("prototype")
         __proto__ = context.string("__proto__")
         __cj_object__ = context.symbol(description: "__cj_object__")
+        next = context.string("next")
+        done = context.string("done")
+        value = context.string("value")
+    }
+}
+
+class JSMapFuncs {
+    let clazz: JSClass
+
+    let delete: JSFunction
+    let get: JSFunction
+    let has: JSFunction
+    let set: JSFunction
+    let clear: JSFunction
+    let keys: JSFunction
+
+    init(context: JSContext) {
+        clazz = context.global["Map"].asClass()
+        let proto = clazz.prototype
+        delete = proto["delete"].asFunction()
+        get = proto["get"].asFunction()
+        has = proto["has"].asFunction()
+        set = proto["set"].asFunction()
+        clear = proto["clear"].asFunction()
+        keys = proto["keys"].asFunction()
     }
 }
 

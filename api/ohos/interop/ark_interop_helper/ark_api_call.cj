@@ -69,7 +69,7 @@ protected func arktsObjApiCallAsync<T>(obj: JSObject, funcName: String, args: ()
         ret: Box<?T>, exception: Box<?Exception>, syn: SyncCounter =>
         let context = getGlobalContext()
         let call = obj.callMethod(funcName, args())
-        let promise = call.asPromise(context)
+        let promise = call.asPromise()
         let onResolved = context.function(
             {
                 ctx: JSContext, callInfo: JSCallInfo =>
@@ -102,7 +102,7 @@ protected func getJSModule(name: String, prefix: ?String): JSObject {
         case Some(v) => v
         case None =>
             let ctx = getGlobalContext()
-            let module = ctx.requireSystemNativeModule(name, prefix: prefix).asObject(ctx)
+            let module = ctx.requireSystemNativeModule(name, prefix: prefix).asObject()
             moduleMap.add(name, module)
             module
     }
@@ -114,7 +114,7 @@ protected func arktsGlobalApiCallAsync<T>(moduleName: String, modulePrefix: ?Str
         ret: Box<?T>, exception: Box<?Exception>, syn: SyncCounter =>
         let context = getGlobalContext()
         let call = getJSModule(moduleName, modulePrefix).callMethod(funcName, args())
-        let promise = call.asPromise(context)
+        let promise = call.asPromise()
         let onResolved = context.function(
             {
                 ctx: JSContext, callInfo: JSCallInfo =>

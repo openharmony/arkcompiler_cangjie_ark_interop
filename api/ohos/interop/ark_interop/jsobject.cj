@@ -78,22 +78,26 @@ foreign func ARKTS_DefineOwnPropertyV2(env: JSEnv, object: JSValue_, key: JSValu
 
 foreign func ARKTS_DefineAccessorsV2(env: JSEnv, object: JSValue_, key: JSValue_, accessor: JSAccessor): Bool
 
+/**
+ * Base class of a safe reference to ArkTS object.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 abstract sealed class JSObjectBase <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
     }
 
+    /**
+     * Check whether the current object is an instance of the target ArkTS class. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func instanceOf(clazz: JSClass): Bool {
         instanceOfByValue(context.env, innerValue, clazz.innerValue)
@@ -103,22 +107,26 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         unsafe { ARKTS_InstanceOf(env, object, clazz) }
     }
 
+    /**
+     * Check whether the current object has the target property. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func hasProperty(key: JSKeyable): Bool {
         let keyValue = key.toJSValue(context)
         unsafe { ARKTS_HasOwnProperty(context.env, innerValue, keyValue.value) }
     }
 
+    /**
+     * Get the property value of the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func getProperty(key: JSKeyable): JSValue {
         let keyValue = key.toJSValue(context)
@@ -126,21 +134,27 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         JSValue(context, result)
     }
 
+    /**
+     * Get the property value of the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](key: JSKeyable): JSValue {
         getProperty(key)
     }
 
+    /**
+     * Call method corressponding to the key of the JSObject.
+	 *
+     * @throws {JSTypeMisMatch} - Object is not JSFunction.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue {
         let fun = getProperty(key)
@@ -150,32 +164,38 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         JSFunction.callWithArr(context, fun.value, innerValue, args)
     }
 
+    /**
+     * Set property to the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         let keyValue = key.toJSValue(context)
         unsafe { ARKTS_SetProperty(context.env, innerValue, keyValue.value, setValue.value) }
     }
 
+    /**
+     * Set property to the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](key: JSKeyable, value!: JSValue): Unit {
         setProperty(key, value)
     }
 
+    /**
+     * Define property on the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func defineOwnProperty(key: JSKeyable, setValue: JSValue, isWritable!: Bool = true,
         isEnumerable!: Bool = true, isConfigurable!: Bool = true): Bool {
@@ -184,11 +204,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         unsafe { ARKTS_DefineOwnPropertyV2(context.env, innerValue, keyValue.value, setValue.value, flags) }
     }
 
+    /**
+     * Define accessor on the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?JSFunction = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -207,11 +229,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         unsafe { ARKTS_DefineAccessorsV2(context.env, innerValue, keyValue.value, accessor) }
     }
 
+    /**
+     * Define accessor on the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSLambda = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -231,26 +255,28 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         unsafe { ARKTS_DefineAccessorsV2(context.env, innerValue, keyValue.value, accessor) }
     }
 
+    /**
+     * Get all property names of the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func keys(): Array<String> {
         let keyJArr = JSValue(context, unsafe { ARKTS_EnumOwnProperties(context.env, innerValue) })
-        if (!keyJArr.isArray(context)) {
+        if (!keyJArr.isArray()) {
             return []
         }
-        let jArr = keyJArr.asArray(context)
+        let jArr = keyJArr.asArray()
         return Array<String>(jArr.size) {
             index =>
             let raw = jArr[index]
             if (raw.isString()) {
-                return raw.toString(context)
+                return raw.toString()
             }
             if (raw.isSymbol()) {
-                let symbol = raw.asSymbol(context)
+                let symbol = raw.asSymbol()
                 return "symbol[\"${symbol.description}\"]"
             }
             if (raw.isNumber()) {
@@ -260,25 +286,32 @@ abstract sealed class JSObjectBase <: JSHeapObject {
         }
     }
 
+    /**
+     * Attach target JSValue to the current object. 
+     */
     func setAttachInfo(target: JSValue): Unit {
         this[context.constants.builtinText.__cj_object__] = target
     }
 
+    /**
+     * Attach target JSExternal to the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func attachCJObject(target: JSExternal): Unit {
         setAttachInfo(target.toJSValue())
     }
 
+    /**
+     * Get the target JSExternal attached to the current object. 
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func getAttachInfo(): ?JSExternal {
         let jValue = this[context.constants.builtinText.__cj_object__]
@@ -289,11 +322,13 @@ abstract sealed class JSObjectBase <: JSHeapObject {
     }
 }
 
+/**
+ * A secure reference to ArkTS object.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSObject <: JSObjectBase {
     init(context: JSContext, value: JSValue_) {
