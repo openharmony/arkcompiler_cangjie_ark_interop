@@ -61,4 +61,11 @@ protected struct CArrFloat32 {
         }
         Array<Float32>(size) {i => unsafe { head.read(i) }}
     }
+
+    protected func toArrayF64(): Array<Float64> {
+        if (head.isNull()) {
+            return Array<Float64>()
+        }
+        Array<Float64>(size) {i => unsafe { Float64(head.read(i)) }}
+    }
 }
