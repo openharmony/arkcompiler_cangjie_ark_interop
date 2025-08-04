@@ -36,19 +36,10 @@ struct CJModuleCallbacks {
 
 foreign func ARKTS_SetCJModuleCallback(callbacks: CPointer<CJModuleCallbacks>): Unit
 
-/**
- * Alias for function which is `(JSContext, JSObject) -> Unit`.
- */
 public type ModuleRegister = (JSContext, JSObject) -> Unit
 
-/**
- * Alias for function which is `(JSContext) -> JSClass`.
- */
 public type ClassRegister = (JSContext) -> JSClass
 
-/**
- * Alias for function which is `(JSContext) -> JSFunction`.
- */
 public type FuncRegister = (JSContext) -> JSFunction
 
 @C
@@ -131,13 +122,11 @@ func throwNativeErrorToCJ(message: CString): Unit {
     throw JSInteropNativeError(msg)
 }
 
-/**
- * A static class that provides interface for exporting symbol registration.
- */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public class JSModule {
     private static var lastModule_ = JSModule()
@@ -159,49 +148,41 @@ public class JSModule {
         unsafe { ARKTS_SetCJModuleCallback(inout moduleCallbacks) }
     }
 
-    /**
-     * Register the interface to be exported to ArkTS.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public static func registerModule(register: ModuleRegister): Unit {
         lastModule_.addExporter(register)
     }
 
-    /**
-     * Register a class to be exported to ArkTS.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public static func registerClass(name: String, register: ClassRegister): Unit {
         lastModule_.addClass(name, register)
     }
 
-    /**
-     * Register a function to be exported to ArkTS.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public static func registerFunc(name: String, register: FuncRegister): Unit {
         lastModule_.addFunc(name, register)
     }
 
-    /**
-     * Register a function to be exported to ArkTS.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public static func registerFunc(name: String, lambda: JSLambda): Unit {
         lastModule_.addRawFunc(name, lambda)

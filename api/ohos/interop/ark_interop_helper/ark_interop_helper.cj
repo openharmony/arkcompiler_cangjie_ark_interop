@@ -16,37 +16,21 @@
 package ohos.ark_interop_helper
 
 internal import ohos.ark_interop.*
-internal import ohos.app.ability.ui_ability.*
 internal import ohos.labels.*
 import std.collection.*
-
-/**
- * Alias for the type CPointer<Unit>.
- */
-public type FAContext = CPointer<Unit>
-
-/**
- * Alias for the type CPointer<Unit>.
- */
-public type StageContext = CPointer<Unit>
 
 foreign func ArkTsValuetoNapiValue(env: napi_env, ark_value: JSValue_): napi_value
 
 foreign func IsStageMode(context: napi_value, env: napi_env): Bool
 // foreign func GetContextFAMode(env: napi_env): FAContext
-foreign func GetContextStageMode(env: napi_env, object: napi_value): StageContext
 
 foreign func NapiValueToArkTsValue(value: CPointer<Unit>): JSValue_
 
-foreign func FFICreateNapiValueJsAbilityContext(env: CPointer<Unit>, context: StageContext): CPointer<Unit>
-
-/**
- * Determine whether in application mode. 
- */
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public func isStageMode(env: napi_env, context: napi_value): Bool {
     unsafe {
@@ -54,13 +38,11 @@ public func isStageMode(env: napi_env, context: napi_value): Bool {
     }
 }
 
-/**
- * Convert JSValue to napi_value.
- */
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value {
     unsafe {
@@ -68,49 +50,11 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
     }
 }
 
-/**
- * Get application context based on napi environment and object information.
- */
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
-]
-public func getContextStageMode(env: napi_env, object: napi_value): StageContext {
-    unsafe {
-        GetContextStageMode(env, object)
-    }
-}
-
-/**
- * Get ArkTS interop context based on runtime.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
-]
-public func getJSContext(runtime: JSRuntime, abilityContext: UIAbilityContext): JSValue {
-    let stageContext = getStageContext(abilityContext)
-    let napiValue = unsafe {
-        FFICreateNapiValueJsAbilityContext(runtime.getNapiEnv(), stageContext)
-    }
-    return JSValue(runtime.mainContext, unsafe {
-        NapiValueToArkTsValue(napiValue)
-    })
-}
-
-protected func getJSContext(abilityContext: UIAbilityContext): JSValue {
-    getJSContext(getGlobalRuntime(), abilityContext)
-}
-
-/**
- * Convert HashMap to JSValue.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public func mapToJSValue<T>(
     context: JSContext,
@@ -128,13 +72,11 @@ public func mapToJSValue<T>(
     }
 }
 
-/**
- * Convert JSValue to HashMap.
- */
 @!APILevel[
-    21,
+    19,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public func mapFromJSValue<T>(
     context: JSContext,

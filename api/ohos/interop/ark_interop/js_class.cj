@@ -25,14 +25,11 @@ foreign func ARKTS_New(env: JSEnv, constructor: JSValue_, argCount: Int32, args:
 
 public type OverrideMethod = (JSContext, JSCallInfo, JSFunction) -> JSValue
 
-/**
- * The JSClass object is used to represent a safe reference to the ArkTS class (constructor).
- * Method and accessors can be added to this class, and instances of this class can be created.
- */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public class JSClass <: JSHeapObject {
     static func createClass(context: JSContext, constructor: JSLambda, superClass: ?JSClass): JSValue_ {
@@ -70,15 +67,11 @@ public class JSClass <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
-    /**
-     * Prototype obejct of class.
-     *
-     * @throws { NoneValueException } - The value of prototype is None.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public prop prototype: JSObject {
         get() {
@@ -86,26 +79,22 @@ public class JSClass <: JSHeapObject {
         }
     }
 
-    /**
-     * Instantiate a new object through the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func new(): JSValue {
         let result = unsafe { ARKTS_New(context.env, innerValue, 0, CPointer<JSValue_>()) }
         JSValue(context, result)
     }
 
-    /**
-     * Instantiate a new object through the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func new(arg: JSValue): JSValue {
         var mutableArg = arg.value
@@ -113,13 +102,11 @@ public class JSClass <: JSHeapObject {
         JSValue(context, result)
     }
 
-    /**
-     * Instantiate a new object through the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func new(args: Array<JSValue>): JSValue {
         let result = if (args.size > 0) {
@@ -138,61 +125,51 @@ public class JSClass <: JSHeapObject {
         JSValue(context, result)
     }
 
-    /**
-     * Add a data member to the ArkTS class, typically used to define immutable property.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func addProperty(key: JSKeyable, value: JSValue): Unit {
         prototype.defineOwnProperty(key, value, isWritable: false, isEnumerable: false)
     }
 
-    /**
-     * Define a pair of getter and setter for the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?JSFunction = None): Unit {
         prototype.defineOwnAccessor(key, getter: getter, setter: setter, isEnumerable: false)
     }
 
-    /**
-     * Define a pair of getter and setter for the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSLambda = None): Unit {
         prototype.defineOwnAccessor(key, getter: getter, setter: setter, isEnumerable: false)
     }
 
-    /**
-     * Define a method for the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func addMethod(key: JSKeyable, method: JSFunction): Unit {
         prototype.defineOwnProperty(key, method.toJSValue(), isWritable: false, isEnumerable: false)
     }
 
-    /**
-     * Define a method for the ArkTS class.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func addMethod(key: JSKeyable, method: JSLambda): Unit {
         prototype.defineOwnProperty(key, JSValue(context, JSFunction.createFunction(context, method)), isWritable: false,

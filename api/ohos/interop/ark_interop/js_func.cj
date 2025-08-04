@@ -41,15 +41,11 @@ struct JSCallInfoPrivate {
     }
 }
 
-/**
- * Information related to an ArkTS function call. It can obtain the `this` pointer, retrieve the number of
- * arguments, and get argument by index. Each ArkTS function call saves the argument list and other related
- * information on the ArkTS stack. JSCallInfo is a pointer to this information.
- */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public struct JSCallInfo {
     JSCallInfo(
@@ -57,13 +53,11 @@ public struct JSCallInfo {
         let callInfo: JSCallInfoPrivate
     ) {}
 
-    /**
-     * Number of input arguments.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public prop count: Int64 {
         get() {
@@ -71,13 +65,11 @@ public struct JSCallInfo {
         }
     }
 
-    /**
-     * `this` pointer.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public prop thisArg: JSValue {
         get() {
@@ -86,15 +78,11 @@ public struct JSCallInfo {
         }
     }
 
-    /**
-     * Get argument at index.
-     * 
-     * @throws { JSArrayRangeMisMatch } - Index is less than 0.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public operator func [](index: Int64): JSValue {
         if (index >= count) {
@@ -108,9 +96,6 @@ public struct JSCallInfo {
     }
 }
 
-/**
- * Alias for function which is `(JSContext, JSCallInfo) -> JSValue`.
- */
 public type JSLambda = (JSContext, JSCallInfo) -> JSValue
 
 @C
@@ -136,13 +121,11 @@ func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
     context.sharedLambda_.remove(lambdaId)
 }
 
-/**
- * A safe reference to the ArkTS function.
- */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public class JSFunction <: JSHeapObject {
     static func createFunction(context: JSContext, lambda: JSLambda): JSValue_ {
@@ -218,37 +201,31 @@ public class JSFunction <: JSHeapObject {
         }
     }
 
-    /**
-     * An ArkTS function call with None argument.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithNoneArg(context, innerValue, thisArg.value)
     }
 
-    /**
-     * An ArkTS function call with one argument.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithOneArg(context, innerValue, thisArg.value, arg)
     }
 
-    /**
-     * An ArkTS function call with multiple arguments.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithArr(context, innerValue, thisArg.value, args)

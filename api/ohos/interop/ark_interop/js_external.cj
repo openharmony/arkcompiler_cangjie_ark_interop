@@ -33,35 +33,32 @@ func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
 }
 
 /**
- * Base class of objects shared with arkts. It has an unique id. When shared to arkts, the object would be kept to
- *  a global table. The id used to index the object.
+ * base class of objects to share with arkts, it has an unique id, when shared to arkts, the object would be kept to
+ *  a global table, the id used to index the object.
  */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public open class SharedObject {
     var nativeId_: Int64 = -1
     var shareCnt_: Int64 = 0
 
-    /**
-     * Init SharedObject.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public init() {}
 
-    /**
-     * Id of the SharedObject in global table.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public prop nativeId: Int64 {
         get() {
@@ -71,12 +68,13 @@ public open class SharedObject {
 }
 
 /**
- * The js presentation of a cj object. It holds the id of cj object, and affects the lifecycle of the cj object.
+ * the js presentation of an cj object, it holds the id of cj object, and affects the lifecycle of the cj object
  */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public class JSExternal <: JSHeapObject {
     static func createExternal(context: JSContext, data: SharedObject): JSValue_ {
@@ -112,25 +110,21 @@ public class JSExternal <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
-    /**
-     * Get sharedObject by id.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func getData(): SharedObject {
         context.sharedObjects_[id]
     }
 
-    /**
-     * Cast sharedObject to Option<T>.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func cast<T>(): Option<T> where T <: SharedObject {
         getData() as T
