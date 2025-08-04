@@ -34,15 +34,11 @@ foreign func ARKTS_PromiseThen(env: JSEnv, prom: JSValue_, onFulfilled: JSValue_
 
 foreign func ARKTS_PromiseCatch(env: JSEnv, prom: JSValue_, callback: JSValue_): Unit
 
-/**
- * A callback encapsulation object. JSPromise aims to provide consistent encapsulation for callbacks, significantly
- * enhancing its usability by combining the syntactic sugar of async and await. The lifecycle of JSPromise exceeds the 
- * referenced ArkTS object.
- */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public class JSPromise <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -53,13 +49,11 @@ public class JSPromise <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
-    /**
-     * Register result processing callback function.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit {
         let onFulfilledValue = onFulfilled.innerValue
@@ -73,13 +67,11 @@ public class JSPromise <: JSHeapObject {
         }
     }
 
-    /**
-     * Register exception processing callback function.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func catchError(callback: JSFunction): Unit {
         unsafe {
@@ -90,12 +82,13 @@ public class JSPromise <: JSHeapObject {
 
 /**
  * JSPromiseCapability is not a JSValue but a JSVM internal type,
- * the main purpose is to enhance performance.
+ * the main purpose is enhance performance
  */
 @!APILevel[
-    21,
+    13,
+    atomicservice: true,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
 ]
 public class JSPromiseCapability {
     static func create(context: JSContext): JSPromiseCap {
@@ -112,15 +105,11 @@ public class JSPromiseCapability {
         isComplete = false
     }
 
-    /**
-     * Notify promise of noraml completion and commits the return value.
-     *
-     * @throws { JSObjUseAfterFree } - JSPromiseCapability has been fulfilled or rejected.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func resolve(value: JSValue): Unit {
         if (isComplete) {
@@ -132,15 +121,11 @@ public class JSPromiseCapability {
         isComplete = true
     }
 
-    /**
-     * Submit an exception to promise.
-     *
-     * @throws { JSObjUseAfterFree } - JSPromiseCapability has been fulfilled or rejected.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func reject(value: JSValue): Unit {
         if (isComplete) {
@@ -152,15 +137,11 @@ public class JSPromiseCapability {
         isComplete = true
     }
 
-    /**
-     * Convert JSPromiseCapability to JSValue.
-     * 
-     * @throws { JSObjUseAfterFree } - JSPromiseCapability has been fulfilled or rejected.
-     */
     @!APILevel[
-        21,
+        13,
+        atomicservice: true,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
     ]
     public func toJSValue(): JSValue {
         if (isComplete) {
