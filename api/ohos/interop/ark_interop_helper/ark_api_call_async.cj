@@ -16,7 +16,8 @@
 package ohos.ark_interop_helper
 
 import std.collection.concurrent.ConcurrentHashMap
-import ohos.base.{BusinessException, Main, AppLog}
+import ohos.base.{BusinessException, Main}
+import ohos.hilog.Hilog
 import std.sync.Mutex
 import ohos.ark_interop.*
 import std.convert.*
@@ -119,7 +120,7 @@ protected func asyncCallbackWrapper<T>(ctx: JSContext, callback: (?BusinessExcep
                 }
                 callback(err, data)
             } catch (e: Exception) {
-                AppLog.error(e)
+                Hilog.error(0xD003903, "Cangjie-App", "${e}")
                 throw e
             }
             ctx.undefined().toJSValue()
