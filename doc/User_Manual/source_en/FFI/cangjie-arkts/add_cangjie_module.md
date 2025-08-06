@@ -30,7 +30,7 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
 
    ![image-20250415152004742](../../figures/add_static_cangjie_module_3.png)
 
-4. In the **types->index.cj** file, add interoperability code. Take the following code as an example:
+4. In the **cangjielib->src->main->cangjie->index.cj** file, add interoperability code. Take the following code as an example:
 
    ```cangjie
    // Package name
@@ -53,15 +53,15 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
    }
    ```
 
-5. Under **cangjielib->src->main->cangjie**, create an interoperability folder named **types**.
+5. Under **cangjielib->src->main->cangjie**, create an interoperability folder named **types** and a **libohos_app_cangjie_entry** folder under **types**.
 
-6. In **types->libohos_app_cangjie_entry->Index.d.ts**, implement the ArkTS function corresponding to `sayHelloCJ` in the above `index.cj`:
+6. Create an **Index.d.ts** file under **types->libohos_app_cangjie_entry** that implements the ArkTS function corresponding to `sayHelloCJ` in the above `index.cj`:
 
    ```ts
    export declare function sayHelloCJ(s: string): string
    ```
 
-7. Configure the **name** field in **types->libohos_app_cangjie_entry->oh-package.json5** to match the package name in the interoperability code. This package name must be consistent with the one configured in **cangjielib->cjpm.toml**. For example, set **name** to `bohos_app_cangjie_cangjielib.so`.
+7. Create an **oh-package.json5** file under **types->libohos_app_cangjie_entry** with the following content. In this file, the **name** field should match the package name in the interoperability code. This package name must be consistent with the one configured in **cangjielib->cjpm.toml**. For example, set **name** to `libohos_app_cangjie_cangjielib.so`.
 
    ```json
    {
@@ -78,7 +78,7 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
    // ...
      "dependencies": {
        "cangjielib": "file:../cangjielib",
-       "libohos_app_cangjie_cangjielib.so": "file:../cangjielib/src/main/cangjie/types/libohos_app_cangjie_entry",
+       "libohos_app_cangjie_cangjielib.so": "file:../cangjielib/src/main/cangjie/types/libohos_app_cangjie_entry"
      }
    // ...
    ```

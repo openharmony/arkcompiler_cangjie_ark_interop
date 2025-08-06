@@ -146,11 +146,11 @@ ArkTS side code:
 
 ```javascript
 interface CJLib {
-    callArkTSWithExp(callback: ()=>void): void
+    callArkTSWithExp(callback: () => void): void
 }
 
 function doSth(lib: CJLib): void {
-    lib.callArkTSWithExp(()=> {
+    lib.callArkTSWithExp(() => {
         throw new Error("this is an error")
     })
 }
@@ -403,7 +403,7 @@ Corresponding ArkTS interface declaration for Cangjie code:
 ```javascript
 export declare interface CJData {
     name: string;
-    callback: ()=>void;
+    callback: () => void;
 }
 
 export declare function createCJData(): CJData;
@@ -415,7 +415,7 @@ ArkTS side code:
 import { createCJData, CJData } from "libohos_app_cangjie_entry.so"
 
 const data: CJData = createCJData("123")
-data.callback = ()=> {
+data.callback = () => {
     console.log(data.name)
 }
 ```
@@ -601,7 +601,7 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
             let result = context.number(value).toJSValue()
             // Invoke JavaScript callback
             callback.call(result)
-        }  
+        }
     }
 
     // Return void

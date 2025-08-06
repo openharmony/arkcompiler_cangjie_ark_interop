@@ -57,7 +57,7 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
 
     ```typescript
     // libohos_app_cangjie_entry.so 对应的 Index.d.ts
-    export declare function addNumberAsync(a: number, b: number, callback: (result: number)=>void): void;
+    export declare function addNumberAsync(a: number, b: number, callback: (result: number) => void): void;
     ```
 
 3. ArkTS 调用仓颉函数：
@@ -67,7 +67,7 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
 
     // 调用仓颉函数
-    addNumberAsync(1, 2, (result)=> {
+    addNumberAsync(1, 2, (result) => {
         console.log("1 + 2 = " + result);
     });
     ```
@@ -80,6 +80,15 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
     package ohos_app_cangjie_entry
 
     import ohos.ark_interop.*
+
+    // 类名没有影响
+    class Main {
+        // 定义静态构造函数
+        static init() {
+            // 注册键值对
+            JSModule.registerFunc("addNumberAsync", addNumberAsync)
+        }
+    }
 
     // 接口定义
     func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {

@@ -30,7 +30,7 @@
 
    ![image-20250415152004742](../../figures/add_static_cangjie_module_3.png)
 
-4. 在 **types->index.cj** 文件中，添加互操作代码，以如下代码为例：
+4. 在 **cangjielib->src->main->cangjie->index.cj** 文件中，添加互操作代码，以如下代码为例：
 
    ```cangjie
    // 包名
@@ -53,15 +53,15 @@
    }
    ```
 
-5. 在 **cangjielib->src->main->cangjie**"下创建互操作文件夹，命名为 **types**。
+5. 在 **cangjielib->src->main->cangjie** 下创建互操作文件夹，命名为 **types**，并在 **types** 下创建 **libohos_app_cangjie_entry** 文件夹。
 
-6. 在 **types->libohos_app_cangjie_entry->Index.d.ts** 中实现上述 index.cj 中 sayHelloCJ 相对应的 ArkTS 函数：
+6. 在 **types->libohos_app_cangjie_entry** 下创建 **Index.d.ts** 文件，实现上述 index.cj 中 sayHelloCJ 相对应的 ArkTS 函数：
 
    ```ts
    export declare function sayHelloCJ(s: string): string
    ```
 
-7. 配置**types->libohos_app_cangjie_entry->oh-package.json5**中**name**字段为互操作代码中对应的包名，该包名需要和**cangjielib->cjpm.toml**中配置的包名一致。例如，此处设置**name**为 `bohos_app_cangjie_cangjielib.so`。
+7. 在 **types->libohos_app_cangjie_entry** 下创建 **oh-package.json5** 文件，内容如下。其中 **name** 字段为互操作代码中对应的包名，该包名需要和 **cangjielib->cjpm.toml** 中配置的包名一致，此处设置 **name** 为 `libohos_app_cangjie_cangjielib.so`。
 
    ```json
    {
@@ -78,12 +78,12 @@
    // ...
      "dependencies": {
        "cangjielib": "file:../cangjielib",
-       "libohos_app_cangjie_cangjielib.so": "file:../cangjielib/src/main/cangjie/types/libohos_app_cangjie_entry",
+       "libohos_app_cangjie_cangjielib.so": "file:../cangjielib/src/main/cangjie/types/libohos_app_cangjie_entry"
      }
    // ...
    ```
 
-9. 然后再 **entry->src->main->ets** 中，正常使用该函数，以如下 **Index.ets** 为例：
+9.  然后在 **entry->src->main->ets** 中，正常使用该函数，以如下 **Index.ets** 为例：
 
    ```ts
    // 导入仓颉函数
