@@ -15,8 +15,6 @@
 
 package ohos.ark_interop
 
-import std.regex.*
-
 @C
 struct JSEnginePrivate {}
 
@@ -57,11 +55,13 @@ protected func getGlobalContext(): JSContext {
     getGlobalRuntime().mainContext
 }
 
+/**
+ * The ArkTS runtime created by Cangjie. 
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSRuntime {
     static var globalRuntime_: ?JSRuntime = None
@@ -69,11 +69,15 @@ public class JSRuntime {
     private let engine_: JSEngine
     private let threadId_: UInt64
 
+    /**
+     * Init JSRuntime.
+     *
+     * @throws { Exception } - ArkTS Engine is Null.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init() {
         let engine = unsafe { CJ_MRT_ARKTS_CreateEngineStub() }
@@ -112,11 +116,13 @@ public class JSRuntime {
         unsafe { ARKTS_DestroyEngine(engine_) }
     }
 
+    /**
+     * ArkTS interop context.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public prop mainContext: JSContext {
         get() {
@@ -125,63 +131,15 @@ public class JSRuntime {
         }
     }
 
+    /**
+     * Get napi environment pointer.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public func getNapiEnv(): CPointer<Unit> {
         unsafe { ARKTS_GetNAPIEnv(engine_) }
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func loadEntryFromAbc(abcPath: String, entryPoint: String, forceLoad!: Bool = false): Bool {
-        mainContext.checkThread()
-        unsafe {
-            let cPath = LibC.mallocCString(abcPath)
-            let cEntry = LibC.mallocCString(entryPoint)
-            let result = ARKTS_LoadEntryFromAbc(engine_, cPath, cEntry, forceLoad)
-            LibC.free(cPath)
-            LibC.free(cEntry)
-            return result
-        }
-    }
-
-    @!APILevel[
-        13,
-        atomicservice: true,
-        deprecated: 16,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
-    ]
-    public func importFromEntry(entryPoint: String, importName: String): JSValue {
-        mainContext.checkThread()
-        if (!isValidImportName(importName)) {
-            return mainContext.undefined().toJSValue()
-        }
-        unsafe {
-            let cEntry = LibC.mallocCString(entryPoint)
-            let iName = LibC.mallocCString(importName)
-            let result = try {
-                ARKTS_ImportFromEntry(engine_, cEntry, iName)
-            } catch (_: Exception) {
-                mainContext.undefined().toJSValue().value
-            }
-            LibC.free(cEntry)
-            LibC.free(iName)
-            return JSValue(mainContext, result)
-        }
-    }
-
-    static func isValidImportName(value: String): Bool {
-        let testRef = Regex("^[a-zA-Z_][0-9a-zA-Z_]*$")
-        testRef.find(value).isSome()
     }
 }

@@ -30,11 +30,14 @@ foreign func ARKTS_SetElement(env: JSEnv, arr: JSValue_, index: UInt32, setValue
 @FastNative
 foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue_
 
+/**
+ * The JSArray object is used to represent a safe reference to the ArkTS array.
+ * It supports getting length, reading and writing elements.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -65,11 +68,13 @@ public class JSArray <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
+    /**
+     * Array length.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public prop size: Int64 {
         get() {
@@ -77,11 +82,15 @@ public class JSArray <: JSHeapObject {
         }
     }
 
+    /**
+     * Get the element at index.
+     *
+     * @throws { JSArrayRangeMisMatch } - The index is out of range.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](index: Int64): JSValue {
         if (index < 0 || index >= size) {
@@ -91,11 +100,15 @@ public class JSArray <: JSHeapObject {
         JSValue(context, result)
     }
 
+    /**
+     * Set the element at index.
+     *
+     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
         if (index < 0) {
@@ -104,11 +117,15 @@ public class JSArray <: JSHeapObject {
         unsafe { ARKTS_SetElement(context.env, innerValue, UInt32(index), value.value) }
     }
 
+    /**
+     * Set the element at index.
+     *
+     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
         if (index < 0) {

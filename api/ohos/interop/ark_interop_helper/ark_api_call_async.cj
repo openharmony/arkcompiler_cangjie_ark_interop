@@ -138,7 +138,7 @@ protected func getJSModule(ctx: JSContext, name: String, prefix: ?String): JSObj
     match (MAIN_CONTEXT_MODULE_MAP.get(name)) {
         case Some(v) => v
         case None =>
-            let module = ctx.requireSystemNativeModule(name, prefix: prefix).asObject(ctx)
+            let module = ctx.requireSystemNativeModule(name, prefix: prefix).asObject()
             MAIN_CONTEXT_MODULE_MAP.add(name, module)
             module
     }
@@ -198,7 +198,7 @@ protected func jsGlobalApiCallPromise<T>(moduleName: String, modulePrefix: ?Stri
     func call(context: JSContext): Unit {
         try {
             let jsRet = getJSModule(context, moduleName, modulePrefix).callMethod(funcName, args(context))
-            let promise = jsRet.asPromise(context)
+            let promise = jsRet.asPromise()
             let onResolved = context.function(
                 {
                     ctx: JSContext, callInfo: JSCallInfo =>
@@ -260,7 +260,7 @@ protected func jsObjApiCallPromise<T>(obj: JSObject, funcName: String, callback:
     func call(context: JSContext): Unit {
         try {
             let jsRet = obj.callMethod(funcName, args(context))
-            let promise = jsRet.asPromise(context)
+            let promise = jsRet.asPromise()
             let onResolved = context.function(
                 {
                     ctx: JSContext, callInfo: JSCallInfo =>
@@ -328,7 +328,7 @@ protected func fromJSArray<T>(ctx: JSContext, input: JSValue): Array<T> where T 
 }
 
 protected func fromJSArray<T>(ctx: JSContext, input: JSValue, constructor: (JSContext, JSValue) -> T): Array<T> {
-    let jsArr = input.asArray(ctx)
+    let jsArr = input.asArray()
     return Array<T>(jsArr.size) {
         index => constructor(ctx, jsArr[index])
     }

@@ -15,11 +15,13 @@
 
 package ohos.ark_interop
 
+/**
+ * Interop exception base class.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public abstract class JSInteropException <: Exception {
     init(message: String) {
@@ -31,18 +33,22 @@ public abstract class JSInteropException <: Exception {
     }
 }
 
+/**
+ * Thread mismatch Exception when executing ArkTS interface.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSThreadMisMatch <: JSInteropException {
+    /**
+     * Init JSThreadMisMatch exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch") {
         super("${message}, bind thread id: ${bindTid}, current thread id: ${curTid}")
@@ -53,28 +59,34 @@ public class JSThreadMisMatch <: JSInteropException {
     }
 }
 
+/**
+ * ArkTS operation type and actual type mismatch exception.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSTypeMisMatch <: JSInteropException {
+    /**
+     * Init JSTypeMisMatch exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch") {
         super("${message}, acquired: ${acquireType}, given: ${givenType.toString()} ")
     }
 
+    /**
+     * Init JSTypeMisMatch exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch") {
         super("${message}, acquired: ${acquireType.toString()}, given: ${givenType.toString()} ")
@@ -85,18 +97,22 @@ public class JSTypeMisMatch <: JSInteropException {
     }
 }
 
+/**
+ * ArkTS array acesss out of bounds exception.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSArrayRangeMisMatch <: JSInteropException {
+    /**
+     * Init JSArrayRangeMisMatch exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch") {
         super("${message}, allowed: [${min}, ${max}), given: ${given}")
@@ -107,18 +123,22 @@ public class JSArrayRangeMisMatch <: JSInteropException {
     }
 }
 
+/**
+ * ArkTS object use after free Exception.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSObjUseAfterFree <: JSInteropException {
+    /**
+     * Init JSObjUseAfterFree exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(message!: String = "use after free") {
         super(message)
@@ -129,32 +149,42 @@ public class JSObjUseAfterFree <: JSInteropException {
     }
 }
 
+/**
+ * Excetion in ArkTS code.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSCodeError <: JSInteropException {
+    /**
+     * Exception error code.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public let code: ?Int32
+
+    /**
+     * Exception message.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public let jsError: String
+
+    /**
+     * Exception stack.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public let jsStack: Array<String>
 
@@ -165,11 +195,13 @@ public class JSCodeError <: JSInteropException {
         this.jsStack = jsStack
     }
 
+    /**
+     * Init JSCodeError exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(jsMessage: String, jsStack: Array<String>) {
         super("${jsMessage}: ${String.join(jsStack, delimiter: "\n")}")
@@ -183,18 +215,22 @@ public class JSCodeError <: JSInteropException {
     }
 }
 
+/**
+ * Interop C interface exception.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.Utils.Cangjie"
 ]
 public class JSInteropNativeError <: JSInteropException {
+    /**
+     * Init JSInteropNativeError exception.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.Utils.Cangjie"
     ]
     public init(message: String) {
         super(message)
