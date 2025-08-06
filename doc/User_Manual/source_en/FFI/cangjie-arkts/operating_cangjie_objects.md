@@ -103,13 +103,13 @@ This example demonstrates sharing Cangjie objects to the ArkTS runtime, using Ar
 JSExternal objects are recognized as `undefined` type in ArkTS. Directly using `undefined` as parameters may lead to runtime errors when incorrect arguments are passed:
 
 ```typescript
-...
+// ...
 // Create shared object
 let data = cjLib.createData();
 // Manipulate object properties
 cjLib.setDataId(undefined, 3); // Wrong argument - should pass Cangjie reference, but compiler won't catch this
 let id = cjLib.getDataId(data);
-...
+// ...
 ```
 
 ## JSExternal
@@ -298,7 +298,7 @@ Attaching all object operation methods directly to objects consumes more memory 
         }
     }
     ```
-    
+
 2. Provide interface declarations for interoperability in the Index.d.ts file:
 
     ```typescript

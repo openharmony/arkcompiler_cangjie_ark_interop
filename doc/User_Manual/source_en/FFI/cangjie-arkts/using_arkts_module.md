@@ -23,7 +23,8 @@ func tryLoadArkTSSo() {
     let module = context.requireSystemNativeModule("file.photoAccessHelper")
     // Use the module according to the methods for operating JSValue
     let obj = module.asObject(context)
-    obj.callMethod(...)
+    // Call the photoAccessHelper methods via callMethod
+    // obj.callMethod(...)
 }
 ```
 

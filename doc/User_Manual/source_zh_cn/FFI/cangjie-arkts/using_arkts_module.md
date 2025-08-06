@@ -19,11 +19,12 @@ func tryLoadArkTSSo() {
     let runtime = JSRuntime()
     // 获取互操作上下文
     let context = runtime.mainContext
-    // 根据ArkTS模块名导入对应的模块，模块导入进来是一个 JSValue
+    // 根据 ArkTS 模块名导入对应的模块，模块导入进来是一个 JSValue
     let module = context.requireSystemNativeModule("file.photoAccessHelper")
-    // 按照操作JSValue的方法使用该module
+    // 按照操作 JSValue 的方法使用该 module
     let obj = module.asObject(context)
-    obj.callMethod(...)
+    // 通过 callMethod 来调用 photoAccessHelper 的方法
+    // obj.callMethod(...)
 }
 ```
 

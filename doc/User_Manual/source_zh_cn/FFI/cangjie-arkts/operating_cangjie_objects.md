@@ -103,13 +103,13 @@
 JSExternal 对象在 ArkTS 里的类型会被识别为 undefined，直接使用 undefined 来作为参数很容易被传递错误的参数会在运行时出错，如下示例：
 
 ```typescript
-...
+// ...
 // 创建共享对象
 let data = cjLib.createData();
 // 操作对象属性
 cjLib.setDataId(undefined, 3); // 错误的参数，应该传递的是仓颉引用，但是编译器能通过编译
 let id = cjLib.getDataId(data);
-...
+// ...
 ```
 
 ## JSExternal
