@@ -98,7 +98,8 @@
                 "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.json.static",
                 "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop",
                 "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop_helper",
-                "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels"
+                "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels",
+                "//arkcompiler/cangjie_api:cangjie_prebuilts_package"
             ],
             "group_type": {
                 "base_group": [],
