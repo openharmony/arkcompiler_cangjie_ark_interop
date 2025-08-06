@@ -114,7 +114,8 @@ cangjie_prebuilts("cangjie_prebuilts_package") {
     "cangjie-std-sort",
     "cangjie-std-sync",
     "cangjie-std-time",
-    "cangjie-trace"
+    "cangjie-std",
+    "cangjie-std-unicode"
   ]
   special_libs = [
     "cangjie-demangle"
@@ -125,5 +126,7 @@ cangjie_prebuilts("cangjie_prebuilts_package") {
   ]
   fullname_prebuilt_libs = [
     "libpcre2-8.so",
+    "libpcre2-8.so.0",
+    "libpcre2-8.so.0.13.0",
   ]
 }
