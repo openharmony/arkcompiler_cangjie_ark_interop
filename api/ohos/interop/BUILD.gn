@@ -127,7 +127,7 @@ ohos_cj_library("ohos.ark_interop_helper") {
   part_name = "cangjie_api"
 }
 
-cj_macro_library("ark_interop_macro") {
+cj_macro_library("ohos.ark_interop_macro") {
   sources = [
     "ark_interop_macro/ark_idl_check.cj",
     "ark_interop_macro/ark_idl_class.cj",
