@@ -42,7 +42,7 @@ foreign func ARKTS_PromiseCatch(env: JSEnv, prom: JSValue_, callback: JSValue_):
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSPromise <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -59,7 +59,7 @@ public class JSPromise <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit {
         let onFulfilledValue = onFulfilled.innerValue
@@ -79,7 +79,7 @@ public class JSPromise <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func catchError(callback: JSFunction): Unit {
         unsafe {
@@ -95,7 +95,7 @@ public class JSPromise <: JSHeapObject {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSPromiseCapability {
     static func create(context: JSContext): JSPromiseCap {
@@ -120,7 +120,7 @@ public class JSPromiseCapability {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func resolve(value: JSValue): Unit {
         if (isComplete) {
@@ -140,7 +140,7 @@ public class JSPromiseCapability {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func reject(value: JSValue): Unit {
         if (isComplete) {
@@ -160,7 +160,7 @@ public class JSPromiseCapability {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(): JSValue {
         if (isComplete) {
