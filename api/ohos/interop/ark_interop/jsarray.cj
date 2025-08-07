@@ -37,7 +37,7 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -74,7 +74,7 @@ public class JSArray <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop size: Int64 {
         get() {
@@ -90,7 +90,7 @@ public class JSArray <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func [](index: Int64): JSValue {
         if (index < 0 || index >= size) {
@@ -108,7 +108,7 @@ public class JSArray <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
         if (index < 0) {
@@ -125,7 +125,7 @@ public class JSArray <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
         if (index < 0) {

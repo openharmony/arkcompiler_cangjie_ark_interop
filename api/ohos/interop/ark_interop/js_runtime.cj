@@ -61,7 +61,7 @@ protected func getGlobalContext(): JSContext {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSRuntime {
     static var globalRuntime_: ?JSRuntime = None
@@ -77,7 +77,7 @@ public class JSRuntime {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public init() {
         let engine = unsafe { CJ_MRT_ARKTS_CreateEngineStub() }
@@ -122,7 +122,7 @@ public class JSRuntime {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop mainContext: JSContext {
         get() {
@@ -137,7 +137,7 @@ public class JSRuntime {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func getNapiEnv(): CPointer<Unit> {
         unsafe { ARKTS_GetNAPIEnv(engine_) }
