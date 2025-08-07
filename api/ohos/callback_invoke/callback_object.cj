@@ -13,4 +13,68 @@
  * limitations under the License.
  */
 
-package ohos.callback_invoke
+package ohos.base
+
+import ohos.business_exception.*
+import ohos.labels.APILevel
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class CallbackObjectEx {}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class Callback0ArgumentEx <: CallbackObjectEx {
+    public open func invoke(err: ?BusinessExceptionEx): Unit
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class Callback1ArgumentEx<A> <: CallbackObjectEx {
+    public open func invoke(err: ?BusinessExceptionEx, arg: A): Unit
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class Callback2ArgumentEx<A, B> <: CallbackObjectEx {
+    public open func invoke(err: ?BusinessExceptionEx, arg1: A, arg2: B): Unit
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class Callback3ArgumentWithReturnEx<A, B, C, D> <: CallbackObjectEx {
+    public open func invoke(err: ?BusinessExceptionEx, arg1: A, arg2: B, arg3: C): D
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class Callback1ArgumentWithReturnEx<A, B> <: CallbackObjectEx {
+    public open func invoke(err: ?BusinessExceptionEx, arg1: A): B
+}
+
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+]
+public abstract class CallbackWithReturnEx<A> <: CallbackObjectEx {
+    public open func invoke(err: ?BusinessExceptionEx): A
+}
