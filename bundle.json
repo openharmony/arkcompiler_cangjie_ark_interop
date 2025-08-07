@@ -101,8 +101,7 @@
                 "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels",
                 "//arkcompiler/cangjie_api:cangjie_prebuilts_package",
                 "//arkcompiler/cangjie_api/api/ohos/business_exception:ohos.business_exception",
-                "//arkcompiler/cangjie_api/api/ohos/callback_invoke:ohos.callback_invoke",
-                "//arkcompiler/cangjie_api:cangjie_prebuilts_package"
+                "//arkcompiler/cangjie_api/api/ohos/callback_invoke:ohos.callback_invoke"
             ],
             "group_type": {
                 "base_group": [],
