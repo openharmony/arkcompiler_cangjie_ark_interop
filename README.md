@@ -1,3 +1,22 @@
-# arkcompiler_cangjie_ark_interop
+Cangjie API Public Repository
 
-仓颉互操作库
+## Introduction
+The Cangjie API Public Repository includes Cangjie interoperation libraries, public json libraries/APILevel libraries/cffi libraries, etc.
+
+## Directory
+
+```
+.
+├── api                   # Public repository code for Cangjie API
+├── mocks                 # FFI mock stubs during SDK build
+├── generate_mock.py      # Build script for generating mocks
+├── bundle.json
+└── LICENSE
+```
+
+## Usage Scenarios
+It contains the Cangjie-ArkTS interoperation library, which is used for Cangjie-ArkTS interoperation. The json library/APILevel/cffi library are basic function libraries, providing public capabilities for subsystems such as Cangjie API/Cangjie UI.
+
+## Related Repositories
+[cangjie_api](https://gitcode.com/Cangjie/cangjie-api/tree/dev)
+

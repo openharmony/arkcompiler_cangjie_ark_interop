@@ -1,0 +1,441 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+macro package ohos.ark_interop_macro
+
+import std.fs.*
+import std.io.*
+import std.sync.*
+import std.ast.*
+import std.collection.*
+import std.process.*
+
+let typeTabale_g = HashMap<String, String>(
+    [("Int8", "number"), ("Int16", "number"), ("Int32", "number"), ("Int64", "number"), ("UInt8", "number"),
+        ("UInt16", "number"), ("UInt32", "number"), ("UInt64", "number"), ("Float16", "number"), ("Float32", "number"),
+        ("Float64", "number"), ("String", "string"), ("Bool", "boolean"), ("JSStringEx", "string"), ("Unit", "undefined"),
+        ("RetUnit", "void")])
+let mtx = Mutex()
+let tabStr = "    "
+
+func genFuncDeclareFile(funcDecl: FuncDecl, isAsync: Bool) {
+    let file = genFile()
+    let funcDeclare = genFuncDeclare(funcDecl, isAsync)
+
+    funcDeclareWriteIntoFile(funcDeclare, file)
+
+    let pkgName = IDLCustomTypeWL.getPkgName(funcDecl.identifier.value)
+    let newFile = genFile(currentPkg: pkgName)
+    declareWriteIntoFileTail("export declare function " + funcDeclare, newFile)
+}
+
+func genInterfaceDeclareFile(interfaceDecl: InterfaceDecl) {
+    let file = genFile()
+    let interfaceDeclare = genInterfaceDeclare(interfaceDecl)
+
+    declareWriteIntoFileHead(interfaceDeclare, file)
+
+    let pkgName = IDLCustomTypeWL.getPkgName(interfaceDecl.identifier.value)
+    let newFile = genFile(currentPkg: pkgName)
+    declareWriteIntoFileHead(interfaceDeclare, newFile)
+}
+
+func getVisibleClassMembers(classDecl: ClassDecl) {
+    var visibleClassDecl = ClassDecl()
+    visibleClassDecl.identifier = classDecl.identifier
+
+    let decls = classDecl.body.decls
+    for (decl in decls) {
+        if (!IDLClassMemberInvisible(decl).isMemberInvisible()) {
+            visibleClassDecl.body.decls.add(decl)
+        }
+    }
+
+    return visibleClassDecl
+}
+
+func genClassDeclareFile(classDecl: ClassDecl) {
+    let file = genFile()
+
+    let visibleClassDecl = getVisibleClassMembers(classDecl)
+    let classDeclare = genClassDeclare(visibleClassDecl)
+    declareWriteIntoFileHead(classDeclare, file)
+
+    let classInitDeclare = genClassInitDeclare(visibleClassDecl)
+    funcDeclareWriteIntoFile(classInitDeclare, file)
+
+    let pkgName = IDLCustomTypeWL.getPkgName(classDecl.identifier.value)
+    let newFile = genFile(currentPkg: pkgName)
+    let newClassDeclare = genClassDeclare(visibleClassDecl, withConstructor: true)
+    declareWriteIntoFileHead(newClassDeclare, newFile)
+}
+
+func getFuncRetType(retType: TypeNode) {
+    if (retType.toTokens().toString() == "Unit") {
+        return RefType(quote(RetUnit))
+    } else {
+        return retType
+    }
+}
+
+func genFuncDeclare(funcDecl: FuncDecl, isAsync: Bool) {
+    let identifier = funcDecl.identifier
+    let params = funcDecl.funcParams
+    let retType = getFuncRetType(funcDecl.declType)
+
+    let identifierDeclare = identifier.value
+    let paramDeclare = genFuncParamDeclare(params)
+    var retDeclare = ""
+    if (isAsync) {
+        retDeclare = "Promise<" + cjType2ArktsType(retType, "funcArg") + ">"
+    } else {
+        retDeclare = cjType2ArktsType(retType, "funcArg")
+    }
+
+    return identifierDeclare + "(" + paramDeclare + "): " + retDeclare + "\n"
+}
+
+func genInterfaceDeclare(interfaceDecl: InterfaceDecl) {
+    let identifier = interfaceDecl.identifier
+    let body = interfaceDecl.body
+
+    let identifierDeclare = identifier.value
+    let bodyDeclare = genInterfaceBodyDeclare(body)
+
+    return "export declare interface " + identifierDeclare + bodyDeclare + "\n"
+}
+
+func genPropDeclare(propDecl: PropDecl) {
+    let identifier = propDecl.identifier
+    let declType = propDecl.declType
+
+    let identifierDeclare = identifier.value
+    let retDeclare = cjType2ArktsType(declType, "propArg")
+
+    return identifierDeclare + ": " + retDeclare + "\n"
+}
+
+func genFuncDeclareForInterface(funcDecl: FuncDecl) {
+    let identifier = funcDecl.identifier
+    let params = funcDecl.funcParams
+    let retType = getFuncRetType(funcDecl.declType)
+
+    let identifierDeclare = identifier.value
+    let paramDeclare = genFuncParamDeclare(params)
+    var retDeclare = ""
+    retDeclare = cjType2ArktsType(retType, "funcArg")
+
+    return identifierDeclare + ": (" + paramDeclare + ") => " + retDeclare + "\n"
+}
+
+func genInterfaceBodyDeclare(body: Body) {
+    let decls = body.decls
+    var retBody = ""
+
+    for (decl in decls) {
+        match (decl) {
+            case funcDecl: FuncDecl => retBody += (tabStr + genFuncDeclareForInterface(funcDecl))
+            case propDecl: PropDecl => retBody += (tabStr + genPropDeclare(propDecl))
+            case _ => IDLUtil.diagReportTE(Tokens(decl.identifier),
+                "Unsupported interface member." +
+                    "Interface members support only functions and properties within the `Interop` macro scope.")
+        }
+    }
+
+    return " {\n" + retBody + "}"
+}
+
+func genVarDeclare(varDecl: VarDecl) {
+    let identifier = varDecl.identifier
+    let declType = varDecl.declType
+
+    let identifierDeclare = identifier.value
+    let retDeclare = cjType2ArktsType(declType, "varArg")
+
+    return identifierDeclare + ": " + retDeclare + "\n"
+}
+
+func genClassBodyDeclare(classDecl: ClassDecl, withConstructor!: Bool) {
+    let body = classDecl.body
+    let decls = body.decls
+    var retBody = ""
+
+    for (decl in decls) {
+        match (decl) {
+            case funcDecl: FuncDecl =>
+                if (funcDecl.identifier.value != "init") {
+                    retBody += (tabStr + genFuncDeclare(funcDecl, false))
+                }
+            case propDecl: PropDecl => retBody += (tabStr + genPropDeclare(propDecl))
+            case varDecl: VarDecl => retBody += (tabStr + genVarDeclare(varDecl))
+            case primaryCtorDecl: PrimaryCtorDecl => ()
+            case other => IDLUtil.diagReportTE(
+                Tokens(other.identifier),
+                "Unsupported class member." +
+                    "Class members support only functions, properties, variables and constructor within the `Interop` macro scope."
+            )
+        }
+    }
+
+    if (withConstructor) {
+        let classInitDeclare = genClassInitDeclare(classDecl, insideClassDecl: true)
+        retBody += (tabStr + classInitDeclare)
+    }
+    return " {\n" + retBody + "}"
+}
+
+func genClassDeclare(pubClassDecl: ClassDecl, withConstructor!: Bool = false) {
+    let identifier = pubClassDecl.identifier
+
+    let identifierDeclare = identifier.value
+    let bodyDeclare = genClassBodyDeclare(pubClassDecl, withConstructor: withConstructor)
+
+    return "export declare class " + identifierDeclare + bodyDeclare + "\n"
+}
+
+func genClassInitDeclare(pubClassDecl: ClassDecl, insideClassDecl!: Bool = false) {
+    let classId = pubClassDecl.identifier.value
+    var retInit = if (insideClassDecl) {
+        "constructor ("
+    } else {
+        classId + ": {new ("
+    }
+
+    let decls = pubClassDecl.body.decls
+    for (decl in decls) {
+        match (decl) {
+            case funcDecl: FuncDecl =>
+                if (funcDecl.identifier.value == "init") {
+                    retInit += genFuncParamDeclare(funcDecl.funcParams)
+                    break
+                }
+            case primaryCtorDecl: PrimaryCtorDecl =>
+                retInit += genFuncParamDeclare(primaryCtorDecl.funcParams)
+                break
+            case _ => ()
+        }
+    }
+
+    retInit += if (insideClassDecl) {
+        (")" + "\n")
+    } else {
+        ("): " + classId + "}" + "\n")
+    }
+    return retInit
+}
+
+func genFile(currentPkg!: String = "") {
+    let relativePath: String = getCangjieSrcPath()
+    if (relativePath.isEmpty()) {
+        return ""
+    }
+    let (dirName, soName, fileName): (String, String, String) = if (currentPkg.isEmpty()) {
+        ("ark_interop_api", "libark_interop_api.so", "ark_interop_api.d.ts")
+    } else {
+        ("types/lib${currentPkg.replace(".", "_")}", "lib${currentPkg}.so", "Index.d.ts")
+    }
+
+    let libidlPath: Path = Path("${relativePath}/${dirName}")
+    let filePath: Path = libidlPath.join("${fileName}")
+    let jsonPath: Path = libidlPath.join("oh-package.json5")
+    synchronized(mtx) {
+        if (!exists(libidlPath)) {
+            Directory.create(libidlPath, recursive: true)
+        }
+
+        if (!exists(jsonPath)) {
+            let jsonContext = "{\n  \"name\": \"${soName}\",\n  \"types\": \"./${fileName}\",\n  " +
+                "\"version\": \"1.0.0\",\n  \"description\": \"\"\n}"
+            File.create(jsonPath).write(jsonContext.toArray())
+        }
+
+        if (!exists(filePath)) {
+            File.create(filePath)
+        }
+    }
+    filePath.toString()
+}
+
+func funcDeclareWriteIntoFile(funcDeclare: String, filePath: String) {
+    synchronized(mtx) {
+        let file = try {
+            File(filePath, OpenMode.ReadWrite)
+        } catch (e: FSException | IllegalArgumentException) {
+            return
+        }
+        let context = String.fromUtf8(readToEnd(file))
+
+        if (context.contains(funcDeclare)) {
+            return
+        }
+
+        if (context.contains("interface CustomLib")) {
+            file.seek(SeekPosition.End(-1))
+            file.write((tabStr + funcDeclare).toArray())
+            file.write("}".toArray())
+        } else {
+            file.write("export declare interface CustomLib {\n".toArray())
+            file.write((tabStr + funcDeclare).toArray())
+            file.write("}".toArray())
+        }
+        file.flush()
+        file.close()
+    }
+}
+
+func declareWriteIntoFileTail(functionDecl: String, filePath: String) {
+    synchronized(mtx) {
+        let file = try {
+            File(filePath, OpenMode.ReadWrite)
+        } catch (e: FSException | IllegalArgumentException) {
+            return
+        }
+        let context = String.fromUtf8(readToEnd(file))
+
+        if (context.contains(functionDecl)) {
+            return
+        }
+
+        file.seek(SeekPosition.End(0))
+        file.write(("\n" + functionDecl).toArray())
+        file.flush()
+        file.close()
+    }
+}
+
+func declareWriteIntoFileHead(InterfaceDeclare: String, filePath: String) {
+    synchronized(mtx) {
+        let file = try {
+            File(filePath, OpenMode.ReadWrite)
+        } catch (e: FSException | IllegalArgumentException) {
+            return
+        }
+        let context = String.fromUtf8(readToEnd(file))
+
+        if (context.contains(InterfaceDeclare)) {
+            return
+        }
+
+        file.seek(SeekPosition.Begin(0))
+        file.write((InterfaceDeclare + "\n" + context).toArray())
+        file.flush()
+        file.close()
+    }
+}
+
+func genFuncParamDeclare(funcParams: ArrayList<FuncParam>): String {
+    var ret = ""
+    for (i in 0..funcParams.size) {
+        ret += (funcParams[i].identifier.value + ": " + cjType2ArktsType(funcParams[i].paramType, "funcArg"))
+
+        if (i != funcParams.size - 1) {
+            ret += ", "
+        }
+    }
+    ret
+}
+
+/*
+    PrimitiveType: basic type, Bool, Unit
+    FuncType: function type
+    RefType： Option<T>, class, interface, Array<T>, HashMap<K, V>，JSArrayEx<T>, JSStringEx，String，JSHashMapEx<K, V>,
+              type alias(type MyType = Int8)
+    QualifiedType: T.a in var a : T.a
+    limitation：
+    T.a not supported
+    Option<T>：T supports all types above except Option<T> and func.
+    JSArrayEx<T>、JSHashMapEx<K, V>： T、V support all types above except func
+    Array<T>: only support Array<Byte>
+    HashMap<K, V>: not supported
+ */
+func cjType2ArktsType(typeNode: TypeNode, nameBase: String): String {
+    try {
+        typeTabale_g[typeNode.toTokens().toString()]
+    } catch (_: Exception) {
+        match (typeNode) {
+            case p: FuncType => funcType2Arkts(p, nameBase)
+            case p: RefType => refType2Arkts(p)
+            case _ =>
+                IDLUtil.diagReportTE(
+                    Tokens(),
+                    "Ark Interop: Mismatched Types. " +
+                        "Only supports conversion of primitive, function and reference types within the `Interop` macro scope."
+                )
+                ""
+        }
+    }
+}
+
+func funcType2Arkts(funcType: FuncType, nameBase: String): String {
+    let paramTypes = funcType.types
+    let returnType = getFuncRetType(funcType.returnType)
+    var paramStr = ""
+
+    for (i in 0..paramTypes.size) {
+        let paramType = paramTypes[i]
+        paramStr += (nameBase + i.toString() + ": " + cjType2ArktsType(paramType, nameBase + "funcArg"))
+        if (i != paramTypes.size - 1) {
+            paramStr += ", "
+        }
+    }
+
+    return "(" + paramStr + ") => " + cjType2ArktsType(returnType, nameBase + "funcArg")
+}
+
+func refType2Arkts(refType: RefType): String {
+    match (refType.identifier.value) {
+        case "Option" =>
+            if (refType.typeArguments.size == 0) {
+                IDLUtil.diagReportTE(Tokens(refType.identifier),
+                    "Option type format error. There are no type arguments.")
+                return ""
+            }
+            let typeNode = refType.typeArguments[0]
+            match (typeNode) {
+                case p: RefType =>
+                    if (p.identifier.value == "Option") {
+                        IDLUtil.diagReportTE(
+                            Tokens(refType.identifier),
+                            "The T of the Option type does not support the Option type within the `Interop` macro scope."
+                        )
+                    }
+                case p: FuncType => IDLUtil.diagReportTE(Tokens(refType.identifier),
+                    "The T of the Option type does not support the function type within the `Interop` macro scope.")
+                case _ => ()
+            }
+            cjType2ArktsType(refType.typeArguments[0], "") + " | undefined"
+        // generic
+        case "JSArrayEx" => "Array<" + cjType2ArktsType(refType.typeArguments[0], "") + ">"
+        case "JSHashMapEx" => "Map<string, " + cjType2ArktsType(refType.typeArguments[1], "") + ">"
+        case "Array" =>
+            if (refType.typeArguments[0].toTokens().toString() == "Byte") {
+                "ArrayBuffer"
+            } else {
+                IDLUtil.diagReportTE(Tokens(refType.identifier),
+                    "The T of the Array type only support Byte type within the `Interop` macro scope.")
+                ""
+            }
+        // class/interface
+        case _ =>
+            if (!IDLCustomTypeWL.isWhitelisted(refType.identifier.value)) {
+                IDLUtil.diagReportTE(
+                    Tokens(refType.identifier),
+                    "Unsupported user-defined type. " +
+                        "Ensure user-defined type is exposed by `Interop` macros before using within the `Interop` macro scope."
+                )
+            }
+            refType.identifier.value
+    }
+}

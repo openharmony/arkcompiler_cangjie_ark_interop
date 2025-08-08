@@ -1,0 +1,179 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/cangjie/cj_compiler.gni")
+import("sdk_mock.gni")
+
+config("mock_stub_config") {
+  include_dirs = [ "." ]
+}
+
+ohos_shared_library("mock_stub") {
+  sources = [ "mock_stub.cpp" ]
+  public_configs = [ ":mock_stub_config" ]
+  part_name = "cangjie_api"
+  subsystem_name = "arkcompiler"
+}
+
+if (build_ohos_sdk || build_ohos_split_test) {
+  mock_sources = [
+    "ability_context_native.sym",
+    "abilitykit_native.sym",
+    "appkit_delegator.sym",
+    "appkit_native.sym",
+    "ark_interop.sym",
+    "ark_interop_helper_ffi.sym",
+    "asset_sdk.sym",
+    "cj_ability_access_ctrl_ffi.sym",
+    "cj_ability_context_native.sym",
+    "cj_ability_ffi.sym",
+    "cj_abilitykit_native_ffi.sym",
+    "cj_accessibility_ffi.sym",
+    "cj_advertising_ffi.sym",
+    "cj_appAccount_ffi.sym",
+    "cj_app_manager_ffi.sym",
+    "cj_app_recovery_ffi.sym",
+    "cj_audiohaptic_ffi.sym",
+    "cj_avplayer_ffi.sym",
+    "cj_avscreen_capture_ffi.sym",
+    "cj_avtranscoder_ffi.sym",
+    "cj_background_task_mgr_ffi.sym",
+    "cj_battery_info_ffi.sym",
+    "cj_bind_ffi.sym",
+    "cj_bluetooth_a2dp_ffi.sym",
+    "cj_bluetooth_access_ffi.sym",
+    "cj_bluetooth_ble_ffi.sym",
+    "cj_bluetooth_connection_ffi.sym",
+    "cj_bluetooth_hfp_ffi.sym",
+    "cj_bluetooth_hid_ffi.sym",
+    "cj_bluetooth_socket_ffi.sym",
+    "cj_bundle_manager_ffi.sym",
+    "cj_calendar_manager_ffi.sym",
+    "cj_camera_ffi.sym",
+    "cj_camera_picker_ffi.sym",
+    "cj_cellular_data_ffi.sym",
+    "cj_cert_ffi.sym",
+    "cj_cert_manager_ffi.sym",
+    "cj_color_manager_ffi.sym",
+    "cj_common_event_manager_ffi.sym",
+    "cj_context_ffi.sym",
+    "cj_cryptoframework_ffi.sym",
+    "cj_data_share_predicates_ffi.sym",
+    "cj_device_info_ffi.sym",
+    "cj_display_ffi.sym",
+    "cj_display_sync_ffi.sym",
+    "cj_distributed_account_ffi.sym",
+    "cj_distributed_device_manager_ffi.sym",
+    "cj_distributed_kv_store_ffi.sym",
+    "cj_effect_kit_ffi.sym",
+    "cj_emitter_ffi.sym",
+    "cj_errormanager_ffi.sym",
+    "cj_extensionkit_native.sym",
+    "cj_faultlogger_ffi.sym",
+    "cj_file_fileuri_ffi.sym",
+    "cj_file_fs_ffi.sym",
+    "cj_file_grant_permission_ffi.sym",
+    "cj_formBindingData_ffi.sym",
+    "cj_formProvider_ffi.sym",
+    "cj_form_extension.sym",
+    "cj_frontend_ohos.sym",
+    "cj_geolocationmanager_ffi.sym",
+    "cj_hiappevent_ffi.sym",
+    "cj_hidebug_ffi.sym",
+    "cj_hitracechain_ffi.sym",
+    "cj_hitracemeter_ffi.sym",
+    "cj_huks_ffi.sym",
+    "cj_i18n_ffi.sym",
+    "cj_image_ffi.sym",
+    "cj_inputmethod_ffi.sym",
+    "cj_insight_intent_executor.sym",
+    "cj_insightintentcontext.sym",
+    "cj_intl_ffi.sym",
+    "cj_ipc_ffi.sym",
+    "cj_media_avrecorder_ffi.sym",
+    "cj_metadatahelper_ffi.sym",
+    "cj_multimedia_audio_ffi.sym",
+    "cj_multimedia_avsession_ffi.sym",
+    "cj_ndk_ffi.sym",
+    "cj_net_connection_ffi.sym",
+    "cj_net_http_ffi.sym",
+    "cj_net_network_security_ffi.sym",
+    "cj_net_websocket_ffi.sym",
+    "cj_nfc_cardemulation_ffi.sym",
+    "cj_notification_manager_ffi.sym",
+    "cj_observer_ffi.sym",
+    "cj_osaccount_ffi.sym",
+    "cj_pasteboard_ffi.sym",
+    "cj_photo_editor_extension.sym",
+    "cj_photoaccesshelper_ffi.sym",
+    "cj_picker_ffi.sym",
+    "cj_power_ffi.sym",
+    "cj_preferences_ffi.sym",
+    "cj_radio_ffi.sym",
+    "cj_relational_store_ffi.sym",
+    "cj_request_ffi.sym",
+    "cj_resource_manager_ffi.sym",
+    "cj_running_lock_ffi.sym",
+    "cj_screen_lock_file_manager_ffi.sym",
+    "cj_screenshot_ffi.sym",
+    "cj_secureelement_ffi.sym",
+    "cj_sensor_ffi.sym",
+    "cj_settings_ffi.sym",
+    "cj_sim_ffi.sym",
+    "cj_sms_ffi.sym",
+    "cj_soundpool_ffi.sym",
+    "cj_statvfs_ffi.sym",
+    "cj_storage_manager_ffi.sym",
+    "cj_system_date_time_ffi.sym",
+    "cj_system_parameter_enhance_ffi.sym",
+    "cj_telephony_call_ffi.sym",
+    "cj_thermal_ffi.sym",
+    "cj_ui_extension.sym",
+    "cj_ui_test_ffi.sym",
+    "cj_unified_data_channel_ffi.sym",
+    "cj_uniform_type_descriptor_ffi.sym",
+    "cj_userauth_ffi.sym",
+    "cj_vibrator_ffi.sym",
+    "cj_want_agent_ffi.sym",
+    "cj_webview_ffi.sym",
+    "cj_wifi_ffi.sym",
+    "cj_window_ffi.sym",
+    "cj_work_scheduler_ffi.sym",
+    "contact_cj.sym",
+    "embedded_ui_extension.sym",
+    "extensionkit_native.sym",
+    "hilog.sym",
+    "hitrace.sym",
+    "photo_editor_extension.sym",
+    "test_runner.sym",
+    "ui_extension.sym",
+    "uiabilitykit_native.sym",
+    "utf16string.sym",
+  ]
+  foreach(source, mock_sources) {
+    target_name = string_replace(source, ".sym", "")
+    mock_sdk_target(target_name) {
+      part_name = "cangjie_api"
+      subsystem_name = "arkcompiler"
+      sources = [ "${source}" ]
+      if (target_name == "cj_ability_ffi") {
+        c_sources = [ "cj_ability_ffi.cpp" ]
+      }
+      if (target_name == "hilog") {
+        if (is_ohos) {
+          output_extension = "so"
+        }
+      }
+    }
+  }
+}
