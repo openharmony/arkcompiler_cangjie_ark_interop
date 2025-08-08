@@ -32,8 +32,14 @@ type JSHClass = CPointer<JSHClassPrivate>
 
 type JSAsyncCallback = CFunc<(JSEnv, Int64) -> Unit>
 
+/**
+ * Alias for type which is `CPointer<Unit>`.
+ */
 public type napi_env = CPointer<Unit>
 
+/**
+ * Alias for type which is `CPointer<Unit>`.
+ */
 public type napi_value = CPointer<Unit>
 
 @FastNative
@@ -98,7 +104,7 @@ func disposeJSContext(env: JSEnv): Unit {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSContext {
     static let allRuntimes_ = HashMap<JSEnv, JSContext>()
@@ -164,7 +170,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func isInBindThread(): Bool {
         bindTid_ == unsafe { ARKTS_GetPosixThreadId() }
@@ -188,7 +194,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop global: JSObject {
         get() {
@@ -209,7 +215,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop env: JSEnv {
         get() {
@@ -225,7 +231,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func getNapiEnv(): napi_env {
         unsafe {
@@ -247,7 +253,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func undefined(): JSUndefined {
         JSUndefined(void)
@@ -259,7 +265,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func null(): JSNull {
         JSNull(JSValue(this, unsafe { ARKTS_CreateNull() }))
@@ -271,7 +277,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func boolean(value: Bool): JSBoolean {
         JSBoolean(JSValue(this, unsafe { ARKTS_CreateBool(value) }))
@@ -283,7 +289,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func number(value: Float64): JSNumber {
         JSNumber(JSValue(this, unsafe { ARKTS_CreateF64(value) }))
@@ -295,7 +301,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func number(value: Int32): JSNumber {
         JSNumber(JSValue(this, unsafe { ARKTS_CreateI32(value) }))
@@ -307,7 +313,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func string(value: String): JSString {
         JSString(this, value)
@@ -319,7 +325,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func string(value: Utf16String): JSString {
         JSString(this, value)
@@ -331,7 +337,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func object(): JSObject {
         JSObject(this)
@@ -343,7 +349,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func function(lambda: JSLambda): JSFunction {
         JSFunction(this, lambda)
@@ -355,7 +361,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func array(arr: Array<JSValue>): JSArray {
         JSArray(this, arr)
@@ -367,7 +373,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass {
         JSClass(this, ctor, superClass)
@@ -379,7 +385,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func external(data: SharedObject): JSExternal {
         JSExternal(this, data)
@@ -391,7 +397,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func promiseCapability(): JSPromiseCapability {
         JSPromiseCapability(this)
@@ -439,7 +445,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(length: Int32): JSArrayBuffer {
         if (length <= 0) {
@@ -454,7 +460,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Byte>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -466,7 +472,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Int8>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -478,7 +484,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Int16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -490,7 +496,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -502,7 +508,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -514,7 +520,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Int32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -526,7 +532,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Float32>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -538,7 +544,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Int64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -550,7 +556,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -562,7 +568,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func arrayBuffer(data: Array<Float64>): JSArrayBuffer {
         JSArrayBuffer(this, data)
@@ -576,7 +582,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer: JSBufferFinalizer): JSArrayBuffer {
         if (length <= 0) {
@@ -591,7 +597,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func symbol(description!: String = ""): JSSymbol {
         JSSymbol(this, description)
@@ -603,7 +609,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func bigint(value: Int64): JSBigInt {
         JSBigInt(this, value)
@@ -615,7 +621,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func bigint(value: BigInt): JSBigInt {
         JSBigInt(this, value)
@@ -627,7 +633,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func postJSTask(callback: () -> Unit): Unit {
         let id = asyncCallbacks_.append(callback)
@@ -642,7 +648,7 @@ public class JSContext {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func requireSystemNativeModule(moduleName: String, prefix!: ?String = None): JSValue {
         unsafe {

@@ -66,7 +66,7 @@ foreign {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKeyable & JSInteropType<Utf16String> {
     private let handle_: Utf16StringHandle
@@ -79,6 +79,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     /**
      * Empty String.
      */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
+    ]
     public static let empty = Utf16String(unsafe { CJUtf16StringCreateEmpty()})
     static let nl = Utf16String("\n")
 
@@ -103,7 +108,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public init(src: String) {
         handle_ = unsafe {
@@ -132,7 +137,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func dispose(): Unit {
         if (isAlive_) {
@@ -148,7 +153,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop accessible: Bool {
         get() {
@@ -183,7 +188,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toString(): String {
         let header = getHeader()
@@ -208,7 +213,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func compare(target: Utf16String): Ordering {
         let result = unsafe {
@@ -229,7 +234,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func == (target: Utf16String): Bool {
         match (compare(target)) {
@@ -244,7 +249,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func hashCode(): Int64 {
         let value = unsafe {CJUtf16StringHash(safeHandle)}
@@ -257,7 +262,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop size: Int64 {
         get() {
@@ -277,7 +282,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop totalChars: Int64 {
         get() {
@@ -295,7 +300,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func isEmpty(): Bool {
         return size == 0
@@ -307,7 +312,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func isCompressed(): Bool {
         return getHeader().isLatin1
@@ -319,7 +324,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func != (target: Utf16String): Bool {
         return ! (this == target)
@@ -331,7 +336,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func > (target: Utf16String): Bool {
         return match (compare(target)) {
@@ -346,7 +351,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func >= (target: Utf16String): Bool {
         return ! (this < target)
@@ -358,7 +363,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func < (target: Utf16String): Bool {
         return match (compare(target)) {
@@ -373,7 +378,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func <= (target: Utf16String): Bool {
         return ! (this > target)
@@ -387,7 +392,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func [](index: Int64): UInt16 {
         let header = getHeader()
@@ -413,7 +418,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func [](range: Range<Int64>): Utf16String {
         if (range.start < 0 || range.end < 0 || range.start > range.end) {
@@ -431,7 +436,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func runes(): Iterator<Rune> {
         let header = getHeader()
@@ -448,7 +453,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func lines(): Iterator<Utf16String> {
         SplitIterator(this, nl, Int64.Max, false)
@@ -460,7 +465,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func indexOf(target: Utf16String): ?Int64 {
         return indexOf(target, 0)
@@ -472,7 +477,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         let result = unsafe {CJUtf16StringIndexOf(safeHandle, target.safeHandle, fromIndex)}
@@ -488,7 +493,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func lastIndexOf(target: Utf16String): ?Int64 {
         return lastIndexOf(target, size)
@@ -500,7 +505,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64 {
         let result = unsafe {CJUtf16StringLastIndexOf(safeHandle, target.safeHandle, fromIndex)}
@@ -516,7 +521,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func count(src: Utf16String): Int64 {
         let result = unsafe {CJUtf16StringCountOf(safeHandle, src.safeHandle)}
@@ -529,7 +534,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf16String> {
         return split(seperator, 0, remoteEmpty: remoteEmpty)
@@ -541,7 +546,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = false): Array<Utf16String> {
         if (maxSplit <= 0) {
@@ -569,7 +574,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Iterator<Utf16String> {
         return lazySplit(separator, Int64.Max, remoteEmpty: remoteEmpty)
@@ -581,7 +586,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = false): Iterator<Utf16String> {
         SplitIterator(this, separator, maxSplit, remoteEmpty)
@@ -593,7 +598,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     @OverflowWrapping
     public func replace(old: Utf16String, new: Utf16String, count!: Int64 = Int64.Max): Utf16String {
@@ -609,7 +614,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func contains(target: Utf16String): Bool {
         return indexOf(target).isSome()
@@ -621,7 +626,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func startsWith(target: Utf16String): Bool {
         unsafe {
@@ -635,7 +640,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func endsWith(target: Utf16String): Bool {
         unsafe {
@@ -649,7 +654,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public operator func + (right: Utf16String): Utf16String {
         let handle = unsafe {
@@ -664,7 +669,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         let value = JSString.createString(context, this)
@@ -677,7 +682,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, value: JSValue): Utf16String {
         value.toUtf16String()
@@ -689,7 +694,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "string"
@@ -709,7 +714,7 @@ class Latin1Iterator <: Iterator<Rune> {
     /**
      * Return next rune.
      */
-    public func next(): ?Rune {
+    func next(): ?Rune {
         if (current < size) {
             let result = Rune(unsafe {src.read(current)})
             current++
@@ -733,7 +738,7 @@ class Utf16Iterator <: Iterator<Rune> {
     /**
      * Return next rune.
      */
-    public func next(): ?Rune {
+    func next(): ?Rune {
         if (current < size) {
             let nextChar = UInt32(unsafe {src.read(current)})
             current++
@@ -774,7 +779,7 @@ class SplitIterator <: Iterator<Utf16String> {
     /**
      * Return next Utf16String.
      */
-    public func next(): ?Utf16String {
+    func next(): ?Utf16String {
         if (maxCount < 0) {
             return None
         }

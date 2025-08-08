@@ -360,9 +360,9 @@ func getOutputPkg(pkgName: String): String {
 }
 
 class PackageNameCollector <: Visitor {
-    public var outputPkg: String = ""
-    public var packageNameMap = HashMap<String, String>()
-    public override func visit(packageHeader: PackageHeader) {
+    var outputPkg: String = ""
+    var packageNameMap = HashMap<String, String>()
+    override func visit(packageHeader: PackageHeader) {
         var currentPkg: String = ""
         for (i in packageHeader.prefixPaths) {
             currentPkg += i.value
@@ -371,7 +371,7 @@ class PackageNameCollector <: Visitor {
         currentPkg += packageHeader.packageIdentifier.value
         outputPkg = getOutputPkg(currentPkg)
     }
-    public override func visit(macroExpandDecl: MacroExpandDecl) {
+    override func visit(macroExpandDecl: MacroExpandDecl) {
         if (macroExpandDecl.fullIdentifier.value != "Interop") {
             return
         }
@@ -396,7 +396,7 @@ class IDLCustomTypeWL {
     private static var packagesSet = HashSet<String>()
     private static var isCreated = false
     private static var isRead = false
-    public static var combinedPkgName = ""
+    static var combinedPkgName = ""
 
     private static func getFileList(path: String): ArrayList<FileInfo> {
         let files = ArrayList<FileInfo>()
