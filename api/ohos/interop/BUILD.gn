@@ -1,0 +1,132 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//build/cangjie/cjc.gni")
+
+if (!build_ohos_sdk && !build_ohos_split_test) {
+  ohos_shared_library("utf16string") {
+    include_dirs = [ "utf16string" ]
+
+    sources = [
+      "utf16string/utf16string.cpp",
+      "utf16string/utf16string_cffi.cpp",
+      "utf16string/utf16string_dfx.cpp",
+    ]
+
+    cflags = [
+      "-std=c++17",
+      "-Wno-gnu-zero-variadic-macro-arguments",
+      "-fvisibility-inlines-hidden",
+      "-fvisibility=hidden",
+      "-fno-exceptions",
+      "-fno-rtti",
+      "-fmerge-all-constants",
+      "-ffunction-sections",
+      "-Wno-unused-private-field",
+    ]
+
+    if (current_os == "ohos") {
+      cflags += [ "-fPIC" ]
+    }
+
+    innerapi_tags = [ "platformsdk" ]
+    part_name = "cangjie_api"
+    subsystem_name = "arkcompiler"
+  }
+}
+
+ohos_cj_library("ohos.ark_interop") {
+  sources = [
+    "ark_interop/js_array_buffer.cj",
+    "ark_interop/js_bigint.cj",
+    "ark_interop/js_class.cj",
+    "ark_interop/js_constants.cj",
+    "ark_interop/js_error.cj",
+    "ark_interop/js_exception.cj",
+    "ark_interop/js_external.cj",
+    "ark_interop/js_func.cj",
+    "ark_interop/js_heap.cj",
+    "ark_interop/js_idl_type.cj",
+    "ark_interop/js_interop_type.cj",
+    "ark_interop/js_module.cj",
+    "ark_interop/js_promise.cj",
+    "ark_interop/js_raw.cj",
+    "ark_interop/js_runtime.cj",
+    "ark_interop/js_symbol.cj",
+    "ark_interop/js_type.cj",
+    "ark_interop/jsarray.cj",
+    "ark_interop/jscontext.cj",
+    "ark_interop/jsobject.cj",
+    "ark_interop/jsstring.cj",
+    "ark_interop/slab.cj",
+    "ark_interop/utf16_string.cj",
+  ]
+
+  external_deps = [ "napi:ark_interop" ]
+  cj_deps = [ "../labels:ohos.labels" ]
+
+  native_deps = [
+    {
+      label = ":utf16string"
+    },
+  ]
+
+  part_name = "cangjie_api"
+  subsystem_name = "arkcompiler"
+}
+
+ohos_cj_library("ohos.ark_interop_helper") {
+  sources = [
+    "ark_interop_helper/ark_api_call.cj",
+    "ark_interop_helper/ark_api_call_async.cj",
+    "ark_interop_helper/ark_container_scope.cj",
+    "ark_interop_helper/ark_interop_helper.cj",
+    "ark_interop_helper/ark_system_obj.cj",
+    "ark_interop_helper/console.cj",
+    "ark_interop_helper/timer.cj",
+  ]
+
+  cj_deps = [
+    ":ohos.ark_interop",
+    "../ffi_bind:ohos.ffi",
+    "../labels:ohos.labels",
+  ]
+
+  cj_external_deps = [
+    "arkui_cangjie_api:ohos.base",
+    "hiviewdfx_cangjie_api:ohos.hilog",
+  ]
+
+  external_deps = [
+    "ability_runtime:abilitykit_native",
+    "ability_runtime:ark_interop_helper_ffi",
+  ]
+
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}
+
+cj_macro_library("ohos.ark_interop_macro") {
+  sources = [
+    "ark_interop_macro/ark_idl_check.cj",
+    "ark_interop_macro/ark_idl_class.cj",
+    "ark_interop_macro/ark_idl_comm.cj",
+    "ark_interop_macro/ark_idl_declare.cj",
+    "ark_interop_macro/ark_idl_define.cj",
+    "ark_interop_macro/ark_idl_func.cj",
+    "ark_interop_macro/ark_idl_interface.cj",
+  ]
+  compilation_config = "pipeline=NG"
+  subsystem_name = "arkcompiler"
+  part_name = "cangjie_api"
+}

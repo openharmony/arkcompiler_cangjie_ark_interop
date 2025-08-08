@@ -1,0 +1,132 @@
+{
+    "name": "@ohos/cangjie_api",
+    "description": "cangjie systemapi",
+    "version": "4.0",
+    "license": "Apache License 2.0",
+    "publishAs": "code-segment",
+    "segment": {
+        "destPath": "arkcompiler/cangjie_api"
+    },
+    "dirs": {},
+    "scripts": {},
+    "component": {
+        "name": "cangjie_api",
+        "subsystem": "arkcompiler",
+        "syscap": [
+            "SystemCapability.Multimedia.MediaLibrary.Core",
+            "SystemCapability.Multimedia.MediaLibrary.DistributedCore",
+            "SystemCapability.FileManagement.UserFileManager.Core",
+            "SystemCapability.FileManagement.UserFileManager.DistributedCore",
+            "SystemCapability.FileManagement.PhotoAccessHelper.Core"
+        ],
+        "features": [],
+        "adapted_system_type": [
+            "standard"
+        ],
+        "rom": "30000KB",
+        "ram": "100000KB",
+        "deps": {
+            "components": [
+                "ability_base",
+                "ability_runtime",
+                "access_token",
+                "accessibility",
+                "ace_engine",
+                "advertising",
+                "app_file_service",
+                "asset",
+                "background_task_mgr",
+                "bounds_checking_function",
+                "bundle_framework",
+                "c_utils",
+                "certificate_framework",
+                "certificate_manager",
+                "common_event_service",
+                "config_policy",
+                "crypto_framework",
+                "data_share",
+                "device_manager",
+                "distributed_notification_service",
+                "eventhandler",
+                "ffrt",
+                "file_api",
+                "graphic_2d",
+                "hiappevent",
+                "hidumper",
+                "hilog",
+                "hiprofiler",
+                "hisysevent",
+                "hitrace",
+                "hiview",
+                "huks",
+                "i18n",
+                "icu",
+                "image_framework",
+                "imf",
+                "init",
+                "ipc",
+                "kv_store",
+                "libuv",
+                "location",
+                "miscdevice",
+                "napi",
+                "netmanager_base",
+                "netstack",
+                "os_account",
+                "pasteboard",
+                "preferences",
+                "relational_store",
+                "request",
+                "resource_management",
+                "safwk",
+                "samgr",
+                "secure_element",
+                "storage_service",
+                "time_service",
+                "toolchain",
+                "udmf",
+                "user_auth_framework",
+                "webview",
+                "window_manager",
+                "work_scheduler"
+            ]
+        },
+        "build": {
+            "sub_component": [
+                "//arkcompiler/cangjie_api/api/ohos/ffi_bind:ohos.ffi",
+                "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.encoding.json",
+                "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.json.static",
+                "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop",
+                "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop_helper",
+                "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels",
+                "//arkcompiler/cangjie_api:cangjie_prebuilts_package"
+            ],
+            "group_type": {
+                "base_group": [],
+                "fwk_group": [],
+                "service_group": []
+              },
+            "inner_kits": [
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ohos/labels:ohos.labels"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.encoding.json"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ohos/encoding:ohos.json.static"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ohos/ffi_bind:ohos.ffi"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop"
+                },
+                {
+                    "name": "//arkcompiler/cangjie_api/api/ohos/interop:ohos.ark_interop_helper"
+                }
+            ],
+            "test": []
+        }
+    }
+}
