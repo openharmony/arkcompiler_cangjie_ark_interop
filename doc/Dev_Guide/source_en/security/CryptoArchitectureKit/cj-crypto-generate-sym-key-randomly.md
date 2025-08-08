@@ -1,0 +1,62 @@
+# Random Symmetric Key Generation
+
+Taking AES and SM4 as examples, randomly generate a symmetric key (SymKey) and obtain its binary data.
+
+The symmetric key object can be used for subsequent encryption/decryption operations, while the binary data can be stored or transmitted.
+
+## Random AES Key Generation
+
+For corresponding algorithm specifications, refer to [Symmetric Key Generation and Conversion Specifications: AES](./cj-crypto-sym-key-generation-conversion-spec.md#aes).
+
+1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring), specifying the string parameter 'AES256', to create a symmetric key generator (SymKeyGenerator) with AES algorithm and 256-bit key length.
+
+2. Call [generateSymKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to randomly generate a symmetric key object (SymKey).
+
+3. Call [getEncoded](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
+
+## Example: Random AES Key Generation
+
+<!-- compile -->
+
+```cangjie
+import kit.CryptoArchitectureKit.*
+
+func testSyncGenerateAesKey() {
+    // Create SymKeyGenerator instance.
+    let symKeyGenerator = createSymKeyGenerator('AES256')
+    // Use the key generator to randomly generate a symmetric key.
+    let promiseSymKey = symKeyGenerator.generateSymKey()
+    // Get the binary data of the symmetric key, outputting a 256-bit key (32 bytes in length).
+    let encodedKey = promiseSymKey.getEncoded()
+    AppLog.info('key hex: ${encodedKey.data}')
+}
+```
+
+## Random SM4 Key Generation
+
+For corresponding algorithm specifications, refer to [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4).
+
+1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring), specifying the string parameter 'SM4_128', to create a symmetric key generator (SymKeyGenerator) with SM4 algorithm and 128-bit key length.
+   If developers need to use other algorithms, please modify the string parameter here accordingly.
+
+2. Call [generateSymKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to randomly generate a symmetric key object (SymKey).
+
+3. Call [getEncoded](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
+
+## Example: Random SM4 Key Generation
+
+<!-- compile -->
+
+```cangjie
+import kit.CryptoArchitectureKit.*
+
+func testSyncGenerateAesKey() {
+    // Create SymKeyGenerator instance.
+    let symKeyGenerator = createSymKeyGenerator('SM4_128')
+    // Use the key generator to randomly generate a symmetric key.
+    let promiseSymKey = symKeyGenerator.generateSymKey()
+    // Get the binary data of the symmetric key, outputting a 128-bit byte stream (16 bytes in length).
+    let encodedKey = promiseSymKey.getEncoded()
+    AppLog.info('key hex: ${encodedKey.data}')
+}
+```
