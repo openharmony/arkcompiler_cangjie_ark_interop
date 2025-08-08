@@ -72,3 +72,5 @@ public class BusinessError<T> <: BusinessExceptionEx {
         this.data = data
     }
 }
+
+public type AsyncCallbackEx<T> = (Option<BusinessExceptionEx>, Option<T>) -> Unit
