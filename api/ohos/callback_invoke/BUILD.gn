@@ -18,12 +18,9 @@ ohos_cj_library("ohos.callback_invoke") {
     "callback_object.cj",
   ]
 
-  cj_external_deps = [
-    "cangjie_api:ohos.labels",
-  ]
-
   cj_deps = [
     "../business_exception:ohos.business_exception",
+    "../labels:ohos.labels",
   ]
 
   subsystem_name = "arkcompiler"
