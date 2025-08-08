@@ -17,5 +17,5 @@ ohos_cj_library("ohos.labels") {
   sources = [ "src/api_level.cj" ]
 
   subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
 }

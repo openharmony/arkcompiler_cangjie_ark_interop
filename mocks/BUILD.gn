@@ -21,7 +21,7 @@ config("mock_stub_config") {
 ohos_shared_library("mock_stub") {
   sources = [ "mock_stub.cpp" ]
   public_configs = [ ":mock_stub_config" ]
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
   subsystem_name = "arkcompiler"
 }
 
@@ -163,7 +163,7 @@ if (build_ohos_sdk || build_ohos_split_test) {
   foreach(source, mock_sources) {
     target_name = string_replace(source, ".sym", "")
     mock_sdk_target(target_name) {
-      part_name = "cangjie_api"
+      part_name = "cangjie_ark_interop"
       subsystem_name = "arkcompiler"
       sources = [ "${source}" ]
       if (target_name == "cj_ability_ffi") {

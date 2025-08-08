@@ -20,4 +20,4 @@
 
 ## 相关仓
 
-[cangjie_api](https://gitcode.com/Cangjie/cangjie-api/tree/dev)
+[cangjie_ark_interop](https://gitcode.com/Cangjie/cangjie-api/tree/dev)

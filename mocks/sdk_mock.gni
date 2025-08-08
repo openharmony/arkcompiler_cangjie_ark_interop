@@ -26,7 +26,7 @@ template("mock_sdk_target") {
 
     action("gen_src_${_sourcename_}") {
       sources = [ source ]
-      script = "//arkcompiler/cangjie_api/generate_mock.py"
+      script = "//arkcompiler/cangjie_ark_interop/generate_mock.py"
       args = [
         "--input=${_inputpath_}",
         "--output=${_outcpath_abs_}",
@@ -50,7 +50,7 @@ template("mock_sdk_target") {
     }
     deps = all_deps
     deps += [
-      "//arkcompiler/cangjie_api/mocks:mock_stub"
+      "//arkcompiler/cangjie_ark_interop/mocks:mock_stub"
     ]
   }
 }
