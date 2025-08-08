@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package ohos.base
+package ohos.callback_invoke
 
 import ohos.business_exception.*
 import ohos.labels.APILevel
