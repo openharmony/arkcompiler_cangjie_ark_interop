@@ -18,5 +18,5 @@ The Cangjie API Public Repository includes Cangjie interoperation libraries, pub
 It contains the Cangjie-ArkTS interoperation library, which is used for Cangjie-ArkTS interoperation. The json library/APILevel/cffi library are basic function libraries, providing public capabilities for subsystems such as Cangjie API/Cangjie UI.
 
 ## Related Repositories
-[cangjie_api](https://gitcode.com/Cangjie/cangjie-api/tree/dev)
+[cangjie_ark_interop](https://gitcode.com/Cangjie/cangjie-api/tree/dev)
 

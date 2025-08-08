@@ -24,7 +24,7 @@ ohos_cj_library("ohos.encoding.json") {
   ]
 
   subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
 }
 
 ohos_cangjie_static_library("ohos.json.static") {
@@ -38,5 +38,5 @@ ohos_cangjie_static_library("ohos.json.static") {
   ]
 
   subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
 }

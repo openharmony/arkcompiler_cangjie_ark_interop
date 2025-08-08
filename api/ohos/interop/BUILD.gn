@@ -40,7 +40,7 @@ if (!build_ohos_sdk && !build_ohos_split_test) {
     }
 
     innerapi_tags = [ "platformsdk" ]
-    part_name = "cangjie_api"
+    part_name = "cangjie_ark_interop"
     subsystem_name = "arkcompiler"
   }
 }
@@ -81,7 +81,7 @@ ohos_cj_library("ohos.ark_interop") {
     },
   ]
 
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
   subsystem_name = "arkcompiler"
 }
 
@@ -103,8 +103,8 @@ ohos_cj_library("ohos.ark_interop_helper") {
   ]
 
   cj_external_deps = [
-    "arkui_cangjie_api:ohos.base",
-    "hiviewdfx_cangjie_api:ohos.hilog",
+    "arkui_cangjie_wrapper:ohos.base",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
   ]
 
   external_deps = [
@@ -113,7 +113,7 @@ ohos_cj_library("ohos.ark_interop_helper") {
   ]
 
   subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
 }
 
 cj_macro_library("ohos.ark_interop_macro") {
@@ -128,5 +128,5 @@ cj_macro_library("ohos.ark_interop_macro") {
   ]
   compilation_config = "pipeline=NG"
   subsystem_name = "arkcompiler"
-  part_name = "cangjie_api"
+  part_name = "cangjie_ark_interop"
 }

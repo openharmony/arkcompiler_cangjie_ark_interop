@@ -22,7 +22,7 @@ template("cangjie_prebuilts") {
       source = "${prebuilt_libs_path}/lib${lib_name}.${cj_config.dyn_extension}"
       enable_strip = true
       install_enable = true
-      part_name = "cangjie_api"
+      part_name = "cangjie_ark_interop"
       subsystem_name = "arkcompiler"
       relative_install_dir = "platformsdk/cjsdk"
       install_images = [ "system" ]
@@ -35,7 +35,7 @@ template("cangjie_prebuilts") {
       source = "${prebuilt_libs_path}/lib${lib_name}.${cj_config.dyn_extension}"
       enable_strip = true
       install_enable = true
-      part_name = "cangjie_api"
+      part_name = "cangjie_ark_interop"
       subsystem_name = "arkcompiler"
       relative_install_dir = "chipset-sdk"
       install_images = [ "system" ]
@@ -49,7 +49,7 @@ template("cangjie_prebuilts") {
       source = "${prebuilt_libs_path}/lib${lib_name}.${cj_config.dyn_extension}"
       enable_strip = true
       install_enable = true
-      part_name = "cangjie_api"
+      part_name = "cangjie_ark_interop"
       subsystem_name = "arkcompiler"
       relative_install_dir = "platformsdk/cjsdk/runtime"
       install_images = [ "system" ]
@@ -62,7 +62,7 @@ template("cangjie_prebuilts") {
       source = "${prebuilt_libs_path}/${full_lib_name}"
       enable_strip = true
       install_enable = true
-      part_name = "cangjie_api"
+      part_name = "cangjie_ark_interop"
       subsystem_name = "arkcompiler"
       relative_install_dir = "platformsdk/cjsdk"
       install_images = [ "system" ]
