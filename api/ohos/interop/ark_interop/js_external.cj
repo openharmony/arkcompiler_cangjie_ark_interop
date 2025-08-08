@@ -39,7 +39,7 @@ func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public open class SharedObject {
     var nativeId_: Int64 = -1
@@ -51,7 +51,7 @@ public open class SharedObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public init() {}
 
@@ -61,7 +61,7 @@ public open class SharedObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop nativeId: Int64 {
         get() {
@@ -76,7 +76,7 @@ public open class SharedObject {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSExternal <: JSHeapObject {
     static func createExternal(context: JSContext, data: SharedObject): JSValue_ {
@@ -118,7 +118,7 @@ public class JSExternal <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func getData(): SharedObject {
         context.sharedObjects_[id]
@@ -130,7 +130,7 @@ public class JSExternal <: JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func cast<T>(): Option<T> where T <: SharedObject {
         getData() as T

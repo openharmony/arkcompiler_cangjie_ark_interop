@@ -30,7 +30,7 @@ foreign func ARKTS_GetSymbolDesc(env: JSEnv, symbol: JSValue_): CString
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSSymbol <: JSHeapObject & JSKeyable {
     private var desc_: ?String = None
@@ -67,7 +67,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(_: JSContext): JSValue {
         JSValue(context, innerValue)
@@ -79,7 +79,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public prop description: String {
         get() {
@@ -104,7 +104,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toString(): String {
         let desc = description

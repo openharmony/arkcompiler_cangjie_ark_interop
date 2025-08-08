@@ -32,7 +32,7 @@ foreign func NapiValueToArkTsValue(value: CPointer<Unit>): JSValue_
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public func isStageMode(env: napi_env, context: napi_value): Bool {
     unsafe {
@@ -46,7 +46,7 @@ public func isStageMode(env: napi_env, context: napi_value): Bool {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value {
     unsafe {
@@ -60,7 +60,7 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public func mapToJSValue<T>(
     context: JSContext,
@@ -84,7 +84,7 @@ public func mapToJSValue<T>(
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public func mapFromJSValue<T>(
     context: JSContext,

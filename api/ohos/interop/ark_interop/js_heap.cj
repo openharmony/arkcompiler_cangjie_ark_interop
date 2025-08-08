@@ -34,7 +34,7 @@ foreign func ARKTS_GetGlobalValue(ref: JSGlobal): JSValue_
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 abstract sealed class JSHeapObject {
     let context: JSContext
@@ -60,7 +60,7 @@ abstract sealed class JSHeapObject {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(): JSValue {
         JSValue(context, innerValue)

@@ -137,7 +137,7 @@ func throwNativeErrorToCJ(message: CString): Unit {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSModule {
     private static var lastModule_ = JSModule()
@@ -165,7 +165,7 @@ public class JSModule {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func registerModule(register: ModuleRegister): Unit {
         lastModule_.addExporter(register)
@@ -177,7 +177,7 @@ public class JSModule {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func registerClass(name: String, register: ClassRegister): Unit {
         lastModule_.addClass(name, register)
@@ -189,7 +189,7 @@ public class JSModule {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func registerFunc(name: String, register: FuncRegister): Unit {
         lastModule_.addFunc(name, register)
@@ -201,7 +201,7 @@ public class JSModule {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func registerFunc(name: String, lambda: JSLambda): Unit {
         lastModule_.addRawFunc(name, lambda)

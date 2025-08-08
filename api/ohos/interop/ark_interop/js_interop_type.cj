@@ -18,7 +18,7 @@ package ohos.ark_interop
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 sealed interface JSInteropByte {}
 
@@ -28,7 +28,7 @@ sealed interface JSInteropByte {}
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Byte <: JSInteropByte {}
 
@@ -38,7 +38,7 @@ extend Byte <: JSInteropByte {}
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public interface JSInteropType<T> {
     /**
@@ -47,7 +47,7 @@ public interface JSInteropType<T> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     static func fromJSValue(context: JSContext, input: JSValue): T
 
@@ -57,7 +57,7 @@ public interface JSInteropType<T> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     func toJSValue(context: JSContext): JSValue
 
@@ -67,7 +67,7 @@ public interface JSInteropType<T> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     static func toArkTsType(): String
 }
@@ -78,7 +78,7 @@ public interface JSInteropType<T> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Int8 <: JSInteropType<Int8> {
     /**
@@ -89,7 +89,7 @@ extend Int8 <: JSInteropType<Int8> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int8 {
         return Int8(input.toNumber())
@@ -101,7 +101,7 @@ extend Int8 <: JSInteropType<Int8> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -113,7 +113,7 @@ extend Int8 <: JSInteropType<Int8> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -126,7 +126,7 @@ extend Int8 <: JSInteropType<Int8> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Int16 <: JSInteropType<Int16> {
     /**
@@ -137,7 +137,7 @@ extend Int16 <: JSInteropType<Int16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int16 {
         return Int16(input.toNumber())
@@ -149,7 +149,7 @@ extend Int16 <: JSInteropType<Int16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -161,7 +161,7 @@ extend Int16 <: JSInteropType<Int16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -174,7 +174,7 @@ extend Int16 <: JSInteropType<Int16> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Int32 <: JSInteropType<Int32> {
     /**
@@ -185,7 +185,7 @@ extend Int32 <: JSInteropType<Int32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int32 {
         return Int32(input.toNumber())
@@ -197,7 +197,7 @@ extend Int32 <: JSInteropType<Int32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         context.number(this).toJSValue()
@@ -209,7 +209,7 @@ extend Int32 <: JSInteropType<Int32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -222,7 +222,7 @@ extend Int32 <: JSInteropType<Int32> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Int64 <: JSInteropType<Int64> {
     /**
@@ -233,7 +233,7 @@ extend Int64 <: JSInteropType<Int64> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Int64 {
         return Int64(input.toNumber())
@@ -245,7 +245,7 @@ extend Int64 <: JSInteropType<Int64> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -257,7 +257,7 @@ extend Int64 <: JSInteropType<Int64> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -270,7 +270,7 @@ extend Int64 <: JSInteropType<Int64> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend UInt8 <: JSInteropType<UInt8> {
     /**
@@ -281,7 +281,7 @@ extend UInt8 <: JSInteropType<UInt8> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): UInt8 {
         return UInt8(input.toNumber())
@@ -293,7 +293,7 @@ extend UInt8 <: JSInteropType<UInt8> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -305,7 +305,7 @@ extend UInt8 <: JSInteropType<UInt8> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -318,7 +318,7 @@ extend UInt8 <: JSInteropType<UInt8> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend UInt16 <: JSInteropType<UInt16> {
     /**
@@ -329,7 +329,7 @@ extend UInt16 <: JSInteropType<UInt16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): UInt16 {
         return UInt16(input.toNumber())
@@ -341,7 +341,7 @@ extend UInt16 <: JSInteropType<UInt16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Int32(this)).toJSValue()
@@ -353,7 +353,7 @@ extend UInt16 <: JSInteropType<UInt16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -366,7 +366,7 @@ extend UInt16 <: JSInteropType<UInt16> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend UInt32 <: JSInteropType<UInt32> {
     /**
@@ -377,7 +377,7 @@ extend UInt32 <: JSInteropType<UInt32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     @OverflowWrapping
     public static func fromJSValue(_: JSContext, input: JSValue): UInt32 {
@@ -390,7 +390,7 @@ extend UInt32 <: JSInteropType<UInt32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     @OverflowWrapping
     public func toJSValue(context: JSContext): JSValue {
@@ -403,7 +403,7 @@ extend UInt32 <: JSInteropType<UInt32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -416,7 +416,7 @@ extend UInt32 <: JSInteropType<UInt32> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend UInt64 <: JSInteropType<UInt64> {
     /**
@@ -427,7 +427,7 @@ extend UInt64 <: JSInteropType<UInt64> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): UInt64 {
         return UInt64(input.toNumber())
@@ -439,7 +439,7 @@ extend UInt64 <: JSInteropType<UInt64> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -451,7 +451,7 @@ extend UInt64 <: JSInteropType<UInt64> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -464,7 +464,7 @@ extend UInt64 <: JSInteropType<UInt64> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Float16 <: JSInteropType<Float16> {
     /**
@@ -475,7 +475,7 @@ extend Float16 <: JSInteropType<Float16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Float16 {
         return Float16(input.toNumber())
@@ -487,7 +487,7 @@ extend Float16 <: JSInteropType<Float16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -499,7 +499,7 @@ extend Float16 <: JSInteropType<Float16> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -512,7 +512,7 @@ extend Float16 <: JSInteropType<Float16> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Float32 <: JSInteropType<Float32> {
     /**
@@ -523,7 +523,7 @@ extend Float32 <: JSInteropType<Float32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Float32 {
         return Float32(input.toNumber())
@@ -535,7 +535,7 @@ extend Float32 <: JSInteropType<Float32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(Float64(this)).toJSValue()
@@ -547,7 +547,7 @@ extend Float32 <: JSInteropType<Float32> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -560,7 +560,7 @@ extend Float32 <: JSInteropType<Float32> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Float64 <: JSInteropType<Float64> & JSKeyable {
     /**
@@ -571,7 +571,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Float64 {
         return input.toNumber()
@@ -583,7 +583,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.number(this).toJSValue()
@@ -595,7 +595,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "number"
@@ -608,7 +608,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Bool <: JSInteropType<Bool> {
     /**
@@ -619,7 +619,7 @@ extend Bool <: JSInteropType<Bool> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Bool {
         return input.toBoolean()
@@ -631,7 +631,7 @@ extend Bool <: JSInteropType<Bool> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.boolean(this).toJSValue()
@@ -643,7 +643,7 @@ extend Bool <: JSInteropType<Bool> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "boolean"
@@ -656,7 +656,7 @@ extend Bool <: JSInteropType<Bool> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend String <: JSInteropType<String> {
     /**
@@ -667,7 +667,7 @@ extend String <: JSInteropType<String> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): String {
         return input.toString()
@@ -679,7 +679,7 @@ extend String <: JSInteropType<String> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "string"
@@ -692,7 +692,7 @@ extend String <: JSInteropType<String> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend JSString <: JSInteropType<JSString> {
     /**
@@ -703,7 +703,7 @@ extend JSString <: JSInteropType<JSString> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): JSString {
         return input.asString()
@@ -715,7 +715,7 @@ extend JSString <: JSInteropType<JSString> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "string"
@@ -728,7 +728,7 @@ extend JSString <: JSInteropType<JSString> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend Unit <: JSInteropType<Unit> {
     /**
@@ -737,7 +737,7 @@ extend Unit <: JSInteropType<Unit> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, _: JSValue): Unit {}
 
@@ -747,7 +747,7 @@ extend Unit <: JSInteropType<Unit> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.undefined().toJSValue()
@@ -759,7 +759,7 @@ extend Unit <: JSInteropType<Unit> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "undefined"
@@ -772,7 +772,7 @@ extend Unit <: JSInteropType<Unit> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
     /**
@@ -781,7 +781,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(context: JSContext, input: JSValue): Option<T> {
         if (input.isUndefined()) {
@@ -797,7 +797,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         match (this) {
@@ -812,7 +812,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "union"
@@ -825,7 +825,7 @@ extend<T> Option<T> <: JSInteropType<Option<T>> where T <: JSInteropType<T> {
 @!APILevel[
     21,
     stagemodelonly: true,
-    syscap: "SystemCapability.Utils.Cangjie"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
      /**
@@ -836,7 +836,7 @@ extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func fromJSValue(_: JSContext, input: JSValue): Array<T> {
         return (input.asArrayBuffer().readBytes() as Array<T>) ?? throw Exception("JSValue to buffer error.")
@@ -850,7 +850,7 @@ extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         return context.arrayBuffer((this as Array<Byte>) ?? throw Exception("Buffer to jsvalue error.")).toJSValue()
@@ -862,7 +862,7 @@ extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte {
     @!APILevel[
         21,
         stagemodelonly: true,
-        syscap: "SystemCapability.Utils.Cangjie"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public static func toArkTsType(): String {
         "ArrayBuffer"
