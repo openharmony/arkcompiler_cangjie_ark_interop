@@ -1,0 +1,83 @@
+# 设备输入（仓颉）
+
+相机应用可通过调用和控制相机设备，完成预览、拍照和录像等基础操作。
+
+## 开发步骤
+
+详细的API说明请参见[Camera API参考](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md)。
+
+1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
+
+    <!-- compile -->
+
+    ```cangjie
+    import kit.CameraKit.*
+    import kit.BasicServicesKit.*
+    import ohos.base.Callback1Argument
+    import ohos.base.BussinessException
+    ```
+
+2. 通过[CameraManager](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager)类中的[createCameraInput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createcamerainputcameradevice)方法创建相机输入流。
+
+    <!-- compile -->
+
+    ```cangjie
+    class ErrorCallBack <: Callback1Argument<BusinessException> {
+        public open func invoke(error: BusinessException): Unit {
+            AppLog.error("Camera input error code: ${error.code}")
+        }
+    }
+
+    func createInput(cameraDevice: CameraDevice, cameraManager: CameraManager): CameraInput {
+        // 创建相机输入流。
+        let cameraInput: CameraInput = cameraManager.createCameraInput(cameraDevice)
+        // 监听cameraInput错误信息。
+        cameraInput.on(CameraCallbackType.CameraError, cameraDevice, ErrorCallBack())
+        // 打开相机。
+        cameraInput.open()
+        return cameraInput
+    }
+    ```
+
+3. 通过[getSupportedSceneModes](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedscenemodescameradevice)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[SceneMode](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#enum-scenemode)。
+
+    <!-- compile -->
+
+    ```cangjie
+    func getSupportedSceneMode(cameraDevice: CameraDevice, cameraManager: CameraManager): Array<SceneMode> {
+    // 获取相机设备支持的模式列表。
+        let sceneModeArray: Array<SceneMode> = cameraManager.getSupportedSceneModes(cameraDevice)
+        if (sceneModeArray.size > 0) {
+            for (index in 0..sceneModeArray.size) {
+                AppLog.info("Camera SceneMode : ${sceneModeArray[index]}")
+            }
+            return sceneModeArray
+        } else {
+            AppLog.error("cameraManager.getSupportedSceneModes error")
+            return []
+        }
+    }
+    ```
+
+4. 通过[getSupportedOutputCapability](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedoutputcapabilitycameradevice-scenemode)方法，获取当前相机设备支持的所有输出流，如预览流、拍照流、录像流等。输出流在[CameraOutputCapability](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability)中的各个profile字段中，根据相机设备指定模式[SceneMode](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#enum-scenemode)的不同，需要添加不同类型的输出流。
+
+    <!-- compile -->
+
+    ```cangjie
+    func getSupportedOutputCapability(cameraDevice: CameraDevice, cameraManager: CameraManager, sceneMode: SceneMode): CameraOutputCapability {
+        // 获取相机设备支持的输出流能力。
+        let cameraOutputCapability: CameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, sceneMode)
+        // 以NORMAL_PHOTO模式为例，需要添加预览流、拍照流。
+        // previewProfiles属性为获取当前设备支持的预览输出流。
+        let previewProfilesArray: Array<Profile> = cameraOutputCapability.previewProfiles
+        if (!previewProfilesArray.size == 0) {
+            AppLog.error("createOutput previewProfilesArray is empty")
+        }
+        //photoProfiles属性为获取当前设备支持的拍照输出流。
+        let photoProfilesArray: Array<Profile> = cameraOutputCapability.photoProfiles
+        if (photoProfilesArray.size == 0) {
+            AppLog.error("createOutput photoProfilesArray is empty")
+        }
+        return cameraOutputCapability
+    }
+    ```
