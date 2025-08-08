@@ -18,8 +18,8 @@ ohos_cj_library("ohos.business_exception") {
     "business_exception.cj",
   ]
 
-  cj_external_deps = [
-    "cangjie_api:ohos.labels",
+  cj_deps = [
+    "../labels:ohos.labels",
   ]
 
   subsystem_name = "arkcompiler"
