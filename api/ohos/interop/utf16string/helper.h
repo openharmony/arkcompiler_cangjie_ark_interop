@@ -106,7 +106,7 @@ private:
     {
         constexpr auto wordMask = GetLatin1Mask<8 / sizeof(T)>();
         for (uint32_t i = 0; i < length; i++) {
-            if (*src & wordMask) {
+            if (*src++ & wordMask) {
                 return false;
             }
         }
@@ -117,7 +117,7 @@ private:
     {
         constexpr auto restMask = GetLatin1Mask<1>();
         for (uint32_t i = 0; i < length; i++) {
-            if (*src & restMask) {
+            if (*src++ & restMask) {
                 return false;
             }
         }
