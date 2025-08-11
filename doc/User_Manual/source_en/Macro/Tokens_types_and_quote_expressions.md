@@ -77,7 +77,7 @@ The dump information includes each `Token`'s type (`description`) and value (`to
 
 In most cases, directly constructing and concatenating `Tokens` can be cumbersome. Therefore, the Cangjie language provides `quote` expressions to construct `Tokens` from code templates. These are called code templates because `$(...)` can be used within `quote` to interpolate expressions from the context. The interpolated expressions must be convertible to `Tokens` (specifically, they must implement the `ToTokens` interface). In the standard library, the following types implement `ToTokens`:
 
-- All node types (nodes will be discussed in [Syntax Nodes](./sytax_node.md))
+- All node types (nodes will be discussed in [Syntax Nodes](./syntax_node.md))
 - `Token` and `Tokens` types
 - All primitive data types: integers, floats, `Bool`, `Rune`, and `String`
 - `Array<T>` and `ArrayList<T>`, where `T` has type restrictions and outputs different delimiters depending on its type. For details, refer to the *Cangjie Programming Language Library API* documentation.
@@ -111,7 +111,7 @@ x = 1.0
 s = "Hello"
 ```
 
-For more interpolation usage, refer to [Using Quote to Interpolate Syntax Nodes](./sytax_node.md#using-quote-to-interpolate-syntax-nodes).
+For more interpolation usage, refer to [Using Quote to Interpolate Syntax Nodes](./syntax_node.md#using-quote-to-interpolate-syntax-nodes).
 
 Specifically, when a `quote` expression contains certain special `Token` elements, escaping is required:
 
