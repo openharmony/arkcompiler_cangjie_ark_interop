@@ -79,7 +79,7 @@
         }
         ```
 
-3. 在 ArkTS 模块内的 oh-pacakge.json5 文件中的 dependencies 字段配置对仓颉模块对应的 so 库的依赖：
+3. 在 ArkTS 模块内的 oh-package.json5 文件中的 dependencies 字段配置对仓颉模块对应的 so 库的依赖：
 
     > **说明：**
     >
@@ -180,7 +180,7 @@
         }
         ```
 
-3. 在 ArkTS 模块内的 oh-pacakge.json5 文件中的 dependencies 字段配置对仓颉模块对应的 so 库的依赖：
+3. 在 ArkTS 模块内的 oh-package.json5 文件中的 dependencies 字段配置对仓颉模块对应的 so 库的依赖：
 
     > **说明：**
     >
@@ -292,7 +292,7 @@ export declare function requireCJLib(moduleName: string): Object
         }
         ```
 
-3. 在 ArkTS 模块内的 oh-pacakge.json5 文件中的 dependencies 字段配置对模块加载器的 so 库的依赖：
+3. 在 ArkTS 模块内的 oh-package.json5 文件中的 dependencies 字段配置对模块加载器的 so 库的依赖：
 
     ```json
     // entry/oh-package.json5
@@ -355,7 +355,7 @@ export declare function requireCJLib(moduleName: string): Object
         }
         ```
 
-2. 在 ArkTS 模块内的 oh-pacakge.json5 文件中的 dependencies 字段配置对模块加载器的 so 库的依赖：
+2. 在 ArkTS 模块内的 oh-package.json5 文件中的 dependencies 字段配置对模块加载器的 so 库的依赖：
 
     ```json
     // entry/oh-package.json5
