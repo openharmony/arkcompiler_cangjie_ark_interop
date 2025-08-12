@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <oatconfig>
+        <licensefile></licensefile>
+        <policylist>
+        </policylist>
+        <filefilterlist>
+            <filefilter name="licenseFileNamePolicyFilter" desc="Filters for LICENSE file policies">
+                <filteritem type="filepath" name="doc/.*" desc="doc目录过滤"/>
+            </filefilter>
+            <filefilter name="defaultFilter" desc="Files not to check">
+                <filteritem type="filename" name="*.png | *.PNG | *.jpg | *.jpeg | *.gif" desc="desc files"/>
+            </filefilter>
+            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binaryFile">
+                <filteritem type="filename" name="*.png" desc="png图片文件，完成检查"/>
+                <filteritem type="filename" name="*.PNG" desc="PNG图片文件，完成检查"/>
+                <filteritem type="filename" name="*.jpg" desc="jpg图片文件，完成检查"/>
+                <filteritem type="filename" name="*.jpeg" desc="jpeg图片文件，完成检查"/>
+                <filteritem type="filename" name="*.gif" desc="gif图片文件，完成检查"/>
+            </filefilter>
+        </filefilterlist>
+        <licensematcherlist>
+        </licensematcherlist>
+    </oatconfig>
+</configuration>
