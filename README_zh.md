@@ -2,13 +2,14 @@
 
 ## 简介
 
-仓颉 API 公共仓，包含仓颉互操作库, 公共的 json 库/ APILevel 库/ cffi 库等。
+仓颉 API 公共仓，包含仓颉互操作库、公共的 json 库/ APILevel 库/ cffi 库等，以及仓颉文档。
 
 ## 目录
 
-```
+```text
 .
 ├── api                   # 仓颉 api 的公共仓代码
+├── doc                   # 仓颉文档，包括api参考、应用开发指南、仓颉编程语言用户手册
 ├── mocks                 # sdk 构建时 ffi mock 桩
 ├── generate_mock.py      # 生成 mock 的构建脚本
 ├── bundle.json
@@ -16,7 +17,8 @@
 ```
 
 ## 使用场景
-包含仓颉- ArkTS 互操作库, 用于仓颉- ArkTS 互操作. json 库/ APILevel / cffi 库为基础功能库, 提供给仓颉 api /仓颉 ui 等子系统等公共能力.
+
+包含仓颉- ArkTS 互操作库，用于仓颉- ArkTS 互操作。json 库/ APILevel / cffi 库为基础功能库，提供给仓颉 api /仓颉 ui 等子系统等公共能力.
 
 ## 相关仓
 
