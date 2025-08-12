@@ -977,6 +977,7 @@ Utf16StringHandle Utf16String::Append(Utf16StringHandle subject) const
     if (isLatin1) {
         std::copy_n(Latin1Data(), length_, data);
         std::copy_n(subject->Latin1Data(), subject->length_, data + length_);
+        return result;
     }
     result->Write(this, 0);
     result->Write(subject, length_);
@@ -989,11 +990,6 @@ uint32_t Utf16String::Write(Utf16StringHandle target, uint32_t offset)
         auto dst = const_cast<char*>(Latin1Data()) + offset;
         if (target->isLatin1_) {
             std::copy_n(target->Latin1Data(), target->length_, dst);
-        } else {
-            auto targetData = target->Utf16Data();
-            for (uint32_t i = 0; i < target->length_; i++) {
-                *dst++ = *targetData++;
-            }
         }
     } else {
         auto dst = const_cast<char16_t*>(Utf16Data()) + offset;
@@ -1011,6 +1007,18 @@ uint32_t Utf16String::Write(Utf16StringHandle target, uint32_t offset)
 
 Utf16StringHandle Utf16String::Join(const Utf16StringHandle *src, uint32_t length, Utf16StringHandle separator)
 {
+    /*
+        There is a corner case, if the `search` parameter of `Replace` is empty, then the
+        length is zero, it will OutOfMemory caused by integer wrapping.
+        example code:
+        let from = Utf16String("")
+        let to = Utf16String("222222222222222222222222")
+        let search = Utf16String("")
+        var result1 = from.replace(search, to, count:0)
+    */
+    if (length == 0) {
+        return Empty;
+    }
     uint32_t size = separator->length_ * (length - 1);
     bool isLatin1 = separator->isLatin1_;
     for (uint32_t i = 0; i < length; i++) {
