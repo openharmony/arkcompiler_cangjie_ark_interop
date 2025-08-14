@@ -48,20 +48,30 @@
     ```cangjie
     // 定义包名，该包名需要和 cjpm.toml 的 package name 保持一致
     package ohos_app_cangjie_entry
+
     // 导入互操作库ark_interop和互操作宏
     import ohos.ark_interop.*
+
     // 互操作函数定义，该函数参数类型必须为(JSContext，JSCallInfo),返回值类型必须为JSValue
     func addByObject(context: JSContext, callInfo: JSCallInfo): JSValue {
         // callInfo中记录的为函数调用的参数。如下为获取首个参数：
         let arg0 = callInfo[0]
         // 校验参数0是否是对象，否则返回undefined
         if (!arg0.isObject()) {
+            return context.undefined().toJSValue()
+        }
         // 把JSValue转换为Float64
-        let a = argA.toNumber()
-        let b = argB.toNumber()
+        let a = arg0.asObject()["a"].toNumber()
+        let b = arg0.asObject()["b"].toNumber()
 
         let result = a + b
         return context.number(result).toJSValue()
+    }
+
+    // 必须注册该函数到JSModule中
+    let EXPORT_MODULE = JSModule.registerModule {
+        runtime, exports =>
+            exports["addByObject"] = runtime.function(addByObject).toJSValue()
     }
     ```
 
@@ -85,6 +95,7 @@
 
     // 调用仓颉接口
     let result = addByObject({a: 1, b: 2});
+    console.log("result = " + result);
     ```
 
 除了可以从对象上读取属性外，还可以对属性赋值或创建新属性，操作方式为 `JSObject[key] = value`，其中 key 可以是仓颉 String 、JSString 或 JSSymbol 类型，value 是 JSValue 类型 。
@@ -161,6 +172,12 @@ func readNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
     let result = a + b
     return context.number(result).toJSValue()
 }
+
+// 必须注册该函数到JSModule中
+let EXPORT_MODULE = JSModule.registerModule {
+    runtime, exports =>
+        exports["readNumber"] = runtime.function(readNumber).toJSValue()
+}
 ```
 
 在 Index.d.ts 文件中，提供互操作的接口声明：
@@ -168,6 +185,8 @@ func readNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
 ```typescript
 // libohos_app_cangjie_entry.so 对应的 Index.d.ts
 export declare function readNumber(data: SendableTestClass): number;
+
+interface SendableTestClass {}
 ```
 
 在 ArkTS 侧构建 sendable 对象：
@@ -175,12 +194,12 @@ export declare function readNumber(data: SendableTestClass): number;
 ```typescript
 // 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
 import { readNumber } from "libohos_app_cangjie_entry.so"
-...
+
 // 构建 sendable 对象
 let a = new SendableTestClass();
 // 调用仓颉接口
 let result = readNumber(a);
-console.log(`${result}`);
+console.log("result = " + result);
 ```
 
 ### ArkTS 异步锁
@@ -236,10 +255,11 @@ let EXPORT_MODULE = JSModule.registerModule {
 // libohos_app_cangjie_entry.so对应的Index.d.ts
 export declare function testAsync(): Promise<boolean>;
 export declare function readName(data: Some): Promise<string>;
+
+interface Some {}
 ```
 
-创建一个文件 workerTest.ets，主线程代码如下：
-
+在 entry->src->main->ets 中创建一个文件 workerTest.ets，主线程代码如下：
 ```typescript
 // workerTest.ets
 import hilog from '@ohos.hilog';
@@ -262,7 +282,7 @@ export class Some {
   }
 
   getName(): Promise<string> {
-    return this.lock.lockAsync(()=> {
+    return this.lock.lockAsync(() => {
       return this.name;
     });
   }
@@ -307,9 +327,10 @@ export async function startTestWorker() {
 }
 ```
 
-worker 侧实现：
+在 entry->src->main->ets 中创建一个 workers 文件夹，在 workers 中创建 Workers.ets 文件，代码如下：
 
 ```typescript
+// Workers.ets
 import {ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker} from '@kit.ArkTS';
 import hilog from '@ohos.hilog';
 
@@ -344,6 +365,16 @@ async function beginTask(some: Some) {
 }
 ```
 
+在 ArkTS 侧启动 Worker：
+
+```typescript
+// 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
+import { startTestWorker } from "../workerTest"
+
+// 启动 Worker
+startTestWorker();
+```
+
 ### 调用 ArkTS 函数
 
 #### 普通函数调用
@@ -355,7 +386,7 @@ async function beginTask(some: Some) {
 
     ```typescript
     // libohos_app_cangjie_entry.so对应的Index.d.ts
-    export declare function addByCallback(a: number, b: number, callback: (result: number)=>void): void;
+    export declare function addByCallback(a: number, b: number, callback: (result: number) => void): void;
     ```
 
     ```typescript
@@ -371,6 +402,13 @@ async function beginTask(some: Some) {
 2. 仓颉代码中回调 ArkTS 函数：
 
     ```cangjie
+    package ohos_app_cangjie_entry
+
+    internal import ohos.ark_interop.JSModule
+    internal import ohos.ark_interop.JSContext
+    internal import ohos.ark_interop.JSCallInfo
+    internal import ohos.ark_interop.JSValue
+
     func addByCallback(context: JSContext, callInfo: JSCallInfo): JSValue {
         // 获取第1、2个参数，并转换为Float64
         let a = callInfo[0].toNumber()
@@ -383,6 +421,11 @@ async function beginTask(some: Some) {
         let retJSValue = context.number(result).toJSValue()
         // 调用回调函数
         callback.call(retJSValue)
+    }
+
+    let EXPORT_MODULE = JSModule.registerModule {
+        runtime, exports =>
+            exports["addByCallback"] = runtime.function(addByCallback).toJSValue()
     }
     ```
 

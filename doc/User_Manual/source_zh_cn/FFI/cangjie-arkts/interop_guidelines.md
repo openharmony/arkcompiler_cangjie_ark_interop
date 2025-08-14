@@ -146,11 +146,11 @@ ArkTS 侧代码：
 
 ```javascript
 interface CJLib {
-    callArkTSWithExp(callback: ()=>void): void
+    callArkTSWithExp(callback: () => void): void
 }
 
 function doSth(lib: CJLib): void {
-    lib.callArkTSWithExp(()=> {
+    lib.callArkTSWithExp(() => {
         throw new Error("this is an error")
     })
 }
@@ -403,7 +403,7 @@ let EXPORT_MODULE = JSModule.registerModule {
 ```javascript
 export declare interface CJData {
     name: string;
-    callback: ()=>void;
+    callback: () => void;
 }
 
 export declare function createCJData(): CJData;
@@ -415,7 +415,7 @@ ArkTS 侧代码：
 import { createCJData, CJData } from "libohos_app_cangjie_entry.so"
 
 const data: CJData = createCJData("123")
-data.callback = ()=> {
+data.callback = () => {
     console.log(data.name)
 }
 ```
@@ -601,7 +601,7 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
             let result = context.number(value).toJSValue()
             // 调用js回调
             callback.call(result)
-        }  
+        }
     }
 
     // 返回 void

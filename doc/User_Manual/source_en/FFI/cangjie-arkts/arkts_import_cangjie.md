@@ -204,7 +204,7 @@ Below is an example of using the `loadNativeModule` interface to load the Cangji
     let module: ESObject = loadNativeModule("libohos_app_cangjie_entry.so");
 
     // Call the Cangjie interface
-    let result = module.addNumber(1, 2);
+    let result: number = module.addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
     ```
 
@@ -264,6 +264,7 @@ Below is an example of using the `requireCJLib` interface to load the Cangjie mo
             // Return JSValue
             return result
         }
+
         // The function must be registered in JSModule
         let EXPORT_MODULE = JSModule.registerModule {
             runtime, exports =>
@@ -287,7 +288,7 @@ Below is an example of using the `requireCJLib` interface to load the Cangjie mo
         {
             "name": "libark_interop_loader.so",
             "types": "./libark_interop_loader.d.ts",
-            "version": "",
+            "version": "1.0.0",
             "description": "Please describe the basic information."
         }
         ```

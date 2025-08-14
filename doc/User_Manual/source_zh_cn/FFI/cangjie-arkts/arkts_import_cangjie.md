@@ -204,7 +204,7 @@
     let module: ESObject = loadNativeModule("libohos_app_cangjie_entry.so");
 
     // 调用仓颉接口
-    let result = module.addNumber(1, 2);
+    let result: number = module.addNumber(1, 2);
     console.log(`1 + 2 = ${result}`);
     ```
 
@@ -264,6 +264,7 @@ export declare function requireCJLib(moduleName: string): Object
             // 返回 JSValue
             return result
         }
+
         // 必须注册该函数到JSModule中
         let EXPORT_MODULE = JSModule.registerModule {
             runtime, exports =>
@@ -287,7 +288,7 @@ export declare function requireCJLib(moduleName: string): Object
         {
             "name": "libark_interop_loader.so",
             "types": "./libark_interop_loader.d.ts",
-            "version": "",
+            "version": "1.0.0",
             "description": "Please describe the basic information."
         }
         ```

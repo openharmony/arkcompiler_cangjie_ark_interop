@@ -48,7 +48,7 @@ The steps to add a Cangjie page in DevEco Studio are as follows:
 
    ![image-20250415105651058](../../figures/add_cangjie_page_3.png)
 
-3. Create an ArkTS file in **entry->src->main->etc->pages** to serve as the container for loading the Cangjie page component (as explained at the beginning of this section). Name it second.ets, with the following content:
+3. Create an ArkTS file in **entry->src->main->ets->pages** to serve as the container for loading the Cangjie page component (as explained at the beginning of this section). Name it second.ets, with the following content:
 
    ```ts
    // Embedding a Cangjie page component in an ArkTS page
