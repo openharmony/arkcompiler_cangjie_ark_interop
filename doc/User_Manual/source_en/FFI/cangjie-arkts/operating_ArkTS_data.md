@@ -48,20 +48,30 @@ Example from an interoperability function implementation:
     ```cangjie
     // Define the package name, which must match the package name in cjpm.toml
     package ohos_app_cangjie_entry
+
     // Import the interoperability library ark_interop and interoperability macros
     import ohos.ark_interop.*
+
     // Define the interoperability function. The parameter types must be (JSContext, JSCallInfo), and the return type must be JSValue.
     func addByObject(context: JSContext, callInfo: JSCallInfo): JSValue {
         // callInfo records the function call parameters. Below is how to get the first parameter:
         let arg0 = callInfo[0]
         // Check if parameter 0 is an object; otherwise, return undefined
         if (!arg0.isObject()) {
+          return context.undefined().toJSValue()
+        }
         // Convert JSValue to Float64
-        let a = argA.toNumber()
-        let b = argB.toNumber()
+        let a = arg0.asObject()["a"].toNumber()
+        let b = arg0.asObject()["b"].toNumber()
 
         let result = a + b
         return context.number(result).toJSValue()
+    }
+
+    // This function must be registered in JSModule
+    let EXPORT_MODULE = JSModule.registerModule {
+        runtime, exports =>
+            exports["addByObject"] = runtime.function(addByObject).toJSValue()
     }
     ```
 
@@ -85,6 +95,7 @@ Example from an interoperability function implementation:
 
     // Call the Cangjie interface
     let result = addByObject({a: 1, b: 2});
+    console.log("result = " + result);
     ```
 
 In addition to reading properties from objects, you can also assign values to properties or create new properties using `JSObject[key] = value`, where `key` can be a Cangjie String, JSString, or JSSymbol type, and `value` is of type JSValue.
@@ -161,6 +172,12 @@ func readNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
     let result = a + b
     return context.number(result).toJSValue()
 }
+
+// This function must be registered in JSModule
+let EXPORT_MODULE = JSModule.registerModule {
+    runtime, exports =>
+        exports["addByObject"] = runtime.function(addByObject).toJSValue()
+}
 ```
 
 Interoperability interface declaration in Index.d.ts:
@@ -168,6 +185,8 @@ Interoperability interface declaration in Index.d.ts:
 ```typescript
 // Index.d.ts corresponding to libohos_app_cangjie_entry.so
 export declare function readNumber(data: SendableTestClass): number;
+
+interface SendableTestClass {}
 ```
 
 Constructing sendable objects in ArkTS:
@@ -175,12 +194,12 @@ Constructing sendable objects in ArkTS:
 ```typescript
 // Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
 import { readNumber } from "libohos_app_cangjie_entry.so"
-...
+
 // Construct a sendable object
 let a = new SendableTestClass();
 // Call the Cangjie interface
 let result = readNumber(a);
-console.log(`${result}`);
+console.log("result = " + result);
 ```
 
 ### ArkTS Async Lock
@@ -236,10 +255,11 @@ Interoperability interface declaration in Index.d.ts:
 // Index.d.ts corresponding to libohos_app_cangjie_entry.so
 export declare function testAsync(): Promise<boolean>;
 export declare function readName(data: Some): Promise<string>;
+
+interface Some {}
 ```
 
-Create a file workerTest.ets with the main thread code:
-
+In entry->src->main->ets, create a file named workerTest.ets. The main thread code is as follows:
 ```typescript
 // workerTest.ets
 import hilog from '@ohos.hilog';
@@ -262,7 +282,7 @@ export class Some {
   }
 
   getName(): Promise<string> {
-    return this.lock.lockAsync(()=> {
+    return this.lock.lockAsync(() => {
       return this.name;
     });
   }
@@ -307,9 +327,10 @@ export async function startTestWorker() {
 }
 ```
 
-Worker-side implementation:
+In entry->src->main->ets, create a workers folder. Inside the workers folder, create a Workers.ets file with the following code:
 
 ```typescript
+// Workers.ets
 import {ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker} from '@kit.ArkTS';
 import hilog from '@ohos.hilog';
 
@@ -344,6 +365,16 @@ async function beginTask(some: Some) {
 }
 ```
 
+Start the Worker in ArkTS:
+
+```typescript
+// Import the Cangjie dynamic library. The library name must be the same as the Cangjie package name, and this name must match the package name where the interoperability interface is located.
+import { startTestWorker } from "../workerTest"
+
+// Start the Worker
+startTestWorker();
+```
+
 ### Invoking ArkTS Functions
 
 #### Regular Function Calls
@@ -355,7 +386,7 @@ This example first calls a Cangjie function from ArkTS, then implements a callba
 
     ```typescript
     // Index.d.ts corresponding to libohos_app_cangjie_entry.so
-    export declare function addByCallback(a: number, b: number, callback: (result: number)=>void): void;
+    export declare function addByCallback(a: number, b: number, callback: (result: number) => void): void;
     ```
 
     ```typescript
@@ -371,6 +402,13 @@ This example first calls a Cangjie function from ArkTS, then implements a callba
 2. Cangjie code calls back ArkTS function:
 
     ```cangjie
+    package ohos_app_cangjie_entry
+
+    internal import ohos.ark_interop.JSModule
+    internal import ohos.ark_interop.JSContext
+    internal import ohos.ark_interop.JSCallInfo
+    internal import ohos.ark_interop.JSValue
+
     func addByCallback(context: JSContext, callInfo: JSCallInfo): JSValue {
         // Get 1st and 2nd parameters and convert to Float64
         let a = callInfo[0].toNumber()
@@ -383,6 +421,11 @@ This example first calls a Cangjie function from ArkTS, then implements a callba
         let retJSValue = context.number(result).toJSValue()
         // Invoke callback function
         callback.call(retJSValue)
+    }
+
+    let EXPORT_MODULE = JSModule.registerModule {
+        runtime, exports =>
+            exports["addByCallback"] = runtime.function(addByCallback).toJSValue()
     }
     ```
 

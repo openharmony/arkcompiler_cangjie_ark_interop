@@ -17,11 +17,11 @@ The following example demonstrates specific practices. This case involves an int
 
     import ohos.ark_interop.*
 
-    // Class name has no impact
+    // The class name has no impact
     class Main {
         // Define static constructor
         static init() {
-            // Register key-value pairs
+            // Register the key-value pair
             JSModule.registerFunc("addNumberAsync", addNumberAsync)
         }
     }
@@ -57,7 +57,7 @@ The following example demonstrates specific practices. This case involves an int
 
     ```typescript
     // Index.d.ts corresponding to libohos_app_cangjie_entry.so
-    export declare function addNumberAsync(a: number, b: number, callback: (result: number)=>void): void;
+    export declare function addNumberAsync(a: number, b: number, callback: (result: number) => void): void;
     ```
 
 3. ArkTS calls the Cangjie function:
@@ -67,7 +67,7 @@ The following example demonstrates specific practices. This case involves an int
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
 
     // Call Cangjie function
-    addNumberAsync(1, 2, (result)=> {
+    addNumberAsync(1, 2, (result) => {
         console.log("1 + 2 = " + result);
     });
     ```
@@ -80,6 +80,15 @@ ArkTS supports Promise, which encapsulates callback mechanisms. When combined wi
     package ohos_app_cangjie_entry
 
     import ohos.ark_interop.*
+
+    // The class name has no effect
+    class Main {
+        // Define a static constructor
+        static init() {
+            // Register the key-value pair
+            JSModule.registerFunc("addNumberAsync", addNumberAsync)
+        }
+    }
 
     // Interface definition
     func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {

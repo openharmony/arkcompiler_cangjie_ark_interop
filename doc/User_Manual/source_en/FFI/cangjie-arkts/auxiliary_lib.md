@@ -11,61 +11,67 @@ declare namespace cameraPicker {
 }
 ```
 
-For such interoperability scenarios, the helper library provides a `getJSContext` interface that can convert a context of type `AbilityContext` into a `JSValue` that can be called for interoperability.
+For such interoperability scenarios, the helper library provides a `getJSContext` interface that can convert a context of type `UIAbilityContext` into a `JSValue` that can be called for interoperability.
 
 ```cangjie
-public func getJSContext(runtime: JSRuntime, abilityContext: AbilityContext): JSValue
+public func getJSContext(runtime: JSRuntime, abilityContext: UIAbilityContext): JSValue
 ```
 
 The following example illustrates its usage:
 
-```cangjie
-// Global instance of AbilityContext
-var globalAbilityContext: ?AbilityContext = None
+1. After creating a [Cangjie] Empty Ability project, add a global instance of UIAbilityContext in the entry->src->main->cangjie->main_ability.cj file and assign it a value in the onCreate function.
 
-class MainAbility <: Ability {
-    ...
-    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        // Save the context instance when the Ability is created
-        globalAbilityContext = context
+    ```cangjie
+    import ohos.ability.UIAbilityContext
+
+    // Global instance of UIAbilityContext
+    var globalAbilityContext: ?UIAbilityContext = None
+
+    class MainAbility <: UIAbility {
+        // ...
+        public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+            // Save the context instance when the UIAbility is created
+            globalAbilityContext = context
+        }
+        // ...
     }
-    ...
-}
-```
+    ```
 
-```cangjie
-import ohos.ark_interop.*
-import ohos.ark_interop_helper.*
+2. Use the helper library interface in the Cangjie code:
 
-var runtime = Option<JSRuntime>.None
+    ```cangjie
+    import ohos.ark_interop.*
+    import ohos.ark_interop_helper.*
+    import ohos.ability.UIAbilityContext
 
-// Get JSRuntime from global variable
-func getRuntime() {
-    return match (runtime) {
-        case Some(v) => v
-        case None =>
-            let v = JSRuntime()
-            runtime = v
-            v
+    var runtime = Option<JSRuntime>.None
+
+    // Get JSRuntime from global variable or create JSRuntime
+    func getRuntime() {
+        return match (runtime) {
+            case Some(v) => v
+            case None =>
+                let v = JSRuntime()
+                runtime = v
+                v
+        }
     }
-}
 
-// Get CapacityContext from global variable
-
-func getContext(): AbilityContext {
-    match (globalAbilityContext) {
-        case Some(context) =>
-            context
-        case _ =>
-            AppLog.error("####getContext err ")
-            throw Exception("get globalAbilityContext failed")
+    // Get UIAbilityContext from global variable
+    func getContext(): UIAbilityContext {
+        match (globalAbilityContext) {
+            case Some(context) =>
+                context
+            case _ =>
+                AppLog.error("####getContext err ")
+                throw Exception("get globalAbilityContext failed")
+        }
     }
-}
 
-// Create JSValue using the helper library interface getJSContext
-func getJSContextCase(): JSValue {
-    let runtime = getRuntime()
-    let abilityContext = getContext()
-    getJSContext(runtime, abilityContext)
-}
-```
+    // Create JSValue using the helper library interface getJSContext
+    func getJSContextCase(): JSValue {
+        let runtime = getRuntime()
+        let abilityContext = getContext()
+        getJSContext(runtime, abilityContext)
+    }
+    ```
