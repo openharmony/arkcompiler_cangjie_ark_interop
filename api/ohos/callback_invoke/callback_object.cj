@@ -22,15 +22,13 @@ public type Callback<T> = (arg: T) -> Unit
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class CallbackObject {}
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class Callback0Argument <: CallbackObject {
     public open func invoke(err: ?BusinessException): Unit
@@ -38,8 +36,7 @@ public abstract class Callback0Argument <: CallbackObject {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class Callback1Argument<A> <: CallbackObject {
     public open func invoke(err: ?BusinessException, arg: A): Unit
@@ -47,8 +44,7 @@ public abstract class Callback1Argument<A> <: CallbackObject {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class Callback2Argument<A, B> <: CallbackObject {
     public open func invoke(err: ?BusinessException, arg1: A, arg2: B): Unit
@@ -56,8 +52,7 @@ public abstract class Callback2Argument<A, B> <: CallbackObject {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject {
     public open func invoke(err: ?BusinessException, arg1: A, arg2: B, arg3: C): D
@@ -65,8 +60,7 @@ public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject 
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
     public open func invoke(err: ?BusinessException, arg1: A): B
@@ -74,8 +68,7 @@ public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
 
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public abstract class CallbackWithReturn<A> <: CallbackObject {
     public open func invoke(err: ?BusinessException): A

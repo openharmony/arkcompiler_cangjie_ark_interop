@@ -48,14 +48,12 @@ foreign func ARKTS_CreateString(env: JSEnv, isCompressed: Bool, length: UInt32, 
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public interface ToJSValue {
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     func toJSValue(context: JSContext): JSValue
 }
@@ -65,8 +63,7 @@ public interface ToJSValue {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 sealed interface JSKeyable <: ToString & ToJSValue {}
 
@@ -75,8 +72,7 @@ sealed interface JSKeyable <: ToString & ToJSValue {}
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 extend String <: JSKeyable {
     /**
@@ -84,8 +80,7 @@ extend String <: JSKeyable {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toJSValue(context: JSContext): JSValue {
         JSValue(context, JSString.createString(context, this))
@@ -98,8 +93,7 @@ extend String <: JSKeyable {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSString <: JSHeapObject & ToString & JSKeyable {
     static func createString(context: JSContext, source: String): JSValue_ {
@@ -167,8 +161,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toJSValue(_: JSContext): JSValue {
         JSValue(context, innerValue)
@@ -179,8 +172,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toString(): String {
         match (cjStrCache_) {
@@ -194,8 +186,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUtf16String(): Utf16String {
         JSString.readUtf16String(context, innerValue)
