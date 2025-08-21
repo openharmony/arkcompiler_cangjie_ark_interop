@@ -83,8 +83,7 @@ foreign func ARKTS_DefineAccessorsV2(env: JSEnv, object: JSValue_, key: JSValue_
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 abstract sealed class JSObjectBase <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -96,8 +95,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func instanceOf(clazz: JSClass): Bool {
         instanceOfByValue(context.env, innerValue, clazz.innerValue)
@@ -112,8 +110,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func hasProperty(key: JSKeyable): Bool {
         let keyValue = key.toJSValue(context)
@@ -125,8 +122,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func getProperty(key: JSKeyable): JSValue {
         let keyValue = key.toJSValue(context)
@@ -139,8 +135,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public operator func [](key: JSKeyable): JSValue {
         getProperty(key)
@@ -153,8 +148,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue {
         let fun = getProperty(key)
@@ -169,8 +163,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         let keyValue = key.toJSValue(context)
@@ -182,8 +175,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public operator func [](key: JSKeyable, value!: JSValue): Unit {
         setProperty(key, value)
@@ -194,8 +186,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func defineOwnProperty(key: JSKeyable, setValue: JSValue, isWritable!: Bool = true,
         isEnumerable!: Bool = true, isConfigurable!: Bool = true): Bool {
@@ -209,8 +200,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?JSFunction = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -234,8 +224,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func defineOwnAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSLambda = None,
         isEnumerable!: Bool = false, isConfigurable!: Bool = false): Bool {
@@ -260,8 +249,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func keys(): Array<String> {
         let keyJArr = JSValue(context, unsafe { ARKTS_EnumOwnProperties(context.env, innerValue) })
@@ -298,8 +286,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func attachCJObject(target: JSExternal): Unit {
         setAttachInfo(target.toJSValue())
@@ -310,8 +297,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func getAttachInfo(): ?JSExternal {
         let jValue = this[context.constants.builtinText.__cj_object__]
@@ -327,8 +313,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSObject <: JSObjectBase {
     init(context: JSContext, value: JSValue_) {

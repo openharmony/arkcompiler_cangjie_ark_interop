@@ -39,8 +39,7 @@ foreign func ARKTS_BigIntReadBytes(env: JSEnv, value: JSValue_, isNegative: CPoi
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSBigInt <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -104,8 +103,7 @@ public class JSBigInt <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toBigInt(): BigInt {
         readAsBigInt(context.env, innerValue)

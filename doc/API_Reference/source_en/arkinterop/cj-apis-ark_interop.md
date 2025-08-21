@@ -20,8 +20,6 @@ public interface JSInteropType<T> {
 
 **Description:** This interface is used to implement extension methods for types that can be used with declarative interoperability macros. Used by the declarative interoperability macro framework; developers do not need to use this API.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 The following types extend this interface:
@@ -37,8 +35,6 @@ static func fromJSValue(context: JSContext, input: JSValue): T
 ```
 
 **Description:** Converts JSValue type data to the corresponding Cangjie type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -63,8 +59,6 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Return Value:**
@@ -80,8 +74,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Description:** Converts Cangjie type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -107,8 +99,6 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **Description:** Interface for types that can be used as keys in JSObject. This interface implements extension methods for the String type. Used by the declarative interoperability macro framework; developers do not need to use this API.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parent Types:**
@@ -122,8 +112,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Description:** Converts Cangjie type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -149,8 +137,6 @@ interface ToJSValue {
 
 **Description:** Interface for implementing ToJSValue functionality.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### func toJSValue(JSContext)
@@ -160,8 +146,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Description:** Converts Cangjie type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -181,8 +165,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** This interface can be used to implement extension methods for the built-in Int8 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -192,8 +174,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Int8
 ```
 
 **Description:** Converts JSValue type data to the corresponding Int8 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -218,8 +198,6 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int8 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -235,8 +213,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Description:** Converts Cangjie Int8 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -256,8 +232,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** This interface can be used to implement extension methods for the built-in Int16 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -267,8 +241,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Int16
 ```
 
 **Description:** Converts JSValue type data to the corresponding Int16 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -293,8 +265,6 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int16 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**| Type | Description |
@@ -308,8 +278,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Int16 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -329,8 +297,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Int32.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -340,8 +306,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Int32
 ```
 
 **Function:** Converts JSValue type data to the corresponding Int32 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -366,8 +330,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Int32 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -383,8 +345,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Int32 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -404,8 +364,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Int64.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -415,8 +373,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Int64
 ```
 
 **Function:** Converts JSValue type data to the corresponding Int64 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -441,8 +397,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Int64 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -458,8 +412,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Int64 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -479,8 +431,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt8.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -490,8 +440,6 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt8
 ```
 
 **Function:** Converts JSValue type data to the corresponding UInt8 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -516,8 +464,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt8 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -533,8 +479,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie UInt8 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -554,8 +498,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt16.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -565,8 +507,6 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt16
 ```
 
 **Function:** Converts JSValue type data to the corresponding UInt16 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -591,8 +531,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt16 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**| Type | Description |
@@ -606,8 +544,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie UInt16 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -627,8 +563,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt32.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -638,8 +572,6 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt32
 ```
 
 **Function:** Converts JSValue type data to the corresponding UInt32 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -664,8 +596,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt32 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -681,8 +611,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie UInt32 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -702,8 +630,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt64.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -713,8 +639,6 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt64
 ```
 
 **Function:** Converts JSValue type data to the corresponding UInt64 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -739,8 +663,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt64 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -756,8 +678,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie UInt64 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -777,8 +697,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Float16.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -788,8 +706,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Float16
 ```
 
 **Function:** Converts JSValue type data to the corresponding Float16 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -814,8 +730,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float16 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -831,8 +745,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Float16 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -852,8 +764,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Float32.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -863,8 +773,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Float32
 ```
 
 **Function:** Converts JSValue type data to the corresponding Float32 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -889,8 +797,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float32 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -908,8 +814,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Float32 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -929,8 +833,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Float64.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -940,8 +842,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Float64
 ```
 
 **Function:** Converts JSValue type data to the corresponding Float64 type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -966,8 +866,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float64 type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -983,8 +881,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Float64 type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -1004,8 +900,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Bool.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -1015,8 +909,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Bool
 ```
 
 **Function:** Converts JSValue type data to the corresponding Bool type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -1041,8 +933,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Bool type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -1058,8 +948,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie Bool type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -1079,19 +967,15 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type String.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
-static func fromJSValue(context: JSContext, input: JSValue): String
+static func fromJSValue(_: JSContext, input: JSValue): String
 ```
 
 **Function:** Converts JSValue type data to the corresponding String type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -1099,7 +983,7 @@ static func fromJSValue(context: JSContext, input: JSValue): String
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
+| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 | input | [JSValue](#struct-jsvalue) | Yes | - | ArkTS unified type. |
 
 **Return Value:**
@@ -1116,8 +1000,6 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie String type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 **Return Value:**
@@ -1130,8 +1012,6 @@ static func toArkTsType(): String
 
 **Function:** This interface can be used to implement extension methods for the built-in type String.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### func toJSValue(JSContext)
@@ -1141,8 +1021,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts Cangjie String type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -1162,8 +1040,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Unit.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -1173,8 +1049,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Unit
 ```
 
 **Function:** Converts JSValue type data to the corresponding Bool type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 12
 
@@ -1198,8 +1072,6 @@ static func toArkTsType(): String
 ```
 **Function:** Get the ArkTS type name corresponding to the Cangjie Unit type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 12
 
 **Return Value:**
@@ -1215,8 +1087,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Convert Cangjie Unit type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 12
 
@@ -1236,8 +1106,6 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the Option<T> type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -1247,8 +1115,6 @@ static func fromJSValue(context: JSContext, input: JSValue): Option<T>
 ```
 
 **Function:** Convert JSValue type data to the corresponding Option<T> type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 12
 
@@ -1273,8 +1139,6 @@ static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie Option<T> type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 12
 
 **Return Value:**
@@ -1290,8 +1154,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Convert Cangjie Option<T> type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 12
 
@@ -1311,19 +1173,15 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the Array<T> type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 12
 
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
-static func fromJSValue(context: JSContext, input: JSValue): Array<T>
+static func fromJSValue(_: JSContext, input: JSValue): Array<T>
 ```
 
 **Function:** Convert JSValue type data to the corresponding Array<T> type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 12
 
@@ -1331,7 +1189,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Array<T>
 
 |Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](#class-jscontext)|Yes|-|ArkTS interoperability context.|
+|_|[JSContext](#class-jscontext)|Yes|-|ArkTS interoperability context.|
 |input|[JSValue](#struct-jsvalue)|Yes|-|ArkTS unified type.|
 
 **Return Value:**
@@ -1348,8 +1206,6 @@ static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie Array<T> type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 12
 
 **Return Value:**
@@ -1365,8 +1221,6 @@ func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Convert Cangjie Array<T> type data to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 12
 
@@ -1390,8 +1244,6 @@ public class JSArray <: JSHeapObject {}
 
 **Function:** A safe reference to an ArkTS array. Supports getting length and reading/writing elements.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parent Type:**
@@ -1406,8 +1258,6 @@ public prop size: Int64
 
 **Function:** Get the number of elements.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Type:** Int64
@@ -1421,8 +1271,6 @@ public operator func[](index: Int64): JSValue
 ```
 
 **Function:** Write an element to the ArkTS array.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -1457,8 +1305,6 @@ public operator func[](index: Int64, value!: JSValue): Unit
 
 **Function:** Write an element to the ArkTS array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parameters:**
@@ -1487,8 +1333,6 @@ public operator func[](index: Int64, value!: JSHeapObject): Unit
 ```
 
 **Function:** Write an element to the ArkTS array.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -1519,8 +1363,6 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **Function:** The JSArrayBuffer object is used to represent a generic raw binary data buffer. By creating a JS ArrayBuffer object, you can obtain the byte length of the object and convert it to a Cangjie array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parent Type:**
@@ -1535,8 +1377,6 @@ public prop byteLength: Int32
 
 **Function:** The byte length of the ArrayBuffer.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Type:** Int32
@@ -1550,8 +1390,6 @@ public func readBytes(): Array<Byte>
 ```
 
 **Function:** Reads binary data and converts it to a Cangjie array.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -1569,8 +1407,6 @@ public func toArrayBufferJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's ArrayBuffer.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 19
 
 **Return Value:**
@@ -1586,8 +1422,6 @@ public func toFloat32Array(): Array<Float32>
 ```
 
 **Function:** Converts to a Cangjie array Array\<Float32>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 19
 
@@ -1605,8 +1439,6 @@ public func toFloat32ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Float32Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Return Value:**
 
 |Type|Description|
@@ -1620,8 +1452,6 @@ public func toFloat64Array(): Array<Float64>
 ```
 
 **Function:** Converts to a Cangjie array Array\<Float64>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 19
 
@@ -1639,8 +1469,6 @@ public func toFloat64ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Float64Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 19
 
 **Return Value:**
@@ -1656,8 +1484,6 @@ public func toInt16Array(): Array<Int16>
 ```
 
 **Function:** Converts to a Cangjie array Array\<Int16>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 19
 
@@ -1675,8 +1501,6 @@ public func toInt16ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Int16Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 19
 
 **Return Value:**
@@ -1692,8 +1516,6 @@ public func toInt32Array(): Array<Int32>
 ```
 
 **Function:** Converts to a Cangjie array Array\<Int32>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 19
 
@@ -1711,8 +1533,6 @@ public func toInt32ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Int32Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 19
 
 **Return Value:**
@@ -1728,8 +1548,6 @@ public func toInt64Array(): Array<Int64>
 ```
 
 **Function:** Converts to a Cangjie array Array\<Int64>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 19
 
@@ -1747,8 +1565,6 @@ public func toInt64ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's BigInt64Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 19
 
 **Return Value:**
@@ -1764,8 +1580,6 @@ public func toInt8Array(): Array<Int8>
 ```
 
 **Function:** Converts to a Cangjie array Array\<Int8>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 19
 
@@ -1783,8 +1597,6 @@ public func toInt8ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Int8Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 19
 
 **Return Value:**
@@ -1799,8 +1611,6 @@ public func toUInt16Array(): Array<UInt16>
 ```
 
 **Function:** Converts to a Cangjie array of type Array\<UInt16>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 19
 
@@ -1818,8 +1628,6 @@ public func toUInt16ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint16Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 19
 
 **Return Value:**
@@ -1835,8 +1643,6 @@ public func toUInt32Array(): Array<UInt32>
 ```
 
 **Function:** Converts to a Cangjie array of type Array\<UInt32>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 19
 
@@ -1854,8 +1660,6 @@ public func toUInt32ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint32Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 19
 
 **Return Value:**
@@ -1871,8 +1675,6 @@ public func toUInt64Array(): Array<UInt64>
 ```
 
 **Function:** Converts to a Cangjie array of type Array\<UInt64>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 19
 
@@ -1890,8 +1692,6 @@ public func toUInt64ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's BigUint64Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 19
 
 **Return Value:**
@@ -1907,8 +1707,6 @@ public func toUInt8Array(): Array<UInt8>
 ```
 
 **Function:** Converts to a Cangjie array of type Array\<UInt8>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 19
 
@@ -1926,8 +1724,6 @@ public func toUInt8ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint8Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 19
 
 **Return Value:**
@@ -1943,8 +1739,6 @@ public func toUInt8ClampedArrayJSValue(): JSValue
 ```
 
 **Function:** Returns the JSValue of ArkTS's Uint8ClampedArray.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 19
 
@@ -1964,8 +1758,6 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **Function:** Used in declarative interop macros, corresponding to ArkTS's Array\<T> type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parent Type:**
@@ -1980,8 +1772,6 @@ public prop size: Int64
 
 **Function:** Gets the number of elements.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Type:** Int64
@@ -1995,8 +1785,6 @@ public init(arr: Array<T>)
 ```
 
 **Function:** Constructs a corresponding JSArrayEx\<T> instance from the given Array\<T>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -2013,8 +1801,6 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T>
 ```
 
 **Function:** Converts from JSValue to JSArrayEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -2039,8 +1825,6 @@ public static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Return Value:**
@@ -2057,8 +1841,6 @@ public func clone(): JSArrayEx<T>
 
 **Function:** Clones the JSArrayEx, performing a deep copy of the JSArrayEx data.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Return Value:**
@@ -2074,8 +1856,6 @@ public func concat(other: JSArrayEx<T>): JSArrayEx<T>
 ```
 
 **Function:** This function creates a new JSArrayEx by concatenating the current JSArrayEx with the JSArrayEx pointed to by `other`.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -2099,8 +1879,6 @@ public func get(index: Int64): Option<T>
 
 **Function:** Gets the element corresponding to the specified index in the array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -2123,8 +1901,6 @@ public func isEmpty(): Bool
 
 **Function:** Determines whether the array is empty.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Return Value:**
@@ -2140,8 +1916,6 @@ public func set(index: Int64, element: T): Unit
 ```
 
 **Function:** Modifies the value corresponding to the specified index in the array.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -2160,8 +1934,6 @@ public func toArray(): Array<T>
 
 **Function:** Converts to an Array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Return Value:**
@@ -2177,8 +1949,6 @@ public func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Converts to a JSValue. Used in declarative interoperability macro framework scenarios; developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -2202,8 +1972,6 @@ public operator func[](index: Int64): T
 
 **Function:** Retrieves the value corresponding to the specified index in the array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -2226,8 +1994,6 @@ public operator func[](index: Int64, value!: T)
 
 **Function:** Modifies the value corresponding to the specified index in the array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -2247,8 +2013,6 @@ public class JSArrayRangeMisMatch <: JSInteropException {
 
 **Function:** Out-of-bounds access exception.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parent Type:**
@@ -2262,8 +2026,6 @@ public init(min: Int64, max: Int64, given: Int64, message!: String = "js array r
 ```
 
 **Function:** Constructor.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2282,8 +2044,6 @@ public init(min: Int64, max: Int64, given: Int64, message!: String = "js array r
 public class JSBigInt <: JSHeapObject {}
 ```
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Function:** The JSBigInt object represents a safe reference to the JS bigint type. By creating a JS bigint object, it can be converted to a Cangjie Int64 or Cangjie BigInt.
@@ -2299,8 +2059,6 @@ public func toBigInt(): BigInt
 ```
 
 **Function:** Converts to a Cangjie BigInt.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2318,8 +2076,6 @@ public class JSClass <: JSHeapObject {}
 
 **Function:** A safe reference to an ArkTS class (constructor). Methods and accessors can be added to this class, and instances of this class can be created.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parent Type:**
@@ -2333,8 +2089,6 @@ public prop prototype: JSObject
 ```
 
 **Function:** The prototype object of the class.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2350,11 +2104,7 @@ public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?J
 
 **Function:** Defines a pair of getter and setter for the current ArkTS class.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Parameters:**
 
@@ -2392,7 +2142,6 @@ public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSL
 
 **Function:** Defines a pair of getter and setter for the current ArkTS class.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 **Initial Version:** 13  
 
 **Parameters:**  
@@ -2431,8 +2180,6 @@ public func addMethod(key: JSKeyable, method: JSFunction): Unit
 
 **Function:** Defines a method for the current ArkTS class.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parameters:**  
@@ -2469,8 +2216,6 @@ public func addMethod(key: JSKeyable, method: JSLambda): Unit
 ```  
 
 **Function:** Defines a method for the current ArkTS class.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -2509,8 +2254,6 @@ public func addProperty(key: JSKeyable, value: JSValue): Unit
 
 **Function:** Adds a data member to the target ArkTS class, typically used for defining immutable properties.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parameters:**  
@@ -2545,8 +2288,6 @@ public func new(): JSValue
 
 **Function:** Instantiates a new object from the ArkTS class.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Return Value:**  
@@ -2576,8 +2317,6 @@ public func new(arg: JSValue): JSValue
 ```  
 
 **Function:** Instantiates a new object from the ArkTS class.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -2618,8 +2357,6 @@ public func new(args: Array<JSValue>): JSValue
 ```  
 
 **Function:** Instantiates a new object from the ArkTS class.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -2669,8 +2406,6 @@ public class JSCodeError <: JSInteropException {
 
 **Function:** Exception in ArkTS code.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parent Type:**  
@@ -2684,8 +2419,6 @@ public let code:?Int32
 ```  
 
 **Function:** Exception error code.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -2711,8 +2444,6 @@ public let jsStack: Array<String>
 
 **Function:** Exception stack.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Type:** Array\<String>
@@ -2726,10 +2457,6 @@ public init(jsMessage: String, jsStack: Array<String>)
 ```
 
 **Function:** Constructor.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2748,8 +2475,6 @@ public class JSContext {}
 
 **Function:** A single-threaded ArkTS interoperability context.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 JSContext has a one-to-one relationship with the ArkTS runtime. Its primary purpose is to create JSValue and safe references, and manage the lifecycle of Cangjie objects referenced on the ArkTS side.
@@ -2763,8 +2488,6 @@ public prop env: JSEnv
 ```
 
 **Function:** ArkTS interoperability context.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2780,8 +2503,6 @@ public prop global: JSObject
 
 **Function:** JavaScript global environment variable `globalThis`.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Type:** [JSObject](#class-jsobject)
@@ -2795,8 +2516,6 @@ public func array(arr: Array<JSValue>): JSArray
 ```
 
 **Function:** Creates an ArkTS array.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2830,8 +2549,6 @@ public func arrayBuffer(length: Int32): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parameters:**
@@ -2863,8 +2580,6 @@ public func arrayBuffer(data: Array<Byte>): JSArrayBuffer
 ```
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -2899,8 +2614,6 @@ public func arrayBuffer(data: Array<Int8>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -2922,8 +2635,6 @@ public func arrayBuffer(data: Array<Int16>): JSArrayBuffer
 ```
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -2947,8 +2658,6 @@ public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -2971,8 +2680,6 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -2993,8 +2700,6 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 ```
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -3018,8 +2723,6 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parameters:**
@@ -3041,8 +2744,6 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 ```
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -3066,8 +2767,6 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parameters:**
@@ -3090,8 +2789,6 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parameters:**
@@ -3113,8 +2810,6 @@ public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer
 ```
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3155,8 +2850,6 @@ public func bigint(value: Int64): JSBigInt
 
 **Function:** Creates an ArkTS bigint with the same value as the Cangjie BigInt.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -3188,8 +2881,6 @@ public func bigint(value: BigInt): JSBigInt
 ```
 
 **Function:** Creates an ArkTS bigint with the same value as the Cangjie BigInt.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3225,8 +2916,6 @@ public func boolean(value: Bool): JSBoolean
 
 **Function:** Creates an ArkTS boolean.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -3258,8 +2947,6 @@ public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass
 ```
 
 **Function:** Creates an ArkTS class.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3297,8 +2984,6 @@ public func external(data: SharedObject): JSExternal
 
 **Description:** Creates an ArkTS reference to a Cangjie object.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -3333,8 +3018,6 @@ public func function(lambda: JSLambda): JSFunction
 ```
 
 **Description:** Creates an ArkTS function.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3372,8 +3055,6 @@ public func getNapiEnv(): napi_env
 
 **Description:** Gets a pointer to the global environment.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 14
 
 **Return Value:**
@@ -3389,8 +3070,6 @@ public func isInBindThread(): Bool
 ```
 
 **Description:** Multi-threading utility: Checks whether the current thread can execute interoperation interfaces.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3420,8 +3099,6 @@ public func null(): JSNull
 
 **Description:** Creates an ArkTS `null`.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -3447,8 +3124,6 @@ public func number(value: Float64): JSNumber
 ```
 
 **Description:** Creates an ArkTS `number`.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3482,8 +3157,6 @@ public func number(value: Int32): JSNumber
 
 **Description:** Creates an ArkTS `number`.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -3516,8 +3189,6 @@ public func object(): JSObject
 
 **Description:** Creates an empty ArkTS `object` reference.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -3543,8 +3214,6 @@ public func postJSTask(callback: ()->Unit): Unit
 ```
 
 **Description:** Multi-threading utility: Creates a task to be executed on the ArkTS thread.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3577,8 +3246,6 @@ public func promiseCapability(): JSPromiseCapability
 
 **Description:** Creates an ArkTS `Promise`.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -3595,59 +3262,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func requireAppNativeModule(String, String) <sub>(deprecated)</sub>
-
-```cangjie
-public func requireAppNativeModule(moduleName: String, modulePath: String): JSValue
-```
-
-**Function:** Loads the specified native module of an ArkTS application.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Deprecated Since:** 16
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| moduleName | String | Yes | - | Name of the module to be loaded. |
-| modulePath | String | Yes | - | Path for loading the module. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSValue](#struct-jsvalue) | Return value of the module, typically an object. Returns undefined if loading fails. |
-
-### func requireJSModule(String) <sub>(deprecated)</sub>
-
-```cangjie
-public func requireJSModule(moduleName: String): JSValue
-```
-
-**Function:** Loads the specified ArkTS module.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Deprecated Since:** 16
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| moduleName | String | Yes | - | Name of the module to be loaded. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSValue](#struct-jsvalue) | Return value of the module, typically an object. Returns undefined if loading fails. |
-
 ### func requireSystemNativeModule(String, ?String)
 
 ```cangjie
@@ -3655,8 +3269,6 @@ public func requireSystemNativeModule(moduleName: String, prefix!: ?String = Non
 ```
 
 **Function:** Loads a built-in ArkTS NAPI module from the system.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3691,8 +3303,6 @@ public func string(value: String): JSString
 
 **Function:** Creates an ArkTS string.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -3725,8 +3335,6 @@ public func string(value: Utf16String): JSString
 
 **Function:** Creates a JSString from a Utf16String.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 20
 
 **Parameters:**
@@ -3748,8 +3356,6 @@ public func symbol(description!: String = ""): JSSymbol
 ```
 
 **Function:** Creates an ArkTS symbol object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3784,8 +3390,6 @@ public func undefined(): JSUndefined
 
 **Function:** Creates an ArkTS undefined value.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -3804,58 +3408,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-## class JSCurrentJSContext
-
-```cangjie
-public class JSCurrentJSContext {}
-```
-
-**Function:** Used to store the [JSContext](#class-jscontext) for a single interoperability call. Used in declarative interoperability macro framework scenarios. Developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 15
-
-### static func get()
-
-```cangjie
-public static func get()
-```
-
-**Function:** Retrieves the [JSContext](#class-jscontext) for a single interoperability call.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 15
-
-### static func set(?JSContext)
-
-```cangjie
-public static func set(input: ?JSContext)
-```
-
-**Function:** Sets the [JSContext](#class-jscontext) for a single interoperability call.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| input | ?[JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
-
-### static func unset()
-
-```cangjie
-public static func unset()
-```
-
-**Function:** Unsets the [JSContext](#class-jscontext) for a single interoperability call.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 15
-
 ## class JSExternal
 
 ```cangjie
@@ -3863,8 +3415,6 @@ public class JSExternal <: JSHeapObject {}
 ```
 
 **Function:** A Cangjie object reference that can be passed to the ArkTS side. Can retrieve the bound Cangjie object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3881,8 +3431,6 @@ public func cast<T>(): Option<T> where T <: SharedObject
 ```
 
 **Function:** Retrieves the bound SharedObject and casts it to type T.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3917,8 +3465,6 @@ public func getData(): SharedObject
 ```
 
 **Function:** Gets the bound SharedObject.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -3956,8 +3502,6 @@ public class JSFunction <: JSHeapObject {}
 
 **Function:** A secure reference to an ArkTS function.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parent Type:**
@@ -3971,8 +3515,6 @@ public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue
 ```
 
 **Function:** Performs an ArkTS function call (multiple parameters).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -4005,8 +3547,6 @@ public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue
 ```
 
 **Function:** Performs an ArkTS function call (multiple parameters).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -4041,8 +3581,6 @@ public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().t
 ```
 
 **Function:** Performs an ArkTS function call (multiple parameters).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -4082,8 +3620,6 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **Function:** Used in declarative interop macros, corresponding to the ArkTS Map type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parent Type:**
@@ -4098,8 +3634,6 @@ public prop size: Int64
 
 **Function:** Returns the number of key-value pairs.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Type:** Int64
@@ -4113,8 +3647,6 @@ public init(map: HashMap<K, V>)
 ```
 
 **Function:** Constructs an empty JSHashMapEx\<K, V> instance.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -4132,8 +3664,6 @@ public init()
 
 **Function:** Constructs an empty JSHashMapEx\<K, V> instance.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 ### static func fromJSValue(JSContext, JSValue)
@@ -4143,8 +3673,6 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<
 ```
 
 **Function:** Converts from JSValue to JSHashMapEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -4169,8 +3697,6 @@ public static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Return Value:**
@@ -4186,8 +3712,6 @@ public func clear(): Unit
 ```
 
 **Function:** Removes all elements from this HashMapEx.
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 ### func clone()
@@ -4198,37 +3722,11 @@ public func clone(): JSHashMapEx<K, V>
 
 **Description:** Clones the JSHashMapEx, performing a deep copy of the JSHashMapEx data.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
 | [JSHashMapEx](#class-jshashmapex)\<K, V> | The newly cloned JSHashMapEx. |
-
-### func contiansAll(Collection\<K>)
-
-```cangjie
-public func contiansAll(keys: Collection<K>): Bool
-```
-
-**Description:** Determines whether mappings for all keys in the specified collection are present.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Initial Version:** 15
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| keys | Collection\<K> | Yes | - | The collection of keys to be checked. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns `true` if all keys are contained; otherwise, returns `false`. |
 
 ### func containsAll(Collection\<K>)
 
@@ -4237,8 +3735,6 @@ public func containsAll(keys: Collection<K>): Bool
 ```
 
 **Description:** Determines whether mappings for all keys in the specified collection are present.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4262,8 +3758,6 @@ public func delete(key: K): Bool
 
 **Description:** Removes the mapping for the specified key from this JSHashMapEx if present.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -4286,8 +3780,6 @@ public func deleteAll(keys: Collection<K>): Unit
 
 **Description:** Removes mappings for all keys in the specified collection from this JSHashMapEx if present.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -4306,8 +3798,6 @@ public func deleteIf(predicate: (K, V) -> Bool): Unit
 
 This function traverses the entire JSHashMapEx and removes all key-value pairs where `predicate(K, V) == true`.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -4323,8 +3813,6 @@ public func get(key: K): Option<V>
 ```
 
 **Description:** Returns the value to which the specified key is mapped, or `Option<V>.None` if no mapping exists.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4348,8 +3836,6 @@ public func has(key: K) : Bool
 
 **Description:** Determines whether a mapping for the specified key exists.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -4372,8 +3858,6 @@ public func isEmpty(): Bool
 
 **Description:** Determines whether the JSHashMapEx is empty. Returns `true` if empty; otherwise, returns `false`.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Return Value:**
@@ -4390,8 +3874,6 @@ public func keys(): EquatableCollection<K>
 
 **Description:** Returns all keys in the JSHashMapEx, stored in a Keys container.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Return Value:**
@@ -4407,8 +3889,6 @@ public func set(key: K, value: V): Unit
 ```
 
 **Description:** Inserts a key-value pair into the JSHashMapEx.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4427,8 +3907,6 @@ public func setAll(elements: Collection<(K, V)>): Unit
 
 **Description:** Inserts a collection of key-value pairs into the JSHashMapEx in the order of the collection's iterator.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -4444,8 +3922,6 @@ public func setIfAbsent(key: K, value: V): Bool
 ```
 
 **Description:** Inserts the key-value pair `(key, value)` into the JSHashMapEx if the key is not already present.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4470,8 +3946,6 @@ public func toHashMap(): HashMap<K, V>
 
 **Description:** Converts the JSHashMapEx to a HashMap.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Return Value:**
@@ -4483,11 +3957,9 @@ public func toHashMap(): HashMap<K, V>
 ### func toJSValue(JSContext)
 
 ```cangjie
-public func toJSValue(_: JSContext): JSValue
+public func toJSValue(c: JSContext): JSValue
 ```
 **Function:** Convert to JSValue. Used in declarative interoperability macro framework scenarios. Developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4495,7 +3967,7 @@ public func toJSValue(_: JSContext): JSValue
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
+| c | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 **Return Value:**
 
@@ -4510,8 +3982,6 @@ public func values(): Collection<V>
 ```
 
 **Function:** Returns the values contained in JSHashMapEx and stores all values in a Values container.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4528,8 +3998,6 @@ public operator func [](key: K): V
 ```
 
 **Function:** Operator overload for the set method. If the key exists, the new value overwrites the old value. If the key does not exist, this key-value pair is added.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 15
 
@@ -4553,8 +4021,6 @@ public operator func [](key: K, value!: V): Unit
 
 **Function:** Operator overload for the set method. If the key exists, the new value overwrites the old value. If the key does not exist, this key-value pair is added.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 **Parameters:**
@@ -4572,8 +4038,6 @@ sealed abstract class JSHeapObject {}
 
 **Function:** A strong reference to an ArkTS runtime object (but it will not exceed the lifecycle of the ArkTS runtime nor prevent the ArkTS runtime from being destroyed). Can be converted to JSValue.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 15
 
 It is the base class for all safe references. Users cannot create it; they can only create its subclasses (hidden constructor). Its purpose is to allow the referenced ArkTS runtime object to persist longer than the Cangjie object itself.
@@ -4585,8 +4049,6 @@ public func toJSValue(): JSValue
 ```
 
 **Function:** Convert to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -4604,8 +4066,6 @@ public abstract class JSInteropException <: Exception {}
 
 **Function:** Base class for interoperability exceptions.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parent Type:**
@@ -4622,8 +4082,6 @@ public class JSInteropNativeError <: JSInteropException {
 
 **Function:** C interface exception for interoperability.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parent Type:**
@@ -4637,8 +4095,6 @@ public init(message: String)
 ```
 
 **Function:** Construct a JSInteropNativeError object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -4656,8 +4112,6 @@ public class JSModule {}
 
 **Function:** A static class that provides an interface for exporting symbols.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 The goal of JSModule is to provide symbol export capability (exporting to ArkTS). It works with custom static initialization functions to register export targets in a global table when the dynamic library is loaded, and the ArkTS engine executes the exports.
@@ -4669,8 +4123,6 @@ public static func registerClass(name: String, register: ClassRegister): Unit
 ```
 
 **Function:** Register an ArkTS class (constructor) to be exported to ArkTS.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -4704,8 +4156,6 @@ public static func registerFunc(name: String, register: FuncRegister): Unit
 
 **Function:** Register a function to be exported to ArkTS.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parameters:**
@@ -4735,8 +4185,6 @@ public static func registerFunc(name: String, lambda: JSLambda): Unit
 
 **Function:** Register a function to be exported to ArkTS.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parameters:**
@@ -4765,8 +4213,6 @@ public static func registerModule(register: ModuleRegister): Unit
 ```
 
 **Function:** Register interfaces to be exported to ArkTS.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -4800,8 +4246,6 @@ public class JSObjUseAfterFree <: JSInteropException {
 
 **Function:** Lifecycle exception.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parent Type:**
@@ -4815,8 +4259,6 @@ public init(message!: String = "use after free")
 ```
 
 **Function:** Constructor.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Parameters:**
 
@@ -4832,8 +4274,6 @@ public class JSObject <: JSObjectBase {}
 
 **Function:** A safe reference to an ArkTS object.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parent Type:**
@@ -4848,8 +4288,6 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **Function:** Base class for safe references to ArkTS objects. Allows operations on ArkTS objects.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parent Type:**
@@ -4863,8 +4301,6 @@ public func attachCJObject(target: JSExternal): Unit
 ```
 
 **Function:** Binds a Cangjie object reference in ArkTS to the current object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -4896,8 +4332,6 @@ public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue
 ```
 
 **Function:** Calls a method on the current object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -4935,8 +4369,6 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 
 **Function:** Defines accessors for the current object.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -4973,8 +4405,6 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 ```
 
 **Function:** Defines accessors for the current object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5014,8 +4444,6 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 
 **Function:** Defines a property on the current object.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parameters:**
@@ -5046,8 +4474,6 @@ public func getAttachInfo(): ?JSExternal
 ```
 
 **Function:** Retrieves the bound Cangjie object from the current object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5082,7 +4508,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **Function:** Retrieves the target property value from the current object.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi**Initial Version:** 13  
+**Initial Version:** 13  
 
 **Parameters:**  
 
@@ -5114,8 +4540,6 @@ public func hasProperty(key: JSKeyable): Bool
 ```  
 
 **Function:** Determines whether the current object contains the target property.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -5150,8 +4574,6 @@ public func instanceOf(clazz: JSClass): Bool
 ```  
 
 **Function:** Determines whether the current object is an instance of the target ArkTS class.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -5191,8 +4613,6 @@ public func keys(): Array<String>
 
 **Function:** Enumerates all enumerable property names of the current object.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Return Value:**  
@@ -5219,8 +4639,6 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 ```  
 
 **Function:** Assigns a value to a property of the current object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -5249,8 +4667,6 @@ public operator func [](key: JSKeyable): JSValue
 ```  
 
 **Function:** Assigns a value to a property of the current object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -5285,8 +4701,6 @@ public operator func [](key: JSKeyable, value!: JSValue): Unit
 
 **Function:** Assigns a value to a property of the current object.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parameters:**  
@@ -5319,8 +4733,6 @@ JSPromise aims to provide a consistent encapsulation for callback patterns, enha
 
 The lifecycle of JSPromise exceeds that of the referenced ArkTS object.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parent Type:**  
@@ -5334,8 +4746,6 @@ public func catchError(callback: JSFunction): Unit
 ```  
 
 **Function:** Registers an exception handling callback.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -5366,8 +4776,6 @@ public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit
 ```  
 
 **Function:** Registers a result handling callback.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -5402,8 +4810,6 @@ public class JSPromiseCapability {
 
 **Function:** JSPromiseCapability corresponds to a Promise object, allowing resolution or rejection of the Promise.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 Lifecycle: JSPromiseCapability is a weak reference. The lifecycle of its corresponding ArkTS object ends upon first resolution or rejection. Subsequent usage will throw a Cangjie exception.
@@ -5415,8 +4821,6 @@ public init(context: JSContext)
 ```
 
 **Function:** Constructs a JSPromiseCapability object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5433,8 +4837,6 @@ public func reject(value: JSValue): Unit
 ```
 
 **Function:** Submits an exception to the Promise.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5464,8 +4866,6 @@ public func resolve(value: JSValue): Unit
 ```
 
 **Function:** Notifies the Promise of successful completion and submits the return value.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5497,8 +4897,6 @@ public func toJSValue(): JSValue
 ```
 
 **Function:** Converts to ArkTS unified type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5542,8 +4940,6 @@ public class JSRuntime {
 
 **Function:** ArkTS runtime created by Cangjie.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 > **Note:**
@@ -5557,8 +4953,6 @@ public prop mainContext: JSContext
 ```
 
 **Function:** Interoperability context.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5574,8 +4968,6 @@ public init()
 
 **Function:** Constructor.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 ### func getNapiEnv()
 
 ```cangjie
@@ -5584,60 +4976,7 @@ public func getNapiEnv(): CPointer<Unit>
 
 **Function:** Gets the environment pointer.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-### func importFromEntry(String, String)
-
-```cangjie
-public func importFromEntry(entryPoint: String, importName: String): JSValue
-```
-
-**Function:** Imports symbols from an ArkTS file.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| entryPoint | String | Yes | - | Label of the ArkTS file. |
-| importName | String | Yes | - | Symbol to import. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSValue](#struct-jsvalue) | ArkTS unified type. |
-
-### func loadEntryFromAbc(String, String, Bool)
-
-```cangjie
-public func loadEntryFromAbc(abcPath: String, entryPoint: String, forceLoad!: Bool = false): Bool
-```
-
-**Function:** Loads an ArkTS file.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| abcPath | String | Yes | - | Sandbox path of the abc file. |
-| entryPoint | String | Yes | - | An abc file can be synthesized from multiple source files, with a one-to-one correspondence between entryPoint and files. |
-| forceLoad | Bool | No | false | **Named parameter.** When an abc file is successfully loaded, reloading with forceLoad=false will not reinitialize its global variables. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Whether successful. |
 
 ## class JSString
 
@@ -5646,8 +4985,6 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 ```
 
 **Function:** A safe reference to an ArkTS string. Can be converted to String.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5664,8 +5001,6 @@ public func toJSValue(_: JSContext): JSValue
 ```
 
 **Function:** Converts to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5687,8 +5022,6 @@ public func toString(): String
 ```
 
 **Function:** Convert to a Cangjie string.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5718,8 +5051,6 @@ public func toUtf16String(): Utf16String
 
 **Function:** Convert from JSString to Utf16String.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 20
 
 **Return Value:**
@@ -5738,8 +5069,6 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **Function:** Extension of [JSString](#class-jsstring) functionality and performance, usable in declarative interop macros.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parent Types:**
@@ -5755,8 +5084,6 @@ public prop size: Int64
 ```
 
 **Function:** Get the byte length of the string after UTF-8 encoding.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -5774,8 +5101,6 @@ public init(str: String)
 
 **Function:** Construct a corresponding JSStringEx instance given a String.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parameters:**
@@ -5791,8 +5116,6 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx
 ```
 
 **Function:** Convert from JSValue to JSStringEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -5817,8 +5140,6 @@ public static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Return Value:**
@@ -5830,12 +5151,10 @@ public static func toArkTsType(): String
 ### func toJSValue(JSContext)
 
 ```cangjie
-public func toJSValue(_: JSContext): JSValue
+public func toJSValue(context: JSContext): JSValue
 ```
 
 **Function:** Convert to JSValue. Used in declarative interop macro framework scenarios; developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -5843,7 +5162,7 @@ public func toJSValue(_: JSContext): JSValue
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|Yes|-|ArkTS interop context.|
+|context|[JSContext](#class-jscontext)|Yes|-|ArkTS interop context.|
 
 **Return Value:**
 
@@ -5858,8 +5177,6 @@ public func toString(): String
 ```
 
 **Function:** Convert to String.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -5876,8 +5193,6 @@ public operator func !=(str: JSStringEx): Bool
 ```
 
 **Function:** Determine if two JSStringEx instances are not equal.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 15
 
@@ -5901,8 +5216,6 @@ public operator func ==(str: JSStringEx): Bool
 
 **Function:** Determine if two JSStringEx instances are equal.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 15
 
 **Parameters:**
@@ -5925,8 +5238,6 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **Function:** A safe reference to a JS symbol.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Parent Types:**
@@ -5942,8 +5253,6 @@ public prop description: String
 
 **Function:** Description of the symbol.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Type:** String
@@ -5957,8 +5266,6 @@ public func toJSValue(_: JSContext): JSValue
 ```
 
 **Function:** Convert to JSValue. Used in declarative interop macro framework scenarios; developers do not need to use this API.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -5980,7 +5287,7 @@ public func toJSValue(_: JSContext): JSValue
 public func toString(): String
 ```
 
-**Function:** Convert to String.**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
+**Function:** Convert to String.
 
 **Initial Version:** 13  
 
@@ -6000,8 +5307,6 @@ public class JSThreadMisMatch <: JSInteropException {
 
 **Function:** Exception thrown when the thread executing an ArkTS interface does not match the required thread.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parent Type:**  
@@ -6015,8 +5320,6 @@ public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread misma
 ```  
 
 **Function:** Constructor.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6039,8 +5342,6 @@ public class JSTypeMisMatch <: JSInteropException {
 
 **Function:** Exception thrown when an ArkTS operation does not match the actual type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Parent Type:**  
@@ -6054,8 +5355,6 @@ public init(acquireType: String, givenType: JSType, message!: String = "js type 
 ```  
 
 **Function:** Constructor.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6074,8 +5373,6 @@ public init(acquireType: JSType, givenType: JSType, message!: String = "js type 
 ```  
 
 **Function:** Constructor.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6096,8 +5393,6 @@ public open class SharedObject {
 ```  
 
 **Function:** Base class for Cangjie objects that can be referenced by ArkTS.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6121,8 +5416,6 @@ public init()
 
 **Function:** Creates a SharedObject instance.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 ## struct JSBoolean  
@@ -6133,8 +5426,6 @@ public struct JSBoolean {}
 
 **Function:** ArkTS boolean type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 ### func toBool()  
@@ -6144,8 +5435,6 @@ public func toBool(): Bool
 ```  
 
 **Function:** Converts to a Cangjie Bool.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6175,8 +5464,6 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to a JSValue.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Return Value:**  
@@ -6195,8 +5482,6 @@ public struct JSCallInfo {}
 
 Each ArkTS function call stores the argument list and other related information on the ArkTS stack. JSCallInfo is a pointer to this information.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Lifecycle:** The JSCallInfo becomes invalid once the ArkTS function call ends.  
@@ -6208,8 +5493,6 @@ public prop count: Int64
 ```  
 
 **Function:** Number of input arguments.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6225,8 +5508,6 @@ public prop thisArg: JSValue
 
 **Function:** The `this` pointer.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Type:** [JSValue](#struct-jsvalue)  
@@ -6240,8 +5521,6 @@ public operator func[](index: Int64): JSValue
 ```  
 
 **Function:** Retrieves the corresponding argument by index.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6278,7 +5557,7 @@ public struct JSNull {}
 
 **Function:** ArkTS null type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi**Initial Version:** 13  
+**Initial Version:** 13  
 
 ### func toJSValue()  
 
@@ -6287,8 +5566,6 @@ public func toJSValue(): JSValue
 ```  
 
 **Function:** Converts to the unified ArkTS type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6306,8 +5583,6 @@ public struct JSNumber {}
 
 **Function:** ArkTS number.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 ### func toFloat64()  
@@ -6317,8 +5592,6 @@ public func toFloat64(): Float64
 ```  
 
 **Function:** Converts to Float64.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6348,8 +5621,6 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to JSValue.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Return Value:**  
@@ -6377,8 +5648,6 @@ public struct JSType {
 
 **Function:** ArkTS data type enumeration.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 In ArkTS, the `typeof` operator can enumerate the general type of data. `JSType` lists these types and includes the `EXTERNAL` type.  
@@ -6390,8 +5659,6 @@ public static let BIGINT: JSType = JSType(4)
 ```  
 
 **Function:** bigint type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6405,8 +5672,6 @@ public static let BOOLEAN: JSType = JSType(3)
 
 **Function:** bool type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Type:** [JSType](#struct-jstype)  
@@ -6418,8 +5683,6 @@ public static let EXTERNAL: JSType = JSType(9)
 ```  
 
 **Function:** external type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6433,8 +5696,6 @@ public static let FUNCTION: JSType = JSType(8)
 
 **Function:** function type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Type:** [JSType](#struct-jstype)  
@@ -6446,8 +5707,6 @@ public static let NULL: JSType = JSType(1)
 ```  
 
 **Function:** null type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6461,8 +5720,6 @@ public static let NUMBER: JSType = JSType(2)
 
 **Function:** number type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Type:** [JSType](#struct-jstype)  
@@ -6474,8 +5731,6 @@ public static let OBJECT: JSType = JSType(7)
 ```  
 
 **Function:** object type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6489,8 +5744,6 @@ public static let STRING: JSType = JSType(5)
 
 **Function:** string type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Type:** [JSType](#struct-jstype)  
@@ -6502,8 +5755,6 @@ public static let SYMBOL: JSType = JSType(6)
 ```  
 
 **Function:** symbol type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6517,8 +5768,6 @@ public static let UNDEFINED: JSType = JSType(0)
 
 **Function:** undefined type.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13  
 
 **Type:** [JSType](#struct-jstype)  
@@ -6530,8 +5779,6 @@ public func toString(): String
 ```  
 
 **Function:** Gets the string description of `JSType`.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6548,8 +5795,6 @@ public operator func !=(target: JSType): Bool
 ```  
 
 **Function:** Performs an inequality check between two `JSType` instances.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -6573,8 +5818,6 @@ public operator func ==(target: JSType): Bool
 
 **Function:** Performs an equality check between two `JSType` instances.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 13**Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
@@ -6595,8 +5838,6 @@ public struct JSUndefined {}
 
 **Function:** ArkTS null.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 ### func toJSValue()
@@ -6606,8 +5847,6 @@ public func toJSValue(): JSValue
 ```
 
 **Function:** Converts to JSValue.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -6625,8 +5864,6 @@ public struct JSValue {}
 
 **Function:** An ArkTS variable (weakly typed, short lifecycle).
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 JSValue is the unified type in the ArkTS runtime and also the data type that directly interacts with the ArkTS runtime.
@@ -6641,33 +5878,7 @@ public func asArray(): JSArray
 
 **Function:** Converts a JSValue to JSArray.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSArray](#class-jsarray) | A reference to an ArkTS array. |
-
-### func asArray(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asArray(_: JSContext): JSArray
-```
-
-**Function:** Converts a JSValue to JSArray.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperation context. |
 
 **Return Value:**
 
@@ -6683,31 +5894,7 @@ public func asArrayBuffer(): JSArrayBuffer
 
 **Function:** Converts a JSValue to JSArrayBuffer.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSArrayBuffer](#class-jsarraybuffer) | A reference to an ArkTS ArrayBuffer. |
-
-### func asArrayBuffer(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asArrayBuffer(_: JSContext): JSArrayBuffer
-```
-
-**Function:** Converts a JSValue to JSArrayBuffer.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperation context. |
 
 **Return Value:**
 
@@ -6723,31 +5910,7 @@ public func asBigInt(): JSBigInt
 
 **Function:** Converts a JSValue to JSBigInt.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSBigInt](#class-jsbigint) | A reference to an ArkTS bigint. |
-
-### func asBigInt(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asBigInt(_: JSContext): JSBigInt
-```
-
-**Function:** Converts a JSValue to JSBigInt.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperation context. |
 
 **Return Value:**
 
@@ -6762,8 +5925,6 @@ public func asBoolean(): JSBoolean
 ```
 
 **Function:** Converts a JSValue to JSBoolean.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -6781,33 +5942,7 @@ public func asClass(): JSClass
 
 **Function:** Converts a JSValue to JSClass.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSClass](#class-jsclass) | A reference to an ArkTS class. |
-
-### func asClass(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asClass(_: JSContext): JSClass
-```
-
-**Function:** Converts a JSValue to JSClass.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperation context. |
 
 **Return Value:**
 
@@ -6823,8 +5958,6 @@ public func asExternal(): JSExternal
 
 **Function:** Converts a JSValue to JSExternal.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -6833,29 +5966,6 @@ public func asExternal(): JSExternal
 |:----|:----|
 | [JSExternal](#class-jsexternal) | A reference to an ArkTS reference to a Cangjie object. |
 
-### func asExternal(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asExternal(_: JSContext): JSExternal
-```
-
-**Function:** Converts a JSValue to JSExternal.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperation context. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSExternal](#class-jsexternal) | A reference to an ArkTS reference to a Cangjie object. |
 
 ### func asFunction()
 
@@ -6865,31 +5975,7 @@ public func asFunction(): JSFunction
 
 **Function:** Converts a JSValue to JSFunction.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSFunction](#class-jsfunction) | A reference to an ArkTS function. |### func asFunction(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asFunction(_: JSContext): JSFunction
-```
-
-**Function:** Converts a JSValue to JSFunction.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 **Return Value:**
 
@@ -6904,8 +5990,6 @@ public func asNull(): JSNull
 ```
 
 **Function:** Converts a JSValue to JSNull.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -6923,8 +6007,6 @@ public func asNumber(): JSNumber
 
 **Function:** Converts a JSValue to JSNumber.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -6941,37 +6023,7 @@ public func asObject(): JSObject
 
 **Function:** Converts a JSValue to JSObject.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSObject](#class-jsobject) | A reference to an ArkTS object. |
-
-> **Note:**
->
-> If the type of JSValue is not an object, a JSTypeMisMatch exception will be thrown. For example, during Cangjie-ArkTS interoperability, ArkTS types are uniformly converted to JSValue and then converted to Cangjie types via asObject. If the type returned from the ArkTS side does not match the actual type, an exception will be thrown.
-
-### func asObject(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asObject(_: JSContext): JSObject
-```
-
-**Function:** Converts a JSValue to JSObject.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 **Return Value:**
 
@@ -6991,33 +6043,7 @@ public func asPromise(): JSPromise
 
 **Function:** Converts a JSValue to JSPromise.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSPromise](#class-jspromise) | A reference to an ArkTS promise. |
-
-### func asPromise(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asPromise(_: JSContext): JSPromise
-```
-
-**Function:** Converts a JSValue to JSPromise.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 **Return Value:**
 
@@ -7031,35 +6057,7 @@ public func asPromise(_: JSContext): JSPromise
 public func asString(): JSString
 ```
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSString](#class-jsstring) | A reference to an ArkTS string. |
-
-### func asString(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asString(_: JSContext): JSString
-```
-
-**Function:** Converts a JSValue to JSString.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 **Return Value:**
 
@@ -7075,33 +6073,7 @@ public func asSymbol(): JSSymbol
 
 **Function:** Converts a JSValue to JSSymbol.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSSymbol](#class-jssymbol) | A reference to an ArkTS symbol. |
-
-### func asSymbol(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func asSymbol(_: JSContext): JSSymbol
-```
-
-**Function:** Converts a JSValue to JSSymbol.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 **Return Value:**
 
@@ -7116,8 +6088,6 @@ public func asUndefined(): JSUndefined
 ```
 
 **Function:** Converts a JSValue to JSUndefined.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -7134,8 +6104,6 @@ public func bindObject(external: JSValue): Unit
 ```
 
 **Function:** Binds a Cangjie object to an ArkTS object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -7163,23 +6131,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 >
 
-### func bindObject(JSContext, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func bindObject(_: JSContext, external: JSValue): Unit
-```
-
-**Function:** Binds a Cangjie object to an ArkTS object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |  
-| external | [JSValue](#struct-jsvalue) | Yes | - | ArkTS reference of the Cangjie object. |  
-
 ### func bindObject(SharedObject)  
 
 ```cangjie  
@@ -7187,8 +6138,6 @@ public func bindObject(data: SharedObject): Unit
 ```  
 
 **Functionality:** Binds a Cangjie object to an ArkTS object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -7215,25 +6164,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 >  
 
-### func bindObject(JSContext, SharedObject) <sub>(deprecated)</sub>  
-
-```cangjie  
-public func bindObject(_: JSContext, data: SharedObject): Unit  
-```  
-
-**Functionality:** Binds a Cangjie object to an ArkTS object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |  
-| data | [SharedObject](#class-sharedobject) | Yes | - | Cangjie object. |  
-
 ### func getBindingObject()  
 
 ```cangjie  
@@ -7241,8 +6171,6 @@ public func getBindingObject(): ?SharedObject
 ```  
 
 **Functionality:** Retrieves the Cangjie object bound to an ArkTS object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -7271,30 +6199,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }  
 ```  
 
-### func getBindingObject(JSContext) <sub>(deprecated)</sub>  
-
-```cangjie  
-public func getBindingObject(_: JSContext): ?SharedObject  
-```  
-
-**Functionality:** Retrieves the Cangjie object bound to an ArkTS object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| ?[SharedObject](#class-sharedobject) | The bound Cangjie object. |  
-
 ### func getElement(Int64)  
 
 ```cangjie  
@@ -7302,8 +6206,6 @@ public func getElement(index: Int64): JSValue
 ```  
 
 **Functionality:** Reads an element from an ArkTS array.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -7330,31 +6232,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }  
 ```  
 
-### func getElement(JSContext, Int64) <sub>(deprecated)</sub>  
-
-```cangjie  
-public func getElement(_: JSContext, index: Int64): JSValue  
-```  
-
-**Functionality:** Reads an element from an ArkTS array.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |  
-| index | Int64 | Yes | - | Array element index. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [JSValue](#struct-jsvalue) | An ArkTS value. |  
-
 ### func getProperty(JSKeyable)  
 
 ```cangjie  
@@ -7362,8 +6239,6 @@ public func getProperty(key: JSKeyable): JSValue
 ```  
 
 **Functionality:** Reads a property from an ArkTS object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -7394,55 +6269,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 >  
 
-### func getProperty(JSContext, JSKeyable) <sub>(deprecated)</sub>  
-
-```cangjie  
-public func getProperty(_: JSContext, key: JSKeyable): JSValue  
-```  
-
-**Functionality:** Reads a property from an ArkTS object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |  
-| key | [JSKeyable](#interface-jskeyable) | Yes | - | Property key, which can be a String, JSString, or JSSymbol. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [JSValue](#struct-jsvalue) | Retrieved value. |  
-
-### func isArray(JSContext) <sub>(deprecated)</sub>  
-
-```cangjie  
-public func isArray(_: JSContext): Bool  
-```  
-
-**Functionality:** Determines whether a JSValue is of Array type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| _ | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns true if the type is Array. |  
-
 ### func isArray()  
 
 ```cangjie  
@@ -7450,8 +6276,6 @@ public func isArray(): Bool
 ```  
 
 **Functionality:** Determines whether a JSValue is of Array type.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 13  
 
@@ -7483,8 +6307,6 @@ public func isArrayBuffer(): Bool
 
 **Function:** Determines whether a JSValue is of ArrayBuffer type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -7514,8 +6336,6 @@ public func isBigInt(): Bool
 ```
 
 **Function:** Determines whether a JSValue is of bigint type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -7547,8 +6367,6 @@ public func isBoolean(): Bool
 
 **Function:** Determines whether a JSValue is of boolean type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -7578,8 +6396,6 @@ public func isClass(): Bool
 ```
 
 **Function:** Determines whether a JSValue is an ArkTS class (constructor).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -7611,8 +6427,6 @@ public func isExternal(): Bool
 
 **Function:** Determines whether a JSValue is an external object (ArkTS reference of a Cangjie object).
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -7642,8 +6456,6 @@ public func isFunction(): Bool
 ```
 
 **Function:** Determines whether a JSValue is of function type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -7675,8 +6487,6 @@ public func isNull(): Bool
 
 **Function:** Determines whether a JSValue is null.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -7706,8 +6516,6 @@ public func isNumber(): Bool
 ```
 
 **Function:** Determines whether a JSValue is of number type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -7739,8 +6547,6 @@ public func isObject(): Bool
 
 **Function:** Determines whether a JSValue is of object type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -7769,7 +6575,7 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 public func isPromise(): Bool
 ```
 
-**Function:** Determines whether a JSValue is of Promise type.**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
+**Function:** Determines whether a JSValue is of Promise type.
 
 **Initial Version:** 13
 
@@ -7801,8 +6607,6 @@ public func isString(): Bool
 
 **Function:** Determines whether a JSValue is of string type.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Return Value:**
@@ -7832,8 +6636,6 @@ public func isSymbol(): Bool
 ```
 
 **Function:** Determines whether a JSValue is of Symbol type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -7865,8 +6667,6 @@ public func isUndefined(): Bool
 
 **Function:** Determines whether a JSValue is undefined.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Return Value:**
@@ -7897,8 +6697,6 @@ public func setElement(index: Int64, value: JSValue): Unit
 
 **Function:** Writes an element to an ArkTS array.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Initial Version:** 13
 
 **Parameters:**
@@ -7921,26 +6719,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func setElement(JSContext, Int64, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func setElement(_: JSContext, index: Int64, value: JSValue): Unit
-```
-
-**Function:** Writes an element to an ArkTS array.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Initial Version:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | The ArkTS interoperability context. |
-| index | Int64 | Yes | - | The index for array writing. |
-| value | [JSValue](#struct-jsvalue) | Yes | - | The value to write to the array. |
-
 ### func setProperty(JSKeyable, JSValue)
 
 ```cangjie
@@ -7948,8 +6726,6 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 ```
 
 **Function:** Writes a property to an ArkTS object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -7971,27 +6747,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     return jsObJ.toJSValue()
 }
 ```
-
-### func setProperty(JSContext, JSKeyable, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func setProperty(_: JSContext, key: JSKeyable, setValue: JSValue): Unit
-```
-
-**Function:** Writes a property to an ArkTS object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Initial Version:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | The ArkTS interoperability context. |
-| key | [JSKeyable](#interface-jskeyable) | Yes | - | The property key. |
-| setValue | [JSValue](#struct-jsvalue) | Yes | - | The property value. |
-
 ### func strictEqual(JSValue)
 
 ```cangjie
@@ -7999,8 +6754,6 @@ public func strictEqual(target: JSValue): Bool
 ```
 
 **Function:** Performs strict equality comparison between two JSValues (type consistency + value equality).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -8031,31 +6784,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-### func strictEqual(JSContext, JSValue) <sub>(deprecated)</sub>
-
-```cangjie
-public func strictEqual(_: JSContext, target: JSValue): Bool
-```
-
-**Function:** Performs strict equality comparison between two JSValues (type consistency + value equality).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Initial Version:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| _ | [JSContext](#class-jscontext) | Yes | - | The ArkTS interoperability context. |
-| target | [JSValue](#struct-jsvalue) | Yes | - | The target value for comparison. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the two values are identical. |
-
 ### func toBigInt()
 
 ```cangjie
@@ -8063,8 +6791,6 @@ public func toBigInt(): BigInt
 ```
 
 **Function:** Converts a JSValue to BigInt.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Initial Version:** 13
 
@@ -8090,8 +6816,6 @@ public func toBoolean(): Bool
 ```
 
 **Function:** Converts a JSValue to Bool.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -8120,8 +6844,6 @@ public func toNumber(): Float64
 
 **Function:** Converts a JSValue to Float64.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 **Return Value:**
@@ -8148,8 +6870,6 @@ public func toString(): String
 ```
 
 **Function:** Converts a JSValue to String.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -8178,31 +6898,6 @@ func checkIsNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
     return context.string(valueType.toString()).toJSValue()
 }
 ```
-
-### func toString(JSContext) <sub>(deprecated)</sub>
-
-```cangjie
-public func toString(_: JSContext): String
-```
-
-**Function:** Converts a JSValue to String.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-|_|[JSContext](#class-jscontext)|Yes|-|ArkTS interoperability context.|
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-|String| Cangjie string. |
-
 ### func toUtf16String()
 
 ```cangjie
@@ -8210,8 +6905,6 @@ public func toUtf16String(): Utf16String
 ```
 
 **Function:** Converts from JSValue to Utf16String.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 20
 
@@ -8228,8 +6921,6 @@ public func typeof(): JSType
 ```
 
 **Function:** Gets the type of a JSValue, which is basically consistent with the types enumerated by ArkTS's typeof syntax.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -8262,8 +6953,6 @@ public type ClassRegister =(JSContext) -> JSClass
 
 **Function:** ClassRegister is a type alias for ([JSContext](#class-jscontext)) -> [JSClass](#class-jsclass).
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 ## type FuncRegister
@@ -8273,8 +6962,6 @@ public type FuncRegister =(JSContext) -> JSFunction
 ```
 
 **Function:** FuncRegister is a type alias for ([JSContext](#class-jscontext)) -> [JSFunction](#class-jsfunction).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -8286,8 +6973,6 @@ public type JSBufferFinalizer =(CPointer<Byte>) -> Unit
 
 **Function:** JSBufferFinalizer is a type alias for (CPointer\<Byte>) -> Unit.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 ## type JSLambda
@@ -8297,8 +6982,6 @@ public type JSLambda =(JSContext, JSCallInfo) -> JSValue
 ```
 
 **Function:** JSLambda is a type alias for ([JSContext](#class-jscontext), [JSCallInfo](#struct-jscallinfo)) -> [JSValue](#struct-jsvalue).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -8310,8 +6993,6 @@ public type ModuleRegister =(JSContext, JSObject) -> Unit
 
 **Function:** ModuleRegister is a type alias for ([JSContext](#class-jscontext), [JSObject](#class-jsobject)) -> Unit.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 ## type napi_env
@@ -8322,8 +7003,6 @@ public type napi_env = CPointer<Unit>
 
 **Function:** napi_env is a type alias for CPointer\<Unit>.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
-
 **Since:** 13
 
 ## type napi_value
@@ -8333,8 +7012,6 @@ public type napi_value = CPointer<Unit>
 ```
 
 **Function:** napi_value is a type alias for CPointer\<Unit>.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 13
 
@@ -8347,8 +7024,6 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 ```
 
 **Function:** A string stored in UTF-16 encoding format, which provides better performance than String when converting to/from ArkTS strings.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi
 
 **Since:** 20
 
@@ -8366,7 +7041,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 public prop accessible: Bool
 ```
 
-**Function:** Determines whether the string content is accessible. The string content of this object can be manually released using dispose, and accessing it after release will throw an exception.**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
+**Function:** Determines whether the string content is accessible. The string content of this object can be manually released using dispose, and accessing it after release will throw an exception.
 
 **Initial Version:** 20  
 
@@ -8382,8 +7057,6 @@ public prop size: Int64
 
 **Description:** Represents the total length of encoding units in this string (UTF-16 encoded format). Each encoding unit in UTF-16 format occupies 2 bytes, and each character consists of 1-2 encoding units.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Type:** Int64  
@@ -8397,8 +7070,6 @@ public prop totalChars: Int64
 ```  
 
 **Description:** The total number of characters.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8414,8 +7085,6 @@ public static let empty: Utf16String
 
 **Description:** An empty string.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Type:** Utf16String  
@@ -8429,8 +7098,6 @@ public init(src: String)
 ```  
 
 **Description:** Creates a Utf16String from a standard library String.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8447,8 +7114,6 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 ```  
 
 **Description:** Converts a JSValue to a Utf16String object.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8473,8 +7138,6 @@ public static func toArkTsType(): String
 
 **Description:** The corresponding ArkTS type name.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Return Value:**  
@@ -8490,8 +7153,6 @@ public func compare(target: Utf16String): Ordering
 ```  
 
 **Description:** Compares the size based on the Unicode dictionary order of characters.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8515,8 +7176,6 @@ public func contains(target: Utf16String): Bool
 
 **Description:** Checks whether the string contains the target string.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -8538,8 +7197,6 @@ public func count(src: Utf16String): Int64
 ```  
 
 **Description:** Counts the occurrences of the target string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8563,8 +7220,6 @@ public func dispose(): Unit
 
 **Description:** Releases the memory storing the string content. Accessing the string content after the first disposal will cause an exception.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 ### func endsWith(Utf16String)  
@@ -8574,8 +7229,6 @@ public func endsWith(target: Utf16String): Bool
 ```  
 
 **Description:** Checks whether the string ends with the target string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8599,8 +7252,6 @@ public func hashCode(): Int64
 
 **Description:** The hash value of the string.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Return Value:**  
@@ -8617,8 +7268,6 @@ public func indexOf(target: Utf16String): ?Int64
 ```  
 
 **Description:** Searches backward for the position of the target string (character index).  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8642,8 +7291,6 @@ public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **Description:** Searches backward for the position of the target string (encoding unit index).  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -8665,7 +7312,7 @@ public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64
 public func isEmpty(): Bool  
 ```  
 
-**Description:** Checks whether the string is empty.**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
+**Description:** Checks whether the string is empty.
 
 **Initial Version:** 20  
 
@@ -8683,8 +7330,6 @@ public func isCompressed(): Bool
 
 **Function:** Checks whether the content is compressed.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Return Value:**  
@@ -8700,8 +7345,6 @@ public func lastIndexOf(target: Utf16String): ?Int64
 ```  
 
 **Function:** Searches backward for the position of a character.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8724,8 +7367,6 @@ public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64
 ```  
 
 **Function:** Searches backward for the position of a character.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8750,8 +7391,6 @@ public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Itera
 
 **Function:** Lazily splits the string.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -8774,8 +7413,6 @@ public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Boo
 ```  
 
 **Function:** Lazily splits the string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8801,8 +7438,6 @@ public func lines(): Iterator<Utf16String>
 
 **Function:** Gets a line iterator.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Return Value:**  
@@ -8818,8 +7453,6 @@ public func replace(old: Utf16String, new: Utf16String, count!: Int64 = 1): Utf1
 ```  
 
 **Function:** Replaces a string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8845,8 +7478,6 @@ public func runes(): Iterator<Rune>
 
 **Function:** Gets a character iterator.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Return Value:**  
@@ -8862,8 +7493,6 @@ public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf
 ```  
 
 **Function:** Splits the string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8887,8 +7516,6 @@ public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = 
 ```  
 
 **Function:** Splits the string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8914,8 +7541,6 @@ public func startsWith(target: Utf16String): Bool
 
 **Function:** Checks whether the string starts with the target string.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -8937,8 +7562,6 @@ public func toJSValue(context: JSContext): JSValue
 ```  
 
 **Function:** Converts a Utf16String object to a JSValue.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -8962,7 +7585,7 @@ public func toString(): String
 
 **Function:** Converts to a String.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi**Initial Version:** 20  
+**Initial Version:** 20  
 
 **Return Value:**  
 
@@ -8977,8 +7600,6 @@ public operator func != (target: Utf16String): Bool
 ```  
 
 **Function:** Determines whether the string is not equal to the target string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -9002,8 +7623,6 @@ public operator func + (right: Utf16String): Utf16String
 
 **Function:** Concatenates a string at the end.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -9025,8 +7644,6 @@ public operator func < (target: Utf16String): Bool
 ```  
 
 **Function:** Determines whether the string is less than the target string (based on Unicode lexicographical order).  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -9050,8 +7667,6 @@ public operator func <= (target: Utf16String): Bool
 
 **Function:** Determines whether the string is less than or equal to the target string (based on Unicode lexicographical order).  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -9073,8 +7688,6 @@ public operator func == (target: Utf16String): Bool
 ```  
 
 **Function:** Determines whether the string is equal to the target string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -9098,8 +7711,6 @@ public operator func > (target: Utf16String): Bool
 
 **Function:** Determines whether the string is greater than the target string (based on Unicode lexicographical order).  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -9121,8 +7732,6 @@ public operator func >= (target: Utf16String): Bool
 ```  
 
 **Function:** Determines whether the string is greater than or equal to the target string (based on Unicode lexicographical order).  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 
@@ -9146,8 +7755,6 @@ public operator func [](index: Int64): UInt16
 
 **Function:** Retrieves a character based on the element index.  
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
-
 **Initial Version:** 20  
 
 **Parameters:**  
@@ -9169,8 +7776,6 @@ public operator func [](range: Range<Int64>): Utf16String
 ```  
 
 **Function:** Extracts a substring from the string.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Napi  
 
 **Initial Version:** 20  
 

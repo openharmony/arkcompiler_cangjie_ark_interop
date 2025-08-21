@@ -55,7 +55,6 @@ func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
  */
 @!APILevel[
     21,
-    syscap: "SystemCapability.ArkCompiler.Cangjie",
     stagemodelonly: true
 ]
 public class JSArrayBuffer <: JSHeapObject {
@@ -148,7 +147,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public prop byteLength: Int32 {
@@ -168,7 +166,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func readBytes(): Array<Byte> {
@@ -192,7 +189,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toUInt8Array(): Array<UInt8> {
@@ -211,7 +207,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toInt8Array(): Array<Int8> {
@@ -232,7 +227,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toUInt16Array(): Array<UInt16> {
@@ -256,7 +250,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toInt16Array(): Array<Int16> {
@@ -280,7 +273,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toInt32Array(): Array<Int32> {
@@ -304,7 +296,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toUInt32Array(): Array<UInt32> {
@@ -328,7 +319,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toFloat32Array(): Array<Float32> {
@@ -352,7 +342,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toUInt64Array(): Array<UInt64> {
@@ -376,7 +365,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toInt64Array(): Array<Int64> {
@@ -400,7 +388,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toFloat64Array(): Array<Float64> {
@@ -422,7 +409,6 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        syscap: "SystemCapability.ArkCompiler.Cangjie",
         stagemodelonly: true
     ]
     public func toArrayBufferJSValue(): JSValue {
@@ -453,8 +439,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUInt8ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint8Array.data
@@ -469,8 +454,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUInt8ClampedArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint8Clamped.data
@@ -485,8 +469,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toInt8ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int8Array.data
@@ -501,8 +484,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUInt16ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint16Array.data
@@ -517,8 +499,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toInt16ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int16Array.data
@@ -533,8 +514,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUInt32ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint32Array.data
@@ -549,8 +529,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toInt32ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int32Array.data
@@ -565,8 +544,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUInt64ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.uint64Array.data
@@ -581,8 +559,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toInt64ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.int64Array.data
@@ -597,8 +574,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toFloat32ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.float32Array.data
@@ -613,8 +589,7 @@ public class JSArrayBuffer <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toFloat64ArrayJSValue(): JSValue {
         let clazz = context.constants.typedArray.float64Array.data
