@@ -1,6 +1,6 @@
-# ohos.ability（Ability）
+# ohos.app.ability
 
-程序框架服务提供了应用程序开发和运行的应用模型，是系统为开发者提供的应用程序所需能力的抽象提炼，它提供了应用程序必备的组件和运行机制。有了应用模型，开发者可以基于一套统一的模型进行应用开发，使应用开发更简单、高效。
+AbilityConstant提供Ability相关的枚举，包括应用启动原因LaunchReason、上次退出原因LastExitReason、迁移结果OnContinueResult等。
 
 ## 导入模块
 
@@ -20,18 +20,18 @@ ohos.permission.PRIVACY_WINDOW
 
 API示例代码使用说明：
 
-- 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
+- 若示例需获取[Context](#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
-## func getNapiValue(CPointer\<Unit>, StageContext)
+## func createAbilityStageContextFromJSValue(JSContext, JSValue)
 
 ```cangjie
-public func getNapiValue(env: CPointer<Unit>, context: StageContext): CPointer<Unit>
+public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext
 ```
 
-**功能：** 根据上下文环境获取napi_value。
+**功能：** 从JSValue转换为AbilityStageContext类型。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -39,34 +39,91 @@ public func getNapiValue(env: CPointer<Unit>, context: StageContext): CPointer<U
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|env| CPointer\<Unit> |是|环境指针。|
-|context| [StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext) |是|上下文信息。|
-
-## func getStageContext(UIAbilityContext)
-
-```cangjie
-public func getStageContext(abilityContext: UIAbilityContext): StageContext
-```
-
-**功能：** 将仓颉上下文转换成ArkTS上下文。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|abilityContext|[UIAbilityContext](#class-uiabilitycontext)|是|仓颉上下文信息。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-| [StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext) |ArkTS上下文。|
+|[AbilityStageContext](#class-abilitystagecontext)|返回AbilityStageContext类型实例。|
+
+## func createApplicationContextFromJSValue(JSContext, JSValue)
+
+```cangjie
+public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext
+```
+
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-|ArkTS统一类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[ApplicationContext](#class-applicationcontext)|返回 ApplicationContext 类型实例。|
+
+## func createContextFromJSValue(JSContext, JSValue)
+
+```cangjie
+public func createContextFromJSValue(context: JSContext, input: JSValue): Context
+```
+
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)转换为[Context](#class-context)类型。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-| ArkTS统一类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[Context](#class-context)|返回Context类型实例。|
+
+## func createUIAbilityContextFromJSValue(JSContext, JSValue)
+
+```cangjie
+public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext
+```
+
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)转换为[AbilityContext](#class-abilitycontext)类型。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
+|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|是|-|ArkTS统一类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[UIAbilityContext](#class-uiabilitycontext)|返回AbilityContext类型实例。|
 
 ## func restartApp()
 
@@ -75,6 +132,16 @@ public func restartApp(): Unit
 ```
 
 **功能：** 重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的OnCreate生命周期回调的want参数中作为wantParam属性传入。
+
+启动由[setRestartWant](#func-setrestartwantwant)指定的Ability。如果没有指定则按以下规则启动：
+
+如果当前应用前台的Ability支持恢复，则重新拉起该Ability。
+
+如果存在多个支持恢复的Ability处于前台，则只拉起最后一个。
+
+如果没有Ability处于前台，则不拉起。
+
+可以配合[ErrorManager](#class-errormanager)相关接口使用。两次重启的间隔应大于一分钟，一分钟之内重复调用此接口只会退出应用不会重启应用。自动重启的行为与主动重启一致。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -90,14 +157,44 @@ public func restartApp(): Unit
 import ohos.base.*
 import kit.AbilityKit.*
 
-AppLog.info("restartApp")
 restartApp()
 ```
+
+## class Ability
+
+```cangjie
+abstract sealed class Ability <: FFIData {}
+```
+
+**功能：** [UIAbility](#class-uiability)和ExtensionAbility的基类，提供系统配置更新回调和系统内存调整回调。不支持开发者直接继承该基类。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### static func registerCreator(String, () -> Ability)
+
+```cangjie
+public static func registerCreator(name: String, creator: () -> Ability): Unit
+```
+
+**功能：** 注册BaseAbility的对应的creator。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|name|String|是|-|注册 UIAbility 的名称。|
+|creator|()->[Ability](#class-ability)|是|-|注册BaseAbility的对应的creator。|
 
 ## class AbilityStage
 
 ```cangjie
-public open class AbilityStage {}
+public open class AbilityStage <: FFIData {}
 ```
 
 **功能：** AbilityStage类提供在HAP加载的时候，通知开发者，可以在此进行该HAP的初始化（如资源预加载，线程创建等）能力。
@@ -106,17 +203,21 @@ public open class AbilityStage {}
 
 **起始版本：** 21
 
+**父类型：**
+
+- [FFIData](<font color="red" face="bold">please add link</font>)
+
 ### prop context
 
 ```cangjie
-public prop context: AbilityStageContext
+public mut prop context: AbilityStageContext
 ```
 
-**功能：** 提供允许访问特定于`abilityStage`的资源的能力，包括获取[AbilityStage](#class-abilitystage)对应的`hapModuleInfo`对象、环境变化对象。
+**功能：** 定义AbilityStage的上下文。该上下文在Ability启动期间执行初始化时通过回调获得。
 
 **类型：** [AbilityStageContext](#class-abilitystagecontext)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -136,10 +237,10 @@ public static func registerCreator(moduleName: String, creator: () -> AbilitySta
 
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明 |
-| :------ | :---- | :--- | :-- |
-| moduleName | String | 是 | 注册AbilityStage的名称。 |
-| creator | () -> [AbilityStage](#class-abilitystage) | 是 |  注册AbilityStage的对应的creator。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|moduleName|String|是|-|注册AbilityStage的名称。|
+|creator|()->[AbilityStage](#class-abilitystage)|是|-|注册AbilityStage的对应的 creator。|
 
 ### func onCreate()
 
@@ -156,10 +257,12 @@ public open func onCreate(): Unit
 ## class AbilityStageContext
 
 ```cangjie
-public class AbilityStageContext <: Context {}
+public class AbilityStageContext <: Context {
+    public var currentHapModuleInfo: HapModuleInfo
+}
 ```
 
-**功能：** [AbilityStageContext](#class-abilitystagecontext)提供允许访问特定于`abilityStage`的资源的能力，包括获取[AbilityStage](#class-abilitystage)对应的`hapModuleInfo`对象、环境变化对象。
+**功能：** [AbilityStageContext](#class-abilitystagecontext)提供允许访问特定于`abilityStage`的资源的能力，包括获取AbilityStage对应的`hapModuleInfo`对象、环境变化对象。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -169,17 +272,17 @@ public class AbilityStageContext <: Context {}
 
 - [Context](#class-context)
 
-### prop currentHapModuleInfo
+### var currentHapModuleInfo
 
 ```cangjie
-public prop currentHapModuleInfo: HapModuleInfo
+public var currentHapModuleInfo: HapModuleInfo
 ```
 
-**功能：** [AbilityStage](#class-abilitystage)对应的`hapModuleInfo`对象。
+**功能：** AbilityStage对应的`hapModuleInfo`对象。
 
-**类型：** [HapModuleInfo](cj-apis-bundle_manager.md#struct-hapmoduleinfo)
+**类型：** [HapModuleInfo](./cj-apis-bundle_manager.md#class-hapmoduleinfo)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -201,79 +304,10 @@ public class ApplicationContext <: Context {}
 
 - [Context](#class-context)
 
-### func getApplicationInfo()
-
-```cangjie
-public func getApplicationInfo(): ApplicationInfo
-```
-
-**功能：** 获取应用信息。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ApplicationInfo](./cj-apis-bundle_manager.md#struct-applicationinfo)|当前应用程序的信息。|
-
-### func getArea()
-
-```cangjie
-public func getArea(): Int64
-```
-
-**功能：** 功能辅助函数，仅适用于UItest测试框架。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int64|文件分区信息。|
-
-## class BaseAbility
-
-```cangjie
-abstract sealed class BaseAbility {}
-```
-
-**功能：** [UIAbility](#class-uiability)的基类，提供系统配置更新回调和系统内存调整回调。不支持开发者直接继承该基类。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### static func registerCreator(String, () -> BaseAbility)
-
-```cangjie
-public static func registerCreator(name: String, creator: () -> BaseAbility): Unit
-```
-
-**功能：** 注册BaseAbility的对应的creator。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|注册UIAbility的名称。|
-|creator|()->[BaseAbility](#class-baseability)|是|-|注册BaseAbility的对应的creator。|
-
 ## class Context
 
 ```cangjie
-public open class Context {
-    public let eventhub: EventHub = EventHub()
-}
+public open class Context <: BaseContext {}
 ```
 
 **功能：** 提供ability或application的上下文的能力。
@@ -282,597 +316,19 @@ public open class Context {
 
 **起始版本：** 21
 
-### let eventhub
-
-```cangjie
-public let eventhub: EventHub = EventHub()
-```
-
-**功能：** 事件中心，提供订阅、取消订阅、触发事件对象。
-
-**类型：** [EventHub](./cj-apis-eventhub.md#ohoseventhub)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-## class DialogRequestResult
-
-```cangjie
-public class DialogRequestResult {}
-```
-
-**功能：** Diaglog请求结果对象，在调用[requestDialogService](#func-requestdialogservicewant-asynccallbackdialogrequestresult)时返回此对象表明此次申请的结果。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### var resultCode
-
-```cangjie
-public var resultCode: ResultCode
-```
-
-**功能：** 此次请求的结果码。
-
-**类型：** [ResultCode](#enum-resultcode)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### var want
-
-```cangjie
-public var want:?Want
-```
-
-**功能：** 请求的want信息。
-
-**类型：** ?[Want](#class-want)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-## class ElementName
-
-```cangjie
-public class ElementName {
-    public init(deviceId: String, bundleName: String, abilityName: String, moduleName: String)
-    public init(deviceId: String, bundleName: String, abilityName: String)
-}
-```
-
-**功能：** ElementName信息。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### prop abilityName
-
-```cangjie
-public prop abilityName: String
-```
-
-**功能：** Ability名称。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### prop bundleName
-
-```cangjie
-public prop bundleName: String
-```
-
-**功能：** 应用Bundle名称。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### prop deviceId
-
-```cangjie
-public prop deviceId: String
-```
-
-**功能：** 设备ID。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### prop moduleName
-
-```cangjie
-public prop moduleName: String
-```
-
-**功能：** Ability所属的HAP的模块名称。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### init(String, String, String, String)
-
-```cangjie
-public init(deviceId: String, bundleName: String, abilityName: String, moduleName: String)
-```
-
-**功能：** 通过指定设备ID，应用Bundle名称，Ability名称，模块名称构造ElementName。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|是|-|设备ID。|
-|bundleName|String|是|-|应用Bundle名称。|
-|abilityName|String|是|-|Ability名称。|
-|moduleName|String|是|-|Ability所属的HAP的模块名称。|
-
-### init(String, String, String)
-
-```cangjie
-public init(deviceId: String, bundleName: String, abilityName: String)
-```
-
-**功能：** 通过指定设备ID，应用Bundle名称，Ability名称构造ElementName。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|是|-|设备ID。|
-|bundleName|String|是|-|应用Bundle名称。|
-|abilityName|String|是|-|Ability名称。|
-
-## class ErrorManager
-
-```cangjie
-public class ErrorManager {}
-```
-
-**功能：** 提供注册和注销错误观察器方法的类。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### static func off(String, Int32)
-
-```cangjie
-public static func off(offType: String, observerId: Int32): Unit
-```
-
-**功能：** 注销主线程消息处理监听器。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|offType|String|是|-|填写"error"，表示错误观察器。|
-|observerId|Int32|是|-|由on方法返回的观察器的index值。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.|
-  |16200003|Id does not exist.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.AbilityKit.*
-
-try {
-    let observerId: Int32 = 1
-    ErrorManager.off("error", observerId)
-} catch (e: BusinessException) {
-    AppLog.info(e)
-}
-```
-
-### static func on(String, ErrorObserver)
-
-```cangjie
-public static func on(onType: String, observer: ErrorObserver): Int32
-```
-
-**功能：** 注册错误观测器。注册后程序如果出现crash，会触发未捕获异常机制。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|onType|String|是|-|填写"error"，表示错误观察器。|
-|observer|[ErrorObserver](#struct-errorobserver)|是|-|错误观察器。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|观察器的index值，和观察器一一对应。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.|
-  |16200001|The caller has been released.|
-
-## class LaunchParam
-
-```cangjie
-public class LaunchParam {
-    public var launchReason: LaunchReason = LaunchReason.UNKNOWN
-    public var lastExitReason: LastExitReason = LastExitReason.NORMAL
-    public init(
-        launchReason!: LaunchReason = LaunchReason.UNKNOWN,
-        lastExitReason!: LastExitReason = LastExitReason.NORMAL
-    )
-}
-```
-
-**功能：** 启动参数。Ability启动时由系统自动传入，开发者无需修改。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### var lastExitReason
-
-```cangjie
-public var lastExitReason: LastExitReason = LastExitReason.NORMAL
-```
-
-**功能：** 枚举类型，表示最后退出原因。
-
-**类型：** [LastExitReason](#enum-lastexitreason)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### var launchReason
-
-```cangjie
-public var launchReason: LaunchReason = LaunchReason.UNKNOWN
-```
-
-**功能：** 枚举类型，表示启动原因。
-
-**类型：** [LaunchReason](#enum-launchreason)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### init(LaunchReason, LastExitReason)
-
-```cangjie
-public init(
-    launchReason!: LaunchReason = LaunchReason.UNKNOWN,
-    lastExitReason!: LastExitReason = LastExitReason.NORMAL
-)
-```
-
-**功能：** LaunchParam结构的构造器。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|launchReason|[LaunchReason](#enum-launchreason)|否|LaunchReason.UNKNOWN| **命名参数。** 表示启动原因。|
-|lastExitReason|[LastExitReason](#enum-lastexitreason)|否|LastExitReason.NORMAL| **命名参数。** 表示最后退出原因。|
-
-## class OpenLinkOptions
-
-```cangjie
-public class OpenLinkOptions {
-    public OpenLinkOptions(
-        public let appLinkingOnly!: Bool = false,
-        public let parameters!: String = ""
-    )
-}
-```
-
-**功能：** 用于标识是否仅打开AppLinking和传递键值对可选参数。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### let appLinkingOnly
-
-```cangjie
-public let appLinkingOnly: Bool = false
-```
-
-**功能：** 表示是否必须以AppLinking的方式启动Ability：
-
-- 取值为true时，如果不存在与AppLinking相匹配的Ability，直接返回。
-
-- 取值为false时，如果不存在与AppLinking相匹配的Ability，AppLinking会退化为DeepLink。默认值为false。
-
-aa命令隐式拉起Ability时可以通过设置"--pb appLinkingOnly true/false"以AppLinking的方式进行启动。
-
-**类型：** Bool
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### let parameters
-
-```cangjie
-public let parameters: String = ""
-```
-
-**功能：** 表示WantParams参数。具体使用规则请参考[Want](#class-want)中的parameters属性。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### OpenLinkOptions(Bool, String)
-
-```cangjie
-public OpenLinkOptions(
-    public let appLinkingOnly!: Bool = false,
-    public let parameters!: String = ""
-)
-```
-
-**功能：** OpenLinkOptions主构造器。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|appLinkingOnly|Bool|否|false| **命名参数。** 表示是否必须以AppLinking的方式启动UIAbility。|
-|parameters|String|否|""| **命名参数。** 表示WantParams参数|
-
-## class PermissionRequestResult
-
-```cangjie
-public class PermissionRequestResult {
-    public PermissionRequestResult(
-        public let permissions: Array<String>,
-        public let authResults: Array<Int32>
-    )
-}
-```
-
-**功能：** 权限请求结果对象，在调用[requestPermissionsFromUser](./cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)申请权限时返回此对象表明此次权限申请的结果。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### let authResults
-
-```cangjie
-public let authResults: Array<Int32>
-```
-
-**功能：** 相应请求权限的结果。
-
-**类型：** Array\<Int32>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### let permissions
-
-```cangjie
-public let permissions: Array<String>
-```
-
-**功能：** 用户传入的权限。
-
-**类型：** Array\<String>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### PermissionRequestResult(Array\<String>, Array\<Int32>)
-
-```cangjie
-public PermissionRequestResult(
-    public let permissions: Array<String>,
-    public let authResults: Array<Int32>
-)
-```
-
-**功能：** PermissionRequestResult实例构造。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|permissions|Array\<String>|是|-|用户传入的权限。|
-|authResults|Array\<Int32>|是|-|相应请求权限的结果：<br>- -1：未授权。①dialogShownResults返回为true，表示用户首次申请；②dialogShownResults返回为false，表示权限已设置，无需弹窗，需要用户在"设置"中修改。<br>- 0：已授权。<br>- 2：未授权，表示请求无效。可能原因有：①未在设置文件中声明目标权限；②权限名非法；③部分权限存在特殊申请条件，在申请对应权限时未满足其指定的条件，见[ohos.permission.LOCATION](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionlocation)与[ohos.permission.APPROXIMATELY_LOCATION](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionapproximately_location)。|
-
-## class StartOptions
-
-```cangjie
-public open class StartOptions {
-    public var windowMode: WindowMode = WINDOW_MODE_UNDEFINED
-    public var displayId: Int32 = 0
-    public init(
-        windowMode!: WindowMode = WINDOW_MODE_UNDEFINED,
-        displayId!: Int32 = 0
-    )
-}
-```
-
-**功能：** 用于指定目标Ability的窗口模式。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### var displayId
-
-```cangjie
-public var displayId: Int32 = 0
-```
-
-**功能：** 屏幕ID模式。默认是0，表示当前屏幕。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### var windowMode
-
-```cangjie
-public var windowMode: WindowMode = WINDOW_MODE_UNDEFINED
-```
-
-**功能：** 启动Ability时的窗口模式，详见[WindowMode](#enum-windowmode)。
-
-**类型：** [WindowMode](#enum-windowmode)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### init(WindowMode, Int32)
-
-```cangjie
-public init(
-    windowMode!: WindowMode = WINDOW_MODE_UNDEFINED,
-    displayId!: Int32 = 0
-)
-```
-
-**功能：** StartOptions的构造器。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|windowMode|[WindowMode](#enum-windowmode)|否|WINDOW_MODE_UNDEFINED| **命名参数。** 启动Ability时的窗口模式。|
-|displayId|Int32|否|0| **命名参数。** 屏幕ID模式。默认是0，表示当前屏幕。|
-
-## class UIAbility
-
-```cangjie
-public open class UIAbility <: BaseAbility {}
-```
-
-**功能：** UIAbility是包含UI界面的应用组件，继承自BaseAbility，提供组件创建、销毁、前后台切换等生命周期回调，同时也具备组件协同的能力。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
 **父类型：**
 
-- [BaseAbility](#class-baseability)
+- [BaseContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)
 
-### prop context
+### prop applicationInfo
 
 ```cangjie
-public prop context: UIAbilityContext
+public prop applicationInfo: ApplicationInfo
 ```
 
-**功能：** 上下文。
+**功能：** 当前应用程序的信息。
 
-**类型：** [UIAbilityContext](#class-uiabilitycontext)
+**类型：** [ApplicationInfo](./cj-apis-bundle_manager.md#class-applicationinfo)
 
 **读写能力：** 只读
 
@@ -880,267 +336,21 @@ public prop context: UIAbilityContext
 
 **起始版本：** 21
 
-### prop lastRequestWant
+### prop area
 
 ```cangjie
-public prop lastRequestWant: Want
+public mut prop area: AreaMode
 ```
 
-**功能：** UIAbility最后请求时的参数。
+**功能：** 文件分区信息。
 
-**类型：** [Want](#class-want)
+**类型：** [AreaMode](#enum-areamode)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
-
-### prop launchWant
-
-```cangjie
-public prop launchWant: Want
-```
-
-**功能：** UIAbility启动时的参数。
-
-**类型：** [Want](#class-want)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### func onBackground()
-
-```cangjie
-public open func onBackground(): Unit
-```
-
-**功能：** UIAbility生命周期回调，当应用从前台转到后台时触发。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onBackground(): Unit {
-        AppLog.info("onBackground called")
-    }
-}
-```
-
-### func onCreate(Want, LaunchParam)
-
-```cangjie
-public open func onCreate(want: Want, launchParam: LaunchParam): Unit
-```
-
-**功能：** UIAbility创建时回调，执行初始化业务逻辑操作。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|当前UIAbility的Want类型信息，包括UIAbility名称、Bundle名称等。|
-|launchParam|[LaunchParam](#class-launchparam)|是|创建 ability、上次异常退出的原因信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        AppLog.info("MainAbility OnCreated.${want.abilityName}")
-        match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-            case _ => ()
-        }
-    }
-}
-```
-
-### func onDestroy()
-
-```cangjie
-public open func onDestroy(): Unit
-```
-
-**功能：** UIAbility销毁时回调，执行资源清理等操作。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onDestroy(): Unit {
-        AppLog.info("onDestroy")
-    }
-}
-```
-
-### func onForeground()
-
-```cangjie
-public open func onForeground(): Unit
-```
-
-**功能：** UIAbility生命周期回调，当应用从后台转到前台时触发。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onForeground(): Unit {
-        AppLog.info("onForeground")
-    }
-}
-```
-
-### func onNewWant(Want, LaunchParam)
-
-```cangjie
-public open func onNewWant(want: Want, launchParams: LaunchParam): Unit
-```
-
-**功能：** UIAbility实例已经启动并在前台运行过，由于某些原因切换到后台，再次启动该UIAbility实例时会回调执行该方法。即UIAbility实例热启动时进入该生命周期回调。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|want|[Want](#class-want)|是|当前UIAbility的Want类型信息，包括ability名称、bundle名称等。|
-|launchParams|[LaunchParam](#class-launchparam)|是|Ability启动的原因、上次异常退出的原因信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onNewWant(want: Want, launchParam: LaunchParam): Unit {
-        AppLog.info("MainAbility onNewWant.${want.abilityName}")
-        match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-            case _ => ()
-        }
-    }
-}
-```
-
-### func onWindowStageCreate(WindowStage)
-
-```cangjie
-public open func onWindowStageCreate(windowStage: WindowStage): Unit
-```
-
-**功能：** 当WindowStage创建后调用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|windowStage|[WindowStage](../../arkui-cj/cj-apis-window.md#class-windowstage)|是|-|[WindowStage](../../arkui-cj/cj-apis-window.md#class-windowstage)相关信息。|
-
-### func onWindowStageDestroy()
-
-```cangjie
-public open func onWindowStageDestroy(): Unit
-```
-
-**功能：** 当WindowStage销毁后调用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onWindowStageDestroy(): Unit {
-        AppLog.info("MainAbility onWindowStageDestroy.")
-    }
-}
-```
-
-## class UIAbilityContext
-
-```cangjie
-public open class UIAbilityContext <: Context {}
-```
-
-**功能：** 提供允许访问特定UIAbility的资源的能力。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [Context](#class-context)
 
 ### prop filesDir
 
@@ -1158,6 +368,451 @@ public prop filesDir: String
 
 **起始版本：** 21
 
+### prop resourceManager
+
+```cangjie
+public prop resourceManager: ResourceManager
+```
+
+**功能：** 资源管理对象。
+
+**类型：** [ResourceManager](../LocalizationKit/cj-apis-resource_manager.md#class-resourcemanager)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+## class ErrorManager
+
+```cangjie
+public class ErrorManager {}
+```
+
+**功能：** 提供注册和注销错误观察器方法的类。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### static func off(ErrorManagerEvent, Int32)
+
+```cangjie
+public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit
+```
+
+**功能：** 注销主线程消息处理监听器。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[ErrorManagerEvent](#enum-errormanagerevent)|是|-|"Error"，表示错误观察器。|
+|observerId|Int32|是|-|由on方法返回的观察器的index值。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[元能力子系统错误码](../../../source_zh_cn/errorcodes/cj-errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000003 | The specified ID does not exist. |
+
+### static func on(ErrorManagerEvent, ErrorObserver)
+
+```cangjie
+public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32
+```
+
+**功能：** 注册错误观测器。注册后程序如果出现crash，会触发未捕获异常机制。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[ErrorManagerEvent](#enum-errormanagerevent)|是|-|"Error"，表示错误观察器。|
+|observer|[ErrorObserver](#interface-errorobserver)|是|-|错误观察器。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int32|观察器的index值，和观察器一一对应。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[元能力子系统错误码](../../errorcodes/cj-errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000003 | The specified ID does not exist. |
+
+## class LaunchParam
+
+```cangjie
+public class LaunchParam {
+    public var launchReason: LaunchReason
+    public var lastExitReason: LastExitReason
+}
+```
+
+**功能：** 启动参数。Ability启动时由系统自动传入，开发者无需修改。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### var lastExitReason
+
+```cangjie
+public var lastExitReason: LastExitReason
+```
+
+**功能：** 枚举类型，表示最后退出原因。
+
+**类型：** [LastExitReason](#enum-lastexitreason)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### var launchReason
+
+```cangjie
+public var launchReason: LaunchReason
+```
+
+**功能：** 枚举类型，表示启动原因。
+
+**类型：** [LaunchReason](#enum-launchreason)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+## class RequestResult
+
+```cangjie
+public class RequestResult {
+    public var result: ResultCode
+    public var want: Want
+}
+```
+
+**功能：** 承载 `requestDialogService` 异步回调的请求结果，包含结果码 `result` 与附加数据 `want`，用于在应用与对话框服务之间传递结果及上下文信息。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### var result
+
+```cangjie
+public var result: ResultCode
+```
+
+**功能：** 表示传入的请求结果，区分成功或取消等状态。
+
+**类型：** [ResultCode](#enum-resultcode)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### var want
+
+```cangjie
+public var want: Want
+```
+
+**功能：** 表示传入的附加 `Want` 数据，用于在回调中携带额外业务参数。
+
+**类型：** [Want](#class-want)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+## class StartOptions
+
+```cangjie
+public open class StartOptions {
+    public var windowMode:?WindowMode
+    public var displayId: Int32
+    public init(
+        windowMode!: ?WindowMode = None,
+        displayId!: Int32 = 0
+    )
+}
+```
+
+**功能：** 用于指定目标Ability的窗口模式。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### var displayId
+
+```cangjie
+public var displayId: Int32
+```
+
+**功能：** 屏幕ID模式。默认是0，表示当前屏幕。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### var windowMode
+
+```cangjie
+public var windowMode:?WindowMode
+```
+
+**功能：** 启动Ability时的窗口模式，详见[WindowMode](#enum-windowmode)。
+
+**类型：** ?[WindowMode](#enum-windowmode)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### init(?WindowMode, Int32)
+
+```cangjie
+public init(
+    windowMode!: ?WindowMode = None,
+    displayId!: Int32 = 0
+)
+```
+
+**功能：** StartOptions的构造器。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|windowMode|?[WindowMode](#enum-windowmode)|否|None|**命名参数。** 启动Ability时的窗口模式。|
+|displayId|Int32|否|0|**命名参数。** 屏幕ID模式。默认是0，表示当前屏幕。|
+
+## class UIAbility
+
+```cangjie
+public open class UIAbility <: Ability {}
+```
+
+**功能：** UIAbility是包含UI界面的应用组件，继承自BaseAbility，提供组件创建、销毁、前后台切换等生命周期回调，同时也具备组件协同的能力。组件协同主要提供如下常用功能：
+
+- Caller：由startAbilityByCall接口返回，CallerAbility(调用者)可使用Caller与CalleeAbility(被调用者)进行通信。
+
+- Callee：UIAbility的内部对象，CalleeAbility(被调用者)可以通过Callee与Caller进行通信。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Ability](#class-ability)
+
+### prop context
+
+```cangjie
+public mut prop context: UIAbilityContext
+```
+
+**功能：** 上下文。
+
+**类型：** [UIAbilityContext](#class-uiabilitycontext)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### prop lastRequestWant
+
+```cangjie
+public mut prop lastRequestWant: Want
+```
+
+**功能：** UIAbility最后请求时的参数。
+
+**类型：** [Want](#class-want)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### prop launchWant
+
+```cangjie
+public mut prop launchWant: Want
+```
+
+**功能：** UIAbility启动时的参数。
+
+**类型：** [Want](#class-want)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### func onBackground()
+
+```cangjie
+public open func onBackground(): Unit
+```
+
+**功能：** UIAbility生命周期回调，当应用从前台转到后台时触发。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### func onCreate(Want, LaunchParam)
+
+```cangjie
+public open func onCreate(want: Want, launchParam: LaunchParam): Unit
+```
+
+**功能：** UIAbility创建时回调，执行初始化业务逻辑操作。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|want|[Want](#class-want)|是|-|当前UIAbility的Want类型信息，包括UIAbility名称、Bundle名称等。|
+|launchParam|[LaunchParam](#class-launchparam)|是|-|创建 ability、上次异常退出的原因信息。|
+
+### func onDestroy()
+
+```cangjie
+public open func onDestroy(): Unit
+```
+
+**功能：** UIAbility销毁时回调，执行资源清理等操作。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### func onForeground()
+
+```cangjie
+public open func onForeground(): Unit
+```
+
+**功能：** UIAbility生命周期回调，当应用从后台转到前台时触发。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+### func onNewWant(Want, LaunchParam)
+
+```cangjie
+public open func onNewWant(want: Want, launchParam: LaunchParam): Unit
+```
+
+**功能：** UIAbility实例已经启动并在前台运行过，由于某些原因切换到后台，再次启动该UIAbility实例时会回调执行该方法。即UIAbility实例热启动时进入该生命周期回调。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|want|[Want](#class-want)|是|-|当前UIAbility的Want类型信息，包括ability名称、bundle名称等。|
+|launchParam|[LaunchParam](#class-launchparam)|是|-|Ability启动的原因、上次异常退出的原因信息。|
+
+### func onWindowStageCreate(WindowStage)
+
+```cangjie
+public open func onWindowStageCreate(windowStage: WindowStage): Unit
+```
+
+**功能：** 当WindowStage创建后调用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|windowStage|[WindowStage](#class-windowstage)|是|-|[WindowStage](#class-windowstage)相关信息。|
+
+### func onWindowStageDestroy()
+
+```cangjie
+public open func onWindowStageDestroy(): Unit
+```
+
+**功能：** 当WindowStage销毁后调用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**起始版本：** 21
+
+## class UIAbilityContext
+
+```cangjie
+public open class UIAbilityContext <: Context {}
+```
+
+**功能：** 提供允许访问特定UIAbility的资源的能力。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Context](#class-context)
+
 ### func isTerminating()
 
 ```cangjie
@@ -1172,14 +827,22 @@ public func isTerminating(): Bool
 
 **返回值：**
 
-| 类型      | 说明        |
-| :--------------- | :--------------- |
-| Bool | true：ability当前处于terminating状态；false：不处于terminating状态。 |
+|类型|说明|
+|:----|:----|
+|Bool|true：ability当前处于terminating状态；false：不处于terminating状态。|
 
-### func requestDialogService(Want, AsyncCallback\<DialogRequestResult>)
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 16000011 | The context does not exist. |
+
+### func requestDialogService(Want, AsyncCallbackEx\<RequestResult>)
 
 ```cangjie
-public func requestDialogService(want: Want, callback: AsyncCallback<DialogRequestResult>): Unit
+public func requestDialogService(want: Want, result: AsyncCallbackEx<RequestResult>): Unit
 ```
 
 **功能：** 启动支持模式对话框的ServiceExtensionAbility，并使用回调返回结果。
@@ -1190,15 +853,39 @@ public func requestDialogService(want: Want, callback: AsyncCallback<DialogReque
 
 **参数：**
 
-| 参数名 | 参数类型 | 必填 | 默认值 | 描述 |
-|:------|:------|:------|:------|:------|
-| want | [Want](#class-want) |  是 | - |  需要启动的目标ServiceExtensionAbility的want信息。 |
-| callback | [AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[DialogRequestResult](#class-dialogrequestresult)> | 是 | - | 用于返回结果的回调。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|want|[Want](#class-want)|是|-|需要启动的目标ServiceExtensionAbility的want信息。|
+|result|[AsyncCallbackEx](#type-asynccallbackex)\<[RequestResult](#class-requestresult)>|是|-| 用于返回结果的回调。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16200001 | The caller has been released. |
 
 ### func requestDialogService(Want)
 
 ```cangjie
-public func requestDialogService(want: Want): Future<DialogRequestResult>
+public func requestDialogService(want: Want): Future<RequestResult>
 ```
 
 **功能：** 启动支持模式对话框的ServiceExtensionAbility，并返回结果。
@@ -1209,15 +896,39 @@ public func requestDialogService(want: Want): Future<DialogRequestResult>
 
 **参数：**
 
-| 参数名 | 参数类型 | 必填 | 默认值 | 描述 |
-|:------|:------|:------|:------|:------|
-| want | [Want](#class-want) |  是 | - |  需要启动的目标ServiceExtensionAbility的want信息。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|want|[Want](#class-want)|是|-|需要启动的目标ServiceExtensionAbility的want信息。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Future\<[DialogRequestResult](#class-dialogrequestresult)>| 返回执行结果。|
+|[Future](../../../../User_Manual/source_zh_cn/concurrency/use_thread.md#使用-futuret-等待线程结束并获取返回值)\<[RequestResult](#class-requestresult)>|返回执行结果。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16200001 | The caller has been released. |
 
 ### func startAbility(Want)
 
@@ -1236,6 +947,44 @@ public func startAbility(want: Want): Future<Unit>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](#class-want)|是|-|启动Ability的want信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 801 | Capability not support. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000067 | The StartOptions check failed. |
+| 16000068 | The ability is already running. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
+| 16300003 | The target application is not the current application. |
 
 ### func startAbility(Want, StartOptions)
 
@@ -1256,10 +1005,48 @@ public func startAbility(want: Want, options: StartOptions): Future<Unit>
 |want|[Want](#class-want)|是|-|启动Ability的want信息。|
 |options|[StartOptions](#class-startoptions)|是|-|启动Ability所携带的参数。|
 
-### func startAbilityForResult(Want, AsyncCallback\<AbilityResult>)
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 801 | Capability not support. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000067 | The StartOptions check failed. |
+| 16000068 | The ability is already running. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
+| 16300003 | The target application is not the current application. |
+
+### func startAbilityForResult(Want, AsyncCallbackEx\<AbilityResult>)
 
 ```cangjie
-public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): Unit
+public func startAbilityForResult(want: Want, callback: AsyncCallbackEx<AbilityResult>): Unit
 ```
 
 **功能：** 启动Ability并在该Ability退出的时候返回执行结果（callback形式）。
@@ -1270,15 +1057,49 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明 |
-| :------- | :------ | :---- | :---- |
-| want | [Want](#class-want) |  是 |   启动Ability的want信息。|
-| callback | [AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[AbilityResult](#struct-abilityresult)> |  是 |   执行结果回调函数。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|want|[Want](#class-want)|是|-|启动Ability的want信息。|
+|callback|[AsyncCallbackEx](#type-asynccallbackex)\<[AbilityResult](#class-abilityresult)>|是|-| 执行结果回调函数。|
 
-### func startAbilityForResult(Want, StartOptions, AsyncCallback\<AbilityResult>)
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
+
+### func startAbilityForResult(Want, StartOptions, AsyncCallbackEx\<AbilityResult>)
 
 ```cangjie
-public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit
+public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallbackEx<AbilityResult>): Unit
 ```
 
 **功能：** 启动Ability并在该Ability退出的时候返回执行结果（callback形式）。
@@ -1289,11 +1110,43 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明 |
-| :------- | :------ | :---- | :---- |
-| want | [Want](#class-want) |  是 |  启动Ability的want信息。|
-| options | [StartOptions](#class-startoptions) |  是 |   启动Ability所携带的参数。|
-| callback | [AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[AbilityResult](#struct-abilityresult)> |  是 |   执行结果回调函数。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|want|[Want](#class-want)|是|-|启动Ability的want信息。|
+|options|[StartOptions](#class-startoptions)|是|-|启动Ability所携带的参数。|
+|callback|[AsyncCallbackEx](#type-asynccallbackex)\<[AbilityResult](#class-abilityresult)>|是|-|执行结果回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
 
 ### func terminateSelf()
 
@@ -1307,11 +1160,15 @@ public func terminateSelf(): Future<Unit>
 
 **起始版本：** 21
 
-**返回值：**
+**异常：**
 
-| 类型       | 说明                       |
-| :----------| :-------------------------- |
-| Future\<Unit> | Future对象可以获取thread的结果。 |
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 
 ### func terminateSelfWithResult(AbilityResult)
 
@@ -1329,12 +1186,35 @@ public func terminateSelfWithResult(parameter: AbilityResult): Future<Unit>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|parameter|[AbilityResult](#struct-abilityresult)|是|-|停止Ability，配合startAbilityForResult使用，返回给接口调用方AbilityResult信息。|
+|parameter|[AbilityResult](#class-abilityresult)|是|-|停止Ability，配合startAbilityForResult使用，返回给接口调用方AbilityResult信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 
 ## class Want
 
 ```cangjie
 public class Want {
+    public var deviceId: String
+    public var bundleName: String
+    public var abilityName: String
+    public var moduleName: String
+    public var flags: UInt32
+    public var uri: String
+    public var action: String
+    public var entities: Array<String>
+    public var wantType: String
+    public var parameters: HashMap<String, WantValueType>
+
+
     public init(
         deviceId!: String = "",
         bundleName!: String = "",
@@ -1344,181 +1224,183 @@ public class Want {
         uri!: String = "",
         action!: String = "",
         entities!: Array<String> = [],
-        `type`!: String = "",
-        parameters!: String = ""
+        wantType!: String = "",
+        parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>(),
+        fds!: HashMap<String, Int32> = HashMap<String, Int32>()
     )
 }
 ```
 
-**功能：** Want是对象间信息传递的载体，可以用于应用组件间的信息传递。
+**功能：** 创建相应的 Want。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop `type`
+### var abilityName
 
 ```cangjie
-public prop `type`: String
-```
-
-**功能：** MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如："text/xml" 、 "image/\*"等，MIME定义参考：[Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-**起始版本：** 21
-
-### prop abilityName
-
-```cangjie
-public prop abilityName: String
+public var abilityName: String
 ```
 
 **功能：** 待启动Ability名称。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop action
+### var action
 
 ```cangjie
-public prop action: String
+public var action: String
 ```
 
 **功能：** 要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop bundleName
+### var bundleName
 
 ```cangjie
-public prop bundleName: String
+public var bundleName: String
 ```
 
 **功能：** 待启动Ability所在的应用Bundle名称。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop deviceId
+### var deviceId
 
 ```cangjie
-public prop deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 运行指定Ability的设备ID。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop entities
+### var entities
 
 ```cangjie
-public prop entities: Array<String>
+public var entities: Array<String>
 ```
 
 **功能：** 目标Ability额外的类别信息（如：浏览器、视频播放器），在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。
 
 **类型：** Array\<String>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop flags
+### var flags
 
 ```cangjie
-public prop flags: UInt32
+public var flags: UInt32
 ```
 
 **功能：** 处理Want的方式，具体参考：[Flags](#enum-flags)。
 
 **类型：** UInt32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop moduleName
+### var moduleName
 
 ```cangjie
-public prop moduleName: String
+public var moduleName: String
 ```
 
 **功能：** 待启动的Ability所属的模块名称。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop parameters
+### var parameters
 
 ```cangjie
-public prop parameters: String
+public var parameters: HashMap<String, WantValueType>
 ```
 
 **功能：** 开发者自行决定传入的json字符串形式。
 
-**类型：** String
+**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md#HashMap)\<String,[WantValueType](#enum-wantvaluetype)>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### prop uri
+### var uri
 
 ```cangjie
-public prop uri: String
+public var uri: String
 ```
 
 **功能：** Uri描述。如果在Want中指定了Uri，则Want将匹配指定的Uri信息，包括scheme, schemeSpecificPart, authority和path信息。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### init(String, String, String, String, UInt32, String, String, Array\<String>, String, String)
+### var wantType
 
 ```cangjie
+public var wantType: String
+```
+
+**功能：** 表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如："text/xml" 、 "image/\*"等
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### init(String, String, String, String, UInt32, String, String, Array\<String>, String, HashMap\<String,WantValueType>, HashMap\<String,Int32>)
+
+```cangjie
+
 public init(
     deviceId!: String = "",
     bundleName!: String = "",
@@ -1528,8 +1410,9 @@ public init(
     uri!: String = "",
     action!: String = "",
     entities!: Array<String> = [],
-    `type`!: String = "",
-    parameters!: String = ""
+    wantType!: String = "",
+    parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>(),
+    fds!: HashMap<String, Int32> = HashMap<String, Int32>()
 )
 ```
 
@@ -1551,153 +1434,119 @@ public init(
 |uri|String|否|""| **命名参数。** 表示Uri描述。如果在Want中指定了Uri，则Want将匹配指定的Uri信息，包括scheme, schemeSpecificPart, authority和path信息。|
 |action|String|否|""| **命名参数。** 表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，您可以定义该字段，配合uri或parameters来表示对数据要执行的操作。|
 |entities|Array\<String>|否|[]| **命名参数。** 表示目标Ability额外的类别信息（如：浏览器、视频播放器），在隐式Want中是对action字段的补充。在隐式Want中，您可以定义该字段，来过滤匹配Ability类型。|
-|type|String|否|""|表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如："text/xml" 、 "image/\*"等，MIME定义参考：[Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)。|
-|parameters|String|否|""| **命名参数。** 表示WantParams描述，由开发者自行决定传入的json风格的字符串。|
+|wantType|String|否|""|表示MIME type类型描述，打开文件的类型，主要用于文管打开文件。比如："text/xml" 、 "image/\*"等，MIME定义参考：[Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)。|
+|parameters|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[WantValueType](#enum-wantvaluetype)>|否| **命名参数。** 表示WantParams描述，由开发者自行决定传入的json风格的字符串。<br />- ohos.aafwk.param.callerAppIdentifier：表示拉起应用的AppIdentifier信息，值为字符串类型。<br />- ohos.aafwk.param.callerToken：表示拉起方的token，值为字符串类型。<br />- ohos.aafwk.param.callerUid：表示[BundleInfo](./cj-apis-bundle_manager.md#class-bundleinfo)中的uid，应用包里应用程序的uid，值为数值类型。<br />- component.startup.newRules：表示是否启用新的管控规则，值为布尔类型。<br />- moduleName：表示拉起方的moduleName，值为字符串类型。<br />- ability.params.backToOtherMissionStack：表示是否支持跨任务链返回，值为布尔类型。<br />- ohos.ability.params.abilityRecoveryRestart：表示当前Ability是否发生了故障恢复重启，值为布尔类型。<br />- ohos.extra.param.key.contentTitle：表示原子化服务支持分享的标题，值为字符串类型。<br />- ohos.extra.param.key.shareAbstract：表示原子化服务支持分享的内容，值为字符串类型。<br />- ohos.extra.param.key.shareUrl：表示原子化服务支持分享的链接，值为字符串类型。<br />- ohos.extra.param.key.supportContinuePageStack：表示在跨端迁移过程中是否迁移页面栈信息，值为布尔类型，默认值为true，自动迁移页面栈信息。<br />- ohos.extra.param.key.supportContinueSourceExit：表示跨端迁移源端应用是否退出，值为布尔类型，默认值为true，源端应用自动退出。<br />- ohos.extra.param.key.showMode：表示拉起原子化服务的展示模式，值为枚举类型[ShowMode](#enum-showmode)。<br />- ohos.dlp.params.sandbox：表示数据防泄漏（DLP）文件才会涉及。仅系统应用涉及。<br />- ohos.dlp.params.bundleName：表示数据防泄漏（DLP）的BundleName，值为字符串类型。仅系统应用涉及。<br />- ohos.dlp.params.moduleName：表示数据防泄漏（DLP）的moduleName，值为字符串类型。仅系统应用涉及。<br />- ohos.dlp.params.abilityName：表示数据防泄漏（DLP）的AbilityName，值为字符串类型。仅系统应用涉及。<br />- ohos.dlp.params.index：表示数据防泄漏（DLP）的索引，值为数值类型。仅系统应用涉及。<br />- ohos.ability.params.asssertFaultSessionId：表示AssertFault的会话ID，值为字符串类型。仅系统应用涉及。<br /><br />二、以下是由系统定义、开发者按需赋值的Key。<br />- ability.params.stream：指示携带的文件URI要授权给目标方，值为string类型的文件URI数组。<br />- ohos.extra.param.key.appCloneIndex：指示分身应用索引。<br /><br />三、除了上述两种情况，应用间还可以相互约定传入的键值对。<br /><br />**说明**：<br/>want的Params操作的常量的具体信息请参考[wantConstant](#enum-params)。|
+|fds|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,Int32>|否|HashMap<String,Int32>()|表示文件描述符，在启动场景中拉起方写入的FD，会设置到该参数中。|
 
-## struct AbilityResult
+## enum AreaMode
 
 ```cangjie
-public struct AbilityResult {
-    public AbilityResult(
-        public let resultCode: Int32,
-        public let want: Want
-    )
+public enum AreaMode <: Equatable<AreaMode> & ToString {
+    | El1
+    | El2
+    | El3
+    | El4
+    | El5
+    | ...
 }
 ```
 
-**功能：** 定义Ability拉起、销毁之后返回的结果码和数据。
-可以通过startAbilityForResult获取对端Ability销毁后返回的AbilityResult对象，被startAbilityForResult拉起的Ability对象可以通过terminateSelfWithResult返回AbilityResult对象。
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-**起始版本：** 21
-
-### let resultCode
-
-```cangjie
-public let resultCode: Int32
-```
-
-**功能：** 表示ability拉起、销毁之后返回的结果码。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-**起始版本：** 21
-
-### let want
-
-```cangjie
-public let want: Want
-```
-
-**功能：** 表示ability销毁之后返回的数据。
-
-**类型：** [Want](#class-want)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-**起始版本：** 21
-
-### AbilityResult(Int32, Want)
-
-```cangjie
-public AbilityResult(
-    public let resultCode: Int32,
-    public let want: Want
-)
-```
-
-**功能：** AbilityResult构造函数。
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resultCode|Int32|是|-|表示ability拉起、销毁之后返回的结果码。|
-|want|[Want](#class-want)|是|-|表示ability销毁之后返回的数据。|
-
-## struct ErrorObject
-
-```cangjie
-public struct ErrorObject {
-    public let name: String
-    public let message: String
-    public let stack: Option<String>
-    public init(name: String, message: String, stack!: Option<String> = None)
-}
-```
-
-**功能：** 异常事件信息。
+**功能：** 数据加密等级。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### let message
+**父类型：**
+
+- Equatable\<AreaMode>
+- ToString
+
+### El1
 
 ```cangjie
-public let message: String
+El1
 ```
 
-**功能：** 异常事件消息。
-
-**类型：** String
-
-**读写能力：** 只读
+**功能：** 设备级加密区，设备开机后可访问的数据区。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### let name
+### El2
 
 ```cangjie
-public let name: String
+El2
 ```
 
-**功能：** 异常事件名字。
-
-**类型：** String
-
-**读写能力：** 只读
+**功能：** 用户级加密区，设备开机，首次输入密码后才能够访问的数据区。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### let stack
+### El3
 
 ```cangjie
-public let stack: Option<String>
+El3
 ```
 
-**功能：** 异常事件错误堆栈信息。默认是None。
+**功能：** 用户级加密区，不同场景的文件权限如下：
 
-**类型：** Option\<String>
+已打开文件：锁屏时，可读写；解锁后，可读写。
 
-**读写能力：** 只读
+未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。
+
+创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### init(String, String, Option\<String>)
+### El4
 
 ```cangjie
-public init(name: String, message: String, stack!: Option<String> = None)
+El4
 ```
 
-**功能：** ErrorObject的构造函数。
+**功能：** 用户级加密区，不同场景的文件权限如下：
+
+已打开文件：锁屏时，不可读写；解锁后，可读写。
+
+未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。
+
+创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### El5
+
+```cangjie
+El5
+```
+
+**功能：** 应用级加密区，不同场景的文件权限如下：
+
+已打开文件：锁屏时，可读写；解锁后，可读写。
+
+未打开文件：锁屏时，调用Access接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。
+
+创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### func !=(AreaMode)
+
+```cangjie
+public operator func !=(other: AreaMode): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1707,71 +1556,21 @@ public init(name: String, message: String, stack!: Option<String> = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|name|String|是|-|异常事件名字。|
-|message|String|是|-|异常事件消息。|
-|stack|Option\<String>|否|None| **命名参数。** 异常事件错误堆栈信息。默认是None。|
+|other|[AreaMode](#enum-areamode)|是|-|另一个枚举值。|
 
-## struct ErrorObserver
+**返回值：**
 
-```cangjie
-public struct ErrorObserver {
-    public let onUnhandledException:(String) -> Unit
-    public let onException: Option <(ErrorObject) -> Unit>
-    public init(
-        onUnhandledException: (String) -> Unit,
-        onException!: Option<(ErrorObject) -> Unit> = None
-    )
-}
-```
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
-**功能：** 定义异常监听，可以作为ErrorManager.on的入参监听当前应用发生的异常。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### let onException
+### func ==(AreaMode)
 
 ```cangjie
-public let onException: Option <(ErrorObject) -> Unit>
+public operator func ==(other: AreaMode): Bool
 ```
 
-**功能：** 该回调函数调用场景：在程序运行中抛出异常且该异常未被任务‘try-catch’语句成功捕获。`errObject`中包含了该未被捕获的异常的异常名称、异常信息与栈追踪。
-
-**类型：** Option\<([ErrorObject](#struct-errorobject))->Unit>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### let onUnhandledException
-
-```cangjie
-public let onUnhandledException:(String) -> Unit
-```
-
-**功能：** 该回调函数调用场景：在程序运行中抛出异常且该异常未被任务‘try-catch’语句成功捕获。`errMsg`的内容固定为`Uncaught exception was found.`。
-
-**类型：** (String)->Unit
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### init((String) -> Unit, Option\<(ErrorObject) -> Unit>)
-
-```cangjie
-public init(
-    onUnhandledException: (String) -> Unit,
-    onException!: Option<(ErrorObject) -> Unit> = None
-)
-```
-
-**功能：** ErrorObserver的构造函数。
+**功能：** 判断两个枚举值是否相等。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1781,18 +1580,67 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|onUnhandledException|(String)->Unit|是|-|该回调函数调用场景：在程序运行中抛出异常且该异常未被任务‘try-catch’语句成功捕获。errMsg的内容固定为Uncaught exception was found.。|
-|onException|Option\<([ErrorObject](#struct-errorobject))->Unit>|否|None| **命名参数。** 该回调函数调用场景：在程序运行中抛出异常且该异常未被任务‘try-catch’语句成功捕获。errObject中包含了该未被捕获的异常的异常名称、异常信息与栈追踪。|
+|other|[AreaMode](#enum-areamode)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取当前枚举的字符串表示。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|当前枚举的字符串表示。|
+
+## enum ErrorManagerEvent
+
+```cangjie
+public enum ErrorManagerEvent {
+    | Error
+}
+```
+
+**功能：** 表示事件回调类型。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### Error
+
+```cangjie
+Error
+```
+
+**功能：** 表示注册回调的类型是"Error"。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
 
 ## enum Flags
 
 ```cangjie
 public enum Flags <: Equatable<Flags> & ToString {
-    | FLAG_AUTH_READ_URI_PERMISSION
-    | FLAG_AUTH_WRITE_URI_PERMISSION
-    | FLAG_AUTH_PERSISTABLE_URI_PERMISSION
-    | FLAG_INSTALL_ON_DEMAND
-    | FLAG_START_WITHOUT_TIPS
+    | FlagAuthReadUriPermission
+    | FlagAuthWriteUriPermission
+    | FlagAuthPersistableUriPermission
+    | FlagInstallOnDemand
+    | FlagStartWithoutTips
     | ...
 }
 ```
@@ -1808,10 +1656,10 @@ public enum Flags <: Equatable<Flags> & ToString {
 - Equatable\<Flags>
 - ToString
 
-### FLAG_AUTH_PERSISTABLE_URI_PERMISSION
+### FlagAuthPersistableUriPermission
 
 ```cangjie
-FLAG_AUTH_PERSISTABLE_URI_PERMISSION
+FlagAuthPersistableUriPermission
 ```
 
 **功能：** 指示该URI可被接收方持久化。该字段仅在平板类设备上生效。值为：0x00000040。
@@ -1820,10 +1668,10 @@ FLAG_AUTH_PERSISTABLE_URI_PERMISSION
 
 **起始版本：** 21
 
-### FLAG_AUTH_READ_URI_PERMISSION
+### FlagAuthReadUriPermission
 
 ```cangjie
-FLAG_AUTH_READ_URI_PERMISSION
+FlagAuthReadUriPermission
 ```
 
 **功能：** 指示对URI执行读取操作的授权。值为：0x00000001。
@@ -1832,10 +1680,10 @@ FLAG_AUTH_READ_URI_PERMISSION
 
 **起始版本：** 21
 
-### FLAG_AUTH_WRITE_URI_PERMISSION
+### FlagAuthWriteUriPermission
 
 ```cangjie
-FLAG_AUTH_WRITE_URI_PERMISSION
+FlagAuthWriteUriPermission
 ```
 
 **功能：** 指示对URI执行写入操作的授权。值为：0x00000002。
@@ -1844,10 +1692,10 @@ FLAG_AUTH_WRITE_URI_PERMISSION
 
 **起始版本：** 21
 
-### FLAG_INSTALL_ON_DEMAND
+### FlagInstallOnDemand
 
 ```cangjie
-FLAG_INSTALL_ON_DEMAND
+FlagInstallOnDemand
 ```
 
 **功能：** 如果未安装指定的功能，请安装该功能。值为：0x00000800。
@@ -1856,10 +1704,10 @@ FLAG_INSTALL_ON_DEMAND
 
 **起始版本：** 21
 
-### FLAG_START_WITHOUT_TIPS
+### FlagStartWithoutTips
 
 ```cangjie
-FLAG_START_WITHOUT_TIPS
+FlagStartWithoutTips
 ```
 
 **功能：** 如果隐式启动能力不能匹配任何应用程序，则不会弹出提示对话框。值为：0x40000000。
@@ -1871,7 +1719,7 @@ FLAG_START_WITHOUT_TIPS
 ### func !=(Flags)
 
 ```cangjie
-public operator func !=(other: Flags): Bool 
+public operator func !=(other: Flags): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -1895,7 +1743,7 @@ public operator func !=(other: Flags): Bool
 ### func ==(Flags)
 
 ```cangjie
-public operator func ==(other: Flags): Bool 
+public operator func ==(other: Flags): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -1919,6 +1767,7 @@ public operator func ==(other: Flags): Bool
 ### func getValue()
 
 ```cangjie
+
 public func getValue(): UInt32
 ```
 
@@ -1934,13 +1783,21 @@ public func getValue(): UInt32
 |:----|:----|
 |UInt32|当前枚举所表示的值。|
 
+**异常：**
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  |fontSizeScale must >= 0.0|传入参数小于0。|传入大于等于0的数。|
+
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
-**功能：** 获取当前枚举的字符串表示。
+**功能：** 获取当前枚举的字符串表示
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -1956,10 +1813,10 @@ public func toString(): String
 
 ```cangjie
 public enum LastExitReason {
-    | UNKNOWN
-    | ABILITY_NOT_RESPONDING
-    | NORMAL
-    | CPP_CRASH
+    | Unknown
+    | Normal
+    | CppCrash
+    | AppFreeze
     | ...
 }
 ```
@@ -1970,22 +1827,22 @@ public enum LastExitReason {
 
 **起始版本：** 21
 
-### ABILITY_NOT_RESPONDING
+### AppFreeze
 
 ```cangjie
-ABILITY_NOT_RESPONDING
+AppFreeze
 ```
 
-**功能：** ability未响应。
+**功能：** 由于watchdog检测出应用Freeze故障，导致应用程序退出。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### CPP_CRASH
+### CppCrash
 
 ```cangjie
-CPP_CRASH
+CppCrash
 ```
 
 **功能：** 本机异常信号，导致应用程序退出。
@@ -1994,10 +1851,10 @@ CPP_CRASH
 
 **起始版本：** 21
 
-### NORMAL
+### Normal
 
 ```cangjie
-NORMAL
+Normal
 ```
 
 **功能：** 用户主动关闭，应用程序正常退出。
@@ -2006,10 +1863,10 @@ NORMAL
 
 **起始版本：** 21
 
-### UNKNOWN
+### Unknown
 
 ```cangjie
-UNKNOWN
+Unknown
 ```
 
 **功能：** 未知原因。
@@ -2022,10 +1879,11 @@ UNKNOWN
 
 ```cangjie
 public enum LaunchReason {
-    | UNKNOWN
-    | START_ABILITY
-    | CALL
-    | CONTINUATION
+    | Unknown
+    | StartAbility
+    | Call
+    | Continuation
+    | AppRecovery
     | ...
 }
 ```
@@ -2036,10 +1894,22 @@ public enum LaunchReason {
 
 **起始版本：** 21
 
-### CALL
+### AppRecovery
 
 ```cangjie
-CALL
+AppRecovery
+```
+
+**功能：** 设置应用恢复后，应用故障时自动恢复启动Ability。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### Call
+
+```cangjie
+Call
 ```
 
 **功能：** 通过startAbilityByCall接口启动Ability。
@@ -2048,10 +1918,10 @@ CALL
 
 **起始版本：** 21
 
-### CONTINUATION
+### Continuation
 
 ```cangjie
-CONTINUATION
+Continuation
 ```
 
 **功能：** 跨端迁移启动Ability。
@@ -2060,10 +1930,10 @@ CONTINUATION
 
 **起始版本：** 21
 
-### START_ABILITY
+### StartAbility
 
 ```cangjie
-START_ABILITY
+StartAbility
 ```
 
 **功能：** 通过[startAbility](#func-startabilitywant)接口启动Ability。
@@ -2072,10 +1942,10 @@ START_ABILITY
 
 **起始版本：** 21
 
-### UNKNOWN
+### Unknown
 
 ```cangjie
-UNKNOWN
+Unknown
 ```
 
 **功能：** 未知原因。
@@ -2088,9 +1958,9 @@ UNKNOWN
 
 ```cangjie
 public enum MemoryLevel <: Equatable<MemoryLevel> & ToString {
-    | MEMORY_LEVEL_MODERATE
-    | MEMORY_LEVEL_LOW
-    | MEMORY_LEVEL_CRITICAL
+    | MemoryLevelModerate
+    | MemoryLevelLow
+    | MemoryLevelCritical
     | ...
 }
 ```
@@ -2106,10 +1976,10 @@ public enum MemoryLevel <: Equatable<MemoryLevel> & ToString {
 - Equatable\<MemoryLevel>
 - ToString
 
-### MEMORY_LEVEL_CRITICAL
+### MemoryLevelCritical
 
 ```cangjie
-MEMORY_LEVEL_CRITICAL
+MemoryLevelCritical
 ```
 
 **功能：** 内存占用高。
@@ -2118,10 +1988,10 @@ MEMORY_LEVEL_CRITICAL
 
 **起始版本：** 21
 
-### MEMORY_LEVEL_LOW
+### MemoryLevelLow
 
 ```cangjie
-MEMORY_LEVEL_LOW
+MemoryLevelLow
 ```
 
 **功能：** 内存占用低。
@@ -2130,10 +2000,10 @@ MEMORY_LEVEL_LOW
 
 **起始版本：** 21
 
-### MEMORY_LEVEL_MODERATE
+### MemoryLevelModerate
 
 ```cangjie
-MEMORY_LEVEL_MODERATE
+MemoryLevelModerate
 ```
 
 **功能：** 内存占用适中。
@@ -2145,14 +2015,10 @@ MEMORY_LEVEL_MODERATE
 ### func !=(MemoryLevel)
 
 ```cangjie
-public operator func !=(other: MemoryLevel): Bool 
+public operator func !=(other: MemoryLevel): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -2169,14 +2035,10 @@ public operator func !=(other: MemoryLevel): Bool
 ### func ==(MemoryLevel)
 
 ```cangjie
-public operator func ==(other: MemoryLevel): Bool 
+public operator func ==(other: MemoryLevel): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -2193,14 +2055,10 @@ public operator func ==(other: MemoryLevel): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -2212,23 +2070,11 @@ public func toString(): String
 
 ```cangjie
 public enum OnContinueResult {
-    | AGREE
-    | REJECT
-    | MISMATCH
+    | Agree
+    | Reject
+    | Mismatch
     | ...
 }
-```
-
-**功能：** Ability迁移结果，该类型为枚举。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**起始版本：** 21
-
-### AGREE
-
-```cangjie
-AGREE
 ```
 
 **功能：** 表示同意。
@@ -2237,25 +2083,37 @@ AGREE
 
 **起始版本：** 21
 
-### MISMATCH
+### Agree
 
 ```cangjie
-MISMATCH
+Agree
 ```
 
-**功能：** 表示版本不匹配。
+**功能：** 表示同意。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### REJECT
+### Mismatch
 
 ```cangjie
-REJECT
+Mismatch
 ```
 
-**功能：** 表示拒绝。
+**功能：** 表示版本不匹配：迁移发起端应用可以在[onContinue](cj-apis-ability.md#func-oncontinuestring)中获取到迁移目标端应用的版本号，进行协商后，如果版本不匹配导致无法迁移，可以返回该错误。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 21
+
+### Reject
+
+```cangjie
+Reject
+```
+
+**功能：** 表示拒绝：如应用在[onContinue](cj-apis-ability.md#func-oncontinuestring)中异常会导致迁移以后数据恢复时显示异常，则可以建议REJECT。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2265,13 +2123,13 @@ REJECT
 
 ```cangjie
 public enum Params <: Equatable<Params> & ToString {
-    | ABILITY_BACK_TO_OTHER_MISSION_STACK
-    | ABILITY_RECOVERY_RESTART
-    | CONTENT_TITLE_KEY
-    | SHARE_ABSTRACT_KEY
-    | SHARE_URL_KEY
-    | SUPPORT_CONTINUE_PAGE_STACK_KEY
-    | SUPPORT_CONTINUE_SOURCE_EXIT_KEY
+    | AbilityBackToOtherMissionStack
+    | AbilityRecoveryRestart
+    | ContentTitleKey
+    | ShareAbstractKey
+    | ShareUrlKey
+    | SupportContinuePageStackKey
+    | SupportContinueSourceExitKey
     | ...
 }
 ```
@@ -2287,22 +2145,21 @@ public enum Params <: Equatable<Params> & ToString {
 - Equatable\<Params>
 - ToString
 
-### ABILITY_BACK_TO_OTHER_MISSION_STACK
+### AbilityBackToOtherMissionStack
 
 ```cangjie
-ABILITY_BACK_TO_OTHER_MISSION_STACK
+AbilityBackToOtherMissionStack
 ```
 
 **功能：** 表示是否支持跨任务链返回。值为：ability.params.backToOtherMissionStack。
-
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 21
 
-### ABILITY_RECOVERY_RESTART
+### AbilityRecoveryRestart
 
 ```cangjie
-ABILITY_RECOVERY_RESTART
+AbilityRecoveryRestart
 ```
 
 **功能：** 指示当前Ability是否发生了故障恢复重启。值为：ohos.ability.params.abilityRecoveryRestart。
@@ -2311,10 +2168,10 @@ ABILITY_RECOVERY_RESTART
 
 **起始版本：** 21
 
-### CONTENT_TITLE_KEY
+### ContentTitleKey
 
 ```cangjie
-CONTENT_TITLE_KEY
+ContentTitleKey
 ```
 
 **功能：** 指示元服务支持分享标题的参数的操作。值为：ohos.extra.param.key.contentTitle。
@@ -2323,10 +2180,22 @@ CONTENT_TITLE_KEY
 
 **起始版本：** 21
 
-### SHARE_ABSTRACT_KEY
+### ShareAbstractKey
 
 ```cangjie
-SHARE_ABSTRACT_KEY
+ShareAbstractKey
+```
+
+**功能：** 指示页面源文件。值为：ohos.param.atomicservice.pageSourceFile。
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### ShareUrlKey
+
+```cangjie
+ShareUrlKey
 ```
 
 **功能：** 指示元服务支持分享内容的参数的操作。值为：ohos.extra.param.key.shareAbstract。
@@ -2335,22 +2204,10 @@ SHARE_ABSTRACT_KEY
 
 **起始版本：** 21
 
-### SHARE_URL_KEY
+### SupportContinuePageStackKey
 
 ```cangjie
-SHARE_URL_KEY
-```
-
-**功能：** 指示元服务支持分享链接的参数的操作。值为：ohos.extra.param.key.shareUrl。
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-**起始版本：** 21
-
-### SUPPORT_CONTINUE_PAGE_STACK_KEY
-
-```cangjie
-SUPPORT_CONTINUE_PAGE_STACK_KEY
+SupportContinuePageStackKey
 ```
 
 **功能：** 指示在跨端迁移过程中是否迁移页面栈信息，默认值为true，自动迁移页面栈信息。值为：ohos.extra.param.key.supportContinuePageStack。
@@ -2359,10 +2216,10 @@ SUPPORT_CONTINUE_PAGE_STACK_KEY
 
 **起始版本：** 21
 
-### SUPPORT_CONTINUE_SOURCE_EXIT_KEY
+### SupportContinueSourceExitKey
 
 ```cangjie
-SUPPORT_CONTINUE_SOURCE_EXIT_KEY
+SupportContinueSourceExitKey
 ```
 
 **功能：** 指示跨端迁移源端应用是否退出，默认值为true，源端应用自动退出。值为：ohos.extra.param.key.supportContinueSourceExit。
@@ -2374,7 +2231,7 @@ SUPPORT_CONTINUE_SOURCE_EXIT_KEY
 ### func !=(Params)
 
 ```cangjie
-public operator func !=(other: Params): Bool 
+public operator func !=(other: Params): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -2398,7 +2255,7 @@ public operator func !=(other: Params): Bool
 ### func ==(Params)
 
 ```cangjie
-public operator func ==(other: Params): Bool 
+public operator func ==(other: Params): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -2422,10 +2279,11 @@ public operator func ==(other: Params): Bool
 ### func getValue()
 
 ```cangjie
+
 public func getValue(): String
 ```
 
-**功能：** 获取当前枚举的所表示的值。供[Want](#class-want)的Params操作使用。
+**功能：**  获取当前枚举的所表示的值。供[Want](#class-want)的Params操作使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2437,13 +2295,21 @@ public func getValue(): String
 |:----|:----|
 |String|当前枚举所表示的值。|
 
+**异常：**
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  |fontSizeScale must >= 0.0|传入参数小于0。|传入大于等于0的数。|
+
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
-**功能：** 获取当前枚举的字符串表示。
+**功能：** 获取当前枚举的字符串表示
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -2459,8 +2325,8 @@ public func toString(): String
 
 ```cangjie
 public enum ResultCode {
-    | RESULT_OK
-    | RESULT_CANCEL
+    | ResultOk
+    | ResultCancel
     | ...
 }
 ```
@@ -2471,10 +2337,10 @@ public enum ResultCode {
 
 **起始版本：** 21
 
-### RESULT_CANCEL
+### ResultCancel
 
 ```cangjie
-RESULT_CANCEL
+ResultCancel
 ```
 
 **功能：** 表示失败。
@@ -2483,10 +2349,10 @@ RESULT_CANCEL
 
 **起始版本：** 21
 
-### RESULT_OK
+### ResultOk
 
 ```cangjie
-RESULT_OK
+ResultOk
 ```
 
 **功能：** 表示成功。
@@ -2495,28 +2361,119 @@ RESULT_OK
 
 **起始版本：** 21
 
-## enum WindowMode
+## enum WantValueType
 
 ```cangjie
-public enum WindowMode {
-    | WINDOW_MODE_UNDEFINED
-    | WINDOW_MODE_FULLSCREEN
-    | WINDOW_MODE_SPLIT_PRIMARY
-    | WINDOW_MODE_SPLIT_SECONDARY
+public enum WantValueType {
+    | Int64Value(Int64)
+    | Float64Value(Float64)
+    | StringValue(String)
+    | BoolValue(Bool)
+    | ArrayValue(Array<WantValueType>)
+    | HashMapValue(HashMap<String, WantValueType>)
     | ...
 }
 ```
 
-**功能：** 启动Ability时的窗口模式，类型为枚举。可配合[startAbility](#func-startabilitywant-startoptions)使用，指定启动Ability的窗口模式。
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### ArrayValue(Array\<WantValueType>)
+
+```cangjie
+ArrayValue(Array<WantValueType>)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### BoolValue(Bool)
+
+```cangjie
+BoolValue(Bool)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### Float64Value(Float64)
+
+```cangjie
+Float64Value(Float64)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### HashMapValue(HashMap\<String, WantValueType>)
+
+```cangjie
+HashMapValue(HashMap<String, WantValueType>)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### Int64Value(Int64)
+
+```cangjie
+Int64Value(Int64)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+### StringValue(String)
+
+```cangjie
+StringValue(String)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**起始版本：** 21
+
+## enum WindowMode
+
+```cangjie
+public enum WindowMode {
+    | WindowModeFullscreen
+    | WindowModeSplitPrimary
+    | WindowModeSplitSecondary
+    | ...
+}
+```
+
+**功能：** 启动Ability时的窗口模式，类型为枚举。可配合[startAbility](#func-startabilitywant)使用，指定启动Ability的窗口模式。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-### WINDOW_MODE_FULLSCREEN
+### WindowModeFullscreen
 
 ```cangjie
-WINDOW_MODE_FULLSCREEN
+WindowModeFullscreen
 ```
 
 **功能：** 全屏模式。
@@ -2525,10 +2482,10 @@ WINDOW_MODE_FULLSCREEN
 
 **起始版本：** 21
 
-### WINDOW_MODE_SPLIT_PRIMARY
+### WindowModeSplitPrimary
 
 ```cangjie
-WINDOW_MODE_SPLIT_PRIMARY
+WindowModeSplitPrimary
 ```
 
 **功能：** 屏幕如果是水平方向表示左分屏，屏幕如果是竖直方向表示上分屏。
@@ -2537,10 +2494,10 @@ WINDOW_MODE_SPLIT_PRIMARY
 
 **起始版本：** 21
 
-### WINDOW_MODE_SPLIT_SECONDARY
+### WindowModeSplitSecondary
 
 ```cangjie
-WINDOW_MODE_SPLIT_SECONDARY
+WindowModeSplitSecondary
 ```
 
 **功能：** 屏幕如果是水平方向表示右分屏，屏幕如果是竖直方向表示下分屏。
@@ -2549,38 +2506,40 @@ WINDOW_MODE_SPLIT_SECONDARY
 
 **起始版本：** 21
 
-### WINDOW_MODE_UNDEFINED
+## interface SystemObjectInteropTypeToJS
 
 ```cangjie
-WINDOW_MODE_UNDEFINED
+public interface SystemObjectInteropTypeToJS {
+    func toJSValue(context: JSContext): JSValue
+}
 ```
 
-**功能：** 未定义窗口模式。
+**功能：** 系统对象专用的拓展接口，以实现与[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)的互转。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
-## type Ability<sup>(deprecated)</sup>
+### func toJSValue(JSContext)
 
 ```cangjie
-public type Ability = UIAbility
+func toJSValue(context: JSContext): JSValue
 ```
 
-**功能：** UIAbility的别名。
+**功能：** 将仓颉对象转换成[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)。
 
-> **注意：**
->
-> 从19版本开始废弃不再使用，可使用[UIAbility](#class-uiability)替代。
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## type AbilityContext<sup>(deprecated)</sup>
+**起始版本：** 21
 
-```cangjie
-public type AbilityContext = UIAbilityContext
-```
+**参数：**
 
-**功能：** UIAbilityContext的别名。
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
 
-> **注意：**
->
-> 从19版本开始废弃不再使用，可使用[UIAbilityContext](#class-uiabilitycontext)替代。
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue)|ArkTS统一类型。|

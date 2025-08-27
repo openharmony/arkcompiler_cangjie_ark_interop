@@ -45,16 +45,17 @@
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
-import ohos.base.BusinessException
+import ohos.hilog.Hilog
+import ohos.business_exception.BusinessException
 
 func doRand() {
     let rand = createRandom()
     let len: Int32 = 24 // Generate a 24-byte random number.
     try {
         let randData = rand.generateRandom(len)
-        AppLog.info("rand result: ${randData.data}")
+        Hilog.info(0,"","rand result: ${randData.data}")
     } catch (e: BusinessException) {
-        AppLog.error("do rand failed, ${e.code}, ${e.message}")
+        Hilog.error(0,"","do rand failed, ${e.code}, ${e.message}")
     }
 }
 ```

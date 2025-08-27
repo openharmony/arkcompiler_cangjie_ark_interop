@@ -29,10 +29,10 @@ public class Hilog {}
 
 **起始版本：** 21
 
-### static func debug(UInt32, String, String)
+### static func debug(UInt32, String, String, Array\<String>)
 
 ```cangjie
-public static func debug(domain: UInt32, tag: String, format: String): Unit
+public static func debug(domain: UInt32, tag: String, format: String, args: Array<String>): Unit
 ```
 
 **功能：** 打印DEBUG级别的日志。
@@ -50,6 +50,7 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 |domain|UInt32|是|-|日志对应的领域标识，范围是0x0~0xFFFF。<br/>建议开发者在应用内根据需要自定义划分。|
 |tag|String|是|-|指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。|
 |format|String|是|-|格式字符串，用于日志的格式化输出。|
+|args|Array\<String>|是|-|格式化字符串的参数。|
 
 **示例：**
 
@@ -61,13 +62,13 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 
-Hilog.debug(0, "hilog_test", "Debug: Hello world!")
+Hilog.debug(0, "testTag", "Debug: Hello world!")
 ```
 
-### static func error(UInt32, String, String)
+### static func error(UInt32, String, String, Array\<String>)
 
 ```cangjie
-public static func error(domain: UInt32, tag: String, format: String): Unit
+public static func error(domain: UInt32, tag: String, format: String, args: Array<String>): Unit
 ```
 
 **功能：** 打印ERROR级别的日志。
@@ -83,6 +84,7 @@ public static func error(domain: UInt32, tag: String, format: String): Unit
 |domain|UInt32|是|-|日志对应的领域标识，范围是0x0~0xFFFF。<br/>建议开发者在应用内根据需要自定义划分。|
 |tag|String|是|-|指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。|
 |format|String|是|-|格式字符串，用于日志的格式化输出。|
+|args|Array\<String>|是|-|格式化字符串的参数。|
 
 **示例：**
 
@@ -94,13 +96,13 @@ public static func error(domain: UInt32, tag: String, format: String): Unit
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 
-Hilog.error(0, "hilog_test", "Error: Hello world!")
+Hilog.error(0, "testTag", "Error: Hello world!")
 ```
 
-### static func fatal(UInt32, String, String)
+### static func fatal(UInt32, String, String, Array\<String>)
 
 ```cangjie
-public static func fatal(domain: UInt32, tag: String, format: String): Unit
+public static func fatal(domain: UInt32, tag: String, format: String, args: Array<String>): Unit
 ```
 
 **功能：** 打印FATAL级别的日志。
@@ -116,6 +118,7 @@ public static func fatal(domain: UInt32, tag: String, format: String): Unit
 |domain|UInt32|是|-|日志对应的领域标识，范围是0x0~0xFFFF。<br/>建议开发者在应用内根据需要自定义划分。|
 |tag|String|是|-|指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。|
 |format|String|是|-|格式字符串，用于日志的格式化输出。|
+|args|Array\<String>|是|-|格式化字符串的参数。|
 
 **示例：**
 
@@ -127,13 +130,13 @@ public static func fatal(domain: UInt32, tag: String, format: String): Unit
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 
-Hilog.fatal(0, "hilog_test", "Fatal: Hello world!")
+Hilog.fatal(0, "testTag", "Fatal: Hello world!")
 ```
 
-### static func info(UInt32, String, String)
+### static func info(UInt32, String, String, Array\<String>)
 
 ```cangjie
-public static func info(domain: UInt32, tag: String, format: String): Unit
+public static func info(domain: UInt32, tag: String, format: String, args: Array<String>): Unit
 ```
 
 **功能：** 打印INFO级别的日志。
@@ -149,6 +152,7 @@ public static func info(domain: UInt32, tag: String, format: String): Unit
 |domain|UInt32|是|-|日志对应的领域标识，范围是0x0~0xFFFF。<br/>建议开发者在应用内根据需要自定义划分。|
 |tag|String|是|-|指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。|
 |format|String|是|-|格式字符串，用于日志的格式化输出。|
+|args|Array\<String>|是|-|格式化字符串的参数。|
 
 **示例：**
 
@@ -160,7 +164,7 @@ public static func info(domain: UInt32, tag: String, format: String): Unit
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 
-Hilog.info(0, "hilog_test", "Info: Hello world!")
+Hilog.info(0, "testTag", "Info: Hello world!")
 ```
 
 ### static func isLoggable(UInt32, String, LogLevel)
@@ -199,13 +203,13 @@ public static func isLoggable(domain: UInt32, tag: String, level: LogLevel): Boo
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 
-Hilog.isLoggable(0, "hilog_test", LogLevel.DEBUG)
+Hilog.isLoggable(0, "testTag", LogLevel.Debug)
 ```
 
-### static func warn(UInt32, String, String)
+### static func warn(UInt32, String, String, Array\<String>)
 
 ```cangjie
-public static func warn(domain: UInt32, tag: String, format: String): Unit
+public static func warn(domain: UInt32, tag: String, format: String, args: Array<String>): Unit
 ```
 
 **功能：** 打印WARN级别的日志。
@@ -221,6 +225,7 @@ public static func warn(domain: UInt32, tag: String, format: String): Unit
 |domain|UInt32|是|-|日志对应的领域标识，范围是0x0~0xFFFF。<br/>建议开发者在应用内根据需要自定义划分。|
 |tag|String|是|-|指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。|
 |format|String|是|-|格式字符串，用于日志的格式化输出。|
+|args|Array\<String>|是|-|格式化字符串的参数。|
 
 **示例：**
 
@@ -232,252 +237,18 @@ public static func warn(domain: UInt32, tag: String, format: String): Unit
 import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 
-Hilog.warn(0, "hilog_test", "Warn: Hello world!")
-```
-
-## class HilogChannel
-
-```cangjie
-public class HilogChannel {
-    public init(ty: UInt32, domain: UInt32, tag: String)
-}
-```
-
-**功能：** 日志系统对象，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容。提供DEBUG、INFO、WARN、ERROR、FATAL不同级别的日志打印方法。支持指定日志类型、日志所对应的业务领域、指定日志标识构造自定义日志系统对象。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-### init(UInt32, UInt32, String)
-
-```cangjie
-public init(ty: UInt32, domain: UInt32, tag: String)
-```
-
-**功能：** HilogChannel的构造函数。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|ty|UInt32|是|-|日志类型。|
-|domain|UInt32|是|-|日志对应的领域标识，范围是0x0~0xFFFF。<br/>建议开发者在应用内根据需要自定义划分。|
-|tag|String|是|-|指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。|
-
-### func debug\<T>(T) where T <: ToString
-
-```cangjie
-public func debug<T>(message: T): Unit where T <: ToString
-```
-
-**功能：** 打印DEBUG级别的日志。
-
-DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试版本或打开调试开关的情况下才会打印。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|T|是|-|类型T需实现ToString接口，用于日志的格式化输出。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
-
-let testLog = HilogChannel(0, 0xD001200, "CJ-Test")
-testLog.debug("Debug: Hello world!")
-```
-
-### func error\<T>(T) where T <: ToString
-
-```cangjie
-public func error<T>(message: T): Unit where T <: ToString
-```
-
-**功能：** 打印ERROR级别的日志。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|T|是|-|类型T需实现ToString接口，用于日志的格式化输出。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
-
-let testLog = HilogChannel(0, 0xD001200, "CJ-Test")
-testLog.error("Error: Hello world!")
-```
-
-### func fatal\<T>(T) where T <: ToString
-
-```cangjie
-public func fatal<T>(message: T): Unit where T <: ToString
-```
-
-**功能：** 打印FATAL级别的日志。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|T|是|-|类型T需实现ToString接口，用于日志的格式化输出。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
-
-let testLog = HilogChannel(0, 0xD001200, "CJ-Test")
-testLog.fatal("Fatal: Hello world!")
-```
-
-### func info\<T>(T) where T <: ToString
-
-```cangjie
-public func info<T>(message: T): Unit where T <: ToString
-```
-
-**功能：** 打印INFO级别的日志。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|T|是|-|类型T需实现ToString接口，用于日志的格式化输出。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
-
-let testLog = HilogChannel(0, 0xD001200, "CJ-Test")
-testLog.info("Info: Hello world!")
-```
-
-### func isLoggable(UInt32)
-
-```cangjie
-public func isLoggable(level: UInt32): Bool
-```
-
-**功能：** 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|level|UInt32|是|-|日志级别。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果返回true，则该领域标识、日志标识和级别的日志可以打印，否则不能打印。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
-
-let testLog = HilogChannel(0, 0xD001200, "CJ-Test")
-testLog.isLoggable(0)
-```
-
-### func warn\<T>(T) where T <: ToString
-
-```cangjie
-public func warn<T>(message: T): Unit where T <: ToString
-```
-
-**功能：** 打印WARN级别的日志。
-
-**系统能力：** SystemCapability.HiviewDFX.HiLog
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|message|T|是|-|类型T需实现ToString接口，用于日志的格式化输出。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
-
-let testLog = HilogChannel(0, 0xD001200, "CJ-Test")
-testLog.warn("Warn: Hello world!")
+Hilog.warn(0, "testTag", "Warn: Hello world!")
 ```
 
 ## enum LogLevel
 
 ```cangjie
 public enum LogLevel {
-    | DEBUG
-    | INFO
-    | WARN
-    | ERROR
-    | FATAL
+    | Debug
+    | Info
+    | Warn
+    | Error
+    | Fatal
     | ...
 }
 ```
@@ -488,40 +259,46 @@ public enum LogLevel {
 
 **起始版本：** 21
 
-### DEBUG
+### Debug
 
 ```cangjie
-DEBUG
+Debug
 ```
 
 **功能：** 详细的流程记录，通过该级别的日志可以更详细地分析业务流程和定位分析问题。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 21
 
-### ERROR
+### Error
 
 ```cangjie
-ERROR
+Error
 ```
 
 **功能：** 应用发生了错误，该错误会影响功能的正常运行或用户的正常使用，可以恢复但恢复代价较高，如重置数据等。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 21
 
-### FATAL
+### Fatal
 
 ```cangjie
-FATAL
+Fatal
 ```
 
 **功能：** 重大致命异常，表明应用即将崩溃，故障无法恢复。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 21
 
-### INFO
+### Info
 
 ```cangjie
-INFO
+Info
 ```
 
 **功能：** 用于记录业务关键流程节点，可以还原业务的主要运行过程；
@@ -530,14 +307,18 @@ INFO
 
 这些日志都应该由该业务内处于支配地位的模块来记录，避免在多个被调用的模块或低级函数中重复记录。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 21
 
-### WARN
+### Warn
 
 ```cangjie
-WARN
+Warn
 ```
 
 **功能：** 用于记录较为严重的非预期情况，但是对用户影响不大，应用可以自动恢复或通过简单的操作就可以恢复的问题。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 21

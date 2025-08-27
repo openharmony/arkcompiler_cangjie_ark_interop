@@ -52,9 +52,9 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     import kit.ArkData.*
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.BusinessException
     import kit.AbilityKit.getStageContext
 
     try {
@@ -125,9 +125,8 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     import kit.ArkData.{ getRdbStore, StoreConfig, RelationalStoreSecurityLevel }
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.BusinessException
     import kit.AbilityKit.getStageContext
 
     try {
@@ -138,7 +137,7 @@
             RelationalStoreSecurityLevel.S3, // 数据库安全级别
             encrypt: true, // 设置数据库加密
         )
-        let rdbStore = getRdbStore(getStageContext(context), storeConfig)
+        let rdbStore = getRdbStore(getStageContext(this.context), storeConfig)
         AppLog.info("getRdbStore success")
     } catch (e: BusinessException) {
         AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")

@@ -22,7 +22,6 @@
     ```cangjie
     import kit.CameraKit.*
     import kit.BasicServicesKit.*
-    import ohos.base.BussinessException
     ```
 
 2. 调用cameraManager类中的[createSession](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createsessionscenemode)方法创建一个会话。
@@ -31,7 +30,7 @@
 
     ```cangjie
     func getSession(cameraManager: CameraManager): Session {
-        let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
+        let session = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
         return session.getOrThrow()
     }
     ```

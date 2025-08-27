@@ -11,7 +11,6 @@
 > 当前上传应用文件功能，仅支持上传应用缓存文件路径（cacheDir）下的文件。
 >
 > 使用上传下载模块，请参见[声明权限](../../security/AccessToken/cj-declare-permissions.md)：ohos.permission.INTERNET。
-> Global 定义请参见[使用说明](../../../../API_Reference/source_zh_cn/cj-development-intro.md)
 
 以下示例代码演示将应用缓存文件路径下的文件上传至网络服务器的方式：
 
@@ -19,49 +18,49 @@
 
 ```cangjie
 // pages/xxx.cj
-import ohos.file_fs.{FileFs, OpenMode}
-import ohos.ability.{AbilityStageContext, UIAbilityContext, getStageContext, Want}
-import ohos.base.Callback1Argument
-import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove
-    }
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
+import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove}
 
 func Upload(): Unit {
     // 获取应用文件路径
-    let stageContext = Global.getStageContext() // 需获取 context 应用上下文，详见本文使用说明
+    let UiStageContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
     let DefaultSandBoxCache = "/data/storage/el2/base/haps/entry/cache"
     // 新建一个本地应用文件
     let filePath = "${DefaultSandBoxCache}/test.txt"
-    let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | READ_WRITE.mode))
-    FileFs.write(file.fd, "hello world")
-    FileFs.fdatasync(file.fd)
-    let randomAccessFile = FileFs.createRandomAccessFile(file)
+    let file = FileIo.open(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
+    FileIo.write(file.fd, "hello world")
+    FileIo.fdatasync(file.fd)
+    let randomAccessFile = FileIo.createRandomAccessFile(file)
     randomAccessFile.close()
     let responseCallback = ProgressCallback()
 
     let fileSpec = FileSpec(
-        path: "./test.txt",
+        "./test.txt",
         filename: "test.txt",
         mimeType: "application/octet-stream"
     )
-    let attachments = ConfigDataType.FORMITEMS([
+    let attachments = ConfigData.FormItems([
         FormItem(
-            name: "taskOnTest",
-            value: FormItemValueType.FILE(fileSpec)
+            "taskOnTest",
+            FormItemValue.FileItem(fileSpec)
         )
     ])
 
     let uploadConfig = Config(
-        action: RAction.UPLOAD,
-        url: "http://xxx",
+        RAction.Upload,
+        "http://xxx",
         title: "taskOnTest",
-        mode: Mode.FOREGROUND,
+        mode: Mode.Foreground,
         description: "Sample code for event listening",
         overwrite: false,
         method: "POST",
         data: attachments,
         saveas: "./",
-        network: Network.CELLULAR,
+        network: Network.Cellular,
         metered: false,
         roaming: true,
         retry: true,
@@ -73,15 +72,16 @@ func Upload(): Unit {
         precise: false,
         token: "it is a secret"
     )
-    let task = create(stageContext, uploadConfig)
-    task.on("progress", responseCallback)
+    let task = create(UiStageContext, uploadConfig)
+    task.on(EventCallbackType.Progress, responseCallback)
     task.start()
 }
 
-class ProgressCallback <: Callback1Argument<Progress> {
-    public init() {}
-    public open func invoke(arg: Progress): Unit {
-        AppLog.info("progress callback.")
+public class ProgressCallback <: Callback1Argument<RProgress> {
+    public ProgressCallback() {}
+
+    public open func invoke(err: ?BusinessException, arg: RProgress): Unit {
+        Hilog.info(0, "CangjieTest", "ProgressCallback Invoke")
     }
 }
 ```
@@ -103,65 +103,65 @@ class ProgressCallback <: Callback1Argument<Progress> {
 ```cangjie
 // pages/xxx.cj
 // 将网络资源文件下载到应用文件目录
-import ohos.file_fs.{FileFs, OpenMode}
-import ohos.ability.{AbilityStageContext, UIAbilityContext, getStageContext, Want}
-import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove
-    }
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
+import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove}
 import std.time.*
 import std.collection.*
 import std.runtime.*
 import std.sync.*
-import ohos.base.Callback1Argument
+
 
 //下载的函数
 func Download(): Unit {
     // 获取应用文件路径
-    let stageContext = Global.getStageContext()
+    let UiStageContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
     let DefaultSandBoxCache = "/data/storage/el2/base/haps/entry/cache"
     let fileName = "test.txt"
     let filePath = "${DefaultSandBoxCache}/${fileName}"
 
     // 下载url地址
     let fileURL = "https://xxx.txt"
-    let responseCallback = HttpResponseMessageCallback()
+    let responseCallback = HttpResponseCallback()
 
     let config = Config(
-        action: RAction.DOWNLOAD,
-        url: fileURL,
+        RAction.Download,
+        fileURL,
         saveas: fileName,
         headers: HashMap<String, String>([("headers", "http")]),
         metered: false,
         roaming: true,
         description: "download test",
-        network: Network.ANY,
+        network: Network.AnyType,
         title: "download test title"
     )
-    let task = create(stageContext, config)
-    task.on("response", responseCallback)
+    let task = create(UiStageContext, config)
+    task.on(EventCallbackType.Response, responseCallback)
 
     task.start()
     requestWaitFor(Duration.second * 10) {
         =>
-        let stat = FileFs.stat(filePath)
+        let stat = FileIo.stat(filePath)
         let size = stat.size
-        AppLog.info("size = ${size}")
         size > 0
     }
     //检查文件是否存在
-    if (FileFs.access(filePath)) {
+    if (FileIo.access(filePath)) {
         //删除文件
-        FileFs.unlink(filePath)
+        FileIo.unlink(filePath)
     }
     //结束任务
     rRemove(task.tid)
 }
 
 
-class HttpResponseMessageCallback <: Callback1Argument<HttpResponseMessage> {
-    public HttpResponseMessageCallback() {}
-    public open func invoke(arg: HttpResponseMessage): Unit {
-        logger.info("HttpResponseMessage is ${arg.toString()}")
+class HttpResponseCallback <: Callback1Argument<HttpResponse> {
+    public HttpResponseCallback() {}
+    public open func invoke(err: ?BusinessException, arg: HttpResponse): Unit {
+        Hilog.info(0, "CangjieTest", "HttpResponse Invoke")
     }
 }
 

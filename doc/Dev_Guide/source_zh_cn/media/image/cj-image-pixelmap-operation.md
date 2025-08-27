@@ -45,7 +45,7 @@
 
     // 场景二：读取并修改指定区域内的图片数据。
     // 固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入PositionArea.pixels缓冲区中，该区域由PositionArea.region指定。
-    let area = PositionArea(Array<UInt8>(8, repeat: 0), 0, 8, Region(Size(height: 1, width: 2), 0, 0))
+    let area = PositionArea(Array<UInt8>(8, repeat: 0), 0, 8, Region(Size(1, 2), 0, 0))
 
     pixelMap.readPixels(area)
 
@@ -79,12 +79,18 @@
         pixelMap.readPixelsToBuffer(buffer)
         // 根据当前PixelMap的图片信息，生成初始化选项。
         let options = InitializationOptions(
+            imageInfo.size,
+            // 假设的alphaType枚举值
+            alphaType: AlphaType.Opaque,
+            // 假设的editable值
+            editable: true,
             // 当前PixelMap的像素格式。
-            imageInfo.pixelFormat,
+            srcPixelFormat: imageInfo.pixelFormat,
             // 新PixelMap的像素格式。
             pixelFormat: desiredPixelFormat??imageInfo.pixelFormat,
-            // 当前PixelMap的尺寸大小。
-            size: imageInfo.size)
+            // 假设的scaleMode枚举值
+            scaleMode: ScaleMode.FitTargetSize
+            )
         // 根据初始化选项和缓冲区数组，生成新PixelMap。
         createPixelMap(buffer, options)
     }

@@ -63,6 +63,8 @@
 
     b. 在仓颉代码中调用仓颉封装库lz4cj的相应接口，以调用lz4js中的compress接口为例，修改**entry > src > main > cangjie > index.cj**文件为：
 
+     <!-- compile -->
+
      ```cangjie
      //index.cj
      import lz4js.compress // 导入lz4cj库中的compress接口

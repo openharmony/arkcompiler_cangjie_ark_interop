@@ -73,7 +73,7 @@
 
 ## ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
-允许设备管理应用设置帐户管理策略。
+允许设备管理应用设置账户管理策略。
 
 **权限级别：** system_basic
 
@@ -472,7 +472,7 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -487,7 +487,7 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -502,7 +502,7 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -517,7 +517,7 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -532,7 +532,7 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -547,6 +547,6 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20

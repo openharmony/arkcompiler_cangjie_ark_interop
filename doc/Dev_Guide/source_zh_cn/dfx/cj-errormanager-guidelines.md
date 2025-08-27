@@ -14,9 +14,10 @@
 
 | 接口名称                                                       | 说明                                                 |
 | ------------------------------------------------------------ | ---------------------------------------------------- |
-| on(onType: String, observer: ErrorObserver): Int32       | 注册错误观测器。注册后程序如果出现crash，会触发未捕获异常机制。|
-| off(offType: String, observerId: Int32): Unit | 注销错误观测器。|
+| on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32 | 注册错误观测器。注册后程序如果出现crash，会触发未捕获异常机制。|
+| off(eventType: ErrorManagerEvent, observerId: Int32): Unit | 注销错误观测器。|
 
+<!-- waiting -->
 **错误监听(ErrorObserver)接口功能介绍：**
 
 | 接口名称                         | 说明                                                         |
@@ -26,26 +27,37 @@
 
 ## 开发示例
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
-import kit.PerformanceAnalysisKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import ohos.base.*
+import kit.PerformanceAnalysisKit.*
 import ohos.window.WindowStage
-import ohos.ability.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
 
 let registerId: Int32 = -1
 let callback: ErrorObserver = ErrorObserver(
     {
-        errMsg: String => AppLog.info(errMsg)
+        errMsg: String => loggerInfo(errMsg)
     },
     onException: Some(
         {
             errorObj =>
-            AppLog.info('onException, name: ${errorObj.name}')
-            AppLog.info('onException, message: ${errorObj.message}')
+            loggerInfo('onException, name: ${errorObj.name}')
+            loggerInfo('onException, message: ${errorObj.message}')
             if (let Some(v) <- errorObj.stack) {
-                AppLog.info('onException, stack: ${v}')
+                loggerInfo('onException, stack: ${v}')
             }
         }
     )
@@ -53,38 +65,38 @@ let callback: ErrorObserver = ErrorObserver(
 
 var abilityWant: Want = Want()
 
-public class EntryAbility <: UIExtensionAbility {
-    func onCreate(want: Want, launchParam: LaunchParam) {
-        AppLog.info("[Demo] EntryAbility onCreate")
-        let registerId = ErrorManager.on("error", callback)
+public class EntryAbility <: UIAbility {
+    public func onCreate(want: Want, launchParam: LaunchParam) {
+        loggerInfo("[Demo] EntryAbility onCreate")
+        let registerId = ErrorManager.on(ErrorManagerEvent.Error, callback)
         abilityWant = want
     }
 
     public override func onDestroy() {
-        AppLog.info("[Demo] EntryAbility onDestroy")
-        ErrorManager.off("error", registerId)
+        loggerInfo("[Demo] EntryAbility onDestroy")
+        ErrorManager.off(ErrorManagerEvent.Error, registerId)
     }
 
-    func onWindowStageCreate(windowStage: WindowStage) {
+    public func onWindowStageCreate(windowStage: WindowStage) {
         // Main window is created, set main page for this ability
-        AppLog.info("[Demo] EntryAbility onWindowStageCreate")
+        loggerInfo("[Demo] EntryAbility onWindowStageCreate")
 
         windowStage.loadContent("pages/index")
     }
 
-    func onWindowStageDestroy() {
+    public func onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
-        AppLog.info("[Demo] EntryAbility onWindowStageDestroy")
+        loggerInfo("[Demo] EntryAbility onWindowStageDestroy")
     }
 
     public override func onForeground() {
         // Ability has brought to foreground
-        AppLog.info("[Demo] EntryAbility onForeground")
+        loggerInfo("[Demo] EntryAbility onForeground")
     }
 
     public override func onBackground() {
         // Ability has back to background
-        AppLog.info("[Demo] EntryAbility onBackground")
+        loggerInfo("[Demo] EntryAbility onBackground")
     }
 }
 ```

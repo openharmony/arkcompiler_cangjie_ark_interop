@@ -8,241 +8,447 @@
 import ohos.base.*
 ```
 
-## let AppLog
+## let Main
 
 ```cangjie
-public let AppLog: HilogChannel
+public let Main: MainThreadContext = MainThreadContext.instance_
 ```
 
-**功能：** 提供应用日志实例，供开发者导入使用。
+**功能：** Main 实际为 MainThreadContext 类型的对象，表示此上下文中的 thread 将会与主线程（UI线程）绑定。
 
-**类型：** [HilogChannel](../PerformanceAnalysisKit/cj-apis-hilog.md#class-hilogchannel)
+**类型：** [MainThreadContext](#class-MainThreadContext)
 
 **读写能力：** 只读
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
-## let BaseLog
+## func launch(() -> Unit)
 
 ```cangjie
-public let BaseLog: HilogChannel
+public func launch(task: () -> Unit): Unit
 ```
 
-**功能：** 提供基础日志实例，供开发者导入使用。
+**功能：** 将任务提交到主线程进行执行。
 
-**类型：** [HilogChannel](../PerformanceAnalysisKit/cj-apis-hilog.md#class-hilogchannel)
-
-**读写能力：** 只读
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-## class AsyncError
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|task|()->Unit|是|-|执行任务。|
+
+## interface CollectionEx
 
 ```cangjie
-public class AsyncError {
-    public AsyncError(
-        public let code: Int32
-    )
+public interface CollectionEx<T> {
+    prop size: Int64
+    operator func [](idx: Int64, value!: T): Unit
+    operator func [](idx: Int64): T
 }
 ```
 
-**功能：** 异步操作中的错误码。
+**功能：** 数组类型。内部接口，框架使用。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-### let code
+### prop size
 
 ```cangjie
-public let code: Int32
+prop size: Int64
 ```
 
-**功能：** 错误码。
+**功能：** 数组大小。
 
-**类型：** Int32
+**类型：** Int64
 
 **读写能力：** 只读
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
-### AsyncError(Int32)
+### func [](Int64, T)
 
 ```cangjie
-public AsyncError(
-    public let code: Int32
-)
+operator func [](idx: Int64, value!: T): Unit
 ```
 
-**功能：** AsyncError的主构造函数。
+**功能：** 在指定索引处写入数组元素。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|code|Int32|是|错误码。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|idx|Int64|是|-|索引值。|
+|value|T|是|-| **命名参数。** 写入值。|
 
-## class BusinessException
+### func \[](Int64)
 
 ```cangjie
-public open class BusinessException <: Exception {
-    public let code: Int32
-    public init(code: Int32, msg: String)
+operator func [](idx: Int64): T
+```
+
+**功能：** 通过索引获取数组元素。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|idx|Int64|是|-|索引值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|T|数组元素。|
+
+## interface Length
+
+```cangjie
+public interface Length {
+    prop value: Float64
+    prop unitType: LengthType
 }
 ```
 
-**功能：** 业务异常类，继承了Exception。
+**功能：** Float64、Int64、AppResource 均实现了 Length 接口类型。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-**父类型：**
-
-- Exception
-
-### let code
+### prop unitType
 
 ```cangjie
-public let code: Int32
+prop unitType: LengthType
 ```
 
-**功能：** 错误码。
+**功能：** UI框架使用。
 
-**类型：** Int32
+**类型：** [LengthType](#enum-LengthType)
 
 **读写能力：** 只读
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
-### init(Int32, String)
+### prop value
 
 ```cangjie
-public init(code: Int32, msg: String)
+prop value: Float64
 ```
 
-**功能：** 创建业务异常类实例。
+**功能：** UI框架使用。
 
-**系统能力：** SystemCapability.Base
+**类型：** Float64
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-**参数：**
-
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|code|Int32|是|错误码。|
-|msg|String|是|错误信息。|
-
-### func toString()
+## interface LengthProp
 
 ```cangjie
-public open func toString(): String
+public interface LengthProp {
+    prop px: Length
+    prop vp: Length
+    prop fp: Length
+    prop percent: Length
+    prop lpx: Length
+}
 ```
 
-**功能：** 获取错误信息。
+**功能：** 像素单位。UI框架使用。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+### prop fp
+
+```cangjie
+prop fp: Length
+```
+
+**功能：** 字体像素，与vp类似适用屏幕密度变化，随系统字体大小设置变化。
+
+**类型：** [Length](#interface-Length)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop lpx
+
+```cangjie
+prop lpx: Length
+```
+
+**功能：**视窗逻辑像素单位，l.px单位为实际屏幕宽度与逻辑宽度（通过designWidth配置）的比值，designWidth默认值为720。当designWidth为720时，在实际宽度为1440物理像素的屏幕上，1l.px为2.px大小。
+
+**类型：** [Length](#interface-Length)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop percent
+
+```cangjie
+prop percent: Length
+```
+
+**功能：** 百分比类型，用于描述以percent像素单位为单位的长度。
+
+**类型：** [Length](#interface-Length)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop px
+
+```cangjie
+prop px: Length
+```
+
+**功能：** 屏幕物理像素单位。
+
+**类型：** [Length](#interface-Length)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop vp
+
+```cangjie
+prop vp: Length
+```
+
+**功能：** 屏幕密度相关像素，根据屏幕像素密度转换为屏幕物理像素，当数值不带单位时，默认单位vp。在实际宽度为1440物理像素的屏幕上，1vp约等于3px。<br/>**说明：** <br/> vp与px的比例与屏幕像素密度有关。
+
+**类型：** [Length](#interface-Length)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+## interface ResourceColor
+
+```cangjie
+public interface ResourceColor {
+    func toUInt32(): UInt32
+}
+```
+
+**功能：** Color、UInt32、Int64、AppResource 均实现了 ResourceColor 接口类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func toUInt32()
+
+```cangjie
+func toUInt32(): UInt32
+```
+
+**功能：**转为Uint32颜色取值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|错误信息。|
+|UInt32|Uint32颜色取值。|
 
-## class Callback0Argument
+## interface ResourceStr
 
 ```cangjie
-public abstract class Callback0Argument <: CallbackObject {}
+public interface ResourceStr {}
 ```
 
-**功能：** 无参数的回调函数抽象类。
+**功能：** 字符串类型，用于描述字符串入参可以使用的类型。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+## class Color
+
+```cangjie
+public class Color <: ResourceColor {
+    public static let Black: Color = Color(0xff000000)
+    public static let Blue: Color = Color(0xff0000ff)
+    public static let Gray: Color = Color(0xff808080)
+    public static let Green: Color = Color(0xff008000)
+    public static let Red: Color = Color(0xffff0000)
+    public static let White: Color = Color(0xffffffff)
+    public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
+    public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0)
+    public init(value: UInt32)
+}
+```
+
+**功能：** 颜色类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
 **父类型：**
 
-- [CallbackObject](#class-callbackobject)
+- [ResourceColor](#interface-ResourceColor)
 
-### func invoke()
+### static let Black
 
 ```cangjie
-public open func invoke(): Unit
+public static let Black: Color = Color(0xff000000)
 ```
 
-**功能：** 抽象类约束需要实现回调方法。
+**功能：** 黑色。
 
-**系统能力：** SystemCapability.Base
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-## class Callback1Argument
+### static let Blue
 
 ```cangjie
-public abstract class Callback1Argument<A> <: CallbackObject {}
+public static let Blue: Color = Color(0xff0000ff)
 ```
 
-**功能：** 单参数的回调函数抽象类。
+**功能：** 蓝色。
 
-**系统能力：** SystemCapability.Base
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-**父类型：**
-
-- [CallbackObject](#class-callbackobject)
-
-### func invoke(A)
+### static let Gray
 
 ```cangjie
-public open func invoke(arg: A): Unit
+public static let Gray: Color = Color(0xff808080)
 ```
 
-**功能：** 抽象类约束需要实现单参数回调方法。
+**功能：** 灰色。
 
-**系统能力：** SystemCapability.Base
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-**参数：**
-
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|arg| T |是|回调函数需要的参数。|
-
-## class Callback1ArgumentWithReturn
+### static let Green
 
 ```cangjie
-public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {}
+public static let Green: Color = Color(0xff008000)
 ```
 
-**功能：** 单参数且有返回值的回调函数抽象类。
+**功能：** 绿色。
 
-**系统能力：** SystemCapability.Base
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-**父类型：**
-
-- [CallbackObject](#class-callbackobject)
-
-### func invoke(A)
+### static let Red
 
 ```cangjie
-public open func invoke(arg1: A): B
+public static let Red: Color = Color(0xffff0000)
 ```
 
-**功能：** 抽象类约束需要实现单参数回调方法。
+**功能：** 红色。
 
-**系统能力：** SystemCapability.Base
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### static let Transparent
+
+```cangjie
+public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
+```
+
+**功能：** 透明色。
+
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### static let White
+
+```cangjie
+public static let White: Color = Color(0xffffffff)
+```
+
+**功能：** 白色。
+
+**类型：** [Color](#class-Color)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### init(UInt8, UInt8, UInt8, Float32)
+
+```cangjie
+public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0)
+```
+
+**功能：**构造一个Color类型的对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -250,39 +456,20 @@ public open func invoke(arg1: A): B
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arg1| A |是|-| 回调函数需要的参数。|
+|red|UInt8|是|-|RGB中红色通道取值。|
+|green|UInt8|是|-|RGB中绿色通道取值。|
+|blue|UInt8|是|-|RGB中蓝色通道取值。|
+|alpha|Float32|否|1.0|***\*命名参数。\**** 透明通道取值，取值范围 [0.0, 1.0]。|
 
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-| B | 回调函数的返回值。|
-
-## class Callback2Argument
+### init(UInt32)
 
 ```cangjie
-public abstract class Callback2Argument<A, B> <: CallbackObject {}
+public init(value: UInt32)
 ```
 
-**功能：** 两个参数的回调函数抽象类。
+**功能：** 构造一个Color类型的对象。
 
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 21
-
-**父类型：**
-
-- [CallbackObject](#class-callbackobject)
-
-### func invoke(A, B)
-
-```cangjie
-public open func invoke(arg1: A, arg2: B): Unit
-```
-
-**功能：** 抽象类约束需要实现两个参数的回调方法。
-
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -290,34 +477,91 @@ public open func invoke(arg1: A, arg2: B): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arg1| A |是|-| 回调函数所需的第一个参数。|
-|arg2| B |是|-| 回调函数所需的第二个参数。|
+|value|UInt32|是|-|Uint32颜色取值。alpha，R，G，B通道按顺序各占输入的8位，若只输入R,G,B三个通道，则alpha通道默认取0xff。|
 
-## class Callback3ArgumentWithReturn
+### func toUInt32()
 
 ```cangjie
-public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject {}
+public func toUInt32(): UInt32
 ```
 
-**功能：** 三个参数且有返回值的回调函数抽象类。
+**功能：** 转为Uint32颜色取值。
 
-**系统能力：** SystemCapability.Base
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|UInt32|Uint32颜色取值。|
+
+## class MainThreadContext
+
+```cangjie
+public class MainThreadContext <: ThreadContext {}
+```
+
+**功能：** 框架使用的线程上下文。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
 **父类型：**
 
-- [CallbackObject](#class-callbackobject)
+- [ThreadContext](#class-threadcontext)
 
-### func invoke(A, B, C)
+### func end()
 
 ```cangjie
-public open func invoke(arg1: A, arg2: B, arg3: C): D
+public func end(): Unit
 ```
 
-**功能：** 抽象类约束需要实现三个参数的回调方法。
+**功能：** UI框架使用。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func hasEnded()
+
+```cangjie
+public func hasEnded(): Bool
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|-|
+
+## class ReuseParams
+
+```cangjie
+public class ReuseParams {
+    public init(arr: Array<(String, Any)>)
+}
+```
+
+**功能：** aboutToReuse生命周期函数的参数，开发者可以从中获取可复用组件的构造参数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### init(Array\<(String,Any)>)
+
+```cangjie
+public init(arr: Array<(String, Any)>)
+```
+
+**功能：** 创建一个ReuseParams对象，通常情况下开发者不会调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -325,53 +569,221 @@ public open func invoke(arg1: A, arg2: B, arg3: C): D
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arg1| A |是|-|回调函数所需的第一个参数。|
-|arg2| B |是|-|回调函数所需的第二个参数。|
-|arg3| B |是|-|回调函数所需的第三个参数。|
+|arr| Array\<(String, Any)> |是|-|存放组件构造参数元组的数组。|
+
+### func get\<T>(String)
+
+```cangjie
+public func get<T>(key: String): ?T
+```
+
+**功能：** 通过key获取对应的构造参数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|key|String|是|-|构造参数的名称。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-| D | 回调函数的返回值。|
+|?T|构造参数的值。|
 
-## class CallbackObject
-
-```cangjie
-public abstract class CallbackObject {}
-```
-
-**功能：** 回调函数抽象基类。
-
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 21
-
-## class CallbackWithReturn
+## enum LengthType
 
 ```cangjie
-public abstract class CallbackWithReturn<A> <: CallbackObject {}
+public enum LengthType <: Length & Equatable<LengthType> {
+    | px(Float64)
+    | vp(Float64)
+    | fp(Float64)
+    | percent(Float64)
+    | lpx(Float64)
+    | ...
+}
 ```
 
-**功能：** 有返回值的回调函数抽象类。
+**功能：** 长度类型。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
 **父类型：**
 
-- [CallbackObject](#class-callbackobject)
+- [Length](#interface-length)
+- Equatable\<LengthType>
 
-### func invoke()
+### fp(Float64)
 
 ```cangjie
-public open func invoke(): A
+fp(Float64)
 ```
 
-**功能：** 抽象类约束需要实现回调方法。
+**功能：** 字体像素单位。
 
-**系统能力：** SystemCapability.Base
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### lpx(Float64)
+
+```cangjie
+lpx(Float64)
+```
+
+**功能：** 逻辑像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### percent(Float64)
+
+```cangjie
+percent(Float64)
+```
+
+**功能：** 百分比。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### px(Float64)
+
+```cangjie
+px(Float64)
+```
+
+**功能：** 基本像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### vp(Float64)
+
+```cangjie
+vp(Float64)
+```
+
+**功能：** 屏幕密度单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop unitType
+
+```cangjie
+public prop unitType: LengthType
+```
+
+**功能：** UI框架使用。
+
+**类型：** [LengthType](#enum-LengthType)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop value
+
+```cangjie
+public prop value: Float64
+```
+
+**功能：** UI框架使用。
+
+**类型：** Float64
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### static func parse(Int32)
+
+```cangjie
+public static func parse(value: Int32): LengthType
+```
+
+**功能：** 根据长度类型值，构造长度类型实例。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|Int32|是|-|长度类型的值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[LengthType](#enum-LengthType)|长度类型实例。|
+
+### func !=(LengthType)
+
+```cangjie
+public operator func !=(other: LengthType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LengthType](#enum-LengthType)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(LengthType)
+
+```cangjie
+public operator func ==(other: LengthType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LengthType](#enum-LengthType)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**功能：** 获取枚举的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -379,28 +791,20 @@ public open func invoke(): A
 
 |类型|说明|
 |:----|:----|
-| A | 回调函数的返回值。|
-
-## type AsyncCallback
-
-```cangjie
-public type AsyncCallback<T>=(Option<AsyncError>, Option<T>) -> Unit
-```
-
-**功能：** 定义的异步回调函数类型。
-
-**系统能力：** SystemCapability.Base
-
-**起始版本：** 21
+|Int32|枚举的值。|
 
 ## type Callback
 
 ```cangjie
-public type Callback<T>=(T) -> Unit
+public type Callback<T, V>=(T) -> V
 ```
 
-**功能：** 回调函数类型。
+**功能：** [Callback](#type-Callback)是[(T) -> V](#type-callback)类型的别名。
 
-**系统能力：** SystemCapability.Base
+## type VoidCallback
 
-**起始版本：** 21
+```cangjie
+public type VoidCallback =() -> Unit
+```
+
+**功能：** [VoidCallback](#type-VoidCallback)是[() -> Unit](#type-voidcallback)类型的别名。

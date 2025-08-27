@@ -1,0 +1,873 @@
+# AlphabetIndexer
+
+可以与容器组件联动，用于按逻辑结构快速定位容器显示区域的组件。
+
+## 导入模块
+
+```cangjie
+import kit.ArkUI.*
+```
+
+## 子组件
+
+无
+
+## 创建组件
+
+### init(Array\<String>, UInt32)
+
+```cangjie
+public init(arrayValue!: Array<String>, selected!: UInt32)
+```
+
+**功能：** 创建一个AlphaIndexer组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|arrayValue|Array\<String>|是|-|**命名参数。** 字符串数组，每个字符串代表一个索引项。|
+|selected|UInt32|是|-|**命名参数。** 初始选中项索引值，若超出索引值范围，则取默认值0。|
+
+## 通用属性/通用事件
+
+通用属性：全部支持。
+
+> **说明：**
+>
+> - [width](cj-text-input-imagespan.md#var-width)属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
+> - [padding](./cj-universal-attribute-size.md#func-paddinglength)属性默认为4.vp。
+> - 文本最大的字体缩放倍数[maxFontScale](./cj-common-types.md#var-maxfontscale)和最小的字体缩放倍数[minFontScale](./cj-common-types.md#var-minfontscale)皆为1，不跟随系统字体大小调节变化。
+
+通用事件：全部支持。
+
+## 组件属性
+
+### func alignStyle(IndexerAlign)
+
+```cangjie
+public func alignStyle(value: IndexerAlign): This
+```
+
+**功能：** 设置字母索引条弹框的对齐样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|[IndexerAlign](#enum-indexeralign)|是|IndexerAlign.END|字母索引条弹框的对齐样式，支持索引条显示在弹窗左侧和右侧。|
+
+### func color(ResourceColor)
+
+```cangjie
+public func color(value: ResourceColor): This
+```
+
+**功能：** 设置未选中项文本颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|未选中项文本颜色。<br>初始值：0x99182431。|
+
+### func font(Length, FontWeight, ResourceStr, FontStyle)
+
+```cangjie
+public func font(
+    size!: Length = 10.vp,
+    weight!: FontWeight = FontWeight.Normal,
+    family!: ResourceStr = "HarmonyOS Sans",
+    style!: FontStyle = FontStyle.Normal
+): This
+```
+
+**功能：**设置选中项文字样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
+|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
+|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
+|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
+
+### func itemSize(Length)
+
+```cangjie
+public func itemSize(size: Length): This
+```
+
+**功能：** 设置索引项区域大小。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。<br>初始值：16.vp。<br>单位：vp。|
+
+### func popupBackground(ResourceColor)
+
+```cangjie
+public func popupBackground(value: ResourceColor): This
+```
+
+**功能：** 设置提示弹窗背景颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗背景颜色。<br>初始值：0x66808080。|
+
+### func popupColor(ResourceColor)
+
+```cangjie
+public func popupColor(value: ResourceColor): This
+```
+
+**功能：** 设置提示弹窗一级索引项文本颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗一级索引项文本颜色。<br>初始值：0xFF007DFF。|
+
+### func popupFont(Length, FontWeight, ResourceStr, FontStyle)
+
+```cangjie
+public func popupFont(
+    size!: Length = 24.vp,
+    weight!: FontWeight = FontWeight.Normal,
+    family!: ResourceStr = "HarmonyOS Sans",
+    style!: FontStyle = FontStyle.Normal
+): This
+```
+
+**功能：** 设置提示弹窗字体样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|24.vp|**命名参数。** 选中项文字大小。|
+|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
+|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
+|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
+
+### func popupPosition(Length, Length)
+
+```cangjie
+public func popupPosition(x!: Length = 60.vp, y!: Length = 48.vp): This
+```
+
+**功能：** 设置弹出窗口相对于索引器条上边框中点的位置。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|60.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|48.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
+
+### func selected(Int32)
+
+```cangjie
+public func selected(index: Int32): This
+```
+
+**功能：** 设置选中项索引值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|index|Int32|是|-|选中项索引值。<br/>初始值：0。|
+
+### func selectedBackgroundColor(ResourceColor)
+
+```cangjie
+public func selectedBackgroundColor(value: ResourceColor): This
+```
+
+**功能：** 设置选中项背景颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项背景颜色。<br>初始值：0x1A007DFF。|
+
+### func selectedColor(ResourceColor)
+
+```cangjie
+public func selectedColor(value: ResourceColor): This
+```
+
+**功能：** 设置选中项文字颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项文字颜色。<br>初始值：0xFF007DFF。|
+
+### func selectedFont(Length, FontWeight, ResourceStr, FontStyle)
+
+```cangjie
+public func selectedFont(
+    size!: Length = 10.vp,
+    weight!: FontWeight = FontWeight.Normal,
+    family!: ResourceStr = "HarmonyOS Sans",
+    style!: FontStyle = FontStyle.Normal
+): This
+```
+
+**功能：** 设置选中项文字样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
+|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
+|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
+|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
+
+### func usingPopup(Bool)
+
+```cangjie
+public func usingPopup(value: Bool): This
+```
+
+**功能：** 设置是否使用提示弹窗。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|Bool|是|-|是否使用提示弹窗。<br/>初始值：false。|
+
+## 组件事件
+
+### func onPopupSelect(OnAlphabetIndexerPopupSelectCallback)
+
+```cangjie
+public func onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): This
+```
+
+**功能：** 字母索引提示弹窗字符串列表选中触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|[OnAlphabetIndexerPopupSelectCallback](./cj-common-types.md#class-onalphabetindexerpopupselectcallback)|是|-|回调函数，字母索引提示弹窗字符串列表选中时触发。|
+
+### func onRequestPopupData(OnAlphabetIndexerRequestPopupDataCallback)
+
+```cangjie
+public func onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): This
+```
+
+**功能：** 选中字母索引后触发该事件，请求索引提示弹窗显示内容。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|[OnAlphabetIndexerRequestPopupDataCallback](./cj-common-types.md#class-onalphabetindexerrequestpopupdatacallback)|是|-|回调函数，当前选中索引触发。<br>返回值：索引对应的字符串数组，此字符串数组在弹窗中竖排显示，字符串列表最多显示5个，超出部分可以滑动显示。|
+
+### func onSelect(OnAlphabetIndexerSelectCallback)
+
+```cangjie
+public func onSelect(callback: OnAlphabetIndexerSelectCallback): This
+```
+
+**功能：** 索引条选中触发该事件，返回值为当前选中索引。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|[OnAlphabetIndexerSelectCallback](./cj-common-types.md#class-onalphabetindexerselectcallback)|是|-|回调函数，索引条选中时触发。|
+
+# 基础类型定义
+
+### enum IndexerAlign
+
+```cangjie
+public enum IndexerAlign <: Equatable<IndexerAlign> {
+    | Left
+    | Right
+    | ...
+}
+```
+
+**功能：** 索引器对齐方式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<IndexerAlign>
+
+#### Left
+
+```cangjie
+Left
+```
+
+**功能：** 左对齐。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+#### Right
+
+```cangjie
+Right
+```
+
+**功能：** 右对齐。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+#### func !=(IndexerAlign)
+
+```cangjie
+public operator func !=(other: IndexerAlign): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[IndexerAlign](#enum-indexeralign)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+#### func ==(IndexerAlign)
+
+```cangjie
+public operator func ==(other: IndexerAlign): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[IndexerAlign](#enum-indexeralign)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+#### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int32|当前枚举所表示的值。|
+
+## 示例代码
+
+### 示例1（设置提示弹窗显示文本内容）
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    var arrayA: Array<String> = ["安"]
+    var arrayB: Array<String> = ["卜", "白", "包", "毕", "丙"]
+    var arrayC: Array<String> = ["曹", "成", "陈", "催"]
+    var arrayJ: Array<String> = ["嘉", "贾"]
+    var arrayNull: Array<String> = []
+    let value: Array<String> = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q","R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    @State var indexerHeight: Length = 75.percent;
+    func build() {
+        Stack(Alignment.Start) {
+            Row() {
+                List(space: 20, initialIndex: 0) {
+                    ForEach(
+                        this.arrayA,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayB,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayC,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayJ,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                }
+                    .width(50.percent)
+                    .height(100.percent)
+                Column() {
+                    Column() {
+                        AlphabetIndexer(arrayValue: value, selected: 0)
+                            .height(this.indexerHeight) // 索引条高度
+                            .selectedColor(0xFFFFFF) // 选中项文本颜色
+                            .autoCollapse(false) // 关闭触控反馈
+                            .popupColor(0xFFFAF0) // 弹出框文本颜色
+                            .selectedBackgroundColor(0xCCCCCC) // 选中项背景颜色
+                            .popupBackground(0xD2B48C) // 弹出框背景颜色
+                            .usingPopup(true) // 是否显示弹出框
+                            .selectedFont(size: 16.vp, weight: FontWeight.Bolder) // 选中项字体样式
+                            .popupFont(size: 30.vp, weight: FontWeight.Bolder) // 弹出框内容的字体样式
+                            .itemSize(28) // 每一项的尺寸大小
+                            .alignStyle(IndexerAlign.Right) // 弹出框在索引条左侧弹出
+                            .popupItemBorderRadius(24.0) // 设置提示弹窗索引项背板圆角半径
+                            .itemBorderRadius(14.0) // 设置索引项背板圆角半径
+                            .popupBackgroundBlurStyle(BlurStyle.NONE) // 设置提示弹窗的背景模糊材质
+                            .popupTitleBackground(0xCCCCCC) // 设置提示弹窗首个索引项背板颜色
+                            .popupSelectedColor(0x00FF00)
+                            .popupUnselectedColor(0x0000FF)
+                            .popupItemBackgroundColor(0xCCCCCC)
+                            .onSelect({index: Int64 => Hilog.info(0, "AppLogCj", this.value[index] + " Selected!");})
+                            .onRequestPopupData(
+                                {
+                                    index: Int64 => if (this.value[index] == "A") {
+                                        return this.arrayA.toArray()
+                                    } else if (this.value[index] == "B") {
+                                        return this.arrayB.toArray()
+                                    } else if (this.value[index] == "C") {
+                                        return this.arrayC.toArray()
+                                    } else if (this.value[index] == "J") {
+                                        return this.arrayJ.toArray()
+                                    } else {
+                                        return Array<String>()
+                                    }
+                                })
+                            .onPopupSelect({
+                                index: Int64 => Hilog.info(0, "AppLogCj", "onPopupSelected:${index}");
+                            })
+                    }
+                        .height(80.percent)
+                        .justifyContent(FlexAlign.Center)
+                }
+                    .width(50.percent)
+                    .justifyContent(FlexAlign.Center)
+            }
+                .width(100.percent)
+                .height(100.percent)
+        }
+    }
+}
+```
+
+![alphabet_indexer1](figures/alphabet_indexer1.gif)
+
+### 示例2（开启自适应折叠模式）
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    var arrayA: Array<String> = ["安"]
+    var arrayB: Array<String> = ["卜", "白", "包", "毕", "丙"]
+    var arrayC: Array<String> = ["曹", "成", "陈", "催"]
+    var arrayJ: Array<String> = ["嘉", "贾"]
+    var arrayNull: Array<String> = []
+    let value: Array<String> = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q","R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    @State var isNeedAutoCollapse: Bool = false;
+    @State var indexerHeight: Length = 75.percent;
+    func build() {
+        Stack(Alignment.Start) {
+            Row() {
+                List(space: 20, initialIndex: 0) {
+                    ForEach(
+                        this.arrayA,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayB,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayC,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayJ,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                }
+                    .width(50.percent)
+                    .height(100.percent)
+                Column() {
+                    Column() {
+                        AlphabetIndexer(arrayValue: value, selected: 0)
+                            .autoCollapse(this.isNeedAutoCollapse)// 开启或关闭自适应折叠模式
+                            .height(this.indexerHeight) // 索引条高度
+                            .selectedColor(0xFFFFFF) // 选中项文本颜色
+                            .popupColor(0xFFFAF0) // 弹出框文本颜色
+                            .selectedBackgroundColor(0xCCCCCC) // 选中项背景颜色
+                            .popupBackground(0xD2B48C) // 弹出框背景颜色
+                            .usingPopup(true) // 是否显示弹出框
+                            .selectedFont(size: 16.vp, weight: FontWeight.Bolder) // 选中项字体样式
+                            .popupFont(size: 30.vp, weight: FontWeight.Bolder) // 弹出框内容的字体样式
+                            .itemSize(28) // 每一项的尺寸大小
+                            .alignStyle(IndexerAlign.Right) // 弹出框在索引条左侧弹出
+                            .popupItemBorderRadius(24.0) // 设置提示弹窗索引项背板圆角半径
+                            .itemBorderRadius(14.0) // 设置索引项背板圆角半径
+                            .popupBackgroundBlurStyle(BlurStyle.NONE) // 设置提示弹窗的背景模糊材质
+                            .popupTitleBackground(0xCCCCCC) // 设置提示弹窗首个索引项背板颜色
+                            .popupSelectedColor(0x00FF00)
+                            .popupUnselectedColor(0x0000FF)
+                            .popupItemBackgroundColor(0xCCCCCC)
+                            .onSelect({index: Int64 => Hilog.info(0, "AppLogCj", this.value[index] + " Selected!");})
+                            .onRequestPopupData(
+                                {
+                                    index: Int64 => if (this.value[index] == "A") {
+                                        return this.arrayA.toArray()
+                                    } else if (this.value[index] == "B") {
+                                        return this.arrayB.toArray()
+                                    } else if (this.value[index] == "C") {
+                                        return this.arrayC.toArray()
+                                    } else if (this.value[index] == "J") {
+                                        return this.arrayJ.toArray()
+                                    } else {
+                                        return Array<String>()
+                                    }
+                                })
+                            .onPopupSelect({
+                                index: Int64 => Hilog.info(0, "AppLogCj", "onPopupSelected:${index}");
+                            })
+                    }
+                        .height(80.percent)
+                        .justifyContent(FlexAlign.Center)
+                    Column() {
+                        Button("切换成折叠模式")
+                            .margin(5.vp)
+                            .onClick({=> this.isNeedAutoCollapse = true})
+                        Button("切换索引条高度到30%")
+                            .margin(5.vp)
+                            .onClick({=> this.indexerHeight = 30.percent})
+                        Button("切换索引条高度到70%")
+                            .margin(5.vp)
+                            .onClick({=> this.indexerHeight = 70.percent})
+                    }
+                        .height(20.percent)
+                }
+                    .width(50.percent)
+                    .justifyContent(FlexAlign.Center)
+            }
+                .width(100.percent)
+                .height(100.percent)
+        }
+    }
+}
+```
+
+![alphabet_indexer2](figures/alphabet_indexer2.gif)
+
+### 示例3（设置提示弹窗背景模糊材质）
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
+import kit.LocalizationKit.__GenerateResource__
+
+@Entry
+@Component
+class EntryView {
+    var arrayA: Array<String> = ["安"]
+    var arrayB: Array<String> = ["卜", "白", "包", "毕", "丙"]
+    var arrayC: Array<String> = ["曹", "成", "陈", "催"]
+    var arrayL: Array<String> = ["刘", "李", "楼", "梁", "雷", "吕", "柳", "卢"]
+    var arrayNull: Array<String> = []
+    let value: Array<String> = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q","R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    @State var customBlurStyle: BlurStyle = BlurStyle.NONE;
+    func build() {
+        Stack(Alignment.Start) {
+            Row() {
+                List(space: 20, initialIndex: 0) {
+                    ForEach(
+                        this.arrayA,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayB,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayC,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                    ForEach(
+                        this.arrayL,
+                        {
+                            item: String, idx: Int64 => ListItem() {
+                                Text(item)
+                                    .width(80.percent)
+                                    .height(5.percent)
+                                    .fontSize(30)
+                                    .textAlign(TextAlign.Center)
+                            }
+                        }
+                    )
+                }
+                    .width(30.percent)
+                    .height(100.percent)
+                Column() {
+                    Column() {
+                        Text("切换模糊材质:")
+                            .fontSize(24)
+                            .fontColor(0xcccccc)
+                            .width(100.percent)
+                        Button("COMPONENT_REGULAR")
+                            .margin(5.vp)
+                            .width(200)
+                            .onClick({=>  this.customBlurStyle = BlurStyle.COMPONENT_REGULAR;})
+                         Button("BACKGROUND_THIN")
+                            .margin(5.vp)
+                            .width(200)
+                            .onClick({=>  this.customBlurStyle = BlurStyle.BACKGROUND_THIN;})
+                    }
+                        .height(20.percent)
+                    Column() {
+                        AlphabetIndexer(arrayValue: value, selected: 0)
+                            .usingPopup(true) // 是否显示弹出框
+                            .alignStyle(IndexerAlign.Left) // 弹出框在索引条左侧弹出
+                            .popupItemBorderRadius(24.0) // 设置提示弹窗索引项背板圆角半径
+                            .itemBorderRadius(14.0) // 设置索引项背板圆角半径
+                            .popupBackgroundBlurStyle(this.customBlurStyle) // 设置提示弹窗的背景模糊材质
+                            .popupTitleBackground(0xCCCCCC) // 设置提示弹窗首个索引项背板颜色
+                            .onSelect({index: Int64 => Hilog.info(0, "AppLogCj", this.value[index] + " Selected!");})
+                            .onRequestPopupData(
+                                {
+                                    index: Int64 => if (this.value[index] == "A") {
+                                        return this.arrayA.toArray()
+                                    } else if (this.value[index] == "B") {
+                                        return this.arrayB.toArray()
+                                    } else if (this.value[index] == "C") {
+                                        return this.arrayC.toArray()
+                                    } else if (this.value[index] == "L") {
+                                        return this.arrayL.toArray()
+                                    } else {
+                                        return Array<String>()
+                                    }
+                                })
+                            .onPopupSelect({
+                                index: Int64 => Hilog.info(0, "AppLogCj", "onPopupSelected:${index}");
+                            })
+                    }
+                        .height(80.percent)
+                }
+                    .width(70.percent)
+            }
+                .width(100.percent)
+                .height(100.percent)
+                .backgroundImage(src:@r(app.media.startIcon))
+        }
+    }
+}
+```
+
+![alphabet_indexer3](figures/alphabet_indexer3.gif)

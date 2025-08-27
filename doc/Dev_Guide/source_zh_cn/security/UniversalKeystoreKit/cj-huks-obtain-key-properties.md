@@ -12,23 +12,34 @@ HUKS提供了接口供业务获取指定密钥的相关属性。在获取指定�
 
 2. 调用接口[getKeyItemProperties](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-getkeyitempropertiesstring-huksoptions)，传入参数keyAlias和options。options为预留参数，当前可传入空。
 
-3. 返回值为[HuksReturnResult](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksreturnresult)类型对象，获取的属性集在properties字段中。
+3. 返回值为Array\<[HuksParam](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam)>类型对象，获取的属性集在properties字段中。
 
 ## 示例
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-/* 1. 设置密钥别名 */
-let keyAlias = "keyAlias"
-/* option对象传空 */
-let emptyOptions: HuksOptions = HuksOptions([], None)
-try {
-    /* 2. 获取密钥属性 */
-    getKeyItemProperties(keyAlias, emptyOptions)
-    AppLog.info("getKeyItemProperties success")
-} catch (e: Exception) {
-    AppLog.error("getKeyItemProperties input arg invalid, ${e.toString()}")
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func test() {
+    /* 1. 设置密钥别名 */
+    let keyAlias = "keyAlias"
+    /* option对象传空 */
+    let emptyOptions: HuksOptions = HuksOptions(properties: [], inData: Bytes())
+    try {
+        /* 2. 获取密钥属性 */
+        getKeyItemProperties(keyAlias, emptyOptions)
+        loggerInfo("getKeyItemProperties success")
+    } catch (e: Exception) {
+        loggerInfo("getKeyItemProperties input arg invalid, ${e.toString()}")
+    }
 }
 ```

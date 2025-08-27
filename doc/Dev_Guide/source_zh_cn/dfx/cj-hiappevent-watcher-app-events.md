@@ -25,17 +25,18 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 1. 新建一个Cangjie应用工程，编辑工程中的“entry > src > main > cangjie > main_ability.cj”文件，导入依赖模块：
 
-    <!--compile-->
+    <!-- compile -->
+
     ```cangjie
     import kit.PerformanceAnalysisKit.*
-    import kit.PerformanceAnalysisKit.{Watcher as hiWatcher, ValueType as HiAppEventValueType}
+    import kit.PerformanceAnalysisKit.{Watcher as hiWatcher}
     import ohos.base.*
-    import ohos.component.Button
     ```
 
 2. 编辑工程中的“entry > src > main > cangjie > main_ability.cj” 文件，在onCreate函数中添加对用户点击按钮事件的订阅，示例代码如下：
 
-    <!--compile-->
+    <!-- compile -->
+
     ```cangjie
     var condition = TriggerCondition(row: 1, size: 120, timeOut: 0)
     var appEventFilter = [AppEventFilter("cangjie_watcher")]
@@ -64,27 +65,29 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 3. 编辑工程中的“entry > src > main > cangjie > index.cj” 文件，导入依赖模块：
 
-    <!--compile-->
+    <!-- compile -->
+
     ```cangjie
     import kit.PerformanceAnalysisKit.*
-    import kit.PerformanceAnalysisKit.{Watcher as hiWatcher, ValueType as HiAppEventValueType}
+    import kit.PerformanceAnalysisKit.{Watcher as hiWatcher}
     import ohos.base.*
     ```
 
 4. 编辑工程中的“entry > src > main > cangjie > index.cj” 文件，添加一个按钮并在其onClick函数中进行事件打点，以记录按钮点击事件，示例代码如下：
 
-    <!--compile-->
+    <!-- compile -->
+
     ```cangjie
     Button("writeTest").onClick({ evt =>
         // 在按钮点击函数中进行事件打点，以记录按钮点击事件
-        let eventParams: Array<Parameters> = [Parameters("click_time", INT(100))]
+        let eventParams = HashMap<String, EventValueType>([("click_time", IntValue(100))])
         let eventInfo: AppEventInfo = AppEventInfo(
             // 事件领域定义
             "button",
             // 事件名称定义
             "click",
             // 事件类型定义
-            EventType.BEHAVIOR,
+            EventType.Behavior,
             // 事件参数定义
             eventParams)
 

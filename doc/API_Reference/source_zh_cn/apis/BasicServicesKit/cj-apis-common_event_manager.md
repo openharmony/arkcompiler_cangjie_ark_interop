@@ -1,4 +1,4 @@
-# ohos.common_event_manager（公共事件模块）
+# ohos.common_event_manager
 
 本模块提供了公共事件相关的能力，包括发布公共事件、订阅公共事件、以及退订公共事件。
 
@@ -61,7 +61,9 @@ public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Co
 // index.cj
 
 import kit.BasicServicesKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.business_exception.*
 
 let subscriber: CommonEventSubscriber //用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
 let support = Support.COMMON_EVENT_ABILITY_ADDED
@@ -71,7 +73,7 @@ let subscribeInfo: CommonEventSubscribeInfo = CommonEventSubscribeInfo([support]
 try {
     subscriber = CommonEventManager.createSubscriber(subscribeInfo)
 } catch (e: BusinessException) {
-    AppLog.info("errorCode = ${e.code}, errorMsg = ${e.message}")
+    Hilog.error(0, "AppLogCj", "errorCode = ${e.code}, errorMsg = ${e.message}")
 }
 ```
 
@@ -95,7 +97,7 @@ public static func publish(event: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[事件错误码](../../errorcodes/cj-errorcode-common_event_service.md)。
+- BusinessException：对应错误码的详细介绍请参见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
 
   | 错误码ID | 错误信息                            |
   | :------- | :----------------------------------- |
@@ -112,7 +114,9 @@ public static func publish(event: String): Unit
 // index.cj
 
 import kit.BasicServicesKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.business_exception.*
 
 try {
     //发布公共事件
@@ -120,14 +124,14 @@ try {
 } catch (e: BusinessException) {
     let code = e.code
     let message = e.message
-    AppLog.info("publish failed, error code: ${code}, message: ${message}.")
+    Hilog.error(0, "AppLogCj", "publish failed, error code: ${code}, message: ${message}.")
 }
 ```
 
 ### static func publish(String, CommonEventPublishData)
 
 ```cangjie
-public static func publish(event: String, options: CommonEventPublishData): Unit
+public static func publish(event: String, options!: CommonEventPublishData = CommonEventPublishData()): Unit
 ```
 
 **功能：** 发布公共事件。
@@ -141,18 +145,18 @@ public static func publish(event: String, options: CommonEventPublishData): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|String|是|-|表示要发送的公共事件。|
-|options|[CommonEventPublishData](#struct-commoneventpublishdata)|是|-|表示发布公共事件的属性。|
+|options|[CommonEventPublishData](#struct-commoneventpublishdata)|否|CommonEventPublishData()|**命名参数。**表示发布公共事件的属性。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[事件错误码](../../errorcodes/cj-errorcode-common_event_service.md)。
+- BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
 
-  | 错误码ID | 错误信息                            |
-  | :------- | :----------------------------------- |
-  | 1500004 | not System services.                |
-  | 1500007 | error sending message to Common Event Service. |
-  | 1500008 | Common Event Service does not complete initialization. |
-  | 1500009 | error obtaining system parameters.  |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 1500004 | If not System services or System app. |
+  | 1500007 | If error sending message to Common Event Service. |
+  | 1500008 | If Common Event Service does not complete initialization. |
+  | 1500009 | If error obtaining system parameters. |
 
 **示例：**
 
@@ -162,17 +166,19 @@ public static func publish(event: String, options: CommonEventPublishData): Unit
 // index.cj
 
 import kit.BasicServicesKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.business_exception.*
 
 try {
     // 公共事件属性
-    let pData = CommonEventPublishData("com.example.myapplication", "123321", 123321)
+    let pData = CommonEventPublishData(bundleName: "com.example.myapplication", data: "123321", code: 123321)
     //发布公共事件
-    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON, pData)
+    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON, options: pData)
 } catch (e: BusinessException) {
     let code = e.code
     let message = e.message
-    AppLog.info("publish failed, error code: ${code}, message: ${message}.")
+    Hilog.error(0, "AppLogCj", "publish failed, error code: ${code}, message: ${message}.")
 }
 ```
 
@@ -197,7 +203,7 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: (Commo
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[事件错误码](../../errorcodes/cj-errorcode-common_event_service.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
 
   | 错误码ID | 错误信息                            |
   | :-------- | :----------------------------------- |
@@ -214,8 +220,11 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: (Commo
 
 import kit.BasicServicesKit.ValueType as CMEValueType
 import kit.BasicServicesKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.business_exception.*
 import std.collection.*
+import kit.PerformanceAnalysisKit.Hilog
 
 // 订阅事件：亮屏
 let events = [Support.COMMON_EVENT_SCREEN_ON]
@@ -223,24 +232,24 @@ let events = [Support.COMMON_EVENT_SCREEN_ON]
 let info = CommonEventSubscribeInfo(events)
 // 订阅者
 let sub = CommonEventManager.createSubscriber(info)
-let strV = CMEValueType.STRING("Hello")
-let intV = CMEValueType.INT(11)
+let strV = CMEValueType.StringValue("Hello")
+let intV = CMEValueType.Int32Value(11)
 let parameter = HashMap<String, CMEValueType>()
 parameter.add("1", strV)
 parameter.add("2", intV)
 // 订阅事件回调函数
-func callback(c: CommonEventData): Unit {
-    AppLog.info("Callback")
+func callback(err: ?BusinessException, c: ?CommonEventData): Unit {
+    Hilog.info(0, "cangjieTest", "Callback")
 }
 // 发布数据
-let pData = CommonEventPublishData("com.example.myapplication", "123321", 123321, parameters: parameter)
+let pData = CommonEventPublishData(bundleName: "com.example.myapplication", data: "123321", code: 123321)
 try {
     // 订阅
     CommonEventManager.subscribe(sub, callback)
     // 发布
-    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON, pData)
+    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON, options: pData)
 } catch (e: BusinessException) {
-    AppLog.info("errorCode = ${e.code}, errorMsg = ${e.message}")
+    Hilog.error(0, "AppLogCj", "errorCode = ${e.code}, errorMsg = ${e.message}")
 }
 ```
 
@@ -264,7 +273,7 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[事件错误码](../../errorcodes/cj-errorcode-common_event_service.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
 
   | 错误码ID | 错误信息                            |
   | :------- | :----------------------------------- |
@@ -281,6 +290,8 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 import kit.BasicServicesKit.*
 import ohos.base.*
+import ohos.business_exception.*
+import kit.PerformanceAnalysisKit.Hilog
 
 // 订阅事件：亮屏
 let events = [Support.COMMON_EVENT_SCREEN_ON]
@@ -292,7 +303,7 @@ let sub = CommonEventManager.createSubscriber(info)
 try {
     CommonEventManager.unsubscribe(sub)
 } catch (e: BusinessException) {
-    AppLog.info("errorCode = ${e.code}, errorMsg = ${e.message}")
+    Hilog.error(0, "AppLogCj", "errorCode = ${e.code}, errorMsg = ${e.message}")
 }
 ```
 
@@ -325,7 +336,7 @@ public prop events: Array<String>
 
 **功能：** 表示要订阅的公共事件。
 
-**类型：** Array\<string>
+**类型：** Array\<String>
 
 **读写能力：** 只读
 
@@ -545,7 +556,7 @@ public let parameters: HashMap<String, ValueType>
 
 **功能：** 表示订阅者接收到的公共事件的附加信息。该字段取值与发布者使用[commonEventManager.publish](#static-func-publishstring)发布公共事件时，通过[CommonEventPublishData](#struct-commoneventpublishdata)中的`parameters`字段传递的数据一致。
 
-**类型：** HashMap\<String, [ValueType](#enum-valuetype)>
+**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>
 
 **读写能力：** 只读
 
@@ -557,7 +568,7 @@ public let parameters: HashMap<String, ValueType>
 
 ```cangjie
 public struct CommonEventPublishData {
-    public CommonEventPublishData (
+    public CommonEventPublishData(
         public let bundleName: String,
         public let data: String,
         public let code: Int32,
@@ -645,7 +656,7 @@ public let isOrdered: Bool = false
 public let isSticky: Bool = false
 ```
 
-**功能：** 表示是否是粘性事件。仅系统应用或系统服务允许发送粘性事件。
+**功能：**  表示是否是粘性事件。仅系统应用或系统服务允许发送粘性事件。
 
 **类型：** Bool
 
@@ -663,7 +674,7 @@ public let parameters: HashMap<String, ValueType>= HashMap<String, ValueType>()
 
 **功能：** 表示公共事件的附加信息。
 
-**类型：** HashMap\<String, [ValueType](#enum-valuetype)>
+**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>
 
 **读写能力：** 只读
 
@@ -687,17 +698,17 @@ public let subscriberPermissions: Array<String>= Array<String>()
 
 **起始版本：** 21
 
-### CommonEventPublishData(String, String, Int32, Array\<String>, Bool, Bool, HashMap\<String, ValueType>)
+### CommonEventPublishData(String, String, Int32, Array\<String>, Bool, Bool, HashMap\<String,ValueType>)
 
 ```cangjie
-public CommonEventPublishData (
-    let bundleName: String,
-        let data: String,
-        let code: Int32,
-        let subscriberPermissions!: Array<String> = Array<String>(),
-        let isOrdered!: Bool = false,
-        let isSticky!: Bool = false,
-        let parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
+public CommonEventPublishData(
+    public let bundleName: String,
+    public let data: String,
+    public let code: Int32,
+    public let subscriberPermissions!: Array<String> = Array<String>(),
+    public let isOrdered!: Bool = false,
+    public let isSticky!: Bool = false,
+    public let parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
 )
 ```
 
@@ -927,9 +938,7 @@ public struct Support {
 public static const COMMON_EVENT_ABILITY_ADDED: String = "common.event.ABILITY_ADDED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已添加能力的公共事件。
-
-**订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+**功能：** 预留事件，暂未支持）表示已添加能力的公共事件。
 
 **类型：** String
 
@@ -943,9 +952,7 @@ public static const COMMON_EVENT_ABILITY_ADDED: String = "common.event.ABILITY_A
 public static const COMMON_EVENT_ABILITY_REMOVED: String = "common.event.ABILITY_REMOVED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已删除能力的公共事件。
-
-**订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+**功能：** （预留事件，暂未支持）表示已删除能力的公共事件。
 
 **类型：** String
 
@@ -959,9 +966,7 @@ public static const COMMON_EVENT_ABILITY_REMOVED: String = "common.event.ABILITY
 public static const COMMON_EVENT_ABILITY_UPDATED: String = "common.event.ABILITY_UPDATED"
 ```
 
-**功能：**（预留事件，暂未支持）表示能力已更新的公共事件。
-
-**订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+**功能：** （预留事件，暂未支持）表示能力已更新的公共事件。
 
 **类型：** String
 
@@ -975,9 +980,7 @@ public static const COMMON_EVENT_ABILITY_UPDATED: String = "common.event.ABILITY
 public static const COMMON_EVENT_ACCOUNT_DELETED: String = "usual.event.data.ACCOUNT_DELETED"
 ```
 
-**功能：**（预留事件，暂未支持）表示删除帐户的公共事件。
-
-**订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS该权限仅系统应用可申请）
+**功能：** （预留事件，暂未支持）表示删除账户的公共事件。
 
 **类型：** String
 
@@ -1061,9 +1064,7 @@ public static const COMMON_EVENT_BATTERY_OKAY: String = "usual.event.BATTERY_OKA
 public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP宿的音频状态已更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP宿的音频状态已更改的公共事件。
 
 **类型：** String
 
@@ -1077,9 +1078,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE: String =
 public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP宿连接状态已更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP宿连接状态已更改的公共事件。
 
 **类型：** String
 
@@ -1093,9 +1092,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE: String
 public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP宿播放状态改变的普通事件的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP宿播放状态改变的普通事件的公共事件。
 
 **类型：** String
 
@@ -1109,9 +1106,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE: String
 public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP的AVRCP连接状态已更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP的AVRCP连接状态已更改的公共事件。
 
 **类型：** String
 
@@ -1127,8 +1122,6 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE: String
 
 **功能：**（预留事件，暂未支持）表示蓝牙A2DP音频编解码状态更改的公共事件。
 
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1141,9 +1134,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE: String
 public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP连接状态公共事件的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP连接状态公共事件的公共事件。
 
 **类型：** String
 
@@ -1159,8 +1150,6 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE: Str
 
 **功能：**（预留事件，暂未支持）表示使用蓝牙A2DP连接的设备处于活动状态的公共事件。
 
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1173,9 +1162,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE: Str
 public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE: String = "usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP播放状态改变的普通事件的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP播放状态改变的普通事件的公共事件。
 
 **类型：** String
 
@@ -1189,7 +1176,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE: Stri
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE: String = "usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙免提呼叫状态已更改的公共事件。
+**功能：** （预留事件，暂未支持）表示蓝牙免提呼叫状态已更改的公共事件。
 
 **类型：** String
 
@@ -1203,7 +1190,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE: S
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT: String = "usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙免提音频网关状态已更改的公共事件。
+**功能：** （预留事件，暂未支持）表示蓝牙免提音频网关状态已更改的公共事件。
 
 **类型：** String
 
@@ -1217,7 +1204,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT: String
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE: String = "usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙免提音频状态已更改的公共事件。
+**功能：** （预留事件，暂未支持）表示蓝牙免提音频状态已更改的公共事件。
 
 **类型：** String
 
@@ -1231,7 +1218,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE: Str
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙免提连接状态已更改的公共事件。
+**功能：** （预留事件，暂未支持）表示蓝牙免提连接状态已更改的公共事件。
 
 **类型：** String
 
@@ -1245,9 +1232,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE: S
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE: String = "usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP连接状态已更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP连接状态已更改的公共事件。
 
 **类型：** String
 
@@ -1261,9 +1246,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE: Stri
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE: String = "usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙免提通信连接状态公共事件的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示蓝牙免提通信连接状态公共事件的公共事件。
 
 **类型：** String
 
@@ -1277,9 +1260,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE: St
 public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE: String = "usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示连接到蓝牙免提的设备处于活动状态的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示连接到蓝牙免提的设备处于活动状态的公共事件。
 
 **类型：** String
 
@@ -1295,8 +1276,6 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED: String = "us
 
 **功能：** 表示设备上蓝牙扫描完成的公共事件。
 
-**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1310,8 +1289,6 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED: String = "usu
 ```
 
 **功能：** 表示设备上已启动蓝牙扫描的公共事件。
-
-**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **类型：** String
 
@@ -1327,8 +1304,6 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE: String = "usual.eve
 
 **功能：** 表示设备蓝牙适配器名称已更改的公共事件。
 
-**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1341,9 +1316,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE: String = "usual.eve
 public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE: String = "usual.event.bluetooth.host.REQ_DISABLE"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户关闭蓝牙请求的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示用户关闭蓝牙请求的公共事件。
 
 **类型：** String
 
@@ -1371,9 +1344,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE: String = "usua
 public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE: String = "usual.event.bluetooth.host.REQ_ENABLE"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户打开蓝牙请求的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** 预留事件，暂未支持）表示用户打开蓝牙请求的公共事件。
 
 **类型：** String
 
@@ -1387,9 +1358,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE: String = "usual.even
 public static const COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE: String = "usual.event.bluetooth.host.SCAN_MODE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示设备蓝牙扫描模式更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示设备蓝牙扫描模式更改的公共事件。
 
 **类型：** String
 
@@ -1417,7 +1386,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE: String = "usual.ev
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED: String = "usual.event.bluetooth.remotedevice.ACL_CONNECTED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已与远程蓝牙设备建立低级别（ACL）连接的公共事件。
+**功能：** （预留事件，暂未支持）表示已与远程蓝牙设备建立低级别（ACL）连接的公共事件。
 
 **类型：** String
 
@@ -1431,9 +1400,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED: String = 
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED: String = "usual.event.bluetooth.remotedevice.ACL_DISCONNECTED"
 ```
 
-**功能：**（预留事件，暂未支持）表示低电平（ACL）连接已从远程蓝牙设备断开的普通事件的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示低电平（ACL）连接已从远程蓝牙设备断开的普通事件的公共事件。
 
 **类型：** String
 
@@ -1447,9 +1414,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED: String
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE: String = "usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备的电池电量首次被检索或自上次检索以来被更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备的电池电量首次被检索或自上次检索以来被更改的公共事件。
 
 **类型：** String
 
@@ -1463,9 +1428,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE: St
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE: String = "usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备的蓝牙类别已更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备的电池电量首次被检索或自上次检索以来被更改的公共事件。
 
 **类型：** String
 
@@ -1523,8 +1486,6 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED: String = "us
 
 **功能：**（预留事件，暂未支持）表示发现远程蓝牙设备的公共事件。
 
-**订阅者所需权限：** ohos.permission.LOCATION和ohos.permission.USE_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1538,8 +1499,6 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE: String = "u
 ```
 
 **功能：** 表示远程蓝牙设备的友好名称首次被检索或自上次检索以来被更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **类型：** String
 
@@ -1569,8 +1528,6 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ: String = "u
 
 **功能：**（预留事件，暂未支持）表示远程蓝牙设备配对请求的公共事件。
 
-**订阅者所需权限：** ohos.permission.DISCOVER_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1584,8 +1541,6 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE: String = "us
 ```
 
 **功能：**（预留事件，暂未支持）表示远程蓝牙设备连接状态更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
 **类型：** String
 
@@ -1615,8 +1570,6 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE: String = "us
 
 **功能：** 表示远程蓝牙设备UUID连接状态公共事件的公共事件。
 
-**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1630,8 +1583,6 @@ public static const COMMON_EVENT_BOOT_COMPLETED: String = "usual.event.BOOT_COMP
 ```
 
 **功能：** 表示用户已完成引导并加载系统的公共事件。
-
-**订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -1660,8 +1611,6 @@ public static const COMMON_EVENT_CALL_STATE_CHANGED: String = "usual.event.CALL_
 ```
 
 **功能：** 表示呼叫状态更新的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -1703,7 +1652,7 @@ public static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED: String = "usual.event
 public static const COMMON_EVENT_CHARGE_TYPE_CHANGED: String = "usual.event.CHARGE_TYPE_CHANGED"
 ```
 
-**功能：** 表示系统充电类型改变的公共事件。仅限系统应用使用。
+**功能：**  表示系统充电类型改变的公共事件。仅限系统应用使用。
 
 **类型：** String
 
@@ -1717,7 +1666,7 @@ public static const COMMON_EVENT_CHARGE_TYPE_CHANGED: String = "usual.event.CHAR
 public static const COMMON_EVENT_CHARGING: String = "usual.event.CHARGING"
 ```
 
-**功能：** 表示系统开始为电池充电的公共事件。
+**功能：**  表示系统开始为电池充电的公共事件。
 
 **类型：** String
 
@@ -1831,8 +1780,6 @@ public static const COMMON_EVENT_DISK_BAD_REMOVAL: String = "usual.event.data.DI
 
 **功能：**（预留事件，暂未支持）表示外部存储设备状态变更为挂载状态下移除的公共事件。
 
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1846,8 +1793,6 @@ public static const COMMON_EVENT_DISK_EJECT: String = "usual.event.data.DISK_EJE
 ```
 
 **功能：**（预留事件，暂未支持）表示用户已表示希望删除外部存储介质的公共事件。
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -1863,8 +1808,6 @@ public static const COMMON_EVENT_DISK_MOUNTED: String = "usual.event.data.DISK_M
 
 **功能：**（预留事件，暂未支持）表示外部存储设备状态变更为挂载的公共事件。
 
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1878,8 +1821,6 @@ public static const COMMON_EVENT_DISK_REMOVED: String = "usual.event.data.DISK_R
 ```
 
 **功能：**（预留事件，暂未支持）表示外部存储设备状态变更为移除的公共事件。
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -1895,8 +1836,6 @@ public static const COMMON_EVENT_DISK_UNMOUNTABLE: String = "usual.event.data.DI
 
 **功能：**（预留事件，暂未支持）外部存储设备状态变更为插卡情况下无法挂载的公共事件。
 
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -1910,8 +1849,6 @@ public static const COMMON_EVENT_DISK_UNMOUNTED: String = "usual.event.data.DISK
 ```
 
 **功能：**（预留事件，暂未支持）表示部存储设备状态变更为卸载的公共事件。
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -1981,9 +1918,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID: String = "co
 public static const COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED: String = "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
 ```
 
-**功能：** 表示域帐号状态发生变化的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
+**功能：** 表示域账号状态发生变化的公共事件。
 
 **类型：** String
 
@@ -1997,7 +1932,7 @@ public static const COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED: String = "usual.
 public static const COMMON_EVENT_DRIVE_MODE: String = "common.event.DRIVE_MODE"
 ```
 
-**功能：**（预留事件，暂未支持）表示系统处于驾驶模式的公共事件。
+**功能：** （预留事件，暂未支持）表示系统处于驾驶模式的公共事件。
 
 **类型：** String
 
@@ -2011,7 +1946,7 @@ public static const COMMON_EVENT_DRIVE_MODE: String = "common.event.DRIVE_MODE"
 public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE: String = "usual.event.EXTERNAL_APPLICATIONS_AVAILABLE"
 ```
 
-**功能：**（预留事件，暂未支持）表示安装在外部存储上的应用程序对系统可用的公共事件。
+**功能：** （预留事件，暂未支持）表示安装在外部存储上的应用程序对系统可用的公共事件。
 
 **类型：** String
 
@@ -2025,7 +1960,7 @@ public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE: String = "usua
 public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE: String = "usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE"
 ```
 
-**功能：**（预留事件，暂未支持）表示安装在外部存储上的应用程序对系统不可用的公共事件。
+**功能：** （预留事件，暂未支持）表示安装在外部存储上的应用程序对系统不可用的公共事件。
 
 **类型：** String
 
@@ -2039,9 +1974,7 @@ public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE: String = "us
 public static const COMMON_EVENT_FOUNDATION_READY: String = "common.event.FOUNDATION_READY"
 ```
 
-**功能：**（预留事件，暂未支持）表示foundation已准备好的公共事件。
-
-**订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
+**功能：** （预留事件，暂未支持）表示foundation已准备好的公共事件。
 
 **类型：** String
 
@@ -2055,7 +1988,7 @@ public static const COMMON_EVENT_FOUNDATION_READY: String = "common.event.FOUNDA
 public static const COMMON_EVENT_HOME_MODE: String = "common.event.HOME_MODE"
 ```
 
-**功能：**（预留事件，暂未支持）表示系统处于HOME模式的公共事件。
+**功能：** （预留事件，暂未支持）表示系统处于HOME模式的公共事件。
 
 **类型：** String
 
@@ -2085,8 +2018,6 @@ public static const COMMON_EVENT_INCOMING_CALL_MISSED: String = "usual.event.INC
 
 **功能：** 表示未接来电的公共事件。
 
-**订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -2099,7 +2030,7 @@ public static const COMMON_EVENT_INCOMING_CALL_MISSED: String = "usual.event.INC
 public static const COMMON_EVENT_IVI_ACTIVE: String = "common.event.IVI_ACTIVE"
 ```
 
-**功能：**（预留事件，暂未支持）表示电池服务处于活动状态的公共事件。
+**功能：** （预留事件，暂未支持）表示电池服务处于活动状态的公共事件。
 
 **类型：** String
 
@@ -2113,7 +2044,7 @@ public static const COMMON_EVENT_IVI_ACTIVE: String = "common.event.IVI_ACTIVE"
 public static const COMMON_EVENT_IVI_EXTREME_TEMPERATURE: String = "common.event.IVI_EXTREME_TEMPERATURE"
 ```
 
-**功能：**（预留事件，暂未支持）表示IVI温度极高的公共事件。
+**功能：** （预留事件，暂未支持）表示IVI温度极高的公共事件。
 
 **类型：** String
 
@@ -2141,7 +2072,7 @@ public static const COMMON_EVENT_IVI_HIGH_TEMPERATURE: String = "common.event.IV
 public static const COMMON_EVENT_IVI_LASTMODE_SAVE: String = "common.event.IVI_LASTMODE_SAVE"
 ```
 
-**功能：**（预留事件，暂未支持）表示第三方应用保存其最后一个模式的公共事件。
+**功能：** （预留事件，暂未支持）表示第三方应用保存其最后一个模式的公共事件。
 
 **类型：** String
 
@@ -2283,8 +2214,6 @@ public static const COMMON_EVENT_LOCKED_BOOT_COMPLETED: String = "usual.event.LO
 
 **功能：**（预留事件，暂未支持）表示用户已完成引导，系统已加载，但屏幕仍锁定的公共事件。
 
-**订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -2297,7 +2226,7 @@ public static const COMMON_EVENT_LOCKED_BOOT_COMPLETED: String = "usual.event.LO
 public static const COMMON_EVENT_MANAGE_PACKAGE_STORAGE: String = "usual.event.MANAGE_PACKAGE_STORAGE"
 ```
 
-**功能：**（预留事件，暂未支持）表示设备存储空间不足的公共事件。
+**功能：** （预留事件，暂未支持）表示设备存储空间不足的公共事件。
 
 **类型：** String
 
@@ -2409,7 +2338,7 @@ public static const COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED: String = "usua
 public static const COMMON_EVENT_OFFICE_MODE: String = "common.event.OFFICE_MODE"
 ```
 
-**功能：**（预留事件，暂未支持）表示系统处于办公模式的公共事件。
+**功能：** （预留事件，暂未支持）表示系统处于办公模式的公共事件。
 
 **类型：** String
 
@@ -2437,7 +2366,7 @@ public static const COMMON_EVENT_OPERATOR_CONFIG_CHANGED: String = "usual.event.
 public static const COMMON_EVENT_PACKAGES_SUSPENDED: String = "usual.event.PACKAGES_SUSPENDED"
 ```
 
-**功能：**（预留事件，暂未支持）表示应用包已挂起的公共事件。
+**功能：** （预留事件，暂未支持）表示应用包已挂起的公共事件。
 
 **类型：** String
 
@@ -2493,7 +2422,7 @@ public static const COMMON_EVENT_PACKAGE_CACHE_CLEARED: String = "usual.event.PA
 public static const COMMON_EVENT_PACKAGE_CHANGED: String = "usual.event.PACKAGE_CHANGED"
 ```
 
-**功能：** 表示应用包已更改的公共事件（例如，包中的组件已启用或禁用）。
+**功能：**表示应用包已更改的公共事件（例如，包中的组件已启用或禁用）。
 
 **类型：** String
 
@@ -2521,7 +2450,7 @@ public static const COMMON_EVENT_PACKAGE_DATA_CLEARED: String = "usual.event.PAC
 public static const COMMON_EVENT_PACKAGE_FIRST_LAUNCH: String = "usual.event.PACKAGE_FIRST_LAUNCH"
 ```
 
-**功能：**（预留事件，暂未支持）表示首次启动已安装应用程序的公共事件。
+**功能：** （预留事件，暂未支持）表示首次启动已安装应用程序的公共事件。
 
 **类型：** String
 
@@ -2535,7 +2464,7 @@ public static const COMMON_EVENT_PACKAGE_FIRST_LAUNCH: String = "usual.event.PAC
 public static const COMMON_EVENT_PACKAGE_FULLY_REMOVED: String = "usual.event.PACKAGE_FULLY_REMOVED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已从设备中完全卸载已安装的应用程序（包括应用程序数据和代码）的公共事件。
+**功能：** （预留事件，暂未支持）表示已从设备中完全卸载已安装的应用程序（包括应用程序数据和代码）的公共事件。
 
 **类型：** String
 
@@ -2549,7 +2478,7 @@ public static const COMMON_EVENT_PACKAGE_FULLY_REMOVED: String = "usual.event.PA
 public static const COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION: String = "usual.event.PACKAGE_NEEDS_VERIFICATION"
 ```
 
-**功能：**（预留事件，暂未支持）表示应用需要系统校验的公共事件。
+**功能：** （预留事件，暂未支持）表示应用需要系统校验的公共事件。
 
 **类型：** String
 
@@ -2605,7 +2534,7 @@ public static const COMMON_EVENT_PACKAGE_RESTARTED: String = "usual.event.PACKAG
 public static const COMMON_EVENT_PACKAGE_VERIFIED: String = "usual.event.PACKAGE_VERIFIED"
 ```
 
-**功能：**（预留事件，暂未支持）表示应用已被系统校验的公共事件。
+**功能：** （预留事件，暂未支持）表示应用已被系统校验的公共事件。
 
 **类型：** String
 
@@ -2745,7 +2674,7 @@ public static const COMMON_EVENT_SCREEN_LOCKED: String = "usual.event.SCREEN_LOC
 public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
 ```
 
-**功能：** 表示设备屏幕关闭且设备处于睡眠状态的公共事件。
+**功能：**  表示设备屏幕关闭且设备处于睡眠状态的公共事件。
 
 **类型：** String
 
@@ -2759,7 +2688,7 @@ public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
 public static const COMMON_EVENT_SCREEN_ON: String = "usual.event.SCREEN_ON"
 ```
 
-**功能：** 表示设备屏幕打开且设备处于交互状态的公共事件。
+**功能：**  表示设备屏幕打开且设备处于交互状态的公共事件。
 
 **类型：** String
 
@@ -2901,8 +2830,6 @@ public static const COMMON_EVENT_SLOT_CHANGE: String = "usual.event.SLOT_CHANGE"
 
 **功能：** 表示通知通道更新的公共事件。
 
-**订阅者所需权限：** ohos.permission.NOTIFICATION_CONTROLLER
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -2916,8 +2843,6 @@ public static const COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED: String = "usual.event
 ```
 
 **功能：** 表示小区广播短信接收完成的公共事件。
-
-**订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -2933,8 +2858,6 @@ public static const COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED: String = "u
 
 **功能：** 表示紧急小区广播短信接收完成的公共事件。
 
-**订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -2949,8 +2872,6 @@ public static const COMMON_EVENT_SMS_RECEIVE_COMPLETED: String = "usual.event.SM
 
 **功能：** 表示设备接收到信息的动作。
 
-**订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -2964,8 +2885,6 @@ public static const COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED: String = "usual.
 ```
 
 **功能：** 表示服务信息短信接收完成的公共事件。
-
-**订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -2993,9 +2912,7 @@ public static const COMMON_EVENT_SPECIAL_CODE: String = "common.event.SPECIAL_CO
 public static const COMMON_EVENT_SPLIT_SCREEN: String = "common.event.SPLIT_SCREEN"
 ```
 
-**功能：** 表示分屏的公共事件。
-
-**订阅者所需权限：** ohos.permission.RECEIVER_SPLIT_SCREEN
+**功能：**  表示分屏的公共事件。
 
 **类型：** String
 
@@ -3037,7 +2954,7 @@ public static const COMMON_EVENT_STK_ALPHA_IDENTIFIER: String = "usual.event.STK
 public static const COMMON_EVENT_STK_CARD_STATE_CHANGED: String = "usual.event.STK_CARD_STATE_CHANGED"
 ```
 
-**功能：**（预留事件，暂未支持）表示STK卡状态已更新的公共事件。
+**功能：** （预留事件，暂未支持）表示STK卡状态已更新的公共事件。
 
 **类型：** String
 
@@ -3051,7 +2968,7 @@ public static const COMMON_EVENT_STK_CARD_STATE_CHANGED: String = "usual.event.S
 public static const COMMON_EVENT_STK_COMMAND: String = "usual.event.STK_COMMAND"
 ```
 
-**功能：**（预留事件，暂未支持）表示发送STK命令的公共事件。
+**功能：** （预留事件，暂未支持）表示发送STK命令的公共事件。
 
 **类型：** String
 
@@ -3065,7 +2982,7 @@ public static const COMMON_EVENT_STK_COMMAND: String = "usual.event.STK_COMMAND"
 public static const COMMON_EVENT_STK_SESSION_END: String = "usual.event.STK_SESSION_END"
 ```
 
-**功能：**（预留事件，暂未支持）表示STK会话结束的公共事件。
+**功能：** （预留事件，暂未支持）表示STK会话结束的公共事件。
 
 **类型：** String
 
@@ -3079,7 +2996,7 @@ public static const COMMON_EVENT_STK_SESSION_END: String = "usual.event.STK_SESS
 public static const COMMON_EVENT_THERMAL_LEVEL_CHANGED: String = "usual.event.THERMAL_LEVEL_CHANGED"
 ```
 
-**功能：** 表示设备热状态的公共事件。
+**功能：**  表示设备热状态的公共事件。
 
 **类型：** String
 
@@ -3135,7 +3052,7 @@ public static const COMMON_EVENT_TIME_TICK: String = "usual.event.TIME_TICK"
 public static const COMMON_EVENT_UID_REMOVED: String = "usual.event.UID_REMOVED"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户ID已从系统中删除的公共事件。
+**功能：** （预留事件，暂未支持）表示用户ID已从系统中删除的公共事件。
 
 **类型：** String
 
@@ -3149,7 +3066,7 @@ public static const COMMON_EVENT_UID_REMOVED: String = "usual.event.UID_REMOVED"
 public static const COMMON_EVENT_USB_ACCESSORY_ATTACHED: String = "usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已连接USB附件的公共事件。
+**功能：** （预留事件，暂未支持）表示已连接USB附件的公共事件。
 
 **类型：** String
 
@@ -3163,7 +3080,7 @@ public static const COMMON_EVENT_USB_ACCESSORY_ATTACHED: String = "usual.event.h
 public static const COMMON_EVENT_USB_ACCESSORY_DETACHED: String = "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
 ```
 
-**功能：**（预留事件，暂未支持）表示USB附件被卸载的公共事件。
+**功能：** （预留事件，暂未支持）表示USB附件被卸载的公共事件。
 
 **类型：** String
 
@@ -3235,8 +3152,6 @@ public static const COMMON_EVENT_USER_ADDED: String = "usual.event.USER_ADDED"
 
 **功能：** 表示用户已添加到系统中的公共事件。
 
-**订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3249,7 +3164,7 @@ public static const COMMON_EVENT_USER_ADDED: String = "usual.event.USER_ADDED"
 public static const COMMON_EVENT_USER_BACKGROUND: String = "usual.event.USER_BACKGROUND"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已被带到后台的公共事件。
+**功能：** （预留事件，暂未支持）表示用户已被带到后台的公共事件。
 
 **类型：** String
 
@@ -3263,7 +3178,7 @@ public static const COMMON_EVENT_USER_BACKGROUND: String = "usual.event.USER_BAC
 public static const COMMON_EVENT_USER_FOREGROUND: String = "usual.event.USER_FOREGROUND"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已被带到前台的公共事件。
+**功能：** （预留事件，暂未支持）表示用户已被带到前台的公共事件。
 
 **类型：** String
 
@@ -3293,8 +3208,6 @@ public static const COMMON_EVENT_USER_REMOVED: String = "usual.event.USER_REMOVE
 
 **功能：** 表示用户已从系统中删除的公共事件的动作。
 
-**订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3307,7 +3220,7 @@ public static const COMMON_EVENT_USER_REMOVED: String = "usual.event.USER_REMOVE
 public static const COMMON_EVENT_USER_STARTED: String = "usual.event.USER_STARTED"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已启动的公共事件。
+**功能：** （预留事件，暂未支持）表示用户已启动的公共事件。
 
 **类型：** String
 
@@ -3321,9 +3234,7 @@ public static const COMMON_EVENT_USER_STARTED: String = "usual.event.USER_STARTE
 public static const COMMON_EVENT_USER_STARTING: String = "usual.event.USER_STARTING"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已启动的公共事件。
-
-**订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
+**功能：** （预留事件，暂未支持）表示用户已启动的公共事件。
 
 **类型：** String
 
@@ -3337,7 +3248,7 @@ public static const COMMON_EVENT_USER_STARTING: String = "usual.event.USER_START
 public static const COMMON_EVENT_USER_STOPPED: String = "usual.event.USER_STOPPED"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已停止的公共事件。
+**功能：** （预留事件，暂未支持）表示用户已停止的公共事件。
 
 **类型：** String
 
@@ -3351,9 +3262,7 @@ public static const COMMON_EVENT_USER_STOPPED: String = "usual.event.USER_STOPPE
 public static const COMMON_EVENT_USER_STOPPING: String = "usual.event.USER_STOPPING"
 ```
 
-**功能：**（预留事件，暂未支持）表示要停止用户的公共事件。
-
-**订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
+**功能：** （预留事件，暂未支持）表示要停止用户的公共事件。
 
 **类型：** String
 
@@ -3368,8 +3277,6 @@ public static const COMMON_EVENT_USER_SWITCHED: String = "usual.event.USER_SWITC
 ```
 
 **功能：** 表示用户切换正在发生的公共事件。
-
-**订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
 **类型：** String
 
@@ -3397,9 +3304,7 @@ public static const COMMON_EVENT_USER_UNLOCKED: String = "usual.event.USER_UNLOC
 public static const COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED: String = "usual.event.data.VISIBLE_ACCOUNTS_UPDATED"
 ```
 
-**功能：**（预留事件，暂未支持）表示帐户可见更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_APP_ACCOUNTS（该权限仅系统应用可申请）
+**功能：** （预留事件，暂未支持）表示账户可见更改的公共事件。
 
 **类型：** String
 
@@ -3415,8 +3320,6 @@ public static const COMMON_EVENT_VOLUME_BAD_REMOVAL: String = "usual.event.data.
 
 **功能：** 表示外部存储设备状态变更为挂载状态下移除的公共事件。
 
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3430,8 +3333,6 @@ public static const COMMON_EVENT_VOLUME_EJECT: String = "usual.event.data.VOLUME
 ```
 
 **功能：** 表示用户已表示希望删除外部存储介质的公共事件。
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **类型：** String
 
@@ -3447,8 +3348,6 @@ public static const COMMON_EVENT_VOLUME_MOUNTED: String = "usual.event.data.VOLU
 
 **功能：** 表示外部存储设备状态变更为挂载的公共事件。
 
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3462,8 +3361,6 @@ public static const COMMON_EVENT_VOLUME_REMOVED: String = "usual.event.data.VOLU
 ```
 
 **功能：** 表示外部存储设备状态变更为移除的公共事件。
-
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **类型：** String
 
@@ -3479,8 +3376,6 @@ public static const COMMON_EVENT_VOLUME_UNMOUNTED: String = "usual.event.data.VO
 
 **功能：** 表示外部存储设备状态变更为卸载的公共事件。
 
-**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3495,8 +3390,6 @@ public static const COMMON_EVENT_WIFI_AP_STA_JOIN: String = "usual.event.wifi.WI
 
 **功能：** 表示客户端加入当前设备Wi-Fi热点的普通事件的公共事件。
 
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3510,8 +3403,6 @@ public static const COMMON_EVENT_WIFI_AP_STA_LEAVE: String = "usual.event.wifi.W
 ```
 
 **功能：** 表示客户端已断开与当前设备Wi-Fi热点的连接的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **类型：** String
 
@@ -3555,8 +3446,6 @@ public static const COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE: String = "usual.event
 
 **功能：** 表示MPLink（增强Wi-Fi功能）状态已更改的公共事件。
 
-**订阅者所需权限：** ohos.permission.MPLINK_CHANGE_STATE
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3570,8 +3459,6 @@ public static const COMMON_EVENT_WIFI_P2P_CONN_STATE: String = "usual.event.wifi
 ```
 
 **功能：** 表示Wi-Fi P2P连接状态改变的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO和ohos.permission.LOCATION
 
 **类型：** String
 
@@ -3587,8 +3474,6 @@ public static const COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED: String =
 
 **功能：** 表示Wi-Fi P2P当前设备状态变化的公共事件。
 
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3602,8 +3487,6 @@ public static const COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED: String = "usual.e
 ```
 
 **功能：** 表示Wi-Fi P2P群组信息已更改的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **类型：** String
 
@@ -3619,8 +3502,6 @@ public static const COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED: String 
 
 **功能：** 表示Wi-Fi P2P发现状态变化的公共事件。
 
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3635,8 +3516,6 @@ public static const COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED: String = "usual.e
 
 **功能：** 表示Wi-Fi P2P对等体状态变化的公共事件。
 
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3650,8 +3529,6 @@ public static const COMMON_EVENT_WIFI_P2P_STATE_CHANGED: String = "usual.event.w
 ```
 
 **功能：** 表示Wi-Fi P2P状态（如启用和禁用）公共事件的公共事件。
-
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
 **类型：** String
 
@@ -3681,8 +3558,6 @@ public static const COMMON_EVENT_WIFI_RSSI_VALUE: String = "usual.event.wifi.RSS
 
 **功能：** 表示Wi-Fi信号强度（RSSI）改变的公共事件。
 
-**订阅者所需权限：** ohos.permission.GET_WIFI_INFO
-
 **类型：** String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -3696,8 +3571,6 @@ public static const COMMON_EVENT_WIFI_SCAN_FINISHED: String = "usual.event.wifi.
 ```
 
 **功能：** 表示Wi-Fi接入点已被扫描并证明可用的公共事件。
-
-**订阅者所需权限：** ohos.permission.LOCATION
 
 **类型：** String
 

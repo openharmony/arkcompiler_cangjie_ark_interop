@@ -42,44 +42,56 @@ HTTP数据请求功能主要由http模块提供。
 6. 调用该对象的off()方法，取消订阅http响应头事件。
 7. 当该请求使用完毕时，调用destroy()方法主动销毁。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 // 引入包名
-import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import kit.BasicServicesKit.*
-import ohos.base.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
+import kit.NetworkKit.*
 import std.collection.*
-import ohos.net.http.CertType as CT
+import ohos.base.*
+import ohos.net.http.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
 
 // 每一个httpRequest对应一个HTTP请求任务，不可复用
 let httpRequest = createHttp()
 
 // 请求的配置
 let option = HttpRequestOptions(
-    method: RequestMethod.POST, // 可选，默认为http.RequestMethod.GET
+    method: RequestMethod.Post, // 可选，默认为http.RequestMethod.GET
     // 当使用POST请求时此字段用于传递内容
-    extraData: HttpData.STRING_DATA("data to send"),
-    expectDataType: HttpDataType.STRING, // 可选，指定返回数据的类型
+    extraData: HttpData.StringData("data to send"),
+    expectDataType: HttpDataType.StringValue, // 可选，指定返回数据的类型
     usingCache: true, // 可选，默认为true
     priority: 1, // 可选，默认为1
     // 开发者根据自身业务需要添加header字段
     header: HashMap<String, String>([("content-type", "application/json")]),
     readTimeout: 60000, // 可选，默认为60000ms
     connectTimeout: 60000, // 可选，默认为60000ms
-    usingProtocol: HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定
-    usingProxy: UsingProxy.USE_DEFAULT, //可选，默认不使用网络代理，自API 21开始支持该属性
-    caPath: "/path/to/cacert.pem", // 可选，默认使用系统预设CA证书，自API 21开始支持该属性
+    usingProtocol: HttpProtocol.Http1_1, // 可选，协议类型默认值由系统自动指定
+    usingProxy: UsingProxy.UseDefault, //可选，默认不使用网络代理，自API 10开始支持该属性
+    caPath: "/path/to/cacert.pem", // 可选，默认使用系统预设CA证书，自API 10开始支持该属性
     clientCert: ClientCert(
         "/path/to/client.pem", // 默认不使用客户端证书
         "/path/to/client.key", // 若证书包含Key信息，传入空字符串
-        certType: CT.PEM, // 可选，默认使用PEM
+        certType: CertType.Pem, // 可选，默认使用PEM
         keyPassword: "passwordToKey" // 可选，输入key文件的密码
     ),
     multiFormDataList: [ // 可选，仅当Header中，'content-Type'为'multipart/form-data'时生效
         MultiFormData (
             "Part1", // 数据名
             "text/plain", // 数据类型
-            data: STRING_DATA("Example data"), // 可选，数据内容
+            data: StringData("Example data"), // 可选，数据内容
             remoteFileName: "example.txt" // 可选
         ),
         MultiFormData (
@@ -94,23 +106,22 @@ let option = HttpRequestOptions(
 httpRequest.request(
     // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
     "EXAMPLE_URL",
+    option,
     {
         err, resp =>
         if (let Some(v) <- err) {
-            AppLog.error("v")
+            loggerError("v")
         }
         if (let Some(v) <- resp) {
             // data.result为HTTP响应内容，可根据业务需要进行解析
-            AppLog.info("Result: ${v.result}")
-            AppLog.info("code: ${v.responseCode.getValue()}")
+            loggerInfo("code: ${v.responseCode}")
             // data.header为HTTP响应头，可根据业务需要进行解析
-            AppLog.info("header: ${v.header}")
-            AppLog.info("cookies: ${v.cookies}")
+            loggerInfo("header: ${v.header}")
+            loggerInfo("cookies: ${v.cookies}")
             // 当该请求使用完毕时，调用destroy方法主动销毁
             httpRequest.destroy()
         }
-    },
-    options: option)
+    })
 ```
 
 ## requestInStream接口开发步骤
@@ -123,94 +134,147 @@ httpRequest.request(
 6. 调用该对象的off()方法，取消订阅响应事件。
 7. 当该请求使用完毕时，调用destroy()方法主动销毁。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 // 引入包名
-import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
 import kit.BasicServicesKit.*
-import ohos.base.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
+import kit.NetworkKit.*
 import std.collection.*
-import ohos.net.http.CertType as CT
+import ohos.base.*
+import ohos.net.http.*
 
-// 每一个httpRequest对应一个HTTP请求任务，不可复用
-let httpRequest = createHttp()
-// 用于订阅HTTP响应头事件
-httpRequest.onHeadersReceive { header =>
-    AppLog.info("header: ${header}")
-}
-// 用于订阅HTTP流式响应数据接收事件
-let res = ArrayList<Byte>()
-httpRequest.onDataReceive { bytes =>
-    res.add(all: bytes)
-    AppLog.info("receive length: ${bytes.size}")
-}
-// 用于订阅HTTP流式响应数据接收完毕事件
-httpRequest.onDataEnd { =>
-    AppLog.info("No more data in response, data receive end")
-    // 取消订阅HTTP响应头事件
-    httpRequest.offHeadersReceive()
-    // 取消订阅HTTP流式响应数据接收事件
-    httpRequest.offDataReceive()
-    // 取消订阅HTTP流式响应数据接收进度事件
-    httpRequest.offDataReceiveProgress()
-    // 取消订阅HTTP流式响应数据接收完毕事件
-    httpRequest.offDataEnd()
-    // 当该请求使用完毕时，调用destroy方法主动销毁
-    httpRequest.destroy()
-}
-// 用于订阅HTTP流式响应数据接收进度事件
-httpRequest.onDataReceiveProgress { progress =>
-     AppLog.info("dataReceiveProgress receiveSize: ${progress.receiveSize} totalSize: ${progress.totalSize}")
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
 }
 
-let option = HttpRequestOptions(
-    method: RequestMethod.POST, // 可选，默认为http.RequestMethod.GET
-    // 当使用POST请求时此字段用于传递内容
-    extraData: HttpData.STRING_DATA("data to send"),
-    expectDataType: HttpDataType.STRING, // 可选，指定返回数据的类型
-    usingCache: true, // 可选，默认为true
-    priority: 1, // 可选，默认为1
-    // 开发者根据自身业务需要添加header字段
-    header: HashMap<String, String>([("content-type", "application/json")]),
-    readTimeout: 60000, // 可选，默认为60000ms
-    connectTimeout: 60000, // 可选，默认为60000ms
-    usingProtocol: HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定
-    usingProxy: UsingProxy.USE_DEFAULT, //可选，默认不使用网络代理，自API 21开始支持该属性
-    caPath: "/path/to/cacert.pem", // 可选，默认使用系统预设CA证书，自API 21开始支持该属性
-    clientCert: ClientCert(
-        "/path/to/client.pem", // 默认不使用客户端证书
-        "/path/to/client.key", // 若证书包含Key信息，传入空字符串
-        certType: CT.PEM, // 可选，默认使用PEM
-        keyPassword: "passwordToKey" // 可选，输入key文件的密码
-    ),
-    multiFormDataList: [ // 可选，仅当Header中，'content-Type'为'multipart/form-data'时生效
-        MultiFormData (
-            "Part1", // 数据名
-            "text/plain", // 数据类型
-            data: STRING_DATA("Example data"), // 可选，数据内容
-            remoteFileName: "example.txt" // 可选
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
+
+
+class HeadersReceiveCb <: Callback1Argument<HashMap<String, String>> {
+    let callback_: (HashMap<String, String>)->Unit
+    public init(callback: (HashMap<String, String>)->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException, val: HashMap<String, String>): Unit {
+        callback_(val)
+    }
+}
+
+class DataReceiveCb <: Callback1Argument<Array<Byte>> {
+    let callback_: (Array<Byte>)->Unit
+    public init(callback: (Array<Byte>)->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException, val: Array<Byte>): Unit {
+        callback_(val)
+    }
+}
+
+class DataEndCb <: Callback0Argument {
+    let callback_: ()->Unit
+    public init(callback: ()->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException): Unit {
+        callback_()
+    }
+}
+
+class DataReceiveProgressCb <: Callback1Argument<DataReceiveProgressInfo> {
+    let callback_: (DataReceiveProgressInfo)->Unit
+    public init(callback: (DataReceiveProgressInfo)->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException, val: DataReceiveProgressInfo): Unit {
+        callback_(val)
+    }
+}
+
+func test() {
+    // 每一个httpRequest对应一个HTTP请求任务，不可复用
+    let httpRequest = createHttp()
+    // 用于订阅HTTP响应头事件
+    let headersReceiveCallBack = HeadersReceiveCb({ header => loggerInfo("header: ${header}") })
+    httpRequest.on(HttpRequestEvent.HeadersReceive, headersReceiveCallBack)
+    // 用于订阅HTTP流式响应数据接收事件
+    let res = ArrayList<Byte>()
+    let dataReceiveCallBack = DataReceiveCb({ bytes =>
+        res.add(all: bytes)
+        loggerInfo("receive length: ${bytes.size}")
+    })
+    httpRequest.on(HttpRequestEvent.DataReceive, dataReceiveCallBack)
+
+    // 用于订阅HTTP流式响应数据接收完毕事件
+    let dataEndCallBack = DataEndCb({ =>
+        loggerInfo("No more data in response, data receive end")
+        // 取消订阅HTTP响应头事件
+        httpRequest.off(HttpRequestEvent.HeadersReceive)
+        // 取消订阅HTTP流式响应数据接收事件
+        httpRequest.off(HttpRequestEvent.DataReceive)
+        // 取消订阅HTTP流式响应数据接收进度事件
+        httpRequest.off(HttpRequestEvent.DataReceiveProgress)
+        // 取消订阅HTTP流式响应数据接收完毕事件
+        httpRequest.off(HttpRequestEvent.DataEnd)
+        // 当该请求使用完毕时，调用destroy方法主动销毁
+        httpRequest.destroy()
+    })
+    httpRequest.on(HttpRequestEvent.DataEnd,dataEndCallBack)
+    // 用于订阅HTTP流式响应数据接收进度事件
+    let dataReceiveProgressCallBack = DataReceiveProgressCb({ progress =>
+        loggerInfo("dataReceiveProgress receiveSize: ${progress.receiveSize} totalSize: ${progress.totalSize}")
+    })
+    httpRequest.on(HttpRequestEvent.DataReceiveProgress, dataReceiveProgressCallBack)
+
+    let option = HttpRequestOptions(
+        method: RequestMethod.Post, // 可选，默认为http.RequestMethod.GET
+        // 当使用POST请求时此字段用于传递内容
+        extraData: HttpData.StringData("data to send"),
+        expectDataType: HttpDataType.StringValue, // 可选，指定返回数据的类型
+        usingCache: true, // 可选，默认为true
+        priority: 1, // 可选，默认为1
+        // 开发者根据自身业务需要添加header字段
+        header: HashMap<String, String>([("content-type", "application/json")]),
+        readTimeout: 60000, // 可选，默认为60000ms
+        connectTimeout: 60000, // 可选，默认为60000ms
+        usingProtocol: HttpProtocol.Http1_1, // 可选，协议类型默认值由系统自动指定
+        usingProxy: UsingProxy.UseDefault, //可选，默认不使用网络代理，自API 10开始支持该属性
+        caPath: "/path/to/cacert.pem", // 可选，默认使用系统预设CA证书，自API 10开始支持该属性
+        clientCert: ClientCert(
+            "/path/to/client.pem", // 默认不使用客户端证书
+            "/path/to/client.key", // 若证书包含Key信息，传入空字符串
+            certType: CertType.Pem, // 可选，默认使用PEM
+            keyPassword: "passwordToKey" // 可选，输入key文件的密码
         ),
-        MultiFormData (
-            "Part2", // 数据名
-            "text/plain", // 数据类型
-            filePath: "/data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt", // 可选，传入文件路径
-            remoteFileName: "fileName.txt" // 可选
-        )
-    ]
-)
+        multiFormDataList: [ // 可选，仅当Header中，'content-Type'为'multipart/form-data'时生效
+            MultiFormData (
+                "Part1", // 数据名
+                "text/plain", // 数据类型
+                data: StringData("Example data"), // 可选，数据内容
+                remoteFileName: "example.txt" // 可选
+            ),
+            MultiFormData (
+                "Part2", // 数据名
+                "text/plain", // 数据类型
+                filePath: "/data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.txt", // 可选，传入文件路径
+                remoteFileName: "fileName.txt" // 可选
+            )
+        ]
+    )
 
-// 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
+    // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
 
-httpRequest.requestInStream("EXAMPLE_URL", {err, code =>
-    if (let Some(e) <- err) {
-        AppLog.error("exception: ${e.message}")
-    }
-    if (let Some(respCode) <- code) {
-        AppLog.info("ResponseCode: ${respCode}")
-    } else {
-        AppLog.error("response is none")
-    }
-}, options: option)
+    httpRequest.requestInStream(
+        "EXAMPLE_URL",
+        option,
+        {err, code =>
+        if (let Some(e) <- err) {
+            loggerError("exception: ${e.message}")
+        }
+        if (let Some(respCode) <- code) {
+            loggerInfo("ResponseCode: ${respCode}")
+        } else {
+            loggerError("response is none")
+        }
+    })
+}
 ```
 
 ## 证书锁定

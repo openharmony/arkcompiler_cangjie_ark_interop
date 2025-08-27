@@ -553,11 +553,11 @@ public static prop serial: String
 
 **功能：** 设备序列号。
 
-**需要权限：** ohos.permission.sec.ACCESS_UDID
-
 **类型：** String
 
 **读写能力：** 只读
+
+**需要权限：** ohos.permission.sec.ACCESS_UDID
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -590,6 +590,8 @@ public static prop udid: String
 **类型：** String
 
 **读写能力：** 只读
+
+**需要权限：** ohos.permission.sec.ACCESS_UDID
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 

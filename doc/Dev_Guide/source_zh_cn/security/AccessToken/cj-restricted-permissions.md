@@ -460,7 +460,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本：** 12
 
-**变更信息：** API 12-15该权限仅向系统应用开放；从API 16开始，在2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
+**变更信息：** API 12-15该权限仅向系统应用开放；从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放。
 
 ### ohos.permission.kernel.ALLOW_USE_JITFORT_INTERFACE
 
@@ -544,7 +544,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式：** 系统授权（system_grant）
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -558,6 +558,6 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式：** 系统授权（system_grant）
 
-**支持设备**: 2in1
+**支持设备**: PC/2in1
 
 **起始版本：** 20

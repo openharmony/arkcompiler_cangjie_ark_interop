@@ -1,4 +1,4 @@
-# ohos.image（图片处理）
+# ohos.multimedia.image（图片处理）
 
 本模块提供图片处理效果，包括通过属性创建PixelMap、读取图像像素数据、读取区域内的图片数据等。
 
@@ -43,18 +43,13 @@ public func createImageCreator(size: Size, format: Int32, capacity: Int32): Imag
 |:----|:----|
 |[ImageCreator](#class-imagecreator)|返回ImageCreator实例。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(height: 8192, width: 8)
-let imageCreator = createImageCreator(size, 4, 8)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
 
 ## func createImagePacker()
 
@@ -102,7 +97,7 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Size](#class-size)|是|-|图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。   |
+|size|[Size](#class-size)|是|-|图像的默认大小。|
 |format|[ImageFormat](#enum-imageformat)|是|-|图像格式，取值为[ImageFormat](#enum-imageformat)常量（目前仅支持ImageFormat:JPEG）。|
 |capacity|Int32|是|-|同时访问的最大图像数。|
 
@@ -111,6 +106,14 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
 |类型|说明|
 |:----|:----|
 |[ImageReceiver](#class-imagereceiver)|如果操作成功，则返回ImageReceiver实例。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
 
 **示例：**
 
@@ -121,8 +124,8 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
 
 import kit.ImageKit.*
 
-let size = Size(8192, 8)
-let receiver : ImageReceiver = createImageReceiver(size, ImageFormat.JPEG, 8)
+let size = Size(8, 8192)
+let receiver:ImageReceiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 ```
 
 ## func createImageSource(String)
@@ -149,28 +152,6 @@ public func createImageSource(uri: String): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
-
-  | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980104 | Image initialization abnormal.      |
-  | 62980115 | Invalid image parameter.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let path: String = "../test.jpg"
-let imageSourceApi: ImageSource = createImageSource(path)
-```
-
 ## func createImageSource(String, SourceOptions)
 
 ```cangjie
@@ -188,35 +169,13 @@ public func createImageSource(uri: String, options: SourceOptions): ImageSource
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp RAW [SVG](#svg标签说明)。|
-|options|[SourceOptions](#struct-sourceoptions)|是|-|图片属性，包括图片序号与默认属性值。|
+|options|[SourceOptions](#class-sourceoptions)|是|-|图片属性，包括图片序号与默认属性值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
-
-  | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980104 | Image initialization abnormal.      |
-  | 62980115 | Invalid image parameter.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
-let imageSource: ImageSource = createImageSource("test.png", sourceOptions)
-```
 
 ## func createImageSource(Int32)
 
@@ -242,34 +201,13 @@ public func createImageSource(fd: Int32): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
-
-  | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980104 | Image initialization abnormal.      |
-  | 62980115 | Invalid image parameter.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let imageSourceApi : ImageSource = createImageSource(0)
-```
-
 ## func createImageSource(Int32, SourceOptions)
 
 ```cangjie
 public func createImageSource(fd: Int32, options: SourceOptions): ImageSource
 ```
 
-**功能：** 通过传入文件描述符来创建图片源实例。
+**功能：** 通过文件描述符创建图片源实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -279,7 +217,7 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fd|Int32|是|-|文件描述符fd。|
+|fd|Int32|是|-|图像文件描述符。|
 |options|[SourceOptions](#class-sourceoptions)|是|-|图片属性，包括图片序号与默认属性值。|
 
 **返回值：**
@@ -287,28 +225,6 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource
 |类型|说明|
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
-
-  | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980104 | Image initialization abnormal.      |
-  | 62980115 | Invalid image parameter.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
-let imageSource: ImageSource = createImageSource(0, sourceOptions)
-```
 
 ## func createImageSource(Array\<UInt8>)
 
@@ -333,28 +249,6 @@ public func createImageSource(buf: Array<UInt8>): ImageSource
 |类型|说明|
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
-
-  | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980104 | Image initialization abnormal.      |
-  | 62980115 | Invalid image parameter.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let buf: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
-let imageSourceApi: ImageSource = createImageSource(buf)
-```
 
 ## func createImageSource(Array\<UInt8>, SourceOptions)
 
@@ -381,29 +275,6 @@ public func createImageSource(buf: Array<UInt8>, options: SourceOptions): ImageS
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
-
-  | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980104 | Image initialization abnormal.      |
-  | 62980115 | Invalid image parameter.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
-```
-
 ## func createImageSource(RawFileDescriptor, SourceOptions)
 
 ```cangjie
@@ -429,28 +300,6 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-import ohos.resource_manager.ResourceManager
-import ohos.base.*
-
-let resourceManager = ResourceManager.getResourceManager(Global.getStageContext()) // 需获取Context应用上下文，详见本文使用说明
-try {
-    let rawfd = resourceManager.getRawFd("test.png")
-    createImageSource(rawfd)
-} catch (e: BusinessException) {
-    let code = e.code
-    let message = e.message
-    AppLog.info("getRawFd failed, error code: ${code}, message: ${message}.")
-}
-```
-
 ## func createIncrementalSource(Array\<UInt8>, SourceOptions)
 
 ```cangjie
@@ -463,6 +312,7 @@ public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions =
 
 - 获取图片信息：指定序号-[getImageInfo](#func-getimageinfouint32)、直接获取-[getImageInfo](#func-getimageinfo)
 - 获取图片中给定索引处图像的指定属性键的值：[getImageProperty](#func-getimagepropertypropertykey-imagepropertyoptions)
+- 批量获取图片中的指定属性键的值：[getImageProperties](#func-getimagepropertiesarraypropertykey)
 - 更新增量数据：[updateData](#func-updatedataarrayuint8-bool-uint32-uint32)
 - 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](#func-createpixelmapdecodingoptions)
 - 释放图片源实例：[release](#func-release-1)
@@ -483,19 +333,6 @@ public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions =
 |类型|说明|
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回图片源。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let buf = Array<UInt8>(1, repeat: 0)
-let imageSource = CreateIncrementalSource(buf)
-```
 
 ## func createPixelMap(Array\<UInt8>, InitializationOptions)
 
@@ -524,26 +361,11 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
-  | :------- | :--------------------------------------------|
-  | 62980096 | If the operation failed. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let color: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
-let opts: InitializationOptions = InitializationOptions(editable: true, pixelFormat: RGBA_8888,
-    size: Size(height: 4, width: 6))
-let pixelMap = createPixelMap(color, opts)
-```
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 
 ## class Component
 
@@ -642,14 +464,14 @@ public class DecodingOptions {
     public var desiredDynamicRange: DecodingDynamicRange
     public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = false,
         desiredSize!: Size = Size(0, 0), desiredRegion!: Region = Region(Size(0, 0), 0, 0),
-        desiredPixelFormat!: PixelMapFormat = UNKNOWN, index!: UInt32 = 0, fitDensity!: Int32 = 0,
-        desiredColorSpace!: ?ColorSpaceManager = None, desiredDynamicRange!: DecodingDynamicRange = SDR)
+        desiredPixelFormat!: PixelMapFormat = Unknown, index!: UInt32 = 0, fitDensity!: Int32 = 0,
+        desiredColorSpace!: ?ColorSpaceManager = None, desiredDynamicRange!: DecodingDynamicRange = Sdr)
 }
 ```
 
 **功能：** 图像解码设置选项。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -661,11 +483,11 @@ public var desiredColorSpace:?ColorSpaceManager
 
 **功能：** 目标色彩空间。
 
-**类型：** ?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)
+**类型：** ?[ColorSpaceManager](#class-colorspacemanager)
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -677,7 +499,7 @@ public var desiredDynamicRange: DecodingDynamicRange
 
 **功能：** 目标动态范围，默认值为SDR。
 
-通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource不支持设置此属性，默认解码为SDR内容。
+通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource不支持设置此属性，默认解码为SDR内容。
 
 如果平台不支持HDR，设置无效，默认解码为SDR内容。
 
@@ -685,7 +507,7 @@ public var desiredDynamicRange: DecodingDynamicRange
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -701,7 +523,7 @@ public var desiredPixelFormat: PixelMapFormat
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -717,7 +539,7 @@ public var desiredRegion: Region
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -733,7 +555,7 @@ public var desiredSize: Size
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -749,7 +571,7 @@ public var editable: Bool
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -765,7 +587,7 @@ public var fitDensity: Int32
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -781,7 +603,7 @@ public var index: UInt32
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -797,7 +619,7 @@ public var rotate: UInt32
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -813,7 +635,7 @@ public var sampleSize: UInt32
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -822,13 +644,13 @@ public var sampleSize: UInt32
 ```cangjie
 public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = false,
     desiredSize!: Size = Size(0, 0), desiredRegion!: Region = Region(Size(0, 0), 0, 0),
-    desiredPixelFormat!: PixelMapFormat = UNKNOWN, index!: UInt32 = 0, fitDensity!: Int32 = 0,
-    desiredColorSpace!: ?ColorSpaceManager = None, desiredDynamicRange!: DecodingDynamicRange = SDR)
+    desiredPixelFormat!: PixelMapFormat = Unknown, index!: UInt32 = 0, fitDensity!: Int32 = 0,
+    desiredColorSpace!: ?ColorSpaceManager = None, desiredDynamicRange!: DecodingDynamicRange = Sdr)
 ```
 
 **功能：** 创建DecodingOptions对象。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -841,11 +663,11 @@ public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = fals
 |editable|Bool|否|false|**命名参数。** 是否可编辑。当取值为false时，图片不可二次编辑，如crop等操作将失败。|
 |desiredSize|[Size](#class-size)|否|Size(0, 0)|**命名参数。** 期望输出大小。|
 |desiredRegion|[Region](#class-region)|否|Region(Size(0, 0), 0, 0)|**命名参数。** 解码区域。|
-|desiredPixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|UNKNOWN|**命名参数。** 解码的像素格式。|
+|desiredPixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|Unknown|**命名参数。** 解码的像素格式。|
 |index|UInt32|否|0|**命名参数。** 解码图片序号。|
 |fitDensity|Int32|否|0|**命名参数。** 图像像素密度，单位为ppi。|
-|desiredColorSpace|?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
-|desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|SDR|**命名参数。** 目标动态范围。<br>通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource不支持设置此属性，默认解码为SDR内容。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
+|desiredColorSpace|?[ColorSpaceManager](#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
+|desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。<br>通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource不支持设置此属性，默认解码为SDR内容。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
 
 ## class Image
 
@@ -940,9 +762,10 @@ public func getComponent(componentType: ComponentType): Component
 
 import kit.ImageKit.*
 
-let imageCreator = createImageCreator(8192, 8, 4, 8)
+let size = Size(8, 8192)
+let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
 let img = imageCreator.dequeueImage()
-let component : Component = img.getComponent(ComponentType.JPEG)
+let component : Component = img.getComponent(ComponentType.Jpeg)
 ```
 
 ### func release()
@@ -966,7 +789,8 @@ public func release(): Unit
 
 import kit.ImageKit.*
 
-let imageCreator = createImageCreator(8192, 8, 4, 8)
+let size = Size(8, 8192)
+let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
 let img = imageCreator.dequeueImage()
 img.release()
 ```
@@ -1042,7 +866,8 @@ public func dequeueImage(): Image
 
 import kit.ImageKit.*
 
-var imageCreator = createImageCreator(8192, 8, 4, 8)
+let size = Size(8, 8192)
+var imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
 var image = imageCreator.dequeueImage()
 ```
 
@@ -1073,7 +898,8 @@ public func queueImage(image: Image): Unit
 
 import kit.ImageKit.*
 
-var imageCreator = createImageCreator(8192, 8, 4, 8)
+let size = Size(8, 8192)
+var imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
 var image = imageCreator.dequeueImage()
 imageCreator.queueImage(image)
 ```
@@ -1099,7 +925,8 @@ public func release(): Unit
 
 import kit.ImageKit.*
 
-let imageCreator = createImageCreator(8192, 8, 4, 8)
+let size = Size(8, 8192)
+let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
 imageCreator.release()
 ```
 
@@ -1266,7 +1093,7 @@ public prop supportedFormats: Array<String>
 ### func packToData(ImageSource, PackingOption)
 
 ```cangjie
-public func packToData(source: ImageSource, option: PackingOption): Array<UInt8>
+public func packToData(source: ImageSource, options: PackingOption): Array<UInt8>
 ```
 
 **功能：** 图片压缩或重新编码。
@@ -1280,7 +1107,7 @@ public func packToData(source: ImageSource, option: PackingOption): Array<UInt8>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |source|[ImageSource](#class-imagesource)|是|-|打包的图片源。|
-|option|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
+|options|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
 
 **返回值：**
 
@@ -1290,19 +1117,19 @@ public func packToData(source: ImageSource, option: PackingOption): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980115|The operation failed.|
-  |62980096|If the parameter is invalid.|
-  |62980101|The image data is abnormal.|
-  |62980106|The image is too large.|
-  |62980113|Unknown image format.|
-  |62980119|If encoder occur error during encoding.|
-  |62980120|Add pixelmap out of range.|
-  |62980172|Failed to encode icc.|
-  |62980252|Failed to create surface.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | If the parameter is invalid. |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980101 | The image data is abnormal. |
+  | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
+  | 62980113 | Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted. |
+  | 62980119 | Failed to encode the image. |
+  | 62980120 | Add pixelmap out of range. |
+  | 62980172 | Failed to encode icc. |
+  | 62980252 | Failed to create surface. |
 
 **示例：**
 
@@ -1313,8 +1140,11 @@ public func packToData(source: ImageSource, option: PackingOption): Array<UInt8>
 
 import kit.ImageKit.*
 
-var imageSource = createImageSource("xxx/test.jpg")
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSource: ImageSource = createImageSource(data, sourceOptions)
 var imagePacker = createImagePacker()
+let supportedFormats = imagePacker.supportedFormats
 let packingOption = PackingOption("image/jpeg", 98)
 let packRes = imagePacker.packToData(imageSource, packingOption)
 ```
@@ -1322,7 +1152,7 @@ let packRes = imagePacker.packToData(imageSource, packingOption)
 ### func packToData(PixelMap, PackingOption)
 
 ```cangjie
-public func packToData(source: PixelMap, option: PackingOption): Array<UInt8>
+public func packToData(source: PixelMap, options: PackingOption): Array<UInt8>
 ```
 
 **功能：** 图片压缩或重新编码。
@@ -1336,7 +1166,7 @@ public func packToData(source: PixelMap, option: PackingOption): Array<UInt8>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |source|[PixelMap](#class-pixelmap)|是|-|打包的图片源。|
-|option|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
+|options|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
 
 **返回值：**
 
@@ -1346,19 +1176,19 @@ public func packToData(source: PixelMap, option: PackingOption): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980115|The operation failed.|
-  |62980096|If the parameter is invalid.|
-  |62980101|The image data is abnormal.|
-  |62980106|The image is too large.|
-  |62980113|Unknown image format.|
-  |62980119|If encoder occur error during encoding.|
-  |62980120|Add pixelmap out of range.|
-  |62980172|Failed to encode icc.|
-  |62980252|Failed to create surface.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | If the parameter is invalid. |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980101 | The image data is abnormal. |
+  | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
+  | 62980113 | Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted. |
+  | 62980119 | Failed to encode the image. |
+  | 62980120 | Add pixelmap out of range. |
+  | 62980172 | Failed to encode icc. |
+  | 62980252 | Failed to create surface. |
 
 **示例：**
 
@@ -1371,68 +1201,20 @@ import kit.ImageKit.*
 
 var colors: Array<UInt8> = [80, 2, 4, 8, 40, 2, 4, 8]
 var pm = createPixelMap(colors,
-    InitializationOptions(scaleMode: ScaleMode.CENTER_CROP, size: Size(height: 2, width: 1)))
+    InitializationOptions(Size(2, 1), scaleMode: ScaleMode.CenterCrop))
 var imagePacker = createImagePacker()
 let supportedFormats = imagePacker.supportedFormats
 let packingOption = PackingOption("image/jpeg", 98)
 let packRes = imagePacker.packToData(pm, packingOption)
 ```
 
-### func packToFile(PixelMap, Int32, PackingOption)
-
-```cangjie
-public func packToFile(source: PixelMap, fd: Int32, option: PackingOption): Unit
-```
-
-**功能：** 图片压缩或重新打包到文件中。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|source|[PixelMap](#class-pixelmap)|是|-|打包的图片源。|
-|fd|Int32|是|-|打包的目的文件的文件描述符。|
-|option|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-import ohos.file_fs.*
-
-let imagePacker = createImagePacker()
-var colors: Array<UInt8> = [80, 2, 4, 8, 40, 2, 4, 8]
-var pm = createPixelMap(colors,
-    InitializationOptions(scaleMode: ScaleMode.CENTER_CROP, size: Size(height: 4, width: 3)))
-var fd: Int32 = 0
-let filePath = "data/storage/el1/base/temp.txt"
-let file = FileFs.open(
-    filePath,
-    mode: (OpenMode
-        .CREATE
-        .mode | OpenMode
-        .READ_WRITE
-        .mode)
-)
-let packingOption = PackingOption("image/jpeg", 98)
-imagePacker.packToFile(pm, IntNative(fd), packingOption)
-```
-
 ### func packToFile(ImageSource, Int32, PackingOption)
 
 ```cangjie
-public func packToFile(source: ImageSource, fd: Int32, option: PackingOption): Unit
+public func packToFile(source: ImageSource, fd: Int32, options: PackingOption): Unit
 ```
 
-**功能：** 图片压缩或重新打包到文件中。
+**功能：** 指定编码参数，将Picture直接编码进文件。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -1442,9 +1224,25 @@ public func packToFile(source: ImageSource, fd: Int32, option: PackingOption): U
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|source|[ImageSource](#class-imagesource)|是|-|打包的图片源。|
-|fd|Int32|是|-|打包的目的文件的文件描述符。|
-|option|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
+|source|[ImageSource](#class-imagesource)|是|-|编码的Picture资源。|
+|fd|Int32|是|-|文件描述符。|
+|options|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980101 | The image data is abnormal. |
+  | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
+  | 62980113 | Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted. |
+  | 62980115 | Invalid input parameter. |
+  | 62980119 | Failed to encode the image. |
+  | 62980120 | Add pixelmap out of range. |
+  | 62980172 | Failed to encode icc. |
+  | 62980252 | Failed to create surface. |
 
 **示例：**
 
@@ -1454,23 +1252,77 @@ public func packToFile(source: ImageSource, fd: Int32, option: PackingOption): U
 // index.cj
 
 import kit.ImageKit.*
-import ohos.file_fs.*
+import kit.CoreFileKit.{FileIo, OpenMode}
 
-let imagePacker = createImagePacker()
-var colors: Array<UInt8> = [80, 2, 4, 8, 40, 2, 4, 8]
-var imageSource = createImageSource("xxx/test.jpg")
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSource: ImageSource = createImageSource(data, sourceOptions)
 var fd: Int32 = 0
-let filePath = "data/storage/el1/base/temp.txt"
-let file = FileFs.open(
-    filePath,
-    mode: (OpenMode
-        .CREATE
-        .mode | OpenMode
-        .READ_WRITE
-        .mode)
-)
+let filePath = "data/storage/el1/base/xxx.txt"
+let file = FileIo.open(filePath,mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let packingOption = PackingOption("image/jpeg", 98)
-imagePacker.packToFile(imageSource, IntNative(fd), packingOption)
+let imagePacker = createImagePacker()
+imagePacker.packToFile(imageSource, fd, packingOption)
+```
+
+### func packToFile(PixelMap, Int32, PackingOption)
+
+```cangjie
+public func packToFile(source: PixelMap, fd: Int32, options: PackingOption): Unit
+```
+
+**功能：** 指定编码参数，将Picture直接编码进文件。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|source|[PixelMap](#class-pixelmap)|是|-|编码的Picture资源。|
+|fd|Int32|是|-|文件描述符。|
+|options|[PackingOption](#class-packingoption)|是|-|设置打包参数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980101 | The image data is abnormal. |
+  | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
+  | 62980113 | Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted. |
+  | 62980115 | Invalid input parameter. |
+  | 62980119 | Failed to encode the image. |
+  | 62980120 | Add pixelmap out of range. |
+  | 62980172 | Failed to encode icc. |
+  | 62980252 | Failed to create surface. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+import kit.CoreFileKit.{FileIo, OpenMode}
+
+let color: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
+let opts: InitializationOptions = InitializationOptions(
+    Size(4, 6),
+    editable: true,
+    pixelFormat: PixelMapFormat.Rgba8888)
+let pixelMap = createPixelMap(color, opts)
+var fd: Int32 = 0
+let filePath = "data/storage/el1/base/xxx.txt"
+let file = FileIo.open(filePath,mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
+let packingOption = PackingOption("image/jpeg", 98)
+let imagePacker = createImagePacker()
+imagePacker.packToFile(pixelMap, fd, packingOption)
 ```
 
 ### func release()
@@ -1504,13 +1356,13 @@ imagePacker.release()
 public class ImagePropertyOptions {
     public var index: UInt32
     public var defaultValue: String
-    public ImagePropertyOptions(index!: UInt32 = 0, defaultValue!: String = "")
+    public init(index!: UInt32 = 0, defaultValue!: String = "")
 }
 ```
 
 **功能：** 表示查询图片属性的索引。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -1526,7 +1378,7 @@ public var defaultValue: String
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -1542,19 +1394,19 @@ public var index: UInt32
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
-### ImagePropertyOptions(UInt32, String)
+### init(UInt32, String)
 
 ```cangjie
-public ImagePropertyOptions(index!: UInt32 = 0, defaultValue!: String = "")
+public init(index!: UInt32 = 0, defaultValue!: String = "")
 ```
 
 **功能：** 创建ImagePropertyOptions对象。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 21
 
@@ -1562,8 +1414,8 @@ public ImagePropertyOptions(index!: UInt32 = 0, defaultValue!: String = "")
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|index|UInt32|否|0|**命名参数。** 图片序号。|
-|defaultValue|String|否|""|**命名参数。** 默认属性值。|
+|index|UInt32|否|0| **命名参数。** 图片序号。|
+|defaultValue|String|否|""| **命名参数。** 默认属性值。|
 
 ## class ImageReceiver
 
@@ -1654,7 +1506,8 @@ public func getReceivingSurfaceId(): String
 
 import kit.ImageKit.*
 
-var receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = Size(8, 8192)
+var receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let id: String = receiver.getReceivingSurfaceId()
 ```
 
@@ -1679,7 +1532,8 @@ public func release(): Unit
 
 import kit.ImageKit.*
 
-var receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = Size(8, 8192)
+var receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 receiver.release()
 ```
 
@@ -1727,7 +1581,7 @@ public func createPixelMap(options!: DecodingOptions = DecodingOptions()): Pixel
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|[DecodingOptions](#class-decodingoptions)|否|DecodingOptions()| **命名参数。** 解码参数。|
+|options|[DecodingOptions](#class-decodingoptions)|否|DecodingOptions()|**命名参数。** 解码参数。|
 
 **返回值：**
 
@@ -1745,15 +1599,15 @@ public func createPixelMap(options!: DecodingOptions = DecodingOptions()): Pixel
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let option = DecodingOptions(
     sampleSize: 1,
     rotate: 10,
     editable: true,
-    desiredSize: Size(height: 3, width: 4),
-    desiredRegion: Region(Size(height: 3, width: 4), 0, 0),
-    desiredPixelFormat: PixelMapFormat.RGBA_8888,
+    desiredSize: Size(3, 4),
+    desiredRegion: Region(Size(3, 4), 0, 0),
+    desiredPixelFormat: PixelMapFormat.Rgba8888,
     index: 0,
     fitDensity: 20
 )
@@ -1776,7 +1630,7 @@ public func createPixelMapList(options!: DecodingOptions = DecodingOptions()): A
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|[DecodingOptions](#class-decodingoptions)|否|DecodingOptions()| **命名参数。** 解码参数。|
+|options|[DecodingOptions](#class-decodingoptions)|否|DecodingOptions()|**命名参数。** 解码参数。|
 
 **返回值：**
 
@@ -1786,27 +1640,23 @@ public func createPixelMapList(options!: DecodingOptions = DecodingOptions()): A
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980096|The operation failed.|
-  |62980099|The shared memory data is abnormal.|
-  |62980101|The image data is abnormal.|
-  |62980103|The image data is not supported.|
-  |62980106|The image is too large.|
-  |62980109|Failed to crop the image.|
-  |62980110|The image source data is incorrect.|
-  |62980111|The image source data is incomplete.|
-  |62980112|The image format does not match.|
-  |62980113|Unknown image format.|
-  |62980115|Invalid image parameter.|
-  |62980116|Failed to decode the image.|
-  |62980118|Failed to create the image plugin.|
-  |62980122|The image decoding header is abnormal.|
-  |62980137|Invalid media operation.|
-  |62980173|The DMA memory does not exist.|
-  |62980174|The DMA memory data is abnormal.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980099 | The shared memory data is abnormal. |
+  | 62980101 | The image data is abnormal. |
+  | 62980103 | The image data is not supported. |
+  | 62980106 | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
+  | 62980109 | Failed to crop the image. |
+  | 62980111 | The image source data is incomplete. |
+  | 62980115 | Invalid image parameter. |
+  | 62980116 | Failed to decode the image. |
+  | 62980118 | Failed to create the image plugin. |
+  | 62980137 | Invalid media operation. |
+  | 62980173 | The DMA memory does not exist. |
+  | 62980174 | The DMA memory data is abnormal. |
 
 ### func getDelayTimeList()
 
@@ -1828,21 +1678,18 @@ public func getDelayTimeList(): Array<Int32>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980096|The operation failed.|
-  |62980110|The image source data is incorrect.|
-  |62980111|The image source data is incomplete.|
-  |62980112|The image format does not match.|
-  |62980113|Unknown image format.|
-  |62980115|Invalid image parameter.|
-  |62980116|Failed to decode the image.|
-  |62980118|Failed to create the image plugin.|
-  |62980122|The image decoding header is abnormal.|
-  |62980137|Invalid media operation.|
-  |62980149|Invalid MIME type for the image source.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980110 | The image source data is incorrect. |
+  | 62980111 | The image source data is incomplete. |
+  | 62980115 | Invalid image parameter. |
+  | 62980116 | Failed to decode the image. |
+  | 62980118 | Failed to create the image plugin. |
+  | 62980122 | Failed to decode the image header. |
+  | 62980149 | Invalid MIME type for the image source. |
 
 ### func getFrameCount()
 
@@ -1864,20 +1711,19 @@ public func getFrameCount(): UInt32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980096|The operation failed.|
-  |62980110|The image source data is incorrect.|
-  |62980111|The image source data is incomplete.|
-  |62980112|The image format does not match.|
-  |62980113|Unknown image format.|
-  |62980115|Invalid image parameter.|
-  |62980116|Failed to decode the image.|
-  |62980118|Failed to create the image plugin.|
-  |62980122|The image decoding header is abnormal.|
-  |62980137|Invalid media operation.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980111 | The image source data is incomplete. |
+  | 62980112 | The image format does not match. |
+  | 62980113 | Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted. |
+  | 62980115 | Invalid image parameter. |
+  | 62980116 | Failed to decode the image. |
+  | 62980118 | Failed to create the image plugin. |
+  | 62980122 | Failed to decode the image header. |
+  | 62980137 | Invalid media operation. |
 
 ### func getImageInfo(UInt32)
 
@@ -1895,7 +1741,7 @@ public func getImageInfo(index!: UInt32 = 0): ImageInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|index|UInt32|否|0| **命名参数。** 创建图片源时的序号，不选择时默认为0。|
+|index|UInt32|否|0|**命名参数。** 创建图片源时的序号，不选择时默认为0。|
 
 **返回值：**
 
@@ -1913,7 +1759,7 @@ public func getImageInfo(index!: UInt32 = 0): ImageInfo
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 imageSourceApi.getImageInfo(index : 0)
 ```
@@ -1943,6 +1789,25 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 |:----|:----|
 |String|获取图片属性值，如获取失败则返回属性默认值。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;3.Parameter verification failed; |
+  | 62980096 | The operation failed. Possible cause: 1.Image upload exception.2. Decoding process exception. 3. Insufficient memory. |
+  | 62980103 | The image data is not supported. |
+  | 62980110 | The image source data is incorrect. |
+  | 62980111 | The image source data is incomplete. |
+  | 62980112 | The image format does not match. |
+  | 62980113 | Unknown image format.The image data provided is not in a recognized or supported format, or it may be occorrupted. |
+  | 62980115 | Invalid image parameter. |
+  | 62980118 | Failed to create the image plugin. |
+  | 62980122 | Failed to decode the image header. |
+  | 62980123 | The image does not support EXIF decoding. |
+  | 62980135 | The EXIF value is invalid. |
+
 **示例：**
 
 <!-- compile -->
@@ -1953,9 +1818,9 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
-imageSourceApi.getImageProperty(IMAGE_LENGTH)
+imageSourceApi.getImageProperty(PropertyKey.ImageLength)
 ```
 
 ### func modifyImageProperty(PropertyKey, String)
@@ -1976,6 +1841,18 @@ public func modifyImageProperty(key: PropertyKey, value: String): Unit
 |:---|:---|:---|:---|:---|
 |key|[PropertyKey](#enum-propertykey)|是|-|图片属性名。|
 |value|String|是|-|属性值。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
+  | 62980123 | The image does not support EXIF decoding. |
+  | 62980133 | The EXIF data is out of range. |
+  | 62980135 | The EXIF value is invalid. |
+  | 62980146 | The EXIF data failed to be written to the file. |
 
 ### func release()
 
@@ -1999,7 +1876,7 @@ public func release(): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 imageSourceApi.release()
 ```
@@ -2035,7 +1912,7 @@ public func updateData(buf: Array<UInt8>, isFinished: Bool, offset: UInt32, leng
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let testPng = Array<UInt8>(16500, repeat: 0)
 let bufferSize = 5000
@@ -2061,9 +1938,8 @@ public class InitializationOptions {
     public var pixelFormat: PixelMapFormat
     public var scaleMode: ScaleMode
     public var size: Size
-    public init(alphaType!: AlphaType = AlphaType.PREMUL, editable!: Bool = false, srcPixelFormat!: PixelMapFormat = PixelMapFormat.BGRA_8888,
-        pixelFormat!: PixelMapFormat = PixelMapFormat.BGRA_8888, scaleMode!: ScaleMode = ScaleMode.FIT_TARGET_SIZE,
-        size!: Size)
+    public init(size: Size, alphaType!: AlphaType = AlphaType.Premul, editable!: Bool = false, srcPixelFormat!: PixelMapFormat = PixelMapFormat.Bgra8888,
+        pixelFormat!: PixelMapFormat = PixelMapFormat.Bgra8888, scaleMode!: ScaleMode = ScaleMode.FitTargetSize)
 }
 ```
 
@@ -2169,12 +2045,11 @@ public var srcPixelFormat: PixelMapFormat
 
 **起始版本：** 21
 
-### init(AlphaType, Bool, PixelMapFormat, PixelMapFormat, ScaleMode, Size)
+### init(Size, AlphaType, Bool, PixelMapFormat, PixelMapFormat, ScaleMode)
 
 ```cangjie
-public init(alphaType!: AlphaType = AlphaType.PREMUL, editable!: Bool = false, srcPixelFormat!: PixelMapFormat = PixelMapFormat.BGRA_8888,
-    pixelFormat!: PixelMapFormat = PixelMapFormat.BGRA_8888, scaleMode!: ScaleMode = ScaleMode.FIT_TARGET_SIZE,
-    size!: Size)
+public init(size: Size, alphaType!: AlphaType = AlphaType.Premul, editable!: Bool = false, srcPixelFormat!: PixelMapFormat = PixelMapFormat.Bgra8888,
+    pixelFormat!: PixelMapFormat = PixelMapFormat.Bgra8888, scaleMode!: ScaleMode = ScaleMode.FitTargetSize)
 ```
 
 **功能：** 创建InitializationOptions对象。
@@ -2187,12 +2062,12 @@ public init(alphaType!: AlphaType = AlphaType.PREMUL, editable!: Bool = false, s
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|alphaType|[AlphaType](#enum-alphatype)|否|AlphaType.PREMUL|**命名参数。** 透明度。|
-|editable|Bool|否|false|**命名参数。** 是否可编辑。|
-|srcPixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.BGRA_8888|**命名参数。** 传入的buffer数据的像素格式。|
-|pixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.BGRA_8888|**命名参数。**  像素格式。|
-|scaleMode|[ScaleMode](#enum-scalemode)|否|ScaleMode.FIT_TARGET_SIZE|**命名参数。** 缩略值。|
 |size|[Size](#class-size)|是|-|**命名参数。** 创建图片大小。|
+|alphaType|[AlphaType](#enum-alphatype)|否|AlphaType.Premul|**命名参数。** 透明度。|
+|editable|Bool|否|false|**命名参数。** 是否可编辑。|
+|srcPixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.Bgra8888|**命名参数。** 传入的buffer数据的像素格式。|
+|pixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.Bgra8888|**命名参数。**  像素格式。|
+|scaleMode|[ScaleMode](#enum-scalemode)|否|ScaleMode.FitTargetSize|**命名参数。** 缩略值。|
 
 ## class PackingOption
 
@@ -2203,14 +2078,14 @@ public class PackingOption {
     public var bufferSize: UInt64
     public var desiredDynamicRange: PackingDynamicRange
     public var needsPackProperties: Bool
-    public init(format: String, quality: UInt8, desiredDynamicRange: PackingDynamicRange, needsPackProperties: Bool,
-        bufferSize!: UInt64 = 25 * 1024 * 1024)
+    public init(format: String, quality: UInt8, bufferSize!: UInt64 = 25  * 1024  * 1024,
+        desiredDynamicRange!: PackingDynamicRange = Sdr, needsPackProperties!: Bool = false)
 }
 ```
 
 **功能：** 表示图片打包选项。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
@@ -2220,13 +2095,13 @@ public class PackingOption {
 public var bufferSize: UInt64
 ```
 
-**功能：** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。
+**功能：** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int-packingoption)不受此参数限制。
 
 **类型：** UInt64
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
@@ -2242,7 +2117,7 @@ public var desiredDynamicRange: PackingDynamicRange
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
@@ -2258,7 +2133,7 @@ public var format: String
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
@@ -2274,7 +2149,7 @@ public var needsPackProperties: Bool
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
@@ -2290,20 +2165,20 @@ public var quality: UInt8
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
-### init(String, UInt8, PackingDynamicRange, Bool, UInt64)
+### init(String, UInt8, UInt64, PackingDynamicRange, Bool)
 
 ```cangjie
-public init(format: String, quality: UInt8, desiredDynamicRange: PackingDynamicRange, needsPackProperties: Bool,
-    bufferSize!: UInt64 = 25 * 1024 * 1024)
+public init(format: String, quality: UInt8, bufferSize!: UInt64 = 25  * 1024  * 1024,
+    desiredDynamicRange!: PackingDynamicRange = Sdr, needsPackProperties!: Bool = false)
 ```
 
 **功能：** 创建PackingOption对象。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 21
 
@@ -2313,9 +2188,9 @@ public init(format: String, quality: UInt8, desiredDynamicRange: PackingDynamicR
 |:---|:---|:---|:---|:---|
 |format|String|是|-|目标格式。</br>当前只支持"image/jpeg"、"image/webp"、"image/png"和"image/heif"（不同硬件设备支持情况不同）。|
 |quality|UInt8|是|-|JPEG编码中设定输出图片质量的参数，取值范围为0-100。0质量最低，100质量最高，质量越高生成图片所占空间越大。|
-|desiredDynamicRange|[PackingDynamicRange](#enum-packingdynamicrange)|是|-|**命名参数。** 目标动态范围。|
-|needsPackProperties|Bool|是|-|**命名参数。** 是否需要编码图片属性信息，例如EXIF。|
-|bufferSize|UInt64|否|25 * 1024 * 1024|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。|
+|bufferSize|UInt64|否|25 * 1024 * 1024|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-intnative-packingoption)不受此参数限制。|
+|desiredDynamicRange|[PackingDynamicRange](#enum-packingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。|
+|needsPackProperties|Bool|否|false|**命名参数。** 是否需要编码图片属性信息，例如EXIF。|
 
 ## class PixelMap
 
@@ -2323,11 +2198,11 @@ public init(format: String, quality: UInt8, desiredDynamicRange: PackingDynamicR
 public class PixelMap {}
 ```
 
-**功能：** 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint8-initializationoptions)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
+**功能：** 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint-initializationoptions)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
 
 PixelMap支持通过worker跨线程调用。当PixelMap通过Worker跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501服务器不具备完成请求的功能。
 
-在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint8-initializationoptions)构建一个PixelMap对象。
+在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint-initializationoptions)构建一个PixelMap对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2381,18 +2256,18 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|targetColorSpace|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|是|-|目标色彩空间，支持SRGB、DCI_P3、DISPLAY_P3、ADOBE_RGB_1998。|
+|targetColorSpace|[ColorSpaceManager](#class-colorspacemanager)|是|-|目标色彩空间，支持Srgb、DCI_P3、DisplayP3、ADOBE_RGB_1998。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|The parameter check failed.|
-  |62980104|Failed to initialize the internal object.|
-  |62980108|Failed to convert the color space.|
-  |62980115|Invalid image parameter.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 62980104 | Failed to initialize the internal object. |
+  | 62980108 | Failed to convert the color space. |
+  | 62980115 | Invalid image parameter. |
 
 ### func createAlphaPixelmap()
 
@@ -2422,7 +2297,7 @@ public func createAlphaPixelmap(): PixelMap
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let alphaPixelmap = pixelMap.createAlphaPixelmap()
@@ -2456,10 +2331,10 @@ public func crop(region: Region): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
-let region: Region = Region(Size(height: 100, width: 100), 0, 0)
+let region: Region = Region(Size(100, 100), 0, 0)
 pixelMap.crop(region)
 ```
 
@@ -2492,7 +2367,7 @@ public func flip(horizontal: Bool, vertical: Bool): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let horizontal: Bool = true
@@ -2528,7 +2403,7 @@ public func getBytesNumberPerRow(): UInt32
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let rowCount : UInt32 = pixelMap.getBytesNumberPerRow()
@@ -2550,17 +2425,17 @@ public func getColorSpace(): ColorSpaceManager
 
 |类型|说明|
 |:----|:----|
-|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|图像广色域信息。|
+|[ColorSpaceManager](#class-colorspacemanager)|图像广色域信息。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980101|If the image data abnormal.|
-  |62980103|If the image data unsupport.|
-  |62980115|If the image parameter invalid.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980101 | If the image data abnormal. |
+  | 62980103 | If the image data unsupport. |
+  | 62980115 | If the image parameter invalid. |
 
 ### func getDensity()
 
@@ -2590,7 +2465,7 @@ public func getDensity(): Int32
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let getDensity : Int32 = pixelMap.getDensity()
@@ -2624,7 +2499,7 @@ public func getImageInfo(): ImageInfo
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 pixelMap.getImageInfo()
@@ -2658,7 +2533,7 @@ public func getPixelBytesNumber(): UInt32
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let pixelBytesNumber : UInt32 = pixelMap.getPixelBytesNumber()
@@ -2692,7 +2567,7 @@ public func opacity(rate: Float32): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let rate: Float32 = 0.5
@@ -2727,14 +2602,14 @@ public func readPixels(area: PositionArea): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let area: PositionArea = PositionArea(
     Array<UInt8>(8, repeat: 0),
     0,
     8,
-    Region(Size(height: 1, width: 2), 0, 0)
+    Region(Size(1, 2), 0, 0)
 )
 pixelMap.readPixels(area)
 ```
@@ -2767,7 +2642,7 @@ public func readPixelsToBuffer(dst: Array<UInt8>): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let readBuffer: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
@@ -2796,7 +2671,7 @@ public func release(): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 pixelMap.release()
@@ -2830,7 +2705,7 @@ public func rotate(angle: Float32): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let angle: Float32 = 90.0
@@ -2872,16 +2747,16 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|colorSpace|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|是|-|图像广色域信息。|
+|colorSpace|[ColorSpaceManager](#class-colorspacemanager)|是|-|图像广色域信息。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Image错误码](../../errorcodes/cj-errorcode-image.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Image错误码](../../errorcodes/cj-errorcode-image.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |62980111|If the operation invalid.|
-  |62980115|If the image parameter invalid.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 62980111 | The image source data is incomplete. |
+  | 62980115 | If the image parameter invalid. |
 
 ### func translate(Float32, Float32)
 
@@ -2912,7 +2787,7 @@ public func translate(x: Float32, y: Float32): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let translateX: Float32 = 50.0
@@ -2948,7 +2823,7 @@ public func writeBufferToPixels(src: Array<UInt8>): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let color: Array<UInt8> = Array<UInt8>(96, {i => UInt8(i)}) //96为需要创建的像素buffer大小，取值为：height * width *4
@@ -2983,14 +2858,14 @@ public func writePixels(area: PositionArea): Unit
 import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
-let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let sourceOptions: SourceOptions = SourceOptions(120)
 let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
 let pixelMap = imageSourceApi.createPixelMap()
 let area: PositionArea = PositionArea(
     Array<UInt8>(8, {i => UInt8(i)}),
     0,
     8,
-    Region(Size(height: 1, width: 2), 0, 0)
+    Region(Size(1, 2), 0, 0)
 )
 pixelMap.writePixels(area)
 ```
@@ -3247,8 +3122,8 @@ public init(height: Int32, width: Int32)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|height|Int32|否|0| **命名参数。** 输出图片的高。|
-|width|Int32|否|0| **命名参数。** 输出图片的宽。|
+|height|Int32|是|-|输出图片的高。|
+|width|Int32|是|-|输出图片的宽。|
 
 ## class SourceOptions
 
@@ -3257,7 +3132,7 @@ public class SourceOptions {
     public var sourceDensity: Int32
     public var sourcePixelFormat: PixelMapFormat
     public var sourceSize: Size
-    public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapFormat.UNKNOWN, sourceSize!: Size = Size(0, 0))
+    public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapFormat.Unknown, sourceSize!: Size = Size(0, 0))
 }
 ```
 
@@ -3322,7 +3197,7 @@ public var sourceSize: Size
 ### init(Int32, PixelMapFormat, Size)
 
 ```cangjie
-public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapFormat.UNKNOWN, sourceSize!: Size = Size(0, 0))
+public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapFormat.Unknown, sourceSize!: Size = Size(0, 0))
 ```
 
 **功能：** 创建SourceOptions对象。
@@ -3335,18 +3210,18 @@ public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapF
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|sourceDensity|Int32|否|0| **命名参数。** 图片资源像素密度，单位DPI。<br>在解码参数[DecodingOptions](#class-decodingoptions)未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。<br>缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity >> 1))|
-|sourcePixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.UNKNOWN| **命名参数。** 图片像素格式，默认值为UNKNOWN。|
-|sourceSize|[Size](#class-size)|否|Size(height: 0, width: 0)| **命名参数。** 图像像素大小，默认值为空。|
+|sourceDensity|Int32|是|-|图片资源像素密度，单位DPI。<br>在解码参数[DecodingOptions](#class-decodingoptions)未设置desiredSize的前提下，当前参数SourceOptions.sourceDensity与DecodingOptions.fitDensity非零时将对解码输出的pixelmap进行缩放。<br>缩放后宽计算公式如下(高同理)：(width * fitDensity + (sourceDensity >> 1)) / sourceDensity。|
+|sourcePixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|PixelMapFormat.Unknown|**命名参数** 图片像素格式，默认值为UNKNOWN。|
+|sourceSize|[Size](#class-size)|否|Size(0, 0)|**命名参数** 图像像素大小，默认值为空。|
 
 ## enum AlphaType
 
 ```cangjie
 public enum AlphaType <: Equatable<AlphaType> & ToString {
-    | UNKNOWN
-    | OPAQUE
-    | PREMUL
-    | UNPREMUL
+    | Unknown
+    | Opaque
+    | Premul
+    | UnPremul
     | ...
 }
 ```
@@ -3362,10 +3237,10 @@ public enum AlphaType <: Equatable<AlphaType> & ToString {
 - Equatable\<AlphaType>
 - ToString
 
-### OPAQUE
+### Opaque
 
 ```cangjie
-OPAQUE
+Opaque
 ```
 
 **功能：** 没有alpha或图片不透明。
@@ -3374,10 +3249,10 @@ OPAQUE
 
 **起始版本：** 21
 
-### PREMUL
+### Premul
 
 ```cangjie
-PREMUL
+Premul
 ```
 
 **功能：** RGB前乘alpha。
@@ -3386,25 +3261,25 @@ PREMUL
 
 **起始版本：** 21
 
-### UNKNOWN
+### UnPremul
 
 ```cangjie
-UNKNOWN
+UnPremul
 ```
 
-**功能：** 未知透明度。
+**功能：** RGB不前乘alpha。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
 
-### UNPREMUL
+### Unknown
 
 ```cangjie
-UNPREMUL
+Unknown
 ```
 
-**功能：** RGB不前乘alpha。
+**功能：** 未知透明度。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -3417,10 +3292,6 @@ public operator func !=(other: AlphaType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3442,10 +3313,6 @@ public operator func ==(other: AlphaType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3466,10 +3333,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3480,17 +3343,17 @@ public func toString(): String
 
 ```cangjie
 public enum ComponentType <: Equatable<ComponentType> & ToString {
-    | YUV_Y
-    | YUV_U
-    | YUV_V
-    | JPEG
+    | YuvY
+    | YuvU
+    | YuvV
+    | Jpeg
     | ...
 }
 ```
 
 **功能：** 图像的组件类型。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 
@@ -3499,51 +3362,51 @@ public enum ComponentType <: Equatable<ComponentType> & ToString {
 - Equatable\<ComponentType>
 - ToString
 
-### JPEG
+### Jpeg
 
 ```cangjie
-JPEG
+Jpeg
 ```
 
 **功能：** JPEG 类型。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 
-### YUV_U
+### YuvU
 
 ```cangjie
-YUV_U
+YuvU
 ```
 
 **功能：** 色度信息。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 
-### YUV_V
+### YuvV
 
 ```cangjie
-YUV_V
+YuvV
 ```
 
 **功能：** 色度信息。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 
-### YUV_Y
+### YuvY
 
 ```cangjie
-YUV_Y
+YuvY
 ```
 
 **功能：** 亮度信息。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 21
 
@@ -3554,10 +3417,6 @@ public operator func !=(other: ComponentType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3579,10 +3438,6 @@ public operator func ==(other: ComponentType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3603,10 +3458,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3617,9 +3468,9 @@ public func toString(): String
 
 ```cangjie
 public enum DecodingDynamicRange <: Equatable<DecodingDynamicRange> & ToString {
-    | AUTO
-    | SDR
-    | HDR
+    | Auto
+    | Sdr
+    | Hdr
     | ...
 }
 ```
@@ -3635,34 +3486,34 @@ public enum DecodingDynamicRange <: Equatable<DecodingDynamicRange> & ToString {
 - Equatable\<DecodingDynamicRange>
 - ToString
 
-### AUTO
+### Auto
 
 ```cangjie
-AUTO
+Auto
 ```
 
-**功能：** 自适应，根据图片信息处理。即如果图片本身为HDR图片，则会按照HDR内容解码；反之按照SDR内容解码。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource会解码为SDR内容。
+**功能：** 自适应，根据图片信息处理。即如果图片本身为HDR图片，则会按照HDR内容解码；反之按照SDR内容解码。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource会解码为SDR内容。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
 
-### HDR
+### Hdr
 
 ```cangjie
-HDR
+Hdr
 ```
 
-**功能：** 按照高动态范围处理图片。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource会解码为SDR内容。
+**功能：** 按照高动态范围处理图片。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource会解码为SDR内容。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
 
-### SDR
+### Sdr
 
 ```cangjie
-SDR
+Sdr
 ```
 
 **功能：** 按照标准动态范围处理图片。
@@ -3678,10 +3529,6 @@ public operator func !=(other: DecodingDynamicRange): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3703,10 +3550,6 @@ public operator func ==(other: DecodingDynamicRange): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3727,10 +3570,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3741,8 +3580,8 @@ public func toString(): String
 
 ```cangjie
 public enum ImageFormat <: Equatable<ImageFormat> & ToString {
-    | YCBCR_422_SP
-    | JPEG
+    | Ycbcr422Sp
+    | Jpeg
     | ...
 }
 ```
@@ -3758,10 +3597,10 @@ public enum ImageFormat <: Equatable<ImageFormat> & ToString {
 - Equatable\<ImageFormat>
 - ToString
 
-### JPEG
+### Jpeg
 
 ```cangjie
-JPEG
+Jpeg
 ```
 
 **功能：** JPEG编码格式。
@@ -3770,10 +3609,10 @@ JPEG
 
 **起始版本：** 21
 
-### YCBCR_422_SP
+### Ycbcr422Sp
 
 ```cangjie
-YCBCR_422_SP
+Ycbcr422Sp
 ```
 
 **功能：** YCBCR422半平面格式。
@@ -3789,10 +3628,6 @@ public operator func !=(other: ImageFormat): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3814,10 +3649,6 @@ public operator func ==(other: ImageFormat): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3838,10 +3669,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3852,8 +3679,8 @@ public func toString(): String
 
 ```cangjie
 public enum PackingDynamicRange <: Equatable<PackingDynamicRange> & ToString {
-    | AUTO
-    | SDR
+    | Auto
+    | Sdr
     | ...
 }
 ```
@@ -3869,10 +3696,10 @@ public enum PackingDynamicRange <: Equatable<PackingDynamicRange> & ToString {
 - Equatable\<PackingDynamicRange>
 - ToString
 
-### AUTO
+### Auto
 
 ```cangjie
-AUTO
+Auto
 ```
 
 **功能：** 自适应，根据[pixelmap](#class-pixelmap)内容处理。即如果pixelmap本身为HDR，则会按照HDR内容进行编码；反之按照SDR内容编码。
@@ -3881,10 +3708,10 @@ AUTO
 
 **起始版本：** 21
 
-### SDR
+### Sdr
 
 ```cangjie
-SDR
+Sdr
 ```
 
 **功能：** 按照标准动态范围处理图片。
@@ -3900,10 +3727,6 @@ public operator func !=(other: PackingDynamicRange): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3925,10 +3748,6 @@ public operator func ==(other: PackingDynamicRange): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3949,10 +3768,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3963,18 +3778,18 @@ public func toString(): String
 
 ```cangjie
 public enum PixelMapFormat <: Equatable<PixelMapFormat> & ToString {
-    | UNKNOWN
-    | RGB_565
-    | RGBA_8888
-    | BGRA_8888
-    | RGB_888
-    | ALPHA_8
-    | RGBA_F16
-    | NV21
-    | NV12
-    | RGBA_1010102
-    | YCBCR_P010
-    | YCRCB_P010
+    | Unknown
+    | Rgb565
+    | Rgba8888
+    | Bgra8888
+    | Rgb888
+    | Alpha8
+    | RgbaF16
+    | Nv21
+    | Nv12
+    | Rgba1010102
+    | YcbcrP010
+    | YcrcbP010
     | ...
 }
 ```
@@ -3990,10 +3805,10 @@ public enum PixelMapFormat <: Equatable<PixelMapFormat> & ToString {
 - Equatable\<PixelMapFormat>
 - ToString
 
-### ALPHA_8
+### Alpha8
 
 ```cangjie
-ALPHA_8
+Alpha8
 ```
 
 **功能：** 格式为ALPHA_8。
@@ -4002,10 +3817,10 @@ ALPHA_8
 
 **起始版本：** 21
 
-### BGRA_8888
+### Bgra8888
 
 ```cangjie
-BGRA_8888
+Bgra8888
 ```
 
 **功能：** 格式为BGRA_8888。
@@ -4014,10 +3829,10 @@ BGRA_8888
 
 **起始版本：** 21
 
-### NV12
+### Nv12
 
 ```cangjie
-NV12
+Nv12
 ```
 
 **功能：** 格式为NV12。
@@ -4026,10 +3841,10 @@ NV12
 
 **起始版本：** 21
 
-### NV21
+### Nv21
 
 ```cangjie
-NV21
+Nv21
 ```
 
 **功能：** 格式为NV21。
@@ -4038,46 +3853,10 @@ NV21
 
 **起始版本：** 21
 
-### RGBA_1010102
+### Rgb565
 
 ```cangjie
-RGBA_1010102
-```
-
-**功能：** 格式为RGBA_1010102。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### RGBA_8888
-
-```cangjie
-RGBA_8888
-```
-
-**功能：** 格式为RGBA_8888。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### RGBA_F16
-
-```cangjie
-RGBA_F16
-```
-
-**功能：** 格式为RGBA_F16。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### RGB_565
-
-```cangjie
-RGB_565
+Rgb565
 ```
 
 **功能：** 格式为RGB_565。
@@ -4086,10 +3865,10 @@ RGB_565
 
 **起始版本：** 21
 
-### RGB_888
+### Rgb888
 
 ```cangjie
-RGB_888
+Rgb888
 ```
 
 **功能：** 格式为RGB_888。
@@ -4098,10 +3877,46 @@ RGB_888
 
 **起始版本：** 21
 
-### UNKNOWN
+### Rgba1010102
 
 ```cangjie
-UNKNOWN
+Rgba1010102
+```
+
+**功能：** 格式为RGBA_1010102。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### Rgba8888
+
+```cangjie
+Rgba8888
+```
+
+**功能：** 格式为RGBA_8888。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### RgbaF16
+
+```cangjie
+RgbaF16
+```
+
+**功能：** 格式为RGBA_F16。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### Unknown
+
+```cangjie
+Unknown
 ```
 
 **功能：** 未知格式。
@@ -4110,10 +3925,10 @@ UNKNOWN
 
 **起始版本：** 21
 
-### YCBCR_P010
+### YcbcrP010
 
 ```cangjie
-YCBCR_P010
+YcbcrP010
 ```
 
 **功能：** 格式为YCBCR_P010。
@@ -4122,10 +3937,10 @@ YCBCR_P010
 
 **起始版本：** 21
 
-### YCRCB_P010
+### YcrcbP010
 
 ```cangjie
-YCRCB_P010
+YcrcbP010
 ```
 
 **功能：** 格式为YCRCB_P010。
@@ -4141,10 +3956,6 @@ public operator func !=(other: PixelMapFormat): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4166,10 +3977,6 @@ public operator func ==(other: PixelMapFormat): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -4190,10 +3997,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -4204,57 +4007,57 @@ public func toString(): String
 
 ```cangjie
 public enum PropertyKey <: ToString & Equatable<PropertyKey> {
-    | IMAGE_WIDTH
-    | IMAGE_LENGTH
-    | BITS_PER_SAMPLE
-    | IMAGE_DESCRIPTION
-    | MAKE
-    | MODEL
-    | ORIENTATION
-    | DATE_TIME
-    | PHOTO_MODE
-    | EXPOSURE_TIME
-    | F_NUMBER
-    | GPS_LATITUDE_REF
-    | GPS_LATITUDE
-    | GPS_LONGITUDE_REF
-    | GPS_LONGITUDE
-    | GPS_TIME_STAMP
-    | GPS_DATE_STAMP
-    | ISO_SPEED_RATINGS
-    | SENSITIVITY_TYPE
-    | STANDARD_OUTPUT_SENSITIVITY
-    | RECOMMENDED_EXPOSURE_INDEX
-    | ISO_SPEED
-    | DATE_TIME_ORIGINAL
-    | APERTURE_VALUE
-    | EXPOSURE_BIAS_VALUE
-    | METERING_MODE
-    | LIGHT_SOURCE
-    | FLASH
-    | FOCAL_LENGTH
-    | SCENE_FOOD_CONF
-    | SCENE_STAGE_CONF
-    | SCENE_BLUE_SKY_CONF
-    | SCENE_GREEN_PLANT_CONF
-    | SCENE_BEACH_CONF
-    | SCENE_SNOW_CONF
-    | SCENE_SUNSET_CONF
-    | SCENE_FLOWERS_CONF
-    | SCENE_NIGHT_CONF
-    | SCENE_TEXT_CONF
-    | FACE_COUNT
-    | CAPTURE_MODE
-    | ROLL_ANGLE
-    | PITCH_ANGLE
-    | PHYSICAL_APERTURE
-    | FOCUS_MODE
-    | USER_COMMENT
-    | PIXEL_X_DIMENSION
-    | PIXEL_Y_DIMENSION
-    | SCENE_TYPE
-    | WHITE_BALANCE
-    | FOCAL_LENGTH_IN_35_MM_FILM
+    | ImageWidth
+    | ImageLength
+    | BitsPerSample
+    | ImageDescription
+    | Make
+    | Model
+    | Orientation
+    | DateTime
+    | PhotoMode
+    | ExposureTime
+    | FNumber
+    | GPSLatitudeRef
+    | GPSLatitude
+    | GPSLongitudeRef
+    | GPSLongitude
+    | GPSTimeStamp
+    | GPSDateStamp
+    | ISOSpeedRatings
+    | SensitivityType
+    | StandardOutputSensitivity
+    | RecommendedExposureIndex
+    | ISOSpeed
+    | DateTimeOriginal
+    | ApertureValue
+    | ExposureBiasValue
+    | MeteringMode
+    | LightSource
+    | Flash
+    | FocalLength
+    | SceneFoodConf
+    | SceneStageConf
+    | SceneBlueSkyConf
+    | SceneGreenPlantConf
+    | SceneBeachConf
+    | SceneSnowConf
+    | SceneSunsetConf
+    | SceneFlowersConf
+    | SceneNightConf
+    | SceneTextConf
+    | FaceCount
+    | CaptureMode
+    | RollAngle
+    | PitchAngle
+    | PhysicalAperture
+    | FocusMode
+    | UserComment
+    | PixelXDimension
+    | PixelYDimension
+    | SceneType
+    | WhiteBalance
+    | FocalLengthIn35mmFilm
     | ...
 }
 ```
@@ -4270,10 +4073,10 @@ public enum PropertyKey <: ToString & Equatable<PropertyKey> {
 - ToString
 - Equatable\<PropertyKey>
 
-### APERTURE_VALUE
+### ApertureValue
 
 ```cangjie
-APERTURE_VALUE
+ApertureValue
 ```
 
 **功能：** 光圈值。
@@ -4282,10 +4085,10 @@ APERTURE_VALUE
 
 **起始版本：** 21
 
-### BITS_PER_SAMPLE
+### BitsPerSample
 
 ```cangjie
-BITS_PER_SAMPLE
+BitsPerSample
 ```
 
 **功能：** 每个像素比特数。
@@ -4294,10 +4097,10 @@ BITS_PER_SAMPLE
 
 **起始版本：** 21
 
-### CAPTURE_MODE
+### CaptureMode
 
 ```cangjie
-CAPTURE_MODE
+CaptureMode
 ```
 
 **功能：** 捕获模式。
@@ -4306,10 +4109,10 @@ CAPTURE_MODE
 
 **起始版本：** 21
 
-### DATE_TIME
+### DateTime
 
 ```cangjie
-DATE_TIME
+DateTime
 ```
 
 **功能：** 日期时间。
@@ -4318,10 +4121,10 @@ DATE_TIME
 
 **起始版本：** 21
 
-### DATE_TIME_ORIGINAL
+### DateTimeOriginal
 
 ```cangjie
-DATE_TIME_ORIGINAL
+DateTimeOriginal
 ```
 
 **功能：** 拍摄时间，例如2022:09:06 15:48:00。
@@ -4330,10 +4133,10 @@ DATE_TIME_ORIGINAL
 
 **起始版本：** 21
 
-### EXPOSURE_BIAS_VALUE
+### ExposureBiasValue
 
 ```cangjie
-EXPOSURE_BIAS_VALUE
+ExposureBiasValue
 ```
 
 **功能：** 曝光偏差值。
@@ -4342,10 +4145,10 @@ EXPOSURE_BIAS_VALUE
 
 **起始版本：** 21
 
-### EXPOSURE_TIME
+### ExposureTime
 
 ```cangjie
-EXPOSURE_TIME
+ExposureTime
 ```
 
 **功能：** 曝光时间，例如1/33 sec。
@@ -4354,70 +4157,10 @@ EXPOSURE_TIME
 
 **起始版本：** 21
 
-### FACE_COUNT
+### FNumber
 
 ```cangjie
-FACE_COUNT
-```
-
-**功能：** 人脸数量。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### FLASH
-
-```cangjie
-FLASH
-```
-
-**功能：** 闪光灯,记录闪光灯状态。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### FOCAL_LENGTH
-
-```cangjie
-FOCAL_LENGTH
-```
-
-**功能：** 焦距。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### FOCAL_LENGTH_IN_35_MM_FILM
-
-```cangjie
-FOCAL_LENGTH_IN_35_MM_FILM
-```
-
-**功能：** 焦距35毫米胶片。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### FOCUS_MODE
-
-```cangjie
-FOCUS_MODE
-```
-
-**功能：** 对焦模式。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### F_NUMBER
-
-```cangjie
-F_NUMBER
+FNumber
 ```
 
 **功能：** 光圈值，例如f/1.8。
@@ -4426,10 +4169,70 @@ F_NUMBER
 
 **起始版本：** 21
 
-### GPS_DATE_STAMP
+### FaceCount
 
 ```cangjie
-GPS_DATE_STAMP
+FaceCount
+```
+
+**功能：** 人脸数量。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### Flash
+
+```cangjie
+Flash
+```
+
+**功能：** 闪光灯,记录闪光灯状态。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### FocalLength
+
+```cangjie
+FocalLength
+```
+
+**功能：** 焦距。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### FocalLengthIn35mmFilm
+
+```cangjie
+FocalLengthIn35mmFilm
+```
+
+**功能：** 焦距35毫米胶片。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### FocusMode
+
+```cangjie
+FocusMode
+```
+
+**功能：** 对焦模式。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### GPSDateStamp
+
+```cangjie
+GPSDateStamp
 ```
 
 **功能：** GPS日期戳。
@@ -4438,10 +4241,10 @@ GPS_DATE_STAMP
 
 **起始版本：** 21
 
-### GPS_LATITUDE
+### GPSLatitude
 
 ```cangjie
-GPS_LATITUDE
+GPSLatitude
 ```
 
 **功能：** 图片纬度。修改时应按"度,分,秒"格式传入，如"39,54,7.542"。
@@ -4450,10 +4253,10 @@ GPS_LATITUDE
 
 **起始版本：** 21
 
-### GPS_LATITUDE_REF
+### GPSLatitudeRef
 
 ```cangjie
-GPS_LATITUDE_REF
+GPSLatitudeRef
 ```
 
 **功能：** 纬度引用，例如N或S。
@@ -4462,10 +4265,10 @@ GPS_LATITUDE_REF
 
 **起始版本：** 21
 
-### GPS_LONGITUDE
+### GPSLongitude
 
 ```cangjie
-GPS_LONGITUDE
+GPSLongitude
 ```
 
 **功能：** 图片经度。修改时应按"度,分,秒"格式传入，如"116,19,42.16"。
@@ -4474,10 +4277,10 @@ GPS_LONGITUDE
 
 **起始版本：** 21
 
-### GPS_LONGITUDE_REF
+### GPSLongitudeRef
 
 ```cangjie
-GPS_LONGITUDE_REF
+GPSLongitudeRef
 ```
 
 **功能：** 经度引用，例如W或E。
@@ -4486,10 +4289,10 @@ GPS_LONGITUDE_REF
 
 **起始版本：** 21
 
-### GPS_TIME_STAMP
+### GPSTimeStamp
 
 ```cangjie
-GPS_TIME_STAMP
+GPSTimeStamp
 ```
 
 **功能：** GPS时间戳。
@@ -4498,46 +4301,10 @@ GPS_TIME_STAMP
 
 **起始版本：** 21
 
-### IMAGE_DESCRIPTION
+### ISOSpeed
 
 ```cangjie
-IMAGE_DESCRIPTION
-```
-
-**功能：** 图像信息描述。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### IMAGE_LENGTH
-
-```cangjie
-IMAGE_LENGTH
-```
-
-**功能：** 图片长度。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### IMAGE_WIDTH
-
-```cangjie
-IMAGE_WIDTH
-```
-
-**功能：** 图片宽度。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
-### ISO_SPEED
-
-```cangjie
-ISO_SPEED
+ISOSpeed
 ```
 
 **功能：** ISO速度等级。
@@ -4546,10 +4313,10 @@ ISO_SPEED
 
 **起始版本：** 21
 
-### ISO_SPEED_RATINGS
+### ISOSpeedRatings
 
 ```cangjie
-ISO_SPEED_RATINGS
+ISOSpeedRatings
 ```
 
 **功能：** ISO感光度，例如400。
@@ -4558,10 +4325,46 @@ ISO_SPEED_RATINGS
 
 **起始版本：** 21
 
-### LIGHT_SOURCE
+### ImageDescription
 
 ```cangjie
-LIGHT_SOURCE
+ImageDescription
+```
+
+**功能：** 图像信息描述。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### ImageLength
+
+```cangjie
+ImageLength
+```
+
+**功能：** 图片长度。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### ImageWidth
+
+```cangjie
+ImageWidth
+```
+
+**功能：** 图片宽度。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**起始版本：** 21
+
+### LightSource
+
+```cangjie
+LightSource
 ```
 
 **功能：** 光源。
@@ -4570,10 +4373,10 @@ LIGHT_SOURCE
 
 **起始版本：** 21
 
-### MAKE
+### Make
 
 ```cangjie
-MAKE
+Make
 ```
 
 **功能：** 生产商。
@@ -4582,10 +4385,10 @@ MAKE
 
 **起始版本：** 21
 
-### METERING_MODE
+### MeteringMode
 
 ```cangjie
-METERING_MODE
+MeteringMode
 ```
 
 **功能：** 测光模式。
@@ -4594,10 +4397,10 @@ METERING_MODE
 
 **起始版本：** 21
 
-### MODEL
+### Model
 
 ```cangjie
-MODEL
+Model
 ```
 
 **功能：** 设备型号。
@@ -4606,10 +4409,10 @@ MODEL
 
 **起始版本：** 21
 
-### ORIENTATION
+### Orientation
 
 ```cangjie
-ORIENTATION
+Orientation
 ```
 
 **功能：** 图片方向。<br/>- 1：Top-left，图像未旋转。<br/>- 2：Top-right，镜像水平翻转。<br/>- 3：Bottom-right，图像旋转180°。<br/>- 4：Bottom-left，镜像垂直翻转。<br/>- 5：Left-top，镜像水平翻转再顺时针旋转270°。<br/>- 6：Right-top，顺时针旋转90°。<br/>- 7：Right-bottom，镜像水平翻转再顺时针旋转90°。<br/>- 8：Left-bottom，顺时针旋转270°。<br/>- 未定义值返回Unknown Value。
@@ -4618,10 +4421,10 @@ ORIENTATION
 
 **起始版本：** 21
 
-### PHOTO_MODE
+### PhotoMode
 
 ```cangjie
-PHOTO_MODE
+PhotoMode
 ```
 
 **功能：** 拍照模式。
@@ -4630,10 +4433,10 @@ PHOTO_MODE
 
 **起始版本：** 21
 
-### PHYSICAL_APERTURE
+### PhysicalAperture
 
 ```cangjie
-PHYSICAL_APERTURE
+PhysicalAperture
 ```
 
 **功能：** 物理孔径，光圈大小。
@@ -4642,10 +4445,10 @@ PHYSICAL_APERTURE
 
 **起始版本：** 21
 
-### PITCH_ANGLE
+### PitchAngle
 
 ```cangjie
-PITCH_ANGLE
+PitchAngle
 ```
 
 **功能：** 俯仰角度。
@@ -4654,10 +4457,10 @@ PITCH_ANGLE
 
 **起始版本：** 21
 
-### PIXEL_X_DIMENSION
+### PixelXDimension
 
 ```cangjie
-PIXEL_X_DIMENSION
+PixelXDimension
 ```
 
 **功能：** 像素X尺寸。
@@ -4666,10 +4469,10 @@ PIXEL_X_DIMENSION
 
 **起始版本：** 21
 
-### PIXEL_Y_DIMENSION
+### PixelYDimension
 
 ```cangjie
-PIXEL_Y_DIMENSION
+PixelYDimension
 ```
 
 **功能：** 像素Y尺寸。
@@ -4678,10 +4481,10 @@ PIXEL_Y_DIMENSION
 
 **起始版本：** 21
 
-### RECOMMENDED_EXPOSURE_INDEX
+### RecommendedExposureIndex
 
 ```cangjie
-RECOMMENDED_EXPOSURE_INDEX
+RecommendedExposureIndex
 ```
 
 **功能：** 推荐曝光指数。
@@ -4690,10 +4493,10 @@ RECOMMENDED_EXPOSURE_INDEX
 
 **起始版本：** 21
 
-### ROLL_ANGLE
+### RollAngle
 
 ```cangjie
-ROLL_ANGLE
+RollAngle
 ```
 
 **功能：** 滚动角度。
@@ -4702,10 +4505,10 @@ ROLL_ANGLE
 
 **起始版本：** 21
 
-### SCENE_BEACH_CONF
+### SceneBeachConf
 
 ```cangjie
-SCENE_BEACH_CONF
+SceneBeachConf
 ```
 
 **功能：** 拍照场景：沙滩。
@@ -4714,10 +4517,10 @@ SCENE_BEACH_CONF
 
 **起始版本：** 21
 
-### SCENE_BLUE_SKY_CONF
+### SceneBlueSkyConf
 
 ```cangjie
-SCENE_BLUE_SKY_CONF
+SceneBlueSkyConf
 ```
 
 **功能：** 拍照场景：蓝天。
@@ -4726,10 +4529,10 @@ SCENE_BLUE_SKY_CONF
 
 **起始版本：** 21
 
-### SCENE_FLOWERS_CONF
+### SceneFlowersConf
 
 ```cangjie
-SCENE_FLOWERS_CONF
+SceneFlowersConf
 ```
 
 **功能：** 拍照场景：花。
@@ -4738,10 +4541,10 @@ SCENE_FLOWERS_CONF
 
 **起始版本：** 21
 
-### SCENE_FOOD_CONF
+### SceneFoodConf
 
 ```cangjie
-SCENE_FOOD_CONF
+SceneFoodConf
 ```
 
 **功能：** 拍照场景：食物。
@@ -4750,10 +4553,10 @@ SCENE_FOOD_CONF
 
 **起始版本：** 21
 
-### SCENE_GREEN_PLANT_CONF
+### SceneGreenPlantConf
 
 ```cangjie
-SCENE_GREEN_PLANT_CONF
+SceneGreenPlantConf
 ```
 
 **功能：** 拍照场景：绿植。
@@ -4762,10 +4565,10 @@ SCENE_GREEN_PLANT_CONF
 
 **起始版本：** 21
 
-### SCENE_NIGHT_CONF
+### SceneNightConf
 
 ```cangjie
-SCENE_NIGHT_CONF
+SceneNightConf
 ```
 
 **功能：** 拍照场景：夜晚。
@@ -4774,10 +4577,10 @@ SCENE_NIGHT_CONF
 
 **起始版本：** 21
 
-### SCENE_SNOW_CONF
+### SceneSnowConf
 
 ```cangjie
-SCENE_SNOW_CONF
+SceneSnowConf
 ```
 
 **功能：** 拍照场景：下雪。
@@ -4786,10 +4589,10 @@ SCENE_SNOW_CONF
 
 **起始版本：** 21
 
-### SCENE_STAGE_CONF
+### SceneStageConf
 
 ```cangjie
-SCENE_STAGE_CONF
+SceneStageConf
 ```
 
 **功能：** 拍照场景：舞台。
@@ -4798,10 +4601,10 @@ SCENE_STAGE_CONF
 
 **起始版本：** 21
 
-### SCENE_SUNSET_CONF
+### SceneSunsetConf
 
 ```cangjie
-SCENE_SUNSET_CONF
+SceneSunsetConf
 ```
 
 **功能：** 拍照场景：日落。
@@ -4810,10 +4613,10 @@ SCENE_SUNSET_CONF
 
 **起始版本：** 21
 
-### SCENE_TEXT_CONF
+### SceneTextConf
 
 ```cangjie
-SCENE_TEXT_CONF
+SceneTextConf
 ```
 
 **功能：** 拍照场景：文本。
@@ -4822,10 +4625,10 @@ SCENE_TEXT_CONF
 
 **起始版本：** 21
 
-### SCENE_TYPE
+### SceneType
 
 ```cangjie
-SCENE_TYPE
+SceneType
 ```
 
 **功能：** 拍摄场景模式，例如人像、风光、运动、夜景等。
@@ -4834,10 +4637,10 @@ SCENE_TYPE
 
 **起始版本：** 21
 
-### SENSITIVITY_TYPE
+### SensitivityType
 
 ```cangjie
-SENSITIVITY_TYPE
+SensitivityType
 ```
 
 **功能：** 灵敏度类型。
@@ -4846,10 +4649,10 @@ SENSITIVITY_TYPE
 
 **起始版本：** 21
 
-### STANDARD_OUTPUT_SENSITIVITY
+### StandardOutputSensitivity
 
 ```cangjie
-STANDARD_OUTPUT_SENSITIVITY
+StandardOutputSensitivity
 ```
 
 **功能：** 标准输出灵敏度。
@@ -4858,10 +4661,10 @@ STANDARD_OUTPUT_SENSITIVITY
 
 **起始版本：** 21
 
-### USER_COMMENT
+### UserComment
 
 ```cangjie
-USER_COMMENT
+UserComment
 ```
 
 **功能：** 用户注释。
@@ -4870,10 +4673,10 @@ USER_COMMENT
 
 **起始版本：** 21
 
-### WHITE_BALANCE
+### WhiteBalance
 
 ```cangjie
-WHITE_BALANCE
+WhiteBalance
 ```
 
 **功能：** 白平衡。
@@ -4889,10 +4692,6 @@ public operator func !=(other: PropertyKey): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4914,10 +4713,6 @@ public operator func ==(other: PropertyKey): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -4948,12 +4743,20 @@ public func toString(): String
 |:----|:----|
 |String|枚举的说明。|
 
+**异常：**
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The type is not supported yet. |枚举值错误，不支持该枚举值。|请检查传入的枚举值是否正确。|
+
 ## enum ScaleMode
 
 ```cangjie
 public enum ScaleMode <: Equatable<ScaleMode> & ToString {
-    | FIT_TARGET_SIZE
-    | CENTER_CROP
+    | FitTargetSize
+    | CenterCrop
     | ...
 }
 ```
@@ -4969,10 +4772,10 @@ public enum ScaleMode <: Equatable<ScaleMode> & ToString {
 - Equatable\<ScaleMode>
 - ToString
 
-### CENTER_CROP
+### CenterCrop
 
 ```cangjie
-CENTER_CROP
+CenterCrop
 ```
 
 **功能：** 缩放图像以填充目标图像区域并居中裁剪区域外的效果。
@@ -4981,10 +4784,10 @@ CENTER_CROP
 
 **起始版本：** 21
 
-### FIT_TARGET_SIZE
+### FitTargetSize
 
 ```cangjie
-FIT_TARGET_SIZE
+FitTargetSize
 ```
 
 **功能：** 图像适合目标尺寸的效果。
@@ -5000,10 +4803,6 @@ public operator func !=(other: ScaleMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -5025,10 +4824,6 @@ public operator func ==(other: ScaleMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -5048,10 +4843,6 @@ public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**起始版本：** 21
 
 **返回值：**
 

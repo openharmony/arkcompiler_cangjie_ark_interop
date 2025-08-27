@@ -71,13 +71,15 @@ AVPlayer具有功能完善一体化的播放能力，应用只需提供流媒体
 
 图中的数字标注表示需要数据与外部模块的传递。
 
-1. 应用把媒体资源、SurfaceID传递给AVPlayer接口。
+1. 应用从XComponent组件获取窗口SurfaceID。
 
-2. Player Framework 将视频ES数据流输出给解码HDI，解码获得视频帧（NV12/NV21/RGBA）。
+2. 应用把媒体资源、SurfaceID传递给AVPlayer接口。
 
-3. Player Framework 将音频PCM数据流输出给Audio Framework，Audio Framework输出给音频HDI。
+3. Player Framework 将视频ES数据流输出给解码HDI，解码获得视频帧（NV12/NV21/RGBA）。
 
-4. Player Framework 将视频帧（NV12/NV21/RGBA）输出给Graphic Framework，Graphic Framework输出给显示HDI。
+4. Player Framework 将音频PCM数据流输出给Audio Framework，Audio Framework输出给音频HDI。
+
+5. Player Framework 将视频帧（NV12/NV21/RGBA）输出给Graphic Framework，Graphic Framework输出给显示HDI。
 
 ### 支持的格式与协议
 

@@ -66,9 +66,10 @@ Stacktrace:                               // 异常代码调用栈
 
 案例源代码如下：
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
-import ohos.componet.Button
+
 var bigArray = Array<Rune>(1024 * 1024 * 60, repeat: r'a')
 func foo(): Unit {
     var smallArray = Array<Rune>(1024 * 1024 * 5, repeat: r'a')
@@ -106,7 +107,7 @@ class EntryView {
         at _CCN22ohos_app_cangjie_entry9EntryView5buildHvEL_L_L_L_L_L_E_29$i(:0)
         at _CCN14ohos.component13ComponentBaseIG_E7onClickHF0uRNY_10ClickEventEEEL_E_6$i(:0)
         at _CCN14ohos.component16InteractableView7onClickHF0uRNY_10ClickEventEEEL_E_6$i(:0)
-        at ohos.component.CallbackCJClickEvent::invoke(Int32, CPointer<...>, CPointer<...>)(cj_lambda_invoker_impl.cj:50)
+        at ohos.arkui.component.CallbackCJClickEvent::invoke(Int32, CPointer<...>, CPointer<...>)(cj_lambda_invoker_impl.cj:50)
         at ohos.ffi.ohosFFICJCallbackInvoker(Int64, Int32, CPointer<...>, CPointer<...>)(ffi_callback.cj:172)
     ```
 
@@ -138,7 +139,8 @@ class EntryView {
 
 开发者自主抛出仓颉异常，可以通过如下代码实现：
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 throw Exception("throwing exception")
 ```
@@ -157,7 +159,8 @@ throw Exception("throwing exception")
 
 案例源代码如下：
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 import std.collection.*
 
@@ -200,7 +203,7 @@ class EntryView {
         at _CCN22ohos_app_cangjie_entry9EntryView5buildHvEL_L_L_L_L_L_E_29$i(:0)
         at _CCN14ohos.component13ComponentBaseIG_E7onClickHF0uRNY_10ClickEventEEEL_E_6$i(:0)
         at _CCN14ohos.component16InteractableView7onClickHF0uRNY_10ClickEventEEEL_E_6$i(:0)
-        at ohos.component.CallbackCJClickEvent::invoke(Int32, CPointer<...>, CPointer<...>)(cj_lambda_invoker_impl.cj:50)
+        at ohos.arkui.component.CallbackCJClickEvent::invoke(Int32, CPointer<...>, CPointer<...>)(cj_lambda_invoker_impl.cj:50)
         at ohos.ffi.ohosFFICJCallbackInvoker(Int64, Int32, CPointer<...>, CPointer<...>)(ffi_callback.cj:172)
     ```
 
@@ -214,9 +217,9 @@ class EntryView {
 
     具体异常代码如下：
 
-<!--compile-->
+    <!-- compile -->
+
     ```cangjie
-    import std.collection.*
     func foo() {
         let map = HashMap<String, Int64>([("a", 0), ("b", 1), ("c", 2)])
         println(map["d"])
@@ -235,9 +238,9 @@ class EntryView {
 
     修改后 `foo` 函数源代码如下：
 
-    <!--compile-->
+    <!-- compile -->
+
     ```cangjie
-    import std.collection.*
     func foo() {
        let map = HashMap<String, Int64>([("a", 0), ("b", 1), ("c", 2)])
        if (map.contains("d")) {

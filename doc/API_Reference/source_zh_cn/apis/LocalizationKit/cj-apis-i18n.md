@@ -48,15 +48,6 @@ public func add(field: String, amount: Int32): Unit
 |field|String|是|-|指定进行操作的日历字段，目前支持的field值有year, month, week_of_year, week_of_month, date, day_of_year, day_of_week, day_of_week_in_month, hour, hour_of_day, minute, second, millisecond。|
 |amount|Int32|是|-|进行加减操作的具体数值。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[I18n错误码](../../errorcodes/cj-errorcode-i18n.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
-  |890001|Invalid parameter. Possible causes: Parameter verification failed.|
-
 **示例：**
 
 <!-- compile -->
@@ -64,60 +55,12 @@ public func add(field: String, amount: Int32): Unit
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
 calendar.set(2021,11,11) // set time to 2021.12.11
 calendar.add("year", 3)
 let res = calendar.get("year") // res = 2024
-```
-
-### func compareDays(DateTime)
-
-```cangjie
-public func compareDays(date: DateTime): Int32
-```
-
-**功能：** 比较日历和指定日期相差的天数（按毫秒级的精度，不足一天将按一天进行计算）。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|date|DateTime|是|-|时间、日期。说明：月份从0开始计数，如0表示一月。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|相差的天数，正数代表日历时间更早，负数代表日历时间更晚。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.i18n.getCalendar
-import std.time.DateTime
-
-let calendar = getCalendar("zh-Hans")
-calendar.set(2021,11,11) // set time to 2021.12.11
-let date = DateTime.ofUTC(year: 2024, month: 12, dayOfMonth: 4, hour: 0, minute: 0, second: 0, nanosecond: 0)
-let result = calendar.compareDays(date) // result = -8
 ```
 
 ### func get(String)
@@ -136,32 +79,7 @@ public func get(field: String): Int32
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|field|String|是|-|通过field来获取日历对象相应的值。目前支持的field值请参考下表。 |
-
-|field名称|说明|
-|----- | ----------------------------------------|
-|era|纪元，例如公历中的公元前或者公元后。|
-|year|年。|
-|month|月。说明：月份从0开始计数，如0表示一月。|
-|date|日。|
-|hour|挂钟小时数。|
-|hour_of_day|一天中的第几小时。|
-|minute|分。|
-|second|秒。|
-|millisecond|毫秒。|
-|week_of_year|一年中的第几周，按照星期计算周，注意：第一周的归属算法各地有区别。|
-|year_woy|一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。|
-|week_of_month|一个月中的第几周，按照星期计算周。|
-|day_of_week_in_month|一月中的第几周，按照数值计算周，例如1-7日属于第一周。|
-|day_of_year|一年中的第几天。|
-|day_of_week|一周中的第几天（星期）。|
-|milliseconds_in_day|一天中的第几毫秒。|
-|zone_offset|以毫秒计时的时区固定偏移量（不含夏令时）。|
-|dst_offset|以毫秒计时的夏令时偏移量。|
-|dow_local|本地星期。|
-|extended_year|扩展的年份数值，支持负数。|
-|julian_day|儒略日，与当前时区相关。|
-|is_leap_month|是否为闰月。|
+|field|String|是|-|通过field来获取日历对象相应的值。目前支持的field值请参考下表。|
 
 **返回值：**
 
@@ -176,7 +94,7 @@ public func get(field: String): Int32
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("en-US")
 calendar.set(2024, 1, 1, hour: 12, minute: 30, second: 30)
@@ -187,6 +105,42 @@ let hour = calendar.get("hour_of_day") // 12
 let minute = calendar.get("minute") // 30
 let second = calendar.get("second") // 30
 ```
+
+### func getCalendar(String, ?CalendarType)
+
+```cangjie
+public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
+```
+
+**功能：** 获取指定区域和日历类型对应的日历对象。
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|locale|calendarType|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|日历类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Calendar|返回与指定区域和日历类型对应的日历对象。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.i18n.*
+
+let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获得一个基于 en-US 区域设置的佛教日历对象
+```
+
 
 ### func getDisplayName(String)
 
@@ -219,9 +173,10 @@ public func getDisplayName(locale: String): String
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
+import ohos.i18n.CalendarType
 
-let calendar = getCalendar("en-US", calendarType: "buddhist")
+let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)
 let res = calendar.getDisplayName("zh") // res = "佛历"
 ```
 
@@ -250,7 +205,7 @@ public func getFirstDayOfWeek(): Int32
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("en-US")
 let res = calendar.getFirstDayOfWeek() // res = 1
@@ -281,7 +236,7 @@ public func getMinimalDaysInFirstWeek(): Int32
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
 let res = calendar.getMinimalDaysInFirstWeek() // res = 1
@@ -312,7 +267,7 @@ public func getTimeInMillis(): Float64
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("en-US")
 calendar.setTime(5000.0)
@@ -344,59 +299,18 @@ public func getTimeZone(): String
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
+import ohos.i18n.CalendarType
 
-let calendar = getCalendar("zh-Hans", calendarType: "chinese")
+let calendar = getCalendar("zh-Hans", calendarType: CalendarType.Chinese)
 calendar.setTimeZone("Asia/Shanghai")
 let timeZone = calendar.getTimeZone() // timeZone = "Asia/Shanghai"
-```
-
-### func isWeekend(?DateTime)
-
-```cangjie
-public func isWeekend(date!: ?DateTime = None): Bool
-```
-
-**功能：** 判断指定的日期在日历中是否为周末。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|date|?DateTime|否|None| **命名参数。** 指定的日期。若不填，则判断当前日期是否为周末。默认值为None时是系统日期。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|若判断指定日期为周末时，返回true，否则返回false。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.i18n.getCalendar
-import std.time.DateTime
-
-let calendar = getCalendar("zh-Hans")
-calendar.set(2021,11,11)  // set time to 2021.12.11
-calendar.isWeekend() // true
-let date = DateTime.ofUTC(year: 2024, month: 11, dayOfMonth: 4, hour: 0, minute: 0, second: 0, nanosecond: 0)
-calendar.isWeekend(date: date) // false
 ```
 
 ### func set(Int32, Int32, Int32, Int32, Int32, Int32)
 
 ```cangjie
-public func set(year: Int32, month: Int32, day: Int32,
-    hour!: Int32 = -1, minute!: Int32 = -1, second!: Int32 = -1): Unit
+public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, minute!: ?Int32 = None, second!: ?Int32 = None): Unit
 ```
 
 **功能：** 设置日历对象的年、月、日、时、分、秒。
@@ -412,9 +326,9 @@ public func set(year: Int32, month: Int32, day: Int32,
 |year|Int32|是|-|设置的年。|
 |month|Int32|是|-|设置的月。说明：月份从0开始计数，如0表示一月。|
 |day|Int32|是|-|设置的日。|
-|hour|Int32|否|- 1| **命名参数。** 设置的小时。-1代表系统小时。|
-|minute|Int32|否|- 1| **命名参数。** 设置的分钟。-1代表系统分钟。|
-|second|Int32|否|- 1| **命名参数。** 设置的秒。-1代表系统秒。|
+|hour|Int32|否|None|**命名参数。** 设置的小时。-1代表系统小时。|
+|minute|Int32|否|None|**命名参数。** 设置的分钟。-1代表系统分钟。|
+|second|Int32|否|None|**命名参数。** 设置的秒。-1代表系统秒。|
 
 **示例：**
 
@@ -423,7 +337,7 @@ public func set(year: Int32, month: Int32, day: Int32,
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
 calendar.set(2021,11,11)  // set time to 2021.12.11
@@ -454,7 +368,7 @@ public func setFirstDayOfWeek(value: Int32): Unit
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
 calendar.setFirstDayOfWeek(3)
@@ -486,44 +400,11 @@ public func setMinimalDaysInFirstWeek(value: Int32): Unit
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
 calendar.setMinimalDaysInFirstWeek(3)
 let minimalDaysInFirstWeek = calendar.getMinimalDaysInFirstWeek() // minimalDaysInFirstWeek = 3
-```
-
-### func setTime(DateTime)
-
-```cangjie
-public func setTime(date: DateTime): Unit
-```
-
-**功能：** 设置日历对象内部的时间日期。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|date|DateTime|是|-|将要设置的日历对象的内部时间日期。说明：月份从0开始计数，如0表示一月。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.i18n.getCalendar
-import std.time.DateTime
-
-let calendar = getCalendar("en-US")
-let date: DateTime = DateTime.nowUTC()
-calendar.setTime(date) // set time to nowUTC
 ```
 
 ### func setTime(Float64)
@@ -551,7 +432,7 @@ public func setTime(time: Float64): Unit
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("en-US")
 calendar.setTime(10540800000.0)
@@ -582,7 +463,7 @@ public func setTimeZone(timeZone: String): Unit
 ```cangjie
 // index.cj
 
-import ohos.i18n.getCalendar
+import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("en-US")
 calendar.setTimeZone("Asia/Shanghai")
@@ -624,8 +505,200 @@ public static func getAppPreferredLanguage(): String
 
 ```cangjie
 // index.cj
-
-import ohos.i18n.System
+import ohos.i18n.*
+import kit.LocalizationKit.getCalendar
 
 let appPreferredLanguage = System.getAppPreferredLanguage() // 获取应用偏好语言
 ```
+
+## enum CalendarType
+
+```cangjie
+public enum CalendarType {
+    | Buddhist
+    | Chinese
+    | Coptic
+    | Ethiopic
+    | Hebrew
+    | Gregory
+    | Indian
+    | IslamicCivil
+    | IslamicTbla
+    | IslamicUmalqura
+    | Japanese
+    | Persian
+    | ...
+}
+```
+
+**功能：** 日历类型枚举，用于指定不同的日历系统。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+
+### Buddhist
+
+```cangjie
+Buddhist
+```
+
+**功能：** buddhist日历类型
+
+**系统能力：**  SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### Chinese
+
+```cangjie
+Chinese
+```
+
+**功能：**  coptic日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### Coptic
+
+```cangjie
+Coptic
+```
+
+**功能：**  coptic日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+
+### Ethiopic
+
+```cangjie
+Ethiopic
+```
+
+**功能：**  ethiopic日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+
+### Hebrew
+
+```cangjie
+Hebrew
+```
+
+**功能：**  hebrew日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### Gregory
+
+```cangjie
+Gregory
+```
+
+**功能：**  gregory日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### Indian
+
+```cangjie
+Indian
+```
+
+**功能：**  indian日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### IslamicCivil
+
+```cangjie
+IslamicCivil
+```
+
+**功能：**  IslamicCivil日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### IslamicTbla
+
+```cangjie
+IslamicTbla
+```
+
+**功能：**  IslamicTbla日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### IslamicUmalqura
+
+```cangjie
+IslamicUmalqura
+```
+
+**功能：**  IslamicUmalqura日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### Japanese
+
+```cangjie
+Japanese
+```
+
+**功能：**  Japanese日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+
+### Persian
+
+```cangjie
+Persian
+```
+
+**功能：**  Persian日历类型
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+### func toString()
+```cangjie
+public func toString(): String
+```
+**功能：**  获取当前枚举值对应的字符串表示。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+**返回值:**
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|返回与枚举值对应的字符串。|

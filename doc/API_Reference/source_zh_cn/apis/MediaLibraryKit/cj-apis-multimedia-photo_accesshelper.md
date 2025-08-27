@@ -1,4 +1,4 @@
-# ohos.multimedia.photo_accesshelper（相册管理模块）
+# ohos.file.photo_access_helper（相册管理模块）
 
 该模块提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
 
@@ -35,424 +35,14 @@ public interface MediaChangeRequest {}
 
 **起始版本：** 21
 
-## class Album
-
-```cangjie
-public class Album {}
-```
-
-**功能：** 实体相册。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop albumName
-
-```cangjie
-public mut prop albumName: String
-```
-
-**功能：** 获取相册名称。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop albumSubtype
-
-```cangjie
-public prop albumSubtype: AlbumSubtype
-```
-
-**功能：** 获取相册子类型。
-
-**类型：** [AlbumSubtype](#enum-albumsubtype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop albumType
-
-```cangjie
-public prop albumType: AlbumType
-```
-
-**功能：** 获取相册类型。
-
-**类型：** [AlbumType](#enum-albumtype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop albumUri
-
-```cangjie
-public prop albumUri: String
-```
-
-**功能：** 获取相册Uri。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop count
-
-```cangjie
-public prop count: Int32
-```
-
-**功能：** 相册中文件数量。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop coverUri
-
-```cangjie
-public prop coverUri: String
-```
-
-**功能：** 获取封面文件Uri。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop imageCount
-
-```cangjie
-public prop imageCount: Int32
-```
-
-**功能：** 获取相册中图片数量。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop videoCount
-
-```cangjie
-public prop videoCount: Int32
-```
-
-**功能：** 获取相册中图片数量。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### func commitModify()
-
-```cangjie
-public func commitModify(): Unit
-```
-
-**功能：** 更新相册属性修改到数据库中。
-
-**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-| 13900012 | Permission denied. |
-| 13900020 | Invalid argument. |
-| 14000011 | System inner fail. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-predicates.equalTo('album_name', Str('test1'))
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
-    AlbumSubtype.USER_GENERIC, options: fetchOptions)
-let firstAlbum = fetchResult.getFirstObject()
-firstAlbum.albumName = "test10086"
-firstAlbum.commitModify()
-```
-
-### func getAssets(FetchOptions)
-
-```cangjie
-public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
-```
-
-**功能：** 获取相册中的文件。
-
-**需要权限：** ohos.permission.READ_IMAGEVIDEO
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|options|[FetchOptions](#class-fetchoptions)|是|-|检索选项。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回图片和视频数据结果集。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900012 | Permission denied. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-predicates.equalTo('album_name', Str('test1'))
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
-    AlbumSubtype.USER_GENERIC, options: fetchOptions)
-let firstAlbum = fetchResult.getFirstObject()
-let photoCount = firstAlbum.count
-let predicates1 = DataSharePredicates()
-let fetchOptions1: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates1)
-let fetchResult1: FetchResult<PhotoAsset> = firstAlbum.getAssets(fetchOptions1)
-```
-
-## class BaseSelectOptions
-
-```cangjie
-public open class BaseSelectOptions {
-    public BaseSelectOptions(
-        public var MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-        public var maxSelectNumber!: Int32 = 50,
-        public var isPhotoTakingSupported!: Bool = true,
-        public var isSearchSupported!: Bool = true,
-        public var recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-        public var preselectedUris!: Array<String> = Array<String>(),
-        public var isPreviewForSingleSelectionSupported!: Bool = true
-    )
-}
-```
-
-**功能：** 图库选择选项基类。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var MIMEType
-
-```cangjie
-public var MIMEType: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE
-```
-
-**功能：** 媒体文件类型。
-
-**类型：** [PhotoViewMIMETypes](#enum-photoviewmimetypes)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var isPhotoTakingSupported
-
-```cangjie
-public var isPhotoTakingSupported: Bool = true
-```
-
-**功能：** 是否支持拍照。
-
-**类型：** Bool
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var isPreviewForSingleSelectionSupported
-
-```cangjie
-public var isPreviewForSingleSelectionSupported: Bool = true
-```
-
-**功能：** 单选模式下是否需要进大图预览。
-
-**类型：** Bool
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var isSearchSupported
-
-```cangjie
-public var isSearchSupported: Bool = true
-```
-
-**功能：** 是否支持搜索。
-
-**类型：** Bool
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var maxSelectNumber
-
-```cangjie
-public var maxSelectNumber: Int32 = 50
-```
-
-**功能：** 媒体文件数量的最大值。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var preselectedUris
-
-```cangjie
-public var preselectedUris: Array<String>= Array<String>()
-```
-
-**功能：** 预选择图片的uri数据。
-
-**类型：** Array\<String>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var recommendationOptions
-
-```cangjie
-public var recommendationOptions: RecommendationOptions = RecommendationOptions()
-```
-
-**功能：** 图片推荐相关配置参数。
-
-**类型：** [RecommendationOptions](#struct-recommendationoptions)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### BaseSelectOptions(PhotoViewMIMETypes, Int32, Bool, Bool, RecommendationOptions, Array\<String>, Bool)
-
-```cangjie
-public BaseSelectOptions(
-    public var MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-    public var maxSelectNumber!: Int32 = 50,
-    public var isPhotoTakingSupported!: Bool = true,
-    public var isSearchSupported!: Bool = true,
-    public var recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-    public var preselectedUris!: Array<String> = Array<String>(),
-    public var isPreviewForSingleSelectionSupported!: Bool = true
-)
-```
-
-**功能：** 构造BaseSelectOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|MIMEType|[PhotoViewMIMETypes](#enum-photoviewmimetypes)|否|IMAGE_VIDEO_TYPE| **命名参数。** 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。|
-|maxSelectNumber|Int32|否|50| **命名参数。** 选择媒体文件数量的最大值(最大可设置的值为500，若不设置则默认为50)。|
-|isPhotoTakingSupported|Bool|否|true| **命名参数。** 是否支持拍照，true表示支持，false表示不支持，默认为true。|
-|isSearchSupported|Bool|否|true| **命名参数。** 是否支持搜索，true表示支持，false表示不支持，默认为true。|
-|recommendationOptions|[RecommendationOptions](#struct-recommendationoptions)|否|RecommendationOptions()| **命名参数。** 图片推荐相关配置参数。|
-|preselectedUris|Array\<String>|否|Array\<String>()| **命名参数。** 预选择图片的uri数据。|
-|isPreviewForSingleSelectionSupported|Bool|否|true| **命名参数。** 单选模式下是否需要进大图预览，true表示需要，false表示不需要，默认为true。|
-
 ## class ChangeData
 
 ```cangjie
-public class ChangeData {}
+public class ChangeData {
+    public var notifyType: NotifyType
+    public var uris: Array<String>
+    public var extraUris: Array<String>
+}
 ```
 
 **功能：** 监听器回调函数的值。
@@ -461,62 +51,134 @@ public class ChangeData {}
 
 **起始版本：** 21
 
-### let `type`
+### var extraUris
 
 ```cangjie
-public let `type`: NotifyType
-```
-
-**功能：** ChangeData的通知类型。
-
-**类型：** [NotifyType](#enum-notifytype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### let extraUris
-
-```cangjie
-public let extraUris: Array<String>
+public var extraUris: Array<String>
 ```
 
 **功能：** 相册中变动文件的uri数组。
 
 **类型：** Array\<String>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
 
-### let uris
+### var notifyType
 
 ```cangjie
-public let uris: Array<String>
+public var notifyType: NotifyType
 ```
 
-**功能：** 相同[NotifyType](#enum-notifytype)的所有uri，可以是PhotoAsset或Album。
+**功能：** ChangeData的通知类型。
+
+**类型：** [NotifyType](#enum-notifytype)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### var uris
+
+```cangjie
+public var uris: Array<String>
+```
+
+**功能：** 相同[NotifyType](#enum-notifytype)的所有uri，可以是PhotoAsset或Album。。
 
 **类型：** Array\<String>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
+
+## class CreateOptions
+
+```cangjie
+public class CreateOptions {
+    public var title: String = ""
+    public var subtype: PhotoSubtype
+    public init(title!: String = "", subtype!: PhotoSubtype = Default)
+}
+```
+
+**功能：** 图片或视频的创建选项。
+
+title参数规格为：
+
+- 不应包含扩展名。
+- 文件名字符串长度为1~255。
+- 文件名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### var subtype
+
+```cangjie
+public var subtype: PhotoSubtype
+```
+
+**功能：** 图片或者视频的标题。
+
+**类型：** [PhotoSubtype](#enum-photosubtype)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### var title
+
+```cangjie
+public var title: String = ""
+```
+
+**功能：** 图片或者视频的标题。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### init(String, PhotoSubtype)
+
+```cangjie
+public init(title!: String = "", subtype!: PhotoSubtype = Default)
+```
+
+**功能：** 构造CreateOptions对象。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|title|String|否|""| **命名参数。** 图片或者视频的标题。|
+|subtype|[PhotoSubtype](#enum-photosubtype)|否|Default| **命名参数。** 图片或者视频的文件子类型。|
 
 ## class FetchOptions
 
 ```cangjie
 public class FetchOptions {
-    public FetchOptions(
-        public var fetchColumns!: Array<String> = [],
-        public var predicates!: DataSharePredicates = DataSharePredicates()
-    )
+    public var fetchColumns: Array<String>
+    public var predicates: DataSharePredicates
+    public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 }
 ```
 
@@ -529,7 +191,7 @@ public class FetchOptions {
 ### var fetchColumns
 
 ```cangjie
-public var fetchColumns: Array<String>=[]
+public var fetchColumns: Array<String>
 ```
 
 **功能：** 检索条件。
@@ -545,7 +207,7 @@ public var fetchColumns: Array<String>=[]
 ### var predicates
 
 ```cangjie
-public var predicates: DataSharePredicates = DataSharePredicates()
+public var predicates: DataSharePredicates
 ```
 
 **功能：** 谓词查询。
@@ -558,13 +220,10 @@ public var predicates: DataSharePredicates = DataSharePredicates()
 
 **起始版本：** 21
 
-### FetchOptions(Array\<String>, DataSharePredicates)
+### init(Array\<String>, DataSharePredicates)
 
 ```cangjie
-public FetchOptions(
-    public var fetchColumns!: Array<String> = [],
-    public var predicates!: DataSharePredicates = DataSharePredicates()
-)
+public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 ```
 
 **功能：** 构造FetchOptions对象。
@@ -577,13 +236,13 @@ public FetchOptions(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fetchColumns|Array\<String>|否|\[]| **命名参数。** 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](#func-getstring)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
-|predicates|[DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)|否|DataSharePredicates()| **命名参数。** 谓词查询，显示过滤条件。|
+|fetchColumns|Array\<String>|是|-| 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](#func-getstring)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
+|predicates|[DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)|是|-| 谓词查询，显示过滤条件。|
 
 ## class FetchResult
 
 ```cangjie
-public class FetchResult<T> <: where T <: & FetchData <T> {}
+public class FetchResult<T> <:  where T <:  FetchData <T> {}
 ```
 
 **功能：** 文件检索结果集。
@@ -606,12 +265,12 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |13900020|Invalid argument. |
-  |14000011|System inner fail. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -622,11 +281,13 @@ public func close(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 ```
@@ -647,17 +308,16 @@ public func getAllObjects(): Array<T>
 
 |类型|说明|
 |:----|:----|
-|Array\<T>|返回结果集中所有文件资产数组。|
+|Array\<[T](#generic-type-t)>|返回结果集中所有文件资产数组。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -668,11 +328,13 @@ public func getAllObjects(): Array<T>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let photoAssetArray = fetchResult.getAllObjects()
 ```
@@ -697,13 +359,13 @@ public func getCount(): Int32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -714,11 +376,13 @@ public func getCount(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
 ```
@@ -739,17 +403,16 @@ public func getFirstObject(): T
 
 |类型|说明|
 |:----|:----|
-|T|返回结果集中第一个对象。|
+|[T](#generic-type-t)|返回结果集中第一个对象。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -760,11 +423,13 @@ public func getFirstObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 ```
@@ -785,17 +450,16 @@ public func getLastObject(): T
 
 |类型|说明|
 |:----|:----|
-|T|返回结果集中最后一个对象。|
+|[T](#generic-type-t)|返回结果集中最后一个对象。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  | 错误码ID| 错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -806,11 +470,13 @@ public func getLastObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getLastObject()
 ```
@@ -823,6 +489,8 @@ public func getNextObject(): T
 
 **功能：** 获取文件检索结果中的下一个文件资产。
 
+在调用此方法之前，必须使用[isAfterLast()](#func-isafterlast)来检查当前位置是否为最后一行。
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
@@ -831,17 +499,16 @@ public func getNextObject(): T
 
 |类型|说明|
 |:----|:----|
-|T|返回结果集中下一个对象|
+|[T](#generic-type-t)|返回结果集中下一个对象。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -852,11 +519,13 @@ public func getNextObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getNextObject()
 ```
@@ -864,7 +533,7 @@ let firstPhotoAsset = fetchResult.getNextObject()
 ### func getObjectByPosition(Int32)
 
 ```cangjie
-public func getObjectByPosition(position: Int32): T
+public func getObjectByPosition(index: Int32): T
 ```
 
 **功能：** 获取文件检索结果中具有指定索引的文件资产。
@@ -877,23 +546,22 @@ public func getObjectByPosition(position: Int32): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|position|Int32|是|-|要获取的文件的索引，从0开始。|
+|index|Int32|是|-|要获取的文件的索引，从0开始。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|T|返回结果集中指定索引的一个对象。|
+|[T](#generic-type-t)|返回结果集中指定索引的一个对象。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -904,11 +572,13 @@ public func getObjectByPosition(position: Int32): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
@@ -933,13 +603,12 @@ public func isAfterLast(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -950,11 +619,13 @@ public func isAfterLast(): Bool
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let isAfterLast = fetchResult.isAfterLast()
 ```
@@ -962,7 +633,15 @@ let isAfterLast = fetchResult.isAfterLast()
 ## class MediaAlbumChangeRequest
 
 ```cangjie
-public class MediaAlbumChangeRequest <: MediaChangeRequest {
+public class MediaAlbumChangeRequest <:  MediaChangeRequest {
+    /**
+     * The constructor to create a MediaAlbumChangeRequest instance.
+     *
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+     * @throws { BusinessException } 14000011 - System inner fail
+     * @relation constructor(album: Album)
+     */
     public init(album: Album)
 }
 ```
@@ -980,6 +659,14 @@ public class MediaAlbumChangeRequest <: MediaChangeRequest {
 ### init(Album)
 
 ```cangjie
+/**
+ * The constructor to create a MediaAlbumChangeRequest instance.
+ *
+ * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+ * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+ * @throws { BusinessException } 14000011 - System inner fail
+ * @relation constructor(album: Album)
+ */
 public init(album: Album)
 ```
 
@@ -995,15 +682,6 @@ public init(album: Album)
 |:---|:---|:---|:---|:---|
 |album|[Album](#class-album)|是|-|需要变更的相册。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: Parameter verification failed.|
-  |14000011|System inner fail.|
-
 **示例：**
 
 <!-- compile -->
@@ -1013,12 +691,14 @@ public init(album: Album)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC,
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
     options: fetchOptions)
 let album = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
@@ -1044,13 +724,13 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
-  |14000016|Operation Not Support.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1061,14 +741,16 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
-let albumFetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC)
+let albumFetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric)
 let album = albumFetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
 albumChangeRequest.addAssets([asset, asset])
@@ -1094,12 +776,12 @@ public func getAlbum(): ?Album
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1110,12 +792,14 @@ public func getAlbum(): ?Album
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC,
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
     options: fetchOptions)
 let album = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
@@ -1142,13 +826,13 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: Parameter verification failed. |
-  |14000011|System inner fail. |
-  |14000016|Operation Not Support. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1159,14 +843,16 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let albumFetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let albumFetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric)
 let album = albumFetchResult.getFirstObject()
-let fetchResult = album.getAssets(fetchOptions)
+let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
 albumChangeRequest.removeAssets([asset])
@@ -1200,13 +886,12 @@ public func setAlbumName(name: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System inner fail. |
-
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1217,12 +902,14 @@ public func setAlbumName(name: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC,
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
     options: fetchOptions)
 let album = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
@@ -1233,7 +920,7 @@ albumChangeRequest.setAlbumName(newAlbumName)
 ## class MediaAssetChangeRequest
 
 ```cangjie
-public class MediaAssetChangeRequest <: MediaChangeRequest {
+public class MediaAssetChangeRequest <:  MediaChangeRequest {
     public init(asset: PhotoAsset)
 }
 ```
@@ -1268,12 +955,12 @@ public init(asset: PhotoAsset)
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: Parameter verification failed.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1284,11 +971,13 @@ public init(asset: PhotoAsset)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1298,7 +987,7 @@ let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
 
 ```cangjie
 public static func createAssetRequest(context: UIAbilityContext, photoType: PhotoType, extension: String,
-    options!: CreateOptions = CreateOptions()): MediaAssetChangeRequest
+    options!: CreateOptions = CreateOptions(title: "", subtype: Default)): MediaAssetChangeRequest
 ```
 
 **功能：** 指定待创建的文件类型和扩展名，创建资产变更请求。
@@ -1314,7 +1003,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 |context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |photoType|[PhotoType](#enum-phototype)|是|-|待创建的文件类型，IMAGE或者VIDEO类型。|
 |extension|String|是|-|文件扩展名，例如：'jpg'。|
-|options|[CreateOptions](#struct-createoptions)|否|CreateOptions()| **命名参数。** 创建选项，例如：{title: 'testPhoto'}。|
+|options|[CreateOptions](#class-createoptions)|否|CreateOptions(title: "", subtype: Default)|**命名参数。** 创建选项，例如：{title: 'testPhoto'}。|
 
 **返回值：**
 
@@ -1324,14 +1013,12 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |202|Called by non-system application|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000001|Invalid display name.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1341,9 +1028,11 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let photoType = PhotoType.IMAGE
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let photoType = PhotoType.Image
 let extension = "jpg"
 let options = CreateOptions(title: "testPhoto")
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
@@ -1357,6 +1046,8 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 ```
 
 **功能：** 创建图片资产变更请求。
+
+通过fileUri指定待创建资产的数据来源，可参考[FileUri](../CoreFileKit/cj-apis-file_fileuri.md)。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1377,13 +1068,13 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900002|No such file.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900002 | The file corresponding to the URI is not in the app sandbox. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1393,8 +1084,10 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createImageAssetRequest(ctx,
@@ -1410,6 +1103,8 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 **功能：** 创建视频资产变更请求。
 
+通过fileUri指定待创建资产的数据来源，可参考[FileUri](../CoreFileKit/cj-apis-file_fileuri.md)。
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
@@ -1418,7 +1113,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) |是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |fileUri|String|是|-|视频资产的数据来源，在应用沙箱下的uri。|
 
 **返回值：**
@@ -1429,13 +1124,13 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: Parameter verification failed.|
-  |13900002|No such file.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900002 | The file corresponding to the URI is not in the app sandbox. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1445,8 +1140,10 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.mp4"
 let assetChangeRequest = MediaAssetChangeRequest.createVideoAssetRequest(ctx,
@@ -1473,17 +1170,17 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待删除的媒体文件数组。|
+|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待删除的媒体文件uri数组。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |201|Permission denied|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1494,11 +1191,13 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
 MediaAssetChangeRequest.deleteAssets(ctx, asset.uri)
@@ -1527,14 +1226,14 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |201|Permission denied|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000002|Invalid asset uri.|
-  |14000011| System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000002 | The uri format is incorrect or does not exist. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1545,11 +1244,13 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
 MediaAssetChangeRequest.deleteAssets(ctx, asset.uri)
@@ -1576,14 +1277,14 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900002|No such file.|
-  |14000011|System inner fail.|
-  |14000016|Operation Not Support.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900002 | The file corresponding to the URI is not in the app sandbox. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1593,15 +1294,17 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
-let photoType = PhotoType.IMAGE
+let photoType = PhotoType.Image
 let extension = "jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
     extension)
 let buffer = Array<Byte>(2048, repeat: 0)
-assetChangeRequest.addResource(IMAGE_RESOURCE, buffer)
+assetChangeRequest.addResource(ResourceType.ImageResource, buffer)
 phAccessHelper.applyChanges(assetChangeRequest)
 ```
 
@@ -1626,13 +1329,13 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
-  |14000016|Operation Not Support.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1642,15 +1345,17 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
-let photoType = PhotoType.IMAGE
+let photoType = PhotoType.Image
 let extension = "jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
     extension)
 let buffer = Array<Byte>(2048, repeat: 0)
-assetChangeRequest.addResource(IMAGE_RESOURCE, buffer)
+assetChangeRequest.addResource(ResourceType.ImageResource, buffer)
 phAccessHelper.applyChanges(assetChangeRequest)
 ```
 
@@ -1668,12 +1373,12 @@ public func discardCameraPhoto(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |14000011|Internal system error.|
-  |14000016|Operation Not Support.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14000011 | Internal system error |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1684,11 +1389,13 @@ public func discardCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1716,12 +1423,12 @@ public func getAsset(): ?PhotoAsset
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1732,11 +1439,13 @@ public func getAsset(): ?PhotoAsset
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1749,7 +1458,7 @@ let asset = assetChangeRequest.getAsset()
 public func getWriteCacheHandler(): Int32
 ```
 
-**功能：**  获取临时文件写句柄。
+**功能：** 获取临时文件写句柄。
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1765,14 +1474,14 @@ public func getWriteCacheHandler(): Int32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |201|Permission denied|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |14000011|System inner fail.|
-  |14000016|Operation Not Support.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1783,13 +1492,15 @@ public func getWriteCacheHandler(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.CoreFileKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx,
-    PhotoType.VIDEO, "mp4")
+    PhotoType.Video, "mp4")
 let fd = assetChangeRequest.getWriteCacheHandler()
-FileFs.close(fd)
+FileIo.close(fd)
 phAccessHelper.applyChanges(assetChangeRequest)
 ```
 
@@ -1807,12 +1518,12 @@ public func saveCameraPhoto(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |14000011|System inner fail.|
-  |14000016|Operation Not Support.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **示例：**
 
@@ -1823,11 +1534,13 @@ public func saveCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1855,12 +1568,12 @@ public func setTitle(title: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1871,11 +1584,13 @@ public func setTitle(title: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1902,9 +1617,9 @@ public class PhotoAccessHelper {}
 public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 ```
 
-**功能：**提交媒体变更请求。
+**功能：** 提交媒体变更请求。
 
-**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+**需要权限：** ohos.WRITE_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1918,23 +1633,24 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 **异常：**
 
-- BusinessException：BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |201|Permission denied|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 ### func getAlbums(AlbumType, AlbumSubtype, FetchOptions)
 
 ```cangjie
-public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions()): FetchResult<Album>
+public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
+    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): FetchResult<Album>
 ```
 
 **功能：** 根据检索选项和相册类型获取相册。获取相册前需先保证相册存在。
 
-**需要权限：** ohos.permission.READ_IMAGEVIDEO
+**需要权限：** ohos.READ_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1944,9 +1660,9 @@ public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchO
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[AlbumType](#enum-albumtype)|是|-|相册类型。|
+|albumType|[AlbumType](#enum-albumtype)|是|-|相册类型。|
 |subtype|[AlbumSubtype](#enum-albumsubtype)|是|-|相册子类型。|
-|options|[FetchOptions](#class-fetchoptions)|否|FetchOptions()| **命名参数。** 检索选项。|
+|options|[FetchOptions](#class-fetchoptions)|否|FetchOptions(["uri", "album_name"], DataSharePredicates())|**命名参数。** 检索选项。|
 
 **返回值：**
 
@@ -1956,14 +1672,14 @@ public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchO
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 201 | Permission denied |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -1974,17 +1690,15 @@ public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchO
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-predicates
-    .equalTo('album_name', Str('test1'))
-    .and()
-    .equalTo('count', Integer(2))
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
-    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.User,
+    AlbumSubtype.UserGeneric, options: fetchOptions)
 ```
 
 ### func getAssets(FetchOptions)
@@ -1995,7 +1709,7 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 **功能：** 获取图片和视频资源。
 
-**需要权限：** ohos.permission.READ_IMAGEVIDEO
+**需要权限：** ohos.READ_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2011,18 +1725,17 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回图片和视频数据结果集。|
+|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回获取连拍照片的结果集。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -2033,11 +1746,13 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 ```
 
@@ -2049,7 +1764,7 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 **功能：** 获取连拍照片资源。
 
-**需要权限：** ohos.permission.READ_IMAGEVIDEO
+**需要权限：** ohos.READ_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2066,17 +1781,16 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回连拍照片数据结果集。|
+|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回获取连拍照片的结果集。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |201|Permission denied|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|Internal system error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 14000011 | Internal system error |
 
 **示例：**
 
@@ -2087,11 +1801,13 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
@@ -2118,13 +1834,13 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900012 | Permission denied |
+  | 13900020 | Invalid argument |
 
 **示例：**
 
@@ -2135,7 +1851,11 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 import ohos.base.*
+import ohos.business_exception.BusinessException
+import ohos.callback_invoke.*
 
 // 此处代码可添加在依赖项定义中
 class MyCallback<T> <: Callback1Argument<T> {
@@ -2143,21 +1863,22 @@ class MyCallback<T> <: Callback1Argument<T> {
     public init(callabck: (T) -> Unit) {
         callabck_ = callabck
     }
-    public open func invoke(arg: T): Unit {
+    public open func invoke(err: ?BusinessException, arg: T): Unit {
         callabck_(arg)
     }
 }
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
-        arg: ChangeData => AppLog.info(
-            "onCallback1. ChangeData: type = ${arg.`type`.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
+        arg: ChangeData => Hilog.info(0, "AppLogCj",
+            "onCallback1. ChangeData: type = ${arg.notifyType.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
         )
     })
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: ['title'], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
@@ -2177,13 +1898,13 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **示例：**
 
@@ -2194,11 +1915,13 @@ public func release(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 phAccessHelper.release()
@@ -2222,17 +1945,17 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |srcFileUris|Array\<String>|是|-|需保存到媒体库中的图片/视频文件对应的媒体库uri。<br>**注意：**  仅支持处理图片、视频uri。|
-|photoCreationConfigs|Array\<[PhotoCreationConfig](#struct-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
+|photoCreationConfigs|Array\<[PhotoCreationConfig](#class-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|Internal system error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | Internal system error |
 
 **示例：**
 
@@ -2243,7 +1966,11 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 import ohos.base.*
+import ohos.business_exception.BusinessException
+import ohos.callback_invoke.*
 
 // 此处代码可添加在依赖项定义中
 class MyCallback<T> <: Callback1Argument<T> {
@@ -2251,19 +1978,20 @@ class MyCallback<T> <: Callback1Argument<T> {
     public init(callabck: (T) -> Unit) {
         callabck_ = callabck
     }
-    public open func invoke(arg: T): Unit {
+    public open func invoke(err: ?BusinessException, arg: T): Unit {
         callabck_(arg)
     }
 }
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback3 = MyCallback<Array<String>>(
     {
         arg: Array<String> =>
-        AppLog.info("oncallback3: Array.size: ${arg.size}")
+        Hilog.info(0, "AppLogCj", "oncallback3: Array.size: ${arg.size}")
         for (str in arg) {
-            AppLog.info("oncallback3: uri: ${str}")
+            Hilog.info(0, "AppLogCj", "oncallback3: uri: ${str}")
         }
     }
 )
@@ -2273,9 +2001,9 @@ let srcFileUris: Array<String> = ["file://media/Photo/37/IMG_1731463495_028/IMG_
 let photoCreationConfigs: Array<PhotoCreationConfig> = [
     PhotoCreationConfig(
         'jpg',
-        PhotoType.IMAGE,
+        PhotoType.Image,
         title: "test4",
-        subtype: PhotoSubtype.DEFAULT
+        subtype: PhotoSubtype.Default
     )
 ]
 phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs, callback3)
@@ -2298,17 +2026,17 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
-|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None| **命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
+|callback|?[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900012 | Permission denied |
+  | 13900020 | Invalid argument |
 
 **示例：**
 
@@ -2319,7 +2047,11 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.BusinessException
 
 // 此处代码可添加在依赖项定义中
 class MyCallback<T> <: Callback1Argument<T> {
@@ -2327,22 +2059,23 @@ class MyCallback<T> <: Callback1Argument<T> {
     public init(callabck: (T) -> Unit) {
         callabck_ = callabck
     }
-    public open func invoke(arg: T): Unit {
+    public open func invoke(err: ?BusinessException, arg: T): Unit {
         callabck_(arg)
     }
 }
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
-        arg: ChangeData => AppLog.info(
-            "onCallback1. ChangeData: type = ${arg.`type`.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
+        arg: ChangeData => Hilog.info(0, "AppLogCj",
+            "onCallback1. ChangeData: type = ${arg.notifyType.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
         )
     })
 
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: ['title'], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 
@@ -2351,340 +2084,33 @@ phAccessHelper.unRegisterChange(firstPhotoAsset.uri, callback: callback1)
 phAccessHelper.unRegisterChange(firstPhotoAsset.uri)
 ```
 
-## class PhotoAsset
+## class PhotoCreationConfig
 
 ```cangjie
-public class PhotoAsset {}
-```
-
-**功能：** 提供封装文件属性的方法。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop displayName
-
-```cangjie
-public prop displayName: String
-```
-
-**功能：** 获取文件名，包含后缀名。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop photoType
-
-```cangjie
-public prop photoType: PhotoType
-```
-
-**功能：** 获取媒体文件类型。
-
-**类型：** [PhotoType](#enum-phototype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### prop uri
-
-```cangjie
-public prop uri: String
-```
-
-**功能：** 获取媒体文件资源uri。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### func commitModify()
-
-```cangjie
-public func commitModify(): Unit
-```
-
-**功能：** 修改文件的元数据。
-
-**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000001|Invalid display name.|
-  |14000011|System inner fail.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let photoAssetTitle = firstPhotoAsset
-    .get('title')
-    .getString()
-let newTitle = "123456789"
-firstPhotoAsset.set('title', newTitle)
-firstPhotoAsset.commitModify()
-```
-
-### func get(String)
-
-```cangjie
-public func get(member: String): MemberType
-```
-
-**功能：** 获取PhotoAsset成员参数。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|member|String|是|-|成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](#enum-photokeys)，例如：get title属性fetchColumns: ['title']。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[MemberType](#enum-membertype)|获取PhotoAsset成员参数的值。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900020|Invalid argument.|
-  |14000014|Member is not a valid PhotoKey.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let photoAssetTitle = firstPhotoAsset
-    .get('title')
-    .getString()
-```
-
-### func getThumbnail(?Size)
-
-```cangjie
-public func getThumbnail(size!: ?Size = None): PixelMap
-```
-
-**功能：** 获取文件的缩略图，传入缩略图尺寸。
-
-**需要权限：** ohos.permission.READ_IMAGEVIDEO
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|?[Size](../ImageKit/cj-apis-image.md#struct-size)|否|None| **命名参数。** 缩略图尺寸。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|返回缩略图的PixelMap。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let pixm = firstPhotoAsset.getThumbnail()
-```
-
-### func set(String, String)
-
-```cangjie
-public func set(member: String, data: String): Unit
-```
-
-**功能：** 设置PhotoAsset成员参数。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|member|String|是|-|成员参数名称例如：[PhotoKeys](#enum-photokeys).TITLE。|
-|data|String|是|-|设置成员参数名称，只能修改[PhotoKeys](#enum-photokeys).TITLE的值。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  |错误码ID|错误信息|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900020|Invalid argument.|
-  |14000014|Member is not a valid PhotoKey.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let photoAssetTitle = firstPhotoAsset
-    .get('title')
-    .getString()
-let newTitle = "123456789"
-firstPhotoAsset.set('title', newTitle)
-```
-
-## class PhotoSelectOptions
-
-```cangjie
-public class PhotoSelectOptions <: BaseSelectOptions {
-    public var isEditSupported: Bool = true
-    public var isOriginalSupported: Bool = false
-    public var subWindowName:?String = None
-    public init(
-        MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-        maxSelectNumber!: Int32 = 50,
-        isPhotoTakingSupported!: Bool = true,
-        isSearchSupported!: Bool = true,
-        recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-        preselectedUris!: Array<String> = Array<String>(),
-        isPreviewForSingleSelectionSupported!: Bool = true,
-        isEditSupported!: Bool = true,
-        isOriginalSupported!: Bool = false,
-        subWindowName!: ?String = None
-    )
+public class PhotoCreationConfig {
+    public var fileNameExtension: String
+    public var photoType: PhotoType
+    public var title: String
+    public var subtype: PhotoSubtype
+    public init(fileNameExtension: String, photoType: PhotoType, title!: String = "", subtype!: PhotoSubtype = Default)
 }
 ```
 
-**功能：** 图库选择选项子类，继承于BaseSelectOptions。
+**功能：** 保存图片/视频到媒体库的配置，包括保存的文件名等。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
 
-**父类型：**
-
-- [BaseSelectOptions](#class-baseselectoptions)
-
-### var isEditSupported
+### var fileNameExtension
 
 ```cangjie
-public var isEditSupported: Bool = true
+public var fileNameExtension: String
 ```
 
-**功能：** 是否支持编辑照片。
+**功能：** 文件扩展名。
 
-**类型：** Bool
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -2692,15 +2118,15 @@ public var isEditSupported: Bool = true
 
 **起始版本：** 21
 
-### var isOriginalSupported
+### var photoType
 
 ```cangjie
-public var isOriginalSupported: Bool = false
+public var photoType: PhotoType
 ```
 
-**功能：** 是否显示选择原图按钮。
+**功能：** 文件类型。
 
-**类型：** Bool
+**类型：** [PhotoType](#enum-phototype)
 
 **读写能力：** 可读写
 
@@ -2708,15 +2134,15 @@ public var isOriginalSupported: Bool = false
 
 **起始版本：** 21
 
-### var subWindowName
+### var subtype
 
 ```cangjie
-public var subWindowName:?String = None
+public var subtype: PhotoSubtype
 ```
 
-**功能：** 子窗窗口名称。
+**功能：** 文件子类型。
 
-**类型：** ?String
+**类型：** [PhotoSubtype](#enum-photosubtype)
 
 **读写能力：** 可读写
 
@@ -2724,24 +2150,29 @@ public var subWindowName:?String = None
 
 **起始版本：** 21
 
-### init(PhotoViewMIMETypes, Int32, Bool, Bool, RecommendationOptions, Array\<String>, Bool, Bool, Bool, ?String)
+### var title
 
 ```cangjie
-public init(
-    MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-    maxSelectNumber!: Int32 = 50,
-    isPhotoTakingSupported!: Bool = true,
-    isSearchSupported!: Bool = true,
-    recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-    preselectedUris!: Array<String> = Array<String>(),
-    isPreviewForSingleSelectionSupported!: Bool = true,
-    isEditSupported!: Bool = true,
-    isOriginalSupported!: Bool = false,
-    subWindowName!: ?String = None
-)
+public var title: String
 ```
 
-**功能：** 构造PhotoSelectOptions对象。
+**功能：** 图片或者视频的标题。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**起始版本：** 21
+
+### init(String, PhotoType, String, PhotoSubtype)
+
+```cangjie
+public init(fileNameExtension: String, photoType: PhotoType, title!: String = "", subtype!: PhotoSubtype = Default)
+```
+
+**功能：** 构造PhotoCreationConfig对象。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2751,26 +2182,20 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|MIMEType|[PhotoViewMIMETypes](#enum-photoviewmimetypes)|否|IMAGE_VIDEO_TYPE| **命名参数。** 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。|
-|maxSelectNumber|Int32|否|50| **命名参数。** 选择媒体文件数量的最大值(最大可设置的值为500，若不设置则默认为50)。|
-|isPhotoTakingSupported|Bool|否|true| **命名参数。** 是否支持拍照，true表示支持，false表示不支持，默认为true。|
-|isSearchSupported|Bool|否|true| **命名参数。** 是否支持搜索，true表示支持，false表示不支持，默认为true。|
-|recommendationOptions|[RecommendationOptions](#struct-recommendationoptions)|否|RecommendationOptions()| **命名参数。** 图片推荐相关配置参数。|
-|preselectedUris|Array\<String>|否|Array\<String>()| **命名参数。** 预选择图片的uri数据。|
-|isPreviewForSingleSelectionSupported|Bool|否|true| **命名参数。** 单选模式下是否需要进大图预览，true表示需要，false表示不需要，默认为true。|
-|isEditSupported|Bool|否|true| **命名参数。** 是否支持编辑照片，true表示支持，false表示不支持，默认为true。|
-|isOriginalSupported|Bool|否|false| **命名参数。** 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。|
-|subWindowName|?String|否|None| **命名参数。** 子窗窗口名称。|
+|fileNameExtension|String|是|-|文件扩展名，例如'jpg'。|
+|photoType|[PhotoType](#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
+|title|String|否|""| **命名参数。** 图片或者视频的标题。|
+|subtype|[PhotoSubtype](#enum-photosubtype)|否|Default| **命名参数。** 图片或者视频的文件子类型，Default或者MovingPhoto。|
 
 ## class RequestOptions
 
 ```cangjie
-public class PhotoViewPicker {
-    public init(gcontext: UIAbilityContext)
+public class RequestOptions {
+    public var deliveryMode: DeliveryMode
 }
 ```
 
-**功能：** 图库选择器对象，用来支撑选择图片/视频等用户场景。在使用前，需要先创建PhotoViewPicker实例。
+**功能：** 请求策略。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2792,410 +2217,12 @@ public var deliveryMode: DeliveryMode
 
 **起始版本：** 21
 
-### RequestOptions(DeliveryMode)
-
-```cangjie
-public RequestOptions(
-    public var deliveryMode: DeliveryMode
-)
-```
-
-**功能：** 构造RequestOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deliveryMode|[DeliveryMode](#enum-deliverymode)|是|-|请求资源分发模式，可以指定对于该资源的请求策略，可被配置为快速模式，高质量模式，均衡模式三种策略。|
-
-## struct CreateOptions
-
-```cangjie
-public struct CreateOptions {
-    public CreateOptions(
-        public var title!: ?String = None,
-        public var subtype!: ?PhotoSubtype = None
-    )
-}
-```
-
-**功能：** 图片或视频的创建选项。
-
-title参数规格为：
-
-- 不应包含扩展名。
-- 文件名字符串长度为1~255。
-- 文件名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var subtype
-
-```cangjie
-public var subtype:?PhotoSubtype = None
-```
-
-**功能：** 图片或者视频的标题。
-
-**类型：** ?[PhotoSubtype](#enum-photosubtype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var title
-
-```cangjie
-public var title:?String = None
-```
-
-**功能：** 图片或者视频的标题。
-
-**类型：** ?String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### CreateOptions(?String, ?PhotoSubtype)
-
-```cangjie
-public CreateOptions(
-    public var title!: ?String = None,
-    public var subtype!: ?PhotoSubtype = None
-)
-```
-
-**功能：** 构造CreateOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|title|?String|否|None| **命名参数。** 图片或者视频的标题。|
-|subtype|?[PhotoSubtype](#enum-photosubtype)|否|None| **命名参数。** 图片或者视频的文件子类型。|
-
-## struct PhotoCreationConfig
-
-```cangjie
-public struct PhotoCreationConfig {
-    public PhotoCreationConfig(
-        public let fileNameExtension: String,
-        public let photoType: PhotoType,
-        public let title!: String = "",
-        public let subtype!: PhotoSubtype = DEFAULT
-    )
-}
-```
-
-**功能：** 保存图片/视频到媒体库的配置，包括保存的文件名等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### let fileNameExtension
-
-```cangjie
-public let fileNameExtension: String
-```
-
-**功能：** 文件扩展名。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### let photoType
-
-```cangjie
-public let photoType: PhotoType
-```
-
-**功能：** 文件类型。
-
-**类型：** [PhotoType](#enum-phototype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### let subtype
-
-```cangjie
-public let subtype: PhotoSubtype = DEFAULT
-```
-
-**功能：** 文件子类型。
-
-**类型：** [PhotoSubtype](#enum-photosubtype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### let title
-
-```cangjie
-public let title: String = ""
-```
-
-**功能：** 图片或者视频的标题。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### PhotoCreationConfig(String, PhotoType, String, PhotoSubtype)
-
-```cangjie
-public PhotoCreationConfig(
-    public let fileNameExtension: String,
-    public let photoType: PhotoType,
-    public let title!: String = "",
-    public let subtype!: PhotoSubtype = DEFAULT
-)
-```
-
-**功能：** 构造PhotoCreationConfig对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|fileNameExtension|String|是|-|文件扩展名，例如'jpg'。|
-|photoType|[PhotoType](#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
-|title|String|否|""| **命名参数。** 图片或者视频的标题。|
-|subtype|[PhotoSubtype](#enum-photosubtype)|否|DEFAULT| **命名参数。** 图片或者视频的文件子类型，DEFAULT或者MOVING_PHOTO。|
-
-## struct PhotoSelectResult
-
-```cangjie
-public struct PhotoSelectResult {
-    public PhotoSelectResult(
-        public var photoUris: Array<String>,
-        public var isOriginalPhoto: Bool
-    )
-}
-```
-
-**功能：** 返回图库选择后的结果集。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var isOriginalPhoto
-
-```cangjie
-public var isOriginalPhoto: Bool
-```
-
-**功能：** 是否为原图。
-
-**类型：** Bool
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var photoUris
-
-```cangjie
-public var photoUris: Array<String>
-```
-
-**功能：** 媒体文件的uri数组。
-
-**类型：** Array\<String>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### PhotoSelectResult(Array\<String>, Bool)
-
-```cangjie
-public PhotoSelectResult(
-    public var photoUris: Array<String>,
-    public var isOriginalPhoto: Bool
-)
-```
-
-**功能：** 构造PhotoSelectResult对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|photoUris|Array\<String>|是|-|返回图库选择后的媒体文件的uri数组，此uri数组只能通过临时授权的方式调用[getAssets接口](#func-getassetsfetchoptions)去使用。|
-|isOriginalPhoto|Bool|是|-|返回图库选择后的媒体文件是否为原图。|
-
-## struct RecommendationOptions
-
-```cangjie
-public struct RecommendationOptions {
-    public RecommendationOptions(
-        public var recommendationType!: ?RecommendationType = None,
-        public var textContextInfo!: ?TextContextInfo = None
-    )
-}
-```
-
-**功能：** 图片推荐选项(基于图片数据分析结果，依赖设备适配)。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var recommendationType
-
-```cangjie
-public var recommendationType:?RecommendationType = None
-```
-
-**功能：** 文本。
-
-**类型：** ?[RecommendationType](#enum-recommendationtype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### var textContextInfo
-
-```cangjie
-public var textContextInfo:?TextContextInfo = None
-```
-
-**功能：** 文本。
-
-**类型：** ?[TextContextInfo](#struct-textcontextinfo)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### RecommendationOptions(?RecommendationType, ?TextContextInfo)
-
-```cangjie
-public RecommendationOptions(
-    public var recommendationType!: ?RecommendationType = None,
-    public var textContextInfo!: ?TextContextInfo = None
-)
-```
-
-**功能：** 构造RecommendationOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|recommendationType|?[RecommendationType](#enum-recommendationtype)|否|None| **命名参数。** 如果需要根据枚举值推荐相应的图片，则配置此参数。|
-|textContextInfo|?[TextContextInfo](#struct-textcontextinfo)|否|None| **命名参数。** 如果需要根据文本信息推荐相应的图片，则配置此参数(如果同时配置了recommendationType，则仅textContextInfo生效)。|
-
-## struct TextContextInfo
-
-```cangjie
-public struct TextContextInfo {
-    public TextContextInfo (
-        public let text!: String = ""
-    )
-}
-```
-
-**功能：** 文本信息，用于推荐图片的文本信息。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### let text
-
-```cangjie
-public let text: String = ""
-```
-
-**功能：** 文本。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### TextContextInfo(String)
-
-```cangjie
-public TextContextInfo (public let text!: String = "")
-```
-
-**功能：** 构造TextContextInfo对象。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|text|String|否|""| **命名参数。** 如果需要根据文本(支持250字以内的简体中文)推荐相应的图片，则配置此参数。|
-
 ## enum AlbumKeys
 
 ```cangjie
 public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
-    | URI
-    | ALBUM_NAME
+    | Uri
+    | AlbumName
     | ...
 }
 ```
@@ -3211,10 +2238,10 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 - ToString
 - Equatable\<AlbumKeys>
 
-### ALBUM_NAME
+### AlbumName
 
 ```cangjie
-ALBUM_NAME
+AlbumName
 ```
 
 **功能：** 相册名字。
@@ -3223,10 +2250,10 @@ ALBUM_NAME
 
 **起始版本：** 21
 
-### URI
+### Uri
 
 ```cangjie
-URI
+Uri
 ```
 
 **功能：** 相册uri。
@@ -3238,12 +2265,10 @@ URI
 ### func !=(AlbumKeys)
 
 ```cangjie
-public operator func !=(other: AlbumKeys): Bool 
+public operator func !=(other: AlbumKeys): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3264,10 +2289,6 @@ public operator func ==(other: AlbumKeys): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3303,11 +2324,11 @@ public func toString(): String
 
 ```cangjie
 public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
-    | USER_GENERIC
-    | FAVORITE
-    | VIDEO
-    | IMAGE
-    | ANY
+    | UserGeneric
+    | Favorite
+    | Video
+    | Image
+    | Any
     | ...
 }
 ```
@@ -3323,10 +2344,10 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 - Equatable\<AlbumSubtype>
 - ToString
 
-### ANY
+### Any
 
 ```cangjie
-ANY
+Any
 ```
 
 **功能：** 任意相册。
@@ -3335,10 +2356,10 @@ ANY
 
 **起始版本：** 21
 
-### FAVORITE
+### Favorite
 
 ```cangjie
-FAVORITE
+Favorite
 ```
 
 **功能：** 收藏夹。
@@ -3347,10 +2368,10 @@ FAVORITE
 
 **起始版本：** 21
 
-### IMAGE
+### Image
 
 ```cangjie
-IMAGE
+Image
 ```
 
 **功能：** 图片相册。
@@ -3359,10 +2380,10 @@ IMAGE
 
 **起始版本：** 21
 
-### USER_GENERIC
+### UserGeneric
 
 ```cangjie
-USER_GENERIC
+UserGeneric
 ```
 
 **功能：** 用户相册。
@@ -3371,10 +2392,10 @@ USER_GENERIC
 
 **起始版本：** 21
 
-### VIDEO
+### Video
 
 ```cangjie
-VIDEO
+Video
 ```
 
 **功能：** 视频相册。
@@ -3386,14 +2407,10 @@ VIDEO
 ### func !=(AlbumSubtype)
 
 ```cangjie
-public operator func !=(other: AlbumSubtype): Bool 
+public operator func !=(other: AlbumSubtype): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3415,10 +2432,6 @@ public operator func ==(other: AlbumSubtype): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3439,10 +2452,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3453,8 +2462,8 @@ public func toString(): String
 
 ```cangjie
 public enum AlbumType <: Equatable<AlbumType> & ToString {
-    | USER
-    | SYSTEM
+    | User
+    | System
     | ...
 }
 ```
@@ -3470,10 +2479,10 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 - Equatable\<AlbumType>
 - ToString
 
-### SYSTEM
+### System
 
 ```cangjie
-SYSTEM
+System
 ```
 
 **功能：** 系统预置相册。
@@ -3482,10 +2491,10 @@ SYSTEM
 
 **起始版本：** 21
 
-### USER
+### User
 
 ```cangjie
-USER
+User
 ```
 
 **功能：** 用户相册。
@@ -3501,10 +2510,6 @@ public operator func !=(other: AlbumType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3526,10 +2531,6 @@ public operator func ==(other: AlbumType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3550,10 +2551,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3564,8 +2561,8 @@ public func toString(): String
 
 ```cangjie
 public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
-    | DEFAULT_PHOTO_URI
-    | DEFAULT_ALBUM_URI
+    | DefaultPhotoUri
+    | DefaultAlbumUri
     | ...
 }
 ```
@@ -3581,10 +2578,10 @@ public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
 - ToString
 - Equatable\<DefaultChangeUri>
 
-### DEFAULT_ALBUM_URI
+### DefaultAlbumUri
 
 ```cangjie
-DEFAULT_ALBUM_URI
+DefaultAlbumUri
 ```
 
 **功能：** 默认相册的Uri，与forSubUri{true}一起使用，将接收所有相册的更改通知。
@@ -3593,10 +2590,10 @@ DEFAULT_ALBUM_URI
 
 **起始版本：** 21
 
-### DEFAULT_PHOTO_URI
+### DefaultPhotoUri
 
 ```cangjie
-DEFAULT_PHOTO_URI
+DefaultPhotoUri
 ```
 
 **功能：** 默认PhotoAsset的Uri，与forSubUri{true}一起使用，将接收所有PhotoAsset的更改通知。
@@ -3612,10 +2609,6 @@ public operator func !=(other: DefaultChangeUri): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3636,10 +2629,6 @@ public operator func ==(other: DefaultChangeUri): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3675,9 +2664,9 @@ public func toString(): String
 
 ```cangjie
 public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
-    | FAST_MODE
-    | HIGH_QUALITY_MODE
-    | BALANCE_MODE
+    | FastMode
+    | HighQualityMode
+    | BalanceMode
     | ...
 }
 ```
@@ -3693,33 +2682,39 @@ public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
 - Equatable\<DeliveryMode>
 - ToString
 
-### BALANCE_MODE
+### BalanceMode
 
 ```cangjie
-BALANCE_MODE
+BalanceMode
 ```
 
 **功能：** 均衡模式。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 21
 
-### FAST_MODE
+### FastMode
 
 ```cangjie
-FAST_MODE
+FastMode
 ```
 
 **功能：** 快速模式。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 21
 
-### HIGH_QUALITY_MODE
+### HighQualityMode
 
 ```cangjie
-HIGH_QUALITY_MODE
+HighQualityMode
 ```
 
 **功能：** 高质量模式。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
 
@@ -3730,10 +2725,6 @@ public operator func !=(other: DeliveryMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3755,10 +2746,6 @@ public operator func ==(other: DeliveryMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3779,10 +2766,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -3793,8 +2776,8 @@ public func toString(): String
 
 ```cangjie
 public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
-    | SDR
-    | HDR
+    | Sdr
+    | Hdr
     | ...
 }
 ```
@@ -3810,23 +2793,27 @@ public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
 - Equatable\<DynamicRangeType>
 - ToString
 
-### HDR
+### Hdr
 
 ```cangjie
-HDR
+Hdr
 ```
 
 **功能：** 高动态范围类型。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 21
 
-### SDR
+### Sdr
 
 ```cangjie
-SDR
+Sdr
 ```
 
 **功能：** 标准动态范围类型。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 21
 
@@ -3837,10 +2824,6 @@ public operator func !=(other: DynamicRangeType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -3862,10 +2845,6 @@ public operator func ==(other: DynamicRangeType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -3886,126 +2865,21 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
 
-## enum MemberType
-
-```cangjie
-public enum MemberType {
-    | INT64(Int64)
-    | STRING(String)
-    | BOOL(Bool)
-    | ...
-}
-```
-
-**功能：** PhotoAsset的成员类型。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### BOOL(Bool)
-
-```cangjie
-BOOL(Bool)
-```
-
-**功能：** 表示值类型为布尔类型。
-
-**起始版本：** 21
-
-### INT64(Int64)
-
-```cangjie
-INT64(Int64)
-```
-
-**功能：** 表示值类型为数字，可取任意值。
-
-**起始版本：** 21
-
-### STRING(String)
-
-```cangjie
-STRING(String)
-```
-
-**功能：** 表示值类型为字符，可取任意值。
-
-**起始版本：** 21
-
-### func getBool()
-
-```cangjie
-public func getBool(): Bool
-```
-
-**功能：** 获取BOOL(Bool)中的值。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|返回BOOL(Bool)中的值。|
-
-### func getNumber()
-
-```cangjie
-public func getNumber(): Int64
-```
-
-**功能：** 获取INT64(Int64)中的值。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int64|返回INT64(Int64)中的值。|
-
-### func getString()
-
-```cangjie
-public func getString(): String
-```
-
-**功能：** 获取STRING(String)中的值。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回STRING(String)中的值。|
-
 ## enum NotifyType
 
 ```cangjie
 public enum NotifyType <: Equatable<NotifyType> & ToString {
-    | NOTIFY_ADD
-    | NOTIFY_UPDATE
-    | NOTIFY_REMOVE
-    | NOTIFY_ALBUM_ADD_ASSET
-    | NOTIFY_ALBUM_REMOVE_ASSET
+    | NotifyAdd
+    | NotifyUpdate
+    | NotifyRemove
+    | NotifyAlbumAddAsset
+    | NotifyAlbumRemoveAsset
     | ...
 }
 ```
@@ -4021,10 +2895,10 @@ public enum NotifyType <: Equatable<NotifyType> & ToString {
 - Equatable\<NotifyType>
 - ToString
 
-### NOTIFY_ADD
+### NotifyAdd
 
 ```cangjie
-NOTIFY_ADD
+NotifyAdd
 ```
 
 **功能：** 添加文件集或相册通知的类型。
@@ -4033,10 +2907,10 @@ NOTIFY_ADD
 
 **起始版本：** 21
 
-### NOTIFY_ALBUM_ADD_ASSET
+### NotifyAlbumAddAsset
 
 ```cangjie
-NOTIFY_ALBUM_ADD_ASSET
+NotifyAlbumAddAsset
 ```
 
 **功能：** 在相册中添加的文件集的通知类型。
@@ -4045,10 +2919,10 @@ NOTIFY_ALBUM_ADD_ASSET
 
 **起始版本：** 21
 
-### NOTIFY_ALBUM_REMOVE_ASSET
+### NotifyAlbumRemoveAsset
 
 ```cangjie
-NOTIFY_ALBUM_REMOVE_ASSET
+NotifyAlbumRemoveAsset
 ```
 
 **功能：** 在相册中删除的文件集的通知类型。
@@ -4057,10 +2931,10 @@ NOTIFY_ALBUM_REMOVE_ASSET
 
 **起始版本：** 21
 
-### NOTIFY_REMOVE
+### NotifyRemove
 
 ```cangjie
-NOTIFY_REMOVE
+NotifyRemove
 ```
 
 **功能：** 删除文件集或相册的通知类型。
@@ -4069,10 +2943,10 @@ NOTIFY_REMOVE
 
 **起始版本：** 21
 
-### NOTIFY_UPDATE
+### NotifyUpdate
 
 ```cangjie
-NOTIFY_UPDATE
+NotifyUpdate
 ```
 
 **功能：** 文件集或相册的更新通知类型。
@@ -4088,10 +2962,6 @@ public operator func !=(other: NotifyType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4113,10 +2983,6 @@ public operator func ==(other: NotifyType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -4137,10 +3003,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -4151,27 +3013,27 @@ public func toString(): String
 
 ```cangjie
 public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
-    | URI
-    | PHOTO_TYPE
-    | DISPLAY_NAME
-    | SIZE
-    | DATE_ADDED
-    | DATE_MODIFIED
-    | DURATION
-    | WIDTH
-    | HEIGHT
-    | DATE_TAKEN
-    | ORIENTATION
-    | FAVORITE
-    | TITLE
-    | DATE_ADDED_MS
-    | DATE_MODIFIED_MS
-    | PHOTO_SUBTYPE
-    | DYNAMIC_RANGE_TYPE
-    | COVER_POSITION
-    | BURST_KEY
-    | LCD_SIZE
-    | THM_SIZE
+    | Uri
+    | PhotoType
+    | DisplayName
+    | Size
+    | DateAdded
+    | DateModified
+    | Duration
+    | Width
+    | Height
+    | DateTaken
+    | Orientation
+    | Favorite
+    | Title
+    | DateAddedMs
+    | DateModifiedMs
+    | PhotoSubType
+    | DynamicRangeType
+    | CoverPosition
+    | BurstKey
+    | LcdSize
+    | ThmSize
     | ...
 }
 ```
@@ -4185,12 +3047,12 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
 **父类型：**
 
 - ToString
-- [Equatable\<PhotoKeys>]
+- Equatable\<PhotoKeys>
 
-### BURST_KEY
+### BurstKey
 
 ```cangjie
-BURST_KEY
+BurstKey
 ```
 
 **功能：** 一组连拍照片的唯一标识：uuid。
@@ -4199,10 +3061,10 @@ BURST_KEY
 
 **起始版本：** 21
 
-### COVER_POSITION
+### CoverPosition
 
 ```cangjie
-COVER_POSITION
+CoverPosition
 ```
 
 **功能：** 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。
@@ -4211,10 +3073,10 @@ COVER_POSITION
 
 **起始版本：** 21
 
-### DATE_ADDED
+### DateAdded
 
 ```cangjie
-DATE_ADDED
+DateAdded
 ```
 
 **功能：** 添加日期（添加文件时间距1970年1月1日的秒数值）。
@@ -4223,10 +3085,10 @@ DATE_ADDED
 
 **起始版本：** 21
 
-### DATE_ADDED_MS
+### DateAddedMs
 
 ```cangjie
-DATE_ADDED_MS
+DateAddedMs
 ```
 
 **功能：** 添加日期（添加文件时间距1970年1月1日的毫秒数值）。
@@ -4237,10 +3099,10 @@ DATE_ADDED_MS
 
 **起始版本：** 21
 
-### DATE_MODIFIED
+### DateModified
 
 ```cangjie
-DATE_MODIFIED
+DateModified
 ```
 
 **功能：** 修改日期（修改文件时间距1970年1月1日的秒数值，修改文件名不会改变此值，当文件内容发生修改时才会更新）。
@@ -4249,10 +3111,10 @@ DATE_MODIFIED
 
 **起始版本：** 21
 
-### DATE_MODIFIED_MS
+### DateModifiedMs
 
 ```cangjie
-DATE_MODIFIED_MS
+DateModifiedMs
 ```
 
 **功能：** 修改日期（修改文件时间距1970年1月1日的毫秒数值，修改文件名不会改变此值，当文件内容发生修改时才会更新）。
@@ -4263,10 +3125,10 @@ DATE_MODIFIED_MS
 
 **起始版本：** 21
 
-### DATE_TAKEN
+### DateTaken
 
 ```cangjie
-DATE_TAKEN
+DateTaken
 ```
 
 **功能：** 拍摄日期（文件拍照时间距1970年1月1日的秒数值）。
@@ -4275,10 +3137,10 @@ DATE_TAKEN
 
 **起始版本：** 21
 
-### DISPLAY_NAME
+### DisplayName
 
 ```cangjie
-DISPLAY_NAME
+DisplayName
 ```
 
 **功能：** 显示名字。
@@ -4287,10 +3149,10 @@ DISPLAY_NAME
 
 **起始版本：** 21
 
-### DURATION
+### Duration
 
 ```cangjie
-DURATION
+Duration
 ```
 
 **功能：** 持续时间（单位：毫秒）。
@@ -4299,10 +3161,10 @@ DURATION
 
 **起始版本：** 21
 
-### DYNAMIC_RANGE_TYPE
+### DynamicRangeType
 
 ```cangjie
-DYNAMIC_RANGE_TYPE
+DynamicRangeType
 ```
 
 **功能：** 媒体文件的动态范围类型。
@@ -4311,10 +3173,10 @@ DYNAMIC_RANGE_TYPE
 
 **起始版本：** 21
 
-### FAVORITE
+### Favorite
 
 ```cangjie
-FAVORITE
+Favorite
 ```
 
 **功能：** 收藏。
@@ -4323,10 +3185,10 @@ FAVORITE
 
 **起始版本：** 21
 
-### HEIGHT
+### Height
 
 ```cangjie
-HEIGHT
+Height
 ```
 
 **功能：** 图片高度（单位：像素）。
@@ -4335,10 +3197,10 @@ HEIGHT
 
 **起始版本：** 21
 
-### LCD_SIZE
+### LcdSize
 
 ```cangjie
-LCD_SIZE
+LcdSize
 ```
 
 **功能：** LCD图片的宽高，值为width:height拼接而成的字符串。
@@ -4347,10 +3209,10 @@ LCD_SIZE
 
 **起始版本：** 21
 
-### ORIENTATION
+### Orientation
 
 ```cangjie
-ORIENTATION
+Orientation
 ```
 
 **功能：** 文件的旋转角度，单位为度。
@@ -4359,10 +3221,10 @@ ORIENTATION
 
 **起始版本：** 21
 
-### PHOTO_SUBTYPE
+### PhotoSubType
 
 ```cangjie
-PHOTO_SUBTYPE
+PhotoSubType
 ```
 
 **功能：** 媒体文件的动态范围类型。
@@ -4371,10 +3233,10 @@ PHOTO_SUBTYPE
 
 **起始版本：** 21
 
-### PHOTO_TYPE
+### PhotoType
 
 ```cangjie
-PHOTO_TYPE
+PhotoType
 ```
 
 **功能：** 媒体文件类型。
@@ -4383,10 +3245,10 @@ PHOTO_TYPE
 
 **起始版本：** 21
 
-### SIZE
+### Size
 
 ```cangjie
-SIZE
+Size
 ```
 
 **功能：** 文件大小（单位：字节）。
@@ -4395,10 +3257,10 @@ SIZE
 
 **起始版本：** 21
 
-### THM_SIZE
+### ThmSize
 
 ```cangjie
-THM_SIZE
+ThmSize
 ```
 
 **功能：** THUMB图片的宽高，值为width:height拼接而成的字符串。
@@ -4407,10 +3269,10 @@ THM_SIZE
 
 **起始版本：** 21
 
-### TITLE
+### Title
 
 ```cangjie
-TITLE
+Title
 ```
 
 **功能：** 文件标题。
@@ -4419,10 +3281,10 @@ TITLE
 
 **起始版本：** 21
 
-### URI
+### Uri
 
 ```cangjie
-URI
+Uri
 ```
 
 **功能：** 文件uri。
@@ -4433,10 +3295,10 @@ URI
 
 **起始版本：** 21
 
-### WIDTH
+### Width
 
 ```cangjie
-WIDTH
+Width
 ```
 
 **功能：** 图片宽度（单位：像素）。
@@ -4452,10 +3314,6 @@ public operator func !=(other: PhotoKeys): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4476,10 +3334,6 @@ public operator func ==(other: PhotoKeys): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4515,9 +3369,9 @@ public func toString(): String
 
 ```cangjie
 public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
-    | DEFAULT
-    | MOVING_PHOTO
-    | BURST
+    | Default
+    | MovingPhoto
+    | Burst
     | ...
 }
 ```
@@ -4533,10 +3387,10 @@ public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
 - Equatable\<PhotoSubtype>
 - ToString
 
-### BURST
+### Burst
 
 ```cangjie
-BURST
+Burst
 ```
 
 **功能：** 连拍照片文件类型。
@@ -4545,10 +3399,10 @@ BURST
 
 **起始版本：** 21
 
-### DEFAULT
+### Default
 
 ```cangjie
-DEFAULT
+Default
 ```
 
 **功能：** 默认照片类型。
@@ -4557,10 +3411,10 @@ DEFAULT
 
 **起始版本：** 21
 
-### MOVING_PHOTO
+### MovingPhoto
 
 ```cangjie
-MOVING_PHOTO
+MovingPhoto
 ```
 
 **功能：** 动态照片文件类型。
@@ -4576,10 +3430,6 @@ public operator func !=(other: PhotoSubtype): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4601,10 +3451,6 @@ public operator func ==(other: PhotoSubtype): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -4625,121 +3471,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的说明。|
-
-## enum PhotoType
-
-```cangjie
-public enum PhotoType <: Equatable<PhotoType> & ToString {
-    | IMAGE
-    | VIDEO
-    | ...
-}
-```
-
-**功能：**  媒体文件类型。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PhotoType>
-- ToString
-
-### IMAGE
-
-```cangjie
-IMAGE
-```
-
-**功能：** 图片。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### VIDEO
-
-```cangjie
-VIDEO
-```
-
-**功能：** 视频。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-### func !=(PhotoType)
-
-```cangjie
-public operator func !=(other: PhotoType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[PhotoType](#enum-phototype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(PhotoType)
-
-```cangjie
-public operator func ==(other: PhotoType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[PhotoType](#enum-phototype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -4750,10 +3481,10 @@ public func toString(): String
 
 ```cangjie
 public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
-    | IMAGE_TYPE
-    | VIDEO_TYPE
-    | IMAGE_VIDEO_TYPE
-    | MOVING_PHOTO_IMAGE_TYPE
+    | ImageType
+    | VideoType
+    | ImageVideoType
+    | MovingPhotoImageType
     | ...
 }
 ```
@@ -4769,10 +3500,10 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 - Equatable\<PhotoViewMIMETypes>
 - ToString
 
-### IMAGE_TYPE
+### ImageType
 
 ```cangjie
-IMAGE_TYPE
+ImageType
 ```
 
 **功能：** 图片类型。
@@ -4781,10 +3512,10 @@ IMAGE_TYPE
 
 **起始版本：** 21
 
-### IMAGE_VIDEO_TYPE
+### ImageVideoType
 
 ```cangjie
-IMAGE_VIDEO_TYPE
+ImageVideoType
 ```
 
 **功能：** 图片和视频类型。
@@ -4793,10 +3524,10 @@ IMAGE_VIDEO_TYPE
 
 **起始版本：** 21
 
-### MOVING_PHOTO_IMAGE_TYPE
+### MovingPhotoImageType
 
 ```cangjie
-MOVING_PHOTO_IMAGE_TYPE
+MovingPhotoImageType
 ```
 
 **功能：** 动态照片类型。
@@ -4805,10 +3536,10 @@ MOVING_PHOTO_IMAGE_TYPE
 
 **起始版本：** 21
 
-### VIDEO_TYPE
+### VideoType
 
 ```cangjie
-VIDEO_TYPE
+VideoType
 ```
 
 **功能：** 视频类型。
@@ -4824,10 +3555,6 @@ public operator func !=(other: PhotoViewMIMETypes): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -4849,10 +3576,6 @@ public operator func ==(other: PhotoViewMIMETypes): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -4873,10 +3596,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -4887,16 +3606,16 @@ public func toString(): String
 
 ```cangjie
 public enum RecommendationType <: Equatable<RecommendationType> & ToString {
-    | QR_OR_BAR_CODE
-    | QR_CODE
-    | BAR_CODE
-    | ID_CARD
-    | PROFILE_PICTURE
-    | PASSPORT
-    | BANK_CARD
-    | DRIVER_LICENSE
-    | DRIVING_LICENSE
-    | FEATURED_SINGLE_PORTRAIT
+    | QrOrBarCode
+    | QrCode
+    | BarCode
+    | IDCard
+    | ProfilePicture
+    | PassPort
+    | BankCard
+    | DriverLicense
+    | DrivingLicense
+    | FeaturedSinglePortrait
     | ...
 }
 ```
@@ -4912,10 +3631,10 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 - Equatable\<RecommendationType>
 - ToString
 
-### BANK_CARD
+### BankCard
 
 ```cangjie
-BANK_CARD
+BankCard
 ```
 
 **功能：** 银行卡。
@@ -4924,10 +3643,10 @@ BANK_CARD
 
 **起始版本：** 21
 
-### BAR_CODE
+### BarCode
 
 ```cangjie
-BAR_CODE
+BarCode
 ```
 
 **功能：** 条码。
@@ -4936,10 +3655,10 @@ BAR_CODE
 
 **起始版本：** 21
 
-### DRIVER_LICENSE
+### DriverLicense
 
 ```cangjie
-DRIVER_LICENSE
+DriverLicense
 ```
 
 **功能：** 驾驶证。
@@ -4948,10 +3667,10 @@ DRIVER_LICENSE
 
 **起始版本：** 21
 
-### DRIVING_LICENSE
+### DrivingLicense
 
 ```cangjie
-DRIVING_LICENSE
+DrivingLicense
 ```
 
 **功能：** 行驶证。
@@ -4960,10 +3679,10 @@ DRIVING_LICENSE
 
 **起始版本：** 21
 
-### FEATURED_SINGLE_PORTRAIT
+### FeaturedSinglePortrait
 
 ```cangjie
-FEATURED_SINGLE_PORTRAIT
+FeaturedSinglePortrait
 ```
 
 **功能：** 推荐人像。
@@ -4972,10 +3691,10 @@ FEATURED_SINGLE_PORTRAIT
 
 **起始版本：** 21
 
-### ID_CARD
+### IDCard
 
 ```cangjie
-ID_CARD
+IDCard
 ```
 
 **功能：** 身份证。
@@ -4984,10 +3703,10 @@ ID_CARD
 
 **起始版本：** 21
 
-### PASSPORT
+### PassPort
 
 ```cangjie
-PASSPORT
+PassPort
 ```
 
 **功能：** 护照。
@@ -4996,10 +3715,10 @@ PASSPORT
 
 **起始版本：** 21
 
-### PROFILE_PICTURE
+### ProfilePicture
 
 ```cangjie
-PROFILE_PICTURE
+ProfilePicture
 ```
 
 **功能：** 头像。
@@ -5008,10 +3727,10 @@ PROFILE_PICTURE
 
 **起始版本：** 21
 
-### QR_CODE
+### QrCode
 
 ```cangjie
-QR_CODE
+QrCode
 ```
 
 **功能：** 二维码。
@@ -5020,10 +3739,10 @@ QR_CODE
 
 **起始版本：** 21
 
-### QR_OR_BAR_CODE
+### QrOrBarCode
 
 ```cangjie
-QR_OR_BAR_CODE
+QrOrBarCode
 ```
 
 **功能：** 二维码或条码。
@@ -5039,10 +3758,6 @@ public operator func !=(other: RecommendationType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -5064,10 +3779,6 @@ public operator func ==(other: RecommendationType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -5088,10 +3799,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -5102,8 +3809,8 @@ public func toString(): String
 
 ```cangjie
 public enum ResourceType <: Equatable<ResourceType> & ToString {
-    | IMAGE_RESOURCE
-    | VIDEO_RESOURCE
+    | ImageResource
+    | VideoResource
     | ...
 }
 ```
@@ -5119,10 +3826,10 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 - Equatable\<ResourceType>
 - ToString
 
-### IMAGE_RESOURCE
+### ImageResource
 
 ```cangjie
-IMAGE_RESOURCE
+ImageResource
 ```
 
 **功能：** 表示图片资源。
@@ -5131,10 +3838,10 @@ IMAGE_RESOURCE
 
 **起始版本：** 21
 
-### VIDEO_RESOURCE
+### VideoResource
 
 ```cangjie
-VIDEO_RESOURCE
+VideoResource
 ```
 
 **功能：** 表示视频资源。
@@ -5150,10 +3857,6 @@ public operator func !=(other: ResourceType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -5175,10 +3878,6 @@ public operator func ==(other: ResourceType): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -5198,10 +3897,6 @@ public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
 
 **返回值：**
 

@@ -13,6 +13,7 @@ API参考主要用于开发者查阅应用开发相关的各类API说明。为�
 文档在每一个接口描述中说明了接口的系统能力，如：**系统能力：** SystemCapability.xxx.xxx
 
 - 通过系统能力SystemCapability列表，可以速查具体能力集支持的设备，如[手机](./cj-phone-syscap-list.md)。
+- 同时，系统提供了canIUse接口，可用于[判断API是否可以使用](cj-syscap.md#判断api是否可以使用)。
 - 在某具体的设备型号上，能力可能超出工程默认设备定义的能力集范围，如果需要使用此部分能力，需要额外配置自定义的syscap。请参考[加入自定义syscap](./cj-syscap.md#加入自定义syscap)。
 - 相同的系统能力，在不同的设备下，也会有能力的差异。开发者可以进行[不同设备相同能力的差异检查](./cj-syscap.md#不同设备相同能力的差异检查)。
 
@@ -38,7 +39,8 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
     // index.cj
 
     // 此处导入所涉及的包
-    import kit.UIKit.*
+    import kit.ArkUI.*
+    import kit.PerformanceAnalysisKit.Hilog
 
     // 此处定义所需要的依赖项如class、func等
 
@@ -53,7 +55,7 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
                         try {
                             // 此处添加API示例
                         } (e: Exception) {
-                            AppLog.info(e.toString())
+                            Hilog.info(0, "AppLogCj", e.toString())
                         }
                     }
                 }.width(100.percent)
@@ -62,36 +64,15 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
     }
     ```
 
-4. 若示例代码中涉及[Context](./apis/AbilityKit/cj-apis-ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中定义Global类并对其赋值，“main_ability.cj”内容如下：
+4. 若示例代码中涉及[Context](./apis/AbilityKit/cj-apis-ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中利用全局AppStorage保存Ability上下文，“main_ability.cj”内容如下：
 
     ```cangjie
     import kit.AbilityKit.*
-    internal import ohos.base.AppLog
-    internal import ohos.ability.UIAbilityContext
-    internal import ohos.ability.AbilityStage
-
-    // 定义Global类
-    public class Global {
-        public static var _abilityContext: Option<UIAbilityContext> = None
-        public static var windowStage: Option<WindowStage> = None
-        public static prop abilityContext: UIAbilityContext {
-            get() {
-                Global._abilityContext.getOrThrow()
-            }
-        }
-
-        public static func getAbilityContext() {
-            _abilityContext.getOrThrow()
-        }
-
-        public static func getStageContext() {
-            getStageContext(getAbilityContext())
-        }
-
-        public static func getWindowStage() {
-            windowStage.getOrThrow()
-        }
-    }
+    internal import kit.AbilityKit.UIAbilityContext
+    internal import kit.AbilityKit.AbilityStage
+    internal import kit.ArkUI.WindowStage
+    import kit.PerformanceAnalysisKit.Hilog
+    import ohos.arkui.state_management.AppStorage
 
     class MainAbility <: UIAbility {
         public init() {
@@ -100,16 +81,17 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
+            HiLog.info(0, "system", "MainAbility OnCreated.${want.abilityName}")
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.START_ABILITY => Hilog.info(0, "AppLogCj", "START_ABILITY")
                 case _ => ()
             }
         }
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
-            Global._abilityContext = this.context // 获取应用上下文
+            Hilog.info(0, "system", "MainAbility onWindowStageCreate.")
+            AppStorage.setOrCreate<UIAbilityContext>("abilityContext", this.context)
+            AppStorage.setOrCreate<WindowStage>("windowStage", windowStage)
             windowStage.loadContent("EntryView")
         }
     }

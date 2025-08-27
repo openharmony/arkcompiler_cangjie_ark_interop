@@ -10,7 +10,7 @@
 
 2. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'AES128|CBC|PKCS7'，创建对称密钥类型为AES128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和CBC模式对应的加密参数（IvParamsSpec），初始化加密Cipher实例。
+3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.EncryptMode），指定加密密钥（SymKey）和CBC模式对应的加密参数（IvParamsSpec），初始化加密Cipher实例。
 
 4. 加密内容较短时，可以不调用update，直接调用[doFinal](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob)，获取加密后的数据。
 
@@ -18,7 +18,7 @@
 
 1. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'AES128|CBC|PKCS7'，创建对称密钥类型为AES128、分组模式为CBC、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和CBC模式对应的解密参数（IvParamsSpec），初始化解密Cipher实例。
+2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DecryptMode），指定解密密钥（SymKey）和CBC模式对应的解密参数（IvParamsSpec），初始化解密Cipher实例。
 
 3. 解密内容较短时，可以不调用update，直接调用[doFinal](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob)，获取解密后的数据。
 
@@ -30,7 +30,8 @@
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
-import ohos.base.BusinessException
+import ohos.business_exception.BusinessException
+import ohos.hilog.Hilog
 
 func generateRandom(len: Int32) {
     let rand = createRandom()
@@ -48,7 +49,7 @@ let iv = genIvParamsSpec()
 // 加密消息。
 func encryptMessage(symKey: SymKey, plainText: DataBlob) {
     let cipher = createCipher('AES128|CBC|PKCS7')
-    cipher.`init`(ENCRYPT_MODE, symKey, iv)
+    cipher.initialize(CryptoMode.EncryptMode, symKey, iv)
     let cipherData = cipher.doFinal(plainText)
     return cipherData
 }
@@ -56,7 +57,7 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
 // 解密消息。
 func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
     let decoder = createCipher('AES128|CBC|PKCS7')
-    decoder.`init`(DECRYPT_MODE, symKey, iv)
+    decoder.initialize(CryptoMode.DecryptMode, symKey, iv)
     let decryptData = decoder.doFinal(cipherText)
     return decryptData
 }
@@ -65,7 +66,7 @@ func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
     let aesGenerator = createSymKeyGenerator('AES128')
     let symKey = aesGenerator.convertKey(symKeyBlob)
-    AppLog.info('convertKey success')
+    Hilog.info(0,"",'convertKey success')
     return symKey
 }
 
@@ -78,13 +79,13 @@ func test() {
         let encryptText = encryptMessage(symKey, plainText)
         let decryptText = decryptMessage(symKey, encryptText)
         if (plainText.data.toString() == decryptText.data.toString()) {
-            AppLog.info('decrypt ok')
-            AppLog.info('decrypt plainText: ' + String.fromUtf8(decryptText.data))
+            Hilog.info(0,"",'decrypt ok')
+            Hilog.info(0,"",'decrypt plainText: ' + String.fromUtf8(decryptText.data))
         } else {
-            AppLog.error('decrypt failed')
+            Hilog.error(0,"",'decrypt failed')
         }
     } catch (e: BusinessException) {
-        AppLog.error("AES CBC ${e}, error code: ${e.code}")
+        Hilog.error(0,"","AES CBC ${e}, error code: ${e.code}")
     }
 }
 ```

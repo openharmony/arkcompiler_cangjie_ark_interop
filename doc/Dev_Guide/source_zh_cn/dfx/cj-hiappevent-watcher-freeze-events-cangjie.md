@@ -17,7 +17,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 1. 新建一个仓颉应用工程，编辑工程中的“entry > src > main > cangjie > main_bility.cj”文件，导入依赖模块：
 
-   <!--compile-->
+   <!-- compile -->
+
    ```cangjie
    import kit.BasicServicesKit.*
    import kit.PerformanceAnalysisKit.{HiAppEvent, Hilog, AppEventGroup, AppEventFilter, Watcher}
@@ -25,7 +26,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 2. 编辑工程中的“entry > src > main > cangjie > main_bility.cj”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
 
-   <!--compile-->
+   <!-- compile -->
+
    ```cangjie
     let eventfilter = AppEventFilter("OS", names: ["APP_FREEZE"])
     let watcher = Watcher(
@@ -36,7 +38,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
         // 开发者可以自行实现订阅实时回调函数，以便对订阅获取到的事件数据进行自定义处理
         onReceive: {
             domain: String, appEventGroups: Array<AppEventGroup> =>
-            Hilog.info(0x0000, 'testTag', "HiAppEvent onReceive: domain=${domain}")
+                Hilog.info(0x0000, 'testTag', "HiAppEvent onReceive: domain=${domain}")
             for (eventGroup in appEventGroups) {
                 // 开发者可以根据事件集合中的事件名称区分不同的系统事件
                 Hilog.info(0x0000, 'testTag', "HiAppEvent eventName=${eventGroup.name}")
@@ -44,29 +46,31 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
                     // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
                     Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.domain=${eventInfo.domain}")
                     Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.name=${eventInfo.name}")
-                    Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.eventType.value=${eventInfo.event.value}")
-                    for (para in eventInfo.params) {
+                    Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.eventType.value=${eventInfo.eventType.getValue()}")
+                    for ((k, v) in eventInfo.params) {
                         // 开发者可以获取到appfreeze事件发生的相关信息
-                        if (para.key == "hilog") {
-                          Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${para.key}=${para.value.value.size}")
+                        if (k == "hilog") {
+                            Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${k}=${v}")
                         } else {
-                            Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${para.key}=${para.value.value}")
+                            Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${k}=${v}")
                         }
                     }
                 }
             }
         }
-    )
+        )
     HiAppEvent.addWatcher(watcher)
    ```
 
 3. 可新建一个arkts工程，编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数构造appfreeze场景，以触发appfreeze事件，示例代码如下：
 
    ```ts
-    Button("appFreeze").onClick{
+    Button("appFreeze").onClick(()=>{
       // 在按钮点击函数中构造一个freeze场景，触发应用appfreeze事件
-      sleep(10*Duration.second)
-    }
+      setTimeout(() => {
+        while (true) {}
+      }, 1000)
+    })
    ```
 
 4. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appFreeze”，触发一次appfreeze事件。

@@ -40,6 +40,13 @@
 
 以下是关系型设备协同分布式数据库跨设备数据同步功能的相关接口，更多接口及使用方式请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
 
+| 接口名称 | 描述 |
+| -------- | -------- |
+| setDistributedTables(tables: Array\<String>): Unit | 设置分布式同步表。 |
+| sync(mode: SyncMode, predicates: RdbPredicates): Array\<(String, Int32)> | 分布式数据同步。 |
+| onDataChange(`type`: SubscribeType, callback: Callback1Argument\<Array\<String>>): Unit | 订阅分布式数据变化。 |
+| offDataChange(`type`: SubscribeType, callback: Callback1Argument\<Array\<String>>): Unit | 取消订阅分布式数据变化。 |
+
 ## 开发步骤
 
 > **说明：**
@@ -54,7 +61,7 @@
     import kit.ArkData.RelationalStoreSecurityLevel
     import ohos.relational_store.*
     import kit.AbilityKit.getStageContext
-    import kit.UIKit.{BusinessException, Callback1Argument}
+    import kit.ArkUI.{BusinessException, Callback1Argument}
     ```
 
 2. 请求权限。
