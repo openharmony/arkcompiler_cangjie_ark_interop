@@ -33,11 +33,14 @@ foreign func ARKTS_BigIntGetByteSize(env: JSEnv, value: JSValue_): Int64
 foreign func ARKTS_BigIntReadBytes(env: JSEnv, value: JSValue_, isNegative: CPointer<Bool>, byteCount: Int64,
     words: CPointer<UInt8>): Int64
 
+/**
+ * The JSBigInt object is used to represent a safe reference to the ArkTS bigint type.
+ * It can be converted to Cangjie BigInt.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSBigInt <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
@@ -96,11 +99,13 @@ public class JSBigInt <: JSHeapObject {
         }
     }
 
+    /**
+     * Convert JSBigInt to Cangjie BigInt.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toBigInt(): BigInt {
         readAsBigInt(context.env, innerValue)

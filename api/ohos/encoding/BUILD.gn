@@ -13,7 +13,7 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("ohos.encoding.json") {
+ohos_cangjie_shared_library("ohos.encoding.json") {
   sources = [
     "json/src/json_exception.cj",
     "json/src/json_object.cj",
