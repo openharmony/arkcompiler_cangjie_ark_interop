@@ -408,7 +408,7 @@
 
 ## ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
-允许应用管理系统本地帐号。
+允许应用管理系统本地账号。
 
 **权限级别：** system_basic
 
@@ -444,7 +444,7 @@
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
 
-允许应用跨系统本地帐号交互。
+允许应用跨系统本地账号交互。
 
 **权限级别：** system_core
 
@@ -1386,7 +1386,7 @@
 
 ## ohos.permission.GET_DISTRIBUTED_ACCOUNTS
 
-允许应用查询系统分布式帐号信息。
+允许应用查询系统分布式账号信息。
 
 **权限级别：** system_basic
 
@@ -1398,7 +1398,7 @@
 
 ## ohos.permission.GET_LOCAL_ACCOUNTS
 
-允许应用查询系统本地帐号信息。
+允许应用查询系统本地账号信息。
 
 **权限级别：** system_basic
 
@@ -1496,7 +1496,7 @@
 
 ## ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
 
-允许应用管理系统分布式帐号信息。
+允许应用管理系统分布式账号信息。
 
 **权限级别：** system_basic
 
@@ -2004,7 +2004,7 @@
 
 ## ohos.permission.ACCESS_MCP_AUTHORIZATION
 
-允许MCP宿主应用代理其子应用进行用户帐号授权登录。
+允许MCP宿主应用代理其子应用进行用户账号授权登录。
 
 **权限级别：** system_basic
 
@@ -2412,7 +2412,7 @@
 
 ## ohos.permission.ACCESS_ACCOUNT_KIT_SERVICE
 
-允许帐号服务查询、修改帐号数据。
+允许账号服务查询、修改账号数据。
 
 **权限级别：** system_basic
 
@@ -2436,7 +2436,7 @@
 
 ## ohos.permission.ACCESS_ACCOUNT_KIT_UI
 
-允许系统应用拉起帐号用户认证界面。
+允许系统应用拉起账号用户认证界面。
 
 **权限级别：** system_basic
 
@@ -2944,7 +2944,7 @@
 
 ## ohos.permission.MANAGE_USER_ACCOUNT_INFO
 
-允许系统应用及系统SA调用帐号服务。
+允许系统应用及系统SA调用账号服务。
 
 **权限级别：** system_core
 
@@ -3040,7 +3040,7 @@
 
 ## ohos.permission.QUERY_PASSWORD_VAULT_DATA
 
-允许应用获取密码保险箱帐号数据。
+允许应用获取密码保险箱账号数据。
 
 **权限级别：** system_basic
 
@@ -3052,7 +3052,7 @@
 
 ## ohos.permission.WRITE_ACCOUNT_LOGIN_STATE
 
-允许用户帐号往数据管理服务写入自己的登录状态。
+允许用户账号往数据管理服务写入自己的登录状态。
 
 **权限级别：** system_basic
 
@@ -3064,7 +3064,7 @@
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_AS_USER
 
-允许U0用户空间业务调用帐号开放能力API。
+允许U0用户空间业务调用账号开放能力API。
 
 **权限级别：** system_core
 
@@ -3280,7 +3280,7 @@
 
 ## ohos.permission.GET_ACCOUNT_MINORS_INFO
 
-允许系统应用获取用户帐号的未成年使用者信息。
+允许系统应用获取用户账号的未成年使用者信息。
 
 **权限级别：** system_basic
 
@@ -4050,7 +4050,7 @@
 
 ## ohos.permission.SYNC_ASSET_BETWEEN_TRUSTED_ACCOUNT
 
-允许应用在使用同一受信任帐号登录的设备之间同步关键资产。
+允许应用在使用同一受信任账号登录的设备之间同步关键资产。
 
 **权限级别：** system_basic
 
@@ -4148,7 +4148,7 @@
 
 ## ohos.permission.ACCESS_ACCOUNT_SERVICE_EXTENSION_ABILITY
 
-允许系统应用调用帐号ServiceExtensionAbility所提供的服务。
+允许系统应用调用账号ServiceExtensionAbility所提供的服务。
 
 **权限级别：** system_basic
 
@@ -4308,7 +4308,7 @@
 
 ## ohos.permission.ACCESS_ACCOUNT_RECOMMENDATION_DATA
 
-允许应用读取“帐号建议”的数据，以及拉起帐号建议列表UIExtensionAbility。
+允许应用读取“账号建议”的数据，以及拉起账号建议列表UIExtensionAbility。
 
 **权限级别：** system_basic
 
@@ -4579,7 +4579,7 @@
 
 **ACL使能：** true
 
-**支持设备：** 2in1
+**支持设备：** PC/2in1
 
 **起始版本：** 20
 
@@ -4719,7 +4719,7 @@
 
 **ACL使能：** true
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -4733,7 +4733,7 @@
 
 **ACL使能：** true
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 
@@ -4773,7 +4773,7 @@
 
 **ACL使能：** true
 
-**支持设备：** Phone | 2in1 | Tablet
+**支持设备：** Phone | PC/2in1 | Tablet
 
 **起始版本：** 20
 

@@ -29,11 +29,11 @@ EXIF信息的读取与编辑相关API的详细介绍请参见[API参考](../../.
 
     <!-- compile -->
 
-   ```cangjie
+    ```cangjie
     // 读取EXIF信息，BitsPerSample为每个像素比特数。
-    let options : ImagePropertyOptions = ImagePropertyOptions(index: 0, defaultValue: '9999')
-    let data = imageSourceApi.getImageProperty(PropertyKey.BITS_PER_SAMPLE, options: options)
+    let options : image.ImagePropertyOptions = { index: 0, defaultValue: '9999' }
+    let data = imageSourceApi.getImageProperty(PropertyKey.BitsPerSample, options: options)
 
     // 编辑EXIF信息。
-    imageSourceApi.modifyImageProperty(PropertyKey.IMAGE_WIDTH, "120")
+    imageSourceApi.modifyImageProperty(PropertyKey.ImageWidth, "120")
     ```

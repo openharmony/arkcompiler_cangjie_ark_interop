@@ -4,16 +4,16 @@
 
 ## 接口说明
 
-HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[API参考文档](../../../API_Reference/source_zh_cn/apis/PerformanceAnalysisKit/cj-apis-hilog.md)。
+HiLog中定义了DEBUG、INFO、Warn、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[API参考文档](../../../API_Reference/source_zh_cn/apis/PerformanceAnalysisKit/cj-apis-hilog.md)。
 
 | 接口名 | 功能描述 |
 | -------- | -------- |
 | isLoggable(domain: UInt32, tag: String, level: LogLevel): Bool | 在打印日志前调用该接口，检查指定领域标识、日志标识和级别的日志是否可以打印。 |
-| debug(domain: UInt32, tag: String, format: String): Unit | 输出DEBUG级别日志。仅用于应用/服务调试。<br/>在DevEco Studio的terminal窗口或cmd里，通过命令“hdc shell hilogcat”设置可打印日志的等级为DEBUG。 |
-| info(domain: UInt32, tag: String, format: String): Unit | 输出INFO级别日志。表示普通的信息。 |
-| warn(domain: UInt32, tag: String, format: String): Unit | 输出WARN级别日志。表示存在警告。 |
-| error(domain: UInt32, tag: String, format: String): Unit | 输出ERROR级别日志。表示存在错误。 |
-| fatal(domain: UInt32, tag: String, format: String): Unit | 输出FATAL级别日志。表示出现致命错误、不可恢复错误。 |
+| debug(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | 输出DEBUG级别日志。仅用于应用/服务调试。<br/>在DevEco Studio的terminal窗口或cmd里，通过命令“hdc shell hilogcat”设置可打印日志的等级为DEBUG。 |
+| info(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | 输出INFO级别日志。表示普通的信息。 |
+| warn(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | 输出WARN级别日志。表示存在警告。 |
+| error(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | 输出ERROR级别日志。表示存在错误。 |
+| fatal(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | 输出FATAL级别日志。表示出现致命错误、不可恢复错误。 |
 
 ### 参数解析
 
@@ -31,6 +31,8 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 
 - **format**：格式字符串，用于日志的格式化输出。
 
+- **args**: 格式化字符串的参数。
+
 ## 约束与限制
 
 日志最多打印4096字节，超出限制文本将被截断。
@@ -44,8 +46,9 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 2. 在**Project**窗口单击entry &gt; src &gt; main &gt; cangjie，打开工程中的index.cj文件，添加一个按钮，单击按钮打印日志。
    示例代码如下：
 
-    <!--compile-->
-    ```cangjie
+   <!-- compile -->
+
+   ```cangjie
     // index.cj
 
     import kit.PerformanceAnalysisKit.*
@@ -64,7 +67,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
                         .fontWeight(FontWeight.Bold)
                         .onClick {
                             evt => this.message = "Hello Cangjie"
-                            Hilog.isLoggable(0xFF00, "testTag", LogLevel.INFO)
+                            Hilog.isLoggable(0xFF00, "testTag", LogLevel.Info)
                             Hilog.info(0xFF00, "testTag", "hello world")
                             // 设置应用日志最低打印级别，设置完成后，低于Warn级别的日志将无法打印
                             Hilog.info(0x0000, 'testTag', 'this is an info level log')

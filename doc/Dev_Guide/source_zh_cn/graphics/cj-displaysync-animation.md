@@ -1,6 +1,6 @@
 # 请求动画绘制帧率
 
-在应用开发中，属性动画和显式动画能够使用可选参数ExpectedFrameRateRange，为不同的动画配置不同的期望绘制帧率。
+在应用开发中，[属性动画](../../../API_Reference/source_zh_cn/arkui-cj/cj-animation-animation.md)和[显式动画](../../../API_Reference/source_zh_cn/arkui-cj/cj-animation-animateto.md)能够使用可选参数[ExpectedFrameRateRange](../../../API_Reference/source_zh_cn/arkui-cj/cj-animation-animateto.md#expectedframeraterange)，为不同的动画配置不同的期望绘制帧率。
 
 ## 请求属性动画的绘制帧率
 
@@ -9,7 +9,7 @@
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.*
+import kit.ArkUI.*
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -48,7 +48,7 @@ class EntryView {
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.*
+import kit.ArkUI.*
 
 @Entry
 @Component
@@ -88,7 +88,7 @@ class EntryView {
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.*
+import kit.ArkUI.*
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -117,7 +117,7 @@ class EntryView {
                 Text('30')
                     .fontWeight(FontWeight.Bold)
                     .fontSize(16)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .textAlign(TextAlign.Center)
                     .borderRadius(10)
                     .backgroundColor(0xF56C6C)
@@ -129,7 +129,7 @@ class EntryView {
                 Text('40')
                     .fontWeight(FontWeight.Bold)
                     .fontSize(16)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .textAlign(TextAlign.Center)
                     .borderRadius(10)
                     .backgroundColor(0x2E8B57)
@@ -141,7 +141,7 @@ class EntryView {
                 Text('60')
                     .fontWeight(FontWeight.Bold)
                     .fontSize(16)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .textAlign(TextAlign.Center)
                     .borderRadius(10)
                     .backgroundColor(0x008B8B)
@@ -156,7 +156,7 @@ class EntryView {
                     .fontSize(14)
                     .fontWeight(FontWeight.W500)
                     .margin(bottom: 10, left: 5)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .onClick(
                         {
                             evt =>

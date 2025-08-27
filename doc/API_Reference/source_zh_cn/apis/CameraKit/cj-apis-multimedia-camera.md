@@ -49,12 +49,12 @@ public func getCameraManager(context: UIAbilityContext): CameraManager
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  |:---|:---|
-  | 7400101                |  Parameter missing or parameter type incorrect.               |
-  | 7400201                |  Camera service fatal error.                                  |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -64,21 +64,25 @@ public func getCameraManager(context: UIAbilityContext): CameraManager
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 ```
 
 ## interface AutoExposure
 
 ```cangjie
-sealed interface AutoExposure <: AutoExposureQuery {
+public interface AutoExposure <: AutoExposureQuery {
     func getExposureMode(): ExposureMode
     func setExposureMode(aeMode: ExposureMode): Unit
     func getMeteringPoint(): Point
     func setMeteringPoint(point: Point): Unit
-    func setExposureBias(exposureBias: Float32): Unit
-    func getExposureValue(): Float32
+    func setExposureBias(exposureBias: Float64): Unit
+    func getExposureValue(): Float64
 }
 ```
 
@@ -112,11 +116,11 @@ func getExposureMode(): ExposureMode
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -127,18 +131,23 @@ func getExposureMode(): ExposureMode
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+import kit.PerformanceAnalysisKit.Hilog
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
-AppLog.info(photoSession.getOrThrow().getExposureMode())
+Hilog.info(0, "AppLogCj", photoSession.getOrThrow().getExposureMode())
 ```
 
 ### func getExposureValue()
 
 ```cangjie
-func getExposureValue(): Float32
+func getExposureValue(): Float64
 ```
 
 **功能：** 查询当前曝光值。
@@ -151,15 +160,15 @@ func getExposureValue(): Float32
 
 |类型|说明|
 |:----|:----|
-|Float32|曝光值。曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。|
+|Float64|曝光值。曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -170,12 +179,16 @@ func getExposureValue(): Float32
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
-AppLog.info(photoSession.getOrThrow().getExposureValue())
+Hilog.info(0, "AppLogCj", photoSession.getOrThrow().getExposureValue())
 ```
 
 ### func getMeteringPoint()
@@ -194,15 +207,15 @@ func getMeteringPoint(): Point
 
 |类型|说明|
 |:----|:----|
-|[Point](#struct-point)|当前曝光点。|
+|[Point](#class-point)|当前曝光点。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -212,18 +225,22 @@ func getMeteringPoint(): Point
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let photoSession = session as PhotoSession
 let point = photoSession.getOrThrow().getMeteringPoint()
 ```
 
-### func setExposureBias(Float32)
+### func setExposureBias(Float64)
 
 ```cangjie
-func setExposureBias(exposureBias: Float32): Unit
+func setExposureBias(exposureBias: Float64): Unit
 ```
 
 **功能：** 设置曝光补偿，曝光补偿值（EV）。
@@ -236,16 +253,16 @@ func setExposureBias(exposureBias: Float32): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|exposureBias|Float32|是|-|曝光补偿，[getExposureBiasRange](#func-getexposurebiasrange)查询支持的范围，如果设置超过支持范围的值，自动匹配到就近临界点。曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。|
+|exposureBias|Float64|是|-|曝光补偿，[getExposureBiasRange](#func-getexposurebiasrange)查询支持的范围，如果设置超过支持范围的值，自动匹配到就近临界点。曝光补偿存在步长，如步长为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400102|Operation not allowed.|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400102 | Operation not allowed. |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -255,10 +272,14 @@ func setExposureBias(exposureBias: Float32): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let exposureBias: Float32 = 1.2
@@ -285,11 +306,12 @@ func setExposureMode(aeMode: ExposureMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400102 | Operation not allowed. |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -299,13 +321,17 @@ func setExposureMode(aeMode: ExposureMode): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let aeMode = ExposureMode.EXPOSURE_MODE_AUTO
+let aeMode = ExposureMode.ExposureModeAuto
 photoSession.setExposureMode(aeMode)
 ```
 
@@ -325,15 +351,15 @@ func setMeteringPoint(point: Point): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|point|[Point](#struct-point)|是|-|当前曝光点。|
+|point|[Point](#class-point)|是|-|当前曝光点。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -343,24 +369,26 @@ func setMeteringPoint(point: Point): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let point = Point(1.0, 1.0)
-try {
-    photoSession.setMeteringPoint(point)
-} catch (_) {}
+photoSession.setMeteringPoint(point)
 ```
 
 ## interface AutoExposureQuery
 
 ```cangjie
-sealed interface AutoExposureQuery {
+public interface AutoExposureQuery {
     func isExposureModeSupported(aeMode: ExposureMode): Bool
-    func getExposureBiasRange(): Array<Float32>
+    func getExposureBiasRange(): Array<Float64>
 }
 ```
 
@@ -373,7 +401,7 @@ sealed interface AutoExposureQuery {
 ### func getExposureBiasRange()
 
 ```cangjie
-func getExposureBiasRange(): Array<Float32>
+func getExposureBiasRange(): Array<Float64>
 ```
 
 **功能：** 查询曝光补偿范围。
@@ -386,15 +414,15 @@ func getExposureBiasRange(): Array<Float32>
 
 |类型|说明|
 |:----|:----|
-|Array\<Float32>|补偿范围的数组。|
+|Array\<Float64>|补偿范围的数组。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -404,10 +432,14 @@ func getExposureBiasRange(): Array<Float32>
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let range = photoSession.getExposureBiasRange()
@@ -439,11 +471,11 @@ func isExposureModeSupported(aeMode: ExposureMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config, only throw in session usage. |
 
 **示例：**
 
@@ -454,20 +486,24 @@ func isExposureModeSupported(aeMode: ExposureMode): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let aeMode = ExposureMode.EXPOSURE_MODE_AUTO
-AppLog.info(photoSession.isExposureModeSupported(aeMode))
+let aeMode = ExposureMode.ExposureModeAuto
+Hilog.info(0, "AppLogCj", photoSession.isExposureModeSupported(aeMode))
 ```
 
 ## interface CameraOutput
 
 ```cangjie
-sealed interface CameraOutput {
+public interface CameraOutput {
     func release(): Unit
 }
 ```
@@ -492,11 +528,11 @@ func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.                           |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -506,15 +542,21 @@ func release(): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let device = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(device)[0]
 let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let surfaceId: String = receiver.getReceivingSurfaceId()
 let previewOutput = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
 previewOutput.release()
@@ -523,7 +565,7 @@ previewOutput.release()
 ## interface ColorManagement
 
 ```cangjie
-sealed interface ColorManagement <: ColorManagementQuery {
+public interface ColorManagement <: ColorManagementQuery {
     func setColorSpace(colorSpace: ColorSpace): Unit
     func getActiveColorSpace(): ColorSpace
 }
@@ -559,11 +601,11 @@ func getActiveColorSpace(): ColorSpace
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -573,10 +615,14 @@ func getActiveColorSpace(): ColorSpace
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let colorSpace = photoSession.getActiveColorSpace()
@@ -609,8 +655,8 @@ func setColorSpace(colorSpace: ColorSpace): Unit
 
 |SDR/HRD拍摄|ColorSpace|
 |:---|:---|
-|SDR|SRGB|
-|HDR_VIVID(Default)|DISPLAY_P3|
+|SDR|Srgb|
+|HDR_VIVID(Default)|DisplayP3|
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -624,14 +670,14 @@ func setColorSpace(colorSpace: ColorSpace): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400101|Parameter missing or parameter type incorrect.|
-  |7400102|The colorSpace does not match the format.|
-  |7400103|Session not config.|
-  |7400201|Camera service fatal error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | The colorSpace does not match the format. |
+  | 7400103 | Session not config. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -641,10 +687,14 @@ func setColorSpace(colorSpace: ColorSpace): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let colorSpace = photoSession.getSupportedColorSpaces()[0]
@@ -654,7 +704,7 @@ photoSession.setColorSpace(colorSpace)
 ## interface ColorManagementQuery
 
 ```cangjie
-sealed interface ColorManagementQuery {
+public interface ColorManagementQuery {
     func getSupportedColorSpaces(): Array<ColorSpace>
 }
 ```
@@ -685,11 +735,11 @@ func getSupportedColorSpaces(): Array<ColorSpace>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config, only throw in session usage. |
 
 **示例：**
 
@@ -699,10 +749,14 @@ func getSupportedColorSpaces(): Array<ColorSpace>
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let colorSpaces = photoSession.getSupportedColorSpaces()
@@ -711,7 +765,7 @@ let colorSpaces = photoSession.getSupportedColorSpaces()
 ## interface Flash
 
 ```cangjie
-sealed interface Flash <: FlashQuery {
+public interface Flash <: FlashQuery {
     func setFlashMode(flashMode: FlashMode): Unit
     func getFlashMode(): FlashMode
 }
@@ -747,11 +801,11 @@ func getFlashMode(): FlashMode
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -761,10 +815,14 @@ func getFlashMode(): FlashMode
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let flashMode = photoSession.getFlashMode()
@@ -795,11 +853,11 @@ func setFlashMode(flashMode: FlashMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -809,20 +867,24 @@ func setFlashMode(flashMode: FlashMode): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let flashMode = FlashMode.FLASH_MODE_ALWAYS_OPEN
+let flashMode = FlashMode.FlashModeAlwaysOpen
 photoSession.setFlashMode(flashMode)
 ```
 
 ## interface FlashQuery
 
 ```cangjie
-sealed interface FlashQuery {
+public interface FlashQuery {
     func hasFlash(): Bool
     func isFlashModeSupported(flashMode: FlashMode): Bool
 }
@@ -854,11 +916,11 @@ func hasFlash(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -869,13 +931,17 @@ func hasFlash(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-AppLog.info(photoSession.hasFlash())
+Hilog.info(0, "AppLogCj", photoSession.hasFlash())
 ```
 
 ### func isFlashModeSupported(FlashMode)
@@ -904,11 +970,11 @@ func isFlashModeSupported(flashMode: FlashMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -918,24 +984,28 @@ func isFlashModeSupported(flashMode: FlashMode): Bool
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-photoSession.isFlashModeSupported(FlashMode.FLASH_MODE_ALWAYS_OPEN)
+photoSession.isFlashModeSupported(FlashMode.FlashModeAlwaysOpen)
 ```
 
 ## interface Focus
 
 ```cangjie
-sealed interface Focus <: FocusQuery {
+public interface Focus <: FocusQuery {
     func setFocusMode(afMode: FocusMode): Unit
     func getFocusMode(): FocusMode
     func setFocusPoint(point: Point): Unit
     func getFocusPoint(): Point
-    func getFocalLength(): Float32
+    func getFocalLength(): Float64
 }
 ```
 
@@ -952,7 +1022,7 @@ sealed interface Focus <: FocusQuery {
 ### func getFocalLength()
 
 ```cangjie
-func getFocalLength(): Float32
+func getFocalLength(): Float64
 ```
 
 **功能：** 查询焦距值。
@@ -965,15 +1035,15 @@ func getFocalLength(): Float32
 
 |类型|说明|
 |:----|:----|
-|Float32|用于获取当前焦距，单位mm。|
+|Float64|用于获取当前焦距，单位mm。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -984,13 +1054,17 @@ func getFocalLength(): Float32
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-AppLog.info(photoSession.getFocalLength())
+Hilog.info(0, "AppLogCj", photoSession.getFocalLength())
 ```
 
 ### func getFocusMode()
@@ -1013,11 +1087,11 @@ func getFocusMode(): FocusMode
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1028,13 +1102,17 @@ func getFocusMode(): FocusMode
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-AppLog.info(photoSession.getFocusMode())
+Hilog.info(0, "AppLogCj", photoSession.getFocusMode())
 ```
 
 ### func getFocusPoint()
@@ -1053,15 +1131,15 @@ func getFocusPoint(): Point
 
 |类型|说明|
 |:----|:----|
-|[Point](#struct-point)|当前焦点。|
+|[Point](#class-point)|当前焦点。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1071,10 +1149,14 @@ func getFocusPoint(): Point
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let point = photoSession.getFocusPoint()
@@ -1102,11 +1184,11 @@ func setFocusMode(afMode: FocusMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1116,13 +1198,17 @@ func setFocusMode(afMode: FocusMode): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let afMode = FocusMode.FOCOS_MODE_MANUAL
+let afMode = FocusMode.FocusModeManual
 photoSession.setFocusMode(afMode)
 ```
 
@@ -1144,15 +1230,15 @@ func setFocusPoint(point: Point): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|point|[Point](#struct-point)|是|-|焦点。x、y设置范围应在[0.0, 1.0]之内，超过范围，如果小于0.0设置0.0，大于1.0设置1.0。|
+|point|[Point](#class-point)|是|-|焦点。x、y设置范围应在[0.0, 1.0]之内，超过范围，如果小于0.0设置0.0，大于1.0设置1.0。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1162,21 +1248,23 @@ func setFocusPoint(point: Point): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-try {
-    photoSession.setFocusPoint(Point(0.5, 0.5))
-} catch (_) {}
+photoSession.setFocusPoint(Point(0.5, 0.5))
 ```
 
 ## interface FocusQuery
 
 ```cangjie
-sealed interface FocusQuery {
+public interface FocusQuery {
     func isFocusModeSupported(afMode: FocusMode): Bool
 }
 ```
@@ -1213,11 +1301,11 @@ func isFocusModeSupported(afMode: FocusMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1228,20 +1316,24 @@ func isFocusModeSupported(afMode: FocusMode): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-let afMode = FocusMode.FOCOS_MODE_MANUAL
-AppLog.info(photoSession.isFocusModeSupported(afMode))
+let afMode = FocusMode.FocusModeManual
+Hilog.info(0, "AppLogCj", photoSession.isFocusModeSupported(afMode))
 ```
 
 ## interface Session
 
 ```cangjie
-sealed interface Session {
+public interface Session {
     func beginConfig(): Unit
     func commitConfig(): Unit
     func canAddInput(cameraInput: CameraInput): Bool
@@ -1282,14 +1374,13 @@ func addInput(cameraInput: CameraInput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400102                |  Operation not allowed.                                  |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                                   |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1299,10 +1390,14 @@ func addInput(cameraInput: CameraInput): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
 session.addInput(cameraInput)
@@ -1328,14 +1423,13 @@ func addOutput(cameraOutput: CameraOutput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400102                |  Operation not allowed.                                  |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                                   |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1345,14 +1439,18 @@ func addOutput(cameraOutput: CameraOutput): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(cameraDevice)[0]
 let ability = cameraManager.getSupportedOutputCapability(cameraDevice, mode)
-let cameraOutput = cameraManager.createPhotoOutput(ability.photoProfiles[0])
+let cameraOutput = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
 session.addOutput(cameraOutput)
 ```
 
@@ -1370,12 +1468,12 @@ func beginConfig(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400105                |  Session config locked.               |
-  | 7400201                |  Camera service fatal error.               |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400105 | Session config locked. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1385,10 +1483,14 @@ func beginConfig(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.beginConfig()
 ```
 
@@ -1427,13 +1529,17 @@ func canAddInput(cameraInput: CameraInput): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
-AppLog.info(session.canAddInput(cameraInput))
+Hilog.info(0, "AppLogCj", session.canAddInput(cameraInput))
 ```
 
 ### func canAddOutput(CameraOutput)
@@ -1471,15 +1577,19 @@ func canAddOutput(cameraOutput: CameraOutput): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(cameraDevice)[0]
 let ability = cameraManager.getSupportedOutputCapability(cameraDevice, mode)
-let cameraOutput = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-AppLog.info(session.canAddOutput(cameraOutput))
+let cameraOutput = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+Hilog.info(0, "AppLogCj", session.canAddOutput(cameraOutput))
 ```
 
 ### func commitConfig()
@@ -1496,12 +1606,12 @@ func commitConfig(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400102                |  Operation not allowed.                                  |
-  | 7400201                |  Camera service fatal error.                           |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1511,10 +1621,14 @@ func commitConfig(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.commitConfig()
 ```
 
@@ -1532,11 +1646,11 @@ func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.                           |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1546,10 +1660,14 @@ func release(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.release()
 ```
 
@@ -1575,14 +1693,13 @@ func removeInput(cameraInput: CameraInput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400102                |  Operation not allowed.                                  |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                                   |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1592,10 +1709,14 @@ func removeInput(cameraInput: CameraInput): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
 session.removeInput(cameraInput)
@@ -1621,14 +1742,13 @@ func removeOutput(cameraOutput: CameraOutput): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400102                |  Operation not allowed.                                  |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                                   |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1638,16 +1758,22 @@ func removeOutput(cameraOutput: CameraOutput): Unit
 // index.cj
 
 import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let mode = cameraManager.getSupportedSceneModes(cameraDevice)[0]
 let ability = cameraManager.getSupportedOutputCapability(cameraDevice, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let surfaceId: String = receiver.getReceivingSurfaceId()
 let previewOutput = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
 session.removeOutput(previewOutput)
@@ -1667,13 +1793,13 @@ func start(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400102                |  Operation not allowed.                                |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                           |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400102 | Operation not allowed. |
+  | 7400103 | Session not config. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1683,10 +1809,14 @@ func start(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.start()
 ```
 
@@ -1704,11 +1834,11 @@ func stop(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.                           |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1718,17 +1848,21 @@ func stop(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 session.stop()
 ```
 
 ## interface Stabilization
 
 ```cangjie
-sealed interface Stabilization <: StabilizationQuery {
+public interface Stabilization <: StabilizationQuery {
     func getActiveVideoStabilizationMode(): VideoStabilizationMode
     func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 }
@@ -1764,11 +1898,11 @@ func getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1779,13 +1913,17 @@ func getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_VIDEO)
+let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
 let videoSession = videoSessionOption.getOrThrow()
-AppLog.info(videoSession.getActiveVideoStabilizationMode())
+Hilog.info(0, "AppLogCj", videoSession.getActiveVideoStabilizationMode())
 ```
 
 ### func setVideoStabilizationMode(VideoStabilizationMode)
@@ -1808,11 +1946,11 @@ func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -1822,20 +1960,24 @@ func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_VIDEO)
+let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
 let videoSession = videoSessionOption.getOrThrow()
-let vsMode = VideoStabilizationMode.OFF
+let vsMode = VideoStabilizationMode.Off
 videoSession.setVideoStabilizationMode(vsMode)
 ```
 
 ## interface StabilizationQuery
 
 ```cangjie
-sealed interface StabilizationQuery {
+public interface StabilizationQuery {
     func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 }
 ```
@@ -1872,11 +2014,11 @@ func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config, only throw in session usage.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config, only throw in session usage. |
 
 **示例：**
 
@@ -1886,22 +2028,26 @@ func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_VIDEO)
+let session = cameraManager.createSession(SceneMode.NormalVideo)
 var videoSessionOption = session as VideoSession
 let videoSession = videoSessionOption.getOrThrow()
-let vsMode = VideoStabilizationMode.OFF
+let vsMode = VideoStabilizationMode.Off
 videoSession.isVideoStabilizationModeSupported(vsMode)
 ```
 
 ## interface Zoom
 
 ```cangjie
-sealed interface Zoom <: ZoomQuery {
-    func setZoomRatio(zoomRatio: Float32): Unit
-    func getZoomRatio(): Float32
+public interface Zoom <: ZoomQuery {
+    func setZoomRatio(zoomRatio: Float64): Unit
+    func getZoomRatio(): Float64
     func setSmoothZoom(targetRatio: Float32, mode: SmoothZoomMode): Unit
     func setSmoothZoom(targetRatio: Float32): Unit
 }
@@ -1920,7 +2066,7 @@ sealed interface Zoom <: ZoomQuery {
 ### func getZoomRatio()
 
 ```cangjie
-func getZoomRatio(): Float32
+func getZoomRatio(): Float64
 ```
 
 **功能：** 获取当前的变焦比。
@@ -1933,16 +2079,16 @@ func getZoomRatio(): Float32
 
 |类型|说明|
 |:----|:----|
-|Float32|当前的变焦比结果。|
+|Float64|当前的变焦比结果。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
-  |7400201|Camera service fatal error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -1953,13 +2099,17 @@ func getZoomRatio(): Float32
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
-AppLog.info(photoSession.getZoomRatio())
+Hilog.info(0, "AppLogCj", photoSession.getZoomRatio())
 ```
 
 ### func setSmoothZoom(Float32, SmoothZoomMode)
@@ -1981,14 +2131,6 @@ func setSmoothZoom(targetRatio: Float32, mode: SmoothZoomMode): Unit
 |targetRatio|Float32|是|-|目标值。|
 |mode|[SmoothZoomMode](#enum-smoothzoommode)|是|-|模式。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
-
 **示例：**
 
 <!-- compile -->
@@ -1997,14 +2139,18 @@ func setSmoothZoom(targetRatio: Float32, mode: SmoothZoomMode): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let targetRatio: Float32 = 0.3
-photoSession.setSmoothZoom(targetRatio, SmoothZoomMode.NORMAL)
+photoSession.setSmoothZoom(targetRatio, SmoothZoomMode.Normal)
 ```
 
 ### func setSmoothZoom(Float32)
@@ -2025,14 +2171,6 @@ func setSmoothZoom(targetRatio: Float32): Unit
 |:---|:---|:---|:---|:---|
 |targetRatio|Float32|是|-|目标值。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
-
 **示例：**
 
 <!-- compile -->
@@ -2041,20 +2179,24 @@ func setSmoothZoom(targetRatio: Float32): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let targetRatio: Float32 = 0.3
 photoSession.setSmoothZoom(targetRatio)
 ```
 
-### func setZoomRatio(Float32)
+### func setZoomRatio(Float64)
 
 ```cangjie
-func setZoomRatio(zoomRatio: Float32): Unit
+func setZoomRatio(zoomRatio: Float64): Unit
 ```
 
 **功能：** 设置变焦比，变焦精度最高为小数点后两位，如果设置超过支持的精度范围，则只保留精度范围内数值。
@@ -2067,15 +2209,15 @@ func setZoomRatio(zoomRatio: Float32): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|zoomRatio|Float32|是|-|可变焦距比，通过[getZoomRatioRange](#func-getzoomratiorange)获取支持的变焦范围，如果设置超过支持范围的值，则只保留精度范围内数值。设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。|
+|zoomRatio|Float64|是|-|可变焦距比，通过[getZoomRatioRange](#func-getzoomratiorange)获取支持的变焦范围，如果设置超过支持范围的值，则只保留精度范围内数值。设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
 
 **示例：**
 
@@ -2085,10 +2227,14 @@ func setZoomRatio(zoomRatio: Float32): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let zoomRatio: Float32 = 0.5
@@ -2098,8 +2244,8 @@ photoSession.setZoomRatio(zoomRatio)
 ## interface ZoomQuery
 
 ```cangjie
-sealed interface ZoomQuery {
-    func getZoomRatioRange(): Array<Float32>
+public interface ZoomQuery {
+    func getZoomRatioRange(): Array<Float64>
 }
 ```
 
@@ -2112,7 +2258,7 @@ sealed interface ZoomQuery {
 ### func getZoomRatioRange()
 
 ```cangjie
-func getZoomRatioRange(): Array<Float32>
+func getZoomRatioRange(): Array<Float64>
 ```
 
 **功能：** 获取支持的变焦范围。
@@ -2125,15 +2271,15 @@ func getZoomRatioRange(): Array<Float32>
 
 |类型|说明|
 |:----|:----|
-|Array\<Float32>|用于获取可变焦距比范围，返回的数组包括其最小值和最大值。|
+|Array\<Float64>|用于获取可变焦距比范围，返回的数组包括其最小值和最大值。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400103|Session not config.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config, only throw in session usage. |
 
 **示例：**
 
@@ -2144,14 +2290,18 @@ func getZoomRatioRange(): Array<Float32>
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let session = cameraManager.createSession(SceneMode.NORMAL_PHOTO)
+let session = cameraManager.createSession(SceneMode.NormalPhoto)
 var photoSessionOption = session as PhotoSession
 let photoSession = photoSessionOption.getOrThrow()
 let zoomRatio: Float32 = 0.5
-AppLog.info(photoSession.getZoomRatioRange())
+Hilog.info(0, "AppLogCj", photoSession.getZoomRatioRange())
 ```
 
 ## class CameraDevice
@@ -2278,11 +2428,11 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.                                  |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2292,21 +2442,25 @@ public func close(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
 cameraInput.close()
 ```
 
-### func off(CameraCallbackType, CameraDevice, Callback1Argument\<BusinessException>)
+### func off(CameraEvents, CameraDevice, Callback0Argument)
 
 ```cangjie
-public func off(`type`: CameraCallbackType, camera: CameraDevice, callback: Callback1Argument<BusinessException>): Unit
+public func off(event: CameraEvents, camera: CameraDevice, callback: Callback0Argument): Unit
 ```
 
-**功能：** 注销监听CameraInput的错误事件。
+**功能：** 取消对应监听事件的对应回调。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2316,9 +2470,18 @@ public func off(`type`: CameraCallbackType, camera: CameraDevice, callback: Call
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|CameraDevice对象。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+|camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2328,29 +2491,22 @@ public func off(`type`: CameraCallbackType, camera: CameraDevice, callback: Call
 // index.cj
 
 import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
-let testCallbackError = TestCallbackError()
-cameraInput.off(CameraCallbackType.CameraError, cameraDevice, testCallbackError)
+cameraInput.off(CameraEvents.CameraError, cameraDevice)
 ```
 
-### func off(CameraCallbackType, CameraDevice)
+### func off(CameraEvents, CameraDevice)
 
 ```cangjie
-public func off(`type`: CameraCallbackType, camera: CameraDevice): Unit
+public func off(event: CameraEvents, camera: CameraDevice): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -2363,8 +2519,17 @@ public func off(`type`: CameraCallbackType, camera: CameraDevice): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件。|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|CameraDevice对象。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+|camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2374,18 +2539,22 @@ public func off(`type`: CameraCallbackType, camera: CameraDevice): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
-cameraInput.off(CameraCallbackType.CameraError, cameraDevice)
+cameraInput.off(CameraEvents.CameraError, cameraDevice)
 ```
 
-### func on(CameraCallbackType, CameraDevice, Callback1Argument\<BusinessException>)
+### func on(CameraEvents, CameraDevice, Callback0Argument)
 
 ```cangjie
-public func on(`type`: CameraCallbackType, camera: CameraDevice, callback: Callback1Argument<BusinessException>): Unit
+public func on(event: CameraEvents, camera: CameraDevice, callback: Callback0Argument): Unit
 ```
 
 **功能：** 监听CameraInput的错误事件，通过注册回调函数获取结果。
@@ -2402,9 +2571,18 @@ public func on(`type`: CameraCallbackType, camera: CameraDevice, callback: Callb
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|CameraDevice对象。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取结果。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。|
+|camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取结果。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2415,22 +2593,26 @@ public func on(`type`: CameraCallbackType, camera: CameraDevice, callback: Callb
 
 import kit.CameraKit.*
 import ohos.base.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
+class TestCallbackError <: Callback0Argument {
     public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
     }
 }
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
 let testCallbackError = TestCallbackError()
-return cameraInput.on(CameraCallbackType.CameraError, cameraDevice, testCallbackError)
+return cameraInput.on(CameraEvents.CameraError, cameraDevice, testCallbackError)
 ```
 
 ### func open()
@@ -2447,13 +2629,14 @@ public func open(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400107                |  Can not use camera cause of conflict.               |
-  | 7400108                |  Camera disabled cause of security reason.                                  |
-  | 7400201                |  Camera service fatal error.                                  |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400102 | Operation not allowed. |
+  | 7400107 | Can not use camera cause of conflict. |
+  | 7400108 | Camera disabled cause of security reason. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2463,8 +2646,12 @@ public func open(): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2497,13 +2684,13 @@ public func open(isSecureEnabled: Bool): UInt64
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400107                |  Can not use camera cause of conflict.               |
-  | 7400108                |  Camera disabled cause of security reason.                                  |
-  | 7400201                |  Camera service fatal error.                                  |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400107 | Can not use camera cause of conflict. |
+  | 7400108 | Camera disabled cause of security reason. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2513,8 +2700,12 @@ public func open(isSecureEnabled: Bool): UInt64
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevice = cameraManager.getSupportedCameras()[0]
 let cameraInput = cameraManager.createCameraInput(cameraDevice)
@@ -2528,7 +2719,7 @@ let handle = cameraInput.open(isSecureEnabled)
 public class CameraManager {}
 ```
 
-**功能：** 相机管理器类，使用前需要通过[getCameraManager](#func-getcameramanagerabilitycontext)获取相机管理实例。
+**功能：** 相机管理器类，使用前需要通过[getCameraManager](#func-getcameramanageruiabilitycontext)获取相机管理实例。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -2540,7 +2731,7 @@ public class CameraManager {}
 public func createCameraInput(camera: CameraDevice): CameraInput
 ```
 
-**功能：** 使用CameraDevice对象创建CameraInput实例。
+**功能：** 根据相机位置和类型创建CameraInput实例。
 
 **需要权限：** ohos.permission.CAMERA
 
@@ -2552,7 +2743,7 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|CameraDevice对象，通过[getSupportedCameras](#func-getsupportedcameras)接口获取。|
+|camera|[CameraDevice](#class-cameradevice)|是|-|CameraDevice对象，通过[getSupportedCameras](#func-getsupportedcameras)接口获取。|
 
 **返回值：**
 
@@ -2562,13 +2753,13 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.               |
-  | 7400102                |  Operation not allowed.               |
-  | 7400201                |  Camera service fatal error.               |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2578,17 +2769,24 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
-let cameraInput = cameraManager.createCameraInput(cameraDevices[0])
+let cameraDevice0 = cameraDevices[0]
+let position = cameraDevice0.cameraPosition
+let `type` = cameraDevice0.cameraType
+let cameraInput = cameraManager.createCameraInput(position , `type`)
 ```
 
 ### func createCameraInput(CameraPosition, CameraType)
 
 ```cangjie
-public func createCameraInput(position: CameraPosition, `type`: CameraType): CameraInput
+public func createCameraInput(position: CameraPosition, cameraType: CameraType): CameraInput
 ```
 
 **功能：** 根据相机位置和类型创建CameraInput实例。
@@ -2604,7 +2802,7 @@ public func createCameraInput(position: CameraPosition, `type`: CameraType): Cam
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |position|[CameraPosition](#enum-cameraposition)|是|-|相机位置，通过[getSupportedCameras](#func-getsupportedcameras)接口获取设备，然后获取设备位置信息。|
-|\`type\`|[CameraType](#enum-cameratype)|是|-|相机类型，通过[getSupportedCameras](#func-getsupportedcameras)接口获取设备，然后获取设备类型信息。|
+|cameraType|[CameraType](#enum-cameratype)|是|-|相机类型，通过[getSupportedCameras](#func-getsupportedcameras)接口获取设备，然后获取设备类型信息。|
 
 **返回值：**
 
@@ -2614,13 +2812,13 @@ public func createCameraInput(position: CameraPosition, `type`: CameraType): Cam
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.               |
-  | 7400102                |  Operation not allowed.               |
-  | 7400201                |  Camera service fatal error.               |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400102 | Operation not allowed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2630,8 +2828,12 @@ public func createCameraInput(position: CameraPosition, `type`: CameraType): Cam
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let cameraDevice0 = cameraDevices[0]
@@ -2640,101 +2842,10 @@ let `type` = cameraDevice0.cameraType
 let cameraInput = cameraManager.createCameraInput(position , `type`)
 ```
 
-### func createMetadataOutput(Array\<MetadataObjectType>)
+### func createPhotoOutput(profile:?Profile)
 
 ```cangjie
-public func createMetadataOutput(metadataObjectTypes: Array<MetadataObjectType>): MetadataOutput
-```
-
-**功能：** 创建metadata流输出对象。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|metadataObjectTypes|Array\<[MetadataObjectType](#enum-metadataobjecttype)>|是|-|metadata流类型信息，通过[getSupportedOutputCapability](#func-getsupportedoutputcapabilitycameradevice-scenemode)接口获取。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[MetadataOutput](#class-metadataoutput)|MetadataOutput实例。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.               |
-  | 7400201                |  Camera service fatal error.               |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let metadataObjectTypes = [MetadataObjectType.FACE_DETECTION]
-let metadataOutput = cameraManager.createMetadataOutput(metadataObjectTypes)
-```
-
-### func createPhotoOutput()
-
-```cangjie
-public func createPhotoOutput(): PhotoOutput
-```
-
-**功能：** 创建拍照输出对象。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[PhotoOutput](#class-photooutput)|PhotoOutput实例。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID    | 错误信息                                           |
-  |:---------|:-----------------------------------------------|
-  | 7400101  | Parameter missing or parameter type incorrect. |
-  | 7400201  | Camera service fatal error.                    |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let cameraDevices = cameraManager.getSupportedCameras()
-let cameraInput = cameraManager.createCameraInput(cameraDevices[0])
-let photoOutput = cameraManager.createPhotoOutput()
-```
-
-### func createPhotoOutput(Profile)
-
-```cangjie
-public func createPhotoOutput(profile: Profile): PhotoOutput
+public func createPhotoOutput(profile:profile!: ?Profile = None): PhotoOutput
 ```
 
 **功能：** 创建拍照输出对象。
@@ -2747,7 +2858,7 @@ public func createPhotoOutput(profile: Profile): PhotoOutput
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|profile|[Profile](#class-profile)|是|-|支持的拍照配置信息，通过[getSupportedOutputCapability](#func-getsupportedoutputcapabilitycameradevice-scenemode)接口获取。|
+|profile|?[Profile](#class-profile)|否|None|支持的拍照配置信息，通过[getSupportedOutputCapability](#func-getsupportedoutputcapabilitycameradevice-scenemode)接口获取。|
 
 **返回值：**
 
@@ -2757,12 +2868,12 @@ public func createPhotoOutput(profile: Profile): PhotoOutput
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID    | 错误信息                                           |
-  |:---------|:-----------------------------------------------|
-  | 7400101  | Parameter missing or parameter type incorrect. |
-  | 7400201  | Camera service fatal error.                    |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2772,15 +2883,19 @@ public func createPhotoOutput(profile: Profile): PhotoOutput
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
 let mode = cameraManager.getSupportedSceneModes(camera)[0]
 let cameraOutputCapability = cameraManager.getSupportedOutputCapability(camera, mode)
 let profile = cameraOutputCapability.photoProfiles[0]
-let photoOutput  = cameraManager.createPhotoOutput(profile)
+let photoOutput  = cameraManager.createPhotoOutput(profile:profile)
 ```
 
 ### func createPreviewOutput(Profile, String)
@@ -2810,12 +2925,12 @@ public func createPreviewOutput(profile: Profile, surfaceId: String): PreviewOut
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.               |
-  | 7400201                |  Camera service fatal error.               |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2825,18 +2940,20 @@ public func createPreviewOutput(profile: Profile, surfaceId: String): PreviewOut
 // index.cj
 
 import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let cameraDevice = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(cameraDevice)[0]
-let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, mode)
-let profile = cameraOutputCapability.previewProfiles[0]
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let surfaceId: String = receiver.getReceivingSurfaceId()
-let previewOutput = cameraManager.createPreviewOutput(profile, surfaceId)
+let previewOutput = cameraManager.createPreviewOutput(surfaceId)
 ```
 
 ### func createPreviewOutput(String)
@@ -2865,12 +2982,12 @@ public func createPreviewOutput(surfaceId: String): PreviewOutput
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID   | 错误信息                                           |
-  |:--------|:-----------------------------------------------|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
   | 7400101 | Parameter missing or parameter type incorrect. |
-  | 7400201 | Camera service fatal error.                    |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2880,12 +2997,18 @@ public func createPreviewOutput(surfaceId: String): PreviewOutput
 // index.cj
 
 import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let surfaceId: String = receiver.getReceivingSurfaceId()
 let previewOutput = cameraManager.createPreviewOutput(surfaceId)
 ```
@@ -2916,12 +3039,12 @@ public func createSession(mode: SceneMode): Session
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息                                                                                 |
-  | :-------------- |:----------------------------------------------------------------------------------------|
-  | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
-  | 7400201                | Camera service fatal error.                                                                                                                    |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2931,8 +3054,12 @@ public func createSession(mode: SceneMode): Session
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -2967,12 +3094,12 @@ public func createVideoOutput(profile: VideoProfile, surfaceId: String): VideoOu
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.               |
-  | 7400201                |  Camera service fatal error.               |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -2982,18 +3109,20 @@ public func createVideoOutput(profile: VideoProfile, surfaceId: String): VideoOu
 // index.cj
 
 import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let cameraDevice = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(cameraDevice)[1]
-let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let surfaceId: String = receiver.getReceivingSurfaceId()
-let videoOutput = cameraManager.createVideoOutput(cameraOutputCapability.videoProfiles[0],
-    surfaceId)
+let videoOutput = cameraManager.createVideoOutput(surfaceId)
 ```
 
 ### func createVideoOutput(String)
@@ -3022,12 +3151,12 @@ public func createVideoOutput(surfaceId: String): VideoOutput
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID    | 错误信息                                           |
-  |:---------|:-----------------------------------------------|
-  | 7400101  | Parameter missing or parameter type incorrect. |
-  | 7400201  | Camera service fatal error.                    |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3037,12 +3166,18 @@ public func createVideoOutput(surfaceId: String): VideoOutput
 // index.cj
 
 import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
 let surfaceId: String = receiver.getReceivingSurfaceId()
 let videoOutput = cameraManager.createVideoOutput(surfaceId)
 ```
@@ -3063,7 +3198,7 @@ public func getSupportedCameras(): Array<CameraDevice>
 
 |类型|说明|
 |:----|:----|
-|Array\<[CameraDevice](#struct-cameradevice)>|相机设备列表。|
+|Array\<[CameraDevice](#class-cameradevice)>|相机设备列表。|
 
 **示例：**
 
@@ -3073,8 +3208,12 @@ public func getSupportedCameras(): Array<CameraDevice>
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 ```
@@ -3095,14 +3234,14 @@ public func getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|相机设备，通过[getSupportedCameras](#func-getsupportedcameras)接口获取。|
+|camera|[CameraDevice](#class-cameradevice)|是|-|相机设备，通过[getSupportedCameras](#func-getsupportedcameras)接口获取。|
 |mode|[SceneMode](#enum-scenemode)|是|-|相机模式，通过[getSupportedSceneModes](#func-getsupportedscenemodescameradevice)接口获取。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[CameraOutputCapability](#struct-cameraoutputcapability)|相机输出能力。|
+|[CameraOutputCapability](#class-cameraoutputcapability)|相机输出能力。|
 
 **示例：**
 
@@ -3112,8 +3251,12 @@ public func getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode):
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -3137,7 +3280,7 @@ public func getSupportedSceneModes(camera: CameraDevice): Array<SceneMode>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|相机设备，通过[getSupportedCameras](#func-getsupportedcameras)接口获取。|
+|camera|[CameraDevice](#class-cameradevice)|是|-|相机设备，通过[getSupportedCameras](#func-getsupportedcameras)接口获取。|
 
 **返回值：**
 
@@ -3153,8 +3296,12 @@ public func getSupportedSceneModes(camera: CameraDevice): Array<SceneMode>
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let cameraDevices = cameraManager.getSupportedCameras()
 let camera = cameraDevices[0]
@@ -3187,8 +3334,12 @@ public func getTorchMode(): TorchMode
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let torchMode = cameraManager.getTorchMode()
 ```
@@ -3220,16 +3371,20 @@ public func isCameraMuted(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-AppLog.info(cameraManager.isCameraMuted())
+Hilog.info(0, "AppLogCj", cameraManager.isCameraMuted())
 ```
 
 ### func isTorchModeSupported(TorchMode)
 
 ```cangjie
-public func isTorchModeSupported(torchMode: TorchMode): Bool
+public func isTorchModeSupported(mode: TorchMode): Bool
 ```
 
 **功能：** 检测是否支持设置的手电筒模式。
@@ -3242,7 +3397,7 @@ public func isTorchModeSupported(torchMode: TorchMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|torchMode|[TorchMode](#enum-torchmode)|是|-|手电筒模式。|
+|mode|[TorchMode](#enum-torchmode)|是|-|手电筒模式。|
 
 **返回值：**
 
@@ -3259,11 +3414,15 @@ public func isTorchModeSupported(torchMode: TorchMode): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let torchMode = cameraManager.getTorchMode()
-AppLog.info(cameraManager.isTorchModeSupported(torchMode))
+Hilog.info(0, "AppLogCj", cameraManager.isTorchModeSupported(torchMode))
 ```
 
 ### func isTorchSupported()
@@ -3293,19 +3452,23 @@ public func isTorchSupported(): Bool
 
 import kit.CameraKit.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-AppLog.info(cameraManager.isTorchSupported())
+Hilog.info(0, "AppLogCj", cameraManager.isTorchSupported())
 ```
 
-### func off(CameraCallbackType, Callback1Argument\<CameraStatusInfo>)
+### func off(CameraEvents, Callback1Argument\<CameraStatusInfo>)
 
 ```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<CameraStatusInfo>): Unit
+public func off(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit
 ```
 
-**功能：** 相机设备状态注销回调，通过注销回调函数以取消获取相机的状态变化。
+**功能：** 相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3315,8 +3478,17 @@ public func off(`type`: CameraCallbackType, callback: Callback1Argument<CameraSt
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为cameraStatus。cameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CameraStatusInfo](#struct-camerastatusinfo)>|是|-|回调函数，取消对应callback。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraStatus。CameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3326,30 +3498,23 @@ public func off(`type`: CameraCallbackType, callback: Callback1Argument<CameraSt
 // index.cj
 
 import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-// 此处代码可添加在依赖项定义中
-class TestCallbackCameraStatus <: Callback1Argument<CameraStatusInfo> {
-    public init() {}
-    public open func invoke(res: CameraStatusInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke CameraStatus. CameraDevice: ${res.camera.cameraId}, CameraStatus: ${res.status}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let testCallbackCameraStatus = TestCallbackCameraStatus()
-cameraManager.off(CameraCallbackType.CameraStatus, testCallbackCameraStatus)
+cameraManager.off(CameraEvents.TorchStatusChange)
 ```
 
-### func off(CameraCallbackType, Callback1Argument\<FoldStatusInfo>)
+### func off(CameraEvents, Callback1Argument\<FoldStatusInfo>)
 
 ```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<FoldStatusInfo>): Unit
+public func off(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit
 ```
 
-**功能：** 关闭折叠设备折叠状态变化的监听。
+**功能：** 折叠设备折叠状态变化注销回调，通过注销回调函数取消获取折叠状态变化。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3359,8 +3524,17 @@ public func off(`type`: CameraCallbackType, callback: Callback1Argument<FoldStat
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为foldStatusChange。表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatusInfo](#struct-foldstatusinfo)>|是|-|回调函数，取消对应callback。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FoldStatusChange。表示折叠设备折叠状态发生变化。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3370,30 +3544,23 @@ public func off(`type`: CameraCallbackType, callback: Callback1Argument<FoldStat
 // index.cj
 
 import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-// 此处代码可添加在依赖项定义中
-class TestCallbackFoldStatusChange <: Callback1Argument<FoldStatusInfo> {
-    public init() {}
-    public open func invoke(res: FoldStatusInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke FoldStatusChange.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let testCallbackFoldStatusChange = TestCallbackFoldStatusChange()
-cameraManager.off(CameraCallbackType.FoldStatusChange, testCallbackFoldStatusChange)
+cameraManager.off(CameraEvents.TorchStatusChange)
 ```
 
-### func off(CameraCallbackType, Callback1Argument\<TorchStatusInfo>)
+### func off(CameraEvents, Callback1Argument\<TorchStatusInfo>)
 
 ```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<TorchStatusInfo>): Unit
+public func off(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit
 ```
 
-**功能：** 手电筒状态变化注销回调，通过注销回调函数以取消获取手电筒状态变化。
+**功能：** 手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -3403,8 +3570,17 @@ public func off(`type`: CameraCallbackType, callback: Callback1Argument<TorchSta
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为torchStatusChange。cameraManager对象获取成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[TorchStatusInfo](#struct-torchstatusinfo)>|是|-|回调函数，取消对应callback。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为TorchStatusChange。CameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3414,27 +3590,20 @@ public func off(`type`: CameraCallbackType, callback: Callback1Argument<TorchSta
 // index.cj
 
 import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-// 此处代码可添加在依赖项定义中
-class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
-    public init() {}
-    public open func invoke(res: TorchStatusInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke TorchStatusChange. isTorchAvailable: ${res.isTorchAvailable}, isTorchActive: ${res.isTorchActive}, torchLevel:${res.torchLevel}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
-cameraManager.off(CameraCallbackType.TorchStatusChange, testCallbackTorchStatusChange)
+cameraManager.off(CameraEvents.TorchStatusChange)
 ```
 
-### func off(CameraCallbackType)
+### func off(CameraEvents)
 
 ```cangjie
-public func off(`type`: CameraCallbackType): Unit
+public func off(event: CameraEvents): Unit
 ```
 
 **功能：** 取消对应监听事件的所有回调。
@@ -3447,7 +3616,16 @@ public func off(`type`: CameraCallbackType): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3457,19 +3635,23 @@ public func off(`type`: CameraCallbackType): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-cameraManager.off(CameraCallbackType.TorchStatusChange)
+cameraManager.off(CameraEvents.TorchStatusChange)
 ```
 
-### func on(CameraCallbackType, Callback1Argument\<CameraStatusInfo>)
+### func on(CameraEvents, Callback1Argument\<CameraStatusInfo>)
 
 ```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<CameraStatusInfo>): Unit
+public func on(event: CameraEvents, callback: Callback1Argument<CameraStatusInfo>): Unit
 ```
 
-**功能：** 相机设备状态回调，通过注册回调函数获取相机的状态变化。
+**功能：** 相机设备状态回调，通过注册回调函数获取相机的状态变化。使用callback异步回调。
 
 > **说明：**
 >
@@ -3483,8 +3665,17 @@ public func on(`type`: CameraCallbackType, callback: Callback1Argument<CameraSta
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为cameraStatus。cameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CameraStatusInfo](#struct-camerastatusinfo)>|是|-|回调函数，用于获取镜头状态变化信息。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraStatus。CameraManager对象获取成功后可监听。目前只支持对设备打开或者关闭会触发该事件并返回对应信息。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|是|-|回调函数，用于获取镜头状态变化信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3494,27 +3685,31 @@ public func on(`type`: CameraCallbackType, callback: Callback1Argument<CameraSta
 // index.cj
 
 import kit.CameraKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 此处代码可添加在依赖项定义中
-class TestCallbackCameraStatus <: Callback1Argument<CameraStatusInfo> {
+class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
     public init() {}
-    public open func invoke(res: CameraStatusInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke CameraStatus. CameraDevice: ${res.camera.cameraId}, CameraStatus: ${res.status}")
+    public open func invoke(res: TorchStatusInfo): Unit {
+        Hilog.info(0, "Camera", "Call invoke TorchStatusChange. isTorchAvailable: ${res.isTorchAvailable}, isTorchActive: ${res.isTorchActive}, torchLevel:${res.torchLevel}")
     }
 }
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let testCallbackCameraStatus = TestCallbackCameraStatus()
-cameraManager.on(CameraCallbackType.CameraStatus, testCallbackCameraStatus)
+let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
+cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
 ```
 
-### func on(CameraCallbackType, Callback1Argument\<FoldStatusInfo>)
+### func on(CameraEvents, Callback1Argument\<FoldStatusInfo>)
 
 ```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<FoldStatusInfo>): Unit
+public func on(event: CameraEvents, callback: Callback1Argument<FoldStatusInfo>): Unit
 ```
 
 **功能：** 开启折叠设备折叠状态变化的监听。
@@ -3531,8 +3726,17 @@ public func on(`type`: CameraCallbackType, callback: Callback1Argument<FoldStatu
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为foldStatusChange。表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatusInfo](#struct-foldstatusinfo)>|是|-|回调函数。返回折叠设备折叠信息。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FoldStatusChange。表示折叠设备折叠状态发生变化。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|是|-|回调函数。返回折叠设备折叠信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3542,27 +3746,31 @@ public func on(`type`: CameraCallbackType, callback: Callback1Argument<FoldStatu
 // index.cj
 
 import kit.CameraKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 此处代码可添加在依赖项定义中
-class TestCallbackFoldStatusChange <: Callback1Argument<FoldStatusInfo> {
+class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
     public init() {}
-    public open func invoke(res: FoldStatusInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke FoldStatusChange.")
+    public open func invoke(res: TorchStatusInfo): Unit {
+        Hilog.info(0, "Camera", "Call invoke TorchStatusChange. isTorchAvailable: ${res.isTorchAvailable}, isTorchActive: ${res.isTorchActive}, torchLevel:${res.torchLevel}")
     }
 }
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-let testCallbackFoldStatusChange = TestCallbackFoldStatusChange()
-cameraManager.on(CameraCallbackType.FoldStatusChange, testCallbackFoldStatusChange)
+let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
+cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
 ```
 
-### func on(CameraCallbackType, Callback1Argument\<TorchStatusInfo>)
+### func on(CameraEvents, Callback1Argument\<TorchStatusInfo>)
 
 ```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<TorchStatusInfo>): Unit
+public func on(event: CameraEvents, callback: Callback1Argument<TorchStatusInfo>): Unit
 ```
 
 **功能：** 手电筒状态变化回调，通过注册回调函数获取手电筒状态变化。
@@ -3579,8 +3787,17 @@ public func on(`type`: CameraCallbackType, callback: Callback1Argument<TorchStat
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为torchStatusChange。cameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[TorchStatusInfo](#struct-torchstatusinfo)>|是|-|回调函数，用于获取手电筒状态变化信息。|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为TorchStatusChange。cameraManager对象获取成功后可监听。目前只支持手电筒打开，手电筒关闭，手电筒不可用，手电筒恢复可用会触发该事件并返回对应信息。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|是|-|回调函数，用于获取手电筒状态变化信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
 
 **示例：**
 
@@ -3590,8 +3807,12 @@ public func on(`type`: CameraCallbackType, callback: Callback1Argument<TorchStat
 // index.cj
 
 import kit.CameraKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 此处代码可添加在依赖项定义中
 class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
@@ -3601,16 +3822,16 @@ class TestCallbackTorchStatusChange <: Callback1Argument<TorchStatusInfo> {
     }
 }
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
 let testCallbackTorchStatusChange = TestCallbackTorchStatusChange()
-cameraManager.on(CameraCallbackType.TorchStatusChange, testCallbackTorchStatusChange)
+cameraManager.on(CameraEvents.TorchStatusChange, testCallbackTorchStatusChange)
 ```
 
 ### func setTorchMode(TorchMode)
 
 ```cangjie
-public func setTorchMode(torchMode: TorchMode): Unit
+public func setTorchMode(mode: TorchMode): Unit
 ```
 
 **功能：** 设置设备手电筒模式。
@@ -3623,15 +3844,14 @@ public func setTorchMode(torchMode: TorchMode): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|torchMode|[TorchMode](#enum-torchmode)|是|-|手电筒模式。|
+|mode|[TorchMode](#enum-torchmode)|是|-|手电筒模式。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
 
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
   | 7400102 | Operation not allowed. |
   | 7400201 | Camera service fatal error. |
 
@@ -3643,11 +3863,15 @@ public func setTorchMode(torchMode: TorchMode): Unit
 // index.cj
 
 import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let cameraManager = getCameraManager(ctx)
-cameraManager.setTorchMode(TorchMode.ON)
-cameraManager.setTorchMode(TorchMode.OFF)
+cameraManager.setTorchMode(TorchMode.On)
+cameraManager.setTorchMode(TorchMode.Off)
 ```
 
 ## class CameraOutputCapability
@@ -3731,4187 +3955,12 @@ public let videoProfiles: Array<VideoProfile>
 
 **起始版本：** 21
 
-## class MetadataObject
+## class CameraStatusInfo
 
 ```cangjie
-public class MetadataObject {
-    public let `type`: MetadataObjectType
-    public let timestamp: Int32
-    public let boundingBox: Rect
-}
-```
-
-**功能：** 相机元能力信息，CameraInput相机信息中的数据来源。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-### let \`type\`
-
-```cangjie
-public let `type`: MetadataObjectType
-```
-
-**功能：** metadata 类型。
-
-**类型：** [MetadataObjectType](#enum-metadataobjecttype)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-### let boundingBox
-
-```cangjie
-public let boundingBox: Rect
-```
-
-**功能：** metadata 区域框。
-
-**类型：** [Rect](#struct-rect)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-### let timestamp
-
-```cangjie
-public let timestamp: Int32
-```
-
-**功能：** 当前时间戳（毫秒）。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-## class MetadataOutput
-
-```cangjie
-public class MetadataOutput <: CameraOutput {}
-```
-
-**功能：** metadata流。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [CameraOutput](#interface-cameraoutput)
-
-### func off(CameraCallbackType, Callback1Argument\<Array\<MetadataObject>>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<Array<MetadataObject>>): Unit
-```
-
-**功能：** 注销监听检测到的metadata对象。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为metadataObjectsAvailable，metadataOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<[MetadataObject](#class-metadataobject)>>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback1Argument<Array<MetadataObject>> {
-    public init() {}
-    public open func invoke(res: Array<MetadataObject>): Unit {
-        Hilog.info(0, "Camera", "Call invoke error.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-let testCallback = TestCallback()
-metadataOutput.off(CameraCallbackType.MetadataObjectsAvailable, testCallback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听metadata流的错误。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，metadataOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-let testCallbackError = TestCallbackError()
-metadataOutput.off(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 取消对应监听事件的所有回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-metadataOutput.off(CameraCallbackType.CameraError)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<Array\<MetadataObject>>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<Array<MetadataObject>>): Unit
-```
-
-**功能：** 监听检测到的metadata对象，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为metadataObjectsAvailable，metadataOutput创建成功后可监听。检测到有效的metadata数据时触发该事件发生并返回相应的metadata数据。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<[MetadataObject](#class-metadataobject)>>|是|-|回调函数，用于获取metadata数据。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback1Argument<Array<MetadataObject>> {
-    public init() {}
-    public open func invoke(res: Array<MetadataObject>): Unit {
-        Hilog.info(0, "Camera", "Call invoke error.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-let testCallback = TestCallback()
-metadataOutput.on(CameraCallbackType.MetadataObjectsAvailable, testCallback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听metadata流的错误，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，metadataOutput创建成功后可监听。metadata接口使用错误时触发该事件并返回对应错误码，比如调用start，CameraOutput.release接口时发生错误返回对应错误信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-let testCallbackError = TestCallbackError()
-metadataOutput.on(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func release()
-
-```cangjie
-public func release(): Unit
-```
-
-**功能：** 释放输出资源。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-metadataOutput.release()
-```
-
-### func start()
-
-```cangjie
-public func start(): Unit
-```
-
-**功能：** 开始输出metadata。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-metadataOutput.start()
-```
-
-### func stop()
-
-```cangjie
-public func stop(): Unit
-```
-
-**功能：** 停止输出metadata。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let metadataOutput = cameraManager.createMetadataOutput(ability.supportedMetadataObjectTypes[0])
-metadataOutput.stop()
-```
-
-## class PhotoOutput
-
-```cangjie
-public class PhotoOutput <: CameraOutput {}
-```
-
-**功能：** 拍照会话中使用的输出信息。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [CameraOutput](#interface-cameraoutput)
-
-### func capture()
-
-```cangjie
-public func capture(): Unit
-```
-
-**功能：** 以默认设置触发一次拍照。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400104                |  Session not running.                                  |
-  | 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-output.capture()
-```
-
-### func capture(PhotoCaptureSetting)
-
-```cangjie
-public func capture(setting: PhotoCaptureSetting): Unit
-```
-
-**功能：** 以指定参数触发一次拍照。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|setting|[PhotoCaptureSetting](#struct-photocapturesetting)|是|-|拍照设置。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400104                |  Session not running.                                  |
-  | 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-output.capture(PhotoCaptureSetting())
-```
-
-### func enableMirror(Bool)
-
-```cangjie
-public func enableMirror(enabled: Bool): Unit
-```
-
-**功能：** 是否启用镜像拍照。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|enabled|Bool|是|-|true为开启镜像拍照，false为关闭镜像拍照。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID    | 错误信息                                           |
-  | :------- |:-----------------------------------------------|
-  | 7400101  | Parameter missing or parameter type incorrect. |
-  | 7400103  | Session not config.                    |
-  | 7400201  | Camera service fatal error.            |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let enabled = true
-output.enableMirror(enabled)
-```
-
-### func enableMovingPhoto(Bool)
-
-```cangjie
-public func enableMovingPhoto(enabled: Bool): Unit
-```
-
-**功能：** 使能动态照片拍照。
-
-**需要权限：** ohos.permission.MICROPHONE
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|enabled|Bool|是|-|true为开启动态照片，false为关闭动态照片。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID    | 错误信息                                           |
-  | :------- |:-----------------------------------------------|
-  | 201      | permission denied.                             |
-  | 7400101  | Parameter missing or parameter type incorrect. |
-  | 7400201  | Camera service fatal error.                    |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let enabled = true
-output.enableMovingPhoto(enabled)
-```
-
-### func getActiveProfile()
-
-```cangjie
-public func getActiveProfile(): Profile
-```
-
-**功能：** 获取当前生效的配置信息。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Profile](#class-profile)|当前生效的配置信息。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID   | 错误信息                         |
-  |:--------|:-----------------------------|
-  | 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let profile = output.getActiveProfile()
-```
-
-### func getPhotoRotation(Int32)
-
-```cangjie
-public func getPhotoRotation(deviceDegree: Int32): ImageRotation
-```
-
-**功能：** 获取拍照旋转角度。
-
-- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是竖屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceDegree|Int32|是|-|设备旋转角度。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ImageRotation](#enum-imagerotation)|拍照旋转角度。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID   | 错误信息                         |
-  |:--------|:-----------------------------|
-  | 7400101 | Parameter missing or parameter type incorrect.  |
-  | 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let deviceDegree: Int32 = 0
-let imageRotation = output.getPhotoRotation(deviceDegree)
-```
-
-### func getSupportedMovingPhotoVideoCodecTypes()
-
-```cangjie
-public func getSupportedMovingPhotoVideoCodecTypes(): Array<VideoCodecType>
-```
-
-**功能：** 查询支持的动态照片短视频编码类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[VideoCodecType](#enum-videocodectype)>|支持的动态照片短视频编码类型列表。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID        | 错误信息                      |
-  | :-------------- | :--------------               |
-  | 7400201         |  Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let videoCodecTypes = output.getSupportedMovingPhotoVideoCodecTypes()
-```
-
-### func isMirrorSupported()
-
-```cangjie
-public func isMirrorSupported(): Bool
-```
-
-**功能：** 查询是否支持镜像拍照。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|返回是否支持镜像拍照，true表示支持，false表示不支持。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-AppLog.info(output.isMirrorSupported())
-```
-
-### func isMovingPhotoSupported()
-
-```cangjie
-public func isMovingPhotoSupported(): Bool
-```
-
-**功能：** 查询是否支持动态照片拍摄。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|返回是否支持动态照片拍照，true表示支持，false表示不支持。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID       | 错误信息       |
-  | :------------- | :-------------- |
-  | 7400201 |  Camera service fatal error. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-AppLog.info(output.isMovingPhotoSupported())
-```
-
-### func off(CameraCallbackType, Callback1Argument\<CaptureStartInfo>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<CaptureStartInfo>): Unit
-```
-
-**功能：** 注销监听拍照。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为captureStartWithInfo，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureStartInfo](#struct-capturestartinfo)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackCaptureStartWithInfo <: Callback1Argument<CaptureStartInfo> {
-    public init() {}
-    public open func invoke(res: CaptureStartInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke CaptureStartWithInfo. captureId: ${res.captureId}, time： ${res.time}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackCaptureStartWithInfo = TestCallbackCaptureStartWithInfo()
-output.off(CameraCallbackType.CaptureStartWithInfo, testCallbackCaptureStartWithInfo)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<FrameShutterInfo>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<FrameShutterInfo>): Unit
-```
-
-**功能：** 注销监听拍照帧输出捕获。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameShutter，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterInfo](#struct-frameshutterinfo)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackFrameShutter <: Callback1Argument<FrameShutterInfo> {
-    public init() {}
-    public open func invoke(res: FrameShutterInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameShutter. captureId: ${res.captureId}, timestamp： ${res.timestamp}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackFrameShutter = TestCallbackFrameShutter()
-output.off(CameraCallbackType.FrameShutter, testCallbackFrameShutter)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<CaptureEndInfo>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<CaptureEndInfo>): Unit
-```
-
-**功能：** 注销监听拍照结束。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为captureEnd，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureEndInfo](#struct-captureendinfo)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackCaptureEnd <: Callback1Argument<CaptureEndInfo> {
-    public init() {}
-    public open func invoke(res: CaptureEndInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke CaptureEnd. captureId: ${res.captureId}, frameCount： ${res.frameCount}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackCaptureEnd = TestCallbackCaptureEnd()
-output.off(CameraCallbackType.CaptureEnd, testCallbackCaptureEnd)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<FrameShutterEndInfo>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<FrameShutterEndInfo>): Unit
-```
-
-**功能：** 注销监听拍照帧输出捕获。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameShutterEnd，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterEndInfo](#struct-frameshutterendinfo)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackFrameShutterEnd <: Callback1Argument<FrameShutterEndInfo> {
-    public init() {}
-    public open func invoke(res: FrameShutterEndInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameShutterEnd. captureId: ${res.captureId}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackFrameShutterEnd = TestCallbackFrameShutterEnd()
-output.off(CameraCallbackType.FrameShutterEnd, testCallbackFrameShutterEnd)
-```
-
-### func off(CameraCallbackType, Callback0Argument)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback0Argument): Unit
-```
-
-**功能：** 注销监听可拍下一张。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为captureReady，photoOutput创建成功后可监听。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackCaptureReady <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        Hilog.info(0, "Camera", "Call invoke CaptureReady.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackCaptureReady = TestCallbackCaptureReady()
-output.off(CameraCallbackType.CaptureReady, testCallbackCaptureReady)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<Int32>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<Int32>): Unit
-```
-
-**功能：** 注销监听预估的拍照时间。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为estimatedCaptureDuration，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Int32>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackEstimatedCaptureDuration <: Callback1Argument<Int32> {
-    public init() {}
-    public open func invoke(res: Int32): Unit {
-        Hilog.info(0, "Camera", "Call invoke EstimatedCaptureDuration. time: ${res}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackEstimatedCaptureDuration = TestCallbackEstimatedCaptureDuration()
-output.off(CameraCallbackType.EstimatedCaptureDuration, testCallbackEstimatedCaptureDuration)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听拍照输出发生错误。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackError = TestCallbackError()
-output.off(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 取消对应监听事件的所有回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-output.off(CameraCallbackType.CaptureStartWithInfo)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<CaptureStartInfo>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<CaptureStartInfo>): Unit
-```
-
-**功能：** 监听拍照开始，通过注册回调函数获取[CaptureStartInfo](#struct-capturestartinfo)。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为captureStartWithInfo，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureStartInfo](#struct-capturestartinfo)>|是|-|回调函数，用于获取相关信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackCaptureStartWithInfo <: Callback1Argument<CaptureStartInfo> {
-    public init() {}
-    public open func invoke(res: CaptureStartInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke CaptureStartWithInfo. captureId: ${res.captureId}, time： ${res.time}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackCaptureStartWithInfo = TestCallbackCaptureStartWithInfo()
-output.on(CameraCallbackType.CaptureStartWithInfo, testCallbackCaptureStartWithInfo)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<FrameShutterInfo>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<FrameShutterInfo>): Unit
-```
-
-**功能：** 监听拍照帧输出捕获，通过注册回调函数获取结果。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameShutter，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterInfo](#struct-frameshutterinfo)>|是|-|回调函数，用于获取相关信息。该回调返回意味着可以再次下发拍照请求。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackFrameShutter <: Callback1Argument<FrameShutterInfo> {
-    public init() {}
-    public open func invoke(res: FrameShutterInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameShutter. captureId: ${res.captureId}, timestamp： ${res.timestamp}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackFrameShutter = TestCallbackFrameShutter()
-output.on(CameraCallbackType.FrameShutter, testCallbackFrameShutter)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<CaptureEndInfo>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<CaptureEndInfo>): Unit
-```
-
-**功能：** 监听拍照结束，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为captureEnd，photoOutput创建成功后可监听。拍照完全结束可触发该事件发生并返回相应信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureEndInfo](#struct-captureendinfo)>|是|-|回调函数，用于获取相关信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackCaptureEnd <: Callback1Argument<CaptureEndInfo> {
-    public init() {}
-    public open func invoke(res: CaptureEndInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke CaptureEnd. captureId: ${res.captureId}, frameCount： ${res.frameCount}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackCaptureEnd = TestCallbackCaptureEnd()
-output.on(CameraCallbackType.CaptureEnd, testCallbackCaptureEnd)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<FrameShutterEndInfo>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<FrameShutterEndInfo>): Unit
-```
-
-**功能：** 监听拍照曝光结束捕获，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameShutterEnd，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterEndInfo](#struct-frameshutterendinfo)>|是|-|回调函数，用于获取相关信息。该回调返回表示拍照曝光结束。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackFrameShutterEnd <: Callback1Argument<FrameShutterEndInfo> {
-    public init() {}
-    public open func invoke(res: FrameShutterEndInfo): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameShutterEnd. captureId: ${res.captureId}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackFrameShutterEnd = TestCallbackFrameShutterEnd()
-output.on(CameraCallbackType.FrameShutterEnd, testCallbackFrameShutterEnd)
-```
-
-### func on(CameraCallbackType, Callback0Argument)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback0Argument): Unit
-```
-
-**功能：** 监听可拍下一张，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为captureReady，photoOutput创建成功后可监听。当下一张可拍时可触发该事件发生并返回相应信息。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackCaptureReady <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        Hilog.info(0, "Camera", "Call invoke CaptureReady.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackCaptureReady = TestCallbackCaptureReady()
-output.on(CameraCallbackType.CaptureReady, testCallbackCaptureReady)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<Int32>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<Int32>): Unit
-```
-
-**功能：** 监听预估的拍照时间。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为estimatedCaptureDuration，photoOutput创建成功后可监听。拍照完全结束可触发该事件发生并返回相应信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Int32>|是|-|回调函数，用于获取预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackEstimatedCaptureDuration <: Callback1Argument<Int32> {
-    public init() {}
-    public open func invoke(res: Int32): Unit {
-        Hilog.info(0, "Camera", "Call invoke EstimatedCaptureDuration. time: ${res}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackEstimatedCaptureDuration = TestCallbackEstimatedCaptureDuration()
-output.on(CameraCallbackType.EstimatedCaptureDuration, testCallbackEstimatedCaptureDuration)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听拍照输出发生错误，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，photoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-let testCallbackError = TestCallbackError()
-output.on(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func release()
-
-```cangjie
-public func release(): Unit
-```
-
-**功能：** 释放输出资源。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID   | 错误信息                         |
-  |:--------|:-----------------------------|
-  | 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-output.release()
-```
-
-### func setMovingPhotoVideoCodecType(VideoCodecType)
-
-```cangjie
-public func setMovingPhotoVideoCodecType(codecType: VideoCodecType): Unit
-```
-
-**功能：** 设置动态照片短视频编码类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|codecType|[VideoCodecType](#enum-videocodectype)|是|-|动态照片短视频编码类型。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID        | 错误信息                      |
-  | :-------------- | :--------------               |
-  | 7400201         |  Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let output = cameraManager.createPhotoOutput(ability.photoProfiles[0])
-output.setMovingPhotoVideoCodecType(VideoCodecType.AVC)
-```
-
-## class PhotoSession
-
-```cangjie
-public class PhotoSession <: Session & Flash & AutoExposure & Focus & Zoom & ColorManagement {}
-```
-
-**功能：** 普通拍照模式会话类，提供了对闪光灯、曝光、对焦、变焦、色彩空间的操作。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [Session](#interface-session)
-- [Flash](#interface-flash)
-- [AutoExposure](#interface-autoexposure)
-- [Focus](#interface-focus)
-- [Zoom](#interface-zoom)
-- [ColorManagement](#interface-colormanagement)
-
-### func canPreconfig(PreconfigType, PreconfigRatio)
-
-```cangjie
-public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: PreconfigRatio = PRECONFIG_RATIO_4_3): Bool
-```
-
-**功能：** 查询当前Session是否支持指定的与配置类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
-|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PRECONFIG_RATIO_4_3| **命名参数。** 可选画幅比例。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|true: 支持指定预配值类型。false: 不支持指定预配值类型。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400201|Camera service fatal error.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-AppLog.info(session.canPreconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9))
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-let callback = TestCallbackError()
-session.off(CameraCallbackType.CameraError, callback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<FocusState>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<FocusState>): Unit
-```
-
-**功能：** 注销监听相机聚焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.focusStateChange，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class FocusStateChangeCallback <: Callback1Argument<FocusState> {
-    public static var invoked = false
-
-    public func invoke(state: FocusState) {
-        AppLog.info("[multimedia_camera | FocusStateChange Callback]: focus state: ${state}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-let callback = FocusStateChangeCallback()
-session.off(CameraCallbackType.FocusStateChange, callback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<SmoothZoomInfo>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<SmoothZoomInfo>): Unit
-```
-
-**功能：** 注销监听相机平滑变焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.smoothZoomInfoAvailable，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#struct-smoothzoominfo)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
-    public static var invoked = false
-
-    public func invoke(info: SmoothZoomInfo) {
-        AppLog.info("[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-let callback = SmoothZoomInfoAvailableCallback()
-session.off(CameraCallbackType.SmoothZoomInfoAvailable, callback)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 注销监听普通拍照会话的错误事件/相机聚焦的状态变化/相机平滑变焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error或CameraCallbackType.focusStateChange或CameraCallbackType.smoothZoomInfoAvailable。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-session.off(CameraCallbackType.FocusStateChange)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听普通拍照会话的错误事件，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用beginConfig，commitConfig，addInput等接口发生错误时返回错误信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        AppLog.info("Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-let callback = TestCallbackError()
-session.on(CameraCallbackType.CameraError, callback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<FocusState>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<FocusState>): Unit
-```
-
-**功能：** 监听相机聚焦的状态变化，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.focusStateChange，session创建成功可监听。仅当自动对焦模式时，且相机对焦状态发生改变时可触发该事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取当前对焦状态。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class FocusStateChangeCallback <: Callback1Argument<FocusState> {
-    public static var invoked = false
-
-    public func invoke(state: FocusState) {
-        AppLog.info("[multimedia_camera | FocusStateChange Callback]: focus state: ${state}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-let callback = FocusStateChangeCallback()
-session.on(CameraCallbackType.FocusStateChange, callback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<SmoothZoomInfo>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<SmoothZoomInfo>): Unit
-```
-
-**功能：** 监听相机平滑变焦的状态变化，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.smoothZoomInfoAvailable，session创建成功可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#struct-smoothzoominfo)>|是|-|回调函数，用于获取当前平滑变焦状态。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
-    public static var invoked = false
-
-    public func invoke(info: SmoothZoomInfo) {
-        AppLog.info("[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-let callback = SmoothZoomInfoAvailableCallback()
-session.on(CameraCallbackType.SmoothZoomInfoAvailable, callback)
-```
-
-### func preconfig(PreconfigType, PreconfigRatio)
-
-```cangjie
-public func preconfig(preconfigType: PreconfigType, preconfigRatio!: PreconfigRatio = PreconfigRatio.PRECONFIG_RATIO_4_3): Unit
-```
-
-**功能：** 对当前Session进行预配置。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
-|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PreconfigRatio.PRECONFIG_RATIO_4_3| **命名参数。** 可选画幅比例。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400201|Camera service fatal error.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
-let session = photoSession.getOrThrow()
-session.preconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9)
-```
-
-## class PreviewOutput
-
-```cangjie
-public class PreviewOutput <: CameraOutput {}
-```
-
-**功能：** 预览输出类。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [CameraOutput](#interface-cameraoutput)
-
-### func getActiveFrameRate()
-
-```cangjie
-public func getActiveFrameRate(): FrameRateRange
-```
-
-**功能：** 获取已设置的帧率范围。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[FrameRateRange](#struct-frameraterange)|帧率范围。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let range = output.getActiveFrameRate()
-```
-
-### func getActiveProfile()
-
-```cangjie
-public func getActiveProfile(): Profile
-```
-
-**功能：** 获取当前生效的配置信息。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Profile](#class-profile)|当前生效的配置信息。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.                                  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let profile = output.getActiveProfile()
-```
-
-### func getPreviewRotation(Int32)
-
-```cangjie
-public func getPreviewRotation(displayRotation: Int32): ImageRotation
-```
-
-**功能：** 获取预览旋转角度。
-
-- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是竖屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|displayRotation|Int32|是|-|显示设备的屏幕旋转角度，通过[getDefaultDisplaySync](../../arkui-cj/cj-apis-display.md#func-getdefaultdisplaysync)获得。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ImageRotation](#enum-imagerotation)|预览旋转角度。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID   | 错误信息                         |
-  |:--------|:-----------------------------|
-  | 7400101 | Parameter missing or parameter type incorrect.  |
-  | 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let imageRotation = output.getPreviewRotation(0)
-```
-
-### func getSupportedFrameRates()
-
-```cangjie
-public func getSupportedFrameRates(): Array<FrameRateRange>
-```
-
-**功能：** 查询支持的帧率范围。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[FrameRateRange](#struct-frameraterange)>|支持的帧率范围列表。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let frameRateRanges = output.getSupportedFrameRates()
-```
-
-### func off(CameraCallbackType, Callback0Argument)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback0Argument): Unit
-```
-
-**功能：** 注销监听预览帧启动或注销监听预览帧结束。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameStart或frameEnd，previewOutput创建成功可监听。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameStart.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let testCallback = TestCallback()
-output.off(CameraCallbackType.FrameStart, testCallback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听预览输出的错误事件。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，previewOutput创建成功可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.base.*
-import ohos.hilog.Hilog
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let testCallbackError = TestCallbackError()
-output.off(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 取消对应监听事件的所有回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-output.off(CameraCallbackType.CameraError)
-```
-
-### func on(CameraCallbackType, Callback0Argument)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback0Argument): Unit
-```
-
-**功能：** 监听预览帧启动或监听预览帧结束。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameStart或frameEnd，previewOutput创建成功可监听。底层第一次开始曝光时触发该事件并返回。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameStart.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let testCallback = TestCallback()
-output.on(CameraCallbackType.FrameStart, testCallback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听预览输出的错误事件，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，previewOutput创建成功可监听。预览接口使用错误时触发该事件，比如调用Session.start，CameraOutput.release等接口发生错误时返回对应错误信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-let testCallbackError = TestCallbackError()
-output.on(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func release()
-
-```cangjie
-public func release(): Unit
-```
-
-**功能：** 释放输出资源。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201                |  Camera service fatal error.          |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-output.release()
-```
-
-### func setFrameRate(Int32, Int32)
-
-```cangjie
-public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
-```
-
-**功能：** 设置预览流帧率范围，设置的范围必须在支持的帧率范围内。 进行设置前，可通过[getSupportedFrameRates](#func-getsupportedframerates)查询支持的帧率范围。
-
-> **说明：**
->
-> 仅在[PhotoSession](#class-photosession)或[VideoSession](#class-videosession)模式下支持。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|minFps|Int32|是|-|最小帧率。|
-|maxFps|Int32|是|-|最大帧率，当传入的最小值大于最大值时，传参异常，接口不生效。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400110                |  Unresolved conflicts with current configurations.     |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-output.setFrameRate(30, 60)
-```
-
-### func setPreviewRotation(ImageRotation, Bool)
-
-```cangjie
-public func setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked!: Bool = false): Unit
-```
-
-**功能：** 设置预览旋转角度。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|previewRotation|[ImageRotation](#enum-imagerotation)|是|-|预览旋转角度。|
-|isDisplayLocked|Bool|否|false| **命名参数。** 是否旋转锁定。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101 | Parameter missing or parameter type incorrect.  |
-  | 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-output.setPreviewRotation(ROTATION_90)
-```
-
-## class Profile
-
-```cangjie
-public open class Profile {
-    public let format: CameraFormat
-    public let size: Size
-}
-```
-
-**功能：** 相机配置信息项。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-### let format
-
-```cangjie
-public let format: CameraFormat
-```
-
-**功能：** 输出格式。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**类型：** [CameraFormat](#enum-cameraformat)
-
-**读写能力：** 只读
-
-**起始版本：** 21
-
-### let size
-
-```cangjie
-public let size: Size
-```
-
-**功能：** 分辨率。设置的是相机分辨率宽高，非实际出图宽高。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**类型：** [Size](#struct-size)
-
-**读写能力：** 只读
-
-**起始版本：** 21
-
-## class SecureSession
-
-```cangjie
-public class SecureSession <: Session & Flash & AutoExposure & Focus & Zoom {}
-```
-
-**功能：** 安全模式会话类，提供了对闪光灯、曝光、对焦、变焦的操作。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-> **说明：**
->
-> - 通过[createSession](#func-createsessionscenemode)接口传入[SceneMode](#enum-scenemode)为SECURE_PHOTO模式创建一个安全模式的会话。该模式开放给人脸识别、银行等有安全诉求的应用，需要结合安全TA使用，支持同时出普通预览流和安全流的业务场景。
->
-> - 安全TA可用于图片处理，它具备验证服务器下发数据的验签能力、图片签名、解析及组装tlv逻辑的能力，还具备密钥读取、创建及操作能力。
-
-**系统能力：**  SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [Session](#interface-session)
-- [Flash](#interface-flash)
-- [AutoExposure](#interface-autoexposure)
-- [Focus](#interface-focus)
-- [Zoom](#interface-zoom)
-
-### func addSecureOutput(PreviewOutput)
-
-```cangjie
-public func addSecureOutput(previewOutput: PreviewOutput): Unit
-```
-
-**功能：** 将其中一条[PreviewOutput](#class-previewoutput)标记成安全输出。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|previewOutput|[PreviewOutput](#class-previewoutput)|是|-|需要标记成安全输出的预览流。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400101|Parameter missing or parameter type incorrect.|
-  |7400102|Operation not allowed.|
-  |7400103|Session not config.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let secureSession = cameraManager.createSession(SceneMode.SECURE_PHOTO) as SecureSession
-let session = secureSession.getOrThrow()
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[0]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let previewOutput = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
-session.addSecureOutput(previewOutput)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        AppLog.info("Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let secureSession = cameraManager.createSession(SceneMode.SECURE_PHOTO) as SecureSession
-let session = secureSession.getOrThrow()
-let callback = TestCallbackError()
-session.off(CameraCallbackType.CameraError, callback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<FocusState>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<FocusState>): Unit
-```
-
-**功能：** 注销监听相机聚焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.focusStateChange，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class FocusStateChangeCallback <: Callback1Argument<FocusState> {
-    public static var invoked = false
-
-    public func invoke(state: FocusState) {
-        AppLog.info("[multimedia_camera | FocusStateChange Callback]: focus state: ${state}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let secureSession = cameraManager.createSession(SceneMode.SECURE_PHOTO) as SecureSession
-let session = secureSession.getOrThrow()
-let callback = FocusStateChangeCallback()
-session.off(CameraCallbackType.FocusStateChange, callback)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 注销监听普通拍照会话的错误事件/相机聚焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error或CameraCallbackType.focusStateChange。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let secureSession = cameraManager.createSession(SceneMode.SECURE_PHOTO) as SecureSession
-let session = secureSession.getOrThrow()
-session.off(CameraCallbackType.CameraError)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听普通拍照会话的错误事件，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用beginConfig，commitConfig，addInput等接口发生错误时返回错误信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class ErrorCallback <: Callback1Argument<BusinessException> {
-    public static var invoked = false
-
-    public func invoke(exception: BusinessException) {
-        AppLog.info("[multimedia_camera | Error Callback]: exception: ${exception.message}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let secureSession = cameraManager.createSession(SceneMode.SECURE_PHOTO) as SecureSession
-let session = secureSession.getOrThrow()
-let callback = ErrorCallback()
-session.on(CameraCallbackType.CameraError, callback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<FocusState>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<FocusState>): Unit
-```
-
-**功能：** 监听相机聚焦的状态变化，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.focusStateChange，session创建成功可监听。仅当自动对焦模式时，且相机对焦状态发生改变时可触发该事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取当前对焦状态。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class FocusStateChangeCallback <: Callback1Argument<FocusState> {
-    public static var invoked = false
-
-    public func invoke(state: FocusState) {
-        AppLog.info("[multimedia_camera | FocusStateChange Callback]: focus state: ${state}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let secureSession = cameraManager.createSession(SceneMode.SECURE_PHOTO) as SecureSession
-let session = secureSession.getOrThrow()
-let callback = FocusStateChangeCallback()
-session.on(CameraCallbackType.FocusStateChange, callback)
-```
-
-## class VideoOutput
-
-```cangjie
-public class VideoOutput <: CameraOutput {}
-```
-
-**功能：** 录像会话中使用的输出信息。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [CameraOutput](#interface-cameraoutput)
-
-### func getActiveFrameRate()
-
-```cangjie
-public func getActiveFrameRate(): FrameRateRange
-```
-
-**功能：** 获取已设置的帧率范围。使用setFrameRate对录像流设置过帧率后可查询。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[FrameRateRange](#struct-frameraterange)|帧率范围。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let frameRateRange = output.getActiveFrameRate()
-```
-
-### func getActiveProfile()
-
-```cangjie
-public func getActiveProfile(): VideoProfile
-```
-
-**功能：** 获取当前生效的配置信息。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[VideoProfile](#class-videoprofile)|当前生效的配置信息。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201         |  Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let videoProfile = output.getActiveProfile()
-```
-
-### func getSupportedFrameRates()
-
-```cangjie
-public func getSupportedFrameRates(): Array<FrameRateRange>
-```
-
-**功能：** 查询支持的帧率范围。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[FrameRateRange](#struct-frameraterange)>|支持的帧率范围列表。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let frameRateRanges = output.getSupportedFrameRates()
-```
-
-### func getVideoRotation(Int32)
-
-```cangjie
-public func getVideoRotation(deviceDegree: Int32): ImageRotation
-```
-
-**功能：** 获取录像旋转角度。
-
-- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是竖屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceDegree|Int32|是|-|设备旋转角度。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ImageRotation](#enum-imagerotation)|录像旋转角度。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101 | Parameter missing or parameter type incorrect.  |
-  | 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let imageRotation = output.getVideoRotation(0)
-```
-
-### func off(CameraCallbackType, Callback0Argument)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback0Argument): Unit
-```
-
-**功能：** 注销监听录像开始或注销监听录像结束。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameStart或frameEnd，videoOutput创建成功后可监听。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackFrameStart <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameStart.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let testCallbackFrameStart = TestCallbackFrameStart()
-output.off(CameraCallbackType.FrameStart, testCallbackFrameStart)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听录像输出发生错误。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，videoOutput创建成功后可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let testCallbackError = TestCallbackError()
-output.off(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 取消对应监听事件的所有回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-output.off(CameraCallbackType.CameraError)
-```
-
-### func on(CameraCallbackType, Callback0Argument)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback0Argument): Unit
-```
-
-**功能：** 监听录像开始或监听录像结束。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为frameStart或frameEnd，videoOutput创建成功后可监听。底层第一次曝光时触发该事件并返回。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取结果。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackFrameStart <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        Hilog.info(0, "Camera", "Call invoke FrameStart.")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let testCallbackFrameStart = TestCallbackFrameStart()
-output.on(CameraCallbackType.FrameStart, testCallbackFrameStart)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听录像输出发生错误，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为error，videoOutput创建成功后可监听。录像接口调用出现错误时触发该事件并返回对应错误码，比如调用start，CameraOutput.release接口时出现错误返回对应错误信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-import ohos.hilog.Hilog
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        Hilog.info(0, "Camera", "Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-let testCallbackError = TestCallbackError()
-output.on(CameraCallbackType.CameraError, testCallbackError)
-```
-
-### func release()
-
-```cangjie
-public func release(): Unit
-```
-
-**功能：** 释放输出资源。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400201         |  Camera service fatal error.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-output.release()
-```
-
-### func setFrameRate(Int32, Int32)
-
-```cangjie
-public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
-```
-
-**功能：** 设置录像流帧率范围，设置的范围必须在支持的帧率范围内。进行设置前，可通过[getSupportedFrameRates](#func-getsupportedframerates)查询支持的帧率范围。
-
-> **说明：**
->
-> 仅在[PhotoSession](#class-photosession)或[VideoSession](#class-videosession)模式下支持。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|minFps|Int32|是|-|最小帧率。|
-|maxFps|Int32|是|-|最大帧率。当传入的最小值大于最大值时，传参异常，接口不生效。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID        | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400101                |  Parameter missing or parameter type incorrect.        |
-  | 7400110                |  Unresolved conflicts with current configurations.     |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-output.setFrameRate(30, 60)
-```
-
-### func start()
-
-```cangjie
-public func start(): Unit
-```
-
-**功能：** 启动录制。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID         | 错误信息        |
-  | :-------------- | :-------------- |
-  | 7400103                |  Session not config.                                   |
-  | 7400201                |  Camera service fatal error.                           |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-output.start()
-```
-
-### func stop()
-
-```cangjie
-public func stop(): Unit
-```
-
-**功能：** 结束录制。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.image.createImageReceiver
-import ohos.image.ImageFormat
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let device = cameraManager.getSupportedCameras()[0]
-let mode = cameraManager.getSupportedSceneModes(device)[1]
-let ability = cameraManager.getSupportedOutputCapability(device, mode)
-let receiver = createImageReceiver(8192, 8, ImageFormat.JPEG, 8)
-let surfaceId: String = receiver.getReceivingSurfaceId()
-let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
-output.stop()
-```
-
-## class VideoProfile
-
-```cangjie
-public class VideoProfile <: Profile {
-    public let frameRateRange: FrameRateRange
-}
-```
-
-**功能：** 视频配置信息项。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [Profile](#class-profile)
-
-### let frameRateRange
-
-```cangjie
-public let frameRateRange: FrameRateRange
-```
-
-**功能：** 帧率范围，fps(frames per second)。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**类型：** [FrameRateRange](#struct-frameraterange)
-
-**读写能力：** 只读
-
-**起始版本：** 21
-
-## class VideoSession
-
-```cangjie
-public class VideoSession <: Session & Flash & AutoExposure & Focus & Zoom & Stabilization & ColorManagement {}
-```
-
-**功能：** 普通录像模式会话类，提供了对闪光灯、曝光、对焦、变焦、视频防抖、色彩空间的操作。
-
-> **说明：**
->
-> 默认的视频录制模式，适用于一般场景。支持720P、1080p等多种分辨率的录制，可选择不同帧率（如30fps、60fps）。
-
-**系统能力：**  SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- [Session](#interface-session)
-- [Flash](#interface-flash)
-- [AutoExposure](#interface-autoexposure)
-- [Focus](#interface-focus)
-- [Zoom](#interface-zoom)
-- [Stabilization](#interface-stabilization)
-- [ColorManagement](#interface-colormanagement)
-
-### func canPreconfig(PreconfigType, PreconfigRatio)
-
-```cangjie
-public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: PreconfigRatio = PRECONFIG_RATIO_16_9): Bool
-```
-
-**功能：** 查询当前Session是否支持指定的与配置类型。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
-|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PRECONFIG_RATIO_16_9| **命名参数。** 可选画幅比例。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|true: 支持指定预配值类型。false: 不支持指定预配值类型。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400201|Camera service fatal error.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-session.canPreconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        AppLog.info("Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-let callback = TestCallbackError()
-session.off(CameraCallbackType.CameraError, callback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<FocusState>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<FocusState>): Unit
-```
-
-**功能：** 注销监听相机聚焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.focusStateChange，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class FocusStateChangeCallback <: Callback1Argument<FocusState> {
-    public static var invoked = false
-
-    public func invoke(state: FocusState) {
-        AppLog.info("[multimedia_camera | FocusStateChange Callback]: focus state: ${state}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-let callback = FocusStateChangeCallback()
-session.off(CameraCallbackType.FocusStateChange, callback)
-```
-
-### func off(CameraCallbackType, Callback1Argument\<SmoothZoomInfo>)
-
-```cangjie
-public func off(`type`: CameraCallbackType, callback: Callback1Argument<SmoothZoomInfo>): Unit
-```
-
-**功能：** 注销监听相机平滑变焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.smoothZoomInfoAvailable，session创建成功之后可监听该接口。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#struct-smoothzoominfo)>|是|-|回调函数，取消对应callback。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
-    public static var invoked = false
-
-    public func invoke(info: SmoothZoomInfo) {
-        AppLog.info("[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-let callback = SmoothZoomInfoAvailableCallback()
-session.off(CameraCallbackType.SmoothZoomInfoAvailable, callback)
-```
-
-### func off(CameraCallbackType)
-
-```cangjie
-public func off(`type`: CameraCallbackType): Unit
-```
-
-**功能：** 注销监听普通拍照会话的错误事件/相机聚焦的状态变化/相机平滑变焦的状态变化。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error或CameraCallbackType.focusStateChange或CameraCallbackType.smoothZoomInfoAvailable。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-session.off(CameraCallbackType.SmoothZoomInfoAvailable)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<BusinessException>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<BusinessException>): Unit
-```
-
-**功能：** 监听普通拍照会话的错误事件，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.error，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用beginConfig，commitConfig，addInput等接口发生错误时返回错误信息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)>|是|-|回调函数，用于获取错误信息。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallbackError <: Callback1Argument<BusinessException> {
-    public init() {}
-    public open func invoke(res: BusinessException): Unit {
-        AppLog.info("Call invoke error. code: ${res.code}, msg: ${res.message}")
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-let callback = TestCallbackError()
-session.on(CameraCallbackType.CameraError, callback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<FocusState>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<FocusState>): Unit
-```
-
-**功能：** 监听相机聚焦的状态变化，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.focusStateChange，session创建成功可监听。仅当自动对焦模式时，且相机对焦状态发生改变时可触发该事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取当前对焦状态。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class FocusStateChangeCallback <: Callback1Argument<FocusState> {
-    public static var invoked = false
-
-    public func invoke(state: FocusState) {
-        AppLog.info("[multimedia_camera | FocusStateChange Callback]: focus state: ${state}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-let callback = FocusStateChangeCallback()
-session.on(CameraCallbackType.FocusStateChange, callback)
-```
-
-### func on(CameraCallbackType, Callback1Argument\<SmoothZoomInfo>)
-
-```cangjie
-public func on(`type`: CameraCallbackType, callback: Callback1Argument<SmoothZoomInfo>): Unit
-```
-
-**功能：** 监听相机平滑变焦的状态变化，通过注册回调函数获取结果。
-
-> **说明：**
->
-> 不支持在on监听的回调方法里调用off注销回调。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|\`type\`|[CameraCallbackType](#enum-cameracallbacktype)|是|-|监听事件，必须为CameraCallbackType.smoothZoomInfoAvailable，session创建成功可监听。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#struct-smoothzoominfo)>|是|-|回调函数，用于获取当前平滑变焦状态。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
-    public static var invoked = false
-
-    public func invoke(info: SmoothZoomInfo) {
-        AppLog.info("[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
-
-        invoked = true
-    }
-}
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-let callback = SmoothZoomInfoAvailableCallback()
-session.on(CameraCallbackType.SmoothZoomInfoAvailable, callback)
-```
-
-### func preconfig(PreconfigType, PreconfigRatio)
-
-```cangjie
-public func preconfig(preconfigType: PreconfigType, preconfigRatio!: PreconfigRatio = PreconfigRatio.PRECONFIG_RATIO_16_9): Unit
-```
-
-**功能：** 对当前Session进行预配置。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
-|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PreconfigRatio.PRECONFIG_RATIO_16_9| **命名参数。** 可选画幅比例。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
-
-  | 错误码ID|错误信息|
-  |:----|:----|
-  |7400201|Camera service fatal error.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CameraKit.*
-
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
-let cameraManager = getCameraManager(ctx)
-let videoSession = cameraManager.createSession(SceneMode.NORMAL_VIDEO) as VideoSession
-let session = videoSession.getOrThrow()
-session.preconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9)
-```
-
-## struct CameraStatusInfo
-
-```cangjie
-public struct CameraStatusInfo {
+public class CameraStatusInfo {
     public var camera: CameraDevice
     public var status: CameraStatus
-    public init(camera: CameraDevice, status: CameraStatus)
 }
 ```
 
@@ -7929,7 +3978,7 @@ public var camera: CameraDevice
 
 **功能：** 相机信息。
 
-**类型：** [CameraDevice](#struct-cameradevice)
+**类型：** [CameraDevice](#class-cameradevice)
 
 **读写能力：** 可读写
 
@@ -7953,29 +4002,10 @@ public var status: CameraStatus
 
 **起始版本：** 21
 
-### init(CameraDevice, CameraStatus)
+## class CaptureEndInfo
 
 ```cangjie
-public init(camera: CameraDevice, status: CameraStatus)
-```
-
-**功能：** 创建CameraStatusInfo对象。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|camera|[CameraDevice](#struct-cameradevice)|是|-|相机信息。|
-|status|[CameraStatus](#enum-camerastatus)|是|-|相机状态。|
-
-## struct CaptureEndInfo
-
-```cangjie
-public struct CaptureEndInfo {
+public class CaptureEndInfo {
     public var captureId: Int32
     public var frameCount: Int32
 }
@@ -8019,12 +4049,12 @@ public var frameCount: Int32
 
 **起始版本：** 21
 
-## struct CaptureStartInfo
+## class CaptureStartInfo
 
 ```cangjie
-public struct CaptureStartInfo {
+public class CaptureStartInfo {
     public var captureId: Int32
-    public var time: UInt32
+    public var time: Int64
 }
 ```
 
@@ -8053,12 +4083,12 @@ public var captureId: Int32
 ### var time
 
 ```cangjie
-public var time: UInt32
+public var time: Int64
 ```
 
 **功能：** 预估的单次拍照底层出sensor采集帧时间。
 
-**类型：** UInt32
+**类型：** Int64
 
 **读写能力：** 可读写
 
@@ -8066,13 +4096,12 @@ public var time: UInt32
 
 **起始版本：** 21
 
-## struct FoldStatusInfo
+## class FoldStatusInfo
 
 ```cangjie
-public struct FoldStatusInfo {
+public class FoldStatusInfo {
     public let supportedCameras: Array<CameraDevice>
     public let foldStatus: FoldStatus
-    public init(supportedCameras: Array<CameraDevice>, foldStatus: FoldStatus)
 }
 ```
 
@@ -8106,7 +4135,7 @@ public let supportedCameras: Array<CameraDevice>
 
 **功能：** 当前折叠状态所支持的相机信息列表。
 
-**类型：** Array\<[CameraDevice](#struct-cameradevice)>
+**类型：** Array\<[CameraDevice](#class-cameradevice)>
 
 **读写能力：** 只读
 
@@ -8114,29 +4143,10 @@ public let supportedCameras: Array<CameraDevice>
 
 **起始版本：** 21
 
-### init(Array\<CameraDevice>, FoldStatus)
+## class FrameRateRange
 
 ```cangjie
-public init(supportedCameras: Array<CameraDevice>, foldStatus: FoldStatus)
-```
-
-**功能：** 创建FoldStatusInfo对象。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|supportedCameras|Array\<[CameraDevice](#struct-cameradevice)>|是|-|当前折叠状态所支持的相机信息列表。|
-|foldStatus|[FoldStatus](#enum-foldstatus)|是|-|折叠屏折叠状态。|
-
-## struct FrameRateRange
-
-```cangjie
-public struct FrameRateRange {
+public class FrameRateRange {
     public let min: Int32
     public let max: Int32
 }
@@ -8180,10 +4190,10 @@ public let min: Int32
 
 **起始版本：** 21
 
-## struct FrameShutterEndInfo
+## class FrameShutterEndInfo
 
 ```cangjie
-public struct FrameShutterEndInfo {
+public class FrameShutterEndInfo {
     public var captureId: Int32
 }
 ```
@@ -8210,12 +4220,12 @@ public var captureId: Int32
 
 **起始版本：** 21
 
-## struct FrameShutterInfo
+## class FrameShutterInfo
 
 ```cangjie
-public struct FrameShutterInfo {
+public class FrameShutterInfo {
     public var captureId: Int32
-    public var timestamp: UInt64
+    public var timestamp: Int64
 }
 ```
 
@@ -8244,12 +4254,12 @@ public var captureId: Int32
 ### var timestamp
 
 ```cangjie
-public var timestamp: UInt64
+public var timestamp: Int64
 ```
 
 **功能：** 快门时间戳。
 
-**类型：** UInt64
+**类型：** Int64
 
 **读写能力：** 可读写
 
@@ -8257,14 +4267,14 @@ public var timestamp: UInt64
 
 **起始版本：** 21
 
-## struct Location
+## class Location
 
 ```cangjie
-public struct Location {
+public class Location {
     public var latitude: Float64
-    public var longtitude: Float64
+    public var longitude: Float64
     public var altitude: Float64
-    public init(latitude: Float64, longtitude: Float64, altitude: Float64)
+    public init(latitude: Float64, longitude: Float64, altitude: Float64)
 }
 ```
 
@@ -8306,10 +4316,10 @@ public var latitude: Float64
 
 **起始版本：** 21
 
-### var longtitude
+### var longitude
 
 ```cangjie
-public var longtitude: Float64
+public var longitude: Float64
 ```
 
 **功能：** 经度(度)。
@@ -8325,7 +4335,7 @@ public var longtitude: Float64
 ### init(Float64, Float64, Float64)
 
 ```cangjie
-public init(latitude: Float64, longtitude: Float64, altitude: Float64)
+public init(latitude: Float64, longitude: Float64, altitude: Float64)
 ```
 
 **功能：** 创建Location对象。
@@ -8339,21 +4349,21 @@ public init(latitude: Float64, longtitude: Float64, altitude: Float64)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |latitude|Float64|是|-|纬度(度)。|
-|longtitude|Float64|是|-|经度(度)。|
+|longitude|Float64|是|-|经度(度)。|
 |altitude|Float64|是|-|海拔(米)。|
 
-## struct PhotoCaptureSetting
+## class PhotoCaptureSetting
 
 ```cangjie
-public struct PhotoCaptureSetting {
+public class PhotoCaptureSetting {
     public var quality: QualityLevel
     public var rotation: ImageRotation
-    public var location: Location
+    public var location:?Location
     public var mirror: Bool
     public init(
-        quality!: QualityLevel = QualityLevel.QUALITY_LEVEL_MEDIUM,
-        rotation!: ImageRotation = ImageRotation.ROTATION_0,
-        location!: Location = Location(-1.0, -1.0, -1.0),
+        quality!: QualityLevel = QualityLevel.QualityLevelLow,
+        rotation!: ImageRotation = ImageRotation.Rotation0,
+        location!: ?Location = None,
         mirror!: Bool = false
     )
 }
@@ -8368,12 +4378,12 @@ public struct PhotoCaptureSetting {
 ### var location
 
 ```cangjie
-public var location: Location
+public var location:?Location
 ```
 
 **功能：** 图片地理位置信息(默认以设备硬件信息为准)。
 
-**类型：** [Location](#struct-location)
+**类型：** ?[Location](#class-location)
 
 **读写能力：** 可读写
 
@@ -8429,13 +4439,13 @@ public var rotation: ImageRotation
 
 **起始版本：** 21
 
-### init(QualityLevel, ImageRotation, Location, Bool)
+### init(QualityLevel, ImageRotation, ?Location, Bool)
 
 ```cangjie
 public init(
-    quality!: QualityLevel = QualityLevel.QUALITY_LEVEL_MEDIUM,
-    rotation!: ImageRotation = ImageRotation.ROTATION_0,
-    location!: Location = Location(-1.0, -1.0, -1.0),
+    quality!: QualityLevel = QualityLevel.QualityLevelLow,
+    rotation!: ImageRotation = ImageRotation.Rotation0,
+    location!: ?Location = None,
     mirror!: Bool = false
 )
 ```
@@ -8450,18 +4460,1881 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|quality|[QualityLevel](#enum-qualitylevel)|否|QualityLevel.QUALITY_LEVEL_MEDIUM| **命名参数。** 图片质量(默认低)。|
-|rotation|[ImageRotation](#enum-imagerotation)|否|ImageRotation.ROTATION_0| **命名参数。** 图片质量(默认低)。|
-|location|[Location](#struct-location)|否|Location(- 1.0, - 1.0, - 1.0)| **命名参数。** 图片地理位置信息(默认以设备硬件信息为准)。|
-|mirror|Bool|否|false| **命名参数。** 镜像使能开关(默认关)。使用之前需要使用[isMirrorSupported](#func-ismirrorsupported)进行判断是否支持。|
+|quality|[QualityLevel](#enum-qualitylevel)|否|QualityLevel.QualityLevelLow|**命名参数。** 图片质量(默认低)。|
+|rotation|[ImageRotation](#enum-imagerotation)|否|ImageRotation.Rotation0|**命名参数。** 图片质量(默认低)。|
+|location|?[Location](#class-location)|否|None|**命名参数。** 图片地理位置信息(默认以设备硬件信息为准)。|
+|mirror|Bool|否|false|**命名参数。** 镜像使能开关(默认关)。使用之前需要使用[isMirrorSupported](#func-ismirrorsupported)进行判断是否支持。|
 
-## struct Point
+## class PhotoOutput
 
 ```cangjie
-public struct Point {
-    public var x: Float32
-    public var y: Float32
-    public init(x: Float32, y: Float32)
+public class PhotoOutput <:  CameraOutput {}
+```
+
+**功能：** 拍照会话中使用的输出信息。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [CameraOutput](#interface-cameraoutput)
+
+### func capture()
+
+```cangjie
+public func capture(): Unit
+```
+
+**功能：** 以指定参数触发一次拍照。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400104 | Session not running. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.capture(PhotoCaptureSetting())
+```
+
+### func capture(PhotoCaptureSetting)
+
+```cangjie
+public func capture(setting: PhotoCaptureSetting): Unit
+```
+
+**功能：** 以指定参数触发一次拍照。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|setting|[PhotoCaptureSetting](#class-photocapturesetting)|是|-|拍照设置。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400104 | Session not running. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.capture(PhotoCaptureSetting())
+```
+
+### func enableMirror(Bool)
+
+```cangjie
+public func enableMirror(enabled: Bool): Unit
+```
+
+**功能：** 是否启用镜像拍照。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|enabled|Bool|是|-|true为开启镜像拍照，false为关闭镜像拍照。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let enabled = true
+output.enableMirror(enabled)
+```
+
+### func enableMovingPhoto(Bool)
+
+```cangjie
+public func enableMovingPhoto(enabled: Bool): Unit
+```
+
+**功能：** 使能动态照片拍照。
+
+**需要权限：** ohos.permission.MICROPHONE
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|enabled|Bool|是|-|true为开启动态照片，false为关闭动态照片。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | permission denied. |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let enabled = true
+output.enableMovingPhoto(enabled)
+```
+
+### func getActiveProfile()
+
+```cangjie
+public func getActiveProfile(): Profile
+```
+
+**功能：** 获取当前生效的配置信息。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[Profile](#class-profile)|当前生效的配置信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let profile = output.getActiveProfile()
+```
+
+### func getPhotoRotation(Int32)
+
+```cangjie
+public func getPhotoRotation(deviceDegree: Int32): ImageRotation
+```
+
+**功能：** 获取拍照旋转角度。
+
+- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是竖屏安装的，所以需要顺时针旋转90度到设备自然方向。
+- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceDegree|Int32|是|-|设备旋转角度。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[ImageRotation](#enum-imagerotation)|拍照旋转角度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let deviceDegree: Int32 = 0
+let imageRotation = output.getPhotoRotation(deviceDegree)
+```
+
+### func getSupportedMovingPhotoVideoCodecTypes()
+
+```cangjie
+public func getSupportedMovingPhotoVideoCodecTypes(): Array<VideoCodecType>
+```
+
+**功能：** 查询支持的动态照片短视频编码类型。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Array\<[VideoCodecType](#enum-videocodectype)>|支持的动态照片短视频编码类型列表。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let videoCodecTypes = output.getSupportedMovingPhotoVideoCodecTypes()
+```
+
+### func isMirrorSupported()
+
+```cangjie
+public func isMirrorSupported(): Bool
+```
+
+**功能：** 查询是否支持镜像拍照。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|返回是否支持镜像拍照，true表示支持，false表示不支持。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+Hilog.info(0, "AppLogCj", output.isMirrorSupported())
+```
+
+### func isMovingPhotoSupported()
+
+```cangjie
+public func isMovingPhotoSupported(): Bool
+```
+
+**功能：** 查询是否支持动态照片拍摄。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|返回是否支持动态照片拍照，true表示支持，false表示不支持。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+Hilog.info(0, "AppLogCj", output.isMovingPhotoSupported())
+```
+
+### func off(CameraEvents, Callback1Argument\<CaptureStartInfo>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<CaptureStartInfo>): Unit
+```
+
+**功能：** 注销监听拍照。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureStartWithInfo。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)>|是|-|回调函数，用于处理[CaptureStartInfo](#class-capturestartinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents, Callback1Argument\<FrameShutterInfo>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<FrameShutterInfo>): Unit
+```
+
+**功能：** 注销监听拍照帧输出捕获。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutter。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)>|是|-|回调函数，用于处理[FrameShutterInfo](#class-frameshutterinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents, Callback1Argument\<CaptureEndInfo>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>): Unit
+```
+
+**功能：** 注销监听拍照结束。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureEnd。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)>|是|-|回调函数，用于处理[CaptureEndInfo](#class-captureendinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents, Callback1Argument\<FrameShutterEndInfo>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<FrameShutterEndInfo>): Unit
+```
+
+**功能：** 注销监听拍照帧输出捕获。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutterEnd。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)>|是|-|回调函数，用于处理[FrameShutterEndInfo](#class-frameshutterendinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听可拍下一张。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureReady。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents, Callback1Argument\<Float64>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
+```
+
+**功能：** 注销监听预估的拍照时间。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为EstimatedCaptureDuration。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Float64>|是|-|回调函数，用于获取预估的拍照时间（毫秒）。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听拍照输出发生错误。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取错误信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func off(CameraEvents)
+
+```cangjie
+public func off(event: CameraEvents): Unit
+```
+
+**功能：** 取消对应监听事件的所有回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.off(CameraEvents.CaptureStartWithInfo)
+```
+
+### func on(CameraEvents, Callback1Argument\<CaptureStartInfo>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<CaptureStartInfo>): Unit
+```
+
+**功能：** 监听拍照开始，通过注册回调函数获取CaptureStartInfo。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureStartWithInfo。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)>|是|-|回调函数，用于处理[CaptureStartInfo](#class-capturestartinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback1Argument\<FrameShutterInfo>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterInfo>): Unit
+```
+
+**功能：** 监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutter。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)>|是|-|回调函数，用于处理[FrameShutterInfo](#class-frameshutterinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback1Argument\<CaptureEndInfo>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<CaptureEndInfo>): Unit
+```
+
+**功能：** 监听拍照结束，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureEnd。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)>|是|-|回调函数，用于处理[CaptureEndInfo](#class-captureendinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback1Argument\<FrameShutterEndInfo>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<FrameShutterEndInfo>): Unit
+```
+
+**功能：** 监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameShutterEnd。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)>|是|-|回调函数，用于处理[FrameShutterEndInfo](#class-frameshutterendinfo)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听可拍下一张，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CaptureReady。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback1Argument\<Float64>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<Float64>): Unit
+```
+
+**功能：** 监听预估的拍照时间，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为EstimatedCaptureDuration。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Float64>|是|-|回调函数，用于获取预估的拍照时间（毫秒）。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听拍照输出发生错误，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于处理[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func release()
+
+```cangjie
+public func release(): Unit
+```
+
+**功能：** 释放输出资源。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.release()
+```
+
+### func setMovingPhotoVideoCodecType(VideoCodecType)
+
+```cangjie
+public func setMovingPhotoVideoCodecType(codecType: VideoCodecType): Unit
+```
+
+**功能：** 设置动态照片短视频编码类型。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|codecType|[VideoCodecType](#enum-videocodectype)|是|-|动态照片短视频编码类型。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let output = cameraManager.createPhotoOutput(profile:ability.photoProfiles[0])
+output.setMovingPhotoVideoCodecType(VideoCodecType.Avc)
+```
+
+## class PhotoSession
+
+```cangjie
+public class PhotoSession <:  Session & Flash & AutoExposure & Focus & Zoom & ColorManagement {}
+```
+
+**功能：** 普通拍照模式会话类，提供了对闪光灯、曝光、对焦、变焦、色彩空间的操作。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Session](#interface-session)
+- [Flash](#interface-flash)
+- [AutoExposure](#interface-autoexposure)
+- [Focus](#interface-focus)
+- [Zoom](#interface-zoom)
+- [ColorManagement](#interface-colormanagement)
+
+### func canPreconfig(PreconfigType, PreconfigRatio)
+
+```cangjie
+public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: PreconfigRatio = PreconfigRatio_4_3): Bool
+```
+
+**功能：** 查询当前Session是否支持指定的与配置类型。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
+|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PreconfigRatio_4_3|**命名参数。** 可选画幅比例。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|true: 支持指定预配值类型。false: 不支持指定预配值类型。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+Hilog.info(0, "AppLogCj", session.canPreconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9))
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听普通拍照会话的错误事件，通过注册回调函数获取结果。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于处理[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+session.off(CameraEvents.FocusStateChange)
+```
+
+### func off(CameraEvents, Callback1Argument\<FocusState>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+```
+
+**功能：** 注销监听相机聚焦的状态变化。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于处理[FocusState](#enum-focusstate)。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+session.off(CameraEvents.FocusStateChange)
+```
+
+### func off(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+```
+
+**功能：** 注销监听相机平滑变焦的状态变化。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，用于处理[SmoothZoomInfo](#class-smoothzoominfo)。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+session.off(CameraEvents.FocusStateChange)
+```
+
+### func off(CameraEvents)
+
+```cangjie
+public func off(event: CameraEvents): Unit
+```
+
+**功能：** 注销监听普通拍照会话的错误事件/相机聚焦的状态变化/相机平滑变焦的状态变化。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraEvents.focusStateChange，session创建成功之后可监听该接口。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+session.off(CameraEvents.FocusStateChange)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听普通拍照会话的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于处理[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
+    public static var invoked = false
+
+    public func invoke(err: ?BusinessException, info: SmoothZoomInfo) {
+        Hilog.info(0, "AppLogCj", "[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
+
+        invoked = true
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+let callback = SmoothZoomInfoAvailableCallback()
+session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
+```
+
+### func on(CameraEvents, Callback1Argument\<FocusState>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+```
+
+**功能：** 监听相机聚焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取当前对焦状态。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
+    public static var invoked = false
+
+    public func invoke(err: ?BusinessException, info: SmoothZoomInfo) {
+        Hilog.info(0, "AppLogCj", "[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
+
+        invoked = true
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+let callback = SmoothZoomInfoAvailableCallback()
+session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
+```
+
+### func on(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+```
+
+**功能：** 监听相机平滑变焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，用于处理[SmoothZoomInfo](#class-smoothzoominfo)。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
+    public static var invoked = false
+
+    public func invoke(err: ?BusinessException, info: SmoothZoomInfo) {
+        Hilog.info(0, "AppLogCj", "[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
+
+        invoked = true
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+let callback = SmoothZoomInfoAvailableCallback()
+session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
+```
+
+### func preconfig(PreconfigType, PreconfigRatio)
+
+```cangjie
+public func preconfig(
+    preconfigType: PreconfigType,
+    preconfigRatio!: PreconfigRatio = PreconfigRatio.PreconfigRatio_4_3
+): Unit
+```
+
+**功能：** 对当前Session进行预配置。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
+|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PreconfigRatio.PreconfigRatio_4_3|**命名参数。** 可选画幅比例。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
+let session = photoSession.getOrThrow()
+session.preconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9)
+```
+
+## class Point
+
+```cangjie
+public class Point {
+    public var x: Float64
+    public var y: Float64
+    public init(x: Float64, y: Float64)
 }
 ```
 
@@ -8474,12 +6347,12 @@ public struct Point {
 ### var x
 
 ```cangjie
-public var x: Float32
+public var x: Float64
 ```
 
 **功能：** 点的x坐标。
 
-**类型：** Float32
+**类型：** Float64
 
 **读写能力：** 可读写
 
@@ -8490,12 +6363,12 @@ public var x: Float32
 ### var y
 
 ```cangjie
-public var y: Float32
+public var y: Float64
 ```
 
 **功能：** 点的y坐标。
 
-**类型：** Float32
+**类型：** Float64
 
 **读写能力：** 可读写
 
@@ -8503,10 +6376,10 @@ public var y: Float32
 
 **起始版本：** 21
 
-### init(Float32, Float32)
+### init(Float64, Float64)
 
 ```cangjie
-public init(x: Float32, y: Float32)
+public init(x: Float64, y: Float64)
 ```
 
 **功能：** 创建Point对象。
@@ -8519,13 +6392,776 @@ public init(x: Float32, y: Float32)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|Float32|是|-|点的x坐标。|
-|y|Float32|是|-|点的y坐标。|
+|x|Float64|是|-|点的x坐标。|
+|y|Float64|是|-|点的y坐标。|
 
-## struct Rect
+## class PreviewOutput
 
 ```cangjie
-public struct Rect {
+public class PreviewOutput <:  CameraOutput {}
+```
+
+**功能：** 预览输出类。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [CameraOutput](#interface-cameraoutput)
+
+### func getActiveFrameRate()
+
+```cangjie
+public func getActiveFrameRate(): FrameRateRange
+```
+
+**功能：** 获取已设置的帧率范围。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[FrameRateRange](#class-frameraterange)|帧率范围。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+let range = output.getActiveFrameRate()
+```
+
+### func getActiveProfile()
+
+```cangjie
+public func getActiveProfile(): Profile
+```
+
+**功能：** 获取当前生效的配置信息。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[Profile](#class-profile)|当前生效的配置信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+let profile = output.getActiveProfile()
+```
+
+### func getPreviewRotation(Int32)
+
+```cangjie
+public func getPreviewRotation(displayRotation: Int32): ImageRotation
+```
+
+**功能：** 获取预览旋转角度。
+
+- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是竖屏安装的，所以需要顺时针旋转90度到设备自然方向。
+- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|displayRotation|Int32|是|-|显示设备的屏幕旋转角度，通过[getDefaultDisplaySync](../../arkui-cj/cj-apis-display.md#func-getdefaultdisplaysync)获得。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[ImageRotation](#enum-imagerotation)|预览旋转角度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+let imageRotation = output.getPreviewRotation(0)
+```
+
+### func getSupportedFrameRates()
+
+```cangjie
+public func getSupportedFrameRates(): Array<FrameRateRange>
+```
+
+**功能：** 查询支持的帧率范围。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Array\<[FrameRateRange](#class-frameraterange)>|支持的帧率范围列表。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+let frameRateRanges = output.getSupportedFrameRates()
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听预览帧启动。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameStart。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+output.off(CameraEvents.CameraError)
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听预览输出发生错误。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取错误信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+output.off(CameraEvents.CameraError)
+```
+
+### func off(CameraEvents)
+
+```cangjie
+public func off(event: CameraEvents): Unit
+```
+
+**功能：** 取消对应监听事件的所有回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+output.off(CameraEvents.CameraError)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听预览帧启动，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameStart。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听预览输出发生错误，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取错误信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func release()
+
+```cangjie
+public func release(): Unit
+```
+
+**功能：** 释放输出资源。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+output.release()
+```
+
+### func setFrameRate(Int32, Int32)
+
+```cangjie
+public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
+```
+
+**功能：** 设置预览流帧率范围，设置的范围必须在支持的帧率范围内。 进行设置前，可通过[getSupportedFrameRates](#func-getsupportedframerates)查询支持的帧率范围。
+
+> **说明：**
+>
+> 仅在[PhotoSession](#class-photosession)或[VideoSession](#class-videosession)模式下支持。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|minFps|Int32|是|-|最小帧率。|
+|maxFps|Int32|是|-|最大帧率，当传入的最小值大于最大值时，传参异常，接口不生效。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400110 | Unresolved conflicts with current configurations. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+output.setFrameRate(30, 60)
+```
+
+### func setPreviewRotation(ImageRotation, Bool)
+
+```cangjie
+public func setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked!: Bool = false): Unit
+```
+
+**功能：** 设置预览旋转角度。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|previewRotation|[ImageRotation](#enum-imagerotation)|是|-|预览旋转角度。|
+|isDisplayLocked|Bool|否|false|**命名参数。** 是否旋转锁定。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[0]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createPreviewOutput(ability.previewProfiles[0], surfaceId)
+output.setPreviewRotation(ROTATION_90)
+```
+
+## class Profile
+
+```cangjie
+public open class Profile {
+    public let format: CameraFormat
+    public let size: Size
+}
+```
+
+**功能：** 相机配置信息项。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+### let format
+
+```cangjie
+public let format: CameraFormat
+```
+
+**功能：** 输出格式。
+
+**类型：** [CameraFormat](#enum-cameraformat)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+### let size
+
+```cangjie
+public let size: Size
+```
+
+**功能：** 分辨率。设置的是相机分辨率宽高，非实际出图宽高。
+
+**类型：** [Size](#class-size)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+## class Rect
+
+```cangjie
+public class Rect {
     public var topLeftX: Float64
     public var topLeftY: Float64
     public var width: Float64
@@ -8603,10 +7239,10 @@ public var width: Float64
 
 **起始版本：** 21
 
-## struct Size
+## class Size
 
 ```cangjie
-public struct Size {
+public class Size {
     public var width: UInt32
     public var height: UInt32
 }
@@ -8650,11 +7286,11 @@ public var width: UInt32
 
 **起始版本：** 21
 
-## struct SmoothZoomInfo
+## class SmoothZoomInfo
 
 ```cangjie
-public struct SmoothZoomInfo {
-    public SmoothZoomInfo(public var duration: Int32)
+public class SmoothZoomInfo {
+    public var duration: Int32
 }
 ```
 
@@ -8676,33 +7312,17 @@ public var duration: Int32
 
 **读写能力：** 可读写
 
-**起始版本：** 21
-
-### SmoothZoomInfo(Int32)
-
-```cangjie
-public SmoothZoomInfo(public var duration: Int32)
-```
-
-**功能：** 创建SmoothZoomInfo对象。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|duration|Int32|是|-|平滑变焦总时长，单位ms。|
-
-## struct TorchStatusInfo
+## class TorchStatusInfo
 
 ```cangjie
-public struct TorchStatusInfo {
+public class TorchStatusInfo {
     public let isTorchAvailable: Bool
     public let isTorchActive: Bool
-    public let torchLevel: Float32
+    public let torchLevel: Float64
 }
 ```
 
@@ -8747,12 +7367,12 @@ public let isTorchAvailable: Bool
 ### let torchLevel
 
 ```cangjie
-public let torchLevel: Float32
+public let torchLevel: Float64
 ```
 
 **功能：** 手电筒亮度等级。取值范围为[0.0,1.0]，越靠近1，亮度越大。
 
-**类型：** Float32
+**类型：** Float64
 
 **读写能力：** 只读
 
@@ -8760,10 +7380,1322 @@ public let torchLevel: Float32
 
 **起始版本：** 21
 
-## enum CameraCallbackType
+## class VideoOutput
 
 ```cangjie
-public enum CameraCallbackType <: ToString & Equatable<CameraCallbackType> {
+public class VideoOutput <:  CameraOutput {}
+```
+
+**功能：** 录像会话中使用的输出信息。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [CameraOutput](#interface-cameraoutput)
+
+### func getActiveFrameRate()
+
+```cangjie
+public func getActiveFrameRate(): FrameRateRange
+```
+
+**功能：** 获取已设置的帧率范围。使用setFrameRate对录像流设置过帧率后可查询。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[FrameRateRange](#class-frameraterange)|帧率范围。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+let frameRateRange = output.getActiveFrameRate()
+```
+
+### func getActiveProfile()
+
+```cangjie
+public func getActiveProfile(): VideoProfile
+```
+
+**功能：** 获取当前生效的配置信息。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[VideoProfile](#class-videoprofile)|当前生效的配置信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+let videoProfile = output.getActiveProfile()
+```
+
+### func getSupportedFrameRates()
+
+```cangjie
+public func getSupportedFrameRates(): Array<FrameRateRange>
+```
+
+**功能：** 查询支持的帧率范围。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Array\<[FrameRateRange](#class-frameraterange)>|支持的帧率范围列表。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+let frameRateRanges = output.getSupportedFrameRates()
+```
+
+### func getVideoRotation(Int32)
+
+```cangjie
+public func getVideoRotation(deviceDegree: Int32): ImageRotation
+```
+
+**功能：** 获取录像旋转角度。
+
+- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是竖屏安装的，所以需要顺时针旋转90度到设备自然方向。
+- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceDegree|Int32|是|-|设备旋转角度。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[ImageRotation](#enum-imagerotation)|录像旋转角度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+let imageRotation = output.getVideoRotation(0)
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听预览帧启动。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameStart。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.off(CameraEvents.CameraError)
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听录像输出发生错误。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，videoOutput创建成功后可监听。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，取消对应callback。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.off(CameraEvents.CameraError)
+```
+
+### func off(CameraEvents)
+
+```cangjie
+public func off(event: CameraEvents): Unit
+```
+
+**功能：** 取消对应监听事件的所有回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.off(CameraEvents.CameraError)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听预览帧启动，通过注册回调函数获取结果。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FrameStart。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听录像输出发生错误，通过注册回调函数获取结果。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，videoOutput创建成功后可监听。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取错误信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class TestCallbackError <: Callback0Argument {
+    public init() {}
+    public open func invoke(res: ?BusinessException): Unit {
+        Hilog.info(0, "Camera", "Call invoke error. code: ${res?.code}, msg: ${res?.message}", [])
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+let testCallbackError = TestCallbackError()
+output.on(CameraEvents.CameraError, testCallbackError)
+```
+
+### func release()
+
+```cangjie
+public func release(): Unit
+```
+
+**功能：** 释放输出资源。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.release()
+```
+
+### func setFrameRate(Int32, Int32)
+
+```cangjie
+public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
+```
+
+**功能：** 设置录像流帧率范围，设置的范围必须在支持的帧率范围内。进行设置前，可通过[getSupportedFrameRates](#func-getsupportedframerates)查询支持的帧率范围。
+
+> **说明：**
+>
+> 仅在[PhotoSession](#class-photosession)或[VideoSession](#class-videosession)模式下支持。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|minFps|Int32|是|-|最小帧率。|
+|maxFps|Int32|是|-|最大帧率。当传入的最小值大于最大值时，传参异常，接口不生效。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400101 | Parameter missing or parameter type incorrect. |
+  | 7400110 | Unresolved conflicts with current configurations. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.setFrameRate(30, 60)
+```
+
+### func start()
+
+```cangjie
+public func start(): Unit
+```
+
+**功能：** 启动录制。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400103 | Session not config. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.start()
+```
+
+### func stop()
+
+```cangjie
+public func stop(): Unit
+```
+
+**功能：** 结束录制。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import kit.ImageKit.createImageReceiver
+import kit.ImageKit.Size as ImageSize
+import kit.ImageKit.ImageFormat
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let device = cameraManager.getSupportedCameras()[0]
+let mode = cameraManager.getSupportedSceneModes(device)[1]
+let ability = cameraManager.getSupportedOutputCapability(device, mode)
+let size = ImageSize(8, 8192)
+let receiver = createImageReceiver(size, ImageFormat.Jpeg, 8)
+let surfaceId: String = receiver.getReceivingSurfaceId()
+let output = cameraManager.createVideoOutput(ability.videoProfiles[0], surfaceId)
+output.stop()
+```
+
+## class VideoProfile
+
+```cangjie
+public class VideoProfile <: Profile {
+    public let frameRateRange: FrameRateRange
+}
+```
+
+**功能：** 视频配置信息项。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Profile](#class-profile)
+
+### let frameRateRange
+
+```cangjie
+public let frameRateRange: FrameRateRange
+```
+
+**功能：** 帧率范围，fps(frames per second)。
+
+**类型：** [FrameRateRange](#class-frameraterange)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+## class VideoSession
+
+```cangjie
+public class VideoSession <:  Session & Flash & AutoExposure & Focus & Zoom & Stabilization & ColorManagement {}
+```
+
+**功能：** 普通录像模式会话类，提供了对闪光灯、曝光、对焦、变焦、视频防抖、色彩空间的操作。
+
+> **说明：**
+>
+> 默认的视频录制模式，适用于一般场景。支持720P、1080p等多种分辨率的录制，可选择不同帧率（如30fps、60fps）。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Session](#interface-session)
+- [Flash](#interface-flash)
+- [AutoExposure](#interface-autoexposure)
+- [Focus](#interface-focus)
+- [Zoom](#interface-zoom)
+- [Stabilization](#interface-stabilization)
+- [ColorManagement](#interface-colormanagement)
+
+### func canPreconfig(PreconfigType, PreconfigRatio)
+
+```cangjie
+public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: PreconfigRatio = PreconfigRatio_16_9): Bool
+```
+
+**功能：** 查询当前Session是否支持指定的与配置类型。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
+|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PreconfigRatio_16_9|**命名参数。** 可选画幅比例。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|true: 支持指定预配值类型。false: 不支持指定预配值类型。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+session.canPreconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9)
+```
+
+### func off(CameraEvents, Callback0Argument)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 注销监听普通录像会话的错误事件。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，session创建成功之后可监听该接口。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，取消对应callback。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+session.off(CameraEvents.SmoothZoomInfoAvailable)
+```
+
+### func off(CameraEvents, Callback1Argument\<FocusState>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+```
+
+**功能：** 注销监听普通录像会话的对焦状态变化。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange，session创建成功之后可监听该接口。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，取消对应callback。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+session.off(CameraEvents.SmoothZoomInfoAvailable)
+```
+
+### func off(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
+
+```cangjie
+public func off(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+```
+
+**功能：** 注销监听普通录像会话的平滑变焦状态变化。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable，session创建成功之后可监听该接口。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，取消对应callback。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+session.off(CameraEvents.SmoothZoomInfoAvailable)
+```
+
+### func off(CameraEvents)
+
+```cangjie
+public func off(event: CameraEvents): Unit
+```
+
+**功能：** 注销监听普通录像会话的错误事件。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+session.off(CameraEvents.SmoothZoomInfoAvailable)
+```
+
+### func on(CameraEvents, Callback0Argument)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback0Argument): Unit
+```
+
+**功能：** 监听普通录像会话的错误事件，通过注册回调函数获取结果。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为CameraError，session创建成功之后可监听该接口。|
+|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|回调函数，用于获取错误信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
+    public static var invoked = false
+
+    public func invoke(err: ?BusinessException, info: SmoothZoomInfo) {
+        Hilog.info(0, "AppLogCj", "[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
+
+        invoked = true
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+let callback = SmoothZoomInfoAvailableCallback()
+session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
+```
+
+### func on(CameraEvents, Callback1Argument\<FocusState>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<FocusState>): Unit
+```
+
+**功能：** 监听普通录像会话的对焦状态变化，通过注册回调函数获取结果。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为FocusStateChange，session创建成功之后可监听该接口。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FocusState](#enum-focusstate)>|是|-|回调函数，用于获取对焦状态变化信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
+    public static var invoked = false
+
+    public func invoke(err: ?BusinessException, info: SmoothZoomInfo) {
+        Hilog.info(0, "AppLogCj", "[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
+
+        invoked = true
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+let callback = SmoothZoomInfoAvailableCallback()
+session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
+```
+
+### func on(CameraEvents, Callback1Argument\<SmoothZoomInfo>)
+
+```cangjie
+public func on(event: CameraEvents, callback: Callback1Argument<SmoothZoomInfo>): Unit
+```
+
+**功能：** 监听普通录像会话的平滑变焦状态变化，通过注册回调函数获取结果。
+
+> **说明：**
+>
+> 不支持在on监听的回调方法里调用off注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[CameraEvents](#enum-cameraevents)|是|-|监听事件，必须为SmoothZoomInfoAvailable，session创建成功之后可监听该接口。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)>|是|-|回调函数，用于获取平滑变焦状态变化信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+// 此处代码可添加在依赖项定义中
+class SmoothZoomInfoAvailableCallback <: Callback1Argument<SmoothZoomInfo> {
+    public static var invoked = false
+
+    public func invoke(err: ?BusinessException, info: SmoothZoomInfo) {
+        Hilog.info(0, "AppLogCj", "[multimedia_camera | SmoothZoomInfoAvailable Callback]: info: ${info.duration}")
+
+        invoked = true
+    }
+}
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+let callback = SmoothZoomInfoAvailableCallback()
+session.on(CameraEvents.SmoothZoomInfoAvailable, callback)
+```
+
+### func preconfig(PreconfigType, PreconfigRatio)
+
+```cangjie
+public func preconfig(
+    preconfigType: PreconfigType,
+    preconfigRatio!: PreconfigRatio = PreconfigRatio.PreconfigRatio_16_9
+): Unit
+```
+
+**功能：** 对当前Session进行预配置。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|preconfigType|[PreconfigType](#enum-preconfigtype)|是|-|指定配置预期分辨率。|
+|preconfigRatio|[PreconfigRatio](#enum-preconfigratio)|否|PreconfigRatio.PreconfigRatio_16_9|**命名参数。** 可选画幅比例。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Camera错误码](../../errorcodes/cj-errorcode-multimedia-camera.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 7400201 | Camera service fatal error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CameraKit.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let cameraManager = getCameraManager(ctx)
+let videoSession = cameraManager.createSession(SceneMode.NormalVideo) as VideoSession
+let session = videoSession.getOrThrow()
+session.preconfig(PRECONFIG_1080P, preconfigRatio: PRECONFIG_RATIO_16_9)
+```
+
+## enum CameraEvents
+
+```cangjie
+public enum CameraEvents <: Equatable<CameraEvents> {
     | CameraError
     | CameraStatus
     | FoldStatusChange
@@ -8791,8 +8723,7 @@ public enum CameraCallbackType <: ToString & Equatable<CameraCallbackType> {
 
 **父类型：**
 
-- ToString
-- Equatable\<CameraCallbackType>
+- Equatable\<CameraEvents>
 
 ### CameraError
 
@@ -8909,6 +8840,7 @@ FrameShutter
 ```
 
 **功能：** 拍照帧输出捕获。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
@@ -8933,6 +8865,8 @@ FrameStart
 
 **功能：** 预览帧启动。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
 ### MetadataObjectsAvailable
@@ -8942,6 +8876,8 @@ MetadataObjectsAvailable
 ```
 
 **功能：** 检测到metadata对象。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -8953,6 +8889,8 @@ SmoothZoomInfoAvailable
 
 **功能：** 相机平滑变焦的状态变化。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
 ### TorchStatusChange
@@ -8963,322 +8901,60 @@ TorchStatusChange
 
 **功能：** 手电筒状态变化。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### func !=(CameraCallbackType)
+### func !=(CameraEvents)
 
 ```cangjie
-public operator func !=(other: CameraCallbackType): Bool
+public operator func !=(other: CameraEvents): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CameraCallbackType](#enum-cameracallbacktype)|是|-|另一个枚举值。|
+|other|[CameraEvents](#enum-cameraevents)|是|-|另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
+|Bool|true表示相等，false表示不相等。|
 
-### func ==(CameraCallbackType)
-
-```cangjie
-public operator func ==(other: CameraCallbackType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CameraCallbackType](#enum-cameracallbacktype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
+### func ==(CameraEvents)
 
 ```cangjie
-public func toString(): String
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的说明。|
-
-## enum CameraErrorCode
-
-```cangjie
-public enum CameraErrorCode <: Equatable<CameraErrorCode> & ToString {
-    | INVALID_ARGUMENT
-    | OPERATION_NOT_ALLOWED
-    | SESSION_NOT_CONFIG
-    | SESSION_NOT_RUNNING
-    | SESSION_CONFIG_LOCKED
-    | DEVICE_SETTING_LOCKED
-    | CONFLICT_CAMERA
-    | DEVICE_DISABLED
-    | DEVICE_PREEMPTED
-    | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS
-    | SERVICE_FATAL_ERROR
-    | ...
-}
-```
-
-**功能：** 相机错误码。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CameraErrorCode>
-- ToString
-
-| 名称                       | 值          | 说明            |
-| :------------------------  | :---       | :-----------    |
-| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。   |
-| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。     |
-| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。       |
-| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。    |
-| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。     |
-| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。     |
-| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。     |
-| DEVICE_DISABLED            | 7400108    | 安全原因摄像头被禁用。     |
-| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。     |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS | 7400110   | 与当前配置存在冲突。     |
-| SERVICE_FATAL_ERROR        | 7400201    | 相机服务错误返回。     |
-
-### CONFLICT_CAMERA
-
-```cangjie
-CONFLICT_CAMERA
-```
-
-**功能：** 设备重复打开返回。
-
-**起始版本：** 21
-
-### DEVICE_DISABLED
-
-```cangjie
-DEVICE_DISABLED
-```
-
-**功能：** 安全原因摄像头被禁用。
-
-**起始版本：** 21
-
-### DEVICE_PREEMPTED
-
-```cangjie
-DEVICE_PREEMPTED
-```
-
-**功能：** 相机被抢占导致无法使用。
-
-**起始版本：** 21
-
-### DEVICE_SETTING_LOCKED
-
-```cangjie
-DEVICE_SETTING_LOCKED
-```
-
-**功能：** 设备设置已锁定返回。
-
-**起始版本：** 21
-
-### INVALID_ARGUMENT
-
-```cangjie
-INVALID_ARGUMENT
-```
-
-**功能：** 参数缺失或者参数类型不对。
-
-**起始版本：** 21
-
-### OPERATION_NOT_ALLOWED
-
-```cangjie
-OPERATION_NOT_ALLOWED
-```
-
-**功能：** 操作流程不对，不允许。
-
-**起始版本：** 21
-
-### SERVICE_FATAL_ERROR
-
-```cangjie
-SERVICE_FATAL_ERROR
-```
-
-**功能：** 相机服务错误返回。
-
-**起始版本：** 21
-
-### SESSION_CONFIG_LOCKED
-
-```cangjie
-SESSION_CONFIG_LOCKED
-```
-
-**功能：** session 配置已锁定返回。
-
-**起始版本：** 21
-
-### SESSION_NOT_CONFIG
-
-```cangjie
-SESSION_NOT_CONFIG
-```
-
-**功能：** session 未配置返回。
-
-**起始版本：** 21
-
-### SESSION_NOT_RUNNING
-
-```cangjie
-SESSION_NOT_RUNNING
-```
-
-**功能：** session 未运行返回。
-
-**起始版本：** 21
-
-### UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS
-
-```cangjie
-UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS
-```
-
-**功能：** 与当前配置存在冲突。
-
-**起始版本：** 21
-
-### func !=(CameraErrorCode)
-
-```cangjie
-public operator func !=(other: CameraErrorCode): Bool
+public operator func ==(other: CameraEvents): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CameraErrorCode](#enum-cameraerrorcode)|是|-|另一个枚举值。|
+|other|[CameraEvents](#enum-cameraevents)|是|-|另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(CameraErrorCode)
-
-```cangjie
-public operator func ==(other: CameraErrorCode): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CameraErrorCode](#enum-cameraerrorcode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取CameraErrorCode的值。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|CameraErrorCode的值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的说明。|
+|Bool|true表示不相等，false表示相等。|
 
 ## enum CameraFormat
 
 ```cangjie
 public enum CameraFormat <: Equatable<CameraFormat> & ToString {
-    | CAMERA_FORMAT_YCRCB_P010
-    | CAMERA_FORMAT_YCBCR_P010
-    | CAMERA_FORMAT_HEIC
-    | CAMERA_FORMAT_JPEG
-    | CAMERA_FORMAT_YUV_420_SP
-    | CAMERA_FORMAT_RGBA_8888
+    | CameraFormatYcbcrP010
+    | CameraFormatYcrcbP010
+    | CameraFormatHeic
+    | CameraFormatJpeg
+    | CameraFormatYuv420Sp
+    | CameraFormatRgba8888
     | ...
 }
 ```
@@ -9294,63 +8970,75 @@ public enum CameraFormat <: Equatable<CameraFormat> & ToString {
 - Equatable\<CameraFormat>
 - ToString
 
-### CAMERA_FORMAT_HEIC
+### CameraFormatHeic
 
 ```cangjie
-CAMERA_FORMAT_HEIC
+CameraFormatHeic
 ```
 
 **功能：** HEIF格式的图片。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_FORMAT_JPEG
+### CameraFormatJpeg
 
 ```cangjie
-CAMERA_FORMAT_JPEG
+CameraFormatJpeg
 ```
 
 **功能：** JPEG格式的图片。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_FORMAT_RGBA_8888
+### CameraFormatRgba8888
 
 ```cangjie
-CAMERA_FORMAT_RGBA_8888
+CameraFormatRgba8888
 ```
 
-**功能：** RGBA_888格式的图片。
+**功能：** RGBA_8888格式的图片。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
-### CAMERA_FORMAT_YCBCR_P010
+### CameraFormatYcbcrP010
 
 ```cangjie
-CAMERA_FORMAT_YCBCR_P010
+CameraFormatYcbcrP010
 ```
 
 **功能：** YCBCR_P010格式的图片。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_FORMAT_YCRCB_P010
+### CameraFormatYcrcbP010
 
 ```cangjie
-CAMERA_FORMAT_YCRCB_P010
+CameraFormatYcrcbP010
 ```
 
 **功能：** YCRCB_P010格式的图片。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_FORMAT_YUV_420_SP
+### CameraFormatYuv420Sp
 
 ```cangjie
-CAMERA_FORMAT_YUV_420_SP
+CameraFormatYuv420Sp
 ```
 
 **功能：** YUV_420_SP格式的图片。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -9361,10 +9049,6 @@ public operator func !=(other: CameraFormat): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9384,11 +9068,7 @@ public operator func !=(other: CameraFormat): Bool
 public operator func ==(other: CameraFormat): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
+**功能：** 判断两个枚举值是否不相等。
 
 **参数：**
 
@@ -9400,7 +9080,7 @@ public operator func ==(other: CameraFormat): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func toString()
 
@@ -9424,9 +9104,9 @@ public func toString(): String
 
 ```cangjie
 public enum CameraPosition <: Equatable<CameraPosition> & ToString {
-    | CAMERA_POSITION_UNSPECIFIED
-    | CAMERA_POSITION_BACK
-    | CAMERA_POSITION_FRONT
+    | CameraPositionUnspecified
+    | CameraPositionBack
+    | CameraPositionFront
     | ...
 }
 ```
@@ -9442,33 +9122,39 @@ public enum CameraPosition <: Equatable<CameraPosition> & ToString {
 - Equatable\<CameraPosition>
 - ToString
 
-### CAMERA_POSITION_BACK
+### CameraPositionBack
 
 ```cangjie
-CAMERA_POSITION_BACK
+CameraPositionBack
 ```
 
 **功能：** 后置相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_POSITION_FRONT
+### CameraPositionFront
 
 ```cangjie
-CAMERA_POSITION_FRONT
+CameraPositionFront
 ```
 
 **功能：** 前置相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_POSITION_UNSPECIFIED
+### CameraPositionUnspecified
 
 ```cangjie
-CAMERA_POSITION_UNSPECIFIED
+CameraPositionUnspecified
 ```
 
 **功能：** 相机位置未指定。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -9479,10 +9165,6 @@ public operator func !=(other: CameraPosition): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9502,11 +9184,7 @@ public operator func !=(other: CameraPosition): Bool
 public operator func ==(other: CameraPosition): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
+**功能：** 判断两个枚举值是否不相等。
 
 **参数：**
 
@@ -9518,7 +9196,7 @@ public operator func ==(other: CameraPosition): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+|Bool|两个枚举值不相等返回true，否则返回false。|
 
 ### func toString()
 
@@ -9542,10 +9220,10 @@ public func toString(): String
 
 ```cangjie
 public enum CameraStatus <: Equatable<CameraStatus> & ToString {
-    | CAMERA_STATUS_APPEAR
-    | CAMERA_STATUS_DISAPPEAR
-    | CAMERA_STATUS_AVAILABLE
-    | CAMERA_STATUS_UNAVAILABL
+    | CameraStatusAppear
+    | CameraStatusDisappear
+    | CameraStatusAvailable
+    | CameraStatusUnavailabl
     | ...
 }
 ```
@@ -9561,43 +9239,51 @@ public enum CameraStatus <: Equatable<CameraStatus> & ToString {
 - Equatable\<CameraStatus>
 - ToString
 
-### CAMERA_STATUS_APPEAR
+### CameraStatusAppear
 
 ```cangjie
-CAMERA_STATUS_APPEAR
+CameraStatusAppear
 ```
 
 **功能：** 新的相机出现。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_STATUS_AVAILABLE
+### CameraStatusAvailable
 
 ```cangjie
-CAMERA_STATUS_AVAILABLE
+CameraStatusAvailable
 ```
 
 **功能：** 相机可用。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_STATUS_DISAPPEAR
+### CameraStatusDisappear
 
 ```cangjie
-CAMERA_STATUS_DISAPPEAR
+CameraStatusDisappear
 ```
 
 **功能：** 相机被移除。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_STATUS_UNAVAILABL
+### CameraStatusUnavailabl
 
 ```cangjie
-CAMERA_STATUS_UNAVAILABL
+CameraStatusUnavailabl
 ```
 
 **功能：** 相机不可用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -9608,10 +9294,6 @@ public operator func !=(other: CameraStatus): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9631,11 +9313,7 @@ public operator func !=(other: CameraStatus): Bool
 public operator func ==(other: CameraStatus): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
+**功能：** 判断两个枚举值是否不相等。
 
 **参数：**
 
@@ -9671,11 +9349,11 @@ public func toString(): String
 
 ```cangjie
 public enum CameraType <: Equatable<CameraType> & ToString {
-    | CAMERA_TYPE_DEFAULT
-    | CAMERA_TYPE_WIDE_ANGLE
-    | CAMERA_TYPE_ULTRA_WIDE
-    | CAMERA_TYPE_TELEPHOTO
-    | CAMERA_TYPE_TRUE_DEPTH
+    | CameraTypeDefault
+    | CameraTypeWideAngle
+    | CameraTypeUltraWide
+    | CameraTypeTelephoto
+    | CameraTypeTrueDepth
     | ...
 }
 ```
@@ -9691,53 +9369,63 @@ public enum CameraType <: Equatable<CameraType> & ToString {
 - Equatable\<CameraType>
 - ToString
 
-### CAMERA_TYPE_DEFAULT
+### CameraTypeDefault
 
 ```cangjie
-CAMERA_TYPE_DEFAULT
+CameraTypeDefault
 ```
 
 **功能：** 相机类型未指定。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_TYPE_TELEPHOTO
+### CameraTypeTelephoto
 
 ```cangjie
-CAMERA_TYPE_TELEPHOTO
+CameraTypeTelephoto
 ```
 
 **功能：** 长焦相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_TYPE_TRUE_DEPTH
+### CameraTypeTrueDepth
 
 ```cangjie
-CAMERA_TYPE_TRUE_DEPTH
+CameraTypeTrueDepth
 ```
 
 **功能：** 带景深信息的相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_TYPE_ULTRA_WIDE
+### CameraTypeUltraWide
 
 ```cangjie
-CAMERA_TYPE_ULTRA_WIDE
+CameraTypeUltraWide
 ```
 
 **功能：** 超广角相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_TYPE_WIDE_ANGLE
+### CameraTypeWideAngle
 
 ```cangjie
-CAMERA_TYPE_WIDE_ANGLE
+CameraTypeWideAngle
 ```
 
 **功能：** 广角相机。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -9748,10 +9436,6 @@ public operator func !=(other: CameraType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9772,10 +9456,6 @@ public operator func ==(other: CameraType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9811,9 +9491,9 @@ public func toString(): String
 
 ```cangjie
 public enum ConnectionType <: Equatable<ConnectionType> & ToString {
-    | CAMERA_CONNECTION_BUILT_IN
-    | CAMERA_CONNECTION_USB_PLUGIN
-    | CAMERA_CONNECTION_REMOTE
+    | CameraConnectionBuiltIn
+    | CameraConnectionUsbPlugin
+    | CameraConnectionRemote
     | ...
 }
 ```
@@ -9829,33 +9509,39 @@ public enum ConnectionType <: Equatable<ConnectionType> & ToString {
 - Equatable\<ConnectionType>
 - ToString
 
-### CAMERA_CONNECTION_BUILT_IN
+### CameraConnectionBuiltIn
 
 ```cangjie
-CAMERA_CONNECTION_BUILT_IN
+CameraConnectionBuiltIn
 ```
 
 **功能：** 内置相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_CONNECTION_REMOTE
+### CameraConnectionRemote
 
 ```cangjie
-CAMERA_CONNECTION_REMOTE
+CameraConnectionRemote
 ```
 
 **功能：** 远程连接的相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### CAMERA_CONNECTION_USB_PLUGIN
+### CameraConnectionUsbPlugin
 
 ```cangjie
-CAMERA_CONNECTION_USB_PLUGIN
+CameraConnectionUsbPlugin
 ```
 
 **功能：** USB连接的相机。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -9866,10 +9552,6 @@ public operator func !=(other: ConnectionType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9890,10 +9572,6 @@ public operator func ==(other: ConnectionType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -9929,9 +9607,9 @@ public func toString(): String
 
 ```cangjie
 public enum ExposureMode <: Equatable<ExposureMode> & ToString {
-    | EXPOSURE_MODE_LOCKED
-    | EXPOSURE_MODE_AUTO
-    | EXPOSURE_MODE_CONTINUOUS_AUTO
+    | ExposureModeLocked
+    | ExposureModeAuto
+    | ExposureModeContinuousAuto
     | ...
 }
 ```
@@ -9947,33 +9625,39 @@ public enum ExposureMode <: Equatable<ExposureMode> & ToString {
 - Equatable\<ExposureMode>
 - ToString
 
-### EXPOSURE_MODE_AUTO
+### ExposureModeAuto
 
 ```cangjie
-EXPOSURE_MODE_AUTO
+ExposureModeAuto
 ```
 
 **功能：** 自动曝光模式。支持曝光区域中心点设置，可以使用[AutoExposure.setMeteringPoint](#func-setmeteringpointpoint)设置曝光区域中心点。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### EXPOSURE_MODE_CONTINUOUS_AUTO
+### ExposureModeContinuousAuto
 
 ```cangjie
-EXPOSURE_MODE_CONTINUOUS_AUTO
+ExposureModeContinuousAuto
 ```
 
 **功能：** 连续自动曝光。不支持曝光区域中心点设置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### EXPOSURE_MODE_LOCKED
+### ExposureModeLocked
 
 ```cangjie
-EXPOSURE_MODE_LOCKED
+ExposureModeLocked
 ```
 
 **功能：** 锁定曝光模式。不支持曝光区域中心点设置。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -9984,10 +9668,6 @@ public operator func !=(other: ExposureMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10009,10 +9689,6 @@ public operator func ==(other: ExposureMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -10033,10 +9709,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -10047,10 +9719,10 @@ public func toString(): String
 
 ```cangjie
 public enum FlashMode <: Equatable<FlashMode> & ToString {
-    | FLASH_MODE_CLOSE
-    | FLASH_MODE_OPEN
-    | FLASH_MODE_AUTO
-    | FLASH_MODE_ALWAYS_OPEN
+    | FlashModeClose
+    | FlashModeOpen
+    | FlashModeAuto
+    | FlashModeAlwaysOpen
     | ...
 }
 ```
@@ -10066,43 +9738,51 @@ public enum FlashMode <: Equatable<FlashMode> & ToString {
 - Equatable\<FlashMode>
 - ToString
 
-### FLASH_MODE_ALWAYS_OPEN
+### FlashModeAlwaysOpen
 
 ```cangjie
-FLASH_MODE_ALWAYS_OPEN
+FlashModeAlwaysOpen
 ```
 
 **功能：** 闪光灯常亮。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FLASH_MODE_AUTO
+### FlashModeAuto
 
 ```cangjie
-FLASH_MODE_AUTO
+FlashModeAuto
 ```
 
 **功能：** 自动闪光灯。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FLASH_MODE_CLOSE
+### FlashModeClose
 
 ```cangjie
-FLASH_MODE_CLOSE
+FlashModeClose
 ```
 
 **功能：** 闪光灯关闭。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FLASH_MODE_OPEN
+### FlashModeOpen
 
 ```cangjie
-FLASH_MODE_OPEN
+FlashModeOpen
 ```
 
 **功能：** 闪光灯打开。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10113,10 +9793,6 @@ public operator func !=(other: FlashMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10138,10 +9814,6 @@ public operator func ==(other: FlashMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -10162,10 +9834,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -10176,10 +9844,10 @@ public func toString(): String
 
 ```cangjie
 public enum FocusMode <: Equatable<FocusMode> & ToString {
-    | FOCOS_MODE_MANUAL
-    | FOCOS_MODE_CONTINUOUS_AUTO
-    | FOCOS_MODE_AUTO
-    | FOCUS_MODE_LOCKED
+    | FocusModeManual
+    | FocusModeContinuousAuto
+    | FocusModeAuto
+    | FocusModeLocked
     | ...
 }
 ```
@@ -10195,43 +9863,51 @@ public enum FocusMode <: Equatable<FocusMode> & ToString {
 - Equatable\<FocusMode>
 - ToString
 
-### FOCOS_MODE_AUTO
+### FocusModeAuto
 
 ```cangjie
-FOCOS_MODE_AUTO
+FocusModeAuto
 ```
 
 **功能：** 自动对焦。支持对焦点设置，可以使用[setFocusPoint](#func-setfocuspointpoint)设置对焦点，根据对焦点执行一次自动对焦。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FOCOS_MODE_CONTINUOUS_AUTO
+### FocusModeContinuousAuto
 
 ```cangjie
-FOCOS_MODE_CONTINUOUS_AUTO
+FocusModeContinuousAuto
 ```
 
 **功能：** 连续自动对焦。不支持对焦点设置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FOCOS_MODE_MANUAL
+### FocusModeLocked
 
 ```cangjie
-FOCOS_MODE_MANUAL
+FocusModeLocked
+```
+
+**功能：** 对焦锁定。不支持对焦点设置。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 21
+
+### FocusModeManual
+
+```cangjie
+FocusModeManual
 ```
 
 **功能：** 手动对焦。通过手动修改相机焦距来改变对焦位置，不支持对焦点设置。
 
-**起始版本：** 21
-
-### FOCUS_MODE_LOCKED
-
-```cangjie
-FOCUS_MODE_LOCKED
-```
-
-**功能：** 对焦锁定。不支持对焦点设置。
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10242,10 +9918,6 @@ public operator func !=(other: FocusMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10267,10 +9939,6 @@ public operator func ==(other: FocusMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -10291,10 +9959,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -10305,9 +9969,9 @@ public func toString(): String
 
 ```cangjie
 public enum FocusState <: Equatable<FocusState> & ToString {
-    | FOCUS_STATE_SCAN
-    | FOCUS_STATE_FOCUSED
-    | FOCUS_STATE_UNFOCUSED
+    | FocusStateScan
+    | FocusStateFocused
+    | FocusStateUnfocused
     | ...
 }
 ```
@@ -10323,33 +9987,39 @@ public enum FocusState <: Equatable<FocusState> & ToString {
 - Equatable\<FocusState>
 - ToString
 
-### FOCUS_STATE_FOCUSED
+### FocusStateFocused
 
 ```cangjie
-FOCUS_STATE_FOCUSED
+FocusStateFocused
 ```
 
 **功能：** 对焦成功。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FOCUS_STATE_SCAN
+### FocusStateScan
 
 ```cangjie
-FOCUS_STATE_SCAN
+FocusStateScan
 ```
 
 **功能：** 触发对焦。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FOCUS_STATE_UNFOCUSED
+### FocusStateUnfocused
 
 ```cangjie
-FOCUS_STATE_UNFOCUSED
+FocusStateUnfocused
 ```
 
 **功能：** 未完成对焦。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10360,10 +10030,6 @@ public operator func !=(other: FocusState): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10385,10 +10051,6 @@ public operator func ==(other: FocusState): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -10409,10 +10071,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -10423,9 +10081,9 @@ public func toString(): String
 
 ```cangjie
 public enum FoldStatus <: Equatable<FoldStatus> & ToString {
-    | NON_FOLDABLE
-    | EXPANDED
-    | FOLDED
+    | NonFoldable
+    | Expanded
+    | Folded
     | ...
 }
 ```
@@ -10441,33 +10099,39 @@ public enum FoldStatus <: Equatable<FoldStatus> & ToString {
 - Equatable\<FoldStatus>
 - ToString
 
-### EXPANDED
+### Expanded
 
 ```cangjie
-EXPANDED
+Expanded
 ```
 
 **功能：** 表示当前设备折叠状态为完全展开。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### FOLDED
+### Folded
 
 ```cangjie
-FOLDED
+Folded
 ```
 
 **功能：** 表示当前设备折叠状态为折叠。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### NON_FOLDABLE
+### NonFoldable
 
 ```cangjie
-NON_FOLDABLE
+NonFoldable
 ```
 
 **功能：** 表示当前设备不可折叠。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10478,10 +10142,6 @@ public operator func !=(other: FoldStatus): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10502,10 +10162,6 @@ public operator func ==(other: FoldStatus): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10541,10 +10197,10 @@ public func toString(): String
 
 ```cangjie
 public enum ImageRotation <: Equatable<ImageRotation> & ToString {
-    | ROTATION_0
-    | ROTATION_90
-    | ROTATION_180
-    | ROTATION_270
+    | Rotation0
+    | Rotation90
+    | Rotation180
+    | Rotation270
     | ...
 }
 ```
@@ -10560,43 +10216,51 @@ public enum ImageRotation <: Equatable<ImageRotation> & ToString {
 - Equatable\<ImageRotation>
 - ToString
 
-### ROTATION_0
+### Rotation0
 
 ```cangjie
-ROTATION_0
+Rotation0
 ```
 
 **功能：** 图片旋转0度。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### ROTATION_180
+### Rotation180
 
 ```cangjie
-ROTATION_180
+Rotation180
 ```
 
 **功能：** 图片旋转180度。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### ROTATION_270
+### Rotation270
 
 ```cangjie
-ROTATION_270
+Rotation270
 ```
 
 **功能：** 图片旋转270度。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### ROTATION_90
+### Rotation90
 
 ```cangjie
-ROTATION_90
+Rotation90
 ```
 
 **功能：** 图片旋转90度。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10607,10 +10271,6 @@ public operator func !=(other: ImageRotation): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10631,10 +10291,6 @@ public operator func ==(other: ImageRotation): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10670,7 +10326,7 @@ public func toString(): String
 
 ```cangjie
 public enum MetadataObjectType <: Equatable<MetadataObjectType> & ToString {
-    | FACE_DETECTION
+    | FaceDetection
     | ...
 }
 ```
@@ -10686,13 +10342,15 @@ public enum MetadataObjectType <: Equatable<MetadataObjectType> & ToString {
 - Equatable\<MetadataObjectType>
 - ToString
 
-### FACE_DETECTION
+### FaceDetection
 
 ```cangjie
-FACE_DETECTION
+FaceDetection
 ```
 
 **功能：** metadata对象类型，用于人脸检测。检测点应在0-1坐标系内，该坐标系左上角为(0.0，0.0)，右下角为(1.0，1.0)。此坐标系以设备充电口在右侧时的横向设备方向为基准。例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1.0-y，x)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10703,10 +10361,6 @@ public operator func !=(other: MetadataObjectType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10727,10 +10381,6 @@ public operator func ==(other: MetadataObjectType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10766,9 +10416,9 @@ public func toString(): String
 
 ```cangjie
 public enum PreconfigRatio <: Equatable<PreconfigRatio> & ToString {
-    | PRECONFIG_RATIO_1_1
-    | PRECONFIG_RATIO_4_3
-    | PRECONFIG_RATIO_16_9
+    | PreconfigRatio_1_1
+    | PreconfigRatio_4_3
+    | PreconfigRatio_16_9
     | ...
 }
 ```
@@ -10784,33 +10434,39 @@ public enum PreconfigRatio <: Equatable<PreconfigRatio> & ToString {
 - Equatable\<PreconfigRatio>
 - ToString
 
-### PRECONFIG_RATIO_16_9
+### PreconfigRatio_16_9
 
 ```cangjie
-PRECONFIG_RATIO_16_9
+PreconfigRatio_16_9
 ```
 
 **功能：** 16:9画幅。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### PRECONFIG_RATIO_1_1
+### PreconfigRatio_1_1
 
 ```cangjie
-PRECONFIG_RATIO_1_1
+PreconfigRatio_1_1
 ```
 
 **功能：** 1:1画幅。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### PRECONFIG_RATIO_4_3
+### PreconfigRatio_4_3
 
 ```cangjie
-PRECONFIG_RATIO_4_3
+PreconfigRatio_4_3
 ```
 
 **功能：** 4:3画幅。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10821,10 +10477,6 @@ public operator func !=(other: PreconfigRatio): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10845,10 +10497,6 @@ public operator func ==(other: PreconfigRatio): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10884,10 +10532,10 @@ public func toString(): String
 
 ```cangjie
 public enum PreconfigType <: Equatable<PreconfigType> & ToString {
-    | PRECONFIG_720P
-    | PRECONFIG_1080P
-    | PRECONFIG_4K
-    | PRECONFIG_HIGH_QUALITY
+    | Preconfig720p
+    | Preconfig1080p
+    | Preconfig4k
+    | PreconfigHighQuality
     | ...
 }
 ```
@@ -10903,43 +10551,51 @@ public enum PreconfigType <: Equatable<PreconfigType> & ToString {
 - Equatable\<PreconfigType>
 - ToString
 
-### PRECONFIG_1080P
+### Preconfig1080p
 
 ```cangjie
-PRECONFIG_1080P
+Preconfig1080p
 ```
 
 **功能：** 1080P预配置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### PRECONFIG_4K
+### Preconfig4k
 
 ```cangjie
-PRECONFIG_4K
+Preconfig4k
 ```
 
 **功能：** 4K预配置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### PRECONFIG_720P
+### Preconfig720p
 
 ```cangjie
-PRECONFIG_720P
+Preconfig720p
 ```
 
 **功能：** 720P预配置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### PRECONFIG_HIGH_QUALITY
+### PreconfigHighQuality
 
 ```cangjie
-PRECONFIG_HIGH_QUALITY
+PreconfigHighQuality
 ```
 
 **功能：** 高质量预配置。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -10950,10 +10606,6 @@ public operator func !=(other: PreconfigType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -10974,10 +10626,6 @@ public operator func ==(other: PreconfigType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11013,9 +10661,9 @@ public func toString(): String
 
 ```cangjie
 public enum QualityLevel <: Equatable<QualityLevel> & ToString {
-    | QUALITY_LEVEL_HIGH
-    | QUALITY_LEVEL_MEDIUM
-    | QUALITY_LEVEL_LOW
+    | QualityLevelHigh
+    | QualityLevelMedium
+    | QualityLevelLow
     | ...
 }
 ```
@@ -11031,33 +10679,39 @@ public enum QualityLevel <: Equatable<QualityLevel> & ToString {
 - Equatable\<QualityLevel>
 - ToString
 
-### QUALITY_LEVEL_HIGH
+### QualityLevelHigh
 
 ```cangjie
-QUALITY_LEVEL_HIGH
+QualityLevelHigh
 ```
 
 **功能：** 图片质量高。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### QUALITY_LEVEL_LOW
+### QualityLevelLow
 
 ```cangjie
-QUALITY_LEVEL_LOW
+QualityLevelLow
 ```
 
 **功能：** 图片质量差。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### QUALITY_LEVEL_MEDIUM
+### QualityLevelMedium
 
 ```cangjie
-QUALITY_LEVEL_MEDIUM
+QualityLevelMedium
 ```
 
 **功能：** 图片质量中等。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -11068,10 +10722,6 @@ public operator func !=(other: QualityLevel): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11092,10 +10742,6 @@ public operator func ==(other: QualityLevel): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11127,13 +10773,13 @@ public func toString(): String
 |:----|:----|
 |String|枚举的说明。|
 
-## enum SceneMode
+9
 
 ```cangjie
 public enum SceneMode <: Equatable<SceneMode> & ToString {
-    | NORMAL_PHOTO
-    | NORMAL_VIDEO
-    | SECURE_PHOTO
+    | NormalPhoto
+    | NormalVideo
+    | SecurePhoto
     | ...
 }
 ```
@@ -11149,33 +10795,39 @@ public enum SceneMode <: Equatable<SceneMode> & ToString {
 - Equatable\<SceneMode>
 - ToString
 
-### NORMAL_PHOTO
+### NormalPhoto
 
 ```cangjie
-NORMAL_PHOTO
+NormalPhoto
 ```
 
 **功能：** 普通拍照模式。详情见[PhotoSession](#class-photosession)。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### NORMAL_VIDEO
+### NormalVideo
 
 ```cangjie
-NORMAL_VIDEO
+NormalVideo
 ```
 
 **功能：** 普通录像模式。详情见[VideoSession](#class-videosession)。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### SECURE_PHOTO
+### SecurePhoto
 
 ```cangjie
-SECURE_PHOTO
+SecurePhoto
 ```
 
-**功能：** 安全相机模式。详情见[SecureSession](#class-securesession)。
+**功能：** 安全相机模式。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -11186,10 +10838,6 @@ public operator func !=(other: SceneMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11210,10 +10858,6 @@ public operator func ==(other: SceneMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11249,7 +10893,7 @@ public func toString(): String
 
 ```cangjie
 public enum SmoothZoomMode <: Equatable<SmoothZoomMode> & ToString {
-    | NORMAL
+    | Normal
     | ...
 }
 ```
@@ -11265,13 +10909,15 @@ public enum SmoothZoomMode <: Equatable<SmoothZoomMode> & ToString {
 - Equatable\<SmoothZoomMode>
 - ToString
 
-### NORMAL
+### Normal
 
 ```cangjie
-NORMAL
+Normal
 ```
 
 **功能：** 贝塞尔曲线模式。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -11282,10 +10928,6 @@ public operator func !=(other: SmoothZoomMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11307,10 +10949,6 @@ public operator func ==(other: SmoothZoomMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -11331,10 +10969,6 @@ public func toString(): String
 
 **功能：** 获取枚举的值。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -11345,9 +10979,9 @@ public func toString(): String
 
 ```cangjie
 public enum TorchMode <: Equatable<TorchMode> & ToString {
-    | OFF
-    | ON
-    | AUTO
+    | Off
+    | On
+    | Auto
     | ...
 }
 ```
@@ -11363,33 +10997,39 @@ public enum TorchMode <: Equatable<TorchMode> & ToString {
 - Equatable\<TorchMode>
 - ToString
 
-### AUTO
+### Auto
 
 ```cangjie
-AUTO
+Auto
 ```
 
 **功能：** 自动模式。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### OFF
+### Off
 
 ```cangjie
-OFF
+Off
 ```
 
 **功能：** 常关模式。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### ON
+### On
 
 ```cangjie
-ON
+On
 ```
 
 **功能：** 常开模式。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -11400,10 +11040,6 @@ public operator func !=(other: TorchMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11424,10 +11060,6 @@ public operator func ==(other: TorchMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11463,8 +11095,8 @@ public func toString(): String
 
 ```cangjie
 public enum VideoCodecType <: Equatable<VideoCodecType> & ToString {
-    | AVC
-    | HEVC
+    | Avc
+    | Hevc
     | ...
 }
 ```
@@ -11480,23 +11112,27 @@ public enum VideoCodecType <: Equatable<VideoCodecType> & ToString {
 - Equatable\<VideoCodecType>
 - ToString
 
-### AVC
+### Avc
 
 ```cangjie
-AVC
+Avc
 ```
 
 **功能：** 视频编码类型AVC。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### HEVC
+### Hevc
 
 ```cangjie
-HEVC
+Hevc
 ```
 
 **功能：** 视频编码类型HEVC。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -11507,10 +11143,6 @@ public operator func !=(other: VideoCodecType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11531,10 +11163,6 @@ public operator func ==(other: VideoCodecType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11570,11 +11198,11 @@ public func toString(): String
 
 ```cangjie
 public enum VideoStabilizationMode <: Equatable<VideoStabilizationMode> & ToString {
-    | OFF
-    | LOW
-    | MIDDLE
-    | HIGH
-    | AUTO
+    | Off
+    | Low
+    | Middle
+    | High
+    | Auto
     | ...
 }
 ```
@@ -11590,53 +11218,63 @@ public enum VideoStabilizationMode <: Equatable<VideoStabilizationMode> & ToStri
 - Equatable\<VideoStabilizationMode>
 - ToString
 
-### AUTO
+### Auto
 
 ```cangjie
-AUTO
+Auto
 ```
 
 **功能：** 自动进行选择。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### HIGH
+### High
 
 ```cangjie
-HIGH
+High
 ```
 
 **功能：** 使用防抖效果最好的防抖算法，防抖效果优于MIDDLE类型。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### LOW
+### Low
 
 ```cangjie
-LOW
+Low
 ```
 
 **功能：** 关闭视频防抖功能。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### MIDDLE
+### Middle
 
 ```cangjie
-MIDDLE
+Middle
 ```
 
 **功能：** 使用防抖效果一般的防抖算法，防抖效果优于LOW类型。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 21
 
-### OFF
+### Off
 
 ```cangjie
-OFF
+Off
 ```
 
 **功能：** 关闭视频防抖功能。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 21
 
@@ -11647,10 +11285,6 @@ public operator func !=(other: VideoStabilizationMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **参数：**
 
@@ -11672,10 +11306,6 @@ public operator func ==(other: VideoStabilizationMode): Bool
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -11695,10 +11325,6 @@ public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**起始版本：** 21
 
 **返回值：**
 

@@ -32,6 +32,8 @@
 
 2. 用户实现一个名为addF64的仓颉函数，并使用 `@Interop[ArkTS]` 修饰。仓颉模块的简单示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    package ohos_app_cangjie_entry
 

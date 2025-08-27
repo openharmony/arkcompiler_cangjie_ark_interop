@@ -30,11 +30,11 @@
 
   如需检查用户是否已向您的应用授予特定权限，可以使用[checkAccessToken()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-checkaccesstokenuint32-permissions)函数，此方法会返回[PERMISSION_GRANTED](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)或[PERMISSION_DENIED](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。具体示例可参考下文。
 
-- 每次访问受目标权限保护的接口之前，都需要使用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)接口请求相应的权限。
+- 每次访问受目标权限保护的接口之前，都需要使用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult)接口请求相应的权限。
 
   用户可能在动态授予权限后通过系统设置来取消应用的权限，因此不能将之前授予的授权状态持久化。
 
-- 应用在onWindowStageCreate()回调中申请授权时，需要等待异步接口loadContent()/setUIContent()执行结束后或在loadContent()/setUIContent()回调中调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)，否则在Content加载完成前，requestPermissionsFromUser会调用失败。
+- 应用在onWindowStageCreate()回调中申请授权时，需要等待异步接口loadContent()/setUIContent()执行结束后或在loadContent()/setUIContent()回调中调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult)，否则在Content加载完成前，requestPermissionsFromUser会调用失败。
   <!--RP1--><!--RP1End-->
 
 ## 开发步骤
@@ -57,44 +57,46 @@
 
     ```cangjie
     import kit.AbilityKit.{Permissions, AbilityAccessCtrl, GrantStatus, BundleManager, BundleFlag}
+    import ohos.hilog.Hilog
+    import ohos.bundle.bundle_manager.BundleInfo
 
     func checkPermissionGrant(permission: Permissions): GrantStatus {
         try {
             // 获取应用程序的accessTokenID
-            let tokenID = BundleManager.getBundleInfoForSelf(GET_BUNDLE_INFO_WITH_APPLICATION.getValue()).appInfo.accessTokenId
+            let tokenID = BundleManager.getBundleInfoForSelf(BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).appInfo.accessTokenId
             let atManager = AbilityAccessCtrl.createAtManager()
             // 校验应用是否被授予权限
             return atManager.checkAccessToken(tokenID, permission)
         } catch(e: Exception) {
-            AppLog.error("checkAccessToken Exception: ${e}")
+            Hilog.error(0,"","checkAccessToken Exception: ${e}")
             throw e
         }
     }
 
     func checkPermissions(): Unit {
-        let grantStatus1: Bool = (checkPermissionGrant("ohos.permission.LOCATION") == GrantStatus.PERMISSION_GRANTED)
-        let grantStatus2: Bool = (checkPermissionGrant("ohos.permission.APPROXIMATELY_LOCATION") == GrantStatus.PERMISSION_GRANTED)
+        let grantStatus1: Bool = (checkPermissionGrant("ohos.permission.LOCATION") == GrantStatus.PermissionGranted)
+        let grantStatus2: Bool = (checkPermissionGrant("ohos.permission.APPROXIMATELY_LOCATION") == GrantStatus.PermissionDenied)
         // 精确定位权限（ohos.permission.LOCATION）只能跟模糊定位权限（ohos.permission.APPROXIMATELY_LOCATION）一起申请，或者已经有模糊定位权限才能申请精确定位权限
         if (grantStatus2 && !grantStatus1) {
             // 模糊定位权限已申请，精确定位权限未申请
-            AppLog.info("Only APPROXIMATELY_LOCATION is granted")
+            Hilog.info(0,"","Only APPROXIMATELY_LOCATION is granted")
         } else if (!grantStatus1 && !grantStatus2) {
             // 模糊定位权限和精确定位权限均未申请，需要申请模糊定位权限与精确定位权限，或单独申请模糊定位权限
-            AppLog.info("LOCATION and APPROXIMATELY_LOCATION not granted")
+            Hilog.info(0,"","LOCATION and APPROXIMATELY_LOCATION not granted")
         } else {
             // 已经授权，可以继续访问目标操作
-            AppLog.info("LOCATION and APPROXIMATELY_LOCATION are granted")
+            Hilog.info(0,"","LOCATION and APPROXIMATELY_LOCATION are granted")
         }
     }
     ```
 
 3. 动态向用户申请授权。
 
-    动态向用户申请权限是指在应用程序运行时向用户请求授权的过程。可以通过调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)方法来实现。该方法接收一个权限列表参数，例如位置、日历、相机、麦克风等。用户可以选择授予权限或者拒绝授权。
+    动态向用户申请权限是指在应用程序运行时向用户请求授权的过程。可以通过调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult)方法来实现。该方法接收一个权限列表参数，例如位置、日历、相机、麦克风等。用户可以选择授予权限或者拒绝授权。
 
-    可以在Ability的onWindowStageCreate()回调中调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)方法来动态申请权限，也可以根据业务需要在UI中向用户申请授权。
+    可以在Ability的onWindowStageCreate()回调中调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult)方法来动态申请权限，也可以根据业务需要在UI中向用户申请授权。
 
-    应用在onWindowStageCreate()回调中申请授权时，需要等待异步接口loadContent()/setUIContent()执行结束后或在loadContent()/setUIContent()回调中调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)，否则在Content加载完成前，requestPermissionsFromUser会调用失败。
+    应用在onWindowStageCreate()回调中申请授权时，需要等待异步接口loadContent()/setUIContent()执行结束后或在loadContent()/setUIContent()回调中调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult)，否则在Content加载完成前，requestPermissionsFromUser会调用失败。
 
     <!--RP1--><!--RP1End-->
 
@@ -106,38 +108,40 @@
 
         ```cangjie
         // main_ability.cj
-        import kit.UIKit.AsyncError
         import kit.AbilityKit.*
+        import ohos.hilog.Hilog
+        import ohos.business_exception.*
+        import ohos.window.WindowStage
 
         class MainAbility <: UIAbility {
             // ...
             public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-                AppLog.info("MainAbility onWindowStageCreate.")
+                Hilog.info(0,"","MainAbility onWindowStageCreate.")
                 windowStage.loadContent("EntryView")
                 // 设置回调
                 var resultCallback = {
-                    errorCode: Option<AsyncError>, data: Option<AccessCtrlPermissionRequestResult> => match (errorCode) {
-                        case Some(e) => AppLog.error("requestPermissionsFromUser failed, errcode: ${e.code}")
+                    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+                        case Some(e) => Hilog.error(0,"","requestPermissionsFromUser failed, errcode: ${e.code}")
                         case _ =>
                             match (data) {
                                 case Some(value) =>
                                     for (i in (0..value.permissions.size)) {
                                         if (value.authResults[i] == 0) {
                                             // 用户已授权
-                                            AppLog.info("permission: ${value.permissions[i]} is granted.")
+                                            Hilog.info(0,"","permission: ${value.permissions[i]} is granted.")
                                         } else {
                                             // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
-                                            AppLog.info("permission: ${value.permissions[i]} is denied by user.")
+                                            Hilog.info(0,"","permission: ${value.permissions[i]} is denied by user.")
                                         }
                                     }
-                                case _ => AppLog.error("requestPermissionsFromUser error: data is null")
+                                case _ => Hilog.error(0,"","requestPermissionsFromUser error: data is null")
                             }
                     }
                 }
                 let permissionList = ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]
                 let atManager = AbilityAccessCtrl.createAtManager()
                 // 申请权限，requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
-                atManager.requestPermissionsFromUser(getStageContext(this.context), permissionList, resultCallback)
+                atManager.requestPermissionsFromUser(this.context, permissionList, resultCallback)
             }
         }
         ```
@@ -151,6 +155,8 @@
             ```cangjie
             // main_ability.cj
             import kit.AbilityKit.*
+            import ohos.window.WindowStage
+            import ohos.hilog.Hilog
 
             var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -161,17 +167,17 @@
                 }
 
                 public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-                    AppLog.info("MainAbility OnCreated.${want.abilityName}")
+                    Hilog.info(0,"","MainAbility OnCreated.${want.abilityName}")
                     // 获取context
                     globalAbilityContext = Option<UIAbilityContext>.Some(this.context)
                     match (launchParam.launchReason) {
-                        case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                        case LaunchReason.StartAbility => Hilog.info(0,"","START_ABILITY")
                         case _ => ()
                     }
                 }
 
                 public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-                    AppLog.info("MainAbility onWindowStageCreate.")
+                    Hilog.info(0,"","MainAbility onWindowStageCreate.")
                     windowStage.loadContent("EntryView")
                 }
             }
@@ -184,41 +190,39 @@
             ```cangjie
             // index.cj
             import kit.AbilityKit.*
-            import kit.UIKit.AsyncError
+            import ohos.business_exception.*
+            import ohos.hilog.Hilog
+            import ohos.arkui.component.button.Button
+            import ohos.arkui.state_macro_manage.Entry
+            import ohos.arkui.state_macro_manage.Component
+            import ohos.arkui.state_management.AppStorage
 
             @Entry
             @Component
             class EntryView {
-                // 获取context
-                func getContext(): UIAbilityContext {
-                    match(globalAbilityContext) {
-                        case Some(context) => context
-                        case _ => throw Exception("can not get globalAbilityContext.")
-                    }
-                }
                 // 申请权限
                 func requestPermissons(): Unit {
                     var resultCallback = {
-                        errorCode: Option<AsyncError>, data: Option<AccessCtrlPermissionRequestResult> => match (errorCode) {
-                            case Some(e) => AppLog.info("permissionResultCallBack request error: errcode: ${e.code}")
+                        errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+                            case Some(e) => Hilog.info(0,"","permissionResultCallBack request error: errcode: ${e.code}")
                             case _ =>
                                 match (data) {
                                     case Some(value) =>
                                         for (i in (0..value.permissions.size)) {
                                             if (value.authResults[i] == 0) {
                                                 // 用户已授权
-                                                AppLog.info("permission: ${value.permissions[i]} is granted.")
+                                                Hilog.info(0,"","permission: ${value.permissions[i]} is granted.")
                                             } else {
                                                 // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
-                                                AppLog.info("permission: ${value.permissions[i]} is denied by user.")
+                                                Hilog.info(0,"","permission: ${value.permissions[i]} is denied by user.")
                                             }
                                         }
-                                    case _ => AppLog.info("permissionResultCallBack request error: data is null")
+                                    case _ => Hilog.info(0,"","permissionResultCallBack request error: data is null")
                                 }
                         }
                     }
                     let atManager = AbilityAccessCtrl.createAtManager()
-                    let stageContext = getStageContext(getContext())
+                    let stageContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
                     let permissionList = ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]
                     atManager.requestPermissionsFromUser(stageContext, permissionList, resultCallback)
                 }
@@ -227,7 +231,7 @@
                     Row {
                         Column {
                             Button("requestPermissons").onClick {
-                                evt => AppLog.info("Hello Cangjie")
+                                evt => Hilog.info(0,"","Hello Cangjie")
                                 // 点击按钮进行权限申请
                                 requestPermissons()
                             }.fontSize(30).height(50)
@@ -242,7 +246,7 @@
 
 4. 处理授权结果。
 
-    调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult)方法后，应用程序将等待用户授权的结果。如果用户授权，则可以继续访问目标操作。如果用户拒绝授权，则需要提示用户必须授权才能访问当前页面的功能，并引导用户到系统应用“设置”中打开相应的权限。
+    调用[requestPermissionsFromUser()](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult)方法后，应用程序将等待用户授权的结果。如果用户授权，则可以继续访问目标操作。如果用户拒绝授权，则需要提示用户必须授权才能访问当前页面的功能，并引导用户到系统应用“设置”中打开相应的权限。
     <!--RP3-->
 
     路径：设置 \> 隐私 \> 权限管理 \> 应用 \> 目标应用<!--RP3End-->

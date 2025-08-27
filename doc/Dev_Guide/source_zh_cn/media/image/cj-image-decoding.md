@@ -12,27 +12,17 @@
 
     ```cangjie
     import kit.ImageKit.*
-    import kit.AbilityKit.*
     ```
 
 2. 获取图片。
-    - 方法一：获取沙箱路径。具体请参考获取应用文件路径。
-
-        <!-- compile -->
-
-        ```cangjie
-        // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let filePath = globalAbilityContext.getOrThrow().cacheDir + '/test.jpg'
-        ```
-
-    - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考[file.fs API参考文档](../../../../API_Reference/source_zh_cn/apis/CoreFileKit/cj-apis-file_fs.md)。
-      该方法需要先导入kit.CoreFileKit模块。
+    - 方法一：通过沙箱路径获取图片的文件描述符。具体请参考[file.fs API参考文档](../../../../API_Reference/source_zh_cn/apis/CoreFileKit/cj-apis-file_fs.md)。
+      该方法需要先导入kit.CoreFileKit模块和kit.AbilityKit模块。
 
         <!-- compile -->
 
         ```cangjie
         import kit.CoreFileKit.*
+        import kit.AbilityKit.*
         ```
 
         然后调用FileFs.open()获取文件描述符。
@@ -40,27 +30,24 @@
         <!-- compile -->
 
         ```cangjie
-        // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let filePath = globalAbilityContext.getOrThrow().cacheDir + '/test.jpg'
-        let file = FileFs.open(filePath, mode: OpenMode.READ_WRITE.mode)
-        let fd = file.fd
+        let cacheDir = "/data/storage/el2/base/haps/entry/cache"
+        let filePath = cacheDir + '/test.jpg'
+        let file = FileIo.open(filePath, mode: OpenMode.READ_WRITE)
+        let fd = file.fd 
         ```
 
-    - 方法三：通过资源管理器获取资源文件的Array\<UInt8>。具体请参考[ResourceManager API参考文档](../../../../API_Reference/source_zh_cn/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfilecontentstring)。
+    - 方法二：通过资源管理器获取资源文件的Array\<UInt8>。具体请参考[ResourceManager API参考文档](../../../../API_Reference/source_zh_cn/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfilecontentstring)。
 
         <!-- compile -->
 
         ```cangjie
         // 导入resourceManager资源管理器。
         import kit.LocalizationKit.*
-        import ohos.base.BusinessException
+        import ohos.hilog.Hilog
 
-        // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
         // 获取resourceManager资源管理器。
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
         ```
 
         不同模型获取资源管理器的方式不同，获取资源管理器后，再调用getRawFileContent()获取资源文件的Array\<UInt8>。
@@ -71,7 +58,7 @@
         try {
           let buffer = resourceManager.getRawFileContent("test.jpg")
         } catch (e: BusinessException) {
-          AppLog.error("Failed to get RawFileContent")
+          Hilog.error(0, "Failed to get RawFileContent", e.message)
         }
         ```
 
@@ -82,13 +69,10 @@
         ```cangjie
         // 导入resourceManager资源管理器。
         import kit.LocalizationKit.*
-        import ohos.base.BusinessException
 
-        // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
         // 获取resourceManager资源管理器。
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
         ```
 
         不同模型获取资源管理器的方式不同，获取资源管理器后，再调用getRawFd()获取资源文件的RawFileDescriptor。
@@ -99,7 +83,7 @@
         try {
           let rawFileDescriptor = resourceManager.getRawFd("test.jpg")
         } catch (e: BusinessException) {
-          AppLog.error("Failed to get RawFileDescriptor")
+          Hilog.error(0, "Failed to get RawFileContent", e.message)
         }
         ```
 
@@ -147,20 +131,18 @@
         ```cangjie
         import kit.ImageKit.*
         import kit.AbilityKit.*
-		import ohos.state_macro_manage.r
+        import ohos.resource_manager.AppResource
 
-        // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
         // 获取resourceManager资源管理器。
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
 
-        let img = resourceManager.getMediaContent(@r(app.media.layered_image), 0)
-        let imagesource = createImageSource(img)
-        let decodingOptions = DecodingOptions(editable: true, desiredPixelFormat: PixelMapFormat.RGBA_8888)
+        let img = resourceManager.getMediaContent(@r(app.media.layered_image))
+        let imageSource = createImageSource(img)
+        let decodingOptions = DecodingOptions(editable: true, desiredPixelFormat: PixelMapFormat.Rgba8888)
 
         // 创建pixelMap。
-        let pixelMap = imagesource.createPixelMap(options: decodingOptions)
+        let pixelMap = imageSource.createPixelMap(options: decodingOptions)
         ```
 
     - HDR图片解码
@@ -170,24 +152,21 @@
         ```cangjie
         import kit.ImageKit.*
         import kit.AbilityKit.*
-		import ohos.state_macro_manage.r
+        import ohos.resource_manager.AppResource
 
-        // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
         // 获取resourceManager资源管理器。
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
 
-        let img = resourceManager.getMediaContent(@r(app.media.layered_image), 0)
-        let imagesource = createImageSource(img)
+        let img = resourceManager.getMediaContent(@r(app.media.layered_image))
+        let imageSource = createImageSource(img)
         //设置为AUTO会根据图片资源格式解码，如果图片资源为HDR资源则会解码为HDR的pixelmap。
-        let decodingOptions = DecodingOptions(desiredDynamicRange: DecodingDynamicRange.AUTO)
+        let decodingOptions = DecodingOptions(desiredDynamicRange: DecodingDynamicRange.Auto)
 
         // 创建pixelMap。
-        let pixelMap = imagesource.createPixelMap(options: decodingOptions)
+        let pixelMap = imageSource.createPixelMap(options: decodingOptions)
         // 判断pixelmap是否为hdr内容。
         let info = pixelMap.getImageInfo()
-        AppLog.info('pixelmap isHdr: ${info.isHdr}')
         ```
 
     解码完成，获取到pixelMap对象后，可以进行后续[图片处理](./cj-image-transformation.md)。
@@ -199,8 +178,8 @@
     <!-- compile -->
 
     ```cangjie
-    pixelMap.Release();
-    imageSource.Release();
+    pixelMap.release();
+    imageSource.release();
     ```
 
 ## 开发示例-对资源文件中的图片进行解码
@@ -214,11 +193,11 @@
     import kit.LocalizationKit.*
     import kit.AbilityKit.*
 
+
     // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-    var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-    let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+    var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
     // 获取resourceManager资源管理器。
-    let resourceManager = ResourceManager.getResourceManager(stageContext)
+    let resourceManager = abilityContext.resourceManager
     ```
 
 2. 创建ImageSource。
@@ -255,6 +234,6 @@
     <!-- compile -->
 
     ```cangjie
-    pixelMap.Release();
-    imageSource.Release();
+    pixelMap.release();
+    imageSource.release();
     ```

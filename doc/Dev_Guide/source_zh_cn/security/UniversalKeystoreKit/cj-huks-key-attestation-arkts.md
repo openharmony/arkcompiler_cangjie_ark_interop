@@ -12,9 +12,18 @@
 
 4. 将密钥别名与参数集作为参数传入[huks.attestKeyItem](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-attestkeyitemstring-huksoptions)方法中，即可证明密钥。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 /* 1.确定密钥别名 */
 let keyAliasString = "key anon attest"
@@ -36,56 +45,52 @@ class ThrowObject {
 /* 封装生成时的密钥参数集 */
 let genKeyProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_RSA
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_SIZE,
+        HuksTag.HuksTagKeySize,
         HuksKeySize.HUKS_RSA_KEY_SIZE_2048
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
+        HuksTag.HuksTagPurpose,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_SHA256
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PADDING,
+        HuksTag.HuksTagPadding,
         HuksKeyPadding.HUKS_PADDING_PSS
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+        HuksTag.HuksTagKeyGenerateType,
         HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_BLOCK_MODE,
+        HuksTag.HuksTagBlockMode,
         HuksCipherMode.HUKS_MODE_ECB
     )
 ]
-let genOptions: HuksOptions = HuksOptions(genKeyProperties, Option<Array<UInt8>>.None)
+let genOptions: HuksOptions = HuksOptions(properties: genKeyProperties, inData: Bytes())
 
 /* 2.封装证明密钥的参数集 */
 let anonAttestKeyProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
-        bytes(securityLevel)
+        HuksTag.HuksTagAttestationIdSecLevelInfo,
+        HuksParamValue.BytesValue(securityLevel.toArray())
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
-        bytes(challenge)
+        HuksTag.HuksTagAttestationChallenge,
+        HuksParamValue.BytesValue(challenge.toArray())
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
-        bytes(versionInfo)
-    ),
-    HuksParam(
-        HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-        bytes(aliasUint8)
+        HuksTag.HuksTagAttestationIdVersionInfo,
+        HuksParamValue.BytesValue(versionInfo.toArray())
     )
 ]
-let huksOptions: HuksOptions = HuksOptions(anonAttestKeyProperties, Option<Array<UInt8>>.None)
+let huksOptions: HuksOptions = HuksOptions(properties: anonAttestKeyProperties, inData: Bytes())
 
 func StringToUint8Array(str: String) {
     return str.toArray()
@@ -102,12 +107,12 @@ func generateKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: Th
 
 /* 3.生成密钥 */
 func publicGenKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter generateKeyItem")
+    loggerInfo("enter generateKeyItem")
     let throwObject: ThrowObject = ThrowObject(false)
     try {
         generateKeyItem(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("generateKeyItem input arg invalid, ${e}")
+        loggerInfo("generateKeyItem input arg invalid, ${e}")
     }
 }
 
@@ -122,18 +127,18 @@ func attestKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: Thro
 }
 
 func publicAttestKey(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter attestKeyItem")
+    loggerInfo("enter attestKeyItem")
     let throwObject: ThrowObject = ThrowObject(false)
     try {
         attestCertChain = attestKeyItem(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("attestKeyItem input arg invalid, ${e}")
+        loggerInfo("attestKeyItem input arg invalid, ${e}")
     }
 }
 
 func attestKeyTest() {
     publicGenKeyFunc(aliasString, genOptions)
     publicAttestKey(aliasString, huksOptions)
-    AppLog.info('anon attest certChain data: ' + attestCertChain.getOrThrow().toString())
+    loggerInfo('anon attest certChain data: ' + attestCertChain.getOrThrow().toString())
 }
 ```

@@ -43,19 +43,19 @@
 ### 调用方接入步骤
 
 1. 导入相关模块。
-
+    
     <!-- compile -->
 
     ```cangjie
     // xxx.cj
     import kit.AbilityKit.{UIAbility, Want, LaunchParam, Flags}
-    import kit.ArkUI.{WindowStage}
-    import kit.CoreFileKit.{FileUri}
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.WindowStage
+    import kit.CoreFileKit.FileUri
+    import ohos.business_exception.BusinessException
     ```
 
 2. 获取应用文件路径。
-
+    
     <!-- compile -->
 
     ```cangjie
@@ -76,7 +76,7 @@
     ```
 
 3. 构造请求数据。
-
+    
     <!-- compile -->
 
     ```cangjie
@@ -104,7 +104,7 @@
     ```
 
 4. 调用接口启动。
-
+    
     <!-- compile -->
 
     ```cangjie
@@ -177,7 +177,7 @@
 2. 应用处理待打开文件。
 
     声明了文件打开的应用在被拉起后，获取传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数信息，从中获取待打开文件的URI，在打开文件并获取对应的file对象后，可对文件进行读写操作。
-
+    
     <!-- compile -->
 
     ```cangjie
@@ -185,7 +185,7 @@
     import kit.AbilityKit.{UIAbility, Want, LaunchParam}
     import kit.ArkUI.{WindowStage}
     import kit.CoreFileKit.{FileFs, OpenMode}
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.BusinessException
 
     class MainAbility <: UIAbility {
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {

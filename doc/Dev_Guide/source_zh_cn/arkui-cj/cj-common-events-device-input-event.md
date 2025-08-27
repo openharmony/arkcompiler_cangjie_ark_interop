@@ -13,8 +13,6 @@
 |  onHover(callback: (isHover: Bool)->Unit) | 鼠标进入或退出组件时，触发该事件。<br>isHover：表示鼠标是否悬浮在组件上，鼠标进入时为true，退出时为false。|
 |  onMouse(callback: (event: MouseEvent)->Unit) | 当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该事件。<br>event返回值包含触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。|
 
-当组件绑定onHover事件时，可以通过[hoverEffect](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-hovereffect.md)属性设置该组件的鼠标悬浮态显示效果。
-
 鼠标事件的原理如下图所示：
 
 ![Hover](./figures/Hover_mouse.png)
@@ -31,6 +29,7 @@
 
 ### onHover
 
+
 ```cangjie
 public func onHover(callback: (Bool)->Unit): This
 ```
@@ -43,13 +42,13 @@ public func onHover(callback: (Bool)->Unit): This
 >
 > 事件冒泡：在一个树形结构中，当子节点处理完一个事件后，再将该事件交给它的父节点处理。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
 
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
@@ -57,7 +56,7 @@ class EntryView {
     @State
     var hoverText: String = 'Not Hover'
     @State
-    var color: Color = Color.GRAY
+    var color: Color = Color.Gray
 
     func build() {
         Column() {
@@ -70,10 +69,10 @@ class EntryView {
                         isHover => // 使用onHover接口监听鼠标是否悬浮在Button组件上
                         if (isHover) {
                             this.hoverText = 'Hovered!'
-                            this.color = Color.GREEN
+                            this.color = Color.Green
                         } else {
                             this.hoverText = ' Hover'
-                            this.color = Color.GRAY
+                            this.color = Color.Gray
                         }
                     })
         }
@@ -95,6 +94,7 @@ class EntryView {
 
 ### onMouse
 
+
 ```cangjie
 public func onMouse(callback: (MouseEvent)->Unit): This
 ```
@@ -107,7 +107,68 @@ public func onMouse(callback: (MouseEvent)->Unit): This
 >
 > 按键（MouseButton）的值：Left/Right/Middle/Back/Forward 均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示无按键，会出现在鼠标没有按键按下或松开的状态下，移动鼠标所触发的事件中。
 
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    @State var buttonText: String = ''
+    @State var columnText: String = ''
+    @State var hoverText: String = 'Not Hover'
+    @State var color: Color = Color.Gray
+
+    func build() {
+        Column(20) {
+            Button(this.hoverText)
+                .width(200)
+                .height(100)
+                .backgroundColor(this.color)
+                .onHover({isHover =>
+                    if (isHover) {
+                        this.hoverText = 'Hovered!'
+                        this.color = Color.Green
+                    } else {
+                        this.hoverText = 'Not Hover'
+                        this.color = Color.Gray
+                    }
+                })
+                .onMouse({event =>
+                this.buttonText = "Button onMouse:\n" +
+                    "button = ${event.button.toString()}\n" +
+                    "action = ${event.action.toString()}\n" +
+                    "x,y = (${event.x},${event.y})\n" +
+                    "windowXY=(${event.screenX},${event.screenY})"
+                })
+            Divider()
+            Text(this.buttonText).fontColor(Color.Green)
+            Divider()
+            Text(this.columnText).fontColor(Color.Red)
+        }
+        .width(100.percent)
+        .height(100.percent)
+        .justifyContent(FlexAlign.Center)
+        .borderWidth(2.px)
+        .borderColor(Color.Red)
+        .onMouse({event =>
+                this.columnText = "Column onMouse:\n" +
+                    "button = ${event.button.toString()}\n" +
+                    "action = ${event.action.toString()}\n" +
+                    "x,y = (${event.x},${event.y})\n" +
+                    "windowXY=(${event.screenX},${event.screenY})"
+        })
+    }
+}
+```
+
+![onMouse1](./figures/onMouse1.gif)
+
 ### hoverEffect
+
 
 ```cangjie
 public func hoverEffect(value: HoverEffect)
@@ -122,12 +183,200 @@ public func hoverEffect(value: HoverEffect)
 |  Highlight | 动画播放方式，鼠标悬浮时：组件背景色叠加一个5%透明度的白色，视觉效果是组件的原有背景色变暗，鼠标离开时：组件背景色恢复至原有样式。|
 |  None | 禁用悬浮态效果。|
 
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    func build() {
+        Column(10) {
+            Text("Auto")
+                .width(170)
+                .height(70)
+                .backgroundColor(Color.PINK)
+            Text("Scale")
+                .width(170)
+                .height(70)
+                .hoverEffect(HoverEffect.Scale)
+                .backgroundColor(Color.PINK)
+            Text("Highlight")
+                .width(170)
+                .height(70)
+                .hoverEffect(HoverEffect.Highlight)
+                .backgroundColor(Color.PINK)
+            Text("None")
+                .width(170)
+                .height(70)
+                .hoverEffect(HoverEffect.None)
+                .backgroundColor(Color.PINK)
+        }
+            .width(100.percent)
+            .height(100.percent)
+            .justifyContent(FlexAlign.Center)
+    }
+}
+```
+
+![hoverEffect](./figures/hoverEffect.gif)
+
+Text默认的悬浮态效果就是None，None会禁用悬浮态效果，Scale会让组件缩放，Highlight会使背板颜色变暗。
+
 ## 按键事件
 
 ### onKeyEvent
+
 
 ```cangjie
 public func onKeyEvent(callback: (KeyEvent)->Unit): This
 ```
 
-当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、键码（keyCode）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。
+当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。
+
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    @State var buttonText: String = ''
+    @State var buttonType: String = ''
+    @State var columnText: String = ''
+    @State var columnType: String = ''
+
+    func build() {
+        Column() {
+            Button('onKeyEvent')
+                .defaultFocus(true)
+                .width(140)
+                .height(70)
+                .onKeyEvent({ event =>
+                    if (event.keyType.getValue() == KeyType.Down.getValue()) {
+                        this.buttonType = 'Down'
+                    }
+                    if (event.keyType.getValue() == KeyType.Up.getValue()) {
+                        this.buttonType = 'Up'
+                    }
+                    this.buttonText = """
+                        Button:
+                        KeyType: ${this.buttonType}
+                        KeyCode: ${event.keyCode.toString()}
+                        KeyText: ${event.keyText.toString()}
+                    """
+                })
+
+            Divider()
+            Text(this.buttonText).fontColor(Color.Green)
+
+            Divider()
+            Text(this.columnText).fontColor(Color.Red)
+        }
+        .width(100.percent)
+        .height(100.percent)
+        .justifyContent(FlexAlign.Center)
+        .onKeyEvent({ event =>
+            if (event.keyType.getValue() == KeyType.Down.getValue()) {
+                this.columnType = 'Down'
+            }
+            if (event.keyType.getValue() == KeyType.Up.getValue()) {
+                this.columnType = 'Up'
+            }
+            this.columnText = """
+                Column:
+                KeyType: ${this.columnType}
+                KeyCode: ${event.keyCode.toString()}
+                KeyText: ${event.keyText.toString()}
+            """
+        })
+    }
+}
+```
+
+上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制请参见[焦点事件](./cj-common-events-focus-event.md)。
+
+![KeyEvent](./figures/KeyEvent.gif)
+
+打开应用后，依次在键盘上按这些按键：空格、回车、左Ctrl、左Shift、字母A、字母Z。
+
+> **说明：**
+>
+> - 由于onKeyEvent事件默认是冒泡的，所以Button和Column的onKeyEvent都可以响应。
+> - 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下，然后抬起。
+
+如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：
+
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    @State var buttonText: String = ''
+    @State var buttonType: String = ''
+    @State var columnText: String = ''
+    @State var columnType: String = ''
+
+    func build() {
+        Column() {
+            Button('onKeyEvent')
+                .defaultFocus(true)
+                .width(140)
+                .height(70)
+                .onKeyEvent({ event =>
+                    // 通过stopPropagation阻止事件冒泡
+                    event.stopPropagation()
+                    if (event.keyType.getValue() == KeyType.Down.getValue()) {
+                        this.buttonType = 'Down'
+                    }
+                    if (event.keyType.getValue() == KeyType.Up.getValue()) {
+                        this.buttonType = 'Up'
+                    }
+                    this.buttonText = """
+                        Button:
+                        KeyType: ${this.buttonType}
+                        KeyCode: ${event.keyCode.toString()}
+                        KeyText: ${event.keyText.toString()}
+                    """
+                })
+
+            Divider()
+            Text(this.buttonText).fontColor(Color.Green)
+
+            Divider()
+            Text(this.columnText).fontColor(Color.Red)
+        }
+        .width(100.percent)
+        .height(100.percent)
+        .justifyContent(FlexAlign.Center)
+        .onKeyEvent({ event =>
+            if (event.keyType.getValue() == KeyType.Down.getValue()) {
+                this.columnType = 'Down'
+            }
+            if (event.keyType.getValue() == KeyType.Up.getValue()) {
+                this.columnType = 'Up'
+            }
+            this.columnText = """
+                Column:
+                KeyType: ${this.columnType}
+                KeyCode: ${event.keyCode.toString()}
+                KeyText: ${event.keyText.toString()}
+            """
+        })
+    }
+}
+```
+
+![KeyEventStop](./figures/KeyEventStop.gif)

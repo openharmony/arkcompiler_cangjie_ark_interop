@@ -40,8 +40,6 @@
 
 ### 触摸测试控制
 
-在组件上绑定[触摸测试控制](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-touchtestcontrol.md)时，可能会影响到兄弟节点以及父子节点的触摸测试。子组件对父组件的触摸测试影响程度，取决于最后一个未被阻塞触摸测试的子组件状态。
-
 开发者可以通过配置触摸测试控制，来实现阻塞组件自身或其他组件的触摸测试。
 
 - HitTestMode.Default：默认不配hitTestBehavior属性的效果，自身如果命中会阻塞兄弟组件，但是不阻塞子组件。
@@ -70,12 +68,13 @@
 
 ### 安全组件
 
-安全组件当前对触摸测试影响：如果有组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
+安全组件当前对触摸测试影响：如果有组件的[z序](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-stack-layout.md#z序控制)比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
 
 ## 事件响应链的收集
 
 事件响应链为触摸测试的结果。ArkUI事件响应链收集，遵循右子树（按组件布局的先后层级）优先的后序遍历。伪代码实现为：
 
+ 
 ```cangjie
 ForEach(item,itemGeneratorFunc: {
         node.rbegin(), node.rend() =>

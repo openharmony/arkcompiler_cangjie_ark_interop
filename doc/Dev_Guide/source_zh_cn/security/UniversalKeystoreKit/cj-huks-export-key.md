@@ -12,25 +12,34 @@
 
 2. 调用接口[exportKeyItem](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-exportkeyitemstring-huksoptions)，传入参数keyAlias和options。options为预留参数，当前可传入空。
 
-3. 返回值为[HuksReturnResult](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksreturnresult)类型对象，获取的公钥明文在outData字段中，以标准的X.509规范的DER格式封装，具体请参见[公钥材料格式](./cj-huks-concepts.md#公钥材料格式)。
+3. 返回值为Bytes类型，以标准的X.509规范的DER格式封装，具体请参见[公钥材料格式](./cj-huks-concepts.md#公钥材料格式)。
 
 ## 示例
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 /* 1. 设置密钥别名 */
 let keyAlias = "keyAlias"
 
 /* 2. option对象传空 */
-let emptyOptions: HuksOptions = HuksOptions([], None)
+let emptyOptions: HuksOptions = HuksOptions(properties: [], inData: Bytes())
 
 try {
     /* 3. 导出密钥 */
     let b = exportKeyItem(keyAlias, emptyOptions)
-    AppLog.info("exportKeyItem success, data size = ${b.size}")
+    loggerInfo("exportKeyItem success")
 } catch (e: Exception) {
-    AppLog.error("exportKeyItem input arg invalid, ${e.toString()}")
+    loggerInfo("exportKeyItem input arg invalid")
+}
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
 }
 ```

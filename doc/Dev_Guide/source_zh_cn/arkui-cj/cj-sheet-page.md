@@ -4,7 +4,7 @@
 
 半模态页面适用于展示简单的任务或信息面板，例如，个人信息、文本简介、分享面板、创建日程、添加内容等。若需展示可能影响父视图的半模态页面，半模态支持配置为非模态交互形式。
 
-半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参见([preferType](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](./cj-modal-transition.md)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](./cj-contentcover-page.md)。
+半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参见([preferType](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](./cj-modal-transition.md)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](./cj-contentcover-page.md)和[Navigation转场](./cj-navigation-transition.md)。
 
 ## 使用约束
 
@@ -35,6 +35,7 @@
 
 如果开发者希望在面板内容的builder中定义滚动容器，如List、Scroll，并结合半模态的上述交互能力，那么需要在垂直方向上为滚动容器设置嵌套滚动属性。
 
+
 ```cangjie
 .nestedScroll(
     NestedScrollOptions(
@@ -46,9 +47,96 @@
 )
 ```
 
+完整示例代码如下：
+
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.*
+
+@Entry
+@Component
+class EntryView {
+    @State var isShowSheet: Bool = false
+    private var items: Array<Int64> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    @Builder
+    func SheetBuilder() {
+        Column() {
+            // 第一步：自定义滚动容器
+            List(space: 10) {
+                ForEach(
+                    this.items,
+                    itemGeneratorFunc: {
+                        item: Int64, _: Int64 => ListItem() {
+                            Text(item.toString())
+                                .fontSize(16)
+                                .fontWeight(FontWeight.Bold)
+                        }
+                        .width(90.percent)
+                        .height(80.vp)
+                        .backgroundColor(Color.Blue)
+                        .borderRadius(10)
+                    }
+                )
+            }
+            .alignListItem(ListItemAlign.Center)
+            .margin(top: 10)
+            .width(100.percent)
+            .height(900.px)
+            // 第二步：设置滚动组件的嵌套滚动属性
+            .nestedScroll(
+                NestedScrollOptions(
+                    NestedScrollMode.PARENT_FIRST,
+                    NestedScrollMode.SELF_FIRST,
+                )
+            )
+
+            Text("非滚动区域")
+                .width(100.percent)
+                .backgroundColor(Color.Gray)
+                .layoutWeight(1)
+                .textAlign(TextAlign.Center)
+                .align(Alignment.Top)
+        }
+        .width(100.percent)
+        .height(100.percent)
+    }
+
+    func build() {
+        Column() {
+            Button("Open Sheet")
+                .width(90.percent)
+                .height(80.vp)
+                .onClick({
+                    => this.isShowSheet = !this.isShowSheet
+                })
+                .bindSheet(
+                    this.isShowSheet,
+                    this.SheetBuilder,
+                    options: SheetOptions(
+                        detents: [SheetSize.MEDIUM, SheetSize.LARGE, FIT_CONTENT],
+                        preferType: SheetType.BOTTOM,
+                        title: {=> Text("嵌套滚动场景")}
+                    )
+                )
+        }
+        .width(100.percent)
+        .height(100.percent)
+        .justifyContent(FlexAlign.Center)
+    }
+}
+```
+
+![page](figures/page.gif)
+
 ## 二次确认能力
 
 推荐使用onWillDismiss接口，此接口支持在回调中处理二次确认，或自定义关闭行为。
+
 
 ```cangjie
 // 第一步：声明onWillDismiss回调
@@ -93,6 +181,7 @@ onWillDismiss: {
 
 下述示例显示半模态页面只在下滑的时候关闭。
 
+
 ```cangjie
 onWillDismiss: {
     dismissSheetAction: DismissSheetAction => {
@@ -108,6 +197,7 @@ onWillDismiss: {
 类比onWillDismiss，在声明了onWillSpringBackWhenDismiss后，半模态下滑时的回弹操作需要使用 SpringBackAction.springBack()处理，无此逻辑则不会回弹。
 
 具体代码如下，在半模态下滑的时候无需回弹。
+
 
 ```cangjie
 onWillDismiss: {

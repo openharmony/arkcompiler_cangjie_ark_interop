@@ -1,12 +1,10 @@
 # 使用DevTools工具调试前端页面
 
-Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前端开发调试工具，提供了电脑上调试移动设备前端页面的能力。开发者通过setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用DevTools工具可以在电脑上调试移动设备上的前端网页，设备需为4.1.0及以上版本。
+Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前端开发调试工具，提供了电脑上调试移动设备前端页面的能力。开发者利用DevTools工具可以在电脑上调试移动设备上的前端网页，设备需为4.1.0及以上版本。
 
 ## 调试步骤
 
 ### 应用代码开启Web调试开关
-
-调试网页前，需要应用侧代码调用setWebDebuggingAccess()接口开启Web调试开关。
 
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
@@ -15,10 +13,10 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前�
     <!-- compile -->
 
     ```cangjie
-    // index.cj
-    import ohos.state_macro_manage.*
+    // xxx.cj
+    import ohos.arkui.state_macro_manage.*
     import kit.ArkWeb.WebviewController
-    import kit.UIKit.{Web, BusinessException}
+    import kit.ArkUI.{Web, BusinessException}
 
     @Entry
     @Component

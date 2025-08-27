@@ -13,12 +13,8 @@
     <!-- compile -->
 
     ```cangjie
-    import kit.ImageKit.*
-    
     // 获取图片大小。
     let info = pixelMap.getImageInfo()
-    AppLog.info('info width = ${info.size.width}')
-    AppLog.info('info height = ${info.size.height}')
     ```
 
 3. 进行图像变换操作。
@@ -36,7 +32,7 @@
      // y：裁剪起始点纵坐标0。
      // height：裁剪高度400，方向为从上往下（裁剪后的图片高度为400）。
      // width：裁剪宽度400，方向为从左到右（裁剪后的图片宽度为400）。
-     pixelMap.crop(Region(Size(height: 400, width: 400), 0, 0))
+     pixelMap.crop(Region(Size(400, 400), 0, 0))
      ```
 
      ![cropping](./figures/cropping.jpeg)

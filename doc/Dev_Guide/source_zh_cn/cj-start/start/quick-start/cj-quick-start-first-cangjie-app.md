@@ -59,7 +59,7 @@ Project_name
 - **AppScope > app.json5**：应用的全局配置信息。
 - **entry**：仓颉工程模块，编译构建生成一个HAP包。
     - **src > main > cangjie**：用于存放仓颉源码。
-    - **src > main > resources**：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，请参见[资源分类与访问](../ide-resource-categories-and-access.md)。
+    - **src > main > resources**：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，请参见[资源分类与访问](../ide-resource-categories-and-access.md#资源分类与访问)。
     - **src > main > module.json5**：stage 模块配置文件，主要包含 HAP 的配置信息、应用在具体设备上的配置信息以及应用的全局配置信息。
     - **build-profile.json5**：当前的模块信息 、编译信息配置项，包括buildOption、targets配置等。
     - **hvigorfile.ts**：模块级编译构建任务脚本。
@@ -94,26 +94,28 @@ Project_name
 
    **index.cj**文件的初始代码如下：
 
+   <!-- compile -->
+
    ```cangjie
    // index.cj
    package ohos_app_cangjie_entry
 
    internal import ohos.base.LengthProp
-   internal import ohos.component.Column
-   internal import ohos.component.Row
-   internal import ohos.component.Button
-   internal import ohos.component.Text
-   internal import ohos.component.CustomView
-   internal import ohos.component.CJEntry
-   internal import ohos.component.loadNativeView
-   internal import ohos.component.FontWeight
-   internal import ohos.state_manage.SubscriberManager
-   internal import ohos.state_manage.ObservedProperty
-   internal import ohos.state_manage.LocalStorage
-   import ohos.state_macro_manage.Entry
-   import ohos.state_macro_manage.Component
-   import ohos.state_macro_manage.State
-   import ohos.state_macro_manage.r
+   internal import ohos.arkui.component.Column
+   internal import ohos.arkui.component.Row
+   internal import ohos.arkui.component.Button
+   internal import ohos.arkui.component.Text
+   internal import ohos.arkui.component.CustomView
+   internal import ohos.arkui.component.CJEntry
+   internal import ohos.arkui.component.loadNativeView
+   internal import ohos.arkui.component.FontWeight
+   internal import ohos.arkui.state_management.SubscriberManager
+   internal import ohos.arkui.state_management.ObservedProperty
+   internal import ohos.arkui.state_management.LocalStorage
+   import ohos.arkui.state_macro_manage.Entry
+   import ohos.arkui.state_macro_manage.Component
+   import ohos.arkui.state_macro_manage.State
+   import ohos.arkui.state_macro_manage.r
 
    @Entry
    @Component
@@ -139,26 +141,28 @@ Project_name
 
    在默认页面基础上，我们添加一个Button组件，作为按钮响应用户点击，从而实现跳转到另一个页面。**index.cj**文件的示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // index.cj
    package ohos_app_cangjie_entry
 
    internal import ohos.base.LengthProp
-   internal import ohos.component.Column
-   internal import ohos.component.Row
-   internal import ohos.component.Button
-   internal import ohos.component.Text
-   internal import ohos.component.CustomView
-   internal import ohos.component.CJEntry
-   internal import ohos.component.loadNativeView
-   internal import ohos.component.FontWeight
-   internal import ohos.state_manage.SubscriberManager
-   internal import ohos.state_manage.ObservedProperty
-   internal import ohos.state_manage.LocalStorage
-   import ohos.state_macro_manage.Entry
-   import ohos.state_macro_manage.Component
-   import ohos.state_macro_manage.State
-   import ohos.state_macro_manage.r
+   internal import ohos.arkui.component.Column
+   internal import ohos.arkui.component.Row
+   internal import ohos.arkui.component.Button
+   internal import ohos.arkui.component.Text
+   internal import ohos.arkui.component.CustomView
+   internal import ohos.arkui.component.CJEntry
+   internal import ohos.arkui.component.loadNativeView
+   internal import ohos.arkui.component.FontWeight
+   internal import ohos.arkui.state_management.SubscriberManager
+   internal import ohos.arkui.state_management.ObservedProperty
+   internal import ohos.arkui.state_management.LocalStorage
+   import ohos.arkui.state_macro_manage.Entry
+   import ohos.arkui.state_macro_manage.Component
+   import ohos.arkui.state_macro_manage.State
+   import ohos.arkui.state_macro_manage.r
 
    @Entry
    @Component
@@ -213,15 +217,17 @@ Project_name
 
    参照第一个页面，在第二个页面添加Text组件和Button组件，并设置其样式。**second.cj**文件的示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // second.cj
    package ohos_app_cangjie_entry
 
-   import ohos.state_macro_manage.Entry
-   import ohos.state_macro_manage.Component
-   import ohos.state_macro_manage.State
-   import ohos.state_macro_manage.r
-   import ohos.component.Button
+   import ohos.arkui.state_macro_manage.Entry
+   import ohos.arkui.state_macro_manage.Component
+   import ohos.arkui.state_macro_manage.State
+   import ohos.arkui.state_macro_manage.r
+   import ohos.arkui.component.Button
 
    @Entry
    @Component
@@ -257,27 +263,29 @@ Project_name
 
    在第一个页面中，跳转按钮绑定onClick事件，单击按钮时跳转到第二页。**index.cj**文件的示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // index.cj
    package ohos_app_cangjie_entry
 
    internal import ohos.base.LengthProp
-   internal import ohos.component.Column
-   internal import ohos.component.Row
-   internal import ohos.component.Button
-   internal import ohos.component.Text
-   internal import ohos.component.CustomView
-   internal import ohos.component.CJEntry
-   internal import ohos.component.loadNativeView
-   internal import ohos.component.FontWeight
-   internal import ohos.state_manage.SubscriberManager
-   internal import ohos.state_manage.ObservedProperty
-   internal import ohos.state_manage.LocalStorage
-   import ohos.state_macro_manage.Entry
-   import ohos.state_macro_manage.Component
-   import ohos.state_macro_manage.State
-   import ohos.state_macro_manage.r
-   import ohos.router.Router // 导入页面路由模块
+   internal import ohos.arkui.component.Column
+   internal import ohos.arkui.component.Row
+   internal import ohos.arkui.component.Button
+   internal import ohos.arkui.component.Text
+   internal import ohos.arkui.component.CustomView
+   internal import ohos.arkui.component.CJEntry
+   internal import ohos.arkui.component.loadNativeView
+   internal import ohos.arkui.component.FontWeight
+   internal import ohos.arkui.state_management.SubscriberManager
+   internal import ohos.arkui.state_management.ObservedProperty
+   internal import ohos.arkui.state_management.LocalStorage
+   import ohos.arkui.state_macro_manage.Entry
+   import ohos.arkui.state_macro_manage.Component
+   import ohos.arkui.state_macro_manage.State
+   import ohos.arkui.state_macro_manage.r
+   import ohos.arkui.ui_context.* // 导入页面路由模块
 
    @Entry
    @Component
@@ -297,7 +305,7 @@ Project_name
                    // 添加按钮，以响应用户点击
                    Button("Next")
                    .onClick {
-                       evt => Router.push(url: "Second") // 实现到第二页的跳转
+                       evt => getUIContext().getRouter().pushUrl(url: "Second") // 实现到第二页的跳转
                    }
                    .fontSize(30)
                    .width(180)
@@ -314,15 +322,17 @@ Project_name
 
    在第二个页面中，返回按钮绑定onClick事件，单击按钮时返回到第一页。**second.cj**文件的示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // second.cj
    package ohos_app_cangjie_entry
 
-   import ohos.state_macro_manage.Entry
-   import ohos.state_macro_manage.Component
-   import ohos.state_macro_manage.State
-   import ohos.state_macro_manage.r
-   import ohos.router.Router // 导入页面路由模块
+   import ohos.arkui.state_macro_manage.Entry
+   import ohos.arkui.state_macro_manage.Component
+   import ohos.arkui.state_macro_manage.State
+   import ohos.arkui.state_macro_manage.r
+   import ohos.arkui.ui_context.* // 导入页面路由模块
 
    @Entry
    @Component
@@ -357,7 +367,7 @@ Project_name
 
 1. 将搭载OpenHarmony系统的真机与电脑连接。
 
-2. 真机连接成功后，进入**File > Project Structure > Project > Signing Configs**界面勾选**Support OpenHarmony**和**Automatically generate signature**，单击界面提示的**Sign In**，等待自动签名完成后，单击**OK**即可。如下图所示：
+2. 真机连接成功后，进入**File > Project Structure > Project > Signing Configs**界面勾选**Support OpenHarmony**和**Automatically generate signature**，单击界面提示的**Sign In**，使用用户账号登录。等待自动签名完成后，单击**OK**即可。如下图所示：
 
    ![buildSign](../../figures/buildSign.png)
 

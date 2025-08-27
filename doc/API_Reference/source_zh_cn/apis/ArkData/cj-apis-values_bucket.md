@@ -1,4 +1,4 @@
-# ohos.values_bucket（数据集）
+# ohos.data.values_bucket
 
 数据集(ValuesBucket) 是开发者向数据库插入的数据集合，数据集以键值对的形式进行传输。
 
@@ -8,16 +8,14 @@
 import kit.ArkData.*
 ```
 
-## enum VBValueType
+## enum ValueType
 
 ```cangjie
-public enum VBValueType {
-    | Null
+public enum ValueType {
     | Integer(Int64)
     | Double(Float64)
-    | Str(String)
+    | StringValue(String)
     | Boolean(Bool)
-    | ...
 }
 ```
 
@@ -63,22 +61,10 @@ Integer(Int64)
 
 **起始版本：** 21
 
-### Null
+### StringValue(String)
 
 ```cangjie
-Null
-```
-
-**功能：** 表示字段类型为空类型。
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
-
-**起始版本：** 21
-
-### Str(String)
-
-```cangjie
-Str(String)
+StringValue(String)
 ```
 
 **功能：** 表示字段类型为字符串。

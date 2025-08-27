@@ -27,19 +27,19 @@
 - **隐式Want**：在启动目标应用组件时，调用方传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数中未指定abilityName，称为隐式Want。
 
   当需要处理的对象不明确时，可以使用隐式Want，在当前应用中使用其他应用提供的某个能力，而不关心提供该能力的具体应用。隐式Want使用[skills标签](../cj-start/basic-knowledge/module-configuration-file.md#skills标签)来定义需要使用的能力，并由系统匹配声明支持该请求的所有应用来处理请求。例如，需要打开一个链接的请求，系统将匹配所有声明支持该请求的应用，然后让用户选择使用哪个应用打开链接。
-
+  
   <!-- compile -->
 
   ```cangjie
   import kit.AbilityKit.Want
-
+  
   // uncomment line below if wish to implicitly query only in the specific bundle.
   // bundleName: 'com.example.myapplication'
   let wantInfo = Want(action: "ohos.want.action.search",
       // entities can be omitted
       entities: ["entity.system.browsable"],
       uri: "https://www.test.com:8080/query/student",
-      `type`: "text/plain")
+      wantType: "text/plain")
   ```
 
     > **说明：**

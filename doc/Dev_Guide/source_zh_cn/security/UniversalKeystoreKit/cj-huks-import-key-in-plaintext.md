@@ -19,13 +19,17 @@
 
 ### 导入AES256密钥
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /* 以下以导入AES256密钥的Callback操作使用为例 */
+/* 以下以生成DH密钥为例 */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-/* 以下以生成DH密钥为例 */
-import kit.UniversalKeystoreKit.*
 
 /* 密钥材料 */
 let plainTextSize32: Array<UInt8> = [0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a, 0x7c, 0x86,
@@ -37,21 +41,21 @@ let keyAlias = 'AES256Alias_sample'
 /* 2.封装密钥属性集和密钥材料 */
 let properties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_AES
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_SIZE,
+        HuksTag.HuksTagKeySize,
         HuksKeySize.HUKS_AES_KEY_SIZE_256
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
-        HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        HuksTag.HuksTagPurpose,
+        HuksParamValue.Uint32Value(1 | 2)
     )
 ]
 let options: HuksOptions = HuksOptions(
-    properties,
-    plainTextSize32
+    properties: properties,
+    inData: plainTextSize32
 )
 
 /* 3.明文导入密钥 */
@@ -59,14 +63,19 @@ func importKeyFunc(): Unit {
     try {
         importKeyItem(keyAlias, options)
     } catch (e: Exception) {
-        AppLog.error("callback: importKeyItem input arg invalid ${e}")
+        loggerInfo("callback: importKeyItem input arg invalid ${e}")
     }
+}
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
 }
 ```
 
 ### 导入X25519密钥公钥
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /* 以下以生成DH密钥为例 */
 import kit.UniversalKeystoreKit.*
@@ -119,7 +128,8 @@ func importKeyFunc(): Unit {
 
 调用[isKeyItemExist](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions)验证密钥是否存在，如密钥存在即表示密钥导入成功。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 import kit.UniversalKeystoreKit.*
 

@@ -14,7 +14,7 @@
 
 ## 加载网络页面
 
-开发者可以在Web组件创建时，指定默认加载的网络页面 。在默认页面加载完成后，如果开发者需要变更此Web组件显示的网络页面，可以通过调用loadUrl()接口加载指定的网页。Web组件的第一个参数变量src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过loadUrl()重新加载。
+开发者可以在Web组件创建时，指定默认加载的网络页面 。[Web组件](../../../API_Reference/source_zh_cn/arkui-cj/cj-web-web.md#web)的第一个参数变量src不能通过状态变量（例如：@State）动态更改地址。
 
 在下面的示例中，在Web组件加载完“www.example.com”页面后，开发者可通过loadUrl接口将此Web组件显示页面变更为“www.example1.com”。
 
@@ -22,9 +22,9 @@
 
 ```cangjie
 // index.cj
-import ohos.state_macro_manage.*
+import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.WebviewController
-import kit.UIKit.{ Web, BusinessException, Button }
+import kit.ArkUI.{ Web, BusinessException }
 
 @Entry
 @Component
@@ -52,7 +52,7 @@ class EntryView {
 
 在下面的示例中展示加载本地页面文件的方法：
 
-将本地页面文件放在应用的rawfile目录下，开发者可以在Web组件创建的时候指定默认加载的本地页面 ，并且加载完成后可通过调用loadUrl()接口变更当前Web组件的页面。
+将本地页面文件放在应用的rawfile目录下，开发者可以在Web组件创建的时候指定默认加载的本地页面。
 
 加载本地html文件时引用本地css样式文件可以通过下面方法实现。
 
@@ -73,10 +73,10 @@ class EntryView {
 
     ```cangjie
     // index.cj
-    import ohos.state_macro_manage.*
+    import ohos.arkui.state_macro_manage.*
     import kit.LocalizationKit.{__GenerateResource__}
     import kit.ArkWeb.WebviewController
-    import kit.UIKit.{ Web, BusinessException, Button }
+    import kit.ArkUI.{ Web, BusinessException }
 
     @Entry
     @Component
@@ -126,7 +126,7 @@ class EntryView {
 
 加载沙箱路径下的本地页面文件示例如下：
 
-1. 通过构造的单例对象GlobalContext获取沙箱路径，需要开启应用中文件系统的访问fileAccess权限。
+1. 通过构造的单例对象GlobalContext获取沙箱路径，需要开启应用中文件系统的访问[fileAccess](../../../API_Reference/source_zh_cn/arkui-cj/cj-web-web.md#func-fileaccessbool)权限。
 
     <!-- compile -->
 
@@ -160,9 +160,9 @@ class EntryView {
 
     ```cangjie
     // index.cj
-    import ohos.state_macro_manage.*
+    import ohos.arkui.state_macro_manage.*
     import kit.ArkWeb.WebviewController
-    import kit.UIKit.Web
+    import kit.ArkUI.Web
 
     @Entry
     @Component
@@ -195,7 +195,7 @@ class EntryView {
 
    以filesDir为例，获取沙箱路径。
 
-   <!-- compile -->
+    <!-- compile -->
 
    ```cangjie
    // main_ability.cj
@@ -226,15 +226,49 @@ class EntryView {
 
 ## 加载HTML格式的文本数据
 
+当开发者不需要加载整个页面，只需要显示一些页面片段时，可通过此功能来快速加载页面，当加载大量html文件时，需设置第四个参数baseUrl为"data"。
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+import ohos.arkui.state_macro_manage.*
+import kit.ArkWeb.WebviewController
+import kit.ArkUI.{ Web, BusinessException }
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+
+    func build() {
+        Column {
+            Button("loadData").onClick { evt =>
+                try {
+                    // 点击按钮时，通过loadData，加载HTML格式的文本数据
+                    webController.loadData("<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                      "text/html",
+                      "UTF-8")
+                } catch (e: BusinessException) {
+                    AppLog.error("loadData ErrorCode: ${e.code},  Message: ${e.message}")
+                }
+            }
+            // 组件创建时，加载www.example.com
+            Web(src: 'www.example.com', controller: webController)
+        }
+    }
+}
+```
+
 Web组件可以通过data url方式直接加载HTML字符串。
 
 <!-- compile -->
 
 ```cangjie
 // index.cj
-import ohos.state_macro_manage.*
+import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.WebviewController
-import kit.UIKit.Web
+import kit.ArkUI.Web
 
 @Entry
 @Component

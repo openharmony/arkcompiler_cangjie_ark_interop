@@ -1,6 +1,6 @@
 # 手电筒使用（仓颉）
 
-手电筒模式的使用是通过操作设备启用手电筒功能，使设备的手电筒功能持续保持常亮状态。
+手电筒模式的使用是通过操作终端启用手电筒功能，使设备的手电筒功能持续保持常亮状态。
 
 在使用相机应用并操作手电筒功能时，存在以下几种情况说明：
 
@@ -19,7 +19,6 @@
     ```cangjie
     import kit.CameraKit.*
     import kit.BasicServicesKit.*
-    import ohos.base.Callback1Argument
     ```
 
 2. 通过[CameraManager](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager)类中的[isTorchSupported](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-istorchsupported)方法，检测当前设备是否支持手电筒功能。
@@ -64,7 +63,7 @@
 
 在相机应用开发过程中，可以随时监听手电筒状态，包括手电筒打开、手电筒关闭、手电筒不可用、手电筒恢复可用。手电筒状态发生变化，可通过回调函数获取手电筒模式的变化。
 
-通过注册TorchStatusChange事件，通过回调返回监听结果，callback返回TorchStatusInfo参数，参数的具体内容请参见相机管理器回调接口实例[TorchStatusInfo](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#struct-torchstatusinfo)。
+通过注册TorchStatusChange事件，通过回调返回监听结果，callback返回TorchStatusInfo参数，参数的具体内容请参见相机管理器回调接口实例[TorchStatusInfo](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#class-torchstatusinfo)。
 
 <!-- compile -->
 
@@ -76,6 +75,6 @@ class TorchStatusChangeCallBack <: Callback1Argument<TorchStatusInfo> {
 }
 
 func onTorchStatusChange(cameraManager: CameraManager): Unit {
-    cameraManager.on(CameraCallbackType.TorchStatusChange, TorchStatusChangeCallBack())
+    cameraManager.on(CameraEvents.TorchStatusChange, TorchStatusChangeCallBack())
 }
 ```

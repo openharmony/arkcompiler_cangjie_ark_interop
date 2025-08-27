@@ -13,12 +13,6 @@
 蓝牙技术是一种无线通信技术，可以在短距离内传输数据。可以用于连接手机、耳机、音箱、键盘、鼠标、打印机等各种设备。特点是低功耗、低成本、简单易用。目前已经发展到了第五代，支持更高的数据传输速率和更广的覆盖范围。
 下面简介几种常见的蓝牙涉及的模块：
 
-- **CONNECTION连接模块**
-
-  蓝牙连接模块，提供了设备发现、配对连接、获取本端及外设信息的接口功能。使用和外设交互的功能，需要使用该模块提供的能力和外设配对、连接成功，才能继续进行后续的数据传输等功能。
-
-  详情请参见[ohos.bluetooth.connection API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-bluetooth-connection.md)。
-
 - **BLE模块（低功耗蓝牙）**
 
   BLE是Bluetooth Low Energy的缩写，意为“低功耗蓝牙”。它是一种能够在低功耗情况下进行通信的蓝牙技术，与传统蓝牙相比，BLE的功耗更低，适用于需要长时间运行的低功耗设备，如智能手表、健康监测设备、智能家居等。
@@ -29,6 +23,7 @@
 
   A2DP是Advanced Audio Distribution Profile的缩写，即高级音频分发配置文件。它是一种蓝牙协议，允许无线传输高品质音频流，例如音乐或语音通话，同时支持双向通信，因此可以用于耳机、扬声器、汽车音响等设备。
 
+  详情请参见[ohos.bluetooth.a2dp API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-bluetooth-a2dp.md)。
 
 相关开发指南请参见：[蓝牙开发指南](./bluetooth/cj-bluetooth-overview.md)。
 
@@ -41,17 +36,21 @@ WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数
 - **STA模式**
   STA模式即工作站模式，可以理解为某网络中的一个工作站即客户端。当某设备具备该功能时，它可以连到另外的一个路由网络中，如家用路由器，通常用于提供网络的数据上行服务。
 
-  详情请参见[ohos.wifi_manager API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
+  详情请参见[ohos.wifiManager API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
 
 - **P2P模式**
   P2P模式即为Wi-Fi Direct；Wi-Fi Direct 是一种点对点连接技术，它可以在两台 STA 之间直接建立 TCP/IP 链接，并不需要AP的参与；其中一台STA会起到传统意义上的AP的作用，称为Group Owner(GO)，另外一台station则称为Group Client(GC)，像连接AP一样连接到GO。
 
-  详情请参见[ohos.wifi_manager API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
+  详情请参见[ohos.wifiManager API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
 
 - **AP模式**
   AP模式为加入无线局域网的成员设备（即客户端）提供下行数据业务，它提供以无线方式组建无线局域网WLAN，相当于WLAN的中心设备。
 
-  详情请参见[ohos.wifi_manager API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
+  详情请参见[ohos.wifiManager API参考](../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
+
+### NFC简介
+
+NFC英文全称Near Field Communication，近距离无线通信。NFC服务提供NFC开关控制、NFC标签读写、NFC卡模拟等业务功能。
 
 ### 运作机制
 

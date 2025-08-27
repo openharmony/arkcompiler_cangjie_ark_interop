@@ -40,9 +40,9 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
         "name": "EntryAbility", // UIAbility组件的名称
         "srcEntry": "ohos_app_cangjie_entry.MainAbility", // UIAbility组件的代码路径
         "description": "$string:EntryAbility_desc", // UIAbility组件的描述信息
-        "icon": "$media:icon", // UIAbility组件的图标
+        "icon": "$media:startIcon", // UIAbility组件的图标
         "label": "$string:EntryAbility_label", // UIAbility组件的标签
-        "startWindowIcon": "$media:icon", // UIAbility组件启动页面图标资源文件的索引
+        "startWindowIcon": "$media:startIcon", // UIAbility组件启动页面图标资源文件的索引
         "startWindowBackground": "$color:start_window_background", // UIAbility组件启动页面背景颜色资源文件的索引
         // ...
       }
@@ -51,12 +51,12 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
 }
 ```
 
-同时，需要完成注册。（DevEco创建项目模板包含了注册）
+同时，需要完成注册。
 
 <!-- compile -->
 
 ```cangjie
-import ohos.ability.UIAbility
+import kit.AbilityKit.UIAbility
 
 let ENTRYABILITY_REGISTER_RESULT = UIAbility.registerCreator("EntryAbility", {=> MainAbility()})
 ```

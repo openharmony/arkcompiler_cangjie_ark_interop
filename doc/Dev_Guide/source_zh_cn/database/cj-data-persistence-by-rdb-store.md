@@ -48,14 +48,14 @@
 
 ## 开发步骤
 
-关系库数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发，详情请参见[关系型数据库异常重建](cj-data-backup-and-restore.md#关系型数据库异常重建)。
+关系库数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发。
 
 1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.BusinessException
     import kit.ArkData.*
     import kit.AbilityKit.getStageContext
     import std.collection.HashMap
@@ -247,10 +247,9 @@
 
     ```cangjie
     try {
-        deleteRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S3)) // 需获取 context 应用上下文，详见本文使用说明
+        deleteRdbStore(getStageContext(this.context), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S3))
         AppLog.info("Succeeded in delete RdbStore.")
     } catch (e: BusinessException) {
         AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
     }
     ```
-

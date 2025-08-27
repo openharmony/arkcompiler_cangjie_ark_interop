@@ -4,9 +4,13 @@
 
 本章主要介绍启动应用内的Ability组件的方式。
 
-- [启动应用内的UIAbility](#启动应用内的uiability)
-- [启动应用内的UIAbility并获取返回结果](#启动应用内的uiability并获取返回结果)
-- [启动UIAbility的指定页面](#启动uiability的指定页面)
+- [启动应用内的UIAbility组件](#启动应用内的uiability组件)
+  - [启动应用内的UIAbility](#启动应用内的uiability)
+  - [启动UIAbility的指定页面](#启动uiability的指定页面)
+    - [概述](#概述)
+    - [调用方UIAbility指定启动页面](#调用方uiability指定启动页面)
+    - [目标UIAbility冷启动](#目标uiability冷启动)
+    - [目标UIAbility热启动](#目标uiability热启动)
 
 ## 启动应用内的UIAbility
 
@@ -14,18 +18,17 @@
 
 假设应用中有两个Ability：EntryAbility和FuncAbility（可以在同一个Module中，也可以在不同的Module中），需要从EntryAbility的页面中启动FuncAbility。
 
-> 这段代码依赖 [stdx包](https://gitcode.com/Cangjie/cangjie_stdx)
-
 1. 在EntryAbility中，通过调用[startAbility()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-startabilitywant)方法启动Ability，[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)为Ability实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的Ability属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
-
+    
     <!-- compile -->
 
     ```cangjie
-    import kit.UIKit.Button
-    import ohos.base.{BusinessException, AppLog}
+    import kit.ArkUI.Button
+    import ohos.business_exception.*
     import kit.AbilityKit.{Want, UIAbilityContext}
     import std.collection.HashMap
-    import stdx.encoding.json.{JsonValue, JsonObject, JsonString}  // 导入stdx请参考 http://gitcode.com/Cangjie/cangjie_stdx
+
+    var globalContext:?UIAbilityContext = None
 
     // 见获取UIAbility的上下文信息章节
     func getContext(): UIAbilityContext {
@@ -42,22 +45,22 @@
                         evt =>
                         // context为调用方Ability的AbilityContext
                         let context = getContext()
-                        let parametersMap = HashMap<String, JsonValue>()
-                        parametersMap.add("info", JsonString("来自EntryAbility PageAbilityComponentsInteractive页面"))
+                        let parametersMap = HashMap<String, WantValueType>()
+                        parametersMap.add("info", StringValue("来自EntryAbility PageAbilityComponentsInteractive页面"))
                         let want = Want(
                             deviceId: "", // deviceId为空表示本设备
                             bundleName: "com.samples.stagemodelabilitydevelop",
                             abilityName: "FuncAbilityA",
                             moduleName: "entry", // moduleName非必选
                             // 自定义信息
-                            parameters: JsonObject(parametersMap).toString()
+                            parameters: parametersMap
                         )
                         try {
                             context
                                 .startAbility(want)
                                 .get()
                         } catch (e: BusinessException) {
-                            AppLog.error("Failed to start FuncAbility. Code is ${e.code}, message is ${e.message}")
+                            HILog.info(0, "device_interaction", "Failed to start FuncAbility. Code is ${e.code}, message is ${e.message}")
                         }
                     }
                 }.width(100.percent)
@@ -67,11 +70,10 @@
     ```
 
 2. 在FuncAbility的[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-oncreatewant-launchparam)或者[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-onnewwantwant-launchparam)生命周期回调文件中接收EntryAbility传递过来的参数。
-
+    
     <!-- compile -->
 
     ```cangjie
-    import ohos.base.AppLog
     import kit.AbilityKit.{UIAbility, UIAbilityContext, LaunchParam, Want}
 
     var globalFuncAbilityAContext: ?UIAbilityContext = None
@@ -91,14 +93,15 @@
     > 在被拉起的FuncAbility中，可以通过获取传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数的`parameters`来获取拉起方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiability)的PID、Bundle Name等信息。
 
 3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiability)实例，在FuncAbility中通过调用[terminateSelf()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-terminateself)方法实现。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
-
+    
     <!-- compile -->
 
     ```cangjie
-    import ohos.base.{BusinessException, AppLog}
+    import ohos.business_exception.*
     import kit.AbilityKit.UIAbilityContext
 
-    // globalFuncAbilityAContext在上文定义
+    var globalFuncAbilityAContext: ?UIAbilityContext = None
+    // 见获取UIAbility的上下文信息章节
     func getFuncAbilityAContext(): UIAbilityContext {
         return globalFuncAbilityAContext.getOrThrow()
     }
@@ -115,7 +118,7 @@
                         try {
                             context.terminateSelf().get()
                         } catch (e: BusinessException) {
-                            AppLog.error("Failed to start terminate self. Code is ${e.code}, message is ${e.message}")
+                            HiLog.Info(0, "device_interaction", "Failed to start terminate self. Code is ${e.code}, message is ${e.message}")
                         }
                     }
                     // ...
@@ -128,202 +131,6 @@
     > **说明：**
     >
     > 调用terminateSelf()方法停止当前Ability实例时，默认会保留该实例的快照（Snapshot），即在最近任务列表中仍然能查看到该实例对应的任务。如不需要保留该实例的快照，可以在其对应Ability的[module.json5配置文件](../cj-start/basic-knowledge/module-configuration-file.md)中，将[abilities标签](../cj-start/basic-knowledge/module-configuration-file.md#abilities标签)的removeMissionAfterTerminate字段配置为true。
-
-## 启动应用内的UIAbility并获取返回结果
-
-在一个EntryAbility启动另外一个FuncAbility时，希望在被启动的FuncAbility完成相关业务后，能将结果返回给调用方。例如在应用中将入口功能和帐号登录功能分别设计为两个独立的[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiability)，在帐号登录Ability中完成登录操作后，需要将登录的结果返回给入口Ability。
-
-> 这段代码依赖 [stdx包](https://gitcode.com/Cangjie/cangjie_stdx)
-
-1. 在EntryAbility中，调用[startAbilityForResult()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-startabilityforresultwant-asynccallbackabilityresult)接口启动FuncAbility，异步回调中的data用于接收FuncAbility停止自身后返回给EntryAbility的信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
-
-    <!-- compile -->
-
-    ```cangjie
-    import kit.UIKit.Button
-    import ohos.base.{BusinessException, AppLog, AsyncError}
-    import kit.AbilityKit.{Want, UIAbilityContext, AbilityResult}
-    import std.collection.HashMap
-    import stdx.encoding.json.{JsonValue, JsonObject, JsonString}  // 导入stdx请参考 http://gitcode.com/Cangjie/cangjie_stdx
-
-    const RESULT_CODE: Int32 = 1001
-    // 见获取UIAbility的上下文信息章节
-    func getContext(): UIAbilityContext {
-        return globalContext.getOrThrow()
-    }
-
-    var resultCallback = {
-        errorCode: Option<AsyncError>, data: Option<AbilityResult> => match (errorCode) {
-            case Some(e) => AppLog.info("callback error: errcode is ${e.code}")
-            case _ => match (data) {
-                case Some(value) =>
-                    if (value.resultCode == RESULT_CODE) {
-                        let infoJSobj = JsonValue
-                            .fromStr(value
-                                .want
-                                .parameters)
-                            .asObject()
-                        let map = infoJSobj.getFields()
-                        let info = ((map.get("info") ?? JsonString("")) as JsonString ?? JsonString("")).getValue()
-                        AppLog.info("startAbilityForResult get info: ${info}")
-                    }
-                case _ => AppLog.info("callback data is null")
-            }
-        }
-    }
-
-    @Entry
-    @Component
-    class PageAbilityComponentsInteractive {
-        func build() {
-            Row {
-                Column {
-                    Button().onClick {
-                        evt =>
-                        // context为调用方Ability的AbilityContext
-                        let context = getContext()
-                        let parametersMap = HashMap<String, JsonValue>()
-                        parametersMap.add("info", JsonString("来自EntryAbility PageAbilityComponentsInteractive页面"))
-                        let want = Want(
-                            deviceId: "", // deviceId为空表示本设备
-                            bundleName: "com.samples.stagemodelabilitydevelop",
-                            abilityName: "FuncAbilityA",
-                            moduleName: "entry", // moduleName非必选
-                            // 自定义信息
-                            parameters: JsonObject(parametersMap).toString()
-                        )
-                        try {
-                            context.startAbilityForResult(want,resultCallback)
-                        } catch (e: BusinessException) {
-                            AppLog.error("Failed to start FuncAbility. Code is ${e.code}, message is ${e.message}")
-                        }
-                    }
-                }.width(100.percent)
-            }.height(100.percent)
-        }
-    }
-    ```
-
-2. 在FuncAbility停止自身时，需要调用[terminateSelfWithResult()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-terminateselfwithresultabilityresult)方法，入参[abilityResult](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#struct-abilityresult)为FuncAbility需要返回给EntryAbility的信息。
-
-    <!-- compile -->
-
-    ```cangjie
-    import kit.UIKit.Button
-    import ohos.base.{BusinessException, AppLog}
-    import kit.AbilityKit.{UIAbilityContext, AbilityResult}
-    import std.collection.HashMap
-    import stdx.encoding.json.{JsonValue, JsonObject, JsonString}  // 导入stdx请参考 http://gitcode.com/Cangjie/cangjie_stdx
-
-    const RESULT_CODE_A: Int32 = 1001
-
-    // globalFuncAbilityAContext在上文定义
-    func getFuncAbilityAContext(): UIAbilityContext {
-        return globalFuncAbilityAContext.getOrThrow()
-    }
-
-    @Entry
-    @Component
-    class PageFuncAbilityA {
-        func build() {
-            Row {
-                Column {
-                    Button("FuncAbility").onClick {
-                        evt =>
-                        let context = getFuncAbilityAContext()
-                        let parametersMap = HashMap<String, JsonValue>()
-                        parametersMap.add("info", JsonString("来自FuncAbility Index页面"))
-                        let abilityResult = AbilityResult(RESULT_CODE_A, Want(
-                            deviceId: "", // deviceId为空表示本设备
-                            bundleName: "com.samples.stagemodelabilitydevelop",
-                            abilityName: "FuncAbilityB",
-                            moduleName: "entry", // moduleName非必选
-                            // 自定义信息
-                            parameters: JsonObject(parametersMap).toString()
-                        ))
-                        try {
-                            context
-                                .terminateSelfWithResult(abilityResult)
-                                .get()
-                        } catch (e: BusinessException) {
-                            AppLog.error("Failed to start terminate self. Code is ${e.code}, message is ${e.message}")
-                        }
-                    }
-                    // ...
-                }.width(100.percent)
-            }.height(100.percent)
-        }
-    }
-    ```
-
-3. FuncAbility停止自身后，EntryAbility通过[startAbilityForResult()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-startabilityforresultwant-asynccallbackabilityresult)方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
-
-    <!-- compile -->
-
-    ```cangjie
-    import kit.UIKit.Button
-    import ohos.base.{BusinessException, AppLog, AsyncError}
-    import kit.AbilityKit.{Want, UIAbilityContext, AbilityResult}
-    import std.collection.HashMap
-    import stdx.encoding.json.{JsonValue, JsonObject, JsonString}  // 导入stdx请参考 http://gitcode.com/Cangjie/cangjie_stdx
-
-    const RESULT_CODE: Int32 = 1001
-    // 见获取UIAbility的上下文信息章节
-    func getContext(): UIAbilityContext {
-        return globalContext.getOrThrow()
-    }
-
-    var resultCallback = {
-        errorCode: Option<AsyncError>, data: Option<AbilityResult> => match (errorCode) {
-            case Some(e) => AppLog.info("callback error: errcode is ${e.code}")
-            case _ => match (data) {
-                case Some(value) =>
-                    if (value.resultCode == RESULT_CODE) {
-                        let infoJSobj = JsonValue
-                            .fromStr(value
-                                .want
-                                .parameters)
-                            .asObject()
-                        let map = infoJSobj.getFields()
-                        let info = ((map.get("info") ?? JsonString("")) as JsonString ?? JsonString("")).getValue()
-                        AppLog.info("startAbilityForResult get info: ${info}")
-                    }
-                case _ => AppLog.info("callback data is null")
-            }
-        }
-    }
-
-    @Entry
-    @Component
-    class PageAbilityComponentsInteractive {
-        func build() {
-            Row {
-                Column {
-                    Button().onClick {
-                        evt =>
-                        // context为调用方Ability的AbilityContext
-                        let context = getContext()
-                        let parametersMap = HashMap<String, JsonValue>()
-                        parametersMap.add("info", JsonString("来自EntryAbility PageAbilityComponentsInteractive页面"))
-                        let want = Want(
-                            deviceId: "", // deviceId为空表示本设备
-                            bundleName: "com.samples.stagemodelabilitydevelop",
-                            abilityName: "FuncAbilityA",
-                            moduleName: "entry", // moduleName非必选
-                            // 自定义信息
-                            parameters: JsonObject(parametersMap).toString()
-                        )
-                        try {
-                            context.startAbilityForResult(want,resultCallback)
-                        } catch (e: BusinessException) {
-                            AppLog.error("Failed to start FuncAbility. Code is ${e.code}, message is ${e.message}")
-                        }
-                    }
-                }.width(100.percent)
-            }.height(100.percent)
-        }
-    }
-    ```
 
 ## 启动UIAbility的指定页面
 
@@ -340,18 +147,16 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 
 ### 调用方UIAbility指定启动页面
 
-调用方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiability)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，FuncA对应功能A页面），此时需要在传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数中配置指定的页面信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
-
-> 这段代码依赖 [stdx包](https://gitcode.com/Cangjie/cangjie_stdx)
+调用方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiability)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，FuncA对应功能A页面），此时需要在传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数中配置指定的页面信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息]
+(cj-uiability-usage.md#获取uiability的上下文信息)。
 
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.Button
-import ohos.base.{BusinessException, AppLog}
+import kit.ArkUI.Button
+import ohos.business_exception.*
 import kit.AbilityKit.{Want, UIAbilityContext, AbilityResult}
 import std.collection.HashMap
-import stdx.encoding.json.{JsonValue, JsonObject, JsonString}  // 导入stdx请参考 http://gitcode.com/Cangjie/cangjie_stdx
 
 // 见获取UIAbility的上下文信息章节
 func getContext(): UIAbilityContext {
@@ -368,20 +173,20 @@ class PageAbilityComponentsInteractive {
                     evt =>
                     // context为调用方Ability的AbilityContext
                     let context = getContext()
-                    let parametersMap = HashMap<String, JsonValue>()
-                    parametersMap.add("router", JsonString("FuncA"))
+                    let parametersMap = HashMap<String, WantValueType>()
+                    parametersMap.add("router", StringValue("FuncA"))
                     let want = Want(
                         deviceId: "", // deviceId为空表示本设备
                         bundleName: "com.samples.stagemodelabilitydevelop",
                         abilityName: "FuncAbilityA",
                         moduleName: "entry", // moduleName非必选
                         // 自定义信息
-                        parameters: JsonObject(parametersMap).toString()
+                        parameters: parametersMap
                     )
                     try {
                         context.startAbility(want)
                     } catch (e: BusinessException) {
-                        AppLog.error("Failed to start FuncAbility. Code is ${e.code}, message is ${e.message}")
+                        Hilog.info(0, "device_interaction", "Failed to start FuncAbility. Code is ${e.code}, message is ${e.message}")
                     }
                 }
             }.width(100.percent)
@@ -397,7 +202,6 @@ class PageAbilityComponentsInteractive {
 <!-- compile -->
 
 ```cangjie
-import ohos.base.AppLog
 import std.collection.HashMap
 import kit.AbilityKit.{UIAbility, LaunchParam, Want}
 
@@ -410,7 +214,7 @@ class FuncAbilityA <: UIAbility {
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        AppLog.info("FuncAbilityA onWindowStageCreate.")
+        Hilog.info(0, "device_interaction", "FuncAbilityA onWindowStageCreate.")
         windowStage.loadContent(router)
     }
 }
@@ -435,17 +239,15 @@ class FuncAbilityA <: UIAbility {
 开发步骤如下所示。
 
 1. 冷启动短信应用的UIAbility实例。
-
+    
     <!-- compile -->
 
     ```cangjie
     import std.collection.HashMap
     import ohos.base.{AppLog, BusinessException}
     import kit.AbilityKit.{UIAbility, LaunchParam, Want}
-    import kit.AbilityKit.UIAbilityContext
 
-    var globalFuncAbilityAContext: ?UIAbilityContext = None
-
+    var globalFuncAbilityAContext:?UIAbilityContext = None
     class FuncAbilityA <: UIAbility {
         var url = "Index"
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
@@ -459,22 +261,22 @@ class FuncAbilityA <: UIAbility {
         }
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("FuncAbilityA onWindowStageCreate.")
+            HiLog.info(0, "device_interaction", "FuncAbilityA onWindowStageCreate.")
             globalFuncAbilityAContext = this.context
             windowStage.loadContent(url)
         }
     }
     ```
 
-2. 在短信应用UIAbility的[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-onnewwantwant-launchparam)回调中解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数，通过Router对象，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
-
+2. 在短信应用UIAbility的[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-onnewwantwant-launchparam)回调中解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)参数，通过[Router](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#class-router)对象，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
+    
     <!-- compile -->
 
     ```cangjie
     import std.collection.HashMap
     import ohos.base.{AppLog, BusinessException}
     import kit.AbilityKit.{UIAbility, LaunchParam, Want}
-    import kit.UIKit.{launch, Router}
+    import kit.ArkUI.{launch, Router}
 
     class FuncAbilityA <: UIAbility {
         //...

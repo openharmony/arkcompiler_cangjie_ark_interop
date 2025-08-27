@@ -97,12 +97,11 @@ let httpResponseCache = createHttpResponseCache()
 
 ```cangjie
 public class ClientCert {
-    public ClientCert(
-        public let certPath: String,
-        public let keyPath: String,
-        public let certType!: CertType = CertType.PEM,
-        public let keyPassword!: ?String = None
-    )
+    public var certPath: String
+    public var keyPath: String
+    public var certType: CertType
+    public var keyPassword: String
+    public init(certPath: String, keyPath: String, certType!: CertType = CertType.Pem, keyPassword!: String = "")
 }
 ```
 
@@ -112,82 +111,77 @@ public class ClientCert {
 
 **起始版本：** 21
 
-### let certPath
+### var certPath
 
 ```cangjie
-public let certPath: String
+public var certPath: String
 ```
 
 **功能：** 证书路径。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let certType
+### var certType
 
 ```cangjie
-public let certType: CertType = CertType.PEM
+public var certType: CertType
 ```
 
 **功能：** 证书类型，默认是PEM。
 
 **类型：** [CertType](#enum-certtype)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let keyPassword
+### var keyPassword
 
 ```cangjie
-public let keyPassword:?String = None
+public var keyPassword: String
 ```
 
 **功能：** 证书秘钥的密码。
 
-**类型：** ?String
+**类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let keyPath
+### var keyPath
 
 ```cangjie
-public let keyPath: String
+public var keyPath: String
 ```
 
 **功能：** 证书秘钥的路径。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### ClientCert(String, String, CertType, ?String)
+### init(String, String, CertType, String)
 
 ```cangjie
-public ClientCert(
-    public let certPath: String,
-    public let keyPath: String,
-    public let certType!: CertType = CertType.PEM,
-    public let keyPassword!: ?String = None
-)
+public init(certPath: String, keyPath: String, certType!: CertType = CertType.Pem, keyPassword!: String = "")
 ```
 
-**功能：** 构建ClientCert实例。
+**功能：** 构造ClientCert实例。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -199,13 +193,16 @@ public ClientCert(
 |:---|:---|:---|:---|:---|
 |certPath|String|是|-|证书路径。|
 |keyPath|String|是|-|证书秘钥的路径。|
-|certType|[CertType](#enum-certtype)|否|CertType.PEM|**命名参数。** 证书类型，默认是PEM。|
-|keyPassword|?String|否|None|**命名参数。** 证书秘钥的密码。|
+|certType|[CertType](#enum-certtype)|否|CertType.Pem|**命名参数。** 证书类型，默认是PEM。|
+|keyPassword|String|否|""|**命名参数。** 证书秘钥的密码。|
 
 ## class DataReceiveProgressInfo
 
 ```cangjie
-public class DataReceiveProgressInfo {}
+public class DataReceiveProgressInfo {
+    public var receiveSize: Int64
+    public var totalSize: Int64
+}
 ```
 
 **功能：** 数据接收信息。
@@ -214,33 +211,33 @@ public class DataReceiveProgressInfo {}
 
 **起始版本：** 21
 
-### let receiveSize
+### var receiveSize
 
 ```cangjie
-public let receiveSize: UInt32
+public var receiveSize: Int64
 ```
 
 **功能：** 已接收的数据量单位为字节。
 
-**类型：** UInt32
+**类型：** Int64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let totalSize
+### var totalSize
 
 ```cangjie
-public let totalSize: UInt32
+public var totalSize: Int64
 ```
 
 **功能：** 总共要接收的数据量单位为字节。
 
-**类型：** UInt32
+**类型：** Int64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -249,7 +246,10 @@ public let totalSize: UInt32
 ## class DataSendProgressInfo
 
 ```cangjie
-public class DataSendProgressInfo {}
+public class DataSendProgressInfo {
+    public var sendSize: Int64
+    public var totalSize: Int64
+}
 ```
 
 **功能：** 数据发送信息。
@@ -258,33 +258,33 @@ public class DataSendProgressInfo {}
 
 **起始版本：** 21
 
-### let sendSize
+### var sendSize
 
 ```cangjie
-public let sendSize: UInt32
+public var sendSize: Int64
 ```
 
 **功能：** 每次发送的数据量单位为字节。
 
-**类型：** UInt32
+**类型：** Int64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let totalSize
+### var totalSize
 
 ```cangjie
-public let totalSize: UInt32
+public var totalSize: Int64
 ```
 
 **功能：** 总共要发送的数据量单位为字节。
 
-**类型：** UInt32
+**类型：** Int64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -329,182 +329,13 @@ let httpRequest = createHttp()
 httpRequest.destroy()
 ```
 
-### func offDataEnd()
+### func off(HttpRequestEvent, ?CallbackObject)
 
 ```cangjie
-public func offDataEnd(): Unit
+public func off(event: HttpRequestEvent, callback!: ?CallbackObject = None): Unit
 ```
 
-**功能：** 取消订阅HTTP流式响应数据接收完毕事件。
-
-> **说明：**
->
-> 清空所有订阅。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataEnd({ =>
-    AppLog.info("data end")
-})
-httpRequest.offDataEnd()
-```
-
-### func offDataReceive()
-
-```cangjie
-public func offDataReceive(): Unit
-```
-
-**功能：** 取消订阅HTTP流式响应数据接收事件。
-
-> **说明：**
->
-> 清空所有订阅。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataReceive({ data =>
-    AppLog.info("data receive: ${data}")
-})
-httpRequest.offDataReceive()
-```
-
-### func offDataReceiveProgress()
-
-```cangjie
-public func offDataReceiveProgress(): Unit
-```
-
-**功能：** 取消订阅HTTP流式响应数据接收进度事件。
-
-> **说明：**
->
-> 清空所有订阅。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataReceiveProgress({ receiveInfo =>
-    AppLog.info("receive data ${receiveInfo.receiveSize}, total: ${receiveInfo.totalSize}")
-})
-httpRequest.offDataReceiveProgress()
-```
-
-### func offDataSendProgress()
-
-```cangjie
-public func offDataSendProgress(): Unit
-```
-
-**功能：** 取消订阅HTTP网络请求数据发送进度事件。
-
-> **说明：**
->
-> 清空所有订阅。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataSendProgress({ sendInfo =>
-    AppLog.info("send data ${sendInfo.sendSize}, total: ${sendInfo.totalSize}")
-})
-httpRequest.offDataSendProgress()
-```
-
-### func offHeadersReceive()
-
-```cangjie
-public func offHeadersReceive(): Unit
-```
-
-**功能：** 取消订阅HTTP Response Header事件。
-
-> **说明：**
->
-> 清空所有订阅。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onHeadersReceive({ headers =>
-    AppLog.info("headers: ${headers}")
-})
-httpRequest.offHeadersReceive()
-```
-
-### func onDataEnd(() -> Unit)
-
-```cangjie
-public func onDataEnd(callback: () -> Unit): Unit
-```
-
-**功能：** 订阅HTTP流式响应数据接收完毕事件。
-
-> **说明：**
->
-> 暂不支持订阅HTTP流式数据上传的相关事件。
+**功能：** 取消订阅HTTP请求事件。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -514,35 +345,78 @@ public func onDataEnd(callback: () -> Unit): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|回调函数。|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|要取消订阅的HTTP请求事件类型。|
+|callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None|回调函数。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
+
+### func on(HttpRequestEvent, Callback1Argument\<HashMap\<String,String>>)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataEnd({ =>
-    AppLog.info("data end")
-})
+public func on(event: HttpRequestEvent, callback: Callback1Argument<HashMap<String, String>>): Unit
 ```
 
-### func onDataReceive((Array\<Byte>) -> Unit)
+**功能：** 订阅HTTP Response Header 事件。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持HeadersReceive事件。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[HashMap](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>>|是|-|回调函数，返回HTTP响应头对象。|
+
+**异常：**
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
+
+### func on(HttpRequestEvent, Callback1Argument\<Array\<Byte>>)
 
 ```cangjie
-public func onDataReceive(callback: (Array<Byte>) -> Unit): Unit
+public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>): Unit
 ```
 
 **功能：** 订阅HTTP流式响应数据接收事件。
 
-> **说明：**
->
-> 暂不支持订阅HTTP流式数据上传的相关事件。
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataReceive事件。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<Byte>>|是|-|回调函数，用于接收HTTP流式响应数据。|
+
+**异常：**
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataReceive事件类型。 |
+
+### func on(HttpRequestEvent, Callback0Argument)
+
+```cangjie
+public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
+```
+
+**功能：** 订阅HTTP流式响应数据接收完毕事件。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -552,36 +426,25 @@ public func onDataReceive(callback: (Array<Byte>) -> Unit): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Array\<[Byte](<font color="red" face="bold">please add link</font>)>)->Unit|是|-|回调函数。|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataEnd事件。|
+|callback|[Callback0Argument](<font color="red" face="bold">please add link</font>)|是|-|回调函数。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- IllegalArgumentException：
 
-```cangjie
-// index.cj
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataEnd事件类型。 |
 
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataReceive({ data =>
-    AppLog.info("data receive: ${data}")
-})
-```
-
-### func onDataReceiveProgress((DataReceiveProgressInfo) -> Unit)
+### func on(HttpRequestEvent, Callback1Argument\<DataReceiveProgressInfo>)
 
 ```cangjie
-public func onDataReceiveProgress(callback: (DataReceiveProgressInfo) -> Unit): Unit
+public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveProgressInfo>): Unit
 ```
 
 **功能：** 订阅HTTP流式响应数据接收进度事件。
 
-> **说明：**
->
-> 暂不支持订阅HTTP流式数据上传的相关事件。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
@@ -590,28 +453,21 @@ public func onDataReceiveProgress(callback: (DataReceiveProgressInfo) -> Unit): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|([DataReceiveProgressInfo](#class-datareceiveprogressinfo))->Unit|是|-|回调函数。返回数据接收进度信息。|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataReceiveProgress事件。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)>|是|-|回调函数，用于接收数据接收进度信息，参数为DataReceiveProgressInfo对象。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- IllegalArgumentException：
 
-```cangjie
-// index.cj
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataReceiveProgress事件类型。 |
 
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataReceiveProgress({ receiveInfo =>
-    AppLog.info("receive data ${receiveInfo.receiveSize}, total: ${receiveInfo.totalSize}")
-})
-```
-
-### func onDataSendProgress((DataSendProgressInfo) -> Unit)
+### func on(HttpRequestEvent, Callback1Argument\<DataSendProgressInfo>)
 
 ```cangjie
-public func onDataSendProgress(callback: (DataSendProgressInfo) -> Unit): Unit
+public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProgressInfo>): Unit
 ```
 
 **功能：** 订阅HTTP网络请求数据发送进度事件。
@@ -624,31 +480,24 @@ public func onDataSendProgress(callback: (DataSendProgressInfo) -> Unit): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|([DataSendProgressInfo](#class-datasendprogressinfo))->Unit|是|-|回调函数。返回数据发送进度信息。|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持DataSendProgress事件。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DataSendProgressInfo](#class-datasendprogressinfo)>|是|-|回调函数，用于接收数据发送进度信息，参数为DataSendProgressInfo对象。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- IllegalArgumentException：
 
-```cangjie
-// index.cj
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持DataSendProgress事件类型。 |
 
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataSendProgress({ sendInfo =>
-    AppLog.info("send data ${sendInfo.sendSize}, total: ${sendInfo.totalSize}")
-})
-```
-
-### func onHeadersReceive((HashMap\<String,String>) -> Unit)
+### func once(HttpRequestEvent, Callback1Argument\<HashMap\<String,String>>)
 
 ```cangjie
-public func onHeadersReceive(callback: (HashMap<String, String>) -> Unit): Unit
+public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<String, String>>): Unit
 ```
 
-**功能：** 订阅HTTP Response Header事件。
+**功能：** 订阅HTTP Response Header 事件，只能触发一次。触发之后，订阅器就会被移除。使用callback方式作为异步方法。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -658,63 +507,21 @@ public func onHeadersReceive(callback: (HashMap<String, String>) -> Unit): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(HashMap\<String,String>)->Unit|是|-|回调函数。|
+|event|[HttpRequestEvent](#enum-httprequestevent)|是|-|HTTP请求事件类型，仅支持HeadersReceive事件。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>>|是|-|回调函数。返回HTTP响应头对象。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- IllegalArgumentException：
 
-```cangjie
-// index.cj
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | 传入的event类型不支持 | 检查event参数，确保传入的是支持的事件类型。当前方法仅支持HeadersReceive事件类型。 |
 
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onHeadersReceive({ headers =>
-    AppLog.info("headers: ${headers}")
-})
-```
-
-### func onceHeadersReceive((HashMap\<String,String>) -> Unit)
+### func request(String, HttpRequestOptions, AsyncCallback\<HttpResponse>)
 
 ```cangjie
-public func onceHeadersReceive(callback: (HashMap<String, String>) -> Unit): Unit
-```
-
-**功能：** 订阅HTTP Response Header事件，但是只触发一次。一旦触发之后，此函数注册的订阅器就会被移除。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|(HashMap\<String,String>)->Unit|是|-|回调函数。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onceHeadersReceive({ headers =>
-    AppLog.info("headers: ${headers}")
-})
-```
-
-### func request(String, (?BusinessException,?HttpResponse) -> Unit, ?HttpRequestOptions)
-
-```cangjie
-public func request(url: String, callback: (?BusinessException, ?HttpResponse) -> Unit,
-    options!: ?HttpRequestOptions = None): Unit
+public func request(url: String, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): Unit
 ```
 
 **功能：** 根据URL地址，发起HTTP网络请求，在callback回调函数中返回响应。
@@ -734,49 +541,47 @@ public func request(url: String, callback: (?BusinessException, ?HttpResponse) -
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
-|callback|(?[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception),?[HttpResponse](#class-httpresponse))->Unit|是|-|回调函数。|
-|options|?[HttpRequestOptions](#class-httprequestoptions)|否|None|**命名参数。** 参考[HttpRequestOptions](#class-httprequestoptions)。|
+|options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
 
 **异常：**
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error.|
-  |201|Permission denied.|
-  |2300001|Unsupported protocol.|
-  |2300003|URL using bad/illegal format or missing URL.|
-  |2300005|Couldn't resolve proxy name.|
-  |2300006|Couldn't resolve host name.|
-  |2300007|Couldn't connect to server.|
-  |2300008|Weird server reply.|
-  |2300009|Access denied to remote resource.|
-  |2300016|Error in the HTTP2 framing layer.|
-  |2300018|Transferred a partial file.|
-  |2300023|Failed writing received data to disk/application.|
-  |2300025|Upload failed.|
-  |2300026|Failed to open/read local data from file/application.|
-  |2300027|Out of memory.|
-  |2300028|Timeout was reached.|
-  |2300047|Number of redirects hit maximum amount.|
-  |2300052|Server returned nothing (no headers, no data).|
-  |2300055|Failed sending data to the peer.|
-  |2300056|Failure when receiving data from the peer.|
-  |2300058|Problem with the local SSL certificate.|
-  |2300059|Couldn't use specified SSL cipher.|
-  |2300060|SSL peer certificate or SSH remote key was not OK.|
-  |2300061|Unrecognized or bad HTTP Content or Transfer-Encoding.|
-  |2300063|Maximum file size exceeded.|
-  |2300070|Disk full or allocation exceeded.|
-  |2300073|Remote file already exists.|
-  |2300077|Problem with the SSL CA cert (path? access rights?).|
-  |2300078|Remote file not found.|
-  |2300094|An authentication function returned an error.|
-  |2300999|Unknown Other Error.|
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
-> **错误码说明：**
->
-> 以上错误码的详细介绍参见[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-> HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. |
+  | 201 | Permission denied. |
+  | 2300001 | Unsupported protocol. |
+  | 2300003 | URL using bad/illegal format or missing URL. |
+  | 2300005 | Couldn't resolve proxy name. |
+  | 2300006 | Couldn't resolve host name. |
+  | 2300007 | Couldn't connect to server. |
+  | 2300008 | Weird server reply. |
+  | 2300009 | Access denied to remote resource. |
+  | 2300016 | Error in the HTTP2 framing layer. |
+  | 2300018 | Transferred a partial file. |
+  | 2300023 | Failed writing received data to disk/application. |
+  | 2300025 | Upload failed. |
+  | 2300026 | Failed to open/read local data from file/application. |
+  | 2300027 | Out of memory. |
+  | 2300028 | Timeout was reached. |
+  | 2300047 | Number of redirects hit maximum amount. |
+  | 2300052 | Server returned nothing (no headers, no data). |
+  | 2300055 | Failed sending data to the peer. |
+  | 2300056 | Failure when receiving data from the peer. |
+  | 2300058 | Problem with the local SSL certificate. |
+  | 2300059 | Couldn't use specified SSL cipher. |
+  | 2300060 | SSL peer certificate or SSH remote key was not OK. |
+  | 2300061 | Unrecognized or bad HTTP Content or Transfer-Encoding. |
+  | 2300063 | Maximum file size exceeded. |
+  | 2300070 | Disk full or allocation exceeded. |
+  | 2300073 | Remote file already exists. |
+  | 2300077 | Problem with the SSL CA cert (path? access rights?). |
+  | 2300078 | Remote file not found. |
+  | 2300094 | An authentication function returned an error. |
+  | 2300999 | Unknown Other Error. |
 
 **示例：**
 
@@ -787,26 +592,113 @@ public func request(url: String, callback: (?BusinessException, ?HttpResponse) -
 
 import ohos.base.*
 import kit.NetworkKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let httpRequest = createHttp()
 httpRequest.request("http://www.example.com", {err, resp =>
     if (let Some(e) <- err) {
-        Hilog.error(0, "test","exception: ${e.message}")
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
     }
     if (let Some(r) <- resp) {
-        Hilog.info(0, "test", "resp: ${r}")
+        Hilog.info(0, "http_test", "resp: ${r.responseCode}")
     } else {
-        Hilog.error(0, "test", "response is none")
+        Hilog.error(0, "AppLogCj", "response is none")
     }
 })
 ```
 
-### func requestInStream(String, (?BusinessException,?UInt32) -> Unit, ?HttpRequestOptions)
+### func request(String, AsyncCallback\<HttpResponse>)
 
 ```cangjie
-public func requestInStream(url: String, callback: (?BusinessException, ?UInt32) -> Unit,
-    options!: ?HttpRequestOptions = None): Unit
+public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
+```
+
+**功能：** 根据URL地址，发起HTTP网络请求，在callback回调函数中返回响应。
+
+> **说明：**
+>
+> 此接口仅支持数据大小为5MB以内的数据接收。
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|url|String|是|-|发起网络请求的URL地址。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. |
+  | 201 | Permission denied. |
+  | 2300001 | Unsupported protocol. |
+  | 2300003 | URL using bad/illegal format or missing URL. |
+  | 2300005 | Couldn't resolve proxy name. |
+  | 2300006 | Couldn't resolve host name. |
+  | 2300007 | Couldn't connect to server. |
+  | 2300008 | Weird server reply. |
+  | 2300009 | Access denied to remote resource. |
+  | 2300016 | Error in the HTTP2 framing layer. |
+  | 2300018 | Transferred a partial file. |
+  | 2300023 | Failed writing received data to disk/application. |
+  | 2300025 | Upload failed. |
+  | 2300026 | Failed to open/read local data from file/application. |
+  | 2300027 | Out of memory. |
+  | 2300028 | Timeout was reached. |
+  | 2300047 | Number of redirects hit maximum amount. |
+  | 2300052 | Server returned nothing (no headers, no data). |
+  | 2300055 | Failed sending data to the peer. |
+  | 2300056 | Failure when receiving data from the peer. |
+  | 2300058 | Problem with the local SSL certificate. |
+  | 2300059 | Couldn't use specified SSL cipher. |
+  | 2300060 | SSL peer certificate or SSH remote key was not OK. |
+  | 2300061 | Unrecognized or bad HTTP Content or Transfer-Encoding. |
+  | 2300063 | Maximum file size exceeded. |
+  | 2300070 | Disk full or allocation exceeded. |
+  | 2300073 | Remote file already exists. |
+  | 2300077 | Problem with the SSL CA cert (path? access rights?). |
+  | 2300078 | Remote file not found. |
+  | 2300094 | An authentication function returned an error. |
+  | 2300999 | Unknown Other Error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+let httpRequest = createHttp()
+httpRequest.request("http://www.example.com", {err, resp =>
+    if (let Some(e) <- err) {
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
+    }
+    if (let Some(r) <- resp) {
+        Hilog.info(0, "http_test", "resp: ${r.responseCode}")
+    } else {
+        Hilog.error(0, "AppLogCj", "response is none")
+    }
+})
+```
+
+### func requestInStream(String, HttpRequestOptions, AsyncCallback\<UInt32>)
+
+```cangjie
+public func requestInStream(url: String, options: HttpRequestOptions, callback: AsyncCallback<UInt32>): Unit
 ```
 
 **功能：** 根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，在callback回调函数中返回响应。
@@ -822,49 +714,47 @@ public func requestInStream(url: String, callback: (?BusinessException, ?UInt32)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |url|String|是|-|发起网络请求的URL地址。|
-|callback|(?[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception),?UInt32)->Unit|是|-|回调函数。|
-|options|?[HttpRequestOptions](#class-httprequestoptions)|否|None|**命名参数。** 参考[HttpRequestOptions](#class-httprequestoptions)。|
+|options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<UInt32>|是|-|回调函数。|
 
 **异常：**
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error.|
-  |201|Permission denied.|
-  |2300001|Unsupported protocol.|
-  |2300003|URL using bad/illegal format or missing URL.|
-  |2300005|Couldn't resolve proxy name.|
-  |2300006|Couldn't resolve host name.|
-  |2300007|Couldn't connect to server.|
-  |2300008|Weird server reply.|
-  |2300009|Access denied to remote resource.|
-  |2300016|Error in the HTTP2 framing layer.|
-  |2300018|Transferred a partial file.|
-  |2300023|Failed writing received data to disk/application.|
-  |2300025|Upload failed.|
-  |2300026|Failed to open/read local data from file/application.|
-  |2300027|Out of memory.|
-  |2300028|Timeout was reached.|
-  |2300047|Number of redirects hit maximum amount.|
-  |2300052|Server returned nothing (no headers, no data).|
-  |2300055|Failed sending data to the peer.|
-  |2300056|Failure when receiving data from the peer.|
-  |2300058|Problem with the local SSL certificate.|
-  |2300059|Couldn't use specified SSL cipher.|
-  |2300060|SSL peer certificate or SSH remote key was not OK.|
-  |2300061|Unrecognized or bad HTTP Content or Transfer-Encoding.|
-  |2300063|Maximum file size exceeded.|
-  |2300070|Disk full or allocation exceeded.|
-  |2300073|Remote file already exists.|
-  |2300077|Problem with the SSL CA cert (path? access rights?).|
-  |2300078|Remote file not found.|
-  |2300094|An authentication function returned an error.|
-  |2300999|Unknown Other Error.|
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
 
-> **错误码说明：**
->
-> 以上错误码的详细介绍参见[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-> HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. |
+  | 201 | Permission denied. |
+  | 2300001 | Unsupported protocol. |
+  | 2300003 | URL using bad/illegal format or missing URL. |
+  | 2300005 | Couldn't resolve proxy name. |
+  | 2300006 | Couldn't resolve host name. |
+  | 2300007 | Couldn't connect to server. |
+  | 2300008 | Weird server reply. |
+  | 2300009 | Access denied to remote resource. |
+  | 2300016 | Error in the HTTP2 framing layer. |
+  | 2300018 | Transferred a partial file. |
+  | 2300023 | Failed writing received data to disk/application. |
+  | 2300025 | Upload failed. |
+  | 2300026 | Failed to open/read local data from file/application. |
+  | 2300027 | Out of memory. |
+  | 2300028 | Timeout was reached. |
+  | 2300047 | Number of redirects hit maximum amount. |
+  | 2300052 | Server returned nothing (no headers, no data). |
+  | 2300055 | Failed sending data to the peer. |
+  | 2300056 | Failure when receiving data from the peer. |
+  | 2300058 | Problem with the local SSL certificate. |
+  | 2300059 | Couldn't use specified SSL cipher. |
+  | 2300060 | SSL peer certificate or SSH remote key was not OK. |
+  | 2300061 | Unrecognized or bad HTTP Content or Transfer-Encoding. |
+  | 2300063 | Maximum file size exceeded. |
+  | 2300070 | Disk full or allocation exceeded. |
+  | 2300073 | Remote file already exists. |
+  | 2300077 | Problem with the SSL CA cert (path? access rights?). |
+  | 2300078 | Remote file not found. |
+  | 2300094 | An authentication function returned an error. |
+  | 2300999 | Unknown Other Error. |
 
 **示例：**
 
@@ -875,17 +765,101 @@ public func requestInStream(url: String, callback: (?BusinessException, ?UInt32)
 
 import ohos.base.*
 import kit.NetworkKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let httpRequest = createHttp()
 httpRequest.requestInStream("http://www.example.com", {err, code =>
     if (let Some(e) <- err) {
-        Hilog.error(0, "test","exception: ${e.message}")
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
     }
     if (let Some(respCode) <- code) {
-        Hilog.info(0, "test", "resp: ${respCode}")
+        Hilog.info(0, "AppLogCj", "resp: ${respCode}")
     } else {
-        Hilog.error(0, "test", "response is none")
+        Hilog.error(0, "AppLogCj", "response is none")
+    }
+})
+```
+
+### func requestInStream(String, AsyncCallback\<UInt32>)
+
+```cangjie
+public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
+```
+
+**功能：** 根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，在callback回调函数中返回响应。
+
+**需要权限：** ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|url|String|是|-|发起网络请求的URL地址。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<UInt32>|是|-|回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，[HTTP错误码](../../errorcodes/cj-errorcode-net-http.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- HTTP接口返回错误码映射关系：2300000 + curl错误码。更多常用错误码，可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. |
+  | 201 | Permission denied. |
+  | 2300001 | Unsupported protocol. |
+  | 2300003 | URL using bad/illegal format or missing URL. |
+  | 2300005 | Couldn't resolve proxy name. |
+  | 2300006 | Couldn't resolve host name. |
+  | 2300007 | Couldn't connect to server. |
+  | 2300008 | Weird server reply. |
+  | 2300009 | Access denied to remote resource. |
+  | 2300016 | Error in the HTTP2 framing layer. |
+  | 2300018 | Transferred a partial file. |
+  | 2300023 | Failed writing received data to disk/application. |
+  | 2300025 | Upload failed. |
+  | 2300026 | Failed to open/read local data from file/application. |
+  | 2300027 | Out of memory. |
+  | 2300028 | Timeout was reached. |
+  | 2300047 | Number of redirects hit maximum amount. |
+  | 2300052 | Server returned nothing (no headers, no data). |
+  | 2300055 | Failed sending data to the peer. |
+  | 2300056 | Failure when receiving data from the peer. |
+  | 2300058 | Problem with the local SSL certificate. |
+  | 2300059 | Couldn't use specified SSL cipher. |
+  | 2300060 | SSL peer certificate or SSH remote key was not OK. |
+  | 2300061 | Unrecognized or bad HTTP Content or Transfer-Encoding. |
+  | 2300063 | Maximum file size exceeded. |
+  | 2300070 | Disk full or allocation exceeded. |
+  | 2300073 | Remote file already exists. |
+  | 2300077 | Problem with the SSL CA cert (path? access rights?). |
+  | 2300078 | Remote file not found. |
+  | 2300094 | An authentication function returned an error. |
+  | 2300999 | Unknown Other Error. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+let httpRequest = createHttp()
+httpRequest.requestInStream("http://www.example.com", {err, code =>
+    if (let Some(e) <- err) {
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
+    }
+    if (let Some(respCode) <- code) {
+        Hilog.info(0, "AppLogCj", "resp: ${respCode}")
+    } else {
+        Hilog.error(0, "AppLogCj", "response is none")
     }
 })
 ```
@@ -894,26 +868,32 @@ httpRequest.requestInStream("http://www.example.com", {err, code =>
 
 ```cangjie
 public class HttpRequestOptions {
-    public HttpRequestOptions(
-        public let method!: RequestMethod = RequestMethod.GET,
-        public let extraData!: ?HttpData = None,
-        public let expectDataType!: ?HttpDataType = None,
-        public let usingCache!: Bool = true,
-        public let priority!: UInt32 = 1,
-        public let header!: ?HashMap<String, String> = None,
-        public let readTimeout!: UInt32 = 60000,
-        public let connectTimeout!: UInt32 = 60000,
-        public let usingProtocol!: ?HttpProtocol = None,
-        public let usingProxy!: UsingProxy = USE_DEFAULT,
-        public let caPath!: ?String = None,
-        public let resumeFrom!: ?Int64 = None,
-        public let resumeTo!: ?Int64 = None,
-        public let clientCert!: ?ClientCert = None,
-        public let dnsOverHttps!: ?String = None,
-        public let dnsServers!: ?Array<String> = None,
-        public let maxLimit!: UInt32 = 5 * 1024 * 1024,
-        public let multiFormDataList!: ?Array<MultiFormData> = None
-    )
+    public var method: RequestMethod
+    public var extraData: HttpData
+    public var expectDataType:?HttpDataType = None
+    public var usingCache: Bool
+    public var priority: UInt32
+    public var header: HashMap<String, String>
+    public var readTimeout: UInt32
+    public var connectTimeout: UInt32
+    public var usingProtocol:?HttpProtocol = None
+    public var usingProxy: UsingProxy = UseDefault
+    public var caPath: String
+    public var resumeFrom: Int64
+    public var resumeTo: Int64
+    public var clientCert: ClientCert
+    public var dnsOverHttps: String
+    public var dnsServers: Array<String>
+    public var maxLimit: UInt32
+    public var multiFormDataList: Array<MultiFormData>
+    public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
+        expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+        header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
+        connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+        usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
+        resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
+        dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
+        multiFormDataList!: Array<MultiFormData> = Array<MultiFormData>())
 }
 ```
 
@@ -923,106 +903,106 @@ public class HttpRequestOptions {
 
 **起始版本：** 21
 
-### let caPath
+### var caPath
 
 ```cangjie
-public let caPath:?String = None
+public var caPath: String
 ```
 
 **功能：** 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过Global.getContext().filesDir获取应用沙箱路径）。目前仅支持后缀名为.pem的文本格式证书。
 
-**类型：** ?String
+**类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let clientCert
+### var clientCert
 
 ```cangjie
-public let clientCert:?ClientCert = None
+public var clientCert: ClientCert
 ```
 
 **功能：** 支持传输客户端证书。
 
-**类型：** ?[ClientCert](#class-clientcert)
+**类型：** [ClientCert](#class-clientcert)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let connectTimeout
+### var connectTimeout
 
 ```cangjie
-public let connectTimeout: UInt32 = 60000
+public var connectTimeout: UInt32
 ```
 
 **功能：** 连接超时时间。单位为毫秒（ms），默认为60000ms。
 
 **类型：** UInt32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let dnsOverHttps
+### var dnsOverHttps
 
 ```cangjie
-public let dnsOverHttps:?String = None
+public var dnsOverHttps: String
 ```
 
 **功能：** 设置使用HTTPS协议的服务器进行DNS解析。<br />参数必须以以下格式进行URL编码："https:// host:port/path"。
 
-**类型：** ?String
+**类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let dnsServers
+### var dnsServers
 
 ```cangjie
-public let dnsServers:?Array<String>= None
+public var dnsServers: Array<String>
 ```
 
 **功能：** 设置指定的DNS服务器进行DNS解析。<br />可以设置多个DNS解析服务器，最多3个服务器。如果有3个以上，只取前3个。<br />服务器必须是IPv4或者IPv6地址。
 
-**类型：** ?Array\<String>
+**类型：** Array\<String>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let expectDataType
+### var expectDataType
 
 ```cangjie
-public let expectDataType:?HttpDataType = None
+public var expectDataType:?HttpDataType = None
 ```
 
 **功能：** 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。
 
 **类型：** ?[HttpDataType](#enum-httpdatatype)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let extraData
+### var extraData
 
 ```cangjie
-public let extraData:?HttpData = None
+public var extraData: HttpData
 ```
 
 **功能：** 发送请求的额外数据，默认无此字段。
@@ -1037,213 +1017,201 @@ public let extraData:?HttpData = None
 
 以上信息仅供参考，并可能根据具体情况有所不同。
 
-**类型：** ?[HttpData](#enum-httpdata)
+**类型：** [HttpData](#enum-httpdata)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let header
+### var header
 
 ```cangjie
-public let header:?HashMap<String, String>= None
+public var header: HashMap<String, String>
 ```
 
 **功能：** HTTP请求头字段。默认{'content-Type': 'application/json'}。
 
-**类型：** ?HashMap\<String,String>
+**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let maxLimit
+### var maxLimit
 
 ```cangjie
-public let maxLimit: UInt32 = 5 * 1024 * 1024
+public var maxLimit: UInt32
 ```
 
 **功能：** 响应消息的最大字节限制，默认值为5MB，以字节为单位。最大值为10MB，以字节为单位。
 
 **类型：** UInt32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let method
+### var method
 
 ```cangjie
-public let method: RequestMethod = RequestMethod.GET
+public var method: RequestMethod
 ```
 
 **功能：** 请求方式，默认为GET。
 
 **类型：** [RequestMethod](#enum-requestmethod)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let multiFormDataList
+### var multiFormDataList
 
 ```cangjie
-public let multiFormDataList:?Array<MultiFormData>= None
+public var multiFormDataList: Array<MultiFormData>
 ```
 
 **功能：** 当'content-Type'为'multipart/form-data'时，则上传该字段定义的数据字段表单列表。
 
-**类型：** ?Array\<[MultiFormData](#class-multiformdata)>
+**类型：** Array\<[MultiFormData](#class-multiformdata)>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let priority
+### var priority
 
 ```cangjie
-public let priority: UInt32 = 1
+public var priority: UInt32
 ```
 
 **功能：** 优先级，范围[1,1000]，默认是1。若传参超出范围则使用默认值1。
 
 **类型：** UInt32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let readTimeout
+### var readTimeout
 
 ```cangjie
-public let readTimeout: UInt32 = 60000
+public var readTimeout: UInt32
 ```
 
 **功能：** 读取超时时间。单位为毫秒（ms），默认为60000ms。<br />设置为0表示不会出现超时情况。
 
 **类型：** UInt32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let resumeFrom
+### var resumeFrom
 
 ```cangjie
-public let resumeFrom:?Int64 = None
+public var resumeFrom: Int64
 ```
 
 **功能：** 用于设置上传或下载起始位置。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />使用HTTP PUT时设置此参数，可能出现未知问题。<br />取值范围是:1~4294967296(4GB)，超出范围则不生效。无默认值。
 
-**类型：** ?Int64
+**类型：** Int64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let resumeTo
+### var resumeTo
 
 ```cangjie
-public let resumeTo:?Int64 = None
+public var resumeTo: Int64
 ```
 
 **功能：** 用于设置上传或下载结束位置。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />使用HTTP PUT时设置此参数，可能出现未知问题。<br />取值范围是:1~4294967296(4GB)，超出范围则不生效。无默认值。
 
-**类型：** ?Int64
+**类型：** Int64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let usingCache
+### var usingCache
 
 ```cangjie
-public let usingCache: Bool = true
+public var usingCache: Bool
 ```
 
 **功能：** 是否使用缓存，默认为true，请求时优先读取缓存。 缓存跟随当前进程生效。新缓存会替换旧缓存。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let usingProtocol
+### var usingProtocol
 
 ```cangjie
-public let usingProtocol:?HttpProtocol = None
+public var usingProtocol:?HttpProtocol = None
 ```
 
 **功能：** 使用协议。默认值由系统自动指定。
 
 **类型：** ?[HttpProtocol](#enum-httpprotocol)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let usingProxy
+### var usingProxy
 
 ```cangjie
-public let usingProxy: UsingProxy = USE_DEFAULT
+public var usingProxy: UsingProxy = UseDefault
 ```
 
 **功能：** 是否使用HTTP代理，默认为USE_DEFAULT，使用默认代理。<br /> 当usingProxy为NOT_USE时，不使用网络代理。<br /> 当usingProxy为USE_SPECIFIED类型时，使用指定网络代理。
 
 **类型：** [UsingProxy](#enum-usingproxy)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### HttpRequestOptions(RequestMethod, ?HttpData, ?HttpDataType, Bool, UInt32, ?HashMap\<String,String>, UInt32, UInt32, ?HttpProtocol, UsingProxy, ?String, ?Int64, ?Int64, ?ClientCert, ?String, ?Array\<String>, UInt32, ?Array\<MultiFormData>)
+### init(RequestMethod, HttpData, ?HttpDataType, Bool, UInt32, HashMap\<String,String>, UInt32, UInt32, ?HttpProtocol, UsingProxy, String, Int64, Int64, ClientCert, String, Array\<String>, UInt32, Array\<MultiFormData>)
 
 ```cangjie
-public HttpRequestOptions(
-    public let method!: RequestMethod = RequestMethod.GET,
-    public let extraData!: ?HttpData = None,
-    public let expectDataType!: ?HttpDataType = None,
-    public let usingCache!: Bool = true,
-    public let priority!: UInt32 = 1,
-    public let header!: ?HashMap<String, String> = None,
-    public let readTimeout!: UInt32 = 60000,
-    public let connectTimeout!: UInt32 = 60000,
-    public let usingProtocol!: ?HttpProtocol = None,
-    public let usingProxy!: UsingProxy = USE_DEFAULT,
-    public let caPath!: ?String = None,
-    public let resumeFrom!: ?Int64 = None,
-    public let resumeTo!: ?Int64 = None,
-    public let clientCert!: ?ClientCert = None,
-    public let dnsOverHttps!: ?String = None,
-    public let dnsServers!: ?Array<String> = None,
-    public let maxLimit!: UInt32 = 5 * 1024 * 1024,
-    public let multiFormDataList!: ?Array<MultiFormData> = None
-)
+public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
+    expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+    header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
+    connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+    usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
+    resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
+    dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
+    multiFormDataList!: Array<MultiFormData> = Array<MultiFormData>())
 ```
 
 **功能：** 构造HttpRequestOptions实例。
@@ -1256,29 +1224,36 @@ public HttpRequestOptions(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|method|[RequestMethod](#enum-requestmethod)|否|RequestMethod.GET|**命名参数。** 请求方式，默认为GET。|
-|extraData|?[HttpData](#enum-httpdata)|否|None|**命名参数。**  发送请求的额外数据，默认无此字段。<br>当HTTP请求为POST、PUT等方法时，此字段为HTTP请求的content，以UTF-8编码形式作为请求体。<br>当'content-Type'为'application/x-www-form-urlencoded'时，请求提交的信息主体数据应在key和value进行URL转码后按照键值对"key1=value1&key2=value2&key3=value3"的方式进行编码，该字段对应的类型通常为String；<br>当'content-Type'为'text/xml'时，该字段对应的类型通常为String；<br>当'content-Type'为'application/json'时，该字段对应的类型通常为Object；<br>当'content-Type'为'application/octet-stream'时，该字段对应的类型通常为ArrayBuffer；<br>当'content-Type'为'multipart/form-data'且需上传的字段为文件时，该字段对应的类型通常为ArrayBuffer。<br> 当HTTP请求为GET、OPTIONS、DELETE、TRACE、CONNECT等方法时，此字段为HTTP请求参数的补充。开发者需传入Encode编码后的string类型参数，Object类型的参数无需预编码，参数内容会拼接到URL中进行发送；<br>ArrayBuffer类型的参数不会做拼接处理。<br>以上信息仅供参考，并可能根据具体情况有所不同。|
-|expectDataType|?[HttpDataType](#enum-httpdatatype)|否|None|**命名参数。** 指定返回数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。|
-|usingCache|Bool|否|true|**命名参数。** 是否使用缓存，默认为true，请求时优先读取缓存。 缓存跟随当前进程生效。新缓存会替换旧缓存。|
-|priority|UInt32|否|1|**命名参数。** 优先级，范围[1,1000]，默认是1。若传参超出范围则使用默认值1。|
-|header|?HashMap\<String,String>|否|None|**命名参数。** HTTP请求头字段。默认{'content-Type': 'application/json'}。|
-|readTimeout|UInt32|否|60000|**命名参数。** 读取超时时间。单位为毫秒（ms），默认为60000ms。<br>设置为0表示不会出现超时情况。|
-|connectTimeout|UInt32|否|60000|**命名参数。** 连接超时时间。单位为毫秒（ms），默认为60000ms。|
-|usingProtocol|?[HttpProtocol](#enum-httpprotocol)|否|None|**命名参数。** 使用协议。默认值由系统自动指定。|
-|usingProxy|[UsingProxy](#enum-usingproxy)|否|USE_DEFAULT|**命名参数。** 是否使用HTTP代理，默认为USE_DEFAULT，使用默认代理。<br> 当usingProxy为NOT_USE时，不使用网络代理。<br> 当usingProxy为USE_SPECIFIED类型时，使用指定网络代理。|
-|caPath|?String|否|None|**命名参数。** 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过Global.getContext().filesDir获取应用沙箱路径）。目前仅支持后缀名为.pem的文本格式证书。|
-|resumeFrom|?Int64|否|None|**命名参数。** 用于设置上传或下载起始位置。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br>使用HTTP PUT时设置此参数，可能出现未知问题。<br>取值范围是:1~4294967296(4GB)，超出范围则不生效。无默认值。|
-|resumeTo|?Int64|否|None|**命名参数。** 用于设置上传或下载结束位置。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br>使用HTTP PUT时设置此参数，可能出现未知问题。<br>取值范围是:1~4294967296(4GB)，超出范围则不生效。无默认值。|
-|clientCert|?[ClientCert](#class-clientcert)|否|None|**命名参数。** 支持传输客户端证书。|
-|dnsOverHttps|?String|否|None|**命名参数。** 设置使用HTTPS协议的服务器进行DNS解析。<br>参数必须以以下格式进行URL编码："https:// host:port/path"。|
-|dnsServers|?Array\<String>|否|None|**命名参数。** 设置指定的DNS服务器进行DNS解析。<br>可以设置多个DNS解析服务器，最多3个服务器。如果有3个以上，只取前3个。<br>服务器必须是IPv4或者IPv6地址。|
-|maxLimit|UInt32|否|5 * 1024 * 1024|**命名参数。** 响应消息的最大字节限制，默认值为5MB，以字节为单位。最大值为10MB，以字节为单位。|
-|multiFormDataList|?Array\<[MultiFormData](#class-multiformdata)>|否|None|**命名参数。** 当'content-Type'为'multipart/form-data'时，则上传该字段定义的数据字段表单列表。|
+|method|[RequestMethod](#enum-requestmethod)|否|RequestMethod.Get|**命名参数。** 请求方式，默认为GET。|
+|extraData|[HttpData](#enum-httpdata)|否|HttpData.StringData("")|**命名参数。** 发送请求的额外数据，默认无此字段。|
+|expectDataType|?[HttpDataType](#enum-httpdatatype)|否|None|**命名参数。** 指定返回数据的类型，默认无此字段。|
+|usingCache|Bool|否|true|**命名参数。** 是否使用缓存，默认为true。|
+|priority|UInt32|否|1|**命名参数。** 优先级，范围[1,1000]，默认是1。|
+|header|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>|否|HashMap<String,String>()|**命名参数。** HTTP请求头字段。|
+|readTimeout|UInt32|否|60000|**命名参数。** 读取超时时间，单位为毫秒。|
+|connectTimeout|UInt32|否|60000|**命名参数。** 连接超时时间，单位为毫秒。|
+|usingProtocol|?[HttpProtocol](#enum-httpprotocol)|否|None|**命名参数。** 使用协议，默认值由系统自动指定。|
+|usingProxy|[UsingProxy](#enum-usingproxy)|否|UsingProxy.UseDefault|**命名参数。** 是否使用HTTP代理，默认为USE_DEFAULT。|
+|caPath|String|否|""|**命名参数。** CA证书路径，如果设置了此参数，系统将使用用户指定路径的CA证书。|
+|resumeFrom|Int64|否|0|**命名参数。** 用于设置上传或下载起始位置。|
+|resumeTo|Int64|否|0|**命名参数。** 用于设置上传或下载结束位置。|
+|clientCert|[ClientCert](#class-clientcert)|否|ClientCert("", "")|**命名参数。** 支持传输客户端证书。|
+|dnsOverHttps|String|否|""|**命名参数。** 设置使用HTTPS协议的服务器进行DNS解析。|
+|dnsServers|Array\<String>|否|Array<String>()|**命名参数。** 设置指定的DNS服务器进行DNS解析。|
+|maxLimit|UInt32|否|5 * 1024 * 1024|**命名参数。** 响应消息的最大字节限制，默认值为5MB。|
+|multiFormDataList|Array\<[MultiFormData](#class-multiformdata)>|否|Array<MultiFormData>()|**命名参数。** 当'content-Type'为'multipart/form-data'时，则上传该字段定义的数据字段表单列表。|
 
 ## class HttpResponse
 
 ```cangjie
-public class HttpResponse <: ToString {}
+public class HttpResponse {
+    public var result: HttpData
+    public var resultType: HttpDataType
+    public var responseCode: UInt32
+    public var header: HashMap<String, String>
+    public var cookies: String
+    public var performanceTiming: PerformanceTiming
+}
 ```
 
 **功能：** request方法回调函数的返回值类型。
@@ -1287,147 +1262,101 @@ public class HttpResponse <: ToString {}
 
 **起始版本：** 21
 
-**父类型：**
-
-- ToString
-
-### let cookies
+### var cookies
 
 ```cangjie
-public let cookies: String
+public var cookies: String
 ```
 
 **功能：** 服务器返回的cookies。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let header
+### var header
 
 ```cangjie
-public let header: HashMap<String, String>
+public var header: HashMap<String, String>
 ```
 
 **功能：** 发起HTTP请求返回来的响应头。
 
-**类型：** HashMap\<String,String>
+**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let performanceTiming
+### var performanceTiming
 
 ```cangjie
-public let performanceTiming: PerformanceTiming
+public var performanceTiming: PerformanceTiming
 ```
 
 **功能：** HTTP请求的各个阶段的耗时。
 
 **类型：** [PerformanceTiming](#class-performancetiming)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let responseCode
+### var responseCode
 
 ```cangjie
-public let responseCode: ResponseCode
+public var responseCode: UInt32
 ```
 
 **功能：** 响应的状态码。
 
-**类型：** [ResponseCode](#enum-responsecode)
+**类型：** UInt32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let result
+### var result
 
 ```cangjie
-public let result: HttpData
+public var result: HttpData
 ```
 
 **功能：** HTTP请求根据响应头中content-type类型返回对应的响应格式内容。
 
 **类型：** [HttpData](#enum-httpdata)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let resultType
+### var resultType
 
 ```cangjie
-public let resultType: HttpDataType
+public var resultType: HttpDataType
 ```
 
 **功能：** 返回值类型。
 
 **类型：** [HttpDataType](#enum-httpdatatype)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 返回字符串形式的[HttpResponse](#class-httpresponse)。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回字符串形式的[HttpResponse](#class-httpresponse)。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-import ohos.hilog.Hilog
-
-let httpRequest = createHttp()
-httpRequest.request("http://www.example.com", {err, resp =>
-    if (let Some(e) <- err) {
-        Hilog.error(0, "test","exception: ${e.message}")
-    }
-    if (let Some(r) <- resp) {
-        Hilog.info(0, "test", "resp: ${r.toString()}")
-    } else {
-        Hilog.error(0, "test", "response is none")
-    }
-})
-```
 
 ## class HttpResponseCache
 
@@ -1435,7 +1364,7 @@ httpRequest.request("http://www.example.com", {err, resp =>
 public class HttpResponseCache {}
 ```
 
-**功能：** 存储HTTP访问请求响应的对象。在调用HttpResponseCache的方法前，需要先通过[createHttpResponseCache](#func-createhttpresponsecacheuint32)创建一个任务。
+**功能：** 存储HTTP访问请求响应的对象。在调用HttpResponseCache的方法前，需要先通过[createHttpResponseCache](#func-createhttpresponsecacheuint)创建一个任务。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1461,8 +1390,9 @@ public func delete(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.NetworkKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let httpResponseCache = createHttpResponseCache()
 try {
@@ -1492,8 +1422,9 @@ public func flush(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.NetworkKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let httpResponseCache = createHttpResponseCache()
 try {
@@ -1507,13 +1438,13 @@ try {
 
 ```cangjie
 public class MultiFormData {
-    public MultiFormData(
-        public let name: String,
-        public let contentType: String,
-        public let remoteFileName!: ?String = None,
-        public let data!: ?HttpData = None,
-        public let filePath!: ?String = None
-    )
+    public var name: String
+    public var contentType: String
+    public var remoteFileName: String
+    public var data: HttpData
+    public var filePath: String
+    public init(name: String, contentType: String,  remoteFileName!: String = "",
+        data!: HttpData = HttpData.StringData(""), filePath!: String = "")
 }
 ```
 
@@ -1523,96 +1454,91 @@ public class MultiFormData {
 
 **起始版本：** 21
 
-### let contentType
+### var contentType
 
 ```cangjie
-public let contentType: String
+public var contentType: String
 ```
 
 **功能：** 数据类型，如'text/plain'，'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4'等。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let data
+### var data
 
 ```cangjie
-public let data:?HttpData = None
+public var data: HttpData
 ```
 
 **功能：** 表单数据内容。
 
-**类型：** ?[HttpData](#enum-httpdata)
+**类型：** [HttpData](#enum-httpdata)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let filePath
+### var filePath
 
 ```cangjie
-public let filePath:?String = None
+public var filePath: String
 ```
 
 **功能：** 此参数根据文件的内容设置mime部件的正文内容。用于代替data将文件数据设置为数据内容，如果data为空，则必须设置filePath。如果data有值，则filePath不会生效。
 
-**类型：** ?String
+**类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let name
+### var name
 
 ```cangjie
-public let name: String
+public var name: String
 ```
 
 **功能：** 数据名称。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let remoteFileName
+### var remoteFileName
 
 ```cangjie
-public let remoteFileName:?String = None
+public var remoteFileName: String
 ```
 
 **功能：** 上传到服务器保存为文件的名称。
 
-**类型：** ?String
+**类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### MultiFormData(String, String, ?String, ?HttpData, ?String)
+### init(String, String, String, HttpData, String)
 
 ```cangjie
-public MultiFormData(
-    public let name: String,
-    public let contentType: String,
-    public let remoteFileName!: ?String = None,
-    public let data!: ?HttpData = None,
-    public let filePath!: ?String = None
-)
+public init(name: String, contentType: String,  remoteFileName!: String = "",
+    data!: HttpData = HttpData.StringData(""), filePath!: String = "")
 ```
 
 **功能：** 构造MultiFormData实例。
@@ -1627,14 +1553,25 @@ public MultiFormData(
 |:---|:---|:---|:---|:---|
 |name|String|是|-|数据名称。|
 |contentType|String|是|-|数据类型，如'text/plain'，'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4'等。|
-|remoteFileName|?String|否|None|**命名参数。** 上传到服务器保存为文件的名称。|
-|data|?[HttpData](#enum-httpdata)|否|None|**命名参数。** 表单数据内容。|
-|filePath|?String|否|None|**命名参数。** 此参数根据文件的内容设置mime部件的正文内容。用于代替data将文件数据设置为数据内容，如果data为空，则必须设置filePath。如果data有值，则filePath不会生效。|
+|remoteFileName|String|否|""|**命名参数。** 上传到服务器保存为文件的名称。|
+|data|[HttpData](#enum-httpdata)|否|HttpData.StringData("")|**命名参数。** 表单数据内容。|
+|filePath|String|否|""|**命名参数。** 此参数根据文件的内容设置mime部件的正文内容。用于代替data将文件数据设置为数据内容，如果data为空，则必须设置filePath。如果data有值，则filePath不会生效。|
 
 ## class PerformanceTiming
 
 ```cangjie
-public class PerformanceTiming <: ToString {}
+public class PerformanceTiming {
+    public var dnsTiming: Float64
+    public var tcpTiming: Float64
+    public var tlsTiming: Float64
+    public var firstSendTiming: Float64
+    public var firstReceiveTiming: Float64
+    public var totalFinishTiming: Float64
+    public var redirectTiming: Float64
+    public var responseHeaderTiming: Float64
+    public var responseBodyTiming: Float64
+    public var totalTiming: Float64
+}
 ```
 
 **功能：** 性能打点数据，单位为毫秒。
@@ -1643,218 +1580,172 @@ public class PerformanceTiming <: ToString {}
 
 **起始版本：** 21
 
-**父类型：**
-
-- ToString
-
-### let dnsTiming
+### var dnsTiming
 
 ```cangjie
-public let dnsTiming: Float64
+public var dnsTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到DNS解析完成耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到DNS解析完成耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let firstReceiveTiming
+### var firstReceiveTiming
 
 ```cangjie
-public let firstReceiveTiming: Float64
+public var firstReceiveTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到接收第一个字节的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到接收第一个字节的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let firstSendTiming
+### var firstSendTiming
 
 ```cangjie
-public let firstSendTiming: Float64
+public var firstSendTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到开始发送第一个字节的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到开始发送第一个字节的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let redirectTiming
+### var redirectTiming
 
 ```cangjie
-public let redirectTiming: Float64
+public var redirectTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到完成所有重定向步骤的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到完成所有重定向步骤的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let responseBodyTiming
+### var responseBodyTiming
 
 ```cangjie
-public let responseBodyTiming: Float64
+public var responseBodyTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到body解析完成的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到body解析完成的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let responseHeaderTiming
+### var responseHeaderTiming
 
 ```cangjie
-public let responseHeaderTiming: Float64
+public var responseHeaderTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到header解析完成的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到header解析完成的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let tcpTiming
+### var tcpTiming
 
 ```cangjie
-public let tcpTiming: Float64
+public var tcpTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到TCP连接完成耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到TCP连接完成耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let tlsTiming
+### var tlsTiming
 
 ```cangjie
-public let tlsTiming: Float64
+public var tlsTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到TLS连接完成耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到TLS连接完成耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let totalFinishTiming
+### var totalFinishTiming
 
 ```cangjie
-public let totalFinishTiming: Float64
+public var totalFinishTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求到完成请求的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求到完成请求的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### let totalTiming
+### var totalTiming
 
 ```cangjie
-public let totalTiming: Float64
+public var totalTiming: Float64
 ```
 
-**功能：** 从[request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions)请求回调到应用程序的耗时。
+**功能：** 从[request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse)请求回调到应用程序的耗时。
 
 **类型：** Float64
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 返回字符串形式的[PerformanceTiming](#class-performancetiming)。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回字符串形式的[PerformanceTiming](#class-performancetiming)。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-import ohos.hilog.Hilog
-
-let httpRequest = createHttp()
-httpRequest.request("http://www.example.com", {err, resp =>
-    if (let Some(e) <- err) {
-        Hilog.error(0, "test","exception: ${e.message}")
-    }
-    if (let Some(r) <- resp) {
-        Hilog.info(0, "test", "resp: ${r.performanceTiming.toString()}")
-    } else {
-        Hilog.error(0, "test", "response is none")
-    }
-})
-```
 
 ## enum CertType
 
 ```cangjie
 public enum CertType {
-    | PEM
-    | DER
+    | Pem
+    | Der
     | P12
     | ...
 }
@@ -1866,10 +1757,10 @@ public enum CertType {
 
 **起始版本：** 21
 
-### DER
+### Der
 
 ```cangjie
-DER
+Der
 ```
 
 **功能：** 证书类型DER。
@@ -1890,10 +1781,10 @@ P12
 
 **起始版本：** 21
 
-### PEM
+### Pem
 
 ```cangjie
-PEM
+Pem
 ```
 
 **功能：** 证书类型PEM。
@@ -1905,9 +1796,9 @@ PEM
 ## enum HttpData
 
 ```cangjie
-public enum HttpData <: ToString {
-    | STRING_DATA(String)
-    | ARRAY_DATA(Array<Byte>)
+public enum HttpData {
+    | StringData(String)
+    | ArrayData(Array<Byte>)
     | ...
 }
 ```
@@ -1918,14 +1809,10 @@ public enum HttpData <: ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- ToString
-
-### ARRAY_DATA(Array\<Byte>)
+### ArrayData(Array\<Byte>)
 
 ```cangjie
-ARRAY_DATA(Array<Byte>)
+ArrayData(Array<Byte>)
 ```
 
 **功能：** 二进制数组。
@@ -1934,10 +1821,10 @@ ARRAY_DATA(Array<Byte>)
 
 **起始版本：** 21
 
-### STRING_DATA(String)
+### StringData(String)
 
 ```cangjie
-STRING_DATA(String)
+StringData(String)
 ```
 
 **功能：** 字符串。
@@ -1946,44 +1833,12 @@ STRING_DATA(String)
 
 **起始版本：** 21
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 返回字符串形式的[HttpData](#enum-httpdata)。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回字符串形式的[HttpData](#enum-httpdata)。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpData = HttpData.STRING_DATA("data to send")
-AppLog.info(httpData.toString())
-```
-
 ## enum HttpDataType
 
 ```cangjie
 public enum HttpDataType {
-    | STRING
-    | ARRAY_BUFFER
+    | StringValue
+    | ArrayBuffer
     | ...
 }
 ```
@@ -1994,10 +1849,10 @@ public enum HttpDataType {
 
 **起始版本：** 21
 
-### ARRAY_BUFFER
+### ArrayBuffer
 
 ```cangjie
-ARRAY_BUFFER
+ArrayBuffer
 ```
 
 **功能：** 二进制数组类型。
@@ -2006,10 +1861,10 @@ ARRAY_BUFFER
 
 **起始版本：** 21
 
-### STRING
+### StringValue
 
 ```cangjie
-STRING
+StringValue
 ```
 
 **功能：** 字符串类型。
@@ -2022,9 +1877,9 @@ STRING
 
 ```cangjie
 public enum HttpProtocol {
-    | HTTP1_1
-    | HTTP2
-    | HTTP3
+    | Http1_1
+    | Http2
+    | Http3
     | ...
 }
 ```
@@ -2035,10 +1890,10 @@ public enum HttpProtocol {
 
 **起始版本：** 21
 
-### HTTP1_1
+### Http1_1
 
 ```cangjie
-HTTP1_1
+Http1_1
 ```
 
 **功能：** 协议HTTP/1.1。
@@ -2047,10 +1902,10 @@ HTTP1_1
 
 **起始版本：** 21
 
-### HTTP2
+### Http2
 
 ```cangjie
-HTTP2
+Http2
 ```
 
 **功能：** 协议HTTP/2。
@@ -2059,10 +1914,10 @@ HTTP2
 
 **起始版本：** 21
 
-### HTTP3
+### Http3
 
 ```cangjie
-HTTP3
+Http3
 ```
 
 **功能：** 协议HTTP/3，若系统或服务器不支持，则使用低版本的HTTP协议请求。仅对HTTPS的URL生效，HTTP则会请求失败。
@@ -2071,18 +1926,175 @@ HTTP3
 
 **起始版本：** 21
 
+## enum HttpRequestEvent
+
+```cangjie
+public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToString {
+    | HeadersReceive
+    | DataReceive
+    | DataEnd
+    | DataReceiveProgress
+    | DataSendProgress
+    | ...
+}
+```
+
+**功能：** HTTP请求事件类型。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<HttpRequestEvent>
+- Hashable
+- ToString
+
+### DataEnd
+
+```cangjie
+DataEnd
+```
+
+**功能：** HTTP流式响应数据接收完毕事件。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+### DataReceive
+
+```cangjie
+DataReceive
+```
+
+**功能：** HTTP流式响应数据接收事件。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+### DataReceiveProgress
+
+```cangjie
+DataReceiveProgress
+```
+
+**功能：** HTTP流式响应数据接收进度更新事件。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+### DataSendProgress
+
+```cangjie
+DataSendProgress
+```
+
+**功能：** HTTP网络请求数据发送进度更新事件。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+### HeadersReceive
+
+```cangjie
+HeadersReceive
+```
+
+**功能：** HTTP Response Header事件。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+### func !=(HttpRequestEvent)
+
+```cangjie
+public operator func !=(other: HttpRequestEvent): Bool
+```
+
+**功能：** 比较两个HttpRequestEvent是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[HttpRequestEvent](#enum-httprequestevent)|是|-|要比较的另一个HttpRequestEvent实例。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个HttpRequestEvent不相等则返回true，否则返回false。|
+
+### func ==(HttpRequestEvent)
+
+```cangjie
+public operator func ==(other: HttpRequestEvent): Bool
+```
+
+**功能：** 比较两个HttpRequestEvent是否相等。
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[HttpRequestEvent](#enum-httprequestevent)|是|-|要比较的另一个HttpRequestEvent实例。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个HttpRequestEvent相等则返回true，否则返回false。|
+
+### func hashCode()
+
+```cangjie
+public func hashCode(): Int64
+```
+
+**功能：** 获取HttpRequestEvent的哈希值。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int64|返回HttpRequestEvent的哈希值。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 返回字符串形式的HttpRequestEvent。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|返回字符串形式的HttpRequestEvent。|
+
 ## enum RequestMethod
 
 ```cangjie
 public enum RequestMethod {
-    | OPTIONS
-    | GET
-    | HEAD
-    | POST
-    | PUT
-    | DELETE
-    | TRACE
-    | CONNECT
+    | Options
+    | Get
+    | Head
+    | Post
+    | Put
+    | Delete
+    | Trace
+    | Connect
     | ...
 }
 ```
@@ -2093,10 +2105,10 @@ public enum RequestMethod {
 
 **起始版本：** 21
 
-### CONNECT
+### Connect
 
 ```cangjie
-CONNECT
+Connect
 ```
 
 **功能：** HTTP请求CONNECT。
@@ -2105,10 +2117,10 @@ CONNECT
 
 **起始版本：** 21
 
-### DELETE
+### Delete
 
 ```cangjie
-DELETE
+Delete
 ```
 
 **功能：** HTTP请求DELETE。
@@ -2117,10 +2129,10 @@ DELETE
 
 **起始版本：** 21
 
-### GET
+### Get
 
 ```cangjie
-GET
+Get
 ```
 
 **功能：** HTTP请求GET。
@@ -2129,10 +2141,10 @@ GET
 
 **起始版本：** 21
 
-### HEAD
+### Head
 
 ```cangjie
-HEAD
+Head
 ```
 
 **功能：** HTTP请求HEAD。
@@ -2141,10 +2153,10 @@ HEAD
 
 **起始版本：** 21
 
-### OPTIONS
+### Options
 
 ```cangjie
-OPTIONS
+Options
 ```
 
 **功能：** HTTP请求OPTIONS。
@@ -2153,10 +2165,10 @@ OPTIONS
 
 **起始版本：** 21
 
-### POST
+### Post
 
 ```cangjie
-POST
+Post
 ```
 
 **功能：** HTTP请求POST。
@@ -2165,10 +2177,10 @@ POST
 
 **起始版本：** 21
 
-### PUT
+### Put
 
 ```cangjie
-PUT
+Put
 ```
 
 **功能：** HTTP请求PUT。
@@ -2177,10 +2189,10 @@ PUT
 
 **起始版本：** 21
 
-### TRACE
+### Trace
 
 ```cangjie
-TRACE
+Trace
 ```
 
 **功能：** HTTP请求TRACE。
@@ -2189,815 +2201,13 @@ TRACE
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): String
-```
-
-**功能：** 获取RequestMethod枚举对应的字符串。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回RequestMethod枚举对应的字符串。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let getMethod = RequestMethod.GET.getValue()
-```
-
-## enum ResponseCode
-
-```cangjie
-public enum ResponseCode {
-    | OK
-    | CREATED
-    | ACCEPTED
-    | NOT_AUTHORITATIVE
-    | NO_CONTENT
-    | RESET
-    | PARTIAL
-    | MULT_CHOICE
-    | MOVED_PERM
-    | MOVED_TEMP
-    | SEE_OTHER
-    | NOT_MODIFIED
-    | USE_PROXY
-    | BAD_REQUEST
-    | UNAUTHORIZED
-    | PAYMENT_REQUIRED
-    | FORBIDDEN
-    | NOT_FOUND
-    | BAD_METHOD
-    | NOT_ACCEPTABLE
-    | PROXY_AUTH
-    | CLIENT_TIMEOUT
-    | CONFLICT
-    | GONE
-    | LENGTH_REQUIRED
-    | PRECON_FAILED
-    | ENTITY_TOO_LARGE
-    | REQ_TOO_LONG
-    | UNSUPPORTED_TYPE
-    | REQUESTED_RANGE_NOT_SATISFIABLE
-    | EXPECTATION_FAILED
-    | TEAPOT
-    | MISDIRECTED_REQUEST
-    | UNPROCESSABLE_ENTITY
-    | LOCKED
-    | FAILED_DEPENDENCY
-    | TOO_EARLY
-    | UPGRADE_REQUIRED
-    | PRECONDITION_REQUIRED
-    | TOO_MANY_REQUESTS
-    | REQUEST_HEADER_FIELDS_TOO_LARGE
-    | UNAVAILABLE_FOR_LEGAL_REASONS
-    | INTERNAL_ERROR
-    | NOT_IMPLEMENTED
-    | BAD_GATEWAY
-    | UNAVAILABLE
-    | GATEWAY_TIMEOUT
-    | VERSION
-    | VARIANT_ALSO_NEGOTIATES
-    | INSUFFICIENT_STORAGE
-    | LOOP_DETECTED
-    | NOT_EXTENDED
-    | NETWORK_AUTHENTICATION_REQUIRED
-    | ...
-}
-```
-
-**功能：** 发起请求返回的响应码。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### ACCEPTED
-
-```cangjie
-ACCEPTED
-```
-
-**功能：** 已经接受请求，但未处理完成。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### BAD_GATEWAY
-
-```cangjie
-BAD_GATEWAY
-```
-
-**功能：** 充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### BAD_METHOD
-
-```cangjie
-BAD_METHOD
-```
-
-**功能：** 客户端请求中的方法被禁止。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### BAD_REQUEST
-
-```cangjie
-BAD_REQUEST
-```
-
-**功能：** 客户端请求的语法错误，服务器无法理解。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### CLIENT_TIMEOUT
-
-```cangjie
-CLIENT_TIMEOUT
-```
-
-**功能：** 请求时间过长，超时。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### CONFLICT
-
-```cangjie
-CONFLICT
-```
-
-**功能：** 服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### CREATED
-
-```cangjie
-CREATED
-```
-
-**功能：** 成功请求并创建了新的资源。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### ENTITY_TOO_LARGE
-
-```cangjie
-ENTITY_TOO_LARGE
-```
-
-**功能：** 由于请求的实体过大，服务器无法处理，因此拒绝请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### EXPECTATION_FAILED
-
-```cangjie
-EXPECTATION_FAILED
-```
-
-**功能：** 此响应代码表示服务器无法满足Expect请求标头字段所指示的期望。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### FAILED_DEPENDENCY
-
-```cangjie
-FAILED_DEPENDENCY
-```
-
-**功能：** 由于前一个请求失败，本次请求失败。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### FORBIDDEN
-
-```cangjie
-FORBIDDEN
-```
-
-**功能：** 服务器理解请求客户端的请求，但是拒绝执行此请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### GATEWAY_TIMEOUT
-
-```cangjie
-GATEWAY_TIMEOUT
-```
-
-**功能：** 充当网关或代理的服务器，未及时从远端服务器获取请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### GONE
-
-```cangjie
-GONE
-```
-
-**功能：** 客户端请求的资源已经不存在。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### INSUFFICIENT_STORAGE
-
-```cangjie
-INSUFFICIENT_STORAGE
-```
-
-**功能：** 无法在资源上执行该方法，因为服务器无法存储成功完成请求所需的表示。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### INTERNAL_ERROR
-
-```cangjie
-INTERNAL_ERROR
-```
-
-**功能：** 服务器内部错误，无法完成请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### LENGTH_REQUIRED
-
-```cangjie
-LENGTH_REQUIRED
-```
-
-**功能：** 服务器无法处理客户端发送的不带Content-Length的请求信息。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### LOCKED
-
-```cangjie
-LOCKED
-```
-
-**功能：** 正在访问的资源已锁定。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### LOOP_DETECTED
-
-```cangjie
-LOOP_DETECTED
-```
-
-**功能：** 服务器在处理请求时检测到无限循环。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### MISDIRECTED_REQUEST
-
-```cangjie
-MISDIRECTED_REQUEST
-```
-
-**功能：** 请求被定向到无法生成响应的服务器。这可以由未配置为针对请求 URI 中包含的方案和权限组合生成响应的服务器发送。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### MOVED_PERM
-
-```cangjie
-MOVED_PERM
-```
-
-**功能：** 永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### MOVED_TEMP
-
-```cangjie
-MOVED_TEMP
-```
-
-**功能：** 临时移动。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### MULT_CHOICE
-
-```cangjie
-MULT_CHOICE
-```
-
-**功能：** 多种选择。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NETWORK_AUTHENTICATION_REQUIRED
-
-```cangjie
-NETWORK_AUTHENTICATION_REQUIRED
-```
-
-**功能：** 指示客户端需要进行身份验证才能获得网络访问权限。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NOT_ACCEPTABLE
-
-```cangjie
-NOT_ACCEPTABLE
-```
-
-**功能：** 服务器无法根据客户端请求的内容特性完成请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NOT_AUTHORITATIVE
-
-```cangjie
-NOT_AUTHORITATIVE
-```
-
-**功能：** 非授权信息。请求成功。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NOT_EXTENDED
-
-```cangjie
-NOT_EXTENDED
-```
-
-**功能：** 服务器需要对请求进行进一步扩展才能完成请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NOT_FOUND
-
-```cangjie
-NOT_FOUND
-```
-
-**功能：** 服务器无法根据客户端的请求找到资源（网页）。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NOT_IMPLEMENTED
-
-```cangjie
-NOT_IMPLEMENTED
-```
-
-**功能：** 服务器不支持请求的功能，无法完成请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NOT_MODIFIED
-
-```cangjie
-NOT_MODIFIED
-```
-
-**功能：** 未修改。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### NO_CONTENT
-
-```cangjie
-NO_CONTENT
-```
-
-**功能：** 无内容。服务器成功处理，但未返回内容。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### OK
-
-```cangjie
-OK
-```
-
-**功能：** 请求成功。一般用于GET与POST请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### PARTIAL
-
-```cangjie
-PARTIAL
-```
-
-**功能：** 部分内容。服务器成功处理了部分GET请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### PAYMENT_REQUIRED
-
-```cangjie
-PAYMENT_REQUIRED
-```
-
-**功能：** 保留，将来使用。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### PRECONDITION_REQUIRED
-
-```cangjie
-PRECONDITION_REQUIRED
-```
-
-**功能：** 源服务器要求请求是有条件的。此响应旨在防止'丢失更新'问题，即当第三方修改服务器上的状态时，客户端GET获取资源的状态，对其进行修改并将其PUT放回服务器，从而导致冲突。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### PRECON_FAILED
-
-```cangjie
-PRECON_FAILED
-```
-
-**功能：** 客户端请求信息的先决条件错误。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### PROXY_AUTH
-
-```cangjie
-PROXY_AUTH
-```
-
-**功能：** 请求要求代理的身份认证。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### REQUESTED_RANGE_NOT_SATISFIABLE
-
-```cangjie
-REQUESTED_RANGE_NOT_SATISFIABLE
-```
-
-**功能：** 无法满足请求中Range标头字段指定的范围。该范围可能超出了目标URI数据的大小。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### REQUEST_HEADER_FIELDS_TOO_LARGE
-
-```cangjie
-REQUEST_HEADER_FIELDS_TOO_LARGE
-```
-
-**功能：** 服务器不愿意处理请求，因为其头字段太大。在减小请求头字段的大小后，可以重新提交请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### REQ_TOO_LONG
-
-```cangjie
-REQ_TOO_LONG
-```
-
-**功能：** 请求的URI过长（URI通常为网址），服务器无法处理。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### RESET
-
-```cangjie
-RESET
-```
-
-**功能：** 重置内容。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### SEE_OTHER
-
-```cangjie
-SEE_OTHER
-```
-
-**功能：** 查看其它地址。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### TEAPOT
-
-```cangjie
-TEAPOT
-```
-
-**功能：** 服务端拒绝用茶壶煮咖啡。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### TOO_EARLY
-
-```cangjie
-TOO_EARLY
-```
-
-**功能：** 表示服务器不愿意冒险处理可能被重播的请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### TOO_MANY_REQUESTS
-
-```cangjie
-TOO_MANY_REQUESTS
-```
-
-**功能：** 表示用户在给定的时间内发送了太多请求，应限制请求速率。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### UNAUTHORIZED
-
-```cangjie
-UNAUTHORIZED
-```
-
-**功能：** 请求要求用户的身份认证。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### UNAVAILABLE
-
-```cangjie
-UNAVAILABLE
-```
-
-**功能：** 由于超载或系统维护，服务器暂时的无法处理客户端的请求。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### UNAVAILABLE_FOR_LEGAL_REASONS
-
-```cangjie
-UNAVAILABLE_FOR_LEGAL_REASONS
-```
-
-**功能：** 用户代理请求了无法合法提供的资源，例如政府审查的网页。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### UNPROCESSABLE_ENTITY
-
-```cangjie
-UNPROCESSABLE_ENTITY
-```
-
-**功能：** 请求格式正确，但由于语义错误而无法遵循。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### UNSUPPORTED_TYPE
-
-```cangjie
-UNSUPPORTED_TYPE
-```
-
-**功能：** 服务器无法处理请求的格式。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### UPGRADE_REQUIRED
-
-```cangjie
-UPGRADE_REQUIRED
-```
-
-**功能：** 服务器拒绝使用当前协议执行请求，但在客户端升级到其他协议后可能愿意这样做。 服务端发送带有Upgrade(en-US)字段的426响应 来表明它所需的协议。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### USE_PROXY
-
-```cangjie
-USE_PROXY
-```
-
-**功能：** 使用代理。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### VARIANT_ALSO_NEGOTIATES
-
-```cangjie
-VARIANT_ALSO_NEGOTIATES
-```
-
-**功能：** 服务器存在内部配置错误：所选的变体资源被配置为参与透明内容协商本身，因此不是协商过程中的适当终点。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### VERSION
-
-```cangjie
-VERSION
-```
-
-**功能：** 服务器请求的HTTP协议的版本。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-### static func parse(UInt32)
-
-```cangjie
-public static func parse(code: UInt32): ResponseCode
-```
-
-**功能：** 获取状态码对应。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|code|UInt32|是|-|状态码的数值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ResponseCode](#enum-responsecode)|返回的响应码。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let code = ResponseCode.parse(200)
-```
-
-### func getValue()
-
-```cangjie
-public func getValue(): UInt32
-```
-
-**功能：** 获取ResponseCode枚举对应的数值。
-
-**系统能力：** SystemCapability.Communication.NetStack
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|UInt32|返回ResponseCode枚举对应的数值。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let code = ResponseCode.OK.getValue()
-```
-
 ## enum UsingProxy
 
 ```cangjie
 public enum UsingProxy {
-    | NOT_USE
-    | USE_DEFAULT
-    | USE_SPECIFIED(HttpProxy)
+    | NotUse
+    | UseDefault
+    | UseSpecified(HttpProxy)
     | ...
 }
 ```
@@ -3008,10 +2218,10 @@ public enum UsingProxy {
 
 **起始版本：** 21
 
-### NOT_USE
+### NotUse
 
 ```cangjie
-NOT_USE
+NotUse
 ```
 
 **功能：** 不使用代理。
@@ -3020,21 +2230,22 @@ NOT_USE
 
 **起始版本：** 21
 
-### USE_DEFAULT
+### UseDefault
 
 ```cangjie
-USE_DEFAULT
+UseDefault
 ```
 
 **功能：** 使用默认代理。
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 21
 
-### USE_SPECIFIED(HttpProxy)
+### UseSpecified(HttpProxy)
 
 ```cangjie
-USE_SPECIFIED(HttpProxy)
+UseSpecified(HttpProxy)
 ```
 
 **功能：** 使用指定类型代理。
@@ -3054,7 +2265,7 @@ import std.collection.*
 let httpRequest = createHttp()
 // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息
 httpRequest.onHeadersReceive({header: HashMap<String, String> =>
-    AppLog.info("header: ${header}")
+    Hilog.info(0, "AppLogCj", "header: ${header}")
 })
 
 let option = HttpRequestOptions(
@@ -3096,13 +2307,13 @@ let option = HttpRequestOptions(
 httpRequest.request( // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
     "http://www.example.com", { err, resp =>
         if (let Some(e) <- err) {
-            Hilog.error(0, "test","exception: ${e.message}")
+            Hilog.error(0, "AppLogCj","exception: ${e.message}")
             throw e
         }
         if (let Some(r) <- resp) {
-            Hilog.error(0, "test", "${r}")
+            Hilog.error(0, "AppLogCj", "${r}")
         } else {
-            Hilog.error(0, "test", "resp is none")
+            Hilog.error(0, "AppLogCj", "resp is none")
         }
         httpRequest.destroy()
     }, options: option)
