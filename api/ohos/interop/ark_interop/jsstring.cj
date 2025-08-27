@@ -43,53 +43,63 @@ foreign func ARKTS_StringCopy(env: JSEnv, value: JSValue_, dst: CPointer<Unit>, 
 @FastNative
 foreign func ARKTS_CreateString(env: JSEnv, isCompressed: Bool, length: UInt32, data: CPointer<Unit>): JSValue_
 
+/**
+ * An interface that implements extension method to convert value to JSValue.
+ */
 @!APILevel[
-    19,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public interface ToJSValue {
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     func toJSValue(context: JSContext): JSValue
 }
 
+/**
+ * An interface that can be used as a JSObejct key. It implements extension methods for String type.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 sealed interface JSKeyable <: ToString & ToJSValue {}
 
+/**
+ * String class that extends the JSKeyable interface.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 extend String <: JSKeyable {
+    /**
+     * Convert String to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(context: JSContext): JSValue {
         JSValue(context, JSString.createString(context, this))
     }
 }
 
+/**
+ * The JSString object is used to represent a secure reference to the ArkTS string.
+ * It can be converted to Cangjie String and Utf16String.
+ */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 public class JSString <: JSHeapObject & ToString & JSKeyable {
     static func createString(context: JSContext, source: String): JSValue_ {
@@ -152,21 +162,25 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
+    /**
+     * Convert JSString to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(_: JSContext): JSValue {
         JSValue(context, innerValue)
     }
 
+    /**
+     * Convert JSString to String.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toString(): String {
         match (cjStrCache_) {
@@ -175,11 +189,13 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
         }
     }
 
+    /**
+     * Convert JSString to Utf16String.
+     */
     @!APILevel[
-        20,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toUtf16String(): Utf16String {
         JSString.readUtf16String(context, innerValue)

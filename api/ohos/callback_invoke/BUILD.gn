@@ -13,8 +13,15 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.labels") {
-  sources = [ "src/api_level.cj" ]
+ohos_cangjie_shared_library("ohos.callback_invoke") {
+  sources = [
+    "callback_object.cj",
+  ]
+
+  cj_deps = [
+    "../business_exception:ohos.business_exception",
+    "../labels:ohos.labels",
+  ]
 
   subsystem_name = "arkcompiler"
   part_name = "cangjie_ark_interop"
