@@ -153,7 +153,8 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-D]
 
         UIAbility获取传入参数示例如下：
 
-        <!--compile-->
+        <!-- compile -->
+
         ```cangjie
         import kit.AbilityKit.*
         import ohos.base.*

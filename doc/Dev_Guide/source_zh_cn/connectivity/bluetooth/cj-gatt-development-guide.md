@@ -32,29 +32,29 @@
 | setBLEMtuSize() | client协商远端蓝牙低功耗设备的最大传输单元（Maximum Transmission Unit, MTU），调用connect接口连接成功后才能使用。|
 | setCharacteristicChangeNotification() | 向服务端发送设置通知此特征值请求。 |
 | setCharacteristicChangeIndication() | 向服务端发送设置通知此特征值请求。 |
-| on(`type`: BluetoothBleGattClientDeviceCallbackType, Callback1Argument<BLECharacteristic>) | 订阅蓝牙低功耗设备的特征值变化事件。需要先调用setNotifyCharacteristicChanged接口才能接收server端的通知。|
-| off(`type`: BluetoothBleGattClientDeviceCallbackType, ?CallbackObject = None) | 取消订阅蓝牙低功耗设备的特征值变化事件。  |
-| on(`type`: BluetoothBleGattClientDeviceCallbackType, Callback1Argument<BLEConnectionChangeStage>) | client端订阅蓝牙低功耗设备的连接状态变化事件。 |
-| off(`type`: BluetoothBleGattClientDeviceCallbackType, ?CallbackObject = None) | 取消订阅蓝牙低功耗设备的连接状态变化事件。 |
-| on(`type`: BluetoothBleGattClientDeviceCallbackType, Callback1Argument<Int32>) | client端订阅MTU状态变化事件。 |
-| off(`type`: BluetoothBleGattClientDeviceCallbackType, ?CallbackObject = None) | client端取消订阅MTU状态变化事件。 |
+| on(`type`: BluetoothBleGattClientDeviceCallbackType) | 订阅蓝牙低功耗设备的特征值变化事件。需要先调用setNotifyCharacteristicChanged接口才能接收server端的通知。|
+| off(`type`: BluetoothBleGattClientDeviceCallbackType) | 取消订阅蓝牙低功耗设备的特征值变化事件。  |
+| on(`type`: BluetoothBleGattClientDeviceCallbackType) | client端订阅蓝牙低功耗设备的连接状态变化事件。 |
+| off(`type`: BluetoothBleGattClientDeviceCallbackType) | 取消订阅蓝牙低功耗设备的连接状态变化事件。 |
+| on(`type`: BluetoothBleGattClientDeviceCallbackType) | client端订阅MTU状态变化事件。 |
+| off(`type`: BluetoothBleGattClientDeviceCallbackType) | client端取消订阅MTU状态变化事件。 |
 | addService() | server端添加服务。 |
 | removeService() | 删除已添加的服务。 |
 | close() | 关闭服务端功能，去注销server在协议栈的注册，调用该接口后GattServer实例将不能再使用。 |
 | notifyCharacteristicChanged() | server端特征值发生变化时，主动通知已连接的client设备。 |
 | sendResponse() | server端回复client端的读写请求。 |
-| on(`type`: BluetoothBleGattServerCallbackType, Callback1Argument<CharacteristicReadRequest>) | server端订阅特征值读请求事件。 |
-| off(`type`: BluetoothBleGattServerCallbackType, ?CallbackObject = None) | server端取消订阅特征值读请求事件。 |
-| on(`type`: BluetoothBleGattServerCallbackType, Callback1Argument<CharacteristicWriteRequest>) | server端订阅特征值写请求事件。 |
-| off(`type`: BluetoothBleGattServerCallbackType, ?CallbackObject = None) | server端取消订阅特征值写请求事件。 |
-| on(`type`: BluetoothBleGattServerCallbackType, Callback1Argument<DescriptorReadRequest>) | server端订阅描述符读请求事件。 |
-| off(`type`: BluetoothBleGattServerCallbackType, ?CallbackObject = None) | server端取消订阅描述符读请求事件。 |
-| on(`type`: BluetoothBleGattServerCallbackType, Callback1Argument<DescriptorWriteRequest>) | server端订阅描述符写请求事件。 |
-| off(`type`: BluetoothBleGattServerCallbackType, ?CallbackObject = None) | server端取消订阅描述符写请求事件。 |
-| on(`type`: BluetoothBleGattServerCallbackType, callback1Argument<BLEConnectionChangeState>) | server端订阅BLE连接状态变化事件。 |
-| off(`type`: BluetoothBleGattServerCallbackType, ?CallbackObject = None) | server端取消订阅BLE连接状态变化事件。 |
-| on(`type`: BluetoothBleGattServerCallbackType, Callback1Argument<Int32>) | server端订阅MTU状态变化事件。 |
-| off(`type`: BluetoothBleGattServerCallbackType, ?CallbackObject = None) | server端取消订阅MTU状态变化事件。 |
+| on(`type`: BluetoothBleGattServerCallbackType) | server端订阅特征值读请求事件。 |
+| off(`type`: BluetoothBleGattServerCallbackType) | server端取消订阅特征值读请求事件。 |
+| on(`type`: BluetoothBleGattServerCallbackType) | server端订阅特征值写请求事件。 |
+| off(`type`: BluetoothBleGattServerCallbackType) | server端取消订阅特征值写请求事件。 |
+| on(`type`: BluetoothBleGattServerCallbackType) | server端订阅描述符读请求事件。 |
+| off(`type`: BluetoothBleGattServerCallbackType) | server端取消订阅描述符读请求事件。 |
+| on(`type`: BluetoothBleGattServerCallbackType) | server端订阅描述符写请求事件。 |
+| off(`type`: BluetoothBleGattServerCallbackType) | server端取消订阅描述符写请求事件。 |
+| on(`type`: BluetoothBleGattServerCallbackType) | server端订阅BLE连接状态变化事件。 |
+| off(`type`: BluetoothBleGattServerCallbackType) | server端取消订阅BLE连接状态变化事件。 |
+| on(`type`: BluetoothBleGattServerCallbackType) | server端订阅MTU状态变化事件。 |
+| off(`type`: BluetoothBleGattServerCallbackType) | server端取消订阅MTU状态变化事件。 |
 
 ## 主要场景开发步骤
 
@@ -79,7 +79,7 @@
     class GattClientManager {
         var device: ?String = None
         var gattClient: ?GattClientDevice = None
-        let connectState: ProfileConnectionState = ProfileConnectionState.STATE_DISCONNECTED
+        let connectState: ProfileConnectionState = ProfileConnectionState.StateDisconnected
         let myServiceUuid: String = '00001810-0000-1000-8000-00805F9B34FB'
         let myCharacteristicUuid: String = '00001820-0000-1000-8000-00805F9B34FB'
         let myFirstDescriptorUuid: String = '00002902-0000-1000-8000-00805F9B34FB' // 2902一般用于notification或者indication
@@ -168,7 +168,7 @@
 
         // 2. client端主动连接时调用
         public func startConnect(peerDevice: String) { // 对端设备一般通过ble scan获取到
-            if (this.connectState != ProfileConnectionState.STATE_DISCONNECTED) {
+            if (this.connectState != ProfileConnectionState.StateDisconnected) {
                 AppLog.error('startConnect failed')
                 return
             }

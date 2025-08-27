@@ -10,7 +10,7 @@
 
 2. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥类型为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
+3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.EncryptMode），指定加密密钥（SymKey）和GCM模式对应的加密参数（GcmParamsSpec），初始化加密Cipher实例。
 
 4. 将一次传入数据量设置为20字节，多次调用[update](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob)，更新数据（明文）。
 
@@ -32,7 +32,7 @@
 
 1. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'AES128|GCM|PKCS7'，创建对称密钥类型为AES128、分组模式为GCM、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
+2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DecryptMode），指定解密密钥（SymKey）和GCM模式对应的解密参数（GcmParamsSpec），初始化解密Cipher实例。
 
 3. 将一次传入数据量设置为20字节，多次调用[update](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob)，更新数据（密文）。
 
@@ -47,6 +47,7 @@
 ```cangjie
 import kit.CryptoArchitectureKit.*
 import std.collection.ArrayList
+import ohos.hilog.Hilog
 
 func generateRandom(len: Int32) {
     let rand = createRandom()
@@ -67,7 +68,7 @@ var gcmParams = genGcmParamsSpec()
 // 加密消息。
 func encryptMessage(symKey: SymKey, plainText: DataBlob) {
     let cipher = createCipher('AES128|GCM|PKCS7')
-    cipher.`init`(ENCRYPT_MODE, symKey, gcmParams)
+    cipher.initialize(CryptoMode.EncryptMode, symKey, gcmParams)
     let updateLength = 20 // 假设以20字节为单位进行分段update，实际并无要求。
     let cipherText = ArrayList<UInt8>()
     let size = plainText.data.size
@@ -93,7 +94,7 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
 // 解密消息。
 func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
     let decoder = createCipher('AES128|GCM|PKCS7')
-    decoder.`init`(DECRYPT_MODE, symKey, gcmParams)
+    decoder.initialize(CryptoMode.DecryptMode, symKey, gcmParams)
     let updateLength = 20 // 假设以20字节为单位进行分段update，实际并无要求。
     let decryptText = ArrayList<UInt8>()
     let size = cipherText.data.size
@@ -119,7 +120,7 @@ func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
     let aesGenerator = createSymKeyGenerator('AES128')
     let symKey = aesGenerator.convertKey(symKeyBlob)
-    AppLog.info('convertKey success')
+    Hilog.info(0,"",'convertKey success')
     return symKey
 }
 
@@ -131,10 +132,10 @@ func test() {
     let encryptText = encryptMessage(symKey, plainText)
     let decryptText = decryptMessage(symKey, encryptText)
     if (plainText.data.toString() == decryptText.data.toString()) {
-        AppLog.info('decrypt ok')
-        AppLog.info('decrypt plainText: ' + String.fromUtf8(decryptText.data))
+        Hilog.info(0,"",'decrypt ok')
+        Hilog.info(0,"",'decrypt plainText: ' + String.fromUtf8(decryptText.data))
     } else {
-        AppLog.error('decrypt failed')
+        Hilog.error(0,"",'decrypt failed')
     }
 }
 ```

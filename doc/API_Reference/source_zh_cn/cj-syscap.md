@@ -94,6 +94,20 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
 ![image-Cross-device-app-dev-view](figures/image-Cross-device-app-dev-view.png)
 
+### 判断API是否可以使用
+
+当前提供了Cangjie API用于帮助判断某个API是否可以使用。
+
+```cangjie
+import ohos.base.canIUse
+
+if(canIUse("SystemCapability.ArkUI.ArkUI.Full")){
+    Hilog.info(0, "SysCap", "支持系统能力SystemCapability.ArkUI.ArkUI.Full")
+}else{
+    Hilog.info(0, "SysCap", "不支持系统能力SystemCapability.ArkUI.ArkUI.Full")
+}
+```
+
 ### 不同设备相同能力的差异检查
 
 即使是相同的系统能力，在不同的设备下，也会有能力的差异。比如同是摄像头的能力，平板设备优于智能穿戴设备。
@@ -101,6 +115,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 ```cangjie
 import ohos.base.*
 import kit.UserAuthenticationKit.*
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     let userAuthInstance = getUserAuthInstance(
@@ -110,7 +125,7 @@ try {
     userAuthInstance.on("result", {u => userAuthInstance.off("result")})
     userAuthInstance.start()
 } catch (e: Exception) {
-    AppLog.info("auth catch error: ${e.toString()}")
+    Hilog.error(0, "AppLogCj", "auth catch error: ${e.toString()}")
 }
 ```
 
@@ -133,3 +148,5 @@ try {
 6. 部署到设备上的系统参数中包含了SysCap集，系统提供了native的接口和应用接口，可供系统内的部件和应用查询某个SysCap是否存在。
 
 7. 应用开发过程中，应用必要的SysCap将被编码成RPCID（Required Product Compatibility ID），并写入应用安装包中。应用安装时，包管理器将解码RPCID得到应用需要的 SysCap，与设备当前具备的SysCap比较，若应用要求的SysCap都被满足，则安装成功。
+
+8. 应用运行时，可通过canIUse接口查询设备的SysCap，保证在不同设备上的兼容性。

@@ -8,7 +8,7 @@
 - 当相机应用从后台切换至前台时，相机状态回调会返回相机不可用状态，表示当前相机设备被打开，处于忙碌状态。
 - 相机应用从后台切换至前台时，需要重启相机设备的预览流、拍照流以及相机会话管理。
 
-在参考以下示例前，建议开发者了解[相机管理](./cj-camera-device-management.md)、[设备输入](./cj-camera-device-input.md)、[会话管理](./cj-camera-session-management.md)等单个操作。
+在参考以下示例前，建议开发者查看[相机开发指导(仓颉)](./cj-camera-preparation.md)的具体章节，了解[相机管理](./cj-camera-device-management.md)、[设备输入](./cj-camera-device-input.md)、[会话管理](./cj-camera-session-management.md)等单个操作。
 
 ## 开发流程
 
@@ -26,26 +26,28 @@ Context获取方式请参见：[获取UIAbility的上下文信息](../../applica
 
 ```cangjie
 package ohos_app_cangjie_entry
-
 internal import ohos.base.LengthProp
-internal import ohos.component.Column
-internal import ohos.component.Row
-internal import ohos.component.Text
-internal import ohos.component.CustomView
-internal import ohos.component.CJEntry
-internal import ohos.component.loadNativeView
-internal import ohos.component.FontWeight
-internal import ohos.state_manage.SubscriberManager
-internal import ohos.state_manage.ObservedProperty
-internal import ohos.state_manage.LocalStorage
-import ohos.state_macro_manage.Entry
-import ohos.state_macro_manage.Component
-import ohos.state_macro_manage.State
-import ohos.state_macro_manage.r
+internal import ohos.arkui.component.Column
+internal import ohos.arkui.component.Row
+internal import ohos.arkui.component.Text
+internal import ohos.arkui.component.CustomView
+internal import ohos.arkui.component.CJEntry
+internal import ohos.arkui.component.loadNativeView
+internal import ohos.arkui.component.FontWeight
+internal import ohos.arkui.state_management.SubscriberManager
+internal import ohos.arkui.state_management.ObservedProperty
+internal import ohos.arkui.state_management.LocalStorage
+import ohos.arkui.state_macro_manage.Entry
+import ohos.arkui.state_macro_manage.Component
+import ohos.arkui.state_macro_manage.State
+import ohos.arkui.state_macro_manage.r
 import kit.AbilityKit.*
 import kit.CameraKit.*
-import ohos.base.BusinessException
-import ohos.base.Callback1Argument
+import ohos.business_exception.BusinessException
+import ohos.callback_invoke.*
+import ohos.hilog.Hilog
+import ohos.multimedia.camera
+
 
 var ctx = None<UIAbilityContext>
 
@@ -63,27 +65,27 @@ class EntryView {
     }
 
     func initCamera(baseContext: UIAbilityContext, surfaceId: String): Unit {
-        AppLog.info('onForeGround recovery begin.')
+        Hilog.info(0,"",'onForeGround recovery begin.')
         let cameraManager: CameraManager = getCameraManager(context)
         // 监听相机状态变化。
-        cameraManager.on(CameraCallbackType.CameraStatus, Cb1())
+        cameraManager.on(CameraEvents.CameraStatus, Cb1())
 
         // 获取相机列表。
         let cameraArray: Array<CameraDevice> = cameraManager.getSupportedCameras()
         if (cameraArray.size <= 0) {
-            AppLog.error("cameraManager.getSupportedCameras error")
+            Hilog.error(0,"","cameraManager.getSupportedCameras error")
             return
         }
 
         for (index in 0..cameraArray.size) {
-            AppLog.info('cameraId : ' + cameraArray[index].cameraId) // 获取相机ID。
-            AppLog.info('cameraPosition : ' + cameraArray[index]
+            Hilog.info(0,"",'cameraId : ' + cameraArray[index].cameraId) // 获取相机ID。
+            Hilog.info(0,"",'cameraPosition : ' + cameraArray[index]
                 .cameraPosition
                 .toString()) // 获取相机位置。
-            AppLog.info('cameraType : ' + cameraArray[index]
+            Hilog.info(0,"",'cameraType : ' + cameraArray[index]
                 .cameraType
                 .toString()) // 获取相机类型。
-            AppLog.info('connectionType : ' + cameraArray[index]
+            Hilog.info(0,"",'connectionType : ' + cameraArray[index]
                 .connectionType
                 .toString()) // 获取相机连接类型。
         }
@@ -93,7 +95,7 @@ class EntryView {
         try {
             cameraInput = cameraManager.createCameraInput(cameraArray[0])
         } catch (err: BusinessException) {
-            AppLog.error('Failed to createCameraInput errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to createCameraInput errorCode = ${err.code}')
         }
         if (cameraInput.isNone()) {
             return
@@ -101,7 +103,7 @@ class EntryView {
 
         // 监听cameraInput错误信息。
         let cameraDevice: CameraDevice = cameraArray[0]
-        cameraInput?.on(CameraCallbackType.CameraError, cameraDevice, Cb2())
+        cameraInput?.on(CameraEvents.CameraError, cameraDevice, Cb2())
 
         // 打开相机。
         cameraInput?.open()
@@ -109,16 +111,16 @@ class EntryView {
         // 获取支持的模式类型。
         let sceneModes: Array<SceneMode> = cameraManager.getSupportedSceneModes(cameraArray[0])
         let isSupportPhotoMode: Bool = sceneModes
-            .indexOf(SceneMode.NORMAL_PHOTO)
+            .indexOf(SceneMode.NormalPhoto)
             .getOrThrow() >= 0
         if (!isSupportPhotoMode) {
-            AppLog.error('photo mode not support')
+            Hilog.error(0,"",'photo mode not support')
             return
         }
         // 获取相机设备支持的输出流能力。
         let cameraOutputCap: CameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraArray[0],
-            SceneMode.NORMAL_PHOTO)
-        AppLog.info("outputCapability: ")
+            SceneMode.NormalPhoto)
+        Hilog.info(0,"","outputCapability: ")
 
         let previewProfilesArray: Array<Profile> = cameraOutputCap.previewProfiles
 
@@ -129,20 +131,20 @@ class EntryView {
         try {
             previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId)
         } catch (err: BusinessException) {
-            AppLog.error('Failed to create the PreviewOutput instance. error code: ${err.code}')
+            Hilog.error(0,"",'Failed to create the PreviewOutput instance. error code: ${err.code}')
         }
         if (previewOutput.isNone()) {
             return
         }
         // 监听预览输出错误信息。
-        previewOutput?.on(CameraCallbackType.CameraError, Cb3())
+        previewOutput?.on(CameraEvents.CameraError, Cb3())
 
         // 创建拍照输出流。
         var photoOutput: ?PhotoOutput = None
         try {
-            photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0])
+            photoOutput = cameraManager.createPhotoOutput(profile:photoProfilesArray[0])
         } catch (err: BusinessException) {
-            AppLog.error('Failed to createPhotoOutput errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to createPhotoOutput errorCode = ${err.code}')
         }
         if (photoOutput.isNone()) {
             return
@@ -151,42 +153,42 @@ class EntryView {
         //创建会话。
         var photoSession: ?PhotoSession = None
         try {
-            photoSession = cameraManager.createSession(SceneMode.NORMAL_PHOTO) as PhotoSession
+            photoSession = cameraManager.createSession(SceneMode.NormalPhoto) as PhotoSession
         } catch (err: BusinessException) {
-            AppLog.error('Failed to create the session instance. errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to create the session instance. errorCode = ${err.code}')
         }
         if (photoSession.isNone()) {
             return
         }
         // 监听session错误信息。
-        photoSession?.on(CameraCallbackType.CameraError, Cb4())
+        photoSession?.on(CameraEvents.CameraError, Cb4())
 
         // 开始配置会话。
         try {
             photoSession?.beginConfig()
         } catch (err: BusinessException) {
-            AppLog.error('Failed to beginConfig. errorCode = ')
+            Hilog.error(0,"",'Failed to beginConfig. errorCode = ')
         }
 
         // 向会话中添加相机输入流。
         try {
             photoSession?.addInput(cameraInput.getOrThrow())
         } catch (err: BusinessException) {
-            AppLog.error('Failed to addInput. errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to addInput. errorCode = ${err.code}')
         }
 
         // 向会话中添加预览输出流。
         try {
             photoSession?.addOutput(previewOutput.getOrThrow())
         } catch (err: BusinessException) {
-            AppLog.error('Failed to addOutput(previewOutput). errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to addOutput(previewOutput). errorCode = ${err.code}')
         }
 
         // 向会话中添加拍照输出流。
         try {
             photoSession?.addOutput(photoOutput.getOrThrow())
         } catch (err: BusinessException) {
-            AppLog.error('Failed to addOutput(photoOutput). errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to addOutput(photoOutput). errorCode = ${err.code}')
         }
 
         // 提交会话配置。
@@ -201,9 +203,9 @@ class EntryView {
                 .getOrThrow()
                 .hasFlash()
         } catch (err: BusinessException) {
-            AppLog.error('Failed to hasFlash. errorCode = ${err.code}')
+           Hilog.error(0,"",'Failed to hasFlash. errorCode = ${err.code}')
         }
-        AppLog.info('Returned with the flash light support status: ${flashStatus}')
+        Hilog.info(0,"",'Returned with the flash light support status: ${flashStatus}')
 
         if (flashStatus) {
             // 判断是否支持自动闪光灯模式。
@@ -211,17 +213,17 @@ class EntryView {
             try {
                 let status: Bool = photoSession
                     .getOrThrow()
-                    .isFlashModeSupported(FlashMode.FLASH_MODE_AUTO)
+                    .isFlashModeSupported(FlashMode.FlashModeAuto)
                 flashModeStatus = status
             } catch (err: BusinessException) {
-                AppLog.error('Failed to check whether the flash mode is supported. errorCode = ${err.code}')
+                Hilog.error(0,"",'Failed to check whether the flash mode is supported. errorCode = ${err.code}')
             }
             if (flashModeStatus) {
                 // 设置自动闪光灯模式。
                 try {
-                    photoSession?.setFlashMode(FlashMode.FLASH_MODE_AUTO)
+                    photoSession?.setFlashMode(FlashMode.FlashModeAuto)
                 } catch (err: BusinessException) {
-                    AppLog.error('Failed to set the flash mode. errorCode = ${err.code}')
+                    Hilog.error(0,"",'Failed to set the flash mode. errorCode = ${err.code}')
                 }
             }
         }
@@ -231,29 +233,29 @@ class EntryView {
         try {
             let status: Bool = photoSession
                 .getOrThrow()
-                .isFocusModeSupported(FocusMode.FOCOS_MODE_CONTINUOUS_AUTO)
+                .isFocusModeSupported(FocusMode.FocusModeContinuousAuto)
             focusModeStatus = status
         } catch (err: BusinessException) {
-            AppLog.error('Failed to check whether the focus mode is supported. errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to check whether the focus mode is supported. errorCode = ${err.code}')
         }
 
         if (focusModeStatus) {
             // 设置连续自动变焦模式。
             try {
-                photoSession?.setFocusMode(FocusMode.FOCOS_MODE_CONTINUOUS_AUTO)
+                photoSession?.setFocusMode(FocusMode.FocusModeContinuousAuto)
             } catch (err: BusinessException) {
-                AppLog.error('Failed to set the focus mode. errorCode = ${err.code}')
+                Hilog.error(0,"",'Failed to set the focus mode. errorCode = ${err.code}')
             }
         }
 
         // 获取相机支持的可变焦距比范围。
-        var zoomRatioRange: Array<Float32> = []
+        var zoomRatioRange: Array<Float64> = []
         try {
             zoomRatioRange = photoSession
                 .getOrThrow()
                 .getZoomRatioRange()
         } catch (err: BusinessException) {
-            AppLog.error('Failed to get the zoom ratio range. errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to get the zoom ratio range. errorCode = ${err.code}')
         }
         if (zoomRatioRange.size <= 0) {
             return
@@ -262,16 +264,16 @@ class EntryView {
         try {
             photoSession?.setZoomRatio(zoomRatioRange[0])
         } catch (err: BusinessException) {
-            AppLog.error('Failed to set the zoom ratio value. errorCode = ${err.code}')
+            Hilog.error(0,"",'Failed to set the zoom ratio value. errorCode = ${err.code}')
         }
         let photoCaptureSetting: PhotoCaptureSetting = PhotoCaptureSetting(
-            quality: QualityLevel.QUALITY_LEVEL_HIGH, // 设置图片质量高。
-            rotation: ImageRotation.ROTATION_0 // 设置图片旋转角度0。
+            quality: QualityLevel.QualityLevelHigh, // 设置图片质量高。
+            rotation: ImageRotation.Rotation0 // 设置图片旋转角度0。
         )
         // 使用当前拍照设置进行拍照。
         photoOutput?.capture(photoCaptureSetting)
 
-        AppLog.info('onForeGround recovery end.')
+        Hilog.info(0,"",'onForeGround recovery end.')
     }
 
     func build() {
@@ -289,27 +291,35 @@ class EntryView {
 }
 
 class Cb1 <: Callback1Argument<CameraStatusInfo> {
-    public func invoke(cameraStatusInfo: CameraStatusInfo): Unit {
-        AppLog.info('camera : ${cameraStatusInfo.camera.cameraId}')
-        AppLog.info('status: ${cameraStatusInfo.status}')
+    public func invoke(error: ?BusinessException,cameraStatusInfo: CameraStatusInfo): Unit {
+        Hilog.info(0,"",'camera : ${cameraStatusInfo.camera.cameraId}')
+        Hilog.info(0,"",'status: ${cameraStatusInfo.status}')
     }
 }
 
-class Cb2 <: Callback1Argument<BusinessException> {
-    public func invoke(error: BusinessException): Unit {
-        AppLog.error('Camera input error code: ${error.code}')
+class Cb2 <: Callback0Argument {
+    public func invoke(error: ?BusinessException): Unit {
+        if (let Some(e) <- error) {
+            Hilog.error(0,"",'Camera input error code: ${e.code}',"")
+        }
+
     }
 }
 
-class Cb3 <: Callback1Argument<BusinessException> {
-    public func invoke(error: BusinessException): Unit {
-        AppLog.error('Preview output error code: ${error.code}')
+class Cb3 <: Callback0Argument {
+    public func invoke(error: ?BusinessException): Unit {
+        if (let Some(e) <- error) {
+            Hilog.error(0,"",'Camera input error code: ${e.code}',"")
+        }
     }
 }
 
-class Cb4 <: Callback1Argument<BusinessException> {
-    public func invoke(error: BusinessException): Unit {
-        AppLog.error('Capture session error code: ${error.code}')
+class Cb4 <: Callback0Argument {
+    public func invoke(error: ?BusinessException): Unit {
+      if (let Some(e) <- error) {
+            Hilog.error(0,"",'Camera input error code: ${e.code}',"")
+        }
     }
 }
+
 ```

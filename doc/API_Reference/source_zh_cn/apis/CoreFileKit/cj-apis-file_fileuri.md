@@ -1,4 +1,4 @@
-# ohos.file_fileuri（文件URI）
+# ohos.file.fileuri
 
 该模块提供通过PATH获取文件统一资源标志符（Uniform Resource Identifier，URI），后续可通过使用[ohos.file_fs（文件管理）](cj-apis-file_fs.md)进行相关open、read、write等操作，实现文件分享。
 
@@ -20,7 +20,9 @@ API示例代码使用说明：
 ## class FileUri
 
 ```cangjie
-public class FileUri <: ToString {
+public class FileUri <: Uri {
+
+
     public init(uriOrPath: String)
 }
 ```
@@ -33,24 +35,7 @@ public class FileUri <: ToString {
 
 **父类型：**
 
-- ToString
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.CoreFileKit.*
-
-let pathDir = '123'
-let path = pathDir + "/test"
-let fileUriObject = FileUri(path)
-AppLog.info("The path of FileUri is " + fileUriObject.path)
-AppLog.info("The name of FileUri is " + fileUriObject.name)
-```
+- [Uri](#class-uri)
 
 ### prop name
 
@@ -87,6 +72,7 @@ public prop path: String
 ### init(String)
 
 ```cangjie
+
 public init(uriOrPath: String)
 ```
 
@@ -104,30 +90,25 @@ public init(uriOrPath: String)
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |13900020|Invalid argument.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = '123'
-let path = pathDir + "/test"
-let uri = FileUri.getUriFromPath(path)  // file://<packageName>/data/storage/el2/base/haps/entry/files/test
-let fileUriObject = FileUri(uri)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900005 | I/O error
+ |
+  | 13900011 | Out of memory
+ |
+  | 13900020 | Invalid argument
+ |
+  | 13900042 | Unknown error
+ |
+  | 14300002 | Invalid uri
+ |
 
 ### static func getUriFromPath(String)
 
 ```cangjie
+
 public static func getUriFromPath(path: String): String
 ```
 
@@ -151,16 +132,18 @@ public static func getUriFromPath(path: String): String
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|The input parameter is invalid.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The input parameter is invalid.
+ |
 
 ### func toString()
 
 ```cangjie
-public func toString(): String
+
+public override func toString(): String
 ```
 
 **功能：** 返回字符串类型URI。
@@ -174,19 +157,3 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|返回字符串类型URI。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.CoreFileKit.*
-
-let pathDir = '123'
-let path = pathDir + "/test"
-let fileUriObject = FileUri(path)
-AppLog.info("The uri of FileUri is " + fileUriObject.toString())
-```

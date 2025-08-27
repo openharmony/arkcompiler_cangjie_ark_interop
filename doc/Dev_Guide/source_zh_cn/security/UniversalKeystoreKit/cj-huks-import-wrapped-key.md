@@ -28,10 +28,15 @@
 
 ## 示例
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
-import std.collection.ArrayList
+import std.collection.*
 
 let IV = '0000000000000000'
 let AAD = "abababababababab"
@@ -46,7 +51,7 @@ let callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256"
 let importedKeyAliasAes192 = "test_import_key_ecdh_aes192"
 var huksPubKey: ?Array<UInt8> = None
 var callerSelfPublicKey: ?Array<UInt8> = None
-var outSharedKey: ?Array<UInt8> = None
+var outSharedKey: ?Array<UInt8> = []
 var outPlainKeyEncData: ?Array<UInt8> = None
 var outKekEncData: ?Array<UInt8> = None
 var outKekEncTag: ?Array<UInt8> = None
@@ -85,221 +90,221 @@ func assignData(data: Array<UInt8>, arrayBuf: Array<UInt8>, startIndex: Int64) {
 }
 
 let genWrappingKeyParams: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_ECC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         )
     ],
-    None
+    inData: Bytes()
 )
 let genCallerEcdhParams: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_ECC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
         )
     ],
-    None
+    inData: Bytes()
 )
 let importParamsCallerKek: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_GCM
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IV,
-            bytes(stringToUint8Array(IV))
+            HuksTag.HuksTagIv,
+            HuksParamValue.BytesValue(IV.toArray())
         )
     ],
-    stringToUint8Array(callerAes256Kek)
+    inData: stringToUint8Array(callerAes256Kek)
 )
 var importParamsAgreeKey: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_GCM
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IV,
-            bytes(stringToUint8Array(IV))
+            HuksTag.HuksTagIv,
+            HuksParamValue.BytesValue(IV.toArray())
         )
     ],
-    None
+    inData: Bytes()
 )
 let callerAgreeParams: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_ECDH
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
         )
     ],
-    None
+    inData: Bytes()
 )
 var encryptKeyCommonParams: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_GCM
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_NONCE,
-            bytes(stringToUint8Array(NONCE))
+            HuksTag.HuksTagNonce,
+            HuksParamValue.BytesValue(NONCE.toArray())
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-            bytes(stringToUint8Array(AAD))
+            HuksTag.HuksTagAssociatedData,
+            HuksParamValue.BytesValue(AAD.toArray())
         )
     ],
-    None
+    inData: Bytes()
 )
 var importWrappedAes192Params: HuksOptions = HuksOptions(
-    [
+    properties: [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2)
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_192
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_CBC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
+            HuksTag.HuksTagUnwrapAlgorithmSuite,
             HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IV,
-            bytes(stringToUint8Array(IV))
+            HuksTag.HuksTagIv,
+            HuksParamValue.BytesValue(IV.toArray())
         )
     ],
-    None
+    inData: Bytes()
 )
 
 func publicGenerateItemFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter generateKeyItem")
+    loggerInfo("enter generateKeyItem")
     try {
         generateKeyItem(keyAlias, huksOptions)
     } catch (e: Exception) {
-        AppLog.error("generateKeyItem invalid, ${e}")
+        loggerInfo("generateKeyItem invalid, ${e}")
     }
 }
 
 func publicImportKeyItemFunc(keyAlias: String, HuksOptions: HuksOptions) {
-    AppLog.info("enter importKeyItem")
+    loggerInfo("enter importKeyItem")
     try {
         importKeyItem(keyAlias, HuksOptions)
     } catch (e: Exception) {
-        AppLog.error("importKeyItem input arg invalid, ${e}")
+        loggerInfo("importKeyItem input arg invalid, ${e}")
     }
 }
 
 func publicDeleteKeyItemFunc(KeyAlias: String, HuksOptions: HuksOptions) {
-    AppLog.info("enter deleteKeyItem")
+    loggerInfo("enter deleteKeyItem")
     try {
         deleteKeyItem(KeyAlias, HuksOptions)
     } catch (e: Exception) {
-        AppLog.error("deleteKeyItem input arg invalid, ${e}")
+        loggerInfo("deleteKeyItem input arg invalid, ${e}")
     }
 }
 
@@ -307,50 +312,47 @@ func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, huksOption
     try {
         importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
     } catch (e: Exception) {
-        AppLog.error("importWrappedKeyItem invalid, ${e}")
+        loggerInfo("importWrappedKeyItem invalid, ${e}")
     }
 }
 
 func publicImportWrappedKeyFunc(keyAlias: String, wrappingKeyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter importWrappedKeyItem")
+    loggerInfo("enter importWrappedKeyItem")
     for (i in 0..huksOptions
             .inData
-            .getOrThrow()
             .size) {
-        AppLog.error("${i}: ${huksOptions.inData?[i]}")
     }
     try {
         importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
     } catch (e: Exception) {
-        AppLog.error("importWrappedKeyItem input arg invalid, ${e}")
+        loggerInfo("importWrappedKeyItem input arg invalid, ${e}")
     }
 }
 
 func publicImportWrappedKey(keyAlias: String, wrappingKeyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter importWrappedKeyItem")
+    loggerInfo("enter importWrappedKeyItem")
     try {
         importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
     } catch (e: Exception) {
-        AppLog.error("importWrappedKeyItem input arg invalid, ${e}")
+        loggerInfo("importWrappedKeyItem input arg invalid, ${e}")
     }
 }
 
-func publicInitFunc(srcKeyAlias: String, HuksOptions: HuksOptions): HuksHandle {
-    var handle: ?HuksHandle = None
-    AppLog.info("enter doInit")
+func publicInitFunc(srcKeyAlias: String, HuksOptions: HuksOptions): HuksHandleId {
+    var handle: ?HuksHandleId = None
+    loggerInfo("enter doInit")
     try {
         handle = initSession(srcKeyAlias, HuksOptions).handle
     } catch (e: Exception) {
-        AppLog.error("doInit input arg invalid, ${e}")
+        loggerInfo("doInit input arg invalid, ${e}")
     }
     return handle.getOrThrow()
 }
 
-func publicUpdateSessionfunc(handle: HuksHandle, huksOptions: HuksOptions): Array<UInt8> {
+func publicUpdateSessionfunc(handle: HuksHandleId, huksOptions: HuksOptions): Array<UInt8> {
     let maxUpdateSize = 64
     let inData = huksOptions
         .inData
-        .getOrThrow()
     let lastInDataPosition = inData.size - 1
     var inDataSegSize = maxUpdateSize
     var inDataSegPosition = 0
@@ -362,20 +364,20 @@ func publicUpdateSessionfunc(handle: HuksHandle, huksOptions: HuksOptions): Arra
         if (inDataSegPosition + maxUpdateSize > lastInDataPosition) {
             isFinished = true
             inDataSegSize = lastInDataPosition - inDataSegPosition + 1
-            AppLog.info("enter doUpdate")
+            loggerInfo("enter doUpdate")
             break
         }
         newHuksOptions.inData = inData.slice(inDataSegPosition, inDataSegSize)
-        AppLog.info("enter doUpdate")
+        loggerInfo("enter doUpdate")
         try {
             outData = updateSession(handle, huksOptions)
         } catch (e: Exception) {
-            AppLog.error("doUpdate input arg invalid, ${e}")
+            loggerInfo("doUpdate input arg invalid, ${e}")
         }
         if ((!isFinished) && (inDataSegPosition + maxUpdateSize > lastInDataPosition)) {
-            AppLog.error("update size invalid isFinished = ${isFinished}")
-            AppLog.error("inDataSegPosition = ${inDataSegPosition}")
-            AppLog.error("lastInDataPosition = ${lastInDataPosition}")
+            loggerInfo("update size invalid isFinished = ${isFinished}")
+            loggerInfo("inDataSegPosition = ${inDataSegPosition}")
+            loggerInfo("lastInDataPosition = ${lastInDataPosition}")
             return Array<UInt8>()
         }
         inDataSegPosition += maxUpdateSize
@@ -383,13 +385,13 @@ func publicUpdateSessionfunc(handle: HuksHandle, huksOptions: HuksOptions): Arra
     return outData.getOrThrow()
 }
 
-func publicFinishSession(handle: HuksHandle, huksOptions: HuksOptions, inData: Array<UInt8>) {
+func publicFinishSession(handle: HuksHandleId, huksOptions: HuksOptions, inData: Array<UInt8>) {
     var outData: ?Array<UInt8> = None
-    AppLog.info("enter doFinish")
+    loggerInfo("enter doFinish")
     try {
         outData = finishSession(handle, huksOptions)
     } catch (e: Exception) {
-        AppLog.error("doFinish input arg invalid, ${e}")
+        loggerInfo("doFinish input arg invalid, ${e}")
     }
     return outData.getOrThrow()
 }
@@ -405,18 +407,18 @@ func agreefunc(keyAlias: String, huksOptions: HuksOptions, huksPublicKey: Array<
     let handle = publicInitFunc(keyAlias, huksOptions)
     var newhuksOptions = huksOptions
     newhuksOptions.inData = huksPublicKey
-    AppLog.info("enter doUpdate")
+    loggerInfo("enter doUpdate")
     try {
         updateSession(handle, newhuksOptions)
     } catch (e: Exception) {
-        AppLog.error("doUpdate input arg invalid, ${e}")
+        loggerInfo("doUpdate input arg invalid, ${e}")
     }
-    AppLog.info("enter doInit")
-    var outSharedKey: ?Array<UInt8> = None
+    loggerInfo("enter doInit")
+    var outSharedKey: ?Array<UInt8> = []
     try {
         outSharedKey = finishSession(handle, newhuksOptions)
     } catch (e: Exception) {
-        AppLog.error("doInit input arg invalid, ${e}")
+        loggerInfo("doInit input arg invalid, ${e}")
     }
     return outSharedKey
 }
@@ -425,7 +427,7 @@ func ImportKekAndAgreeSharedSecret(callerKekAlias: String, importKekParams: Huks
     huksPublicKey: Array<UInt8>, agreeParams: HuksOptions) {
     publicImportKeyItemFunc(callerKekAlias, importKekParams)
     outSharedKey = agreefunc(callerKeyAlias, agreeParams, huksPublicKey)
-    importParamsAgreeKey.inData = outSharedKey
+    importParamsAgreeKey.inData = outSharedKey.getOrThrow()
     publicImportKeyItemFunc(callerAgreeKeyAliasAes256, importParamsAgreeKey)
 }
 
@@ -434,7 +436,7 @@ func generateAndExportPublicKey(keyAlias: String, HuksOptions: HuksOptions, call
     try {
         exportKeyItem(keyAlias, HuksOptions)
     } catch (e: Exception) {
-        AppLog.error("generate pubKey failed, ${e}")
+        loggerInfo("generate pubKey failed, ${e}")
     }
 }
 
@@ -536,5 +538,9 @@ func ImportWrappedKey() {
     publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams)
     publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params)
     publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams)
+}
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
 }
 ```

@@ -8,6 +8,8 @@
 
 如图所示，用户程序通过仓颉接口调用用户首选项读写对应的数据文件。开发者可以将用户首选项持久化文件的内容加载到Preferences实例，每个文件唯一对应到一个Preferences实例，系统会通过静态容器将该实例存储在内存中，直到主动从内存中移除该实例或者删除该文件。
 
+应用首选项的持久化文件保存在应用沙箱内部，可以通过context获取其路径。
+
 **图1** 用户首选项运作机制
 
 ![preferences](figures/preferences.png) <!-- ToBeReviewd -->
@@ -48,7 +50,7 @@
     // xxx.cj
     import kit.ArkData.{ Preferences, PreferencesValueType }
     import kit.AbilityKit.getStageContext
-    import kit.UIKit.Callback1Argument
+    import kit.ArkUI.Callback1Argument
     ```
 
 2. 获取Preferences实例。

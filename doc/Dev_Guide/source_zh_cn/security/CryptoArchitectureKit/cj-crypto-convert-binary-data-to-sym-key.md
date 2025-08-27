@@ -20,6 +20,7 @@
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func genKeyMaterialBlob(): DataBlob {
     let arr: Array<UInt8> = [0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56, 0xad, 0x47, 0xfc, 0x5a, 0x46, 0x39, 0xee,
@@ -34,7 +35,7 @@ func testConvertSymKey() {
     let keyMaterialBlob = genKeyMaterialBlob()
     let key = symKeyGenerator.convertKey(keyMaterialBlob)
     let encodedKey = key.getEncoded() // 获取对称密钥的二进制数据，并以字节数组形式输出。长度为24字节。
-    AppLog.info('key getEncoded hex ${encodedKey.data}')
+    Hilog.info(0,"",'key getEncoded hex ${encodedKey.data}')
 }
 ```
 
@@ -56,6 +57,7 @@ func testConvertSymKey() {
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func testConvertKey() {
     // 对称密钥长度为64字节，512比特。
@@ -64,6 +66,6 @@ func testConvertKey() {
     let symKeyGenerator = createSymKeyGenerator('HMAC')
     let key = symKeyGenerator.convertKey(keyBlob)
     let encodedKey = key.getEncoded()
-    AppLog.info('key encoded data：${encodedKey.data}')
+    Hilog.info(0,"",'key encoded data：${encodedKey.data}')
 }
 ```

@@ -1,4 +1,4 @@
-# ohos.color_manager（色彩管理）
+# ohos.graphics.color_space_manager（色彩管理）
 
 本模块提供管理抽象化色域对象的一些基础能力，包括色域对象的创建与色域基础属性的获取等。
 
@@ -43,24 +43,12 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | Parameter error. |
-| 18600001 | Parameter value is abnormal.@brief function create(colorSpaceName: ColorSpace): ColorSpaceManager |
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkGraphics2D.*
-
-let colorSpaceManager = create(ColorSpace.SRGB)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type.2.Parameter verification failed. |
+  | 18600001 | The parameter value is abnormal. |
 
 ## func create(ColorSpacePrimaries, Float32)
 
@@ -78,7 +66,7 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|primaries|[ColorSpacePrimaries](#struct-colorspaceprimaries)|是|-|色域标准三原色。|
+|primaries|[ColorSpacePrimaries](#class-colorspaceprimaries)|是|-|色域标准三原色。|
 |gamma|Float32|是|-|色域gamma值。|
 
 **返回值：**
@@ -89,35 +77,12 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | Parameter error. |
-| 18600001 | Parameter value is abnormal.@brief function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManager |
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkGraphics2D.*
-
-let primaries = ColorSpacePrimaries(
-    redX: 0.1,
-    redY: 0.1,
-    greenX: 0.2,
-    greenY: 0.2,
-    blueX: 0.3,
-    blueY: 0.3,
-    whitePointX: 0.4,
-    whitePointY: 0.4
-)
-let gamma = 2.2f32
-let colorSpaceManager = create(primaries, gamma)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type.2.Parameter verification failed. |
+  | 18600001 | The parameter value is abnormal. |
 
 ## class ColorSpaceManager
 
@@ -155,11 +120,11 @@ public func getColorSpaceName(): ColorSpace
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |18600001|Parameter value is abnormal.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 18600001 | The parameter value is abnormal. |
 
 **示例：**
 
@@ -171,7 +136,7 @@ public func getColorSpaceName(): ColorSpace
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(ColorSpace.SRGB)
+let colorSpaceManagerInstance = create(ColorSpace.Srgb)
 let colorSpace: ColorSpace = colorSpaceManagerInstance.getColorSpaceName()
 ```
 
@@ -195,11 +160,11 @@ public func getGamma(): Float32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |18600001|The parameter value is abnormal.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 18600001 | The parameter value is abnormal. |
 
 **示例：**
 
@@ -211,7 +176,7 @@ public func getGamma(): Float32
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(SRGB)
+let colorSpaceManagerInstance = create(Srgb)
 let colorSpace = colorSpaceManagerInstance.getGamma()
 ```
 
@@ -235,11 +200,11 @@ public func getWhitePoint(): Array<Float32>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[色彩管理错误码](../../errorcodes/cj-errorcode-colorspace-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |18600001|The parameter value is abnormal.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 18600001 | The parameter value is abnormal. |
 
 **示例：**
 
@@ -251,174 +216,164 @@ public func getWhitePoint(): Array<Float32>
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(SRGB)
+let colorSpaceManagerInstance = create(Srgb)
 let colorSpace = colorSpaceManagerInstance.getWhitePoint()
 ```
 
-## struct ColorSpacePrimaries
+## class ColorSpacePrimaries
 
 ```cangjie
-public struct ColorSpacePrimaries {
-    public ColorSpacePrimaries(
-        public let redX!: Float32,
-        public let redY!: Float32,
-        public let greenX!: Float32,
-        public let greenY!: Float32,
-        public let blueX!: Float32,
-        public let blueY!: Float32,
-        public let whitePointX!: Float32,
-        public let whitePointY!: Float32
-    )
+public class ColorSpacePrimaries {
+    public var redX: Float32
+    public var redY: Float32
+    public var greenX: Float32
+    public var greenY: Float32
+    public var blueX: Float32
+    public var blueY: Float32
+    public var whitePointX: Float32
+    public var whitePointY: Float32
+    public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blueX: Float32, blueY: Float32, whitePointX: Float32, whitePointY: Float32)
 }
 ```
 
-**功能：** 色域标准三原色（红、绿、蓝）和白色，使用(x, y)表示其在色彩空间中的位置。
+**功能：** 色域标准三原色（红、绿、蓝）和白色，使用 (x, y) 坐标表示其在 CIE XYZ 色彩空间中的位置。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let blueX
+### var blueX
 
 ```cangjie
-public let blueX: Float32
+public var blueX: Float32
 ```
 
 **功能：** 标准蓝色在色彩空间的x坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let blueY
+### var blueY
 
 ```cangjie
-public let blueY: Float32
+public var blueY: Float32
 ```
 
 **功能：** 标准蓝色在色彩空间的y坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let greenX
+### var greenX
 
 ```cangjie
-public let greenX: Float32
+public var greenX: Float32
 ```
 
 **功能：** 标准绿色在色彩空间的x坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let greenY
+### var greenY
 
 ```cangjie
-public let greenY: Float32
+public var greenY: Float32
 ```
 
 **功能：** 标准绿色在色彩空间的y坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let redX
+### var redX
 
 ```cangjie
-public let redX: Float32
+public var redX: Float32
 ```
 
 **功能：** 标准红色在色彩空间的x坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let redY
+### var redY
 
 ```cangjie
-public let redY: Float32
+public var redY: Float32
 ```
 
 **功能：** 标准红色在色彩空间的y坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let whitePointX
+### var whitePointX
 
 ```cangjie
-public let whitePointX: Float32
+public var whitePointX: Float32
 ```
 
 **功能：** 标准白色在色彩空间的x坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### let whitePointY
+### var whitePointY
 
 ```cangjie
-public let whitePointY: Float32
+public var whitePointY: Float32
 ```
 
 **功能：** 标准白色在色彩空间的y坐标值。
 
 **类型：** Float32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### ColorSpacePrimaries(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
+### init(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
 
 ```cangjie
-public ColorSpacePrimaries(
-    public let redX!: Float32,
-    public let redY!: Float32,
-    public let greenX!: Float32,
-    public let greenY!: Float32,
-    public let blueX!: Float32,
-    public let blueY!: Float32,
-    public let whitePointX!: Float32,
-    public let whitePointY!: Float32
-)
+public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blueX: Float32, blueY: Float32, whitePointX: Float32, whitePointY: Float32)
 ```
 
 **功能：** ColorSpacePrimaries的主构造函数。
@@ -431,50 +386,50 @@ public ColorSpacePrimaries(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|redX|Float32|是|-| **命名参数。** 标准红色在色彩空间的x坐标值。|
-|redY|Float32|是|-| **命名参数。** 标准红色在色彩空间的y坐标值。|
-|greenX|Float32|是|-| **命名参数。** 标准绿色在色彩空间的x坐标值。|
-|greenY|Float32|是|-| **命名参数。** 标准绿色在色彩空间的y坐标值。|
-|blueX|Float32|是|-| **命名参数。** 标准蓝色在色彩空间的x坐标值。|
-|blueY|Float32|是|-| **命名参数。** 标准蓝色在色彩空间的y坐标值。|
-|whitePointX|Float32|是|-| **命名参数。** 标准白色在色彩空间的x坐标值。|
-|whitePointY|Float32|是|-| **命名参数。** 标准白色在色彩空间的y坐标值。|
+|redX|Float32|是|-|命名参数。标准红色在色彩空间的x坐标值。|
+|redY|Float32|是|-|命名参数。标准红色在色彩空间的y坐标值。|
+|greenX|Float32|是|-|命名参数。标准绿色在色彩空间的x坐标值。|
+|greenY|Float32|是|-|命名参数。标准绿色在色彩空间的y坐标值。|
+|blueX|Float32|是|-|命名参数。标准蓝色在色彩空间的x坐标值。|
+|blueY|Float32|是|-|命名参数。标准蓝色在色彩空间的y坐标值。|
+|whitePointX|Float32|是|-|命名参数。标准白色在色彩空间的x坐标值。|
+|whitePointY|Float32|是|-|命名参数。标准白色在色彩空间的y坐标值。|
 
 ## enum ColorSpace
 
 ```cangjie
-public enum ColorSpace <: ToString {
-    | UNKNOWN
-    | ADOBE_RGB_1998
-    | DCI_P3
-    | DISPLAY_P3
-    | SRGB
-    | CUSTOM
-    | BT709
-    | BT601_EBU
-    | BT601_SMPTE_C
-    | BT2020_HLG
-    | BT2020_PQ
-    | P3_HLG
-    | P3_PQ
-    | ADOBE_RGB_1998_LIMIT
-    | DISPLAY_P3_LIMIT
-    | SRGB_LIMIT
-    | BT709_LIMIT
-    | BT601_EBU_LIMIT
-    | BT601_SMPTE_C_LIMIT
-    | BT2020_HLG_LIMIT
-    | BT2020_PQ_LIMIT
-    | P3_HLG_LIMIT
-    | P3_PQ_LIMIT
-    | LINEAR_P3
-    | LINEAR_SRGB
-    | LINEAR_BT709
-    | LINEAR_BT2020
-    | DISPLAY_SRGB
-    | DISPLAY_P3_SRGB
-    | DISPLAY_P3_HLG
-    | DISPLAY_P3_PQ
+public enum ColorSpace <: Equatable<ColorSpace> & ToString {
+    | Unknown
+    | AdobeRgb1998
+    | DciP3
+    | DisplayP3
+    | Srgb
+    | Custom
+    | Bt709
+    | Bt601Ebu
+    | Bt601SmpteC
+    | Bt2020Hlg
+    | Bt2020Pq
+    | P3Hlg
+    | P3Pq
+    | AdobeRgb1998Limit
+    | DisplayP3Limit
+    | SrgbLimit
+    | Bt709Limit
+    | Bt601EbuLimit
+    | Bt601SmpteCLimit
+    | Bt2020HlgLimit
+    | Bt2020PqLimit
+    | P3HlgLimit
+    | P3PqLimit
+    | LinearP3
+    | LinearSrgb
+    | LinearBt709
+    | LinearBt2020
+    | DisplaySrgb
+    | DisplayP3Srgb
+    | DisplayP3Hlg
+    | DisplayP3Pq
     | ...
 }
 ```
@@ -487,12 +442,13 @@ public enum ColorSpace <: ToString {
 
 **父类型：**
 
+- Equatable\<ColorSpace>
 - ToString
 
-### ADOBE_RGB_1998
+### AdobeRgb1998
 
 ```cangjie
-ADOBE_RGB_1998
+AdobeRgb1998
 ```
 
 **功能：** RGB色域为Adobe RGB(1998)类型；转换函数为Adobe RGB(1998)类型；编码范围为Full类型。
@@ -501,10 +457,10 @@ ADOBE_RGB_1998
 
 **起始版本：** 21
 
-### ADOBE_RGB_1998_LIMIT
+### AdobeRgb1998Limit
 
 ```cangjie
-ADOBE_RGB_1998_LIMIT
+AdobeRgb1998Limit
 ```
 
 **功能：** RGB色域为Adobe RGB(1998)类型；转换函数为Adobe RGB(1998)类型；编码范围为Limit类型。
@@ -513,10 +469,10 @@ ADOBE_RGB_1998_LIMIT
 
 **起始版本：** 21
 
-### BT2020_HLG
+### Bt2020Hlg
 
 ```cangjie
-BT2020_HLG
+Bt2020Hlg
 ```
 
 **功能：** RGB色域为BT2020类型；转换函数为HLG类型；编码范围为Full类型。
@@ -525,10 +481,10 @@ BT2020_HLG
 
 **起始版本：** 21
 
-### BT2020_HLG_LIMIT
+### Bt2020HlgLimit
 
 ```cangjie
-BT2020_HLG_LIMIT
+Bt2020HlgLimit
 ```
 
 **功能：** RGB色域为BT2020类型；转换函数为HLG类型；编码范围为Limit类型。
@@ -537,10 +493,10 @@ BT2020_HLG_LIMIT
 
 **起始版本：** 21
 
-### BT2020_PQ
+### Bt2020Pq
 
 ```cangjie
-BT2020_PQ
+Bt2020Pq
 ```
 
 **功能：** RGB色域为BT2020类型；转换函数为PQ类型；编码范围为Full类型。
@@ -549,10 +505,10 @@ BT2020_PQ
 
 **起始版本：** 21
 
-### BT2020_PQ_LIMIT
+### Bt2020PqLimit
 
 ```cangjie
-BT2020_PQ_LIMIT
+Bt2020PqLimit
 ```
 
 **功能：** RGB色域为BT2020类型；转换函数为PQ类型；编码范围为Limit类型。
@@ -561,10 +517,10 @@ BT2020_PQ_LIMIT
 
 **起始版本：** 21
 
-### BT601_EBU
+### Bt601Ebu
 
 ```cangjie
-BT601_EBU
+Bt601Ebu
 ```
 
 **功能：** RGB色域为BT601_P类型；转换函数为BT709类型；编码范围为Full类型。
@@ -573,10 +529,10 @@ BT601_EBU
 
 **起始版本：** 21
 
-### BT601_EBU_LIMIT
+### Bt601EbuLimit
 
 ```cangjie
-BT601_EBU_LIMIT
+Bt601EbuLimit
 ```
 
 **功能：** RGB色域为BT601_P类型；转换函数为BT709类型；编码范围为Limit类型。
@@ -585,10 +541,10 @@ BT601_EBU_LIMIT
 
 **起始版本：** 21
 
-### BT601_SMPTE_C
+### Bt601SmpteC
 
 ```cangjie
-BT601_SMPTE_C
+Bt601SmpteC
 ```
 
 **功能：** RGB色域为BT601_N类型；转换函数为BT709类型；编码范围为Full类型。
@@ -597,10 +553,10 @@ BT601_SMPTE_C
 
 **起始版本：** 21
 
-### BT601_SMPTE_C_LIMIT
+### Bt601SmpteCLimit
 
 ```cangjie
-BT601_SMPTE_C_LIMIT
+Bt601SmpteCLimit
 ```
 
 **功能：** RGB色域为BT601_N类型；转换函数为BT709类型；编码范围为Limit类型。
@@ -609,22 +565,22 @@ BT601_SMPTE_C_LIMIT
 
 **起始版本：** 21
 
-### BT709
+### Bt709
 
 ```cangjie
-BT709
+Bt709
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** RGB色域为BT709类型；转换函数为BT709类型；编码范围为Full类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### BT709_LIMIT
+### Bt709Limit
 
 ```cangjie
-BT709_LIMIT
+Bt709Limit
 ```
 
 **功能：** RGB色域为BT709类型；转换函数为BT709类型；编码范围为Limit类型。
@@ -633,10 +589,10 @@ BT709_LIMIT
 
 **起始版本：** 21
 
-### CUSTOM
+### Custom
 
 ```cangjie
-CUSTOM
+Custom
 ```
 
 **功能：** 用户自定义色域类型。
@@ -645,10 +601,10 @@ CUSTOM
 
 **起始版本：** 21
 
-### DCI_P3
+### DciP3
 
 ```cangjie
-DCI_P3
+DciP3
 ```
 
 **功能：** RGB色域为DCI-P3类型；转换函数为Gamma 2.6类型；编码范围为Full类型。
@@ -657,22 +613,22 @@ DCI_P3
 
 **起始版本：** 21
 
-### DISPLAY_P3
+### DisplayP3
 
 ```cangjie
-DISPLAY_P3
+DisplayP3
 ```
 
-**功能：** RGB色域为Display P3类型；转换函数为SRGB类型；编码范围为Full类型。
+**功能：** RGB色域为Display P3类型；转换函数为Srgb类型；编码范围为Full类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### DISPLAY_P3_HLG
+### DisplayP3Hlg
 
 ```cangjie
-DISPLAY_P3_HLG
+DisplayP3Hlg
 ```
 
 **功能：** 与P3_HLG相同；RGB色域为Display P3类型；转换函数为HLG类型；编码范围为Full类型。
@@ -681,22 +637,22 @@ DISPLAY_P3_HLG
 
 **起始版本：** 21
 
-### DISPLAY_P3_LIMIT
+### DisplayP3Limit
 
 ```cangjie
-DISPLAY_P3_LIMIT
+DisplayP3Limit
 ```
 
-**功能：** RGB色域为Display P3类型；转换函数为SRGB类型；编码范围为Limit类型。
+**功能：** RGB色域为Display P3类型；转换函数为Srgb类型；编码范围为Limit类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### DISPLAY_P3_PQ
+### DisplayP3Pq
 
 ```cangjie
-DISPLAY_P3_PQ
+DisplayP3Pq
 ```
 
 **功能：** 与P3_PQ相同；RGB色域为Display P3类型；转换函数为PQ类型；编码范围为Full类型。
@@ -705,34 +661,34 @@ DISPLAY_P3_PQ
 
 **起始版本：** 21
 
-### DISPLAY_P3_SRGB
+### DisplayP3Srgb
 
 ```cangjie
-DISPLAY_P3_SRGB
+DisplayP3Srgb
 ```
 
-**功能：** 与DISPLAY_P3相同；RGB色域为Display P3类型；转换函数为SRGB类型；编码范围为Full类型。
+**功能：** 与DisplayP3相同；RGB色域为Display P3类型；转换函数为Srgb类型；编码范围为Full类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### DISPLAY_SRGB
+### DisplaySrgb
 
 ```cangjie
-DISPLAY_SRGB
+DisplaySrgb
 ```
 
-**功能：** 与SRGB相同；RGB色域为SRGB类型；转换函数为SRGB类型；编码范围为Full类型。
+**功能：** 与Srgb相同；RGB色域为Srgb类型；转换函数为Srgb类型；编码范围为Full类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### LINEAR_BT2020
+### LinearBt2020
 
 ```cangjie
-LINEAR_BT2020
+LinearBt2020
 ```
 
 **功能：** RGB色域为BT2020类型；转换函数为Linear类型。
@@ -741,22 +697,22 @@ LINEAR_BT2020
 
 **起始版本：** 21
 
-### LINEAR_BT709
+### LinearBt709
 
 ```cangjie
-LINEAR_BT709
+LinearBt709
 ```
 
-**功能：** 与LINEAR_SRGB相同；RGB色域为BT709类型；转换函数为Linear类型。
+**功能：** 与LINEAR_Srgb相同；RGB色域为BT709类型；转换函数为Linear类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### LINEAR_P3
+### LinearP3
 
 ```cangjie
-LINEAR_P3
+LinearP3
 ```
 
 **功能：** RGB色域为Display P3类型；转换函数为Linear类型。
@@ -765,22 +721,22 @@ LINEAR_P3
 
 **起始版本：** 21
 
-### LINEAR_SRGB
+### LinearSrgb
 
 ```cangjie
-LINEAR_SRGB
+LinearSrgb
 ```
 
-**功能：** RGB色域为SRGB类型；转换函数为Linear类型。
+**功能：** RGB色域为Srgb类型；转换函数为Linear类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### P3_HLG
+### P3Hlg
 
 ```cangjie
-P3_HLG
+P3Hlg
 ```
 
 **功能：** RGB色域为Display P3类型；转换函数为HLG类型；编码范围为Full类型。
@@ -789,10 +745,10 @@ P3_HLG
 
 **起始版本：** 21
 
-### P3_HLG_LIMIT
+### P3HlgLimit
 
 ```cangjie
-P3_HLG_LIMIT
+P3HlgLimit
 ```
 
 **功能：** RGB色域为Display P3类型；转换函数为HLG类型；编码范围为Limit类型。
@@ -801,10 +757,10 @@ P3_HLG_LIMIT
 
 **起始版本：** 21
 
-### P3_PQ
+### P3Pq
 
 ```cangjie
-P3_PQ
+P3Pq
 ```
 
 **功能：** RGB色域为Display P3类型；转换函数为PQ类型；编码范围为Full类型。
@@ -813,10 +769,10 @@ P3_PQ
 
 **起始版本：** 21
 
-### P3_PQ_LIMIT
+### P3PqLimit
 
 ```cangjie
-P3_PQ_LIMIT
+P3PqLimit
 ```
 
 **功能：** RGB色域为Display P3类型；转换函数为PQ类型；编码范围为Limit类型。
@@ -825,34 +781,34 @@ P3_PQ_LIMIT
 
 **起始版本：** 21
 
-### SRGB
+### Srgb
 
 ```cangjie
-SRGB
+Srgb
 ```
 
-**功能：** RGB色域为SRGB类型；转换函数为SRGB类型；编码范围为Full类型；系统默认色域类型。
+**功能：** RGB色域为Srgb类型；转换函数为Srgb类型；编码范围为Full类型；系统默认色域类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### SRGB_LIMIT
+### SrgbLimit
 
 ```cangjie
-SRGB_LIMIT
+SrgbLimit
 ```
 
-**功能：** RGB色域为SRGB类型。转换函数为SRGB类型。编码范围为Limit类型。
+**功能：** RGB色域为Srgb类型。转换函数为Srgb类型。编码范围为Limit类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 21
 
-### UNKNOWN
+### Unknown
 
 ```cangjie
-UNKNOWN
+Unknown
 ```
 
 **功能：** 未知的色域类型。
@@ -861,42 +817,45 @@ UNKNOWN
 
 **起始版本：** 21
 
-### static func parse(UInt32)
+### func !=(ColorSpace)
 
 ```cangjie
-public static func parse(cs: UInt32): ColorSpace
+public operator func !=(other: ColorSpace): Bool
 ```
 
-**功能：** 将UInt32类型值转换为[ColorSpace](#enum-colorspace)枚举值。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-**起始版本：** 21
+**功能：** 与另一个 `ColorSpace` 枚举值进行不等比较。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|cs|UInt32|是|-|[ColorSpace](#enum-colorspace)枚举值对应的整型数。|
+|other|[ColorSpace](#enum-colorspace)|是|-|用于比较的另一个色域类型。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[ColorSpace](#enum-colorspace)|[ColorSpace](#enum-colorspace)枚举值。|
+|Bool|若不相等返回 `true`，否则返回 `false`。|
 
-**示例：**
-
-<!-- compile -->
+### func ==(ColorSpace)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkGraphics2D.*
-
-let value: ColorSpace = ColorSpace.parse(1)
+public operator func ==(other: ColorSpace): Bool
 ```
+
+**功能：** 与另一个 `ColorSpace` 枚举值进行相等比较。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ColorSpace](#enum-colorspace)|是|-|用于比较的另一个色域类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|若相等返回 `true`，否则返回 `false`。|
 
 ### func toString()
 
@@ -905,10 +864,6 @@ public func toString(): String
 ```
 
 **功能：** 将[ColorSpace](#enum-colorspace)枚举值转换为字符串。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -926,5 +881,5 @@ public func toString(): String
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let value: String = ColorSpace.DISPLAY_P3.toString()
+let value: String = ColorSpace.DisplayP3.toString()
 ```

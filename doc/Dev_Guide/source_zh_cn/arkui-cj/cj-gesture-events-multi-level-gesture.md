@@ -18,6 +18,7 @@
 
 对于一般的容器组件（例如：Column），父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件根据布局进行触发。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB().onTouch({ => })
@@ -29,6 +30,7 @@ ComponentA() {
 
 特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也互相存在遮盖关系。所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
+ 
 ```cangjie
 Stack A() {
     ComponentB().onTouch({ => })
@@ -50,6 +52,7 @@ Stack A() {
 
 2. 当一个组件绑定多个手势时，先达到手势触发条件的手势优先触发。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB().gesture(TapGesture(count: 1))
@@ -60,6 +63,7 @@ ComponentA() {
 
 因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
+ 
 ```cangjie
 ComponentA()
 .gesture(
@@ -85,6 +89,7 @@ ComponentA()
 
 responseRegion属性和responseRegionArray属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB()
@@ -109,6 +114,7 @@ ComponentA() {
 
 hitTestBehavior属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB()
@@ -134,6 +140,7 @@ HitTestMode.Block自身会响应触摸测试，阻塞子节点和兄弟节点的
 
 当组件C设置了hitTestBehavior为HitTestMode.Block时，点击组件D区域，组件A和组件C的onTouch事件会触发，组件D的onTouch事件未触发。同时，由于组件D的点击手势因为被阻塞而无法触发，组件C的点击手势会触发。
 
+ 
 ```cangjie
 Stack A() {
     ComponentB()
@@ -155,6 +162,7 @@ HitTestMode.Transparent自身响应触摸测试，不会阻塞兄弟节点的触
 
 而当组件C设置hitTestBehavior为HitTestMode.Transparent时，点击组件B和组件C的重叠区域，组件A和组件C不受到影响与之前一致，组件A和组件C的onTouch事件会触发，组件C的点击手势会触发。而组件B因为组件C设置了HitTestMode.Transparent，组件B也收到了Touch事件，从而组件B的onTouch事件和点击手势触发。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB()
@@ -182,6 +190,7 @@ HitTestMode.None自身不响应触摸测试，不会阻塞子节点和兄弟节�
 
 当父组件使用.gesture绑定手势，父子组件所绑定手势类型相同时，子组件优先于父组件响应。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB()
@@ -196,6 +205,7 @@ ComponentA() {
 
 如果以带优先级的方式绑定手势，则可使得父组件所绑定手势的响应优先级高于子组件。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB()
@@ -210,6 +220,7 @@ ComponentA() {
 
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
 
+ 
 ```cangjie
 ComponentA() {
     ComponentB()

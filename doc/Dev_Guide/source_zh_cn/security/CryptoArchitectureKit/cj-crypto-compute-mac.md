@@ -47,12 +47,13 @@ HMAC通过指定摘要算法，以通信双方共享密钥与消息作为输入�
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
     let aesGenerator = createSymKeyGenerator('HMAC')
     let symKey = aesGenerator.convertKey(symKeyBlob)
-    AppLog.info('convertKey success')
+    Hilog.info(0,"",'convertKey success')
     return symKey
 }
 
@@ -63,13 +64,13 @@ func doHmacBySync() {
     let macAlgName = 'SHA256' // 摘要算法名
     let message = 'hmacTestMessgae' // 待进行HMAC的数据
     let mac = createMac(macAlgName)
-    mac.`init`(key)
+    mac.initialize(key)
     // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
     mac.update(DataBlob(keyData))
     let macResult = mac.doFinal()
-    AppLog.info('[Sync]HMAC result: ${macResult.data}')
+    Hilog.info(0,"",'[Sync]HMAC result: ${macResult.data}')
     let macLen = mac.getMacLength()
-    AppLog.info('HMAC len: ${macLen}')
+    Hilog.info(0,"",'HMAC len: ${macLen}')
 }
 ```
 
@@ -94,12 +95,13 @@ func doHmacBySync() {
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
     let aesGenerator = createSymKeyGenerator('HMAC')
     let symKey = aesGenerator.convertKey(symKeyBlob)
-    AppLog.info('convertKey success')
+    Hilog.info(0,"",'convertKey success')
     return symKey
 }
 
@@ -110,7 +112,7 @@ func doHmacBySync() {
     let macAlgName = 'SHA256' // 摘要算法名
     let message = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee'.toArray() // 待进行HMAC的数据
     let mac = createMac(macAlgName)
-    mac.`init`(key)
+    mac.initialize(key)
     let updateLength = 20; // 假设以20字节为单位进行分段update，实际并无要求
     let size = message.size
     // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制
@@ -125,8 +127,8 @@ func doHmacBySync() {
         mac.update(updateMessageBlob)
     }
     let macResult = mac.doFinal()
-    AppLog.info('[Sync]HMAC result: ${macResult.data}')
+    Hilog.info(0,"",'[Sync]HMAC result: ${macResult.data}')
     let macLen = mac.getMacLength()
-    AppLog.info('HMAC len: ${macLen}')
+    Hilog.info(0,"",'HMAC len: ${macLen}')
 }
 ```

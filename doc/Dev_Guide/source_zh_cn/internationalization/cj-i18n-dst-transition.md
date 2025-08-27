@@ -16,10 +16,8 @@
    计算夏令时跳变前后同一个挂钟时间之间相差的小时数，示例代码如下：
 
    <!-- run -->
-   <!-- compile -->
 
    ```cangjie
-   // index.cj
    import kit.LocalizationKit.*
 
    let calendar: Calendar = getCalendar('zh-Hans')

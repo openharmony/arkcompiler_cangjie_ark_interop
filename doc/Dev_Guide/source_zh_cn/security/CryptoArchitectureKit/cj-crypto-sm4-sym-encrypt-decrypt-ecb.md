@@ -10,7 +10,7 @@
 
 2. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定加密密钥（SymKey），初始化加密Cipher实例。
+3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.EncryptMode），指定加密密钥（SymKey），初始化加密Cipher实例。
 
     ECB模式无加密参数，直接传入None。
 
@@ -27,7 +27,7 @@
 
 1. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'SM4_128|ECB|PKCS7'，创建对称密钥类型为SM4_128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定解密密钥（SymKey）初始化解密Cipher实例。ECB模式无加密参数，直接传入None。
+2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DecryptMode），指定解密密钥（SymKey）初始化解密Cipher实例。ECB模式无加密参数，直接传入None。
 
 3. 调用[update](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob)，更新数据（密文）。
 
@@ -41,12 +41,13 @@
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
-import ohos.base.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 // 加密消息。
 func encryptMessage(symKey: SymKey, plainText: DataBlob) {
     let cipher = createCipher('SM4_128|ECB|PKCS7')
-    cipher.`init`(ENCRYPT_MODE, symKey, None)
+    cipher.initialize(CryptoMode.EncryptMode, symKey, None)
     let cipherData = cipher.doFinal(plainText)
     return cipherData
 }
@@ -54,7 +55,7 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
 // 解密消息。
 func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
     let decoder = createCipher('SM4_128|ECB|PKCS7')
-    decoder.`init`(DECRYPT_MODE, symKey, None)
+    decoder.initialize(CryptoMode.DecryptMode, symKey, None)
     let decryptData = decoder.doFinal(cipherText)
     return decryptData
 }
@@ -63,7 +64,7 @@ func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
     let aesGenerator = createSymKeyGenerator('SM4_128')
     let symKey = aesGenerator.convertKey(symKeyBlob)
-    AppLog.info('convertKey success')
+    Hilog.info(0,"","convertKey success")
     return symKey
 }
 
@@ -76,13 +77,13 @@ func test() {
         let encryptText = encryptMessage(symKey, plainText)
         let decryptText = decryptMessage(symKey, encryptText)
         if (plainText.data.toString() == decryptText.data.toString()) {
-            AppLog.info('decrypt ok')
-            AppLog.info('decrypt plainText: ' + String.fromUtf8(decryptText.data))
+            Hilog.info(0,"",'decrypt ok')
+            Hilog.info(0,"",'decrypt plainText: ' + String.fromUtf8(decryptText.data))
         } else {
-            AppLog.error('decrypt failed')
+            Hilog.error(0,"",'decrypt failed')
         }
     } catch (e: BusinessException) {
-        AppLog.error("SM4 ${e}, error code: ${e.code}")
+        Hilog.error(0,"","SM4 ${e}, error code: ${e.code}")
     }
 }
 ```

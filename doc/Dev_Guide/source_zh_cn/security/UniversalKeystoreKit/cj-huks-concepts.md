@@ -4,7 +4,7 @@
 
 ## 可信执行环境（TEE）
 
-可信执行环境（Trusted Execution Environment），简称TEE，是存在于智能手持通讯设备、平板或任意移动设备主处理器中的一个安全区域，确保各种敏感数据在一个可信环境中被存储、处理和受到保护。TEE为授权安全软件，也称为“可信应用”提供一个安全的执行环境，通过实施保护、保密性、完整性和数据访问权限确保端到端的安全。
+可信执行环境（Trusted Execution Environment），简称TEE，是存在于智能手机、平板或任意移动设备主处理器中的一个安全区域，确保各种敏感数据在一个可信环境中被存储、处理和受到保护。TEE为授权安全软件，也称为“可信应用”提供一个安全的执行环境，通过实施保护、保密性、完整性和数据访问权限确保端到端的安全。
 
 ## 密钥材料格式
 
@@ -22,7 +22,8 @@
 
 其中，密钥算法的值取自结构体[HuksKeyAlg](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg)。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 let rsa2048KeyPairMaterial: Array<UInt8> = [
     0x01, 0x00, 0x00, 0x00, // 密钥算法：huks.HuksKeyAlg.HUKS_ALG_RSA = 1
@@ -105,7 +106,8 @@ let rsa2048KeyPairMaterial: Array<UInt8> = [
 
 如下是一个DER编码的ECC公钥：
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 let eccP256PubKey; Array<UInt8> = [
     0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01, 0x06, 0x08, 0x2a,
@@ -127,7 +129,8 @@ let eccP256PubKey; Array<UInt8> = [
 
 ![priKey](figures/priKey.png)
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 let rsa2048PrivateKeyMaterial: Array<UInt8> = [
     0x01, 0x00, 0x00, 0x00, // 密钥算法：huks.HuksKeyAlg.HUKS_ALG_RSA = 1

@@ -36,7 +36,7 @@
 
 ## ohos.permission.GET_ALL_APP_ACCOUNTS
 
-允许应用查询所有的应用帐号信息。
+允许应用查询所有的应用账号信息。
 
 **权限级别：** system_core
 
@@ -48,7 +48,7 @@
 
 ## ohos.permission.MANAGE_DEVICE_AUTH_CRED
 
-允许应用调用设备认证帐号凭据管理应用接口。
+允许应用调用设备认证账号凭据管理应用接口。
 
 **权限级别：** system_basic
 
@@ -252,7 +252,7 @@
 
 ## ohos.permission.ACCESS_USER_ACCOUNT_INFO
 
-允许系统应用获取帐号提供的数据。
+允许系统应用获取账号提供的数据。
 
 **权限级别：** system_basic
 

@@ -16,13 +16,13 @@
 
 应用模型是OpenHarmony为开发者提供的应用程序所需能力的抽象提炼，它提供了应用程序必备的组件和运行机制。有了应用模型，开发者可以基于一套统一的模型进行应用开发，使应用开发更简单、高效。
 
-仓颉应用使用Stage模型。在该模型中，由于提供了AbilityStage、WindowStage等类作为应用组件和Window窗口的“舞台”，因此称这种应用模型为Stage模型。Stage模型开发可见[Stage模型开发概述](https://developerlf.hwcloudtest.cn/consumer/cn/doc/cangjie-guides/cj-stage-model-development-overview)。
+仓颉应用使用Stage模型。在该模型中，由于提供了AbilityStage、WindowStage等类作为应用组件和Window窗口的“舞台”，因此称这种应用模型为Stage模型。
 
 快速入门提供了多个含有不同类型页面的开发实例，并基于stage模型构建仓颉应用，以便开发者理解以上基本概念及应用开发流程。
 
-- [构建第一个仓颉应用](./cj-quick-start-first-cangjie-app.md)：构建一个简单的具有页面跳转/返回功能的纯仓颉应用。
-- [构建第一个仓颉与ArkTS混合应用](./cj-quick-start-first-cangjie-hybrid-app.md)：构建一个简单的具有页面跳转/返回功能的仓颉与ArkTS混合开发的应用。
-- [在已有ArkTS工程中增量使用仓颉](./cj-quick-start-first-cangjie-hybrid-module.md)：基于一个简单的、支持页面跳转/返回功能的、纯ArkTS开发的应用，通过引入仓颉来开发一些增量业务。
-- [仓颉调用ArkTS三方模块](./cj-quick-start-dts2cj-plugin-usage.md)：在仓颉代码中调用ArkTS三方库的功能。
+- [构建第一个仓颉应用](./cj-quick-start-first-cangjie-app.md#构建第一个仓颉应用)：构建一个简单的具有页面跳转/返回功能的纯仓颉应用。
+- [构建第一个仓颉与ArkTS混合应用](./cj-quick-start-first-cangjie-hybrid-app.md#构建第一个仓颉与ArkTS混合应用)：构建一个简单的具有页面跳转/返回功能的仓颉与ArkTS混合开发的应用。
+- [在已有ArkTS工程中增量使用仓颉](./cj-quick-start-first-cangjie-hybrid-module.md#在已有ArkTS工程中增量使用仓颉)：基于一个简单的、支持页面跳转/返回功能的、纯ArkTS开发的应用，通过引入仓颉来开发一些增量业务。
+- [仓颉调用ArkTS三方模块](./cj-quick-start-dts2cj-plugin-usage.md#仓颉调用ArkTS三方模块)：在仓颉代码中调用ArkTS三方库的功能。
 
-完成上述基本概念的理解后，可参照[构建第一个仓颉应用](cj-quick-start-first-cangjie-app.md)进行下一步体验和学习。
+完成上述基本概念的理解后，可参照[构建第一个仓颉应用](cj-quick-start-first-cangjie-app.md#构建第一个仓颉应用)进行下一步体验和学习。

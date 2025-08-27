@@ -38,9 +38,9 @@
 
 2. 调用[initSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions)初始化密钥会话，并获取会话的句柄handle。
 
-3. 调用[updateSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandle-huksoptions)更新密钥会话。
+3. 调用[updateSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandleid-huksoptions-bytes)更新密钥会话。
 
-4. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions)结束密钥会话，完成派生。
+4. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，完成派生。
 
 ### 删除密钥
 
@@ -50,113 +50,122 @@
 
 ### HKDF
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以HKDF密钥的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 /*
  * 确定密钥别名和封装密钥属性参数集
  */
 let srcKeyAlias = "hkdf_Key"
 let deriveHkdfInData = "deriveHkdfTestIndata"
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 var finishOutData: ?Array<UInt8> = None
 let HuksKeyDeriveKeySize: UInt32 = 32
 /* 集成生成密钥参数集 */
 let properties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
+        HuksTag.HuksTagPurpose,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_SHA256,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_SIZE,
+        HuksTag.HuksTagKeySize,
         HuksKeySize.HUKS_AES_KEY_SIZE_128,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+        HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
         HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
     )
 ]
 let huksOptions: HuksOptions = HuksOptions(
-    properties,
-    []
+    properties: properties,
+    inData: Bytes()
 )
 /* 集成init时密钥参数集 */
 let initProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_HKDF,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
+        HuksTag.HuksTagPurpose,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_SHA256,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
-        uint32(HuksKeyDeriveKeySize),
+        HuksTag.HuksTagDeriveKeySize,
+        HuksParamValue.Uint32Value(HuksKeyDeriveKeySize),
     )
 ]
 var initOptions: HuksOptions = HuksOptions(
-    initProperties,
-    None
+    properties: initProperties,
+    inData: Bytes()
 )
 /* 集成finish时密钥参数集 */
 let finishProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+        HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
         HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_IS_KEY_ALIAS,
-        boolean(true),
+        HuksTag.HuksTagIsKeyAlias,
+        HuksParamValue.BooleanValue(true),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_SIZE,
+        HuksTag.HuksTagKeySize,
         HuksKeySize.HUKS_AES_KEY_SIZE_256,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
-        HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+        HuksTag.HuksTagPurpose,
+        HuksParamValue.Uint32Value(1 | 2),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_NONE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_ALIAS,
-        bytes(StringToUint8Array(srcKeyAlias)),
+        HuksTag.HuksTagKeyAlias,
+        HuksParamValue.BytesValue(srcKeyAlias.toArray()),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PADDING,
+        HuksTag.HuksTagPadding,
         HuksKeyPadding.HUKS_PADDING_NONE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_BLOCK_MODE,
+        HuksTag.HuksTagBlockMode,
         HuksCipherMode.HUKS_MODE_ECB,
     )
 ]
 let finishOptions: HuksOptions = HuksOptions(
-    finishProperties,
-    []
+    properties: finishProperties,
+    inData: Bytes()
 )
 
 func StringToUint8Array(str: String) {
@@ -181,12 +190,12 @@ func generateKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: th
 }
 
 func publicGenKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter generateKeyItem")
+    loggerInfo("enter generateKeyItem")
     let throwObject: throwObject = throwObject(false)
     try {
         generateKeyItem(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("generateKeyItem input arg invalid, ${e}")
+        loggerInfo("generateKeyItem input arg invalid, ${e}")
     }
 }
 
@@ -200,16 +209,16 @@ func initSession(keyAlias: String, huksOptions: HuksOptions, throwObject: throwO
 }
 
 func publicInitFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter doInit")
+    loggerInfo("enter doInit")
     let throwObject: throwObject = throwObject(false)
     try {
         handle = initSession(keyAlias, huksOptions, throwObject).handle
     } catch (e: Exception) {
-        AppLog.error("doInit input arg invalid, ${e}")
+        loggerInfo("doInit input arg invalid, ${e}")
     }
 }
 
-func updateSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: throwObject) {
+func updateSession(handle: HuksHandleId, huksOptions: HuksOptions, throwObject: throwObject) {
     return try {
         updateSession(handle, huksOptions)
     } catch (e: Exception) {
@@ -218,17 +227,17 @@ func updateSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: th
     }
 }
 
-func publicUpdateFunc(handle: HuksHandle, huksOptions: HuksOptions) {
-    AppLog.info("enter doUpdate")
+func publicUpdateFunc(handle: HuksHandleId, huksOptions: HuksOptions) {
+    loggerInfo("enter doUpdate")
     let throwObject: throwObject = throwObject(false)
     try {
         updateSession(handle, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("doUpdate input arg invalid, ${e}")
+        loggerInfo("doUpdate input arg invalid, ${e}")
     }
 }
 
-func finishSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: throwObject) {
+func finishSession(handle: HuksHandleId, huksOptions: HuksOptions, throwObject: throwObject) {
     return try {
         finishSession(handle, huksOptions)
     } catch (e: Exception) {
@@ -237,13 +246,13 @@ func finishSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: th
     }
 }
 
-func publicFinishFunc(handle: HuksHandle, huksOptions: HuksOptions) {
-    AppLog.info("enter doFinish")
+func publicFinishFunc(handle: HuksHandleId, huksOptions: HuksOptions) {
+    loggerInfo("enter doFinish")
     let throwObject: throwObject = throwObject(false)
     try {
         finishSession(handle, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("doFinish input arg invalid, ${e}")
+        loggerInfo("doFinish input arg invalid, ${e}")
     }
 }
 
@@ -257,12 +266,12 @@ func deleteKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: thro
 }
 
 func publicDeleteKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter deleteKeyItem")
+    loggerInfo("enter deleteKeyItem")
     let throwObject: throwObject = throwObject(false)
     try {
         deleteKeyItem(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("deleteKeyItem input arg invalid, ${e}")
+        loggerInfo("deleteKeyItem input arg invalid, ${e}")
     }
 }
 
@@ -280,12 +289,21 @@ func testDerive() {
 
 ### PBKDF2
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以PBKDF2密钥的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 /*
  * 确定密钥别名和封装密钥属性参数集
@@ -294,111 +312,111 @@ let srcKeyAlias = "pbkdf2_Key"
 let salt = "mySalt"
 let iterationCount: UInt32 = 10000
 let derivedKeySize: UInt32 = 32
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 var finishOutData: ?Array<UInt8> = None
 
 /* 集成生成密钥参数集 */
 let properties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
+        HuksTag.HuksTagPurpose,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_SHA256,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_SIZE,
+        HuksTag.HuksTagKeySize,
         HuksKeySize.HUKS_AES_KEY_SIZE_128,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+        HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
         HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
     )
 ]
 let huksOptions: HuksOptions = HuksOptions(
-    properties,
-    None
+    properties: properties,
+    inData: Bytes()
 )
 
 /* 集成init时密钥参数集 */
 let initProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_PBKDF2,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
+        HuksTag.HuksTagPurpose,
         HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_SHA256,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
-        uint32(derivedKeySize),
+        HuksTag.HuksTagDeriveKeySize,
+        HuksParamValue.Uint32Value(derivedKeySize),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_ITERATION,
-        uint32(iterationCount),
+        HuksTag.HuksTagIteration,
+        HuksParamValue.Uint32Value(iterationCount),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_SALT,
-        bytes(StringToUint8Array(salt)),
+        HuksTag.HuksTagSalt,
+        HuksParamValue.BytesValue(salt.toArray()),
     )
 ]
 let initOptions: HuksOptions = HuksOptions(
-    initProperties,
-    None
+    properties: initProperties,
+    inData: Bytes()
 )
 
 /* 集成finish时密钥参数集 */
 let finishProperties: Array<HuksParam> = [
     HuksParam(
-        HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+        HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
         HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_IS_KEY_ALIAS,
-        boolean(true),
+        HuksTag.HuksTagIsKeyAlias,
+        HuksParamValue.BooleanValue(true),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_ALGORITHM,
+        HuksTag.HuksTagAlgorithm,
         HuksKeyAlg.HUKS_ALG_AES,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_SIZE,
+        HuksTag.HuksTagKeySize,
         HuksKeySize.HUKS_AES_KEY_SIZE_256,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PURPOSE,
-        HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+        HuksTag.HuksTagPurpose,
+        HuksParamValue.Uint32Value(1 | 2),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_DIGEST,
+        HuksTag.HuksTagDigest,
         HuksKeyDigest.HUKS_DIGEST_NONE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_KEY_ALIAS,
-        bytes(StringToUint8Array(srcKeyAlias)),
+        HuksTag.HuksTagKeyAlias,
+        HuksParamValue.BytesValue(srcKeyAlias.toArray()),
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_PADDING,
+        HuksTag.HuksTagPadding,
         HuksKeyPadding.HUKS_PADDING_NONE,
     ),
     HuksParam(
-        HuksTag.HUKS_TAG_BLOCK_MODE,
+        HuksTag.HuksTagBlockMode,
         HuksCipherMode.HUKS_MODE_ECB,
     )
 ]
 let finishOptions: HuksOptions = HuksOptions(
-    finishProperties,
-    None
+    properties: finishProperties,
+    inData: Bytes()
 )
 
 func StringToUint8Array(str: String) {
@@ -423,12 +441,12 @@ func generateKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: th
 }
 
 func publicGenKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter generateKeyItem")
+    loggerInfo("enter generateKeyItem")
     let throwObject: throwObject = throwObject(false)
     try {
         generateKeyItem(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("generateKeyItem input arg invalid, ${e}")
+        loggerInfo("generateKeyItem input arg invalid, ${e}")
     }
 }
 
@@ -437,22 +455,22 @@ func initSession(keyAlias: String, huksOptions: HuksOptions, throwObject: throwO
         initSession(keyAlias, huksOptions).handle
     } catch (e: Exception) {
         throwObject.isThrow = true
-        AppLog.error("?????????????????")
+        loggerInfo("?????????????????")
         throw e
     }
 }
 
 func publicInitFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter doInit")
+    loggerInfo("enter doInit")
     let throwObject: throwObject = throwObject(false)
     try {
         handle = initSession(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("doInit input arg invalid, ${e}")
+        loggerInfo("doInit input arg invalid, ${e}")
     }
 }
 
-func updateSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: throwObject) {
+func updateSession(handle: HuksHandleId, huksOptions: HuksOptions, throwObject: throwObject) {
     return try {
         updateSession(handle, huksOptions)
     } catch (e: Exception) {
@@ -461,17 +479,17 @@ func updateSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: th
     }
 }
 
-func publicUpdateFunc(handle: HuksHandle, huksOptions: HuksOptions) {
-    AppLog.info("enter doUpdate")
+func publicUpdateFunc(handle: HuksHandleId, huksOptions: HuksOptions) {
+    loggerInfo("enter doUpdate")
     let throwObject: throwObject = throwObject(false)
     try {
         updateSession(handle, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("doUpdate input arg invalid, ${e}")
+        loggerInfo("doUpdate input arg invalid, ${e}")
     }
 }
 
-func finishSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: throwObject) {
+func finishSession(handle: HuksHandleId, huksOptions: HuksOptions, throwObject: throwObject) {
     return try {
         finishSession(handle, huksOptions)
     } catch (e: Exception) {
@@ -480,13 +498,13 @@ func finishSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: th
     }
 }
 
-func publicFinishFunc(handle: HuksHandle, huksOptions: HuksOptions) {
-    AppLog.info("enter doFinish")
+func publicFinishFunc(handle: HuksHandleId, huksOptions: HuksOptions) {
+    loggerInfo("enter doFinish")
     let throwObject: throwObject = throwObject(false)
     try {
         finishOutData = finishSession(handle, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("doFinish input arg invalid, ${e}")
+        loggerInfo("doFinish input arg invalid, ${e}")
     }
 }
 
@@ -500,12 +518,12 @@ func deleteKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: thro
 }
 
 func publicDeleteKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-    AppLog.info("enter deleteKeyItem")
+    loggerInfo("enter deleteKeyItem")
     let throwObject: throwObject = throwObject(false)
     try {
         deleteKeyItem(keyAlias, huksOptions, throwObject)
     } catch (e: Exception) {
-        AppLog.error("deleteKeyItem input arg invalid, ${e}")
+        loggerInfo("deleteKeyItem input arg invalid, ${e}")
     }
 }
 
@@ -518,4 +536,5 @@ func testDerive() {
     publicFinishFunc(handle.getOrThrow(), finishOptions)
     publicDeleteKeyFunc(srcKeyAlias, huksOptions)
 }
+
 ```
