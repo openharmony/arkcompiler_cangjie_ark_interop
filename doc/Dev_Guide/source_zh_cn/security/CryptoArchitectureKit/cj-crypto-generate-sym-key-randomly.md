@@ -20,6 +20,7 @@
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func testSyncGenerateAesKey() {
     // 创建SymKeyGenerator实例。
@@ -28,7 +29,7 @@ func testSyncGenerateAesKey() {
     let promiseSymKey = symKeyGenerator.generateSymKey()
     // 获取对称密钥的二进制数据，输出256位密钥。长度为32字节。
     let encodedKey = promiseSymKey.getEncoded()
-    AppLog.info('key hex: ${encodedKey.data}')
+    Hilog.info(0,"",'key hex: ${encodedKey.data}')
 }
  ```
 
@@ -49,6 +50,7 @@ func testSyncGenerateAesKey() {
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func testSyncGenerateAesKey() {
     // 创建SymKeyGenerator实例。
@@ -57,6 +59,6 @@ func testSyncGenerateAesKey() {
     let promiseSymKey = symKeyGenerator.generateSymKey()
     // 获取对称密钥的二进制数据，输出128位字节流。长度为16字节。
     let encodedKey = promiseSymKey.getEncoded()
-    AppLog.info('key hex: ${encodedKey.data}')
+    Hilog.info(0,"",'key hex: ${encodedKey.data}')
 }
 ```

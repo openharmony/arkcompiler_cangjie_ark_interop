@@ -17,7 +17,7 @@ ohos.permission.ACCESS_BLUETOOTH
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](./../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -35,9 +35,9 @@ public func createGattClientDevice(deviceId: String): GattClientDevice
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|deviceId|String|是|对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceId|String|是|-|对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
 
 **返回值：**
 
@@ -47,12 +47,12 @@ public func createGattClientDevice(deviceId: String): GattClientDevice
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -62,8 +62,9 @@ public func createGattClientDevice(deviceId: String): GattClientDevice
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     let device: GattClientDevice  = createGattClientDevice("XX:XX:XX:XX:XX:XX")
@@ -99,7 +100,7 @@ public func createGattServer(): GattServer
 
 import ohos.base.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattServer: GattServer = createGattServer()
 ```
@@ -107,7 +108,7 @@ let gattServer: GattServer = createGattServer()
 ## func off(BluetoothBleCallbackType, ?CallbackObject)
 
 ```cangjie
-public func off(`type`: BluetoothBleCallbackType, callback!: ?CallbackObject = None): Unit
+public func off(eventType: BluetoothBleCallbackType, callback!: ?CallbackObject = None): Unit
 ```
 
 **功能：** 取消订阅BLE设备事件。
@@ -122,19 +123,19 @@ public func off(`type`: BluetoothBleCallbackType, callback!: ?CallbackObject = N
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type`|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|回调事件。|
-|callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None| **命名参数。** 表示取消订阅BLE事件。不填该参数则取消订阅该type对应的所有回调。|
+|eventType|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|回调事件。|
+|callback|?[CallbackObject](<font color="red" face="bold">please add link</font>)|否|None|**命名参数。**  表示取消订阅BLE事件。不填该参数则取消订阅该type对应的所有回调。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -144,12 +145,14 @@ public func off(`type`: BluetoothBleCallbackType, callback!: ?CallbackObject = N
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 class BLEDeviceFindCallback <: Callback1Argument<Array<ScanResult>> {
-    public func invoke(devices: Array<ScanResult>): Unit {
+    public func invoke(err: ?BusinessException, devices: Array<ScanResult>): Unit {
         for (device in devices) {
             Hilog.info(0, "Bluetooth", "device has find, deviceID is ${device.deviceId}, name is ${device.deviceName}")
         }
@@ -158,8 +161,8 @@ class BLEDeviceFindCallback <: Callback1Argument<Array<ScanResult>> {
 
 let bleDeviceFindCallback = BLEDeviceFindCallback()
 try {
-    on(BLE_DEVICE_FIND, bleDeviceFindCallback)
-    off(BLE_DEVICE_FIND, callback: bleDeviceFindCallback)
+    on(BluetoothBleCallbackType.BleDeviceFind, bleDeviceFindCallback)
+    off(BluetoothBleCallbackType.BleDeviceFind, callback: bleDeviceFindCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -168,7 +171,7 @@ try {
 ## func on(BluetoothBleCallbackType, Callback1Argument\<AdvertisingStateChangeInfo>)
 
 ```cangjie
-public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<AdvertisingStateChangeInfo>): Unit
+public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<AdvertisingStateChangeInfo>): Unit
 ```
 
 **功能：** 订阅BLE广播状态。
@@ -181,21 +184,21 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Adv
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|\`type`|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|填写 ADVERTISING_STATE_CHANGE，表示广播状态事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[AdvertisingStateChangeInfo](#class-advertisingstatechangeinfo)>|是|表示回调函数的入参，广播状态。回调函数由用户创建通过该接口注册。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|填写 AdvertisingStateChange，表示广播状态事件。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[AdvertisingStateChangeInfo](#class-advertisingstatechangeinfo)>|是|-|表示回调函数的入参，广播状态。回调函数由用户创建通过该接口注册。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -205,19 +208,21 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Adv
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 class AdvertisingStateChange <: Callback1Argument<AdvertisingStateChangeInfo> {
-    public func invoke(info: AdvertisingStateChangeInfo): Unit {
+    public func invoke(err: ?BusinessException, info: AdvertisingStateChangeInfo): Unit {
         Hilog.info(0, "Bluetooth", "the advertising state is ${info.state}")
     }
 }
 
 let advertisingStateChange = AdvertisingStateChange()
 try {
-    on(ADVERTISING_STATE_CHANGE, advertisingStateChange)
+    on(BluetoothBleCallbackType.AdvertisingStateChange, advertisingStateChange)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -226,7 +231,7 @@ try {
 ## func on(BluetoothBleCallbackType, Callback1Argument\<Array\<ScanResult>>)
 
 ```cangjie
-public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Array<ScanResult>>): Unit
+public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<Array<ScanResult>>): Unit
 ```
 
 **功能：** 订阅BLE设备发现上报事件。
@@ -239,21 +244,21 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Arr
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|\`type`|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|填写BLE_DEVICE_FIND，表示BLE设备发现事件。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<[ScanResult](#class-scanresult)>>|是|表示回调函数的入参，发现的设备集合。回调函数由用户创建通过该接口注册。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|填写BleDeviceFind，表示BLE设备发现事件。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<[ScanResult](#class-scanresult)>>|是|-|表示回调函数的入参，发现的设备集合。回调函数由用户创建通过该接口注册。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -263,12 +268,14 @@ public func on(`type`: BluetoothBleCallbackType, callback: Callback1Argument<Arr
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 class BLEDeviceFindCallback <: Callback1Argument<Array<ScanResult>> {
-    public func invoke(devices: Array<ScanResult>): Unit {
+    public func invoke(err: ?BusinessException, devices: Array<ScanResult>): Unit {
         for (device in devices) {
             Hilog.info(0, "Bluetooth", "device has find, deviceID is ${device.deviceId}, name is ${device.deviceName}")
         }
@@ -277,7 +284,7 @@ class BLEDeviceFindCallback <: Callback1Argument<Array<ScanResult>> {
 
 let bleDeviceFindCallback = BLEDeviceFindCallback()
 try {
-    on(BLE_DEVICE_FIND, bleDeviceFindCallback)
+    on(BluetoothBleCallbackType.BleDeviceFind, bleDeviceFindCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -303,58 +310,20 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
 |:---|:---|:---|:---|:---|
 |setting|[AdvertiseSetting](#class-advertisesetting)|是|-|BLE广播的相关参数。|
 |advData|[AdvertiseData](#class-advertisedata)|是|-|BLE广播包内容。|
-|advResponse|?[AdvertiseData](#class-advertisedata)|否|None| **命名参数。** BLE回复扫描请求回复响应。|
+|advResponse|?[AdvertiseData](#class-advertisedata)|否|None|**命名参数。**  BLE回复扫描请求回复响应。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900099|Operation failed.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
-
-let advertisingSettings = AdvertiseSetting(32, 0, true)
-let manufactureDataUnit = ManufactureData(
-    4567u16,
-    [1, 2, 3, 4]
-)
-let serviceDataUnit = ServiceData(
-    "00001888-0000-1000-8000-00805f9b34fb",
-    [5, 6, 7, 8]
-)
-let advertisingData = AdvertiseData(
-    ["00001888-0000-1000-8000-00805f9b34fb"],
-    [manufactureDataUnit],
-    [serviceDataUnit],
-    includeDeviceName: true
-)
-let advertisingResponse = AdvertiseData(
-    ["00001888-0000-1000-8000-00805f9b34fb"],
-    [manufactureDataUnit],
-    [serviceDataUnit]
-)
-try {
-    startAdvertising(advertisingSettings, advertisingData, advResponse: advertisingResponse)
-} catch (e: BusinessException) {
-    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 ## func startAdvertising(AdvertisingParams)
 
@@ -372,9 +341,9 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|advertisingParams|[AdvertisingParams](#class-advertisingparams)|是|启动BLE广播的相关参数。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|advertisingParams|[AdvertisingParams](#class-advertisingparams)|是|-|启动BLE广播的相关参数。|
 
 **返回值：**
 
@@ -384,60 +353,16 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900099|Operation failed.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
-
-let advertisingSettings = AdvertiseSetting(32, 0, true)
-let manufactureDataUnit = ManufactureData(
-    4567u16,
-    [1, 2, 3, 4]
-)
-let serviceDataUnit = ServiceData(
-    "00001888-0000-1000-8000-00805f9b34fb",
-    [5, 6, 7, 8]
-)
-let advertisingData = AdvertiseData(
-    ["00001888-0000-1000-8000-00805f9b34fb"],
-    [manufactureDataUnit],
-    [serviceDataUnit],
-    includeDeviceName: true
-)
-let advertisingResponse = AdvertiseData(
-    ["00001888-0000-1000-8000-00805f9b34fb"],
-    [manufactureDataUnit],
-    [serviceDataUnit]
-)
-let advertisingParams = AdvertisingParams(
-    advertisingSettings,
-    advertisingData,
-    advertisingResponse,
-    duration: 300
-)
-try {
-    let advHandle = startAdvertising(advertisingParams)
-} catch (e: BusinessException) {
-    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 ## func startBLEScan(Array\<ScanFilter>, ?ScanOptions)
 
@@ -458,20 +383,20 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |filters|Array\<[ScanFilter](#class-scanfilter)>|是|-|表示扫描结果过滤策略集合，符合过滤条件的设备发现会保留。|
-|options|?[ScanOptions](#class-scanoptions)|否|None|**命名参数。** 表示扫描的参数配置，可选参数。|
+|options|?[ScanOptions](#class-scanoptions)|否|None|**命名参数。**  表示扫描的参数配置，可选参数。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -481,12 +406,14 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 class BLEDeviceFindCallback <: Callback1Argument<Array<ScanResult>> {
-    public func invoke(devices: Array<ScanResult>): Unit {
+    public func invoke(err: ?BusinessException, devices: Array<ScanResult>): Unit {
         for (device in devices) {
             Hilog.info(0, "Bluetooth", "device has find, deviceID is ${device.deviceId}, name is ${device.deviceName}")
         }
@@ -495,10 +422,10 @@ class BLEDeviceFindCallback <: Callback1Argument<Array<ScanResult>> {
 
 let bleDeviceFindCallback = BLEDeviceFindCallback()
 try {
-    on(BLE_DEVICE_FIND, bleDeviceFindCallback)
+    on(BluetoothBleCallbackType.BleDeviceFind, bleDeviceFindCallback)
     var scanFilter = ScanFilter()
     scanFilter.serviceUuid = "00001888-0000-1000-8000-00805f9b34fb"
-    let scanOptions = ScanOptions(0, SCAN_MODE_LOW_POWER, MATCH_MODE_AGGRESSIVE, PHY_LE_1M)
+    let scanOptions = ScanOptions(interval: 0, dutyMode: ScanDuty.ScanModeLowPower, matchMode: MatchMode.MatchModeAggressive, phyType: PhyType.PhyLe1M)
     startBLEScan([scanFilter], options: scanOptions)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
@@ -521,33 +448,15 @@ public func stopAdvertising(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900099|Operation failed.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
-
-try {
-    stopAdvertising()
-} catch (e: BusinessException) {
-    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 ## func stopAdvertising(UInt32)
 
@@ -565,68 +474,22 @@ public func stopAdvertising(advertisingId: UInt32): Unit
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|advertisingId|UInt32|是|需要停止的广播ID标识。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|advertisingId|UInt32|是|-|需要停止的广播ID标识。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900099|Operation failed.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
-
-let advertisingSettings = AdvertiseSetting(32, 0, true)
-let manufactureDataUnit = ManufactureData(
-    4567u16,
-    [1, 2, 3, 4]
-)
-let serviceDataUnit = ServiceData(
-    "00001888-0000-1000-8000-00805f9b34fb",
-    [5, 6, 7, 8]
-)
-let advertisingData = AdvertiseData(
-    ["00001888-0000-1000-8000-00805f9b34fb"],
-    [manufactureDataUnit],
-    [serviceDataUnit],
-    includeDeviceName: true
-)
-let advertisingResponse = AdvertiseData(
-    ["00001888-0000-1000-8000-00805f9b34fb"],
-    [manufactureDataUnit],
-    [serviceDataUnit]
-)
-let advertisingParams = AdvertisingParams(
-    advertisingSettings,
-    advertisingData,
-    advertisingResponse,
-    duration: 300
-)
-var advHandle: UInt32 = 0xFF
-try {
-    advHandle = startAdvertising(advertisingParams)
-    stopAdvertising(advHandle)
-} catch (e: BusinessException) {
-    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 ## func stopBLEScan()
 
@@ -644,15 +507,15 @@ public func stopBLEScan(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -662,8 +525,9 @@ public func stopBLEScan(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     stopBLEScan()
@@ -676,11 +540,16 @@ try {
 
 ```cangjie
 public class AdvertiseData {
-    public AdvertiseData(
-        public var serviceUuids: Array<String>,
-        public var manufactureData: Array<ManufactureData>,
-        public var serviceData: Array<ServiceData>,
-        public var includeDeviceName!: Bool = false
+    public var serviceUuids: Array<String>
+    public var manufactureData: Array<ManufactureData>
+    public var serviceData: Array<ServiceData>
+    public var includeDeviceName: Bool
+    public init(
+        serviceUuids: Array<String>,
+        manufactureData: Array<ManufactureData>,
+        serviceData: Array<ServiceData>,
+        includeDeviceName!: Bool = false,
+        includeTxPower!: Bool = false
     )
 }
 ```
@@ -694,7 +563,7 @@ public class AdvertiseData {
 ### var includeDeviceName
 
 ```cangjie
-public var includeDeviceName: Bool = false
+public var includeDeviceName: Bool
 ```
 
 **功能：** 表示是否携带设备名，可选参数。true表示携带，false或未设置此参数表示不携带。注意带上设备名时广播包长度不能超出31个字节。
@@ -755,14 +624,15 @@ public var serviceUuids: Array<String>
 
 **起始版本：** 21
 
-### AdvertiseData(Array\<String>, Array\<ManufactureData>, Array\<ServiceData>, Bool)
+### init(Array\<String>, Array\<ManufactureData>, Array\<ServiceData>, Bool, Bool)
 
 ```cangjie
-public AdvertiseData(
-    public var serviceUuids: Array<String>,
-    public var manufactureData: Array<ManufactureData>,
-    public var serviceData: Array<ServiceData>,
-    public var includeDeviceName!: Bool = false
+public init(
+    serviceUuids: Array<String>,
+    manufactureData: Array<ManufactureData>,
+    serviceData: Array<ServiceData>,
+    includeDeviceName!: Bool = false,
+    includeTxPower!: Bool = false
 )
 ```
 
@@ -779,16 +649,17 @@ public AdvertiseData(
 |serviceUuids|Array\<String>|是|-|表示要广播的服务 UUID 列表。|
 |manufactureData|Array\<[ManufactureData](#class-manufacturedata)>|是|-|表示要广播的广播的制造商信息列表。|
 |serviceData|Array\<[ServiceData](#class-servicedata)>|是|-|表示要广播的服务数据列表。|
-|includeDeviceName|Bool|否|false| **命名参数。** 表示是否携带设备名，可选参数。true表示携带，false或未设置此参数表示不携带。注意带上设备名时广播包长度不能超出31个字节。|
+|includeDeviceName|Bool|否|false|| **命名参数。**  表示是否携带设备名，可选参数。true表示携带，false或未设置此参数表示不携带。注意带上设备名时广播包长度不能超出31个字节。|
+|includeTxPower|Bool|否|false| **命名参数。**  表示是否携带广播发送功率。true表示携带广播发送功率，false表示不携带广播发送功率，默认值为false。携带该值后，广播报文长度将多占3个字节。预留字段，本版本暂不支持。|
 
 ## class AdvertiseSetting
 
 ```cangjie
 public class AdvertiseSetting {
-    public var interval: UInt16 = BLE_ADV_DEFAULT_INTERVAL
-    public var txPower: Int8 = BLE_ADV_TX_POWER_MEDIUM_VALUE
-    public var connectable: Bool = true
-    public init(interval: UInt16, txPower: Int8, connectable: Bool)
+    public var interval: UInt16
+    public var txPower: Int8
+    public var connectable: Bool
+    public init(interval!: UInt16 = BLE_ADV_DEFAULT_INTERVAL, txPower!: Int8 = BLE_ADV_TX_POWER_MEDIUM_VALUE, connectable!: Bool = true)
 }
 ```
 
@@ -801,7 +672,7 @@ public class AdvertiseSetting {
 ### var connectable
 
 ```cangjie
-public var connectable: Bool = true
+public var connectable: Bool
 ```
 
 **功能：** 表示是否是可连接广播，默认值设置为true，表示可连接，false表示不可连接。
@@ -817,7 +688,7 @@ public var connectable: Bool = true
 ### var interval
 
 ```cangjie
-public var interval: UInt16 = BLE_ADV_DEFAULT_INTERVAL
+public var interval: UInt16
 ```
 
 **功能：** 表示广播间隔，最小值设置160个slot表示100ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。
@@ -833,7 +704,7 @@ public var interval: UInt16 = BLE_ADV_DEFAULT_INTERVAL
 ### var txPower
 
 ```cangjie
-public var txPower: Int8 = BLE_ADV_TX_POWER_MEDIUM_VALUE
+public var txPower: Int8
 ```
 
 **功能：** 表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。推荐值：高档（1），中档（-7），低档（-15）。
@@ -849,7 +720,7 @@ public var txPower: Int8 = BLE_ADV_TX_POWER_MEDIUM_VALUE
 ### init(UInt16, Int8, Bool)
 
 ```cangjie
-public init(interval: UInt16, txPower: Int8, connectable: Bool)
+public init(interval!: UInt16 = BLE_ADV_DEFAULT_INTERVAL, txPower!: Int8 = BLE_ADV_TX_POWER_MEDIUM_VALUE, connectable!: Bool = true)
 ```
 
 **功能：** 构造蓝牙低功耗设备发送广播的参数结构。
@@ -862,42 +733,23 @@ public init(interval: UInt16, txPower: Int8, connectable: Bool)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|interval|UInt16|是|-|表示广播间隔，最小值设置160个slot表示100ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。|
-|txPower|Int8|是|-|表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。推荐值：高档（1），中档（-7），低档（-15）。|
-|connectable|Bool|是|-|表示是否是可连接广播，默认值设置为true，表示可连接，false表示不可连接。|
+|interval|UInt16|否|BLE_ADV_DEFAULT_INTERVAL|表示广播间隔，最小值设置160个slot表示100ms，最大值设置16384个slot，默认值设置为1600个slot表示1s。|
+|txPower|Int8|否|BLE_ADV_TX_POWER_MEDIUM_VALUE|表示发送功率，最小值设置-127，最大值设置1，默认值设置-7，单位dbm。推荐值：高档（1），中档（-7），低档（-15）。|
+|connectable|Bool|否|true|表示是否是可连接广播，默认值设置为true，表示可连接，false表示不可连接。|
 
 ## class AdvertisingParams
 
 ```cangjie
 public class AdvertisingParams {
-    public AdvertisingParams(
-        @!APILevel[
-            21,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingSettings: AdvertiseSetting,
-        @!APILevel[
-            21,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingData: AdvertiseData,
-        @!APILevel[
-            21,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var advertisingResponse: AdvertiseData,
-        @!APILevel[
-            21,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var duration!: UInt16 = 0
+    public var advertisingSettings: AdvertiseSetting
+    public var advertisingData: AdvertiseData
+    public var advertisingResponse: AdvertiseData
+    public var duration: UInt16
+    public init(
+        advertisingSettings: AdvertiseSetting,
+        advertisingData: AdvertiseData,
+        advertisingResponse!: AdvertiseData = AdvertiseData([], [], []),
+        duration!: UInt16 = 0
     )
 }
 ```
@@ -959,7 +811,7 @@ public var advertisingSettings: AdvertiseSetting
 ### var duration
 
 ```cangjie
-public var duration: UInt16 = 0
+public var duration: UInt16
 ```
 
 **功能：** 表示发送广播持续的时间。单位为10ms，有效范围为1(10ms)到65535(655350ms)，如果未指定此参数或者将其设置为0，则会连续发送广播。
@@ -972,37 +824,14 @@ public var duration: UInt16 = 0
 
 **起始版本：** 21
 
-### AdvertisingParams(AdvertiseSetting, AdvertiseData, AdvertiseData, UInt16)
+### init(AdvertiseSetting, AdvertiseData, AdvertiseData, UInt16)
 
 ```cangjie
-public AdvertisingParams(
-    @!APILevel[
-        21,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var advertisingSettings: AdvertiseSetting,
-    @!APILevel[
-        21,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var advertisingData: AdvertiseData,
-    @!APILevel[
-        21,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var advertisingResponse: AdvertiseData,
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var duration!: UInt16 = 0
+public init(
+    advertisingSettings: AdvertiseSetting,
+    advertisingData: AdvertiseData,
+    advertisingResponse!: AdvertiseData = AdvertiseData([], [], []),
+    duration!: UInt16 = 0
 )
 ```
 
@@ -1016,15 +845,18 @@ public AdvertisingParams(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|advertisingSettings|[AdvertiseSetting](#class-advertisesetting)|否|-|表示发送广播的相关参数。|
-|advertisingData|[AdvertiseData](#class-advertisedata)|否|-|表示广播的数据包内容。|
-|advertisingResponse|[AdvertiseData](#class-advertisedata)|否|-|表示回复扫描请求的响应内容。|
-|duration|UInt16|否|0|**命名参数。** 表示发送广播持续的时间。单位为10ms，有效范围为1(10ms)到65535(655350ms)，如果未指定此参数或者将其设置为0，则会连续发送广播。|
+|advertisingSettings|[AdvertiseSetting](#class-advertisesetting)|是|-|表示发送广播的相关参数。|
+|advertisingData|[AdvertiseData](#class-advertisedata)|是|-|表示广播的数据包内容。|
+|advertisingResponse|[AdvertiseData](#class-advertisedata)|否|AdvertiseData([],[],[])|表示回复扫描请求的响应内容。|
+|duration|UInt16|否|0| **命名参数。**  表示发送广播持续的时间。单位为10ms，有效范围为1(10ms)到65535(655350ms)，如果未指定此参数或者将其设置为0，则会连续发送广播。|
 
 ## class AdvertisingStateChangeInfo
 
 ```cangjie
-public class AdvertisingStateChangeInfo {}
+public class AdvertisingStateChangeInfo {
+    public var advertisingId: Int32
+    public var state: AdvertisingState
+}
 ```
 
 **功能：** 描述广播启动、停止等状态信息。
@@ -1069,49 +901,19 @@ public var state: AdvertisingState
 
 ```cangjie
 public class BLECharacteristic {
-    public BLECharacteristic(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicUuid: String,
-        
-
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicValue: Array<Byte>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var descriptors: Array<BLEDescriptor>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var properties: GattProperties
+    public var serviceUuid: String
+    public var characteristicUuid: String
+    public var characteristicValue: Array<Byte>
+    public var descriptors: Array<BLEDescriptor>
+    public var properties: GattProperties
+    public init(
+        serviceUuid: String,
+        characteristicUuid: String,
+        characteristicValue: Array<Byte>,
+        descriptors: Array<BLEDescriptor>,
+        properties!: GattProperties = GattProperties(),
+        permissions!: GattPermissions = GattPermissions(),
+        characteristicValueHandle!: UInt32 = 0
     )
 }
 ```
@@ -1146,7 +948,7 @@ public var characteristicValue: Array<Byte>
 
 **功能：** 特征对应的二进制值。
 
-**类型：** Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -1202,52 +1004,17 @@ public var serviceUuid: String
 
 **起始版本：** 21
 
-### BLECharacteristic(String, String, Array\<Byte>, Array\<BLEDescriptor>, GattProperties)
+### init(String, String, Array\<Byte>, Array\<BLEDescriptor>, GattProperties, GattPermissions, UInt32)
 
 ```cangjie
-public BLECharacteristic(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var serviceUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var characteristicUuid: String,
-    
-
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var characteristicValue: Array<Byte>,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var descriptors: Array<BLEDescriptor>,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var properties: GattProperties
+public init(
+    serviceUuid: String,
+    characteristicUuid: String,
+    characteristicValue: Array<Byte>,
+    descriptors: Array<BLEDescriptor>,
+    properties!: GattProperties = GattProperties(),
+    permissions!: GattPermissions = GattPermissions(),
+    characteristicValueHandle!: UInt32 = 0
 )
 ```
 
@@ -1261,38 +1028,41 @@ public BLECharacteristic(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|characteristicValue|Array\<[Byte](<font color="red" face="bold">please add link</font>)>|否|-|特征对应的二进制值。|
-|descriptors|Array\<[BLEDescriptor](#class-bledescriptor)>|否|-|特定特征的描述符列表。|
-|properties|[GattProperties](#class-gattproperties)|否|-|特定特征的属性描述。|
+|serviceUuid|String|是|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
+|characteristicUuid|String|是|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
+|characteristicValue|Array\<Byte>|是|-|特征对应的二进制值。|
+|descriptors|Array\<[BLEDescriptor](#class-bledescriptor)>|是|-|特定特征的描述符列表。|
+|properties|[GattProperties](#class-gattproperties)|否|GattProperties()|**命名参数。**  特定特征的属性描述。|
+|permissions|[GattPermissions](#class-gattpermissions)|否|GattPermissions()|
+**命名参数。**  特征值读写操作需要的权限。预留字段，本版本暂不支持。|
+|characteristicValueHandle|UInt32|否|**命名参数。**  0特征值的唯一标识句柄。当server端BLE蓝牙设备提供了多个相同UUID特征值时，可以通过此句柄区分不同的特征值。预留字段，本版本暂不支持。|
 
 ## class BLEConnectionChangeState
 
 ```cangjie
 public class BLEConnectionChangeState {
-    public BLEConnectionChangeState(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var state: ProfileConnectionState
-    )
+    public var deviceId: String
+    public var state: ProfileConnectionState
 }
 ```
 
 **功能：** 描述Gatt profile连接状态。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var deviceId
+
+```cangjie
+public var deviceId: String
+```
+
+**功能：** 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。
+
+**类型：** String
+
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -1314,95 +1084,21 @@ public var state: ProfileConnectionState
 
 **起始版本：** 21
 
-### let deviceId
-
-```cangjie
-public let deviceId: String
-```
-
-**功能：** 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-### BLEConnectionChangeState(String, ProfileConnectionState)
-
-```cangjie
-public BLEConnectionChangeState(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let deviceId: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var state: ProfileConnectionState
-)
-```
-
-**功能：** BLEConnectionChangeState 构造器。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|否|-|表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-|state|[ProfileConnectionState](cj-apis-bluetooth-constant.md#enum-profileconnectionstate)|否|-|表示BLE连接状态的枚举。|
-
 ## class BLEDescriptor
 
 ```cangjie
 public class BLEDescriptor {
-    public BLEDescriptor(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var descriptorUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var descriptorValue: Array<Byte>
+    public var serviceUuid: String
+    public var characteristicUuid: String
+    public var descriptorUuid: String
+    public var descriptorValue: Array<Byte>
+    public init(
+        serviceUuid: String,
+        characteristicUuid: String,
+        descriptorUuid: String,
+        descriptorValue: Array<Byte>,
+        descriptorHandle!: UInt32 = 0,
+        permissions!: GattPermissions = GattPermissions()
     )
 }
 ```
@@ -1453,7 +1149,7 @@ public var descriptorValue: Array<Byte>
 
 **功能：** 描述符对应的二进制值。
 
-**类型：** Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -1477,42 +1173,16 @@ public var serviceUuid: String
 
 **起始版本：** 21
 
-### BLEDescriptor(String, String, String, Array\<Byte>)
+### init(String, String, String, Array\<Byte>, UInt32, GattPermissions)
 
 ```cangjie
-public BLEDescriptor(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var serviceUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var characteristicUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var descriptorUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var descriptorValue: Array<Byte>
+public init(
+    serviceUuid: String,
+    characteristicUuid: String,
+    descriptorUuid: String,
+    descriptorValue: Array<Byte>,
+    descriptorHandle!: UInt32 = 0,
+    permissions!: GattPermissions = GattPermissions()
 )
 ```
 
@@ -1526,57 +1196,22 @@ public BLEDescriptor(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|descriptorUuid|String|否|-|描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。|
-|descriptorValue|Array\<[Byte](<font color="red" face="bold">please add link</font>)>|否|-|描述符对应的二进制值。|
+|serviceUuid|String|是|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
+|characteristicUuid|String|是|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
+|descriptorUuid|String|是|-|描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。|
+|descriptorValue|Array\<Byte>|是|-|描述符对应的二进制值。|
+|descriptorHandle|UInt32|否|0|**命名参数。**  描述符的唯一标识句柄。当server端BLE蓝牙设备提供了多个相同UUID描述符时，可以通过此句柄区分不同的描述符。预留字段，本版本暂不支持。|
+|permissions|[GattPermissions](#class-gattpermissions)|否|GattPermissions()|**命名参数。**  描述符读写操作需要的权限。预留字段，本版本暂不支持。|
 
 ## class CharacteristicReadRequest
 
 ```cangjie
 public class CharacteristicReadRequest {
-    public CharacteristicReadRequest(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    )
+    public var deviceId: String
+    public var transId: Int32
+    public var offset: Int32
+    public var characteristicUuid: String
+    public var serviceUuid: String
 }
 ```
 
@@ -1586,216 +1221,98 @@ public class CharacteristicReadRequest {
 
 **起始版本：** 21
 
-### let characteristicUuid
+### var characteristicUuid
 
 ```cangjie
-public let characteristicUuid: String
+public var characteristicUuid: String
 ```
 
 **功能：** 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示发送特征值读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let offset
+### var offset
 
 ```cangjie
-public let offset: Int32
+public var offset: Int32
 ```
 
 **功能：** 表示读特征值数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let serviceUuid
+### var serviceUuid
 
 ```cangjie
-public let serviceUuid: String
+public var serviceUuid: String
 ```
 
 **功能：** 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let transId
+### var transId
 
 ```cangjie
-public let transId: Int32
+public var transId: Int32
 ```
 
 **功能：** 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-### CharacteristicReadRequest(String, Int32, Int32, String, String)
-
-```cangjie
-public CharacteristicReadRequest(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let deviceId: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let transId: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let offset: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let characteristicUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let serviceUuid: String
-)
-```
-
-**功能：** CharacteristicReadRequest 构造器。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|否|-|表示发送特征值读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-|transId|Int32|否|-|表示读请求的传输ID，server端回复响应时需填写相同的传输ID。|
-|offset|Int32|否|-|表示读特征值数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
 
 ## class CharacteristicWriteRequest
 
 ```cangjie
 public class CharacteristicWriteRequest {
-    public CharacteristicWriteRequest(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let isPrepared: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let needRsp: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let value: Array<Byte>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    )
+    public var deviceId: String
+    public var transId: Int32
+    public var offset: Int32
+    public var isPrepared: Bool
+    public var needRsp: Bool
+    public var value: Array<Byte>
+    public var characteristicUuid: String
+    public var serviceUuid: String
 }
 ```
 
@@ -1805,274 +1322,144 @@ public class CharacteristicWriteRequest {
 
 **起始版本：** 21
 
-### let characteristicUuid
+### var characteristicUuid
 
 ```cangjie
-public let characteristicUuid: String
+public var characteristicUuid: String
 ```
 
 **功能：** 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示扫描到的设备地址，例如："XX:XX:XX:XX:XX:XX"。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let isPrepared
+### var isPrepared
 
 ```cangjie
-public let isPrepared: Bool
+public var isPrepared: Bool
 ```
 
 **功能：** 表示写请求是否立即执行。true表示立即执行。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let needRsp
+### var needRsp
 
 ```cangjie
-public let needRsp: Bool
+public var needRsp: Bool
 ```
 
 **功能：** 表示是否要给client端回复响应。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let offset
+### var offset
 
 ```cangjie
-public let offset: Int32
+public var offset: Int32
 ```
 
 **功能：** 表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let serviceUuid
+### var serviceUuid
 
 ```cangjie
-public let serviceUuid: String
+public var serviceUuid: String
 ```
 
 **功能：** 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let transId
+### var transId
 
 ```cangjie
-public let transId: Int32
+public var transId: Int32
 ```
 
 **功能：** 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let value
+### var value
 
 ```cangjie
-public let value: Array<Byte>
+public var value: Array<Byte>
 ```
 
 **功能：** 表示写入的描述符二进制数据。
 
-**类型：** Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-### CharacteristicWriteRequest(String, Int32, Int32, Bool, Bool, Array\<Byte>, String, String)
-
-```cangjie
-public CharacteristicWriteRequest(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let deviceId: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let transId: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let offset: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let isPrepared: Bool,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let needRsp: Bool,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let value: Array<Byte>,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let characteristicUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let serviceUuid: String
-)
-```
-
-**功能：** CharacteristicWriteRequest 构造器。
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|否|-|表示发送特征值写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-|transId|Int32|否|-|表示写请求的传输ID，server端回复响应时需填写相同的传输ID。|
-|offset|Int32|否|-|表示写特征值数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。|
-|isPrepared|Bool|否|-|表示写请求是否立即执行。true表示立即执行。|
-|needRsp|Bool|否|-|表示是否要给client端回复响应。true表示需要回复。|
-|value|Array\<[Byte](<font color="red" face="bold">please add link</font>)>|否|-|表示写入的描述符二进制数据。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
 
 ## class DescriptorReadRequest
 
 ```cangjie
 public class DescriptorReadRequest {
-    public DescriptorReadRequest(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let descriptorUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    )
+    public var deviceId: String
+    public var transId: Int32
+    public var offset: Int32
+    public var descriptorUuid: String
+    public var characteristicUuid: String
+    public var serviceUuid: String
 }
 ```
 
@@ -2082,248 +1469,115 @@ public class DescriptorReadRequest {
 
 **起始版本：** 21
 
-### let characteristicUuid
+### var characteristicUuid
 
 ```cangjie
-public let characteristicUuid: String
+public var characteristicUuid: String
 ```
 
 **功能：** 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let descriptorUuid
+### var descriptorUuid
 
 ```cangjie
-public let descriptorUuid: String
+public var descriptorUuid: String
 ```
 
 **功能：** 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示发送描述符读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let offset
+### var offset
 
 ```cangjie
-public let offset: Int32
+public var offset: Int32
 ```
 
 **功能：** 表示读描述符数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let serviceUuid
+### var serviceUuid
 
 ```cangjie
-public let serviceUuid: String
+public var serviceUuid: String
 ```
 
 **功能：** 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let transId
+### var transId
 
 ```cangjie
-public let transId: Int32
+public var transId: Int32
 ```
 
 **功能：** 表示读请求的传输ID，server端回复响应时需填写相同的传输ID。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-### DescriptorReadRequest(String, Int32, Int32, String, String, String)
-
-```cangjie
-public DescriptorReadRequest(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let deviceId: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let transId: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let offset: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let descriptorUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let characteristicUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let serviceUuid: String
-)
-```
-
-**功能：** DescriptorReadRequest 构造器。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|否|-|表示发送描述符读请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-|transId|Int32|否|-|表示读请求的传输ID，server端回复响应时需填写相同的传输ID。|
-|offset|Int32|否|-|表示读描述符数据的起始位置。例如：k表示从第k个字节开始读，server端回复响应时需填写相同的offset。|
-|descriptorUuid|String|否|-|表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
 
 ## class DescriptorWriteRequest
 
 ```cangjie
 public class DescriptorWriteRequest {
-    public DescriptorWriteRequest(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let deviceId: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let transId: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let offset: Int32,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let isPrepared: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let needRsp: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let value: Array<Byte>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let descriptorUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let characteristicUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public let serviceUuid: String
-    )
+    public var deviceId: String
+    public var transId: Int32
+    public var offset: Int32
+    public var isPrepared: Bool
+    public var needRsp: Bool
+    public var value: Array<Byte>
+    public var descriptorUuid: String
+    public var characteristicUuid: String
+    public var serviceUuid: String
 }
 ```
 
@@ -2333,245 +1587,149 @@ public class DescriptorWriteRequest {
 
 **起始版本：** 21
 
-### let characteristicUuid
+### var characteristicUuid
 
 ```cangjie
-public let characteristicUuid: String
+public var characteristicUuid: String
 ```
 
 **功能：** 特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let descriptorUuid
+### var descriptorUuid
 
 ```cangjie
-public let descriptorUuid: String
+public var descriptorUuid: String
 ```
 
 **功能：** 表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示发送描述符写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let isPrepared
+### var isPrepared
 
 ```cangjie
-public let isPrepared: Bool
+public var isPrepared: Bool
 ```
 
 **功能：** 表示写请求是否立即执行。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let needRsp
+### var needRsp
 
 ```cangjie
-public let needRsp: Bool
+public var needRsp: Bool
 ```
 
 **功能：** 表示是否要给client端回复响应。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let offset
+### var offset
 
 ```cangjie
-public let offset: Int32
+public var offset: Int32
 ```
 
 **功能：** 表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let serviceUuid
+### var serviceUuid
 
 ```cangjie
-public let serviceUuid: String
+public var serviceUuid: String
 ```
 
 **功能：** 特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let transId
+### var transId
 
 ```cangjie
-public let transId: Int32
+public var transId: Int32
 ```
 
 **功能：** 表示写请求的传输ID，server端回复响应时需填写相同的传输ID。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let value
+### var value
 
 ```cangjie
-public let value: Array<Byte>
+public var value: Array<Byte>
 ```
 
 **功能：** 表示写入的描述符二进制数据。
 
-**类型：** Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-### DescriptorWriteRequest(String, Int32, Int32, Bool, Bool, Array\<Byte>, String, String, String)
-
-```cangjie
-public DescriptorWriteRequest(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let deviceId: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let transId: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let offset: Int32,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let isPrepared: Bool,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let needRsp: Bool,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let value: Array<Byte>,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let descriptorUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let characteristicUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public let serviceUuid: String
-)
-```
-
-**功能：** DescriptorWriteRequest 构造器。
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|String|否|-|表示发送描述符写请求的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-|transId|Int32|否|-|表示写请求的传输ID，server端回复响应时需填写相同的传输ID。|
-|offset|Int32|否|-|表示写描述符数据的起始位置。例如：k表示从第k个字节开始写，server端回复响应时需填写相同的offset。|
-|isPrepared|Bool|否|-|表示写请求是否立即执行。|
-|needRsp|Bool|否|-|表示是否要给client端回复响应。|
-|value|Array\<[Byte](<font color="red" face="bold">please add link</font>)>|否|-|表示写入的描述符二进制数据。|
-|descriptorUuid|String|否|-|表示描述符（descriptor）的UUID，例如：00002902-0000-1000-8000-00805f9b34fb。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
 
 ## class GattClientDevice
 
@@ -2601,15 +1759,15 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -2619,11 +1777,12 @@ public func close(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
     gattClient.close()
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
@@ -2646,15 +1805,15 @@ public func connect(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -2664,11 +1823,12 @@ public func connect(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
     gattClient.connect()
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
@@ -2691,15 +1851,15 @@ public func disconnect(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -2709,11 +1869,12 @@ public func disconnect(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
     gattClient.disconnect()
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
@@ -2742,15 +1903,15 @@ public func getDeviceName(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -2760,11 +1921,12 @@ public func getDeviceName(): String
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
     let server = gattClient.getDeviceName()
     Hilog.info(0, "Bluetooth", "device name " + server)
 } catch (e: BusinessException) {
@@ -2772,10 +1934,10 @@ try {
 }
 ```
 
-### func getRssiValue((?BusinessException,?Int32) -> Unit)
+### func getRssiValue(AsyncCallback\<Int32>)
 
 ```cangjie
-public func getRssiValue(callback: (?BusinessException, ?Int32) -> Unit): Unit
+public func getRssiValue(callback: AsyncCallback<Int32>): Unit
 ```
 
 **功能：** client获取远端蓝牙低功耗设备的信号强度（Received Signal Strength Indication, RSSI），调用[connect](#func-connect)接口连接成功后才能使用。
@@ -2790,18 +1952,18 @@ public func getRssiValue(callback: (?BusinessException, ?Int32) -> Unit): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(?[BusinessException](<font color="red" face="bold">please add link</font>),?Int32)->Unit|是|-|返回信号强度，单位&nbsp;dBm，通过注册回调函数获取。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<Int32>|是|-|返回信号强度，单位&nbsp;dBm，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
-| 801 | Capability not supported. |
-| 2900099 | Operation failed. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. |
+  | 801 | Capability not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -2811,11 +1973,12 @@ public func getRssiValue(callback: (?BusinessException, ?Int32) -> Unit): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
     gattClient.getRssiValue {
         error: ?BusinessException, rssi: ?Int32 =>
         if (let Some(e) <- error) {
@@ -2828,10 +1991,10 @@ try {
 }
 ```
 
-### func getServices()
+### func getServices(AsyncCallback\<Array\<GattService>>)
 
 ```cangjie
-public func getServices(): Array<GattService>
+public func getServices(callback: AsyncCallback<Array<GattService>>): Unit
 ```
 
 **功能：** client端获取蓝牙低功耗设备的所有服务，即服务发现。
@@ -2842,23 +2005,23 @@ public func getServices(): Array<GattService>
 
 **起始版本：** 21
 
-**返回值：**
+**参数：**
 
-|类型|说明|
-|:----|:----|
-|Array\<[GattService](#class-gattservice)>|<font color="red" face="bold">please add description</font>|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<Array\<[GattService](#class-gattservice)>>|是|-|client进行服务发现。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -2868,16 +2031,19 @@ public func getServices(): Array<GattService>
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
-    let services = gattClient.getServices()
+    let services = gattClient.getServices{err: ?BusinessException, c: ?Array<GattService> =>
+            let ss = c.getOrThrow()
+            for (service in ss) {
+                Hilog.info(0, "Bluetooth", "find serviceUuid : ${service.serviceUuid}")
+            }
+        }
     Hilog.info(0, "Bluetooth", "getServices success")
-    for (service in services) {
-        Hilog.info(0, "Bluetooth", "find serviceUuid : ${service.serviceUuid}")
-    }
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -2886,7 +2052,7 @@ try {
 ### func off(BluetoothBleGattClientDeviceCallbackType, ?CallbackObject)
 
 ```cangjie
-public func off(`type`: BluetoothBleGattClientDeviceCallbackType, callback!: ?CallbackObject = None): Unit
+public func off(eventType: BluetoothBleGattClientDeviceCallbackType, callback!: ?CallbackObject = None): Unit
 ```
 
 **功能：** 取消订阅 client 端蓝牙低功耗设备事件。
@@ -2901,18 +2067,18 @@ public func off(`type`: BluetoothBleGattClientDeviceCallbackType, callback!: ?Ca
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
-|callback|?[CallbackObject](<font color="red" face="bold">please add link</font>)|否|None|**命名参数。** 取消订阅 client 端蓝牙低功耗设备事件。不填该参数则取消订阅该type对应的所有回调。|
+|eventType|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|特征值变化事件。|
+|callback|?[CallbackObject](<font color="red" face="bold">please add link</font>)|否|None|**命名参数。**  取消订阅 client 端蓝牙低功耗设备事件。不填该参数则取消订阅该type对应的所有回调。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -2922,14 +2088,16 @@ public func off(`type`: BluetoothBleGattClientDeviceCallbackType, callback!: ?Ca
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 let device = "XX:XX:XX:XX:XX:XX"
-var connectState = STATE_DISCONNECTED
+var connectState = ProfileConnectionState.StateDisconnected
 class BLEConnectionStateChangeCallback <: Callback1Argument<BLEConnectionChangeState> {
-    public func invoke(stateInfo: BLEConnectionChangeState): Unit {
+    public func invoke(err: ?BusinessException, stateInfo: BLEConnectionChangeState): Unit {
         Hilog.info(0, "Bluetooth", "onGattServerStateChange: device=" + stateInfo.deviceId + ", state=" + stateInfo.state.toString())
         if (stateInfo.deviceId == device) {
             connectState = stateInfo.state
@@ -2939,8 +2107,8 @@ class BLEConnectionStateChangeCallback <: Callback1Argument<BLEConnectionChangeS
 
 let bleConnectionStateChangeCallback = BLEConnectionStateChangeCallback()
 try {
-    gattClient.on(BLE_CONNECTION_STATE_CHANGE, bleConnectionStateChangeCallback)
-    gattClient.off(BLE_CONNECTION_STATE_CHANGE, callback: bleConnectionStateChangeCallback)
+    gattClient.on(BluetoothBleGattClientDeviceCallbackType.BleConnectionStateChange, bleConnectionStateChangeCallback)
+    gattClient.off(BluetoothBleGattClientDeviceCallbackType.BleConnectionStateChange, callback: bleConnectionStateChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -2949,7 +2117,7 @@ try {
 ### func on(BluetoothBleGattClientDeviceCallbackType, Callback1Argument\<BLECharacteristic>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<BLECharacteristic>): Unit
+public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<BLECharacteristic>): Unit
 ```
 
 **功能：** client端订阅MTU状态变化事件。
@@ -2964,18 +2132,18 @@ public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callb
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|必须填写ClientBleMtuChange，表示MTU状态变化事件。填写不正确将导致回调无法注册。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[BLECharacteristic](#class-blecharacteristic)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core@atomicservice@since 12 |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -2985,20 +2153,22 @@ public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callb
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
-let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+class BLECharacteristicChangeCallback <: Callback1Argument<BLECharacteristic> {
+    public func invoke(err: ?BusinessException, characteristic: BLECharacteristic): Unit {
+        Hilog.info(0, "Bluetooth", "characteristic ${characteristic.serviceUuid} has change")
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
+let bleCharacteristicChangeCallback = BLECharacteristicChangeCallback()
 try {
-    gattClient.on(BluetoothBleGattClientDeviceCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattClient.on(BluetoothBleGattClientDeviceCallbackType.ClientBleMtuChange, bleCharacteristicChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -3008,7 +2178,7 @@ try {
 
 ```cangjie
 public func on(
-    `type`: BluetoothBleGattClientDeviceCallbackType,
+    eventType: BluetoothBleGattClientDeviceCallbackType,
     callback: Callback1Argument<BLEConnectionChangeState>
 ): Unit
 ```
@@ -3025,18 +2195,18 @@ public func on(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|填写BleConnectionStateChange，表示连接状态变化事件。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[BLEConnectionChangeState](#class-bleconnectionchangestate)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -3046,20 +2216,27 @@ public func on(
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+let device = "XX:XX:XX:XX:XX:XX"
+var connectState = ProfileConnectionState.StateDisconnected
+class BLEConnectionStateChangeCallback <: Callback1Argument<BLEConnectionChangeState> {
+    public func invoke(err: ?BusinessException, stateInfo: BLEConnectionChangeState): Unit {
+        Hilog.info(0, "Bluetooth", "onGattServerStateChange: device=" + stateInfo.deviceId + ", state=" + stateInfo.state.toString())
+        if (stateInfo.deviceId == device) {
+            connectState = stateInfo.state
+        }
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let bleConnectionStateChangeCallback = BLEConnectionStateChangeCallback()
 try {
-    gattClient.on(BluetoothBleGattClientDeviceCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattClient.on(BluetoothBleGattClientDeviceCallbackType.BleConnectionStateChange, bleConnectionStateChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -3068,7 +2245,7 @@ try {
 ### func on(BluetoothBleGattClientDeviceCallbackType, Callback1Argument\<Int32>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<Int32>): Unit
+public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Callback1Argument<Int32>): Unit
 ```
 
 **功能：** client端订阅MTU状态变化事件。
@@ -3083,18 +2260,18 @@ public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callb
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|必须填写ClientBleMtuChange，表示MTU状态变化事件。填写不正确将导致回调无法注册。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Int32>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -3104,31 +2281,33 @@ public func on(`type`: BluetoothBleGattClientDeviceCallbackType, callback: Callb
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
+    public func invoke(err: ?BusinessException, mtu: Int32): Unit {
         Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
     }
 }
 
 let bleMtuChangeCallback = BLEMtuChangeCallback()
 try {
-    gattClient.on(BluetoothBleGattClientDeviceCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattClient.on(BluetoothBleGattClientDeviceCallbackType.ClientBleMtuChange, bleMtuChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
 ```
 
-### func readCharacteristicValue(BLECharacteristic, (?BusinessException,?BLECharacteristic) -> Unit)
+### func readCharacteristicValue(BLECharacteristic, AsyncCallback\<BLECharacteristic>)
 
 ```cangjie
 public func readCharacteristicValue(
     characteristic: BLECharacteristic,
-    callback: (?BusinessException, ?BLECharacteristic) -> Unit
+    callback: AsyncCallback<BLECharacteristic>
 ): Unit
 ```
 
@@ -3145,20 +2324,20 @@ public func readCharacteristicValue(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |characteristic|[BLECharacteristic](#class-blecharacteristic)|是|-|待读取的特征值。|
-|callback|(?[BusinessException](<font color="red" face="bold">please add link</font>),?[BLECharacteristic](#class-blecharacteristic))->Unit|是|-|client读取特征值，通过注册回调函数获取。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<[BLECharacteristic](#class-blecharacteristic)>|是|-|client读取特征值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2901000 | Read forbidden. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2901000 | Read forbidden. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3168,8 +2347,9 @@ public func readCharacteristicValue(
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 
@@ -3191,7 +2371,7 @@ let characteristic: BLECharacteristic = BLECharacteristic(
     "00001820-0000-1000-8000-00805F9B34FB",
     charBuffer,
     descriptors,
-    properties
+    properties: properties
 )
 
 try {
@@ -3214,10 +2394,10 @@ try {
 }
 ```
 
-### func readDescriptorValue(BLEDescriptor, (?BusinessException,?BLEDescriptor) -> Unit)
+### func readDescriptorValue(BLEDescriptor, AsyncCallback\<BLEDescriptor>)
 
 ```cangjie
-public func readDescriptorValue(descriptor: BLEDescriptor, callback: (?BusinessException, ?BLEDescriptor) -> Unit): Unit
+public func readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<BLEDescriptor>): Unit
 ```
 
 **功能：** client端读取蓝牙低功耗设备特定的特征包含的描述符。
@@ -3233,20 +2413,26 @@ public func readDescriptorValue(descriptor: BLEDescriptor, callback: (?BusinessE
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |descriptor|[BLEDescriptor](#class-bledescriptor)|是|-|待读取的描述符。|
-|callback|(?[BusinessException](<font color="red" face="bold">please add link</font>),?[BLEDescriptor](#class-bledescriptor))->Unit|是|-|client读取描述符，通过注册回调函数获取。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<[BLEDescriptor](#class-bledescriptor)>|是|-|client读取描述符，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2901000 | Read forbidden. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900011 | The operation is busy. The last operation is not complete. |
+  | 2900099 | Operation failed. |
+  | 2901000 | Read forbidden. |
+  | 2901003 | The connection is not established. |
+  | 2901004 | The connection is congested. |
+  | 2901005 | The connection is not encrypted. |
+  | 2901006 | The connection is not authenticated. |
+  | 2901007 | The connection is not authorized. |
 
 **示例：**
 
@@ -3256,8 +2442,9 @@ public func readDescriptorValue(descriptor: BLEDescriptor, callback: (?BusinessE
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 
@@ -3311,15 +2498,15 @@ public func setBLEMtuSize(mtu: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3329,21 +2516,22 @@ public func setBLEMtuSize(mtu: Int32): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
+let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 try {
-    let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
     gattClient.setBLEMtuSize(100)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
 ```
 
-### func setCharacteristicChangeIndication(BLECharacteristic, Bool)
+### func setCharacteristicChangeIndication(BLECharacteristic, Bool, AsyncCallback\<Unit>)
 
 ```cangjie
-public func setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: Bool): Unit
+public func setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: Bool, callback: AsyncCallback<Unit>): Unit
 ```
 
 **功能：** 向服务端发送设置通知此特征值请求，需要对端设备的回复。
@@ -3360,18 +2548,19 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 |:---|:---|:---|:---|:---|
 |characteristic|[BLECharacteristic](#class-blecharacteristic)|是|-|蓝牙低功耗特征。|
 |enable|Bool|是|-|启用接收notify设置为true，否则设置为false。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<Unit>|是|-|回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3381,8 +2570,9 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 
@@ -3404,20 +2594,24 @@ let characteristic: BLECharacteristic = BLECharacteristic(
     "00001820-0000-1000-8000-00805F9B34FB",
     charBuffer,
     descriptors,
-    properties
+    properties: properties
 )
 
 try {
-    gattClient.setCharacteristicChangeIndication(characteristic, false)
+    gattClient.setCharacteristicChangeIndication(characteristic, false)  {
+        error: ?BusinessException, c: ?Unit => if (let Some(e) <- error) {
+            throw e
+        }
+    }
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
 ```
 
-### func setCharacteristicChangeNotification(BLECharacteristic, Bool)
+### func setCharacteristicChangeNotification(BLECharacteristic, Bool, AsyncCallback\<Unit>)
 
 ```cangjie
-public func setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: Bool): Unit
+public func setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: Bool, callback: AsyncCallback<Unit>): Unit
 ```
 
 **功能：** 向服务端发送设置通知此特征值请求。
@@ -3434,18 +2628,19 @@ public func setCharacteristicChangeNotification(characteristic: BLECharacteristi
 |:---|:---|:---|:---|:---|
 |characteristic|[BLECharacteristic](#class-blecharacteristic)|是|-|蓝牙低功耗特征。|
 |enable|Bool|是|-|启用接收notify设置为true，否则设置为false。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<Unit>|是|-|回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3455,8 +2650,9 @@ public func setCharacteristicChangeNotification(characteristic: BLECharacteristi
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 
@@ -3478,21 +2674,25 @@ let characteristic: BLECharacteristic = BLECharacteristic(
     "00001820-0000-1000-8000-00805F9B34FB",
     charBuffer,
     descriptors,
-    properties
+    properties: properties
 )
 
 try {
-    gattClient.setCharacteristicChangeNotification(characteristic, false)
+    gattClient.setCharacteristicChangeNotification(characteristic, false) {
+        error: ?BusinessException, c: ?Unit => if (let Some(e) <- error) {
+            throw e
+        }
+    }
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
 ```
 
-### func writeCharacteristicValue(BLECharacteristic, GattWriteType, (?BusinessException) -> Unit)
+### func writeCharacteristicValue(BLECharacteristic, GattWriteType, AsyncCallback\<Unit>)
 
 ```cangjie
 public func writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType,
-    callback: (?BusinessException) -> Unit): Unit
+    callback: AsyncCallback<Unit>): Unit
 ```
 
 **功能：** client端向低功耗蓝牙设备写入特定的特征值。
@@ -3509,20 +2709,20 @@ public func writeCharacteristicValue(characteristic: BLECharacteristic, writeTyp
 |:---|:---|:---|:---|:---|
 |characteristic|[BLECharacteristic](#class-blecharacteristic)|是|-|蓝牙设备特征对应的二进制值及其它参数。|
 |writeType|[GattWriteType](#enum-gattwritetype)|是|-|蓝牙设备特征的写入类型。|
-|callback|(?[BusinessException](<font color="red" face="bold">please add link</font>))->Unit|是|-|回调函数。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<Unit>|是|-|回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2901001 | Write forbidden. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2901001 | Write forbidden. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3532,8 +2732,9 @@ public func writeCharacteristicValue(characteristic: BLECharacteristic, writeTyp
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 
@@ -3556,12 +2757,12 @@ let characteristic: BLECharacteristic = BLECharacteristic(
     "00001820-0000-1000-8000-00805F9B34FB",
     charBuffer,
     descriptors,
-    properties
+    properties: properties
 )
 
 try {
-    gattClient.writeCharacteristicValue(characteristic, GattWriteType.WRITE) {
-        error: ?BusinessException => if (let Some(e) <- error) {
+    gattClient.writeCharacteristicValue(characteristic, GattWriteType.Write) {
+        error: ?BusinessException, c: ?Unit => if (let Some(e) <- error) {
             throw e
         }
     }
@@ -3570,10 +2771,10 @@ try {
 }
 ```
 
-### func writeDescriptorValue(BLEDescriptor, (?BusinessException) -> Unit)
+### func writeDescriptorValue(BLEDescriptor, AsyncCallback\<Unit>)
 
 ```cangjie
-public func writeDescriptorValue(descriptor: BLEDescriptor, callback: (?BusinessException) -> Unit): Unit
+public func writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<Unit>): Unit
 ```
 
 **功能：** client端向低功耗蓝牙设备特定的描述符写入二进制数据。
@@ -3589,20 +2790,20 @@ public func writeDescriptorValue(descriptor: BLEDescriptor, callback: (?Business
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |descriptor|[BLEDescriptor](#class-bledescriptor)|是|-|蓝牙设备描述符的二进制值及其它参数。|
-|callback|(?[BusinessException](<font color="red" face="bold">please add link</font>))->Unit|是|-|回调函数。|
+|callback|[AsyncCallback](<font color="red" face="bold">please add link</font>)\<Unit>|是|-|回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2901001 | Write forbidden. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2901001 | Write forbidden. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3612,8 +2813,9 @@ public func writeDescriptorValue(descriptor: BLEDescriptor, callback: (?Business
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattClient = createGattClientDevice("XX:XX:XX:XX:XX:XX")
 
@@ -3630,7 +2832,7 @@ let properties = GattProperties()
 
 try {
     gattClient.writeDescriptorValue(descriptors) {
-        error: ?BusinessException => if (let Some(e) <- error) {
+        error: ?BusinessException, c: ?Unit => if (let Some(e) <- error) {
             throw e
         }
     }
@@ -3639,16 +2841,260 @@ try {
 }
 ```
 
+## class GattPermissions
+
+```cangjie
+public class GattPermissions <: Equatable<GattPermissions> {
+    public var read: Bool
+    public var readEncrypted: Bool
+    public var readEncryptedMitm: Bool
+    public var write: Bool
+    public var writeEncrypted: Bool
+    public var writeEncryptedMitm: Bool
+    public var writeSigned: Bool
+    public var writeSignedMitm: Bool
+    public init (
+        read!: Bool = true,
+        readEncrypted!: Bool = false,
+        readEncryptedMitm!: Bool = false,
+        write!: Bool = true,
+        writeEncrypted!: Bool = false,
+        writeEncryptedMitm!: Bool = false,
+        writeSigned!: Bool = false,
+        writeSignedMitm!: Bool = false
+    )
+}
+```
+
+**功能：** 描述读写GATT特征值或描述符需具备的权限。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<GattPermissions>
+
+### var read
+
+```cangjie
+public var read: Bool
+```
+
+**功能：** 表示是否允许读取该特征值或描述符内容。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var readEncrypted
+
+```cangjie
+public var readEncrypted: Bool
+```
+
+**功能：** 表示读取该特征值或描述符内容是否需要加密。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var readEncryptedMitm
+
+```cangjie
+public var readEncryptedMitm: Bool
+```
+
+**功能：** 表示读取该特征值或描述符内容是否需要防中间人攻击的加密。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var write
+
+```cangjie
+public var write: Bool
+```
+
+**功能：** 表示是否允许写入该特征值或描述符内容。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var writeEncrypted
+
+```cangjie
+public var writeEncrypted: Bool
+```
+
+**功能：** 表示写入该特征值或描述符内容是否需要加密。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var writeEncryptedMitm
+
+```cangjie
+public var writeEncryptedMitm: Bool
+```
+
+**功能：** 表示写入该特征值或描述符内容是否需要防中间人攻击的加密。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var writeSigned
+
+```cangjie
+public var writeSigned: Bool
+```
+
+**功能：** 表示写入该特征值或描述符内容是否需要经过签名处理。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var writeSignedMitm
+
+```cangjie
+public var writeSignedMitm: Bool
+```
+
+**功能：** 表示写入该特征值或描述符内容是否需要经过防中间人攻击方式的签名处理。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### init(Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool)
+
+```cangjie
+public init (
+    read!: Bool = true,
+    readEncrypted!: Bool = false,
+    readEncryptedMitm!: Bool = false,
+    write!: Bool = true,
+    writeEncrypted!: Bool = false,
+    writeEncryptedMitm!: Bool = false,
+    writeSigned!: Bool = false,
+    writeSignedMitm!: Bool = false
+)
+```
+
+**功能：** GattPermissions 构造器
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|read|Bool|否|true|是否允许读取该特征值或描述符内容。<br>true表示允许，false表示不允许。默认值为true。|
+|readEncrypted|Bool|否|false|读取该特征值或描述符内容是否需要加密。<br>true表示需要加密后，方可读取内容，false表示不需要普通方式加密。默认值为false。|
+|readEncryptedMitm|Bool|否|false|读取该特征值或描述符内容是否需要防中间人攻击的加密。<br>防中间人攻击表示操作需要经过认证，防止数据被第三方篡改。true表示需要防中间人攻击的加密后才能读取内容，false表示不需要防中间人攻击的加密。默认值为false。|
+|write|Bool|否|true|是否允许写入该特征值或描述符内容。<br>true表示允许，false表示不允许。默认值为true。|
+|writeEncrypted|Bool|否|false|写入该特征值或描述符内容是否需要加密。<br>true表示需要加密后，方可写入内容，false表示不需要普通方式加密。默认值为false。|
+|writeEncryptedMitm|Bool|否|false|写入该特征值或描述符内容是否需要防中间人攻击的加密。<br>true表示需要防中间人攻击的加密后才能写入内容，false表示不需要防中间人攻击的加密。默认值为false。|
+|writeSigned|Bool|否|false|写入该特征值或描述符内容是否需要经过签名处理。<br>true表示内容需要签名处理后方可写入，false表示不需要签名处理。默认值为false。|
+|writeSignedMitm|Bool|否|false|写入该特征值或描述符内容是否需要经过防中间人攻击方式的签名处理。<br>true表示需要防中间人攻击方式的签名处理后方可写入，false表示不需要以防中间人攻击方式签名处理。默认值为false。|
+
+### func !=(GattPermissions)
+
+```cangjie
+public operator func !=(other: GattPermissions): Bool
+```
+
+**功能：** 对 GattPermissions 进行判不等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GattPermissions](#class-gattpermissions)|是|-|描述符读写操作需要的权限。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果描述符读写操作需要的权限不同，返回true，否则返回false。|
+
+### func ==(GattPermissions)
+
+```cangjie
+public operator func ==(other: GattPermissions): Bool
+```
+
+**功能：** 对 GattPermissions 进行判等。
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GattPermissions](#class-gattpermissions)|是|-|描述符读写操作需要的权限。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果描述符读写操作需要的权限相同，返回true，否则返回false。|
+
 ## class GattProperties
 
 ```cangjie
 public class GattProperties {
-    public GattProperties(
-        let write!: Bool = true,
-        let writeNoResponse!: Bool = true,
-        let read!: Bool = true,
-        let notify!: Bool = false,
-        let indicate!: Bool = false
+    public var write: Bool
+    public var writeNoResponse: Bool
+    public var read: Bool
+    public var notify: Bool
+    public var indicate: Bool
+    public init(
+        write!: Bool = true,
+        writeNoResponse!: Bool = true,
+        read!: Bool = true,
+        notify!: Bool = false,
+        indicate!: Bool = false,
+        broadcast!: Bool = false,
+        authenticatedSignedWrite!: Bool = false,
+        extendedProperties!: Bool = false
     )
 }
 ```
@@ -3659,15 +3105,98 @@ public class GattProperties {
 
 **起始版本：** 21
 
-### GattProperties(Bool, Bool, Bool, Bool, Bool)
+### var indicate
 
 ```cangjie
-public GattProperties(
-    let write!: Bool = true,
-    let writeNoResponse!: Bool = true,
-    let read!: Bool = true,
-    let notify!: Bool = false,
-    let indicate!: Bool = false
+public var indicate: Bool
+```
+
+**功能：** **命名参数。**  true表示该特征可通知对端设备，需要对端设备的回复。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var notify
+
+```cangjie
+public var notify: Bool
+```
+
+**功能：** **命名参数。**  true表示该特征可通知对端设备。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var read
+
+```cangjie
+public var read: Bool
+```
+
+**功能：** **命名参数。**  true表示该特征支持读操作。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var write
+
+```cangjie
+public var write: Bool
+```
+
+**功能：** **命名参数。**  表示该特征支持写操作，true表示需要对端设备的回复。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### var writeNoResponse
+
+```cangjie
+public var writeNoResponse: Bool
+```
+
+**功能：** **命名参数。**  true表示该特征支持写操作，无需对端设备回复。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### init(Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool)
+
+```cangjie
+public init(
+    write!: Bool = true,
+    writeNoResponse!: Bool = true,
+    read!: Bool = true,
+    notify!: Bool = false,
+    indicate!: Bool = false,
+    broadcast!: Bool = false,
+    authenticatedSignedWrite!: Bool = false,
+    extendedProperties!: Bool = false
 )
 ```
 
@@ -3681,11 +3210,14 @@ public GattProperties(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|write|Bool|否|true|**命名参数。** 表示该特征支持写操作，true表示需要对端设备的回复。|
-|writeNoResponse|Bool|否|true|**命名参数。** true表示该特征支持写操作，无需对端设备回复。|
-|read|Bool|否|true|**命名参数。** true表示该特征支持读操作。|
-|notify|Bool|否|false|**命名参数。** true表示该特征可通知对端设备。|
-|indicate|Bool|否|false|**命名参数。** true表示该特征可通知对端设备，需要对端设备的回复。|
+|write|Bool|否|true| **命名参数。**  表示该特征支持写操作，true表示需要对端设备的回复。|
+|writeNoResponse|Bool|否|true| **命名参数。**  true表示该特征支持写操作，无需对端设备回复。|
+|read|Bool|否|true| **命名参数。**  true表示该特征支持读操作。|
+|notify|Bool|否|false| **命名参数。**  true表示该特征可通知对端设备。|
+|indicate|Bool|否|false| **命名参数。**  true表示该特征可通知对端设备，需要对端设备的回复。|
+|broadcast|Bool|否|false|**命名参数。**  该特征值是否支持作为广播内容由server端发送。<br>true表示支持，server端可将特征值内容以ServiceData类型在广播报文中携带，false表示不支持。默认值为false。预留字段，本版本暂不支持。|
+|authenticatedSignedWrite|Bool|否|false|**命名参数。**  该特征值是否支持签名写入操作，通过对写入内容进行签名校验替代加密流程。<br>true表示支持，且该特征值权限GattPermissions中的writeSigned或writeSignedMitm需设置为true，否则该属性不生效，false表示不支持。默认值为false。预留字段，本版本暂不支持。|
+|extendedProperties|Bool|否|false|**命名参数。**  该特征值是否存在扩展属性。<br>true表示存在扩展属性，false表示不存在。默认值为false。预留字段，本版本暂不支持。|
 
 ## class GattServer
 
@@ -3721,16 +3253,16 @@ public func addService(service: GattService): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3740,8 +3272,9 @@ public func addService(service: GattService): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 创建descriptors
 let descBuffer: Array<Byte> = [31, 32]
@@ -3768,7 +3301,7 @@ let characteristic: BLECharacteristic = BLECharacteristic(
     "00001820-0000-1000-8000-00805F9B34FB",
     charBuffer,
     descriptors,
-    properties
+    properties: properties
 )
 
 let characteristics: Array<BLECharacteristic> = [characteristic]
@@ -3776,7 +3309,7 @@ let gattService: GattService = GattService(
     "00001810-0000-1000-8000-00805F9B34FB",
     true,
     characteristics,
-    Array<GattService>()
+    includeServices: Array<GattService>()
 )
 
 try {
@@ -3784,7 +3317,7 @@ try {
     let gattServer = createGattServer()
     gattServer.addService(gattService)
 } catch (e: BusinessException) {
-    AppLog.error("add Service error because ${e}")
+    Hilog.error(0, "AppLogCj", "add Service error because ${e}")
 }
 ```
 
@@ -3804,15 +3337,15 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3822,8 +3355,9 @@ public func close(): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattServer = createGattServer()
 try {
@@ -3856,16 +3390,16 @@ public func notifyCharacteristicChanged(deviceId: String, notifyCharacteristic: 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -3875,8 +3409,9 @@ public func notifyCharacteristicChanged(deviceId: String, notifyCharacteristic: 
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattServer = createGattServer()
 try {
@@ -3896,7 +3431,7 @@ try {
 ### func off(BluetoothBleGattServerCallbackType, ?CallbackObject)
 
 ```cangjie
-public func off(`type`: BluetoothBleGattServerCallbackType, callback!: ?CallbackObject = None): Unit
+public func off(eventType: BluetoothBleGattServerCallbackType, callback!: ?CallbackObject = None): Unit
 ```
 
 **功能：** server端取消订阅事件。
@@ -3911,18 +3446,18 @@ public func off(`type`: BluetoothBleGattServerCallbackType, callback!: ?Callback
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
-|callback|?[CallbackObject](<font color="red" face="bold">please add link</font>)|否|None|**命名参数。** 表示取消订阅事件上报。不填该参数则取消订阅该type对应的所有回调。|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|表示特征值读请求事件。|
+|callback|?[CallbackObject](<font color="red" face="bold">please add link</font>)|否|None|**命名参数。**  表示取消订阅事件上报。不填该参数则取消订阅该type对应的所有回调。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -3932,12 +3467,14 @@ public func off(`type`: BluetoothBleGattServerCallbackType, callback!: ?Callback
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 class StateChangeCallback <: Callback1Argument<BLEConnectionChangeState> {
-    public func invoke(state: BLEConnectionChangeState): Unit {
+    public func invoke(err: ?BusinessException, state: BLEConnectionChangeState): Unit {
         Hilog.info(0, "Bluetooth", "onGattServerStateChange: device=" + state.deviceId + ", state=" + state.state.toString())
     }
 }
@@ -3945,8 +3482,8 @@ class StateChangeCallback <: Callback1Argument<BLEConnectionChangeState> {
 let stateChangeCallback = StateChangeCallback()
 let gattServer = createGattServer()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.CONNECTION_STATE_CHANGE, stateChangeCallback)
-    gattServer.off(BluetoothBleGattServerCallbackType.CONNECTION_STATE_CHANGE, callback: stateChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.ConnectionStateChange, stateChangeCallback)
+    gattServer.off(BluetoothBleGattServerCallbackType.ConnectionStateChange, callback: stateChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -3955,7 +3492,7 @@ try {
 ### func on(BluetoothBleGattServerCallbackType, Callback1Argument\<CharacteristicReadRequest>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicReadRequest>): Unit
+public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicReadRequest>): Unit
 ```
 
 **功能：** server端订阅MTU状态变化事件。
@@ -3970,18 +3507,18 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|填CharacteristicRead，表示特征值读请求事件。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[CharacteristicReadRequest](#class-characteristicreadrequest)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -3991,20 +3528,39 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattServer = createGattServer()
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+
+class CharacteristicReadCallback <: Callback1Argument<CharacteristicReadRequest> {
+    public func invoke(err: ?BusinessException, charReq: CharacteristicReadRequest): Unit {
+        let deviceId: String = charReq.deviceId
+        let transId: Int32 = charReq.transId
+        let offset: Int32 = charReq.offset
+        Hilog.info(0, "Bluetooth", "receive characteristicRead")
+        let rspBuffer: Array<Byte> = [21, 22]
+        let serverResponse: ServerResponse = ServerResponse(
+            deviceId,
+            transId,
+            0,
+            offset,
+            rspBuffer
+        )
+        try {
+            gattServer.sendResponse(serverResponse)
+        } catch (e: BusinessException) {
+            Hilog.info(0, "Bluetooth", "gattServer send response fail because ${e}")
+        }
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let characteristicReadCallback = CharacteristicReadCallback()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.CharacteristicRead, characteristicReadCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -4013,7 +3569,7 @@ try {
 ### func on(BluetoothBleGattServerCallbackType, Callback1Argument\<CharacteristicWriteRequest>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicWriteRequest>): Unit
+public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<CharacteristicWriteRequest>): Unit
 ```
 
 **功能：** server端订阅MTU状态变化事件。
@@ -4028,18 +3584,18 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|填写CharacteristicWrite，表示特征值写请求事件。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[CharacteristicWriteRequest](#class-characteristicwriterequest)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -4049,20 +3605,46 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattServer = createGattServer()
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+
+class CharacteristicWriteCallback <: Callback1Argument<CharacteristicWriteRequest> {
+    public func invoke(err: ?BusinessException, charReq: CharacteristicWriteRequest): Unit {
+        let deviceId: String = charReq.deviceId
+        let transId: Int32 = charReq.transId
+        let offset: Int32 = charReq.offset
+        Hilog.info(0, "Bluetooth", "receive characteristicWrite")
+
+        Hilog.info(0, "Bluetooth", "receive characteristicWrite: needRsp=" + charReq
+            .needRsp
+            .toString())
+        if (!charReq.needRsp) {
+            return
+        }
+        let rspBuffer = Array<Byte>()
+        let serverResponse: ServerResponse = ServerResponse(
+            deviceId,
+            transId,
+            0,
+            offset,
+            rspBuffer
+        )
+        try {
+            gattServer.sendResponse(serverResponse)
+        } catch (e: BusinessException) {
+            Hilog.info(0, "Bluetooth", "gattServer send response fail because ${e}")
+        }
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let characteristicWriteCallback = CharacteristicWriteCallback()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.CharacteristicWrite, characteristicWriteCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -4071,7 +3653,7 @@ try {
 ### func on(BluetoothBleGattServerCallbackType, Callback1Argument\<DescriptorReadRequest>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorReadRequest>): Unit
+public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorReadRequest>): Unit
 ```
 
 **功能：** server端订阅MTU状态变化事件。
@@ -4086,18 +3668,18 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|填写DescriptorRead，表示描述符读请求事件。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DescriptorReadRequest](#class-descriptorreadrequest)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -4107,20 +3689,39 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattServer = createGattServer()
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+
+class DescriptorReadCallback <: Callback1Argument<DescriptorReadRequest> {
+    public func invoke(err: ?BusinessException, desReq: DescriptorReadRequest): Unit {
+        let deviceId: String = desReq.deviceId
+        let transId: Int32 = desReq.transId
+        let offset: Int32 = desReq.offset
+        Hilog.info(0, "Bluetooth", "receive descriptorRead")
+        let rspBuffer: Array<Byte> = [31, 32]
+        let serverResponse: ServerResponse = ServerResponse(
+            deviceId,
+            transId,
+            0,
+            offset,
+            rspBuffer
+        )
+        try {
+            gattServer.sendResponse(serverResponse)
+        } catch (e: BusinessException) {
+            Hilog.info(0, "Bluetooth", "gattServer send response fail because ${e}")
+        }
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let descriptorReadCallback = DescriptorReadCallback()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.DescriptorRead, descriptorReadCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -4129,7 +3730,7 @@ try {
 ### func on(BluetoothBleGattServerCallbackType, Callback1Argument\<DescriptorWriteRequest>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorWriteRequest>): Unit
+public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<DescriptorWriteRequest>): Unit
 ```
 
 **功能：** server端订阅MTU状态变化事件。
@@ -4144,18 +3745,18 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|填写DescriptorWrite，表示描述符写请求事件。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DescriptorWriteRequest](#class-descriptorwriterequest)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -4165,20 +3766,43 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattServer = createGattServer()
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+
+class DescriptorWriteCallback <: Callback1Argument<DescriptorWriteRequest> {
+    public func invoke(err: ?BusinessException, desReq: DescriptorWriteRequest): Unit {
+        let deviceId: String = desReq.deviceId
+        let transId: Int32 = desReq.transId
+        let offset: Int32 = desReq.offset
+        Hilog.info(0, "Bluetooth", "receive descriptorWrite")
+        Hilog.info(0, "Bluetooth", "receive descriptorWrite: needRsp=" + desReq.needRsp.toString())
+        if (!desReq.needRsp) {
+            return
+        }
+        let rspBuffer = Array<Byte>()
+        let serverResponse: ServerResponse = ServerResponse(
+            deviceId,
+            transId,
+            0,
+            offset,
+            rspBuffer
+        )
+        try {
+            gattServer.sendResponse(serverResponse)
+        } catch (e: BusinessException) {
+            Hilog.info(0, "Bluetooth", "gattServer send response fail because ${e}")
+        }
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let descriptorWriteCallback = DescriptorWriteCallback()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.DescriptorWrite, descriptorWriteCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -4187,7 +3811,7 @@ try {
 ### func on(BluetoothBleGattServerCallbackType, Callback1Argument\<BLEConnectionChangeState>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<BLEConnectionChangeState>): Unit
+public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<BLEConnectionChangeState>): Unit
 ```
 
 **功能：** server端订阅MTU状态变化事件。
@@ -4202,18 +3826,18 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|填ConnectionStateChange，表示BLE连接状态变化事件。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[BLEConnectionChangeState](#class-bleconnectionchangestate)>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -4223,20 +3847,23 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattServer = createGattServer()
-class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
-        Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
+
+class StateChangeCallback <: Callback1Argument<BLEConnectionChangeState> {
+    public func invoke(err: ?BusinessException, state: BLEConnectionChangeState): Unit {
+        Hilog.info(0, "Bluetooth", "onGattServerStateChange: device=" + state.deviceId + ", state=" + state.state.toString())
     }
 }
 
-let bleMtuChangeCallback = BLEMtuChangeCallback()
+let stateChangeCallback = StateChangeCallback()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.ConnectionStateChange, stateChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -4245,7 +3872,7 @@ try {
 ### func on(BluetoothBleGattServerCallbackType, Callback1Argument\<Int32>)
 
 ```cangjie
-public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Argument<Int32>): Unit
+public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback1Argument<Int32>): Unit
 ```
 
 **功能：** server端订阅MTU状态变化事件。
@@ -4260,18 +3887,18 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|type|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|<font color="red" face="bold">please add description</font>|
+|eventType|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|必须填写BLE_MTU_CHANGE，表示MTU状态变化事件。填写不正确将导致回调无法注册。|
 |callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Int32>|是|-|返回MTU字节数的值，通过注册回调函数获取。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -4281,20 +3908,22 @@ public func on(`type`: BluetoothBleGattServerCallbackType, callback: Callback1Ar
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 let gattServer = createGattServer()
 class BLEMtuChangeCallback <: Callback1Argument<Int32> {
-    public func invoke(mtu: Int32): Unit {
+    public func invoke(err: ?BusinessException, mtu: Int32): Unit {
         Hilog.info(0, "Bluetooth", "mtu change to ${mtu}")
     }
 }
 
 let bleMtuChangeCallback = BLEMtuChangeCallback()
 try {
-    gattServer.on(BluetoothBleGattServerCallbackType.BLE_MTU_CHANGE, bleMtuChangeCallback)
+    gattServer.on(BluetoothBleGattServerCallbackType.ServerBleMtuChange, bleMtuChangeCallback)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -4322,17 +3951,17 @@ public func removeService(serviceUuid: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900004 | Profile not supported. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900004 | Profile not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -4342,8 +3971,9 @@ public func removeService(serviceUuid: String): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattServer = createGattServer()
 try {
@@ -4375,16 +4005,16 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[xxx错误码](link)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | Capability not supported. |
-| 2900001 | Service stopped. |
-| 2900003 | Bluetooth disabled. |
-| 2900099 | Operation failed.@syscap SystemCapability.Communication.Bluetooth.Core |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -4394,8 +4024,9 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let gattServer = createGattServer()
 try {
@@ -4414,38 +4045,15 @@ try {
 
 ```cangjie
 public class GattService {
-    public GattService(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var isPrimary: Bool,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristics: Array<BLECharacteristic>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var includeServices: Array<GattService>
+    public var serviceUuid: String
+    public var isPrimary: Bool
+    public var characteristics: Array<BLECharacteristic>
+    public var includeServices: Array<GattService>
+    public init(
+        serviceUuid: String,
+        isPrimary: Bool,
+        characteristics: Array<BLECharacteristic>,
+        includeServices!: Array<GattService> = []
     )
 }
 ```
@@ -4520,41 +4128,14 @@ public var serviceUuid: String
 
 **起始版本：** 21
 
-### GattService(String, Bool, Array\<BLECharacteristic>, Array\<GattService>)
+### init(String, Bool, Array\<BLECharacteristic>, Array\<GattService>)
 
 ```cangjie
-public GattService(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var serviceUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var isPrimary: Bool,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var characteristics: Array<BLECharacteristic>,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var includeServices: Array<GattService>
+public init(
+    serviceUuid: String,
+    isPrimary: Bool,
+    characteristics: Array<BLECharacteristic>,
+    includeServices!: Array<GattService> = []
 )
 ```
 
@@ -4568,32 +4149,20 @@ public GattService(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
-|isPrimary|Bool|否|-|如果是主服务设置为true，否则设置为false。|
-|characteristics|Array\<[BLECharacteristic](#class-blecharacteristic)>|否|-|当前服务包含的特征列表。|
-|includeServices|Array\<[GattService](#class-gattservice)>|否|-|当前服务依赖的其它服务。|
+|serviceUuid|String|是|-|<font color="red" face="bold">特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
+|isPrimary|Bool|是|-|如果是主服务设置为true，否则设置为false。|
+|characteristics|Array\<[BLECharacteristic](#class-blecharacteristic)>|是|-|当前服务包含的特征列表。|
+|includeServices|Array\<[GattService](#class-gattservice)>|否|[]|当前服务依赖的其它服务。|
 
 ## class ManufactureData
 
 ```cangjie
 public class ManufactureData {
-    public ManufactureData(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var manufactureId: UInt16,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var manufactureValue: Array<Byte>
+    public var manufactureId: UInt16
+    public var manufactureValue: Array<Byte>
+    public init(
+        manufactureId: UInt16,
+        manufactureValue: Array<Byte>
     )
 }
 ```
@@ -4628,7 +4197,7 @@ public var manufactureValue: Array<Byte>
 
 **功能：** 表示制造商发送的制造商数据。
 
-**类型：** Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -4636,26 +4205,12 @@ public var manufactureValue: Array<Byte>
 
 **起始版本：** 21
 
-### ManufactureData(UInt16, Array\<Byte>)
+### init(UInt16, Array\<Byte>)
 
 ```cangjie
-public ManufactureData(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var manufactureId: UInt16,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var manufactureValue: Array<Byte>
+public init(
+    manufactureId: UInt16,
+    manufactureValue: Array<Byte>
 )
 ```
 
@@ -4669,45 +4224,22 @@ public ManufactureData(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|manufactureId|UInt16|否|-|表示制造商的ID，由蓝牙SIG分配。|
-|manufactureValue|Array\<[Byte](<font color="red" face="bold">please add link</font>)>|否|-|表示制造商发送的制造商数据。|
+|manufactureId|UInt16|是|-|表示制造商的ID，由蓝牙SIG分配。|
+|manufactureValue|Array\<Byte>|是|-|表示制造商发送的制造商数据。|
 
 ## class NotifyCharacteristic
 
 ```cangjie
 public class NotifyCharacteristic {
-    public NotifyCharacteristic(
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var serviceUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicUuid: String,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            crossplatform: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var characteristicValue: Array<Byte>,
-        @!APILevel[
-            21,
-            atomicservice: true,
-            stagemodelonly: true,
-            syscap: "SystemCapability.Communication.Bluetooth.Core"
-        ]
-        public var confirm: Bool
+    public var serviceUuid: String
+    public var characteristicUuid: String
+    public var characteristicValue: Array<Byte>
+    public var confirm: Bool
+    public init(
+        serviceUuid: String,
+        characteristicUuid: String,
+        characteristicValue: Array<Byte>,
+        confirm: Bool
     )
 }
 ```
@@ -4742,7 +4274,7 @@ public var characteristicValue: Array<Byte>
 
 **功能：** 特征对应的二进制值。
 
-**类型：** Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -4782,41 +4314,14 @@ public var serviceUuid: String
 
 **起始版本：** 21
 
-### NotifyCharacteristic(String, String, Array\<Byte>, Bool)
+### init(String, String, Array\<Byte>, Bool)
 
 ```cangjie
-public NotifyCharacteristic(
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var serviceUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var characteristicUuid: String,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var characteristicValue: Array<Byte>,
-    @!APILevel[
-        21,
-        atomicservice: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Communication.Bluetooth.Core"
-    ]
-    public var confirm: Bool
+public init(
+    serviceUuid: String,
+    characteristicUuid: String,
+    characteristicValue: Array<Byte>,
+    confirm: Bool
 )
 ```
 
@@ -4830,27 +4335,39 @@ public NotifyCharacteristic(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|serviceUuid|String|否|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
-|characteristicUuid|String|否|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
-|characteristicValue|Array\<[Byte](<font color="red" face="bold">please add link</font>)>|否|-|特征对应的二进制值。|
-|confirm|Bool|否|-|如果是indication，对端需要回复确认，则设置为true；如果是notification，对端不需要回复确认，则设置为false。|
+|serviceUuid|String|是|-|特定服务（service）的UUID，例如：00001888-0000-1000-8000-00805f9b34fb。|
+|characteristicUuid|String|是|-|特定特征（characteristic）的UUID，例如：00002a11-0000-1000-8000-00805f9b34fb。|
+|characteristicValue|Array\<Byte>|是|-|特征对应的二进制值。|
+|confirm|Bool|是|-|如果是indication，对端需要回复确认，则设置为true；如果是notification，对端不需要回复确认，则设置为false。|
 
 ## class ScanFilter
 
 ```cangjie
 public class ScanFilter {
-    public var deviceId:?String = None
-    public var name:?String = None
-    public var serviceUuid:?String = None
-    public var serviceUuidMask:?String = None
-    public var serviceSolicitationUuid:?String = None
-    public var serviceSolicitationUuidMask:?String = None
-    public var serviceData:?Array<Byte>= None
-    public var serviceDataMask:?Array<Byte>= None
-    public var manufactureId: UInt16 = 0
-    public var manufactureData:?Array<Byte>= None
-    public var manufactureDataMask:?Array<Byte>= None
-    public init()
+    public var deviceId: String
+    public var name: String
+    public var serviceUuid: String
+    public var serviceUuidMask: String
+    public var serviceSolicitationUuid: String
+    public var serviceSolicitationUuidMask: String
+    public var serviceData: Array<Byte>
+    public var serviceDataMask: Array<Byte>
+    public var manufactureId: UInt16
+    public var manufactureData: Array<Byte>
+    public var manufactureDataMask: Array<Byte>
+    public init(
+        deviceId!: String = "",
+        name!: String = "",
+        serviceUuid!: String = "",
+        serviceUuidMask!: String = "",
+        serviceSolicitationUuid!: String = "",
+        serviceSolicitationUuidMask!: String = "",
+        serviceData!: Array<Byte> = [],
+        serviceDataMask!: Array<Byte> = [],
+        manufactureId!: UInt16 = 0,
+        manufactureData!: Array<Byte> = [],
+        manufactureDataMask!: Array<Byte> = []
+    )
 }
 ```
 
@@ -4863,12 +4380,12 @@ public class ScanFilter {
 ### var deviceId
 
 ```cangjie
-public var deviceId:?String = None
+public var deviceId: String
 ```
 
 **功能：** 表示过滤的BLE设备地址，例如："XX:XX:XX:XX:XX:XX"。
 
-**类型：** ?String
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -4879,12 +4396,12 @@ public var deviceId:?String = None
 ### var manufactureData
 
 ```cangjie
-public var manufactureData:?Array<Byte>= None
+public var manufactureData: Array<Byte>
 ```
 
 **功能：** 表示过滤包含该制造商相关数据的设备，例如：[0x1F,0x2F,0x3F]。
 
-**类型：** ?Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -4895,12 +4412,12 @@ public var manufactureData:?Array<Byte>= None
 ### var manufactureDataMask
 
 ```cangjie
-public var manufactureDataMask:?Array<Byte>= None
+public var manufactureDataMask: Array<Byte>
 ```
 
 **功能：** 表示过滤包含该制造商相关数据掩码的设备，例如：[0xFF,0xFF,0xFF]。
 
-**类型：** ?Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -4911,7 +4428,7 @@ public var manufactureDataMask:?Array<Byte>= None
 ### var manufactureId
 
 ```cangjie
-public var manufactureId: UInt16 = 0
+public var manufactureId: UInt16
 ```
 
 **功能：** 表示过滤包含该制造商ID的设备，例如：0x0006。
@@ -4927,12 +4444,12 @@ public var manufactureId: UInt16 = 0
 ### var name
 
 ```cangjie
-public var name:?String = None
+public var name: String
 ```
 
 **功能：** 表示过滤的BLE设备名。
 
-**类型：** ?String
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -4943,12 +4460,12 @@ public var name:?String = None
 ### var serviceData
 
 ```cangjie
-public var serviceData:?Array<Byte>= None
+public var serviceData: Array<Byte>
 ```
 
 **功能：** 表示过滤包含该服务相关数据的设备，例如：[0x90,0x00,0xF1,0xF2]。
 
-**类型：** ?Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -4959,12 +4476,12 @@ public var serviceData:?Array<Byte>= None
 ### var serviceDataMask
 
 ```cangjie
-public var serviceDataMask:?Array<Byte>= None
+public var serviceDataMask: Array<Byte>
 ```
 
 **功能：** 表示过滤包含该服务相关数据掩码的设备，例如：[0xFF,0xFF,0xFF,0xFF]。
 
-**类型：** ?Array\<[Byte](<font color="red" face="bold">please add link</font>)>
+**类型：** Array\<Byte>
 
 **读写能力：** 可读写
 
@@ -4975,12 +4492,12 @@ public var serviceDataMask:?Array<Byte>= None
 ### var serviceSolicitationUuid
 
 ```cangjie
-public var serviceSolicitationUuid:?String = None
+public var serviceSolicitationUuid: String
 ```
 
 **功能：** 表示过滤包含该UUID服务请求的设备，例如：00001888-0000-1000-8000-00805F9B34FB。
 
-**类型：** ?String
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -4991,12 +4508,12 @@ public var serviceSolicitationUuid:?String = None
 ### var serviceSolicitationUuidMask
 
 ```cangjie
-public var serviceSolicitationUuidMask:?String = None
+public var serviceSolicitationUuidMask: String
 ```
 
 **功能：** 表示过滤包含该UUID服务请求掩码的设备，例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。
 
-**类型：** ?String
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -5007,12 +4524,12 @@ public var serviceSolicitationUuidMask:?String = None
 ### var serviceUuid
 
 ```cangjie
-public var serviceUuid:?String = None
+public var serviceUuid: String
 ```
 
 **功能：** 表示过滤包含该UUID服务的设备，例如：00001888-0000-1000-8000-00805f9b34fb。
 
-**类型：** ?String
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -5023,12 +4540,12 @@ public var serviceUuid:?String = None
 ### var serviceUuidMask
 
 ```cangjie
-public var serviceUuidMask:?String = None
+public var serviceUuidMask: String
 ```
 
 **功能：** 表示过滤包含该UUID服务掩码的设备，例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。
 
-**类型：** ?String
+**类型：** String
 
 **读写能力：** 可读写
 
@@ -5036,10 +4553,22 @@ public var serviceUuidMask:?String = None
 
 **起始版本：** 21
 
-### init()
+### init(String, String, String, String, String, String, Array\<Byte>, Array\<Byte>, UInt16, Array\<Byte>, Array\<Byte>)
 
 ```cangjie
-public init()
+public init(
+    deviceId!: String = "",
+    name!: String = "",
+    serviceUuid!: String = "",
+    serviceUuidMask!: String = "",
+    serviceSolicitationUuid!: String = "",
+    serviceSolicitationUuidMask!: String = "",
+    serviceData!: Array<Byte> = [],
+    serviceDataMask!: Array<Byte> = [],
+    manufactureId!: UInt16 = 0,
+    manufactureData!: Array<Byte> = [],
+    manufactureDataMask!: Array<Byte> = []
+)
 ```
 
 **功能：** 创建扫描过滤参数结构体ScanFilter。
@@ -5048,15 +4577,37 @@ public init()
 
 **起始版本：** 21
 
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceId|String|否|""|	**命名参数。** 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。预留字段，本版本暂不支持。|
+|name|String|否|""|**命名参数。** 过滤该BLE设备名称的广播报文。预留字段，本版本暂不支持。|
+|serviceUuid|String|否|""|**命名参数。** 过滤包含该服务UUID的广播报文。例如：00001888-0000-1000-8000-00805f9b34fb。预留字段，本版本暂不支持。|
+|serviceUuidMask|String|否|""|**命名参数。** 搭配serviceUuid过滤器使用，可设置过滤部分服务UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。预留字段，本版本暂不支持。|
+|serviceSolicitationUuid|String|否|""|**命名参数。** 过滤包含该服务请求UUID的广播报文。例如：00001888-0000-1000-8000-00805F9B34FB。预留字段，本版本暂不支持。|
+|serviceSolicitationUuidMask|String|否|""|**命名参数。** 搭配serviceSolicitationUuid过滤器使用，可设置过滤部分服务请求UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。预留字段，本版本暂不支持。|
+|serviceData|Array\<Byte>|否|[]|**命名参数。** 过滤包含该服务数据的广播报文。例如：[0x90,0x00,0xF1,0xF2]。预留字段，本版本暂不支持。|
+|serviceDataMask|Array\<Byte>|否|[]|**命名参数。** 搭配serviceData过滤器使用，可设置过滤部分服务数据。例如：[0xFF,0xFF,0xFF,0xFF]。预留字段，本版本暂不支持。|
+|manufactureId|UInt16|否|0|**命名参数。** 过滤包含该制造商标识符的广播报文。例如：0x0006。预留字段，本版本暂不支持。|
+|manufactureData|Array\<Byte>|否|[]|**命名参数。** 	搭配manufactureId过滤器使用，过滤包含该制造商数据的广播报文。例如：[0x1F,0x2F,0x3F]。预留字段，本版本暂不支持。|
+|manufactureDataMask|Array\<Byte>|否|[]|**命名参数。** 搭配manufactureData过滤器使用，可设置过滤部分制造商数据。例如：[0xFF,0xFF,0xFF]。预留字段，本版本暂不支持。|
+
 ## class ScanOptions
 
 ```cangjie
 public class ScanOptions {
-    public var interval: Int32 = 0
-    public var dutyMode: ScanDuty = SCAN_MODE_LOW_POWER
-    public var matchMode: MatchMode = MATCH_MODE_AGGRESSIVE
-    public var phyType: PhyType = PHY_LE_1M
-    public init(interval: Int32, dutyMode: ScanDuty, matchMode: MatchMode, phyType: PhyType)
+    public var interval: Int32
+    public var dutyMode: ScanDuty
+    public var matchMode: MatchMode
+    public var phyType: PhyType
+    public init(
+        interval!: Int32 = 0,
+        dutyMode!: ScanDuty = ScanModeLowPower,
+        matchMode!: MatchMode = MatchModeAggressive,
+        phyType!: PhyType = PhyLe1M,
+        reportMode!: ScanReportMode = Normal
+    )
 }
 ```
 
@@ -5069,10 +4620,10 @@ public class ScanOptions {
 ### var dutyMode
 
 ```cangjie
-public var dutyMode: ScanDuty = SCAN_MODE_LOW_POWER
+public var dutyMode: ScanDuty
 ```
 
-**功能：** 表示扫描模式，默认值为SCAN_MODE_LOW_POWER。
+**功能：** 表示扫描模式，默认值为ScanDuty.ScanModeLowPower。
 
 **类型：** [ScanDuty](#enum-scanduty)
 
@@ -5085,7 +4636,7 @@ public var dutyMode: ScanDuty = SCAN_MODE_LOW_POWER
 ### var interval
 
 ```cangjie
-public var interval: Int32 = 0
+public var interval: Int32
 ```
 
 **功能：** 表示扫描结果上报延迟时间，默认值为0。
@@ -5101,10 +4652,10 @@ public var interval: Int32 = 0
 ### var matchMode
 
 ```cangjie
-public var matchMode: MatchMode = MATCH_MODE_AGGRESSIVE
+public var matchMode: MatchMode
 ```
 
-**功能：** 表示硬件的过滤匹配模式，默认值为MATCH_MODE_AGGRESSIVE。
+**功能：** 表示硬件的过滤匹配模式，默认值为MatchMode.MatchModeAggressive。
 
 **类型：** [MatchMode](#enum-matchmode)
 
@@ -5117,7 +4668,7 @@ public var matchMode: MatchMode = MATCH_MODE_AGGRESSIVE
 ### var phyType
 
 ```cangjie
-public var phyType: PhyType = PHY_LE_1M
+public var phyType: PhyType
 ```
 
 **功能：** 表示扫描中使用的PHY类型。
@@ -5130,10 +4681,16 @@ public var phyType: PhyType = PHY_LE_1M
 
 **起始版本：** 21
 
-### init(Int32, ScanDuty, MatchMode, PhyType)
+### init(Int32, ScanDuty, MatchMode, PhyType, ScanReportMode)
 
 ```cangjie
-public init(interval: Int32, dutyMode: ScanDuty, matchMode: MatchMode, phyType: PhyType)
+public init(
+    interval!: Int32 = 0,
+    dutyMode!: ScanDuty = ScanModeLowPower,
+    matchMode!: MatchMode = MatchModeAggressive,
+    phyType!: PhyType = PhyLe1M,
+    reportMode!: ScanReportMode = Normal
+)
 ```
 
 **功能：** 创建扫描的配置参数结构体ScanOptions。
@@ -5144,17 +4701,24 @@ public init(interval: Int32, dutyMode: ScanDuty, matchMode: MatchMode, phyType: 
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|interval|Int32|是|表示扫描结果上报延迟时间，初始值为0。|
-|dutyMode|[ScanDuty](#enum-scanduty)|是|表示扫描模式，初始值为SCAN_MODE_LOW_POWER。|
-|matchMode|[MatchMode](#enum-matchmode)|是|表示硬件的过滤匹配模式，初始值为MATCH_MODE_AGGRESSIVE。|
-|phyType|[PhyType](#enum-phytype)|是|表示扫描中使用的PHY类型。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|interval|Int32|否|0|**命名参数。**  表示扫描结果上报延迟时间，初始值为0。|
+|dutyMode|[ScanDuty](#enum-scanduty)|否|ScanModeLowPower|**命名参数。** 表示扫描模式，初始值为ScanDuty.ScanModeLowPower。|
+|matchMode|[MatchMode](#enum-matchmode)|否|MatchModeAggressive|**命名参数。** 表示硬件的过滤匹配模式，初始值为MatchMode.MatchModeAggressive。|
+|phyType|[PhyType](#enum-phytype)|否|PhyLe1M|**命名参数。** 表示扫描中使用的PHY类型。|
+|reportMode|[ScanReportMode](#enum-scanreportmode)|否|Normal|**命名参数。** 扫描结果数据上报模式，默认值为NORMAL。|
 
 ## class ScanResult
 
 ```cangjie
-public class ScanResult {}
+public class ScanResult {
+    public var deviceId: String
+    public var rssi: Int32
+    public var data: Array<Byte>
+    public var deviceName: String
+    public var connectable: Bool
+}
 ```
 
 **功能：** 扫描结果上报数据。
@@ -5163,81 +4727,81 @@ public class ScanResult {}
 
 **起始版本：** 21
 
-### let connectable
+### var connectable
 
 ```cangjie
-public let connectable: Bool
+public var connectable: Bool
 ```
 
 **功能：** 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let data
+### var data
 
 ```cangjie
-public let data: Array<Byte>
+public var data: Array<Byte>
 ```
 
 **功能：** 表示扫描到的设备发送的广播包。
 
 **类型：** Array\<Byte>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示扫描到的设备地址，例如："XX:XX:XX:XX:XX:XX"。基于信息安全考虑，此处获取的设备地址为随机MAC地址。配对成功后，该地址不会变更；已配对设备取消配对后重新扫描或蓝牙服务下电时，该随机地址会变更。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceName
+### var deviceName
 
 ```cangjie
-public let deviceName: String
+public var deviceName: String
 ```
 
 **功能：** 表示扫描到的设备名称。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let rssi
+### var rssi
 
 ```cangjie
-public let rssi: Int32
+public var rssi: Int32
 ```
 
 **功能：** 表示扫描到的设备的rssi值。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5247,12 +4811,17 @@ public let rssi: Int32
 
 ```cangjie
 public class ServerResponse {
-    public ServerResponse(
-        public let deviceId: String,
-        public let transId: Int32,
-        public let status: Int32,
-        public let offset: Int32,
-        public let value: Array<Byte>
+    public var deviceId: String
+    public var transId: Int32
+    public var status: Int32
+    public var offset: Int32
+    public var value: Array<Byte>
+    public init(
+        deviceId: String,
+        transId: Int32,
+        status: Int32,
+        offset: Int32,
+        value: Array<Byte>
     )
 }
 ```
@@ -5263,99 +4832,99 @@ public class ServerResponse {
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let offset
+### var offset
 
 ```cangjie
-public let offset: Int32
+public var offset: Int32
 ```
 
 **功能：** 表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let status
+### var status
 
 ```cangjie
-public let status: Int32
+public var status: Int32
 ```
 
 **功能：** 表示响应的状态，设置为0即可，表示正常。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let transId
+### var transId
 
 ```cangjie
-public let transId: Int32
+public var transId: Int32
 ```
 
 **功能：** 表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。
 
 **类型：** Int32
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let value
+### var value
 
 ```cangjie
-public let value: Array<Byte>
+public var value: Array<Byte>
 ```
 
 **功能：** 表示回复响应的二进制数据。
 
 **类型：** Array\<Byte>
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### ServerResponse(String, Int32, Int32, Int32, Array\<Byte>)
+### init(String, Int32, Int32, Int32, Array\<Byte>)
 
 ```cangjie
-public ServerResponse(
-    public let deviceId: String,
-    public let transId: Int32,
-    public let status: Int32,
-    public let offset: Int32,
-    public let value: Array<Byte>
+public init(
+    deviceId: String,
+    transId: Int32,
+    status: Int32,
+    offset: Int32,
+    value: Array<Byte>
 )
 ```
 
-**功能：** ServerResponse 构造器。
+**功能：** 描述server端回复client端读/写请求的响应参数类。
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5363,21 +4932,23 @@ public ServerResponse(
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|deviceId|String|是|表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
-|transId|Int32|是|表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。|
-|status|Int32|是|表示响应的状态，设置为0即可，表示正常。|
-|offset|Int32|是|表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。|
-|value|Array\<Byte>|是|表示回复响应的二进制数据。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceId|String|是|-|表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+|transId|Int32|是|-|表示请求的传输ID，与订阅的读/写请求事件携带的ID保持一致。|
+|status|Int32|是|-|表示响应的状态，设置为0即可，表示正常。|
+|offset|Int32|是|-|表示请求的读/写起始位置，与订阅的读/写请求事件携带的offset保持一致。|
+|value|Array\<Byte>|是|-|表示回复响应的二进制数据。|
 
 ## class ServiceData
 
 ```cangjie
 public class ServiceData {
-    public ServiceData(
-        public var serviceUuid: String,
-        public var serviceValue: Array<Byte>
+    public var serviceUuid: String
+    public var serviceValue: Array<Byte>
+    public init(
+        serviceUuid: String,
+        serviceValue: Array<Byte>
     )
 }
 ```
@@ -5420,16 +4991,16 @@ public var serviceValue: Array<Byte>
 
 **起始版本：** 21
 
-### ServiceData(String, Array\<Byte>)
+### init(String, Array\<Byte>)
 
 ```cangjie
-public ServiceData(
-    public var serviceUuid: String,
-    public var serviceValue: Array<Byte>
+public init(
+    serviceUuid: String,
+    serviceValue: Array<Byte>
 )
 ```
 
-**功能：** ServiceData 构造器。
+**功能：** 描述广播包中服务数据内容。
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5437,19 +5008,19 @@ public ServiceData(
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|serviceUuid|String|是|表示服务的UUID。|
-|serviceValue|Array\<Byte>|是|表示服务数据。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|serviceUuid|String|是|-|表示服务的UUID。|
+|serviceValue|Array\<Byte>|是|-|表示服务数据。|
 
 ## enum AdvertisingState
 
 ```cangjie
 public enum AdvertisingState <: Equatable<AdvertisingState> & ToString {
-    | STARTED
-    | ENABLED
-    | DISABLED
-    | STOPPED
+    | Started
+    | Enabled
+    | Disabled
+    | Stopped
     | ...
 }
 ```
@@ -5465,10 +5036,10 @@ public enum AdvertisingState <: Equatable<AdvertisingState> & ToString {
 - Equatable\<AdvertisingState>
 - ToString
 
-### DISABLED
+### Disabled
 
 ```cangjie
-DISABLED
+Disabled
 ```
 
 **功能：** 表示临时停止广播后的状态。
@@ -5477,10 +5048,10 @@ DISABLED
 
 **起始版本：** 21
 
-### ENABLED
+### Enabled
 
 ```cangjie
-ENABLED
+Enabled
 ```
 
 **功能：** 表示临时启动广播后的状态。
@@ -5489,10 +5060,10 @@ ENABLED
 
 **起始版本：** 21
 
-### STARTED
+### Started
 
 ```cangjie
-STARTED
+Started
 ```
 
 **功能：** 表示首次启动广播后的状态。
@@ -5501,10 +5072,10 @@ STARTED
 
 **起始版本：** 21
 
-### STOPPED
+### Stopped
 
 ```cangjie
-STOPPED
+Stopped
 ```
 
 **功能：** 表示完全停止广播后的状态。
@@ -5516,20 +5087,16 @@ STOPPED
 ### func !=(AdvertisingState)
 
 ```cangjie
-public operator func !=(other: AdvertisingState): Bool 
+public operator func !=(other: AdvertisingState): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[AdvertisingState](#enum-advertisingstate)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[AdvertisingState](#enum-advertisingstate)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -5540,20 +5107,16 @@ public operator func !=(other: AdvertisingState): Bool
 ### func ==(AdvertisingState)
 
 ```cangjie
-public operator func ==(other: AdvertisingState): Bool 
+public operator func ==(other: AdvertisingState): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[AdvertisingState](#enum-advertisingstate)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[AdvertisingState](#enum-advertisingstate)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -5564,14 +5127,10 @@ public operator func ==(other: AdvertisingState): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -5583,8 +5142,8 @@ public func toString(): String
 
 ```cangjie
 public enum BluetoothBleCallbackType <: Equatable<BluetoothBleCallbackType> & Hashable & ToString {
-    | ADVERTISING_STATE_CHANGE
-    | BLE_DEVICE_FIND
+    | AdvertisingStateChange
+    | BleDeviceFind
     | ...
 }
 ```
@@ -5603,10 +5162,10 @@ public enum BluetoothBleCallbackType <: Equatable<BluetoothBleCallbackType> & Ha
 - Hashable
 - ToString
 
-### ADVERTISING_STATE_CHANGE
+### AdvertisingStateChange
 
 ```cangjie
-ADVERTISING_STATE_CHANGE
+AdvertisingStateChange
 ```
 
 **功能：** 表示广播状态事件类型。
@@ -5617,10 +5176,10 @@ ADVERTISING_STATE_CHANGE
 
 **起始版本：** 21
 
-### BLE_DEVICE_FIND
+### BleDeviceFind
 
 ```cangjie
-BLE_DEVICE_FIND
+BleDeviceFind
 ```
 
 **功能：** 表示BLE设备发现事件类型。
@@ -5634,20 +5193,16 @@ BLE_DEVICE_FIND
 ### func !=(BluetoothBleCallbackType)
 
 ```cangjie
-public operator func !=(other: BluetoothBleCallbackType): Bool 
+public operator func !=(other: BluetoothBleCallbackType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -5658,20 +5213,16 @@ public operator func !=(other: BluetoothBleCallbackType): Bool
 ### func ==(BluetoothBleCallbackType)
 
 ```cangjie
-public operator func ==(other: BluetoothBleCallbackType): Bool 
+public operator func ==(other: BluetoothBleCallbackType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BluetoothBleCallbackType](#enum-bluetoothblecallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -5682,14 +5233,10 @@ public operator func ==(other: BluetoothBleCallbackType): Bool
 ### func hashCode()
 
 ```cangjie
-public func hashCode(): Int64 
+public func hashCode(): Int64
 ```
 
 **功能：** 获取输入数据的哈希值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -5700,14 +5247,10 @@ public func hashCode(): Int64
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -5719,16 +5262,16 @@ public func toString(): String
 
 ```cangjie
 public enum BluetoothBleGattClientDeviceCallbackType <: Equatable<BluetoothBleGattClientDeviceCallbackType> & Hashable & ToString {
-    | BLE_CHARACTERISTIC_CHANGE
-    | BLE_CONNECTION_STATE_CHANGE
-    | BLE_MTU_CHANGE
+    | BleCharacteristicChange
+    | BleConnectionStateChange
+    | ClientBleMtuChange
     | ...
 }
 ```
 
 **功能：** 客户端 on/off 事件的类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5740,43 +5283,43 @@ public enum BluetoothBleGattClientDeviceCallbackType <: Equatable<BluetoothBleGa
 - Hashable
 - ToString
 
-### BLE_CHARACTERISTIC_CHANGE
+### BleCharacteristicChange
 
 ```cangjie
-BLE_CHARACTERISTIC_CHANGE
+BleCharacteristicChange
 ```
 
 **功能：** 表示特征值变化事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### BLE_CONNECTION_STATE_CHANGE
+### BleConnectionStateChange
 
 ```cangjie
-BLE_CONNECTION_STATE_CHANGE
+BleConnectionStateChange
 ```
 
 **功能：** 表示连接状态变化事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### BLE_MTU_CHANGE
+### ClientBleMtuChange
 
 ```cangjie
-BLE_MTU_CHANGE
+ClientBleMtuChange
 ```
 
 **功能：** 表示MTU状态变化事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5785,20 +5328,16 @@ BLE_MTU_CHANGE
 ### func !=(BluetoothBleGattClientDeviceCallbackType)
 
 ```cangjie
-public operator func !=(other: BluetoothBleGattClientDeviceCallbackType): Bool 
+public operator func !=(other: BluetoothBleGattClientDeviceCallbackType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -5809,20 +5348,16 @@ public operator func !=(other: BluetoothBleGattClientDeviceCallbackType): Bool
 ### func ==(BluetoothBleGattClientDeviceCallbackType)
 
 ```cangjie
-public operator func ==(other: BluetoothBleGattClientDeviceCallbackType): Bool 
+public operator func ==(other: BluetoothBleGattClientDeviceCallbackType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -5833,14 +5368,10 @@ public operator func ==(other: BluetoothBleGattClientDeviceCallbackType): Bool
 ### func hashCode()
 
 ```cangjie
-public func hashCode(): Int64 
+public func hashCode(): Int64
 ```
 
 **功能：** 获取输入数据的哈希值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -5851,14 +5382,10 @@ public func hashCode(): Int64
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -5870,19 +5397,19 @@ public func toString(): String
 
 ```cangjie
 public enum BluetoothBleGattServerCallbackType <: Equatable<BluetoothBleGattServerCallbackType> & Hashable & ToString {
-    | CHARACTERISTIC_READ
-    | CHARACTERISTIC_WRITE
-    | DESCRIPTOR_READ
-    | DESCRIPTOR_WRITE
-    | CONNECTION_STATE_CHANGE
-    | BLE_MTU_CHANGE
+    | CharacteristicRead
+    | CharacteristicWrite
+    | DescriptorRead
+    | DescriptorWrite
+    | ConnectionStateChange
+    | ServerBleMtuChange
     | ...
 }
 ```
 
 **功能：** 服务端 on/off 事件的类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5894,85 +5421,85 @@ public enum BluetoothBleGattServerCallbackType <: Equatable<BluetoothBleGattServ
 - Hashable
 - ToString
 
-### BLE_MTU_CHANGE
+### CharacteristicRead
 
 ```cangjie
-BLE_MTU_CHANGE
-```
-
-**功能：** 表示MTU状态变化事件类型。
-
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
-### CHARACTERISTIC_READ
-
-```cangjie
-CHARACTERISTIC_READ
+CharacteristicRead
 ```
 
 **功能：** 表示特征值读请求事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### CHARACTERISTIC_WRITE
+### CharacteristicWrite
 
 ```cangjie
-CHARACTERISTIC_WRITE
+CharacteristicWrite
 ```
 
 **功能：** 表示特征值写请求事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### CONNECTION_STATE_CHANGE
+### ConnectionStateChange
 
 ```cangjie
-CONNECTION_STATE_CHANGE
+ConnectionStateChange
 ```
 
 **功能：** 表示BLE连接状态变化事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### DESCRIPTOR_READ
+### DescriptorRead
 
 ```cangjie
-DESCRIPTOR_READ
+DescriptorRead
 ```
 
 **功能：** 表示描述符读请求事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### DESCRIPTOR_WRITE
+### DescriptorWrite
 
 ```cangjie
-DESCRIPTOR_WRITE
+DescriptorWrite
 ```
 
 **功能：** 表示描述符写请求事件类型。
 
-**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### ServerBleMtuChange
+
+```cangjie
+ServerBleMtuChange
+```
+
+**功能：** 表示MTU状态变化事件类型。
+
+**需要权限：** ohos.ACCESS_BLUETOOTH
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -5981,20 +5508,16 @@ DESCRIPTOR_WRITE
 ### func !=(BluetoothBleGattServerCallbackType)
 
 ```cangjie
-public operator func !=(other: BluetoothBleGattServerCallbackType): Bool 
+public operator func !=(other: BluetoothBleGattServerCallbackType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6005,20 +5528,16 @@ public operator func !=(other: BluetoothBleGattServerCallbackType): Bool
 ### func ==(BluetoothBleGattServerCallbackType)
 
 ```cangjie
-public operator func ==(other: BluetoothBleGattServerCallbackType): Bool 
+public operator func ==(other: BluetoothBleGattServerCallbackType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6029,14 +5548,10 @@ public operator func ==(other: BluetoothBleGattServerCallbackType): Bool
 ### func hashCode()
 
 ```cangjie
-public func hashCode(): Int64 
+public func hashCode(): Int64
 ```
 
 **功能：** 获取输入数据的哈希值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -6047,14 +5562,10 @@ public func hashCode(): Int64
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -6066,8 +5577,8 @@ public func toString(): String
 
 ```cangjie
 public enum GattWriteType <: Equatable<GattWriteType> & ToString {
-    | WRITE
-    | WRITE_NO_RESPONSE
+    | Write
+    | WriteNoResponse
     | ...
 }
 ```
@@ -6083,10 +5594,10 @@ public enum GattWriteType <: Equatable<GattWriteType> & ToString {
 - Equatable\<GattWriteType>
 - ToString
 
-### WRITE
+### Write
 
 ```cangjie
-WRITE
+Write
 ```
 
 **功能：** 表示写入特征值，需要对端设备的回复。
@@ -6095,10 +5606,10 @@ WRITE
 
 **起始版本：** 21
 
-### WRITE_NO_RESPONSE
+### WriteNoResponse
 
 ```cangjie
-WRITE_NO_RESPONSE
+WriteNoResponse
 ```
 
 **功能：** 表示写入特征值，不需要对端设备的回复。
@@ -6110,20 +5621,16 @@ WRITE_NO_RESPONSE
 ### func !=(GattWriteType)
 
 ```cangjie
-public operator func !=(other: GattWriteType): Bool 
+public operator func !=(other: GattWriteType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[GattWriteType](#enum-gattwritetype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GattWriteType](#enum-gattwritetype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6134,19 +5641,16 @@ public operator func !=(other: GattWriteType): Bool
 ### func ==(GattWriteType)
 
 ```cangjie
-public operator func ==(other: GattWriteType): Bool 
+public operator func ==(other: GattWriteType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[GattWriteType](#enum-gattwritetype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GattWriteType](#enum-gattwritetype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6157,14 +5661,10 @@ public operator func ==(other: GattWriteType): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -6176,8 +5676,8 @@ public func toString(): String
 
 ```cangjie
 public enum MatchMode <: Equatable<MatchMode> & ToString {
-    | MATCH_MODE_AGGRESSIVE
-    | MATCH_MODE_STICKY
+    | MatchModeAggressive
+    | MatchModeSticky
     | ...
 }
 ```
@@ -6193,10 +5693,10 @@ public enum MatchMode <: Equatable<MatchMode> & ToString {
 - Equatable\<MatchMode>
 - ToString
 
-### MATCH_MODE_AGGRESSIVE
+### MatchModeAggressive
 
 ```cangjie
-MATCH_MODE_AGGRESSIVE
+MatchModeAggressive
 ```
 
 **功能：** 表示硬件上报扫描结果门限较低，比如扫描到的功率较低或者一段时间扫描到的次数较少也触发上报，默认值。
@@ -6205,10 +5705,10 @@ MATCH_MODE_AGGRESSIVE
 
 **起始版本：** 21
 
-### MATCH_MODE_STICKY
+### MatchModeSticky
 
 ```cangjie
-MATCH_MODE_STICKY
+MatchModeSticky
 ```
 
 **功能：** 表示硬件上报扫描结果门限较高，更高的功率门限以及扫描到多次才会上报。
@@ -6220,20 +5720,16 @@ MATCH_MODE_STICKY
 ### func !=(MatchMode)
 
 ```cangjie
-public operator func !=(other: MatchMode): Bool 
+public operator func !=(other: MatchMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[MatchMode](#enum-matchmode)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[MatchMode](#enum-matchmode)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6244,18 +5740,16 @@ public operator func !=(other: MatchMode): Bool
 ### func ==(MatchMode)
 
 ```cangjie
-public operator func ==(other: MatchMode): Bool 
+public operator func ==(other: MatchMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-**起始版本：** 21
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[MatchMode](#enum-matchmode)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[MatchMode](#enum-matchmode)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6266,14 +5760,10 @@ public operator func ==(other: MatchMode): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -6285,8 +5775,8 @@ public func toString(): String
 
 ```cangjie
 public enum PhyType <: Equatable<PhyType> & ToString {
-    | PHY_LE_1M
-    | PHY_LE_ALL_SUPPORTED
+    | PhyLe1M
+    | PhyLeAllSupported
     | ...
 }
 ```
@@ -6302,22 +5792,22 @@ public enum PhyType <: Equatable<PhyType> & ToString {
 - Equatable\<PhyType>
 - ToString
 
-### PHY_LE_1M
+### PhyLe1M
 
 ```cangjie
-PHY_LE_1M
+PhyLe1M
 ```
 
-**功能：** 表示扫描中使用1M PHY。
+**功能：** 广播状态。
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### PHY_LE_ALL_SUPPORTED
+### PhyLeAllSupported
 
 ```cangjie
-PHY_LE_ALL_SUPPORTED
+PhyLeAllSupported
 ```
 
 **功能：** 表示扫描中使用蓝牙协议支持的PHY模式。
@@ -6329,20 +5819,16 @@ PHY_LE_ALL_SUPPORTED
 ### func !=(PhyType)
 
 ```cangjie
-public operator func !=(other: PhyType): Bool 
+public operator func !=(other: PhyType): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[PhyType](#enum-phytype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[PhyType](#enum-phytype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6353,20 +5839,16 @@ public operator func !=(other: PhyType): Bool
 ### func ==(PhyType)
 
 ```cangjie
-public operator func ==(other: PhyType): Bool 
+public operator func ==(other: PhyType): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[PhyType](#enum-phytype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[PhyType](#enum-phytype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6377,14 +5859,10 @@ public operator func ==(other: PhyType): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -6396,9 +5874,9 @@ public func toString(): String
 
 ```cangjie
 public enum ScanDuty <: Equatable<ScanDuty> & ToString {
-    | SCAN_MODE_LOW_POWER
-    | SCAN_MODE_BALANCED
-    | SCAN_MODE_LOW_LATENCY
+    | ScanModeLowPower
+    | ScanModeBalanced
+    | ScanModeLowLatency
     | ...
 }
 ```
@@ -6414,10 +5892,10 @@ public enum ScanDuty <: Equatable<ScanDuty> & ToString {
 - Equatable\<ScanDuty>
 - ToString
 
-### SCAN_MODE_BALANCED
+### ScanModeBalanced
 
 ```cangjie
-SCAN_MODE_BALANCED
+ScanModeBalanced
 ```
 
 **功能：** 表示均衡模式。
@@ -6426,10 +5904,10 @@ SCAN_MODE_BALANCED
 
 **起始版本：** 21
 
-### SCAN_MODE_LOW_LATENCY
+### ScanModeLowLatency
 
 ```cangjie
-SCAN_MODE_LOW_LATENCY
+ScanModeLowLatency
 ```
 
 **功能：** 表示低延迟模式。
@@ -6438,10 +5916,10 @@ SCAN_MODE_LOW_LATENCY
 
 **起始版本：** 21
 
-### SCAN_MODE_LOW_POWER
+### ScanModeLowPower
 
 ```cangjie
-SCAN_MODE_LOW_POWER
+ScanModeLowPower
 ```
 
 **功能：** 表示低功耗模式，默认值。
@@ -6453,20 +5931,16 @@ SCAN_MODE_LOW_POWER
 ### func !=(ScanDuty)
 
 ```cangjie
-public operator func !=(other: ScanDuty): Bool 
+public operator func !=(other: ScanDuty): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[ScanDuty](#enum-scanduty)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ScanDuty](#enum-scanduty)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6477,20 +5951,16 @@ public operator func !=(other: ScanDuty): Bool
 ### func ==(ScanDuty)
 
 ```cangjie
-public operator func ==(other: ScanDuty): Bool 
+public operator func ==(other: ScanDuty): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[ScanDuty](#enum-scanduty)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ScanDuty](#enum-scanduty)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6501,17 +5971,155 @@ public operator func ==(other: ScanDuty): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |String|枚举的说明。|
+
+## enum ScanReportMode
+
+```cangjie
+public enum ScanReportMode <: Equatable<ScanReportMode> & ToString {
+    | Normal
+    | Batch
+    | FenceSensitivityLow
+    | FenceSensitivityHigh
+    | ...
+}
+```
+
+**功能：** 上报的扫描数据。
+- 该模式可通过降低蓝牙芯片上报扫描结果频率，使系统更长时间地保持在休眠状态，从而降低整机功耗。
+
+- 该模式下，扫描到符合过滤条件的BLE广播报文后不会立刻上报，需要缓存一段时间（ScanOptions中的interval字段）后上报。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ScanReportMode>
+- ToString
+
+### Batch
+
+```cangjie
+Batch
+```
+
+**功能：** 批量扫描上报模式。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### FenceSensitivityHigh
+
+```cangjie
+FenceSensitivityHigh
+```
+
+**功能：** 高灵敏度围栏上报模式。
+- 围栏模式表示只在广播进入或离开围栏时上报。
+
+- 扫描到的广播信号强度低且广播数量少时，可进入高灵敏度围栏。
+
+- 首次扫描到广播即进入围栏，触发一次上报。
+
+- 一段时间内扫描不到广播即离开围栏，触发一次上报。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### FenceSensitivityLow
+
+```cangjie
+FenceSensitivityLow
+```
+
+**功能：** 低灵敏度围栏上报模式。
+- 围栏模式表示只在广播进入或离开围栏时上报。
+
+- 扫描到的广播信号强度高且广播数量多时，可进入低灵敏度围栏。
+
+- 首次扫描到广播即进入围栏，触发一次上报。
+
+- 一段时间内扫描不到广播即离开围栏，触发一次上报。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### Normal
+
+```cangjie
+Normal
+```
+
+**功能：** 常规扫描上报模式，扫描到符合过滤条件的BLE广播报文后就会立刻上报。
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
+### func !=(ScanReportMode)
+
+```cangjie
+public operator func !=(other: ScanReportMode): Bool
+```
+
+**功能：** 对扫描上报模式进行判不等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ScanReportMode](#enum-scanreportmode)|是|-|扫描结果数据上报模式|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果扫描结果数据上报模式不同，返回true，否则返回false。|
+
+### func ==(ScanReportMode)
+
+```cangjie
+public operator func ==(other: ScanReportMode): Bool
+```
+
+**功能：** 对扫描上报模式进行判等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ScanReportMode](#enum-scanreportmode)|是|-|扫描结果数据上报模式|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果扫描结果数据上报模式相同，返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取扫描结果数据上报模式的字符串表示。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|扫描结果数据上报模式的字符串表示。|

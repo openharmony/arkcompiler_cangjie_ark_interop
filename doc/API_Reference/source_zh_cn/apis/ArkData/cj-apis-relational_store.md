@@ -1,4 +1,4 @@
-# ohos.relational_store（关系型数据库）
+# ohos.data.relational_store
 
 关系型数据库（Relational Database，RDB）是一种基于关系模型来管理数据的数据库。关系型数据库基于SQLite组件提供了一套完整的对本地数据库进行管理的机制，对外提供了一系列的增、删、改、查等接口，也可以直接运行用户输入的SQL语句来满足复杂的场景需要。不支持Worker线程。
 
@@ -24,15 +24,16 @@ ohos.permission.DISTRIBUTED_DATASYNC
 
 API示例代码使用说明：
 
-- 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
+- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
-## func deleteRdbStore(StageContext, String)
+## func deleteRdbStore(UIAbilityContext, String)
 
 ```cangjie
-public func deleteRdbStore(context: StageContext, name: String): Unit
+
+public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 ```
 
 **功能：** 使用指定的数据库文件配置删除数据库。删除成功后，建议将数据库对象置为None。建立数据库时，若在[StoreConfig](#class-storeconfig)中配置了自定义路径，则调用此接口进行删库无效，必须使用[deleteRdbStore(StageContext, StoreConfig)](#func-deleterdbstorestagecontext-storeconfig)接口进行删库。
@@ -45,45 +46,35 @@ public func deleteRdbStore(context: StageContext, name: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-| 应用的上下文。context的获取方式请参见[getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext)。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-| 应用的上下文。context的获取方式请参见[getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext)。|
 |name|String|是|-|数据库名称。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  | 错误码ID | 错误信息|
-  |:-----------| :------------|
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000  | Inner error. |
-  | 14800010  | Invalid database path. |
-  | 14800011  | Database corrupted.  |
-  | 14800017  | Config changed. |
-  | 14800021  | SQLite: Generic error. |
-  | 14800027  | SQLite: Attempt to write a readonly database. |
-  | 14800028  | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029  | SQLite: The database is full. |
-  | 14800030  | SQLite: Unable to open the database file. |
-  | 14801001  | Only supported in stage mode.|
-  | 14801002  | The data group id is not valid.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800010 | Failed to open or delete the database by an invalid database path.
+ |
 
-**示例：**
+- IllegalArgumentException：
 
-<!-- compile -->
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The context is invalid.
+ | todo | todo |
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-deleteRdbStore(Global.getStageContext(), "RdbTest.db")
-```
-
-## func deleteRdbStore(StageContext, StoreConfig)
+## func deleteRdbStore(UIAbilityContext, StoreConfig)
 
 ```cangjie
-public func deleteRdbStore(context: StageContext, config: StoreConfig): Unit
+
+public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 ```
 
 **功能：** 使用指定的数据库文件配置删除数据库。删除成功后，建议将数据库对象置为None。若数据库文件处于公共沙箱目录下，则删除数据库时必须使用该接口，当存在多个进程操作同一个数据库的情况，建议向其他进程发送数据库删除通知使其感知并处理。建立数据库时，若在[StoreConfig](#class-storeconfig)中配置了自定义路径，则必须调用此接口进行删库。
@@ -96,38 +87,39 @@ public func deleteRdbStore(context: StageContext, config: StoreConfig): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用的上下文。context的获取方式请参见[getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext)。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用的上下文。context的获取方式请参见[getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext)。|
 |config|[StoreConfig](#class-storeconfig)|是|-|与此RDB存储相关的数据库配置。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  | 错误码ID | 错误信息          |
-  |:-----------|:----------|
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000  | Inner error.        |
-  | 14800010  | Invalid database path.|
-  | 14801001  | Only supported in stage mode.         |
-  | 14801002  | The data group id is not valid.        |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800010 | Failed to open or delete the database by an invalid database path.
+ |
+  | 14801001 | The operation is supported in the stage model only.
+ |
+  | 14801002 | Invalid data group ID.
+ |
 
-**示例：**
+- IllegalArgumentException：
 
-<!-- compile -->
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The context is invalid.
+ | todo | todo |
+
+## func getRdbStore(UIAbilityContext, StoreConfig)
 
 ```cangjie
-// index.cj
 
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-deleteRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1))
-```
-
-## func getRdbStore(StageContext, StoreConfig)
-
-```cangjie
-public func getRdbStore(context: StageContext, config: StoreConfig): RdbStore
+public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStore
 ```
 
 **功能：** 获得一个相关的RdbStore，操作关系型数据库，用户可以根据自己的需求配置RdbStore的参数，然后调用RdbStore接口执行相关的数据操作。
@@ -140,7 +132,7 @@ public func getRdbStore(context: StageContext, config: StoreConfig): RdbStore
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用的上下文。context的获取方式请参见[getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext)。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用的上下文。context的获取方式请参见[getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext)。|
 |config|[StoreConfig](#class-storeconfig)|是|-|与此RDB存储相关的数据库配置。|
 
 **返回值：**
@@ -151,29 +143,365 @@ public func getRdbStore(context: StageContext, config: StoreConfig): RdbStore
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800010|Invalid database path.|
-  |14800011|Database corrupted.|
-  |14801001|Only supported in stage mode.|
-  |14801002|The data group id is not valid.|
-  |14800017|Config changed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types; 3. Parameter verification failed.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800010 | Failed to open or delete the database by an invalid database path.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14801001 | The operation is supported in the stage model only.
+ |
+  | 14801002 | Invalid data group ID.
+ |
+  | 14800017 | StoreConfig is changed.
+ |
+  | 14800020 | The secret key is corrupted or lost.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The context is invalid.
+ | todo | todo |
+
+## class Asset
+
+```cangjie
+public class Asset {
+    public var name: String
+    public var uri: String
+    public var path: String
+    public var createTime: String
+    public var modifyTime: String
+    public var size: String
+    public var status: AssetStatus
+
+
+    public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String,
+        status!: AssetStatus = AssetStatus.AssetNormal)
+}
+```
+
+**功能：** 记录资产附件（文件、图片、视频等类型文件）的相关信息。资产类型的相关接口暂不支持Datashare。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var createTime
+
+```cangjie
+public var createTime: String
+```
+
+**功能：** 资产被创建出来的时间。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var modifyTime
+
+```cangjie
+public var modifyTime: String
+```
+
+**功能：** 资产最后一次被修改的时间。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var name
+
+```cangjie
+public var name: String
+```
+
+**功能：** 资产的名称。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var path
+
+```cangjie
+public var path: String
+```
+
+**功能：** 资产在应用沙箱里的路径。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var size
+
+```cangjie
+public var size: String
+```
+
+**功能：** 资产占用空间的大小。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var status
+
+```cangjie
+public var status: AssetStatus
+```
+
+**功能：** 资产的状态，默认值为ASSET_NORMAL。
+
+**类型：** [AssetStatus](#enum-assetstatus)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var uri
+
+```cangjie
+public var uri: String
+```
+
+**功能：** 资产的uri，在系统里的绝对路径。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### init(String, String, String, String, String, String, AssetStatus)
+
+```cangjie
+
+public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String,
+    status!: AssetStatus = AssetStatus.AssetNormal)
+```
+
+**功能：** 构建Asset。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|name|String|是|-|资产的名称。|
+|uri|String|是|-|资产的uri，在系统里的绝对路径。|
+|path|String|是|-|资产在应用沙箱里的路径。|
+|createTime|String|是|-|资产被创建出来的时间。|
+|modifyTime|String|是|-|资产最后一次被修改的时间。|
+|size|String|是|-|资产占用空间的大小。|
+|status|[AssetStatus](#enum-assetstatus)|否|AssetStatus.AssetNormal| **命名参数。** 资产的状态，默认值为ASSET_NORMAL。|
+
+## class CryptoParam
+
+```cangjie
+public class CryptoParam {
+    public var encryptionKey: Array<UInt8>
+    public var iterationCount: Int32
+    public var encryptionAlgo: EncryptionAlgo
+    public var hmacAlgo: HmacAlgo
+    public var kdfAlgo:?KdfAlgo
+    public var cryptoPageSize: UInt32
+
+
+    public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
+        encryptionAlgo!: EncryptionAlgo = EncryptionAlgo.Aes256Gcm,
+        hmacAlgo!: HmacAlgo = HmacAlgo.Sha256, kdfAlgo!: ?KdfAlgo = None,
+        cryptoPageSize!: UInt32 = 1024)
+}
+```
+
+**功能：** 数据库加密参数配置。此配置只有在StoreConfig的encrypt选项设置为true时有效。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var cryptoPageSize
+
+```cangjie
+public var cryptoPageSize: UInt32
+```
+
+**功能：** 整数类型，指定数据库加解密使用的页大小。
+
+**类型：** UInt32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var encryptionAlgo
+
+```cangjie
+public var encryptionAlgo: EncryptionAlgo
+```
+
+**功能：** 指定数据库加解密使用的加密算法。
+
+**类型：** [EncryptionAlgo](#enum-encryptionalgo)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var encryptionKey
+
+```cangjie
+public var encryptionKey: Array<UInt8>
+```
+
+**功能：** 指定数据库加/解密使用的密钥。
+
+**类型：** Array\<UInt8>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var hmacAlgo
+
+```cangjie
+public var hmacAlgo: HmacAlgo
+```
+
+**功能：** 指定数据库加解密使用的HMAC算法。
+
+**类型：** [HmacAlgo](#enum-hmacalgo)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var iterationCount
+
+```cangjie
+public var iterationCount: Int32
+```
+
+**功能：** 整数类型，指定数据库PBKDF2算法的迭代次数，默认值为10000。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var kdfAlgo
+
+```cangjie
+public var kdfAlgo:?KdfAlgo
+```
+
+**功能：** 指定数据库加解密使用的PBKDF2算法。
+
+**类型：** ?[KdfAlgo](#enum-kdfalgo)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### init(Array\<UInt8>, Int32, EncryptionAlgo, HmacAlgo, ?KdfAlgo, UInt32)
+
+```cangjie
+
+public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
+    encryptionAlgo!: EncryptionAlgo = EncryptionAlgo.Aes256Gcm,
+    hmacAlgo!: HmacAlgo = HmacAlgo.Sha256, kdfAlgo!: ?KdfAlgo = None,
+    cryptoPageSize!: UInt32 = 1024)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|encryptionKey|Array\<UInt8>|是|-|指定数据库加/解密使用的密钥。<br>如传入密钥为空，则由数据库负责生成并保存密钥，并使用生成的密钥打开数据库文件。<br>使用完后用户需要将密钥内容全部置为零。|
+|iterationCount|Int32|否|10000|整数类型，指定数据库PBKDF2算法的迭代次数，默认值为10000。<br>迭代次数应当为大于零的整数，若非整数则向下取整。<br>不指定此参数或指定为零时，使用默认值10000，并使用默认加密算法AES_256_GCM。|
+|encryptionAlgo|[EncryptionAlgo](#enum-encryptionalgo)|否|EncryptionAlgo.Aes256Gcm|指定数据库加解密使用的加密算法。如不指定，默认值为AES_256_GCM。|
+|hmacAlgo|[HmacAlgo](#enum-hmacalgo)|否|HmacAlgo.Sha256|指定数据库加解密使用的HMAC算法。如不指定，默认值为SHA256。|
+|kdfAlgo|?[KdfAlgo](#enum-kdfalgo)|否|None|指定数据库加解密使用的PBKDF2算法。如不指定，默认使用和HMAC算法相等的算法。|
 
 ## class RdbPredicates
 
 ```cangjie
 public class RdbPredicates {
+
+
     public init(name: String)
 }
 ```
@@ -187,6 +515,7 @@ public class RdbPredicates {
 ### init(String)
 
 ```cangjie
+
 public init(name: String)
 ```
 
@@ -202,22 +531,11 @@ public init(name: String)
 |:---|:---|:---|:---|:---|
 |name|String|是|-|数据库表名。|
 
-**示例：**
-
-<!-- compile -->
+### func `in`(String, Array\<ValueType>)
 
 ```cangjie
-// index.cj
 
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-```
-
-### func \`in\`(String, Array\<RelationalStoreValueType>)
-
-```cangjie
-public func `in`(field: String, values: Array<RelationalStoreValueType>): RdbPredicates
+public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值在给定范围内的字段。
@@ -231,7 +549,7 @@ public func `in`(field: String, values: Array<RelationalStoreValueType>): RdbPre
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|values|Array\<[RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|以RelationalStoreValueType数组形式指定的要匹配的值。|
+|value|Array\<[ValueType](#enum-valuetype)>|是|-|以RelationalStoreValueType数组形式指定的要匹配的值。|
 
 **返回值：**
 
@@ -239,9 +557,20 @@ public func `in`(field: String, values: Array<RelationalStoreValueType>): RdbPre
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
+
 ### func and()
 
 ```cangjie
+
 public func and(): RdbPredicates
 ```
 
@@ -257,26 +586,10 @@ public func and(): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有和条件的Rdb谓词。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 匹配数据表的"NAME"列中的值为"Lisa"且"SALARY"列中的值为"200.5"的字段
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
-    .and()
-    .equalTo("SALARY", RelationalStoreValueType.double(200.5))
-```
-
 ### func beginWrap()
 
 ```cangjie
+
 public func beginWrap(): RdbPredicates
 ```
 
@@ -292,28 +605,10 @@ public func beginWrap(): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有左括号的Rdb谓词。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
-    .beginWrap()
-    .equalTo("AGE", RelationalStoreValueType.integer(18))
-    .or()
-    .equalTo("SALARY", RelationalStoreValueType.double(200.5))
-    .endWrap()
-```
-
 ### func beginsWith(String, String)
 
 ```cangjie
+
 public func beginsWith(field: String, value: String): RdbPredicates
 ```
 
@@ -336,24 +631,21 @@ public func beginsWith(field: String, value: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 匹配数据表的"NAME"列中以"Li"开头的字段，如"Lisa"
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.beginsWith("NAME", "Li")
-```
-
-### func between(String, RelationalStoreValueType, RelationalStoreValueType)
+### func between(String, ValueType, ValueType)
 
 ```cangjie
-public func between(field: String, lowValue: RelationalStoreValueType, highValue: RelationalStoreValueType): RdbPredicates
+
+public func between(field: String, low: ValueType, high: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值在给定范围内的字段（包含范围边界）。
@@ -367,8 +659,8 @@ public func between(field: String, lowValue: RelationalStoreValueType, highValue
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|lowValue|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示与谓词匹配的最小值。|
-|highValue|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示与谓词匹配的最大值。|
+|low|[ValueType](#enum-valuetype)|是|-|指示与谓词匹配的最小值。|
+|high|[ValueType](#enum-valuetype)|是|-|指示与谓词匹配的最大值。|
 
 **返回值：**
 
@@ -376,23 +668,20 @@ public func between(field: String, lowValue: RelationalStoreValueType, highValue
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 匹配数据表的"AGE"列中大于等于10且小于等于50的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.between("AGE", RelationalStoreValueType.integer(10), RelationalStoreValueType.integer(50))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func contains(String, String)
 
 ```cangjie
+
 public func contains(field: String, value: String): RdbPredicates
 ```
 
@@ -415,23 +704,20 @@ public func contains(field: String, value: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 匹配数据表的"NAME"列中包含"os"的字段，如"Rose"
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.contains("NAME", "os")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func distinct()
 
 ```cangjie
+
 public func distinct(): RdbPredicates
 ```
 
@@ -447,24 +733,10 @@ public func distinct(): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回可用于过滤重复记录的谓词。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
-    .distinct()
-```
-
 ### func endWrap()
 
 ```cangjie
+
 public func endWrap(): RdbPredicates
 ```
 
@@ -480,28 +752,10 @@ public func endWrap(): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有右括号的Rdb谓词。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
-    .beginWrap()
-    .equalTo("AGE", RelationalStoreValueType.integer(18))
-    .or()
-    .equalTo("SALARY", RelationalStoreValueType.double(200.5))
-    .endWrap()
-```
-
 ### func endsWith(String, String)
 
 ```cangjie
+
 public func endsWith(field: String, value: String): RdbPredicates
 ```
 
@@ -524,24 +778,21 @@ public func endsWith(field: String, value: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 匹配数据表的"NAME"列中以"se"结尾的字段，如"Rose"
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.endsWith("NAME", "se")
-```
-
-### func equalTo(String, RelationalStoreValueType)
+### func equalTo(String, ValueType)
 
 ```cangjie
-public func equalTo(field: String, value: RelationalStoreValueType): RdbPredicates
+
+public func equalTo(field: String, value: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值为value的字段。
@@ -555,7 +806,7 @@ public func equalTo(field: String, value: RelationalStoreValueType): RdbPredicat
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -563,23 +814,20 @@ public func equalTo(field: String, value: RelationalStoreValueType): RdbPredicat
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 匹配数据表的"NAME"列中的值为"Lisa"的字段
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.equalTo("NAME", RelationalStoreValueType.string("Lisa"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func glob(String, String)
 
 ```cangjie
+
 public func glob(field: String, value: String): RdbPredicates
 ```
 
@@ -602,24 +850,21 @@ public func glob(field: String, value: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 匹配数据表的"NAME"列中类型为string且值为"?h*g"的字段
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.glob("NAME", "?h*g")
-```
-
-### func greaterThan(String, RelationalStoreValueType)
+### func greaterThan(String, ValueType)
 
 ```cangjie
-public func greaterThan(field: String, value: RelationalStoreValueType): RdbPredicates
+
+public func greaterThan(field: String, value: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值大于value的字段。
@@ -633,7 +878,7 @@ public func greaterThan(field: String, value: RelationalStoreValueType): RdbPred
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -641,24 +886,21 @@ public func greaterThan(field: String, value: RelationalStoreValueType): RdbPred
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 匹配数据表的"AGE"列中大于18的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.greaterThan("AGE", RelationalStoreValueType.integer(18))
-```
-
-### func greaterThanOrEqualTo(String, RelationalStoreValueType)
+### func greaterThanOrEqualTo(String, ValueType)
 
 ```cangjie
-public func greaterThanOrEqualTo(field: String, value: RelationalStoreValueType): RdbPredicates
+
+public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值大于或者等于value的字段。
@@ -672,7 +914,7 @@ public func greaterThanOrEqualTo(field: String, value: RelationalStoreValueType)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -680,23 +922,20 @@ public func greaterThanOrEqualTo(field: String, value: RelationalStoreValueType)
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 匹配数据表的"AGE"列中大于18的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.greaterThanOrEqualTo("AGE", RelationalStoreValueType.integer(18))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func groupBy(Array\<String>)
 
 ```cangjie
+
 public func groupBy(fields: Array<String>): RdbPredicates
 ```
 
@@ -718,22 +957,20 @@ public func groupBy(fields: Array<String>): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回分组查询列的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.groupBy(["AGE", "NAME"])
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func inAllDevices()
 
 ```cangjie
+
 public func inAllDevices(): RdbPredicates
 ```
 
@@ -749,22 +986,10 @@ public func inAllDevices(): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.inAllDevices()
-```
-
 ### func isNotNull(String)
 
 ```cangjie
+
 public func isNotNull(field: String): RdbPredicates
 ```
 
@@ -784,24 +1009,22 @@ public func isNotNull(field: String): RdbPredicates
 
 |类型|说明|
 |:----|:----|
-|[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
+|[RdbPredicates](#class-rdbpredicates)|<返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.isNotNull("NAME")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func isNull(String)
 
 ```cangjie
+
 public func isNull(field: String): RdbPredicates
 ```
 
@@ -823,23 +1046,21 @@ public func isNull(field: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.isNull("NAME")
-```
-
-### func lessThan(String, RelationalStoreValueType)
+### func lessThan(String, ValueType)
 
 ```cangjie
-public func lessThan(field: String, value: RelationalStoreValueType): RdbPredicates
+
+public func lessThan(field: String, value: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值小于value的字段。
@@ -853,7 +1074,7 @@ public func lessThan(field: String, value: RelationalStoreValueType): RdbPredica
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -861,24 +1082,21 @@ public func lessThan(field: String, value: RelationalStoreValueType): RdbPredica
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 匹配数据表的"AGE"列中小于20的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.lessThan("AGE", RelationalStoreValueType.integer(20))
-```
-
-### func lessThanOrEqualTo(String, RelationalStoreValueType)
+### func lessThanOrEqualTo(String, ValueType)
 
 ```cangjie
-public func lessThanOrEqualTo(field: String, value: RelationalStoreValueType): RdbPredicates
+
+public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值小于或者等于value的字段。
@@ -892,7 +1110,7 @@ public func lessThanOrEqualTo(field: String, value: RelationalStoreValueType): R
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -900,23 +1118,20 @@ public func lessThanOrEqualTo(field: String, value: RelationalStoreValueType): R
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 匹配数据表的"AGE"列中小于等于20的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.lessThanOrEqualTo("AGE", RelationalStoreValueType.integer(20))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func like(String, String)
 
 ```cangjie
+
 public func like(field: String, value: String): RdbPredicates
 ```
 
@@ -939,23 +1154,20 @@ public func like(field: String, value: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 数据表的"NAME"列中的值类似于"os"的字段，如"Rose"
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.like("NAME", "%os%")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func limitAs(Int32)
 
 ```cangjie
+
 public func limitAs(value: Int32): RdbPredicates
 ```
 
@@ -977,25 +1189,21 @@ public func limitAs(value: Int32): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回可用于设置最大数据记录数的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
-    .limitAs(3)
-```
-
-### func notBetween(String, RelationalStoreValueType, RelationalStoreValueType)
+### func notBetween(String, ValueType, ValueType)
 
 ```cangjie
-public func notBetween(field: String, lowValue: RelationalStoreValueType, highValue: RelationalStoreValueType): RdbPredicates
+
+public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值超出给定范围的字段（不包含范围边界）。
@@ -1009,8 +1217,8 @@ public func notBetween(field: String, lowValue: RelationalStoreValueType, highVa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|lowValue|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示与谓词匹配的最小值。|
-|highValue|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的最大值。|
+|low|[ValueType](#enum-valuetype)|是|-|指示与谓词匹配的最小值。|
+|high|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的最大值。|
 
 **返回值：**
 
@@ -1018,24 +1226,21 @@ public func notBetween(field: String, lowValue: RelationalStoreValueType, highVa
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 数据表的"AGE"列中小于10或大于50的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.notBetween("AGE", RelationalStoreValueType.integer(10), RelationalStoreValueType.integer(50))
-```
-
-### func notEqualTo(String, RelationalStoreValueType)
+### func notEqualTo(String, ValueType)
 
 ```cangjie
-public func notEqualTo(field: String, value: RelationalStoreValueType): RdbPredicates
+
+public func notEqualTo(field: String, value: ValueType): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值不为value的字段。
@@ -1049,7 +1254,7 @@ public func notEqualTo(field: String, value: RelationalStoreValueType): RdbPredi
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[RelationalStoreValueType](#enum-relationalstorevaluetype)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -1057,24 +1262,21 @@ public func notEqualTo(field: String, value: RelationalStoreValueType): RdbPredi
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
-import kit.ArkData.*
-
-// 数据表的"NAME"列中的值不为"Lisa"的字段
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.notEqualTo("NAME", RelationalStoreValueType.string("Lisa"))
-```
-
-### func notIn(String, Array\<RelationalStoreValueType>)
+### func notIn(String, Array\<ValueType>)
 
 ```cangjie
-public func notIn(field: String, values: Array<RelationalStoreValueType>): RdbPredicates
+
+public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
 **功能：** 将谓词配置为匹配数据字段为ValueType且值超出给定范围的指定字段。
@@ -1088,7 +1290,7 @@ public func notIn(field: String, values: Array<RelationalStoreValueType>): RdbPr
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|values|Array\<[RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|以ValueType数组形式指定的要匹配的值。|
+|value|Array\<[ValueType](#enum-valuetype)>|是|-|以ValueType数组形式指定的要匹配的值。|
 
 **返回值：**
 
@@ -1096,23 +1298,20 @@ public func notIn(field: String, values: Array<RelationalStoreValueType>): RdbPr
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 数据表的"NAME"列中不在["Lisa", "Rose"]中的值
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.notIn("NAME", [RelationalStoreValueType.string("Lisa"), RelationalStoreValueType.string("Rose")])
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func offsetAs(Int32)
 
 ```cangjie
+
 public func offsetAs(rowOffset: Int32): RdbPredicates
 ```
 
@@ -1134,24 +1333,20 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回具有指定返回结果起始位置的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
-    .offsetAs(3)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func or()
 
 ```cangjie
+
 public func or(): RdbPredicates
 ```
 
@@ -1167,26 +1362,10 @@ public func or(): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有或条件的Rdb谓词。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-// 数据表的"NAME"列中的值为"Lisa"或"Rose"的字段
-let predicates = RdbPredicates("EMPLOYEE")
-predicates
-    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
-    .or()
-    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
-```
-
 ### func orderByAsc(String)
 
 ```cangjie
+
 public func orderByAsc(field: String): RdbPredicates
 ```
 
@@ -1208,22 +1387,20 @@ public func orderByAsc(field: String): RdbPredicates
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.orderByAsc("NAME")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ### func orderByDesc(String)
 
 ```cangjie
+
 public func orderByDesc(field: String): RdbPredicates
 ```
 
@@ -1243,20 +1420,17 @@ public func orderByDesc(field: String): RdbPredicates
 
 |类型|说明|
 |:----|:----|
-|[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
+|[RdbPredicates](#class-rdbpredicates)|数据库表中的列名。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.orderByDesc("AGE")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+<br>2. Incorrect parameter types.
+ |
 
 ## class RdbStore
 
@@ -1266,8 +1440,6 @@ public class RdbStore {}
 
 **功能：** 提供管理关系数据库（RDB）方法的接口。
 
-在使用以下相关接口前，请使用[executeSql](#func-executesqlstring)接口初始化数据库表结构和相关数据。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
@@ -1275,6 +1447,7 @@ public class RdbStore {}
 ### func backup(String)
 
 ```cangjie
+
 public func backup(destName: String): Unit
 ```
 
@@ -1292,48 +1465,56 @@ public func backup(destName: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. The store must not be nullptr.|
-  |14800000|Inner error.|
-  |14800010|Invalid database path.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
-**示例：**
-
-<!-- compile -->
+### func batchInsert(String, Array\<ValuesBucket>)
 
 ```cangjie
-// index.cj
 
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-rdbStore.backup("dbBackup.db")
-```
-
-### func batchInsert(String, Array\<Map\<String, RelationalStoreValueType>>)
-
-```cangjie
-public func batchInsert(table: String, values: Array<Map<String, RelationalStoreValueType>>): Int64
+public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
 ```
 
 **功能：** 向目标表中插入一组数据。
@@ -1347,7 +1528,7 @@ public func batchInsert(table: String, values: Array<Map<String, RelationalStore
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |table|String|是|-|指定的目标表名。|
-|values|Array\<Map\<String, [RelationalStoreValueType](#enum-relationalstorevaluetype)>>|是|-|表示要插入到表中的一组数据。|
+|values|Array\<[ValuesBucket](#type-valuesbucket)>|是|-|表示要插入到表中的一组数据。|
 
 **返回值：**
 
@@ -1357,65 +1538,47 @@ public func batchInsert(table: String, values: Array<Map<String, RelationalStore
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-  |14800047|The WAL file size exceeds the default limit.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-import ohos.relational_store.ValueType as RValueType
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-var values1 = HashMap<String, RelationalStoreValueType>()
-values1.add("ID", RelationalStoreValueType.integer(1))
-values1.add("NAME", RelationalStoreValueType.string("Lisa"))
-values1.add("AGE", RelationalStoreValueType.integer(18))
-values1.add("SALARY", RelationalStoreValueType.double(100.5))
-var values2 = HashMap<String, RelationalStoreValueType>()
-values2.add("ID", RelationalStoreValueType.integer(2))
-values2.add("NAME", RelationalStoreValueType.string("Jack"))
-values2.add("AGE", RelationalStoreValueType.integer(19))
-values2.add("SALARY", RelationalStoreValueType.double(101.5))
-var values3 = HashMap<String, RelationalStoreValueType>()
-values3.add("ID", RelationalStoreValueType.integer(3))
-values3.add("NAME", RelationalStoreValueType.string("Tom"))
-values3.add("AGE", RelationalStoreValueType.integer(20))
-values3.add("SALARY", RelationalStoreValueType.double(102.5))
-let valueBuckets: Array<Map<String, RValueType>>= [values1, values2, values3]
-rdbStore.batchInsert("EMPLOYEE", valueBuckets)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800047 | The WAL file size exceeds the default limit.
+ |
 
 ### func beginTransaction()
 
 ```cangjie
+
 public func beginTransaction(): Unit
 ```
 
@@ -1427,53 +1590,56 @@ public func beginTransaction(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. The store must not be nullptr.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-  |14800047|The WAL file size exceeds the default limit.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-var values = HashMap<String, RelationalStoreValueType>()
-rdbStore.beginTransaction()
-values.add("ID", RelationalStoreValueType.integer(2))
-values.add("NAME", RelationalStoreValueType.string("Sun"))
-rdbStore.insert("THING", values)
-rdbStore.commit()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. The store must not be nullptr.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
+  | 14800047 | The WAL file size exceeds the default limit.
+ |
 
 ### func commit()
 
 ```cangjie
+
 public func commit(): Unit
 ```
 
@@ -1485,53 +1651,54 @@ public func commit(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. The store must not be nullptr.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-rdbStore.executeSql("CREATE TABLE THING(ID int NOT NULL, NAME varchar(255) NOT NULL, PRIMARY KEY (Id))")
-rdbStore.beginTransaction()
-var values = HashMap<String, RelationalStoreValueType>()
-values.add("ID", RelationalStoreValueType.integer(2))
-values.add("NAME", RelationalStoreValueType.string("Sun"))
-rdbStore.insert("THING", values)
-rdbStore.commit()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. The store must not be nullptr.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func delete(RdbPredicates)
 
 ```cangjie
+
 public func delete(predicates: RdbPredicates): Int64
 ```
 
@@ -1555,50 +1722,57 @@ public func delete(predicates: RdbPredicates): Int64
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-  |14800047|The WAL file size exceeds the default limit.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.equalTo("NAME", RelationalStoreValueType.string("Lisa"))
-rdbStore.delete(predicates)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
+  | 14800047 | The WAL file size exceeds the default limit.
+ |
 
 ### func emit(String)
 
 ```cangjie
+
 public func emit(event: String): Unit
 ```
 
@@ -1616,65 +1790,30 @@ public func emit(event: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |801|Capability not supported.|
-  |14800000|Inner error.|
-  |14800014|Already closed.|
-  |14800050|Failed to obtain subscription service.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 801 | Capability not supported.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800050 | Failed to obtain the subscription service.
+ |
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        AppLog.info("Call invoke.")
-    }
-}
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let testCallback = TestCallback()
-rdbStore.on("PRINT", false, testCallback)
-rdbStore.emit("PRINT")
-```
-
-### func executeSql(String)
+### func executeSql(String, Array\<ValueType>)
 
 ```cangjie
-public func executeSql(sql: String): Unit
+
+public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>()): Unit
 ```
 
-**功能：** 提供管理关系数据库(RDB)方法的接口。在使用以下相关接口前，请使用[executeSql](#func-executesqlstring)接口初始化数据库表结构和相关数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|sql|String|是|-|设置和获取数据库版本，值为大于等于0的整数。|
-
-### func executeSql(String, Array\<RelationalStoreValueType>)
-
-```cangjie
-public func executeSql(sql: String, bindArgs: Array<RelationalStoreValueType>): Unit
-```
-
-**功能：** 执行包含指定参数但不返回值的SQL语句。
+**功能：**  执行包含指定参数但不返回值的SQL语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1685,53 +1824,65 @@ public func executeSql(sql: String, bindArgs: Array<RelationalStoreValueType>): 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sql|String|是|-|指定要执行的SQL语句。|
-|bindArgs|Array\<[RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
+|bindArgs|Array\<[ValueType](#enum-valuetype)>|否|Array<ValueType>()|SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  | 错误码ID | 错误信息|
-  |:-----------| :------------------------------------------------------------ |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801       | Capability not supported the sql(attach, begin, commit, rollback etc.). |
-  | 14800000  | Inner error. |
-  | 14800011  | Database corrupted. |
-  | 14800014  | Already closed. |
-  | 14800015  | The database does not respond. |
-  | 14800021  | SQLite: Generic error. |
-  | 14800022  | SQLite: Callback routine requested an abort. |
-  | 14800023  | SQLite: Access permission denied. |
-  | 14800024  | SQLite: The database file is locked. |
-  | 14800025  | SQLite: A table in the database is locked. |
-  | 14800026  | SQLite: The database is out of memory. |
-  | 14800027  | SQLite: Attempt to write a readonly database. |
-  | 14800028  | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029  | SQLite: The database is full. |
-  | 14800030  | SQLite: Unable to open the database file. |
-  | 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032  | SQLite: Abort due to constraint violation. |
-  | 14800033  | SQLite: Data type mismatch. |
-  | 14800034  | SQLite: Library used incorrectly. |
-  | 14800047  | The WAL file size exceeds the default limit. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 801 | Capability not supported the sql(attach,begin,commit,rollback etc.).
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
+  | 14800047 | The WAL file size exceeds the default limit.
+ |
 
-**示例：**
-
-<!-- compile -->
+### func insert(String, ValuesBucket, ConflictResolution)
 
 ```cangjie
-// index.cj
 
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-rdbStore.executeSql("DELETE FROM EMPLOYEE WHERE ID = ?", [RelationalStoreValueType.integer(3)])
-```
-
-### func insert(String, Map\<String, RelationalStoreValueType>)
-
-```cangjie
-public func insert(table: String, values: Map<String, RelationalStoreValueType>): Int64
+public func insert(table: String, values: ValuesBucket,
+    conflict!: ConflictResolution = ConflictResolution.OnConflictNone): Int64
 ```
 
 **功能：** 向目标表中插入一行数据。
@@ -1745,7 +1896,8 @@ public func insert(table: String, values: Map<String, RelationalStoreValueType>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |table|String|是|-|指定的目标表名。|
-|values|Map\<String, [RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|表示要插入到表中的数据行。|
+|values|[ValuesBucket](#type-valuesbucket)|是|-|表示要插入到表中的数据行。|
+|conflict|[ConflictResolution](#enum-conflictresolution)|否|ConflictResolution.OnConflictNone|指定冲突解决方式。|
 
 **返回值：**
 
@@ -1755,192 +1907,58 @@ public func insert(table: String, values: Map<String, RelationalStoreValueType>)
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  | 错误码ID | 错误信息                                                 |
-  |:-----------| :------------------------------------------------------------ |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000  | Inner error. |
-  | 14800011  | Database corrupted. |
-  | 14800014  | Already closed. |
-  | 14800015  | The database does not respond. |
-  | 14800021  | SQLite: Generic error. |
-  | 14800022  | SQLite: Callback routine requested an abort. |
-  | 14800023  | SQLite: Access permission denied. |
-  | 14800024  | SQLite: The database file is locked. |
-  | 14800025  | SQLite: A table in the database is locked. |
-  | 14800026  | SQLite: The database is out of memory. |
-  | 14800027  | SQLite: Attempt to write a readonly database. |
-  | 14800028  | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029  | SQLite: The database is full. |
-  | 14800030  | SQLite: Unable to open the database file. |
-  | 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032  | SQLite: Abort due to constraint violation. |
-  | 14800033  | SQLite: Data type mismatch. |
-  | 14800034  | SQLite: Library used incorrectly. |
-  | 14800047  | The WAL file size exceeds the default limit. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
+  | 14800047 | The WAL file size exceeds the default limit.
+ |
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-rdbStore.executeSql(
-    "CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))"
-)
-var values = HashMap<String, RelationalStoreValueType>()
-values.add("ID", RelationalStoreValueType.integer(1))
-values.add("NAME", RelationalStoreValueType.string("Lisa"))
-values.add("AGE", RelationalStoreValueType.integer(18))
-values.add("SALARY", RelationalStoreValueType.double(100.5))
-values.add("CODES", RelationalStoreValueType.boolean(true))
-rdbStore.insert("EMPLOYEE", values)
-```
-
-### func insert(String, Map\<String, RelationalStoreValueType>, ConflictResolution)
+### func off(String, Bool, ?Callback0Argument)
 
 ```cangjie
-public func insert(table: String, values: Map<String, RelationalStoreValueType>, conflict: ConflictResolution): Int64
-```
 
-**功能：** 向目标表中插入一行数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|table|String|是|-|指定的目标表名。|
-|values|Map\<String, [RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|表示要插入到表中的数据行。|
-|conflict|[ConflictResolution](#enum-conflictresolution)|是|-|指定冲突解决方式。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int64|如果操作成功，返回行ID；否则返回-1。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  | 错误码ID | 错误信息                                                 |
-  |:-----------| :---------------------------------------------------- |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000  | Inner error. |
-  | 14800011  | Database corrupted. |
-  | 14800014  | Already closed. |
-  | 14800015  | The database does not respond. |
-  | 14800021  | SQLite: Generic error. |
-  | 14800022  | SQLite: Callback routine requested an abort. |
-  | 14800023  | SQLite: Access permission denied. |
-  | 14800024  | SQLite: The database file is locked. |
-  | 14800025  | SQLite: A table in the database is locked. |
-  | 14800026  | SQLite: The database is out of memory. |
-  | 14800027  | SQLite: Attempt to write a readonly database. |
-  | 14800028  | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029  | SQLite: The database is full. |
-  | 14800030  | SQLite: Unable to open the database file. |
-  | 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032  | SQLite: Abort due to constraint violation. |
-  | 14800033  | SQLite: Data type mismatch. |
-  | 14800034  | SQLite: Library used incorrectly. |
-  | 14800047  | The WAL file size exceeds the default limit. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-rdbStore.executeSql(
-    "CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))"
-)
-var values = HashMap<String, RelationalStoreValueType>()
-values.add("ID", RelationalStoreValueType.integer(1))
-values.add("NAME", RelationalStoreValueType.string("Lisa"))
-values.add("AGE", RelationalStoreValueType.integer(18))
-values.add("SALARY", RelationalStoreValueType.double(100.5))
-values.add("CODES", RelationalStoreValueType.boolean(true))
-rdbStore.insert("EMPLOYEE", values, ON_CONFLICT_REPLACE)
-```
-
-### func off(String, Bool)
-
-```cangjie
-public func off(event: String, interProcess: Bool): Unit
-```
-
-**功能：** 取消该event事件的所有监听回调。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|String|是|-|取消订阅事件名称。|
-|interProcess|Bool|是|-|指定是进程间还是本进程取消订阅。true：进程间。false：本进程。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  | 错误码ID | 错误信息                           |
-  | :------------ | :-------------------------------------- |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801       | Capability not supported. |
-  | 14800000     | Inner error.                           |
-  | 14800014  | Already closed.    |
-  | 14800050     | Failed to obtain subscription service. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        AppLog.info("Call invoke.")
-    }
-}
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let testCallback = TestCallback()
-rdbStore.on("PRINT", false, testCallback)
-rdbStore.off("PRINT", false)
-```
-
-### func off(String, Bool, Callback0Argument)
-
-```cangjie
-public func off(event: String, interProcess: Bool, callback: Callback0Argument): Unit
+public func off(event: String, interProcess: Bool, callback!: ?Callback0Argument = None): Unit
 ```
 
 **功能：** 取消数据变更的事件监听。
@@ -1955,47 +1973,30 @@ public func off(event: String, interProcess: Bool, callback: Callback0Argument):
 |:---|:---|:---|:---|:---|
 |event|String|是|-|取消订阅事件名称。|
 |interProcess|Bool|是|-|指定是进程间还是本进程取消订阅。true：进程间。false：本进程。|
-|callback|[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|是|-|取消指定监听回调对象。|
+|callback|?[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument)|否|None|取消指定监听回调对象。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  | 错误码ID | 错误信息                           |
-  | :------------ | :-------------------------------------- |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801       | Capability not supported. |
-  | 14800000     | Inner error.                           |
-  | 14800014  | Already closed.    |
-  | 14800050     | Failed to obtain subscription service. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        AppLog.info("Call invoke.")
-    }
-}
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let testCallback = TestCallback()
-rdbStore.on("PRINT", false, testCallback)
-rdbStore.off("PRINT", false, testCallback)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 801 | Capability not supported.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800050 | Failed to obtain the subscription service.
+ |
 
 ### func on(String, Bool, Callback0Argument)
 
 ```cangjie
+
 public func on(event: String, interProcess: Bool, callback: Callback0Argument): Unit
 ```
 
@@ -2015,43 +2016,26 @@ public func on(event: String, interProcess: Bool, callback: Callback0Argument): 
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |801|Capability not supported.|
-  |14800000|Inner error.|
-  |14800014|Already closed.|
-  |14800050|Failed to obtain subscription service.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import ohos.base.*
-
-// 此处代码可添加在依赖项定义中
-class TestCallback <: Callback0Argument {
-    public init() {}
-    public open func invoke(): Unit {
-        AppLog.info("Call invoke.")
-    }
-}
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let testCallback = TestCallback()
-rdbStore.on("PRINT", false, testCallback)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 801 | Capability not supported.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800050 | Failed to obtain the subscription service.
+ |
 
 ### func query(RdbPredicates, Array\<String>)
 
 ```cangjie
+
 public func query(predicates: RdbPredicates, columns: Array<String>): ResultSet
 ```
 
@@ -2076,41 +2060,25 @@ public func query(predicates: RdbPredicates, columns: Array<String>): ResultSet
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.equalTo("NAME", RelationalStoreValueType.string("Rose"))
-let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]
-let resultSet = rdbStore.query(predicates, columns)
-resultSet.goToNextRow()
-let id = resultSet.getLong(resultSet.getColumnIndex("ID"))
-let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
-let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
-let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
-```
-
-### func querySql(String, Array\<RelationalStoreValueType>)
+### func querySql(String, Array\<ValueType>)
 
 ```cangjie
-public func querySql(sql: String, bindArgs!: Array<RelationalStoreValueType> = Array<RelationalStoreValueType>()): ResultSet
+
+public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>()): ResultSet
 ```
 
 **功能：** 根据指定SQL语句查询数据库中的数据。
@@ -2124,7 +2092,7 @@ public func querySql(sql: String, bindArgs!: Array<RelationalStoreValueType> = A
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |sql|String|是|-|指定要执行的SQL语句。|
-|bindArgs|Array\<[RelationalStoreValueType](#enum-relationalstorevaluetype)>|否|Array\< RelationalStoreValueType>()| **命名参数。** SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
+|bindArgs|Array\<[ValueType](#enum-valuetype)>|否|Array<ValueType>()| **命名参数。** SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。|
 
 **返回值：**
 
@@ -2134,37 +2102,24 @@ public func querySql(sql: String, bindArgs!: Array<RelationalStoreValueType> = A
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goToNextRow()
-let id = resultSet.getLong(resultSet.getColumnIndex("ID"))
-let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
-let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
-let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
 
 ### func restore(String)
 
 ```cangjie
+
 public func restore(srcName: String): Unit
 ```
 
@@ -2182,47 +2137,55 @@ public func restore(srcName: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-rdbStore.restore("dbBackup.db")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func rollBack()
 
 ```cangjie
+
 public func rollBack(): Unit
 ```
 
@@ -2234,62 +2197,56 @@ public func rollBack(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. The store must not be nullptr.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800014|Already closed.|
-  |14800015|The database does not respond.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. The store must not be nullptr.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let predicates = RdbPredicates("THING")
-var values = HashMap<String, RelationalStoreValueType>()
-try {
-    rdbStore.beginTransaction()
-    values.add("ID", RelationalStoreValueType.integer(3))
-    values.add("NAME", RelationalStoreValueType.string("Tom"))
-    rdbStore.insert("THING", values)
-    values.add("ID", RelationalStoreValueType.integer(4))
-    values.add("NAME", RelationalStoreValueType.string("Wind"))
-    rdbStore.insert("THING", values)
-    rdbStore.commit()
-} catch (e: Exception) {
-    rdbStore.rollBack()
-}
-```
-
-### func update(Map\<String, RelationalStoreValueType>, RdbPredicates)
+### func update(ValuesBucket, RdbPredicates, ConflictResolution)
 
 ```cangjie
-public func update(values: Map<String, RelationalStoreValueType>, predicates: RdbPredicates): Int64
+
+public func update(values: ValuesBucket, predicates: RdbPredicates,
+    conflict!: ConflictResolution = ConflictResolution.OnConflictNone): Int64
 ```
 
 **功能：** 根据RdbPredicates的指定实例对象更新数据库中的数据。
@@ -2302,8 +2259,9 @@ public func update(values: Map<String, RelationalStoreValueType>, predicates: Rd
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|values|Map\<String, [RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。|
+|values|[ValuesBucket](#type-valuesbucket)|是|-|values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。|
 |predicates|[RdbPredicates](#class-rdbpredicates)|是|-|RdbPredicates的实例对象指定的更新条件。|
+|conflict|[ConflictResolution](#enum-conflictresolution)|否|ConflictResolution.OnConflictNone|指定冲突解决方式。|
 
 **返回值：**
 
@@ -2313,126 +2271,52 @@ public func update(values: Map<String, RelationalStoreValueType>, predicates: Rd
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  | 错误码ID | 错误信息                                                 |
-  |:-----------| :------------------------------------------------------------ |
-  | 202       | Permission verification failed, application which is not a system application uses system API. |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000  | Inner error. |
-  | 14800011  | Database corrupted. |
-  | 14800014  | Already closed. |
-  | 14800015  | The database does not respond. |
-  | 14800021  | SQLite: Generic error. |
-  | 14800022  | SQLite: Callback routine requested an abort. |
-  | 14800023  | SQLite: Access permission denied. |
-  | 14800024  | SQLite: The database file is locked. |
-  | 14800025  | SQLite: A table in the database is locked. |
-  | 14800026  | SQLite: The database is out of memory. |
-  | 14800027  | SQLite: Attempt to write a readonly database. |
-  | 14800028  | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029  | SQLite: The database is full. |
-  | 14800030  | SQLite: Unable to open the database file. |
-  | 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032  | SQLite: Abort due to constraint violation. |
-  | 14800033  | SQLite: Data type mismatch. |
-  | 14800034  | SQLite: Library used incorrectly. |
-  | 14800047  | The WAL file size exceeds the default limit. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.equalTo("NAME", RelationalStoreValueType.string("TOM"))
-var values = HashMap<String, RelationalStoreValueType>()
-values.add("NAME", RelationalStoreValueType.string("TOM"))
-values.add("AGE", RelationalStoreValueType.integer(88))
-values.add("SALARY", RelationalStoreValueType.double(9999.513))
-rdbStore.update(values, predicates)
-```
-
-### func update(Map\<String, RelationalStoreValueType>, RdbPredicates, ConflictResolution)
-
-```cangjie
-public func update(values: Map<String, RelationalStoreValueType>, predicates: RdbPredicates, conflict: ConflictResolution): Int64
-```
-
-**功能：** 根据RdbPredicates的指定实例对象更新数据库中的数据。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|values|Map\<String, [RelationalStoreValueType](#enum-relationalstorevaluetype)>|是|-|values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。|
-|predicates|[RdbPredicates](#class-rdbpredicates)|是|-|RdbPredicates的实例对象指定的更新条件。|
-|conflict|[ConflictResolution](#enum-conflictresolution)|是|-|指定冲突解决方式。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int64|返回受影响的行数。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  | 错误码ID | 错误信息                                                 |
-  |:-----------| :------------------------------------------------------------ |
-  | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000  | Inner error. |
-  | 14800011  | Database corrupted. |
-  | 14800014  | Already closed. |
-  | 14800015  | The database does not respond. |
-  | 14800021  | SQLite: Generic error. |
-  | 14800022  | SQLite: Callback routine requested an abort. |
-  | 14800023  | SQLite: Access permission denied. |
-  | 14800024  | SQLite: The database file is locked. |
-  | 14800025  | SQLite: A table in the database is locked. |
-  | 14800026  | SQLite: The database is out of memory. |
-  | 14800027  | SQLite: Attempt to write a readonly database. |
-  | 14800028  | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029  | SQLite: The database is full. |
-  | 14800030  | SQLite: Unable to open the database file. |
-  | 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032  | SQLite: Abort due to constraint violation. |
-  | 14800033  | SQLite: Data type mismatch. |
-  | 14800034  | SQLite: Library used incorrectly. |
-  | 14800047  | The WAL file size exceeds the default limit. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import std.collection.HashMap
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let predicates = RdbPredicates("EMPLOYEE")
-predicates.equalTo("NAME", RelationalStoreValueType.string("TOM"))
-var values = HashMap<String, RelationalStoreValueType>()
-values.add("NAME", RelationalStoreValueType.string("TOM"))
-values.add("AGE", RelationalStoreValueType.integer(88))
-values.add("SALARY", RelationalStoreValueType.double(9999.513))
-rdbStore.update(values, predicates, ON_CONFLICT_REPLACE)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800015 | The database does not respond.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
+  | 14800047 | The WAL file size exceeds the default limit.
+ |
 
 ## class ResultSet
 
@@ -2470,7 +2354,7 @@ public prop columnNames: Array<String>
 
 **功能：** 获取结果集中所有列的名称。
 
-**类型：** Array\<String>
+**类型：** [Array<String>](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array)
 
 **读写能力：** 只读
 
@@ -2593,6 +2477,7 @@ public prop rowIndex: Int32
 ### func close()
 
 ```cangjie
+
 public func close(): Unit
 ```
 
@@ -2604,31 +2489,19 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |14800000|Inner error.|
-  |14800012|Row out of bounds.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.close()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14800000 | Inner error.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
 
 ### func getAsset(Int32)
 
 ```cangjie
+
 public func getAsset(columnIndex: Int32): Asset
 ```
 
@@ -2648,54 +2521,62 @@ public func getAsset(columnIndex: Int32): Asset
 
 |类型|说明|
 |:----|:----|
-|[Asset](#struct-asset)|以Asset形式返回指定列的值。|
+|[Asset](#class-asset)|以Asset形式返回指定列的值。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getAssets(Int32)
 
 ```cangjie
-public func getAssets(columnIndex: Int32): Array<Asset>
+
+public func getAssets(columnIndex: Int32): Assets
 ```
 
 **功能：** 获取当前行中指定列的值。
@@ -2714,53 +2595,61 @@ public func getAssets(columnIndex: Int32): Array<Asset>
 
 |类型|说明|
 |:----|:----|
-|Array\<[Asset](#struct-asset)>|以Array\<[Asset](#struct-asset)>形式返回指定列的值。|
+|[Assets](#type-assets)|以Array\<[Asset](#struct-asset)>形式返回指定列的值。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let docs = resultSet.getAssets(resultSet.getColumnIndex("DOCS"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getBlob(Int32)
 
 ```cangjie
+
 public func getBlob(columnIndex: Int32): Array<UInt8>
 ```
 
@@ -2784,49 +2673,57 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-     StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getColumnIndex(String)
 
 ```cangjie
+
 public func getColumnIndex(columnName: String): Int32
 ```
 
@@ -2840,7 +2737,7 @@ public func getColumnIndex(columnName: String): Int32
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columnName|String|是|-|表示结果集中指定列的名称。|
+|columnName|String|是|-|表示结果集中指定列的名称。
 
 **返回值：**
 
@@ -2850,52 +2747,57 @@ public func getColumnIndex(columnName: String): Int32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let id = resultSet.getLong(resultSet.getColumnIndex("ID"))
-let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
-let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
-let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800019 | The SQL must be a query statement.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getColumnName(Int32)
 
 ```cangjie
+
 public func getColumnName(columnIndex: Int32): String
 ```
 
@@ -2919,51 +2821,57 @@ public func getColumnName(columnIndex: Int32): String
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let id = resultSet.getColumnName(0)
-let name = resultSet.getColumnName(1)
-let age = resultSet.getColumnName(2)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800019 | The SQL must be a query statement.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getDouble(Int32)
 
 ```cangjie
+
 public func getDouble(columnIndex: Int32): Float64
 ```
 
@@ -2987,49 +2895,57 @@ public func getDouble(columnIndex: Int32): Float64
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getLong(Int32)
 
 ```cangjie
+
 public func getLong(columnIndex: Int32): Int64
 ```
 
@@ -3053,50 +2969,58 @@ public func getLong(columnIndex: Int32): Int64
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getRow()
 
 ```cangjie
-public func getRow(): Map<String, RelationalStoreValueType>
+
+public func getRow(): ValuesBucket
 ```
 
 **功能：** 获取当前行。
@@ -3109,52 +3033,58 @@ public func getRow(): Map<String, RelationalStoreValueType>
 
 |类型|说明|
 |:----|:----|
-|Map\<String, [RelationalStoreValueType](#enum-relationalstorevaluetype)>|返回指定行的值。|
+|[ValuesBucket](#type-valuesbucket)|返回指定行的值。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let value = resultSet.getRow()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func getString(Int32)
 
 ```cangjie
+
 public func getString(columnIndex: Int32): String
 ```
 
@@ -3178,49 +3108,57 @@ public func getString(columnIndex: Int32): String
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func goTo(Int32)
 
 ```cangjie
+
 public func goTo(offset: Int32): Bool
 ```
 
@@ -3242,51 +3180,10 @@ public func goTo(offset: Int32): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goTo(1)
-```
-
 ### func goToFirstRow()
 
 ```cangjie
+
 public func goToFirstRow(): Bool
 ```
 
@@ -3302,50 +3199,10 @@ public func goToFirstRow(): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goToFirstRow()
-```
-
 ### func goToLastRow()
 
 ```cangjie
+
 public func goToLastRow(): Bool
 ```
 
@@ -3363,48 +3220,54 @@ public func goToLastRow(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goToLastRow()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800019 | The SQL must be a query statement.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ### func goToNextRow()
 
 ```cangjie
+
 public func goToNextRow(): Bool
 ```
 
@@ -3420,50 +3283,10 @@ public func goToNextRow(): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goToNextRow()
-```
-
 ### func goToPreviousRow()
 
 ```cangjie
+
 public func goToPreviousRow(): Bool
 ```
 
@@ -3479,50 +3302,10 @@ public func goToPreviousRow(): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goToPreviousRow()
-```
-
 ### func goToRow(Int32)
 
 ```cangjie
+
 public func goToRow(position: Int32): Bool
 ```
 
@@ -3544,51 +3327,10 @@ public func goToRow(position: Int32): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800014|Already closed.|
-  |14800019|The SQL must be a query statement.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-resultSet.goToRow(5)
-```
-
 ### func isColumnNull(Int32)
 
 ```cangjie
+
 public func isColumnNull(columnIndex: Int32): Bool
 ```
 
@@ -3612,57 +3354,82 @@ public func isColumnNull(columnIndex: Int32): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-  |14800000|Inner error.|
-  |14800011|Database corrupted.|
-  |14800012|Row out of bounds.|
-  |14800013|Column out of bounds.|
-  |14800014|Already closed.|
-  |14800021|SQLite: Generic error.|
-  |14800022|SQLite: Callback routine requested an abort.|
-  |14800023|SQLite: Access permission denied.|
-  |14800024|SQLite: The database file is locked.|
-  |14800025|SQLite: A table in the database is locked.|
-  |14800026|SQLite: The database is out of memory.|
-  |14800027|SQLite: Attempt to write a readonly database.|
-  |14800028|SQLite: Some kind of disk I/O error occurred.|
-  |14800029|SQLite: The database is full.|
-  |14800030|SQLite: Unable to open the database file.|
-  |14800031|SQLite: TEXT or BLOB exceeds size limit.|
-  |14800032|SQLite: Abort due to constraint violation.|
-  |14800033|SQLite: Data type mismatch.|
-  |14800034|SQLite: Library used incorrectly.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
-    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
-let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
-let isColumnNull = resultSet.isColumnNull(resultSet.getColumnIndex("CODES"))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+2. Incorrect parameter types.
+ |
+  | 14800000 | Inner error.
+ |
+  | 14800011 | Failed to open the database because it is corrupted.
+ |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.
+ |
+  | 14800013 | Resultset is empty or column index is out of bounds.
+ |
+  | 14800014 | The RdbStore or ResultSet is already closed.
+ |
+  | 14800021 | SQLite: Generic error.
+Possible causes: Insert failed or the updated data does not exist.
+ |
+  | 14800022 | SQLite: Callback routine requested an abort.
+ |
+  | 14800023 | SQLite: Access permission denied.
+ |
+  | 14800024 | SQLite: The database file is locked.
+ |
+  | 14800025 | SQLite: A table in the database is locked.
+ |
+  | 14800026 | SQLite: The database is out of memory.
+ |
+  | 14800027 | SQLite: Attempt to write a readonly database.
+ |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.
+ |
+  | 14800029 | SQLite: The database is full.
+ |
+  | 14800030 | SQLite: Unable to open the database file.
+ |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.
+ |
+  | 14800032 | SQLite: Abort due to constraint violation.
+ |
+  | 14800033 | SQLite: Data type mismatch.
+ |
+  | 14800034 | SQLite: Library used incorrectly.
+ |
 
 ## class StoreConfig
 
 ```cangjie
 public class StoreConfig {
-    public let name: String
-    public let securityLevel: RelationalStoreSecurityLevel
-    public let encrypt: Bool
-    public let dataGroupId: String
-    public let customDir: String
-    public let autoCleanDirtyData: Bool
-    public init(name: String, securityLevel: RelationalStoreSecurityLevel, encrypt!: Bool = false, dataGroupId!: String = "", customDir!: String = "", autoCleanDirtyData!: Bool = true)
+    public var name: String
+    public var securityLevel: SecurityLevel
+    public var encrypt: Bool
+    public var dataGroupId: String
+    public var customDir: String
+    public var rootDir: String
+    public var autoCleanDirtyData: Bool
+    public var allowRebuild: Bool
+    public var isReadOnly: Bool
+    public var pluginLibs: Array<String>
+    public var cryptoParam: CryptoParam
+    public var vector: Bool
+    public var tokenizer: Tokenizer
+    public var persist: Bool
+    public var enableSemanticIndex: Bool
+
+
+    public init(securityLevel: SecurityLevel, name!: String = "",
+        encrypt!: Bool = false, dataGroupId!: String = "",
+        customDir!: String = "", rootDir!: String = "",
+        autoCleanDirtyData!: Bool = true, allowRebuild!: Bool = false,
+        isReadOnly!: Bool = false, pluginLibs!: Array<String> = Array<String>(),
+        cryptoParam!: CryptoParam, vector!: Bool = false,
+        tokenizer!: Tokenizer = Tokenizer.NoneTokenizer, persist!: Bool = true,
+        enableSemanticIndex!: Bool = false)
 }
 ```
 
@@ -3672,117 +3439,261 @@ public class StoreConfig {
 
 **起始版本：** 21
 
-### let autoCleanDirtyData
+### var allowRebuild
 
 ```cangjie
-public let autoCleanDirtyData: Bool
+public var allowRebuild: Bool
+```
+
+**功能：** 指定数据库是否支持异常时自动删除，并重建一个空库空表，默认不删除。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var autoCleanDirtyData
+
+```cangjie
+public var autoCleanDirtyData: Bool
 ```
 
 **功能：** 指定是否自动清理云端删除后同步到本地的数据，true表示自动清理，false表示手动清理，默认自动清理。对于端云协同的数据库，当云端删除的数据同步到设备端时，可通过该参数设置设备端是否自动清理。手动清理可以通过cleanDirtyData接口清理。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### let customDir
+### var cryptoParam
 
 ```cangjie
-public let customDir: String
+public var cryptoParam: CryptoParam
+```
+
+**功能：** 指定用户自定义的加密参数。
+
+**类型：** [CryptoParam](#class-cryptoparam)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var customDir
+
+```cangjie
+public var customDir: String
 ```
 
 **功能：** 数据库自定义路径。
 
-> **说明：**
->
-> 数据库将在如下的目录结构中被创建：context.databaseDir + "/rdb/" + customDir，其中context.databaseDir是应用沙箱对应的路径，"/rdb/"表示创建的是关系型数据库，customDir表示自定义的路径。当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。
-> 数据库路径大小限制为128字节，如果超过该大小会开库失败，返回错误。
-
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-### let dataGroupId
+### var dataGroupId
 
 ```cangjie
-public let dataGroupId: String
+public var dataGroupId: String
 ```
 
 **功能：** 应用组ID，需要向应用市场获取。
 
-> **说明：**
->
-> 此属性仅在Stage模型下可用。指定在此dataGroupId对应的沙箱路径下创建RdbStore实例，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-### let encrypt
+### var enableSemanticIndex
 
 ```cangjie
-public let encrypt: Bool
+public var enableSemanticIndex: Bool
+```
+
+**功能：** 指定数据库是否启用语义索引处理功能。true表示启用语义索引处理功能，false表示不启用。默认为false。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var encrypt
+
+```cangjie
+public var encrypt: Bool
 ```
 
 **功能：** 指定数据库是否加密，默认不加密。true: 加密。false: 非加密。
 
 **类型：** Bool
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-### let name
+### var isReadOnly
 
 ```cangjie
-public let name: String
+public var isReadOnly: Bool
+```
+
+**功能：** 指定数据库是否只读，默认为数据库可读写。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var name
+
+```cangjie
+public var name: String
 ```
 
 **功能：** 数据库文件名。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-### let securityLevel
+### var persist
 
 ```cangjie
-public let securityLevel: RelationalStoreSecurityLevel
+public var persist: Bool
+```
+
+**功能：** 指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var pluginLibs
+
+```cangjie
+public var pluginLibs: Array<String>
+```
+
+**功能：** 表示包含有fts（Full-Text Search，即全文搜索引擎）等能力的动态库名的数组。
+
+**类型：** Array\<String>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var rootDir
+
+```cangjie
+public var rootDir: String
+```
+
+**功能：** 指定数据库根路径。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var securityLevel
+
+```cangjie
+public var securityLevel: SecurityLevel
 ```
 
 **功能：** 设置数据库安全级别。
 
-**类型：** [RelationalStoreSecurityLevel](#enum-relationalstoresecuritylevel)
+**类型：** [SecurityLevel](#enum-securitylevel)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-### init(String, RelationalStoreSecurityLevel, Bool, String, String, Bool)
+### var tokenizer
 
 ```cangjie
-public init(name: String, securityLevel: RelationalStoreSecurityLevel, encrypt!: Bool = false, dataGroupId!: String = "", customDir!: String = "", autoCleanDirtyData!: Bool = true)
+public var tokenizer: Tokenizer
 ```
 
-**功能：** 构建StoreConfig。
+**功能：** 指定用户在fts场景下使用哪种分词器。
+
+**类型：** [Tokenizer](#enum-tokenizer)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### var vector
+
+```cangjie
+public var vector: Bool
+```
+
+**功能：** 指定数据库是否是向量数据库，true表示向量数据库，false表示关系型数据库，默认为false。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### init(SecurityLevel, String, Bool, String, String, String, Bool, Bool, Bool, Array\<String>, CryptoParam, Bool, Tokenizer, Bool, Bool)
+
+```cangjie
+
+public init(securityLevel: SecurityLevel, name!: String = "",
+    encrypt!: Bool = false, dataGroupId!: String = "",
+    customDir!: String = "", rootDir!: String = "",
+    autoCleanDirtyData!: Bool = true, allowRebuild!: Bool = false,
+    isReadOnly!: Bool = false, pluginLibs!: Array<String> = Array<String>(),
+    cryptoParam!: CryptoParam, vector!: Bool = false,
+    tokenizer!: Tokenizer = Tokenizer.NoneTokenizer, persist!: Bool = true,
+    enableSemanticIndex!: Bool = false)
+```
+
+**功能：** <font color="red" face="bold">please add description</font>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3792,180 +3703,32 @@ public init(name: String, securityLevel: RelationalStoreSecurityLevel, encrypt!:
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|name|String|是|-|数据库文件名。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|securityLevel|[RelationalStoreSecurityLevel](#enum-securirelationalstoresecurityleveltylevel)|是|-|设置数据库安全级别。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|encrypt|Bool|否|false|**命名参数。** 指定数据库是否加密，默认不加密。<br/> true: 加密。<br/> false: 非加密。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|dataGroupId|String|否|""|**命名参数。** 应用组ID，需要向应用市场获取。<br/>**模型约束：** 此属性仅在Stage模型下可用。<br/>指定在此dataGroupId对应的沙箱路径下创建RdbStore实例，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
+|securityLevel|[SecurityLevel](#enum-securitylevel)|是|-|设置数据库安全级别。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
+|name|String|否|""|数据库文件名。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
+|encrypt|Bool|否|false| **命名参数。** 指定数据库是否加密，默认不加密。<br/> true: 加密。<br/> false: 非加密。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
+|dataGroupId|String|否|""| **命名参数。** 应用组ID，需要向应用市场获取。<br/>**模型约束：** 此属性仅在Stage模型下可用。<br/>指定在此dataGroupId对应的沙箱路径下创建RdbStore实例，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
 |customDir|String|否|""|数据库自定义路径。<br/>**使用约束：** 数据库路径大小限制为128字节，如果超过该大小会开库失败，返回错误。<br/>数据库将在如下的目录结构中被创建：context.databaseDir + "/rdb/" + customDir，其中context.databaseDir是应用沙箱对应的路径，"/rdb/"表示创建的是关系型数据库，customDir表示自定义的路径。当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|autoCleanDirtyData|Bool|否|true|**命名参数。** 指定是否自动清理云端删除后同步到本地的数据，true表示自动清理，false表示手动清理，默认自动清理。<br/>对于端云协同的数据库，当云端删除的数据同步到设备端时，可通过该参数设置设备端是否自动清理。手动清理可以通过cleanDirtyData接口清理。<br/>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client|
-
-## struct Asset
-
-```cangjie
-public struct Asset {
-    public let name: String
-    public let uri: String
-    public let path: String
-    public let createTime: String
-    public let modifyTime: String
-    public let size: String
-    public let status: AssetStatus
-    public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String, status!: AssetStatus = AssetStatus.ASSET_NORMAL)
-}
-```
-
-**功能：** 记录资产附件（文件、图片、视频等类型文件）的相关信息。资产类型的相关接口暂不支持Datashare。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let createTime
-
-```cangjie
-public let createTime: String
-```
-
-**功能：** 资产被创建出来的时间。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let modifyTime
-
-```cangjie
-public let modifyTime: String
-```
-
-**功能：** 资产最后一次被修改的时间。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let name
-
-```cangjie
-public let name: String
-```
-
-**功能：** 资产的名称。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let path
-
-```cangjie
-public let path: String
-```
-
-**功能：** 资产在应用沙箱里的路径。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let size
-
-```cangjie
-public let size: String
-```
-
-**功能：** 资产占用空间的大小。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let status
-
-```cangjie
-public let status: AssetStatus
-```
-
-**功能：** 资产的状态，默认值为ASSET_NORMAL。
-
-**类型：** [AssetStatus](#enum-assetstatus)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### let uri
-
-```cangjie
-public let uri: String
-```
-
-**功能：** 资产的uri，在系统里的绝对路径。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### init(String, String, String, String, String, String, AssetStatus)
-
-```cangjie
-public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String, status!: AssetStatus = AssetStatus.ASSET_NORMAL)
-```
-
-**功能：** 构建Asset。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|资产的名称。|
-|uri|String|是|-|资产的uri，在系统里的绝对路径。|
-|path|String|是|-|资产在应用沙箱里的路径。|
-|createTime|String|是|-|资产被创建出来的时间。|
-|modifyTime|String|是|-|资产最后一次被修改的时间。|
-|size|String|是|-|资产占用空间的大小。|
-|status|[AssetStatus](#enum-assetstatus)|否|AssetStatus.ASSET_NORMAL|**命名参数。** 资产的状态，默认值为ASSET_NORMAL。|
+|rootDir|String|否|""|指定数据库根路径。<br>从API version 18开始，支持此可选参数。将从如下目录打开或删除数据库：rootDir + "/" + customDir。通过设置此参数打开的数据库为只读模式，不允许对数据库进行写操作，否则返回错误码801。配置此参数打开或删除数据库时，应确保对应路径下数据库文件存在，并且有读取权限，否则返回错误码14800010。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|autoCleanDirtyData|Bool|否|true| **命名参数。** 指定是否自动清理云端删除后同步到本地的数据，true表示自动清理，false表示手动清理，默认自动清理。<br/>对于端云协同的数据库，当云端删除的数据同步到设备端时，可通过该参数设置设备端是否自动清理。手动清理可以通过cleanDirtyData接口清理。<br/>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client|
+|allowRebuild|Bool|否|false|指定数据库是否支持异常时自动删除，并重建一个空库空表，默认不删除。<br>true：自动删除。<br>false：不自动删除。<br>从API version 12开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|isReadOnly|Bool|否|false|指定数据库是否只读，默认为数据库可读写。<br>true：只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。<br>false：允许对数据库进行读写操作。<br>从API version 12开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|pluginLibs|Array\<String>|否|Array<String>()|表示包含有fts（Full-Text Search，即全文搜索引擎）等能力的动态库名的数组。<br>使用约束：<br>1. 动态库名的数量限制最多为16个，如果超过该数量会开库失败，返回错误。<br>2. 动态库名需为本应用沙箱路径下或系统路径下的动态库，如果动态库无法加载会开库失败，返回错误。<br>3. 动态库名需为完整路径，用于被sqlite加载。<br>样例：[context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]，其中context.bundleCodeDir是应用沙箱对应的路径，"/libs/arm64/"表示子目录，libtokenizer.so表示动态库的文件名。当此参数不填时，默认不加载动态库。<br>4. 动态库需要包含其全部依赖，避免依赖项丢失导致无法运行。<br>例如：在ndk工程中，使用默认编译参数构建libtokenizer.so，此动态库依赖c++标准库。在加载此动态库时，由于namespace与编译时不一致，链接到了错误的libc++_shared.so，导致__emutls_get_address符号找不到。要解决此问题，需在编译时静态链接c++标准库，具体请参见NDK工程构建概述。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|cryptoParam|[CryptoParam](#class-cryptoparam)|否|-|**命名参数。**指定用户自定义的加密参数。<br>当此参数不填时，使用默认的加密参数，见CryptoParam各参数默认值。<br>此配置只有在encrypt选项设置为真时才有效。<br>从API version 14开始，支持此可选参数。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|vector|Bool|否|false|指定数据库是否是向量数据库，true表示向量数据库，false表示关系型数据库，默认为false。<br>向量数据库适用于存储和处理高维向量数据，关系型数据库适用于存储和处理结构化数据。<br>当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|tokenizer|[Tokenizer](#enum-tokenizer)|否|Tokenizer.NoneTokenizer|指定用户在fts场景下使用哪种分词器。<br>当此参数不填时，则在fts下不支持中文以及多国语言分词，但仍可支持英文分词。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|persist|Bool|否|true|指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。<br>内存数据库不支持加密、backup、restore、跨进程访问及分布式能力，securityLevel属性会被忽略。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
+|enableSemanticIndex|Bool|否|false|指定数据库是否启用语义索引处理功能。true表示启用语义索引处理功能，false表示不启用。默认为false。<br>系统能力： SystemCapability.DistributedDataManager.RelationalStore.Core|
 
 ## enum AssetStatus
 
 ```cangjie
 public enum AssetStatus {
-    | ASSET_NORMAL
-    | ASSET_INSERT
-    | ASSET_UPDATE
-    | ASSET_DELETE
-    | ASSET_ABNORMAL
-    | ASSET_DOWNLOADING
+    | AssetNormal
+    | AssetInsert
+    | AssetUpdate
+    | AssetDelete
+    | AssetAbnormal
+    | AssetDownloading
     | ...
 }
 ```
@@ -3976,10 +3739,10 @@ public enum AssetStatus {
 
 **起始版本：** 21
 
-### ASSET_ABNORMAL
+### AssetAbnormal
 
 ```cangjie
-ASSET_ABNORMAL
+AssetAbnormal
 ```
 
 **功能：** 表示资产状态异常。
@@ -3988,10 +3751,10 @@ ASSET_ABNORMAL
 
 **起始版本：** 21
 
-### ASSET_DELETE
+### AssetDelete
 
 ```cangjie
-ASSET_DELETE
+AssetDelete
 ```
 
 **功能：** 表示资产需要在云端删除。
@@ -4000,10 +3763,10 @@ ASSET_DELETE
 
 **起始版本：** 21
 
-### ASSET_DOWNLOADING
+### AssetDownloading
 
 ```cangjie
-ASSET_DOWNLOADING
+AssetDownloading
 ```
 
 **功能：** 表示资产正在下载到本地设备。
@@ -4012,10 +3775,10 @@ ASSET_DOWNLOADING
 
 **起始版本：** 21
 
-### ASSET_INSERT
+### AssetInsert
 
 ```cangjie
-ASSET_INSERT
+AssetInsert
 ```
 
 **功能：** 表示资产需要插入到云端。
@@ -4024,10 +3787,10 @@ ASSET_INSERT
 
 **起始版本：** 21
 
-### ASSET_NORMAL
+### AssetNormal
 
 ```cangjie
-ASSET_NORMAL
+AssetNormal
 ```
 
 **功能：** 表示资产状态正常。
@@ -4036,10 +3799,10 @@ ASSET_NORMAL
 
 **起始版本：** 21
 
-### ASSET_UPDATE
+### AssetUpdate
 
 ```cangjie
-ASSET_UPDATE
+AssetUpdate
 ```
 
 **功能：** 表示资产需要更新到云端。
@@ -4048,30 +3811,12 @@ ASSET_UPDATE
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该AssetStatus实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该AssetStatus实例的值。|
-
 ## enum ChangeType
 
 ```cangjie
 public enum ChangeType {
-    | DATA_CHANGE
-    | ASSET_CHANGE
+    | DataChange
+    | AssetChange
     | ...
 }
 ```
@@ -4082,10 +3827,10 @@ public enum ChangeType {
 
 **起始版本：** 21
 
-### ASSET_CHANGE
+### AssetChange
 
 ```cangjie
-ASSET_CHANGE
+AssetChange
 ```
 
 **功能：** 表示是资产附件发生了变更。
@@ -4094,10 +3839,10 @@ ASSET_CHANGE
 
 **起始版本：** 21
 
-### DATA_CHANGE
+### DataChange
 
 ```cangjie
-DATA_CHANGE
+DataChange
 ```
 
 **功能：** 表示是数据发生变更。
@@ -4106,34 +3851,16 @@ DATA_CHANGE
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该ChangeType实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该ChangeType实例的值。|
-
 ## enum ConflictResolution
 
 ```cangjie
 public enum ConflictResolution {
-    | ON_CONFLICT_NONE
-    | ON_CONFLICT_ROLLBACK
-    | ON_CONFLICT_ABORT
-    | ON_CONFLICT_FAIL
-    | ON_CONFLICT_IGNORE
-    | ON_CONFLICT_REPLACE
+    | OnConflictNone
+    | OnConflictRollback
+    | OnConflictAbort
+    | OnConflictFail
+    | OnConflictIgnore
+    | OnConflictReplace
     | ...
 }
 ```
@@ -4144,22 +3871,21 @@ public enum ConflictResolution {
 
 **起始版本：** 21
 
-### ON_CONFLICT_ABORT
+### OnConflictAbort
 
 ```cangjie
-ON_CONFLICT_ABORT
+OnConflictAbort
 ```
 
 **功能：** 表示当冲突发生时，中止当前SQL语句，并撤销当前SQL语句所做的任何更改，但是由同一事务中先前的SQL语句引起的更改被保留并且事务保持活动状态。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-### ON_CONFLICT_FAIL
+### OnConflictFail
 
 ```cangjie
-ON_CONFLICT_FAIL
+OnConflictFail
 ```
 
 **功能：** 表示当冲突发生时，中止当前SQL语句。但它不会撤销失败的SQL语句的先前更改，也不会结束事务。
@@ -4168,10 +3894,10 @@ ON_CONFLICT_FAIL
 
 **起始版本：** 21
 
-### ON_CONFLICT_IGNORE
+### OnConflictIgnore
 
 ```cangjie
-ON_CONFLICT_IGNORE
+OnConflictIgnore
 ```
 
 **功能：** 表示当冲突发生时，跳过包含违反约束的行并继续处理SQL语句的后续行。
@@ -4180,10 +3906,10 @@ ON_CONFLICT_IGNORE
 
 **起始版本：** 21
 
-### ON_CONFLICT_NONE
+### OnConflictNone
 
 ```cangjie
-ON_CONFLICT_NONE
+OnConflictNone
 ```
 
 **功能：** 表示当冲突发生时，不做任何处理。
@@ -4192,10 +3918,10 @@ ON_CONFLICT_NONE
 
 **起始版本：** 21
 
-### ON_CONFLICT_REPLACE
+### OnConflictReplace
 
 ```cangjie
-ON_CONFLICT_REPLACE
+OnConflictReplace
 ```
 
 **功能：** 表示当冲突发生时，在插入或更新当前行之前删除导致约束违例的预先存在的行，并且命令会继续正常执行。
@@ -4204,10 +3930,10 @@ ON_CONFLICT_REPLACE
 
 **起始版本：** 21
 
-### ON_CONFLICT_ROLLBACK
+### OnConflictRollback
 
 ```cangjie
-ON_CONFLICT_ROLLBACK
+OnConflictRollback
 ```
 
 **功能：** 表示当冲突发生时，中止SQL语句并回滚当前事务。
@@ -4216,30 +3942,12 @@ ON_CONFLICT_ROLLBACK
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该ConflictResolution实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该ConflictResolution实例的值。|
-
 ## enum DistributedType
 
 ```cangjie
 public enum DistributedType {
-    | DISTRIBUTED_DEVICE
-    | DISTRIBUTED_CLOUD
+    | DistributedDevice
+    | DistributedCloud
     | ...
 }
 ```
@@ -4250,10 +3958,10 @@ public enum DistributedType {
 
 **起始版本：** 21
 
-### DISTRIBUTED_CLOUD
+### DistributedCloud
 
 ```cangjie
-DISTRIBUTED_CLOUD
+DistributedCloud
 ```
 
 **功能：** 表示在设备和云端之间分布式的数据库表。
@@ -4262,10 +3970,10 @@ DISTRIBUTED_CLOUD
 
 **起始版本：** 21
 
-### DISTRIBUTED_DEVICE
+### DistributedDevice
 
 ```cangjie
-DISTRIBUTED_DEVICE
+DistributedDevice
 ```
 
 **功能：** 表示在不同设备之间分布式的数据库表。
@@ -4274,141 +3982,251 @@ DISTRIBUTED_DEVICE
 
 **起始版本：** 21
 
-### func getValue()
+## enum EncryptionAlgo
 
 ```cangjie
-public func getValue(): Int32
+public enum EncryptionAlgo {
+    | Aes256Gcm
+    | Aes256Cbc
+    | ...
+}
 ```
 
-**功能：** 获取该DistributedType实例的值。
+**功能：** 数据库的加密算法枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-**返回值：**
+### Aes256Cbc
 
-|类型|说明|
-|:----|:----|
-|Int32|返回该DistributedType实例的值。|
+```cangjie
+Aes256Cbc
+```
+
+**功能：** AES_256_CBC加密算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### Aes256Gcm
+
+```cangjie
+Aes256Gcm
+```
+
+**功能：** AES_256_GCM加密算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
 
 ## enum Field
 
 ```cangjie
 public enum Field {
-    | CURSOR_FIELD
-    | ORIGIN_FIELD
-    | DELETED_FLAG_FIELD
-    | OWNER_FIELD
-    | PRIVILEGE_FIELD
-    | SHARING_RESOURCE_FIELD
+    | CursorField
+    | OriginField
+    | DeletedFlagField
+    | OwnerField
+    | PrivilegeField
+    | SharingResourceField
     | ...
 }
 ```
 
 **功能：** 用于谓词查询条件的特殊字段。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### CURSOR_FIELD
+### CursorField
 
 ```cangjie
-CURSOR_FIELD
+CursorField
 ```
 
 **功能：** 用于cursor查找的字段名。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### DELETED_FLAG_FIELD
+### DeletedFlagField
 
 ```cangjie
-DELETED_FLAG_FIELD
+DeletedFlagField
 ```
 
 **功能：** 用于cursor查找的结果集返回时填充的字段，表示云端删除的数据同步到本地后数据是否清理。返回的结果集中，该字段对应的value为false表示数据未清理，true表示数据已清理。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### ORIGIN_FIELD
+### OriginField
 
 ```cangjie
-ORIGIN_FIELD
+OriginField
 ```
 
 **功能：** 用于cursor查找时指定数据来源的字段名。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### OWNER_FIELD
+### OwnerField
 
 ```cangjie
-OWNER_FIELD
+OwnerField
 ```
 
 **功能：** 用于共享表中查找owner时返回的结果集中填充的字段，表示当前共享记录的共享发起者。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### PRIVILEGE_FIELD
+### PrivilegeField
 
 ```cangjie
-PRIVILEGE_FIELD
+PrivilegeField
 ```
 
 **功能：** 用于共享表中查找共享数据权限时返回的结果集中填充的字段，表示当前共享记录的允许的操作权限。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### SHARING_RESOURCE_FIELD
+### SharingResourceField
 
 ```cangjie
-SHARING_RESOURCE_FIELD
+SharingResourceField
 ```
 
 **功能：** 用于数据共享时查找共享数据的共享资源时返回的结果集中填充的字段，表示共享数据的共享资源标识。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **起始版本：** 21
 
-### func getValue()
+## enum HmacAlgo
 
 ```cangjie
-public func getValue(): String
+public enum HmacAlgo {
+    | Sha1
+    | Sha256
+    | Sha512
+    | ...
+}
 ```
 
-**功能：** 获取该Field实例的值。
+**功能：** 数据库的HMAC算法枚举。
 
-**系统能力：** SystemCapability.CloudSync.Client
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-**返回值：**
+### Sha1
 
-|类型|说明|
-|:----|:----|
-|String|返回该Field实例的值。|
+```cangjie
+Sha1
+```
+
+**功能：** HMAC_SHA1算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### Sha256
+
+```cangjie
+Sha256
+```
+
+**功能：** HMAC_SHA256算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### Sha512
+
+```cangjie
+Sha512
+```
+
+**功能：** 	HMAC_SHA512算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+## enum KdfAlgo
+
+```cangjie
+public enum KdfAlgo {
+    | KdfSha1
+    | KdfSha256
+    | KdfSha512
+    | ...
+}
+```
+
+**功能：** 数据库的PBKDF2算法枚举。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### KdfSha1
+
+```cangjie
+KdfSha1
+```
+
+**功能：** PBKDF2_HMAC_SHA1算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### KdfSha256
+
+```cangjie
+KdfSha256
+```
+
+**功能：** PBKDF2_HMAC_SHA256算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### KdfSha512
+
+```cangjie
+KdfSha512
+```
+
+**功能：** PBKDF2_HMAC_SHA512算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
 
 ## enum Origin
 
 ```cangjie
 public enum Origin {
-    | LOCAL
-    | CLOUD
-    | REMOTE
+    | Local
+    | Cloud
+    | Remote
     | ...
 }
 ```
@@ -4419,10 +4237,10 @@ public enum Origin {
 
 **起始版本：** 21
 
-### CLOUD
+### Cloud
 
 ```cangjie
-CLOUD
+Cloud
 ```
 
 **功能：** 表示云端同步的数据。
@@ -4431,10 +4249,10 @@ CLOUD
 
 **起始版本：** 21
 
-### LOCAL
+### Local
 
 ```cangjie
-LOCAL
+Local
 ```
 
 **功能：** 表示本地数据。
@@ -4443,10 +4261,10 @@ LOCAL
 
 **起始版本：** 21
 
-### REMOTE
+### Remote
 
 ```cangjie
-REMOTE
+Remote
 ```
 
 **功能：** 表示端端同步的数据。
@@ -4455,31 +4273,14 @@ REMOTE
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该Origin实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该Origin实例的值。|
-
 ## enum Progress
 
 ```cangjie
 public enum Progress {
-    | SYNC_BEGIN
-    | SYNC_IN_PROGRESS
-    | SYNC_FINISH
+    | SyncBegin
+    | SyncInProgress
+    | SyncFinish
+    | ...
 }
 ```
 
@@ -4489,10 +4290,10 @@ public enum Progress {
 
 **起始版本：** 21
 
-### SYNC_BEGIN
+### SyncBegin
 
 ```cangjie
-SYNC_BEGIN
+SyncBegin
 ```
 
 **功能：** 表示端云同步过程开始。
@@ -4501,10 +4302,10 @@ SYNC_BEGIN
 
 **起始版本：** 21
 
-### SYNC_FINISH
+### SyncFinish
 
 ```cangjie
-SYNC_FINISH
+SyncFinish
 ```
 
 **功能：** 表示端云同步过程已完成。
@@ -4513,10 +4314,10 @@ SYNC_FINISH
 
 **起始版本：** 21
 
-### SYNC_IN_PROGRESS
+### SyncInProgress
 
 ```cangjie
-SYNC_IN_PROGRESS
+SyncInProgress
 ```
 
 **功能：** 表示正在端云同步过程中。
@@ -4525,35 +4326,17 @@ SYNC_IN_PROGRESS
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该Progress实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该Progress实例的值。|
-
 ## enum ProgressCode
 
 ```cangjie
 public enum ProgressCode {
-    | SUCCESS
-    | UNKNOWN_ERROR
-    | NETWORK_ERROR
-    | CLOUD_DISABLED
-    | LOCKED_BY_OTHERS
-    | RECORD_LIMIT_EXCEEDED
-    | NO_SPACE_FOR_ASSET
+    | Success
+    | UnknownError
+    | NetworkError
+    | CloudDisabled
+    | LockedByOthers
+    | RecordLimitExceeded
+    | NoSpaceForAsset
     | ...
 }
 ```
@@ -4564,10 +4347,10 @@ public enum ProgressCode {
 
 **起始版本：** 21
 
-### CLOUD_DISABLED
+### CloudDisabled
 
 ```cangjie
-CLOUD_DISABLED
+CloudDisabled
 ```
 
 **功能：** 表示云端不可用。
@@ -4576,10 +4359,10 @@ CLOUD_DISABLED
 
 **起始版本：** 21
 
-### LOCKED_BY_OTHERS
+### LockedByOthers
 
 ```cangjie
-LOCKED_BY_OTHERS
+LockedByOthers
 ```
 
 **功能：** 表示有其他设备正在端云同步，本设备无法进行端云同步。请确保无其他设备占用云端资源后，再使用本设备进行端云同步任务。
@@ -4588,10 +4371,10 @@ LOCKED_BY_OTHERS
 
 **起始版本：** 21
 
-### NETWORK_ERROR
+### NetworkError
 
 ```cangjie
-NETWORK_ERROR
+NetworkError
 ```
 
 **功能：** 表示端云同步过程遇到网络错误。
@@ -4600,10 +4383,10 @@ NETWORK_ERROR
 
 **起始版本：** 21
 
-### NO_SPACE_FOR_ASSET
+### NoSpaceForAsset
 
 ```cangjie
-NO_SPACE_FOR_ASSET
+NoSpaceForAsset
 ```
 
 **功能：** 表示云空间剩余空间小于待同步的资产大小。
@@ -4612,10 +4395,10 @@ NO_SPACE_FOR_ASSET
 
 **起始版本：** 21
 
-### RECORD_LIMIT_EXCEEDED
+### RecordLimitExceeded
 
 ```cangjie
-RECORD_LIMIT_EXCEEDED
+RecordLimitExceeded
 ```
 
 **功能：** 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。
@@ -4624,10 +4407,10 @@ RECORD_LIMIT_EXCEEDED
 
 **起始版本：** 21
 
-### SUCCESS
+### Success
 
 ```cangjie
-SUCCESS
+Success
 ```
 
 **功能：** 表示端云同步过程成功。
@@ -4636,10 +4419,10 @@ SUCCESS
 
 **起始版本：** 21
 
-### UNKNOWN_ERROR
+### UnknownError
 
 ```cangjie
-UNKNOWN_ERROR
+UnknownError
 ```
 
 **功能：** 表示端云同步过程遇到未知错误。
@@ -4648,28 +4431,10 @@ UNKNOWN_ERROR
 
 **起始版本：** 21
 
-### func getValue()
+## enum SecurityLevel
 
 ```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该ProgressCode实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该ProgressCode实例的值。|
-
-## enum RelationalStoreSecurityLevel
-
-```cangjie
-public enum RelationalStoreSecurityLevel {
+public enum SecurityLevel {
     | S1
     | S2
     | S3
@@ -4732,31 +4497,14 @@ S4
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该SecurityLevel实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该SecurityLevel实例的值。|
-
 ## enum SubscribeType
 
 ```cangjie
 public enum SubscribeType {
-    | SUBSCRIBE_TYPE_REMOTE
-    | SUBSCRIBE_TYPE_CLOUD
-    | SUBSCRIBE_TYPE_CLOUD_DETAILS
+    | SubscribeTypeRemote
+    | SubscribeTypeCloud
+    | SubscribeTypeCloudDetails
+    | ...
 }
 ```
 
@@ -4766,10 +4514,10 @@ public enum SubscribeType {
 
 **起始版本：** 21
 
-### SUBSCRIBE_TYPE_CLOUD
+### SubscribeTypeCloud
 
 ```cangjie
-SUBSCRIBE_TYPE_CLOUD
+SubscribeTypeCloud
 ```
 
 **功能：** 订阅云端数据更改。
@@ -4778,10 +4526,10 @@ SUBSCRIBE_TYPE_CLOUD
 
 **起始版本：** 21
 
-### SUBSCRIBE_TYPE_CLOUD_DETAILS
+### SubscribeTypeCloudDetails
 
 ```cangjie
-SUBSCRIBE_TYPE_CLOUD_DETAILS
+SubscribeTypeCloudDetails
 ```
 
 **功能：** 订阅云端数据更改详情。
@@ -4790,10 +4538,10 @@ SUBSCRIBE_TYPE_CLOUD_DETAILS
 
 **起始版本：** 21
 
-### SUBSCRIBE_TYPE_REMOTE
+### SubscribeTypeRemote
 
 ```cangjie
-SUBSCRIBE_TYPE_REMOTE
+SubscribeTypeRemote
 ```
 
 **功能：** 订阅远程数据更改。
@@ -4802,33 +4550,15 @@ SUBSCRIBE_TYPE_REMOTE
 
 **起始版本：** 21
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取该SubscribeType实例的值。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该SubscribeType实例的值。|
-
 ## enum SyncMode
 
 ```cangjie
 public enum SyncMode {
-    | SYNC_MODE_PUSH
-    | SYNC_MODE_PULL
-    | SYNC_MODE_TIME_FIRST
-    | SYNC_MODE_NATIVE_FIRST
-    | SYNC_MODE_CLOUD_FIRST
+    | SyncModePush
+    | SyncModePull
+    | SyncModeTimeFirst
+    | SyncModeNativeFirst
+    | SyncModeCloudFirst
     | ...
 }
 ```
@@ -4839,10 +4569,10 @@ public enum SyncMode {
 
 **起始版本：** 21
 
-### SYNC_MODE_CLOUD_FIRST
+### SyncModeCloudFirst
 
 ```cangjie
-SYNC_MODE_CLOUD_FIRST
+SyncModeCloudFirst
 ```
 
 **功能：** 表示数据从云端同步到本地设备。
@@ -4851,10 +4581,10 @@ SYNC_MODE_CLOUD_FIRST
 
 **起始版本：** 21
 
-### SYNC_MODE_NATIVE_FIRST
+### SyncModeNativeFirst
 
 ```cangjie
-SYNC_MODE_NATIVE_FIRST
+SyncModeNativeFirst
 ```
 
 **功能：** 表示数据从本地设备同步到云端。
@@ -4863,10 +4593,10 @@ SYNC_MODE_NATIVE_FIRST
 
 **起始版本：** 21
 
-### SYNC_MODE_PULL
+### SyncModePull
 
 ```cangjie
-SYNC_MODE_PULL
+SyncModePull
 ```
 
 **功能：** 表示数据从远程设备拉至本地设备。
@@ -4875,10 +4605,10 @@ SYNC_MODE_PULL
 
 **起始版本：** 21
 
-### SYNC_MODE_PUSH
+### SyncModePush
 
 ```cangjie
-SYNC_MODE_PUSH
+SyncModePush
 ```
 
 **功能：** 表示数据从本地设备推送到远程设备。
@@ -4887,10 +4617,10 @@ SYNC_MODE_PUSH
 
 **起始版本：** 21
 
-### SYNC_MODE_TIME_FIRST
+### SyncModeTimeFirst
 
 ```cangjie
-SYNC_MODE_TIME_FIRST
+SyncModeTimeFirst
 ```
 
 **功能：** 表示数据从修改时间较近的一端同步到修改时间较远的一端。
@@ -4899,33 +4629,68 @@ SYNC_MODE_TIME_FIRST
 
 **起始版本：** 21
 
-### func getValue()
+## enum Tokenizer
 
 ```cangjie
-public func getValue(): Int32
+public enum Tokenizer {
+    | NoneTokenizer
+    | IcuTokenizer
+    | CustomTokenizer
+    | ...
+}
 ```
 
-**功能：** 获取该SyncMode实例的值。
+**功能：** 描述fts（全文搜索）场景下使用的分词器枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 21
 
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回该SyncMode实例的值。|
-
-## enum RelationalStoreValueType
+### CustomTokenizer
 
 ```cangjie
-public enum RelationalStoreValueType {
-    | null
-    | integer(Int64)
-    | double(Float64)
-    | string(String)
-    | boolean(Bool)
+CustomTokenizer
+```
+
+**功能：** 表示使用自研分词器，可支持中文（简体、繁体）、英文、阿拉伯数字。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### IcuTokenizer
+
+```cangjie
+IcuTokenizer
+```
+
+**功能：** 表示使用icu分词器，支持中文以及多国语言。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### NoneTokenizer
+
+```cangjie
+NoneTokenizer
+```
+
+**功能：** 不使用分词器。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+## enum ValueType
+
+```cangjie
+public enum ValueType {
+    | Null
+    | Integer(Int64)
+    | Double(Float64)
+    | StringValue(String)
+    | Boolean(Bool)
     | Uint8Array(Array<UInt8>)
     | AssetEnum(Asset)
     | AssetsEnum(Array<Asset>)
@@ -4963,6 +4728,66 @@ AssetsEnum(Array<Asset>)
 
 **起始版本：** 21
 
+### Boolean(Bool)
+
+```cangjie
+Boolean(Bool)
+```
+
+**功能：** 表示值类型为布尔值。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### Double(Float64)
+
+```cangjie
+Double(Float64)
+```
+
+**功能：** 表示值类型为浮点型数字。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### Integer(Int64)
+
+```cangjie
+Integer(Int64)
+```
+
+**功能：** 表示值类型为整型数字。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### Null
+
+```cangjie
+Null
+```
+
+**功能：** 表示值类型为空。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
+### StringValue(String)
+
+```cangjie
+StringValue(String)
+```
+
+**功能：** 表示值类型为字符。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**起始版本：** 21
+
 ### Uint8Array(Array\<UInt8>)
 
 ```cangjie
@@ -4975,62 +4800,18 @@ Uint8Array(Array<UInt8>)
 
 **起始版本：** 21
 
-### boolean(Bool)
+## type Assets
 
 ```cangjie
-boolean(Bool)
+public type Assets = Array<Asset>
 ```
 
-**功能：** 表示值类型为布尔值。
+**功能：** [Assets](#type-assets)是[Array < Asset >](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array)类型的别名。
 
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### double(Float64)
+## type ValuesBucket
 
 ```cangjie
-double(Float64)
+public type ValuesBucket = Map<String, ValueType>
 ```
 
-**功能：** 表示值类型为浮点型数字。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### integer(Int64)
-
-```cangjie
-integer(Int64)
-```
-
-**功能：** 表示值类型为整型数字。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### null
-
-```cangjie
-null
-```
-
-**功能：** 表示值类型为空。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
-
-### string(String)
-
-```cangjie
-string(String)
-```
-
-**功能：** 表示值类型为字符。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**起始版本：** 21
+**功能：** [ValuesBucket](#type-valuesbucket)是[Map<String,ValueType>](../../../../User_Manual/source_zh_cn/generic/generic_class.md#泛型类)类型的别名。

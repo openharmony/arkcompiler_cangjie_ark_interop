@@ -62,7 +62,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 |  |  | year | 显示将年份添加到显示的时间。 |
 |  |  | zone | 显示将本地时区添加到显示的时间。 |
 |  |  | wrap | 日志换行显示时，新行不增加时间戳等前缀。 |
-| -b | --baselevel | &lt;loglevel&gt; | 设置可打印日志的最低等级：D(DEBUG)/I(INFO)/W(WARN)/E(ERROR)/F(FATAL)。 |
+| -b | --baselevel | &lt;loglevel&gt; | 设置可打印日志的最低等级：D(Debug)/I(Info)/W(Warn)/E(Error)/F(Fatal)。 |
 
 ## 常用命令
 
@@ -185,11 +185,11 @@ $ reboot
 $ hilog -s
 Log statistic report (Duration: 0h0m32s.564, From: 11-15 16:04:08.628):
 Total lines: 137517, length: 8.0M
-DEBUG lines: 0(0%), length: 0.0B(0%)
-INFO lines: 101795(74%), length: 6.1M(76%)
-WARN lines: 10268(7.5%), length: 719.9K(8.8%)
-ERROR lines: 25452(19%), length: 1.2M(15%)
-FATAL lines: 2(0.0015%), length: 259.0B(0.0031%)
+Debug lines: 0(0%), length: 0.0B(0%)
+Info lines: 101795(74%), length: 6.1M(76%)
+Warn lines: 10268(7.5%), length: 719.9K(8.8%)
+Error lines: 25452(19%), length: 1.2M(15%)
+Fatal lines: 2(0.0015%), length: 259.0B(0.0031%)
 ------------------------------------------------------------
 Domain Table:
 LOGTYPE- DOMAIN---- TAG----------------------------- MAX_FREQ-- TIME---------------- MAX_TP---- TIME---------------- LINES----- LENGTH---- DROPPED---

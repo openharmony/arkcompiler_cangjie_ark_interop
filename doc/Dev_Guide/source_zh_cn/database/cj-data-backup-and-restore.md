@@ -33,14 +33,14 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // 获取context
             globalAbilityContext = this.context
+
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
@@ -50,17 +50,18 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     import kit.ArkData.*
-    import kit.UIKit.BusinessException
-    import kit.AbilityKit.getStageContext
+    import kit.ArkUI.BusinessException
+    import ohos.data.distributed_kv_store.KVManager
+    import ohos.data.distributed_kv_store.SingleKVStore
 
     var kvManager: Option<KVManager> = Option<KVManager>.None
     var kvStore: Option<SingleKVStore> = Option<SingleKVStore>.None
 
     try {
         // 1. 创建kvManager
-        let kvManagerConfig = KVManagerConfig(getStageContext(globalAbilityContext.getOrThrow()), "com.example.datamanagertest")
+        let kvManagerConfig = KVManagerConfig(globalAbilityContext.getOrThrow(), "com.example.datamanagertest")
         kvManager = DistributedKVStore.createKVManager(kvManagerConfig)
         // 2. 配置数据库参数
         let options = KVOptions(
@@ -71,9 +72,9 @@
             autoSync: false,
         )
         // 3. 创建kvStore
-        kvStore = kvManager.getOrThrow().getSingleKVStore("storeId", options)
+        kvStore = kvManager.getOrThrow().getKVStore("storeId", options)
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
    ```
 
@@ -82,14 +83,15 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    import ohos.data.distributed_kv_store.ValueType as KVValueType
+
     const KEY_TEST_STRING_ELEMENT: String = "key_test_string"
     const VALUE_TEST_STRING_ELEMENT: String = "value_test_string"
 
     try {
-        kvStore.getOrThrow().put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))
+        kvStore.getOrThrow().put(KEY_TEST_STRING_ELEMENT, KVValueType.StringValue(VALUE_TEST_STRING_ELEMENT))
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -98,11 +100,10 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     try {
         kvStore.getOrThrow().backup("BK001")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -111,11 +112,10 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     try {
         kvStore.getOrThrow().delete(KEY_TEST_STRING_ELEMENT)
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -124,11 +124,10 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     try {
         kvStore.getOrThrow().restore("BK001")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -137,12 +136,11 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     import std.collection.ArrayList
     try {
         kvStore.getOrThrow().deleteBackup(ArrayList<String>(["BK001"]))
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -159,20 +157,19 @@
 <!-- compile -->
 
 ```cangjie
-// index.cj
 import kit.ArkData.*
-import kit.UIKit.BusinessException
-import kit.AbilityKit.getStageContext
+import kit.ArkUI.BusinessException
+import ohos.data.relational_store.RdbStore
 
 var rdbStore_: Option<RdbStore> = Option<RdbStore>.None
 let storeConfig_ = StoreConfig(
-    "RdbTest.db", // 数据库文件名
-    RelationalStoreSecurityLevel.S3, // 数据库安全级别
+    RelationalStoreSecurityLevel.S3,// 数据库安全级别
+    name: "RdbTest.db", // 数据库文件名
     encrypt: false, // 可选参数，指定数据库是否加密，默认不加密
 )
 
 try {
-    let store = getRdbStore(getStageContext(globalAbilityContext.getOrThrow()), storeConfig_)
+    let store = getRdbStore(globalAbilityContext.getOrThrow(), storeConfig_)
     store.executeSql("CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))")
     /**
      * "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。
@@ -181,7 +178,7 @@ try {
     store.backup("Backup.db")
     rdbStore_ = store
 } catch (e: BusinessException) {
-    AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+    Hilog.error(0, "ErrorCode: ${e.code}", e.message)
 }
 ```
 
@@ -200,7 +197,9 @@ try {
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    import ohos.data.relational_store.RdbPredicates
+    import ohos.data.relational_store.RdbStore
+
     try {
         let predicates = RdbPredicates("EMPLOYEE")
         let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]
@@ -222,7 +221,7 @@ try {
         if (e.code == 14800011) {
             // 执行下文的步骤，即关闭结果集之后进行数据的恢复
         }
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -231,7 +230,7 @@ try {
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    import ohos.data.relational_store.ResultSet
     try {
         // 所有打开着的结果集
         var resultSets: Array<ResultSet> = Array<ResultSet>()
@@ -243,7 +242,7 @@ try {
         }
     } catch (e: BusinessException) {
         if (e.code != 14800014) {
-            AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+            Hilog.error(0, "ErrorCode: ${e.code}", e.message)
         }
     }
    ```
@@ -253,14 +252,13 @@ try {
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     import kit.CoreFileKit.FileFs
     try {
         /**
          * "Backup.db"为备份数据库文件名，默认在当前 store 所在路径下查找备份文件 Backup.db。
          * 如在备份时指定了绝对路径："/data/storage/el2/database/Backup.db", 需要传入绝对路径。
          */
-        let backup = globalAbilityContext.getOrThrow().databaseDir + '/entry/rdb/Backup.db'
+        let backup = '/data/storage/el2/database/Backup.db' + '/entry/rdb/Backup.db'
         if (!FileFs.access(backup)) {
             AppLog.info("no backup file")
         }
@@ -268,6 +266,6 @@ try {
         rdbStore.getOrThrow().restore("Backup.db")
         AppLog.info("Succeeded in backup data.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```

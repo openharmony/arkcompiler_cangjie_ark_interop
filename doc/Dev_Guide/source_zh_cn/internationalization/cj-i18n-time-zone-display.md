@@ -13,7 +13,6 @@
    <!-- compile -->
 
    ```cangjie
-   // index.cj
    import kit.LocalizationKit.*
    ```
 
@@ -22,7 +21,6 @@
    <!-- compile -->
 
    ```cangjie
-    // index.cj
     let timezone: TimeZone = getTimeZone(zoneID: 'America/Sao_Paulo')
     let timeZoneName: String = timezone.getDisplayName(locale:'zh-Hans', isDST: true) // timeZoneName = '巴西利亚标准时间'
    ```

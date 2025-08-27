@@ -12,7 +12,7 @@
 | -------                              |  ---- |
 | /data/storage/el1/base               |  应用el1级别加密数据目录 |
 | /data/storage/el2/base               |  应用el2级别加密数据目录 |
-| /data/storage/el2/distributedfiles   |  应用el2加密级别有帐号分布式数据融合目录 |
+| /data/storage/el2/distributedfiles   |  应用el2加密级别有账号分布式数据融合目录 |
 
 ## 文件URI规范
 

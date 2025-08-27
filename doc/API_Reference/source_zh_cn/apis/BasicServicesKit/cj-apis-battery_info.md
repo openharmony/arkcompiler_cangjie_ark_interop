@@ -1,4 +1,4 @@
-# ohos.battery_info（电量信息）
+# ohos.battery_info
 
 该模块主要提供电池状态和充放电状态的查询接口。
 
@@ -28,38 +28,6 @@ public class BatteryInfo {}
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.BasicServicesKit.BatteryInfo
-import kit.PerformanceAnalysisKit.*
-
-let batterySOCInfo = BatteryInfo.batterySOC
-Hilog.info(0, "batteryInfo", "The batterySOCInfo is: {batterySOCInfo}")
-let chargingStatusInfo = BatteryInfo.chargingStatus
-Hilog.info(0, "batteryInfo", "The chargingStatusInfo is: {chargingStatusInfo}")
-let healthStatusInfo = BatteryInfo.healthStatus
-Hilog.info(0, "batteryInfo", "The healthStatusInfo is: {healthStatusInfo}")
-let pluggedTypeInfo = BatteryInfo.pluggedType
-Hilog.info(0, "batteryInfo", "The pluggedTypeInfo is: {pluggedTypeInfo}")
-let voltageInfo = BatteryInfo.voltage
-Hilog.info(0, "batteryInfo", "The voltageInfo is: {voltageInfo}")
-let technologyInfo = BatteryInfo.technology
-Hilog.info(0, "batteryInfo", "The technologyInfo is: {technologyInfo}")
-let batteryTemperatureInfo = BatteryInfo.batteryTemperature
-Hilog.info(0, "batteryInfo", "The batteryTemperatureInfois: ${batteryTemperatureInfo}")
-let isBatteryPresentInfo = BatteryInfo.isBatteryPresent
-Hilog.info(0, "batteryInfo", "The isBatteryPresentInfo is: {isBatteryPresentInfo}")
-let batteryCapacityLevelInfo = BatteryInfo.batteryCapacityLevel
-Hilog.info(0, "batteryInfo", "The batteryCapacityLevelInfois: ${batteryCapacityLevelInfo}")
-let nowCurrentInfo = BatteryInfo.nowCurrent
-Hilog.info(0, "batteryInfo", "The nowCurrentInfo is: ${nowCurrentInfo}")
-```
 
 ### static prop batteryCapacityLevel
 
@@ -225,13 +193,13 @@ public static prop voltage: Int32
 
 ```cangjie
 public enum BatteryCapacityLevel <: Equatable<BatteryCapacityLevel> & ToString {
-    | LEVEL_FULL
-    | LEVEL_HIGH
-    | LEVEL_NORMAL
-    | LEVEL_LOW
-    | LEVEL_WARNING
-    | LEVEL_CRITICAL
-    | LEVEL_SHUTDOWN
+    | LevelFull
+    | LevelHigh
+    | LevelNormal
+    | LevelLow
+    | LevelWarning
+    | LevelCritical
+    | LevelShutdown
     | ...
 }
 ```
@@ -247,10 +215,10 @@ public enum BatteryCapacityLevel <: Equatable<BatteryCapacityLevel> & ToString {
 - Equatable\<BatteryCapacityLevel>
 - ToString
 
-### LEVEL_CRITICAL
+### LevelCritical
 
 ```cangjie
-LEVEL_CRITICAL
+LevelCritical
 ```
 
 **功能：** 表示电池电量等级为极低电量。
@@ -259,10 +227,10 @@ LEVEL_CRITICAL
 
 **起始版本：** 21
 
-### LEVEL_FULL
+### LevelFull
 
 ```cangjie
-LEVEL_FULL
+LevelFull
 ```
 
 **功能：** 表示电池电量等级为满电量。
@@ -271,10 +239,10 @@ LEVEL_FULL
 
 **起始版本：** 21
 
-### LEVEL_HIGH
+### LevelHigh
 
 ```cangjie
-LEVEL_HIGH
+LevelHigh
 ```
 
 **功能：** 表示电池电量等级为高电量。
@@ -283,10 +251,10 @@ LEVEL_HIGH
 
 **起始版本：** 21
 
-### LEVEL_LOW
+### LevelLow
 
 ```cangjie
-LEVEL_LOW
+LevelLow
 ```
 
 **功能：** 表示电池电量等级为低电量。
@@ -295,10 +263,10 @@ LEVEL_LOW
 
 **起始版本：** 21
 
-### LEVEL_NORMAL
+### LevelNormal
 
 ```cangjie
-LEVEL_NORMAL
+LevelNormal
 ```
 
 **功能：** 表示电池电量等级为正常电量。
@@ -307,10 +275,10 @@ LEVEL_NORMAL
 
 **起始版本：** 21
 
-### LEVEL_SHUTDOWN
+### LevelShutdown
 
 ```cangjie
-LEVEL_SHUTDOWN
+LevelShutdown
 ```
 
 **功能：** 表示电池电量等级为关机电量。
@@ -319,10 +287,10 @@ LEVEL_SHUTDOWN
 
 **起始版本：** 21
 
-### LEVEL_WARNING
+### LevelWarning
 
 ```cangjie
-LEVEL_WARNING
+LevelWarning
 ```
 
 **功能：** 表示电池电量等级为告警电量。
@@ -339,10 +307,6 @@ public operator func !=(other: BatteryCapacityLevel): Bool
 
 **功能：** 对电池电量等级进行判不等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -353,7 +317,7 @@ public operator func !=(other: BatteryCapacityLevel): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果电池电量等级不同返回true，否则返回false。|
+|Bool| 如果电池电量等级不同返回true，否则返回false。|
 
 ### func ==(BatteryCapacityLevel)
 
@@ -363,10 +327,6 @@ public operator func ==(other: BatteryCapacityLevel): Bool
 
 **功能：** 对电池电量等级进行判等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -377,34 +337,30 @@ public operator func ==(other: BatteryCapacityLevel): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果电池电量等级相同返回true，否则返回false。|
+|Bool| 如果电池电量等级相同返回true，否则返回false。|
 
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 返回电池电量等级的字符串表示。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|电池电量等级值对应的字符串。|
+|String| 电池电量等级值对应的字符串。 |
 
 ## enum BatteryChargeState
 
 ```cangjie
 public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
-    | NONE
-    | ENABLE
-    | DISABLE
-    | FULL
+    | None
+    | Enable
+    | Disable
+    | Full
     | ...
 }
 ```
@@ -420,10 +376,10 @@ public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
 - Equatable\<BatteryChargeState>
 - ToString
 
-### DISABLE
+### Disable
 
 ```cangjie
-DISABLE
+Disable
 ```
 
 **功能：** 表示电池充电状态为停止状态。
@@ -432,10 +388,10 @@ DISABLE
 
 **起始版本：** 21
 
-### ENABLE
+### Enable
 
 ```cangjie
-ENABLE
+Enable
 ```
 
 **功能：** 表示电池充电状态为使能状态。
@@ -444,10 +400,10 @@ ENABLE
 
 **起始版本：** 21
 
-### FULL
+### Full
 
 ```cangjie
-FULL
+Full
 ```
 
 **功能：** 表示电池充电状态为已充满状态。
@@ -456,10 +412,10 @@ FULL
 
 **起始版本：** 21
 
-### NONE
+### None
 
 ```cangjie
-NONE
+None
 ```
 
 **功能：** 表示电池充电状态未知。
@@ -476,10 +432,6 @@ public operator func !=(other: BatteryChargeState): Bool
 
 **功能：** 对电池充电状态进行判不等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -490,7 +442,7 @@ public operator func !=(other: BatteryChargeState): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果电池充电状态不同返回true，否则返回false。|
+|Bool| 如果电池充电状态不同返回true，否则返回false。|
 
 ### func ==(BatteryChargeState)
 
@@ -498,11 +450,7 @@ public operator func !=(other: BatteryChargeState): Bool
 public operator func ==(other: BatteryChargeState): Bool
 ```
 
-**功能：** 对电池充电状态进行判等。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
+**功能：**  对电池充电状态进行判等。
 
 **参数：**
 
@@ -514,7 +462,7 @@ public operator func ==(other: BatteryChargeState): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果电池充电状态相同返回true，否则返回false。|
+|Bool| 如果电池充电状态相同返回true，否则返回false。|
 
 ### func toString()
 
@@ -524,26 +472,22 @@ public func toString(): String
 
 **功能：** 返回电池充电状态的字符串表示。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|电池充电状态值对应的字符串。|
+|String| 电池充电状态值对应的字符串。 |
 
 ## enum BatteryHealthState
 
 ```cangjie
 public enum BatteryHealthState <: Equatable<BatteryHealthState> & ToString {
-    | UNKNOWN
-    | GOOD
-    | OVERHEAT
-    | OVERVOLTAGE
-    | COLD
-    | DEAD
+    | Unknown
+    | Good
+    | Overheat
+    | Overvoltage
+    | Cold
+    | Dead
     | ...
 }
 ```
@@ -559,10 +503,22 @@ public enum BatteryHealthState <: Equatable<BatteryHealthState> & ToString {
 - Equatable\<BatteryHealthState>
 - ToString
 
-### COLD
+### Cold
 
 ```cangjie
-COLD
+Cold
+```
+
+**功能：**  表示电池健康状态为低温。
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+**起始版本：** 21
+
+### Dead
+
+```cangjie
+Dead
 ```
 
 **功能：** 表示电池健康状态为僵死状态。
@@ -571,10 +527,10 @@ COLD
 
 **起始版本：** 21
 
-### DEAD
+### Good
 
 ```cangjie
-DEAD
+Good
 ```
 
 **功能：** 表示电池健康状态为正常。
@@ -583,10 +539,10 @@ DEAD
 
 **起始版本：** 21
 
-### GOOD
+### Overheat
 
 ```cangjie
-GOOD
+Overheat
 ```
 
 **功能：** 表示电池健康状态为过热。
@@ -595,10 +551,10 @@ GOOD
 
 **起始版本：** 21
 
-### OVERHEAT
+### Overvoltage
 
 ```cangjie
-OVERHEAT
+Overvoltage
 ```
 
 **功能：** 表示电池健康状态为过压。
@@ -607,25 +563,13 @@ OVERHEAT
 
 **起始版本：** 21
 
-### OVERVOLTAGE
+### Unknown
 
 ```cangjie
-OVERVOLTAGE
+Unknown
 ```
 
 **功能：** 表示电池健康状态未知。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### UNKNOWN
-
-```cangjie
-UNKNOWN
-```
-
-**功能：** 表示电池健康状态为低温。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -639,10 +583,6 @@ public operator func !=(other: BatteryHealthState): Bool
 
 **功能：** 对电池健康状态进行判不等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -653,7 +593,7 @@ public operator func !=(other: BatteryHealthState): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果电池健康状态不同返回true，否则返回false。|
+|Bool| 如果电池健康状态不同返回true，否则返回false。|
 
 ### func ==(BatteryHealthState)
 
@@ -663,10 +603,6 @@ public operator func ==(other: BatteryHealthState): Bool
 
 **功能：** 对电池健康状态进行判等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -677,7 +613,7 @@ public operator func ==(other: BatteryHealthState): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果电池健康状态相同返回true，否则返回false。|
+|Bool| 如果电池健康状态相同返回true，否则返回false。|
 
 ### func toString()
 
@@ -687,24 +623,20 @@ public func toString(): String
 
 **功能：** 返回电池健康状态的字符串表示。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|电池健康状态值对应的字符串。|
+|String| 电池健康状态值对应的字符串。 |
 
 ## enum BatteryPluggedType
 
 ```cangjie
 public enum BatteryPluggedType <: Equatable<BatteryPluggedType> & ToString {
-    | NONE
-    | AC
-    | USB
-    | WIRELESS
+    | None
+    | Ac
+    | Usb
+    | Wireless
     | ...
 }
 ```
@@ -720,10 +652,10 @@ public enum BatteryPluggedType <: Equatable<BatteryPluggedType> & ToString {
 - Equatable\<BatteryPluggedType>
 - ToString
 
-### AC
+### Ac
 
 ```cangjie
-AC
+Ac
 ```
 
 **功能：** 表示连接的充电器类型为交流充电器。
@@ -732,10 +664,10 @@ AC
 
 **起始版本：** 21
 
-### NONE
+### None
 
 ```cangjie
-NONE
+None
 ```
 
 **功能：** 表示未获取到连接充电器类型。
@@ -744,10 +676,10 @@ NONE
 
 **起始版本：** 21
 
-### USB
+### Usb
 
 ```cangjie
-USB
+Usb
 ```
 
 **功能：** 表示连接的充电器类型为USB。
@@ -756,10 +688,10 @@ USB
 
 **起始版本：** 21
 
-### WIRELESS
+### Wireless
 
 ```cangjie
-WIRELESS
+Wireless
 ```
 
 **功能：** 表示连接的充电器类型为无线充电器。
@@ -776,10 +708,6 @@ public operator func !=(other: BatteryPluggedType): Bool
 
 **功能：** 对充电器类型进行判不等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -790,7 +718,7 @@ public operator func !=(other: BatteryPluggedType): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果充电器类型不同返回true，否则返回false。|
+|Bool| 如果充电器类型不同返回true，否则返回false。|
 
 ### func ==(BatteryPluggedType)
 
@@ -800,10 +728,6 @@ public operator func ==(other: BatteryPluggedType): Bool
 
 **功能：** 对充电器类型进行判等。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -814,7 +738,7 @@ public operator func ==(other: BatteryPluggedType): Bool
 
 |类型|说明|
 |:----|:----|
-|Bool|如果充电器类型相同返回true，否则返回false。|
+|Bool| 如果充电器类型相同返回true，否则返回false。|
 
 ### func toString()
 
@@ -824,214 +748,8 @@ public func toString(): String
 
 **功能：** 返回充电器类型信息的字符串表示。
 
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|充电器类型值对应的字符串。|
-
-## enum CommonEventBatteryChangedKey
-
-```cangjie
-public enum CommonEventBatteryChangedKey <: Equatable<CommonEventBatteryChangedKey> & ToString {
-    | EXTRA_SOC
-    | EXTRA_CHARGE_STATE
-    | EXTRA_HEALTH_STATE
-    | EXTRA_PLUGGED_TYPE
-    | EXTRA_VOLTAGE
-    | EXTRA_TECHNOLOGY
-    | EXTRA_TEMPERATURE
-    | EXTRA_PRESENT
-    | EXTRA_CAPACITY_LEVEL
-    | ...
-}
-```
-
-**功能：** 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CommonEventBatteryChangedKey>
-- ToString
-
-### EXTRA_CAPACITY_LEVEL
-
-```cangjie
-EXTRA_CAPACITY_LEVEL
-```
-
-**功能：** 表示当前设备电池电量等级的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_CHARGE_STATE
-
-```cangjie
-EXTRA_CHARGE_STATE
-```
-
-**功能：** 表示当前设备电池充电状态的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_HEALTH_STATE
-
-```cangjie
-EXTRA_HEALTH_STATE
-```
-
-**功能：** 表示当前设备电池健康状态的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_PLUGGED_TYPE
-
-```cangjie
-EXTRA_PLUGGED_TYPE
-```
-
-**功能：** 表示当前设备连接的充电器类型的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_PRESENT
-
-```cangjie
-EXTRA_PRESENT
-```
-
-**功能：** 表示当前设备是否支持电池或者电池是否在位的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_SOC
-
-```cangjie
-EXTRA_SOC
-```
-
-**功能：** 表示剩余电池电量百分比的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_TECHNOLOGY
-
-```cangjie
-EXTRA_TECHNOLOGY
-```
-
-**功能：** 表示当前设备电池技术型号的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_TEMPERATURE
-
-```cangjie
-EXTRA_TEMPERATURE
-```
-
-**功能：** 表示当前设备电池温度的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### EXTRA_VOLTAGE
-
-```cangjie
-EXTRA_VOLTAGE
-```
-
-**功能：** 表示当前设备电池电压的查询键。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-### func !=(CommonEventBatteryChangedKey)
-
-```cangjie
-public operator func !=(other: CommonEventBatteryChangedKey): Bool 
-```
-
-**功能：** 对通用事件附加信息的查询键进行判不等。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CommonEventBatteryChangedKey](#enum-commoneventbatterychangedkey)|是|-|通用事件附加信息的查询键。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果查询键相同返回true，否则返回false。|
-
-### func ==(CommonEventBatteryChangedKey)
-
-```cangjie
-public operator func ==(other: CommonEventBatteryChangedKey): Bool
-```
-
-**功能：** 对通用事件附加信息的查询键进行判等。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CommonEventBatteryChangedKey](#enum-commoneventbatterychangedkey)|是|-|通用事件附加信息的查询键。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果查询键相同返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 返回COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键的字符串表示。
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键对应的字符串。|
+|String| 充电器类型值对应的字符串。 |

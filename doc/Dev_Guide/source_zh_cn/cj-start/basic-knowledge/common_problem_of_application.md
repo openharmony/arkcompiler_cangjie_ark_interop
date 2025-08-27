@@ -6,6 +6,8 @@
 
     可以调用[bundleManager.getBundleInfoForSelf](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含fingerprint指纹信息。
 
+    <!-- compile -->
+
     ```cangjie
     import ohos.base.*
     import kit.AbilityKit.*
@@ -47,6 +49,8 @@ appIdentifier是[Profile文件](https://developer.huawei.com/consumer/cn/doc/app
 ## 如何获取应用信息中appIdentifier
 
 1. 可以调用[bundleManager.getBundleInfoForSelf](../../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32)获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
+
+    <!-- compile -->
 
     ```cangjie
     import ohos.base.*

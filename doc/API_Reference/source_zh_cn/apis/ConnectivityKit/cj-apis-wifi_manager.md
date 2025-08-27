@@ -19,9 +19,9 @@ ohos.permission.SET_WIFI_INFO
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md)。
 
 ## func getScanInfoList()
 
@@ -45,26 +45,13 @@ public func getScanInfoList(): Array<WifiScanInfo>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2501000|Operation failed.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-
-let scanInfoList = getScanInfoList()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2501000 | Operation failed. |
 
 ## func isWifiActive()
 
@@ -73,8 +60,6 @@ public func isWifiActive(): Bool
 ```
 
 **功能：** 查询WLAN是否已使能。
-
-**需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -88,26 +73,74 @@ public func isWifiActive(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2501000|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 801 | Capability not supported. |
+  | 2501000 | Operation failed. |
 
-**示例：**
-
-<!-- compile -->
+## func off(WifiCallbackType, ?CallbackObject)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-
-let isWifiActive = isWifiActive()
+public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None): Unit
 ```
+
+**功能：** 取消注册WLAN状态改变事件。
+
+**需要权限：** ohos.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[WifiCallbackType](#enum-wificallbacktype)|是|-|回调事件。|
+|callback|?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|否|None| **命名参数。** 状态改变回调函数。如果callback没有传入参数，将取消注册该事件关联的所有回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2801000 | Operation failed. |
+
+## func on(WifiCallbackType, Callback1Argument\<Int32>)
+
+```cangjie
+public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>): Unit
+```
+
+**功能：** 注册WLAN状态改变事件。
+
+**需要权限：** ohos.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[WifiCallbackType](#enum-wificallbacktype)|是|-|回调事件。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Int32>|是|-|状态改变回调函数。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2801000 | Operation failed. |
 
 ## func p2pCancelConnect()
 
@@ -125,26 +158,45 @@ public func p2pCancelConnect(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2801000|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2801000 | Operation failed. |
+  | 2801001 | Wi-Fi STA disabled. |
 
-**示例：**
-
-<!-- compile -->
+## func p2pConnect(WifiP2PConfig)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-
-p2pCancelConnect()
+public func p2pConnect(config: WifiP2PConfig): Unit
 ```
+
+**功能：** 执行P2P连接。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|config|[WifiP2PConfig](#class-wifip2pconfig)|是|-|连接配置信息。如果DeviceAddressType未指定值，则DeviceAddressType默认为随机设备地址类型。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2801000 | Operation failed. |
+  | 2801001 | Wi-Fi STA disabled. |
 
 ## func startDiscoverDevices()
 
@@ -162,31 +214,44 @@ public func startDiscoverDevices(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2801000|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2801000 | Operation failed. |
+  | 2801001 | Wi-Fi STA disabled. |
 
-**示例：**
-
-<!-- compile -->
+## func stopDiscoverDevices()
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ConnectivityKit.*
-import std.sync.Timer
-
-startDiscoverDevices()
+public func stopDiscoverDevices(): Unit
 ```
+
+**功能：** 停止发现设备。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[WIFI错误码](../../errorcodes/cj-errorcode-wifi-manager.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2801000 | Operation failed. |
+  | 2801001 | Wi-Fi STA disabled. |
+
 ## class WifiInfoElem
 
 ```cangjie
-public class WifiInfoElem <: ToString {
+public class WifiInfoElem {
     public let eid: UInt32
     public let content: Array<UInt8>
 }
@@ -197,10 +262,6 @@ public class WifiInfoElem <: ToString {
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **起始版本：** 21
-
-**父类型：**
-
-- ToString
 
 ### let content
 
@@ -234,28 +295,163 @@ public let eid: UInt32
 
 **起始版本：** 21
 
-### func toString()
+## class WifiP2PConfig
 
 ```cangjie
-public func toString(): String
+public class WifiP2PConfig {
+    public let deviceAddress: String
+    public let netId: Int32
+    public let passphrase: String
+    public let groupName: String
+    public let goBand: GroupOwnerBand
+    public let deviceAddressType: DeviceAddressType
+    public init(
+        deviceAddress: String,
+        netId: Int32,
+        passphrase: String,
+        groupName: String,
+        goBand: GroupOwnerBand,
+        deviceAddressType!: DeviceAddressType = RandomDeviceAddress
+    )
+}
 ```
 
-**功能：** 获取当前类的字符串表示。
+**功能：** 表示P2P配置信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.STA
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **起始版本：** 21
 
-**返回值：**
+### let deviceAddress
 
-|类型|说明|
-|:----|:----|
-|String|当前类的字符串表示。|
+```cangjie
+public let deviceAddress: String
+```
+
+**功能：** 设备地址。
+
+**类型：** String
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### let deviceAddressType
+
+```cangjie
+public let deviceAddressType: DeviceAddressType
+```
+
+**功能：** 设备地址类型。
+
+**类型：** [DeviceAddressType](#enum-deviceaddresstype)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### let goBand
+
+```cangjie
+public let goBand: GroupOwnerBand
+```
+
+**功能：** 群组带宽。
+
+**类型：** [GroupOwnerBand](#enum-groupownerband)
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### let groupName
+
+```cangjie
+public let groupName: String
+```
+
+**功能：** 群组名称。
+
+**类型：** String
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### let netId
+
+```cangjie
+public let netId: Int32
+```
+
+**功能：** 网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。
+
+**类型：** Int32
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### let passphrase
+
+```cangjie
+public let passphrase: String
+```
+
+**功能：** 群组密钥。
+
+**类型：** String
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### init(String, Int32, String, String, GroupOwnerBand, DeviceAddressType)
+
+```cangjie
+public init(
+    deviceAddress: String,
+    netId: Int32,
+    passphrase: String,
+    groupName: String,
+    goBand: GroupOwnerBand,
+    deviceAddressType!: DeviceAddressType = RandomDeviceAddress
+)
+```
+
+**功能：** 构造WifiP2PConfig实例。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceAddress|String|是|-|设备地址。|
+|netId|Int32|是|-|网络ID。创建群组时-1表示创建临时组，-2表示创建永久组。|
+|passphrase|String|是|-|群组密钥。|
+|groupName|String|是|-|群组名称。|
+|goBand|[GroupOwnerBand](#enum-groupownerband)|是|-|群组带宽。|
+|deviceAddressType|[DeviceAddressType](#enum-deviceaddresstype)|否|RandomDeviceAddress| **命名参数。** 设备地址类型。>|
 
 ## class WifiScanInfo
 
 ```cangjie
-public class WifiScanInfo <: ToString {
+public class WifiScanInfo {
     public let ssid: String
     public let bssid: String
     public let bssidType: DeviceAddressType
@@ -280,17 +476,13 @@ public class WifiScanInfo <: ToString {
 
 **起始版本：** 21
 
-**父类型：**
-
-- ToString
-
 ### let band
 
 ```cangjie
 public let band: Int32
 ```
 
-**功能：** WLAN接入点的频段，1:2.4GHZ；2:5GHZ。
+**功能：**  WLAN接入点的频段，1:2.4GHZ；2:5GHZ。
 
 **类型：** Int32
 
@@ -524,30 +716,12 @@ public let timestamp: Int64
 
 **起始版本：** 21
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前类的字符串表示。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前类的字符串表示。|
-
 ## enum DeviceAddressType
 
 ```cangjie
-public enum DeviceAddressType <: ToString {
-    | RANDOM_DEVICE_ADDRESS
-    | REAL_DEVICE_ADDRESS
+public enum DeviceAddressType <: Equatable<DeviceAddressType> & ToString {
+    | RandomDeviceAddress
+    | RealDeviceAddress
     | ...
 }
 ```
@@ -560,12 +734,13 @@ public enum DeviceAddressType <: ToString {
 
 **父类型：**
 
+- Equatable\<DeviceAddressType>
 - ToString
 
-### RANDOM_DEVICE_ADDRESS
+### RandomDeviceAddress
 
 ```cangjie
-RANDOM_DEVICE_ADDRESS
+RandomDeviceAddress
 ```
 
 **功能：** 随机设备地址。
@@ -574,10 +749,10 @@ RANDOM_DEVICE_ADDRESS
 
 **起始版本：** 21
 
-### REAL_DEVICE_ADDRESS
+### RealDeviceAddress
 
 ```cangjie
-REAL_DEVICE_ADDRESS
+RealDeviceAddress
 ```
 
 **功能：** 真实设备地址。
@@ -586,31 +761,284 @@ REAL_DEVICE_ADDRESS
 
 **起始版本：** 21
 
+### func !=(DeviceAddressType)
+
+```cangjie
+public operator func !=(other: DeviceAddressType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DeviceAddressType](#enum-deviceaddresstype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。
+
+### func ==(DeviceAddressType)
+
+```cangjie
+public operator func ==(other: DeviceAddressType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DeviceAddressType](#enum-deviceaddresstype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ### func toString()
 
 ```cangjie
 public func toString(): String
 ```
 
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.Communication.WiFi.Core
-
-**起始版本：** 21
+**功能：** 获取枚举的值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|当前枚举的字符串表示。|
+|String|枚举的说明。|
+
+## enum GroupOwnerBand
+
+```cangjie
+public enum GroupOwnerBand <: Equatable<GroupOwnerBand> & ToString {
+    | GoBandAuto
+    | GoBand2GHz
+    | GoBand5GHz
+    | ...
+}
+```
+
+**功能：** 表示群组带宽。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<GroupOwnerBand>
+- ToString
+
+### GoBand2GHz
+
+```cangjie
+GoBand2GHz
+```
+
+**功能：** 2.4GHZ。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### GoBand5GHz
+
+```cangjie
+GoBand5GHz
+```
+
+**功能：** 5GHZ。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### GoBandAuto
+
+```cangjie
+GoBandAuto
+```
+
+**功能：** 自动模式。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+### func !=(GroupOwnerBand)
+
+```cangjie
+public operator func !=(other: GroupOwnerBand): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GroupOwnerBand](#enum-groupownerband)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。
+
+### func ==(GroupOwnerBand)
+
+```cangjie
+public operator func ==(other: GroupOwnerBand): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[GroupOwnerBand](#enum-groupownerband)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的值。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的说明。|
+
+## enum WifiCallbackType
+
+```cangjie
+public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToString {
+    | WifiScanStateChange
+    | ...
+}
+```
+
+**功能：** WLAN回调触发事件类型。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WifiCallbackType>
+- Hashable
+- ToString
+
+### WifiScanStateChange
+
+```cangjie
+WifiScanStateChange
+```
+
+**功能：** 注册WLAN状态改变事件类型。
+
+### func !=(WifiCallbackType)
+
+```cangjie
+public operator func !=(other: WifiCallbackType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WifiCallbackType](#enum-wificallbacktype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。
+
+### func ==(WifiCallbackType)
+
+```cangjie
+public operator func ==(other: WifiCallbackType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WifiCallbackType](#enum-wificallbacktype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func hashCode()
+
+```cangjie
+public func hashCode(): Int64
+```
+
+**功能：** 获取输入数据的哈希值。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int64|数据的哈希值。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的值。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的说明。|
 
 ## enum WifiCategory
 
 ```cangjie
-public enum WifiCategory <: ToString {
-    | DEFAULT
-    | WIFI6
-    | WIFI6_PLUS
+public enum WifiCategory <: Equatable<WifiCategory> & ToString {
+    | Default
+    | Wifi6
+    | Wifi6Plus
     | ...
 }
 ```
@@ -623,12 +1051,13 @@ public enum WifiCategory <: ToString {
 
 **父类型：**
 
+- Equatable\<WifiCategory>
 - ToString
 
-### DEFAULT
+### Default
 
 ```cangjie
-DEFAULT
+Default
 ```
 
 **功能：** Default。Wifi6以下的wifi类别。
@@ -637,10 +1066,10 @@ DEFAULT
 
 **起始版本：** 21
 
-### WIFI6
+### Wifi6
 
 ```cangjie
-WIFI6
+Wifi6
 ```
 
 **功能：** Wifi6。
@@ -649,10 +1078,10 @@ WIFI6
 
 **起始版本：** 21
 
-### WIFI6_PLUS
+### Wifi6Plus
 
 ```cangjie
-WIFI6_PLUS
+Wifi6Plus
 ```
 
 **功能：** Wifi6+。
@@ -661,38 +1090,78 @@ WIFI6_PLUS
 
 **起始版本：** 21
 
+### func !=(WifiCategory)
+
+```cangjie
+public operator func !=(other: WifiCategory): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WifiCategory](#enum-wificategory)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。
+
+### func ==(WifiCategory)
+
+```cangjie
+public operator func ==(other: WifiCategory): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WifiCategory](#enum-wificategory)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ### func toString()
 
 ```cangjie
 public func toString(): String
 ```
 
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**起始版本：** 21
+**功能：** 获取枚举的值。
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|String|当前枚举的字符串表示。|
+|String|枚举的说明。|
 
 ## enum WifiSecurityType
 
 ```cangjie
 public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
-    | WIFI_SEC_TYPE_INVALID
-    | WIFI_SEC_TYPE_OPEN
-    | WIFI_SEC_TYPE_WEP
-    | WIFI_SEC_TYPE_PSK
-    | WIFI_SEC_TYPE_SAE
-    | WIFI_SEC_TYPE_EAP
-    | WIFI_SEC_TYPE_EAP_SUITE_B
-    | WIFI_SEC_TYPE_OWE
-    | WIFI_SEC_TYPE_WAPI_CERT
-    | WIFI_SEC_TYPE_WAPI_PSK
+    | WifiSecTypeInvalid
+    | WifiSecTypeOpen
+    | WifiSecTypeWep
+    | WifiSecTypePsk
+    | WifiSecTypeSae
+    | WifiSecTypeEap
+    | WifiSecTypeEapSuiteB
+    | WifiSecTypeOwe
+    | WifiSecTypeWapiCert
+    | WifiSecTypeWapiPsk
     | ...
 }
 ```
@@ -708,10 +1177,10 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
 - Equatable\<WifiSecurityType>
 - ToString
 
-### WIFI_SEC_TYPE_EAP
+### WifiSecTypeEap
 
 ```cangjie
-WIFI_SEC_TYPE_EAP
+WifiSecTypeEap
 ```
 
 **功能：** EAP加密类型。
@@ -720,10 +1189,10 @@ WIFI_SEC_TYPE_EAP
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_EAP_SUITE_B
+### WifiSecTypeEapSuiteB
 
 ```cangjie
-WIFI_SEC_TYPE_EAP_SUITE_B
+WifiSecTypeEapSuiteB
 ```
 
 **功能：** Suite-B 192位加密类型。
@@ -732,10 +1201,10 @@ WIFI_SEC_TYPE_EAP_SUITE_B
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_INVALID
+### WifiSecTypeInvalid
 
 ```cangjie
-WIFI_SEC_TYPE_INVALID
+WifiSecTypeInvalid
 ```
 
 **功能：** 无效加密类型。
@@ -744,10 +1213,10 @@ WIFI_SEC_TYPE_INVALID
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_OPEN
+### WifiSecTypeOpen
 
 ```cangjie
-WIFI_SEC_TYPE_OPEN
+WifiSecTypeOpen
 ```
 
 **功能：** 开放加密类型。
@@ -756,10 +1225,10 @@ WIFI_SEC_TYPE_OPEN
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_OWE
+### WifiSecTypeOwe
 
 ```cangjie
-WIFI_SEC_TYPE_OWE
+WifiSecTypeOwe
 ```
 
 **功能：** 机会性无线加密类型。
@@ -768,10 +1237,10 @@ WIFI_SEC_TYPE_OWE
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_PSK
+### WifiSecTypePsk
 
 ```cangjie
-WIFI_SEC_TYPE_PSK
+WifiSecTypePsk
 ```
 
 **功能：** Pre-shared key (PSK)加密类型。
@@ -780,10 +1249,10 @@ WIFI_SEC_TYPE_PSK
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_SAE
+### WifiSecTypeSae
 
 ```cangjie
-WIFI_SEC_TYPE_SAE
+WifiSecTypeSae
 ```
 
 **功能：** Simultaneous Authentication of Equals (SAE)加密类型。
@@ -792,10 +1261,10 @@ WIFI_SEC_TYPE_SAE
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_WAPI_CERT
+### WifiSecTypeWapiCert
 
 ```cangjie
-WIFI_SEC_TYPE_WAPI_CERT
+WifiSecTypeWapiCert
 ```
 
 **功能：** WAPI-Cert加密类型。
@@ -804,10 +1273,10 @@ WIFI_SEC_TYPE_WAPI_CERT
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_WAPI_PSK
+### WifiSecTypeWapiPsk
 
 ```cangjie
-WIFI_SEC_TYPE_WAPI_PSK
+WifiSecTypeWapiPsk
 ```
 
 **功能：** WAPI-PSK加密类型。
@@ -816,10 +1285,10 @@ WIFI_SEC_TYPE_WAPI_PSK
 
 **起始版本：** 21
 
-### WIFI_SEC_TYPE_WEP
+### WifiSecTypeWep
 
 ```cangjie
-WIFI_SEC_TYPE_WEP
+WifiSecTypeWep
 ```
 
 **功能：** Wired Equivalent Privacy (WEP)加密类型。候选网络配置不支持该加密类型。
@@ -828,31 +1297,13 @@ WIFI_SEC_TYPE_WEP
 
 **起始版本：** 21
 
-### func toString()
+### func !=(WifiSecurityType)
 
 ```cangjie
-public func toString(): String
+public operator func !=(other: WifiSecurityType): Bool
 ```
 
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.Communication.WiFi.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
-### func ==(WifiSecurityType)
-
-```cangjie
-public operator func ==(that: WifiSecurityType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
+**功能：** 判断两个枚举值是否不相等。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
@@ -860,9 +1311,29 @@ public operator func ==(that: WifiSecurityType): Bool
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|that|[WifiSecurityType](#enum-wifisecuritytype)|是|另一个枚举值。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WifiSecurityType](#enum-wifisecuritytype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。
+
+### func ==(WifiSecurityType)
+
+```cangjie
+public operator func ==(other: WifiSecurityType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WifiSecurityType](#enum-wifisecuritytype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -870,3 +1341,16 @@ public operator func ==(that: WifiSecurityType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的值。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的说明。|

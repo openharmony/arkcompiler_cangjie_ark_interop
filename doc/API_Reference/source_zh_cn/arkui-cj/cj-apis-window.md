@@ -109,7 +109,7 @@ public func getLastWindow(ctx: BaseContext): Window
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ctx|[BaseContext](<font color="red" face="bold">please add link</font>)|是|-|当前应用上下文信息。|
+|ctx|[BaseContext](./../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|当前应用上下文信息。|
 
 **返回值：**
 
@@ -342,7 +342,7 @@ public var ctx: BaseContext
 
 **功能：** 表示当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。
 
-**类型：** [BaseContext](<font color="red" face="bold">please add link</font>)
+**类型：** [BaseContext](./../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)
 
 **读写能力：** 可读写
 
@@ -438,7 +438,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |name|String|是|-|窗口名字。|
 |windowType|[WindowType](#enum-windowtype)|是|-|窗口类型。|
-|ctx|[BaseContext](<font color="red" face="bold">please add link</font>)|是|-|当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。|
+|ctx|[BaseContext](./../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。|
 |displayId|Int64|否|- 1|当前物理屏幕id。|
 |parentId|Int64|否|- 1|父窗口id。|
 
@@ -2116,7 +2116,7 @@ public func loadContent(path: String): Unit
 ## enum AvoidAreaType
 
 ```cangjie
-public enum AvoidAreaType {
+public enum AvoidAreaType <: Equatable<AvoidAreaType> {
     | TypeSystem
     | TypeCutout
     | TypeSystemGesture
@@ -2131,6 +2131,10 @@ public enum AvoidAreaType {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<AvoidAreaType>
 
 ### TypeCutout
 
@@ -2192,10 +2196,50 @@ TypeSystemGesture
 
 **起始版本：** 21
 
+### func !=(AvoidAreaType)
+
+```cangjie
+public operator func !=(other: AvoidAreaType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[AvoidAreaType](#enum-avoidareatype)|是|-另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(AvoidAreaType)
+
+```cangjie
+public operator func ==(other: AvoidAreaType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[AvoidAreaType](#enum-avoidareatype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum ColorSpace
 
 ```cangjie
-public enum ColorSpace {
+public enum ColorSpace <: Equatable<ColorSpace> {
     | Default
     | WideGamut
     | ...
@@ -2208,13 +2252,17 @@ public enum ColorSpace {
 
 **起始版本：** 21
 
+**父类型：**
+
+- Equatable\<ColorSpace>
+
 ### Default
 
 ```cangjie
 Default
 ```
 
-**功能：** 默认SRGB色域模式。
+**功能：** 默认Srgb色域模式。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2232,10 +2280,50 @@ WideGamut
 
 **起始版本：** 21
 
+### func !=(ColorSpace)
+
+```cangjie
+public operator func !=(other: ColorSpace): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ColorSpace](#enum-colorspace)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(ColorSpace)
+
+```cangjie
+public operator func ==(other: ColorSpace): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ColorSpace](#enum-colorspace)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum Orientation
 
 ```cangjie
-public enum Orientation {
+public enum Orientation <: Equatable<Orientation> {
     | Unspecified
     | Portrait
     | Landscape
@@ -2257,6 +2345,10 @@ public enum Orientation {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<Orientation>
 
 ### AutoRotation
 
@@ -2402,10 +2494,50 @@ Unspecified
 
 **起始版本：** 21
 
+### func !=(Orientation)
+
+```cangjie
+public operator func !=(other: Orientation): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[Orientation](#enum-orientation)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(Orientation)
+
+```cangjie
+public operator func ==(other: Orientation): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[Orientation](#enum-orientation)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum SystemBarType
 
 ```cangjie
-public enum SystemBarType {
+public enum SystemBarType <: Equatable<SystemBarType> {
     | Status
     | Navigation
     | ...
@@ -2417,6 +2549,10 @@ public enum SystemBarType {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<SystemBarType>
 
 ### Navigation
 
@@ -2442,10 +2578,50 @@ Status
 
 **起始版本：** 21
 
+### func !=(SystemBarType)
+
+```cangjie
+public operator func !=(other: SystemBarType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SystemBarType](#enum-systembartype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(SystemBarType)
+
+```cangjie
+public operator func ==(other: SystemBarType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SystemBarType](#enum-systembartype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum WindowCallbackType
 
 ```cangjie
-public enum WindowCallbackType {
+public enum WindowCallbackType <: Equatable<WindowCallbackType> {
     | WindowStageEvent
     | WindowSizeChange
     | WindowAvoidAreaChange
@@ -2469,6 +2645,10 @@ public enum WindowCallbackType {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WindowCallbackType>
 
 ### DialogTargetTouch
 
@@ -2638,10 +2818,50 @@ WindowVisibilityChange
 
 **起始版本：** 21
 
+### func !=(WindowCallbackType)
+
+```cangjie
+public operator func !=(other: WindowCallbackType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowCallbackType]#enum-windowcallbacktype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(WindowCallbackType)
+
+```cangjie
+public operator func ==(other: WindowCallbackType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowCallbackType]#enum-windowcallbacktype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum WindowEventType
 
 ```cangjie
-public enum WindowEventType {
+public enum WindowEventType <: Equatable<WindowEventType> {
     | WindowShown
     | WindowActive
     | WindowInactive
@@ -2656,6 +2876,10 @@ public enum WindowEventType {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WindowEventType>
 
 ### WindowActive
 
@@ -2677,7 +2901,7 @@ WindowDestroyed
 
 **功能：** 窗口销毁。
 
-**系统能力：** SystemCapability.Window.SessionManager
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
 
@@ -2717,10 +2941,50 @@ WindowShown
 
 **起始版本：** 21
 
+### func !=(WindowEventType)
+
+```cangjie
+public operator func !=(other: WindowEventType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowEventType](#enum-windoweventtype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(WindowEventType)
+
+```cangjie
+public operator func ==(other: WindowEventType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowEventType](#enum-windoweventtype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum WindowStageEventType
 
 ```cangjie
-public enum WindowStageEventType {
+public enum WindowStageEventType <: Equatable<WindowStageEventType> {
     | Shown
     | Active
     | Inactive
@@ -2736,6 +3000,10 @@ public enum WindowStageEventType {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WindowStageEventType>
 
 ### Active
 
@@ -2809,10 +3077,50 @@ Shown
 
 **起始版本：** 21
 
+### func !=(WindowStageEventType)
+
+```cangjie
+public operator func !=(other: WindowStageEventType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowStageEventType](#enum-windowstageeventtype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(WindowStageEventType)
+
+```cangjie
+public operator func ==(other: WindowStageEventType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowStageEventType](#enum-windowstageeventtype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum WindowStatusType
 
 ```cangjie
-public enum WindowStatusType {
+public enum WindowStatusType <: Equatable<WindowStatusType> {
     | Undefined
     | FullScreen
     | Maximize
@@ -2828,6 +3136,10 @@ public enum WindowStatusType {
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WindowStatusType>
 
 ### Floating
 
@@ -2901,10 +3213,50 @@ Undefined
 
 **起始版本：** 21
 
+### func !=(WindowStatusType)
+
+```cangjie
+public operator func !=(other: WindowStatusType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowStatusType](#enum-windowstatustype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(WindowStatusType)
+
+```cangjie
+public operator func ==(other: WindowStatusType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowStatusType](#enum-windowstatustype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
 ## enum WindowType
 
 ```cangjie
-public enum WindowType {
+public enum WindowType <: Equatable<WindowType> {
     | TypeApp
     | TypeFloat
     | TypeDialog
@@ -2917,6 +3269,10 @@ public enum WindowType {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WindowType>
 
 ### TypeApp
 
@@ -2954,10 +3310,298 @@ TypeFloat
 
 **起始版本：** 21
 
-## type WindowStageNativeHandler
+### func !=(WindowType)
 
 ```cangjie
-public type WindowStageNativeHandler = Int64
+public operator func !=(other: WindowType): Bool
 ```
 
-**功能：** [WindowStageNativeHandler](#type-windowstagenativehandler)是Int64类型的别名。
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowType](#enum-windowtype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(WindowType)
+
+```cangjie
+public operator func ==(other: WindowType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WindowType](#enum-windowtype)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+## 示例代码
+
+### 示例1（获取主窗口设置不可触属性）
+
+设置主窗口属性为不可触后，点击页面中的按钮将不会有弹窗。
+
+<!-- run -example1 -->
+
+```cangjie
+// main_ability.cj
+
+package ohos_app_cangjie_entry
+
+internal import kit.ArkUI.*
+internal import kit.AbilityKit.*
+internal import kit.ArkUI.*
+
+class MainAbility <: Ability {
+    public init() {
+        super()
+        registerSelf()
+    }
+
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        // 1.获取应用主窗口。
+        var window: Window = windowStage.getMainWindow()
+
+        // 2.设置窗口主属性。以设置 ”是否可触“ 属性为例。
+        window.setWindowTouchable(false)
+
+        // 3. 为主窗口加载对应的目标页面
+        windowStage.loadContent("newPage")
+    }
+}
+```
+
+<!-- run -example1 -->
+
+```cangjie
+// newPage.cj
+
+package ohos_app_cangjie_entry
+
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class newPage{
+    func build(){
+        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+            Column{
+                Text("New Page")
+                Button("Untouchable").onClick{
+                    => AlertDialog.show(
+                        AlertDialogParamWithConfirm("Unreachable")
+                    )
+                }.margin(10.vp)
+            }.margin(10.vp)
+        }
+    }
+}
+```
+
+![img1](./../../比对/main/arkui-cj/figures/window_touchable_is_false.png)
+
+### 示例2（主窗口监听键盘高度变化事件）
+
+<!-- run -example2 -->
+
+```cangjie
+// main_ability.cj
+
+package ohos_app_cangjie_entry
+
+internal import kit.AbilityKit.*
+internal import kit.ArkUI.*
+
+class MainAbility <: Ability {
+
+    public init() {
+        super()
+        registerSelf()
+    }
+
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        windowStage.loadContent("newPage")
+        // 将该Ability的窗口管理器传入AppStorage中
+        AppStorage.setOrCreate("windowStage",windowStage)
+    }
+}
+```
+
+<!-- run -example2 -->
+
+```cangjie
+//newPage.cj
+
+package ohos_app_cangjie_entry
+
+import kit.ArkUI.*
+import kit.ArkUI.*
+import ohos.hilog.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class newPage{
+
+    public override func onPageShow(){
+        let windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
+        let mainWindow: Window = windowStage.getMainWindow()
+
+        // 开启监听
+        var tmp: Unit = mainWindow.on("keyboardHeightChange",TestCallback(0))
+    }
+
+    func build(){
+        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)) {
+            Column{
+                TextInput(placeholder: 'input some words here... ').margin(10.vp)
+            }.margin(10.vp)
+        }
+    }
+}
+
+public class TestCallback <: Callback1Argument<UInt32>{
+
+    var count: Int64
+
+    public init(count: Int64){
+        this.count = count
+    }
+
+    public func invoke(value: UInt32): Unit {
+        count++
+        // 拉起或隐藏键盘时，会触发日志打印总计的键盘高度变化计数
+        Hilog.info(0,"","KeyboardHeightChangeCount: ${this.count}")
+    }
+}
+```
+
+运行后点击文本框触发回调，在日志中查看效果，打印日志如下。
+
+```text
+KeyboardHeightChangeCount: 1
+KeyboardHeightChangeCount: 2
+KeyboardHeightChangeCount: 3
+```
+
+### 示例3（设置子窗口回调函数）
+
+该示例创建了一个isModal属性为true的子窗口。监听子窗口点击模态窗口事件，触发回调时销毁子窗。
+
+<!-- run -example3 -->
+
+```cangjie
+// main_ability.cj
+
+package ohos_app_cangjie_entry
+
+internal import kit.AbilityKit.*
+internal import kit.ArkUI.*
+
+class MainAbility <: Ability {
+
+    public init() {
+        super()
+        registerSelf()
+    }
+
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        windowStage.loadContent("newPage")
+        // 将该Ability的窗口管理器传入AppStorage中
+        AppStorage.setOrCreate("windowStage",windowStage)
+    }
+}
+```
+
+<!-- run -example3 -->
+
+```cangjie
+// newPage.cj
+
+package ohos_app_cangjie_entry
+
+import kit.ArkUI.*
+import kit.ArkUI.*
+import ohos.hilog.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class newPage{
+    @State
+    var hint: Bool = AppStorage.has("windowStage")
+
+    public func CreateSubWindow(): Unit{
+        hint = AppStorage.has("windowStage")
+        // 获取该Ability的窗口管理器实例
+        var windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
+
+        var mainWindow: Window = windowStage.getMainWindow()
+
+        mainWindow.setWindowGrayScale(1.0)
+
+        // 1.创建应用子窗口，子窗口显示时，主窗口不能响应用户操作。
+        var subWindowOptions: SubWindowOptions = SubWindowOptions(
+            title: "mySubWindow",
+            decorEnabled: true,
+            isModal: true
+        )
+        var subWindow: Window = windowStage.createSubWindowWithOptions("tempSubWindow", subWindowOptions)
+
+        // 2.设置应用子窗口的位置、大小及相关属性等。
+        subWindow.moveWindowTo(300,300)
+        subWindow.resize(500,500)
+
+        // 3.注册监听点击模态窗口事件。
+        subWindow.on(WindowCallbackType.DialogTargetTouch,DestroySubWindow())
+
+        // 4.显示子窗口（空内容）
+        subWindow.showWindow()
+    }
+
+    func build(){
+        Flex(FlexParams(justifyContent: FlexAlign.Center ,alignItems: ItemAlign.Center)){
+            Column(){
+                Text("SubWindowCreated: ${hint}")
+                Button("GetSubWindow").onClick{
+                    =>  CreateSubWindow()
+                }
+            }
+        }
+    }
+}
+
+public class DestroySubWindow <: Callback0Argument{
+    public init(){}
+
+    // 当点击模态窗口区域时，关闭子窗。
+    public override func invoke(): Unit{
+        var windowStage: WindowStage = AppStorage.get<WindowStage>("windowStage").getOrThrow()
+        var subWindows: Array<Window> = windowStage.getSubWindow()
+        for(i in subWindows){
+            i.destroyWindow()
+        }
+        // 子窗关闭后，恢复主窗口灰阶。
+        var mainWindow: Window = windowStage.getMainWindow()
+        mainWindow.setWindowGrayScale(0.0)
+    }
+}
+```
+
+![img3](figures/window_subwindow_created.png)

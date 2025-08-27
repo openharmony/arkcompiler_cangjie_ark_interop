@@ -2,7 +2,7 @@
 
 ## action
 
-表示调用方要执行的通用操作（如查看、分享、应用详情）。在隐式[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)中，可以定义该字段，配合uri或parameters来表示对数据要执行的操作，如打开、查看该uri数据。例如，当uri为一段网址，action为`ACTION_VIEW_DATA`则表示匹配可访问该网址的应用组件。在Want内声明action字段表示希望被调用方应用支持声明的操作。在被调用方应用配置文件的[skills字段](../cj-start/basic-knowledge/module-configuration-file.md#skills标签)内声明actions表示该应用支持声明操作。常见的action如下，具体的action取值请参见[action常数说明](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#prop-action)。
+表示调用方要执行的通用操作（如查看、分享、应用详情）。在隐式[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want)中，可以定义该字段，配合uri或parameters来表示对数据要执行的操作，如打开、查看该uri数据。例如，当uri为一段网址，action为`ACTION_VIEW_DATA`则表示匹配可访问该网址的应用组件。在Want内声明action字段表示希望被调用方应用支持声明的操作。在被调用方应用配置文件的[skills字段](../cj-start/basic-knowledge/module-configuration-file.md#skills标签)内声明actions表示该应用支持声明操作。常见的action如下所示。
 
 **常见action:**
 

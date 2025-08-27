@@ -1,4 +1,4 @@
-# ohos.bluetooth.baseProfile（蓝牙baseProfile模块）
+# ohos.bluetooth.base_profile（蓝牙baseProfile模块）
 
 baseProfile模块提供了基础的Profile类型和相关方法。
 
@@ -27,9 +27,9 @@ API示例代码使用说明：
 public interface BaseProfile {
     func getConnectedDevices(): Array<String>
     func getConnectionState(deviceId: String): ProfileConnectionState
-    func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
-    func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
-    func off(`type`: ProfileCallbackType): Unit
+    func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
+    func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
+    func off(eventType: ProfileCallbackType): Unit
 }
 ```
 
@@ -61,16 +61,16 @@ func getConnectedDevices(): Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900004|Profile not supported.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900004 | Profile not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -80,8 +80,9 @@ func getConnectedDevices(): Array<String>
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -107,9 +108,9 @@ func getConnectionState(deviceId: String): ProfileConnectionState
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|deviceId|String|是|远端设备地址。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceId|String|是|-|远端设备地址。|
 
 **返回值：**
 
@@ -119,17 +120,17 @@ func getConnectionState(deviceId: String): ProfileConnectionState
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
-  |2900001|Service stopped.|
-  |2900003|Bluetooth disabled.|
-  |2900004|Profile not supported.|
-  |2900099|Operation failed.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900004 | Profile not supported. |
+  | 2900099 | Operation failed. |
 
 **示例：**
 
@@ -139,8 +140,9 @@ func getConnectionState(deviceId: String): ProfileConnectionState
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -153,7 +155,7 @@ try {
 ### func off(ProfileCallbackType, CallbackObject)
 
 ```cangjie
-func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
+func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 ```
 
 **功能：** 取消所有订阅连接状态变化事件。
@@ -166,20 +168,20 @@ func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|\`type`|[ProfileCallbackType](#enum-profilecallbacktype)|是|回调事件类型。|
-|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|回调事件。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|回调事件类型。|
+|callback|[CallbackObject](<font color="red" face="bold">please add link</font>)|是|-|回调事件。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -189,12 +191,14 @@ func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处定义所需要的依赖项等
 class StateChangeCallback <: Callback1Argument<StateChangeParam> {
-    public func invoke(arg: StateChangeParam): Unit {
+    public func invoke(err: ?BusinessException, arg: StateChangeParam): Unit {
         let connectionState = arg.state.toString()
         Hilog.info(0, "Bluetooth", "profile connection state has change to ${connectionState}")
     }
@@ -203,8 +207,8 @@ class StateChangeCallback <: Callback1Argument<StateChangeParam> {
 let changeCallBack = StateChangeCallback()
 let a2dp = createA2dpSrcProfile()
 try {
-    a2dp.on(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
-    a2dp.off(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
+    a2dp.on(ProfileCallbackType.ConnectionStateChange, changeCallBack)
+    a2dp.off(ProfileCallbackType.ConnectionStateChange)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -213,7 +217,7 @@ try {
 ### func off(ProfileCallbackType)
 
 ```cangjie
-func off(`type`: ProfileCallbackType): Unit
+func off(eventType: ProfileCallbackType): Unit
 ```
 
 **功能：** 取消所有订阅连接状态变化事件。
@@ -226,19 +230,19 @@ func off(`type`: ProfileCallbackType): Unit
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|\`type`|[ProfileCallbackType](#enum-profilecallbacktype)|是|回调事件类型。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|回调事件类型。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -248,12 +252,14 @@ func off(`type`: ProfileCallbackType): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处定义所需要的依赖项等
 class StateChangeCallback <: Callback1Argument<StateChangeParam> {
-    public func invoke(arg: StateChangeParam): Unit {
+    public func invoke(err: ?BusinessException, arg: StateChangeParam): Unit {
         let connectionState = arg.state.toString()
         Hilog.info(0, "Bluetooth", "profile connection state has change to ${connectionState}")
     }
@@ -262,8 +268,8 @@ class StateChangeCallback <: Callback1Argument<StateChangeParam> {
 let changeCallBack = StateChangeCallback()
 let a2dp = createA2dpSrcProfile()
 try {
-    a2dp.on(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
-    a2dp.off(ProfileCallbackType.CONNECTION_STATE_CHANGE)
+    a2dp.on(ProfileCallbackType.ConnectionStateChange, changeCallBack)
+    a2dp.off(ProfileCallbackType.ConnectionStateChange)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -272,7 +278,7 @@ try {
 ### func on(ProfileCallbackType, Callback1Argument\<StateChangeParam>)
 
 ```cangjie
-func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
+func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
 ```
 
 **功能：** 订阅连接状态变化事件。使用Callback异步回调。
@@ -285,20 +291,20 @@ func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangePara
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|\`type`|[ProfileCallbackType](#enum-profilecallbacktype)|是|传入`CONNECTIONSTATECHANGE`，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[StateChangeParam](#class-statechangeparam)>|是|表示回调函数的入参。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|传入`CONNECTIONSTATECHANGE`，表示连接状态变化事件类型。|
+|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |201|Permission denied.|
-  |401|Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-  |801|Capability not supported.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **示例：**
 
@@ -308,12 +314,14 @@ func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangePara
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处定义所需要的依赖项等
 class StateChangeCallback <: Callback1Argument<StateChangeParam> {
-    public func invoke(arg: StateChangeParam): Unit {
+    public func invoke(err: ?BusinessException, arg: StateChangeParam): Unit {
         let connectionState = arg.state.toString()
         Hilog.info(0, "Bluetooth", "profile connection state has change to ${connectionState}")
     }
@@ -322,7 +330,7 @@ class StateChangeCallback <: Callback1Argument<StateChangeParam> {
 let changeCallBack = StateChangeCallback()
 let a2dp = createA2dpSrcProfile()
 try {
-    a2dp.on(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
+    a2dp.on(ProfileCallbackType.ConnectionStateChange, changeCallBack)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -331,7 +339,11 @@ try {
 ## class StateChangeParam
 
 ```cangjie
-public class StateChangeParam {}
+public class StateChangeParam {
+    public var deviceId: String
+    public var state: ProfileConnectionState
+    public var cause: DisconnectCause
+}
 ```
 
 **功能：** 描述profile状态改变参数。
@@ -340,49 +352,49 @@ public class StateChangeParam {}
 
 **起始版本：** 21
 
-### let cause
+### var cause
 
 ```cangjie
-public let cause: DisconnectCause
+public var cause: DisconnectCause
 ```
 
 **功能：** 表示连接失败的原因。
 
 **类型：** [DisconnectCause](#enum-disconnectcause)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
 **功能：** 表示蓝牙设备地址。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
 
-### let state
+### var state
 
 ```cangjie
-public let state: ProfileConnectionState
+public var state: ProfileConnectionState
 ```
 
 **功能：** 表示蓝牙设备的profile连接状态。
 
 **类型：** [ProfileConnectionState](cj-apis-bluetooth-constant.md#enum-profileconnectionstate)
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -392,12 +404,12 @@ public let state: ProfileConnectionState
 
 ```cangjie
 public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
-    | USER_DISCONNECT
-    | CONNECT_FROM_KEYBOARD
-    | CONNECT_FROM_MOUSE
-    | CONNECT_FROM_CAR
-    | TOO_MANY_CONNECTED_DEVICES
-    | CONNECT_FAIL_INTERNAL
+    | UserDisconnect
+    | ConnectFromKeyboard
+    | ConnectFromMouse
+    | ConnectFromCar
+    | TooManyConnectedDevices
+    | ConnectFailInternal
     | ...
 }
 ```
@@ -413,10 +425,10 @@ public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
 - Equatable\<DisconnectCause>
 - ToString
 
-### CONNECT_FAIL_INTERNAL
+### ConnectFailInternal
 
 ```cangjie
-CONNECT_FAIL_INTERNAL
+ConnectFailInternal
 ```
 
 **功能：** 内部错误。
@@ -425,10 +437,10 @@ CONNECT_FAIL_INTERNAL
 
 **起始版本：** 21
 
-### CONNECT_FROM_CAR
+### ConnectFromCar
 
 ```cangjie
-CONNECT_FROM_CAR
+ConnectFromCar
 ```
 
 **功能：** 应该从车机侧发起连接。
@@ -437,10 +449,10 @@ CONNECT_FROM_CAR
 
 **起始版本：** 21
 
-### CONNECT_FROM_KEYBOARD
+### ConnectFromKeyboard
 
 ```cangjie
-CONNECT_FROM_KEYBOARD
+ConnectFromKeyboard
 ```
 
 **功能：** 应该从键盘侧发起连接。
@@ -449,10 +461,10 @@ CONNECT_FROM_KEYBOARD
 
 **起始版本：** 21
 
-### CONNECT_FROM_MOUSE
+### ConnectFromMouse
 
 ```cangjie
-CONNECT_FROM_MOUSE
+ConnectFromMouse
 ```
 
 **功能：** 应该从鼠标侧发起连接。
@@ -461,10 +473,10 @@ CONNECT_FROM_MOUSE
 
 **起始版本：** 21
 
-### TOO_MANY_CONNECTED_DEVICES
+### TooManyConnectedDevices
 
 ```cangjie
-TOO_MANY_CONNECTED_DEVICES
+TooManyConnectedDevices
 ```
 
 **功能：** 当前连接数超过上限。
@@ -473,10 +485,10 @@ TOO_MANY_CONNECTED_DEVICES
 
 **起始版本：** 21
 
-### USER_DISCONNECT
+### UserDisconnect
 
 ```cangjie
-USER_DISCONNECT
+UserDisconnect
 ```
 
 **功能：** 用户主动断开连接。
@@ -488,20 +500,16 @@ USER_DISCONNECT
 ### func !=(DisconnectCause)
 
 ```cangjie
-public operator func !=(other: DisconnectCause): Bool 
+public operator func !=(other: DisconnectCause): Bool
 ```
 
 **功能：** 对连接失败原因进行判不等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[DisconnectCause](#enum-disconnectcause)|是|连接失败原因。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DisconnectCause](#enum-disconnectcause)|是|-|连接失败原因。|
 
 **返回值：**
 
@@ -512,20 +520,16 @@ public operator func !=(other: DisconnectCause): Bool
 ### func ==(DisconnectCause)
 
 ```cangjie
-public operator func ==(other: DisconnectCause): Bool 
+public operator func ==(other: DisconnectCause): Bool
 ```
 
 **功能：** 对连接失败原因进行判等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[DisconnectCause](#enum-disconnectcause)|是|连接失败原因。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DisconnectCause](#enum-disconnectcause)|是|-|连接失败原因。|
 
 **返回值：**
 
@@ -536,14 +540,10 @@ public operator func ==(other: DisconnectCause): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 返回连接失败原因的字符串表示。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 
@@ -555,7 +555,7 @@ public func toString(): String
 
 ```cangjie
 public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & ToString {
-    | CONNECTION_STATE_CHANGE
+    | ConnectionStateChange
     | ...
 }
 ```
@@ -572,10 +572,10 @@ public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & T
 - Hashable
 - ToString
 
-### CONNECTION_STATE_CHANGE
+### ConnectionStateChange
 
 ```cangjie
-CONNECTION_STATE_CHANGE
+ConnectionStateChange
 ```
 
 **功能：** 表示连接状态变化事件类型。
@@ -587,20 +587,16 @@ CONNECTION_STATE_CHANGE
 ### func !=(ProfileCallbackType)
 
 ```cangjie
-public operator func !=(other: ProfileCallbackType): Bool 
+public operator func !=(other: ProfileCallbackType): Bool
 ```
 
 **功能：** 对bluetooth baseprofile 回调事件进行判不等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[ProfileCallbackType](#enum-profilecallbacktype)|是|bluetooth baseprofile 回调事件。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|bluetooth baseprofile 回调事件。|
 
 **返回值：**
 
@@ -611,20 +607,16 @@ public operator func !=(other: ProfileCallbackType): Bool
 ### func ==(ProfileCallbackType)
 
 ```cangjie
-public operator func ==(other: ProfileCallbackType): Bool 
+public operator func ==(other: ProfileCallbackType): Bool
 ```
 
 **功能：** 对bluetooth baseprofile 回调事件进行判等。
 
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
-
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[ProfileCallbackType](#enum-profilecallbacktype)|是|bluetooth baseprofile 回调事件。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|bluetooth baseprofile 回调事件。|
 
 **返回值：**
 
@@ -635,7 +627,7 @@ public operator func ==(other: ProfileCallbackType): Bool
 ### func hashCode()
 
 ```cangjie
-public func hashCode(): Int64 
+public func hashCode(): Int64
 ```
 
 **功能：** 获取回调事件的哈希值。
@@ -653,14 +645,10 @@ public func hashCode(): Int64
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 获取回调事件类型的字符串表示。
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**起始版本：** 21
 
 **返回值：**
 

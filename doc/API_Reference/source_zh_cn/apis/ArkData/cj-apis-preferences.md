@@ -1,4 +1,4 @@
-# ohos.preferences（用户首选项）
+# ohos.data.preferences
 
 用户首选项为应用提供Key-Value键值型的数据处理能力，支持应用持久化轻量级数据，并对其修改和查询。
 
@@ -19,33 +19,120 @@ API示例代码使用说明：
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
-## let MAX_KEY_LENGTH
+## const MAX_KEY_LENGTH
 
 ```cangjie
-public let MAX_KEY_LENGTH: Int64 = 1024
+public const MAX_KEY_LENGTH: UInt32 = 1024
 ```
 
 **功能：** Key的最大长度限制为1024个字节。
 
-**类型：** Int64
+**类型：** UInt32
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-## let MAX_VALUE_LENGTH
+## const MAX_VALUE_LENGTH
 
 ```cangjie
-public let MAX_VALUE_LENGTH: Int64 = 16 * 1024 * 1024
+public const MAX_VALUE_LENGTH: UInt32 = 16 * 1024 * 1024
 ```
 
 **功能：** Value的最大长度限制为16 * 1024 * 1024个字节。
 
-**类型：** Int64
+**类型：** UInt32
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
+
+## class Options
+
+```cangjie
+public class Options {
+    public var name: String
+    public var dataGroupId: String
+    public var storageType: StorageType
+    public init(name: String, dataGroupId!: String = String.empty,
+        storageType!: StorageType = StorageType.StorageTypeXml)
+}
+```
+
+**功能：** Preferences实例配置选项。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+### var dataGroupId
+
+```cangjie
+public var dataGroupId: String
+```
+
+**功能：** 应用组ID，需要向应用市场获取。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+### var name
+
+```cangjie
+public var name: String
+```
+
+**功能：** Preferences实例的名称。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+### var storageType
+
+```cangjie
+public var storageType: StorageType
+```
+
+**功能：** 存储模式，为可选参数。
+
+**类型：** [StorageType](#enum-storagetype)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+### init(String, String, StorageType)
+
+```cangjie
+public init(name: String, dataGroupId!: String = String.empty,
+    storageType!: StorageType = StorageType.StorageTypeXml)
+```
+
+**功能：** 用于创建Options实例的构造函数。默认在本应用沙箱目录下创建Preferences实例。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|name|String|是|-|Preferences实例的名称。|
+|dataGroupId|String|否|String.empty|应用组ID，需要向应用市场获取。|
+|storageType|[StorageType](#enum-storagetype)|否|StorageType.StorageTypeXml|存储模式，为可选参数。|
 
 ## class Preferences
 
@@ -55,25 +142,19 @@ public class Preferences {}
 
 **功能：** 首选项类，提供获取和修改存储数据的接口。
 
-> **说明：**
->
-> 想获取实例首先调用[getPreferences](#static-func-getpreferencesstagecontext-string)函数，再通过获得的实例调用其他成员函数。
-
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### static func deletePreferences(StageContext, String)
+### static func deletePreferences(UIAbilityContext, String)
 
 ```cangjie
-public static func deletePreferences(context: StageContext, name: String): Unit
+public static func deletePreferences(context: UIAbilityContext, name: String): Unit
 ```
 
 **功能：** 从缓存中移出指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。
 
-> **说明：**
->
-> 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
+调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -83,18 +164,18 @@ public static func deletePreferences(context: StageContext, name: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |name|String|是|-|Preferences实例的名称。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息|
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
-  | 15500010 | Failed to delete preferences file. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
+| 15500010 | Failed to delete the user preferences persistence file. |
 
 **示例：**
 
@@ -105,28 +186,30 @@ public static func deletePreferences(context: StageContext, name: String): Unit
 
 import kit.ArkData.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(Global.getStageContext(), "myStore") // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例
-    Preferences.deletePreferences(Global.getStageContext(), "myStore")
+    Preferences.deletePreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")
 } catch (e: Exception) {
-    AppLog.info("delete Preferences failed")
+    Hilog.error(0, "AppLogCj", "delete Preferences failed")
 }
 ```
 
-### static func deletePreferences(StageContext, PreferencesOptions)
+### static func deletePreferences(UIAbilityContext, Options)
 
 ```cangjie
-public static func deletePreferences(context: StageContext, options: PreferencesOptions): Unit
+public static func deletePreferences(context: UIAbilityContext, options: Options): Unit
 ```
 
 **功能：** 从缓存中移出指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。
 
-> **说明：**
->
-> 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
+调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -136,19 +219,26 @@ public static func deletePreferences(context: StageContext, options: Preferences
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用上下文。|
-|options|[PreferencesOptions](#struct-preferencesoptions)|是|-|与Preferences实例相关的配置选项。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|options|[Options](#class-options)|是|-|与Preferences实例相关的配置选项。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
-  | 15500010 | Failed to delete preferences file. |
-  | 15501002 | The data group id is not valid.     |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 801 | Capability not supported. |
+| 15500010 | Failed to delete the user preferences persistence file. |
+| 15501001 | The operations is supported in stage mode only. |
+| 15501002 | Invalid dataGroupId. |
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+| :---- | :--- | :--- |
+| The context is invalid. | todo | todo |
 
 **示例：**
 
@@ -159,29 +249,32 @@ public static func deletePreferences(context: StageContext, options: Preferences
 
 import kit.ArkData.*
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(Global.getStageContext(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例
-    Preferences.deletePreferences(Global.getStageContext(), "myStore")
+    Preferences.deletePreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")
 } catch (e: Exception) {
-    AppLog.info("delete Preferences failed")
+    Hilog.error(0, "AppLogCj", "delete Preferences failed")
 }
 ```
 
-### static func getPreferences(StageContext, String)
+### static func getPreferences(UIAbilityContext, String)
 
 ```cangjie
-public static func getPreferences(context: StageContext, name: String): Preferences
+public static func getPreferences(context: UIAbilityContext, name: String): Preferences
 ```
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-> **说明：**
->
-> 应用首次调用[getPreferences](#static-func-getpreferencesstagecontext-string)接口获取某个Preferences实例后，该实例会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesstagecontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
-> 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
+应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+
+调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -191,7 +284,7 @@ public static func getPreferences(context: StageContext, name: String): Preferen
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |name|String|是|-|Preferences实例的名称。|
 
 **返回值：**
@@ -202,12 +295,18 @@ public static func getPreferences(context: StageContext, name: String): Preferen
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+| :---- | :--- | :--- |
+| The context is invalid. | todo | todo |
 
 **示例：**
 
@@ -217,29 +316,33 @@ public static func getPreferences(context: StageContext, name: String): Preferen
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), "myStore") // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(Global.getStageContext(), "myStore")
+    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
-    AppLog.info("Failed to remove cache for preferences")
+    Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
 ```
 
-### static func getPreferences(StageContext, PreferencesOptions)
+### static func getPreferences(UIAbilityContext, Options)
 
 ```cangjie
-public static func getPreferences(context: StageContext, options: PreferencesOptions): Preferences
+public static func getPreferences(context: UIAbilityContext, options: Options): Preferences
 ```
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-> **说明：**
->
-> 应用首次调用[getPreferences](#static-func-getpreferencesstagecontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesstagecontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
-> 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
+应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+
+调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -249,8 +352,8 @@ public static func getPreferences(context: StageContext, options: PreferencesOpt
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用上下文。|
-|options|[PreferencesOptions](#struct-preferencesoptions)|是|-|Preferences实例的名称。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|options|[Options](#class-options)|是|-|Preferences实例的名称。|
 
 **返回值：**
 
@@ -260,12 +363,18 @@ public static func getPreferences(context: StageContext, options: PreferencesOpt
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.|
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+| :---- | :--- | :--- |
+| The context is invalid. | todo | todo |
 
 **示例：**
 
@@ -275,29 +384,33 @@ public static func getPreferences(context: StageContext, options: PreferencesOpt
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID"))
+    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
-    AppLog.info("Failed to remove cache for preferences")
+    Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
 ```
 
-### static func removePreferencesFromCache(StageContext, String)
+### static func removePreferencesFromCache(UIAbilityContext, String)
 
 ```cangjie
-public static func removePreferencesFromCache(context: StageContext, name: String): Unit
+public static func removePreferencesFromCache(context: UIAbilityContext, name: String): Unit
 ```
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-> **说明：**
->
-> 应用首次调用[getPreferences](#static-func-getpreferencesstagecontext-string)接口获取某个Preferences实例后，该实例会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesstagecontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
-> 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
+应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+
+调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -307,17 +420,17 @@ public static func removePreferencesFromCache(context: StageContext, name: Strin
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |name|String|是|-|Preferences实例的名称。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -327,29 +440,33 @@ public static func removePreferencesFromCache(context: StageContext, name: Strin
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), "myStore") // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(Global.getStageContext(), "myStore")
+    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
-    AppLog.info("Failed to remove cache for preferences")
+    Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
 ```
 
-### static func removePreferencesFromCache(StageContext, PreferencesOptions)
+### static func removePreferencesFromCache(UIAbilityContext, Options)
 
 ```cangjie
-public static func removePreferencesFromCache(context: StageContext, options: PreferencesOptions): Unit
+public static func removePreferencesFromCache(context: UIAbilityContext, options: Options): Unit
 ```
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-> **说明：**
->
-> 应用首次调用[getPreferences](#static-func-getpreferencesstagecontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesstagecontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
-> 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
+应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+
+调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -359,18 +476,26 @@ public static func removePreferencesFromCache(context: StageContext, options: Pr
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用上下文。|
-|options|[PreferencesOptions](#struct-preferencesoptions)|是|-|Preferences实例的名称。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|options|[Options](#class-options)|是|-|Preferences实例的名称。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
-  | 15501002 | The data group id is not valid.     |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 801 | Capability not supported. |
+| 15500000 | Inner error. |
+| 15501001 | The operations is supported in stage mode only. |
+| 15501002 | Invalid dataGroupId. |
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+| :---- | :--- | :--- |
+| The context is invalid. | todo | todo |
 
 **示例：**
 
@@ -380,14 +505,19 @@ public static func removePreferencesFromCache(context: StageContext, options: Pr
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID"))
+    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
-    AppLog.info("Failed to remove cache for preferences")
+    Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
 ```
 
@@ -405,11 +535,12 @@ public func clear(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Mandatory parameters are left unspecified. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -419,9 +550,15 @@ public func clear(): Unit
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
+import kit.ArkData.ValueType as PreferencesValueType
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
-preferences.put("myKey", PreferencesValueType.string("myValue"))
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.clear()
 ```
 
@@ -445,12 +582,12 @@ public func delete(key: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -460,9 +597,13 @@ public func delete(key: String): Unit
 // index.cj
 
 import kit.ArkData.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(Global.getStageContext(), "myStore") // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore") // 需获取Context应用上下文，详见本文使用说明
 preferences.delete("startup")
 ```
 
@@ -480,11 +621,12 @@ public func flush(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Mandatory parameters are left unspecified. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -494,16 +636,22 @@ public func flush(): Unit
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
+import kit.ArkData.ValueType as PreferencesValueType
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
-preferences.put("myKey", PreferencesValueType.string("myValue"))
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.flush()
 ```
 
-### func get(String, PreferencesValueType)
+### func get(String, ValueType)
 
 ```cangjie
-public func get(key: String, defValue: PreferencesValueType): PreferencesValueType
+public func get(key: String, defValue: ValueType): ValueType
 ```
 
 **功能：** 从缓存的Preferences实例中获取键对应的值，如果该键不存在，返回默认数据defValue。
@@ -517,22 +665,22 @@ public func get(key: String, defValue: PreferencesValueType): PreferencesValueTy
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |key|String|是|-|要获取的存储Key名称。|
-|defValue|[PreferencesValueType](#enum-preferencesvaluetype)|是|-|默认返回值。支持Int64、Float64、String、Bool、 Array\<Bool>、Array\<Float64>、Array\<String>。|
+|defValue|[ValueType](#enum-valuetype)|是|-|默认返回值。支持Int64、Float64、String、Bool、 Array\<Bool>、Array\<Float64>、Array\<String>。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[PreferencesValueType](#enum-preferencesvaluetype)|返回键对应的值。|
+|[ValueType](#enum-valuetype)|返回键对应的值。
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -542,20 +690,27 @@ public func get(key: String, defValue: PreferencesValueType): PreferencesValueTy
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
+import kit.ArkData.ValueType as PreferencesValueType
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 var value = preferences.get("key", PreferencesValueType.integer(0))
 match (value) {
-    case PreferencesValueType.integer(n) => AppLog.info("获取到的值为${n}")
-    case _ => AppLog.info("获取到的值并不是 Int")
+    case PreferencesValueType.integer(n) => Hilog.info(0, "AppLogCj", "获取到的值为${n}")
+    case _ => Hilog.info(0, "AppLogCj", "获取到的值并不是 Int")
 }
 ```
 
 ### func getAll()
 
 ```cangjie
-public func getAll(): HashMap<String, PreferencesValueType>
+public func getAll(): HashMap<String, ValueType>
 ```
 
 **功能：** 从缓存的Preferences实例中获取所有键值数据。
@@ -568,16 +723,16 @@ public func getAll(): HashMap<String, PreferencesValueType>
 
 |类型|说明|
 |:----|:----|
-|HashMap\<String, [PreferencesValueType](#enum-preferencesvaluetype)>|HashMap对象，返回含有所有键值数据。|
+|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>|HashMap对象，返回含有所有键值数据。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息                       |
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Mandatory parameters are left unspecified. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -587,16 +742,22 @@ public func getAll(): HashMap<String, PreferencesValueType>
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 var values = preferences.getAll()
 for ((k, v) in values) {
     match (v) {
-        case integer(n) => AppLog.info("获得到的键值对key: ${k} value: ${n}")
-        case double(n) => AppLog.info("获得到的键值对key: ${k} value: ${n}")
-        case string(n) => AppLog.info("获得到的键值对key: ${k} value: ${n}")
-        case _ => AppLog.info("其他值")
+        case Integer(n) => Hilog.info(0, "AppLogCj", "获得到的键值对key: ${k} value: ${n}")
+        case Double(n) => Hilog.info(0, "AppLogCj", "获得到的键值对key: ${k} value: ${n}")
+        case StringData(n) => Hilog.info(0, "AppLogCj", "获得到的键值对key: ${k} value: ${n}")
+        case _ => Hilog.info(0, "AppLogCj", "其他值")
     }
 }
 ```
@@ -621,18 +782,18 @@ public func has(key: String): Bool
 
 **返回值：**
 
-| 类型| 说明|
-| :---------------------- | :------------------------------------------------------------ |
-| Bool | Bool值。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+|类型|说明|
+|:----|:----|
+|Bool|Bool值。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息|
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -642,21 +803,27 @@ public func has(key: String): Bool
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 let hasKey = preferences.has("startup")
 if (hasKey) {
-    AppLog.info("The key 'startup' is contained.")
+    Hilog.info(0, "AppLogCj", "The key 'startup' is contained.")
 } else {
-    AppLog.info("The key 'startup' dose not contain.")
+    Hilog.info(0, "AppLogCj", "The key 'startup' dose not contain.")
 }
 ```
 
-### func off(String, Callback1Argument\<String>)
+### func off(PreferencesEvent, ?Callback1Argument\<String>)
 
 ```cangjie
-public func off(tp: String, callback: Callback1Argument<String>): Unit
+public func off(event :PreferencesEvent, callback!: ?Callback1Argument<String> = None): Unit
 ```
 
 **功能：** 取消订阅数据变更。
@@ -669,17 +836,17 @@ public func off(tp: String, callback: Callback1Argument<String>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|tp|String|是|-|事件类型，固定值“change”或“multiProcessChange”。<br>change时，表示取消订阅数据变更。<br>multiProcessChange时，表示取消订阅进程间数据变更。                     |
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<String>|是|-|需要取消的回调函数，不填写则全部取消。String: 发生变化的Key的类型。|
+|event|[PreferencesEvent](#enum-preferencesevent)|是|-|事件类型，表示取消订阅数据变更，或表示取消订阅进程间数据变更|
+|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argumentex)\<String>|否|None|需要取消的回调函数，不填写则全部取消。<br> String: 发生变化的Key的类型。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息|
-  | :-------- | :-------------------------------------- |
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -690,84 +857,36 @@ public func off(tp: String, callback: Callback1Argument<String>): Unit
 
 import kit.ArkData.*
 import ohos.base.*
-import kit.ArkData.PreferencesValueType as PValueType
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import kit.ArkData.ValueType as PValueType
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
 // 回调函数
 class Callback <: Callback1Argument<String> {
-    public func invoke(arg: String): Unit {
-        AppLog.info("=========callback========= ${arg.toString()}======================")
+    public func invoke(err: ?BusinessException, arg: String): Unit {
+        Hilog.info(0, "AppLogCj", "=========callback========= ${arg.toString()}======================")
     }
 }
 
 var str = "container"
-var a = Preferences.getPreferences(Global.getStageContext(), str) // 需获取Context应用上下文，详见本文使用说明
+var a = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), str) // 需获取Context应用上下文，详见本文使用说明
 var c = Callback()
-a.on("change", c)
-a.off("change", c)
-a.put("kkk1", PValueType.string("vvv1"))
+a.on(PreferencesEvent.PreferencesChange, c)
+a.off(PreferencesEvent.PreferencesChange)
+a.put("kkk1", PValueType.StringData("vvv1"))
 a.flush()
 ```
 
-### func off(String)
+### func on(PreferencesEvent, Callback1Argument\<String>)
 
 ```cangjie
-public func off(tp: String): Unit
-```
-
-**功能：** 取消订阅数据变更。
-
-**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|tp|String|是|-|事件类型，固定值“change”或“multiProcessChange”。<br>change时，表示取消订阅数据变更。<br>multiProcessChange时，表示取消订阅进程间数据变更。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息                               |
-  | :-------- | :-------------------------------------- |
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-import ohos.base.*
-import kit.ArkData.PreferencesValueType as PValueType
-
-// 此处代码可添加在依赖项定义中
-// 回调函数
-class Callback <: Callback1Argument<String> {
-    public func invoke(arg: String): Unit {
-        AppLog.info("=========callback========= ${arg.toString()}======================")
-    }
-}
-
-var str = "container"
-var a = Preferences.getPreferences(Global.getStageContext(), str) // 需获取Context应用上下文，详见本文使用说明
-var c = Callback()
-a.on("change", c)
-a.off("change")
-a.put("kkk1", PValueType.string("vvv1"))
-a.flush()
-```
-
-### func on(String, Callback1Argument\<String>)
-
-```cangjie
-public func on(tp: String, callback: Callback1Argument<String>): Unit
+public func on(event :PreferencesEvent, callback: Callback1Argument<String>): Unit
 ```
 
 **功能：** 订阅数据变更。
@@ -780,8 +899,8 @@ public func on(tp: String, callback: Callback1Argument<String>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|tp|String|是|-|事件类型，固定值“change”或“multiProcessChange”。<br>change时，表示订阅数据变更，订阅的Key的值发生变更后，在执行flush方法后，触发callback回调。<br>multiProcessChange时，表示订阅进程间数据变更，多个进程持有同一个首选项文件时，订阅的Key的值在任意一个进程发生变更后，执行flush方法后，触发callback回调。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<String>|是|-|回调函数。String: 发生变化的Key的类型。|
+|event|[PreferencesEvent](#enum-preferencesevent)|是|-|事件类型。<br> PreferencesChange 时，表示订阅数据变更，订阅的Key的值发生变更后，在执行flush方法后，触发callback回调。<br> PreferencesMultiProcessChange 时，表示订阅进程间数据变更，多个进程持有同一个首选项文件时，订阅的Key的值在任意一个进程发生变更后，执行flush方法后，触发callback回调。|
+|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argumentex)\<String>|是|-|回调函数。<br>String: 发生变化的Key的类型。|
 
 **示例：**
 
@@ -792,27 +911,34 @@ public func on(tp: String, callback: Callback1Argument<String>): Unit
 
 import kit.ArkData.*
 import ohos.base.*
-import kit.ArkData.PreferencesValueType as PValueType
+import ohos.callback_invoke.*
+import ohos.business_exception.*
+import kit.ArkData.ValueType as PValueType
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
+import kit.PerformanceAnalysisKit.Hilog
 
 // 回调函数
 class Callback <: Callback1Argument<String> {
-    public func invoke(arg: String): Unit {
-        AppLog.info("=========callback========= ${arg.toString()}======================")
+    public func invoke(err: ?BusinessException, arg: String): Unit {
+        Hilog.info(0, "AppLogCj", "=========callback========= ${arg.toString()}======================")
     }
 }
 
 var str = "container"
-var a = Preferences.getPreferences(Global.getStageContext(), str) // 需获取Context应用上下文，详见本文使用说明
+var a = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), str) // 需获取Context应用上下文，详见本文使用说明
 var c = Callback()
-a.on("change", c)
-a.put("kkk1", PValueType.string("vvv1"))
+a.on(PreferencesEvent.PreferencesChange, c)
+a.put("kkk1", PValueType.StringData("vvv1"))
 a.flush()
 ```
 
-### func put(String, PreferencesValueType)
+### func put(String, ValueType)
 
 ```cangjie
-public func put(key: String, value: PreferencesValueType): Unit
+public func put(key: String, value: ValueType): Unit
 ```
 
 **功能：** 将数据写入缓存的Preferences实例中，可通过[flush](#func-flush)将Preferences实例持久化。
@@ -826,16 +952,16 @@ public func put(key: String, value: PreferencesValueType): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |key|String|是|-|要修改的存储的Key，不能为空。|
-|value|[PreferencesValueType](#enum-preferencesvaluetype)|是|-|存储的新值。支持Int64、Float64、String、Bool、 Array\<Bool>、Array\<Float64>、Array\<String>。|
+|value|[ValueType](#enum-valuetype)|是|-|存储的新值。支持Int64、Float64、String、Bool、 Array\<Bool>、Array\<Float64>、Array\<String>。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[用户首选项错误码](../../errorcodes/cj-errorcode-preferences.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息|
-  | :-------- | :------------------------------|
-  | 401 | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified;<br>2. Parameter verification failed.   |
-  | 15500000 | Inner error.                   |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed. |
+| 15500000 | Inner error. |
 
 **示例：**
 
@@ -845,158 +971,123 @@ public func put(key: String, value: PreferencesValueType): Unit
 // index.cj
 
 import kit.ArkData.*
+import ohos.data.preferences.Options as PreferencesOptions
+import kit.ArkData.ValueType as PreferencesValueType
+import ohos.arkui.state_management.AppStorage
+//// check redundant import
+import kit.AbilityKit.UIAbilityContext
+//// end
 
-var preferences = Preferences.getPreferences(Global.getStageContext(), PreferencesOptions("mystore", "myGroupID")) // 需获取Context应用上下文，详见本文使用说明
-preferences.put("Monday", PreferencesValueType.string("今天天气真好"))
+var preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+preferences.put("Monday", PreferencesValueType.StringData("今天天气真好"))
 ```
 
-## struct PreferencesOptions
+## enum PreferencesEvent
 
 ```cangjie
-public struct PreferencesOptions {
-    public let name: String
-    public let dataGroupId: String
-    public init(name: String)
-    public init(name: String, dataGroupId: String)
+public enum PreferencesEvent {
+    | PreferencesChange
+    | PreferencesMultiProcessChange
 }
 ```
 
-**功能：** Preferences实例配置选项。
+**功能：** Preferences的事件类型枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### let dataGroupId
+### PreferencesChange
 
 ```cangjie
-public let dataGroupId: String
+PreferencesChange
 ```
 
-**功能：** 应用组ID，需要向应用市场获取。
-
-**类型：** String
-
-**读写能力：** 只读
+**功能：** 表示数据变更。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### let name
+### PreferencesMultiProcessChange
 
 ```cangjie
-public let name: String
+PreferencesMultiProcessChange
 ```
 
-**功能：** Preferences实例的名称。
-
-**类型：** String
-
-**读写能力：** 只读
+**功能：** 表示多进程间的数据变更。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### init(String)
+## enum StorageType
 
 ```cangjie
-public init(name: String)
-```
-
-**功能：** 用于创建Options实例的构造函数。默认在本应用沙箱目录下创建Preferences实例。
-
-**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|Preferences实例的名称。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var options = PreferencesOptions("name")
-```
-
-### init(String, String)
-
-```cangjie
-public init(name: String, dataGroupId: String)
-```
-
-**功能：** 用于创建Options实例的构造函数。
-
-**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|name|String|是|-|Preferences实例的名称。|
-|dataGroupId|String|是|-|应用组ID，需要向应用市场获取。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ArkData.*
-
-var options = PreferencesOptions("name", "dataGroupId")
-```
-
-## enum PreferencesValueType
-
-```cangjie
-public enum PreferencesValueType {
-    | integer(Int64)
-    | double(Float64)
-    | string(String)
-    | bool(Bool)
-    | boolArray(Array<Bool>)
-    | doubleArray(Array<Float64>)
-    | stringArray(Array<String>)
-    | ...
+public enum StorageType {
+    | StorageTypeXml
+    | StorageTypeGskv
 }
 ```
 
-**功能：** 用于表示允许的数据字段的枚举类型。
+**功能：** Preferences的存储模式枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### bool(Bool)
+### StorageTypeGskv
 
 ```cangjie
-bool(Bool)
+StorageTypeGskv
 ```
 
-**功能：** 表示值类型为布尔值。
+**功能：** 表示GSKV存储模式。
+
+**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用flush接口对数据进行落盘。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### boolArray(Array\<Bool>)
+### StorageTypeXml
 
 ```cangjie
-boolArray(Array<Bool>)
+StorageTypeXml
+```
+
+**功能：** 表示XML存储模式，这是Preferences的默认存储模式。
+
+**特点：** 数据XML格式进行存储。对数据的操作发生在内存中，需要调用flush接口进行落盘。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+## enum ValueType
+
+```cangjie
+public enum ValueType {
+    | Integer(Int64)
+    | Double(Float64)
+    | StringData(String)
+    | BoolData(Bool)
+    | BoolArray(Array<Bool>)
+    | DoubleArray(Array<Float64>)
+    | StringArray(Array<String>)
+}
+```
+
+**功能：** 表示支持的值类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+### BoolArray(Array\<Bool>)
+
+```cangjie
+BoolArray(Array<Bool>)
 ```
 
 **功能：** 表示值类型为布尔类型的数组。
@@ -1005,61 +1096,73 @@ boolArray(Array<Bool>)
 
 **起始版本：** 21
 
-### double(Float64)
+### BoolData(Bool)
 
 ```cangjie
-double(Float64)
+BoolData(Bool)
 ```
 
-**功能：** 表示值类型为Float64浮点数。
+**功能：** 表示值类型为布尔值。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### doubleArray(Array\<Float64>)
+### Double(Float64)
 
 ```cangjie
-doubleArray(Array<Float64>)
+Double(Float64)
 ```
 
-**功能：** 表示值类型为Float64类型的数组。
+**功能：** 表示值类型为64位浮点数类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### integer(Int64)
+### DoubleArray(Array\<Float64>)
 
 ```cangjie
-integer(Int64)
+DoubleArray(Array<Float64>)
 ```
 
-**功能：** 表示值类型为Int64数字。
+**功能：** 表示值类型为64位浮点数类型的数组。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### string(String)
+### Integer(Int64)
 
 ```cangjie
-string(String)
+Integer(Int64)
 ```
 
-**功能：** 表示值类型为字符串。
+**功能：** 表示值类型为64位有符号整型类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
 **起始版本：** 21
 
-### stringArray(Array\<String>)
+### StringArray(Array\<String>)
 
 ```cangjie
-stringArray(Array<String>)
+StringArray(Array<String>)
 ```
 
 **功能：** 表示值类型为字符串类型的数组。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**起始版本：** 21
+
+### StringData(String)
+
+```cangjie
+StringData(String)
+```
+
+**功能：** 表示值类型为字符串。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 

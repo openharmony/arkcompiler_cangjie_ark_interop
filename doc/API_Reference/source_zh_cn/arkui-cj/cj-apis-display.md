@@ -28,7 +28,7 @@ public func getAllDisplays(): Array<Display>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -38,9 +38,7 @@ public func getAllDisplays(): Array<Display>
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getAllDisplaysExample() {
     try {
         let displayClass: Array<Display> = getAllDisplays()
@@ -48,7 +46,7 @@ func getAllDisplaysExample() {
             println(displayClass[0].name)
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -73,7 +71,7 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -82,15 +80,13 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getCurrentFoldCreaseRegionExample() {
     try {
         let region = getCurrentFoldCreaseRegion()
         println(region.displayId)
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -115,7 +111,7 @@ public func getDefaultDisplaySync(): Display
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -125,15 +121,13 @@ public func getDefaultDisplaySync(): Display
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getDefaultDisplaySyncExample() {
     try {
         let displayClass: Display = getDefaultDisplaySync()
         println(displayClass.name)
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -159,22 +153,20 @@ public func getFoldDisplayMode(): FoldDisplayMode
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getFoldDisplayModeExample() {
     try {
         let mode = getFoldDisplayMode()
         match (mode) {
-            case FoldDisplayMode.FoldDisplayModeUnknown => Hilog.info(0, "display_test", "Unkown mode.")
-            case FoldDisplayMode.FoldDisplayModeFull => Hilog.info(0, "display_test", "Full mode.")
-            case FoldDisplayMode.FoldDisplayModeMain => Hilog.info(0, "display_test", "Main mode.")
-            case FoldDisplayMode.FoldDisplayModeSub => Hilog.info(0, "display_test", "Sub mode.")
-            case FoldDisplayMode.FoldDisplayModeCoordination => Hilog.info(0, "display_test", "Coordination mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN => Hilog.info(0, "AppLogCj", "Unkown mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_FULL => Hilog.info(0, "AppLogCj", "Full mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN => Hilog.info(0, "AppLogCj", "Main mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_SUB => Hilog.info(0, "AppLogCj", "Sub mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_COORDINATION => Hilog.info(0, "AppLogCj", "Coordination mode.")
             case _ => throw Exception("can not get display mode.")
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -200,21 +192,19 @@ public func getFoldStatus(): FoldStatus
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getFoldStatusExample() {
     try {
         let status = getFoldStatus()
         match (status) {
-            case FoldStatus.FoldStatusUnknown => Hilog.info(0, "display_test", "Unkown status.")
-            case FoldStatus.FoldStatusExpanded => Hilog.info(0, "display_test", "Expanded.")
-            case FoldStatus.FoldStatusFolded => Hilog.info(0, "display_test", "Folded.")
-            case FoldStatus.FoldStatusHalfFolded => Hilog.info(0, "display_test", "Half folded.")
+            case FoldStatus.FOLD_STATUS_UNKNOWN => Hilog.info(0, "AppLogCj", "Unkown status.")
+            case FoldStatus.FOLD_STATUS_EXPANDED => Hilog.info(0, "AppLogCj", "Expanded.")
+            case FoldStatus.FOLD_STATUS_FOLDED => Hilog.info(0, "AppLogCj", "Folded.")
+            case FoldStatus.FOLD_STATUS_HALF_FOLDED => Hilog.info(0, "AppLogCj", "Half folded.")
             case _ => throw Exception("can not get fold status.")
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -240,9 +230,7 @@ public func isFoldable(): Bool
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func isFoldableExample() {
     try {
         let displayClass = getDefaultDisplaySync()
@@ -250,15 +238,15 @@ func isFoldableExample() {
         try {
             ret = isFoldable()
         } catch (exception: Exception) {
-            Hilog.error(0, "display_test", exception.toString())
+            Hilog.error(0, "AppLogCj", exception.toString())
         }
         if (ret) {
-            Hilog.info(0, "display_test", "The device is foldable.")
+            Hilog.info(0, "AppLogCj", "The device is foldable.")
         } else {
-            Hilog.info(0, "display_test", "The device is not foldable.")
+            Hilog.info(0, "AppLogCj", "The device is not foldable.")
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -269,7 +257,7 @@ func isFoldableExample() {
 public func off(listenerType: ListenerType): Unit
 ```
 
-**功能：** 关闭监听。
+**功能：** 关闭显示设备变化的监听。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -284,8 +272,8 @@ public func off(listenerType: ListenerType): Unit
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-var temp: Unit = off(ListnerTypeChange)
+import ohos.display.*
+var temp: Unit = off(LISTNER_TYPE_CHANGE)
 ```
 
 ## func off(ListenerType, Callback1Argument\<FoldStatus>)
@@ -304,39 +292,38 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStat
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为ListnerTypeFoldStatusChange，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|需要取消注册的回调函数。表示折叠设备折叠状态。|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
+|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
+
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)、[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 1400003 | This display manager service works abnormally. |
 
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 class TestCallback <: Callback1Argument<FoldStatus> {
     public init() {}
     public open func invoke(value: FoldStatus): Unit {
-        Hilog.info(0, "display_test", 
+        Hilog.info(0, "AppLogCj", 
             "Display fold status changed, current fold status: " + match (value) {
-                case FoldStatusUnknown => "FoldStatusUnknown"
-                case FoldStatusExpanded => "FoldStatusExpanded"
-                case FoldStatusFolded => "FoldStatusFolded"
-                case FoldStatusHalfFolded => "FoldStatusHalfFolded"
+                case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
+                case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
+                case FOLD_STATUS_FOLDED => "FOLD_STATUS_FOLDED"
+                case FOLD_STATUS_HALF_FOLDED => "FOLD_STATUS_HALF_FOLDED"
                 case _ => "Failed to get fold status."
             })
     }
 }
 let testCallback = TestCallback()
-var temp: Unit = on(ListnerTypeFoldStatusChange, testCallback)
+var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
 ```
 
 ## func off(ListenerType, Callback1Argument\<FoldDisplayMode>)
@@ -355,38 +342,38 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisp
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为ListnerTypeFoldDisplayModeChange，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|需要取消注册的回调函数。表示折叠设备屏幕显示模式。|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE'，表示折叠设备折叠状态发生变化。|
+|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|需要取消注册的回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)和[屏幕错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 1400003 | This display manager service works abnormally. |
 
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
+import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "display_test", 
+        Hilog.info(0, "AppLogCj", 
             "Display fold status changed, current fold status: " + match (value) {
-                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"
-                case FoldDisplayModeFull => "FoldDisplayModeFull"
-                case FoldDisplayModeMain => "FoldDisplayModeMain"
-                case FoldDisplayModeSub => "FoldDisplayModeSub"
-                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"
+                case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
+                case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
+                case FOLD_DISPLAY_MODE_MAIN => "FOLD_DISPLAY_MODE_MAIN"
+                case FOLD_DISPLAY_MODE_SUB => "FOLD_DISPLAY_MODE_SUB"
+                case FOLD_DISPLAY_MODE_COORDINATION => "FOLD_DISPLAY_MODE_COORDINATION"
                 case _ => "Failed to get fold display mode."
             })
     }
 }
 let testCallback = TestCallback()
-var temp: Unit = off(ListnerTypeFoldDisplayModeChange, testCallback)
+var temp: Unit = off(LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE, testCallback)
 ```
 
 ## func on(ListenerType, Callback1Argument\<FoldStatus>)
@@ -405,38 +392,37 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatu
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为ListnerTypeFoldStatusChange，表示折叠设备折叠状态发生变化。|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
 |callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
+
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 1400003 | This display manager service works abnormally. |
 
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 class TestCallback <: Callback1Argument<FoldStatus> {
     public init(){}
     public open func invoke(value: FoldStatus): Unit {
-        Hilog.info(0, "display_test", "Display fold status changed, current fold status: " + match(value) {
-            case FoldStatusUnknown => "FoldStatusUnknown"
-            case FoldStatusExpanded => "FoldStatusExpanded"
-            case FoldStatusFolded => "FoldStatusFolded"
-            case FoldStatusHalfFolded => "FoldStatusHalfFolded"
+        Hilog.info(0, "AppLogCj", "Display fold status changed, current fold status: " + match(value) {
+            case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
+            case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
+            case FOLD_STATUS_FOLDED => "FOLD_STATUS_FOLDED"
+            case FOLD_STATUS_HALF_FOLDED => "FOLD_STATUS_HALF_FOLDED"
             case _ => "Failed to get fold status."
         })
     }
 }
 let testCallback = TestCallback()
-var temp: Unit = on(ListnerTypeFoldStatusChange, testCallback)
+var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
 ```
 
 ## func on(ListenerType, Callback1Argument\<FoldDisplayMode>)
@@ -455,40 +441,38 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDispl
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为ListnerTypeFoldDisplayModeChange，表示折叠设备折叠状态发生变化。|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE'，表示折叠设备屏幕显示模式。|
 |callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|回调函数。表示折叠设备屏幕显示模式。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 1400003 | This display manager service works abnormally. |
 
 **示例:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "display_test", 
+        Hilog.info(0, "AppLogCj", 
             "Display fold status changed, current fold status: " + match (value) {
-                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"
-                case FoldDisplayModeFull => "FoldDisplayModeFull"
-                case FoldDisplayModeMain => "FoldDisplayModeMain"
-                case FoldDisplayModeSub => "FoldDisplayModeSub"
-                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"
+                case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
+                case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
+                case FOLD_DISPLAY_MODE_MAIN => "FOLD_DISPLAY_MODE_MAIN"
+                case FOLD_DISPLAY_MODE_SUB => "FOLD_DISPLAY_MODE_SUB"
+                case FOLD_DISPLAY_MODE_COORDINATION => "FOLD_DISPLAY_MODE_COORDINATION"
                 case _ => "Failed to get fold display mode."
             })
     }
 }
 let testCallback = TestCallback()
-var temp: Unit = on(ListnerTypeFoldDisplayModeChange, testCallback)
+var temp: Unit = on(LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE, testCallback)
 ```
 
 ## class CutoutInfo
@@ -516,7 +500,7 @@ public class CutoutInfo {
 public let boundingRects: Array<Rect>
 ```
 
-**功能：** 挖孔、刘海等区域的边界矩形。如果没有挖孔、刘海等区域，数组返回为空。
+**功能：** 设置挖孔、刘海等区域的边界矩形。
 
 **类型：** Array\<[Rect](#class-rect)>
 
@@ -551,7 +535,7 @@ public init(
 )
 ```
 
-**功能：**  创建一个CutoutInfo类型对象。
+**功能：** 创建一个CutoutInfo类型对象。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -571,10 +555,6 @@ public class Display {}
 ```
 
 **功能：** 设置屏幕实例。描述Display对象的属性和方法。
-
-> **说明:**
->
-> 下列API示例中都需先使用[getAllDisplays()](#func-getalldisplays)、[getDefaultDisplaySync()](#func-getdefaultdisplaysync)中的任一方法获取到Display对象，再通过此实例调用对应方法。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -604,10 +584,6 @@ public prop densityDPI: Float32
 
 **功能：** 设置显示设备屏幕的物理像素密度，表示每英寸上的像素点数。
 
-> **说明：**
->
-> 该参数为浮点数，单位为px。一般取值160.0、480.0等，实际能取到的值取决于不同设备设置里提供的可选值。
-
 **类型：** Float32
 
 **读写能力：** 只读
@@ -624,10 +600,6 @@ public prop densityPixels: Float32
 
 **功能：** 设置显示设备的逻辑密度，是像素单位无关的缩放系数。
 
-> **说明：**
->
-> 该参数为浮点数，受densityDPI范围限制，取值范围在[0.5，4.0]。一般取值1.0、3.0等，实际取值取决于不同设备提供的densityDPI。
-
 **类型：** Float32
 
 **读写能力：** 只读
@@ -643,10 +615,6 @@ public prop height: Int32
 ```
 
 **功能：** 显示设备的屏幕高度。
-
-> **说明：**
->
-> 单位为px，该参数应为整数。
 
 **类型：** Int32
 
@@ -712,10 +680,6 @@ public prop refreshRate: UInt32
 
 **功能：** 设置显示设备的刷新率。
 
-> **说明：**
->
-> 该参数应为整数，单位为hz。
-
 **类型：** UInt32
 
 **读写能力：** 只读
@@ -732,10 +696,6 @@ public prop rotation: UInt32
 
 **功能：** 设置显示设备的屏幕顺时针旋转角度。
 
-> **说明：**
->
-> 值为0时，表示显示设备屏幕顺时针旋转为0°；值为1时，表示显示设备屏幕顺时针旋转为90°；值为2时，表示显示设备屏幕顺时针旋转为180°；值为3时，表示显示设备屏幕顺时针旋转为270°。
-
 **类型：** UInt32
 
 **读写能力：** 只读
@@ -751,10 +711,6 @@ public prop scaledDensity: Float32
 ```
 
 **功能：** 显示设备的显示字体的缩放因子。该参数为浮点数，通常与densityPixels相同。
-
-> **说明：**
->
-> 该参数为浮点数，通常与densityPixels相同。
 
 **类型：** Float32
 
@@ -788,10 +744,6 @@ public prop width: Int32
 
 **功能：** 设置显示设备的屏幕宽度。
 
-> **说明：**
->
-> 单位为px，该参数应为整数。
-
 **类型：** Int32
 
 **读写能力：** 只读
@@ -808,10 +760,6 @@ public prop xDPI: Float32
 
 **功能：** 设置x方向中每英寸屏幕的确切物理像素值。
 
-> **说明：**
->
-> 该参数为浮点数。
-
 **类型：** Float32
 
 **读写能力：** 只读
@@ -827,10 +775,6 @@ public prop yDPI: Float32
 ```
 
 **功能：** 设置y方向中每英寸屏幕的确切物理像素值。
-
-> **说明：**
->
-> 该参数为浮点数。
 
 **类型：** Float32
 
@@ -860,12 +804,27 @@ public func getCutoutInfo(): CutoutInfo
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 1400001 | Invalid display or screen. |
   | 1400003 | This display manager service works abnormally. |
+
+**示例:**
+
+```cangjie
+import ohos.display.*
+func getCutoutInfoExample() {
+    try {
+        let displayClass = getDefaultDisplaySync()
+        let cutout = displayClass.getCutoutInfo()
+        println(cutout.boundingRects.size)
+    } catch (exception: Exception) {
+        Hilog.error(0, "AppLogCj", exception.toString())
+    }
+}
+```
 
 ## class FoldCreaseRegion
 
@@ -971,10 +930,6 @@ public var height: UInt32
 
 **功能：** 设置矩形区域的高度。
 
-> **说明：**
->
-> 单位为像素，该参数应为整数。
-
 **类型：** UInt32
 
 **读写能力：** 可读写
@@ -990,10 +945,6 @@ public var left: Int32
 ```
 
 **功能：** 设置矩形区域的左边界。
-
-> **说明：**
->
-> 单位为像素，该参数应为整数。
 
 **类型：** Int32
 
@@ -1011,10 +962,6 @@ public var top: Int32
 
 **功能：** 设置矩形区域的上边界。
 
-> **说明：**
->
-> 单位为像素，该参数应为整数。
-
 **类型：** Int32
 
 **读写能力：** 可读写
@@ -1030,10 +977,6 @@ public var width: UInt32
 ```
 
 **功能：** 设置矩形区域的宽度。
-
-> **说明：**
->
-> 单位为像素，该参数应为整数。
 
 **类型：** UInt32
 
@@ -1064,10 +1007,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|Int32|是|-|矩形区域的左边界，单位为px。|
-|top|Int32|是|-|矩形区域的上边界，单位为px。|
-|width|UInt32|是|-|矩形区域的宽度，单位为px。|
-|height|UInt32|是|-|矩形区域的高度，单位为px。|
+|left|Int32|是|-|矩形区域的左边界，单位为px，该参数应为整数。|
+|top|Int32|是|-|矩形区域的上边界，单位为px，该参数应为整数。|
+|width|UInt32|是|-|矩形区域的宽度，单位为px，该参数应为整数。|
+|height|UInt32|是|-|矩形区域的高度，单位为px，该参数应为整数。|
 
 ## class WaterfallDisplayAreaRects
 
@@ -1185,7 +1128,7 @@ public init(
 ## enum DisplayState
 
 ```cangjie
-public enum DisplayState {
+public enum DisplayState <: Equatable<DisplayState> {
     | StateUnknown
     | StateOff
     | StateOn
@@ -1202,6 +1145,10 @@ public enum DisplayState {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<DisplayState>
 
 ### StateDoze
 
@@ -1287,10 +1234,50 @@ StateVr
 
 **起始版本：** 21
 
+### func !=(DisplayState)
+
+```cangjie
+public operator func !=(other: DisplayState): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DisplayState](#enum-displaystate)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否不相等。|
+
+### func ==(DisplayState)
+
+```cangjie
+public operator func ==(other: DisplayState): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[DisplayState](#enum-displaystate)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否相等。|
+
 ## enum FoldDisplayMode
 
 ```cangjie
-public enum FoldDisplayMode {
+public enum FoldDisplayMode <: Equatable<FoldDisplayMode> {
     | FoldDisplayModeUnknown
     | FoldDisplayModeFull
     | FoldDisplayModeMain
@@ -1305,6 +1292,10 @@ public enum FoldDisplayMode {
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<FoldDisplayMode>
 
 ### FoldDisplayModeCoordination
 
@@ -1366,10 +1357,50 @@ FoldDisplayModeUnknown
 
 **起始版本：** 21
 
+### func !=(FoldDisplayMode)
+
+```cangjie
+public operator func !=(other: FoldDisplayMode): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[FoldDisplayMode](#enum-folddisplaymode)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否不相等。|
+
+### func ==(FoldDisplayMode)
+
+```cangjie
+public operator func ==(other: FoldDisplayMode): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[FoldDisplayMode](#enum-folddisplaymode)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否相等。|
+
 ## enum FoldStatus
 
 ```cangjie
-public enum FoldStatus {
+public enum FoldStatus <: Equatable<FoldStatus> {
     | FoldStatusUnknown
     | FoldStatusExpanded
     | FoldStatusFolded
@@ -1380,13 +1411,13 @@ public enum FoldStatus {
 
 **功能：** 当前可折叠设备的折叠状态类型。
 
-> **说明：**
->
-> 如果是双折轴设备，则在充电口朝下的状态下，从右到左分别是折轴一和折轴二。
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<FoldStatus>
 
 ### FoldStatusExpanded
 
@@ -1436,10 +1467,50 @@ FoldStatusUnknown
 
 **起始版本：** 21
 
+### func !=(FoldStatus)
+
+```cangjie
+public operator func !=(other: FoldStatus): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[FoldStatus](#enum-foldstatus)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否不相等。|
+
+### func ==(FoldStatus)
+
+```cangjie
+public operator func ==(other: FoldStatus): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[FoldStatus](#enum-foldstatus)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否相等。|
+
 ## enum ListenerType
 
 ```cangjie
-public enum ListenerType {
+public enum ListenerType <: Equatable<ListenerType> {
     | ListnerTypeAdd
     | ListnerTypeRemove
     | ListnerTypeChange
@@ -1457,6 +1528,10 @@ public enum ListenerType {
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<ListenerType>
 
 ### ListnerTypeAdd
 
@@ -1554,10 +1629,50 @@ ListnerTypeRemove
 
 **起始版本：** 21
 
+### func !=(ListenerType)
+
+```cangjie
+public operator func !=(other: ListenerType): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ListenerType](#enum-listenertype)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否不相等。|
+
+### func ==(ListenerType)
+
+```cangjie
+public operator func ==(other: ListenerType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ListenerType](#enum-listenertype)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否相等。|
+
 ## enum Orientation
 
 ```cangjie
-public enum Orientation {
+public enum Orientation <: Equatable<Orientation> {
     | Portrait
     | Landscape
     | PortraitInverted
@@ -1571,6 +1686,10 @@ public enum Orientation {
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- Equatable\<Orientation>
 
 ### Landscape
 
@@ -1619,3 +1738,43 @@ PortraitInverted
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 21
+
+### func !=(Orientation)
+
+```cangjie
+public operator func !=(other: Orientation): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[Orientation](#enum-orientation)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否不相等。|
+
+### func ==(Orientation)
+
+```cangjie
+public operator func ==(other: Orientation): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[Orientation](#enum-orientation)|是|-|传入的另一个枚举值|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值是否相等。|

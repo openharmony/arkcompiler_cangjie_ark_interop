@@ -12,10 +12,10 @@ import kit.ConnectivityKit.*
 
 ```cangjie
 public enum ProfileConnectionState <: Equatable<ProfileConnectionState> & ToString {
-    | STATE_DISCONNECTED
-    | STATE_CONNECTING
-    | STATE_CONNECTED
-    | STATE_DISCONNECTING
+    | StateDisconnected
+    | StateConnecting
+    | StateConnected
+    | StateDisconnecting
     | ...
 }
 ```
@@ -31,10 +31,10 @@ public enum ProfileConnectionState <: Equatable<ProfileConnectionState> & ToStri
 - Equatable\<ProfileConnectionState>
 - ToString
 
-### STATE_CONNECTED
+### StateConnected
 
 ```cangjie
-STATE_CONNECTED
+StateConnected
 ```
 
 **功能：** 表示profile已连接。
@@ -43,10 +43,10 @@ STATE_CONNECTED
 
 **起始版本：** 21
 
-### STATE_CONNECTING
+### StateConnecting
 
 ```cangjie
-STATE_CONNECTING
+StateConnecting
 ```
 
 **功能：** 表示profile正在连接。
@@ -55,10 +55,10 @@ STATE_CONNECTING
 
 **起始版本：** 21
 
-### STATE_DISCONNECTED
+### StateDisconnected
 
 ```cangjie
-STATE_DISCONNECTED
+StateDisconnected
 ```
 
 **功能：** 表示profile已断连。
@@ -67,10 +67,10 @@ STATE_DISCONNECTED
 
 **起始版本：** 21
 
-### STATE_DISCONNECTING
+### StateDisconnecting
 
 ```cangjie
-STATE_DISCONNECTING
+StateDisconnecting
 ```
 
 **功能：** 表示profile正在断开连接。
@@ -82,16 +82,20 @@ STATE_DISCONNECTING
 ### func !=(ProfileConnectionState)
 
 ```cangjie
-public operator func !=(other: ProfileConnectionState): Bool 
+public operator func !=(other: ProfileConnectionState): Bool
 ```
 
 **功能：** 对蓝牙设备的 profile 连接状态判不等。
 
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**起始版本：** 21
+
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[ProfileConnectionState](#enum-profileconnectionstate)|是|蓝牙设备的 profile 连接状态。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ProfileConnectionState](#enum-profileconnectionstate)|是|-|蓝牙设备的 profile 连接状态。|
 
 **返回值：**
 
@@ -102,7 +106,7 @@ public operator func !=(other: ProfileConnectionState): Bool
 ### func ==(ProfileConnectionState)
 
 ```cangjie
-public operator func ==(other: ProfileConnectionState): Bool 
+public operator func ==(other: ProfileConnectionState): Bool
 ```
 
 **功能：** 对蓝牙设备的 profile 连接状态进行判等。
@@ -113,9 +117,9 @@ public operator func ==(other: ProfileConnectionState): Bool
 
 **参数：**
 
-|参数名|类型|必填|说明|
-|:---|:---|:---|:---|
-|other|[ProfileConnectionState](#enum-profileconnectionstate)|是|蓝牙设备的 profile 连接状态。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ProfileConnectionState](#enum-profileconnectionstate)|是|-|蓝牙设备的 profile 连接状态。|
 
 **返回值：**
 
@@ -126,7 +130,7 @@ public operator func ==(other: ProfileConnectionState): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 返回蓝牙设备的 profile 连接状态的字符串表示。
@@ -134,6 +138,7 @@ public func toString(): String
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
 **返回值：**
 
 |类型|说明|

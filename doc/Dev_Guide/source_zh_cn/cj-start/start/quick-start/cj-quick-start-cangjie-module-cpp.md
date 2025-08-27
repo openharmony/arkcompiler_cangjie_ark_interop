@@ -34,23 +34,25 @@
 
 4. 打开 **entry > src > main > cangjie > index.cj** 文件，编写仓颉调用cpp代码，示例如下：
 
+   <!-- compile -->
+
    ```cangjie
       package ohos_app_cangjie_entry
       internal import ohos.base.LengthProp
-      internal import ohos.component.Column
-      internal import ohos.component.Row
-      internal import ohos.component.Text
-      internal import ohos.component.CustomView
-      internal import ohos.component.CJEntry
-      internal import ohos.component.loadNativeView
-      internal import ohos.component.FontWeight
-      internal import ohos.state_manage.SubscriberManager
-      internal import ohos.state_manage.ObservedProperty
-      internal import ohos.state_manage.LocalStorage
-      import ohos.state_macro_manage.Entry
-      import ohos.state_macro_manage.Component
-      import ohos.state_macro_manage.State
-      import ohos.state_macro_manage.r
+      internal import ohos.arkui.component.Column
+      internal import ohos.arkui.component.Row
+      internal import ohos.arkui.component.Text
+      internal import ohos.arkui.component.CustomView
+      internal import ohos.arkui.component.CJEntry
+      internal import ohos.arkui.component.loadNativeView
+      internal import ohos.arkui.component.FontWeight
+      internal import ohos.arkui.state_management.SubscriberManager
+      internal import ohos.arkui.state_management.ObservedProperty
+      internal import ohos.arkui.state_management.LocalStorage
+      import ohos.arkui.state_macro_manage.Entry
+      import ohos.arkui.state_macro_manage.Component
+      import ohos.arkui.state_macro_manage.State
+      import ohos.arkui.state_macro_manage.r
       foreign {
           func sum(a: Int32, b: Int32): Int32
           func sub(a: Int32, b: Int32): Int32
@@ -90,8 +92,8 @@
 
 ### 使用本地真机
 
-1. 将搭载OpenHarmony系统的真机与开发环境连接。
-2. 真机连接成功后，单击**File > Project Structure > Project > Signing Configs**界面勾选**Support OpenHarmony**和**Automatically generate signature**，单击界面提示的**Sign In**，等待自动签名完成后，单击**OK**即可。如下图所示：
+1. 将搭载OpenHarmony系统的真机与电脑连接。
+2. 真机连接成功后，单击**File > Project Structure > Project > Signing Configs**界面勾选**Support HarmonyOS**和**Automatically generate signature**，单击界面提示的**Sign In**，使用用户账号登录。等待自动签名完成后，单击**OK**即可。如下图所示：
 
    ![buildSign](../../figures/buildSign.png)
 

@@ -3,16 +3,12 @@
 当前指导共提供四种示例，供开发者参考完成签名、验签开发：
 
 - [签名/验签（仓颉）](#签名验签仓颉)
-  - [开发步骤](#开发步骤)
-    - [生成密钥](#生成密钥)
-    - [签名](#签名)
-    - [验签](#验签)
-    - [删除密钥](#删除密钥)
-  - [开发案例](#开发案例)
-    - [ECC256/SHA256](#ecc256sha256)
-    - [SM2/SM3](#sm2sm3)
-    - [RSA/SHA256/PSS](#rsasha256pss)
-    - [RSA/SHA256/PKCS1\_V1\_5](#rsasha256pkcs1_v1_5)
+- [开发步骤](#开发步骤)
+- [开发案例](#开发案例)
+- [ECC256/SHA256](#ecc256sha256)
+- [SM2/SM3](#sm2sm3)
+- [RSA/SHA256/PSS](#rsasha256pss)
+- [RSA/SHA256/PKCS1\_V1\_5](#rsasha256pkcs1_v1_5)
 
 具体的场景介绍及支持的算法规格，请参见[签名/验签支持的算法](./cj-huks-signing-signature-verification-overview.md#支持的算法)。
 
@@ -38,7 +34,7 @@
 
 4. 调用[initSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions)结束密钥会话，获取签名signature。
+5. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，获取签名signature。
 
 ### 验签
 
@@ -50,9 +46,9 @@
 
 4. 调用[initSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[updateSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandle-huksoptions)更新密钥会话。
+5. 调用[updateSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandleid-huksoptions-bytes)更新密钥会话。
 
-6. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions)结束密钥会话，验证签名。
+6. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，验证签名。
 
 ### 删除密钥
 
@@ -62,15 +58,20 @@
 
 ### ECC256/SHA256
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 密钥算法为ECC256、摘要算法为SHA256
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let keyAlias = 'test_eccKeyAlias'
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plaintext = '123456'
 var signature: ?Array<UInt8> = None
 
@@ -85,19 +86,19 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetEccGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_ECC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(4 | 8)
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -107,19 +108,19 @@ func GetEccGenerateProperties() {
 func GetEccSignProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_ECC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -129,19 +130,19 @@ func GetEccSignProperties() {
 func GetEccVerifyProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_ECC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -150,15 +151,15 @@ func GetEccVerifyProperties() {
 
 func GenerateEccKey(keyAlias: String) {
     let genProperties = GetEccGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     generateKeyItem(keyAlias, options)
 }
 
 func Sign(keyAlias: String, plaintext: String) {
     let signProperties = GetEccSignProperties()
     let options: HuksOptions = HuksOptions(
-        signProperties,
-        StringToUint8Array(plaintext)
+        properties: signProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
     signature = finishSession(handle.getOrThrow(), options)
@@ -167,8 +168,8 @@ func Sign(keyAlias: String, plaintext: String) {
 func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
     let verifyProperties = GetEccVerifyProperties()
     var options: HuksOptions = HuksOptions(
-        verifyProperties,
-        StringToUint8Array(plaintext)
+        properties: verifyProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
     updateSession(handle.getOrThrow(), options)
@@ -177,7 +178,7 @@ func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
 }
 
 func DeleteEccKey(keyAlias: String) {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     deleteKeyItem(keyAlias, emptyOptions)
 }
 
@@ -191,14 +192,20 @@ func testSignVerify() {
 
 ### SM2/SM3
 
+<!-- compile -->
+
 ```cangjie
 /*
  * 密钥算法为SM2、摘要算法为SM3
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let keyAlias = 'test_sm2KeyAlias'
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plaintext = '123456'
 var signature: ?Array<UInt8> = None
 
@@ -213,19 +220,19 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetSm2GenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_SM2
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(4 | 8)
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SM3
         )
     ]
@@ -235,19 +242,19 @@ func GetSm2GenerateProperties() {
 func GetSm2SignProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_SM2
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SM3
         )
     ]
@@ -257,19 +264,19 @@ func GetSm2SignProperties() {
 func GetSm2VerifyProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_SM2
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SM3
         )
     ]
@@ -278,15 +285,15 @@ func GetSm2VerifyProperties() {
 
 func GenerateSm2Key(keyAlias: String) {
     let genProperties = GetSm2GenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     generateKeyItem(keyAlias, options)
 }
 
 func Sign(keyAlias: String, plaintext: String) {
     let signProperties = GetSm2SignProperties()
     let options: HuksOptions = HuksOptions(
-        signProperties,
-        StringToUint8Array(plaintext)
+        properties: signProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
     signature = finishSession(handle.getOrThrow(), options)
@@ -295,8 +302,8 @@ func Sign(keyAlias: String, plaintext: String) {
 func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
     let verifyProperties = GetSm2VerifyProperties()
     var options: HuksOptions = HuksOptions(
-        verifyProperties,
-        StringToUint8Array(plaintext)
+        properties: verifyProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
     updateSession(handle.getOrThrow(), options)
@@ -305,7 +312,7 @@ func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
 }
 
 func DeleteSm2Key(keyAlias: String) {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     deleteKeyItem(keyAlias, emptyOptions)
 }
 
@@ -319,15 +326,20 @@ func testSignVerify() {
 
 ### RSA/SHA256/PSS
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 密钥算法为RSA，摘要算法为SHA256，填充模式为PSS
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let keyAlias = 'test_rsaKeyAlias'
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plaintext = '123456'
 var signature: ?Array<UInt8> = None
 
@@ -342,23 +354,23 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetRsaGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(4 | 8)
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PSS
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -368,19 +380,19 @@ func GetRsaGenerateProperties() {
 func GetRsaSignProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PSS
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
         )
     ]
@@ -390,19 +402,19 @@ func GetRsaSignProperties() {
 func GetRsaVerifyProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PSS
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
         )
     ]
@@ -411,15 +423,15 @@ func GetRsaVerifyProperties() {
 
 func GenerateRsaKey(keyAlias: String) {
     let genProperties = GetRsaGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     generateKeyItem(keyAlias, options)
 }
 
 func Sign(keyAlias: String, plaintext: String) {
     let signProperties = GetRsaSignProperties()
     let options: HuksOptions = HuksOptions(
-        signProperties,
-        StringToUint8Array(plaintext)
+        properties: signProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
 
@@ -431,8 +443,8 @@ func Sign(keyAlias: String, plaintext: String) {
 func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
     let verifyProperties = GetRsaVerifyProperties()
     var options: HuksOptions = HuksOptions(
-        verifyProperties,
-        StringToUint8Array(plaintext)
+        properties: verifyProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
 
@@ -445,7 +457,7 @@ func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
 }
 
 func DeleteRsaKey(keyAlias: String) {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     deleteKeyItem(keyAlias, emptyOptions)
 }
 
@@ -459,15 +471,20 @@ func testSignVerify() {
 
 ### RSA/SHA256/PKCS1_V1_5
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 密钥算法为RSA，摘要算法为SHA256，填充模式为PKCS1_V1_5
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let keyAlias = 'test_rsaKeyAlias'
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plaintext = '123456'
 var signature: ?Array<UInt8> = None
 
@@ -481,14 +498,14 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 
 func GetRsaGenerateProperties() {
     let properties: Array<HuksParam> = [
-        HuksParam(HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_RSA),
-        HuksParam(HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_RSA_KEY_SIZE_2048),
+        HuksParam(HuksTagAlgorithm, HuksKeyAlg.HUKS_ALG_RSA),
+        HuksParam(HuksTagKeySize, HuksKeySize.HUKS_RSA_KEY_SIZE_2048),
         HuksParam(
-            HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+            HuksTagPurpose,
+            HuksParamValue.Uint32Value(4 | 8)
         ),
-        HuksParam(HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5),
-        HuksParam(HUKS_TAG_DIGEST, HuksKeyDigest.HUKS_DIGEST_SHA256)
+        HuksParam(HuksTagPadding, HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5),
+        HuksParam(HuksTagDigest, HuksKeyDigest.HUKS_DIGEST_SHA256)
     ]
     return properties
 }
@@ -496,23 +513,23 @@ func GetRsaGenerateProperties() {
 func GetRsaSignProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HUKS_TAG_ALGORITHM,
+            HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HUKS_TAG_KEY_SIZE,
+            HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HUKS_TAG_PURPOSE,
+            HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
         ),
         HuksParam(
-            HUKS_TAG_PADDING,
+            HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
         ),
         HuksParam(
-            HUKS_TAG_DIGEST,
+            HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -522,23 +539,23 @@ func GetRsaSignProperties() {
 func GetRsaVerifyProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HUKS_TAG_ALGORITHM,
+            HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HUKS_TAG_KEY_SIZE,
+            HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HUKS_TAG_PURPOSE,
+            HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
         ),
         HuksParam(
-            HUKS_TAG_PADDING,
+            HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
         ),
         HuksParam(
-            HUKS_TAG_DIGEST,
+            HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -547,15 +564,15 @@ func GetRsaVerifyProperties() {
 
 func GenerateRsaKey(keyAlias: String) {
     let genProperties = GetRsaGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     generateKeyItem(keyAlias, options)
 }
 
 func Sign(keyAlias: String, plaintext: String) {
     let signProperties = GetRsaSignProperties()
     let options: HuksOptions = HuksOptions(
-        signProperties,
-        StringToUint8Array(plaintext)
+        properties: signProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
     signature = finishSession(handle.getOrThrow(), options)
@@ -564,8 +581,8 @@ func Sign(keyAlias: String, plaintext: String) {
 func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
     let verifyProperties = GetRsaVerifyProperties()
     var options: HuksOptions = HuksOptions(
-        verifyProperties,
-        StringToUint8Array(plaintext)
+        properties: verifyProperties,
+        inData: StringToUint8Array(plaintext)
     )
     handle = initSession(keyAlias, options).handle
     updateSession(handle.getOrThrow(), options)
@@ -574,7 +591,7 @@ func Verify(keyAlias: String, plaintext: String, signature: Array<UInt8>) {
 }
 
 func DeleteRsaKey(keyAlias: String) {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     deleteKeyItem(keyAlias, emptyOptions)
 }
 

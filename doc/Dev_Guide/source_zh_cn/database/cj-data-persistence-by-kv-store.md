@@ -36,7 +36,7 @@
     // main_ability.cj
     import kit.ArkData.{ DistributedKVStore, KVManager, KVManagerConfig }
     import kit.AbilityKit.{ UIAbilityContext, getStageContext }
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.BusinessException
 
     var kvManager: Option<KVManager> = Option<KVManager>.None
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
@@ -76,9 +76,9 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     import kit.ArkData.*
-    import kit.UIKit.BusinessException
+    import kit.ArkUI.BusinessException
 
     var kvStore: Option<SingleKVStore> = Option<SingleKVStore>.None
 
@@ -101,7 +101,7 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     const KEY_TEST_STRING_ELEMENT: String = "key_test_string"
     const VALUE_TEST_STRING_ELEMENT: String = "value_test_string"
 
@@ -121,7 +121,7 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     try {
         let singleKVStore = kvStore.getOrThrow()
         singleKVStore.put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))
@@ -141,7 +141,7 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     try {
         let singleKVStore = kvStore.getOrThrow()
         singleKVStore.put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))
@@ -157,7 +157,7 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     try {
         kvManager.getOrThrow().closeKVStore("com.example.datamanagertest", "storeId")
         AppLog.info("closeKVStore success.")
@@ -171,7 +171,7 @@
     <!-- compile -->
 
     ```cangjie
-    // index.cj
+    // xxx.cj
     try {
         kvManager.getOrThrow().deleteKVStore("com.example.datamanagertest", "storeId")
         AppLog.info("deleteKVStore success.")

@@ -39,7 +39,6 @@ HUKS为开发者提供了密钥全生命周期的管理能力，其核心功能�
 | **[签名/验签](./cj-huks-signing-signature-verification-overview.md)** | 用于认证消息内容以及消息发送者身份的真实性。 |
 | **[密钥协商](./cj-huks-key-agreement-overview.md)** | 两个或多个实体通过协商，共同建立会话密钥。 |
 | **[密钥派生](./cj-huks-key-derivation-overview.md)** | 从一个现有密钥派生出一个或多个新密钥。 |
-| **[访问控制](./cj-huks-identity-authentication-overview.md)** | 确保存储在HUKS中的密钥，不会被越权访问。 |
 
 ### 密钥删除
 

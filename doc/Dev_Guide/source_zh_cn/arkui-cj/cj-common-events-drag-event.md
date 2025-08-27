@@ -6,7 +6,6 @@
 
 - 拖拽操作：在可响应拖出的组件上长按并滑动以触发拖拽行为，当用户释放手指或鼠标时，拖拽操作即告结束。
 - 拖拽背景（背板）：用户拖动数据时的形象化表示。开发者可以通过[onDragStart](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-drag.md#func-ondragstartdrageventstring------unit)的()-> Unit或[DragItemInfo](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-drag.md#struct-dragiteminfo)进行设置，也可以通过[dragPreview](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-dragcontrol.md#func-dragpreviewdragiteminfo)通用属性进行自定义。
-- 拖拽内容：被拖动的数据，使用UDMF统一API UnifiedData 进行封装，确保数据的一致性和安全性。
 - 拖出对象：触发拖拽操作并提供数据的组件，通常具有响应拖拽的特性。
 - 拖入目标：可接收并处理拖动数据的组件，能够根据拖入的数据执行相应的操作。
 - 拖拽点：鼠标或手指与屏幕的接触位置，用于判断是否进入组件范围。判定依据是接触点是否位于组件的范围内。
@@ -17,7 +16,7 @@
 
 ### ​手势拖拽流程
 
-对于手势长按触发拖拽的场景，ArkUI在发起拖拽前会校验当前组件是否具备拖拽功能。对于默认可拖出的组件（Search、TextInput、TextArea、RichEditor、Text、Image、Hyperlink）需要判断是否设置了[draggable](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-dragcontrol.md#func-draggablebool)，需检查是否已设置draggable属性为true（若系统使能分层参数，draggable属性默认为true）。其他组件则需额外确认是否已设置onDragStart回调函数。在满足上述条件后，长按时间达到或超过500ms即可触发拖拽，而长按800ms时，系统开始执行预览图的浮起动效。若与Menu功能结合使用，并通过isShow控制其显示与隐藏，建议避免在用户操作800ms后才控制菜单显示，此举可能引发非预期的行为。
+对于手势长按触发拖拽的场景，ArkUI在发起拖拽前会校验当前组件是否具备拖拽功能。对于默认可拖出的组件（[Search](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-search.md)、[TextInput](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textinput.md)、[TextArea](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textarea.md)、[RichEditor](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md)、[Text](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md)、[Image](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-image.md)，需检查是否已设置draggable属性为true（若系统使能分层参数，draggable属性默认为true）。其他组件则需额外确认是否已设置onDragStart回调函数。在满足上述条件后，长按时间达到或超过500ms即可触发拖拽，而长按800ms时，系统开始执行预览图的浮起动效。若与Menu功能结合使用，并通过isShow控制其显示与隐藏，建议避免在用户操作800ms后才控制菜单显示，此举可能引发非预期的行为。
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
@@ -68,3 +67,200 @@
 
 - 对于容器组件，如果内部内容通过position、offset等接口使得绘制区域超出了容器组件范围，则系统截图无法截取到范围之外的内容。此种情况下，如果一定要浮起，即拖拽背板能够包含范围之外的内容，则可考虑通过扩大容器范围或自定义方式实现。
 - 不论是使用自定义builder或是系统默认截图方式，截图都暂时无法应用[scale](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-transform.md#func-scalefloat32-float32-float32-length-length)、[rotate](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-transform.md#func-rotatefloat32-float32-float32-float64-length-length)等图形变换效果。
+
+## 通用拖拽适配
+
+如下以[Image](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-image.md)组件为例，介绍组件拖拽开发的基本步骤，以及开发中需要注意的事项。
+
+- 组件使能拖拽。
+
+   设置draggable属性为true，并配置onDragStart回调函数。在回调函数中，可通过UDMF（用户数据管理框架）设置拖拽的数据，并返回自定义的拖拽背景图像。
+
+       <!-- run -->
+
+   ```cangjie
+   package ohos_app_cangjie_entry
+   import kit.ArkUI.*
+   import kit.LocalizationKit.*
+   import ohos.arkui.state_macro_manage.*
+   import ohos.resource_manager.*
+   import kit.ImageKit.{createImageSource, createPixelMap, PixelMap, DecodingOptions, DecodingDynamicRange}
+
+   @Entry
+   @Component
+   class EntryView {
+       func build() {
+           Image(@r(app.media.share))
+               .width(100)
+               .height(100)
+               .draggable(true)
+               .onDragStart({ event =>
+                   // 用户需要导入正确的startIcon.png才可以正常使用
+                   let imagesource = createImageSource("/data/storage/el2/base/haps/entry/files/startIcon.png")
+                   let myPixelMap = imagesource.createPixelMap(
+                       options: DecodingOptions(DecodingDynamicRange.AUTO))
+                       return DragItemInfo(pixelMap: myPixelMap, extraInfo: "this is extraInfo")
+               })
+       }
+   }
+   ```
+
+   ![drag_1](./figures/drag_1.gif)
+
+   手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下。
+
+
+   ```cangjie
+   .parallelGesture(
+        LongPressGesture().onAction({ event =>
+        PromptAction.showToast(message: "Long press gesture trigger", duration:100)
+    }))
+   ```
+
+- 自定义拖拽背板图。
+
+   可以通过在长按50ms时触发的回调中设置[onPreDrag](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-drag.md#func-onpredragpredragstatus---unit)回调函数，来提前准备自定义拖拽背板图的pixmap。
+
+
+   ```cangjie
+   package ohos_app_cangjie_entry
+
+   import kit.ArkUI.*
+   import kit.LocalizationKit.*
+   import ohos.arkui.state_macro_manage.*
+   import ohos.resource_manager.*
+   import kit.ImageKit.{createImageSource, PixelMap, DecodingOptions, DecodingDynamicRange}
+
+   @Entry
+   @Component
+   class EntryView {
+       private let imagesource = createImageSource("/data/storage/el2/base/haps/entry/files/startIcon.png")
+       @State var pixelmap: PixelMap = this.imagesource.createPixelMap(
+                           options: DecodingOptions(desiredDynamicRange: DecodingDynamicRange.AUTO))
+
+       func build() {
+           Image(@r(app.media.share))
+               .id("img")
+               .width(100)
+               .height(100)
+               .draggable(true)
+               .onDragStart({ event =>
+                       return DragItemInfo(pixelMap: this.pixelmap, extraInfo: "this is extraInfo")
+                   })
+               .onPreDrag({ status: PreDragStatus =>
+                   match (status) {
+                       case ACTION_DETECTING_STATUS =>
+                           componentSnapshot.get("img", { optAsyncError, optPixelMap =>
+                                       this.pixelmap = optPixelMap.getOrThrow()
+                                   })
+                       case _ => ()
+                   }
+               })
+       }
+   }
+   ```
+
+- 拖拽方可以通过设置onDragEnd回调感知拖拽结果。
+
+
+    ```cangjie
+    .onDragEnd(
+        {
+            event: DragEvent, extra: ?String => ma(event.getResult()) {
+                case DragResult.DRAG_SUCCESSFULPromptAction.showToast(message: "DSuccess")
+                case _ => PromptAction.showToast(messa"Drag Failed")
+            }
+        })
+    ```
+
+**完整示例：**
+
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+
+import kit.ArkUI.*
+import kit.LocalizationKit.*
+import ohos.arkui.state_macro_manage.*
+import std.collection.ArrayList
+import kit.ImageKit.*
+
+@Entry
+@Component
+class EntryView {
+    @State var numbers: ArrayList<String> = ArrayList<String>(["one", "two", "three"])
+    @State var text: String = ""
+    @State var appleVisible: Visibility = Visibility.Visible
+    @Builder
+    func pixelMapBuilder() {
+        Column() {
+        Text(this.text)
+            .width(50.percent).height(60).fontSize(16).borderRadius(10)
+            .textAlign(TextAlign.Center).backgroundColor(0xFF0000)
+        }
+    }
+    func build() {
+        Column(30) {
+            Text("There are one Text elements here")
+            .fontSize(12).fontColor(0xCCCCCC).width(90.percent)
+            .textAlign(TextAlign.Start).margin(5)
+            Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround)) {
+                Button("apple").width(25.percent).height(35).fontSize(16)
+                .backgroundColor(0xAFEEEE)
+                .visibility(this.appleVisible)
+                .onDragStart({evt =>
+                    this.text = "apple"
+                    this.appleVisible = Visibility.Hidden
+                    AppLog.info("onDragStart info:" + evt.extraParams +"," + evt.dragEvent.x.toString() +"," + evt.dragEvent.y.toString())
+                    return DragItemInfo(builder: bind(pixelMapBuilder, this), extraInfo: "button1")
+                })
+            }.border(width: 1.px).width(90.percent).padding(top: 10, bottom: 10).margin(10)
+
+            Text("This is a List element").fontSize(12)
+            .fontColor(0xCCCCCC).width(90.percent)
+            .textAlign(TextAlign.Start).margin(15)
+
+            List(space: 20, initialIndex: 0) {
+                ForEach(this.numbers, itemGeneratorFunc: {itemInfo: String, index: Int64 =>
+                    ListItem(){
+                        Text(itemInfo)
+                        .fontSize(30.px)
+                        .textAlign(TextAlign.Center)
+                        .borderRadius(10.px)
+                        .backgroundColor(0xAFEEEE)
+                        .width(100.percent)
+                        .height(80)
+                    }
+                    .onDragStart({evt =>
+                            PromptAction.showToast(message:"Start"+evt.extraParams)
+                            AppLog.info("onDragStart info:" + evt.extraParams + "," + evt.dragEvent.x.toString() +"," + evt.dragEvent.y.toString())
+                    })
+                })
+            }
+            .editMode(true)
+            .height(50.percent).width(90.percent).border(width: 1.px )
+            .divider(strokeWidth: 2.px, color: Color.Red, startMargin: 20.px, endMargin: 20.px)
+            .onDragEnter({evt =>
+                PromptAction.showToast(message:"Enter "+evt.extraParams)
+                AppLog.info("onDragEnter info:" + evt.extraParams + "," + evt.dragEvent.x.toString() +"," + evt.dragEvent.y.toString())
+            })
+            .onDragMove({evt =>
+                PromptAction.showToast(message:"Move "+evt.extraParams)
+                AppLog.info("onDragMove info:" + evt.extraParams + "," + evt.dragEvent.x.toString() +"," + evt.dragEvent.y.toString())
+            })
+            .onDragLeave({evt =>
+                PromptAction.showToast(message:"Leave "+evt.extraParams)
+                AppLog.info("onDragLeave info:" + evt.extraParams + "," + evt.dragEvent.x.toString() +"," + evt.dragEvent.y.toString())
+            })
+            .onDrop({evt =>
+                PromptAction.showToast(message:"Drop "+evt.extraParams)
+                AppLog.info("onDrop info:" + evt.extraParams + "," + evt.dragEvent.x.toString() +"," + evt.dragEvent.y.toString())
+            })
+        }
+    }
+}
+
+```
+
+![drag_event](./figures/drag_event.gif)

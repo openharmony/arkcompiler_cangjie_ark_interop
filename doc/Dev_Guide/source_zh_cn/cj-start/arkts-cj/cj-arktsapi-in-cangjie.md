@@ -18,6 +18,8 @@
 
 创建JSRuntime对象并通过该对象中的mainContext获取互操作上下文的示例如下：
 
+<!-- compile -->
+
 ```cangjie
 import ohos.ark_interop.*
 
@@ -43,6 +45,8 @@ func tryLoadArkTSSo() {
 
 假设有一个ArkTS系统模块someModule（.so文件），可以在仓颉中通过 `requireSystemNativeModule` 方法将其加载，示例如下：
 
+<!-- compile -->
+
 ```cangjie
 // 获取互操作上下文
 let context = runtime.mainContext
@@ -55,6 +59,8 @@ let module = context.requireSystemNativeModule("someModule")
 成功加载和运行ArkTS模块后，开发者可以通过call方法调用ArkTS模块提供的API。
 
 假设上述ArkTS模块someModule导出了一个无入参的ArkTS接口someFunc，则可以通过如下方式进行调用：
+
+<!-- compile -->
 
 ```cangjie
 let jsFunc: JSFunction = module["someFunc"].asFunction(context)

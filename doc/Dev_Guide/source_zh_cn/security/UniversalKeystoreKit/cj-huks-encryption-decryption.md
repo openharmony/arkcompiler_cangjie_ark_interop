@@ -33,7 +33,7 @@
 
 4. 调用[initSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions)结束密钥会话，获取加密后的密文。
+5. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，获取加密后的密文。
 
 ### 解密
 
@@ -52,7 +52,7 @@
 
 4. 调用[initSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions)初始化密钥会话，并获取会话的句柄handle。
 
-5. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions)结束密钥会话，获取解密后的数据。
+5. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，获取解密后的数据。
 
 ### 删除密钥
 
@@ -62,18 +62,23 @@
 
 ### AES/CBC/PKCS7
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以AES/CBC/PKCS7的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let aesKeyAlias = 'test_aesKeyAlias'  // 密钥别名，在生成密钥时指定，在加密、解密和删除密钥时使用
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plainText = '123456'  // 待加密的明文
 let IV = '001122334455' // 此处为样例代码，实际使用需采用随机值
-var cipherData: ?Array<UInt8> = None // 加密后的密文数据
+var cipherData: ?Array<UInt8> = [] // 加密后的密文数据
 
 func StringToUint8Array(str: String) {
     return str.toArray()
@@ -86,16 +91,17 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetAesGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_128
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2)
+//            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
         )
     ]
     return properties
@@ -104,28 +110,28 @@ func GetAesGenerateProperties() {
 func GetAesEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_128
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PKCS7
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_CBC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IV,
-            bytes(StringToUint8Array(IV))
+            HuksTag.HuksTagIv,
+            HuksParamValue.BytesValue(IV.toArray())
         )
     ]
     return properties
@@ -134,28 +140,28 @@ func GetAesEncryptProperties() {
 func GetAesDecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_128
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PKCS7
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_CBC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IV,
-            bytes(StringToUint8Array(IV))
+            HuksTag.HuksTagIv,
+            HuksParamValue.BytesValue(IV.toArray())
         )
     ]
     return properties
@@ -167,7 +173,7 @@ func GetAesDecryptProperties() {
 func GenerateAesKey() {
     // 获取生成密钥算法参数配置
     let genProperties = GetAesGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
 
     // 调用generateKeyItem，aesKeyAlias是密钥别名，由用户指定
     generateKeyItem(aesKeyAlias, options)
@@ -180,8 +186,8 @@ func EncryptData() {
     // 获取加密算法参数配置
     let encryptProperties = GetAesEncryptProperties()
     let options: HuksOptions = HuksOptions(
-        encryptProperties,
-        StringToUint8Array(plainText) // plainText是待加密的数据
+        properties: encryptProperties,
+        inData: StringToUint8Array(plainText) // plainText是待加密的数据
     )
     // 调用initSession获取handle，aesKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(aesKeyAlias, options).handle
@@ -196,8 +202,8 @@ func DecryptData() {
     // 获取解密算法参数配置
     let decryptOptions = GetAesDecryptProperties()
     let options: HuksOptions = HuksOptions(
-        decryptOptions,
-        cipherData
+        properties: decryptOptions,
+        inData: cipherData.getOrThrow()
     )
     // 调用initSession获取handle，aesKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(aesKeyAlias, options).handle
@@ -209,7 +215,7 @@ func DecryptData() {
  * 模拟删除密钥场景
  */
 func DeleteKey() {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     // 调用deleteKeyItem删除密钥，aesKeyAlias是密钥别名，在生成密钥时进行指定的
     deleteKeyItem(aesKeyAlias, emptyOptions)
 }
@@ -217,17 +223,22 @@ func DeleteKey() {
 
 ### AES/GCM/NoPadding
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以AES/GCM/NoPadding的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let aesKeyAlias = 'test_aesKeyAlias' // 密钥别名，在生成密钥时指定，在加密、解密和删除密钥时使用
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plainText = '123456'  // 待加密的明文数据
-var cipherData: ?Array<UInt8> = None  // 加密后的密文数据
+var cipherData: ?Array<UInt8> = []  // 加密后的密文数据
 let AAD = '1234567890123456'
 let NONCE = '001122334455' // 此处为样例代码，实际使用需采用随机值
 
@@ -242,16 +253,16 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetAesGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_128
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2)
         )
     ]
     return properties
@@ -260,32 +271,32 @@ func GetAesGenerateProperties() {
 func GetAesGcmEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_128
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_GCM
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_NONCE,
-            bytes(StringToUint8Array(NONCE))
+            HuksTag.HuksTagNonce,
+            HuksParamValue.BytesValue(NONCE.toArray())
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-            bytes(StringToUint8Array(AAD))
+            HuksTag.HuksTagAssociatedData,
+            HuksParamValue.BytesValue(AAD.toArray())
         )
     ]
     return properties
@@ -294,36 +305,36 @@ func GetAesGcmEncryptProperties() {
 func GetAesGcmDecryptProperties(cipherData: Array<UInt8>) {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_128
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_GCM
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_NONCE,
-            bytes(StringToUint8Array(NONCE))
+            HuksTag.HuksTagNonce,
+            HuksParamValue.BytesValue(NONCE.toArray())
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-            bytes(StringToUint8Array(AAD))
+            HuksTag.HuksTagAssociatedData,
+            HuksParamValue.BytesValue(AAD.toArray())
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_AE_TAG,
-            bytes(cipherData.slice(cipherData.size - 16, 16))
+            HuksTag.HuksTagAeTag,
+            HuksParamValue.BytesValue(cipherData.slice(cipherData.size - 16, 16).toArray())
         )
     ]
     return properties
@@ -335,7 +346,7 @@ func GetAesGcmDecryptProperties(cipherData: Array<UInt8>) {
 func GenerateAesKey() {
     // 获取生成密钥算法参数配置
     let genProperties = GetAesGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     // 调用generateKeyItem，aesKeyAlias是密钥别名，由用户指定
     generateKeyItem(aesKeyAlias, options)
 }
@@ -347,8 +358,8 @@ func EncryptData() {
     // 获取加密算法参数配置
     let encryptProperties = GetAesGcmEncryptProperties()
     let options: HuksOptions = HuksOptions(
-        encryptProperties,
-        StringToUint8Array(plainText)
+        properties: encryptProperties,
+        inData: StringToUint8Array(plainText)
     )
     // 调用initSession获取handle，aesKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(aesKeyAlias, options).handle
@@ -363,8 +374,8 @@ func DecryptData() {
     // 获取解密算法参数配置
     let decryptOptions = GetAesGcmDecryptProperties(cipherData.getOrThrow())
     let options: HuksOptions = HuksOptions(
-        decryptOptions,
-        cipherData
+        properties: decryptOptions,
+        inData: cipherData
             .getOrThrow()
             .slice(0, cipherData
                 .getOrThrow()
@@ -380,7 +391,7 @@ func DecryptData() {
  * 模拟删除密钥场景
  */
 func DeleteKey() {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     // 调用deleteKeyItem删除密钥，aesKeyAlias是密钥别名，在生成密钥时进行指定的
     deleteKeyItem(aesKeyAlias, emptyOptions)
 }
@@ -388,17 +399,22 @@ func DeleteKey() {
 
 ### RSA/ECB/PKCS1_V1_5
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以RSA/ECB/PKCS1_V1_5模式的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let rsaKeyAlias = 'test_rsaKeyAlias'  // 密钥别名，在生成密钥时指定，在加密、解密和删除密钥时使用
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plainText = '123456' // 待加密的明文
-var cipherData: ?Array<UInt8> = None // 加密后的密文数据
+var cipherData: ?Array<UInt8> = [] // 加密后的密文数据
 
 func StringToUint8Array(str: String) {
     return str.toArray()
@@ -411,16 +427,16 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetRsaGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2)
         )
     ]
     return properties
@@ -429,27 +445,27 @@ func GetRsaGenerateProperties() {
 func GetRsaEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_ECB
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE
         )
     ]
@@ -459,27 +475,27 @@ func GetRsaEncryptProperties() {
 func GetRsaDecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_ECB
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE
         )
     ]
@@ -492,7 +508,7 @@ func GetRsaDecryptProperties() {
 func GenerateRsaKey() {
     // 获取生成密钥算法参数配置
     let genProperties = GetRsaGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     // 调用generateKeyItem，rsaKeyAlias是密钥别名，由用户指定
     generateKeyItem(rsaKeyAlias, options)
 }
@@ -504,8 +520,8 @@ func EncryptData() {
     // 获取加密算法参数配置
     let encryptProperties = GetRsaEncryptProperties()
     let options: HuksOptions = HuksOptions(
-        encryptProperties,
-        StringToUint8Array(plainText) // plainText是待加密的明文数据
+        properties: encryptProperties,
+        inData: StringToUint8Array(plainText) // plainText是待加密的明文数据
     )
     // 调用initSession获取handle，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(rsaKeyAlias, options).handle
@@ -520,8 +536,8 @@ func DecryptData() {
     // 获取解密算法参数配置
     let decryptOptions = GetRsaDecryptProperties()
     let options: HuksOptions = HuksOptions(
-        decryptOptions,
-        cipherData  // 加密后的密文数据
+        properties: decryptOptions,
+        inData: cipherData.getOrThrow()  // 加密后的密文数据
     )
     // 调用initSession获取handle，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(rsaKeyAlias, options).handle
@@ -533,7 +549,7 @@ func DecryptData() {
  * 模拟删除密钥场景
  */
 func DeleteKey() {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     // 调用deleteKeyItem删除密钥，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     deleteKeyItem(rsaKeyAlias, emptyOptions)
 }
@@ -541,17 +557,22 @@ func DeleteKey() {
 
 ### RSA/ECB/OAEP/SHA256
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以RSA/ECB/OAEP/SHA256模式的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
 let rsaKeyAlias = 'test_rsaKeyAlias' // 密钥别名，在生成密钥时指定，在加密、解密和删除密钥时使用
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plainText = '123456' // 待加密的明文
-var cipherData: ?Array<UInt8> = None // 加密后的密文数据
+var cipherData: ?Array<UInt8> = [] // 加密后的密文数据
 
 func StringToUint8Array(str: String) {
     return str.toArray()
@@ -564,16 +585,16 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetRsaGenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2)
         )
     ]
     return properties
@@ -582,27 +603,27 @@ func GetRsaGenerateProperties() {
 func GetRsaEncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_OAEP
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_ECB
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -612,27 +633,27 @@ func GetRsaEncryptProperties() {
 func GetRsaDecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_RSA
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_RSA_KEY_SIZE_2048
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_OAEP
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_ECB
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SHA256
         )
     ]
@@ -645,7 +666,7 @@ func GetRsaDecryptProperties() {
 func GenerateRsaKey() {
     // 获取生成密钥算法参数配置
     let genProperties = GetRsaGenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     // 调用generateKeyItem，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     generateKeyItem(rsaKeyAlias, options)
 }
@@ -657,8 +678,8 @@ func EncryptData() {
     // 获取加密算法参数配置
     let encryptProperties = GetRsaEncryptProperties()
     let options: HuksOptions = HuksOptions(
-        encryptProperties,
-        StringToUint8Array(plainText)
+        properties: encryptProperties,
+        inData: StringToUint8Array(plainText)
     )
     // 调用initSession获取handle，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(rsaKeyAlias, options).handle
@@ -673,8 +694,8 @@ func DecryptData() {
     // 获取解密算法参数配置
     let decryptOptions = GetRsaDecryptProperties()
     let options: HuksOptions = HuksOptions(
-        decryptOptions,
-        cipherData // 加密后的密文数据
+        properties: decryptOptions,
+        inData: cipherData.getOrThrow() // 加密后的密文数据
     )
     // 调用initSession获取handle，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(rsaKeyAlias, options).handle
@@ -686,7 +707,7 @@ func DecryptData() {
  * 模拟删除密钥场景
  */
 func DeleteKey() {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     // 调用deleteKeyItem删除密钥，rsaKeyAlias是密钥别名，在生成密钥时进行指定的
     deleteKeyItem(rsaKeyAlias, emptyOptions)
 }
@@ -694,17 +715,23 @@ func DeleteKey() {
 
 ### SM2
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
  * 以下以SM2模式的操作使用为例
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
+
 let sm2KeyAlias = 'test_sm2KeyAlias' // 密钥别名，在生成密钥时指定，在加密、解密和删除密钥时使用
-var handle: ?HuksHandle = None
+var handle: ?HuksHandleId = None
 let plainText = '123456' // 待加密的明文
-var cipherData: ?Array<UInt8> = None // 加密后的密文数据
+var cipherData: ?Array<UInt8> = [] // 加密后的密文数据
 
 func StringToUint8Array(str: String) {
     return str.toArray()
@@ -717,16 +744,16 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetSm2GenerateProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_SM2
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_SM2_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2)
         )
     ]
     return properties
@@ -735,19 +762,19 @@ func GetSm2GenerateProperties() {
 func GetSm2EncryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_SM2
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_SM2_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SM3
         )
     ]
@@ -757,19 +784,19 @@ func GetSm2EncryptProperties() {
 func GetSm2DecryptProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_SM2
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_SM2_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_SM3
         )
     ]
@@ -782,7 +809,7 @@ func GetSm2DecryptProperties() {
 func GenerateSm2Key() {
     // 获取生成密钥算法参数配置
     let genProperties = GetSm2GenerateProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
     // 调用generateKeyItem生成密钥，sm2KeyAlias是密钥别名，在生成密钥时进行指定的
     generateKeyItem(sm2KeyAlias, options)
 }
@@ -794,8 +821,8 @@ func EncryptDataSm2() {
     // 获取加密算法参数配置
     let encryptProperties = GetSm2EncryptProperties()
     let options: HuksOptions = HuksOptions(
-        encryptProperties,
-        StringToUint8Array(plainText) // plainText是待加密的明文数据
+        properties: encryptProperties,
+        inData: StringToUint8Array(plainText) // plainText是待加密的明文数据
     )
     // 调用initSession获取handle，sm2KeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(sm2KeyAlias, options).handle
@@ -810,8 +837,8 @@ func DecryptDataSm2() {
     // 获取解密算法参数配置
     let decryptOptions = GetSm2DecryptProperties()
     let options: HuksOptions = HuksOptions(
-        decryptOptions,
-        cipherData // 加密后的密文数据
+        properties: decryptOptions,
+        inData: cipherData.getOrThrow() // 加密后的密文数据
     )
     // 调用initSession获取handle，sm2KeyAlias是密钥别名，在生成密钥时进行指定的
     handle = initSession(sm2KeyAlias, options).handle
@@ -823,7 +850,7 @@ func DecryptDataSm2() {
  * 模拟删除密钥场景
  */
 func DeleteKey() {
-    let emptyOptions: HuksOptions = HuksOptions.NONE
+    let emptyOptions: HuksOptions = HuksOptions()
     // 调用deleteKeyItem删除密钥，sm2KeyAlias是密钥别名，在生成密钥时进行指定的
     deleteKeyItem(sm2KeyAlias, emptyOptions)
 }

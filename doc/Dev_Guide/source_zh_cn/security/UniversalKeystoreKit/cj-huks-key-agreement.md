@@ -45,12 +45,17 @@
 下面分别以X25519与DH密钥为例，进行协商。
 
 - X25519非对称密钥协商用例
-  
-    <!--compile-->
+
+    <!-- compile -->
+
     ```cangjie
     /*
      * 以下以X25519密钥的操作使用为例
      */
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.BasicServicesKit.*
+    import kit.CoreFileKit.*
+    import kit.AbilityKit.*
     import kit.UniversalKeystoreKit.*
 
     /*
@@ -60,130 +65,130 @@
     let srcKeyAliasSecond = "AgreeX25519KeySecondAlias"
     let agreeX25519InData = 'AgreeX25519TestIndata'
     var finishOutData: ?Array<UInt8> = None
-    var handle: ?HuksHandle = None
+    var handle: ?HuksHandleId = None
     var exportKey: ?Array<UInt8> = None
     var exportKeyFirst: ?Array<UInt8> = None
     var exportKeySecond: ?Array<UInt8> = None
     /* 集成生成密钥参数集 */
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_X25519,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_CBC,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+            HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
             HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
         )
     ]
     var huksOptions: HuksOptions = HuksOptions(
-        properties,
-        None
+        properties: properties,
+        inData: Bytes()
     )
     /* 集成第一个协商参数集 */
     let finishProperties1: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+            HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
             HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IS_KEY_ALIAS,
-            boolean(true)
+            HuksTag.HuksTagIsKeyAlias,
+            HuksParamValue.BooleanValue(true)
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2),
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_ECB,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_ALIAS,
-            bytes(StringToUint8Array(srcKeyAliasFirst + 'final'))
+            HuksTag.HuksTagKeyAlias,
+            HuksParamValue.BytesValue((srcKeyAliasFirst + 'final').toArray())
         )
     ]
     let finishOptionsFirst: HuksOptions = HuksOptions(
-        finishProperties1,
-        StringToUint8Array(agreeX25519InData)
+        properties: finishProperties1,
+        inData: StringToUint8Array(agreeX25519InData)
     )
     /* 集成第二个协商参数集 */
     let finishProperties2: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+            HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
             HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_IS_KEY_ALIAS,
-            boolean(true)
+            HuksTag.HuksTagIsKeyAlias,
+            HuksParamValue.BooleanValue(true)
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_AES,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_AES_KEY_SIZE_256,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+            HuksTag.HuksTagPurpose,
+            HuksParamValue.Uint32Value(1 | 2),
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
+            HuksTag.HuksTagDigest,
             HuksKeyDigest.HUKS_DIGEST_NONE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PADDING,
+            HuksTag.HuksTagPadding,
             HuksKeyPadding.HUKS_PADDING_NONE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_BLOCK_MODE,
+            HuksTag.HuksTagBlockMode,
             HuksCipherMode.HUKS_MODE_ECB,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_ALIAS,
-            bytes(StringToUint8Array(srcKeyAliasSecond + 'final'))
+            HuksTag.HuksTagKeyAlias,
+            HuksParamValue.BytesValue((srcKeyAliasSecond + 'final').toArray())
         )
     ]
     let finishOptionsSecond: HuksOptions = HuksOptions(
-        finishProperties2,
-        StringToUint8Array(agreeX25519InData)
+        properties: finishProperties2,
+        inData: StringToUint8Array(agreeX25519InData)
     )
 
     func StringToUint8Array(str: String) {
@@ -210,12 +215,12 @@
 
     /* 调用generateKeyItem生成密钥 */
     func publicGenKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-        AppLog.info("enter generateKeyItem")
+        loggerInfo("enter generateKeyItem")
         let throwObject: throwObject = throwObject(false)
         try {
             generateKeyItem(keyAlias, huksOptions, throwObject)
         } catch (e: Exception) {
-            AppLog.error("generateKeyItem input arg invalid, ${e}")
+            loggerInfo("generateKeyItem input arg invalid, ${e}")
         }
     }
 
@@ -231,17 +236,17 @@
 
     /*调用initSession获取handle*/
     func publicInitFunc(keyAlias: String, huksOptions: HuksOptions) {
-        AppLog.info("enter doInit")
+        loggerInfo("enter doInit")
         let throwObject: throwObject = throwObject(false)
         try {
             handle = initSession(keyAlias, huksOptions, throwObject)
         } catch (e: Exception) {
-            AppLog.error("doInit input arg invalid, ${e}")
+            loggerInfo("doInit input arg invalid, ${e}")
         }
     }
 
     /* 分段添加密钥操作的数据并进行相应的密钥操作，输出处理数据 */
-    func updateSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: throwObject) {
+    func updateSession(handle: HuksHandleId, huksOptions: HuksOptions, throwObject: throwObject) {
         return try {
             updateSession(handle, huksOptions)
         } catch (e: Exception) {
@@ -251,18 +256,18 @@
     }
 
     /* 调用updateSession进行协商操作 */
-    func publicUpdateFunc(handle: HuksHandle, huksOptions: HuksOptions) {
-        AppLog.info("enter doUpdate")
+    func publicUpdateFunc(handle: HuksHandleId, huksOptions: HuksOptions) {
+        loggerInfo("enter doUpdate")
         let throwObject: throwObject = throwObject(false)
         try {
             updateSession(handle, huksOptions, throwObject)
         } catch (e: Exception) {
-            AppLog.error("doUpdate input arg invalid, ${e}")
+            loggerInfo("doUpdate input arg invalid, ${e}")
         }
     }
 
     /* 结束密钥会话并进行相应的密钥操作，输出处理数据 */
-    func finishSession(handle: HuksHandle, huksOptions: HuksOptions, throwObject: throwObject) {
+    func finishSession(handle: HuksHandleId, huksOptions: HuksOptions, throwObject: throwObject) {
         return try {
             finishSession(handle, huksOptions)
         } catch (e: Exception) {
@@ -272,13 +277,13 @@
     }
 
     /* 调用finishSession结束操作 */
-    func publicFinishFunc(handle: HuksHandle, huksOptions: HuksOptions) {
-        AppLog.info("enter doFinish")
+    func publicFinishFunc(handle: HuksHandleId, huksOptions: HuksOptions) {
+        loggerInfo("enter doFinish")
         let throwObject: throwObject = throwObject(false)
         try {
             finishOutData = finishSession(handle, huksOptions, throwObject)
         } catch (e: Exception) {
-            AppLog.error("doFinish input arg invalid, ${e}")
+            loggerInfo("doFinish input arg invalid, ${e}")
         }
     }
 
@@ -294,72 +299,39 @@
 
     /* 调用exportKeyItem导出公钥操作 */
     func publicExportKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-        AppLog.info("enter export")
+        loggerInfo("enter export")
         let throwObject: throwObject = throwObject(false)
         try {
             exportKey = exportKeyItem(keyAlias, huksOptions, throwObject)
         } catch (e: Exception) {
-            AppLog.error("exportKeyItem input arg invalid, ${e}")
+            loggerInfo("exportKeyItem input arg invalid, ${e}")
         }
     }
 
-    /* 删除密钥操作 */
-    func deleteKeyItem(keyAlias: String, huksOptions: HuksOptions, throwObject: throwObject) {
-        return try {
-            deleteKeyItem(keyAlias, huksOptions)
-        } catch (e: Exception) {
-            throwObject.isThrow = true
-            throw e
-        }
-    }
-
-    /* 调用deleteKeyItem删除密钥操作 */
-    func publicDeleteKeyFunc(keyAlias: String, huksOptions: HuksOptions) {
-        AppLog.info("enter deleteKeyItem")
-        let throwObject: throwObject = throwObject(false)
-        try {
-            deleteKeyItem(keyAlias, huksOptions, throwObject)
-        } catch (e: Exception) {
-            AppLog.error("deleteKeyItem input arg invalid, ${e}")
-        }
-    }
-
-    func testAgree() {
-        /* 1.确定密钥别名并集成并集成要参数集 A设备：srcKeyAliasFirst  B设备：srcKeyAliasSecond*/
-        /* 2.设备A生成密钥 */
-        publicGenKeyFunc(srcKeyAliasFirst, huksOptions)
-        /* 3.设备B生成密钥 */
-        publicGenKeyFunc(srcKeyAliasSecond, huksOptions)
-        /* 4.设备A、B导出非对称密钥的公钥 */
-        publicExportKeyFunc(srcKeyAliasFirst, huksOptions)
-        exportKeyFirst = exportKey
-        publicExportKeyFunc(srcKeyAliasSecond, huksOptions)
-        exportKeySecond = exportKey
-        /* 5.对第一个密钥进行协商（三段式）*/
-        publicInitFunc(srcKeyAliasFirst, huksOptions)
-        huksOptions.inData = exportKeySecond
-        publicUpdateFunc(handle.getOrThrow(), huksOptions)
-        publicFinishFunc(handle.getOrThrow(), finishOptionsFirst)
-        /* 5.对第二个密钥进行协商（三段式） */
-        publicInitFunc(srcKeyAliasSecond, huksOptions)
-        huksOptions.inData = exportKeyFirst
-        publicUpdateFunc(handle.getOrThrow(), huksOptions)
-        publicFinishFunc(handle.getOrThrow(), finishOptionsSecond)
-        /* 6.设备A、B删除密钥 */
-        publicDeleteKeyFunc(srcKeyAliasFirst, huksOptions)
-        publicDeleteKeyFunc(srcKeyAliasSecond, huksOptions)
+    func loggerInfo(str: String) {
+        Hilog.info(0, "CangjieTest", str)
     }
     ```
 
 - DH密钥协商用例
 
-    <!--compile-->
+    <!-- compile -->
+
     ```cangjie
     /*
      * 以下以 DH密钥的操作使用为例
      */
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.BasicServicesKit.*
+    import kit.CoreFileKit.*
+    import kit.AbilityKit.*
     import kit.UniversalKeystoreKit.*
     import std.math.numeric.BigInt
+
+    func loggerInfo(str: String) {
+        Hilog.info(0, "CangjieTest", str)
+    }
+
 
     func StringToUint8Array(str: String) {
         return str.toArray()
@@ -379,33 +351,33 @@
 
     let dhAgree: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_DH,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
         )
     ]
     let dh2048Agree: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_DH,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
+            HuksTag.HuksTagKeySize,
             HuksKeySize.HUKS_DH_KEY_SIZE_2048,
         )
     ]
     let dhGenOptions: HuksOptions = HuksOptions(
-        dh2048Agree,
-        None
+        properties: dh2048Agree,
+        inData: Bytes()
     )
-    let emptyOptions: HuksOptions = HuksOptions([], [])
+    let emptyOptions: HuksOptions = HuksOptions(properties: [], inData: Bytes())
 
     func HuksDhAgreeExportKey(
         keyAlias: String,
@@ -413,21 +385,21 @@
     ): ?Array<UInt8> {
         let initHandle = initSession(keyAlias, dhGenOptions)
         let dhAgreeUpdateBobPubKey: HuksOptions = HuksOptions(
-            [
+            properties: [
                 HuksParam(
-                    HuksTag.HUKS_TAG_ALGORITHM,
+                    HuksTag.HuksTagAlgorithm,
                     HuksKeyAlg.HUKS_ALG_DH,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_PURPOSE,
+                    HuksTag.HuksTagPurpose,
                     HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_KEY_EXPORT_ALLOWED,
                 )
             ],
-            peerPubKey
+            inData: peerPubKey.getOrThrow()
         )
         updateSession(initHandle.handle, dhAgreeUpdateBobPubKey)
         return finishSession(initHandle.handle, emptyOptions)
@@ -435,106 +407,106 @@
 
     func HuksDhAgreeExportTest(aliasA: String, aliasB: String, pubKeyA: ?Array<UInt8>, pubKeyB: ?Array<UInt8>) {
         let agreedKeyFromAlice = HuksDhAgreeExportKey(aliasA, pubKeyB).getOrThrow()
-        AppLog.info("ok! agreedKeyFromAlice export is 0x${Uint8ArrayToBigInt(agreedKeyFromAlice).toString(radix: 16)}")
+        loggerInfo("ok! agreedKeyFromAlice export is 0x${Uint8ArrayToBigInt(agreedKeyFromAlice).toString(radix: 16)}")
 
         let agreedKeyFromBob = HuksDhAgreeExportKey(aliasB, pubKeyA).getOrThrow()
-        AppLog.info("ok! agreedKeyFromBob export is 0x${Uint8ArrayToBigInt(agreedKeyFromBob).toString(radix: 16)}")
+        loggerInfo("ok! agreedKeyFromBob export is 0x${Uint8ArrayToBigInt(agreedKeyFromBob).toString(radix: 16)}")
     }
 
     func HuksDhAgreeInHuks(keyAlias: String, peerPubKey: ?Array<UInt8>, aliasAgreedKey: String): ?Array<UInt8> {
         let onlyUsedInHuks: Array<HuksParam> = [
             HuksParam(
-                HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+                HuksTag.HuksTagKeyStorageFlag,
                 HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
             ),
             HuksParam(
-                HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                 HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
             )
         ]
         let dhAgreeInit: HuksOptions = HuksOptions(
-            [
+            properties: [
                 HuksParam(
-                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
-                HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+                HuksParam(HuksTag.HuksTagKeySize, HuksKeySize.HUKS_AES_KEY_SIZE_256),
                 HuksParam(
-                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 )
             ],
-            None
+            inData: Bytes()
         )
         let dhAgreeFinishParams: Array<HuksParam> = [
             HuksParam(
-                HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+                HuksTag.HuksTagKeyStorageFlag,
                 HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
             ),
             HuksParam(
-                HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                 HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
             ),
-            HuksParam(HuksTag.HUKS_TAG_IS_KEY_ALIAS, boolean(true)),
-            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+            HuksParam(HuksTag.HuksTagIsKeyAlias, HuksParamValue.BooleanValue(true)),
+            HuksParam(HuksTag.HuksTagAlgorithm, HuksKeyAlg.HUKS_ALG_AES),
+            HuksParam(HuksTag.HuksTagKeySize, HuksKeySize.HUKS_AES_KEY_SIZE_256),
             HuksParam(
-                HuksTag.HUKS_TAG_PURPOSE,
-                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+                HuksTag.HuksTagPurpose,
+                HuksParamValue.Uint32Value(1 | 2)
             )
         ]
 
         let handle = initSession(keyAlias, dhAgreeInit)
         let dhAgreeUpdatePubKey: HuksOptions = HuksOptions(
-            [
+            properties: [
                 HuksParam(
-                    HuksTag.HUKS_TAG_ALGORITHM,
+                    HuksTag.HuksTagAlgorithm,
                     HuksKeyAlg.HUKS_ALG_DH,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_PURPOSE,
+                    HuksTag.HuksTagPurpose,
                     HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 )
             ],
-            peerPubKey
+            inData: peerPubKey.getOrThrow()
         )
         updateSession(handle.handle, dhAgreeUpdatePubKey)
         let dhAgreeAliceFinnish: HuksOptions = HuksOptions(
-            [
+            properties: [
                 HuksParam(
-                    HuksTag.HUKS_TAG_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
                 HuksParam(
-                    HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+                    HuksTag.HuksTagDerivedAgreedKeyStorageFlag,
                     HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
                 ),
-                HuksParam(HuksTag.HUKS_TAG_IS_KEY_ALIAS, boolean(true)),
-                HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-                HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+                HuksParam(HuksTag.HuksTagIsKeyAlias, HuksParamValue.BooleanValue(true)),
+                HuksParam(HuksTag.HuksTagAlgorithm, HuksKeyAlg.HUKS_ALG_AES),
+                HuksParam(HuksTag.HuksTagKeySize, HuksKeySize.HUKS_AES_KEY_SIZE_256),
                 HuksParam(
-                    HuksTag.HUKS_TAG_PURPOSE,
-                    HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+                    HuksTag.HuksTagPurpose,
+                    HuksParamValue.Uint32Value(1 | 2)
                 ),
-                HuksParam(HuksTag.HUKS_TAG_KEY_ALIAS, bytes(StringToUint8Array(aliasAgreedKey)))
+                HuksParam(HuksTag.HuksTagKeyAlias, HuksParamValue.BytesValue(aliasAgreedKey.toArray()))
             ],
-            None
+            inData: Bytes()
         )
         return finishSession(handle.handle, dhAgreeAliceFinnish)
     }
@@ -542,14 +514,14 @@
     func HuksDhAgreeInHuksTest(aliasA: String, aliasB: String, pubKeyA: ?Array<UInt8>, pubKeyB: ?Array<UInt8>,
         aliasAgreedKeyFromA: String, aliasAgreedKeyFromB: String) {
         let finishAliceResult = HuksDhAgreeInHuks(aliasA, pubKeyB, aliasAgreedKeyFromA).getOrThrow()
-        AppLog.info("ok! finishAliceResult in huks is 0x${Uint8ArrayToBigInt(finishAliceResult).toString(radix: 16)}")
+        loggerInfo("ok! finishAliceResult in huks is 0x${Uint8ArrayToBigInt(finishAliceResult).toString(radix: 16)}")
         let aliceAgreedExist = isKeyItemExist(aliasAgreedKeyFromA, emptyOptions)
-        AppLog.info("ok! aliceAgreedExist in huks is ${aliceAgreedExist}")
+        loggerInfo("ok! aliceAgreedExist in huks is ${aliceAgreedExist}")
 
         let finishBobResult = HuksDhAgreeInHuks(aliasB, pubKeyA, aliasAgreedKeyFromB).getOrThrow()
-        AppLog.info("ok! finishBobResult in huks is 0x${Uint8ArrayToBigInt(finishBobResult).toString(radix: 16)}")
+        loggerInfo("ok! finishBobResult in huks is 0x${Uint8ArrayToBigInt(finishBobResult).toString(radix: 16)}")
         let bobAgreedExist = isKeyItemExist(aliasAgreedKeyFromB, emptyOptions)
-        AppLog.info("ok! bobAgreedExist in huks is ${bobAgreedExist}")
+        loggerInfo("ok! bobAgreedExist in huks is ${bobAgreedExist}")
 
         deleteKeyItem(aliasAgreedKeyFromA, emptyOptions)
         deleteKeyItem(aliasAgreedKeyFromB, emptyOptions)

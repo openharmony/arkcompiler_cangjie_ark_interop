@@ -87,7 +87,7 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|tokenID|UInt32|是|-|要校验的目标应用的身份标识。可通过应用的[ApplicationInfo](./cj-apis-bundle_manager.md#struct-applicationinfo)获得。|
+|tokenID|UInt32|是|-|要校验的目标应用的身份标识。可通过应用的[ApplicationInfo](cj-apis-bundle_manager.md#struct-applicationinfo)获得。|
 |permissionName|[Permissions](#type-permissions)|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
 
 **返回值：**
@@ -98,12 +98,12 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[访问控制错误码](../../errorcodes/cj-errorcode-access-token.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[访问控制错误码](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | The parameter check failed. |
-| 12100001 | The parameter is invalid. The tokenID is 0,or the string size of permissionName is larger than 256.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 12100001 | The parameter is invalid. The tokenID is 0,or the string size of permissionName is larger than 256. |
 
 **示例：**
 
@@ -119,11 +119,11 @@ let tokenID : UInt32 = 0 // tokenID系统应用可以通过bundleManager.getAppl
 let status = atManager.checkAccessToken(tokenID, "ohos.permission.GRANT_SENSITIVE_PERMISSIONS")
 ```
 
-### func requestPermissionsFromUser(StageContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)
+### func requestPermissionsFromUser(UIAbilityContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)
 
 ```cangjie
-public func requestPermissionsFromUser(context: StageContext, permissionList: Array<Permissions>,
-    callback: AsyncCallback<PermissionRequestResult>): Unit
+public func requestPermissionsFromUser(context: UIAbilityContext, permissionList: Array<Permissions>,
+    requestCallback: AsyncCallback<PermissionRequestResult>): Unit
 ```
 
 **功能：** 用于拉起弹框请求用户授权。
@@ -138,18 +138,24 @@ public func requestPermissionsFromUser(context: StageContext, permissionList: Ar
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。|
 |permissionList|Array\<[Permissions](#type-permissions)>|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
-|callback|AsyncCallback\<[PermissionRequestResult](#class-permissionrequestresult)>|是|-|回调函数，返回接口调用是否成功的结果。|
+|requestCallback|AsyncCallback\<[AccessCtrlPermissionRequestResult](#class-accessctrlpermissionrequestresult)>|是|-|回调函数，返回接口调用是否成功的结果。|
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[访问控制错误码](../../errorcodes/cj-errorcode-access-token.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[访问控制错误码](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | The parameter check failed. |
-| 12100001 | The parameter is invalid. The context is invalid when it does notbelong to the application itself.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 12100001 | The parameter is invalid. The context is invalid when it does notbelong to the application itself. |
+
+- IllegalArgumentException：
+
+| 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | The context is invalid. | todo | todo |
 
 **示例：**
 
@@ -159,127 +165,37 @@ public func requestPermissionsFromUser(context: StageContext, permissionList: Ar
 // index.cj
 
 import kit.AbilityKit.*
-import ohos.base.AsyncCallback
-import ohos.base.AsyncError
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
 
 // 此处代码可添加在依赖项定义中
 var resultCallback = {
-    errorCode: Option<AsyncError>, data: Option<AccessCtrlPermissionRequestResult> => match (errorCode) {
-        case Some(e) => AppLog.info("permissionResultCallBack request error: errcode is ${e.code}")
+    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+        case Some(e) => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: errcode is ${e.code}")
         case _ =>
             match (data) {
                 case Some(value) =>
                     for (i in (0..value.permissions.size)) {
-                        AppLog.info("CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
+                        Hilog.info(0, "AppLogCj", "CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
                     }
-                case _ => AppLog.info("permissionResultCallBack request error: data is null")
+                case _ => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: data is null")
             }
     }
 }
 
-let ctx = Global.getAbilityContext() // 需获取Context应用上下文，详见本文使用说明
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
 let atManager = AbilityAccessCtrl.createAtManager()
-let stageContext = getStageContext(ctx)
 let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
-atManager.requestPermissionsFromUser(stageContext, permissionList, resultCallback)
+atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
 ```
-
-## class PermissionRequestResult
-
-```cangjie
-public class PermissionRequestResult {
-    public var permissions: Array<String>
-    public var authResults: Array<Int32>
-    public var dialogShownResults:?Array<Bool>= None
-    public init(
-        permissions: Array<String>,
-        authResults: Array<Int32>
-    )
-}
-```
-
-**功能：** 权限请求结果对象，在调用[requestPermissionsFromUser](#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackpermissionrequestresult)申请权限时返回此对象表明此次权限申请的结果。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### var authResults
-
-```cangjie
-public var authResults: Array<Int32>
-```
-
-**功能：** 相应请求权限的结果。
-
-**类型：** Array\<Int32>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### var dialogShownResults
-
-```cangjie
-public var dialogShownResults:?Array<Bool>= None
-```
-
-**功能：** 此权限申请是否有弹窗。
-
-**类型：** ?Array\<Bool>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### var permissions
-
-```cangjie
-public var permissions: Array<String>
-```
-
-**功能：** 用户传入的权限。
-
-**类型：** Array\<String>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-### init(Array\<String>, Array\<Int32>)
-
-```cangjie
-public init(
-    permissions: Array<String>,
-    authResults: Array<Int32>
-)
-```
-
-**功能：** 构造权限请求结果对象。
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|permissions|Array\<String>|是|-|用户传入的权限。|
-|authResults|Array\<Int32>|是|-|相应请求权限的结果：<br>- -1：未授权。①dialogShownResults返回为true，表示用户首次申请；②dialogShownResults返回为false，表示权限已设置，无需弹窗，需要用户在"设置"中修改。<br>- 0：已授权。<br>- 2：未授权，表示请求无效，可能原因有：<br>  -未在设置文件中声明目标权限。<br>  -权限名非法。<br>  -部分权限存在特殊申请条件，在申请对应权限时未满足其指定的条件，见[ohos.permission.LOCATION](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionlocation)与[ohos.permission.APPROXIMATELY_LOCATION](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionapproximately_location)。|
 
 ## enum GrantStatus
 
 ```cangjie
 public enum GrantStatus <: Equatable<GrantStatus> & ToString {
-    | PERMISSION_DENIED
-    | PERMISSION_GRANTED
+    | PermissionDenied
+    | PermissionGranted
     | ...
 }
 ```
@@ -295,10 +211,10 @@ public enum GrantStatus <: Equatable<GrantStatus> & ToString {
 - Equatable\<GrantStatus>
 - ToString
 
-### PERMISSION_DENIED
+### PermissionDenied
 
 ```cangjie
-PERMISSION_DENIED
+PermissionDenied
 ```
 
 **功能：** 未授权。
@@ -307,10 +223,10 @@ PERMISSION_DENIED
 
 **起始版本：** 21
 
-### PERMISSION_GRANTED
+### PermissionGranted
 
 ```cangjie
-PERMISSION_GRANTED
+PermissionGranted
 ```
 
 **功能：** 已授权。
@@ -322,7 +238,7 @@ PERMISSION_GRANTED
 ### func !=(GrantStatus)
 
 ```cangjie
-public operator func !=(other: GrantStatus): Bool 
+public operator func !=(other: GrantStatus): Bool
 ```
 
 **功能：** 对授权状态进行判不等。
@@ -346,7 +262,7 @@ public operator func !=(other: GrantStatus): Bool
 ### func ==(GrantStatus)
 
 ```cangjie
-public operator func ==(other: GrantStatus): Bool 
+public operator func ==(other: GrantStatus): Bool
 ```
 
 **功能：** 对授权状态进行判等。
@@ -370,7 +286,7 @@ public operator func ==(other: GrantStatus): Bool
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **功能：** 返回授权状态的字符串表示。
@@ -391,4 +307,4 @@ public func toString(): String
 public type Permissions = String
 ```
 
-**功能：** 权限名，[Permissions](#type-permissions)是String类型的别名。
+**功能：** [Permissions](#type-permissions)是String类型的别名。

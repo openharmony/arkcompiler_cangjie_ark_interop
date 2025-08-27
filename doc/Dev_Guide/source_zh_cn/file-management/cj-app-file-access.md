@@ -49,7 +49,7 @@ import kit.AbilityKit.*
 import ohos.base.*
 
 // 见获取UIAbility的上下文信息章节
-let context = Global.getAbilityContext() // 需获取 context 应用上下文，详见本文使用说明
+let context = getContext()
 // 获取应用文件路径
 let filesDir = context.filesDirectory
 
@@ -89,7 +89,7 @@ import kit.AbilityKit.*
 import ohos.base.*
 
 // 见获取UIAbility的上下文信息章节
-let context = Global.getAbilityContext() // 需获取 context 应用上下文，详见本文使用说明
+let context = getContext()
 // 获取应用文件路径
 let filesDir = context.filesDirectory
 

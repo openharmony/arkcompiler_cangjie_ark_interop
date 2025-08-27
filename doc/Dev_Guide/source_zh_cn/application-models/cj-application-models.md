@@ -40,6 +40,7 @@
 
 | 项目 | Stage模型 |
 | -------- |  -------- |
-| **应用组件** | 1.&nbsp;组件分类<br/>![stage-model-component](figures/stage-model-component.png)<!-- ToBeReviewd -->&nbsp;&nbsp;&nbsp;-&nbsp;UIAbility组件：包含UI，提供展示UI的能力，主要用于和用户交互。详情请参见[UIAbility组件概述](cj-uiability-overview.md)。<br/>2.&nbsp;开发方式<br/>&nbsp;&nbsp;&nbsp;采用面向对象的方式，将应用组件以类接口的形式开放给开发者，可以进行派生，利于扩展能力。 |
+| **应用组件** | 1.&nbsp;组件分类<br/>![stage-model-component](figures/stage-model-component.png)<!-- ToBeReviewd -->&nbsp;&nbsp;&nbsp;-&nbsp;UIAbility组件：包含UI，提供展示UI的能力，主要用于和用户交互。详情请参见[UIAbility组件概述](cj-uiability-overview.md)。<br/>&nbsp;&nbsp;&nbsp;-&nbsp;ExtensionAbility组件：提供特定场景（如卡片、输入法）的扩展能力，满足更多的使用场景。<br/>2.&nbsp;开发方式<br/>&nbsp;&nbsp;&nbsp;采用面向对象的方式，将应用组件以类接口的形式开放给开发者，可以进行派生，利于扩展能力。 |
+| **进程模型** |  有两类进程：<br/>1.&nbsp;主进程<br/>2.&nbsp;ExtensionAbility进程 |
 |**任务管理模型**  | -&nbsp;每个UIAbility组件实例创建一个任务。<br/>-&nbsp;任务会持久化存储，直到超过最大任务个数（根据产品配置自定义）或者用户主动删除任务。<br/>-&nbsp;UIAbility组件之间不会形成栈的结构。 |
 | **应用配置文件**  | 使用app.json5描述应用信息，module.json5描述HAP信息、应用组件信息。 |

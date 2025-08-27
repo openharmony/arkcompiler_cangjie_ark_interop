@@ -21,26 +21,28 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 1. 新建一个仓颉应用工程，编辑工程中的“entry > src > main > cangjie > main_bility.cj”文件，导入依赖模块：
 
-   <!--compile-->
+   <!-- compile -->
+
    ```cangjie
    import kit.BasicServicesKit.*
-   import kit.PerformanceAnalysisKit.{HiAppEvent, Hilog, AppEventGroup, AppEventFilter, Watcher}
+   import kit.PerformanceAnalysisKit.{HiAppEvent, Hilog}
    ```
 
 2. 编辑工程中的“entry > src > main > cangjie > main_bility.cj”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
 
-   <!--compile-->
+   <!-- compile -->
+
    ```cangjie
     let eventfilter = AppEventFilter("OS", names: ["APP_CRASH"])
     let watcher = Watcher(
         // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
         "watcher2",
         // 开发者可以订阅感兴趣的系统事件，此处是订阅了崩溃事件
-          appEventFilters: [eventfilter],
+        appEventFilters: [eventfilter],
         // 开发者可以自行实现订阅实时回调函数，以便对订阅获取到的事件数据进行自定义处理
         onReceive: {
             domain: String, appEventGroups: Array<AppEventGroup> =>
-            Hilog.info(0x0000, 'testTag', "HiAppEvent onReceive: domain=${domain}")
+                Hilog.info(0x0000, 'testTag', "HiAppEvent onReceive: domain=${domain}")
             for (eventGroup in appEventGroups) {
                 // 开发者可以根据事件集合中的事件名称区分不同的系统事件
                 Hilog.info(0x0000, 'testTag', "HiAppEvent eventName=${eventGroup.name}")
@@ -48,29 +50,32 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
                     // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
                     Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.domain=${eventInfo.domain}")
                     Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.name=${eventInfo.name}")
-                    Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.eventType.value=${eventInfo.event.value}")
-                    for (para in eventInfo.params) {
+                    Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.eventType.value=${eventInfo.eventType.getValue()}")
+                    for ((k, v) in eventInfo.params) {
                         // 开发者可以获取到崩溃事件发生的相关信息
-                        if (para.key == "hilog") {
-                          Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${para.key}=${para.value.value.size}")
+                        if (k == "hilog") {
+                            Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${k}=${v}")
                         } else {
-                            Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${para.key}=${para.value.value}")
+                            Hilog.info(0x0000, 'testTag', "HiAppEvent eventInfo.params.${k}=${v}")
                         }
                     }
                 }
             }
         }
-    )
+        )
     HiAppEvent.addWatcher(watcher)
    ```
 
 3. 编辑工程中的“entry > src > main > cangjie > Index.cj”文件，添加按钮并在其onClick函数构造崩溃场景，以触发崩溃事件，示例代码如下：
 
-   <!--compile-->
+   <!-- compile -->
+
    ```cangjie
+    import stdx.encoding.json.*
+
     // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
     Button("appCrash").onClick { evt =>
-        FileUri("")
+        let result = JsonObject.fromStr("")
     }
    ```
 

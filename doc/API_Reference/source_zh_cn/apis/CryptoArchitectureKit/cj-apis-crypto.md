@@ -1,4 +1,4 @@
-# ohos.crypto（加解密算法库框架）
+# ohos.security.crypto_framework（加解密算法库框架）
 
 为屏蔽底层硬件和算法库，向上提供统一的密码算法库加解密相关接口。
 
@@ -25,7 +25,8 @@ public func createCipher(transformation: String): Cipher
 
 **功能：** 通过指定算法名称，获取相应的[Cipher](#class-cipher)实例。
 
-支持的规格详见[对称密钥加解密算法规格](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md)。
+<!-- 支持的规格详见[对称密钥加解密算法规格](../../cj-development-intro.md#对称密钥加解密算法规格)和[非对称密钥加解密算法规格](../../cj-development-intro.md#非对称密钥加解密算法规格)。 -->
+支持的规格详见[对称密钥加解密算法规格](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#对称密钥加解密算法规格)和[非对称密钥加解密算法规格](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#非对称密钥加解密算法规格)。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -45,13 +46,13 @@ public func createCipher(transformation: String): Cipher
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |801|this operation is not supported.|
-  |17620001|memory error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 801 | this operation is not supported. |
+  | 17620001 | memory error. |
 
 **示例：**
 
@@ -136,12 +137,13 @@ public func createMd(algName: String): Md
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17620001|memory error.|
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17620001 | memory error. |
 
 **示例：**
 
@@ -174,11 +176,11 @@ public func createRandom(): Random
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17620001|memory error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17620001 | memory error. |
 
 **示例：**
 
@@ -189,53 +191,6 @@ public func createRandom(): Random
 import kit.CryptoArchitectureKit.*
 
 let rand = createRandom()
-```
-
-## func createSign(String)
-
-```cangjie
-public func createSign(algName: String): Sign
-```
-
-**功能：** Sign实例生成。
-
-支持的规格详见[签名验签规格](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sign-sig-verify-overview.md)。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|algName|String|是|-|指定签名算法：RSA，ECC，DSA或SM2。使用RSA PKCS1模式时需要设置摘要，使用RSA PSS模式时需要设置摘要和掩码摘要。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Sign](#class-sign)|返回由输入算法指定生成的Sign对象。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |801|this operation is not supported.|
-  |17620001|memory error.|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-import kit.CryptoArchitectureKit.*
-
-var sign = createSign("ECC224|SHA256")
 ```
 
 ## func createSymKeyGenerator(String)
@@ -266,10 +221,11 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-  | 错误码ID | 错误信息               |
-  | :-------- | :---------------------- |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
   | 801 | this operation is not supported. |
 
 **示例：**
@@ -294,7 +250,7 @@ public interface Key {
 }
 ```
 
-**功能：** 密钥（接口），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#class-cipher)实例的[init()](#func-initcryptomode-key-paramsspec)方法。
+**功能：** 密钥（接口），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#class-cipher)实例的[init()](#func-initkey-paramsspec-asynccallbackcipher)方法。
 
 密钥可以通过密钥生成器来生成。
 
@@ -356,16 +312,6 @@ func getEncoded(): DataBlob
 |:----|:----|
 |[DataBlob](#struct-datablob)|用于查看密钥的具体内容。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |801|this operation is not supported.|
-  |17620001|memory error.|
-  |17630001|crypto operation error.|
-
 **示例：**
 
 <!-- compile -->
@@ -389,13 +335,13 @@ public interface ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](#func-initcryptomode-key-paramsspec)方法。
+**功能：** 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法。
 
-适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](#func-initcryptomode-key-paramsspec)中传入None即可）。
+适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](#func-initkey-paramsspec-asynccallbackcipher)中传入None即可）。
 
 > **说明：**
 >
-> 由于[init()](#func-initcryptomode-key-paramsspec)的params参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如IvParamsSpec），因此在构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
+> 由于[init()](#func-initkey-paramsspec-asynccallbackcipher)的params参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如IvParamsSpec），因此在构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -407,7 +353,7 @@ public interface ParamsSpec {
 mut prop algName: String
 ```
 
-**功能：** 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。
+**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
 
 **类型：** String
 
@@ -423,7 +369,7 @@ mut prop algName: String
 mut prop iv: DataBlob
 ```
 
-**功能：** 指明加解密参数iv。常见取值如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。
+**功能：** 指明加解密参数iv。常见取值如下：<br/>- AES的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节<br/>- 3DES的CBCMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为8字节<br/>- SM4的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -439,7 +385,7 @@ mut prop iv: DataBlob
 public class Cipher {}
 ```
 
-**功能：** 提供加解密的算法操作功能，按序调用本类中的[init()](#func-initcryptomode-key-paramsspec)、[update()](#func-updatedatablob)、[doFinal()](#func-dofinaldatablob)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
+**功能：** 提供加解密的算法操作功能，按序调用本类中的[init()](#func-initkey-paramsspec-asynccallbackcipher)、[update()](#func-updatedatablob)、[doFinal()](#func-dofinaldatablob)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -466,10 +412,10 @@ public prop algName: String
 
 **起始版本：** 21
 
-### func \`init\`(CryptoMode, Key, ?ParamsSpec)
+### func initialize(CryptoMode, Key, ?ParamsSpec)
 
 ```cangjie
-public func `init`(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
+public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 ```
 
 **功能：** 初始化加解密的[cipher](#class-cipher)对象，通过注册回调函数获取结果。
@@ -490,14 +436,14 @@ public func `init`(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17620001|memory error.|
-  |17620002|runtime error.|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17620001 | memory error. |
+  | 17620002 | runtime error. |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -512,7 +458,7 @@ let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
 let cipher = createCipher(cipherAlgName)
 let syg = createSymKeyGenerator("AES128")
 let sk = syg.generateSymKey()
-cipher.`init`(CryptoMode.ENCRYPT_MODE, sk, None)
+cipher.initialize(CryptoMode.EncryptMode, sk, None)
 ```
 
 ### func doFinal(?DataBlob)
@@ -557,14 +503,14 @@ public func doFinal(data: ?DataBlob): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17620001|memory error.|
-  |17620002|runtime error.|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17620001 | memory error. |
+  | 17620002 | runtime error. |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -579,7 +525,7 @@ let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
 let cipher = createCipher(cipherAlgName)
 let syg = createSymKeyGenerator("AES128")
 let sk = syg.generateSymKey()
-cipher.`init`(CryptoMode.ENCRYPT_MODE, sk, None)
+cipher.initialize(CryptoMode.EncryptMode, sk, None)
 cipher.doFinal(None)
 ```
 
@@ -591,7 +537,7 @@ public func update(data: DataBlob): DataBlob
 
 **功能：** 分段更新加密或者解密数据操作，获取加/解密数据。
 
-必须在对[Cipher](#class-cipher)实例使用[init()](#func-initcryptomode-key-paramsspec)初始化后，才能使用本函数。
+必须在对[Cipher](#class-cipher)实例使用[init()](#func-initkey-paramsspec-asynccallbackcipher)初始化后，才能使用本函数。
 
 > **说明：**
 >
@@ -622,14 +568,14 @@ public func update(data: DataBlob): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | invalid parameters. |
-| 17620001 | memory error. |
-| 17620002 | runtime error. |
-| 17630001 | crypto operation error.@brief update(data : DataBlob) : Promise<DataBlob> |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17620001 | memory error. |
+  | 17620002 | runtime error. |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -644,7 +590,7 @@ let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
 let cipher = createCipher(cipherAlgName)
 let syg = createSymKeyGenerator("AES128")
 let sk = syg.generateSymKey()
-cipher.`init`(CryptoMode.ENCRYPT_MODE, sk, None)
+cipher.initialize(CryptoMode.EncryptMode, sk, None)
 let plainText: DataBlob = DataBlob("this is test".toArray())
 cipher.update(plainText)
 ```
@@ -677,10 +623,10 @@ public prop algName: String
 
 **起始版本：** 21
 
-### func `init`(SymKey)
+### func initialize(SymKey)
 
 ```cangjie
-public func `init`(key: SymKey): Unit
+public func initialize(key: SymKey): Unit
 ```
 
 **功能：** 使用对称密钥初始化[Mac](#class-mac)计算，通过注册回调函数获取结果。
@@ -707,7 +653,7 @@ import kit.CryptoArchitectureKit.*
 let skg = createSymKeyGenerator("AES128")
 let sk = skg.generateSymKey()
 let mac = createMac("SHA256")
-mac.`init`(sk)
+mac.initialize(sk)
 ```
 
 ### func doFinal()
@@ -728,15 +674,6 @@ public func doFinal(): DataBlob
 |:----|:----|
 |[DataBlob](#struct-datablob)|返回计算结果DataBlob。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17620001|memory error.|
-  |17630001|crypto operation error.|
-
 **示例：**
 
 <!-- compile -->
@@ -750,7 +687,7 @@ let mac = createMac("SHA256")
 
 let skg = createSymKeyGenerator("AES128")
 let sk = skg.generateSymKey()
-mac.`init`(sk)
+mac.initialize(sk)
 let blob = DataBlob("this is test!".toArray())
 mac.update(blob)
 mac.doFinal()
@@ -774,14 +711,6 @@ public func getMacLength(): UInt32
 |:----|:----|
 |UInt32|返回mac计算结果的字节长度。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17630001|crypto operation error.|
-
 **示例：**
 
 <!-- compile -->
@@ -794,7 +723,7 @@ import kit.CryptoArchitectureKit.*
 let mac = createMac("SHA256")
 let skg = createSymKeyGenerator("AES128")
 let sk = skg.generateSymKey()
-mac.`init`(sk)
+mac.initialize(sk)
 let blob = DataBlob("this is test!".toArray())
 mac.update(blob)
 mac.doFinal()
@@ -819,15 +748,6 @@ public func update(input: DataBlob): Unit
 |:---|:---|:---|:---|:---|
 |input|[DataBlob](#struct-datablob)|是|-|传入的消息。|
 
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
-
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17630001|crypto operation error.|
-
 **示例：**
 
 <!-- compile -->
@@ -840,7 +760,7 @@ import kit.CryptoArchitectureKit.*
 let mac = createMac("SHA256")
 let skg = createSymKeyGenerator("AES128")
 let sk = skg.generateSymKey()
-mac.`init`(sk)
+mac.initialize(sk)
 let blob = DataBlob("this is test!".toArray())
 mac.update(blob)
 ```
@@ -893,12 +813,12 @@ public func digest(): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17620001|memory error.|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17620001 | memory error. |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -935,11 +855,11 @@ public func getMdLength(): UInt32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -974,12 +894,12 @@ public func update(input: DataBlob): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -1049,13 +969,13 @@ public func generateRandom(len: Int32): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17620001|memory error.|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17620001 | memory error. |
+  | 17630001 | crypto operation error. |
 
 **示例：**
 
@@ -1090,11 +1010,11 @@ public func setSeed(seed: DataBlob): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17620001|memory error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17620001 | memory error. |
 
 **示例：**
 
@@ -1109,49 +1029,13 @@ let rand = createRandom()
 rand.setSeed(DataBlob("test".toArray()))
 ```
 
-## class Sign
-
-```cangjie
-public class Sign {}
-```
-
-**功能：** Sign类，使用Sign方法之前需要创建该类的实例进行操作，通过[createSign](#func-createsignstring)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。
-
-Sign类不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign对象并调用init初始化。
-
-业务方使用时，在createSign时确定签名的模式，调用init接口设置密钥。
-
-当待签名数据较短时，可在init初始化后，（无需update）直接调用sign接口传入原文数据进行签名。
-
-当待签名数据较长时，可通过update接口分段传入切分后的原文数据，最后调用sign接口对整体原文数据进行签名。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-**起始版本：** 21
-
-### prop algName
-
-```cangjie
-public prop algName: String
-```
-
-**功能：** 签名指定的算法名称。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-**起始版本：** 21
-
 ## class SymKey
 
 ```cangjie
-public class SymKey <: Key {}
+public class SymKey <:  Key {}
 ```
 
-**功能：** 对称密钥，是[Key](#interface-key)的子类，在对称加解密时需要将其对象传入[Cipher](#class-cipher)实例的[init()](#func-initcryptomode-key-paramsspec)方法使用。
+**功能：** 对称密钥，是[Key](#interface-key)的子类，在对称加解密时需要将其对象传入[Cipher](#class-cipher)实例的[init()](#func-initkey-paramsspec-asynccallbackcipher)方法使用。
 
 对称密钥可以通过对称密钥生成器[SymKeyGenerator](#class-symkeygenerator)来生成。
 
@@ -1169,13 +1053,13 @@ public class SymKey <: Key {}
 public prop algName: String
 ```
 
-**功能：** 密钥对应的算法名（含长度）。
+**功能：** 对称密钥生成器指定的算法名称。
 
 **类型：** String
 
 **读写能力：** 只读
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
 **起始版本：** 21
 
@@ -1191,7 +1075,7 @@ public prop format: String
 
 **读写能力：** 只读
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
 **起始版本：** 21
 
@@ -1219,10 +1103,10 @@ import kit.CryptoArchitectureKit.*
 let generator = createSymKeyGenerator("3DES192")
 let key = generator.generateSymKey()
 var encodedKey = key.getEncoded()
-AppLog.info("key blob: ${encodedKey.data}") // Display key content.
+Hilog.info(0, "AppLogCj", "key blob: ${encodedKey.data}") // Display key content.
 key.clearMem()
 encodedKey = key.getEncoded()
-AppLog.info("key blob: ${encodedKey.data}") // Display all 0s.
+Hilog.info(0, "AppLogCj", "key blob: ${encodedKey.data}") // Display all 0s.
 ```
 
 ### func getEncoded()
@@ -1233,7 +1117,7 @@ public func getEncoded(): DataBlob
 
 **功能：** 同步方法，获取密钥数据的字节流。密钥可以为对称密钥，公钥或者私钥。其中，公钥格式满足ASN.1语法、X.509规范、DER编码格式；私钥格式满足ASN.1语法，PKCS#8规范、DER编码方式。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
+**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
 **起始版本：** 21
 
@@ -1245,13 +1129,13 @@ public func getEncoded(): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |801|this operation is not supported.|
-  |17620001|memory error.|
-  |17630001|crypto operation error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 801 | this operation is not supported. |
+  | 17620001 | memory error. |
+  | 17630001 | crypto operation error. |
 
 ## class SymKeyGenerator
 
@@ -1316,12 +1200,12 @@ public func convertKey(key: DataBlob): SymKey
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |401|invalid parameters.|
-  |17620001|memory error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | invalid parameters. |
+  | 17620001 | memory error. |
 
 **示例：**
 
@@ -1363,11 +1247,11 @@ public func generateSymKey(): SymKey
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-  |错误码ID|错误信息|
-  |:---|:---|
-  |17620001|memory error.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17620001 | memory error. |
 
 **示例：**
 
@@ -1391,13 +1275,13 @@ public struct CcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initcryptomode-key-paramsspec)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
 
 适用于CCM模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initcryptomode-key-paramsspec)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1429,7 +1313,7 @@ public mut prop aad: DataBlob
 public mut prop algName: String
 ```
 
-**功能：** 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。
+**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
 
 **类型：** String
 
@@ -1445,7 +1329,7 @@ public mut prop algName: String
 public mut prop authTag: DataBlob
 ```
 
-**功能：** 指明加解密参数authTag，长度为12字节。<br/>采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾12字节作为解密时[init()](#func-initcryptomode-key-paramsspec)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。
+**功能：** 指明加解密参数authTag，长度为12字节。<br/>采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾12字节作为解密时[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1474,7 +1358,7 @@ public mut prop iv: DataBlob
 ### init(String, DataBlob, DataBlob, DataBlob)
 
 ```cangjie
-public init(algName: String, iv: DataBlob, add: DataBlob, authTag: DataBlob)
+public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 ```
 
 **功能：** 创建CcmParamsSpec实例。
@@ -1487,10 +1371,10 @@ public init(algName: String, iv: DataBlob, add: DataBlob, authTag: DataBlob)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|algName|String|是|-|指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。|
+|algName|String|是|-|指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。|
 |iv|[DataBlob](#struct-datablob)|是|-|指明加解密参数iv，长度为7字节。|
-|add|[DataBlob](#struct-datablob)|是|-|指明加解密参数aad，长度为8字节。|
-|authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为12字节。采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的DataBlob，取出其末尾12字节作为解密时[init()](#func-initcryptomode-key-paramsspec)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。|
+|aad|[DataBlob](#struct-datablob)|是|-|指明加解密参数aad，长度为8字节。|
+|authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为12字节。采用CCM模式加密时，需要获取doFinal()或doFinalSync()输出的DataBlob，取出其末尾12字节作为解密时init()或initSync()方法的入参CcmParamsSpec中的authTag。|
 
 **示例：**
 
@@ -1576,13 +1460,13 @@ public struct GcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initcryptomode-key-paramsspec)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
 
 适用于GCM模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initcryptomode-key-paramsspec)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1614,7 +1498,7 @@ public mut prop aad: DataBlob
 public mut prop algName: String
 ```
 
-**功能：** 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。
+**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/>- IvParamsSpec:适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
 
 **类型：** String
 
@@ -1630,7 +1514,7 @@ public mut prop algName: String
 public mut prop authTag: DataBlob
 ```
 
-**功能：** 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initcryptomode-key-paramsspec)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。
+**功能：** 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1659,7 +1543,7 @@ public mut prop iv: DataBlob
 ### init(String, DataBlob, DataBlob, DataBlob)
 
 ```cangjie
-public init(algName: String, iv: DataBlob, add: DataBlob, authTag: DataBlob)
+public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 ```
 
 **功能：** 创建GcmParamsSpec实例。
@@ -1672,9 +1556,9 @@ public init(algName: String, iv: DataBlob, add: DataBlob, authTag: DataBlob)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|algName|String|是|-|指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。|
+|algName|String|是|-|指明对称加解密参数的算法模式。可选值如下:<br/>- IvParamsSpec:适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。|
 |iv|[DataBlob](#struct-datablob)|是|-|指明加解密参数iv，长度为12字节。|
-|add|[DataBlob](#struct-datablob)|是|-|指明加解密参数aad，长度为8字节。|
+|aad|[DataBlob](#struct-datablob)|是|-|指明加解密参数aad，长度为8字节。|
 |authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initcryptomode-key-paramsspec)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。|
 
 **示例：**
@@ -1697,13 +1581,13 @@ public struct IvParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initcryptomode-key-paramsspec)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
 
 适用于CBC、CTR、OFB、CFB这些仅使用iv作为参数的加解密模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initcryptomode-key-paramsspec)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1719,7 +1603,7 @@ public struct IvParamsSpec <: ParamsSpec {
 public mut prop algName: String
 ```
 
-**功能：** 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。
+**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
 
 **类型：** String
 
@@ -1735,7 +1619,7 @@ public mut prop algName: String
 public mut prop iv: DataBlob
 ```
 
-**功能：** 指明加解密参数iv。常见取值如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。
+**功能：** 指明加解密参数iv。常见取值如下：<br/>- AES的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节<br/>- 3DES的CBCMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为8字节<br/>- SM4的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1761,8 +1645,8 @@ public init(algName: String, iv: DataBlob)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|algName|String|是|-|指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。|
-|iv|[DataBlob](#struct-datablob)|是|-|指明加解密参数iv。常见取值如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。|
+|algName|String|是|-|指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。|
+|iv|[DataBlob](#struct-datablob)|是|-|指明加解密参数iv。常见取值如下：<br/>- AES的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节<br/>- 3DES的CBCMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为8字节<br/>- SM4的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节。|
 
 **示例：**
 
@@ -1776,151 +1660,12 @@ import kit.CryptoArchitectureKit.*
 let iv = IvParamsSpec("IvParamsSpec", DataBlob(Array<UInt8>(8, repeat: 1)))
 ```
 
-## enum CipherSpecItem
-
-```cangjie
-public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
-    | OAEP_MD_NAME_STR
-    | OAEP_MGF_NAME_STR
-    | OAEP_MGF1_MD_STR
-    | OAEP_MGF1_PSRC_UINT8ARR
-    | ...
-}
-```
-
-**功能：** 表示加解密参数的枚举，这些加解密参数支持通过setCipherSpec接口设置/通过getCipherSpec接口获取。
-
-当前只支持RSA算法和SM2算法。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CipherSpecItem>
-- ToString
-
-### OAEP_MD_NAME_STR
-
-```cangjie
-OAEP_MD_NAME_STR
-```
-
-**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，消息摘要功能的算法名。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-### OAEP_MGF1_MD_STR
-
-```cangjie
-OAEP_MGF1_MD_STR
-```
-
-**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，MGF1掩码生成功能的消息摘要算法。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-### OAEP_MGF1_PSRC_UINT8ARR
-
-```cangjie
-OAEP_MGF1_PSRC_UINT8ARR
-```
-
-**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，pSource的字节流。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-### OAEP_MGF_NAME_STR
-
-```cangjie
-OAEP_MGF_NAME_STR
-```
-
-**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，掩码生成算法（目前仅支持MGF1）。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-### func !=(CipherSpecItem)
-
-```cangjie
-public operator func !=(other: CipherSpecItem): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(CipherSpecItem)
-
-```cangjie
-public operator func ==(other: CipherSpecItem): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的说明。|
-
 ## enum CryptoMode
 
 ```cangjie
 public enum CryptoMode <: Equatable<CryptoMode> & ToString {
-    | ENCRYPT_MODE
-    | DECRYPT_MODE
+    | EncryptMode
+    | DecryptMode
     | ...
 }
 ```
@@ -1936,10 +1681,10 @@ public enum CryptoMode <: Equatable<CryptoMode> & ToString {
 - Equatable\<CryptoMode>
 - ToString
 
-### DECRYPT_MODE
+### DecryptMode
 
 ```cangjie
-DECRYPT_MODE
+DecryptMode
 ```
 
 **功能：** 表示进行解密操作。
@@ -1948,10 +1693,10 @@ DECRYPT_MODE
 
 **起始版本：** 21
 
-### ENCRYPT_MODE
+### EncryptMode
 
 ```cangjie
-ENCRYPT_MODE
+EncryptMode
 ```
 
 **功能：** 表示进行加密操作。
@@ -1963,7 +1708,7 @@ ENCRYPT_MODE
 ### func !=(CryptoMode)
 
 ```cangjie
-public operator func !=(other: CryptoMode): Bool 
+public operator func !=(other: CryptoMode): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。

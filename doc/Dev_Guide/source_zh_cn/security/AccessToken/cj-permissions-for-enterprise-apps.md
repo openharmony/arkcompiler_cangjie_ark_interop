@@ -50,7 +50,7 @@
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-允许应用跨系统本地帐号交互。
+允许应用跨系统本地账号交互。
 
 **权限级别：** system_basic
 
@@ -120,7 +120,7 @@
 
 **授权方式：** 系统授权（system_grant）
 
-**支持设备：** 2in1
+**支持设备：** PC/2in1
 
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
@@ -148,7 +148,7 @@
 
 ## ohos.permission.GET_DOMAIN_ACCOUNTS
 
-允许应用查询域帐号信息。
+允许应用查询域账号信息。
 
 **权限级别：** system_basic
 
@@ -273,7 +273,7 @@
 
 ## ohos.permission.GET_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
-允许应用获取域帐号服务器配置。
+允许应用获取域账号服务器配置。
 
 **权限级别：** system_basic
 
@@ -286,7 +286,7 @@
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
-允许应用管理域帐号服务器配置。
+允许应用管理域账号服务器配置。
 
 **权限级别：** system_basic
 
@@ -299,7 +299,7 @@
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
-允许应用管理域帐号。
+允许应用管理域账号。
 
 **权限级别：** system_basic
 
@@ -349,7 +349,7 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** 2in1
+**支持设备：** PC/2in1
 
 **起始版本：** 20
 
@@ -366,6 +366,6 @@
 <!--Del-->
 **ACL使能：** true<!--DelEnd-->
 
-**支持设备：** 2in1
+**支持设备：** PC/2in1
 
 **起始版本：** 20

@@ -1,4 +1,4 @@
-# ohos.sensor（传感器）
+# ohos.sensor
 
 sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
 
@@ -28,6 +28,7 @@ API示例代码使用说明：
 ## func getSensorList()
 
 ```cangjie
+
 public func getSensorList(): Array<Sensor>
 ```
 
@@ -45,37 +46,19 @@ public func getSensorList(): Array<Sensor>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14500101 | Service exception. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-try {
-    let sensors = getSensorList()
-    for (index in 0..sensors.size) {
-        AppLog.info("Succeeded in getting sensor${index}: ${sensors[index].sensorId} ")
-    }
-} catch (e: BusinessException) {
-    AppLog.error("Failed to get sensor list. Code: ${e.code}, message: ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;
+2. Sensor service ipc exception;3. Sensor data channel exception.
+ |
 
 ## func getSingleSensor(SensorId)
 
 ```cangjie
-public func getSingleSensor(`type`: SensorId): Sensor
+
+public func getSingleSensor(sensorType: SensorId): Sensor
 ```
 
 **功能：** 获取指定类型的传感器信息。
@@ -88,7 +71,7 @@ public func getSingleSensor(`type`: SensorId): Sensor
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|\`type\`|[SensorId](#enum-sensorid)|是|-|传感器类型。|
+|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
 
 **返回值：**
 
@@ -98,40 +81,22 @@ public func getSingleSensor(`type`: SensorId): Sensor
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14500101 | Service exception. |
-| 14500102 | The sensor is not supported by the device. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-try {
-    let sensors = getSingleSensor(SensorId.ACCELEROMETER)
-    AppLog.info("Succeeded in getting sensor: ${sensors.sensorName} ")
-} catch (e: BusinessException) {
-    AppLog.error("Failed to get sensor. Code: ${e.code}, message: ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;
+ 2. Sensor service ipc exception;3. Sensor data channel exception.
+ |
+  | 14500102 | The sensor is not supported by the device.
+ |
 
 ## class Response
 
 ```cangjie
-public abstract class Response {
-    public Response(
-        public var timestamp: Int64,
-        public var accuracy: SensorAccuracy
-    )
+public open class Response {
+    public var timestamp: Int64
+    public var accuracy: SensorAccuracy
 }
 ```
 
@@ -173,38 +138,14 @@ public var timestamp: Int64
 
 **起始版本：** 21
 
-### Response(Int64, SensorAccuracy)
-
-```cangjie
-public Response(
-    public var timestamp: Int64,
-    public var accuracy: SensorAccuracy
-)
-```
-
-**功能：** 构造加速度传感器数据。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|timestamp|Int64|否|-|传感器数据上报的时间戳。|
-|accuracy|[SensorAccuracy](#enum-sensoraccuracy)|否|-|传感器数据上报的精度档位值。|
-
 ## class RotationVectorResponse
 
 ```cangjie
 public class RotationVectorResponse <: Response {
-    public RotationVectorResponse(
-        public var x: Float32,
-        public var y: Float32,
-        public var z: Float32,
-        public var w: Float32
-    )
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+    public var w: Float32
 }
 ```
 
@@ -282,48 +223,20 @@ public var z: Float32
 
 **起始版本：** 21
 
-### RotationVectorResponse(Float32, Float32, Float32, Float32)
-
-```cangjie
-public RotationVectorResponse(
-    public var x: Float32,
-    public var y: Float32,
-    public var z: Float32,
-    public var w: Float32
-)
-```
-
-**功能：** 构造旋转矢量传感器数据。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|x|Float32|否|-|旋转矢量x轴分量。|
-|y|Float32|否|-|旋转矢量y轴分量。|
-|z|Float32|否|-|旋转矢量z轴分量。|
-|w|Float32|否|-|标量。|
-
 ## class Sensor
 
 ```cangjie
 public class Sensor {
-    public Sensor(
-        public var sensorName: String,
-        public var vendorName: String,
-        public var firmwareVersion: String,
-        public var hardwareVersion: String,
-        public var sensorId: SensorId,
-        public var maxRange: Float32,
-        public var minSamplePeriod: Int64,
-        public var maxSamplePeriod: Int64,
-        public var precision: Float32,
-        public var power: Float32
-    )
+    public var sensorName: String
+    public var vendorName: String
+    public var firmwareVersion: String
+    public var hardwareVersion: String
+    public var sensorId: SensorId
+    public var maxRange: Float32
+    public var minSamplePeriod: Int64
+    public var maxSamplePeriod: Int64
+    public var precision: Float32
+    public var power: Float32
 }
 ```
 
@@ -493,52 +406,14 @@ public var vendorName: String
 
 **起始版本：** 21
 
-### Sensor(String, String, String, String, SensorId, Float32, Int64, Int64, Float32, Float32)
-
-```cangjie
-public Sensor(
-    public var sensorName: String,
-    public var vendorName: String,
-    public var firmwareVersion: String,
-    public var hardwareVersion: String,
-    public var sensorId: SensorId,
-    public var maxRange: Float32,
-    public var minSamplePeriod: Int64,
-    public var maxSamplePeriod: Int64,
-    public var precision: Float32,
-    public var power: Float32
-)
-```
-
-**功能：** 指示传感器信息。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|sensorName|String|否|-|传感器名称。|
-|vendorName|String|否|-|传感器供应商。|
-|firmwareVersion|String|否|-|传感器固件版本。|
-|hardwareVersion|String|否|-|传感器硬件版本。|
-|sensorId|[SensorId](#enum-sensorid)|否|-|传感器类型id。|
-|maxRange|Float32|否|-|传感器测量范围的最大值。|
-|minSamplePeriod|Int64|否|-|允许的最小采样周期。|
-|maxSamplePeriod|Int64|否|-|允许的最大采样周期。|
-|precision|Float32|否|-|传感器精度。|
-|power|Float32|否|-|传感器功率的估计值，单位：mA。|
-
 ## enum SensorAccuracy
 
 ```cangjie
 public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
-    | ACCURACY_UNRELIABLE
-    | ACCURACY_LOW
-    | ACCURACY_MEDIUM
-    | ACCURACY_HIGH
+    | AccuracyUnreliable
+    | AccuracyLow
+    | AccuracyMedium
+    | AccuracyHigh
     | ...
 }
 ```
@@ -554,43 +429,51 @@ public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
 - Equatable\<SensorAccuracy>
 - ToString
 
-### ACCURACY_HIGH
+### AccuracyHigh
 
 ```cangjie
-ACCURACY_HIGH
+AccuracyHigh
 ```
 
 **功能：** 传感器高档位精度。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### ACCURACY_LOW
+### AccuracyLow
 
 ```cangjie
-ACCURACY_LOW
+AccuracyLow
 ```
 
 **功能：** 传感器低档位精度。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### ACCURACY_MEDIUM
+### AccuracyMedium
 
 ```cangjie
-ACCURACY_MEDIUM
+AccuracyMedium
 ```
 
 **功能：** 传感器中档位精度。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### ACCURACY_UNRELIABLE
+### AccuracyUnreliable
 
 ```cangjie
-ACCURACY_UNRELIABLE
+AccuracyUnreliable
 ```
 
 **功能：** 传感器数据不可信。
+
+**系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
 
@@ -601,10 +484,6 @@ public operator func !=(other: SensorAccuracy): Bool
 ```
 
 **功能：** 判断两个[SensorAccuracy](#enum-sensoraccuracy) 是否不相等。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
 
 **参数：**
 
@@ -626,10 +505,6 @@ public operator func ==(other: SensorAccuracy): Bool
 
 **功能：** 判断两个[SensorAccuracy](#enum-sensoraccuracy) 是否相等。
 
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -650,10 +525,6 @@ public func toString(): String
 
 **功能：** 将枚举值转换为字符串。
 
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
-
 **返回值：**
 
 |类型|说明|
@@ -664,28 +535,27 @@ public func toString(): String
 
 ```cangjie
 public enum SensorId <: Equatable<SensorId> & ToString {
-    | ACCELEROMETER
-    | GYROSCOPE
-    | AMBIENT_LIGHT
-    | MAGNETIC_FIELD
-    | BAROMETER
-    | HALL
-    | PROXIMITY
-    | HUMIDITY
-    | ORIENTATION
-    | GRAVITY
-    | LINEAR_ACCELEROMETER
-    | ROTATION_VECTOR
-    | AMBIENT_TEMPERATURE
-    | MAGNETIC_FIELD_UNCALIBRATED
-    | GYROSCOPE_UNCALIBRATED
-    | SIGNIFICANT_MOTION
-    | PEDOMETER_DETECTION
-    | PEDOMETER
-    | HEART_RATE
-    | WEAR_DETECTION
-    | ACCELEROMETER_UNCALIBRATED
-    | UNSUPPORTED
+    | Accelerometer
+    | Gyroscope
+    | AmbientLight
+    | MagneticField
+    | Barometer
+    | Hall
+    | Proximity
+    | Humidity
+    | Orientation
+    | Gravity
+    | LinearAccelerometer
+    | RotationVector
+    | AmbientTemperature
+    | MagneticFieldUncalibrated
+    | GyroscopeUncalibrated
+    | SignificantMotion
+    | PedometerDetection
+    | Pedometer
+    | HeartRate
+    | WearDetection
+    | AccelerometerUncalibrated
     | ...
 }
 ```
@@ -701,223 +571,255 @@ public enum SensorId <: Equatable<SensorId> & ToString {
 - Equatable\<SensorId>
 - ToString
 
-### ACCELEROMETER
+### Accelerometer
 
 ```cangjie
-ACCELEROMETER
+Accelerometer
 ```
 
 **功能：** 加速度传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### ACCELEROMETER_UNCALIBRATED
+### AccelerometerUncalibrated
 
 ```cangjie
-ACCELEROMETER_UNCALIBRATED
+AccelerometerUncalibrated
 ```
 
 **功能：** 未校准加速度计传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### AMBIENT_LIGHT
+### AmbientLight
 
 ```cangjie
-AMBIENT_LIGHT
+AmbientLight
 ```
 
 **功能：** 环境光传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### AMBIENT_TEMPERATURE
+### AmbientTemperature
 
 ```cangjie
-AMBIENT_TEMPERATURE
+AmbientTemperature
 ```
 
 **功能：** 环境温度传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### BAROMETER
+### Barometer
 
 ```cangjie
-BAROMETER
+Barometer
 ```
 
 **功能：** 气压计传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### GRAVITY
+### Gravity
 
 ```cangjie
-GRAVITY
+Gravity
 ```
 
 **功能：** 重力传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### GYROSCOPE
+### Gyroscope
 
 ```cangjie
-GYROSCOPE
+Gyroscope
 ```
 
 **功能：** 陀螺仪传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### GYROSCOPE_UNCALIBRATED
+### GyroscopeUncalibrated
 
 ```cangjie
-GYROSCOPE_UNCALIBRATED
+GyroscopeUncalibrated
 ```
 
 **功能：** 未校准陀螺仪传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### HALL
+### Hall
 
 ```cangjie
-HALL
+Hall
 ```
 
 **功能：** 霍尔传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### HEART_RATE
+### HeartRate
 
 ```cangjie
-HEART_RATE
+HeartRate
 ```
 
 **功能：** 心率传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### HUMIDITY
+### Humidity
 
 ```cangjie
-HUMIDITY
+Humidity
 ```
 
 **功能：** 湿度传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### LINEAR_ACCELEROMETER
+### LinearAccelerometer
 
 ```cangjie
-LINEAR_ACCELEROMETER
+LinearAccelerometer
 ```
 
 **功能：** 线性加速度传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### MAGNETIC_FIELD
+### MagneticField
 
 ```cangjie
-MAGNETIC_FIELD
+MagneticField
 ```
 
 **功能：** 磁场传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### MAGNETIC_FIELD_UNCALIBRATED
+### MagneticFieldUncalibrated
 
 ```cangjie
-MAGNETIC_FIELD_UNCALIBRATED
+MagneticFieldUncalibrated
 ```
 
 **功能：** 未校准磁场传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### ORIENTATION
+### Orientation
 
 ```cangjie
-ORIENTATION
+Orientation
 ```
 
 **功能：** 方向传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### PEDOMETER
+### Pedometer
 
 ```cangjie
-PEDOMETER
+Pedometer
 ```
 
 **功能：** 计步传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### PEDOMETER_DETECTION
+### PedometerDetection
 
 ```cangjie
-PEDOMETER_DETECTION
+PedometerDetection
 ```
 
 **功能：** 计步检测传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### PROXIMITY
+### Proximity
 
 ```cangjie
-PROXIMITY
+Proximity
 ```
 
 **功能：** 接近光传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### ROTATION_VECTOR
+### RotationVector
 
 ```cangjie
-ROTATION_VECTOR
+RotationVector
 ```
 
 **功能：** 旋转矢量传感器。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 21
 
-### SIGNIFICANT_MOTION
+### SignificantMotion
 
 ```cangjie
-SIGNIFICANT_MOTION
+SignificantMotion
 ```
 
 **功能：** 有效运动传感器。
 
-**起始版本：** 21
-
-### UNSUPPORTED
-
-```cangjie
-UNSUPPORTED
-```
-
-**功能：** 未支持的传感器类型。
+**系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
 
-### WEAR_DETECTION
+### WearDetection
 
 ```cangjie
-WEAR_DETECTION
+WearDetection
 ```
 
 **功能：** 佩戴检测传感器。
+
+**系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
 
@@ -928,10 +830,6 @@ public operator func !=(other: SensorId): Bool
 ```
 
 **功能：** 判断两个[SensorId](#enum-sensorid) 是否不相等。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
 
 **参数：**
 
@@ -953,10 +851,6 @@ public operator func ==(other: SensorId): Bool
 
 **功能：** 判断两个[SensorId](#enum-sensorid) 是否相等。
 
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
-
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
@@ -976,10 +870,6 @@ public func toString(): String
 ```
 
 **功能：** 将枚举值转换为字符串。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
 
 **返回值：**
 

@@ -1,6 +1,6 @@
 # Basic Services Kit简介
 
-Basic Services Kit（基础服务）作为基础服务套件，为应用开发者提供常用的基础能力。比如常用的剪贴板读写、文件上传下载、文件压缩、文件打印、进程间/线程间通信、设备管理、应用帐号管理等能力都由本Kit提供。
+Basic Services Kit（基础服务）作为基础服务套件，为应用开发者提供常用的基础能力。比如常用的剪贴板读写、文件上传下载、文件压缩、文件打印、进程间/线程间通信、设备管理、应用账号管理等能力都由本Kit提供。
 
 ## 使用场景
 
@@ -35,7 +35,6 @@ Basic Services Kit为开发者提供了多种基础能力，满足开发者不�
     - [设备信息](../../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-device_info.md)：提供查询产品信息的能力，比如查询设备类型、设备品牌名称、产品系列、产品版本号等。
     - [设置数据项](../../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-settings.md)：提供查询系统设置数据项的能力，比如查询是否启用飞行模式、是否启用触摸浏览等。
     - [电量信息查询](../../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-battery_info.md)：提供查询电量信息的能力。
-    - 系统电源管理：提供系统电源管理相关的能力，比如查询屏幕状态能力等。
 
 - 其他：
     - [公共回调](../../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-base.md)：定义了Cangjie接口的公共回调类型，包括接口调用时出现的公共回调和公共错误信息。

@@ -1,12 +1,14 @@
-# ohos.file_fs（文件管理）
+# ohos.file.fs（文件管理）
 
 该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
+
 
 ## 导入模块
 
 ```cangjie
 import kit.CoreFileKit.*
 ```
+
 
 ## 使用说明
 
@@ -17,39 +19,54 @@ API示例代码使用说明：
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
-## class ConflictFileException
+
+## class ConflictFiles
 
 ```cangjie
-public class ConflictFileException <: BusinessException {
-    public let data: Array<ConflictFiles>
+public class ConflictFiles {
+    public var srcFile: String
+    public var destFile: String
 }
 ```
 
-**功能：** 异常类型，支持moveDir、copyDir使用。
+**功能：** 冲突文件信息，支持copyDir及moveDir接口使用。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-**父类型：**
-
-- [BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception)
-
-### let data
+### var destFile
 
 ```cangjie
-public let data: Array<ConflictFiles>
+public var destFile: String
 ```
 
-**功能：** 冲突文件信息。
+**功能：** 目标冲突文件路径。
 
-**类型：** Array\<[ConflictFiles](#struct-conflictfiles)>
+**类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
+
+### var srcFile
+
+```cangjie
+public var srcFile: String
+```
+
+**功能：** 源冲突文件路径。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
 
 ## class File
 
@@ -129,6 +146,16 @@ public func getParent(): String
 |:----|:----|
 |String|返回父目录路径。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900005 | I/O error |
+  | 13900042 | Unknown error |
+  | 14300002 | Invalid URI |
+
 **示例：**
 
 <!-- compile -->
@@ -141,9 +168,9 @@ import kit.PerformanceAnalysisKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
-AppLog.info("The parent path is: " + file.getParent())
-FileFs.close(file)
+let file = FileIo.open(filePath, mode: (OpenMode.READ_WRITE | OpenMode.CREATE))
+Hilog.info(0, "", "The parent path is: " + file.getParent())
+FileIo.close(file)
 ```
 
 ### func tryLock(Bool)
@@ -162,7 +189,20 @@ public func tryLock(exclusive!: Bool = false): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|exclusive|Bool|否|false| **命名参数。** 是否施加独占锁，默认false。|
+|exclusive|Bool|否|false|**命名参数。** 是否施加独占锁，默认false。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900008 | Bad file descriptor |
+  | 13900020 | Invalid argument |
+  | 13900034 | Operation would block |
+  | 13900042 | Unknown error |
+  | 13900043 | No record locks available |
 
 **示例：**
 
@@ -175,15 +215,15 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode:(READ_WRITE.mode | CREATE.mode))
+let file = FileIo.open(filePath, mode:(OpenMode.READ_WRITE | OpenMode.CREATE))
 file.tryLock(exclusive: true)
-FileFs.close(file)
+FileIo.close(file)
 ```
 
-### func unLock()
+### func unlock()
 
 ```cangjie
-public func unLock(): Unit
+public func unlock(): Unit
 ```
 
 **功能：** 以同步方式给文件解锁。
@@ -192,42 +232,39 @@ public func unLock(): Unit
 
 **起始版本：** 21
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900008 | Bad file descriptor |
+  | 13900020 | Invalid argument |
+  | 13900034 | Operation would block |
+  | 13900042 | Unknown error |
+  | 13900043 | No record locks available |
 
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
-file.tryLock(exclusive: true)
-file.unLock()
-FileFs.close(file)
-```
-
-## class FileFs
+## class FileIo
 
 ```cangjie
-public class FileFs {}
+public class FileIo {}
 ```
 
-**功能：** 文件管理工具类，提供基础文件操作能力。
+**功能：** 提供文件基础操作的能力。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### static func access(String)
+### static func access(String, AccessModeType, AccessFlagType)
 
 ```cangjie
-public static func access(path: String): Bool
+public static func access(path: String, mode!: AccessModeType = AccessModeType.Exist,
+    flag!: AccessFlagType = AccessFlagType.Local): Bool
 ```
 
-**功能：** 检查文件是否存在。
+**功能：**  检查文件是否存在，或校验操作权限。校验读、写或读写权限不通过会抛出13900012（Permission denied）错误码。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -237,33 +274,34 @@ public static func access(path: String): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|path|String|是|-|文件应用沙箱路径。|
+|path|String|是|-|文件或目录应用沙箱路径。|
+|mode|[AccessModeType](#enum-accessmodetype)|否|AccessModeType.Exist|文件或目录校验的权限。|
+|flag|[AccessFlagType](#enum-accessflagtype)|否|AccessFlagType.Local|文件或目录校验的位置。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|返回true，表示文件存在；返回false，表示文件不存在。|
+|Bool|返回true，表示文件在本地且校验权限存在；返回false，表示文件不存在或者文件在云端或其他分布式设备上。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let res = FileFs.access(filePath)
-if (res) {
-    AppLog.info("file exists")
-} else {
-    AppLog.info("file not exists")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900020 | Invalid argument |
+  | 13900023 | Text file busy |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900042 | Unknown error |
 
 ### static func close(Int32)
 
@@ -283,20 +321,18 @@ public static func close(file: Int32): Unit
 |:---|:---|:---|:---|:---|
 |file|Int32|是|-|已打开的File对象，关闭后file对象不再具备实际意义，不可再用于进行读写等操作。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath)
-FileFs.close(file.fd)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900025 | No space left on device |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func close(File)
 
@@ -316,20 +352,18 @@ public static func close(file: File): Unit
 |:---|:---|:---|:---|:---|
 |file|[File](#class-file)|是|-|已打开的File对象，关闭后file对象不再具备实际意义，不可再用于进行读写等操作。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath)
-FileFs.close(file)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900025 | No space left on device |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func copyDir(String, String, Int32)
 
@@ -351,20 +385,31 @@ public static func copyDir(src: String, dest: String, mode!: Int32 = 0): Unit
 |dest|String|是|-|目标文件夹的应用沙箱路径。|
 |mode|Int32|否|0| **命名参数。** 复制模式。默认mode为0。<br/>-&nbsp; mode为0，文件级别抛异常。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则抛出异常。源文件夹下未冲突的文件全部移动至目标文件夹下，目标文件夹下未冲突文件将继续保留，且冲突文件信息将在抛出异常(ConfilictFileException)的data属性中以Array\<ConflictFiles>形式提供。<br/>-&nbsp; mode为1，文件级别强制覆盖。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则强制覆盖冲突文件夹下所有同名文件，未冲突文件将继续保留。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let srcPath = pathDir + "/srcDir/"
-let destPath = pathDir + "/destDir/"
-FileFs.copyDir(srcPath, destPath, mode: 0)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900015 | File exists |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func copyFile(String, String, Int32)
 
@@ -386,20 +431,30 @@ public static func copyFile(src: String, dest: String, mode!: Int32 = 0): Unit
 |dest|String|是|-|目标文件的文件描述符。|
 |mode|Int32|否|0| **命名参数。** mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let srcPath = pathDir + "/srcDir/test.txt"
-let dstPath = pathDir + "/dstDir/test.txt"
-FileFs.copyFile(srcPath, dstPath, mode: 0)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func copyFile(String, Int32, Int32)
 
@@ -421,6 +476,31 @@ public static func copyFile(src: String, dest: Int32, mode!: Int32 = 0): Unit
 |dest|Int32|是|-|目标文件的文件描述符。|
 |mode|Int32|否|0| **命名参数。** mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
+
 ### static func copyFile(Int32, String, Int32)
 
 ```cangjie
@@ -440,6 +520,31 @@ public static func copyFile(src: Int32, dest: String, mode!: Int32 = 0): Unit
 |src|Int32|是|-|待复制文件的文件描述符。|
 |dest|String|是|-|目标文件的文件描述符。|
 |mode|Int32|否|0| **命名参数。** mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func copyFile(Int32, Int32, Int32)
 
@@ -461,10 +566,36 @@ public static func copyFile(src: Int32, dest: Int32, mode!: Int32 = 0): Unit
 |dest|Int32|是|-|目标文件的文件描述符。|
 |mode|Int32|否|0| **命名参数。** mode提供覆盖文件的选项，当前仅支持0，且默认为0。<br/>0：完全覆盖目标文件，未覆盖部分将被裁切掉。|
 
-### static func createRandomAccessFile(String, Int64)
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
+
+### static func createRandomAccessFile(String, Int64, RandomAccessFileOptions)
 
 ```cangjie
-public static func createRandomAccessFile(file: String, mode!: Int64 = 0): RandomAccessFile
+public static func createRandomAccessFile(file: String, mode!: Int64 = OpenMode.READ_ONLY,
+    options!: RandomAccessFileOptions = RandomAccessFileOptions()): RandomAccessFile
 ```
 
 **功能：** 基于文件路径或文件对象创建RandomAccessFile文件对象。
@@ -478,7 +609,8 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = 0): Rando
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |file|String|是|-|已打开的File对象。|
-|mode|Int64|否|0|**命名参数。** 创建文件RandomAccessFile对象的[选项](#enum-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
+|mode|Int64|否|OpenMode.READ_ONLY|**命名参数。** 创建文件RandomAccessFile对象的[选项](#enum-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
+|options|[RandomAccessFileOptions](#class-randomaccessfileoptions)|否|RandomAccessFileOptions()|支持如下选项：<br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。|
 
 **返回值：**
 
@@ -486,28 +618,45 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = 0): Rando
 |:----|:----|
 |[RandomAccessFile](#class-randomaccessfile)|返回RandomAccessFile文件对象。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900006 | No such device or address |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900017 | No such device |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900029 | Resource deadlock would occur |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
+
+### static func createRandomAccessFile(File, Int64, RandomAccessFileOptions)
 
 ```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | READ_WRITE.mode))
-FileFs.write(file.fd, "hello world")
-FileFs.fdatasync(file.fd)
-let randomAccessFile = FileFs.createRandomAccessFile(file)
-randomAccessFile.close()
-```
-
-### static func createRandomAccessFile(File, Int64)
-
-```cangjie
-public static func createRandomAccessFile(file: File, mode!: Int64 = 0): RandomAccessFile
+public static func createRandomAccessFile(file: File, mode!: Int64 = OpenMode.READ_ONLY,
+    options!: RandomAccessFileOptions = RandomAccessFileOptions()): RandomAccessFile
 ```
 
 **功能：** 基于文件路径或文件对象创建RandomAccessFile文件对象。
@@ -521,13 +670,48 @@ public static func createRandomAccessFile(file: File, mode!: Int64 = 0): RandomA
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |file|[File](#class-file)|是|-|已打开的File对象。|
-|mode|Int64|否|0|**命名参数。** 创建文件RandomAccessFile对象的[选项](#enum-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
+|mode|Int64|否|OpenMode.READ_ONLY|创建文件RandomAccessFile对象的选项，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
+|options|[RandomAccessFileOptions](#class-randomaccessfileoptions)|否|RandomAccessFileOptions()|支持如下选项：<br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RandomAccessFile](#class-randomaccessfile)|返回RandomAccessFile文件对象。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900006 | No such device or address |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900017 | No such device |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900029 | Resource deadlock would occur |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func createStream(String, String)
 
@@ -554,22 +738,38 @@ public static func createStream(path: String, mode: String): Stream
 |:----|:----|
 |[Stream](#class-stream)|返回文件流的结果。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let stream = FileFs.createStream(filePath, "r+")
-AppLog.info("createStream succeed")
-stream.close()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900006 | No such device or address |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900017 | No such device |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900029 | Resource deadlock would occur |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Network is unreachable |
 
 ### static func dup(Int32)
 
@@ -595,25 +795,19 @@ public static func dup(fd: Int32): File
 |:----|:----|
 |[File](#class-file)|打开的File对象。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file1 = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
-let fd = file1.fd
-let file2 = FileFs.dup(fd)
-AppLog.info("The name of the file2 is " + file2.name)
-FileFs.close(file1)
-FileFs.close(file2)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900014 | Device or resource busy |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900042 | Unknown error |
 
 ### static func fdatasync(Int32)
 
@@ -633,21 +827,19 @@ public static func fdatasync(fd: Int32): Unit
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath)
-FileFs.fdatasync(file.fd)
-FileFs.close(file)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func fdopenStream(Int32, String)
 
@@ -674,22 +866,39 @@ public static func fdopenStream(fd: Int32, mode: String): Stream
 |:----|:----|
 |[Stream](#class-stream)|返回文件流的结果。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (READ_ONLY.mode | CREATE.mode))
-let stream = FileFs.fdopenStream(file.fd, "r+")
-FileFs.close(file)
-stream.close()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900006 | No such device or address |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900017 | No such device |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900029 | Resource deadlock would occur |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func fsync(Int32)
 
@@ -709,21 +918,19 @@ public static func fsync(fd: Int32): Unit
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath)
-FileFs.fsync(file.fd)
-FileFs.close(file)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func listFile(String, ListFileOptions)
 
@@ -742,15 +949,7 @@ public static func listFile(path: String, options!: ListFileOptions = ListFileOp
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |path|String|是|-|文件夹的应用沙箱路径。|
-|options|[ListFileOptions](#struct-listfileoptions)|否|ListFileOptions()|**命名参数。** 文件过滤选项。默认不进行过滤。|
-
-**options参数说明：**
-
-| 参数名    | 类型     | 必填   | 说明                          |
-| :------ | :------ | :---- | :--------------------------- |
-| recursion | Bool | 否    | 是否递归子目录下文件名，默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。 |
-| listNum | Int32 | 否    | 列出文件名数量。当设置0时，列出所有文件，默认为0。 |
-| filter | [Filter](#struct-filter) | 否    |文件过滤选项。当前仅支持后缀名匹配、文件名模糊查询、文件大小过滤、最近修改时间过滤。|
+|options|[ListFileOptions](#class-listfileoptions)|否|ListFileOptions()|文件过滤选项。默认不进行过滤。|
 
 **返回值：**
 
@@ -758,29 +957,22 @@ public static func listFile(path: String, options!: ListFileOptions = ListFileOp
 |:----|:----|
 |Array\<String>|返回文件名数组。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filter = Filter(suffix: [".png", ".jpg", ".jpeg"], displayName: ["*abc", "efg*"])
-let listFileOptions = ListFileOptions(recursion: false, listNum: 0, filter: filter)
-let filenames = FileFs.listFile(pathDir, options: listFileOptions)
-for (name in filenames) {
-  AppLog.info(name)
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900018 | Not a directory |
+  | 13900042 | Unknown error |
 
 ### static func lseek(Int32, Int64, WhenceType)
 
 ```cangjie
-public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SEEK_SET): Int64
+public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SeekSet): Int64
 ```
 
 **功能：** 调整文件偏置指针位置。
@@ -795,7 +987,7 @@ public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SEEK_SE
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|文件描述符。|
 |offset|Int64|是|-|相对偏移位置。|
-|whence|[WhenceType](#enum-whencetype)|否|SEEK_SET|**命名参数。** 偏移指针相对位置类型。|
+|whence|[WhenceType](#enum-whencetype)|否|SeekSet|偏移指针相对位置类型。|
 
 **返回值：**
 
@@ -803,23 +995,17 @@ public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SEEK_SE
 |:----|:----|
 |Int64|当前文件偏置指针位置（相对于文件头的偏移量）。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: CREATE.mode)
-let offset = FileFs.lseek(file.fd, 5, whence: WhenceType.SEEK_SET)
-AppLog.info("The current offset is at " + offset.toString())
-FileFs.close(file)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900008 | Bad file descriptor |
+  | 13900020 | Invalid argument |
+  | 13900026 | Illegal seek |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
 
 ### static func lstat(String)
 
@@ -845,19 +1031,22 @@ public static func lstat(path: String): Stat
 |:----|:----|
 |[Stat](#class-stat)|表示文件的具体信息。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/linkToFile"
-let fileStat = FileFs.lstat(filePath)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
 
 ### static func mkdir(String)
 
@@ -877,19 +1066,27 @@ public static func mkdir(path: String): Unit
 |:---|:---|:---|:---|:---|
 |path|String|是|-|目录的应用沙箱路径。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let dirPath = pathDir + "/testDir1/testDir2/testDir3"
-FileFs.mkdir(dirPath)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900015 | File exists |
+  | 13900018 | Not a directory |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900028 | Too many links |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func mkdir(String, Bool)
 
@@ -910,19 +1107,27 @@ public static func mkdir(path: String, recursion: Bool): Unit
 |path|String|是|-|目录的应用沙箱路径。|
 |recursion|Bool|是|-|是否多层级创建目录。`recursion`指定为`true`时，可多层级创建目录。`recursion`指定为`false`时，仅可创建单层目录。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let dirPath = pathDir + "/testDir1/testDir2/testDir3"
-FileFs.mkdir(dirPath, true)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900015 | File exists |
+  | 13900018 | Not a directory |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900028 | Too many links |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func mkdtemp(String)
 
@@ -948,18 +1153,27 @@ public static func mkdtemp(prefix: String): String
 |:----|:----|
 |String|产生的唯一目录路径。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let res = FileFs.mkdtemp(pathDir + "/XXXXXX")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900015 | File exists |
+  | 13900018 | Not a directory |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900028 | Too many links |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func moveDir(String, String, Int32)
 
@@ -979,23 +1193,33 @@ public static func moveDir(src: String, dest: String, mode!: Int32 = 0): Unit
 |:---|:---|:---|:---|:---|
 |src|String|是|-|源文件夹的应用沙箱路径。|
 |dest|String|是|-|目标文件夹的应用沙箱路径。|
-|mode|Int32|否|0| **命名参数。** 移动模式。默认mode为0。<br/>-&nbsp;mode为0，文件夹级别抛异常。若目标文件夹下存在与源文件夹名冲突的同名非空文件夹，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则抛出异常。源文件夹下未冲突的文件全部移动至目标文件夹下，目标文件夹下未冲突文件将继续保留，且冲突文件信息将在抛出异常(ConfilictFileException)的data属性中以Array\<ConflictFiles>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则强制覆盖冲突文件夹下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，文件夹级别强制覆盖。移动源文件夹至目标文件夹下，目标文件夹下移动的文件夹内容与源文件夹完全一致。若目标文件夹下存在与源文件夹名冲突的文件夹，该文件夹下所有原始文件将不会保留。|
+|mode|Int32|否|0|移动模式。默认mode为0。<br/>-&nbsp;mode为0，文件夹级别抛异常。若目标文件夹下存在与源文件夹名冲突的同名非空文件夹，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则抛出异常。源文件夹下未冲突的文件全部移动至目标文件夹下，目标文件夹下未冲突文件将继续保留，且冲突文件信息将在抛出异常(ConfilictFileException)的data属性中以Array\<ConflictFiles>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则强制覆盖冲突文件夹下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，文件夹级别强制覆盖。移动源文件夹至目标文件夹下，目标文件夹下移动的文件夹内容与源文件夹完全一致。若目标文件夹下存在与源文件夹名冲突的文件夹，该文件夹下所有原始文件将不会保留。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-// move directory from srcPath to destPath
-let srcPath = pathDir + "/srcDir/"
-let destPath = pathDir + "/destDir/"
-FileFs.moveDir(srcPath, destPath, mode: 1)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900016 | Cross-device link |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900028 | Too many links |
+  | 13900032 | Directory not empty |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func moveFile(String, String, Int32)
 
@@ -1003,7 +1227,7 @@ FileFs.moveDir(srcPath, destPath, mode: 1)
 public static func moveFile(src: String, dest: String, mode!: Int32 = 0): Unit
 ```
 
-**功能：** 以同步方式移动文件。
+**功能：** 移动源文件夹至目标路径下。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -1013,31 +1237,40 @@ public static func moveFile(src: String, dest: String, mode!: Int32 = 0): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|String|是|-|源文件的应用沙箱路径。|
-|dest|String|是|-|目的文件的应用沙箱路径。|
-|mode|Int32|否|0| **命名参数。** 移动模式。若mode为0，移动位置存在同名文件时，强制移动覆盖。若mode为1，移动位置存在同名文件时，抛出异常。默认为0。|
+|src|String|是|-|源文件夹的应用沙箱路径。|
+|dest|String|是|-|目标文件夹的应用沙箱路径。|
+|mode|Int32|否|0|移动模式。默认mode为0。<br/>-&nbsp;mode为0，文件夹级别抛异常。若目标文件夹下存在与源文件夹名冲突的同名非空文件夹，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则抛出异常。源文件夹下未冲突的文件全部移动至目标文件夹下，目标文件夹下未冲突文件将继续保留，且冲突文件信息将在抛出异常(ConfilictFileException)的data属性中以Array\<ConflictFiles>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标文件夹下存在与源文件夹名冲突的文件夹，若冲突文件夹下存在同名文件，则强制覆盖冲突文件夹下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，文件夹级别强制覆盖。移动源文件夹至目标文件夹下，目标文件夹下移动的文件夹内容与源文件夹完全一致。若目标文件夹下存在与源文件夹名冲突的文件夹，该文件夹下所有原始文件将不会保留。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let srcPath = pathDir + "/srcDir/"
-let destPath = pathDir + "/destDir/"
-FileFs.moveFile(srcPath, destPath, mode: 0)
-AppLog.info("move file succeed")
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900016 | Cross-device link |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900028 | Too many links |
+  | 13900032 | Directory not empty |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func open(String, Int64)
 
 ```cangjie
-public static func open(path: String, mode!: Int64 = READ_ONLY.mode): File
+public static func open(path: String, mode!: Int64 = OpenMode.READ_ONLY): File
 ```
 
 **功能：** 以同步方法打开文件。支持使用URI打开文件。
@@ -1051,7 +1284,7 @@ public static func open(path: String, mode!: Int64 = READ_ONLY.mode): File
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |path|String|是|-|打开文件的应用沙箱路径或URI。|
-|mode|Int64|否|READ_ONLY.mode|**命名参数。** 打开文件的[选项](#enum-openmode)，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。|
+|mode|Int64|否|OpenMode.READ_ONLY|打开文件的选项，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读打开。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写打开。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写打开。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。|
 
 **返回值：**
 
@@ -1059,22 +1292,39 @@ public static func open(path: String, mode!: Int64 = READ_ONLY.mode): File
 |:----|:----|
 |[File](#class-file)|打开的File对象。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
-AppLog.info("open file success, file fd: " + file.fd.toString())
-FileFs.close(file)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900006 | No such device or address |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900017 | No such device |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900029 | Resource deadlock would occur |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900034 | Operation would block |
+  | 13900038 | Value too large for defined data type |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func read(Int32, Array\<Byte>, ReadOptions)
 
@@ -1093,8 +1343,8 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
-|buffer|Array\<Byte>|是|-|用于保存读取到的文件数据的缓冲区。|
-|options|[ReadOptions](#struct-readoptions)|否|ReadOptions()| **命名参数。** 支持如下选项：<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。默认从当前位置开始读。<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。默认缓冲区长度。|
+|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|用于保存读取到的文件数据的缓冲区。|
+|options|[ReadOptions](#class-readoptions)|否|ReadOptions()|支持如下选项：<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。默认从当前位置开始读。<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。默认缓冲区长度。|
 
 **返回值：**
 
@@ -1102,22 +1352,22 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
 |:----|:----|
 |Int64|返回实际读取的长度。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
-let buf = Array<Byte>(4096, repeat: 0)
-FileFs.read(file.fd, buf)
-FileFs.close(file)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900034 | Operation would block |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func readLines(String, Options)
 
@@ -1136,7 +1386,7 @@ public static func readLines(filePath: String, options!: Options = Options()): R
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |filePath|String|是|-|文件的应用沙箱路径。|
-|options|[Options](#struct-options)|否|Options()|**命名参数。** 可选项。支持以下选项：<br/>-&nbsp;encoding，String类型，当数据是&nbsp;String&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"，仅支持&nbsp;"utf-8"。|
+|options|[Options](#class-options)|否|Options()|可选项。支持以下选项：<br/>-&nbsp;encoding，String类型，当数据是&nbsp;String&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"，仅支持&nbsp;"utf-8"。|
 
 **返回值：**
 
@@ -1144,27 +1394,30 @@ public static func readLines(filePath: String, options!: Options = Options()): R
 |:----|:----|
 |[ReaderIterator](#class-readeriterator)|返回文件读取迭代器。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import kit.PerformanceAnalysisKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let options: Options = Options(encoding: "utf-8")
-let readerIterator = FileFs.readLines(filePath, options: options)
-var result = readerIterator.next()
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900012 | Permission denied |
+  | 13900015 | File exists |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900022 | Too many open files |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func readText(String, ReadTextOptions)
 
 ```cangjie
-public static func readText(filePath: String, option!: ReadTextOptions = ReadTextOptions()): String
+public static func readText(filePath: String, options!: ReadTextOptions = ReadTextOptions()): String
 ```
 
 **功能：** 以同步方法基于文本方式读取文件（即直接读取文件的文本内容）。
@@ -1178,7 +1431,7 @@ public static func readText(filePath: String, option!: ReadTextOptions = ReadTex
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |filePath|String|是|-|文件的应用沙箱路径。|
-|option|[ReadTextOptions](#struct-readtextoptions)|否|ReadTextOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。可选，默认从初始位置开始读取。<br/>-&nbsp;length，Int64类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，String类型，当数据是&nbsp;String&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"，仅支持&nbsp;"utf-8"。|
+|options|[ReadTextOptions](#class-readtextoptions)|否|ReadTextOptions()|支持如下选项：<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。可选，默认从初始位置开始读取。<br/>-&nbsp;length，Int64类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，String类型，当数据是&nbsp;String&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"，仅支持&nbsp;"utf-8"。|
 
 **返回值：**
 
@@ -1186,19 +1439,26 @@ public static func readText(filePath: String, option!: ReadTextOptions = ReadTex
 |:----|:----|
 |String|返回读取文件的内容。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let str = FileFs.readText(filePath)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 ### static func rename(String, String)
 
@@ -1219,20 +1479,31 @@ public static func rename(oldPath: String, newPath: String): Unit
 |oldPath|String|是|-|文件的应用沙箱原路径。|
 |newPath|String|是|-|文件的应用沙箱新路径。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let srcFile = pathDir + "/test.txt"
-let dstFile = pathDir + "/new.txt"
-FileFs.rename(srcFile, dstFile)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900015 | File exists |
+  | 13900016 | Cross-device link |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900025 | No space left on device |
+  | 13900027 | Read-only file system |
+  | 13900028 | Too many links |
+  | 13900032 | Directory not empty |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func rmdir(String)
 
@@ -1252,19 +1523,24 @@ public static func rmdir(path: String): Unit
 |:---|:---|:---|:---|:---|
 |path|String|是|-|目录的应用沙箱路径。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let dirPath = pathDir + "/testDir"
-FileFs.rmdir(dirPath)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900018 | Not a directory |
+  | 13900020 | Invalid argument |
+  | 13900027 | Read-only file system1 |
+  | 13900030 | File name too long |
+  | 13900032 | Directory not empty |
+  | 13900042 | Unknown error |
 
 ### static func stat(Int32)
 
@@ -1290,6 +1566,26 @@ public static func stat(file: Int32): Stat
 |:----|:----|
 |[Stat](#class-stat)|表示文件的具体信息。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+
 ### static func stat(String)
 
 ```cangjie
@@ -1314,6 +1610,26 @@ public static func stat(file: String): Stat
 |:----|:----|
 |[Stat](#class-stat)|表示文件的具体信息。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900030 | File name too long |
+  | 13900031 | Function not implemented |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900038 | Value too large for defined data type |
+  | 13900042 | Unknown error |
+
 ### static func truncate(String, Int64)
 
 ```cangjie
@@ -1331,22 +1647,30 @@ public static func truncate(file: String, len!: Int64 = 0): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |file|String|是|-|文件的应用沙箱路径。|
-|len|Int64|否|0| **命名参数。** 文件截断后的长度，以字节为单位。默认为0。|
+|len|Int64|否|0|文件截断后的长度，以字节为单位。默认为0。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let len: Int64 = 5
-FileFs.truncate(filePath, len: len)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900027 | Read-only file system |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900042 | Unknown error |
 
 ### static func truncate(Int32, Int64)
 
@@ -1365,23 +1689,30 @@ public static func truncate(file: Int32, len!: Int64 = 0): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |file|Int32|是|-|已打开的文件描述符fd。|
-|len|Int64|否|0| **命名参数。** 文件截断后的长度，以字节为单位。默认为0。|
+|len|Int64|否|0|文件截断后的长度，以字节为单位。默认为0。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let len: Int64 = 5
-let file  = FileFs.open(filePath, mode: READ_WRITE.mode)
-FileFs.truncate(file.fd, len: len)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900023 | Text file busy |
+  | 13900024 | File too large |
+  | 13900027 | Read-only file system |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900042 | Unknown error |
 
 ### static func unlink(String)
 
@@ -1401,19 +1732,27 @@ public static func unlink(path: String): Unit
 |:---|:---|:---|:---|:---|
 |path|String|是|-|文件的应用沙箱路径。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-FileFs.unlink(filePath)
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900011 | Out of memory |
+  | 13900012 | Permission denied |
+  | 13900013 | Bad address |
+  | 13900014 | Device or resource busy |
+  | 13900018 | Not a directory |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900027 | Read-only file system |
+  | 13900030 | File name too long |
+  | 13900033 | Too many symbolic links encountered |
+  | 13900042 | Unknown error |
 
 ### static func utimes(String, Float64)
 
@@ -1421,7 +1760,7 @@ FileFs.unlink(filePath)
 public static func utimes(path: String, mtime: Float64): Unit
 ```
 
-**功能：** 修改文件最近访问时间属性。
+**功能：** 删除文件。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -1434,23 +1773,18 @@ public static func utimes(path: String, mtime: Float64): Unit
 |path|String|是|-|文件的应用沙箱路径。|
 |mtime|Float64|是|-|待更新的时间戳。自1970年1月1日起至目标时间的毫秒数。仅支持修改文件最近访问时间属性。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
 
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-import std.time.DateTime
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (CREATE.mode | READ_WRITE.mode))
-FileFs.write(file.fd, "test data")
-FileFs.close(file)
-FileFs.utimes(filePath, Float64(DateTime.UnixEpoch.second))
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900002 | No such file or directory |
+  | 13900012 | Permission denied |
+  | 13900020 | Invalid argument |
+  | 13900027 | Read-only file system |
+  | 13900042 | Unknown error |
 
 ### static func write(Int32, Array\<Byte>, WriteOptions)
 
@@ -1469,14 +1803,33 @@ public static func write(fd: Int32, buffer: Array<Byte>, options!: WriteOptions 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
-|buffer|Array\<Byte>|是|-|待写入文件的数据，来自字符串。|
-|options|[WriteOptions](#struct-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。当前仅支持&nbsp;"utf-8"。|
+|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据，来自字符串。|
+|options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|支持如下选项：<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。当前仅支持&nbsp;"utf-8"。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际写入的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 ### static func write(Int32, String, WriteOptions)
 
@@ -1496,7 +1849,7 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
 |buffer|String|是|-|待写入文件的数据，来自字符串。|
-|options|[WriteOptions](#struct-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。当前仅支持&nbsp;"utf-8"。|
+|options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|支持如下选项：<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。当前仅支持&nbsp;"utf-8"。|
 
 **返回值：**
 
@@ -1504,22 +1857,499 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
 |:----|:----|
 |Int64|实际写入的长度。|
 
-**示例：**
+**异常：**
 
-<!-- compile -->
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+
+
+## class Filter
 
 ```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (CREATE.mode | READ_WRITE.mode))
-let str = "hello, world"
-let writeLen = FileFs.write(file.fd, str)
-FileFs.close(file)
+public class Filter {
+    public var suffix: Array<String>
+    public var displayName: Array<String>
+    public var mimeType: Array<String>
+    public var fileSizeOver:?Int64
+    public var lastModifiedAfter:?Float64
+    public var excludeMedia: Bool
+    public init(
+        suffix!: Array<String> = Array<String>(),
+        displayName!: Array<String> = Array<String>(),
+        mimeType!: Array<String> = Array<String>(),
+        fileSizeOver!: ?Int64 = None,
+        lastModifiedAfter!: ?Float64 = None,
+        excludeMedia!: Bool = false
+    )
+}
 ```
+
+**功能：** 文件过滤配置项类型，支持listFile接口使用。其中mimeType与excludeMedia过滤暂不支持。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var displayName
+
+```cangjie
+public var displayName: Array<String>
+```
+
+**功能：** 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。
+
+**类型：** Array\<String>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var excludeMedia
+
+```cangjie
+public var excludeMedia: Bool
+```
+
+**功能：** 是否排除Media中已有的文件。预留能力，暂不支持。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var fileSizeOver
+
+```cangjie
+public var fileSizeOver:?Int64
+```
+
+**功能：** 文件大小匹配，大于指定大小的文件。
+
+**类型：** ?Int64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var lastModifiedAfter
+
+```cangjie
+public var lastModifiedAfter:?Float64
+```
+
+**功能：** 文件最近修改时间匹配，在指定时间点之后的文件。
+
+**类型：** ?Float64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var mimeType
+
+```cangjie
+public var mimeType: Array<String>
+```
+
+**功能：** mime类型完全匹配，各个关键词OR关系。预留能力，暂不支持。
+
+**类型：** Array\<String>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var suffix
+
+```cangjie
+public var suffix: Array<String>
+```
+
+**功能：** 文件后缀名完全匹配，各个关键词OR关系。
+
+**类型：** Array\<String>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### init(Array\<String>, Array\<String>, Array\<String>, ?Int64, ?Float64, Bool)
+
+```cangjie
+public init(
+    suffix!: Array<String> = Array<String>(),
+    displayName!: Array<String> = Array<String>(),
+    mimeType!: Array<String> = Array<String>(),
+    fileSizeOver!: ?Int64 = None,
+    lastModifiedAfter!: ?Float64 = None,
+    excludeMedia!: Bool = false
+)
+```
+
+**功能：** 构造Filter对象。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|suffix|Array\<String>|否|Array<String>()|文件后缀名完全匹配，各个关键词OR关系。|
+|displayName|Array\<String>|否|Array<String>()|文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。|
+|mimeType|Array\<String>|否|Array<String>()|mime类型完全匹配，各个关键词OR关系。预留能力，暂不支持。|
+|fileSizeOver|?Int64|否|None|文件大小匹配，大于指定大小的文件。|
+|lastModifiedAfter|?Float64|否|None|文件最近修改时间匹配，在指定时间点之后的文件。|
+|excludeMedia|Bool|否|false|是否排除Media中已有的文件。预留能力，暂不支持。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900020 | Invalid argument |
+
+
+## class ListFileOptions
+
+```cangjie
+public class ListFileOptions {
+    public var recursion: Bool
+    public var listNum: Int32
+    public var filter: Filter
+    public init(
+        recursion!: Bool = false,
+        listNum!: Int32 = 0,
+        filter!: Filter = Filter()
+    )
+}
+```
+
+**功能：** 可选项类型，支持listFile接口使用。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var filter
+
+```cangjie
+public var filter: Filter
+```
+
+**功能：** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。
+
+**类型：** [Filter](#class-filter)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var listNum
+
+```cangjie
+public var listNum: Int32
+```
+
+**功能：** 列出文件名数量。当设置0时，列出所有文件，默认为0。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var recursion
+
+```cangjie
+public var recursion: Bool
+```
+
+**功能：** 是否递归子目录下文件名。默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### init(Bool, Int32, Filter)
+
+```cangjie
+public init(
+    recursion!: Bool = false,
+    listNum!: Int32 = 0,
+    filter!: Filter = Filter()
+)
+```
+
+**功能：** 构造ListFileOptions对象。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|recursion|Bool|否|false|是否递归子目录下文件名。默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。|
+|listNum|Int32|否|0|列出文件名数量。当设置0时，列出所有文件，默认为0。|
+|filter|[Filter](#class-filter)|否|Filter()|文件过滤选项。当前仅支持后缀名匹配、文件名模糊查询、文件大小过滤、最近修改时间过滤。|
+
+
+## class OpenMode
+
+```cangjie
+public class OpenMode {
+    public static const READ_ONLY: Int64 = 0o0
+    public static const WRITE_ONLY: Int64 = 0o1
+    public static const READ_WRITE: Int64 = 0o2
+    public static const CREATE: Int64 = 0o100
+    public static const TRUNC: Int64 = 0o1000
+    public static const APPEND: Int64 = 0o2000
+    public static const NONBLOCK: Int64 = 0o4000
+    public static const DIR: Int64 = 0o200000
+    public static const NOFOLLOW: Int64 = 0o400000
+    public static const SYNC: Int64 = 0o4010000
+}
+```
+
+**功能：** open接口flags参数常量。文件打开标签。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const APPEND
+
+```cangjie
+public static const APPEND: Int64 = 0o2000
+```
+
+**功能：** 以追加方式打开，后续写将追加到文件末尾。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const CREATE
+
+```cangjie
+public static const CREATE: Int64 = 0o100
+```
+
+**功能：** 若文件不存在，则创建文件。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const DIR
+
+```cangjie
+public static const DIR: Int64 = 0o200000
+```
+
+**功能：** 如果path不指向目录，则出错。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const NOFOLLOW
+
+```cangjie
+public static const NOFOLLOW: Int64 = 0o400000
+```
+
+**功能：** 如果path指向符号链接，则出错。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const NONBLOCK
+
+```cangjie
+public static const NONBLOCK: Int64 = 0o4000
+```
+
+**功能：** 如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续IO进行非阻塞操作。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const READ_ONLY
+
+```cangjie
+public static const READ_ONLY: Int64 = 0o0
+```
+
+**功能：** 只读打开。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const READ_WRITE
+
+```cangjie
+public static const READ_WRITE: Int64 = 0o2
+```
+
+**功能：** 读写打开。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const SYNC
+
+```cangjie
+public static const SYNC: Int64 = 0o4010000
+```
+
+**功能：** 以同步IO的方式打开文件。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const TRUNC
+
+```cangjie
+public static const TRUNC: Int64 = 0o1000
+```
+
+**功能：** 如果文件存在且以只写或读写的方式打开文件，则将其长度裁剪为零。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### static const WRITE_ONLY
+
+```cangjie
+public static const WRITE_ONLY: Int64 = 0o1
+```
+
+**功能：** 只写打开。
+
+**类型：** Int64
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+
+## class Options
+
+```cangjie
+public open class Options {
+    public var encoding: String
+    public init(
+        encoding!: String = "utf-8"
+    )
+}
+```
+
+**功能：** 可选项类型，支持readLines接口使用。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var encoding
+
+```cangjie
+public var encoding: String
+```
+
+**功能：** 文件编码方式。可选项。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### init(String)
+
+```cangjie
+public init(
+    encoding!: String = "utf-8"
+)
+```
+
+**功能：** 构造Options对象。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|encoding|String|否|"utf-8"|用于指定字符串的编码方式。|
+
 
 ## class RandomAccessFile
 
@@ -1527,7 +2357,7 @@ FileFs.close(file)
 public class RandomAccessFile {}
 ```
 
-**功能：** 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过[createRandomAccessFile](#static-func-createrandomaccessfilefile-int64)方法来构建一个RandomAccessFile实例。
+**功能：** 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过[createRandomAccessFile](#func-createrandomaccessfilestring-string)方法来构建一个RandomAccessFile实例。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -1588,14 +2418,14 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let randomAccessFile = FileFs.createRandomAccessFile(filePath, mode: (CREATE.mode | READ_WRITE.mode))
+let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 randomAccessFile.close()
 ```
 
 ### func read(Array\<Byte>, ReadOptions)
 
 ```cangjie
-public func read(buffer: Array<Byte>, readOptions!: ReadOptions = ReadOptions()): Int64
+public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): Int64
 ```
 
 **功能：** 以同步方法从文件读取数据。
@@ -1608,14 +2438,31 @@ public func read(buffer: Array<Byte>, readOptions!: ReadOptions = ReadOptions())
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<Byte>|是|-|用于读取文件的缓冲区。|
-|readOptions|[ReadOptions](#struct-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br>- offset，?Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。|
+|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|用于读取文件的缓冲区。|
+|options|[ReadOptions](#class-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br>- offset，?Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际读取的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900034 | Operation would block |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 **示例：**
 
@@ -1628,13 +2475,13 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let file = FileFs.open(filePath, mode: (CREATE.mode | READ_WRITE.mode))
-let randomAccessFile = FileFs.createRandomAccessFile(file)
+let file = FileIo.open(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
+let randomAccessFile = FileIo.createRandomAccessFile(file)
 let length: Int64 = 4096
 let arrayBuffer = Array<Byte>(length, repeat: 0)
 let readLength = randomAccessFile.read(arrayBuffer)
 randomAccessFile.close()
-FileFs.close(file)
+FileIo.close(file)
 ```
 
 ### func setFilePointer(Int64)
@@ -1666,7 +2513,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let randomAccessFile = FileFs.createRandomAccessFile(filePath, mode: (CREATE.mode | READ_WRITE.mode))
+let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 randomAccessFile.setFilePointer(1)
 randomAccessFile.close()
 ```
@@ -1674,7 +2521,7 @@ randomAccessFile.close()
 ### func write(String, WriteOptions)
 
 ```cangjie
-public func write(buffer: String, writeOptions!: WriteOptions = WriteOptions()): Int64
+public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int64
 ```
 
 **功能：** 以同步方法将数据写入文件。
@@ -1688,13 +2535,32 @@ public func write(buffer: String, writeOptions!: WriteOptions = WriteOptions()):
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |buffer|String|是|-|待写入文件的数据。|
-|writeOptions|[WriteOptions](#struct-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br>- offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br>- encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
+|options|[WriteOptions](#class-writeoptions)|否|WriteOptions()| **命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br>- offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br>- encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际写入的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 **示例：**
 
@@ -1707,17 +2573,16 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let randomAccessFile = FileFs.createRandomAccessFile(filePath,
-    mode: (CREATE.mode | READ_WRITE.mode))
+let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let option = WriteOptions(length: 5, offset: 5)
-let bytesWritten = randomAccessFile.write("hello, world", writeOptions: option)
+let bytesWritten = randomAccessFile.write("hello, world", options: option)
 randomAccessFile.close()
 ```
 
 ### func write(Array\<Byte>, WriteOptions)
 
 ```cangjie
-public func write(buffer: Array<Byte>, writeOptions!: WriteOptions = WriteOptions()): Int64
+public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()): Int64
 ```
 
 **功能：** 以同步方法将数据写入文件。
@@ -1730,14 +2595,32 @@ public func write(buffer: Array<Byte>, writeOptions!: WriteOptions = WriteOption
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<Byte>|是|-|待写入文件的数据。|
-|writeOptions|[WriteOptions](#struct-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br>- offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br>- encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
-
+|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据。|
+|options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br>- offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br>- encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际写入的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 **示例：**
 
@@ -1750,12 +2633,87 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let randomAccessFile = FileFs.createRandomAccessFile(filePath, mode: (CREATE.mode | READ_WRITE.mode))
+let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let option = WriteOptions(length: 5, offset: 5)
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
-let bytesWritten = randomAccessFile.write(arr, writeOptions: option)
+let bytesWritten = randomAccessFile.write(arr, options: option)
 randomAccessFile.close()
 ```
+
+
+## class RandomAccessFileOptions
+
+```cangjie
+public class RandomAccessFileOptions {
+    public var start: Option<Int64>
+    public var end: Option<Int64>
+    public init(
+        start!: Option<Int64> = None,
+        end!: Option<Int64> = None
+    )
+}
+```
+
+**功能：** 可选项类型，支持createRandomAccessFile接口使用。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var end
+
+```cangjie
+public var end: Option<Int64>
+```
+
+**功能：** 期望读取结束的位置。可选，默认文件末尾。
+
+**类型：** [Option](#initoptionint-optionint)\<Int64>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var start
+
+```cangjie
+public var start: Option<Int64>
+```
+
+**功能：** 期望读取文件的位置。可选，默认从当前位置开始读。
+
+**类型：** [Option](#initoptionint-optionint)\<Int64>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### init(Option\<Int64>, Option\<Int64>)
+
+```cangjie
+public init(
+    start!: Option<Int64> = None,
+    end!: Option<Int64> = None
+)
+```
+
+**功能：** 构造RandomAccessFileOptions对象。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|start|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
+|end|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
+
 
 ## class ReaderIterator
 
@@ -1785,7 +2743,204 @@ public func next(): ReaderIteratorResult
 
 |类型|说明|
 |:----|:----|
-|[ReaderIteratorResult](#struct-readeriteratorresult)|文件读取迭代器返回结果。|
+|[ReaderIteratorResult](#class-readeriteratorresult)|文件读取迭代器返回结果。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900005 | I/O error |
+  | 13900037 | No data available |
+  | 13900042 | Unknown error |
+
+
+## class ReaderIteratorResult
+
+```cangjie
+public class ReaderIteratorResult {
+    public var done: Bool
+    public var value: String
+}
+```
+
+**功能：** 文件读取迭代器返回结果，支持ReaderIterator接口使用。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var done
+
+```cangjie
+public var done: Bool
+```
+
+**功能：** 迭代器是否已完成迭代。
+
+**类型：** Bool
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var value
+
+```cangjie
+public var value: String
+```
+
+**功能：** 逐行读取的文件文本内容。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+
+## class ReadOptions
+
+```cangjie
+public open class ReadOptions {
+    public var offset: Option<Int64>
+    public var length: Option<UIntNative>
+    public init(
+        offset!: Option<Int64> = None,
+        length!: Option<UIntNative> = None
+    )
+}
+```
+
+**功能：** 可选项类型，支持read接口使用。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var length
+
+```cangjie
+public var length: Option<UIntNative>
+```
+
+**功能：** 期望读取数据的长度。默认缓冲区长度。
+
+**类型：** [Option](#initoptionint-optionint)\<UIntNative>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### var offset
+
+```cangjie
+public var offset: Option<Int64>
+```
+
+**功能：** 期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。
+
+**类型：** [Option](#initoptionint-optionint)\<Int64>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### init(Option\<Int64>, Option\<UIntNative>)
+
+```cangjie
+public init(
+    offset!: Option<Int64> = None,
+    length!: Option<UIntNative> = None
+)
+```
+
+**功能：** 构造ReadOptions对象。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
+|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
+
+
+## class ReadTextOptions
+
+```cangjie
+public class ReadTextOptions <: ReadOptions {
+    public var encoding: String
+    public init(
+        offset!: Option<Int64> = None,
+        length!: Option<UIntNative> = None,
+        encoding!: String = "utf-8"
+    )
+}
+```
+
+**功能：** 可选项类型，支持readText接口使用。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**父类型：**
+
+- [ReadOptions](#class-readoptions)
+
+### var encoding
+
+```cangjie
+public var encoding: String
+```
+
+**功能：** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+### init(Option\<Int64>, Option\<UIntNative>, String)
+
+```cangjie
+public init(
+    offset!: Option<Int64> = None,
+    length!: Option<UIntNative> = None,
+    encoding!: String = "utf-8"
+)
+```
+
+**功能：** 构造ReadOptions对象。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
+|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
+|encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
+
 
 ## class Stat
 
@@ -1793,7 +2948,7 @@ public func next(): ReaderIteratorResult
 public class Stat {}
 ```
 
-**功能：** 文件具体信息。在调用Stat的方法前，需要先通过[FileFs.stat()](#static-func-statstring)方法来构建一个Stat实例。
+**功能：** 文件具体信息。在调用Stat的方法前，需要先通过[FileIo.stat()](#func-statstring-string)方法来构建一个Stat实例。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -1960,7 +3115,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let isBLockDevice = FileFs.stat(filePath).isBlockDevice()
+let isBLockDevice = FileIo.stat(filePath).isBlockDevice()
 ```
 
 ### func isCharacterDevice()
@@ -1992,7 +3147,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let isCharacterDevice = FileFs.stat(filePath).isCharacterDevice()
+let isCharacterDevice = FileIo.stat(filePath).isCharacterDevice()
 ```
 
 ### func isDirectory()
@@ -2024,7 +3179,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let dirPath = pathDir + "/test"
-let isDirectory = FileFs.stat(dirPath).isDirectory()
+let isDirectory = FileIo.stat(dirPath).isDirectory()
 ```
 
 ### func isFIFO()
@@ -2056,7 +3211,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let isFIFO = FileFs.stat(filePath).isFIFO()
+let isFIFO = FileIo.stat(filePath).isFIFO()
 ```
 
 ### func isFile()
@@ -2088,7 +3243,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let isFile = FileFs.stat(filePath).isFile()
+let isFile = FileIo.stat(filePath).isFile()
 ```
 
 ### func isSocket()
@@ -2120,7 +3275,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let isSocket = FileFs.stat(filePath).isSocket()
+let isSocket = FileIo.stat(filePath).isSocket()
 ```
 
 ### func isSymbolicLink()
@@ -2152,8 +3307,9 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let isSymbolicLink = FileFs.stat(filePath).isSymbolicLink()
+let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 ```
+
 
 ## class Stream
 
@@ -2161,7 +3317,7 @@ let isSymbolicLink = FileFs.stat(filePath).isSymbolicLink()
 public class Stream {}
 ```
 
-**功能：** 文件流。在调用Stream的方法前，需要先通过[FileFs.createStream](#static-func-createstreamstring-string)方法或者[FileFs.fdopenStream](#static-func-fdopenstreamint32-string)来构建一个Stream实例。
+**功能：** 文件流。在调用Stream的方法前，需要先通过[FileIo.createStream](#func-createstreamstring-string)方法或者[FileIo.fdopenStream](#func-fdopenstreamint32-string)来构建一个Stream实例。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -2179,6 +3335,19 @@ public func close(): Unit
 
 **起始版本：** 21
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900025 | No space left on device |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+
 **示例：**
 
 <!-- compile -->
@@ -2190,7 +3359,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let stream = FileFs.createStream(filePath, "r+")
+let stream = FileIo.createStream(filePath, "r+")
 stream.close()
 ```
 
@@ -2206,6 +3375,25 @@ public func flush(): Unit
 
 **起始版本：** 21
 
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
+
 **示例：**
 
 <!-- compile -->
@@ -2217,7 +3405,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let stream = FileFs.createStream(filePath, "r+")
+let stream = FileIo.createStream(filePath, "r+")
 stream.flush()
 stream.close()
 ```
@@ -2225,7 +3413,7 @@ stream.close()
 ### func read(Array\<Byte>, ReadOptions)
 
 ```cangjie
-public func read(arrayBuffer: Array<Byte>, options!: ReadOptions = ReadOptions()): Int64
+public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): Int64
 ```
 
 **功能：** 以同步方法从流文件读取数据。
@@ -2238,14 +3426,31 @@ public func read(arrayBuffer: Array<Byte>, options!: ReadOptions = ReadOptions()
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arrayBuffer|Array\<Byte>|是|-|用于读取文件的缓冲区。|
-|options|[ReadOptions](#struct-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>|
+|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|	用于读取文件的缓冲区。
+|options|[ReadOptions](#class-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际读取的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900019 | Is a directory |
+  | 13900020 | Invalid argument |
+  | 13900034 | Operation would block |
+  | 13900042 | Unknown error |
+  | 13900044 | Network is unreachable |
 
 **示例：**
 
@@ -2258,7 +3463,7 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let stream = FileFs.createStream(filePath, "r+")
+let stream = FileIo.createStream(filePath, "r+")
 let buf = Array<Byte>(4096, repeat: 0)
 let num = stream.read(buf)
 stream.close()
@@ -2281,13 +3486,32 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |buffer|String|是|-|待写入文件的数据。|
-|options|[WriteOptions](#struct-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。仅支持&nbsp;"utf-8"。|
+|options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。仅支持&nbsp;"utf-8"。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际写入的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 **示例：**
 
@@ -2300,8 +3524,9 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let stream = FileFs.createStream(filePath, "r+")
-let num = stream.write("hello, world")
+let stream = FileIo.createStream(filePath, "r+")
+let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+let num = stream.write(arr)
 stream.close()
 ```
 
@@ -2321,14 +3546,33 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<Byte>|是|-|待写入文件的数据。|
-|options|[WriteOptions](#struct-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。仅支持&nbsp;"utf-8"。|
+|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据。|
+|options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。仅支持&nbsp;"utf-8"。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int64|实际写入的长度。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 13900001 | Operation not permitted |
+  | 13900004 | Interrupted system call |
+  | 13900005 | I/O error |
+  | 13900008 | Bad file descriptor |
+  | 13900010 | Try again |
+  | 13900013 | Bad address |
+  | 13900020 | Invalid argument |
+  | 13900024 | File too large |
+  | 13900025 | No space left on device |
+  | 13900034 | Operation would block |
+  | 13900041 | Quota exceeded |
+  | 13900042 | Unknown error |
 
 **示例：**
 
@@ -2341,579 +3585,23 @@ import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
 let filePath = pathDir + "/test.txt"
-let stream = FileFs.createStream(filePath, "r+")
+let stream = FileIo.createStream(filePath, "r+")
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 let num = stream.write(arr)
 stream.close()
 ```
 
-## struct ConflictFiles
+## class WriteOptions
 
 ```cangjie
-public struct ConflictFiles {
-    public ConflictFiles(
-        public let srcFile: String,
-        public let destFile: String
+public class WriteOptions <: Options {
+    public var length: Option<UIntNative>
+    public var offset: Option<Int64>
+    public init(
+        length!: Option<UIntNative> = None,
+        offset!: Option<Int64> = None,
+        encoding!: String = "utf-8"
     )
-}
-```
-
-**功能：** 冲突文件信息，支持copyDir及moveDir接口使用。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let destFile
-
-```cangjie
-public let destFile: String
-```
-
-**功能：** 目标冲突文件路径。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let srcFile
-
-```cangjie
-public let srcFile: String
-```
-
-**功能：** 源冲突文件路径。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### ConflictFiles(String, String)
-
-```cangjie
-public ConflictFiles(
-    public let srcFile: String,
-    public let destFile: String
-)
-```
-
-**功能：** 构造ConflictFiles对象。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|srcFile|String|是|-|源冲突文件路径。|
-|destFile|String|是|-|目标冲突文件路径。|
-
-## struct Filter
-
-```cangjie
-public struct Filter {
-    public Filter(
-        public var suffix!: Array<String> = Array<String>(),
-        public var displayName!: Array<String> = Array<String>(),
-        public var mimeType!: Array<String> = Array<String>(),
-        public var fileSizeOver!: ?Int64 = None,
-        public var lastModifiedAfter!: ?Float64 = None,
-        public var excludeMedia!: Bool = false
-    )
-}
-```
-
-**功能：** 文件过滤配置项类型，支持listFile接口使用。其中mimeType与excludeMedia过滤暂不支持。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var displayName
-
-```cangjie
-public var displayName: Array<String> = Array<String>()
-```
-
-**功能：** 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。
-
-**类型：** Array\<String>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var excludeMedia
-
-```cangjie
-public var excludeMedia: Bool = false
-```
-
-**功能：** 是否排除Media中已有的文件。预留能力，暂不支持。
-
-**类型：** Bool
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var fileSizeOver
-
-```cangjie
-public var fileSizeOver: ?Int64 = None
-```
-
-**功能：** 文件大小匹配，大于指定大小的文件。
-
-**类型：** ?Int64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var lastModifiedAfter
-
-```cangjie
-public var lastModifiedAfter: ?Float64 = None
-```
-
-**功能：** 文件最近修改时间匹配，在指定时间点之后的文件。
-
-**类型：** ?Float64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var mimeType
-
-```cangjie
-public var mimeType: Array<String> = Array<String>()
-```
-
-**功能：** mime类型完全匹配，各个关键词OR关系。预留能力，暂不支持。
-
-**类型：** Array\<String>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var suffix
-
-```cangjie
-public var suffix: Array<String> = Array<String>()
-```
-
-**功能：** 文件后缀名完全匹配，各个关键词OR关系。
-
-**类型：** Array\<String>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### Filter(Array\<String>, Array\<String>, Array\<String>, ?Int64, ?Float64, Bool)
-
-```cangjie
-public Filter(
-    public var suffix!: Array<String> = Array<String>(),
-    public var displayName!: Array<String> = Array<String>(),
-    public var mimeType!: Array<String> = Array<String>(),
-    public var fileSizeOver!: ?Int64 = None,
-    public var lastModifiedAfter!: ?Float64 = None,
-    public var excludeMedia!: Bool = false
-)
-```
-
-**功能：** 构造Filter对象。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|suffix|Array\<String>|否|Array\<String>()| **命名参数。** 文件后缀名完全匹配，各个关键词OR关系。|
-|displayName|Array\<String>|否|Array\<String>()| **命名参数。** 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。|
-|mimeType|Array\<String>|否|Array\<String>()| **命名参数。** mime类型完全匹配，各个关键词OR关系。预留能力，暂不支持。|
-|fileSizeOver|?Int64|否|None| **命名参数。** 文件大小匹配，大于指定大小的文件。|
-|lastModifiedAfter|?Float64|否|None| **命名参数。** 文件最近修改时间匹配，在指定时间点之后的文件。|
-|excludeMedia|Bool|否|false| **命名参数。** 是否排除Media中已有的文件。预留能力，暂不支持。|
-
-## struct ListFileOptions
-
-```cangjie
-public struct ListFileOptions {
-    public ListFileOptions(
-        public let recursion!: Bool = false,
-        public let listNum!: Int32 = 0,
-        public let filter!: Filter = Filter()
-    )
-}
-```
-
-**功能：** 可选项类型，支持listFile接口使用。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let filter
-
-```cangjie
-public let filter: Filter = Filter()
-```
-
-**功能：** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。
-
-**类型：** [Filter](#struct-filter)
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let listNum
-
-```cangjie
-public let listNum: Int32 = 0
-```
-
-**功能：** 列出文件名数量。当设置0时，列出所有文件，默认为0。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let recursion
-
-```cangjie
-public let recursion: Bool = false
-```
-
-**功能：** 是否递归子目录下文件名。默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。
-
-**类型：** Bool
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### ListFileOptions(Bool, Int32, Filter)
-
-```cangjie
-public ListFileOptions(
-   public let recursion!: Bool = false,
-   public let listNum!: Int32 = 0,
-   public let filter!: Filter = Filter()
-)
-```
-
-**功能：** 构造ListFileOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|recursion|Bool|否|false| **命名参数。** 是否递归子目录下文件名。默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。|
-|listNum|Int32|否|0| **命名参数。** 列出文件名数量。当设置0时，列出所有文件，默认为0。|
-|filter|[Filter](#struct-filter)|否|Filter()| **命名参数。** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
-
-## struct Options
-
-```cangjie
-public struct Options {
-    public Options(public var encoding!: String = "utf-8")
-}
-```
-
-**功能：** 可选项类型，支持readLines接口使用。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var encoding
-
-```cangjie
-public var encoding: String = "utf-8"
-```
-
-**功能：** 文件编码方式。可选项。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### Options(String)
-
-```cangjie
-public Options(public var encoding!: String = "utf-8")
-```
-
-**功能：** 构造Options对象。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|encoding|String|否|"utf-8"|**命名参数。** 用于指定字符串的编码方式。|
-
-## struct ReadOptions
-
-```cangjie
-public struct ReadOptions {
-    public ReadOptions(
-        public var length!: Option<UIntNative> = None,
-        public var offset!: Option<Int64> = None
-    )
-}
-```
-
-**功能：** 可选项类型，支持read接口使用。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var length
-
-```cangjie
-public var length: Option<UIntNative>= None
-```
-
-**功能：** 期望读取数据的长度。默认缓冲区长度。
-
-**类型：** Option\<UIntNative>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var offset
-
-```cangjie
-public var offset: Option<Int64>= None
-```
-
-**功能：** 期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。
-
-**类型：** Option\<Int64>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### ReadOptions(Option\<UIntNative>, Option\<Int64>)
-
-```cangjie
-public ReadOptions(
-    public var length!: Option<UIntNative> = None,
-    public var offset!: Option<Int64> = None
-)
-```
-
-**功能：** 构造ReadOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|length|Option\<UIntNative>|否|None| **命名参数。** 期望读取数据的长度。默认缓冲区长度。|
-|offset|Option\<Int64>|否|None| **命名参数。** 期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
-
-## struct ReadTextOptions
-
-```cangjie
-public struct ReadTextOptions {
-    public ReadTextOptions(
-    public var length!: Option<Int64> = None,
-    public var offset!: Int64 = 0,
-    public var encoding!: String = "utf-8")
-}
-```
-
-**功能：** 可选项类型，支持readText接口使用。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var encoding
-
-```cangjie
-public var encoding: String = "utf-8"
-```
-
-**功能：** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var length
-
-```cangjie
-public var length: Option<Int64>= None
-```
-
-**功能：** 期望读取数据的长度。默认文件长度。
-
-**类型：** Option\<Int64>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### var offset
-
-```cangjie
-public var offset: Int64 = 0
-```
-
-**功能：** 期望读取文件的位置。默认从当前位置开始读取。
-
-**类型：** Int64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### ReadTextOptions(Option\<Int64>, Int64, String)
-
-```cangjie
-public ReadTextOptions(
-public var length!: Option<Int64> = None,
-public var offset!: Int64 = 0,
-public var encoding!: String = "utf-8")
-```
-
-**功能：** 构造ReadTextOptions对象。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|length|Option\<Int64>|否|None| **命名参数。** 期望读取数据的长度。默认文件长度。|
-|offset|Int64|否|0| **命名参数。** 期望读取文件的位置。默认从当前位置开始读取。|
-|encoding|String|否|"utf-8"| **命名参数。** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
-
-## struct ReaderIteratorResult
-
-```cangjie
-public struct ReaderIteratorResult {}
-```
-
-**功能：** 文件读取迭代器返回结果，支持ReaderIterator接口使用。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let done
-
-```cangjie
-public let done: Bool
-```
-
-**功能：** 迭代器是否已完成迭代。
-
-**类型：** Bool
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### let value
-
-```cangjie
-public let value: String
-```
-
-**功能：** 逐行读取的文件文本内容。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-## struct WriteOptions
-
-```cangjie
-public struct WriteOptions {
-    public WriteOptions(
-    public var length!: Option<UIntNative> = None,
-    public var offset!: Option<Int64> = None,
-    public var encoding!: String = "utf-8")
 }
 ```
 
@@ -2923,31 +3611,19 @@ public struct WriteOptions {
 
 **起始版本：** 21
 
-### var encoding
+**父类型：**
 
-```cangjie
-public var encoding: String = "utf-8"
-```
-
-**功能：** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
+- [Options](#class-options)
 
 ### var length
 
 ```cangjie
-public var length: Option<UIntNative>= None
+public var length: Option<UIntNative>
 ```
 
 **功能：** 期望写入数据的长度。默认缓冲区长度。
 
-**类型：** Option\<UIntNative>
+**类型：** [Option](#initoptionint-optionint)\<UIntNative>
 
 **读写能力：** 可读写
 
@@ -2958,12 +3634,12 @@ public var length: Option<UIntNative>= None
 ### var offset
 
 ```cangjie
-public var offset: Option<Int64>= None
+public var offset: Option<Int64>
 ```
 
 **功能：** 期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。
 
-**类型：** Option\<Int64>
+**类型：** [Option](#initoptionint-optionint)\<Int64>
 
 **读写能力：** 可读写
 
@@ -2971,13 +3647,13 @@ public var offset: Option<Int64>= None
 
 **起始版本：** 21
 
-### WriteOptions(Option\<UIntNative>, Option\<Int64>, String)
+### init(Option\<UIntNative>, Option\<Int64>, String)
 
 ```cangjie
-public WriteOptions(
-    public var length!: Option<UIntNative> = None,
-    public var offset!: Option<Int64> = None,
-    public var encoding!: String = "utf-8"
+public init(
+    length!: Option<UIntNative> = None,
+    offset!: Option<Int64> = None,
+    encoding!: String = "utf-8"
 )
 ```
 
@@ -2991,177 +3667,113 @@ public WriteOptions(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|Option\<UIntNative>|否|None| **命名参数。** 期望写入数据的长度。默认缓冲区长度。|
-|offset|Option\<Int64>|否|None| **命名参数。** 期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
-|encoding|String|否|"utf-8"| **命名参数。** 当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
+|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望写入数据的长度。默认缓冲区长度。|
+|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
+|encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
 
-## enum OpenMode
+
+## enum AccessFlagType
 
 ```cangjie
-public enum OpenMode {
-    | READ_ONLY
-    | WRITE_ONLY
-    | READ_WRITE
-    | CREATE
-    | TRUNC
-    | APPEND
-    | NONBLOCK
-    | DIR
-    | NOFOLLOW
-    | SYNC
+public enum AccessFlagType {
+    | Local
     | ...
 }
 ```
 
-**功能：** open接口flags参数常量。文件打开标签。
+**功能：** 表示需要校验的文件位置。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### APPEND
+### Local
 
 ```cangjie
-APPEND
+Local
 ```
 
-**功能：** 以追加方式打开，后续写将追加到文件末尾。
+**功能：** 文件是否在本地。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### CREATE
+
+## enum AccessModeType
 
 ```cangjie
-CREATE
+public enum AccessModeType {
+    | Exist
+    | Write
+    | Read
+    | ReadWrite
+    | ...
+}
 ```
 
-**功能：** 若文件不存在，则创建文件。
+**功能：** 表示需要校验的具体权限。默认为校验文件是否存在。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### DIR
+### Exist
 
 ```cangjie
-DIR
+Exist
 ```
 
-**功能：** 如果path不指向目录，则出错。
+**功能：** 文件是否存在。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### NOFOLLOW
+### Read
 
 ```cangjie
-NOFOLLOW
+Read
 ```
 
-**功能：** 如果path指向符号链接，则出错。
+**功能：** 文件是否具有读取权限。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### NONBLOCK
+### ReadWrite
 
 ```cangjie
-NONBLOCK
+ReadWrite
 ```
 
-**功能：** 如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续IO进行非阻塞操作。
+**功能：** 文件是否具有读写权限。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### READ_ONLY
+### Write
 
 ```cangjie
-READ_ONLY
+Write
 ```
 
-**功能：** 只读打开。
+**功能：** 文件是否具有写入权限。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
 
-### READ_WRITE
-
-```cangjie
-READ_WRITE
-```
-
-**功能：** 读写打开。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### SYNC
-
-```cangjie
-SYNC
-```
-
-**功能：** 以同步IO的方式打开文件。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### TRUNC
-
-```cangjie
-TRUNC
-```
-
-**功能：** 如果文件存在且以只写或读写的方式打开文件，则将其长度裁剪为零。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### WRITE_ONLY
-
-```cangjie
-WRITE_ONLY
-```
-
-**功能：** 只写打开。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### prop mode
-
-```cangjie
-public prop mode: Int64
-```
-
-**功能：** 获取文件打开标签类型对应具体数值。
-
-**类型：** Int64
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
 
 ## enum WhenceType
 
 ```cangjie
 public enum WhenceType {
-    | SEEK_SET
-    | SEEK_CUR
-    | SEEK_END
+    | SeekSet
+    | SeekCur
+    | SeekEnd
     | ...
 }
 ```
@@ -3172,10 +3784,10 @@ public enum WhenceType {
 
 **起始版本：** 21
 
-### SEEK_CUR
+### SeekCur
 
 ```cangjie
-SEEK_CUR
+SeekCur
 ```
 
 **功能：** 当前文件偏置指针位置处。
@@ -3184,10 +3796,10 @@ SEEK_CUR
 
 **起始版本：** 21
 
-### SEEK_END
+### SeekEnd
 
 ```cangjie
-SEEK_END
+SeekEnd
 ```
 
 **功能：** 文件末尾位置处。
@@ -3196,29 +3808,13 @@ SEEK_END
 
 **起始版本：** 21
 
-### SEEK_SET
+### SeekSet
 
 ```cangjie
-SEEK_SET
+SeekSet
 ```
 
 **功能：** 文件起始位置处。
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-**起始版本：** 21
-
-### prop whenceType
-
-```cangjie
-public prop whenceType: Int32
-```
-
-**功能：** 获取该文件偏移指针相对偏移位置类型对应具体数值。
-
-**类型：** Int32
-
-**读写能力：** 只读
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 

@@ -1,4 +1,4 @@
-# ohos.data_share_predicates（数据共享谓词）
+# ohos.data.data_share_predicates
 
 谓词（data_share_predicates）是开发者通过DataShare查询数据库中的数据所使用的筛选条件，经常被应用在更新数据、删除数据和查询数据中。
 
@@ -49,10 +49,10 @@ public init()
 
 **起始版本：** 21
 
-### func \`in\`(String, Array\<VBValueType>)
+### func `in`(String, Array\<ValueType>)
 
 ```cangjie
-public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
+public func `in`(field: String, value: Array<ValueType>): DataSharePredicates
 ```
 
 **功能：** 用于配置谓词以匹配值在指范围内的字段。目前仅RDB及KVDB(schema)支持该谓词。
@@ -66,7 +66,7 @@ public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|values|Array\<[VBValueType](cj-apis-values_bucket.md#enum-VBValueType)>|是|-|以ValueType数组形式指定的要匹配的值。|
+|value|Array\<[ValueType](cj-apis-preferences.md#enum-valuetype)>|是|-|以ValueType数组形式指定的要匹配的值。|
 
 **返回值：**
 
@@ -76,11 +76,12 @@ public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **示例：**
 
@@ -91,6 +92,7 @@ public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
 predicates.`in`("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
@@ -116,11 +118,11 @@ public func and(): DataSharePredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 1 | Instance invalid. |
 
 **示例：**
 
@@ -131,9 +133,10 @@ public func and(): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.equalTo("NAME", VBValueType.Str("lisi"))
+predicates.equalTo("NAME", VBValueType.StringValue("lisi"))
         .and()
         .equalTo("SALARY", VBValueType.Double(200.5))
 ```
@@ -141,7 +144,7 @@ predicates.equalTo("NAME", VBValueType.Str("lisi"))
 ### func equalTo(String, ValueType)
 
 ```cangjie
-public func equalTo(field: String, value: VBValueType): DataSharePredicates
+public func equalTo(field: String, value: ValueType): DataSharePredicates
 ```
 
 **功能：** 用于配置谓词以匹配值等于指定值的字段。目前仅RDB及KVDB(schema)支持该谓词。
@@ -155,7 +158,7 @@ public func equalTo(field: String, value: VBValueType): DataSharePredicates
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |field|String|是|-|数据库表中的列名。|
-|value|[VBValueType](cj-apis-values_bucket.md#enum-VBValueType)|是|-|指示要与谓词匹配的值。|
+|value|[ValueType](cj-apis-preferences.md#enum-valuetype)|是|-|指示要与谓词匹配的值。|
 
 **返回值：**
 
@@ -165,11 +168,12 @@ public func equalTo(field: String, value: VBValueType): DataSharePredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **示例：**
 
@@ -180,9 +184,10 @@ public func equalTo(field: String, value: VBValueType): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.equalTo("NAME", VBValueType.Str("Rose"))
+predicates.equalTo("NAME", VBValueType.StringValue("Rose"))
 ```
 
 ### func limit(Int32, Int32)
@@ -212,11 +217,12 @@ public func limit(total: Int32, offset: Int32): DataSharePredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **示例：**
 
@@ -227,9 +233,10 @@ public func limit(total: Int32, offset: Int32): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.equalTo("NAME", VBValueType.Str("Rose")).limit(10, 3)
+predicates.equalTo("NAME", VBValueType.StringValue("Rose")).limit(10, 3)
 ```
 
 ### func orderByAsc(String)
@@ -258,11 +265,12 @@ public func orderByAsc(field: String): DataSharePredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **示例：**
 
@@ -304,11 +312,12 @@ public func orderByDesc(field: String): DataSharePredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **示例：**
 

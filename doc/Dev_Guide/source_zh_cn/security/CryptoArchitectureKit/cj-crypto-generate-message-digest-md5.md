@@ -24,6 +24,7 @@
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func doMd() {
     let mdAlgName = 'MD5' // 摘要算法名。
@@ -32,9 +33,9 @@ func doMd() {
     // 数据量较少时，可以只做一次update，将数据全部传入，接口未对入参长度做限制。
     md.update(DataBlob(message.toArray()))
     let mdResult = md.digest()
-    AppLog.info('[Sync]:Md result: ${mdResult.data}')
+    Hilog.info(0,"",'[Sync]:Md result: ${mdResult.data}')
     let mdLen = md.getMdLength()
-    AppLog.info("md len: ${mdLen}")
+    Hilog.info(0,"","md len: ${mdLen}")
 }
 ```
 
@@ -54,6 +55,7 @@ func doMd() {
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
+import ohos.hilog.Hilog
 
 func doLoopMd() {
     let mdAlgName = "MD5" // 摘要算法名。
@@ -74,8 +76,8 @@ func doLoopMd() {
         md.update(updateMessageBlob)
     }
     let mdOutput = md.digest()
-    AppLog.info('[Sync]:Md result: ${mdOutput.data}')
+    Hilog.info(0,"",'[Sync]:Md result: ${mdOutput.data}')
     let mdLen = md.getMdLength()
-    AppLog.info("md len: ${mdLen}")
+    Hilog.info(0,"","md len: ${mdLen}")
 }
 ```

@@ -88,7 +88,7 @@ Project_name
     - **src > main > ets > entryability**：应用/服务的入口。
     - **src > main > ets > entrybackupability**：应用提供扩展的备份恢复能力。
     - **src > main > ets > pages**：应用/服务包含的页面。
-    - **src > main > resources**：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，请参见[资源分类与访问](../ide-resource-categories-and-access.md)。
+    - **src > main > resources**：用于存放应用/服务所用到的资源文件，如图形、多媒体、字符串、布局文件等。关于资源文件，请参见[资源分类与访问](../ide-resource-categories-and-access.md#资源分类与访问)。
     - **src > main > module.json5**：模块配置文件。主要包含 HAP 的配置信息、应用/服务在具体设备上的配置信息以及应用/服务的全局配置信息。
     - **build-profile.json5**：当前的模块信息 、编译信息配置项，包括buildOption、targets配置等。
     - **cjpm.toml**：仓颉的包管理配置文件，包括编译选项、依赖管理等。
@@ -214,15 +214,17 @@ Project_name
 
     - 参考第一个ArkTS页面的样式，在仓颉页面中添加Text组件、Button组件等，并设置其样式。**second.cj**文件的示例如下：
 
+       <!-- compile -->
+
        ```cangjie
        // second.cj
        package ohos_app_cangjie_entry
 
        import ohos.base.*
-       import ohos.component.*
+       import ohos.arkui.component.*
        import ohos.hybrid_base.*
-       import ohos.state_macro_manage.*
-       import ohos.state_manage.*
+       import ohos.arkui.state_macro_manage.*
+       import ohos.arkui.state_management.*
 
        @HybridComponentEntry
        @Component
@@ -367,6 +369,8 @@ Project_name
 
 - 仓颉提供注册和注销ArkTS函数的相关接口。在**Project**窗口，单击**entry > src > main > cangjie**，打开**index.cj**文件，编写仓颉与ArkTS互操作相关的代码，编写完成后示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // index.cj
    package ohos_app_cangjie_entry
@@ -500,15 +504,17 @@ Project_name
 
 - 在仓颉页面组件中，给仓颉Button按钮绑定onClick事件，单击按钮时，调用ArkTS注册过来的回调函数，返回第一页。**second.cj**文件的示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // second.cj
    package ohos_app_cangjie_entry
 
    import ohos.base.*
-   import ohos.component.*
+   import ohos.arkui.component.*
    import ohos.hybrid_base.*
-   import ohos.state_macro_manage.*
-   import ohos.state_manage.*
+   import ohos.arkui.state_macro_manage.*
+   import ohos.arkui.state_management.*
 
    @HybridComponentEntry
    @Component
@@ -554,8 +560,8 @@ Project_name
 
 ### 使用本地真机
 
-1. 将搭载OpenHarmony系统的真机与开发环境连接。
-2. 真机连接成功后，单击**File > Project Structure > Project > Signing Configs**界面勾选**Support OpenHarmony**和**Automatically generate signature**，单击界面提示的**Sign In**，等待自动签名完成后，单击**OK**即可。如下图所示：
+1. 将搭载OpenHarmony系统的真机与电脑连接。
+2. 真机连接成功后，单击**File > Project Structure > Project > Signing Configs**界面勾选**Support OpenHarmony**和**Automatically generate signature**，单击界面提示的**Sign In**，使用用户账号登录。等待自动签名完成后，单击**OK**即可。如下图所示：
 
     ![buildSign](../../figures/buildSign.png)
 

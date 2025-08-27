@@ -313,6 +313,8 @@ string资源配置attr属性示例如下：
 
 资源组目录下的“资源文件示例”显示了.json文件内容，包含color.json文件、string.json文件和plural.json文件，访问应用资源时需先了解.json文件的使用规范。
 
+<!-- compile -->
+
 ```cangjie
 Text(@r(app.string.string_hello))
   .fontColor(@r(app.color.color_hello))
@@ -341,6 +343,8 @@ Image(@rawfile("newDir/newTest.png")) // rawfile@r引用rawfile目录下图片
 系统资源包含色彩、圆角、字体、间距、字符串及图片等。通过使用系统资源，不同的开发者可以开发出具有相同视觉风格的应用。
 
 开发者可以通过`@r(sys.type.resource_id)`的形式引用系统资源。sys代表是系统资源；type代表资源类型，可以取“color”、“float”、“string”、“media”；resource_id代表资源id。
+
+<!-- compile -->
 
 ```cangjie
 Text("Hello")

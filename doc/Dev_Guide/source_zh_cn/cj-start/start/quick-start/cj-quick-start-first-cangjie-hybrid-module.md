@@ -61,7 +61,7 @@ Project_name
    │    │    │    ├── entryability
    │    │    │    ├── entrybackupability
    │    │    │    └── pages
-   │    │    │         └── Index.ets  
+   │    │    │         └── Index.ets
    │    │    ├── resources
    │    │    └── module.json5
    │    ├── mock
@@ -121,7 +121,7 @@ Project_name
    │    ├── main
    │    │    ├── ets
    │    │    │    └── pages
-   │    │    │         └── MyModulePage.ets  
+   │    │    │         └── MyModulePage.ets
    │    │    ├── resources
    │    │    │    └── base
    │    │    │         ├── element
@@ -211,7 +211,7 @@ Project_name
 >
 > 仓颉模块目前仅支持OpenHarmony的静态库模块，即HAR静态共享包。
 
-仓颉支持在SDK范围为API 12~15、设备类型为 phone、tablet、2in1 的ArkTS HAP模块或HAR模块中，直接使能仓颉开发。  
+仓颉支持在SDK范围为API 12~15、设备类型为 phone、tablet、2in1 的ArkTS HAP模块或HAR模块中，直接使能仓颉开发。
 若当前模块支持的设备类型包括default、phone、tablet、2in1之外的其他设备类型，请将模块下module.json5中的deviceTypes字段中不支持的设备类型删去，修改为支持的设备类型格式（如下图应删去wearable设备），再进行增量使用仓颉的操作。
 
 ![deviceTypes](../../figures/deviceTypes.png)
@@ -273,6 +273,8 @@ Project_name
 1. 在仓颉侧开发业务代码，并暴露接口给ArkTS。
 
    在**Project**窗口，单击**my_module > src > main > cangjie**，打开**index.cj**文件，编写代码，示例如下：
+
+   <!-- compile -->
 
    ```cangjie
    // index.cj
@@ -442,14 +444,16 @@ Project_name
 
     - 在仓颉页面中添加Text组件、Button组件等，并设置其样式。**cangjie_page.cj**文件的示例如下：
 
+   <!-- compile -->
+
    ```cangjie
    // cangjie_page.cj
    package ohos_app_cangjie_my_module
 
    import ohos.base.*
-   import ohos.component.*
-   import ohos.state_macro_manage.*
-   import ohos.state_manage.*
+   import ohos.arkui.component.*
+   import ohos.arkui.state_macro_manage.*
+   import ohos.arkui.state_management.*
    import ohos.hybrid_base.*
 
    @HybridComponentEntry
@@ -561,6 +565,6 @@ Project_name
 
    > **说明：**
    >
-   > 使用真机或模拟器运行应用的具体步骤请参见[构建第一个仓颉应用](./cj-quick-start-first-cangjie-hybrid-app.md#使用真机或模拟器运行应用)。
+   > 使用真机或模拟器运行应用的具体步骤请参见[构建第一个仓颉应用](./cj-quick-start-first-cangjie-app.md#构建第一个仓颉应用)。
 
 恭喜您已经在ArkTS应用中成功使用仓颉完成业务模块开发。

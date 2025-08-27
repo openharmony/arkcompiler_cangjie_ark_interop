@@ -63,44 +63,73 @@
 
 3. 调用[createNetConnection](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-createnetconnectionnetspecifier-uint32)方法，指定网络能力、网络类型和超时时间（可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成），创建一个NetConnection对象。
 
-4. 调用该对象的[onXXX()](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-onnetavailablenethandle---unit)方法，传入callback，订阅关心的事件。
+4. 调用该对象的[register()](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-register)方法，订阅指定网络状态变化的通知。
 
-5. 调用该对象的[register()](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-register)方法，订阅指定网络状态变化的通知。
+5. 当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
 
-6. 当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
+6. 当不使用该网络时，可以调用该对象的[unregister()](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-unregister)方法，取消订阅。
 
-7. 当不使用该网络时，可以调用该对象的[unregister()](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-unregister)方法，取消订阅。
+<!-- compile -->
 
-<!--compile-->
 ```cangjie
-// index.cj
 // 引入包名。
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.NetworkKit.*
 import ohos.base.*
 
-let netSpecifier = NetSpecifier(NetCapabilities([NetBearType.BEARER_CELLULAR], networkCap: [NetCap.NET_CAPABILITY_INTERNET]))
-
-// 指定超时时间为10s(默认值为0)。
-let timeout = UInt32(10 * 1000)
-
-// 创建NetConnection对象。
-let conn = createNetConnection(netSpecifier: netSpecifier, timeout: timeout)
-
-// 订阅指定网络状态变化的通知。
-conn.register()
-
-// 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
-conn.onNetAvailable { netHandle =>
-    AppLog.info("net is available, netId is ${netHandle.netId}")
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
 }
 
-// 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
-conn.onNetUnavailable { =>
-    AppLog.info("net is unavailable")
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
 }
 
-// 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
-conn.unregister()
+
+class NetAvailableCb <: Callback1Argument<NetHandle> {
+    let callback_: (NetHandle)->Unit
+    public init(callback: (NetHandle)->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException, val: NetHandle): Unit {
+        callback_(val)
+    }
+}
+
+class NetUnavailableCb <: Callback0Argument {
+    let callback_: ()->Unit
+    public init(callback: ()->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException): Unit {
+        callback_()
+    }
+}
+
+func test() {
+    let netSpecifier = NetSpecifier(NetCapabilities([NetBearType.BearerCellular], networkCap: [NetCap.NetCapabilityInternet]))
+
+    // 指定超时时间为10s(默认值为0)。
+    let timeout = UInt32(10 * 1000)
+
+    // 创建NetConnection对象。
+    let conn = createNetConnection(netSpecifier: netSpecifier, timeout: timeout)
+
+    // 订阅指定网络状态变化的通知。
+    conn.register()
+
+    // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户。
+    let netAvailableCallBack = NetAvailableCb({ netHandle =>
+        loggerInfo("net is available, netId is ${netHandle.netId}")
+    })
+    conn.on(NetConnectionEvent.NetAvailable, netAvailableCallBack)
+
+    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户。
+    let netUnAvailableCallBack = NetUnavailableCb({=> loggerInfo("net is unavailable")})
+    conn.on(NetConnectionEvent.NetUnavailable, netUnAvailableCallBack)
+
+    // 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
+    conn.unregister()
+}
 ```
 
 ## 监控默认网络变化并主动重建网络连接
@@ -118,17 +147,34 @@ conn.unregister()
 
 ### 监控默认网络变化
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
-// index.cj
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.NetworkKit.*
 import ohos.base.*
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+class NetAvailableCb <: Callback1Argument<NetHandle> {
+    let callback_: (NetHandle)->Unit
+    public init(callback: (NetHandle)->Unit) {callback_ = callback}
+    public open func invoke(err: ?BusinessException, val: NetHandle): Unit {
+        callback_(val)
+    }
+}
+
 func test() {
     let netConnection = createNetConnection()
-    netConnection.onNetAvailable { netHandle =>
-        AppLog.info("net is available, netId is ${netHandle.netId}")
-    }
+    let netAvailableCallBack = NetAvailableCb({ netHandle =>
+        loggerInfo("net is available, netId is ${netHandle.netId}")
+    })
+    netConnection.on(NetConnectionEvent.NetAvailable, netAvailableCallBack)
 }
 ```
 
@@ -140,9 +186,9 @@ func test() {
 
 3. 调用[getAllNets](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-getallnets)方法，获取所有处于连接状态的网络列表。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
-// index.cj
 // 引入包名。
 import kit.NetworkKit.*
 import ohos.base.*
@@ -163,20 +209,32 @@ let nets = getAllNets()
 
 5. 调用[getConnectionProperties](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-getconnectionpropertiesnethandle)方法，获取NetHandle对应网络的连接信息。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
-// index.cj
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.NetworkKit.*
 import ohos.base.*
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
 
 extend NetCap {
     public operator func ==(that: NetCap): Bool {
         match ((this, that)) {
-            case (NET_CAPABILITY_MMS, NET_CAPABILITY_MMS) => true
-            case (NET_CAPABILITY_NOT_METERED, NET_CAPABILITY_NOT_METERED) => true
-            case (NET_CAPABILITY_INTERNET, NET_CAPABILITY_INTERNET) => true
-            case (NET_CAPABILITY_NOT_VPN, NET_CAPABILITY_NOT_VPN) => true
-            case (NET_CAPABILITY_VALIDATED, NET_CAPABILITY_VALIDATED) => true
+            case (NetCapabilityMms, NetCapabilityMms) => true
+            case (NetCapabilityNotMetered, NetCapabilityNotMetered) => true
+            case (NetCapabilityInternet, NetCapabilityInternet) => true
+            case (NetCapabilityNotVpn, NetCapabilityNotVpn) => true
+            case (NetCapabilityValidated, NetCapabilityValidated) => true
             case _ => false
         }
     }
@@ -185,67 +243,67 @@ extend NetCap {
 extend NetBearType {
     public operator func ==(that: NetBearType): Bool {
         match ((this, that)) {
-            case (BEARER_CELLULAR, BEARER_CELLULAR) => true
-            case (BEARER_WIFI, BEARER_WIFI) => true
-            case (BEARER_ETHERNET, BEARER_ETHERNET) => true
+            case (BearerCellular, BearerCellular) => true
+            case (BearerWifi, BearerWifi) => true
+            case (BearerEthernet, BearerEthernet) => true
             case _ => false
         }
     }
 }
 
-// 调用getDefaultNet方法，获取默认的数据网络(NetHandle)。
-let netHandle = getDefaultNet()
-if (netHandle.netId == 0) {
-    // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理。
-    return
-}
-
-let caps = getNetCapabilities(netHandle)
-// 获取网络类型(bearerTypes)。
-for (item in caps.bearerTypes) {
-    if (item == BEARER_CELLULAR) {
-        // 蜂窝网络。
-        AppLog.info("BEARER_CELLULAR")
-    } else if (item == BEARER_WIFI) {
-        // Wi-Fi网络。
-        AppLog.info("BEARER_WIFI")
-    } else if (item == BEARER_ETHERNET) {
-        // 以太网网络。
-        AppLog.info("BEARER_ETHERNET")
+func test() {
+    // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)。
+    let netHandle = getDefaultNet()
+    if (netHandle.netId == 0) {
+        // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理。
+        return
     }
-}
 
-// 获取网络具体能力(networkCap)。
-if (let Some(nwCap) <- caps.networkCap) {
-    for (item in nwCap) {
-        if (item == NET_CAPABILITY_MMS) {
-            // 表示网络可以访问运营商的MMSC(Multimedia Message Service，多媒体短信服务)发送和接收彩信。
-            AppLog.info("NET_CAPABILITY_MMS")
-        } else if (item == NET_CAPABILITY_NOT_METERED) {
-            // 表示网络流量未被计费。
-            AppLog.info("NET_CAPABILITY_NOT_METERED")
-        } else if (item == NET_CAPABILITY_INTERNET) {
-            // 表示该网络应具有访问Internet的能力，该能力由网络提供者设置。
-            AppLog.info("NET_CAPABILITY_INTERNET")
-        } else if (item == NET_CAPABILITY_NOT_VPN) {
-            // 表示网络不使用VPN(Virtual Private Network，虚拟专用网络)。
-            AppLog.info("NET_CAPABILITY_NOT_VPN")
-        } else if (item == NET_CAPABILITY_VALIDATED) {
-            // 表示该网络访问Internet的能力被网络管理成功验证，该能力由网络管理模块设置。
-            AppLog.info("NET_CAPABILITY_VALIDATED")
+    let caps = getNetCapabilities(netHandle)
+    // 获取网络类型(bearerTypes)。
+    for (item in caps.bearerTypes) {
+        if (item == BearerCellular) {
+            // 蜂窝网络。
+            loggerInfo("BearerCellular")
+        } else if (item == BearerWifi) {
+            // Wi-Fi网络。
+            loggerInfo("BearerWifi")
+        } else if (item == BearerEthernet) {
+            // 以太网网络。
+            loggerInfo("BearerEthernet")
         }
     }
-}
 
-// 获取netHandle对应网络的连接信息。连接信息包含了链路信息、路由信息等。
-let props = getConnectionProperties(netHandle)
+    // 获取网络具体能力(networkCap)。
+    for (item in caps.networkCap) {
+        if (item == NetCapabilityMms) {
+            // 表示网络可以访问运营商的MMSC(Multimedia Message Service，多媒体短信服务)发送和接收彩信。
+            loggerInfo("NetCapabilityMms")
+        } else if (item == NetCapabilityNotMetered) {
+            // 表示网络流量未被计费。
+            loggerInfo("NetCapabilityNotMetered")
+        } else if (item == NetCapabilityInternet) {
+            // 表示该网络应具有访问Internet的能力，该能力由网络提供者设置。
+            loggerInfo("NetCapabilityInternet")
+        } else if (item == NetCapabilityNotVpn) {
+            // 表示网络不使用VPN(Virtual Private Network，虚拟专用网络)。
+            loggerInfo("NetCapabilityNotVpn")
+        } else if (item == NetCapabilityValidated) {
+            // 表示该网络访问Internet的能力被网络管理成功验证，该能力由网络管理模块设置。
+            loggerInfo("NetCapabilityValidated")
+        }
+    }
 
-// 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
-let allNets = getAllNets()
+    // 获取netHandle对应网络的连接信息。连接信息包含了链路信息、路由信息等。
+    let props = getConnectionProperties(netHandle)
 
-for (item in allNets) {
-    let curCap = getNetCapabilities(item)
-    let curProp = getConnectionProperties(item)
+    // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)。
+    let allNets = getAllNets()
+
+    for (item in allNets) {
+        let curCap = getNetCapabilities(item)
+        let curProp = getConnectionProperties(item)
+    }
 }
 ```
 
@@ -257,14 +315,24 @@ for (item in allNets) {
 
 3. 调用[getAddressesByName](../../../API_Reference/source_zh_cn/apis/NetworkKit/cj-apis-net-connection.md#func-getaddressesbynamestring)方法，使用默认网络解析主机名以获取所有IP地址。
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
-// index.cj
 // 引入包名。
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.NetworkKit.*
 import ohos.base.*
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
 // 使用默认网络解析主机名以获取所有IP地址。
-let addrs: Array<NetAddress> = getAddressesByName("xxx")
-AppLog.info("Succeeded to get data")
+func test() {
+    let addrs: Array<NetAddress> = getAddressesByName("xxxx")
+    loggerInfo("Succeeded to get data")
+}
 ```

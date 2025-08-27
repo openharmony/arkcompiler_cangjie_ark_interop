@@ -54,28 +54,30 @@ HAR需要导出的接口等，可以使用`public`修饰。
 
 通过`public`导出仓颉组件，示例如下：
 
+<!-- compile -->
+
 ```cangjie
 // library/src/main/cangjie/mainPage.cj
 package ohos_app_cangjie_library
 
 import ohos.base.*
-import ohos.component.Text
-import ohos.component.Column
-import ohos.component.CustomView
-import ohos.state_manage.LocalStorage
-import ohos.state_manage.ObservedProperty
-import ohos.state_manage.SubscriberManager
-import ohos.state_manage.ViewStackProcessor
-import ohos.state_macro_manage.State
-import ohos.state_macro_manage.Component
-import ohos.state_macro_manage.r
-import ohos.component.Flex
-import ohos.component.Row
-import ohos.component.FlexParams
-import ohos.component.FontWeight
-import ohos.component.ItemAlign
-import ohos.component.FlexAlign
-import ohos.component.Image
+import ohos.arkui.component.Text
+import ohos.arkui.component.Column
+import ohos.arkui.component.CustomView
+import ohos.arkui.state_management.LocalStorage
+import ohos.arkui.state_management.ObservedProperty
+import ohos.arkui.state_management.SubscriberManager
+import ohos.arkui.state_management.ViewStackProcessor
+import ohos.arkui.state_macro_manage.State
+import ohos.arkui.state_macro_manage.Component
+import ohos.arkui.state_macro_manage.r
+import ohos.arkui.component.Flex
+import ohos.arkui.component.Row
+import ohos.arkui.component.FlexParams
+import ohos.arkui.component.FontWeight
+import ohos.arkui.component.ItemAlign
+import ohos.arkui.component.FlexAlign
+import ohos.arkui.component.Image
 import ohos.resource_manager.__GenerateResource__
 
 @Component
@@ -104,6 +106,8 @@ public class MainPage {
 ### 导出类和方法
 
 通过`public`导出类和方法，支持导出多个类和方法，示例如下所示：
+
+<!-- compile -->
 
 ```cangjie
 // library/src/main/cangjie/classFunc.cj
@@ -158,27 +162,29 @@ public func harFunc2() {
 
 HAR的依赖配置成功后，可以引用HAR的仓颉组件。通过`import`引入HAR导出的仓颉组件，示例如下所示：
 
+<!-- compile -->
+
 ```cangjie
 // entry/src/main/cangjie/index.cj
 package ohos_app_cangjie_entry
 
 import ohos.base.LengthProp
-import ohos.component.Column
-import ohos.component.Row
-import ohos.component.CustomView
-import ohos.component.CJEntry
-import ohos.component.loadNativeView
-import ohos.state_manage.ObservedProperty
-import ohos.state_manage.LocalStorage
-import ohos.state_macro_manage.Entry
-import ohos.state_macro_manage.Component
-import ohos.state_manage.ViewStackProcessor
-import ohos.state_manage.SubscriberManager
-import ohos.component.LegalCallCheck
-import ohos.component.ReuseParams
-import ohos.component.ViewBuilder
-import ohos.component.__Recycle__
-import ohos.component.FakeComponent
+import ohos.arkui.component.Column
+import ohos.arkui.component.Row
+import ohos.arkui.component.CustomView
+import ohos.arkui.component.CJEntry
+import ohos.arkui.component.loadNativeView
+import ohos.arkui.state_management.ObservedProperty
+import ohos.arkui.state_management.LocalStorage
+import ohos.arkui.state_macro_manage.Entry
+import ohos.arkui.state_macro_manage.Component
+import ohos.arkui.state_management.ViewStackProcessor
+import ohos.arkui.state_management.SubscriberManager
+import ohos.arkui.component.LegalCallCheck
+import ohos.arkui.component.ReuseParams
+import ohos.arkui.component.ViewBuilder
+import ohos.arkui.component.__Recycle__
+import ohos.arkui.component.FakeComponent
 import ohos_app_cangjie_library.MainPage
 
 @Entry
@@ -197,24 +203,26 @@ class EntryView {
 
 通过`import`引用HAR导出的类和方法，示例如下所示：
 
+<!-- compile -->
+
 ```cangjie
 // entry/src/main/cangjie/index2.cj
 package ohos_app_cangjie_entry
 
 import ohos.base.LengthProp
-import ohos.component.Column
-import ohos.component.Row
-import ohos.component.Text
-import ohos.component.CustomView
-import ohos.component.CJEntry
-import ohos.component.loadNativeView
-import ohos.component.FontWeight
-import ohos.state_manage.SubscriberManager
-import ohos.state_manage.ObservedProperty
-import ohos.state_manage.LocalStorage
-import ohos.state_macro_manage.Entry
-import ohos.state_macro_manage.Component
-import ohos.state_macro_manage.State
+import ohos.arkui.component.Column
+import ohos.arkui.component.Row
+import ohos.arkui.component.Text
+import ohos.arkui.component.CustomView
+import ohos.arkui.component.CJEntry
+import ohos.arkui.component.loadNativeView
+import ohos.arkui.component.FontWeight
+import ohos.arkui.state_management.SubscriberManager
+import ohos.arkui.state_management.ObservedProperty
+import ohos.arkui.state_management.LocalStorage
+import ohos.arkui.state_macro_manage.Entry
+import ohos.arkui.state_macro_manage.Component
+import ohos.arkui.state_macro_manage.State
 import ohos_app_cangjie_library.Log
 import ohos_app_cangjie_library.harFunc
 
@@ -246,30 +254,32 @@ class EntryView2 {
 
 通过`@r`引用HAR中的资源，例如在HAR模块的`src/main/resources`里添加字符串资源（在string.json中定义，name：hello_har）和图片资源（icon_har.png），然后在Entry模块中引用该字符串和图片资源的示例如下所示：
 
+<!-- compile -->
+
 ```cangjie
 // entry/src/main/cangjie/index3.cj
 package ohos_app_cangjie_entry
 
 import ohos.base.LengthProp
-import ohos.component.Column
-import ohos.component.Row
-import ohos.component.Text
-import ohos.component.CustomView
-import ohos.component.CJEntry
-import ohos.component.loadNativeView
-import ohos.component.FontWeight
-import ohos.state_manage.SubscriberManager
-import ohos.state_manage.ObservedProperty
-import ohos.state_manage.LocalStorage
-import ohos.state_macro_manage.Entry
-import ohos.state_macro_manage.Component
-import ohos.state_macro_manage.State
-import ohos.state_macro_manage.r
+import ohos.arkui.component.Column
+import ohos.arkui.component.Row
+import ohos.arkui.component.Text
+import ohos.arkui.component.CustomView
+import ohos.arkui.component.CJEntry
+import ohos.arkui.component.loadNativeView
+import ohos.arkui.component.FontWeight
+import ohos.arkui.state_management.SubscriberManager
+import ohos.arkui.state_management.ObservedProperty
+import ohos.arkui.state_management.LocalStorage
+import ohos.arkui.state_macro_manage.Entry
+import ohos.arkui.state_macro_manage.Component
+import ohos.arkui.state_macro_manage.State
+import ohos.arkui.state_macro_manage.r
 import ohos.resource_manager.__GenerateResource__
-import ohos.component.Image
-import ohos.component.List
-import ohos.component.ListItem
-import ohos.component.ListItemAlign
+import ohos.arkui.component.Image
+import ohos.arkui.component.List
+import ohos.arkui.component.ListItem
+import ohos.arkui.component.ListItemAlign
 
 @Entry
 @Component

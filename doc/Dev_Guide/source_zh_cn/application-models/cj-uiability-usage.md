@@ -28,7 +28,6 @@ class MainAbility <: UIAbility {
 ## 获取UIAbility的上下文信息
 
 [UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiability)类拥有自身的上下文信息，该信息为[UIAbilityContext](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiabilitycontext)类的实例，[UIAbilityContext](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiabilitycontext)类拥有abilityInfo、currentHapModuleInfo等属性。通过AbilityContext可以获取Ability的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，以及可以获取操作Ability实例的方法（如[startAbility()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-startabilitywant)、[terminateSelf()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#func-terminateself)等）。
-如果需要在页面中获得当前UIAbility的Context，可通过如下示例获取当前页面关联的UIAbilityContext。
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
@@ -81,7 +80,7 @@ class MainAbility <: UIAbility {
   ```
 
   也可以在导入依赖资源context模块后，再使用[UIAbilityContext](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-uiabilitycontext)前进行变量定义。
-
+  
   <!-- compile -->
 
   ```cangjie
@@ -114,8 +113,8 @@ class MainAbility <: UIAbility {
   <!-- compile -->
 
   ```cangjie
+  internal import kit.PerformanceAnalysisKit.Hilog
   import kit.AbilityKit.{UIAbilityContext, Want}
-  import ohos.base.{AppLog, BusinessException}
 
   func getContext(): UIAbilityContext {
       return globalContext.getOrThrow()
@@ -135,12 +134,10 @@ class MainAbility <: UIAbility {
                           let context = getContext()
                           try {
                               // 执行正常业务
-                              context
-                                  .terminateSelf()
-                                  .get()
-                          } catch (e: BusinessException) {
+                              context.terminateSelf()
+                          } catch (e: Exception) {
                               // 处理业务逻辑错误
-                              AppLog.error("terminateSelf failed, code is ${e.code}, message is ${e.message}")
+                              Hilog.error(0, "terminateSelf failed", " message is ${e.toString()}")
                           }
                       }
               }.width(100.percent)

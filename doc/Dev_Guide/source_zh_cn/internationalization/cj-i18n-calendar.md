@@ -13,7 +13,6 @@
    <!-- compile -->
 
    ```cangjie
-   // index.cj
    import kit.LocalizationKit.*
    ```
 
@@ -22,7 +21,6 @@
    <!-- compile -->
 
    ```cangjie
-    // index.cj
     import std.time.DateTime as d
 
     let calendar: Calendar = getCalendar('zh-Hans', calendarType: 'gregory')
@@ -74,7 +72,6 @@
    <!-- compile -->
 
    ```cangjie
-    // index.cj
     import std.time.DateTime as d
 
     let calendar: Calendar = getCalendar('zh-Hans', calendarType: 'chinese')

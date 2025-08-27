@@ -109,11 +109,13 @@
 
 ## 获焦/失焦事件
 
+
 ```cangjie
 public func onFocus(callback: ()->Unit): This
 ```
 
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
+
 
 ```cangjie
 public func onBlur(callback: ()->Unit): This
@@ -123,19 +125,19 @@ public func onBlur(callback: ()->Unit): This
 
 onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
-    @State var oneButtonColor: Color = Color.GRAY
-    @State var twoButtonColor: Color = Color.GRAY
-    @State var threeButtonColor: Color = Color.GRAY
+    @State var oneButtonColor: Color = Color.Gray
+    @State var twoButtonColor: Color = Color.Gray
+    @State var threeButtonColor: Color = Color.Gray
     func build() {
         Column(20) {
         // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
@@ -143,40 +145,40 @@ class EntryView {
             .backgroundColor(oneButtonColor)
             .width(260)
             .height(70)
-            .fontColor(Color.BLACK)
+            .fontColor(Color.Black)
             // 监听第一个组件的获焦事件，获焦后改变颜色
             .onFocus({ =>
-                oneButtonColor = Color.GREEN
+                oneButtonColor = Color.Green
             })
             // 监听第一个组件的失焦事件，失焦后改变颜色
             .onBlur({=>
-                oneButtonColor = Color.GRAY
+                oneButtonColor = Color.Gray
             })
         Button("Second Button")
             .backgroundColor(twoButtonColor)
             .width(260)
             .height(70)
-            .fontColor(Color.BLACK)
+            .fontColor(Color.Black)
             // 监听第二个组件的获焦事件，获焦后改变颜色
             .onFocus({=>
-                twoButtonColor = Color.GREEN
+                twoButtonColor = Color.Green
             })
             // 监听第二个组件的失焦事件，失焦后改变颜色
             .onBlur({=>
-                twoButtonColor = Color.GRAY
+                twoButtonColor = Color.Gray
             })
         Button("Third Button")
             .backgroundColor(threeButtonColor)
             .width(260)
             .height(70)
-            .fontColor(Color.BLACK)
+            .fontColor(Color.Black)
             // 监听第三个组件的获焦事件，获焦后改变颜色
             .onFocus({=>
-                threeButtonColor = Color.GREEN
+                threeButtonColor = Color.Green
             })
             // 监听第三个组件的失焦事件，失焦后改变颜色
             .onBlur({=>
-                threeButtonColor = Color.GRAY
+                threeButtonColor = Color.Gray
             })
         }.width(100.percent).margin(top: 20)
     }
@@ -193,6 +195,7 @@ class EntryView {
 
 ## 设置组件是否可获焦
 
+
 ```cangjie
 public func focusable(isFocusable: Bool): This
 ```
@@ -207,17 +210,20 @@ public func focusable(isFocusable: Bool): This
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
 
+
 ```cangjie
 public func enabled(value: Bool): This
 ```
 
 设置组件可交互性属性[enabled](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-enable.md#func-enabledbool)为`false`，则组件不可交互，无法获焦。
 
+
 ```cangjie
 public func visibility(value: Visibility): This
 ```
 
 设置组件可见性属性[visibility](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-visibility.md#func-visibilityvisibility)为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
+
 
 ```cangjie
 public func focusOnTouch(isFocusOnTouch: Bool): This
@@ -229,9 +235,115 @@ public func focusOnTouch(isFocusOnTouch: Bool): This
 >
 > 当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    @State var textFocusable: Bool = true
+    @State var textEnabled: Bool = true
+    @State var color1: Color = Color.YELLOW
+    @State var color2: Color = Color.YELLOW
+    @State var color3: Color = Color.YELLOW
+
+    func build() {
+        Column(5) {
+            // 第一个Text组件未设置focusable属性，默认不可获焦
+            Text("Default Text")
+                .borderColor(color1)
+                .borderWidth(2)
+                .width(300)
+                .height(70)
+                .onFocus({ =>
+                    color1 = Color.Blue
+                })
+                .onBlur({ =>
+                    color1 = Color.YELLOW
+                })
+
+            Divider()
+
+            // 第二个Text设置了focusable初始为true，focusableOnTouch为true
+            Text("focusable: " + textFocusable.toString())
+                .borderColor(color2)
+                .borderWidth(2)
+                .width(300)
+                .height(70)
+                .focusable(textFocusable)
+                .focusOnTouch(true)
+                .onFocus({ =>
+                    color2 = Color.Blue
+                })
+                .onBlur({ =>
+                    color2 = Color.YELLOW
+                })
+
+            // 第三个Text设置了focusable为true，enabled初始为true
+            Text("enabled: " + textEnabled.toString())
+                .borderColor(color3)
+                .borderWidth(2)
+                .width(300)
+                .height(70)
+                .focusable(true)
+                .enabled(textEnabled)
+                .focusOnTouch(true)
+                .onFocus({ =>
+                    color3 = Color.Blue
+                })
+                .onBlur({ =>
+                    color3 = Color.YELLOW
+                })
+
+            Divider()
+
+            Row() {
+                Button("Button1")
+                    .width(140).height(70)
+                Button("Button2")
+                    .width(160).height(70)
+            }
+
+            Divider()
+            Button("Button3")
+                .width(300).height(70)
+
+            Divider()
+        }
+        .width(100.percent)
+        .justifyContent(FlexAlign.Center)
+        .onKeyEvent({ e =>
+            // 绑定onKeyEvent，在该Column组件获焦时，按下'F'键，可将第二个Text的focusable置反
+            if (e.keyCode == 2022 && e.keyType.getValue()== KeyType.Down.getValue()) {
+                textFocusable = !textFocusable
+            }
+            // 绑定onKeyEvent，在该Column组件获焦时，按下'G'键，可将第三个Text的enabled置反
+            if (e.keyCode == 2023 && e.keyType.getValue()== KeyType.Down.getValue()) {
+                textEnabled = !textEnabled
+            }
+        })
+    }
+}
+```
+
+运行效果：
+
+![focus-1.gif](figures/focus-1.gif)
+
+上述示例包含以下步骤：
+
+1. 第一个Text组件没有设置focusable(true)属性，该Text组件无法获焦。
+2. 点击第二个Text组件，由于设置了focusOnTouch(true)，第二个组件获焦。按下TAB键，触发走焦，仍然是第二个Text组件获焦。按键盘F键，触发onKeyEvent，focusable置为false，第二个Text组件变成不可获焦，焦点自动转移，会自动从Text组件寻找下一个可获焦组件，焦点转移到第三个Text组件上。
+3. 按键盘G键，触发onKeyEvent，enabled置为false，第三个Text组件变成不可获焦，焦点自动转移，使焦点转移到Row容器上，容器中使用的是默认配置，会转移到Button1上。
+
 ## 默认焦点
 
 ### 页面的默认焦点
+
 
 ```cangjie
 public func defaultFocus(isDefaultFocus: Bool): This
@@ -239,19 +351,19 @@ public func defaultFocus(isDefaultFocus: Bool): This
 
 设置当前组件是否为当前页面上的默认焦点。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
-    @State var oneButtonColor: Color = Color.GRAY
-    @State var twoButtonColor: Color = Color.GRAY
-    @State var threeButtonColor: Color = Color.GRAY
+    @State var oneButtonColor: Color = Color.Gray
+    @State var twoButtonColor: Color = Color.Gray
+    @State var threeButtonColor: Color = Color.Gray
 
     func build() {
         Column(20) {
@@ -260,44 +372,44 @@ class EntryView {
                 .width(260)
                 .height(70)
                 .backgroundColor(oneButtonColor)
-                .fontColor(Color.BLACK)
+                .fontColor(Color.Black)
                 // 监听第一个组件的获焦事件，获焦后改变颜色
                 .onFocus({ =>
-                    oneButtonColor = Color.GREEN
+                    oneButtonColor = Color.Green
                 })
                 // 监听第一个组件的失焦事件，失焦后改变颜色
                 .onBlur({ =>
-                    oneButtonColor = Color.GRAY
+                    oneButtonColor = Color.Gray
                 })
 
             Button("Second Button")
                 .width(260)
                 .height(70)
                 .backgroundColor(twoButtonColor)
-                .fontColor(Color.BLACK)
+                .fontColor(Color.Black)
                 // 监听第二个组件的获焦事件，获焦后改变颜色
                 .onFocus({ =>
-                    twoButtonColor = Color.GREEN
+                    twoButtonColor = Color.Green
                 })
                 // 监听第二个组件的失焦事件，失焦后改变颜色
                 .onBlur({ =>
-                    twoButtonColor = Color.GRAY
+                    twoButtonColor = Color.Gray
                 })
 
             Button("Third Button")
                 .width(260)
                 .height(70)
                 .backgroundColor(threeButtonColor)
-                .fontColor(Color.BLACK)
+                .fontColor(Color.Black)
                 // 设置默认焦点
                 .defaultFocus(true)
                 // 监听第三个组件的获焦事件，获焦后改变颜色
                 .onFocus({ =>
-                    threeButtonColor = Color.GREEN
+                    threeButtonColor = Color.Green
                 })
                 // 监听第三个组件的失焦事件，失焦后改变颜色
                 .onBlur({ =>
-                    threeButtonColor = Color.GRAY
+                    threeButtonColor = Color.Gray
                 })
         }
         .width(100.percent)
@@ -321,12 +433,12 @@ class EntryView {
 
 [defaultFocus](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-focus.md#func-defaultfocusbool)是用于指定页面首次展示时的默认获焦节点，[FocusPriority](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-focus.md#func-focusscopeprioritystring-focuspriority)是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，页面首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。示例如下：
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
@@ -377,12 +489,12 @@ public func focusBox(style: FocusBoxStyle): This
 
 设置当前组件系统焦点框样式。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
@@ -418,18 +530,19 @@ class EntryView {
 
 使用focusControl中的方法：
 
+
 ```cangjie
 public static func requestFocus(keyValue: String): Bool
 ```
 
 调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
@@ -443,7 +556,7 @@ class EntryView {
                 Button("Button")
                     .width(200)
                     .height(70)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .focusOnTouch(true)
                     .backgroundColor(0x2787d9)
                     .onFocus({ =>
@@ -457,7 +570,7 @@ class EntryView {
                 Button("Button")
                     .width(200)
                     .height(70)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .focusOnTouch(true)
                     .backgroundColor(btColor2)
                     .onFocus({ =>
@@ -477,7 +590,7 @@ class EntryView {
                 Button("FocusControl.requestFocus")
                     .width(200)
                     .height(70)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .onClick({ =>
                         FocusControl.requestFocus("testButton2")
                     })
@@ -494,11 +607,13 @@ class EntryView {
 
 ## 焦点组与获焦优先级
 
+
 ```cangjie
 public func focusScopePriority(scopeId: String, priority!: FocusPriority = FocusPriority.AUTO): This
 ```
 
 设置当前组件在指定容器内获焦的优先级。需要配合focusScopeId一起使用。
+
 
 ```cangjie
 public func focusScopeId(id: String, isGroup!: Bool = false, arrowStepOut!: Bool = true): This
@@ -506,12 +621,12 @@ public func focusScopeId(id: String, isGroup!: Bool = false, arrowStepOut!: Bool
 
 设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
@@ -526,61 +641,61 @@ class EntryView {
                         Button("Group1")
                             .width(165)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                         Row(5) {
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                         }
                         Row(5) {
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                         }
                     }
                     .borderWidth(2)
-                    .borderColor(Color.RED)
+                    .borderColor(Color.Red)
                     .borderStyle(BorderStyle.Dashed)
 
                     Column(5) {
                         Button("Group2")
                             .width(165)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                         Row(5) {
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                                 .focusScopePriority('ColumnScope1',priority: FocusPriority.PRIOR)  // Column1首次获焦时获焦
                         }
                         Row(5) {
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                             Button()
                                 .width(80)
                                 .height(40)
-                                .fontColor(Color.WHITE)
+                                .fontColor(Color.White)
                         }
                     }
                     .borderWidth(2)
-                    .borderColor(Color.GREEN)
+                    .borderColor(Color.Green)
                     .borderStyle(BorderStyle.Dashed)
                 }
                 .focusScopeId('ColumnScope1')
@@ -594,45 +709,45 @@ class EntryView {
                     Button("Group3")
                         .width(165)
                         .height(40)
-                        .fontColor(Color.WHITE)
+                        .fontColor(Color.White)
                     Row(5) {
                         Button()
                             .width(80)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                         Button()
                             .width(80)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                     }
                     Button()
                         .width(165)
                         .height(40)
-                        .fontColor(Color.WHITE)
+                        .fontColor(Color.White)
                         .focusScopePriority('ColumnScope2',priority: FocusPriority.PREVIOUS)  // Column2获焦时获焦
                     Row(5) {
                         Button()
                             .width(80)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                         Button()
                             .width(80)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                     }
                     Button()
                         .width(165)
                         .height(40)
-                        .fontColor(Color.WHITE)
+                        .fontColor(Color.White)
                     Row(5) {
                         Button()
                             .width(80)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                         Button()
                             .width(80)
                             .height(40)
-                            .fontColor(Color.WHITE)
+                            .fontColor(Color.White)
                     }
                 }
                 .borderWidth(2)
@@ -664,12 +779,12 @@ class EntryView {
 > - 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
 > - 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
@@ -699,3 +814,75 @@ class EntryView {
 ```
 
 ![focus-4](figures/focus-4.gif)
+
+## 组件获焦能力说明
+
+基础组件获焦能力如下表所示：
+
+| 基础组件                                     | 是否有获焦能力 | focusable默认值 |
+| :---------------------------------------- | :------- | :------------ |
+| [AlphabetIndexer](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-alphabetindexer.md) | 是       | true         |
+| [Blank](../../../API_Reference/source_zh_cn/arkui-cj/cj-blank-divider-blank.md) | 否       | false        |
+| [Button](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md) | 是       | true         |
+| [Checkbox](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-checkbox.md) | 是       | true         |
+| [CheckboxGroup](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-checkboxgroup.md) | 是       | true         |
+| [DataPanel](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-datapanel.md) | 是       | false        |
+| [DatePicker](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-datepicker.md) | 是       | true         |
+| [Divider](../../../API_Reference/source_zh_cn/arkui-cj/cj-blank-divider-divider.md) | 是       | false        |
+| [Gauge](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-gauge.md) | 是       | false        |
+| [Image](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-image.md) | 是       | false        |
+| [ImageSpan](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-imagespan.md)                 | 否       | false        |
+| [LoadingProgress](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-loadingprogress.md) | 是       | true        |
+| [Navigation](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md) | 是       | true         |
+| [PatternLock](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-patternlock.md) | 是       | true        |
+| [Progress](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-progress.md) | 是       | true        |
+| [QRCode](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-qrcode.md) | 是       | true        |
+| [Radio](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-radio.md) | 是       | true         |
+| [Rating](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-rating.md) | 是       | true         |
+| [RichEditor](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md) | 是       | true         |
+| [RichText](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richtext.md) | 否       | false        |
+| [ScrollBar](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scrollbar.md) | 否       | false        |
+| [Search](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-search.md) | 是       | true         |
+| [Select](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-select.md) | 是       | true         |
+| [Slider](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-slider.md) | 是       | true         |
+| [Span](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-span.md) | 否       | false        |
+| [Stepper](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-stepper.md) | 是       | true         |
+| [StepperItem](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-stepperitem.md) | 是       | true         |
+| [Text](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md) | 是       | false        |
+| [TextArea](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textarea.md) | 否       | false         |
+| [TextClock](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-textclock.md) | 否       | false        |
+| [TextInput](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textinput.md) | 是       | true         |
+| [TextPicker](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-textpicker.md) | 是       | true         |
+| [TextTimer](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-texttimer.md) | 否       | false        |
+| [Toggle](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-toggle.md) | 是       | true         |
+
+容器组件获焦能力如下表所示：
+
+| 容器组件                                     | 是否可获焦 | focusable默认值 |
+| :---------------------------------------- | :------- | :------------ |
+| [Badge](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-badge.md) | 否     | false        |
+| [Column](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-column.md) | 是     | true         |
+| [Flex](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-flex.md) | 是     | true         |
+| [GridCol](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-gridcol.md) | 是     | true         |
+| [GridRow](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-gridrow.md) | 是     | true         |
+| [Grid](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md) | 是     | true         |
+| [GridItem](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-griditem.md) | 是     | true         |
+| [List](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-list.md) | 是     | true         |
+| [ListItem](../../../API_Reference/source_zh_cn/arkui-cj//cj-scroll-swipe-listitem.md) | 是     | true         |
+| [ListItemGroup](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-listgroup.md) | 是     | true         |
+| [Navigator](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md) | 是     | true         |
+| [Refresh](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-refresh.md) | 是     | true        |
+| [RelativeContainer](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-relativecontainer.md) | 否     | false         |
+| [Row](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-row.md) | 是    | true         |
+| [RowSplit](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-rowsplit.md) | 是     | true         |
+| [Scroll](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md) | 是     | true         |
+| [SideBarContainer](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-sidebar.md) | 是     | true         |
+| [Stack](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-stack.md) | 是     | true         |
+| [Swiper](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-swiper.md) | 是     | true         |
+| [Tabs](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-tabs.md) | 是     | true         |
+
+媒体组件获焦能力如下表所示：
+
+| 媒体组件                                     | 是否可获焦 | focusable默认值 |
+| :---------------------------------------- | :------- | :------------ |
+| [Video](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md) | 是     | true         |
