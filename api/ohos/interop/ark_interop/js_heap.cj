@@ -32,10 +32,9 @@ foreign func ARKTS_GetGlobalValue(ref: JSGlobal): JSValue_
  *  destructed(Note: the finalizer is called in final derived class [cj spec rule]).
  */
 @!APILevel[
-    13,
-    atomicservice: true,
+    21,
     stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+    syscap: "SystemCapability.ArkCompiler.Cangjie"
 ]
 abstract sealed class JSHeapObject {
     let context: JSContext
@@ -55,11 +54,13 @@ abstract sealed class JSHeapObject {
         }
     }
 
+    /**
+     * Convert JSHeapObject to JSValue.
+     */
     @!APILevel[
-        13,
-        atomicservice: true,
+        21,
         stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Napi"
+        syscap: "SystemCapability.ArkCompiler.Cangjie"
     ]
     public func toJSValue(): JSValue {
         JSValue(context, innerValue)

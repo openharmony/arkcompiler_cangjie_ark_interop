@@ -19,7 +19,7 @@ class JSErrorFuncs {
     let clazz: JSClass
 
     init(context: JSContext, builtinText: JSBuiltinText) {
-        clazz = context.global[builtinText.Error].asClass(context)
+        clazz = context.global[builtinText.Error].asClass()
     }
 }
 
@@ -76,7 +76,7 @@ class JSError <: JSObjectBase {
     private func getName(): String {
         let value = this[context.constants.builtinText.name]
         if (value.isString()) {
-            value.toString(context)
+            value.toString()
         } else {
             ""
         }
@@ -85,7 +85,7 @@ class JSError <: JSObjectBase {
     private func getMessage(): String {
         let value = this[context.constants.builtinText.message]
         if (value.isString()) {
-            value.toString(context)
+            value.toString()
         } else {
             ""
         }
@@ -93,13 +93,13 @@ class JSError <: JSObjectBase {
 
     private func getStack(): Array<String> {
         let value = this[context.constants.builtinText.stack]
-        if (value.isArray(context)) {
-            let stackArr = value.asArray(context)
+        if (value.isArray()) {
+            let stackArr = value.asArray()
             Array<String>(stackArr.size) {
                 index =>
                 let curStackValue = stackArr[index]
                 if (curStackValue.isString()) {
-                    curStackValue.toString(context)
+                    curStackValue.toString()
                 } else {
                     "[unrecognized frame]"
                 }

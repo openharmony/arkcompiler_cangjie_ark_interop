@@ -25,7 +25,7 @@ ohos_shared_library("mock_stub") {
   subsystem_name = "arkcompiler"
 }
 
-if (build_ohos_sdk || build_ohos_split_test) {
+if (build_ohos_sdk) {
   mock_sources = [
     "ability_context_native.sym",
     "abilitykit_native.sym",
