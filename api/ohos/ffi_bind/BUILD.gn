@@ -13,7 +13,7 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("ohos.ffi") {
+ohos_cangjie_shared_library("ohos.ffi") {
   sources = [
     "src/array_convert.cj",
     "src/cj_common_lambda.cj",
