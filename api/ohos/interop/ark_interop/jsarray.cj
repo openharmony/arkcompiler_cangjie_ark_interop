@@ -83,7 +83,7 @@ public class JSArray <: JSHeapObject {
     /**
      * Get the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is out of range.
+     * @throws { BusinessException } 34300001 - The index is out of range.
      */
     @!APILevel[
         21,
@@ -91,7 +91,7 @@ public class JSArray <: JSHeapObject {
     ]
     public operator func [](index: Int64): JSValue {
         if (index < 0 || index >= size) {
-            throw JSArrayRangeMisMatch(0, size, index)
+            throw jsArrayRangeMisMatch(0, size, index)
         }
         let result = unsafe { ARKTS_GetElement(context.env, innerValue, UInt32(index)) }
         JSValue(context, result)
@@ -100,7 +100,7 @@ public class JSArray <: JSHeapObject {
     /**
      * Set the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     * @throws { BusinessException } 34300001 - The index is less than 0.
      */
     @!APILevel[
         21,
@@ -108,7 +108,7 @@ public class JSArray <: JSHeapObject {
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
         if (index < 0) {
-            throw JSArrayRangeMisMatch(0, size, index)
+            throw jsArrayRangeMisMatch(0, size, index)
         }
         unsafe { ARKTS_SetElement(context.env, innerValue, UInt32(index), value.value) }
     }
@@ -116,7 +116,7 @@ public class JSArray <: JSHeapObject {
     /**
      * Set the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
+     * @throws { BusinessException } 34300001 - The index is less than 0.
      */
     @!APILevel[
         21,
@@ -124,7 +124,7 @@ public class JSArray <: JSHeapObject {
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
         if (index < 0) {
-            throw JSArrayRangeMisMatch(0, size, index)
+            throw jsArrayRangeMisMatch(0, size, index)
         }
         unsafe { ARKTS_SetElement(context.env, innerValue, UInt32(index), value.innerValue) }
     }

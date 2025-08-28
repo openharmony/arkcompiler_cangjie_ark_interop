@@ -176,13 +176,13 @@ public class JSContext {
 
     func checkAlive(): Unit {
         if (disposed_) {
-            throw JSObjUseAfterFree(message: "JSContext has been disposed")
+            throw jsObjUseAfterFree("JSContext")
         }
     }
 
     func checkThread(): Unit {
         if (!isInBindThread()) {
-            throw JSThreadMisMatch(bindTid_, unsafe { ARKTS_GetPosixThreadId() })
+            throw jsThreadMismatch(bindTid_, unsafe { ARKTS_GetPosixThreadId() })
         }
     }
 
@@ -422,7 +422,7 @@ public class JSContext {
     /**
      * Create an ArkTS ArrayBuffer.
 	 *
-     * @throws {JSArrayRangeMisMatch} - Length is thess than 0.
+     * @throws {BusinessException} 34300001 - Length is thess than 0.
      */
     @!APILevel[
         21,
@@ -430,7 +430,7 @@ public class JSContext {
     ]
     public func arrayBuffer(length: Int32): JSArrayBuffer {
         if (length <= 0) {
-            throw JSArrayRangeMisMatch(0, Int64(Int32.Max), Int64(length), message: "arrayBuffer length invalid")
+            throw jsArrayRangeMisMatch(0, Int64(Int32.Max), Int64(length), message: "The arrayBuffer length is invalid")
         }
         JSArrayBuffer(this, length)
     }
@@ -548,7 +548,7 @@ public class JSContext {
     /**
      * Create an ArkTS ArrayBuffer.
 	 *
-     * @throws {JSArrayRangeMisMatch} - Length is thess than 0.
+     * @throws {BusinessException} 34300001 - Length is thess than 0.
      */
     @!APILevel[
         21,
@@ -556,7 +556,7 @@ public class JSContext {
     ]
     public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer: JSBufferFinalizer): JSArrayBuffer {
         if (length <= 0) {
-            throw JSArrayRangeMisMatch(0, Int64(Int32.Max), Int64(length), message: "arrayBuffer length invalid")
+            throw jsArrayRangeMisMatch(0, Int64(Int32.Max), Int64(length), message: "The arrayBuffer length is invalid")
         }
         JSArrayBuffer(this, rawData, length, finalizer)
     }

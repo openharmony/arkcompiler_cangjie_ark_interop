@@ -148,13 +148,9 @@ protected func getJSModule(ctx: JSContext, name: String, prefix: ?String): JSObj
 protected func jsGlobalApiCall<T>(moduleName: String, modulePrefix: ?String, funcName: String,
     args: (JSContext) -> Array<JSValue>, onResolve: (JSContext, JSValue) -> T): T {
     func call(context: JSContext): T {
-        try {
-            let jsModule = getJSModule(context, moduleName, modulePrefix)
-            let jsRet = jsModule.callMethod(funcName, args(context))
-            onResolve(context, jsRet)
-        } catch (e: JSCodeError) {
-            throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
-        }
+        let jsModule = getJSModule(context, moduleName, modulePrefix)
+        let jsRet = jsModule.callMethod(funcName, args(context))
+        onResolve(context, jsRet)
     }
     checkThreadAndCall<T>(getMainContext(), call)
 }
@@ -162,12 +158,8 @@ protected func jsGlobalApiCall<T>(moduleName: String, modulePrefix: ?String, fun
 protected func jsObjApiCall<T>(obj: JSObject, funcName: String, args: (JSContext) -> Array<JSValue>,
     onResolve: (JSContext, JSValue) -> T): T {
     func call(context: JSContext): T {
-        try {
-            let jsRet = obj.callMethod(funcName, args(context))
-            onResolve(context, jsRet)
-        } catch (e: JSCodeError) {
-            throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
-        }
+        let jsRet = obj.callMethod(funcName, args(context))
+        onResolve(context, jsRet)
     }
     checkThreadAndCall<T>(getMainContext(), call)
 }
@@ -197,34 +189,30 @@ protected func ohosGlobalApiCall<T>(moduleName: String, funcName: String, args: 
 protected func jsGlobalApiCallPromise<T>(moduleName: String, modulePrefix: ?String, funcName: String,
     callback: (?BusinessException, ?T) -> Unit, args: (JSContext) -> Array<JSValue>, onResolve: (JSContext, JSValue) -> T): Unit {
     func call(context: JSContext): Unit {
-        try {
-            let jsRet = getJSModule(context, moduleName, modulePrefix).callMethod(funcName, args(context))
-            let promise = jsRet.asPromise()
-            let onResolved = context.function(
-                {
-                    ctx: JSContext, callInfo: JSCallInfo =>
-                    try {
-                        let result = onResolve(ctx, callInfo[0])
-                        callback(None, result)
-                    } catch (e: BusinessException) {
-                        callback(e, None)
-                    } catch (e: Exception) {
-                        callback(BusinessException(JS_INTERNAL_ERROR, e.message), None)
-                    }
-                    ctx.null().toJSValue()
+        let jsRet = getJSModule(context, moduleName, modulePrefix).callMethod(funcName, args(context))
+        let promise = jsRet.asPromise()
+        let onResolved = context.function(
+            {
+                ctx: JSContext, callInfo: JSCallInfo =>
+                try {
+                    let result = onResolve(ctx, callInfo[0])
+                    callback(None, result)
+                } catch (e: BusinessException) {
+                    callback(e, None)
+                } catch (e: Exception) {
+                    callback(BusinessException(JS_INTERNAL_ERROR, e.message), None)
                 }
-            )
-            let onRejected = context.function(
-                {
-                    ctx: JSContext, callInfo: JSCallInfo =>
-                    callback(handleError(ctx, callInfo[0]), None)
-                    ctx.null().toJSValue()
-                }
-            )
-            promise.then(onResolved, onRejected: onRejected)
-        } catch (e: JSCodeError) {
-            throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
-        }
+                ctx.null().toJSValue()
+            }
+        )
+        let onRejected = context.function(
+            {
+                ctx: JSContext, callInfo: JSCallInfo =>
+                callback(handleError(ctx, callInfo[0]), None)
+                ctx.null().toJSValue()
+            }
+        )
+        promise.then(onResolved, onRejected: onRejected)
     }
     checkThreadAndCall<Unit>(getMainContext(), call)
 }
@@ -259,34 +247,30 @@ protected func ohosGlobalApiCallPromise<T>(moduleName: String, funcName: String,
 protected func jsObjApiCallPromise<T>(obj: JSObject, funcName: String, callback: (?BusinessException, ?T) -> Unit,
     args: (JSContext) -> Array<JSValue>, onResolve: (JSContext, JSValue) -> T): Unit {
     func call(context: JSContext): Unit {
-        try {
-            let jsRet = obj.callMethod(funcName, args(context))
-            let promise = jsRet.asPromise()
-            let onResolved = context.function(
-                {
-                    ctx: JSContext, callInfo: JSCallInfo =>
-                    try {
-                        let result = onResolve(ctx, callInfo[0])
-                        callback(None, result)
-                    } catch (e: BusinessException) {
-                        callback(e, None)
-                    } catch (e: Exception) {
-                        callback(BusinessException(JS_INTERNAL_ERROR, e.message), None)
-                    }
-                    ctx.null().toJSValue()
+        let jsRet = obj.callMethod(funcName, args(context))
+        let promise = jsRet.asPromise()
+        let onResolved = context.function(
+            {
+                ctx: JSContext, callInfo: JSCallInfo =>
+                try {
+                    let result = onResolve(ctx, callInfo[0])
+                    callback(None, result)
+                } catch (e: BusinessException) {
+                    callback(e, None)
+                } catch (e: Exception) {
+                    callback(BusinessException(JS_INTERNAL_ERROR, e.message), None)
                 }
-            )
-            let onRejected = context.function(
-                {
-                    ctx: JSContext, callInfo: JSCallInfo =>
-                    callback(handleError(ctx, callInfo[0]), None)
-                    ctx.null().toJSValue()
-                }
-            )
-            promise.then(onResolved, onRejected: onRejected)
-        } catch (e: JSCodeError) {
-            throw BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
-        }
+                ctx.null().toJSValue()
+            }
+        )
+        let onRejected = context.function(
+            {
+                ctx: JSContext, callInfo: JSCallInfo =>
+                callback(handleError(ctx, callInfo[0]), None)
+                ctx.null().toJSValue()
+            }
+        )
+        promise.then(onResolved, onRejected: onRejected)
     }
     checkThreadAndCall<Unit>(getMainContext(), call)
 }

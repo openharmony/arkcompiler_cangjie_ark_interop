@@ -15,221 +15,44 @@
 
 package ohos.ark_interop
 
-/**
- * Interop exception base class.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public abstract class JSInteropException <: Exception {
-    init(message: String) {
-        super(message)
-    }
+import ohos.business_exception.*
 
-    protected open func getClassName(): String {
-        "JSInteropException"
-    }
+internal func jsThreadMismatch(bindTid: UInt64, curTid: UInt64): BusinessException {
+    BusinessException(34300004, "Accessing an ArkTS object on wrong thread, bound thread is ${bindTid}, current thread is ${curTid}.")
 }
 
-/**
- * Thread mismatch Exception when executing ArkTS interface.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class JSThreadMisMatch <: JSInteropException {
-    /**
-     * Init JSThreadMisMatch exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch") {
-        super("${message}, bind thread id: ${bindTid}, current thread id: ${curTid}")
-    }
-
-    protected func getClassName(): String {
-        "JSThreadMisMatch"
-    }
+internal func jsTypeMisMatch(acquireType: String, givenType: JSType): BusinessException {
+    BusinessException(34300005, "The ArkTS data types do not match, expect: ${acquireType}, given: ${givenType.toString()}.")
 }
 
-/**
- * ArkTS operation type and actual type mismatch exception.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class JSTypeMisMatch <: JSInteropException {
-    /**
-     * Init JSTypeMisMatch exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch") {
-        super("${message}, acquired: ${acquireType}, given: ${givenType.toString()} ")
-    }
-
-    /**
-     * Init JSTypeMisMatch exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch") {
-        super("${message}, acquired: ${acquireType.toString()}, given: ${givenType.toString()} ")
-    }
-
-    protected func getClassName(): String {
-        "JSTypeMisMatch"
-    }
+internal func jsTypeMisMatch(acquireType: JSType, givenType: JSType): BusinessException {
+    BusinessException(34300005, "The ArkTS data types do not match, expect: ${acquireType.toString()}, given: ${givenType.toString()}.")
 }
 
-/**
- * ArkTS array acesss out of bounds exception.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class JSArrayRangeMisMatch <: JSInteropException {
-    /**
-     * Init JSArrayRangeMisMatch exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch") {
-        super("${message}, allowed: [${min}, ${max}), given: ${given}")
-    }
-
-    protected func getClassName(): String {
-        "JSArrayRangeMisMatch"
-    }
+internal func jsArrayRangeMisMatch(min: Int64, max: Int64, given: Int64, message!: String = "The accessing index is out of range"): BusinessException {
+    return BusinessException(34300001, "${message}, allowed: [${min}, ${max}), given: ${given}")
 }
 
-/**
- * ArkTS object use after free Exception.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class JSObjUseAfterFree <: JSInteropException {
-    /**
-     * Init JSObjUseAfterFree exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(message!: String = "use after free") {
-        super(message)
-    }
-
-    protected func getClassName(): String {
-        "JSObjUseAfterFree"
-    }
+internal func jsObjUseAfterFree(kind: String): BusinessException {
+    return BusinessException(34300003, "Accessing reference [${kind}] is beyond reach.")
 }
 
-/**
- * Excetion in ArkTS code.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class JSCodeError <: JSInteropException {
-    /**
-     * Exception error code.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public let code: ?Int32
-
-    /**
-     * Exception message.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public let jsError: String
-
-    /**
-     * Exception stack.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public let jsStack: Array<String>
-
-    protected init(code: Int32, jsMessage: String, jsStack: Array<String>) {
-        super("${jsMessage}: ${String.join(jsStack, delimiter: "\n")}")
-        this.code = code
-        jsError = jsMessage
-        this.jsStack = jsStack
-    }
-
-    /**
-     * Init JSCodeError exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(jsMessage: String, jsStack: Array<String>) {
-        super("${jsMessage}: ${String.join(jsStack, delimiter: "\n")}")
-        this.code = None
-        jsError = jsMessage
-        this.jsStack = jsStack
-    }
-
-    protected func getClassName(): String {
-        "JSCodeError"
-    }
+internal func jsCodeError(code: Int32, jsMessage: String, jsStack: Array<String>): BusinessException {
+    return BusinessException(34300002, "An exception occurred during ArkTS code execution, code: ${code}, " +
+        "message: ${jsMessage}, stack: ${String.join(jsStack, delimiter: "\n")}.")
 }
 
-/**
- * Interop C interface exception.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class JSInteropNativeError <: JSInteropException {
-    /**
-     * Init JSInteropNativeError exception.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+internal func jsCodeError(jsMessage: String, jsStack: Array<String>): BusinessException {
+    return BusinessException(34300002, "An exception occurred during ArkTS code execution, " +
+        "message: ${jsMessage}, stack: ${String.join(jsStack, delimiter: "\n")}.")
+}
+
+class JSInteropNativeError <: Exception {
     public init(message: String) {
         super(message)
     }
 
     protected func getClassName(): String {
         "JSInteropNativeError"
-    }
-}
-
-class JSPropertyError <: JSInteropException {
-    init(message: String) {
-        super(message)
-    }
-
-    protected func getClassName(): String {
-        "JSPropertyError"
     }
 }

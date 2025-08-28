@@ -77,7 +77,7 @@ extend Int8 <: JSInteropType<Int8> {
     /**
      * Convert JSValue to Int8.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -121,7 +121,7 @@ extend Int16 <: JSInteropType<Int16> {
     /**
      * Convert JSValue to Int16.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -165,7 +165,7 @@ extend Int32 <: JSInteropType<Int32> {
     /**
      * Convert JSValue to Int32.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -209,7 +209,7 @@ extend Int64 <: JSInteropType<Int64> {
     /**
      * Convert JSValue to Int64.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -253,7 +253,7 @@ extend UInt8 <: JSInteropType<UInt8> {
     /**
      * Convert JSValue to UInt8.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -297,7 +297,7 @@ extend UInt16 <: JSInteropType<UInt16> {
     /**
      * Convert JSValue to UInt16.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -341,7 +341,7 @@ extend UInt32 <: JSInteropType<UInt32> {
     /**
      * Convert JSValue to UInt32.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -387,7 +387,7 @@ extend UInt64 <: JSInteropType<UInt64> {
     /**
      * Convert JSValue to UInt64.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -431,7 +431,7 @@ extend Float16 <: JSInteropType<Float16> {
     /**
      * Convert JSValue to Float16.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -475,7 +475,7 @@ extend Float32 <: JSInteropType<Float32> {
     /**
      * Convert JSValue to Float32.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -519,7 +519,7 @@ extend Float64 <: JSInteropType<Float64> & JSKeyable {
     /**
      * Convert JSValue to Float64.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -563,7 +563,7 @@ extend Bool <: JSInteropType<Bool> {
     /**
      * Convert JSValue to Bool.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Bool.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Bool.
      */
     @!APILevel[
         21,
@@ -607,7 +607,7 @@ extend String <: JSInteropType<String> {
     /**
      * Convert JSValue to String.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to String.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to String.
      */
     @!APILevel[
         21,
@@ -640,7 +640,7 @@ extend JSString <: JSInteropType<JSString> {
     /**
      * Convert JSValue to JSString.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSString.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
      */
     @!APILevel[
         21,
