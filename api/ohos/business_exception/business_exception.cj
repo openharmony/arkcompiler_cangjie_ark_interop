@@ -40,22 +40,19 @@ protected func getUniversalErrorMsg(code: Int32): ?String {
     21,
     atomicservice: true,
     crossplatform: true,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
+    stagemodelonly: true
 ]
 public open class BusinessException <: Exception {
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        stagemodelonly: true
     ]
     public let code: Int32
     @!APILevel[
         21,
         atomicservice: true,
         crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        stagemodelonly: true
     ]
     public init(code: Int32, msg: String) {
         super(msg)
@@ -70,8 +67,7 @@ public open class BusinessException <: Exception {
         21,
         atomicservice: true,
         crossplatform: true,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkUI.ArkUI.Full"
+        stagemodelonly: true
     ]
     public open func toString(): String {
         let className: String = getClassName()

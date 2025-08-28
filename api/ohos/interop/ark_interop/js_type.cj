@@ -23,8 +23,7 @@ let JS_TYPE_NAMES_ = ["undefined", "null", "number", "bool", "bigint", "string",
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 @C
 public struct JSType {
@@ -33,8 +32,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let UNDEFINED: JSType = JSType(0)
 
@@ -43,8 +41,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let NULL: JSType = JSType(1)
 
@@ -53,8 +50,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let NUMBER: JSType = JSType(2)
 
@@ -63,8 +59,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let BOOLEAN: JSType = JSType(3)
 
@@ -73,8 +68,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let BIGINT: JSType = JSType(4)
 
@@ -83,8 +77,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let STRING: JSType = JSType(5)
 
@@ -93,8 +86,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let SYMBOL: JSType = JSType(6)
 
@@ -103,8 +95,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let OBJECT: JSType = JSType(7)
 
@@ -113,8 +104,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let FUNCTION: JSType = JSType(8)
 
@@ -123,8 +113,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public static let EXTERNAL: JSType = JSType(9)
 
@@ -135,8 +124,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public operator func ==(target: JSType): Bool {
         value == target.value
@@ -147,8 +135,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public operator func !=(target: JSType): Bool {
         value != target.value
@@ -159,8 +146,7 @@ public struct JSType {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toString(): String {
         JS_TYPE_NAMES_[Int64(value)]
