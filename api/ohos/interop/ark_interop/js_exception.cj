@@ -20,8 +20,7 @@ package ohos.ark_interop
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public abstract class JSInteropException <: Exception {
     init(message: String) {
@@ -38,8 +37,7 @@ public abstract class JSInteropException <: Exception {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSThreadMisMatch <: JSInteropException {
     /**
@@ -47,8 +45,7 @@ public class JSThreadMisMatch <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch") {
         super("${message}, bind thread id: ${bindTid}, current thread id: ${curTid}")
@@ -64,8 +61,7 @@ public class JSThreadMisMatch <: JSInteropException {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSTypeMisMatch <: JSInteropException {
     /**
@@ -73,8 +69,7 @@ public class JSTypeMisMatch <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch") {
         super("${message}, acquired: ${acquireType}, given: ${givenType.toString()} ")
@@ -85,8 +80,7 @@ public class JSTypeMisMatch <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch") {
         super("${message}, acquired: ${acquireType.toString()}, given: ${givenType.toString()} ")
@@ -102,8 +96,7 @@ public class JSTypeMisMatch <: JSInteropException {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSArrayRangeMisMatch <: JSInteropException {
     /**
@@ -111,8 +104,7 @@ public class JSArrayRangeMisMatch <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch") {
         super("${message}, allowed: [${min}, ${max}), given: ${given}")
@@ -128,8 +120,7 @@ public class JSArrayRangeMisMatch <: JSInteropException {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSObjUseAfterFree <: JSInteropException {
     /**
@@ -137,8 +128,7 @@ public class JSObjUseAfterFree <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(message!: String = "use after free") {
         super(message)
@@ -154,8 +144,7 @@ public class JSObjUseAfterFree <: JSInteropException {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSCodeError <: JSInteropException {
     /**
@@ -163,8 +152,7 @@ public class JSCodeError <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public let code: ?Int32
 
@@ -173,8 +161,7 @@ public class JSCodeError <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public let jsError: String
 
@@ -183,8 +170,7 @@ public class JSCodeError <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public let jsStack: Array<String>
 
@@ -200,8 +186,7 @@ public class JSCodeError <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(jsMessage: String, jsStack: Array<String>) {
         super("${jsMessage}: ${String.join(jsStack, delimiter: "\n")}")
@@ -220,8 +205,7 @@ public class JSCodeError <: JSInteropException {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSInteropNativeError <: JSInteropException {
     /**
@@ -229,8 +213,7 @@ public class JSInteropNativeError <: JSInteropException {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public init(message: String) {
         super(message)

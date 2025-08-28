@@ -70,8 +70,7 @@ protected struct JSValue_ {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public struct JSNull {
     let value: JSValue
@@ -85,8 +84,7 @@ public struct JSNull {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
@@ -98,8 +96,7 @@ public struct JSNull {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public struct JSUndefined {
     let value: JSValue
@@ -113,8 +110,7 @@ public struct JSUndefined {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
@@ -126,8 +122,7 @@ public struct JSUndefined {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public struct JSBoolean {
     let value: JSValue
@@ -141,8 +136,7 @@ public struct JSBoolean {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
@@ -153,8 +147,7 @@ public struct JSBoolean {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toBool(): Bool {
         value.toBoolean()
@@ -166,8 +159,7 @@ public struct JSBoolean {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public struct JSNumber {
     let value: JSValue
@@ -181,8 +173,7 @@ public struct JSNumber {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         value
@@ -195,8 +186,7 @@ public struct JSNumber {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toFloat64(): Float64 {
         value.toNumber()
@@ -208,8 +198,7 @@ public struct JSNumber {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public struct JSValue {
     protected JSValue(
@@ -222,8 +211,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func typeof(): JSType {
         unsafe { ARKTS_GetValueType(context.env, value) }
@@ -234,8 +222,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func strictEqual(target: JSValue): Bool {
         unsafe { ARKTS_StrictEqual(context.env, value, target.value) }
@@ -246,8 +233,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isNull(): Bool {
         unsafe { ARKTS_IsNull(value) }
@@ -258,8 +244,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isUndefined(): Bool {
         unsafe { ARKTS_IsUndefined(value) }
@@ -270,8 +255,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isBoolean(): Bool {
         unsafe { ARKTS_IsBool(value) }
@@ -282,8 +266,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isNumber(): Bool {
         unsafe { ARKTS_IsNumber(value) }
@@ -294,8 +277,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isString(): Bool {
         unsafe { ARKTS_IsString(context.env, value) }
@@ -306,8 +288,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isFunction(): Bool {
         unsafe { ARKTS_IsCallable(context.env, value) }
@@ -318,8 +299,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isObject(): Bool {
         unsafe { ARKTS_IsObject(context.env, value) }
@@ -330,8 +310,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isArray(): Bool {
         unsafe { ARKTS_IsArray(context.env, value) }
@@ -342,8 +321,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isPromise(): Bool {
         unsafe { ARKTS_IsPromise(context.env, value) }
@@ -354,8 +332,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isClass(): Bool {
         unsafe { ARKTS_IsClass(context.env, value) }
@@ -366,8 +343,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isExternal(): Bool {
         unsafe { ARKTS_IsExternal(context.env, value) }
@@ -378,8 +354,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isSymbol(): Bool {
         unsafe { ARKTS_IsSymbol(context.env, value) }
@@ -390,8 +365,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isArrayBuffer(): Bool {
         unsafe { ARKTS_IsArrayBuffer(context.env, value) }
@@ -425,8 +399,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asNull(): JSNull {
         if (!isNull()) {
@@ -442,8 +415,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asUndefined(): JSUndefined {
         if (!isUndefined()) {
@@ -459,8 +431,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asBoolean(): JSBoolean {
         if (!isBoolean()) {
@@ -476,8 +447,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asNumber(): JSNumber {
         if (!isNumber()) {
@@ -493,8 +463,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toBoolean(): Bool {
         if (!isBoolean()) {
@@ -510,8 +479,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toNumber(): Float64 {
         if (!isNumber()) {
@@ -527,8 +495,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toString(): String {
         if (!isString()) {
@@ -542,8 +509,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toUtf16String(): Utf16String {
         JSString.readUtf16String(context, value)
@@ -556,8 +522,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asString(): JSString {
         if (!isString()) {
@@ -573,8 +538,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asObject(): JSObject {
         if (!isObject()) {
@@ -590,8 +554,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asFunction(): JSFunction {
         if (!isFunction()) {
@@ -607,8 +570,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asArray(): JSArray {
         if (!isArray()) {
@@ -624,8 +586,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asClass(): JSClass {
         if (!isClass()) {
@@ -641,8 +602,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asExternal(): JSExternal {
         if (!isExternal()) {
@@ -658,8 +618,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asPromise(): JSPromise {
         if (!isPromise()) {
@@ -675,8 +634,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asSymbol(): JSSymbol {
         if (!isSymbol()) {
@@ -692,8 +650,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asArrayBuffer(): JSArrayBuffer {
         if (!isArrayBuffer()) {
@@ -719,8 +676,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func isBigInt(): Bool {
         unsafe { ARKTS_IsBigInt(context.env, value) }
@@ -733,8 +689,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func asBigInt(): JSBigInt {
         if (!isBigInt()) {
@@ -750,8 +705,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func toBigInt(): BigInt {
         if (!isBigInt()) {
@@ -769,8 +723,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func getElement(index: Int64): JSValue {
         if (!isArray()) {
@@ -792,8 +745,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func setElement(index: Int64, value: JSValue): Unit {
         if (!isArray()) {
@@ -813,8 +765,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func getProperty(key: JSKeyable): JSValue {
         if (!isObject()) {
@@ -832,8 +783,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         if (!isObject()) {
@@ -848,8 +798,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func setProperty(_: JSContext, key: JSKeyable, setValue: JSValue): Unit {
         setProperty(key, setValue)
@@ -862,8 +811,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func bindObject(external: JSValue): Unit {
         if (!isObject()) {
@@ -880,8 +828,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func bindObject(data: SharedObject): Unit {
         bindObject(JSValue(context, JSExternal.createExternal(context, data)))
@@ -892,8 +839,7 @@ public struct JSValue {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func getBindingObject(): ?SharedObject {
         let external = getProperty(context.constants.builtinText.__cj_object__)

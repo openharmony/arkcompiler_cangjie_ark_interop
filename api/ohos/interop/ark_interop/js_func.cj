@@ -48,8 +48,7 @@ struct JSCallInfoPrivate {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public struct JSCallInfo {
     JSCallInfo(
@@ -62,8 +61,7 @@ public struct JSCallInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public prop count: Int64 {
         get() {
@@ -76,8 +74,7 @@ public struct JSCallInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public prop thisArg: JSValue {
         get() {
@@ -93,8 +90,7 @@ public struct JSCallInfo {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public operator func [](index: Int64): JSValue {
         if (index >= count) {
@@ -141,8 +137,7 @@ func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
  */
 @!APILevel[
     21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkCompiler.Cangjie"
+    stagemodelonly: true
 ]
 public class JSFunction <: JSHeapObject {
     static func createFunction(context: JSContext, lambda: JSLambda): JSValue_ {
@@ -223,8 +218,7 @@ public class JSFunction <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithNoneArg(context, innerValue, thisArg.value)
@@ -235,8 +229,7 @@ public class JSFunction <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithOneArg(context, innerValue, thisArg.value, arg)
@@ -247,8 +240,7 @@ public class JSFunction <: JSHeapObject {
      */
     @!APILevel[
         21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.ArkCompiler.Cangjie"
+        stagemodelonly: true
     ]
     public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
         callWithArr(context, innerValue, thisArg.value, args)
