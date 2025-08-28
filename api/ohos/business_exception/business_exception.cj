@@ -36,6 +36,9 @@ protected func getUniversalErrorMsg(code: Int32): ?String {
     UNIVERSAL_ERROR_MAP.get(code)
 }
 
+/**
+ * Defines the exception interface.
+ */
 @!APILevel[
     21,
     atomicservice: true,
@@ -43,6 +46,9 @@ protected func getUniversalErrorMsg(code: Int32): ?String {
     stagemodelonly: true
 ]
 public open class BusinessException <: Exception {
+    /**
+     * Defines the basic error code.
+     */
     @!APILevel[
         21,
         stagemodelonly: true
@@ -63,6 +69,9 @@ public open class BusinessException <: Exception {
         "BusinessException"
     }
 
+    /**
+     * Translate the exception to String.
+     */
     @!APILevel[
         21,
         atomicservice: true,
@@ -79,13 +88,33 @@ public open class BusinessException <: Exception {
     }
 }
 
+/**
+ * Defines the error interface.
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true
+]
 public class BusinessError<T> <: BusinessException {
+    /**
+     * Defines the additional information for business
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public var data: T
-
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public init (data: T, code: Int32, msg: String) {
         super(code, msg)
         this.data = data
     }
 }
 
+/**
+ * Defines the basic async callback.
+ */
 public type AsyncCallback<T> = (Option<BusinessException>, Option<T>) -> Unit

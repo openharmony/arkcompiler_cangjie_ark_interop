@@ -86,7 +86,7 @@ public struct JSCallInfo {
     /**
      * Get argument at index.
      * 
-     * @throws { JSArrayRangeMisMatch } - Index is less than 0.
+     * @throws { BusinessException } 34300001 - Index is less than 0.
      */
     @!APILevel[
         21,
@@ -97,7 +97,7 @@ public struct JSCallInfo {
             return context.void
         }
         if (index < 0) {
-            throw JSArrayRangeMisMatch(0, count, index)
+            throw jsArrayRangeMisMatch(0, count, index, message: "The call argument index is invalid")
         }
         let result = unsafe { ARKTS_GetArg(callInfo, UInt32(index)) }
         JSValue(context, result)

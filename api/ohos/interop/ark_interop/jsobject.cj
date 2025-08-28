@@ -144,7 +144,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
     /**
      * Call method corressponding to the key of the JSObject.
 	 *
-     * @throws {JSTypeMisMatch} - Object is not JSFunction.
+     * @throws {BusinessException} 34300005 - Object is not JSFunction.
      */
     @!APILevel[
         21,
@@ -153,7 +153,7 @@ abstract sealed class JSObjectBase <: JSHeapObject {
     public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue {
         let fun = getProperty(key)
         if (!fun.isFunction()) {
-            throw JSTypeMisMatch(JSType.FUNCTION, fun.typeof())
+            throw jsTypeMisMatch(JSType.FUNCTION, fun.typeof())
         }
         JSFunction.callWithArr(context, fun.value, innerValue, args)
     }

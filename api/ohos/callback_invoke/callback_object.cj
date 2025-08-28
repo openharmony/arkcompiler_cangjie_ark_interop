@@ -18,58 +18,115 @@ package ohos.callback_invoke
 import ohos.business_exception.*
 import ohos.labels.APILevel
 
+/**
+ * Callback type.
+ */
 public type Callback<T> = (arg: T) -> Unit
 
+/**
+ * The callback wrapper base class.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class CallbackObject {}
 
+/**
+ * The wrapper of callback without argument and returns.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class Callback0Argument <: CallbackObject {
+    /**
+     * invoker mainly for C
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public open func invoke(err: ?BusinessException): Unit
 }
 
+/**
+ * The wrapper of callback with one argument and no returns.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class Callback1Argument<A> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public open func invoke(err: ?BusinessException, arg: A): Unit
 }
 
+/**
+ * The wrapper of callback with 2 arguments and no returns.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class Callback2Argument<A, B> <: CallbackObject {
+    /**
+     * invoker mainly for C
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public open func invoke(err: ?BusinessException, arg1: A, arg2: B): Unit
 }
 
+/**
+ * The wrapper of callback with 3 arguments.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject {
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public open func invoke(err: ?BusinessException, arg1: A, arg2: B, arg3: C): D
 }
 
+/**
+ * The wrapper of callback with 2 arguments and returns.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public open func invoke(err: ?BusinessException, arg1: A): B
 }
 
+/**
+ * The wrapper of callback without argument and returns.
+ */
 @!APILevel[
     21,
     stagemodelonly: true
 ]
 public abstract class CallbackWithReturn<A> <: CallbackObject {
+    @!APILevel[
+        21,
+        stagemodelonly: true
+    ]
     public open func invoke(err: ?BusinessException): A
 }

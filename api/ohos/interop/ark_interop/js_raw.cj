@@ -182,7 +182,7 @@ public struct JSNumber {
     /**
      * Convert JSNumber to Cangjie Float64.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -387,7 +387,7 @@ public struct JSValue {
 
     func asMap(): JSMap {
         if (!isMap()) {
-            throw JSTypeMisMatch("Map", typeof())
+            throw jsTypeMisMatch("Map", typeof())
         }
         JSMap(context, value)
     }
@@ -395,7 +395,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSNull. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSNull.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNull.
      */
     @!APILevel[
         21,
@@ -403,7 +403,7 @@ public struct JSValue {
     ]
     public func asNull(): JSNull {
         if (!isNull()) {
-            throw JSTypeMisMatch(JSType.NULL, typeof())
+            throw jsTypeMisMatch(JSType.NULL, typeof())
         }
         JSNull(this)
     }
@@ -411,7 +411,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSUndefined. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSUndefined.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSUndefined.
      */
     @!APILevel[
         21,
@@ -419,7 +419,7 @@ public struct JSValue {
     ]
     public func asUndefined(): JSUndefined {
         if (!isUndefined()) {
-            throw JSTypeMisMatch(JSType.UNDEFINED, typeof())
+            throw jsTypeMisMatch(JSType.UNDEFINED, typeof())
         }
         JSUndefined(this)
     }
@@ -427,7 +427,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSBoolean. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSBoolean.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBoolean.
      */
     @!APILevel[
         21,
@@ -435,7 +435,7 @@ public struct JSValue {
     ]
     public func asBoolean(): JSBoolean {
         if (!isBoolean()) {
-            throw JSTypeMisMatch(JSType.BOOLEAN, typeof())
+            throw jsTypeMisMatch(JSType.BOOLEAN, typeof())
         }
         JSBoolean(this)
     }
@@ -443,7 +443,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSNumber. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSNumber.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNumber.
      */
     @!APILevel[
         21,
@@ -451,7 +451,7 @@ public struct JSValue {
     ]
     public func asNumber(): JSNumber {
         if (!isNumber()) {
-            throw JSTypeMisMatch(JSType.NUMBER, typeof())
+            throw jsTypeMisMatch(JSType.NUMBER, typeof())
         }
         JSNumber(this)
     }
@@ -459,7 +459,7 @@ public struct JSValue {
     /**
      * Convert JSValue to Bool. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Bool.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Bool.
      */
     @!APILevel[
         21,
@@ -467,7 +467,7 @@ public struct JSValue {
     ]
     public func toBoolean(): Bool {
         if (!isBoolean()) {
-            throw JSTypeMisMatch(JSType.BOOLEAN, typeof())
+            throw jsTypeMisMatch(JSType.BOOLEAN, typeof())
         }
         unsafe { ARKTS_GetValueBool(value) }
     }
@@ -475,7 +475,7 @@ public struct JSValue {
     /**
      * Convert JSValue to Float64. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
      */
     @!APILevel[
         21,
@@ -483,7 +483,7 @@ public struct JSValue {
     ]
     public func toNumber(): Float64 {
         if (!isNumber()) {
-            throw JSTypeMisMatch(JSType.NUMBER, typeof())
+            throw jsTypeMisMatch(JSType.NUMBER, typeof())
         }
         unsafe { ARKTS_GetValueNumber(value) }
     }
@@ -491,7 +491,7 @@ public struct JSValue {
     /**
      * Convert JSValue to String. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to String.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to String.
      */
     @!APILevel[
         21,
@@ -499,7 +499,7 @@ public struct JSValue {
     ]
     public func toString(): String {
         if (!isString()) {
-            throw JSTypeMisMatch(JSType.STRING, typeof())
+            throw jsTypeMisMatch(JSType.STRING, typeof())
         }
         JSString.readString(context, value)
     }
@@ -518,7 +518,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSString. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSString.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
      */
     @!APILevel[
         21,
@@ -526,7 +526,7 @@ public struct JSValue {
     ]
     public func asString(): JSString {
         if (!isString()) {
-            throw JSTypeMisMatch(JSType.STRING, typeof())
+            throw jsTypeMisMatch(JSType.STRING, typeof())
         }
         JSString(context, value)
     }
@@ -534,7 +534,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSObject. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSObject.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSObject.
      */
     @!APILevel[
         21,
@@ -542,7 +542,7 @@ public struct JSValue {
     ]
     public func asObject(): JSObject {
         if (!isObject()) {
-            throw JSTypeMisMatch(JSType.OBJECT, typeof())
+            throw jsTypeMisMatch(JSType.OBJECT, typeof())
         }
         JSObject(context, value)
     }
@@ -550,7 +550,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSFunction. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSFunction.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSFunction.
      */
     @!APILevel[
         21,
@@ -558,7 +558,7 @@ public struct JSValue {
     ]
     public func asFunction(): JSFunction {
         if (!isFunction()) {
-            throw JSTypeMisMatch(JSType.FUNCTION, typeof())
+            throw jsTypeMisMatch(JSType.FUNCTION, typeof())
         }
         JSFunction(context, value)
     }
@@ -566,7 +566,7 @@ public struct JSValue {
     /**
      * Conert JSValue to JSArray. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArray.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArray.
      */
     @!APILevel[
         21,
@@ -574,7 +574,7 @@ public struct JSValue {
     ]
     public func asArray(): JSArray {
         if (!isArray()) {
-            throw JSTypeMisMatch("Array", typeof())
+            throw jsTypeMisMatch("Array", typeof())
         }
         JSArray(context, value)
     }
@@ -582,7 +582,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSClass. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSClass.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSClass.
      */
     @!APILevel[
         21,
@@ -590,7 +590,7 @@ public struct JSValue {
     ]
     public func asClass(): JSClass {
         if (!isClass()) {
-            throw JSTypeMisMatch("Class", typeof())
+            throw jsTypeMisMatch("Class", typeof())
         }
         JSClass(context, value)
     }
@@ -598,7 +598,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSExternal. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSExternal.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSExternal.
      */
     @!APILevel[
         21,
@@ -606,7 +606,7 @@ public struct JSValue {
     ]
     public func asExternal(): JSExternal {
         if (!isExternal()) {
-            throw JSTypeMisMatch(JSType.EXTERNAL, typeof())
+            throw jsTypeMisMatch(JSType.EXTERNAL, typeof())
         }
         JSExternal(context, value)
     }
@@ -614,7 +614,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSPromise. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSPromise.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSPromise.
      */
     @!APILevel[
         21,
@@ -622,7 +622,7 @@ public struct JSValue {
     ]
     public func asPromise(): JSPromise {
         if (!isPromise()) {
-            throw JSTypeMisMatch("Promise", typeof())
+            throw jsTypeMisMatch("Promise", typeof())
         }
         JSPromise(context, value)
     }
@@ -630,7 +630,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSSymbol. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSSymbol.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSSymbol.
      */
     @!APILevel[
         21,
@@ -638,7 +638,7 @@ public struct JSValue {
     ]
     public func asSymbol(): JSSymbol {
         if (!isSymbol()) {
-            throw JSTypeMisMatch(JSType.SYMBOL, typeof())
+            throw jsTypeMisMatch(JSType.SYMBOL, typeof())
         }
         JSSymbol(context, value)
     }
@@ -646,7 +646,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSArrayBuffer. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArrayBuffer.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArrayBuffer.
      */
     @!APILevel[
         21,
@@ -654,7 +654,7 @@ public struct JSValue {
     ]
     public func asArrayBuffer(): JSArrayBuffer {
         if (!isArrayBuffer()) {
-            throw JSTypeMisMatch("ArrayBuffer", typeof())
+            throw jsTypeMisMatch("ArrayBuffer", typeof())
         }
         JSArrayBuffer(context, value)
     }
@@ -662,11 +662,11 @@ public struct JSValue {
     /**
      * Convert JSValue to JSError. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSError.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSError.
      */
     func asError(): JSError {
         if (!isError()) {
-            throw JSTypeMisMatch("Error", typeof())
+            throw jsTypeMisMatch("Error", typeof())
         }
         JSError(context, value)
     }
@@ -685,7 +685,7 @@ public struct JSValue {
     /**
      * Convert JSValue to JSBigInt. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSBigInt.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBigInt.
      */
     @!APILevel[
         21,
@@ -693,7 +693,7 @@ public struct JSValue {
     ]
     public func asBigInt(): JSBigInt {
         if (!isBigInt()) {
-            throw JSTypeMisMatch("BigInt", typeof())
+            throw jsTypeMisMatch("BigInt", typeof())
         }
         JSBigInt(context, value)
     }
@@ -701,7 +701,7 @@ public struct JSValue {
     /**
      * Convert JSValue to BigInt. If the failure occurs, Exception will be throwed.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to BigInt.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to BigInt.
      */
     @!APILevel[
         21,
@@ -709,7 +709,7 @@ public struct JSValue {
     ]
     public func toBigInt(): BigInt {
         if (!isBigInt()) {
-            throw JSTypeMisMatch("BigInt", typeof())
+            throw jsTypeMisMatch("BigInt", typeof())
         }
 
         JSBigInt.readAsBigInt(context.env, value)
@@ -718,8 +718,8 @@ public struct JSValue {
     /**
      * Get the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is out of range.
-     * @throws { JSTypeMisMatch } - JSValue is not an array.
+     * @throws { BusinessException } 34300001 - The index is out of range.
+     * @throws { BusinessException } 34300005 - JSValue is not an array.
      */
     @!APILevel[
         21,
@@ -727,11 +727,11 @@ public struct JSValue {
     ]
     public func getElement(index: Int64): JSValue {
         if (!isArray()) {
-            throw JSTypeMisMatch("array", typeof())
+            throw jsTypeMisMatch("array", typeof())
         }
         let safeSize = Int64(unsafe { ARKTS_GetArrayLength(context.env, value) })
         if (index < 0 || index >= safeSize) {
-            throw JSArrayRangeMisMatch(0, safeSize, index)
+            throw jsArrayRangeMisMatch(0, safeSize, index)
         }
         let value = unsafe { ARKTS_GetElement(context.env, value, UInt32(index)) }
         JSValue(context, value)
@@ -740,8 +740,8 @@ public struct JSValue {
     /**
      * Set the element at index.
      *
-     * @throws { JSArrayRangeMisMatch } - The index is less than 0.
-     * @throws { JSTypeMisMatch } - JSValue is not an array.
+     * @throws { BusinessException } 34300001 - The index is less than 0.
+     * @throws { BusinessException } 34300005 - JSValue is not an array.
      */
     @!APILevel[
         21,
@@ -749,11 +749,11 @@ public struct JSValue {
     ]
     public func setElement(index: Int64, value: JSValue): Unit {
         if (!isArray()) {
-            throw JSTypeMisMatch("array", typeof())
+            throw jsTypeMisMatch("array", typeof())
         }
         let safeSize = Int64(unsafe { ARKTS_GetArrayLength(context.env, this.value) })
         if (index < 0) {
-            throw JSArrayRangeMisMatch(0, safeSize, index)
+            throw jsArrayRangeMisMatch(0, safeSize, index)
         }
         unsafe { ARKTS_SetElement(context.env, this.value, UInt32(index), value.value) }
     }
@@ -761,7 +761,7 @@ public struct JSValue {
     /**
      * Get the property corresponding to the key.
      *
-     * @throws { JSTypeMisMatch } - JSValue is not JSObject.
+     * @throws { BusinessException } 34300005 - JSValue is not JSObject.
      */
     @!APILevel[
         21,
@@ -769,7 +769,7 @@ public struct JSValue {
     ]
     public func getProperty(key: JSKeyable): JSValue {
         if (!isObject()) {
-            throw JSTypeMisMatch(JSType.OBJECT, typeof())
+            throw jsTypeMisMatch(JSType.OBJECT, typeof())
         }
         let keyValue = key.toJSValue(context)
         let result = unsafe { ARKTS_GetProperty(context.env, value, keyValue.value) }
@@ -779,7 +779,7 @@ public struct JSValue {
     /**
      * Set the property corresponding to the key.
      *
-     * @throws { JSTypeMisMatch } - JSValue is not JSObject.
+     * @throws { BusinessException } 34300005 - JSValue is not JSObject.
      */
     @!APILevel[
         21,
@@ -787,7 +787,7 @@ public struct JSValue {
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
         if (!isObject()) {
-            throw JSTypeMisMatch(JSType.OBJECT, typeof())
+            throw jsTypeMisMatch(JSType.OBJECT, typeof())
         }
         let keyValue = key.toJSValue(context)
         unsafe { ARKTS_SetProperty(context.env, value, keyValue.value, setValue.value) }
@@ -807,7 +807,7 @@ public struct JSValue {
     /**
      * Bind JSValue to an ArkTs external object.
      *
-     * @throws { JSTypeMisMatch } - JSValue is not JSObject or external is not JSExternal.
+     * @throws { BusinessException } 34300005 - JSValue is not JSObject or external is not JSExternal.
      */
     @!APILevel[
         21,
@@ -815,10 +815,10 @@ public struct JSValue {
     ]
     public func bindObject(external: JSValue): Unit {
         if (!isObject()) {
-            throw JSTypeMisMatch(JSType.OBJECT, typeof())
+            throw jsTypeMisMatch(JSType.OBJECT, typeof())
         }
         if (!external.isExternal()) {
-            throw JSTypeMisMatch("external", external.typeof())
+            throw jsTypeMisMatch("external", external.typeof())
         }
         setProperty(context.constants.builtinText.__cj_object__, external)
     }
