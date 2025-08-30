@@ -42,11 +42,8 @@ protected func basicJsSkeleton<T>(callFunc: (Box<?T>, Box<?Exception>, SyncCount
         try {
             // must call syn.dec() in all branch in lambda
             callFunc(ret, exception, syn)
-        } catch (e: JSCodeError) {
-            if (let None <- exception.value) {
-                let exp = BusinessException(e.code.getOrDefault({=> 0}), e.jsError)
-                exception.value = Some(exp)
-            }
+        } catch (e: BusinessException) {
+            exception.value = Some(e)
             syn.dec()
         } catch (e: Exception) {
             if (let None <- exception.value) {

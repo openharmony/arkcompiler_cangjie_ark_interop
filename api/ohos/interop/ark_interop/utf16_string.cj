@@ -123,7 +123,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
     private func checkAlive(): Unit {
         if (!isAlive_) {
-            throw JSObjUseAfterFree()
+            throw jsObjUseAfterFree("Utf16String")
         }
     }
 
