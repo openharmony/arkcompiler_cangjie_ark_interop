@@ -2003,41 +2003,6 @@ public operator func[](index: Int64, value!: T)
 | index | Int64 | Yes | - | The index of the value to modify, ranging from [0..this.size]. |
 | value | T | Yes | - | **Named parameter.** The target value to set. |
 
-## class JSArrayRangeMisMatch
-
-```cangjie
-public class JSArrayRangeMisMatch <: JSInteropException {
-    public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch")
-}
-```
-
-**Function:** Out-of-bounds access exception.
-
-**Initial Version:** 13
-
-**Parent Type:**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(Int64, Int64, Int64, String)
-
-```cangjie
-public init(min: Int64, max: Int64, given: Int64, message!: String = "js array range mismatch")
-```
-
-**Function:** Constructor.
-
-**Initial Version:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| min | Int64 | Yes | - | The lower bound of valid values. |
-| max | Int64 | Yes | - | The upper bound of valid values (exclusive). |
-| given | Int64 | Yes | - | The current value. |
-| message | String | No | "js array range mismatch" | **Named parameter.** The exception message. |
-
 ## class JSBigInt
 
 ```cangjie
@@ -2392,80 +2357,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     return obj  
 }  
 ```  
-
-## class JSCodeError  
-
-```cangjie  
-public class JSCodeError <: JSInteropException {  
-    public let code:?Int32  
-    public let jsError: String  
-    public let jsStack: Array<String>  
-    public init(jsMessage: String, jsStack: Array<String>)  
-}  
-```  
-
-**Function:** Exception in ArkTS code.  
-
-**Initial Version:** 13  
-
-**Parent Type:**  
-
-* [JSInteropException](#class-jsinteropexception)  
-
-### let code  
-
-```cangjie  
-public let code:?Int32  
-```  
-
-**Function:** Exception error code.  
-
-**Initial Version:** 13  
-
-**Type:** ?Int32  
-
-**Read/Write Capability:** Read-only### let jsError
-
-```cangjie
-public let jsError: String
-```
-
-**Function:** Exception message.
-
-**Type:** String
-
-**Access:** Read-only
-
-### let jsStack
-
-```cangjie
-public let jsStack: Array<String>
-```
-
-**Function:** Exception stack.
-
-**Initial Version:** 13
-
-**Type:** Array\<String>
-
-**Access:** Read-only
-
-### init(String, Array\<String>)
-
-```cangjie
-public init(jsMessage: String, jsStack: Array<String>)
-```
-
-**Function:** Constructor.
-
-**Initial Version:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| jsMessage | String | Yes | - | ArkTS exception message. |
-| jsStack | Array\<String> | Yes | - | ArkTS exception stack. |
 
 ## class JSContext
 
@@ -4058,52 +3949,6 @@ public func toJSValue(): JSValue
 |:----|:----|
 | [JSValue](#struct-jsvalue) | ArkTS unified type. |
 
-## class JSInteropException
-
-```cangjie
-public abstract class JSInteropException <: Exception {}
-```
-
-**Function:** Base class for interoperability exceptions.
-
-**Initial Version:** 13
-
-**Parent Type:**
-
-* Exception
-
-## class JSInteropNativeError
-
-```cangjie
-public class JSInteropNativeError <: JSInteropException {
-    public init(message: String)
-}
-```
-
-**Function:** C interface exception for interoperability.
-
-**Initial Version:** 13
-
-**Parent Type:**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(String)
-
-```cangjie
-public init(message: String)
-```
-
-**Function:** Construct a JSInteropNativeError object.
-
-**Initial Version:** 13
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| message | String | Yes | - | Exception message. |
-
 ## class JSModule
 
 ```cangjie
@@ -4235,36 +4080,6 @@ class Main {
     }
 }
 ```
-
-## class JSObjUseAfterFree
-
-```cangjie
-public class JSObjUseAfterFree <: JSInteropException {
-    public init(message!: String = "use after free")
-}
-```
-
-**Function:** Lifecycle exception.
-
-**Since:** 13
-
-**Parent Type:**
-
-* [JSInteropException](#class-jsinteropexception)
-
-### init(String)
-
-```cangjie
-public init(message!: String = "use after free")
-```
-
-**Function:** Constructor.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| message | String | No | "use after free" | **Named parameter.** Exception message. |
 
 ## class JSObject
 
@@ -5297,93 +5112,6 @@ public func toString(): String
 |:--------|:-----------------------------|
 | String  | The converted string.        |
 
-## class JSThreadMisMatch  
-
-```cangjie  
-public class JSThreadMisMatch <: JSInteropException {  
-    public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch")  
-}  
-```  
-
-**Function:** Exception thrown when the thread executing an ArkTS interface does not match the required thread.  
-
-**Initial Version:** 13  
-
-**Parent Type:**  
-
-* [JSInteropException](#class-jsinteropexception)  
-
-### init(UInt64, UInt64, String)  
-
-```cangjie  
-public init(bindTid: UInt64, curTid: UInt64, message!: String = "js thread mismatch")  
-```  
-
-**Function:** Constructor.  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter | Type    | Required | Default Value          | Description                          |
-|:----------|:--------|:---------|:-----------------------|:-------------------------------------|
-| bindTid   | UInt64  | Yes      | -                      | The ID of the system thread bound to ArkTS. |
-| curTid    | UInt64  | Yes      | -                      | The ID of the current system thread. |
-| message   | String  | No       | "js thread mismatch"   | **Named parameter.** Exception message. |
-
-## class JSTypeMisMatch  
-
-```cangjie  
-public class JSTypeMisMatch <: JSInteropException {  
-    public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch")  
-    public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch")  
-}  
-```  
-
-**Function:** Exception thrown when an ArkTS operation does not match the actual type.  
-
-**Initial Version:** 13  
-
-**Parent Type:**  
-
-* [JSInteropException](#class-jsinteropexception)  
-
-### init(String, JSType, String)  
-
-```cangjie  
-public init(acquireType: String, givenType: JSType, message!: String = "js type mismatch")  
-```  
-
-**Function:** Constructor.  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter | Type               | Required | Default Value        | Description                          |
-|:----------|:-------------------|:---------|:---------------------|:-------------------------------------|
-| acquireType | String            | Yes      | -                    | The type required by the interface.  |
-| givenType  | [JSType](#struct-jstype) | Yes      | -                    | The current ArkTS type.             |
-| message   | String            | No       | "js type mismatch"   | **Named parameter.** Exception message. |
-
-### init(JSType, JSType, String)  
-
-```cangjie  
-public init(acquireType: JSType, givenType: JSType, message!: String = "js type mismatch")  
-```  
-
-**Function:** Constructor.  
-
-**Initial Version:** 13  
-
-**Parameters:**  
-
-| Parameter | Type               | Required | Default Value        | Description                          |
-|:----------|:-------------------|:---------|:---------------------|:-------------------------------------|
-| acquireType | [JSType](#struct-jstype) | Yes      | -                    | The type required by the interface.  |
-| givenType  | [JSType](#struct-jstype) | Yes      | -                    | The current ArkTS type.             |
-| message   | String            | No       | "js type mismatch"   | **Named parameter.** Exception message. |
-
 ## class SharedObject  
 
 ```cangjie  
@@ -6033,7 +5761,7 @@ public func asObject(): JSObject
 
 > **Note:**
 >
-> If the type of JSValue is not an object, a JSTypeMisMatch exception will be thrown. For example, during Cangjie-ArkTS interoperability, ArkTS types are uniformly converted to JSValue and then converted to Cangjie types via asObject. If the type returned from the ArkTS side does not match the actual type, an exception will be thrown.
+> If the type of JSValue is not an object, a BusinessException will be thrown. For example, during Cangjie-ArkTS interoperability, ArkTS types are uniformly converted to JSValue and then converted to Cangjie types via asObject. If the type returned from the ArkTS side does not match the actual type, an exception will be thrown.
 
 ### func asPromise()
 

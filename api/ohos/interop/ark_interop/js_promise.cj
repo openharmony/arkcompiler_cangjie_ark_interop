@@ -111,7 +111,7 @@ public class JSPromiseCapability {
     /**
      * Notify promise of noraml completion and commits the return value.
      *
-     * @throws { JSObjUseAfterFree } - JSPromiseCapability has been fulfilled or rejected.
+     * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
      */
     @!APILevel[
         21,
@@ -119,7 +119,7 @@ public class JSPromiseCapability {
     ]
     public func resolve(value: JSValue): Unit {
         if (isComplete) {
-            throw JSObjUseAfterFree(message: "JSPromiseCapability has been fulfilled or rejected")
+            throw jsObjUseAfterFree("JSPromiseCapability")
         }
         unsafe {
             ARKTS_PromiseCapabilityResolve(context.env, promise, value.value)
@@ -130,7 +130,7 @@ public class JSPromiseCapability {
     /**
      * Submit an exception to promise.
      *
-     * @throws { JSObjUseAfterFree } - JSPromiseCapability has been fulfilled or rejected.
+     * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
      */
     @!APILevel[
         21,
@@ -138,7 +138,7 @@ public class JSPromiseCapability {
     ]
     public func reject(value: JSValue): Unit {
         if (isComplete) {
-            throw JSObjUseAfterFree(message: "JSPromiseCapability has been fulfilled or rejected")
+            throw jsObjUseAfterFree("JSPromiseCapability")
         }
         unsafe {
             ARKTS_PromiseCapabilityReject(context.env, promise, value.value)
@@ -149,7 +149,7 @@ public class JSPromiseCapability {
     /**
      * Convert JSPromiseCapability to JSValue.
      * 
-     * @throws { JSObjUseAfterFree } - JSPromiseCapability has been fulfilled or rejected.
+     * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
      */
     @!APILevel[
         21,
@@ -157,7 +157,7 @@ public class JSPromiseCapability {
     ]
     public func toJSValue(): JSValue {
         if (isComplete) {
-            throw JSObjUseAfterFree(message: "JSPromiseCapability has been fulfilled or rejected")
+            throw jsObjUseAfterFree("JSPromiseCapability")
         }
         let result = unsafe { ARKTS_GetPromiseFromCapability(context.env, promise) }
         JSValue(context, result)

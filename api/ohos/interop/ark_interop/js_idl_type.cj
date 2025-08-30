@@ -103,7 +103,7 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
     /**
      * Init JSStringEx from JSValue.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSString.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
      */
     @!APILevel[
         21,
@@ -298,7 +298,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
     /**
      * Init JSArrayEx<T> from JSValue.
      *
-     * @throws { JSTypeMisMatch } - JSValue cannot be converted to JSArray.
+     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArray.
      */
     @!APILevel[
         21,

@@ -173,7 +173,7 @@ protected func OHOSFFIReleaseRemoteData(id: Int64): Bool {
     return RemoteDataManager.getInstance().releaseData(id)
 }
 
-public open class RemoteDataLite {
+protected open class RemoteDataLite {
     protected RemoteDataLite(protected var myDataId: Int64) {
         if (myDataId <= 0) {
             throw IllegalArgumentException("invalid object")

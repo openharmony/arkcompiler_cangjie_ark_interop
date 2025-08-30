@@ -82,7 +82,7 @@ func throwJSErrorToCJ(env: JSEnv, rawError: JSValue_): Unit {
 
     if (error.isString()) {
         let errorMsg = error.toString()
-        throw JSCodeError(errorMsg, [])
+        throw jsCodeError(errorMsg, [])
     } else if (!error.isObject()) {
         throw Exception("unknown js error")
     }
@@ -122,7 +122,7 @@ func throwJSErrorToCJ(env: JSEnv, rawError: JSValue_): Unit {
     } else {
         0
     }
-    throw JSCodeError(errCode, "${errName}\n${errMsg}", errStack)
+    throw jsCodeError(errCode, "${errName}\n${errMsg}", errStack)
 }
 
 @C
