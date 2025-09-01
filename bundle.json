@@ -1,6 +1,6 @@
 {
     "name": "@ohos/cangjie_ark_interop",
-    "description": "cangjie interop api",
+    "description": "Cangjie ArkTS interop library API, used to provide cross-language interoperability",
     "version": "6.0",
     "license": "Apache License 2.0",
     "publishAs": "code-segment",
@@ -12,33 +12,22 @@
     "component": {
         "name": "cangjie_ark_interop",
         "subsystem": "arkcompiler",
-        "syscap": [],
+        "syscap": [
+            
+        ],
         "features": [],
         "adapted_system_type": [
             "standard"
         ],
-        "rom": "5120KB",
-        "ram": "10240KB",
+        "rom": "1024KB",
+        "ram": "2046KB",
         "deps": {
             "components": [
-                "ace_engine",
-                "asset",
-                "c_utils",
-                "eventhandler",
-                "hiappevent",
-                "hidumper",
+                "ability_runtime",
                 "hilog",
-                "hiprofiler",
-                "hisysevent",
-                "hitrace",
-                "hiview",
-                "i18n",
-                "imf",
-                "init",
-                "libuv",
-                "napi",
-                "toolchain",
-                "work_scheduler"
+                "hitrace",	
+                "libuv",	
+                "napi"
             ]
         },
         "build": {
@@ -54,11 +43,6 @@
                 "//arkcompiler/cangjie_ark_interop/api/ohos/business_exception:ohos.business_exception",
                 "//arkcompiler/cangjie_ark_interop/api/ohos/callback_invoke:ohos.callback_invoke"
             ],
-            "group_type": {
-                "base_group": [],
-                "fwk_group": [],
-                "service_group": []
-              },
             "inner_kits": [
                 {
                     "name": "//arkcompiler/cangjie_ark_interop/api/ohos/labels:ohos.labels"
