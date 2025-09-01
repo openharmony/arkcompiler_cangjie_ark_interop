@@ -29,48 +29,6 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 |:----|:----|
 | [napi_value](cj-apis-ark_interop.md#type-napi_value) | The converted napi_value. |
 
-## func getContextStageMode(napi_env, napi_value)
-
-```cangjie
-public func getContextStageMode(env: napi_env, object: napi_value): StageContext
-```
-
-**Description:** Retrieves the application context based on the napi environment and object information.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| env | [napi_env](cj-apis-ark_interop.md#type-napi_env) | Yes | - | Environment information. |
-| object | [napi_value](cj-apis-ark_interop.md#type-napi_value) | Yes | - | napi value information. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [StageContext](#type-stagecontext) | The retrieved application context. |
-
-## func getJSContext(JSRuntime, UIAbilityContext)
-
-```cangjie
-public func getJSContext(runtime: JSRuntime, abilityContext: UIAbilityContext): JSValue
-```
-
-**Description:** Retrieves the ArkTS interoperation context based on runtime information.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| runtime | [JSRuntime](cj-apis-ark_interop.md#class-jsruntime) | Yes | - | ArkTS runtime object. |
-| abilityContext | UIAbilityContext | Yes | - | Cangjie context information. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSValue](cj-apis-ark_interop.md#struct-jsvalue) | The retrieved ArkTS interoperation context. |
-
 ## func isStageMode(napi_env, napi_value)
 
 ```cangjie
@@ -143,19 +101,3 @@ public func mapToJSValue<T>(
 | Type | Description |
 |:----|:----|
 | [JSValue](cj-apis-ark_interop.md#struct-jsvalue) | The converted JSValue data. |
-
-## type FAContext
-
-```cangjie
-public type FAContext = CPointer<Unit>
-```
-
-**Description:** FAContext is a type alias for CPointer\<Unit>.
-
-## type StageContext
-
-```cangjie
-public type StageContext = CPointer<Unit>
-```
-
-**Description:** StageContext is a type alias for CPointer\<Unit>.
