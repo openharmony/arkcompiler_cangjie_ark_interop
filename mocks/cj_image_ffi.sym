@@ -1,0 +1,108 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FfiOHOSCreateImageSourceByPath;
+FfiOHOSCreateImageSourceByPathWithOption;
+FfiOHOSCreateImageSourceByFd;
+FfiOHOSCreateImageSourceByFdWithOption;
+FfiOHOSCreateImageSourceByBuffer;
+FfiOHOSCreateImageSourceByBufferWithOption;
+FfiOHOSCreateImageSourceByRawFile;
+FfiOHOSCreateIncrementalSource;
+FfiOHOSImageSourceGetImageInfo;
+FfiOHOSImageSourceGetImageInfoV2;
+FfiOHOSGetSupportedFormats;
+FfiOHOSGetImageProperty;
+FfiOHOSModifyImageProperty;
+FfiOHOSGetFrameCount;
+FfiOHOSUpdateData;
+FfiOHOSRelease;
+FfiOHOSImageSourceCreatePixelMap;
+FfiOHOSImageSourceCreatePixelMapList;
+FfiOHOSImageSourceGetDelayTime;
+FfiOHOSCreatePixelMap;
+FfiOHOSGetIsEditable;
+FfiOHOSGetIsStrideAlignment;
+FfiOHOSReadPixelsToBuffer;
+FfiOHOSWriteBufferToPixels;
+FfiOHOSGetDensity;
+FfiOHOSOpacity;
+FfiOHOSCrop;
+FfiOHOSGetPixelBytesNumber;
+FfiOHOSGetBytesNumberPerRow;
+FfiOHOSGetImageInfo;
+FfiOHOSGetImageInfoV2;
+FfiOHOSScale;
+FfiOHOSFlip;
+FfiOHOSRotate;
+FfiOHOSTranslate;
+FfiOHOSReadPixels;
+FfiOHOSWritePixels;
+FfiOHOSCreateAlphaPixelMap;
+FfiOHOSPixelMapRelease;
+FfiOHOSImageGetClipRect;
+FfiOHOSImageGetSize;
+FfiOHOSImageGetFormat;
+FfiOHOSGetComponent;
+FfiOHOSImageRelease;
+FfiOHOSPixelMapSetColorSpace;
+FfiOHOSPixelMapGetColorSpace;
+FfiOHOSPixelMapApplyColorSpace;
+FfiOHOSReceiverGetSize;
+FfiOHOSReceiverGetCapacity;
+FfiOHOSReceiverGetFormat;
+FfiOHOSCreateImageReceiver;
+FfiOHOSGetReceivingSurfaceId;
+FfiOHOSReadNextImage;
+FfiOHOSReadLatestImage;
+FfiOHOSReceiverRelease;
+FFiOHOSImagePackerConstructor;
+FfiOHOSGetPackOptionSize;
+FfiOHOSImagePackerPackingPixelMap;
+FfiOHOSImagePackerPackingImageSource;
+FfiOHOSImagePackerGetSupportedFormats;
+FfiOHOSImagePackerPackPixelMapToFile;
+FfiOHOSImagePackerImageSourcePackToFile;
+FFiOHOSImagePackerRelease;
+FFiOHOSImageCreatorConstructor;
+FFiOHOSImageCreatorGetCapacity;
+FFiOHOSImageCreatorGetformat;
+FFiOHOSImageCreatorDequeueImage;
+FFiOHOSImageCreatorQueueImage;
+FFiOHOSImageCreatorOn;
+FFiOHOSImageCreatorRelease;
+FfiImageImageSourceGetDisposalTypeList;
+FfiImageImageSourceModifyImageProperties;
+FfiImageImageSourceGetImageProperties;
+FfiImagePixelMapImplCreatePixelMap;
+FfiImagePixelMapImplScale;
+FfiImagePixelMapImplCreatePremultipliedPixelMap;
+FfiImagePixelMapImplCreateUnpremultipliedPixelMap;
+FfiImagePixelMapImplToSdr;
+FfiImageImageImplGetTimestamp;
+FfiConvertPixelMap2Napi;
+FfiCreatePixelMapFromNapi;
+FfiImagePixelMapImplMarshalling;
+FfiImagePixelMapImplUnmarshalling;
+FfiImagePixelMapImplConvertPixelMapFormat;
+FfiImagePixelMapImplCreatePixelMapFromSurface;
+FfiImagePixelMapImplCreatePixelMapFromParcel;
+FfiImageReceiverImplOn;
+FfiImageImagePackerImplPackToDataPixelMap;
+FfiImageImagePackerImplPackToDataImageSource;
+FfiImageImagePackerImplPackingPicture;
+FfiImageImagePackerImplPackToFilePicture;
+FfiImagePictureImplCreatePicture;
+FfiImagePictureImplSetMetadata;
+FfiImagePictureImplGetMetadata;
+FfiImageMetadataImplGetAllProperties;

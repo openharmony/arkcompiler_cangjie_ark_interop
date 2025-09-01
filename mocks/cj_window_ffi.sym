@@ -1,0 +1,79 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FfiOHOSCreateWindow;
+FfiOHOSWindowSetWindowLayoutMode;
+FFiOHOSWindowFindWindow;
+FfiOHOSWindowMinimizeAll;
+FfiOHOSGetLastWindow;
+FfiOHOSWindowHide;
+FfiOHOSWindowHideWithAnimation;
+FfiOHOSWindowShowWindow;
+FfiOHOSWindowShowWithAnimation;
+FfiOHOSWindowDestroyWindow;
+FfiOHOSWindowMoveWindowTo;
+FfiOHOSWindowResize;
+FfiOHOSWindowSetWindowMode;
+FfiOHOSWindowSetWindowLayoutFullScreen;
+FfiOHOSWindowIsWindowSupportWideGamut;
+FfiOHOSWindowGetWindowProperties;
+FfiOHOSSetWindowBackgroundColor;
+FfiOHOSWindowSetWindowBrightness;
+FfiOHOSWindowSetWindowFocusable;
+FfiOHOSWindowSetWindowKeepScreenOn;
+FfiOHOSWindowSetWindowPrivacyMode;
+FfiOHOSWindowSetWindowTouchable;
+FfiOHOSWindowSetForbidSplitMove;
+FfiOHOSWindowIsWindowShowing;
+FFiOHOSWindowToggleShownStateForAllAppWindows;
+FFiOHOSWindowSetGestureNavigationEnabled;
+FFiOHOSWindowSetWaterMarkImage;
+FFiOHOSWindowSetBackdropBlurStyle;
+FFiOHOSWindowSetPreferredOrientation;
+FFiOHOSWindowGetWindowAvoidArea;
+FFiOHOSWindowSetShadowRadius;
+FFiOHOSWindowSetShadowColor;
+FFiOHOSWindowSetShadowOffsetX;
+FFiOHOSWindowSetShadowOffsetY;
+FFiOHOSWindowSetBackdropBlur;
+FFiOHOSWindowSetBlur;
+FFiOHOSWindowSetWaterMarkFlag;
+FFiOHOSWindowSetAspectRatio;
+FFiOHOSWindowResetAspectRatio;
+FFiOHOSWindowMinimize;
+FFiOHOSWindowSetWindowColorSpace;
+FFiOHOSWindowSetCornerRadius;
+FFiOHOSWindowSetResizeByDragEnabled;
+FFiOHOSWindowRaiseToAppTop;
+FFiOHOSWindowSetSnapshotSkip;
+FFiOHOSWindowSetWakeUpScreen;
+FFiOHOSWindowSetRaiseByClickEnabled;
+FFiOHOSWindowGetWindowColorSpace;
+FFiOHOSWindowRaiseAboveTarget;
+FFiOHOSWindowTranslate;
+FFiOHOSWindowRotate;
+FFiOHOSWindowScale;
+FFiOHOSWindowOpacity;
+FFiOHOSWindowSnapshot;
+FFiOHOSWindowSetWindowSystemBarEnable;
+FFiOHOSWindowSetWindowSystemBarProperties;
+FfiOHOSOnKeyboardHeightChange;
+FfiOHOSOffKeyboardHeightChange;
+FfiOHOSBindWindowStage;
+FfiOHOSGetMainWindow;
+FfiOHOSCreateSubWindow;
+FfiOHOSGetSubWindow;
+FfiOHOSLoadContent;
+FfiOHOSLoadContentByName;
+FfiOHOSDisableWindowDecor;
+FfiOHOSSetShowOnLockScreen;
