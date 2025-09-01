@@ -1,0 +1,108 @@
+# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FfiOHOSRelationalStoreGetRdbStore;
+FfiOHOSRelationalStoreDeleteRdbStore;
+FfiOHOSRelationalStoreDeleteRdbStoreConfig;
+FfiOHOSRelationalStoreRdbPredicatesConstructor;
+FfiOHOSRelationalStoreInDevices;
+FfiOHOSRelationalStoreGetAllColumnNames;
+FfiOHOSRelationalStoreGetColumnCount;
+FfiOHOSRelationalStoreGetRowCount;
+FfiOHOSRelationalStoreGetRowIndex;
+FfiOHOSRelationalStoreIsAtFirstRow;
+FfiOHOSRelationalStoreIsAtLastRow;
+FfiOHOSRelationalStoreIsEnded;
+FfiOHOSRelationalStoreIsStarted;
+FfiOHOSRelationalStoreIsClosed;
+FfiOHOSRelationalStoreInAllDevices;
+FfiOHOSRelationalStoreBeginWrap;
+FfiOHOSRelationalStoreEndWrap;
+FfiOHOSRelationalStoreOr;
+FfiOHOSRelationalStoreAnd;
+FfiOHOSRelationalStoreContains;
+FfiOHOSRelationalStoreBeginsWith;
+FfiOHOSRelationalStoreEndsWith;
+FfiOHOSRelationalStoreIsNull;
+FfiOHOSRelationalStoreIsNotNull;
+FfiOHOSRelationalStoreLike;
+FfiOHOSRelationalStoreGlob;
+FfiOHOSRelationalStoreOrderByAsc;
+FfiOHOSRelationalStoreOrderByDesc;
+FfiOHOSRelationalStoreDistinct;
+FfiOHOSRelationalStoreLimitAs;
+FfiOHOSRelationalStoreOffsetAs;
+FfiOHOSRelationalStoreGroupBy;
+FfiOHOSRelationalStoreIndexedBy;
+FfiOHOSRelationalStoreLessThanOrEqualTo;
+FfiOHOSRelationalStoreEqualTo;
+FfiOHOSRelationalStoreGreaterThanOrEqualTo;
+FfiOHOSRelationalStoreGreaterThan;
+FfiOHOSRelationalStoreNotBetween;
+FfiOHOSRelationalStoreLessThan;
+FfiOHOSRelationalStoreBetween;
+FfiOHOSRelationalStoreIn;
+FfiOHOSRelationalStoreNotIn;
+FfiOHOSRelationalStoreNotEqualTo;
+FfiOHOSRelationalStoreQuery;
+FfiOHOSRelationalStoreRemoteQuery;
+FfiOHOSRelationalStoreUpdate;
+FfiOHOSRelationalStoreDelete;
+FfiOHOSRelationalStoreSetDistributedTables;
+FfiOHOSRelationalStoreSetDistributedTablesType;
+FfiOHOSRelationalStoreSetDistributedTablesConfig;
+FfiOHOSRelationalStoreObtainDistributedTableName;
+FfiOHOSRelationalStoreRollBack;
+FfiOHOSRelationalStoreCommit;
+FfiOHOSRelationalStoreBeginTransaction;
+FfiOHOSRelationalStoreBackUp;
+FfiOHOSRelationalStoreReStore;
+FfiOHOSRelationalStoreInsert;
+FfiOHOSRelationalStoreExecuteSql;
+FfiOHOSRelationalStoreSync;
+FfiOHOSRelationalStoreGetDouble;
+FfiOHOSRelationalStoreGoToRow;
+FfiOHOSRelationalStoreGoToPreviousRow;
+FfiOHOSRelationalStoreGoToLastRow;
+FfiOHOSRelationalStoreGetColumnName;
+FfiOHOSRelationalStoreIsColumnNull;
+FfiOHOSRelationalStoreGetAsset;
+FfiOHOSRelationalStoreClose;
+FfiOHOSRelationalStoreGetColumnIndex;
+FfiOHOSRelationalStoreGetString;
+FfiOHOSRelationalStoreGoToFirstRow;
+FfiOHOSRelationalStoreGetLong;
+FfiOHOSRelationalStoreGoToNextRow;
+FfiOHOSRelationalStoreGetBlob;
+FfiOHOSRelationalStoreGoTo;
+FfiOHOSRelationalStoreGetAssets;
+FfiOHOSRelationalStoreCleanDirtyData;
+FfiOHOSRelationalStoreBatchInsert;
+FfiOHOSRelationalStoreQuerySql;
+FfiOHOSRelationalStoreExecuteSqlBindArgs;
+FfiOHOSRelationalStoreGetRow;
+FfiOHOSRelationalStoreOn;
+FfiOHOSRelationalStoreOnArrStr;
+FfiOHOSRelationalStoreOnChangeInfo;
+FfiOHOSRelationalStoreOnProgressDetails;
+FfiOHOSRelationalStoreOff;
+FfiOHOSRelationalStoreOffAll;
+FfiOHOSRelationalStoreOffArrStrChangeInfo;
+FfiOHOSRelationalStoreOffArrStrChangeInfoAll;
+FfiOHOSRelationalStoreOffProgressDetails;
+FfiOHOSRelationalStoreOffProgressDetailsAll;
+FfiOHOSRelationalStoreEmit;
+FfiOHOSRelationalStoreCloudSync;
+FfiOHOSRelationalStoreGetVersion;
+FfiOHOSRelationalStoreSetVersion;
+FfiOHOSRelationalStoreGetModifyTime;
