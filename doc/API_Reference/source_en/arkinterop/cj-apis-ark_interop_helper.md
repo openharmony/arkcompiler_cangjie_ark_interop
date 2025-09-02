@@ -16,6 +16,8 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 
 **Description:** Converts a JSValue type to an napi_value type.
 
+**Since:** 21
+
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
@@ -36,6 +38,8 @@ public func isStageMode(env: napi_env, context: napi_value): Bool
 ```
 
 **Description:** Determines whether the application is in stage mode.
+
+**Since:** 21
 
 **Parameters:**
 
@@ -62,6 +66,8 @@ public func mapFromJSValue<T>(
 
 **Description:** Converts JSValue format data into a HashMap.
 
+**Since:** 21
+
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
@@ -87,6 +93,8 @@ public func mapToJSValue<T>(
 ```
 
 **Description:** Converts HashMap format data into JSValue.
+
+**Since:** 21
 
 **Parameters:**
 
