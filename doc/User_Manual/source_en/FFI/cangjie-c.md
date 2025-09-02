@@ -1,32 +1,32 @@
 # Cangjie-C Interoperability
 
-To maintain compatibility with existing ecosystems, Cangjie supports calling C functions and also allows C to call Cangjie functions.
+To ensure compatibility with existing ecosystems, Cangjie supports calling C functions and allows C to call Cangjie functions.
 
 ## Calling C Functions from Cangjie
 
-To call a C function in Cangjie, the function must be declared in Cangjie using the `@C` and `foreign` keywords. However, the `@C` modifier can be omitted when used with `foreign` declarations.
+To call a C function in Cangjie, the function must be declared using the `@C` and `foreign` keywords in Cangjie. Note that `@C` can be omitted when modifying a `foreign` declaration.
 
-For example, to call the C functions `rand` and `printf`, whose signatures are as follows:
+For example, to call C's `rand` and `printf` functions with the following signatures:
 
 ```c
 // stdlib.h
 int rand();
 
 // stdio.h
-int printf(const char *fmt, ...);
+int printf (const char *fmt, ...);
 ```
 
-The corresponding declarations and usage in Cangjie would be:
+The corresponding Cangjie code would be:
 
 <!-- run -->
 
 ```cangjie
-// Declare the function using the `foreign` keyword, omitting `@C`
+// declare the function by `foreign` keyword, and omit `@C`
 foreign func rand(): Int32
 foreign func printf(fmt: CString, ...): Int32
 
 main() {
-    // Call the function within an `unsafe` block
+    // call this function by `unsafe` block
     let r = unsafe { rand() }
     println("random number ${r}")
     unsafe {
@@ -39,13 +39,13 @@ main() {
 
 Key points to note:
 
-1. The `foreign` modifier indicates an external function. Functions marked with `foreign` can only be declared, not implemented.
-2. Parameters and return types in `foreign` declarations must conform to the type mapping between C and Cangjie. For details, see [Type Mapping](./cangjie-c.md#type-mapping).
-3. Since C functions may involve unsafe operations, calls to `foreign` functions must be wrapped in an `unsafe` block; otherwise, a compilation error will occur.
-4. The `@C` modifier can only be used with `foreign` function declarations. Using it with other declarations will cause a compilation error.
-5. `@C` can only modify `foreign` functions, non-generic functions in the top-level scope, and `struct` types.
-6. `foreign` functions do not support named parameters or default values. Variadic parameters are allowed using `...` and must be the last in the parameter list. Variadic parameters must satisfy the `CType` constraint but need not be of the same type.
-7. Although Cangjie (CJNative backend) provides stack expansion capabilities, Cangjie cannot perceive the actual stack usage of C functions. Therefore, FFI calls into C functions still carry the risk of stack overflow (which may cause runtime crashes or unexpected behavior). Developers should adjust the `cjStackSize` configuration based on actual needs.
+1. The `foreign` modifier indicates an external function declaration. Functions marked with `foreign` can only be declared, not implemented.
+2. Parameters and return types in `foreign` declarations must conform to the type mapping rules between C and Cangjie. See [Type Mapping](./cangjie-c.md#type-mapping) for details.
+3. Since C functions may perform unsafe operations, calls to `foreign` functions must be wrapped in an `unsafe` block; otherwise, a compilation error will occur.
+4. The `@C` modifier can only be used with `foreign` function declarations, not other declarations.
+5. `@C` supports only `foreign` functions, non-generic functions in the top-level scope, and `struct` types.
+6. `foreign` functions do not support named parameters or default values. Variadic parameters are allowed using `...` at the end of the parameter list. Variadic parameters must satisfy the `CType` constraint but need not be of the same type.
+7. Although Cangjie (CJNative backend) provides stack expansion capabilities, Cangjie cannot perceive the actual stack usage of C functions. Therefore, FFI calls into C functions still carry the risk of stack overflow (potentially causing runtime crashes or undefined behavior). Developers should adjust `cjStackSize` configuration as needed.
 
 Examples of invalid `foreign` declarations:
 
@@ -65,11 +65,11 @@ foreign interface B{} // compiler error
 
 ## CFunc
 
-In Cangjie, `CFunc` refers to functions that can be called by C code. There are three forms:
+`CFunc` in Cangjie refers to functions callable from C code, which come in three forms:
 
-1. `foreign` functions modified with `@C`
-2. Cangjie functions modified with `@C`
-3. `lambda` expressions of type `CFunc`. Unlike regular lambda expressions, `CFunc lambda` cannot capture variables.
+1. `foreign` functions marked with `@C`
+2. Cangjie functions marked with `@C`
+3. `CFunc` lambda expressions, which differ from regular lambdas in that they cannot capture variables.
 
 <!-- run -->
 
@@ -89,7 +89,7 @@ let f1: CFunc<(CPointer<Int8>) -> Unit> = { ptr =>
 }
 ```
 
-All three forms declare/define functions of type `CFunc<(CPointer<Int8>) -> Unit>`. `CFunc` corresponds to C's function pointer type. This is a generic type where the generic parameter represents the `CFunc`'s parameter and return types. Example usage:
+All three forms above have the type `CFunc<(CPointer<Int8>) -> Unit>`. `CFunc` corresponds to C's function pointer type. This is a generic type where the type parameter specifies the `CFunc`'s parameter and return types. Example usage:
 
 <!-- run -->
 
@@ -97,11 +97,11 @@ All three forms declare/define functions of type `CFunc<(CPointer<Int8>) -> Unit
 foreign func atexit(cb: CFunc<() -> Unit>): Int32
 ```
 
-Like `foreign` functions, other forms of `CFunc` must satisfy the `CType` constraint for parameters and return types and do not support named parameters or default values.
+Like `foreign` functions, other forms of `CFunc` must satisfy the `CType` constraint for parameters and return types, and do not support named parameters or default values.
 
 When calling a `CFunc` in Cangjie code, it must be within an `unsafe` context.
 
-Cangjie allows converting a `CPointer<T>` variable to a specific `CFunc`, where the generic parameter `T` of `CPointer` can be any type satisfying the `CType` constraint. Example:
+Cangjie supports converting a `CPointer<T>` variable into a specific `CFunc`, where `T` can be any type satisfying the `CType` constraint. Example:
 
 <!-- compile -->
 
@@ -115,20 +115,20 @@ main() {
 
 > **Note:**
 >
-> Converting a pointer to a `CFunc` and calling it is dangerous. Users must ensure the pointer points to a valid function address; otherwise, a runtime error will occur.
+> Converting a pointer to a `CFunc` and calling it is dangerous. Users must ensure the pointer points to a valid function address; otherwise, runtime errors may occur.
 
 ## inout Parameters
 
-When calling a `CFunc` in Cangjie, arguments can be modified with the `inout` keyword to form a pass-by-reference expression. The type of such an expression is `CPointer<T>`, where `T` is the type of the `inout`-modified expression.
+When calling a `CFunc` in Cangjie, arguments can be modified with the `inout` keyword to pass by reference. The type of a reference-passed expression is `CPointer<T>`, where `T` is the type of the `inout`-modified expression.
 
-Pass-by-reference expressions have the following constraints:
+Reference-passed expressions have the following constraints:
 
-- Can only be used in calls to `CFunc`.
+- Can only be used in `CFunc` calls.
 - The modified object's type must satisfy the `CType` constraint but cannot be `CString`.
-- The modified object cannot be defined with `let`, nor can it be a literal, input parameter, or other temporary variable.
-- Pointers passed to C via pass-by-reference expressions are only guaranteed to be valid during the function call. C code should not save such pointers for later use.
+- The modified object cannot be defined with `let`, nor can it be a literal, parameter, or temporary value from other expressions.
+- Pointers passed to C via reference-passed expressions are only valid during the function call. C code should not store these pointers for later use.
 
-Variables modified with `inout` can be top-level variables, local variables, or `struct` member variables but cannot be derived directly or indirectly from `class` instance member variables.
+`inout` variables can be top-level variables, local variables, or `struct` member variables, but cannot be derived directly or indirectly from `class` instance members.
 
 Example:
 
@@ -174,19 +174,19 @@ main() {
 
 > **Note:**
 >
-> When using macro expansion features, the `inout` parameter feature cannot be used in macro definitions for now.
+> The `inout` parameter feature cannot be used in macro definitions when using macro expansion.
 
 ## unsafe
 
-Interoperability with C introduces many unsafe factors. The `unsafe` keyword in Cangjie is used to mark unsafe behaviors in cross-C calls.
+Interoperability with C introduces many unsafe operations, so Cangjie uses the `unsafe` keyword to mark such behaviors.
 
-Key points about the `unsafe` keyword:
+Key points about `unsafe`:
 
-- `unsafe` can modify functions, expressions, or a scope.
-- Functions modified with `@C` must be called within an `unsafe` context.
-- Calls to `CFunc` must occur within an `unsafe` context.
-- Calls to `foreign` functions in Cangjie must be within an `unsafe` context.
-- When a called function is modified with `unsafe`, the call site must be within an `unsafe` context.
+- Can modify functions, expressions, or scopes.
+- Functions marked with `@C` must be called in an `unsafe` context.
+- `CFunc` calls must occur in an `unsafe` context.
+- `foreign` function calls must occur in an `unsafe` context.
+- Functions marked with `unsafe` must be called in an `unsafe` context.
 
 Example usage:
 
@@ -214,7 +214,7 @@ main(): Int64 {
 }
 ```
 
-Note that regular `lambda` expressions cannot propagate the `unsafe` attribute. If an `unsafe` `lambda` escapes, it can be called outside an `unsafe` context without causing a compilation error. When calling `unsafe` functions within a `lambda`, it is recommended to do so within an `unsafe` block:
+Note that regular `lambda` functions cannot propagate `unsafe` attributes. If an `unsafe` lambda escapes, it can be called outside an `unsafe` context without compilation errors. To call `unsafe` functions within a lambda, wrap the call in an `unsafe` block:
 
 <!-- run -->
 
@@ -235,12 +235,12 @@ main() {
 
 ## Calling Conventions
 
-Calling conventions describe how callers and callees interact during function calls (e.g., parameter passing, stack cleanup). Both sides must use the same calling convention for correct operation. Cangjie uses `@CallingConv` to represent various calling conventions. Supported conventions include:
+Calling conventions define how functions are called (e.g., parameter passing, stack cleanup). Both caller and callee must use the same convention. Cangjie uses `@CallingConv` to specify calling conventions, supporting:
 
-- **CDECL**: The default calling convention used by clang's C compiler across platforms.
-- **STDCALL**: The calling convention used by Win32 APIs.
+- **CDECL**: Default for clang's C compiler across platforms.
+- **STDCALL**: Used by Win32 APIs.
 
-C functions called via C interoperability use the default `CDECL` calling convention if not specified. Example calling the C standard library function `rand`:
+C functions called via FFI default to `CDECL` if unspecified. Example calling C's `rand`:
 
 <!-- run -->
 
@@ -253,18 +253,18 @@ main() {
 }
 ```
 
-`@CallingConv` can only modify `foreign` blocks, individual `foreign` functions, and top-level `CFunc` functions. When modifying a `foreign` block, each function within the block is implicitly given the same `@CallingConv` modifier.
+`@CallingConv` can only modify `foreign` blocks, individual `foreign` functions, or top-level `CFunc` functions. When applied to a `foreign` block, it applies to all functions within.
 
 ## Type Mapping
 
 ### Basic Types
 
-Cangjie and C support mappings for basic data types. The general principles are:
+Cangjie and C support basic type mapping with these principles:
 
-1. Cangjie types do not include reference types pointing to managed memory.
-2. Cangjie types and C types have the same memory layout.
+1. Cangjie types do not include references to managed memory.
+2. Cangjie and C types share the same memory layout.
 
-For example, some basic type mappings are:
+Basic type mappings:
 
 | Cangjie Type |   C Type   |    Size (byte)     |
 |:------------:|:----------:|:------------------:|
@@ -286,13 +286,13 @@ For example, some basic type mappings are:
 
 > **Note:**
 >
-> Due to platform-dependent sizes, programmers must explicitly specify corresponding Cangjie types for C's `int` and `long` types. In C interoperability scenarios, the `Unit` type can only be used as a return type in `CFunc` or as a generic parameter in `CPointer`.
+> Due to platform variability, `int` and `long` types require explicit Cangjie equivalents. In C interop, `Unit` can only be used as a return type in `CFunc` or as a generic parameter in `CPointer`.
 
-Cangjie also supports mappings for C struct and pointer types.
+Cangjie also supports struct and pointer type mappings.
 
 ### Structs
 
-For struct types, Cangjie uses `@C`-modified `struct` to correspond. For example, a C struct like:
+For struct types, Cangjie uses `@C`-modified `struct`s. For example, this C struct:
 
 ```c
 typedef struct {
@@ -302,7 +302,7 @@ typedef struct {
 } Point3D;
 ```
 
-The corresponding Cangjie type can be defined as follows:
+Corresponds to this Cangjie definition:
 
 <!-- run -example00-->
 
@@ -315,13 +315,13 @@ struct Point3D {
 }
 ```
 
-If there is a function in C like this:
+For this C function:
 
 ```c
 Point3D addPoint(Point3D p1, Point3D p2);
 ```
 
-The corresponding declaration in Cangjie would be:
+The Cangjie declaration would be:
 
 <!-- run -example00-->
 
@@ -329,25 +329,25 @@ The corresponding declaration in Cangjie would be:
 foreign func addPoint(p1: Point3D, p2: Point3D): Point3D
 ```
 
-A `struct` decorated with `@C` must satisfy the following restrictions:
+`@C`-modified `struct`s have these restrictions:
 
-- Member variable types must satisfy the `CType` constraint
-- Cannot implement or extend `interfaces`
-- Cannot be used as an associated value type for `enum`
-- Cannot be captured by closures
-- Cannot have generic parameters
+- Member types must satisfy `CType`.
+- Cannot implement or extend `interfaces`.
+- Cannot be `enum` associated values.
+- Cannot be captured by closures.
+- Cannot have generic parameters.
 
-A `struct` decorated with `@C` automatically satisfies the `CType` constraint.
+`@C` `struct`s automatically satisfy `CType`.
 
 ### Pointers
 
-For pointer types, Cangjie provides the `CPointer<T>` type to correspond to C-side pointer types, where the generic parameter `T` must satisfy the `CType` constraint. For example, the `malloc` function in C has the following signature:
+For pointers, Cangjie provides `CPointer<T>`, where `T` must satisfy `CType`. For example, C's `malloc`:
 
 ```c
 void* malloc(size_t size);
 ```
 
-In Cangjie, it can be declared as:
+In Cangjie:
 
 <!-- run -->
 
@@ -355,9 +355,9 @@ In Cangjie, it can be declared as:
 foreign func malloc(size: UIntNative): CPointer<Unit>
 ```
 
-`CPointer` supports read/write operations, pointer arithmetic, null checks, and conversion to integer form. Detailed APIs can be found in the *Cangjie Programming Language Library API*. Read/write and pointer arithmetic are unsafe operations; calling these functions with invalid pointers may result in undefined behavior. These unsafe functions must be called within an `unsafe` block.
+`CPointer` supports read/write, offset calculation, null checks, and integer conversion. See the Cangjie Library API for details. Read/write and offsets are unsafe and require `unsafe` blocks.
 
-Example usage of `CPointer`:
+Example usage:
 
 <!-- run -->
 
@@ -398,7 +398,7 @@ main() {
 }
 ```
 
-Cangjie supports type casting between `CPointer` types. Both the source and target `CPointer` generic parameters `T` must satisfy the `CType` constraint. Usage example:
+Cangjie supports pointer type conversion between `CPointer`s with `CType`-satisfying generic parameters:
 
 <!-- run -->
 
@@ -409,7 +409,7 @@ main() {
 }
 ```
 
-Cangjie supports converting a `CFunc` type variable to a specific `CPointer`, where the `CPointer`'s generic parameter `T` can be any type satisfying the `CType` constraint. Usage example:
+Cangjie also supports converting `CFunc` to `CPointer`:
 
 <!-- run -->
 
@@ -422,31 +422,31 @@ main() {
 
 > **Note:**
 >
-> Converting a `CFunc` to a pointer is generally safe, but the converted pointer should not be used for any `read` or `write` operations, as this may cause runtime errors.
+> Converting `CFunc` to a pointer is generally safe, but avoid `read`/`write` operations on the result to prevent runtime errors.
 
 ### Arrays
 
-Cangjie uses the `VArray` type to map to C array types. `VArray` can be used as function parameters and `@C struct` members. When the element type `T` of `VArray<T, $N>` satisfies the `CType` constraint, `VArray<T, $N>` also satisfies the `CType` constraint.
+Cangjie uses `VArray` to map C arrays. `VArray` can be function parameters or `@C struct` members. When `VArray<T, $N>`'s element type `T` satisfies `CType`, `VArray<T, $N>` also satisfies `CType`.
 
-**As Function Parameter Types:**
+**As Function Parameters:**
 
-When `VArray` is used as a `CFunc` parameter, the function signature can only be `CPointer<T>` or `VArray<T, $N>`. When the parameter type in the function signature is `VArray<T, $N>`, the argument is still passed as `CPointer<T>`.
+When `VArray` is a `CFunc` parameter, the signature can only be `CPointer<T>` or `VArray<T, $N>`. For `VArray<T, $N>` parameters, arguments are passed as `CPointer<T>`.
 
-Example usage of `VArray` as a parameter:
+Example:
 
 ```cangjie
 foreign func cfoo1(a: CPointer<Int32>): Unit
 foreign func cfoo2(a: VArray<Int32, $3>): Unit
 ```
 
-The corresponding C function definitions could be:
+Corresponding C definitions:
 
 ```c
 void cfoo1(int *a) {}
 void cfoo2(int a[3]) {}
 ```
 
-When calling `CFunc`, the `VArray` type variable must be marked with `inout`:
+Calling requires `inout`:
 
 ```cangjie
 var a: VArray<Int32, $3> = [1, 2, 3]
@@ -456,11 +456,11 @@ unsafe {
 }
 ```
 
-`VArray` cannot be used as a return type for `CFunc`.
+`VArray` cannot be a `CFunc` return type.
 
 **As @C Struct Members:**
 
-When `VArray` is used as an `@C struct` member, its memory layout matches the C-side struct arrangement. Ensure the declared length and type in Cangjie exactly match those in C:
+When `VArray` is an `@C struct` member, its memory layout matches C structs. Ensure Cangjie declarations match C exactly:
 
 ```c
 struct S {
@@ -469,7 +469,7 @@ struct S {
 }
 ```
 
-In Cangjie, this can be declared as follows to correspond with the C code:
+Cangjie equivalent:
 
 <!-- run -->
 
@@ -483,96 +483,33 @@ struct S {
 
 > **Note:**
 >
-> C allows the last field of a struct to be an array of unspecified length, known as a flexible array. Cangjie does not support mapping structs containing flexible arrays.
+> C's flexible array members (unsized arrays at struct ends) are not supported in Cangjie.
 
 ### Strings
 
-Specifically, for C-style strings, Cangjie provides the `CString` type. To simplify operations with C strings, `CString` offers the following member functions:
+For C strings, Cangjie provides `CString` with these methods:
 
-- `init(p: CPointer<UInt8>)`   Constructs a `CString` from a `CPointer`
-- `func getChars()`  Gets the string address as `CPointer<UInt8>`
-- `func size(): Int64`   Calculates the string length
-- `func isEmpty(): Bool`   Checks if the string length is 0 (returns `true` if the pointer is null)
-- `func isNotEmpty(): Bool`   Checks if the string length is not 0 (returns `false` if the pointer is null)
-- `func isNull(): Bool`   Checks if the string pointer is null
-- `func startsWith(str: CString): Bool`   Checks if the string starts with `str`
-- `func endsWith(str: CString): Bool`   Checks if the string ends with `str`
-- `func equals(rhs: CString): Bool`   Checks if the string equals `rhs`
-- `func equalsLower(rhs: CString): Bool`   Case-insensitive equality check
-- `func subCString(start: UInt64): CString`   Extracts a substring from `start` (allocates new memory)
-- `func subCString(start: UInt64, len: UInt64): CString`   Extracts a substring of length `len` from `start` (allocates new memory)
-- `func compare(str: CString): Int32`   Compares strings (same as C's `strcmp(this, str)`)
-- `func toString(): String`   Constructs a new `String` object
-- `func asResource(): CStringResource`  Gets the `Resource` type of `CString`
+- `init(p: CPointer<UInt8>)`   Construct from `CPointer`
+- `func getChars()`  Get string address as `CPointer<UInt8>`
+- `func size(): Int64`   Get length
+- `func isEmpty(): Bool`   Check if empty (returns true for null pointers)
+- `func isNotEmpty(): Bool`   Check if not empty (returns false for null pointers)
+- `func isNull(): Bool`   Check if pointer is null
+- `func startsWith(str: CString): Bool`   Check prefix
+- `func endsWith(str: CString): Bool`   Check suffix
+- `func equals(rhs: CString): Bool`   Equality check
+- `func equalsLower(rhs: CString): Bool`   Case-insensitive equality
+- `func subCString(start: UInt64): CString`   Substring from `start` (new allocation)
+- `func subCString(start: UInt64, len: UInt64): CString`   Substring from `start` with `len` (new allocation)
+- `func compare(str: CString): Int32`   Like C's `strcmp(this, str)`
+- `func toString(): String`   Convert to `String`
+- `func asResource(): CStringResource`  Get## CType
 
-To convert a `String` to `CString`, use the `mallocCString` interface from LibC. Remember to free the `CString` after use.
-
-Example usage of `CString`:
-
-<!-- run -->
-
-```cangjie
-foreign func strlen(s: CString): UIntNative
-
-main() {
-    var s1 = unsafe { LibC.mallocCString("hello") }
-    var s2 = unsafe { LibC.mallocCString("world") }
-
-    let t1: Int64 = s1.size()
-    let t2: Bool = s2.isEmpty()
-    let t3: Bool = s1.equals(s2)
-    let t4: Bool = s1.startsWith(s2)
-    let t5: Int32 = s1.compare(s2)
-
-    let length = unsafe { strlen(s1) }
-
-    unsafe {
-        LibC.free(s1)
-        LibC.free(s2)
-    }
-}
-```
-
-### sizeOf/alignOf
-
-Cangjie also provides `sizeOf` and `alignOf` functions to get the memory size and alignment (in bytes) of C-interoperable types:
-
-```cangjie
-public func sizeOf<T>(): UIntNative where T <: CType
-public func alignOf<T>(): UIntNative where T <: CType
-```
-
-Usage example:
-
-<!-- verify -->
-
-```cangjie
-@C
-struct Data {
-    var a: Int64 = 0
-    var b: Float32 = 0.0
-}
-
-main() {
-    println(sizeOf<Data>())
-    println(alignOf<Data>())
-}
-```
-
-On a 64-bit machine, this outputs:
-
-```text
-16
-8
-```
-
-## CType
-
-Beyond the type mappings provided in the previous section, Cangjie offers a `CType` interface that serves as a parent type for all C-interoperable types, facilitating use in generic constraints.
+In addition to the types provided in the type mapping section for interfacing with C-side types, Cangjie also offers a `CType` interface. This interface itself contains no methods and serves as the parent type for all C-interoperable types, facilitating use in generic constraints.
 
 Important notes:
 
-1. The `CType` interface is itself an interface type in Cangjie and does not satisfy the `CType` constraint;
+1. The `CType` interface is an interface type in Cangjie and does not itself satisfy the `CType` constraint;
 2. The `CType` interface cannot be inherited or extended;
 3. The `CType` interface does not bypass subtype usage restrictions.
 
@@ -602,7 +539,7 @@ main() {
 }
 ```
 
-Execution results are as follows:
+Execution output:
 
 ```text
 1
@@ -613,28 +550,28 @@ match failed
 
 ## Calling Cangjie Functions from C
 
-Cangjie provides the `CFunc` type to correspond to C-side function pointer types. Function pointers from C can be passed to Cangjie, and Cangjie can also construct variables corresponding to C function pointers to pass to the C side.
+Cangjie provides the `CFunc` type to correspond with C-side function pointer types. C-side function pointers can be passed to Cangjie, and Cangjie can also construct variables corresponding to C function pointers to pass to the C side.
 
-Assuming a C library API is as follows:
+Assume a C library API as follows:
 
 ```c
 typedef void (*callback)(int);
 void set_callback(callback cb);
 ```
 
-The corresponding declaration in Cangjie would be:
+Correspondingly, in Cangjie this function can be declared as:
 
 ```cangjie
 foreign func set_callback(cb: CFunc<(Int32) -> Unit>): Unit
 ```
 
-Variables of type `CFunc` can be passed from the C side or constructed on the Cangjie side. There are two methods to construct `CFunc` types in Cangjie: one is using functions decorated with `@C`, and the other is closures marked as `CFunc` types.
+CFunc-type variables can either be passed from the C side or constructed on the Cangjie side. There are two ways to construct CFunc types in Cangjie: using functions decorated with `@C`, or closures marked as CFunc types.
 
-Functions decorated with `@C` indicate that their function signatures comply with C calling conventions, while their definitions are written in Cangjie. Functions decorated with `foreign` have their definitions on the C side.
+Functions decorated with `@C` indicate that their function signatures comply with C calling conventions, while their definitions remain in Cangjie. Functions decorated with `foreign` have their definitions on the C side.
 
 > **Note:**
 >
-> For functions decorated with `foreign` or `@C`, it is not recommended to use `CJ_` (case-insensitive) as a prefix for `CFunc` names, as this may conflict with standard library and runtime symbols used internally by the compiler, leading to undefined behavior.
+> For both `foreign`-decorated functions and `@C`-decorated functions, it is not recommended to use `CJ_` (case-insensitive) as a prefix for CFunc names, as this may conflict with standard library and runtime symbols internal to the compiler, leading to undefined behavior.
 
 Example:
 
@@ -654,27 +591,27 @@ main() {
 }
 ```
 
-Assuming the C function is compiled into a library named "libmyfunc.so", the compilation command `cjc -L. -lmyfunc test.cj -o test.out` should be used to link this library with the Cangjie compiler. This will generate the desired executable.
+Assuming the C function is compiled into a library named "libmyfunc.so", use the compilation command `cjc -L. -lmyfunc test.cj -o test.out` to make the Cangjie compiler link this library. This will ultimately produce the desired executable.
 
-Additionally, when compiling C code, enable the `-fstack-protector-all/-fstack-protector-strong` stack protection options. Cangjie code inherently includes overflow checks and stack protection. When incorporating C code, ensure that safety against overflow is maintained within `unsafe` blocks.
+Additionally, when compiling C code, enable the `-fstack-protector-all/-fstack-protector-strong` stack protection options. Cangjie-side code inherently includes overflow checks and stack protection. When incorporating C code, ensure that safety against overflow is maintained within unsafe blocks.
 
 ## Compilation Options
 
-C interoperation typically requires manual linking of C libraries. The Cangjie compiler provides relevant compilation options.
+C interoperation typically requires manual linking of C libraries, for which the Cangjie compiler provides corresponding compilation options.
 
 - `--library-path <value>`, `-L <value>`, `-L<value>`: Specifies the directory containing the library files to be linked.
 
-  The path specified by `--library-path <value>` is added to the linker's library search path. Additionally, paths specified in the `LIBRARY_PATH` environment variable are also included, with `--library-path` taking precedence over `LIBRARY_PATH`.
+  The path specified by `--library-path <value>` will be added to the linker's library search path. Additionally, paths specified in the `LIBRARY_PATH` environment variable will also be included, with `--library-path` taking precedence over `LIBRARY_PATH`.
 
 - `--library <value>`, `-l <value>`, `-l<value>`: Specifies the library file to be linked.
 
-  The given library file is passed directly to the linker. The library filename should follow the format `lib[arg].[extension]`.
+  The given library file will be passed directly to the linker. The library filename should follow the format `lib[arg].[extension]`.
 
 For all compilation options supported by the Cangjie compiler, refer to "Appendix > cjc Compilation Options".
 
 ## Example
 
-This demonstrates how to use C interoperation and the `write/read` interfaces to assign and read values for a structure.
+This demonstrates how to use C interoperation along with the `write/read` interfaces to assign and read values from a structure.
 
 C code:
 
@@ -756,19 +693,19 @@ main() {
 }
 ```
 
-Compilation command for Cangjie code (using the CJNative backend as an example):
+Compilation command for Cangjie code (using CJNative backend as an example):
 
 ```shell
 cjc -L . -l draw ./main.cj
 ```
 
-Here, `-L .` indicates that the linker should search the current directory for libraries (assuming `libdraw.so` is present), and `-l draw` specifies the library name. By default, this generates an executable named `main`. To run the executable:
+Here, `-L .` indicates that the linker should search the current directory for libraries (assuming `libdraw.so` is present in the current directory), and `-l draw` specifies the library name. Upon successful compilation, the default output is a binary file named `main`. Execute it with:
 
 ```shell
 LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./main
 ```
 
-Execution results:
+Execution output:
 
 ```shell
 Draw Point finished.

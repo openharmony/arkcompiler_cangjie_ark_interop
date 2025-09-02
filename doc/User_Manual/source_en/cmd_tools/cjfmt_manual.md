@@ -2,13 +2,13 @@
 
 ## Feature Overview
 
-`CJFMT (Cangjie Formatter)` is an automatic code formatting tool developed based on the Cangjie language programming specifications.
+`CJFMT (Cangjie Formatter)` is a code auto-formatting tool developed based on the Cangjie language programming specifications.
 
 ## Usage Instructions
 
-Use the command line operation `cjfmt [option] file [option] file`
+Command line operation: `cjfmt [option] file [option] file`
 
-`cjfmt -h` displays help information and option descriptions.
+`cjfmt -h` displays help information and option descriptions
 
 ```text
 Usage:
@@ -40,7 +40,7 @@ Options:
 
 `cjfmt -f`
 
-- Format and overwrite the source file. Supports relative and absolute paths.
+- Format and overwrite the source file, supporting relative and absolute paths.
 
 ```shell
 cjfmt -f ../../../test/uilang/Thread.cj
@@ -56,15 +56,15 @@ cjfmt -f ../../../test/uilang/Thread.cj -o ../../../test/formated/Thread.cj
 
 `cjfmt -d`
 
-- Option `-d` allows developers to specify a Cangjie source code directory for formatting. Supports relative and absolute paths.
+- Option `-d` allows developers to specify a directory containing Cangjie source code for formatting, supporting relative and absolute paths.
 
 ```shell
-cjfmt -d test/              // Source directory is a relative path
+cjfmt -d test/              // Source directory as relative path
 
-cjfmt -d /home/xxx/test     // Source directory is an absolute path
+cjfmt -d /home/xxx/test     // Source directory as absolute path
 ```
 
-- Option `-o` specifies the output directory, which can be an existing path. If it doesn't exist, the relevant directory structure will be created. Supports relative and absolute paths. The maximum path length (MAX_PATH) varies across systems. For example, on Windows, this value generally cannot exceed 260, while on Linux, it is recommended not to exceed 4096.
+- Option `-o` specifies the output directory, which can be an existing path. If it doesn't exist, the relevant directory structure will be created. Both relative and absolute paths are supported. The maximum path length (MAX_PATH) varies across systems, e.g., typically not exceeding 260 characters on Windows and 4096 on Linux.
 
 ```shell
 cjfmt -d test/ -o /home/xxx/testout
@@ -74,7 +74,7 @@ cjfmt -d /home/xxx/test -o ../testout/
 cjfmt -d testsrc/ -o /home/../testout   // Error if source directory doesn't exist: "error: Source file path not exist!"
 ```
 
-### Formatting Configuration File
+### Format Configuration File
 
 `cjfmt -c`
 
@@ -84,7 +84,7 @@ cjfmt -d testsrc/ -o /home/../testout   // Error if source directory doesn't exi
 cjfmt -f a.cj -c ./cangjie-format.toml
 ```
 
-The default `cangjie-format.toml` configuration file contains the following settings, which are also the built-in configuration values for the `cjfmt` tool:
+The default `cangjie-format.toml` configuration file contains the following values, which are also the built-in configuration options for `cjfmt`:
 
 ```toml
 # indent width
@@ -120,14 +120,14 @@ multipleLineMethodChainOverLineLength = true
 >
 > If the custom formatting configuration file fails to load, the tool will attempt to read the default configuration file `cangjie-format.toml` from the CANGJIE_HOME environment.
 > If the default configuration file also fails to load, the built-in formatting configuration options of `cjfmt` will be used.
-> If a specific configuration option in the formatting configuration file fails to load, the built-in formatting configuration option for that setting will be used.
+> If a specific configuration option fails to load, the built-in formatting configuration option for that setting will be used.
 
 ### Partial Formatting
 
 `cjfmt -l`
 
-- Option `-l` allows developers to specify a portion of the file to be formatted. The formatter will only apply rules to the source code within the specified line range.
-- The `-l` option is only valid when formatting a single file (option `-f`). If a directory is specified (option `-d`), the `-l` option will be ignored.
+- Option `-l` allows developers to specify a portion of the file to format. The formatter will only apply rules to the specified line range.
+- The `-l` option only works when formatting a single file (option `-f`). It is invalid when specifying a directory (option `-d`).
 
 ```shell
 cjfmt -f a.cj -o b.cj -l 10:25 // Only formats lines 10 to 25
@@ -135,7 +135,7 @@ cjfmt -f a.cj -o b.cj -l 10:25 // Only formats lines 10 to 25
 
 ## Formatting Rules
 
-- A source file sequentially includes copyright, package, import, and top-level elements, separated by blank lines.
+- A source file should sequentially contain copyright, package, import, and top-level elements, separated by blank lines.
 
 [Correct Example]
 
@@ -166,7 +166,7 @@ class Helper {
 
 > **Note:**
 >
-> The Cangjie formatter does not enforce blank lines between the copyright section and other sections. If the developer leaves one or more blank lines below the copyright information, the formatter will retain one blank line.
+> The Cangjie formatter does not enforce blank lines between the copyright section and other sections. If developers leave one or more blank lines below the copyright information, the formatter will preserve one blank line.
 
 - Use consistent indentation with 4 spaces per level.
 
@@ -176,9 +176,9 @@ class Helper {
 
 ```cangjie
 class ListItem {
-    var content: Array<Int64> // Correct: Indented 4 spaces relative to class declaration
+    var content: Array<Int64> // Correct: 4-space indentation relative to class declaration
     init(
-        content: Array<Int64>, // Correct: Function parameters indented 4 spaces relative to function declaration
+        content: Array<Int64>, // Correct: 4-space indentation for function parameters
         isShow!: Bool = true,
         id!: String = ""
     ) {
@@ -187,71 +187,71 @@ class ListItem {
 }
 ```
 
-- Use a unified brace style. For non-empty blocks, adopt the K&R style.
+- Use uniform brace placement style. For non-empty blocks, use K&R style braces.
 
 [Correct Example]
 
 <!-- compile -->
 
 ```cangjie
-enum TimeUnit { // Correct: Placed at the end of the declaration line, preceded by 1 space
+enum TimeUnit { // Correct: Opening brace on same line with 1 preceding space
     Year | Month | Day | Hour
 } // Correct: Closing brace on its own line
 
-class A { // Correct: Placed at the end of the declaration line, preceded by 1 space
+class A { // Correct: Opening brace on same line with 1 preceding space
     var count = 1
 }
 
-func fn(a: Int64): Unit { // Correct: Placed at the end of the declaration line, preceded by 1 space
-    if (a > 0) { // Correct: Placed at the end of the declaration line, preceded by 1 space
+func fn(a: Int64): Unit { // Correct: Opening brace on same line with 1 preceding space
+    if (a > 0) { // Correct: Opening brace on same line with 1 preceding space
     // CODE
-    } else { // Correct: Closing brace and 'else' on the same line
+    } else { // Correct: Closing brace and 'else' on same line
         // CODE
     } // Correct: Closing brace on its own line
 }
 
 // Lambda function
 let add = {
-    base: Int64, bonus: Int64 => // Correct: Non-empty blocks in lambda expressions follow K&R style
+    base: Int64, bonus: Int64 => // Correct: Lambda expressions follow K&R style
     print("Correct news")
     base + bonus
 }
 ```
 
-- Follow rule G.FMT.10 from the Cangjie Language Programming Specifications to use spaces to highlight keywords and important information.
+- Follow rule G.FMT.10 from the Cangjie language programming specifications to use spaces for highlighting keywords and important information.
 
 [Correct Example]
 
 <!-- only-format -->
 
 ```cangjie
-var isPresent: Bool = false  // Correct: One space after the colon in variable declarations
-func method(isEmpty!: Bool): RetType { ... } // Correct: One space after colons in function definitions (named parameters / return types)
+var isPresent: Bool = false  // Correct: One space after colon in variable declaration
+func method(isEmpty!: Bool): RetType { ... } // Correct: One space after colon in function parameters/return type
 
-method(isEmpty: isPresent) // Correct: One space after the colon in named parameter assignments
+method(isEmpty: isPresent) // Correct: One space after colon in named arguments
 
-0..MAX_COUNT : -1 // Correct: No spaces around the range operator, one space before and after the step colon
+0..MAX_COUNT : -1 // Correct: No spaces around range operator, one space around step colon
 
 var hundred = 0
-do { // Correct: One space between the 'do' keyword and the following brace
+do { // Correct: One space between 'do' and opening brace
     hundred++
-} while (hundred < 100) // Correct: One space between the 'while' keyword and the preceding brace
+} while (hundred < 100) // Correct: One space between 'while' and opening parenthesis
 
-func fn(paramName1: ArgType, paramName2: ArgType): ReturnType { // Correct: No spaces inside parentheses adjacent to characters
+func fn(paramName1: ArgType, paramName2: ArgType): ReturnType { // Correct: No spaces inside parentheses
     ...
-    for (i in 1..4) { // Correct: No spaces around the range operator
+    for (i in 1..4) { // Correct: No spaces around range operator
         ...
     }
 }
 
-let listOne: Array<Int64> = [1, 2, 3, 4] // Correct: No spaces inside square brackets or parentheses
+let listOne: Array<Int64> = [1, 2, 3, 4] // Correct: No spaces inside brackets/parentheses
 
 let salary = base + bonus // Correct: Spaces around binary operators
 
-x++ // Correct: No spaces between unary operators and operands
+x++ // Correct: No space between unary operator and operand
 ```
 
-- Minimize unnecessary blank lines to keep the code compact.
+- Minimize unnecessary blank lines to keep code compact.
 
 [Incorrect Example]
 
@@ -264,7 +264,7 @@ class MyApp <: App {
     // Blank line
     // Blank line
     // Blank line
-    init() {           // Incorrect: Multiple consecutive blank lines inside type definitions
+    init() {           // Incorrect: Consecutive blank lines in type definition
         this.page = Router("album", album)
     }
 
@@ -276,7 +276,7 @@ class MyApp <: App {
 }
 ```
 
-- Minimize unnecessary semicolons, prioritizing code conciseness.
+- Minimize unnecessary semicolons for cleaner code.
 
 [Before Formatting]
 
@@ -298,26 +298,26 @@ func fn(a: Int64): Unit {
 <!-- only-format -->
 
 ```cangjie
-package demo.analyzer.filter.impl // Redundant semicolon
+package demo.analyzer.filter.impl // Redundant semicolon removed
 
-internal import demo.analyzer.filter.StmtFilter // Redundant semicolon
-internal import demo.analyzer.CJStatment // Redundant semicolon
+internal import demo.analyzer.filter.StmtFilter // Redundant semicolon removed
+internal import demo.analyzer.CJStatment // Redundant semicolon removed
 
 func fn(a: Int64): Unit {
     println("album Init.");
 }
 ```
 
-- Arrange modifier keywords according to the priority rules specified in Guideline G.FMT.12 of the Cangjie Language Coding Standards.
+- Follow rule G.FMT.12 for modifier keyword ordering priority.
 
-Below is the recommended modifier ordering priority for top-level elements:
+Recommended modifier ordering priority for top-level elements:
 
 ```text
 public
 open/abstract
 ```
 
-Below is the recommended modifier ordering priority for instance member functions or instance member properties:
+Recommended modifier ordering priority for instance member functions/properties:
 
 ```text
 public/protected/private
@@ -325,7 +325,7 @@ open
 override
 ```
 
-Below is the recommended modifier ordering priority for static member functions:
+Recommended modifier ordering priority for static member functions:
 
 ```text
 public/protected/private
@@ -333,16 +333,16 @@ static
 redef
 ```
 
-Below is the recommended modifier ordering priority for member variables:
+Recommended modifier ordering priority for member variables:
 
 ```text
 public/protected/private
 static
 ```
 
-- Formatting behavior for multi-line comments
+- Multi-line comment formatting behavior
 
-For comments starting with `*`, the `*` symbols will be aligned with each other. For comments not starting with `*`, the original comment format will be preserved.
+Comments starting with `*` will have aligned `*` characters. Comments not starting with `*` will remain unchanged.
 
 <!-- only-cjfmt -->
 
@@ -366,8 +366,8 @@ For comments starting with `*`, the `*` symbols will be aligned with each other.
  */
 ```
 
-## Notes
+## Important Notes
 
-- The Cangjie formatting tool currently does not support formatting of syntactically incorrect code.
+- The Cangjie formatter currently does not support formatting code with syntax errors.
 
-- The Cangjie formatting tool currently does not support formatting of metaprogramming constructs.
+- The Cangjie formatter currently does not support formatting metaprogramming code.
