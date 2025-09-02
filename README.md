@@ -7,11 +7,28 @@ The Cangjie ArkTS Interop Library API is used to provide cross-language interope
 Framework architecture:
 ![cangjie interop API](./figures/cangjie-interop_eng.png)
 
-For interop scenarios, Cangjie provides ark_interop libraries to achieve interop with ArkTS. The library mainly provides the following key data structures:
+For interop scenarios, Cangjie provides ark_interop libraries to achieve interop with ArkTS. The library mainly provides the following types of mappings.
+
+| **Cangjie type**                                                 | **Cangjie Interop type** | **ArkTS  Typ** |
+| ------------------------------------------------------------ | -------------------- | --------------- |
+| Unit                                                         | JSUndefined          | undefined       |
+| NA                                                           | JSNull               | null            |
+| Bool                                                         | JSBoolean            | boolean         |
+| Int8、Int16、Int32、Int64、UInt8、UInt16、UInt32、UInt64、Float16、Float32、Float64 | JSNumber             | number          |
+| String                                                       | JSString             | string          |
+| class、interface                                             | JSObject             | object          |
+| Array                                                        | JSArray              | Array           |
+| BigInt                                                       | JSBigInt             | bigint          |
+| func                                                         | JSFunction           | function        |
+| NA                                                           | JSSymbol             | symbol          |
+
+The library also provides the following key data structures:
 
 - JSValue: It is used to represent objects (such as numbers, strings, objects, functions) from ArkTS, which is a bridge between Cangjie and ArkTS type conversion;
 - JSContext: Used to represent context interoperable with ArkTS, providing module loading, JSValue creation, and more;
 - JSCallInfo: Used to represent a set of parameters that are called when an ArkTS interop call occurs;
+
+Finally, this interop library completes the interoperability function by calling the interface provided by the ArkTS virtual machine through CFFI.
 
 ## Directory
 
