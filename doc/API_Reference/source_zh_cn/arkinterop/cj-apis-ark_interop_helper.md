@@ -29,48 +29,6 @@ public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
 |:----|:----|
 |[napi_value](cj-apis-ark_interop.md#type-napi_value)|转化的 napi_value 值。|
 
-## func getContextStageMode(napi_env, napi_value)
-
-```cangjie
-public func getContextStageMode(env: napi_env, object: napi_value): StageContext
-```
-
-**功能：** 根据napi环境、对象信息获取应用上下文。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|env|[napi_env](cj-apis-ark_interop.md#type-napi_env)|是|-|环境信息。|
-|object|[napi_value](cj-apis-ark_interop.md#type-napi_value)|是|-|napi值信息。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[StageContext](#type-stagecontext)|获取到的应用上下文。|
-
-## func getJSContext(JSRuntime, UIAbilityContext)
-
-```cangjie
-public func getJSContext(runtime: JSRuntime, abilityContext: UIAbilityContext): JSValue
-```
-
-**功能：** 根据运行时信息获取ArkTS 互操作上下文。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|runtime|[JSRuntime](cj-apis-ark_interop.md#class-jsruntime)|是|-|ArkTS 运行时对象。|
-|abilityContext|UIAbilityContext|是|-|仓颉上下文信息。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[JSValue](cj-apis-ark_interop.md#struct-jsvalue)|获取到的 ArkTS 互操作上下文。|
-
 ## func isStageMode(napi_env, napi_value)
 
 ```cangjie
@@ -143,19 +101,3 @@ public func mapToJSValue<T>(
 |类型|说明|
 |:----|:----|
 |[JSValue](cj-apis-ark_interop.md#struct-jsvalue)|转换后的 JSValue 数据。|
-
-## type FAContext
-
-```cangjie
-public type FAContext = CPointer<Unit>
-```
-
-**功能：** FAContext 是 CPointer\<Unit> 类型的别名。
-
-## type StageContext
-
-```cangjie
-public type StageContext = CPointer<Unit>
-```
-
-**功能：** StageContext 是 CPointer\<Unit> 类型的别名。
