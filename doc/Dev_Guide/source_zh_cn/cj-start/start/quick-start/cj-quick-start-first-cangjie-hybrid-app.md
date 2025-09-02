@@ -21,6 +21,10 @@
 
 3. 进入配置工程界面，参数保持默认设置即可。
 
+   > **注意：**
+   >
+   > 仓颉混合页面支持的最低Compatible SDK版本为5.0.1(13)。
+
    ![buildConfigCangjieHybridTyplate](../../figures/buildConfigCangjieHybridTemplate.png)
 
 4. 单击**Finish**，DevEco Studio会自动生成示例代码和相关资源，等待工程创建完成。
