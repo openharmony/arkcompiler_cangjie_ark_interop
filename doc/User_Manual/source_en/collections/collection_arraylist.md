@@ -8,7 +8,7 @@ To use the ArrayList type, you need to import the collection package:
 import std.collection.*
 ```
 
-Cangjie uses `ArrayList<T>` to represent the ArrayList type, where T denotes the element type of the ArrayList. T can be any type.
+Cangjie uses `ArrayList<T>` to represent the ArrayList type, where T denotes the element type of the ArrayList, which can be any type.
 
 ArrayList has excellent capacity expansion capabilities, making it suitable for scenarios requiring frequent addition and deletion of elements.
 
@@ -21,9 +21,9 @@ var a: ArrayList<Int64> = ... // ArrayList whose element type is Int64
 var b: ArrayList<String> = ... // ArrayList whose element type is String
 ```
 
-ArrayLists with different element types are distinct types and thus cannot be assigned to each other.
+ArrayLists with different element types are distinct types and therefore cannot be assigned to each other.
 
-Therefore, the following example is invalid:
+Thus, the following example is invalid:
 
 ```cangjie
 b = a // Type mismatch
@@ -89,7 +89,7 @@ Compiling and executing the above code will output:
 The size of arraylist is 3
 ```
 
-To access a single element at a specified position, you can use subscript syntax (the subscript must be of type Int64). The first element of a non-empty ArrayList always starts at position 0. You can access any element from position 0 up to the last position (ArrayList's size - 1). Using negative indices or indices greater than or equal to size will trigger a runtime exception.
+To access a single element at a specified position, you can use subscript syntax (the subscript type must be Int64). The first element of a non-empty ArrayList always starts at position 0. You can access any element from index 0 up to the last position (ArrayList's size - 1). Using negative indices or indices greater than or equal to size will trigger a runtime exception.
 
 ```cangjie
 let a = list[0] // a == 0
@@ -97,7 +97,7 @@ let b = list[1] // b == 1
 let c = list[-1] // Runtime exceptions
 ```
 
-ArrayList also supports Range syntax in subscripts. For details, refer to the [Array](../basic_data_type/array.md#array) chapter.
+ArrayList also supports Range syntax in subscripts. For details, see the [Array](../basic_data_type/array.md#array) chapter.
 
 ## Modifying ArrayList
 
@@ -110,9 +110,9 @@ let list = ArrayList<Int64>([0, 1, 2])
 list[0] = 3
 ```
 
-ArrayList is a reference type. When used as an expression, ArrayList does not create a copy; all references to the same ArrayList instance share the same data.
+ArrayList is a reference type. When used as an expression, ArrayList does not create copies; all references to the same ArrayList instance share the same data.
 
-Thus, modifications to an ArrayList's elements affect all references to that instance.
+Therefore, modifications to ArrayList elements will affect all references to that instance.
 
 <!-- run -->
 
@@ -124,7 +124,7 @@ list2[0] = 3
 // list2 contains elements 3, 1, 2
 ```
 
-To add a single element to the end of an ArrayList, use the add function. To add multiple elements simultaneously, use the `add(all!: Collection<T>)` function, which accepts other Collection types with the same element type, such as Array. For details on Collection types, refer to [Basic Collection Type Overview](collection_overview.md).
+To add a single element to the end of an ArrayList, use the add function. To add multiple elements simultaneously, use the `add(all!: Collection<T>)` function, which accepts other Collection types with the same element type, such as Array. For details on Collection types, see [Basic Collection Type Overview](collection_overview.md).
 
 <!-- run -->
 
@@ -149,7 +149,7 @@ let list = ArrayList<Int64>([0, 1, 2]) // list contains elements 0, 1, 2
 list.add(4, at: 1) // list contains elements 0, 4, 1, 2
 ```
 
-To remove an element from an ArrayList, use the remove function with the specified index. Elements after this index will be shifted forward to fill the gap.
+To remove elements from an ArrayList, use the remove function, specifying the index to be deleted. Elements after this index will be shifted forward to fill the space.
 
 <!-- run -->
 
@@ -158,11 +158,11 @@ let list = ArrayList<String>(["a", "b", "c", "d"]) // list contains the elements
 list.remove(at: 1) // Delete the element at subscript 1, now the list contains elements "a", "c", "d"
 ```
 
-## Increasing ArrayList Capacity
+## Increasing ArrayList Size
 
-Each ArrayList requires a specific amount of memory to store its contents. When adding elements causes the ArrayList to exceed its reserved capacity, it allocates a larger memory region and copies all elements to the new memory. This growth strategy means that add operations triggering reallocation incur performance costs, but as the ArrayList's reserved memory grows, these occurrences become less frequent.
+Each ArrayList requires a specific amount of memory to store its contents. When adding elements causes an ArrayList to exceed its reserved capacity, the ArrayList allocates a larger memory region and copies all elements to the new memory. This growth strategy means that add operations triggering reallocation incur performance costs, but as the reserved memory grows larger, these occurrences become increasingly infrequent.
 
-If you know approximately how many elements will be added, you can pre-allocate sufficient memory beforehand to avoid intermediate reallocations, thereby improving performance.
+If you know approximately how many elements will be added, you can pre-allocate sufficient memory before adding to avoid intermediate reallocations, thereby improving performance.
 
 <!-- run -->
 

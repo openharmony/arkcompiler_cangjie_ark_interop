@@ -1,6 +1,6 @@
 # Package Declaration
 
-In the Cangjie programming language, a package declaration begins with the keyword `package`, followed by the package names from the root package to the current package, separated by `.`. Package names must be valid ordinary identifiers (excluding raw identifiers). For example:
+In the Cangjie programming language, package declarations begin with the keyword `package`, followed by the package names from the root package to the current package, separated by `.`. Package names must be valid ordinary identifiers (excluding raw identifiers). For example:
 
 <!-- compile -->
 
@@ -11,14 +11,14 @@ package pkg1      // root package pkg1
 <!-- compile -->
 
 ```cangjie
-package pkg1.sub1 // sub-package sub1 under root package pkg1
+package pkg1.sub1 // subpackage sub1 under root package pkg1
 ```
 
 > **Note:**
 >
 > In the current Windows platform version, package names do not support Unicode characters. Package names must be valid ordinary identifiers containing only ASCII characters.
 
-The package declaration must appear on the first non-empty, non-comment line of a source file, and all source files within the same package must maintain consistent package declarations.
+The package declaration must appear as the first non-empty, non-comment line in a source file, and all source files within the same package must maintain consistent package declarations.
 
 <!-- compile.error -->
 <!-- cfg="-p test --output-type=staticlib" -->
@@ -35,13 +35,13 @@ package test
 // declarations...
 ```
 
-In Cangjie, the package name should reflect the relative path of the current source file from the project's source root directory `src`, with path separators replaced by dots. For example, if the package's source code is located under `src/directory_0/directory_1` and the root package name is `pkg`, then the package declaration in the source code should be `package pkg.directory_0.directory_1`.
+In Cangjie, package names should reflect the relative path of the current source file from the project's source root directory `src`, with path separators replaced by dots. For example, if the package's source code is located under `src/directory_0/directory_1` and the root package name is `pkg`, the package declaration in the source code should be `package pkg.directory_0.directory_1`.
 
 Important considerations:
 
 - The folder name containing the package must match the package name.
 - The default name for the source root directory is `src`.
-- Packages in the source root directory may omit the package declaration, in which case the compiler will assign the default package name `default`.
+- Packages in the source root directory may omit package declarations, in which case the compiler will assign them the default package name `default`.
 
 Given the following source directory structure:
 
@@ -88,7 +88,7 @@ main(): Int64 {
 }
 ```
 
-Additionally, package declarations must not cause naming conflicts: sub-packages cannot have the same name as top-level declarations in the current package.
+Additionally, package declarations must not cause naming conflicts: subpackages cannot share names with top-level declarations in the current package.
 
 Here are some error examples:
 

@@ -1,6 +1,6 @@
 # Synchronization Mechanisms
 
-In concurrent programming, without proper synchronization mechanisms to protect variables shared among multiple threads, data race issues can easily occur.
+In concurrent programming, without synchronization mechanisms to protect variables shared by multiple threads, data race issues can easily occur.
 
 The Cangjie programming language provides three common synchronization mechanisms to ensure thread safety of data: atomic operations, mutex locks, and condition variables.
 
@@ -8,26 +8,26 @@ The Cangjie programming language provides three common synchronization mechanism
 
 Cangjie provides atomic operations for integer types, `Bool` type, and reference types.
 
-The supported integer types include: `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, `UInt64`.
+The integer types include: `Int8`, `Int16`, `Int32`, `Int64`, `UInt8`, `UInt16`, `UInt32`, `UInt64`.
 
 Atomic operations for integer types support basic read/write, swap, and arithmetic operations:
 
 | Operation        | Functionality                                              |
-| ---------------- | --------------------------------------------------------- |
-| `load`           | Read                                                      |
-| `store`          | Write                                                     |
-| `swap`           | Swap, returns the value before swapping                   |
-| `compareAndSwap` | Compare-and-swap, returns `true` if successful, otherwise `false` |
-| `fetchAdd`       | Addition, returns the value before addition               |
-| `fetchSub`       | Subtraction, returns the value before subtraction         |
-| `fetchAnd`       | Bitwise AND, returns the value before operation           |
-| `fetchOr`        | Bitwise OR, returns the value before operation            |
-| `fetchXor`       | Bitwise XOR, returns the value before operation           |
+| ---------------- | ---------------------------------------------------------- |
+| `load`           | Read                                                       |
+| `store`          | Write                                                      |
+| `swap`           | Swap, returns the value before swapping                    |
+| `compareAndSwap` | Compare and swap, returns `true` if successful, otherwise `false` |
+| `fetchAdd`       | Addition, returns the value before the addition operation  |
+| `fetchSub`       | Subtraction, returns the value before the subtraction operation |
+| `fetchAnd`       | Bitwise AND, returns the value before the AND operation    |
+| `fetchOr`        | Bitwise OR, returns the value before the OR operation      |
+| `fetchXor`       | Bitwise XOR, returns the value before the XOR operation    |
 
-Important notes:
+Note the following:
 
-1. The return values of swap and arithmetic operations are the values before modification.
-2. `compareAndSwap` checks if the current atomic variable's value equals the old value; if true, it replaces it with the new value; otherwise, no replacement occurs.
+1. The return value of swap and arithmetic operations is the value before modification.
+2. `compareAndSwap` checks if the current value of the atomic variable equals the old value; if so, it replaces it with the new value; otherwise, no replacement occurs.
 
 Taking `Int8` as an example, the corresponding atomic operation type declaration is as follows:
 
@@ -45,7 +45,7 @@ class AtomicInt8 {
 }
 ```
 
-Each atomic type method has a corresponding version that accepts memory ordering parameters, currently supporting only sequential consistency.
+Each method of the above atomic types has a corresponding method that accepts a memory ordering parameter. Currently, only sequential consistency is supported for memory ordering.
 
 Similarly, other integer types have corresponding atomic operation types:
 
@@ -59,7 +59,7 @@ class AtomicUInt32 {...}
 class AtomicUInt64 {...}
 ```
 
-The following example demonstrates how to use atomic operations for counting in a multithreaded program:
+The following example demonstrates how to use atomic operations to implement counting in a multi-threaded program:
 
 <!-- verify -->
 
@@ -92,13 +92,13 @@ main(): Int64 {
 }
 ```
 
-The expected output is:
+The output should be:
 
 ```text
 count = 1000
 ```
 
-Here are some other correct examples of using integer atomic operations:
+Here are some other correct examples of using integer-type atomic operations:
 
 <!-- compile -->
 
@@ -113,20 +113,20 @@ x = obj.fetchAdd(1) // x: 3
 x = obj.load() // x: 4
 ```
 
-`Bool` type and reference type atomic operations only provide read/write and swap operations:
+Atomic operations for `Bool` type and reference types only provide read/write and swap operations:
 
 | Operation        | Functionality                                              |
-| ---------------- | --------------------------------------------------------- |
-| `load`           | Read                                                      |
-| `store`          | Write                                                     |
-| `swap`           | Swap, returns the value before swapping                   |
-| `compareAndSwap` | Compare-and-swap, returns `true` if successful, otherwise `false` |
+| ---------------- | ---------------------------------------------------------- |
+| `load`           | Read                                                       |
+| `store`          | Write                                                      |
+| `swap`           | Swap, returns the value before swapping                    |
+| `compareAndSwap` | Compare and swap, returns `true` if successful, otherwise `false` |
 
 > **Note:**
 >
-> Reference type atomic operations only work with reference types.
+> Atomic reference operations are only valid for reference types.
 
-The atomic reference type is `AtomicReference`. Here are some correct examples of using `Bool` type and reference type atomic operations:
+The atomic reference type is `AtomicReference`. Here are some correct examples of using `Bool` type and reference-type atomic operations:
 
 <!-- verify -->
 
@@ -152,7 +152,7 @@ main() {
 }
 ```
 
-Compiling and running the above code produces:
+Compiling and executing the above code outputs:
 
 ```text
 true
@@ -163,14 +163,14 @@ true
 
 ## Reentrant Mutex Lock
 
-The reentrant mutex lock protects critical sections by ensuring that only one thread can execute the critical section code at any given time. When a thread attempts to acquire a lock held by another thread, it blocks until the lock is released. Reentrant means a thread can acquire the same lock multiple times.
+A reentrant mutex lock protects critical sections, ensuring that only one thread can execute the critical section code at any given time. When a thread attempts to acquire a lock held by another thread, it blocks until the lock is released. Reentrant means a thread can acquire the same lock multiple times.
 
-Two essential rules when using reentrant mutex locks:
+When using a reentrant mutex lock, two rules must be followed:
 
-1. Always attempt to acquire the lock before accessing shared data;
-2. Always release the lock after processing shared data to allow other threads to acquire it.
+1. Before accessing shared data, the lock must be acquired.
+2. After processing shared data, the lock must be released so other threads can acquire it.
 
-Main member functions of `Mutex`:
+The main member functions provided by `Mutex` are as follows:
 
 ```cangjie
 public class Mutex <: UniqueLock {
@@ -193,7 +193,7 @@ public class Mutex <: UniqueLock {
 }
 ```
 
-The following example demonstrates using `Mutex` to protect access to the global shared variable `count`, where operations on `count` constitute the critical section:
+The following example demonstrates how to use `Mutex` to protect access to the global shared variable `count`. Operations on `count` constitute the critical section:
 
 <!-- verify -->
 
@@ -228,13 +228,13 @@ main(): Int64 {
 }
 ```
 
-The expected output is:
+The output should be:
 
 ```text
 count = 1000
 ```
 
-The following example demonstrates using `tryLock`:
+The following example demonstrates how to use `tryLock`:
 
 <!-- run -->
 
@@ -265,15 +265,15 @@ main(): Int64 {
 }
 ```
 
-A possible output:
+A possible output is:
 
 ```text
 get the lock, do something
 ```
 
-Here are some incorrect examples of mutex usage:
+Here are some incorrect examples of using mutex locks:
 
-Error Example 1: Thread fails to unlock after critical section operations, causing other threads to block indefinitely.
+Error Example 1: A thread does not release the lock after operating on the critical section, causing other threads to block.
 
 <!-- compile.error -->
 <!-- cfg="libcangjie-std-sync" -->
@@ -299,7 +299,7 @@ main() {
 }
 ```
 
-Error Example 2: Calling `unlock` without holding the lock in the current thread will throw an exception.
+Error Example 2: Calling `unlock` without holding the lock throws an exception.
 
 <!-- compile.error -->
 <!-- cfg="libcangjie-std-sync" -->
@@ -319,7 +319,7 @@ main() {
 }
 ```
 
-Error Example 3: `tryLock()` does not guarantee acquiring the lock, which may lead to operations on critical sections without lock protection and exceptions when calling `unlock` without holding the lock.
+Error Example 3: `tryLock()` does not guarantee acquiring the lock, which may lead to operating on the critical section without lock protection or throwing exceptions when calling `unlock` without holding the lock.
 
 <!-- compile.error -->
 <!-- cfg="libcangjie-std-sync" -->
@@ -341,7 +341,7 @@ main() {
 }
 ```
 
-Additionally, `Mutex` is designed as a reentrant lock, meaning that if a thread already holds a `Mutex` lock, it can immediately acquire the same `Mutex` lock again when attempting to do so.
+Additionally, `Mutex` is designed as a reentrant lock, meaning that if a thread already holds a `Mutex` lock, it can immediately acquire the same `Mutex` lock again.
 
 > **Note:**
 >
@@ -391,11 +391,11 @@ The output should be:
 count = 220
 ```
 
-In the above example, whether in the main thread or a newly created thread, if the lock is already acquired in `foo()`, then calling `bar()` will immediately acquire the same `Mutex` lock without causing a deadlock.
+In the above example, whether in the main thread or the newly created thread, if the lock is already acquired in `foo()`, then calling `bar()` will immediately acquire the same `Mutex` lock without causing a deadlock.
 
-## Condition
+## Condition Variables
 
-`Condition` is a condition variable (i.e., a wait queue) bound to a specific mutex lock. `Condition` instances are created by the mutex lock, and a single mutex can create multiple `Condition` instances. `Condition` allows threads to block and wait for signals from other threads to resume execution. This is a synchronization mechanism using shared variables, providing the following methods:
+`Condition` is a condition variable (i.e., a wait queue) bound to a mutex lock. A `Condition` instance is created by a mutex lock, and one mutex lock can create multiple `Condition` instances. `Condition` allows threads to block and wait for signals from other threads to resume execution. This is a synchronization mechanism using shared variables, providing the following main methods:
 
 ```cangjie
 public class Mutex <: UniqueLock {
@@ -423,12 +423,12 @@ public interface Condition {
 
 Before calling the `wait`, `notify`, or `notifyAll` methods of the `Condition` interface, ensure the current thread holds the bound lock. The `wait` method performs the following actions:
 
-1. Adds the current thread to the wait queue of the corresponding lock;
-2. Blocks the current thread, fully releases the lock, and records the lock's reentrant count;
-3. Waits for another thread to signal this thread using the `notify` or `notifyAll` method of the same `Condition` instance;
-4. When the current thread is awakened, it automatically attempts to reacquire the lock with the same reentrant state as recorded in step 2; however, if the lock acquisition fails, the thread will block on the lock.
+1. Adds the current thread to the wait queue of the corresponding lock.
+2. Blocks the current thread, fully releases the lock, and records the reentrant count.
+3. Waits for another thread to signal this thread using the `notify` or `notifyAll` method of the same `Condition` instance.
+4. When the current thread is awakened, it automatically attempts to reacquire the lock with the same reentrant state as recorded in step 2. If acquiring the lock fails, the thread blocks on the lock.
 
-The `wait` method accepts an optional `timeout` parameter. Note that many conventional operating systems do not guarantee real-time scheduling, so it cannot ensure a thread will block for "exactly N nanoseconds"—imprecision may be observed depending on the system. Additionally, the current language specification explicitly allows implementations to produce spurious wakeups—in such cases, the return value of `wait` is implementation-dependent (either `true` or `false`). Therefore, developers are encouraged to always wrap `wait` in a loop:
+The `wait` method accepts an optional `timeout` parameter. Note that many common operating systems do not guarantee real-time scheduling, so a thread may not block for "exactly N nanoseconds"—imprecision may be observed depending on the system. Additionally, the current language specification explicitly allows implementations to produce spurious wakeups—in such cases, the `wait` return value is implementation-dependent (either `true` or `false`). Therefore, developers are encouraged to always wrap `wait` in a loop:
 
 ```cangjie
 synchronized (obj) {
@@ -438,7 +438,7 @@ synchronized (obj) {
 }
 ```
 
-Below is a correct example of using `Condition`:
+Here is a correct example of using `Condition`:
 
 <!-- verify -->
 
@@ -492,7 +492,7 @@ New thread: after wait
 
 When executing `wait` on a `Condition` object, it must be done under lock protection; otherwise, the unlock operation in `wait` will throw an exception.
 
-Below are some error examples of using condition variables:
+Here are some incorrect examples of using condition variables:
 
 <!-- run.error -->
 
@@ -542,7 +542,7 @@ main() {
 }
 ```
 
-In complex thread synchronization scenarios, multiple `Condition` instances may need to be generated for the same lock object. The following example implements a fixed-length bounded `FIFO` queue. When the queue is empty, `get()` will block; when the queue is full, `put()` will block.
+In complex thread synchronization scenarios, multiple `Condition` instances may need to be generated for the same lock object. The following example implements a fixed-length bounded `FIFO` queue. When the queue is empty, `get()` blocks; when the queue is full, `put()` blocks.
 
 <!-- compile -->
 
@@ -581,49 +581,9 @@ class BoundedQueue {
             // If the queue is full, wait for the "queue notFull" event.
             notFull.wait()
           }
-          items[head] = x
-          head++
-          if (head == 100) {
-            head = 0
-          }
-          count++
+         ## The synchronized Keyword
 
-          // An object has been inserted and the current queue is no longer
-          // empty, so wake up the thread previously blocked on get()
-          // because the queue was empty.
-          notEmpty.notify()
-        } // Release the mutex.
-    }
-
-    // Pop an object, if the queue is empty, block the current thread.
-    public func get(): Object {
-        // Acquire the mutex.
-        synchronized(m) {
-          while (count == 0) {
-            // If the queue is empty, wait for the "queue notEmpty" event.
-            notEmpty.wait()
-          }
-          let x: Object = items[tail]
-          tail++
-          if (tail == 100) {
-            tail = 0
-          }
-          count--
-
-          // An object has been popped and the current queue is no longer
-          // full, so wake up the thread previously blocked on put()
-          // because the queue was full.
-          notFull.notify()
-
-          return x
-        } // Release the mutex.
-    }
-}
-```
-
-## The synchronized Keyword
-
-`Lock` provides a convenient and flexible way of locking. However, due to its flexibility, it may lead to issues such as forgetting to unlock or failing to automatically release held locks when exceptions occur while holding the lock. Therefore, the Cangjie programming language provides a `synchronized` keyword to be used in conjunction with `Lock`. It automatically performs locking and unlocking operations within its following scope to address such issues.
+`Lock` provides a convenient and flexible way to acquire locks. However, due to its flexibility, it may lead to issues such as forgetting to unlock or failing to automatically release the lock when an exception is thrown while holding the lock. Therefore, the Cangjie programming language provides a `synchronized` keyword to be used in conjunction with `Lock`. It automatically performs lock acquisition and release operations within its following scope to address such issues.
 
 The following example demonstrates how to use the `synchronized` keyword to protect shared data:
 
@@ -661,20 +621,20 @@ main(): Int64 {
 }
 ```
 
-The expected output should be:
+The expected output is:
 
 ```text
 count = 1000
 ```
 
-By adding a `Lock` instance after `synchronized`, the code block it modifies is protected, ensuring that at most one thread can execute the protected code at any given time:
+By appending a `Lock` instance after `synchronized`, the code block it modifies is protected, ensuring that at most one thread can execute the protected code at any given time:
 
-1. Before entering the code block modified by `synchronized`, a thread automatically acquires the lock corresponding to the `Lock` instance. If the lock cannot be acquired, the current thread is blocked;
-2. Before exiting the code block modified by `synchronized`, a thread automatically releases the lock of the `Lock` instance.
+1. Before entering a `synchronized` block, a thread automatically acquires the lock associated with the `Lock` instance. If the lock cannot be acquired, the current thread is blocked.
+2. Before exiting a `synchronized` block, a thread automatically releases the lock associated with the `Lock` instance.
 
-For control transfer expressions (such as `break`, `continue`, `return`, `throw`), when they cause the program to exit the `synchronized` code block, they also comply with point 2 above. In other words, the lock corresponding to the `synchronized` expression is automatically released.
+For control transfer expressions (such as `break`, `continue`, `return`, `throw`), when they cause the program execution to exit the `synchronized` block, they also comply with the second rule above—meaning the lock associated with the `synchronized` expression is automatically released.
 
-The following example demonstrates the case where a `break` statement appears in a `synchronized` code block:
+The following example demonstrates the use of a `break` statement within a `synchronized` block:
 
 <!-- verify -->
 
@@ -712,32 +672,32 @@ main(): Int64 {
 }
 ```
 
-The expected output should be:
+The expected output is:
 
 ```text
 in main, count = 10
 ```
 
-In fact, the line `in thread` will not be printed because the `break` statement causes the program to exit the `while` loop (before exiting the `while` loop, it first exits the `synchronized` code block).
+In reality, the line `in thread` will not be printed because the `break` statement causes the program execution to exit the `while` loop (before exiting the `while` loop, it first exits the `synchronized` block).
 
 ## Thread-Local Variables (ThreadLocal)
 
-Using `ThreadLocal` from the core package, you can create and use thread-local variables. Each thread has its own independent storage space for these thread-local variables. Therefore, each thread can safely access its own thread-local variables without being affected by other threads.
+Using `ThreadLocal` from the core package, you can create and use thread-local variables. Each thread has its own independent storage space for these thread-local variables. Thus, each thread can safely access its own thread-local variables without interference from other threads.
 
 ```cangjie
 public class ThreadLocal<T> {
-    /* Constructs a Cangjie thread-local variable carrying a null value */
+    /* Constructs a Cangjie thread-local variable with an empty value */
     public init()
 
     /* Gets the value of the Cangjie thread-local variable */
-    public func get(): Option<T> // Returns Option<T>.None if the value does not exist. Return value Option<T> - the value of the Cangjie thread-local variable.
+    public func get(): Option<T> // Returns Option<T>.None if the value does not exist. The return value Option<T> represents the value of the thread-local variable.
 
-    /* Sets the value of the Cangjie thread-local variable via value */
-    public func set(value: Option<T>): Unit // If Option<T>.None is passed, the value of this local variable will be deleted and cannot be retrieved in subsequent operations of the thread. Parameter value - the value to be set for the local variable.
+    /* Sets the value of the Cangjie thread-local variable using 'value' */
+    public func set(value: Option<T>): Unit // If Option<T>.None is passed, the value of the local variable will be deleted and cannot be retrieved in subsequent operations. Parameter 'value' - the value to set for the local variable.
 }
 ```
 
-The following example demonstrates how to use the `ThreadLocal` class to create and use thread-local variables for each thread:
+The following example demonstrates how to use the `ThreadLocal` class to create and access thread-local variables for individual threads:
 
 <!-- run -->
 
@@ -759,7 +719,7 @@ main(): Int64 {
 }
 ```
 
-Possible output results are as follows:
+Possible output:
 
 ```text
 tl in spawn1 = 123

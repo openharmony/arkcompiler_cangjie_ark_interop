@@ -4,26 +4,26 @@ This chapter introduces fundamental I/O concepts and file operations.
 
 In the Cangjie programming language, operations that interact with external carriers of applications are referred to as I/O operations. "I" stands for Input, and "O" stands for Output.
 
-All I/O mechanisms in Cangjie are based on data streams for input and output, where these streams represent sequences of byte data. A data stream is a continuous collection of data, functioning like a pipeline that carries data - input is fed at one end and output is received at the other.
+All I/O mechanisms in Cangjie are based on data streams for input and output. These data streams represent sequences of byte data. A data stream is a continuous collection of data, functioning like a pipeline that carries data - input is written at one end and output is read from the other.
 
 The Cangjie programming language abstracts input and output as Streams.
 
-- Reading data from external storage into memory is called an Input Stream (InputStream). The input end can write data segments into the pipeline piece by piece, and these segments form a long data stream in sequence.
-- Writing data from memory to external storage is called an Output Stream (OutputStream). The output end can also read data from the pipeline segment by segment, where each read can be of any length (without needing to match the input segments), but must follow the first-in-first-out order.
+- Reading data from external storage into memory is called an input stream (InputStream). The input end can write data segments into the pipeline piece by piece, and these segments form a long data stream in sequence.
+- Writing data from memory to external storage is called an output stream (OutputStream). The output end can also read data segments from the pipeline piece by piece, each time reading any length of data (without needing to match the input end), but only in the order they were input.
 
-With this layer of abstraction, the Cangjie programming language can use a unified interface to interact with external data.
+With this abstraction layer, the Cangjie programming language can use a unified interface to interact with external data.
 
-The Cangjie programming language describes various operations - including standard input/output, file operations, network data streams, string streams, encryption streams, compression streams, etc. - uniformly using the concept of Stream.
+The Cangjie programming language describes various operations such as standard input/output, file operations, network data streams, string streams, encryption streams, compression streams, etc., uniformly using Stream.
 
-Stream primarily deals with raw binary data, where the smallest data unit in a Stream is the `Byte`.
+Stream primarily handles raw binary data, with the smallest data unit in Stream being `Byte`.
 
-In Cangjie, Stream is defined as an `interface`, allowing different Streams to be combined using the decorator pattern, significantly enhancing extensibility.
+The Cangjie programming language defines Stream as an `interface`, allowing different Streams to be combined using the decorator pattern, greatly enhancing extensibility.
 
 ## Input Stream
 
-A program reads data sources (including external devices like keyboards, files, networks, etc.) from an input stream. An input stream is the communication channel that reads data sources into the program.
+A program reads data sources (including external keyboards, files, networks, etc.) from an input stream, meaning the input stream is the communication channel that reads data sources into the program.
 
-The Cangjie programming language uses the `InputStream` interface type to represent input streams. It provides a `read` function that writes readable data into a `buffer`, with the return value indicating the total number of bytes read in that operation.
+The Cangjie programming language uses the `InputStream` interface type to represent an input stream, providing a `read` function. This function writes readable data into a `buffer`, with the return value indicating the total number of bytes read in that operation.
 
 InputStream interface definition:
 
@@ -35,7 +35,7 @@ interface InputStream {
 }
 ```
 
-When you have an input stream, you can read byte data as shown in the following example. The read data will be written into the input parameter array of `read`.
+When you have an input stream, you can read byte data as shown in the following code. The read data will be written into the input parameter array of `read`.
 
 Input stream reading example:
 
@@ -56,13 +56,13 @@ main() {
 
 ## Output Stream
 
-A program writes data to an output stream. An output stream is the communication channel that outputs data from the program to external destinations (displays, printers, files, networks, etc.).
+A program writes data to an output stream. The output stream is the communication channel that outputs data from the program to the outside world (displays, printers, files, networks, etc.).
 
-The Cangjie programming language uses the `OutputStream` interface type to represent output streams. It provides a `write` function that writes data from the `buffer` into the bound stream.
+The Cangjie programming language uses the `OutputStream` interface type to represent an output stream, providing a `write` function. This function writes data from the `buffer` into the bound stream.
 
-Notably, some output streams' `write` operations don't immediately write to external storage but employ certain buffering strategies for performance optimization. The data is only physically written when certain conditions are met or when `flush` is explicitly called.
+Notably, some output streams' `write` operations do not immediately write to external storage but employ certain buffering strategies. Data is only actually written when certain conditions are met or when `flush` is actively called, aiming to improve performance.
 
-To uniformly handle these `flush` operations, `OutputStream` includes a default implementation of `flush`, helping to standardize API call differences.
+To uniformly handle these `flush` operations, `OutputStream` includes a default implementation of `flush`, which helps smooth out API call differences.
 
 OutputStream interface definition:
 
@@ -78,7 +78,7 @@ interface OutputStream {
 }
 ```
 
-When you have an output stream, you can write byte data to it.
+When you have an output stream, you can write byte data.
 
 Output stream writing example:
 
@@ -96,9 +96,9 @@ main() {
 }
 ```
 
-## Stream Classification
+## Classification of Data Streams
 
-Based on their functional differences, Streams can be broadly categorized into two types:
+Based on the functional differences of data streams, Streams can be simply divided into two categories:
 
-- Node Streams: Directly provide data sources. Node streams are typically constructed by directly depending on external resources (e.g., files, networks).
-- Processing Streams: Can only process data by proxying other streams. Processing streams are typically constructed by depending on other streams.
+- Node Streams: Directly provide data sources. Node streams are typically constructed by relying on some direct external resource (such as files, networks, etc.).
+- Processing Streams: Can only act as proxies for other data streams to perform processing. Processing streams are typically constructed by relying on other streams.

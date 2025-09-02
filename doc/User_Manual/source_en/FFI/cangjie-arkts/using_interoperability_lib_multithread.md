@@ -1,14 +1,14 @@
 # Using Interoperability Libraries in Cangjie Multithreading
 
-ArkTS is a single-threaded execution virtual machine that does not provide any concurrency fault tolerance at runtime, whereas Cangjie syntactically supports memory-sharing multithreading.
+ArkTS is a single-threaded virtual machine that does not provide any concurrency fault tolerance at runtime, whereas Cangjie syntactically supports memory-sharing multithreading.
 
-If multithreading is used without restrictions in interoperability scenarios, unexpected errors may occur. Therefore, certain specifications and guidelines are required to ensure proper program execution:
+Unrestricted use of multithreading in interoperability scenarios may lead to unexpected errors. Therefore, certain specifications and guidelines are required to ensure proper program execution:
 
 1. ArkTS code and most interoperability interfaces can only be executed on the ArkTS thread; otherwise, a Cangjie exception will be thrown.
 2. Before entering other threads, all dependent ArkTS data must be converted to Cangjie data.
-3. If ArkTS interfaces need to be used in other threads, the execution must be switched to the ArkTS thread via `context.postJSTask`.
+3. To use ArkTS interfaces in other threads, switch to the ArkTS thread via `context.postJSTask` for execution.
 
-The following example demonstrates specific practices. This case involves an interoperability function that adds two numbers and invokes a callback function to return the sum.
+The following example demonstrates the specific approach. This use case involves an interoperability function that adds two numbers and invokes a callback function to return the sum.
 
 1. Define the Cangjie function:
 
@@ -17,11 +17,11 @@ The following example demonstrates specific practices. This case involves an int
 
     import ohos.ark_interop.*
 
-    // The class name has no impact
+    // Class name has no impact
     class Main {
         // Define static constructor
         static init() {
-            // Register the key-value pair
+            // Register key-value pairs
             JSModule.registerFunc("addNumberAsync", addNumberAsync)
         }
     }
@@ -60,19 +60,19 @@ The following example demonstrates specific practices. This case involves an int
     export declare function addNumberAsync(a: number, b: number, callback: (result: number) => void): void;
     ```
 
-3. ArkTS calls the Cangjie function:
+3. ArkTS invokes the Cangjie function:
 
     ```typescript
     // Import Cangjie dynamic library, whose name matches the Cangjie package name and must be consistent with the package name containing the interoperability interfaces
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
 
-    // Call Cangjie function
+    // Invoke Cangjie function
     addNumberAsync(1, 2, (result) => {
         console.log("1 + 2 = " + result);
     });
     ```
 
-ArkTS supports Promise, which encapsulates callback mechanisms. When combined with async/await syntax, it transforms callback mechanisms into synchronous invocation forms. For the previous example, here's how to define and access interfaces using Promise:
+ArkTS includes Promise, which encapsulates the callback mechanism. When combined with async/await syntax, it transforms the callback mechanism into synchronous invocation. For the previous use case, here's how to define and access the interface using Promise:
 
 1. Define the Cangjie function:
 
@@ -81,11 +81,11 @@ ArkTS supports Promise, which encapsulates callback mechanisms. When combined wi
 
     import ohos.ark_interop.*
 
-    // The class name has no effect
+    // Class name has no impact
     class Main {
-        // Define a static constructor
+        // Define static constructor
         static init() {
-            // Register the key-value pair
+            // Register key-value pairs
             JSModule.registerFunc("addNumberAsync", addNumberAsync)
         }
     }
@@ -119,14 +119,14 @@ ArkTS supports Promise, which encapsulates callback mechanisms. When combined wi
     export declare function addNumberAsync(a: number, b: number): Promise<number>;
     ```
 
-3. ArkTS calls the Cangjie function:
+3. ArkTS invokes the Cangjie function:
 
     ```typescript
     // Import Cangjie dynamic library, whose name matches the Cangjie package name and must be consistent with the package name containing the interoperability interfaces
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
 
     async function call() {
-        // Call Cangjie function
+        // Invoke Cangjie function
         let result = await addNumberAsync(1, 2);
         console.log("1 + 2 = " + result);
     }

@@ -1,10 +1,10 @@
 # Introduction to `cjpm`
 
-`CJPM (Cangjie Package Manager)` is the official package management tool for the Cangjie language, designed to manage and maintain the module system of Cangjie projects. It provides a simpler and unified compilation entry point while supporting custom compilation commands. Through automated dependency management, it analyzes and merges third-party dependencies with multiple versions, eliminating developers' concerns about version conflicts and significantly reducing their workload. Additionally, it offers a native Cangjie language-based custom build mechanism, allowing developers to add preprocessing and postprocessing workflows at different build stages. This enables flexible customization of the build process to meet various compilation requirements in different business scenarios.
+`CJPM (Cangjie Package Manager)` is the official package management tool for the Cangjie language, designed to manage and maintain the module system of Cangjie projects while providing a simpler and unified compilation entry point with support for custom compilation commands. Through automated dependency management, the package manager analyzes and merges multi-version third-party dependencies, eliminating developers' concerns about version conflicts and significantly reducing their workload. Additionally, it offers a native Cangjie language-based custom build mechanism, allowing developers to add pre-processing and post-processing workflows at different build stages. This enables flexible customization of the build process to meet various compilation requirements across different business scenarios.
 
 ## Basic Usage of `cjpm`
 
-Run `cjpm -h` to view the main interface, which consists of several sections: command description, usage examples (Usage), available subcommands (Available subcommands), supported options (Available options), and additional hints.
+Run `cjpm -h` to view the main interface, which consists of several sections from top to bottom: current command description, usage examples (Usage), available subcommands (Available subcommands), supported configuration options (Available options), and additional hints.
 
 ```text
 Cangjie Package Manager
@@ -32,7 +32,7 @@ Available options:
 Use "cjpm [subcommand] --help" for more information about a command.
 ```
 
-`cjpm init` initializes a new Cangjie module or workspace. By default, it creates a `cjpm.toml` file in the current directory, along with a `src` folder containing a default `main.cj` file. Custom initialization parameters can be viewed via `cjpm init -h`.
+`cjpm init` initializes a new Cangjie module or workspace. When initializing a module, it creates a `cjpm.toml` file in the current directory by default, along with a `src` source code folder containing a default `main.cj` file. For custom parameter initialization, run `cjpm init -h`.
 
 Example:
 
@@ -41,7 +41,7 @@ Input: cjpm init
 Output: cjpm init success
 ```
 
-`cjpm build` compiles the current Cangjie project. Before execution, it checks dependencies and then invokes `cjc` for compilation. It supports full compilation, incremental compilation, cross-compilation, parallel compilation, etc. More compilation features can be viewed via `cjpm build -h`. The `cjpm build -V` command prints all compilation process commands.
+`cjpm build` compiles the current Cangjie project. Before execution, it checks dependencies and then invokes `cjc` for compilation. It supports full compilation, incremental compilation, cross-compilation, parallel compilation, etc. For more compilation features, run `cjpm build -h`. Use `cjpm build -V` to print all compilation commands.
 
 Example:
 
@@ -54,9 +54,9 @@ compile package module1: cjc --import-path target -L target/release/module1 -lmo
 cjpm build success
 ```
 
-## `cjpm.toml` Configuration File Explanation
+## `cjpm.toml` Configuration File Description
 
-The `cjpm.toml` configuration file defines basic information, dependencies, and compilation options. `cjpm` primarily uses this file for parsing and execution.
+The configuration file `cjpm.toml` defines basic information, dependencies, and compilation options. `cjpm` primarily parses and executes based on this file.
 
 Example configuration:
 
@@ -70,18 +70,18 @@ Example configuration:
   override-compile-option = "" # Additional global compilation options (optional)
   link-option = "" # Linker passthrough options (e.g., secure compilation flags) (optional)
   output-type = "executable" # Compilation output type (required)
-  src-dir = "" # Custom source directory path (optional)
-  target-dir = "" # Custom output directory path (optional)
+  src-dir = "" # Source code directory path (optional)
+  target-dir = "" # Output directory path (optional)
   package-configuration = {} # Single-package configuration options (optional)
 
 [workspace] # Workspace management field; cannot coexist with [package]
-  members = [] # List of workspace member modules (required)
-  build-members = [] # List of modules to build (subset of members) (optional)
-  test-members = [] # List of modules to test (subset of build-members) (optional)
+  members = [] # Workspace member modules (required)
+  build-members = [] # Workspace compilation modules (subset of members) (optional)
+  test-members = [] # Workspace test modules (subset of build-members) (optional)
   compile-option = "" # Additional compilation options for all workspace members (optional)
   override-compile-option = "" # Additional global compilation options for all workspace members (optional)
   link-option = "" # Linker passthrough options for all workspace members (optional)
-  target-dir = "" # Custom output directory path (optional)
+  target-dir = "" # Output directory path (optional)
 
 [dependencies] # Source code dependencies (optional)
   coo = { git = "xxx", branch = "dev" } # Git dependency

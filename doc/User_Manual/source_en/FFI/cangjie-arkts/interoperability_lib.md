@@ -2,11 +2,11 @@
 
 > **Note:**
 >
-> It is recommended to use the [Declarative Interoperability Macro](./interoperability_macro.md) approach for ArkTS to call Cangjie modules. Only use the "Cangjie-ArkTS Interoperability Library" method when the macro approach cannot meet developer requirements.
+> It is recommended to use the [Declarative Interoperability Macro](./interoperability_macro.md) approach for ArkTS to call Cangjie modules. Only use the "Cangjie-ArkTS Interoperability Library" approach when the macro method cannot meet developer requirements.
 
 To develop a Cangjie interoperability module:
 
-1. Create a Cangjie module in your ArkTS project. For details, refer to [Adding a Cangjie Module to an ArkTS Project](./add_cangjie_module.md).
+1. Create a Cangjie module in an ArkTS project. For details, refer to [Adding a Cangjie Module to an ArkTS Project](./add_cangjie_module.md).
 
 2. Construct code in the generated Cangjie file as shown in the following example:
 
@@ -48,10 +48,10 @@ To develop a Cangjie interoperability module:
     export declare function addNumber(a: number, b: number): number;
     ```
 
-4. On the ArkTS calling side, the code should look like this:
+4. On the ArkTS calling side, the code is as follows:
 
     ```typescript
-    // Import the Cangjie dynamic library. The library name should match the Cangjie package name, which must be consistent with the package name of the interoperability interface.
+    // Import the Cangjie dynamic library. The library name should match the Cangjie package name, which must be consistent with the package name of the interoperability interface
     import { addNumber } from "libohos_app_cangjie_entry.so";
 
     // Call the Cangjie interface
@@ -61,7 +61,7 @@ To develop a Cangjie interoperability module:
 
 In the above process, the exported function defined on the Cangjie side uses basic Cangjie types through the interoperability library. For other types, refer to the chapters [Using ArkTS Data in Cangjie](./operating_ArkTS_data.md) and [Operating Cangjie Objects in ArkTS](./operating_cangjie_objects.md).
 
-> **Important:**
+> **Warning:**
 >
 > Within the same Cangjie module (same package and its sub-packages), the following rules must be followed to avoid symbol conflicts:
 > - Functions, interfaces, and classes registered in JSModule using JSModule.registerModule, JSModule.registerClass, or JSModule.registerFunc must not have duplicate names.
@@ -74,7 +74,7 @@ In the above process, the exported function defined on the Cangjie side uses bas
 >   let EXPORT_MODULE = JSModule.registerModule {
 >      runtime, exports =>
 >         exports["addNumber"] = runtime.function(addFloat).toJSValue()
->         exports["addNumber"] = runtime.function(addInt).toJSValue() // Will overwrite the first registered function with the same name
+>         exports["addNumber"] = runtime.function(addInt).toJSValue() // Will overwrite the first registration of the addNumber function
 >   }
 >   ```
 >
@@ -89,6 +89,6 @@ In the above process, the exported function defined on the Cangjie side uses bas
 >   func addFloat() {}
 >   let EXPORT_MODULE = JSModule.registerModule {
 >       runtime, exports =>
->       exports["addNumber"] = runtime.function(addFloat).toJSValue() // Will overwrite the @Interop-decorated function with the same name
+>       exports["addNumber"] = runtime.function(addFloat).toJSValue() // Will overwrite the @Interop-decorated addNumber function
 >   }
 >   ```
