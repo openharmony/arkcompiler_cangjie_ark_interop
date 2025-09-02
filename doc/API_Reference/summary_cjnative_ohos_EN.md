@@ -250,4 +250,7 @@
     - [Cangjie & ArkTS Interoperability Library]()
         - [ohos.ark_interop (ArkTS Interoperability Library)](source_en/arkinterop/cj-apis-ark_interop.md)
         - [ohos.ark_interop_helper (ArkTS Interoperability Common Utility Functions)](source_en/arkinterop/cj-apis-ark_interop_helper.md)
+        - [ohos.business_exception (Common Exception Information)](source_en/arkinterop/cj-api-business_exception.md)
+        - [ohos.callback_invoke (Common Callback Information)](source_en/arkinterop/cj-api-callback_invoke.md)
+        - [ohos.labels (Label Information)](source_en/arkinterop/cj-api-labels.md)
     - [Cangjie Programming Language Library API](source_en/cj-libs-api.md)

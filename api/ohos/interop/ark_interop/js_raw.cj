@@ -794,17 +794,6 @@ public struct JSValue {
     }
 
     /**
-     * Set the property corresponding to the key.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public func setProperty(_: JSContext, key: JSKeyable, setValue: JSValue): Unit {
-        setProperty(key, setValue)
-    }
-
-    /**
      * Bind JSValue to an ArkTs external object.
      *
      * @throws { BusinessException } 34300005 - JSValue is not JSObject or external is not JSExternal.
