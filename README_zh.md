@@ -24,43 +24,17 @@ arkcompiler/cangjie_ark_interop
     └── Dev_Guide        # 仓颉开发指南
     └── release-notes    # 仓颉发布说明
     └── User_Manual      # 仓颉用户手册
+├── figures              # 本README需要使用的图片
 ├── test                 # 仓颉互操作测试用例
 ```
 
 ## 约束
 
-当前开放的安全基础能力仓颉接口仅支持standard设备。
-
-## 构建指导
-
-1. 初始化代码仓
-
-    ```text
-    repo init -u https://gitcode.com/openharmony-sig/manifest.git -b master -m cangjie_oh.xml --no-repo-verify
-    repo sync -c
-    ```
-
-2. 预下载
-
-    ```text
-    bash build/prebuilts_download.sh
-    ```
-
-3. 构建产物
-
-    ```text
-    // rom构建
-    ./build.sh --product-name rk3568 -ccache --target-cpu=arm64
-
-    //oh-sdk构建：
-    ./build.sh --product-name ohos-sdk --ccache --build-target out/sdk/gen/build/ohos/sdk:cangjie
-    ```
-
-构建产物一般在： out/generic_generic_arm_64only/hisi_newbaltimore_hmscore_standard/packages/hmos-sdk目录。
+当前开放的仓颉互操作接口仅支持standard设备。
 
 ## 使用场景
 
-包含仓颉-ArkTS互操作库，用于仓颉-ArkTS互操作。json库/APILevel/CFFI库为基础功能库，提供给仓颉api/仓颉ui等子系统等公共能力。
+包含仓颉-ArkTS互操作库，用于仓颉-ArkTS互操作。json库/APILevel/CFFI库为基础功能库，提供给仓颉API/仓颉UI等子系统等公共能力。
 
 在OpenHarmony应用开发中，存在使用仓颉与ArkTS混合开发的诉求，例如以下场景：
 
@@ -76,8 +50,11 @@ arkcompiler/cangjie_ark_interop
 - 互操作库：开发者通过调用互操作提供的API，实现跨语言参数传递、函数调用等能力。
 - 互操作宏：开发者使用互操作宏来标注需要被ArkTS代码调用的仓颉接口，能够自动生成互操作“胶水”代码及ArkTS接口声明。
 
-互操作开发指南请参见[互操作开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/cangjie_arkts_overview.md)。
-互操作 API 指导请参见[互操作 API 指导](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)。
+## 开发者文档
+
+[API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
+
+[开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos.md)
 
 ## 参与贡献
 
