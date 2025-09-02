@@ -37,7 +37,6 @@
                 "//arkcompiler/cangjie_ark_interop/api/ohos/encoding:ohos.json.static",
                 "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop",
                 "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop_helper",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/uri:ohos.uri",
                 "//arkcompiler/cangjie_ark_interop/api/ohos/labels:ohos.labels",
                 "//arkcompiler/cangjie_ark_interop:cangjie_prebuilts_package",
                 "//arkcompiler/cangjie_ark_interop/api/ohos/business_exception:ohos.business_exception",
@@ -55,9 +54,6 @@
                 },
                 {
                     "name": "//arkcompiler/cangjie_ark_interop/api/ohos/ffi_bind:ohos.ffi"
-                },
-                {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/uri:ohos.uri"
                 },
                 {
                     "name": "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop"

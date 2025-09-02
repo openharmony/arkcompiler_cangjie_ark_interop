@@ -23,38 +23,13 @@ arkcompiler/cangjie_ark_interop
     └── Dev_Guide        # Cangjie developer guide
     └── release-notes    # Cangjie release notes
     └── User_Manual      # Cangjie user manual
+├── figures              # Images used in the README
 ├── test                 # Cangjie interop testcases
 ```
 
 ## Constraints
 
 - The security cangjie interface currently under development only supports standard devices.
-
-## Build Guide
-
-1. Initialize
-
-    ```text
-    repo init -u https://gitcode.com/openharmony-sig/manifest.git -b master -m cangjie_oh.xml --no-repo-verify
-    repo sync -c
-    ```
-
-2. Pre-download
-
-    ```text
-    bash build/prebuilts_download.sh
-    ```
-
-3. Build products
-
-    ```text
-    // build rom
-    ./build.sh --product-name rk3568 -ccache --target-cpu=arm64
-
-    // build oh-sdk：
-    ./build.sh --product-name ohos-sdk --ccache --build-target out/sdk/gen/build/ohos/sdk:cangjie
-
-Build products are typically found at: out/generic_generic_arm_64only/hisi_newbaltimore_hmscore_standard/packages/hmos-sdk directory.
 
 ## Usage Scenarios
 
@@ -77,6 +52,11 @@ Module Description:
 - Interop Libraries: Developers can call APIs provided by Interop to achieve cross-language parameter passing, function calling, and other capabilities.
 - Interop macros: Developers use interoperability macros to mark Cangjie interfaces that need to be called by ArkTS code, and can automatically generate interop "glue" code and ArkTS interface declarations.
 
+## Developer Document
+
+[API Document](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
+
+[Develop Guide](hhttps://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos.md)
 
 ## Code Contribution
 
