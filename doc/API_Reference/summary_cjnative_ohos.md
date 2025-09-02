@@ -330,4 +330,7 @@
 - [仓颉与ArkTS互操作库]()
     - [ohos.ark_interop（ArkTS互操作库）](source_zh_cn/arkinterop/cj-apis-ark_interop.md)
     - [ohos.ark_interop_helper（ArkTS互操作公共辅助功能函数）](source_zh_cn/arkinterop/cj-apis-ark_interop_helper.md)
+    - [ohos.business_exception（通用异常信息）](source_zh_cn/arkinterop/cj-api-business_exception.md)
+    - [ohos.callback_invoke（通用回调信息）](source_zh_cn/arkinterop/cj-api-callback_invoke.md)
+    - [ohos.labels（通用接口标签）](source_zh_cn/arkinterop/cj-api-labels.md)
 - [仓颉编程语言库API](source_zh_cn/cj-libs-api.md)

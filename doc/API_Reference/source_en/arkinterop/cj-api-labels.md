@@ -445,7 +445,7 @@ public const override operator func |(rhs: PermissionValue): PermissionValue
 |:----|:----|
 |[PermissionValue](#interface-permissionvalue)|The permission set after performing a logical OR operation with another permission set.|
 
-## struct String
+## extend String
 
 ```cangjie
 extend String <: PermissionValue {}
