@@ -20,7 +20,7 @@ public interface JSInteropType<T> {
 
 **Description:** This interface is used to implement extension methods for types that can be used with declarative interoperability macros. Used by the declarative interoperability macro framework; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 The following types extend this interface:
 
@@ -36,7 +36,7 @@ static func fromJSValue(context: JSContext, input: JSValue): T
 
 **Description:** Converts JSValue type data to the corresponding Cangjie type.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie type.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -75,7 +75,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** Converts Cangjie type data to JSValue.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -93,39 +93,16 @@ func toJSValue(context: JSContext): JSValue
 
 ```cangjie
 sealed interface JSKeyable <: ToString & ToJSValue {
-    func toJSValue(context: JSContext): JSValue
 }
 ```
 
 **Description:** Interface for types that can be used as keys in JSObject. This interface implements extension methods for the String type. Used by the declarative interoperability macro framework; developers do not need to use this API.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Types:**
 
 * ToString
-
-### func toJSValue(JSContext)
-
-```cangjie
-func toJSValue(context: JSContext): JSValue
-```
-
-**Description:** Converts Cangjie type data to JSValue.
-
-**Since:** 13
-
-**Parameters:**
-
-| Name | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| context | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [JSValue](#struct-jsvalue) | ArkTS unified type. |
 
 ## interface ToJSValue
 
@@ -137,7 +114,7 @@ interface ToJSValue {
 
 **Description:** Interface for implementing ToJSValue functionality.
 
-**Since:** 12
+**Since:** 21
 
 ### func toJSValue(JSContext)
 
@@ -147,7 +124,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** Converts Cangjie type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -165,7 +142,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** This interface can be used to implement extension methods for the built-in Int8 type.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -175,7 +152,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int8
 
 **Description:** Converts JSValue type data to the corresponding Int8 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -198,7 +175,7 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int8 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -214,7 +191,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** Converts Cangjie Int8 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -232,7 +209,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Description:** This interface can be used to implement extension methods for the built-in Int16 type.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -242,7 +219,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int16
 
 **Description:** Converts JSValue type data to the corresponding Int16 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -265,7 +242,7 @@ static func toArkTsType(): String
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int16 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**| Type | Description |
 |:----|:----|
@@ -279,7 +256,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Int16 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -297,7 +274,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Int32.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -307,7 +284,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int32
 
 **Function:** Converts JSValue type data to the corresponding Int32 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -330,7 +307,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Int32 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -346,7 +323,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Int32 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -364,7 +341,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Int64.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -374,7 +351,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Int64
 
 **Function:** Converts JSValue type data to the corresponding Int64 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -397,7 +374,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Int64 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -413,7 +390,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Int64 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -431,7 +408,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt8.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -441,7 +418,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt8
 
 **Function:** Converts JSValue type data to the corresponding UInt8 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -464,7 +441,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt8 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -480,7 +457,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie UInt8 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -498,7 +475,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt16.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -508,7 +485,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt16
 
 **Function:** Converts JSValue type data to the corresponding UInt16 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -531,7 +508,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt16 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**| Type | Description |
 |:----|:----|
@@ -545,7 +522,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie UInt16 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -563,7 +540,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt32.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -573,7 +550,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt32
 
 **Function:** Converts JSValue type data to the corresponding UInt32 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -596,7 +573,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt32 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -612,7 +589,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie UInt32 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -630,7 +607,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type UInt64.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -640,7 +617,7 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt64
 
 **Function:** Converts JSValue type data to the corresponding UInt64 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -663,7 +640,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt64 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -679,7 +656,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie UInt64 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -697,7 +674,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Float16.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -707,7 +684,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float16
 
 **Function:** Converts JSValue type data to the corresponding Float16 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -730,7 +707,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float16 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -746,7 +723,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Float16 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -764,7 +741,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Float32.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -774,7 +751,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float32
 
 **Function:** Converts JSValue type data to the corresponding Float32 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -797,7 +774,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float32 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -815,7 +792,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Float32 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -833,7 +810,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Float64.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -843,7 +820,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Float64
 
 **Function:** Converts JSValue type data to the corresponding Float64 type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -866,7 +843,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float64 type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -882,7 +859,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Float64 type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -900,7 +877,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Bool.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -910,7 +887,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Bool
 
 **Function:** Converts JSValue type data to the corresponding Bool type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -933,7 +910,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Bool type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -949,7 +926,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie Bool type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -967,7 +944,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type String.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -977,7 +954,7 @@ static func fromJSValue(_: JSContext, input: JSValue): String
 
 **Function:** Converts JSValue type data to the corresponding String type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -1000,7 +977,7 @@ static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie String type.
 
-**Since:** 12
+**Since:** 21
 
 **Return Value:**
 
@@ -1012,7 +989,7 @@ static func toArkTsType(): String
 
 **Function:** This interface can be used to implement extension methods for the built-in type String.
 
-**Since:** 12
+**Since:** 21
 
 ### func toJSValue(JSContext)
 
@@ -1022,7 +999,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts Cangjie String type data to JSValue.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -1040,7 +1017,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the built-in type Unit.
 
-**Since:** 12
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1050,7 +1027,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Unit
 
 **Function:** Converts JSValue type data to the corresponding Bool type.
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
@@ -1072,7 +1049,7 @@ static func toArkTsType(): String
 ```
 **Function:** Get the ArkTS type name corresponding to the Cangjie Unit type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1088,7 +1065,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Convert Cangjie Unit type data to JSValue.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1106,7 +1083,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the Option<T> type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1116,7 +1093,7 @@ static func fromJSValue(context: JSContext, input: JSValue): Option<T>
 
 **Function:** Convert JSValue type data to the corresponding Option<T> type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1139,7 +1116,7 @@ static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie Option<T> type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1155,7 +1132,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Convert Cangjie Option<T> type data to JSValue.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1173,7 +1150,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** This interface can be used to implement extension methods for the Array<T> type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1183,7 +1160,7 @@ static func fromJSValue(_: JSContext, input: JSValue): Array<T>
 
 **Function:** Convert JSValue type data to the corresponding Array<T> type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1206,7 +1183,7 @@ static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie Array<T> type.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1222,7 +1199,7 @@ func toJSValue(context: JSContext): JSValue
 
 **Function:** Convert Cangjie Array<T> type data to JSValue.
 
-**Initial Version:** 12
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1244,7 +1221,7 @@ public class JSArray <: JSHeapObject {}
 
 **Function:** A safe reference to an ArkTS array. Supports getting length and reading/writing elements.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parent Type:**
 
@@ -1258,7 +1235,7 @@ public prop size: Int64
 
 **Function:** Get the number of elements.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Type:** Int64
 
@@ -1272,7 +1249,7 @@ public operator func[](index: Int64): JSValue
 
 **Function:** Write an element to the ArkTS array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1305,7 +1282,7 @@ public operator func[](index: Int64, value!: JSValue): Unit
 
 **Function:** Write an element to the ArkTS array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1334,7 +1311,7 @@ public operator func[](index: Int64, value!: JSHeapObject): Unit
 
 **Function:** Write an element to the ArkTS array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1363,7 +1340,7 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **Function:** The JSArrayBuffer object is used to represent a generic raw binary data buffer. By creating a JS ArrayBuffer object, you can obtain the byte length of the object and convert it to a Cangjie array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parent Type:**
 
@@ -1377,7 +1354,7 @@ public prop byteLength: Int32
 
 **Function:** The byte length of the ArrayBuffer.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Type:** Int32
 
@@ -1391,7 +1368,7 @@ public func readBytes(): Array<Byte>
 
 **Function:** Reads binary data and converts it to a Cangjie array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1407,7 +1384,7 @@ public func toArrayBufferJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's ArrayBuffer.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1423,7 +1400,7 @@ public func toFloat32Array(): Array<Float32>
 
 **Function:** Converts to a Cangjie array Array\<Float32>.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1453,7 +1430,7 @@ public func toFloat64Array(): Array<Float64>
 
 **Function:** Converts to a Cangjie array Array\<Float64>.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1469,7 +1446,7 @@ public func toFloat64ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Float64Array.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1485,7 +1462,7 @@ public func toInt16Array(): Array<Int16>
 
 **Function:** Converts to a Cangjie array Array\<Int16>.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1501,7 +1478,7 @@ public func toInt16ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Int16Array.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1517,7 +1494,7 @@ public func toInt32Array(): Array<Int32>
 
 **Function:** Converts to a Cangjie array Array\<Int32>.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1533,7 +1510,7 @@ public func toInt32ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Int32Array.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1549,7 +1526,7 @@ public func toInt64Array(): Array<Int64>
 
 **Function:** Converts to a Cangjie array Array\<Int64>.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1565,7 +1542,7 @@ public func toInt64ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's BigInt64Array.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1581,7 +1558,7 @@ public func toInt8Array(): Array<Int8>
 
 **Function:** Converts to a Cangjie array Array\<Int8>.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1597,7 +1574,7 @@ public func toInt8ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Int8Array.
 
-**Initial Version:** 19
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1612,7 +1589,7 @@ public func toUInt16Array(): Array<UInt16>
 
 **Function:** Converts to a Cangjie array of type Array\<UInt16>.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1628,7 +1605,7 @@ public func toUInt16ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint16Array.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1644,7 +1621,7 @@ public func toUInt32Array(): Array<UInt32>
 
 **Function:** Converts to a Cangjie array of type Array\<UInt32>.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1660,7 +1637,7 @@ public func toUInt32ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint32Array.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1676,7 +1653,7 @@ public func toUInt64Array(): Array<UInt64>
 
 **Function:** Converts to a Cangjie array of type Array\<UInt64>.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1692,7 +1669,7 @@ public func toUInt64ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's BigUint64Array.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1708,7 +1685,7 @@ public func toUInt8Array(): Array<UInt8>
 
 **Function:** Converts to a Cangjie array of type Array\<UInt8>.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1724,7 +1701,7 @@ public func toUInt8ArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint8Array.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1740,7 +1717,7 @@ public func toUInt8ClampedArrayJSValue(): JSValue
 
 **Function:** Returns the JSValue of ArkTS's Uint8ClampedArray.
 
-**Since:** 19
+**Since:** 21
 
 **Return Value:**
 
@@ -1758,7 +1735,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **Function:** Used in declarative interop macros, corresponding to ArkTS's Array\<T> type.
 
-**Since:** 15
+**Since:** 21
 
 **Parent Type:**
 
@@ -1772,7 +1749,7 @@ public prop size: Int64
 
 **Function:** Gets the number of elements.
 
-**Since:** 15
+**Since:** 21
 
 **Type:** Int64
 
@@ -1786,7 +1763,7 @@ public init(arr: Array<T>)
 
 **Function:** Constructs a corresponding JSArrayEx\<T> instance from the given Array\<T>.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -1802,7 +1779,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T>
 
 **Function:** Converts from JSValue to JSArrayEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -1825,7 +1802,7 @@ public static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -1841,7 +1818,7 @@ public func clone(): JSArrayEx<T>
 
 **Function:** Clones the JSArrayEx, performing a deep copy of the JSArrayEx data.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -1857,7 +1834,7 @@ public func concat(other: JSArrayEx<T>): JSArrayEx<T>
 
 **Function:** This function creates a new JSArrayEx by concatenating the current JSArrayEx with the JSArrayEx pointed to by `other`.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -1879,7 +1856,7 @@ public func get(index: Int64): Option<T>
 
 **Function:** Gets the element corresponding to the specified index in the array.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1901,7 +1878,7 @@ public func isEmpty(): Bool
 
 **Function:** Determines whether the array is empty.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1917,7 +1894,7 @@ public func set(index: Int64, element: T): Unit
 
 **Function:** Modifies the value corresponding to the specified index in the array.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1934,7 +1911,7 @@ public func toArray(): Array<T>
 
 **Function:** Converts to an Array.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1950,7 +1927,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts to a JSValue. Used in declarative interoperability macro framework scenarios; developers do not need to use this API.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1972,7 +1949,7 @@ public operator func[](index: Int64): T
 
 **Function:** Retrieves the value corresponding to the specified index in the array.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -1994,7 +1971,7 @@ public operator func[](index: Int64, value!: T)
 
 **Function:** Modifies the value corresponding to the specified index in the array.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2009,7 +1986,7 @@ public operator func[](index: Int64, value!: T)
 public class JSBigInt <: JSHeapObject {}
 ```
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Function:** The JSBigInt object represents a safe reference to the JS bigint type. By creating a JS bigint object, it can be converted to a Cangjie Int64 or Cangjie BigInt.
 
@@ -2025,7 +2002,7 @@ public func toBigInt(): BigInt
 
 **Function:** Converts to a Cangjie BigInt.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -2041,7 +2018,7 @@ public class JSClass <: JSHeapObject {}
 
 **Function:** A safe reference to an ArkTS class (constructor). Methods and accessors can be added to this class, and instances of this class can be created.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parent Type:**
 
@@ -2055,7 +2032,7 @@ public prop prototype: JSObject
 
 **Function:** The prototype object of the class.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Type:** [JSObject](#class-jsobject)
 
@@ -2069,7 +2046,7 @@ public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?J
 
 **Function:** Defines a pair of getter and setter for the current ArkTS class.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2107,7 +2084,7 @@ public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSL
 
 **Function:** Defines a pair of getter and setter for the current ArkTS class.
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -2145,7 +2122,7 @@ public func addMethod(key: JSKeyable, method: JSFunction): Unit
 
 **Function:** Defines a method for the current ArkTS class.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -2182,7 +2159,7 @@ public func addMethod(key: JSKeyable, method: JSLambda): Unit
 
 **Function:** Defines a method for the current ArkTS class.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -2219,7 +2196,7 @@ public func addProperty(key: JSKeyable, value: JSValue): Unit
 
 **Function:** Adds a data member to the target ArkTS class, typically used for defining immutable properties.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -2253,7 +2230,7 @@ public func new(): JSValue
 
 **Function:** Instantiates a new object from the ArkTS class.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -2283,7 +2260,7 @@ public func new(arg: JSValue): JSValue
 
 **Function:** Instantiates a new object from the ArkTS class.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -2323,7 +2300,7 @@ public func new(args: Array<JSValue>): JSValue
 
 **Function:** Instantiates a new object from the ArkTS class.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -2366,7 +2343,7 @@ public class JSContext {}
 
 **Function:** A single-threaded ArkTS interoperability context.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 JSContext has a one-to-one relationship with the ArkTS runtime. Its primary purpose is to create JSValue and safe references, and manage the lifecycle of Cangjie objects referenced on the ArkTS side.
 
@@ -2380,7 +2357,7 @@ public prop env: JSEnv
 
 **Function:** ArkTS interoperability context.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Type:** JSEnv
 
@@ -2394,7 +2371,7 @@ public prop global: JSObject
 
 **Function:** JavaScript global environment variable `globalThis`.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Type:** [JSObject](#class-jsobject)
 
@@ -2408,7 +2385,7 @@ public func array(arr: Array<JSValue>): JSArray
 
 **Function:** Creates an ArkTS array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2440,7 +2417,7 @@ public func arrayBuffer(length: Int32): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2472,7 +2449,7 @@ public func arrayBuffer(data: Array<Byte>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2505,7 +2482,7 @@ public func arrayBuffer(data: Array<Int8>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2527,7 +2504,7 @@ public func arrayBuffer(data: Array<Int16>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2549,7 +2526,7 @@ public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2571,7 +2548,7 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2592,7 +2569,7 @@ public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 ```
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2614,7 +2591,7 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2636,7 +2613,7 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2658,7 +2635,7 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2680,7 +2657,7 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -2702,7 +2679,7 @@ public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer
 
 **Function:** Creates an ArkTS ArrayBuffer from a memory block.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2741,7 +2718,7 @@ public func bigint(value: Int64): JSBigInt
 
 **Function:** Creates an ArkTS bigint with the same value as the Cangjie BigInt.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2773,7 +2750,7 @@ public func bigint(value: BigInt): JSBigInt
 
 **Function:** Creates an ArkTS bigint with the same value as the Cangjie BigInt.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2807,7 +2784,7 @@ public func boolean(value: Bool): JSBoolean
 
 **Function:** Creates an ArkTS boolean.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2839,7 +2816,7 @@ public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass
 
 **Function:** Creates an ArkTS class.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2875,7 +2852,7 @@ public func external(data: SharedObject): JSExternal
 
 **Description:** Creates an ArkTS reference to a Cangjie object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2910,7 +2887,7 @@ public func function(lambda: JSLambda): JSFunction
 
 **Description:** Creates an ArkTS function.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -2946,7 +2923,7 @@ public func getNapiEnv(): napi_env
 
 **Description:** Gets a pointer to the global environment.
 
-**Since:** 14
+**Since:** 21
 
 **Return Value:**
 
@@ -2962,7 +2939,7 @@ public func isInBindThread(): Bool
 
 **Description:** Multi-threading utility: Checks whether the current thread can execute interoperation interfaces.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -2990,7 +2967,7 @@ public func null(): JSNull
 
 **Description:** Creates an ArkTS `null`.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3016,7 +2993,7 @@ public func number(value: Float64): JSNumber
 
 **Description:** Creates an ArkTS `number`.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3048,7 +3025,7 @@ public func number(value: Int32): JSNumber
 
 **Description:** Creates an ArkTS `number`.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3080,7 +3057,7 @@ public func object(): JSObject
 
 **Description:** Creates an empty ArkTS `object` reference.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3106,7 +3083,7 @@ public func postJSTask(callback: ()->Unit): Unit
 
 **Description:** Multi-threading utility: Creates a task to be executed on the ArkTS thread.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3137,7 +3114,7 @@ public func promiseCapability(): JSPromiseCapability
 
 **Description:** Creates an ArkTS `Promise`.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3161,7 +3138,7 @@ public func requireSystemNativeModule(moduleName: String, prefix!: ?String = Non
 
 **Function:** Loads a built-in ArkTS NAPI module from the system.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3194,7 +3171,7 @@ public func string(value: String): JSString
 
 **Function:** Creates an ArkTS string.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3226,7 +3203,7 @@ public func string(value: Utf16String): JSString
 
 **Function:** Creates a JSString from a Utf16String.
 
-**Since:** 20
+**Since:** 21
 
 **Parameters:**
 
@@ -3248,7 +3225,7 @@ public func symbol(description!: String = ""): JSSymbol
 
 **Function:** Creates an ArkTS symbol object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3281,7 +3258,7 @@ public func undefined(): JSUndefined
 
 **Function:** Creates an ArkTS undefined value.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3307,7 +3284,7 @@ public class JSExternal <: JSHeapObject {}
 
 **Function:** A Cangjie object reference that can be passed to the ArkTS side. Can retrieve the bound Cangjie object.
 
-**Since:** 13
+**Since:** 21
 
 JSExternal aims to pass a strong reference of a Cangjie object to the ArkTS runtime. It can be used with other user-defined interoperability interfaces to access this Cangjie object.
 
@@ -3323,7 +3300,7 @@ public func cast<T>(): Option<T> where T <: SharedObject
 
 **Function:** Retrieves the bound SharedObject and casts it to type T.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 | Type | Description |
@@ -3357,7 +3334,7 @@ public func getData(): SharedObject
 
 **Function:** Gets the bound SharedObject.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -3393,7 +3370,7 @@ public class JSFunction <: JSHeapObject {}
 
 **Function:** A secure reference to an ArkTS function.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Type:**
 
@@ -3407,7 +3384,7 @@ public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue
 
 **Function:** Performs an ArkTS function call (multiple parameters).
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3439,7 +3416,7 @@ public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue
 
 **Function:** Performs an ArkTS function call (multiple parameters).
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3473,7 +3450,7 @@ public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().t
 
 **Function:** Performs an ArkTS function call (multiple parameters).
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -3511,7 +3488,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **Function:** Used in declarative interop macros, corresponding to the ArkTS Map type.
 
-**Since:** 15
+**Since:** 21
 
 **Parent Type:**
 
@@ -3525,7 +3502,7 @@ public prop size: Int64
 
 **Function:** Returns the number of key-value pairs.
 
-**Since:** 15
+**Since:** 21
 
 **Type:** Int64
 
@@ -3539,7 +3516,7 @@ public init(map: HashMap<K, V>)
 
 **Function:** Constructs an empty JSHashMapEx\<K, V> instance.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -3555,7 +3532,7 @@ public init()
 
 **Function:** Constructs an empty JSHashMapEx\<K, V> instance.
 
-**Since:** 15
+**Since:** 21
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -3565,7 +3542,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<
 
 **Function:** Converts from JSValue to JSHashMapEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -3588,7 +3565,7 @@ public static func toArkTsType(): String
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -3603,7 +3580,7 @@ public func clear(): Unit
 ```
 
 **Function:** Removes all elements from this HashMapEx.
-**Initial Version:** 15
+**Initial Version:** 21
 
 ### func clone()
 
@@ -3627,7 +3604,7 @@ public func containsAll(keys: Collection<K>): Bool
 
 **Description:** Determines whether mappings for all keys in the specified collection are present.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3649,7 +3626,7 @@ public func delete(key: K): Bool
 
 **Description:** Removes the mapping for the specified key from this JSHashMapEx if present.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3671,7 +3648,7 @@ public func deleteAll(keys: Collection<K>): Unit
 
 **Description:** Removes mappings for all keys in the specified collection from this JSHashMapEx if present.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3689,7 +3666,7 @@ public func deleteIf(predicate: (K, V) -> Bool): Unit
 
 This function traverses the entire JSHashMapEx and removes all key-value pairs where `predicate(K, V) == true`.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3705,7 +3682,7 @@ public func get(key: K): Option<V>
 
 **Description:** Returns the value to which the specified key is mapped, or `Option<V>.None` if no mapping exists.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3727,7 +3704,7 @@ public func has(key: K) : Bool
 
 **Description:** Determines whether a mapping for the specified key exists.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3749,7 +3726,7 @@ public func isEmpty(): Bool
 
 **Description:** Determines whether the JSHashMapEx is empty. Returns `true` if empty; otherwise, returns `false`.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -3765,7 +3742,7 @@ public func keys(): EquatableCollection<K>
 
 **Description:** Returns all keys in the JSHashMapEx, stored in a Keys container.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -3781,7 +3758,7 @@ public func set(key: K, value: V): Unit
 
 **Description:** Inserts a key-value pair into the JSHashMapEx.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3798,7 +3775,7 @@ public func setAll(elements: Collection<(K, V)>): Unit
 
 **Description:** Inserts a collection of key-value pairs into the JSHashMapEx in the order of the collection's iterator.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3814,7 +3791,7 @@ public func setIfAbsent(key: K, value: V): Bool
 
 **Description:** Inserts the key-value pair `(key, value)` into the JSHashMapEx if the key is not already present.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3837,7 +3814,7 @@ public func toHashMap(): HashMap<K, V>
 
 **Description:** Converts the JSHashMapEx to a HashMap.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -3852,7 +3829,7 @@ public func toJSValue(c: JSContext): JSValue
 ```
 **Function:** Convert to JSValue. Used in declarative interoperability macro framework scenarios. Developers do not need to use this API.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3874,7 +3851,7 @@ public func values(): Collection<V>
 
 **Function:** Returns the values contained in JSHashMapEx and stores all values in a Values container.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -3890,7 +3867,7 @@ public operator func [](key: K): V
 
 **Function:** Operator overload for the set method. If the key exists, the new value overwrites the old value. If the key does not exist, this key-value pair is added.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3912,7 +3889,7 @@ public operator func [](key: K, value!: V): Unit
 
 **Function:** Operator overload for the set method. If the key exists, the new value overwrites the old value. If the key does not exist, this key-value pair is added.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -3929,7 +3906,7 @@ sealed abstract class JSHeapObject {}
 
 **Function:** A strong reference to an ArkTS runtime object (but it will not exceed the lifecycle of the ArkTS runtime nor prevent the ArkTS runtime from being destroyed). Can be converted to JSValue.
 
-**Initial Version:** 15
+**Initial Version:** 21
 
 It is the base class for all safe references. Users cannot create it; they can only create its subclasses (hidden constructor). Its purpose is to allow the referenced ArkTS runtime object to persist longer than the Cangjie object itself.
 
@@ -3941,7 +3918,7 @@ public func toJSValue(): JSValue
 
 **Function:** Convert to JSValue.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -3957,7 +3934,7 @@ public class JSModule {}
 
 **Function:** A static class that provides an interface for exporting symbols.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 The goal of JSModule is to provide symbol export capability (exporting to ArkTS). It works with custom static initialization functions to register export targets in a global table when the dynamic library is loaded, and the ArkTS engine executes the exports.
 
@@ -3969,7 +3946,7 @@ public static func registerClass(name: String, register: ClassRegister): Unit
 
 **Function:** Register an ArkTS class (constructor) to be exported to ArkTS.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -4001,7 +3978,7 @@ public static func registerFunc(name: String, register: FuncRegister): Unit
 
 **Function:** Register a function to be exported to ArkTS.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -4030,7 +4007,7 @@ public static func registerFunc(name: String, lambda: JSLambda): Unit
 
 **Function:** Register a function to be exported to ArkTS.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -4059,7 +4036,7 @@ public static func registerModule(register: ModuleRegister): Unit
 
 **Function:** Register interfaces to be exported to ArkTS.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -4089,7 +4066,7 @@ public class JSObject <: JSObjectBase {}
 
 **Function:** A safe reference to an ArkTS object.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Type:**
 
@@ -4103,7 +4080,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **Function:** Base class for safe references to ArkTS objects. Allows operations on ArkTS objects.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Type:**
 
@@ -4117,7 +4094,7 @@ public func attachCJObject(target: JSExternal): Unit
 
 **Function:** Binds a Cangjie object reference in ArkTS to the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4148,7 +4125,7 @@ public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue
 
 **Function:** Calls a method on the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4184,7 +4161,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 
 **Function:** Defines accessors for the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4221,7 +4198,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 
 **Function:** Defines accessors for the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4259,7 +4236,7 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 
 **Function:** Defines a property on the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4290,7 +4267,7 @@ public func getAttachInfo(): ?JSExternal
 
 **Function:** Retrieves the bound Cangjie object from the current object.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -4323,7 +4300,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **Function:** Retrieves the target property value from the current object.
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4356,7 +4333,7 @@ public func hasProperty(key: JSKeyable): Bool
 
 **Function:** Determines whether the current object contains the target property.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4390,7 +4367,7 @@ public func instanceOf(clazz: JSClass): Bool
 
 **Function:** Determines whether the current object is an instance of the target ArkTS class.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4428,7 +4405,7 @@ public func keys(): Array<String>
 
 **Function:** Enumerates all enumerable property names of the current object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -4455,7 +4432,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 **Function:** Assigns a value to a property of the current object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4483,7 +4460,7 @@ public operator func [](key: JSKeyable): JSValue
 
 **Function:** Assigns a value to a property of the current object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4516,7 +4493,7 @@ public operator func [](key: JSKeyable, value!: JSValue): Unit
 
 **Function:** Assigns a value to a property of the current object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4548,7 +4525,7 @@ JSPromise aims to provide a consistent encapsulation for callback patterns, enha
 
 The lifecycle of JSPromise exceeds that of the referenced ArkTS object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parent Type:**  
 
@@ -4562,7 +4539,7 @@ public func catchError(callback: JSFunction): Unit
 
 **Function:** Registers an exception handling callback.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4592,7 +4569,7 @@ public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit
 
 **Function:** Registers a result handling callback.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -4619,31 +4596,14 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
 ```cangjie
 public class JSPromiseCapability {
-    public init(context: JSContext)
 }
 ```
 
 **Function:** JSPromiseCapability corresponds to a Promise object, allowing resolution or rejection of the Promise.
 
-**Since:** 13
+**Since:** 21
 
 Lifecycle: JSPromiseCapability is a weak reference. The lifecycle of its corresponding ArkTS object ends upon first resolution or rejection. Subsequent usage will throw a Cangjie exception.
-
-### init(JSContext)
-
-```cangjie
-public init(context: JSContext)
-```
-
-**Function:** Constructs a JSPromiseCapability object.
-
-**Since:** 13
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| context | [JSContext](#class-jscontext) | Yes | - | ArkTS interoperability context. |
 
 ### func reject(JSValue)
 
@@ -4653,7 +4613,7 @@ public func reject(value: JSValue): Unit
 
 **Function:** Submits an exception to the Promise.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4682,7 +4642,7 @@ public func resolve(value: JSValue): Unit
 
 **Function:** Notifies the Promise of successful completion and submits the return value.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4713,7 +4673,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to ArkTS unified type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -4755,7 +4715,7 @@ public class JSRuntime {
 
 **Function:** ArkTS runtime created by Cangjie.
 
-**Since:** 13
+**Since:** 21
 
 > **Note:**
 >
@@ -4769,7 +4729,7 @@ public prop mainContext: JSContext
 
 **Function:** Interoperability context.
 
-**Since:** 13
+**Since:** 21
 
 **Type:** [JSContext](#class-jscontext)
 
@@ -4791,7 +4751,7 @@ public func getNapiEnv(): CPointer<Unit>
 
 **Function:** Gets the environment pointer.
 
-**Since:** 13
+**Since:** 21
 
 ## class JSString
 
@@ -4801,7 +4761,7 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **Function:** A safe reference to an ArkTS string. Can be converted to String.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Types:**
 
@@ -4817,7 +4777,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **Function:** Converts to JSValue.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -4838,7 +4798,7 @@ public func toString(): String
 
 **Function:** Convert to a Cangjie string.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -4866,7 +4826,7 @@ public func toUtf16String(): Utf16String
 
 **Function:** Convert from JSString to Utf16String.
 
-**Since:** 20
+**Since:** 21
 
 **Return Value:**
 
@@ -4884,29 +4844,13 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **Function:** Extension of [JSString](#class-jsstring) functionality and performance, usable in declarative interop macros.
 
-**Since:** 15
+**Since:** 21
 
 **Parent Types:**
 
 * [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
 * Equatable\<JSStringEx>
 * ToString
-
-### prop size
-
-```cangjie
-public prop size: Int64
-```
-
-**Function:** Get the byte length of the string after UTF-8 encoding.
-
-**Since:** 15
-
-Type: Int64
-
-**Type:** Int64
-
-**Read-Write Capability:** Read-only
 
 ### init(String)
 
@@ -4916,7 +4860,7 @@ public init(str: String)
 
 **Function:** Construct a corresponding JSStringEx instance given a String.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -4932,7 +4876,7 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx
 
 **Function:** Convert from JSValue to JSStringEx. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -4955,7 +4899,7 @@ public static func toArkTsType(): String
 
 **Function:** Get the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -4971,7 +4915,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **Function:** Convert to JSValue. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -4993,7 +4937,7 @@ public func toString(): String
 
 **Function:** Convert to String.
 
-**Since:** 15
+**Since:** 21
 
 **Return Value:**
 
@@ -5009,7 +4953,7 @@ public operator func !=(str: JSStringEx): Bool
 
 **Function:** Determine if two JSStringEx instances are not equal.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -5031,7 +4975,7 @@ public operator func ==(str: JSStringEx): Bool
 
 **Function:** Determine if two JSStringEx instances are equal.
 
-**Since:** 15
+**Since:** 21
 
 **Parameters:**
 
@@ -5053,7 +4997,7 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **Function:** A safe reference to a JS symbol.
 
-**Since:** 13
+**Since:** 21
 
 **Parent Types:**
 
@@ -5068,7 +5012,7 @@ public prop description: String
 
 **Function:** Description of the symbol.
 
-**Since:** 13
+**Since:** 21
 
 **Type:** String
 
@@ -5082,7 +5026,7 @@ public func toJSValue(_: JSContext): JSValue
 
 **Function:** Convert to JSValue. Used in declarative interop macro framework scenarios; developers do not need to use this API.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -5104,7 +5048,7 @@ public func toString(): String
 
 **Function:** Convert to String.
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5122,7 +5066,7 @@ public open class SharedObject {
 
 **Function:** Base class for Cangjie objects that can be referenced by ArkTS.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 ### prop nativeId  
 
@@ -5144,7 +5088,7 @@ public init()
 
 **Function:** Creates a SharedObject instance.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 ## struct JSBoolean  
 
@@ -5154,7 +5098,7 @@ public struct JSBoolean {}
 
 **Function:** ArkTS boolean type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 ### func toBool()  
 
@@ -5164,7 +5108,7 @@ public func toBool(): Bool
 
 **Function:** Converts to a Cangjie Bool.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5192,7 +5136,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to a JSValue.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5210,7 +5154,7 @@ public struct JSCallInfo {}
 
 Each ArkTS function call stores the argument list and other related information on the ArkTS stack. JSCallInfo is a pointer to this information.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Lifecycle:** The JSCallInfo becomes invalid once the ArkTS function call ends.  
 
@@ -5222,7 +5166,7 @@ public prop count: Int64
 
 **Function:** Number of input arguments.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** Int64  
 
@@ -5236,7 +5180,7 @@ public prop thisArg: JSValue
 
 **Function:** The `this` pointer.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSValue](#struct-jsvalue)  
 
@@ -5250,7 +5194,7 @@ public operator func[](index: Int64): JSValue
 
 **Function:** Retrieves the corresponding argument by index.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -5285,7 +5229,7 @@ public struct JSNull {}
 
 **Function:** ArkTS null type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 ### func toJSValue()  
 
@@ -5295,7 +5239,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to the unified ArkTS type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5311,7 +5255,7 @@ public struct JSNumber {}
 
 **Function:** ArkTS number.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 ### func toFloat64()  
 
@@ -5321,7 +5265,7 @@ public func toFloat64(): Float64
 
 **Function:** Converts to Float64.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5349,7 +5293,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to JSValue.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5376,7 +5320,7 @@ public struct JSType {
 
 **Function:** ArkTS data type enumeration.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 In ArkTS, the `typeof` operator can enumerate the general type of data. `JSType` lists these types and includes the `EXTERNAL` type.  
 
@@ -5388,7 +5332,7 @@ public static let BIGINT: JSType = JSType(4)
 
 **Function:** bigint type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5400,7 +5344,7 @@ public static let BOOLEAN: JSType = JSType(3)
 
 **Function:** bool type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5412,7 +5356,7 @@ public static let EXTERNAL: JSType = JSType(9)
 
 **Function:** external type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5424,7 +5368,7 @@ public static let FUNCTION: JSType = JSType(8)
 
 **Function:** function type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5436,7 +5380,7 @@ public static let NULL: JSType = JSType(1)
 
 **Function:** null type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5448,7 +5392,7 @@ public static let NUMBER: JSType = JSType(2)
 
 **Function:** number type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5460,7 +5404,7 @@ public static let OBJECT: JSType = JSType(7)
 
 **Function:** object type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5472,7 +5416,7 @@ public static let STRING: JSType = JSType(5)
 
 **Function:** string type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5484,7 +5428,7 @@ public static let SYMBOL: JSType = JSType(6)
 
 **Function:** symbol type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5496,7 +5440,7 @@ public static let UNDEFINED: JSType = JSType(0)
 
 **Function:** undefined type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Type:** [JSType](#struct-jstype)  
 
@@ -5508,7 +5452,7 @@ public func toString(): String
 
 **Function:** Gets the string description of `JSType`.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5524,7 +5468,7 @@ public operator func !=(target: JSType): Bool
 
 **Function:** Performs an inequality check between two `JSType` instances.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -5546,7 +5490,7 @@ public operator func ==(target: JSType): Bool
 
 **Function:** Performs an equality check between two `JSType` instances.  
 
-**Initial Version:** 13**Parameters:**
+**Initial Version:** 21**Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
@@ -5566,7 +5510,7 @@ public struct JSUndefined {}
 
 **Function:** ArkTS null.
 
-**Since:** 13
+**Since:** 21
 
 ### func toJSValue()
 
@@ -5576,7 +5520,7 @@ public func toJSValue(): JSValue
 
 **Function:** Converts to JSValue.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5592,7 +5536,7 @@ public struct JSValue {}
 
 **Function:** An ArkTS variable (weakly typed, short lifecycle).
 
-**Since:** 13
+**Since:** 21
 
 JSValue is the unified type in the ArkTS runtime and also the data type that directly interacts with the ArkTS runtime.
 
@@ -5606,7 +5550,7 @@ public func asArray(): JSArray
 
 **Function:** Converts a JSValue to JSArray.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5622,7 +5566,7 @@ public func asArrayBuffer(): JSArrayBuffer
 
 **Function:** Converts a JSValue to JSArrayBuffer.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5638,7 +5582,7 @@ public func asBigInt(): JSBigInt
 
 **Function:** Converts a JSValue to JSBigInt.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5654,7 +5598,7 @@ public func asBoolean(): JSBoolean
 
 **Function:** Converts a JSValue to JSBoolean.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5670,7 +5614,7 @@ public func asClass(): JSClass
 
 **Function:** Converts a JSValue to JSClass.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5686,7 +5630,7 @@ public func asExternal(): JSExternal
 
 **Function:** Converts a JSValue to JSExternal.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5703,7 +5647,7 @@ public func asFunction(): JSFunction
 
 **Function:** Converts a JSValue to JSFunction.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5719,7 +5663,7 @@ public func asNull(): JSNull
 
 **Function:** Converts a JSValue to JSNull.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5735,7 +5679,7 @@ public func asNumber(): JSNumber
 
 **Function:** Converts a JSValue to JSNumber.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5751,7 +5695,7 @@ public func asObject(): JSObject
 
 **Function:** Converts a JSValue to JSObject.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5771,7 +5715,7 @@ public func asPromise(): JSPromise
 
 **Function:** Converts a JSValue to JSPromise.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5785,7 +5729,7 @@ public func asPromise(): JSPromise
 public func asString(): JSString
 ```
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5801,7 +5745,7 @@ public func asSymbol(): JSSymbol
 
 **Function:** Converts a JSValue to JSSymbol.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5817,7 +5761,7 @@ public func asUndefined(): JSUndefined
 
 **Function:** Converts a JSValue to JSUndefined.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -5833,7 +5777,7 @@ public func bindObject(external: JSValue): Unit
 
 **Function:** Binds a Cangjie object to an ArkTS object.
 
-**Since:** 13
+**Since:** 21
 
 **Parameters:**
 
@@ -5867,7 +5811,7 @@ public func bindObject(data: SharedObject): Unit
 
 **Functionality:** Binds a Cangjie object to an ArkTS object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -5900,7 +5844,7 @@ public func getBindingObject(): ?SharedObject
 
 **Functionality:** Retrieves the Cangjie object bound to an ArkTS object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -5935,7 +5879,7 @@ public func getElement(index: Int64): JSValue
 
 **Functionality:** Reads an element from an ArkTS array.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -5968,7 +5912,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 **Functionality:** Reads a property from an ArkTS object.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6005,7 +5949,7 @@ public func isArray(): Bool
 
 **Functionality:** Determines whether a JSValue is of Array type.  
 
-**Initial Version:** 13  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -6035,7 +5979,7 @@ public func isArrayBuffer(): Bool
 
 **Function:** Determines whether a JSValue is of ArrayBuffer type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6065,7 +6009,7 @@ public func isBigInt(): Bool
 
 **Function:** Determines whether a JSValue is of bigint type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6095,7 +6039,7 @@ public func isBoolean(): Bool
 
 **Function:** Determines whether a JSValue is of boolean type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6125,7 +6069,7 @@ public func isClass(): Bool
 
 **Function:** Determines whether a JSValue is an ArkTS class (constructor).
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6155,7 +6099,7 @@ public func isExternal(): Bool
 
 **Function:** Determines whether a JSValue is an external object (ArkTS reference of a Cangjie object).
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6185,7 +6129,7 @@ public func isFunction(): Bool
 
 **Function:** Determines whether a JSValue is of function type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6215,7 +6159,7 @@ public func isNull(): Bool
 
 **Function:** Determines whether a JSValue is null.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6245,7 +6189,7 @@ public func isNumber(): Bool
 
 **Function:** Determines whether a JSValue is of number type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6275,7 +6219,7 @@ public func isObject(): Bool
 
 **Function:** Determines whether a JSValue is of object type.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6305,7 +6249,7 @@ public func isPromise(): Bool
 
 **Function:** Determines whether a JSValue is of Promise type.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -6335,7 +6279,7 @@ public func isString(): Bool
 
 **Function:** Determines whether a JSValue is of string type.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -6365,7 +6309,7 @@ public func isSymbol(): Bool
 
 **Function:** Determines whether a JSValue is of Symbol type.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -6395,7 +6339,7 @@ public func isUndefined(): Bool
 
 **Function:** Determines whether a JSValue is undefined.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -6425,7 +6369,7 @@ public func setElement(index: Int64, value: JSValue): Unit
 
 **Function:** Writes an element to an ArkTS array.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -6455,7 +6399,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 **Function:** Writes a property to an ArkTS object.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -6483,7 +6427,7 @@ public func strictEqual(target: JSValue): Bool
 
 **Function:** Performs strict equality comparison between two JSValues (type consistency + value equality).
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -6520,7 +6464,7 @@ public func toBigInt(): BigInt
 
 **Function:** Converts a JSValue to BigInt.
 
-**Initial Version:** 13
+**Initial Version:** 21
 
 **Return Value:**| Type | Description |
 |:----|:----|
@@ -6545,7 +6489,7 @@ public func toBoolean(): Bool
 
 **Function:** Converts a JSValue to Bool.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6572,7 +6516,7 @@ public func toNumber(): Float64
 
 **Function:** Converts a JSValue to Float64.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6599,7 +6543,7 @@ public func toString(): String
 
 **Function:** Converts a JSValue to String.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6634,7 +6578,7 @@ public func toUtf16String(): Utf16String
 
 **Function:** Converts from JSValue to Utf16String.
 
-**Since:** 20
+**Since:** 21
 
 **Return Value:**
 
@@ -6650,7 +6594,7 @@ public func typeof(): JSType
 
 **Function:** Gets the type of a JSValue, which is basically consistent with the types enumerated by ArkTS's typeof syntax.
 
-**Since:** 13
+**Since:** 21
 
 **Return Value:**
 
@@ -6681,7 +6625,7 @@ public type ClassRegister =(JSContext) -> JSClass
 
 **Function:** ClassRegister is a type alias for ([JSContext](#class-jscontext)) -> [JSClass](#class-jsclass).
 
-**Since:** 13
+**Since:** 21
 
 ## type FuncRegister
 
@@ -6691,7 +6635,7 @@ public type FuncRegister =(JSContext) -> JSFunction
 
 **Function:** FuncRegister is a type alias for ([JSContext](#class-jscontext)) -> [JSFunction](#class-jsfunction).
 
-**Since:** 13
+**Since:** 21
 
 ## type JSBufferFinalizer
 
@@ -6701,7 +6645,7 @@ public type JSBufferFinalizer =(CPointer<Byte>) -> Unit
 
 **Function:** JSBufferFinalizer is a type alias for (CPointer\<Byte>) -> Unit.
 
-**Since:** 13
+**Since:** 21
 
 ## type JSLambda
 
@@ -6711,7 +6655,7 @@ public type JSLambda =(JSContext, JSCallInfo) -> JSValue
 
 **Function:** JSLambda is a type alias for ([JSContext](#class-jscontext), [JSCallInfo](#struct-jscallinfo)) -> [JSValue](#struct-jsvalue).
 
-**Since:** 13
+**Since:** 21
 
 ## type ModuleRegister
 
@@ -6721,7 +6665,7 @@ public type ModuleRegister =(JSContext, JSObject) -> Unit
 
 **Function:** ModuleRegister is a type alias for ([JSContext](#class-jscontext), [JSObject](#class-jsobject)) -> Unit.
 
-**Since:** 13
+**Since:** 21
 
 ## type napi_env
 
@@ -6731,7 +6675,7 @@ public type napi_env = CPointer<Unit>
 
 **Function:** napi_env is a type alias for CPointer\<Unit>.
 
-**Since:** 13
+**Since:** 21
 
 ## type napi_value
 
@@ -6741,7 +6685,7 @@ public type napi_value = CPointer<Unit>
 
 **Function:** napi_value is a type alias for CPointer\<Unit>.
 
-**Since:** 13
+**Since:** 21
 
 ## class Utf16String
 
@@ -6753,7 +6697,7 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **Function:** A string stored in UTF-16 encoding format, which provides better performance than String when converting to/from ArkTS strings.
 
-**Since:** 20
+**Since:** 21
 
 **Parent Types:**
 
@@ -6771,7 +6715,7 @@ public prop accessible: Bool
 
 **Function:** Determines whether the string content is accessible. The string content of this object can be manually released using dispose, and accessing it after release will throw an exception.
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Type:** Bool  
 
@@ -6785,7 +6729,7 @@ public prop size: Int64
 
 **Description:** Represents the total length of encoding units in this string (UTF-16 encoded format). Each encoding unit in UTF-16 format occupies 2 bytes, and each character consists of 1-2 encoding units.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Type:** Int64  
 
@@ -6799,7 +6743,7 @@ public prop totalChars: Int64
 
 **Description:** The total number of characters.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Type:** Int64  
 
@@ -6813,7 +6757,7 @@ public static let empty: Utf16String
 
 **Description:** An empty string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Type:** Utf16String  
 
@@ -6827,7 +6771,7 @@ public init(src: String)
 
 **Description:** Creates a Utf16String from a standard library String.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6843,7 +6787,7 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 
 **Description:** Converts a JSValue to a Utf16String object.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6866,7 +6810,7 @@ public static func toArkTsType(): String
 
 **Description:** The corresponding ArkTS type name.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -6882,7 +6826,7 @@ public func compare(target: Utf16String): Ordering
 
 **Description:** Compares the size based on the Unicode dictionary order of characters.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6904,7 +6848,7 @@ public func contains(target: Utf16String): Bool
 
 **Description:** Checks whether the string contains the target string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6926,7 +6870,7 @@ public func count(src: Utf16String): Int64
 
 **Description:** Counts the occurrences of the target string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6948,7 +6892,7 @@ public func dispose(): Unit
 
 **Description:** Releases the memory storing the string content. Accessing the string content after the first disposal will cause an exception.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 ### func endsWith(Utf16String)  
 
@@ -6958,7 +6902,7 @@ public func endsWith(target: Utf16String): Bool
 
 **Description:** Checks whether the string ends with the target string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -6980,7 +6924,7 @@ public func hashCode(): Int64
 
 **Description:** The hash value of the string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -6997,7 +6941,7 @@ public func indexOf(target: Utf16String): ?Int64
 
 **Description:** Searches backward for the position of the target string (character index).  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7019,7 +6963,7 @@ public func indexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **Description:** Searches backward for the position of the target string (encoding unit index).  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7042,7 +6986,7 @@ public func isEmpty(): Bool
 
 **Description:** Checks whether the string is empty.
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -7058,7 +7002,7 @@ public func isCompressed(): Bool
 
 **Function:** Checks whether the content is compressed.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -7074,7 +7018,7 @@ public func lastIndexOf(target: Utf16String): ?Int64
 
 **Function:** Searches backward for the position of a character.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7096,7 +7040,7 @@ public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64
 
 **Function:** Searches backward for the position of a character.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7119,7 +7063,7 @@ public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Itera
 
 **Function:** Lazily splits the string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7142,7 +7086,7 @@ public func lazySplit(separator: Utf16String, maxSplit: Int64, remoteEmpty!: Boo
 
 **Function:** Lazily splits the string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7166,7 +7110,7 @@ public func lines(): Iterator<Utf16String>
 
 **Function:** Gets a line iterator.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -7177,20 +7121,20 @@ public func lines(): Iterator<Utf16String>
 ### func replace(Utf16String, Utf16String, Int64)  
 
 ```cangjie  
-public func replace(old: Utf16String, new: Utf16String, count!: Int64 = 1): Utf16String  
+public func replace(old: Utf16String, new: Utf16String, count!: Int64 = Int64.Max): Utf16String  
 ```  
 
 **Function:** Replaces a string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
 | Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| old | [Utf16String](#class-utfstring) | Yes | - | Element to be replaced. |  
-| new | [Utf16String](#class-utfstring) | Yes | - | Replacement element. |  
-| count | Int64 | No | 1 | Number of replacements. |  
+|:---|:---|:---|:--------------|:---|  
+| old | [Utf16String](#class-utfstring) | Yes | -             | Element to be replaced. |  
+| new | [Utf16String](#class-utfstring) | Yes | -             | Replacement element. |  
+| count | Int64 | No | Int64.Max     | Number of replacements. |  
 
 **Return Value:**  
 
@@ -7206,7 +7150,7 @@ public func runes(): Iterator<Rune>
 
 **Function:** Gets a character iterator.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -7222,7 +7166,7 @@ public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf
 
 **Function:** Splits the string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7245,7 +7189,7 @@ public func split(seperator: Utf16String, maxSplit: Int64, remoteEmpty!: Bool = 
 
 **Function:** Splits the string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7269,7 +7213,7 @@ public func startsWith(target: Utf16String): Bool
 
 **Function:** Checks whether the string starts with the target string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7291,7 +7235,7 @@ public func toJSValue(context: JSContext): JSValue
 
 **Function:** Converts a Utf16String object to a JSValue.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7313,7 +7257,7 @@ public func toString(): String
 
 **Function:** Converts to a String.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Return Value:**  
 
@@ -7329,7 +7273,7 @@ public operator func != (target: Utf16String): Bool
 
 **Function:** Determines whether the string is not equal to the target string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7351,7 +7295,7 @@ public operator func + (right: Utf16String): Utf16String
 
 **Function:** Concatenates a string at the end.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7373,7 +7317,7 @@ public operator func < (target: Utf16String): Bool
 
 **Function:** Determines whether the string is less than the target string (based on Unicode lexicographical order).  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7395,7 +7339,7 @@ public operator func <= (target: Utf16String): Bool
 
 **Function:** Determines whether the string is less than or equal to the target string (based on Unicode lexicographical order).  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7417,7 +7361,7 @@ public operator func == (target: Utf16String): Bool
 
 **Function:** Determines whether the string is equal to the target string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7439,7 +7383,7 @@ public operator func > (target: Utf16String): Bool
 
 **Function:** Determines whether the string is greater than the target string (based on Unicode lexicographical order).  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7461,7 +7405,7 @@ public operator func >= (target: Utf16String): Bool
 
 **Function:** Determines whether the string is greater than or equal to the target string (based on Unicode lexicographical order).  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7483,7 +7427,7 @@ public operator func [](index: Int64): UInt16
 
 **Function:** Retrieves a character based on the element index.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
@@ -7505,7 +7449,7 @@ public operator func [](range: Range<Int64>): Utf16String
 
 **Function:** Extracts a substring from the string.  
 
-**Initial Version:** 20  
+**Initial Version:** 21  
 
 **Parameters:**  
 
