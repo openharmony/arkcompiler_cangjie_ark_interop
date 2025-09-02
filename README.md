@@ -16,11 +16,14 @@ For interop scenarios, Cangjie provides ark_interop libraries to achieve interop
 ## Directory
 
 ```text
-.
+arkcompiler/cangjie_ark_interop
 ├── api                  # Public repository code for Cangjie Interop API
-├── doc                   # Cangjie documentation including API reference, development guide and user manual
-├── bundle.json
-└── LICENSE
+├── doc                  # Cangjie documentation including API reference, development guide and user manual
+    ├── API_Reference    # Cangjie api reference
+    └── Dev_Guide        # Cangjie developer guide
+    └── release-notes    # Cangjie release notes
+    └── User_Manual      # Cangjie user manual
+├── test                 # Cangjie interop testcases
 ```
 
 ## Constraints
