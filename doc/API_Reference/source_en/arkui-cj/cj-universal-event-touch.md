@@ -1,28 +1,28 @@
-# Touch Event
+# Touch Events
 
 Triggered when a finger presses, slides, or lifts on a component.
+
+## Import Module
+
+```cangjie
+import kit.ArkUI.*
+```
+
+## func stopPropagation()
+
+```cangjie
+public func stopPropagation(): Unit
+```
+
+**Function:** Prevents the event from continuing to propagate.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 ## Permission List
 
 None
-
-## func onTouch((TouchEvent)->Unit)
-
-```cangjie
-public func onTouch(callback: (TouchEvent)->Unit): This
-```
-
-**Function:** Triggered by finger touch actions.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 12
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| callback | ([TouchEvent](#class-touchevent))->Unit | Yes | - | Callback function triggered by finger touch actions. |
 
 ## Basic Type Definitions
 
@@ -30,35 +30,36 @@ public func onTouch(callback: (TouchEvent)->Unit): This
 
 ```cangjie
 public class TouchEvent {
-    public var isStopPropagation: Bool = false
-    public TouchEvent(
-        public var eventType: TouchType,
-        public var touches: ArrayList<TouchObject>,
-        public var changedTouches: ArrayList<TouchObject>,
-        public var timestamp: Int64,
-        public var target: EventTarget,
-        public var source: SourceType
-    )
+    public var eventType: TouchType
+    public var touches: Array<TouchObject>
+    public var changedTouches: Array<TouchObject>
+    public var timestamp: Int64
+    public var target: EventTarget
+    public var source: SourceType
 }
 ```
 
-**Function:** Inherits from [BaseEvent](./cj-universal-gesture-judge.md#class-baseevent). In non-event injection scenarios, `changedTouches` are points resampled at the screen refresh rate, while `touches` are points reported at the device refresh rate. Data in `changedTouches` may differ from that in `touches`.
+**Function:** Inherits from BaseEvent. In non-event injection scenarios, `changedTouches` are points resampled at the screen refresh rate, while `touches` are points reported at the device refresh rate. The data in `changedTouches` may differ from that in `touches`.
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var isStopPropagation
+**Since:** 21
+
+#### var changedTouches
 
 ```cangjie
-public var isStopPropagation: Bool = false
+public var changedTouches: Array<TouchObject>
 ```
 
-**Function:** Controls event propagation.
+**Function:** Information about the fingers currently undergoing changes.
 
-**Type:** Bool
+**Type:** Array\<[TouchObject](#class-touchobject)>
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var eventType
 
@@ -66,69 +67,15 @@ public var isStopPropagation: Bool = false
 public var eventType: TouchType
 ```
 
-**Function:** Type of the touch event.
+**Function:** The type of touch event.
 
 **Type:** [TouchType](cj-common-types.md#enum-touchtype)
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var touches
-
-```cangjie
-public var touches: ArrayList<TouchObject>
-```
-
-**Function:** Information about all fingers.
-
-**Type:** ArrayList\<[TouchObject](#class-touchobject)>
-
-**Read/Write:** Readable and Writable
-
-**Since:** 12
-
-#### var changedTouches
-
-```cangjie
-public var changedTouches: ArrayList<TouchObject>
-```
-
-**Function:** Information about currently changed fingers.
-
-**Type:** ArrayList\<[TouchObject](#class-touchobject)>
-
-**Read/Write:** Readable and Writable
-
-**Since:** 12
-
-#### var timestamp
-
-```cangjie
-public var timestamp: Int64
-```
-
-**Function:** Timestamp relative to system boot time, in milliseconds.
-
-**Type:** Int64
-
-**Read/Write:** Readable and Writable
-
-**Since:** 12
-
-#### var target
-
-```cangjie
-public var target: EventTarget
-```
-
-**Function:** The touched element object.
-
-**Type:** [EventTarget](cj-universal-gesture-bind.md#class-eventtarget)
-
-**Read/Write:** Readable and Writable
-
-**Since:** 12
+**Since:** 21
 
 #### var source
 
@@ -136,72 +83,84 @@ public var target: EventTarget
 public var source: SourceType
 ```
 
-**Function:** Event input device.
+**Function:** The input device of the event.
 
 **Type:** [SourceType](cj-common-types.md#enum-sourcetype)
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### TouchEvent(TouchType, ArrayList\<TouchObject>, ArrayList\<TouchObject>, Int64, EventTarget, SourceType)
+**Since:** 21
+
+#### var target
 
 ```cangjie
-public TouchEvent(
-    public var eventType: TouchType,
-    public var touches: ArrayList<TouchObject>,
-    public var changedTouches: ArrayList<TouchObject>,
-    public var timestamp: Int64,
-    public var target: EventTarget,
-    public var source: SourceType
-)
+public var target: EventTarget
 ```
 
-**Function:** Constructs an object of touch event type.
+**Function:** The object of the touched element.
 
-**Parameters:**
+**Type:** [EventTarget](cj-universal-event-click.md#class-eventtarget)
 
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| eventType | [TouchType](cj-common-types.md#enum-touchtype) | Yes | - | Type of the touch event. |
-| touches | ArrayList\<[TouchObject](#class-touchobject)> | Yes | - | Information about all fingers. |
-| changedTouches | ArrayList\<[TouchObject](#class-touchobject)> | Yes | - | Information about currently changed fingers. |
-| timestamp | Int64 | Yes | - | Timestamp relative to system boot time, in milliseconds. |
-| target | [EventTarget](cj-universal-gesture-bind.md#class-eventtarget) | Yes | - | The touched element object. |
-| source | [SourceType](cj-common-types.md#enum-sourcetype) | Yes | - | Event input device. |
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var timestamp
+
+```cangjie
+public var timestamp: Int64
+```
+
+**Function:** The timestamp relative to the system startup time, in milliseconds.
+
+**Type:** Int64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var touches
+
+```cangjie
+public var touches: Array<TouchObject>
+```
+
+**Function:** Information about all fingers.
+
+**Type:** Array\<[TouchObject](#class-touchobject)>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 
 ### class TouchObject
 
 ```cangjie
 public class TouchObject {
-    public TouchObject(
-        public var touchType: TouchType,
-        public var id: Int32,
-        public var screenX: Float64,
-        public var screenY: Float64,
-        public var x: Float64,
-        public var y: Float64
-    )
+    public var touchType: TouchType
+    public var id: Int32
+    public var screenX: Float64
+    public var screenY: Float64
+    public var x: Float64
+    public var y: Float64
+    public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64, x: Float64, y: Float64)
 }
 ```
 
-**Function:** Represents the type of information about currently changed fingers.
+**Function:** Represents the type of information about the currently changing finger.
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var touchType
-
-```cangjie
-public var touchType: TouchType
-```
-
-**Function:** Type of the touch event.
-
-**Type:** [TouchType](./cj-common-types.md#enum-touchtype)
-
-**Read/Write:** Readable and Writable
-
-**Since:** 12
+**Since:** 21
 
 #### var id
 
@@ -209,13 +168,15 @@ public var touchType: TouchType
 public var id: Int32
 ```
 
-**Function:** Unique identifier of the finger.
+**Function:** The unique identifier of the finger.
 
 **Type:** Int32
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var screenX
 
@@ -223,13 +184,15 @@ public var id: Int32
 public var screenX: Float64
 ```
 
-**Function:** X-coordinate of the touch point relative to the left edge of the device screen.
+**Function:** The X-coordinate of the touch point relative to the left edge of the device screen.
 
 **Type:** Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var screenY
 
@@ -237,13 +200,31 @@ public var screenX: Float64
 public var screenY: Float64
 ```
 
-**Function:** Y-coordinate of the touch point relative to the top edge of the device screen.
+**Function:** The Y-coordinate of the touch point relative to the top edge of the device screen.
 
 **Type:** Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var touchType
+
+```cangjie
+public var touchType: TouchType
+```
+
+**Function:** The type of touch event.
+
+**Type:** [TouchType](cj-common-types.md#enum-touchtype)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var x
 
@@ -251,13 +232,15 @@ public var screenY: Float64
 public var x: Float64
 ```
 
-**Function:** X-coordinate of the touch point relative to the left edge of the touched element.
+**Function:** The X-coordinate of the touch point relative to the left edge of the touched element.
 
 **Type:** Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var y
 
@@ -265,88 +248,31 @@ public var x: Float64
 public var y: Float64
 ```
 
-**Function:** Y-coordinate of the touch point relative to the top edge of the touched element.
+**Function:** The Y-coordinate of the touch point relative to the top edge of the touched element.
 
 **Type:** Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### TouchObject(TouchType, Int32, Float64, Float64, Float64, Float64)
+**Since:** 21
+
+#### init(TouchType, Int32, Float64, Float64, Float64, Float64)
 
 ```cangjie
-public TouchObject(
-    public var touchType: TouchType,
-    public var id: Int32,
-    public var screenX: Float64,
-    public var screenY: Float64,
-    public var x: Float64,
-    public var y: Float64
-)
+public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64, x: Float64, y: Float64)
 ```
 
-**Function:** Constructs an object of touch event type.
+**Function:** Constructs a touch event type object.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| touchType | [TouchType](./cj-common-types.md#enum-touchtype) | Yes | - | Type of the touch event. |
-| id | Int32 | Yes | - | Unique identifier of the finger. |
-| screenX | Float64 | Yes | - | X-coordinate of the touch point relative to the left edge of the device screen. |
-| screenY | Float64 | Yes | - | Y-coordinate of the touch point relative to the top edge of the device screen. |
-| x | Float64 | Yes | - | X-coordinate of the touch point relative to the left edge of the touched element. |
-| y | Float64 | Yes | - | Y-coordinate of the touch point relative to the top edge of the touched element. |## Example Code
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView{
-    @State var text: String = ""
-    func build(): Unit {
-        Column() {
-            Button("Click").backgroundColor(0x2788D9)
-                .onTouch({event =>
-                    this.text = """
-                    TouchType: ${event.eventType.toString()}
-                    timestamp: ${event.timestamp}
-                    Distance between touch point and touch element:
-                    x: ${event.touches[0].x}
-                    y: ${event.touches[0].y}
-                    Component localPos:(${event.target.area.position.x}, ${event.target.area.position.y})
-                    Component globalPos:(${event.target.area.globalPosition.x}, ${event.target.area.globalPosition.y})
-                    width: ${event.target.area.width}
-                    height: ${event.target.area.height}
-                    """
-                    AppLog.info(this.text)
-                }).width(200.vp)
-
-            Button("Click").backgroundColor(0x2788D9)
-                .onTouch({event =>
-                    this.text = """
-                    TouchType: ${event.eventType.toString()}
-                    timestamp: ${event.timestamp}
-                    Distance between touch point and touch element:
-                    x: ${event.touches[0].x}
-                    y: ${event.touches[0].y}
-                    Component localPos:(${event.target.area.position.x}, ${event.target.area.position.y})
-                    Component globalPos:(${event.target.area.globalPosition.x}, ${event.target.area.globalPosition.y})
-                    width: ${event.target.area.width}
-                    height: ${event.target.area.height}
-                    """
-                    AppLog.info(this.text)
-                }).width(200.px)
-            Text(this.text).padding(15).width(100.percent)
-            }
-    }
-}
-```
-
-![touch_event](figures/touch_event.gif)
+| touchType | [TouchType](cj-common-types.md#enum-touchtype) | Yes | - | The type of touch event. |
+| id | Int32 | Yes | - | The unique identifier of the finger. |
+| screenX | Float64 | Yes | - | The X-coordinate of the touch point relative to the left edge of the device screen. |
+| screenY | Float64 | Yes | - | The Y-coordinate of the touch point relative to the top edge of the device screen. |
+| x | Float64 | Yes | - | The X-coordinate of the touch point relative to the left edge of the touched element. |
+| y | Float64 | Yes | - | The Y-coordinate of the touch point relative to the top edge of the touched element. |

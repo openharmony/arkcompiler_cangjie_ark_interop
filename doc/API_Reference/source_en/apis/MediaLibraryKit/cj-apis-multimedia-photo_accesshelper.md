@@ -1,6 +1,6 @@
-# ohos.multimedia.photo_accesshelper (Photo Album Management Module)
+# ohos.file.photo_access_helper (Photo Album Management Module)
 
-This module provides photo album management capabilities, including creating albums and accessing/modifying media data information within albums.
+This module provides photo album management capabilities, including creating albums and accessing/modifying media data within albums.
 
 ## Importing the Module
 
@@ -18,10 +18,10 @@ ohos.permission.WRITE_IMAGEVIDEO
 
 API sample code usage instructions:
 
-- If the sample code's first line contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## interface MediaChangeRequest
 
@@ -29,408 +29,137 @@ For details about the sample project and configuration template mentioned above,
 public interface MediaChangeRequest {}
 ```
 
-**Description:** The parent type for media change requests, asset change requests, and album change requests.
+**Description:** Media change request, the parent type for asset change requests and album change requests.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-## class Album
+## class ChangeData
 
 ```cangjie
-public class Album {}
-```
-
-**Description:** Physical photo album.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop albumName
-
-```cangjie
-public mut prop albumName: String
-```
-
-**Description:** Gets the album name.
-
-**Type:** String
-
-**Read/Write Permission:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop albumSubtype
-
-```cangjie
-public prop albumSubtype: AlbumSubtype
-```
-
-**Description:** Gets the album subtype.
-
-**Type:** [AlbumSubtype](#enum-albumsubtype)
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop albumType
-
-```cangjie
-public prop albumType: AlbumType
-```
-
-**Description:** Gets the album type.
-
-**Type:** [AlbumType](#enum-albumtype)
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop albumUri
-
-```cangjie
-public prop albumUri: String
-```
-
-**Description:** Gets the album URI.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop count
-
-```cangjie
-public prop count: Int32
-```
-
-**Description:** Number of files in the album.
-
-**Type:** Int32
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop coverUri
-
-```cangjie
-public prop coverUri: String
-```
-
-**Description:** Gets the cover file URI.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop imageCount
-
-```cangjie
-public prop imageCount: Int32
-```
-
-**Description:** Gets the number of images in the album.
-
-**Type:** Int32
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop videoCount
-
-```cangjie
-public prop videoCount: Int32
-```
-
-**Description:** Gets the number of videos in the album.
-
-**Type:** Int32
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func commitModify()
-
-```cangjie
-public func commitModify(): Unit
-```
-
-**Description:** Commits album property modifications to the database.
-
-**Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
-| 13900012 | Permission denied. |
-| 13900020 | Invalid argument. |
-| 14000011 | System inner fail. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-predicates.equalTo('album_name', Str('test1'))
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
-    AlbumSubtype.USER_GENERIC, options: fetchOptions)
-let firstAlbum = fetchResult.getFirstObject()
-firstAlbum.albumName = "test10086"
-firstAlbum.commitModify()
-```
-
-### func getAssets(FetchOptions)
-
-```cangjie
-public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
-```
-
-**Description:** Gets files from the album.
-
-**Required Permission:** ohos.permission.READ_IMAGEVIDEO
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| options | [FetchOptions](#class-fetchoptions) | Yes | - | Retrieval options. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)> | Returns the image and video dataset. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900012 | Permission denied. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-predicates.equalTo('album_name', Str('test1'))
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
-    AlbumSubtype.USER_GENERIC, options: fetchOptions)
-let firstAlbum = fetchResult.getFirstObject()
-let photoCount = firstAlbum.count
-let predicates1 = DataSharePredicates()
-let fetchOptions1: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates1)
-let fetchResult1: FetchResult<PhotoAsset> = firstAlbum.getAssets(fetchOptions1)
-```
-
-## class BaseSelectOptions
-
-```cangjie
-public open class BaseSelectOptions {
-    public BaseSelectOptions(
-        public var MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-        public var maxSelectNumber!: Int32 = 50,
-        public var isPhotoTakingSupported!: Bool = true,
-        public var isSearchSupported!: Bool = true,
-        public var recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-        public var preselectedUris!: Array<String> = Array<String>(),
-        public var isPreviewForSingleSelectionSupported!: Bool = true
-    )
+public class ChangeData {
+    public var notifyType: NotifyType
+    public var uris: Array<String>
+    public var extraUris: Array<String>
 }
 ```
-**Feature:** Base class for gallery selection options.
+
+**Description:** Listener callback function value.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### var MIMEType
+### var extraUris
 
 ```cangjie
-public var MIMEType: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE
+public var extraUris: Array<String>
 ```
 
-**Feature:** Media file type.
-
-**Type:** [PhotoViewMIMETypes](#enum-photoviewmimetypes)
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var isPhotoTakingSupported
-
-```cangjie
-public var isPhotoTakingSupported: Bool = true
-```
-
-**Feature:** Whether photo capture is supported.
-
-**Type:** Bool
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var isPreviewForSingleSelectionSupported
-
-```cangjie
-public var isPreviewForSingleSelectionSupported: Bool = true
-```
-
-**Feature:** Whether to enter full-screen preview in single-selection mode.
-
-**Type:** Bool
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var isSearchSupported
-
-```cangjie
-public var isSearchSupported: Bool = true
-```
-
-**Feature:** Whether search is supported.
-
-**Type:** Bool
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var maxSelectNumber
-
-```cangjie
-public var maxSelectNumber: Int32 = 50
-```
-
-**Feature:** Maximum number of selectable media files.
-
-**Type:** Int32
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var preselectedUris
-
-```cangjie
-public var preselectedUris: Array<String>= Array<String>()
-```
-
-**Feature:** URI data of pre-selected images.
+**Description:** Array of URIs for changed files in the album.
 
 **Type:** Array\<String>
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### var recommendationOptions
+### var notifyType
 
 ```cangjie
-public var recommendationOptions: RecommendationOptions = RecommendationOptions()
+public var notifyType: NotifyType
 ```
 
-**Feature:** Configuration parameters for image recommendations.
+**Description:** Notification type of ChangeData.
 
-**Type:** [RecommendationOptions](#struct-recommendationoptions)
+**Type:** [NotifyType](#enum-notifytype)
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### BaseSelectOptions(PhotoViewMIMETypes, Int32, Bool, Bool, RecommendationOptions, Array\<String>, Bool)
+### var uris
 
 ```cangjie
-public BaseSelectOptions(
-    public var MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-    public var maxSelectNumber!: Int32 = 50,
-    public var isPhotoTakingSupported!: Bool = true,
-    public var isSearchSupported!: Bool = true,
-    public var recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-    public var preselectedUris!: Array<String> = Array<String>(),
-    public var isPreviewForSingleSelectionSupported!: Bool = true
-)
+public var uris: Array<String>
 ```
 
-**Feature:** Constructs a BaseSelectOptions object.
+**Description:** All URIs with the same [NotifyType](#enum-notifytype), which can be PhotoAsset or Album.
+
+**Type:** Array\<String>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+## class CreateOptions
+
+```cangjie
+public class CreateOptions {
+    public var title: String = ""
+    public var subtype: PhotoSubtype
+    public init(title!: String = "", subtype!: PhotoSubtype = Default)
+}
+```
+
+**Description:** Creation options for images or videos.
+
+Title parameter specifications:
+
+- Should not contain file extensions.
+- Filename string length: 1-255 characters.
+- Invalid English characters not allowed in filenames include: . .. \ / : * ? " ' ` < > | { } [ ]
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### var subtype
+
+```cangjie
+public var subtype: PhotoSubtype
+```
+
+**Description:** Title of the image or video.
+
+**Type:** [PhotoSubtype](#enum-photosubtype)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### var title
+
+```cangjie
+public var title: String = ""
+```
+
+**Description:** Title of the image or video.
+
+**Type:** String
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### init(String, PhotoSubtype)
+
+```cangjie
+public init(title!: String = "", subtype!: PhotoSubtype = Default)
+```
+
+**Description:** Constructs a CreateOptions object.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -439,87 +168,21 @@ public BaseSelectOptions(
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| MIMEType | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | No | IMAGE_VIDEO_TYPE | **Named parameter.** Selectable media file types. Defaults to image and video types if not specified. |
-| maxSelectNumber | Int32 | No | 50 | **Named parameter.** Maximum number of selectable media files (maximum configurable value is 500; defaults to 50 if not set). |
-| isPhotoTakingSupported | Bool | No | true | **Named parameter.** Whether photo capture is supported. true: supported; false: not supported. Defaults to true. |
-| isSearchSupported | Bool | No | true | **Named parameter.** Whether search is supported. true: supported; false: not supported. Defaults to true. |
-| recommendationOptions | [RecommendationOptions](#struct-recommendationoptions) | No | RecommendationOptions() | **Named parameter.** Configuration parameters for image recommendations. |
-| preselectedUris | Array\<String> | No | Array\<String>() | **Named parameter.** URI data of pre-selected images. |
-| isPreviewForSingleSelectionSupported | Bool | No | true | **Named parameter.** Whether to enter full-screen preview in single-selection mode. true: required; false: not required. Defaults to true. |
-
-## class ChangeData
-
-```cangjie
-public class ChangeData {}
-```
-
-**Feature:** Callback value for listener functions.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let `type`
-
-```cangjie
-public let `type`: NotifyType
-```
-
-**Feature:** Notification type of ChangeData.
-
-**Type:** [NotifyType](#enum-notifytype)
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let extraUris
-
-```cangjie
-public let extraUris: Array<String>
-```
-
-**Feature:** Array of URIs for changed files in the album.
-
-**Type:** Array\<String>
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let uris
-
-```cangjie
-public let uris: Array<String>
-```
-
-**Feature:** All URIs with the same [NotifyType](#enum-notifytype), which can be PhotoAsset or Album.
-
-**Type:** Array\<String>
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
+| :--- | :--- | :--- | :--- | :--- |
+| title | String | No | "" | **Named parameter.** Title of the image or video. |
+| subtype | [PhotoSubtype](#enum-photosubtype) | No | Default | **Named parameter.** File subtype of the image or video. |
 
 ## class FetchOptions
 
 ```cangjie
 public class FetchOptions {
-    public FetchOptions(
-        public var fetchColumns!: Array<String> = [],
-        public var predicates!: DataSharePredicates = DataSharePredicates()
-    )
+    public var fetchColumns: Array<String>
+    public var predicates: DataSharePredicates
+    public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 }
 ```
 
-**Feature:** Retrieval conditions.
+**Description:** Retrieval conditions.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -528,14 +191,14 @@ public class FetchOptions {
 ### var fetchColumns
 
 ```cangjie
-public var fetchColumns: Array<String>=[]
+public var fetchColumns: Array<String>
 ```
 
-**Feature:** Retrieval conditions.
+**Description:** Retrieval conditions.
 
 **Type:** Array\<String>
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -544,29 +207,26 @@ public var fetchColumns: Array<String>=[]
 ### var predicates
 
 ```cangjie
-public var predicates: DataSharePredicates = DataSharePredicates()
+public var predicates: DataSharePredicates
 ```
 
-**Feature:** Predicate query.
+**Description:** Predicate query.
 
 **Type:** [DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### FetchOptions(Array\<String>, DataSharePredicates)
+### init(Array\<String>, DataSharePredicates)
 
 ```cangjie
-public FetchOptions(
-    public var fetchColumns!: Array<String> = [],
-    public var predicates!: DataSharePredicates = DataSharePredicates()
-)
+public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 ```
 
-**Feature:** Constructs a FetchOptions object.
+**Description:** Constructs a FetchOptions object.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -575,17 +235,17 @@ public FetchOptions(
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| fetchColumns | Array\<String> | No | \[] | **Named parameter.** Retrieval conditions, specifying column names for query.<br>For photos: If empty, defaults to querying 'uri', 'media_type', 'subtype', and 'display_name'. Calling [get](#func-getstring) for other properties will throw an error. Example: fetchColumns: ['uri', 'title'].<br>For albums: If empty, defaults to querying 'uri' and 'album_name'. |
-| predicates | [DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates) | No | DataSharePredicates() | **Named parameter.** Predicate query for displaying filter conditions. |
+| :--- | :--- | :--- | :--- | :--- |
+| fetchColumns | Array\<String> | Yes | - | Retrieval conditions, specifying column names for query.<br>For photos, if this parameter is empty, it defaults to querying 'uri', 'media_type', 'subtype', and 'display_name'. Calling the [get](#func-getstring) interface to obtain other properties of the current object will result in an error. Example: fetchColumns: ['uri', 'title'].<br>For albums, if this parameter is empty, it defaults to querying 'uri' and 'album_name'. |
+| predicates | [DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates) | Yes | - | Predicate query, displaying filtering conditions. |
 
 ## class FetchResult
 
 ```cangjie
-public class FetchResult<T> <: where T <: & FetchData <T> {}
+public class FetchResult<T> <:  where T <:  FetchData <T> {}
 ```
 
-**Feature:** File retrieval result set.
+**Description:** File retrieval result set.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -596,7 +256,8 @@ public class FetchResult<T> <: where T <: & FetchData <T> {}
 ```cangjie
 public func close(): Unit
 ```
-**Function:** Releases the FetchResult instance and invalidates it. No other methods can be called.
+
+**Description:** Releases the FetchResult instance and invalidates it. No other methods can be called afterward.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -604,12 +265,12 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  | :--- | :--- |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | :---- | :--- |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -620,11 +281,13 @@ public func close(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context is required. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 ```
@@ -635,7 +298,7 @@ fetchResult.close()
 public func getAllObjects(): Array<T>
 ```
 
-**Function:** Retrieves all file assets in the file search result.
+**Description:** Retrieves all file assets in the file retrieval result set.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -645,17 +308,16 @@ public func getAllObjects(): Array<T>
 
 | Type | Description |
 | :---- | :---- |
-| Array\<T> | Returns an array of all file assets in the result set. |
+| Array\<[T](#generic-type-t)> | Returns an array of all file assets in the result set. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -666,11 +328,13 @@ public func getAllObjects(): Array<T>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context is required. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let photoAssetArray = fetchResult.getAllObjects()
 ```
@@ -681,7 +345,7 @@ let photoAssetArray = fetchResult.getAllObjects()
 public func getCount(): Int32
 ```
 
-**Function:** Retrieves the total number of files in the file search result.
+**Description:** Retrieves the total number of files in the file retrieval result set.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -691,17 +355,17 @@ public func getCount(): Int32
 
 | Type | Description |
 | :---- | :---- |
-| Int32 | The total number of files retrieved. |
+| Int32 | Total number of files retrieved. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -712,11 +376,13 @@ public func getCount(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context is required. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
 ```
@@ -727,7 +393,7 @@ let count = fetchResult.getCount()
 public func getFirstObject(): T
 ```
 
-**Function:** Retrieves the first file asset in the file search result.
+**Description:** Retrieves the first file asset in the file retrieval result set.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -737,17 +403,16 @@ public func getFirstObject(): T
 
 | Type | Description |
 | :---- | :---- |
-| T | Returns the first object in the result set. |
+| [T](#generic-type-t) | Returns the first object in the result set. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -758,11 +423,13 @@ public func getFirstObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context is required. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 ```
@@ -773,7 +440,7 @@ let firstPhotoAsset = fetchResult.getFirstObject()
 public func getLastObject(): T
 ```
 
-**Function:** Retrieves the last file asset in the file search result.
+**Description:** Retrieves the last file asset in the file retrieval result set.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -783,17 +450,16 @@ public func getLastObject(): T
 
 | Type | Description |
 | :---- | :---- |
-| T | Returns the last object in the result set. |
+| [T](#generic-type-t) | Returns the last object in the result set. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -804,11 +470,13 @@ public func getLastObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context is required. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getLastObject()
 ```
@@ -819,7 +487,9 @@ let firstPhotoAsset = fetchResult.getLastObject()
 public func getNextObject(): T
 ```
 
-**Function:** Retrieves the next file asset in the file search result.
+**Description:** Retrieves the next file asset in the file retrieval result set.
+
+Before calling this method, you must use [isAfterLast()](#func-isafterlast) to check whether the current position is the last row.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -829,17 +499,16 @@ public func getNextObject(): T
 
 | Type | Description |
 | :---- | :---- |
-| T | Returns the next object in the result set. |
+| [T](#generic-type-t) | Returns the next object in the result set. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -850,11 +519,13 @@ public func getNextObject(): T
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context is required. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getNextObject()
 ```
@@ -862,10 +533,10 @@ let firstPhotoAsset = fetchResult.getNextObject()
 ### func getObjectByPosition(Int32)
 
 ```cangjie
-public func getObjectByPosition(position: Int32): T
+public func getObjectByPosition(index: Int32): T
 ```
 
-**Function:** Retrieves the file asset at the specified index in the file search result.
+**Description:** Retrieves the file asset at the specified index in the file retrieval result set.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -873,39 +544,41 @@ public func getObjectByPosition(position: Int32): T
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| position | Int32 | Yes | - | The index of the file to retrieve, starting from 0. |
+| index | Int32 | Yes | - | Index of the file to retrieve, starting from 0. |
 
 **Return Value:**
 
 | Type | Description |
 | :---- | :---- |
-| T | Returns the object at the specified index in the result set. |
+| [T](#generic-type-t) | Returns the object at the specified index in the result set. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
 <!-- compile -->
+
 ```cangjie
 // index.cj
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this article
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
@@ -916,7 +589,7 @@ let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 public func isAfterLast(): Bool
 ```
 
-**Function:** Checks whether the result set points to the last row.
+**Description:** Checks whether the result set points to the last row.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -926,17 +599,16 @@ public func isAfterLast(): Bool
 
 | Type | Description |
 | :---- | :---- |
-| Bool | Returns true if there are no more records after reading the last record, otherwise returns false. |
+| Bool | Returns true if there are no more records after reading the last one; otherwise, returns false. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -947,19 +619,24 @@ public func isAfterLast(): Bool
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this article
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let isAfterLast = fetchResult.isAfterLast()
-```
-
+let```markdown
 ## class MediaAlbumChangeRequest
 
 ```cangjie
 public class MediaAlbumChangeRequest <: MediaChangeRequest {
+    /**
+     * The constructor to create a MediaAlbumChangeRequest instance.
+     *
+     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+     * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+     * @throws { BusinessException } 14000011 - System inner fail
+     * @relation constructor(album: Album)
+     */
     public init(album: Album)
 }
 ```
@@ -977,6 +654,14 @@ public class MediaAlbumChangeRequest <: MediaChangeRequest {
 ### init(Album)
 
 ```cangjie
+/**
+ * The constructor to create a MediaAlbumChangeRequest instance.
+ *
+ * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
+ * <br>2. Incorrect parameter types; 3. Parameter verification failed.
+ * @throws { BusinessException } 14000011 - System inner fail
+ * @relation constructor(album: Album)
+ */
 public init(album: Album)
 ```
 
@@ -988,18 +673,9 @@ public init(album: Album)
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | album | [Album](#class-album) | Yes | - | The album to be modified. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :--- | :--- |
-  | 401 | Parameter error. Possible causes: Parameter verification failed. |
-  | 14000011 | System inner fail. |
 
 **Example:**
 
@@ -1010,12 +686,14 @@ public init(album: Album)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this article
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC,
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
     options: fetchOptions)
 let album = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
@@ -1027,7 +705,7 @@ let albumChangeRequest = MediaAlbumChangeRequest(album)
 public func addAssets(assets: Array<PhotoAsset>): Unit
 ```
 
-**Function:** Adds assets to the album.
+**Function:** Adds assets to an album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1035,19 +713,19 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | Array of assets to be added to the album. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System inner fail. |
-  | 14000016 | Operation Not Support. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **Example:**
 
@@ -1058,14 +736,16 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this article
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
-let albumFetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC)
+let albumFetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric)
 let album = albumFetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
 albumChangeRequest.addAssets([asset, asset])
@@ -1086,17 +766,17 @@ public func getAlbum(): ?Album
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
+|:----|:----|
 | ?[Album](#class-album) | Returns the album in the current album change request. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14000011 | System inner fail. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1107,12 +787,14 @@ public func getAlbum(): ?Album
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this article
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC,
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
     options: fetchOptions)
 let album = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
@@ -1125,7 +807,7 @@ var changeRequestAlbum = albumChangeRequest.getAlbum()
 public func removeAssets(assets: Array<PhotoAsset>): Unit
 ```
 
-**Function:** Removes assets from the album.
+**Function:** Removes assets from an album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1133,19 +815,19 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | Array of assets to be removed from the album. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  | :--- | :--- |
-  | 401 | Parameter error. Possible causes: Parameter verification failed. |
-  | 14000011 | System inner fail. |
-  | 14000016 | Operation Not Support. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **Example:**
 
@@ -1156,14 +838,16 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this article
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let albumFetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let albumFetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric)
 let album = albumFetchResult.getFirstObject()
-let fetchResult = album.getAssets(fetchOptions)
+let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
 albumChangeRequest.removeAssets([asset])
@@ -1178,12 +862,11 @@ public func setAlbumName(name: String): Unit
 
 **Function:** Sets the album name.
 
-The specifications for the album name parameter are as follows:
-
-- The length of the album name string must be between 1 and 255 characters.
+Album name specifications:
+- Length: 1~255 characters.
 - Illegal characters are not allowed, including: . .. \ / : * ? " ' ` < > | { } [ ]
-- English characters are case-insensitive.
-- Duplicate album names are not allowed.
+- Case-insensitive for English characters.
+- Duplicate names are not allowed.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1191,16 +874,18 @@ The specifications for the album name parameter are as follows:
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| name | String | Yes | - | The album name to be set. |**Exceptions:**
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| name | String | Yes | - | The new album name to be set. |
 
-- BusinessException: For detailed information on the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+**Exceptions:**
+
+- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System inner fail. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1211,12 +896,14 @@ The specifications for the album name parameter are as follows:
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.USER, AlbumSubtype.USER_GENERIC,
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
     options: fetchOptions)
 let album = fetchResult.getFirstObject()
 let albumChangeRequest = MediaAlbumChangeRequest(album)
@@ -1256,18 +943,18 @@ public init(asset: PhotoAsset)
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | asset | [PhotoAsset](#class-photoasset) | Yes | - | The asset to be modified. |
 
 **Exceptions:**
 
-- BusinessException: For detailed information on the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  | :--- | :--- |
-  | 401 | Parameter error. Possible causes: Parameter verification failed. |
-  | 14000011 | System inner fail. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1278,11 +965,13 @@ public init(asset: PhotoAsset)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1292,7 +981,7 @@ let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
 
 ```cangjie
 public static func createAssetRequest(context: UIAbilityContext, photoType: PhotoType, extension: String,
-    options!: CreateOptions = CreateOptions()): MediaAssetChangeRequest
+    options!: CreateOptions = CreateOptions(title: "", subtype: Default)): MediaAssetChangeRequest
 ```
 
 **Function:** Creates an asset change request by specifying the file type and extension to be created.
@@ -1303,29 +992,27 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
 | photoType | [PhotoType](#enum-phototype) | Yes | - | The file type to be created, either IMAGE or VIDEO. |
 | extension | String | Yes | - | The file extension, e.g., 'jpg'. |
-| options | [CreateOptions](#struct-createoptions) | No | CreateOptions() | **Named parameter.** Creation options, e.g., {title: 'testPhoto'}. |
+| options | [CreateOptions](#class-createoptions) | No | CreateOptions(title: "", subtype: Default) | **Named parameter.** Creation options, e.g., {title: 'testPhoto'}. |
 
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
+|:----|:----|
 | [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset change request for creation. |
 
 **Exceptions:**
 
-- BusinessException: For detailed information on the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 202 | Called by non-system application |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000001 | Invalid display name. |
-  | 14000011 | System inner fail. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1335,49 +1022,51 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained. See usage instructions in this document.
-let photoType = PhotoType.IMAGE
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let photoType = PhotoType.Image
 let extension = "jpg"
 let options = CreateOptions(title: "testPhoto")
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
     extension, options: options)
-```
-
-### static func createImageAssetRequest(UIAbilityContext, String)
+```### static func createImageAssetRequest(UIAbilityContext, String)
 
 ```cangjie
 public static func createImageAssetRequest(context: UIAbilityContext, fileUri: String): MediaAssetChangeRequest
 ```
 
-**Function:** Creates an image asset change request.
+**Function:** Creates an image asset modification request.
+
+Specifies the data source of the asset to be created via `fileUri`. Refer to [FileUri](../CoreFileKit/cj-apis-file_fileuri.md).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| fileUri | String | Yes | - | The data source of the image asset, a URI within the application sandbox. |
+| fileUri | String | Yes | - | The data source URI of the image asset within the application sandbox. |
 
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
-| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset change request for creation. |
+|:----|:----|
+| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset creation modification request. |
 
 **Exceptions:**
 
-- BusinessException: For detailed information on the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900002 | No such file. |
-  | 14000011 | System inner fail. |
+  | 13900002 | The file corresponding to the URI is not in the app sandbox. |
+  | 14000011 | System internal failure. |
 
 **Example:**
 
@@ -1387,8 +1076,10 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createImageAssetRequest(ctx,
@@ -1402,34 +1093,36 @@ phAccessHelper.applyChanges(assetChangeRequest)
 public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: String): MediaAssetChangeRequest
 ```
 
-**Function:** Creates a video asset change request.
+**Function:** Creates a video asset modification request.
+
+Specifies the data source of the asset to be created via `fileUri`. Refer to [FileUri](../CoreFileKit/cj-apis-file_fileuri.md).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| fileUri | String | Yes | - | The data source of the video asset, a URI within the application sandbox. |
+| fileUri | String | Yes | - | The data source URI of the video asset within the application sandbox. |
 
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
-| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset change request for creation. |
+|:----|:----|
+| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset creation modification request. |
 
 **Exceptions:**
 
-- BusinessException: For detailed information on the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  | :--- | :--- |
-  | 401 | Parameter error. Possible causes: Parameter verification failed. |
-  | 13900002 | No such file. |
-  | 14000011 | System inner fail. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900002 | The file corresponding to the URI is not in the app sandbox. |
+  | 14000011 | System internal failure. |
 
 **Example:**
 
@@ -1439,8 +1132,10 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.mp4"
 let assetChangeRequest = MediaAssetChangeRequest.createVideoAssetRequest(ctx,
@@ -1454,30 +1149,30 @@ phAccessHelper.applyChanges(assetChangeRequest)
 public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAsset>): Unit
 ```
 
-**Function:** Deletes media files, moving the deleted files to the recycle bin.
+**Function:** Deletes media files. Deleted files are moved to the recycle bin.
 
 **Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | The array of media files to be deleted. |
+| assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | The array of URIs of the media files to be deleted. |
 
 **Exceptions:**
 
-- BusinessException: For detailed information on the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 201 | Permission denied |
+  | 201 | Permission denied. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System inner fail. |
+  | 14000011 | System internal failure. |
 
 **Example:**
 
@@ -1488,11 +1183,13 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained. See usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
 MediaAssetChangeRequest.deleteAssets(ctx, asset.uri)
@@ -1504,30 +1201,30 @@ MediaAssetChangeRequest.deleteAssets(ctx, asset.uri)
 public static func deleteAssets(context: UIAbilityContext, assets: Array<String>): Unit
 ```
 
-**Function:** Deletes media files, which will be moved to the recycle bin.
+**Function:** Deletes media files. Deleted files are moved to the recycle bin.
 
 **Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| assets | Array\<String> | Yes | - | Array of URIs of media files to be deleted. |
+| assets | Array\<String> | Yes | - | The array of URIs of the media files to be deleted. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
-  | 201 | Permission denied |
+  | :---- | :--- |
+  | 201 | Permission denied. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000002 | Invalid asset URI. |
+  | 14000002 | The URI format is incorrect or does not exist. |
   | 14000011 | System internal failure. |
 
 **Example:**
@@ -1539,11 +1236,13 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let asset = fetchResult.getFirstObject()
 MediaAssetChangeRequest.deleteAssets(ctx, asset.uri)
@@ -1555,29 +1254,29 @@ MediaAssetChangeRequest.deleteAssets(ctx, asset.uri)
 public func addResource(resourceType: ResourceType, fileUri: String): Unit
 ```
 
-**Function:** Adds resources via ArrayBuffer data.
+**Function:** Adds a resource via ArrayBuffer data.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| resourceType | [ResourceType](#enum-resourcetype) | Yes | - | Type of the resource to be added. |
-| fileUri | String | Yes | - | URI of the data source for the resource to be added, under the application sandbox. |
+| resourceType | [ResourceType](#enum-resourcetype) | Yes | - | The type of resource to be added. |
+| fileUri | String | Yes | - | The data source URI of the resource to be added within the application sandbox. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900002 | No such file. |
+  | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System internal failure. |
-  | 14000016 | Operation Not Supported. |
+  | 14000016 | Operation not supported. |
 
 **Example:**
 
@@ -1587,15 +1286,17 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
-let photoType = PhotoType.IMAGE
+let photoType = PhotoType.Image
 let extension = "jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
     extension)
 let buffer = Array<Byte>(2048, repeat: 0)
-assetChangeRequest.addResource(IMAGE_RESOURCE, buffer)
+assetChangeRequest.addResource(ResourceType.ImageResource, buffer)
 phAccessHelper.applyChanges(assetChangeRequest)
 ```
 
@@ -1605,28 +1306,28 @@ phAccessHelper.applyChanges(assetChangeRequest)
 public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 ```
 
-**Function:** Adds resources via ArrayBuffer data.
+**Function:** Adds a resource via ArrayBuffer data.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| resourceType | [ResourceType](#enum-resourcetype) | Yes | - | Type of the resource to be added. |
-| data | Array\<Byte> | Yes | - | Data of the resource to be added. |
+| resourceType | [ResourceType](#enum-resourcetype) | Yes | - | The type of resource to be added. |
+| data | Array\<Byte> | Yes | - | The data of the resource to be added. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System internal failure. |
-  | 14000016 | Operation Not Supported. |
+  | 14000016 | Operation not supported. |
 
 **Example:**
 
@@ -1636,15 +1337,17 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
-let photoType = PhotoType.IMAGE
+let photoType = PhotoType.Image
 let extension = "jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
     extension)
 let buffer = Array<Byte>(2048, repeat: 0)
-assetChangeRequest.addResource(IMAGE_RESOURCE, buffer)
+assetChangeRequest.addResource(ResourceType.ImageResource, buffer)
 phAccessHelper.applyChanges(assetChangeRequest)
 ```
 
@@ -1654,20 +1357,20 @@ phAccessHelper.applyChanges(assetChangeRequest)
 public func discardCameraPhoto(): Unit
 ```
 
-**Function:** Saves photos taken by the camera.
+**Function:** Saves a photo taken by the camera.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 14000011 | Internal system error. |
-  | 14000016 | Operation Not Supported. |
+  | 14000016 | Operation not supported. |
 
 **Example:**
 
@@ -1678,11 +1381,13 @@ public func discardCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1696,24 +1401,24 @@ phAccessHelper.applyChanges(assetChangeRequest)
 public func getAsset(): ?PhotoAsset
 ```
 
-**Function:** Gets the asset in the current asset change request.
+**Function:** Retrieves the asset in the current asset modification request.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| ?[PhotoAsset](#class-photoasset) | Returns the asset in the current asset change request. |
+| ?[PhotoAsset](#class-photoasset) | Returns the asset in the current asset modification request. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System internal failure. |
 
@@ -1726,11 +1431,13 @@ public func getAsset(): ?PhotoAsset
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult = phAccessHelper.getAssets(fetchOptions)
 let photoAsset = fetchResult.getFirstObject()
 let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
@@ -1743,13 +1450,13 @@ let asset = assetChangeRequest.getAsset()
 public func getWriteCacheHandler(): Int32
 ```
 
-**Function:** Gets the temporary file write handle.
+**Function:** Retrieves the temporary file write handle.
 
 **Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -1759,14 +1466,14 @@ public func getWriteCacheHandler(): Int32
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
-  | 201 | Permission denied |
+  | :---- | :--- |
+  | 201 | Permission denied. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System internal failure. |
-  | 14000016 | Operation Not Supported. |
+  | 14000016 | Operation not supported. |
 
 **Example:**
 
@@ -1777,13 +1484,15 @@ public func getWriteCacheHandler(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.CoreFileKit.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context needs to be obtained, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx,
-    PhotoType.VIDEO, "mp4")
+    PhotoType.Video, "mp4")
 let fd = assetChangeRequest.getWriteCacheHandler()
-FileFs.close(fd)
+FileIo.close(fd)
 phAccessHelper.applyChanges(assetChangeRequest)
 ```
 
@@ -1792,98 +1501,27 @@ phAccessHelper.applyChanges(assetChangeRequest)
 ```cangjie
 public func saveCameraPhoto(): Unit
 ```
-**Function:** Save photos taken by the camera.
+
+**Function:** Saves a photo taken by the camera.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |14000011|System inner fail.|
-  |14000016|Operation Not Support.|
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAssets(fetchOptions)
-let photoAsset = fetchResult.getFirstObject()
-let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
-assetChangeRequest.saveCameraPhoto()
-phAccessHelper.applyChanges(assetChangeRequest)
-```
-
-### func setTitle(String)
-
-```cangjie
-public func setTitle(title: String): Unit
-```
-
-**Function:** Modify the title of a media asset.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|title|String|Yes|-|The title of the asset to be modified.|
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult = phAccessHelper.getAssets(fetchOptions)
-let photoAsset = fetchResult.getFirstObject()
-let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
-let newTitle = "newTitle"
-assetChangeRequest.setTitle(newTitle)
-phAccessHelper.applyChanges(assetChangeRequest)
-```
-
-## class PhotoAccessHelper
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 14000011 | System internal failure. |
+  | 14000016 |## class PhotoAccessHelper
 
 ```cangjie
 public class PhotoAccessHelper {}
 ```
 
-**Function:** Retrieve image and video resources.
+**Description:** Provides access to image and video resources.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1895,9 +1533,9 @@ public class PhotoAccessHelper {}
 public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 ```
 
-**Function:** Commit media change requests.
+**Description:** Submits a media change request.
 
-**Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
+**Required Permission:** ohos.WRITE_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1905,29 +1543,30 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 **Parameters:**
 
-|Parameter Name|Type|Required|Default Value|Description|
+| Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|mediaChangeRequest|[MediaChangeRequest](#interface-mediachangerequest)|Yes|-|Media change request, supporting asset change requests and album change requests.|
+| mediaChangeRequest | [MediaChangeRequest](#interface-mediachangerequest) | Yes | - | The media change request, supporting asset change requests and album change requests. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |201|Permission denied|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|System inner fail.|
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 14000011 | System inner fail |
 
 ### func getAlbums(AlbumType, AlbumSubtype, FetchOptions)
 
 ```cangjie
-public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchOptions = FetchOptions()): FetchResult<Album>
+public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
+    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): FetchResult<Album>
 ```
 
-**Function:** Retrieve albums based on search options and album type. Ensure the album exists before retrieval.
+**Description:** Retrieves albums based on search options and album type. Ensure the album exists before retrieval.
 
-**Required Permission:** ohos.permission.READ_IMAGEVIDEO
+**Required Permission:** ohos.READ_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1935,28 +1574,28 @@ public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchO
 
 **Parameters:**
 
-|Parameter Name|Type|Required|Default Value|Description|
+| Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|\`type\`|[AlbumType](#enum-albumtype)|Yes|-|Album type.|
-|subtype|[AlbumSubtype](#enum-albumsubtype)|Yes|-|Album subtype.|
-|options|[FetchOptions](#class-fetchoptions)|No|FetchOptions()| **Named parameter.** Search options.|
+| albumType | [AlbumType](#enum-albumtype) | Yes | - | The type of the album. |
+| subtype | [AlbumSubtype](#enum-albumsubtype) | Yes | - | The subtype of the album. |
+| options | [FetchOptions](#class-fetchoptions) | No | FetchOptions(["uri", "album_name"], DataSharePredicates()) | **Named parameter.** The search options. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[Album](#class-album)>|Returns the result set of retrieved albums.|
+| [FetchResult](#class-fetchresult)\<[Album](#class-album)> | Returns the result set of retrieved albums. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 201 | Permission denied |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1967,17 +1606,15 @@ public func getAlbums(`type`: AlbumType, subtype: AlbumSubtype, options!: FetchO
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-predicates
-    .equalTo('album_name', Str('test1'))
-    .and()
-    .equalTo('count', Integer(2))
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
-    AlbumSubtype.USER_GENERIC, options: fetchOptions)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.User,
+    AlbumSubtype.UserGeneric, options: fetchOptions)
 ```
 
 ### func getAssets(FetchOptions)
@@ -1986,9 +1623,9 @@ let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.USER,
 public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 ```
 
-**Function:** Retrieve image and video resources.
+**Description:** Retrieves image and video resources.
 
-**Required Permission:** ohos.permission.READ_IMAGEVIDEO
+**Required Permission:** ohos.READ_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1996,26 +1633,25 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 **Parameters:**
 
-|Parameter Name|Type|Required|Default Value|Description|
+| Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|options|[FetchOptions](#class-fetchoptions)|Yes|-|Image and video search options.|
+| options | [FetchOptions](#class-fetchoptions) | Yes | - | The search options for images and videos. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|Returns the result set of image and video data.|
+| [FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)> | Returns the result set of retrieved burst photos. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -2026,11 +1662,13 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 ```
 
@@ -2040,9 +1678,9 @@ let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions
 public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult<PhotoAsset>
 ```
 
-**Function:** Retrieve burst photo resources.
+**Description:** Retrieves burst photo resources.
 
-**Required Permission:** ohos.permission.READ_IMAGEVIDEO
+**Required Permission:** ohos.READ_IMAGEVIDEO
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2050,26 +1688,25 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 **Parameters:**
 
-|Parameter Name|Type|Required|Default Value|Description|
+| Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|burstKey|String|Yes|-|Unique identifier for a set of burst photos: uuid (can pass [PhotoKeys](#enum-photokeys)'s BURST_KEY).|
-|options|[FetchOptions](#class-fetchoptions)|Yes|-|Burst photo search options.|
+| burstKey | String | Yes | - | The unique identifier for a set of burst photos: uuid (can be passed as BURST_KEY from [PhotoKeys](#enum-photokeys)). |
+| options | [FetchOptions](#class-fetchoptions) | Yes | - | The search options for burst photos. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|Returns the result set of burst photo data.|
+| [FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)> | Returns the result set of retrieved burst photos. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |201|Permission denied|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-  |14000011|Internal system error.|
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 201 | Permission denied |
+  | 14000011 | Internal system error |
 
 **Example:**
 
@@ -2080,11 +1717,13 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
@@ -2092,10 +1731,10 @@ let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKe
 ### func registerChange(String, Bool, Callback1Argument\<ChangeData>)
 
 ```cangjie
-public func registerChange(uri: String, forChildUris: Bool, callback: Callback1Argument\<ChangeData>): Unit
+public func registerChange(uri: String, forChildUris: Bool, callback: Callback1Argument<ChangeData>): Unit
 ```
 
-**Function:** Registers a listener for the specified URI and returns asynchronous results via callback.
+**Description:** Registers a listener for the specified URI, returning asynchronous results via callback.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2103,21 +1742,21 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | uri | String | Yes | - | The URI of PhotoAsset, Album, or a value from [DefaultChangeUri](#enum-defaultchangeuri). |
-| forChildUris | Bool | Yes | - | Whether to enable fuzzy listening. When URI is an album URI, setting `forChildUris` to `true` allows listening to changes in files within the album; if `false`, only changes to the album itself are monitored. For PhotoAsset URIs, `forChildUris` has no effect. For `DefaultChangeUri`, `forChildUris` must be `true`; if `false`, the URI will not be found, and no messages will be received. |
-| callback | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)> | Yes | - | Returns the [ChangeData](#class-changedata) to be monitored. Note: Multiple different callbacks can be registered for the same URI. [unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata) can close all listeners for the URI or only the specified callback listener. |
+| forChildUris | Bool | Yes | - | Whether to listen broadly. When URI is an album URI, setting forChildUris to true allows listening to changes in files within the album; if false, only changes to the album itself are monitored. For PhotoAsset URIs, forChildUris has no effect. For DefaultChangeUri, forChildUris must be true; if false, the URI will not be found, and no messages will be received. |
+| callback | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)> | Yes | - | Returns the [ChangeData](#class-changedata) to be monitored. Note: Multiple different callback listeners can be registered for the same URI. [unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata) can close all listeners for the URI or just the specified callback listener. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900012 | Permission denied. |
-  | 13900020 | Invalid argument. |
+  | 13900012 | Permission denied |
+  | 13900020 | Invalid argument |
 
 **Example:**
 
@@ -2128,7 +1767,11 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 import ohos.base.*
+import ohos.business_exception.BusinessException
+import ohos.callback_invoke.*
 
 // This code can be added to dependency definitions
 class MyCallback<T> <: Callback1Argument<T> {
@@ -2136,21 +1779,22 @@ class MyCallback<T> <: Callback1Argument<T> {
     public init(callabck: (T) -> Unit) {
         callabck_ = callabck
     }
-    public open func invoke(arg: T): Unit {
+    public open func invoke(err: ?BusinessException, arg: T): Unit {
         callabck_(arg)
     }
 }
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context required; see usage instructions
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
-        arg: ChangeData => AppLog.info(
-            "onCallback1. ChangeData: type = ${arg.`type`.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
+        arg: ChangeData => Hilog.info(0, "AppLogCj",
+            "onCallback1. ChangeData: type = ${arg.notifyType.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
         )
     })
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: ['title'], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
@@ -2162,7 +1806,7 @@ phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
 public func release(): Unit
 ```
 
-**Function:** Releases the PhotoAccessHelper instance. Call this when the methods of the PhotoAccessHelper instance are no longer needed.
+**Description:** Releases the PhotoAccessHelper instance. Call this when the methods in the PhotoAccessHelper instance are no longer needed.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2170,13 +1814,13 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 13900020 | Invalid argument. |
-  | 14000011 | System inner fail. |
+  | 13900020 | Invalid argument |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -2187,11 +1831,13 @@ public func release(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context required; see usage instructions
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: [], predicates: predicates)
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 phAccessHelper.release()
@@ -2204,7 +1850,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
     callback: Callback1Argument<Array<String>>): Unit
 ```
 
-**Function:** Invokes an interface to display a save confirmation dialog. If the user agrees to save, the callback returns a list of URIs that have been created and granted save permissions. This list is permanently valid, and the application can use these URIs to write images/videos. If the user refuses to save, an empty list is returned.
+**Description:** Invokes an interface to display a save confirmation dialog. If the user agrees to save, the callback returns a list of URIs that have been created and granted save permissions. This list is permanently valid, and the application can use these URIs to write images/videos. If the user refuses to save, an empty list is returned.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2212,20 +1858,20 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| srcFileUris | Array\<String> | Yes | - | The media library URIs of the image/video files to be saved. <br>**Note:** Only image and video URIs are supported. |
-| photoCreationConfigs | Array\<[PhotoCreationConfig](#struct-photocreationconfig)> | Yes | - | Configuration for saving images/videos to the media library, including filenames, etc. Must correspond one-to-one with `srcFileUris`. |
-| callback | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Array\<String>> | Yes | - | Callback function to retrieve the list of media library file URIs returned to the application. |
+| srcFileUris | Array\<String> | Yes | - | The media library URIs corresponding to the image/video files to be saved to the media library.<br>**Note:** Only image and video URIs are supported. |
+| photoCreationConfigs | Array\<[PhotoCreationConfig](#class-photocreationconfig)> | Yes | - | The configuration for saving images/videos to the media library, including file names, etc., corresponding one-to-one with srcFileUris. |
+| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<String>> | Yes | - | The callback function to retrieve the list of media library file URIs returned to the application. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | Internal system error. |
+  | 14000011 | Internal system error |
 
 **Example:**
 
@@ -2236,7 +1882,11 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
+import kit.AbilityKit.UIAbilityContext
+import ohos.arkui.state_management.AppStorage
 import ohos.base.*
+import ohos.business_exception.BusinessException
+import ohos.callback_invoke.*
 
 // This code can be added to dependency definitions
 class MyCallback<T> <: Callback1Argument<T> {
@@ -2244,19 +1894,20 @@ class MyCallback<T> <: Callback1Argument<T> {
     public init(callabck: (T) -> Unit) {
         callabck_ = callabck
     }
-    public open func invoke(arg: T): Unit {
+    public open func invoke(err: ?BusinessException, arg: T): Unit {
         callabck_(arg)
     }
 }
+import ohos.arkui.state_management.AppStorage
 
-let ctx = Global.getAbilityContext() // Context application context required; see usage instructions
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback3 = MyCallback<Array<String>>(
     {
         arg: Array<String> =>
-        AppLog.info("oncallback3: Array.size: ${arg.size}")
+        Hilog.info(0, "AppLogCj", "oncallback3: Array.size: ${arg.size}")
         for (str in arg) {
-            AppLog.info("oncallback3: uri: ${str}")
+            Hilog.info(0, "AppLogCj", "oncallback3: uri: ${str}")
         }
     }
 )
@@ -2266,9 +1917,9 @@ let srcFileUris: Array<String> = ["file://media/Photo/37/IMG_1731463495_028/IMG_
 let photoCreationConfigs: Array<PhotoCreationConfig> = [
     PhotoCreationConfig(
         'jpg',
-        PhotoType.IMAGE,
+        PhotoType.Image,
         title: "test4",
-        subtype: PhotoSubtype.DEFAULT
+        subtype: PhotoSubtype.Default
     )
 ]
 phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs, callback3)
@@ -2280,7 +1931,106 @@ phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs, callb
 public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeData> = None): Unit
 ```
 
-**Function:** Cancels the listener for the specified URI. Multiple callbacks can be registered for a URI. When multiple callbacks exist, a specific registered callback can be canceled. If no callback is specified, all listeners for the URI are canceled.
+**Description:** Unregisters the listener for the specified URI. Multiple callback listeners can be registered for the same URI. When multiple callback listeners exist, a specific registered callback listener can be unregistered. If no callback is specified, all listeners for the URI are unregistered.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| uri | String | Yes | - | The URI of PhotoAsset, Album, or a value from [DefaultChangeUri](#enum-defaultchangeuri). |
+| callback | ?[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[ChangeData## class PhotoCreationConfig
+
+```cangjie
+public class PhotoCreationConfig {
+    public var fileNameExtension: String
+    public var photoType: PhotoType
+    public var title: String
+    public var subtype: PhotoSubtype
+    public init(fileNameExtension: String, photoType: PhotoType, title!: String = "", subtype!: PhotoSubtype = Default)
+}
+```
+
+**Description:** Configuration for saving images/videos to the media library, including file naming conventions.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### var fileNameExtension
+
+```cangjie
+public var fileNameExtension: String
+```
+
+**Description:** File extension.
+
+**Type:** String
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### var photoType
+
+```cangjie
+public var photoType: PhotoType
+```
+
+**Description:** File type.
+
+**Type:** [PhotoType](#enum-phototype)
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### var subtype
+
+```cangjie
+public var subtype: PhotoSubtype
+```
+
+**Description:** File subtype.
+
+**Type:** [PhotoSubtype](#enum-photosubtype)
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### var title
+
+```cangjie
+public var title: String
+```
+
+**Description:** Title of the image or video.
+
+**Type:** String
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### init(String, PhotoType, String, PhotoSubtype)
+
+```cangjie
+public init(fileNameExtension: String, photoType: PhotoType, title!: String = "", subtype!: PhotoSubtype = Default)
+```
+
+**Description:** Constructs a PhotoCreationConfig object.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2290,488 +2040,20 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| uri | String | Yes | - | The URI of PhotoAsset, Album, or a value from [DefaultChangeUri](#enum-defaultchangeuri). |
-| callback | ?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)> | No | None | **Named parameter.** Cancels the listener for the callback registered via [registerChange](#func-registerchangestring-bool-callback1argumentchangedata). If not specified, all listeners for the URI are canceled. Note: After unregistering a specific callback, it will no longer trigger. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  |:----|:---|
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 13900012 | Permission denied. |
-  | 13900020 | Invalid argument. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-// This code can be added to dependency definitions
-class MyCallback<T> <: Callback1Argument<T> {
-    public let callabck_: (T) -> Unit
-    public init(callabck: (T) -> Unit) {
-        callabck_ = callabck
-    }
-    public open func invoke(arg: T): Unit {
-        callabck_(arg)
-    }
-}
-
-let ctx = Global.getAbilityContext() // Context application context required; see usage instructions
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let callback1 = MyCallback<ChangeData>(
-    {
-        arg: ChangeData => AppLog.info(
-            "onCallback1. ChangeData: type = ${arg.`type`.toString()}, uris.size: ${arg.uris.size}, extraUris.size = ${arg.extraUris.size}"
-        )
-    })
-
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: ['title'], predicates: predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-
-phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
-phAccessHelper.unRegisterChange(firstPhotoAsset.uri, callback: callback1)
-phAccessHelper.unRegisterChange(firstPhotoAsset.uri)
-```
-
-## class PhotoAsset
-
-```cangjie
-public class PhotoAsset {}
-```
-
-**Function:** Provides methods to encapsulate file attributes.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop displayName
-
-```cangjie
-public prop displayName: String
-```
-
-**Function:** Gets the filename, including the extension.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop photoType
-
-```cangjie
-public prop photoType: PhotoType
-```
-
-**Function:** Gets the media file type.
-
-**Type:** [PhotoType](#enum-phototype)
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### prop uri
-
-```cangjie
-public prop uri: String
-```
-
-**Function:** Gets the URI of the media file resource.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func commitModify()
-
-```cangjie
-public func commitModify(): Unit
-```
-
-**Function:** Modifies the metadata of the file.
-
-**Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000001|Invalid display name.|
-  |14000011|System inner fail.|
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let photoAssetTitle = firstPhotoAsset
-    .get('title')
-    .getString()
-let newTitle = "123456789"
-firstPhotoAsset.set('title', newTitle)
-firstPhotoAsset.commitModify()
-```
-
-### func get(String)
-
-```cangjie
-public func get(member: String): MemberType
-```
-
-**Function:** Gets the member parameters of PhotoAsset.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|member|String|Yes|-|Member parameter name. When getting, except for 'uri', 'media_type', 'subtype', and 'display_name', other attributes need to include the required [PhotoKeys](#enum-photokeys) in fetchColumns, e.g., to get the title attribute: fetchColumns: ['title'].|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|[MemberType](#enum-membertype)|The value of the PhotoAsset member parameter.|
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900020|Invalid argument.|
-  |14000014|Member is not a valid PhotoKey.|
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let photoAssetTitle = firstPhotoAsset
-    .get('title')
-    .getString()
-```
-
-### func getThumbnail(?Size)
-
-```cangjie
-public func getThumbnail(size!: ?Size = None): PixelMap
-```
-
-**Function:** Gets the thumbnail of the file with the specified size.
-
-**Required Permission:** ohos.permission.READ_IMAGEVIDEO
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|size|?[Size](../ImageKit/cj-apis-image.md#struct-size)|No|None| **Named parameter.** Thumbnail size.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|Returns the PixelMap of the thumbnail.|
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401| Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types.|
-  |13900012|Permission denied.|
-  |13900020|Invalid argument.|
-  |14000011|System inner fail.|
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let pixm = firstPhotoAsset.getThumbnail()
-```
-
-### func set(String, String)
-
-```cangjie
-public func set(member: String, data: String): Unit
-```
-
-**Function:** Sets the member parameters of PhotoAsset.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|member|String|Yes|-|Member parameter name, e.g., [PhotoKeys](#enum-photokeys).TITLE.|
-|data|String|Yes|-|Sets the member parameter name. Only the value of [PhotoKeys](#enum-photokeys).TITLE can be modified.|
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  |Error Code ID|Error Message|
-  |:----|:---|
-  |401|Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed.|
-  |13900020|Invalid argument.|
-  |14000014|Member is not a valid PhotoKey.|
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import ohos.base.*
-
-let ctx = Global.getAbilityContext() // Context application context required, see usage instructions in this document
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchColumns = [PhotoKeys
-    .TITLE
-    .toString()]
-let fetchOptions: FetchOptions = FetchOptions(fetchColumns: fetchColumns, predicates: predicates
-)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-let photoAssetTitle = firstPhotoAsset
-    .get('title')
-    .getString()
-let newTitle = "123456789"
-firstPhotoAsset.set('title', newTitle)
-```
-
-## class PhotoSelectOptions
-
-```cangjie
-public class PhotoSelectOptions <: BaseSelectOptions {
-    public var isEditSupported: Bool = true
-    public var isOriginalSupported: Bool = false
-    public var subWindowName:?String = None
-    public init(
-        MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-        maxSelectNumber!: Int32 = 50,
-        isPhotoTakingSupported!: Bool = true,
-        isSearchSupported!: Bool = true,
-        recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-        preselectedUris!: Array<String> = Array<String>(),
-        isPreviewForSingleSelectionSupported!: Bool = true,
-        isEditSupported!: Bool = true,
-        isOriginalSupported!: Bool = false,
-        subWindowName!: ?String = None
-    )
-}
-```
-
-**Function:** Gallery selection options subclass, inherits from BaseSelectOptions.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Type:**
-
-- [BaseSelectOptions](#class-baseselectoptions)
-
-### var isEditSupported
-
-```cangjie
-public var isEditSupported: Bool = true
-```
-
-**Function:** Whether photo editing is supported.
-
-**Type:** Bool
-
-**Read-Write Capability:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var isOriginalSupported
-
-```cangjie
-public var isOriginalSupported: Bool = false
-```
-
-**Function:** Whether the original file is supported.
-
-**Type:** Bool
-
-**Read-Write Capability:** Read-write
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21**Feature:** Whether to display the original image selection button.
-
-**Type:** Bool
-
-**Read-Write Capability:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var subWindowName
-
-```cangjie
-public var subWindowName:?String = None
-```
-
-**Feature:** Sub-window name.
-
-**Type:** ?String
-
-**Read-Write Capability:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### init(PhotoViewMIMETypes, Int32, Bool, Bool, RecommendationOptions, Array\<String>, Bool, Bool, Bool, ?String)
-
-```cangjie
-public init(
-    MIMEType!: PhotoViewMIMETypes = IMAGE_VIDEO_TYPE,
-    maxSelectNumber!: Int32 = 50,
-    isPhotoTakingSupported!: Bool = true,
-    isSearchSupported!: Bool = true,
-    recommendationOptions!: RecommendationOptions = RecommendationOptions(),
-    preselectedUris!: Array<String> = Array<String>(),
-    isPreviewForSingleSelectionSupported!: Bool = true,
-    isEditSupported!: Bool = true,
-    isOriginalSupported!: Bool = false,
-    subWindowName!: ?String = None
-)
-```
-
-**Feature:** Constructs a PhotoSelectOptions object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|MIMEType|[PhotoViewMIMETypes](#enum-photoviewmimetypes)|No|IMAGE_VIDEO_TYPE| **Named parameter.** Selectable media file types. If not specified, defaults to image and video types.|
-|maxSelectNumber|Int32|No|50| **Named parameter.** Maximum number of selectable media files (maximum settable value is 500; defaults to 50 if not set).|
-|isPhotoTakingSupported|Bool|No|true| **Named parameter.** Whether photo capture is supported. true indicates support, false indicates no support. Defaults to true.|
-|isSearchSupported|Bool|No|true| **Named parameter.** Whether search is supported. true indicates support, false indicates no support. Defaults to true.|
-|recommendationOptions|[RecommendationOptions](#struct-recommendationoptions)|No|RecommendationOptions()| **Named parameter.** Image recommendation configuration parameters.|
-|preselectedUris|Array\<String>|No|Array\<String>()| **Named parameter.** URIs of preselected images.|
-|isPreviewForSingleSelectionSupported|Bool|No|true| **Named parameter.** Whether to enable large image preview in single-selection mode. true indicates yes, false indicates no. Defaults to true.|
-|isEditSupported|Bool|No|true| **Named parameter.** Whether photo editing is supported. true indicates support, false indicates no support. Defaults to true.|
-|isOriginalSupported|Bool|No|false| **Named parameter.** Whether to display the original image selection button. true indicates display, false indicates no display. Defaults to false.|
-|subWindowName|?String|No|None| **Named parameter.** Sub-window name.|
+| fileNameExtension | String | Yes | - | File extension, e.g., 'jpg'. |
+| photoType | [PhotoType](#enum-phototype) | Yes | - | Type of file to create, IMAGE or VIDEO. |
+| title | String | No | "" | **Named parameter.** Title of the image or video. |
+| subtype | [PhotoSubtype](#enum-photosubtype) | No | Default | **Named parameter.** Subtype of the image or video file, Default or MovingPhoto. |
 
 ## class RequestOptions
 
 ```cangjie
-public class PhotoViewPicker {
-    public init(gcontext: UIAbilityContext)
+public class RequestOptions {
+    public var deliveryMode: DeliveryMode
 }
 ```
 
-**Feature:** Gallery picker object used to support user scenarios such as selecting images/videos. A PhotoViewPicker instance must be created before use.
+**Description:** Request strategy.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2783,423 +2065,27 @@ public class PhotoViewPicker {
 public var deliveryMode: DeliveryMode
 ```
 
-**Feature:** Resource request delivery mode.
+**Description:** Resource delivery mode for requests.
 
 **Type:** [DeliveryMode](#enum-deliverymode)
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
-
-### RequestOptions(DeliveryMode)
-
-```cangjie
-public RequestOptions(
-    public var deliveryMode: DeliveryMode
-)
-```
-
-**Feature:** Constructs a RequestOptions object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|deliveryMode|[DeliveryMode](#enum-deliverymode)|Yes|-|Resource request delivery mode, which specifies the request strategy for the resource. Can be configured as FAST, HIGH_QUALITY, or BALANCED mode.|
-
-## struct CreateOptions
-
-```cangjie
-public struct CreateOptions {
-    public CreateOptions(
-        public var title!: ?String = None,
-        public var subtype!: ?PhotoSubtype = None
-    )
-}
-```
-
-**Feature:** Creation options for images or videos, including titles, etc.
-
-Specifications for the title parameter:
-
-- Should not contain file extensions.
-- Filename string length must be 1–255 characters.
-- The following invalid English characters are not allowed in filenames: `. .. \ / : * ? " ' ` < > | { } [ ]`
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var subtype
-
-```cangjie
-public var subtype:?PhotoSubtype = None
-```
-
-**Feature:** Subtype of the image or video.
-
-**Type:** ?[PhotoSubtype](#enum-photosubtype)
-
-**Read-Write Capability:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var title
-
-```cangjie
-public var title:?String = None
-```
-
-**Feature:** Title of the image or video.
-
-**Type:** ?String
-
-**Read-Write Capability:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### CreateOptions(?String, ?PhotoSubtype)
-
-```cangjie
-public CreateOptions(
-    public var title!: ?String = None,
-    public var subtype!: ?PhotoSubtype = None
-)
-```
-
-**Feature:** Constructs a CreateOptions object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|title|?String|No|None| **Named parameter.** Title of the image or video.|
-|subtype|?[PhotoSubtype](#enum-photosubtype)|No|None| **Named parameter.** Subtype of the image or video.|
-
-## struct PhotoCreationConfig
-
-```cangjie
-public struct PhotoCreationConfig {
-    public PhotoCreationConfig(
-        public let fileNameExtension: String,
-        public let photoType: PhotoType,
-        public let title!: String = "",
-        public let subtype!: PhotoSubtype = DEFAULT
-    )
-}
-```
-
-**Feature:** Configuration for saving images/videos to the media library, including filenames, etc.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let fileNameExtension
-
-```cangjie
-public let fileNameExtension: String
-```
-
-**Feature:** File extension.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let photoType
-
-```cangjie
-public let photoType: PhotoType
-```
-
-**Feature:** File type.
-
-**Type:** [PhotoType](#enum-phototype)
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let subtype
-
-```cangjie
-public let subtype: PhotoSubtype = DEFAULT
-```
-
-**Feature:** File subtype.
-
-**Type:** [PhotoSubtype](#enum-photosubtype)
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let title
-
-```cangjie
-public let title: String = ""
-```
-
-**Feature:** Title of the image or video.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### PhotoCreationConfig(String, PhotoType, String, PhotoSubtype)
-
-```cangjie
-public PhotoCreationConfig(
-    public let fileNameExtension: String,
-    public let photoType: PhotoType,
-    public let title!: String = "",
-    public let subtype!: PhotoSubtype = DEFAULT
-)
-```
-
-**Feature:** Constructs a PhotoCreationConfig object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|fileNameExtension|String|Yes|-|File extension, e.g., 'jpg'.|
-|photoType|[PhotoType](#enum-phototype)|Yes|-|Type of file to create: IMAGE or VIDEO.|
-|title|String|No|""| **Named parameter.** Title of the image or video.|
-|subtype|[PhotoSubtype](#enum-photosubtype)|No|DEFAULT| **Named parameter.** Subtype of the image or video: DEFAULT or MOVING_PHOTO.|## struct PhotoSelectResult
-
-```cangjie
-public struct PhotoSelectResult {
-    public PhotoSelectResult(
-        public var photoUris: Array<String>,
-        public var isOriginalPhoto: Bool
-    )
-}
-```
-
-**Function:** Returns the result set after gallery selection.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var isOriginalPhoto
-
-```cangjie
-public var isOriginalPhoto: Bool
-```
-
-**Function:** Indicates whether the photo is original.
-
-**Type:** Bool
-
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var photoUris
-
-```cangjie
-public var photoUris: Array<String>
-```
-
-**Function:** URI array of media files.
-
-**Type:** Array\<String>
-
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### PhotoSelectResult(Array\<String>, Bool)
-
-```cangjie
-public PhotoSelectResult(
-    public var photoUris: Array<String>,
-    public var isOriginalPhoto: Bool
-)
-```
-
-**Function:** Constructs a PhotoSelectResult object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| photoUris | Array\<String> | Yes | - | URI array of media files after gallery selection. This URI array can only be used by calling the [getAssets interface](#func-getassetsfetchoptions) through temporary authorization. |
-| isOriginalPhoto | Bool | Yes | - | Indicates whether the media files after gallery selection are original. |
-
-## struct RecommendationOptions
-
-```cangjie
-public struct RecommendationOptions {
-    public RecommendationOptions(
-        public var recommendationType!: ?RecommendationType = None,
-        public var textContextInfo!: ?TextContextInfo = None
-    )
-}
-```
-
-**Function:** Image recommendation options (based on image data analysis results, dependent on device adaptation).
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var recommendationType
-
-```cangjie
-public var recommendationType:?RecommendationType = None
-```
-
-**Function:** Text.
-
-**Type:** ?[RecommendationType](#enum-recommendationtype)
-
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### var textContextInfo
-
-```cangjie
-public var textContextInfo:?TextContextInfo = None
-```
-
-**Function:** Text.
-
-**Type:** ?[TextContextInfo](#struct-textcontextinfo)
-
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### RecommendationOptions(?RecommendationType, ?TextContextInfo)
-
-```cangjie
-public RecommendationOptions(
-    public var recommendationType!: ?RecommendationType = None,
-    public var textContextInfo!: ?TextContextInfo = None
-)
-```
-
-**Function:** Constructs a RecommendationOptions object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| recommendationType | ?[RecommendationType](#enum-recommendationtype) | No | None | **Named parameter.** Configure this parameter if you need to recommend corresponding images based on enumeration values. |
-| textContextInfo | ?[TextContextInfo](#struct-textcontextinfo) | No | None | **Named parameter.** Configure this parameter if you need to recommend corresponding images based on text information (if recommendationType is also configured, only textContextInfo takes effect). |
-
-## struct TextContextInfo
-
-```cangjie
-public struct TextContextInfo {
-    public TextContextInfo (
-        public let text!: String = ""
-    )
-}
-```
-
-**Function:** Text information used for recommending images.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### let text
-
-```cangjie
-public let text: String = ""
-```
-
-**Function:** Text.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### TextContextInfo(String)
-
-```cangjie
-public TextContextInfo (public let text!: String = "")
-```
-
-**Function:** Constructs a TextContextInfo object.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| text | String | No | "" | **Named parameter.** Configure this parameter if you need to recommend corresponding images based on text (supports simplified Chinese within 250 characters). |
 
 ## enum AlbumKeys
 
 ```cangjie
 public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
-    | URI
-    | ALBUM_NAME
+    | Uri
+    | AlbumName
     | ...
 }
 ```
 
-**Function:** Key information of albums.
+**Description:** Key information about albums.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3210,25 +2096,25 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 - ToString
 - Equatable\<AlbumKeys>
 
-### ALBUM_NAME
+### AlbumName
 
 ```cangjie
-ALBUM_NAME
+AlbumName
 ```
 
-**Function:** Album name.
+**Description:** Album name.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### URI
+### Uri
 
 ```cangjie
-URI
+Uri
 ```
 
-**Function:** Album URI.
+**Description:** Album URI.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3237,24 +2123,22 @@ URI
 ### func !=(AlbumKeys)
 
 ```cangjie
-public operator func !=(other: AlbumKeys): Bool 
+public operator func !=(other: AlbumKeys): Bool
 ```
 
-**Function:** Determines whether two enumeration values are not equal.
-
-**Since:** 21
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [AlbumKeys](#enum-albumkeys) | Yes | - | Another enumeration value. |
+| other | [AlbumKeys](#enum-albumkeys) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enumeration values are not equal, otherwise returns false. |
+| Bool | Returns true if the enum values are unequal, otherwise false. |
 
 ### func ==(AlbumKeys)
 
@@ -3262,171 +2146,19 @@ public operator func !=(other: AlbumKeys): Bool
 public operator func ==(other: AlbumKeys): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [AlbumKeys](#enum-albumkeys) | Yes | - | Another enumeration value. |
+| other | [AlbumKeys](#enum-albumkeys) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the value of the enumeration.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | Description of the enumeration. |## enum AlbumSubtype
-
-```cangjie
-public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
-    | USER_GENERIC
-    | FAVORITE
-    | VIDEO
-    | IMAGE
-    | ANY
-    | ...
-}
-```
-
-**Description:** Album subtype, representing specific album types.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Types:**
-
-- Equatable\<AlbumSubtype>
-- ToString
-
-### ANY
-
-```cangjie
-ANY
-```
-
-**Description:** Any album.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### FAVORITE
-
-```cangjie
-FAVORITE
-```
-
-**Description:** Favorites album.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### IMAGE
-
-```cangjie
-IMAGE
-```
-
-**Description:** Image album.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### USER_GENERIC
-
-```cangjie
-USER_GENERIC
-```
-
-**Description:** User album.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### VIDEO
-
-```cangjie
-VIDEO
-```
-
-**Description:** Video album.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func !=(AlbumSubtype)
-
-```cangjie
-public operator func !=(other: AlbumSubtype): Bool 
-```
-
-**Description:** Determines whether two enum values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Mandatory|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|other|[AlbumSubtype](#enum-albumsubtype)|Yes|-|Another enum value.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
-
-### func ==(AlbumSubtype)
-
-```cangjie
-public operator func ==(other: AlbumSubtype): Bool
-```
-
-**Description:** Determines whether two enum values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Mandatory|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|other|[AlbumSubtype](#enum-albumsubtype)|Yes|-|Another enum value.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the enum values are equal, otherwise false. |
 
 ### func toString()
 
@@ -3442,16 +2174,154 @@ public func toString(): String
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|Description of the enum.|
+| String | Description of the enum. |
+
+## enum AlbumSubtype
+
+```cangjie
+public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
+    | UserGeneric
+    | Favorite
+    | Video
+    | Image
+    | Any
+    | ...
+}
+```
+
+**Description:** Album subtype, indicating specific album types.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<AlbumSubtype>
+- ToString
+
+### Any
+
+```cangjie
+Any
+```
+
+**Description:** Any album.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### Favorite
+
+```cangjie
+Favorite
+```
+
+**Description:** Favorites album.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### Image
+
+```cangjie
+Image
+```
+
+**Description:** Image album.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### UserGeneric
+
+```cangjie
+UserGeneric
+```
+
+**Description:** User album.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### Video
+
+```cangjie
+Video
+```
+
+**Description:** Video album.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### func !=(AlbumSubtype)
+
+```cangjie
+public operator func !=(other: AlbumSubtype): Bool
+```
+
+**Description:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| other | [AlbumSubtype](#enum-albumsubtype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the enum values are unequal, otherwise false. |
+
+### func ==(AlbumSubtype)
+
+```cangjie
+public operator func ==(other: AlbumSubtype): Bool
+```
+
+**Description:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| other | [AlbumSubtype](#enum-albumsubtype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the enum values are equal, otherwise false. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Description:** Gets the value of the enum.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | Description of the enum. |
 
 ## enum AlbumType
 
 ```cangjie
 public enum AlbumType <: Equatable<AlbumType> & ToString {
-    | USER
-    | SYSTEM
+    | User
+    | System
     | ...
 }
 ```
@@ -3467,10 +2337,10 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 - Equatable\<AlbumType>
 - ToString
 
-### SYSTEM
+### System
 
 ```cangjie
-SYSTEM
+System
 ```
 
 **Description:** System preset album.
@@ -3479,10 +2349,10 @@ SYSTEM
 
 **Since:** 21
 
-### USER
+### User
 
 ```cangjie
-USER
+User
 ```
 
 **Description:** User album.
@@ -3497,23 +2367,19 @@ USER
 public operator func !=(other: AlbumType): Bool
 ```
 
-**Description:** Determines whether two enum values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[AlbumType](#enum-albumtype)|Yes|-|Another enum value.|
+| other | [AlbumType](#enum-albumtype) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+| Bool | Returns true if the enum values are unequal, otherwise false. |
 
 ### func ==(AlbumType)
 
@@ -3523,21 +2389,17 @@ public operator func ==(other: AlbumType): Bool
 
 **Description:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[AlbumType](#enum-albumtype)|Yes|-|Another enum value.|
+| other | [AlbumType](#enum-albumtype) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the enum values are equal, otherwise false. |
 
 ### func toString()
 
@@ -3547,27 +2409,21 @@ public func toString(): String
 
 **Description:** Gets the value of the enum.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|Description of the enum.|
-
-## enum DefaultChangeUri
+| String | Description of the enum. |## enum DefaultChangeUri
 
 ```cangjie
 public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
-    | DEFAULT_PHOTO_URI
-    | DEFAULT_ALBUM_URI
+    | DefaultPhotoUri
+    | DefaultAlbumUri
     | ...
 }
 ```
 
-**Description:** DefaultChangeUri subtype.
+**Function:** Subtype of DefaultChangeUri.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3578,24 +2434,25 @@ public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
 - ToString
 - Equatable\<DefaultChangeUri>
 
-### DEFAULT_ALBUM_URI
+### DefaultAlbumUri
 
 ```cangjie
-DEFAULT_ALBUM_URI
+DefaultAlbumUri
 ```
 
-**Description:** Default album URI, used with forSubUri{true} to receive change notifications for all albums.
+**Function:** The Uri of the default album. When used with forSubUri{true}, it will receive change notifications for all albums.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DEFAULT_PHOTO_URI
+### DefaultPhotoUri
 
 ```cangjie
-DEFAULT_PHOTO_URI
+DefaultPhotoUri
 ```
-**Function:** The default URI for PhotoAsset, used in conjunction with `forSubUri{true}`, will receive change notifications for all PhotoAssets.
+
+**Function:** The Uri of the default PhotoAsset. When used with forSubUri{true}, it will receive change notifications for all PhotoAssets.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3609,21 +2466,17 @@ public operator func !=(other: DefaultChangeUri): Bool
 
 **Function:** Determines whether two enum values are not equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [DefaultChangeUri](#enum-defaultchangeuri) | Yes | - | Another enum value. |
+|other|[DefaultChangeUri](#enum-defaultchangeuri)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(DefaultChangeUri)
 
@@ -3633,21 +2486,17 @@ public operator func ==(other: DefaultChangeUri): Bool
 
 **Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [DefaultChangeUri](#enum-defaultchangeuri) | Yes | - | Another enum value. |
+|other|[DefaultChangeUri](#enum-defaultchangeuri)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ### func toString()
 
@@ -3663,17 +2512,17 @@ public func toString(): String
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | The description of the enum. |
+|String|The description of the enum.|
 
 ## enum DeliveryMode
 
 ```cangjie
 public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
-    | FAST_MODE
-    | HIGH_QUALITY_MODE
-    | BALANCE_MODE
+    | FastMode
+    | HighQualityMode
+    | BalanceMode
     | ...
 }
 ```
@@ -3689,33 +2538,39 @@ public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
 - Equatable\<DeliveryMode>
 - ToString
 
-### BALANCE_MODE
+### BalanceMode
 
 ```cangjie
-BALANCE_MODE
+BalanceMode
 ```
 
 **Function:** Balanced mode.
 
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since:** 21
 
-### FAST_MODE
+### FastMode
 
 ```cangjie
-FAST_MODE
+FastMode
 ```
 
 **Function:** Fast mode.
 
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since:** 21
 
-### HIGH_QUALITY_MODE
+### HighQualityMode
 
 ```cangjie
-HIGH_QUALITY_MODE
+HighQualityMode
 ```
 
 **Function:** High-quality mode.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
@@ -3727,21 +2582,17 @@ public operator func !=(other: DeliveryMode): Bool
 
 **Function:** Determines whether two enum values are not equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [DeliveryMode](#enum-deliverymode) | Yes | - | Another enum value. |
+|other|[DeliveryMode](#enum-deliverymode)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(DeliveryMode)
 
@@ -3751,21 +2602,17 @@ public operator func ==(other: DeliveryMode): Bool
 
 **Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [DeliveryMode](#enum-deliverymode) | Yes | - | Another enum value. |
+|other|[DeliveryMode](#enum-deliverymode)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ### func toString()
 
@@ -3775,22 +2622,18 @@ public func toString(): String
 
 **Function:** Gets the value of the enum.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | The description of the enum. |
+|String|The description of the enum.|
 
 ## enum DynamicRangeType
 
 ```cangjie
 public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
-    | SDR
-    | HDR
+    | Sdr
+    | Hdr
     | ...
 }
 ```
@@ -3806,23 +2649,27 @@ public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
 - Equatable\<DynamicRangeType>
 - ToString
 
-### HDR
+### Hdr
 
 ```cangjie
-HDR
+Hdr
 ```
 
 **Function:** High dynamic range type.
 
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since:** 21
 
-### SDR
+### Sdr
 
 ```cangjie
-SDR
+Sdr
 ```
 
 **Function:** Standard dynamic range type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
@@ -3834,21 +2681,17 @@ public operator func !=(other: DynamicRangeType): Bool
 
 **Function:** Determines whether two enum values are not equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [DynamicRangeType](#enum-dynamicrangetype) | Yes | - | Another enum value. |
+|other|[DynamicRangeType](#enum-dynamicrangetype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(DynamicRangeType)
 
@@ -3858,21 +2701,17 @@ public operator func ==(other: DynamicRangeType): Bool
 
 **Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [DynamicRangeType](#enum-dynamicrangetype) | Yes | - | Another enum value. |
+|other|[DynamicRangeType](#enum-dynamicrangetype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ### func toString()
 
@@ -3882,130 +2721,26 @@ public func toString(): String
 
 **Function:** Gets the value of the enum.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The description of the enum. |
-
-## enum MemberType
-```cangjie
-public enum MemberType {
-    | INT64(Int64)
-    | STRING(String)
-    | BOOL(Bool)
-    | ...
-}
-```
-
-**Function:** Member type of PhotoAsset.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### BOOL(Bool)
-
-```cangjie
-BOOL(Bool)
-```
-
-**Function:** Represents a boolean value type.
-
-**Since:** 21
-
-### INT64(Int64)
-
-```cangjie
-INT64(Int64)
-```
-
-**Function:** Represents a numeric value type that can take any value.
-
-**Since:** 21
-
-### STRING(String)
-
-```cangjie
-STRING(String)
-```
-
-**Function:** Represents a string value type that can take any value.
-
-**Since:** 21
-
-### func getBool()
-
-```cangjie
-public func getBool(): Bool
-```
-
-**Function:** Gets the value from BOOL(Bool).
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns the value from BOOL(Bool).|
-
-### func getNumber()
-
-```cangjie
-public func getNumber(): Int64
-```
-
-**Function:** Gets the value from INT64(Int64).
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Int64|Returns the value from INT64(Int64).|
-
-### func getString()
-
-```cangjie
-public func getString(): String
-```
-
-**Function:** Gets the value from STRING(String).
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|String|Returns the value from STRING(String).|
+|String|The description of the enum.|
 
 ## enum NotifyType
 
 ```cangjie
 public enum NotifyType <: Equatable<NotifyType> & ToString {
-    | NOTIFY_ADD
-    | NOTIFY_UPDATE
-    | NOTIFY_REMOVE
-    | NOTIFY_ALBUM_ADD_ASSET
-    | NOTIFY_ALBUM_REMOVE_ASSET
+    | NotifyAdd
+    | NotifyUpdate
+    | NotifyRemove
+    | NotifyAlbumAddAsset
+    | NotifyAlbumRemoveAsset
     | ...
 }
 ```
 
-**Function:** Types of notification events.
+**Function:** The type of notification event.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -4016,61 +2751,61 @@ public enum NotifyType <: Equatable<NotifyType> & ToString {
 - Equatable\<NotifyType>
 - ToString
 
-### NOTIFY_ADD
+### NotifyAdd
 
 ```cangjie
-NOTIFY_ADD
+NotifyAdd
 ```
 
-**Function:** Notification type for adding a file set or album.
+**Function:** The type of notification for adding a file set or album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### NOTIFY_ALBUM_ADD_ASSET
+### NotifyAlbumAddAsset
 
 ```cangjie
-NOTIFY_ALBUM_ADD_ASSET
+NotifyAlbumAddAsset
 ```
 
-**Function:** Notification type for adding a file set to an album.
+**Function:** The type of notification for adding a file set to an album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### NOTIFY_ALBUM_REMOVE_ASSET
+### NotifyAlbumRemoveAsset
 
 ```cangjie
-NOTIFY_ALBUM_REMOVE_ASSET
+NotifyAlbumRemoveAsset
 ```
 
-**Function:** Notification type for removing a file set from an album.
+**Function:** The type of notification for removing a file set from an album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### NOTIFY_REMOVE
+### NotifyRemove
 
 ```cangjie
-NOTIFY_REMOVE
+NotifyRemove
 ```
 
-**Function:** Notification type for removing a file set or album.
+**Function:** The type of notification for removing a file set or album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### NOTIFY_UPDATE
+### NotifyUpdate
 
 ```cangjie
-NOTIFY_UPDATE
+NotifyUpdate
 ```
 
-**Function:** Notification type for updating a file set or album.
+**Function:** The type of notification for updating a file set or album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -4084,13 +2819,9 @@ public operator func !=(other: NotifyType): Bool
 
 **Function:** Determines whether two enum values are not equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[NotifyType](#enum-notifytype)|Yes|-|Another enum value.|
 
@@ -4108,13 +2839,9 @@ public operator func ==(other: NotifyType): Bool
 
 **Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[NotifyType](#enum-notifytype)|Yes|-|Another enum value.|
 
@@ -4132,46 +2859,41 @@ public func toString(): String
 
 **Function:** Gets the value of the enum.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|String|Description of the enum.|
-
-## enum PhotoKeys
+|String|The description of the enum.|
+```## enum PhotoKeys
 
 ```cangjie
 public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
-    | URI
-    | PHOTO_TYPE
-    | DISPLAY_NAME
-    | SIZE
-    | DATE_ADDED
-    | DATE_MODIFIED
-    | DURATION
-    | WIDTH
-    | HEIGHT
-    | DATE_TAKEN
-    | ORIENTATION
-    | FAVORITE
-    | TITLE
-    | DATE_ADDED_MS
-    | DATE_MODIFIED_MS
-    | PHOTO_SUBTYPE
-    | DYNAMIC_RANGE_TYPE
-    | COVER_POSITION
-    | BURST_KEY
-    | LCD_SIZE
-    | THM_SIZE
+    | Uri
+    | PhotoType
+    | DisplayName
+    | Size
+    | DateAdded
+    | DateModified
+    | Duration
+    | Width
+    | Height
+    | DateTaken
+    | Orientation
+    | Favorite
+    | Title
+    | DateAddedMs
+    | DateModifiedMs
+    | PhotoSubType
+    | DynamicRangeType
+    | CoverPosition
+    | BurstKey
+    | LcdSize
+    | ThmSize
     | ...
 }
 ```
 
-**Function:** Key information of photo and video files.
+**Function:** Key information for image and video files.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -4180,98 +2902,100 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
 **Parent Types:**
 
 - ToString
-- [Equatable\<PhotoKeys>]
+- Equatable\<PhotoKeys>
 
-### BURST_KEY
-
-```cangjie
-BURST_KEY
-```
-
-**Function:** Unique identifier (UUID) for a burst photo set.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21### COVER_POSITION
+### BurstKey
 
 ```cangjie
-COVER_POSITION
+BurstKey
 ```
 
-**Function:** Cover position for dynamic photos, specifically indicating the video timestamp (in microseconds) corresponding to the cover frame.
+**Function:** Unique identifier for a burst photo sequence: uuid.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DATE_ADDED
+### CoverPosition
 
 ```cangjie
-DATE_ADDED
+CoverPosition
 ```
 
-**Function:** Date added (seconds elapsed since January 1, 1970, when the file was added).
+**Function:** Cover position for motion photos, representing the video timestamp (in microseconds) corresponding to the cover frame.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DATE_ADDED_MS
+### DateAdded
 
 ```cangjie
-DATE_ADDED_MS
+DateAdded
 ```
 
-**Function:** Date added (milliseconds elapsed since January 1, 1970, when the file was added).
-
-Note: Sorting based on this field is not supported when querying photos.
+**Function:** Date added (seconds since January 1, 1970).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DATE_MODIFIED
+### DateAddedMs
 
 ```cangjie
-DATE_MODIFIED
+DateAddedMs
 ```
 
-**Function:** Modification date (seconds elapsed since January 1, 1970, when the file was modified; renaming the file does not change this value; it updates only when the file content is modified).
+**Function:** Date added (milliseconds since January 1, 1970).
+
+Note: This field cannot be used for sorting when querying photos.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DATE_MODIFIED_MS
+### DateModified
 
 ```cangjie
-DATE_MODIFIED_MS
+DateModified
 ```
 
-**Function:** Modification date (milliseconds elapsed since January 1, 1970, when the file was modified; renaming the file does not change this value; it updates only when the file content is modified).
-
-Note: Sorting based on this field is not supported when querying photos.
+**Function:** Modification date (seconds since January 1, 1970; renaming files does not update this value, only content modifications do).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DATE_TAKEN
+### DateModifiedMs
 
 ```cangjie
-DATE_TAKEN
+DateModifiedMs
 ```
 
-**Function:** Capture date (seconds elapsed since January 1, 1970, when the photo was taken).
+**Function:** Modification date (milliseconds since January 1, 1970; renaming files does not update this value, only content modifications do).
+
+Note: This field cannot be used for sorting when querying photos.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### DISPLAY_NAME
+### DateTaken
 
 ```cangjie
-DISPLAY_NAME
+DateTaken
+```
+
+**Function:** Capture date (seconds since January 1, 1970).
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### DisplayName
+
+```cangjie
+DisplayName
 ```
 
 **Function:** Display name.
@@ -4280,10 +3004,10 @@ DISPLAY_NAME
 
 **Since:** 21
 
-### DURATION
+### Duration
 
 ```cangjie
-DURATION
+Duration
 ```
 
 **Function:** Duration (in milliseconds).
@@ -4292,10 +3016,10 @@ DURATION
 
 **Since:** 21
 
-### DYNAMIC_RANGE_TYPE
+### DynamicRangeType
 
 ```cangjie
-DYNAMIC_RANGE_TYPE
+DynamicRangeType
 ```
 
 **Function:** Dynamic range type of the media file.
@@ -4304,22 +3028,22 @@ DYNAMIC_RANGE_TYPE
 
 **Since:** 21
 
-### FAVORITE
+### Favorite
 
 ```cangjie
-FAVORITE
+Favorite
 ```
 
-**Function:** Favorite.
+**Function:** Favorite status.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### HEIGHT
+### Height
 
 ```cangjie
-HEIGHT
+Height
 ```
 
 **Function:** Image height (in pixels).
@@ -4328,34 +3052,34 @@ HEIGHT
 
 **Since:** 21
 
-### LCD_SIZE
+### LcdSize
 
 ```cangjie
-LCD_SIZE
+LcdSize
 ```
 
-**Function:** Width and height of the LCD image, represented as a string concatenated as `width:height`.
+**Function:** Dimensions of LCD image, represented as a string concatenating width and height (width:height).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### ORIENTATION
+### Orientation
 
 ```cangjie
-ORIENTATION
+Orientation
 ```
 
-**Function:** Rotation angle of the file, in degrees.
+**Function:** Rotation angle of the file (in degrees).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### PHOTO_SUBTYPE
+### PhotoSubType
 
 ```cangjie
-PHOTO_SUBTYPE
+PhotoSubType
 ```
 
 **Function:** Dynamic range type of the media file.
@@ -4364,10 +3088,10 @@ PHOTO_SUBTYPE
 
 **Since:** 21
 
-### PHOTO_TYPE
+### PhotoType
 
 ```cangjie
-PHOTO_TYPE
+PhotoType
 ```
 
 **Function:** Media file type.
@@ -4376,10 +3100,10 @@ PHOTO_TYPE
 
 **Since:** 21
 
-### SIZE
+### Size
 
 ```cangjie
-SIZE
+Size
 ```
 
 **Function:** File size (in bytes).
@@ -4388,22 +3112,22 @@ SIZE
 
 **Since:** 21
 
-### THM_SIZE
+### ThmSize
 
 ```cangjie
-THM_SIZE
+ThmSize
 ```
 
-**Function:** Width and height of the thumbnail image, represented as a string concatenated as `width:height`.
+**Function:** Dimensions of THUMB image, represented as a string concatenating width and height (width:height).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### TITLE
+### Title
 
 ```cangjie
-TITLE
+Title
 ```
 
 **Function:** File title.
@@ -4412,24 +3136,24 @@ TITLE
 
 **Since:** 21
 
-### URI
+### Uri
 
 ```cangjie
-URI
+Uri
 ```
 
 **Function:** File URI.
 
-Note: When querying photos, this field supports only the [DataSharePredicates.equalTo](../ArkData/cj-apis-data_share_predicates.md#func-equaltostring-valuetype) predicate.
+Note: When querying photos, this field only supports the [DataSharePredicates.equalTo](../ArkData/cj-apis-data_share_predicates.md#func-equaltostring-valuetype) predicate.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since:** 21
 
-### WIDTH
+### Width
 
 ```cangjie
-WIDTH
+Width
 ```
 
 **Function:** Image width (in pixels).
@@ -4444,11 +3168,7 @@ WIDTH
 public operator func !=(other: PhotoKeys): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -4460,7 +3180,7 @@ public operator func !=(other: PhotoKeys): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
+| Bool | Returns true if the enum values are unequal, otherwise false. |
 
 ### func ==(PhotoKeys)
 
@@ -4470,10 +3190,6 @@ public operator func ==(other: PhotoKeys): Bool
 
 **Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
@@ -4484,701 +3200,7 @@ public operator func ==(other: PhotoKeys): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-**Function:** Get the value of an enumeration.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type   | Description          |
-|:------|:-------------------|
-| String | Description of the enumeration. |
-
-## enum PhotoSubtype
-
-```cangjie
-public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
-    | DEFAULT
-    | MOVING_PHOTO
-    | BURST
-    | ...
-}
-```
-
-**Function:** Burst photo file type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Types:**
-
-- Equatable\<PhotoSubtype>
-- ToString
-
-### BURST
-
-```cangjie
-BURST
-```
-
-**Function:** Burst photo file type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### DEFAULT
-
-```cangjie
-DEFAULT
-```
-
-**Function:** Default photo type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### MOVING_PHOTO
-
-```cangjie
-MOVING_PHOTO
-```
-
-**Function:** Moving photo file type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func !=(PhotoSubtype)
-
-```cangjie
-public operator func !=(other: PhotoSubtype): Bool
-```
-
-**Function:** Determine if two enumeration values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| other | [PhotoSubtype](#enum-photosubtype) | Yes | - | Another enumeration value. |
-
-**Return Value:**
-
-| Type | Description |
-|:-----|:-----------|
-| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
-
-### func ==(PhotoSubtype)
-
-```cangjie
-public operator func ==(other: PhotoSubtype): Bool
-```
-
-**Function:** Determine if two enumeration values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| other | [PhotoSubtype](#enum-photosubtype) | Yes | - | Another enumeration value. |
-
-**Return Value:**
-
-| Type | Description |
-|:-----|:-----------|
-| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Get the value of an enumeration.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:-----|:-----------|
-| String | Description of the enumeration. |
-
-## enum PhotoType
-
-```cangjie
-public enum PhotoType <: Equatable<PhotoType> & ToString {
-    | IMAGE
-    | VIDEO
-    | ...
-}
-```
-
-**Function:** Media file type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Types:**
-
-- Equatable\<PhotoType>
-- ToString
-
-### IMAGE
-
-```cangjie
-IMAGE
-```
-
-**Function:** Image.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### VIDEO
-
-```cangjie
-VIDEO
-```
-
-**Function:** Video.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func !=(PhotoType)
-
-```cangjie
-public operator func !=(other: PhotoType): Bool
-```
-
-**Function:** Determine if two enumeration values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| other | [PhotoType](#enum-phototype) | Yes | - | Another enumeration value. |
-
-**Return Value:**
-
-| Type | Description |
-|:-----|:-----------|
-| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
-
-### func ==(PhotoType)
-
-```cangjie
-public operator func ==(other: PhotoType): Bool
-```
-
-**Function:** Determine if two enumeration values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| other | [PhotoType](#enum-phototype) | Yes | - | Another enumeration value. |
-
-**Return Value:**
-
-| Type | Description |
-|:-----|:-----------|
-| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Get the value of an enumeration.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:-----|:-----------|
-| String | Description of the enumeration. |
-
-## enum PhotoViewMIMETypes
-
-```cangjie
-public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
-    | IMAGE_TYPE
-    | VIDEO_TYPE
-    | IMAGE_VIDEO_TYPE
-    | MOVING_PHOTO_IMAGE_TYPE
-    | ...
-}
-```
-
-**Function:** Selectable media file types.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Types:**
-
-- Equatable\<PhotoViewMIMETypes>
-- ToString
-
-### IMAGE_TYPE
-
-```cangjie
-IMAGE_TYPE
-```
-
-**Function:** Image type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### IMAGE_VIDEO_TYPE
-
-```cangjie
-IMAGE_VIDEO_TYPE
-```
-
-**Function:** Image and video types.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### MOVING_PHOTO_IMAGE_TYPE
-
-```cangjie
-MOVING_PHOTO_IMAGE_TYPE
-```
-**Feature:** Dynamic photo type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### VIDEO_TYPE
-
-```cangjie
-VIDEO_TYPE
-```
-
-**Feature:** Video type.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func !=(PhotoViewMIMETypes)
-
-```cangjie
-public operator func !=(other: PhotoViewMIMETypes): Bool
-```
-
-**Feature:** Determines whether two enum values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | Yes | - | Another enum value. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
-
-### func ==(PhotoViewMIMETypes)
-
-```cangjie
-public operator func ==(other: PhotoViewMIMETypes): Bool
-```
-
-**Feature:** Determines whether two enum values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | Yes | - | Another enum value. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Feature:** Gets the value of the enum.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The description of the enum. |
-
-## enum RecommendationType
-
-```cangjie
-public enum RecommendationType <: Equatable<RecommendationType> & ToString {
-    | QR_OR_BAR_CODE
-    | QR_CODE
-    | BAR_CODE
-    | ID_CARD
-    | PROFILE_PICTURE
-    | PASSPORT
-    | BANK_CARD
-    | DRIVER_LICENSE
-    | DRIVING_LICENSE
-    | FEATURED_SINGLE_PORTRAIT
-    | ...
-}
-```
-
-**Feature:** Recommended image types.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Types:**
-
-- Equatable\<RecommendationType>
-- ToString
-
-### BANK_CARD
-
-```cangjie
-BANK_CARD
-```
-
-**Feature:** Bank card.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### BAR_CODE
-
-```cangjie
-BAR_CODE
-```
-
-**Feature:** Barcode.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### DRIVER_LICENSE
-
-```cangjie
-DRIVER_LICENSE
-```
-
-**Feature:** Driver's license.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### DRIVING_LICENSE
-
-```cangjie
-DRIVING_LICENSE
-```
-
-**Feature:** Vehicle license.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### FEATURED_SINGLE_PORTRAIT
-
-```cangjie
-FEATURED_SINGLE_PORTRAIT
-```
-
-**Feature:** Recommended portrait.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### ID_CARD
-
-```cangjie
-ID_CARD
-```
-
-**Feature:** ID card.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### PASSPORT
-
-```cangjie
-PASSPORT
-```
-
-**Feature:** Passport.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### PROFILE_PICTURE
-
-```cangjie
-PROFILE_PICTURE
-```
-
-**Feature:** Profile picture.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### QR_CODE
-
-```cangjie
-QR_CODE
-```
-
-**Feature:** QR code.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### QR_OR_BAR_CODE
-
-```cangjie
-QR_OR_BAR_CODE
-```
-
-**Feature:** QR code or barcode.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func !=(RecommendationType)
-
-```cangjie
-public operator func !=(other: RecommendationType): Bool
-```
-
-**Feature:** Determines whether two enum values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [RecommendationType](#enum-recommendationtype) | Yes | - | Another enum value. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
-
-### func ==(RecommendationType)
-
-```cangjie
-public operator func ==(other: RecommendationType): Bool
-```
-
-**Feature:** Determines whether two enum values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [RecommendationType](#enum-recommendationtype) | Yes | - | Another enum value. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Feature:** Gets the value of the enum.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The description of the enum. |## enum ResourceType
-
-```cangjie
-public enum ResourceType <: Equatable<ResourceType> & ToString {
-    | IMAGE_RESOURCE
-    | VIDEO_RESOURCE
-    | ...
-}
-```
-
-**Function:** Represents image resources.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parent Types:**
-
-- Equatable\<ResourceType>
-- ToString
-
-### IMAGE_RESOURCE
-
-```cangjie
-IMAGE_RESOURCE
-```
-
-**Function:** Represents image resources.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### VIDEO_RESOURCE
-
-```cangjie
-VIDEO_RESOURCE
-```
-
-**Function:** Represents video resources.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-### func !=(ResourceType)
-
-```cangjie
-public operator func !=(other: ResourceType): Bool
-```
-
-**Function:** Determines whether two enum values are not equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|other|[ResourceType](#enum-resourcetype)|Yes|-|Another enum value.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
-
-### func ==(ResourceType)
-
-```cangjie
-public operator func ==(other: ResourceType): Bool
-```
-
-**Function:** Determines whether two enum values are equal.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|other|[ResourceType](#enum-resourcetype)|Yes|-|Another enum value.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the enum values are equal, otherwise false. |
 
 ### func toString()
 
@@ -5194,6 +3216,543 @@ public func toString(): String
 
 **Return Value:**
 
+| Type | Description |
+|:----|:----|
+| String | Description of the enum. |
+
+## enum PhotoSubtype
+
+```cangjie
+public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
+    | Default
+    | MovingPhoto
+    | Burst
+    | ...
+}
+```
+
+**Function:** Burst photo file type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<PhotoSubtype>
+- ToString
+
+### Burst
+
+```cangjie
+Burst
+```
+
+**Function:** Burst photo file type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### Default
+
+```cangjie
+Default
+```
+
+**Function:** Default photo type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### MovingPhoto
+
+```cangjie
+MovingPhoto
+```
+
+**Function:** Motion photo file type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### func !=(PhotoSubtype)
+
+```cangjie
+public operator func !=(other: PhotoSubtype): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [PhotoSubtype](#enum-photosubtype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the enum values are unequal, otherwise false. |
+
+### func ==(PhotoSubtype)
+
+```cangjie
+public operator func ==(other: PhotoSubtype): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [PhotoSubtype](#enum-photosubtype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the enum values are equal, otherwise false. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the value of the enum.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | Description of the enum. |```markdown
+## enum PhotoViewMIMETypes
+
+```cangjie
+public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
+    | ImageType
+    | VideoType
+    | ImageVideoType
+    | MovingPhotoImageType
+    | ...
+}
+```
+
+**Function:** Selectable media file types.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<PhotoViewMIMETypes>
+- ToString
+
+### ImageType
+
+```cangjie
+ImageType
+```
+
+**Function:** Image type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### ImageVideoType
+
+```cangjie
+ImageVideoType
+```
+
+**Function:** Image and video types.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### MovingPhotoImageType
+
+```cangjie
+MovingPhotoImageType
+```
+
+**Function:** Moving photo type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### VideoType
+
+```cangjie
+VideoType
+```
+
+**Function:** Video type.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### func !=(PhotoViewMIMETypes)
+
+```cangjie
+public operator func !=(other: PhotoViewMIMETypes): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+
+### func ==(PhotoViewMIMETypes)
+
+```cangjie
+public operator func ==(other: PhotoViewMIMETypes): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the value of the enum.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | Description of the enum. |
+
+## enum RecommendationType
+
+```cangjie
+public enum RecommendationType <: Equatable<RecommendationType> & ToString {
+    | QrOrBarCode
+    | QrCode
+    | BarCode
+    | IDCard
+    | ProfilePicture
+    | PassPort
+    | BankCard
+    | DriverLicense
+    | DrivingLicense
+    | FeaturedSinglePortrait
+    | ...
+}
+```
+
+**Function:** Recommended image types.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<RecommendationType>
+- ToString
+
+### BankCard
+
+```cangjie
+BankCard
+```
+
+**Function:** Bank card.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### BarCode
+
+```cangjie
+BarCode
+```
+
+**Function:** Barcode.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### DriverLicense
+
+```cangjie
+DriverLicense
+```
+
+**Function:** Driver's license.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### DrivingLicense
+
+```cangjie
+DrivingLicense
+```
+
+**Function:** Vehicle license.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### FeaturedSinglePortrait
+
+```cangjie
+FeaturedSinglePortrait
+```
+
+**Function:** Recommended portrait.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### IDCard
+
+```cangjie
+IDCard
+```
+
+**Function:** ID card.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### PassPort
+
+```cangjie
+PassPort
+```
+
+**Function:** Passport.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### ProfilePicture
+
+```cangjie
+ProfilePicture
+```
+
+**Function:** Profile picture.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### QrCode
+
+```cangjie
+QrCode
+```
+
+**Function:** QR code.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### QrOrBarCode
+
+```cangjie
+QrOrBarCode
+```
+
+**Function:** QR code or barcode.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### func !=(RecommendationType)
+
+```cangjie
+public operator func !=(other: RecommendationType): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [RecommendationType](#enum-recommendationtype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+
+### func ==(RecommendationType)
+
+```cangjie
+public operator func ==(other: RecommendationType): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [RecommendationType](#enum-recommendationtype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the value of the enum.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | Description of the enum. |
+
+## enum ResourceType
+
+```cangjie
+public enum ResourceType <: Equatable<ResourceType> & ToString {
+    | ImageResource
+    | VideoResource
+    | ...
+}
+```
+
+**Function:** Represents image resources.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<ResourceType>
+- ToString
+
+### ImageResource
+
+```cangjie
+ImageResource
+```
+
+**Function:** Represents image resources.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### VideoResource
+
+```cangjie
+VideoResource
+```
+
+**Function:** Represents video resources.
+
+**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Since:** 21
+
+### func !=(ResourceType)
+
+```cangjie
+public operator func !=(other: ResourceType): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [ResourceType](#enum-resourcetype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+
+### func ==(ResourceType)
+
+```cangjie
+public operator func ==(other: ResourceType): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [ResourceType](#enum-resourcetype) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+```### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the value of the enumeration.
+
+**Return Value:**
+
 |Type|Description|
 |:----|:----|
-|String|Description of the enum.|
+|String|The description of the enumeration.|

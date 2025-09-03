@@ -1,297 +1,314 @@
 # Window Error Codes
 
-> **Note:**
+> **NOTE:**
 >
-> The following only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following introduces only the error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 1300001 Repeated Operation
 
-**Error Message**<br>
+**Error Message**  
 Repeated operation.
 
-**Error Description**<br>
+**Error Description**  
 This error code is reported when performing certain repeated operations.
 
-**Possible Causes**<br>
-The error occurs when attempting to create a window that already exists.
+**Possible Causes**  
+Attempting to create a window that already exists will trigger this error.
 
-**Resolution Steps**<br>
-Before creating a window, check whether it already exists to ensure it is being created for the first time.
+**Resolution Steps**  
+Before creating a window, verify whether it already exists to ensure it is being created for the first time.
 
 ## 1300002 Abnormal Window State
 
-**Error Message**<br>
+**Error Message**  
 This window state is abnormal.
 
-**Error Description**<br>
+**Error Description**  
 This error code is reported when operating on a window with an abnormal state.
 
-**Possible Causes**<br>
-The window has not been created or has already been destroyed when attempting to operate on it.
+**Possible Causes**  
+The window may not have been created or may have already been destroyed when attempting to operate on it.
 
-**Resolution Steps**<br>
-Before operating on a window, check whether it exists to ensure it has been created and not destroyed, then proceed with the operation.
+**Resolution Steps**  
+Before performing operations on a window, check its existence to ensure it has been created and not destroyed.
 
 ## 1300003 Abnormal Window Manager Service
 
-**Error Message**<br>
+**Error Message**  
 This window manager service works abnormally.
 
-**Error Description**<br>
-This error code is reported when the window manager service is functioning abnormally.
+**Error Description**  
+This error code is reported when the system service is functioning abnormally.
 
-**Possible Causes**<br>
-The internal window service has not started properly.
+**Possible Causes**  
+The internal window service failed to start properly.
 
-**Resolution Steps**<br>
-The system service is functioning abnormally. Please retry later or restart the device.
+**Resolution Steps**  
+If the system service is malfunctioning internally, retry the operation later or restart the device.
 
 ## 1300004 Unauthorized Operation
 
-**Error Message**<br>
+**Error Message**  
 Unauthorized operation.
 
-**Error Description**<br>
+**Error Description**  
 This error code is reported when attempting to operate on an object without the required permissions.
 
-**Possible Causes**<br>
+**Possible Causes**  
 Operating on a window object belonging to another process.
 
-**Resolution Steps**<br>
-Check whether you are illegally operating on objects from another process and remove such operations.
+**Resolution Steps**  
+Check whether the operation involves objects from another process and remove such operations.
 
 ## 1300005 Abnormal WindowStage
 
-**Error Message**<br>
+**Error Message**  
 This window stage is abnormal.
 
-**Error Description**<br>
-This error code is reported when operating on an abnormal WindowStage, such as one that has been destroyed.
+**Error Description**  
+This error code is reported when operating on a WindowStage that is abnormal (e.g., already destroyed).
 
-**Possible Causes**<br>
-The WindowStage has been destroyed when attempting to operate on it.
+**Possible Causes**  
+The WindowStage may have been destroyed when attempting to operate on it.
 
-**Resolution Steps**<br>
-Before operating on a WindowStage, check whether it exists. If it has been destroyed, release the windows under this WindowStage.
+**Resolution Steps**  
+Before operating on a WindowStage, verify its existence. If it has been destroyed, release the windows under this WindowStage.
 
 ## 1300006 Abnormal Window Context
 
-**Error Message**<br>
+**Error Message**  
 This window context is abnormal.
 
-**Error Description**<br>
-This error code is reported when operating on an abnormal window context, such as one that has been destroyed.
+**Error Description**  
+This error code is reported when operating on a window context that is abnormal (e.g., already destroyed).
 
-**Possible Causes**<br>
-The window context has been destroyed when attempting to operate on it.
+**Possible Causes**  
+The window context may have been destroyed when attempting to operate on it.
 
-**Resolution Steps**<br>
-Before operating on a window context, check whether it exists to ensure it has not been destroyed, then proceed with the operation.
+**Resolution Steps**  
+Before operating on a window context, verify its existence to ensure it has not been destroyed.
 
 ## 1300007 WindowExtension Failed to Start Ability
 
-**Error Message**<br>
+**Error Message**  
 Start ability failed.
 
-**Error Description**<br>
+**Error Description**  
 WindowExtension failed to start the application.
 
-**Possible Causes**<br>
-Abnormal parameters when WindowExtension starts the application.
+**Possible Causes**  
+Abnormal parameters were passed when starting the application via WindowExtension.
 
-**Resolution Steps**<br>
-Check whether the WindowExtension parameters have been abnormally modified, ensure they are valid, then proceed with the operation.
+**Resolution Steps**  
+Check whether the WindowExtension parameters have been modified abnormally and ensure they are valid before retrying.
 
 ## 1300008 Abnormal Display Device
 
-**Error Message**<br>The operation is on invalid display.
+**Error Message**  
+The operation is on invalid display.
 
-**Error Description**<br>Abnormal display device.
+**Error Description**  
+The display device is abnormal.
 
-**Possible Causes**<br>
+**Possible Causes**  
 
-1. The display device is not ready.<br>
-2. The display device has been removed.<br>
+1. The display device is not ready.  
+2. The display device has been removed.  
 3. The display device is damaged.
 
-**Resolution Steps**<br>Ensure the display device is functioning normally before proceeding with development.
+**Resolution Steps**  
+Ensure the display device is functioning normally before proceeding with development.
 
 ## 1300009 Invalid Parent Window
 
-**Error Message**<br>The parent window is invalid.
+**Error Message**  
+The parent window is invalid.
 
-**Error Description**<br>Invalid parent window.
+**Error Description**  
+The parent window is invalid.
 
-**Possible Causes**<br>
+**Possible Causes**  
 
-1. The child window is not bound to a parent window.<br>
-2. The parent window bound to the child window is abnormal, such as being destroyed.
+1. The child window is not bound to a parent window.  
+2. The parent window bound to the child window is abnormal (e.g., already destroyed).
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 
-1. Check and ensure the child window is successfully bound to a parent window.<br>
-2. Check the state of the parent window bound to the child window to ensure it is normal.
+1. Ensure the child window is successfully bound to a parent window.  
+2. Verify the state of the parent window to ensure it is functioning normally.
 
 ## 1300010 Invalid Operation on Fullscreen Window
 
-**Error Message**<br>This operation is not support in fullscreen.
+**Error Message**  
+This operation is not support in fullscreen.
 
-**Error Description**<br>Invalid operation on a fullscreen window.
+**Error Description**  
+Invalid operation on a fullscreen window.
 
-**Possible Causes**<br>
+**Possible Causes**  
 
-1. Performing a move operation on a fullscreen window.<br>
-2. Performing a resize operation on a fullscreen window.
+1. Attempting to move a fullscreen window.  
+2. Attempting to resize a fullscreen window.
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 
-1. Do not perform move operations on fullscreen windows.<br>
+1. Do not perform move operations on fullscreen windows.  
 2. Do not perform resize operations on fullscreen windows.
 
 ## 1300011 Failed to Destroy Picture-in-Picture Window
 
-**Error Message**<br>Destroy pip window failed.
+**Error Message**  
+Destroy pip window failed.
 
-**Error Description**<br>Failed to destroy the picture-in-picture window.
+**Error Description**  
+Failed to destroy the Picture-in-Picture (PiP) window.
 
-**Possible Causes**<br>
-Null pointer for the picture-in-picture window.<br>
+**Possible Causes**  
+Null pointer for the PiP window.
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 No action required.
 
-## 1300012 Abnormal Picture-in-Picture Window State
+## 1300012 Abnormal State of Picture-in-Picture Window
 
-**Error Message**<br>Abnormal state of pip window.
+**Error Message**  
+Abnormal state of pip window.
 
-**Error Description**<br>Abnormal state of the picture-in-picture window.
+**Error Description**  
+The PiP window is in an abnormal state.
 
-**Possible Causes**<br>
-Abnormal state of the picture-in-picture window.
+**Possible Causes**  
+The PiP window state is abnormal.
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 No action required.
 
 ## 1300013 Failed to Create Picture-in-Picture Window
 
-**Error Message**<br>Create pip window failed.
+**Error Message**  
+Create pip window failed.
 
-**Error Description**<br>Failed to create the picture-in-picture window.
+**Error Description**  
+Failed to create the PiP window.
 
-**Possible Causes**<br>
+**Possible Causes**  
 
-1. Incorrect parameters passed when starting picture-in-picture.<br>
-2. Starting picture-in-picture on a non-fullscreen window.
+1. Invalid parameters were passed when starting PiP.  
+2. Attempting to start PiP in a non-fullscreen window.
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 
-1. Check the parameters for starting picture-in-picture.<br>
-2. Do not start picture-in-picture on non-fullscreen windows.
+1. Check the parameters for starting PiP.  
+2. Do not start PiP in a non-fullscreen window.
 
 ## 1300014 Picture-in-Picture Internal Error
 
-**Error Message**<br>Pip internal error.
+**Error Message**  
+Pip internal error.
 
-**Error Description**<br>Picture-in-picture internal error.
+**Error Description**  
+Internal error in the PiP feature.
 
-**Possible Causes**<br>
+**Possible Causes**  
 Internal error.
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 No action required.
 
-## 1300015 Repeated Picture-in-Picture Operation
+## 1300015 Repeated Operation on Picture-in-Picture
 
-**Error Message**<br>Repeat operation of pip.
+**Error Message**  
+Repeat operation of pip.
 
-**Error Description**<br>Repeated picture-in-picture operation.
+**Error Description**  
+Repeated operation on the PiP feature.
 
-**Possible Causes**<br>
-Repeatedly starting/stopping picture-in-picture.<br>
+**Possible Causes**  
+Repeatedly starting/stopping PiP.
 
-**Resolution Steps**<br>
-Do not repeatedly start/stop picture-in-picture.<br>
+**Resolution Steps**  
+Do not repeatedly start/stop PiP.
 
 ## 1001 Window Null Pointer Exception<sup>(deprecated)</sup>
 
-**Error Message**<br>
+**Error Message**  
 This window nullptr occurs.
 
-**Error Description**<br>
-Window null pointer exception. This error code is reported when operating on a window with a null pointer.
+**Error Description**  
+Null pointer exception for the window. This error is reported when operating on a window with a null pointer.
 
-**Possible Causes**<br>
-A null pointer occurs when operating on a window.
+**Possible Causes**  
+A null pointer occurred when operating on the window.
 
-**Resolution Steps**<br>
-Before operating on a window, check for null pointers to ensure none exist, then proceed with the operation.
+**Resolution Steps**  
+Before operating on the window, check for null pointers to ensure they do not exist.
 
 ## 1002 Invalid Window Type<sup>(deprecated)</sup>
 
-**Error Message**<br>
+**Error Message**  
 This window type is invalid.
 
-**Error Description**<br>
-Invalid window type.
+**Error Description**  
+The window type is invalid.
 
-**Possible Causes**<br>
-An invalid window type is used. Valid window types can be found in [WindowType](../arkui-cj/cj-apis-window.md#enum-windowtype).
+**Possible Causes**  
+An invalid window type was used. Valid window types are listed in [WindowType](../arkui-cj/cj-apis-window.md#enum-windowtype).
 
-**Resolution Steps**<br>
-Use a window type supported by WindowType before proceeding with the operation.
+**Resolution Steps**  
+Use a window type supported by WindowType before proceeding with operations.
 
 ## 1003 Invalid Window Parameter<sup>(deprecated)</sup>
 
-**Error Message**<br>
+**Error Message**  
 This window parameter is invalid.
 
-**Error Description**<br>
-This error code is reported when operating on a window with invalid parameters.
+**Error Description**  
+This error is reported when operating on a window with invalid parameters.
 
-**Possible Causes**<br>
-The window parameters are invalid when attempting to operate on the window.
+**Possible Causes**  
+The window parameters were invalid when operating on the window.
 
-**Resolution Steps**<br>
-Before operating on a window, check whether its parameters are valid, then proceed with the operation.
+**Resolution Steps**  
+Before operating on the window, verify that its parameters are valid.
 
 ## 1004 Abnormal System Ability Service<sup>(deprecated)</sup>
 
-**Error Message**<br>
+**Error Message**  
 This system ability service works abnormally.
 
-**Error Description**<br>
-This error code is reported when the system ability service is functioning abnormally.
+**Error Description**  
+This error is reported when the system ability service is functioning abnormally.
 
-**Possible Causes**<br>
+**Possible Causes**  
 Failed to initialize the proxy when destroying the window.
 
-**Resolution Steps**<br>
-The system ability service is abnormal. Restart the device and try again.
+**Resolution Steps**  
+Restart the device if the system ability service is abnormal.
 
 ## 1005 IPC Communication Failure<sup>(deprecated)</sup>
 
-**Error Message**<br>
+**Error Message**  
 This window IPC failed.
 
-**Error Description**<br>
-This error code is reported when IPC communication fails.
+**Error Description**  
+This error is reported when IPC communication fails.
 
-**Possible Causes**<br>
+**Possible Causes**  
 Failed to transmit window parameters via IPC when operating on the window.
 
-**Resolution Steps**<br>
-Before operating on a window, ensure the client and server services are functioning normally, then proceed with the operation.
+**Resolution Steps**  
+Before operating on the window, ensure the client and server services are functioning normally.
 
 ## 1007 WindowExtension Failed to Start Ability<sup>(deprecated)</sup>
 
-**Error Message**<br>
+**Error Message**  
 Start ability failed.
 
-**Error Description**<br>
+**Error Description**  
 WindowExtension failed to start the application.
 
-**Possible Causes**<br>
-Abnormal parameters when WindowExtension starts the application.
+**Possible Causes**  
+Abnormal parameters were passed when starting the application via WindowExtension.
 
-**Resolution Steps**<br>
-Check whether the WindowExtension parameters have been abnormally modified, ensure they are valid, then proceed with the operation.
+**Resolution Steps**  
+Check whether the WindowExtension parameters have been modified abnormally and ensure they are valid before retrying.

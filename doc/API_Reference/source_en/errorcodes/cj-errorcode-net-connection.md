@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following describes only the error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 2100001 Invalid Parameter Value
 
@@ -16,13 +16,13 @@ Invalid parameter value.
 
 **Possible Causes**
 
-Input parameter value is out of range.
+The input parameter value is out of range.
 
 **Solution**
 
 Check whether the input parameter value is within the correct range.
 
-## 2100002 Connection Service Failed
+## 2100002 Failed to Connect to Service
 
 **Error Message**
 
@@ -34,7 +34,7 @@ Operation failed due to an exception when connecting to the system service.
 
 **Possible Causes**
 
-Service exception occurred.
+The service encountered an exception.
 
 **Solution**
 
@@ -57,10 +57,10 @@ System internal error.
 
 **Solution**
 
-1. Check whether memory space is sufficient. Free up memory and retry.  
-2. System exception. Please retry later or restart the device.
+1. Check whether the memory space is sufficient. Free up memory and try again.  
+2. System exception. Please try again later or restart the device.
 
-## 2101007 Same Callback Already Exists
+## 2101007 Duplicate Callback Exists
 
 **Error Message**
 
@@ -68,16 +68,16 @@ The same callback exists.
 
 **Error Description**
 
-Callback already registered.
+A callback has already been registered.
 
 **Possible Causes**
 
-When activating & monitoring a specified attribute network and registering a callback, the callback object was registered repeatedly.
+When activating & monitoring a specified network property and registering a callback, the callback object was registered repeatedly.
 
 **Solution**
 
-1. Ensure the callback object to be registered has not been registered before.  
-2. If the callback object has already been registered, execute the existing registration.
+1. Ensure that the callback object to be registered has not been registered before.  
+2. If the callback object has already been registered, use the existing registration.
 
 ## 2101008 Callback Does Not Exist
 
@@ -87,17 +87,17 @@ The callback is not exists.
 
 **Error Description**
 
-Non-existent callback object.
+The callback object does not exist.
 
 **Possible Causes**
 
-The request to activate & monitor a specified attribute network and register a callback was not executed.
+The request to activate & monitor a specified network property and register a callback was not executed.
 
 **Solution**
 
-Check the callback object. Ensure the callback object has been registered before unregistering it.
+Check the callback object to ensure that the deregistration function is called only after the registration function has been executed.
 
-## 2101022 Request Number Exceeds Maximum
+## 2101022 Maximum Number of Requests Exceeded
 
 **Error Message**
 
@@ -109,8 +109,8 @@ The number of network requests exceeded the maximum limit.
 
 **Possible Causes**
 
-The number of requests to activate & monitor a specified attribute network exceeded the maximum limit.
+The number of requests to activate & monitor a specified network property exceeded the maximum limit.
 
 **Solution**
 
-It is recommended to locate the issue through the log message "Over the max request number".
+It is recommended to locate the issue through the log message "Over the max request number."

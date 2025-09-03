@@ -17,7 +17,7 @@ Memory allocation failure in the current system.
 **Resolution Steps**
 
 1. Check whether the current system functions normally.
-2. Verify if the business data exceeds length limits, causing the system to fail in memory allocation.
+2. Verify if the business data exceeds length limits, causing the system to fail memory allocation.
 
 ## 17620002 Runtime Error
 
@@ -27,7 +27,7 @@ Runtime error.
 
 **Possible Causes**
 
-Unexpected errors occurred in the system.
+Unpredictable errors occurred in the system.
 
 **Resolution Steps**
 
@@ -41,7 +41,7 @@ Crypto operation error.
 
 **Possible Causes**
 
-An error occurred during the interaction between the cryptographic algorithm framework and a third-party algorithm library.
+An error occurred during the interaction between the cryptographic algorithm framework and the third-party algorithm library.
 
 **Resolution Steps**
 

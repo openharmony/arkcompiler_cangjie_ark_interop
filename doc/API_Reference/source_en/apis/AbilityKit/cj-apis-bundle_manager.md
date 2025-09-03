@@ -1,8 +1,8 @@
-# ohos.bundle_manager (BundleManager Management)
+# ohos.bundle.bundle_manager (BundleManager Management)
 
-This package provides capabilities for querying and updating application bundle information. Bundle information includes application details, capability information, extended capabilities, permissions, etc.
+Provides capabilities for querying information related to application packages, including applications (Application), modules (HAP Module), abilities (Ability), extension abilities (ExtensionAbility), permissions, signatures, and other related information.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.AbilityKit.*
@@ -12,10 +12,10 @@ import kit.AbilityKit.*
 
 API example code usage instructions:
 
-- If the first line of example code contains a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](cj-apis-ability.md#class-context) application context, configuration needs to be done in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of the example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template, refer to [Cangjie Example Code Description](../../cj-development-intro.md#cangjie-example-code-description).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
 
 ## class AbilityInfo
 
@@ -47,11 +47,11 @@ public class AbilityInfo {
 }
 ```
 
-**Function:** Ability information. Third-party applications can obtain Ability information through [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the input parameter [bundleFlags](#enum-bundleflag) must include at least GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_ABILITY.
+**Function:** Ability information. Third-party applications can obtain Ability information via [getBundleInfoForSelf](#func-getbundleinfoforselfint32), where the input parameter bundleFlags must include at least GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_ABILITY.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let appIndex
 
@@ -59,7 +59,7 @@ public class AbilityInfo {
 public let appIndex: Int32
 ```
 
-**Function:** The clone index identifier of the application bundle, effective only in clone applications.
+**Function:** The clone index identifier of the application package, effective only in clone applications.
 
 **Type:** Int32
 
@@ -67,7 +67,7 @@ public let appIndex: Int32
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let applicationInfo
 
@@ -75,15 +75,15 @@ public let appIndex: Int32
 public let applicationInfo: ApplicationInfo
 ```
 
-**Function:** Configuration information of the application. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter set to GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_APPLICATION.
+**Function:** Configuration information of the application. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface, with the bundleFlags parameter passing the values of GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_APPLICATION.
 
-**Type:** [ApplicationInfo](#struct-applicationinfo)
+**Type:** [ApplicationInfo](#class-applicationinfo)
 
 **Read/Write Capability:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let bundleName
 
@@ -99,7 +99,7 @@ public let bundleName: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let description
 
@@ -107,7 +107,7 @@ public let bundleName: String
 public let description: String
 ```
 
-**Function:** Description of the Ability.
+**Function:** The description of the Ability.
 
 **Type:** String
 
@@ -115,7 +115,7 @@ public let description: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let descriptionId
 
@@ -123,7 +123,7 @@ public let description: String
 public let descriptionId: Int32
 ```
 
-**Function:** Resource ID of the Ability's description.
+**Function:** The resource ID of the Ability's description.
 
 **Type:** Int32
 
@@ -131,7 +131,7 @@ public let descriptionId: Int32
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let deviceTypes
 
@@ -139,7 +139,7 @@ public let descriptionId: Int32
 public let deviceTypes: Array<String>
 ```
 
-**Function:** Device types supported by the Ability.
+**Function:** The device types supported by the Ability.
 
 **Type:** Array\<String>
 
@@ -147,7 +147,7 @@ public let deviceTypes: Array<String>
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let enabled
 
@@ -163,7 +163,7 @@ public let enabled: Bool
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let excludeFromDock
 
@@ -179,7 +179,7 @@ public let excludeFromDock: Bool
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let exported
 
@@ -195,7 +195,7 @@ public let exported: Bool
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let icon
 
@@ -203,7 +203,7 @@ public let exported: Bool
 public let icon: String
 ```
 
-**Function:** Icon resource descriptor of the Ability, e.g., "icon": "$media: icon".
+**Function:** The icon resource descriptor of the Ability, e.g., "icon": "$media: icon".
 
 **Type:** String
 
@@ -211,7 +211,7 @@ public let icon: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let iconId
 
@@ -219,7 +219,7 @@ public let icon: String
 public let iconId: Int32
 ```
 
-**Function:** Resource ID of the Ability's icon.
+**Function:** The resource ID of the Ability's icon.
 
 **Type:** Int32
 
@@ -227,7 +227,7 @@ public let iconId: Int32
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let label
 
@@ -235,7 +235,7 @@ public let iconId: Int32
 public let label: String
 ```
 
-**Function:** Resource descriptor of the name displayed to users for the Ability, e.g., "label": "$string: mainability_description".
+**Function:** The resource descriptor of the name displayed to the user for the Ability, e.g., "label": "$string: mainability_description".
 
 **Type:** String
 
@@ -243,7 +243,7 @@ public let label: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let labelId
 
@@ -251,7 +251,7 @@ public let label: String
 public let labelId: Int32
 ```
 
-**Function:** Resource ID of the Ability's label.
+**Function:** The resource ID of the Ability's label.
 
 **Type:** Int32
 
@@ -259,7 +259,7 @@ public let labelId: Int32
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let launchType
 
@@ -267,7 +267,7 @@ public let labelId: Int32
 public let launchType: LaunchType
 ```
 
-**Function:** Launch mode of the Ability.
+**Function:** The launch mode of the Ability.
 
 **Type:** [LaunchType](#enum-launchtype)
 
@@ -275,7 +275,7 @@ public let launchType: LaunchType
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let metadata
 
@@ -283,21 +283,22 @@ public let launchType: LaunchType
 public let metadata: Array<Metadata>
 ```
 
-**Function:** Metadata of the Ability. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter set to GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_METADATA.
+**Function:** The metadata of the Ability. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface, with the bundleFlags parameter passing the values of GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_METADATA.
 
-**Type:** Array\<[Metadata](#class-metadata)>
+**Type:** Array\<[Metadata]>
 
 **Read/Write Capability:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let moduleName
 
 ```cangjie
 public let moduleName: String
 ```
+
 **Function:** The name of the HAP to which the Ability belongs.
 
 **Type:** String
@@ -306,7 +307,7 @@ public let moduleName: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let name
 
@@ -322,7 +323,7 @@ public let name: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let orientation
 
@@ -338,7 +339,7 @@ public let orientation: DisplayOrientation
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let permissions
 
@@ -346,7 +347,7 @@ public let orientation: DisplayOrientation
 public let permissions: Array<String>
 ```
 
-**Function:** The set of permissions required when the Ability is called by other applications. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter passed as the combination of GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
+**Function:** The set of permissions required when the Ability is called by other applications. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface, with the bundleFlags parameter passing the values of GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
 
 **Type:** Array\<String>
 
@@ -354,7 +355,7 @@ public let permissions: Array<String>
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let process
 
@@ -370,7 +371,7 @@ public let process: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let skills
 
@@ -380,13 +381,13 @@ public let skills: Array<Skill>
 
 **Function:** The Skills information of the Ability.
 
-**Type:** Array\<[Skill](#struct-skill)>
+**Type:** Array\<[Skill]>
 
 **Read/Write Capability:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let supportWindowModes
 
@@ -394,7 +395,7 @@ public let skills: Array<Skill>
 public let supportWindowModes: Array<SupportWindowMode>
 ```
 
-**Function:** The supported window modes of the Ability.
+**Function:** The window modes supported by the Ability.
 
 **Type:** Array\<[SupportWindowMode](#enum-supportwindowmode)>
 
@@ -402,7 +403,7 @@ public let supportWindowModes: Array<SupportWindowMode>
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let windowSize
 
@@ -412,1155 +413,16 @@ public let windowSize: WindowSize
 
 **Function:** The window size of the Ability.
 
-**Type:** [WindowSize](#struct-windowsize)
+**Type:** [WindowSize](#class-windowsize)
 
 **Read/Write Capability:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
-
-## class BundleInfo
+**Since:** 21## class ApplicationInfo
 
 ```cangjie
-public class BundleInfo {
-    public let name: String
-    public let vendor: String
-    public let versionCode: UInt32
-    public let versionName: String
-    public let minCompatibleVersionCode: UInt32
-    public let targetVersion: UInt32
-    public let appInfo: ApplicationInfo
-    public let hapModulesInfo: Array<HapModuleInfo>
-    public let reqPermissionDetails: Array<ReqPermissionDetail>
-    public let permissionGrantStates: Array<PermissionGrantState>
-    public let signatureInfo: SignatureInfo
-    public let installTime: Int64
-    public let updateTime: Int64
-    public let uid: Int32
-    public let routerMap: Array<RouterItem>
-    public let appIndex: Int32
-}
-```
-
-**Function:** Package information. Third-party applications can obtain their own package information via [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the bundleFlags parameter specifies the information to be included in the returned BundleInfo.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let appIndex
-
-```cangjie
-public let appIndex: Int32
-```
-
-**Function:** The clone index identifier of the application package, effective only in clone applications.
-
-**Type:** Int32
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let appInfo
-
-```cangjie
-public let appInfo: ApplicationInfo
-```
-
-**Function:** The configuration information of the application. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter passed as GET_BUNDLE_INFO_WITH_APPLICATION.
-
-**Type:** [ApplicationInfo](#struct-applicationinfo)
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let hapModulesInfo
-
-```cangjie
-public let hapModulesInfo: Array<HapModuleInfo>
-```
-
-**Function:** The configuration information of the module. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter passed as GET_BUNDLE_INFO_WITH_HAP_MODULE.
-
-**Type:** Array\<[HapModuleInfo](#struct-hapmoduleinfo)>
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let installTime
-
-```cangjie
-public let installTime: Int64
-```
-
-**Function:** The installation time of the application package.
-
-**Type:** Int64
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let minCompatibleVersionCode
-
-```cangjie
-public let minCompatibleVersionCode: UInt32
-```
-
-**Function:** The minimum compatible version of the application package in distributed scenarios.
-
-**Type:** UInt32
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let name
-
-```cangjie
-public let name: String
-```
-
-**Function:** The name of the application package.
-
-**Type:** String
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let permissionGrantStates
-
-```cangjie
-public let permissionGrantStates: Array<PermissionGrantState>
-```
-
-**Function:** The grant states of requested permissions. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter passed as GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
-
-**Type:** Array\<[PermissionGrantState](#enum-permissiongrantstate)>
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let reqPermissionDetails
-
-```cangjie
-public let reqPermissionDetails: Array<ReqPermissionDetail>
-```
-
-**Function:** Detailed information about the set of permissions required by the application at runtime. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter passed as GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
-
-**Type:** Array\<[ReqPermissionDetail](#struct-reqpermissiondetail)>
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let routerMap
-
-```cangjie
-public let routerMap: Array<RouterItem>
-```
-
-**Function:** The routing table configuration of the application, obtained by merging the routerMap information from hapModulesInfo after deduplication based on the name field in RouterItem. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the [bundleFlags](#enum-bundleflag) parameter passed as the combination of GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_ROUTER_MAP.
-
-**Type:** Array\<[RouterItem](#struct-routeritem)>
-
-**Read/Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let signatureInfo
-
-```cangjie
-public let signatureInfo: SignatureInfo
-```
-
-**Function:** Signature information of the application package. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface with the [bundleFlags](#enum-bundleflag) parameter set to GET_BUNDLE_INFO_WITH_SIGNATURE_INFO.
-
-**Type:** [SignatureInfo](#class-signatureinfo)
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### let targetVersion
-
-```cangjie
-public let targetVersion: UInt32
-```
-
-**Function:** This label identifies the target version for the application to run.
-
-**Type:** UInt32
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### let uid
-
-```cangjie
-public let uid: Int32
-```
-
-**Function:** The UID of the application.
-
-**Type:** Int32
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### let updateTime
-
-```cangjie
-public let updateTime: Int64
-```
-
-**Function:** The update time of the application package.
-
-**Type:** Int64
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### let vendor
-
-```cangjie
-public let vendor: String
-```
-
-**Function:** The vendor of the application package.
-
-**Type:** String
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### let versionCode
-
-```cangjie
-public let versionCode: UInt32
-```
-
-**Function:** The version code of the application package.
-
-**Type:** UInt32
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### let versionName
-
-```cangjie
-public let versionName: String
-```
-
-**Function:** The version description text of the application package.
-
-**Type:** String
-
-**Read-Write Attribute:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-## class BundleManager
-
-```cangjie
-public class BundleManager {}
-```
-
-**Function:** A class that provides methods for querying Bundle information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-### static func canOpenLink(String)
-
-```cangjie
-public static func canOpenLink(link: String): Bool
-```
-
-**Function:** Queries whether a given link can be opened. The scheme of the specified link must be configured in the querySchemes field of the module.json file.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| link | String | Yes | - | The link to be queried. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| Bool | Returns true if the given link can be opened; returns false otherwise. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
-
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 17700055 | The specified link is invalid. |
-| 17700056 | The scheme of the specified link is not in the querySchemes. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.AbilityKit.*
-import ohos.hilog.Hilog
-
-let link = "app1Scheme://test.example.com/home"
-let canOpen = BundleManager.canOpenLink(link)
-```
-
-### static func getBundleInfo(String, Int32, ?Int32)
-
-```cangjie
-public static func getBundleInfo(bundleName: String, bundleFlags: Int32, userId!: ?Int32 = None): BundleInfo
-```
-
-**Function:** Retrieves BundleInfo based on the given bundleName, bundleFlags, and userId.
-
-**Required Permission:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| bundleName | String | Yes | - | The name of the application Bundle to be queried. |
-| bundleFlags | Int32 | Yes | - | Specifies the information to be included in the returned BundleInfo. For details, refer to [BundleFlag](#enum-bundleflag). |
-| userId | ?Int32 | No | None | The user ID. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [BundleInfo](#class-bundleinfo) | The BundleInfo object, returning the BundleInfo of the current application. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
-
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 17700001 | The specified bundleName is not found. |
-| 17700004 | The specified user ID is not found. |
-| 17700026 | The specified bundle is disabled. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.AbilityKit.*
-
-let bundleFlags = GET_BUNDLE_INFO_DEFAULT.getValue()
-try {
-    let res = BundleManager.getBundleInfo("com.example.myapplication", bundleFlags)
-} catch (e: BusinessException) {
-    AppLog.error("getBundleInfo failed, errcode is ${e.code}")
-}
-```
-
-### static func getBundleInfoForSelf(Int32)
-
-```cangjie
-public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
-```
-
-**Function:** Retrieves the BundleInfo of the current application based on the given bundleFlags.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| bundleFlags | Int32 | Yes | - | Specifies the information to be included in the returned BundleInfo. For details, refer to [BundleFlag](#enum-bundleflag). |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [BundleInfo](#class-bundleinfo) | The BundleInfo object, returning the BundleInfo of the current application. |
-
-**Example 1:**
-
-```cangjie
-// index.cj
-
-import kit.AbilityKit.*
-
-let bundleFlags = GET_BUNDLE_INFO_DEFAULT.getValue()
-let res = BundleManager.getBundleInfoForSelf(bundleFlags)
-```
-
-**Example 2:**
-
-```cangjie
-// index.cj
-
-import kit.AbilityKit.*
-
-let bundleFlags = GET_BUNDLE_INFO_DEFAULT.getValue() | GET_BUNDLE_INFO_WITH_APPLICATION.getValue() | GET_BUNDLE_INFO_WITH_HAP_MODULE.getValue() | GET_BUNDLE_INFO_WITH_ABILITY.getValue()
-let res = BundleManager.getBundleInfoForSelf(bundleFlags)
-```
-
-### static func getBundleNameByUid(Int32)
-
-```cangjie
-public static func getBundleNameByUid(uid: Int32): String
-```
-
-**Function:** Retrieves the bundleName of the corresponding application based on the given UID.
-
-**Required Permission:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since Version:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| uid | Int32 | Yes | - | The UID of the application. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| String | The retrieved bundleName. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).| Error Code ID | Error Message |
-| :---- | :--- |
-| 201 | Permission denied. |
-| 17700021 | The uid is not found. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.AbilityKit.*
-
-let bundleFlags = GET_BUNDLE_INFO_DEFAULT.getValue()
-try {
-    let bundleinfo = BundleManager.getBundleInfo("com.example.myapplication",
-            (GET_BUNDLE_INFO_DEFAULT.getValue() | GET_BUNDLE_INFO_WITH_APPLICATION.getValue()))
-    let name = BundleManager.getBundleNameByUid(bundleinfo
-            .appInfo
-            .uid)
-} catch (e: BusinessException) {
-    AppLog.error("getBundleNameByUid failed, errcode is ${e.code}")
-}
-```
-
-### static func getProfileByAbility(String, String, String)
-
-```cangjie
-public static func getProfileByAbility(moduleName: String, abilityName: String, metadataName!: String = ""): Array<String>
-```
-
-**Function:** Obtains the JSON-formatted string of the corresponding configuration file based on the given moduleName, abilityName, and metadataName (name under the metadata tag in module.json), and returns a String array.
-
-For resource files of configuration information resources that use reference-defined resources, the returned JSON string will maintain the resource reference string format, such as `$string: myResourceID`, where `myResourceID` is the resource ID automatically assigned to the resource during the project build process. Developers can use the relevant interfaces in the `ohos/resource_manager` package to obtain such referenced resources.
-
-If the configuration file information adopts the resource reference format, the return value will maintain the resource reference format (e.g., $string: res_id). Developers can use the relevant interfaces of the resource management module to obtain the referenced resources.
-
-> **Note:**
->
-> - The configuration information resources of the ability are defined under the `module.abilities[].metadata` tag in the corresponding module.json5 file.
-> - The data content of the configuration information resources is returned in a compact JSON string format.
-> - An ability can have zero to several configuration information resources.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| moduleName | String | Yes | - | Name of the target module. |
-| abilityName | String | Yes | - | Name of the target ability. |
-| metadataName | String | No | "" | **Named parameter.** Name of the target configuration information resource. The metadata name of the component, i.e., the name under the metadata tag in the abilities section of the module.json5 configuration file.<br>- When `metadataName` is the name of a configuration information resource of the target ability, only the data content of that configuration information will be returned, and the returned array will contain only one element.<br>- When `metadataName` is omitted or is an empty string, the data content of all configuration information of the ability determined by the module name and ability name will be returned, and the returned array will contain zero to several elements. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| Array\<String> | JSON-formatted string of the configuration file. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
-
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 401 | Input parameters check failed. |
-| 17700002 | The specified moduleName does not exist. |
-| 17700003 | The specified abilityName does not exist. |
-| 17700024 | Failed to get the profile because there is no profile in the HAP. |
-| 17700026 | The specified bundle is disabled. |
-| 17700029 | The specified ability is disabled. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.AbilityKit.*
-
-let moduleName = "entry"
-let abilityName = "EntryAbility"
-let metadataName = "ohos.extension.form"
-let info = BundleManager.getProfileByAbility(moduleName, abilityName, metadataName: metadataName)
-```
-
-### static func getProfileByExtensionAbility(String, String, String)
-
-```cangjie
-public static func getProfileByExtensionAbility(moduleName: String, extensionAbilityName: String,
-    metadataName!: String = ""): Array<String>
-```
-
-**Function:** Obtains the JSON-formatted string of the corresponding configuration file based on the given moduleName, extensionAbilityName, and metadataName (name under the metadata tag in module.json), and returns a String array.
-
-For resource files of configuration information resources that use reference-defined resources, the returned JSON string will maintain the resource reference string format, such as `$string: myResourceID`, where `myResourceID` is the resource ID automatically assigned to the resource during the project build process. Developers can use the relevant interfaces in the `ohos/resource_manager` package to obtain such referenced resources.
-
-If the configuration file information adopts the resource reference format, the return value will maintain the resource reference format (e.g., $string: res_id). Developers can use the relevant interfaces of the resource management module to obtain the referenced resources.
-
-> **Note:**
->
-> - The configuration information resources of the extension ability are defined under the `module.extensionAbilities[].metadata` tag in the corresponding module.json5 file.
-> - The data content of the configuration information resources is returned in a compact JSON string format.
-> - An extension ability can have zero to several configuration information resources.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| moduleName | String | Yes | - | Name of the target module. |
-| extensionAbilityName | String | Yes | - | Name of the target extension ability. |
-| metadataName | String | No | "" | **Named parameter.** Name of the target configuration information resource. The metadata name of the component, i.e., the name under the metadata tag in the extensionAbilities section of the module.json5 configuration file. The default value is an empty string.<br>- When `metadataName` is the name of a configuration information resource of the target extension ability, only the data content of that configuration information will be returned, and the returned array will contain only one element.<br>- When `metadataName` is omitted or is an empty string, the data content of all configuration information of the extension ability determined by the module name and extension ability name will be returned, and the returned array will contain zero to several elements. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| Array\<String> | Data content of the configuration information resources of the target extension ability. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
-
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 401 | Input parameters check failed. |
-| 17700002 | The specified moduleName does not exist. |
-| 17700003 | The specified extensionAbilityName does not exist. |
-| 17700024 | Failed to get the profile because there is no profile in the HAP. |
-| 17700026 | The specified bundle is disabled. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.AbilityKit.*
-
-let moduleName = "entry"
-let extensionAbilityName = "EntryFormAbility"
-let metadataName = "ohos.extension.form"
-let info = BundleManager.getProfileByExtensionAbility(moduleName, extensionAbilityName, metadataName: metadataName)
-```
-
-## class DefaultAppManager
-
-```cangjie
-public class DefaultAppManager {}
-```
-
-**Function:** This class provides the capability to query default applications, supporting queries to determine whether the current application is the default application.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
-
-**Initial Version:** 21
-
-### static func isDefaultApplication(String)
-
-```cangjie
-public static func isDefaultApplication(appType: String): Bool
-```
-
-**Function:** Determines whether the current application is the default application of the specified type based on the system-defined application types.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
-
-**Initial Version:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| appType | String | Yes | - | Application type to query, taken from the values in [ApplicationType](#enum-applicationtype). |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| Bool | Returns whether the current application is the default application. true indicates it is the default application, and false indicates it is not. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 801 | Capability not supported. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.AbilityKit.*
-
-let tag = DefaultAppManager.isDefaultApplication(ApplicationType.IMAGE.getValue())
-```
-
-## class ExtensionAbilityInfo
-
-```cangjie
-public class ExtensionAbilityInfo {
-    public let bundleName: String
-    public let moduleName: String
-    public let name: String
-    public let labelId: Int32
-    public let descriptionId: Int32
-    public let iconId: Int32
-    public let exported: Bool
-    public let extensionAbilityType: ExtensionAbilityType
-    public let permissions: Array<String>
-    public let applicationInfo: ApplicationInfo
-    public let metadata: Array<Metadata>
-    public let enabled: Bool
-    public let readPermission: String
-    public let writePermission: String
-    public let extensionAbilityTypeName: String
-    public let skills: Array<Skill>
-    public let appIndex: Int32
-}
-```
-
-**Function:** ExtensionAbilityInfo information. Third-party applications can obtain their own ExtensionAbility information via [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the input parameter [bundleFlags](#enum-bundleflag) must at least include GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let appIndex
-
-```cangjie
-public let appIndex: Int32
-```
-
-**Function:** The clone index identifier of the application package, effective only in clone applications.
-
-**Type:** Int32
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let applicationInfo
-
-```cangjie
-public let applicationInfo: ApplicationInfo
-```
-
-**Function:** Configuration information of the application.
-
-**Type:** [ApplicationInfo](#struct-applicationinfo)
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let bundleName
-
-```cangjie
-public let bundleName: String
-```
-
-**Function:** Name of the application bundle.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let descriptionId
-
-```cangjie
-public let descriptionId: Int32
-```
-
-**Function:** Resource ID of the description of the ExtensionAbility.
-
-**Type:** Int32
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let enabled
-
-```cangjie
-public let enabled: Bool
-```
-
-**Description:** Whether the ExtensionAbility is enabled.
-
-**Type:** Bool
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let exported
-
-```cangjie
-public let exported: Bool
-```
-
-**Description:** Determines whether the ExtensionAbility can be invoked by other applications.
-
-**Type:** Bool
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let extensionAbilityType
-
-```cangjie
-public let extensionAbilityType: ExtensionAbilityType
-```
-
-**Description:** The type of the ExtensionAbility.
-
-**Type:** [ExtensionAbilityType](#enum-extensionabilitytype)
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let extensionAbilityTypeName
-
-```cangjie
-public let extensionAbilityTypeName: String
-```
-
-**Description:** The type name of the ExtensionAbility.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let iconId
-
-```cangjie
-public let iconId: Int32
-```
-
-**Description:** The resource ID of the ExtensionAbility's icon.
-
-**Type:** Int32
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let labelId
-
-```cangjie
-public let labelId: Int32
-```
-
-**Description:** The resource ID of the ExtensionAbility's label.
-
-**Type:** Int32
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let metadata
-
-```cangjie
-public let metadata: Array<Metadata>
-```
-
-**Description:** The metadata of the ExtensionAbility.
-
-**Type:** Array\<[Metadata](#class-metadata)>
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let moduleName
-
-```cangjie
-public let moduleName: String
-```
-
-**Description:** The name of the HAP to which the ExtensionAbility belongs.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let name
-
-```cangjie
-public let name: String
-```
-
-**Description:** The name of the ExtensionAbility.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let permissions
-
-```cangjie
-public let permissions: Array<String>
-```
-
-**Description:** The set of permissions required to be requested when invoking the ExtensionAbility by other applications.
-
-**Type:** Array\<String>
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let readPermission
-
-```cangjie
-public let readPermission: String
-```
-
-**Description:** The permission required to read data from the ExtensionAbility.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let skills
-
-```cangjie
-public let skills: Array<Skill>
-```
-
-**Description:** The Skills information of the ExtensionAbility.
-
-**Type:** Array\<[Skill](#struct-skill)>
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### let writePermission
-
-```cangjie
-public let writePermission: String
-```
-
-**Description:** The permission required to write data to the ExtensionAbility.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-## class Metadata
-
-```cangjie
-public class Metadata {
-    public var name: String
-    public var value: String
-    public var resource: String
-    public init(name: String, value: String, resource: String)
-}
-```
-
-**Description:** Metadata information. Third-party applications can obtain this via [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the input parameter bundleFlags must include GET_BUNDLE_INFO_WITH_METADATA. This object is included in [AbilityInfo](#class-abilityinfo), [ApplicationInfo](#struct-applicationinfo), [ExtensionAbilityInfo](#class-extensionabilityinfo), [HapModuleInfo](#struct-hapmoduleinfo), and [ModuleMetadata](#struct-modulemetadata).
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### var name
-
-```cangjie
-public var name: String
-```
-
-**Description:** The name of the metadata.
-
-**Type:** String
-
-**Read-Write Capability:** Read-write
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### var resource
-
-```cangjie
-public var resource: String
-```
-
-**Description:** The resource of the metadata.
-
-**Type:** String
-
-**Read-Write Capability:** Read-write
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### var value
-
-```cangjie
-public var value: String
-```
-
-**Description:** The value of the metadata.
-
-**Type:** String
-
-**Read-Write Capability:** Read-write
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### init(String, String, String)
-
-```cangjie
-public init(name: String, value: String, resource: String)
-```
-
-**Description:** Creates a metadata information object.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-**Parameters:**
-
-| Parameter | Type   | Required | Default | Description          |
-|:----------|:-------|:---------|:--------|:---------------------|
-| name      | String | Yes      | -       | The metadata name.   |
-| value     | String | Yes      | -       | The metadata value.  |
-| resource  | String | Yes      | -       | The metadata resource.|## class SignatureInfo
-
-```cangjie
-public class SignatureInfo {
-    public let appId: String
-    public let fingerprint: String
-    public let appIdentifier: String
-}
-```
-
-**Function:** Describes the signature information of an application package.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let appId
-
-```cangjie
-public let appId: String
-```
-
-**Function:** The appId of the application.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let appIdentifier
-
-```cangjie
-public let appIdentifier: String
-```
-
-**Function:** The unique identifier of the application, uniformly assigned by the cloud. This ID remains unchanged throughout the entire lifecycle of the application, including version upgrades, certificate changes, developer key pair changes, and application transfers.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let fingerprint
-
-```cangjie
-public let fingerprint: String
-```
-
-**Function:** The fingerprint information of the application package.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-## struct ApplicationInfo
-
-```cangjie
-public struct ApplicationInfo {
+public class ApplicationInfo {
     public let name: String
     public let description: String
     public let descriptionId: Int32
@@ -1594,7 +456,7 @@ public struct ApplicationInfo {
 }
 ```
 
-**Function:** The configuration information of an application. Third-party applications can obtain their own application information via [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the input parameter bundleFlags must include at least GET_BUNDLE_INFO_WITH_APPLICATION.
+**Description:** Configuration information of an application. Third-party applications can obtain their own application information through [getBundleInfoForSelf](#func-getbundleinfoforselfint32), where the input parameter bundleFlags must at least include GET_BUNDLE_INFO_WITH_APPLICATION.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1606,11 +468,11 @@ public struct ApplicationInfo {
 public let accessTokenId: UInt32
 ```
 
-**Function:** The accessTokenId of the application.
+**Description:** The accessTokenId of the application.
 
 **Type:** UInt32
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1622,11 +484,11 @@ public let accessTokenId: UInt32
 public let appDistributionType: String
 ```
 
-**Function:** The distribution type of the application's signing certificate, which can be: app_gallery, enterprise, os_integration, or crowdtesting.
+**Description:** The distribution type of the application's signing certificate, which can be: app_gallery, enterprise, os_integration, or crowdtesting.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1638,11 +500,11 @@ public let appDistributionType: String
 public let appIndex: Int32
 ```
 
-**Function:** The clone index identifier of the application package, effective only in clone applications.
+**Description:** The clone index identifier of the application package, effective only in clone applications.
 
 **Type:** Int32
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1654,11 +516,11 @@ public let appIndex: Int32
 public let appProvisionType: String
 ```
 
-**Function:** The type of the application's signing certificate file, which can be either debug or release.
+**Description:** The type of the application's signing certificate file, which can be debug or release.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1670,11 +532,11 @@ public let appProvisionType: String
 public let bundleType: BundleType
 ```
 
-**Function:** Identifies the type of the package, which can be either APP (application) or ATOMIC_SERVICE (atomic service).
+**Description:** Identifies the type of the package, which can be APP (application) or ATOMIC_SERVICE (atomic service).
 
 **Type:** [BundleType](#enum-bundletype)
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1686,11 +548,11 @@ public let bundleType: BundleType
 public let cloudFileSyncEnabled: Bool
 ```
 
-**Function:** Indicates whether the current application has enabled cloud file synchronization capability. true means the current application has enabled cloud file synchronization capability, false means it has not.
+**Description:** Indicates whether the current application has cloud file synchronization enabled. true means the current application has cloud file synchronization enabled, false means it does not.
 
 **Type:** Bool
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1702,11 +564,11 @@ public let cloudFileSyncEnabled: Bool
 public let codePath: String
 ```
 
-**Function:** The installation directory of the application.
+**Description:** The installation directory of the application.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1718,11 +580,11 @@ public let codePath: String
 public let dataUnclearable: Bool
 ```
 
-**Function:** Indicates whether the application data can be deleted. true means the data cannot be deleted, false means it can. The default value is false.
+**Description:** Indicates whether the application data can be deleted. true means it cannot be deleted, false means it can. Default is false.
 
 **Type:** Bool
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1734,11 +596,11 @@ public let dataUnclearable: Bool
 public let debug: Bool
 ```
 
-**Function:** Indicates whether the application is in debug mode. The default value is false.
+**Description:** Indicates whether the application is in debug mode. Default is false.
 
 **Type:** Bool
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1750,7 +612,1049 @@ public let debug: Bool
 public let description: String
 ```
 
-**Function:** The description information of the application, using the example: "description": $string: mainability_description". For detailed information about description, refer to the descriptionResource field.
+**Description:** The description information of the application, using example: "description": "$string: mainability_description". For detailed information about description, refer to the descriptionResource field.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let descriptionId
+
+```cangjie
+public let descriptionId: Int32
+```
+
+**Description:** The resource ID of the application's description information.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let descriptionResource
+
+```cangjie
+public let descriptionResource: AppResource
+```
+
+**Description:** The description resource information of the application, including bundleName, moduleName, and resource ID. The detailed resource data can be obtained by calling the globalization interface [getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32).
+
+**Type:** [AppResource](<font color="red" face="bold">please add link</font>)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let enabled
+
+```cangjie
+public let enabled: Bool
+```
+
+**Description:** Determines whether the application can be used. Default is true.
+
+**Type:** Bool
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let icon
+
+```cangjie
+public let icon: String
+```
+
+**Description:** The icon of the application, using example: "icon": "$media: icon". For detailed information about icon, refer to the iconResource field.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let iconId
+
+```cangjie
+public let iconId: Int32
+```
+
+**Description:** The resource ID of the application's icon.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let iconResource
+
+```cangjie
+public let iconResource: AppResource
+```
+
+**Description:** The icon resource information of the application, including bundleName, moduleName, and resource ID. The detailed resource data can be obtained by calling the globalization interface [getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32).
+
+**Type:** [AppResource](<font color="red" face="bold">please add link</font>)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let installSource
+
+```cangjie
+public let installSource: String
+```
+
+**Description:** The installation source of the application. pre-installed means the application is pre-installed, the format as package name means the application is installed by the application corresponding to the package name, unknown means the installation source is unknown.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let label
+
+```cangjie
+public let label: String
+```
+
+**Description:** The name of the application, using example: "label": "$string: mainability_description". For detailed information about label, refer to the labelResource field.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let labelId
+
+```cangjie
+public let labelId: Int32
+```
+
+**Description:** The resource ID of the application's name.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let labelResource
+
+```cangjie
+public let labelResource: AppResource
+```
+
+**Description:** The label resource information of the application, including bundleName, moduleName, and resource ID. The detailed resource data can be obtained by calling the globalization interface [getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32).
+
+**Type:** [AppResource](<font color="red" face="bold">please add link</font>)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let metadataArray
+
+```cangjie
+public let metadataArray: Array<ModuleMetadata>
+```
+
+**Description:** The metadata of the application. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface, with bundleFlags parameter passing the values of GET_BUNDLE_INFO_WITH_APPLICATION and GET_BUNDLE_INFO_WITH_METADATA.
+
+**Type:** Array\<[ModuleMetadata](#class-modulemetadata)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let multiAppMode
+
+```cangjie
+public let multiAppMode: MultiAppMode
+```
+
+**Description:** The multi-instance mode of the application.
+
+**Type:** [MultiAppMode](#class-multiappmode)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let name
+
+```cangjie
+public let name: String
+```
+
+**Description:** The name of the application.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let nativeLibraryPath
+
+```cangjie
+public let nativeLibraryPath: String
+```
+
+**Description:** The path of the application's native library files.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let permissions
+
+```cangjie
+public let permissions: Array<String>
+```
+
+**Description:** The permissions required to access the application. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface, with bundleFlags parameter passing the values of GET_BUNDLE_INFO_WITH_APPLICATION and GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
+
+**Type:** Array\<String>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let process
+
+```cangjie
+public let process: String
+```
+
+**Description:** The process of the application. If not set, defaults to the package name.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let releaseType
+
+```cangjie
+public let releaseType: String
+```
+
+**Description:** Identifies the release type of the SDK used when packaging the application. Current SDK release types may include Canary, Beta, Release, where Canary and Beta may be further subdivided by sequence numbers, such as Canary1, Canary2, Beta1, Beta2, etc. Developers can compare the SDK release type on which the application depends with the OS release type ([deviceInfo.distributionOSReleaseType](../BasicServicesKit/cj-apis-device_info.md)) to determine compatibility.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let removable
+
+```cangjie
+public let removable: Bool
+```
+
+**Description:** Whether the application can be removed.
+
+**Type:** Bool
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let systemApp
+
+```cangjie
+public let systemApp: Bool
+```
+
+**Description:** Indicates whether the application is a system application.
+
+**Type:** Bool
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let uid
+
+```cangjie
+public let uid: Int32
+```
+
+**Description:** The UID of the application.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21## class BundleInfo
+
+```cangjie
+public class BundleInfo {
+    public let name: String
+    public let vendor: String
+    public let versionCode: UInt32
+    public let versionName: String
+    public let minCompatibleVersionCode: UInt32
+    public let targetVersion: UInt32
+    public let appInfo: ApplicationInfo
+    public let hapModulesInfo: Array<HapModuleInfo>
+    public let reqPermissionDetails: Array<ReqPermissionDetail>
+    public let permissionGrantStates: Array<PermissionGrantState>
+    public let signatureInfo: SignatureInfo
+    public let installTime: Int64
+    public let updateTime: Int64
+    public let routerMap: Array<RouterItem>
+    public let appIndex: Int32
+}
+```
+
+**Description:** Bundle information. Third-party applications can obtain their own bundle information via [getBundleInfoForSelf](#func-getbundleinfoforselfint32), where the `bundleFlags` parameter specifies the information to be included in the returned BundleInfo.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let appIndex
+
+```cangjie
+public let appIndex: Int32
+```
+
+**Description:** The clone index identifier of the application bundle, only effective in clone applications.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let appInfo
+
+```cangjie
+public let appInfo: ApplicationInfo
+```
+
+**Description:** Configuration information of the application. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to GET_BUNDLE_INFO_WITH_APPLICATION.
+
+**Type:** [ApplicationInfo](#class-applicationinfo)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let hapModulesInfo
+
+```cangjie
+public let hapModulesInfo: Array<HapModuleInfo>
+```
+
+**Description:** Configuration information of modules. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to GET_BUNDLE_INFO_WITH_HAP_MODULE.
+
+**Type:** Array\<[HapModuleInfo](#class-hapmoduleinfo)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let installTime
+
+```cangjie
+public let installTime: Int64
+```
+
+**Description:** Installation time of the application bundle.
+
+**Type:** Int64
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let minCompatibleVersionCode
+
+```cangjie
+public let minCompatibleVersionCode: UInt32
+```
+
+**Description:** Minimum compatible version of the application bundle in distributed scenarios.
+
+**Type:** UInt32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let name
+
+```cangjie
+public let name: String
+```
+
+**Description:** Name of the application bundle.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let permissionGrantStates
+
+```cangjie
+public let permissionGrantStates: Array<PermissionGrantState>
+```
+
+**Description:** Grant states of requested permissions. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
+
+**Type:** Array\<[PermissionGrantState](#enum-permissiongrantstate)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let reqPermissionDetails
+
+```cangjie
+public let reqPermissionDetails: Array<ReqPermissionDetail>
+```
+
+**Description:** Detailed information of the permission set that the application needs to request from the system during runtime. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION.
+
+**Type:** Array\<[ReqPermissionDetail](#class-reqpermissiondetail)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let routerMap
+
+```cangjie
+public let routerMap: Array<RouterItem>
+```
+
+**Description:** Routing table configuration of the application, obtained by merging and deduplicating the `routerMap` information under `hapModulesInfo` based on the `name` field in RouterItem. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_ROUTER_MAP.
+
+**Type:** Array\<[RouterItem](#class-routeritem)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let signatureInfo
+
+```cangjie
+public let signatureInfo: SignatureInfo
+```
+
+**Description:** Signature information of the application bundle. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to GET_BUNDLE_INFO_WITH_SIGNATURE_INFO.
+
+**Type:** [SignatureInfo](#class-signatureinfo)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let targetVersion
+
+```cangjie
+public let targetVersion: UInt32
+```
+
+**Description:** This label identifies the target version for the application to run.
+
+**Type:** UInt32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let updateTime
+
+```cangjie
+public let updateTime: Int64
+```
+
+**Description:** Update time of the application bundle.
+
+**Type:** Int64
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let vendor
+
+```cangjie
+public let vendor: String
+```
+
+**Description:** Vendor of the application bundle.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let versionCode
+
+```cangjie
+public let versionCode: UInt32
+```
+
+**Description:** Version code of the application bundle.
+
+**Type:** UInt32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let versionName
+
+```cangjie
+public let versionName: String
+```
+
+**Description:** Version description text of the application bundle.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+## class BundleManager
+
+```cangjie
+public class BundleManager {}
+```
+
+**Description:** A class providing methods for querying Bundle information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static func canOpenLink(String)
+
+```cangjie
+public static func canOpenLink(link: String): Bool
+```
+
+**Description:** Queries whether a given link can be opened. The scheme of the specified link needs to be configured in the `querySchemes` field of the module.json file.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| link | String | Yes | - | The link to be queried. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns `true` if the given link can be opened, otherwise returns `false`. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are as follows. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 17700055 | The specified link is invalid. |
+  | 17700056 | The scheme of the specified link is not in the querySchemes. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+let link = "app1Scheme://test.example.com/home"
+let canOpen = BundleManager.canOpenLink(link)
+```
+
+### static func getBundleInfoForSelf(Int32)
+
+```cangjie
+public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
+```
+
+**Description:** Obtains the BundleInfo of the current application based on the given `bundleFlags`.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| bundleFlags | Int32 | Yes | - | Specifies the information to be included in the returned BundleInfo. For details, refer to [BundleFlag](#enum-bundleflag). |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [BundleInfo](#class-bundleinfo) | The BundleInfo object, returning the BundleInfo of the current application. |
+
+### static func getProfileByAbility(String, String, String)
+
+```cangjie
+public static func getProfileByAbility(moduleName: String, abilityName: String, metadataName!: String = ""): Array<String>
+```
+
+**Description:** Obtains the JSON-formatted string of the corresponding configuration file based on the given `moduleName`, `abilityName`, and `metadataName` (the name under the metadata tag in module.json). The return object is a String array.
+
+If resource references (e.g., `$string: myResourceID`) are used in the configuration file, the returned JSON string will maintain the resource reference format. Developers can use the relevant interfaces in the `ohos/resource_manager` package to obtain such referenced resources.
+
+If the configuration file information uses resource reference formats, the return value will maintain the resource reference format (e.g., `$string: res_id`). Developers can use the relevant interfaces of the resource management module to obtain the referenced resources.
+
+> **Note:**
+>
+> - The configuration information resources of abilities are defined under the `module.abilities[].metadata` tag in the corresponding module.json5 file.
+> - The data content of configuration information resources is returned in a compact JSON string format.
+> - An ability can have zero to several configuration information resources.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| moduleName | String | Yes | - | Name of the target module. |
+| abilityName | String | Yes | - | Name of the target ability. |
+| metadataName | String | No | "" | **Named parameter.** Name of the target configuration information resource. The metadata name of the component, i.e., the name of the metadata tag under the abilities tag in the module.json5 configuration file.<br>- When `metadataName` is the name of a configuration information resource of the target ability, only the data content of that configuration information will be returned, and the returned array will contain only one element.<br>- When `metadataName` is omitted or an empty string, all configuration information data content of the ability determined by the module name and ability name will be returned, and the returned array will contain zero to several elements. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Array\<String> | Returns an array of JSON strings of the matched configuration information. If `metadataName` is specified and exists, only one element is returned; if unspecified or empty, returns all configuration information under the ability, which may be empty. If the configuration information contains resource references (e.g., `$string: res_id`), the return value maintains the reference string, which needs to be parsed with the resource management interface. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are as follows. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Input parameters check failed. |
+  | 17700002 | The specified moduleName is not existed. |
+  | 17700003 | The specified abilityName is not existed. |
+  | 17700024 | Failed to get the profile because there is no profile in the HAP. |
+  | 17700026 | The specified bundle is disabled. |
+  | 17700029 | The specified ability is disabled. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+
+let moduleName = "entry"
+let abilityName = "EntryAbility"
+let metadataName = "ohos.extension.form"
+let info = BundleManager.getProfileByAbility(moduleName, abilityName, metadataName: metadataName)
+```
+
+### static func getProfileByExtensionAbility(String, String, String)
+
+```cangjie
+public static func getProfileByExtensionAbility(moduleName: String, extensionAbilityName: String,
+    metadataName!: String = ""): Array<String>
+```
+
+**Description:** Obtains the JSON-formatted string of the corresponding configuration file based on the given `moduleName`, `extensionAbilityName`, and `metadataName` (the name under the metadata tag in module.json). The return object is a String array.
+
+If resource references (e.g., `$string: myResourceID`) are used in the configuration file, the returned JSON string will maintain the resource reference format. Developers can use the relevant interfaces in the `ohos/resource_manager` package to obtain such referenced resources.
+
+If the configuration file information uses resource reference formats, the return value will maintain the resource reference format (e.g., `$string: res_id`). Developers can use the relevant interfaces of the resource management module to obtain the referenced resources.
+
+> **Note:**
+>
+> - The configuration information resources of extension abilities are defined under the `module.extensionAbilities[].metadata` tag in the corresponding module.json5 file.
+> - The data content of configuration information resources is returned in a compact JSON string format.
+> - An extension ability can have zero to several configuration information resources.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| moduleName | String | Yes | - | Name of the target module. |
+| extensionAbilityName | String | Yes | - | Name of the target extension ability. |
+| metadataName | String | No | "" | **Named parameter.** Name of the target configuration information resource. The metadata name of the component, i.e., the name of the metadata tag under the extensionAbilities tag in the module.json5 configuration file. Default is empty.<br>- When `metadataName` is the name of a configuration information resource of the target extension ability, only the data content of that configuration information will be returned, and the returned array will contain only one element.<br>- When `metadataName` is omitted or an empty string, all configuration information data content of the extension ability determined by the module name and extension ability name will be returned, and the returned array will contain zero to several elements. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Array\<String> | Returns an array of JSON strings of the matched configuration information. If `metadataName` is specified and exists, only one element is returned; if unspecified or empty, returns all configuration information determined by the module name and extension ability name, which may be empty. If the configuration information contains resource references (e.g., `$string: res_id`), the return value maintains the reference string, which needs to be parsed with the resource management interface. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are as follows. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Input parameters check failed. |
+  | 17700002 | The specified moduleName is not existed. |
+  | 17700003 | The specified extensionAbilityName not existed. |
+  | 17700024 | Failed to get the profile because there is no profile in the HAP. |
+  | 17700026 | The specified bundle is disabled. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+
+let moduleName = "entry"
+let extensionAbilityName = "EntryFormAbility"
+let metadataName = "ohos.extension.form"
+let info = BundleManager.getProfileByExtensionAbility(moduleName, extensionAbilityName, metadataName: metadataName)
+```## class DataItem
+
+```cangjie
+public class DataItem {
+    public let key: String
+    public let value: String
+}
+```
+
+**Function:** Describes custom data in the module configuration routing table.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let key
+
+```cangjie
+public let key: String
+```
+
+**Function:** Identifies the key of custom data in the routing table.
+
+**Type:** String
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let value
+
+```cangjie
+public let value: String
+```
+
+**Function:** Identifies the value of custom data in the routing table.
+
+**Type:** String
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+## class DefaultAppManager
+
+```cangjie
+public class DefaultAppManager {}
+```
+
+**Function:** This class provides the capability to query default applications, supporting queries to determine whether the current application is the default one.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**Since:** 21
+
+### static func isDefaultApplication(String)
+
+```cangjie
+public static func isDefaultApplication(appType: String): Bool
+```
+
+**Function:** Determines whether the current application is the default application for the specified system-defined application type.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| appType | String | Yes | - | The application type to query, taken from the values in [ApplicationType](#enum-applicationtype). |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns whether the current application is the default application. `true` indicates it is the default application, `false` indicates it is not. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Universal Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 801 | Capability not supported. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+
+let tag = DefaultAppManager.isDefaultApplication(ApplicationType.Image.getValue())
+```
+
+## class Dependency
+
+```cangjie
+public class Dependency {
+    public let bundleName: String
+    public let moduleName: String
+    public let versionCode: UInt32
+}
+```
+
+**Function:** Describes the dynamic shared library information that the module depends on.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let bundleName
+
+```cangjie
+public let bundleName: String
+```
+
+**Function:** Identifies the bundle name of the shared library that the current module depends on.
+
+**Type:** String
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let moduleName
+
+```cangjie
+public let moduleName: String
+```
+
+**Function:** Identifies the module name of the shared library that the current module depends on.
+
+**Type:** String
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let versionCode
+
+```cangjie
+public let versionCode: UInt32
+```
+
+**Function:** Identifies the version number of the current shared library.
+
+**Type:** UInt32
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+## class ExtensionAbilityInfo
+
+```cangjie
+public class ExtensionAbilityInfo {
+    public let bundleName: String
+    public let moduleName: String
+    public let name: String
+    public let labelId: Int32
+    public let descriptionId: Int32
+    public let iconId: Int32
+    public let exported: Bool
+    public let extensionAbilityType: ExtensionAbilityType
+    public let permissions: Array<String>
+    public let applicationInfo: ApplicationInfo
+    public let metadata: Array<Metadata>
+    public let enabled: Bool
+    public let readPermission: String
+    public let writePermission: String
+    public let extensionAbilityTypeName: String
+    public let skills: Array<Skill>
+    public let appIndex: Int32
+}
+```
+
+**Function:** ExtensionAbilityInfo information. Third-party applications can obtain their own ExtensionAbility information via [getBundleInfoForSelf](#func-getbundleinfoforselfint32), where the input parameter `bundleFlags` must at least include GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let appIndex
+
+```cangjie
+public let appIndex: Int32
+```
+
+**Function:** The clone index identifier of the application bundle, effective only in clone applications.
+
+**Type:** Int32
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let applicationInfo
+
+```cangjie
+public let applicationInfo: ApplicationInfo
+```
+
+**Function:** The configuration information of the application.
+
+**Type:** [ApplicationInfo](#class-applicationinfo)
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let bundleName
+
+```cangjie
+public let bundleName: String
+```
+
+**Function:** The bundle name of the application.
 
 **Type:** String
 
@@ -1766,7 +1670,7 @@ public let description: String
 public let descriptionId: Int32
 ```
 
-**Function:** The resource ID of the application's description information.
+**Function:** The description resource ID of the ExtensionAbility.
 
 **Type:** Int32
 
@@ -1776,28 +1680,13 @@ public let descriptionId: Int32
 
 **Since:** 21
 
-### let descriptionResource
-
-```cangjie
-public let descriptionResource: AppResource
-```
-
-**Function:** The description resource information of the application, which includes bundleName, moduleName, and resource ID. You can call the globalization interface [getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32) to obtain detailed resource data.
-
-**Type:** [AppResource](../LocalizationKit/cj-apis-resource_manager.md#class-appresource)
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
 ### let enabled
+
 ```cangjie
 public let enabled: Bool
 ```
 
-**Function:** Determines whether the application is available. Defaults to true.
+**Function:** Whether the ExtensionAbility is enabled.
 
 **Type:** Bool
 
@@ -1807,13 +1696,45 @@ public let enabled: Bool
 
 **Since:** 21
 
-### let icon
+### let exported
 
 ```cangjie
-public let icon: String
+public let exported: Bool
 ```
 
-**Function:** The icon of the application. Example usage: `"icon": "$media: icon"`. For detailed information about icons, refer to the `iconResource` field description.
+**Function:** Determines whether the ExtensionAbility can be called by other applications.
+
+**Type:** Bool
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let extensionAbilityType
+
+```cangjie
+public let extensionAbilityType: ExtensionAbilityType
+```
+
+**Function:** The type of the ExtensionAbility.
+
+**Type:** [ExtensionAbilityType](#enum-extensionabilitytype)
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let extensionAbilityTypeName
+
+```cangjie
+public let extensionAbilityTypeName: String
+```
+
+**Function:** The type name of the ExtensionAbility.
 
 **Type:** String
 
@@ -1829,57 +1750,9 @@ public let icon: String
 public let iconId: Int32
 ```
 
-**Function:** The resource ID of the application icon.
+**Function:** The icon resource ID of the ExtensionAbility.
 
 **Type:** Int32
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let iconResource
-
-```cangjie
-public let iconResource: AppResource
-```
-
-**Function:** The icon resource information of the application, including `bundleName`, `moduleName`, and resource ID. The globalized interface [`getMediaContent`](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32) can be called to obtain detailed resource data.
-
-**Type:** [AppResource](../LocalizationKit/cj-apis-resource_manager.md#class-appresource)
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let installSource
-
-```cangjie
-public let installSource: String
-```
-
-**Function:** The installation source of the application. `pre-installed` indicates the app is preloaded, a package name indicates the app was installed by the corresponding app, and `unknown` indicates the installation source is unknown.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let label
-
-```cangjie
-public let label: String
-```
-
-**Function:** The name of the application. Example usage: `"label": "$string: mainability_description"`. For detailed information about labels, refer to the `labelResource` field description.
-
-**Type:** String
 
 **Read/Write Permission:** Read-only
 
@@ -1893,7 +1766,7 @@ public let label: String
 public let labelId: Int32
 ```
 
-**Function:** The resource ID of the application name.
+**Function:** The label resource ID of the ExtensionAbility.
 
 **Type:** Int32
 
@@ -1903,15 +1776,15 @@ public let labelId: Int32
 
 **Since:** 21
 
-### let labelResource
+### let metadata
 
 ```cangjie
-public let labelResource: AppResource
+public let metadata: Array<Metadata>
 ```
 
-**Function:** The label resource information of the application, including `bundleName`, `moduleName`, and resource ID. The globalized interface [`getMediaContent`](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32) can be called to obtain detailed resource data.
+**Function:** The metadata of the ExtensionAbility.
 
-**Type:** [AppResource](../LocalizationKit/cj-apis-resource_manager.md#class-appresource)
+**Type:** Array\<[Metadata]>
 
 **Read/Write Permission:** Read-only
 
@@ -1919,31 +1792,15 @@ public let labelResource: AppResource
 
 **Since:** 21
 
-### let metadataArray
+### let moduleName
 
 ```cangjie
-public let metadataArray: Array<ModuleMetadata>
+public let moduleName: String
 ```
 
-**Function:** The metadata of the application. Obtained by calling the [`getBundleInfoForSelf`](#static-func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to `GET_BUNDLE_INFO_WITH_APPLICATION` and `GET_BUNDLE_INFO_WITH_METADATA`.
+**Function:** The name of the HAP to which the ExtensionAbility belongs.
 
-**Type:** Array\<[ModuleMetadata](#struct-modulemetadata)>
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let multiAppMode
-
-```cangjie
-public let multiAppMode: MultiAppMode
-```
-
-**Function:** The multi-instance mode of the application.
-
-**Type:** [MultiAppMode](#struct-multiappmode)
+**Type:** String
 
 **Read/Write Permission:** Read-only
 
@@ -1957,23 +1814,7 @@ public let multiAppMode: MultiAppMode
 public let name: String
 ```
 
-**Function:** The name of the application.
-
-**Type:** String
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let nativeLibraryPath
-
-```cangjie
-public let nativeLibraryPath: String
-```
-
-**Function:** The path to the native library files of the application.
+**Function:** The name of the ExtensionAbility.
 
 **Type:** String
 
@@ -1989,7 +1830,7 @@ public let nativeLibraryPath: String
 public let permissions: Array<String>
 ```
 
-**Function:** The permissions required to access the application. Obtained by calling the [`getBundleInfoForSelf`](#static-func-getbundleinfoforselfint32) interface with the `bundleFlags` parameter set to `GET_BUNDLE_INFO_WITH_APPLICATION` and `GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION`.
+**Function:** The set of permissions required to call the ExtensionAbility from other applications.
 
 **Type:** Array\<String>
 
@@ -1999,13 +1840,13 @@ public let permissions: Array<String>
 
 **Since:** 21
 
-### let process
+### let readPermission
 
 ```cangjie
-public let process: String
+public let readPermission: String
 ```
 
-**Function:** The process of the application. If not set, defaults to the package name.
+**Function:** The permission required to read data from the ExtensionAbility.
 
 **Type:** String
 
@@ -2015,13 +1856,29 @@ public let process: String
 
 **Since:** 21
 
-### let releaseType
+### let skills
 
 ```cangjie
-public let releaseType: String
+public let skills: Array<Skill>
 ```
 
-**Function:** Indicates the release type of the SDK used when packaging the application. Current SDK release types may include `Canary`, `Beta`, or `Release`, with `Canary` and `Beta` further subdivided by sequence numbers (e.g., `Canary1`, `Canary2`, `Beta1`, `Beta2`). Developers can compare the SDK release type used for packaging with the OS release type ([`deviceInfo.distributionOSReleaseType`](../BasicServicesKit/cj-apis-device_info.md)) to determine compatibility.
+**Function:** The Skills information of the ExtensionAbility.
+
+**Type:** Array\<[Skill]>
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let writePermission
+
+```cangjie
+public let writePermission: String
+```
+
+**Function:** The permission required to write data to the ExtensionAbility.
 
 **Type:** String
 
@@ -2029,372 +1886,215 @@ public let releaseType: String
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Since:** 21
-
-### let removable
+**Since:** 21## class HapModuleInfo
 
 ```cangjie
-public let removable: Bool
-```
-
-**Function:** Indicates whether the application can be uninstalled.
-
-**Type:** Bool
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let systemApp
-
-```cangjie
-public let systemApp: Bool
-```
-
-**Function:** Indicates whether the application is a system app.
-
-**Type:** Bool
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let uid
-
-```cangjie
-public let uid: Int32
-```
-
-**Function:** The UID of the application.
-
-**Type:** Int32
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-## struct DataItem
-
-```cangjie
-public struct DataItem {
-    public let key: String
-    public let value: String
+public class HapModuleInfo {
+    public let name: String
+    public let icon: String
+    public let iconId: Int32
+    public let label: String
+    public let labelId: Int32
+    public let description: String
+    public let descriptionId: Int32
+    public let mainElementName: String
+    public let abilitiesInfo: Array<AbilityInfo>
+    public let extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
+    public let metadata: Array<Metadata>
+    public let deviceTypes: Array<String>
+    public let installationFree: Bool
+    public let hashValue: String
+    public let moduleType: ModuleType
+    public let preloads: Array<PreloadItem>
+    public let dependencies: Array<Dependency>
+    public let fileContextMenuConfig: String
+    public let routerMap: Array<RouterItem>
+    public let codePath: String
+    public let nativeLibraryPath: String
 }
 ```
 
-**Function:** Describes custom data in the module configuration routing table.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core**Initial Version:** 21  
-
-### let key  
-
-```cangjie  
-public let key: String  
-```  
-
-**Function:** Identifies the key for custom data in the routing table.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let value  
-
-```cangjie  
-public let value: String  
-```  
-
-**Function:** Identifies the value for custom data in the routing table.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-## struct Dependency  
-
-```cangjie  
-public struct Dependency {  
-    public let bundleName: String  
-    public let moduleName: String  
-    public let versionCode: UInt32  
-}  
-```  
-
-**Function:** Describes the dynamic shared library information that a module depends on.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let bundleName  
-
-```cangjie  
-public let bundleName: String  
-```  
-
-**Function:** Identifies the bundle name of the shared library that the current module depends on.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let moduleName  
-
-```cangjie  
-public let moduleName: String  
-```  
-
-**Function:** Identifies the module name of the shared library that the current module depends on.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let versionCode  
-
-```cangjie  
-public let versionCode: UInt32  
-```  
-
-**Function:** Identifies the version number of the current shared library.  
-
-**Type:** UInt32  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-## struct HapModuleInfo  
-
-```cangjie  
-public struct HapModuleInfo {  
-    public let name: String  
-    public let icon: String  
-    public let iconId: Int32  
-    public let label: String  
-    public let labelId: Int32  
-    public let description: String  
-    public let descriptionId: Int32  
-    public let mainElementName: String  
-    public let abilitiesInfo: Array<AbilityInfo>  
-    public let extensionAbilitiesInfo: Array<ExtensionAbilityInfo>  
-    public let metadata: Array<Metadata>  
-    public let deviceTypes: Array<String>  
-    public let installationFree: Bool  
-    public let hashValue: String  
-    public let moduleType: ModuleType  
-    public let preloads: Array<PreloadItem>  
-    public let dependencies: Array<Dependency>  
-    public let fileContextMenuConfig: String  
-    public let routerMap: Array<RouterItem>  
-    public let codePath: String  
-    public let nativeLibraryPath: String  
-}  
-```  
-
-**Function:** HAP information. Third-party applications can obtain their own HAP information via [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the input parameter `bundleFlags` must at least include `GET_BUNDLE_INFO_WITH_HAP_MODULE`.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let abilitiesInfo  
-
-```cangjie  
-public let abilitiesInfo: Array<AbilityInfo>  
-```  
-
-**Function:** Ability information.  
-
-**Type:** Array\<[AbilityInfo](#class-abilityinfo)>  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let codePath  
-
-```cangjie  
-public let codePath: String  
-```  
-
-**Function:** Installation path of the module.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let dependencies  
-
-```cangjie  
-public let dependencies: Array<Dependency>  
-```  
-
-**Function:** List of dynamic shared libraries that the module depends on for operation.  
-
-**Type:** Array\<[Dependency](#struct-dependency)>  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let description  
-
-```cangjie  
-public let description: String  
-```  
-
-**Function:** Module description information.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let descriptionId  
-
-```cangjie  
-public let descriptionId: Int32  
-```  
-
-**Function:** Resource ID value of the description information.  
-
-**Type:** Int32  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let deviceTypes  
-
-```cangjie  
-public let deviceTypes: Array<String>  
-```  
-
-**Function:** Device types capable of running the module.  
-
-**Type:** Array\<String>  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let extensionAbilitiesInfo  
-
-```cangjie  
-public let extensionAbilitiesInfo: Array<ExtensionAbilityInfo>  
-```  
-
-**Function:** ExtensionAbility information.  
-
-**Type:** Array\<[ExtensionAbilityInfo](#class-extensionabilityinfo)>  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let fileContextMenuConfig  
-
-```cangjie  
-public let fileContextMenuConfig: String  
-```  
-
-**Function:** File menu configuration of the module.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let hashValue  
-
-```cangjie  
-public let hashValue: String  
-```  
-
-**Function:** Hash value of the module.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let icon  
-
-```cangjie  
-public let icon: String  
-```  
-
-**Function:** Module icon.  
-
-**Type:** String  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### let iconId  
-
-```cangjie  
-public let iconId: Int32  
-```  
-
-**Function:** Resource ID value of the module icon.**Type:** Int32
-
-**Read-Write Capability:** Read-only
+**Description:** HAP information. Third-party applications can obtain their own HAP information through [getBundleInfoForSelf](#func-getbundleinfoforselfint32), where the input parameter bundleFlags must include at least GET_BUNDLE_INFO_WITH_HAP_MODULE.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
+
+### let abilitiesInfo
+
+```cangjie
+public let abilitiesInfo: Array<AbilityInfo>
+```
+
+**Description:** Ability information.
+
+**Type:** Array\<[AbilityInfo](#class-abilityinfo)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let codePath
+
+```cangjie
+public let codePath: String
+```
+
+**Description:** Installation path of the module.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let dependencies
+
+```cangjie
+public let dependencies: Array<Dependency>
+```
+
+**Description:** List of dynamically shared libraries that the module depends on for operation.
+
+**Type:** Array\<[Dependency](#class-dependency)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let description
+
+```cangjie
+public let description: String
+```
+
+**Description:** Module description information.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let descriptionId
+
+```cangjie
+public let descriptionId: Int32
+```
+
+**Description:** Resource ID value of the description information.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let deviceTypes
+
+```cangjie
+public let deviceTypes: Array<String>
+```
+
+**Description:** Device types that can run the module.
+
+**Type:** Array\<String>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let extensionAbilitiesInfo
+
+```cangjie
+public let extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
+```
+
+**Description:** ExtensionAbility information.
+
+**Type:** Array\<[ExtensionAbilityInfo](#class-extensionabilityinfo)>
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let fileContextMenuConfig
+
+```cangjie
+public let fileContextMenuConfig: String
+```
+
+**Description:** File menu configuration of the module.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let hashValue
+
+```cangjie
+public let hashValue: String
+```
+
+**Description:** Hash value of the module.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let icon
+
+```cangjie
+public let icon: String
+```
+
+**Description:** Module icon.
+
+**Type:** String
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### let iconId
+
+```cangjie
+public let iconId: Int32
+```
+
+**Description:** Resource ID value of the module icon.
+
+**Type:** Int32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
 
 ### let installationFree
 
@@ -2402,15 +2102,15 @@ public let iconId: Int32
 public let installationFree: Bool
 ```
 
-**Function:** Indicates whether the module supports installation-free.
+**Description:** Whether the module supports installation-free.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let label
 
@@ -2418,15 +2118,15 @@ public let installationFree: Bool
 public let label: String
 ```
 
-**Function:** Module label.
+**Description:** Module label.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let labelId
 
@@ -2434,15 +2134,15 @@ public let label: String
 public let labelId: Int32
 ```
 
-**Function:** Resource ID value of the module label.
+**Description:** Resource ID value of the module label.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let mainElementName
 
@@ -2450,15 +2150,15 @@ public let labelId: Int32
 public let mainElementName: String
 ```
 
-**Function:** Entry ability information.
+**Description:** Entry ability information.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let metadata
 
@@ -2466,15 +2166,15 @@ public let mainElementName: String
 public let metadata: Array<Metadata>
 ```
 
-**Function:** Metadata of the Ability.
+**Description:** Metadata information of the Ability.
 
-**Type:** Array\<[Metadata](#class-metadata)>
+**Type:** Array\<[Metadata]>
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let moduleType
 
@@ -2482,15 +2182,15 @@ public let metadata: Array<Metadata>
 public let moduleType: ModuleType
 ```
 
-**Function:** Identifies the type of the current module.
+**Description:** Identifies the type of the current module.
 
 **Type:** [ModuleType](#enum-moduletype)
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let name
 
@@ -2498,15 +2198,15 @@ public let moduleType: ModuleType
 public let name: String
 ```
 
-**Function:** Module name.
+**Description:** Module name.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let nativeLibraryPath
 
@@ -2514,15 +2214,15 @@ public let name: String
 public let nativeLibraryPath: String
 ```
 
-**Function:** Path to the native library file of a hapModule within the application.
+**Description:** Path of the native library file for a hapModule within the application.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let preloads
 
@@ -2530,15 +2230,15 @@ public let nativeLibraryPath: String
 public let preloads: Array<PreloadItem>
 ```
 
-**Function:** Preload list of modules in the meta service.
+**Description:** Preload list of modules in the meta service.
 
-**Type:** Array\<[PreloadItem](#struct-preloaditem)>
+**Type:** Array\<[PreloadItem](#class-preloaditem)>
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let routerMap
 
@@ -2546,30 +2246,30 @@ public let preloads: Array<PreloadItem>
 public let routerMap: Array<RouterItem>
 ```
 
-**Function:** Router table configuration of the module. Obtained by calling the [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32) interface, with the bundleFlags parameter passed as the values of GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_ROUTER_MAP.
+**Description:** Router table configuration of the module. Obtained by calling the [getBundleInfoForSelf](#func-getbundleinfoforselfint32) interface, with the bundleFlags parameter passing the values of GET_BUNDLE_INFO_WITH_HAP_MODULE and GET_BUNDLE_INFO_WITH_ROUTER_MAP.
 
-**Type:** Array\<[RouterItem](#struct-routeritem)>
+**Type:** Array\<[RouterItem](#class-routeritem)>
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-## struct ModuleMetadata
+## class ModuleMetadata
 
 ```cangjie
-public struct ModuleMetadata {
+public class ModuleMetadata {
     public let moduleName: String
     public let metadata: Array<Metadata>
 }
 ```
 
-**Function:** Describes the metadata information of a module.
+**Description:** Describes the metadata information of a module.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let metadata
 
@@ -2577,15 +2277,15 @@ public struct ModuleMetadata {
 public let metadata: Array<Metadata>
 ```
 
-**Function:** List of metadata information under this module.
+**Description:** List of metadata information under this module.
 
-**Type:** Array\<[Metadata](#class-metadata)>
+**Type:** Array\<[Metadata]>
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let moduleName
 
@@ -2593,46 +2293,44 @@ public let metadata: Array<Metadata>
 public let moduleName: String
 ```
 
-**Function:** Module name.
+**Description:** Module name.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
-
-## struct MultiAppMode
+**Since:** 21## class MultiAppMode
 
 ```cangjie
-public struct MultiAppMode {
+public class MultiAppMode {
     public let multiAppModeType: MultiAppModeType
-    public let count: Int32
+    public let maxCount: Int32
 }
 ```
 
-**Function:** Represents the multi-instance mode of an application.
+**Description:** Represents the multi-instance mode of an application.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### let count
+### let maxCount
 
 ```cangjie
-public let count: Int32
+public let maxCount: Int32
 ```
 
-**Function:** Maximum number of application instances.
+**Description:** Indicates the maximum number of instances (clones/multi-instances) allowed for the application in the current multi-instance mode.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let multiAppModeType
 
@@ -2640,29 +2338,29 @@ public let count: Int32
 public let multiAppModeType: MultiAppModeType
 ```
 
-**Function:** Type of the multi-instance mode.
+**Description:** The type of multi-instance mode for the application.
 
 **Type:** [MultiAppModeType](#enum-multiappmodetype)
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-## struct PreloadItem
+## class PreloadItem
 
 ```cangjie
-public struct PreloadItem {
+public class PreloadItem {
     public let moduleName: String
 }
 ```
 
-**Function:** Describes the preload module information in the meta service.
+**Description:** Describes the preload module information in a meta-service module.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### let moduleName
 
@@ -2670,30 +2368,29 @@ public struct PreloadItem {
 public let moduleName: String
 ```
 
-**Function:** Module name that is automatically preloaded by the system during runtime.
+**Description:** The name of the module that will be automatically preloaded by the system during runtime.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-## struct ReqPermissionDetail
+## class ReqPermissionDetail
 
 ```cangjie
-public struct ReqPermissionDetail {
+public class ReqPermissionDetail {
     public var name: String
     public var moduleName: String
     public var reason: String
     public var reasonId: Int32
     public var usedScene: UsedScene
-    public init(name: String, moduleName: String, reason: String, reasonId: Int32, usedScene: UsedScene)
 }
 ```
 
-**Function:** Detailed information about the set of permissions an application needs to request from the system during runtime.
+**Description:** Detailed information about the set of permissions that an application needs to request from the system during runtime.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2705,11 +2402,11 @@ public struct ReqPermissionDetail {
 public var moduleName: String
 ```
 
-**Function:** The name of the module requesting this permission.
+**Description:** The name of the module requesting the permission.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2721,11 +2418,11 @@ public var moduleName: String
 public var name: String
 ```
 
-**Function:** The name of the permission required.
+**Description:** The name of the permission to be used.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2737,11 +2434,11 @@ public var name: String
 public var reason: String
 ```
 
-**Function:** Describes the reason for requesting the permission.
+**Description:** Describes the reason for requesting the permission.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2753,11 +2450,11 @@ public var reason: String
 public var reasonId: Int32
 ```
 
-**Function:** Describes the reason ID for requesting the permission.
+**Description:** The ID of the reason for requesting the permission.
 
 **Type:** Int32
 
-**Read/Write Permission:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2769,42 +2466,20 @@ public var reasonId: Int32
 public var usedScene: UsedScene
 ```
 
-**Function:** The scenario and timing for using the permission.
+**Description:** The scenarios and timing for using the permission.
 
-**Type:** [UsedScene](#struct-usedscene)
+**Type:** [UsedScene](#class-usedscene)
 
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### init(String, String, String, Int32, UsedScene)
-
-```cangjie
-public init(name: String, moduleName: String, reason: String, reasonId: Int32, usedScene: UsedScene)
-```
-
-**Function:** Creates a detailed information object for the set of permissions an application needs to request from the system during runtime.
+**Access:** Read-write
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| name | String | Yes | - | The name of the permission required. |
-| moduleName | String | Yes | - | The name of the module requesting this permission. |
-| reason | String | Yes | - | Describes the reason for requesting the permission. |
-| reasonId | Int32 | Yes | - | Describes the reason ID for requesting the permission. |
-| usedScene | [UsedScene](#struct-usedscene) | Yes | - | The scenario and timing for using the permission. |
-
-## struct RouterItem
+## class RouterItem
 
 ```cangjie
-public struct RouterItem {
+public class RouterItem {
     public let name: String
     public let pageSourceFile: String
     public let buildFunction: String
@@ -2813,7 +2488,7 @@ public struct RouterItem {
 }
 ```
 
-**Function:** Describes the routing table information configured for a module.
+**Description:** Describes the routing table information configured in a module.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2825,11 +2500,11 @@ public struct RouterItem {
 public let buildFunction: String
 ```
 
-**Function:** Identifies the function decorated with @Builder, which describes the UI of the page.
+**Description:** Identifies the function decorated with @Builder, which describes the UI of the page.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2841,11 +2516,11 @@ public let buildFunction: String
 public let customData: String
 ```
 
-**Function:** Identifies custom data of any type in the routing table configuration file.
+**Description:** Identifies custom data of any type in the routing table configuration file.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2857,11 +2532,11 @@ public let customData: String
 public let data: Array<DataItem>
 ```
 
-**Function:** Identifies the string custom data in the routing table configuration file, i.e., the information in the data field, which has been parsed by the system and does not require manual parsing by developers.
+**Description:** Identifies string-type custom data in the routing table configuration file, i.e., the information in the data field, which has been parsed by the system and does not require manual parsing by developers.
 
-**Type:** Array\<[DataItem](#struct-dataitem)>
+**Type:** Array\<[DataItem](#class-dataitem)>
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2873,11 +2548,11 @@ public let data: Array<DataItem>
 public let name: String
 ```
 
-**Function:** Identifies the name of the page to navigate to.
+**Description:** Identifies the name of the page to navigate to.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2889,127 +2564,39 @@ public let name: String
 public let pageSourceFile: String
 ```
 
-**Function:** Identifies the path of the page within the module.
+**Description:** Identifies the path of the page within the module.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-## struct Skill
+## class SignatureInfo
 
 ```cangjie
-public struct Skill {
-    public let actions: Array<String>
-    public let entities: Array<String>
-    public let uris: Array<SkillUri>
-    public let domainVerify: Bool
+public class SignatureInfo {
+    public let appId: String
+    public let fingerprint: String
+    public let appIdentifier: String
 }
 ```
 
-**Function:** The skill tag object. Third-party applications can obtain skill information via [getBundleInfoForSelf](#static-func-getbundleinfoforselfint32), where the input parameter bundleFlags must include at least GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_SKILL.
+**Description:** Describes the signature information of an application package.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### let actions
+### let appId
 
 ```cangjie
-public let actions: Array<String>
+public let appId: String
 ```
 
-**Function:** The set of Actions received by the Skill.
-
-**Type:** Array\<String>
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let domainVerify
-
-```cangjie
-public let domainVerify: Bool
-```
-
-**Function:** The DomainVerify value received by the Skill, only present in AbilityInfo.
-
-**Type:** Bool
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let entities
-
-```cangjie
-public let entities: Array<String>
-```
-
-**Function:** The set of Entities received by the Skill.
-
-**Type:** Array\<String>
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let uris
-
-```cangjie
-public let uris: Array<SkillUri>
-```
-
-**Function:** The set of Uris matched by the Want.
-
-**Type:** Array\<[SkillUri](#struct-skilluri)>
-
-**Read/Write Permission:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-## struct SkillUri
-
-```cangjie
-public struct SkillUri {
-    public let scheme: String
-    public let host: String
-    public let port: String
-    public let path: String
-    public let pathStartWith: String
-    public let pathRegex: String
-    public let uriType: String
-    public let utd: String
-    public let maxFileSupported: Int32
-    public let linkFeature: String
-}
-```
-
-**Function:** Describes URI identification information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let host
-
-```cangjie
-public let host: String
-```
-
-**Function:** Identifies the host address portion of a URI, meaningful only when scheme exists.
+**Description:** The appId of the application.
 
 **Type:** String
 
@@ -3019,13 +2606,13 @@ public let host: String
 
 **Since:** 21
 
-### let linkFeature
+### let appIdentifier
 
 ```cangjie
-public let linkFeature: String
+public let appIdentifier: String
 ```
 
-**Function:** Identifies the feature type provided by the URI for implementing inter-application navigation, existing only in AbilityInfo.
+**Description:** The unique identifier of the application, uniformly assigned by the cloud. This ID remains unchanged throughout the application's lifecycle, including version upgrades, certificate changes, developer key changes, application transfers, etc.
 
 **Type:** String
 
@@ -3035,29 +2622,13 @@ public let linkFeature: String
 
 **Since:** 21
 
-### let maxFileSupported
+### let fingerprint
 
 ```cangjie
-public let maxFileSupported: Int32
+public let fingerprint: String
 ```
 
-**Function:** For specified file types, indicates the maximum number that can be received or opened at once.
-
-**Type:** Int32
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let path
-
-```cangjie
-public let path: String
-```
-
-**Function:** Identifies the path portion of a URI, meaningful only when both scheme and host exist.
+**Description:** The fingerprint information of the application package.
 
 **Type:** String
 
@@ -3067,113 +2638,16 @@ public let path: String
 
 **Since:** 21
 
-### let pathRegex
+## class UsedScene
 
 ```cangjie
-public let pathRegex: String
-```
-
-**Function:** Identifies the path portion of a URI for regular expression matching, meaningful only when both scheme and host exist.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let pathStartWith
-
-```cangjie
-public let pathStartWith: String
-```
-
-**Function:** Identifies the path portion of a URI for prefix matching, meaningful only when both scheme and host exist.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let port
-
-```cangjie
-public let port: String
-```
-
-**Function:** Identifies the port portion of a URI, meaningful only when both scheme and host exist.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let scheme
-
-```cangjie
-public let scheme: String
-```
-
-**Function:** Identifies the protocol name of a URI, commonly including http, https, file, ftp, etc.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let uriType
-
-```cangjie
-public let uriType: String
-```
-
-**Function:** Identifies the data type matching the Want, using MIME (Multipurpose Internet Mail Extensions) type specifications.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### let utd
-
-```cangjie
-public let utd: String
-```
-
-**Function:** Identifies the standardized data type of the URI matching the Want, applicable to scenarios such as sharing.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-## struct UsedScene
-
-```cangjie
-public struct UsedScene {
+public class UsedScene {
     public var abilities: Array<String>
     public var when: String
-    public init(abilities: Array<String>, when: String)
 }
 ```
 
-**Function:** Describes the usage scenarios and timing of permissions.
+**Description:** Describes the scenarios and timing for using a permission.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -3185,7 +2659,7 @@ public struct UsedScene {
 public var abilities: Array<String>
 ```
 
-**Function:** Collection of Abilities that use this permission.
+**Description:** The collection of Abilities that use this permission.
 
 **Type:** Array\<String>
 
@@ -3201,7 +2675,7 @@ public var abilities: Array<String>
 public var when: String
 ```
 
-**Function:** Timing for using this permission.
+**Description:** The timing for using this permission.
 
 **Type:** String
 
@@ -3211,29 +2685,10 @@ public var when: String
 
 **Since:** 21
 
-### init(Array\<String>, String)
+## class WindowSize
 
 ```cangjie
-public init(abilities: Array<String>, when: String)
-```
-
-**Function:** Creates an object describing the usage scenarios and timing of permissions.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Name | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| abilities | Array\<String> | Yes | - | Collection of Abilities that use this permission. |
-| when | String | Yes | - | Timing for using this permission. |
-
-## struct WindowSize
-
-```cangjie
-public struct WindowSize {
+public class WindowSize {
     public let maxWindowRatio: Float64
     public let minWindowRatio: Float64
     public let maxWindowWidth: UInt32
@@ -3243,7 +2698,7 @@ public struct WindowSize {
 }
 ```
 
-**Function:** Describes window dimensions.
+**Description:** Describes window dimensions.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -3255,7 +2710,7 @@ public struct WindowSize {
 public let maxWindowHeight: UInt32
 ```
 
-**Function:** Indicates the maximum height of a window in free-window state, with width unit in vp.
+**Description:** Indicates the maximum height of the window in free-window state, with the unit in vp.
 
 **Type:** UInt32
 
@@ -3271,7 +2726,7 @@ public let maxWindowHeight: UInt32
 public let maxWindowRatio: Float64
 ```
 
-**Function:** Indicates the maximum aspect ratio of a window in free-window state, with value range 0-1.
+**Description:** Indicates the maximum aspect ratio of the window in free-window state, with a value range of 0-1.
 
 **Type:** Float64
 
@@ -3287,669 +2742,524 @@ public let maxWindowRatio: Float64
 public let maxWindowWidth: UInt32
 ```
 
-**Function:** Indicates the maximum width of a window in free-window state, with width unit in vp.
-**Type:** UInt32  
+**Description:** Indicates the maximum width of the window in free-window state, with the unit in vp.
 
-**Read/Write Capability:** Read-only  
+**Type:** UInt32
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**Access:** Read-only
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-### let minWindowHeight  
+**Since:** 21
 
-```cangjie  
-public let minWindowHeight: UInt32  
-```  
+### let minWindowHeight
 
-**Description:** Represents the minimum height of a window in free-window state, with the unit in vp.  
+```cangjie
+public let minWindowHeight: UInt32
+```
 
-**Type:** UInt32  
+**Description:** Indicates the minimum height of the window in free-window state, with the unit in vp.
 
-**Read/Write Capability:** Read-only  
+**Type:** UInt32
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**Access:** Read-only
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-### let minWindowRatio  
+**Since:** 21
 
-```cangjie  
-public let minWindowRatio: Float64  
-```  
+### let minWindowRatio
 
-**Description:** Represents the minimum aspect ratio (width/height) of a window in free-window state, with a valid range of 0-1.  
+```cangjie
+public let minWindowRatio: Float64
+```
 
-**Type:** Float64  
+**Description:** Indicates the minimum aspect ratio of the window in free-window state, with a value range of 0-1.
 
-**Read/Write Capability:** Read-only  
+**Type:** Float64
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**Access:** Read-only
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-### let minWindowWidth  
+**Since:** 21
 
-```cangjie  
-public let minWindowWidth: UInt32  
-```  
+### let minWindowWidth
 
-**Description:** Represents the minimum width of a window in free-window state, with the unit in vp.  
+```cangjie
+public let minWindowWidth: UInt32
+```
 
-**Type:** UInt32  
+**Description:** Indicates the minimum width of the window in free-window state, with the unit in vp.
 
-**Read/Write Capability:** Read-only  
+**Type:** UInt32
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**Access:** Read-only
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-## enum AbilityFlag  
+**Since:** 21## enum AbilityFlag
 
-```cangjie  
-public enum AbilityFlag {  
-    | GET_ABILITY_INFO_DEFAULT  
-    | GET_ABILITY_INFO_WITH_PERMISSION  
-    | GET_ABILITY_INFO_WITH_APPLICATION  
-    | GET_ABILITY_INFO_WITH_METADATA  
-    | GET_ABILITY_INFO_WITH_DISABLE  
-    | GET_ABILITY_INFO_ONLY_SYSTEM_APP  
-    | ...  
-}  
-```  
+```cangjie
+public enum AbilityFlag {
+    | GetAbilityInfoDefault
+    | GetAbilityInfoWithPermission
+    | GetAbilityInfoWithApplication
+    | GetAbilityInfoWithMetadata
+    | GetAbilityInfoWithDisable
+    | GetAbilityInfoOnlySystemApp
+    | ...
+}
+```
 
-**Description:** UIAbility component information flags, indicating the content of UIAbility component information to be retrieved.  
+**Description:** UIAbility component information flags, indicating the content of UIAbility component information to be retrieved.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_ABILITY_INFO_DEFAULT  
+### GetAbilityInfoDefault
 
-```cangjie  
-GET_ABILITY_INFO_DEFAULT  
-```  
+```cangjie
+GetAbilityInfoDefault
+```
 
-**Description:** Used to retrieve default abilityInfo, which excludes permission, metadata, and disabled abilityInfo.  
+**Description:** Used to obtain default abilityInfo. The retrieved abilityInfo does not include permissions, metadata, or disabled abilityInfo.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_ABILITY_INFO_ONLY_SYSTEM_APP  
+### GetAbilityInfoOnlySystemApp
 
-```cangjie  
-GET_ABILITY_INFO_ONLY_SYSTEM_APP  
-```  
+```cangjie
+GetAbilityInfoOnlySystemApp
+```
 
-**Description:** Used to retrieve abilityInfo exclusively for system applications.  
+**Description:** Used to obtain abilityInfo exclusively for system applications.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_ABILITY_INFO_WITH_APPLICATION  
+### GetAbilityInfoWithApplication
 
-```cangjie  
-GET_ABILITY_INFO_WITH_APPLICATION  
-```  
+```cangjie
+GetAbilityInfoWithApplication
+```
 
-**Description:** Used to retrieve abilityInfo that includes applicationInfo.  
+**Description:** Used to obtain abilityInfo that includes applicationInfo.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_ABILITY_INFO_WITH_DISABLE  
+### GetAbilityInfoWithDisable
 
-```cangjie  
-GET_ABILITY_INFO_WITH_DISABLE  
-```  
+```cangjie
+GetAbilityInfoWithDisable
+```
 
-**Description:** Used to retrieve abilityInfo that includes disabled abilityInfo.  
+**Description:** Used to obtain abilityInfo that includes disabled abilityInfo.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_ABILITY_INFO_WITH_METADATA  
+### GetAbilityInfoWithMetadata
 
-```cangjie  
-GET_ABILITY_INFO_WITH_METADATA  
-```  
+```cangjie
+GetAbilityInfoWithMetadata
+```
 
-**Description:** Used to retrieve abilityInfo that includes metadata.  
+**Description:** Used to obtain abilityInfo that includes metadata.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_ABILITY_INFO_WITH_PERMISSION  
+### GetAbilityInfoWithPermission
 
-```cangjie  
-GET_ABILITY_INFO_WITH_PERMISSION  
-```  
+```cangjie
+GetAbilityInfoWithPermission
+```
 
-**Description:** Used to retrieve abilityInfo that includes permission.  
+**Description:** Used to obtain abilityInfo that includes permissions.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-## enum AbilityType  
+## enum ApplicationType
 
-```cangjie  
-public enum AbilityType {  
-    | PAGE  
-    | SERVICE  
-    | DATA  
-    | ...  
-}  
-```  
+```cangjie
+public enum ApplicationType {
+    | Browser
+    | Image
+    | Audio
+    | Video
+    | Pdf
+    | Word
+    | Excel
+    | Ppt
+    | Email
+    | ...
+}
+```
 
-**Description:** Indicates the type of Ability component.  
+**Description:** Application types for default applications.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### DATA  
+### Audio
 
-```cangjie  
-DATA  
-```  
+```cangjie
+Audio
+```
 
-**Description:** Represents a PA developed based on the Data template, providing a unified data access object for external use.  
+**Description:** Default audio player.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### PAGE  
+### Browser
 
-```cangjie  
-PAGE  
-```  
+```cangjie
+Browser
+```
 
-**Description:** UI-based Ability type. Represents an FA developed based on the Page template, providing user interaction capabilities.  
+**Description:** Default browser.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### SERVICE  
+### Email
 
-```cangjie  
-SERVICE  
-```  
+```cangjie
+Email
+```
 
-**Description:** Background service-type Ability with no UI. Represents a PA developed based on the Service template, providing background task execution capabilities.  
+**Description:** Default email application.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-## enum ApplicationFlag  
+### Excel
 
-```cangjie  
-public enum ApplicationFlag {  
-    | GET_APPLICATION_INFO_DEFAULT  
-    | GET_APPLICATION_INFO_WITH_PERMISSION  
-    | GET_APPLICATION_INFO_WITH_METADATA  
-    | GET_APPLICATION_INFO_WITH_DISABLE  
-    | ...  
-}  
-```  
+```cangjie
+Excel
+```
 
-**Description:** Application information flags, indicating the content of application information to be retrieved.  
+**Description:** Default Excel document viewer.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_APPLICATION_INFO_DEFAULT  
+### Image
 
-```cangjie  
-GET_APPLICATION_INFO_DEFAULT  
-```  
+```cangjie
+Image
+```
 
-**Description:** Used to retrieve default applicationInfo, which excludes permission and metadata information.  
+**Description:** Default image viewer.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_APPLICATION_INFO_WITH_DISABLE  
+### Pdf
 
-```cangjie  
-GET_APPLICATION_INFO_WITH_DISABLE  
-```  
+```cangjie
+Pdf
+```
 
-**Description:** Used to retrieve applicationInfo that includes disabled applications.  
+**Description:** Default PDF document viewer.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_APPLICATION_INFO_WITH_METADATA  
+### Ppt
 
-```cangjie  
-GET_APPLICATION_INFO_WITH_METADATA  
-```  
+```cangjie
+Ppt
+```
 
-**Description:** Used to retrieve applicationInfo that includes metadata.  
+**Description:** Default PowerPoint document viewer.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### GET_APPLICATION_INFO_WITH_PERMISSION  
+### Video
 
-```cangjie  
-GET_APPLICATION_INFO_WITH_PERMISSION  
-```  
+```cangjie
+Video
+```
 
-**Description:** Used to retrieve applicationInfo that includes permission.  
+**Description:** Default video player.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-## enum ApplicationType  
+### Word
 
-```cangjie  
-public enum ApplicationType {  
-    | BROWSER  
-    | IMAGE  
-    | AUDIO  
-    | VIDEO  
-    | PDF  
-    | WORD  
-    | EXCEL  
-    | PPT  
-    | EMAIL  
-    | ...  
-}  
-```  
+```cangjie
+Word
+```
 
-**Description:** Application types for default applications.  
+**Description:** Default Word document viewer.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**Initial Version:** 21  
+**Since:** 21
 
-### AUDIO  
+### func getValue()
 
-```cangjie  
-AUDIO  
-```  
+```cangjie
+public func getValue(): String
+```
 
-**Description:** Default audio player.  
+**Description:** Retrieves the value of the enumeration.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp**Initial Version:** 21  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-### BROWSER  
+**Since:** 21
 
-```cangjie  
-BROWSER  
-```  
+**Return Value:**
 
-**Function:** Default browser.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### EMAIL  
-
-```cangjie  
-EMAIL  
-```  
-
-**Function:** Default email client.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### EXCEL  
-
-```cangjie  
-EXCEL  
-```  
-
-**Function:** Default EXCEL document viewer.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### IMAGE  
-
-```cangjie  
-IMAGE  
-```  
-
-**Function:** Default image viewer.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### PDF  
-
-```cangjie  
-PDF  
-```  
-
-**Function:** Default PDF document viewer.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### PPT  
-
-```cangjie  
-PPT  
-```  
-
-**Function:** Default PPT document viewer.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### VIDEO  
-
-```cangjie  
-VIDEO  
-```  
-
-**Function:** Default video player.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### WORD  
-
-```cangjie  
-WORD  
-```  
-
-**Function:** Default WORD document viewer.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-### func getValue()  
-
-```cangjie  
-public func getValue(): String  
-```  
-
-**Function:** Gets the enumeration value.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type   | Description          |  
-|:-------|:---------------------|  
-| String | The enumeration value. |  
-
-## enum BundleFlag  
-
-```cangjie  
-public enum BundleFlag {  
-    | GET_BUNDLE_INFO_DEFAULT  
-    | GET_BUNDLE_INFO_WITH_APPLICATION  
-    | GET_BUNDLE_INFO_WITH_HAP_MODULE  
-    | GET_BUNDLE_INFO_WITH_ABILITY  
-    | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY  
-    | GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION  
-    | GET_BUNDLE_INFO_WITH_METADATA  
-    | GET_BUNDLE_INFO_WITH_DISABLE  
-    | GET_BUNDLE_INFO_WITH_SIGNATURE  
-    | GET_BUNDLE_INFO_WITH_MENU  
-    | GET_BUNDLE_INFO_WITH_ROUTER_MAP  
-    | GET_BUNDLE_INFO_WITH_SKILL  
-    | ...  
-}  
-```  
-
-**Function:** Bundle information flags indicating the content of bundle information to be retrieved.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_DEFAULT  
-
-```cangjie  
-GET_BUNDLE_INFO_DEFAULT  
-```  
-
-**Function:** Retrieves only the most basic bundle information. The retrieved bundle information does not include HAP module information, application information, signature information, or permission request information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_ABILITY  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_ABILITY  
-```  
-
-**Function:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include ability information in the retrieved HAP module information, excluding metadata in the ability information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_APPLICATION  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_APPLICATION  
-```  
-
-**Function:** On top of the most basic bundle information, includes application information, excluding metadata in the application information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_DISABLE  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_DISABLE  
-```  
-
-**Function:** Used to retrieve BundleInfo with disabled applications and disabled Ability information. The retrieved bundleInfo does not include signatureInfo, applicationInfo, hapModuleInfo, ability, extensionAbility, or permission information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY  
-```  
-
-**Function:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include extension ability information in the retrieved HAP module information, excluding metadata in the extension ability information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_HAP_MODULE  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_HAP_MODULE  
-```  
-
-**Function:** On top of the most basic bundle information, includes HAP module information, excluding ability information, extension ability information, and metadata in the HAP module information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_MENU  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_MENU  
-```  
-
-**Function:** Used to retrieve bundleInfo containing fileContextMenuConfig. It cannot be used alone and must be used with GET_BUNDLE_INFO_WITH_HAP_MODULE.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_METADATA  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_METADATA  
-```  
-
-**Function:** Retrieves all metadata, including metadata in HAP module information, ability information, extension ability information, and application information. Therefore, it must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE`, `GET_BUNDLE_INFO_WITH_ABILITY`, `GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`, and `GET_BUNDLE_INFO_WITH_APPLICATION`.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION  
-```  
-
-**Function:** On top of the most basic bundle information, includes permission request information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_ROUTER_MAP  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_ROUTER_MAP  
-```  
-
-**Function:** Used to retrieve bundleInfo containing routerMap. It cannot be used alone and must be used with GET_BUNDLE_INFO_WITH_HAP_MODULE.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_SIGNATURE  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_SIGNATURE  
-```  
-
-**Function:** On top of the most basic bundle information, includes signature information.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### GET_BUNDLE_INFO_WITH_SKILL  
-
-```cangjie  
-GET_BUNDLE_INFO_WITH_SKILL  
-```  
-
-**Function:** Used to retrieve bundleInfo containing skills. It cannot be used alone and must be used with GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-### func getValue()  
-
-```cangjie  
-public func getValue(): Int32  
-```  
-
-**Function:** Gets the enumeration value.  
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**| Type | Description |
+|Type|Description|
 |:----|:----|
-| Int32 | Enumeration value. |
+|String|The value of the enumeration.|
 
-## enum BundleType
+## enum BundleFlag
+
+```cangjie
+public enum BundleFlag {
+    | GetBundleInfoDefault
+    | GetBundleInfoWithApplication
+    | GetBundleInfoWithHapModule
+    | GetBundleInfoWithAbility
+    | GetBundleInfoWithExtensionAbility
+    | GetBundleInfoWithRequestedPermission
+    | GetBundleInfoWithMetadata
+    | GetBundleInfoWithDisable
+    | GetBundleInfoWithSignatureInfo
+    | GetBundleInfoWithMenu
+    | GetBundleInfoWithRouterMap
+    | GetBundleInfoWithSkill
+    | ...
+}
+```
+
+**Description:** Bundle information flags, indicating the content of bundle information to be retrieved.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoDefault
+
+```cangjie
+GetBundleInfoDefault
+```
+
+**Description:** Retrieves only the most basic application bundle information. The retrieved bundle information does not include HAP module information, application information, signature information, or permission request information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithAbility
+
+```cangjie
+GetBundleInfoWithAbility
+```
+
+**Description:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include ability information in the retrieved HAP module information, but excludes metadata within the ability information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithApplication
+
+```cangjie
+GetBundleInfoWithApplication
+```
+
+**Description:** On top of the most basic application bundle information, includes application information, but excludes metadata within the application information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithDisable
+
+```cangjie
+GetBundleInfoWithDisable
+```
+
+**Description:** Used to retrieve BundleInfo for disabled applications and disabled Ability information. The retrieved bundleInfo does not include signatureInfo, applicationInfo, hapModuleInfo, ability, extensionAbility, or permission information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithExtensionAbility
+
+```cangjie
+GetBundleInfoWithExtensionAbility
+```
+
+**Description:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include extension ability information in the retrieved HAP module information, but excludes metadata within the extension ability information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithHapModule
+
+```cangjie
+GetBundleInfoWithHapModule
+```
+
+**Description:** On top of the most basic application bundle information, includes HAP module information, but excludes ability information, extension ability information, and metadata within the HAP module information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithMenu
+
+```cangjie
+GetBundleInfoWithMenu
+```
+
+**Description:** Used to retrieve bundleInfo that includes fileContextMenuConfig. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithMetadata
+
+```cangjie
+GetBundleInfoWithMetadata
+```
+
+**Description:** Retrieves all metadata, including metadata within HAP module information, ability information, extension ability information, and application information. Therefore, it must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE`, `GET_BUNDLE_INFO_WITH_ABILITY`, `GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`, and `GET_BUNDLE_INFO_WITH_APPLICATION`.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithRequestedPermission
+
+```cangjie
+GetBundleInfoWithRequestedPermission
+```
+
+**Description:** On top of the most basic application bundle information, includes permission request information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithRouterMap
+
+```cangjie
+GetBundleInfoWithRouterMap
+```
+
+**Description:** Used to retrieve bundleInfo that includes routerMap. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithSignatureInfo
+
+```cangjie
+GetBundleInfoWithSignatureInfo
+```
+
+**Description:** Used to retrieve BundleInfo that includes `signatureInfo`. The retrieved BundleInfo does not include `applicationInfo`, `hapModuleInfo`, `extensionAbility`, `ability`, or `permission` information.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### GetBundleInfoWithSkill
+
+```cangjie
+GetBundleInfoWithSkill
+```
+
+**Description:** Used to retrieve bundleInfo that includes skills. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**Description:** Retrieves the value of the enumeration.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Int32|The value of the enumeration.|## enum BundleType
 
 ```cangjie
 public enum BundleType {
-    | APP
-    | ATOMIC_SERVICE
+    | App
+    | AtomicService
     | ...
 }
 ```
 
-**Function:** Identifies the type of application.
+**Description:** Identifies the type of an application.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### APP
+### App
 
 ```cangjie
-APP
+App
 ```
 
-**Function:** The Bundle is an application.
+**Description:** The Bundle is an application.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### ATOMIC_SERVICE
+### AtomicService
 
 ```cangjie
-ATOMIC_SERVICE
+AtomicService
 ```
 
-**Function:** The Bundle is an atomic service.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-## enum CompatiblePolicy
-
-```cangjie
-public enum CompatiblePolicy {
-    | BACKWARD_COMPATIBILITY
-    | ...
-}
-```
-
-**Function:** Identifies the version compatibility type of shared libraries.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### BACKWARD_COMPATIBILITY
-
-```cangjie
-BACKWARD_COMPATIBILITY
-```
-
-**Function:** This field indicates that the shared library is backward compatible.
+**Description:** The Bundle is an atomic service.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -3959,271 +3269,206 @@ BACKWARD_COMPATIBILITY
 
 ```cangjie
 public enum DisplayOrientation {
-    | UNSPECIFIED
-    | LANDSCAPE
-    | PORTRAIT
-    | FOLLOW_RECENT
-    | LANDSCAPE_INVERTED
-    | PORTRAIT_INVERTED
-    | AUTO_ROTATION
-    | AUTO_ROTATION_LANDSCAPE
-    | AUTO_ROTATION_PORTRAIT
-    | AUTO_ROTATION_RESTRICTED
-    | AUTO_ROTATION_LANDSCAPE_RESTRICTED
-    | AUTO_ROTATION_PORTRAIT_RESTRICTED
-    | LOCKED
-    | AUTO_ROTATION_UNSPECIFIED
-    | FOLLOW_DESKTOP
+    | Unspecified
+    | Landscape
+    | Portrait
+    | FollowRecent
+    | LandscapeInverted
+    | PortraitInverted
+    | AutoRotation
+    | AutoRotationLandscape
+    | AutoRotationPortrait
+    | AutoRotationRestricted
+    | AutoRotationLandscapeRestricted
+    | AutoRotationPortraitRestricted
+    | Locked
+    | AutoRotationUnspecified
+    | FollowDesktop
     | ...
 }
 ```
 
-**Function:** Identifies the display mode of the Ability. This tag is only applicable to page-type Abilities.
+**Description:** Identifies the display mode of an Ability. This tag applies only to page-type Abilities.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION
+### AutoRotation
 
 ```cangjie
-AUTO_ROTATION
+AutoRotation
 ```
 
-**Function:** Indicates sensor-based auto-rotation mode.
+**Description:** Indicates sensor-based auto-rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION_LANDSCAPE
+### AutoRotationLandscape
 
 ```cangjie
-AUTO_ROTATION_LANDSCAPE
+AutoRotationLandscape
 ```
 
-**Function:** Indicates sensor-based auto-landscape rotation mode.
+**Description:** Indicates sensor-based auto-landscape rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION_LANDSCAPE_RESTRICTED
+### AutoRotationLandscapeRestricted
 
 ```cangjie
-AUTO_ROTATION_LANDSCAPE_RESTRICTED
+AutoRotationLandscapeRestricted
 ```
 
-**Function:** Indicates switch-controlled auto-landscape rotation mode.
+**Description:** Indicates switch-controlled auto-landscape rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION_PORTRAIT
+### AutoRotationPortrait
 
 ```cangjie
-AUTO_ROTATION_PORTRAIT
+AutoRotationPortrait
 ```
 
-**Function:** Indicates sensor-based auto-portrait rotation mode.
+**Description:** Indicates sensor-based auto-portrait rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION_PORTRAIT_RESTRICTED
+### AutoRotationPortraitRestricted
 
 ```cangjie
-AUTO_ROTATION_PORTRAIT_RESTRICTED
+AutoRotationPortraitRestricted
 ```
 
-**Function:** Indicates switch-controlled auto-portrait rotation mode.
+**Description:** Indicates switch-controlled auto-portrait rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION_RESTRICTED
+### AutoRotationRestricted
 
 ```cangjie
-AUTO_ROTATION_RESTRICTED
+AutoRotationRestricted
 ```
 
-**Function:** Indicates switch-controlled auto-rotation mode.
+**Description:** Indicates switch-controlled auto-rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### AUTO_ROTATION_UNSPECIFIED
+### AutoRotationUnspecified
 
 ```cangjie
-AUTO_ROTATION_UNSPECIFIED
+AutoRotationUnspecified
 ```
 
-**Function:** Indicates switch-controlled and system-determined auto-rotation mode.
+**Description:** Indicates switch-controlled and system-determined auto-rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### FOLLOW_DESKTOP
+### FollowDesktop
 
 ```cangjie
-FOLLOW_DESKTOP
+FollowDesktop
 ```
 
-**Function:** Follows the desktop rotation mode.
+**Description:** Follows the desktop's rotation mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### FOLLOW_RECENT
+### FollowRecent
 
 ```cangjie
-FOLLOW_RECENT
+FollowRecent
 ```
 
-**Function:** Indicates following the previous display mode.
+**Description:** Follows the previous display mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### LANDSCAPE
+### Landscape
 
 ```cangjie
-LANDSCAPE
+Landscape
 ```
 
-**Function:** Indicates landscape display mode.
+**Description:** Indicates landscape display mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### LANDSCAPE_INVERTED
+### LandscapeInverted
 
 ```cangjie
-LANDSCAPE_INVERTED
+LandscapeInverted
 ```
 
-**Function:** Indicates inverted landscape display mode.
+**Description:** Indicates inverted landscape display mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### LOCKED
+### Locked
 
 ```cangjie
-LOCKED
+Locked
 ```
 
-**Function:** Indicates locked mode.
+**Description:** Indicates locked mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### PORTRAIT
+### Portrait
 
 ```cangjie
-PORTRAIT
+Portrait
 ```
 
-**Function:** Indicates portrait display mode.
+**Description:** Indicates portrait display mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### PORTRAIT_INVERTED
+### PortraitInverted
 
 ```cangjie
-PORTRAIT_INVERTED
+PortraitInverted
 ```
 
-**Function:** Indicates inverted portrait display mode.
+**Description:** Indicates inverted portrait display mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### UNSPECIFIED
+### Unspecified
 
 ```cangjie
-UNSPECIFIED
+Unspecified
 ```
 
-**Function:** Indicates undefined orientation mode, determined by the system.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-## enum ExtensionAbilityFlag
-
-```cangjie
-public enum ExtensionAbilityFlag {
-    | GET_EXTENSION_ABILITY_INFO_DEFAULT
-    | GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
-    | GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION
-    | GET_EXTENSION_ABILITY_INFO_WITH_METADATA
-    | ...
-}
-```
-
-**Function:** Extension component information flag, indicating the content of extension component information to be obtained.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GET_EXTENSION_ABILITY_INFO_DEFAULT
-```cangjie
-GET_EXTENSION_ABILITY_INFO_DEFAULT
-```
-
-**Function:** Used to obtain default extensionAbilityInfo. The retrieved extensionAbilityInfo does not include permission, metadata, or disabled abilityInfo.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION
-
-```cangjie
-GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION
-```
-
-**Function:** Used to obtain extensionAbilityInfo that includes applicationInfo.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GET_EXTENSION_ABILITY_INFO_WITH_METADATA
-
-```cangjie
-GET_EXTENSION_ABILITY_INFO_WITH_METADATA
-```
-
-**Function:** Used to obtain extensionAbilityInfo that includes metadata.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
-
-```cangjie
-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
-```
-
-**Function:** Used to obtain extensionAbilityInfo that includes permission.
+**Description:** Indicates undefined orientation mode, determined by the system.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -4233,588 +3478,561 @@ GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
 
 ```cangjie
 public enum ExtensionAbilityType {
-    | FORM
-    | WORK_SCHEDULER
-    | INPUT_METHOD
-    | SERVICE
-    | ACCESSIBILITY
-    | DATA_SHARE
-    | FILE_SHARE
-    | STATIC_SUBSCRIBER
-    | WALLPAPER
-    | BACKUP
-    | WINDOW
-    | ENTERPRISE_ADMIN
-    | THUMBNAIL
-    | PREVIEW
-    | PRINT
-    | SHARE
-    | PUSH
-    | DRIVER
-    | ACTION
-    | ADS_SERVICE
-    | EMBEDDED_UI
-    | INSIGHT_INTENT_UI
-    | UNSPECIFIED
+    | Form
+    | WorkScheduler
+    | InputMethod
+    | Service
+    | Accessibility
+    | DataShare
+    | FileShare
+    | StaticSubscriber
+    | Wallpaper
+    | Backup
+    | Window
+    | EnterpriseAdmin
+    | Thumbnail
+    | Preview
+    | Print
+    | Share
+    | Push
+    | Driver
+    | Action
+    | AdsService
+    | EmbeddedUi
+    | InsightIntentUi
+    | Unspecified
     | ...
 }
 ```
 
-**Function:** Indicates the type of extension component.
+**Description:** Indicates the type of an extension component.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### ACCESSIBILITY
+### Accessibility
 
 ```cangjie
-ACCESSIBILITY
+Accessibility
 ```
 
-**Function:** Accessibility service extension capability, supporting access to and operation of foreground interfaces.
+**Description:** Accessibility service extension capability, supporting access to and operation of foreground interfaces.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### ACTION
+### Action
 
 ```cangjie
-ACTION
+Action
 ```
 
-**Function:** Custom service extension capability, providing developers with a custom operation business template based on UIExtension.
+**Description:** Custom service extension capability, providing developers with a UIExtension-based custom operation business template.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### ADS_SERVICE
+### AdsService
 
 ```cangjie
-ADS_SERVICE
+AdsService
 ```
 
-**Function:** Advertising service extension capability, offering external background custom advertising services (currently not supported).
+**Description:** Advertisement service extension capability, providing external background custom advertisement services (currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### BACKUP
+### Backup
 
 ```cangjie
-BACKUP
+Backup
 ```
 
-**Function:** Data backup extension capability, providing application data backup and recovery functionality.
+**Description:** Data backup extension capability, providing application data backup and recovery capabilities.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### DATA_SHARE
+### DataShare
 
 ```cangjie
-DATA_SHARE
+DataShare
 ```
 
-**Function:** Data sharing extension capability, used to provide external data read/write services.
+**Description:** Data sharing extension capability, used to provide external data read/write services.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### DRIVER
+### Driver
 
 ```cangjie
-DRIVER
+Driver
 ```
 
-**Function:** Driver extension capability, providing peripheral driver extension functionality (currently not supported).
+**Description:** Driver extension capability, providing peripheral driver extension capability (currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### EMBEDDED_UI
+### EmbeddedUi
 
 ```cangjie
-EMBEDDED_UI
+EmbeddedUi
 ```
 
-**Function:** Embedded UI extension capability, enabling cross-process interface embedding.
+**Description:** Embedded UI extension capability, providing cross-process interface embedding capability.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### ENTERPRISE_ADMIN
+### EnterpriseAdmin
 
 ```cangjie
-ENTERPRISE_ADMIN
+EnterpriseAdmin
 ```
 
-**Function:** Enterprise device management extension capability, providing the ability to handle management events such as application installation events or excessive incorrect lock screen password attempts.
+**Description:** Enterprise device management extension capability, providing the ability to handle management events such as application installation events or excessive incorrect lock screen password attempts.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### FILE_SHARE
+### FileShare
 
 ```cangjie
-FILE_SHARE
+FileShare
 ```
 
-**Function:** File sharing extension capability, used for file sharing between applications (reserved capability, currently not supported).
+**Description:** File sharing extension capability, used for file sharing between applications (reserved capability, currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### FORM
+### Form
 
 ```cangjie
-FORM
+Form
 ```
 
-**Function:** Card extension capability, providing card development functionality.
+**Description:** Card extension capability, providing card development capability.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### INPUT_METHOD
+### InputMethod
 
 ```cangjie
-INPUT_METHOD
+InputMethod
 ```
 
-**Function:** Input method extension capability, used for developing input method applications.
+**Description:** Input method extension capability, used to develop input method applications.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### INSIGHT_INTENT_UI
+### InsightIntentUi
 
 ```cangjie
-INSIGHT_INTENT_UI
+InsightIntentUi
 ```
 
-**Function:** Provides developers with the ability to be invoked by Xiaoyi's intent to present content in window form.
+**Description:** Provides developers with extension capability that can be invoked by Xiaoyi Intent to present content in window form.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### PREVIEW
+### Preview
 
 ```cangjie
-PREVIEW
+Preview
 ```
 
-**Function:** File preview extension capability, providing the ability to preview files that can be embedded and displayed in other applications (reserved capability, currently not supported).
+**Description:** File preview extension capability, providing file preview capability that can be embedded in other applications (reserved capability, currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### PRINT
+### Print
 
 ```cangjie
-PRINT
+Print
 ```
 
-**Function:** File printing extension capability, supporting photo and document printing in office scenarios (currently supports image printing; document types are not yet supported).
+**Description:** File printing extension capability, providing application printing for photos, documents, and other office scenarios (currently supports image printing; document types are unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### PUSH
+### Push
 
 ```cangjie
-PUSH
+Push
 ```
 
-**Function:** Push extension capability, providing scenario-based message push functionality (reserved capability, currently not supported).
+**Description:** Push extension capability, providing scenario-based message push capability (reserved capability, currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### SERVICE
+### Service
 
 ```cangjie
-SERVICE
+Service
 ```
 
-**Function:** Background service extension capability, providing background operation and corresponding external services.
+**Description:** Background service extension capability, providing background operation and corresponding external capabilities.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### SHARE
+### Share
 
 ```cangjie
-SHARE
+Share
 ```
 
-**Function:** Provides sharing business capability, offering developers a sharing business template based on UIExtension.
+**Description:** Provides sharing business capability, offering developers a UIExtension-based sharing business template.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Since:** 21
 
-### STATIC_SUBSCRIBER
+### StaticSubscriber
 
 ```cangjie
-STATIC_SUBSCRIBER
+StaticSubscriber
 ```
 
-**Function:** Static broadcast extension capability, used to handle static events such as boot events.
+**Description:** Static broadcast extension capability, used to handle static events such as boot events.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Since:** 21### THUMBNAIL
+**Since:** 21
+
+### Thumbnail
 
 ```cangjie
-THUMBNAIL
+Thumbnail
 ```
 
-**Function:** File thumbnail extension capability, providing the ability to generate icon thumbnails for files. Reserved capability, currently not supported.
+**Description:** File thumbnail extension capability, used to provide icon thumbnails for files (reserved capability, currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### UNSPECIFIED
+### Unspecified
 
 ```cangjie
-UNSPECIFIED
+Unspecified
 ```
 
-**Function:** Unspecified type, used in conjunction with the queryExtensionAbilityInfo interface to query all types of ExtensionAbility.
+**Description:** No specified type; used with the queryExtensionAbilityInfo interface to query all types of ExtensionAbility.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WALLPAPER
+### Wallpaper
 
 ```cangjie
-WALLPAPER
+Wallpaper
 ```
 
-**Function:** Wallpaper extension capability, used to implement desktop wallpapers. Reserved capability, currently not supported.
+**Description:** Wallpaper extension capability, used to implement desktop wallpapers (reserved capability, currently unsupported).
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WINDOW
+### Window
 
 ```cangjie
-WINDOW
+Window
 ```
 
-**Function:** Window composition extension capability, allowing system applications to launch and embed cross-application interfaces.
+**Description:** Interface composition extension capability, allowing system applications to launch and embed interfaces across applications.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WORK_SCHEDULER
+### WorkScheduler
 
 ```cangjie
-WORK_SCHEDULER
+WorkScheduler
 ```
 
-**Function:** Deferred task extension capability, allowing applications to execute non-time-sensitive tasks during system idle periods.
+**Description:** Delayed task extension capability, allowing applications to execute non-real-time tasks during system idle periods.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
-
-## enum LaunchType
+**Since:** 21## enum LaunchType
 
 ```cangjie
 public enum LaunchType {
-    | SINGLETON
-    | MULTITON
-    | SPECIFIED
+    | Singleton
+    | Multiton
+    | Specified
     | ...
 }
 ```
 
-**Function:** An ability has a specific launch type. This enumeration is used to indicate the launch type of the ability.
+**Description:** An ability has a launch type, this enumeration is used to indicate the launch type of the ability.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### MULTITON
+### Multiton
 
 ```cangjie
-MULTITON
+Multiton
 ```
 
-**Function:** The ability is launched in standard multi-instance mode.
+**Description:** The ability is launched in standard multi-instance mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### SINGLETON
+### Singleton
 
 ```cangjie
-SINGLETON
+Singleton
 ```
 
-**Function:** The ability is launched in singleton mode.
+**Description:** The ability is launched in singleton mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### SPECIFIED
+### Specified
 
 ```cangjie
-SPECIFIED
+Specified
 ```
 
-**Function:** The ability is launched in custom multi-instance mode.
+**Description:** The ability is launched in custom multi-instance mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ## enum ModuleType
 
 ```cangjie
 public enum ModuleType {
-    | ENTRY
-    | FEATURE
-    | SHARED
+    | Entry
+    | Feature
+    | Shared
     | ...
 }
 ```
 
-**Function:** Identifies the module type.
+**Description:** Identifies module types.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### ENTRY
+### Entry
 
 ```cangjie
-ENTRY
+Entry
 ```
 
-**Function:** The main module of the application.
+**Description:** The main module of an application.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### FEATURE
+### Feature
 
 ```cangjie
-FEATURE
+Feature
 ```
 
-**Function:** Dynamic feature module of the application.
+**Description:** Dynamic feature module of an application.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### SHARED
+### Shared
 
 ```cangjie
-SHARED
+Shared
 ```
 
-**Function:** Dynamic shared library module of the application.
+**Description:** Dynamic shared library module of an application.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ## enum MultiAppModeType
 
 ```cangjie
 public enum MultiAppModeType {
-    | UNSPECIFIED
-    | MULTI_INSTANCE
-    | APP_CLONE
+    | Unspecified
+    | MultiInstance
+    | AppClone
     | ...
 }
 ```
 
-**Function:** Identifies the multi-instance mode type of the application.
+**Description:** Identifies multi-instance application mode types.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### APP_CLONE
+### AppClone
 
 ```cangjie
-APP_CLONE
+AppClone
 ```
 
-**Function:** Clone mode.
+**Description:** Clone mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### MULTI_INSTANCE
+### MultiInstance
 
 ```cangjie
-MULTI_INSTANCE
+MultiInstance
 ```
 
-**Function:** Multi-instance mode.
+**Description:** Multi-instance mode.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### UNSPECIFIED
+### Unspecified
 
 ```cangjie
-UNSPECIFIED
+Unspecified
 ```
 
-**Function:** Unspecified type.
+**Description:** Unspecified type.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ## enum PermissionGrantState
 
 ```cangjie
 public enum PermissionGrantState {
-    | PERMISSION_DENIED
-    | PERMISSION_GRANTED
+    | PermissionDenied
+    | PermissionGranted
     | ...
 }
 ```
 
-**Function:** Indicates the permission grant state.
+**Description:** Indicates permission grant states.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### PERMISSION_DENIED
+### PermissionDenied
 
 ```cangjie
-PERMISSION_DENIED
+PermissionDenied
 ```
 
-**Function:** Permission denied.
+**Description:** Permission denied.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### PERMISSION_GRANTED
+### PermissionGranted
 
 ```cangjie
-PERMISSION_GRANTED
+PermissionGranted
 ```
 
-**Function:** Permission granted.
+**Description:** Permission granted.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
-
-## enum ProfileType
-
-```cangjie
-public enum ProfileType {
-    | INTENT_PROFILE
-    | ...
-}
-```
-
-**Function:** Identifies the profile type.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
-
-### INTENT_PROFILE
-
-```cangjie
-INTENT_PROFILE
-```
-
-**Function:** Intent framework profile.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Initial Version:** 21
+**Since:** 21
 
 ## enum SupportWindowMode
 
 ```cangjie
 public enum SupportWindowMode {
-    | FULL_SCREEN
-    | SPLIT
-    | FLOATING
+    | FullScreen
+    | Split
+    | Floating
     | ...
 }
 ```
 
-**Function:** An ability can support multiple window modes. This enumeration is used to indicate the supported window modes of an ability.
+**Description:** An ability can support several window modes, this enumeration is used to indicate the supported window modes of an ability.
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21**Initial Version:** 21  
+**Since:** 21
 
-### FLOATING  
+### Floating
 
-```cangjie  
-FLOATING  
-```  
+```cangjie
+Floating
+```
 
-**Function:** Supports windowed display.  
+**Description:** Supports floating window display.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### FULL_SCREEN  
+### FullScreen
 
-```cangjie  
-FULL_SCREEN  
-```  
+```cangjie
+FullScreen
+```
 
-**Function:** The window supports full-screen display.  
+**Description:** Supports full-screen window display.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### SPLIT  
+### Split
 
-```cangjie  
-SPLIT  
-```  
+```cangjie
+Split
+```
 
-**Function:** The window supports split-screen display.  
+**Description:** Supports split-screen window display.
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core  
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Initial Version:** 21
+**Since:** 21

@@ -14,12 +14,12 @@ Parameter validation failed, permission verification failed, or time and timezon
 
 This error code represents a generic error code. The specific exception can be determined based on the error message. Possible causes include:
 
-1. Parameter validation failed - invalid parameters were passed.
-2. Permission verification failed - permissions are not configured. The application setting time lacks ohos.permission.SET_TIME configuration or the timezone setting lacks ohos.permission.SET_TIME_ZONE configuration.
-3. System runtime exception - kernel generic errors such as memory allocation or multithreading processing failures.
+1. Parameter validation failed due to invalid input parameters.
+2. Permission verification failed due to unconfigured permissions. The application lacks ohos.permission.SET_TIME for setting time or ohos.permission.SET_TIME_ZONE for setting timezone.
+3. System runtime exception. Common kernel errors such as memory allocation or multi-threading processing failures.
 
 **Resolution Steps**
 
-1. For parameter validation failure: Check whether parameters are passed as required.
-2. For permission verification failure: Configure ohos.permission.SET_TIME for application time setting or ohos.permission.SET_TIME_ZONE for timezone setting.
-3. For system runtime exception: Verify whether sufficient memory is available.
+1. For parameter validation failure: Verify that all parameters are passed according to requirements.
+2. For permission verification failure: Configure ohos.permission.SET_TIME for time setting or ohos.permission.SET_TIME_ZONE for timezone setting in the application.
+3. For system runtime exception: Check whether sufficient memory is available.

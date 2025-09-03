@@ -1,6 +1,6 @@
-# ohos.security_huks (Universal Keystore System)
+# ohos.security.huks
 
-Provides applications with keystore capabilities, including key management and cryptographic operations on keys.
+Provides applications with keystore capabilities, including key management and cryptographic operations.
 
 Keys managed by HUKS can be either imported by applications or generated through HUKS interfaces.
 
@@ -14,94 +14,53 @@ import kit.UniversalKeystoreKit.*
 
 API sample code usage instructions:
 
-- If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, configuration needs to be done in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment in its first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-sample-code-instructions).
+For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
-## func abortSession(HuksHandle, HuksOptions)
+## func abortSession(HuksHandleId, HuksOptions)
 
 ```cangjie
-public func abortSession(handle: HuksHandle, options: HuksOptions): Unit
+
+public func abortSession(handle: HuksHandleId, options: HuksOptions): Unit
 ```
 
-**Function:** Interface for aborting key operations.
+**Description:** Interface for aborting a key operation session.
 
-**System Capability:** SystemCapability.Security.Huks.Extension
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| handle | [HuksHandle](#class-hukshandle) | Yes | The handle for the abortSession operation. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Parameter set for the abortSession operation. |
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| handle | [HuksHandleId](#class-hukshandleid) | Yes | - | The handle for the abortSession operation. |
+| options | [HuksOptions](#class-huksoptions) | Yes | - | Parameter set for the abortSession operation. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Parameter error. |
-  | 801 | Capability not supported. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.UniversalKeystoreKit.*
-
-let keyAlias = "test_abort"
-let plainText = "123456"
-let iv = "0011223344556677"
-let options = HuksOptions(
-    [
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
-        HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-        )
-    ],
-    None
-)
-let encOptions = HuksOptions(
-    [
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
-        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
-        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
-        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
-        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
-    ],
-    plainText.toArray()
-)
-
-generateKeyItem(keyAlias, options)
-
-// encrypt and abort
-let handle = initSession(keyAlias, encOptions).handle
-
-abortSession(handle, encOptions)
-```
+  | :---- | :--- |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000012 | external error |
+  | 12000014 | memory is insufficient |
 
 ## func anonAttestKeyItem(String, HuksOptions)
 
 ```cangjie
+
 public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<String>
 ```
 
-**Function:** Obtains an anonymized key certificate. This operation requires network connectivity and may take significant time.
+**Description:** Obtains an anonymized key certificate. This operation requires network connectivity and may take a long time.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -109,10 +68,10 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Key alias, storing the alias of the key for which the certificate is to be obtained. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Specifies parameters and data required for obtaining the certificate. |
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| keyAlias | String | Yes | - | Key alias, storing the alias of the key for which the certificate is to be obtained. |
+| options | [HuksOptions](#class-huksoptions) | Yes | - | Specifies the required parameters and data for obtaining the certificate. |
 
 **Return Value:**
 
@@ -122,68 +81,33 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Parameter error. |
-  | 801 | Capability not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm param is missing. |
-  | 12000003 | Algorithm param is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.UniversalKeystoreKit.*
-
-let keyAlias = "test_rsa_anno"
-// generate key
-generateKeyItem(
-    keyAlias,
-    HuksOptions(
-        [
-            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_RSA),
-            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_RSA_KEY_SIZE_2048),
-            HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
-            HuksParam(HuksTag.HUKS_TAG_DIGEST, HuksKeyDigest.HUKS_DIGEST_SHA256),
-            HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PSS),
-            HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_ECB)
-        ],
-        None
-    )
-)
-
-let challenge = "hi_challenge_data"
-let chains = anonAttestKeyItem(
-    keyAlias,
-    HuksOptions(
-        [
-            HuksParam(HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, HuksParamValue.bytes(challenge.toArray())),
-            HuksParam(HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS, HuksParamValue.bytes(keyAlias.toArray()))
-        ],
-        None
-    )
-)
-```
+  | :---- | :--- |
+  | 201 | check permission failed |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000001 | algorithm mode is not supported |
+  | 12000002 | algorithm param is missing |
+  | 12000003 | algorithm param is invalid |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000011 | queried entity does not exist |
+  | 12000012 | external error |
+  | 12000014 | memory is insufficient |
 
 ## func attestKeyItem(String, HuksOptions)
 
 ```cangjie
+
 public func attestKeyItem(keyAlias: String, options: HuksOptions): Array<String>
 ```
 
-**Function:** Obtains a key certificate.
+**Description:** Obtains a key certificate.
+
+**Required Permission:** ohos.permission.ATTEST_KEY
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -191,10 +115,10 @@ public func attestKeyItem(keyAlias: String, options: HuksOptions): Array<String>
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Key alias, storing the alias of the key for which the certificate is to be obtained. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Specifies parameters and data required for obtaining the certificate. |
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| keyAlias | String | Yes | - | Key alias, storing the alias of the key for which the certificate is to be obtained. |
+| options | [HuksOptions](#class-huksoptions) | Yes | - | Specifies the required parameters and data for obtaining the certificate. |
 
 **Return Value:**
 
@@ -204,30 +128,32 @@ public func attestKeyItem(keyAlias: String, options: HuksOptions): Array<String>
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 201 | Permission verification failed. |
-  | 401 | Parameter error. |
-  | 801 | Capability not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm param is missing. |
-  | 12000003 | Algorithm param is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
+  | :---- | :--- |
+  | 201 | check permission failed |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000001 | algorithm mode is not supported |
+  | 12000002 | algorithm param is missing |
+  | 12000003 | algorithm param is invalid |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000011 | queried entity does not exist |
+  | 12000012 | external error |
+  | 12000014 | memory is insufficient |
+@permission ohos.permission.ATTEST_KEY |
 
 ## func deleteKeyItem(String, HuksOptions)
 
 ```cangjie
-public func deleteKeyItem(keyAlias: String, _: HuksOptions): Unit
+
+public func deleteKeyItem(keyAlias: String, options: HuksOptions): Unit
 ```
 
-**Function:** Deletes a key.
+**Description:** Deletes a key.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -235,366 +161,180 @@ public func deleteKeyItem(keyAlias: String, _: HuksOptions): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Key alias, should be the same as the alias used when generating the key. |
-| \_ | [HuksOptions](#class-huksoptions) | Yes | Specifies the attribute Tag for deletion, such as the scope of deletion (full/single). When deleting a single key, the Tag field can be left empty. |
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| keyAlias | String | Yes | - | Key alias, which should be the same as the alias used when generating the key. |
+| options | [HuksOptions](#class-huksoptions) | Yes | - | Specifies the key attribute Tag for deletion, such as the scope of deletion (full/single). For single deletion, the Tag field can be left empty. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Parameter error. |
-  | 801 | Capability not supported. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.UniversalKeystoreKit.*
-
-// This code can be added to dependency definitions
-func generateSimpleKey(keyAlias: String) {
-    let options = HuksOptions(
-        [
-            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
-            HuksParam(
-                HuksTag.HUKS_TAG_PURPOSE,
-                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-            )
-        ],
-        None
-    )
-    generateKeyItem(keyAlias, options)
-}
-
-func test_delete_key() {
-    let keyAlias = "test_delete_key"
-    generateSimpleKey(keyAlias)
-    // delete
-    deleteKeyItem(keyAlias, HuksOptions.NONE)
-}
-
-test_delete_key()
-```
+  | :---- | :--- |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000011 | queried entity does not exist |
+  | 12000012 | external error |
+  | 12000014 | memory is insufficient |
 
 ## func exportKeyItem(String, HuksOptions)
 
 ```cangjie
+
 public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes
 ```
 
-**Function:** Exports a key.
-
-**System Capability:** SystemCapability.Security.Huks.Extension**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Description |  
-|:---|:---|:---|:---|  
-| keyAlias | String | Yes | The alias of the key, which should match the alias used during key generation. |  
-| \_ | [HuksOptions](#class-huksoptions) | Yes | Empty object (pass an empty object here). |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bytes | Returns the public key exported from the key. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).  
-
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 401 | Parameter error. |  
-  | 801 | Capability not supported. |  
-  | 12000001 | Algorithm mode is not supported. |  
-  | 12000002 | Algorithm parameter is missing. |  
-  | 12000003 | Algorithm parameter is invalid. |  
-  | 12000004 | Operating file failed. |  
-  | 12000005 | IPC communication failed. |  
-  | 12000006 | Error occurred in crypto engine. |  
-  | 12000011 | Queried entity does not exist. |  
-  | 12000012 | External error. |  
-  | 12000014 | Memory is insufficient. |  
+**Description:** Exports a key.
 
-**Example:**  
+**System Capability:** SystemCapability.Security.Huks.Extension
 
-<!-- compile -->  
+**Since:** 21
 
-```cangjie  
-// index.cj  
+**Parameters:**
 
-import kit.UniversalKeystoreKit.*  
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| keyAlias | String | Yes | - | Key alias, which should be the same as the alias used when generating the key. |
+| _ | [HuksOptions](#class-huksoptions) | Yes | - | Empty object (pass empty here). |
 
-let keyAlias = "test_export_key"  
-/* 1. Generate Key */  
-generateKeyItem(  
-    keyAlias,  
-    HuksOptions(  
-        [  
-            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_ECC),  
-            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_ECC_KEY_SIZE_256),  
-            HuksParam(  
-                HuksTag.HUKS_TAG_PURPOSE,  
-                HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY | HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN  
-            ),  
-            HuksParam(HuksTag.HUKS_TAG_DIGEST, HuksKeyDigest.HUKS_DIGEST_SHA256)  
-        ],  
-        None  
-    )  
-)  
-/* 2. Export Key */  
-let data = exportKeyItem(keyAlias, HuksOptions.NONE)  
-```  
-
-## func finishSession(HuksHandle, HuksOptions)  
-
-```cangjie  
-public func finishSession(handle: HuksHandle, options: HuksOptions): Option<Bytes>  
-```  
-
-**Function:** The `finishSession` operation key interface. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions) are three-stage interfaces and must be used together.  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Description |  
-|:---|:---|:---|:---|  
-| handle | [HuksHandle](#class-hukshandle) | Yes | The handle for the `finishSession` operation. |  
-| options | [HuksOptions](#class-huksoptions) | Yes | The parameter set for `finishSession`. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Option\<Bytes> | Outputs the processing result. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).  
-
-  | Error Code ID | Error Message |  
-  |:----|:---|  
-  | 401 | Argument is invalid. |  
-  | 801 | API is not supported. |  
-  | 12000001 | Algorithm mode is not supported. |  
-  | 12000002 | Algorithm parameter is missing. |  
-  | 12000003 | Algorithm parameter is invalid. |  
-  | 12000004 | Operating file failed. |  
-  | 12000005 | IPC communication failed. |  
-  | 12000006 | Error occurred in crypto engine. |  
-  | 12000007 | This credential is already invalidated permanently. |  
-  | 12000008 | Verify authtoken failed. |  
-  | 12000009 | Authtoken is already timeout. |  
-  | 12000011 | Queried entity does not exist. |  
-  | 12000012 | External error. |  
-  | 12000014 | Memory is insufficient. |  
-
-## func finishSession(HuksHandle, HuksOptions, Bytes)  
-
-```cangjie  
-public func finishSession(handle: HuksHandle, options: HuksOptions, token: Bytes): Option<Bytes>  
-```  
-
-**Function:** The `finishSession` operation key interface. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions-arrayuint8), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions-arrayuint8) are three-stage interfaces and must be used together.  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Description |  
-|:---|:---|:---|:---|  
-| handle | [HuksHandle](#class-hukshandle) | Yes | The handle for the `finishSession` operation. |  
-| options | [HuksOptions](#class-huksoptions) | Yes | The parameter set for `finishSession`. |  
-| token | Bytes | Yes | Represents the value of the AuthToken from the USER IAM service. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Option\<Bytes> | Outputs the processing result. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).  
-
-  | Error Code ID | Error Message |  
-  |:--------|:-------------|  
-  | 401 | Parameter error. |  
-  | 801 | Capability not supported. |  
-  | 12000001 | Algorithm mode is not supported. |  
-  | 12000002 | Algorithm parameter is missing. |  
-  | 12000003 | Algorithm parameter is invalid. |  
-  | 12000004 | Operating file failed. |  
-  | 12000005 | IPC communication failed. |  
-  | 12000006 | Error occurred in crypto engine. |  
-  | 12000007 | This credential is already invalidated permanently. |  
-  | 12000008 | Verify authtoken failed. |  
-  | 12000009 | Authtoken is already timeout. |  
-  | 12000011 | Queried entity does not exist. |  
-  | 12000012 | External error. |  
-  | 12000014 | Memory is insufficient. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.hilog.Hilog  
-import kit.UniversalKeystoreKit.*  
-
-let keyAlias = "test_encrypt_decrypt_cbc_pkcs7"  
-let plainText = "123456"  
-let iv = "1122334455667788"  
-let options = HuksOptions(  
-    [  
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),  
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),  
-        HuksParam(  
-            HuksTag.HUKS_TAG_PURPOSE,  
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT  
-        ),  
-        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),  
-        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),  
-        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))  
-    ],  
-    None  
-)  
-let encOptions = HuksOptions(  
-    [  
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),  
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),  
-        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),  
-        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),  
-        HuksParam(HuksTag.HUKS_TAG_BOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),  
-        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))  
-    ],  
-    plainText.toArray()  
-)  
-generateKeyItem(keyAlias, options)  
-// encrypt  
-let handle1 = initSession(keyAlias, encOptions).handle  
-let cipherData = finishSession(handle1, encOptions)  
-let decOptions = HuksOptions(  
-    [  
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),  
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),  
-        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT),  
-        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),  
-        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),  
-        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))  
-    ],  
-    cipherData  
-)  
-// decrypt  
-let handle2 = initSession(keyAlias, decOptions).handle  
-let decData = finishSession(handle2, decOptions)  
-let dec = String.fromUtf8(decData.getOrThrow())  
-Hilog.info(0, "Hks testEntry", "${plainText == dec}")  
-abortSession(handle1, HuksOptions([], None))  
-abortSession(handle2, HuksOptions([], None))  
-```  
-
-## func generateKeyItem(String, HuksOptions)  
-
-```cangjie  
-public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit  
-```  
-
-**Function:** Generates a key.  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Description |  
-|:---|:---|:---|:---|  
-| keyAlias | String | Yes | The alias of the key. |  
-| options | [HuksOptions](#class-huksoptions) | Yes | Contains the tags required for key generation. The algorithm, key purpose, and key size are mandatory parameters. |  
-
-**Exceptions:**  
-
-- BusinessException: For detailed error code descriptions, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).  
-
-  | Error Code ID | Error Message |  
-  |:---|:---|  
-  | 401 | Parameter error. |  
-  | 801 | Capability not supported. |  
-  | 12000001 | Algorithm mode is not supported. |  
-  | 12000002 | Algorithm parameter is missing. |  
-  | 12000003 | Algorithm parameter is invalid. |  
-  | 12000004 | Operating file failed. |  
-  | 12000005 | IPC communication failed. |  
-  | 12000006 | Error occurred in crypto engine. |  
-  | 12000012 | External error. |  
-  | 12000013 | Queried credential does not exist. |  
-  | 12000014 | Memory is insufficient. |  
-  | 12000015 | Call service failed. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import kit.UniversalKeystoreKit.*  
-
-let keyAlias = "test_generate_key"  
-let options = HuksOptions(  
-    [  
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),  
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),  
-        HuksParam(  
-            HuksTag.HUKS_TAG_PURPOSE,  
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT  
-        )  
-    ],  
-    None  
-)  
-generateKeyItem(keyAlias, options)  
-```  
-
-## func getKeyItemProperties(String, HuksOptions)  
-
-```cangjie  
-public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksParam>  
-```  
-
-**Function:** Retrieves key properties.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Description |  
-|:---|:---|:---|:---|  
-| keyAlias | String | Yes | The alias of the key. |  
-| \_ | [HuksOptions](#class-huksoptions) | Yes | Empty object (pass an empty object here). |**Return Value:**
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#Unsigned-Integer-Types) | Returns the public key exported from the key. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000001 | algorithm mode is not supported |
+  | 12000002 | algorithm param is missing |
+  | 12000003 | algorithm param is invalid |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000011 | queried entity does not exist |
+  | 12000012 | external error |
+  | 12000014 | memory is insufficient |
+
+## func finishSession(HuksHandleId, HuksOptions, Bytes)
+
+```cangjie
+
+public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: Bytes): Option<Bytes>
+```
+
+**Description:** Interface for finishing a key operation session. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions-arrayuint8), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions-arrayuint8) are three-phase interfaces that must be used together.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| handle | [HuksHandleId](#class-hukshandleid) | Yes | - | The handle for the finishSession operation. |
+| options | [HuksOptions](#class-huksoptions) | Yes | - | Parameter set for the finishSession operation. |
+| token | [Bytes](#class-huksoptions) | Yes | - | Represents the AuthToken value from the USER IAM service. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [Option](please add link)\<[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#Unsigned-Integer-Types)> | Represents the AuthToken value from the USER IAM service. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes:
+1. Mandatory parameters are left unspecified.
+2. Incorrect parameter types.
+3. Parameter verification failed. |
+  | 801 | api is not supported |
+  | 12000001 | algorithm mode is not supported |
+  | 12000002 | algorithm param is missing |
+  | 12000003 | algorithm param is invalid |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000007 | this credential is already invalidated permanently |
+  | 12000008 | verify auth token failed |
+  | 12000009 | auth token is already timeout |
+  | 12000011 | queried entity does not exist |
+  | 12000012 | Device environment or input parameter abnormal |
+  | 12000014 | memory is insufficient |
+
+## func generateKeyItem(String, HuksOptions)
+
+```cangjie
+
+public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit
+```
+
+**Description:** Generates a key.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| keyAlias | String | Yes | - | Key alias. |
+| options | [HuksOptions](#class-huksoptions) | Yes | - | Stores the required Tags for key generation. The algorithm, key purpose, and key length are mandatory parameters. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000001 | algorithm mode is not supported |
+  | 12000002 | algorithm param is missing |
+  | 12000003 | algorithm param is invalid |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000012 | external error |
+  | 12000013 | queried credential does not exist |
+  | 12000014 | memory is insufficient |
+  | 12000015 | call service failed |
+
+## func getKeyItemProperties(String, HuksOptions)
+
+```cangjie
+
+public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksParam>
+```
+
+**Description:** Obtains key properties.
+
+**System Capability:** SystemCapability.Security.Huks.Extension
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Mandatory | Default | Description |
+|:---|:---|:---|:---|:---|
+| keyAlias | String | Yes | - | Key alias. |
+| _ | [HuksOptions](#class-huksoptions) | Yes | - | Empty object (pass empty here). |
+
+**Return Value:**
 
 | Type | Description |
 |:----|:----|
@@ -602,49 +342,24 @@ public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksPa
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, please refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Parameter error. |
-  | 801 | Capability not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
-
-**Example:**
-
-<!-- compile -->
+  | :---- | :--- |
+  | 401 | argument is invalid |
+  | 801 | api is not supported |
+  | 12000001 | algorithm mode is not supported |
+  | 12000002 | algorithm param is missing |
+  | 12000003 | algorithm param is invalid |
+  | 12000004 | operating file failed |
+  | 12000005 | IPC communication failed |
+  | 12000006 | error occurred in crypto engine |
+  | 12000011 | queried entity does not exist |
+  | 12000012 | external error |
+  | 12000014 | memory is insufficient |## func getSdkVersion()
 
 ```cangjie
-// index.cj
 
-import kit.UniversalKeystoreKit.*
-
-let keyAlias = "test_get_key_item_properties"
-let options = HuksOptions(
-    [
-        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
-        HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
-            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-        )
-    ],
-    Option.None
-)
-let properties = getKeyItemProperties(keyAlias, HuksOptions.NONE)
-```
-
-## func getSdkVersion()
-
-```cangjie
 public func getSdkVersion(): String
 ```
 
@@ -656,185 +371,18 @@ public func getSdkVersion(): String
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | Returns the SDK version. |
-
-**Example:**
-
-<!-- compile -->
-```cangjie
-// index.cj
-
-import kit.UniversalKeystoreKit.*
-
-// Code can be added here in the dependency definitions
-func test_get_sdk_version() {
-    let res = getSdkVersion()
-    return res
-}
-
-test_get_sdk_version()
-```
+|String|Returns the SDK version.|
 
 ## func importKeyItem(String, HuksOptions)
 
 ```cangjie
+
 public func importKeyItem(keyAlias: String, options: HuksOptions): Unit
 ```
 
 **Function:** Imports a plaintext key.
-
-**System Capability:** SystemCapability.Security.Huks.Extension
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Key alias. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Tags required for import and the key to be imported. The algorithm, key purpose, and key length are mandatory parameters. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, please refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Argument is invalid. |
-  | 801 | API is not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000013 | Queried credential does not exist. |
-  | 12000014 | Memory is insufficient. |
-  | 12000015 | Call service failed. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.UniversalKeystoreKit.*
-
-let keyAlias = "test_import_aes"
-let key = Array<UInt8>(Int64(HuksKeySize.HUKS_AES_KEY_SIZE_256.toUInt32().getOrThrow() / 8),
-    {i => UInt8(i & 0xFF)})
-importKeyItem(
-    keyAlias,
-    HuksOptions(
-        [
-            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
-            HuksParam(
-                HuksTag.HUKS_TAG_PURPOSE,
-                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-            )
-        ],
-        key
-    )
-)
-```
-
-## func importWrappedKeyItem(String, String, HuksOptions)
-
-```cangjie
-public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, options: HuksOptions): Unit
-```
-
-**Function:** Imports an encrypted key.
-
-**System Capability:** SystemCapability.Security.Huks.Extension
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Key alias for storing the key to be imported. |
-| wrappingKeyAlias | String | Yes | Key alias corresponding to the key used to decrypt the encrypted key data. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Tags required for import and the encrypted key data to be imported. The algorithm, key purpose, and key length are mandatory parameters. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, please refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Argument is invalid. |
-  | 801 | API is not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000013 | Queried credential does not exist. |
-  | 12000014 | Memory is insufficient. |
-  | 12000015 | Call service failed. |
-
-## func initSession(String, HuksOptions)
-
-```cangjie
-public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHandle
-```
-
-**Function:** Initializes a session for key operations. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions) are three-phase APIs that must be used together.
-
-**System Capability:** SystemCapability.Security.Huks.Extension
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Alias of the key for the session initialization. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Parameter set for the session initialization operation. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [HuksSessionHandle](#class-hukssessionhandle) | Returns the HUKS session handle. |
-
-**Exceptions:**
-
-- BusinessException: For detailed error code descriptions, please refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Argument is invalid. |
-  | 801 | API is not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000010 | The number of sessions has reached the limit. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
-
-## func isKeyItemExist(String, HuksOptions)
-
-```cangjie
-public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
-```
-
-**Function:** Checks whether a key exists.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -842,71 +390,163 @@ public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| keyAlias | String | Yes | Alias of the key to be checked. |
-| options | [HuksOptions](#class-huksoptions) | Yes | Specifies the key attribute tags for the query, such as the key scope (all/single). When querying a single key, the Tag field can be left empty. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Indicates whether the key exists. |
+|Parameter|Type|Mandatory|Default Value|Description|
+|:---|:---|:---|:---|:---|
+|keyAlias|String|Yes|-|Key alias.|
+|options|[HuksOptions](#class-huksoptions)|Yes|-|Tags required for import and the key to be imported. The algorithm, key purpose, and key length are mandatory parameters.|
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, please refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Argument is invalid. |
-  | 801 | API is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
+  | :---- | :--- |
+  | 401 | argument is invalid
+ |
+  | 801 | api is not supported
+ |
+  | 12000001 | algorithm mode is not supported
+ |
+  | 12000002 | algorithm param is missing
+ |
+  | 12000003 | algorithm param is invalid
+ |
+  | 12000004 | operating file failed
+ |
+  | 12000005 | IPC communication failed
+ |
+  | 12000006 | error occured in crypto engine
+ |
+  | 12000011 | queried entity does not exist
+ |
+  | 12000012 | external error
+ |
+  | 12000013 | queried credential does not exist
+ |
+  | 12000014 | memory is insufficient
+ |
+  | 12000015 | call service failed
+ |
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.UniversalKeystoreKit.*
-
-// Code can be added here in the dependency definitions
-func generateSimpleKey(keyAlias: String) {
-    let options = HuksOptions(
-        [
-            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
-            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
-            HuksParam(
-                HuksTag.HUKS_TAG_PURPOSE,
-                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-            )
-        ],
-        Option.None
-    )
-    generateKeyItem(keyAlias, options)
-}
-
-let keyAlias = "test_is_key_item_exist"
-isKeyItemExist(keyAlias, HuksOptions.NONE) // false
-generateSimpleKey(keyAlias)
-isKeyItemExist(keyAlias, HuksOptions.NONE) // true
-```
-
-## func updateSession(HuksHandle, HuksOptions)
+## func importWrappedKeyItem(String, String, HuksOptions)
 
 ```cangjie
-public func updateSession(handle: HuksHandle, options: HuksOptions): Option<Bytes>
+
+public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, options: HuksOptions): Unit
 ```
 
-**Function:** The updateSession operation interface for keys. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions) form a three-stage interface that must be used together.
+**Function:** Imports an encrypted key.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default Value|Description|
+|:---|:---|:---|:---|:---|
+|keyAlias|String|Yes|-|Key alias for storing the key to be imported.|
+|wrappingKeyAlias|String|Yes|-|Key alias corresponding to the key used to decrypt the encrypted key data.|
+|options|[HuksOptions](#class-huksoptions)|Yes|-|Tags required for import and the encrypted key data to be imported. The algorithm, key purpose, and key length are mandatory parameters.|
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | argument is invalid
+ |
+  | 801 | api is not supported
+ |
+  | 12000001 | algorithm mode is not supported
+ |
+  | 12000002 | algorithm param is missing
+ |
+  | 12000003 | algorithm param is invalid
+ |
+  | 12000004 | operating file failed
+ |
+  | 12000005 | IPC communication failed
+ |
+  | 12000006 | error occured in crypto engine
+ |
+  | 12000011 | queried entity does not exist
+ |
+  | 12000012 | external error
+ |
+  | 12000013 | queried credential does not exist
+ |
+  | 12000014 | memory is insufficient
+ |
+  | 12000015 | call service failed
+ |
+
+## func initSession(String, HuksOptions)
+
+```cangjie
+
+public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHandle
+```
+
+**Function:** Initializes a key operation session. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions) are three-phase APIs that must be used together.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default Value|Description|
+|:---|:---|:---|:---|:---|
+|keyAlias|String|Yes|-|Alias of the key for the initSession operation.|
+|options|[HuksOptions](#class-huksoptions)|Yes|-|Parameter set for the initSession operation.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|[HuksSessionHandle](#class-hukssessionhandle)|Returns the Huks Handle of the key.|
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | argument is invalid
+ |
+  | 801 | api is not supported
+ |
+  | 12000001 | algorithm mode is not supported
+ |
+  | 12000002 | algorithm param is missing
+ |
+  | 12000003 | algorithm param is invalid
+ |
+  | 12000004 | operating file failed
+ |
+  | 12000005 | IPC communication failed
+ |
+  | 12000006 | error occured in crypto engine
+ |
+  | 12000010 | the number of sessions has reached limit
+ |
+  | 12000011 | queried entity does not exist
+ |
+  | 12000012 | external error
+ |
+  | 12000014 | memory is insufficient
+ |
+
+## func isKeyItemExist(String, HuksOptions)
+
+```cangjie
+
+public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
+```
+
+**Function:** Checks whether a key exists.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -914,45 +554,50 @@ public func updateSession(handle: HuksHandle, options: HuksOptions): Option<Byte
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| handle | [HuksHandle](#class-hukshandle) | Yes | The handle for the updateSession operation. |
-| options | [HuksOptions](#class-huksoptions) | Yes | The parameter set for updateSession. |
+|Parameter|Type|Mandatory|Default Value|Description|
+|:---|:---|:---|:---|:---|
+|keyAlias|String|Yes|-|Alias of the key to be checked.|
+|options|[HuksOptions](#class-huksoptions)|Yes|-|Specifies the key attribute tags for the query, such as the key scope (all/single). For a single query, the Tag field can be left empty.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Bytes> | Outputs the key update result. |
+|Bool|Indicates whether the key exists.|
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:--------|:-------------|
-  | 401 | Argument is invalid. |
-  | 801 | API is not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000007 | This credential is already invalidated permanently. |
-  | 12000008 | Verify authtoken failed. |
-  | 12000009 | Authtoken is already timeout. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
+  | :---- | :--- |
+  | 401 | argument is invalid
+ |
+  | 801 | api is not supported
+ |
+  | 12000002 | algorithm param is missing
+ |
+  | 12000003 | algorithm param is invalid
+ |
+  | 12000004 | operating file failed
+ |
+  | 12000005 | IPC communication failed
+ |
+  | 12000006 | error occured in crypto engine
+ |
+  | 12000012 | external error
+ |
+  | 12000014 | memory is insufficient
+ |
 
-## func updateSession(HuksHandle, HuksOptions, Bytes)
+## func updateSession(HuksHandleId, HuksOptions, Bytes)
 
 ```cangjie
-public func updateSession(handle: HuksHandle, options: HuksOptions, token: Bytes): Option<Bytes>
+
+public func updateSession(handle: HuksHandleId, options: HuksOptions, token!: Bytes): Option<Bytes>
 ```
 
-**Function:** The updateSession operation interface for keys. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions-arrayuint8), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions-arrayuint8) form a three-stage interface that must be used together.
+**Function:** Updates a key operation session. [security_huks.initSession](#func-initsessionstring-huksoptions), [security_huks.updateSession](#func-updatesessionhukshandle-huksoptions-arrayuint8), and [security_huks.finishSession](#func-finishsessionhukshandle-huksoptions-arrayuint8) are three-phase APIs that must be used together.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -960,49 +605,66 @@ public func updateSession(handle: HuksHandle, options: HuksOptions, token: Bytes
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| handle | [HuksHandle](#class-hukshandle) | Yes | The handle for the updateSession operation. |
-| options | [HuksOptions](#class-huksoptions) | Yes | The parameter set for updateSession. |
-| token | Bytes | Yes | Represents the AuthToken value from the USER IAM service. |
+|Parameter|Type|Mandatory|Default Value|Description|
+|:---|:---|:---|:---|:---|
+|handle|[HuksHandleId](#class-hukshandleid)|Yes|-|Handle for the updateSession operation.|
+|options|[HuksOptions](#class-huksoptions)|Yes|-|Parameter set for the updateSession operation.|
+|token|[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)|Yes|-|Represents the AuthToken value of the USER IAM service.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Option\<Bytes> | Outputs the key update result. |
+|[Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)|Outputs the key update result.|
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:--------|:-------------|
-  | 401 | Argument is invalid. |
-  | 801 | API is not supported. |
-  | 12000001 | Algorithm mode is not supported. |
-  | 12000002 | Algorithm parameter is missing. |
-  | 12000003 | Algorithm parameter is invalid. |
-  | 12000004 | Operating file failed. |
-  | 12000005 | IPC communication failed. |
-  | 12000006 | Error occurred in crypto engine. |
-  | 12000007 | This credential is already invalidated permanently. |
-  | 12000008 | Verify authtoken failed. |
-  | 12000009 | Authtoken is already timeout. |
-  | 12000011 | Queried entity does not exist. |
-  | 12000012 | External error. |
-  | 12000014 | Memory is insufficient. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes:
+1. Mandatory parameters are left unspecified.
+2. Incorrect parameter types.
+3. Parameter verification failed.
+ |
+  | 801 | api is not supported
+ |
+  | 12000001 | algorithm mode is not supported
+ |
+  | 12000002 | algorithm param is missing
+ |
+  | 12000003 | algorithm param is invalid
+ |
+  | 12000004 | operating file failed
+ |
+  | 12000005 | IPC communication failed
+ |
+  | 12000006 | error occurred in crypto engine
+ |
+  | 12000007 | this credential is already invalidated permanently
+ |
+  | 12000008 | verify auth token failed
+ |
+  | 12000009 | auth token is already timeout
+ |
+  | 12000011 | queried entity does not exist
+ |
+  | 12000012 | Device environment or input parameter abnormal
+ |
+  | 12000014 | memory is insufficient
+ |
 
 ## class HuksAuthAccessType
 
 ```cangjie
 public class HuksAuthAccessType {
-    public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.uint32(1 << 0)
-    public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.uint32(1 << 1)
+    public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
+    public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
 }
 ```
 
-**Function:** Represents security access control types.
+**Function:** Represents the secure access control type.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -1011,10 +673,10 @@ public class HuksAuthAccessType {
 ### static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
 
 ```cangjie
-public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.uint32(1 << 0)
+public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
 ```
 
-**Function:** Indicates that the security access control type is invalidating the key after clearing the password.
+**Function:** Indicates that the secure access control type is that the key is always valid.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1025,10 +687,10 @@ public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: HuksParamValue = Hu
 ### static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL
 
 ```cangjie
-public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.uint32(1 << 1)
+public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
 ```
 
-**Function:** Indicates that the security access control type is invalidating the key after new biometric enrollment.
+**Function:** Indicates that the secure access control type is that the key becomes invalid after the password is cleared.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1040,13 +702,13 @@ public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: HuksParamValue = Hu
 
 ```cangjie
 public class HuksAuthStorageLevel {
-    public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.uint32(1)
-    public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue.uint32(2)
+    public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue.Uint32Value(2)
 }
 ```
 
-**Function:** Specifies the storage security level of a key when generating or importing it.
+**Function:** Specifies the storage security level of a key when generating or importing the key.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -1055,7 +717,7 @@ public class HuksAuthStorageLevel {
 ### static const HUKS_AUTH_STORAGE_LEVEL_CE
 
 ```cangjie
-public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
 **Function:** Indicates that the key is accessible only after the first unlock.
@@ -1069,10 +731,10 @@ public static const HUKS_AUTH_STORAGE_LEVEL_CE: HuksParamValue = HuksParamValue.
 ### static const HUKS_AUTH_STORAGE_LEVEL_DE
 
 ```cangjie
-public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.uint32(0)
+public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.Uint32Value(0)
 ```
 
-**Function:** Indicates that the key is accessible only after booting.
+**Function:** Indicates that the key is accessible only after the device is powered on.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1083,7 +745,7 @@ public static const HUKS_AUTH_STORAGE_LEVEL_DE: HuksParamValue = HuksParamValue.
 ### static const HUKS_AUTH_STORAGE_LEVEL_ECE
 
 ```cangjie
-public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue.uint32(2)
+public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue.Uint32Value(2)
 ```
 
 **Function:** Indicates that the key is accessible only when the device is unlocked.
@@ -1092,20 +754,18 @@ public static const HUKS_AUTH_STORAGE_LEVEL_ECE: HuksParamValue = HuksParamValue
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
-**Since:** 21
-
-## class HuksChallengePosition
+**Since:** 21## class HuksChallengePosition
 
 ```cangjie
 public class HuksChallengePosition {
-    public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.uint32(1)
-    public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.uint32(2)
-    public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.uint32(3)
+    public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.Uint32Value(3)
 }
 ```
 
-**Function:** When the challenge type is user-defined, the generated challenge has an effective length of only 8 consecutive bytes of data, and only 4 positions are supported.
+**Description:** Indicates that when the challenge type is user-defined, the generated challenge has an effective length of only 8 consecutive bytes of data, and supports only 4 positions.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -1114,10 +774,10 @@ public class HuksChallengePosition {
 ### static const HUKS_CHALLENGE_POS_0
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.uint32(0)
+public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.Uint32Value(0)
 ```
 
-**Function:** Indicates that bytes 0~7 are the valid challenge for the current key.
+**Description:** Indicates that bytes 0~7 are the valid challenge for the current key.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1128,10 +788,10 @@ public static const HUKS_CHALLENGE_POS_0: HuksParamValue = HuksParamValue.uint32
 ### static const HUKS_CHALLENGE_POS_1
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Function:** Indicates that bytes 8~15 are the valid challenge for the current key.
+**Description:** Indicates that bytes 8~15 are the valid challenge for the current key.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1142,10 +802,10 @@ public static const HUKS_CHALLENGE_POS_1: HuksParamValue = HuksParamValue.uint32
 ### static const HUKS_CHALLENGE_POS_2
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.uint32(2)
+public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.Uint32Value(2)
 ```
 
-**Function:** Indicates that bytes 16~23 are the valid challenge for the current key.
+**Description:** Indicates that bytes 16~23 are the valid challenge for the current key.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1156,10 +816,10 @@ public static const HUKS_CHALLENGE_POS_2: HuksParamValue = HuksParamValue.uint32
 ### static const HUKS_CHALLENGE_POS_3
 
 ```cangjie
-public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.uint32(3)
+public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.Uint32Value(3)
 ```
 
-**Function:** Indicates that bytes 24~31 are the valid challenge for the current key.
+**Description:** Indicates that bytes 24~31 are the valid challenge for the current key.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1171,13 +831,13 @@ public static const HUKS_CHALLENGE_POS_3: HuksParamValue = HuksParamValue.uint32
 
 ```cangjie
 public class HuksChallengeType {
-    public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.uint32(1)
-    public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.uint32(2)
+    public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.Uint32Value(2)
 }
 ```
 
-**Function:** Represents the type of challenge generated when using a key.
+**Description:** Indicates the type of challenge generated during key usage.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -1186,748 +846,456 @@ public class HuksChallengeType {
 ### static const HUKS_CHALLENGE_TYPE_CUSTOM
 
 ```cangjie
-public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_CHALLENGE_TYPE_CUSTOM: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Function:** Indicates that the challenge is of a user-defined type. Supports one-time authentication for multiple keys.
+**Description:** Indicates a user-defined challenge type. Supports single authentication for multiple keys.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
-**System Capability:** SystemCapability.Security.Huks.Extension  
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Extension
 
-### static const HUKS_CHALLENGE_TYPE_NONE  
+**Since:** 21
 
-```cangjie  
-public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.uint32(2)  
-```  
+### static const HUKS_CHALLENGE_TYPE_NONE
 
-**Description:** Indicates the no-challenge type.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Initial Version:** 21  
-
-### static const HUKS_CHALLENGE_TYPE_NORMAL  
-
-```cangjie  
-public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.uint32(0)  
-```  
-
-**Description:** Indicates the normal challenge type, with a default length of 32 bytes.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Initial Version:** 21  
-
-## class HuksCipherMode  
-
-```cangjie  
-public class HuksCipherMode {  
-    public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.uint32(2)  
-    public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.uint32(3)  
-    public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.uint32(4)  
-    public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.uint32(31)  
-    public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.uint32(32)  
-}  
-```  
-
-**Description:** Represents encryption modes.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_MODE_CBC  
-
-```cangjie  
-public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Description:** Indicates the CBC encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_MODE_CCM  
-
-```cangjie  
-public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.uint32(31)  
-```  
-
-**Description:** Indicates the CCM encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_MODE_CTR  
-
-```cangjie  
-public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.uint32(3)  
-```  
-
-**Description:** Indicates the CTR encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_MODE_ECB  
-
-```cangjie  
-public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Description:** Indicates the ECB encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_MODE_GCM  
-
-```cangjie  
-public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.uint32(32)  
-```  
-
-**Description:** Indicates the GCM encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_MODE_OFB  
-
-```cangjie  
-public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.uint32(4)  
-```  
-
-**Description:** Indicates the OFB encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-## class HuksExceptionErrCode  
-
-```cangjie  
-public class HuksExceptionErrCode {  
-    public static const HUKS_ERR_CODE_PERMISSION_FAIL: Int32 = 201  
-    public static const HUKS_ERR_CODE_ILLEGAL_ARGUMENT: Int32 = 401  
-    public static const HUKS_ERR_CODE_NOT_SUPPORTED_API: Int32 = 801  
-    public static const HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED: Int32 = 12000001  
-    public static const HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT: Int32 = 12000002  
-    public static const HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT: Int32 = 12000003  
-    public static const HUKS_ERR_CODE_FILE_OPERATION_FAIL: Int32 = 12000004  
-    public static const HUKS_ERR_CODE_COMMUNICATION_FAIL: Int32 = 12000005  
-    public static const HUKS_ERR_CODE_CRYPTO_FAIL: Int32 = 12000006  
-    public static const HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED: Int32 = 12000007  
-    public static const HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED: Int32 = 12000008  
-    public static const HUKS_ERR_CODE_KEY_AUTH_TIME_OUT: Int32 = 12000009  
-    public static const HUKS_ERR_CODE_SESSION_LIMIT: Int32 = 12000010  
-    public static const HUKS_ERR_CODE_ITEM_NOT_EXIST: Int32 = 12000011  
-    public static const HUKS_ERR_CODE_EXTERNAL_ERROR: Int32 = 12000012  
-    public static const HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST: Int32 = 12000013  
-    public static const HUKS_ERR_CODE_INSUFFICIENT_MEMORY: Int32 = 12000014  
-    public static const HUKS_ERR_CODE_CALL_SERVICE_FAILED: Int32 = 12000015  
-}  
-```  
-
-**Description:** Represents error codes and corresponding error messages, where error codes indicate the type of error and error messages provide details.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_CALL_SERVICE_FAILED  
-
-```cangjie  
-public static const HUKS_ERR_CODE_CALL_SERVICE_FAILED: Int32 = 12000015  
-```  
-
-**Description:** Failed to call another system service.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_COMMUNICATION_FAIL  
-
-```cangjie  
-public static const HUKS_ERR_CODE_COMMUNICATION_FAIL: Int32 = 12000005  
-```  
-
-**Description:** Communication failure.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST  
-
-```cangjie  
-public static const HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST: Int32 = 12000013  
-```  
-
-**Description:** Required credential is missing.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_CRYPTO_FAIL  
-
-```cangjie  
-public static const HUKS_ERR_CODE_CRYPTO_FAIL: Int32 = 12000006  
-```  
-
-**Description:** Cryptographic library operation failed.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_EXTERNAL_ERROR  
-
-```cangjie  
-public static const HUKS_ERR_CODE_EXTERNAL_ERROR: Int32 = 12000012  
-```  
-
-**Description:** External error.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED  
-
-```cangjie  
-public static const HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED: Int32 = 12000001  
-```  
-
-**Description:** Unsupported feature/functionality.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_FILE_OPERATION_FAIL  
-
-```cangjie  
-public static const HUKS_ERR_CODE_FILE_OPERATION_FAIL: Int32 = 12000004  
-```  
-
-**Description:** File operation failed.  
-
-**Type:** Int32  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_ILLEGAL_ARGUMENT  
-
-```cangjie  
-public static const HUKS_ERR_CODE_ILLEGAL_ARGUMENT: Int32 = 401  
-```  
-
-**Description:** Failed due to invalid parameters.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_INSUFFICIENT_MEMORY  
-
-```cangjie  
-public static const HUKS_ERR_CODE_INSUFFICIENT_MEMORY: Int32 = 12000014  
-```  
-
-**Description:** Insufficient memory.  
-
-**System Capability:** SystemCapability.Security.Huks.Core**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT  
-
-```cangjie  
-public static const HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT: Int32 = 12000003  
-```  
-
-**Function:** Invalid cryptographic algorithm parameter.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_ITEM_NOT_EXIST  
-
-```cangjie  
-public static const HUKS_ERR_CODE_ITEM_NOT_EXIST: Int32 = 12000011  
-```  
-
-**Function:** Target object does not exist.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED  
-
-```cangjie  
-public static const HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED: Int32 = 12000007  
-```  
-
-**Function:** Key access failed - Key access permanently invalidated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_KEY_AUTH_TIME_OUT  
-
-```cangjie  
-public static const HUKS_ERR_CODE_KEY_AUTH_TIME_OUT: Int32 = 12000009  
-```  
-
-**Function:** Key access failed - Key access timeout.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED  
-
-```cangjie  
-public static const HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED: Int32 = 12000008  
-```  
-
-**Function:** Key access failed - Key authentication failed.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT  
-
-```cangjie  
-public static const HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT: Int32 = 12000002  
-```  
-
-**Function:** Missing cryptographic algorithm parameter.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_NOT_SUPPORTED_API  
-
-```cangjie  
-public static const HUKS_ERR_CODE_NOT_SUPPORTED_API: Int32 = 801  
-```  
-
-**Function:** Unsupported API.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_PERMISSION_FAIL  
-
-```cangjie  
-public static const HUKS_ERR_CODE_PERMISSION_FAIL: Int32 = 201  
-```  
-
-**Function:** Failure due to permission error.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-### static const HUKS_ERR_CODE_SESSION_LIMIT  
-
-```cangjie  
-public static const HUKS_ERR_CODE_SESSION_LIMIT: Int32 = 12000010  
-```  
-
-**Function:** Maximum number of key operation sessions reached.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** Int32  
-
-**Initial Version:** 21  
-
-## class HuksHandle  
-
-```cangjie  
-public class HuksHandle {}  
-```  
-
-**Function:** Represents a handle value.  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Initial Version:** 21  
-
-## class HuksImportKeyType  
-
-```cangjie  
-public class HuksImportKeyType {  
-    public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.uint32(0)  
-    public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.uint32(2)  
-}  
-```  
-
-**Function:** Represents the key type for importing keys. Default is public key. This field is not required when importing symmetric keys.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_TYPE_KEY_PAIR  
-
-```cangjie  
-public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Function:** Indicates the imported key type is a key pair (public-private key pair).  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_TYPE_PRIVATE_KEY  
-
-```cangjie  
-public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Function:** Indicates the imported key type is a private key.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_TYPE_PUBLIC_KEY  
-
-```cangjie  
-public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.uint32(0)  
-```  
-
-**Function:** Indicates the imported key type is a public key.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-## class HuksKeyAlg  
-
-```cangjie  
-public class HuksKeyAlg {  
-    public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.uint32(2)  
-    public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.uint32(3)  
-    public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.uint32(20)  
-    public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.uint32(50)  
-    public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.uint32(51)  
-    public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.uint32(52)  
-    public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.uint32(100)  
-    public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.uint32(101)  
-    public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.uint32(102)  
-    public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.uint32(103)  
-    public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.uint32(150)  
-    public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.uint32(151)  
-    public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.uint32(152)  
-}  
-```  
-
-**Function:** Represents the algorithm used by the key.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_ALG_AES  
-
-```cangjie  
-public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.uint32(20)  
-```  
-
-**Function:** Indicates the use of AES algorithm.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**Initial Version:** 21  
-
-### static const HUKS_ALG_DH  
-
-```cangjie  
-public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.uint32(103)  
-```  
-
-**Function:** Indicates the use of DH algorithm.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**Initial Version:** 21  
-
-### static const HUKS_ALG_DSA  
-
-```cangjie  
-public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.uint32(3)  
-```  
-
-**Function:** Indicates the use of DSA algorithm.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**Initial Version:** 21  
-
-### static const HUKS_ALG_ECC  
-
-```cangjie  
-public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Function:** Indicates the use of ECC algorithm.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**Initial Version:** 21  
-
-### static const HUKS_ALG_ECDH  
-
-```cangjie  
-public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.uint32(100)  
-```  
-
-**Function:** Indicates the use of ECDH algorithm.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**Initial Version:** 21  
-
-### static const HUKS_ALG_ED25519
 ```cangjie
-public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.uint32(102)
+public static const HUKS_CHALLENGE_TYPE_NONE: HuksParamValue = HuksParamValue.Uint32Value(2)
 ```
 
-**Description:** Indicates the ED25519 algorithm.
+**Description:** Indicates a no-challenge type.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Extension
+
+**Since:** 21
+
+### static const HUKS_CHALLENGE_TYPE_NORMAL
+
+```cangjie
+public static const HUKS_CHALLENGE_TYPE_NORMAL: HuksParamValue = HuksParamValue.Uint32Value(0)
+```
+
+**Description:** Indicates a normal challenge type, defaulting to 32 bytes.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Extension
+
+**Since:** 21
+
+## class HuksCipherMode
+
+```cangjie
+public class HuksCipherMode {
+    public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.Uint32Value(3)
+    public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.Uint32Value(4)
+    public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.Uint32Value(31)
+    public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.Uint32Value(32)
+}
+```
+
+**Description:** Indicates encryption modes.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
+**Since:** 21
+
+### static const HUKS_MODE_CBC
+
+```cangjie
+public static const HUKS_MODE_CBC: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
+
+**Description:** Indicates using CBC encryption mode.
+
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_MODE_CCM
+
+```cangjie
+public static const HUKS_MODE_CCM: HuksParamValue = HuksParamValue.Uint32Value(31)
+```
+
+**Description:** Indicates using CCM encryption mode.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_MODE_CTR
+
+```cangjie
+public static const HUKS_MODE_CTR: HuksParamValue = HuksParamValue.Uint32Value(3)
+```
+
+**Description:** Indicates using CTR encryption mode.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_MODE_ECB
+
+```cangjie
+public static const HUKS_MODE_ECB: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
+
+**Description:** Indicates using ECB encryption mode.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_MODE_GCM
+
+```cangjie
+public static const HUKS_MODE_GCM: HuksParamValue = HuksParamValue.Uint32Value(32)
+```
+
+**Description:** Indicates using GCM encryption mode.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_MODE_OFB
+
+```cangjie
+public static const HUKS_MODE_OFB: HuksParamValue = HuksParamValue.Uint32Value(4)
+```
+
+**Description:** Indicates using OFB encryption mode.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+## class HuksHandleId
+
+```cangjie
+public class HuksHandleId {}
+```
+
+**Description:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Security.Huks.Extension
+
+**Since:** 21
+
+## class HuksImportKeyType
+
+```cangjie
+public class HuksImportKeyType {
+    public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.Uint32Value(2)
+}
+```
+
+**Description:** Indicates the key type for importing keys. Default is importing public key. This field is not required when importing symmetric keys.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_TYPE_KEY_PAIR
+
+```cangjie
+public static const HUKS_KEY_TYPE_KEY_PAIR: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
+
+**Description:** Indicates importing a key pair (public-private key pair).
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_TYPE_PRIVATE_KEY
+
+```cangjie
+public static const HUKS_KEY_TYPE_PRIVATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
+
+**Description:** Indicates importing a private key.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_TYPE_PUBLIC_KEY
+
+```cangjie
+public static const HUKS_KEY_TYPE_PUBLIC_KEY: HuksParamValue = HuksParamValue.Uint32Value(0)
+```
+
+**Description:** Indicates importing a public key.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+## class HuksKeyAlg
+
+```cangjie
+public class HuksKeyAlg {
+    public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.Uint32Value(3)
+    public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.Uint32Value(20)
+    public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.Uint32Value(50)
+    public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.Uint32Value(51)
+    public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.Uint32Value(52)
+    public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.Uint32Value(100)
+    public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.Uint32Value(101)
+    public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.Uint32Value(102)
+    public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.Uint32Value(103)
+    public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.Uint32Value(150)
+    public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.Uint32Value(151)
+    public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.Uint32Value(152)
+}
+```
+
+**Description:** Indicates the algorithm used by the key.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_ALG_AES
+
+```cangjie
+public static const HUKS_ALG_AES: HuksParamValue = HuksParamValue.Uint32Value(20)
+```
+
+**Description:** Indicates using AES algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_ALG_DH
+
+```cangjie
+public static const HUKS_ALG_DH: HuksParamValue = HuksParamValue.Uint32Value(103)
+```
+
+**Description:** Indicates using DH algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_ALG_DSA
+
+```cangjie
+public static const HUKS_ALG_DSA: HuksParamValue = HuksParamValue.Uint32Value(3)
+```
+
+**Description:** Indicates using DSA algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_ALG_ECC
+
+```cangjie
+public static const HUKS_ALG_ECC: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
+
+**Description:** Indicates using ECC algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_ALG_ECDH
+
+```cangjie
+public static const HUKS_ALG_ECDH: HuksParamValue = HuksParamValue.Uint32Value(100)
+```
+
+**Description:** Indicates using ECDH algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_ALG_ED25519
+
+```cangjie
+public static const HUKS_ALG_ED25519: HuksParamValue = HuksParamValue.Uint32Value(102)
+```
+
+**Description:** Indicates using ED25519 algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_HKDF
 
 ```cangjie
-public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.uint32(51)
+public static const HUKS_ALG_HKDF: HuksParamValue = HuksParamValue.Uint32Value(51)
 ```
 
-**Description:** Indicates the HKDF algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using HKDF algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_HMAC
 
 ```cangjie
-public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.uint32(50)
+public static const HUKS_ALG_HMAC: HuksParamValue = HuksParamValue.Uint32Value(50)
 ```
 
-**Description:** Indicates the HMAC algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using HMAC algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_PBKDF2
 
 ```cangjie
-public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.uint32(52)
+public static const HUKS_ALG_PBKDF2: HuksParamValue = HuksParamValue.Uint32Value(52)
 ```
 
-**Description:** Indicates the PBKDF2 algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using PBKDF2 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_RSA
 
 ```cangjie
-public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_ALG_RSA: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Description:** Indicates the RSA algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_SM2
 
 ```cangjie
-public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.uint32(150)
+public static const HUKS_ALG_SM2: HuksParamValue = HuksParamValue.Uint32Value(150)
 ```
 
-**Description:** Indicates the SM2 algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using SM2 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_SM3
 
 ```cangjie
-public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.uint32(151)
+public static const HUKS_ALG_SM3: HuksParamValue = HuksParamValue.Uint32Value(151)
 ```
 
-**Description:** Indicates the SM3 algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using SM3 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_SM4
 
 ```cangjie
-public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.uint32(152)
+public static const HUKS_ALG_SM4: HuksParamValue = HuksParamValue.Uint32Value(152)
 ```
 
-**Description:** Indicates the SM4 algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using SM4 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
 ### static const HUKS_ALG_X25519
 
 ```cangjie
-public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.uint32(101)
+public static const HUKS_ALG_X25519: HuksParamValue = HuksParamValue.Uint32Value(101)
 ```
 
-**Description:** Indicates the X25519 algorithm.
-
-**System Capability:** SystemCapability.Security.Huks.Core
+**Description:** Indicates using X25519 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Since:** 21
+**System Capability:** SystemCapability.Security.Huks.Core
 
+**Since:** 21```markdown
 ## class HuksKeyDigest
 
 ```cangjie
 public class HuksKeyDigest {
-    public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.uint32(1)
-    public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.uint32(2)
-    public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.uint32(10)
-    public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.uint32(11)
-    public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.uint32(12)
-    public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.uint32(13)
-    public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.uint32(14)
+    public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.Uint32Value(10)
+    public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.Uint32Value(11)
+    public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.Uint32Value(12)
+    public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.Uint32Value(13)
+    public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.Uint32Value(14)
 }
 ```
 
-**Description:** Indicates digest algorithms.
+**Description:** Represents digest algorithms.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -1936,10 +1304,10 @@ public class HuksKeyDigest {
 ### static const HUKS_DIGEST_MD5
 
 ```cangjie
-public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Description:** Indicates the MD5 digest algorithm.
+**Description:** Indicates MD5 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1950,7 +1318,7 @@ public static const HUKS_DIGEST_MD5: HuksParamValue = HuksParamValue.uint32(1)
 ### static const HUKS_DIGEST_NONE
 
 ```cangjie
-public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.uint32(0)
+public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
 ```
 
 **Description:** Indicates no digest algorithm.
@@ -1964,10 +1332,10 @@ public static const HUKS_DIGEST_NONE: HuksParamValue = HuksParamValue.uint32(0)
 ### static const HUKS_DIGEST_SHA1
 
 ```cangjie
-public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.uint32(10)
+public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.Uint32Value(10)
 ```
 
-**Description:** Indicates the SHA1 digest algorithm.
+**Description:** Indicates SHA1 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1978,10 +1346,10 @@ public static const HUKS_DIGEST_SHA1: HuksParamValue = HuksParamValue.uint32(10)
 ### static const HUKS_DIGEST_SHA224
 
 ```cangjie
-public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.uint32(11)
+public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.Uint32Value(11)
 ```
 
-**Description:** Indicates the SHA224 digest algorithm.
+**Description:** Indicates SHA224 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -1992,10 +1360,10 @@ public static const HUKS_DIGEST_SHA224: HuksParamValue = HuksParamValue.uint32(1
 ### static const HUKS_DIGEST_SHA256
 
 ```cangjie
-public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.uint32(12)
+public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.Uint32Value(12)
 ```
 
-**Description:** Indicates the SHA256 digest algorithm.
+**Description:** Indicates SHA256 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2006,10 +1374,10 @@ public static const HUKS_DIGEST_SHA256: HuksParamValue = HuksParamValue.uint32(1
 ### static const HUKS_DIGEST_SHA384
 
 ```cangjie
-public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.uint32(13)
+public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.Uint32Value(13)
 ```
 
-**Description:** Indicates the SHA384 digest algorithm.
+**Description:** Indicates SHA384 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2020,10 +1388,10 @@ public static const HUKS_DIGEST_SHA384: HuksParamValue = HuksParamValue.uint32(1
 ### static const HUKS_DIGEST_SHA512
 
 ```cangjie
-public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.uint32(14)
+public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.Uint32Value(14)
 ```
 
-**Description:** Indicates the SHA512 digest algorithm.
+**Description:** Indicates SHA512 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2034,10 +1402,10 @@ public static const HUKS_DIGEST_SHA512: HuksParamValue = HuksParamValue.uint32(1
 ### static const HUKS_DIGEST_SM3
 
 ```cangjie
-public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.uint32(2)
+public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.Uint32Value(2)
 ```
 
-**Description:** Indicates the SM3 digest algorithm.
+**Description:** Indicates SM3 digest algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2049,14 +1417,14 @@ public static const HUKS_DIGEST_SM3: HuksParamValue = HuksParamValue.uint32(2)
 
 ```cangjie
 public class HuksKeyFlag {
-    public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.uint32(1)
-    public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.uint32(2)
-    public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.uint32(3)
-    public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.uint32(4)
+    public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.Uint32Value(3)
+    public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.Uint32Value(4)
 }
 ```
 
-**Description:** Indicates key generation methods.
+**Description:** Represents key generation methods.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -2065,7 +1433,7 @@ public class HuksKeyFlag {
 ### static const HUKS_KEY_FLAG_AGREE_KEY
 
 ```cangjie
-public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.uint32(3)
+public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.Uint32Value(3)
 ```
 
 **Description:** Indicates keys generated through key agreement interfaces.
@@ -2079,7 +1447,7 @@ public static const HUKS_KEY_FLAG_AGREE_KEY: HuksParamValue = HuksParamValue.uin
 ### static const HUKS_KEY_FLAG_DERIVE_KEY
 
 ```cangjie
-public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.uint32(4)
+public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.Uint32Value(4)
 ```
 
 **Description:** Indicates keys generated through key derivation interfaces.
@@ -2088,311 +1456,296 @@ public static const HUKS_KEY_FLAG_DERIVE_KEY: HuksParamValue = HuksParamValue.ui
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
-**Since:** 21**Initial Version:** 21  
+**Since:** 21
 
-### static const HUKS_KEY_FLAG_GENERATE_KEY  
+### static const HUKS_KEY_FLAG_GENERATE_KEY
 
-```cangjie  
-public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Function:** Indicates a key generated via the key generation interface.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_FLAG_IMPORT_KEY  
-
-```cangjie  
-public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Function:** Indicates a key imported via the public key import interface.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-## class HuksKeyGenerateType  
-
-```cangjie  
-public class HuksKeyGenerateType {  
-    public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.uint32(0)  
-    public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValue.uint32(2)  
-}  
-```  
-
-**Function:** Indicates the type of key generation.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_GENERATE_TYPE_AGREE  
-
-```cangjie  
-public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Function:** A key generated via negotiation.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_GENERATE_TYPE_DEFAULT  
-
-```cangjie  
-public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.uint32(0)  
-```  
-
-**Function:** A key generated by default.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_GENERATE_TYPE_DERIVE  
-
-```cangjie  
-public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Function:** A key generated via derivation.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-## class HuksKeyPadding  
-
-```cangjie  
-public class HuksKeyPadding {  
-    public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.uint32(0)  
-    public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.uint32(2)  
-    public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.uint32(3)  
-    public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.uint32(4)  
-    public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.uint32(5)  
-}  
-```  
-
-**Function:** Indicates the padding algorithm.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_PADDING_NONE  
-
-```cangjie  
-public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.uint32(0)  
-```  
-
-**Function:** Indicates no padding algorithm is used.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_PADDING_OAEP  
-
-```cangjie  
-public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Function:** Indicates the OAEP padding algorithm is used.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_PADDING_PKCS1_V1_5  
-
-```cangjie  
-public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.uint32(3)  
-```  
-
-**Function:** Indicates the PKCS1_V1_5 padding algorithm is used.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_PADDING_PKCS5  
-
-```cangjie  
-public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.uint32(4)  
-```  
-
-**Function:** Indicates the PKCS5 padding algorithm is used.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_PADDING_PKCS7  
-
-```cangjie  
-public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.uint32(5)  
-```  
-
-**Function:** Indicates the PKCS7 padding algorithm is used.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_PADDING_PSS  
-
-```cangjie  
-public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Function:** Indicates the PSS padding algorithm is used.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-## class HuksKeyPurpose  
-
-```cangjie  
-public class HuksKeyPurpose {  
-    public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.uint32(2)  
-    public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.uint32(4)  
-    public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.uint32(8)  
-    public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.uint32(16)  
-    public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.uint32(32)  
-    public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.uint32(64)  
-    public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.uint32(128)  
-    public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.uint32(256)  
-}  
-```  
-
-**Function:** Indicates the purpose of the key.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_PURPOSE_AGREE  
-
-```cangjie  
-public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.uint32(256)  
-```  
-
-**Function:** Indicates the key is used for key agreement.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_PURPOSE_DECRYPT  
-
-```cangjie  
-public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Function:** Indicates the key is used for decrypting ciphertext.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_PURPOSE_DERIVE  
-
-```cangjie  
-public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.uint32(16)  
-```  
-
-**Function:** Indicates the key is used for key derivation.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_PURPOSE_ENCRYPT  
-
-```cangjie  
-public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Function:** Indicates the key is used for encrypting plaintext.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_PURPOSE_MAC  
-
-```cangjie  
-public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.uint32(128)  
-```  
-
-**Function:** Indicates the key is used for generating MAC (Message Authentication Code).  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### static const HUKS_KEY_PURPOSE_SIGN
 ```cangjie
-public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.uint32(4)
+public static const HUKS_KEY_FLAG_GENERATE_KEY: HuksParamValue = HuksParamValue.Uint32Value(2)
 ```
 
-**Function:** Indicates the key is used for data signing.
+**Description:** Indicates keys generated through key generation interfaces.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_FLAG_IMPORT_KEY
+
+```cangjie
+public static const HUKS_KEY_FLAG_IMPORT_KEY: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
+
+**Description:** Indicates keys imported through public key import interfaces.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+## class HuksKeyGenerateType
+
+```cangjie
+public class HuksKeyGenerateType {
+    public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(2)
+}
+```
+
+**Description:** Represents key generation types.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_GENERATE_TYPE_AGREE
+
+```cangjie
+public static const HUKS_KEY_GENERATE_TYPE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
+
+**Description:** Keys generated through agreement.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_GENERATE_TYPE_DEFAULT
+
+```cangjie
+public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: HuksParamValue = HuksParamValue.Uint32Value(0)
+```
+
+**Description:** Default generated keys.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_GENERATE_TYPE_DERIVE
+
+```cangjie
+public static const HUKS_KEY_GENERATE_TYPE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
+
+**Description:** Keys generated through derivation.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+## class HuksKeyPadding
+
+```cangjie
+public class HuksKeyPadding {
+    public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.Uint32Value(3)
+    public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.Uint32Value(4)
+    public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.Uint32Value(5)
+}
+```
+
+**Description:** Represents padding algorithms.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_PADDING_NONE
+
+```cangjie
+public static const HUKS_PADDING_NONE: HuksParamValue = HuksParamValue.Uint32Value(0)
+```
+
+**Description:** Indicates no padding algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_PADDING_OAEP
+
+```cangjie
+public static const HUKS_PADDING_OAEP: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
+
+**Description:** Indicates OAEP padding algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_PADDING_PKCS1_V1_5
+
+```cangjie
+public static const HUKS_PADDING_PKCS1_V1_5: HuksParamValue = HuksParamValue.Uint32Value(3)
+```
+
+**Description:** Indicates PKCS1_V1_5 padding algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_PADDING_PKCS5
+
+```cangjie
+public static const HUKS_PADDING_PKCS5: HuksParamValue = HuksParamValue.Uint32Value(4)
+```
+
+**Description:** Indicates PKCS5 padding algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_PADDING_PKCS7
+
+```cangjie
+public static const HUKS_PADDING_PKCS7: HuksParamValue = HuksParamValue.Uint32Value(5)
+```
+
+**Description:** Indicates PKCS7 padding algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_PADDING_PSS
+
+```cangjie
+public static const HUKS_PADDING_PSS: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
+
+**Description:** Indicates PSS padding algorithm.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+## class HuksKeyPurpose
+
+```cangjie
+public class HuksKeyPurpose {
+    public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.Uint32Value(4)
+    public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.Uint32Value(8)
+    public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(16)
+    public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.Uint32Value(32)
+    public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.Uint32Value(64)
+    public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.Uint32Value(128)
+    public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(256)
+}
+```
+
+**Description:** Represents key purposes.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_PURPOSE_AGREE
+
+```cangjie
+public static const HUKS_KEY_PURPOSE_AGREE: HuksParamValue = HuksParamValue.Uint32Value(256)
+```
+
+**Description:** Indicates keys used for key agreement.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_PURPOSE_DECRYPT
+
+```cangjie
+public static const HUKS_KEY_PURPOSE_DECRYPT: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
+
+**Description:** Indicates keys used for decrypting ciphertext.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_PURPOSE_DERIVE
+
+```cangjie
+public static const HUKS_KEY_PURPOSE_DERIVE: HuksParamValue = HuksParamValue.Uint32Value(16)
+```
+
+**Description:** Indicates keys used for key derivation.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_PURPOSE_ENCRYPT
+
+```cangjie
+public static const HUKS_KEY_PURPOSE_ENCRYPT: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
+
+**Description:** Indicates keys used for encrypting plaintext.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_PURPOSE_MAC
+
+```cangjie
+public static const HUKS_KEY_PURPOSE_MAC: HuksParamValue = HuksParamValue.Uint32Value(128)
+```
+
+**Description:** Indicates keys used for generating MAC message authentication codes.
+
+**Type:** [HuksParamValue](#enum-huksparamvalue)
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### static const HUKS_KEY_PURPOSE_SIGN
+
+```cangjie
+public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.Uint32Value(4)
+```
+
+**Description:** Indicates keys used for encrypted import.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2403,10 +1756,10 @@ public static const HUKS_KEY_PURPOSE_SIGN: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_KEY_PURPOSE_UNWRAP
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.uint32(64)
+public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.Uint32Value(64)
 ```
 
-**Function:** Indicates the key is used for encrypted import.
+**Description:** Indicates keys used for encrypted import.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2417,10 +1770,10 @@ public static const HUKS_KEY_PURPOSE_UNWRAP: HuksParamValue = HuksParamValue.uin
 ### static const HUKS_KEY_PURPOSE_VERIFY
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.uint32(8)
+public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.Uint32Value(8)
 ```
 
-**Function:** Indicates the key is used for verifying signed data.
+**Description:** Indicates keys used for verifying signed data.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2431,45 +1784,44 @@ public static const HUKS_KEY_PURPOSE_VERIFY: HuksParamValue = HuksParamValue.uin
 ### static const HUKS_KEY_PURPOSE_WRAP
 
 ```cangjie
-public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.uint32(32)
+public static const HUKS_KEY_PURPOSE_WRAP: HuksParamValue = HuksParamValue.Uint32Value(32)
 ```
 
-**Function:** Indicates the key is used for encrypted export.
+**Description:** Indicates keys used for encrypted export.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
-
-## class HuksKeySize
+```## class HuksKeySize
 
 ```cangjie
 public class HuksKeySize {
-    public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.uint32(512)
-    public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.uint32(768)
-    public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.uint32(1024)
-    public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.uint32(2048)
-    public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.uint32(3072)
-    public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.uint32(4096)
-    public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.uint32(224)
-    public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
-    public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.uint32(384)
-    public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.uint32(521)
-    public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
-    public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.uint32(192)
-    public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
-    public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.uint32(512)
-    public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
-    public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.uint32(2048)
-    public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.uint32(3072)
-    public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.uint32(4096)
-    public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
-    public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
+    public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
+    public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.Uint32Value(768)
+    public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.Uint32Value(1024)
+    public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
+    public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
+    public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
+    public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.Uint32Value(224)
+    public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+    public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.Uint32Value(384)
+    public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.Uint32Value(521)
+    public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
+    public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.Uint32Value(192)
+    public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+    public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
+    public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+    public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
+    public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
+    public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
+    public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
+    public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
 }
 ```
 
-**Function:** Represents the key size.
+**Function:** Represents key length.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -2478,10 +1830,10 @@ public class HuksKeySize {
 ### static const HUKS_AES_KEY_SIZE_128
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
+public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
 ```
 
-**Function:** Indicates a 128-bit key size for the 3DES algorithm.
+**Function:** Indicates a 128-bit key length for the 3DES algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2492,10 +1844,10 @@ public static const HUKS_AES_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_AES_KEY_SIZE_192
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.uint32(192)
+public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.Uint32Value(192)
 ```
 
-**Function:** Indicates a 192-bit key size for the AES algorithm.
+**Function:** Indicates a 192-bit key length for the 3DES algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2506,10 +1858,10 @@ public static const HUKS_AES_KEY_SIZE_192: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_AES_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
+public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
 ```
 
-**Function:** Indicates a 256-bit key size for the AES algorithm.
+**Function:** Indicates a 256-bit key length for the AES algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2520,10 +1872,10 @@ public static const HUKS_AES_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_AES_KEY_SIZE_512
 
 ```cangjie
-public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.uint32(512)
+public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
 ```
 
-**Function:** Indicates a 512-bit key size for the AES algorithm.
+**Function:** Indicates a 512-bit key length for the AES algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2534,10 +1886,10 @@ public static const HUKS_AES_KEY_SIZE_512: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_CURVE25519_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
+public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
 ```
 
-**Function:** Indicates a 256-bit key size for the CURVE25519 algorithm.
+**Function:** Indicates a 256-bit key length for the CURVE25519 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2548,10 +1900,10 @@ public static const HUKS_CURVE25519_KEY_SIZE_256: HuksParamValue = HuksParamValu
 ### static const HUKS_DH_KEY_SIZE_2048
 
 ```cangjie
-public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.uint32(2048)
+public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
 ```
 
-**Function:** Indicates a 2048-bit key size for the DH algorithm.
+**Function:** Indicates a 2048-bit key length for the DH algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2562,10 +1914,10 @@ public static const HUKS_DH_KEY_SIZE_2048: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_DH_KEY_SIZE_3072
 
 ```cangjie
-public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.uint32(3072)
+public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
 ```
 
-**Function:** Indicates a 3072-bit key size for the DH algorithm.
+**Function:** Indicates a 3072-bit key length for the DH algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2576,10 +1928,10 @@ public static const HUKS_DH_KEY_SIZE_3072: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_DH_KEY_SIZE_4096
 
 ```cangjie
-public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.uint32(4096)
+public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
 ```
 
-**Function:** Indicates a 4096-bit key size for the DH algorithm.
+**Function:** Indicates a 4096-bit key length for the DH algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2590,10 +1942,10 @@ public static const HUKS_DH_KEY_SIZE_4096: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_ECC_KEY_SIZE_224
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.uint32(224)
+public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.Uint32Value(224)
 ```
 
-**Function:** Indicates a 224-bit key size for the ECC algorithm.
+**Function:** Indicates a 224-bit key length for the ECC algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2604,10 +1956,10 @@ public static const HUKS_ECC_KEY_SIZE_224: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_ECC_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
+public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
 ```
 
-**Function:** Indicates a 256-bit key size for the ECC algorithm.
+**Function:** Indicates a 256-bit key length for the ECC algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2618,10 +1970,10 @@ public static const HUKS_ECC_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_ECC_KEY_SIZE_384
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.uint32(384)
+public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.Uint32Value(384)
 ```
 
-**Function:** Indicates a 384-bit key size for the ECC algorithm.
+**Function:** Indicates a 384-bit key length for the ECC algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2632,10 +1984,10 @@ public static const HUKS_ECC_KEY_SIZE_384: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_ECC_KEY_SIZE_521
 
 ```cangjie
-public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.uint32(521)
+public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.Uint32Value(521)
 ```
 
-**Function:** Indicates a 521-bit key size for the ECC algorithm.
+**Function:** Indicates a 521-bit key length for the ECC algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2646,10 +1998,10 @@ public static const HUKS_ECC_KEY_SIZE_521: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_RSA_KEY_SIZE_1024
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.uint32(1024)
+public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.Uint32Value(1024)
 ```
 
-**Function:** Indicates a 1024-bit key size for the RSA algorithm.
+**Function:** Indicates a 1024-bit key length for the RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2660,10 +2012,10 @@ public static const HUKS_RSA_KEY_SIZE_1024: HuksParamValue = HuksParamValue.uint
 ### static const HUKS_RSA_KEY_SIZE_2048
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.uint32(2048)
+public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.Uint32Value(2048)
 ```
 
-**Function:** Indicates a 2048-bit key size for the RSA algorithm.
+**Function:** Indicates a 2048-bit key length for the RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2674,10 +2026,10 @@ public static const HUKS_RSA_KEY_SIZE_2048: HuksParamValue = HuksParamValue.uint
 ### static const HUKS_RSA_KEY_SIZE_3072
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.uint32(3072)
+public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.Uint32Value(3072)
 ```
 
-**Function:** Indicates a 3072-bit key size for the RSA algorithm.
+**Function:** Indicates a 3072-bit key length for the RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2686,11 +2038,12 @@ public static const HUKS_RSA_KEY_SIZE_3072: HuksParamValue = HuksParamValue.uint
 **Since:** 21
 
 ### static const HUKS_RSA_KEY_SIZE_4096
+
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.uint32(4096)
+public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.Uint32Value(4096)
 ```
 
-**Function:** Indicates the RSA algorithm key length is 4096 bits.
+**Function:** Indicates a 4096-bit key length for the RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2701,10 +2054,10 @@ public static const HUKS_RSA_KEY_SIZE_4096: HuksParamValue = HuksParamValue.uint
 ### static const HUKS_RSA_KEY_SIZE_512
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.uint32(512)
+public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.Uint32Value(512)
 ```
 
-**Function:** Indicates the RSA algorithm key length is 512 bits.
+**Function:** Indicates a 512-bit key length for the RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2715,10 +2068,10 @@ public static const HUKS_RSA_KEY_SIZE_512: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_RSA_KEY_SIZE_768
 
 ```cangjie
-public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.uint32(768)
+public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.Uint32Value(768)
 ```
 
-**Function:** Indicates the RSA algorithm key length is 768 bits.
+**Function:** Indicates a 768-bit key length for the RSA algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2729,10 +2082,10 @@ public static const HUKS_RSA_KEY_SIZE_768: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_SM2_KEY_SIZE_256
 
 ```cangjie
-public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint32(256)
+public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.Uint32Value(256)
 ```
 
-**Function:** Indicates the SM2 algorithm key length is 256 bits.
+**Function:** Indicates a 256-bit key length for the SM2 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2743,10 +2096,10 @@ public static const HUKS_SM2_KEY_SIZE_256: HuksParamValue = HuksParamValue.uint3
 ### static const HUKS_SM4_KEY_SIZE_128
 
 ```cangjie
-public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint32(128)
+public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.Uint32Value(128)
 ```
 
-**Function:** Indicates the SM4 algorithm key length is 128 bits.
+**Function:** Indicates a 128-bit key length for the SM4 algorithm.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2758,14 +2111,12 @@ public static const HUKS_SM4_KEY_SIZE_128: HuksParamValue = HuksParamValue.uint3
 
 ```cangjie
 public class HuksKeyStorageType {
-    public static const HUKS_STORAGE_TEMP: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_STORAGE_PERSISTENT: HuksParamValue = HuksParamValue.uint32(1)
-    public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: HuksParamValue = HuksParamValue.uint32(2)
-    public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamValue.uint32(3)
+    public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: HuksParamValue = HuksParamValue.Uint32Value(2)
+    public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamValue.Uint32Value(3)
 }
 ```
 
-**Function:** Represents key storage methods.
+**Function:** Represents key storage method.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -2774,10 +2125,10 @@ public class HuksKeyStorageType {
 ### static const HUKS_STORAGE_KEY_EXPORT_ALLOWED
 
 ```cangjie
-public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamValue.uint32(3)
+public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamValue.Uint32Value(3)
 ```
 
-**Function:** Indicates that the key derived from the master key is directly exported to the service provider, and HUKS does not provide hosting services for it.
+**Function:** Indicates that the key derived from the master key can be directly exported to service providers, without being managed by HUKS.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2788,38 +2139,10 @@ public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: HuksParamValue = HuksParamV
 ### static const HUKS_STORAGE_ONLY_USED_IN_HUKS
 
 ```cangjie
-public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: HuksParamValue = HuksParamValue.uint32(2)
+public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: HuksParamValue = HuksParamValue.Uint32Value(2)
 ```
 
-**Function:** Indicates that the key derived from the master key is stored in HUKS and hosted by HUKS.
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-### static const HUKS_STORAGE_PERSISTENT
-
-```cangjie
-public static const HUKS_STORAGE_PERSISTENT: HuksParamValue = HuksParamValue.uint32(1)
-```
-
-**Function:** Indicates that the key is managed through the HUKS service.
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-### static const HUKS_STORAGE_TEMP
-
-```cangjie
-public static const HUKS_STORAGE_TEMP: HuksParamValue = HuksParamValue.uint32(0)
-```
-
-**Function:** Indicates that the key is managed locally.
+**Function:** Indicates that the key derived from the master key is stored in HUKS and managed by HUKS.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -2831,11 +2154,11 @@ public static const HUKS_STORAGE_TEMP: HuksParamValue = HuksParamValue.uint32(0)
 
 ```cangjie
 public class HuksOptions {
-    public HuksOptions(
-        public var properties: Option<Array<HuksParam>>,
-        public var inData: Option<Array<UInt8>>
-    )
-    public static let NONE = HuksOptions(None, None)
+    public var properties: Array<HuksParam>
+    public var inData: Bytes
+
+
+    public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes = Bytes())
 }
 ```
 
@@ -2845,31 +2168,17 @@ public class HuksOptions {
 
 **Since:** 21
 
-### static let NONE
-
-```cangjie
-public static let NONE: HuksOptions = HuksOptions(None, None)
-```
-
-**Function:** Obtains an empty HuksOptions instance.
-
-**Type:** [HuksOptions](#class-huksoptions)
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
 ### var inData
 
 ```cangjie
-public var inData: Option<Bytes>
+public var inData: Bytes
 ```
 
 **Function:** Input data.
 
-**Type:** [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes]
+**Type:** [Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#unsigned-integer-types)
 
-**Access:** Readable and writable
+**Read/Write Permission:** Readable and writable
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -2878,26 +2187,24 @@ public var inData: Option<Bytes>
 ### var properties
 
 ```cangjie
-public var properties: Option<Array<HuksParam>>
+public var properties: Array<HuksParam>
 ```
 
-**Function:** Properties, used to store an array of HuksParam.
+**Function:** Properties, an array for storing HuksParam objects.
 
-**Type:** [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Array\<[HuksParam](#class-huksparam)>>
+**Type:** Array\<[HuksParam](#class-huksparam)>
 
-**Access:** Readable and writable
+**Read/Write Permission:** Readable and writable
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
-### HuksOptions(Option\<Array\<HuksParam>>, Option\<Bytes>)
+### init(Array\<HuksParam>, Bytes)
 
 ```cangjie
-public HuksOptions(
-    public var properties: Option<Array<HuksParam>>,
-    public var inData: Option<Array<UInt8>>
-)
+
+public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes = Bytes())
 ```
 
 **Function:** Constructs an options instance for API calls.
@@ -2908,70 +2215,67 @@ public HuksOptions(
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| properties | [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Array\<[HuksParam](#class-huksparam)>> | No | - | Properties, used to store an array of HuksParam. |
-| inData | [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes] | No | - | Input data. |
-
-## class HuksParam
+| properties | Array\<[HuksParam](#class-huksparam)> | No | Array<HuksParam>() | Properties, an array for storing HuksParam objects. |
+| inData | [Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#unsigned-integer-types) | No | Bytes() | Input data. |## class HuksParam
 
 ```cangjie
 public class HuksParam {
-    public HuksParam(
-        public let tag: HuksTag,
-        public let value: HuksParamValue
-    )
+    public var tag: HuksTag
+    public var value: HuksParamValue
+
+
+    public init(tag: HuksTag, value: HuksParamValue)
 }
 ```
 
-**Function:** Element in the properties array of [HuksOptions](#class-huksoptions).
+**Description:** An element in the properties array of [HuksOptions](#class-huksoptions).
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
-### let tag
+### var tag
 
 ```cangjie
-public let tag: HuksTag
+public var tag: HuksTag
 ```
 
-**Function:** Tag.
+**Description:** The tag.
 
 **Type:** [HuksTag](#enum-hukstag)
 
-**Access:** Read-only
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
-### let value
+### var value
 
 ```cangjie
-public let value: HuksParamValue
+public var value: HuksParamValue
 ```
 
-**Function:** Value corresponding to the tag.
+**Description:** The value corresponding to the tag.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Access:** Read-only
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
-### HuksParam(HuksTag, HuksParamValue)
+### init(HuksTag, HuksParamValue)
 
 ```cangjie
-public HuksParam(
-    public let tag: HuksTag,
-    public let value: HuksParamValue
-)
+
+public init(tag: HuksTag, value: HuksParamValue)
 ```
 
-**Function:** Constructs an element instance for the properties array in [HuksOptions](#class-huksoptions).
+**Description:** Constructs an instance of an element in the properties array of [HuksOptions](#class-huksoptions).
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -2979,110 +2283,21 @@ public HuksParam(
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|:---|:---|:---|:---|
-| tag | [HuksTag](#enum-hukstag) | Yes | Tag. |
-| value | [HuksParamValue](#enum-huksparamvalue) | Yes | Value corresponding to the tag. |
-
-## class HuksReturnResult
-```cangjie
-public class HuksReturnResult {
-    public HuksReturnResult(
-        public let outData: Option<Array<UInt8>>,
-        public let properties: Option<Array<HuksParam>>,
-        public let certChains: Option<Array<String>>
-    )
-}
-```
-
-**Function:** Represents the interface return result, storing returned data.
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-### let certChains
-
-```cangjie
-public let certChains: Option<Array<String>>
-```
-
-**Function:** Represents certificate chain data.
-
-**Type:** [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Array\<String>>
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-### let outData
-
-```cangjie
-public let outData: Option<Bytes>
-```
-
-**Function:** Represents output data.
-
-**Type:** [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes]>
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-### let properties
-
-```cangjie
-public let properties: Option<Array<HuksParam>>
-```
-
-**Function:** Represents property information.
-
-**Type:** [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Array\<[HuksParam](#class-huksparam)>>
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-### HuksReturnResult(Option\<Bytes>, Option\<Array\<HuksParam>>, Option\<Array\<String>>)
-
-```cangjie
-public HuksReturnResult(
-    public let outData: Option<Array<UInt8>>,
-    public let properties: Option<Array<HuksParam>>,
-    public let certChains: Option<Array<String>>
-)
-```
-
-**Function:** Constructs a HuksReturnResult instance.
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| outData | [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes]> | No | - | Represents output data. |
-| properties | [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Array\<[HuksParam](#class-huksparam)>> | No | - | Represents property information. |
-| certChains | [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Array\<String>> | No | - | Represents certificate chain data. |
+|tag|[HuksTag](#enum-hukstag)|Yes|-|The tag.|
+|value|[HuksParamValue](#enum-huksparamvalue)|Yes|-|The value corresponding to the tag.|
 
 ## class HuksRsaPssSaltLenType
 
 ```cangjie
 public class HuksRsaPssSaltLenType {
-    public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.uint32(1)
+    public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.Uint32Value(1)
 }
 ```
 
-**Function:** Represents the salt_len type required when RSA performs signing or verification with PSS padding.
+**Description:** Represents the salt_len type to be specified when RSA performs signing or verification with PSS padding.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -3091,10 +2306,10 @@ public class HuksRsaPssSaltLenType {
 ### static const HUKS_RSA_PSS_SALT_LEN_DIGEST
 
 ```cangjie
-public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValue.uint32(0)
+public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValue.Uint32Value(0)
 ```
 
-**Function:** Sets salt_len using digest length.
+**Description:** Indicates setting salt_len based on the digest length.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -3105,10 +2320,10 @@ public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: HuksParamValue = HuksParamValu
 ### static const HUKS_RSA_PSS_SALT_LEN_MAX
 
 ```cangjie
-public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Function:** Sets salt_len using maximum length.
+**Description:** Indicates setting salt_len to the maximum length.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -3120,11 +2335,11 @@ public static const HUKS_RSA_PSS_SALT_LEN_MAX: HuksParamValue = HuksParamValue.u
 
 ```cangjie
 public class HuksSecureSignType {
-    public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamValue.uint32(1)
+    public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamValue.Uint32Value(1)
 }
 ```
 
-**Function:** Specifies the signature type of a key during generation or import.
+**Description:** Specifies the signature type of a key when generating or importing it.
 
 **System Capability:** SystemCapability.Security.Huks.Extension
 
@@ -3133,10 +2348,10 @@ public class HuksSecureSignType {
 ### static const HUKS_SECURE_SIGN_WITH_AUTHINFO
 
 ```cangjie
-public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Function:** Indicates the signature type includes authentication information. When specified during key generation or import, authentication information will be added to the data before signing.
+**Description:** Indicates that the signature type carries authentication information. When this field is specified during key generation or import, authentication information is added to the data to be signed before signing.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -3148,12 +2363,12 @@ public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: HuksParamValue = HuksParamVa
 
 ```cangjie
 public class HuksSendType {
-    public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.uint32(0)
-    public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.uint32(1)
+    public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.Uint32Value(0)
+    public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.Uint32Value(1)
 }
 ```
 
-**Function:** Represents the method of sending Tags.
+**Description:** Represents the method of sending a Tag.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -3162,10 +2377,10 @@ public class HuksSendType {
 ### static const HUKS_SEND_TYPE_ASYNC
 
 ```cangjie
-public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.uint32(0)
+public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.Uint32Value(0)
 ```
 
-**Function:** Indicates asynchronous Tag sending.
+**Description:** Indicates sending a Tag asynchronously.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -3176,10 +2391,10 @@ public static const HUKS_SEND_TYPE_ASYNC: HuksParamValue = HuksParamValue.uint32
 ### static const HUKS_SEND_TYPE_SYNC
 
 ```cangjie
-public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.uint32(1)
+public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.Uint32Value(1)
 ```
 
-**Function:** Indicates synchronous Tag sending.
+**Description:** Indicates sending a Tag synchronously.
 
 **Type:** [HuksParamValue](#enum-huksparamvalue)
 
@@ -3191,72 +2406,48 @@ public static const HUKS_SEND_TYPE_SYNC: HuksParamValue = HuksParamValue.uint32(
 
 ```cangjie
 public class HuksSessionHandle {
-    public HuksSessionHandle(
-        public let handle: HuksHandle,
-        public let challenge: Option<Array<UInt8>>
-    )
+    public var handle: HuksHandleId
+    public var challenge: Bytes
 }
 ```
 
-**Function:** Represents the huks Handle structure.
+**Description:** The huks Handle structure.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
-### let challenge
+### var challenge
 
 ```cangjie
-public let challenge: Option<Bytes>
+public var challenge: Bytes
 ```
 
-**Function:** Represents the challenge information obtained after [initSession](#func-initsessionstring-huksoptions) operation.
+**Description:** Represents the challenge information obtained after the [initSession](#func-initsessionstring-huksoptions) operation.
 
-**Type:** [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes]>
+**Type:** [Bytes](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#unsigned-integer-types)
 
-**Access:** Read-only
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
 
-### let handle
+### var handle
 
 ```cangjie
-public let handle: HuksHandle
+public var handle: HuksHandleId
 ```
 
-**Function:** Represents the handle value.
+**Description:** Represents the handle value.
 
-**Type:** [HuksHandle](#class-hukshandle)
+**Type:** [HuksHandleId](#class-hukshandleid)
 
-**Access:** Read-only
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
 **Since:** 21
-
-### HuksSessionHandle(HuksHandle, Option\<Bytes>)
-
-```cangjie
-public HuksSessionHandle(
-    public let handle: HuksHandle,
-    public let challenge: Option<Array<UInt8>>
-)
-```
-
-**Function:** Constructs a HuksSessionHandle instance.
-
-**System Capability:** SystemCapability.Security.Huks.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| handle | [HuksHandle](#class-hukshandle) | No | - | Represents the handle value. |
-| challenge | [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes]> | No | - | Represents the challenge information obtained after [initSession](#func-initsessionstring-huksoptions) operation. |
 
 ## class HuksTagType
 
@@ -3271,7 +2462,7 @@ public class HuksTagType {
 }
 ```
 
-**Function:** Represents the data type of a Tag.
+**Description:** Represents the data type of a Tag.
 
 **System Capability:** SystemCapability.Security.Huks.Core
 
@@ -3280,1594 +2471,1389 @@ public class HuksTagType {
 ### static const HUKS_TAG_TYPE_BOOL
 
 ```cangjie
-public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
+public static const HUKS_TAG_TYPE_BOL: UInt32 = 4 << 28
 ```
 
-**Function:** Indicates the Tag's data type is boolean.
-**Type:** UInt32  
+**Description:** Indicates that the Tag's data type is boolean.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** UInt32
 
-**Since:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### static const HUKS_TAG_TYPE_BYTES  
+**Since:** 21
 
-```cangjie  
-public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28  
-```  
-
-**Description:** Indicates the data type of this Tag is Uint8Array.  
-
-**Type:** UInt32  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### static const HUKS_TAG_TYPE_INT  
-
-```cangjie  
-public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28  
-```  
-
-**Description:** Indicates the data type of this Tag is UInt32.  
-
-**Type:** UInt32  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### static const HUKS_TAG_TYPE_INVALID  
-
-```cangjie  
-public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28  
-```  
-
-**Description:** Indicates an invalid Tag type.  
-
-**Type:** UInt32  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### static const HUKS_TAG_TYPE_UINT  
-
-```cangjie  
-public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28  
-```  
-
-**Description:** Indicates the data type of this Tag is UInt32.  
-
-**Type:** UInt32  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### static const HUKS_TAG_TYPE_ULONG  
-
-```cangjie  
-public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28  
-```  
-
-**Description:** Indicates the data type of this Tag is bigint.  
-
-**Type:** UInt32  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-## class HuksUnwrapSuite  
-
-```cangjie  
-public class HuksUnwrapSuite {  
-    public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.uint32(1)  
-    public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.uint32(2)  
-}  
-```  
-
-**Description:** Represents the algorithm suite for importing encrypted keys.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING  
-
-```cangjie  
-public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.uint32(2)  
-```  
-
-**Description:** When importing an encrypted key, uses AES-256 GCM encryption after ECDH key agreement.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING  
-
-```cangjie  
-public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.uint32(1)  
-```  
-
-**Description:** When importing an encrypted key, uses AES-256 GCM encryption after X25519 key agreement.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-## class HuksUserAuthType  
-
-```cangjie  
-public class HuksUserAuthType {  
-    public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.uint32(1 << 0)  
-    public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.uint32(1 << 1)  
-    public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.uint32(1 << 2)  
-}  
-```  
-
-**Description:** Represents user authentication types.  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Since:** 21  
-
-### static const HUKS_USER_AUTH_TYPE_FACE  
-
-```cangjie  
-public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.uint32(1 << 1)  
-```  
-
-**Description:** Indicates the user authentication type is facial recognition.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Since:** 21  
-
-### static const HUKS_USER_AUTH_TYPE_FINGERPRINT  
-
-```cangjie  
-public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.uint32(1 << 0)  
-```  
-
-**Description:** Indicates the user authentication type is fingerprint.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Since:** 21  
-
-### static const HUKS_USER_AUTH_TYPE_PIN  
-
-```cangjie  
-public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.uint32(1 << 2)  
-```  
-
-**Description:** Indicates the user authentication type is PIN.  
-
-**Type:** [HuksParamValue](#enum-huksparamvalue)  
-
-**System Capability:** SystemCapability.Security.Huks.Extension  
-
-**Since:** 21  
-
-## enum HuksParamValue  
-
-```cangjie  
-public enum HuksParamValue {  
-    | boolean(Bool)  
-    | int32(Int32)  
-    | uint32(UInt32)  
-    | uint64(UInt64)  
-    | bytes(Bytes)  
-    | ...  
-}  
-```  
-
-**Description:** Used to represent the value of `value` in HuksParam, supporting Bool, Int32, UInt32, UInt64, and Array\<UInt8> formats.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### boolean(Bool)  
-
-```cangjie  
-boolean(Bool)  
-```  
-
-**Description:** This field is used to pass a Bool-type value.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### bytes(Bytes)  
-
-```cangjie  
-bytes(Bytes)  
-```  
-
-**Description:** This field is used to pass an Array\<Bytes>-type value.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### int32(Int32)  
-
-```cangjie  
-int32(Int32)  
-```  
-
-**Description:** This field is used to pass an Int32-type value.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### uint32(UInt32)  
-
-```cangjie  
-uint32(UInt32)  
-```  
-
-**Description:** This field is used to pass a UInt32-type value.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### uint64(UInt64)  
-
-```cangjie  
-uint64(UInt64)  
-```  
-
-**Description:** This field is used to pass a UInt64-type value.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-### func toBool()  
-
-```cangjie  
-public func toBool(): Option<Bool>  
-```  
-
-**Description:** Gets the Bool value of HuksParamValue.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Bool> | Returns the Bool value of HuksParamValue. |  
-
-### func toBytes()  
-
-```cangjie  
-public func toBytes(): Option<Bytes>  
-```  
-
-**Description:** Gets the Array\<Bytes> value of HuksParamValue.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Since:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<[Bytes]> | Returns the Bytes value of HuksParamValue. |  
-
-### func toInt32()  
-
-```cangjie  
-public func toInt32(): Option<Int32>  
-```  
-
-**Description:** Gets the Int32 value of HuksParamValue.**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<Int32> | Returns the Int32 value of HuksParamValue. |  
-
-### func toUInt32()  
-
-```cangjie  
-public func toUInt32(): Option<UInt32>  
-```  
-
-**Function:** Gets the UInt32 value of HuksParamValue.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<UInt32> | Returns the UInt32 value of HuksParamValue. |  
-
-### func toUInt64()  
-
-```cangjie  
-public func toUInt64(): Option<UInt64>  
-```  
-
-**Function:** Gets the UInt64 value of HuksParamValue.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [Option](#huksoptionsoptionarrayhuksparam-optionbytes)\<UInt64> | Returns the UInt64 value of HuksParamValue. |  
-
-### func |(HuksParamValue)  
-
-```cangjie  
-public operator func |(other: HuksParamValue): HuksParamValue  
-```  
-
-**Function:** Performs a bitwise OR operation between the UInt32 value of the current HuksParamValue and another HuksParamValue's UInt32 value.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [HuksParamValue](#enum-huksparamvalue) | Yes | - | The HuksParamValue to perform the OR operation with. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| [HuksParamValue](#enum-huksparamvalue) | Returns the HuksParamValue after the OR operation. |  
-
-## enum HuksTag  
-
-```cangjie  
-public enum HuksTag {  
-    | HUKS_TAGS_CANGJIE_UNKNOWN(UInt32)  
-    | HUKS_TAG_INVALID  
-    | HUKS_TAG_ALGORITHM  
-    | HUKS_TAG_PURPOSE  
-    | HUKS_TAG_KEY_SIZE  
-    | HUKS_TAG_DIGEST  
-    | HUKS_TAG_PADDING  
-    | HUKS_TAG_BLOCK_MODE  
-    | HUKS_TAG_KEY_TYPE  
-    | HUKS_TAG_ASSOCIATED_DATA  
-    | HUKS_TAG_NONCE  
-    | HUKS_TAG_IV  
-    | HUKS_TAG_INFO  
-    | HUKS_TAG_SALT  
-    | HUKS_TAG_PWD  
-    | HUKS_TAG_ITERATION  
-    | HUKS_TAG_KEY_GENERATE_TYPE  
-    | HUKS_TAG_DERIVE_MAIN_KEY  
-    | HUKS_TAG_DERIVE_FACTOR  
-    | HUKS_TAG_DERIVE_ALG  
-    | HUKS_TAG_AGREE_ALG  
-    | HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS  
-    | HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS  
-    | HUKS_TAG_AGREE_PUBLIC_KEY  
-    | HUKS_TAG_KEY_ALIAS  
-    | HUKS_TAG_DERIVE_KEY_SIZE  
-    | HUKS_TAG_IMPORT_KEY_TYPE  
-    | HUKS_TAG_UNWRAP_ALGORITHM_SUITE  
-    | HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG  
-    | HUKS_TAG_RSA_PSS_SALT_LEN_TYPE  
-    | HUKS_TAG_ACTIVE_DATETIME  
-    | HUKS_TAG_ORIGINATION_EXPIRE_DATETIME  
-    | HUKS_TAG_USAGE_EXPIRE_DATETIME  
-    | HUKS_TAG_CREATION_DATETIME  
-    | HUKS_TAG_ALL_USERS  
-    | HUKS_TAG_USER_ID  
-    | HUKS_TAG_NO_AUTH_REQUIRED  
-    | HUKS_TAG_USER_AUTH_TYPE  
-    | HUKS_TAG_AUTH_TIMEOUT  
-    | HUKS_TAG_AUTH_TOKEN  
-    | HUKS_TAG_KEY_AUTH_ACCESS_TYPE  
-    | HUKS_TAG_KEY_SECURE_SIGN_TYPE  
-    | HUKS_TAG_CHALLENGE_TYPE  
-    | HUKS_TAG_CHALLENGE_POS  
-    | HUKS_TAG_KEY_AUTH_PURPOSE  
-    | HUKS_TAG_ATTESTATION_CHALLENGE  
-    | HUKS_TAG_ATTESTATION_APPLICATION_ID  
-    | HUKS_TAG_ATTESTATION_ID_BRAND  
-    | HUKS_TAG_ATTESTATION_ID_DEVICE  
-    | HUKS_TAG_ATTESTATION_ID_PRODUCT  
-    | HUKS_TAG_ATTESTATION_ID_SERIAL  
-    | HUKS_TAG_ATTESTATION_ID_IMEI  
-    | HUKS_TAG_ATTESTATION_ID_MEID  
-    | HUKS_TAG_ATTESTATION_ID_MANUFACTURER  
-    | HUKS_TAG_ATTESTATION_ID_MODEL  
-    | HUKS_TAG_ATTESTATION_ID_ALIAS  
-    | HUKS_TAG_ATTESTATION_ID_SOCID  
-    | HUKS_TAG_ATTESTATION_ID_UDID  
-    | HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO  
-    | HUKS_TAG_ATTESTATION_ID_VERSION_INFO  
-    | HUKS_TAG_ATTESTATION_BASE64  
-    | HUKS_TAG_ATTESTATION_MODE  
-    | HUKS_TAG_ATTESTATION_APPLICATION_ID_TYPE  
-    | HUKS_TAG_IS_KEY_ALIAS  
-    | HUKS_TAG_KEY_STORAGE_FLAG  
-    | HUKS_TAG_IS_ALLOWED_WRAP  
-    | HUKS_TAG_KEY_WRAP_TYPE  
-    | HUKS_TAG_KEY_AUTH_ID  
-    | HUKS_TAG_KEY_ROLE  
-    | HUKS_TAG_KEY_FLAG  
-    | HUKS_TAG_IS_ASYNCHRONIZED  
-    | HUKS_TAG_SECURE_KEY_ALIAS  
-    | HUKS_TAG_SECURE_KEY_UUID  
-    | HUKS_TAG_KEY_DOMAIN  
-    | HUKS_TAG_PROCESS_NAME  
-    | HUKS_TAG_PACKAGE_NAME  
-    | HUKS_TAG_ACCESS_TIME  
-    | HUKS_TAG_USES_TIME  
-    | HUKS_TAG_CRYPTO_CTX  
-    | HUKS_TAG_KEY  
-    | HUKS_TAG_KEY_VERSION  
-    | HUKS_TAG_PAYLOAD_LEN  
-    | HUKS_TAG_AE_TAG  
-    | HUKS_TAG_IS_KEY_HANDLE  
-    | HUKS_TAG_OS_VERSION  
-    | HUKS_TAG_OS_PATCHLEVEL  
-    | HUKS_TAG_SYMMETRIC_KEY_DATA  
-    | HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA  
-    | HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA  
-}  
-```  
-
-**Function:** Represents the tags for calling parameters.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAGS_CANGJIE_UNKNOWN(UInt32)  
-
-```cangjie  
-HUKS_TAGS_CANGJIE_UNKNOWN(UInt32)  
-```  
-
-**Function:** Compatible with tags whose values fall outside the known enumeration range.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ACCESS_TIME  
-
-```cangjie  
-HUKS_TAG_ACCESS_TIME  
-```  
-
-**Function:** Originally reserved, now deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ACTIVE_DATETIME  
-
-```cangjie  
-HUKS_TAG_ACTIVE_DATETIME  
-```  
-
-**Function:** Originally reserved for certificate services, now deprecated as certificate management has been separated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AE_TAG  
-
-```cangjie  
-HUKS_TAG_AE_TAG  
-```  
-
-**Function:** Used for passing AEAD data in GCM mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AGREE_ALG  
-
-```cangjie  
-HUKS_TAG_AGREE_ALG  
-```  
-
-**Function:** Represents the algorithm type for key agreement.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS  
-
-```cangjie  
-HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS  
-```  
-
-**Function:** Represents the private key alias for key agreement.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AGREE_PUBLIC_KEY  
-
-```cangjie  
-HUKS_TAG_AGREE_PUBLIC_KEY  
-```  
-
-**Function:** Represents the public key for key agreement.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS  
-
-```cangjie  
-HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS  
-```  
-
-**Function:** Represents the public key alias for key agreement.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ALGORITHM  
-
-```cangjie  
-HUKS_TAG_ALGORITHM  
-```  
-
-**Function:** Represents the tag for algorithms.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ALL_USERS  
-
-```cangjie  
-HUKS_TAG_ALL_USERS  
-```  
-
-**Function:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ASSOCIATED_DATA  
-
-```cangjie  
-HUKS_TAG_ASSOCIATED_DATA  
-```  
-
-**Function:** Represents the tag for additional authenticated data.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA  
-
-```cangjie  
-HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA  
-```  
-
-**Functionality:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA  
-
-```cangjie  
-HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA  
-```  
-
-**Functionality:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_APPLICATION_ID  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_APPLICATION_ID  
-```  
-
-**Functionality:** Represents the ID of the application that owns the key during attestation.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_APPLICATION_ID_TYPE  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_APPLICATION_ID_TYPE  
-```  
-
-**Functionality:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_BASE64  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_BASE64  
-```  
-
-**Functionality:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_CHALLENGE  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_CHALLENGE  
-```  
-
-**Functionality:** Represents the challenge value during attestation.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_ALIAS  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_ALIAS  
-```  
-
-**Functionality:** Represents the key alias during attestation.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_BRAND  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_BRAND  
-```  
-
-**Functionality:** Represents the device brand. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_DEVICE  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_DEVICE  
-```  
-
-**Functionality:** Represents the device ID. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_IMEI  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_IMEI  
-```  
-
-**Functionality:** Represents the device IMEI number. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_MANUFACTURER  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_MANUFACTURER  
-```  
-
-**Functionality:** Represents the device manufacturer. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_MEID  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_MEID  
-```  
-
-**Functionality:** Represents the device MEID number. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_MODEL  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_MODEL  
-```  
-
-**Functionality:** Represents the device model. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_PRODUCT  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_PRODUCT  
-```  
-
-**Functionality:** Represents the device product name. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO  
-```  
-
-**Functionality:** Represents the security credentials during attestation.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_SERIAL  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_SERIAL  
-```  
-
-**Functionality:** Represents the device serial number. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_SOCID  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_SOCID  
-```  
-
-**Functionality:** Represents the device SOCID. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_UDID  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_UDID  
-```  
-
-**Functionality:** Represents the device UDID. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_ID_VERSION_INFO  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_ID_VERSION_INFO  
-```  
-
-**Functionality:** Represents the version number during attestation.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ATTESTATION_MODE  
-
-```cangjie  
-HUKS_TAG_ATTESTATION_MODE  
-```  
-
-**Functionality:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AUTH_TIMEOUT  
-
-```cangjie  
-HUKS_TAG_AUTH_TIMEOUT  
-```  
-
-**Functionality:** Represents the single-use validity period of the auth token.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_AUTH_TOKEN  
-
-```cangjie  
-HUKS_TAG_AUTH_TOKEN  
-```  
-
-**Functionality:** Field used to pass the authToken.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_BLOCK_MODE  
-
-```cangjie  
-HUKS_TAG_BLOCK_MODE  
-```  
-
-**Functionality:** Represents the tag for encryption mode.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_CHALLENGE_POS  
-
-```cangjie  
-HUKS_TAG_CHALLENGE_POS  
-```  
-
-**Functionality:** When the challenge type is user-defined, the effective length of the challenge generated by Huks is only 8 bytes of consecutive data. Selected from [HuksChallengePosition](#class-hukschallengeposition).  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_CHALLENGE_TYPE  
-
-```cangjie  
-HUKS_TAG_CHALLENGE_TYPE  
-```  
-
-**Functionality:** Represents the type of challenge generated during key usage. Selected from [HuksChallengeType](#class-hukschallengetype).  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_CREATION_DATETIME  
-
-```cangjie 
-HUKS_TAG_CREATION_DATETIME  
-```  
-
-**Description:** Originally reserved for certificate services. Now that certificate management has been decoupled, this field is deprecated and no longer reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_CRYPTO_CTX  
+### static const HUKS_TAG_TYPE_BYTES
 
 ```cangjie
-HUKS_TAG_CRYPTO_CTX  
-```  
+public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28
+```
 
-**Description:** Originally a reserved field, now deprecated.  
+**Description:** Indicates that the Tag's data type is Uint8Array.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** UInt32
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG  
-```  
-
-**Description:** Indicates the storage type of derived/agreed keys.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_DERIVE_ALG  
+### static const HUKS_TAG_TYPE_INT
 
 ```cangjie
-HUKS_TAG_DERIVE_ALG  
-```  
+public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
+```
 
-**Description:** Indicates the algorithm type for key derivation. Deprecated.  
+**Description:** Indicates that the Tag's data type is UInt32.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** UInt32
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_DERIVE_FACTOR  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_DERIVE_FACTOR  
-```  
-
-**Description:** Indicates the derivation factor for key derivation. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_DERIVE_KEY_SIZE  
+### static const HUKS_TAG_TYPE_INVALID
 
 ```cangjie
-HUKS_TAG_DERIVE_KEY_SIZE  
-```  
+public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
+```
 
-**Description:** Indicates the size of the derived key.  
+**Description:** Indicates an invalid Tag type.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** UInt32
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_DERIVE_MAIN_KEY  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_DERIVE_MAIN_KEY  
-```  
-
-**Description:** Indicates the master key for key derivation. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_DIGEST  
+### static const HUKS_TAG_TYPE_UINT
 
 ```cangjie
-HUKS_TAG_DIGEST  
-```  
+public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
+```
 
-**Description:** Represents the tag for digest algorithms.  
+**Description:** Indicates that the Tag's data type is UInt32.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** UInt32
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_IMPORT_KEY_TYPE  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_IMPORT_KEY_TYPE  
-```  
-
-**Description:** Indicates the type of imported keys.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_INFO  
+### static const HUKS_TAG_TYPE_ULONG
 
 ```cangjie
-HUKS_TAG_INFO  
-```  
+public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
+```
 
-**Description:** Represents the info parameter for key derivation.  
+**Description:** Indicates that the Tag's data type is bigint.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** UInt32
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_INVALID  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_INVALID  
-```  
-
-**Description:** Indicates an invalid tag. Deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_IS_ALLOWED_WRAP  
+## class HuksUnwrapSuite
 
 ```cangjie
-HUKS_TAG_IS_ALLOWED_WRAP  
-```  
+public class HuksUnwrapSuite {
+    public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(1)
+    public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(2)
+}
+```
 
-**Description:** Reserved.  
+**Description:** Represents the algorithm suite for importing encrypted keys.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Initial Version:** 21  
+**Since:** 21
 
-### HUKS_TAG_IS_ASYNCHRONIZED  
-
-```cangjie
-HUKS_TAG_IS_ASYNCHRONIZED  
-```  
-
-**Description:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_IS_KEY_ALIAS  
+### static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
 
 ```cangjie
-HUKS_TAG_IS_KEY_ALIAS  
-```  
+public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(2)
+```
 
-**Description:** Indicates whether to use the alias passed during key generation.  
+**Description:** When importing an encrypted key, uses AES-256 GCM encryption after ECDH key agreement.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_IS_KEY_HANDLE  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_IS_KEY_HANDLE  
-```  
-
-**Description:** Originally a reserved field, now deprecated.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_ITERATION  
+### static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
 
 ```cangjie
-HUKS_TAG_ITERATION  
-```  
+public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: HuksParamValue = HuksParamValue.Uint32Value(1)
+```
 
-**Description:** Indicates the iteration count for key derivation.  
+**Description:** When importing an encrypted key, uses AES-256 GCM encryption after X25519 key agreement.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_IV  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_IV  
-```  
-
-**Description:** Represents the initialization vector for key initialization.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_KEY  
+## class HuksUserAuthType
 
 ```cangjie
-HUKS_TAG_KEY  
-```  
+public class HuksUserAuthType {
+    public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
+    public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
+    public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.Uint32Value(1 << 2)
+}
+```
 
-**Description:** Reserved.  
+**Description:** Represents the user authentication type.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**System Capability:** SystemCapability.Security.Huks.Extension
 
-**Initial Version:** 21  
+**Since:** 21
 
-### HUKS_TAG_KEY_ALIAS  
-
-```cangjie
-HUKS_TAG_KEY_ALIAS  
-```  
-
-**Description:** Represents the key alias.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_KEY_AUTH_ACCESS_TYPE  
+### static const HUKS_USER_AUTH_TYPE_FACE
 
 ```cangjie
-HUKS_TAG_KEY_AUTH_ACCESS_TYPE  
-```  
+public static const HUKS_USER_AUTH_TYPE_FACE: HuksParamValue = HuksParamValue.Uint32Value(1 << 1)
+```
 
-**Description:** Indicates the secure access control type. Selected from [HuksAuthAccessType](#class-huksauthaccesstype) and must be set concurrently with the user authentication type.  
+**Description:** Indicates that the user authentication type is face recognition.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Extension
 
-### HUKS_TAG_KEY_AUTH_ID  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_KEY_AUTH_ID  
-```  
-
-**Description:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_KEY_AUTH_PURPOSE  
+### static const HUKS_USER_AUTH_TYPE_FINGERPRINT
 
 ```cangjie
-HUKS_TAG_KEY_AUTH_PURPOSE  
-```  
+public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: HuksParamValue = HuksParamValue.Uint32Value(1 << 0)
+```
 
-**Description:** Represents the tag for key authentication purposes.  
+**Description:** Indicates that the user authentication type is fingerprint.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Extension
 
-### HUKS_TAG_KEY_DOMAIN  
+**Since:** 21
 
-```cangjie
-HUKS_TAG_KEY_DOMAIN  
-```  
-
-**Description:** Reserved.  
-
-**System Capability:** SystemCapability.Security.Huks.Core  
-
-**Initial Version:** 21  
-
-### HUKS_TAG_KEY_FLAG  
+### static const HUKS_USER_AUTH_TYPE_PIN
 
 ```cangjie
-HUKS_TAG_KEY_FLAG  
-```  
+public static const HUKS_USER_AUTH_TYPE_PIN: HuksParamValue = HuksParamValue.Uint32Value(1 << 2)
+```
 
-**Description:** Represents the tag for key flags.  
+**Description:** Indicates that the user authentication type is PIN code.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Type:** [HuksParamValue](#enum-huksparamvalue)
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Extension
 
-### HUKS_TAG_KEY_GENERATE_TYPE  
+**Since:** 21## enum HuksParamValue
 
 ```cangjie
-HUKS_TAG_KEY_GENERATE_TYPE  
-```  
+public enum HuksParamValue {
+    | BooleanValue(Bool)
+    | Int32Value(Int32)
+    | Uint32Value(UInt32)
+    | Uint64Value(UInt64)
+    | BytesValue(Bytes)
+    | ...
+}
+```
 
-**Description:** Represents the tag for key generation types.  
+**Description:** Used to represent the value of `value` in HuksParam, supporting Bool, Int32, UInt32, UInt64, and Array\<UInt8> formats.
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Initial Version:** 21**System Capability:** SystemCapability.Security.Huks.Core  
+**Since:** 21
 
-**Initial Version:** 21  
+### BooleanValue(Bool)
 
-### HUKS_TAG_KEY_ROLE  
+```cangjie
+BooleanValue(Bool)
+```
+
+**Description:** This field is used to pass a Bool-type value.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### BytesValue(Bytes)
+
+```cangjie
+BytesValue(Bytes)
+```
+
+**Description:** This field is used to pass a Bytes-type value.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### Int32Value(Int32)
+
+```cangjie
+Int32Value(Int32)
+```
+
+**Description:** This field is used to pass an Int32-type value.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### Uint32Value(UInt32)
+
+```cangjie
+Uint32Value(UInt32)
+```
+
+**Description:** This field is used to pass a UInt32-type value.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### Uint64Value(UInt64)
+
+```cangjie
+Uint64Value(UInt64)
+```
+
+**Description:** This field is used to pass a UInt64-type value.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+## enum HuksTag
+
+```cangjie
+public enum HuksTag {
+    | HuksTagInvalid
+    | HuksTagAlgorithm
+    | HuksTagPurpose
+    | HuksTagKeySize
+    | HuksTagDigest
+    | HuksTagPadding
+    | HuksTagBlockMode
+    | HuksTagKeyType
+    | HuksTagAssociatedData
+    | HuksTagNonce
+    | HuksTagIv
+    | HuksTagInfo
+    | HuksTagSalt
+    | HuksTagPwd
+    | HuksTagIteration
+    | HuksTagKeyGenerateType
+    | HuksTagDeriveMainKey
+    | HuksTagDeriveFactor
+    | HuksTagDeriveAlg
+    | HuksTagAgreeAlg
+    | HuksTagAgreePublicKeyIsKeyAlias
+    | HuksTagAgreePrivateKeyAlias
+    | HuksTagAgreePublicKey
+    | HuksTagKeyAlias
+    | HuksTagDeriveKeySize
+    | HuksTagImportKeyType
+    | HuksTagUnwrapAlgorithmSuite
+    | HuksTagDerivedAgreedKeyStorageFlag
+    | HuksTagRsaPssSaltLenType
+    | HuksTagActiveDatetime
+    | HuksTagOriginationExpireDatetime
+    | HuksTagUsageExpireDatetime
+    | HuksTagCreationDatetime
+    | HuksTagAllUsers
+    | HuksTagUserId
+    | HuksTagNoAuthRequired
+    | HuksTagUserAuthType
+    | HuksTagAuthTimeout
+    | HuksTagAuthToken
+    | HuksTagKeyAuthAccessType
+    | HuksTagKeySecureSignType
+    | HuksTagChallengeType
+    | HuksTagChallengePos
+    | HuksTagKeyAuthPurpose
+    | HuksTagAttestationChallenge
+    | HuksTagAttestationApplicationId
+    | HuksTagAttestationIdBrand
+    | HuksTagAttestationIdDevice
+    | HuksTagAttestationIdProduct
+    | HuksTagAttestationIdSerial
+    | HuksTagAttestationIdImei
+    | HuksTagAttestationIdMeid
+    | HuksTagAttestationIdManufacturer
+    | HuksTagAttestationIdModel
+    | HuksTagAttestationIdAlias
+    | HuksTagAttestationIdSocid
+    | HuksTagAttestationIdUdid
+    | HuksTagAttestationIdSecLevelInfo
+    | HuksTagAttestationIdVersionInfo
+    | HuksTagAttestationBase64
+    | HuksTagIsKeyAlias
+    | HuksTagKeyStorageFlag
+    | HuksTagIsAllowedWrap
+    | HuksTagKeyWrapType
+    | HuksTagKeyAuthId
+    | HuksTagKeyRole
+    | HuksTagKeyFlag
+    | HuksTagIsAsynchronized
+    | HuksTagSecureKeyAlias
+    | HuksTagSecureKeyUuid
+    | HuksTagKeyDomain
+    | HuksTagProcessName
+    | HuksTagPackageName
+    | HuksTagAccessTime
+    | HuksTagUsesTime
+    | HuksTagCryptoCtx
+    | HuksTagKey
+    | HuksTagKeyVersion
+    | HuksTagPayloadLen
+    | HuksTagAeTag
+    | HuksTagIsKeyHandle
+    | HuksTagOsVersion
+    | HuksTagOsPatchlevel
+    | HuksTagSymmetricKeyData
+    | HuksTagAsymmetricPublicKeyData
+    | HuksTagAsymmetricPrivateKeyData
+    | ...
+}
+```
+
+**Description:** Represents the tags for calling parameters.
 
-```cangjie  
-HUKS_TAG_KEY_ROLE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Reserved  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAccessTime
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAccessTime
+```
 
-### HUKS_TAG_KEY_SECURE_SIGN_TYPE  
+**Description:** Originally reserved field, now deprecated.
 
-```cangjie  
-HUKS_TAG_KEY_SECURE_SIGN_TYPE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Specifies the signature type of the key during generation or import.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagActiveDatetime
 
-**Initial Version:** 21  
+```cangjie
+HuksTagActiveDatetime
+```
 
-### HUKS_TAG_KEY_SIZE  
+**Description:** Originally reserved for certificate services, now deprecated as certificate management has been separated.
 
-```cangjie  
-HUKS_TAG_KEY_SIZE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the key length.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAeTag
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAeTag
+```
 
-### HUKS_TAG_KEY_STORAGE_FLAG  
+**Description:** Field used to pass AEAD data in GCM mode.
 
-```cangjie  
-HUKS_TAG_KEY_STORAGE_FLAG  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the key storage method.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAgreeAlg
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAgreeAlg
+```
 
-### HUKS_TAG_KEY_TYPE  
+**Description:** Represents the algorithm type for key agreement.
 
-```cangjie  
-HUKS_TAG_KEY_TYPE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the key type.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAgreePrivateKeyAlias
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAgreePrivateKeyAlias
+```
 
-### HUKS_TAG_KEY_VERSION  
+**Description:** Represents the private key alias for key agreement.
 
-```cangjie  
-HUKS_TAG_KEY_VERSION  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the key version. (Deprecated)  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAgreePublicKey
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAgreePublicKey
+```
 
-### HUKS_TAG_KEY_WRAP_TYPE  
+**Description:** Represents the public key for key agreement.
 
-```cangjie  
-HUKS_TAG_KEY_WRAP_TYPE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Reserved.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAgreePublicKeyIsKeyAlias
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAgreePublicKeyIsKeyAlias
+```
 
-### HUKS_TAG_NONCE  
+**Description:** Represents the public key alias for key agreement.
 
-```cangjie  
-HUKS_TAG_NONCE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Field used for key encryption/decryption.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAlgorithm
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAlgorithm
+```
 
-### HUKS_TAG_NO_AUTH_REQUIRED  
+**Description:** Represents the algorithm tag.
 
-```cangjie  
-HUKS_TAG_NO_AUTH_REQUIRED  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Reserved.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAllUsers
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAllUsers
+```
 
-### HUKS_TAG_ORIGINATION_EXPIRE_DATETIME  
+**Description:** SystemCapability.Security.Huks.Extension
 
-```cangjie  
-HUKS_TAG_ORIGINATION_EXPIRE_DATETIME  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Originally reserved for certificate services. Now deprecated as certificate management has been separated.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAssociatedData
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAssociatedData
+```
 
-### HUKS_TAG_OS_PATCHLEVEL  
+**Description:** Represents the tag for additional authenticated data.
 
-```cangjie  
-HUKS_TAG_OS_PATCHLEVEL  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the operating system patch level. (Deprecated)  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAsymmetricPrivateKeyData
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAsymmetricPrivateKeyData
+```
 
-### HUKS_TAG_OS_VERSION  
+**Description:** SystemCapability.Security.Huks.Extension
 
-```cangjie  
-HUKS_TAG_OS_VERSION  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the operating system version. (Deprecated)  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAsymmetricPublicKeyData
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAsymmetricPublicKeyData
+```
 
-### HUKS_TAG_PACKAGE_NAME  
+**Description:** Reserved.
 
-```cangjie  
-HUKS_TAG_PACKAGE_NAME  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Originally reserved. Now deprecated.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationApplicationId
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationApplicationId
+```
 
-### HUKS_TAG_PADDING  
+**Description:** Represents the ID of the application owning the key during attestation.
 
-```cangjie  
-HUKS_TAG_PADDING  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the padding algorithm.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationBase64
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationBase64
+```
 
-### HUKS_TAG_PAYLOAD_LEN  
+**Description:** Reserved.
 
-```cangjie  
-HUKS_TAG_PAYLOAD_LEN  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Originally reserved. Now deprecated.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationChallenge
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationChallenge
+```
 
-### HUKS_TAG_PROCESS_NAME  
+**Description:** Represents the challenge value during attestation.
 
-```cangjie  
-HUKS_TAG_PROCESS_NAME  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the process name. (Deprecated)  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationIdAlias
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationIdAlias
+```
 
-### HUKS_TAG_PURPOSE  
+**Description:** Represents the key alias during attestation.
 
-```cangjie  
-HUKS_TAG_PURPOSE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Tag indicating the key purpose.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationIdBrand
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationIdBrand
+```
 
-### HUKS_TAG_PWD  
+**Description:** Represents the device brand. Now deprecated.
 
-```cangjie  
-HUKS_TAG_PWD  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Password used during key derivation. (Deprecated)  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationIdDevice
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationIdDevice
+```
 
-### HUKS_TAG_RSA_PSS_SALT_LEN_TYPE  
+**Description:** Represents the device ID. Now deprecated.
 
-```cangjie  
-HUKS_TAG_RSA_PSS_SALT_LEN_TYPE  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Indicates the type of `rsa_pss_salt_length`.  
+**Since:** 21
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+### HuksTagAttestationIdImei
 
-**Initial Version:** 21  
+```cangjie
+HuksTagAttestationIdImei
+```
 
-### HUKS_TAG_SALT  
+**Description:** Represents the device's IMEI number. Now deprecated.
 
-```cangjie  
-HUKS_TAG_SALT  
-```  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Description:** Salt value used during key derivation.  
+**Since:** 21### HuksTagAttestationIdManufacturer
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagAttestationIdManufacturer
+```
 
-**Initial Version:** 21  
+**Function:** Indicates the device manufacturer. Deprecated.
 
-### HUKS_TAG_SECURE_KEY_ALIAS  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-```cangjie  
-HUKS_TAG_SECURE_KEY_ALIAS  
-```  
+**Since:** 21
 
-**Description:** Originally reserved. Now deprecated.  
+### HuksTagAttestationIdMeid
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagAttestationIdMeid
+```
 
-**Initial Version:** 21  
+**Function:** Indicates the MEID number of the device. Deprecated.
 
-### HUKS_TAG_SECURE_KEY_UUID  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-```cangjie  
-HUKS_TAG_SECURE_KEY_UUID  
-```  
+**Since:** 21
 
-**Description:** Originally reserved. Now deprecated.  
+### HuksTagAttestationIdModel
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagAttestationIdModel
+```
 
-**Initial Version:** 21  
+**Function:** Indicates the device model. Deprecated.
 
-### HUKS_TAG_SYMMETRIC_KEY_DATA  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-```cangjie  
-HUKS_TAG_SYMMETRIC_KEY_DATA  
-```  
+**Since:** 21
 
-**Description:** Reserved.  
+### HuksTagAttestationIdProduct
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagAttestationIdProduct
+```
 
-**Initial Version:** 21  
+**Function:** Indicates the product name of the device. Deprecated.
 
-### HUKS_TAG_UNWRAP_ALGORITHM_SUITE  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-```cangjie  
-HUKS_TAG_UNWRAP_ALGORITHM_SUITE  
-```  
+**Since:** 21
 
-**Description:** Indicates the suite for importing encrypted keys.  
+### HuksTagAttestationIdSecLevelInfo
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagAttestationIdSecLevelInfo
+```
 
-**Initial Version:** 21  
+**Function:** Indicates the security credential during attestation.
 
-### HUKS_TAG_USAGE_EXPIRE_DATETIME  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-```cangjie  
-HUKS_TAG_USAGE_EXPIRE_DATETIME  
-```  
+**Since:** 21
 
-**Description:** Originally reserved for certificate services. Now deprecated as certificate management has been separated.  
+### HuksTagAttestationIdSerial
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagAttestationIdSerial
+```
 
-**Initial Version:** 21**System Capability:** SystemCapability.Security.Huks.Core  
+**Function:** Indicates the serial number (SN) of the device. Deprecated.
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_USER_AUTH_TYPE  
+**Since:** 21
 
-```cangjie  
-HUKS_TAG_USER_AUTH_TYPE  
-```  
+### HuksTagAttestationIdSocid
 
-**Description:** Indicates the user authentication type. Selected from [HuksUserAuthType](#class-huksuserauthtype), it must be set together with the secure access control type. Supports specifying two user authentication types simultaneously. For example: when the secure access control type is specified as `HUKS_SECURE_ACCESS_INVALID_NEW_BIO_ENROLL`, the key access authentication type can be specified as one of the following three: `HUKS_USER_AUTH_TYPE_FACE`, `HUKS_USER_AUTH_TYPE_FINGERPRINT`, or `HUKS_USER_AUTH_TYPE_FACE MagIc_StrINg HUKS_USER_AUTH_TYPE_FINGERPRINT`.  
+```cangjie
+HuksTagAttestationIdSocid
+```
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Function:** Indicates the SOCID of the device. Deprecated.
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_USER_ID  
+**Since:** 21
 
-```cangjie  
-HUKS_TAG_USER_ID  
-```  
+### HuksTagAttestationIdUdid
 
-**Description:** Indicates which userID the current key belongs to.  
+```cangjie
+HuksTagAttestationIdUdid
+```
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Function:** Indicates the UDID of the device. Deprecated.
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### HUKS_TAG_USES_TIME  
+**Since:** 21
 
-```cangjie  
-HUKS_TAG_USES_TIME  
-```  
+### HuksTagAttestationIdVersionInfo
 
-**Description:** Originally a reserved field, now deprecated.  
+```cangjie
+HuksTagAttestationIdVersionInfo
+```
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Function:** Indicates the version number during attestation.
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-### static func parse(UInt32)  
+**Since:** 21
 
-```cangjie  
-public static func parse(val: UInt32): HuksTag  
-```  
+### HuksTagAuthTimeout
 
-**Description:** Constructs a `HuksTag` from a UInt32 value.  
+```cangjie
+HuksTagAuthTimeout
+```
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+**Function:** Indicates the single-use validity period of the auth token.
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-**Parameters:**  
+**Since:** 21
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---------|:-----|:---------|:-------------|:------------|  
-| val | UInt32 | Yes | - | The UInt32 value corresponding to the `HuksTag` to be constructed. |  
+### HuksTagAuthToken
 
-**Return Value:**  
+```cangjie
+HuksTagAuthToken
+```
 
-| Type | Description |  
-|:-----|:------------|  
-| [HuksTag](#enum-hukstag) | Returns a `HuksTag` constructed from the UInt32 value. |  
+**Function:** Field used to pass the auth token.
 
-### func getValue()  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-```cangjie  
-public func getValue(): UInt32  
-```  
+**Since:** 21
 
-**Description:** Retrieves the UInt32 value corresponding to the `HuksTag`.  
+### HuksTagBlockMode
 
-**System Capability:** SystemCapability.Security.Huks.Core  
+```cangjie
+HuksTagBlockMode
+```
 
-**Initial Version:** 21  
+**Function:** Tag indicating the encryption mode.
 
-**Return Value:**  
+**System Capability:** SystemCapability.Security.Huks.Core
 
-| Type | Description |  
-|:-----|:------------|  
-| UInt32 | Returns the UInt32 value corresponding to the `HuksTag`. |
+**Since:** 21
+
+### HuksTagChallengePos
+
+```cangjie
+HuksTagChallengePos
+```
+
+**Function:** When the challenge type is user-defined, the effective length of the challenge generated by Huks is only 8 bytes of consecutive data. Selected from [HuksChallengePosition](#class-hukschallengeposition).
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagChallengeType
+
+```cangjie
+HuksTagChallengeType
+```
+
+**Function:** Indicates the type of challenge generated during key usage. Selected from [HuksChallengeType](#class-hukschallengetype).
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagCreationDatetime
+
+```cangjie
+HuksTagCreationDatetime
+```
+
+**Function:** Originally reserved for certificate services. Now that certificate management is independent, this field is deprecated and no longer reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagCryptoCtx
+
+```cangjie
+HuksTagCryptoCtx
+```
+
+**Function:** Originally a reserved field. Now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagDeriveAlg
+
+```cangjie
+HuksTagDeriveAlg
+```
+
+**Function:** Indicates the algorithm type during key derivation. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagDeriveFactor
+
+```cangjie
+HuksTagDeriveFactor
+```
+
+**Function:** Indicates the derivation factor during key derivation. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagDeriveKeySize
+
+```cangjie
+HuksTagDeriveKeySize
+```
+
+**Function:** Indicates the size of the derived key.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagDeriveMainKey
+
+```cangjie
+HuksTagDeriveMainKey
+```
+
+**Function:** Indicates the master key during key derivation. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagDerivedAgreedKeyStorageFlag
+
+```cangjie
+HuksTagDerivedAgreedKeyStorageFlag
+```
+
+**Function:** Indicates the storage type of derived/agreed keys.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagDigest
+
+```cangjie
+HuksTagDigest
+```
+
+**Function:** Tag indicating the digest algorithm.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagImportKeyType
+
+```cangjie
+HuksTagImportKeyType
+```
+
+**Function:** Indicates the type of imported key.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagInfo
+
+```cangjie
+HuksTagInfo
+```
+
+**Function:** Indicates the info during key derivation.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagInvalid
+
+```cangjie
+HuksTagInvalid
+```
+
+**Function:** Indicates an invalid tag. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagIsAllowedWrap
+
+```cangjie
+HuksTagIsAllowedWrap
+```
+
+**Function:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagIsAsynchronized
+
+```cangjie
+HuksTagIsAsynchronized
+```
+
+**Function:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagIsKeyAlias
+
+```cangjie
+HuksTagIsKeyAlias
+```
+
+**Function:** Tag indicating whether to use the alias passed during key generation.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagIsKeyHandle
+
+```cangjie
+HuksTagIsKeyHandle
+```
+
+**Function:** Originally a reserved field. Now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagIteration
+
+```cangjie
+HuksTagIteration
+```
+
+**Function:** Indicates the iteration count during key derivation.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagIv
+
+```cangjie
+HuksTagIv
+```
+
+**Function:** Indicates the initialization vector for the key.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagKey
+
+```cangjie
+HuksTagKey
+```
+
+**Function:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagKeyAlias
+
+```cangjie
+HuksTagKeyAlias
+```
+
+**Function:** Indicates the key alias.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21
+
+### HuksTagKeyAuthAccessType
+
+```cangjie
+HuksTagKeyAuthAccessType
+```
+
+**Function:** Indicates the security access control type. Selected from [HuksAuthAccessType](#class-huksauthaccesstype). Must be set together with the user authentication type.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Since:** 21### HuksTagKeyAuthId
+
+```cangjie
+HuksTagKeyAuthId
+```
+
+**Functionality:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyAuthPurpose
+
+```cangjie
+HuksTagKeyAuthPurpose
+```
+
+**Functionality:** Represents the tag for key authentication purpose.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyDomain
+
+```cangjie
+HuksTagKeyDomain
+```
+
+**Functionality:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyFlag
+
+```cangjie
+HuksTagKeyFlag
+```
+
+**Functionality:** Represents the tag for key flags.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyGenerateType
+
+```cangjie
+HuksTagKeyGenerateType
+```
+
+**Functionality:** Represents the tag for key generation type.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyRole
+
+```cangjie
+HuksTagKeyRole
+```
+
+**Functionality:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeySecureSignType
+
+```cangjie
+HuksTagKeySecureSignType
+```
+
+**Functionality:** Specifies the signature type of the key when generating or importing it.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeySize
+
+```cangjie
+HuksTagKeySize
+```
+
+**Functionality:** Represents the tag for key length.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyStorageFlag
+
+```cangjie
+HuksTagKeyStorageFlag
+```
+
+**Functionality:** Represents the tag for key storage method.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyType
+
+```cangjie
+HuksTagKeyType
+```
+
+**Functionality:** Represents the tag for key type.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyVersion
+
+```cangjie
+HuksTagKeyVersion
+```
+
+**Functionality:** Represents the tag for key version. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagKeyWrapType
+
+```cangjie
+HuksTagKeyWrapType
+```
+
+**Functionality:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagNoAuthRequired
+
+```cangjie
+HuksTagNoAuthRequired
+```
+
+**Functionality:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagNonce
+
+```cangjie
+HuksTagNonce
+```
+
+**Functionality:** Represents the NONCE field for key encryption/decryption.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagOriginationExpireDatetime
+
+```cangjie
+HuksTagOriginationExpireDatetime
+```
+
+**Functionality:** Originally reserved for certificate services. Now that certificate management is independent, this field is deprecated and no longer reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagOsPatchlevel
+
+```cangjie
+HuksTagOsPatchlevel
+```
+
+**Functionality:** Represents the tag for OS patch level. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagOsVersion
+
+```cangjie
+HuksTagOsVersion
+```
+
+**Functionality:** Represents the tag for OS version. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagPackageName
+
+```cangjie
+HuksTagPackageName
+```
+
+**Functionality:** Originally a reserved field, now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagPadding
+
+```cangjie
+HuksTagPadding
+```
+
+**Functionality:** Represents the tag for padding algorithm.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagPayloadLen
+
+```cangjie
+HuksTagPayloadLen
+```
+
+**Functionality:** Originally a reserved field, now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagProcessName
+
+```cangjie
+HuksTagProcessName
+```
+
+**Functionality:** Represents the tag for process name. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagPurpose
+
+```cangjie
+HuksTagPurpose
+```
+
+**Functionality:** Represents the tag for key purpose.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagPwd
+
+```cangjie
+HuksTagPwd
+```
+
+**Functionality:** Represents the password for key derivation. Deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagRsaPssSaltLenType
+
+```cangjie
+HuksTagRsaPssSaltLenType
+```
+
+**Functionality:** Represents the type of rsa_pss_salt_length.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagSalt
+
+```cangjie
+HuksTagSalt
+```
+
+**Functionality:** Represents the salt value for key derivation.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagSecureKeyAlias
+
+```cangjie
+HuksTagSecureKeyAlias
+```
+
+**Functionality:** Originally a reserved field, now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagSecureKeyUuid
+
+```cangjie
+HuksTagSecureKeyUuid
+```
+
+**Functionality:** Originally a reserved field, now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagSymmetricKeyData
+
+```cangjie
+HuksTagSymmetricKeyData
+```
+
+**Functionality:** Reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagUnwrapAlgorithmSuite
+
+```cangjie
+HuksTagUnwrapAlgorithmSuite
+```
+
+**Functionality:** Represents the suite for importing encrypted keys.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagUsageExpireDatetime
+
+```cangjie
+HuksTagUsageExpireDatetime
+```
+
+**Functionality:** Originally reserved for certificate services. Now that certificate management is independent, this field is deprecated and no longer reserved.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagUserAuthType
+
+```cangjie
+HuksTagUserAuthType
+```
+
+**Functionality:** Represents the user authentication type. Selected from [HuksUserAuthType](#class-huksuserauthtype), must be set simultaneously with secure access control type. Supports specifying two user authentication types simultaneously. For example: When the secure access control type is set to HUKS_SECURE_ACCESS_INVALID_NEW_BIO_ENROLL, the key access authentication type can be specified as one of the following three: HUKS_USER_AUTH_TYPE_FACE, HUKS_USER_AUTH_TYPE_FINGERPRINT, HUKS_USER_AUTH_TYPE_FACE MagIc_StrINg HUKS_USER_AUTH_TYPE_FINGERPRINT.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagUserId
+
+```cangjie
+HuksTagUserId
+```
+
+**Functionality:** Represents which userID the current key belongs to.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
+
+### HuksTagUsesTime
+
+```cangjie
+HuksTagUsesTime
+```
+
+**Functionality:** Originally a reserved field, now deprecated.
+
+**System Capability:** SystemCapability.Security.Huks.Core
+
+**Initial Version:** 21
