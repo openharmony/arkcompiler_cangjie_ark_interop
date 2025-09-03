@@ -50,7 +50,7 @@ Parameter error. Possible causes:
 6. Parameter value range error (Value Range Error).
 
 **Resolution Steps**  
-Verify whether all mandatory parameters are provided and whether the parameter types are correct. For parameter validation failures, review the parameter specifications and troubleshoot based on the possible causes listed.
+Verify whether all required parameters are provided and whether the parameter types are correct. For parameter validation failures, review the parameter specifications and troubleshoot based on the possible causes listed.
 
 ## 801 API Not Supported by This Device
 

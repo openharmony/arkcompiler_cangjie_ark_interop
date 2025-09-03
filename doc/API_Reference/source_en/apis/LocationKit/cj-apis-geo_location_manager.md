@@ -1,12 +1,12 @@
 # ohos.geo_location_manager (Location Services)
 
-Location services provide basic functionalities including GNSS positioning, network positioning (cellular base station, WLAN, Bluetooth positioning technologies), geocoding, reverse geocoding, country codes, and geofencing.
+Location services provide basic functionalities including GNSS positioning, network positioning (cellular base station, WLAN, Bluetooth positioning technologies), geocoding, reverse geocoding, country codes, and geo-fencing.
 
 > **Note:**
 >
 > This module's capabilities only support the WGS-84 coordinate system.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.LocationKit.*
@@ -14,7 +14,7 @@ import kit.LocationKit.*
 
 ## Permission List
 
-Before using the Location Kit system capabilities, applications must verify whether they have obtained user authorization to access device location information. If authorization has not been granted, applications can request the necessary location permissions from the user.
+Before using the Location Kit system capabilities, applications must check whether they have obtained user authorization to access device location information. If authorization has not been granted, applications can request the necessary location permissions from the user.
 
 The system provides the following location permissions:
 
@@ -26,12 +26,12 @@ ohos.permission.LOCATION_IN_BACKGROUND: Used for scenarios where the application
 
 ## Usage Instructions
 
-API example code usage instructions:
+API sample code usage instructions:
 
-- If the first line of the example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment on the first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
+For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class CurrentLocationRequest
 
@@ -41,13 +41,13 @@ public class CurrentLocationRequest {
     public var scenario: LocationRequestScenario
     public var maxAccuracy: Float32
     public var timeoutMs: Int32
-    public init(priority!: LocationRequestPriority = LocationRequestPriority.FIRST_FIX,
-        scenario!: LocationRequestScenario = LocationRequestScenario.UNSET, maxAccuracy!: Float32 = 0.0,
+    public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFix,
+        scenario!: LocationRequestScenario = LocationRequestScenario.Unset, maxAccuracy!: Float32 = 0.0,
         timeoutMs!: Int32 = 5000)
 }
 ```
 
-**Functionality:** Parameters for current location information requests.
+**Function:** Parameters for current location information request.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -59,15 +59,15 @@ public class CurrentLocationRequest {
 public var maxAccuracy: Float32
 ```
 
-**Functionality:** Represents accuracy information in meters.
+**Function:** Represents accuracy information in meters.
 
-Only effective in precise location scenarios (where both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (where only ohos.permission.APPROXIMATELY_LOCATION is granted).
+Only effective in precise location scenarios (when both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (only ohos.permission.APPROXIMATELY_LOCATION permission is granted).
 
-Default value is 0, with a valid range of values greater than or equal to 0.
+Default value is 0, valid range is greater than or equal to 0.
 
-When scenario is NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING or priority is ACCURACY, it is recommended to set maxAccuracy to a value greater than 10.
+When scenario is Navigation/TrajectoryTracking/CarHailing or priority is Accuracy, it is recommended to set maxAccuracy to a value greater than 10.
 
-When scenario is DAILY_LIFE_SERVICE/NO_POWER or priority is LOW_POWER/FIRST_FIX, it is recommended to set maxAccuracy to a value greater than 100.
+When scenario is DailyLifeService/NoPower or priority is LowPower/FirstFix, it is recommended to set maxAccuracy to a value greater than 100.
 
 **Type:** Float32
 
@@ -83,7 +83,7 @@ When scenario is DAILY_LIFE_SERVICE/NO_POWER or priority is LOW_POWER/FIRST_FIX,
 public var priority: LocationRequestPriority
 ```
 
-**Functionality:** Represents priority information. When scenario is set to UNSET, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to UNSET, the location request cannot be initiated. For valid values, see [LocationRequestPriority](#enum-locationrequestpriority).
+**Function:** Represents priority information. When scenario is set to Unset, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to Unset, the location request cannot be initiated. Valid values are defined in [LocationRequestPriority](#enum-locationrequestpriority).
 
 **Type:** [LocationRequestPriority](#enum-locationrequestpriority)
 
@@ -99,7 +99,7 @@ public var priority: LocationRequestPriority
 public var scenario: LocationRequestScenario
 ```
 
-**Functionality:** Represents scenario information. When scenario is set to UNSET, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to UNSET, the location request cannot be initiated. For valid values, see [LocationRequestScenario](#enum-locationrequestscenario).
+**Function:** Represents scenario information. When scenario is set to Unset, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to Unset, the location request cannot be initiated. Valid values are defined in [LocationRequestScenario](#enum-locationrequestscenario).
 
 **Type:** [LocationRequestScenario](#enum-locationrequestscenario)
 
@@ -115,7 +115,7 @@ public var scenario: LocationRequestScenario
 public var timeoutMs: Int32
 ```
 
-**Functionality:** Represents the timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000.
+**Function:** Represents timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000.
 
 **Type:** Int32
 
@@ -128,12 +128,12 @@ public var timeoutMs: Int32
 ### init(LocationRequestPriority, LocationRequestScenario, Float32, Int32)
 
 ```cangjie
-public init(priority!: LocationRequestPriority = LocationRequestPriority.FIRST_FIX,
-    scenario!: LocationRequestScenario = LocationRequestScenario.UNSET, maxAccuracy!: Float32 = 0.0,
+public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFix,
+    scenario!: LocationRequestScenario = LocationRequestScenario.Unset, maxAccuracy!: Float32 = 0.0,
     timeoutMs!: Int32 = 5000)
 ```
 
-**Functionality:** Constructs a CurrentLocationRequest object.
+**Function:** Constructs a CurrentLocationRequest object.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -143,10 +143,10 @@ public init(priority!: LocationRequestPriority = LocationRequestPriority.FIRST_F
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| priority | [LocationRequestPriority](#enum-locationrequestpriority) | No | LocationRequestPriority.FIRST_FIX | **Named parameter.** Represents priority information. When scenario is set to UNSET, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to UNSET, the location request cannot be initiated. For valid values, see [LocationRequestPriority](#enum-locationrequestpriority). |
-| scenario | [LocationRequestScenario](#enum-locationrequestscenario) | No | LocationRequestScenario.UNSET | **Named parameter.** Represents scenario information. When scenario is set to UNSET, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to UNSET, the location request cannot be initiated. For valid values, see [LocationRequestScenario](#enum-locationrequestscenario). |
-| maxAccuracy | Float32 | No | 0.0 | **Named parameter.** Represents accuracy information in meters.<br/>Only effective in precise location scenarios (where both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (where only ohos.permission.APPROXIMATELY_LOCATION is granted).<br/>Default value is 0, with a valid range of values greater than or equal to 0.<br/>When scenario is NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING or priority is ACCURACY, it is recommended to set maxAccuracy to a value greater than 10.<br/>When scenario is DAILY_LIFE_SERVICE/NO_POWER or priority is LOW_POWER/FIRST_FIX, it is recommended to set maxAccuracy to a value greater than 100. |
-| timeoutMs | Int32 | No | 5000 | **Named parameter.** Represents the timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000. |
+| priority | [LocationRequestPriority](#enum-locationrequestpriority) | No | LocationRequestPriority.FirstFix | **Named parameter.** Represents priority information. When scenario is set to Unset, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to Unset, the location request cannot be initiated. Valid values are defined in [LocationRequestPriority](#enum-locationrequestpriority). |
+| scenario | [LocationRequestScenario](#enum-locationrequestscenario) | No | LocationRequestScenario.Unset | **Named parameter.** Represents scenario information. When scenario is set to Unset, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to Unset, the location request cannot be initiated. Valid values are defined in [LocationRequestScenario](#enum-locationrequestscenario). |
+| maxAccuracy | Float32 | No | 0.0 | **Named parameter.** Represents accuracy information in meters.<br/>Only effective in precise location scenarios (when both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (only ohos.permission.APPROXIMATELY_LOCATION permission is granted).<br/>Default value is 0, valid range is greater than or equal to 0.<br/>When scenario is Navigation/TrajectoryTracking/CarHailing or priority is Accuracy, it is recommended to set maxAccuracy to a value greater than 10.<br/>When scenario is DailyLifeService/NoPower or priority is LowPower/FirstFix, it is recommended to set maxAccuracy to a value greater than 100. |
+| timeoutMs | Int32 | No | 5000 | **Named parameter.** Represents timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000. |
 
 ## class GeoLocationManager
 
@@ -154,7 +154,7 @@ public init(priority!: LocationRequestPriority = LocationRequestPriority.FIRST_F
 public class GeoLocationManager {}
 ```
 
-**Functionality:** Class for providing location services.
+**Function:** Class for providing location services.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -166,9 +166,9 @@ public class GeoLocationManager {}
 public static func getCurrentLocation(): Location
 ```
 
-**Functionality:** Obtains the current location.
+**Function:** Obtains the current location.
 
-**Required Permission:** ohos.permission.APPROXIMATELY_LOCATION
+**Required Permission:** ohos.APPROXIMATELY_LOCATION
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -180,19 +180,6 @@ public static func getCurrentLocation(): Location
 |:----|:----|
 | [Location](#class-location) | Returns the current location information. |
 
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Location Services Subsystem Error Codes](../../errorcodes/cj-errorcode-geo_location_manager.md).
-
-  | Error Code ID | Error Message |
-  |:-------- |:---------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 801 | Capability not supported. Failed to call ${GeoLocationManager.getCurrentLocation} due to limited device capabilities. |
-  | 3301000 | The location service is unavailable. |
-  | 3301100 | The location switch is off. |
-  | 3301200 | Failed to obtain the geographical location. |
-
 **Example:**
 
 <!-- compile -->
@@ -202,7 +189,7 @@ public static func getCurrentLocation(): Location
 
 import kit.LocationKit.*
 
-let location = GeoLocationManager.getCurrentLocation()
+let location = GeoLocationManager.getCurrentLocation(SingleLocationRequest(LocatingPriority.PriorityLocatingSpeed, 1000))
 ```
 
 ### static func getCurrentLocation(CurrentLocationRequest)
@@ -211,9 +198,9 @@ let location = GeoLocationManager.getCurrentLocation()
 public static func getCurrentLocation(request: CurrentLocationRequest): Location
 ```
 
-**Functionality:** Obtains the current location.
+**Function:** Obtains the current location.
 
-**Required Permission:** ohos.permission.APPROXIMATELY_LOCATION
+**Required Permission:** ohos.APPROXIMATELY_LOCATION
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -231,19 +218,6 @@ public static func getCurrentLocation(request: CurrentLocationRequest): Location
 |:----|:----|
 | [Location](#class-location) | Returns the current location information. |
 
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Location Services Subsystem Error Codes](../../errorcodes/cj-errorcode-geo_location_manager.md).
-
-  | Error Code ID | Error Message |
-  |:-------- |:---------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 801 | Capability not supported. Failed to call ${GeoLocationManager.getCurrentLocation} due to limited device capabilities. |
-  | 3301000 | The location service is unavailable. |
-  | 3301100 | The location switch is off. |
-  | 3301200 | Failed to obtain the geographical location. |
-
 **Example:**
 
 <!-- compile -->
@@ -253,7 +227,7 @@ public static func getCurrentLocation(request: CurrentLocationRequest): Location
 
 import kit.LocationKit.*
 
-let location = GeoLocationManager.getCurrentLocation(CurrentLocationRequest())
+let location = GeoLocationManager.getCurrentLocation(SingleLocationRequest(LocatingPriority.PriorityLocatingSpeed, 1000))
 ```
 
 ### static func getCurrentLocation(SingleLocationRequest)
@@ -262,9 +236,9 @@ let location = GeoLocationManager.getCurrentLocation(CurrentLocationRequest())
 public static func getCurrentLocation(request: SingleLocationRequest): Location
 ```
 
-**Functionality:** Obtains the current location.
+**Function:** Obtains the current location.
 
-**Required Permission:** ohos.permission.APPROXIMATELY_LOCATION
+**Required Permission:** ohos.APPROXIMATELY_LOCATION
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -282,19 +256,6 @@ public static func getCurrentLocation(request: SingleLocationRequest): Location
 |:----|:----|
 | [Location](#class-location) | Returns the current location information. |
 
-**Exceptions:**
-
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Location Services Subsystem Error Codes](../../errorcodes/cj-errorcode-geo_location_manager.md).
-
-  | Error Code ID | Error Message |
-  |:-------- |:---------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 801 | Capability not supported. Failed to call ${GeoLocationManager.getCurrentLocation} due to limited device capabilities. |
-  | 3301000 | The location service is unavailable. |
-  | 3301100 | The location switch is off. |
-  | 3301200 | Failed to obtain the geographical location. |
-
 **Example:**
 
 <!-- compile -->
@@ -304,7 +265,7 @@ public static func getCurrentLocation(request: SingleLocationRequest): Location
 
 import kit.LocationKit.*
 
-let location = GeoLocationManager.getCurrentLocation(SingleLocationRequest(LocatingPriority.PRIORITY_LOCATING_SPEED, 1000))
+let location = GeoLocationManager.getCurrentLocation(SingleLocationRequest(LocatingPriority.PriorityLocatingSpeed, 1000))
 ```
 
 ### static func isLocationEnabled()
@@ -313,7 +274,7 @@ let location = GeoLocationManager.getCurrentLocation(SingleLocationRequest(Locat
 public static func isLocationEnabled(): Bool
 ```
 
-**Function:** Checks whether the location service is enabled.
+**Function:** Checks whether location services are enabled.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -323,16 +284,7 @@ public static func isLocationEnabled(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | true: The location service switch is turned on;<br/>false: The location service switch is turned off. |
-
-**Exceptions:**
-
-- BusinessException: For details about the error codes, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Location Service Subsystem Error Codes](../../errorcodes/cj-errorcode-geo_location_manager.md).
-
-  | Error Code ID | Error Message |
-  |:-------- |:---------------------------------------- |
-  | 801 | Capability not supported. Failed to call ${GeoLocationManager.isLocationEnabled} due to limited device capabilities.          |
-  | 3301000 | The location service is unavailable. |
+| Bool | true: Location service switch is enabled;<br/>false: Location service switch is disabled. |
 
 **Example:**
 
@@ -381,11 +333,11 @@ public class Location {
 public var accuracy: Float64
 ```
 
-**Function:** Represents the accuracy, in meters.
+**Function:** Represents accuracy information in meters.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -397,11 +349,11 @@ public var accuracy: Float64
 public var additionSize: Int64
 ```
 
-**Function:** Number of additional information items. The value must be greater than or equal to 0.
+**Function:** Number of additional information items. Valid range is greater than or equal to 0.
 
 **Type:** Int64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -417,7 +369,7 @@ public var additions: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -429,11 +381,11 @@ public var additions: Array<String>
 public var additionsMap: Map<String, String>
 ```
 
-**Function:** Additional information. The content and order are the same as those of **additions**.
+**Function:** Additional information. The specific content and order are consistent with additions.
 
-**Type:** Map\<String, String>
+**Type:** [Map](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -445,11 +397,11 @@ public var additionsMap: Map<String, String>
 public var altitude: Float64
 ```
 
-**Function:** Represents the altitude, in meters.
+**Function:** Represents altitude information in meters.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -461,11 +413,11 @@ public var altitude: Float64
 public var altitudeAccuracy: Float64
 ```
 
-**Function:** Represents the accuracy of the altitude, in meters.
+**Function:** Represents the accuracy of altitude information in meters.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -477,11 +429,11 @@ public var altitudeAccuracy: Float64
 public var direction: Float64
 ```
 
-**Function:** Represents the direction, in degrees. The value ranges from 0 to 360.
+**Function:** Represents heading information in degrees, with a valid range of 0 to 360.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -493,11 +445,11 @@ public var direction: Float64
 public var directionAccuracy: Float64
 ```
 
-**Function:** Represents the accuracy of the direction, in degrees. The value ranges from 0 to 360.
+**Function:** Represents the accuracy of heading information in degrees, with a valid range of 0 to 360.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -509,11 +461,11 @@ public var directionAccuracy: Float64
 public var latitude: Float64
 ```
 
-**Function:** Represents the latitude. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from -90 to 90. Only the WGS84 coordinate system is supported.
+**Function:** Represents latitude information. Positive values indicate north latitude, and negative values indicate south latitude. Valid range is -90 to 90. Only supports the WGS84 coordinate system.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -525,11 +477,11 @@ public var latitude: Float64
 public var longitude: Float64
 ```
 
-**Function:** Represents the longitude. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from -180 to 180. Only the WGS84 coordinate system is supported.
+**Function:** Represents longitude information. Positive values indicate east longitude, and negative values indicate west longitude. Valid range is -180 to 180. Only supports the WGS84 coordinate system.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -545,7 +497,7 @@ public var sourceType: LocationSourceType
 
 **Type:** [LocationSourceType](#enum-locationsourcetype)
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -557,11 +509,11 @@ public var sourceType: LocationSourceType
 public var speed: Float64
 ```
 
-**Function:** Represents the speed, in meters per second.
+**Function:** Represents speed information in meters per second.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -573,11 +525,11 @@ public var speed: Float64
 public var speedAccuracy: Float64
 ```
 
-**Function:** Represents the accuracy of the speed, in meters per second.
+**Function:** Represents the accuracy of speed information in meters per second.
 
 **Type:** Float64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -593,11 +545,13 @@ public var timeSinceBoot: Int64
 
 **Type:** Int64
 
-**Read/Write:** Readable and writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Since:** 21### var timeStamp
+**Since:** 21
+
+### var timeStamp
 
 ```cangjie
 public var timeStamp: Int64
@@ -607,7 +561,7 @@ public var timeStamp: Int64
 
 **Type:** Int64
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -623,13 +577,11 @@ public var uncertaintyOfTimeSinceBoot: Int64
 
 **Type:** Int64
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Since:** 21
-
-## class SingleLocationRequest
+**Since:** 21## class SingleLocationRequest
 
 ```cangjie
 public class SingleLocationRequest {
@@ -639,7 +591,7 @@ public class SingleLocationRequest {
 }
 ```
 
-**Function:** Request parameters for single location acquisition.
+**Description:** Request parameters for single-shot location.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -651,11 +603,11 @@ public class SingleLocationRequest {
 public var locatingPriority: LocatingPriority
 ```
 
-**Function:** Indicates priority information. For valid values, see the definition of [LocatingPriority](#enum-locatingpriority).
+**Description:** Indicates priority information. For valid values, see definition of [LocatingPriority](#enum-locatingpriority).
 
 **Type:** [LocatingPriority](#enum-locatingpriority)
 
-**Read/Write Permission:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -667,11 +619,11 @@ public var locatingPriority: LocatingPriority
 public var locatingTimeoutMs: Int32
 ```
 
-**Function:** Indicates the timeout duration in milliseconds. The minimum value is 1000 ms. Valid values are greater than or equal to 1000.
+**Description:** Indicates timeout duration in milliseconds, with a minimum of 1000 ms. Valid value range: ≥1000.
 
 **Type:** Int32
 
-**Read/Write Permission:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -683,7 +635,7 @@ public var locatingTimeoutMs: Int32
 public init(locatingPriority: LocatingPriority, locatingTimeoutMs: Int32)
 ```
 
-**Function:** Constructs a SingleLocationRequest object.
+**Description:** Constructs a SingleLocationRequest object.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -691,50 +643,50 @@ public init(locatingPriority: LocatingPriority, locatingTimeoutMs: Int32)
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+|Name|Type|Mandatory|Default|Description|
 |:---|:---|:---|:---|:---|
-| locatingPriority | [LocatingPriority](#enum-locatingpriority) | Yes | - | Indicates priority information. For valid values, see the definition of [LocatingPriority](#enum-locatingpriority). |
-| locatingTimeoutMs | Int32 | Yes | - | Indicates the timeout duration in milliseconds. The minimum value is 1000 ms. Valid values are greater than or equal to 1000. |
+|locatingPriority|[LocatingPriority](#enum-locatingpriority)|Yes|-|Indicates priority information. For valid values, see definition of [LocatingPriority](#enum-locatingpriority).|
+|locatingTimeoutMs|Int32|Yes|-|Indicates timeout duration in milliseconds, with a minimum of 1000 ms. Valid value range: ≥1000.|
 
 ## enum LocatingPriority
 
 ```cangjie
 public enum LocatingPriority {
-    | PRIORITY_ACCURACY
-    | PRIORITY_LOCATING_SPEED
+    | PriorityAccuracy
+    | PriorityLocatingSpeed
     | ...
 }
 ```
 
-**Function:** Priority types in single location requests.
+**Description:** Priority types in single-shot location requests.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### PRIORITY_ACCURACY
+### PriorityAccuracy
 
 ```cangjie
-PRIORITY_ACCURACY
+PriorityAccuracy
 ```
 
-**Function:** Indicates accuracy priority.
+**Description:** Indicates accuracy priority.
 
-The accuracy-first strategy uses both GNSS and network positioning technologies and returns the most accurate result within a certain period (the shorter of [SingleLocationRequest](#class-singlelocationrequest).locatingTimeoutMs and 30 seconds). This strategy consumes more hardware resources and power.
+The accuracy-first strategy uses both GNSS and network positioning technologies, returning the best accuracy result within a period (determined by the smaller value between [SingleLocationRequest](#class-singlelocationrequest).locatingTimeoutMs and 30 seconds). This consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### PRIORITY_LOCATING_SPEED
+### PriorityLocatingSpeed
 
 ```cangjie
-PRIORITY_LOCATING_SPEED
+PriorityLocatingSpeed
 ```
 
-**Function:** Indicates fast location acquisition priority. If an application requires quick location results, this priority type can be set.
+**Description:** Indicates fast location acquisition priority. Applications requiring quick positioning can set this priority type.
 
-The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios. The first acquired location result is returned to the application. This strategy consumes more hardware resources and power.
+The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios, returning the first acquired result. This consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -744,69 +696,69 @@ The speed-first strategy uses both GNSS and network positioning technologies to 
 
 ```cangjie
 public enum LocationRequestPriority {
-    | UNSET
-    | ACCURACY
-    | LOW_POWER
-    | FIRST_FIX
+    | Unset
+    | Accuracy
+    | LowPower
+    | FirstFix
     | ...
 }
 ```
 
-**Function:** Priority types for location information in location requests.
+**Description:** Priority types for location information in location requests.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### ACCURACY
+### Accuracy
 
 ```cangjie
-ACCURACY
+Accuracy
 ```
 
-**Function:** Indicates accuracy priority.
+**Description:** Indicates accuracy priority.
 
-The accuracy-first strategy primarily uses GNSS positioning technology. Network positioning technology is used before GNSS provides stable location results. During continuous positioning, network positioning is used if GNSS results cannot be obtained for more than 30 seconds. This strategy consumes more hardware resources and power.
+The accuracy-first strategy primarily uses GNSS positioning, with network positioning as fallback before stable GNSS results are available. During continuous positioning, network positioning is used if no GNSS result is obtained within 30 seconds. This consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### FIRST_FIX
+### FirstFix
 
 ```cangjie
-FIRST_FIX
+FirstFix
 ```
 
-**Function:** Indicates fast location acquisition priority. If an application requires quick location results, this priority type can be set.
+**Description:** Indicates fast location acquisition priority. Applications requiring quick positioning can set this field.
 
-The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios. When multiple positioning technologies provide results, the system selects the most accurate one to return to the application. This strategy consumes more hardware resources and power.
+The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios. When multiple positioning technologies provide results, the system selects the one with better accuracy. This consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### LOW_POWER
+### LowPower
 
 ```cangjie
-LOW_POWER
+LowPower
 ```
 
-**Function:** Indicates low power priority.
+**Description:** Indicates low power priority.
 
-The low-power strategy uses only network positioning technology, which works in both indoor and outdoor scenarios. Since it relies on the distribution of nearby base stations, visible WLANs, and Bluetooth devices, the accuracy of location results may vary significantly. This strategy is recommended for scenarios where high accuracy is not required, as it effectively reduces power consumption.
+The low-power strategy uses only network positioning technology, providing location services in both indoor and outdoor scenarios. Since it relies on nearby base stations, visible WLANs, and Bluetooth devices, accuracy may vary significantly. Recommended for scenarios with low accuracy requirements to effectively conserve power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### UNSET
+### Unset
 
 ```cangjie
-UNSET
+Unset
 ```
 
-**Function:** Indicates that the priority is not set, meaning [LocationRequestPriority](#enum-locationrequestpriority) is invalid.
+**Description:** Indicates unset priority, meaning [LocationRequestPriority](#enum-locationrequestpriority) is invalid.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -816,176 +768,178 @@ UNSET
 
 ```cangjie
 public enum LocationRequestScenario {
-    | UNSET
-    | NAVIGATION
-    | TRAJECTORY_TRACKING
-    | CAR_HAILING
-    | DAILY_LIFE_SERVICE
-    | NO_POWER
+    | Unset
+    | Navigation
+    | TrajectoryTracking
+    | CarHailing
+    | DailyLifeService
+    | NoPower
     | ...
 }
 ```
 
-**Function:** Positioning scenario types in location requests.
+**Description:** Positioning scenario types in location requests.
 
 > **Note:**
 >
-> When using NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING scenarios for single or continuous positioning, network positioning technology is used before GNSS provides stable location results. During continuous positioning, if GNSS results cannot be obtained for more than 30 seconds, network positioning is used to acquire the location.
+> When using Navigation/TrajectoryTracking/CarHailing scenarios for single-shot or continuous positioning, network positioning will be used as fallback before stable GNSS results are available. During continuous positioning, network positioning will be used if no GNSS result is obtained within 30 seconds.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### CAR_HAILING
+### CarHailing
 
 ```cangjie
-CAR_HAILING
+CarHailing
 ```
 
-**Function:** Indicates ride-hailing scenarios.
+**Description:** Indicates ride-hailing scenario.
 
-Suitable for scenarios where users need to locate their current position for ride-hailing services, such as ride-sharing applications.
+Applicable for locating current position during ride-hailing, such as in ride-sharing apps.
 
-Primarily uses GNSS positioning technology, which consumes more power.
+Primarily uses GNSS positioning, with higher power consumption.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### DAILY_LIFE_SERVICE
+### DailyLifeService
 
 ```cangjie
-DAILY_LIFE_SERVICE
+DailyLifeService
 ```
 
-**Function:** Indicates daily service scenarios.
+**Description:** Indicates daily service usage scenario.
 
-Suitable for scenarios where precise user location is not required, such as news, online shopping, and food delivery applications.
+Applicable for scenarios not requiring precise user location, such as news, e-commerce, or food delivery apps.
 
-This scenario uses only network positioning technology, which consumes less power.
+Uses only network positioning technology with lower power consumption.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### NAVIGATION
+### Navigation
 
 ```cangjie
-NAVIGATION
+Navigation
 ```
 
-**Function:** Indicates navigation scenarios.
+**Description:** Indicates navigation scenario.
 
-Suitable for outdoor scenarios where real-time device location is required, such as vehicle or pedestrian navigation.
+Applicable for obtaining real-time device location outdoors, such as in vehicle or pedestrian navigation.
 
-Primarily uses GNSS positioning technology, which consumes more power.
+Primarily uses GNSS positioning with higher power consumption.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
 
-### NO_POWER
+### NoPower
 
 ```cangjie
-NO_POWER
+NoPower
 ```
 
-**Function:** Indicates no-power scenarios. In this scenario, positioning is not actively triggered. Location results are returned to the current application only when other applications perform positioning.
+**Description:** Indicates no-power scenario. In this scenario, positioning is not actively triggered; location results are returned only when other applications perform positioning.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Since:** 21### TRAJECTORY_TRACKING
+**Since:** 21
+
+### TrajectoryTracking
 
 ```cangjie
-TRAJECTORY_TRACKING
+TrajectoryTracking
 ```
 
-**Function:** Indicates a motion trajectory recording scenario.
+**Description:** Indicates trajectory tracking scenario.
 
-Applicable for scenarios that record user location trajectories, such as the trajectory recording feature in sports applications.
+Applicable for recording user movement trajectories, such as in fitness apps.
 
-Primarily uses GNSS positioning technology to provide location services, with relatively high power consumption.
+Primarily uses GNSS positioning with higher power consumption.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### UNSET
+### Unset
 
 ```cangjie
-UNSET
+Unset
 ```
 
-**Function:** Indicates that scenario information is not configured.
+**Description:** Indicates unset scenario.
 
-Indicates the [LocationRequestScenario](#enum-locationrequestscenario) field is invalid.
+Indicates that the [LocationRequestScenario](#enum-locationrequestscenario) field is invalid.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ## enum LocationSourceType
 
 ```cangjie
 public enum LocationSourceType {
-    | GNSS
-    | NETWORK
-    | INDOOR
-    | RTK
+    | Gnss
+    | Network
+    | Indoor
+    | Rtk
     | ...
 }
 ```
 
-**Function:** Source of the positioning result.
+**Description:** Source types of positioning results.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### GNSS
+### Gnss
 
 ```cangjie
-GNSS
+Gnss
 ```
 
-**Function:** Indicates the positioning result is obtained through GNSS positioning technology.
+**Description:** Indicates positioning result comes from GNSS technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### INDOOR
+### Indoor
 
 ```cangjie
-INDOOR
+Indoor
 ```
 
-**Function:** Indicates the positioning result is obtained through indoor high-precision positioning technology.
+**Description:** Indicates positioning result comes from indoor high-precision positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### NETWORK
+### Network
 
 ```cangjie
-NETWORK
+Network
 ```
 
-**Function:** Indicates the positioning result is obtained through network positioning technology.
+**Description:** Indicates positioning result comes from network positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### RTK
+### Rtk
 
 ```cangjie
-RTK
+Rtk
 ```
 
-**Function:** Indicates the positioning result is obtained through outdoor high-precision positioning technology.
+**Description:** Indicates positioning result comes from outdoor high-precision positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Initial Version:** 21
+**Since:** 21

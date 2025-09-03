@@ -1,8 +1,8 @@
-# ohos.file_fileuri (File URI)
+# ohos.file.fileuri
 
-This module provides the capability to obtain Uniform Resource Identifiers (URIs) from file paths, enabling subsequent file operations such as open, read, and write through [ohos.file_fs (File Management)](cj-apis-file_fs.md), thereby facilitating file sharing.
+This module provides the capability to obtain a Uniform Resource Identifier (URI) from a PATH, enabling subsequent file operations such as open, read, and write through [ohos.file_fs (File Management)](cj-apis-file_fs.md), thereby facilitating file sharing.
 
-## Importing the Module
+## Import Module
 
 ```cangjie
 import kit.CoreFileKit.*
@@ -12,45 +12,30 @@ import kit.CoreFileKit.*
 
 API example code usage instructions:
 
-- If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of the example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it must be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
 
 ## class FileUri
 
 ```cangjie
-public class FileUri <: ToString {
+public class FileUri <: Uri {
+
+
     public init(uriOrPath: String)
 }
 ```
 
-**Functionality:** Provides interfaces for converting URIs to shared paths during sharing, generating corresponding URIs for an application's own sandbox paths during sharing, and obtaining the URI of the directory path where a URI is located, facilitating access to URIs in file sharing scenarios.
+**Functionality:** Provides interfaces for converting a URI to a shared path during sharing, generating a corresponding URI for an application's own sandbox path during sharing, and obtaining the URI of the directory path where the URI is located, facilitating URI access in file sharing operations.
 
 **System Capability:** SystemCapability.FileManagement.AppFileService
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parent Type:**
 
-- ToString
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.CoreFileKit.*
-
-let pathDir = '123'
-let path = pathDir + "/test"
-let fileUriObject = FileUri(path)
-AppLog.info("The path of FileUri is " + fileUriObject.path)
-AppLog.info("The name of FileUri is " + fileUriObject.name)
-```
+- [Uri](#class-uri)
 
 ### prop name
 
@@ -58,15 +43,15 @@ AppLog.info("The name of FileUri is " + fileUriObject.name)
 public prop name: String
 ```
 
-**Functionality:** Gets the file name corresponding to the FileUri.
+**Functionality:** Gets the filename corresponding to the FileUri.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Read-Write Capability:** Read-only
 
 **System Capability:** SystemCapability.FileManagement.AppFileService
 
-**Initial Version:** 21
+**Since:** 21
 
 ### prop path
 
@@ -74,19 +59,20 @@ public prop name: String
 public prop path: String
 ```
 
-**Functionality:** Gets the path name corresponding to the FileUri.
+**Functionality:** Gets the pathname corresponding to the FileUri.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Read-Write Capability:** Read-only
 
 **System Capability:** SystemCapability.FileManagement.AppFileService
 
-**Initial Version:** 21
+**Since:** 21
 
 ### init(String)
 
 ```cangjie
+
 public init(uriOrPath: String)
 ```
 
@@ -94,7 +80,7 @@ public init(uriOrPath: String)
 
 **System Capability:** SystemCapability.FileManagement.AppFileService
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -104,30 +90,20 @@ public init(uriOrPath: String)
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 13900020 | Invalid argument. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CoreFileKit.*
-
-let pathDir = '123'
-let path = pathDir + "/test"
-let uri = FileUri.getUriFromPath(path)  // file://<packageName>/data/storage/el2/base/haps/entry/files/test
-let fileUriObject = FileUri(uri)
-```
+  | :---- | :--- |
+  | 13900005 | I/O error |
+  | 13900011 | Out of memory |
+  | 13900020 | Invalid argument |
+  | 13900042 | Unknown error |
+  | 14300002 | Invalid uri |
 
 ### static func getUriFromPath(String)
 
 ```cangjie
+
 public static func getUriFromPath(path: String): String
 ```
 
@@ -135,13 +111,13 @@ public static func getUriFromPath(path: String): String
 
 **System Capability:** SystemCapability.FileManagement.AppFileService
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| path | String | Yes | - | The sandbox path of the file. |
+| path | String | Yes | - | Sandbox path of the file. |
 
 **Return Value:**
 
@@ -151,42 +127,27 @@ public static func getUriFromPath(path: String): String
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
+  | :---- | :--- |
   | 401 | The input parameter is invalid. |
 
 ### func toString()
 
 ```cangjie
-public func toString(): String
+
+public override func toString(): String
 ```
 
 **Functionality:** Returns the URI as a string.
 
 **System Capability:** SystemCapability.FileManagement.AppFileService
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
 | String | Returns the URI as a string. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.CoreFileKit.*
-
-let pathDir = '123'
-let path = pathDir + "/test"
-let fileUriObject = FileUri(path)
-AppLog.info("The uri of FileUri is " + fileUriObject.toString())
-```

@@ -10,17 +10,15 @@ import kit.BasicServicesKit.*
 
 ## Usage Instructions
 
-API example code usage instructions:
+API sample code usage instructions:
 
-- If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
-
-## func getValue\<T>(StageContext, T, String) where T <: ToString
+## func getValue\<T>(UIAbilityContext, T, String) where T \<: ToString
 
 ```cangjie
-public func getValue<T>(context: StageContext, name: T, defValue: String): String where T <: ToString
+public func getValue<T>(context: UIAbilityContext, name: T, defValue: String): String where T <: ToString
 ```
 
 **Function:** Gets the value of a data item.
@@ -31,11 +29,11 @@ public func getValue<T>(context: StageContext, name: T, defValue: String): Strin
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| context | [StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext) | Yes | - | Application context. For how to obtain the context, see [getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext). |
-| name | T | Yes | - | Type T must implement the ToString interface. Name of the data item. Data item names fall into the following two categories:<br>- Any existing data item in the databases mentioned above.<br>- Data items added by developers themselves. |
-| defValue | String | Yes | - | Default value. Set by the developer. If the data is not found in the database, this default value is returned. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | Application context. |
+| name | T | Yes | - | Type T must implement the ToString interface. Name of the data item. Data item names fall into two categories:<br>- Any existing data item in the aforementioned databases.<br>- Data items added by developers themselves. |
+| defValue | String | Yes | - | Default value. Set by the developer, returned when the data is not found in the database. |
 
 **Return Value:**
 
@@ -43,23 +41,19 @@ public func getValue<T>(context: StageContext, name: T, defValue: String): Strin
 |:----|:----|
 | String | Returns the value of the data item. |
 
-**Example:**
+**Exceptions:**
 
-<!-- compile -->
+- IllegalArgumentException:
 
-```cangjie
-// index.cj
+| Error Message | Possible Cause | Handling Steps |
+|:----|:---|:---|
+| The context is invalid. | Context initialization failed | Restart the application |
 
-import kit.BasicServicesKit.*
-import ohos.ability.getStageContext
-
-let ret = getValue(getStageContext(Global.getAbilityContext()), Display.SCREEN_BRIGHTNESS_STATUS, "50") // The Context application context needs to be obtained. For details, see the usage instructions in this document.
-```
-
-## func getValue\<T, P>(StageContext, T, String, P) where T <: ToString, P <: ToString
+## func getValue\<T, P>(UIAbilityContext, T, String, P) where T \<: ToStringP \<: ToString
 
 ```cangjie
-public func getValue<T, P>(context: StageContext, name: T, defValue: String, domainName: P): String where T <: ToString, P <: ToString
+public func getValue<T, P>(context: UIAbilityContext, name: T, defValue: String, domainName: P): String where T <: ToString,
+    P <: ToString
 ```
 
 **Function:** Gets the value of a data item.
@@ -70,12 +64,12 @@ public func getValue<T, P>(context: StageContext, name: T, defValue: String, dom
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| context | [StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext) | Yes | - | Application context. For how to obtain the context, see [getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext). |
-| name | T | Yes | - | Type T must implement the ToString interface. Name of the data item. Data item names fall into the following two categories:<br>- Any existing data item in the databases mentioned above.<br>- Data items added by developers themselves. |
-| defValue | String | Yes | - | Default value. Set by the developer. If the data is not found in the database, this default value is returned. |
-| domainName | P | Yes | - | Type P must implement the ToString interface. Specifies the domain to set.<br> - If domainName is DomainName.DEVICE_SHARED,<br>&nbsp;&nbsp;&nbsp;it indicates the device property shared domain.<br>- If domainName is DomainName.USER_PROPRERTY,<br>&nbsp;&nbsp;&nbsp;it indicates the user property domain. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | Application context. |
+| name | T | Yes | - | Type T must implement the ToString interface. Name of the data item. Data item names fall into two categories:<br>- Any existing data item in the aforementioned databases.<br>- Data items added by developers themselves. |
+| defValue | String | Yes | - | Default value. Set by the developer, returned when the data is not found in the database. |
+| domainName | P | Yes | - | Type P must implement the ToString interface. Specifies the domain name to set:<br> - domainName as DomainName.DEVICE_SHARED,<br>&nbsp;&nbsp;&nbsp;indicates the device property shared domain.<br>- domainName as DomainName.USER_PROPRERTY,<br>&nbsp;&nbsp;&nbsp;indicates the user property domain. |
 
 **Return Value:**
 
@@ -83,32 +77,27 @@ public func getValue<T, P>(context: StageContext, name: T, defValue: String, dom
 |:----|:----|
 | String | Returns the value of the data item. |
 
-**Example:**
+**Exceptions:**
 
-<!-- compile -->
+- IllegalArgumentException:
 
-```cangjie
-// index.cj
-
-import kit.BasicServicesKit.*
-import ohos.ability.*
-
-let ret = getValue(getStageContext(Global.getAbilityContext()), Display.SCREEN_BRIGHTNESS_STATUS, "50", DomainName.USER_PROPERTY) // The Context application context needs to be obtained. For details, see the usage instructions in this document.
-```
+| Error Message | Possible Cause | Handling Steps |
+|:----|:---|:---|
+| The context is invalid. | Context initialization failed | Restart the application |
 
 ## enum Date
 
 ```cangjie
 public enum Date <: ToString {
-    | DATE_FORMAT
-    | TIME_FORMAT
-    | AUTO_GAIN_TIME
-    | AUTO_GAIN_TIME_ZONE
+    | DateFormat
+    | TimeFormat
+    | AutoGainTime
+    | AutoGainTimeZone
     | ...
 }
 ```
 
-**Function:** Provides data items for setting the time and date format.
+**Function:** Provides data items for setting time and date formats.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
@@ -118,49 +107,49 @@ public enum Date <: ToString {
 
 - ToString
 
-### AUTO_GAIN_TIME
+### AutoGainTime
 
 ```cangjie
-AUTO_GAIN_TIME
+AutoGainTime
 ```
 
-**Function:** Whether to automatically obtain the date, time, and time zone from the network. A value of true means to automatically obtain the information from the network; a value of false means not to obtain it automatically.
+**Function:** Whether to automatically obtain date, time, and time zone from the network. A value of true means automatic retrieval; false means no automatic retrieval.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### AUTO_GAIN_TIME_ZONE
+### AutoGainTimeZone
 
 ```cangjie
-AUTO_GAIN_TIME_ZONE
+AutoGainTimeZone
 ```
 
-**Function:** Whether to automatically obtain the time zone from NITZ. A value of true means to obtain it automatically; a value of false means not to obtain it automatically.
+**Function:** Whether to automatically obtain the time zone from NITZ. A value of true means automatic retrieval; false means no automatic retrieval.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### DATE_FORMAT
+### DateFormat
 
 ```cangjie
-DATE_FORMAT
+DateFormat
 ```
 
-**Function:** Date format. Date formats include MM/dd/yyyy, dd/MM/yyyy, and yyyy/MM/dd, where MM, dd, and yyyy represent the month, day, and year, respectively.
+**Function:** Date format. Date formats include MM/dd/yyyy, dd/MM/yyyy, and yyyy/MM/dd, where MM, dd, and yyyy represent month, day, and year respectively.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### TIME_FORMAT
+### TimeFormat
 
 ```cangjie
-TIME_FORMAT
+TimeFormat
 ```
 
-**Function:** Whether the time is displayed in 12-hour or 24-hour format. A value of "12" means 12-hour format; a value of "24" means 24-hour format.
+**Function:** Whether time is displayed in 12-hour or 24-hour format. A value of "12" indicates 12-hour format; "24" indicates 24-hour format.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
@@ -172,7 +161,7 @@ TIME_FORMAT
 public override func toString(): String
 ```
 
-**Function:** Returns the data item for setting the time and date format.
+**Function:** Returns the data item for setting time and date formats.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
@@ -181,22 +170,22 @@ public override func toString(): String
 **Return Value:**
 
 | Type | Description |
-|:------|:------|
-| String | Data item for setting the time and date format. |
+|:----|:----|
+| String | Data item for setting time and date formats. |
 
 ## enum Display
 
 ```cangjie
 public enum Display <: ToString {
-    | FONT_SCALE
-    | SCREEN_BRIGHTNESS_STATUS
-    | AUTO_SCREEN_BRIGHTNESS
-    | SCREEN_OFF_TIMEOUT
-    | DEFAULT_SCREEN_ROTATION
-    | ANIMATOR_DURATION_SCALE
-    | TRANSITION_ANIMATION_SCALE
-    | WINDOW_ANIMATION_SCALE
-    | DISPLAY_INVERSION_STATUS
+    | FontScale
+    | ScreenBrightnessStatus
+    | AutoScreenBrightness
+    | ScreenOffTimeout
+    | DefaultScreenRotation
+    | AnimatorDurationScale
+    | TransitionAnimationScale
+    | WindowAnimationScale
+    | DisplayInversionStatus
     | ...
 }
 ```
@@ -211,109 +200,109 @@ public enum Display <: ToString {
 
 - ToString
 
-### ANIMATOR_DURATION_SCALE
+### AnimatorDurationScale
 
 ```cangjie
-ANIMATOR_DURATION_SCALE
+AnimatorDurationScale
 ```
 
-**Function:** Scale factor for animation duration. This affects the start delay and duration of all such animations. A value of 0 means the animation ends immediately. The default value is 1.
+**Function:** Scaling factor for animation duration. This affects the start delay and duration of all such animations. A value of 0 means animations end immediately; default is 1.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### AUTO_SCREEN_BRIGHTNESS
+### AutoScreenBrightness
 
 ```cangjie
-AUTO_SCREEN_BRIGHTNESS
+AutoScreenBrightness
 ```
 
-**Function:** When automatic screen rotation is enabled, this property is invalid. When automatic rotation is disabled, the following values are available: A value of 0 means the screen is rotated by 0 degrees; a value of 1 means the screen is rotated by 90 degrees; a value of 2 means the screen is rotated by 180 degrees; a value of 3 means the screen is rotated by 270 degrees.
+**Function:** When auto-rotation is enabled, this property is invalid. When auto-rotation is disabled, the following values apply: 0 means screen rotation of 0 degrees; 1 means 90 degrees; 2 means 180 degrees; 3 means 270 degrees.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### DEFAULT_SCREEN_ROTATION
+### DefaultScreenRotation
 
 ```cangjie
-DEFAULT_SCREEN_ROTATION
+DefaultScreenRotation
 ```
 
-**Function:** When automatic screen rotation is enabled, this property is invalid. When automatic rotation is disabled, the following values are available: A value of 0 means the screen is rotated by 0 degrees; a value of 1 means the screen is rotated by 90 degrees; a value of 2 means the screen is rotated by 180 degrees; a value of 3 means the screen is rotated by 270 degrees.
+**Function:** When auto-rotation is enabled, this property is invalid. When auto-rotation is disabled, the following values apply: 0 means screen rotation of 0 degrees; 1 means 90 degrees; 2 means 180 degrees; 3 means 270 degrees.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### DISPLAY_INVERSION_STATUS
+### DisplayInversionStatus
 
 ```cangjie
-DISPLAY_INVERSION_STATUS
+DisplayInversionStatus
 ```
 
-**Function:** Whether to enable display color inversion. A value of 1 means to enable display color inversion; a value of 0 means not to enable it.
+**Function:** Whether to enable display color inversion. A value of 1 enables it; 0 disables it.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### FONT_SCALE
+### FontScale
 
 ```cangjie
-FONT_SCALE
+FontScale
 ```
 
-**Function:** Scale factor for fonts. The value is a floating-point number.
+**Function:** Scaling factor for fonts, a floating-point value.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### SCREEN_BRIGHTNESS_STATUS
+### ScreenBrightnessStatus
 
 ```cangjie
-SCREEN_BRIGHTNESS_STATUS
+ScreenBrightnessStatus
 ```
 
-**Function:** Screen brightness. The value ranges from 0 to 255.
+**Function:** Screen brightness. Value ranges from 0 to 255.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### SCREEN_OFF_TIMEOUT
+### ScreenOffTimeout
 
 ```cangjie
-SCREEN_OFF_TIMEOUT
+ScreenOffTimeout
 ```
 
-**Function:** Time (in milliseconds) that the device waits before entering sleep mode after being inactive for a period of time.
+**Function:** Time (in milliseconds) before the device enters sleep mode after inactivity.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### TRANSITION_ANIMATION_SCALE
+### TransitionAnimationScale
 
 ```cangjie
-TRANSITION_ANIMATION_SCALE
+TransitionAnimationScale
 ```
 
-**Function:** Scale factor for transition animations. A value of 0 disables transition animations.
+**Function:** Scaling factor for transition animations. A value of 0 disables transition animations.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Since:** 21
 
-### WINDOW_ANIMATION_SCALE
+### WindowAnimationScale
 
 ```cangjie
-WINDOW_ANIMATION_SCALE
+WindowAnimationScale
 ```
 
-**Function:** Scale factor for window animations. A value of 0 disables window animations.
+**Function:** Scaling factor for window animations. A value of 0 disables window animations.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
@@ -325,7 +314,7 @@ WINDOW_ANIMATION_SCALE
 public override func toString(): String
 ```
 
-**Function:** Returns the data item for display effect settings.
+**Function:** Returns the data item for setting display effects.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
@@ -333,21 +322,21 @@ public override func toString(): String
 
 **Return Value:**
 
-| Type    | Description |
-| :------ | :---------- |
-| String  | Data item for display effect settings. |
+| Type | Description |
+|:----|:----|
+| String | Data item for setting display effects. |
 
 ## enum DomainName
 
 ```cangjie
 public enum DomainName <: ToString {
-    | DEVICE_SHARED
-    | USER_PROPERTY
+    | DeviceShared
+    | UserProperty
     | ...
 }
 ```
 
-**Function:** Provides query domains.
+**Function:** Provides domain names for queries.
 
 **System Capability:** SystemCapability.Applications.Settings.Core
 
@@ -357,10 +346,10 @@ public enum DomainName <: ToString {
 
 - ToString
 
-### DEVICE_SHARED
+### DeviceShared
 
 ```cangjie
-DEVICE_SHARED
+DeviceShared
 ```
 
 **Function:** Device property shared domain.
@@ -369,10 +358,10 @@ DEVICE_SHARED
 
 **Since:** 21
 
-### USER_PROPERTY
+### UserProperty
 
 ```cangjie
-USER_PROPERTY
+UserProperty
 ```
 
 **Function:** User property domain.
@@ -395,6 +384,6 @@ public override func toString(): String
 
 **Return Value:**
 
-| Type    | Description |
-| :------ | :---------- |
-| String  | String corresponding to the query domain name. |
+| Type | Description |
+|:----|:----|
+| String | String corresponding to the query domain name. |

@@ -16,10 +16,10 @@ ohos.permission.INTERNET
 
 API example code usage instructions:
 
-- If the first line of the example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the first line of the example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
+For the above example project and configuration template, refer to [Cangjie Example Code Description](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## func createHttp()
 
@@ -27,11 +27,11 @@ For details about the example project and configuration template mentioned above
 public func createHttp(): HttpRequest
 ```
 
-**Description:** Creates an HTTP request. The request object includes functionalities such as initiating requests, aborting requests, and subscribing/unsubscribing to HTTP Response Header events. Each HttpRequest object corresponds to one HTTP request. To initiate multiple HTTP requests, a corresponding HttpRequest object must be created for each HTTP request.
+**Function:** Creates an HTTP request. The request object includes functionalities such as initiating requests, aborting requests, and subscribing/unsubscribing to HTTP Response Header events. Each HttpRequest object corresponds to one HTTP request. To initiate multiple HTTP requests, a corresponding HttpRequest object must be created for each HTTP request.
 
 > **Note:**
 >
-> When the request is no longer needed, the `destroy` method must be called to actively destroy the HttpRequest object.
+> When the request is no longer needed, the destroy method must be called to actively release the HttpRequest object.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -41,7 +41,7 @@ public func createHttp(): HttpRequest
 
 | Type | Description |
 |:----|:----|
-| [HttpRequest](#class-httprequest) | Returns an HttpRequest object, which includes methods such as `request`, `requestInStream`, `destroy`, `on`, and `off`. |
+| [HttpRequest](#class-httprequest) | Returns an HttpRequest object, which includes methods such as request, requestInStream, destroy, on, and off. |
 
 **Example:**
 
@@ -62,7 +62,7 @@ let httpRequest = createHttp()
 public func createHttpResponseCache(cacheSize!: UInt32 = MAX_CACHE_SIZE): HttpResponseCache
 ```
 
-**Description:** Creates a default object to store responses from HTTP access requests.
+**Function:** Creates a default object to store HTTP request responses.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -78,7 +78,7 @@ public func createHttpResponseCache(cacheSize!: UInt32 = MAX_CACHE_SIZE): HttpRe
 
 | Type | Description |
 |:----|:----|
-| [HttpResponseCache](#class-httpresponsecache) | Returns an object that stores HTTP access request responses. |
+| [HttpResponseCache](#class-httpresponsecache) | Returns an object that stores HTTP request responses. |
 
 **Example:**
 
@@ -97,97 +97,91 @@ let httpResponseCache = createHttpResponseCache()
 
 ```cangjie
 public class ClientCert {
-    public ClientCert(
-        public let certPath: String,
-        public let keyPath: String,
-        public let certType!: CertType = CertType.PEM,
-        public let keyPassword!: ?String = None
-    )
+    public var certPath: String
+    public var keyPath: String
+    public var certType: CertType
+    public var keyPassword: String
+    public init(certPath: String, keyPath: String, certType!: CertType = CertType.Pem, keyPassword!: String = "")
 }
 ```
 
-**Description:** Client certificate type.
+**Function:** Client certificate type.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let certPath
+### var certPath
 
 ```cangjie
-public let certPath: String
+public var certPath: String
 ```
 
-**Description:** Certificate path.
+**Function:** Certificate path.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let certType
+### var certType
 
 ```cangjie
-public let certType: CertType = CertType.PEM
+public var certType: CertType
 ```
 
-**Description:** Certificate type, default is PEM.
+**Function:** Certificate type, default is PEM.
 
 **Type:** [CertType](#enum-certtype)
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let keyPassword
+### var keyPassword
 
 ```cangjie
-public let keyPassword:?String = None
+public var keyPassword: String
 ```
 
-**Description:** Password for the certificate key.
-
-**Type:** ?String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### let keyPath
-
-```cangjie
-public let keyPath: String
-```
-
-**Description:** Path to the certificate key.
+**Function:** Password for the certificate key.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### ClientCert(String, String, CertType, ?String)
+### var keyPath
 
 ```cangjie
-public ClientCert(
-    public let certPath: String,
-    public let keyPath: String,
-    public let certType!: CertType = CertType.PEM,
-    public let keyPassword!: ?String = None
-)
+public var keyPath: String
 ```
 
-**Description:** Constructs a ClientCert instance.
+**Function:** Path to the certificate key.
+
+**Type:** String
+
+**Read-Write Capability:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+### init(String, String, CertType, String)
+
+```cangjie
+public init(certPath: String, keyPath: String, certType!: CertType = CertType.Pem, keyPassword!: String = "")
+```
+
+**Function:** Constructs a ClientCert instance.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -199,48 +193,51 @@ public ClientCert(
 |:---|:---|:---|:---|:---|
 | certPath | String | Yes | - | Certificate path. |
 | keyPath | String | Yes | - | Path to the certificate key. |
-| certType | [CertType](#enum-certtype) | No | CertType.PEM | **Named parameter.** Certificate type, default is PEM. |
-| keyPassword | ?String | No | None | **Named parameter.** Password for the certificate key. |
+| certType | [CertType](#enum-certtype) | No | CertType.Pem | **Named parameter.** Certificate type, default is PEM. |
+| keyPassword | String | No | "" | **Named parameter.** Password for the certificate key. |
 
 ## class DataReceiveProgressInfo
 
 ```cangjie
-public class DataReceiveProgressInfo {}
+public class DataReceiveProgressInfo {
+    public var receiveSize: Int64
+    public var totalSize: Int64
+}
 ```
 
-**Description:** Data reception information.
+**Function:** Data reception information.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let receiveSize
+### var receiveSize
 
 ```cangjie
-public let receiveSize: UInt32
+public var receiveSize: Int64
 ```
 
-**Description:** Amount of data received, in bytes.
+**Function:** Amount of data received, in bytes.
 
-**Type:** UInt32
+**Type:** Int64
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let totalSize
+### var totalSize
 
 ```cangjie
-public let totalSize: UInt32
+public var totalSize: Int64
 ```
 
-**Description:** Total amount of data to be received, in bytes.
+**Function:** Total amount of data to be received, in bytes.
 
-**Type:** UInt32
+**Type:** Int64
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -249,42 +246,45 @@ public let totalSize: UInt32
 ## class DataSendProgressInfo
 
 ```cangjie
-public class DataSendProgressInfo {}
+public class DataSendProgressInfo {
+    public var sendSize: Int64
+    public var totalSize: Int64
+}
 ```
 
-**Description:** Data transmission information.
+**Function:** Data transmission information.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let sendSize
+### var sendSize
 
 ```cangjie
-public let sendSize: UInt32
+public var sendSize: Int64
 ```
 
-**Description:** Amount of data sent each time, in bytes.
+**Function:** Amount of data sent each time, in bytes.
 
-**Type:** UInt32
+**Type:** Int64
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Initial Version:** 21
 
-### let totalSize
+### var totalSize
 
 ```cangjie
-public let totalSize: UInt32
+public var totalSize: Int64
 ```
 
-**Description:** Total amount of data to be sent, in bytes.
+**Function:** Total amount of data to be sent, in bytes.
 
-**Type:** UInt32
+**Type:** Int64
 
-**Read-Write Capability:** Read-only
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -296,332 +296,23 @@ public let totalSize: UInt32
 public class HttpRequest {}
 ```
 
-**Description:** HTTP request task. Before calling methods of HttpRequest, you need to create a task via [createHttp](../NetworkKit/cj-apis-net-http.md#func-createhttp).**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### func destroy()  
-
-```cangjie  
-public func destroy(): Unit  
-```  
-
-**Description:** Terminates the request task.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-
-httpRequest.destroy()  
-```  
-
-### func offDataEnd()  
-
-```cangjie  
-public func offDataEnd(): Unit  
-```  
-
-**Description:** Unsubscribes from the HTTP streaming response data completion event.  
-
-> **Note:**  
->  
-> Clears all subscriptions.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onDataEnd({ =>  
-    AppLog.info("data end")  
-})  
-httpRequest.offDataEnd()  
-```  
-
-### func offDataReceive()  
-
-```cangjie  
-public func offDataReceive(): Unit  
-```  
-
-**Description:** Unsubscribes from the HTTP streaming response data reception event.  
-
-> **Note:**  
->  
-> Clears all subscriptions.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onDataReceive({ data =>  
-    AppLog.info("data receive: ${data}")  
-})  
-httpRequest.offDataReceive()  
-```  
-
-### func offDataReceiveProgress()  
-
-```cangjie  
-public func offDataReceiveProgress(): Unit  
-```  
-
-**Description:** Unsubscribes from the HTTP streaming response data reception progress event.  
-
-> **Note:**  
->  
-> Clears all subscriptions.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onDataReceiveProgress({ receiveInfo =>  
-    AppLog.info("receive data ${receiveInfo.receiveSize}, total: ${receiveInfo.totalSize}")  
-})  
-httpRequest.offDataReceiveProgress()  
-```  
-
-### func offDataSendProgress()  
-
-```cangjie  
-public func offDataSendProgress(): Unit  
-```  
-
-**Description:** Unsubscribes from the HTTP network request data transmission progress event.  
-
-> **Note:**  
->  
-> Clears all subscriptions.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onDataSendProgress({ sendInfo =>  
-    AppLog.info("send data ${sendInfo.sendSize}, total: ${sendInfo.totalSize}")  
-})  
-httpRequest.offDataSendProgress()  
-```  
-
-### func offHeadersReceive()  
-
-```cangjie  
-public func offHeadersReceive(): Unit  
-```  
-
-**Description:** Unsubscribes from the HTTP Response Header event.  
-
-> **Note:**  
->  
-> Clears all subscriptions.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onHeadersReceive({ headers =>  
-    AppLog.info("headers: ${headers}")  
-})  
-httpRequest.offHeadersReceive()  
-```  
-
-### func onDataEnd(() -> Unit)  
-
-```cangjie  
-public func onDataEnd(callback: () -> Unit): Unit  
-```  
-
-**Description:** Subscribes to the HTTP streaming response data completion event.  
-
-> **Note:**  
->  
-> Subscription to HTTP streaming data upload events is not currently supported.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| callback | () -> Unit | Yes | - | Callback function. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onDataEnd({ =>  
-    AppLog.info("data end")  
-})  
-```  
-
-### func onDataReceive((Array\<Byte>) -> Unit)  
-
-```cangjie  
-public func onDataReceive(callback: (Array<Byte>) -> Unit): Unit  
-```  
-
-**Description:** Subscribes to the HTTP streaming response data reception event.  
-
-> **Note:**  
->  
-> Subscription to HTTP streaming data upload events is not currently supported.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| callback | (Array\<[Byte](<font color="red" face="bold">please add link</font>)>) -> Unit | Yes | - | Callback function. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpRequest = createHttp()  
-httpRequest.onDataReceive({ data =>  
-    AppLog.info("data receive: ${data}")  
-})  
-```  
-
-### func onDataReceiveProgress((DataReceiveProgressInfo) -> Unit)  
-
-```cangjie  
-public func onDataReceiveProgress(callback: (DataReceiveProgressInfo) -> Unit): Unit  
-```  
-
-**Description:** Subscribes to the HTTP streaming response data reception progress event.  
-
-> **Note:**  
->  
-> Subscription to HTTP streaming data upload events is not currently supported.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| callback | ([DataReceiveProgressInfo](#class-datareceiveprogressinfo)) -> Unit | Yes | - | Callback function. Returns data reception progress information. |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onDataReceiveProgress({ receiveInfo =>
-    AppLog.info("receive data ${receiveInfo.receiveSize}, total: ${receiveInfo.totalSize}")
-})
-```
-
-### func onDataSendProgress((DataSendProgressInfo) -> Unit)
-
-```cangjie
-public func onDataSendProgress(callback: (DataSendProgressInfo) -> Unit): Unit
-```
-
-**Function:** Subscribes to HTTP network request data sending progress events.
+**Function:** HTTP request task. Before calling the methods of HttpRequest, a task must first be created via [createHttp](../NetworkKit/cj-apis-net-http.md#func-createhttp).
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Since:** 21
+**Initial Version:** 21
 
-**Parameters:**
+### func destroy()
 
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| callback | ([DataSendProgressInfo](#class-datasendprogressinfo))->Unit | Yes | - | Callback function. Returns data sending progress information. |
+```cangjie
+public func destroy(): Unit
+```
+
+**Function:** Aborts the request task.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
 
 **Example:**
 
@@ -634,110 +325,230 @@ import ohos.base.*
 import kit.NetworkKit.*
 
 let httpRequest = createHttp()
-httpRequest.onDataSendProgress({ sendInfo =>
-    AppLog.info("send data ${sendInfo.sendSize}, total: ${sendInfo.totalSize}")
-})
+
+httpRequest.destroy()
 ```
 
-### func onHeadersReceive((HashMap\<String,String>) -> Unit)
+### func off(HttpRequestEvent, ?CallbackObject)
 
 ```cangjie
-public func onHeadersReceive(callback: (HashMap<String, String>) -> Unit): Unit
+public func off(event: HttpRequestEvent, callback!: ?CallbackObject = None): Unit
+```
+
+**Function:** Unsubscribes from HTTP request events.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | Type of HTTP request event to unsubscribe from. |
+| callback | ?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject) | No | None | Callback function. You can specify the callback passed in 'on' to unsubscribe from the corresponding event, or omit the callback to clear all subscriptions. |
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | The provided event type is not supported. | Check the event parameter to ensure it is a supported event type. Currently, only the HeadersReceive event type is supported. |
+
+### func on(HttpRequestEvent, Callback1Argument\<HashMap\<String,String>>)
+
+```cangjie
+public func on(event: HttpRequestEvent, callback: Callback1Argument<HashMap<String, String>>): Unit
 ```
 
 **Function:** Subscribes to HTTP Response Header events.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (HashMap\<String,String>)->Unit | Yes | - | Callback function. |
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports HeadersReceive event. |
+| callback | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[HashMap](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>> | Yes | - | Callback function, returns the HTTP response header object. |
 
-**Example:**
+**Exceptions:**
 
-<!-- compile -->
+- IllegalArgumentException:
 
-```cangjie
-// index.cj
+| Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | The provided event type is not supported. | Check the event parameter to ensure it is a supported event type. Currently, only the HeadersReceive event type is supported. |
 
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onHeadersReceive({ headers =>
-    AppLog.info("headers: ${headers}")
-})
-```
-
-### func onceHeadersReceive((HashMap\<String,String>) -> Unit)
+### func on(HttpRequestEvent, Callback1Argument\<Array\<Byte>>)
 
 ```cangjie
-public func onceHeadersReceive(callback: (HashMap<String, String>) -> Unit): Unit
+public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>): Unit
 ```
 
-**Function:** Subscribes to HTTP Response Header events, but triggers only once. Once triggered, the subscriber registered by this function will be removed.
+**Function:** Subscribes to HTTP streaming response data reception events.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (HashMap\<String,String>)->Unit | Yes | - | Callback function. |
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataReceive event. |
+| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<Byte>> | Yes | - | Callback function for receiving HTTP streaming response data. |
 
-**Example:**
+**Exceptions:**
 
-<!-- compile -->
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
+  | The parameter check failed. | The provided event type is not supported. | Check the event parameter to ensure it is a supported event type. Currently, only the DataReceive event type is supported. |### func on(HttpRequestEvent, Callback0Argument)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let httpRequest = createHttp()
-httpRequest.onceHeadersReceive({ headers =>
-    AppLog.info("headers: ${headers}")
-})
+public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
 ```
 
-### func request(String, (?BusinessException,?HttpResponse) -> Unit, ?HttpRequestOptions)
+**Function:** Subscribes to the HTTP streaming response data completion event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataEnd event. |
+| callback | [Callback0Argument](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function. |
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+| :---- | :--- | :--- |
+| The parameter check failed. | Unsupported event type passed | Check the event parameter to ensure it is a supported event type. Currently, only DataEnd event type is supported. |
+
+### func on(HttpRequestEvent, Callback1Argument\<DataReceiveProgressInfo>)
 
 ```cangjie
-public func request(url: String, callback: (?BusinessException, ?HttpResponse) -> Unit,
-    options!: ?HttpRequestOptions = None): Unit
+public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveProgressInfo>): Unit
+```
+
+**Function:** Subscribes to the HTTP streaming response data reception progress event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataReceiveProgress event. |
+| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)> | Yes | - | Callback function for receiving data reception progress information, parameter is a DataReceiveProgressInfo object. |
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+| :---- | :--- | :--- |
+| The parameter check failed. | Unsupported event type passed | Check the event parameter to ensure it is a supported event type. Currently, only DataReceiveProgress event type is supported. |
+
+### func on(HttpRequestEvent, Callback1Argument\<DataSendProgressInfo>)
+
+```cangjie
+public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProgressInfo>): Unit
+```
+
+**Function:** Subscribes to the HTTP network request data sending progress event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataSendProgress event. |
+| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<[DataSendProgressInfo](#class-datasendprogressinfo)> | Yes | - | Callback function for receiving data sending progress information, parameter is a DataSendProgressInfo object. |
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+| :---- | :--- | :--- |
+| The parameter check failed. | Unsupported event type passed | Check the event parameter to ensure it is a supported event type. Currently, only DataSendProgress event type is supported. |
+
+### func once(HttpRequestEvent, Callback1Argument\<HashMap\<String,String>>)
+
+```cangjie
+public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<String, String>>): Unit
+```
+
+**Function:** Subscribes to the HTTP Response Header event, which can only be triggered once. After triggering, the subscriber is removed. Uses callback as an asynchronous method.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports HeadersReceive event. |
+| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>> | Yes | - | Callback function. Returns the HTTP response header object. |
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+| :---- | :--- | :--- |
+| The parameter check failed. | Unsupported event type passed | Check the event parameter to ensure it is a supported event type. Currently, only HeadersReceive event type is supported. |
+
+### func request(String, HttpRequestOptions, AsyncCallback\<HttpResponse>)
+
+```cangjie
+public func request(url: String, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): Unit
 ```
 
 **Function:** Initiates an HTTP network request based on the URL address and returns the response in the callback function.
 
 > **Note:**
 >
-> This interface only supports receiving data with a size of up to 5MB.
+> This interface only supports receiving data up to 5MB in size.
 
 **Required Permission:** ohos.permission.INTERNET
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| url | String | Yes | - | URL address for the network request. |
-| callback | (?[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception),?[HttpResponse](#class-httpresponse))->Unit | Yes | - | Callback function. |
-| options | ?[HttpRequestOptions](#class-httprequestoptions) | No | None | **Named parameter.** Refer to [HttpRequestOptions](#class-httprequestoptions). |
+| url | String | Yes | - | URL address for initiating the network request. |
+| options | [HttpRequestOptions](#class-httprequestoptions) | Yes | - | Refer to [HttpRequestOptions](#class-httprequestoptions). |
+| callback | [AsyncCallback](<font color="red" face="bold">please add link</font>)\<[HttpResponse](#class-httpresponse)> | Yes | - | Callback function. |
 
 **Exceptions:**
 
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- HTTP interface error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
+
   | Error Code ID | Error Message |
-  |:---|:---|
+  | :---- | :--- |
   | 401 | Parameter error. |
   | 201 | Permission denied. |
   | 2300001 | Unsupported protocol. |
@@ -770,10 +581,93 @@ public func request(url: String, callback: (?BusinessException, ?HttpResponse) -
   | 2300094 | An authentication function returned an error. |
   | 2300999 | Unknown Other Error. |
 
-> **Error Code Description:**
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+let httpRequest = createHttp()
+httpRequest.request("http://www.example.com", {err, resp =>
+    if (let Some(e) <- err) {
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
+    }
+    if (let Some(r) <- resp) {
+        Hilog.info(0, "http_test", "resp: ${r.responseCode}")
+    } else {
+        Hilog.error(0, "AppLogCj", "response is none")
+    }
+})
+```
+
+### func request(String, AsyncCallback\<HttpResponse>)
+
+```cangjie
+public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
+```
+
+**Function:** Initiates an HTTP network request based on the URL address and returns the response in the callback function.
+
+> **Note:**
 >
-> For detailed descriptions of the above error codes, refer to [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-> HTTP interface error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+> This interface only supports receiving data up to 5MB in size.
+
+**Required Permission:** ohos.permission.INTERNET
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| url | String | Yes | - | URL address for initiating the network request. |
+| callback | [AsyncCallback](<font color="red" face="bold">please add link</font>)\<[HttpResponse](#class-httpresponse)> | Yes | - | Callback function. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- HTTP interface error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. |
+  | 201 | Permission denied. |
+  | 2300001 | Unsupported protocol. |
+  | 2300003 | URL using bad/illegal format or missing URL. |
+  | 2300005 | Couldn't resolve proxy name. |
+  | 2300006 | Couldn't resolve host name. |
+  | 2300007 | Couldn't connect to server. |
+  | 2300008 | Weird server reply. |
+  | 2300009 | Access denied to remote resource. |
+  | 2300016 | Error in the HTTP2 framing layer. |
+  | 2300018 | Transferred a partial file. |
+  | 2300023 | Failed writing received data to disk/application. |
+  | 2300025 | Upload failed. |
+  | 2300026 | Failed to open/read local data from file/application. |
+  | 2300027 | Out of memory. |
+  | 2300028 | Timeout was reached. |
+  | 2300047 | Number of redirects hit maximum amount. |
+  | 2300052 | Server returned nothing (no headers, no data). |
+  | 2300055 | Failed sending data to the peer. |
+  | 2300056 | Failure when receiving data from the peer. |
+  | 2300058 | Problem with the local SSL certificate. |
+  | 2300059 | Couldn't use specified SSL cipher. |
+  | 2300060 | SSL peer certificate or SSH remote key was not OK. |
+  | 2300061 | Unrecognized or bad HTTP Content or Transfer-Encoding. |
+  | 2300063 | Maximum file size exceeded. |
+  | 2300070 | Disk full or allocation exceeded. |
+  | 2300073 | Remote file already exists. |
+  | 2300077 | Problem with the SSL CA cert (path? access rights?). |
+  | 2300078 | Remote file not found. |
+  | 2300094 | An authentication function returned an error. |
+  | 2300999 | Unknown Other Error. |
 
 **Example:**
 
@@ -784,26 +678,25 @@ public func request(url: String, callback: (?BusinessException, ?HttpResponse) -
 
 import ohos.base.*
 import kit.NetworkKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let httpRequest = createHttp()
 httpRequest.request("http://www.example.com", {err, resp =>
     if (let Some(e) <- err) {
-        Hilog.error(0, "test","exception: ${e.message}")
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
     }
     if (let Some(r) <- resp) {
-        Hilog.info(0, "test", "resp: ${r}")
+        Hilog.info(0, "http_test", "resp: ${r.responseCode}")
     } else {
-        Hilog.error(0, "test", "response is none")
+        Hilog.error(0, "AppLogCj", "response is none")
     }
 })
 ```
 
-### func requestInStream(String, (?BusinessException,?UInt32) -> Unit, ?HttpRequestOptions)
+### func requestInStream(String, HttpRequestOptions, AsyncCallback\<UInt32>)
 
 ```cangjie
-public func requestInStream(url: String, callback: (?BusinessException, ?UInt32) -> Unit,
-    options!: ?HttpRequestOptions = None): Unit
+public func requestInStream(url: String, options: HttpRequestOptions, callback: AsyncCallback<UInt32>): Unit
 ```
 
 **Function:** Initiates an HTTP network request based on the URL address and configuration options, returning a streaming response in the callback function.
@@ -812,20 +705,23 @@ public func requestInStream(url: String, callback: (?BusinessException, ?UInt32)
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| url | String | Yes | - | URL address for the network request. |
-| callback | (?[BusinessException](../BasicServicesKit/cj-apis-base.md#class-businessexception),?UInt32)->Unit | Yes | - | Callback function. |
-| options | ?[HttpRequestOptions](#class-httprequestoptions) | No | None | **Named parameter.** Refer to [HttpRequestOptions](#class-httprequestoptions). |
+| url | String | Yes | - | URL address for initiating the network request. |
+| options | [HttpRequestOptions](#class-httprequestoptions) | Yes | - | Refer to [HttpRequestOptions](#class-httprequestoptions). |
+| callback | [AsyncCallback](<font color="red" face="bold">please add link</font>)\<UInt32> | Yes | - | Callback function. |
 
 **Exceptions:**
 
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- HTTP interface error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
+
   | Error Code ID | Error Message |
-  |:---|:---|
+  | :---- | :--- |
   | 401 | Parameter error. |
   | 201 | Permission denied. |
   | 2300001 | Unsupported protocol. |
@@ -858,11 +754,6 @@ public func requestInStream(url: String, callback: (?BusinessException, ?UInt32)
   | 2300094 | An authentication function returned an error. |
   | 2300999 | Unknown Other Error. |
 
-> **Error Code Description:**
->
-> For detailed descriptions of the above error codes, refer to [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-> HTTP interface error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
-
 **Example:**
 
 <!-- compile -->
@@ -872,45 +763,70 @@ public func requestInStream(url: String, callback: (?BusinessException, ?UInt32)
 
 import ohos.base.*
 import kit.NetworkKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 let httpRequest = createHttp()
 httpRequest.requestInStream("http://www.example.com", {err, code =>
     if (let Some(e) <- err) {
-        Hilog.error(0, "test","exception: ${e.message}")
+        Hilog.error(0, "AppLogCj","exception: ${e.message}")
     }
     if (let Some(respCode) <- code) {
-        Hilog.info(0, "test", "resp: ${respCode}")
+        Hilog.info(0, "AppLogCj", "resp: ${respCode}")
     } else {
-        Hilog.error(0, "test", "response is none")
+        Hilog.error(0, "AppLogCj", "response is none")
     }
 })
 ```
 
-## class HttpRequestOptions
+### func requestInStream(String, AsyncCallback\<UInt32>)
+
+```cangjie
+public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
+```
+
+**Function:** Initiates an HTTP network request based on the URL address and configuration options, returning a streaming response in the callback function.
+
+**Required Permission:** ohos.permission.INTERNET
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| url | String | Yes | - | URL address for initiating the network request. |
+| callback | [AsyncCallback](<font color="red" face="bold">please add link</font>)\<UInt32>## class HttpRequestOptions
 
 ```cangjie
 public class HttpRequestOptions {
-    public HttpRequestOptions(
-        public let method!: RequestMethod = RequestMethod.GET,
-        public let extraData!: ?HttpData = None,
-        public let expectDataType!: ?HttpDataType = None,
-        public let usingCache!: Bool = true,
-        public let priority!: UInt32 = 1,
-        public let header!: ?HashMap<String, String> = None,
-        public let readTimeout!: UInt32 = 60000,
-        public let connectTimeout!: UInt32 = 60000,
-        public let usingProtocol!: ?HttpProtocol = None,
-        public let usingProxy!: UsingProxy = USE_DEFAULT,
-        public let caPath!: ?String = None,
-        public let resumeFrom!: ?Int64 = None,
-        public let resumeTo!: ?Int64 = None,
-        public let clientCert!: ?ClientCert = None,
-        public let dnsOverHttps!: ?String = None,
-        public let dnsServers!: ?Array<String> = None,
-        public let maxLimit!: UInt32 = 5 * 1024 * 1024,
-        public let multiFormDataList!: ?Array<MultiFormData> = None
-    )
+    public var method: RequestMethod
+    public var extraData: HttpData
+    public var expectDataType:?HttpDataType = None
+    public var usingCache: Bool
+    public var priority: UInt32
+    public var header: HashMap<String, String>
+    public var readTimeout: UInt32
+    public var connectTimeout: UInt32
+    public var usingProtocol:?HttpProtocol = None
+    public var usingProxy: UsingProxy = UseDefault
+    public var caPath: String
+    public var resumeFrom: Int64
+    public var resumeTo: Int64
+    public var clientCert: ClientCert
+    public var dnsOverHttps: String
+    public var dnsServers: Array<String>
+    public var maxLimit: UInt32
+    public var multiFormDataList: Array<MultiFormData>
+    public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
+        expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+        header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
+        connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+        usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
+        resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
+        dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
+        multiFormDataList!: Array<MultiFormData> = Array<MultiFormData>())
 }
 ```
 
@@ -918,720 +834,320 @@ public class HttpRequestOptions {
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let caPath
+### var caPath
 
 ```cangjie
-public let caPath:?String = None
+public var caPath: String
 ```
 
 **Function:** If this parameter is set, the system will use the CA certificate at the user-specified path (developers must ensure the accessibility of the CA certificate at this path). Otherwise, the system will use the preset CA certificate located at: /etc/ssl/certs/cacert.pem. The certificate path is a sandbox-mapped path (developers can obtain the application sandbox path via Global.getContext().filesDir). Currently, only text-format certificates with the .pem extension are supported.
 
-**Type:** ?String
+**Type:** String
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let clientCert
+### var clientCert
 
 ```cangjie
-public let clientCert:?ClientCert = None
+public var clientCert: ClientCert
 ```
 
 **Function:** Supports transmitting client certificates.
 
-**Type:** ?[ClientCert](#class-clientcert)
+**Type:** [ClientCert](#class-clientcert)
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let connectTimeout
+### var connectTimeout
 
 ```cangjie
-public let connectTimeout: UInt32 = 60000
+public var connectTimeout: UInt32
 ```
 
 **Function:** Connection timeout duration. Unit: milliseconds (ms), default is 60000ms.
 
 **Type:** UInt32
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let dnsOverHttps
+### var dnsOverHttps
 
 ```cangjie
-public let dnsOverHttps:?String = None
+public var dnsOverHttps: String
 ```
 
-**Function:** Sets the use of an HTTPS protocol server for DNS resolution.<br />The parameter must be URL-encoded in the following format: "https://host:port/path".
+**Function:** Sets the use of HTTPS protocol servers for DNS resolution.<br />The parameter must be URL-encoded in the following format: "https://host:port/path".
 
-**Type:** ?String
+**Type:** String
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let dnsServers
+### var dnsServers
 
 ```cangjie
-public let dnsServers:?Array<String>= None
+public var dnsServers: Array<String>
 ```
 
-**Function:** Sets specified DNS servers for DNS resolution.<br />Multiple DNS resolution servers can be set, with a maximum of 3 servers. If more than 3 are provided, only the first 3 will be used.<br />Servers must be IPv4 or IPv6 addresses.
+**Function:** Sets specified DNS servers for DNS resolution.<br />Multiple DNS resolution servers can be set, up to 3 servers. If more than 3 are provided, only the first 3 will be used.<br />Servers must be IPv4 or IPv6 addresses.
 
-**Type:** ?Array\<String>
+**Type:** Array\<String>
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let expectDataType
+### var expectDataType
 
 ```cangjie
-public let expectDataType:?HttpDataType = None
+public var expectDataType:?HttpDataType = None
 ```
 
-**Function:** Specifies the type of returned data. By default, this field is not set. If this parameter is specified, the system will prioritize returning the specified type.
+**Function:** Specifies the type of returned data. By default, this field is not set. If this parameter is set, the system will prioritize returning the specified type.
 
 **Type:** ?[HttpDataType](#enum-httpdatatype)
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let extraData
+### var extraData
 
 ```cangjie
-public let extraData:?HttpData = None
+public var extraData: HttpData
 ```
 
-**Function:** Additional data for sending requests. By default, this field is not set.
+**Function:** Additional data sent with the request. By default, this field is not set.
 
-- For HTTP requests with methods like POST or PUT, this field serves as the HTTP request content, encoded in UTF-8 as the request body.
+- When the HTTP request method is POST, PUT, etc., this field serves as the HTTP request content, encoded in UTF-8 as the request body.
     - When 'content-Type' is 'application/x-www-form-urlencoded', the submitted data should be URL-encoded key-value pairs in the format "key1=value1&key2=value2&key3=value3". The corresponding type for this field is typically String.
     - When 'content-Type' is 'text/xml', the corresponding type is typically String.
     - When 'content-Type' is 'application/json', the corresponding type is typically Object.
     - When 'content-Type' is 'application/octet-stream', the corresponding type is typically ArrayBuffer.
     - When 'content-Type' is 'multipart/form-data' and the field to be uploaded is a file, the corresponding type is typically ArrayBuffer.
-- For HTTP requests with methods like GET, OPTIONS, DELETE, TRACE, or CONNECT, this field supplements the HTTP request parameters. Developers should provide string-type parameters that have been Encode-encoded. Object-type parameters do not require pre-encoding and will be appended to the URL for sending; ArrayBuffer-type parameters will not be appended.
+- When the HTTP request method is GET, OPTIONS, DELETE, TRACE, CONNECT, etc., this field serves as supplementary parameters for the HTTP request. Developers need to pass string-type parameters that have been URL-encoded. Object-type parameters do not require pre-encoding and will be appended to the URL for sending; ArrayBuffer-type parameters will not be appended.
 
 The above information is for reference only and may vary depending on specific circumstances.
 
-**Type:** ?[HttpData](#enum-httpdata)
+**Type:** [HttpData](#enum-httpdata)
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let header
+### var header
 
 ```cangjie
-public let header:?HashMap<String, String>= None
+public var header: HashMap<String, String>
 ```
 
 **Function:** HTTP request header fields. Default is {'content-Type': 'application/json'}.
 
-**Type:** ?HashMap\<String,String>
+**Type:** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let maxLimit
+### var maxLimit
 
 ```cangjie
-public let maxLimit: UInt32 = 5 * 1024 * 1024
+public var maxLimit: UInt32
 ```
 
-**Function:** Maximum byte limit for response messages, default is 5MB in bytes. Maximum value is 10MB in bytes.
+**Function:** Maximum byte limit for response messages. Default is 5MB, in bytes. Maximum value is 10MB, in bytes.
 
 **Type:** UInt32
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let method
+### var method
 
 ```cangjie
-public let method: RequestMethod = RequestMethod.GET
+public var method: RequestMethod
 ```
 
-**Function:** Request method, default is GET.
+**Function:** Request method. Default is GET.
 
 **Type:** [RequestMethod](#enum-requestmethod)
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let multiFormDataList
+### var multiFormDataList
 
 ```cangjie
-public let multiFormDataList:?Array<MultiFormData>= None
+public var multiFormDataList: Array<MultiFormData>
 ```
 
-**Function:** When 'content-Type' is 'multipart/form-data', this field defines the list of data fields to be uploaded.
+**Function:** When 'content-Type' is 'multipart/form-data', this field defines the list of data field forms to be uploaded.
 
-**Type:** ?Array\<[MultiFormData](#class-multiformdata)>
+**Type:** Array\<[MultiFormData](#class-multiformdata)>
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let priority
+### var priority
 
 ```cangjie
-public let priority: UInt32 = 1
+public var priority: UInt32
 ```
 
 **Function:** Priority, range [1,1000], default is 1. If the parameter exceeds the range, the default value 1 will be used.
 
 **Type:** UInt32
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let readTimeout
+### var readTimeout
 
 ```cangjie
-public let readTimeout: UInt32 = 60000
+public var readTimeout: UInt32
 ```
 
 **Function:** Read timeout duration. Unit: milliseconds (ms), default is 60000ms.<br />Setting it to 0 means no timeout will occur.
 
 **Type:** UInt32
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let resumeFrom
+### var resumeFrom
 
 ```cangjie
-public let resumeFrom:?Int64 = None
+public var resumeFrom: Int64
 ```
 
-**Function:** Used to set the starting position for upload or download. HTTP standard (RFC 7233 Section 3.1) allows servers to ignore range requests.<br />Setting this parameter when using HTTP PUT may cause unknown issues.<br />Valid range: 1~4294967296 (4GB). Values outside this range will not take effect. No default value.
+**Function:** Sets the starting position for upload or download. HTTP standard (RFC 7233 Section 3.1) allows servers to ignore range requests.<br />Setting this parameter with HTTP PUT may cause unknown issues.<br />Valid range: 1~4294967296 (4GB). Values outside this range will not take effect. No default value.
 
-**Type:** ?Int64
+**Type:** Int64
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let resumeTo
+### var resumeTo
 
 ```cangjie
-public let resumeTo:?Int64 = None
+public var resumeTo: Int64
 ```
 
-**Function:** Used to set the ending position for upload or download. HTTP standard (RFC 7233 Section 3.1) allows servers to ignore range requests.<br />Setting this parameter when using HTTP PUT may cause unknown issues.<br />Valid range: 1~4294967296 (4GB). Values outside this range will not take effect. No default value.
+**Function:** Sets the ending position for upload or download. HTTP standard (RFC 7233 Section 3.1) allows servers to ignore range requests.<br />Setting this parameter with HTTP PUT may cause unknown issues.<br />Valid range: 1~4294967296 (4GB). Values outside this range will not take effect. No default value.
 
-**Type:** ?Int64
+**Type:** Int64
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let usingCache
+### var usingCache
 
 ```cangjie
-public let usingCache: Bool = true
+public var usingCache: Bool
 ```
 
-**Function:** Whether to use cache, default is true. The cache is read first when making requests. The cache is effective within the current process. New cache will replace old cache.
+**Function:** Whether to use cache. Default is true, prioritizing cache reading during requests. Cache is effective for the current process. New cache will replace old cache.
 
 **Type:** Bool
 
-**Read/Write Attribute:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
-**Initial Version:** 21
+**Since:** 21
 
-### let usingProtocol
+### var usingProtocol
 
 ```cangjie
-public let usingProtocol:?HttpProtocol = None
+public var usingProtocol:?HttpProtocol = None
 ```
 
-**Function:** Protocol to use. Default value is automatically specified by the system.
+**Function:** Protocol to use. Default is automatically specified by the system.
 
 **Type:** ?[HttpProtocol](#enum-httpprotocol)
-**Read-Write Capability:** Read-only  
 
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### let usingProxy  
-
-```cangjie  
-public let usingProxy: UsingProxy = USE_DEFAULT  
-```  
-
-**Function:** Specifies whether to use an HTTP proxy. Default is USE_DEFAULT, which uses the default proxy.  
-- When usingProxy is NOT_USE, no network proxy is used.  
-- When usingProxy is USE_SPECIFIED, the specified network proxy is used.  
-
-**Type:** [UsingProxy](#enum-usingproxy)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### HttpRequestOptions(RequestMethod, ?HttpData, ?HttpDataType, Bool, UInt32, ?HashMap\<String,String>, UInt32, UInt32, ?HttpProtocol, UsingProxy, ?String, ?Int64, ?Int64, ?ClientCert, ?String, ?Array\<String>, UInt32, ?Array\<MultiFormData>)  
-
-```cangjie  
-public HttpRequestOptions(  
-    public let method!: RequestMethod = RequestMethod.GET,  
-    public let extraData!: ?HttpData = None,  
-    public let expectDataType!: ?HttpDataType = None,  
-    public let usingCache!: Bool = true,  
-    public let priority!: UInt32 = 1,  
-    public let header!: ?HashMap<String, String> = None,  
-    public let readTimeout!: UInt32 = 60000,  
-    public let connectTimeout!: UInt32 = 60000,  
-    public let usingProtocol!: ?HttpProtocol = None,  
-    public let usingProxy!: UsingProxy = USE_DEFAULT,  
-    public let caPath!: ?String = None,  
-    public let resumeFrom!: ?Int64 = None,  
-    public let resumeTo!: ?Int64 = None,  
-    public let clientCert!: ?ClientCert = None,  
-    public let dnsOverHttps!: ?String = None,  
-    public let dnsServers!: ?Array<String> = None,  
-    public let maxLimit!: UInt32 = 5 * 1024 * 1024,  
-    public let multiFormDataList!: ?Array<MultiFormData> = None  
-)  
-```  
-
-**Function:** Constructs an HttpRequestOptions instance.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| method | [RequestMethod](#enum-requestmethod) | No | RequestMethod.GET | **Named parameter.** Request method, default is GET. |  
-| extraData | ?[HttpData](#enum-httpdata) | No | None | **Named parameter.** Additional data for the request, default is None.  
-When the HTTP request is POST, PUT, etc., this field is the HTTP request content, encoded in UTF-8 as the request body.  
-When 'content-Type' is 'application/x-www-form-urlencoded', the submitted data should be URL-encoded as key-value pairs like "key1=value1&key2=value2&key3=value3", typically of type String.  
-When 'content-Type' is 'text/xml', the field is typically of type String.  
-When 'content-Type' is 'application/json', the field is typically of type Object.  
-When 'content-Type' is 'application/octet-stream', the field is typically of type ArrayBuffer.  
-When 'content-Type' is 'multipart/form-data' and the field to upload is a file, the field is typically of type ArrayBuffer.  
-For GET, OPTIONS, DELETE, TRACE, CONNECT methods, this field supplements the HTTP request parameters. Developers should pass URL-encoded string parameters; Object-type parameters do not need pre-encoding and will be appended to the URL. ArrayBuffer-type parameters are not processed.  
-The above information is for reference and may vary based on specific cases. |  
-| expectDataType | ?[HttpDataType](#enum-httpdatatype) | No | None | **Named parameter.** Specifies the return data type, default is None. If set, the system prioritizes returning the specified type. |  
-| usingCache | Bool | No | true | **Named parameter.** Whether to use cache, default is true. Requests prioritize reading from cache. Cache is process-specific; new cache replaces old cache. |  
-| priority | UInt32 | No | 1 | **Named parameter.** Priority, range [1,1000], default is 1. Values outside the range default to 1. |  
-| header | ?HashMap\<String,String> | No | None | **Named parameter.** HTTP request header fields. Default is {'content-Type': 'application/json'}. |  
-| readTimeout | UInt32 | No | 60000 | **Named parameter.** Read timeout in milliseconds (ms), default is 60000ms.  
-Set to 0 for no timeout. |  
-| connectTimeout | UInt32 | No | 60000 | **Named parameter.** Connection timeout in milliseconds (ms), default is 60000ms. |  
-| usingProtocol | ?[HttpProtocol](#enum-httpprotocol) | No | None | **Named parameter.** Protocol to use. Default is system-specified. |  
-| usingProxy | [UsingProxy](#enum-usingproxy) | No | USE_DEFAULT | **Named parameter.** Whether to use HTTP proxy, default is USE_DEFAULT.  
-- When usingProxy is NOT_USE, no network proxy is used.  
-- When usingProxy is USE_SPECIFIED, the specified network proxy is used. |  
-| caPath | ?String | No | None | **Named parameter.** If set, the system uses the CA certificate at the specified path (developers must ensure accessibility). Otherwise, the system preset CA certificate at /etc/ssl/certs/cacert.pem is used. The path is sandbox-mapped (accessible via Global.getContext().filesDir). Currently, only .pem text-format certificates are supported. |  
-| resumeFrom | ?Int64 | No | None | **Named parameter.** Sets the start position for upload/download. HTTP standard (RFC 7233 Section 3.1) allows servers to ignore range requests.  
-Using this with HTTP PUT may cause issues.  
-Range: 1~4294967296 (4GB). Out-of-range values are ignored. No default. |  
-| resumeTo | ?Int64 | No | None | **Named parameter.** Sets the end position for upload/download. HTTP standard (RFC 7233 Section 3.1) allows servers to ignore range requests.  
-Using this with HTTP PUT may cause issues.  
-Range: 1~4294967296 (4GB). Out-of-range values are ignored. No default. |  
-| clientCert | ?[ClientCert](#class-clientcert) | No | None | **Named parameter.** Supports transmitting client certificates. |  
-| dnsOverHttps | ?String | No | None | **Named parameter.** Sets a DNS-over-HTTPS server for DNS resolution.  
-Parameter must be URL-encoded in the format: "https://host:port/path". |  
-| dnsServers | ?Array\<String> | No | None | **Named parameter.** Sets specified DNS servers for resolution.  
-Up to 3 servers can be set; excess servers are truncated.  
-Servers must be IPv4 or IPv6 addresses. |  
-| maxLimit | UInt32 | No | 5 * 1024 * 1024 | **Named parameter.** Maximum byte limit for response messages, default is 5MB in bytes. Maximum is 10MB in bytes. |  
-| multiFormDataList | ?Array\<[MultiFormData](#class-multiformdata)> | No | None | **Named parameter.** When 'content-Type' is 'multipart/form-data', this field defines the list of data fields to upload. |  
-
-## class HttpResponse  
-
-```cangjie  
-public class HttpResponse <: ToString {}  
-```  
-
-**Function:** Return type for the callback function of the request method.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Parent Type:**  
-
-- ToString  
-
-### let cookies  
-
-```cangjie  
-public let cookies: String  
-```  
-
-**Function:** Cookies returned by the server.  
-
-**Type:** String  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### let header  
-
-```cangjie  
-public let header: HashMap<String, String>  
-```  
-
-**Function:** Response headers returned by the HTTP request.  
-
-**Type:** HashMap\<String,String>  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### let performanceTiming  
-
-```cangjie  
-public let performanceTiming: PerformanceTiming  
-```  
-
-**Function:** Time consumption for each phase of the HTTP request.  
-
-**Type:** [PerformanceTiming](#class-performancetiming)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### let responseCode  
-
-```cangjie  
-public let responseCode: ResponseCode  
-```  
-
-**Function:** Response status code.  
-
-**Type:** [ResponseCode](#enum-responsecode)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### let result  
-
-```cangjie  
-public let result: HttpData  
-```  
-
-**Function:** HTTP request returns content in the format specified by the 'content-type' header.  
-
-**Type:** [HttpData](#enum-httpdata)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### let resultType  
-
-```cangjie  
-public let resultType: HttpDataType  
-```  
-
-**Function:** Return value type.  
-
-**Type:** [HttpDataType](#enum-httpdatatype)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### func toString()  
-
-```cangjie  
-public func toString(): String  
-```  
-
-**Function:** Returns a string representation of [HttpResponse](#class-httpresponse).  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| String | Returns a string representation of [HttpResponse](#class-httpresponse). |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-import ohos.hilog.Hilog  
-
-let httpRequest = createHttp()  
-httpRequest.request("http://www.example.com", {err, resp =>  
-    if (let Some(e) <- err) {  
-        Hilog.error(0, "test","exception: ${e.message}")  
-    }  
-    if (let Some(r) <- resp) {  
-        Hilog.info(0, "test", "resp: ${r.toString()}")  
-    } else {  
-        Hilog.error(0, "test", "response is none")  
-    }  
-})  
-```  
-
-## class HttpResponseCache  
-
-```cangjie  
-public class HttpResponseCache {}  
-```  
-
-**Function:** Stores HTTP request response objects. Before using HttpResponseCache methods, create a task via [createHttpResponseCache](#func-createhttpresponsecacheuint32).  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-### func delete()  
-
-```cangjie  
-public func delete(): Unit  
-```  
-
-**Function:** Disables the cache and deletes its data.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-import ohos.hilog.Hilog  
-
-let httpResponseCache = createHttpResponseCache()  
-try {  
-    httpResponseCache.delete()  
-} catch (e: BusinessException) {  
-    Hilog.info(0, "", "${e}")  
-}  
-```  
-
-### func flush()  
-
-```cangjie  
-public func flush(): Unit  
-```  
-
-**Function:** Writes cached data to the file system for access in subsequent HTTP requests.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Initial Version:** 21  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-import ohos.hilog.Hilog  
-
-let httpResponseCache = createHttpResponseCache()  
-try {  
-    httpResponseCache.flush()  
-} catch (e: BusinessException) {
-    Hilog.info(0, "", "${e}")
-}
-```
-
-## class MultiFormData
-
-```cangjie
-public class MultiFormData {
-    public MultiFormData(
-        public let name: String,
-        public let contentType: String,
-        public let remoteFileName!: ?String = None,
-        public let data!: ?HttpData = None,
-        public let filePath!: ?String = None
-    )
-}
-```
-
-**Function:** Type for multipart form data.
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let contentType
+### var usingProxy
 
 ```cangjie
-public let contentType: String
+public var usingProxy: UsingProxy = UseDefault
 ```
 
-**Function:** Data type, such as 'text/plain', 'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4', etc.
+**Function:** Whether to use HTTP proxy. Default is USE_DEFAULT, using the default proxy.<br />When usingProxy is NOT_USE, no network proxy will be used.<br />When usingProxy is USE_SPECIFIED, the specified network proxy will be used.
 
-**Type:** String
+**Type:** [UsingProxy](#enum-usingproxy)
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let data
+### init(RequestMethod, HttpData, ?HttpDataType, Bool, UInt32, HashMap\<String,String>, UInt32, UInt32, ?HttpProtocol, UsingProxy, String, Int64, Int64, ClientCert, String, Array\<String>, UInt32, Array\<MultiFormData>)
 
 ```cangjie
-public let data:?HttpData = None
+public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = HttpData.StringData(""),
+    expectDataType!: ?HttpDataType = None, usingCache!: Bool = true, priority!: UInt32 = 1,
+    header!: HashMap<String, String> = HashMap<String, String>(), readTimeout!: UInt32 = 60000,
+    connectTimeout!: UInt32 = 60000, usingProtocol!: ?HttpProtocol = None,
+    usingProxy!: UsingProxy = UsingProxy.UseDefault, caPath!: String = "", resumeFrom!: Int64 = 0,
+    resumeTo!: Int64 = 0, clientCert!: ClientCert = ClientCert("",""), dnsOverHttps!: String = "",
+    dnsServers!: Array<String> = Array<String>(), maxLimit!: UInt32 = 5 * 1024 * 1024,
+    multiFormDataList!: Array<MultiFormData> = Array<MultiFormData>())
 ```
 
-**Function:** Form data content.
-
-**Type:** ?[HttpData](#enum-httpdata)
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### let filePath
-
-```cangjie
-public let filePath:?String = None
-```
-
-**Function:** This parameter sets the MIME part's body content based on the file content. Used as an alternative to `data` for setting file data as the content. If `data` is empty, `filePath` must be set. If `data` has a value, `filePath` will not take effect.
-
-**Type:** ?String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### let name
-
-```cangjie
-public let name: String
-```
-
-**Function:** Data name.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### let remoteFileName
-
-```cangjie
-public let remoteFileName:?String = None
-```
-
-**Function:** The filename to be saved on the server after upload.
-
-**Type:** ?String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### MultiFormData(String, String, ?String, ?HttpData, ?String)
-
-```cangjie
-public MultiFormData(
-    public let name: String,
-    public let contentType: String,
-    public let remoteFileName!: ?String = None,
-    public let data!: ?HttpData = None,
-    public let filePath!: ?String = None
-)
-```
-
-**Function:** Constructs a MultiFormData instance.
+**Function:** Constructs an HttpRequestOptions instance.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -1641,593 +1157,161 @@ public MultiFormData(
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| name | String | Yes | - | Data name. |
-| contentType | String | Yes | - | Data type, such as 'text/plain', 'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4', etc. |
-| remoteFileName | ?String | No | None | **Named parameter.** The filename to be saved on the server after upload. |
-| data | ?[HttpData](#enum-httpdata) | No | None | **Named parameter.** Form data content. |
-| filePath | ?String | No | None | **Named parameter.** This parameter sets the MIME part's body content based on the file content. Used as an alternative to `data` for setting file data as the content. If `data` is empty, `filePath` must be set. If `data` has a value, `filePath` will not take effect. |
+| method | [RequestMethod](#enum-requestmethod) | No | RequestMethod.Get | **Named parameter.** Request method, default is GET. |
+| extraData | [HttpData](#enum-httpdata) | No | HttpData.StringData("") | **Named parameter.** Additional data sent with the request. By default, this field is not set. |
+| expectDataType | ?[HttpDataType](#enum-httpdatatype) | No | None | **Named parameter.** Specifies the type of returned data. By default, this field is not set. |
+| usingCache | Bool | No | true | **Named parameter.** Whether to use cache. Default is true. |
+| priority | UInt32 | No | 1 | **Named parameter.** Priority, range [1,1000], default is 1. |
+| header | [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String> | No | HashMap<String,String>() | **Named parameter.** HTTP request header fields. |
+| readTimeout | UInt32 | No | 60000 | **Named parameter.** Read timeout duration. Unit: milliseconds. |
+| connectTimeout | UInt32 | No | 60000 | **Named parameter.** Connection timeout duration. Unit: milliseconds. |
+| usingProtocol | ?[HttpProtocol](#enum-httpprotocol) | No | None | **Named parameter.** Protocol to use. Default is automatically specified by the system. |
+| usingProxy | [UsingProxy](#enum-usingproxy) | No | UsingProxy.UseDefault | **Named parameter.** Whether to use HTTP proxy. Default is USE_DEFAULT. |
+| caPath | String | No | "" | **Named parameter.** CA certificate path. If set, the system will use the CA certificate at the user-specified path. |
+| resumeFrom | Int64 | No | 0 | **Named parameter.** Sets the starting position for upload or download. |
+| resumeTo | Int64 | No | 0 | **Named parameter.** Sets the ending position for upload or download. |
+| clientCert | [ClientCert](#class-clientcert) | No | ClientCert("", "") | **Named parameter.** Supports transmitting client certificates. |
+| dnsOverHttps | String | No | "" | **Named parameter.** Sets the use of HTTPS protocol servers for DNS resolution. |
+| dnsServers | Array\<String> | No | Array<String>() | **Named parameter.** Sets specified DNS servers for DNS resolution. |
+| maxLimit | UInt32 | No | 5 * 1024 * 1024 | **Named parameter.** Maximum byte limit for response messages. Default is 5MB. |
+| multiFormDataList | Array\<[MultiFormData](#class-multiformdata)> | No | Array<MultiFormData>() | **Named parameter.** When 'content-Type' is 'multipart/form-data', this field defines the list of data field forms to be uploaded. |
 
-## class PerformanceTiming
+## class HttpResponse
 
 ```cangjie
-public class PerformanceTiming <: ToString {}
+public class HttpResponse {
+    public var result: HttpData
+    public var resultType: HttpDataType
+    public var responseCode: UInt32
+    public var header: HashMap<String, String>
+    public var cookies: String
+    public var performanceTiming: PerformanceTiming
+}
 ```
 
-**Function:** Performance timing data in milliseconds.
+**Function:** Return value type of the request method callback function.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-**Parent Type:**
-
-- ToString
-
-### let dnsTiming
+### var cookies
 
 ```cangjie
-public let dnsTiming: Float64
+public var cookies: String
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to DNS resolution completion.
+**Function:** Cookies returned by the server.
 
-**Type:** Float64
+**Type:** String
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let firstReceiveTiming
+### var header
 
 ```cangjie
-public let firstReceiveTiming: Float64
+public var header: HashMap<String, String>
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to receiving the first byte.
+**Function:** Response headers returned from the HTTP request.
 
-**Type:** Float64
+**Type:** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let firstSendTiming
+### var performanceTiming
 
 ```cangjie
-public let firstSendTiming: Float64
+public var performanceTiming: PerformanceTiming
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to sending the first byte.
+**Function:** Time consumption for each phase of the HTTP request.
 
-**Type:** Float64
+**Type:** [PerformanceTiming](#class-performancetiming)
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let redirectTiming
+### var responseCode
 
 ```cangjie
-public let redirectTiming: Float64
+public var responseCode: UInt32
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to completing all redirect steps.
+**Function:** Response status code.
 
-**Type:** Float64
+**Type:** UInt32
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let responseBodyTiming
+### var result
 
 ```cangjie
-public let responseBodyTiming: Float64
+public var result: HttpData
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to body parsing completion.
+**Function:** HTTP request returns corresponding response format content based on the content-type in the response header.
 
-**Type:** Float64
+**Type:** [HttpData](#enum-httpdata)
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let responseHeaderTiming
+### var resultType
 
 ```cangjie
-public let responseHeaderTiming: Float64
+public var resultType: HttpDataType
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to header parsing completion.
+**Function:** Return value type.
 
-**Type:** Float64
+**Type:** [HttpDataType](#enum-httpdatatype)
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21## class HttpResponseCache
+
+```cangjie
+public class HttpResponseCache {}
+```
+
+**Description:** An object that stores HTTP request responses. Before calling methods of HttpResponseCache, you need to create a task via [createHttpResponseCache](#func-createhttpresponsecacheuint).
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### let tcpTiming
+### func delete()
 
 ```cangjie
-public let tcpTiming: Float64
+public func delete(): Unit
 ```
 
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to TCP connection completion.
-
-**Type:** Float64
-
-**Access:** Read-only
+**Description:** Disables the cache and deletes its data.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
-
-### let tlsTiming
-
-```cangjie
-public let tlsTiming: Float64
-```
-
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to TLS connection completion.
-
-**Type:** Float64
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### let totalFinishTiming
-
-```cangjie
-public let totalFinishTiming: Float64
-```
-
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) to request completion.
-
-**Type:** Float64
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### let totalTiming
-
-```cangjie
-public let totalTiming: Float64
-```
-
-**Function:** Time elapsed from [request](#func-requeststring-businessexceptionhttpresponse---unit-httprequestoptions) callback to application.
-
-**Type:** Float64
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-**Type:** Float64  
-
-**Read-Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### func toString()  
-
-```cangjie  
-public func toString(): String  
-```  
-
-**Description:** Returns a string representation of [PerformanceTiming](#class-performancetiming).  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-**Return Value:**  
-
-| Type   | Description |  
-|:------|:-----------|  
-| String | Returns a string representation of [PerformanceTiming](#class-performancetiming). |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-import ohos.hilog.Hilog  
-
-let httpRequest = createHttp()  
-httpRequest.request("http://www.example.com", {err, resp =>  
-    if (let Some(e) <- err) {  
-        Hilog.error(0, "test","exception: ${e.message}")  
-    }  
-    if (let Some(r) <- resp) {  
-        Hilog.info(0, "test", "resp: ${r.performanceTiming.toString()}")  
-    } else {  
-        Hilog.error(0, "test", "response is none")  
-    }  
-})  
-```  
-
-## enum CertType  
-
-```cangjie  
-public enum CertType {  
-    | PEM  
-    | DER  
-    | P12  
-    | ...  
-}  
-```  
-
-**Description:** Certificate type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### DER  
-
-```cangjie  
-DER  
-```  
-
-**Description:** DER certificate type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### P12  
-
-```cangjie  
-P12  
-```  
-
-**Description:** P12 certificate type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### PEM  
-
-```cangjie  
-PEM  
-```  
-
-**Description:** PEM certificate type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-## enum HttpData  
-
-```cangjie  
-public enum HttpData <: ToString {  
-    | STRING_DATA(String)  
-    | ARRAY_DATA(Array<Byte>)  
-    | ...  
-}  
-```  
-
-**Description:** HTTP data.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-**Parent Type:**  
-
-- ToString  
-
-### ARRAY_DATA(Array\<Byte>)  
-
-```cangjie  
-ARRAY_DATA(Array<Byte>)  
-```  
-
-**Description:** Binary array.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### STRING_DATA(String)  
-
-```cangjie  
-STRING_DATA(String)  
-```  
-
-**Description:** String.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### func toString()  
-
-```cangjie  
-public func toString(): String  
-```  
-
-**Description:** Returns a string representation of [HttpData](#enum-httpdata).  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-**Return Value:**  
-
-| Type   | Description |  
-|:------|:-----------|  
-| String | Returns a string representation of [HttpData](#enum-httpdata). |  
-
-**Example:**  
-
-<!-- compile -->  
-
-```cangjie  
-// index.cj  
-
-import ohos.base.*  
-import kit.NetworkKit.*  
-
-let httpData = HttpData.STRING_DATA("data to send")  
-AppLog.info(httpData.toString())  
-```  
-
-## enum HttpDataType  
-
-```cangjie  
-public enum HttpDataType {  
-    | STRING  
-    | ARRAY_BUFFER  
-    | ...  
-}  
-```  
-
-**Description:** HTTP data type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### ARRAY_BUFFER  
-
-```cangjie  
-ARRAY_BUFFER  
-```  
-
-**Description:** Binary array type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### STRING  
-
-```cangjie  
-STRING  
-```  
-
-**Description:** String type.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-## enum HttpProtocol  
-
-```cangjie  
-public enum HttpProtocol {  
-    | HTTP1_1  
-    | HTTP2  
-    | HTTP3  
-    | ...  
-}  
-```  
-
-**Description:** HTTP protocol version.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### HTTP1_1  
-
-```cangjie  
-HTTP1_1  
-```  
-
-**Description:** HTTP/1.1 protocol.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### HTTP2  
-
-```cangjie  
-HTTP2  
-```  
-
-**Description:** HTTP/2 protocol.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### HTTP3  
-
-```cangjie  
-HTTP3  
-```  
-
-**Description:** HTTP/3 protocol. If the system or server does not support it, a lower version of HTTP protocol will be used for the request. Only effective for HTTPS URLs; HTTP requests will fail.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-## enum RequestMethod  
-
-```cangjie  
-public enum RequestMethod {  
-    | OPTIONS  
-    | GET  
-    | HEAD  
-    | POST  
-    | PUT  
-    | DELETE  
-    | TRACE  
-    | CONNECT  
-    | ...  
-}  
-```  
-
-**Description:** HTTP request methods.  
-
-**System Capability:** SystemCapability.Communication.NetStack  
-
-**Since Version:** 21  
-
-### CONNECT  
-
-```cangjie  
-CONNECT  
-```
-**Function:** HTTP request CONNECT.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### DELETE
-
-```cangjie
-DELETE
-```
-
-**Function:** HTTP request DELETE.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### GET
-
-```cangjie
-GET
-```
-
-**Function:** HTTP request GET.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### HEAD
-
-```cangjie
-HEAD
-```
-
-**Function:** HTTP request HEAD.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### OPTIONS
-
-```cangjie
-OPTIONS
-```
-
-**Function:** HTTP request OPTIONS.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### POST
-
-```cangjie
-POST
-```
-
-**Function:** HTTP request POST.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### PUT
-
-```cangjie
-PUT
-```
-
-**Function:** HTTP request PUT.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### TRACE
-
-```cangjie
-TRACE
-```
-
-**Function:** HTTP request TRACE.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### func getValue()
-
-```cangjie
-public func getValue(): String
-```
-
-**Function:** Get the string corresponding to the RequestMethod enumeration.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|String|Returns the string corresponding to the RequestMethod enumeration.|
 
 **Example:**
 
@@ -2237,721 +1321,158 @@ public func getValue(): String
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
 
-let getMethod = RequestMethod.GET.getValue()
-```
-
-## enum ResponseCode
-
-```cangjie
-public enum ResponseCode {
-    | OK
-    | CREATED
-    | ACCEPTED
-    | NOT_AUTHORITATIVE
-    | NO_CONTENT
-    | RESET
-    | PARTIAL
-    | MULT_CHOICE
-    | MOVED_PERM
-    | MOVED_TEMP
-    | SEE_OTHER
-    | NOT_MODIFIED
-    | USE_PROXY
-    | BAD_REQUEST
-    | UNAUTHORIZED
-    | PAYMENT_REQUIRED
-    | FORBIDDEN
-    | NOT_FOUND
-    | BAD_METHOD
-    | NOT_ACCEPTABLE
-    | PROXY_AUTH
-    | CLIENT_TIMEOUT
-    | CONFLICT
-    | GONE
-    | LENGTH_REQUIRED
-    | PRECON_FAILED
-    | ENTITY_TOO_LARGE
-    | REQ_TOO_LONG
-    | UNSUPPORTED_TYPE
-    | REQUESTED_RANGE_NOT_SATISFIABLE
-    | EXPECTATION_FAILED
-    | TEAPOT
-    | MISDIRECTED_REQUEST
-    | UNPROCESSABLE_ENTITY
-    | LOCKED
-    | FAILED_DEPENDENCY
-    | TOO_EARLY
-    | UPGRADE_REQUIRED
-    | PRECONDITION_REQUIRED
-    | TOO_MANY_REQUESTS
-    | REQUEST_HEADER_FIELDS_TOO_LARGE
-    | UNAVAILABLE_FOR_LEGAL_REASONS
-    | INTERNAL_ERROR
-    | NOT_IMPLEMENTED
-    | BAD_GATEWAY
-    | UNAVAILABLE
-    | GATEWAY_TIMEOUT
-    | VERSION
-    | VARIANT_ALSO_NEGOTIATES
-    | INSUFFICIENT_STORAGE
-    | LOOP_DETECTED
-    | NOT_EXTENDED
-    | NETWORK_AUTHENTICATION_REQUIRED
-    | ...
+let httpResponseCache = createHttpResponseCache()
+try {
+    httpResponseCache.delete()
+} catch (e: BusinessException) {
+    Hilog.info(0, "", "${e}")
 }
 ```
 
-**Function:** Response codes returned from requests.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### ACCEPTED
+### func flush()
 
 ```cangjie
-ACCEPTED
+public func flush(): Unit
 ```
 
-**Function:** The request has been accepted but has not yet been processed.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### BAD_GATEWAY
-
-```cangjie
-BAD_GATEWAY
-```
-
-**Function:** The server, acting as a gateway or proxy, received an invalid request from the remote server.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### BAD_METHOD
-
-```cangjie
-BAD_METHOD
-```
-
-**Function:** The method specified in the client's request is forbidden.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### BAD_REQUEST
-
-```cangjie
-BAD_REQUEST
-```
-
-**Function:** The server could not understand the request due to invalid syntax.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### CLIENT_TIMEOUT
-
-```cangjie
-CLIENT_TIMEOUT
-```
-
-**Function:** The request took too long and timed out.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### CONFLICT
-
-```cangjie
-CONFLICT
-```
-
-**Function:** This code may be returned when the server completes a client's PUT request, indicating a conflict occurred while processing the request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### CREATED
-
-```cangjie
-CREATED
-```
-
-**Function:** The request was successful and a new resource was created.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### ENTITY_TOO_LARGE
-
-```cangjie
-ENTITY_TOO_LARGE
-```
-
-**Function:** The server rejected the request because the request entity is too large for the server to process.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### EXPECTATION_FAILED
-
-```cangjie
-EXPECTATION_FAILED
-```
-
-**Function:** This response code indicates that the server cannot meet the expectations indicated by the Expect request header field.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### FAILED_DEPENDENCY
-
-```cangjie
-PRECON_FAILED
-```
-
-**Function:** The request failed due to a failed prerequisite request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### FORBIDDEN
-
-```cangjie
-FORBIDDEN
-```
-
-**Function:** The server understood the client's request but refused to fulfill it.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### GATEWAY_TIMEOUT
-
-```cangjie
-GATEWAY_TIMEOUT
-```
-
-**Function:** The server, acting as a gateway or proxy, did not receive a timely response from the upstream server.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### GONE
-
-```cangjie
-GONE
-```
-
-**Function:** The requested resource is no longer available.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### INSUFFICIENT_STORAGE
-
-```cangjie
-INSUFFICIENT_STORAGE
-```
-
-**Function:** The server cannot perform the requested method due to insufficient storage to complete the operation.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### INTERNAL_ERROR
-
-```cangjie
-INTERNAL_ERROR
-```
-
-**Function:** The server encountered an internal error and could not complete the request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### LENGTH_REQUIRED
-
-```cangjie
-LENGTH_REQUIRED
-```
-
-**Function:** The server cannot process the request without a valid Content-Length header.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### LOCKED
-
-```cangjie
-LOCKED
-```
-
-**Function:** The requested resource is currently locked.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### LOOP_DETECTED
-
-```cangjie
-LOOP_DETECTED
-```
-
-**Function:** The server detected an infinite loop while processing the request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### MISDIRECTED_REQUEST
-
-```cangjie
-MISDIRECTED_REQUEST
-```
-
-**Function:** The request was directed to a server that is not configured to produce a response for the combination of scheme and authority included in the request URI.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### MOVED_PERM
-
-```cangjie
-MOVED_PERM
-```
-
-**Function:** The requested resource has been permanently moved to a new URI, which is included in the response.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### MOVED_TEMP
-
-```cangjie
-MOVED_TEMP
-```
-
-**Function:** Temporary redirect.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### MULT_CHOICE
-
-```cangjie
-MULT_CHOICE
-```
-
-**Function:** Multiple choices available.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NETWORK_AUTHENTICATION_REQUIRED
-
-```cangjie
-NETWORK_AUTHENTICATION_REQUIRED
-```
-
-**Function:** Indicates that the client needs to authenticate to gain network access.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NOT_ACCEPTABLE
-
-```cangjie
-NOT_ACCEPTABLE
-```
-
-**Function:** The server cannot produce a response matching the client's content negotiation preferences.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NOT_AUTHORITATIVE
-
-```cangjie
-NOT_AUTHORITATIVE
-```
-
-**Function:** Non-authoritative information. The request was successful.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NOT_EXTENDED
-
-```cangjie
-NOT_EXTENDED
-```
-
-**Function:** The server requires further extensions to fulfill the request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NOT_FOUND
-
-```cangjie
-NOT_FOUND
-```
-
-**Function:** The server cannot find the requested resource.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NOT_IMPLEMENTED
-
-```cangjie
-NOT_IMPLEMENTED
-```
-
-**Function:** The server does not support the functionality required to fulfill the request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NOT_MODIFIED
-
-```cangjie
-NOT_MODIFIED
-```
-
-**Function:** The resource has not been modified.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### NO_CONTENT
-
-```cangjie
-NO_CONTENT
-```
-
-**Function:** The server successfully processed the request but is not returning any content.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### OK
-
-```cangjie
-OK
-```
-
-**Function:** The request has succeeded. Typically used for GET and POST requests.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### PARTIAL
-
-```cangjie
-PARTIAL
-```
-
-**Function:** The server has successfully fulfilled a partial GET request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### PAYMENT_REQUIRED
-
-```cangjie
-PAYMENT_REQUIRED
-```
-
-**Function:** Reserved for future use.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### PRECONDITION_REQUIRED
-
-```cangjie
-PRECONDITION_REQUIRED
-```
-
-**Function:** The origin server requires the request to be conditional. This response is intended to prevent the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, leading to conflicts when a third party modifies the state on the server.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Initial Version:** 21
-
-### PRECON_FAILED
-
-```cangjie
-PRECON_FAILED
-```
-
-**Function:** Precondition failed for client request information.
+**Description:** Writes cached data to the file system so that all cached data can be accessed in the next HTTP request.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### PROXY_AUTH
+**Example:**
+
+<!-- compile -->
 
 ```cangjie
-PROXY_AUTH
+// index.cj
+
+import ohos.base.*
+import ohos.business_exception.*
+import kit.NetworkKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+let httpResponseCache = createHttpResponseCache()
+try {
+    httpResponseCache.flush()
+} catch (e: BusinessException) {
+    Hilog.info(0, "", "${e}")
+}
 ```
 
-**Function:** Proxy authentication required for the request.
+## class MultiFormData
+
+```cangjie
+public class MultiFormData {
+    public var name: String
+    public var contentType: String
+    public var remoteFileName: String
+    public var data: HttpData
+    public var filePath: String
+    public init(name: String, contentType: String,  remoteFileName!: String = "",
+        data!: HttpData = HttpData.StringData(""), filePath!: String = "")
+}
+```
+
+**Description:** The type for multipart form data.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### REQUESTED_RANGE_NOT_SATISFIABLE
+### var contentType
 
 ```cangjie
-REQUESTED_RANGE_NOT_SATISFIABLE
+public var contentType: String
 ```
 
-**Function:** The range specified in the request's Range header field cannot be fulfilled. The range may be outside the size of the target URI data.
+**Description:** The data type, such as 'text/plain', 'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4', etc.
+
+**Type:** String
+
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### REQUEST_HEADER_FIELDS_TOO_LARGE
+### var data
 
 ```cangjie
-REQUEST_HEADER_FIELDS_TOO_LARGE
+public var data: HttpData
 ```
 
-**Function:** The server is unwilling to process the request because its header fields are too large. The request may be resubmitted after reducing the size of the request header fields.
+**Description:** The content of the form data.
+
+**Type:** [HttpData](#enum-httpdata)
+
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### REQ_TOO_LONG
+### var filePath
 
 ```cangjie
-REQ_TOO_LONG
+public var filePath: String
 ```
 
-**Function:** The request URI is too long (URI is typically a URL), and the server cannot process it.
+**Description:** This parameter sets the body content of the MIME part based on the file content. It is used to replace `data` for setting file data as the content. If `data` is empty, `filePath` must be set. If `data` has a value, `filePath` will not take effect.
+
+**Type:** String
+
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### RESET
+### var name
 
 ```cangjie
-RESET
+public var name: String
 ```
 
-**Function:** Reset content.
+**Description:** The name of the data.
+
+**Type:** String
+
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### SEE_OTHER
+### var remoteFileName
 
 ```cangjie
-SEE_OTHER
+public var remoteFileName: String
 ```
 
-**Function:** See other address.
+**Description:** The name of the file to be saved on the server after upload.
+
+**Type:** String
+
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### TEAPOT
+### init(String, String, String, HttpData, String)
 
 ```cangjie
-TEAPOT
+public init(name: String, contentType: String,  remoteFileName!: String = "",
+    data!: HttpData = HttpData.StringData(""), filePath!: String = "")
 ```
 
-**Function:** The server refuses to brew coffee with a teapot.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### TOO_EARLY
-
-```cangjie
-TOO_EARLY
-```
-
-**Function:** Indicates that the server is unwilling to risk processing a request that might be replayed.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### TOO_MANY_REQUESTS
-
-```cangjie
-TOO_MANY_REQUESTS
-```
-
-**Function:** Indicates that the user has sent too many requests in a given time frame, and request rate limiting should be applied.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### UNAUTHORIZED
-
-```cangjie
-UNAUTHORIZED
-```
-
-**Function:** Authentication is required for the request.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### UNAVAILABLE
-
-```cangjie
-UNAVAILABLE
-```
-
-**Function:** The server is temporarily unable to process the client's request due to overload or system maintenance.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### UNAVAILABLE_FOR_LEGAL_REASONS
-
-```cangjie
-UNAVAILABLE_FOR_LEGAL_REASONS
-```
-
-**Function:** The user agent requested a resource that cannot be legally provided, such as a government-censored webpage.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### UNPROCESSABLE_ENTITY
-
-```cangjie
-UNPROCESSABLE_ENTITY
-```
-
-**Function:** The request was well-formed but could not be followed due to semantic errors.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### UNSUPPORTED_TYPE
-
-```cangjie
-UNSUPPORTED_TYPE
-```
-
-**Function:** The server cannot process the requested format.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### UPGRADE_REQUIRED
-
-```cangjie
-UPGRADE_REQUIRED
-```
-
-**Function:** The server refuses to perform the request using the current protocol but may be willing to do so after the client upgrades to a different protocol. The server sends a 426 response with an Upgrade(en-US) field to indicate the required protocol.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### USE_PROXY
-
-```cangjie
-USE_PROXY
-```
-
-**Function:** Use proxy.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### VARIANT_ALSO_NEGOTIATES
-
-```cangjie
-VARIANT_ALSO_NEGOTIATES
-```
-
-**Function:** The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself and is therefore not a proper endpoint in the negotiation process.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### VERSION
-
-```cangjie
-VERSION
-```
-
-**Function:** The HTTP protocol version requested by the server.
-
-**System Capability:** SystemCapability.Communication.NetStack
-
-**Since:** 21
-
-### static func parse(UInt32)
-
-```cangjie
-public static func parse(code: UInt32): ResponseCode
-```
-
-**Function:** Get the corresponding status code.
+**Description:** Constructs a MultiFormData instance.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -2959,109 +1480,702 @@ public static func parse(code: UInt32): ResponseCode
 
 **Parameters:**
 
-| Parameter | Type    | Required | Default | Description            |
-|:----------|:--------|:---------|:--------|:-----------------------|
-| code      | UInt32  | Yes      | -       | The numerical status code. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| name | String | Yes | - | The name of the data. |
+| contentType | String | Yes | - | The data type, such as 'text/plain', 'image/png', 'image/jpeg', 'audio/mpeg', 'video/mp4', etc. |
+| remoteFileName | String | No | "" | **Named parameter.** The name of the file to be saved on the server after upload. |
+| data | [HttpData](#enum-httpdata) | No | HttpData.StringData("") | **Named parameter.** The content of the form data. |
+| filePath | String | No | "" | **Named parameter.** This parameter sets the body content of the MIME part based on the file content. It is used to replace `data` for setting file data as the content. If `data` is empty, `filePath` must be set. If `data` has a value, `filePath` will not take effect. |
 
-**Return Value:**
-
-| Type                     | Description                  |
-|:-------------------------|:-----------------------------|
-| [ResponseCode](#enum-responsecode) | The returned response code. |
-
-**Example:**
-
-<!-- compile -->
+## class PerformanceTiming
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let code = ResponseCode.parse(200)
+public class PerformanceTiming {
+    public var dnsTiming: Float64
+    public var tcpTiming: Float64
+    public var tlsTiming: Float64
+    public var firstSendTiming: Float64
+    public var firstReceiveTiming: Float64
+    public var totalFinishTiming: Float64
+    public var redirectTiming: Float64
+    public var responseHeaderTiming: Float64
+    public var responseBodyTiming: Float64
+    public var totalTiming: Float64
+}
 ```
 
-### func getValue()
-
-```cangjie
-public func getValue(): UInt32
-```
-
-**Function:** Get the numerical value corresponding to the ResponseCode enumeration.
+**Description:** Performance timing data, measured in milliseconds.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-**Return Value:**
-
-| Type   | Description                              |
-|:-------|:-----------------------------------------|
-| UInt32 | The numerical value corresponding to the ResponseCode enumeration. |
-
-**Example:**
-
-<!-- compile -->
+### var dnsTiming
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.NetworkKit.*
-
-let code = ResponseCode.OK.getValue()
+public var dnsTiming: Float64
 ```
 
-## enum UsingProxy
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to DNS resolution completion.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var firstReceiveTiming
 
 ```cangjie
-public enum UsingProxy {
-    | NOT_USE
-    | USE_DEFAULT
-    | USE_SPECIFIED(HttpProxy)
+public var firstReceiveTiming: Float64
 ```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to receiving the first byte.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var firstSendTiming
+
+```cangjie
+public var firstSendTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to sending the first byte.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var redirectTiming
+
+```cangjie
+public var redirectTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to completing all redirect steps.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var responseBodyTiming
+
+```cangjie
+public var responseBodyTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to parsing the response body.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var responseHeaderTiming
+
+```cangjie
+public var responseHeaderTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to parsing the response header.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var tcpTiming
+
+```cangjie
+public var tcpTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to TCP connection completion.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var tlsTiming
+
+```cangjie
+public var tlsTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to TLS connection completion.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var totalFinishTiming
+
+```cangjie
+public var totalFinishTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) to completing the request.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### var totalTiming
+
+```cangjie
+public var totalTiming: Float64
+```
+
+**Description:** The time taken from the [request](#func-requeststring-httprequestoptions-asynccallbackhttpresponse) callback to the application.
+
+**Type:** Float64
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+## enum CertType
+
+```cangjie
+public enum CertType {
+    | Pem
+    | Der
+    | P12
     | ...
 }
 ```
 
-**Function:** Type of proxy to use.
+**Description:** Certificate types.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### NOT_USE
+### Der
 
 ```cangjie
-NOT_USE
+Der
 ```
 
-**Function:** Do not use a proxy.
+**Description:** DER certificate type.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### USE_DEFAULT
+### P12
 
 ```cangjie
-USE_DEFAULT
+P12
 ```
 
-**Function:** Use the default proxy.
+**Description:** P12 certificate type.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
 **Since:** 21
 
-### USE_SPECIFIED(HttpProxy)
+### Pem
 
 ```cangjie
-USE_SPECIFIED(HttpProxy)
+Pem
 ```
 
-**Function:** Use a specified proxy type.
+**Description:** PEM certificate type.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21## enum HttpData
+
+```cangjie
+public enum HttpData {
+    | StringData(String)
+    | ArrayData(Array<Byte>)
+    | ...
+}
+```
+
+**Description:** HTTP data.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### ArrayData(Array\<Byte>)
+
+```cangjie
+ArrayData(Array<Byte>)
+```
+
+**Description:** Binary array.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### StringData(String)
+
+```cangjie
+StringData(String)
+```
+
+**Description:** String data.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+## enum HttpDataType
+
+```cangjie
+public enum HttpDataType {
+    | StringValue
+    | ArrayBuffer
+    | ...
+}
+```
+
+**Description:** HTTP data types.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### ArrayBuffer
+
+```cangjie
+ArrayBuffer
+```
+
+**Description:** Binary array type.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### StringValue
+
+```cangjie
+StringValue
+```
+
+**Description:** String type.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+## enum HttpProtocol
+
+```cangjie
+public enum HttpProtocol {
+    | Http1_1
+    | Http2
+    | Http3
+    | ...
+}
+```
+
+**Description:** HTTP protocol versions.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Http1_1
+
+```cangjie
+Http1_1
+```
+
+**Description:** HTTP/1.1 protocol.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Http2
+
+```cangjie
+Http2
+```
+
+**Description:** HTTP/2 protocol.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Http3
+
+```cangjie
+Http3
+```
+
+**Description:** HTTP/3 protocol. If the system or server does not support it, lower version HTTP protocols will be used. Only effective for HTTPS URLs, HTTP requests will fail.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+## enum HttpRequestEvent
+
+```cangjie
+public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToString {
+    | HeadersReceive
+    | DataReceive
+    | DataEnd
+    | DataReceiveProgress
+    | DataSendProgress
+    | ...
+}
+```
+
+**Description:** HTTP request event types.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<HttpRequestEvent>
+- Hashable
+- ToString
+
+### DataEnd
+
+```cangjie
+DataEnd
+```
+
+**Description:** HTTP streaming response data completion event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### DataReceive
+
+```cangjie
+DataReceive
+```
+
+**Description:** HTTP streaming response data reception event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### DataReceiveProgress
+
+```cangjie
+DataReceiveProgress
+```
+
+**Description:** HTTP streaming response data reception progress update event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### DataSendProgress
+
+```cangjie
+DataSendProgress
+```
+
+**Description:** HTTP request data transmission progress update event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### HeadersReceive
+
+```cangjie
+HeadersReceive
+```
+
+**Description:** HTTP Response Header event.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### func !=(HttpRequestEvent)
+
+```cangjie
+public operator func !=(other: HttpRequestEvent): Bool
+```
+
+**Description:** Compares two HttpRequestEvent instances for inequality.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | Another HttpRequestEvent instance to compare. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two HttpRequestEvent instances are not equal, otherwise returns false. |
+
+### func ==(HttpRequestEvent)
+
+```cangjie
+public operator func ==(other: HttpRequestEvent): Bool
+```
+
+**Description:** Compares two HttpRequestEvent instances for equality.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | Another HttpRequestEvent instance to compare. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two HttpRequestEvent instances are equal, otherwise returns false. |
+
+### func hashCode()
+
+```cangjie
+public func hashCode(): Int64
+```
+
+**Description:** Gets the hash code of HttpRequestEvent.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Int64 | Returns the hash code of HttpRequestEvent. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Description:** Returns HttpRequestEvent as a string.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | Returns HttpRequestEvent as a string. |
+
+## enum RequestMethod
+
+```cangjie
+public enum RequestMethod {
+    | Options
+    | Get
+    | Head
+    | Post
+    | Put
+    | Delete
+    | Trace
+    | Connect
+    | ...
+}
+```
+
+**Description:** HTTP request methods.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Connect
+
+```cangjie
+Connect
+```
+
+**Description:** HTTP CONNECT request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Delete
+
+```cangjie
+Delete
+```
+
+**Description:** HTTP DELETE request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Get
+
+```cangjie
+Get
+```
+
+**Description:** HTTP GET request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Head
+
+```cangjie
+Head
+```
+
+**Description:** HTTP HEAD request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Options
+
+```cangjie
+Options
+```
+
+**Description:** HTTP OPTIONS request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Post
+
+```cangjie
+Post
+```
+
+**Description:** HTTP POST request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Put
+
+```cangjie
+Put
+```
+
+**Description:** HTTP PUT request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### Trace
+
+```cangjie
+Trace
+```
+
+**Description:** HTTP TRACE request.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21## enum UsingProxy
+
+```cangjie
+public enum UsingProxy {
+    | NotUse
+    | UseDefault
+    | UseSpecified(HttpProxy)
+    | ...
+}
+```
+
+**Function:** Type of proxy usage.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### NotUse
+
+```cangjie
+NotUse
+```
+
+**Function:** Do not use proxy.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### UseDefault
+
+```cangjie
+UseDefault
+```
+
+**Function:** Use default proxy.
+
+**System Capability:** SystemCapability.Communication.NetStack
+
+**Since:** 21
+
+### UseSpecified(HttpProxy)
+
+```cangjie
+UseSpecified(HttpProxy)
+```
+
+**Function:** Use specified proxy.
 
 **System Capability:** SystemCapability.Communication.NetStack
 
@@ -3076,30 +2190,30 @@ import std.collection.*
 
 // Each httpRequest corresponds to an HTTP request task and cannot be reused
 let httpRequest = createHttp()
-// Used to subscribe to HTTP response headers. This callback returns before the request is sent. Subscribe as needed.
+// Used to subscribe to HTTP response headers. This callback will return before the request. Can be subscribed based on business needs
 httpRequest.onHeadersReceive({header: HashMap<String, String> =>
-    AppLog.info("header: ${header}")
+    Hilog.info(0, "AppLogCj", "header: ${header}")
 })
 
 let option = HttpRequestOptions(
     method: RequestMethod.POST, // Optional, defaults to http.RequestMethod.GET
-    // For POST requests, this field carries the data to send
+    // When using POST request, this field is used to pass data
     extraData: HttpData.STRING_DATA("data to send"),
-    expectDataType: HttpDataType.STRING, // Optional, specifies the response data type
+    expectDataType: HttpDataType.STRING, // Optional, specifies the return data type
     usingCache: true, // Optional, defaults to true
     priority: 1, // Optional, defaults to 1
-    // Add custom header fields as needed
+    // Developers can add header fields based on business needs
     header: HashMap<String, String>([("content-type", "application/json")]),
     readTimeout: 60000, // Optional, defaults to 60000ms
     connectTimeout: 60000, // Optional, defaults to 60000ms
     usingProtocol: HttpProtocol.HTTP1_1, // Optional, protocol type defaults to system auto-selection
     usingProxy: UsingProxy.USE_DEFAULT, // Optional, defaults to no proxy (supported since API 10)
-    caPath: "/path/to/cacert.pem", // Optional, defaults to system CA certificates (supported since API 10)
+    caPath: "/path/to/cacert.pem", // Optional, defaults to system preset CA certificates (supported since API 10)
     clientCert: ClientCert(
-        "/path/to/client.pem", // Optional, no client certificate by default
-        "/path/to/client.key", // If the certificate includes Key info, pass an empty string
+        "/path/to/client.pem", // Default: no client certificate
+        "/path/to/client.key", // If certificate includes Key info, pass empty string
         certType: CertType.PEM, // Optional, defaults to PEM
-        keyPassword: "passwordToKey" // Optional, password for the key file
+        keyPassword: "passwordToKey" // Optional, password for key file
     ),
     multiFormDataList: [ // Optional, only effective when 'content-Type' in Header is 'multipart/form-data'
         MultiFormData (
@@ -3117,16 +2231,16 @@ let option = HttpRequestOptions(
     ]
 )
 
-httpRequest.request( // Enter the HTTP request URL (with or without parameters). URL must be customized. Request parameters can be specified in extraData.
+httpRequest.request( // Fill in the HTTP request URL (with or without parameters). URL needs to be customized by developer. Request parameters can be specified in extraData
     "http://www.example.com", { err, resp =>
         if (let Some(e) <- err) {
-            Hilog.error(0, "test","exception: ${e.message}")
+            Hilog.error(0, "AppLogCj","exception: ${e.message}")
             throw e
         }
         if (let Some(r) <- resp) {
-            Hilog.error(0, "test", "${r}")
+            Hilog.error(0, "AppLogCj", "${r}")
         } else {
-            Hilog.error(0, "test", "resp is none")
+            Hilog.error(0, "AppLogCj", "resp is none")
         }
         httpRequest.destroy()
     }, options: option)

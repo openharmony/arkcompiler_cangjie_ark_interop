@@ -1,6 +1,14 @@
-# ohos.hi_tracemeter (Performance Tracing)
+# ohos.hi_trace.meter (Performance Tracing)
 
 This module provides the capability to trace process trajectories and measure program execution performance. The traced data is intended for analysis by the hiTraceMeter tool.
+
+> **Note**
+>
+> The performance tracing interfaces `startTrace`, `finishTrace`, and `traceByValue` cannot specify the trace output level, which defaults to COMMERCIAL level performance tracing.
+>
+> User-space trace format uses the vertical bar `|` as a delimiter. Therefore, string parameters passed through performance tracing interfaces should avoid containing this character to prevent trace parsing exceptions.
+>
+> The total length of user-space traces is limited to 512 characters. Any excess will be truncated.
 
 ## Importing the Module
 
@@ -12,10 +20,10 @@ import kit.PerformanceAnalysisKit.*
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, configuration is needed in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code's first line contains a `// index.cj` comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-sample-code-instructions).
+For details about the sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## class HiTraceMeter
 
@@ -23,7 +31,7 @@ For details about the aforementioned sample projects and configuration templates
 public class HiTraceMeter {}
 ```
 
-**Description:** This class provides the capability to trace process trajectories and measure program execution performance.
+**Function:** This class provides the capability to trace process trajectories and measure program execution performance.
 
 **System Capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -35,9 +43,9 @@ public class HiTraceMeter {}
 public static func finishTrace(name: String, taskId: Int32): Unit
 ```
 
-**Description:** Marks the end of a pre-traced time-consuming task.
+**Function:** Marks the end of a pre-traced time-consuming task.
 
-The name and taskId in [finishTrace](#static-func-finishtracestring-int32) must correspond with the parameter values in the initiating [startTrace](#static-func-starttracestring-int32).
+The `name` and `taskId` in [finishTrace](#static-func-finishtracestring-int32) must match the corresponding parameter values in the process-starting [startTrace](#static-func-starttracestring-int32).
 
 **System Capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -65,24 +73,24 @@ func f1(){
 }
 
 func f2(){
-    // Tracing parallel execution of tasks with the same name
+    // Trace parallel execution of tasks with the same name
     HiTraceMeter.startTrace("myTestFunc", 1)
-    // Business logic code
-    HiTraceMeter.startTrace("myTestFunc", 2)  // Second traced task starts while the first traced task with the same name hasn't ended, indicating parallel execution. The taskId for corresponding interfaces must differ.
-    // Business logic code
+    // Business process code
+    HiTraceMeter.startTrace("myTestFunc", 2)  // The second traced task starts while the first traced task with the same name hasn't ended, indicating parallel execution. The taskId for corresponding interfaces must differ.
+    // Business process code
     HiTraceMeter.finishTrace("myTestFunc", 1)
-    // Business logic code
+    // Business process code
     HiTraceMeter.finishTrace("myTestFunc", 2)
 }
 
 func f3(){
-    // Tracing serial execution of tasks with the same name
+    // Trace serial execution of tasks with the same name
     HiTraceMeter.startTrace("myTestFunc", 1)
-    // Business logic code
-    HiTraceMeter.finishTrace("myTestFunc", 1)  // First traced task ends
-    // Business logic code
-    HiTraceMeter.startTrace("myTestFunc", 1)   // Second traced task with the same name starts, indicating serial execution of tasks with the same name.
-    // Business logic code
+    // Business process code
+    HiTraceMeter.finishTrace("myTestFunc", 1)  // The first traced task ends
+    // Business process code
+    HiTraceMeter.startTrace("myTestFunc", 1)   // The second traced task with the same name starts, indicating serial execution of tasks with the same name.
+    // Business process code
     HiTraceMeter.finishTrace("myTestFunc", 1)
 }
 
@@ -97,11 +105,11 @@ f3()
 public static func startTrace(name: String, taskId: Int32): Unit
 ```
 
-**Description:** Marks the start of a pre-traced time-consuming task.
+**Function:** Marks the start of a pre-traced time-consuming task.
 
-If multiple tasks with the same name need to be traced or the same task needs to be traced multiple times while being executed concurrently, each call to [startTrace](#static-func-starttracestring-int32) must use a different taskId.
+If multiple tasks with the same `name` need to be traced or the same task needs to be traced multiple times, and these tasks are executed concurrently, the `taskId` for each call to [startTrace](#static-func-starttracestring-int32) must differ.
 
-If tasks with the same name are executed serially, the taskId can remain the same. For specific examples, refer to the samples in [HiTraceMeter.finishTrace](#static-func-finishtracestring-int32).
+If tasks with the same `name` are executed serially, the `taskId` can be the same. For specific examples, refer to the samples in [HiTraceMeter.finishTrace](#static-func-finishtracestring-int32).
 
 **System Capability:** SystemCapability.HiviewDFX.HiTrace
 

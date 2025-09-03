@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following describes only the error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 11100001 Logging Function Disabled
 
@@ -12,13 +12,13 @@ Function is disabled.
 
 **Error Description**
 
-When calling the write interface for application event logging, the system ignores related events because the logging function is not enabled.
+When calling the write interface for application event logging, the system will ignore related events because the logging function is not enabled.
 
 **Possible Causes**
 
 The application event logging function has been disabled.
 
-**Resolution Steps**
+**Solution**
 
 Call the configuration interface to enable the logging function.
 
@@ -37,16 +37,16 @@ Invalid event domain.
 
 **Error Description**
 
-When calling the write interface for application event logging, the system ignores related events because an invalid event domain name was passed.
+When calling the write interface for application event logging, the system will ignore related events because an invalid event domain name was passed.
 
 **Possible Causes**
 
 The passed event domain name does not comply with the following rules:
-- The event domain name contains only digits, lowercase letters, and underscore characters.
+- The event domain name only contains digits, lowercase letters, and underscore characters.
 - The event domain name starts with a lowercase letter and does not end with an underscore.
-- The event domain name is non-empty and does not exceed 16 characters in length.
+- The event domain name is not empty and its length does not exceed 16 characters.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid event domain name.
 
@@ -58,16 +58,16 @@ Invalid event name.
 
 **Error Description**
 
-When calling the write interface for application event logging, the system ignores related events because an invalid event name was passed.
+When calling the write interface for application event logging, the system will ignore related events because an invalid event name was passed.
 
 **Possible Causes**
 
 The passed event name does not comply with the following rules:
-- The event name contains only the $ character, digits, letters, and underscore characters.
-- The first character of the event name must be a letter or $ character, the middle characters must be digits, letters, or underscores, and the last character must be a digit or letter.
-- The event name is non-empty and does not exceed 48 characters in length.
+- The event name only contains $ characters, digits, letters, and underscore characters.
+- The first character of the event name must be a letter or $ character, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter.
+- The event name is not empty and its length does not exceed 48 characters.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid event name.
 
@@ -79,13 +79,13 @@ Invalid number of event parameters.
 
 **Error Description**
 
-When calling the write interface for application event logging, additional event parameters are discarded because an invalid number of event parameters was passed.
+When calling the write interface for application event logging, additional event parameters will be discarded because an invalid number of event parameters was passed.
 
 **Possible Causes**
 
 The number of passed event parameters exceeds 32.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid number of event parameters.
 
@@ -97,13 +97,13 @@ Invalid string length of the event parameter.
 
 **Error Description**
 
-When calling the write interface for application event logging, the system ignores related event parameters because an excessively long string was passed as the event parameter value.
+When calling the write interface for application event logging, the system will ignore related event parameters because an excessively long string was passed as the event parameter value.
 
 **Possible Causes**
 
 The string length in the passed event parameter value exceeds 8*1024 characters.
 
-**Resolution Steps**
+**Solution**
 
 Pass an event parameter value with a valid string length.
 
@@ -115,16 +115,16 @@ Invalid event parameter name.
 
 **Error Description**
 
-When calling the write interface for application event logging, the system ignores related event parameters because an invalid event parameter name was passed.
+When calling the write interface for application event logging, the system will ignore related event parameters because an invalid event parameter name was passed.
 
 **Possible Causes**
 
 The passed event parameter name does not comply with the following rules:
-- The event parameter name contains only the $ character, digits, letters, and underscore characters.
-- The first character of the event parameter name must be a letter or $ character, the middle characters must be digits, letters, or underscores, and the last character must be a digit or letter.
-- The event parameter name is non-empty and does not exceed 16 characters in length.
+- The event parameter name only contains $ characters, digits, letters, and underscore characters.
+- The first character of the event parameter name must be a letter or $ character, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter.
+- The event parameter name is not empty and its length does not exceed 16 characters.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid event parameter name.
 
@@ -136,13 +136,13 @@ Invalid array length of the event parameter.
 
 **Error Description**
 
-When calling the write interface for application event logging, additional array elements are discarded because an array of excessive length was passed as the event parameter value.
+When calling the write interface for application event logging, additional array elements will be discarded because an excessively long array was passed as the event parameter value.
 
 **Possible Causes**
 
 The array length in the passed event parameter value exceeds 100.
 
-**Resolution Steps**
+**Solution**
 
 Pass an event parameter value with a valid array length.
 
@@ -154,13 +154,13 @@ The number of parameter keys exceeds the limit.
 
 **Error Description**
 
-When calling the setEventParam interface to set custom event parameters, the system ignores this call because an invalid number of event parameters was passed.
+When calling the setEventParam interface to set custom event parameters, the system will ignore this call because an invalid number of event parameters was passed.
 
 **Possible Causes**
 
 The number of passed custom event parameters exceeds 64.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid number of custom event parameters.
 
@@ -172,16 +172,16 @@ Invalid watcher name.
 
 **Error Description**
 
-When calling the addWatcher interface for event subscription, the system ignores this subscription because an invalid watcher name was passed.
+When calling the addWatcher interface for event subscription, the system will ignore this subscription because an invalid watcher name was passed.
 
 **Possible Causes**
 
 The passed watcher name does not comply with the following rules:
-- The watcher name contains only digits, lowercase letters, and underscore characters.
+- The watcher name only contains digits, lowercase letters, and underscore characters.
 - The watcher name starts with a lowercase letter and does not end with an underscore.
-- The watcher name is non-empty and does not exceed 32 characters in length.
+- The watcher name is not empty and its length does not exceed 32 characters.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid watcher name.
 
@@ -193,16 +193,16 @@ Invalid filtering event domain.
 
 **Error Description**
 
-When calling the addWatcher interface for event subscription, the system ignores this subscription because an invalid filtering event domain was passed.
+When calling the addWatcher interface for event subscription, the system will ignore this subscription because an invalid filtering event domain was passed.
 
 **Possible Causes**
 
 The passed filtering event domain name does not comply with the following rules:
-- The event domain name contains only digits, lowercase letters, and underscore characters.
+- The event domain name only contains digits, lowercase letters, and underscore characters.
 - The event domain name starts with a lowercase letter and does not end with an underscore.
-- The event domain name is non-empty and does not exceed 32 characters in length.
+- The event domain name is not empty and its length does not exceed 32 characters.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid filtering event domain name.
 
@@ -214,13 +214,13 @@ Invalid row value.
 
 **Error Description**
 
-When calling the addWatcher interface for event subscription, the system ignores this subscription because an invalid event count value was passed in the callback trigger condition.
+When calling the addWatcher interface for event subscription, the system will ignore this subscription because an invalid event count value was passed in the callback trigger condition.
 
 **Possible Causes**
 
 The row value in the passed callback trigger condition is negative.
 
-**Resolution Steps**
+**Solution**
 
 Pass a natural number as the row value.
 
@@ -232,13 +232,13 @@ Invalid size value.
 
 **Error Description**
 
-When calling the addWatcher interface for event subscription, the system ignores this subscription because an invalid event size value was passed in the callback trigger condition.
+When calling the addWatcher interface for event subscription, the system will ignore this subscription because an invalid event size value was passed in the callback trigger condition.
 
 **Possible Causes**
 
 The size value in the passed callback trigger condition is negative.
 
-**Resolution Steps**
+**Solution**
 
 Pass a natural number as the size value.
 
@@ -250,13 +250,13 @@ Invalid timeout value.
 
 **Error Description**
 
-When calling the addWatcher interface for event subscription, the system ignores this subscription because an invalid timeout value was passed in the callback trigger condition.
+When calling the addWatcher interface for event subscription, the system will ignore this subscription because an invalid timeout value was passed in the callback trigger condition.
 
 **Possible Causes**
 
 The timeout value in the passed callback trigger condition is negative.
 
-**Resolution Steps**
+**Solution**
 
 Pass a natural number as the timeout value.
 
@@ -268,15 +268,15 @@ Invalid max storage quota value.
 
 **Error Description**
 
-When calling the configure interface for logging configuration, the system ignores this configuration because an invalid maximum storage quota value was passed.
+When calling the configure interface for logging configuration, the system will ignore this configuration because an invalid maximum storage quota value was passed.
 
 **Possible Causes**
 
 The passed maximum storage quota value string does not comply with the following rules:
-- The quota value string consists only of digits and size unit characters (units can be [b|k|kb|m|mb|g|gb|t|tb], case-insensitive).
-- The quota value string must start with a digit, followed optionally by no unit character (defaulting to byte as the unit) or ending with a unit character.
+- The quota value string only consists of digits and size unit characters (unit characters support [b|k|kb|m|mb|g|gb|t|tb], case-insensitive).
+- The quota value string must start with a digit, followed by an optional unit character (default unit is byte), or end with a unit character.
 
-**Resolution Steps**
+**Solution**
 
 Pass a valid maximum storage quota value string.
 
@@ -288,10 +288,12 @@ Invalid size value.
 
 **Error Description**
 
-When calling the setSize interface to set the threshold for the size of each retrieved event package, the system ignores this setting because an invalid event package size value was passed.
+When calling the setSize interface to set the threshold for the size of each retrieved event package, the system will ignore this setting because an invalid event package size value was passed.
 
-**Possible Causes**The incoming event packet size value is negative.
+**Possible Causes**
 
-**Processing Steps**
+The passed event package size value is negative.
 
-Pass in a natural number value for the event packet size.
+**Solution**
+
+Pass a natural number as the event package size.

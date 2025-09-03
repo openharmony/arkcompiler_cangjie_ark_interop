@@ -1,76 +1,195 @@
-# Row  
+# Row
 
-A container that arranges its children horizontally.  
+A container that lays out its children horizontally.
 
-## Child Components  
+## Child Components
 
-Can contain child components.  
+Can contain child components.
 
-## Creating the Component  
+## Creating the Component
 
-### init(Length, () -> Unit)  
+### init(Length, () -> Unit)
 
-```cangjie  
-public init(space!: Length = 0.vp, child!: () -> Unit = {=>})  
-```  
+```cangjie
 
-**Function:** Creates a Row container with horizontal spacing `space` between child components.  
+public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
+```
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**Function:** Creates a Row container containing child components.
 
-**Since:** 21  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters:**  
+**Since:** 21
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| space | [Length](cj-common-types.md#interface-length) | No | 0.vp | Horizontal spacing between child components. <br> Does not take effect if `space` is negative or `justifyContent` is set to `FlexAlign.SpaceBetween`, `FlexAlign.SpaceAround`, or `FlexAlign.SpaceEvenly`. <br> Default: 0, Unit: vp <br> **Note:** Valid values are numbers greater than or equal to 0. |  
-| child | () -> Unit | No | { => } | Child components inside the container. |  
+**Parameters:**
 
-## Universal Attributes/Events  
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length link) | No | 0.vp | Horizontal spacing between layout elements.<br>Does not take effect when space is negative or justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, FlexAlign.SpaceEvenly.<br> Initial value: 0, Unit: vp <br> **Note:** Optional values are numbers greater than or equal to 0. |
+| child | ()->Unit | No | { => } | Child components within the container. |
 
-Universal Attributes: All supported.  
+## Common Attributes/Common Events
 
-Universal Events: All supported.  
+Common Attributes: All supported
 
-## Component Attributes  
+Common Events: All supported
 
-### func alignItems(VerticalAlign)  
+## Component Attributes
 
-```cangjie  
-public func alignItems(value: VerticalAlign): This  
-```  
+### func alignItems(VerticalAlign)
 
-**Function:** Sets the vertical alignment of child components.  
+```cangjie
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+public func alignItems(value: VerticalAlign): This
+```
 
-**Since:** 21  
+**Function:** Sets the vertical alignment format of child components.
 
-**Parameters:**  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| value | [VerticalAlign](cj-common-types.md#enum-verticalalign) | Yes | - | Vertical alignment of child components. <br> Default: `VerticalAlign.Center` |  
+**Since:** 21
 
-### func justifyContent(FlexAlign)  
+**Parameters:**
 
-```cangjie  
-public func justifyContent(value: FlexAlign): This  
-```  
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | [VerticalAlign](cj-common-types.md#enum-verticalalign) | Yes | - | Vertical alignment format of child components.<br> Initial value: FlexAlign.Start |
 
-**Function:** Sets the horizontal alignment of child components.  
+### func justifyContent(FlexAlign)
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+```cangjie
 
-**Since:** 21  
+public func justifyContent(value: FlexAlign): This
+```
 
-**Parameters:**  
+**Function:** Sets the horizontal alignment format of child components.
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| value | [FlexAlign](cj-common-types.md#enum-flexalign) | Yes | - | Horizontal alignment of child components. <br> Default: `FlexAlign.Start` |  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-> **Note:**  
->  
-> In Row layout, if child components do not set [`flexShrink`](cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64), they will not be compressed by default. This means the total size of all child components along the main axis may exceed the container's main axis size.
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | [FlexAlign](cj-common-types.md#enum-flexalign) | Yes | - | Horizontal alignment format of child components.<br> Initial value: FlexAlign.Start |
+
+## Example Code
+
+This example demonstrates the usage of Row's alignItems and justifyContent attributes.
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    func build() {
+            Column(5) {
+            // Set horizontal spacing between child components to 5
+                Text("space")
+                .fontSize(9)
+                .fontColor(0xCCCCCC)
+                .width(90.percent)
+                Row(5) {
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0xAFEEEE)
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0x00FFFF)
+                }
+                .width(90.percent)
+                .height(107)
+                .border(width: 1.vp)
+
+                // Set vertical alignment of child elements
+                Text("alignItems(Bottom)")
+                .fontSize(9)
+                .fontColor(0xCCCCCC)
+                .width(90.percent)
+                Row() {
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0xAFEEEE)
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0x00FFFF)
+                }
+                .alignItems(VerticalAlign.Bottom)
+                .width(90.percent)
+                .height(15.percent)
+                .border(width: 1.vp)
+
+                Text("alignItems(Center)")
+                .fontSize(9)
+                .fontColor(0xCCCCCC)
+                .width(90.percent)
+                Row() {
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0xAFEEEE)
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0x00FFFF)
+                }
+                .alignItems(VerticalAlign.Center)
+                .width(90.percent)
+                .height(15.percent)
+                .border(width: 1.vp)
+
+              // Set horizontal alignment of child elements
+                Text("justifyContent(End)")
+                .fontSize(9)
+                .fontColor(0xCCCCCC)
+                .width(90.percent)
+                Row() {
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0xAFEEEE)
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0x00FFFF)
+                }
+                .height(15.percent)
+                .width(90.percent)
+                .border(width: 1.vp)
+                .justifyContent(FlexAlign.End)
+
+                Text("justifyContent(Center)")
+                .fontSize(9)
+                .fontColor(0xCCCCCC)
+                .width(90.percent)
+                Row() {
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0xAFEEEE)
+                    Row()
+                    .width(30.percent)
+                    .height(50)
+                    .backgroundColor(0x00FFFF)
+                }
+                .width(90.percent)
+                .border(width: 1.vp)
+                .justifyContent(FlexAlign.Center)
+            }
+            .width(100.percent)
+            .padding(top: 5)
+        }
+}
+```
+
+![row](figures/row.jpg)

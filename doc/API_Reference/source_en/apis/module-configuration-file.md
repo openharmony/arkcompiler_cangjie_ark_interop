@@ -2,7 +2,7 @@
 
 ## metadata Tag
 
-This tag identifies the custom metadata of a HAP (Harmony Ability Package). The tag value is of array type and contains three sub-tags: name, value, and resource.
+This tag identifies the custom metadata of a HAP (Harmony Ability Package). The tag value is of array type, containing three sub-tags: name, value, and resource.
 
 **Table 1** metadata Tag Description
 
@@ -10,9 +10,9 @@ This tag identifies the custom metadata of a HAP (Harmony Ability Package). The 
 | :-------- | :-------- | :-------- | :-------- |
 | name | Identifies the name of the data item. The value is a string with a maximum length of 255 bytes. | String | This tag is optional. The default value is empty. |
 | value | Identifies the value of the data item. The value is a string with a maximum length of 255 bytes. | String | This tag is optional. The default value is empty. |
-| resource | Identifies the user-defined data format. The value is a string with a maximum length of 255 bytes, representing the resource index for this data. | String | This tag is optional. The default value is empty. |
+| resource | Identifies the user-defined data format. The value is a string with a maximum length of 255 bytes, representing the resource index of the data. | String | This tag is optional. The default value is empty. |
 
-The resource attribute value specifies the file location using the format "$profile:filename", where "$profile" indicates the resource path is under the /resources/base/profile directory in the project. For example, "$profile:shortcuts_config" specifies the /resources/base/profile/shortcuts_config.json file.
+The resource attribute value uses the format "$profile:filename" to specify the file location, where $profile indicates that the resource path is under the /resources/base/profile directory in the project. For example, $profile:shortcuts_config specifies the /resources/base/profile/shortcuts_config.json file.
 
 ```json
 {

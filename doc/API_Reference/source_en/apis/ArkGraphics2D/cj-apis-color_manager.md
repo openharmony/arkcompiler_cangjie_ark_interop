@@ -1,4 +1,4 @@
-# ohos.color_manager (Color Management)
+# ohos.graphics.color_space_manager (Color Management)
 
 This module provides fundamental capabilities for managing abstract color gamut objects, including the creation of color gamut objects and retrieval of basic color gamut properties.
 
@@ -13,9 +13,9 @@ import kit.ArkGraphics2D.*
 API sample code usage instructions:
 
 - If the sample code begins with a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## func create(ColorSpace)
 
@@ -33,7 +33,7 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| colorSpaceName | [ColorSpace](#enum-colorspace) | Yes | - | Enumeration value of standard color gamut type. UNKNOWN and CUSTOM cannot be used to directly create color gamut objects. |
+| colorSpaceName | [ColorSpace](#enum-colorspace) | Yes | - | Enumeration value for standard color gamut types. UNKNOWN and CUSTOM cannot be used to directly create color gamut objects. |
 
 **Return Value:**
 
@@ -43,25 +43,12 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
-| Error Code ID | Error Message |
-|:----|:---|
-| 401 | Parameter error. |
-| 18600001 | Parameter value is abnormal.@brief function create(colorSpaceName: ColorSpace): ColorSpaceManager |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkGraphics2D.*
-
-let colorSpaceManager = create(ColorSpace.SRGB)
-```
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
+  | 18600001 | The parameter value is abnormal. |
 
 ## func create(ColorSpacePrimaries, Float32)
 
@@ -79,7 +66,7 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| primaries | [ColorSpacePrimaries](#struct-colorspaceprimaries) | Yes | - | Standard tristimulus values of the color gamut. |
+| primaries | [ColorSpacePrimaries](#class-colorspaceprimaries) | Yes | - | Standard tristimulus values for the color gamut. |
 | gamma | Float32 | Yes | - | Gamma value of the color gamut. |
 
 **Return Value:**
@@ -90,36 +77,12 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
-| Error Code ID | Error Message |
-|:----|:---|
-| 401 | Parameter error. |
-| 18600001 | Parameter value is abnormal.@brief function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManager |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkGraphics2D.*
-
-let primaries = ColorSpacePrimaries(
-    redX: 0.1,
-    redY: 0.1,
-    greenX: 0.2,
-    greenY: 0.2,
-    blueX: 0.3,
-    blueY: 0.3,
-    whitePointX: 0.4,
-    whitePointY: 0.4
-)
-let gamma = 2.2f32
-let colorSpaceManager = create(primaries, gamma)
-```
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
+  | 18600001 | The parameter value is abnormal. |
 
 ## class ColorSpaceManager
 
@@ -127,7 +90,7 @@ let colorSpaceManager = create(primaries, gamma)
 public class ColorSpaceManager {}
 ```
 
-**Function:** Instance of the current color gamut object.
+**Function:** Current color gamut object instance.
 
 > **Note:**
 >
@@ -157,11 +120,11 @@ public func getColorSpaceName(): ColorSpace
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
-  | 18600001 | Parameter value is abnormal. |
+  | :---- | :--- |
+  | 18600001 | The parameter value is abnormal. |
 
 **Example:**
 
@@ -173,7 +136,7 @@ public func getColorSpaceName(): ColorSpace
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(ColorSpace.SRGB)
+let colorSpaceManagerInstance = create(ColorSpace.Srgb)
 let colorSpace: ColorSpace = colorSpaceManagerInstance.getColorSpaceName()
 ```
 
@@ -197,10 +160,10 @@ public func getGamma(): Float32
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
+  | :---- | :--- |
   | 18600001 | The parameter value is abnormal. |
 
 **Example:**
@@ -213,7 +176,7 @@ public func getGamma(): Float32
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(SRGB)
+let colorSpaceManagerInstance = create(Srgb)
 let colorSpace = colorSpaceManagerInstance.getGamma()
 ```
 
@@ -237,10 +200,10 @@ public func getWhitePoint(): Array<Float32>
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
-  |:---|:---|
+  | :---- | :--- |
   | 18600001 | The parameter value is abnormal. |
 
 **Example:**
@@ -253,230 +216,220 @@ public func getWhitePoint(): Array<Float32>
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let colorSpaceManagerInstance = create(SRGB)
+let colorSpaceManagerInstance = create(Srgb)
 let colorSpace = colorSpaceManagerInstance.getWhitePoint()
 ```
 
-## struct ColorSpacePrimaries
+## class ColorSpacePrimaries
 
 ```cangjie
-public struct ColorSpacePrimaries {
-    public ColorSpacePrimaries(
-        public let redX!: Float32,
-        public let redY!: Float32,
-        public let greenX!: Float32,
-        public let greenY!: Float32,
-        public let blueX!: Float32,
-        public let blueY!: Float32,
-        public let whitePointX!: Float32,
-        public let whitePointY!: Float32
-    )
+public class ColorSpacePrimaries {
+    public var redX: Float32
+    public var redY: Float32
+    public var greenX: Float32
+    public var greenY: Float32
+    public var blueX: Float32
+    public var blueY: Float32
+    public var whitePointX: Float32
+    public var whitePointY: Float32
+    public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blueX: Float32, blueY: Float32, whitePointX: Float32, whitePointY: Float32)
 }
 ```
 
-**Function:** Standard tristimulus values (red, green, blue) and white point of the color gamut, represented by their (x, y) coordinates in the color space.
+**Function:** Standard tristimulus values (red, green, blue) and white point of the color gamut, represented by (x, y) coordinates in the CIE XYZ color space.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Initial Version:** 21
 
-### let blueX
+### var blueX
 
 ```cangjie
-public let blueX: Float32
+public var blueX: Float32
 ```
 
-**Function:** The x-coordinate value of the standard blue color in the color space.
+**Function:** The x-coordinate value of standard blue in the color space.
 
 **Type:** Float32
 
-**Read/Write Permission:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Initial Version:** 21
 
-### let blueY
+### var blueY
 
 ```cangjie
-public let blueY: Float32
+public var blueY: Float32
 ```
 
 **Function:** The y-coordinate value of standard blue in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### let greenX
+### var greenX
 
 ```cangjie
-public let greenX: Float32
+public var greenX: Float32
 ```
 
 **Function:** The x-coordinate value of standard green in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### let greenY
+### var greenY
 
 ```cangjie
-public let greenY: Float32
+public var greenY: Float32
 ```
 
 **Function:** The y-coordinate value of standard green in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### let redX
+### var redX
 
 ```cangjie
-public let redX: Float32
+public var redX: Float32
 ```
 
 **Function:** The x-coordinate value of standard red in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### let redY
+### var redY
 
 ```cangjie
-public let redY: Float32
+public var redY: Float32
 ```
 
 **Function:** The y-coordinate value of standard red in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### let whitePointX
+### var whitePointX
 
 ```cangjie
-public let whitePointX: Float32
+public var whitePointX: Float32
 ```
 
 **Function:** The x-coordinate value of standard white in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### let whitePointY
+### var whitePointY
 
 ```cangjie
-public let whitePointY: Float32
+public var whitePointY: Float32
 ```
 
 **Function:** The y-coordinate value of standard white in the color space.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### ColorSpacePrimaries(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
+### init(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
 
 ```cangjie
-public ColorSpacePrimaries(
-    public let redX!: Float32,
-    public let redY!: Float32,
-    public let greenX!: Float32,
-    public let greenY!: Float32,
-    public let blueX!: Float32,
-    public let blueY!: Float32,
-    public let whitePointX!: Float32,
-    public let whitePointY!: Float32
-)
+public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blueX: Float32, blueY: Float32, whitePointX: Float32, whitePointY: Float32)
 ```
 
-**Function:** The primary constructor of ColorSpacePrimaries.
+**Function:** Primary constructor for ColorSpacePrimaries.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| redX | Float32 | Yes | - | **Named parameter.** The x-coordinate value of standard red in the color space. |
-| redY | Float32 | Yes | - | **Named parameter.** The y-coordinate value of standard red in the color space. |
-| greenX | Float32 | Yes | - | **Named parameter.** The x-coordinate value of standard green in the color space. |
-| greenY | Float32 | Yes | - | **Named parameter.** The y-coordinate value of standard green in the color space. |
-| blueX | Float32 | Yes | - | **Named parameter.** The x-coordinate value of standard blue in the color space. |
-| blueY | Float32 | Yes | - | **Named parameter.** The y-coordinate value of standard blue in the color space. |
-| whitePointX | Float32 | Yes | - | **Named parameter.** The x-coordinate value of standard white in the color space. |
-| whitePointY | Float32 | Yes | - | **Named parameter.** The y-coordinate value of standard white in the color space. |
+| redX | Float32 | Yes | - | Named parameter. The x-coordinate value of standard red in the color space. |
+| redY | Float32 | Yes | - | Named parameter. The y-coordinate value of standard red in the color space. |
+| greenX | Float32 | Yes | - | Named parameter. The x-coordinate value of standard green in the color space. |
+| greenY | Float32 | Yes | - | Named parameter. The y-coordinate value of standard green in the color space. |
+| blueX | Float32 | Yes | - | Named parameter. The x-coordinate value of standard blue in the color space. |
+| blueY | Float32 | Yes | - | Named parameter. The y-coordinate value of standard blue in the color space. |
+| whitePointX | Float32 | Yes | - | Named parameter. The x-coordinate value of standard white in the color space. |
+| whitePointY | Float32 | Yes | - | Named parameter. The y-coordinate value of standard white in the color space. |
 
 ## enum ColorSpace
 
 ```cangjie
-public enum ColorSpace <: ToString {
-    | UNKNOWN
-    | ADOBE_RGB_1998
-    | DCI_P3
-    | DISPLAY_P3
-    | SRGB
-    | CUSTOM
-    | BT709
-    | BT601_EBU
-    | BT601_SMPTE_C
-    | BT2020_HLG
-    | BT2020_PQ
-    | P3_HLG
-    | P3_PQ
-    | ADOBE_RGB_1998_LIMIT
-    | DISPLAY_P3_LIMIT
-    | SRGB_LIMIT
-    | BT709_LIMIT
-    | BT601_EBU_LIMIT
-    | BT601_SMPTE_C_LIMIT
-    | BT2020_HLG_LIMIT
-    | BT2020_PQ_LIMIT
-    | P3_HLG_LIMIT
-    | P3_PQ_LIMIT
-    | LINEAR_P3
-    | LINEAR_SRGB
-    | LINEAR_BT709
-    | LINEAR_BT2020
-    | DISPLAY_SRGB
-    | DISPLAY_P3_SRGB
-    | DISPLAY_P3_HLG
-    | DISPLAY_P3_PQ
+public enum ColorSpace <: Equatable<ColorSpace> & ToString {
+    | Unknown
+    | AdobeRgb1998
+    | DciP3
+    | DisplayP3
+    | Srgb
+    | Custom
+    | Bt709
+    | Bt601Ebu
+    | Bt601SmpteC
+    | Bt2020Hlg
+    | Bt2020Pq
+    | P3Hlg
+    | P3Pq
+    | AdobeRgb1998Limit
+    | DisplayP3Limit
+    | SrgbLimit
+    | Bt709Limit
+    | Bt601EbuLimit
+    | Bt601SmpteCLimit
+    | Bt2020HlgLimit
+    | Bt2020PqLimit
+    | P3HlgLimit
+    | P3PqLimit
+    | LinearP3
+    | LinearSrgb
+    | LinearBt709
+    | LinearBt2020
+    | DisplaySrgb
+    | DisplayP3Srgb
+    | DisplayP3Hlg
+    | DisplayP3Pq
     | ...
 }
 ```
@@ -485,420 +438,422 @@ public enum ColorSpace <: ToString {
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-**Parent Type:**
+**Parent Types:**
 
-- ToString
-
-### ADOBE_RGB_1998
+- Equatable\<ColorSpace>
+- ToString### AdobeRgb1998
 
 ```cangjie
-ADOBE_RGB_1998
+AdobeRgb1998
 ```
 
-**Function:** RGB gamut is Adobe RGB (1998) type; transfer function is Adobe RGB (1998) type; encoding range is Full type.
+**Function:** RGB color gamut is Adobe RGB (1998) type; transfer function is Adobe RGB (1998) type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### ADOBE_RGB_1998_LIMIT
+### AdobeRgb1998Limit
 
 ```cangjie
-ADOBE_RGB_1998_LIMIT
+AdobeRgb1998Limit
 ```
 
-**Function:** RGB gamut is Adobe RGB (1998) type; transfer function is Adobe RGB (1998) type; encoding range is Limit type.
+**Function:** RGB color gamut is Adobe RGB (1998) type; transfer function is Adobe RGB (1998) type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT2020_HLG
+### Bt2020Hlg
 
 ```cangjie
-BT2020_HLG
+Bt2020Hlg
 ```
 
-**Function:** RGB gamut is BT2020 type; transfer function is HLG type; encoding range is Full type.
+**Function:** RGB color gamut is BT2020 type; transfer function is HLG type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT2020_HLG_LIMIT
+### Bt2020HlgLimit
 
 ```cangjie
-BT2020_HLG_LIMIT
+Bt2020HlgLimit
 ```
 
-**Function:** RGB gamut is BT2020 type; transfer function is HLG type; encoding range is Limit type.
+**Function:** RGB color gamut is BT2020 type; transfer function is HLG type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT2020_PQ
+### Bt2020Pq
 
 ```cangjie
-BT2020_PQ
+Bt2020Pq
 ```
 
-**Function:** RGB gamut is BT2020 type; transfer function is PQ type; encoding range is Full type.
+**Function:** RGB color gamut is BT2020 type; transfer function is PQ type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT2020_PQ_LIMIT
+### Bt2020PqLimit
 
 ```cangjie
-BT2020_PQ_LIMIT
+Bt2020PqLimit
 ```
 
-**Function:** RGB gamut is BT2020 type; transfer function is PQ type; encoding range is Limit type.
+**Function:** RGB color gamut is BT2020 type; transfer function is PQ type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT601_EBU
+### Bt601Ebu
 
 ```cangjie
-BT601_EBU
+Bt601Ebu
 ```
 
-**Function:** RGB gamut is BT601_P type; transfer function is BT709 type; encoding range is Full type.
+**Function:** RGB color gamut is BT601_P type; transfer function is BT709 type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT601_EBU_LIMIT
+### Bt601EbuLimit
 
 ```cangjie
-BT601_EBU_LIMIT
+Bt601EbuLimit
 ```
 
-**Function:** RGB gamut is BT601_P type; transfer function is BT709 type; encoding range is Limit type.
+**Function:** RGB color gamut is BT601_P type; transfer function is BT709 type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT601_SMPTE_C
+### Bt601SmpteC
 
 ```cangjie
-BT601_SMPTE_C
+Bt601SmpteC
 ```
 
-**Function:** RGB gamut is BT601_N type; transfer function is BT709 type; encoding range is Full type.
+**Function:** RGB color gamut is BT601_N type; transfer function is BT709 type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT601_SMPTE_C_LIMIT
+### Bt601SmpteCLimit
+
 ```cangjie
-BT601_SMPTE_C_LIMIT
+Bt601SmpteCLimit
 ```
 
-**Function:** RGB gamut is BT601_N type; transfer function is BT709 type; encoding range is Limit type.
+**Function:** RGB color gamut is BT601_N type; transfer function is BT709 type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT709
+### Bt709
 
 ```cangjie
-BT709
+Bt709
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** RGB color gamut is BT709 type; transfer function is BT709 type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### BT709_LIMIT
+### Bt709Limit
 
 ```cangjie
-BT709_LIMIT
+Bt709Limit
 ```
 
-**Function:** RGB gamut is BT709 type; transfer function is BT709 type; encoding range is Limit type.
+**Function:** RGB color gamut is BT709 type; transfer function is BT709 type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### CUSTOM
+### Custom
 
 ```cangjie
-CUSTOM
+Custom
 ```
 
-**Function:** User-defined gamut type.
+**Function:** User-defined color gamut type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DCI_P3
+### DciP3
 
 ```cangjie
-DCI_P3
+DciP3
 ```
 
-**Function:** RGB gamut is DCI-P3 type; transfer function is Gamma 2.6 type; encoding range is Full type.
+**Function:** RGB color gamut is DCI-P3 type; transfer function is Gamma 2.6 type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DISPLAY_P3
+### DisplayP3
 
 ```cangjie
-DISPLAY_P3
+DisplayP3
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is SRGB type; encoding range is Full type.
+**Function:** RGB color gamut is Display P3 type; transfer function is Srgb type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DISPLAY_P3_HLG
+### DisplayP3Hlg
 
 ```cangjie
-DISPLAY_P3_HLG
+DisplayP3Hlg
 ```
 
-**Function:** Same as P3_HLG; RGB gamut is Display P3 type; transfer function is HLG type; encoding range is Full type.
+**Function:** Same as P3_HLG; RGB color gamut is Display P3 type; transfer function is HLG type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DISPLAY_P3_LIMIT
+### DisplayP3Limit
 
 ```cangjie
-DISPLAY_P3_LIMIT
+DisplayP3Limit
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is SRGB type; encoding range is Limit type.
+**Function:** RGB color gamut is Display P3 type; transfer function is Srgb type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DISPLAY_P3_PQ
+### DisplayP3Pq
 
 ```cangjie
-DISPLAY_P3_PQ
+DisplayP3Pq
 ```
 
-**Function:** Same as P3_PQ; RGB gamut is Display P3 type; transfer function is PQ type; encoding range is Full type.
+**Function:** Same as P3_PQ; RGB color gamut is Display P3 type; transfer function is PQ type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DISPLAY_P3_SRGB
+### DisplayP3Srgb
 
 ```cangjie
-DISPLAY_P3_SRGB
+DisplayP3Srgb
 ```
 
-**Function:** Same as DISPLAY_P3; RGB gamut is Display P3 type; transfer function is SRGB type; encoding range is Full type.
+**Function:** Same as DisplayP3; RGB color gamut is Display P3 type; transfer function is Srgb type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### DISPLAY_SRGB
+### DisplaySrgb
 
 ```cangjie
-DISPLAY_SRGB
+DisplaySrgb
 ```
 
-**Function:** Same as SRGB; RGB gamut is SRGB type; transfer function is SRGB type; encoding range is Full type.
+**Function:** Same as Srgb; RGB color gamut is Srgb type; transfer function is Srgb type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### LINEAR_BT2020
+### LinearBt2020
 
 ```cangjie
-LINEAR_BT2020
+LinearBt2020
 ```
 
-**Function:** RGB gamut is BT2020 type; transfer function is Linear type.
+**Function:** RGB color gamut is BT2020 type; transfer function is Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### LINEAR_BT709
+### LinearBt709
 
 ```cangjie
-LINEAR_BT709
+LinearBt709
 ```
 
-**Function:** Same as LINEAR_SRGB; RGB gamut is BT709 type; transfer function is Linear type.
+**Function:** Same as LINEAR_Srgb; RGB color gamut is BT709 type; transfer function is Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### LINEAR_P3
+### LinearP3
 
 ```cangjie
-LINEAR_P3
+LinearP3
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is Linear type.
+**Function:** RGB color gamut is Display P3 type; transfer function is Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### LINEAR_SRGB
+### LinearSrgb
 
 ```cangjie
-LINEAR_SRGB
+LinearSrgb
 ```
 
-**Function:** RGB gamut is SRGB type; transfer function is Linear type.
+**Function:** RGB color gamut is Srgb type; transfer function is Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### P3_HLG
+### P3Hlg
 
 ```cangjie
-P3_HLG
+P3Hlg
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is HLG type; encoding range is Full type.
+**Function:** RGB color gamut is Display P3 type; transfer function is HLG type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### P3_HLG_LIMIT
+### P3HlgLimit
 
 ```cangjie
-P3_HLG_LIMIT
+P3HlgLimit
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is HLG type; encoding range is Limit type.
+**Function:** RGB color gamut is Display P3 type; transfer function is HLG type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### P3_PQ
+### P3Pq
 
 ```cangjie
-P3_PQ
+P3Pq
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is PQ type; encoding range is Full type.
+**Function:** RGB color gamut is Display P3 type; transfer function is PQ type; encoding range is Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### P3_PQ_LIMIT
+### P3PqLimit
 
 ```cangjie
-P3_PQ_LIMIT
+P3PqLimit
 ```
 
-**Function:** RGB gamut is Display P3 type; transfer function is PQ type; encoding range is Limit type.
+**Function:** RGB color gamut is Display P3 type; transfer function is PQ type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### SRGB
+### Srgb
 
 ```cangjie
-SRGB
+Srgb
 ```
 
-**Function:** RGB gamut is SRGB type; transfer function is SRGB type; encoding range is Full type; system default gamut type.
+**Function:** RGB color gamut is Srgb type; transfer function is Srgb type; encoding range is Full type; default system color gamut type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### SRGB_LIMIT
+### SrgbLimit
 
 ```cangjie
-SRGB_LIMIT
+SrgbLimit
 ```
 
-**Function:** RGB gamut is SRGB type. Transfer function is SRGB type. Encoding range is Limit type.
+**Function:** RGB color gamut is Srgb type; transfer function is Srgb type; encoding range is Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### UNKNOWN
+### Unknown
 
 ```cangjie
-UNKNOWN
+Unknown
 ```
 
-**Function:** Unknown gamut type.
+**Function:** Unknown color gamut type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Since:** 21
+**Initial Version:** 21
 
-### static func parse(UInt32)
+### func !=(ColorSpace)
 
 ```cangjie
-public static func parse(cs: UInt32): ColorSpace
+public operator func !=(other: ColorSpace): Bool
 ```
 
-**Function:** Converts a UInt32 value to a [ColorSpace](#enum-colorspace) enumeration value.
-
-**System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-**Since:** 21
+**Function:** Performs inequality comparison with another `ColorSpace` enumeration value.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| cs | UInt32 | Yes | - | Integer corresponding to the [ColorSpace](#enum-colorspace) enumeration value. |
+| other | [ColorSpace](#enum-colorspace) | Yes | - | Another color gamut type for comparison. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ColorSpace](#enum-colorspace) | [ColorSpace](#enum-colorspace) enumeration value. |
+| Bool | Returns `true` if not equal, otherwise returns `false`. |
 
-**Example:**
-
-<!-- compile -->
+### func ==(ColorSpace)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkGraphics2D.*
-
-let value: ColorSpace = ColorSpace.parse(1)
+public operator func ==(other: ColorSpace): Bool
 ```
-### func toString()
+
+**Function:** Performs equality comparison with another `ColorSpace` enumeration value.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [ColorSpace](#enum-colorspace) | Yes | - | Another color gamut type for comparison. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns `true` if equal, otherwise returns `false`. |### func toString()
 
 ```cangjie
 public func toString(): String
@@ -906,15 +861,11 @@ public func toString(): String
 
 **Function:** Converts the [ColorSpace](#enum-colorspace) enumeration value to a string.
 
-**System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-**Since:** 21
-
 **Return Value:**
 
-| Type    | Description |
-|:--------|:------------|
-| String  | The string corresponding to the [ColorSpace](#enum-colorspace) enumeration value. |
+|Type|Description|
+|:----|:----|
+|String|The string corresponding to the [ColorSpace](#enum-colorspace) enumeration value.|
 
 **Example:**
 
@@ -926,5 +877,5 @@ public func toString(): String
 import ohos.base.*
 import kit.ArkGraphics2D.*
 
-let value: String = ColorSpace.DISPLAY_P3.toString()
+let value: String = ColorSpace.DisplayP3.toString()
 ```

@@ -12,13 +12,13 @@ The mmap system call execution failed.
 
 **Possible Causes**
 
-1. The mapped region is too large.
+1. The mapping region is too large.
 2. High system memory pressure with insufficient available memory for mapping.
 
 **Resolution Steps**
 
 1. Verify if Ashmem::create() was called with excessively large memory allocation.
-2. Check whether the system has sufficient available memory during mapping execution.
+2. Check whether sufficient system memory is available during mapping execution.
 
 ## 1900002 ioctl System Call Failed
 
@@ -37,8 +37,8 @@ The ioctl system call execution on shared memory file descriptor failed.
 
 **Resolution Steps**
 
-1. Verify if the called parameters originate from Ashmem class's PROT_EXEC, PROT_READ, and PROT_WRITE.
-2. Check whether the specified parameters are subsets of the types indicated during shared memory mapping.
+1. Verify if the parameters originate from Ashmem class's PROT_EXEC, PROT_READ, and PROT_WRITE.
+2. Ensure the specified parameters are subsets of the types designated during shared memory mapping.
 
 ## 1900003 Shared Memory Write Failure
 
@@ -52,13 +52,13 @@ Data writing to shared memory failed.
 
 **Possible Causes**
 
-1. Single or cumulative write operations exceed the mapped shared memory size.
+1. Single or cumulative write operations exceed mapped shared memory size.
 2. PROT_WRITE mode was not set for the shared memory.
 
 **Resolution Steps**
 
-1. Verify whether current write operations exceed the total mapped size.
-2. Check if PROT_WRITE protection permission was configured.
+1. Verify if current write operations exceed the total mapped size.
+2. Check whether PROT_WRITE protection permission is configured.
 
 ## 1900004 Shared Memory Read Failure
 
@@ -72,13 +72,13 @@ Data reading from shared memory failed.
 
 **Possible Causes**
 
-1. Single or cumulative read operations exceed the mapped shared memory size.
+1. Single or cumulative read operations exceed mapped shared memory size.
 2. PROT_READ mode was not set for the shared memory.
 
 **Resolution Steps**
 
-1. Verify whether current read operations exceed the total mapped size.
-2. Check if PROT_READ protection permission was configured.
+1. Verify if current read operations exceed the total mapped size.
+2. Check whether PROT_READ protection permission is configured.
 
 ## 1900005 IPC Object Permission Error
 
@@ -88,15 +88,15 @@ Operation allowed only for the proxy object.
 
 **Error Description**
 
-This operation is permitted only for proxy objects.
+This operation is exclusively permitted for proxy objects.
 
 **Possible Causes**
 
-A method supported exclusively by RemoteProxy was invoked on a RemoteObject.
+A method supported only by RemoteProxy was invoked on a RemoteObject.
 
 **Resolution Steps**
 
-Verify whether RemoteProxy-exclusive methods were called on a RemoteObject.
+Verify if RemoteObject was incorrectly used to call RemoteProxy-exclusive methods.
 
 ## 1900006 IPC Object Permission Error
 
@@ -106,15 +106,15 @@ Operation allowed only for the remote object.
 
 **Error Description**
 
-This operation is permitted only for remote objects.
+This operation is exclusively permitted for remote objects.
 
 **Possible Causes**
 
-A method supported exclusively by RemoteObject was invoked on a RemoteProxy.
+A method supported only by RemoteObject was invoked on a RemoteProxy.
 
 **Resolution Steps**
 
-Verify whether RemoteObject-exclusive methods were called on a RemoteProxy.
+Verify if RemoteProxy was incorrectly used to call RemoteObject-exclusive methods.
 
 ## 1900007 Remote Object Communication Failure
 
@@ -129,12 +129,12 @@ Inter-process communication with remote object failed.
 **Possible Causes**
 
 1. The remote object has been destroyed.
-2. The remote object was recreated after destruction, making the local proxy object obsolete.
+2. The remote object was recreated after destruction, rendering local proxy obsolete.
 
 **Resolution Steps**
 
-1. Verify whether the remote object still exists.
-2. Check if death notification was registered and whether the remote object was reconstructed.
+1. Check whether the remote object still exists.
+2. Verify if death notification was registered and remote object underwent destruction-recreation.
 
 ## 1900008 Invalid IPC Object
 
@@ -153,7 +153,7 @@ Invalid proxy or remote object detected.
 
 **Resolution Steps**
 
-1. Verify any anomalies during proxy object acquisition.
+1. Investigate potential anomalies during proxy object acquisition.
 2. Check whether the remote object has been destructed.
 
 ## 1900009 MessageSequence Write Failure
@@ -166,13 +166,13 @@ Failed to write data to the message sequence.
 
 Data writing to MessageSequence failed.
 
-**Possible Cause**
+**Possible Causes**
 
-The default sequence capacity has been exhausted.
+The sequence's default capacity has been exhausted.
 
 **Resolution Steps**
 
-Use MessageSequence's buffer space query methods to confirm remaining capacity.
+Use MessageSequence's buffer space query methods to verify remaining capacity.
 
 ## 1900010 MessageSequence Read Failure
 
@@ -184,9 +184,9 @@ Failed to read data from the message sequence.
 
 Data reading from MessageSequence failed.
 
-**Possible Cause**
+**Possible Causes**
 
-Read operations don't match the write sequence.
+Read/write sequence inconsistency.
 
 **Resolution Steps**
 
@@ -200,15 +200,15 @@ Memory allocation failed.
 
 **Error Description**
 
-Memory allocation failed during serialization.
+Memory allocation failure during serialization.
 
-**Possible Cause**
+**Possible Causes**
 
-Excessively large data being written.
+Excessively large data write operations.
 
 **Resolution Steps**
 
-Verify whether written data or parameters exceed reasonable limits.
+Verify whether written data or parameters exceed reasonable size limits.
 
 ## 1900012 JS Method Failure
 
@@ -218,9 +218,9 @@ Failed to call the JS callback function.
 
 **Error Description**
 
-JS callback function execution failed.
+JavaScript callback execution failed.
 
-**Possible Cause**
+**Possible Causes**
 
 Business logic JS method returned failure.
 
@@ -241,9 +241,9 @@ The dup system call execution failed.
 **Possible Causes**
 
 1. Process file descriptor resources exhausted.
-2. Input fd parameter was already closed.
+2. Input fd parameter has been closed.
 
 **Resolution Steps**
 
-1. Verify whether the input fd remains valid.
-2. Investigate potential fd resource exhaustion in the process.
+1. Verify validity of input fd parameter.
+2. Investigate potential file descriptor resource exhaustion in the process.

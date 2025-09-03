@@ -1,6 +1,6 @@
-# ohos.values_bucket (Data Set)
+# ohos.data.values_bucket
 
-A ValuesBucket is a collection of data that developers insert into a database, transmitted in key-value pairs.
+A ValuesBucket is a collection of data that developers insert into a database, transmitted in the form of key-value pairs.
 
 ## Import Module
 
@@ -8,20 +8,18 @@ A ValuesBucket is a collection of data that developers insert into a database, t
 import kit.ArkData.*
 ```
 
-## enum VBValueType
+## enum ValueType
 
 ```cangjie
-public enum VBValueType {
-    | Null
+public enum ValueType {
     | Integer(Int64)
     | Double(Float64)
-    | Str(String)
+    | StringValue(String)
     | Boolean(Bool)
-    | ...
 }
 ```
 
-**Description:** This type represents the data field types allowed in the database.
+**Description:** This type is used to represent the data field types allowed in the database.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -63,22 +61,10 @@ Integer(Int64)
 
 **Since:** 21
 
-### Null
+### StringValue(String)
 
 ```cangjie
-Null
-```
-
-**Description:** Indicates the field type is null.
-
-**System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
-
-**Since:** 21
-
-### Str(String)
-
-```cangjie
-Str(String)
+StringValue(String)
 ```
 
 **Description:** Indicates the field type is string.

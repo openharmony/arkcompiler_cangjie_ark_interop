@@ -1,6 +1,12 @@
 # Component Content Filling Mode
 
-Determines how the final animated component content is rendered on the component during width/height animations.
+Determines how the final component content after animation is rendered on the component during width/height animations.
+
+## Import Module
+
+```cangjie
+import kit.ArkUI.*
+```
 
 ## func renderFit(RenderFit)
 
@@ -8,24 +14,64 @@ Determines how the final animated component content is rendered on the component
 public func renderFit(fitMode: RenderFit): This
 ```
 
-**Function:** Sets the content filling mode during width/height animations.
+**Description:** Sets the rendering adaptation mode of the component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
-|Name|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| fitMode | [RenderFit](#enum-renderfit)  | Yes  | - | Content filling mode during width/height animations. <br/>Initial value: RenderFit.TOP_LEFT.|
+| fitMode | [RenderFit](#) | Yes | - | Rendering adaptation mode. |
+
+## func !=(RenderFit)
+
+```cangjie
+public operator func !=(other: RenderFit): Bool
+```
+
+**Description:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [RenderFit](#enum-renderfit) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+
+## func ==(RenderFit)
+
+```cangjie
+public operator func ==(other: RenderFit): Bool
+```
+
+**Description:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [RenderFit](#enum-renderfit) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## Basic Type Definitions
 
 ### enum RenderFit
 
 ```cangjie
-public enum RenderFit {
+public enum RenderFit <: Equatable<RenderFit> {
     | CENTER
     | TOP
     | BOTTOM
@@ -42,34 +88,19 @@ public enum RenderFit {
     | RESIZE_COVER
     | RESIZE_COVER_TOP_LEFT
     | RESIZE_COVER_BOTTOM_RIGHT
+    | ...
 }
 ```
 
-**Function:** Component content filling styles.
+**Description:** Component content filling style.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 19
+**Since:** 21
 
-#### CENTER
+**Parent Type:**
 
-```cangjie
-CENTER
-```
-
-**Function:** Maintains the final animated content size while keeping content center-aligned with the component.
-
-![renderfit_center](figures/renderfit_center.png)
-
-#### TOP
-
-```cangjie
-TOP
-```
-
-**Function:** Maintains the final animated content size while keeping content top-center aligned with the component.
-
-![renderfit_top](figures/renderfit_top.png)
+- Equatable\<RenderFit>
 
 #### BOTTOM
 
@@ -77,49 +108,11 @@ TOP
 BOTTOM
 ```
 
-**Function:** Maintains the final animated content size while keeping content bottom-center aligned with the component.
+**Description:** Maintains the final animation content size and keeps the content bottom-center aligned with the component.
 
-![renderfit_bottom](figures/renderfit_bottom.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### LEFT
-
-```cangjie
-LEFT
-```
-
-**Function:** Maintains the final animated content size while keeping content left-aligned with the component.
-
-![renderfit_left](figures/renderfit_left.png)
-
-#### RIGHT
-
-```cangjie
-RIGHT
-```
-
-**Function:** Maintains the final animated content size while keeping content right-aligned with the component.
-
-![renderfit_right](figures/renderfit_right.png)
-
-#### TOP_LEFT
-
-```cangjie
-TOP_LEFT
-```
-
-**Function:** Maintains the final animated content size while keeping content top-left aligned with the component.
-
-![renderfit_top_left](figures/renderfit_top_left.png)
-
-#### TOP_RIGHT
-
-```cangjie
-TOP_RIGHT
-```
-
-**Function:** Maintains the final animated content size while keeping content top-right aligned with the component.
-
-![renderfit_top_right](figures/renderfit_top_right.png)
+**Since:** 21
 
 #### BOTTOM_LEFT
 
@@ -127,29 +120,47 @@ TOP_RIGHT
 BOTTOM_LEFT
 ```
 
-**Function:** Maintains the final animated content size while keeping content bottom-left aligned with the component.
+**Description:** Maintains the final animation content size and keeps the content bottom-left aligned with the component.
 
-![renderfit_bottom_left](figures/renderfit_bottom_left.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### BOTTOM_RIGHT
 
 ```cangjie
-BOTTOM_LEFT
+BOTTOM_RIGHT
 ```
 
-**Function:** Maintains the final animated content size while keeping content bottom-right aligned with the component.
+**Description:** Maintains the final animation content size and keeps the content bottom-right aligned with the component.
 
-![renderfit_bottom_right](figures/renderfit_bottom_right.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### RESIZE_FILL
+**Since:** 21
+
+#### CENTER
 
 ```cangjie
-RESIZE_FILL
+CENTER
 ```
 
-**Function:** Ignores the aspect ratio of final animated content and always scales content to component size.
+**Description:** Maintains the final animation content size and keeps the content center aligned with the component.
 
-![renderfit_resize_fill](figures/renderfit_resize_fill.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### LEFT
+
+```cangjie
+LEFT
+```
+
+**Description:** Maintains the final animation content size and keeps the content left aligned with the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### RESIZE_CONTAIN
 
@@ -157,19 +168,11 @@ RESIZE_FILL
 RESIZE_CONTAIN
 ```
 
-**Function:** Scales final animated content while maintaining aspect ratio to fully display within component, keeping center alignment.
+**Description:** Scales the final animation content while maintaining aspect ratio to ensure complete display within the component, keeping center alignment.
 
-![renderfit_resize_contain](figures/renderfit_resize_contain.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### RESIZE_CONTAIN_TOP_LEFT
-
-```cangjie
-RESIZE_CONTAIN_TOP_LEFT
-```
-
-**Function:** Scales final animated content while maintaining aspect ratio to fully display within component. When width has remaining space, content stays left-aligned; when height has remaining space, content stays top-aligned.
-
- ![renderfit_resize_contain_top_left](figures/renderfit_resize_contain_top_left.png)
+**Since:** 21
 
 #### RESIZE_CONTAIN_BOTTOM_RIGHT
 
@@ -177,9 +180,23 @@ RESIZE_CONTAIN_TOP_LEFT
 RESIZE_CONTAIN_BOTTOM_RIGHT
 ```
 
-**Function:** Scales final animated content while maintaining aspect ratio to fully display within component. When width has remaining space, content stays right-aligned; when height has remaining space, content stays bottom-aligned.
+**Description:** Scales the final animation content while maintaining aspect ratio to ensure complete display within the component. When width space remains, content stays right-aligned; when height space remains, content stays bottom-aligned.
 
-![renderfit_resize_contain_bottom_right](figures/renderfit_resize_contain_bottom_right.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### RESIZE_CONTAIN_TOP_LEFT
+
+```cangjie
+RESIZE_CONTAIN_TOP_LEFT
+```
+
+**Description:** Scales the final animation content while maintaining aspect ratio to ensure complete display within the component. When width space remains, content stays left-aligned; when height space remains, content stays top-aligned.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### RESIZE_COVER
 
@@ -187,19 +204,11 @@ RESIZE_CONTAIN_BOTTOM_RIGHT
 RESIZE_COVER
 ```
 
-**Function:** Scales final animated content while maintaining aspect ratio so content dimensions are ≥ component dimensions, keeping center alignment and displaying middle portion.
+**Description:** Scales the final animation content while maintaining aspect ratio to ensure content dimensions are equal to or larger than the component, keeping center alignment and displaying the middle portion.
 
-![renderfit_resize_cover](figures/renderfit_resize_cover.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### RESIZE_COVER_TOP_LEFT
-
-```cangjie
-RESIZE_COVER_TOP_LEFT
-```
-
-**Function:** Scales final animated content while maintaining aspect ratio so content dimensions are ≥ component dimensions. When width has remaining space, content stays left-aligned showing left portion; when height has remaining space, content stays top-aligned showing top portion.
-
-![renderfit_resize_cover_top_left](figures/renderfit_resize_cover_top_left.png)
+**Since:** 21
 
 #### RESIZE_COVER_BOTTOM_RIGHT
 
@@ -207,76 +216,80 @@ RESIZE_COVER_TOP_LEFT
 RESIZE_COVER_BOTTOM_RIGHT
 ```
 
-**Function:** Scales final animated content while maintaining aspect ratio so content dimensions are ≥ component dimensions. When width has remaining space, content stays right-aligned showing right portion; when height has remaining space, content stays bottom-aligned showing bottom portion.
+**Description:** Scales the final animation content while maintaining aspect ratio to ensure content dimensions are exactly equal to or larger than the component. When width space remains, content stays right-aligned (displaying right portion); when height space remains, content stays bottom-aligned (displaying bottom portion).
 
-![renderfit_resize_cover_bottom_right](figures/renderfit_resize_cover_bottom_right.png)
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-> **Note:**
->
-> - In diagrams, blue area represents content, orange-yellow area represents node size.
-> - Different filling modes behave differently during width/height animations. Developers should choose appropriate modes to achieve desired animation effects.
+**Since:** 21
 
-## Example Code
-
-<!-- run -->
+#### RESIZE_COVER_TOP_LEFT
 
 ```cangjie
-package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    @State var width1 = 80
-    @State var height1 = 50
-    @State var flag: Bool = true
-    func build() {
-        Column {
-        Text("Hello")
-            .width(this.width1)
-            .animationStart(AnimateParam(duration: 1200, curve: Curve.Ease))
-            .height(this.height1)
-            .borderWidth(1)
-            .textAlign(TextAlign.Start)
-            .renderFit(RenderFit.LEFT) // Sets LEFT renderFit - during animation, final content stays left-aligned
-            .margin(20)
-            .animationEnd()
-        Text("Hello")
-            .width(this.width1)
-            .animationStart(AnimateParam(duration: 1200, curve: Curve.Ease))
-            .height(this.height1)
-            .textAlign(TextAlign.Center)
-            .borderWidth(1)
-            .renderFit(RenderFit.CENTER) // Sets CENTER renderFit - during animation, final content stays center-aligned
-            .margin(20)
-            .animationEnd()
-        Text("Hello")
-            .width(this.width1)
-            .animationStart(AnimateParam(duration: 1200, curve: Curve.Ease))
-            .height(this.height1)
-            .textAlign(TextAlign.End)
-            .borderWidth(1)
-            .renderFit(RenderFit.RIGHT) // Sets RIGHT renderFit - during animation, final content stays right-aligned
-            .margin(20)
-            .animationEnd()
-
-        Button("change size")
-            .onClick { e =>
-                if (flag) {
-                    this.width1 = 150
-                    this.height1 = 50
-                } else {
-                    this.width1 = 80
-                    this.height1 = 50
-                }
-                this.flag = !this.flag
-            }
-            .width(150)
-            .height(100)
-        }
-    }
-}
+RESIZE_COVER_TOP_LEFT
 ```
 
-![uni_renderfit](figures/uni_renderfit.gif)
+**Description:** Scales the final animation content while maintaining aspect ratio to ensure content dimensions are exactly equal to or larger than the component. When width space remains, content stays left-aligned (displaying left portion); when height space remains, content stays top-aligned (displaying top portion).
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### RESIZE_FILL
+
+```cangjie
+RESIZE_FILL
+```
+
+**Description:** Ignores the aspect ratio of the final animation content and always scales content to match component dimensions.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### RIGHT
+
+```cangjie
+RIGHT
+```
+
+**Description:** Maintains the final animation content size and keeps the content right aligned with the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### TOP
+
+```cangjie
+TOP
+```
+
+**Description:** Maintains the final animation content size and keeps the content top-center aligned with the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### TOP_LEFT
+
+```cangjie
+TOP_LEFT
+```
+
+**Description:** Maintains the final animation content size and keeps the content top-left aligned with the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### TOP_RIGHT
+
+```cangjie
+TOP_RIGHT
+```
+
+**Description:** Maintains the final animation content size and keeps the content top-right aligned with the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
