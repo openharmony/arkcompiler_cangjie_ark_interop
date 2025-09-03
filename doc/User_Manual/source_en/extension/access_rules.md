@@ -1,10 +1,10 @@
 # Access Rules
 
-## Extended Modifiers
+## Extension Modifiers
 
 Extensions themselves cannot be modified with modifiers.
 
-For example, in the following example, using the `public` modifier before directly extending `A` will cause a compilation error.
+For example, in the following example, using the `public` modifier before directly extending `A` will result in a compilation error.
 
 <!-- compile.error -->
 
@@ -16,11 +16,11 @@ public extend A {}  // Error, expected no modifier before extend
 
 Modifiers that can be used for extension members include: `static`, `public`, `protected`, `internal`, `private`, `mut`.
 
-- Members modified with `private` can only be used within the extension and are invisible externally.
+- Members modified with `private` can only be used within the extension and are not visible externally.
 - Members modified with `internal` can be used within the current package and its sub-packages (including sub-packages of sub-packages), which is the default behavior.
-- Members modified with `protected` can be accessed within the current module (subject to export rules). When the extended type is a class, the subclass definition body of that class can also access them.
-- Members modified with `static` can only be accessed via the type name and not through instance objects.
-- Extensions of `struct` types can define `mut` functions.
+- Members modified with `protected` can be accessed within the module (subject to export rules). When the extended type is a class, the class's subclasses can also access these members.
+- Members modified with `static` can only be accessed via the type name, not through instance objects.
+- Extensions for `struct` types can define `mut` functions.
 
 <!-- compile -->
 
@@ -63,9 +63,9 @@ extend Foo {
 
 ## Orphan Rule for Extensions
 
-Implementing an interface from another `package` for a type from a different `package` may cause confusion.
+Implementing an interface from another `package` for a type in a different `package` can cause confusion.
 
-To prevent a type from accidentally implementing an inappropriate interface, Cangjie does not allow defining orphan extensions—i.e., extensions that are neither defined in the same package as the interface (including all interfaces in the inheritance chain) nor in the same package as the extended type.
+To prevent a type from accidentally implementing an inappropriate interface, Cangjie does not allow orphan extensions—extensions that are neither in the same package as the interface (including all interfaces in the interface inheritance chain) nor in the same package as the extended type.
 
 As shown in the following code, it is not allowed to implement the `Bar` interface from `package b` for the `Foo` type from `package a` within `package c`.
 
@@ -89,7 +89,7 @@ extend Foo <: Bar {} // Error
 
 ## Access and Shadowing in Extensions
 
-Instance members in extensions can use `this` just like in the type definition, with the same functionality. `this` can also be omitted when accessing members. Instance members in extensions cannot use `super`.
+Instance members in extensions can use `this` just like in type definitions, with the same functionality. `this` can also be omitted when accessing members. Instance members in extensions cannot use `super`.
 
 <!-- compile -->
 
@@ -154,7 +154,7 @@ extend A {
 }
 ```
 
-Within the same package, a type can be extended multiple times, and non-`private` functions from other extensions of the extended type can be directly called within an extension.
+Within the same package, a type can be extended multiple times, and within an extension, non-`private` functions from other extensions of the extended type can be directly called.
 
 <!-- compile.error -->
 
@@ -174,13 +174,13 @@ extend Foo { // OK
 }
 ```
 
-When extending generic types, additional generic constraints can be used. The visibility rules between any two extensions of a generic type are as follows:
+When extending a generic type, additional generic constraints can be used. The visibility rules between any two extensions of a generic type are as follows:
 
-- If the constraints of two extensions are the same, the extensions are mutually visible—i.e., functions or properties from one extension can be directly used in the other.
-- If the constraints of two extensions are different and one constraint includes the other, the extension with the looser constraint is visible to the one with the stricter constraint, but not vice versa.
-- When the constraints of two extensions are different and neither includes the other, the extensions are mutually invisible.
+- If two extensions have the same constraints, they are mutually visible, meaning functions or properties from one extension can be directly used in the other.
+- If two extensions have different constraints, and one constraint is a superset of the other, the extension with the looser constraint is visible to the extension with the stricter constraint, but not vice versa.
+- If two extensions have different constraints that are not subsets of each other, they are mutually invisible.
 
-Example: Suppose there are two extensions, extension `1` and extension `2`, for the same type `E<X>`. If the constraint on `X` in extension `1` is stricter than in extension `2`, then functions and properties in extension `1` are invisible to extension `2`, while those in extension `2` are visible to extension `1`.
+Example: Suppose two extensions for the same type `E<X>` are Extension 1 and Extension 2. If the constraint for `X` in Extension 1 is stricter than in Extension 2, then functions and properties in Extension 1 are invisible to Extension 2, while those in Extension 2 are visible to Extension 1.
 
 <!-- compile.error -->
 
@@ -213,9 +213,9 @@ extend<X> E<X> <: I2 where X <: A   { // extension 2
 
 Extensions can also be imported and exported, but extensions themselves cannot be modified with visibility modifiers. The export of extensions follows special rules.
 
-For direct extensions, when the extension and the extended type are in the same package, whether the extension is exported is determined by the access modifiers of the extended type and any generic constraints (if present). If all generic constraints are exported types (for modifiers and export rules, see the [Top-Level Declaration Visibility](../package/toplevel_access.md) chapter), the extension will be exported. If the extension and the extended type are in different packages, the extension will not be exported.
+For direct extensions, when the extension is in the same package as the extended type, whether the extension is exported depends on the access modifiers of the extended type and its generic constraints (if any). If all generic constraints are exported types (as defined in the [Top-Level Declaration Visibility](../package/toplevel_access.md) chapter), the extension will be exported. If the extension is not in the same package as the extended type, it will not be exported.
 
-As shown in the following code, `Foo` is exported. The extension containing the `f1` function is not exported due to non-exported generic constraints. The extensions containing `f2` and `f3` functions are exported because their generic constraints are exported. The extension containing the `f4` function is not exported because one of its generic constraints, `I1`, is not exported. The extension containing the `f5` function is exported because all its generic constraints are exported.
+As shown in the following code, `Foo` is exported. The extension containing the `f1` function is not exported because its generic constraint is not exported. The extensions containing `f2` and `f3` are exported because their generic constraints are exported. The extension containing `f4` has multiple generic constraints, and since `I1` is not exported, the extension is not exported. The extension containing `f5` has multiple generic constraints, all of which are exported, so it is exported.
 
 ```cangjie
 // package a.b
@@ -276,10 +276,10 @@ main() {
 
 For interface extensions, there are two scenarios:
 
-1. When the interface extension and the extended type are in the same `package`, the extension will be exported along with the extended type and any generic constraints (if present), regardless of the interface type's access level. Packages outside do not need to import the interface type to access the extension's members.
-2. When the interface extension and the extended type are in different `packages`, whether the extension is exported is determined by the lowest access level among the interface type and any generic constraints (if present). Other `packages` must import the extended type, the relevant interface, and any constraint types (if present) to access the extension members of the interface.
+1. When the interface extension is in the same `package` as the extended type, the extension will be exported along with the extended type and its generic constraints (if any), regardless of the interface's access level. Packages outside do not need to import the interface type to access the extension's members.
+2. When the interface extension is in a different `package` from the extended type, whether the extension is exported depends on the lowest access level among the interface type and its generic constraints (if any). Other packages must import the extended type, the relevant interface, and any constraint types (if any) to access the extension's members.
 
-As shown in the following code, in package `a`, even though the interface access modifier is `private`, the extension of `Foo` will still be exported.
+As shown in the following code, in `package a`, even though the interface modifier is `private`, the extension for `Foo` will still be exported.
 
 ```cangjie
 // package a
@@ -293,11 +293,12 @@ public class Foo<T> {}
 extend<T> Foo<T> <: I0 {}
 ```
 
-When extending the `Foo` type in another package, whether the extension is exported depends on the access modifiers of the implemented interface and any generic constraints. The extension will be exported if at least one implemented interface is exported and all generic constraints are exportable.
+When extending the `Foo` type in another package, whether the extension is exported depends on the access modifiers of the implemented interface and its generic constraints. The extension will be exported if at least one implemented interface is exported and all generic constraints are exportable.
 
 ```cangjie
 // package b
 package b
+
 import a.Foo
 
 private interface I1 {}
@@ -327,7 +328,7 @@ extend<T> Foo<T> <: I4 where T <: I2 & I3 {}
 extend<T> Foo<T> <: I4 & I3 where T <: I2 {}
 ```
 
-Notably, the members exported by interface extensions are limited to those contained within the interfaces.
+Notably, the exported members of an interface extension are limited to those defined in the interface.
 
 <!-- compile.error -access_rules3 -->
 <!-- cfg="-p a --output-type=staticlib" -->
@@ -382,11 +383,11 @@ main() {
 }
 ```
 
-Similar to the export of extensions, importing extensions does not require explicit `import` statements. To import all accessible extensions, one only needs to import the extended type, interfaces, and generic constraints (if any).
+Similar to the export of extensions, importing extensions does not require explicit `import` statements. Importing the extended type, interface, and generic constraints automatically imports all accessible extensions.
 
-As shown in the following code, in `package b`, importing `Foo` alone is sufficient to use the function `f` from the corresponding extension of `Foo`.
+As shown in the following code, in `package b`, importing `Foo` alone allows the use of the `f` function from its corresponding extension.
 
-For interface extensions, simultaneous import of the extended type, extended interfaces, and generic constraints (if any) is required for usage. Therefore, in `package c`, both `Foo` and `I` need to be imported to use the function `g` from the corresponding extension.
+For interface extensions, importing the extended type, the interface, and any generic constraints (if any) is required to use the extension. Thus, in `package c`, importing both `Foo` and `I` is necessary to use the `g` function from the corresponding extension.
 
 <!-- run -access_rules4 -->
 <!-- cfg="-p a --output-type=staticlib" -->
@@ -398,8 +399,7 @@ public class Foo {}
 extend Foo {
     public func f() {}
 }
-```
-
+``````
 <!-- run -access_rules4 -->
 <!-- cfg="-p b --output-type=staticlib liba.a" -->
 

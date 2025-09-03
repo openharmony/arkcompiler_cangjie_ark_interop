@@ -4,7 +4,7 @@
 
 The fundamental type for macro operations is `Tokens`, representing a code fragment. `Tokens` consists of multiple `Token` elements, where each `Token` can be understood as a user-operable lexical unit. A `Token` may be an identifier (e.g., variable names), literal (e.g., integers, floats, strings), keyword, or operator. Each `Token` contains its type, content, and positional information.
 
-The type of a `Token` is an enum value from `TokenKind`. For available values of `TokenKind`, refer to the *Cangjie Programming Language Library API* documentation. By providing a `TokenKind` and its corresponding value (identifier or literal), any `Token` can be directly constructed. The specific constructors are as follows:
+The type of a `Token` is an element from the enum `TokenKind`. For available values of `TokenKind`, refer to the *Cangjie Programming Language Library API* documentation. By providing `TokenKind` and the value of `Token` (the identifier or literal corresponding to `TokenKind`), any `Token` can be directly constructed. The specific constructors are as follows:
 
 ```cangjie
 Token(k: TokenKind)
@@ -27,7 +27,7 @@ let tk5 = Token(TokenKind.STRING_LITERAL, "xyz")  // string literal
 
 ## Tokens Type
 
-A `Tokens` represents a sequence of multiple `Token` elements. `Tokens` can be constructed directly from an array of `Token`. Below are three basic ways to construct `Tokens` instances:
+A `Tokens` represents a sequence composed of multiple `Token` elements. `Tokens` can be constructed directly from an array of `Token`. Below are three basic ways to construct `Tokens` instances:
 
 ```cangjie
 Tokens()   // construct an empty list
@@ -37,7 +37,7 @@ Tokens(tks: ArrayList<Token>)
 
 Additionally, the `Tokens` type supports the following functionalities:
 
-- `size`: Returns the number of `Token` elements in `Tokens`
+- `size`: Returns the number of `Token` elements contained in `Tokens`
 - `get(index: Int64)`: Retrieves the `Token` element at the specified index
 - `[]`: Retrieves the `Token` element at the specified index
 - `+`: Concatenates two `Tokens` or directly concatenates `Tokens` with a `Token`
@@ -71,16 +71,16 @@ description: add, token_id: 12, token_literal_value: +, fileID: 1, line: 5, colu
 description: integer_literal, token_id: 140, token_literal_value: 2, fileID: 1, line: 6, column: 5
 ```
 
-The dump information includes each `Token`'s type (`description`) and value (`token_literal_value`), followed by its positional information.
+The dump information includes the type (`description`) and value (`token_literal_value`) of each `Token`, followed by the positional information of each `Token`.
 
-## Quote Expressions and Interpolation
+## Quote Expression and Interpolation
 
-In most cases, directly constructing and concatenating `Tokens` can be cumbersome. Therefore, the Cangjie language provides `quote` expressions to construct `Tokens` from code templates. These are called code templates because `$(...)` can be used within `quote` to interpolate expressions from the context. The interpolated expressions must be convertible to `Tokens` (specifically, they must implement the `ToTokens` interface). In the standard library, the following types implement `ToTokens`:
+In most cases, directly constructing and concatenating `Tokens` can be cumbersome. Therefore, the Cangjie language provides the `quote` expression to construct `Tokens` from code templates. The term "code template" is used because `quote` allows the use of `$(...)` to interpolate expressions from the context. The type of the interpolated expression must support conversion to `Tokens` (specifically, it must implement the `ToTokens` interface). In the standard library, the following types implement the `ToTokens` interface:
 
 - All node types (nodes will be discussed in [Syntax Nodes](./syntax_node.md))
 - `Token` and `Tokens` types
 - All primitive data types: integers, floats, `Bool`, `Rune`, and `String`
-- `Array<T>` and `ArrayList<T>`, where `T` has type restrictions and outputs different delimiters depending on its type. For details, refer to the *Cangjie Programming Language Library API* documentation.
+- `Array<T>` and `ArrayList<T>`, where the type `T` has restrictions, and different delimiters are output based on the type of `T`. For details, refer to the *Cangjie Programming Language Library API* documentation.
 
 The following example demonstrates interpolation with `Array` and primitive data types:
 
@@ -111,13 +111,13 @@ x = 1.0
 s = "Hello"
 ```
 
-For more interpolation usage, refer to [Using Quote to Interpolate Syntax Nodes](./syntax_node.md#using-quote-to-interpolate-syntax-nodes).
+For more interpolation usage, refer to [Using Quote to Interpolate Syntax Nodes](./syntax_node.md#使用-quote-插值语法节点).
 
 Specifically, when a `quote` expression contains certain special `Token` elements, escaping is required:
 
-- Unmatched parentheses are not allowed in `quote` expressions, but escaped parentheses (using `\`) are excluded from the matching rules.
-- When `$` represents a regular `Token` rather than code interpolation, it must be escaped using `\`.
-- Except for the above cases, any `\` in a `quote` expression will result in a compilation error.
+- Unmatched parentheses are not allowed in `quote` expressions, but parentheses escaped with `\` are not counted in the parentheses matching rule.
+- When `$` represents a regular `Token` rather than code interpolation, it must be escaped with `\`.
+- Except for the above cases, the presence of `\` in a `quote` expression will result in a compilation error.
 
 > **Note:**
 >

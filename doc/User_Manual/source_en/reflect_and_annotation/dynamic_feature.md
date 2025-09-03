@@ -12,13 +12,13 @@ The dynamic feature of reflection offers the following advantages:
 - Enables programs to determine the types of various objects at runtime and perform operations such as enumeration and invocation of their members.
 - Allows the creation of new types at runtime without the need for hardcoding in advance.
 
-However, reflection calls typically exhibit lower performance compared to direct calls. Therefore, the reflection mechanism is mainly applied to system frameworks that require high flexibility and extensibility.
+However, reflection calls typically exhibit lower performance compared to direct calls. Therefore, the reflection mechanism is mainly used in system frameworks that require high flexibility and extensibility.
 
 ## How to Obtain TypeInfo
 
-For Cangjie's reflection feature, it is essential to understand the `TypeInfo` type. This core type records type information for any given type and defines methods for retrieving type information, setting values, etc. For user convenience, Cangjie also provides a series of information types such as `ClassTypeInfo`, `PrimitiveTypeInfo`, and `ParameterInfo`.
+For Cangjie's reflection feature, it is essential to understand the `TypeInfo` type. This core type records type information for any type and defines methods for retrieving type information, setting values, etc. To facilitate user operations, Cangjie also provides a series of information types such as `ClassTypeInfo`, `PrimitiveTypeInfo`, `ParameterInfo`, etc.
 
-There are three static `of` methods available to generate `TypeInfo` information classes.
+Three static `of` methods can be used to generate `TypeInfo` information classes.
 
 ```cangjie
 public class TypeInfo {
@@ -28,7 +28,7 @@ public class TypeInfo {
 }
 ```
 
-When using the `of` function with parameters of type `Any` or `Object`, the output is the runtime type information of the instance. The `of` function with generic parameters returns the static type information of the passed parameter. Both methods produce identical information but do not guarantee the same object reference.
+When the `of` function with parameters of type `Any` or `Object` is used, the output is the runtime type information of the instance. The `of` function with generic parameters returns the static type information of the passed parameter. Both methods produce identical information but do not guarantee the same object reference.
 
 For example, reflection can be used to obtain type information for a custom type.
 
@@ -63,7 +63,7 @@ public class TypeInfo {
 }
 ```
 
-Note that the input parameter must conform to the fully qualified pattern rule of `module.package.type`. For compiler-preloaded types, including those in the `core` package and built-in compiler types (e.g., `primitive type`, `Option`, `Iterable`), the lookup string should directly use the type name without the package or module prefix. If the corresponding type instance cannot be found at runtime, an `InfoNotFoundException` will be thrown.
+Note that the input parameter must conform to the fully qualified pattern rule of `module.package.type`. For compiler-preloaded types, including those in the `core` package and built-in compiler types such as `primitive type`, `Option`, `Iterable`, etc., the lookup string should directly use the type name without package or module prefixes. If the corresponding type instance cannot be found at runtime, an `InfoNotFoundException` will be thrown.
 
 <!-- compile -->
 
@@ -78,7 +78,7 @@ let t4: TypeInfo = TypeInfo.get("net.http.ServerBuilder")
 
 ## How to Use Reflection to Access Members
 
-Once the corresponding type information class (`TypeInfo`) is obtained, its interfaces can be used to access instance members and static members of the class. Furthermore, the `ClassTypeInfo` subclass of `TypeInfo` provides interfaces to access public constructors, member variables, properties, and functions of the class. Cangjie's reflection is designed to only access `public` members of a type, meaning members marked as `private` or `protected` are invisible to reflection.
+After obtaining the corresponding type information class, i.e., `TypeInfo`, you can use its interfaces to access instance members and static members of the class. Furthermore, `ClassTypeInfo`, a subclass of `TypeInfo`, provides interfaces to access public constructors, member variables, properties, and functions of the class. Cangjie's reflection is designed to only access public members within a type, meaning members modified as `private` or `protected` are invisible in reflection.
 
 For example, to retrieve and modify an instance member variable of a class at runtime.
 

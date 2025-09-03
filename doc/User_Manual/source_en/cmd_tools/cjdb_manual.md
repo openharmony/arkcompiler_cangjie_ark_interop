@@ -1,26 +1,26 @@
 # Debugging Tool
 
-CJDB is a command-line debugging tool for Cangjie programs developed based on `lldb`. The current `cjdb` tool is adapted and evolved from the [llvm15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4) foundation, providing Cangjie developers with program debugging capabilities.
+CJDB is a command-line debugging tool for Cangjie programs, developed based on `lldb`. The current `cjdb` tool is adapted and evolved from the [llvm15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4) foundation, providing Cangjie developers with program debugging capabilities.
 
 ## Obtaining the `cjdb` Tool
 
 ### Acquisition Method
 
-Obtain it through the `Cangjie` `SDK` at the daily build path.
+Obtain it through the `Cangjie` `SDK`. The acquisition path is: Daily Build.
 
-The path of `cjdb` tool in the `SDK`: `cangjie\tools\bin`.
+The path of the `cjdb` tool in the `SDK`: `cangjie\tools\bin`.
 
 ### Usage Example
 
 The following demonstrates usage on the `Windows` platform:
 
-   Extract and directly run `cjdb.exe` in the tool's path `cangjie\tools\bin`.
+   Extract the package and directly run `cjdb.exe` in the tool's path `cangjie\tools\bin`.
 
 > **Note:**
 >
-> Explanation of `system` parameter values
+> Explanation of `system` parameter values:
 >
-> | system parameter value | Description                    |
+> | system Parameter Value | Description                    |
 > | ---------------------- | ----------------------------- |
 > | windows                | Tool for Windows platform     |
 > | linux                  | Tool for Linux platform       |
@@ -28,13 +28,13 @@ The following demonstrates usage on the `Windows` platform:
 >
 > **Attention**
 >
-> Ensure that the compiler used to build the ELF file or application being debugged matches the version of the toolchain from which the `cjdb` debugger was obtained.
+> Ensure that the compiler used to build the ELF file or application to be debugged is from the same version of the toolchain as the `cjdb` debugger tool.
 
 ## `cjdb` Commands
 
 > **Note:**
 >
-> For more commands, execute `help` in the command-line window:
+> To explore more commands, execute `help` in the command-line window:
 >
 > ```text
 > (cjdb) help
@@ -78,9 +78,9 @@ To facilitate issue localization, use the `log <subcommand> [<command-options>]`
 
 ### Platform
 
-`cjdb` commands for managing and creating platforms include `platform [connect|disconnect|info|list|status|select] ...`
+The `cjdb` commands for managing and creating platforms include `platform [connect|disconnect|info|list|status|select] ...`
 
-- View `platform` help information on `windows` platform.
+- View `platform` help information on the `windows` platform.
 
   ```text
   (cjdb) help platform
@@ -107,9 +107,9 @@ To facilitate issue localization, use the `log <subcommand> [<command-options>]`
 
 ### Functions
 
-#### Stepping into functions with debug information
+#### Stepping Over Functions with Debug Information
 
-Use `thread step-over <cmd-options> [<thread-id>]` (`thread step-over` can be abbreviated as `next` or `n`) to skip stepping into functions and directly execute the next line of code.
+Use `thread step-over <cmd-options> [<thread-id>]` (`thread step-over` can be abbreviated as `next` or `n`) to step over functions, executing the next line of code directly.
 
 ```text
 (cjdb) n
@@ -153,7 +153,7 @@ Process 5240 stopped
 (cjdb)
 ```
 
-#### Exiting the current function being debugged
+#### Exiting the Current Function
 
 Execute the `finish` command to exit the current function and return to the previous call stack function.
 
@@ -187,7 +187,7 @@ Return value: (int) $0 = 44
 
 ### Breakpoints
 
-#### Setting source code breakpoints
+#### Setting Source Code Breakpoints
 
 ```text
 breakpoint set --file test.cj --line line_number
@@ -197,7 +197,7 @@ breakpoint set --file test.cj --line line_number
 
 `--file` specifies the file.
 
-For single files, only the line number is needed. For multiple files, include the filename.
+For single files, only the line number is required. For multiple files, the filename must be included.
 
 `b test.cj:4` is shorthand for `breakpoint set --file test.cj --line 4`.
 
@@ -211,13 +211,13 @@ Breakpoint 2: where = test`default.main() + 13 at test.cj:4:3, address = 0x00000
 (cjdb)
 ```
 
-#### Setting function breakpoints
+#### Setting Function Breakpoints
 
 ```text
 breakpoint set --name function_name
 ```
 
-`--name` specifies the function name to set the breakpoint.
+`--name` specifies the function name for the breakpoint.
 
 `b test` is shorthand for `breakpoint set --name test`.
 
@@ -229,7 +229,7 @@ Breakpoint 3: where = test`default.test(int, int) + 19 at test.cj:12:10, address
 (cjdb)
 ```
 
-#### Setting conditional breakpoints
+#### Setting Conditional Breakpoints
 
 ```text
 breakpoint set --file xx.cj --line line_number --condition expression
@@ -259,7 +259,7 @@ Process 3128551 stopped
    6    }
 ```
 
-#### Continuing execution until the next breakpoint
+#### Continuing to the Next Breakpoint
 
 ```text
 (cjdb) c
@@ -301,9 +301,9 @@ Watchpoints can only be set on basic types. On `Windows`, when setting condition
 
 ### Expression Evaluation
 
-In `cjdb`, using `expression <cmd-options> -- <expr>` (abbreviated as `expr`) allows for expression evaluation.
+In `cjdb`, use `expression <cmd-options> -- <expr>` (`expression` can be abbreviated as `expr`) to evaluate expressions.
 
-- Viewing Literals
+- View literals
 
 Example: **expr 3**
 
@@ -313,7 +313,7 @@ Example: **expr 3**
 (cjdb)
 ```
 
-- Viewing Variable Names
+- View variable names
 
 Example: **expr a**
 
@@ -323,7 +323,7 @@ Example: **expr a**
 (cjdb)
 ```
 
-- Viewing Arithmetic Expressions
+- View arithmetic expressions
 
 Example: **expr a + b**
 
@@ -333,7 +333,7 @@ Example: **expr a + b**
 (cjdb)
 ```
 
-- Viewing Relational Expressions
+- View relational expressions
 
 Example: **expr a > b**
 
@@ -343,7 +343,7 @@ Example: **expr a > b**
 (cjdb)
 ```
 
-- Viewing Logical Expressions
+- View logical expressions
 
 Example: **expr a && b**
 
@@ -353,7 +353,7 @@ Example: **expr a && b**
 (cjdb)
 ```
 
-- Viewing Postfix Expressions
+- View postfix expressions
 
 Example: **expr a.b**
 
@@ -371,7 +371,7 @@ Example: **expr a[b]**
 (cjdb)
 ```
 
-- Viewing Generic Instantiation Variables
+- View generic instantiation variables
 
 Example: **expr a**
 
@@ -387,11 +387,11 @@ Supported expression evaluations include but are not limited to: literals, varia
 
 > **Note:**
 >
-> Unsupported expression evaluations include: function calls with named parameters, interop, extensions, attributes, aliases, interpolated strings, function names. The `Windows` platform does not support the Float16 type, and exception throwing is also unsupported.
+> Unsupported expression evaluations: function calls with named parameters, interoperation, extensions, properties, aliases, interpolated strings, function names. The `Windows` platform does not support the Float16 type and does not support exception throwing.
 
 ### Variable Inspection
 
-- Viewing Local Variables: `locals`
+- View local variables: `locals`
 
 ```text
 (cjdb) locals
@@ -410,9 +410,9 @@ Supported expression evaluations include but are not limited to: literals, varia
 (cjdb)
 ```
 
-When the debugger stops at a specific point in the program, using `locals` displays all local variables within the current function's lifecycle scope. Only correctly initialized variables at the current position can be viewed; uninitialized variables cannot be correctly displayed.
+When the debugger stops at a certain point in the program, `locals` displays all local variables within the scope of the current function's lifecycle. Only correctly initialized variables at the current position can be viewed; uninitialized variables cannot be viewed correctly.
 
-- Viewing a Single Variable: `print variable_name`
+- View a single variable: `print variable_name`
 
 Example: **print b**
 
@@ -422,9 +422,9 @@ Example: **print b**
 (cjdb)
 ```
 
-Use the `print` command (abbreviated as `p`), followed by the name of the specific variable to inspect.
+Use the `print` command (abbreviated `p`) followed by the name of the variable to inspect.
 
-- Viewing String Type Variables
+- View String type variables
 
 ```text
 (cjdb) print newR2.name
@@ -432,7 +432,7 @@ Use the `print` command (abbreviated as `p`), followed by the name of the specif
 (cjdb)
 ```
 
-- Viewing Struct and Class Type Variables
+- View struct and class type variables
 
 ```text
 (cjdb) print newR2
@@ -443,7 +443,7 @@ Use the `print` command (abbreviated as `p`), followed by the name of the specif
 (cjdb)
 ```
 
-- Viewing Arrays
+- View arrays
 
 ```text
 (cjdb) print array
@@ -463,9 +463,9 @@ Use the `print` command (abbreviated as `p`), followed by the name of the specif
 
 Supports viewing basic types (Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64, Float16, Float32, Float64, Bool, Unit, Rune).
 
-Supports range viewing. The interval `[start..end)` is left-closed and right-open. Reverse order is currently unsupported.
+Supports range viewing. The interval `[start..end)` is a left-closed, right-open interval. Reverse order is not currently supported.
 
-For illegal intervals or attempting to view ranges on non-array types, an error message will be displayed.
+For illegal intervals or non-array types, an error message will be displayed.
 
 ```text
 (cjdb) print array
@@ -479,7 +479,7 @@ error: unsupported expression
 error: unsupported expression
 ```
 
-- Viewing CString Type Variables
+- View CString type variables
 
 ```text
 (cjdb) p cstr
@@ -488,7 +488,7 @@ error: unsupported expression
 (cro.CString) $1 = null
 ```
 
-- Viewing Global Variables: `globals`
+- View global variables: `globals`
 
 ```text
 (cjdb) globals
@@ -505,7 +505,7 @@ When using the `print` command to view a single global variable, `print` + packa
 (cjdb)
 ```
 
-- Modifying Variables
+- Variable Modification
 
 ```text
 (cjdb) set a=30
@@ -532,63 +532,13 @@ If the modified value is non-numeric or exceeds the variable's range, an error m
 ```text
 (cjdb) p c
 (Rune) $0 = 'A'
-(cjdb) set c = 'B'
-error: unsupported expression
-(cjdb) p b
-(Bool) $1 = false
-(cjdb) set b = true
-error: unsupported expression
-(cjdb) p u8
-(UInt8) $3 = 123
-(cjdb) set u8 = 256
-error: unsupported expression
-(cjdb) set u8 = -1
-error: unsupported expression
-```
-
-### Cangjie Threads
-
-Supports viewing Cangjie thread `id` status and `frame` information. Thread switching is currently unsupported.
-
-#### Displaying Threads in the Current Target Process
-
-```text
-(cjdb) cjthread list
-cjthread id: 1, state: running name: cjthread1
-    frame #0: 0x000055555557c140 main`ab::main() at varray.cj:16:1
-cjthread id: 2, state: pending name: cjthread2
-    frame #0: 0x00007ffff7d8b9d5 libcangjie-runtime.so`CJ_CJThreadPark + 117
-(cjdb)
-```
-
-#### Stack Backtrace
-
-- Viewing the Call Stack of a Specified Cangjie Thread
-
-```text
-(cjdb) cjthread backtrace 1
-cjthread #1 state: pending name: cangjie
-  frame #0: 0x00007ffff7d8b9d5 libcangjie-runtime.so`CJ_CJThreadPark + 117
-  frame #1: 0x00007ffff7d97252 libcangjie-runtime.so`CJ_TimerSleep + 66
-  frame #2: 0x00007ffff7d51b5d libcangjie-runtime.so`CJ_MRT_FuncSleep + 33
-  frame #3: 0x0000555555591031 main`std/sync::sleep(std/time::Duration) + 45
-  frame #4: 0x0000555555560941 main`default::lambda.0() at complex.cj:9:3
-  frame #5: 0x000055555555f68b main`default::std/core::Future<Unit>::execute(this=<unavailable>) at future.cj:124:35
-  frame #6: 0x00007ffff7d514f1 libcangjie-runtime.so`___lldb_unnamed_symbol1219 + 7
-  frame #7: 0x00007ffff7d4dc52 libcangjie-runtime.so`___lldb_unnamed_symbol1192 + 114
-  frame #8: 0x00007ffff7d8b09a libcangjie-runtime.so`CJ_CJThreadEntry + 26
-(cjdb)
-```
-
-In the `cjthread backtrace 1` command, `1` is the specified `cjthread ID`.
-
-## Executable File Debugging
+(cjdb) set c## Executable File Debugging
 
 ### Launch Method
 
-There are two ways to load the target program using the launch method:
+There are two loading methods for the launch approach, as follows:
 
-1. Start the debugger while loading the target program.
+1. Load the debuggee program while starting the debugger.
 
     ```text
     ~/0901/cangjie_test$ cjdb test
@@ -597,7 +547,7 @@ There are two ways to load the target program using the launch method:
     (cjdb)
     ```
 
-2. Start the debugger first, then load the target program using the `file` command.
+2. Start the debugger first, then load the debuggee program using the `file` command.
 
     ```text
     ~/0901/cangjie_test$ cjdb
@@ -606,11 +556,11 @@ There are two ways to load the target program using the launch method:
     (cjdb)
     ```
 
-### Attach Mode
+### Attach Method
 
-Debugging the target program via attach mode
+Debugging the debuggee program using the attach method.
 
-For already running programs, cjdb supports attaching to debug the target process as follows:
+For programs already running, the attach method is supported for debugging the debuggee program, as shown below:
 
 ```text
 ~/0901/cangjie-linux-x86_64-release/bin$ cjdb
@@ -640,13 +590,13 @@ Architecture set to: x86_64-unknown-linux-gnu.
 
 ## Notes
 
-1. The program being debugged must be compiled in `debug` version, such as programs compiled with the following command:
+1. The program being debugged must be a compiled `debug` version, such as a program file compiled using the following command:
 
     ```shell
     cjc -g test.cj -o test
     ```
 
-2. When a developer defines a generic object and steps into its `init` function during debugging, the stack information will display two package names: one for the package where the generic object is instantiated, and another for the package where the generic is defined.
+2. When a developer defines a generic object and steps into its `init` function during debugging, the stack information will display the function name containing two package names: one for the package where the generic object is instantiated, and another for the package where the generic is defined.
 
     ```text
     * thread #1, name = 'main', stop reason = step in
@@ -659,7 +609,7 @@ Architecture set to: x86_64-unknown-linux-gnu.
        23       }
     ```
 
-3. For displaying `Enum` types, if the enum constructor has parameters, it will be displayed as follows:
+3. For `Enum` type display, if the constructor of the `Enum` has parameters, it will be displayed as follows:
 
     <!-- only-cjdb -->
     
@@ -681,11 +631,11 @@ Architecture set to: x86_64-unknown-linux-gnu.
     }
     ```
 
-    Note that `arg_x` is not an actual printable member variable - there are no member variables named `arg_x` within the Enum.
+    Here, `arg_x` is not a printable member variable; the `Enum` does not actually contain member variables named `arg_x`.
 
-4. The Cangjie `cjdb` is built upon `lldb`, thus supporting all native basic functionalities of lldb. For details, refer to [lldb official documentation](https://lldb.llvm.org).
+4. The Cangjie `cjdb` is built on `lldb`, so it supports the native basic functionalities of `lldb`. For details, refer to the [lldb official documentation](https://lldb.llvm.org).
 
-5. If developers run cjdb on system environments newer than the supported version, compatibility issues and risks may occur, such as in C language interoperability scenarios where cjdb cannot properly resolve C code file and line number information.
+5. If developers run the program on a system environment higher than the specified version, compatibility issues and risks may arise, such as in C language interoperability scenarios where cjdb cannot properly resolve file and line number information for C code.
 
     ```cffi.c
     int32_t cfoo()
@@ -703,11 +653,11 @@ Architecture set to: x86_64-unknown-linux-gnu.
     ```
 
     ```shell
-    // step 1: Compile C file using system's native clang version to generate dylib
+    // step 1: Use the system's built-in clang version to compile the C file and generate a dylib.
     clang -g -shared cffi.c -o libcffi.dylib
-    // step 2: Compile CJ file using cjc version and link with C dynamic library
+    // step 2: Use the cjc version to compile the CJ file and link the C language dynamic library.
     cjc -g test.cj -L. -lcffi -o test
-    // step 3: Debug test file using cjdb (C code debugging fails due to debug info incompatibility)
+    // step 3: Use cjdb to debug the test file. Due to incompatible debugging information, C code cannot be debugged.
     cjdb test
     ```
 
@@ -729,7 +679,7 @@ Architecture set to: x86_64-unknown-linux-gnu.
 
 ## FAQ
 
-1. cjdb reports `error: process launch failed: 'A' packet returned an error: 8` in `docker` environment.
+1. `docker` environment reports `error: process launch failed: 'A' packet returned an error: 8` when using cjdb.
 
     ```text
     root@xxx:/home/cj/cangjie-example#cjdb ./hello
@@ -742,9 +692,9 @@ Architecture set to: x86_64-unknown-linux-gnu.
     (cjdb)
     ```
 
-    Root cause: The container was created without SYS_PTRACE capability enabled.
+    Cause: The `docker` container was created without enabling the SYS_PTRACE capability.
 
-    Solution: Create a new container with the following options and remove existing containers:
+    Solution: Add the following options when creating a new container and delete any existing containers.
 
     ```shell
     docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --security-opt apparmor=unconfined
@@ -758,9 +708,9 @@ Architecture set to: x86_64-unknown-linux-gnu.
         frame #0: 0x00007ffff450bfb7 lib.so.6`__GI_raise(sig=2) at raise.c:51
     ```
 
-    Root cause: The program continuously generates `SIGABRT` signals triggering debugger pauses.
+    Cause: The program continuously generates `SIGABRT` signals, triggering the debugger to pause.
 
-    Solution: Execute the following command to ignore such signals:
+    Solution: Execute the following command to ignore such signals.
 
     ```text
     (cjdb) process handle --pass true --stop false --notify true SIGBUS
@@ -770,11 +720,11 @@ Architecture set to: x86_64-unknown-linux-gnu.
     (cjdb)
     ```
 
-3. cjdb fails to catch `SIGSEGV` signals.
+3. cjdb does not capture `SIGSEGV` signals.
 
-    Root cause: cjdb is configured by default not to catch `SIGSEGV` signals during startup.
+    Cause: cjdb is configured by default not to capture `SIGSEGV` signals upon startup.
 
-    Solution: Developers needing to catch this signal during debugging can reconfigure using:
+    Solution: Developers who need to capture this signal during debugging can reset it using the following command.
 
     ```text
     (cjdb)process handle -p true -s true -n true SIGSEGV
@@ -784,11 +734,11 @@ Architecture set to: x86_64-unknown-linux-gnu.
     (cjdb)
     ```
 
-4. cjdb cannot step into `catch` blocks using `next/s` debugging commands.
+4. cjdb cannot enter `catch` blocks using `next/s` debugging commands.
 
-    Root cause: Cangjie uses `LandingPad` mechanism for exception handling, which cannot deterministically identify which `catch` block will handle exceptions thrown from `try` blocks through control flow, making execution path unclear. Similar issues exist in `clang++`.
+    Cause: Cangjie uses the `LandingPad` mechanism for exception handling, which cannot explicitly determine which `catch` block will handle exceptions thrown in a `try` block via control flow, making it impossible to determine the executed code. A similar issue exists in `clang++`.
 
-    Solution: Developers needing to debug `catch` block code should set breakpoints within the catch block.
+    Solution: Developers who need to debug code in `catch` blocks can set breakpoints within them.
 
     ```text
     (cjdb) b 31
@@ -807,17 +757,17 @@ Architecture set to: x86_64-unknown-linux-gnu.
     (cjdb)
     ```
 
-5. Expression evaluation fails on `macOS` with error `Expression can't be run, because there is no JIT compiled function`.
+5. Expression evaluation on `macOS` platform reports `Expression can't be run, because there is no JIT compiled function`.
 
-    Root cause: Expression evaluation is currently unsupported on `macOS` platform.
+    Cause: Expression evaluation is currently not supported on the `macOS` platform.
 
-6. On `macOS` platform with `aarch64` architecture, some environments report `Connection shut down by remote side while waiting for reply to initial handshake packet` during expression evaluation.
+6. Expression evaluation on `macOS` platform for `aarch64` architecture reports `Connection shut down by remote side while waiting for reply to initial handshake packet` in some environments.
 
-    Root cause: Certain system configurations cause debug service abnormal termination.
+    Cause: Some systems may cause the debugging service to exit abnormally.
 
-    Solution: Delete `third_party/llvm/bin/debugserver` file and restart debugging.
+    Solution: Delete the `third_party/llvm/bin/debugserver` file and restart debugging.
 
-7. When setting breakpoints involving generic type parameters, the generic parameter names appear as T0, T1, ... Tn. Example:
+7. When setting breakpoints during debugging, if the breakpoint involves generic type parameters, the parameter names will be displayed as T0, T1, ... Tn. Example:
 
     <!-- only-cjdb -->
 
@@ -844,6 +794,6 @@ Architecture set to: x86_64-unknown-linux-gnu.
     Breakpoint 2: where = main`default::Pair<T0,T1>::init(T0, T1) + 150 at test.cj:6:9, address = 0x000000000001982a
     ```
 
-   Root cause: Cangjie maintains ABI compatibility for generic parameters - when developer-side generic parameter names change, the binary symbol table names remain unchanged.
+   Cause: Cangjie ensures ABI compatibility for generic type parameters, meaning that the binary symbol table retains consistent symbol names even if the developer-side generic parameter names change.
 
-   Solution: Modify developer-written generic parameter names to T0, T1, ... Tn.
+   Solution: Modify the generic parameter names written by developers to T0, T1, ... Tn.

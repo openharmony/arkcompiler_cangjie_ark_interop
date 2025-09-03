@@ -8,15 +8,15 @@ This chapter introduces three approaches to manipulate Cangjie objects in ArkTS:
 
 ## Custom Functions
 
-This example demonstrates sharing Cangjie objects to the ArkTS runtime, using ArkTS runtime's memory management mechanism to control their lifecycle and accessing them through interoperability interfaces:
+This example demonstrates sharing Cangjie objects to the ArkTS runtime, using ArkTS runtime's memory management mechanism to control their lifecycle, and accessing them through interoperability interfaces:
 
 1. Define Cangjie functions:
 
     ```cangjie
-    // Import interoperability library
+    // Import interoperability libraries
     import ohos.ark_interop.*
     import ohos.ark_interop_macro.*
-    // Define shared class, SharedObject is from the interoperability library
+    // Define shared class (SharedObject is from the interoperability library)
     class Data <: SharedObject {
         Data(
             // Define two properties
@@ -43,15 +43,15 @@ This example demonstrates sharing Cangjie objects to the ArkTS runtime, using Ar
 
         // Set object's id
         static func setDataId(context: JSContext, callInfo: JSCallInfo): JSValue {
-            // Read arguments
+            // Read parameters
             let arg0 = callInfo[0]
             let arg1 = callInfo[1]
 
-            // Convert argument 0 to JS reference of Cangjie object
+            // Convert parameter 0 to JS reference of Cangjie object
             let jsExternal = arg0.asExternal(context)
             // Get Cangjie object
             let data: Data = jsExternal.cast<Data>().getOrThrow()
-            // Convert argument 1 to Float64
+            // Convert parameter 1 to Float64
             let value = arg1.toNumber()
 
             // Modify Cangjie object property
@@ -85,10 +85,10 @@ This example demonstrates sharing Cangjie objects to the ArkTS runtime, using Ar
     export declare function getDataId(data: undefined): number;
     ```
 
-3. ArkTS calls Cangjie functions:
+3. Call Cangjie functions from ArkTS:
 
     ```typescript
-    // Import Cangjie dynamic library, whose name should match the package name containing the interoperability interfaces
+    // Import Cangjie dynamic library (name must match package name containing interoperability interfaces)
     import cjLib from "libohos_app_cangjie_entry.so";
 
     // Create shared object
@@ -100,28 +100,28 @@ This example demonstrates sharing Cangjie objects to the ArkTS runtime, using Ar
     console.log("id is " + id);
     ```
 
-JSExternal objects are recognized as `undefined` type in ArkTS. Directly using `undefined` as parameters may lead to runtime errors when incorrect arguments are passed:
+JSExternal objects are recognized as `undefined` in ArkTS. Directly using `undefined` as parameters may lead to runtime errors with incorrect arguments:
 
 ```typescript
 // ...
 // Create shared object
 let data = cjLib.createData();
 // Manipulate object properties
-cjLib.setDataId(undefined, 3); // Wrong argument - should pass Cangjie reference, but compiler won't catch this
+cjLib.setDataId(undefined, 3); // Wrong parameter (should be Cangjie reference), but compiles successfully
 let id = cjLib.getDataId(data);
 // ...
 ```
 
 ## JSExternal
 
-In actual development, you can bind JSExternal objects to JSObject objects to hide JSExternal data and improve interface security.
+In actual development, you can bind JSExternal objects to JSObject to hide JSExternal data and improve interface security.
 
 Example implementation:
 
 ### Define Cangjie functions
 
 ```cangjie
-// Import interoperability library
+// Import interoperability libraries
 import ohos.ark_interop.*
 import ohos.ark_interop_macro.*
 // Define shared class
@@ -133,7 +133,7 @@ class Data <: SharedObject {
     ) {}
 
     static init() {
-        // Register functions to be exported to Ark
+        // Register function to be exported to Ark
         JSModule.registerFunc("createData", createData)
     }
 
@@ -166,7 +166,7 @@ class Data <: SharedObject {
         let jsExternal = thisObject.getAttachInfo().getOrThrow()
         // Get Cangjie object from JS reference
         let data = jsExternal.cast<Data>().getOrThrow()
-        // Convert argument 0 to Float64
+        // Convert parameter 0 to Float64
         let value = arg0.toNumber()
 
         // Modify Cangjie object property
@@ -191,7 +191,7 @@ class Data <: SharedObject {
 
 ### Provide interface declarations
 
-In Index.d.ts file, provide interoperability interface declarations:
+In Index.d.ts file:
 
 ```typescript
 // Index.d.ts corresponding to libohos_app_cangjie_entry.so
@@ -203,10 +203,10 @@ interface Data {
 export declare function createData(): Data;
 ```
 
-### ArkTS calls Cangjie functions
+### Call Cangjie functions from ArkTS
 
 ```typescript
-// Import Cangjie dynamic library, whose name should match the package name containing the interoperability interfaces
+// Import Cangjie dynamic library (name must match package name containing interoperability interfaces)
 import cjLib from "libohos_app_cangjie_entry.so";
 
 // Create shared object
@@ -220,12 +220,12 @@ console.log("id is " + id);
 
 ## JSClass
 
-Attaching all object operation methods directly to objects consumes more memory and increases object creation overhead. For performance-critical scenarios, define a JSClass to accelerate object creation and reduce memory footprint:
+Attaching all object manipulation methods directly to objects consumes more memory and increases object creation overhead. For performance-critical scenarios, define a JSClass to accelerate object creation and reduce memory footprint:
 
 1. Define Cangjie functions:
 
     ```cangjie
-    // Import interoperability library
+    // Import interoperability libraries
     import ohos.ark_interop.*
     import ohos.ark_interop_macro.*
     // Define shared class
@@ -276,7 +276,7 @@ Attaching all object operation methods directly to objects consumes more memory 
             let data = jsExternal.cast<Data>().getOrThrow()
 
             let arg0 = callInfo[0]
-            // Convert argument 0 to Float64
+            // Convert parameter 0 to Float64
             let value = arg0.toNumber()
 
             // Modify Cangjie object property
@@ -299,7 +299,7 @@ Attaching all object operation methods directly to objects consumes more memory 
     }
     ```
 
-2. Provide interface declarations for interoperability in the Index.d.ts file:
+2. Provide interface declarations in Index.d.ts:
 
     ```typescript
     // Index.d.ts corresponding to libohos_app_cangjie_entry.so
@@ -310,13 +310,13 @@ Attaching all object operation methods directly to objects consumes more memory 
     }
     ```
 
-3. ArkTS calls Cangjie functions:
+3. Call Cangjie functions from ArkTS:
 
     ```typescript
-    // Import the Cangjie dynamic library, whose name should match the package name where the interoperability interfaces reside
+    // Import Cangjie dynamic library (name must match package name containing interoperability interfaces)
     import cjLib from "libohos_app_cangjie_entry.so";
 
-    // Create a shared object
+    // Create shared object
     let data = new cjLib.Data();
     // Manipulate object properties
     data.setId(3);

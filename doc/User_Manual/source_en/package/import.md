@@ -2,7 +2,7 @@
 
 ## Using `import` Statements to Import Declarations or Definitions from Other Packages
 
-In the Cangjie programming language, you can import a top-level declaration or definition from another package using the syntax `import fullPackageName.itemName`, where `fullPackageName` is the complete package path and `itemName` is the name of the declaration. Import statements must appear after the package declaration and before any other declarations or definitions in the source file. For example:
+In the Cangjie programming language, you can import a top-level declaration or definition from another package using the syntax `import fullPackageName.itemName`, where `fullPackageName` is the complete package path and `itemName` is the name of the declaration. The import statement must appear after the package declaration and before any other declarations or definitions in the source file. For example:
 
 ```cangjie
 package a
@@ -35,10 +35,10 @@ import {package1.*, package2.*}
 Important notes:
 
 - The scope level of imported members is lower than that of members declared in the current package.
-- If the module name or package name of an exported package is altered, making it inconsistent with the name specified during export, an error will occur during import.
+- If the module name or package name of an exported package is tampered with, making it inconsistent with the name specified during export, an error will occur during import.
 - Only top-level declarations or definitions visible to the current file can be imported. Attempting to import invisible declarations or definitions will result in an error at the import location.
 - It is prohibited to import declarations or definitions from the package where the current source file resides using `import`.
-- Circular dependency imports between packages are forbidden. If circular dependencies exist between packages, the compiler will report an error.
+- Circular dependency imports between packages are prohibited. If circular dependencies exist between packages, the compiler will report an error.
 
 Example:
 
@@ -109,15 +109,15 @@ func bar() {
 
 ## Implicit Import of the `core` Package
 
-Types such as `String` and `Range` can be used directly not because they are built-in types, but because the compiler automatically and implicitly imports all `public` declarations from the `core` package for the source code.
+Types such as `String` and `Range` can be used directly not because they are built-in types, but because the compiler implicitly imports all `public` declarations from the `core` package for the source code.
 
-## Using `import as` to Rename Imported Names
+## Renaming Imported Names Using `import as`
 
-Different packages have separate namespaces, so top-level declarations with the same name may exist across different packages. When importing top-level declarations with the same name from different packages, you can use `import packageName.name as newName` to rename them and avoid conflicts. Even without name conflicts, you can still use `import as` to rename imported content. The rules for `import as` are as follows:
+Different packages have separate namespaces, so top-level declarations with the same name may exist in different packages. When importing top-level declarations with the same name from different packages, you can use `import packageName.name as newName` to rename them and avoid conflicts. Even without naming conflicts, you can still use `import as` to rename imported content. The rules for `import as` are as follows:
 
-- After renaming an imported declaration using `import as`, only the new name can be used in the current package; the original name becomes unavailable.
-- If the renamed name conflicts with other names in the top-level scope of the current package and all corresponding declarations are function types, they participate in function overloading; otherwise, a redefinition error will occur.
-- The syntax `import pkg as newPkgName` is supported to rename package names, resolving naming conflicts between packages with the same name in different modules.
+- After renaming an imported declaration using `import as`, the current package can only use the new name; the original name becomes unavailable.
+- If the renamed name conflicts with other names in the top-level scope of the current package and the corresponding declarations are all function types, they participate in function overloading; otherwise, a redefinition error is reported.
+- The syntax `import pkg as newPkgName` is supported to rename package names, resolving naming conflicts for packages with the same name in different modules.
     <!-- compile.error -import3-->
     <!-- cfg="-p p1 --output-type=staticlib" -->
 
@@ -177,7 +177,7 @@ Different packages have separate namespaces, so top-level declarations with the 
     }
     ```
 
-- If conflicting imported names are not renamed, no error is reported at the `import` statement. However, an error will occur at the usage site due to the inability to import a unique name. This situation can be resolved by using `import as` to define an alias or `import fullPackageName` to import the package as a namespace.
+- If conflicting imported names are not renamed, no error is reported at the `import` statement. However, an error will occur at the usage site due to the inability to import a unique name. This situation can be resolved by defining an alias with `import as` or importing the package as a namespace using `import fullPackageName`.
 
     <!-- compile -import1 -->
     <!-- cfg="-p p1 --output-type=staticlib" -->
@@ -239,16 +239,16 @@ Different packages have separate namespaces, so top-level declarations with the 
 
 ## Re-exporting an Imported Name
 
-In the development of large-scale projects with extensive functionality, the following scenario is very common: package `p2` heavily uses declarations imported from package `p1`. When package `p3` imports package `p2` and uses its functionality, the declarations from `p1` also need to be visible to `p3`. If package `p3` is required to manually import all `p1` declarations used by `p2`, the process would be overly cumbersome. Therefore, it is desirable to import the `p1` declarations used by `p2` when `p2` is imported.
+In the development of large-scale projects with extensive functionality, the following scenario is very common: package `p2` heavily uses declarations imported from package `p1`. When package `p3` imports `p2` and uses its functionality, the declarations from `p1` also need to be visible to `p3`. Requiring `p3` to manually import the declarations from `p1` used in `p2` would be overly cumbersome. Therefore, it is desirable to import the declarations from `p1` used in `p2` when `p2` is imported.
 
-In the Cangjie programming language, `import` can be modified by the access modifiers `private`, `internal`, `protected`, and `public`. Among these, `import` statements modified by `public`, `protected`, or `internal` can re-export the imported members (provided these imported members are not made unavailable in the current package due to name conflicts or shadowing). Other packages can directly import and use the re-exported content from this package based on visibility, without needing to import these contents from the original package.
+In the Cangjie programming language, `import` can be modified by the access modifiers `private`, `internal`, `protected`, and `public`. Among these, `import` statements modified by `public`, `protected`, or `internal` can re-export the imported members (provided these imported members are not rendered unavailable in the current package due to name conflicts or shadowing). Other packages can directly import and use the re-exported content from this package based on visibility, without needing to import these contents from the original package.
 
-- `private import` indicates that the imported content is only accessible within the current file. `private` is the default modifier for `import`; an `import` without an access modifier is equivalent to `private import`.
-- `internal import` indicates that the imported content is accessible within the current package and its sub-packages (including sub-packages of sub-packages). Access from outside the current package requires explicit `import`.
-- `protected import` indicates that the imported content is accessible within the current module. Access from outside the current package requires explicit `import`.
-- `public import` indicates that the imported content is accessible externally. Access from outside the current package requires explicit `import`.
+- `private import` means the imported content is only accessible within the current file. `private` is the default modifier for `import`. An `import` without an access modifier is equivalent to `private import`.
+- `internal import` means the imported content is accessible within the current package and its subpackages (including subpackages of subpackages). Access from non-current packages requires explicit `import`.
+- `protected import` means the imported content is accessible within the current module. Access from non-current packages requires explicit `import`.
+- `public import` means the imported content is accessible externally. Access from non-current packages requires explicit `import`.
 
-In the following example, `b` is a sub-package of `a`. In `a`, the function `f` defined in `b` is re-exported using `public import`.
+In the following example, `b` is a subpackage of `a`. In `a`, the function `f` defined in `b` is re-exported using `public import`.
 
 <!-- compile -reimport1 -->
 <!-- cfg="-p a/b --output-type=staticlib" -->
@@ -277,7 +277,7 @@ import a.f  // OK
 let _ = f() // OK
 ```
 
-Note that packages cannot be re-exported: if the `import` statement imports a package, it cannot be modified by `public`, `protected`, or `internal`.
+Note that packages cannot be re-exported: if the `import` imports a package, the `import` cannot be modified by `public`, `protected`, or `internal`.
 
 <!-- compile.error -->
 

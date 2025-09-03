@@ -2,7 +2,7 @@
 
 ## Fast Exponentiation Calculation
 
-Demonstrates the use of macros for compile-time evaluation to generate optimized code through a simple example. When calculating the power `n ^ e`, if `e` is a (relatively large) integer, the computation can be accelerated by repeatedly squaring (instead of iterative multiplication). This algorithm can be directly implemented using a while loop, for example:
+Demonstrates the use of macros for compile-time evaluation and optimized code generation through a simple example. When calculating the power `n ^ e`, if `e` is a (relatively large) integer, the computation can be accelerated by repeated squaring (rather than iterative multiplication). This algorithm can be directly implemented using a while loop, for example:
 
 <!-- run -->
 
@@ -24,7 +24,7 @@ func power(n: Int64, e: Int64) {
 }
 ```
 
-However, this implementation requires analyzing the value of `e` each time, with multiple checks and updates to `ve` within loops and conditional statements. Additionally, the implementation only supports cases where `n` is of type `Int64`. To support other types of `n`, the issue of expressing `result = 1` must also be addressed. If the specific value of `e` is known in advance, the code can be written more simply. For example, if `e` is known to be 10, the entire loop can be unrolled as follows:
+However, this implementation requires analyzing the value of `e` each time, with multiple checks and updates to `ve` within the loop and conditional statements. Additionally, the implementation only supports cases where `n` is of type `Int64`. To support other types for `n`, the issue of expressing `result = 1` must also be addressed. If the specific value of `e` is known in advance, the code can be simplified. For instance, if `e` is known to be 10, the entire loop can be unrolled as follows:
 
 <!-- run -->
 
@@ -40,7 +40,7 @@ func power_10(n: Int64) {
 }
 ```
 
-Of course, manually writing this code is very tedious. The goal is to automatically generate this code given the value of `e`. Macros can achieve this. The usage example is as follows:
+Of course, manually writing such code is tedious. The goal is to automatically generate this code given the value of `e`. Macros can achieve this. Usage example:
 
 ```cangjie
 public func power_10(n: Int64) {
@@ -118,10 +118,10 @@ public macro power(attrib: Tokens, input: Tokens) {
 
 Explanation of this code:
 
-- First, confirm that the input attribute `attrib` is an integer literal; otherwise, report an error via `diagReport`. Parse this literal into an integer `n`.
-- Let `result` be the currently accumulated output code, starting with the declaration of `var _power_vn`. To avoid variable name conflicts, a non-conflicting name `_power_vn` is used.
-- Enter the while loop, where the boolean variable `flag` indicates whether `var _power_result` has been initialized. The rest of the code structure is similar to the implementation of the `power` function shown earlier, but the difference is that the while loop and if conditions are used at compile time to determine what code to generate, rather than making these judgments at runtime. Then, generate code consisting of appropriate combinations of `_power_result *= _power_vn` and `_power_vn *= _power_vn`.
-- Finally, add the code to return `_power_result` and return this code as the macro's output value.
+- First, verify that the input attribute `attrib` is an integer literal; otherwise, report an error via `diagReport`. Parse this literal into an integer `n`.
+- Let `result` be the accumulated output code, starting with the declaration of `var _power_vn`. To avoid variable name conflicts, use a non-conflicting name `_power_vn`.
+- Enter a while loop, where the boolean variable `flag` indicates whether `var _power_result` has been initialized. The remaining code structure is similar to the implementation of the `power` function shown earlier, but the difference is that while loops and if conditions are used at compile time to determine the generated code, rather than making these decisions at runtime. Then generate code composed of appropriate combinations of `_power_result *= _power_vn` and `_power_vn *= _power_vn`.
+- Finally, add the code to return `_power_result` and return this code as the macro's output.
 
 Place this code in the `macros/power.cj` file and add the following test in `main.cj`:
 
@@ -141,7 +141,7 @@ main() {
 }
 ```
 
-The output is:
+Output result:
 
 <!-- verify -macro13 -->
 
@@ -151,9 +151,9 @@ The output is:
 
 ## Memoize Macro
 
-Memoization is a common technique in dynamic programming algorithms. It stores the results of already computed subproblems so that when the same subproblem appears again, the result can be directly retrieved from the table, avoiding redundant computations and improving algorithm efficiency.
+Memoization is a common technique in dynamic programming algorithms. It stores the results of previously computed subproblems so that when the same subproblem arises again, the result can be directly retrieved from the table, avoiding redundant computations and improving algorithm efficiency.
 
-Typically, using memoization requires developers to manually implement storage and retrieval functionality. With macros, this process can be automated. The effect of the macro is as follows:
+Typically, memoization requires developers to manually implement storage and retrieval functionality. Macros can automate this process. The effect of the macro is as follows:
 
 ```cangjie
 @Memoize[true]
@@ -173,23 +173,23 @@ main() {
 }
 ```
 
-In the above code, the `fib` function is implemented using simple recursion. Without the `@Memoize[true]` annotation, the runtime of this function would grow exponentially with `n`. For example, if the `@Memoize[true]` line is removed from the above code or `true` is changed to `false`, the result of the `main` function would be:
+In the above code, the `fib` function is implemented using simple recursion. Without the `@Memoize[true]` annotation, the runtime of this function would grow exponentially with `n`. For example, if the `@Memoize[true]` line is removed or `true` is changed to `false` in the above code, the output of the `main` function would be:
 
 ```text
 fib(35): 9227465
 execution time: 199500 us
 ```
 
-Restoring `@Memoize[true]`, the result is:
+Restoring `@Memoize[true]`, the output becomes:
 
 ```text
 fib(35): 9227465
 execution time: 78 us
 ```
 
-The same answer and significantly reduced computation time demonstrate that the use of `@Memoize` indeed implements memoization.
+The same result with significantly reduced computation time demonstrates that `@Memoize` indeed implements memoization.
 
-To understand the principle of `@Memoize`, the macro-expanded result of the above `fib` function is shown (from the `.macrocall` file, but formatted for better readability).
+To understand the principle of `@Memoize`, the macro-expanded result for the `fib` function is shown below (from the `.macrocall` file, formatted for readability).
 
 <!-- run -->
 
@@ -217,11 +217,11 @@ func fib(n: Int64): Int64 {
 
 The execution flow of the above code is as follows:
 
-- First, define `memoizeFibMap` as a hash table from `Int64` to `Int64`, where the first `Int64` corresponds to the type of the sole parameter of `fib`, and the second `Int64` corresponds to the return type of `fib`.
-- Next, in the function body, check if the input parameter is in `memoizeFibMap`; if so, immediately return the stored value. Otherwise, use the original function body of `fib` to compute the result. Here, an (parameterless) anonymous function is used so that the function body of `fib` does not need any changes and can handle any way of exiting the `fib` function (including intermediate returns, returning the last expression, etc.).
-- Finally, store the computation result in `memoizeFibMap` and then return the result.
+- First, define `memoizeFibMap` as a hash table from `Int64` to `Int64`, where the first `Int64` corresponds to the type of `fib`'s single parameter, and the second `Int64` corresponds to `fib`'s return type.
+- Next, in the function body, check if the input parameter exists in `memoizeFibMap`. If it does, immediately return the stored value. Otherwise, use the original function body of `fib` to compute the result. Here, a parameterless anonymous function is used to ensure the function body remains unchanged and can handle any exit from the `fib` function (including intermediate returns, returning the last expression, etc.).
+- Finally, store the computed result in `memoizeFibMap` and return the result.
 
-With such a "template," the implementation of the macro becomes straightforward. The complete code is as follows.
+With this "template" in place, the implementation of the macro becomes straightforward. The complete code is as follows.
 
 <!-- compile -->
 <!-- cfg="--compile-macro" -->
@@ -269,11 +269,11 @@ public macro Memoize(attrib: Tokens, input: Tokens) {
 }
 ```
 
-First, perform validity checks on the attributes and input. The attribute must be a boolean literal; if it is `false`, return the input directly. Otherwise, check that the input must be parsable as a function declaration (`FuncDecl`) and must contain exactly one parameter. Then, generate the variable for the hash table, using a variable name that is unlikely to cause conflicts. Finally, use the `quote` template to generate the returned code, which includes the hash table variable name, the name and type of the sole parameter, and the return type of the input function.
+First, perform validity checks on the attribute and input. The attribute must be a boolean literal; if `false`, return the input directly. Otherwise, verify that the input can be parsed as a function declaration (`FuncDecl`) and must contain exactly one parameter. Then, generate the hash table variable using a non-conflicting name. Finally, use the `quote` template to generate the returned code, incorporating the hash table variable name, the single parameter's name and type, and the input function's return type.
 
-## An Extension of the dprint Macro
+## An Extended dprint Macro
 
-This section initially used a macro for printing expressions as an example, but this macro could only accept one expression at a time. The goal is to extend this macro to accept multiple expressions separated by commas. Below demonstrates how to use `parseExprFragment` to achieve this functionality.
+This section begins with a macro example for printing expressions, but that macro could only accept one expression at a time. The goal is to extend this macro to accept multiple expressions separated by commas. Below demonstrates how to use `parseExprFragment` to achieve this functionality.
 
 The macro implementation is as follows:
 
@@ -312,7 +312,7 @@ public macro dprint2(input: Tokens) {
 }
 ```
 
-Usage Example:
+Usage example:
 
 <!-- verify -macro15 -->
 <!-- cfg="--debug-macro" -->
@@ -327,7 +327,7 @@ main() {
 }
 ```
 
-Output:
+Output result:
 
 <!-- verify -macro15 -->
 
@@ -337,11 +337,11 @@ y = 2
 x + y = 5
 ```
 
-In the macro implementation, a while loop is used to parse each expression sequentially starting from index 0. The variable `index` stores the current parsing position. Each call to `parseExprFragment` starts from the current position and returns the parsed position (along with the parsed expression). If the parsed position reaches the end of input, the loop exits. Otherwise, it checks whether the reached position contains a comma - if not, it reports an error and exits; if it is a comma, it skips the comma and starts the next parsing cycle. After obtaining the expression list, each expression is output sequentially.
+In the macro implementation, a while loop is used to parse each expression sequentially starting from index 0. The variable `index` tracks the current parsing position. Each call to `parseExprFragment` starts from the current position and returns the parsed position (and the parsed expression). If the parsed position reaches the end of the input, the loop exits. Otherwise, check if the reached position is a comma; if not, report an error and exit. If it is a comma, skip it and proceed to the next parsing round. After obtaining the list of expressions, each expression is output sequentially.
 
 ## A Simple DSL
 
-This case demonstrates how to use macros to implement a simple DSL (Domain Specific Language). LINQ (Language Integrated Query) is a component of Microsoft's .NET framework that provides a unified data query syntax, allowing developers to use SQL-like query statements to manipulate various data sources. Here, we only demonstrate support for the most basic LINQ syntax.
+This example demonstrates how to use macros to implement a simple DSL (Domain-Specific Language). LINQ (Language Integrated Query) is a component of Microsoft's .NET framework that provides a unified data query syntax, allowing developers to use SQL-like query statements to manipulate various data sources. Here, only the simplest LINQ syntax support is demonstrated.
 
 The desired syntax is:
 
@@ -349,9 +349,9 @@ The desired syntax is:
 from <variable> in <list> where <condition> select <expression>
 ```
 
-Where `variable` is an identifier, and `list`, `condition`, and `expression` are all expressions. Therefore, the macro implementation strategy involves sequentially extracting the identifier and expressions while verifying that intermediate keywords are correct. Finally, it generates the query result composed of the extracted parts.
+Here, `variable` is an identifier, and `list`, `condition`, and `expression` are all expressions. The strategy for implementing the macro is to sequentially extract the identifier and expressions while verifying that the intermediate keywords are correct. Finally, generate the query result composed of the extracted parts.
 
-The macro implementation:
+The macro implementation is as follows:
 
 <!-- verify -macro16 -->
 <!-- cfg="--compile-macro" -->
@@ -382,13 +382,13 @@ public macro linq(input: Tokens) {
         diagReport(DiagReportLevel.ERROR, input[nextIndex..nextIndex+1], syntaxMsg,
                    "Expected keyword \"where\" here.")
     }
-    index = nextIndex + 1  // Skip 'where'
+    index = nextIndex + 1  // Skip where
     let (cond, nextIndex2) = parseExprFragment(input, startFrom: index)
     if (nextIndex2 == input.size || input[nextIndex2].value != "select") {
         diagReport(DiagReportLevel.ERROR, input[nextIndex2..nextIndex2+1], syntaxMsg,
                    "Expected keyword \"select\" here.")
     }
-    index = nextIndex2 + 1  // Skip 'select'
+    index = nextIndex2 + 1  // Skip select
     let (expr, nextIndex3) = parseExprFragment(input, startFrom: index)
 
     return quote(
@@ -399,8 +399,7 @@ public macro linq(input: Tokens) {
         }
     )
 }
-```
-
+``````
 Usage Example:
 
 <!-- verify -macro16 -->
@@ -414,7 +413,7 @@ main() {
 }
 ```
 
-This example filters odd numbers from the list 1, 2, ... 10 and returns the squares of all odd numbers. Output:
+This example filters odd numbers from the list 1, 2, ... 10, then returns the squares of all odd numbers. The output is:
 
 <!-- verify -macro16 -->
 
@@ -426,4 +425,4 @@ This example filters odd numbers from the list 1, 2, ... 10 and returns the squa
 81
 ```
 
-As seen, a significant portion of the macro implementation is dedicated to parsing and validating input Tokens, which is crucial for macro usability. Actual LINQ languages (and most DSLs) have more complex syntax requiring a complete parsing mechanism that identifies different keywords or connectors to determine subsequent parsing content.
+As we can see, a significant portion of the macro implementation is dedicated to parsing and validating input Tokens, which is crucial for the macro's usability. Actual LINQ languages (and most DSLs) have more complex syntax that requires a complete parsing mechanism to determine the next parsing step by identifying different keywords or connectors.
