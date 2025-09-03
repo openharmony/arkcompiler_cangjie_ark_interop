@@ -30,15 +30,15 @@ Bluetooth disabled.
 
 **Error Description**
 
-The Bluetooth switch is turned off.
+Bluetooth is turned off.
 
 **Possible Causes**
 
-The Bluetooth switch is turned off.
+Bluetooth is turned off.
 
 **Resolution Steps**
 
-Retry turning on the Bluetooth switch.
+Retry turning Bluetooth on.
 
 ## 2900004
 
@@ -52,11 +52,11 @@ The profile is not supported.
 
 **Possible Causes**
 
-This profile is not supported in the current device environment.
+The profile is not supported in the current device environment.
 
 **Resolution Steps**
 
-Check whether the device supports this profile functionality. If not supported, stop calling it.
+Check whether the device supports the profile functionality. If not, stop calling it.
 
 ## 2900005
 
@@ -66,7 +66,7 @@ Device not connected.
 
 **Error Description**
 
-The device's Bluetooth is not connected.
+The device is not connected via Bluetooth.
 
 **Possible Causes**
 
@@ -74,7 +74,7 @@ Abnormal device pairing.
 
 **Resolution Steps**
 
-Turn the Bluetooth switch back on and perform the pairing process.
+Turn Bluetooth back on and retry the pairing process.
 
 ## 2900006
 
@@ -88,7 +88,7 @@ Exceeded the maximum number of connections.
 
 **Possible Causes**
 
-The device's maximum connection limit has been exceeded.
+Exceeded the device's maximum connection limit.
 
 **Resolution Steps**
 
@@ -110,7 +110,7 @@ Abnormal device pairing.
 
 **Resolution Steps**
 
-Turn the Bluetooth switch back on and perform the pairing process.
+Turn Bluetooth back on and retry the pairing process.
 
 ## 2900099
 
@@ -124,7 +124,7 @@ Operation failed.
 
 **Possible Causes**
 
-This profile is not supported in the current device environment.
+The profile is not supported in the current device environment.
 
 **Resolution Steps**
 
@@ -156,7 +156,7 @@ Read forbidden.
 
 **Error Description**
 
-Read operation prohibited.
+Read operation is forbidden.
 
 **Possible Causes**
 
@@ -174,7 +174,7 @@ Write forbidden.
 
 **Error Description**
 
-Write operation prohibited.
+Write operation is forbidden.
 
 **Possible Causes**
 

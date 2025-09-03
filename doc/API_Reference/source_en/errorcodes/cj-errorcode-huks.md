@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following describes only the module-specific error codes. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 12000001 Feature Not Supported
 
@@ -64,7 +64,7 @@ File operation error.
 
 **Resolution Steps**
 
-1. Check whether the disk space is full or if there are other file system anomalies.
+1. Check if the disk space is full or if there are other file system anomalies.
 2. Clean up disk space.
 
 ## 12000005 IPC Communication Error
@@ -78,7 +78,7 @@ May be one of the following:
 
 **Possible Causes**
 
-Inter-process communication error.
+Inter-process communication (IPC) error.
 
 **Resolution Steps**
 
@@ -92,7 +92,7 @@ Crypto engine error.
 
 **Possible Causes**
 
-This error code indicates a cryptographic engine operation failure. Possible causes include:
+This error code indicates a failure in cryptographic engine operations. Possible causes include:
 
 1. Encryption/decryption error in the cryptographic engine, possibly due to incorrect ciphertext data.
 2. Incorrect key parameters.
@@ -112,13 +112,13 @@ This credential is invalidated permanently.
 
 This error code indicates key access failure due to permanent invalidation. Possible causes include:
 
-1. The key was configured with a user authentication access control attribute that invalidates upon device password reset, leading to key invalidation.
-2. The key was configured with a user authentication access control attribute that invalidates upon new biometric enrollment (e.g., fingerprint or facial recognition), causing the key to fail.
+1. The key has a user authentication access control attribute set to invalidate upon password reset, and device keys were cleared, causing key invalidation.
+2. The key has a user authentication access control attribute set to invalidate upon new biometric enrollment, and new fingerprints or facial data were added, causing key invalidation.
 
 **Resolution Steps**
 
-1. Confirm the specific cause of authentication failure from logs.
-2. If correct parameters were used but authentication failed due to invalidation control, the key can no longer be used.
+1. Confirm the cause of authentication failure through logs.
+2. If correct parameters were used but invalidation control caused authentication failure, the key can no longer be used.
 
 ## 12000008 Key Access Failed - Key Authentication Failed
 
@@ -128,14 +128,14 @@ The authentication token verification failed.
 
 **Possible Causes**
 
-The key was configured with a user authentication access control attribute, and authentication failed due to incorrect `challenge` parameters.
+The key has a user authentication access control attribute set, and authentication failed due to incorrect `challenge` parameters.
 
 **Resolution Steps**
 
-1. Check whether the `challenge` parameter for userIAM authentication is correctly assembled.
-2. If the issue stems from an incorrect `challenge` parameter, correct the assembly method by generating the challenge via HUKS and passing it to userIAM for reauthentication.
+1. Check if the `challenge` parameter for userIAM authentication is correctly assembled.
+2. If the `challenge` parameter is incorrect, modify the assembly method by generating the `challenge` via HUKS and passing it to userIAM for re-authentication.
 
-## 12000009 Key Access Failed - Key Authentication Timeout
+## 12000009 Key Access Failed - Key Access Timeout
 
 **Error Message**
 
@@ -143,11 +143,11 @@ This authentication token timed out.
 
 **Possible Causes**
 
-The key was configured with a user authentication access control attribute, and authentication failed due to exceeding the `timeout` window.
+The key has a user authentication access control attribute set, and authentication failed due to exceeding the `timeout` window.
 
 **Resolution Steps**
 
-If the issue is caused by timeout, re-trigger the key initialization (`init`) and reauthenticate to ensure the authentication time and key initialization time are within the configured `timeout` window.
+If the failure is due to `timeout`, re-trigger key initialization (`init`) and re-authenticate to ensure the authentication time and key initialization time are within the configured `timeout` window.
 
 ## 12000010 Maximum Key Operation Sessions Reached
 
@@ -157,14 +157,14 @@ The number of key operation sessions has reached the limit.
 
 **Possible Causes**
 
-Too many callers (within the same application or across applications) are simultaneously using HUKS for key session operations, reaching the upper limit (15 sessions).
+Too many callers (within the same application or across applications) are simultaneously using HUKS for key session operations, reaching the limit (15 sessions).
 
 **Resolution Steps**
 
-1. Check whether the same application has multiple concurrent key session operations (`init`). If so, modify the logic to avoid simultaneous calls.
-2. If not, other applications may be occupying sessions. Wait for other applications to release sessions before retrying.
+1. Check if the same application has multiple concurrent key session operations (`init`). If so, modify the code to avoid simultaneous calls.
+2. If not, other applications may be occupying sessions. Wait for them to release sessions before retrying.
 
-## 12000011 Target Entity Does Not Exist
+## 12000011 Target Object Does Not Exist
 
 **Error Message**
 
@@ -176,10 +176,10 @@ The key corresponding to the alias does not exist.
 
 **Resolution Steps**
 
-1. Check for spelling errors in the key alias.
-2. Verify whether the key corresponding to the alias was successfully generated.
+1. Check if the key alias is misspelled.
+2. Verify if the key corresponding to the alias was successfully generated.
 
-## 12000012 External System Error
+## 12000012 External Error
 
 **Error Message**
 
@@ -187,7 +187,7 @@ System external error.
 
 **Possible Causes**
 
-External hardware failures, file errors, etc.
+External hardware errors, file errors, etc.
 
 **Resolution Steps**
 
@@ -205,7 +205,7 @@ When binding PIN, fingerprint, or facial recognition to a key, the relevant cred
 
 **Resolution Steps**
 
-Enroll the relevant credential or change the credential type to be bound.
+Enroll the relevant credential or change the binding credential type.
 
 ## 12000014 Insufficient Memory
 
@@ -236,7 +236,7 @@ Other system services are not running.
 
 **Resolution Steps**
 
-Developers should wait for some time before retrying the operation.
+Developers should wait and retry the operation after some time.
 
 ## 12000016 Device Password Required but Not Set
 
@@ -246,7 +246,7 @@ Device password is required but not set.
 
 **Possible Causes**
 
-The service restricts key usage to devices with a lock screen password, but no password is set.
+The service restricts key usage to devices with a lock screen password set, but no lock screen password is configured.
 
 **Resolution Steps**
 

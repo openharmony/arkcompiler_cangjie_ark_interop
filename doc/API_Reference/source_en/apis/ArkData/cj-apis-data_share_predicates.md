@@ -1,8 +1,8 @@
-# ohos.data_share_predicates (Data Sharing Predicates)
+# ohos.data.data_share_predicates
 
-Predicates (data_share_predicates) are filtering conditions used by developers to query data in databases through DataShare. They are commonly applied in data updates, deletions, and queries.
+Predicates (data_share_predicates) are filtering conditions used by developers to query data in databases through DataShare, commonly applied in data updates, deletions, and queries.
 
-The interface functions of predicates correspond one-to-one with database filtering conditions. Developers need to understand database-related knowledge before using them.
+The interface functions of predicates correspond one-to-one with database filtering conditions. Developers should understand relevant database knowledge before use.
 
 ## Import Module
 
@@ -12,12 +12,12 @@ import kit.ArkData.*
 
 ## Usage Instructions
 
-API example code usage instructions:
+API sample code usage instructions:
 
-- If the first line of example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above example project and configuration template, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#Cangjie-example-code-instructions).
+For details about the above sample project and configuration template, see [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class DataSharePredicates
 
@@ -31,11 +31,11 @@ public class DataSharePredicates {
 
 > **Note:**
 >
-> This class is not thread-safe. If there are multiple threads in the application simultaneously operating instances derived from this class, ensure proper locking protection.
+> This class is not thread-safe. If there are multiple threads simultaneously operating instances derived from this class in the application, ensure proper locking protection.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### init()
 
@@ -47,26 +47,26 @@ public init()
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### func \`in\`(String, Array\<VBValueType>)
+### func `in`(String, Array\<ValueType>)
 
 ```cangjie
-public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
+public func `in`(field: String, value: Array<ValueType>): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match fields with values within the specified range. Currently, only RDB and KVDB (schema) support this predicate.
+**Function:** Configures the predicate to match fields whose values fall within the specified range. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | field | String | Yes | - | Column name in the database table. |
-| values | Array\<[VBValueType](cj-apis-values_bucket.md#enum-VBValueType)> | Yes | - | Values to match, specified as an array of ValueType. |
+| value | Array\<[ValueType](cj-apis-preferences.md#enum-valuetype)> | Yes | - | Values to match, specified as a ValueType array. |
 
 **Return Value:**
 
@@ -76,11 +76,12 @@ public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below.
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **Example:**
 
@@ -91,6 +92,7 @@ public func `in`(field: String, values: Array<VBValueType>): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
 predicates.`in`("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
@@ -102,11 +104,11 @@ predicates.`in`("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
 public func and(): DataSharePredicates
 ```
 
-**Function:** Adds an AND condition to the predicate. Currently, only RDB and KVDB (schema) support this predicate.
+**Function:** Adds an AND condition to the predicate. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
@@ -116,11 +118,11 @@ public func and(): DataSharePredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below.
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 1 | Instance invalid. |
 
 **Example:**
 
@@ -131,9 +133,10 @@ public func and(): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.equalTo("NAME", VBValueType.Str("lisi"))
+predicates.equalTo("NAME", VBValueType.StringValue("lisi"))
         .and()
         .equalTo("SALARY", VBValueType.Double(200.5))
 ```
@@ -141,21 +144,21 @@ predicates.equalTo("NAME", VBValueType.Str("lisi"))
 ### func equalTo(String, ValueType)
 
 ```cangjie
-public func equalTo(field: String, value: VBValueType): DataSharePredicates
+public func equalTo(field: String, value: ValueType): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match fields with values equal to the specified value. Currently, only RDB and KVDB (schema) support this predicate.
+**Function:** Configures the predicate to match fields whose values equal the specified value. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | field | String | Yes | - | Column name in the database table. |
-| value | [VBValueType](cj-apis-values_bucket.md#enum-VBValueType) | Yes | - | Value to match with the predicate. |
+| value | [ValueType](cj-apis-preferences.md#enum-valuetype) | Yes | - | Value to match with the predicate. |
 
 **Return Value:**
 
@@ -165,11 +168,12 @@ public func equalTo(field: String, value: VBValueType): DataSharePredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below.
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **Example:**
 
@@ -180,9 +184,10 @@ public func equalTo(field: String, value: VBValueType): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.equalTo("NAME", VBValueType.Str("Rose"))
+predicates.equalTo("NAME", VBValueType.StringValue("Rose"))
 ```
 
 ### func limit(Int32, Int32)
@@ -191,15 +196,15 @@ predicates.equalTo("NAME", VBValueType.Str("Rose"))
 public func limit(total: Int32, offset: Int32): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to specify the number of results and the starting position. Currently, only RDB and KVDB (schema) support this predicate.
+**Function:** Configures the predicate to specify the number of results and starting position. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | total | Int32 | Yes | - | Specifies the number of results. |
 | offset | Int32 | Yes | - | Indicates the starting position. |
@@ -212,11 +217,12 @@ public func limit(total: Int32, offset: Int32): DataSharePredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below.
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **Example:**
 
@@ -227,9 +233,10 @@ public func limit(total: Int32, offset: Int32): DataSharePredicates
 
 import ohos.base.*
 import kit.ArkData.*
+import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.equalTo("NAME", VBValueType.Str("Rose")).limit(10, 3)
+predicates.equalTo("NAME", VBValueType.StringValue("Rose")).limit(10, 3)
 ```
 
 ### func orderByAsc(String)
@@ -238,15 +245,15 @@ predicates.equalTo("NAME", VBValueType.Str("Rose")).limit(10, 3)
 public func orderByAsc(field: String): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match columns sorted in ascending order by their values. Currently, only RDB and KVDB (schema) support this predicate.
+**Function:** Configures the predicate to match columns whose values are sorted in ascending order. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | field | String | Yes | - | Column name in the database table. |
 
@@ -258,11 +265,12 @@ public func orderByAsc(field: String): DataSharePredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below.
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **Example:**
 
@@ -284,30 +292,32 @@ predicates.orderByAsc("AGE")
 public func orderByDesc(field: String): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match columns sorted in descending order by their values. Currently, only RDB and KVDB (schema) support this predicate.
+**Function:** Configures the predicate to match columns whose values are sorted in descending order. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | field | String | Yes | - | Column name in the database table. |
 
 **Return Value:**
+
 | Type | Description |
 |:----|:----|
-|[DataSharePredicates](#class-datasharepredicates)|Returns predicates matching the specified fields. |
+| [DataSharePredicates](#class-datasharepredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below.
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. |
+| 1 | Instance invalid. |
 
 **Example:**
 

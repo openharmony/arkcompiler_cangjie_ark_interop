@@ -20,7 +20,7 @@ This error code indicates a file operation exception, possibly due to insufficie
 
 **Resolution Steps**
 
-Please verify that the file permissions are properly configured.
+Please check whether the file permissions are properly configured.
 
 ## 13400002 Invalid File Path
 
@@ -40,7 +40,7 @@ This error code indicates an invalid file path, possibly due to an incorrect pat
 
 Please verify the file path for upload/download operations.
 
-## 13400003 Service Exception
+## 13400003 Service Error
 
 **Error Message**
 
@@ -56,7 +56,7 @@ This error code indicates a service exception, possibly due to task creation fai
 
 **Resolution Steps**
 
-Please verify that the task configuration is correct.
+Please check whether the task configuration is correct.
 
 ## 13499999 Other Errors
 
@@ -74,7 +74,7 @@ This error code indicates a service exception, possibly due to task creation fai
 
 **Resolution Steps**
 
-Please verify that the task configuration is correct.
+Please check whether the task configuration is correct.
 
 ## 21900004 Application Task Queue Full
 
@@ -104,7 +104,7 @@ task mode error.
 
 **Error Description**
 
-Task mode error.
+Incorrect task mode.
 
 **Possible Causes**
 
@@ -113,7 +113,7 @@ A non-foreground application attempted to create a foreground task.
 **Resolution Steps**
 
 1. Register or unregister event listeners for foreground applications.  
-2. This is an interface restriction—follow the interface specifications for proper usage.
+2. This is an interface restriction—follow the interface specifications.
 
 ## 21900006 Non-Existent Task Operation Error
 
@@ -123,7 +123,7 @@ task not found error.
 
 **Error Description**
 
-Operation on a non-existent task error.
+Operation on a non-existent task.
 
 **Possible Causes**
 
@@ -143,7 +143,7 @@ task state error.
 
 **Error Description**
 
-Operation on an unsupported task state.
+Operation on a task in an unsupported state.
 
 **Possible Causes**
 
@@ -155,5 +155,5 @@ Operation on an unsupported task state.
 
 **Resolution Steps**
 
-1. Query the task state.  
+1. Query the task state;  
 2. Perform operations supported by the current task state.

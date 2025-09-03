@@ -1,6 +1,6 @@
-# ohos.display (Screen Properties)
+# ohos.display (Screen Attributes)
 
-Screen properties provide basic capabilities for managing display devices, including obtaining information about the default display device, retrieving information about all display devices, and monitoring the plugging and unplugging behavior of display devices.
+Screen attributes provide basic capabilities for managing display devices, including obtaining information about the default display device, retrieving information about all display devices, and monitoring plug-and-play behaviors of display devices.
 
 ## Import Module
 
@@ -14,11 +14,11 @@ import kit.ArkUI.*
 public func getAllDisplays(): Array<Display>
 ```
 
-**Description:** Retrieves all current Display objects.
+**Function:** Retrieves all current Display objects.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Return Value:**
 
@@ -28,7 +28,7 @@ public func getAllDisplays(): Array<Display>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Screen Error Codes](../errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Screen Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -38,9 +38,7 @@ public func getAllDisplays(): Array<Display>
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getAllDisplaysExample() {
     try {
         let displayClass: Array<Display> = getAllDisplays()
@@ -48,7 +46,7 @@ func getAllDisplaysExample() {
             println(displayClass[0].name)
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -59,11 +57,11 @@ func getAllDisplaysExample() {
 public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 ```
 
-**Description:** Retrieves the fold crease region in the current display mode.
+**Function:** Retrieves the fold crease region in the current display mode.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Return Value:**
 
@@ -73,7 +71,7 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Screen Error Codes](../errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Screen Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -82,15 +80,13 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getCurrentFoldCreaseRegionExample() {
     try {
         let region = getCurrentFoldCreaseRegion()
         println(region.displayId)
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -101,11 +97,11 @@ func getCurrentFoldCreaseRegionExample() {
 public func getDefaultDisplaySync(): Display
 ```
 
-**Description:** Retrieves the current default Display object.
+**Function:** Retrieves the current default Display object.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Return Value:**
 
@@ -115,7 +111,7 @@ public func getDefaultDisplaySync(): Display
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Screen Error Codes](../errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Screen Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -125,15 +121,13 @@ public func getDefaultDisplaySync(): Display
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getDefaultDisplaySyncExample() {
     try {
         let displayClass: Display = getDefaultDisplaySync()
         println(displayClass.name)
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -144,11 +138,11 @@ func getDefaultDisplaySyncExample() {
 public func getFoldDisplayMode(): FoldDisplayMode
 ```
 
-**Description:** Retrieves the display mode of a foldable device.
+**Function:** Retrieves the display mode of a foldable device.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Return Value:**
 
@@ -159,22 +153,20 @@ public func getFoldDisplayMode(): FoldDisplayMode
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getFoldDisplayModeExample() {
     try {
         let mode = getFoldDisplayMode()
         match (mode) {
-            case FoldDisplayMode.FoldDisplayModeUnknown => Hilog.info(0, "display_test", "Unkown mode.")
-            case FoldDisplayMode.FoldDisplayModeFull => Hilog.info(0, "display_test", "Full mode.")
-            case FoldDisplayMode.FoldDisplayModeMain => Hilog.info(0, "display_test", "Main mode.")
-            case FoldDisplayMode.FoldDisplayModeSub => Hilog.info(0, "display_test", "Sub mode.")
-            case FoldDisplayMode.FoldDisplayModeCoordination => Hilog.info(0, "display_test", "Coordination mode.")
-            case _ => throw Exception("can not get display mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN => Hilog.info(0, "AppLogCj", "Unknown mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_FULL => Hilog.info(0, "AppLogCj", "Full mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN => Hilog.info(0, "AppLogCj", "Main mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_SUB => Hilog.info(0, "AppLogCj", "Sub mode.")
+            case FoldDisplayMode.FOLD_DISPLAY_MODE_COORDINATION => Hilog.info(0, "AppLogCj", "Coordination mode.")
+            case _ => throw Exception("Cannot get display mode.")
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -185,11 +177,11 @@ func getFoldDisplayModeExample() {
 public func getFoldStatus(): FoldStatus
 ```
 
-**Description:** Retrieves the current fold status of a foldable device.
+**Function:** Retrieves the current fold status of a foldable device.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Return Value:**
 
@@ -200,21 +192,19 @@ public func getFoldStatus(): FoldStatus
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func getFoldStatusExample() {
     try {
         let status = getFoldStatus()
         match (status) {
-            case FoldStatus.FoldStatusUnknown => Hilog.info(0, "display_test", "Unkown status.")
-            case FoldStatus.FoldStatusExpanded => Hilog.info(0, "display_test", "Expanded.")
-            case FoldStatus.FoldStatusFolded => Hilog.info(0, "display_test", "Folded.")
-            case FoldStatus.FoldStatusHalfFolded => Hilog.info(0, "display_test", "Half folded.")
-            case _ => throw Exception("can not get fold status.")
+            case FoldStatus.FOLD_STATUS_UNKNOWN => Hilog.info(0, "AppLogCj", "Unknown status.")
+            case FoldStatus.FOLD_STATUS_EXPANDED => Hilog.info(0, "AppLogCj", "Expanded.")
+            case FoldStatus.FOLD_STATUS_FOLDED => Hilog.info(0, "AppLogCj", "Folded.")
+            case FoldStatus.FOLD_STATUS_HALF_FOLDED => Hilog.info(0, "AppLogCj", "Half folded.")
+            case _ => throw Exception("Cannot get fold status.")
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -225,11 +215,11 @@ func getFoldStatusExample() {
 public func isFoldable(): Bool
 ```
 
-**Description:** Checks whether the device is foldable.
+**Function:** Checks whether the device is foldable.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Return Value:**
 
@@ -240,9 +230,7 @@ public func isFoldable(): Bool
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-import ohos.base.*
-import kit.PerformanceAnalysisKit.*
+import ohos.display.*
 func isFoldableExample() {
     try {
         let displayClass = getDefaultDisplaySync()
@@ -250,15 +238,15 @@ func isFoldableExample() {
         try {
             ret = isFoldable()
         } catch (exception: Exception) {
-            Hilog.error(0, "display_test", exception.toString())
+            Hilog.error(0, "AppLogCj", exception.toString())
         }
         if (ret) {
-            Hilog.info(0, "display_test", "The device is foldable.")
+            Hilog.info(0, "AppLogCj", "The device is foldable.")
         } else {
-            Hilog.info(0, "display_test", "The device is not foldable.")
+            Hilog.info(0, "AppLogCj", "The device is not foldable.")
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "display_test", exception.toString())
+        Hilog.error(0, "AppLogCj", exception.toString())
     }
 }
 ```
@@ -269,23 +257,23 @@ func isFoldableExample() {
 public func off(listenerType: ListenerType): Unit
 ```
 
-**Description:** Unregisters a listener.
+**Function:** Stops listening for display device changes.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
-**Since:** 21
+**Initial Release Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Type of the listener event. |
+| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Type of the listening event. |
 
 **Example:**
 
 ```cangjie
-import kit.ArkUI.*
-var temp: Unit = off(ListnerTypeChange)
+import ohos.display.*
+var temp: Unit = off(LISTNER_TYPE_CHANGE)
 ```
 
 ## func off(ListenerType, Callback1Argument\<FoldStatus>)
@@ -294,338 +282,311 @@ var temp: Unit = off(ListnerTypeChange)
 public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStatus>): Unit
 ```
 
-**Description:** Unregisters the listener for fold status changes of a foldable device.
-
-**System Capability:** SystemCapability.Window.SessionManager**Starting Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Event to listen for. Fixed as `ListnerTypeFoldStatusChange`, indicating a change in the fold status of the foldable device. |  
-| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)> | Yes | - | The callback function to unregister. Represents the fold status of the foldable device. |  
-
-**Exceptions:**  
+**Function:** Stops listening for fold status changes of a foldable device.
+
+**System Capability:** SystemCapability.Window.SessionManager
 
-- `BusinessException`: Corresponding error codes are listed below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Display Error Codes](../errorcodes/cj-errorcode-display.md).  
+**Initial Release Version:** 21
 
-  | Error Code ID | Error Message |  
-  | :---- | :--- |  
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |  
-  | 1400003 | This display manager service works abnormally. |  
+**Parameters:**
 
-**Example:**  
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Listening event. Fixed as 'LISTNER_TYPE_FOLD_STATUS_CHANGE', indicating a change in the fold status of the foldable device. |
+| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)> | Yes | - | Callback function. Indicates the fold status of the foldable device. |
 
-```cangjie  
-import kit.ArkUI.*  
-import ohos.base.*  
-import kit.PerformanceAnalysisKit.*  
-class TestCallback <: Callback1Argument<FoldStatus> {  
-    public init() {}  
-    public open func invoke(value: FoldStatus): Unit {  
-        Hilog.info(0, "display_test",   
-            "Display fold status changed, current fold status: " + match (value) {  
-                case FoldStatusUnknown => "FoldStatusUnknown"  
-                case FoldStatusExpanded => "FoldStatusExpanded"  
-                case FoldStatusFolded => "FoldStatusFolded"  
-                case FoldStatusHalfFolded => "FoldStatusHalfFolded"  
-                case _ => "Failed to get fold status."  
-            })  
-    }  
-}  
-let testCallback = TestCallback()  
-var temp: Unit = on(ListnerTypeFoldStatusChange, testCallback)  
-```  
-
-## func off(ListenerType, Callback1Argument\<FoldDisplayMode>)  
-
-```cangjie  
-public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit  
-```  
-
-**Function:** Disables listening for changes in the screen display mode of a foldable device.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Starting Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Event to listen for. Fixed as `ListnerTypeFoldDisplayModeChange`, indicating a change in the fold status of the foldable device. |  
-| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)> | Yes | - | The callback function to unregister. Represents the screen display mode of the foldable device. |  
-
-**Exceptions:**  
-
-- `BusinessException`: Corresponding error codes are listed below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Display Error Codes](../errorcodes/cj-errorcode-display.md).  
-
-  | Error Code ID | Error Message |  
-  | :---- | :--- |  
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |  
-  | 1400003 | This display manager service works abnormally. |  
-
-**Example:**  
+**Exceptions:**
 
-```cangjie  
-import kit.ArkUI.*  
-class TestCallback <: Callback1Argument<FoldDisplayMode> {  
-    public init() {}  
-    public open func invoke(value: FoldDisplayMode): Unit {  
-        Hilog.info(0, "display_test",   
-            "Display fold status changed, current fold status: " + match (value) {  
-                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"  
-                case FoldDisplayModeFull => "FoldDisplayModeFull"  
-                case FoldDisplayModeMain => "FoldDisplayModeMain"  
-                case FoldDisplayModeSub => "FoldDisplayModeSub"  
-                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"  
-                case _ => "Failed to get fold display mode."  
-            })  
-    }  
-}  
-let testCallback = TestCallback()  
-var temp: Unit = off(ListnerTypeFoldDisplayModeChange, testCallback)  
-```  
-
-## func on(ListenerType, Callback1Argument\<FoldStatus>)  
-
-```cangjie  
-public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatus>): Unit  
-```  
-
-**Function:** Enables listening for changes in the fold status of a foldable device.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Starting Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Event to listen for. Fixed as `ListnerTypeFoldStatusChange`, indicating a change in the fold status of the foldable device. |  
-| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)> | Yes | - | Callback function. Represents the fold status of the foldable device. |  
-
-**Exceptions:**  
-
-- `BusinessException`: Corresponding error codes are listed below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Display Error Codes](../errorcodes/cj-errorcode-display.md).  
-
-  | Error Code ID | Error Message |  
-  | :---- | :--- |  
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |  
-  | 1400003 | This display manager service works abnormally. |  
-
-**Example:**  
-
-```cangjie  
-import kit.ArkUI.*  
-import ohos.base.*  
-import kit.PerformanceAnalysisKit.*  
-class TestCallback <: Callback1Argument<FoldStatus> {  
-    public init(){}  
-    public open func invoke(value: FoldStatus): Unit {  
-        Hilog.info(0, "display_test", "Display fold status changed, current fold status: " + match(value) {  
-            case FoldStatusUnknown => "FoldStatusUnknown"  
-            case FoldStatusExpanded => "FoldStatusExpanded"  
-            case FoldStatusFolded => "FoldStatusFolded"  
-            case FoldStatusHalfFolded => "FoldStatusHalfFolded"  
-            case _ => "Failed to get fold status."  
-        })  
-    }  
-}  
-let testCallback = TestCallback()  
-var temp: Unit = on(ListnerTypeFoldStatusChange, testCallback)  
-```  
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md).
 
-## func on(ListenerType, Callback1Argument\<FoldDisplayMode>)  
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+  | 1400003 | This display manager service works abnormally. |
 
-```cangjie  
-public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit  
-```  
+**Example:**
 
-**Function:** Enables listening for changes in the screen display mode of a foldable device.  
+```cangjie
+import ohos.display.*
+class TestCallback <: Callback1Argument<FoldStatus> {
+    public init() {}
+    public open func invoke(value: FoldStatus): Unit {
+        Hilog.info(0, "AppLogCj", 
+            "Display fold status changed, current fold status: " + match (value) {
+                case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
+                case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
+                case FOLD_STATUS_FOLDED => "FOLD_STATUS_FOLDED"
+                case FOLD_STATUS_HALF_FOLDED => "FOLD_STATUS_HALF_FOLDED"
+                case _ => "Failed to get fold status."
+            })
+    }
+}
+let testCallback = TestCallback()
+var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
+```
+
+## func off(ListenerType, Callback1Argument\<FoldDisplayMode>)
+
+```cangjie
+public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit
+```
+
+**Function:** Stops listening for display mode changes of a foldable device.
+
+**System Capability:** SystemCapability.Window.SessionManager
 
-**System Capability:** SystemCapability.Window.SessionManager  
+**Initial Release Version:** 21
 
-**Starting Version:** 21  
+**Parameters:**
 
-**Parameters:**  
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Listening event. Fixed as 'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE', indicating a change in the fold status of the foldable device. |
+| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)> | Yes | - | Callback function to be unregistered. |
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Event to listen for. Fixed as `ListnerTypeFoldDisplayModeChange`, indicating a change in the fold status of the foldable device. |  
-| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)> | Yes | - | Callback function. Represents the screen display mode of the foldable device. |  
+**Exceptions:**
 
-**Exceptions:**  
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md) and [Screen Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md).
 
-- `BusinessException`: Corresponding error codes are listed below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Display Error Codes](../errorcodes/cj-errorcode-display.md).  
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+  | 1400003 | This display manager service works abnormally. |
 
-  | Error Code ID | Error Message |  
-  | :---- | :--- |  
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.   2. Incorrect parameter types. |  
-  | 1400003 | This display manager service works abnormally. |  
+**Example:**
 
-**Example:**  
+```cangjie
+import ohos.display.*
+class TestCallback <: Callback1Argument<FoldDisplayMode> {
+    public init() {}
+    public open func invoke(value: FoldDisplayMode): Unit {
+        Hilog.info(0, "AppLogCj", 
+            "Display fold status changed, current fold status: " + match (value) {
+                case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
+                case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
+                case FOLD_DISPLAY_MODE_MAIN => "FOLD_DISPLAY_MODE_MAIN"
+                case FOLD_DISPLAY_MODE_SUB => "FOLD_DISPLAY_MODE_SUB"
+                case FOLD_DISPLAY_MODE_COORDINATION => "FOLD_DISPLAY_MODE_COORDINATION"
+                case _ => "Failed to get fold display mode."
+            })
+    }
+}
+let testCallback = TestCallback()
+var temp: Unit = off(LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE, testCallback)
+```
+
+## func on(ListenerType, Callback1Argument\<FoldStatus>)
+
+```cangjie
+public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatus>): Unit
+```
+
+**Function:** Starts listening for fold status changes of a foldable device.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Initial Release Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Listening event. Fixed as 'LISTNER_TYPE_FOLD_STATUS_CHANGE', indicating a change in the fold status of the foldable device. |
+| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)> | Yes | - | Callback function. Indicates the fold status of the foldable device. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+  | 1400003 | This display manager service works abnormally. |
 
-```cangjie  
-import kit.ArkUI.*  
-import ohos.base.*  
-import kit.PerformanceAnalysisKit.*  
-class TestCallback <: Callback1Argument<FoldDisplayMode> {  
-    public init() {}  
-    public open func invoke(value: FoldDisplayMode): Unit {  
-        Hilog.info(0, "display_test",   
-            "Display fold status changed, current fold status: " + match (value) {  
-                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"  
-                case FoldDisplayModeFull => "FoldDisplayModeFull"  
-                case FoldDisplayModeMain => "FoldDisplayModeMain"  
-                case FoldDisplayModeSub => "FoldDisplayModeSub"  
-                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"  
-                case _ => "Failed to get fold display mode."  
-            })  
-    }  
-}  
-let testCallback = TestCallback()  
-var temp: Unit = on(ListnerTypeFoldDisplayModeChange, testCallback)  
-```  
+**Example:**
 
-## class CutoutInfo  
+```cangjie
+import ohos.display.*
+class TestCallback <: Callback1Argument<FoldStatus> {
+    public init(){}
+    public open func invoke(value: FoldStatus): Unit {
+        Hilog.info(0, "AppLogCj", "Display fold status changed, current fold status: " + match(value) {
+            case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
+            case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
+            case FOLD_STATUS_FOLDED => "FOLD_STATUS_FOLDED"
+            case FOLD_STATUS_HALF_FOLDED => "FOLD_STATUS_HALF_FOLDED"
+            case _ => "Failed to get fold status."
+        })
+    }
+}
+let testCallback = TestCallback()
+var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
+```## func on(ListenerType, Callback1Argument\<FoldDisplayMode>)
 
-```cangjie  
-public class CutoutInfo {  
-    public let boundingRects: Array<Rect>  
-    public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects  
-    public init(  
-        boundingRects!: Array<Rect>,  
-        waterfallDisplayAreaRects!: WaterfallDisplayAreaRects  
-    )  
-}  
-```  
+```cangjie
+public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit
+```
 
-**Function:** Information about unusable screen areas such as punch-hole screens, notches, and waterfall screens.  
+**Function:** Enables listening for changes in the display mode of foldable device screens.
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+**System Capability:** SystemCapability.Window.SessionManager
 
-**Starting Version:** 21  
+**Since:** 21
 
-### let boundingRects  
+**Parameters:**
 
-```cangjie  
-public let boundingRects: Array<Rect>  
-```  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| listenerType | [ListenerType](#enum-listenertype) | Yes | - | Listening event. Fixed as 'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE', indicating the display mode of foldable device screens. |
+| callback | [Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)> | Yes | - | Callback function. Indicates the display mode of foldable device screens. |
 
-**Function:** Boundary rectangles for punch-hole or notch areas. If there are no such areas, the array returns empty.  
+**Exceptions:**
 
-**Type:** Array\<[Rect](#class-rect)>  
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-universal.md).
 
-**Read/Write Capability:** Read-only  
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+  | 1400003 | This display manager service works abnormally. |
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+**Example:**
 
-**Starting Version:** 21  
+```cangjie
+import ohos.display.*
+class TestCallback <: Callback1Argument<FoldDisplayMode> {
+    public init() {}
+    public open func invoke(value: FoldDisplayMode): Unit {
+        Hilog.info(0, "AppLogCj", 
+            "Display fold status changed, current fold status: " + match (value) {
+                case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
+                case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
+                case FOLD_DISPLAY_MODE_MAIN => "FOLD_DISPLAY_MODE_MAIN"
+                case FOLD_DISPLAY_MODE_SUB => "FOLD_DISPLAY_MODE_SUB"
+                case FOLD_DISPLAY_MODE_COORDINATION => "FOLD_DISPLAY_MODE_COORDINATION"
+                case _ => "Failed to get fold display mode."
+            })
+    }
+}
+let testCallback = TestCallback()
+var temp: Unit = on(LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE, testCallback)
+```
 
-### let waterfallDisplayAreaRects  
+## class CutoutInfo
 
-```cangjie  
-public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects  
-```  
+```cangjie
+public class CutoutInfo {
+    public let boundingRects: Array<Rect>
+    public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects
+    public init(
+        boundingRects!: Array<Rect>,
+        waterfallDisplayAreaRects!: WaterfallDisplayAreaRects
+    )
+}
+```
 
-**Function:** Sets the display area for the curved part of a waterfall screen.  
+**Function:** Information about unavailable screen areas such as punch-hole screens, notches, and waterfall screens.
 
-**Type:** [WaterfallDisplayAreaRects](#class-waterfalldisplayarearects)  
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Read/Write Capability:** Read-only  
+**Since:** 21
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+### let boundingRects
 
-**Starting Version:** 21  
+```cangjie
+public let boundingRects: Array<Rect>
+```
 
-### init(Array\<Rect>, WaterfallDisplayAreaRects)  
+**Function:** Sets the boundary rectangles for punch-hole or notch areas.
 
-```cangjie  
-public init(  
-    boundingRects!: Array<Rect>,  
-    waterfallDisplayAreaRects!: WaterfallDisplayAreaRects  
-)  
-```  
+**Type:** Array\<[Rect](#class-rect)>
 
-**Function:** Creates a `CutoutInfo` object.  
+**Read/Write Permission:** Read-only
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Starting Version:** 21  
+**Since:** 21
 
-**Parameters:**  
+### let waterfallDisplayAreaRects
 
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| boundingRects | Array\<[Rect](#class-rect)> | Yes | - | Boundary rectangles for punch-hole or notch areas. If there are no such areas, the array returns empty. |  
-| waterfallDisplayAreaRects | [WaterfallDisplayAreaRects](#class-waterfalldisplayarearects) | Yes | - | Display area for the curved part of a waterfall screen. |  
+```cangjie
+public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects
+```
 
-## class Display  
+**Function:** Sets the display area for the curved parts of waterfall screens.
 
-```cangjie  
-public class Display {}  
-```  
+**Type:** [WaterfallDisplayAreaRects](#class-waterfalldisplayarearects)
 
-**Function:** Represents a screen instance. Describes the properties and methods of a `Display` object.  
+**Read/Write Permission:** Read-only
 
-> **Note:**  
->  
-> In the following API examples, you must first obtain a `Display` object using either the [`getAllDisplays()`](#func-getalldisplays) or [`getDefaultDisplaySync()`](#func-getdefaultdisplaysync) method, and then call the corresponding methods through this instance.  
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+**Since:** 21
 
-**Starting Version:** 21  
+### init(Array\<Rect>, WaterfallDisplayAreaRects)
 
-### prop alive  
+```cangjie
+public init(
+    boundingRects!: Array<Rect>,
+    waterfallDisplayAreaRects!: WaterfallDisplayAreaRects
+)
+```
 
-```cangjie  
-public prop alive: Bool  
-```  
+**Function:** Creates a CutoutInfo object.
 
-**Function:** Indicates whether the display device is enabled. `true` means the device is enabled, `false` means it is not.  
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Type:** Bool  
+**Since:** 21
 
-**Read/Write Capability:** Read-only  
+**Parameters:**
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| boundingRects | Array\<[Rect](#class-rect)> | Yes | - | Boundary rectangles for punch-hole or notch areas. If there are no such areas, the array returns empty. |
+| waterfallDisplayAreaRects | [WaterfallDisplayAreaRects](#class-waterfalldisplayarearects) | Yes | - | Display area for the curved parts of waterfall screens. |
 
-**Starting Version:** 21  
+## class Display
 
-### prop densityDPI  
+```cangjie
+public class Display {}
+```
 
-```cangjie  
-public prop densityDPI: Int  
-```  
+**Function:** Sets a screen instance. Describes the properties and methods of the Display object.
 
-**Function:** The screen density in dots per inch (DPI).  
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Type:** Int  
+**Since:** 21
 
-**Read/Write Capability:** Read-only  
+### prop alive
 
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
+```cangjie
+public prop alive: Bool
+```
 
-**Starting Version:** 21
+**Function:** Sets whether the display device is enabled. true indicates the device is enabled, false indicates it is not.
+
+**Type:** Bool
+
+**Read/Write Permission:** Read-only
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### prop densityDPI
+
 ```cangjie
 public prop densityDPI: Float32
 ```
 
-**Function:** Sets the physical pixel density of the display device screen, representing the number of pixels per inch.
-
-> **Note:**
->
-> This parameter is a floating-point number with units in px. Common values include 160.0, 480.0, etc. The actual available values depend on the options provided in different device settings.
+**Function:** Sets the physical pixel density of the display device screen, indicating the number of pixels per inch.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop densityPixels
 
@@ -635,17 +596,13 @@ public prop densityPixels: Float32
 
 **Function:** Sets the logical density of the display device, which is a scaling factor independent of pixel units.
 
-> **Note:**
->
-> This parameter is a floating-point number constrained by the range of densityDPI, with valid values between [0.5, 4.0]. Common values include 1.0, 3.0, etc. The actual value depends on the densityDPI provided by different devices.
-
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop height
 
@@ -653,19 +610,15 @@ public prop densityPixels: Float32
 public prop height: Int32
 ```
 
-**Function:** The screen height of the display device.
-
-> **Note:**
->
-> Units are in px, and this parameter should be an integer.
+**Function:** The height of the display device screen.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop id
 
@@ -677,11 +630,11 @@ public prop id: UInt32
 
 **Type:** UInt32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop name
 
@@ -693,11 +646,11 @@ public prop name: String
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop orientation
 
@@ -709,11 +662,11 @@ public prop orientation: Orientation
 
 **Type:** [Orientation](#enum-orientation)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop refreshRate
 
@@ -723,17 +676,13 @@ public prop refreshRate: UInt32
 
 **Function:** Sets the refresh rate of the display device.
 
-> **Note:**
->
-> This parameter should be an integer with units in hz.
-
 **Type:** UInt32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop rotation
 
@@ -743,17 +692,13 @@ public prop rotation: UInt32
 
 **Function:** Sets the clockwise rotation angle of the display device screen.
 
-> **Note:**
->
-> A value of 0 indicates a 0° clockwise rotation; 1 indicates 90°; 2 indicates 180°; and 3 indicates 270°.
-
 **Type:** UInt32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop scaledDensity
 
@@ -761,19 +706,15 @@ public prop rotation: UInt32
 public prop scaledDensity: Float32
 ```
 
-**Function:** The scaling factor for fonts displayed on the device. This parameter is a floating-point number, usually the same as densityPixels.
-
-> **Note:**
->
-> This parameter is a floating-point number, typically the same as densityPixels.
+**Function:** The font scaling factor for the display device. This parameter is a floating-point number, usually the same as densityPixels.
 
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop state
 
@@ -785,11 +726,11 @@ public prop state: DisplayState
 
 **Type:** [DisplayState](#enum-displaystate)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop width
 
@@ -797,19 +738,15 @@ public prop state: DisplayState
 public prop width: Int32
 ```
 
-**Function:** Sets the screen width of the display device.
-
-> **Note:**
->
-> Units are in px, and this parameter should be an integer.
+**Function:** Sets the width of the display device screen.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop xDPI
 
@@ -819,17 +756,13 @@ public prop xDPI: Float32
 
 **Function:** Sets the exact physical pixel value per inch in the x-direction of the screen.
 
-> **Note:**
->
-> This parameter is a floating-point number.
-
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### prop yDPI
 
@@ -839,17 +772,13 @@ public prop yDPI: Float32
 
 **Function:** Sets the exact physical pixel value per inch in the y-direction of the screen.
 
-> **Note:**
->
-> This parameter is a floating-point number.
-
 **Type:** Float32
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 ### func getCutoutInfo()
 
@@ -857,28 +786,41 @@ public prop yDPI: Float32
 public func getCutoutInfo(): CutoutInfo
 ```
 
-**Function:** Retrieves information about non-usable screen areas such as punch-hole screens, notches, and waterfall screens. Applications are advised to avoid these areas in their layouts.
+**Function:** Retrieves information about unavailable screen areas such as punch-hole screens, notches, and waterfall screens. It is recommended that applications avoid these areas in their layouts.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
-**Since Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [CutoutInfo](#class-cutoutinfo) | Returns a CutoutInfo object describing the non-usable screen areas. |
+| [CutoutInfo](#class-cutoutinfo) | Returns a CutoutInfo object describing the unavailable screen areas. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Display Error Codes](../errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Display Error Codes](../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 1400001 | Invalid display or screen. |
   | 1400003 | This display manager service works abnormally. |
 
-## class FoldCreaseRegion
+**Example:**
+
+```cangjie
+import ohos.display.*
+func getCutoutInfoExample() {
+    try {
+        let displayClass = getDefaultDisplaySync()
+        let cutout = displayClass.getCutoutInfo()
+        println(cutout.boundingRects.size)
+    } catch (exception: Exception) {
+        Hilog.error(0, "AppLogCj", exception.toString())
+    }
+}
+```## class FoldCreaseRegion
 
 ```cangjie
 public class FoldCreaseRegion {
@@ -891,11 +833,11 @@ public class FoldCreaseRegion {
 }
 ```
 
-**Function:** Fold crease region.
+**Function:** Foldable screen crease region.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
-**Since Version:** 21
+**Since:** 21
 
 ### let creaseRects
 
@@ -907,607 +849,727 @@ public let creaseRects: Array<Rect>
 
 **Type:** Array\<[Rect](#class-rect)>
 
-**Read-Write Capability:** Read-only**System Capability:** SystemCapability.Window.SessionManager  
+**Access:** Read-only
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Window.SessionManager
 
-### let displayId  
+**Since:** 21
 
-```cangjie  
-public let displayId: UInt32  
-```  
+### let displayId
 
-**Description:** Sets the display ID to identify the screen where the fold crease is located.  
-
-**Type:** UInt32  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Initial Version:** 21  
-
-### init(UInt32, Array\<Rect>)  
-
-```cangjie  
-public init(  
-    displayId!: UInt32,  
-    creaseRects!: Array<Rect>  
-)  
-```  
-
-**Description:** Creates a FoldCreaseRegion object.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| displayId | UInt32 | Yes | - | Display ID to identify the screen where the fold crease is located. |  
-| creaseRects | Array\<[Rect](#class-rect)> | Yes | - | Fold crease region. |  
-
-## class Rect  
-
-```cangjie  
-public class Rect {  
-    public var left: Int32  
-    public var top: Int32  
-    public var width: UInt32  
-    public var height: UInt32  
-    public init(  
-        left!: Int32,  
-        top!: Int32,  
-        width!: UInt32,  
-        height!: UInt32  
-    )  
-}  
-```  
-
-**Description:** Rectangle region information.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### var height  
-
-```cangjie  
-public var height: UInt32  
-```  
-
-**Description:** Sets the height of the rectangle region.  
-
-> **Note:**  
->  
-> The unit is pixels, and this parameter should be an integer.  
-
-**Type:** UInt32  
-
-**Read/Write Permission:** Read-write  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### var left  
-
-```cangjie  
-public var left: Int32  
-```  
-
-**Description:** Sets the left boundary of the rectangle region.  
-
-> **Note:**  
->  
-> The unit is pixels, and this parameter should be an integer.  
-
-**Type:** Int32  
-
-**Read/Write Permission:** Read-write  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### var top  
-
-```cangjie  
-public var top: Int32  
-```  
-
-**Description:** Sets the top boundary of the rectangle region.  
-
-> **Note:**  
->  
-> The unit is pixels, and this parameter should be an integer.  
-
-**Type:** Int32  
-
-**Read/Write Permission:** Read-write  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### var width  
-
-```cangjie  
-public var width: UInt32  
-```  
-
-**Description:** Sets the width of the rectangle region.  
-
-> **Note:**  
->  
-> The unit is pixels, and this parameter should be an integer.  
-
-**Type:** UInt32  
-
-**Read/Write Permission:** Read-write  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### init(Int32, Int32, UInt32, UInt32)  
-
-```cangjie  
-public init(  
-    left!: Int32,  
-    top!: Int32,  
-    width!: UInt32,  
-    height!: UInt32  
-)  
-```  
-
-**Description:** Creates a Rect object.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| left | Int32 | Yes | - | Left boundary of the rectangle region, in px. |  
-| top | Int32 | Yes | - | Top boundary of the rectangle region, in px. |  
-| width | UInt32 | Yes | - | Width of the rectangle region, in px. |  
-| height | UInt32 | Yes | - | Height of the rectangle region, in px. |  
-
-## class WaterfallDisplayAreaRects  
-
-```cangjie  
-public class WaterfallDisplayAreaRects {  
-    public let left: Rect  
-    public let top: Rect  
-    public let right: Rect  
-    public let bottom: Rect  
-    public init(  
-        left!: Rect,  
-        top!: Rect,  
-        right!: Rect,  
-        bottom!: Rect  
-    )  
-}  
-```  
-
-**Description:** Waterfall screen curved display area information.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### let bottom  
-
-```cangjie  
-public let bottom: Rect  
-```  
-
-**Description:** Sets the bottom rectangular region of the waterfall curved area.  
-
-**Type:** [Rect](#class-rect)  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### let left  
-
-```cangjie  
-public let left: Rect  
-```  
-
-**Description:** Sets the left rectangular region of the waterfall curved area.  
-
-**Type:** [Rect](#class-rect)  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### let right  
-
-```cangjie  
-public let right: Rect  
-```  
-
-**Description:** Sets the right rectangular region of the waterfall curved area.  
-
-**Type:** [Rect](#class-rect)  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### let top  
-
-```cangjie  
-public let top: Rect  
-```  
-
-**Description:** Sets the top rectangular region of the waterfall curved area.  
-
-**Type:** [Rect](#class-rect)  
-
-**Read/Write Permission:** Read-only  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-### init(Rect, Rect, Rect, Rect)  
-
-```cangjie  
-public init(  
-    left!: Rect,  
-    top!: Rect,  
-    right!: Rect,  
-    bottom!: Rect  
-)  
-```  
-
-**Description:** Creates a WaterfallDisplayAreaRects object.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| left | [Rect](#class-rect) | Yes | - | Left rectangular region of the waterfall curved area. |  
-| top | [Rect](#class-rect) | Yes | - | Top rectangular region of the waterfall curved area. |  
-| right | [Rect](#class-rect) | Yes | - | Right rectangular region of the waterfall curved area. |  
-| bottom | [Rect](#class-rect) | Yes | - | Bottom rectangular region of the waterfall curved area. |  
-
-## enum DisplayState  
-
-```cangjie  
-public enum DisplayState {  
-    | StateUnknown  
-    | StateOff  
-    | StateOn  
-    | StateDoze  
-    | StateDozeSuspend  
-    | StateVr  
-    | StateOnSuspend  
-    | ...  
-}  
-```  
-
-**Description:** Display device state types.**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateDoze  
-
-```cangjie  
-StateDoze  
-```  
-
-**Description:** Indicates that the display device is in low-power mode.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateDozeSuspend  
-
-```cangjie  
-StateDozeSuspend  
-```  
-
-**Description:** Indicates that the display device is in sleep mode with the CPU suspended.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateOff  
-
-```cangjie  
-StateOff  
-```  
-
-**Description:** Indicates that the display device is turned off.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateOn  
-
-```cangjie  
-StateOn  
-```  
-
-**Description:** Indicates that the display device is turned on.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateOnSuspend  
-
-```cangjie  
-StateOnSuspend  
-```  
-
-**Description:** Indicates that the display device is turned on with the CPU suspended.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateUnknown  
-
-```cangjie  
-StateUnknown  
-```  
-
-**Description:** Indicates that the display device status is unknown.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-### StateVr  
-
-```cangjie  
-StateVr  
-```  
-
-**Description:** Indicates that the display device is in VR mode.  
-
-**System Capability:** SystemCapability.WindowManager.WindowManager.Core  
-
-**Since:** 21  
-
-## enum FoldDisplayMode  
-
-```cangjie  
-public enum FoldDisplayMode {  
-    | FoldDisplayModeUnknown  
-    | FoldDisplayModeFull  
-    | FoldDisplayModeMain  
-    | FoldDisplayModeSub  
-    | FoldDisplayModeCoordination  
-    | ...  
-}  
-```  
-
-**Description:** Display mode types for foldable devices.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldDisplayModeCoordination  
-
-```cangjie  
-FoldDisplayModeCoordination  
-```  
-
-**Description:** Indicates that the device is currently in dual-screen coordinated display mode.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldDisplayModeFull  
-
-```cangjie  
-FoldDisplayModeFull  
-```  
-
-**Description:** Indicates that the device is currently in full-screen display mode.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldDisplayModeMain  
-
-```cangjie  
-FoldDisplayModeMain  
-```  
-
-**Description:** Indicates that the device is currently displaying content on the main screen.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldDisplayModeSub  
-
-```cangjie  
-FoldDisplayModeSub  
-```  
-
-**Description:** Indicates that the device is currently displaying content on the sub-screen.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldDisplayModeUnknown  
-
-```cangjie  
-FoldDisplayModeUnknown  
-```  
-
-**Description:** Indicates that the current foldable display mode of the device is unknown.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-## enum FoldStatus  
-
-```cangjie  
-public enum FoldStatus {  
-    | FoldStatusUnknown  
-    | FoldStatusExpanded  
-    | FoldStatusFolded  
-    | FoldStatusHalfFolded  
-    | ...  
-}  
-```  
-
-**Description:** Fold status types for current foldable devices.  
-
-> **Note:**  
->  
-> For dual-hinge devices, with the charging port facing downward, Hinge 1 and Hinge 2 are positioned from right to left, respectively.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldStatusExpanded  
-
-```cangjie  
-FoldStatusExpanded  
-```  
-
-**Description:** Indicates that the device is currently fully unfolded. For dual-hinge devices, it means Hinge 1 is fully unfolded while Hinge 2 is folded.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldStatusFolded  
-
-```cangjie  
-FoldStatusFolded  
-```  
-
-**Description:** Indicates that the device is currently folded. For dual-hinge devices, it means both Hinge 1 and Hinge 2 are folded.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldStatusHalfFolded  
-
-```cangjie  
-FoldStatusHalfFolded  
-```  
-
-**Description:** Indicates that the device is currently in a half-folded state, which is an intermediate state between fully unfolded and fully folded. For dual-hinge devices, it means Hinge 1 is half-folded while Hinge 2 is folded.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### FoldStatusUnknown  
-
-```cangjie  
-FoldStatusUnknown  
-```  
-
-**Description:** Indicates that the current fold status of the device is unknown.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-## enum ListenerType  
-
-```cangjie  
-public enum ListenerType {  
-    | ListnerTypeAdd  
-    | ListnerTypeRemove  
-    | ListnerTypeChange  
-    | ListnerTypeFoldStatusChange  
-    | ListnerTypeFoldAngleChange  
-    | ListnerTypeCaptureStatusChange  
-    | ListnerTypeFoldDisplayModeChange  
-    | ListnerTypeAvailableAreaChange  
-    | ...  
-}  
-```  
-
-**Description:** Types of listener events to be set.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### ListnerTypeAdd  
-
-```cangjie  
-ListnerTypeAdd  
-```  
-
-**Description:** Indicates an event for adding a display device.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### ListnerTypeAvailableAreaChange  
-
-```cangjie  
-ListnerTypeAvailableAreaChange  
-```  
-
-**Description:** Indicates a change in the display mode of the foldable device screen.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### ListnerTypeCaptureStatusChange  
-
-```cangjie  
-ListnerTypeCaptureStatusChange  
-```  
-
-**Description:** Indicates a change in the device's screenshot, screen projection, or screen recording status.  
-
-**System Capability:** SystemCapability.Window.SessionManager  
-
-**Since:** 21  
-
-### ListnerTypeChange  
-
-```cangjie  
-ListnerTypeChange  
+```cangjie
+public let displayId: UInt32
 ```
 
-**Function:** Indicates display device change events.
+**Function:** Sets the display ID to identify the screen where the crease is located.
+
+**Type:** UInt32
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### init(UInt32, Array\<Rect>)
+
+```cangjie
+public init(
+    displayId!: UInt32,
+    creaseRects!: Array<Rect>
+)
+```
+
+**Function:** Creates a FoldCreaseRegion object.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|displayId|UInt32|Yes|-|Display ID to identify the screen where the crease is located.|
+|creaseRects|Array\<[Rect](#class-rect)>|Yes|-|Crease region.|
+
+## class Rect
+
+```cangjie
+public class Rect {
+    public var left: Int32
+    public var top: Int32
+    public var width: UInt32
+    public var height: UInt32
+    public init(
+        left!: Int32,
+        top!: Int32,
+        width!: UInt32,
+        height!: UInt32
+    )
+}
+```
+
+**Function:** Rectangle region information.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### var height
+
+```cangjie
+public var height: UInt32
+```
+
+**Function:** Sets the height of the rectangle region.
+
+**Type:** UInt32
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### var left
+
+```cangjie
+public var left: Int32
+```
+
+**Function:** Sets the left boundary of the rectangle region.
+
+**Type:** Int32
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### var top
+
+```cangjie
+public var top: Int32
+```
+
+**Function:** Sets the top boundary of the rectangle region.
+
+**Type:** Int32
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### var width
+
+```cangjie
+public var width: UInt32
+```
+
+**Function:** Sets the width of the rectangle region.
+
+**Type:** UInt32
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### init(Int32, Int32, UInt32, UInt32)
+
+```cangjie
+public init(
+    left!: Int32,
+    top!: Int32,
+    width!: UInt32,
+    height!: UInt32
+)
+```
+
+**Function:** Creates a Rect object.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|left|Int32|Yes|-|Left boundary of the rectangle region in px (must be an integer).|
+|top|Int32|Yes|-|Top boundary of the rectangle region in px (must be an integer).|
+|width|UInt32|Yes|-|Width of the rectangle region in px (must be an integer).|
+|height|UInt32|Yes|-|Height of the rectangle region in px (must be an integer).|
+
+## class WaterfallDisplayAreaRects
+
+```cangjie
+public class WaterfallDisplayAreaRects {
+    public let left: Rect
+    public let top: Rect
+    public let right: Rect
+    public let bottom: Rect
+    public init(
+        left!: Rect,
+        top!: Rect,
+        right!: Rect,
+        bottom!: Rect
+    )
+}
+```
+
+**Function:** Waterfall screen curved display region information.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### let bottom
+
+```cangjie
+public let bottom: Rect
+```
+
+**Function:** Sets the bottom rectangular region of the waterfall curved area.
+
+**Type:** [Rect](#class-rect)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### let left
+
+```cangjie
+public let left: Rect
+```
+
+**Function:** Sets the left rectangular region of the waterfall curved area.
+
+**Type:** [Rect](#class-rect)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### let right
+
+```cangjie
+public let right: Rect
+```
+
+**Function:** Sets the right rectangular region of the waterfall curved area.
+
+**Type:** [Rect](#class-rect)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### let top
+
+```cangjie
+public let top: Rect
+```
+
+**Function:** Sets the top rectangular region of the waterfall curved area.
+
+**Type:** [Rect](#class-rect)
+
+**Access:** Read-only
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### init(Rect, Rect, Rect, Rect)
+
+```cangjie
+public init(
+    left!: Rect,
+    top!: Rect,
+    right!: Rect,
+    bottom!: Rect
+)
+```
+
+**Function:** Creates a WaterfallDisplayAreaRects object.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|left|[Rect](#class-rect)|Yes|-|Left rectangular region of the waterfall curved area.|
+|top|[Rect](#class-rect)|Yes|-|Top rectangular region of the waterfall curved area.|
+|right|[Rect](#class-rect)|Yes|-|Right rectangular region of the waterfall curved area.|
+|bottom|[Rect](#class-rect)|Yes|-|Bottom rectangular region of the waterfall curved area.|
+
+## enum DisplayState
+
+```cangjie
+public enum DisplayState <: Equatable<DisplayState> {
+    | StateUnknown
+    | StateOff
+    | StateOn
+    | StateDoze
+    | StateDozeSuspend
+    | StateVr
+    | StateOnSuspend
+    | ...
+}
+```
+
+**Function:** Display device state types.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+**Parent Type:**
+
+- Equatable\<DisplayState>
+
+### StateDoze
+
+```cangjie
+StateDoze
+```
+
+**Function:** Indicates the display device is in low-power mode.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### StateDozeSuspend
+
+```cangjie
+StateDozeSuspend
+```
+
+**Function:** Indicates the display device is in sleep mode with CPU suspended.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### StateOff
+
+```cangjie
+StateOff
+```
+
+**Function:** Indicates the display device is turned off.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### StateOn
+
+```cangjie
+StateOn
+```
+
+**Function:** Indicates the display device is turned on.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### StateOnSuspend
+
+```cangjie
+StateOnSuspend
+```
+
+**Function:** Indicates the display device is on with CPU suspended.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### StateUnknown
+
+```cangjie
+StateUnknown
+```
+
+**Function:** Indicates the display device state is unknown.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### StateVr
+
+```cangjie
+StateVr
+```
+
+**Function:** Indicates the display device is in VR mode.
+
+**System Capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**Since:** 21
+
+### func !=(DisplayState)
+
+```cangjie
+public operator func !=(other: DisplayState): Bool
+```
+
+**Function:** Checks whether two enum values are unequal.
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[DisplayState](#enum-displaystate)|Yes|-|Another enum value to compare|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Whether the two enum values are unequal.|
+
+### func ==(DisplayState)
+
+```cangjie
+public operator func ==(other: DisplayState): Bool
+```
+
+**Function:** Checks whether two enum values are equal.
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[DisplayState](#enum-displaystate)|Yes|-|Another enum value to compare|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Whether the two enum values are equal.|
+
+```## enum FoldDisplayMode
+
+```cangjie
+public enum FoldDisplayMode <: Equatable<FoldDisplayMode> {
+    | FoldDisplayModeUnknown
+    | FoldDisplayModeFull
+    | FoldDisplayModeMain
+    | FoldDisplayModeSub
+    | FoldDisplayModeCoordination
+    | ...
+}
+```
+
+**Function:** Types of display modes for foldable devices.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+**Parent Type:**
+
+- Equatable\<FoldDisplayMode>
+
+### FoldDisplayModeCoordination
+
+```cangjie
+FoldDisplayModeCoordination
+```
+
+**Function:** Indicates the device is currently in dual-screen coordinated display mode.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldDisplayModeFull
+
+```cangjie
+FoldDisplayModeFull
+```
+
+**Function:** Indicates the device is currently in full-screen display mode.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldDisplayModeMain
+
+```cangjie
+FoldDisplayModeMain
+```
+
+**Function:** Indicates the device is currently displaying on the main screen.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldDisplayModeSub
+
+```cangjie
+FoldDisplayModeSub
+```
+
+**Function:** Indicates the device is currently displaying on the sub-screen.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldDisplayModeUnknown
+
+```cangjie
+FoldDisplayModeUnknown
+```
+
+**Function:** Indicates the current foldable display mode of the device is unknown.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### func !=(FoldDisplayMode)
+
+```cangjie
+public operator func !=(other: FoldDisplayMode): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [FoldDisplayMode](#enum-folddisplaymode) | Yes | - | Another enum value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enum values are unequal. |
+
+### func ==(FoldDisplayMode)
+
+```cangjie
+public operator func ==(other: FoldDisplayMode): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [FoldDisplayMode](#enum-folddisplaymode) | Yes | - | Another enum value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enum values are equal. |
+
+## enum FoldStatus
+
+```cangjie
+public enum FoldStatus <: Equatable<FoldStatus> {
+    | FoldStatusUnknown
+    | FoldStatusExpanded
+    | FoldStatusFolded
+    | FoldStatusHalfFolded
+    | ...
+}
+```
+
+**Function:** Types of folding states for current foldable devices.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+**Parent Type:**
+
+- Equatable\<FoldStatus>
+
+### FoldStatusExpanded
+
+```cangjie
+FoldStatusExpanded
+```
+
+**Function:** Indicates the device is currently fully expanded. For dual-hinge devices, it means hinge one is fully expanded while hinge two is folded.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldStatusFolded
+
+```cangjie
+FoldStatusFolded
+```
+
+**Function:** Indicates the device is currently folded. For dual-hinge devices, it means both hinge one and hinge two are folded.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldStatusHalfFolded
+
+```cangjie
+FoldStatusHalfFolded
+```
+
+**Function:** Indicates the device is currently half-folded. Half-folded refers to a state between fully expanded and folded. For dual-hinge devices, it means hinge one is half-folded while hinge two is folded.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### FoldStatusUnknown
+
+```cangjie
+FoldStatusUnknown
+```
+
+**Function:** Indicates the current folding state of the device is unknown.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### func !=(FoldStatus)
+
+```cangjie
+public operator func !=(other: FoldStatus): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [FoldStatus](#enum-foldstatus) | Yes | - | Another enum value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enum values are unequal. |
+
+### func ==(FoldStatus)
+
+```cangjie
+public operator func ==(other: FoldStatus): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [FoldStatus](#enum-foldstatus) | Yes | - | Another enum value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enum values are equal. |
+
+## enum ListenerType
+
+```cangjie
+public enum ListenerType <: Equatable<ListenerType> {
+    | ListnerTypeAdd
+    | ListnerTypeRemove
+    | ListnerTypeChange
+    | ListnerTypeFoldStatusChange
+    | ListnerTypeFoldAngleChange
+    | ListnerTypeCaptureStatusChange
+    | ListnerTypeFoldDisplayModeChange
+    | ListnerTypeAvailableAreaChange
+    | ...
+}
+```
+
+**Function:** Types of event listeners to be set.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+**Parent Type:**
+
+- Equatable\<ListenerType>
+
+### ListnerTypeAdd
+
+```cangjie
+ListnerTypeAdd
+```
+
+**Function:** Indicates an event for adding a display device.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### ListnerTypeAvailableAreaChange
+
+```cangjie
+ListnerTypeAvailableAreaChange
+```
+
+**Function:** Indicates the display mode of the foldable device screen has changed.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### ListnerTypeCaptureStatusChange
+
+```cangjie
+ListnerTypeCaptureStatusChange
+```
+
+**Function:** Indicates the device's screenshot, screen projection, or screen recording status has changed.
+
+**System Capability:** SystemCapability.Window.SessionManager
+
+**Since:** 21
+
+### ListnerTypeChange
+
+```cangjie
+ListnerTypeChange
+```
+
+**Function:** Indicates an event for modifying a display device.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
@@ -1519,7 +1581,7 @@ ListnerTypeChange
 ListnerTypeFoldAngleChange
 ```
 
-**Function:** Indicates changes in the folding angle of foldable devices.
+**Function:** Indicates the folding angle of the foldable device has changed.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
@@ -1531,7 +1593,7 @@ ListnerTypeFoldAngleChange
 ListnerTypeFoldDisplayModeChange
 ```
 
-**Function:** Indicates changes in the display mode of foldable device screens.
+**Function:** Indicates the display mode of the foldable device screen has changed.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
@@ -1543,7 +1605,7 @@ ListnerTypeFoldDisplayModeChange
 ListnerTypeFoldStatusChange
 ```
 
-**Function:** Indicates changes in the folding status of foldable devices.
+**Function:** Indicates the folding status of the foldable device has changed.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
@@ -1555,16 +1617,56 @@ ListnerTypeFoldStatusChange
 ListnerTypeRemove
 ```
 
-**Function:** Indicates display device removal events.
+**Function:** Indicates an event for removing a display device.
 
 **System Capability:** SystemCapability.Window.SessionManager
 
 **Since:** 21
 
+### func !=(ListenerType)
+
+```cangjie
+public operator func !=(other: ListenerType): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [ListenerType](#enum-listenertype) | Yes | - | Another enum value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enum values are unequal. |
+
+### func ==(ListenerType)
+
+```cangjie
+public operator func ==(other: ListenerType): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [ListenerType](#enum-listenertype) | Yes | - | Another enum value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enum values are equal. |
+
 ## enum Orientation
 
 ```cangjie
-public enum Orientation {
+public enum Orientation <: Equatable<Orientation> {
     | Portrait
     | Landscape
     | PortraitInverted
@@ -1573,19 +1675,21 @@ public enum Orientation {
 }
 ```
 
-**Function:** Current display orientation types of the display device.
+**Function:** Types of current display orientation for display devices.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Since:** 21
 
-### Landscape
+**Parent Type:**
+
+- Equatable\<Orientation>### Landscape
 
 ```cangjie
 Landscape
 ```
 
-**Function:** Indicates the device is currently displaying in landscape mode.
+**Function:** Indicates the device is currently displaying in landscape orientation.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1597,7 +1701,7 @@ Landscape
 LandscapeInverted
 ```
 
-**Function:** Indicates the device is currently displaying in inverted landscape mode.
+**Function:** Indicates the device is currently displaying in inverted landscape orientation.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1609,7 +1713,7 @@ LandscapeInverted
 Portrait
 ```
 
-**Function:** Indicates the device is currently displaying in portrait mode.
+**Function:** Indicates the device is currently displaying in portrait orientation.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1621,8 +1725,48 @@ Portrait
 PortraitInverted
 ```
 
-**Function:** Indicates the device is currently displaying in inverted portrait mode.
+**Function:** Indicates the device is currently displaying in inverted portrait orientation.
 
 **System Capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Since:** 21
+
+### func !=(Orientation)
+
+```cangjie
+public operator func !=(other: Orientation): Bool
+```
+
+**Function:** Determines whether two enumeration values are not equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [Orientation](#enum-orientation) | Yes | - | Another enumeration value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enumeration values are not equal. |
+
+### func ==(Orientation)
+
+```cangjie
+public operator func ==(other: Orientation): Bool
+```
+
+**Function:** Determines whether two enumeration values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [Orientation](#enum-orientation) | Yes | - | Another enumeration value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Whether the two enumeration values are equal. |

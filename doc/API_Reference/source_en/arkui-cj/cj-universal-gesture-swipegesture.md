@@ -2,56 +2,74 @@
 
 Used to trigger swipe events, recognized successfully when swipe speed exceeds 100vp/s.
 
-## Creating Components
-
-### init(Int32, SwipeDirection, Float64)
+## Import Module
 
 ```cangjie
-public init(fingers!: Int32 = 1, direction!: SwipeDirection = SwipeDirection.All, speed!: Float64 = 100.0)
+import kit.ArkUI.*
 ```
 
-**Function:** Creates a swipe gesture.
+## func !=(SwipeDirection)
+
+```cangjie
+public operator func !=(other: SwipeDirection): Bool
+```
+
+**Function:** Determines whether two enumeration values are unequal
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| fingers | Int32 | No | 1 | **Named parameter.** Minimum number of fingers required to trigger swipe (default: 1, min: 1, max: 10). |
-| direction | [SwipeDirection](#enum-swipedirection) | No | SwipeDirection.All | **Named parameter.** Swipe direction to trigger the gesture. |
-| speed | Float64 | No | 100.0 | **Named parameter.** Minimum speed required for recognition.<br/>**Note:** Values ≤0 will be converted to default. |
+| other | [SwipeDirection](#enum-swipedirection) | Yes | - | Enumeration value to compare |
 
-## Component Events
+**Return Value:**
 
-### func onAction((GestureEvent) -> Unit)
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enumeration values are unequal, otherwise returns false. |
+
+## func ==(SwipeDirection)
 
 ```cangjie
-public func onAction(callback: (GestureEvent) -> Unit): This
+public operator func ==(other: SwipeDirection): Bool
 ```
 
-**Function:** Triggered when swipe gesture recognition succeeds.
+**Function:** Determines whether two enumeration values are equal
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | ([GestureEvent](./cj-universal-gesture-bind.md#class-gestureevent))->Unit | Yes | - | Callback function triggered upon successful swipe recognition. |
+| other | [SwipeDirection](#enum-swipedirection) | Yes | - | Enumeration value to compare |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
 
 ## Basic Type Definitions
 
 ### enum SwipeDirection
 
 ```cangjie
-public enum SwipeDirection {
+public enum SwipeDirection <: Equatable<SwipeDirection> {
     | Horizontal
     | Vertical
     | All
-    | None
+    | ...
 }
 ```
 
-**Function:** Specifies swipe direction for gesture triggering.
+**Function:** Specifies the swipe direction for triggering swipe gestures.
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parent Type:**
+
+- Equatable\<SwipeDirection>
 
 #### All
 
@@ -61,7 +79,9 @@ All
 
 **Function:** All directions.
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### Horizontal
 
@@ -69,19 +89,11 @@ All
 Horizontal
 ```
 
-**Function:** Horizontal direction (triggered when swipe angle with x-axis <45°).
+**Function:** Horizontal direction, triggered when the angle between finger swipe direction and x-axis is less than 45 degrees.
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### None
-
-```cangjie
-None
-```
-
-**Function:** Disables swipe gesture triggering in all directions.
-
-**Since:** 19
+**Since:** 21
 
 #### Vertical
 
@@ -89,50 +101,8 @@ None
 Vertical
 ```
 
-**Function:** Vertical direction (triggered when swipe angle with y-axis <45°).
+**Function:** Vertical direction, triggered when the angle between finger swipe direction and y-axis is less than 45 degrees.
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Example Code
-
-This example implements swipe gesture recognition through SwipeGesture configuration.
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.UIKit.*
-import ohos.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    @State var rotateAngle: Float64 = 0.0
-    @State var speed: Float64 = 1.0
-
-    func build() {
-        Column() {
-            Column() {
-                Text("SwipeGesture speed\n" + this.speed.toString())
-                Text("SwipeGesture angle\n" + this.rotateAngle.toString())
-            }
-            .height(200)
-            .width(300)
-            .padding(20)
-            .border(width: 3.vp)
-            .margin(80)
-            .rotate(Float32(this.rotateAngle))
-            .gesture(
-                SwipeGesture(direction: SwipeDirection.Vertical)
-                .onAction({ event: GestureEvent =>
-                    this.speed = event.speed
-                    this.rotateAngle = event.angle
-                })
-            )
-        }
-    }
-}
-```
-
-![swipe](figures/swipe_gesture.gif)
+**Since:** 21

@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following describes only the module-specific error codes. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following describes only the error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 5400101 Memory Allocation Failure
 
@@ -17,13 +17,13 @@ Failed to allocate memory.
 **Possible Causes**
 
 1. The number of instances exceeds 16.
-2. A null pointer occurred due to failure in the `new` or `malloc` process.
+2. The `new` or `malloc` process failed, resulting in a null pointer.
 
 **Resolution Steps**
 
 Destroy the current instance and recreate it. If recreation fails, stop the related operations.
 
-## 5400102 Operation Not Supported by Current State Machine
+## 5400102 Operation Not Allowed in Current State
 
 **Error Message**
 
@@ -39,9 +39,9 @@ The current state machine does not support this operation.
 
 **Resolution Steps**
 
-Verify whether the current state supports the operation. Switch the instance to the correct state to perform the proper operation.
+Verify whether the current state supports the operation. Switch the instance to the correct state before performing the operation.
 
-## 5400103 I/O Error Occurred
+## 5400103 I/O Error
 
 **Error Message**
 
@@ -67,7 +67,7 @@ Operation timeout.
 
 **Error Description**
 
-Operation timed out.
+The operation timed out.
 
 **Possible Causes**
 
@@ -76,7 +76,7 @@ Operation timed out.
 
 **Resolution Steps**
 
-1. Verify if the network is functioning properly.
+1. Check if the network is functioning properly.
 2. Destroy the current instance and recreate it. If recreation fails, stop the related operations.
 
 ## 5400105 Playback Service Died
@@ -87,11 +87,11 @@ Service died.
 
 **Error Description**
 
-The playback service died.
+The playback service terminated unexpectedly.
 
 **Possible Causes**
 
-The playback service died.
+The playback service terminated unexpectedly.
 
 **Resolution Steps**
 
@@ -105,7 +105,7 @@ Unsupported format.
 
 **Error Description**
 
-Unsupported format.
+The format is not supported.
 
 **Possible Causes**
 
@@ -113,9 +113,9 @@ Unsupported file or format.
 
 **Resolution Steps**
 
-The currently used format is not supported. The user needs to switch to a supported format.
+The current format or specification is not supported. Switch to a supported format.
 
-Refer to the actual module functionality for supported formats.
+For supported specifications, refer to the relevant module's specifications in the [Media Kit Introduction](../../../Dev_Guide/source_zh_cn/media/media/cj-media-kit-intro.md) based on the actual module functionality used.
 
 ## 5400107 Audio Focus Conflict
 
@@ -125,7 +125,7 @@ Audio interrupted.
 
 **Error Description**
 
-Recording failed due to audio focus conflict.
+Recording failed due to an audio focus conflict.
 
 **Possible Causes**
 
@@ -133,9 +133,9 @@ Another process has occupied the audio focus, making it unavailable.
 
 **Resolution Steps**
 
-Destroy the current instance and check if another process is currently recording. If the occupying process can be stopped, recreate the instance.
+Destroy the current instance and check if other processes are currently recording. If other processes can be stopped, recreate the instance.
 
-## 5411001 Server Address Resolution or Connection Error
+## 5411001 Host Resolution or Connection Error
 
 **Error Message**
 
@@ -143,16 +143,16 @@ Can not find host.
 
 **Error Description**
 
-Error in resolving or connecting to the server address.
+Failed to resolve or connect to the server address.
 
 **Possible Causes**
 
 1. Incorrect server address connection.
-2. Failed resolution of the server address.
+2. Failed to resolve the server address.
 
 **Resolution Steps**
 
-The current server address is incorrect or cannot be resolved. Use a different server address.
+The current server address is incorrect or unresolvable. Use a different server address.
 
 ## 5411002 Network Connection Timeout
 
@@ -170,7 +170,7 @@ Network anomaly.
 
 **Resolution Steps**
 
-1. Verify if the network is functioning properly.
+1. Check if the network is functioning properly.
 2. Destroy the current instance and recreate it. If recreation fails, stop the related operations.
 
 ## 5411003 Data or Link Anomaly Due to Network Issues
@@ -207,10 +207,10 @@ Network is disabled.
 
 **Resolution Steps**
 
-1. Verify if the network is disabled.
+1. Check if the network is disabled.
 2. Destroy the current instance and recreate it. If recreation fails, stop the related operations.
 
-## 5411005 No Permission, Access Denied
+## 5411005 Permission Denied
 
 **Error Message**
 
@@ -237,11 +237,11 @@ Network access denied.
 
 **Error Description**
 
-Client request parameter error or exceeds processing capacity.
+Client request parameters are incorrect or exceed processing capacity.
 
 **Possible Causes**
 
-Client request parameter error or exceeds processing capacity.
+Client request parameters are incorrect or exceed processing capacity.
 
 **Resolution Steps**
 
@@ -296,14 +296,16 @@ SSL connection failed.
 
 SSL connection failed.
 
-**Possible Causes**SSL connection failed.
+**Possible Causes**
 
-**Troubleshooting Steps**
+SSL connection failed.
 
-1. Verify whether the SSL connection has expired.
-2. Terminate the current instance and recreate it. If recreation fails, abort related operations.
+**Resolution Steps**
 
-## 5411010 Client Failed to Verify Server Certificate
+1. Verify if the SSL connection has expired.
+2. Destroy the current instance and recreate it. If recreation fails, stop the related operations.
+
+## 5411010 Client Failed to Validate Server Certificate
 
 **Error Message**
 
@@ -311,22 +313,22 @@ SSL server cert needed.
 
 **Error Description**
 
-The SSL server is untrusted. The client failed to verify the server certificate.
+SSL server is untrusted. Client failed to validate the server certificate.
 
 **Possible Causes**
 
-Missing certificate, invalid certificate, or expired certificate.
+No certificate provided, invalid certificate, or expired certificate.
 
-**Troubleshooting Steps**
+**Resolution Steps**
 
-1. Verify whether the SSL certificate is functioning properly.
-2. Terminate the current instance and recreate it. If recreation fails, abort related operations.
+1. Verify if the SSL certificate is valid.
+2. Destroy the current instance and recreate it. If recreation fails, stop the related operations.
 
-## 5411011 Request Unsupported Due to Network Protocol Issues
+## 5411011 Unsupported Request Due to Network Protocol
 
 **Error Message**
 
-Unsupported request.
+Unsupportted request.
 
 **Error Description**
 
@@ -336,7 +338,7 @@ Client request parameters are incorrect or exceed processing capacity.
 
 Client request parameters are incorrect or exceed processing capacity.
 
-**Troubleshooting Steps**
+**Resolution Steps**
 
-1. Verify whether the client request parameters are correct.
-2. Terminate the current instance and recreate it. If recreation fails, abort related operations.
+1. Verify if the client request parameters are correct.
+2. Destroy the current instance and recreate it. If recreation fails, stop the related operations.

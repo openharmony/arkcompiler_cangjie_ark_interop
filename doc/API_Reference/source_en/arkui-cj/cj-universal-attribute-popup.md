@@ -1,148 +1,97 @@
 # Popup Control
 
-Bind popup dialogs to components and configure their content, interaction logic, and display state.
+Binds a popup dialog to a component and configures its content, interaction logic, and display state.
 
 > **Note:**
 >
-> The display state of popup dialogs is reported in the `onStateChange` event callback. Their visibility has no strict correspondence with the creation or destruction of components.
+> The display state of the popup dialog is reported in the `onStateChange` event callback. Its visibility has no strong correlation with the creation or destruction of the component.
+
+## Import Module
+
+```cangjie
+import kit.ArkUI.*
+```
 
 ## func bindPopup(Bool, CustomPopupOptions)
 
 ```cangjie
-public func bindPopup(
-    show!: Bool,
-    popup!: CustomPopupOptions
-)
+public func bindPopup(show: Bool, popup: CustomPopupOptions): This
 ```
 
-**Function:** Binds a Popup dialog to a component.
+**Function:** Binds a custom popup dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| show | Bool | Yes | - | **Named parameter.** The display state of the popup dialog.<br/>Initial value: false, indicating the popup is hidden. The popup dialog must wait for the page to fully render before displaying. Therefore, `show` cannot be set to true during page construction, as this may cause incorrect popup positioning or shape. |
-| popup | [CustomPopupOptions](#class-custompopupoptions) | Yes | - | **Named parameter.** Configures the parameters for the current popup dialog. |
+| show | Bool | Yes | - | Whether to display. |
+| popup | [CustomPopupOptions](#) | Yes | - | Custom popup dialog options. |
 
 ## func bindPopup(Bool, PopupOptions)
 
 ```cangjie
-public func bindPopup(
-    show!: Bool,
-    popup!: PopupOptions
-)
+public func bindPopup(show: Bool, popup: PopupOptions): This
 ```
 
-**Function:** Binds a Popup dialog to a component.
+**Function:** Binds a popup dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 12
+**Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| show | Bool | Yes | - | **Named parameter.** The display state of the popup dialog.<br/>Initial value: false, indicating the popup is hidden. The popup dialog must wait for the page to fully render before displaying. Therefore, `show` cannot be set to true during page construction, as this may cause incorrect popup positioning or shape. |
-| popup | [PopupOptions](#class-popupoptions) | Yes | - | **Named parameter.** Configures the parameters for the current popup dialog. |
+| show | Bool | Yes | - | Whether to display. |
+| popup | [PopupOptions](#) | Yes | - | Popup dialog options. |
+
+## func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**Function:** Intercepts the interactive close action of the popup and determines the result type. Developers need to call this when exiting; no call is needed if no exit is required.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 ## Basic Type Definitions
-
-### class Action
-
-```cangjie
-public class Action {
-    public Action(
-        let value!: String,
-        let action!: () -> Unit
-    )
-}
-```
-
-**Function:** Configures the parameters for popup buttons.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 12
-
-#### let value
-
-```cangjie
-let value: String
-```
-
-**Function:** The text of the primary button in the popup.
-
-**Type:** String
-
-**Access:** Read-only
-
-**Since:** 12
-
-#### let action
-
-```cangjie
-let action: () -> Unit
-```
-
-**Function:** The callback function triggered when the auxiliary button is clicked.
-
-**Type:** () -> Unit
-
-**Access:** Read-only
-
-**Since:** 12
-
-#### Action(String, () -> Unit)
-
-```cangjie
-public Action(let value!: String, let action!: () -> Unit)
-```
-
-**Function:** Constructs an object of type `Action`.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 12
-
-**Parameters:**
-
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | String | Yes | - | **Named parameter.** The text of the primary button in the popup. |
-| action | () -> Unit | No | None | **Named parameter.** The callback function triggered when the auxiliary button is clicked. |
 
 ### class CustomPopupOptions
 
 ```cangjie
 public class CustomPopupOptions {
-    public var builder: () -> Unit = {=>}
+    public var builder: CustomBuilder = { => }
     public var placement: Placement = Placement.Bottom
-    public var maskColor: Color = Color(0x1000000)
+    public var maskColor: ResourceColor = Color(0x1000000)
     public var backgroundColor: Color = Color(0x1000000)
     public var enableArrow: Bool = true
     public var autoCancel: Bool = true
-    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None
-    public var popupColor: ?Color = None
+    public var onStateChange: Option <(PopupStateChangeParam) -> Unit>= Option.None
+    public var popupColor:?Color = None
     public var arrowOffset: Length = 0.vp
     public var showInSubWindow: Bool = false
-    public var mask: ?Color = None
+    public var mask:?Color = None
     public var targetSpace: Length = 0.vp
-    public var offset: Position = Position(0.0, 0.0)
+    public var offset: Position = Position(x: 0.0, y: 0.0)
     public var width: Length = 0.vp
-    public var arrowPointPosition: Option<ArrowPointPosition> = None
+    public var arrowPointPosition: Option<ArrowPointPosition>= None
     public var arrowWidth: Length = 16.vp
     public var arrowHeight: Length = 8.vp
     public var radius: Length = 20.vp
-    public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+    public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
     public var focusable: Bool = false
-    public var transition: Option<TransitionEffect> = Option.None
-    public var onWillDismiss: Option<(DismissPopupAction) -> Unit> = Noneic var followTransformOfTarget: Bool = false
+    public var transition: Option<TransitionEffect>= Option.None
+    public var onWillDismiss: Option <(DismissPopupAction) -> Unit>= None
+    public var followTransformOfTarget: Bool = false
     public init(
         builder!: () -> Unit,
         placement!: Placement = Placement.Bottom,
@@ -150,41 +99,33 @@ public class CustomPopupOptions {
         popupColor!: Color = Color(0x1000000),
         enableArrow!: Bool = true,
         autoCancel!: Bool = true,
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
-    )
-    public init(
-        builder!: () -> Unit,
-        placement!: Placement = Placement.Bottom,
-        maskColor!: Color = Color(0x1000000),
-        popupColor!: Color = Color(0x1000000),
-        enableArrow!: Bool = true,
-        autoCancel!: Bool = true,
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None,
+        onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
         showInSubWindow!: Bool, // 5.1 start
         backgroundColor!: Color = Color(0x1000000),
         arrowOffset!: Length = 0.vp,
         mask!: ?Color = None,
         targetSpace!: Length = 0.vp,
-        offset!: Position = Position(0.0, 0.0),
+        offset!: Position = Position(x: 0.0, y: 0.0),
         width!: Length = 0.vp,
         arrowPointPosition!: ?ArrowPointPosition = None,
         arrowWidth!: Length = 16.vp,
         arrowHeight!: Length = 16.vp,
         radius!: Length = 20.vp,
-        shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         focusable!: Bool = false,
         transition!: Option<TransitionEffect> = Option.None,
-        onWillDismiss! : Option<(DismissPopupAction) -> Unit> = None,
+        onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
         followTransformOfTarget!: Bool = false
     )
-    public init() {}
 }
 ```
 
-**Function:** Parameters for displaying popup dialogs.
+**Function:** Parameters for displaying a popup dialog.
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowHeight
 
@@ -192,13 +133,15 @@ public class CustomPopupOptions {
 public var arrowHeight: Length = 8.vp
 ```
 
-**Function:** Sets the height of the arrow. Default: 8.vp.
+**Function:** Sets the arrow height. Default: 8.vp.
 
-**Type:** [Length](./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowOffset
 
@@ -206,13 +149,15 @@ public var arrowHeight: Length = 8.vp
 public var arrowOffset: Length = 0.vp
 ```
 
-**Function:** Sets the offset of the popup arrow relative to the dialog. When the arrow is positioned above or below the bubble, a value of 0 indicates the arrow is aligned to the far left, and the offset is the distance from the arrow to the far left (default: centered). When the arrow is positioned to the left or right of the bubble, the offset is the distance from the arrow to the top (default: centered). If displayed at the screen edge, the bubble will automatically adjust horizontally. A value of 0 ensures the arrow always points to the bound component.
+**Function:** Sets the offset of the popup arrow on the dialog. When the arrow is above or below the bubble, a value of 0 means the arrow is aligned to the far left, and the offset is the distance from the arrow to the far left (default: centered). When the arrow is to the left or right of the bubble, the offset is the distance from the arrow to the top (default: centered). If displayed at the screen edge, the bubble will automatically shift left or right, and a value of 0 ensures the arrow always points to the bound component.
 
-**Type:** [Length](./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowPointPosition
 
@@ -222,11 +167,13 @@ public var arrowPointPosition: Option<ArrowPointPosition>= None
 
 **Function:** Sets the position of the bubble's arrow relative to the parent component. The arrow can be positioned at "Start," "Center," or "End" in both vertical and horizontal directions. All positions are within the parent component's bounds and will not exceed them.
 
-**Type:** ?[ArrowPointPosition](./cj-common-types.md#enum-arrowpointposition)
+**Type:** [ArrowPointPosition](cj-common-types.md#enum-arrowpointposition)
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowWidth
 
@@ -234,13 +181,15 @@ public var arrowPointPosition: Option<ArrowPointPosition>= None
 public var arrowWidth: Length = 16.vp
 ```
 
-**Function:** Sets the width of the arrow. If the set arrow width exceeds the length of the side minus twice the bubble's corner radius, the arrow will not be drawn. Default: 16.vp.
+**Function:** Sets the arrow width. If the set width exceeds the side length minus twice the bubble's corner radius, the arrow will not be drawn. Default: 16.vp.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var autoCancel
 
@@ -248,27 +197,31 @@ public var arrowWidth: Length = 16.vp
 public var autoCancel: Bool = true
 ```
 
-**Function:** Determines whether the bubble automatically closes when there is user interaction on the page. Default: true.
+**Function:** Whether to automatically close the bubble when there is a page operation. Default: true.
 
 **Type:** Bool
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var backgroundBlurStyle
 
 ```cangjie
-public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
 ```
 
-**Function:** Sets the blur effect parameters for the bubble background. Default: BlurStyle.COMPONENT_ULTRA_THICK.
+**Function:** Sets the bubble's blur background parameters. Default: BlurStyle.COMPONENT_ULTRA_THICK.
 
 **Type:** [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var backgroundColor
 
@@ -278,27 +231,33 @@ public var backgroundColor: Color = Color(0x1000000)
 
 **Function:** Sets the background color of the bubble.
 
-**Type:** [Color](./cj-common-types.md#class-color)
+**Type:** [Color](cj-common-types.md#class-color)
 
-**Access:** Read-write
+**Read-Write Access:** Read-Write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var builder
 
 ```cangjie
-public var builder:() -> Unit
+public var builder: CustomBuilder = { => }
 ```
 
-**Function:** The constructor for the bubble's content.
+**Function:** Builder for the bubble's content.
 
 > **Note:**
 >
-> `popup` is a general property. Custom popups do not support nested popups. The first-layer container component in `builder` does not support the `position` property; using it will prevent the bubble from displaying. If custom components are used in `builder`, their `aboutToAppear` and `aboutToDisappear` lifecycles are unrelated to the popup's visibility and should not be used to determine the popup's state.
+> Popup is a universal property. Custom popups do not support nested popups. The first-layer container component in the builder does not support the `position` property; using it will prevent the bubble from displaying. If a custom component is used in the builder, its `aboutToAppear` and `aboutToDisappear` lifecycles are unrelated to the popup's visibility and cannot be used to determine the popup's state.
 
-**Type:** ()->Unit**Read-Write Capability:** Read-Write
+**Type:** [CustomBuilder](./cj-common-types.md#type-custombuilder)
 
-**Initial Version:** 12
+**Read-Write Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var enableArrow
 
@@ -306,13 +265,15 @@ public var builder:() -> Unit
 public var enableArrow: Bool = true
 ```
 
-**Function:** Sets whether to display the arrow. If the bubble length on the arrow's side is insufficient to display the arrow, it will not be shown by default. For example, when placement is set to Left, if the bubble height is less than the sum of the arrow width (32.vp) and twice the bubble corner radius (48.vp) (80.vp), the arrow will not be displayed. Default value: true.
+**Function:** Whether to display the arrow. If the bubble's length on the arrow's side is insufficient to display the arrow, it will be hidden by default. For example, if `placement` is set to `Left` and the bubble height is less than the arrow width (32.vp) plus twice the bubble corner radius (48.vp), totaling 80.vp, the arrow will not be displayed. Default: true.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var focusable
 
@@ -320,13 +281,15 @@ public var enableArrow: Bool = true
 public var focusable: Bool = false
 ```
 
-**Function:** Sets whether the bubble gains focus after popping up. Default value: false.
+**Function:** Whether the bubble gains focus after popping up. Default: false.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var followTransformOfTarget
 
@@ -334,69 +297,79 @@ public var focusable: Bool = false
 public var followTransformOfTarget: Bool = false
 ```
 
-**Function:** Determines whether the bubble can be displayed at the transformed position when the host component it is bound to or the parent container of the host component undergoes transformations such as rotation or scaling. Default value: false.
+**Function:** Whether the bubble can display at the transformed position when the bound host component or its parent container has transformations like rotation or scaling. Default: false.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var mask
 
 ```cangjie
-public var mask: Color = Color(0x1000000)
+public var mask:?Color = None
 ```
 
 **Function:** Sets the color of the mask layer.
 
-**Type:** [Color](./cj-common-types.md#class-color)
+**Type:** ?[Color](cj-common-types.md#class-color)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var maskColor
 
 ```cangjie
-public var maskColor: Color = Color(0x1000000)
+public var maskColor: ResourceColor = Color(0x1000000)
 ```
 
-**Function:** Sets the color of the bubble mask layer.
+**Function:** Sets the color of the bubble's mask layer.
 
-**Type:** [Color](./cj-common-types.md#class-color)
+**Type:** [ResourceColor](cj-common-types.md#interface-resourcecolor)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var offset
 
 ```cangjie
-public var offset: Position = Position(0.0, 0.0)
+public var offset: Position = Position(x: 0.0, y: 0.0)
 ```
 
-**Function:** Sets the offset of the popup component relative to the display position specified by placement. Percentage values are not supported.
+**Function:** Sets the offset of the popup component relative to the display position specified by `placement`. Percentage values are not supported.
 
-**Type:** [Position](./cj-common-types.md#class-position)
+**Type:** [Position](cj-common-types.md#class-position)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var onStateChange
 
 ```cangjie
-public var onStateChange: Option <(StateChangeEvent) -> Unit>= Option.None
+public var onStateChange: Option <(PopupStateChangeParam) -> Unit>= Option.None
 ```
 
-**Function:** Sets the callback for popup state change events, with the parameter being the current display state of the popup.
+**Function:** Sets the callback for popup state changes, with the parameter being the current display state.
 
-**Type:** ?[StateChangeEvent](#class-statechangeevent)
+**Type:** ([PopupStateChangeParam](#class-popupstatechangeparam))->Unit
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var onWillDismiss
 
@@ -404,17 +377,19 @@ public var onStateChange: Option <(StateChangeEvent) -> Unit>= Option.None
 public var onWillDismiss: Option <(DismissPopupAction) -> Unit>= None
 ```
 
-**Function:** Sets the interactive close interception switch and callback function for the popup.
+**Function:** Sets the interception switch and callback function for interactive popup closing.
 
 > **Note:**
 >
-> Within the onWillDismiss callback, no further onWillDismiss interception can be performed.
+> The `onWillDismiss` callback cannot perform another `onWillDismiss` interception.
 
 **Type:** ([DismissPopupAction](#class-dismisspopupaction))->Unit
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var placement
 
@@ -422,27 +397,31 @@ public var onWillDismiss: Option <(DismissPopupAction) -> Unit>= None
 public var placement: Placement = Placement.Bottom
 ```
 
-**Function:** Sets the preferred display position of the bubble component. If the current position cannot accommodate it, the position will be automatically adjusted. Default value: Placement.Bottom.
+**Function:** Sets the preferred display position of the bubble component. If the current position is insufficient, it will adjust automatically. Default: Placement.Bottom.
 
-**Type:** [Placement](./cj-common-types.md#enum-placement)
+**Type:** [Placement](cj-common-types.md#enum-placement)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var popupColor
 
 ```cangjie
-public var popupColor: Color = Color(0x1000000)
+public var popupColor:?Color = None
 ```
 
-**Function:** Sets the color of the tooltip bubble. To remove the blur background effect, set backgroundBlurStyle to BlurStyle.NONE.
+**Function:** Sets the color of the bubble. To remove the blur background fill effect, set `backgroundBlurStyle` to `BlurStyle.NONE`.
 
-**Type:** [Color](./cj-common-types.md#class-color)
+**Type:** ?[Color](cj-common-types.md#class-color)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var radius
 
@@ -450,27 +429,31 @@ public var popupColor: Color = Color(0x1000000)
 public var radius: Length = 20.vp
 ```
 
-**Function:** Sets the corner radius of the bubble. Default value: 20.vp.
+**Function:** Sets the corner radius of the bubble. Default: 20.vp.
 
-**Type:** [Length](./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var shadow
 
 ```cangjie
-public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
+public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
 ```
 
-**Function:** Sets the shadow of the bubble. Default value: ShadowStyle.OUTER_DEFAULT_MD.
+**Function:** Sets the shadow of the bubble. Default: ShadowStyle.OUTER_DEFAULT_MD.
 
 **Type:** [ShadowStyle](cj-common-types.md#enum-shadowstyle)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var showInSubWindow
 
@@ -478,13 +461,15 @@ public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
 public var showInSubWindow: Bool = false
 ```
 
-**Function:** Sets whether to display the bubble in a sub-window. Default value: false (not displayed).
+**Function:** Whether to display the bubble in a sub-window. Default: false (not displayed).
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var targetSpace
 
@@ -494,35 +479,35 @@ public var targetSpace: Length = 0.vp
 
 **Function:** Sets the gap between the popup and the target.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Access:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var transition
 
 ```cangjie
-public var transition: Option<TransitionEffect>= Option.None
+public var transition: Option<TransitionEffect> = Option.None
 ```
 
 **Function:** Customizes the animation effects for popup display and exit.
 
-**Type:** ?TransitionEffect
-
-**Read-Write Capability:** Read-Write
-
-**Initial Version:** 19
-
 > **Note:**
 >
-> - If not set, the default display/exit animation effects will be used.
-> - Pressing the back key during the display animation will interrupt the display animation and execute the exit animation, with the effect being a combination of the display and exit animation curves.
-> - Pressing the back key during the exit animation will not interrupt it; the exit animation will continue, and the back key will not be responded to.
+> - If not set, default display/exit animations are used.
+> - Pressing the back key during the display animation interrupts it and triggers the exit animation, resulting in a combined effect of both animations.
+> - Pressing the back key during the exit animation does not interrupt it; the animation continues, and the back key is ignored.
 
-**Read-Write Capability:** Read-Write
+**Type:** [TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
-**Initial Version:** 19
+**Read-Write Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var width
 
@@ -532,46 +517,15 @@ public var width: Length = 0.vp
 
 **Function:** Sets the width of the popup.
 
-**Type:** [Length](./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Read-Write Capability:** Read-Write
-
-**Initial Version:** 19
-
-### init(() -> Unit, Placement, Color, Color, Bool, Bool, Option\<(StateChangeEvent) -> Unit>)
-
-```cangjie
-public init(
-    builder!: () -> Unit,
-    placement!: Placement = Placement.Bottom,
-    maskColor!: Color = Color(0x1000000),
-    popupColor!: Color = Color(0x1000000),
-    enableArrow!: Bool = true,
-    autoCancel!: Bool = true,
-    onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
-)
-```
-
-**Function:** Creates an object of type CustomPopupOptions.
+**Read-Write Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 19
+**Since:** 21
 
-**Parameters:**
-
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| builder | ()->Unit | Yes | - | **Named parameter.** Constructor for the tooltip bubble content. Used in combination with @Builder and bind methods. |
-| placement | [Placement](./cj-common-types.md#enum-placement) | No | Placement.Bottom | **Named parameter.** Preferred display position of the bubble component.<br>**Note:** If the current position cannot accommodate it, the position will be automatically adjusted. |
-| maskColor | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** Color of the tooltip bubble mask layer. |
-| popupColor | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** Color of the tooltip bubble. |
-| arrowOffset | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Offset of the popup arrow on the popup.<br>**Note:** When the arrow is on the top or bottom of the bubble, a value of 0 means the arrow is aligned to the far left, and the offset is the distance from the arrow to the far left (default is centered). When the arrow is on the left or right side of the bubble, the offset is the distance from the arrow to the top (default is centered). If displayed at the screen edge, the bubble will automatically shift left or right, and a value of 0 ensures the arrow always points to the bound component. |
-| enableArrow | Bool | No | true | **Named parameter.** Whether to display the arrow.<br>**Note:** If the bubble length on the arrow's side is insufficient to display the arrow, it will not be shown by default. For example, when placement is set to Left, if the bubble height is less than the arrow width (32vp), the arrow will not be displayed. |
-| autoCancel | Bool | No | true | **Named parameter.** Whether to automatically close the bubble when there is an operation on the page. |
-| onStateChange | ?([StateChangeEvent](#class-statechangeevent))->Unit | No | None | **Named parameter.** Callback for popup state change events, with the parameter being the current display state of the popup. |
-
-#### init(() -> Unit, Placement, Color, Bool, Bool, Option\<(StateChangeEvent) -> Unit>, Length, Bool, Color, Color, Color, Length, Position, Length, ?ArrowPointPosition, Length, Length, Length, ShadowStyle, BlurStyle, Bool, ?TransitionEffect, ?(DismissPopupAction) -> Unit, Bool)
+#### init(() -> Unit, Placement, Color, Color, Bool, Bool, Option\<(PopupStateChangeParam) -> Unit>, Bool, Color, Length, ?Color, Length, Position, Length, ?ArrowPointPosition, Length, Length, Length, ShadowStyle, BlurStyle, Bool, Option\<TransitionEffect>, Option\<(DismissPopupAction) -> Unit>, Bool)
 
 ```cangjie
 public init(
@@ -581,87 +535,28 @@ public init(
     popupColor!: Color = Color(0x1000000),
     enableArrow!: Bool = true,
     autoCancel!: Bool = true,
-    onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None,
+    onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
     showInSubWindow!: Bool, // 5.1 start
     backgroundColor!: Color = Color(0x1000000),
     arrowOffset!: Length = 0.vp,
     mask!: ?Color = None,
     targetSpace!: Length = 0.vp,
-    offset!: Position = Position(0.0, 0.0),
+    offset!: Position = Position(x: 0.0, y: 0.0),
     width!: Length = 0.vp,
     arrowPointPosition!: ?ArrowPointPosition = None,
-    arrowWidth!: Length = 16.vp,
-    arrowHeight!: Length = 16.vp,
-    radius!: Length = 20.vp,
-    shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
-    backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
-    focusable!: Bool = false,
-    transition!: Option<TransitionEffect> = Option.None,
-    onWillDismiss! : Option<(DismissPopupAction) -> Unit> = None,
-    followTransformOfTarget!: Bool = false
-)
-```
-
-**Function:** Creates an object of type CustomPopupOptions.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 19
-
-**Parameters:**
-
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| builder | ()->Unit | Yes | - | **Named parameter.** Builder for popup content. Used with @Builder and bind methods. |
-| placement | [Placement](./cj-common-types.md#enum-placement) | No | Placement.Bottom | **Named parameter.** Preferred display position of the popup component.<br>**Note:** If insufficient space is available at the current position, the position will be automatically adjusted. |
-| maskColor | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** Color of the popup mask layer. |
-| backgroundColor | [Color](cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** Background color of the popup. |
-| enableArrow | Bool | No | true | **Named parameter.** Whether to display the arrow.<br>**Note:** If the popup length on the arrow's side is insufficient to display the arrow, it will be hidden by default. For example: if placement is set to Left but the popup height is less than the arrow width (32vp), the arrow will not be displayed. |
-| autoCancel | Bool | No | true | **Named parameter.** Whether to automatically close the popup when there is user interaction on the page. |
-| onStateChange | ?([StateChangeEvent](#class-statechangeevent))->Unit | No | None | **Named parameter.** Callback for popup state changes, with the parameter being the current display state of the popup. |
-| popupColor | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** Color of the popup. |
-| arrowOffset | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Offset of the popup arrow relative to the popup.<br>**Note:** When the arrow is positioned above or below the popup, a value of 0 indicates the arrow is aligned to the far left, with the offset being the distance from the arrow to the far left (default is centered). When the arrow is positioned to the left or right of the popup, the offset is the distance from the arrow to the top (default is centered). If displayed at the screen edge, the popup will automatically adjust horizontally, with a value of 0 ensuring the arrow always points to the bound component. |
-| showInSubWindow | Bool | No | false | **Named parameter.** Whether to display the popup in a sub-window. |
-| mask | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** Color of the popup mask layer. |
-| targetSpace | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Gap between the popup and the target. |
-| offset | [Position](./cj-common-types.md#class-position) | No | Position(0.0, 0.0) | **Named parameter.** Offset of the popup component relative to the position set by placement.<br>**Note:** Percentage values are not supported. |
-| width | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Width of the popup.<br>**Note:** When showInSubWindow=true, the maximum height is the device screen height; when showInSubWindow=false, the maximum height is the application window height. Height limitation logic = maximum height - status bar height (0 if none) - dock height (0 if none) - 40VP - 40VP. |
-| arrowPointPosition | ?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition) | No | None | **Named parameter.** Position of the popup arrow relative to the parent component's display area. The arrow can be positioned at "Start," "Center," or "End" in both vertical and horizontal directions. All positions are within the parent component's boundaries. |
-| arrowWidth | [Length](cj-common-types.md#interface-length) | No | 16.vp | **Named parameter.** Width of the arrow.<br>**Note:** If the set arrow width exceeds the side length minus twice the popup corner radius, the arrow will not be drawn. |
-| arrowHeight | [Length](cj-common-types.md#interface-length) | No | 8.vp | **Named parameter.** Height of the arrow.<br>**Note:** Percentage values are not supported. |
-| radius | [Length](cj-common-types.md#interface-length) | No | 20.vp | **Named parameter.** Corner radius of the popup. |
-| shadow | [ShadowStyle](cj-common-types.md#enum-shadowstyle) | No | ShadowStyle.OUTER_DEFAULT_MD | **Named parameter.** Shadow of the popup. |
-| backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.COMPONENT_ULTRA_THICK | **Named parameter.** Blur effect parameters for the popup background. |
-| focusable | Bool | No | false | **Named parameter.** Whether the popup gains focus after being displayed. |
-| transition | ?TransitionEffect | No | None | **Named parameter.** Custom animation effects for popup display and exit.<br>**Note:**<br>1. If not set, default display/exit animations are used.<br>2. Pressing the back key during display animation interrupts the display and triggers the exit animation, with the combined effect of both animations.<br>3. Pressing the back key during exit animation does not interrupt the exit animation, and the back key is not processed. |
-| onWillDismiss | ([DismissPopupAction](#class-dismisspopupaction)) -> Unit | No | None | **Named parameter.** Intercepts the exit event and executes a callback function.<br>**Note:** The onWillDismiss callback cannot be nested within another onWillDismiss callback. |
-| followTransformOfTarget | Bool | No | false | **Named parameter.** Whether the popup follows the transformed position (e.g., rotation, scaling) of the bound host component or its parent container. |
-
-#### init()
-
-```cangjie
-public init()
-```
-
-**Function:** Creates an empty CustomPopupOptions object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 19
-
-### class DismissPopupAction
+    arrowWidth!: Length = 16.v### class DismissPopupAction
 
 ```cangjie
 public class DismissPopupAction {
-    public DismissPopupAction(public let reason!: DismissReason)
+    public let reason: DismissReason
 }
 ```
 
-**Function:** Sets the interactive dismissal interception switch and callback function for the popup.
+**Function:** Sets the interactive close interception switch and callback function for popup.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 19
+**Since:** 21
 
 #### let reason
 
@@ -669,52 +564,19 @@ public class DismissPopupAction {
 public let reason: DismissReason
 ```
 
-**Function:** Dismissal reason, returns the event reason for intercepting the popup disappearance.
+**Function:** The dismissal reason, returns the event reason for intercepting the popup disappearance.
 
-**Type:** DismissReason
+**Type:** [DismissReason](./cj-dialog-actionsheet.md#enum-dismissreason)
 
 **Access:** Read-only
 
-**Since:** 19
-
-#### DismissPopupAction(DismissReason)
+### class PopupMessageOptions
 
 ```cangjie
-public DismissPopupAction(public let reason!: DismissReason)
-```
-
-**Function:** Constructs a DismissPopupAction object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 19
-
-**Parameters:**
-
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| reason | DismissReason | No | - | **Named parameter.** Dismissal reason, returns the event reason for intercepting the popup disappearance. |
-
-#### func dismiss()
-
-```cangjie
-public func dismiss()
-```
-
-**Function:** Interactive dismissal interception switch and result type for the popup. Developers must call this method to exit; no call is needed if exit is not required.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 19
-
-### struct PopupMessageOptions
-
-```cangjie
-public struct PopupMessageOptions {
-    public PopupMessageOptions(
-        public let textColor!: Color = Color(0x000000),
-        public let font!: Fonts = Fonts()
-    )
+public class PopupMessageOptions {
+    public var textColor: ResourceColor
+    public var font: Font
+    public init(textColor!: ResourceColor = Color(0x000000), font!: Font = Font())
 }
 ```
 
@@ -722,107 +584,100 @@ public struct PopupMessageOptions {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 19
+**Since:** 21
 
-#### let font
+#### var font
 
 ```cangjie
-public let font: Fonts = Fonts()
+public var font: Font
 ```
 
-**Function:** Sets font attributes for the popup message. Does not support setting family.
+**Function:** Sets the font attributes for the popup message. Does not support setting family.
 
-**Type:** [Fonts](./cj-common-types.md#class-fonts)
+**Type:** [Font](cj-common-types.md#class-font)
 
-**Access:** Read-only
+**Access:** Read-write
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### let textColor
+**Since:** 21
+
+#### var textColor
 
 ```cangjie
-public let textColor: Color = Color(0x000000)
+public var textColor: ResourceColor
 ```
 
 **Function:** Sets the text color for the popup message.
 
-**Type:** [Color](./cj-common-types.md#class-color)
+**Type:** [ResourceColor](cj-common-types.md#interface-resourcecolor)
 
-**Access:** Read-only
-
-**Since:** 19
-
-#### PopupMessageOptions(Color, Fonts)
-
-```cangjie
-public PopupMessageOptions(
-    public let textColor!: Color = Color(0x000000),
-    public let font!: Fonts = Fonts()
-)
-```
-
-**Function:** Creates a PopupMessageOptions object.
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 19
+**Since:** 21
+
+#### init(ResourceColor, Font)
+
+```cangjie
+public init(textColor!: ResourceColor = Color(0x000000), font!: Font = Font())
+```
+
+**Function:** Creates an object of type PopupMessageOptions.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| textColor | [Color](./cj-common-types.md#class-color) | No | Color(0x000000) | **Named parameter.** Text color for the popup message. |
-| font | [Fonts](./cj-common-types.md#class-fonts) | No | Fonts() | **Named parameter.** Font attributes for the popup message. |
+| textColor | [ResourceColor](cj-common-types.md#interface-resourcecolor) | No | Color(0x000000) | Text color for the popup message. |
+| font | [Font](cj-common-types.md#class-font) | No | Font() | Font attributes for the popup message. |
+
 
 ### class PopupOptions
 
 ```cangjie
 public class PopupOptions {
     public var message: String = ""
-    public var placementOnTop: Bool = false
-    public var primaryButton: Action = Action(value: "", action: {=>})
-    public var secondaryButton: Action = Action(value: "", action: {=>})
-    public var onStateChange: Option<(StateChangeEvent) -> Unit> = Option.None
+    public var primaryButton: PopupButton = PopupButton(value: "", action: { => })
+    public var secondaryButton: PopupButton = PopupButton(value: "", action: { => })
+    public var onStateChange:?(PopupStateChangeParam) -> Unit = Option.None
     public var messageOptions: PopupMessageOptions = PopupMessageOptions()
     public var arrowOffset: Length = 0.vp
     public var showInSubWindow: Bool = false
-    public var mask: Color = Color(0x1000000)
+    public var mask: ResourceColor = Color(0x1000000)
     public var targetSpace: Length = 0.vp
-    public var placement: ?Placement = Option.None
-    public var offset: Position = Position(0.0, 0.0)
+    public var placement: Placement = Placement.BottomLeft
+    public var offset: Position = Position(x: 0.0, y: 0.0)
     public var enableArrow: Bool = true
-    public var popupColor: Color = Color(0x1000000)
+    public var popupColor: ResourceColor = Color(0x1000000)
     public var autoCancel: Bool = true
     public var width: Length = 0.vp
-    public var arrowPointPosition: Option<ArrowPointPosition> = None
-    public var arrowWidth: Length = 16.vp
-    public var arrowHeight: Length = 8.vp
-    public var radius: Length = 20.vp
-    public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
-    public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
-    public var transition: Option<TransitionEffect> = Option.None
-    public var onWillDismiss: Option<(DismissPopupAction) -> Unit> = None
+    public var arrowPointPosition: Option<ArrowPointPosition>= None
+    public var arrowWidth: Length = 16.0.vp
+    public var arrowHeight: Length = 8.0.vp
+    public var radius: Length = 20.0.vp
+    public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
+    public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
+    public var transition:?TransitionEffect = Option.None
+    public var onWillDismiss:?(DismissPopupAction) -> Unit = None
     public var followTransformOfTarget: Bool = false
     public init(
         message!: String,
-        placementOnTop!: Bool = false,
-        primaryButton!: Action = Action(value: "", action: { => }),
-        secondaryButton!: Action = Action(value: "", action: { => }),
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
-    )
-    public init(
-        message!: String,
-        placementOnTop!: Bool = false,
-        primaryButton!: Action = Action(value: "", action: { => }),
-        secondaryButton!: Action = Action(value: "", action: { => }),
-        onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None,
+        primaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+        secondaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+        onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
         arrowOffset!: Length = 0.vp,
         showInSubWindow!: Bool,
         messageOptions!: PopupMessageOptions = PopupMessageOptions(),
         mask!: Color = Color(0x1000000),
         targetSpace!: Length = 0.vp,
-        placement!: ?Placement = Option.None,
-        offset!: Position = Position(0.0, 0.0),
+        placement!: Placement = Placement.BottomLeft,
+        offset!: Position = Position(x:0.0, y: 0.0),
         enableArrow!: Bool = true,
         popupColor!: Color = Color(0x1000000),
         autoCancel!: Bool = true,
@@ -831,35 +686,36 @@ public class PopupOptions {
         arrowWidth!: Length = 16.vp,
         arrowHeight!: Length = 8.vp,
         radius!: Length = 20.vp,
-        shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
-        backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+        shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
         transition!: ?TransitionEffect = Option.None,
         onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
         followTransformOfTarget!: Bool = false
     )
-    public init() {}
 }
 ```
 
-**Function:** Parameters for the popup.
+**Function:** Parameters for popup.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 12
+**Since:** 21
 
 #### var arrowHeight
 
 ```cangjie
-public var arrowHeight: Length = 8.vp
+public var arrowHeight: Length = 8.0.vp
 ```
 
 **Function:** Sets the arrow height. Default value: 8.vp.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
 **Access:** Read-write
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowOffset
 
@@ -867,13 +723,15 @@ public var arrowHeight: Length = 8.vp
 public var arrowOffset: Length = 0.vp
 ```
 
-**Function:** Sets the offset of the popup arrow relative to the popup. When the arrow is positioned above or below the popup, a value of 0 indicates the arrow is aligned to the far left, with the offset being the distance from the arrow to the far left (default is centered). When the arrow is positioned to the left or right of the popup, the offset is the distance from the arrow to the top (default is centered). If displayed at the screen edge, the popup will automatically adjust horizontally, with a value of 0 ensuring the arrow always points to the bound component.
+**Function:** Sets the offset of the popup arrow at the popup location. When the arrow is above or below the bubble, a value of 0 means the arrow is at the far left, and the offset is the distance from the arrow to the far left, defaulting to center. When the arrow is to the left or right of the bubble, the offset is the distance from the arrow to the top, defaulting to center. If displayed at the screen edge, the bubble will automatically shift left or right, and when the value is 0, the arrow always points to the bound component.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
 **Access:** Read-write
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowPointPosition
 
@@ -881,25 +739,31 @@ public var arrowOffset: Length = 0.vp
 public var arrowPointPosition: Option<ArrowPointPosition>= None
 ```
 
-**Function:** Sets the position of the popup arrow relative to the parent component's display area. The arrow can be positioned at "Start," "Center," or "End" in both vertical and horizontal directions. All positions are within the parent component's boundaries.
+**Function:** Sets the position of the bubble's arrow relative to the parent component's display position. The arrow can be positioned at "Start", "Center", or "End" in both vertical and horizontal directions. All these positions are within the parent component's area and will not exceed its boundaries.
 
-**Type:** ?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition)
+**Type:** [ArrowPointPosition](cj-common-types.md#enum-arrowpointposition)
 
 **Access:** Read-write
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var arrowWidth
 
 ```cangjie
-public var arrowWidth: Length = 16.vp
+public var arrowWidth: Length = 16.0.vp
 ```
 
-**Function:** Sets the arrow width. If the set arrow width exceeds the side length minus twice the popup corner radius, the arrow will not be drawn. Default value: 16.vp.**Type:** [Length](cj-common-types.md#interface-length)
+**Function:** Sets the arrow width. If the set arrow width exceeds the length of the side minus twice the bubble's corner radius, the bubble arrow will not be drawn. Default value: 16.vp.
 
-**Read-Write Capability:** Read-Write
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Initial Version:** 19
+**Access:** Read-write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var autoCancel
 
@@ -911,23 +775,27 @@ public var autoCancel: Bool = true
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var backgroundBlurStyle
 
 ```cangjie
-public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
+public var backgroundBlurStyle: BlurStyle = BlurStyle.ComponentUltraThick
 ```
 
 **Function:** Sets the blur background parameters for the bubble. Default value: BlurStyle.COMPONENT_ULTRA_THICK.
 
 **Type:** [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var enableArrow
 
@@ -935,13 +803,15 @@ public var backgroundBlurStyle: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK
 public var enableArrow: Bool = true
 ```
 
-**Function:** Sets whether to display the arrow. Default value: true. When the available space on the page cannot fully accommodate the bubble, the bubble will overlay the component without displaying the arrow.
+**Function:** Sets whether to display the arrow. Default value: true. When there is insufficient space on the page to fully avoid the bubble, the bubble will cover the component and the arrow will not be displayed.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var followTransformOfTarget
 
@@ -953,37 +823,43 @@ public var followTransformOfTarget: Bool = false
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var mask
 
 ```cangjie
-public var mask: Color = Color(0x1000000)
+public var mask: ResourceColor = Color(0x1000000)
 ```
 
 **Function:** Sets the color of the mask layer.
 
-**Type:** [Color](./cj-common-types.md#class-color)
+**Type:** [ResourceColor](cj-common-types.md#interface-resourcecolor)
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var message
 
 ```cangjie
-public var message: String
+public var message: String = ""
 ```
 
 **Function:** Sets the content of the popup message.
 
 **Type:** String
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var messageOptions
 
@@ -991,157 +867,161 @@ public var message: String
 public var messageOptions: PopupMessageOptions = PopupMessageOptions()
 ```
 
-**Function:** Sets the text parameters for the popup message.
+**Function:** Sets the parameters for the popup message text.
 
-**Type:** [PopupMessageOptions](#struct-popupmessageoptions)
+**Type:** [PopupMessageOptions](#class-popupmessageoptions)
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var offset
 
 ```cangjie
-public var offset: Position = Position(0.0, 0.0)
+public var offset: Position = Position(x: 0.0, y: 0.0)
 ```
 
-**Function:** Sets the offset of the popup component relative to the display position specified by placement. Percentage values are not supported.
+**Function:** Sets the offset of the popup component relative to the display position set by placement. Percentage values are not supported.
 
-**Type:** [Position](./cj-common-types.md#class-position)
+**Type:** [Position](cj-common-types.md#class-position)
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var onStateChange
 
 ```cangjie
-public var onStateChange: Option <(StateChangeEvent) -> Unit>= Option.None
+public var onStateChange:?(PopupStateChangeParam) -> Unit = Option.None
 ```
 
 **Function:** Sets the callback for popup state change events, with the parameter being the current display state of the popup.
 
-**Type:** ?([StateChangeEvent](#class-statechangeevent))->Unit
+**Type:** ?([PopupStateChangeParam](#class-popupstatechangeparam))->Unit
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var onWillDismiss
 
 ```cangjie
-public var onWillDismiss: Option <(DismissPopupAction) -> Unit>= None
+public var onWillDismiss:?(DismissPopupAction) -> Unit = None
 ```
 
-**Function:** Sets the callback function to intercept and handle the dismiss event.
+**Function:** Sets the interception of exit events and executes the callback function.
 
 > **Note:**
 >
-> Within the onWillDismiss callback, further onWillDismiss interception is not allowed.
+> Within the onWillDismiss callback, you cannot perform another onWillDismiss interception.
 
-**Type:** ([DismissPopupAction](#class-dismisspopupaction))->Unit
+**Type:** ?([DismissPopupAction](#class-dismisspopupaction))->Unit
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var placement
 
 ```cangjie
-public var placement: Placement = Placement.Bottom
+public var placement: Placement = Placement.BottomLeft
 ```
 
-**Function:** Sets the display position of the popup component relative to the target, with a default value of Placement.Bottom. If both placementOnTop and placement are set, the placement setting takes precedence.
+**Function:** Sets the display position of the popup component relative to the target, defaulting to Placement.Bottom. If both placementOnTop and placement are set, the placement setting takes effect.
 
-**Type:** [Placement](./cj-common-types.md#enum-placement)
+**Type:** [Placement](cj-common-types.md#enum-placement)
 
-**Read-Write Capability:** Read-Write
+**Access:** Read-write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var placementOnTop<sup>(deprecated)</sup>
+**Since:** 21#### var popupColor
 
 ```cangjie
-public var placementOnTop: Bool = false
+public var popupColor: ResourceColor = Color(0x1000000)
 ```
 
-**Function:** Sets whether to display above the component, with a default value of false. This is deprecated; it is recommended to use placement instead.
+**Function:** Sets the color of the popup bubble. To remove the blur background effect, set `backgroundBlurStyle` to `BlurStyle.NONE`.
 
-**Type:** Bool
+**Type:** [ResourceColor](cj-common-types.md#interface-resourcecolor)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var popupColor
-
-```cangjie
-public var popupColor: Color = Color(0x1000000)
-```
-
-**Function:** Sets the color of the tooltip bubble. To remove the blur background fill effect, set backgroundBlurStyle to BlurStyle.NONE.
-
-**Type:** [Color](./cj-common-types.md#class-color)
-
-**Read-Write Capability:** Read-Write
-
-**Initial Version:** 12
+**Since:** 21
 
 #### var primaryButton
 
 ```cangjie
-public var primaryButton: Action = Action(value: "", action: { => })
+public var primaryButton: PopupButton = PopupButton(value: "", action: { => })
 ```
 
-**Function:** Sets the first button. value: The text of the primary button in the popup. action: The callback function when the primary button is clicked.
+**Function:** Sets the first button. `value`: The text of the primary button in the popup. `action`: The callback function when the primary button is clicked.
 
-**Type:** [Action](#class-action)
+**Type:** [PopupButton](#class-popupbutton)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var radius
 
 ```cangjie
-public var radius: Length = 20.vp
+public var radius: Length = 20.0.vp
 ```
 
-**Function:** Sets the corner radius of the bubble. Default value: 20.vp.
+**Function:** Sets the corner radius of the bubble. Default value: `20.vp`.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var secondaryButton
 
 ```cangjie
-public var secondaryButton: Action = Action(value: "", action: { => })
+public var secondaryButton: PopupButton = PopupButton(value: "", action: { => })
 ```
 
-**Function:** Sets the second button. value: The text of the secondary button in the popup. action: The callback function when the secondary button is clicked.
+**Function:** Sets the second button. `value`: The text of the secondary button in the popup. `action`: The callback function when the secondary button is clicked.
 
-**Type:** [Action](#class-action)
+**Type:** [PopupButton](#class-popupbutton)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var shadows
+**Since:** 21
+
+#### var shadow
 
 ```cangjie
-public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
+public var shadow: ShadowStyle = ShadowStyle.OuterDefaultMD
 ```
 
-**Function:** Sets the shadow of the bubble. Default value: ShadowStyle.OUTER_DEFAULT_MD.
+**Function:** Sets the shadow of the bubble. Default value: `ShadowStyle.OUTER_DEFAULT_MD`.
 
 **Type:** [ShadowStyle](cj-common-types.md#enum-shadowstyle)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var showInSubWindow
 
@@ -1149,13 +1029,15 @@ public var shadow: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD
 public var showInSubWindow: Bool = false
 ```
 
-**Function:** Sets whether to display the bubble in a sub-window, with a default value of false.
+**Function:** Sets whether to display the bubble in a sub-window. Default value: `false`.
 
 **Type:** Bool
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var targetSpace
 
@@ -1165,31 +1047,35 @@ public var targetSpace: Length = 0.vp
 
 **Function:** Sets the gap between the popup and the target.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var transition
 
 ```cangjie
-public var transition: Option<TransitionEffect>= Option.None
+public var transition:?TransitionEffect = Option.None
 ```
 
-**Function:** Customizes the animation effects for popup display and dismissal.
+**Function:** Customizes the animation effects for popup display and exit.
 
 > **Note:**
 >
-> - If not set, the default show/exit animations will be used.
-> - Pressing the back key during the show animation will interrupt the show animation and trigger the exit animation, resulting in a combined effect of both animations.
+> - If not set, the default display/exit animation will be used.
+> - Pressing the back key during the display animation will interrupt it and trigger the exit animation, resulting in a combined effect of both animations.
 > - Pressing the back key during the exit animation will not interrupt it; the exit animation will continue, and the back key will not be responded to.
 
-**Type:** ?TransitionEffect
+**Type:** ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
 **Read-Write Capability:** Read-Write
 
-**Initial Version:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var width
 
@@ -1199,56 +1085,29 @@ public var width: Length = 0.vp
 
 **Function:** Sets the width of the popup.
 
-**Type:** [Length](cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
 
-**Readable/Writable:** Readable and Writable
-
-**Initial Version:** 19
-
-### init(String, Bool, Action, Action, Option<(StateChangeEvent) -> Unit>)
-
-```cangjie
-public init(
-    message!: String,
-    placementOnTop!: Bool = false,
-    primaryButton!: Action = Action(value: "", action: { => }),
-    secondaryButton!: Action = Action(value: "", action: { => }),
-    onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None
-)
-```
-
-**Function:** Constructs a PopupOptions object.
+**Read-Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 12
+**Since:** 21
 
-**Parameters:**
-
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| message | string | Yes |  | **Named parameter.** The content of the popup message. |
-| placementOnTop | Bool | No | false | **Named parameter.** Whether to display above the component. |
-| primaryButton | [Action](#class-action) | No | Action(value: "", action: {=>}) | **Named parameter.** The first button. <br/>value: The text of the primary button in the popup.<br/>action: The callback function when the primary button is clicked. |
-| secondaryButton | [Action](#class-action) | No | Action(value: "", action: {=>}) | **Named parameter.** The second button.<br/>value: The text of the secondary button in the popup.<br/>action: The callback function when the secondary button is clicked. |
-| onStateChange | ?([StateChangeEvent](#class-statechangeevent))->Unit | No | None | **Named parameter.** The callback for popup state change events, with the parameter being the current display state of the popup. |
-
-#### init(String, Bool, Action, Action, Option\<(StateChangeEvent) -> Unit>, Length, Bool, Color, PopupMessageOptions, Length, Placement, Position, Bool, Color, Bool, Length, ?ArrowPointPosition, Length, Length, Length, ShadowStyle, BlurStyle, ?TransitionEffect, ?(DismissPopupAction) -> Unit, Bool)
+#### init(String, PopupButton, PopupButton, Option\<(PopupStateChangeParam) -> Unit>, Length, Bool, PopupMessageOptions, Color, Length, Placement, Position, Bool, Color, Bool, Length, ?ArrowPointPosition, Length, Length, Length, ShadowStyle, BlurStyle, ?TransitionEffect, Option\<(DismissPopupAction) -> Unit>, Bool)
 
 ```cangjie
 public init(
     message!: String,
-    placementOnTop!: Bool = false,
-    primaryButton!: Action = Action(value: "", action: { => }),
-    secondaryButton!: Action = Action(value: "", action: { => }),
-    onStateChange!: Option<(StateChangeEvent) -> Unit> = Option.None,
+    primaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+    secondaryButton!: PopupButton = PopupButton(value: "", action: {=>}),
+    onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
     arrowOffset!: Length = 0.vp,
     showInSubWindow!: Bool,
     messageOptions!: PopupMessageOptions = PopupMessageOptions(),
     mask!: Color = Color(0x1000000),
     targetSpace!: Length = 0.vp,
-    placement!: ?Placement = Option.None,
-    offset!: Position = Position(0.0, 0.0),
+    placement!: Placement = Placement.BottomLeft,
+    offset!: Position = Position(x:0.0, y: 0.0),
     enableArrow!: Bool = true,
     popupColor!: Color = Color(0x1000000),
     autoCancel!: Bool = true,
@@ -1257,234 +1116,45 @@ public init(
     arrowWidth!: Length = 16.vp,
     arrowHeight!: Length = 8.vp,
     radius!: Length = 20.vp,
-    shadow!: ShadowStyle = ShadowStyle.OUTER_DEFAULT_MD,
-    backgroundBlurStyle!: BlurStyle = BlurStyle.COMPONENT_ULTRA_THICK,
+    shadow!: ShadowStyle = ShadowStyle.OuterDefaultMD,
+    backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
     transition!: ?TransitionEffect = Option.None,
     onWillDismiss!: Option<(DismissPopupAction) -> Unit> = None,
     followTransformOfTarget!: Bool = false
 )
 ```
 
-**Function:** Constructs a PopupOptions object.
+**Function:** Parameters for the popup.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 19
+**Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| message | string | Yes |  | **Named parameter.** The content of the popup message. |
-| placementOnTop | Bool | No | false | **Named parameter.** Whether to display above the component. |
-| primaryButton | [Action](#class-action) | No | Action(value: "", action: {=>}) | **Named parameter.** The first button. <br/>value: The text of the primary button in the popup.<br/>action: The callback function when the primary button is clicked. |
-| secondaryButton | [Action](#class-action) | No | Action(value: "", action: {=>}) | **Named parameter.** The second button.<br/>value: The text of the secondary button in the popup.<br/>action: The callback function when the secondary button is clicked. |
-| onStateChange | ?([StateChangeEvent](#class-statechangeevent))->Unit | No | None | **Named parameter.** The callback for popup state change events, with the parameter being the current display state of the popup. |
-| messageOptions | [PopupMessageOptions](#struct-popupmessageoptions) | No | PopupMessageOptions() | **Named parameter.** The text parameters for the popup message. |
-| arrowOffset | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** The offset of the popup arrow at the popup location.<br>**Note:** When the arrow is above or below the bubble, a value of 0 means the arrow is aligned to the far left, and the offset is the distance from the arrow to the far left, defaulting to center. When the arrow is to the left or right of the bubble, the offset is the distance from the arrow to the top, defaulting to center. If displayed at the screen edge, the bubble will automatically shift left or right, with the arrow always pointing to the bound component when the value is 0. |
-| showInSubWindow | Bool | No | false | **Named parameter.** Whether to display the bubble in a sub-window. |
-| mask | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** The color of the bubble's mask layer. |
-| targetSpace | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** The gap between the popup and the target. |
-| placement | [Placement](./cj-common-types.md#enum-placement) | No | Placement.Bottom | **Named parameter.** The display position of the popup relative to the target.<br>**Note:** If both placementOnTop and placement are set, placement takes precedence. |
-| offset | [Position](./cj-common-types.md#class-position) | No | Position(0.0, 0.0) | **Named parameter.** The offset of the popup relative to the position set by placement.<br>**Note:** Percentage values are not supported. |
-| enableArrow | Bool | No | true | **Named parameter.** Whether to display the arrow.<br>**Note:** If the bubble length on the side where the arrow is located is insufficient to display the arrow, the arrow will not be shown by default. For example: if placement is set to Left but the bubble height is less than the arrow width (32vp), the arrow will not be displayed. |
-| popupColor | [Color](./cj-common-types.md#class-color) | No | Color(0x1000000) | **Named parameter.** The color of the bubble. |
-| autoCancel | Bool | No | true | **Named parameter.** Whether to automatically close the bubble when there is an operation on the page. |
-| width | [Length](cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** The width of the popup. |
-| arrowPointPosition | ?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition) | No | None | **Named parameter.** The position of the bubble's arrow relative to the parent component's display position. The arrow can be positioned at "Start," "Center," or "End" in both vertical and horizontal directions. All positions are within the parent component's area and will not exceed its boundaries. |
-| arrowHeight | [Length](cj-common-types.md#interface-length) | No | 8.vp | **Named parameter.** The height of the arrow.<br>**Note:** Percentage values are not supported. |
-| arrowWidth | [Length](cj-common-types.md#interface-length) | No | 16.vp | **Named parameter.** The width of the arrow.<br>**Note:** If the set arrow width exceeds the side length minus twice the bubble's corner radius, the arrow will not be drawn. |
-| radius | [Length](cj-common-types.md#interface-length) | No | 20.vp | **Named parameter.** The corner radius of the bubble. |
-| shadow | [ShadowStyle](cj-common-types.md#enum-shadowstyle) | No | ShadowStyle.OUTER_DEFAULT_MD | **Named parameter.** The shadow of the bubble. |
-| backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.COMPONENT_ULTRA_THICK | **Named parameter.** The blur background parameters of the bubble. |
-| transition | ?TransitionEffect | No | None | **Named parameter.** Custom animation effects for popup display and exit.<br>**Note:**<br/>1. If not set, the default display/exit animations are used.<br/>2. Pressing the back key during the display animation interrupts it and triggers the exit animation, with the effect being a combination of both animations.<br/>3. Pressing the back key during the exit animation does not interrupt it, and the back key is not responded to. |
-| onWillDismiss | ([DismissPopupAction](#class-dismisspopupaction)) -> Unit | No | None | **Named parameter.** Intercepts the exit event and executes the callback function. |
-| followTransformOfTarget | Bool | No | false | **Named parameter.** Whether the bubble can be displayed at the transformed position when the bound host component or its parent container has transformations like rotation or scaling applied. |
-
-### init()
-
-```cangjie
-public init()
-```
-
-**Function:** Constructs an empty PopupOptions object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Initial Version:** 19
-
-### class StateChangeEvent
-
-```cangjie
-public class StateChangeEvent {
-    public StateChangeEvent(public let isVisible: Bool)
-}
-```
-
-**Function:** Represents the type of display state.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Initial Version:** 12
-
-#### let isVisible
-
-```cangjie
-public let isVisible: Bool
-```
-
-**Function:** The current display state.
-
-**Type:** Bool
-
-**Readable/Writable:** Read-only
-
-**Initial Version:** 12
-
-#### StateChangeEvent(Bool)
-
-```cangjie
-public StateChangeEvent(public let isVisible: Bool)
-```
-
-**Function:** Constructs a StateChangeEvent object.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Initial Version:** 12
-
-**Parameters:**
-
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| isVisible | Bool | Yes | - | The current display state. |
-
-## Example Code
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-
-import ohos.component.*
-import ohos.state_manage.*
-import ohos.state_macro_manage.*
-import ohos.base.{LengthProp, Length, AppLog, Color, nativeLog, BaseLog, LengthType}
-
-@Builder
-func popupBuilder() {
-    Column {
-        Text("Custom Popup")
-    }
-}
-
-@Entry
-@Component
-class EntryView {
-    @State var msg: String = "State Change Wait"
-    @State var dismiss: String = "Dismiss Wait"
-    @State var custom: String = "Custom Wait"
-    @State var handlePopup: Bool = false
-    @State var customPopup: Bool = false
-
-    public func build() {
-        Flex(FlexOptions(direction: FlexDirection.Column)) {
-            Text(msg)
-            Text(dismiss)
-            Text(custom)
-            Button('PopupOptions')
-                .margin(top: 200)
-                .onClick {
-                    this.handlePopup = !this.handlePopup
-                }
-                .bindPopup(
-                    show: this.handlePopup,
-                    popup: PopupOptions(
-                        message: 'This is a popup with PopupOptions',
-                        placementOnTop: true,
-                        primaryButton: Action(
-                            value: 'confirm',
-                            action: {
-                                => this.handlePopup = !this.handlePopup
-                            }
-                        ),
-                        secondaryButton: Action(
-                            value: 'cancel',
-                            action: {
-                                => this.handlePopup = !this.handlePopup
-                            }
-                        ),
-                        onStateChange: {
-                            e =>
-                            this.msg = "PopUp"
-                            if (!e.isVisible) {
-                                this.msg = "Wait"
-                                this.handlePopup = false
-                            }
-                        },
-                        showInSubWindow: false,
-                        arrowOffset: 60.0.vp,
-                        targetSpace: 20.0.vp,
-                        enableArrow: true,
-                        arrowHeight: 30.0.vp,
-                        arrowWidth: 30.0.vp,
-                        radius: 25.0.vp,
-                        autoCancel: true,
-                        backgroundBlurStyle: BlurStyle.Thick,
-                        shadow: ShadowStyle.OUTER_FLOATING_SM,
-                        offset: Position(50.0, 50.0),
-                        placement: Placement.Top,
-                        arrowPointPosition: ArrowPointPosition.CENTER,
-                        mask: Color(0x33000000),
-                        popupColor: Color.GREEN,
-                        messageOptions: PopupMessageOptions(textColor: Color.BLUE, font: Fonts(size: 20.vp)),
-                        transition: TransitionEffect.SLIDE_SWITCH,
-                        onWillDismiss: {
-                            dismissPopupAction: DismissPopupAction =>
-                            dismissPopupAction.dismiss()
-                            match (dismissPopupAction.reason) {
-                                case PRESS_BACK => this.dismiss = "dismissReason: PRESS_BACK"
-                                case TOUCH_OUTSIDE => this.dismiss = "dismissReason: TOUCH_OUTSIDE"
-                                case _ => this.dismiss = "dismissReason: unknown"
-                            }
-                        },
-                        followTransformOfTarget: true
-                    )
-                )
-            Button("CustomPopupOptions")
-                .onClick({=> customPopup = !customPopup})
-                .bindPopup(
-                    show: customPopup,
-                    popup: CustomPopupOptions(
-                        builder: bind(popupBuilder, this),
-                        enableArrow: true,
-                        placement: Placement.BottomLeft,
-                        popupColor: Color.RED,
-                        arrowHeight: 24.0.vp,
-                        arrowWidth: 24.0.vp,
-                        radius: 10.vp,
-                        offset: Position(5.0, 5.0),
-                        width: 300.vp,
-                        autoCancel: true,
-                        targetSpace: 10.vp,
-                        arrowOffset: 5.vp,
-                        focusable: true,
-                        arrowPointPosition: ArrowPointPosition.CENTER,
-                        transition: TransitionEffect.SLIDE_SWITCH,
-                        onStateChange: {
-                            evt =>
-                            custom = "stateChange: ${evt.isVisible}"
-                            if (!evt.isVisible) {
-                                customPopup = true
-                            }
-                        }
-                    )
-                )
-        }
-    }
-}
-
-```
-
-![bindpopup](figures/bind_popup.gif)
+| message | String | Yes | - | Sets the content of the popup message |
+| primaryButton | [PopupButton](#class-popupbutton) | No | PopupButton(value: "", action: { => }) | Sets the first button |
+| secondaryButton | [PopupButton](#class-popupbutton) | No | PopupButton(value: "", action: { => }) | Sets the second button |
+| onStateChange | ([PopupStateChangeParam](#class-popupstatechangeparam))->Unit | No | Option.None | Sets the callback for popup state changes |
+| arrowOffset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Sets the offset of the popup arrow relative to the popup |
+| showInSubWindow | Bool | Yes | - | Sets whether to display the bubble in a sub-window |
+| messageOptions | [PopupMessageOptions](#class-popupmessageoptions) | No | PopupMessageOptions() | Sets the text parameters for the popup message |
+| mask | [Color](cj-common-types.md#class-color) | No | Color(0x1000000) | Sets the color of the mask layer |
+| targetSpace | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Sets the gap between the popup and the target |
+| placement | [Placement](cj-common-types.md#enum-placement) | No | Placement.BottomLeft | Sets the display position of the popup relative to the target |
+| offset | [Position](cj-common-types.md#class-position) | No | Position(x: 0.0, y: 0.0) | Sets the offset of the popup relative to the position defined by `placement` |
+| enableArrow | Bool | No | true | Sets whether to display the arrow |
+| popupColor | [Color](cj-common-types.md#class-color) | No | Color(0x1000000) | Sets the color of the popup bubble |
+| autoCancel | Bool | No | true | Sets whether to automatically close the bubble when there is an operation on the page |
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Sets the width of the popup |
+| arrowPointPosition | ?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition) | No | None | Sets the position of the bubble arrow relative to the parent component |
+| arrowWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 16.vp | Sets the width of the arrow |
+| arrowHeight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 8.vp | Sets the height of the arrow |
+| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 20.vp | Sets the corner radius of the bubble |
+| shadow | [ShadowStyle](cj-common-types.md#enum-shadowstyle) | No | ShadowStyle.OuterDefaultMD | Sets the shadow of the bubble |
+| backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | Sets the blur background parameters for the bubble |
+| transition | ?[TransitionEffect](cj-animation-transition.md#class-transitioneffect) | No | Option.None | Customizes the animation effects for popup display and exit |
+| onWillDismiss | ([DismissPopupAction](#class-dismisspopupaction))->Unit | No | None | Sets the callback function to intercept the exit event |
+| followTransformOfTarget | Bool | No | false | When the host component bound to the bubble or its parent container has transformations like rotation or scaling, sets whether the bubble can be displayed at the transformed position |

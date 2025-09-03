@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following describes only the module-specific error codes. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 7400101 Invalid Parameter
 
@@ -16,11 +16,11 @@ Invalid parameters were passed when calling the interface.
 
 **Possible Causes**
 
-Invalid parameters, such as values outside the boundary range or not using the specified enumeration range.
+Invalid parameters, such as values outside the valid range or not using specified enumeration values.
 
 **Resolution Steps**
 
-Refer to the interface documentation and provide the correct input parameters.
+Refer to the interface documentation and provide correct input parameters.
 
 ## 7400102 Illegal Operation
 
@@ -30,15 +30,15 @@ Operation not allowed.
 
 **Error Description**
 
-Operation was not performed according to the established procedure.
+Operation was not performed according to the prescribed method.
 
 **Possible Causes**
 
-Incorrect interface execution sequence, such as performing `commitConfig` without first calling `beginConfig`.
+Incorrect interface execution sequence, such as performing `commitConfig` without first executing `beginConfig`.
 
 **Resolution Steps**
 
-Follow the correct steps as outlined in the interface documentation and guidelines.
+Follow the correct sequence of operations as specified in the interface documentation and guidelines.
 
 ## 7400103 Session Not Configured
 
@@ -88,7 +88,7 @@ The session configuration is locked.
 
 **Possible Causes**
 
-Another thread has already locked the session configuration.
+Another thread has locked the session configuration.
 
 **Resolution Steps**
 
@@ -106,7 +106,7 @@ The device configuration is locked.
 
 **Possible Causes**
 
-Another thread has already locked the device configuration.
+Another thread has locked the device configuration.
 
 **Resolution Steps**
 
@@ -124,7 +124,7 @@ Unable to use the camera due to a conflict.
 
 **Possible Causes**
 
-A conflict exists between an already opened camera and the local camera to be used.
+A conflict exists between an already opened camera and the camera intended for local use.
 
 **Resolution Steps**
 
@@ -138,7 +138,7 @@ Camera disabled cause of security reason.
 
 **Error Description**
 
-The camera cannot be used due to security policies.
+Unable to use the camera due to security policies.
 
 **Possible Causes**
 
@@ -160,7 +160,7 @@ Unable to use the camera because it has been preempted.
 
 **Possible Causes**
 
-Two applications simultaneously opened the same camera, and the latter application failed to open the corresponding camera.
+Two applications attempted to open the same camera simultaneously, and the latter application failed to open it.
 
 **Resolution Steps**
 
@@ -178,13 +178,13 @@ The submitted configuration is incompatible with the device's supported configur
 
 **Possible Causes**
 
-Setting the preview stream frame rate beyond the device's supported range.
+Setting a preview stream frame rate that exceeds the device's supported frame rate.
 
 **Resolution Steps**
 
 Verify that the submitted configuration aligns with the device's supported configurations.
 
-## 7400201 Camera Service Error
+## 7400201 Camera Service Exception
 
 **Error Message**
 
@@ -192,7 +192,7 @@ Camera service fatal error.
 
 **Error Description**
 
-The camera service encountered an error.
+An exception occurred in the camera service.
 
 **Possible Causes**
 
@@ -200,4 +200,4 @@ Camera service exceptions, such as service restarts or cross-process call failur
 
 **Resolution Steps**
 
-This is a general system error with unclear occurrence scenarios. It is recommended to recreate the business logic.
+This is a system-level generic error with unclear occurrence scenarios. It is recommended to recreate the service instance.

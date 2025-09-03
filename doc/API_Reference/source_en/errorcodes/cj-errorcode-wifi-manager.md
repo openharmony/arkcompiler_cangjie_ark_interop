@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following describes only the module-specific error codes. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> This document only introduces module-specific error codes. For universal error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 2401000 STA Internal Exception
 
@@ -22,8 +22,8 @@ An unknown error occurred while the WIFI service was performing STA-related oper
 
 **Resolution Steps**
 
-1. Retry the operation of turning the WIFI switch off and on.
-2. If step 1 does not work, try restarting the device.
+1. Retry turning the WIFI switch off and on.
+2. If step 1 doesn't work, try restarting the device.
 
 ## 2501000 STA Internal Exception
 
@@ -43,8 +43,8 @@ An unknown error occurred while the WIFI service was performing STA-related oper
 
 **Resolution Steps**
 
-1. Retry the operation of turning the WIFI switch off and on.
-2. If step 1 does not work, try restarting the device.
+1. Retry turning the WIFI switch off and on.
+2. If step 1 doesn't work, try restarting the device.
 
 ## 2501001 STA Function Disabled
 
@@ -58,7 +58,7 @@ The WIFI STA function is turned off.
 
 **Possible Causes**
 
-The WIFI function is disabled.
+WIFI function is disabled.
 
 **Resolution Steps**
 
@@ -82,8 +82,8 @@ An unknown error occurred while the WIFI service was performing Hotspot-related 
 
 **Resolution Steps**
 
-1. Retry the operation of turning the Hotspot switch off and on.
-2. If step 1 does not work, try restarting the device.
+1. Retry turning the Hotspot switch off and on.
+2. If step 1 doesn't work, try restarting the device.
 
 ## 2701000 AP Extension Module Exception
 
@@ -103,8 +103,8 @@ An unknown error occurred while the WIFI service was performing Hotspot-related 
 
 **Resolution Steps**
 
-1. Retry the operation of turning the Hotspot switch off and on.
-2. If step 1 does not work, try restarting the device.
+1. Retry turning the Hotspot switch off and on.
+2. If step 1 doesn't work, try restarting the device.
 
 ## 2801000 P2P Module Exception
 
@@ -124,10 +124,10 @@ An unknown error occurred while the WIFI service was performing P2P-related oper
 
 **Resolution Steps**
 
-1. Retry the operation of turning the WIFI switch off and on.
-2. If step 1 does not work, try restarting the device.
+1. Retry turning the WIFI switch off and on.
+2. If step 1 doesn't work, try restarting the device.
 
-## 2501003 Service Enable Failed
+## 2501003 Service Activation Failed
 
 **Error Message**
 
@@ -135,7 +135,7 @@ Operation failed because the service is being closed.
 
 **Error Description**
 
-Failed to enable the service as it is being disabled.
+Failed to activate the service as it is being shut down.
 
 **Possible Causes**
 
@@ -143,9 +143,9 @@ The service function is being disabled.
 
 **Resolution Steps**
 
-Retry the operation to enable the service.
+Retry activating the service.
 
-## 2501004 Service Disable Failed
+## 2501004 Service Deactivation Failed
 
 **Error Message**
 
@@ -153,7 +153,7 @@ Operation failed because the service is being opened.
 
 **Error Description**
 
-Failed to disable the service as it is being enabled.
+Failed to deactivate the service as it is being activated.
 
 **Possible Causes**
 
@@ -161,4 +161,4 @@ The service function is being enabled.
 
 **Resolution Steps**
 
-Retry the operation to disable the service.
+Retry deactivating the service.

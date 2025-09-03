@@ -16,8 +16,8 @@ This error code occurs when an incorrect parameter type is passed to the interfa
 
 **Possible Causes**
 
-This error code indicates a parameter error, which may be caused by passing a parameter of the wrong type.
+This error code indicates a parameter error, likely due to passing a parameter of the wrong type.
 
 **Resolution Steps**
 
-Verify that the parameter type is correct.
+Verify that the parameter types are correct.
