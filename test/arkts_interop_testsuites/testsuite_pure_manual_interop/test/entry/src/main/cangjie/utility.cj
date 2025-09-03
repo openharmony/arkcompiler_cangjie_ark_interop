@@ -18,7 +18,7 @@ package ohos_app_cangjie_entry
 import ohos.ark_interop.*
 import ohos.state_manage.AppStorage
 
-public func getJSContext(): JSContext {
+public func getJSRuntime(): JSRuntime {
     let result = Box(None<JSRuntime>)
     while (true) {
         match (AppStorage.get<JSRuntime>("jsRuntime")) {
@@ -29,5 +29,9 @@ public func getJSContext(): JSContext {
                 break
         }
     }
-    result.value.getOrThrow().mainContext
+    result.value.getOrThrow()
+}
+
+public func getJSContext(): JSContext {
+    getJSRuntime().mainContext
 }

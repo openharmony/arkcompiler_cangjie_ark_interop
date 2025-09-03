@@ -37,6 +37,20 @@ func testExceptionThrow<T>(callback: () -> Unit): Unit where T <: JSInteropExcep
 @Test
 class TestException {
     @TestCase
+    func testExceptionFromJSValue() {
+        let jsContext = getJSContext()
+
+        @Expect(withException<Exception>) {
+            await(jsContext) {
+                String.fromJSValue(jsContext, jsContext
+                    .null()
+                    .toJSValue()
+                )
+            }
+        }
+    }
+
+    @TestCase
     func testExceptionThread() {
         let jsContext = getJSContext()
         testExceptionThrow<JSThreadMisMatch> {
@@ -47,12 +61,164 @@ class TestException {
     @TestCase
     func testExceptionTypeMismatch() {
         let jsContext = getJSContext()
-        let value = jsContext
-            .number(1.0)
-            .toJSValue()
         testExceptionThrow<JSTypeMisMatch> {
             await(jsContext) {
-                value.asNull()
+                jsContext
+                    .number(1.0)
+                    .toJSValue()
+                    .asNull()
+            }
+        }
+
+        let value = await(jsContext) {jsContext
+            .number(1.0)
+            .toJSValue()
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asBigInt()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.toBigInt()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.getElement(12)
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.setElement(0, jsContext
+                    .number(1.0)
+                    .toJSValue()
+                )
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.getProperty("a")
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.setProperty("b", jsContext
+                    .number(2.0)
+                    .toJSValue()
+                )
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.bindObject(jsContext
+                    .number(2.0)
+                    .toJSValue()
+                )
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                jsContext.object().toJSValue().bindObject(value)
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asUndefined()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asBoolean()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asNumber()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.toBoolean()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.toNumber()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asString()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asObject()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asFunction()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asArray()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asClass()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asExternal()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asPromise()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asPromise(jsContext)
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asSymbol()
+            }
+        }
+
+        testExceptionThrow<JSTypeMisMatch> {
+            await(jsContext) {
+                value.asArrayBuffer()
             }
         }
     }

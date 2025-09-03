@@ -114,6 +114,19 @@ class TestJSClass {
             )
         }
 
+        let jsFunc = await(jsContext) {
+            jsContext.function {
+                _, callInfo =>
+                jsContext.undefined().toJSValue()
+            }
+        }
+        await(jsContext) {
+            classA.addMethod(
+                "getUndefined",
+                jsFunc
+            )
+        }
+
         let classB = await(jsContext) {
             jsContext.clazz(
                 {
@@ -178,9 +191,13 @@ class TestJSClass {
                 .number(1.0)
                 .toJSValue())
         }
+        let valueC = await(jsContext){
+            classA.new([])
+        }
 
         @Expect(await(jsContext){valueA.isObject()})
         @Expect(await(jsContext){valueB.isObject()})
+        @Expect(await(jsContext){valueC.isObject()})
 
         let objA = await(jsContext) {valueA.asObject()}
         let objB = await(jsContext) {valueB.asObject()}
@@ -192,6 +209,16 @@ class TestJSClass {
         let nameA = await(jsContext) {objA.callMethod("getName")}
         @Expect(await(jsContext){nameA.isString()})
         @Expect(await(jsContext){nameA.toString()}, 'a')
+
+        var isMismatch: Bool = false
+        try {
+            let nameA = await(jsContext){
+                objA.callMethod("name")
+            }
+        } catch (e: JSTypeMismatch) {
+            isMismatch = true
+        }
+        @Expect(isMismatch)
 
         await(jsContext) {
             objA.callMethod("setName", jsContext

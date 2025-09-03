@@ -26,10 +26,13 @@ func testsuite(): Unit {
     registerTestSuite("TestException", {=> TestException()})
     registerTestSuite("TestExternal", {=> TestExternal()})
     registerTestSuite("TestIDLType", {=> TestIDLType()})
+    registerTestSuite("TestJSCallInfo", {=> TestJSCallInfo()})
+    registerTestSuite("TestJSContext", {=> TestJSContext()})
     registerTestSuite("TestJSValue", {=> TestJSValue()})
     registerTestSuite("TestObject", {=> TestObject()})
     registerTestSuite("TestPrime", {=> TestPrime()})
     registerTestSuite("TestPromise", {=> TestPromise()})
     registerTestSuite("TestString", {=> TestString()})
     registerTestSuite("TestSymbol", {=> TestSymbol()})
+    registerTestSuite("TestUtf16String", {=> TestUtf16String()})
 }
