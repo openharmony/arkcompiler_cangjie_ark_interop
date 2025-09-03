@@ -2,46 +2,25 @@
 
 A click event refers to the event triggered when a component is clicked.
 
-## func onClick((ClickEvent) -> Unit)
+## Import Module
 
 ```cangjie
-public open func onClick(callback: (ClickEvent)->Unit): This
+import kit.ArkUI.*
 ```
 
-**Function:** Event triggered when the component is clicked.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 12
-
-**Parameters:**
-
-| Name | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| callback | ([ClickEvent](#class-clickevent))->Unit | Yes | - | Callback function triggered when the component is clicked. |
-
-> **Note:**
->
-> 1. If a finger is pressed for more than 800ms, the click event cannot be triggered.
-> 2. If the finger moves more than 20px after being pressed, the click event cannot be triggered.
-
-## Basic Type Definitions
-
-### class ClickEvent
+## class ClickEvent
 
 ```cangjie
 public class ClickEvent {
-    public ClickEvent(
-        public var x: Float64,
-        public var y: Float64,
-        public var timestamp: Int64,
-        public var source: SourceType,
-        public var target: EventTarget,
-        public var windowX: Float64,
-        public var windowY: Float64,
-        public var displayX: Float64,
-        public var displayY: Float64
-    )
+    public var x: Float64
+    public var y: Float64
+    public var timestamp: Int64
+    public var source: SourceType
+    public var target: EventTarget
+    public var windowX: Float64
+    public var windowY: Float64
+    public var displayX: Float64
+    public var displayY: Float64
 }
 ```
 
@@ -49,9 +28,9 @@ public class ClickEvent {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 12
+**Since:** 21
 
-#### var displayX
+### var displayX
 
 ```cangjie
 public var displayX: Float64
@@ -63,9 +42,11 @@ public var displayX: Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var displayY
+**Since:** 21
+
+### var displayY
 
 ```cangjie
 public var displayY: Float64
@@ -77,9 +58,11 @@ public var displayY: Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var source
+**Since:** 21
+
+### var source
 
 ```cangjie
 public var source: SourceType
@@ -87,13 +70,15 @@ public var source: SourceType
 
 **Function:** Identifies the type of device that triggered the click.
 
-**Type:** [SourceType](./cj-common-types.md#enum-sourcetype)
+**Type:** [SourceType](cj-common-types.md#enum-sourcetype)
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var target
+**Since:** 21
+
+### var target
 
 ```cangjie
 public var target: EventTarget
@@ -105,9 +90,11 @@ public var target: EventTarget
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var timestamp
+**Since:** 21
+
+### var timestamp
 
 ```cangjie
 public var timestamp: Int64
@@ -119,9 +106,11 @@ public var timestamp: Int64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var windowX
+**Since:** 21
+
+### var windowX
 
 ```cangjie
 public var windowX: Float64
@@ -133,9 +122,11 @@ public var windowX: Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var windowY
+**Since:** 21
+
+### var windowY
 
 ```cangjie
 public var windowY: Float64
@@ -147,9 +138,11 @@ public var windowY: Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var x
+**Since:** 21
+
+### var x
 
 ```cangjie
 public var x: Float64
@@ -161,9 +154,11 @@ public var x: Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### var y
+**Since:** 21
+
+### var y
 
 ```cangjie
 public var y: Float64
@@ -175,132 +170,55 @@ public var y: Float64
 
 **Read/Write:** Readable and Writable
 
-**Since:** 12
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### ClickEvent(Float64, Float64, Int64, SourceType, EventTarget, Float64, Float64, Float64, Float64)
+**Since:** 21
 
-```cangjie
-public ClickEvent(
-    public var x: Float64,
-    public var y: Float64,
-    public var timestamp: Int64,
-    public var source: SourceType,
-    public var target: EventTarget,
-    public var windowX: Float64,
-    public var windowY: Float64,
-    public var displayX: Float64,
-    public var displayY: Float64
-)
-```
-
-**Function:** Constructs a ClickEvent object.
-
-**Parameters:**
-
-| Name | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The X coordinate of the click position relative to the left edge of the clicked element. |
-| y | Float64 | Yes | - | The Y coordinate of the click position relative to the top-left corner of the clicked element's original area. |
-| timestamp | Int64 | Yes | - | Event timestamp. The time interval between the event trigger and system startup. |
-| source | [SourceType](./cj-common-types.md#enum-sourcetype) | Yes | - | The input device that triggered the event. |
-| target | [EventTarget](#class-eventtarget) | Yes | - | The display area of the element object that triggered the event. |
-| windowX | Float64 | Yes | - | The X coordinate of the click position relative to the top-left corner of the application window. |
-| windowY | Float64 | Yes | - | The Y coordinate of the click position relative to the top-left corner of the application window. |
-| displayX | Float64 | Yes | - | The X coordinate of the click position relative to the top-left corner of the application screen. |
-| displayY | Float64 | Yes | - | The Y coordinate of the click position relative to the top-left corner of the application screen. |
-
-### class EventTarget
+## class EventTarget
 
 ```cangjie
 public class EventTarget {
-    public EventTarget(public var area: Area)
+    public var area: Area
+    public init(area: Area)
 }
 ```
 
-**Function:** The display area of the element object that triggered the event.
+**Function:** Event target object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 12
+**Since:** 21
 
-#### var area
+### var area
 
 ```cangjie
 public var area: Area
 ```
 
-**Function:** Defines the target area.
+**Function:** Event target area.
 
-**Type:** [Area](./cj-common-types.md#class-area)
+**Type:** [Area](#class-area)
 
 **Read/Write:** Readable and Writable
 
-**Since:** 19
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-#### EventTarget(Area)
+**Since:** 21
+
+### init(Area)
 
 ```cangjie
-public EventTarget(public var area: Area)
+public init(area: Area)
 ```
 
 **Function:** Constructs an EventTarget object.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| area | [Area](./cj-common-types.md#class-area) | Yes | - | The area information of the target element. |
-
-## Example Code
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
-
-func resolvePosition(evt: Position) {
-  return "x: " + evt.x.toString() + ", y: " + evt.y.toString()
-}
-
-func resolvePositionF64(evt: Position) {
-  return evt.x + evt.y
-}
-
-func resolveEventTarget(evt: EventTarget) {
-  return "area_width: ${evt.area.width}\narea_height: ${evt.area.height}\narea_position: ${resolvePosition(evt.area.position)}\narea_globalPosition : ${resolvePosition(evt.area.globalPosition)} "
-}
-
-func resolveClickEvent(evt: ClickEvent) {
-  return "x: ${evt.x}\ny: ${evt.y}\ntimestamp: ${evt.timestamp}\ntarget: ${resolveEventTarget(evt.target)}\nwindowX: ${evt.windowX}\nwindowY: ${evt.windowY}\ndisplayX: ${evt.displayX}\ndisplayY: ${evt.displayY} "
-}
-
-@Entry
-@Component
-class EntryView{
-  @State var clickEventMsg: String = ""
-  @State var clickEventMsg2: String = ""
-
-  func build() {
-    Column(10) {
-        Button("Click").backgroundColor(0x2788D9)
-          .onClick({event =>
-              this.clickEventMsg = resolveClickEvent(event) + event.source.toString()
-              AppLog.info(this.clickEventMsg)
-          }).width(200.vp)
-
-        Button("Click").backgroundColor(0x2788D9)
-          .onClick({event =>
-              this.clickEventMsg2 = resolveClickEvent(event) + event.source.toString()
-              AppLog.info(this.clickEventMsg2)
-          }).width(200.px)
-
-      Text(this.clickEventMsg).padding(15).width(100.percent)
-      Text(this.clickEventMsg2).padding(15).width(100.percent)
-    }
-  }
-}
-```
-
-![clickevent](figures/clickevent.gif)
+| area | [Area](#class-area) | Yes | - | Event target area. |

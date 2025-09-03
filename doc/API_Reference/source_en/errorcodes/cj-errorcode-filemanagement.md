@@ -2,9 +2,9 @@
 
 > **Note:**
 >
-> The following only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following describes only the error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
-The file management subsystem error codes consist of five parts: [Basic File IO Error Codes](#basic-file-io-error-codes), [User Data Management Error Codes](#user-data-management-error-codes), [Public File Access Error Codes](#public-file-access-error-codes), [Space Statistics Error Codes](#space-statistics-error-codes), and [Device-Cloud Synchronization Error Codes](#device-cloud-synchronization-error-codes).
+The file management subsystem error codes consist of five parts: [Basic File IO Error Codes](#basic-file-io-error-codes), [User Data Management Error Codes](#user-data-management-error-codes), [Public File Access Error Codes](#public-file-access-error-codes), [Space Statistics Error Codes](#space-statistics-error-codes), and [Device-Cloud Sync Error Codes](#device-cloud-sync-error-codes).
 
 ## Basic File IO Error Codes
 
@@ -18,7 +18,7 @@ Operation not permitted
 
 The current user's file operation is not permitted.
 
-**Resolution**
+**Resolution Steps**
 
 Verify file permissions.
 
@@ -32,9 +32,9 @@ No such file or directory
 
 The file or directory does not exist.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the file path exists.
+Verify the file path exists.
 
 ### 13900003 No Such Process
 
@@ -46,10 +46,10 @@ No such process
 
 The process does not exist.
 
-**Resolution**
+**Resolution Steps**
 
-1. Check if the process was unexpectedly terminated.  
-2. Verify whether the related service has started.
+1. Check if the process was unexpectedly terminated.
+2. Verify if the relevant service is running.
 
 ### 13900004 Interrupted System Call
 
@@ -61,9 +61,9 @@ Interrupted system call
 
 The system call was interrupted by another thread.
 
-**Resolution**
+**Resolution Steps**
 
-1. Check the multithreading code logic.  
+1. Check multi-threaded code logic.
 2. Retry the system call.
 
 ### 13900005 I/O Error
@@ -76,7 +76,7 @@ I/O error
 
 The I/O request is invalid.
 
-**Resolution**
+**Resolution Steps**
 
 Retry the I/O request.
 
@@ -88,9 +88,9 @@ No such device or address
 
 **Possible Causes**
 
-The device or address information is incorrect.
+Incorrect device or address information.
 
-**Resolution**
+**Resolution Steps**
 
 Verify the device or address information.
 
@@ -104,7 +104,7 @@ Arg list too long
 
 The argument list is too long.
 
-**Resolution**
+**Resolution Steps**
 
 Reduce the number of arguments.
 
@@ -116,13 +116,13 @@ Bad file descriptor
 
 **Possible Causes**
 
-1. The file descriptor is already closed.  
-2. The read/write permissions do not match.
+1. The file descriptor is already closed.
+2. Read/write permissions do not match.
 
-**Resolution**
+**Resolution Steps**
 
-1. Verify whether the file descriptor is closed.  
-2. Check if the file's read/write permissions match.
+1. Verify if the file descriptor is closed.
+2. Verify if the file read/write permissions match.
 
 ### 13900009 No Child Processes
 
@@ -134,9 +134,9 @@ No child processes
 
 Unable to create a child process.
 
-**Resolution**
+**Resolution Steps**
 
-Check the maximum number of processes in the system.
+Check the system's maximum process limit.
 
 ### 13900010 Resource Temporarily Unavailable
 
@@ -148,7 +148,7 @@ Try again
 
 The resource is blocked.
 
-**Resolution**
+**Resolution Steps**
 
 Retry the resource request.
 
@@ -162,10 +162,10 @@ Out of memory
 
 Memory overflow.
 
-**Resolution**
+**Resolution Steps**
 
-1. Check memory usage.  
-2. Manage system memory consumption.
+1. Check memory usage.
+2. Manage system memory usage.
 
 ### 13900012 Permission Denied
 
@@ -175,13 +175,13 @@ Permission denied
 
 **Possible Causes**
 
-1. Insufficient permissions for the file operation.  
+1. No permission for the file operation.
 2. Incorrect file sandbox path address.
 
-**Resolution**
+**Resolution Steps**
 
-1. Verify permissions.  
-2. Check the file sandbox path address.
+1. Verify permissions.
+2. Verify the file sandbox path address.
 
 ### 13900013 Bad Address
 
@@ -191,11 +191,11 @@ Bad address
 
 **Possible Causes**
 
-The address is incorrect.
+Incorrect address.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the address is correct.
+Verify the address is correct.
 
 ### 13900014 Device or Resource Busy
 
@@ -207,7 +207,7 @@ Device or resource busy
 
 The requested resource is unavailable.
 
-**Resolution**
+**Resolution Steps**
 
 Retry the resource request.
 
@@ -221,11 +221,11 @@ File exists
 
 The file to be created already exists.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the file path is correct.
+Verify the file path is correct.
 
-### 13900016 Invalid Cross-Link
+### 13900016 Invalid Cross-Device Link
 
 **Error Message**
 
@@ -235,9 +235,9 @@ Cross-device link
 
 Cross-device linking failed.
 
-**Resolution**
+**Resolution Steps**
 
-Check if cross-device operations are functioning properly.
+Verify cross-device connectivity.
 
 ### 13900017 No Such Device
 
@@ -249,9 +249,9 @@ No such device
 
 The device is not recognized.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the device connection is functioning properly.
+Verify the device connection is normal.
 
 ### 13900018 Not a Directory
 
@@ -263,9 +263,9 @@ Not a directory
 
 The path is not a directory.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the path is correct.
+Verify the path is correct.
 
 ### 13900019 Is a Directory
 
@@ -277,9 +277,9 @@ Is a directory
 
 The path is a directory.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the path is correct.
+Verify the path is correct.
 
 ### 13900020 Invalid Argument
 
@@ -289,11 +289,13 @@ Invalid argument
 
 **Possible Causes**
 
-The input parameter is invalid.
+Invalid input parameter.
 
-**Resolution**Verify parameter validity.
+**Resolution Steps**
 
-### 13900021 Too Many File Descriptors Opened
+Verify parameter validity.
+
+### 13900021 Too Many Open File Descriptors
 
 **Error Message**
 
@@ -301,13 +303,13 @@ File table overflow
 
 **Possible Causes**
 
-Process has opened too many file descriptors.
+The process has opened too many file descriptors.
 
 **Resolution Steps**
 
-Close irrelevant file descriptors.
+Close unnecessary file descriptors.
 
-### 13900022 Too Many Files Opened
+### 13900022 Too Many Open Files
 
 **Error Message**
 
@@ -315,7 +317,7 @@ Too many open files
 
 **Possible Causes**
 
-System has opened too many files.
+The system has opened too many files.
 
 **Resolution Steps**
 
@@ -329,7 +331,7 @@ Text file busy
 
 **Possible Causes**
 
-The executable file of the program is in use.
+The program's executable file is in use.
 
 **Resolution Steps**
 
@@ -343,11 +345,11 @@ File too large
 
 **Possible Causes**
 
-File size exceeds the maximum file size limit.
+The file size exceeds the maximum file size limit.
 
 **Resolution Steps**
 
-Verify if the file size complies with the maximum file size limit.
+Verify the file size meets the maximum file size limit.
 
 ### 13900025 No Space Left on Device
 
@@ -357,7 +359,7 @@ No space left on device
 
 **Possible Causes**
 
-Insufficient storage space on the device.
+Insufficient device storage space.
 
 **Resolution Steps**
 
@@ -371,7 +373,7 @@ Illegal seek
 
 **Possible Causes**
 
-Attempted to use seek on a pipe or FIFO.
+Using seek on a pipe or FIFO.
 
 **Resolution Steps**
 
@@ -385,11 +387,11 @@ Read-only file system
 
 **Possible Causes**
 
-File system supports read operations only.
+The file system is read-only.
 
 **Resolution Steps**
 
-Confirm if the file is read-only.
+Verify the file is read-only.
 
 ### 13900028 Too Many Links
 
@@ -399,7 +401,7 @@ Too many links
 
 **Possible Causes**
 
-File has reached the maximum number of links.
+The file has reached the maximum number of links.
 
 **Resolution Steps**
 
@@ -427,11 +429,11 @@ Filename too Long
 
 **Possible Causes**
 
-Path or filename exceeds the maximum length.
+The path or filename exceeds the maximum length.
 
 **Resolution Steps**
 
-Verify the length of the path or filename.
+Verify the path or filename length.
 
 ### 13900031 Function Not Implemented
 
@@ -441,7 +443,7 @@ Function not implemented
 
 **Possible Causes**
 
-System does not support this functionality.
+The system does not support this function.
 
 **Resolution Steps**
 
@@ -455,14 +457,14 @@ Directory not empty
 
 **Possible Causes**
 
-Specified directory is not empty.
+The specified directory is not empty.
 
 **Resolution Steps**
 
 1. Verify the directory path.
-2. Confirm the path is empty.
+2. Verify the path is empty.
 
-### 13900033 Too Many Symbolic Links Encountered
+### 13900033 Too Many Symbolic Links
 
 **Error Message**
 
@@ -470,11 +472,11 @@ Too many symbolic links encountered
 
 **Possible Causes**
 
-Excessive levels of symbolic links.
+Too many levels of symbolic links.
 
 **Resolution Steps**
 
-Clean up irrelevant symbolic links.
+Clean up unnecessary symbolic links.
 
 ### 13900034 Operation Would Block
 
@@ -484,7 +486,7 @@ Operation would block
 
 **Possible Causes**
 
-Operation is blocked.
+The operation is blocked.
 
 **Resolution Steps**
 
@@ -498,11 +500,11 @@ Invalid request descriptor
 
 **Possible Causes**
 
-Illegal file descriptor.
+Invalid file descriptor.
 
 **Resolution Steps**
 
-Verify the validity of the file descriptor.
+Verify the file descriptor is valid.
 
 ### 13900036 Device Not a Stream
 
@@ -512,11 +514,11 @@ Device not a stream
 
 **Possible Causes**
 
-File descriptor points to a non-stream device.
+The file descriptor points to a non-stream device.
 
 **Resolution Steps**
 
-Confirm if the file descriptor points to a stream device.
+Verify the file descriptor points to a stream device.
 
 ### 13900037 No Data Available
 
@@ -530,7 +532,7 @@ Data is unavailable.
 
 **Resolution Steps**
 
-Request data again.
+Retry the data request.
 
 ### 13900038 Value Too Large for Defined Data Type
 
@@ -540,7 +542,7 @@ Value too large for defined data type
 
 **Possible Causes**
 
-Value exceeds the range of the defined data type.
+The value exceeds the defined data type range.
 
 **Resolution Steps**
 
@@ -554,11 +556,11 @@ File descriptor in bad state
 
 **Possible Causes**
 
-File descriptor is corrupted.
+The file descriptor is corrupted.
 
 **Resolution Steps**
 
-Verify the validity of the file descriptor.
+Verify the file descriptor is valid.
 
 ### 13900040 Interrupted System Call Should Be Restarted
 
@@ -568,7 +570,7 @@ Interrupted system call should be restarted
 
 **Possible Causes**
 
-System call was interrupted.
+The system call was interrupted.
 
 **Resolution Steps**
 
@@ -588,322 +590,323 @@ Insufficient disk space.
 
 Free up disk storage space.
 
-### 13900042 Unknown Error**Error Message**  
-
-Unknown error  
-
-**Possible Causes**  
-
-Internal error.  
-
-**Resolution Steps**  
-
-1. Retry the API.  
-2. Restart the service.  
-
-### 13900043 No Available Lock  
-
-**Error Message**  
-
-No record is locks available  
-
-**Possible Causes**  
-
-Insufficient system resources.  
-
-**Resolution Steps**  
-
-Release lock resources and retry.  
-
-### 13900044 Network Unreachable  
-
-**Error Message**  
-
-Network is unreachable  
-
-**Possible Causes**  
-
-Network anomaly.  
-
-**Resolution Steps**  
-
-Check the network status and ensure it is functioning normally.  
-
-### 13900045 Connection Failed  
-
-**Error Message**  
-
-Connection failed  
-
-**Possible Causes**  
-
-Abnormal device, WiFi, or Bluetooth state, causing connection failure.  
-
-**Resolution Steps**  
-
-1. Check the device and ensure it is functioning normally.  
-2. Check WiFi and Bluetooth and ensure they are functioning normally.  
-
-### 13900046 Connection Failed  
-
-**Error Message**  
-
-Software caused connection abort  
-
-**Possible Causes**  
-
-Device offline or WiFi/Bluetooth disconnected.  
-
-**Resolution Steps**  
-
-1. Check the device and ensure it is functioning normally.  
-2. Check WiFi and Bluetooth and ensure they are functioning normally.  
-
-## User Data Management Error Codes  
-
-### 14000001 Invalid Filename  
-
-**Error Message**  
-
-Invalid display name  
-
-**Possible Causes**  
-
-Filename contains invalid characters.  
-
-**Resolution Steps**  
-
-Remove invalid characters.  
-
-### 14000002 Invalid URI  
-
-**Error Message**  
-
-Invalid uri  
-
-**Possible Causes**  
-
-URI is invalid.  
-
-**Resolution Steps**  
-
-Use the URI obtained directly from the query.  
-
-### 14000003 Invalid File Extension  
-
-**Error Message**  
-
-Invalid file name extension  
-
-**Possible Causes**  
-
-Naming does not match the file type.  
-
-**Resolution Steps**  
-
-Check the file extension.  
-
-### 14000004 File Moved to Recycle Bin  
-
-**Error Message**  
-
-File has been put into trash bin  
-
-**Possible Causes**  
-
-The file has been deleted and moved to the recycle bin.  
-
-**Resolution Steps**  
-
-Check if the file has been moved to the recycle bin.  
-
-### 14000011 System Internal Error  
-
-**Error Message**  
-
-System inner fail  
-
-**Possible Causes**  
-
-System anomaly; unknown error occurred.  
-
-**Resolution Steps**  
-
-Clear background processes or restart the device.  
-
-### 14000014 Invalid Member Name  
-
-**Error Message**  
-
-Member is not a valid PhotoKey  
-
-**Possible Causes**  
-
-The input string is not a member name of the class or interface.  
-
-**Resolution Steps**  
-
-Ensure the input string is a valid member name of the class or interface.  
-
-## Storage Statistics Error Codes  
-
-### 13600001 IPC Communication Failure  
-
-**Error Message**  
-
-IPC error  
-
-**Possible Causes**  
-
-The called service does not exist.  
-
-**Resolution Steps**  
-
-Check if the service is running.  
-
-### 13600002 Unsupported Filesystem  
-
-**Error Message**  
-
-Not supported filesystem  
-
-**Possible Causes**  
-
-The filesystem type of the operation is not supported.  
-
-**Resolution Steps**  
-
-Modify to the correct filesystem type.  
-
-### 13600003 Mount Failed  
-
-**Error Message**  
-
-Failed to mount  
-
-**Possible Causes**  
-
-Mount command execution failed.  
-
-**Resolution Steps**  
-
-Remove the card and attempt to remount.  
-
-### 13600004 Unmount Failed  
-
-**Error Message**  
-
-Failed to unmount  
-
-**Possible Causes**  
-
-Device is busy.  
-
-**Resolution Steps**  
-
-Check if external card files are being used by a thread and terminate the occupying thread.  
-
-### 13600005 Incorrect Volume State  
-
-**Error Message**  
-
-Incorrect volume state  
-
-**Possible Causes**  
-
-The volume state for the operation is incorrect.  
-
-**Resolution Steps**  
-
-Check if the current volume state is correct.  
-
-### 13600006 Directory or Node Creation Failed  
-
-**Error Message**  
-
-Prepare directory or node error  
-
-**Possible Causes**  
-
-The directory or node already exists.  
-
-**Resolution Steps**  
-
-Check if the target directory or node exists.  
-
-### 13600007 Directory or Node Deletion Failed  
-
-**Error Message**  
-
-Delete directory or node error  
-
-**Possible Causes**  
-
-The directory or node has already been deleted.  
-
-**Resolution Steps**  
-
-Check if the target directory or node exists.  
-
-### 13600008 Object Not Found  
-
-**Error Message**  
-
-No such object  
-
-**Possible Causes**  
-
-1. Incorrect volume ID entered.  
-2. Incorrect application package name entered.  
-
-**Resolution Steps**  
-
-1. Check if the entered volume exists.  
-2. Check if the entered application package name exists.  
-
-### 13600009 User ID Out of Range  
-
-**Error Message**  
-
-User id out of range  
-
-**Possible Causes**  
-
-Incorrect user ID entered.  
-
-**Resolution Steps**  
-
-Check if the entered user ID is within the valid range.  
-
-## Public File Access Error Codes  
-
-### 14300001 IPC Communication Failure  
-
-**Error Message**  
-
-IPC error**Possible Causes**
-
-1. Server-side service is unavailable.
-
-2. Extension mechanism is abnormal.
-
-**Troubleshooting Steps**
-
-Check if the server-side service exists.
-
-### 14300002 URI Format Error
+### 13900042 Unknown Error
 
 **Error Message**
 
-Invalid URI
+Unknown error
 
 **Possible Causes**
 
-Using an illegal URI.
+Internal error.
 
-**Troubleshooting Steps**
+**Resolution Steps**
 
-Verify the URI format.
+1. Retry the interface.
+2. Restart the service.
+
+### 13900043 No Locks Available
+
+**Error Message**
+
+No record is locks available
+
+**Possible Causes**
+
+Insufficient system resources.
+
+**Resolution Steps**
+
+Release lock resources and retry.
+
+### 13900044 Network Unreachable
+
+**Error Message**
+
+Network is unreachable
+
+**Possible Causes**
+
+Network anomaly.
+
+**Resolution Steps**
+
+Check the network status and ensure it is normal.
+
+### 13900045 Connection Failed
+
+**Error Message**
+
+Connection failed
+
+**Possible Causes**
+
+Device, WiFi, or Bluetooth state anomaly, causing connection failure.
+
+**Resolution Steps**
+
+1. Check the device and ensure its state is normal.
+2. Check WiFi and Bluetooth and ensure their states are normal.
+
+### 13900046 Connection Failed
+
+**Error Message**
+
+Software caused connection abort
+
+**Possible Causes**
+
+Device offline or WiFi/Bluetooth disconnection.
+
+**Resolution Steps**
+
+1. Check the device and ensure its state is normal.
+2. Check WiFi and Bluetooth and ensure their states are normal.## User Data Management Error Codes
+
+### 14000001 Invalid Filename
+
+**Error Message**
+
+Invalid display name
+
+**Possible Cause**
+
+The filename contains illegal characters.
+
+**Resolution**
+
+Remove illegal characters.
+
+### 14000002 Invalid URI
+
+**Error Message**
+
+Invalid uri
+
+**Possible Cause**
+
+The URI is invalid.
+
+**Resolution**
+
+Use the URI obtained directly from the query.
+
+### 14000003 Invalid File Extension
+
+**Error Message**
+
+Invalid file name extension
+
+**Possible Cause**
+
+Named according to file type.
+
+**Resolution**
+
+Check the file extension.
+
+### 14000004 File Moved to Recycle Bin
+
+**Error Message**
+
+File has been put into trash bin
+
+**Possible Cause**
+
+The file has been deleted and moved to the recycle bin.
+
+**Resolution**
+
+Check if the file has been moved to the recycle bin.
+
+### 14000011 System Internal Error
+
+**Error Message**
+
+System inner fail
+
+**Possible Cause**
+
+System exception occurred due to unknown error.
+
+**Resolution**
+
+Clear background processes or restart the device.
+
+### 14000014 Invalid Member Name
+
+**Error Message**
+
+Member is not a valid PhotoKey
+
+**Possible Cause**
+
+The input string is not a member name of the class or interface.
+
+**Resolution**
+
+Ensure the input string is a member name of the class or interface.
+
+## Storage Statistics Error Codes
+
+### 13600001 IPC Communication Failure
+
+**Error Message**
+
+IPC error
+
+**Possible Cause**
+
+The called service does not exist.
+
+**Resolution**
+
+Check if the service is running.
+
+### 13600002 Unsupported Filesystem Type
+
+**Error Message**
+
+Not supported filesystem
+
+**Possible Cause**
+
+The filesystem type being operated is not supported.
+
+**Resolution**
+
+Modify to the correct filesystem type.
+
+### 13600003 Mount Failure
+
+**Error Message**
+
+Failed to mount
+
+**Possible Cause**
+
+Failed to execute the mount command.
+
+**Resolution**
+
+Remove and reinsert the card to attempt remounting.
+
+### 13600004 Unmount Failure
+
+**Error Message**
+
+Failed to unmount
+
+**Possible Cause**
+
+The device is busy.
+
+**Resolution**
+
+Check if external card files are being used by threads and terminate the occupying threads.
+
+### 13600005 Incorrect Volume State
+
+**Error Message**
+
+Incorrect volume state
+
+**Possible Cause**
+
+The volume state being operated is incorrect.
+
+**Resolution**
+
+Check if the current volume state is correct.
+
+### 13600006 Directory or Node Creation Failure
+
+**Error Message**
+
+Prepare directory or node error
+
+**Possible Cause**
+
+The directory or node already exists.
+
+**Resolution**
+
+Check if the target directory or node exists.
+
+### 13600007 Directory or Node Deletion Failure
+
+**Error Message**
+
+Delete directory or node error
+
+**Possible Cause**
+
+The directory or node has already been deleted.
+
+**Resolution**
+
+Check if the target directory or node exists.
+
+### 13600008 Object Not Found
+
+**Error Message**
+
+No such object
+
+**Possible Cause**
+
+1. Incorrect volume ID entered.  
+2. Incorrect package name entered.
+
+**Resolution**
+
+1. Check if the entered volume exists.  
+2. Check if the entered application package name exists.
+
+### 13600009 User ID Out of Range
+
+**Error Message**
+
+User id out of range
+
+**Possible Cause**
+
+Incorrect user ID entered.
+
+**Resolution**
+
+Check if the entered user ID is within the normal range.
+
+## Public File Access Error Codes
+
+### 14300001 IPC Communication Failure
+
+**Error Message**
+
+IPC error
+
+**Possible Cause**
+
+1. Server-side service is unavailable.  
+2. Extension mechanism exception.
+
+**Resolution**
+
+Check if the server-side service exists.
+
+### 14300002 Invalid URI Format
+
+**Error Message**
+
+Invalid uri
+
+**Possible Cause**
+
+Illegal URI used.
+
+**Resolution**
+
+Check the URI format.
 
 ### 14300003 Failed to Query Server-Side Ability Information
 
@@ -911,11 +914,11 @@ Verify the URI format.
 
 Fail to get fileextension info
 
-**Possible Causes**
+**Possible Cause**
 
 BMS interface exception.
 
-**Troubleshooting Steps**
+**Resolution**
 
 System basic capability issue.
 
@@ -925,57 +928,55 @@ System basic capability issue.
 
 Get wrong result
 
-**Possible Causes**
+**Possible Cause**
 
 Server-side returned improper actual data.
 
-**Troubleshooting Steps**
+**Resolution**
 
 Check the server-side return value.
 
-### 14300005 Notification Registration Failed
+### 14300005 Notification Registration Failure
 
 **Error Message**
 
 Fail to register notification
 
-**Possible Causes**
+**Possible Cause**
 
-1. Server-side service is unavailable.
+1. Server-side service is unavailable.  
+2. Extension mechanism exception.
 
-2. Extension mechanism is abnormal.
-
-**Troubleshooting Steps**
+**Resolution**
 
 Check if the server-side service exists.
 
-### 14300006 Notification Removal Failed
+### 14300006 Notification Removal Failure
 
 **Error Message**
 
 Fail to remove notification
 
-**Possible Causes**
+**Possible Cause**
 
-1. Server-side service is unavailable.
+1. Server-side service is unavailable.  
+2. Extension mechanism exception.
 
-2. Extension mechanism is abnormal.
-
-**Troubleshooting Steps**
+**Resolution**
 
 Check if the server-side service exists.
 
-### 14300007 Notification Agent Initialization Failed
+### 14300007 Notification Agent Initialization Failure
 
 **Error Message**
 
 Fail to init notification agent
 
-**Possible Causes**
+**Possible Cause**
 
-Attempting to cancel notification without prior registration.
+Attempted to cancel notification without prior registration.
 
-**Troubleshooting Steps**
+**Resolution**
 
 Check if registration was completed.
 
@@ -985,17 +986,16 @@ Check if registration was completed.
 
 Fail to notify agent
 
-**Possible Causes**
+**Possible Cause**
 
-1. Service is unavailable.
+1. Service unavailable.  
+2. Extension mechanism exception.
 
-2. Extension mechanism is abnormal.
-
-**Troubleshooting Steps**
+**Resolution**
 
 Check if the client is abnormal.
 
-## Cloud-Device Synchronization Error Codes
+## Device-Cloud Sync Error Codes
 
 ### 22400001 Cloud Status Not Ready
 
@@ -1003,16 +1003,14 @@ Check if the client is abnormal.
 
 Cloud status not ready
 
-**Possible Causes**
+**Possible Cause**
 
-1. Cloud service is not enabled.
+1. Cloud service not enabled.  
+2. Application cloud sync switch is off.
 
-2. Application cloud sync switch is turned off.
+**Resolution**
 
-**Troubleshooting Steps**
-
-1. Verify if the account is logged in.
-
+1. Check if the account is logged in.  
 2. Check if the cloud sync switch is turned on.
 
 ### 22400002 Network Unavailable
@@ -1021,11 +1019,11 @@ Cloud status not ready
 
 Network unavailable
 
-**Possible Causes**
+**Possible Cause**
 
 Device is offline or network is unavailable.
 
-**Troubleshooting Steps**
+**Resolution**
 
 Check network status.
 
@@ -1035,10 +1033,10 @@ Check network status.
 
 Battery level warning
 
-**Possible Causes**
+**Possible Cause**
 
 Battery level is too low.
 
-**Troubleshooting Steps**
+**Resolution**
 
 Enable charging mode or retry after battery level recovers.

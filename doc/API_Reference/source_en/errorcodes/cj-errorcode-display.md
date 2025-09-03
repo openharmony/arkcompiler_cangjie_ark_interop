@@ -2,52 +2,52 @@
 
 > **Note:**
 >
-> This document only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> The following describes only the error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 1400001 Invalid Display Device
 
-**Error Message**<br>
+**Error Message**  
 Invalid display or screen.
 
-**Error Description**<br>
-This error code is reported when attempting to operate on an invalid display device (including virtual screens).
+**Error Description**  
+This error code is reported when operating on an invalid display device (including virtual screens).
 
-**Possible Causes**<br>
+**Possible Causes**  
 
 1. The virtual screen has not been created.
 2. The virtual screen has been destroyed.
 
-**Resolution Steps**<br>
+**Resolution Steps**  
 
-1. Before operating on a virtual screen, verify its existence and ensure it has been created.
-2. Before operating on a virtual screen, check whether it has been destroyed, and ensure it remains active before performing any operations.
+1. Before operating on a virtual screen, check whether it exists and ensure it has been created.
+2. Before operating on a virtual screen, verify that it has not been destroyed and proceed with the operation only if it is intact.
 
 ## 1400002 Unauthorized Operation
 
-**Error Message**<br>
+**Error Message**  
 Unauthorized operation.
 
-**Error Description**<br>
-This error code is reported when attempting to perform operations on objects without proper permissions.
+**Error Description**  
+This error code is reported when attempting to operate on an object for which the user lacks permission.
 
-**Possible Causes**<br>
-Attempting to operate on virtual screen objects belonging to other processes.
+**Possible Causes**  
+Operating on a virtual screen object belonging to another process.
 
-**Resolution Steps**<br>
-Verify whether unauthorized operations are being performed on objects from other processes, and remove any such illegal operations.
+**Resolution Steps**  
+Check for any unauthorized operations on objects from other processes and remove such illegal operations.
 
 ## 1400003 System Service Malfunction
 
-**Error Message**<br>
+**Error Message**  
 This display manager service works abnormally.
 
-**Error Description**<br>
+**Error Description**  
 This error code is reported when the system service is functioning abnormally.
 
-**Possible Causes**<br>
+**Possible Causes**  
 
 1. The screen management service failed to start properly.
-2. Underlying graphics/image composition and rendering encountered an exception.
+2. Underlying graphics and image composition rendering encountered an exception.
 
-**Resolution Steps**<br>
-The system service is experiencing internal malfunctions. Please retry after some time or attempt to restart the device.
+**Resolution Steps**  
+The system service is experiencing internal malfunctions. Please retry after some time or attempt restarting the device.

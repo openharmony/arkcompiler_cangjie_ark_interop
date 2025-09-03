@@ -1,6 +1,6 @@
 # ohos.ability_access_ctrl (Application Access Control Management)
 
-Application access control provides capabilities for permission management, including authentication, authorization, and revocation of authorization.
+Application access control provides permission management capabilities, including authentication, authorization, and revocation of authorization.
 
 ## Import Module
 
@@ -12,10 +12,10 @@ import kit.AbilityKit.*
 
 API sample code usage instructions:
 
-- If the first line of the sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample code's first line contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the above sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class AbilityAccessCtrl
 
@@ -45,7 +45,7 @@ public static func createAtManager(): AtManager
 
 | Type | Description |
 |:----|:----|
-|[AtManager](#class-atmanager)|The instance of the access control module.|
+| [AtManager](#class-atmanager) | Instance of the access control module. |
 
 **Example:**
 
@@ -77,7 +77,7 @@ public class AtManager {}
 public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): GrantStatus
 ```
 
-**Description:** Verifies whether the application has been granted the specified permission.
+**Description:** Verifies whether the application has been granted a permission.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -85,25 +85,25 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|tokenID|UInt32|Yes|-|The identity of the target application to be verified. It can be obtained through the [ApplicationInfo](./cj-apis-bundle_manager.md#struct-applicationinfo) of the application.|
-|permissionName|[Permissions](#type-permissions)|Yes|-|The name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List).|
+| tokenID | UInt32 | Yes | - | Identity identifier of the target application to be verified. Can be obtained through the application's [ApplicationInfo](cj-apis-bundle_manager.md#struct-applicationinfo). |
+| permissionName | [Permissions](#type-permissions) | Yes | - | Name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-|[GrantStatus](#enum-grantstatus)|The authorization status result.|
+| [GrantStatus](#enum-grantstatus) | Returns the authorization status result. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Access Control Error Codes](../../errorcodes/cj-errorcode-access-token.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md).
 
-| Error Code ID | Error Message |
-|:----|:---|
-| 401 | The parameter check failed. |
-| 12100001 | The parameter is invalid. The tokenID is 0, or the string size of permissionName is larger than 256.|
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 12100001 | The parameter is invalid. The tokenID is 0, or the string size of permissionName exceeds 256. |
 
 **Example:**
 
@@ -115,20 +115,20 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 import kit.AbilityKit.*
 
 let atManager = AbilityAccessCtrl.createAtManager()
-let tokenID : UInt32 = 0 // The tokenID can be obtained by system applications through bundleManager.getApplicationInfo and by common applications through bundleManager.getBundleInfoForSelf.
+let tokenID : UInt32 = 0 // System applications can obtain tokenID via bundleManager.getApplicationInfo, while regular applications can use bundleManager.getBundleInfoForSelf
 let status = atManager.checkAccessToken(tokenID, "ohos.permission.GRANT_SENSITIVE_PERMISSIONS")
 ```
 
-### func requestPermissionsFromUser(StageContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)
+### func requestPermissionsFromUser(UIAbilityContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)
 
 ```cangjie
-public func requestPermissionsFromUser(context: StageContext, permissionList: Array<Permissions>,
-    callback: AsyncCallback<PermissionRequestResult>): Unit
+public func requestPermissionsFromUser(context: UIAbilityContext, permissionList: Array<Permissions>,
+    requestCallback: AsyncCallback<PermissionRequestResult>): Unit
 ```
 
-**Description:** Used to display a dialog box to request user authorization.
+**Description:** Used to display a dialog requesting user authorization.
 
-If the user rejects the authorization, the dialog box cannot be displayed again. The user needs to manually grant the permission in the "Settings" interface of the system application.
+If the user denies authorization, the dialog cannot be displayed again. The user must manually grant the permission in the system application "Settings" interface.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -136,20 +136,26 @@ If the user rejects the authorization, the dialog box cannot be displayed again.
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|context|[StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|Yes|-|The Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission.|
-|permissionList|Array\<[Permissions](#type-permissions)>|Yes|-|The name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List).|
-|callback|AsyncCallback\<[PermissionRequestResult](#class-permissionrequestresult)>|Yes|-|The callback function, which returns whether the API call is successful.|
+| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission. |
+| permissionList | Array\<[Permissions](#type-permissions)> | Yes | - | Names of the permissions to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
+| requestCallback | AsyncCallback\<[AccessCtrlPermissionRequestResult](#class-accessctrlpermissionrequestresult)> | Yes | - | Callback function that returns whether the interface call was successful. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Access Control Error Codes](../../errorcodes/cj-errorcode-access-token.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md).
 
-| Error Code ID | Error Message |
-|:----|:---|
-| 401 | The parameter check failed. |
-| 12100001 | The parameter is invalid. The context is invalid when it does not belong to the application itself.|
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | The parameter check failed. |
+  | 12100001 | The parameter is invalid. The context is invalid when it does not belong to the application itself. |
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
+  | The context is invalid. | todo | todo |
 
 **Example:**
 
@@ -159,132 +165,42 @@ If the user rejects the authorization, the dialog box cannot be displayed again.
 // index.cj
 
 import kit.AbilityKit.*
-import ohos.base.AsyncCallback
-import ohos.base.AsyncError
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.*
+import ohos.arkui.state_management.AppStorage
 
-// The following code can be added to the dependency definition.
+// This code can be added to the dependency definitions
 var resultCallback = {
-    errorCode: Option<AsyncError>, data: Option<AccessCtrlPermissionRequestResult> => match (errorCode) {
-        case Some(e) => AppLog.info("permissionResultCallBack request error: errcode is ${e.code}")
+    errorCode: Option<BusinessException>, data: Option<PermissionRequestResult> => match (errorCode) {
+        case Some(e) => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: errcode is ${e.code}")
         case _ =>
             match (data) {
                 case Some(value) =>
                     for (i in (0..value.permissions.size)) {
-                        AppLog.info("CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
+                        Hilog.info(0, "AppLogCj", "CallBack: ${value.permissions[i]} - ${value.authResults[i]}")
                     }
-                case _ => AppLog.info("permissionResultCallBack request error: data is null")
+                case _ => Hilog.error(0, "AppLogCj", "permissionResultCallBack request error: data is null")
             }
     }
 }
 
-let ctx = Global.getAbilityContext() // The Context application context needs to be obtained. For details, see the usage instructions in this document.
+let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context needs to be obtained. See Usage Instructions for details.
 let atManager = AbilityAccessCtrl.createAtManager()
-let stageContext = getStageContext(ctx)
 let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
-atManager.requestPermissionsFromUser(stageContext, permissionList, resultCallback)
+atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)
 ```
-
-## class PermissionRequestResult
-
-```cangjie
-public class PermissionRequestResult {
-    public var permissions: Array<String>
-    public var authResults: Array<Int32>
-    public var dialogShownResults:?Array<Bool>= None
-    public init(
-        permissions: Array<String>,
-        authResults: Array<Int32>
-    )
-}
-```
-
-**Description:** The permission request result object, which is returned when calling [requestPermissionsFromUser](#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackpermissionrequestresult) to apply for permissions, indicating the result of the permission application.
-
-**System Capability:** SystemCapability.Security.AccessToken
-
-**Since:** 21
-
-### var authResults
-
-```cangjie
-public var authResults: Array<Int32>
-```
-
-**Description:** The result of the corresponding permission request.
-
-**Type:** Array\<Int32>
-
-**Read/Write Attribute:** Readable and Writable
-
-**System Capability:** SystemCapability.Security.AccessToken
-
-**Since:** 21
-
-### var dialogShownResults
-
-```cangjie
-public var dialogShownResults:?Array<Bool>= None
-```
-
-**Description:** Whether a dialog box is displayed for this permission application.
-
-**Type:** ?Array\<Bool>
-
-**Read/Write Attribute:** Readable and Writable
-
-**System Capability:** SystemCapability.Security.AccessToken
-
-**Since:** 21
-
-### var permissions
-
-```cangjie
-public var permissions: Array<String>
-```
-
-**Description:** The permissions passed in by the user.
-
-**Type:** Array\<String>
-
-**Read/Write Attribute:** Readable and Writable
-
-**System Capability:** SystemCapability.Security.AccessToken
-
-**Since:** 21
-
-### init(Array\<String>, Array\<Int32>)
-
-```cangjie
-public init(
-    permissions: Array<String>,
-    authResults: Array<Int32>
-)
-```
-
-**Description:** Constructs a permission request result object.
-
-**System Capability:** SystemCapability.Security.AccessToken
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-|permissions|Array\<String>|Yes|-|The permissions passed in by the user.|
-|authResults|Array\<Int32>|Yes|-|The result of the corresponding permission request:<br>- -1: Not authorized. ① If dialogShownResults returns true, it indicates the first application by the user. ② If dialogShownResults returns false, it indicates that the permission has been set and no dialog box is required. The user needs to modify it in "Settings".<br>- 0: Authorized.<br>- 2: Not authorized, indicating that the request is invalid. Possible reasons:<br>  - The target permission is not declared in the configuration file.<br>  - The permission name is invalid.<br>  - Some permissions have special application conditions that are not met when applying for the corresponding permissions. For details, see [ohos.permission.LOCATION](../../../../Dev_Guide/source_en/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionlocation) and [ohos.permission.APPROXIMATELY_LOCATION](../../../../Dev_Guide/source_en/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionapproximately_location).|
 
 ## enum GrantStatus
 
 ```cangjie
 public enum GrantStatus <: Equatable<GrantStatus> & ToString {
-    | PERMISSION_DENIED
-    | PERMISSION_GRANTED
+    | PermissionDenied
+    | PermissionGranted
     | ...
 }
 ```
 
-**Description:** Indicates the authorization status.
+**Description:** Represents the authorization status.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -295,25 +211,25 @@ public enum GrantStatus <: Equatable<GrantStatus> & ToString {
 - Equatable\<GrantStatus>
 - ToString
 
-### PERMISSION_DENIED
+### PermissionDenied
 
 ```cangjie
-PERMISSION_DENIED
+PermissionDenied
 ```
 
-**Function:** Not authorized.
+**Description:** Not authorized.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
 **Since:** 21
 
-### PERMISSION_GRANTED
+### PermissionGranted
 
 ```cangjie
-PERMISSION_GRANTED
+PermissionGranted
 ```
 
-**Function:** Authorized.
+**Description:** Authorized.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -322,10 +238,10 @@ PERMISSION_GRANTED
 ### func !=(GrantStatus)
 
 ```cangjie
-public operator func !=(other: GrantStatus): Bool 
+public operator func !=(other: GrantStatus): Bool
 ```
 
-**Function:** Determines inequality of authorization status.
+**Description:** Checks for inequality of authorization statuses.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -333,7 +249,7 @@ public operator func !=(other: GrantStatus): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [GrantStatus](#enum-grantstatus) | Yes | - | Authorization status. |
 
@@ -341,15 +257,15 @@ public operator func !=(other: GrantStatus): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if authorization statuses differ, otherwise false. |
+| Bool | Returns true if the authorization statuses are different, otherwise returns false. |
 
 ### func ==(GrantStatus)
 
 ```cangjie
-public operator func ==(other: GrantStatus): Bool 
+public operator func ==(other: GrantStatus): Bool
 ```
 
-**Function:** Determines equality of authorization status.
+**Description:** Checks for equality of authorization statuses.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -357,7 +273,7 @@ public operator func ==(other: GrantStatus): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [GrantStatus](#enum-grantstatus) | Yes | - | Authorization status. |
 
@@ -365,15 +281,15 @@ public operator func ==(other: GrantStatus): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if authorization statuses are identical, otherwise false. |
+| Bool | Returns true if the authorization statuses are the same, otherwise returns false. |
 
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
-**Function:** Returns string representation of authorization status.
+**Description:** Returns the string representation of the authorization status.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -383,7 +299,7 @@ public func toString(): String
 
 | Type | Description |
 |:----|:----|
-| String | String representation of authorization status. |
+| String | String representation of the authorization status. |
 
 ## type Permissions
 
@@ -391,4 +307,4 @@ public func toString(): String
 public type Permissions = String
 ```
 
-**Function:** Permission name, where [Permissions](#type-permissions) is an alias for String type.
+**Description:** [Permissions](#type-permissions) is an alias for the String type.

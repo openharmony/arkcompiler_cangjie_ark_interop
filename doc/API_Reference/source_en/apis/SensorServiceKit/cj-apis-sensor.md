@@ -1,8 +1,8 @@
-# ohos.sensor (Sensors)
+# ohos.sensor
 
 The sensor module provides capabilities for obtaining sensor data, including retrieving sensor attribute lists, subscribing to sensor data, and some common sensor algorithms.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.SensorServiceKit.*
@@ -20,10 +20,10 @@ ohos.permission.READ_HEALTH_DATA
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment in the first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the above sample projects and configuration templates, refer to [Cangjie Sample Code Description](../../cj-development-intro.md#仓颉示例代码说明).
+For the above sample projects and configuration templates, please refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## func getSensorList()
 
@@ -31,64 +31,45 @@ For details about the above sample projects and configuration templates, refer t
 public func getSensorList(): Array<Sensor>
 ```
 
-**Function:** Obtains all sensor information on the device.
+**Function:** Retrieves all sensor information on the device.
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
 | :---- | :---- |
-| Array\<[Sensor](#class-sensor)> | Returns the sensor attribute list. |
+| Array\<[Sensor](#class-sensor)> | Returns the list of sensor attributes. |
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14500101 | Service exception. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-try {
-    let sensors = getSensorList()
-    for (index in 0..sensors.size) {
-        AppLog.info("Succeeded in getting sensor${index}: ${sensors[index].sensorId} ")
-    }
-} catch (e: BusinessException) {
-    AppLog.error("Failed to get sensor list. Code: ${e.code}, message: ${e.message}")
-}
-```
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;
+2. Sensor service ipc exception;3. Sensor data channel exception.
+ |
 
 ## func getSingleSensor(SensorId)
 
 ```cangjie
-public func getSingleSensor(`type`: SensorId): Sensor
+public func getSingleSensor(sensorType: SensorId): Sensor
 ```
 
-**Function:** Obtains information about a specified type of sensor.
+**Function:** Retrieves information about a specified type of sensor.
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| \`type\` | [SensorId](#enum-sensorid) | Yes | - | Sensor type. |
+| sensorType | [SensorId](#enum-sensorid) | Yes | - | The type of sensor. |
 
 **Return Value:**
 
@@ -98,48 +79,30 @@ public func getSingleSensor(`type`: SensorId): Sensor
 
 **Exceptions:**
 
-- BusinessException: For detailed information about the corresponding error codes, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
-| Error Code ID | Error Message |
-| :---- | :--- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14500101 | Service exception. |
-| 14500102 | The sensor is not supported by the device. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-try {
-    let sensors = getSingleSensor(SensorId.ACCELEROMETER)
-    AppLog.info("Succeeded in getting sensor: ${sensors.sensorName} ")
-} catch (e: BusinessException) {
-    AppLog.error("Failed to get sensor. Code: ${e.code}, message: ${e.message}")
-}
-```
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;
+ 2. Sensor service ipc exception;3. Sensor data channel exception.
+ |
+  | 14500102 | The sensor is not supported by the device.
+ |
 
 ## class Response
 
 ```cangjie
-public abstract class Response {
-    public Response(
-        public var timestamp: Int64,
-        public var accuracy: SensorAccuracy
-    )
+public open class Response {
+    public var timestamp: Int64
+    public var accuracy: SensorAccuracy
 }
 ```
 
-**Function:** Timestamp of sensor data.
+**Function:** The timestamp of sensor data.
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 ### var accuracy
 
@@ -147,7 +110,7 @@ public abstract class Response {
 public var accuracy: SensorAccuracy
 ```
 
-**Function:** Accuracy level value reported by the sensor data.
+**Function:** The accuracy level value reported by the sensor data.
 
 **Type:** [SensorAccuracy](#enum-sensoraccuracy)
 
@@ -155,7 +118,7 @@ public var accuracy: SensorAccuracy
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 ### var timestamp
 
@@ -163,7 +126,7 @@ public var accuracy: SensorAccuracy
 public var timestamp: Int64
 ```
 
-**Function:** Timestamp reported by the sensor data.
+**Function:** The timestamp when the sensor data is reported.
 
 **Type:** Int64
 
@@ -171,40 +134,16 @@ public var timestamp: Int64
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
-
-### Response(Int64, SensorAccuracy)
-
-```cangjie
-public Response(
-    public var timestamp: Int64,
-    public var accuracy: SensorAccuracy
-)
-```
-
-**Function:** Constructs acceleration sensor data.
-
-**System Capability:** SystemCapability.Sensors.Sensor
-
-**Initial Release Version:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| timestamp | Int64 | No | - | Timestamp reported by the sensor data. |
-| accuracy | [SensorAccuracy](#enum-sensoraccuracy) | No | - | Accuracy level value reported by the sensor data. |
+**Initial Version:** 21
 
 ## class RotationVectorResponse
 
 ```cangjie
 public class RotationVectorResponse <: Response {
-    public RotationVectorResponse(
-        public var x: Float32,
-        public var y: Float32,
-        public var z: Float32,
-        public var w: Float32
-    )
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+    public var w: Float32
 }
 ```
 
@@ -212,7 +151,7 @@ public class RotationVectorResponse <: Response {
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 **Parent Type:**
 
@@ -224,7 +163,7 @@ public class RotationVectorResponse <: Response {
 public var w: Float32
 ```
 
-**Function:** Scalar.
+**Function:** The scalar component.
 
 **Type:** Float32
 
@@ -232,7 +171,7 @@ public var w: Float32
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 ### var x
 
@@ -240,7 +179,7 @@ public var w: Float32
 public var x: Float32
 ```
 
-**Function:** X-axis component of the rotation vector.
+**Function:** The x-axis component of the rotation vector.
 
 **Type:** Float32
 
@@ -248,7 +187,7 @@ public var x: Float32
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 ### var y
 
@@ -256,7 +195,7 @@ public var x: Float32
 public var y: Float32
 ```
 
-**Function:** Y-axis component of the rotation vector.
+**Function:** The y-axis component of the rotation vector.
 
 **Type:** Float32
 
@@ -264,7 +203,7 @@ public var y: Float32
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
+**Initial Version:** 21
 
 ### var z
 
@@ -272,7 +211,7 @@ public var y: Float32
 public var z: Float32
 ```
 
-**Function:** Z-axis component of the rotation vector.
+**Function:** The z-axis component of the rotation vector.
 
 **Type:** Float32
 
@@ -280,48 +219,22 @@ public var z: Float32
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Initial Release Version:** 21
-
-### RotationVectorResponse(Float32, Float32, Float32, Float32)
-
-```cangjie
-public RotationVectorResponse(
-    public var x: Float32,
-    public var y: Float32,
-    public var z: Float32,
-    public var w: Float32
-)
-```
-
-**Function:** Constructs rotation vector sensor data.
-
-**System Capability:** SystemCapability.Sensors.Sensor
-
-**Initial Release Version:** 21**Parameters:**
-
-| Parameter Name | Type    | Required | Default Value | Description                     |
-|:---------------|:--------|:---------|:--------------|:--------------------------------|
-| x              | Float32 | No       | -             | X-axis component of rotation vector. |
-| y              | Float32 | No       | -             | Y-axis component of rotation vector. |
-| z              | Float32 | No       | -             | Z-axis component of rotation vector. |
-| w              | Float32 | No       | -             | Scalar value.                   |
+**Initial Version:** 21
 
 ## class Sensor
 
 ```cangjie
 public class Sensor {
-    public Sensor(
-        public var sensorName: String,
-        public var vendorName: String,
-        public var firmwareVersion: String,
-        public var hardwareVersion: String,
-        public var sensorId: SensorId,
-        public var maxRange: Float32,
-        public var minSamplePeriod: Int64,
-        public var maxSamplePeriod: Int64,
-        public var precision: Float32,
-        public var power: Float32
-    )
+    public var sensorName: String
+    public var vendorName: String
+    public var firmwareVersion: String
+    public var hardwareVersion: String
+    public var sensorId: SensorId
+    public var maxRange: Float32
+    public var minSamplePeriod: Int64
+    public var maxSamplePeriod: Int64
+    public var precision: Float32
+    public var power: Float32
 }
 ```
 
@@ -329,7 +242,7 @@ public class Sensor {
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var firmwareVersion
 
@@ -337,15 +250,15 @@ public class Sensor {
 public var firmwareVersion: String
 ```
 
-**Function:** Firmware version of the sensor.
+**Function:** The firmware version of the sensor.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var hardwareVersion
 
@@ -353,15 +266,15 @@ public var firmwareVersion: String
 public var hardwareVersion: String
 ```
 
-**Function:** Hardware version of the sensor.
+**Function:** The hardware version of the sensor.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var maxRange
 
@@ -369,15 +282,15 @@ public var hardwareVersion: String
 public var maxRange: Float32
 ```
 
-**Function:** Maximum measurement range of the sensor.
+**Function:** The maximum value of the sensor's measurement range.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var maxSamplePeriod
 
@@ -385,15 +298,15 @@ public var maxRange: Float32
 public var maxSamplePeriod: Int64
 ```
 
-**Function:** Maximum allowed sampling period.
+**Function:** The maximum allowed sampling period.
 
 **Type:** Int64
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var minSamplePeriod
 
@@ -401,15 +314,15 @@ public var maxSamplePeriod: Int64
 public var minSamplePeriod: Int64
 ```
 
-**Function:** Minimum allowed sampling period.
+**Function:** The minimum allowed sampling period.
 
 **Type:** Int64
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var power
 
@@ -417,15 +330,15 @@ public var minSamplePeriod: Int64
 public var power: Float32
 ```
 
-**Function:** Estimated power consumption of the sensor, in mA.
+**Function:** The estimated power consumption of the sensor, in mA.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var precision
 
@@ -433,15 +346,15 @@ public var power: Float32
 public var precision: Float32
 ```
 
-**Function:** Precision of the sensor.
+**Function:** The precision of the sensor.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var sensorId
 
@@ -449,15 +362,15 @@ public var precision: Float32
 public var sensorId: SensorId
 ```
 
-**Function:** Type ID of the sensor.
+**Function:** The type ID of the sensor.
 
 **Type:** [SensorId](#enum-sensorid)
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var sensorName
 
@@ -465,15 +378,15 @@ public var sensorId: SensorId
 public var sensorName: String
 ```
 
-**Function:** Name of the sensor.
+**Function:** The name of the sensor.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
+**Initial Version:** 21
 
 ### var vendorName
 
@@ -481,67 +394,27 @@ public var sensorName: String
 public var vendorName: String
 ```
 
-**Function:** Vendor of the sensor.
+**Function:** The vendor of the sensor.
 
 **Type:** String
 
-**Read/Write Permission:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
-**Since:** 21
-
-### Sensor(String, String, String, String, SensorId, Float32, Int64, Int64, Float32, Float32)
-
-```cangjie
-public Sensor(
-    public var sensorName: String,
-    public var vendorName: String,
-    public var firmwareVersion: String,
-    public var hardwareVersion: String,
-    public var sensorId: SensorId,
-    public var maxRange: Float32,
-    public var minSamplePeriod: Int64,
-    public var maxSamplePeriod: Int64,
-    public var precision: Float32,
-    public var power: Float32
-)
-```
-
-**Function:** Indicates sensor information.
-
-**System Capability:** SystemCapability.Sensors.Sensor
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name    | Type                  | Required | Default Value | Description                     |
-|:------------------|:----------------------|:---------|:--------------|:--------------------------------|
-| sensorName        | String                | No       | -             | Name of the sensor.             |
-| vendorName        | String                | No       | -             | Vendor of the sensor.           |
-| firmwareVersion   | String                | No       | -             | Firmware version of the sensor. |
-| hardwareVersion   | String                | No       | -             | Hardware version of the sensor. |
-| sensorId          | [SensorId](#enum-sensorid) | No       | -             | Type ID of the sensor.          |
-| maxRange          | Float32               | No       | -             | Maximum measurement range of the sensor. |
-| minSamplePeriod   | Int64                 | No       | -             | Minimum allowed sampling period. |
-| maxSamplePeriod   | Int64                 | No       | -             | Maximum allowed sampling period. |
-| precision         | Float32               | No       | -             | Precision of the sensor.        |
-| power             | Float32               | No       | -             | Estimated power consumption of the sensor, in mA. |
-
-## enum SensorAccuracy
+**Initial Version:** 21## enum SensorAccuracy
 
 ```cangjie
 public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
-    | ACCURACY_UNRELIABLE
-    | ACCURACY_LOW
-    | ACCURACY_MEDIUM
-    | ACCURACY_HIGH
+    | AccuracyUnreliable
+    | AccuracyLow
+    | AccuracyMedium
+    | AccuracyHigh
     | ...
 }
 ```
 
-**Function:** Accuracy of sensor data.
+**Function:** Accuracy level of sensor data.
 
 **System Capability:** SystemCapability.Sensors.Sensor
 
@@ -552,43 +425,51 @@ public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
 - Equatable\<SensorAccuracy>
 - ToString
 
-### ACCURACY_HIGH
+### AccuracyHigh
 
 ```cangjie
-ACCURACY_HIGH
+AccuracyHigh
 ```
 
-**Function:** High-level accuracy of the sensor.
+**Function:** High-grade sensor accuracy.
+
+**System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
 
-### ACCURACY_LOW
+### AccuracyLow
 
 ```cangjie
-ACCURACY_LOW
+AccuracyLow
 ```
 
-**Function:** Low-level accuracy of the sensor.
+**Function:** Low-grade sensor accuracy.
+
+**System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
 
-### ACCURACY_MEDIUM
+### AccuracyMedium
 
 ```cangjie
-ACCURACY_MEDIUM
+AccuracyMedium
 ```
 
-**Function:** Medium-level accuracy of the sensor.
+**Function:** Medium-grade sensor accuracy.
+
+**System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
 
-### ACCURACY_UNRELIABLE
+### AccuracyUnreliable
 
 ```cangjie
-ACCURACY_UNRELIABLE
+AccuracyUnreliable
 ```
 
-**Function:** Sensor data is unreliable.
+**Function:** Unreliable sensor data.
+
+**System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
 
@@ -598,23 +479,19 @@ ACCURACY_UNRELIABLE
 public operator func !=(other: SensorAccuracy): Bool
 ```
 
-**Function:** Determines whether two [SensorAccuracy](#enum-sensoraccuracy) values are not equal.
-
-**System Capability:** SystemCapability.Sensors.Sensor
-
-**Since:** 21
+**Function:** Determines whether two [SensorAccuracy](#enum-sensoraccuracy) values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [SensorAccuracy](#enum-sensoraccuracy) | Yes | - | The input [SensorAccuracy](#enum-sensoraccuracy). |
+| other | [SensorAccuracy](#enum-sensoraccuracy) | Yes | - | Input [SensorAccuracy](#enum-sensoraccuracy). |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if not equal; otherwise, returns `false`. |
+| Bool | Returns true if unequal; otherwise, returns false. |
 
 ### func ==(SensorAccuracy)
 
@@ -624,21 +501,17 @@ public operator func ==(other: SensorAccuracy): Bool
 
 **Function:** Determines whether two [SensorAccuracy](#enum-sensoraccuracy) values are equal.
 
-**System Capability:** SystemCapability.Sensors.Sensor
-
-**Since:** 21
-
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [SensorAccuracy](#enum-sensoraccuracy) | Yes | - | The input [SensorAccuracy](#enum-sensoraccuracy). |
+| other | [SensorAccuracy](#enum-sensoraccuracy) | Yes | - | Input [SensorAccuracy](#enum-sensoraccuracy). |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if equal; otherwise, returns `false`. |
+| Bool | Returns true if equal; otherwise, returns false. |
 
 ### func toString()
 
@@ -647,10 +520,6 @@ public func toString(): String
 ```
 
 **Function:** Converts the enum value to a string.
-
-**System Capability:** SystemCapability.Sensors.Sensor
-
-**Since:** 21
 
 **Return Value:**
 
@@ -662,28 +531,27 @@ public func toString(): String
 
 ```cangjie
 public enum SensorId <: Equatable<SensorId> & ToString {
-    | ACCELEROMETER
-    | GYROSCOPE
-    | AMBIENT_LIGHT
-    | MAGNETIC_FIELD
-    | BAROMETER
-    | HALL
-    | PROXIMITY
-    | HUMIDITY
-    | ORIENTATION
-    | GRAVITY
-    | LINEAR_ACCELEROMETER
-    | ROTATION_VECTOR
-    | AMBIENT_TEMPERATURE
-    | MAGNETIC_FIELD_UNCALIBRATED
-    | GYROSCOPE_UNCALIBRATED
-    | SIGNIFICANT_MOTION
-    | PEDOMETER_DETECTION
-    | PEDOMETER
-    | HEART_RATE
-    | WEAR_DETECTION
-    | ACCELEROMETER_UNCALIBRATED
-    | UNSUPPORTED
+    | Accelerometer
+    | Gyroscope
+    | AmbientLight
+    | MagneticField
+    | Barometer
+    | Hall
+    | Proximity
+    | Humidity
+    | Orientation
+    | Gravity
+    | LinearAccelerometer
+    | RotationVector
+    | AmbientTemperature
+    | MagneticFieldUncalibrated
+    | GyroscopeUncalibrated
+    | SignificantMotion
+    | PedometerDetection
+    | Pedometer
+    | HeartRate
+    | WearDetection
+    | AccelerometerUncalibrated
     | ...
 }
 ```
@@ -699,286 +567,306 @@ public enum SensorId <: Equatable<SensorId> & ToString {
 - Equatable\<SensorId>
 - ToString
 
-### ACCELEROMETER
+### Accelerometer
 
 ```cangjie
-ACCELEROMETER
+Accelerometer
 ```
 
 **Function:** Accelerometer sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### ACCELEROMETER_UNCALIBRATED
+### AccelerometerUncalibrated
 
 ```cangjie
-ACCELEROMETER_UNCALIBRATED
+AccelerometerUncalibrated
 ```
 
 **Function:** Uncalibrated accelerometer sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### AMBIENT_LIGHT
+### AmbientLight
 
 ```cangjie
-AMBIENT_LIGHT
+AmbientLight
 ```
 
 **Function:** Ambient light sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### AMBIENT_TEMPERATURE
+### AmbientTemperature
 
 ```cangjie
-AMBIENT_TEMPERATURE
+AmbientTemperature
 ```
 
 **Function:** Ambient temperature sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### BAROMETER
+### Barometer
 
 ```cangjie
-BAROMETER
+Barometer
 ```
 
 **Function:** Barometer sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### GRAVITY
+### Gravity
 
 ```cangjie
-GRAVITY
+Gravity
 ```
 
 **Function:** Gravity sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### GYROSCOPE
+### Gyroscope
 
 ```cangjie
-GYROSCOPE
+Gyroscope
 ```
 
 **Function:** Gyroscope sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### GYROSCOPE_UNCALIBRATED
+### GyroscopeUncalibrated
 
 ```cangjie
-GYROSCOPE_UNCALIBRATED
+GyroscopeUncalibrated
 ```
 
 **Function:** Uncalibrated gyroscope sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### HALL
+### Hall
 
 ```cangjie
-HALL
+Hall
 ```
 
-**Function:** Hall effect sensor.
+**Function:** Hall sensor.
+
+**System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
 
-### HEART_RATE
+### HeartRate
 
 ```cangjie
-HEART_RATE
+HeartRate
 ```
 
 **Function:** Heart rate sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### HUMIDITY
+### Humidity
 
 ```cangjie
-HUMIDITY
+Humidity
 ```
 
 **Function:** Humidity sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### LINEAR_ACCELEROMETER
+### LinearAccelerometer
 
 ```cangjie
-LINEAR_ACCELEROMETER
+LinearAccelerometer
 ```
 
 **Function:** Linear accelerometer sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### MAGNETIC_FIELD
+### MagneticField
 
 ```cangjie
-MAGNETIC_FIELD
+MagneticField
 ```
 
 **Function:** Magnetic field sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### MAGNETIC_FIELD_UNCALIBRATED
+### MagneticFieldUncalibrated
 
 ```cangjie
-MAGNETIC_FIELD_UNCALIBRATED
+MagneticFieldUncalibrated
 ```
 
 **Function:** Uncalibrated magnetic field sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### ORIENTATION
+### Orientation
 
 ```cangjie
-ORIENTATION
+Orientation
 ```
 
 **Function:** Orientation sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### PEDOMETER
+### Pedometer
 
 ```cangjie
-PEDOMETER
+Pedometer
 ```
 
 **Function:** Pedometer sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### PEDOMETER_DETECTION
+### PedometerDetection
 
 ```cangjie
-PEDOMETER_DETECTION
+PedometerDetection
 ```
 
 **Function:** Pedometer detection sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### PROXIMITY
+### Proximity
 
 ```cangjie
-PROXIMITY
+Proximity
 ```
 
-**Function:** Proximity sensor.
+**Function:** Proximity light sensor.
+
+**System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
 
-### ROTATION_VECTOR
+### RotationVector
 
 ```cangjie
-ROTATION_VECTOR
+RotationVector
 ```
 
 **Function:** Rotation vector sensor.
 
+**System Capability:** SystemCapability.Sensors.Sensor
+
 **Since:** 21
 
-### SIGNIFICANT_MOTION
+### SignificantMotion
 
 ```cangjie
-SIGNIFICANT_MOTION
+SignificantMotion
 ```
 
-**Function:** Significant motion sensor.**Initial Version:** 21  
+**Function:** Significant motion sensor.
 
-### UNSUPPORTED  
+**System Capability:** SystemCapability.Sensors.Sensor
 
-```cangjie  
-UNSUPPORTED  
-```  
+**Since:** 21### WearDetection
 
-**Function:** Unsupported sensor type.  
+```cangjie
+WearDetection
+```
 
-**Initial Version:** 21  
+**Function:** Wear detection sensor.
 
-### WEAR_DETECTION  
+**System Capability:** SystemCapability.Sensors.Sensor
 
-```cangjie  
-WEAR_DETECTION  
-```  
+**Since:** 21
 
-**Function:** Wear detection sensor.  
+### func !=(SensorId)
 
-**Initial Version:** 21  
+```cangjie
+public operator func !=(other: SensorId): Bool
+```
 
-### func !=(SensorId)  
+**Function:** Determines whether two [SensorId](#enum-sensorid) values are not equal.
 
-```cangjie  
-public operator func !=(other: SensorId): Bool  
-```  
+**Parameters:**
 
-**Function:** Determines whether two [SensorId](#enum-sensorid) values are not equal.  
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [SensorId](#enum-sensorid) | Yes | - | The input [SensorId](#enum-sensorid). |
 
-**System Capability:** SystemCapability.Sensors.Sensor  
+**Return Value:**
 
-**Initial Version:** 21  
+| Type | Description |
+|:----|:----|
+| Bool | Returns `true` if not equal; otherwise, returns `false`. |
 
-**Parameters:**  
+### func ==(SensorId)
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [SensorId](#enum-sensorid) | Yes | - | The input [SensorId](#enum-sensorid). |  
+```cangjie
+public operator func ==(other: SensorId): Bool
+```
 
-**Return Value:**  
+**Function:** Determines whether two [SensorId](#enum-sensorid) values are equal.
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if not equal; otherwise, returns `false`. |  
+**Parameters:**
 
-### func ==(SensorId)  
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [SensorId](#enum-sensorid) | Yes | - | The input [SensorId](#enum-sensorid). |
 
-```cangjie  
-public operator func ==(other: SensorId): Bool  
-```  
+**Return Value:**
 
-**Function:** Determines whether two [SensorId](#enum-sensorid) values are equal.  
+| Type | Description |
+|:----|:----|
+| Bool | Returns `true` if equal; otherwise, returns `false`. |
 
-**System Capability:** SystemCapability.Sensors.Sensor  
+### func toString()
 
-**Initial Version:** 21  
+```cangjie
+public func toString(): String
+```
 
-**Parameters:**  
+**Function:** Converts the enum value to a string.
 
-| Parameter | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [SensorId](#enum-sensorid) | Yes | - | The input [SensorId](#enum-sensorid). |  
+**Return Value:**
 
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if equal; otherwise, returns `false`. |  
-
-### func toString()  
-
-```cangjie  
-public func toString(): String  
-```  
-
-**Function:** Converts the enum value to a string.  
-
-**System Capability:** SystemCapability.Sensors.Sensor  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
+| Type | Description |
+|:----|:----|
 | String | The converted string. |

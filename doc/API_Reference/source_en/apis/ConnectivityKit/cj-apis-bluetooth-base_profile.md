@@ -1,8 +1,8 @@
-# ohos.bluetooth.baseProfile (Bluetooth BaseProfile Module)
+# ohos.bluetooth.base_profile (Bluetooth BaseProfile Module)
 
 The baseProfile module provides fundamental Profile types and related methods.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.ConnectivityKit.*
@@ -16,10 +16,10 @@ ohos.permission.ACCESS_BLUETOOTH
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, configuration is needed in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code's first line contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
+For details about the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## interface BaseProfile
 
@@ -27,9 +27,9 @@ For details about the sample project and configuration template mentioned above,
 public interface BaseProfile {
     func getConnectedDevices(): Array<String>
     func getConnectionState(deviceId: String): ProfileConnectionState
-    func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
-    func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
-    func off(`type`: ProfileCallbackType): Unit
+    func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
+    func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
+    func off(eventType: ProfileCallbackType): Unit
 }
 ```
 
@@ -55,22 +55,22 @@ func getConnectedDevices(): Array<String>
 
 **Return Value:**
 
-| Type          | Description |
-| ------------- | ----------- |
-| Array\<String> | Returns the addresses of currently connected devices. For security considerations, the device addresses obtained here are randomized MAC addresses. This randomized address remains unchanged after successful pairing but will change when a paired device is unpaired and rescanned or when the Bluetooth service is powered off. |
+| Type | Description |
+| :---- | :---- |
+| Array\<String> | Returns the addresses of currently connected devices. For information security considerations, the device addresses obtained here are randomized MAC addresses. After successful pairing, this address remains unchanged; when a paired device is unpaired and rescanned or when the Bluetooth service is powered off, this randomized address will change. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
-  | ------------- | ------------- |
-  | 201           | Permission denied. |
-  | 801           | Capability not supported. |
-  | 2900001       | Service stopped. |
-  | 2900003       | Bluetooth disabled. |
-  | 2900004       | Profile not supported. |
-  | 2900099       | Operation failed. |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900004 | Profile not supported. |
+  | 2900099 | Operation failed. |
 
 **Example:**
 
@@ -80,8 +80,9 @@ func getConnectedDevices(): Array<String>
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -107,29 +108,29 @@ func getConnectionState(deviceId: String): ProfileConnectionState
 
 **Parameters:**
 
-| Parameter Name | Type   | Mandatory | Description |
-| -------------- | ------ | --------- | ----------- |
-| deviceId       | String | Yes       | Remote device address. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| deviceId | String | Yes | - | Remote device address. |
 
 **Return Value:**
 
-| Type                                | Description |
-| ----------------------------------- | ----------- |
+| Type | Description |
+| :---- | :---- |
 | [ProfileConnectionState](cj-apis-bluetooth-constant.md#enum-profileconnectionstate) | Returns the connection state of the Profile. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
-  | ------------- | ------------- |
-  | 201           | Permission denied. |
-  | 401           | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-  | 801           | Capability not supported. |
-  | 2900001       | Service stopped. |
-  | 2900003       | Bluetooth disabled. |
-  | 2900004       | Profile not supported. |
-  | 2900099       | Operation failed. |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
+  | 2900001 | Service stopped. |
+  | 2900003 | Bluetooth disabled. |
+  | 2900004 | Profile not supported. |
+  | 2900099 | Operation failed. |
 
 **Example:**
 
@@ -139,8 +140,9 @@ func getConnectionState(deviceId: String): ProfileConnectionState
 // index.cj
 
 import ohos.base.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -153,7 +155,7 @@ try {
 ### func off(ProfileCallbackType, CallbackObject)
 
 ```cangjie
-func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
+func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 ```
 
 **Description:** Unsubscribes from all connection state change events.
@@ -166,20 +168,20 @@ func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
 
 **Parameters:**
 
-| Parameter Name | Type                                | Mandatory | Description |
-| -------------- | ----------------------------------- | --------- | ----------- |
-| \`type`        | [ProfileCallbackType](#enum-profilecallbacktype) | Yes       | Callback event type. |
-| callback       | [CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject) | Yes       | Callback event. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| eventType | [ProfileCallbackType](#enum-profilecallbacktype) | Yes | - | Callback event type. |
+| callback | [CallbackObject](<font color="red" face="bold">please add link</font>) | Yes | - | Callback event. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
-  | ------------- | ------------- |
-  | 201           | Permission denied. |
-  | 401           | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-  | 801           | Capability not supported. |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **Example:**
 
@@ -189,22 +191,24 @@ func off(`type`: ProfileCallbackType, callback: CallbackObject): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // Define required dependencies here
 class StateChangeCallback <: Callback1Argument<StateChangeParam> {
-    public func invoke(arg: StateChangeParam): Unit {
+    public func invoke(err: ?BusinessException, arg: StateChangeParam): Unit {
         let connectionState = arg.state.toString()
-        Hilog.info(0, "Bluetooth", "profile connection state has changed to ${connectionState}")
+        Hilog.info(0, "Bluetooth", "profile connection state has change to ${connectionState}")
     }
 }
 
 let changeCallBack = StateChangeCallback()
 let a2dp = createA2dpSrcProfile()
 try {
-    a2dp.on(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
-    a2dp.off(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
+    a2dp.on(ProfileCallbackType.ConnectionStateChange, changeCallBack)
+    a2dp.off(ProfileCallbackType.ConnectionStateChange)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -213,7 +217,7 @@ try {
 ### func off(ProfileCallbackType)
 
 ```cangjie
-func off(`type`: ProfileCallbackType): Unit
+func off(eventType: ProfileCallbackType): Unit
 ```
 
 **Description:** Unsubscribes from all connection state change events.
@@ -226,19 +230,19 @@ func off(`type`: ProfileCallbackType): Unit
 
 **Parameters:**
 
-| Parameter Name | Type                                | Mandatory | Description |
-| -------------- | ----------------------------------- | --------- | ----------- |
-| \`type`        | [ProfileCallbackType](#enum-profilecallbacktype) | Yes       | Callback event type. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| eventType | [ProfileCallbackType](#enum-profilecallbacktype) | Yes | - | Callback event type. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
-  | ------------- | ------------- |
-  | 201           | Permission denied. |
-  | 401           | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-  | 801           | Capability not supported. |
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **Example:**
 
@@ -248,22 +252,24 @@ func off(`type`: ProfileCallbackType): Unit
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // Define required dependencies here
 class StateChangeCallback <: Callback1Argument<StateChangeParam> {
-    public func invoke(arg: StateChangeParam): Unit {
+    public func invoke(err: ?BusinessException, arg: StateChangeParam): Unit {
         let connectionState = arg.state.toString()
-        Hilog.info(0, "Bluetooth", "profile connection state has changed to ${connectionState}")
+        Hilog.info(0, "Bluetooth", "profile connection state has change to ${connectionState}")
     }
 }
 
 let changeCallBack = StateChangeCallback()
 let a2dp = createA2dpSrcProfile()
 try {
-    a2dp.on(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
-    a2dp.off(ProfileCallbackType.CONNECTION_STATE_CHANGE)
+    a2dp.on(ProfileCallbackType.ConnectionStateChange, changeCallBack)
+    a2dp.off(ProfileCallbackType.ConnectionStateChange)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -272,10 +278,10 @@ try {
 ### func on(ProfileCallbackType, Callback1Argument\<StateChangeParam>)
 
 ```cangjie
-func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
+func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
 ```
 
-**Description:** Subscribes to connection state change events. Uses Callback for asynchronous notification.
+**Description:** Subscribes to connection state change events. Uses Callback for asynchronous callbacks.
 
 **Required Permission:** ohos.permission.ACCESS_BLUETOOTH
 
@@ -285,20 +291,20 @@ func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangePara
 
 **Parameters:**
 
-| Parameter Name | Type                                                                 | Mandatory | Description |
-| -------------- | -------------------------------------------------------------------- | --------- | ----------- |
-| \`type`        | [ProfileCallbackType](#enum-profilecallbacktype)                     | Yes       | Pass `CONNECTIONSTATECHANGE` to indicate the connection state change event type. |
-| callback       | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[StateChangeParam](#class-statechangeparam)> | Yes       | Represents the input parameter of the callback function. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| eventType | [ProfileCallbackType](#enum-profilecallbacktype) | Yes | - | Pass `CONNECTIONSTATECHANGE` to indicate the connection state change event type. |
+| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<[StateChangeParam](#class-statechangeparam)> | Yes | - | Represents the input parameter of the callback function. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | ------------- | ------------- |
-  | 201           | Permission denied. |
-  | 401           | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-  |801|Capability not supported.|
+  | :---- | :--- |
+  | 201 | Permission denied. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 801 | Capability not supported. |
 
 **Example:**
 
@@ -308,21 +314,23 @@ func on(`type`: ProfileCallbackType, callback: Callback1Argument<StateChangePara
 // index.cj
 
 import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.ConnectivityKit.*
-import ohos.hilog.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 // Define required dependencies here
 class StateChangeCallback <: Callback1Argument<StateChangeParam> {
-    public func invoke(arg: StateChangeParam): Unit {
+    public func invoke(err: ?BusinessException, arg: StateChangeParam): Unit {
         let connectionState = arg.state.toString()
-        Hilog.info(0, "Bluetooth", "profile connection state has changed to ${connectionState}")
+        Hilog.info(0, "Bluetooth", "profile connection state has change to ${connectionState}")
     }
 }
 
 let changeCallBack = StateChangeCallback()
 let a2dp = createA2dpSrcProfile()
 try {
-    a2dp.on(ProfileCallbackType.CONNECTION_STATE_CHANGE, changeCallBack)
+    a2dp.on(ProfileCallbackType.ConnectionStateChange, changeCallBack)
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -331,73 +339,75 @@ try {
 ## class StateChangeParam
 
 ```cangjie
-public class StateChangeParam {}
+public class StateChangeParam {
+    public var deviceId: String
+    public var state: ProfileConnectionState
+    public var cause: DisconnectCause
+}
 ```
 
-**Function:** Describes profile state change parameters.
+**Description:** Describes profile state change parameters.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Since:** 21
 
-### let cause
+### var cause
 
 ```cangjie
-public let cause: DisconnectCause
+public var cause: DisconnectCause
 ```
 
-**Function:** Indicates the reason for connection failure.
+**Description:** Indicates the reason for connection failure.
 
 **Type:** [DisconnectCause](#enum-disconnectcause)
 
-**Read/Write Permission:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Since:** 21
 
-### let deviceId
+### var deviceId
 
 ```cangjie
-public let deviceId: String
+public var deviceId: String
 ```
 
-**Function:** Indicates the Bluetooth device address.
+**Description:** Indicates the Bluetooth device address.
 
 **Type:** String
 
-**Read/Write Permission:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Since:** 21
 
-### let state
+### var state
 
 ```cangjie
-public let state: ProfileConnectionState
+public var state: ProfileConnectionState
 ```
 
-**Function:** Indicates the profile connection state of the Bluetooth device.
+**Description:** Indicates the profile connection state of the Bluetooth device.
 
 **Type:** [ProfileConnectionState](cj-apis-bluetooth-constant.md#enum-profileconnectionstate)
 
-**Read/Write Permission:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
-
-## enum DisconnectCause
+**Since:** 21## enum DisconnectCause
 
 ```cangjie
 public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
-    | USER_DISCONNECT
-    | CONNECT_FROM_KEYBOARD
-    | CONNECT_FROM_MOUSE
-    | CONNECT_FROM_CAR
-    | TOO_MANY_CONNECTED_DEVICES
-    | CONNECT_FAIL_INTERNAL
+    | UserDisconnect
+    | ConnectFromKeyboard
+    | ConnectFromMouse
+    | ConnectFromCar
+    | TooManyConnectedDevices
+    | ConnectFailInternal
     | ...
 }
 ```
@@ -413,10 +423,10 @@ public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
 - Equatable\<DisconnectCause>
 - ToString
 
-### CONNECT_FAIL_INTERNAL
+### ConnectFailInternal
 
 ```cangjie
-CONNECT_FAIL_INTERNAL
+ConnectFailInternal
 ```
 
 **Function:** Internal error.
@@ -425,22 +435,22 @@ CONNECT_FAIL_INTERNAL
 
 **Since:** 21
 
-### CONNECT_FROM_CAR
+### ConnectFromCar
 
 ```cangjie
-CONNECT_FROM_CAR
+ConnectFromCar
 ```
 
-**Function:** Connection should be initiated from the car side.
+**Function:** Connection should be initiated from the car infotainment system side.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Since:** 21
 
-### CONNECT_FROM_KEYBOARD
+### ConnectFromKeyboard
 
 ```cangjie
-CONNECT_FROM_KEYBOARD
+ConnectFromKeyboard
 ```
 
 **Function:** Connection should be initiated from the keyboard side.
@@ -449,10 +459,10 @@ CONNECT_FROM_KEYBOARD
 
 **Since:** 21
 
-### CONNECT_FROM_MOUSE
+### ConnectFromMouse
 
 ```cangjie
-CONNECT_FROM_MOUSE
+ConnectFromMouse
 ```
 
 **Function:** Connection should be initiated from the mouse side.
@@ -461,10 +471,10 @@ CONNECT_FROM_MOUSE
 
 **Since:** 21
 
-### TOO_MANY_CONNECTED_DEVICES
+### TooManyConnectedDevices
 
 ```cangjie
-TOO_MANY_CONNECTED_DEVICES
+TooManyConnectedDevices
 ```
 
 **Function:** Current number of connections exceeds the limit.
@@ -473,10 +483,10 @@ TOO_MANY_CONNECTED_DEVICES
 
 **Since:** 21
 
-### USER_DISCONNECT
+### UserDisconnect
 
 ```cangjie
-USER_DISCONNECT
+UserDisconnect
 ```
 
 **Function:** User actively disconnected.
@@ -488,62 +498,50 @@ USER_DISCONNECT
 ### func !=(DisconnectCause)
 
 ```cangjie
-public operator func !=(other: DisconnectCause): Bool 
+public operator func !=(other: DisconnectCause): Bool
 ```
 
-**Function:** Determines inequality of connection failure reasons.
-
-**System Capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Since:** 21
+**Function:** Checks inequality between connection failure reasons.
 
 **Parameters:**
 
-|Parameter|Type|Required|Description|
-|:---|:---|:---|:---|
-|other|[DisconnectCause](#enum-disconnectcause)|Yes|Connection failure reason.|
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[DisconnectCause](#enum-disconnectcause)|Yes|-|Connection failure reason.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the connection failure reasons are different, otherwise returns false.|
+|Bool|Returns true if connection failure reasons differ, otherwise false.|
 
 ### func ==(DisconnectCause)
 
 ```cangjie
-public operator func ==(other: DisconnectCause): Bool 
+public operator func ==(other: DisconnectCause): Bool
 ```
 
-**Function:** Determines equality of connection failure reasons.
-
-**System Capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Since:** 21
+**Function:** Checks equality between connection failure reasons.
 
 **Parameters:**
 
-|Parameter|Type|Required|Description|
-|:---|:---|:---|:---|
-|other|[DisconnectCause](#enum-disconnectcause)|Yes|Connection failure reason.|
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[DisconnectCause](#enum-disconnectcause)|Yes|-|Connection failure reason.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the connection failure reasons are the same, otherwise returns false.|
+|Bool|Returns true if connection failure reasons are identical, otherwise false.|
 
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
 **Function:** Returns the string representation of the connection failure reason.
-
-**System Capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Since:** 21
 
 **Return Value:**
 
@@ -555,12 +553,12 @@ public func toString(): String
 
 ```cangjie
 public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & ToString {
-    | CONNECTION_STATE_CHANGE
+    | ConnectionStateChange
     | ...
 }
 ```
 
-**Function:** Bluetooth base profile callback events.
+**Function:** Bluetooth BaseProfile callback events.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -572,10 +570,10 @@ public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & T
 - Hashable
 - ToString
 
-### CONNECTION_STATE_CHANGE
+### ConnectionStateChange
 
 ```cangjie
-CONNECTION_STATE_CHANGE
+ConnectionStateChange
 ```
 
 **Function:** Indicates the connection state change event type.
@@ -587,58 +585,50 @@ CONNECTION_STATE_CHANGE
 ### func !=(ProfileCallbackType)
 
 ```cangjie
-public operator func !=(other: ProfileCallbackType): Bool 
+public operator func !=(other: ProfileCallbackType): Bool
 ```
 
-**Function:** Determines inequality of Bluetooth base profile callback events.
-
-**System Capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Since:** 21
+**Function:** Checks inequality between Bluetooth BaseProfile callback events.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Description |
-|:---|:---|:---|:---|
-| other | [ProfileCallbackType](#enum-profilecallbacktype) | Yes | Bluetooth BaseProfile callback event. |
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[ProfileCallbackType](#enum-profilecallbacktype)|Yes|-|Bluetooth BaseProfile callback event.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the Bluetooth BaseProfile callback events are different, otherwise returns `false`. |
+|Bool|Returns true if callback events differ, otherwise false.|
 
 ### func ==(ProfileCallbackType)
 
 ```cangjie
-public operator func ==(other: ProfileCallbackType): Bool 
+public operator func ==(other: ProfileCallbackType): Bool
 ```
 
-**Function:** Performs equality comparison for Bluetooth BaseProfile callback events.
-
-**System Capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Since:** 21
+**Function:** Checks equality between Bluetooth BaseProfile callback events.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Description |
-|:---|:---|:---|:---|
-| other | [ProfileCallbackType](#enum-profilecallbacktype) | Yes | Bluetooth BaseProfile callback event. |
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[ProfileCallbackType](#enum-profilecallbacktype)|Yes|-|Bluetooth BaseProfile callback event.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns `true` if the Bluetooth BaseProfile callback events are the same, otherwise returns `false`. |
+|Bool|Returns true if callback events are identical, otherwise false.|
 
 ### func hashCode()
 
 ```cangjie
-public func hashCode(): Int64 
+public func hashCode(): Int64
 ```
 
-**Function:** Retrieves the hash value of the callback event.
+**Function:** Gets the hash value of the callback event.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -646,24 +636,20 @@ public func hashCode(): Int64
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Int64 | The hash value of the callback event. |
+|Int64|Hash value of the callback event.|
 
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
-**Function:** Retrieves the string representation of the callback event type.
-
-**System Capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Since:** 21
+**Function:** Gets the string representation of the callback event type.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | The string representation of the callback event type. |
+|String|String representation of the callback event type.|

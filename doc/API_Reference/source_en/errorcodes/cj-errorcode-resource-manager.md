@@ -31,11 +31,11 @@ This error occurs when the input resource ID passes type validation but no match
 **Possible Causes**
 
 1. The input resource ID is incorrect.
-2. Resource parsing failed.
+2. Resource parsing error occurred.
 
 **Resolution Steps**
 
-Check whether the input resource ID meets expectations.
+Verify whether the input resource ID meets expectations.
 
 ## 9001003 Invalid Resource Name
 
@@ -68,11 +68,11 @@ This error occurs when the input resource name passes type validation but no mat
 **Possible Causes**
 
 1. The input resource name is incorrect.
-2. Resource parsing failed.
+2. Resource parsing error occurred.
 
 **Resolution Steps**
 
-First check whether the input resource name meets expectations.
+First verify whether the input resource name meets expectations.
 
 ## 9001005 Invalid Relative Path
 
@@ -90,39 +90,39 @@ The input relative path is incorrect.
 
 **Resolution Steps**
 
-Check whether the input relative path meets expectations.
+Verify whether the input relative path meets expectations.
 
 ## 9001006 Circular Reference
 
 **Error Message**
 
-If the resource is re-referenced too many times.
+If the resource is re-referenced too much.
 
 **Error Description**
 
-The reference parsing count exceeds the limit.
+Excessive reference resolution count detected.
 
 **Possible Causes**
 
-Circular resource references exist.
+Circular resource reference situation occurred.
 
 **Resolution Steps**
 
-Inspect resource reference locations and eliminate circular references.
+Check resource reference locations and eliminate circular references.
 
-## 9001007 Formatting Failed for Resource Obtained by Current ID
+## 9001007 Formatting Failure for Resource Obtained by Current ID
 
 **Error Message**
 
-If the resource obtained by resId formatting error.
+If the resource obtained by resId has formatting error.
 
 **Error Description**
 
-String resource formatting failed for the resource obtained by resId.
+String resource obtained by resId failed to format.
 
 **Possible Causes**
 
-1. Parameter type is unsupported.
+1. Parameter type is not supported.
 2. Parameter count doesn't match placeholder count.
 3. Parameter types don't match placeholder types.
 
@@ -130,19 +130,19 @@ String resource formatting failed for the resource obtained by resId.
 
 Verify whether the args parameter types match the placeholder count and types.
 
-## 9001008 Formatting Failed for Resource Obtained by Current Name
+## 9001008 Formatting Failure for Resource Obtained by Current Name
 
 **Error Message**
 
-If the resource obtained by resName formatting error.
+If the resource obtained by resName has formatting error.
 
 **Error Description**
 
-String resource formatting failed for the resource obtained by resName.
+String resource obtained by resName failed to format.
 
 **Possible Causes**
 
-1. Parameter type is unsupported.
+1. Parameter type is not supported.
 2. Parameter count doesn't match placeholder count.
 3. Parameter types don't match placeholder types.
 
@@ -154,11 +154,11 @@ Verify whether the args parameter types match the placeholder count and types.
 
 **Error Message**
 
-If the application can't access system resource.
+If application can't access system resource.
 
 **Error Description**
 
-Failed to obtain the system resource manager.
+Failed to obtain system resource manager.
 
 **Possible Causes**
 

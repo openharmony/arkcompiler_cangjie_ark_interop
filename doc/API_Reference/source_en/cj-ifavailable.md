@@ -19,7 +19,7 @@ Where:
 - `<label>` is the parameter name of the custom annotation `APILevel`;
 - `<value>` is the parameter of the annotation type, supporting only literal expressions;
 - `<label>: <value>` constitutes the condition of `@IfAvailable`;
-- `<lambda1>` and `<lambda2>` must satisfy the syntax of Lambda expressions and are restricted to parameterless forms. The return types of `<lambda1>` and `<lambda2>` are inferred by the compiler as `Unit`.
+- `<lambda1>` and `<lambda2>` must comply with Lambda expression syntax and are restricted to parameterless forms. The return types of `<lambda1>` and `<lambda2>` are inferred by the compiler as `Unit`.
 
 ## Semantics of `@IfAvailable`
 
@@ -29,13 +29,13 @@ In a Cangjie project, using the `@IfAvailable` expression implicitly imports the
 
 ### `level` Check
 
-In the `@IfAvailable` macro expression, when `<label>` is specified as `level`, this check takes effect.
+When `<label>` is specified as `level` in the `@IfAvailable` macro expression, this check takes effect.
 
-In any scope, calling APIs with a higher Level than the current scope is not allowed. That is, `<lambda1>` must not call APIs higher than the value specified by `<value>` in `level: <value>`, and `<lambda2>` must not call APIs higher than the Level of the current project.
+In any scope, calling APIs with a higher Level than the current scope is prohibited. That is, `<lambda1>` must not call APIs higher than the value specified by `<value>` in `level: <value>`, and `<lambda2>` must not call APIs higher than the Level of the current project.
 
 ### `syscap` Check
 
-In the `@IfAvailable` macro expression, when `<label>` is specified as `syscap`, this check takes effect.
+When `<label>` is specified as `syscap` in the `@IfAvailable` macro expression, this check takes effect.
 
 > **Note:**
 >
@@ -44,11 +44,11 @@ In the `@IfAvailable` macro expression, when `<label>` is specified as `syscap`,
 
 **Check Rules:**
 
-- When the called API satisfies the **intersection**, no error is reported;
-- When the called API does not satisfy the **intersection** but satisfies the **union**, a compilation warning is issued;
-- When the called API satisfies neither the **intersection** nor the **union**, a compilation error is issued.
+- No error is reported when the called API satisfies the **intersection**;
+- A compilation warning is issued when the called API does not satisfy the **intersection** but satisfies the **union**;
+- A compilation error is reported when the called API satisfies neither the **intersection** nor the **union**.
 
-In any scope, calling APIs not supported by any device is not allowed, while calling APIs whose syscap is in the **intersection** or **union** is permitted. `@IfAvailable` can add capabilities to the **intersection** and **union**, meaning that `<lambda1>` can call APIs specified by `<value>` in `syscap: <value>`, while `<lambda2>` cannot.
+In any scope, calling APIs not supported by any device is prohibited, while calling APIs with syscap in the **intersection** or **union** is allowed. `@IfAvailable` can add capabilities to the **intersection** and **union**, meaning `<lambda1>` can call APIs with the syscap specified by `<value>` in `syscap: <value>`, while `<lambda2>` cannot.
 
 ## Examples of `@IfAvailable` Usage
 
@@ -90,14 +90,14 @@ import ohos.sample.*
 
 func demo() {
     @IfAvaliable(level: 19, { =>
-        // Compile-time: This scope allows calling APIs with level 19 or below. That is, this branch can use f17, f18, f19, while calling higher-level interfaces will result in a compilation error.
-        // Runtime: If the executing device supports level 19, this branch will be executed.
+        // Compile-time: This scope allows calling APIs with level 19 or lower. That is, this branch can use f17, f18, f19, while calling higher-level interfaces will result in a compilation error.
+        // Runtime: If the execution device supports level 19, this branch will be executed.
         f17();
         f18();
         f19();
     }, { =>
-        // Compile-time: This scope uses the capabilities provided by the project, allowing calling APIs with level 18 or below. That is, this branch can use f17, f18, while calling higher-level interfaces will result in a compilation error (e.g., f19).
-        // Runtime: If the executing device supports level 18, this branch will be executed.
+        // Compile-time: This scope uses the capabilities provided by the project, allowing calls to APIs with level 18 or lower. That is, this branch can use f17, f18, while calling higher-level interfaces will result in a compilation error (e.g., f19).
+        // Runtime: If the execution device supports level 18, this branch will be executed.
         f17();
         f18();
         f19(); // compile error
@@ -151,7 +151,7 @@ func demo() {
         // This scope allows the highest usage of ["SystemCapability.A", "SystemCapability.B", "SystemCapability.C", "SystemCapability.D"], where:
         // ["SystemCapability.B", "SystemCapability.D"] will not trigger warnings;
         // ["SystemCapability.A", "SystemCapability.C"] will trigger warnings;
-        // Any syscap not in ["SystemCapability.A", "SystemCapability.B", "SystemCapability.C", "SystemCapability.D"] will result in an error.
+        // Anything not in ["SystemCapability.A", "SystemCapability.B", "SystemCapability.C", "SystemCapability.D"] will trigger errors.
         f1();  // warning
         f2();  // ok
         f3();  // warning
@@ -160,7 +160,7 @@ func demo() {
         // This scope allows the highest usage of ["A", "B", "C"], where:
         // ["B"] will not trigger warnings;
         // ["A", "C"] will trigger warnings;
-        // Any syscap not in ["A", "B", "C"] will result in an error.
+        // Anything not in ["A", "B", "C"] will trigger errors.
         f1();  // warning
         f2();  // ok
         f3();  // warning

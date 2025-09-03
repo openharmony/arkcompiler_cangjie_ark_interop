@@ -17,7 +17,9 @@ The location service is unavailable, and interfaces related to the location serv
 **Possible Causes**
 
 1. Abnormal startup of the location service, resulting in communication failure between the application and the location service subsystem, making the location service unavailable.
+
 2. GNSS chip initialization failure, causing GNSS positioning to malfunction.
+
 3. Abnormal network location service, causing network positioning to malfunction.
 
 **Resolution**
@@ -32,11 +34,11 @@ The location switch is off.
 
 **Error Description**
 
-The location function failed because the location switch was not turned on.
+The location function fails because the location switch is not turned on.
 
 **Possible Causes**
 
-The location switch was not turned on, causing basic functions such as continuous positioning and single-time positioning to be unavailable.
+The location switch is not turned on, making basic functions such as continuous positioning and single-time positioning unavailable.
 
 **Resolution**
 
@@ -55,18 +57,26 @@ Positioning failed, and no location result was obtained.
 **Possible Causes**
 
 1. Weak GNSS signal, causing positioning timeout.
+
 2. Abnormal network positioning, causing positioning timeout.
-3. The positioning result did not meet the accuracy requirement (maxAccuracy) in the positioning request parameters, causing positioning timeout.
+
+3. The positioning result does not meet the accuracy requirement (maxAccuracy) specified in the positioning request parameters, causing positioning timeout.
+
 4. No cached location in the system, causing failure to obtain the last known location.
-5. Incorrect system time settings, causing failure to obtain the location.
+
+5. Incorrect system time setting, causing failure to obtain the location.
 
 **Resolution**
 
 1. Move to an open area and initiate positioning again.
+
 2. Check whether the device can connect to the network, whether a SIM card is inserted, and whether the WiFi switch is turned on.
+
 3. Check whether the maxAccuracy field in the positioning request is reasonable.
+
 4. If there is no cached location in the system, use the getCurrentLocation interface to obtain real-time location information.
-5. Enable automatic time settings on the "Date and Time" page.
+
+5. Enable automatic time setting on the "Date & Time" page.
 
 ## 3301300 Reverse Geocoding Query Failed
 
@@ -80,12 +90,14 @@ The reverse geocoding query failed.
 
 **Possible Causes**
 
-- The data network is slow, causing the client-side request to fail or the cloud-side result to not return to the client.
-- The X86 emulator does not support reverse geocoding, causing the reverse geocoding query to fail when debugging with the X86 emulator.
+- Slow data network, causing the client-side request to fail or the cloud-side result not to be returned to the client.
+
+- The X86 emulator does not support reverse geocoding, causing the query to fail when debugging on the X86 emulator.
 
 **Resolution**
 
 - For network issues, try retrying the reverse geocoding query.
+
 - For X86 emulator issues, verify on a real device.
 
 ## 3301400 Geocoding Query Failed
@@ -100,8 +112,8 @@ The geocoding query failed.
 
 **Possible Causes**
 
-1. Incorrect request parameters, or no results could be found based on the parameters.  
-2. The data network is slow, causing the client-side request to fail or the cloud-side result to not return to the client.
+1. Incorrect request parameters, or no results found based on the parameters.  
+2. Slow data network, causing the client-side request to fail or the cloud-side result not to be returned to the client.
 
 **Resolution**
 
@@ -137,8 +149,8 @@ Geofence operations failed, including adding, deleting, pausing, and resuming.
 
 **Possible Causes**
 
-1. The GNSS chip does not support geofencing.
-2. Abnormal underlying business logic caused geofence operations to fail.
+1. The GNSS chip does not support geofencing.  
+2. Underlying business logic abnormalities caused geofence operations to fail.
 
 **Resolution**
 
@@ -156,7 +168,7 @@ Adding a geofence failed because the number of geofences exceeded the maximum li
 
 **Possible Causes**
 
-1. The number of existing geofences in the system exceeded the maximum limit.
+1. The number of existing geofences in the system exceeds the maximum limit.
 
 **Resolution**
 
@@ -188,12 +200,12 @@ No response to the request.
 
 **Error Description**
 
-Certain asynchronous requests require user confirmation via button clicks or responses from the GNSS chip and network server. In these scenarios, no response was received, causing the operation to fail.
+Some asynchronous requests require user confirmation via button clicks or responses from the GNSS chip and network server. No response was received in these scenarios, causing the operation to fail.
 
 **Possible Causes**
 
-1. The user did not click the confirmation button.
-2. The GNSS chip did not respond.
+1. The user did not click the confirmation button.  
+2. The GNSS chip did not respond.  
 3. The network server did not respond.
 
 **Resolution**
@@ -208,13 +220,13 @@ Failed to start WiFi or Bluetooth scanning.
 
 **Error Description**
 
-When subscribing to WiFi or Bluetooth scan information, WiFi or Bluetooth scanning may be initiated first. If scanning fails to start, an error code is returned to the app.
+When subscribing to WiFi or Bluetooth scan information, the system may first initiate scanning. If scanning fails to start, an error code is returned to the app.
 
 **Possible Causes**
 
-1. Internal errors in the WiFi or Bluetooth service caused scanning to fail.
-2. In low-battery scenarios, power management restrictions prevented scanning from being initiated.
-3. The WiFi or Bluetooth switch was not turned on.
+1. Internal errors in the WiFi or Bluetooth service caused scanning to fail.  
+2. In low-battery scenarios, power restrictions prevent scanning from being initiated.  
+3. The WiFi or Bluetooth switch is not turned on.
 
 **Resolution**
 

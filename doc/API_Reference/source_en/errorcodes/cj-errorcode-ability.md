@@ -18,18 +18,18 @@ This error code is returned when the specified ability name does not exist.
 
 The queried ability does not exist.
 
-**Solution Steps**
+**Resolution Steps**
 
-1. Verify that the bundleName, moduleName, and abilityName in the want are correct.
-2. Check whether the application corresponding to the bundleName in the want is installed. Use the following command to query the list of installed applications. If the bundleName is not in the query results, the application is not installed successfully.
+1. Verify that the `bundleName`, `moduleName`, and `abilityName` in the `want` are correct.
+2. Check whether the application corresponding to the `bundleName` in the `want` is installed. Use the following command to query the list of installed applications. If the `bundleName` is not in the query results, the application is not installed successfully.
 
-    ``` text
+    ```text
     hdc shell bm dump -a
     ```
 
 3. For multi-HAP applications, confirm whether the HAP to which the ability belongs has been installed. Use the following command to query the package information of the application. If the corresponding HAP and ability are not found in the installed application, the HAP to which the ability belongs has not been installed.
 
-    ``` text
+    ```text
     hdc shell bm dump -n package_name
     ```
 
@@ -41,15 +41,15 @@ Incorrect ability type.
 
 **Error Description**
 
-This error code is returned when the ability type called by the interface is incorrect.
+This error code is returned when the interface is called with an incorrect ability type.
 
 **Possible Causes**
 
 The ability type where the interface is called does not support this interface call.
 
-**Solution Steps**
+**Resolution Steps**
 
-1. Verify that the bundleName, moduleName, and abilityName in the want are correct.
+1. Verify that the `bundleName`, `moduleName`, and `abilityName` in the `want` are correct.
 2. Call different interfaces based on the ability type.
 
 ## 16000003 The Specified ID Does Not Exist
@@ -66,7 +66,7 @@ This error code is returned when the specified ID does not exist.
 
 The target ID for the operation does not exist.
 
-**Solution Steps**
+**Resolution Steps**
 
 Confirm whether the ID for the operation exists.
 
@@ -84,12 +84,12 @@ This error code is returned when visibility verification fails.
 
 Application visibility verification failed.
 
-**Solution Steps**
+**Resolution Steps**
 
-1. In the Stage model, if exception 16000004 is thrown when launching an application, it indicates that the called application failed to start. Check whether the exported configuration of the Ability field in the module.json5 of the called application is set to true. If this field is true, the ability can be called by other applications; if it is false, the ability cannot be called by other applications.
-2. If an application needs to launch an ability with exported set to false, apply for the ohos.permission.START_INVISIBLE_ABILITY permission (this permission can only be requested by system applications).
+1. In the Stage model, if exception 16000004 is thrown when launching an application, it indicates that the called application failed. Check whether the `exported` configuration in the `Ability` field of the called application's `module.json5` is set to `true`. If `exported` is `true`, the ability can be called by other applications; if `false`, it cannot.
+2. If an application needs to launch an ability with `exported` set to `false`, apply for the `ohos.permission.START_INVISIBLE_ABILITY` permission (this permission is only available to system applications).
 
-## 16000005 Permission Verification Failed for the Specified Process
+## 16000005 Specified Process Permission Verification Failed
 
 **Error Message**
 
@@ -97,15 +97,15 @@ The specified process does not have the permission.
 
 **Error Description**
 
-This error code is returned when permission verification fails for the specified process.
+This error code is returned when the specified process permission verification fails.
 
 **Possible Causes**
 
-Permission verification failed for the specified process.
+The specified process permission verification failed.
 
-**Solution Steps**
+**Resolution Steps**
 
-Confirm whether the permissions for the specified process are correct.
+Confirm whether the permissions of the specified process are correct.
 
 ## 16000006 Cross-User Operations Are Not Allowed
 
@@ -121,7 +121,7 @@ This error code is returned when an application performs cross-user operations.
 
 The application performed cross-user operations.
 
-**Solution Steps**
+**Resolution Steps**
 
 Confirm whether cross-user operations were performed.
 
@@ -139,7 +139,7 @@ This error code is returned when the service is busy.
 
 The service is busy.
 
-**Solution Steps**
+**Resolution Steps**
 
 The service is busy. Please try again later.
 
@@ -157,7 +157,7 @@ This error code is returned when a crowdtesting application expires.
 
 The crowdtesting application has expired and cannot be opened.
 
-**Solution Steps**
+**Resolution Steps**
 
 Check whether the crowdtesting application has expired. Expired crowdtesting applications cannot be launched.
 
@@ -169,13 +169,13 @@ An ability cannot be started or stopped in Wukong mode.
 
 **Error Description**
 
-This error code is returned when attempting to start or stop an ability in Wukong mode.
+This error code is returned when starting or stopping an ability in Wukong mode.
 
 **Possible Causes**
 
-Starting or stopping abilities is not allowed in Wukong mode.
+Starting or stopping an ability is not allowed in Wukong mode.
 
-**Solution Steps**
+**Resolution Steps**
 
 Exit Wukong mode before attempting to start or stop the ability. Do not start or stop abilities in Wukong mode.
 
@@ -187,13 +187,13 @@ The call with the continuation flag is forbidden.
 
 **Error Description**
 
-This error code is returned when a call carries the continuation flag.
+This error code is returned when a call carries a continuation flag.
 
 **Possible Causes**
 
 The current call does not allow the continuation flag.
 
-**Solution Steps**
+**Resolution Steps**
 
 Check whether the continuation flag is included.
 
@@ -211,7 +211,7 @@ This error code is returned when the context object does not exist.
 
 The current context object does not exist.
 
-**Solution Steps**
+**Resolution Steps**
 
 Check whether the context object is available.
 
@@ -223,13 +223,13 @@ The application is controlled.
 
 **Error Description**
 
-This error code is returned when an application is controlled by the application market.
+This error code is returned when an application is controlled by the app market.
 
 **Possible Causes**
 
-The application is suspected of malicious behavior and is controlled by the application market, preventing it from being launched.
+The application is suspected of malicious behavior and is controlled by the app market, preventing it from being launched.
 
-**Solution Steps**
+**Resolution Steps**
 
 It is recommended to uninstall the application.
 
@@ -245,11 +245,11 @@ This error code is returned when an application is controlled by Enterprise Devi
 
 **Possible Causes**
 
-The application is controlled by Enterprise Device Manager.
+The application is controlled by enterprise device management.
 
-**Solution Steps**
+**Resolution Steps**
 
-Contact the relevant personnel of Enterprise Device Management.
+Contact the relevant personnel for enterprise device management.
 
 ## 16000015 Service Timeout
 
@@ -265,7 +265,7 @@ This error code is returned when the service times out.
 
 The service timed out.
 
-**Solution Steps**
+**Resolution Steps**
 
 The service timed out. Please try again later.
 
@@ -277,17 +277,17 @@ Another ability is being started. Wait until it finishes starting.
 
 **Error Description**
 
-Too many abilities need to be started. Due to limited system processing capacity, requests are queued and processed in order.
+Too many abilities need to be started. Due to limited system processing capacity, requests are queued and processed sequentially.
 
 **Possible Causes**
 
 High system concurrency.
 
-**Solution Steps**
+**Resolution Steps**
 
 No action is required. Wait for the launch to complete.
 
-## 16000018 Third-Party Application Redirection Restricted for API Version 11 and Above
+## 16000018 Third-Party Application Redirection Restricted for API Version 11+
 
 **Error Message**
 
@@ -297,9 +297,11 @@ Redirection to a third-party application is not allowed in API version 11 or lat
 
 When the application API version is greater than 11, explicit redirection to other third-party applications is not allowed.
 
-**Solution Steps**Use implicit startup or jump to other applications via `openLink`.
+**Resolution Steps**
 
-## 16000019 No Matching Application Found for Implicit Startup
+Use implicit startup or redirect to other applications via `openLink`.
+
+## 16000019 No Matching Ability Found for Implicit Startup
 
 **Error Message**
 
@@ -307,7 +309,7 @@ No matching ability is found.
 
 **Error Description**
 
-No matching Ability was found during implicit startup.
+No matching ability is found for implicit startup.
 
 **Resolution Steps**
 
@@ -321,16 +323,16 @@ Internal error.
 
 **Error Description**
 
-This error code is returned when internal processing errors occur, such as memory allocation or multithreading exceptions.
+This error code is returned for internal processing errors such as memory allocation or multi-threading exceptions.
 
 **Possible Causes**
 
-General kernel errors related to memory allocation, multithreading, etc. Specific causes may include: null internal objects, processing timeout, failure to obtain application information from package management, failure to acquire system services, reaching the upper limit of launched ability instances, etc.
+General kernel errors related to memory allocation, multi-threading, etc. Specific causes may include: internal objects being null, processing timeouts, failure to obtain application information from package management, failure to obtain system services, reaching the upper limit of launched ability instances, etc.
 
 **Resolution Steps**
 
 1. Verify whether the system has sufficient memory and whether the device's system version is abnormal.
-2. Check if too many abilities have been launched.
+2. Check whether too many abilities have been launched.
 3. Try restarting the device.
 
 ## 16000051 Network Error
@@ -341,15 +343,15 @@ Network error.
 
 **Error Description**
 
-This error code is returned when a network exception occurs.
+This error code is returned when a network error occurs.
 
 **Possible Causes**
 
-Network is unavailable.
+The network is unavailable.
 
 **Resolution Steps**
 
-Retry later or reconnect to the network.
+A network error occurred. Please try again later or reconnect to the network.
 
 ## 16000052 Installation-Free Not Supported
 
@@ -363,13 +365,13 @@ This error code is returned when the current application does not support instal
 
 **Possible Causes**
 
-The application package does not meet installation-free requirements, such as exceeding the size limit.
+The application package does not meet the installation-free requirements, such as exceeding the package size limit.
 
 **Resolution Steps**
 
 Check whether the application supports installation-free.
 
-## 16000053 Not a Top-Level Application
+## 16000053 Ability Not on Top of UI
 
 **Error Message**
 
@@ -381,7 +383,7 @@ This error code is returned when the current application is not displayed at the
 
 **Possible Causes**
 
-The application must be in the foreground for installation-free startup, but it is not displayed at the top of the UI.
+For installation-free startup, the application must be in the foreground, but it is not displayed at the top of the UI.
 
 **Resolution Steps**
 
@@ -403,8 +405,7 @@ A download or installation task for the same atomic service is already in progre
 
 **Resolution Steps**
 
-The installation-free service is busy. Retry later.
-
+The installation-free service is busy. Please try again later.```markdown
 ## 16000055 Installation-Free Timeout
 
 **Error Message**
@@ -413,15 +414,15 @@ Installation-free timed out.
 
 **Error Description**
 
-This error code is returned when installation-free times out.
+This error code is returned when the installation-free operation times out.
 
 **Possible Causes**
 
-Installation-free has timed out.
+Installation-free operation timed out.
 
-**Resolution Steps**
+**Resolution**
 
-Installation-free timed out. Retry later.
+Retry the installation-free operation later.
 
 ## 16000056 Installation-Free Not Allowed for Other Applications
 
@@ -431,15 +432,15 @@ Installation-free is not allowed for other applications.
 
 **Error Description**
 
-This error code is returned when attempting installation-free for other applications.
+This error code is returned when attempting to perform installation-free for other applications.
 
 **Possible Causes**
 
-Installation-free is not allowed for other applications.
+Installation-free is not permitted for other applications.
 
-**Resolution Steps**
+**Resolution**
 
-Confirm that the correct application is being installed installation-free.
+Verify that the target application is correct for installation-free.
 
 ## 16000057 Cross-Device Installation-Free Not Supported
 
@@ -455,9 +456,9 @@ This error code is returned when attempting cross-device installation-free.
 
 Cross-device installation-free is not supported.
 
-**Resolution Steps**
+**Resolution**
 
-Confirm that the application is not for cross-device installation-free.
+Ensure the installation-free operation is performed on the same device.
 
 ## 16000058 Invalid URI Flag Specified
 
@@ -473,9 +474,9 @@ The specified URI flag is invalid.
 
 Incorrect parameters were passed.
 
-**Resolution Steps**
+**Resolution**
 
-Verify that the passed parameters belong to URI flags.
+Verify that the passed parameters are valid URI flags.
 
 ## 16000059 Invalid URI Type Specified
 
@@ -491,9 +492,9 @@ The specified URI type is invalid.
 
 Incorrect parameters were passed. Currently, URI authorization management only supports file-type URIs.
 
-**Resolution Steps**
+**Resolution**
 
-Verify that the passed parameters belong to supported URI types.
+Ensure the passed parameters are of supported URI types.
 
 ## 16000060 Sandbox Application Cannot Grant URI Permission
 
@@ -509,9 +510,9 @@ This error code is returned when a sandbox application attempts to grant URI per
 
 Sandbox applications are not allowed to grant URI permissions.
 
-**Resolution Steps**
+**Resolution**
 
-Confirm that the application is not a sandbox application.
+Ensure the operation is performed by a non-sandbox application.
 
 ## 16000061 Operation Not Supported
 
@@ -527,7 +528,7 @@ This error code is returned when the operation is not supported on the current s
 
 The operation is not supported on the current system.
 
-**Resolution Steps**
+**Resolution**
 
 Verify whether the operation is supported on the current system.
 
@@ -539,17 +540,17 @@ The number of child processes exceeds the upper limit.
 
 **Error Description**
 
-This error code is returned when the number of child processes created has reached the upper limit during a child process creation request.
+This error code is returned when the number of child processes created reaches the upper limit (512).
 
 **Possible Causes**
 
-The number of child processes created has reached the upper limit.
+The maximum number of child processes has been reached.
 
-**Resolution Steps**
+**Resolution**
 
-Verify whether the number of child processes has reached the upper limit. The upper limit for child processes is 512.
+Check if the number of child processes has reached the limit (512).
 
-## 16000063 Invalid Component Specified for Application Restart
+## 16000063 Invalid Target Component for Application Restart
 
 **Error Message**
 
@@ -557,15 +558,15 @@ The target to restart does not belong to the current application or is not a UIA
 
 **Error Description**
 
-This error code is returned when the specified component name or type is invalid during application restart to launch a specific component.
+This error code is returned when the specified component name or type is invalid during application restart.
 
 **Possible Causes**
 
 The specified component name or type is invalid.
 
-**Resolution Steps**
+**Resolution**
 
-Confirm that the specified component name belongs to the current application and is of type UIAbility.
+Ensure the target component belongs to the current application and is a UIAbility.
 
 ## 16000064 Application Restart Too Frequent
 
@@ -575,17 +576,17 @@ Restart too frequently. Try again at least 10s later.
 
 **Error Description**
 
-This error code is returned when attempting to restart the application to launch a specific component within 10 seconds of the previous call.
+This error code is returned when attempting to restart an application within 10 seconds of the previous call.
 
 **Possible Causes**
 
-The interface was called too frequently.
+The API was called too frequently.
 
-**Resolution Steps**
+**Resolution**
 
-Retry after at least 10 seconds.
+Wait at least 10 seconds before retrying.
 
-## 16000065 API Can Only Be Called When Ability Is in Foreground
+## 16000065 API Callable Only in Foreground Ability
 
 **Error Message**
 
@@ -593,15 +594,17 @@ The API can be called only when the ability is running in the foreground.
 
 **Error Description**
 
-This error code is returned when the Ability is not in the foreground.
+This error code is returned when the ability is not in the foreground.
 
-**Possible Causes**When calling the interface, the Ability is not in the foreground.
+**Possible Causes**
 
-**Handling Steps**
+The ability was not in the foreground during the API call.
 
-Switch the Ability to the foreground before calling the interface.
+**Resolution**
 
-## 16000066 Wukong Mode: Moving Ability to Foreground/Background Not Allowed
+Switch the ability to the foreground before calling the API.
+
+## 16000066 Ability Foreground/Background Switch Prohibited in Wukong Mode
 
 **Error Message**
 
@@ -609,17 +612,17 @@ An ability cannot switch to the foreground or background in Wukong mode.
 
 **Error Description**
 
-This error code is returned when attempting to move an Ability to the foreground or background in Wukong mode.
+This error code is returned when attempting to move an ability to the foreground/background in Wukong mode.
 
 **Possible Causes**
 
-Wukong mode does not allow moving an Ability to the foreground or background.
+Wukong mode prohibits foreground/background switching for abilities.
 
-**Handling Steps**
+**Resolution**
 
-Exit Wukong mode before attempting to move the Ability to the foreground or background. Do not move the Ability to the foreground or background while in Wukong mode.
+Exit Wukong mode before attempting the operation. Do not switch abilities in Wukong mode.
 
-## 16000067 Ability Startup Parameter Validation Failed
+## 16000067 StartOptions Validation Failed
 
 **Error Message**
 
@@ -627,16 +630,16 @@ The StartOptions check failed.
 
 **Error Description**
 
-This error code is returned when parameter validation related to StartOptions fails.
+This error code is returned when StartOptions parameter validation fails.
 
 **Possible Causes**
 
-1. When calling `startAbility`, if `processMode` is set to `NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM` or `ATTACH_TO_STATUS_BAR_ITEM` but the application does not have an icon in the status bar, this error code is returned.
-2. When calling `showAbility`/`hideAbility`, if the caller was not started in `NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM` or `ATTACH_TO_STATUS_BAR_ITEM` mode, this error code is returned.
+1. `processMode` is set to `NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM` or `ATTACH_TO_STATUS_BAR_ITEM`, but the application has no status bar icon.
+2. The caller of `showAbility`/`hideAbility` was not started with `NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM` or `ATTACH_TO_STATUS_BAR_ITEM` mode.
 
-**Handling Steps**
+**Resolution**
 
-Verify the StartOptions parameter configuration and ensure all constraints are met.
+Verify StartOptions parameters and ensure constraints are met.
 
 ## 16000068 Ability Already Running
 
@@ -646,36 +649,36 @@ The ability is already running.
 
 **Error Description**
 
-This error code is returned when the target Ability is already running.
+This error code is returned when the target ability is already running.
 
 **Possible Causes**
 
-When calling `startAbility`, if `processMode` and `startupVisibility` are specified, the target Ability's `launchType` is `singleton` or `specified`, and the target Ability is already running, this error code is returned.
+`startAbility` was called with `processMode` and `startupVisibility` specified, but the target ability (with `launchType` as `singleton` or `specified`) is already running.
 
-**Handling Steps**
+**Resolution**
 
-If the target Ability's `launchType` is `singleton` or `specified`, avoid repeatedly calling `startAbility` with `processMode` and `startupVisibility` specified.
+Avoid duplicate `startAbility` calls for singleton/specified abilities with `processMode` and `startupVisibility`.
 
-## 16000069 Extension Cannot Start Third-Party Applications in Strict Mode
+## 16000069 Strict Mode Prohibits Third-Party App Launch by Extension
 
 **Error Message**
 
-The extension cannot start the third-party application.
+The extension cannot start the third party application.
 
 **Error Description**
 
-In strict mode, this type of Extension is not allowed to start third-party applications.
+In strict mode, certain extension types cannot launch third-party apps.
 
 **Possible Causes**
 
-The current Extension is in strict mode, and the corresponding Extension type does not allow starting other third-party applications in strict mode.
+The current extension is in strict mode, and its type prohibits third-party app launches.
 
-**Handling Steps**
+**Resolution**
 
-1. Check the conditions for enabling strict mode for the corresponding Extension type.
-2. Start the current Extension in non-strict mode.
+1. Check strict mode conditions for the extension type.
+2. Launch the extension in non-strict mode.
 
-## 16000070 Extension Cannot Start Specified ServiceExtensionAbility in Strict Mode
+## 16000070 Strict Mode Prohibits ServiceExtensionAbility Launch by Extension
 
 **Error Message**
 
@@ -683,18 +686,18 @@ The extension cannot start the service.
 
 **Error Description**
 
-In strict mode, this type of Extension is not allowed to start the specified ServiceExtensionAbility.
+In strict mode, certain extension types cannot launch specified ServiceExtensionAbility.
 
 **Possible Causes**
 
-The current Extension is in strict mode, and the corresponding Extension type does not allow starting the specified ServiceExtensionAbility in strict mode.
+The current extension is in strict mode, and its type prohibits ServiceExtensionAbility launches.
 
-**Handling Steps**
+**Resolution**
 
-1. Check the conditions for enabling strict mode for the corresponding Extension type.
-2. Start the current Extension in non-strict mode.
+1. Check strict mode conditions for the extension type.
+2. Launch the extension in non-strict mode.
 
-## 16000071 App Clone Mode Not Supported
+## 16000071 App Clone Not Supported
 
 **Error Message**
 
@@ -706,14 +709,14 @@ This error code is returned when the application does not support clone mode.
 
 **Possible Causes**
 
-This error code is returned when calling `getCurrentAppCloneIndex` in an application that does not support app cloning.
+`getCurrentAppCloneIndex` was called in a non-clone-supported app.
 
-**Handling Steps**
+**Resolution**
 
-Avoid calling `getCurrentAppCloneIndex` in applications that do not support app cloning.
+Avoid calling `getCurrentAppCloneIndex` in unsupported apps.
 
 <!--Del-->
-## 16000072 App Multi-Instance Not Supported
+## 16000072 App Clone or Multi-Instance Not Supported
 
 **Error Message**
 
@@ -721,18 +724,18 @@ App clone or multi-instance is not supported.
 
 **Error Description**
 
-This error code is returned when the application does not support multi-instance mode.
+This error code is returned when the application does not support multi-instance.
 
 **Possible Causes**
 
-This error code is returned when calling `getRunningMultiAppInfo` to query multi-instance information for an application that does not support multi-instance.
+`getRunningMultiAppInfo` was called for a non-multi-instance-supported app.
 
-**Handling Steps**
+**Resolution**
 
-Ensure the application supports multi-instance before calling `getCurrentAppCloneIndex`.
+Ensure the target app supports multi-instance before calling `getCurrentAppCloneIndex`.
 <!--DelEnd-->
 
-## 16000073 Invalid appCloneIndex Value
+## 16000073 Invalid appCloneIndex
 
 **Error Message**
 
@@ -744,16 +747,16 @@ This error code is returned when an invalid `appCloneIndex` is passed.
 
 **Possible Causes**
 
-1. When calling `startAbility`, if the `appCloneIndex` carried by `ohos.extra.param.key.appCloneIndex` is invalid, this error code is returned.
+1. `startAbility` was called with an invalid `appCloneIndex` in `ohos.extra.param.key.appCloneIndex`.
 <!--Del-->
-2. When calling `isAppRunning`, if the input parameter `appCloneIndex` is invalid, this error code is returned.
+2. `isAppRunning` was called with an invalid `appCloneIndex`.
 <!--DelEnd-->
 
-**Handling Steps**
+**Resolution**
 
-Ensure the `appCloneIndex` meets all constraints.
+Verify `appCloneIndex` constraints.
 
-## 16000074 Caller Not Found for Specified requestCode
+## 16000074 Caller Not Found for Result Return
 
 **Error Message**
 
@@ -761,19 +764,19 @@ The caller does not exist.
 
 **Error Description**
 
-When returning results to the caller via the `backToCallerAbilityResult` interface, this error code is returned if the caller cannot be found based on the provided `requestCode`.
+This error code is returned when the caller cannot be found via `requestCode` in `backTocallerAbilityResult`.
 
 **Possible Causes**
 
-1. The `requestCode` was not obtained from the `CALLER_REQUEST_CODE` field in the `want`.
-2. The caller corresponding to the `requestCode` has already been destroyed or the result has already been returned.
+1. `requestCode` was not obtained from the `CALLER_REQUEST_CODE` field in `want`.
+2. The caller was destroyed or the result was already returned.
 
-**Handling Steps**
+**Resolution**
 
-1. Confirm whether the `requestCode` was obtained from the `CALLER_REQUEST_CODE` in the `want`.
-2. Confirm whether the caller has been destroyed or the result has already been returned.
+1. Ensure `requestCode` is from `CALLER_REQUEST_CODE`.
+2. Verify the caller's status.
 
-## 16000075 Returning to Caller Not Supported
+## 16000075 Back-to-Caller Not Supported
 
 **Error Message**
 
@@ -781,18 +784,18 @@ Not support back to caller.
 
 **Error Description**
 
-This error code is returned when returning to the caller via the `backToCallerAbilityWithResult` interface is not supported.
+This error code is returned when `backToCallerAbilityWithResult` is unsupported.
 
 **Possible Causes**
 
-The current application has not configured `linkFeature` or has not passed system review.
+The app lacks `linkFeature` configuration or failed system review.
 
-**Handling Steps**
+**Resolution**
 
-1. Ensure the current application has configured the `linkFeature` field in the `module.json5` file.
-2. Ensure the declared `linkFeature` value is correct, matches the actual functionality of the application link, and the application has passed system review.
+1. Configure `linkFeature` in `module.json5`.
+2. Ensure `linkFeature` values match actual functionality and pass system review.
 
-## 16000076 Specified APP_INSTANCE_KEY Does Not Exist
+## 16000076 Invalid APP_INSTANCE_KEY
 
 **Error Message**
 
@@ -804,12 +807,12 @@ This error code is returned when the specified `APP_INSTANCE_KEY` does not exist
 
 **Possible Causes**
 
-The application instance does not contain the instance specified by the `APP_INSTANCE_KEY`.
+No instance matches the provided `APP_INSTANCE_KEY`.
 
-**Handling Steps**
+**Resolution**
 
-Ensure the provided `APP_INSTANCE_KEY` is valid.
-
+Ensure `APP_INSTANCE_KEY` is valid.
+``````markdown
 ## 16000077 Maximum Number of Application Instances Reached
 
 **Error Message**
@@ -818,15 +821,16 @@ The number of app instances reaches the limit.
 
 **Error Description**
 
-This error code is returned when attempting to create a new application instance after the maximum number of instances has been reached.
+This error code is returned when attempting to create additional application instances after reaching the configured maximum limit.
 
 **Possible Causes**
 
-The number of application instances was not checked against the self-configured upper limit before creating a new instance.
+Failure to check whether the current instance count has reached the application's self-defined upper limit before creating new instances.
 
-**Handling Steps**
+**Resolution Steps**
 
-Adjust the configured upper limit for application instances or delete existing instances before creating new ones.
+1. Adjust the configured maximum instance limit.
+2. Delete existing instances before creating new ones.
 
 ## 16000078 Multi-Instance Not Supported
 
@@ -836,17 +840,17 @@ The multi-instance is not supported.
 
 **Error Description**
 
-The application does not support multi-instance.
+The application does not support multiple instances.
 
 **Possible Causes**
 
-1. The target application is not configured for multi-instance.
-2. The current device type does not support multi-instance.
+1. Target application is not configured for multi-instance operation.
+2. Current device type does not support multi-instance.
 
-**Handling Steps**
+**Resolution Steps**
 
-1. Configure the target application for multi-instance.
-2. Call this method on a 2-in-1 device.
+1. Configure multi-instance capability for the target application.
+2. Invoke this method on 2-in-1 devices.
 
 ## 16000079 Specifying APP_INSTANCE_KEY Not Supported
 
@@ -856,17 +860,17 @@ The APP_INSTANCE_KEY cannot be specified.
 
 **Error Description**
 
-`APP_INSTANCE_KEY` and `CREATE_APP_INSTANCE_KEY` cannot be specified simultaneously. This error code is returned when `APP_INSTANCE_KEY` is specified along with `CREATE_APP_INSTANCE_KEY`.
+This error occurs when both APP_INSTANCE_KEY and CREATE_APP_INSTANCE_KEY parameters are specified simultaneously.
 
 **Possible Causes**
 
-Too many parameters were provided.
+Excessive parameter input.
 
-**Handling Steps**
+**Resolution Steps**
 
-Only one of `APP_INSTANCE_KEY` or `CREATE_APP_INSTANCE_KEY` can be specified.
+Use either APP_INSTANCE_KEY or CREATE_APP_INSTANCE_KEY, but not both.
 
-## 16000080 Creating New Instance Not Supported
+## 16000080 Instance Creation Not Supported
 
 **Error Message**
 
@@ -874,33 +878,35 @@ Creating an instance is not supported.
 
 **Error Description**
 
-Applications are only allowed to use `CREATE_APP_INSTANCE_KEY` to create their own instances. Starting another application with `CREATE_APP_INSTANCE_KEY` is not allowed. Otherwise, this error code is returned.
+Applications can only use CREATE_APP_INSTANCE_KEY to create their own instances. Cross-application instance creation during launch is prohibited.
 
 **Possible Causes**
 
-Incorrect usage scenario for the parameter.
+Incorrect parameter usage scenario.
 
-**Handling Steps**
+**Resolution Steps**
 
-Remove the `CREATE_APP_INSTANCE_KEY` parameter.
+Remove the CREATE_APP_INSTANCE_KEY parameter.
 
-## 16000082 UIAbility in Singleton Mode Not Fully Started
+## 16000082 UIAbility Startup Incomplete in Singleton Mode
 
 **Error Message**
 
 The UIAbility is being started.
 
-**Error Description**If the UIAbility startup mode is "singleton", the startup interface cannot be called again before the UIAbility startup is completed; otherwise, this error code will be returned.
+**Error Description**
+
+For UIAbilities in "singleton" mode, startup interfaces cannot be called again before the initial startup completes.
 
 **Possible Causes**
 
-The UIAbility is in singleton mode and is currently starting up.
+The UIAbility is currently initializing in singleton mode.
 
-**Resolution**
+**Resolution Steps**
 
-Ensure the UIAbility startup is completed before initiating a new startup task.
+Ensure UIAbility startup completes before initiating new startup tasks.
 
-## 16000100 AbilityMonitor Methods for Monitoring Ability Lifecycle Changes Failed
+## 16000100 AbilityMonitor Lifecycle Monitoring Failure
 
 **Error Messages**
 
@@ -921,17 +927,17 @@ Ensure the UIAbility startup is completed before initiating a new startup task.
 
 **Error Description**
 
-This error code is returned when methods for monitoring specified Ability lifecycle changes via AbilityMonitor fail.
+Returned when AbilityMonitor methods fail to monitor specified Ability lifecycle changes.
 
 **Possible Causes**
 
-Failed to create an AbilityDelegatorRegistry instance.
+Failure to create AbilityDelegatorRegistry instance.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the AbilityDelegatorRegistry instance was successfully created.
+Verify successful creation of AbilityDelegatorRegistry instance.
 
-## 16000101 Failed to Execute Shell Command
+## 16000101 Shell Command Execution Failure
 
 **Error Message**
 
@@ -939,15 +945,15 @@ Failed to run the shell command.
 
 **Error Description**
 
-This error code is returned when the command is not a valid shell command.
+Returned when executing invalid shell commands.
 
 **Possible Causes**
 
-The command is not a valid shell command.
+Invalid shell command syntax.
 
-**Resolution**
+**Resolution Steps**
 
-Check whether the command is a valid shell command.
+Validate shell command correctness.
 
 ## 16000151 Invalid wantAgent Object
 
@@ -957,15 +963,15 @@ Invalid wantAgent object.
 
 **Error Description**
 
-This error code is returned when the wantAgent object passed to the interface is invalid.
+Returned when passing invalid wantAgent objects to interfaces.
 
 **Possible Causes**
 
-The wantAgent object passed to the interface is invalid.
+Invalid wantAgent object parameter.
 
-**Resolution**
+**Resolution Steps**
 
-Verify the wantAgent object passed to the interface.
+Verify wantAgent object validity.
 
 ## 16000152 wantAgent Object Not Found
 
@@ -975,15 +981,15 @@ The wantAgent object does not exist.
 
 **Error Description**
 
-This error code is returned when the wantAgent object passed to the interface does not exist.
+Returned when non-existent wantAgent objects are passed to interfaces.
 
 **Possible Causes**
 
-The wantAgent object passed to the interface does not exist.
+Nonexistent wantAgent object.
 
-**Resolution**
+**Resolution Steps**
 
-Check whether the wantAgent object passed to the interface is valid.
+Validate wantAgent object existence.
 
 ## 16000153 wantAgent Object Canceled
 
@@ -993,17 +999,17 @@ The wantAgent object has been canceled.
 
 **Error Description**
 
-This error code is returned when the wantAgent object passed to the interface has been canceled.
+Returned when canceled wantAgent objects are passed to interfaces.
 
 **Possible Causes**
 
-The triggered wantAgent passed to the interface has been canceled.
+Triggered wantAgent was previously canceled.
 
-**Resolution**
+**Resolution Steps**
 
-Check whether the triggered wantAgent object has been canceled.
+Check wantAgent object cancellation status.
 
-## 16100001 Ability with Specified URI Does Not Exist
+## 16100001 URI-Specified Ability Not Found
 
 **Error Message**
 
@@ -1011,17 +1017,17 @@ The ability with the specified URI does not exist.
 
 **Error Description**
 
-This error code is returned when the Ability with the specified URI does not exist.
+Returned when querying non-existent Abilities via URI.
 
 **Possible Causes**
 
-The queried Ability does not exist.
+Target Ability doesn't exist.
 
-**Resolution**
+**Resolution Steps**
 
-Confirm whether the queried Ability exists.
+Confirm Ability existence.
 
-## 16100002 Incorrect Ability Type in Interface Call
+## 16100002 Incorrect Ability Type
 
 **Error Message**
 
@@ -1029,18 +1035,18 @@ Incorrect ability type.
 
 **Error Description**
 
-This error code is returned when the Ability type in the interface call is incorrect.
+Returned when interfaces are called with incompatible Ability types.
 
 **Possible Causes**
 
-The Ability type where the interface is called does not support this interface call.
+Interface unsupported by current Ability type.
 
-**Resolution**
+**Resolution Steps**
 
-1. Verify whether the package name corresponds to the correct Ability.
-2. Call different interfaces based on the Ability type.
+1. Verify package name matches correct Ability.
+2. Use type-specific interfaces.
 
-## 16200001 Common Component Client (Caller) Released
+## 16200001 Caller Released
 
 **Error Message**
 
@@ -1048,19 +1054,19 @@ The caller has been released.
 
 **Error Description**
 
-This error code is returned when the common component client (Caller) has been released.
+Returned when accessing released component clients.
 
 **Possible Causes**
 
-The common component client (Caller) has been released.
+Caller component was garbage collected.
 
-**Resolution**
+**Resolution Steps**
 
-1. Re-register a valid common component client calling interface.
-2. Check whether the Ability corresponding to the context is still running when calling `context.startAbility`. If the Ability has been destroyed, this error code will be thrown.
-3. If there are consecutive calls to `startAbility` and `terminateSelf`, ensure that `terminateSelf` is called only after receiving the success or failure callback of `startAbility`.
+1. Re-register valid component client interfaces.
+2. Verify context's Ability is still running when calling startAbility.
+3. For sequential startAbility/terminateSelf calls, wait for startAbility callback before terminating.
 
-## 16200002 Common Component Server (Callee) Invalid
+## 16200002 Invalid Callee
 
 **Error Message**
 
@@ -1068,17 +1074,17 @@ The callee does not exist.
 
 **Error Description**
 
-This error code is returned when the common component server (Callee) is invalid.
+Returned when accessing invalid component servers.
 
 **Possible Causes**
 
-The common component server (Callee) does not exist.
+Nonexistent callee component.
 
-**Resolution**
+**Resolution Steps**
 
-Verify whether the common component server exists.
+Verify callee component existence.
 
-## 16200003 Release Failed
+## 16200003 Release Failure
 
 **Error Message**
 
@@ -1086,15 +1092,15 @@ Release error. The caller does not call any callee.
 
 **Error Description**
 
-This error code is returned when the release operation fails.
+Returned during failed component release.
 
 **Possible Causes**
 
-The common component client (Caller) object has not registered any common component server (Callee).
+Caller never registered any callee.
 
-**Resolution**
+**Resolution Steps**
 
-Check whether the common component server has been registered.
+Confirm callee registration status.
 
 ## 16200004 Method Already Registered
 
@@ -1104,15 +1110,15 @@ The method has been registered.
 
 **Error Description**
 
-This error code is returned when the method has already been registered.
+Returned for duplicate method registrations.
 
 **Possible Causes**
 
-The method has already been registered in the common component server.
+Method previously registered on callee.
 
-**Resolution**
+**Resolution Steps**
 
-Check whether the method has already been registered.
+Check method registration history.
 
 ## 16200005 Method Not Registered
 
@@ -1122,17 +1128,17 @@ The method has not been registered.
 
 **Error Description**
 
-This error code is returned when the method has not been registered.
+Returned for unregistered method calls.
 
 **Possible Causes**
 
-The method has not been registered in the common component server.
+Method never registered on callee.
 
-**Resolution**
+**Resolution Steps**
 
-Check whether the method has not been registered.
+Verify method registration status.
 
-## 16200006 No Permission to Set Resident Process Enable Status
+## 16200006 Resident Process Permission Denied
 
 **Error Message**
 
@@ -1140,17 +1146,17 @@ The caller application can only set the resident status of the configured proces
 
 **Error Description**
 
-This error code is returned when the caller lacks permission to set the resident process enable status.
+Returned for unauthorized resident process configuration attempts.
 
 **Possible Causes**
 
-The caller lacks permission to configure the resident process enable status.
+Caller lacks resident process enablement permissions.
 
-**Resolution**
+**Resolution Steps**
 
-Query the caller's resident process enable configuration permission from the database during interface calls.
+Query caller's resident process permissions from database.
 
-## 16300001 Specified Task Not Found
+## 16300001 Mission Not Found
 
 **Error Message**
 
@@ -1158,17 +1164,17 @@ Mission not found.
 
 **Error Description**
 
-This error code is returned when the specified task does not exist.
+Returned when accessing non-existent tasks.
 
 **Possible Causes**
 
-The target task for the operation does not exist.
+Target task doesn't exist.
 
-**Resolution**
+**Resolution Steps**
 
-Confirm whether the task exists.
+Confirm task existence.
 
-## 16300002 Specified Task Listener Not Found
+## 16300002 Mission Listener Not Found
 
 **Error Message**
 
@@ -1176,15 +1182,17 @@ The specified mission listener does not exist.
 
 **Error Description**
 
-This error code is returned when the specified task listener does not exist.**Possible Causes**
+Returned when accessing non-existent task listeners.
 
-The target task listener for the operation does not exist.
+**Possible Causes**
+
+Target listener doesn't exist.
 
 **Resolution Steps**
 
-Verify whether the target task listener exists.
+Verify listener existence.
 
-## 16300003 Target Application Is Not the Current Application
+## 16300003 Target Application Mismatch
 
 **Error Message**
 
@@ -1192,16 +1200,16 @@ The target application is not the current application.
 
 **Error Description**
 
-This error code is returned when the launched application is not the current application.
+Returned when launching external applications.
 
 **Possible Causes**
 
-The launched application and the calling application are not the same.
+Launched app differs from caller app.
 
 **Resolution Steps**
 
-Confirm whether the launched application is the current application.
-
+Ensure target matches current application.
+``````markdown
 ## 18500001 Invalid Specified Bundle Name
 
 **Error Message**
@@ -1214,11 +1222,11 @@ This error code is returned when the specified bundle name is invalid.
 
 **Possible Causes**
 
-The target bundle to be queried does not exist or is not installed.
+The target bundle does not exist or is not installed.
 
 **Resolution Steps**
 
-Verify whether the queried application is installed.
+Verify whether the target application is installed.
 
 ## 18500002 Invalid Specified Patch Package
 
@@ -1228,16 +1236,16 @@ Invalid patch package.
 
 **Error Description**
 
-This error code is returned when the specified patch package is invalid, does not exist, or is inaccessible.
+This error code is returned when the specified patch package is invalid, non-existent, or inaccessible.
 
 **Possible Causes**
 
-The patch package file to be installed does not exist or cannot be accessed.
+The target patch package file does not exist or is inaccessible.
 
 **Resolution Steps**
 
-1. Check whether the provided patch package file path is valid.
-2. Verify whether you have permission to access the patch package file.
+1. Verify the validity of the provided patch package file path.
+2. Check whether you have permission to access the patch package file.
 
 ## 18500003 Patch Package Deployment Failed
 
@@ -1247,21 +1255,21 @@ Failed to deploy the patch.
 
 **Error Description**
 
-This error code is returned when the patch package deployment fails.
+This error code is returned when patch package deployment fails.
 
 **Possible Causes**
 
 1. The `type` in `patch.json` must be either `patch` or `hotreload`; otherwise, deployment fails.
-2. If the HAP package corresponding to `bundleName` is not installed, deployment fails.
+2. Deployment fails if the HAP package corresponding to `bundleName` is not installed.
 3. `bundleName` and `versionCode` must match those of the installed HAP application. For `patch` type, `versionName` must also match; otherwise, deployment fails.
 4. If a patch package has already been deployed, the `versionCode` of the new patch package must be greater than that of the previous one; otherwise, deployment fails.
-5. For `patch`-type patches, signature verification is performed. The signing certificate must match that of the application; otherwise, deployment fails.
-6. When deploying a `patch`-type patch package in debug mode, if the currently used patch package is of `hotreload` type, deployment fails.
-7. When deploying a `hotreload`-type patch package in debug mode, if the currently used patch package is of `patch` type, deployment fails. In release mode, deployment fails.
+5. For `patch`-type packages, signature verification is performed. The signing certificate must match that of the application; otherwise, deployment fails.
+6. For debug versions deploying `patch`-type packages: if an active patch package is of `hotreload` type, deployment fails.
+7. For debug versions deploying `hotreload`-type packages: if an active patch package is of `patch` type, deployment fails. For release versions, deployment always fails.
 
 **Resolution Steps**
 
-Ensure the patch package complies with the rules.
+Verify whether the patch package complies with the rules.
 
 ## 18500004 Patch Package Enablement Failed
 
@@ -1271,17 +1279,17 @@ Failed to enable the patch package.
 
 **Error Description**
 
-This error code is returned when enabling the patch package fails.
+This error code is returned when patch package enablement fails.
 
 **Possible Causes**
 
-The patch package status is incorrect during enablement.
+The patch package is in an incorrect state during enablement.
 
 **Resolution Steps**
 
 Check the patch package status.
 
-## 18500005 Patch Package Removal Failed
+## 18500005 Patch Package Deletion Failed
 
 **Error Message**
 
@@ -1289,11 +1297,11 @@ Failed to remove the patch package.
 
 **Error Description**
 
-This error code is returned when removing the patch package fails.
+This error code is returned when patch package deletion fails.
 
 **Possible Causes**
 
-The patch package status is incorrect during removal of the old patch.
+The patch package is in an incorrect state during deletion.
 
 **Resolution Steps**
 
@@ -1307,7 +1315,7 @@ Failed to load the patch.
 
 **Error Description**
 
-This error code is returned when loading the patch fails.
+This error code is returned when patch loading fails.
 
 **Possible Causes**
 
@@ -1315,7 +1323,7 @@ The Ark engine failed to load the patch.
 
 **Resolution Steps**
 
-Verify whether the patch package is correct.
+Verify the correctness of the patch package.
 
 ## 18500007 Old Patch Unloading Failed
 
@@ -1325,7 +1333,7 @@ Failed to unload the patch.
 
 **Error Description**
 
-This error code is returned when the Ark engine fails to unload the old patch.
+This error code is returned when the Ark engine fails to unload an old patch.
 
 **Possible Causes**
 
@@ -1333,7 +1341,7 @@ The Ark engine failed to unload the patch.
 
 **Resolution Steps**
 
-Verify whether the patch package is correct.
+Verify the correctness of the patch package.
 
 ## 18500008 Quick Fix Internal Error
 
@@ -1343,11 +1351,11 @@ Internal error.
 
 **Error Description**
 
-This error code is returned when internal processing errors occur, such as memory allocation or multithreading exceptions.
+This error code is returned for internal processing errors such as memory allocation or multithreading exceptions.
 
 **Possible Causes**
 
-Generic kernel errors, such as memory allocation or multithreading issues.
+Generic kernel errors related to memory allocation or multithreading.
 
 **Resolution Steps**
 
@@ -1365,31 +1373,31 @@ This error code is returned when the application has an ongoing quick fix task.
 
 **Possible Causes**
 
-The specified application for quick fix rollback has an ongoing quick fix task.
+The target application for quick fix rollback has an ongoing quick fix task.
 
 **Resolution Steps**
 
 Wait for the quick fix task to complete.
 
-## 16300004 Specified Observer Does Not Exist
+## 16300004 Specified Observer Not Found
 
 **Error Message**
 
-Observer not found.
+observer not found.
 
 **Error Description**
 
-This error code is returned when the listener does not exist.
+This error code is returned when the specified observer does not exist.
 
 **Possible Causes**
 
-The current listener does not exist or has been unregistered.
+The observer does not exist or has been unregistered.
 
 **Resolution Steps**
 
-Check for duplicate listener unregistration.
+Check for duplicate observer unregistration.
 
-## 16300005 Specified Bundle Information Does Not Exist
+## 16300005 Specified Bundle Information Not Found
 
 **Error Message**
 
@@ -1397,11 +1405,11 @@ The target bundle does not exist.
 
 **Error Description**
 
-This error code is returned when the bundle information for the preloaded application does not exist.
+This error code is returned when preloaded application bundle information does not exist.
 
 **Possible Causes**
 
-Incorrect `bundleName`, `userId`, or `appIndex` for the preloaded application, resulting in failure to query the relevant bundle information.
+Incorrect `bundleName`, `userId`, or `appIndex` for preloading, resulting in missing bundle information.
 
 **Resolution Steps**
 
@@ -1415,15 +1423,15 @@ Internal error.
 
 **Error Description**
 
-This error code is returned when internal errors occur during image saving, such as memory allocation or multithreading exceptions.
+This error code is returned for internal errors during image saving, such as memory allocation or multithreading exceptions.
 
 **Possible Causes**
 
-Generic kernel errors, such as memory allocation or multithreading issues. Specific causes may include null internal objects, processing timeouts, etc.
+Generic kernel errors related to memory allocation or multithreading. Specific causes may include null internal objects or timeouts.
 
 **Resolution Steps**
 
-1. Ensure sufficient system memory is available and check for anomalies in the device's system version.
+1. Ensure sufficient system memory and check for system version anomalies.
 2. Try restarting the device.
 
 ## 29600002 Image Input Error
@@ -1438,7 +1446,7 @@ This error code is returned when the image URI does not exist or the image canno
 
 **Possible Causes**
 
-The URI does not exist or the URI points to a non-image file.
+The URI does not exist or points to a non-image file.
 
 **Resolution Steps**
 
@@ -1456,14 +1464,14 @@ The input image size exceeds the limit.
 
 **Possible Causes**
 
-This error code is returned when the input image size exceeds 50 MB.
+This error code is returned when the input image size exceeds 50MB.
 
 **Resolution Steps**
 
-1. Try to reduce the edited image size to under 50 MB.
+1. Try to keep the edited image size below 50MB.
 2. Validate the image size.
 
-## 16300007 Specified Atomic Service Download/Install Task Does Not Exist
+## 16300007 Specified Atomic Service Download/Install Task Not Found
 
 **Error Message**
 
@@ -1471,10 +1479,13 @@ The target free install task does not exist.
 
 **Error Description**
 
-This error code is returned when the specified atomic service download/install task does not exist while opening a window for the atomic service.
+This error code is returned when the specified atomic service download/install task does not exist during window opening.
 
-**Possible Causes**The passed `bundleName`, `moduleName`, `abilityName`, or `startTime` is incorrect, resulting in failure to query the download and installation task information of the related atomic service.
+**Possible Causes**
+
+Incorrect `bundleName`, `moduleName`, `abilityName`, or `startTime`, resulting in missing atomic service download/install task information.
 
 **Resolution Steps**
 
-Verify whether the parameters `bundleName`, `moduleName`, `abilityName`, or `startTime` are correctly passed.
+Verify the correctness of the `bundleName`, `moduleName`, `abilityName`, or `startTime` parameters.
+```

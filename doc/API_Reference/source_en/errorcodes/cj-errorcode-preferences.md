@@ -18,9 +18,9 @@ An internal error occurred in user preferences.
 
 Failed to read/write persistent files.
 
-**Resolution Steps**
+**Solution**
 
-Check log information to identify the cause or seek developer support.
+Check log information to identify the cause or contact developers for support.
 
 ## 15500010 Failed to Delete User Preferences Persistent File
 
@@ -39,7 +39,7 @@ System error caused file deletion failure. Possible reasons include:
 1. Incorrect file name.
 2. Incorrect file path.
 
-**Resolution Steps**
+**Solution**
 
 1. Verify the persistent file name is correct.
 2. Verify the persistent file path is correct.
@@ -52,13 +52,13 @@ Failed to obtain subscription service.
 
 **Error Description**
 
-Failed to obtain subscription service during inter-process subscription.
+Failed to acquire subscription service during inter-process subscription.
 
 **Possible Causes**
 
 The current platform does not support subscription services.
 
-**Resolution Steps**
+**Solution**
 
 Deploy subscription services on the current platform.
 
@@ -76,6 +76,6 @@ Using an invalid dataGroupId parameter.
 
 The dataGroupId used was not properly obtained from the application market.
 
-**Resolution Steps**
+**Solution**
 
 Applications should apply for dataGroupId from the application market and correctly pass this parameter.

@@ -1,161 +1,112 @@
-# Composite Gestures
+# Composite Gestures  
 
-Gesture recognition combination refers to the composition of multiple gestures into a composite gesture, supporting sequential recognition, parallel recognition, and exclusive recognition.
+Gesture recognition composition refers to combining multiple gestures into composite gestures, supporting sequential recognition, parallel recognition, and exclusive recognition.  
 
-## Import Module
+## Importing the Module  
 
-```cangjie
-import kit.UIkit.*
-```
+```cangjie  
+import kit.UIkit.*  
+```  
 
-## Permission List
+## Permission List  
 
-None
+None  
 
-## Creating Components
+## func !=(GestureMode)  
 
-### init(GestureMode, Array\<GestureType>)
+```cangjie  
+public operator func !=(other: GestureMode): Bool  
+```  
 
-```cangjie
-public init(mode: GestureMode, gesture: Array<GestureType>)
-```
+**Function:** Determines whether two enumeration values are not equal.  
 
-**Function:** Creates a gesture recognition combination.
+**Parameters:**  
 
-**Parameters:**
+| Parameter Name | Type | Required | Default Value | Description |  
+|:---|:---|:---|:---|:---|  
+| other | [GestureMode](#enum-gesturemode) | Yes | - | Another enumeration value to compare. |  
 
-|Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|mode|[GestureMode](#enum-gesturemode)|Yes|GestureMode.Sequence|Sets the recognition mode for composite gestures.|
-|gesture|[TapGesture](./cj-universal-gesture-tapgesture.md)<br>[LongPressGesture](./cj-universal-gesture-longpressgesture.md)<br>[PanGesture](./cj-universal-gesture-pangesture.md)<br>[PinchGesture](./cj-universal-gesture-pinchgesture.md)<br>[RotationGesture](./cj-universal-gesture-rotationgesture.md)<br>[SwipeGesture](./cj-universal-gesture-swipegesture.md)<br>[GestureGroup](./cj-universal-gesture-groupgesture.md)|Yes|-|When setting one or more basic gesture types, these gestures will be recognized as composite gestures. If the length of this parameter Array is 0, the composite gesture recognition feature will not take effect.<br>**Note:**<br>When adding both single-tap and double-tap gestures to a component simultaneously, you can add two TapGestures to the composite gesture. The double-tap gesture must come before the single-tap gesture; otherwise, it will not work.|
+**Return Value:**  
 
-## Component Events
+| Type | Description |  
+|:----|:----|  
+| Bool | Returns `true` if the two enumeration values are not equal; otherwise, returns `false`. |  
 
-### func onCancel(() -> Unit)
+## func ==(GestureMode)  
 
-```cangjie
-public func onCancel(callback: () -> Unit): This
-```
+```cangjie  
+public operator func ==(other: GestureMode): Bool  
+```  
 
-**Function:** Triggered when a sequential composite gesture (GestureMode.Sequence) is canceled.
+**Function:** Determines whether two enumeration values are equal.  
 
-**Parameters:**
+**Parameters:**  
 
-|Parameter Name|Type|Required|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|callback|() \-> Unit|Yes|-|Callback function triggered when a sequential composite gesture (GestureMode.Sequence) is canceled.|
+| Parameter Name | Type | Required | Default Value | Description |  
+|:---|:---|:---|:---|:---|  
+| other | [GestureMode](#enum-gesturemode) | Yes | - | Another enumeration value to compare. |  
 
-## Basic Type Definitions
+**Return Value:**  
 
-### enum GestureMode
+| Type | Description |  
+|:----|:----|  
+| Bool | Returns `true` if the two enumeration values are equal; otherwise, returns `false`. |  
 
-```cangjie
-public enum GestureMode {
-    | Sequence
-    | Parallel
-    | Exclusive
-}
-```
+## Basic Type Definitions  
 
-**Function:** Recognition mode for composite gestures.
+### enum GestureMode  
 
-**Initial Version:** 12
+```cangjie  
+public enum GestureMode <: Equatable<GestureMode> {  
+    | Sequence  
+    | Parallel  
+    | Exclusive  
+    | ...  
+}  
+```  
 
-#### Sequence
+**Function:** Recognition modes for composite gestures.  
 
-```cangjie
-Sequence
-```
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
 
-**Function:** Sequential recognition. Gestures are recognized in the order they are registered until all gestures are successfully recognized. If any gesture fails to recognize, subsequent gestures will also fail. Only the last gesture in a sequential gesture group can respond to onActionEnd.
+**Since Version:** 21  
 
-**Initial Version:** 12
+**Parent Type:**  
 
-#### Parallel
+- Equatable\<GestureMode>  
 
-```cangjie
-Parallel
-```
+#### Exclusive  
 
-**Function:** Concurrent recognition. Registered gestures are recognized simultaneously until all gestures complete recognition, with no mutual interference.
+```cangjie  
+Exclusive  
+```  
 
-**Initial Version:** 12
+**Function:** Exclusive recognition. Registered gestures are recognized simultaneously. If one gesture is successfully recognized, gesture recognition ends.  
 
-#### Exclusive
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
 
-```cangjie
-Exclusive
-```
+**Since Version:** 21  
 
-**Function:** Exclusive recognition. Registered gestures are recognized simultaneously. If any gesture is successfully recognized, the gesture recognition process ends.
+#### Parallel  
 
-**Initial Version:** 12
+```cangjie  
+Parallel  
+```  
 
-## Example
+**Function:** Parallel recognition. Registered gestures are recognized simultaneously until all gestures complete recognition. Gesture recognition does not interfere with each other.  
 
-<!-- run -->
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
 
-```cangjie
-package ohos_app_cangjie_entry
-import kit.UIKit.*
-import ohos.state_macro_manage.*
+**Since Version:** 21  
 
-@Entry
-@Component
-class EntryView {
-    @State var count: Int64 = 0
-    @State var offsetX: Float64 = 0.0
-    @State var offsetY: Float64 = 0.0
-    @State var positionX: Float64 = 0.0
-    @State var positionY: Float64 = 0.0
-    @State var borderStyles: BorderStyle = BorderStyle.Solid
+#### Sequence  
 
-    func build() {
-        Column() {
-            Column() {
-                Text('sequence gesture\n' + 'LongPress onAction:' + this.count.toString() +
-                    '\nPanGesture offset:\nX: ' + this.offsetX.toString() + '\n' + 'Y: ' + this.offsetY.toString())
-            }
-            .height(200)
-            .width(300)
-            .padding(20)
-            .border(width: 3.vp, style: this.borderStyles)
-            .margin(20)
-            .translate(x: this.offsetX, y: this.offsetY, z: 0.0)
-            .gesture(
-                GestureGroup(GestureMode.Sequence,
-                [
-                    LongPressGesture(repeat: true)
-                    .onAction({ event: GestureEvent =>
-                        this.count++
-                    }),
-                    PanGesture()
-                    .onActionStart({ event: GestureEvent =>
-                        this.borderStyles = BorderStyle.Dashed
-                    })
-                    .onActionUpdate({ event: GestureEvent =>
-                        this.offsetX = this.positionX + event.offsetX
-                        this.offsetY = this.positionY + event.offsetY
-                    })
-                    .onActionEnd({ event: GestureEvent =>
-                        this.positionX = this.offsetX
-                        this.positionY = this.offsetY
-                        this.borderStyles = BorderStyle.Solid
-                    })
-                    ]
-                )
-            )
-        }
-    }
-}
-```
+```cangjie  
+Sequence  
+```  
 
-Illustration:
+**Function:** Sequential recognition. Gestures are recognized in the order of registration until all gestures are successfully recognized. If one gesture fails recognition, all subsequent gestures fail. In a sequential gesture group, only the last gesture can respond to `onActionEnd`.  
 
-First, the long-press event is triggered sequentially:
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
 
-![group](figures/group_gesture_1.gif)
-
-After the long-press event recognition completes, the drag event is triggered, dragging downward:
-
-![group](figures/group_gesture_2.gif)
+**Since Version:** 21

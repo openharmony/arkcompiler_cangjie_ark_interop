@@ -1,6 +1,6 @@
-# ohos.ability (Ability)
+# ohos.app.ability
 
-The application framework service provides an application model for application development and execution, which abstracts and refines the capabilities required by applications that the system offers to developers. It includes essential components and runtime mechanisms for applications. With this application model, developers can build applications based on a unified framework, making development simpler and more efficient.
+AbilityConstant provides enumerations related to Ability, including application launch reason LaunchReason, last exit reason LastExitReason, migration result OnContinueResult, etc.
 
 ## Import Module
 
@@ -20,18 +20,18 @@ ohos.permission.PRIVACY_WINDOW
 
 API sample code usage instructions:
 
-- If the first line of a sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](#class-context) application context, it must be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For the above sample project and configuration template, please refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
-## func getNapiValue(CPointer\<Unit>, StageContext)
+## func createAbilityStageContextFromJSValue(JSContext, JSValue)
 
 ```cangjie
-public func getNapiValue(env: CPointer<Unit>, context: StageContext): CPointer<Unit>
+public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext
 ```
 
-**Description:** Retrieves the napi_value based on the context environment.
+**Function:** Converts from JSValue to AbilityStageContext type.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -39,34 +39,91 @@ public func getNapiValue(env: CPointer<Unit>, context: StageContext): CPointer<U
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| env | CPointer\<Unit> | Yes | Environment pointer. |
-| context | [StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext) | Yes | Context information. |
-
-## func getStageContext(UIAbilityContext)
-
-```cangjie
-public func getStageContext(abilityContext: UIAbilityContext): StageContext
-```
-
-**Description:** Converts the Cangjie context into an ArkTS context.
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| abilityContext | [UIAbilityContext](#class-uiabilitycontext) | Yes | Cangjie context information. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| context | [JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext) | Yes | - | ArkTS interoperability context. |
+| input | [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) | Yes | - | ArkTS unified type. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [StageContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext) | ArkTS context. |
+| [AbilityStageContext](#class-abilitystagecontext) | Returns an instance of AbilityStageContext type. |
+
+## func createApplicationContextFromJSValue(JSContext, JSValue)
+
+```cangjie
+public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext
+```
+
+**Function:** Converts from [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) to [ApplicationContext](#class-applicationcontext) type.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| context | [JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext) | Yes | - | ArkTS interoperability context. |
+| input | [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) | Yes | - | ArkTS unified type. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [ApplicationContext](#class-applicationcontext) | Returns an instance of ApplicationContext type. |
+
+## func createContextFromJSValue(JSContext, JSValue)
+
+```cangjie
+public func createContextFromJSValue(context: JSContext, input: JSValue): Context
+```
+
+**Function:** Converts from [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) to [Context](#class-context) type.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| context | [JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext) | Yes | - | ArkTS interoperability context. |
+| input | [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) | Yes | - | ArkTS unified type. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [Context](#class-context) | Returns an instance of Context type. |
+
+## func createUIAbilityContextFromJSValue(JSContext, JSValue)
+
+```cangjie
+public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext
+```
+
+**Function:** Converts from [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) to [AbilityContext](#class-abilitycontext) type.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| context | [JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext) | Yes | - | ArkTS interoperability context. |
+| input | [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) | Yes | - | ArkTS unified type. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [UIAbilityContext](#class-uiabilitycontext) | Returns an instance of AbilityContext type. |
 
 ## func restartApp()
 
@@ -74,7 +131,17 @@ public func getStageContext(abilityContext: UIAbilityContext): StageContext
 public func restartApp(): Unit
 ```
 
-**Description:** Restarts the current process and launches the first Ability when the application starts. If the Ability has saved state data, this data will be passed in the `wantParam` property of the `want` parameter in the Ability's `OnCreate` lifecycle callback.
+**Function:** Restarts the current process and launches the first Ability when the application starts. If the Ability has saved state data, this data will be passed in the want parameter of the Ability's OnCreate lifecycle callback as the wantParam property.
+
+Launches the Ability specified by [setRestartWant](#func-setrestartwantwant). If not specified, the following rules apply:
+
+If the current application's foreground Ability supports recovery, it will be relaunched.
+
+If multiple foreground Abilities support recovery, only the last one will be relaunched.
+
+If no Ability is in the foreground, nothing will be launched.
+
+Can be used with [ErrorManager](#class-errormanager) related interfaces. The interval between two restarts should be more than one minute. Calling this interface repeatedly within one minute will only exit the application without restarting it. Automatic restart behavior is consistent with active restart.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -90,33 +157,67 @@ public func restartApp(): Unit
 import ohos.base.*
 import kit.AbilityKit.*
 
-AppLog.info("restartApp")
 restartApp()
 ```
+
+## class Ability
+
+```cangjie
+abstract sealed class Ability <: FFIData {}
+```
+
+**Function:** Base class for [UIAbility](#class-uiability) and ExtensionAbility, providing system configuration update callbacks and system memory adjustment callbacks. Developers cannot directly inherit from this base class.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Since:** 21
+
+### static func registerCreator(String, () -> Ability)
+
+```cangjie
+public static func registerCreator(name: String, creator: () -> Ability): Unit
+```
+
+**Function:** Registers the corresponding creator for BaseAbility.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| name | String | Yes | - | Name of the registered UIAbility. |
+| creator | ()->[Ability](#class-ability) | Yes | - | Corresponding creator for BaseAbility. |
 
 ## class AbilityStage
 
 ```cangjie
-public open class AbilityStage {}
+public open class AbilityStage <: FFIData {}
 ```
 
-**Description:** The AbilityStage class provides the capability to notify developers during HAP loading, allowing them to perform initialization tasks (such as resource preloading, thread creation, etc.) for the HAP.
+**Function:** The AbilityStage class provides the ability to notify developers during HAP loading, allowing initialization of the HAP (such as resource preloading, thread creation, etc.).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Since:** 21
 
+**Parent Type:**
+
+- [FFIData](<font color="red" face="bold">please add link</font>)
+
 ### prop context
 
 ```cangjie
-public prop context: AbilityStageContext
+public mut prop context: AbilityStageContext
 ```
 
-**Description:** Provides the ability to access resources specific to `AbilityStage`, including obtaining the `hapModuleInfo` object and environment change objects corresponding to [AbilityStage](#class-abilitystage).
+**Function:** Defines the context of AbilityStage. This context is obtained through callbacks during Ability initialization.
 
 **Type:** [AbilityStageContext](#class-abilitystagecontext)
 
-**Access:** Read-only
+**Read/Write Capability:** Read/Write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -128,7 +229,7 @@ public prop context: AbilityStageContext
 public static func registerCreator(moduleName: String, creator: () -> AbilityStage): Unit
 ```
 
-**Description:** Registers the corresponding creator for [AbilityStage](#class-abilitystage).
+**Function:** Registers the corresponding creator for [AbilityStage](#class-abilitystage).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -136,10 +237,10 @@ public static func registerCreator(moduleName: String, creator: () -> AbilitySta
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:---|:---|:---|:---|
-| moduleName | String | Yes | The name of the AbilityStage to register. |
-| creator | () -> [AbilityStage](#class-abilitystage) | Yes | The corresponding creator for the AbilityStage. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| moduleName | String | Yes | - | Name of the registered AbilityStage. |
+| creator | ()->[AbilityStage](#class-abilitystage) | Yes | - | Corresponding creator for AbilityStage. |
 
 ### func onCreate()
 
@@ -147,7 +248,7 @@ public static func registerCreator(moduleName: String, creator: () -> AbilitySta
 public open func onCreate(): Unit
 ```
 
-**Description:** Callback triggered when [AbilityStage](#class-abilitystage) is created, used to execute initialization business logic.
+**Function:** Callback when [AbilityStage](#class-abilitystage) is created, executing initialization business logic operations.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -156,10 +257,12 @@ public open func onCreate(): Unit
 ## class AbilityStageContext
 
 ```cangjie
-public class AbilityStageContext <: Context {}
+public class AbilityStageContext <: Context {
+    public var currentHapModuleInfo: HapModuleInfo
+}
 ```
 
-**Description:** [AbilityStageContext](#class-abilitystagecontext) provides the ability to access resources specific to `AbilityStage`, including obtaining the `hapModuleInfo` object and environment change objects corresponding to [AbilityStage](#class-abilitystage).
+**Function:** [AbilityStageContext](#class-abilitystagecontext) provides the ability to access resources specific to `abilityStage`, including obtaining the `hapModuleInfo` object corresponding to AbilityStage and environment change objects.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -169,17 +272,17 @@ public class AbilityStageContext <: Context {}
 
 - [Context](#class-context)
 
-### prop currentHapModuleInfo
+### var currentHapModuleInfo
 
 ```cangjie
-public prop currentHapModuleInfo: HapModuleInfo
+public var currentHapModuleInfo: HapModuleInfo
 ```
 
-**Description:** The `hapModuleInfo` object corresponding to [AbilityStage](#class-abilitystage).
+**Function:** `hapModuleInfo` object corresponding to AbilityStage.
 
-**Type:** [HapModuleInfo](cj-apis-bundle_manager.md#struct-hapmoduleinfo)
+**Type:** [HapModuleInfo](./cj-apis-bundle_manager.md#class-hapmoduleinfo)
 
-**Access:** Read-only
+**Read/Write Capability:** Read/Write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -191,7 +294,7 @@ public prop currentHapModuleInfo: HapModuleInfo
 public class ApplicationContext <: Context {}
 ```
 
-**Description:** Provides application-level context capabilities.
+**Function:** Provides application-level context capabilities.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -201,265 +304,85 @@ public class ApplicationContext <: Context {}
 
 - [Context](#class-context)
 
-### func getApplicationInfo()
-
-```cangjie
-public func getApplicationInfo(): ApplicationInfo
-```
-
-**Description:** Retrieves application information.
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [ApplicationInfo](./cj-apis-bundle_manager.md#struct-applicationinfo) | Information about the current application. |
-
-### func getArea()
-
-```cangjie
-public func getArea(): Int64
-```
-
-**Description:** A utility function, only applicable to the UItest testing framework.
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int64 | File partition information. |
-
-## class BaseAbility
-
-```cangjie
-abstract sealed class BaseAbility {}
-```
-
-**Description:** The base class for [UIAbility](#class-uiability), providing system configuration update callbacks and system memory adjustment callbacks. Developers cannot directly inherit from this base class.
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
-### static func registerCreator(String, () -> BaseAbility)
-
-```cangjie
-public static func registerCreator(name: String, creator: () -> BaseAbility): Unit
-```
-
-**Description:** Registers the corresponding creator for BaseAbility.
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| name | String | Yes | - | The name of the UIAbility to register. |
-| creator | () -> [BaseAbility](#class-baseability) | Yes | - | The corresponding creator for BaseAbility. |
-
 ## class Context
 
 ```cangjie
-public open class Context {
-    public let eventhub: EventHub = EventHub()
-}
+public open class Context <: BaseContext {}
 ```
 
-**Description:** Provides context capabilities for abilities or applications.
+**Function:** Provides context capabilities for ability or application.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Since:** 21
 
-### let eventhub
+**Parent Type:**
+
+- [BaseContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)
+
+### prop applicationInfo
 
 ```cangjie
-public let eventhub: EventHub = EventHub()
+public prop applicationInfo: ApplicationInfo
 ```
 
-**Description:** Event hub, providing objects for subscribing, unsubscribing, and triggering events.
+**Function:** Information about the current application.
 
-**Type:** [EventHub](./cj-apis-eventhub.md#ohoseventhub)
+**Type:** [ApplicationInfo](./cj-apis-bundle_manager.md#class-applicationinfo)
 
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-## class DialogRequestResult
-
-```cangjie
-public class DialogRequestResult {}
-```
-
-**Function:** Dialog request result object, returned when invoking [requestDialogService](#func-requestdialogservicewant-asynccallbackdialogrequestresult) to indicate the outcome of this request.
+**Read/Write Capability:** Read-only
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Since:** 21
 
-### var resultCode
+### prop area
 
 ```cangjie
-public var resultCode: ResultCode
+public mut prop area: AreaMode
 ```
 
-**Function:** Result code of this request.
+**Function:** File partition information.
 
-**Type:** [ResultCode](#enum-resultcode)
+**Type:** [AreaMode](#enum-areamode)
 
-**Access:** Read-write
+**Read/Write Capability:** Read/Write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Since:** 21
 
-### var want
+### prop filesDir
 
 ```cangjie
-public var want:?Want
+public prop filesDir: String
 ```
 
-**Function:** The Want information of the request.
-
-**Type:** ?[Want](#class-want)
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
-## class ElementName
-
-```cangjie
-public class ElementName {
-    public init(deviceId: String, bundleName: String, abilityName: String, moduleName: String)
-    public init(deviceId: String, bundleName: String, abilityName: String)
-}
-```
-
-**Function:** ElementName information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### prop abilityName
-
-```cangjie
-public prop abilityName: String
-```
-
-**Function:** Ability name.
+**Function:** File directory.
 
 **Type:** String
 
-**Access:** Read-only
+**Read/Write Capability:** Read-only
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Since:** 21
 
-### prop bundleName
+### prop resourceManager
 
 ```cangjie
-public prop bundleName: String
+public prop resourceManager: ResourceManager
 ```
 
-**Function:** Application bundle name.
+**Function:** Resource management object.
 
-**Type:** String
+**Type:** [ResourceManager](../LocalizationKit/cj-apis-resource_manager.md#class-resourcemanager)
 
-**Access:** Read-only
+**Read/Write Capability:** Read-only
 
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### prop deviceId
-
-```cangjie
-public prop deviceId: String
-```
-
-**Function:** Device ID.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Since:** 21
-
-### prop moduleName
-
-```cangjie
-public prop moduleName: String
-```
-
-**Function:** Module name of the HAP to which the Ability belongs.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### init(String, String, String, String)
-
-```cangjie
-public init(deviceId: String, bundleName: String, abilityName: String, moduleName: String)
-```
-
-**Function:** Constructs an ElementName by specifying device ID, application bundle name, Ability name, and module name.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| deviceId | String | Yes | - | Device ID. |
-| bundleName | String | Yes | - | Application bundle name. |
-| abilityName | String | Yes | - | Ability name. |
-| moduleName | String | Yes | - | Module name of the HAP to which the Ability belongs. |
-
-### init(String, String, String)
-
-```cangjie
-public init(deviceId: String, bundleName: String, abilityName: String)
-```
-
-**Function:** Constructs an ElementName by specifying device ID, application bundle name, and Ability name.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| deviceId | String | Yes | - | Device ID. |
-| bundleName | String | Yes | - | Application bundle name. |
-| abilityName | String | Yes | - | Ability name. |
 
 ## class ErrorManager
 
@@ -473,10 +396,10 @@ public class ErrorManager {}
 
 **Since:** 21
 
-### static func off(String, Int32)
+### static func off(ErrorManagerEvent, Int32)
 
 ```cangjie
-public static func off(offType: String, observerId: Int32): Unit
+public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit
 ```
 
 **Function:** Unregisters the main thread message handler listener.
@@ -487,42 +410,24 @@ public static func off(offType: String, observerId: Int32): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| offType | String | Yes | - | Enter "error" to indicate an error observer. |
-| observerId | Int32 | Yes | - | The observer's index value returned by the on method. |
+| eventType | [ErrorManagerEvent](#enum-errormanagerevent) | Yes | - | "Error", indicating the error observer. |
+| observerId | Int32 | Yes | - | Index value of the observer returned by the on method. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+- BusinessException: Corresponding error codes are as follows. For details, see [Ability Subsystem Error Codes](../../../source_zh_cn/errorcodes/cj-errorcode-ability.md).
 
-  | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 16200003 | Id does not exist. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000003 | The specified ID does not exist. |
 
-**Example:**
-
-<!-- compile -->
+### static func on(ErrorManagerEvent, ErrorObserver)
 
 ```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.AbilityKit.*
-
-try {
-    let observerId: Int32 = 1
-    ErrorManager.off("error", observerId)
-} catch (e: BusinessException) {
-    AppLog.info(e)
-}
-```
-
-### static func on(String, ErrorObserver)
-
-```cangjie
-public static func on(onType: String, observer: ErrorObserver): Int32
+public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32
 ```
 
 **Function:** Registers an error observer. After registration, if the program crashes, the uncaught exception mechanism will be triggered.
@@ -533,40 +438,35 @@ public static func on(onType: String, observer: ErrorObserver): Int32
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| onType | String | Yes | - | Enter "error" to indicate an error observer. |
-| observer | [ErrorObserver](#struct-errorobserver) | Yes | - | Error observer. |
+| eventType | [ErrorManagerEvent](#enum-errormanagerevent) | Yes | - | "Error", indicating the error observer. |
+| observer | [ErrorObserver](#interface-errorobserver) | Yes | - | Error observer. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Int32 | The observer's index value, which corresponds one-to-one with the observer. |
+| Int32 | Index value of the observer, corresponding one-to-one with the observer. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+- BusinessException: Corresponding error codes are as follows. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
-  | Error Code ID | Error Message |
-  |:---|:---|
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 16200001 | The caller has been released. |
-
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000003 | The specified ID does not exist. |```markdown
 ## class LaunchParam
 
 ```cangjie
 public class LaunchParam {
-    public var launchReason: LaunchReason = LaunchReason.UNKNOWN
-    public var lastExitReason: LastExitReason = LastExitReason.NORMAL
-    public init(
-        launchReason!: LaunchReason = LaunchReason.UNKNOWN,
-        lastExitReason!: LastExitReason = LastExitReason.NORMAL
-    )
+    public var launchReason: LaunchReason
+    public var lastExitReason: LastExitReason
 }
 ```
 
-**Function:** Launch parameters. Automatically passed by the system when the Ability starts; developers do not need to modify them.
+**Function:** Launch parameters. Automatically passed by the system when an Ability starts, requiring no modification by developers.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -575,14 +475,14 @@ public class LaunchParam {
 ### var lastExitReason
 
 ```cangjie
-public var lastExitReason: LastExitReason = LastExitReason.NORMAL
+public var lastExitReason: LastExitReason
 ```
 
 **Function:** Enumeration type indicating the last exit reason.
 
 **Type:** [LastExitReason](#enum-lastexitreason)
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -591,320 +491,204 @@ public var lastExitReason: LastExitReason = LastExitReason.NORMAL
 ### var launchReason
 
 ```cangjie
-public var launchReason: LaunchReason = LaunchReason.UNKNOWN
+public var launchReason: LaunchReason
 ```
 
 **Function:** Enumeration type indicating the launch reason.
 
-**Type:** [LaunchReason](#enum-launchreason)**Literacy:** Readable and Writable  
+**Type:** [LaunchReason](#enum-launchreason)
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
+**Read/Write:** Readable and Writable
 
-**Initial Version:** 21  
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-### init(LaunchReason, LastExitReason)  
+**Since:** 21
 
-```cangjie  
-public init(  
-    launchReason!: LaunchReason = LaunchReason.UNKNOWN,  
-    lastExitReason!: LastExitReason = LastExitReason.NORMAL  
-)  
-```  
+## class RequestResult
 
-**Function:** Constructor for the LaunchParam structure.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| launchReason | [LaunchReason](#enum-launchreason) | No | LaunchReason.UNKNOWN | **Named parameter.** Indicates the launch reason. |  
-| lastExitReason | [LastExitReason](#enum-lastexitreason) | No | LastExitReason.NORMAL | **Named parameter.** Indicates the last exit reason. |  
-
-## class OpenLinkOptions  
-
-```cangjie  
-public class OpenLinkOptions {  
-    public OpenLinkOptions(  
-        public let appLinkingOnly!: Bool = false,  
-        public let parameters!: String = ""  
-    )  
-}  
-```  
-
-**Function:** Used to identify whether to open only AppLinking and pass key-value pair optional parameters.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let appLinkingOnly  
-
-```cangjie  
-public let appLinkingOnly: Bool = false  
-```  
-
-**Function:** Indicates whether the Ability must be launched via AppLinking:  
-
-- If set to `true`, returns directly if no matching Ability is found for AppLinking.  
-
-- If set to `false`, AppLinking degrades to DeepLink if no matching Ability is found. Default value is `false`.  
-
-When implicitly launching an Ability via the `aa` command, you can set `"--pb appLinkingOnly true/false"` to launch it via AppLinking.  
-
-**Type:** Bool  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let parameters  
-
-```cangjie  
-public let parameters: String = ""  
-```  
-
-**Function:** Represents WantParams parameters. For specific usage rules, refer to the `parameters` property in [Want](#class-want).  
-
-**Type:** String  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### OpenLinkOptions(Bool, String)  
-
-```cangjie  
-public OpenLinkOptions(  
-    public let appLinkingOnly!: Bool = false,  
-    public let parameters!: String = ""  
-)  
-```  
-
-**Function:** Main constructor for OpenLinkOptions.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| appLinkingOnly | Bool | No | false | **Named parameter.** Indicates whether the UIAbility must be launched via AppLinking. |  
-| parameters | String | No | "" | **Named parameter.** Represents WantParams parameters. |  
-
-## class PermissionRequestResult  
-
-```cangjie  
-public class PermissionRequestResult {  
-    public PermissionRequestResult(  
-        public let permissions: Array<String>,  
-        public let authResults: Array<Int32>  
-    )  
-}  
-```  
-
-**Function:** Permission request result object. This object is returned when calling [requestPermissionsFromUser](./cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuserstagecontext-arraypermissions-asynccallbackaccessctrlpermissionrequestresult) to indicate the result of the permission request.  
-
-**System Capability:** SystemCapability.Security.AccessToken  
-
-**Initial Version:** 21  
-
-### let authResults  
-
-```cangjie  
-public let authResults: Array<Int32>  
-```  
-
-**Function:** Results corresponding to the requested permissions.  
-
-**Type:** Array\<Int32>  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Security.AccessToken  
-
-**Initial Version:** 21  
-
-### let permissions  
-
-```cangjie  
-public let permissions: Array<String>  
-```  
-
-**Function:** Permissions passed by the user.  
-
-**Type:** Array\<String>  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Security.AccessToken  
-
-**Initial Version:** 21  
-
-### PermissionRequestResult(Array\<String>, Array\<Int32>)  
-
-```cangjie  
-public PermissionRequestResult(  
-    public let permissions: Array<String>,  
-    public let authResults: Array<Int32>  
-)  
-```  
-
-**Function:** Constructor for PermissionRequestResult instance.  
-
-**System Capability:** SystemCapability.Security.AccessToken  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| permissions | Array\<String> | Yes | - | Permissions passed by the user. |  
-| authResults | Array\<Int32> | Yes | - | Results corresponding to the requested permissions: <br>- `-1`: Not authorized. ① If `dialogShownResults` returns `true`, it indicates the user's first request; ② If `dialogShownResults` returns `false`, it indicates the permission is already set, no popup is needed, and the user must modify it in "Settings". <br>- `0`: Authorized. <br>- `2`: Not authorized, indicating the request is invalid. Possible reasons: ① Target permission not declared in the configuration file; ② Invalid permission name; ③ Some permissions have special application conditions that were not met during the request, see [ohos.permission.LOCATION](../../../../Dev_Guide/source_en/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionlocation) and [ohos.permission.APPROXIMATELY_LOCATION](../../../../Dev_Guide/source_en/security/AccessToken/cj-permissions-for-all-user.md#ohospermissionapproximately_location). |  
-
-## class StartOptions  
-
-```cangjie  
-public open class StartOptions {  
-    public var windowMode: WindowMode = WINDOW_MODE_UNDEFINED  
-    public var displayId: Int32 = 0  
-    public init(  
-        windowMode!: WindowMode = WINDOW_MODE_UNDEFINED,  
-        displayId!: Int32 = 0  
-    )  
-}  
-```  
-
-**Function:** Used to specify the window mode of the target Ability.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### var displayId  
-
-```cangjie  
-public var displayId: Int32 = 0  
-```  
-
-**Function:** Screen ID mode. Default is `0`, representing the current screen.  
-
-**Type:** Int32  
-
-**Read-Write Capability:** Readable and Writable  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### var windowMode  
-
-```cangjie  
-public var windowMode: WindowMode = WINDOW_MODE_UNDEFINED  
-```  
-
-**Function:** Window mode when launching the Ability. For details, see [WindowMode](#enum-windowmode).  
-
-**Type:** [WindowMode](#enum-windowmode)  
-
-**Read-Write Capability:** Readable and Writable  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### init(WindowMode, Int32)  
-
-```cangjie  
-public init(  
-    windowMode!: WindowMode = WINDOW_MODE_UNDEFINED,  
-    displayId!: Int32 = 0  
-)  
-```  
-
-**Function:** Constructor for StartOptions.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter Name | Type | Required | Default Value | Description |  
-|:---|:---|:---|:---|:---|  
-| windowMode | [WindowMode](#enum-windowmode) | No | WINDOW_MODE_UNDEFINED | **Named parameter.** Window mode when launching the Ability. |  
-| displayId | Int32 | No | 0 | **Named parameter.** Screen ID mode. Default is `0`, representing the current screen. |  
-
-## class UIAbility  
-
-```cangjie  
-public open class UIAbility <: BaseAbility {}  
-```  
-
-**Function:** UIAbility is an application component that contains a UI interface. It inherits from BaseAbility and provides lifecycle callbacks such as component creation, destruction, and foreground/background switching, as well as component collaboration capabilities.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parent Type:**  
-
-- [BaseAbility](#class-baseability)  
-
-### prop context  
-
-```cangjie  
-public prop context: UIAbilityContext  
-```  
-
-**Function:** Context.  
-
-**Type:** [UIAbilityContext](#class-uiabilitycontext)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### prop lastRequestWant  
-
-```cangjie  
-public prop lastRequestWant: Want  
-```  
-
-**Function:** Parameters from the last request of the UIAbility.  
-
-**Type:** [Want](#class-want)  
-
-**Read-Write Capability:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### prop launchWant
 ```cangjie
-public prop launchWant: Want
+public class RequestResult {
+    public var result: ResultCode
+    public var want: Want
+}
 ```
 
-**Description:** Parameters when starting a UIAbility.
+**Function:** Carries the request result of the `requestDialogService` asynchronous callback, containing the result code `result` and additional data `want`, used to transfer results and contextual information between the application and dialog service.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### var result
+
+```cangjie
+public var result: ResultCode
+```
+
+**Function:** Indicates the passed request result, distinguishing states such as success or cancellation.
+
+**Type:** [ResultCode](#enum-resultcode)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### var want
+
+```cangjie
+public var want: Want
+```
+
+**Function:** Indicates the passed additional `Want` data, used to carry extra business parameters in the callback.
 
 **Type:** [Want](#class-want)
 
-**Access:** Read-only
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+## class StartOptions
+
+```cangjie
+public open class StartOptions {
+    public var windowMode:?WindowMode
+    public var displayId: Int32
+    public init(
+        windowMode!: ?WindowMode = None,
+        displayId!: Int32 = 0
+    )
+}
+```
+
+**Function:** Used to specify the window mode of the target Ability.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### var displayId
+
+```cangjie
+public var displayId: Int32
+```
+
+**Function:** Screen ID mode. Default is 0, representing the current screen.
+
+**Type:** Int32
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### var windowMode
+
+```cangjie
+public var windowMode:?WindowMode
+```
+
+**Function:** Window mode when starting an Ability. For details, see [WindowMode](#enum-windowmode).
+
+**Type:** ?[WindowMode](#enum-windowmode)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### init(?WindowMode, Int32)
+
+```cangjie
+public init(
+    windowMode!: ?WindowMode = None,
+    displayId!: Int32 = 0
+)
+```
+
+**Function:** Constructor for StartOptions.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| windowMode | ?[WindowMode](#enum-windowmode) | No | None | **Named parameter.** Window mode when starting an Ability. |
+| displayId | Int32 | No | 0 | **Named parameter.** Screen ID mode. Default is 0, representing the current screen. |
+
+## class UIAbility
+
+```cangjie
+public open class UIAbility <: Ability {}
+```
+
+**Function:** UIAbility is an application component containing UI interfaces, inheriting from BaseAbility. It provides lifecycle callbacks for component creation, destruction, and foreground/background switching, as well as component collaboration capabilities. Component collaboration mainly provides the following common features:
+
+- Caller: Returned by the startAbilityByCall interface. CallerAbility (the caller) can use Caller to communicate with CalleeAbility (the callee).
+
+- Callee: An internal object of UIAbility. CalleeAbility (the callee) can communicate with Caller via Callee.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Since:** 21
+
+**Parent Type:**
+
+- [Ability](#class-ability)
+
+### prop context
+
+```cangjie
+public mut prop context: UIAbilityContext
+```
+
+**Function:** Context.
+
+**Type:** [UIAbilityContext](#class-uiabilitycontext)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Since:** 21
+
+### prop lastRequestWant
+
+```cangjie
+public mut prop lastRequestWant: Want
+```
+
+**Function:** Parameters of the last request by UIAbility.
+
+**Type:** [Want](#class-want)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Since:** 21
+
+### prop launchWant
+
+```cangjie
+public mut prop launchWant: Want
+```
+
+**Function:** Parameters when UIAbility is launched.
+
+**Type:** [Want](#class-want)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
 
@@ -914,28 +698,11 @@ public prop launchWant: Want
 public open func onBackground(): Unit
 ```
 
-**Description:** UIAbility lifecycle callback, triggered when the application transitions from foreground to background.
+**Function:** UIAbility lifecycle callback triggered when the application moves from foreground to background.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onBackground(): Unit {
-        AppLog.info("onBackground called")
-    }
-}
-```
 
 ### func onCreate(Want, LaunchParam)
 
@@ -943,39 +710,18 @@ class MainAbility <: UIAbility {
 public open func onCreate(want: Want, launchParam: LaunchParam): Unit
 ```
 
-**Description:** Callback when UIAbility is created, used to execute initialization business logic operations.
+**Function:** UIAbility creation callback for executing initialization business logic operations.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|:---|:---|:---|:---|
-| want | [Want](#class-want) | Yes | Want-type information of the current UIAbility, including UIAbility name, bundle name, etc. |
-| launchParam | [LaunchParam](#class-launchparam) | Yes | Information about the reason for creating the ability and the last abnormal exit. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        AppLog.info("MainAbility OnCreated.${want.abilityName}")
-        match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-            case _ => ()
-        }
-    }
-}
-```
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | Want-type information of the current UIAbility, including UIAbility name, Bundle name, etc. |
+| launchParam | [LaunchParam](#class-launchparam) | Yes | - | Information about the Ability creation and the last abnormal exit reason. |
 
 ### func onDestroy()
 
@@ -983,28 +729,11 @@ class MainAbility <: UIAbility {
 public open func onDestroy(): Unit
 ```
 
-**Description:** Callback when UIAbility is destroyed, used to perform resource cleanup and other operations.
+**Function:** UIAbility destruction callback for executing resource cleanup operations.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onDestroy(): Unit {
-        AppLog.info("onDestroy")
-    }
-}
-```
 
 ### func onForeground()
 
@@ -1012,68 +741,30 @@ class MainAbility <: UIAbility {
 public open func onForeground(): Unit
 ```
 
-**Description:** UIAbility lifecycle callback, triggered when the application transitions from background to foreground.
+**Function:** UIAbility lifecycle callback triggered when the application moves from background to foreground.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onForeground(): Unit {
-        AppLog.info("onForeground")
-    }
-}
-```
 
 ### func onNewWant(Want, LaunchParam)
 
 ```cangjie
-public open func onNewWant(want: Want, launchParams: LaunchParam): Unit
+public open func onNewWant(want: Want, launchParam: LaunchParam): Unit
 ```
 
-**Description:** Callback executed when a UIAbility instance has been started and run in the foreground before, transitions to the background for some reason, and is started again. This method is called during the hot start of the UIAbility instance.
+**Function:** Callback executed when a UIAbility instance has been started and run in the foreground before, switched to the background for some reason, and then restarted. That is, this lifecycle callback is entered during the hot start of the UIAbility instance.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Description |
-|:---|:---|:---|:---|
-| want | [Want](#class-want) | Yes | Want-type information of the current UIAbility, including ability name, bundle name, etc. |
-| launchParams | [LaunchParam](#class-launchparam) | Yes | Information about the reason for starting the Ability and the last abnormal exit. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onNewWant(want: Want, launchParam: LaunchParam): Unit {
-        AppLog.info("MainAbility onNewWant.${want.abilityName}")
-        match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-            case _ => ()
-        }
-    }
-}
-```
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | Want-type information of the current UIAbility, including Ability name, Bundle name, etc. |
+| launchParam | [LaunchParam](#class-launchparam) | Yes | - | Information about the Ability launch reason and the last abnormal exit reason. |
 
 ### func onWindowStageCreate(WindowStage)
 
@@ -1081,17 +772,17 @@ class MainAbility <: UIAbility {
 public open func onWindowStageCreate(windowStage: WindowStage): Unit
 ```
 
-**Description:** Called after WindowStage is created.
+**Function:** Called after WindowStage is created.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| windowStage | [WindowStage](../../arkui-cj/cj-apis-window.md#class-windowstage) | Yes | - | Information about [WindowStage](../../arkui-cj/cj-apis-window.md#class-windowstage). |
+| windowStage | [WindowStage](#class-windowstage) | Yes | - | Information about [WindowStage](#class-windowstage). |
 
 ### func onWindowStageDestroy()
 
@@ -1099,28 +790,11 @@ public open func onWindowStageCreate(windowStage: WindowStage): Unit
 public open func onWindowStageDestroy(): Unit
 ```
 
-**Description:** Called after WindowStage is destroyed.
+**Function:** Called after WindowStage is destroyed.
 
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+**System Capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// main_ability.cj
-
-import ohos.base.AppLog
-import kit.AbilityKit.*
-
-class MainAbility <: UIAbility {
-    public override func onWindowStageDestroy(): Unit {
-        AppLog.info("MainAbility onWindowStageDestroy.")
-    }
-}
-```
 
 ## class UIAbilityContext
 
@@ -1128,7 +802,7 @@ class MainAbility <: UIAbility {
 public open class UIAbilityContext <: Context {}
 ```
 
-**Description:** Provides the capability to access resources specific to a UIAbility.
+**Function:** Provides the capability to access resources specific to a particular UIAbility.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1138,29 +812,13 @@ public open class UIAbilityContext <: Context {}
 
 - [Context](#class-context)
 
-### prop filesDir
-
-```cangjie
-public prop filesDir: String
-```
-
-**Description:** File directory.
-
-**Type:** String
-
-**Access:** Read-only
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Since:** 21
-
 ### func isTerminating()
 
 ```cangjie
 public func isTerminating(): Bool
 ```
 
-**Description:** Queries whether the ability is in the terminating state.
+**Function:** Queries whether the Ability is in the terminating state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1168,17 +826,25 @@ public func isTerminating(): Bool
 
 **Return Value:**
 
-| Type      | Description        |
-| :--------------- | :--------------- |
-| Bool | true: The ability is currently in the terminating state; false: Not in the terminating state. |
+| Type | Description |
+|:----|:----|
+| Bool | true: The Ability is currently in the terminating state; false: Not in the terminating state. |
 
-### func requestDialogService(Want, AsyncCallback\<DialogRequestResult>)
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below.
+
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 16000011 | The context does not exist. |
+
+### func requestDialogService(Want, AsyncCallbackEx\<RequestResult>)
 
 ```cangjie
-public func requestDialogService(want: Want, callback: AsyncCallback<DialogRequestResult>): Unit
+public func requestDialogService(want: Want, result: AsyncCallbackEx<RequestResult>): Unit
 ```
 
-**Description:** Starts a ServiceExtensionAbility that supports modal dialogs and returns the result using a callback.
+**Function:** Starts a ServiceExtensionAbility supporting modal dialogs and returns the result via callback.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1186,15 +852,38 @@ public func requestDialogService(want: Want, callback: AsyncCallback<DialogReque
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default | Description |
-|:------|:------|:------|:------|:------|
-| want | [Want](#class-want) |  Yes | - |  Want information of the target ServiceExtensionAbility to be started. |
-| callback | [AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[DialogRequestResult](#class-dialogrequestresult)> | Yes | - | Callback used to return the result. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | Want information of the target ServiceExtensionAbility to be started. |
+| result | [AsyncCallbackEx](#type-asynccallbackex)\<[RequestResult](#class-requestresult)> | Yes | - | Callback for returning results. |
 
-### func requestDialogService(Want)
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below.
+
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16200001 | The caller has been released. |
+```### func requestDialogService(Want)
 
 ```cangjie
-public func requestDialogService(want: Want): Future<DialogRequestResult>
+public func requestDialogService(want: Want): Future<RequestResult>
 ```
 
 **Function:** Starts a ServiceExtensionAbility that supports modal dialogs and returns the result.
@@ -1205,15 +894,39 @@ public func requestDialogService(want: Want): Future<DialogRequestResult>
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:----------|:-----|:---------|:--------------|:------------|
-| want | [Want](#class-want) | Yes | - | The Want information of the target ServiceExtensionAbility to be started. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | The Want information of the target ServiceExtensionAbility to start. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
-| Future\<[DialogRequestResult](#class-dialogrequestresult)> | Returns the execution result. |
+|:----|:----|
+| [Future](../../../../User_Manual/source_zh_cn/concurrency/use_thread.md#using-futuret-to-wait-for-thread-completion-and-get-return-value)\<[RequestResult](#class-requestresult)> | Returns the execution result. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16200001 | The caller has been released. |
 
 ### func startAbility(Want)
 
@@ -1229,9 +942,47 @@ public func startAbility(want: Want): Future<Unit>
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:----------|:-----|:---------|:--------------|:------------|
-| want | [Want](#class-want) | Yes | - | The Want information for starting the Ability. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | The Want information of the Ability to start. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000067 | The StartOptions check failed. |
+| 16000068 | The ability is already running. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
+| 16300003 | The target application is not the current application. |
 
 ### func startAbility(Want, StartOptions)
 
@@ -1247,15 +998,53 @@ public func startAbility(want: Want, options: StartOptions): Future<Unit>
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:----------|:-----|:---------|:--------------|:------------|
-| want | [Want](#class-want) | Yes | - | The Want information for starting the Ability. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | The Want information of the Ability to start. |
 | options | [StartOptions](#class-startoptions) | Yes | - | The parameters carried when starting the Ability. |
 
-### func startAbilityForResult(Want, AsyncCallback\<AbilityResult>)
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000067 | The StartOptions check failed. |
+| 16000068 | The ability is already running. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
+| 16300003 | The target application is not the current application. |
+
+### func startAbilityForResult(Want, AsyncCallbackEx\<AbilityResult>)
 
 ```cangjie
-public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): Unit
+public func startAbilityForResult(want: Want, callback: AsyncCallbackEx<AbilityResult>): Unit
 ```
 
 **Function:** Starts an Ability and returns the execution result when the Ability exits (callback form).
@@ -1266,15 +1055,49 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:----------|:-----|:---------|:------------|
-| want | [Want](#class-want) | Yes | The Want information for starting the Ability. |
-| callback | [AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[AbilityResult](#struct-abilityresult)> | Yes | The callback function for the execution result. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | The Want information of the Ability to start. |
+| callback | [AsyncCallbackEx](#type-asynccallbackex)\<[AbilityResult](#class-abilityresult)> | Yes | - | The callback function for the execution result. |
 
-### func startAbilityForResult(Want, StartOptions, AsyncCallback\<AbilityResult>)
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
+
+### func startAbilityForResult(Want, StartOptions, AsyncCallbackEx\<AbilityResult>)
 
 ```cangjie
-public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit
+public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallbackEx<AbilityResult>): Unit
 ```
 
 **Function:** Starts an Ability and returns the execution result when the Ability exits (callback form).
@@ -1285,11 +1108,43 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|:----------|:-----|:---------|:------------|
-| want | [Want](#class-want) | Yes | The Want information for starting the Ability. |
-| options | [StartOptions](#class-startoptions) | Yes | The parameters carried when starting the Ability. |
-| callback | [AsyncCallback](../BasicServicesKit/cj-apis-base.md#type-asynccallback)\<[AbilityResult](#struct-abilityresult)> | Yes | The callback function for the execution result. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| want | [Want](#class-want) | Yes | - | The Want information of the Ability to start. |
+| options | [StartOptions](#class-startoptions) | Yes | - | The parameters carried when starting the Ability. |
+| callback | [AsyncCallbackEx](#type-asynccallbackex)\<[AbilityResult](#class-abilityresult)> | Yes | - | The callback function for the execution result. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 201 | The application does not have permission to call the interface. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
+| 16200001 | The caller has been released. |
 
 ### func terminateSelf()
 
@@ -1303,11 +1158,15 @@ public func terminateSelf(): Future<Unit>
 
 **Initial Version:** 21
 
-**Return Value:**
+**Exceptions:**
 
-| Type | Description |
-|:-----|:------------|
-| Future\<Unit> | The Future object can obtain the thread result. |
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 
 ### func terminateSelfWithResult(AbilityResult)
 
@@ -1323,14 +1182,37 @@ public func terminateSelfWithResult(parameter: AbilityResult): Future<Unit>
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:----------|:-----|:---------|:--------------|:------------|
-| parameter | [AbilityResult](#struct-abilityresult) | Yes | - | Terminates the Ability and returns AbilityResult information to the caller when used with startAbilityForResult. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| parameter | [AbilityResult](#class-abilityresult) | Yes | - | Terminates the Ability and returns AbilityResult information to the caller when used with startAbilityForResult. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below.
+
+| Error Code ID | Error Message |
+|:----|:---|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. |
 
 ## class Want
 
 ```cangjie
 public class Want {
+    public var deviceId: String
+    public var bundleName: String
+    public var abilityName: String
+    public var moduleName: String
+    public var flags: UInt32
+    public var uri: String
+    public var action: String
+    public var entities: Array<String>
+    public var wantType: String
+    public var parameters: HashMap<String, WantValueType>
+
+
     public init(
         deviceId!: String = "",
         bundleName!: String = "",
@@ -1340,1075 +1222,944 @@ public class Want {
         uri!: String = "",
         action!: String = "",
         entities!: Array<String> = [],
-        `type`!: String = "",
-        parameters!: String = ""
+        wantType!: String = "",
+        parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>(),
+        fds!: HashMap<String, Int32> = HashMap<String, Int32>()
     )
 }
 ```
 
-**Function:** Want is a carrier for information transfer between objects and can be used for information transfer between application components.
+**Function:** Creates the corresponding Want.
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
 **Initial Version:** 21
 
-### prop `type`
+### var abilityName
 
 ```cangjie
-public prop `type`: String
+public var abilityName: String
 ```
 
-**Function:** MIME type description, mainly used for file management when opening files. For example: "text/xml", "image/*", etc. MIME definitions reference: [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com).
+**Function:** The name of the Ability to start.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
 **Initial Version:** 21
 
-### prop abilityName
+### var action
 
 ```cangjie
-public prop abilityName: String
+public var action: String
 ```
 
-**Function:** The name of the Ability to be started.
+**Function:** The general action to perform (e.g., view, share, app details). In an implicit Want, you can define this field, along with uri or parameters, to indicate the action to perform on the data.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
 **Initial Version:** 21
 
-### prop action
+### var bundleName
 
 ```cangjie
-public prop action: String
-```
-
-**Function:** The general action to perform (e.g., view, share, app details). In implicit Want, you can define this field along with uri or parameters to indicate the action to perform on the data.
-
-**Type:** String
-
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.Ability.AbilityBase
-
-**Initial Version:** 21
-
-### prop bundleName
-
-```cangjie
-public prop bundleName: String
+public var bundleName: String
 ```
 
 **Function:** The bundle name of the application where the target Ability resides.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
 **Initial Version:** 21
 
-### prop deviceId
+### var deviceId
 
 ```cangjie
-public prop deviceId: String
+public var deviceId: String
 ```
 
 **Function:** The device ID where the specified Ability runs.
 
 **Type:** String
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
 **Initial Version:** 21
 
-### prop entities
+### var entities
 
 ```cangjie
-public prop entities: Array<String>
+public var entities: Array<String>
 ```
 
-**Function:** Additional category information for the target Ability (e.g., browser, video player), serving as a supplement to the action field in implicit Want. In implicit Want, you can define this field to filter matching Ability types.
+**Function:** Additional category information of the target Ability (e.g., browser, video player). In an implicit Want, this field supplements the action field to filter matching Ability types.
 
 **Type:** Array\<String>
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
 **Initial Version:** 21
 
-### prop flags
+### var flags
 
 ```cangjie
-public prop flags: UInt32
+public var flags: UInt32
 ```
 
-**Function:** The way to handle the Want, specific reference: [Flags](#enum-flags).
+**Function:** The way to handle the Want. For details, refer to: [Flags](#enum-flags).
 
 **Type:** UInt32
 
-**Read-Write Capability:** Read-only
-
-**System Capability:** SystemCapability.Ability.AbilityBase
-
-**Initial Version:** 21
-
-### prop moduleName
+**Read## enum AreaMode
 
 ```cangjie
-public prop moduleName: String
+public enum AreaMode <: Equatable<AreaMode> & ToString {
+    | El1
+    | El2
+    | El3
+    | El4
+    | El5
+    | ...
+}
 ```
 
-**Function:** The module name to which the target Ability belongs.
+**Function:** Data encryption level.
 
-**Type:** String
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Read-Write Capability:** Read-only
+**Since:** 21
 
-**System Capability:** SystemCapability.Ability.AbilityBase
+**Parent Types:**
 
-**Initial Version:** 21
+- Equatable\<AreaMode>
+- ToString
 
-### prop parameters
+### El1
 
 ```cangjie
-public prop parameters: String
+El1
 ```
 
-**Function:** A JSON string format determined by the developer.
+**Function:** Device-level encrypted area, accessible data zone after device boot.
 
-**Type:** String
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Read-Write Capability:** Read-only
+**Since:** 21
+
+### El2
+
+```cangjie
+El2
+```
+
+**Function:** User-level encrypted area, accessible data zone only after device boot and initial password entry.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### El3
+
+```cangjie
+El3
+```
+
+**Function:** User-level encrypted area with the following file permissions in different scenarios:
+
+Opened files: Read/write allowed when locked; read/write allowed after unlock.
+
+Unopened files: Cannot open or read/write when locked; can open and read/write after unlock.
+
+New file creation: Can create, open, write (no read) when locked; can create, open, read/write after unlock.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### El4
+
+```cangjie
+El4
+```
+
+**Function:** User-level encrypted area with the following file permissions in different scenarios:
+
+Opened files: No read/write when locked; read/write allowed after unlock.
+
+Unopened files: Cannot open or read/write when locked; can open and read/write after unlock.
+
+New file creation: Cannot create when locked; can create, open, read/write after unlock.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### El5
+
+```cangjie
+El5
+```
+
+**Function:** Application-level encrypted area with the following file permissions in different scenarios:
+
+Opened files: Read/write allowed when locked; read/write allowed after unlock.
+
+Unopened files: When locked, can open and read/write after calling Access interface to obtain retained key, otherwise cannot open or read/write; can open and read/write after unlock.
+
+New file creation: Can create, open, read/write when locked; can create, open, read/write after unlock.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### func !=(AreaMode)
+
+```cangjie
+public operator func !=(other: AreaMode): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[AreaMode](#enum-areamode)|Yes|-|Another enum value.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if two enum values are unequal, otherwise false.|
+
+### func ==(AreaMode)
+
+```cangjie
+public operator func ==(other: AreaMode): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[AreaMode](#enum-areamode)|Yes|-|Another enum value.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if two enum values are equal, otherwise false.|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the string representation of the current enum.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|String|String representation of the current enum.|
+
+## enum ErrorManagerEvent
+
+```cangjie
+public enum ErrorManagerEvent {
+    | Error
+}
+```
+
+**Function:** Represents event callback types.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Error
+
+```cangjie
+Error
+```
+
+**Function:** Indicates the registered callback type is "Error".
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+## enum Flags
+
+```cangjie
+public enum Flags <: Equatable<Flags> & ToString {
+    | FlagAuthReadUriPermission
+    | FlagAuthWriteUriPermission
+    | FlagAuthPersistableUriPermission
+    | FlagInstallOnDemand
+    | FlagStartWithoutTips
+    | ...
+}
+```
+
+**Function:** Flags description. Used to indicate how to handle [Want](#class-want).
 
 **System Capability:** SystemCapability.Ability.AbilityBase
-**Initial Version:** 21  
 
-### prop uri  
+**Since:** 21
 
-```cangjie  
-public prop uri: String  
-```  
-
-**Description:** URI description. If a URI is specified in the Want, the Want will match the specified URI information, including scheme, schemeSpecificPart, authority, and path.  
-
-**Type:** String  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### init(String, String, String, String, UInt32, String, String, Array\<String>, String, String)  
-
-```cangjie  
-public init(  
-    deviceId!: String = "",  
-    bundleName!: String = "",  
-    abilityName!: String = "",  
-    moduleName!: String = "",  
-    flags!: UInt32 = 0,  
-    uri!: String = "",  
-    action!: String = "",  
-    entities!: Array<String> = [],  
-    `type`!: String = "",  
-    parameters!: String = ""  
-)  
-```  
-
-**Description:** Constructor for Want.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| deviceId | String | No | "" | **Named parameter.** Specifies the device ID for running the target Ability. |  
-| bundleName | String | No | "" | **Named parameter.** Specifies the package description. If both BundleName and AbilityName are specified in the Want, the Want can directly match the target Ability. |  
-| abilityName | String | No | "" | **Named parameter.** Specifies the name of the Ability to be started. If this field is specified along with bundleName in the Want, the Want can directly match the target Ability. The AbilityName must be unique within the scope of an application. |  
-| moduleName | String | No | "" | **Named parameter.** Specifies the module to which the target Ability belongs. |  
-| flags | UInt32 | No | 0 | **Named parameter.** Flags indicate how the Want is processed. For details, refer to: [Flags Description](#enum-flags). |  
-| uri | String | No | "" | **Named parameter.** Specifies the URI description. If a URI is specified in the Want, the Want will match the specified URI information, including scheme, schemeSpecificPart, authority, and path. |  
-| action | String | No | "" | **Named parameter.** Specifies the general action to be performed (e.g., view, share, app details). In an implicit Want, this field can be defined along with uri or parameters to indicate the action to be performed on the data. |  
-| entities | Array\<String> | No | [] | **Named parameter.** Specifies additional category information for the target Ability (e.g., browser, video player). In an implicit Want, this field supplements the action field and filters matching Ability types. |  
-| type | String | No | "" | Specifies the MIME type, mainly used for file management. For example: "text/xml", "image/\*", etc. MIME definitions refer to: [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com). |  
-| parameters | String | No | "" | **Named parameter.** Specifies the WantParams description, a JSON-style string defined by the developer. |  
-
-## struct AbilityResult  
-
-```cangjie  
-public struct AbilityResult {  
-    public AbilityResult(  
-        public let resultCode: Int32,  
-        public let want: Want  
-    )  
-}  
-```  
-
-**Description:** Defines the result code and data returned after an Ability is started or destroyed.  
-The AbilityResult object can be obtained via startAbilityForResult after the target Ability is destroyed. The Ability started by startAbilityForResult can return the AbilityResult object via terminateSelfWithResult.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### let resultCode  
-
-```cangjie  
-public let resultCode: Int32  
-```  
-
-**Description:** Indicates the result code returned after the Ability is started or destroyed.  
-
-**Type:** Int32  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### let want  
-
-```cangjie  
-public let want: Want  
-```  
-
-**Description:** Indicates the data returned after the Ability is destroyed.  
-
-**Type:** [Want](#class-want)  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### AbilityResult(Int32, Want)  
-
-```cangjie  
-public AbilityResult(  
-    public let resultCode: Int32,  
-    public let want: Want  
-)  
-```  
-
-**Description:** Constructor for AbilityResult.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| resultCode | Int32 | Yes | - | Indicates the result code returned after the Ability is started or destroyed. |  
-| want | [Want](#class-want) | Yes | - | Indicates the data returned after the Ability is destroyed. |  
-
-## struct ErrorObject  
-
-```cangjie  
-public struct ErrorObject {  
-    public let name: String  
-    public let message: String  
-    public let stack: Option<String>  
-    public init(name: String, message: String, stack!: Option<String> = None)  
-}  
-```  
-
-**Description:** Defines exception event information.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let message  
-
-```cangjie  
-public let message: String  
-```  
-
-**Description:** Exception event message.  
-
-**Type:** String  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let name  
-
-```cangjie  
-public let name: String  
-```  
-
-**Description:** Exception event name.  
-
-**Type:** String  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let stack  
-
-```cangjie  
-public let stack: Option<String>  
-```  
-
-**Description:** Exception event stack trace. Default is None.  
-
-**Type:** Option\<String>  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### init(String, String, Option\<String>)  
-
-```cangjie  
-public init(name: String, message: String, stack!: Option<String> = None)  
-```  
-
-**Description:** Constructor for ErrorObject.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| name | String | Yes | - | Exception event name. |  
-| message | String | Yes | - | Exception event message. |  
-| stack | Option\<String> | No | None | **Named parameter.** Exception event stack trace. Default is None. |  
-
-## struct ErrorObserver  
-
-```cangjie  
-public struct ErrorObserver {  
-    public let onUnhandledException:(String) -> Unit  
-    public let onException: Option <(ErrorObject) -> Unit>  
-    public init(  
-        onUnhandledException: (String) -> Unit,  
-        onException!: Option<(ErrorObject) -> Unit> = None  
-    )  
-}  
-```  
-
-**Description:** Defines an exception listener, which can be passed as a parameter to ErrorManager.on to listen for exceptions in the current application.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let onException  
-
-```cangjie  
-public let onException: Option <(ErrorObject) -> Unit>  
-```  
-
-**Description:** This callback is triggered when an exception is thrown during program execution and not caught by any 'try-catch' block. `errObject` contains the uncaught exception's name, message, and stack trace.  
-
-**Type:** Option\<([ErrorObject](#struct-errorobject))->Unit>  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### let onUnhandledException  
-
-```cangjie  
-public let onUnhandledException:(String) -> Unit  
-```  
-
-**Description:** This callback is triggered when an exception is thrown during program execution and not caught by any 'try-catch' block. `errMsg` is fixed as `Uncaught exception was found.`.  
-
-**Type:** (String)->Unit  
-
-**Access:** Read-only  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### init((String) -> Unit, Option\<(ErrorObject) -> Unit>)  
-
-```cangjie  
-public init(  
-    onUnhandledException: (String) -> Unit,  
-    onException!: Option<(ErrorObject) -> Unit> = None  
-)  
-```  
-
-**Description:** Constructor for ErrorObserver.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| onUnhandledException | (String)->Unit | Yes | - | This callback is triggered when an exception is thrown during program execution and not caught by any 'try-catch' block. `errMsg` is fixed as `Uncaught exception was found.`. |  
-| onException | Option\<([ErrorObject](#struct-errorobject))->Unit> | No | None | **Named parameter.** This callback is triggered when an exception is thrown during program execution and not caught by any 'try-catch' block. `errObject` contains the uncaught exception's name, message, and stack trace. |  
-
-## enum Flags  
-
-```cangjie  
-public enum Flags <: Equatable<Flags> & ToString {  
-    | FLAG_AUTH_READ_URI_PERMISSION  
-    | FLAG_AUTH_WRITE_URI_PERMISSION  
-    | FLAG_AUTH_PERSISTABLE_URI_PERMISSION  
-    | FLAG_INSTALL_ON_DEMAND  
-    | FLAG_START_WITHOUT_TIPS  
-    | ...  
-}  
-```  
-
-**Description:** Flags description. Used to indicate how a [Want](#class-want) is processed.**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parent Type:**  
+**Parent Types:**
 
 - Equatable\<Flags>
-- ToString  
+- ToString
 
-### FLAG_AUTH_PERSISTABLE_URI_PERMISSION  
-
-```cangjie  
-FLAG_AUTH_PERSISTABLE_URI_PERMISSION  
-```  
-
-**Description:** Indicates that the URI can be persisted by the recipient. This flag only takes effect on tablet devices. Value: 0x00000040.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### FLAG_AUTH_READ_URI_PERMISSION  
-
-```cangjie  
-FLAG_AUTH_READ_URI_PERMISSION  
-```  
-
-**Description:** Indicates authorization to perform read operations on the URI. Value: 0x00000001.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### FLAG_AUTH_WRITE_URI_PERMISSION  
-
-```cangjie  
-FLAG_AUTH_WRITE_URI_PERMISSION  
-```  
-
-**Description:** Indicates authorization to perform write operations on the URI. Value: 0x00000002.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### FLAG_INSTALL_ON_DEMAND  
-
-```cangjie  
-FLAG_INSTALL_ON_DEMAND  
-```  
-
-**Description:** Installs the specified capability if it is not already installed. Value: 0x00000800.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### FLAG_START_WITHOUT_TIPS  
-
-```cangjie  
-FLAG_START_WITHOUT_TIPS  
-```  
-
-**Description:** If no application matches the implicit ability startup, no prompt dialog will be displayed. Value: 0x40000000.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### func !=(Flags)  
-
-```cangjie  
-public operator func !=(other: Flags): Bool  
-```  
-
-**Description:** Determines whether two enum values are not equal.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:----------|:-----|:---------|:--------|:------------|  
-| other | [Flags](#enum-flags) | Yes | - | Another enum value. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:-----|:------------|  
-| Bool | Returns `true` if the two enum values are not equal, otherwise returns `false`. |  
-
-### func ==(Flags)  
-
-```cangjie  
-public operator func ==(other: Flags): Bool  
-```  
-
-**Description:** Determines whether two enum values are equal.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:----------|:-----|:---------|:--------|:------------|  
-| other | [Flags](#enum-flags) | Yes | - | Another enum value. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:-----|:------------|  
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |  
-
-### func getValue()  
-
-```cangjie  
-public func getValue(): UInt32  
-```  
-
-**Description:** Gets the value represented by the current enum. Used to indicate the processing method for [Want](#class-want).  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:-----|:------------|  
-| UInt32 | The value represented by the current enum. |  
-
-### func toString()  
-
-```cangjie  
-public func toString(): String  
-```  
-
-**Description:** Gets the string representation of the current enum.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:-----|:------------|  
-| String | The string representation of the current enum. |  
-
-## enum LastExitReason  
-
-```cangjie  
-public enum LastExitReason {  
-    | UNKNOWN  
-    | ABILITY_NOT_RESPONDING  
-    | NORMAL  
-    | CPP_CRASH  
-    | ...  
-}  
-```  
-
-**Description:** The reason for the last exit of an Ability. This enum type can be used with the [onCreate(want, launchParam)](#func-oncreatewant-launchparam) method of an Ability to perform corresponding operations based on different types of `launchParam.lastExitReason`.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### ABILITY_NOT_RESPONDING  
-
-```cangjie  
-ABILITY_NOT_RESPONDING  
-```  
-
-**Description:** The Ability did not respond.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### CPP_CRASH  
-
-```cangjie  
-CPP_CRASH  
-```  
-
-**Description:** A native exception signal caused the application to exit.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### NORMAL  
-
-```cangjie  
-NORMAL  
-```  
-
-**Description:** The user actively closed the application, resulting in a normal exit.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### UNKNOWN  
-
-```cangjie  
-UNKNOWN  
-```  
-
-**Description:** Unknown reason.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-## enum LaunchReason  
-
-```cangjie  
-public enum LaunchReason {  
-    | UNKNOWN  
-    | START_ABILITY  
-    | CALL  
-    | CONTINUATION  
-    | ...  
-}  
-```  
-
-**Description:** The reason for the initial launch of an Ability. This enum type can be used with the [onCreate(want, launchParam)](#func-oncreatewant-launchparam) method of an Ability to perform corresponding operations based on different types of `launchParam.launchReason`.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### CALL  
-
-```cangjie  
-CALL  
-```  
-
-**Description:** The Ability was launched via the `startAbilityByCall` interface.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### CONTINUATION  
-
-```cangjie  
-CONTINUATION  
-```  
-
-**Description:** The Ability was launched via cross-device migration.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### START_ABILITY  
-
-```cangjie  
-START_ABILITY  
-```  
-
-**Description:** The Ability was launched via the [startAbility](#func-startabilitywant) interface.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### UNKNOWN  
-
-```cangjie  
-UNKNOWN  
-```  
-
-**Description:** Unknown reason.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-## enum MemoryLevel  
-
-```cangjie  
-public enum MemoryLevel <: Equatable<MemoryLevel> & ToString {  
-    | MEMORY_LEVEL_MODERATE  
-    | MEMORY_LEVEL_LOW  
-    | MEMORY_LEVEL_CRITICAL  
-    | ...  
-}  
-```  
-
-**Description:** Memory level, represented as an enum.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core**Initial Version:** 21  
-
-**Parent Types:**  
-
-- Equatable\<MemoryLevel>  
-- ToString  
-
-### MEMORY_LEVEL_CRITICAL  
-
-```cangjie  
-MEMORY_LEVEL_CRITICAL  
-```  
-
-**Function:** High memory usage.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### MEMORY_LEVEL_LOW  
-
-```cangjie  
-MEMORY_LEVEL_LOW  
-```  
-
-**Function:** Low memory usage.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### MEMORY_LEVEL_MODERATE  
-
-```cangjie  
-MEMORY_LEVEL_MODERATE  
-```  
-
-**Function:** Moderate memory usage.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### func !=(MemoryLevel)  
-
-```cangjie  
-public operator func !=(other: MemoryLevel): Bool  
-```  
-
-**Function:** Determines whether two enum values are not equal.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [MemoryLevel](#enum-memorylevel) | Yes | - | Another enum value. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are not equal, otherwise returns `false`. |  
-
-### func ==(MemoryLevel)  
-
-```cangjie  
-public operator func ==(other: MemoryLevel): Bool  
-```  
-
-**Function:** Determines whether two enum values are equal.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [MemoryLevel](#enum-memorylevel) | Yes | - | Another enum value. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |  
-
-### func toString()  
-
-```cangjie  
-public func toString(): String  
-```  
-
-**Function:** Gets the string representation of the current enum.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| String | The string representation of the current enum. |  
-
-## enum OnContinueResult  
-
-```cangjie  
-public enum OnContinueResult {  
-    | AGREE  
-    | REJECT  
-    | MISMATCH  
-    | ...  
-}  
-```  
-
-**Function:** Ability migration result. This type is an enum.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### AGREE  
-
-```cangjie  
-AGREE  
-```  
-
-**Function:** Indicates agreement.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### MISMATCH  
-
-```cangjie  
-MISMATCH  
-```  
-
-**Function:** Indicates version mismatch.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-### REJECT  
-
-```cangjie  
-REJECT  
-```  
-
-**Function:** Indicates rejection.  
-
-**System Capability:** SystemCapability.Ability.AbilityRuntime.Core  
-
-**Initial Version:** 21  
-
-## enum Params  
-
-```cangjie  
-public enum Params <: Equatable<Params> & ToString {  
-    | ABILITY_BACK_TO_OTHER_MISSION_STACK  
-    | ABILITY_RECOVERY_RESTART  
-    | CONTENT_TITLE_KEY  
-    | SHARE_ABSTRACT_KEY  
-    | SHARE_URL_KEY  
-    | SUPPORT_CONTINUE_PAGE_STACK_KEY  
-    | SUPPORT_CONTINUE_SOURCE_EXIT_KEY  
-    | ...  
-}  
-```  
-
-**Function:** [Want](#class-want) Params operations.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parent Types:**  
-
-- Equatable\<Params>  
-- ToString  
-
-### ABILITY_BACK_TO_OTHER_MISSION_STACK  
-
-```cangjie  
-ABILITY_BACK_TO_OTHER_MISSION_STACK  
-```  
-
-**Function:** Indicates whether cross-mission stack return is supported. The value is: `ability.params.backToOtherMissionStack`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### ABILITY_RECOVERY_RESTART  
-
-```cangjie  
-ABILITY_RECOVERY_RESTART  
-```  
-
-**Function:** Indicates whether the current Ability has undergone recovery restart due to a fault. The value is: `ohos.ability.params.abilityRecoveryRestart`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### CONTENT_TITLE_KEY  
-
-```cangjie  
-CONTENT_TITLE_KEY  
-```  
-
-**Function:** Indicates the operation of the parameter for sharing titles supported by meta services. The value is: `ohos.extra.param.key.contentTitle`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### SHARE_ABSTRACT_KEY  
-
-```cangjie  
-SHARE_ABSTRACT_KEY  
-```  
-
-**Function:** Indicates the operation of the parameter for sharing content supported by meta services. The value is: `ohos.extra.param.key.shareAbstract`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### SHARE_URL_KEY  
-
-```cangjie  
-SHARE_URL_KEY  
-```  
-
-**Function:** Indicates the operation of the parameter for sharing URLs supported by meta services. The value is: `ohos.extra.param.key.shareUrl`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### SUPPORT_CONTINUE_PAGE_STACK_KEY  
-
-```cangjie  
-SUPPORT_CONTINUE_PAGE_STACK_KEY  
-```  
-
-**Function:** Indicates whether to migrate page stack information during cross-device migration. The default value is `true`, meaning page stack information is automatically migrated. The value is: `ohos.extra.param.key.supportContinuePageStack`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### SUPPORT_CONTINUE_SOURCE_EXIT_KEY  
-
-```cangjie  
-SUPPORT_CONTINUE_SOURCE_EXIT_KEY  
-```  
-
-**Function:** Indicates whether the source application exits during cross-device migration. The default value is `true`, meaning the source application automatically exits. The value is: `ohos.extra.param.key.supportContinueSourceExit`.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-### func !=(Params)  
-
-```cangjie  
-public operator func !=(other: Params): Bool  
-```  
-
-**Function:** Determines whether two enum values are not equal.  
-
-**System Capability:** SystemCapability.Ability.AbilityBase  
-
-**Initial Version:** 21  
-
-**Parameters:**  
-
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [Params](#enum-params) | Yes | - | Another enum value. |  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are not equal, otherwise returns `false`. |  
-
-### func ==(Params)
+### FlagAuthPersistableUriPermission
 
 ```cangjie
-public operator func ==(other: Params): Bool 
+FlagAuthPersistableUriPermission
+```
+
+**Function:** Indicates the URI can be persisted by the receiver. This field only takes effect on tablet devices. Value: 0x00000040.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### FlagAuthReadUriPermission
+
+```cangjie
+FlagAuthReadUriPermission
+```
+
+**Function:** Indicates authorization to perform read operations on the URI. Value: 0x00000001.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### FlagAuthWriteUriPermission
+
+```cangjie
+FlagAuthWriteUriPermission
+```
+
+**Function:** Indicates authorization to perform write operations on the URI. Value: 0x00000002.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### FlagInstallOnDemand
+
+```cangjie
+FlagInstallOnDemand
+```
+
+**Function:** If the specified feature is not installed, install it. Value: 0x00000800.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### FlagStartWithoutTips
+
+```cangjie
+FlagStartWithoutTips
+```
+
+**Function:** If an implicit ability start cannot match any application, no prompt dialog will pop up. Value: 0x40000000.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### func !=(Flags)
+
+```cangjie
+public operator func !=(other: Flags): Bool
+```
+
+**Function:** Determines whether two enum values are unequal.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+**Parameters:**
+
+|Name|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[Flags](#enum-flags)|Yes|-|Another enum value.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if two enum values are unequal, otherwise false.|
+
+### func ==(Flags)
+
+```cangjie
+public operator func ==(other: Flags): Bool
 ```
 
 **Function:** Determines whether two enum values are equal.
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Name|Type|Mandatory|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [Params](#enum-params) | Yes | - | Another enum value. |
+|other|[Flags](#enum-flags)|Yes|-|Another enum value.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if two enum values are equal, otherwise false.|
+
+### func getValue()
+
+```cangjie
+public func getValue(): UInt32
+```
+
+**Function:** Gets the value represented by the current enum. Used to indicate how to handle [Want](#class-want).
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|UInt32|Value represented by the current enum.|
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
+  |fontSizeScale must >= 0.0|Input parameter is less than 0.|Input a number greater than or equal to 0.|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the string representation of the current enum.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|String|String representation of the current enum.|
+
+## enum LastExitReason
+
+```cangjie
+public enum LastExitReason {
+    | Unknown
+    | Normal
+    | CppCrash
+    | AppFreeze
+    | ...
+}
+```
+
+**Function:** Reason for the last exit of an Ability. This enum type can be used with Ability's [onCreate(want, launchParam)](#func-oncreatewant-launchparam) method to perform corresponding operations based on different launchParam.lastExitReason types.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### AppFreeze
+
+```cangjie
+AppFreeze
+```
+
+**Function:** Application exited due to watchdog detecting an application freeze fault.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### CppCrash
+
+```cangjie
+CppCrash
+```
+
+**Function:** Application exited due to native exception signals.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Normal
+
+```cangjie
+Normal
+```
+
+**Function:** Application exited normally due to user-initiated closure.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Unknown
+
+```cangjie
+Unknown
+```
+
+**Function:** Unknown reason.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21## enum LaunchReason
+
+```cangjie
+public enum LaunchReason {
+    | Unknown
+    | StartAbility
+    | Call
+    | Continuation
+    | AppRecovery
+    | ...
+}
+```
+
+**Description:** The reason for initial Ability launch. This enumeration type can be used with the [onCreate(want, launchParam)](#func-oncreatewant-launchparam) method of Ability to perform corresponding operations based on different types of launchParam.launchReason.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### AppRecovery
+
+```cangjie
+AppRecovery
+```
+
+**Description:** Automatically restarts the Ability after application recovery when a fault occurs.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Call
+
+```cangjie
+Call
+```
+
+**Description:** Launches the Ability through the startAbilityByCall interface.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Continuation
+
+```cangjie
+Continuation
+```
+
+**Description:** Launches the Ability for cross-device migration.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### StartAbility
+
+```cangjie
+StartAbility
+```
+
+**Description:** Launches the Ability through the [startAbility](#func-startabilitywant) interface.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Unknown
+
+```cangjie
+Unknown
+```
+
+**Description:** Unknown reason.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+## enum MemoryLevel
+
+```cangjie
+public enum MemoryLevel <: Equatable<MemoryLevel> & ToString {
+    | MemoryLevelModerate
+    | MemoryLevelLow
+    | MemoryLevelCritical
+    | ...
+}
+```
+
+**Description:** Memory level, represented as an enumeration.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<MemoryLevel>
+- ToString
+
+### MemoryLevelCritical
+
+```cangjie
+MemoryLevelCritical
+```
+
+**Description:** High memory usage.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### MemoryLevelLow
+
+```cangjie
+MemoryLevelLow
+```
+
+**Description:** Low memory usage.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### MemoryLevelModerate
+
+```cangjie
+MemoryLevelModerate
+```
+
+**Description:** Moderate memory usage.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### func !=(MemoryLevel)
+
+```cangjie
+public operator func !=(other: MemoryLevel): Bool
+```
+
+**Description:** Determines whether two enumeration values are not equal.
+
+**Parameters:**
+
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [MemoryLevel](#enum-memorylevel) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
+| Bool | Returns true if the two enumeration values are not equal, otherwise returns false. |
+
+### func ==(MemoryLevel)
+
+```cangjie
+public operator func ==(other: MemoryLevel): Bool
+```
+
+**Description:** Determines whether two enumeration values are equal.
+
+**Parameters:**
+
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [MemoryLevel](#enum-memorylevel) | Yes | - | Another enumeration value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Description:** Gets the string representation of the current enumeration.
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | The string representation of the current enumeration. |
+
+## enum OnContinueResult
+
+```cangjie
+public enum OnContinueResult {
+    | Agree
+    | Reject
+    | Mismatch
+    | ...
+}
+```
+
+**Description:** Indicates agreement.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Agree
+
+```cangjie
+Agree
+```
+
+**Description:** Indicates agreement.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Mismatch
+
+```cangjie
+Mismatch
+```
+
+**Description:** Indicates version mismatch: The migration initiator can obtain the version number of the migration target application in [onContinue](cj-apis-ability.md#func-oncontinuestring). If the versions are incompatible, this error can be returned.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+### Reject
+
+```cangjie
+Reject
+```
+
+**Description:** Indicates rejection: If an exception occurs in the application during [onContinue](cj-apis-ability.md#func-oncontinuestring), which may cause data recovery issues after migration, REJECT is recommended.
+
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+## enum Params
+
+```cangjie
+public enum Params <: Equatable<Params> & ToString {
+    | AbilityBackToOtherMissionStack
+    | AbilityRecoveryRestart
+    | ContentTitleKey
+    | ShareAbstractKey
+    | ShareUrlKey
+    | SupportContinuePageStackKey
+    | SupportContinueSourceExitKey
+    | ...
+}
+```
+
+**Description:** Operations for [Want](#class-want) Params.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<Params>
+- ToString
+
+### AbilityBackToOtherMissionStack
+
+```cangjie
+AbilityBackToOtherMissionStack
+```
+
+**Description:** Indicates whether cross-mission stack return is supported. Value: ability.params.backToOtherMissionStack.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### AbilityRecoveryRestart
+
+```cangjie
+AbilityRecoveryRestart
+```
+
+**Description:** Indicates whether the current Ability has restarted due to fault recovery. Value: ohos.ability.params.abilityRecoveryRestart.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### ContentTitleKey
+
+```cangjie
+ContentTitleKey
+```
+
+**Description:** Indicates the parameter operation for sharing titles supported by atomic services. Value: ohos.extra.param.key.contentTitle.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### ShareAbstractKey
+
+```cangjie
+ShareAbstractKey
+```
+
+**Description:** Indicates the source file of the page. Value: ohos.param.atomicservice.pageSourceFile.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### ShareUrlKey
+
+```cangjie
+ShareUrlKey
+```
+
+**Description:** Indicates the parameter operation for sharing content supported by atomic services. Value: ohos.extra.param.key.shareAbstract.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### SupportContinuePageStackKey
+
+```cangjie
+SupportContinuePageStackKey
+```
+
+**Description:** Indicates whether to migrate page stack information during cross-device migration. Default value is true, meaning page stack information is automatically migrated. Value: ohos.extra.param.key.supportContinuePageStack.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### SupportContinueSourceExitKey
+
+```cangjie
+SupportContinueSourceExitKey
+```
+
+**Description:** Indicates whether the source application exits during cross-device migration. Default value is true, meaning the source application exits automatically. Value: ohos.extra.param.key.supportContinueSourceExit.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### func !=(Params)
+
+```cangjie
+public operator func !=(other: Params): Bool
+```
+
+**Description:** Determines whether two enumeration values are not equal.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+**Parameters:**
+
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [Params](#enum-params) | Yes | - | Another enumeration value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enumeration values are not equal, otherwise returns false. |
+
+### func ==(Params)
+
+```cangjie
+public operator func ==(other: Params): Bool
+```
+
+**Description:** Determines whether two enumeration values are equal.
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+**Parameters:**
+
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [Params](#enum-params) | Yes | - | Another enumeration value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
 
 ### func getValue()
 
@@ -2416,162 +2167,261 @@ public operator func ==(other: Params): Bool
 public func getValue(): String
 ```
 
-**Function:** Retrieves the value represented by the current enum. Used for [Want](#class-want)'s Params operations.
+**Description:** Gets the value represented by the current enumeration. Used for [Want](#class-want) Params operations.
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The value represented by the current enum. |
+| String | The value represented by the current enumeration. |
+
+**Exceptions:**
+
+- IllegalArgumentException:
+
+| Error Message | Possible Cause | Handling Steps |
+|:----|:---|:---|
+| fontSizeScale must >= 0.0 | The input parameter is less than 0. | Input a number greater than or equal to 0. |
 
 ### func toString()
 
 ```cangjie
-public func toString(): String 
+public func toString(): String
 ```
 
-**Function:** Retrieves the string representation of the current enum.
+**Description:** Gets the string representation of the current enumeration.
 
 **System Capability:** SystemCapability.Ability.AbilityBase
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The string representation of the current enum. |
-
-## enum ResultCode
+| String | The string representation of the current enumeration. |## enum ResultCode
 
 ```cangjie
 public enum ResultCode {
-    | RESULT_OK
-    | RESULT_CANCEL
+    | ResultOk
+    | ResultCancel
     | ...
 }
 ```
 
-**Function:** Modal dialog request result codes.
+**Function:** Result codes for modal dialog requests.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### RESULT_CANCEL
+### ResultCancel
 
 ```cangjie
-RESULT_CANCEL
+ResultCancel
 ```
 
 **Function:** Indicates failure.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### RESULT_OK
+### ResultOk
 
 ```cangjie
-RESULT_OK
+ResultOk
 ```
 
 **Function:** Indicates success.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
+
+## enum WantValueType
+
+```cangjie
+public enum WantValueType {
+    | Int64Value(Int64)
+    | Float64Value(Float64)
+    | StringValue(String)
+    | BoolValue(Bool)
+    | ArrayValue(Array<WantValueType>)
+    | HashMapValue(HashMap<String, WantValueType>)
+    | ...
+}
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### ArrayValue(Array\<WantValueType>)
+
+```cangjie
+ArrayValue(Array<WantValueType>)
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### BoolValue(Bool)
+
+```cangjie
+BoolValue(Bool)
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### Float64Value(Float64)
+
+```cangjie
+Float64Value(Float64)
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### HashMapValue(HashMap\<String, WantValueType>)
+
+```cangjie
+HashMapValue(HashMap<String, WantValueType>)
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### Int64Value(Int64)
+
+```cangjie
+Int64Value(Int64)
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
+
+### StringValue(String)
+
+```cangjie
+StringValue(String)
+```
+
+**Function:** <font color="red" face="bold">please add description</font>
+
+**System Capability:** SystemCapability.Ability.AbilityBase
+
+**Since:** 21
 
 ## enum WindowMode
 
 ```cangjie
 public enum WindowMode {
-    | WINDOW_MODE_UNDEFINED
-    | WINDOW_MODE_FULLSCREEN
-    | WINDOW_MODE_SPLIT_PRIMARY
-    | WINDOW_MODE_SPLIT_SECONDARY
+    | WindowModeFullscreen
+    | WindowModeSplitPrimary
+    | WindowModeSplitSecondary
     | ...
 }
 ```
 
-**Function:** Window mode when starting an Ability, represented as an enum. Can be used with [startAbility](#func-startabilitywant-startoptions) to specify the window mode for starting an Ability.
+**Function:** The window mode when starting an Ability, defined as an enumeration. Can be used with [startAbility](#func-startabilitywant) to specify the window mode for launching an Ability.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WINDOW_MODE_FULLSCREEN
+### WindowModeFullscreen
 
 ```cangjie
-WINDOW_MODE_FULLSCREEN
+WindowModeFullscreen
 ```
 
-**Function:** Full-screen mode.
+**Function:** Fullscreen mode.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WINDOW_MODE_SPLIT_PRIMARY
+### WindowModeSplitPrimary
 
 ```cangjie
-WINDOW_MODE_SPLIT_PRIMARY
+WindowModeSplitPrimary
 ```
 
-**Function:** If the screen is in horizontal orientation, it represents left split-screen; if vertical, it represents top split-screen.
+**Function:** If the screen is in horizontal orientation, it represents left split-screen; if in vertical orientation, it represents top split-screen.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WINDOW_MODE_SPLIT_SECONDARY
+### WindowModeSplitSecondary
 
 ```cangjie
-WINDOW_MODE_SPLIT_SECONDARY
+WindowModeSplitSecondary
 ```
 
-**Function:** If the screen is in horizontal orientation, it represents right split-screen; if vertical, it represents bottom split-screen.
+**Function:** If the screen is in horizontal orientation, it represents right split-screen; if in vertical orientation, it represents bottom split-screen.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-### WINDOW_MODE_UNDEFINED
+## interface SystemObjectInteropTypeToJS
 
 ```cangjie
-WINDOW_MODE_UNDEFINED
+public interface SystemObjectInteropTypeToJS {
+    func toJSValue(context: JSContext): JSValue
+}
 ```
 
-**Function:** Undefined window mode.
+**Function:** A specialized extension interface for system objects to enable conversion with [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-**Initial Version:** 21
+**Since:** 21
 
-## type Ability<sup>(deprecated)</sup>
-
-```cangjie
-public type Ability = UIAbility
-```
-
-**Function:** Alias for UIAbility.
-
-> **Note:**
->
-> Deprecated since version 19 and no longer in use. Use [UIAbility](#class-uiability) instead.
-
-## type AbilityContext<sup>(deprecated)</sup>
+### func toJSValue(JSContext)
 
 ```cangjie
-public type AbilityContext = UIAbilityContext
+func toJSValue(context: JSContext): JSValue
 ```
 
-**Function:** Alias for UIAbilityContext.
+**Function:** Converts a Cangjie object to [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue).
 
-> **Note:**
->
-> Deprecated since version 19 and no longer in use. Use [UIAbilityContext](#class-uiabilitycontext) instead.
+**System Capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| context | [JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext) | Yes | - | ArkTS interoperability context. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [JSValue](../../arkinterop/cj-apis-ark_interop.md#class-jsvalue) | ArkTS unified type. |

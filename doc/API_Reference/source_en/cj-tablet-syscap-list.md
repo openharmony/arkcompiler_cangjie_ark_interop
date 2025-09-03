@@ -1,13 +1,13 @@
 # SystemCapability List
 
-SysCap, short for SystemCapability, refers to each relatively independent feature in the operating system.
+SysCap, short for SystemCapability, refers to each relatively independent feature within the operating system.
 
-Before using any interface for development, developers are advised to first read the [SysCap Usage Guide](cj-syscap.md) to understand the definition and usage guidelines of SysCap. Then, refer to the table below to determine whether a specific capability set is supported by a particular device, thereby improving development efficiency.
+Before using any interface for development, developers are advised to read the [SysCap Usage Guide](cj-syscap.md) to understand the definition and usage guidelines of SysCap. Then, refer to the table below to determine whether a specific capability set is supported by a device, thereby improving development efficiency.
 
 > **Note:**
 >
-> This list enumerates the minimum system capability sets supported by the current version of Tablet devices. Developers can query this information through the tablet.json file in the SDK.
-> When developing applications for the current version of Tablets using APIs corresponding to the system capability sets listed here, developers can directly call these APIs without needing to perform canIUse() isolation checks beforehand.
+> This list enumerates the minimum system capability sets supported by the current version of Tablet device types. Developers can query this information in the SDK through the tablet.json file.
+> When developing applications for the current version of Tablet using the system capability sets listed below, developers can directly call the corresponding APIs without performing canIUse() isolation checks beforehand.
 
 - SystemCapability.ArkUI.ArkUI.Full
 - SystemCapability.ArkUI.ArkUI.Napi
