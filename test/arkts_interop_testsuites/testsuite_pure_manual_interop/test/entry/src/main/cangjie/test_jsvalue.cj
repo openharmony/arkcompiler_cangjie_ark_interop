@@ -49,6 +49,7 @@ class TestJSValue {
         @Expect(isMismatch)
         let valueType = await(jsContext) {value.typeof()}
         @Expect(valueType == JSType.NULL)
+        @Expect(valueType != JSType.NULL, false)
     }
 
     @TestCase
@@ -121,7 +122,8 @@ class TestJSValue {
         let valueType = await(jsContext) {value.typeof()}
         @Expect(valueType == JSType.BOOLEAN)
         let cjValue = await(jsContext) {value.toBoolean()}
-        @Expect(cjValue, false)
+        @Expect(value.toBoolean(), false)
+        @Expect(value.asBoolean().toBool(), false)
     }
 
     @TestCase
