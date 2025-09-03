@@ -1,6 +1,6 @@
 # Adding Cangjie Module
 
-This section explains how to add a Cangjie module to an ArkTS project in DevEco Studio. It primarily covers adding a Cangjie module within the same module and adding a Cangjie static library module, followed by interoperability calls.
+This section describes how to add a Cangjie module to an ArkTS project in DevEco Studio. It mainly covers adding a Cangjie module within the same module and adding a Cangjie static library module, followed by interoperation calls.
 
 ## Adding a Cangjie Module Within the Same Module
 
@@ -8,17 +8,17 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
 
    ![interop-create-new-project](../../figures/interop-create-new-project.png)
 
-2. After clicking the **Cangjie(Interop)** button, the cjpm configuration file `cjpm.toml` and a folder named `cangjie` will be automatically created under the selected ArkTS module. The folder contains template code file `index.cj` and a `types` folder for storing Cangjie interoperability interface declaration files, as shown below:
+2. After clicking the **Cangjie(Interop)** button, the cjpm configuration file `cjpm.toml` and a folder named `cangjie` will be automatically created under the selected ArkTS module. The folder contains the template code file `index.cj` and a `types` folder for storing Cangjie interoperation interface declaration files, as shown below:
 
       ![image-20250222174232257](../../figures/generate-interop-file.png)
 
-      Additionally, the Cangjie dependency will be automatically generated in **entry -> oh-package.json5**:
+      Additionally, Cangjie dependencies will be automatically generated in **entry -> oh-package.json5**:
 
       ![image-20250222181831627](../../figures/generate-dependency.png)
 
 ## Adding a Cangjie Static Library Module
 
-1. Right-click the project name and select **New -> Module** to add a Cangjie static library module.
+1. Right-click the project name and select **New->Module** to add a Cangjie static library module.
 
    ![image-20250415151308119](../../figures/add_static_cangjie_module.png)
 
@@ -26,11 +26,11 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
 
    ![image-20250415151431836](../../figures/add_static_cangjie_module_2.png)
 
-3. A **cangjielib** folder will then be generated, containing Cangjie source code files and configuration files.
+3. A **cangjielib** folder will be generated, containing Cangjie source code files and configuration files.
 
    ![image-20250415152004742](../../figures/add_static_cangjie_module_3.png)
 
-4. In the **cangjielib->src->main->cangjie->index.cj** file, add interoperability code. Take the following code as an example:
+4. In the **cangjielib->src->main->cangjie->index.cj** file, add interoperation code. Take the following code as an example:
 
    ```cangjie
    // Package name
@@ -42,7 +42,7 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
    internal import ohos.ark_interop.JSCallInfo
    internal import ohos.ark_interop.JSValue
 
-   // Interoperability function
+   // Interoperation function
    func sayHelloCJ(runtime: JSContext, callInfo: JSCallInfo): JSValue {
        let result = "cangjie har arkts use "
        runtime.string(result).toJSValue()
@@ -53,15 +53,15 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
    }
    ```
 
-5. Under **cangjielib->src->main->cangjie**, create an interoperability folder named **types** and a **libohos_app_cangjie_entry** folder under **types**.
+5. Under **cangjielib->src->main->cangjie**, create an interoperation folder named **types**, and within **types**, create a folder named **libohos_app_cangjie_entry**.
 
-6. Create an **Index.d.ts** file under **types->libohos_app_cangjie_entry** that implements the ArkTS function corresponding to `sayHelloCJ` in the above `index.cj`:
+6. Under **types->libohos_app_cangjie_entry**, create an **Index.d.ts** file to implement the ArkTS function corresponding to `sayHelloCJ` in the above `index.cj`:
 
    ```ts
    export declare function sayHelloCJ(s: string): string
    ```
 
-7. Create an **oh-package.json5** file under **types->libohos_app_cangjie_entry** with the following content. In this file, the **name** field should match the package name in the interoperability code. This package name must be consistent with the one configured in **cangjielib->cjpm.toml**. For example, set **name** to `libohos_app_cangjie_cangjielib.so`.
+7. Under **types->libohos_app_cangjie_entry**, create an **oh-package.json5** file with the following content. The **name** field should match the package name in the interoperation code, which must be consistent with the package name configured in **cangjielib->cjpm.toml**. Here, set **name** to `libohos_app_cangjie_cangjielib.so`.
 
    ```json
    {
@@ -72,7 +72,7 @@ This section explains how to add a Cangjie module to an ArkTS project in DevEco 
    }
    ```
 
-8. When using the Cangjie static library module in ArkTS, add the dependency for the above package in the **dependencies** section of **entry/oh-package.json5**:
+8. When using the Cangjie static library module in ArkTS, add dependencies for the above package in the **dependencies** section of **entry/oh-package.json5**:
 
    ```json
    // ...

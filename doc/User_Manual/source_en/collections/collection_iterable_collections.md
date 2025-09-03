@@ -24,7 +24,7 @@ abstract class Iterator<T> <: Iterable<T> {
 
 You can use the for-in syntax to traverse any instance of a type that implements the Iterable interface.
 
-Suppose we have the following for-in code:
+Consider the following for-in code example:
 
 <!-- run -->
 
@@ -35,7 +35,7 @@ for (i in list) {
 }
 ```
 
-It is equivalent to the following while code:
+This is equivalent to the following while loop code:
 
 <!-- run -->
 
@@ -50,7 +50,7 @@ while (true) {
 }
 ```
 
-Another common way to traverse Iterable types is to use pattern matching in the condition of a while expression. For example, another equivalent form of the above while code is:
+Another common method for traversing Iterable types is to use pattern matching in the while expression's condition. For example, an alternative equivalent to the above while loop code is:
 
 <!-- run -->
 

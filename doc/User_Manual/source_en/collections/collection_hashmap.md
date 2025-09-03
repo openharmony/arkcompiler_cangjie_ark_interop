@@ -12,7 +12,7 @@ You can use the HashMap type to construct a Collection of key-value pairs.
 
 HashMap is a hash table that provides fast access to its contained elements. Each element in the table is identified by its key, and the corresponding value can be accessed using the key.
 
-Cangjie uses `HashMap<K, V>` to represent the HashMap type, where K denotes the key type of the HashMap. K must be a type that implements both the Hashable and `Equatable<K>` interfaces, such as numeric values or String. V denotes the value type of the HashMap, which can be any type.
+Cangjie uses `HashMap<K, V>` to represent the HashMap type, where K denotes the key type of the HashMap. K must be a type that implements both the Hashable and `Equatable<K>` interfaces, such as numeric types or String. V denotes the value type of the HashMap, which can be any type.
 
 ```cangjie
 var a: HashMap<Int64, Int64> = ... // HashMap whose key type is Int64 and value type is Int64
@@ -41,9 +41,9 @@ let e = HashMap<Int64, Int64>(10, {x: Int64 => (x, x * x)}) // Created a HashMap
 
 ## Accessing HashMap Members
 
-When you need to access all elements of a HashMap, you can use a for-in loop to iterate through all elements.
+When you need to access all elements of a HashMap, you can use a for-in loop to iterate through them.
 
-Note that HashMap does not guarantee the order of elements based on insertion, so the traversal order may differ from the insertion order.
+Note that HashMap does not guarantee element ordering based on insertion sequence, so traversal order may differ from insertion order.
 
 <!-- verify -->
 
@@ -66,7 +66,7 @@ The key is b, the value is 1
 The key is c, the value is 2
 ```
 
-To determine the number of elements in a HashMap, you can use the size property.
+To determine the number of elements in a HashMap, use the size property.
 
 <!-- verify -->
 
@@ -89,7 +89,7 @@ Compiling and executing the above code will output:
 The size of hashmap is 3
 ```
 
-To check if a HashMap contains a specific key, use the contains function. It returns true if the key exists and false otherwise.
+To check if a HashMap contains a specific key, use the contains function. It returns true if the key exists, otherwise false.
 
 <!-- run -->
 
@@ -99,7 +99,7 @@ let a = map.contains("a") // a == true
 let b = map.contains("d") // b == false
 ```
 
-To access the value associated with a specific key, use subscript syntax (the subscript type must match the key type). Using a non-existent key as an index will trigger a runtime exception.
+To access the value associated with a specific key, use subscript syntax (the subscript type must match the key type). Using a non-existent key will trigger a runtime exception.
 
 <!-- run.error -->
 
@@ -112,9 +112,9 @@ let c = map["d"] // Runtime exceptions
 
 ## Modifying HashMap
 
-HashMap is a mutable reference type that provides functionality to modify, add, and remove elements.
+HashMap is a mutable reference type that provides functionality for modifying, adding, and removing elements.
 
-The mutability of HashMap is a highly useful feature, allowing all references to the same HashMap instance to share the same elements and apply modifications uniformly.
+The mutability of HashMap is a particularly useful feature, allowing all references to the same HashMap instance to share the same elements and apply modifications uniformly.
 
 You can use subscript syntax to modify the value associated with a key.
 
@@ -125,9 +125,9 @@ let map = HashMap<String, Int64>([("a", 0), ("b", 1), ("c", 2)])
 map["a"] = 3
 ```
 
-HashMap is a reference type. When used as an expression, HashMap does not create a copy; all references to the same HashMap instance share the same data.
+HashMap is a reference type. When used as an expression, HashMap does not create copies. All references to the same HashMap instance share the same data.
 
-Thus, modifications to HashMap elements affect all references to that instance.
+Therefore, modifications to HashMap elements will affect all references to that instance.
 
 <!-- run -->
 
@@ -139,7 +139,7 @@ map2["a"] = 3
 // map2 contains the elements ("a", 3), ("b", 1), ("c", 2)
 ```
 
-To add a single key-value pair to a HashMap, use the add function. To add multiple key-value pairs simultaneously, use the `add(all!: Collection<(K, V)>)` function. If the key does not exist, the add function performs an insertion; if the key exists, it overwrites the old value with the new one.
+To add a single key-value pair to a HashMap, use the add function. To add multiple key-value pairs simultaneously, use the `add(all!: Collection<(K, V)>)` function. When the key doesn't exist, add performs an insertion; when the key exists, it overwrites the old value with the new one.
 
 <!-- run -->
 
@@ -160,7 +160,7 @@ let map = HashMap<String, Int64>([("a", 0), ("b", 1), ("c", 2)])
 map["d"] = 3 // map contains the elements ("a", 0), ("b", 1), ("c", 2), ("d", 3)
 ```
 
-To remove elements from a HashMap, use the remove function and specify the key to be removed.
+To remove elements from a HashMap, use the remove function by specifying the key to delete.
 
 <!-- run -->
 

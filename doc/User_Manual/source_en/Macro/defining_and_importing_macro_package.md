@@ -1,10 +1,10 @@
 # Macro Package Definition and Import
 
-In the Cangjie language, macro definitions must be placed within a package declared with `macro package`. Only macro definitions within a `macro package` are visible externally, while other declarations remain package-private.
+In the Cangjie language, macro definitions must be placed within a package declared with `macro package`. A package constrained by `macro package` only allows macro definitions to be externally visible, while other declarations remain package-private.
 
 > **Note:**
 >
-> Re-exported declarations are also allowed to be visible externally. For concepts related to package management and re-exporting, please refer to the [Package Import](../package/import.md) chapter.
+> Re-exported declarations are also permitted to be externally visible. For concepts related to package management and re-exporting, please refer to the [Package Import](../package/import.md) chapter.
 
 <!-- compile.error -macro4 -->
 <!-- cfg="--compile-macro" -->
@@ -14,14 +14,14 @@ In the Cangjie language, macro definitions must be placed within a package decla
 macro package define         // Compiling define.cjo with macro attribute
 import std.ast.*
 
-public func A() {}          // Error: Macro packages prohibit non-macro definitions from being visible externally. This will raise an error.
+public func A() {}          // Error: Macro packages prohibit non-macro definitions from being externally visible. This will raise an error.
 
-public macro M(input: Tokens): Tokens { // Macro M is visible externally
+public macro M(input: Tokens): Tokens { // macro M is externally visible
     return input
 }
 ```
 
-It's important to note that within macro packages, declarations from other macro packages and non-macro packages can be re-exported. In non-macro packages, only declarations from non-macro packages can be re-exported.
+It is important to note that within a macro package, declarations from other macro packages and non-macro packages can be re-exported. In non-macro packages, only declarations from non-macro packages can be re-exported.
 
 Refer to the following examples:
 
@@ -45,7 +45,7 @@ Refer to the following examples:
   cjc A.cj --compile-macro
   ```
 
-- Define a public function `f1` in non-macro package B. Note that symbols from `macro package` cannot be re-exported in non-`macro package` contexts.
+- Define a public function `f1` in non-macro package B. Note that symbols from `macro package` cannot be re-exported in a non-`macro package`.
 
   <!-- compile -macro5 -->
   <!-- cfg="--output-type=dylib -o libB.so" -->
@@ -65,15 +65,15 @@ Refer to the following examples:
   cjc B.cj --output-type=dylib -o libB.so
   ```
 
-- Define macro `M2` in macro package C, which depends on content from packages A and B. Note that `macro package` can re-export symbols from both `macro package` and non-`macro package`.
+- Define macro `M2` in macro package C, which depends on contents from packages A and B. Note that a `macro package` can re-export symbols from both `macro package` and non-`macro package`.
 
   <!-- compile -macro5 -->
   <!-- cfg="--compile-macro -L. -lB" -->
 
   ```cangjie
   macro package C
-  public import A.* // Correct: Macro packages allow re-exporting within macro packages.
-  public import B.* // Correct: Non-macro packages are also allowed to be re-exported within macro packages.
+  public import A.* // Correct: Macro packages allow re-exporting within a macro package.
+  public import B.* // Correct: Non-macro packages are also allowed to be re-exported within a macro package.
   import std.ast.*
 
   public macro M2(input: Tokens): Tokens {
@@ -81,13 +81,13 @@ Refer to the following examples:
   }
   ```
 
-  Compilation command (note explicit linking of package B's dynamic library is required):
+  Compilation command (note that explicit linking of package B's dynamic library is required here):
 
   ```bash
   cjc C.cj --compile-macro -L. -lB
   ```
 
-- Using `M2` macro in `main.cj`
+- Use macro `M2` in `main.cj`
 
   <!-- compile -macro5 -->
   <!-- cfg="--debug-macro -L. -lB" -->
@@ -106,7 +106,7 @@ Refer to the following examples:
   cjc main.cj -o main -L. -lB
   ```
 
-  The expanded result of `M2` macro in `main.cj`:
+  The expanded result of macro `M2` in `main.cj` is as follows:
 
   ```bash
   import C.*
@@ -117,4 +117,4 @@ Refer to the following examples:
   }
   ```
 
-We can observe that `main.cj` contains the symbol `f1` from package B. Macro authors can re-export symbols from package B within package C, allowing macro users to simply import the macro package to correctly compile the expanded code. If `main.cj` only imports the macro symbol with `import C.M2`, it will raise an `undeclared identifier 'f1'` error.
+Observe that the symbol `f1` from package B appears in `main.cj`. Macro authors can re-export symbols from package B within package C, enabling macro users to correctly compile macro-expanded code by simply importing the macro package. If `main.cj` only imports the macro symbol using `import C.M2`, it will result in an `undeclared identifier 'f1'` error message.

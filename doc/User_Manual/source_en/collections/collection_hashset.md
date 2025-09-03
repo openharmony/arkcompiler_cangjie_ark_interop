@@ -8,7 +8,7 @@ To use the HashSet type, you need to import the collection package:
 import std.collection.*
 ```
 
-You can use the HashSet type to construct a Collection containing only unique elements.
+You can use the HashSet type to construct a Collection that contains only unique elements.
 
 Cangjie uses `HashSet<T>` to represent the HashSet type, where T denotes the element type of the HashSet. T must be a type that implements both the Hashable and `Equatable<T>` interfaces, such as numeric values or String.
 
@@ -17,9 +17,9 @@ var a: HashSet<Int64> = ... // HashSet whose element type is Int64
 var b: HashSet<String> = ... // HashSet whose element type is String
 ```
 
-HashSets with different element types are distinct types and therefore cannot be assigned to each other.
+HashSets with different element types are distinct types, so they cannot be assigned to each other.
 
-Thus, the following example is invalid:
+Therefore, the following example is invalid:
 
 ```cangjie
 b = a // Type mismatch
@@ -39,7 +39,7 @@ let e = HashSet<Int64>(10, {x: Int64 => (x * x)}) // Created a HashSet whose ele
 
 ## Accessing HashSet Members
 
-When you need to access all elements of a HashSet, you can use a for-in loop to iterate through them.
+When you need to access all elements of a HashSet, you can use a for-in loop to iterate through all elements.
 
 Note that HashSet does not guarantee element ordering based on insertion sequence, so traversal order may differ from insertion order.
 
@@ -56,7 +56,7 @@ main() {
 }
 ```
 
-Compiling and executing the above code may output:
+Compiling and executing the above code might output:
 
 ```text
 The element is 0
@@ -64,7 +64,7 @@ The element is 1
 The element is 2
 ```
 
-To determine the number of elements in a HashSet, use the size property.
+To determine the number of elements in a HashSet, you can use the size property.
 
 <!-- verify -->
 
@@ -87,7 +87,7 @@ Compiling and executing the above code will output:
 The size of hashset is 3
 ```
 
-To check if an element exists in a HashSet, use the contains function. It returns true if the element exists, otherwise false.
+To check whether an element exists in a HashSet, use the contains function. It returns true if the element exists, otherwise false.
 
 <!-- run -->
 
@@ -99,11 +99,11 @@ let b = mySet.contains(-1) // b == false
 
 ## Modifying HashSet
 
-HashSet is a mutable reference type that provides functions for adding and removing elements.
+HashSet is a mutable reference type that provides functionality for adding and removing elements.
 
 The mutability of HashSet is a particularly useful feature, allowing all references to the same HashSet instance to share identical elements and undergo unified modifications.
 
-To add a single element to a HashSet, use the add function. To add multiple elements simultaneously, use the `add(all!: Collection<T>)` function, which accepts another Collection of the same element type (e.g., Array). When an element doesn't exist, the add function performs the addition; when the element already exists in the HashSet, the add function has no effect.
+To add a single element to a HashSet, use the add function. To add multiple elements simultaneously, use the `add(all!: Collection<T>)` function, which accepts another Collection type (such as Array) with the same element type. The add function performs the addition only when the element doesn't already exist in the HashSet.
 
 <!-- run -->
 
@@ -116,9 +116,9 @@ let li = [2, 3]
 mySet.add(all: li) // mySet contains elements 0, 1, 2, 3
 ```
 
-HashSet is a reference type. When used as an expression, HashSet doesn't create copies; all references to the same HashSet instance share the same data.
+HashSet is a reference type. When used as an expression, HashSet doesn't create copies - all references to the same HashSet instance share identical data.
 
-Therefore, modifications to HashSet elements affect all references to that instance.
+Therefore, modifications to HashSet elements will affect all references to that instance.
 
 <!-- run -->
 
@@ -130,7 +130,7 @@ set2.add(3)
 // set2 contains elements 0, 1, 2, 3
 ```
 
-To remove elements from a HashSet, use the remove function, specifying the element to be removed.
+To remove elements from a HashSet, use the remove function by specifying the element to be deleted.
 
 <!-- run -->
 
