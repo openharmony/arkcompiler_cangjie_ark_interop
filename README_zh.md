@@ -8,11 +8,28 @@
 
 ![仓颉互操作API框架](./figures/cangjie-interop.png)
 
-针对互操作场景诉求，仓颉提供ark_interop互操作库来实现与ArkTS的互操作。该库主要提供以下关键数据结构：
+针对互操作场景诉求，仓颉提供ark_interop互操作库来实现与ArkTS的互操作。本库主要提供以下类型映射：
+
+| **仓颉类型**                                                 | **仓颉互操作库类型** | **ArkTS  类型** |
+| ------------------------------------------------------------ | -------------------- | --------------- |
+| Unit                                                         | JSUndefined          | undefined       |
+| 无                                                           | JSNull               | null            |
+| Bool                                                         | JSBoolean            | boolean         |
+| Int8、Int16、Int32、Int64、UInt8、UInt16、UInt32、UInt64、Float16、Float32、Float64 | JSNumber             | number          |
+| String                                                       | JSString             | string          |
+| class、interface                                             | JSObject             | object          |
+| Array                                                        | JSArray              | Array           |
+| BigInt                                                       | JSBigInt             | bigint          |
+| func                                                         | JSFunction           | function        |
+| 无                                                           | JSSymbol             | symbol          |
+
+本库还提供以下的关键数据结构：
 
 - JSValue: 用于表示来自ArkTS中的对象（如数字、字符串、对象、函数），是仓颉与ArkTS类型转换的桥梁。
 - JSContext: 用于表示与ArkTS互操作的上下文，提供模块加载、JSValue创建等能力。
 - JSCallInfo: 用于表示当发生来自于ArkTS互操作调用时 调用的参数集合。
+
+最后本互操作库通过CFFI调用ArkTS虚拟机提供的接口完成互操作功能。
 
 ## 目录
 
