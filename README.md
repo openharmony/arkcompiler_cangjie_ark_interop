@@ -34,7 +34,7 @@ Finally, this interop library completes the interoperability function by calling
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── api                  # Public repository code for Cangjie Interop API
+├── ohos                 # Public repository code for Cangjie Interop API
 ├── doc                  # Cangjie documentation including API reference, development guide and user manual
     ├── API_Reference    # Cangjie api reference
     └── Dev_Guide        # Cangjie developer guide

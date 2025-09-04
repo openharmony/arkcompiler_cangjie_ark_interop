@@ -75,8 +75,8 @@ ohos_cangjie_shared_library("ohos.ark_interop") {
 
   external_deps = [ "napi:ark_interop" ]
   cj_deps = [
-    "../labels:ohos.labels",
-    "../business_exception:ohos.business_exception",
+    "./labels:ohos.labels",
+    "./business_exception:ohos.business_exception",
   ]
 
   deps = [ ":utf16string" ]
@@ -98,9 +98,9 @@ ohos_cangjie_shared_library("ohos.ark_interop_helper") {
 
   cj_deps = [
     ":ohos.ark_interop",
-    "../business_exception:ohos.business_exception",
-    "../ffi_bind:ohos.ffi",
-    "../labels:ohos.labels",
+    "./business_exception:ohos.business_exception",
+    "./ffi:ohos.ffi",
+    "./labels:ohos.labels",
   ]
 
   cj_external_deps = [

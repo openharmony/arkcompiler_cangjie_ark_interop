@@ -32,46 +32,46 @@
         },
         "build": {
             "sub_component": [
-                "//arkcompiler/cangjie_ark_interop/api/ohos/ffi_bind:ohos.ffi",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/encoding:ohos.encoding.json",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/encoding:ohos.json.static",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop_helper",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/labels:ohos.labels",
+                "//arkcompiler/cangjie_ark_interop/ohos/ffi:ohos.ffi",
+                "//arkcompiler/cangjie_ark_interop/ohos/encoding:ohos.encoding.json",
+                "//arkcompiler/cangjie_ark_interop/ohos/encoding:ohos.json.static",
+                "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop",
+                "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_helper",
+                "//arkcompiler/cangjie_ark_interop/ohos/labels:ohos.labels",
                 "//arkcompiler/cangjie_ark_interop:cangjie_prebuilts_package",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/business_exception:ohos.business_exception",
-                "//arkcompiler/cangjie_ark_interop/api/ohos/callback_invoke:ohos.callback_invoke"
+                "//arkcompiler/cangjie_ark_interop/ohos/business_exception:ohos.business_exception",
+                "//arkcompiler/cangjie_ark_interop/ohos/callback_invoke:ohos.callback_invoke"
             ],
             "inner_kits": [
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/labels:ohos.labels"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/labels:ohos.labels"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/encoding:ohos.encoding.json"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/encoding:ohos.encoding.json"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/encoding:ohos.json.static"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/encoding:ohos.json.static"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/ffi_bind:ohos.ffi"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/ffi:ohos.ffi"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop_helper"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_helper"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/business_exception:ohos.business_exception"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/business_exception:ohos.business_exception"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/callback_invoke:ohos.callback_invoke"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos/callback_invoke:ohos.callback_invoke"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop_macro"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_macro"
                 },
                 {
-                    "name": "//arkcompiler/cangjie_ark_interop/api/ohos/interop:ohos.ark_interop_macro_cjo"
+                    "name": "//arkcompiler/cangjie_ark_interop/ohos:ohos.ark_interop_macro_cjo"
                 }
             ],
             "test": []
