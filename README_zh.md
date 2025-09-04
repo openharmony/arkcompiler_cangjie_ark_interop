@@ -35,7 +35,7 @@
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── api                  # 仓颉互操作API的公共仓代码
+├── ohos                 # 仓颉互操作API的公共仓代码
 ├── doc                  # 仓颉文档，包括api参考、应用开发指南、仓颉编程语言用户手册
     ├── API_Reference    # 仓颉api参考
     └── Dev_Guide        # 仓颉开发指南
