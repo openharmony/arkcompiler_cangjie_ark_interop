@@ -222,4 +222,18 @@ class TestPromise {
                 .toJSValue())
         }
     }
+
+    @TestCase
+    func testJSPromise333(): Unit {
+        let jsContext = getJSContext()
+        let promise = await(jsContext) {jsContext.promiseCapability()}
+        await(jsContext) {
+            jsContext.postJSTask {
+                promise.resolve(jsContext
+                    .number(1)
+                    .toJSValue()
+                )
+            }
+        }
+    }
 }

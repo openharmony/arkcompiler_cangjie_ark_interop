@@ -156,4 +156,40 @@ class TestArray {
         @Expect(await(jsContext){receivedElement0.isBoolean()}, true)
         @Expect(await(jsContext){receivedElement0.toBoolean()}, true)
     }
+
+    @TestCase
+    func testArray33(): Unit {
+        let jsContext = getJSContext()
+        let array = await(jsContext) {
+            jsContext.array(
+                [
+                    jsContext
+                        .number(1.0)
+                        .toJSValue()
+                ]
+            )
+        }
+
+        @Expect(withException<Exception> {
+            await(jsContext) {
+                array[-1] = jsContext
+                    .number(1.0)
+                    .toJSValue()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext) {
+                let testMismatch: JSLambda = {
+                    _, callInfo =>
+                    var mismatchResult = jsContext.boolean(false)
+                    return mismatchResult.toJSValue()
+                }
+                array[-1] = jsContext.function(testMismatch)
+            }
+        })
+
+        let value: JSValue = await(jsContext){array[0]}
+        @Expect(await(jsContext){value.toNumber()}, 1.0)
+    }
 }
