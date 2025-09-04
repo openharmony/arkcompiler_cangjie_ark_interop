@@ -127,6 +127,21 @@ class TestArrayBuffer {
     }
 
     @TestCase
+    func testJSArrayBufferToUInt64Array() {
+        let jsContext = getJSContext()
+        let data: Array<UInt64> = [0, 1000000000000000, UInt64.max]
+        let buffer = await(jsContext) {jsContext.arrayBuffer(data)}
+        let result = await(jsContext) {buffer.toInt64Array()}
+
+        @Expect(await(jsContext){buffer.toJSValue().isArrayBuffer()}, true)
+
+        @Expect(result.size, data.size)
+        for (i in 0..result.size) {
+            @Expect(result[i], data[i])
+        }
+    }
+
+    @TestCase
     func testJSArrayBufferToInt64Array() {
         let jsContext = getJSContext()
         let data: Array<Int64> = [-9223372036854775808, -1000000000, 9223372036854775807, 1234567890123456]
@@ -289,6 +304,15 @@ class TestArrayBuffer {
     }
 
     @TestCase
+    func testJSArrayBufferLength() {
+        let jsContext = getJSContext()
+        let length: Int32 = 10
+        let buffer = await(jsContext) {jsContext.arrayBuffer(length)}
+        @Expect(await(jsContext){buffer.toJSValue().isArrayBuffer()}, true)
+        @Expect(buffer.byteLength, length)
+    }
+
+    @TestCase
     func testArrayBufferBytes() {
         let jsContext = getJSContext()
         let source: Array<Byte> = [0, 1, 2, 3, 4]
@@ -319,10 +343,94 @@ class TestArrayBuffer {
             }
         }
 
+        @Expect(withException<Exception> {
+            await(jsContext) {
+                unsafe {
+                    jsContext.arrayBuffer(source, 0, {
+                        ptr => libC.free(ptr)
+                    })
+                }
+            }
+        })
+
         @Expect(await(jsContext){buffer.byteLength}, 100)
         let data = await(jsContext) {buffer.readBytes()}
         for (i in 0..100) {
             @Expect(data[i], UInt8(i))
+        }
+    }
+
+    @TestCase
+    func testJSArrayBufferToArrayException() {
+        let jsContext = getJSContext()
+        let data: Array<UInt8> = [0]
+        let buffer = await(jsContext) {jsContext.arrayBuffer(data)}
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toUInt16Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toInt16Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toUInt32Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toInt32Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toUInt64Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toInt64Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toFloat32Array()
+            }
+        })
+
+        @Expect(withException<Exception> {
+            await(jsContext){
+                buffer.toFloat64Array()
+            }
+        })
+    }
+
+    @TestCase
+    func testToArrayJSValueHandler() {
+        let jsContext = getJSContext()
+
+        await(jsContext){
+            jsContext.arrayBuffer(18).toInt8ArrayJSValue().asArrayBuffer().toInt8ArrayJSValue()
+            jsContext.arrayBuffer(18).toUInt8ArrayJSValue().asArrayBuffer().toUInt8ArrayJSValue()
+            jsContext.arrayBuffer(18).toUInt8ClampedArrayJSValue().asArrayBuffer().toUInt8ClampedArrayJSValue()
+            jsContext.arrayBuffer(18).toUInt16ArrayJSValue().asArrayBuffer().toUInt16ArrayJSValue()
+            jsContext.arrayBuffer(18).toInt16ArrayJSValue().asArrayBuffer().toInt16ArrayJSValue()
+            jsContext.arrayBuffer(18).toUInt32ArrayJSValue().asArrayBuffer().toUInt32ArrayJSValue()
+            jsContext.arrayBuffer(18).toInt32ArrayJSValue().asArrayBuffer().toInt32ArrayJSValue()
+            jsContext.arrayBuffer(18).toUInt64ArrayJSValue().asArrayBuffer().toUInt64ArrayJSValue()
+            jsContext.arrayBuffer(18).toInt64ArrayJSValue().asArrayBuffer().toInt64ArrayJSValue()
+            jsContext.arrayBuffer(18).toFloat32ArrayJSValue().asArrayBuffer().toFloat32ArrayJSValue()
+            jsContext.arrayBuffer(18).toFloat64ArrayJSValue().asArrayBuffer().toFloat64ArrayJSValue()
         }
     }
 }

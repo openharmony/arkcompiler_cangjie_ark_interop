@@ -33,6 +33,10 @@ func doJSArrExTest(both: JSArrayEx<String>) {
     await(jsContext) {both[1] = "ccc"}
     @Expect(await(jsContext){both[1]}, "ccc")
     let cjArr = await(jsContext) {both.toArray()}
+    let outRangeOpt = both.get(3)
+    @Expect(withException<Exception> {
+        let outRangeInfo = await(jsContext){both[2]}
+    })
 }
 
 func doJSHashMapTest(map: JSHashMapEx<String, String>) {
@@ -40,9 +44,15 @@ func doJSHashMapTest(map: JSHashMapEx<String, String>) {
     @Expect(await(jsContext){map.isEmpty()})
     @Expect(await(jsContext){map.get("a").isNone()})
     await(jsContext) {map.set("a", "b")}
+    let clonedMap = await(jsContext)(map.clone())
     @Expect(await(jsContext){map.get("a").isSome()})
     @Expect(await(jsContext){map.size}, 1)
     @Expect(await(jsContext){map.has("a")})
+    @Expect(await(jsContext){map.containsAll("a")})
+    @Expect(await(jsContext){map.contiansAll("a")})
+    @Expect(await(jsContext){clonedMap.get("a").isSome()})
+    @Expect(await(jsContext){clonedMap.size}, 1)
+    @Expect(await(jsContext){clonedMap.has("a")})
     let curKeys = await(jsContext) {map.keys()}
     let values = await(jsContext) {map.values()}
     @Expect(await(jsContext){values.size}, 1)
@@ -75,6 +85,9 @@ func doJSHashMapTest(map: JSHashMapEx<String, String>) {
     await(jsContext) {map["d"] = "a"}
     await(jsContext) {map.clear()}
     @Expect(await(jsContext){map.size}, 0)
+    @Expect(withException<Exception> {
+        let res = await(jsContext){map["a"]}
+    })
 }
 
 func doJSInteropTypeTest<T>(jsContext: JSContext, value: T): Unit where T <: JSInteropType<T> & Equatable<T> {
@@ -93,6 +106,7 @@ class TestIDLType {
         let other = await(jsContext) {JSStringEx.fromJSValue(jsContext, value.toJSValue(jsContext))}
         @Expect(await(jsContext){value.size}, 3)
         @Expect(await(jsContext){value.toString()}, "abc")
+        @Expect(await(jsContext){!(value != other)})
         @Expect(await(jsContext){value == other})
         @Expect(JSStringEx.toArkTsType(), "string")
         JSCurrentJSContext.unset()
@@ -184,7 +198,15 @@ class TestIDLType {
         doJSInteropTypeTest<?String>(jsContext, "abc");
         @Expect(Array<Byte>.toArkTsType(), "ArrayBuffer")
         doJSInteropTypeTest<Array<Byte>>(jsContext, [1, 3, 4]);
+        @Expect(Utf16String.toArkTsType(), "string")
+        doJSInteropTypeTest<Utf16String><jsContext, Utf16String("💗")>
         @Expect(JSString.toArkTsType(), "string")
+        let strValue = await(jsContext) {jsContext
+            .string("abc")
+            .toJSValue()
+        }
+        let jsStr = await(jsContext) {JSString.fromJSValue(jsContext, strValue)}
+        @Expect("abc", jsStr.toString())
     }
 
     @TestCase

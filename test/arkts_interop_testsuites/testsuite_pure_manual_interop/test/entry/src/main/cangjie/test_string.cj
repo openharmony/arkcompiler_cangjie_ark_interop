@@ -44,6 +44,8 @@ class TestString {
             let other = await(jsContext) {value.asString()}
             @Expect(await(jsContext){other.toString()}, original)
             await(jsContext) {value.asString(jsContext)}
+            let utf16Value = await(jsContext){jsStr.toUtf16String()}
+            @Expect(await(jsContext){utf16Value.toString()}, original)
         }
     }
 

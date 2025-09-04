@@ -201,6 +201,7 @@ class TestObject {
     func testJSObjectExternal() {
         let jsContext = getJSContext()
         let object = await(jsContext) {jsContext.object()}
+        @Expect(await(jsContext){object.getAttachInfo().isNone})
         let myObject = MyObject()
         let external = await(jsContext) {jsContext.external(myObject)}
         await(jsContext) {object.attachCJObject(external)}
