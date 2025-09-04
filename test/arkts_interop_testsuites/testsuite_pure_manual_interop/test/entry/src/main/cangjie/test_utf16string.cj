@@ -424,7 +424,7 @@ class TestUtf16String {
     }
 
     @TestCase
-    func testStartsWidth() {
+    func testStartsWith() {
         let cases = [
             ("abcd123", "abc"),
             ("abcd您那你", "abc")]
@@ -438,7 +438,7 @@ class TestUtf16String {
     }
 
     @TestCase
-    func testStartsWidth() {
+    func testEndsWith() {
         let cases = [
             ("abcd123", "abc"),
             ("abcd123", "123"),
@@ -454,7 +454,7 @@ class TestUtf16String {
     }
 
     @TestCase
-    func testStartsWidth() {
+    func testAppend() {
         let cases = [
             ("132", "bxx"),
             ("您那你", "xxx"),
