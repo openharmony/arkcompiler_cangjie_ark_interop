@@ -24,11 +24,6 @@ foreign func ARKTS_GetPrototype(env: JSEnv, fun: JSValue_): JSValue_
 foreign func ARKTS_New(env: JSEnv, constructor: JSValue_, argCount: Int32, args: CPointer<JSValue_>): JSValue_
 
 /**
- * Alias for function which is `(JSContext, JSCallInfo, JSFunction) -> JSValue`.
- */
-public type OverrideMethod = (JSContext, JSCallInfo, JSFunction) -> JSValue
-
-/**
  * The JSClass object is used to represent a safe reference to the ArkTS class (constructor).
  * Method and accessors can be added to this class, and instances of this class can be created.
  */
