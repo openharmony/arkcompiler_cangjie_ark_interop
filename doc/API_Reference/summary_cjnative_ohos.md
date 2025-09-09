@@ -329,6 +329,8 @@
             - [位置服务错误码](source_zh_cn/errorcodes/cj-errorcode-geo_location_manager.md)
 - [仓颉与ArkTS互操作库]()
     - [ohos.ark_interop（ArkTS互操作库）](source_zh_cn/arkinterop/cj-apis-ark_interop.md)
+        - [错误码]()
+            - [ArkTS互操作库错误码](source_zh_cn/errorcodes/cj-errorcode-ark_interop.md)
     - [ohos.ark_interop_helper（ArkTS互操作公共辅助功能函数）](source_zh_cn/arkinterop/cj-apis-ark_interop_helper.md)
     - [ohos.business_exception（通用异常信息）](source_zh_cn/arkinterop/cj-api-business_exception.md)
     - [ohos.callback_invoke（通用回调信息）](source_zh_cn/arkinterop/cj-api-callback_invoke.md)
