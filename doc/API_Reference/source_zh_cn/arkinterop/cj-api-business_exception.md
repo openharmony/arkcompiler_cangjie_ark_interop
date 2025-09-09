@@ -125,6 +125,24 @@ public init(data: T, code: Int32, msg: String)
 | code | Int32 | 是 | 错误码。 |
 | msg | String | 是 | 错误信息。|
 
+### getClassName()
+
+```cangjie
+protected override func getClassName(): String
+```
+
+**功能：** 获取异常类型名称。
+
+**系统能力：** SystemCapability.Base
+
+**起始版本：** 21
+
+**返回值：**
+
+| 类型     | 说明    |
+|:-------|:------|
+| String | 类型名称。 |
+
 ## type AsyncCallback
 
 ```cangjie

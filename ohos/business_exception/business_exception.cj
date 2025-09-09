@@ -65,6 +65,12 @@ public open class BusinessException <: Exception {
         this.code = code
     }
 
+    @!APILevel[
+        21,
+        atomicservice: true,
+        crossplatform: true,
+        stagemodelonly: true
+    ]
     protected override func getClassName(): String {
         "BusinessException"
     }
