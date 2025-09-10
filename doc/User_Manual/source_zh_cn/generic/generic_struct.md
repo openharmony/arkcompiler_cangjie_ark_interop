@@ -1,6 +1,6 @@
 # 泛型结构体
 
-struct 类型的泛型与 class 是类似的，下面可以使用 struct 定义一个类似于二元元组的类型：
+struct 类型的泛型与 class 类似，下面使用 struct 定义一个类似于二元元组的类型：
 
 <!-- verify -->
 
