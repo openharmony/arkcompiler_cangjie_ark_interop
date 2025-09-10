@@ -297,7 +297,7 @@ cjc --debug-macro demo.cj --import-path ./target
   @M() - 2 // macro M return 2
 
   // after expansion
-  // ===== Emmitted my Macro M at line 1 ===
+  // ===== Emitted my Macro M at line 1 ===
   2
   // ===== End of the Emit =====
   - 2

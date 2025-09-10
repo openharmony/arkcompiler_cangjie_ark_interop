@@ -2,13 +2,13 @@
 
 ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何的容错；而仓颉在语法上支持内存共享的多线程。
 
-如果在互操作的场景不加限制的使用多线程，可能会导致无法预期的错误，因此需要一些规范和指引来保证程序正常执行：
+如果在互操作的场景中不加限制地使用多线程，可能会导致无法预期的错误，因此需要一些规范和指引来保证程序正常执行：
 
 1. ArkTS 代码以及大部分互操作接口只能在 ArkTS 线程上执行，否则会抛出仓颉异常。
 2. 在进入其他线程前，需要把所有依赖的 ArkTS 数据转换为仓颉数据。
 3. 在其他线程如果想要使用 ArkTS 接口，需要通过 `context.postJSTask` 切换到 ArkTS 线程来执行。
 
-下面通过一个用例来展示具体做法，该用例是互操作函数，该函数的功能是对两个数字相加，并调用回调函数来返回相加数。
+下面通过一个用例来展示具体做法。该用例为一个互操作函数，其功能是对两个数字相加，并调用回调函数返回相加结果。
 
 1. 定义仓颉函数：
 
@@ -27,11 +27,11 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
     }
 
     func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
-        // 从JSCallInfo获取参数列表
+        // 从 JSCallInfo 获取参数列表
         let arg0: JSValue = callInfo[0]
         let arg1: JSValue = callInfo[1]
         let arg2: JSValue = callInfo[2]
-        // 把JSValue转换为仓颉类型
+        // 把 JSValue 转换为仓颉类型
         let a: Float64 = arg0.toNumber()
         let b: Float64 = arg1.toNumber()
         let callback = arg2.asFunction(context)
@@ -41,9 +41,9 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
             let value = a + b
             // 发起异步回调
             context.postJSTask {
-                // 创建result
+                // 创建 result
                 let result = context.number(value).toJSValue()
-                // 调用js回调
+                // 调用 js 回调
                 callback.call(result)
             }
         }
@@ -72,7 +72,7 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
     });
     ```
 
-在 ArkTS 存在 Promise，这是对回调机制的一种封装，配合 async 、 await 的语法让回调机制变成同步调用的形式。对于上一个用例，使用 Promise 的形式来定义接口和访问：
+在 ArkTS 中存在 Promise，这是对回调机制的一种封装，配合 async、await 的语法让回调机制变成同步调用的形式。对于上一个用例，可以使用 Promise 的形式来定义接口和访问：
 
 1. 定义仓颉函数：
 
@@ -95,19 +95,19 @@ ArkTS 是单线程执行的虚拟机，在运行时上没有对并发做任何�
         // 参数转换为仓颉类型
         let a = callInfo[0].toNumber()
         let b = callInfo[1].toNumber()
-        // 创建PromiseCapability对象
+        // 创建 PromiseCapability 对象
         let promise = context.promiseCapability()
         // 创建新线程
         spawn {
             // 在新线程执行仓颉逻辑
             let result = a + b
-            // 切换到ArkTS线程
+            // 切换到 ArkTS 线程
             context.postJSTask {
-                // 在ArkTS线程执行resolve
+                // 在 ArkTS 线程执行 resolve
                 promise.resolve(context.number(result).toJSValue())
             }
         }
-        // 返回Promise
+        // 返回 Promise
         promise.toJSValue()
     }
     ```
