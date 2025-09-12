@@ -30,7 +30,7 @@ public init(value: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|ResourceStr|是|-|文本内容。|
+|value|ResourceStr|是|-|文本内容。|
 
 ## 通用属性/通用事件
 
@@ -57,8 +57,7 @@ public func decoration(decorationType!: TextDecorationType, color!: ResourceColo
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|Color.Black| **命名参数。** 文本装饰线颜色。|
-
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 文本装饰线颜色。|
 
 ### func fontColor(ResourceColor)
 
@@ -132,7 +131,6 @@ public func fontStyle(value: FontStyle): This
 |:---|:---|:---|:---|:---|
 |value|[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br>初始值：FontStyle.Normal。|
 
-
 ### func fontWeight(FontWeight)
 
 ```cangjie
@@ -151,7 +149,6 @@ public func fontWeight(value: FontWeight): This
 |:---|:---|:---|:---|:---|
 |value|[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细，设置过大可能会在不同字体下有截断。<br>初始值：FontWeight.Normal。|
 
-
 ### func letterSpacing(Length)
 
 ```cangjie
@@ -169,7 +166,6 @@ public func letterSpacing(value: Length): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本字符间距。单位：fp。|
-
 
 ### func textCase(TextCase)
 
@@ -208,8 +204,8 @@ import std.collection.*
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start,
-                        justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start,
+                        justifyContent: FlexAlign.SpaceBetween) {
             Text("Basic Usage")
             .fontSize(9)
             .fontColor(0xCCCCCC)

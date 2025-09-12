@@ -30,7 +30,7 @@ public init(toggleType: ToggleType, isOn!: Bool = false)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|toggleType|[ToggleType](#enum-toggletype)|是|ToggleType.Switch|开关类型。|
+|toggleType|[ToggleType](#enum-toggletype)|是|-|开关类型。|
 |isOn|Bool|否|false|**命名参数。** 开关是否打开。true：打开，false：关闭。|
 
 ### init(ToggleType, Bool, () -> Unit)
@@ -49,8 +49,8 @@ public init(toggleType: ToggleType, isOn: Bool, subcomponent: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|toggleType|[ToggleType](#enum-toggletype)|是|ToggleType.Switch|开关类型。|
-|isOn|Bool|是|false|开关是否打开。true：打开，false：关闭。|
+|toggleType|[ToggleType](#enum-toggletype)|是|-|开关类型。|
+|isOn|Bool|是|-|开关是否打开。true：打开，false：关闭。|
 |subcomponent|()->Unit|是|-|声明子组件。|
 
 ## 通用属性/通用事件
@@ -235,29 +235,34 @@ public operator func ==(other: ToggleType): Bool
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("type: Switch")
             .fontSize(12)
             .fontColor(0xcccccc)
             .width(90.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
-                Toggle(ToggleType.SwitchType, isOn: false)
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
+                Toggle(ToggleType.Switch, isOn: false)
                 .selectedColor(0xed6f21)
                 .switchPointColor(0xe5ffffff)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
 
-                Toggle(ToggleType.SwitchType, isOn: true)
+                Toggle(ToggleType.Switch, isOn: true)
                 .selectedColor(0x39a2db)
                 .switchPointColor(0xe5ffffff)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
             }
 
@@ -265,19 +270,19 @@ class EntryView {
             .fontSize(12)
             .fontColor(0xcccccc)
             .width(90.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
-                Toggle(ToggleType.CheckboxType, isOn: false)
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
+                Toggle(ToggleType.Checkbox, isOn: false)
                 .size(width: 28, height: 28)
                 .selectedColor(0xed6f21)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
 
-                Toggle(ToggleType.CheckboxType, isOn: true)
+                Toggle(ToggleType.Checkbox, isOn: true)
                 .size(width: 28, height: 28)
                 .selectedColor(0x39a2db)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
             }
 
@@ -285,23 +290,23 @@ class EntryView {
             .fontSize(12)
             .fontColor(0xcccccc)
             .width(90.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
-                Toggle(ToggleType.ButtonType, false) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
+                Toggle(ToggleType.Button, false) {
                     Text("status")
                     .padding(left:12, right: 12)
                 }
                 .selectedColor(0xed6f21)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
 
-                Toggle(ToggleType.ButtonType, true) {
+                Toggle(ToggleType.Button, true) {
                     Text("status")
                     .padding(left:12, right: 12)
                 }
                 .selectedColor(0x39a2db)
                 .onChange({isOn: Bool =>
-                    nativeLog("Component status: ${isOn}")
+                    loggerInfo("Component status: ${isOn}")
                 })
             }
         }

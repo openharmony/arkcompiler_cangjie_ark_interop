@@ -542,6 +542,7 @@ URL
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -553,7 +554,7 @@ class EntryView {
     var scroller: Scroller = Scroller()
     func build() {
         Scroll(this.scroller) {
-            Column(10.px){
+            Column(space: 10.px){
                 Button("caretposition  3").onClick({
                     evt => controller.caretPosition(3)
                 })
@@ -593,26 +594,23 @@ class EntryView {
                 .caretColor(Color.Red)
 
                 TextArea(placeholder: "inputfilter only a")
-                .inputFilter(value: "a" , error: { val => nativeLog( "TextArea OnError:" + val) })
+                .inputFilter(value: "a" , error: { val => Hilog.info(0, "cangjie",  "TextArea OnError:" + val) })
 
                 TextArea(placeholder: "TextArea callback")
                 .onChange ({ val =>
-                nativeLog("TextArea onChange:" + val)
+                Hilog.info(0, "cangjie", "TextArea onChange:" + val)
                 })
                 .onPaste ({ val =>
-                    nativeLog("TextArea onPaste:" + val)
+                    Hilog.info(0, "cangjie", "TextArea onPaste:" + val)
                 })
                 .onCut ({ val =>
-                    nativeLog("TextArea onCut:" + val)
+                    Hilog.info(0, "cangjie", "TextArea onCut:" + val)
                 })
                 .onCopy ({ val =>
-                    nativeLog("TextArea onCopy:" + val)
-                })
-                .onEditChanged ({ val =>
-                    nativeLog("TextArea onEditChanged:" + val.toString())
+                    Hilog.info(0, "cangjie", "TextArea onCopy:" + val)
                 })
                 .onSubmit ({ val =>
-                    nativeLog("TextArea onSubmit")
+                    Hilog.info(0, "cangjie", "TextArea onSubmit")
                 })
             }
             .height(100.percent)

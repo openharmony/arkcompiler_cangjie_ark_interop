@@ -26,7 +26,7 @@ public func alignSelf(value: ItemAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ItemAlign](#)|是|-|项目对齐方式。|
+|value|[ItemAlign](./cj-common-types.md#enum-itemalign)|是|-|项目对齐方式。|
 
 ## func flexBasis(Length)
 
@@ -44,7 +44,7 @@ public func flexBasis(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件在父容器主轴方向上的基准尺寸。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件在父容器主轴方向上的基准尺寸。|
 
 ## func flexGrow(Float64)
 

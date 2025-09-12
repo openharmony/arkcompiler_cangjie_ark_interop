@@ -17,7 +17,7 @@ ohos.permission.sec.ACCESS_UDID
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -180,12 +180,12 @@ public static prop buildUser: String
 ### static prop buildVersion
 
 ```cangjie
-public static prop buildVersion: Int64
+public static prop buildVersion: Int32
 ```
 
 **功能：** Build版本号，标识编译构建的版本号。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 
@@ -244,12 +244,12 @@ public static prop distributionOSApiName: String
 ### static prop distributionOSApiVersion
 
 ```cangjie
-public static prop distributionOSApiVersion: Int64
+public static prop distributionOSApiVersion: Int32
 ```
 
 **功能：** 发行版系统API版本。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 
@@ -308,12 +308,12 @@ public static prop distributionOSVersion: String
 ### static prop featureVersion
 
 ```cangjie
-public static prop featureVersion: Int64
+public static prop featureVersion: Int32
 ```
 
 **功能：** Feature版本号，标识规划的新特性版本。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 
@@ -324,12 +324,12 @@ public static prop featureVersion: Int64
 ### static prop firstApiVersion
 
 ```cangjie
-public static prop firstApiVersion: Int64
+public static prop firstApiVersion: Int32
 ```
 
 **功能：** 首个版本系统软件API版本。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 
@@ -388,12 +388,12 @@ public static prop incrementalVersion: String
 ### static prop majorVersion
 
 ```cangjie
-public static prop majorVersion: Int64
+public static prop majorVersion: Int32
 ```
 
 **功能：** Major版本号，随主版本更新增加。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 
@@ -500,12 +500,12 @@ public static prop productSeries: String
 ### static prop sdkApiVersion
 
 ```cangjie
-public static prop sdkApiVersion: Int64
+public static prop sdkApiVersion: Int32
 ```
 
 **功能：** 系统软件API版本。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 
@@ -532,12 +532,12 @@ public static prop securityPatchTag: String
 ### static prop seniorVersion
 
 ```cangjie
-public static prop seniorVersion: Int64
+public static prop seniorVersion: Int32
 ```
 
 **功能：** Senior版本号，随局部架构、重大特性增加。
 
-**类型：** Int64
+**类型：** Int32
 
 **读写能力：** 只读
 

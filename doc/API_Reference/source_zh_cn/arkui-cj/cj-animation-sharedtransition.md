@@ -107,7 +107,7 @@ public var motionPath: MotionPathOptions = MotionPathOptions(path: "")
 
 **功能：** 设置共享转场的运动路径。
 
-**类型：** [MotionPathOptions](#class-motionpathoptions)
+**类型：** [MotionPathOptions](./cj-animation-motionpath.md#class-motionpathoptions)
 
 **读写能力：** 可读写
 
@@ -157,7 +157,7 @@ public init(
 |duration|Int32|否|1000|设置共享转场的持续时间。|
 |curve|[Curve](./cj-common-types.md#enum-curve)|否|Curve.Linear|设置共享转场的动画曲线。|
 |delay|Int32|否|0|设置共享转场的延迟时间。|
-|motionPath|[MotionPathOptions](#class-motionpathoptions)|否|MotionPathOptions(path: "")|设置共享转场的运动路径。|
+|motionPath|[MotionPathOptions](./cj-animation-motionpath.md#class-motionpathoptions)|否|MotionPathOptions(path: "")|设置共享转场的运动路径。|
 |zIndex|Int32|否|0|设置共享转场的层级。|
 |effectType|[SharedTransitionEffectType](./cj-common-types.md#enum-sharedtransitioneffecttype)|否|SharedTransitionEffectType.Exchange|设置共享转场的效果类型。|
 
@@ -178,7 +178,7 @@ public func sharedTransition(id: String, options!: SharedTransitionOptions = Sha
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |id|String|是|-|两个页面中id值相同且不为空字符串的组件即为共享元素，在页面转场时可显示共享元素转场动效。|
-|options|[SharedTransitionOptions](#)|否|SharedTransitionOptions()|共享过渡选项。|
+|options|[SharedTransitionOptions](#class-sharedtransitionoptions)|否|SharedTransitionOptions()|共享过渡选项。|
 
 ## 示例代码
 
@@ -191,7 +191,7 @@ public func sharedTransition(id: String, options!: SharedTransitionOptions = Sha
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -203,7 +203,7 @@ class EntryView {
                 .width(50)
                 .height(50)
                 .onClick {
-                    e => Router.push(url: "Page1")
+                    e => getUIContext().getRouter()
                 }
                 .sharedTransition("sharedImage",
                     options: SharedTransitionOptions(duration: 800, curve: Curve.Linear, delay: 100))
@@ -219,7 +219,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component

@@ -18,6 +18,8 @@ public class Matrix2D {
 
 **功能：** 矩阵对象类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 ### prop rotateX
@@ -27,6 +29,8 @@ public mut prop rotateX: Float64
 ```
 
 **功能：** 水平倾斜系数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Float64
 
@@ -42,6 +46,8 @@ public mut prop rotateY: Float64
 
 **功能：** 垂直倾斜系数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 可读写
@@ -55,6 +61,8 @@ public mut prop scaleX: Float64
 ```
 
 **功能：** 水平缩放系数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Float64
 
@@ -70,6 +78,8 @@ public mut prop scaleY: Float64
 
 **功能：** 垂直缩放系数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 可读写
@@ -83,6 +93,8 @@ public mut prop translateX: Float64
 ```
 
 **功能：** 水平平移距离。默认单位：vp。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** Float64
 
@@ -98,6 +110,8 @@ public mut prop translateY: Float64
 
 **功能：** 垂直平移距离。默认单位：vp。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 可读写
@@ -107,7 +121,7 @@ public mut prop translateY: Float64
 ### init(LengthMetricsUnit)
 
 ```cangjie
-public init(unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
+public init(unit!: LengthMetricsUnit = LengthMetricsUnit.Default)
 ```
 
 **功能：** 创建Matrix2D类型的矩阵对象。
@@ -120,8 +134,7 @@ public init(unit!: LengthMetricsUnit = LengthMetricsUnit.DEFAULT)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|unit|[LengthMetricsUnit](./cj-common-types.md#enum-lengthmetricsunit)|否|LengthMetricsUnit.DEFAULT|**命名参数。** 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)。|
-
+|unit|[LengthMetricsUnit](./cj-common-types.md#enum-lengthmetricsunit)|否|LengthMetricsUnit.Default|**命名参数。** 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)。|
 
 ### func identity()
 
@@ -232,7 +245,7 @@ class EntryView {
                 .onReady(
                     {
                         =>
-                        this.context1.fillRect(100, 20, 50, 50)
+                        this.context1.fillRect(100.0, 20.0, 50.0, 50.0)
                         this.matrix.scaleX = 1.0
                         this.matrix.scaleY = 1.0
                         this.matrix.rotateX = -0.5
@@ -240,7 +253,7 @@ class EntryView {
                         this.matrix.translateX = 10.0
                         this.matrix.translateY = 10.0
                         this.context1.setTransform(this.matrix)
-                        this.context1.fillRect(100, 20, 50, 50)
+                        this.context1.fillRect(100.0, 20.0, 50.0, 50.0)
                     }
                 )
         }.height(100.percent).width(100.percent)

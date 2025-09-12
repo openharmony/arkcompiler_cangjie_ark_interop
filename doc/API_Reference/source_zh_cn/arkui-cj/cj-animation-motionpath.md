@@ -120,4 +120,3 @@ public init(
 |from|Float64|否|0.0|设置动画路径的起始位置。|
 |to|Float64|否|1.0|设置动画路径的结束位置。|
 |rotatable|Bool|否|false|设置动画路径是否可旋转。|
-

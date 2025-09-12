@@ -25,7 +25,7 @@ public class __Recycle__ <: ContainerBase {
 
 **父类型：**
 
-- [ContainerBase](common-old/cj-apis-arkui-component-common.md#class-containerbase)
+- [ContainerBase](./cj-ui-framework.md#class-containerbase)
 
 ### init()
 

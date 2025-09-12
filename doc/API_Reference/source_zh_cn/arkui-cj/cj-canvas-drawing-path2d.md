@@ -80,7 +80,7 @@ public func arc(
     radius: Float64,
     startAngle: Float64,
     endAngle: Float64,
-    anticlockwise!: Bool = false
+    counterclockwise!: Bool = false
 ): Unit
 ```
 
@@ -99,7 +99,7 @@ public func arc(
 |radius|Float64|是|-|弧线的圆半径。<br>默认单位：vp。|
 |startAngle|Float64|是|-|弧线的起始弧度。<br>单位：弧度。|
 |endAngle|Float64|是|-|弧线的终止弧度。<br>单位：弧度。|
-|anticlockwise|Bool|否|false| **命名参数。** 是否逆时针绘制圆弧。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
+|counterclockwise|Bool|否|false| **命名参数。** 是否逆时针绘制圆弧。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
 
 ### func arcTo(Float64, Float64, Float64, Float64, Float64)
 
@@ -182,7 +182,7 @@ public func ellipse(
     rotation: Float64,
     startAngle: Float64,
     endAngle: Float64,
-    anticlockwise!: Bool = false
+    counterclockwise!: Bool = false
 ): Unit
 ```
 
@@ -203,7 +203,7 @@ public func ellipse(
 |rotation|Float64|是|-|椭圆的旋转角度。<br>单位：弧度。|
 |startAngle|Float64|是|-|椭圆绘制的起始点角度。<br>单位：弧度。|
 |endAngle|Float64|是|-|椭圆绘制的结束点角度。<br>单位：弧度。|
-|anticlockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
+|counterclockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。<br>true:逆时针方向绘制椭圆。<br>false:顺时针方向绘制椭圆。|
 
 ### func lineTo(Float64, Float64)
 
@@ -283,7 +283,6 @@ public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |x|Float64|是|-|指定矩形的左上角x坐标值。<br>默认单位：vp。|

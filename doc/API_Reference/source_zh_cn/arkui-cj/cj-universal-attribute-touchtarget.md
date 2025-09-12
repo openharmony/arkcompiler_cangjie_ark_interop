@@ -24,7 +24,7 @@ public func responseRegion(value: Rectangle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Rectangle](#)|是|-|响应区域矩形。|
+|value|[Rectangle](./cj-common-types.md#class-rectangle)|是|-|响应区域矩形。|
 
 ## func responseRegion(Array\<Rectangle>)
 
@@ -42,5 +42,5 @@ public func responseRegion(value: Array<Rectangle>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Rectangle](#)>|是|-|矩形数组。|
+|value|Array\<[Rectangle](./cj-common-types.md#class-rectangle)>|是|-|矩形数组。|
 

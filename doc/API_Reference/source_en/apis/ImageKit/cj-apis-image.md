@@ -4007,17 +4007,17 @@ public enum PropertyKey <: ToString & Equatable<PropertyKey> {
     | PhotoMode
     | ExposureTime
     | FNumber
-    | GPSLatitudeRef
-    | GPSLatitude
-    | GPSLongitudeRef
-    | GPSLongitude
-    | GPSTimeStamp
-    | GPSDateStamp
-    | ISOSpeedRatings
+    | GpsLatitudeRef
+    | GpsLatitude
+    | GpsLongitudeRef
+    | GpsLongitude
+    | GpsTimeStamp
+    | GpsDateStamp
+    | IsoSpeedRatings
     | SensitivityType
     | StandardOutputSensitivity
     | RecommendedExposureIndex
-    | ISOSpeed
+    | IsoSpeed
     | DateTimeOriginal
     | ApertureValue
     | ExposureBiasValue
@@ -4216,10 +4216,10 @@ FocusMode
 
 **Since:** 21
 
-### GPSDateStamp
+### GpsDateStamp
 
 ```cangjie
-GPSDateStamp
+GpsDateStamp
 ```
 
 **Function:** GPS date stamp.
@@ -4228,10 +4228,10 @@ GPSDateStamp
 
 **Since:** 21
 
-### GPSLatitude
+### GpsLatitude
 
 ```cangjie
-GPSLatitude
+GpsLatitude
 ```
 
 **Function:** Image latitude. When modifying, it should be passed in the format of "degrees, minutes, seconds", e.g., "39,54,7.542".
@@ -4240,10 +4240,10 @@ GPSLatitude
 
 **Since:** 21
 
-### GPSLatitudeRef
+### GpsLatitudeRef
 
 ```cangjie
-GPSLatitudeRef
+GpsLatitudeRef
 ```
 
 **Function:** Latitude reference, e.g., N or S.
@@ -4252,10 +4252,10 @@ GPSLatitudeRef
 
 **Since:** 21
 
-### GPSLongitude
+### GpsLongitude
 
 ```cangjie
-GPSLongitude
+GpsLongitude
 ```
 
 **Function:** Image longitude. When modifying, it should be passed in the format of "degrees, minutes, seconds", e.g., "116,19,42.16".
@@ -4264,10 +4264,10 @@ GPSLongitude
 
 **Since:** 21
 
-### GPSLongitudeRef
+### GpsLongitudeRef
 
 ```cangjie
-GPSLongitudeRef
+GpsLongitudeRef
 ```
 
 **Function:** Longitude reference, e.g., W or E.
@@ -4276,10 +4276,10 @@ GPSLongitudeRef
 
 **Since:** 21
 
-### GPSTimeStamp
+### GpsTimeStamp
 
 ```cangjie
-GPSTimeStamp
+GpsTimeStamp
 ```
 
 **Function:** GPS timestamp.
@@ -4288,10 +4288,10 @@ GPSTimeStamp
 
 **Since:** 21
 
-### ISOSpeed
+### IsoSpeed
 
 ```cangjie
-ISOSpeed
+IsoSpeed
 ```
 
 **Function:** ISO speed rating.
@@ -4300,10 +4300,10 @@ ISOSpeed
 
 **Since:** 21
 
-### ISOSpeedRatings
+### IsoSpeedRatings
 
 ```cangjie
-ISOSpeedRatings
+IsoSpeedRatings
 ```
 
 **Function:** ISO sensitivity, e.g., 400.

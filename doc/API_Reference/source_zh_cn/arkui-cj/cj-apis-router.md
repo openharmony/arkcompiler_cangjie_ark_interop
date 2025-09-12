@@ -26,10 +26,10 @@ public class Router {}
 
 **起始版本：** 21
 
-### static func back(String, String)
+### func back(String, String)
 
 ```cangjie
-public static func back(url!: String, params!: String = "")
+public func back(url!: String, params!: String = "")
 ```
 
 **功能：** 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。
@@ -45,22 +45,10 @@ public static func back(url!: String, params!: String = "")
 |url|String|是|-|**命名参数。** 表示目标页面的url。|
 |params|String|否|""|**命名参数。** 页面返回时携带的参数。|
 
-### static func back()
+### func back(Int32, String)
 
 ```cangjie
-public static func back()
-```
-
-**功能：** 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### static func back(Int32, String)
-
-```cangjie
-public static func back(index!: Int32, params!: String = "")
+public func back(index!: Int32, params!: String = "")
 ```
 
 **功能：** 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。
@@ -76,10 +64,10 @@ public static func back(index!: Int32, params!: String = "")
 |index|Int32|是|-|**命名参数。** 跳转目标页面的索引值。从栈底到栈顶，index从1开始递增。|
 |params|String|否|""|**命名参数。** 页面返回时携带的参数。|
 
-### static func getParams()
+### func getParams()
 
 ```cangjie
-public static func getParams(): Option<String>
+public func getParams(): Option<String>
 ```
 
 **功能：** 获取发起跳转的页面往当前页传入的参数。
@@ -94,10 +82,10 @@ public static func getParams(): Option<String>
 |:----|:----|
 |Option\<String>|发起跳转的页面往当前页传入的参数。|
 
-### static func push(String, String)
+### func push(String, String)
 
 ```cangjie
-public static func push(url!: String, params!: String = "")
+public func push(url!: String, params!: String = "")
 ```
 
 **功能：** 跳转到应用内的指定页面。
@@ -365,7 +353,7 @@ class Page1 {
         Column() {
             Text("This is Page1")
             Button("back()").onClick({
-                evt => Router.back()
+                evt => getUIContext().getRouter().back()
             })
         }
     }

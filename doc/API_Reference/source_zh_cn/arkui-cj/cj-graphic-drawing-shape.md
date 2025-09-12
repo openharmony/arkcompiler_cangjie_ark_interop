@@ -103,10 +103,10 @@ public func viewPort(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点x坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点y坐标。|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口宽度。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口高度。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点x坐标。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点y坐标。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口宽度。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口高度。|
 
 ## 基础类型定义
 
@@ -196,7 +196,7 @@ public func fillOpacity(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|不透明度资源。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
 
 #### func stroke(ResourceColor)
 
@@ -232,7 +232,7 @@ public func strokeDashArray(value: Array<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|虚线模式的长度数组，每个元素表示线段或间隔长度，支持长度单位。|
+|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|虚线模式的长度数组，每个元素表示线段或间隔长度，支持长度单位。|
 
 #### func strokeDashOffset(Length)
 
@@ -250,7 +250,7 @@ public func strokeDashOffset(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|起始偏移量，支持长度单位。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|起始偏移量，支持长度单位。|
 
 #### func strokeLineCap(LineCapStyle)
 
@@ -340,7 +340,7 @@ public func strokeOpacity(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|不透明度资源。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
 
 #### func strokeWidth(Length)
 
@@ -358,7 +358,111 @@ public func strokeWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|描边宽度（如 vp/px 等）。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|描边宽度（如 vp/px 等）。|
+
+### class BaseShape
+
+```cangjie
+public abstract class BaseShape {}
+```
+
+**功能：** 绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+#### func fill(ResourceColor)
+
+```cangjie
+public func fill(color: ResourceColor): This
+```
+
+**功能：** 设置填充区域的颜色，异常值按照初始值处理。与通用属性[foregroundColor](./cj-universal-attribute-foregroundcolor.md#func-foregroundcolorcoloringstrategy)同时设置时，后设置的属性生效。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充区域颜色。初始值：Color.BLACK。|
+
+#### func height(Length)
+
+```cangjie
+public func height(height: Length): This
+```
+
+**功能：** 设置组件高度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件高度。<br>单位：vp。|
+
+#### func offset(Length, Length)
+
+```cangjie
+public func offset(x!: Length, y!: Length): This
+```
+
+**功能：** 设置相对偏移，组件相对原本的布局位置进行偏移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴偏移量。<br>单位：vp。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴偏移量。<br>单位：vp。|
+
+#### func size(Length, Length)
+
+```cangjie
+public func size(width!: Length, height!: Length): This
+```
+
+**功能：** 设置组件宽高。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件宽度。<br>单位：vp。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件高度。<br>单位：vp。|
+
+#### func width(Length)
+
+```cangjie
+public func width(width: Length): This
+```
+
+**功能：** 设置组件宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件宽度。</br>单位：vp。|
 
 ## 示例代码
 
@@ -366,14 +470,16 @@ public func strokeWidth(value: Length): This
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("basic")
                 .fontSize(11)
                 .fontColor(0xCCCCCC)
@@ -500,7 +606,7 @@ class EntryView {
             .stroke(0xEE8443)
             .strokeWidth(10)
             .strokeLineJoin(LineJoinStyle.Miter)
-            .strokeMiterLimit(5)
+            .strokeMiterLimit(5.0)
         }.width(100.percent).margin(top: 15)
     }
 }

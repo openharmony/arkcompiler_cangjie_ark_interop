@@ -16,6 +16,42 @@ import kit.ArkUI.*
 
 无
 
+## func onHover((Bool) -> Unit)
+
+```cangjie
+public func onHover(event: (Bool) -> Unit): This
+```
+
+**功能：** 鼠标悬停在组件上时触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|(Bool)->Unit|是|-|鼠标悬停状态变化时触发的回调函数。|
+
+## func onMouse((MouseEvent) -> Unit)
+
+```cangjie
+public func onMouse(event: (MouseEvent) -> Unit): This
+```
+
+**功能：** 当前组件被鼠标按键点击时或者鼠标在组件上移动时，触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|([MouseEvent](#class-mouseevent))->Unit|是|-|组件被鼠标按键点击时或者鼠标在组件上移动时触发该回调。MouseEvent参数包含触发事件时的时间戳、鼠标按键、动作、点击触点在整个屏幕上的坐标和点击触点相对于当前组件的坐标。|
+
 ## class MouseEvent
 
 ```cangjie

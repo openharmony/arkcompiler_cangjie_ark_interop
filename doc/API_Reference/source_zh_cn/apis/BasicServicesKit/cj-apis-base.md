@@ -16,7 +16,7 @@ public let Main: MainThreadContext = MainThreadContext.instance_
 
 **功能：** Main 实际为 MainThreadContext 类型的对象，表示此上下文中的 thread 将会与主线程（UI线程）绑定。
 
-**类型：** [MainThreadContext](#class-MainThreadContext)
+**类型：** [MainThreadContext](#class-mainthreadcontext)
 
 **读写能力：** 只读
 
@@ -140,7 +140,7 @@ prop unitType: LengthType
 
 **功能：** UI框架使用。
 
-**类型：** [LengthType](#enum-LengthType)
+**类型：** [LengthType](#enum-lengthtype)
 
 **读写能力：** 只读
 
@@ -190,7 +190,7 @@ prop fp: Length
 
 **功能：** 字体像素，与vp类似适用屏幕密度变化，随系统字体大小设置变化。
 
-**类型：** [Length](#interface-Length)
+**类型：** [Length](#interface-length)
 
 **读写能力：** 只读
 
@@ -206,7 +206,7 @@ prop lpx: Length
 
 **功能：**视窗逻辑像素单位，l.px单位为实际屏幕宽度与逻辑宽度（通过designWidth配置）的比值，designWidth默认值为720。当designWidth为720时，在实际宽度为1440物理像素的屏幕上，1l.px为2.px大小。
 
-**类型：** [Length](#interface-Length)
+**类型：** [Length](#interface-length)
 
 **读写能力：** 只读
 
@@ -222,7 +222,7 @@ prop percent: Length
 
 **功能：** 百分比类型，用于描述以percent像素单位为单位的长度。
 
-**类型：** [Length](#interface-Length)
+**类型：** [Length](#interface-length)
 
 **读写能力：** 只读
 
@@ -238,7 +238,7 @@ prop px: Length
 
 **功能：** 屏幕物理像素单位。
 
-**类型：** [Length](#interface-Length)
+**类型：** [Length](#interface-length)
 
 **读写能力：** 只读
 
@@ -254,7 +254,7 @@ prop vp: Length
 
 **功能：** 屏幕密度相关像素，根据屏幕像素密度转换为屏幕物理像素，当数值不带单位时，默认单位vp。在实际宽度为1440物理像素的屏幕上，1vp约等于3px。<br/>**说明：** <br/> vp与px的比例与屏幕像素密度有关。
 
-**类型：** [Length](#interface-Length)
+**类型：** [Length](#interface-length)
 
 **读写能力：** 只读
 
@@ -326,7 +326,7 @@ public class Color <: ResourceColor {
 
 **父类型：**
 
-- [ResourceColor](#interface-ResourceColor)
+- [ResourceColor](#interface-resourcecolor)
 
 ### static let Black
 
@@ -336,7 +336,7 @@ public static let Black: Color = Color(0xff000000)
 
 **功能：** 黑色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -352,7 +352,7 @@ public static let Blue: Color = Color(0xff0000ff)
 
 **功能：** 蓝色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -368,7 +368,7 @@ public static let Gray: Color = Color(0xff808080)
 
 **功能：** 灰色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -384,7 +384,7 @@ public static let Green: Color = Color(0xff008000)
 
 **功能：** 绿色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -400,7 +400,7 @@ public static let Red: Color = Color(0xffff0000)
 
 **功能：** 红色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -416,7 +416,7 @@ public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
 
 **功能：** 透明色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -432,7 +432,7 @@ public static let White: Color = Color(0xffffffff)
 
 **功能：** 白色。
 
-**类型：** [Color](#class-Color)
+**类型：** [Color](#class-color)
 
 **读写能力：** 只读
 
@@ -496,7 +496,7 @@ public func toUInt32(): UInt32
 ## class MainThreadContext
 
 ```cangjie
-public class MainThreadContext <: ThreadContext {}
+public class MainThreadContext {}
 ```
 
 **功能：** 框架使用的线程上下文。
@@ -504,10 +504,6 @@ public class MainThreadContext <: ThreadContext {}
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [ThreadContext](#class-threadcontext)
 
 ### func end()
 
@@ -687,7 +683,7 @@ public prop unitType: LengthType
 
 **功能：** UI框架使用。
 
-**类型：** [LengthType](#enum-LengthType)
+**类型：** [LengthType](#enum-lengthtype)
 
 **读写能力：** 只读
 
@@ -733,7 +729,7 @@ public static func parse(value: Int32): LengthType
 
 |类型|说明|
 |:----|:----|
-|[LengthType](#enum-LengthType)|长度类型实例。|
+|[LengthType](#enum-lengthtype)|长度类型实例。|
 
 ### func !=(LengthType)
 
@@ -747,7 +743,7 @@ public operator func !=(other: LengthType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[LengthType](#enum-LengthType)|是|-|另一个枚举值。|
+|other|[LengthType](#enum-lengthtype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -767,7 +763,7 @@ public operator func ==(other: LengthType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[LengthType](#enum-LengthType)|是|-|另一个枚举值。|
+|other|[LengthType](#enum-lengthtype)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -799,7 +795,7 @@ public func getValue(): Int32
 public type Callback<T, V>=(T) -> V
 ```
 
-**功能：** [Callback](#type-Callback)是[(T) -> V](#type-callback)类型的别名。
+**功能：** [Callback](#type-callback)是[(T) -> V](#type-callback)类型的别名。
 
 ## type VoidCallback
 
@@ -807,4 +803,4 @@ public type Callback<T, V>=(T) -> V
 public type VoidCallback =() -> Unit
 ```
 
-**功能：** [VoidCallback](#type-VoidCallback)是[() -> Unit](#type-voidcallback)类型的别名。
+**功能：** [VoidCallback](#type-voidcallback)是[() -> Unit](#type-voidcallback)类型的别名。

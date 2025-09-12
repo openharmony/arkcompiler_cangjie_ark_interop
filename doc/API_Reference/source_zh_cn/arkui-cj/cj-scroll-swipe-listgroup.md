@@ -79,7 +79,7 @@ public func divider(value: Option<ListDividerOptions>): This
 
 | 参数名   | 类型                                                                                                               | 必填  | 默认值 | 说明     |
 |:----- |:---------------------------------------------------------------------------------------------------------------- |:--- |:--- |:------ |
-| value | [ListDividerOptions](#class-listdivideroptions) | 是   | -   | 分割线样式。 |
+| value |Option<ListDividerOptions> | 是   | -   | 分割线样式。 |
 
 ## 基础类型定义
 
@@ -264,10 +264,10 @@ class TimeTable {
 
 class EntryView {
      let timeTable = [
-            TimeTable("Monday", ["Chinese", "Math", "English"]),
-            TimeTable("Tuesday", ["Physics", "Chemistry", "Biology"]),
-            TimeTable("Wednesday", ["History", "Geography", "Politics"]),
-            TimeTable("Thursday", ["Art", "Music", "PE"])]
+        TimeTable("Monday", ["Chinese", "Math", "English"]),
+        TimeTable("Tuesday", ["Physics", "Chemistry", "Biology"]),
+        TimeTable("Wednesday", ["History", "Geography", "Politics"]),
+        TimeTable("Thursday", ["Art", "Music", "PE"])]
 
       @Builder func itemHead(text:String) {
         Text(text)
@@ -278,7 +278,7 @@ class EntryView {
     }
 
     @Builder func itemFoot(num:Int64) {
-        Text("Total ${num} classes")
+        Text("Total ${num} classes")
         .fontSize(16)
         .backgroundColor(0xAABBCC)
         .width(100.percent)
@@ -289,7 +289,7 @@ class EntryView {
         Column() {
             List(space: 20) {
                 ForEach(this.timeTable, itemGeneratorFunc: {item:TimeTable ,_:Int64 =>
-                        ListItemGroup(ListItemGroupParams(header:{=>bind(this.itemHead,this)(item.title)},footer:{=>bind(this.itemFoot,this)(item.projects.size)})){
+                        ListItemGroup(header:{=>bind(this.itemHead,this)(item.title)},footer:{=>bind(this.itemFoot,this)(item.projects.size)}){
                             ForEach(item.projects,itemGeneratorFunc: {project:String,_:Int64=>
                                     ListItem(){
                                         Text(project)
@@ -310,58 +310,3 @@ class EntryView {
 ```
 
 ![list_item_group](figures/listitem_group1.gif)
-
-### 示例2 （设置卡片样式）
-
-该示例展示了ListItemGroup的卡片样式效果。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.ArrayList
-
-class ArrObject {
-    ArrObject(
-        public var style: ListItemGroupStyle,
-        public var itemsStyles: Array<ListItemStyle>
-    ) {}
-}
-
-@Entry
-@Component
-class EntryView {
-
-    private var arr: Array<ArrObject> = [
-        ArrObject(ListItemGroupStyle.CARD, [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.CARD]),
-        ArrObject(ListItemGroupStyle.CARD, [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE]),
-        ArrObject(ListItemGroupStyle.CARD, [ListItemStyle.CARD, ListItemStyle.NONE, ListItemStyle.CARD]),
-        ArrObject(ListItemGroupStyle.NONE, [ListItemStyle.CARD, ListItemStyle.CARD, ListItemStyle.NONE])
-    ]
-
-    func build() {
-        Column() {
-            List(space: 4, initialIndex: 0) {
-                ForEach(this.arr, itemGeneratorFunc: { item: ArrObject, index: Int64 =>
-                    ListItemGroup(ListItemGroupParams(space: 0.px, style: item.style)) {
-                        ForEach(item.itemsStyles, itemGeneratorFunc: { itemStyle: ListItemStyle, itemIndex: Int64 =>
-                            ListItem(ListItemOptions(style: itemStyle)) {
-                                "Item ${itemIndex+1} in Group ${index+1}"
-                            }
-                        }, keyGeneratorFunc: { _, index: Int64 => index.toString()})
-                    }
-                })
-            }.width(100.percent)
-            .height(100.percent)
-            .multiSelectable(true)
-            .backgroundColor(0xDCDCDC)
-        }.width(100.percent)
-        .height(100.percent)
-        .padding(top: 5)
-    }
-}
-```
-
-![list_item_group](figures/listitem_group2.png)

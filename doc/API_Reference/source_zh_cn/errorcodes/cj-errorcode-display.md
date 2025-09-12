@@ -50,4 +50,5 @@ This display manager service works abnormally.
 2. 底层图形图像合成渲染异常。
 
 **处理步骤**<br>
-系统服务内部工作异常，请稍候重试，或者重启设备尝试。
+
+系统服务内部工作异常，请稍后重试，或者重启设备尝试。

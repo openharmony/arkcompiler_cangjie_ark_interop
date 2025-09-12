@@ -71,9 +71,9 @@ class EntryView {
     let scroller = Scroller()
     func build() {
         Column() {
-            Stack(Alignment.End) {
+            Stack(alignContent: Alignment.End) {
                 Scroll(this.scroller) {
-                    Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+                    Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                         ForEach(this.arr, itemGeneratorFunc: { item: Int64, idx: Int64 =>
                             Row() {
                                 Text(item.toString())
@@ -92,7 +92,7 @@ class EntryView {
                 .width(90.percent)
                 .scrollBar(BarState.Off)
                 .scrollable(ScrollDirection.Vertical)
-                ScrollBar(this.scroller, ScrollBarDirection.Vertical, BarState.Auto) {
+                ScrollBar(scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto) {
                     Text("")
                     .width(20)
                     .height(100)
@@ -128,9 +128,9 @@ class EntryView {
     let scroller = Scroller()
     func build() {
         Column() {
-            Stack(Alignment.End) {
+            Stack(alignContent: Alignment.End) {
                 Scroll(this.scroller) {
-                    Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+                    Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                         ForEach(
                             this.arr,
                             itemGeneratorFunc: {
@@ -142,7 +142,7 @@ class EntryView {
                         )
                     }.margin(right: 15)
                 }.width(90.percent).scrollBar(BarState.Off).scrollable(ScrollDirection.Vertical)
-                ScrollBar(this.scroller, ScrollBarDirection.Vertical, BarState.Auto) {}
+                ScrollBar(scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto) {}
             }
         }
     }

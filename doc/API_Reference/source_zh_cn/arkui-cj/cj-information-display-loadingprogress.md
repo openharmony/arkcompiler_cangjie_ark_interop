@@ -2,7 +2,7 @@
 
 用于显示加载动效的组件。
 
-加载动效在组件不可见时停止，组件的可见状态基于[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearea-area-ratios-ratios---unit)处理，可见阈值ratios大于0即视为可见状态。
+加载动效在组件不可见时停止，组件的可见状态基于[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearea-area-raitos-raitos---unit)处理，可见阈值raitos大于0即视为可见状态。
 
 ## 导入模块
 
@@ -73,7 +73,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Text("Orbital LoadingProgress")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)

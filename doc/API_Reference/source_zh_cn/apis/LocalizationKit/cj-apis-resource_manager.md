@@ -13,7 +13,7 @@ import kit.LocalizationKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -233,15 +233,13 @@ public func addResource(path: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 9001010 | Invalid overlay path.
- |
+  | 9001010 | Invalid overlay path.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func closeRawFd(String)
 
@@ -268,17 +266,14 @@ public func closeRawFd(path: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001005 |The resource not found by path.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001005 |The resource not found by path.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getBoolean(UInt32)
 
@@ -311,21 +306,16 @@ public func getBoolean(resId: UInt32): Bool
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getBoolean(AppResource)
 
@@ -344,7 +334,7 @@ public func getBoolean(resource: AppResource): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -358,21 +348,16 @@ public func getBoolean(resource: AppResource): Bool
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getBooleanByName(String)
 
@@ -405,21 +390,16 @@ public func getBooleanByName(resName: String): Bool
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getColor(AppResource)
 
@@ -438,7 +418,7 @@ public func getColor(resource: AppResource): UInt32
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -452,21 +432,16 @@ public func getColor(resource: AppResource): UInt32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getColor(UInt32)
 
@@ -499,21 +474,16 @@ public func getColor(resId: UInt32): UInt32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getColorByName(String)
 
@@ -546,21 +516,16 @@ public func getColorByName(resName: String): UInt32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getConfiguration()
 
@@ -585,11 +550,9 @@ public func getConfiguration(): Configuration
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
-@returns { Configuration } the device configuration.
- | todo | todo |
+  | If the instance id invallid. @returns { Configuration } the device configuration.| todo | todo |
 
 ### func getDeviceCapability()
 
@@ -614,11 +577,9 @@ public func getDeviceCapability(): DeviceCapability
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
-@returns { DeviceCapability } the device capability.
- | todo | todo |
+  | If the instance id invallid. @returns { DeviceCapability } the device capability.| todo | todo |
 
 ### func getLocales(Bool)
 
@@ -651,15 +612,13 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getMediaBase64ByName(String, ?ScreenDensity)
 
@@ -693,26 +652,21 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
+  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 - IllegalMemoryException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | Out of memory.| todo | todo |
 
 ### func getMediaByName(String, ?ScreenDensity)
 
@@ -746,19 +700,15 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
+  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getMediaContent(UInt32, ?ScreenDensity)
 
@@ -792,19 +742,15 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
+  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getMediaContent(AppResource, ?ScreenDensity)
 
@@ -823,7 +769,7 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |density|?[ScreenDensity](#enum-screendensity)|否|None|资源获取需要的屏幕密度，0表示默认屏幕密度。|
 
 **返回值：**
@@ -838,19 +784,15 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
+  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getMediaContentBase64(UInt32, ?ScreenDensity)
 
@@ -876,7 +818,7 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
 
 |类型|说明|
 |:----|:----|
-|String|资源ID对应图片资源的[DrawableDescriptor](#class-drawabledescriptor)对象。|
+|String|资源ID对应图片资源的Base64编码。|
 
 **异常：**
 
@@ -884,26 +826,21 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
+  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 - IllegalMemoryException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | Out of memory.| todo | todo |
 
 ### func getMediaContentBase64(AppResource, ?ScreenDensity)
 
@@ -922,7 +859,7 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |density|?[ScreenDensity](#enum-screendensity)|否|None| **命名参数。** 资源获取需要的屏幕密度，0或缺省表示默认屏幕密度。|
 
 **返回值：**
@@ -937,26 +874,21 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
+  | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 - IllegalMemoryException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | Out of memory.| todo | todo |
 
 ### func getNumber(UInt32)
 
@@ -989,21 +921,16 @@ public func getNumber(resId: UInt32): NumberValueType
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getNumber(AppResource)
 
@@ -1022,7 +949,7 @@ public func getNumber(resource: AppResource): NumberValueType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -1036,21 +963,16 @@ public func getNumber(resource: AppResource): NumberValueType
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getNumberByName(String)
 
@@ -1083,21 +1005,16 @@ public func getNumberByName(resName: String): NumberValueType
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getPluralStringByName(String, Int64)
 
@@ -1131,28 +1048,22 @@ public func getPluralStringByName(resName: String, num: Int64): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 - IllegalMemoryException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | Out of memory.| todo | todo |
 
 ### func getPluralStringValue(UInt32, Int64)
 
@@ -1186,28 +1097,22 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 - IllegalMemoryException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | Out of memory.| todo | todo |
 
 ### func getPluralStringValue(AppResource, Int64)
 
@@ -1226,7 +1131,7 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |num|Int64|是|-|数量值。|
 
 **返回值：**
@@ -1241,28 +1146,22 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 - IllegalMemoryException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | Out of memory.| todo | todo |
 
 ### func getRawFd(String)
 
@@ -1287,7 +1186,7 @@ public func getRawFd(path: String): RawFileDescriptor
 
 |类型|说明|
 |:----|:----|
-|[RawFileDescriptor](#class-rawfiledescriptor)|rawfile文件的descriptor。|
+|[RawFileDescriptor](./cj-apis-raw_file_descriptor.md#class-rawfiledescriptor)|rawfile文件的descriptor。|
 
 **异常：**
 
@@ -1295,17 +1194,14 @@ public func getRawFd(path: String): RawFileDescriptor
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001005 | Invalid relative path.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001005 | Invalid relative path.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getRawFileContent(String)
 
@@ -1338,17 +1234,14 @@ public func getRawFileContent(path: String): Array<UInt8>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001005 | Invalid relative path.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001005 | Invalid relative path.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getRawFileList(String)
 
@@ -1381,71 +1274,14 @@ public func getRawFileList(path: String): Array<String>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001005 | Invalid relative path.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001005 | Invalid relative path.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-### func getString(UInt32)
-
-```cangjie
-
-public func getString(resId: UInt32): String
-```
-
-**功能：** 获取资源ID对应的字符串资源。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resId|UInt32|是|-|资源ID。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源ID对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-- IllegalMemoryException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | Out of memory.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getString(UInt32, Array\<ArgsValueType>)
 
@@ -1477,72 +1313,19 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 
 - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-  | 9001007 | Failed to format the resource obtained based on the resource ID.
- |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | If the input parameter invalid.|
+| 9001001 | Invalid resource ID.|
+| 9001002 | No matching resource is found based on the resource ID.|
+| 9001006 | The resource is referenced cyclically.|
+| 9001007 | Failed to format the resource obtained based on the resource ID.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-### func getString(AppResource)
-
-```cangjie
-
-public func getString(resource: AppResource): String
-```
-
-**功能：** 获取资源对象对应的字符串资源。此接口用于多工程应用内跨包访问。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源对象对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | 错误信息 | 可能原因 | 处理步骤 |
+| :---- | :--- | :--- |
+| If the instance id invallid.| todo | todo |
 
 ### func getString(AppResource, Array\<ArgsValueType>)
 
@@ -1561,7 +1344,7 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 |args|Array\<[ArgsValueType](#enum-argsvaluetype)>|是|-|格式化字符串资源参数。 <br>支持参数类型：<br /> %d、%f、%s、%%。 <br>说明：%%转译符，转译%。<br>举例：%%d格式化后为%d字符串。|
 
 **返回值：**
@@ -1574,72 +1357,75 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-  | 9001007 | Failed to format the resource obtained based on the resource ID.
- |
+| 错误码ID | 错误信息 |
+| :---- | :--- |
+| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+| 9001001 | Invalid resource ID.|
+| 9001002 | No matching resource is found based on the resource ID.|
+| 9001006 | The resource is referenced cyclically.|
+| 9001007 | Failed to format the resource obtained based on the resource ID.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | 错误信息 | 可能原因 | 处理步骤 |
+| :---- | :--- | :--- |
+| If the instance id invallid.| todo | todo |
 
 ### func getStringArrayByName(String)
 
-```cangjie
+ ```cangjie
+ public func getStringArrayByName(resName: String): Array<String>
+ ```
 
-public func getStringArrayByName(resName: String): Array<String>
-```
+ **功能：** 获取资源名对应的字符串数组资源。
 
-**功能：** 获取资源名对应的字符串数组资源。
+ **系统能力：** SystemCapability.Global.ResourceManager
 
-**系统能力：** SystemCapability.Global.ResourceManager
+ **起始版本：** 21
 
-**起始版本：** 21
+ **参数：**
 
-**参数：**
+ |参数名|类型|必填|默认值|说明|
+ |:---|:---|:---|:---|:---|
+ |resName|String|是|-|资源名。|
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resName|String|是|-|资源名。|
+ **返回值：**
 
-**返回值：**
+ |类型|说明|
+ |:----|:----|
+ |Array\<String>|资源名对应的字符串数组资源。|
 
-|类型|说明|
-|:----|:----|
-|Array\<String>|对应资源名的字符串数组。|
+ **异常：**
 
-**异常：**
+ - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
+   | 错误码ID | 错误信息 |
+   | :---- | :--- |
+   | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+   | 9001003 | Invalid resource name. |
+   | 9001004 | No matching resource is found based on the resource name. |
+   | 9001006 | The resource is referenced cyclically. |
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+ - IllegalStateException：
 
-- IllegalStateException：
+ | 错误信息 | 可能原因 | 处理步骤 |
+   | :---- | :--- | :--- |
+   | If the instance id invallid. | todo | todo |
 
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+ **示例：**
+
+ <!-- compile -->
+
+ ```cangjie
+ // index.cj
+ 
+ import kit.LocalizationKit.*
+ import kit.AbilityKit.*
+ 
+ let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+ let resourceManager = ResourceManager.getResourceManager(stageContext)
+ resourceManager.getStringArrayByName("test")
+ ```
 
 ### func getStringArrayValue(UInt32)
 
@@ -1672,21 +1458,16 @@ public func getStringArrayValue(resId: UInt32): Array<String>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getStringArrayValue(AppResource)
 
@@ -1705,7 +1486,7 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|resource|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|资源对象。|
+|resource|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|资源对象。|
 
 **返回值：**
 
@@ -1719,68 +1500,16 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001001 | Invalid resource ID.
- |
-  | 9001002 | No matching resource is found based on the resource ID.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
-
-### func getStringByName(String)
-
-```cangjie
-
-public func getStringByName(resName: String): String
-```
-
-**功能：** 获取资源名对应的字符串资源。
-
-**系统能力：** SystemCapability.Global.ResourceManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|resName|String|是|-|资源名。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|资源名对应的字符串资源。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-
-- IllegalStateException：
-
-| 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func getStringByName(String, Array\<ArgsValueType>)
 
@@ -1814,23 +1543,17 @@ public func getStringByName(resName: String, args: Array<ArgsValueType>): String
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.
- |
-  | 9001003 | Invalid resource name.
- |
-  | 9001004 | No matching resource is found based on the resource name.
- |
-  | 9001006 | The resource is referenced cyclically.
- |
-  | 9001008 | Failed to format the resource obtained based on the resource Name.
- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001003 | Invalid resource name.|
+  | 9001004 | No matching resource is found based on the resource name.|
+  | 9001006 | The resource is referenced cyclically.|
+  | 9001008 | Failed to format the resource obtained based on the resource Name.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ### func removeResource(String)
 
@@ -1857,15 +1580,13 @@ public func removeResource(path: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 9001010 | Invalid overlay path.
- |
+  | 9001010 | Invalid overlay path.|
 
 - IllegalStateException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid.
- | todo | todo |
+  | If the instance id invallid.| todo | todo |
 
 ## enum ArgsValueType
 
@@ -1878,7 +1599,7 @@ public enum ArgsValueType {
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 格式化字符串资源参数枚举类型。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1890,7 +1611,7 @@ public enum ArgsValueType {
 Float32Value(Float32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Float32类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1902,7 +1623,7 @@ Float32Value(Float32)
 Int32Value(Int32)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** Int32类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1914,7 +1635,7 @@ Int32Value(Int32)
 StringValue(String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** String类型的格式化字符串资源参数枚举值。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -1967,8 +1688,8 @@ public enum DeviceType {
     | DeviceTypePhone
     | DeviceTypeTablet
     | DeviceTypeCar
-    | DeviceTypePC
-    | DeviceTypeTV
+    | DeviceTypePc
+    | DeviceTypeTv
     | DeviceTypeWearable
     | DeviceType2In1
     | ...
@@ -2005,10 +1726,10 @@ DeviceTypeCar
 
 **起始版本：** 21
 
-### DeviceTypePC
+### DeviceTypePc
 
 ```cangjie
-DeviceTypePC
+DeviceTypePc
 ```
 
 **功能：** 电脑。
@@ -2029,10 +1750,10 @@ DeviceTypePhone
 
 **起始版本：** 21
 
-### DeviceTypeTV
+### DeviceTypeTv
 
 ```cangjie
-DeviceTypeTV
+DeviceTypeTv
 ```
 
 **功能：** 电视。
@@ -2149,12 +1870,12 @@ Int32Value(Int32)
 
 ```cangjie
 public enum ScreenDensity {
-    | ScreenSDPI
-    | ScreenMDPI
-    | ScreenLDPI
-    | ScreenXLDPI
-    | ScreenXXLDPI
-    | ScreenXXXLDPI
+    | ScreenSdpi
+    | ScreenMdpi
+    | ScreenLdpi
+    | ScreenXldpi
+    | ScreenXxldpi
+    | ScreenXxxldpi
     | ...
 }
 ```
@@ -2165,10 +1886,10 @@ public enum ScreenDensity {
 
 **起始版本：** 21
 
-### ScreenLDPI
+### ScreenLdpi
 
 ```cangjie
-ScreenLDPI
+ScreenLdpi
 ```
 
 **功能：** 大规模的屏幕密度。
@@ -2177,10 +1898,10 @@ ScreenLDPI
 
 **起始版本：** 21
 
-### ScreenMDPI
+### ScreenMdpi
 
 ```cangjie
-ScreenMDPI
+ScreenMdpi
 ```
 
 **功能：** 中规模的屏幕密度。
@@ -2189,10 +1910,10 @@ ScreenMDPI
 
 **起始版本：** 21
 
-### ScreenSDPI
+### ScreenSdpi
 
 ```cangjie
-ScreenSDPI
+ScreenSdpi
 ```
 
 **功能：** 小规模的屏幕密度。
@@ -2201,10 +1922,10 @@ ScreenSDPI
 
 **起始版本：** 21
 
-### ScreenXLDPI
+### ScreenXldpi
 
 ```cangjie
-ScreenXLDPI
+ScreenXldpi
 ```
 
 **功能：** 特大规模的屏幕密度。
@@ -2213,10 +1934,10 @@ ScreenXLDPI
 
 **起始版本：** 21
 
-### ScreenXXLDPI
+### ScreenXxldpi
 
 ```cangjie
-ScreenXXLDPI
+ScreenXxldpi
 ```
 
 **功能：** 超大规模的屏幕密度。
@@ -2225,10 +1946,10 @@ ScreenXXLDPI
 
 **起始版本：** 21
 
-### ScreenXXXLDPI
+### ScreenXxxldpi
 
 ```cangjie
-ScreenXXXLDPI
+ScreenXxxldpi
 ```
 
 **功能：** 超特大规模的屏幕密度。

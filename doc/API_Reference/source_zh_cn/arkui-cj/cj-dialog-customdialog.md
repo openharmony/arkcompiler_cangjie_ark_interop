@@ -581,7 +581,7 @@ public init(
 |borderColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 设置弹窗背板的边框颜色。<br/>如果使用borderColor属性，需要和borderWidth属性一起使用。|
 |borderStyle|[EdgeStyles](./cj-common-types.md#class-edgestyles)|否|EdgeStyles()| **命名参数。** 设置弹窗背板的边框样式。<br/>如果使用borderStyle属性，需要和borderWidth属性一起使用。|
 |width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 设置弹窗背板的宽度。<br/>**说明：**<br>- 弹窗宽度默认最大值：400.vp。<br/>- 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。|
-|height|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 设置弹窗背板的高度。<br/>**说明：**<br/>- 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域）。<br/>- 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。|
+|height|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 设置弹窗背板的高度。<br/>**说明：**<br/>- 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域）。<br/>- 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。|
 |shadow|?[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)|否|None| **命名参数。** 设置弹窗背板的阴影。 <br/> 当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM|
 |backgroundBlurStyle|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick| **命名参数。** 弹窗背板模糊材质。 <br/>**说明：** <br/>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。|
 
@@ -600,13 +600,13 @@ import ohos.arkui.state_macro_manage.*
 class MyDialog {
     var controller: Option<CustomDialogController> = Option.None
     func build() {
-        Row(60) {
+        Row(space: 60) {
             Button("cancel").onClick { evt =>
-                controller?.close()
+                controller?.releaseSelf()
             }
 
             Button("confirm").onClick { evt =>
-                controller?.close()
+                controller?.releaseSelf()
             }
         }.height(500.px)
     }
@@ -619,7 +619,7 @@ class EntryView {
     func build() {
         Column {
             Button("open dialog").onClick({evt =>
-                dialogController.`open`()
+                dialogController.openDialog()
             })
         }
     }

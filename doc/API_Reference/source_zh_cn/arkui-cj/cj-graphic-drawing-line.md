@@ -68,7 +68,7 @@ public func endPoint(value: (Float64, Float64)): This
 public override func initial()
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 创建line对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,20 +110,20 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             // 线条绘制的起止点坐标均是相对于Line组件本身绘制区域的坐标
             Line()
                 .width(200)
                 .height(150)
-                .startPoint((0, 0))
-                .endPoint((50, 100))
+                .startPoint((0.0, 0.0))
+                .endPoint((50.0, 100.0))
                 .stroke(Color.Black)
                 .backgroundColor(0xF5F5F5)
             Line()
                 .width(200)
                 .height(150)
-                .startPoint((50, 50))
-                .endPoint((150, 150))
+                .startPoint((50.0, 50.0))
+                .endPoint((150.0, 150.0))
                 .strokeWidth(5)
                 .stroke(Color.Red)
                 .strokeOpacity(0.5)
@@ -132,8 +132,8 @@ class EntryView {
             Line()
                 .width(200)
                 .height(150)
-                .startPoint((0, 0))
-                .endPoint((100, 100))
+                .startPoint((0.0, 0.0))
+                .endPoint((100.0, 100.0))
                 .stroke(Color.Black)
                 .strokeWidth(3)
                 .strokeDashArray([10, 3])
@@ -143,8 +143,8 @@ class EntryView {
             Line()
                 .width(50)
                 .height(50)
-                .startPoint((0, 0))
-                .endPoint((100, 100))
+                .startPoint((0.0, 0.0))
+                .endPoint((100.0, 100.0))
                 .stroke(Color.Black)
                 .strokeWidth(3)
                 .strokeDashArray([10, 3])
@@ -171,13 +171,13 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Row(10) {
+        Row(space: 10) {
             // 当LineCapStyle值为Butt时
             Line()
                 .width(100)
                 .height(200)
-                .startPoint((50, 50))
-                .endPoint((50, 200))
+                .startPoint((50.0, 50.0))
+                .endPoint((50.0, 200.0))
                 .stroke(Color.Black)
                 .strokeWidth(20)
                 .strokeLineCap(LineCapStyle.Butt)
@@ -187,8 +187,8 @@ class EntryView {
             Line()
                 .width(100)
                 .height(200)
-                .startPoint((50, 50))
-                .endPoint((50, 200))
+                .startPoint((50.0, 50.0))
+                .endPoint((50.0, 200.0))
                 .stroke(Color.Black)
                 .strokeWidth(20)
                 .strokeLineCap(LineCapStyle.Round)
@@ -197,8 +197,8 @@ class EntryView {
             Line()
                 .width(100)
                 .height(200)
-                .startPoint((50, 50))
-                .endPoint((50, 200))
+                .startPoint((50.0, 50.0))
+                .endPoint((50.0, 200.0))
                 .stroke(Color.Black)
                 .strokeWidth(20)
                 .strokeLineCap(LineCapStyle.Square)
@@ -229,16 +229,16 @@ class EntryView {
             Line()
                 .width(300)
                 .height(30)
-                .startPoint((50, 30))
-                .endPoint((300, 30))
+                .startPoint((50.0, 30.0))
+                .endPoint((300.0, 30.0))
                 .stroke(Color.Black)
                 .strokeWidth(10)
             // 设置strokeDashArray的数组间隔为 50
             Line()
                 .width(300)
                 .height(30)
-                .startPoint((50, 20))
-                .endPoint((300, 20))
+                .startPoint((50.0, 20.0))
+                .endPoint((300.0, 20.0))
                 .stroke(Color.Black)
                 .strokeWidth(10)
                 .strokeDashArray([50])
@@ -246,8 +246,8 @@ class EntryView {
             Line()
                 .width(300)
                 .height(30)
-                .startPoint((50, 20))
-                .endPoint((300, 20))
+                .startPoint((50.0, 20.0))
+                .endPoint((300.0, 20.0))
                 .stroke(Color.Black)
                 .strokeWidth(10)
                 .strokeDashArray([50, 10])
@@ -255,8 +255,8 @@ class EntryView {
             Line()
                 .width(300)
                 .height(30)
-                .startPoint((50, 20))
-                .endPoint((300, 20))
+                .startPoint((50.0, 20.0))
+                .endPoint((300.0, 20.0))
                 .stroke(Color.Black)
                 .strokeWidth(10)
                 .strokeDashArray([50, 10, 20])
@@ -264,8 +264,8 @@ class EntryView {
             Line()
                 .width(300)
                 .height(30)
-                .startPoint((50, 20))
-                .endPoint((300, 20))
+                .startPoint((50.0, 20.0))
+                .endPoint((300.0, 20.0))
                 .stroke(Color.Black)
                 .strokeWidth(10)
                 .strokeDashArray([50, 10, 20, 30])

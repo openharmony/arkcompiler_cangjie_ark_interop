@@ -30,14 +30,14 @@ public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|header|ResourceStr|是|-|**命名参数。** 设置对应group的标题显示信息。|
-|footer|ResourceStr|是|-|**命名参数。** 设置对应group的尾部显示信息。|
+|header|ResourceStr|False|""|**命名参数。** 设置对应group的标题显示信息。|
+|footer|ResourceStr|False|""|**命名参数。** 设置对应group的尾部显示信息。|
 |child|()->Unit|否|{ => }|**命名参数。** 声明容器内的子组件。|
 
 ### init(CustomBuilder, CustomBuilder, () -> Unit)
 
 ```cangjie
-public init(header!: AppResource, footer!: AppResource, child!: () -> Unit = {=>})
+public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建一个用来展示菜单MenuItem的分组。
@@ -50,8 +50,8 @@ public init(header!: AppResource, footer!: AppResource, child!: () -> Unit = {=>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|header|[CustomBuilder](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 设置对应group的标题显示信息。|
-|footer|[CustomBuilder](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 设置对应group的尾部显示信息。|
+|header|CustomBuilder|是|-|**命名参数。** 设置对应group的标题显示信息。|
+|footer|CustomBuilder|是|-|**命名参数。** 设置对应group的尾部显示信息。|
 |child|()->Unit|否|{ => }|**命名参数。** 声明容器内的子组件。|
 
 ## 通用属性/通用事件

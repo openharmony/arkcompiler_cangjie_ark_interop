@@ -48,8 +48,8 @@ public init(width!: Length, height!: Length, commands!: ResourceStr = "")
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
 |commands|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
 
 ## 通用属性/通用事件
@@ -89,6 +89,65 @@ public override func initial()
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+## 基础类型定义
+
+### class PathShape
+
+```cangjie
+public class PathShape <: BaseShape {
+    public init(commands!: ResourceStr = "")
+    public init(width!: Length, height!: Length, commands!: ResourceStr = "")
+}
+```
+
+**功能：** 根据绘制路径命令字符串创建一个路径绘制组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**父类型：**
+
+- [BaseShape](./cj-graphic-drawing-common.md#class-baseshape)
+
+#### init(ResourceStr)
+
+```cangjie
+public init(commands!: ResourceStr = "")
+```
+
+**功能：** 根据绘制路径命令字符串创建一个路径绘制组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|commands|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
+
+#### init(Length, Length, ResourceStr)
+
+```cangjie
+public init(width!: Length, height!: Length, commands!: ResourceStr = "")
+```
+
+**功能：** 根据路径所在的矩形宽度、高度创建一个路径绘制组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
+|commands|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
 
 ## SVG路径描述规范
 
@@ -142,12 +201,12 @@ class EntryView {
                 .size(width: 50.percent, height: 25.vp)
                 .margin(10.vp)
             // 绘制直线图形
-            Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Path()
                     .width(210.px)
                     .height(310.px)
                     .commands("M100 0 L200 240 L0 240 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -155,7 +214,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 0 H200 V200 H0 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -163,7 +222,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M100 0 L0 100 L50 200 L150 200 L200 100 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
             }.width(90.percent)
@@ -172,12 +231,12 @@ class EntryView {
                 .fontSize(20)
                 .size(width: 50.percent, height: 25.vp)
                 .margin(10.vp)
-            Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Path()
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 300 S100 0 240 300 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -185,7 +244,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 150 C0 100 140 0 200 150 L100 300 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
 
@@ -193,7 +252,7 @@ class EntryView {
                     .width(210.px)
                     .height(310.px)
                     .commands("M0 100 A30 20 20 0 0 200 100 Z")
-                    .fillOpacity(0)
+                    .fillOpacity(0.0)
                     .stroke(Color.Black)
                     .strokeWidth(3)
             }.width(90.percent)

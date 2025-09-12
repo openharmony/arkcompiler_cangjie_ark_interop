@@ -180,7 +180,6 @@ import ohos.arkui.state_macro_manage.*
 import std.collection.*
 import std.time.*
 import std.sync.*
-import ohos.concurrency.*
 
 class MyDataSource <: IDataSource<Int64> {
     public MyDataSource(let data_: ArrayList<Int64>) {}
@@ -240,7 +239,7 @@ class EntryView {
                 .margin(top: 20.vp)
                 .id("OnRefreshText")
 
-            Refresh(RefreshParams(refreshing: @Binder(isRefreshing))) {
+            Refresh(RefreshOptions(refreshing: @Binder(isRefreshing))) {
                 Column {
                     LazyForEach(
                         myDataSource,
@@ -261,9 +260,6 @@ class EntryView {
                 .width(100.percent)
                 .height(100.percent)
                 .id("refresh")
-                .pullDownRatio(this.ratio)
-                .pullToRefresh(true)
-                .refreshOffset(16)
                 .onRefreshing(
                     {
                         =>
@@ -287,7 +283,6 @@ class EntryView {
                             case _ => ""
                         }
                 })
-                .onOffsetChange({offset: Float64 => this.ratio = 0.75})
                 .backgroundColor(0x89CFF0)
             }
 

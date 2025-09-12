@@ -2,7 +2,7 @@
 
 TextClock 组件通过文本将当前系统时间显示在设备上。支持不同时区的时间显示，最高精度到秒级。
 
-在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange]处理，可见阈值ratios大于0即视为可见状态。
+在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit)处理，可见阈值raitos大于0即视为可见状态。
 
 ## 导入模块
 
@@ -61,7 +61,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
 
 ### func fontFamily(ResourceStr)
 
@@ -99,7 +99,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。初始值：16.fp，不支持设置百分比。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。初始值：16.fp，不支持设置百分比。|
 
 ### func fontStyle(FontStyle)
 
@@ -220,7 +220,7 @@ public func textShadow(value: ShadowOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ShadowOptions](./cj-common-types.md#interface-shadowoptions)|是|-|阴影选项。|
+|value|[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)|是|-|阴影选项。|
 
 ## 组件事件
 
@@ -268,7 +268,6 @@ public class DateTimeOptions {
     public var dayPeriod: String
     public var localeMatcher: String
     public var formatMatcher: String
-
 
     public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeStyle!: String = "long",
         hourCycle!: String = "h11", timeZone!: String = "", numberingSystem!: String = "adlm", hour12!: Bool = false,
@@ -629,13 +628,12 @@ public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeSty
 |timeZoneName|String|否|"long"| **命名参数。** 时区名称的本地化表示, 取值包括："long", "short", "auto"。|
 |dayPeriod|String|否|"long"| **命名参数。** 时段的显示格式，取值包括："long", "short", "narrow", "auto"。|
 |localeMatcher|String|否|"lookup"| **命名参数。** 要使用的区域匹配算法，取值包括：<br/>"lookup"：精确匹配；<br/>"best fit"：最佳匹配。|
-|formatMatcher|String|否| **命名参数。** 要使用的格式匹配算法，取值包括：<br/>"basic"：精确匹配；<br/>"best fit"：最佳匹配。|
+|formatMatcher|String|否|"basic"| **命名参数。** 要使用的格式匹配算法，取值包括：<br/>"basic"：精确匹配；<br/>"best fit"：最佳匹配。|
 
 ### class TextClockController
 
 ```cangjie
 public class TextClockController {
-
 
     public init()
 }
@@ -704,15 +702,15 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State
     var shadowoptions: Array<ShadowOptions> = [
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 10.0, offsetY: 0.0, color: 0xffff0000,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 10.0, offsetY: 0.0, color: 0xffff0000,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 20.0, offsetY: 0.0, color: 0xff000000,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 20.0, offsetY: 0.0, color: 0xff000000,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 30.0, offsetY: 0.0, color: 0xffc0c0c0,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 30.0, offsetY: 0.0, color: 0xffc0c0c0,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 40.0, offsetY: 0.0, color: 0xff00ff00,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 40.0, offsetY: 0.0, color: 0xff00ff00,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 100.0, offsetY: 0.0, color: 0xff0000ff,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 100.0, offsetY: 0.0, color: 0xff0000ff,
             fill: false)
     ]
     public func build() {
@@ -773,36 +771,3 @@ class EntryView {
 ```
 
 ![text_clock2](figures/text_clock2.gif)
-
-### 示例3（设置前导零）
-
-该示例演示了dateTimeOptions属性为小时字段增加或去除前导0的功能。24小时制的小时字段默认带有前导0，可通过dateTimeOptions属性去除前导0，12小时制的小时字段默认不带有前导0，可通过dateTimeOptions属性增加前导0。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    let numericOption = DateTimeOptions(hour: "numeric")
-    let digitOption = DateTimeOptions(hour: "2-digit")
-    public func build() {
-        Column {
-            Row() {
-                Text("24小时制去除前导0：").fontSize(20)
-                TextClock().fontSize(20).format("HH:mm:ss").dateTimeOptions(numericOption)
-            }
-            Row() {
-                Text("12小时制增加前导0：").fontSize(20).margin(10)
-                TextClock().fontSize(20).format("aa hh:mm:ss").dateTimeOptions(digitOption)
-            }
-        }
-    }
-}
-```
-
-![text_clock3](figures/text_clock3.jpg)

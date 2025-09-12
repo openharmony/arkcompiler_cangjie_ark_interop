@@ -15,7 +15,8 @@ import kit.ArkData.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 正确的[dataGroupId](#var-datagroupid)需要向应用市场获取。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -55,7 +56,7 @@ public class Options {
     public var dataGroupId: String
     public var storageType: StorageType
     public init(name: String, dataGroupId!: String = String.empty,
-        storageType!: StorageType = StorageType.StorageTypeXml)
+        storageType!: StorageType = StorageType.Xml)
 }
 ```
 
@@ -117,7 +118,7 @@ public var storageType: StorageType
 
 ```cangjie
 public init(name: String, dataGroupId!: String = String.empty,
-    storageType!: StorageType = StorageType.StorageTypeXml)
+    storageType!: StorageType = StorageType.Xml)
 ```
 
 **功能：** 用于创建Options实例的构造函数。默认在本应用沙箱目录下创建Preferences实例。
@@ -132,7 +133,7 @@ public init(name: String, dataGroupId!: String = String.empty,
 |:---|:---|:---|:---|:---|
 |name|String|是|-|Preferences实例的名称。|
 |dataGroupId|String|否|String.empty|应用组ID，需要向应用市场获取。|
-|storageType|[StorageType](#enum-storagetype)|否|StorageType.StorageTypeXml|存储模式，为可选参数。|
+|storageType|[StorageType](#enum-storagetype)|否|StorageType.Xml|存储模式，为可选参数。|
 
 ## class Preferences
 
@@ -164,7 +165,7 @@ public static func deletePreferences(context: UIAbilityContext, name: String): U
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |name|String|是|-|Preferences实例的名称。|
 
 **异常：**
@@ -186,16 +187,12 @@ public static func deletePreferences(context: UIAbilityContext, name: String): U
 
 import kit.ArkData.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例
-    Preferences.deletePreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")
+    Preferences.deletePreferences(Global.abilityContext, "myStore")
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "delete Preferences failed")
 }
@@ -219,7 +216,7 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |options|[Options](#class-options)|是|-|与Preferences实例相关的配置选项。|
 
 **异常：**
@@ -236,7 +233,7 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
@@ -249,16 +246,12 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 import kit.ArkData.*
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")  // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, "myStore")  // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例
-    Preferences.deletePreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore")
+    Preferences.deletePreferences(Global.abilityContext, "myStore")
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "delete Preferences failed")
 }
@@ -272,7 +265,7 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -284,7 +277,7 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |name|String|是|-|Preferences实例的名称。|
 
 **返回值：**
@@ -304,12 +297,13 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -318,15 +312,11 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -340,7 +330,7 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -352,7 +342,7 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |options|[Options](#class-options)|是|-|Preferences实例的名称。|
 
 **返回值：**
@@ -372,12 +362,13 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -386,15 +377,11 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -408,7 +395,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-string)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-string)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -420,7 +407,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |name|String|是|-|Preferences实例的名称。|
 
 **异常：**
@@ -434,6 +421,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -442,15 +430,11 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -464,7 +448,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 **功能：** 从缓存中移出指定的Preferences实例。
 
-应用首次调用[getPreferences](#func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
+应用首次调用[getPreferences](#static-func-getpreferencesuiabilitycontext-options)接口获取某个Preferences实例后，该实例会被会被缓存起来，后续再次[getPreferences](#static-func-getpreferencesuiabilitycontext-options)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移出缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会出现数据一致性问题。
 
@@ -476,7 +460,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|应用上下文。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|应用上下文。|
 |options|[Options](#class-options)|是|-|Preferences实例的名称。|
 
 **异常：**
@@ -493,12 +477,13 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
 | :---- | :--- | :--- |
 | The context is invalid. | todo | todo |
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -507,15 +492,11 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 try {
     // 删除 Preferences 实例的缓存
-    Preferences.removePreferencesFromCache(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID"))
+    Preferences.removePreferencesFromCache(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID"))
 } catch (e: Exception) {
     Hilog.error(0, "AppLogCj", "Failed to remove cache for preferences")
 }
@@ -544,6 +525,7 @@ public func clear(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -551,13 +533,9 @@ public func clear(): Unit
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+import ohos.data.preferences.ValueType as PreferencesValueType
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.clear()
 ```
@@ -597,13 +575,9 @@ public func delete(key: String): Unit
 // index.cj
 
 import kit.ArkData.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
 
 // 获取 Preferences 实例
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), "myStore") // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, "myStore") // 需获取Context应用上下文，详见本文使用说明
 preferences.delete("startup")
 ```
 
@@ -630,6 +604,7 @@ public func flush(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -637,13 +612,9 @@ public func flush(): Unit
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+import ohos.data.preferences.ValueType as PreferencesValueType
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("myKey", PreferencesValueType.StringData("myValue"))
 preferences.flush()
 ```
@@ -671,7 +642,7 @@ public func get(key: String, defValue: ValueType): ValueType
 
 |类型|说明|
 |:----|:----|
-|[ValueType](#enum-valuetype)|返回键对应的值。
+|[ValueType](#enum-valuetype)|返回键对应的值。|
 
 **异常：**
 
@@ -684,6 +655,7 @@ public func get(key: String, defValue: ValueType): ValueType
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -691,18 +663,15 @@ public func get(key: String, defValue: ValueType): ValueType
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
+import ohos.data.preferences.ValueType as PreferencesValueType
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
-var value = preferences.get("key", PreferencesValueType.integer(0))
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+var value = preferences.get("key", PreferencesValueType.Integer(0))
 match (value) {
-    case PreferencesValueType.integer(n) => Hilog.info(0, "AppLogCj", "获取到的值为${n}")
+    case PreferencesValueType.Integer(n) => Hilog.info(0, "AppLogCj", "获取到的值为${n}")
     case _ => Hilog.info(0, "AppLogCj", "获取到的值并不是 Int")
 }
 ```
@@ -723,7 +692,7 @@ public func getAll(): HashMap<String, ValueType>
 
 |类型|说明|
 |:----|:----|
-|[HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>|HashMap对象，返回含有所有键值数据。|
+|HashMap\<String,[ValueType](#enum-valuetype)>|HashMap对象，返回含有所有键值数据。|
 
 **异常：**
 
@@ -736,6 +705,7 @@ public func getAll(): HashMap<String, ValueType>
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -744,13 +714,10 @@ public func getAll(): HashMap<String, ValueType>
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 var values = preferences.getAll()
 for ((k, v) in values) {
     match (v) {
@@ -797,6 +764,7 @@ public func has(key: String): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -805,13 +773,10 @@ public func has(key: String): Bool
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
 import ohos.base.*
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+
 import kit.PerformanceAnalysisKit.Hilog
 
-let preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+let preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 let hasKey = preferences.has("startup")
 if (hasKey) {
     Hilog.info(0, "AppLogCj", "The key 'startup' is contained.")
@@ -837,7 +802,7 @@ public func off(event :PreferencesEvent, callback!: ?Callback1Argument<String> =
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[PreferencesEvent](#enum-preferencesevent)|是|-|事件类型，表示取消订阅数据变更，或表示取消订阅进程间数据变更|
-|callback|?[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argumentex)\<String>|否|None|需要取消的回调函数，不填写则全部取消。<br> String: 发生变化的Key的类型。|
+|callback|?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String>|否|None|需要取消的回调函数，不填写则全部取消。<br> String: 发生变化的Key的类型。|
 
 **异常：**
 
@@ -859,11 +824,8 @@ import kit.ArkData.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import kit.ArkData.ValueType as PValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+import ohos.data.preferences.ValueType as PValueType
+
 import kit.PerformanceAnalysisKit.Hilog
 
 // 此处代码可添加在依赖项定义中
@@ -875,7 +837,7 @@ class Callback <: Callback1Argument<String> {
 }
 
 var str = "container"
-var a = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), str) // 需获取Context应用上下文，详见本文使用说明
+var a = Preferences.getPreferences(Global.abilityContext, str) // 需获取Context应用上下文，详见本文使用说明
 var c = Callback()
 a.on(PreferencesEvent.PreferencesChange, c)
 a.off(PreferencesEvent.PreferencesChange)
@@ -900,7 +862,7 @@ public func on(event :PreferencesEvent, callback: Callback1Argument<String>): Un
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[PreferencesEvent](#enum-preferencesevent)|是|-|事件类型。<br> PreferencesChange 时，表示订阅数据变更，订阅的Key的值发生变更后，在执行flush方法后，触发callback回调。<br> PreferencesMultiProcessChange 时，表示订阅进程间数据变更，多个进程持有同一个首选项文件时，订阅的Key的值在任意一个进程发生变更后，执行flush方法后，触发callback回调。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argumentex)\<String>|是|-|回调函数。<br>String: 发生变化的Key的类型。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String>|是|-|回调函数。<br>String: 发生变化的Key的类型。|
 
 **示例：**
 
@@ -913,11 +875,8 @@ import kit.ArkData.*
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.*
-import kit.ArkData.ValueType as PValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+import ohos.data.preferences.ValueType as PValueType
+
 import kit.PerformanceAnalysisKit.Hilog
 
 // 回调函数
@@ -928,7 +887,7 @@ class Callback <: Callback1Argument<String> {
 }
 
 var str = "container"
-var a = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), str) // 需获取Context应用上下文，详见本文使用说明
+var a = Preferences.getPreferences(Global.abilityContext, str) // 需获取Context应用上下文，详见本文使用说明
 var c = Callback()
 a.on(PreferencesEvent.PreferencesChange, c)
 a.put("kkk1", PValueType.StringData("vvv1"))
@@ -965,6 +924,7 @@ public func put(key: String, value: ValueType): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -972,13 +932,9 @@ public func put(key: String, value: ValueType): Unit
 
 import kit.ArkData.*
 import ohos.data.preferences.Options as PreferencesOptions
-import kit.ArkData.ValueType as PreferencesValueType
-import ohos.arkui.state_management.AppStorage
-//// check redundant import
-import kit.AbilityKit.UIAbilityContext
-//// end
+import ohos.data.preferences.ValueType as PreferencesValueType
 
-var preferences = Preferences.getPreferences(AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow(), PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
+var preferences = Preferences.getPreferences(Global.abilityContext, PreferencesOptions("mystore", dataGroupId:"myGroupID")) // 需获取Context应用上下文，详见本文使用说明
 preferences.put("Monday", PreferencesValueType.StringData("今天天气真好"))
 ```
 
@@ -1025,8 +981,8 @@ PreferencesMultiProcessChange
 
 ```cangjie
 public enum StorageType {
-    | StorageTypeXml
-    | StorageTypeGskv
+    | Xml
+    | Gskv
 }
 ```
 
@@ -1036,10 +992,10 @@ public enum StorageType {
 
 **起始版本：** 21
 
-### StorageTypeGskv
+### Gskv
 
 ```cangjie
-StorageTypeGskv
+Gskv
 ```
 
 **功能：** 表示GSKV存储模式。
@@ -1050,10 +1006,10 @@ StorageTypeGskv
 
 **起始版本：** 21
 
-### StorageTypeXml
+### Xml
 
 ```cangjie
-StorageTypeXml
+Xml
 ```
 
 **功能：** 表示XML存储模式，这是Preferences的默认存储模式。

@@ -42,7 +42,7 @@ import kit.LocalizationKit.*
 class EntryView {
     @State var isShow: Bool = false
     func build() {
-        Stack(Alignment.Center) {
+        Stack(alignContent:Alignment.Center) {
             if (this.isShow) {
                 Image(@r(app.media.startIcon))
                     .autoResize(false)
@@ -70,7 +70,7 @@ class EntryView {
                     .transition(TransitionEffect.OPACITY)
             }
         }.onClick({
-            event => animateTo(AnimateParam(duration: 1000), ({=> this.isShow = !this.isShow}))
+            event => getUIContext().animateTo(AnimateParam(duration: 1000), ({=> this.isShow = !this.isShow}))
         })
     }
 }

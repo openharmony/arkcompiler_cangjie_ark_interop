@@ -13,7 +13,7 @@ import kit.BasicServicesKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -87,7 +87,7 @@ public static func getTimezone(): String
 
 |类型|说明|
 |:----|:----|
-|String|返回系统时区。具体可见[支持的系统时区](#支持的系统时区) 。|
+|String|返回系统时区。|
 
 **示例：**
 
@@ -154,7 +154,7 @@ try {
 
 ```cangjie
 public enum TimeType {
-    | StartUp
+    | Startup
     | Active
     | ...
 }
@@ -178,10 +178,10 @@ Active
 
 **起始版本：** 21
 
-### StartUp
+### Startup
 
 ```cangjie
-StartUp
+Startup
 ```
 
 **功能：** 自系统启动以来经过的毫秒数，包括深度睡眠时间。

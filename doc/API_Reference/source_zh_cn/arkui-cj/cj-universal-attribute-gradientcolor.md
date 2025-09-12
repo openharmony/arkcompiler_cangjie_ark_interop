@@ -31,7 +31,7 @@ public func linearGradient(angle!: ?Float64 = None, direction!: GradientDirectio
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |angle|?Float64|否|None|**命名参数。** 线性渐变的起始角度。0点方向顺时针旋转为正向角度。|
-|direction|[GradientDirection](#)|否|GradientDirection.Bottom|**命名参数。**  线性渐变的方向，设置angle后不生效。|
+|direction|[GradientDirection](./cj-common-types.md#enum-gradientdirection|否|GradientDirection.Bottom|**命名参数。**  线性渐变的方向，设置angle后不生效。|
 |colors|Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)>|否|[(Color.Transparent, 0.0)]|**命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
 |repeating|Bool|否|false|**命名参数。** 为渐变的颜色重复着色。|
 
@@ -53,7 +53,7 @@ public func radialGradient(center: (Length, Length), radius: Length, colors: Arr
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |center|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|是|-|为角度渐变的中心点，即相对于当前组件左上角的坐标。|
-|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|是|-|径向渐变的半径。<br>取值范围：\[0.0,+∞)。<br> **说明：** <br> 设置为小于的0值时，按值为0处理。初始值：0.0。|
+|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|径向渐变的半径。<br>取值范围：\[0.0,+∞)。<br> **说明：** <br> 设置为小于的0值时，按值为0处理。初始值：0.0。|
 |colors|Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)>|是|-|指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
 |repeating|Bool|否|false|**命名参数。** 为渐变的颜色重复着色。|
 
@@ -75,11 +75,11 @@ public func sweepGradient(center: (Length, Length), start!: Float64 = 0.0, end!:
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|center|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length))|是|-|为角度渐变的中心点，即相对于当前组件左上角的坐标。|
+|center|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|是|-|为角度渐变的中心点，即相对于当前组件左上角的坐标。|
 |start|Float64|否|0.0| **命名参数。** 角度渐变的起点。|
 |end|Float64|否|0.0| **命名参数。** 角度渐变的终点。|
 |rotation|Float64|否|0.0| **命名参数。** 角度渐变的旋转角度。|
-|colors|Array\<([Color](./cj-common-types.md#class-color),Float64)>|否|[(Color.Transparent, 0.0)]| **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
+|colors|Array\<([ResourceColor](./cj-common-types.md),Float64)>|否|[(Color.Transparent, 0.0)]| **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。|
 |repeating|Bool|否|false| **命名参数。** 为渐变的颜色重复着色。|
 
 > **说明：**
