@@ -48,7 +48,6 @@ import ohos.callback_invoke.*
 import ohos.hilog.Hilog
 import ohos.multimedia.camera
 
-
 var ctx = None<UIAbilityContext>
 
 @Entry

@@ -1,6 +1,6 @@
 # mediatool工具
 
-mediatool是一个轻量级的命令行工具集合，开发者可通过此工具操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片视频会在图库界面呈现。
+mediatool是一个轻量级的命令行工具集合，开发者可通过此工具操作媒体库资源。媒体库为图库提供和管理数据，媒体库中的图片、视频会在图库界面呈现。
 
 mediatool工具为系统自带工具，不需要安装，内置在/bin文件夹中，可以通过hdc shell直接调用。
 
@@ -20,9 +20,9 @@ mediatool工具为系统自带工具，不需要安装，内置在/bin文件夹�
 mediatool send <path-to-local-media-file> [-ts] [-tas] [-rf] [-urf]
 ```
 
-该命令能够将设备`<path-to-local-media-file>`路径下的图片视频文件推入媒体库中保存。支持保存图片、视频和音频文件。文件在媒体库中会保留原有的名字。`<path-to-local-media-file>`可以为文件夹，mediatool会将文件夹里的所有文件置入媒体库中。保存成功后会打印成功置入的资源的uri。
+该命令能够将设备`<path-to-local-media-file>`路径下的图片、视频或音频文件推入媒体库中保存。支持保存图片、视频和音频文件。文件在媒体库中会保留原有的名字。`<path-to-local-media-file>`可以为文件夹，mediatool会将文件夹里的所有文件置入媒体库中。保存成功后会打印成功置入的资源的uri。
 
-默认情况下，将媒体文件保存进媒体库是以同步方式创建缩略图，并且置入后```<path-to-local-media-file>```下的文件会被删除。
+默认情况下，将媒体文件保存进媒体库是以同步方式创建缩略图，并且置入后`<path-to-local-media-file>`下的文件会被删除。
 
 | 选项               | 说明             |
 | :---- | :--------------- |
@@ -115,7 +115,7 @@ mediatool delete <resource-uri>
 
 媒体库资源uri的获取可参考[媒体库uri介绍/获取方式](#媒体库uri介绍获取方式)。
 
-将`<resource-uri>`指定为`all`则指定删除所有媒体库资源，并重置媒体库的所有数据。
+将`<resource-uri>`指定为`all`则删除所有媒体库资源，并重置媒体库的所有数据。
 
 **使用示例：**
 
@@ -132,7 +132,7 @@ mediatool delete <resource-uri>
 mediatool query <display-name> [-p] [-u]
 ```
 
-该命令能够查询出所有名字为`<display-name>`的媒体库资源，返回资源源文件真实路径或媒体资源uri。默认返回源文件真实路径。
+该命令能够查询出所有名字为`<display-name>`的媒体库资源，返回资源的源文件真实路径或媒体资源uri。默认返回源文件真实路径。
 
 该命令无法查询出隐藏相册内的媒体资产。
 
@@ -243,4 +243,4 @@ uri是媒体库资产的唯一标识符，每个uri都对应一个媒体资产�
 媒体库uri可以用于mediatool recv命令导出特定媒体库资产，也可以用于mediatool delete删除特定媒体库资产。
 
 uri样例：`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`。
-在mediatool操作中，需要使用以上uri时，无论使用`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`还是`file://media/Photo/1`都能够正确的定位到目标资产。
+在mediatool操作中，需要使用以上uri时，无论使用`file://media/Photo/1/IMG_1743078145_000/MyImage.jpg`还是`file://media/Photo/1`都能够正确地定位到目标资产。

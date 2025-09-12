@@ -18,7 +18,7 @@ nestedScroll有两个入参，分别为scrollForward和scrollBackward，均为[N
 ```cangjie
 // index.cj
 import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
+import ohos.web.webview.WebviewController
 import kit.ArkUI.*
 
 @Entry
@@ -27,22 +27,22 @@ class EntryView {
     var scrollerForScroll: Scroller = Scroller()
     let controller = WebviewController()
     let controller2 = WebviewController()
-    // NestedScrollMode设置成SELF_ONLY时，Web网页滚动到页面边缘后，不与父组件联动，父组件仍无法滚动。
+    // NestedScrollMode设置成SelfOnly时，Web网页滚动到页面边缘后，不与父组件联动，父组件仍无法滚动。
     @State
-    var nestedScrollMode0: NestedScrollMode = NestedScrollMode.SELF_ONLY
-    // NestedScrollMode设置成SELF_FIRST时，Web网页滚动到页面边缘后，父组件继续滚动。
+    var nestedScrollMode0: NestedScrollMode = NestedScrollMode.SelfOnly
+    // NestedScrollMode设置成SelfFirst时，Web网页滚动到页面边缘后，父组件继续滚动。
     @State
-    var nestedScrollMode1: NestedScrollMode = NestedScrollMode.SELF_FIRST
-    // NestedScrollMode设置为PARENT_FIRST时，父组件先滚动，滚动至边缘后通知Web继续滚动。
+    var nestedScrollMode1: NestedScrollMode = NestedScrollMode.SelfFirst
+    // NestedScrollMode设置为ParentFirst时，父组件先滚动，滚动至边缘后通知Web继续滚动。
     @State
-    var nestedScrollMode2: NestedScrollMode = NestedScrollMode.PARENT_FIRST
-    // NestedScrollMode设置为PARALLEL时，父组件与Web同时滚动。
+    var nestedScrollMode2: NestedScrollMode = NestedScrollMode.ParentFirst
+    // NestedScrollMode设置为Parallel时，父组件与Web同时滚动。
     @State
-    var nestedScrollMode3: NestedScrollMode = NestedScrollMode.PARALLEL
+    var nestedScrollMode3: NestedScrollMode = NestedScrollMode.Parallel
     @State
-    var nestedScrollModeF: NestedScrollMode = NestedScrollMode.SELF_FIRST
+    var nestedScrollModeF: NestedScrollMode = NestedScrollMode.SelfFirst
     @State
-    var nestedScrollModeB: NestedScrollMode = NestedScrollMode.SELF_FIRST
+    var nestedScrollModeB: NestedScrollMode = NestedScrollMode.SelfFirst
     // scroll竖向的滚动
     @State
     var scrollDirection: ScrollDirection = ScrollDirection.Vertical
@@ -50,34 +50,34 @@ class EntryView {
     func build() {
         Flex() {
             Scroll(this.scrollerForScroll) {
-                Column(5) {
+                Column(space: 5) {
                     Row() {
                         Text('切换前滚动模式').fontSize(5)
-                        Button("SELF_ONLY").onClick { evt =>
+                        Button("SelfOnly").onClick { evt =>
                             this.nestedScrollModeF = this.nestedScrollMode0
                         }.fontSize(5)
-                        Button("SELF_FIRST").onClick { evt =>
+                        Button("SelfFirst").onClick { evt =>
                             this.nestedScrollModeF = this.nestedScrollMode1
                         }.fontSize(5)
-                        Button("PARENT_FIRST").onClick { evt =>
+                        Button("ParentFirst").onClick { evt =>
                             this.nestedScrollModeF = this.nestedScrollMode2
                         }.fontSize(5)
-                        Button("PARALLEL").onClick { evt =>
+                        Button("Parallel").onClick { evt =>
                             this.nestedScrollModeF = this.nestedScrollMode3
                         }.fontSize(5)
                     }
                     Row() {
                         Text('切换后滚动模式').fontSize(5)
-                        Button("SELF_ONLY").onClick { evt =>
+                        Button("SelfOnly").onClick { evt =>
                             this.nestedScrollModeB = this.nestedScrollMode0
                         }.fontSize(5)
-                        Button("SELF_FIRST").onClick { evt =>
+                        Button("SelfFirst").onClick { evt =>
                             this.nestedScrollModeB = this.nestedScrollMode1
                         }.fontSize(5)
-                        Button("PARENT_FIRST").onClick { evt =>
+                        Button("ParentFirst").onClick { evt =>
                             this.nestedScrollModeB = this.nestedScrollMode2
                         }.fontSize(5)
-                        Button("PARALLEL").onClick { evt =>
+                        Button("Parallel").onClick { evt =>
                             this.nestedScrollModeB = this.nestedScrollMode3
                         }.fontSize(5)
                     }

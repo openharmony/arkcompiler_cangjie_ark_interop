@@ -72,7 +72,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Text('Stack')
                 .width(90.percent)
                 .height(100.percent)
@@ -113,7 +113,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Stack(Alignment.BottomStart) {
+        Stack(alignContent: Alignment.BottomStart) {
             Column() {
                 Text('Stack子元素1')
                     .textAlign(TextAlign.End)
@@ -128,14 +128,14 @@ class EntryView {
             }
             .width(150)
             .height(150)
-            .backgroundColor(Color.PINK)
+            .backgroundColor(0xFEC0CD)
 
             Column() {
                 Text('Stack子元素3').fontSize(20)
             }
             .width(200)
             .height(200)
-            .backgroundColor(Color.GREY)
+            .backgroundColor(Color.Gray)
         }
         .width(350)
         .height(350)
@@ -159,7 +159,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Stack(Alignment.BottomStart) {
+        Stack(alignContent: Alignment.BottomStart) {
             Column() {
                 Text('Stack子元素1').fontSize(20)
             }
@@ -172,14 +172,14 @@ class EntryView {
             }
             .width(150)
             .height(150)
-            .backgroundColor(Color.PINK)
+            .backgroundColor(0xFEC0CD)
             .zIndex(1)
             Column() {
                 Text('Stack子元素3').fontSize(20)
             }
             .width(200)
             .height(200)
-            .backgroundColor(Color.GREY)
+            .backgroundColor(Color.Gray)
         }
         .width(350)
         .height(350)
@@ -206,8 +206,8 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     private var arr: Array<String> = ['APP1', 'APP2', 'APP3', 'APP4', 'APP5', 'APP6', 'APP7', 'APP8'];
     func build() {
-        Stack(Alignment.Bottom) {
-            Flex(FlexParams(wrap: FlexWrap.Wrap)) {
+        Stack(alignContent: Alignment.Bottom) {
+            Flex(wrap: FlexWrap.Wrap) {
                 ForEach(this.arr,itemGeneratorFunc: {
                     item: String, idx: Int64 => Text(item)
                         .width(100)
@@ -223,7 +223,7 @@ class EntryView {
             }
             .width(100.percent)
             .height(100.percent)
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center) {
                 Text('联系人').fontSize(16)
                 Text('设置').fontSize(16)
                 Text('短信').fontSize(16)

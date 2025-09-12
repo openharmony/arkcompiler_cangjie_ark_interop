@@ -14,14 +14,17 @@
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback0Argument
+    import ohos.business_exception.BusinessException
     ```
 
 2. 创建Surface。
 
-    XComponent组件为预览流提供的Surface（获取surfaceId请参见[getXcomponentSurfaceId](../../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-xcomponent.md)，而XComponent的能力由UI提供，相关介绍请参见[XComponent组件参考](../../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-xcomponent.md)。
+    XComponent组件为预览流提供的Surface，而XComponent的能力由UI提供。
 
     > **说明：**
+    >
     > 预览流与录像输出流的分辨率的宽高比要保持一致，如果设置XComponent组件中的Surface显示区域宽高比为1920:1080 = 16:9，则需要预览流中的分辨率的宽高比也为16:9，如分辨率选择640:360，或960:540，或1920:1080，以此类推。
 
 3. 通过[CameraOutputCapability](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability)类中的previewProfiles属性获取当前设备支持的预览能力，返回previewProfilesArray数组 。通过[createPreviewOutput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string)方法创建预览输出流，其中，[createPreviewOutput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string)方法中的两个参数分别是previewProfilesArray数组中的第一项和步骤二中获取的surfaceId。
@@ -44,14 +47,14 @@
     func startPreviewOutput(cameraManager: CameraManager, previewOutput: PreviewOutput): Unit {
         let cameraArray: Array<CameraDevice> = cameraManager.getSupportedCameras()
         if (cameraArray.size == 0) {
-            AppLog.error('no camera.')
+            Hilog.error(0,"",'no camera.')
             return
         }
         // 获取支持的模式类型。
         let sceneModes: Array<SceneMode> = cameraManager.getSupportedSceneModes(cameraArray[0])
         let isSupportPhotoMode: Bool = sceneModes.indexOf(SceneMode.NormalPhoto).isSome()
         if (!isSupportPhotoMode) {
-            AppLog.error('photo mode not support')
+            Hilog.error(0,"",'photo mode not support')
             return
         }
         let cameraInput: CameraInput = cameraManager.createCameraInput(cameraArray[0])
@@ -76,8 +79,8 @@
 
     ```cangjie
     class FrameStartCallBack <: Callback0Argument {
-        public open func invoke(): Unit {
-            AppLog.info("Preview frame started")
+        public open func invoke(error:?BusinessException): Unit {
+            Hilog.info(0,"","Preview frame started")
         }
     }
 
@@ -92,8 +95,8 @@
 
     ```cangjie
     class FrameEndCallBack <: Callback0Argument {
-        public open func invoke(): Unit {
-            AppLog.info("Preview frame ended")
+        public open func invoke(error:?BusinessException): Unit {
+            Hilog.info(0,"","Preview frame ended")
         }
     }
 
@@ -107,9 +110,11 @@
     <!-- compile -->
 
     ```cangjie
-    class ErrorCallBack <: Callback1Argument<BusinessException> {
-        public open func invoke(error: BusinessException): Unit {
-            AppLog.error("Preview output error code: ${error.code}")
+    class ErrorCallBack <: Callback0Argument {
+        public open func invoke(error:?BusinessException): Unit {
+            if (let Some(e) <- error) {
+                Hilog.error(0,"","Preview output error code: ${e.code}","")
+            }
         }
     }
 

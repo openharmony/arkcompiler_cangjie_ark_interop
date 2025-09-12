@@ -14,7 +14,7 @@ For detailed API descriptions, refer to the [Camera API Reference](../../../../A
     import kit.CameraKit.*
     import kit.BasicServicesKit.*
     import ohos.base.Callback1Argument
-    import ohos.base.BussinessException
+    import ohos.base.BusinessException
     ```
 
 2. Create a camera input stream using the [createCameraInput](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-createcamerainputcameradevice) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class.

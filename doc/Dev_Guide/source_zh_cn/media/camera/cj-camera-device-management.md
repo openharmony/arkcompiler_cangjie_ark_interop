@@ -12,8 +12,10 @@
 
     ```cangjie
     import kit.CameraKit.*
-    import ohos.base.*
     import kit.AbilityKit.*
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback1Argument
+    import ohos.business_exception.BusinessException
     ```
 
 2. 通过[getCameraManager](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-getcameramanagerabilitycontext)方法，获取cameraManager对象。
@@ -42,14 +44,14 @@
         let cameraArray: Array<CameraDevice> = cameraManager.getSupportedCameras()
         if (cameraArray.size > 0) {
             for (index in 0..cameraArray.size) {
-                AppLog.info("cameraId : ${cameraArray[index].cameraId}")  // 获取相机ID。
-                AppLog.info("cameraPosition : ${cameraArray[index].cameraPosition}")  // 获取相机位置。
-                AppLog.info("cameraType : ${cameraArray[index].cameraType}")  // 获取相机类型。
-                AppLog.info("connectionType : ${cameraArray[index].connectionType}")  // 获取相机连接类型。
+                Hilog.info(0,"","cameraId : ${cameraArray[index].cameraId}")  // 获取相机ID。
+                Hilog.info(0,"","cameraPosition : ${cameraArray[index].cameraPosition}")  // 获取相机位置。
+                Hilog.info(0,"","cameraType : ${cameraArray[index].cameraType}")  // 获取相机类型。
+                Hilog.info(0,"","connectionType : ${cameraArray[index].connectionType}")  // 获取相机连接类型。
             }
             return cameraArray
         } else {
-            AppLog.error("cameraManager.getSupportedCameras error")
+            Hilog.error(0,"","cameraManager.getSupportedCameras error")
             return []
         }
     }
@@ -65,25 +67,25 @@
 
 ```cangjie
 class CameraStatusCallBack <: Callback1Argument<CameraStatusInfo> {
-    public open func invoke(cameraStatusInfo: CameraStatusInfo): Unit {
+    public open func invoke(error: ?BusinessException,cameraStatusInfo: CameraStatusInfo): Unit {
         // 如果当通过USB连接相机设备时，回调函数会返回新的相机出现状态。
-        if (cameraStatusInfo.status == CameraStatus.CAMERA_STATUS_APPEAR) {
-            AppLog.info("New Camera device appear.")
+        if (cameraStatusInfo.status == CameraStatus.CameraStatusAppear) {
+            Hilog.info(0,"","New Camera device appear.")
         }
         // 如果当断开相机设备USB连接时，回调函数会返回相机被移除状态。
-        if (cameraStatusInfo.status == CameraStatus.CAMERA_STATUS_DISAPPEAR) {
-            AppLog.info("Camera device has been removed.")
+        if (cameraStatusInfo.status == CameraStatus.CameraStatusDisappear) {
+            Hilog.info(0,"","Camera device has been removed.")
         }
         // 相机被关闭时，回调函数会返回相机可用状态。
-        if (cameraStatusInfo.status == CameraStatus.CAMERA_STATUS_AVAILABLE) {
-            AppLog.info("Current Camera is available.")
+        if (cameraStatusInfo.status == CameraStatus.CameraStatusAvailable) {
+            Hilog.info(0,"","Current Camera is available.")
         }
         // 相机被打开/占用时，回调函数会返回相机不可用状态。
-        if (cameraStatusInfo.status == CameraStatus.CAMERA_STATUS_UNAVAILABL) {
-            AppLog.info("Current Camera has been occupied.")
+        if (cameraStatusInfo.status == CameraStatus.CameraStatusUnavailable) {
+            Hilog.info(0,"","Current Camera has been occupied.")
         }
-        AppLog.info("camera: ${cameraStatusInfo.camera.cameraId}")
-        AppLog.info("status: ${cameraStatusInfo.status}")
+        Hilog.info(0,"","camera: ${cameraStatusInfo.camera.cameraId}")
+        Hilog.info(0,"","status: ${cameraStatusInfo.status}")
     }
 }
 

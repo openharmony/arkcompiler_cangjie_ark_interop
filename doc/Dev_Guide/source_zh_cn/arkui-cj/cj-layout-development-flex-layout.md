@@ -26,7 +26,7 @@
 
 - FlexDirection.Row（默认值）：主轴为水平方向，子元素从起始端沿着水平方向开始排布。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -37,7 +37,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Row)) {
+            Flex(direction: FlexDirection.Row) {
                 Text('1')
                     .width(33.percent)
                     .height(50)
@@ -63,7 +63,7 @@
 
 - FlexDirection.RowReverse：主轴为水平方向，子元素从终点端沿着FlexDirection. Row相反的方向开始排布。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -74,7 +74,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.RowReverse)) {
+            Flex(direction: FlexDirection.RowReverse) {
                 Text('3')
                     .width(33.percent)
                     .height(50)
@@ -100,7 +100,7 @@
 
 - FlexDirection.Column：主轴为垂直方向，子元素从起始端沿着垂直方向开始排布。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -111,7 +111,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Column)) {
+            Flex(direction: FlexDirection.Column) {
                 Text('1')
                     .width(100.percent)
                     .height(50)
@@ -137,7 +137,7 @@
 
 - FlexDirection.ColumnReverse：主轴为垂直方向，子元素从终点端沿着FlexDirection. Column相反的方向开始排布。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -148,7 +148,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.ColumnReverse)) {
+            Flex(direction: FlexDirection.ColumnReverse) {
                 Text('1')
                     .width(100.percent)
                     .height(50)
@@ -178,7 +178,7 @@
 
 - FlexWrap.NoWrap（默认值）：不换行。如果子元素的宽度总和大于父元素的宽度，则子元素会被压缩宽度。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -189,7 +189,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.NoWrap)) {
+            Flex(wrap: FlexWrap.NoWrap) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -214,7 +214,7 @@
 
 - FlexWrap.Wrap：换行，每一行子元素按照主轴方向排列。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -225,7 +225,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.Wrap)) {
+            Flex(wrap: FlexWrap.Wrap) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -250,7 +250,7 @@
 
 - FlexWrap.WrapReverse：换行，每一行子元素按照主轴反方向排列。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -261,7 +261,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.WrapReverse)) {
+            Flex(wrap: FlexWrap.WrapReverse) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -292,7 +292,7 @@
 
 - FlexAlign.Start（默认值）：子元素在主轴方向起始端对齐，第一个子元素与父元素边沿对齐，其他元素与前一个元素对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -303,7 +303,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.Start)) {
+            Flex(justifyContent: FlexAlign.Start) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -328,7 +328,7 @@
 
 - FlexAlign.Center：子元素在主轴方向居中对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -339,7 +339,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Center) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -364,7 +364,7 @@
 
 - FlexAlign.End：子元素在主轴方向终点端对齐，最后一个子元素与父元素边沿对齐，其他元素与后一个元素对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -375,7 +375,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.End)) {
+            Flex(justifyContent: FlexAlign.End) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -400,7 +400,7 @@
 
 - FlexAlign.SpaceBetween：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素和最后一个子元素与父元素边沿对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -411,7 +411,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -436,7 +436,7 @@
 
 - FlexAlign.SpaceAround：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素到主轴起始端的距离和最后一个子元素到主轴终点端的距离是相邻元素之间距离的一半。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -447,7 +447,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceAround)) {
+            Flex(justifyContent: FlexAlign.SpaceAround) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -472,7 +472,7 @@
 
 - FlexAlign.SpaceEvenly：Flex主轴方向元素等间距布局，相邻子元素之间的间距、第一个子元素与主轴起始端的间距、最后一个子元素到主轴终点端的间距均相等。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -483,7 +483,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -516,7 +516,7 @@
 
 - ItemAlign.Auto：使用Flex容器中默认配置。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -527,7 +527,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Auto)) {
+            Flex(alignItems: ItemAlign.Auto) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -552,7 +552,7 @@
 
 - ItemAlign.Start：交叉轴方向首部对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -563,7 +563,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Start)) {
+            Flex(alignItems: ItemAlign.Start) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -588,7 +588,7 @@
 
 - ItemAlign.Center：交叉轴方向居中对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -599,7 +599,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Center)) {
+            Flex(alignItems: ItemAlign.Center) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -624,7 +624,7 @@
 
 - ItemAlign.End：交叉轴方向底部对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -635,7 +635,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.End)) {
+            Flex(alignItems: ItemAlign.End) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -660,7 +660,7 @@
 
 - ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -671,7 +671,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Stretch)) {
+            Flex(alignItems: ItemAlign.Stretch) {
                 Text('1')
                     .width(33.percent)
                     .backgroundColor(0xF5DEB3)
@@ -693,7 +693,7 @@
 
 - ItemAlign.Baseline：交叉轴方向文本基线对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -704,7 +704,7 @@
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Baseline)) {
+            Flex(alignItems: ItemAlign.Baseline) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -742,7 +742,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center)) { // 容器组件设置子元素居中
+        Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center) { // 容器组件设置子元素居中
             Text('alignSelf Start')
                 .width(25.percent)
                 .height(80)
@@ -784,7 +784,7 @@ class EntryView {
 
 - FlexAlign.Start：子元素各行与交叉轴起点对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -795,7 +795,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Start)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Start) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -828,7 +828,7 @@ class EntryView {
 
 - FlexAlign.Center：子元素各行在交叉轴方向居中对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -839,7 +839,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Center) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -872,7 +872,7 @@ class EntryView {
 
 - FlexAlign.End：子元素各行与交叉轴终点对齐。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -883,7 +883,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.End)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -916,7 +916,7 @@ class EntryView {
 
 - FlexAlign.SpaceBetween：子元素各行与交叉轴两端对齐，各行间垂直间距平均分布。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -927,7 +927,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceBetween)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -960,7 +960,7 @@ class EntryView {
 
 - FlexAlign.SpaceAround：子元素各行间距相等，是元素首尾行与交叉轴两端距离的两倍。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -971,7 +971,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceAround)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceAround) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -1004,7 +1004,7 @@ class EntryView {
 
 - FlexAlign.SpaceEvenly: 子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1015,7 +1015,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceEvenly)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceEvenly) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -1052,7 +1052,7 @@ class EntryView {
 
 - [flexBasis](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexbasislength)：设置子元素在父容器主轴方向上的基准尺寸。如果设置了该属性，则子项占用的空间为该属性所设置的值；如果没设置该属性，那子项的空间为width/height的值。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1097,7 +1097,7 @@ class EntryView {
 
 - [flexGrow](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexgrowfloat64)：设置父容器的剩余空间分配给此属性所在组件的比例。用于分配父组件的剩余空间。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1141,7 +1141,7 @@ class EntryView {
 
 - [flexShrink](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64): 当父容器空间不足时，子元素的压缩比例。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1152,7 +1152,7 @@ class EntryView {
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Row)) {
+            Flex(direction: FlexDirection.Row) {
                 Text('flexShrink(3)')
                     .flexShrink(3)
                     .width(200)
@@ -1196,10 +1196,10 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column() {
-            Column(5) {
+            Column(space: 5) {
                 Flex(
-                    FlexParams(direction: FlexDirection.Row, wrap: FlexWrap.NoWrap,
-                        justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center)) {
+                    direction: FlexDirection.Row, wrap: FlexWrap.NoWrap,
+                        justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center) {
                     Text('1')
                         .width(30.percent)
                         .height(50)

@@ -16,14 +16,14 @@ hiperf为开发人员提供用于调试的命令行工具，用于抓取特定�
 | --hilog | 日志写入hilog。 |
 | --logpath | 日志路径。 |
 | --logtag | 日志等级。 |
-| --mixlog | 混合日志输出。|
+| --mixlog | 混合日志输出。 |
 | --much | 输出尽可能多的日志。 |
 | --nodebug | 无日志输出。 |
 | --verbose | 输出verbose级别日志。 |
 
 ## 帮助命令
 
-可用 --help 查看帮助。
+可使用 --help 查看帮助。
 
 ```shell
 hiperf --help
@@ -54,7 +54,6 @@ command:
         record: Collect performance sample information
         report: report sampling information from perf.data format file
         stat:   Collect performance counter information
-
 
 See 'hiperf help [command]' for more information on a specific command.
 ```
@@ -115,7 +114,6 @@ hiperf list hw
 ```bash
 $ hiperf list hw
 event not support hw-ref-cpu-cycles
-
 
 Supported events for hardware:
         hw-cpu-cycles

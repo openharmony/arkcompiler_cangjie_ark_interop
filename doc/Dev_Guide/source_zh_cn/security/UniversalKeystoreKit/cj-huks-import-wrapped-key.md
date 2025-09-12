@@ -2,7 +2,7 @@
 
 以加密导入ECDH密钥对为例，涉及业务侧加密密钥的[密钥生成](./cj-huks-key-generation-overview.md)、[协商](./cj-huks-key-agreement-overview.md)等操作不在本示例中体现。
 
-具体的场景介绍及支持的算法规格，请参见[密钥导入的支持的算法](./cj-huks-key-import-overview.md#支持的算法)。
+具体的场景介绍及支持的算法规格，请参见[密钥导入支持的算法](./cj-huks-key-import-overview.md#支持的算法)。
 
 ## 开发步骤
 
@@ -42,9 +42,9 @@ let IV = '0000000000000000'
 let AAD = "abababababababab"
 let NONCE = "hahahahahaha"
 let TAG_SIZE = 16
-let FILED_LENGTH = 4
+let FIELD_LENGTH = 4
 let importedAes192PlainKey = "The aes192 key to import"
-let callerAes256Kek = "The is kek to encrypt aes192 key"
+let callerAes256Kek = "This is kek to encrypt aes192 key"
 let callerKeyAlias = "test_caller_key_ecdh_aes192"
 let callerKekAliasAes256 = "test_caller_kek_ecdh_aes256"
 let callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256"
@@ -57,6 +57,10 @@ var outKekEncData: ?Array<UInt8> = None
 var outKekEncTag: ?Array<UInt8> = None
 var outAgreeKeyEncTag: ?Array<UInt8> = None
 var mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000]
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 func subUint8ArrayOf(arrayBuf: Array<UInt8>, start: Int64, end: Int64) {
     let realEnd = min(end, arrayBuf.size)
@@ -455,12 +459,12 @@ func BuildWrappedDataAndImportWrappedKey(plainKey: String) {
     let plainKeySizeBuff = Array<UInt8>(4, repeat: 0)
     assignLength(plainKey.size, plainKeySizeBuff, 0)
     let wrappedData = Array<UInt8>(
-        FILED_LENGTH + huksPubKey
+        FIELD_LENGTH + huksPubKey
             .getOrThrow()
-            .size + FILED_LENGTH + AAD.size + FILED_LENGTH + NONCE.size + FILED_LENGTH + TAG_SIZE + FILED_LENGTH + outKekEncData
+            .size + FIELD_LENGTH + AAD.size + FIELD_LENGTH + NONCE.size + FIELD_LENGTH + TAG_SIZE + FIELD_LENGTH + outKekEncData
             .getOrThrow()
-            .size + FILED_LENGTH + AAD.size + FILED_LENGTH + NONCE.size + FILED_LENGTH + TAG_SIZE + FILED_LENGTH + plainKeySizeBuff
-            .size + FILED_LENGTH + outPlainKeyEncData
+            .size + FIELD_LENGTH + AAD.size + FIELD_LENGTH + NONCE.size + FIELD_LENGTH + TAG_SIZE + FIELD_LENGTH + plainKeySizeBuff
+            .size + FIELD_LENGTH + outPlainKeyEncData
             .getOrThrow()
             .size, repeat: 0)
     var index = 0
@@ -503,7 +507,7 @@ func BuildWrappedDataAndImportWrappedKey(plainKey: String) {
 func ImportWrappedKey() {
     /**
      * 1.设备A将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤），
-     *   本示例使用importedAes256PlainKey（对称密钥）作为模拟
+     *   本示例使用importedAes192PlainKey（对称密钥）作为模拟
      */
 
     /* 2.设备B生成一个加密导入用途的、用于协商的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），其密钥用途设置为unwrap，导出Wrapping_Key公钥Wrapping_Pk存放在变量huksPubKey中 */
@@ -526,7 +530,7 @@ func ImportWrappedKey() {
      */
     EncryptImportedPlainKeyAndKek(importedAes192PlainKey)
 
-    /* 8.设备A封装Caller_Pk、To_Import_Key_Enc、Caller_Kek_Enc等加密导入的材料并发送给设备B。本示例作为变量存放在callerSelfPublicKey，PlainKeyEncData，KekEncData */
+    /* 8.设备A封装Caller_Pk、To_Import_Key_Enc、Caller_Kek_Enc等加密导入的材料并发送给设备B。本示例作为变量存放在callerSelfPublicKey，outPlainKeyEncData，outKekEncData */
     let wrappedData = BuildWrappedDataAndImportWrappedKey(importedAes192PlainKey)
     importWrappedAes192Params.inData = wrappedData
 
@@ -540,7 +544,4 @@ func ImportWrappedKey() {
     publicDeleteKeyItemFunc(callerKekAliasAes256, callerAgreeParams)
 }
 
-func loggerInfo(str: String) {
-    Hilog.info(0, "CangjieTest", str)
-}
 ```

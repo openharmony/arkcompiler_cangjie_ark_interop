@@ -49,7 +49,6 @@
     ```cangjie
     // xxx.cj
     import kit.ArkData.{ Preferences, PreferencesValueType }
-    import kit.AbilityKit.getStageContext
     import kit.ArkUI.Callback1Argument
     ```
 
@@ -59,8 +58,10 @@
 
     ```cangjie
     // main_ability.cj
-    import kit.AbilityKit.{ getStageContext, UIAbilityContext }
-    import kit.ArkData.{ Preferences, PreferencesOptions }
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import kit.ArkData.{ Preferences}
+    import ohos.data.preferences.Option as PreferencesOptions
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
     var dataPreferences: Option<Preferences> = Option<Preferences>.None
@@ -72,18 +73,17 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // 获取context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
+            Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
             windowStage.loadContent("EntryView")
 
             let options = PreferencesOptions("myStore")
@@ -108,12 +108,14 @@
 
     ```cangjie
     // xxx.cj
+    import ohos.data.preferences.ValueType as PreferencesValueType
+
     if (dataPreferences.getOrThrow().has("startup")) {
-        AppLog.info("The key 'startup' is contained.")
+        Hilog.info(0, "cangjie", "The key 'startup' is contained.")
     } else {
-        AppLog.info("The key 'startup' does not contain.")
+        Hilog.info(0, "cangjie", "The key 'startup' does not contain.")
         // 此处以此键值对不存在时写入数据为例
-        dataPreferences.getOrThrow().put("startup", PreferencesValueType.string("auto"))
+        dataPreferences.getOrThrow().put("startup", PreferencesValueType.StringData("auto"))
     }
     ```
 
@@ -127,10 +129,10 @@
 
     ```cangjie
     // xxx.cj
-    let val = dataPreferences.getOrThrow().get("startup", PreferencesValueType.string("default"))
+    let val = dataPreferences.getOrThrow().get("startup", PreferencesValueType.StringData("default"))
     match(val) {
-        case PreferencesValueType.string(n) => AppLog.info("The startup's value: ${n}")
-        case _ => AppLog.info("error, value not string")
+        case PreferencesValueType.StringData(n) => Hilog.info(0, "cangjie", "The startup's value")
+        case _ => Hilog.info(0, "cangjie", "error, value not string")
     }
     ```
 
@@ -174,8 +176,8 @@
     let preferenceCallback = Callback()
     dataPreferences.getOrThrow().on("change", preferenceCallback)
     // 数据产生变更，由“auto”变为“manual”
-    dataPreferences.getOrThrow().put("startup", PreferencesValueType.string("manual"))
-    AppLog.info("Succeeded in putting the value of 'startup'.")
+    dataPreferences.getOrThrow().put("startup", PreferencesValueType.StringData("manual"))
+    Hilog.info(0, "cangjie", "Succeeded in putting the value of 'startup'.")
     dataPreferences.getOrThrow().flush()
     ```
 
@@ -198,6 +200,6 @@
         // 删除 Preferences 实例
         Preferences.deletePreferences(getStageContext(globalAbilityContext.getOrThrow()), "myStore")
     } catch (e: Exception) {
-        AppLog.info("delete Preferences failed")
+        Hilog.info(0, "cangjie", "delete Preferences failed")
     }
     ```

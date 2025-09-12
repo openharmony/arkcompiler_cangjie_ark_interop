@@ -22,7 +22,7 @@
 |:---|:---|
 |非属性宏|无。|
 |同步类型|不与父组件中任何类型的变量同步。|
-|允许装饰的变量类型|支持基础数据类型，对于String，Int64，Float64和Bool类型的变量，可以缺省类型。其他类型的变量不可缺省类型，必须被指定。<br/>支持Enum、Option类型、struct类型，struct类型内部无法修改。<br/>支持class类型，如果要感知内部的变化，在定义的时候需要被[\@Observed](./cj-macro-observed-and-publish.md)修饰，对类内属性和嵌套属性使用[\@Publish](./cj-macro-observed-and-publish.md)装饰后，才能观察到其变化。<br/>支持数组类型，如果要感知内部的变化，需要使用[ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。数组项为自定义类型时，使用[\@Observed](./cj-macro-observed-and-publish.md)和[\@Publish](./cj-macro-observed-and-publish.md)装饰时能观察到数组项中属性赋值。其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。<br/>支持[Color](../../../../API_Reference//source_zh_cn/arkui-cj/cj-common-types.md#class-color)类型。<br/>支持类型的场景请参见[观察变化](#观察变化)。<br/>不支持Any。|
+|允许装饰的变量类型|支持基础数据类型，对于String，Int64，Float64和Bool类型的变量，可以缺省类型。其他类型的变量不可缺省类型，必须被指定。<br/>支持Enum、Option类型、struct类型，struct类型内部无法修改。<br/>支持class类型，如果要感知内部的变化，在定义的时候需要被[\@Observed](./cj-macro-observed-and-publish.md)修饰，对类内属性和嵌套属性使用[\@Publish](./cj-macro-observed-and-publish.md)装饰后，才能观察到其变化。<br/>支持数组类型，如果要感知内部的变化，需要使用[ObservedArray\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。数组项为自定义类型时，使用[\@Observed](./cj-macro-observed-and-publish.md)和[\@Publish](./cj-macro-observed-and-publish.md)装饰时能观察到数组项中属性赋值。其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。<br/>支持[Color](../../../../API_Reference//source_zh_cn/arkui-cj/cj-common-types.md#class-color)类型。<br/>支持类型的场景请参见[观察变化](#观察变化)。<br/>不支持Any。|
 |被装饰变量的初始值|必须本地初始化。|
 
 ## 变量的传递/访问规则说明
@@ -41,7 +41,6 @@
 
 - 当装饰的数据类型为基础数据类型时，可以观察到数值的变化。
 
-
     ```cangjie
     // 简单类型
     @State var count: Int = 0
@@ -52,7 +51,6 @@
 - 当装饰的数据类型为struct时，内部无法修改。
 
     声明Person。
-
 
     ```cangjie
     struct Person {
@@ -67,7 +65,6 @@
 
     \@State装饰的类型是struct Person。
 
-
     ```cangjie
     // struct类型
     @State var person: Person = Person(1, "Kim")
@@ -75,14 +72,12 @@
 
     对\@State装饰变量的整体赋值可行。
 
-
     ```cangjie
     // struct类型赋值
     this.person = Person(2, "muller")
     ```
 
     对\@State装饰变量的赋值，编译器显示无法修改。
-
 
     ```cangjie
     // struct属性的赋值
@@ -92,7 +87,6 @@
 - 当装饰的数据类型为class时，需要被[@Observed](./cj-macro-observed-and-publish.md)修饰，内部需要感知变化的属性用[@Publish](./cj-macro-observed-and-publish.md)修饰，如果不使用[@Observed](./cj-macro-observed-and-publish.md)则无法感知成员变量等内部变化。具体见[@Observed宏和@Publish宏](./cj-macro-observed-and-publish.md)。
 
     声明Person和Model类。
-
 
     ```cangjie
     @Observed
@@ -109,13 +103,11 @@
 
     \@State装饰的类型是Model。
 
-
     ```cangjie
     @State var title: Model = Model(value: 'Hello', name: Person(value: "World"))
     ```
 
     对\@State装饰变量的赋值。
-
 
     ```cangjie
     // class属性的赋值
@@ -124,7 +116,6 @@
 
     对\@State装饰变量的属性和嵌套属性的赋值都可以感知。
 
-
     ```cangjie
     // class属性的赋值
     this.title.value = 'Hi'
@@ -132,10 +123,9 @@
     this.title.name.value = 'ArkUI'
     ```
 
-- 当装饰的对象是数组时，无法单独感知某个数组项的变化，但能感知整体的变化。如果要感知内部的变化，需要使用[ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。
+- 当装饰的对象是数组时，无法单独感知某个数组项的变化，但能感知整体的变化。如果要感知内部的变化，需要使用[ObservedArray\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。
 
     \@State装饰的对象为ArrayList类型数组时。
-
 
     ```cangjie
     @State var arrlist: ArrayList<Int16> = ArrayList<Int16>([1, 2, 3])
@@ -143,20 +133,17 @@
 
     数组整体的变化可以感知。
 
-
     ```cangjie
     this.arrlist = ArrayList<Int16>([10,9,8])
     ```
 
     数组项的赋值不能感知。
 
-
     ```cangjie
     this.arrlist[0] = 10
     ```
 
     声明Model类。
-
 
     ```cangjie
     @Observed
@@ -165,24 +152,21 @@
     }
     ```
 
-    \@State装饰的对象为ObservedArray\<Model\>类型数组时。
-
+    \@State装饰的对象为ObservedArray\<Model>类型数组时。
 
     ```cangjie
     // ObservedArray数组类型
-    @State var title: ObservedArray<Model> = ObservedArray<Model>([Model(value: 11), Model(value: 1)])
+    @State var title: ObservedArrayList<Model> = ObservedArrayList<Model>(ArrayList<Model>([Model(value: 11), Model(value: 1)]))
     ```
 
     数组自身的赋值可以感知。
 
-
     ```cangjie
     // 数组赋值
-    this.title = ObservedArray<Model>([Model(value: 2)])
+    this.title = ObservedArrayList<Model>(ArrayList<Model>([Model(value: 2)]))
     ```
 
     数组项的赋值可以感知。
-
 
     ```cangjie
     // 数组项赋值
@@ -191,16 +175,14 @@
 
     数组项中属性的赋值可以感知。
 
-
     ```cangjie
     // 嵌套的属性赋值可以感知
     this.title[0].value = 6
     ```
 
-    \@State装饰的对象为ObservedArrayList\<Model\>类型数组时，实现新增和删除数组项。
+    \@State装饰的对象为ObservedArrayList\<Model>类型数组时，实现新增和删除数组项。
 
     删除数组项可以感知。
-
 
     ```cangjie
     // 数组项更改
@@ -208,7 +190,6 @@
     ```
 
     新增数组项可以感知。
-
 
     ```cangjie
     // 数组项更改
@@ -219,7 +200,6 @@
 
     以HashSet为例。
 
-
     ```cangjie
     //@State装饰的对象为HashSet时
     @State var message: HashSet<Int64> = HashSet<Int64>()
@@ -227,13 +207,11 @@
 
     HashSet整体的变化可以感知。
 
-
     ```cangjie
     this.message = HashSet<Int64>(1,2,3)
     ```
 
     HashSet内部的变化不能感知。
-
 
     ```cangjie
     this.message.add(5);
@@ -250,7 +228,6 @@
 ## 限制条件
 
 1. \@State装饰的变量必须初始化，否则编译期会报错。
-
 
     ```cangjie
     // 错误写法，编译报错
@@ -352,7 +329,6 @@ class MyComponent {
 
 1. 没有外部传入的情况下，使用默认的值进行初始化：
 
-
     ```cangjie
     // title没有外部传入，使用本地的值Model(value: 'Hello World')进行初始化
     MyComponent(count: 1, increaseBy: 2)
@@ -361,7 +337,6 @@ class MyComponent {
     ```
 
 2. 有外部传入的情况下，使用外部传入的值进行初始化：
-
 
     ```cangjie
     // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
@@ -519,7 +494,6 @@ class EntryView {
 
     d. Text最终渲染。
 
-
 ```cangjie
 @Entry
 @Component
@@ -539,7 +513,6 @@ class EntryView {
 在上面的例子中，这个错误行为不会造成很严重的后果。
 
 但这个行为是严重错误的，会随着工程的复杂度升级，隐患越来越大。见下一个例子。
-
 
 ```cangjie
 @Entry

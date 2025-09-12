@@ -12,7 +12,7 @@
 
 | 风险等级 | 风险标准 | 定义 | 样例 |
 | -------- | -------- | -------- | -------- |
-| 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人的最私密领域的信息。一旦泄露、篡改、破坏或销毁，可能会给个人或组织造成重大的不利影响的数据。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况，性取向等或设备认证鉴权、个人信用卡等财物信息等。 |
+| 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人最私密领域的信息。一旦泄露、篡改、破坏或销毁，可能会给个人或组织造成重大的不利影响。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况、性取向，或设备认证鉴权、个人信用卡等财物信息。 |
 | 高 | S3 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。 | 个人实时精确定位信息、运动轨迹等。 |
 | 中 | S2 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。 | 个人的详细通信地址、姓名昵称等。 |
 | 低 | S1 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。 | 性别、国籍、用户申请记录等。 |
@@ -22,7 +22,7 @@
 <!--RP1-->
 根据设备安全能力（例如是否有TEE、是否有安全存储芯片等），将设备安全等级分为SL1、SL2、SL3、SL4、SL5五个等级。例如，开发板rk3568、hi3516为安全等级低的SL1设备，平板为安全等级高的SL4设备。
 
-在设备组网时，可以通过`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
+在设备组网时，可以通过`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果，可以通过`service_control start dslm_service`主动拉起对应进程，之后再使用`hidumper`命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
 ![zh-cn_image_0000001542496993](./figures/zh-cn_image_0000001542496993.png)
@@ -30,7 +30,7 @@
 
 ## 跨设备同步访问控制机制
 
-数据跨设备同步时，数据管理基于数据安全标签和设备安全等级进行访问控制。规则为，在本设备的数据安全标签不高于对端设备的设备安全等级时，数据才能从本设备同步到对端设备，否则不能同步。具体访问控制矩阵如下：
+数据跨设备同步时，数据管理基于数据安全标签和设备安全等级进行访问控制。规则为：当本设备的数据安全标签不高于对端设备的设备安全等级时，数据才能从本设备同步到对端设备，否则不能同步。具体访问控制矩阵如下：
 
 |设备安全级别|可同步的数据安全标签|
 |---|---|
@@ -50,7 +50,7 @@
 
 ## 使用键值型数据库实现数据分级
 
-键值型数据库，通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S1的数据库为例。
+键值型数据库通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S1的数据库为例。
 
 具体接口及功能，请参见[分布式键值数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-distributed_kv_store.md)。
 
@@ -68,10 +68,8 @@
 
     ```cangjie
     // main_ability.cj
-    internal import import kit.performanceAnalysisKit.Hilog
-    internal import kit.AbilityKit.AbilityStage
-    internal import kit.AbilityKit.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -101,7 +99,7 @@
     ```cangjie
     // xxx.cj
     import kit.ArkData.{DistributedKVStore, KVManagerConfig}
-    import kit.ArkUI.BusinessException
+    import ohos.business_exception.BusinessException
     import kit.AbilityKit.getStageContext
     import ohos.data.distributed_kv_store.Options as KVOptions
     import ohos.data.distributed_kv_store.SecurityLevel as KVSecurityLevel
@@ -131,7 +129,7 @@
 
 ## 使用关系型数据库实现数据分级
 
-关系型数据库，通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S1的数据库为例。
+关系型数据库通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S1的数据库为例。
 
 具体接口及功能，请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
 
@@ -140,10 +138,9 @@
     <!-- compile -->
 
     ```cangjie
-    internal import import kit.performanceAnalysisKit.Hilog
-    internal import kit.AbilityKit.AbilityStage
-    internal import kit.AbilityKit.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    // main_ability.cj
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -173,7 +170,7 @@
     ```cangjie
     // xxx.cj
     import kit.ArkData.{StoreConfig, getRdbStore}
-    import kit.ArkUI.BusinessException
+    import ohos.business_exception.BusinessException
     import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
 
     try {

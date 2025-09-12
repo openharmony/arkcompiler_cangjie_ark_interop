@@ -155,7 +155,6 @@ func loggerError(str: String) {
     Hilog.error(0, "CangjieTest", str)
 }
 
-
 class HeadersReceiveCb <: Callback1Argument<HashMap<String, String>> {
     let callback_: (HashMap<String, String>)->Unit
     public init(callback: (HashMap<String, String>)->Unit) {callback_ = callback}

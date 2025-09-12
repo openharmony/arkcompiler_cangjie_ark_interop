@@ -10,7 +10,7 @@
 
 2. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.EncryptMode），指定加密密钥（SymKey），ECB模式Params为空，初始化加密Cipher实例。
+3. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为加密（CryptoMode.EncryptMode），指定加密密钥（SymKey），ECB模式无需额外参数，初始化加密Cipher实例。
 
 4. 加密内容较短时，可以不调用update，直接调用[doFinal](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob)，获取加密后的数据。
 
@@ -18,7 +18,7 @@
 
 1. 调用[createCipher](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring)，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DecryptMode），指定解密密钥（SymKey），ECB模式Params为空，初始化解密Cipher实例。
+2. 调用[init](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec)，设置模式为解密（CryptoMode.DecryptMode），指定解密密钥（SymKey），ECB模式无需额外参数，初始化解密Cipher实例。
 
 3. 解密内容较短时，可以不调用update，直接调用[doFinal](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob)，获取解密后的数据。
 
@@ -36,7 +36,7 @@ import ohos.hilog.Hilog
 // 加密消息。
 func encryptMessage(symKey: SymKey, plainText: DataBlob) {
     let cipher = createCipher('AES128|ECB|PKCS7')
-    cipher.initialize(CryptoMode.EncryptMode, symKey, None) // ECB模式params为None。
+    cipher.initialize(CryptoMode.EncryptMode, symKey, None) // ECB模式无需额外参数。
     let cipherData = cipher.doFinal(plainText)
     return cipherData
 }
@@ -44,7 +44,7 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
 // 解密消息。
 func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
     let decoder = createCipher('AES128|ECB|PKCS7')
-    decoder.initialize(CryptoMode.DecryptMode, symKey, None) // ECB模式params为None。
+    decoder.initialize(CryptoMode.DecryptMode, symKey, None) // ECB模式无需额外参数。
     let decryptData = decoder.doFinal(cipherText)
     return decryptData
 }
@@ -72,7 +72,7 @@ func test() {
             Hilog.error(0,"",'decrypt failed')
         }
     } catch (e: BusinessException) {
-        Hilog.error(0,"","AES CBC ${e}, error code: ${e.code}")
+        Hilog.error(0,"","AES ECB ${e}, error code: ${e.code}")
     }
 }
 ```

@@ -22,7 +22,7 @@ After completing session configuration, the application can submit and start the
     ```cangjie
     import kit.CameraKit.*
     import kit.BasicServicesKit.*
-    import ohos.base.BussinessException
+    import ohos.base.BusinessException
     ```
 
 2. Call the [createSession](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-createsessionscenemode) method in the cameraManager class to create a session.

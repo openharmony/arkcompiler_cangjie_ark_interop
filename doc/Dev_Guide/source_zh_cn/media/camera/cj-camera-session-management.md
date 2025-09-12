@@ -21,7 +21,9 @@
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
+    import ohos.business_exception.BusinessException
+    import ohos.hilog.Hilog
+
     ```
 
 2. 调用cameraManager类中的[createSession](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createsessionscenemode)方法创建一个会话。
@@ -44,9 +46,10 @@
         try {
             photoSession.beginConfig()
         } catch (error: BusinessException) {
-            AppLog.error("Failed to beginConfig. error: ${error.message}")
+            Hilog.error(0,"","Failed to beginConfig. error: ${error.message}")
         }
     }
+
     ```
 
 4. 使能。向会话中添加相机的输入流和输出流，调用[addInput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-addinputcamerainput)添加相机的输入流；调用[addOutput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-addoutputcameraoutput)添加相机的输出流。以下示例代码以添加预览流previewOutput和拍照流photoOutput为例，即当前模式支持拍照和预览。
@@ -60,28 +63,28 @@
         try {
             photoSession.addInput(cameraInput)
         } catch (error: BusinessException) {
-            AppLog.error("Failed to addInput. error: ${error.message}")
+            Hilog.error(0,"","Failed to addInput. error: ${error.message}")
         }
         try {
             photoSession.addOutput(previewOutput)
         } catch (error: BusinessException) {
-            AppLog.error("Failed to add previewOutput. error: ${error.message}")
+            Hilog.error(0,"","Failed to add previewOutput. error: ${error.message}")
         }
         try {
             photoSession.addOutput(photoOutput)
         } catch (error: BusinessException) {
-            AppLog.error("Failed to add photoOutput. error: ${error.message}")
+            Hilog.error(0,"","Failed to add photoOutput. error: ${error.message}")
         }
         try {
             photoSession.commitConfig()
         } catch (error: BusinessException) {
-            AppLog.error("Failed to commitConfig. error: ${error.message}")
+            Hilog.error(0,"","Failed to commitConfig. error: ${error.message}")
         }
 
         try {
             photoSession.start()
         } catch (error: BusinessException) {
-            AppLog.error("Failed to start. error: ${error.message}")
+            Hilog.error(0,"","Failed to start. error: ${error.message}")
         }
     }
     ```
@@ -92,28 +95,29 @@
 
     ```cangjie
     func switchOutput(photoSession: PhotoSession, videoOutput: VideoOutput, photoOutput: PhotoOutput): Unit {
-        try {
-            photoSession.stop()
-        } catch (error: BusinessException) {
-            AppLog.error("Failed to stop. error: ${error.message}")
-        }
-
-        try {
-            photoSession.beginConfig()
-        } catch (error: BusinessException) {
-            AppLog.error("Failed to beginConfig. error: ${error.message}")
-        }
-        // 从会话中移除拍照输出流。
-        try {
-            photoSession.removeOutput(photoOutput)
-        } catch (error: BusinessException) {
-            AppLog.error("Failed to remove photoOutput. error: ${error.message}")
-        }
-        // 向会话中添加视频输出流。
-        try {
-            photoSession.addOutput(videoOutput)
-        } catch (error: BusinessException) {
-            AppLog.error("Failed to add videoOutput. error: ${error.message}")
-        }
+    try {
+        photoSession.stop()
+    } catch (error: BusinessException) {
+        Hilog.error(0,"","Failed to stop. error: ${error.message}")
     }
+
+    try {
+        photoSession.beginConfig()
+    } catch (error: BusinessException) {
+        Hilog.error(0,"","Failed to beginConfig. error: ${error.message}")
+    }
+    // 从会话中移除拍照输出流。
+    try {
+        photoSession.removeOutput(photoOutput)
+    } catch (error: BusinessException) {
+        Hilog.error(0,"","Failed to remove photoOutput. error: ${error.message}")
+    }
+    // 向会话中添加视频输出流。
+    try {
+        photoSession.addOutput(videoOutput)
+    } catch (error: BusinessException) {
+        Hilog.error(0,"","Failed to add videoOutput. error: ${error.message}")
+    }
+
+}
     ```

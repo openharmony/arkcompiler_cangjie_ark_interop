@@ -727,7 +727,6 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-
 let sm2KeyAlias = 'test_sm2KeyAlias' // 密钥别名，在生成密钥时指定，在加密、解密和删除密钥时使用
 var handle: ?HuksHandleId = None
 let plainText = '123456' // 待加密的明文

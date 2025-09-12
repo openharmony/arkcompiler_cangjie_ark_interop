@@ -30,7 +30,7 @@
 - 为保证数据的准确性，数据库同一时间只能支持一个写操作。
 - 当应用被卸载完成后，设备上的相关数据库文件及临时文件会被自动清除。
 - 仓颉侧支持的基本数据类型：Int64、Float64、String、二进制类型数据、Bool。
-- 为保证插入并读取数据成功，建议一条数据不要超过2M。超出该大小，插入成功，读取失败。
+- 为保证插入并读取数据成功，建议单条数据不要超过2M。超出该大小，可能出现插入成功但读取失败的情况。
 
 ## 接口说明
 
@@ -38,7 +38,7 @@
 
 | 接口名称 | 描述 |
 | -------- | -------- |
-| getRdbStore(context: StageContext, config: StoreConfig): RdbStore | 获得一个RdbStore，操作关系型数据库，开发者可以根据自己的需求配置RdbStore的参数，然后通过RdbStore调用相关接口可以执行相关的数据操作。 |
+| getRdbStore(context: StageContext, config: StoreConfig): RdbStore | 获取一个RdbStore用于操作关系型数据库。开发者可按需配置RdbStore的参数，并通过RdbStore调用相关接口执行数据操作。 |
 | executeSql(sql: String, bindArgs: Array\<RelationalStoreValueType>): Unit | 执行包含指定参数但不返回值的SQL语句。 |
 | insert(table: String, values: Map\<String, RelationalStoreValueType>): Int64 | 向目标表中插入一行数据。 |
 | update(values: Map\<String, RelationalStoreValueType>, predicates: RdbPredicates): Int64 | 根据predicates的指定实例对象更新数据库中的数据。 |
@@ -48,17 +48,29 @@
 
 ## 开发步骤
 
-关系库数据库操作或者存储过程中，有可能会因为各种原因发生非预期的数据库异常情况（抛出14800011），此时需要对数据库进行重建并恢复数据，以保障正常的应用开发。
+关系型数据库在操作或存储过程中，可能由于各种原因发生非预期异常（抛出14800011）。此时需要对数据库进行重建并恢复数据，以保障正常的应用开发。
 
 1. 使用关系型数据库实现数据持久化，需要获取一个RdbStore，其中包括建库、建表、升降级等操作。示例代码如下所示：
 
     <!-- compile -->
 
     ```cangjie
-    import kit.ArkUI.BusinessException
+    import ohos.business_exception.BusinessException
     import kit.ArkData.*
     import kit.AbilityKit.getStageContext
     import std.collection.HashMap
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import ohos.data.relational_store.RdbStore
+    import kit.ArkData.{StoreConfig, getRdbStore, RdbPredicates, deleteRdbStore}
+    import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
+    import kit.ArkUI.{WindowStage}
+
+    let storeConfig_ = StoreConfig(
+    RelationalStoreSecurityLevel.S3,// 数据库安全级别
+    name: "RdbTest.db", // 数据库文件名
+    encrypt: false, // 可选参数，指定数据库是否加密，默认不加密
+    customDir: "customDir/subCustomDir", // 可选参数，数据库自定义路径。数据库将在如下的目录结构中被创建：context.databaseDir + '/rdb/' + customDir，其中context.databaseDir是应用沙箱对应的路径，'/rdb/'表示创建的是关系型数据库，customDir表示自定义的路径。当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。
+    )
 
     let storeConfig = StoreConfig(
         "RdbTest.db", // 数据库文件名
@@ -80,34 +92,19 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
         }
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
+            Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
             windowStage.loadContent("EntryView")
-            let store = getRdbStore(getStageContext(this.context), storeConfig)
-            // 当数据库创建时，数据库默认版本为0
-            if (store.version == 0) {
-                store.executeSql(SQL_CREATE_TABLE) // 创建数据表
-                // 设置数据库的版本，入参为大于0的整数
-                store.version = 3
-            } else if (store.version == 1) {
-                // 如果数据库版本不为0且和当前数据库版本不匹配，需要进行升降级操作
-                // 当数据库存在并假定版本为1时，例应用从某一版本升级到当前版本，数据库需要从1版本升级到2版本
-                // version = 1：表结构：EMPLOYEE (ID, NAME, SALARY, CODES) => version = 2：表结构：EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
-                store.executeSql('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER')
-                store.version = 2
-            } else if (store.version == 2) {
-                // 当数据库存在并假定版本为2时，例应用从某一版本升级到当前版本，数据库需要从2版本升级到3版本
-                // version = 2：表结构：EMPLOYEE (ID, NAME, AGE, SALARY, CODES, ADDRESS) => version = 3：表结构：EMPLOYEE (ID, NAME, AGE, SALARY, CODES)
-                store.executeSql('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS TEXT')
-                store.version = 3
-            }
+            let store = getRdbStore(this.context, storeConfig)
+            store.executeSql(SQL_CREATE_TABLE) // 创建数据表
+            store.executeSql('ALTER TABLE EMPLOYEE ADD COLUMN AGE INTEGER')
+            store.executeSql('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS TEXT')
             rdbStore = store
             // 进行数据库的增、删、改、查等操作
             // ...
@@ -127,12 +124,14 @@
     <!-- compile -->
 
     ```cangjie
+    import ohos.data.relational_store.ValueType as RelationalStoreValueType 
+
     var values = HashMap<String, RelationalStoreValueType>()
-    values.add("ID", RelationalStoreValueType.integer(1))
-    values.add("NAME", RelationalStoreValueType.string("Lisa"))
-    values.add("AGE", RelationalStoreValueType.integer(18))
-    values.add("SALARY", RelationalStoreValueType.double(100.5))
-    values.add("CODES", RelationalStoreValueType.boolean(true))
+    values.add("ID", RelationalStoreValueType.Integer(1))
+    values.add("NAME", RelationalStoreValueType.StringValue("Lisa"))
+    values.add("AGE", RelationalStoreValueType.Integer(18))
+    values.add("SALARY", RelationalStoreValueType.Double(100.5))
+    values.add("CODES", RelationalStoreValueType.Boolean(true))
     rdbStore.getOrThrow().insert("EMPLOYEE", values)
     ```
 
@@ -150,27 +149,25 @@
     // 修改数据
     try {
         let predicates1 = RdbPredicates('EMPLOYEE')  // 创建表'EMPLOYEE'的predicates
-        predicates1.equalTo("NAME", RelationalStoreValueType.string("Lisa")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
+        predicates1.equalTo("NAME", RelationalStoreValueType.StringValue("Lisa")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
 
         var values = HashMap<String, RelationalStoreValueType>()
-        values.add("NAME", RelationalStoreValueType.string("TOM"))
-        values.add("AGE", RelationalStoreValueType.integer(88))
-        values.add("SALARY", RelationalStoreValueType.double(9999.513))
+        values.add("NAME", RelationalStoreValueType.StringValue("TOM"))
+        values.add("AGE", RelationalStoreValueType.Integer(88))
+        values.add("SALARY", RelationalStoreValueType.Double(9999.513))
         let rowsCnt = rdbStore.getOrThrow().update(values, predicates1)
-        AppLog.info("Succeeded in updating data. row count: ${rowsCnt}")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
 
     // 删除数据
     try {
         let predicates1 = RdbPredicates('EMPLOYEE')  // 创建表'EMPLOYEE'的predicates
-        predicates1.equalTo("NAME", RelationalStoreValueType.string("Lisa")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
+        predicates1.equalTo("NAME", RelationalStoreValueType.StringValue("Lisa")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
 
         let rowsCnt = rdbStore.getOrThrow().delete(predicates1)
-        AppLog.info("Succeeded in delete data. row count: ${rowsCnt}")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -183,11 +180,10 @@
     ```cangjie
     try {
         let predicates2 = RdbPredicates('EMPLOYEE')  // 创建表'EMPLOYEE'的predicates
-        predicates2.equalTo("NAME", RelationalStoreValueType.string("Rose")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
+        predicates2.equalTo("NAME", RelationalStoreValueType.StringValue("Rose")) // 匹配表"EMPLOYEE"中"NAME"为"Lisa"的字段
 
         let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]
-        let resultSet = rdbStore.getOrThrow().query(predicates2, columns)
-        AppLog.info("ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}")
+        let resultSet = rdbStore.getOrThrow().query(predicates2, columns:columns)
         // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
 
         while (resultSet.goToNextRow()) {
@@ -195,12 +191,11 @@
             let name = resultSet.getString(resultSet.getColumnIndex('NAME'))
             let age = resultSet.getLong(resultSet.getColumnIndex('AGE'))
             let salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'))
-            AppLog.info("id=${id}, name=${name}, age=${age}, salary=${salary}")
         }
         // 释放数据集的内存
         resultSet.close()
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -218,9 +213,9 @@
     try {
         // "Backup.db"为备份数据库文件名，默认在RdbStore同路径下备份。也可指定路径：customDir + "backup.db"
         rdbStore.getOrThrow().backup("Backup.db")
-        AppLog.info("Succeeded in backup data.")
+        Hilog.info(0, "cangjie", "Succeeded in backup data.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -233,9 +228,9 @@
     ```cangjie
     try {
         rdbStore.getOrThrow().restore("Backup.db")
-        AppLog.info("Succeeded in backup data.")
+        Hilog.info(0, "cangjie", "Succeeded in backup data.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -247,9 +242,9 @@
 
     ```cangjie
     try {
-        deleteRdbStore(getStageContext(this.context), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S3))
-        AppLog.info("Succeeded in delete RdbStore.")
+        deleteRdbStore(this.context, StoreConfig(RelationalStoreSecurityLevel.S3, name: "RdbTest.db", ))
+        Hilog.info(0, "cangjie", "Succeeded in delete RdbStore.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```

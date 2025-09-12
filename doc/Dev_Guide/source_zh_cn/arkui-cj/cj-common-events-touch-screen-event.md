@@ -1,6 +1,6 @@
 # 触屏事件
 
-触屏事件指当手指/手写笔在组件上按下、滑动、抬起时触发的回调事件。包括[点击事件](#点击事件)、[拖拽事件](./cj-common-events-drag-event.md)和[触摸事件](#触摸事件)。触屏事件的原理如下图所示：
+触屏事件指当手指/手写笔在组件上按下、滑动、抬起时触发的回调事件。包括[点击事件](#点击事件)、[拖拽事件](./../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-drag.md)和[触摸事件](#触摸事件)。触屏事件的原理如下图所示：
 
 **图1** 触摸事件原理
 
@@ -9,7 +9,6 @@
 ## 点击事件
 
 点击事件是指通过手指或手写笔做出一次完整的按下和抬起动作。当发生点击事件时，会触发以下回调函数：
-
 
 ```cangjie
 func onClick(callback: (ClickEvent)->Unit): This
@@ -68,7 +67,6 @@ class EntryView {
 
 当手指或手写笔在组件上触碰时，会触发不同动作所对应的事件响应，包括按下（Down）、滑动（Move）、抬起（Up）事件：
 
-
 ```cangjie
 public func onTouch(callback: (TouchEvent)->Unit): This
 ```
@@ -108,12 +106,13 @@ class EntryView {
                         case TouchType.Move => 'Move'
                         case TouchType.Cancel => 'Move'
                         case TouchType.Unknown => "Unknown"
+                        case _ => ""
                     }
                     this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
                         + event.touches[0].x.toString() + '\n' + 'y: ' + event.touches[0].y.toString()
-                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.toString()
-                        + ',' + event.target.area.globalPosition.y.toString() + ')\nwidth:'
-                        + event.target.area.width.toString() + '\nheight:' + event.target.area.height.toString()
+                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.value.toString()
+                        + ',' + event.target.area.globalPosition.y.value.toString() + ')\nwidth:'
+                        + event.target.area.width.value.toString() + '\nheight:' + event.target.area.height.value.toString()
                 })
             Button('Touch')
                 .height(50)
@@ -126,12 +125,13 @@ class EntryView {
                         case TouchType.Move => 'Move'
                         case TouchType.Cancel => 'Move'
                         case TouchType.Unknown => "Unknown"
+                        case _ => ""
                     }
                     this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
                         + event.touches[0].x.toString() + '\n' + 'y: ' + event.touches[0].y.toString()
-                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.toString()
-                        + ',' + event.target.area.globalPosition.y.toString() + ')\nwidth:'
-                        + event.target.area.width.toString() + '\nheight:' + event.target.area.height.toString()
+                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.value.toString()
+                        + ',' + event.target.area.globalPosition.y.value.toString() + ')\nwidth:'
+                        + event.target.area.width.value.toString() + '\nheight:' + event.target.area.height.value.toString()
                 })
             Text(this.text)
         }

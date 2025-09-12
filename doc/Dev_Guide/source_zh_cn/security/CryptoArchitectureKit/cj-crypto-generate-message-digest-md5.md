@@ -63,7 +63,7 @@ func doLoopMd() {
     // 假设信息总共43字节，根据utf-8解码后，也是43字节。
     let messageText = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee"
     let messageData = messageText.toArray()
-    let updateLength = 20 // 假设以20字节为单位进行分段update，实际并无要求。
+    let updateLength = 20 // 假设以20字节为单位进行分段update，实际并无此要求。
     let size = messageData.size
     for (i in 0..size : updateLength) {
         let len = if (i + updateLength > size) {

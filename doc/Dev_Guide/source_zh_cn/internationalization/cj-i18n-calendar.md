@@ -10,22 +10,19 @@
 
 1. 导入模块。
 
-   <!-- compile -->
+    <!-- compile -->
 
-   ```cangjie
-   import kit.LocalizationKit.*
-   ```
+    ```cangjie
+    import kit.LocalizationKit.*
+    ```
 
 2. 公历相关用法。
 
-   <!-- compile -->
+    <!-- compile -->
 
-   ```cangjie
-    import std.time.DateTime as d
-
-    let calendar: Calendar = getCalendar('zh-Hans', calendarType: 'gregory')
-    // 设置日历对象的时间日期为2022.05.13 08:00:00
-    calendar.setTime(d.of(year: 2022,month: 5, dayOfMonth: 13, hour:5, minute:0))
+    ```cangjie
+    let calendar: Calendar = getCalendar('zh-Hans', calendarType:  CalendarType.Chinese)
+    // 设置日历对象的时间
     calendar.setTime(10540800000.0)
 
     // 设置日历对象的时间日期为2022.05.13 08:00:00
@@ -55,33 +52,27 @@
     // 获取日历对象本地化名称
     let calendarName: String = calendar.getDisplayName('zh-Hans') // calendarName = '公历'
 
-    // 判断指定的日期在日历中是否为周末
-    let isWeekend: Bool = calendar.isWeekend(date: d.of(year: 2023,month: 9, dayOfMonth: 15)) // isWeekend = false
-
     // 在日历的给定字段进行加减操作
     calendar.set(2023, 10, 15)
     calendar.add('date', 2)
     let day: Int32 = calendar.get('date') // day = 17
-
-    // 比较日历和指定日期相差的天数
-    let daysDifference: Int32 = calendar.compareDays(d.of(year: 2023,month: 10, dayOfMonth: 15)) // daysDifference = -34
    ```
 
 3. 获取公历对应的农历日期。
 
    <!-- compile -->
 
-   ```cangjie
+    ```cangjie
     import std.time.DateTime as d
 
-    let calendar: Calendar = getCalendar('zh-Hans', calendarType: 'chinese')
+    let calendar: Calendar = getCalendar('zh-Hans', calendarType: CalendarType.Chinese)
     //将公历信息设置到calendar对象，时间日期为2023.07.25 08:00:00
-    calendar.setTime(d.of(year: 2023,month: 7, dayOfMonth: 25, hour:8, minute:0))
+    calendar.set(2023, 7,  25, hour:8, minute:0)
     //获取农历年月日
     let year: Int32 = calendar.get('year') // year = 40，指干支纪年40，范围1-60
     let month: Int32 = calendar.get('month') // month = 5，指6月
     let day: Int32 = calendar.get('date') // day = 8，指8日
-   ```
+    ```
 
 支持的日历类型如下：
 

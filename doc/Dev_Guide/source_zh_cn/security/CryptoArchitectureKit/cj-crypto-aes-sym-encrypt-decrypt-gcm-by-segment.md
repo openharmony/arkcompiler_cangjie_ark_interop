@@ -16,7 +16,7 @@
 
    当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-      1）比如ECB和CBC模式，始终以分组作为基本单位来加密，并输出本次update产生的加密分组结果。即当本次update操作凑满一个分组就输出密文，没有凑满则此次update输出空Datablob，将未加密的数据与下次输入的数据拼接凑分组再输出。等到最后doFinal的时候，将未加密的数据，根据指定的填充模式进行填充，在输出剩余加密结果。解密过程中的update同理。
+      1）比如ECB和CBC模式，始终以分组作为基本单位来加密，并输出本次update产生的加密分组结果。即当本次update操作凑满一个分组就输出密文，没有凑满则此次update输出空Datablob，将未加密的数据与下次输入的数据拼接凑分组再输出。等到最后doFinal的时候，将未加密的数据，根据指定的填充模式进行填充，再输出剩余加密结果。解密过程中的update同理。
 
       2）对于流加密模式（比如CTR和OFB模式），通常密文长度和明文长度相等。
 
@@ -82,8 +82,7 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
         let updateMessageBlob: DataBlob = DataBlob(updateMessage)
         // 分段update。
         let updateOutput = cipher.update(updateMessageBlob)
-        // 把update的结果拼接起来，得到密文（有些情况下还需拼接doFinal的结果，这取决于分组模式。
-        // 和填充模式，本例中GCM模式的doFinal结果只包含authTag而不含密文，所以不需要拼接）。
+        // 把update的结果拼接起来，得到密文（有些情况下还需拼接doFinal的结果，这取决于分组模式和填充模式，本例中GCM模式的doFinal结果只包含authTag而不含密文，所以不需要拼接）。
         cipherText.add(all: updateOutput.data)
     }
     gcmParams.authTag = cipher.doFinal(None)
@@ -112,8 +111,8 @@ func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
         decryptText.add(all: updateOutput.data)
     }
     decoder.doFinal(None)
-    let decryptBlob: DataBlob = DataBlob(decryptText.toArray());
-    return decryptBlob;
+    let decryptBlob: DataBlob = DataBlob(decryptText.toArray())
+    return decryptBlob
 }
 
 func genSymKeyByData(symKeyData: Array<UInt8>) {

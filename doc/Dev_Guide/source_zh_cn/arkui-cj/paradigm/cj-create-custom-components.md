@@ -12,7 +12,6 @@
 
 以下示例展示了自定义组件的基本用法。
 
-
 ```cangjie
 @Component
 class HelloComponent {
@@ -29,7 +28,6 @@ class HelloComponent {
 ```
 
 HelloComponent可以在其他自定义组件中的build()函数中多次创建，实现自定义组件的重用。
-
 
 ```cangjie
 @Entry
@@ -62,7 +60,6 @@ class EntryView {
 
 @Component宏仅能装饰class关键字声明的数据结构。class被@Component装饰后具备组件化的能力，需要实现build方法描述UI，一个class只能被一个@Component装饰。
 
-
 ```cangjie
 @Component
 class MyComponent {
@@ -77,7 +74,6 @@ class MyComponent {
 
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
-
 ```cangjie
 @Component
 class MyComponent {
@@ -89,7 +85,6 @@ class MyComponent {
 ### @Entry
 
 @Entry装饰的自定义组件将作为UI页面的入口。在单个UI页面中，最多可以使用@Entry装饰一个自定义组件。@Entry可以接受一个可选的[LocalStorage](../state_management/cj-localstorage.md)的参数。
-
 
 ```cangjie
 @Entry
@@ -107,7 +102,6 @@ class MyComponent {
 ### @Reusable
 
 @Reusable装饰的自定义组件具备可复用能力。详细请参见：[@Reusable宏：组件复用](./cj-macro-reusable.md#使用场景)。
-
 
 ```cangjie
 @Reusable
@@ -140,8 +134,8 @@ import ohos.arkui.state_macro_manage.*
 
 @Component
 class MyComponent {
-    private var countDownFrom : Int64 = 0
-    private var color : Color = Color.Blue
+    private var countDownFrom: Int64 = 0
+    private var color: Color = Color.Blue
     func build() {
     }
 }
@@ -149,7 +143,7 @@ class MyComponent {
 @Entry
 @Component
 class EntryView {
-    private var someColor : Color = Color.PINK
+    private var someColor: Color = Color.Red
     func build() {
         Column(){
             // 创建MyComponent实例，并将创建MyComponent成员变量countDownFrom初始化为10，将成员变量color初始化为this.someColor
@@ -234,7 +228,6 @@ class Child {
 
 - 不允许声明本地变量，反例如下。
 
-
   ```cangjie
   func build() {
       let num :Int64 = 0
@@ -242,7 +235,6 @@ class Child {
   ```
 
 - 不允许在UI描述里直接使用Hilog.info，但允许在方法或者函数里使用，反例如下。
-
 
   ```cangjie
   func build() {
@@ -252,7 +244,6 @@ class Child {
   ```
 
 - 不允许创建本地的作用域，反例如下。
-
 
   ```cangjie
   func build() {
@@ -264,7 +255,6 @@ class Child {
   ```
 
 - 不允许调用没有用@Builder装饰的方法，允许系统组件的参数是CJ方法的返回值。
-
 
   ```cangjie
   @Component
@@ -293,7 +283,6 @@ class Child {
 
 - 不允许使用match语法，如果需要使用条件判断，请使用[if](../rendering_control/cj-rendering-control-ifelse.md)。示例如下。
 
-
   ```cangjie
   func build(){
       Column(){
@@ -317,11 +306,10 @@ class Child {
 
 - 不允许直接改变状态变量，反例如下。详细分析见[@State常见问题：不允许在build里改状态变量](../state_management/cj-macro-state.md#不允许在build里改状态变量)。
 
-
   ```cangjie
   @Component
   class EntryView{
-      @State var textColor : Color = Color.YELLOW
+      @State var textColor : Color = Color(0xFFFF00)
       @State var columnColor : Color  = Color.Green
       @State var count : Int64 = 1
       func build(){

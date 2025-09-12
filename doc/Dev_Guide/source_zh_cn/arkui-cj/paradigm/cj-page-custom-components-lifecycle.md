@@ -42,7 +42,7 @@
 
 1.在删除组件之前，将调用其aboutToDisappear生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被回收。
 
-2.自定义组件和它的变量将被删除，如果其有同步的变量，比如[@Link](../state_management/cj-macro-link.md)、[@Prop](../state_management/cj-macro-prop.md)、[@StorageLink](../state_management/cj-appstorage.md#@StorageLink)，将从[同步源](../state_management/cj-state-management-overview.md)上取消注册。
+2.自定义组件和它的变量将被删除，如果其有同步的变量，比如[@Link](../state_management/cj-macro-link.md)、[@Prop](../state_management/cj-macro-prop.md)、[@StorageLink](../state_management/cj-appstorage.md#storagelink)，将从[同步源](../state_management/cj-state-management-overview.md)上取消注册。
 
 不建议在生命周期aboutToDisappear内使用异步操作，如果在生命周期的aboutToDisappear使用异步操作（spawn或者回调方法），自定义组件将被保留在spawn的闭包中，直到回调方法被执行完，这个行为阻止了自定义组件的垃圾回收。
 
@@ -57,6 +57,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import ohos.arkui.ui_context.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -66,17 +67,17 @@ class EntryView {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageShow() {
-        AppLog.info("Index onPageShow")
+        Hilog.info(0, "cangjie", "Index onPageShow")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageHide() {
-        AppLog.info("Index onPageHide")
+        Hilog.info(0, "cangjie", "Index onPageHide")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onBackPress() {
-        AppLog.info("Index onBackPress")
+        Hilog.info(0, "cangjie", "Index onBackPress")
         this.btnColor = Color(0xFFEE0606)
         // 返回true表示页面自己处理返回逻辑，不进行页面路由；返回false表示使用默认的路由返回逻辑
         return true
@@ -84,17 +85,17 @@ class EntryView {
 
     // 组件生命周期
     protected override func aboutToAppear() {
-        AppLog.info("EntryView aboutToAppear")
+        Hilog.info(0, "cangjie", "EntryView aboutToAppear")
     }
 
     // 组件生命周期
     protected override func onDidBuild() {
-        AppLog.info("EntryView onDidBuild")
+        Hilog.info(0, "cangjie", "EntryView onDidBuild")
     }
 
     // 组件生命周期
     protected override func aboutToDisappear() {
-        AppLog.info("EntryView aboutToDisappear")
+        Hilog.info(0, "cangjie", "EntryView aboutToDisappear")
     }
 
     func build() {
@@ -129,17 +130,17 @@ class Child {
 
     // 组件生命周期
     protected override func aboutToAppear() {
-        AppLog.info("Child aboutToAppear")
+        Hilog.info(0, "cangjie", "Child aboutToAppear")
     }
 
     // 组件生命周期
     protected override func onDidBuild() {
-        AppLog.info("Child onDidBuild")
+        Hilog.info(0, "cangjie", "Child onDidBuild")
     }
 
     // 组件生命周期
     protected override func aboutToDisappear() {
-        AppLog.info("Child aboutToDisappear")
+        Hilog.info(0, "cangjie", "Child aboutToDisappear")
     }
 
     func build() {
@@ -161,6 +162,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -175,7 +177,7 @@ class Page {
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
     protected override func onPageHide() {
-        AppLog.info("Page onPageHide")
+        Hilog.info(0, "cangjie", "Page onPageHide")
     }
 
     // 只有被@Entry修饰的组件才可以调用页面的生命周期
@@ -222,134 +224,3 @@ class Page {
 - 最小化应用或者应用进入后台，触发Index onPageHide。当前Index页面没有被销毁，所以并不会执行组件的aboutToDisappear。应用回到前台，执行Index onPageShow。
 
 - 退出应用，执行Index onPageHide --> EntryView aboutToDisappear --> Child aboutToDisappear。
-
-## 自定义组件监听页面声明周期
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import ohos.observer.*
-
-class TabContentInfoCallback1 <: Callback1Argument<TabContentInfo> {
-    public init() {}
-    // Tabs1的TabContent页面切换时调用
-    public open func invoke(val: TabContentInfo): Unit {
-        AppLog.info("TabContentUpdate1 tabContentId: ${val.tabContentId}")
-        AppLog.info("TabContentUpdate1 tabContentUniqueId: ${val.tabContentUniqueId}")
-        match (val.state) {
-            case ON_SHOW => AppLog.info("TabContentUpdate1 ON_SHOW")
-            case ON_HIDE => AppLog.info("TabContentUpdate1 ON_HIDE")
-            case _ => AppLog.info("TabContentUpdate1 error")
-        }
-        AppLog.info("TabContentUpdate1 id:${val.id}")
-        AppLog.info("TabContentUpdate1 uniqueId:${val.uniqueId}")
-    }
-}
-
-class TabContentInfoCallback2 <: Callback1Argument<TabContentInfo> {
-    public init() {}
-    // Tabs1的TabContent页面切换时调用
-    public open func invoke(val: TabContentInfo): Unit {
-        AppLog.info("TabContentUpdate2 tabContentId: ${val.tabContentId}")
-        AppLog.info("TabContentUpdate2 tabContentUniqueId: ${val.tabContentUniqueId}")
-        match (val.state) {
-            case ON_SHOW => AppLog.info("TabContentUpdate2 ON_SHOW")
-            case ON_HIDE => AppLog.info("TabContentUpdate2 ON_HIDE")
-            case _ => AppLog.info("TabContentUpdate2 error")
-        }
-        AppLog.info("TabContentUpdate2 id:${val.id}")
-        AppLog.info("TabContentUpdate2 uniqueId:${val.uniqueId}")
-    }
-}
-
-@Entry
-@Component
-class EntryView {
-    var tabContentUpdate1: TabContentInfoCallback1 = TabContentInfoCallback1()
-
-    protected override func aboutToAppear() {
-        // 监听Tabs1的TabContent页面的切换事件。
-        on(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs1"), tabContentUpdate1)
-    }
-
-    protected override func aboutToDisappear() {
-        // 取消监听Tabs1的TabContent页面的切换事件。
-        off(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs1"), tabContentUpdate1)
-    }
-
-    func build() {
-        Column {
-            Tabs {
-                TabContent {
-                    Column {
-                        Text("TabContent1")
-                    }
-                }.id("TabContent1")
-
-                TabContent {
-                    Column {
-                        Text("TabContent2")
-                    }
-                }.id("TabContent2")
-
-                TabContent {
-                    Column {
-                        Text("TabContent3")
-                    }
-                }.id("TabContent3")
-            }
-                .width(100.percent)
-                .height(40.percent)
-                .id("Tabs1")
-
-            Column {
-                SubComponent()
-            }
-        }
-    }
-}
-
-@Component
-class SubComponent {
-    var tabContentUpdate2: TabContentInfoCallback2 = TabContentInfoCallback2()
-
-    protected override func aboutToAppear() {
-        // 监听Tabs2的TabContent页面的切换事件。
-        on(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs2"), tabContentUpdate2)
-    }
-
-    protected override func aboutToDisappear() {
-        // 取消监听Tabs2的TabContent页面的切换事件。
-        off(ObserverType.OBSERVER_TAB_CONTENT_UPDATE, ObserverOptions("Tabs2"), tabContentUpdate2)
-    }
-
-    func build() {
-        Tabs {
-            TabContent {
-                Column {
-                    Text("TabContent1")
-                }
-            }.id("TabContent1")
-
-            TabContent {
-                Column {
-                    Text("TabContent2")
-                }
-            }.id("TabContent2")
-
-            TabContent {
-                Column {
-                    Text("TabContent3")
-                }
-            }.id("TabContent3")
-        }
-            .width(100.percent)
-            .height(40.percent)
-            .id("Tabs2")
-    }
-}
-```

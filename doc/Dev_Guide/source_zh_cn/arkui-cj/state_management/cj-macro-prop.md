@@ -24,7 +24,7 @@
 |:---|:---|
 |非属性宏|无。|
 |同步类型|单向同步：对父组件状态变量值的修改，将同步给子组件\@Prop装饰的变量，子组件\@Prop变量的修改不会同步到父组件的状态变量上。嵌套类型的场景请参见[观察变化](#观察变化)。|
-|允许装饰的变量类型|支持基础数据类型，对于String，Int64，Float64和Bool类型的变量，可以缺省类型。其他类型的变量不可缺省类型，必须被指定。<br/>支持enum、struct和Option类型，struct类型内部无法修改。<br/>支持class类型，如果要感知内部的变化，在定义的时候需要被[\@Observed](./cj-macro-observed-and-publish.md)修饰，对类内属性和嵌套属性使用[\@Publish](./cj-macro-observed-and-publish.md)装饰后，才能观察到其变化。嵌套类的情况同理。由于class是引用类型，使用\@Observed修饰时在子组件中对class内部变量的修改会影响父组件。<br/>支持数组类型，如果要感知内部的变化，需要使用[ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。数组项为自定义类型时，使用[\@Observed](./cj-macro-observed-and-publish.md)和[\@Publish](./cj-macro-observed-and-publish.md)装饰时能观察到数组项中属性赋值。其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。<br/>支持[Color](../../../../API_Reference//source_zh_cn/arkui-cj/cj-common-types.md#class-color)类型。<br/>\@Prop和[数据源](./cj-state-management-overview.md#基本概念)类型需要相同，有以下三种情况：<br/>-&nbsp;\@Prop装饰的变量和\@State以及其他宏同步时双方的类型必须相同，示例请参见[父组件@State到子组件@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。<br/>-&nbsp;\@Prop装饰的变量和\@State以及其他宏装饰的数组的项同步时 ，\@Prop的类型需要和\@State装饰的数组的数组项相同，比如\@Prop&nbsp;:&nbsp;T和\@State&nbsp;:&nbsp;Array&lt;T&gt;，示例请参见[父组件@State数组中的项到子组件@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。<br/>-&nbsp;当父组件状态变量为struct或者class时，\@Prop装饰的变量和父组件状态变量的属性类型相同，示例请参见[从父组件中的@State类对象属性到@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。<br/>支持类型的场景请参见[观察变化](#观察变化)。|
+|允许装饰的变量类型|支持基础数据类型，对于String，Int64，Float64和Bool类型的变量，可以缺省类型。其他类型的变量不可缺省类型，必须被指定。<br/>支持enum、struct和Option类型，struct类型内部无法修改。<br/>支持class类型，如果要感知内部的变化，在定义的时候需要被[\@Observed](./cj-macro-observed-and-publish.md)修饰，对类内属性和嵌套属性使用[\@Publish](./cj-macro-observed-and-publish.md)装饰后，才能观察到其变化。嵌套类的情况同理。由于class是引用类型，使用\@Observed修饰时在子组件中对class内部变量的修改会影响父组件。<br/>支持数组类型，如果要感知内部的变化，需要使用[ObservedArray\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。数组项为自定义类型时，使用[\@Observed](./cj-macro-observed-and-publish.md)和[\@Publish](./cj-macro-observed-and-publish.md)装饰时能观察到数组项中属性赋值。其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。<br/>支持[Color](../../../../API_Reference//source_zh_cn/apis/BasicServicesKit/cj-apis-base.md#class-color)类型。<br/>\@Prop和[数据源](./cj-state-management-overview.md#基本概念)类型需要相同，有以下三种情况：<br/>-&nbsp;\@Prop装饰的变量和\@State以及其他宏同步时双方的类型必须相同，示例请参见[父组件@State到子组件@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。<br/>-&nbsp;\@Prop装饰的变量和\@State以及其他宏装饰的数组的项同步时 ，\@Prop的类型需要和\@State装饰的数组的数组项相同，比如\@Prop&nbsp;:&nbsp;T和\@State&nbsp;:&nbsp;Array&lt;T&gt;，示例请参见[父组件@State数组中的项到子组件@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。<br/>-&nbsp;当父组件状态变量为struct或者class时，\@Prop装饰的变量和父组件状态变量的属性类型相同，示例请参见[从父组件中的@State类对象属性到@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。<br/>支持类型的场景请参见[观察变化](#观察变化)。|
 |嵌套传递层数|在组件复用场景，建议\@Prop深度嵌套数据不要超过5层，嵌套太多会导致深拷贝占用的空间过大以及GarbageCollection(垃圾回收)，引起性能问题。|
 |被装饰变量的初始值|\@Prop装饰的变量必须使用其父组件提供的变量进行初始化，不允许在子组件中初始化。|
 
@@ -44,7 +44,6 @@
 
 - 当装饰的数据类型为基础数据类型时，可以观察到数值的变化。
 
-
     ```cangjie
     // 简单类型
     @Prop var count: Int
@@ -55,7 +54,6 @@
 - 当装饰的数据类型为struct时，内部无法修改。
 
     声明Person。
-
 
     ```cangjie
     struct Person {
@@ -70,7 +68,6 @@
 
     \@Prop装饰的是struct Person。
 
-
     ```cangjie
     // struct类型
     @Prop var person: Person
@@ -78,14 +75,12 @@
 
     对\@Prop装饰变量的整体赋值可行。
 
-
     ```cangjie
     // struct类型赋值
     this.person = Person(2, "muller")
     ```
 
     对\@Prop装饰变量的赋值，编译器显示无法修改。
-
 
     ```cangjie
     // struct属性的赋值
@@ -95,7 +90,6 @@
 - 当装饰的数据类型为class时，需要被[@Observed](./cj-macro-observed-and-publish.md)修饰，内部需要感知变化的属性用[@Publish](./cj-macro-observed-and-publish.md)修饰，如果不使用[@Observed](./cj-macro-observed-and-publish.md)则无法感知成员变量等内部变化。详情请参见[@Prop嵌套场景](#prop嵌套场景)。
 
     声明Person和Model类。
-
 
     ```cangjie
     @Observed
@@ -112,13 +106,11 @@
 
     \@Prop装饰的类型是Model。
 
-
     ```cangjie
     @Prop var title: Model
     ```
 
     对\@Prop装饰变量的赋值。
-
 
     ```cangjie
     // class属性的赋值
@@ -127,7 +119,6 @@
 
     对\@Prop装饰变量的属性和嵌套属性的赋值都可以感知。
 
-
     ```cangjie
     // class属性的赋值
     this.title.value = 'Hi'
@@ -135,10 +126,9 @@
     this.title.name.value = 'ArkUI'
     ```
 
-- 当装饰的对象是数组时，无法单独感知某个数组项的变化，但能感知整体的变化。如果要感知内部的变化，需要使用[ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。
+- 当装饰的对象是数组时，无法单独感知某个数组项的变化，但能感知整体的变化。如果要感知内部的变化，需要使用[ObservedArray\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray)和[ObservedArrayList\<T>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist)。
 
     \@Prop装饰的对象为ArrayList类型数组时。
-
 
     ```cangjie
     @Prop var arrlist: ArrayList<Int16>
@@ -146,20 +136,17 @@
 
     数组整体的变化可以感知。
 
-
     ```cangjie
     this.arrlist = ArrayList<Int16>([10,9,8])
     ```
 
     数组项的赋值感知不到。
 
-
     ```cangjie
     this.arrlist[0] = 10
     ```
 
     声明Model类。
-
 
     ```cangjie
     @Observed
@@ -168,24 +155,21 @@
     }
     ```
 
-    \@Prop装饰的对象为ObservedArray\<Model\>类型数组时。
-
+    \@Prop装饰的对象为ObservedArray\<Model>类型数组时。
 
     ```cangjie
     // ObservedArray数组类型
-    @Prop var title: ObservedArray<Model>
+    @Prop var title: ObservedArrayList<Model>
     ```
 
     数组自身的赋值可以感知。
 
-
     ```cangjie
     // 数组赋值
-    this.title = ObservedArray<Model>([Model(value: 2)])
+    this.title = ObservedArrayList<Model>([Model(value: 2)])
     ```
 
     数组项的赋值可以感知。
-
 
     ```cangjie
     // 数组项赋值
@@ -194,16 +178,14 @@
 
     数组项中属性的赋值可以感知。
 
-
     ```cangjie
     // 嵌套的属性赋值可以感知
     this.title[0].value = 6
     ```
 
-    \@Prop装饰的对象为ObservedArrayList\<Model\>类型数组时，新增和删除数组项可以感知。
+    \@Prop装饰的对象为ObservedArrayList\<Model>类型数组时，新增和删除数组项可以感知。
 
     删除数组项可以感知。
-
 
     ```cangjie
     // 数组项更改
@@ -211,7 +193,6 @@
     ```
 
     新增数组项可以感知。
-
 
     ```cangjie
     // 数组项更改
@@ -228,7 +209,6 @@
 - 当装饰的变量是其他数组类型和Collection类型，如Array、Varray、ArrayList、HashMap和HashSet，支持赋值新的数组，但是无法监听内部元素的变化。
     以HashSet为例。
 
-
     ```cangjie
     //@Prop装饰的对象为HashSet时
     @Prop var message: HashSet<Int64>
@@ -236,13 +216,11 @@
 
     HashSet整体的变化可以感知。
 
-
     ```cangjie
     this.message = HashSet<Int64>(1,2,3)
     ```
 
     HashSet内部的变化不能感知。
-
 
     ```cangjie
     this.message.add(5)
@@ -491,6 +469,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Observed
@@ -569,7 +548,7 @@ class EntryView {
                         evt => if (this.allBooks.size > 0) {
                             this.allBooks.remove(0)
                         } else {
-                            AppLog.info("length <= 0")
+                            Hilog.info(0, "cangjie", "length <= 0")
                         }
                     })
         }
@@ -611,8 +590,8 @@ class EntryView {
     func build() {
         Column {
             Flex(
-                FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-                    justifyContent: FlexAlign.SpaceBetween)) {
+                direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+                    justifyContent: FlexAlign.SpaceBetween) {
                 Button('change Father name')
                     .width(312)
                     .height(40)
