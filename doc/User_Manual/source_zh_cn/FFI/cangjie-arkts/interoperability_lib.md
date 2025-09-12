@@ -64,6 +64,7 @@
 > **注意：**
 >
 > 在同一个仓颉模块中（同一个包及其子包中）需遵循如下规则，否则可能出现符号覆盖：
+>
 > - 使用 JSModule.registerModule、JSModule.registerClass、JSModule.registerFunc 注册到 JSModule 中的函数、interface、class 不能同名。
 >
 >   错误示例：

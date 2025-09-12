@@ -662,7 +662,7 @@ Architecture set to: x86_64-unknown-linux-gnu.
 3. 对于 `Enum` 类型的显示，如果该 `Enum` 的构造器存在参数的情况下，会显示成如下样式：
 
     <!-- only-cjdb -->
-    
+
     ```cangjie
     enum E {
         Ctor(Int64, String) | Ctor

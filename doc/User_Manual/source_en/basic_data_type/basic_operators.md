@@ -250,7 +250,6 @@ func isEven(a: Int64): Bool {
     }
 }
 
-
 main() {
     var a: Bool = isEven(2) && isEven(20)
     var b: Bool = isEven(3) && isEven(30) // isEven(3) returns false, b is false, isEven(30) is not evaluated
