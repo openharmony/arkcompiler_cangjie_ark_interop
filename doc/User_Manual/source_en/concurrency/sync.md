@@ -241,7 +241,6 @@ The following example demonstrates how to use `tryLock`:
 ```cangjie
 import std.sync.Mutex
 
-
 main(): Int64 {
     let mtx: Mutex = Mutex()
     var future: Future<Unit> = spawn {
