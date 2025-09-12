@@ -7,13 +7,11 @@
 > - 不支持横竖屏切换。
 > - 不支持路由跳转。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func bindContentCover(Bool, CustomBuilder, ContentCoverOptions)
 
@@ -33,8 +31,8 @@ public func bindContentCover(isShow: Bool, builder: CustomBuilder,
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |isShow|Bool|是|-|是否显示。|
-|builder|[CustomBuilder](#type-custombuilder)|是|-|自定义构建器。|
-|options|[ContentCoverOptions](#)|否|ContentCoverOptions()|内容覆盖层选项。|
+|builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|自定义构建器。|
+|options|[ContentCoverOptions](#class-contentcoveroptions))|否|ContentCoverOptions()|内容覆盖层选项。|
 
 ## 基础类型定义
 
@@ -63,7 +61,7 @@ public class ContentCoverOptions <: BindOptions {
 
 **父类型：**
 
-- [BindOptions](#class-bindoptions)
+- [BindOptions](./cj-universal-attribute-sheettransition.md#class-bindoptions)
 
 #### init(ModalTransition, ?(DismissContentCoverAction) -> Unit, ?TransitionEffect, ?ResourceColor, ?() -> Unit, ?() -> Unit, ?() -> Unit, ?() -> Unit)
 
@@ -90,10 +88,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|modalTransition|[ModalTransition](#enum-modaltransition)|否|ModalTransition.Default|**命名参数。** 全屏模态页面的转场方式|
-|onWillDismiss|?([DismissContentCoverAction](#class-dismisscontentcoveraction))->Unit|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数|
+|modalTransition|[ModalTransition](./cj-common-types.md#enum-modaltransition)|否|ModalTransition.Default|**命名参数。** 全屏模态页面的转场方式|
+|onWillDismiss|?([DismissContentCoverAction](./cj-common-types.md#class-dismisscontentcoveraction))->Unit|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数|
 |transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|Option.None|**命名参数。** 全屏模态页面的自定义转场方式|
-|backgroundColor|?[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|Option.None|**命名参数。** 全模态页面的背板颜色。|
+|backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Option.None|**命名参数。** 全模态页面的背板颜色。|
 |onAppear|?()->Unit|否|Option.None|**命名参数。** 全模态页面显示（动画结束后）回调函数|
 |onDisappear|?()->Unit|否|Option.None|**命名参数。** 全模态页面回退（动画结束后）回调函数|
 |onWillAppear|?()->Unit|否|Option.None|**命名参数。** 全模态页面显示（动画开始前）回调函数|

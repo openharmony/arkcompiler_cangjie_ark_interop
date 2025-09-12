@@ -88,7 +88,7 @@ public func shape(value: CheckBoxShape): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[CheckBoxShape](./cj-common-types.md#enum-checkboxshape)|是|-|切换CheckBox组件形状，包括圆形和圆角方形。<br>初始值：<br>CheckBoxShape.CIRCLE。|
+|value|[CheckBoxShape](./cj-common-types.md#enum-checkboxshape)|是|-|切换CheckBox组件形状，包括圆形和圆角方形。<br>初始值：<br>CheckBoxShape.Circle。|
 
 ## 组件事件
 
@@ -110,6 +110,20 @@ public func onChange(callback: OnCheckboxChangeCallback): This
 |:---|:---|:---|:---|:---|
 |callback|[OnCheckboxChangeCallback](#type-oncheckboxchangecallback)|是|-|当选中状态发生变化时，触发该回调。<br>\- Bool值为true时，表示已选中。<br>\- Bool值为false时，表示未选中。|
 
+## 基础类型定义
+
+### type OnCheckboxChangeCallback
+
+```cangjie
+public type OnCheckboxChangeCallback = (Bool) -> Unit
+```
+
+**功能：** (Bool) -> Unit 的类型别名。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ## 示例代码
 
 ### 示例1（设置多选框形状）
@@ -123,26 +137,31 @@ public func onChange(callback: OnCheckboxChangeCallback): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
 class EntryView {
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center)){
+        Flex(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center){
             Checkbox(name: "checkbox1", group: "checkboxGroup")
             .select(true)
             .selectedColor(0xed6f21)
-            .shape(CheckBoxShape.CIRCLE)
+            .shape(CheckBoxShape.Circle)
             .onChange({value: Bool =>
-                BaseLog.info("Checkbox1 change is" + value.toString())
+                loggerInfo("Checkbox1 change is" + value.toString())
             })
             .size(width: 50.vp, height: 50.vp)
             Checkbox(name: "checkbox2", group: "checkboxGroup")
             .select(false)
             .selectedColor(0x39a2db)
-            .shape(CheckBoxShape.ROUNDED_SQUARE)
+            .shape(CheckBoxShape.RoundedSquare)
             .onChange({value: Bool =>
-                BaseLog.info("Checkbox2 change is" + value.toString())
+                loggerInfo("Checkbox2 change is" + value.toString())
             })
             .width(50.vp)
             .height(50.vp)
@@ -176,14 +195,14 @@ class EntryView {
             }
             Row() {
                 Checkbox(name: "mark")
-                    .mark(strokeColor: Color.Red, size: 40.vp, strokeWidth: 6.vp)
+                    .selectedColor(Color.Red)
                     .width(60.vp)
                     .height(60.vp)
                 Text("mark")
             }
             Row() {
                 Checkbox(name: "mark")
-                    .mark(strokeColor: Color.Green, strokeWidth: 6.vp)
+                    .selectedColor(Color.Green)
                     .width(40.vp)
                     .height(40.vp)
                 Text("mark")
@@ -226,11 +245,11 @@ class EntryView {
                 Text("BBB")
             }
             Row() {
-                Checkbox(name: "CCC").unselectedColor(Color.Red)
+                Checkbox(name: "CCC").selectedColor(Color.Red)
                 Text("CCC")
             }
             Row() {
-                Checkbox(name: "DDD").unselectedColor(Color.Blue)
+                Checkbox(name: "DDD").selectedColor(Color.Blue)
                 Text("DDD")
             }
         }.width(100.percent)

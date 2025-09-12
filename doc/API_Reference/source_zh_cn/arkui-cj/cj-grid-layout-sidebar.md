@@ -36,8 +36,8 @@ public init(sideBarType!: SideBarContainerType = SideBarContainerType.Embed, chi
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|sideBarType|[SideBarContainerType](./cj-grid-layout-sidebar.md#enum-sidebarcontainertype)|是|-|设置侧边栏的显示类型。<br/>初始值：SideBarContainerType.Embed。|
-|child|()->Unit|否||定义侧边栏和内容区。|
+|sideBarType|[SideBarContainerType](./cj-common-types.md#enum-sidebarcontainertype)|否|SideBarContainerType.Embed|设置侧边栏的显示类型。<br/>初始值：SideBarContainerType.Embed。|
+|child|() -> Unit|否|{=>}|定义侧边栏和内容区。|
 
 ## 通用属性/通用事件
 
@@ -233,7 +233,7 @@ public func sideBarPosition(value: SideBarPosition): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[SideBarPosition](./cj-grid-layout-sidebar.md#enum-sidebarposition)|是|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
+|value|[SideBarPosition](./cj-common-types.md#enum-sidebarposition)|是|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
 
 ### func sideBarWidth(Length)
 
@@ -312,7 +312,7 @@ public var hidden: ResourceStr
 
 **功能：**设置侧边栏隐藏时控制按钮的图标。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -328,7 +328,7 @@ public var shown: ResourceStr
 
 **功能：**设置侧边栏显示时控制按钮的图标。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -344,7 +344,7 @@ public var switching: ResourceStr
 
 **功能：**设置侧边栏显示和隐藏状态切换时控制按钮的图标。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -368,9 +368,9 @@ public init(shown!: ResourceStr, hidden!: ResourceStr, switching!: ResourceStr =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|shown|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|设置侧边栏显示时控制按钮的图标。|
-|hidden|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|设置侧边栏隐藏时控制按钮的图标。|
-|switching|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""|设置侧边栏显示和隐藏状态切换时控制按钮的图标。|
+|shown|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏显示时控制按钮的图标。|
+|hidden|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏隐藏时控制按钮的图标。|
+|switching|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|设置侧边栏显示和隐藏状态切换时控制按钮的图标。|
 
 ### class ButtonStyle
 
@@ -540,7 +540,7 @@ public var color:?ResourceColor
 
 **功能：**分割线的颜色。
 
-**类型：** ?[ResourceColor](./cj-common-types.md#interface-resourcecolor)
+**类型：** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -614,7 +614,7 @@ public init(strokeWidth!: Length, color!: ?ResourceColor = 0x08000000, startMarg
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |strokeWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 分割线的线宽。<br/>初始值：1.vp。|
-|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|0x08000000|**命名参数。** 分割线的颜色。<br/>初始值：0x000000。|
+|color|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|0x08000000|**命名参数。** 分割线的颜色。<br/>初始值：0x000000。|
 |startMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏顶端的距离。|
 |endMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏底端的距离。|
 
@@ -628,7 +628,6 @@ import kit.ArkUI.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -636,9 +635,8 @@ class EntryView {
     @State var arr: Array<Int64> = [1, 2, 3]
     @State var current: Int64 = 1
     var normalIcon: AppResource = @r(app.media.startIcon)
-    let dividerProp = SideBarDividerStyle(strokeWidth: 1.vp, color: Color.Blue, startMargin: 4.vp, endMargin: 4.vp)
-    let ctrlButton: ButtonStyle = ButtonStyle(left: 17, top: 49, width: 20, height: 31,
-        icons: Icons(shown: "", hidden: "", switching: ""))
+    let ctrlButton: ButtonStyle = ButtonStyle(left: 17.0, top: 49.0, width: 20.0, height: 31.0,
+        icons: ButtonIconOptions(shown: "", hidden: "", switching: ""))
     func build() {
         SideBarContainer() {
             Column() {
@@ -672,7 +670,6 @@ class EntryView {
             .id("SideBarDefault")
             .showSideBar(true)
             .showControlButton(true)
-            .divider(value: dividerProp)
             .showControlButton(true)
             .autoHide(false)
             .sideBarWidth(150.vp)

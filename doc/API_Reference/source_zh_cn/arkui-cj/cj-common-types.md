@@ -75,7 +75,7 @@ public var curve: Curve
 
 **功能：** 动画曲线。
 
-**类型：** [Curve]
+**类型：** [Curve](#enum-curve)
 
 **读写能力：** 可读写
 
@@ -123,7 +123,7 @@ public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
 **功能：** 设置动画的期望帧率。
 
-**类型：** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](#class-expectedframeraterange)>
+**类型：** Option\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>
 
 **读写能力：** 可读写
 
@@ -139,7 +139,7 @@ public var finishCallbackType: FinishCallbackType
 
 **功能：** 在动画中定义onFinish回调的类型。
 
-**类型：** [FinishCallbackType]
+**类型：** [FinishCallbackType](#enum-finishcallbacktype)
 
 **读写能力：** 可读写
 
@@ -171,7 +171,7 @@ public var onFinish: Option <() -> Unit>
 
 **功能：** 动画播放完成回调。
 
-**类型：** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>
+**类型：** Option\<()->Unit>
 
 **读写能力：** 可读写
 
@@ -187,7 +187,7 @@ public var playMode: PlayMode
 
 **功能：** 动画播放模式，默认播放完成后重头开始播放。
 
-**类型：** [PlayMode]
+**类型：** [PlayMode](#enum-playmode)
 
 **读写能力：** 可读写
 
@@ -239,13 +239,13 @@ public init(
 |:---|:---|:---|:---|:---|
 |duration|Int32|否|1000|动画持续时间，单位为毫秒。设置小于0的值时按0处理。|
 |tempo|Float32|否|1.0|动画播放速度，值越大动画播放越快，值越小播放越慢，为0时无动画效果。|
-|curve|[Curve]|否|Curve.EaseInOut|动画曲线。|
+|curve|Curve|否|Curve.EaseInOut|动画曲线。|
 |delay|Int32|否|0|动画延迟播放时间，单位为ms(毫秒)，默认不延时播放。|
 |iterations|Int32|否|1|动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。|
-|playMode|[PlayMode]|否|PlayMode.Normal|动画播放模式，默认播放完成后重头开始播放。|
-|onFinish|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>|否|Option.None|动画播放完成回调。|
-|finishCallbackType|[FinishCallbackType]|否|FinishCallbackType.Removed|在动画中定义onFinish回调的类型。|
-|expectedFrameRateRange|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](#class-expectedframeraterange)>|否|Option.None|设置动画的期望帧率。|
+|playMode|[PlayMode](#enum-playmode)|否|PlayMode.Normal|动画播放模式，默认播放完成后重头开始播放。|
+|onFinish|Option\<()->Unit>|否|Option.None|动画播放完成回调。|
+|finishCallbackType|[FinishCallbackType](#enum-finishcallbacktype)|否|FinishCallbackType.Removed|在动画中定义onFinish回调的类型。|
+|expectedFrameRateRange|Option\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>|否|Option.None|设置动画的期望帧率。|
 
 ## class Area
 
@@ -294,7 +294,7 @@ public var height: Length
 
 **功能：** 定义目标元素的高度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -326,7 +326,7 @@ public var width: Length
 
 **功能：** 定义目标元素的宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -355,8 +355,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|是|-|目标元素的宽度，单位为vp。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|是|-|目标元素的高度，单位为vp。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|目标元素的宽度，单位为vp。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|目标元素的高度，单位为vp。|
 |position|[Position](#class-position)|是|-|目标元素左上角相对父元素左上角的位置。|
 |globalPosition|[Position](#class-position)|是|-|目标元素左上角相对页面左上角的位置。|
 
@@ -387,7 +387,7 @@ public var bottomLeft: Length
 
 **功能：** 组件左下角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -403,7 +403,7 @@ public var bottomRight: Length
 
 **功能：** 组件右下角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -419,7 +419,7 @@ public var topLeft: Length
 
 **功能：** 组件左上角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -435,7 +435,7 @@ public var topRight: Length
 
 **功能：** 组件右上角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -460,10 +460,10 @@ public init(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Leng
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|topLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|组件左上角圆角半径。|
-|topRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|组件右上角圆角半径。|
-|bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|组件左下角圆角半径。|
-|bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|组件右下角圆角半径。|
+|topLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件左上角圆角半径。|
+|topRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件右上角圆角半径。|
+|bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件左下角圆角半径。|
+|bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件右下角圆角半径。|
 
 ## class DismissContentCoverAction
 
@@ -487,7 +487,7 @@ public let reason: DismissReason
 
 **功能：** 关闭原因类型。
 
-**类型：** [DismissReason](#enum-dismissreason)
+**类型：** [DismissReason](./cj-dialog-actionsheet.md#enum-dismissreason)
 
 **读写能力：** 只读
 
@@ -538,7 +538,7 @@ public var bottom: BorderStyle
 
 **功能：** 设置组件下边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -554,7 +554,7 @@ public var left: BorderStyle
 
 **功能：** 设置组件左边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -570,7 +570,7 @@ public var right: BorderStyle
 
 **功能：** 设置组件右边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -586,7 +586,7 @@ public var top: BorderStyle
 
 **功能：** 设置组件上边框样式。
 
-**类型：** [BorderStyle]
+**类型：** [BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -615,10 +615,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[BorderStyle]|否|BorderStyle.Solid|组件上边框样式。|
-|right|[BorderStyle]|否|BorderStyle.Solid|组件右边框样式。|
-|bottom|[BorderStyle]|否|BorderStyle.Solid|组件下边框样式。|
-|left|[BorderStyle]|否|BorderStyle.Solid|组件左边框样式。|
+|top|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件上边框样式。|
+|right|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件右边框样式。|
+|bottom|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件下边框样式。|
+|left|[BorderStyle](#enum-borderstyle)|否|BorderStyle.Solid|组件左边框样式。|
 
 ## class Font
 
@@ -662,7 +662,7 @@ public var size:?Length
 
 **功能：** 设置文本尺寸，使用fp单位。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -678,7 +678,7 @@ public var style:?FontStyle
 
 **功能：** 设置文本的字体样式。
 
-**类型：** ?[FontStyle]
+**类型：** ?[FontStyle](#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -694,7 +694,7 @@ public var weight:?FontWeight
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** ?[FontWeight]
+**类型：** ?[FontWeight](#enum-fontweight)
 
 **读写能力：** 可读写
 
@@ -718,10 +718,10 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|None|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
-|weight|?[FontWeight]|否|None|设置文本的字体粗细。|
+|size|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|weight|?[FontWeight](#enum-fontweight)|否|None|设置文本的字体粗细。|
 |family|?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
-|style|?[FontStyle]|否|None|设置文本的字体样式。|
+|style|?[FontStyle](#enum-fontstyle)|否|None|设置文本的字体样式。|
 
 ## class Fonts
 
@@ -766,7 +766,7 @@ public var size: Length
 
 **功能：** 设置文本尺寸，使用fp单位。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -782,7 +782,7 @@ public var style: FontStyle
 
 **功能：** 设置文本的字体样式。
 
-**类型：** [FontStyle]
+**类型：** [FontStyle](#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -798,7 +798,7 @@ public var weight: FontWeight
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** [FontWeight]
+**类型：** [FontWeight](#enum-fontweight)
 
 **读写能力：** 可读写
 
@@ -823,10 +823,10 @@ public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, fami
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|16.fp|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
-|weight|[FontWeight]|否|FontWeight.Normal|设置文本的字体粗细。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|weight|[FontWeight](#enum-fontweight)|否|FontWeight.Normal|设置文本的字体粗细。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
-|style|[FontStyle]|否|FontStyle.Normal|设置文本的字体样式。|
+|style|[FontStyle](#enum-fontstyle)|否|FontStyle.Normal|设置文本的字体样式。|
 
 ## class HorizontalAlignment
 
@@ -852,7 +852,7 @@ public var align: HorizontalAlign
 
 **功能：** 设置组件水平方向对齐方式。
 
-**类型：** [HorizontalAlign]
+**类型：** [HorizontalAlign](#enum-horizontalalign)
 
 **读写能力：** 可读写
 
@@ -893,7 +893,7 @@ public init(anchor: String, align: HorizontalAlign)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |anchor|String|是|-|设置组件水平对齐的锚点。|
-|align|[HorizontalAlign]|是|-|设置组件水平方向对齐方式。|
+|align|[HorizontalAlign](#enum-horizontalalign)|是|-|设置组件水平方向对齐方式。|
 
 ## class Margin
 
@@ -925,10 +925,10 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|上外边距，组件顶部距组件外元素的尺寸。|
-|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|右外边距，组件右边界距组件外元素的尺寸。|
-|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|下外边距，组件底部距组件外元素的尺寸。|
-|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|左外边距，组件左边界距组件外元素的尺寸。|
+|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|上外边距，组件顶部距组件外元素的尺寸。|
+|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右外边距，组件右边界距组件外元素的尺寸。|
+|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|下外边距，组件底部距组件外元素的尺寸。|
+|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左外边距，组件左边界距组件外元素的尺寸。|
 
 ## class Offset
 
@@ -954,7 +954,7 @@ public var dx: Length
 
 **功能：** 水平方向偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -970,7 +970,7 @@ public var dy: Length
 
 **功能：** 竖直方向偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -994,8 +994,8 @@ public init(dx: Length, dy: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|dx|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|是|-|x点坐标。|
-|dy|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|是|-|y点坐标。|
+|dx|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|x点坐标。|
+|dy|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|y点坐标。|
 
 ## class OverlayOffset
 
@@ -1170,7 +1170,7 @@ public var x: Length
 
 **功能：** 定义x轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1186,7 +1186,7 @@ public var y: Length
 
 **功能：** 定义y轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1210,8 +1210,8 @@ public init(x!: Length = 0, y!: Length = 0)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0|x轴坐标，单位为vp。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0|y轴坐标，单位为vp。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0|x轴坐标，单位为vp。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0|y轴坐标，单位为vp。|
 
 ## class Rectangle
 
@@ -1239,7 +1239,7 @@ public var height: Length
 
 **功能：** 触摸热区的高度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1255,7 +1255,7 @@ public var width: Length
 
 **功能：** 触摸热区的宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1271,7 +1271,7 @@ public var x: Length
 
 **功能：** 触摸点相对于组件左上角的x轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1287,7 +1287,7 @@ public var y: Length
 
 **功能：** 触摸点相对于组件左上角的y轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1311,10 +1311,10 @@ public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的y轴坐标。|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的宽度。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的高度。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的x轴坐标。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的y轴坐标。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的宽度。|
+|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的高度。|
 
 ## class VerticalAlignment
 
@@ -1340,7 +1340,7 @@ public var align: VerticalAlign
 
 **功能：** 设置组件垂直方向对齐方式。
 
-**类型：** [VerticalAlign]
+**类型：** [VerticalAlign](#enum-verticalalign)
 
 **读写能力：** 可读写
 
@@ -1381,7 +1381,7 @@ public init(anchor: String, align: VerticalAlign)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |anchor|String|是|-|设置组件垂直对齐的锚点。|
-|align|[VerticalAlign]|是|-|设置组件垂直方向对齐方式。|
+|align|[VerticalAlign](#enum-verticalalign)|是|-|设置组件垂直方向对齐方式。|
 
 ## enum AdaptiveColor
 
@@ -1401,7 +1401,7 @@ public enum AdaptiveColor <: Equatable<AdaptiveColor> {
 
 **父类型：**
 
-- Equatable\<AdaptiveColor\>
+- Equatable\<AdaptiveColor>
 
 ### Average
 
@@ -1467,6 +1467,191 @@ public operator func ==(other: AdaptiveColor): Bool
 |:----|:----|
 |Bool|如果两个AdaptiveColor相等则返回true，否则返回false|
 
+## enum LengthType
+
+```cangjie
+public enum LengthType <: Length & Equatable<LengthType> {
+    | px(Float64)
+    | vp(Float64)
+    | fp(Float64)
+    | percent(Float64)
+    | lpx(Float64)
+}
+```
+
+**功能：** 长度类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<LengthType>
+- Length
+
+### fp(Float64)
+
+```cangjie
+fp(Float64)
+```
+
+**功能：** 字体像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### lpx(Float64)
+
+```cangjie
+lpx(Float64)
+```
+
+**功能：** 逻辑像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### percent(Float64)
+
+```cangjie
+percent(Float64)
+```
+
+**功能：** 百分比。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### px(Float64)
+
+```cangjie
+px(Float64)
+```
+
+**功能：** 基本像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### vp(Float64)
+
+```cangjie
+vp(Float64)
+```
+
+**功能：** 屏幕密度单位。
+
+### prop value
+
+```cangjie
+public prop value: Float64
+```
+
+**功能：** 像素值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### prop unitType
+
+```cangjie
+public prop unitType: LengthType
+```
+
+**功能：** 像素单位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**功能：** 获取LengthType对应的整数值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int32|LengthType对应的整数值|
+
+### static func parse(Int32): LengthType
+
+```cangjie
+public static func parse(value: Int32): LengthType
+```
+
+**功能：** 解析LengthType。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|Int32|是|-|LengthType的整数值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|LengthType|LengthType的枚举值。|
+
+### func !=(LengthType)
+
+```cangjie
+public operator func !=(other: LengthType): Bool
+```
+
+**功能：** 判断两个LengthType是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LengthType](#enum-lengthtype)|是|-|要比较的另一个LengthType值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果不相等返回true，否则返回false。|
+
+### func ==(LengthType)
+
+```cangjie
+public operator func ==(other: LengthType): Bool
+```
+
+**功能：** 判断两个LengthType是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[LengthType](#enum-lengthtype)|是|-|要比较的另一个LengthType值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果相等返回true，否则返回false。|
+
 ## enum Alignment
 
 ```cangjie
@@ -1492,7 +1677,7 @@ public enum Alignment <: Equatable<Alignment> {
 
 **父类型：**
 
-- Equatable\<Alignment\>
+- Equatable\<Alignment>
 
 ### Bottom
 
@@ -1826,46 +2011,6 @@ START
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(ArrowPointPosition)
-
-```cangjie
-public operator func !=(other: ArrowPointPosition): Bool
-```
-
-**功能：** 比较两个ArrowPointPosition是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPointPosition](#enum-arrowpointposition)|是|-|待比较的另一个ArrowPointPosition值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个ArrowPointPosition不相等则返回true，否则返回false|
-
-### func ==(ArrowPointPosition)
-
-```cangjie
-public operator func ==(other: ArrowPointPosition): Bool
-```
-
-**功能：** 比较两个ArrowPointPosition是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ArrowPointPosition](#enum-arrowpointposition)|是|-|待比较的另一个ArrowPointPosition值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个ArrowPointPosition相等则返回true，否则返回false|
 
 ## enum Axis
 
@@ -2255,24 +2400,6 @@ public operator func ==(other: BorderStyle): Bool
 |:----|:----|
 |Bool|如果两个枚举值相等，则返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举类型对应的数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举类型对应的数值。|
-
 ## enum CanvasDirection
 
 ```cangjie
@@ -2609,28 +2736,10 @@ public operator func ==(other: ColoringStrategy): Bool
 |:----|:----|
 |Bool|如果两个枚举值相等，则返回true，否则返回false。|
 
-### func getValue()
+## enum GlobalCompositeOperation
 
 ```cangjie
-public func getValue(): String
-```
-
-**功能：** 获取枚举类型对应的数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举类型对应的数值。|
-
-## enum CompositeOperation
-
-```cangjie
-public enum CompositeOperation <: Equatable<CompositeOperation> {
+public enum GlobalCompositeOperation {
     | SourceOver
     | SourceAtop
     | SourceIn
@@ -2651,10 +2760,6 @@ public enum CompositeOperation <: Equatable<CompositeOperation> {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CompositeOperation>
 
 ### Copy
 
@@ -2788,10 +2893,10 @@ Xor
 
 **起始版本：** 21
 
-### func !=(CompositeOperation)
+### func !=(GlobalCompositeOperation)
 
 ```cangjie
-public operator func !=(other: CompositeOperation): Bool
+public operator func !=(other: GlobalCompositeOperation): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -2800,7 +2905,7 @@ public operator func !=(other: CompositeOperation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
+|other|[GlobalCompositeOperation](#enum-globalcompositeoperation)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -2808,10 +2913,10 @@ public operator func !=(other: CompositeOperation): Bool
 |:----|:----|
 |Bool|如果两个枚举值不相等，则返回true，否则返回false。|
 
-### func ==(CompositeOperation)
+### func ==(GlobalCompositeOperation)
 
 ```cangjie
-public operator func ==(other: CompositeOperation): Bool
+public operator func ==(other: GlobalCompositeOperation): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -2820,7 +2925,7 @@ public operator func ==(other: CompositeOperation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|是|-|另一个枚举值。|
+|other|[GlobalCompositeOperation](#enum-globalcompositeoperation)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -3727,7 +3832,7 @@ public operator func !=(other: DialogAlignment): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[DialogAlignment](#enum-dialogalignment)|是|-|比较的枚举值
+|other|[DialogAlignment](#enum-dialogalignment)|是|-|比较的枚举值。|
 
 **返回值：**
 
@@ -3747,31 +3852,13 @@ public operator func ==(other: DialogAlignment): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[DialogAlignment](#enum-dialogalignment)|是|-|两个枚举值相等返回true，否则返回false。
+|other|[DialogAlignment](#enum-dialogalignment)|是|-|两个枚举值相等返回true，否则返回false。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum DialogButtonStyle
 
@@ -4698,116 +4785,6 @@ public operator func ==(other: FlexWrap): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-## enum FoldStatus
-
-```cangjie
-public enum FoldStatus <: Equatable<FoldStatus> {
-    | FOLD_STATUS_UNKNOWN
-    | FOLD_STATUS_EXPANDED
-    | FOLD_STATUS_FOLDED
-    | FOLD_STATUS_HALF_FOLDED
-    | ...
-}
-```
-
-**功能：** 表示折叠设备折叠状态。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<FoldStatus>
-
-### FOLD_STATUS_EXPANDED
-
-```cangjie
-FOLD_STATUS_EXPANDED
-```
-
-**功能：** 表示设备当前折叠状态为完全展开。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### FOLD_STATUS_FOLDED
-
-```cangjie
-FOLD_STATUS_FOLDED
-```
-
-**功能：** 表示设备当前折叠状态为折叠。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### FOLD_STATUS_HALF_FOLDED
-
-```cangjie
-FOLD_STATUS_HALF_FOLDED
-```
-
-**功能：** 表示设备当前折叠状态为半折叠。半折叠指完全展开和折叠之间的状态。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### FOLD_STATUS_UNKNOWN
-
-```cangjie
-FOLD_STATUS_UNKNOWN
-```
-
-**功能：** 表示设备当前折叠状态未知。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### func !=(FoldStatus)
-
-```cangjie
-public operator func !=(other: FoldStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[FoldStatus](#enum-foldstatus)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(FoldStatus)
-
-```cangjie
-public operator func ==(other: FoldStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[FoldStatus](#enum-foldstatus)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum FontStyle
 
 ```cangjie
@@ -4891,24 +4868,6 @@ public operator func ==(other: FontStyle): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum FontWeight
 
@@ -5163,46 +5122,10 @@ public operator func ==(other: FontWeight): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
+## enum BlurStyle
 
 ```cangjie
-public func getValue(): String
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举所表示的值。|
-
-### func getValueInt()
-
-```cangjie
-public func getValueInt(): UInt32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|UInt32|当前枚举所表示的值。|
-
-## enum ForegroundBlurStyle
-
-```cangjie
-public enum ForegroundBlurStyle <: Equatable<ForegroundBlurStyle> {
+public enum BlurStyle {
     | None
     | Thin
     | Regular
@@ -5385,46 +5308,6 @@ Thin
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-### func !=(ForegroundBlurStyle)
-
-```cangjie
-public operator func !=(other: ForegroundBlurStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ForegroundBlurStyle](#enum-foregroundblurstyle)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(ForegroundBlurStyle)
-
-```cangjie
-public operator func ==(other: ForegroundBlurStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ForegroundBlurStyle](#enum-foregroundblurstyle)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## enum FunctionKey
 
@@ -6144,46 +6027,6 @@ Y
 
 **起始版本：** 21
 
-### func !=(ImageRepeat)
-
-```cangjie
-public operator func !=(other: ImageRepeat): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageRepeat](#enum-imagerepeat)|是|-|图片重复方式。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool||两个枚举值不相等返回true，否则返回false。|
-
-### func ==(ImageRepeat)
-
-```cangjie
-public operator func ==(other: ImageRepeat): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageRepeat](#enum-imagerepeat)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
 ## enum ImageSize
 
 ```cangjie
@@ -6708,42 +6551,6 @@ public operator func ==(other: KeySource): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
 ## enum KeyType
 
 ```cangjie
@@ -6841,46 +6648,10 @@ public operator func ==(other: KeyType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
+## enum SafeAreaEdge
 
 ```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
-## enum LayoutSafeAreaEdge
-
-```cangjie
-public enum LayoutSafeAreaEdge <: Equatable<LayoutSafeAreaEdge> {
+public enum SafeAreaEdge {
     | TOP
     | BOTTOM
     | ...
@@ -6895,7 +6666,7 @@ public enum LayoutSafeAreaEdge <: Equatable<LayoutSafeAreaEdge> {
 
 **父类型：**
 
-- Equatable\<LayoutSafeAreaEdge>
+- Equatable\<SafeAreaEdge>
 
 ### BOTTOM
 
@@ -6921,10 +6692,10 @@ TOP
 
 **起始版本：** 21
 
-### func !=(LayoutSafeAreaEdge)
+### func !=(SafeAreaEdge)
 
 ```cangjie
-public operator func !=(other: LayoutSafeAreaEdge): Bool
+public operator func !=(other: SafeAreaEdge): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -6933,7 +6704,7 @@ public operator func !=(other: LayoutSafeAreaEdge): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
+|other|[SafeAreaEdge](#enum-safeareaedge)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -6941,10 +6712,10 @@ public operator func !=(other: LayoutSafeAreaEdge): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(LayoutSafeAreaEdge)
+### func ==(SafeAreaEdge)
 
 ```cangjie
-public operator func ==(other: LayoutSafeAreaEdge): Bool
+public operator func ==(other: SafeAreaEdge): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -6953,78 +6724,7 @@ public operator func ==(other: LayoutSafeAreaEdge): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaEdge](#enum-layoutsafeareaedge)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-## enum LayoutSafeAreaType
-
-```cangjie
-public enum LayoutSafeAreaType <: Equatable<LayoutSafeAreaType> {
-    | SYSTEM
-    | ...
-}
-```
-
-**功能：** 扩展布局安全区域的枚举类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<LayoutSafeAreaType>
-
-### SYSTEM
-
-```cangjie
-SYSTEM
-```
-
-**功能：** 系统默认非安全区域，包括状态栏、导航栏。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### func !=(LayoutSafeAreaType)
-
-```cangjie
-public operator func !=(other: LayoutSafeAreaType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaType](#enum-layoutsafeareatype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(LayoutSafeAreaType)
-
-```cangjie
-public operator func ==(other: LayoutSafeAreaType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[LayoutSafeAreaType](#enum-layoutsafeareatype)|是|-|另一个枚举值。|
+|other|[SafeAreaEdge](#enum-safeareaedge)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -7504,24 +7204,6 @@ public operator func ==(other: ListItemAlign): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ## enum MenuPolicy
 
 ```cangjie
@@ -7813,24 +7495,6 @@ public operator func ==(other: ModifierKey): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|当前枚举的字符串表示。|
-
 ## enum MouseAction
 
 ```cangjie
@@ -7953,42 +7617,6 @@ public operator func ==(other: MouseAction): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum MouseButton
 
@@ -8126,42 +7754,6 @@ public operator func ==(other: MouseButton): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
-
 ## enum NavigationType
 
 ```cangjie
@@ -8213,7 +7805,7 @@ Push
 Replace
 ```
 
-**功能：** 	用应用内的某个页面替换当前页面，并销毁被替换的页面。
+**功能：**  用应用内的某个页面替换当前页面，并销毁被替换的页面。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8456,7 +8048,7 @@ public operator func ==(other: OptionWidthMode): Bool
 ## enum Placement
 
 ```cangjie
-public enum Placement <: Equatable<Placement> {
+public enum Placement {
     | Left
     | Right
     | Top
@@ -8913,10 +8505,10 @@ public operator func ==(other: ProgressType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-## enum QualityType
+## enum ImageSmoothingQuality
 
 ```cangjie
-public enum QualityType <: Equatable<QualityType> {
+public enum ImageSmoothingQuality {
     | Low
     | Medium
     | High
@@ -8932,7 +8524,7 @@ public enum QualityType <: Equatable<QualityType> {
 
 **父类型：**
 
-- Equatable\<QualityType>
+- Equatable\<ImageSmoothingQuality>
 
 ### High
 
@@ -8970,10 +8562,10 @@ Medium
 
 **起始版本：** 21
 
-### func !=(QualityType)
+### func !=(ImageSmoothingQuality)
 
 ```cangjie
-public operator func !=(other: QualityType): Bool
+public operator func !=(other: ImageSmoothingQuality): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等。
@@ -8982,7 +8574,7 @@ public operator func !=(other: QualityType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
+|other|[ImageSmoothingQuality](#enum-imagesmoothingquality)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -8990,10 +8582,10 @@ public operator func !=(other: QualityType): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(QualityType)
+### func ==(ImageSmoothingQuality)
 
 ```cangjie
-public operator func ==(other: QualityType): Bool
+public operator func ==(other: ImageSmoothingQuality): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等。
@@ -9002,7 +8594,7 @@ public operator func ==(other: QualityType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[QualityType](#enum-qualitytype)|是|-|另一个枚举值。|
+|other|[ImageSmoothingQuality](#enum-imagesmoothingquality)|是|-|另一个枚举值。|
 
 **返回值：**
 
@@ -9268,24 +8860,6 @@ public operator func ==(other: Repetition): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum ResponseType
 
@@ -9797,42 +9371,6 @@ public operator func ==(other: ScrollState): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
 
 ## enum ShadowStyle
 
@@ -10562,24 +10100,6 @@ public operator func ==(other: SourceType): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
-
 ## enum StickyStyle
 
 ```cangjie
@@ -10689,24 +10209,6 @@ public operator func ==(other: StickyStyle): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
 
 ## enum SwipeEdgeEffect
 
@@ -10907,31 +10409,13 @@ public operator func ==(other: TextAlign): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
+## enum CanvasTextAlign
 
 ```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
-## enum TextAlignStyle
-
-```cangjie
-public enum TextAlignStyle <: Equatable<TextAlignStyle> {
+public enum CanvasTextAlign {
     | Left
     | Right
     | Center
-    | Justify
     | Start
     | End
     | ...
@@ -11020,68 +10504,10 @@ Start
 
 **起始版本：** 21
 
-### func !=(TextAlignStyle)
+## enum CanvasTextBaseline
 
 ```cangjie
-public operator func !=(other: TextAlignStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[TextAlignStyle](#enum-textalignstyle)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(TextAlignStyle)
-
-```cangjie
-public operator func ==(other: TextAlignStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[TextAlignStyle](#enum-textalignstyle)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
-## enum TextBaseline
-
-```cangjie
-public enum TextBaseline <: Equatable<TextBaseline> {
+public enum CanvasTextBaseline {
     | Alphabetic
     | Ideographic
     | Top
@@ -11100,7 +10526,7 @@ public enum TextBaseline <: Equatable<TextBaseline> {
 
 **父类型：**
 
-- Equatable\<TextBaseline>
+- Equatable\<CanvasTextBaseline>
 
 ### Alphabetic
 
@@ -11174,10 +10600,10 @@ Top
 
 **起始版本：** 21
 
-### func !=(TextBaseline)
+### func !=(CanvasTextBaseline)
 
 ```cangjie
-public operator func !=(other: TextBaseline): Bool
+public operator func !=(other: CanvasTextBaseline): Bool
 ```
 
 **功能：** 判断两个枚举值是否不相等
@@ -11186,7 +10612,7 @@ public operator func !=(other: TextBaseline): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
+|other|[CanvasTextBaseline](#enum-canvastextbaseline)|是|-|比较的枚举值|
 
 **返回值：**
 
@@ -11194,10 +10620,10 @@ public operator func !=(other: TextBaseline): Bool
 |:----|:----|
 |Bool|两个枚举值不相等返回true，否则返回false。|
 
-### func ==(TextBaseline)
+### func ==(CanvasTextBaseline)
 
 ```cangjie
-public operator func ==(other: TextBaseline): Bool
+public operator func ==(other: CanvasTextBaseline): Bool
 ```
 
 **功能：** 判断两个枚举值是否相等
@@ -11206,7 +10632,7 @@ public operator func ==(other: TextBaseline): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[TextBaseline](#enum-textbaseline)|是|-|比较的枚举值|
+|other|[CanvasTextBaseline](#enum-canvastextbaseline)|是|-|比较的枚举值|
 
 **返回值：**
 
@@ -11310,24 +10736,6 @@ public operator func ==(other: TextCase): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum TextContentStyle
 
@@ -11746,24 +11154,6 @@ public operator func ==(other: TextHeightAdaptivePolicy): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
-
 ## enum TextOverflow
 
 ```cangjie
@@ -11860,24 +11250,6 @@ public operator func ==(other: TextOverflow): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取当前枚举的所表示的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
 
 ## enum ThemeColorMode
 
@@ -12175,49 +11547,13 @@ public operator func ==(other: TouchType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-    |other|[TouchType](#enum-touchtype)|是|-|传入的另一个枚举值。|
+|other|[TouchType](#enum-touchtype)|是|-|传入的另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
-
-### func getValue()
-
-```cangjie
-public func getValue(): UInt8
-```
-
-**功能：** 获取枚举类型值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|UInt8|枚举类型值。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 将枚举类型值转换成字符串类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举值对应的字符串类型。|
 
 ## enum VerticalAlign
 
@@ -12607,37 +11943,19 @@ public operator func ==(other: WordBreak): Bool
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举值的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|返回枚举值的整数值。|
-
 ## type CustomBuilder
 
 ```cangjie
-public type CustomBuilder =() -> Unit
+public type CustomBuilder = () -> Unit
 ```
 
-**功能：** [CustomBuilder](#type-custombuilder)是[() -> Unit](#)类型的别名。
+**功能：** [CustomBuilder](#type-custombuilder)是() -> Unit类型的别名。
 
 ## type TransitionFinishCallback
 
 ```cangjie
-public type TransitionFinishCallback =(Bool) -> Unit
+public type TransitionFinishCallback = (Bool) -> Unit
 ```
 
-**功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是[(Bool) -> Unit](#)类型的别名。
+**功能：** [TransitionFinishCallback](#type-transitionfinishcallback)是(Bool) -> Unit类型的别名。
 

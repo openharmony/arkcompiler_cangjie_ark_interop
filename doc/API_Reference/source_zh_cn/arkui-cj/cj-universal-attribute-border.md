@@ -2,13 +2,11 @@
 
 设置组件边框样式。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func border(Length, ResourceColor, Length, BorderStyle)
 
@@ -27,11 +25,10 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|是|-|边框宽度。|
-|color|[ResourceColor](#)|否|Color.Black|边框颜色。|
-|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|边框圆角半径。|
-|style|[BorderStyle](#)|否|BorderStyle.Solid|边框样式。|
-
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|边框颜色。|
+|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|边框圆角半径。|
+|style|[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|BorderStyle.Solid|边框样式。|
 
 ## func borderColor(ResourceColor)
 
@@ -49,8 +46,7 @@ public func borderColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](#)|是|-|边框颜色。|
-
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。|
 
 ## func borderRadius(Length)
 
@@ -68,8 +64,7 @@ public func borderRadius(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|是|-|圆角半径。|
-
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径。|
 
 ## func borderRadius(Length, Length, Length, Length)
 
@@ -88,11 +83,10 @@ public func borderRadius(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bott
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|topLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|左上角圆角半径。|
-|topRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|右上角圆角半径。|
-|bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|左下角圆角半径。|
-|bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|否|0.vp|右下角圆角半径。|
-
+|topLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左上角圆角半径。|
+|topRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右上角圆角半径。|
+|bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左下角圆角半径。|
+|bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右下角圆角半径。|
 
 ## func borderStyle(BorderStyle)
 
@@ -110,8 +104,7 @@ public func borderStyle(value: BorderStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BorderStyle](#)|是|-|边框样式值。|
-
+|value|[BorderStyle](./cj-common-types.md#enum-borderstyle)|是|-|边框样式值。|
 
 ## func borderWidth(EdgeWidths)
 
@@ -129,9 +122,7 @@ public func borderWidth(value: EdgeWidths): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[EdgeWidths](#)|是|-|边缘宽度。|
-
-
+|value|[EdgeWidths](./cj-universal-attribute-border.md#class-edgewidths)|是|-|边缘宽度。|
 
 ## func borderWidth(Length)
 
@@ -149,13 +140,13 @@ public func borderWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#)|是|-|边框宽度。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Percentage values are not supported. | todo | todo |
 
@@ -187,7 +178,7 @@ public var bottom: Length
 
 **功能：** 下侧边框宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -203,7 +194,7 @@ public var left: Length
 
 **功能：** 左侧边框宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -219,7 +210,7 @@ public var right: Length
 
 **功能：** 右侧边框宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -235,7 +226,7 @@ public var top: Length
 
 **功能：** 上侧边框宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -259,7 +250,7 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。** 上侧边框宽度。|
-|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。** 右侧边框宽度。|
-|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。** 下侧边框宽度。|
-|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。** 左侧边框宽度。|
+|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 上侧边框宽度。|
+|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 右侧边框宽度。|
+|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 下侧边框宽度。|
+|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 左侧边框宽度。|

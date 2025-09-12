@@ -16,7 +16,7 @@ AppStorage可以和UI组件同步，且可以在应用业务逻辑中被访问�
 
 AppStorage支持应用的主线程内多个UIAbility实例间的状态共享。
 
-AppStorage中的属性可以被双向同步，数据可以是存在于本地或远程设备上，并具有不同的功能，比如数据持久化（详见[PersistentStorage](#persistentstorage持久化存储ui状态)）。这些数据是通过业务逻辑中实现，与UI解耦，如果希望这些数据在UI中使用，需要用到@StorageProp和@StorageLink。
+AppStorage中的属性可以被双向同步，数据可以是存在于本地或远程设备上，并具有不同的功能，比如数据持久化（详见[PersistentStorage](#class-persistentstorage)）。这些数据是通过业务逻辑中实现，与UI解耦，如果希望这些数据在UI中使用，需要用到@StorageProp和@StorageLink。
 
 ## class AppStorage
 
@@ -52,7 +52,7 @@ public static func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|返回单向绑定的数据，如果AppStorage中不存在对应的属性值，则返回None。|
+|?ObservedProperty<T>|返回单向绑定的数据，如果AppStorage中不存在对应的属性值，则返回None。|
 
 ### static func clear()
 
@@ -165,7 +165,7 @@ public static func keys(): EquatableCollection<String>
 
 |类型|说明|
 |:----|:----|
-|[EquatableCollection](./cj-common-types.md#interface-equatablecollection)|AppStorage中所有的属性名。|
+|EquatableCollection<String>|AppStorage中所有的属性名。|
 
 ### static func link\<T>(String)
 
@@ -194,7 +194,7 @@ public static func link<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|Option\<ObservedProperty\<T>>的实例，与AppStorage中propName对应属性的双向绑定的数据，如果AppStorage中不存在对应的propName，则返回None。|
+|?ObservedProperty<T>|Option\<ObservedProperty\<T>>的实例，与AppStorage中propName对应属性的双向绑定的数据，如果AppStorage中不存在对应的propName，则返回None。|
 
 ### static func set\<T>(String, T)
 
@@ -246,7 +246,7 @@ public static func setAndLink<T>(propName: String, defaultValue: T): ObservedPro
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，与AppStorage中propName对应属性的双向绑定的数据。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，与AppStorage中propName对应属性的双向绑定的数据。|
 
 ### static func setAndProp\<T>(String, T)
 
@@ -272,7 +272,7 @@ public static func setAndProp<T>(propName: String, defaultValue: T): ObservedPro
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例。|
 
 ### static func setOrCreate\<T>(String, T)
 
@@ -332,7 +332,7 @@ public class Environment {}
 public static func aboutToBeDeleted(): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 取消SubscribedAbstractProperty实例对AppStorage/LocalStorage的单/双向同步关系，并无效化SubscribedAbstractProperty实例，即当调用aboutToBeDeleted方法之后不能再使用SubscribedAbstractProperty实例调用set或get方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,12 +392,11 @@ public static func keys(): Array<String>
 ```cangjie
 public class LocalStorage {
 
-
     public init()
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 页面级的UI状态存储。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -438,7 +437,7 @@ public func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回None。|
+|?ObservedProperty<T>|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。如果LocalStorage中不存在对应的propName，则返回None。|
 
 ### func aboutToBeDeleted()
 
@@ -572,7 +571,7 @@ public func keys(): EquatableCollection<String>
 
 |类型|说明|
 |:----|:----|
-|[EquatableCollection](./cj-common-types.md#interface-equatablecollection)|LocalStorage中所有的属性名。|
+|EquatableCollection<String>|LocalStorage中所有的属性名。|
 
 ### func link\<T>(String)
 
@@ -601,7 +600,7 @@ public func link<T>(propName: String): ?ObservedProperty<T>
 
 |类型|说明|
 |:----|:----|
-|?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)| Option\<ObservedProperty\<T>>的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回None。|
+|?ObservedProperty<T>| Option\<ObservedProperty\<T>>的实例，与LocalStorage中propName对应属性的双向绑定的数据，如果LocalStorage中不存在对应的propName，则返回None。|
 
 ### func set\<T>(String, T)
 
@@ -653,7 +652,7 @@ public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，与LocalStorage中propName对应属性的双向绑定的数据。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，与LocalStorage中propName对应属性的双向绑定的数据。|
 
 ### func setAndProp\<T>(String, T)
 
@@ -679,7 +678,7 @@ public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。|
+|ObservedProperty<T>|ObservedProperty\<T>的实例，和LocalStorage中propName对应属性的单向绑定的数据。|
 
 ### func setOrCreate\<T>(String, T)
 
@@ -836,7 +835,7 @@ public static func persistProps<T>(props: Array<(String, T)>): Unit
 public func aboutToBeDeleted(): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 取消SubscribedAbstractProperty实例对AppStorage/LocalStorage的单/双向同步关系，并无效化SubscribedAbstractProperty实例，即当调用aboutToBeDeleted方法之后不能再使用SubscribedAbstractProperty实例调用set或get方法。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -849,7 +848,7 @@ public func aboutToBeDeleted(): Unit
 public func id(): Int64
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 返回属性ID。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -859,7 +858,7 @@ public func id(): Int64
 
 |类型|说明|
 |:----|:----|
-|Int64|<font color="red" face="bold">please add description</font>|
+|Int64|属性ID|
 
 ### func notifyRead(String)
 
@@ -868,7 +867,7 @@ public func id(): Int64
 public func notifyRead(_: String): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 读取属性名称。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -878,7 +877,7 @@ public func notifyRead(_: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|String|是|-|<font color="red" face="bold">please add description</font>|
+|_|String|是|-|属性名称|
 
 ### func onStateUpdate(String, ArrayList\<Int64>)
 
@@ -887,7 +886,7 @@ public func notifyRead(_: String): Unit
 public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 更新状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -897,8 +896,8 @@ public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|String|是|-|<font color="red" face="bold">please add description</font>|
-|_|ArrayList\<Int64>|是|-|<font color="red" face="bold">please add description</font>|
+|_|String|是|-|属性名称。|
+|_|ArrayList\<Int64>|是|-|属性列表。|
 
 ## enum ColorMode
 
@@ -963,7 +962,7 @@ public enum LayoutDirection {
 Auto
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 跟随系统。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

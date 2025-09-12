@@ -17,7 +17,7 @@ import kit.ArkUI.*
 ### init(ResourceStr)
 
 ```cangjie
-public init(src: ResourceStr)
+public init(value: ResourceStr)
 ```
 
 **功能：** 创建ImageSpan组件。
@@ -30,12 +30,12 @@ public init(src: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](<font color="red" face="bold">please add link</font>)|是|-|图片的数据源，支持本地图片和网络图片。<br/>支持的图片格式包括png、jpg、bmp、svg、gif和heif。|
+|value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|图片的数据源，支持本地图片和网络图片。<br/>支持的图片格式包括png、jpg、bmp、svg、gif和heif。|
 
 ### init(PixelMap)
 
 ```cangjie
-public init(src: PixelMap)
+public init(value: PixelMap)
 ```
 
 **功能：** 创建ImageSpan组件。
@@ -48,7 +48,7 @@ public init(src: PixelMap)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源，支持本地图片和网络图片。<br>PixelMap格式为像素图，常用于图片编辑的场景。<br>支持Base64字符串。格式data:image[png\|jpeg\|bmp\|webp\|heif]；base64，[base64 data]，其中[base64 data]为Base64字符串数据。|
+|value|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源，支持本地图片和网络图片。<br>PixelMap格式为像素图，常用于图片编辑的场景。<br>支持Base64字符串。格式data:image[png\|jpeg\|bmp\|webp\|heif]；base64，[base64 data]，其中[base64 data]为Base64字符串数据。|
 
 ## 通用属性/通用事件
 
@@ -110,7 +110,7 @@ public func verticalAlign(value: ImageSpanAlignment): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment)|是|-|图片基于文本的对齐方式。<br>初始值：ImageSpanAlignment.BOTTOM。|
+|value|[ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment)|是|-|图片基于文本的对齐方式。<br>初始值：ImageSpanAlignment.Bottom。|
 
 ## 组件事件
 
@@ -130,7 +130,7 @@ public func onComplete(callback: ImageCompleteCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageCompleteCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片数据加载成功和解码成功时触发。参数：成功加载的图片尺寸。|
+|callback|ImageCompleteCallback|是|-|回调函数，图片数据加载成功和解码成功时触发。参数：成功加载的图片尺寸。|
 
 ### func onError(ImageErrorCallback)
 
@@ -148,7 +148,7 @@ public func onError(callback: ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageErrorCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片加载出现异常时触发。参数：图片加载异常信息。|
+|callback|ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。参数：图片加载异常信息。|
 
 ## 基础类型定义
 
@@ -342,14 +342,14 @@ import kit.LocalizationKit.*
 class EntryView {
     func build() {
         Column {
-            Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
                 Text() {
                     //以设定大小和排布方式加载图片资源
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(250.px)
                         .objectFit(ImageFit.Contain)
-                        .verticalAlign(ImageSpanAlignment.CENTER)
+                        .verticalAlign(ImageSpanAlignment.Center)
                     //对图片进行文本修饰
                     Span("This is the Span and ImageSpan component")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
@@ -357,21 +357,21 @@ class EntryView {
                        .width(150.px)
                        .height(50.px)
                         .objectFit(ImageFit.Contain)
-                       .verticalAlign(ImageSpanAlignment.TOP)
+                       .verticalAlign(ImageSpanAlignment.Top)
                     Span("I am Underline-span2")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(250.px)
                         .objectFit(ImageFit.Fill)
-                        .verticalAlign(ImageSpanAlignment.BASELINE)
+                        .verticalAlign(ImageSpanAlignment.Baseline)
                     Span("I am Underline-span3")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(50.px)
                         .objectFit(ImageFit.Auto)
-                        .verticalAlign(ImageSpanAlignment.BOTTOM)
+                        .verticalAlign(ImageSpanAlignment.Bottom)
                     Span("I am Underline-span4")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                 }.textAlign(TextAlign.Center)
@@ -386,36 +386,59 @@ class EntryView {
 
 ![imageSpan](figures/imageSpan.png)
 
-### 示例2
+### 示例2（图像设置颜色滤镜效果）
 
-该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
+该示例通过colorFilter实现了给图像设置颜色滤镜效果。
 
 <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
 class EntryView {
+    let blueColor = ColorFilter([0.38, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.81, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.43, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 1.0, 0.0])
+    let colorFilter = ColorFilter([1.0, 0.0, 1.0, 0.0, 1.0,
+                                   0.0, 0.0, 0.0, 1.0, 0.0,
+                                   1.0, 0.0, 1.0, 0.0, 0.0,
+                                   0.0, 1.0, 0.0, 1.0, 0.0])
+
+    @State var DrawingColorFilterFirst: ColorFilter = blueColor
+    @State var DrawingColorFilterSecond: ColorFilter = colorFilter
+
     func build() {
-        Column() {
-            Text() {
-                ImageSpan(@r(app.media.startIcon))//建议使用自定义的本地图片
-                .width(200.vp)
-                .height(200.vp)
-                //设置图片中间与行中间对齐。
-                .verticalAlign(ImageSpanAlignment.CENTER)
-                //设置图片背景颜色和图片背景圆角大小。
-                .textBackgroundStyle(color: Color.Red, radius: BorderRadiuses(topLeft: 0.vp, topRight: 12.vp, bottomLeft: 24.vp, bottomRight: 48.vp))
+        Column(space: 5){
+            Text {
+                ImageSpan(@r(app.media.startIcon))
+                .width(100)
+                .height(100)
+                .colorFilter(this.DrawingColorFilterFirst)
+                .onClick{
+                        evt =>
+                        this.DrawingColorFilterFirst = colorFilter
+                }
             }
-        }.width(100.percent).alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
+            Text {
+                ImageSpan(@r(app.media.startIcon))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .colorFilter(this.DrawingColorFilterSecond)
+                .onClick{
+                        evt =>
+                        this.DrawingColorFilterSecond = blueColor
+                }
+            }
+        }
     }
 }
 ```
 
-![imageSpan2](figures/imageSpan2.png)
+![image3](figures/imageSpan2.gif)

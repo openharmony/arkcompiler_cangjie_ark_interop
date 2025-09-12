@@ -30,7 +30,7 @@ public init(context: Option<CanvasRenderingContext2D>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)|是|-|不支持多个Canvas共用一个[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象，具体描述见[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象。|
+|context|Option<CanvasRenderingContext2D>|是|-|不支持多个Canvas共用一个[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象，具体描述见[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象。|
 
 ## 通用属性/通用事件
 
@@ -89,7 +89,7 @@ public func addColorStop(offset: Float64, color: ResourceColor): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |offset|Float64|是|-|设置渐变点距离起点的位置占总体长度的比例，范围为0到1。设置offset<0或offset>1无渐变效果。|
-|color|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|设置渐变的颜色。颜色格式参考[ResourceColor](./cj-common-types.md#interface-resourcecolor)中string类型说明。未按格式设置颜色无渐变效果。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置渐变的颜色。颜色格式参考[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)中string类型说明。未按格式设置颜色无渐变效果。|
 
 ### class RenderingContextSettings
 
@@ -192,6 +192,7 @@ public let width: Float64
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+
 @Entry
 @Component
 class EntryView {
@@ -199,12 +200,11 @@ class EntryView {
     var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
     func build() {
-        Flex(
-            FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-            justifyContent: FlexAlign.Center)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+            justifyContent: FlexAlign.Center) {
             Canvas(this.context).width(100.percent).height(100.percent).backgroundColor(0xffff00).onReady(
                 {
-                => this.context.fillRect(0, 30, 100, 100)
+                => this.context.fillRect(0.0, 30.0, 100.0, 100.0)
             })
         }.width(100.percent).height(100.percent)
     }

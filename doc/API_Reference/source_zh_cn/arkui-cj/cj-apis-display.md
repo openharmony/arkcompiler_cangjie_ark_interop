@@ -293,8 +293,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStat
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
-
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
 
 **异常：**
 
@@ -343,7 +342,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisp
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE'，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|需要取消注册的回调函数。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|需要取消注册的回调函数。|
 
 **异常：**
 
@@ -393,8 +392,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatu
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
-
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
 
 **异常：**
 
@@ -442,7 +440,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDispl
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE'，表示折叠设备屏幕显示模式。|
-|callback|[Callback1Argument](../apis/BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|回调函数。表示折叠设备屏幕显示模式。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|回调函数。表示折叠设备屏幕显示模式。|
 
 **异常：**
 
@@ -1128,7 +1126,7 @@ public init(
 ## enum DisplayState
 
 ```cangjie
-public enum DisplayState <: Equatable<DisplayState> {
+public enum DisplayState {
     | StateUnknown
     | StateOff
     | StateOn
@@ -1277,7 +1275,7 @@ public operator func ==(other: DisplayState): Bool
 ## enum FoldDisplayMode
 
 ```cangjie
-public enum FoldDisplayMode <: Equatable<FoldDisplayMode> {
+public enum FoldDisplayMode {
     | FoldDisplayModeUnknown
     | FoldDisplayModeFull
     | FoldDisplayModeMain
@@ -1400,7 +1398,7 @@ public operator func ==(other: FoldDisplayMode): Bool
 ## enum FoldStatus
 
 ```cangjie
-public enum FoldStatus <: Equatable<FoldStatus> {
+public enum FoldStatus {
     | FoldStatusUnknown
     | FoldStatusExpanded
     | FoldStatusFolded
@@ -1510,7 +1508,7 @@ public operator func ==(other: FoldStatus): Bool
 ## enum ListenerType
 
 ```cangjie
-public enum ListenerType <: Equatable<ListenerType> {
+public enum ListenerType {
     | ListnerTypeAdd
     | ListnerTypeRemove
     | ListnerTypeChange
@@ -1672,7 +1670,7 @@ public operator func ==(other: ListenerType): Bool
 ## enum Orientation
 
 ```cangjie
-public enum Orientation <: Equatable<Orientation> {
+public enum Orientation {
     | Portrait
     | Landscape
     | PortraitInverted

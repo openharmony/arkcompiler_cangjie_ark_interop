@@ -87,7 +87,6 @@ public class BarrierStyle {
     public var direction: BarrierDirection
     public var referencedId: Array<String>
 
-
     public init(id: String, direction: BarrierDirection, referencedId: Array<String>)
 }
 ```
@@ -174,7 +173,6 @@ public class GuideLinePosition {
     public var start:?Length = None
     public var end:?Length = None
 
-
     public init(start!: ?Length = None, end!: ?Length = None)
 }
 ```
@@ -193,7 +191,7 @@ public var end:?Length = None
 
 **功能：** guideline距离容器右侧或者底部的距离。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-Length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -209,7 +207,7 @@ public var start:?Length = None
 
 **功能：** guideline距离容器左侧或者顶部的距离。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-Length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -234,8 +232,8 @@ public init(start!: ?Length = None, end!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-Length)|否|None| **命名参数。** guideline距离容器左侧或者顶部的距离。|
-|end|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-Length)|否|None| **命名参数。** guideline距离容器右侧或者底部的距离。|
+|start|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器左侧或者顶部的距离。|
+|end|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器右侧或者底部的距离。|
 
 ### class GuideLineStyle
 
@@ -244,7 +242,6 @@ public class GuideLineStyle {
     public var id: String
     public var direction: Axis
     public var position: GuideLinePosition
-
 
     public init(id: String, direction: Axis, position: GuideLinePosition)
 }
@@ -349,45 +346,45 @@ class EntryView {
                 .backgroundColor(0xff3333)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start)
                     )
                 ).id("row1")
                 Row().width(100).height(100)
                 .backgroundColor(0xFFCC00)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End)
                     )
                 ).id("row2")
                 Row().height(100)
                 .backgroundColor(0xFF6633)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.End),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Start)
+                        top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row1", HorizontalAlign.End),
+                        right: HorizontalAlignment("row2", HorizontalAlign.Start)
                     )
                 ).id("row3")
                 Row()
                 .backgroundColor(0xFF9966)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row1",  HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignment("row1",  HorizontalAlign.End)
                     )
                 ).id("row4")
                 Row()
                 .backgroundColor(0xff3333)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row2", HorizontalAlign.Start),
-                        right: HorizontalAnchor("__container__",  HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row2", HorizontalAlign.Start),
+                        right: HorizontalAlignment("__container__",  HorizontalAlign.End)
                     )
                 ).id("row5")
             }
@@ -423,8 +420,8 @@ class EntryView {
                 .backgroundColor(0xff3333)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start)
                     )
                 ).id("row1")
                 .margin(10)
@@ -432,24 +429,24 @@ class EntryView {
                 .backgroundColor(0xFFCC00)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        left: HorizontalAnchor("row1", HorizontalAlign.End)
+                        top: VerticalAlignment("row1", VerticalAlign.Top),
+                        left: HorizontalAlignment("row1", HorizontalAlign.End)
                     )
                 ).id("row2")
                 Row().height(100).width(100)
                 .backgroundColor(0xFF6633)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.Start)
+                        top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row1", HorizontalAlign.Start)
                     )
                 ).id("row3")
                 Row().width(100).height(100)
                 .backgroundColor(0xFF9966)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row2", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row3", HorizontalAlign.End),
+                        top: VerticalAlignment("row2", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row3", HorizontalAlign.End),
                     )
                 ).id("row4")
                 .margin(10)
@@ -484,10 +481,10 @@ class EntryView {
             RelativeContainer() {
                 Row().width(100).height(100).backgroundColor(0xff3333).alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End),
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End),
                         bias: Bias(vertical: 0.3)
                     )
                 ).id("row1")
@@ -522,8 +519,8 @@ class EntryView {
             RelativeContainer() {
                 Row().width(100).height(100).backgroundColor(0xff3333).alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("guideline2", VerticalAlign.Top),
-                        left: HorizontalAnchor("guideline1", HorizontalAlign.End),
+                        top: VerticalAlignment("guideline2", VerticalAlign.Top),
+                        left: HorizontalAlignment("guideline1", HorizontalAlign.End),
                     )
                 ).id("row1")
             }.width(300).height(300).margin(left: 50.vp).border(width: 2.vp, color: Color(0x6699ff))
@@ -563,8 +560,8 @@ class EntryView {
                 .backgroundColor(0xFFCC00)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        middle: HorizontalAnchor("row1", HorizontalAlign.End)
+                        top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                        middle: HorizontalAlignment("row1", HorizontalAlign.End)
                     )
                 ).id("row2")
 
@@ -572,8 +569,8 @@ class EntryView {
                 .backgroundColor(0xFF6633)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        left: HorizontalAnchor("barrier1", HorizontalAlign.End)
+                        top: VerticalAlignment("row1", VerticalAlign.Top),
+                        left: HorizontalAlignment("barrier1", HorizontalAlign.End)
                     )
                 ).id("row3")
 
@@ -581,314 +578,19 @@ class EntryView {
                 .backgroundColor(0xFF9966)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("barrier2", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.Start),
+                        top: VerticalAlignment("barrier2", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row1", HorizontalAlign.Start),
                     )
                 ).id("row4")
             }.width(300).height(300)
             .margin(left: 50.vp)
             .border(width: 2.vp, color: Color(0x6699ff))
             .barrier(
-                [BarrierStyle("barrier1", BarrierDirection.RIGHT, ["row1", "row2"]),
-                BarrierStyle("barrier2", BarrierDirection.BOTTOM, ["row1", "row2"])])
+                [BarrierStyle("barrier1", BarrierDirection.Right, ["row1", "row2"]),
+                BarrierStyle("barrier2", BarrierDirection.Bottom, ["row1", "row2"])])
         }.height(100.percent)
     }
 }
 ```
 
 ![relativecontainer6](figures/relativecontainer5.jpg)
-
-### 示例6（设置链）
-
-本示例通过[chainMode](cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle)接口从上至下分别实现了水平方向的[SPREAD链，SPREAD_INSIDE链和PACKED链](cj-universal-attribute-location.md#enum-chainstyle)。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView{
-    func build(){
-        Row(){
-            RelativeContainer(){
-                Row(){
-                    Text('row1')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0xa3cf62)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Start),
-                        top: VerticalAnchor("__container__", VerticalAlign.Top)
-                        )
-                    )
-                .id("row1")
-                .chainMode(Axis.Horizontal, ChainStyle.SPREAD)
-
-                Row(){
-                    Text('row2')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x00ae9d)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row1", HorizontalAlign.End),
-                        right: HorizontalAnchor("row3", HorizontalAlign.Start),
-                        top: VerticalAnchor("row1", VerticalAlign.Top)
-                        )
-                    )
-                .id("row2")
-
-                Row(){
-                    Text('row3')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x0a59f7)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row2", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End),
-                        top: VerticalAnchor("row1", VerticalAlign.Top)
-                        )
-                    )
-                .id("row3")
-
-                Row(){
-                    Text('row4')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0xa3cf62)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row5", HorizontalAlign.Start),
-                        center: VerticalAnchor("__container__", VerticalAlign.Center)
-                        )
-                    )
-                .id("row4")
-                .chainMode(Axis.Horizontal, ChainStyle.SPREAD_INSIDE)
-
-                Row(){
-                    Text('row5')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x00ae9d)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row4", HorizontalAlign.End),
-                        right: HorizontalAnchor("row6", HorizontalAlign.Start),
-                        top: VerticalAnchor("row4", VerticalAlign.Top)
-                        )
-                    )
-                .id("row5")
-
-                Row(){
-                    Text('row6')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x0a59f7)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row5", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End),
-                        top: VerticalAnchor("row4", VerticalAlign.Top)
-                        )
-                    )
-                .id("row6")
-
-                Row(){
-                    Text('row7')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0xa3cf62)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row8", HorizontalAlign.Start),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom)
-                        )
-                    )
-                .id("row7")
-                .chainMode(Axis.Horizontal, ChainStyle.PACKED)
-
-                Row(){
-                    Text('row8')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x00ae9d)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row7", HorizontalAlign.End),
-                        right: HorizontalAnchor("row9", HorizontalAlign.Start),
-                        top: VerticalAnchor("row7", VerticalAlign.Top)
-                        )
-                    )
-                .id("row8")
-
-                Row(){
-                    Text('row9')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x0a59f7)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row8", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End),
-                        top: VerticalAnchor("row7", VerticalAlign.Top)
-                        )
-                    )
-                .id("row9")
-            }
-            .width(300).height(300)
-            .margin(left: 50)
-            .border(width: 2, color: 0x6699FF)
-        }
-        .height(100.percent)
-    }
-}
-```
-
-![relativecontainer7](figures/relativecontainer7.png)
-
-### 示例7（链中设置偏移）
-
-本示例通过[chainMode](cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle)和[bias](cj-universal-attribute-location.md#class-bias)接口实现了水平方向的带偏移的[PACKED链](cj-universal-attribute-location.md#enum-chainstyle)。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView{
-
-    func build() {
-        Row(){
-            RelativeContainer(){
-                Row(){
-                    Text('row1')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0xa3cf62)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Start),
-                        center: VerticalAnchor("__container__", VerticalAlign.Center),
-                        bias: Bias(horizontal: 0.0)
-                        )
-                    )
-                .id("row1")
-                .chainMode(Axis.Horizontal, ChainStyle.PACKED)
-
-                Row(){
-                    Text('row2')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x00ae9d)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row1", HorizontalAlign.End),
-                        right: HorizontalAnchor("row3", HorizontalAlign.Start),
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        )
-                    )
-                .id("row2")
-
-                Row(){
-                    Text('row3')
-                }
-                .justifyContent(FlexAlign.Center)
-                .width(80)
-                .height(80)
-                .backgroundColor(0x0a59f7)
-                .alignRules(AlignRuleOption(left: HorizontalAnchor("row2", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End),
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        )
-                    )
-                .id("row3")
-            }
-            .width(300).height(300)
-            .margin(left: 50)
-            .border(width: 2, color: 0x6699FF)
-        }
-        .height(100.percent)
-    }
-}
-```
-
-![relativecontainer8](figures/relativecontainer8.png)
-
-### 示例8（设置镜像模式）
-
-本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用[LocalizedAlignRuleOptions](cj-universal-attribute-location.md#class-localizedalignruleoptions)和[LocalizedBarrierDirection](#enmu-localizedbarrierdirection)设置对齐方式的用法。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row() {
-            RelativeContainer() {
-                Row().width(100).height(100)
-                .backgroundColor(0xff3333)
-                .id("row1")
-
-                Row().width(100).height(100)
-                .backgroundColor(0xFFCC00)
-                .alignRules(
-                    AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        middle: HorizontalAnchor("row1", HorizontalAlign.End)
-                    )
-                ).id("row2")
-
-                Row().height(100).width(100)
-                .backgroundColor(0xFF6633)
-                .alignRules(
-                    AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        left: HorizontalAnchor("barrier1", HorizontalAlign.End)
-                    )
-                ).id("row3")
-
-                Row().width(50).height(50)
-                .backgroundColor(0xFF9966)
-                .alignRules(
-                    AlignRuleOption(
-                        top: VerticalAnchor("barrier2", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.Start),
-                    )
-                ).id("row4")
-            }.width(300).height(300)
-            .margin(left: 50.vp)
-            .border(width: 2.vp, color: Color(0x6699ff))
-            .direction(Direction.Rtl)
-            .barrier(
-                [LocalizedBarrierStyle("barrier1", LocalizedBarrierDirection.END, ["row1", "row2"]),
-                LocalizedBarrierStyle("barrier2", LocalizedBarrierDirection.BOTTOM, ["row1", "row2"])])
-        }.height(100.percent)
-    }
-}
-
-```
-
-![relativecontainer6](figures/relativecontainer6.jpg)

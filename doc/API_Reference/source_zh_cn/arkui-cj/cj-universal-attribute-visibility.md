@@ -24,5 +24,4 @@ public func visibility(value: Visibility): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Visibility](#)|是|-|可见性值。|
-
+|value|[Visibility](./cj-common-types.md#enum-visibility)|是|-|可见性值。|

@@ -71,8 +71,8 @@ public func scale(
 | x       | Float32                                         | 否   | 1.0        | **命名参数。** 横向放大倍数（或缩小比例）。                                  |
 | y       | Float32                                         | 否   | 1.0        | **命名参数。** 纵向放大倍数（或缩小比例）。                                  |
 | z       | Float32                                         | 否   | 1.0        | **命名参数。** 竖向放大倍数（或缩小比例）。                                  |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | 否   | 50.percent | **命名参数。** X轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | 否   | 50.percent | **命名参数。** Y轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
+| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 50.percent | **命名参数。** X轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
+| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 50.percent | **命名参数。** Y轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
 
 ### func slide(SlideEffect)
 
@@ -112,9 +112,9 @@ public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): 
 
 | 参数名 | 类型                                              | 必填  | 默认值  | 说明                 |
 |:--- |:----------------------------------------------- |:--- |:---- |:------------------ |
-| x   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | 否   | 0.vp | **命名参数。** x轴的平移距离。 |
-| y   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | 否   | 0.vp | **命名参数。** y轴的平移距离。 |
-| z   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | 否   | 0.vp | **命名参数。** z轴的平移距离。 |
+| x   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 否   | 0.vp | **命名参数。** x轴的平移距离。 |
+| y   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 0.vp | **命名参数。** y轴的平移距离。 |
+| z   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 否   | 0.vp | **命名参数。** z轴的平移距离。 |
 
 ## class PageTransitionEnter
 
@@ -181,7 +181,7 @@ public func onEnter(event: PageTransitionCallback)
 
 | 参数名   | 类型                                                          | 必填  | 默认值 | 说明                                |
 |:----- |:----------------------------------------------------------- |:--- |:--- |:--------------------------------- |
-| event | [PageTransitionCallback](#interface-pagetransitioncallback) | 是   | -   | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
+| event | [PageTransitionCallback](#type-pagetransitioncallback) | 是   | -   | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
 
 ## class PageTransitionExit
 
@@ -246,9 +246,9 @@ public func onExit(event: PageTransitionCallback)
 
 **参数：**
 
-| 参数名   | 类型                                                          | 必填  | 默认值 | 说明                                |
+| 参数名   | 类型      | 必填  | 默认值 | 说明                                |
 |:----- |:----------------------------------------------------------- |:--- |:--- |:--------------------------------- |
-| event | [PageTransitionCallback](#interface-pagetransitioncallback) | 是   | -   | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
+| event | [PageTransitionCallback](#type-pagetransitioncallback) | 是   | -   | 入场动画的逐帧回调直到入场动画结束，progress从0变化到1。 |
 
 ## enum RouteType
 
@@ -370,7 +370,7 @@ Top
 ## type PageTransitionCallback
 
 ```cangjie
-public type PageTransitionCallback =(RouteType, Float64) -> Unit
+public type PageTransitionCallback = (RouteType, Float64) -> Unit
 ```
 
 **功能：** [PageTransitionCallback](#type-pagetransitioncallback)是[(RouteType, Float64) -> Unit](#type-pagetransitioncallback)类型的别名。
@@ -413,7 +413,7 @@ class EntryView {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200, curve: Curve.Linear)).onEnter {
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear,).onEnter {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push | RouteType.Pop =>
                     scale2 = Float32(progress)
@@ -421,7 +421,7 @@ class EntryView {
                 case _ => ()
             }
         }
-        PageTransitionExit(PageTransitionOptions(duration: 1200, curve: Curve.Ease)).onExit {
+        PageTransitionExit(duration: 1200, curve: Curve.Ease, ).onExit {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push =>
                     this.scale2 = Float32(1.0 - progress)
@@ -465,7 +465,7 @@ class Page1 {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200, curve: Curve.Linear)).onEnter {
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear).onEnter {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push | RouteType.Pop =>
                     scale1 = Float32(progress)
@@ -473,7 +473,7 @@ class Page1 {
                 case _ => ()
             }
         }
-        PageTransitionExit(PageTransitionOptions(duration: 1200, curve: Curve.Ease)).onExit {
+        PageTransitionExit(duration: 1200, curve: Curve.Ease).onExit {
             ty: RouteType, progress: Float64 => match (ty) {
                 case RouteType.Push =>
                     this.scale1 = Float32(1.0 - progress)
@@ -527,8 +527,8 @@ class EntryView {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200, curve: Curve.Linear)).slide(SlideEffect.START)
-        PageTransitionExit(PageTransitionOptions(duration: 1200, curve: Curve.Ease)).slide(SlideEffect.START)
+        PageTransitionEnter(duration: 1200, curve: Curve.Linear).slide(SlideEffect.Left)
+        PageTransitionExit(duration: 1200, curve: Curve.Ease).slide(SlideEffect.Left)
     }
 }
 ```
@@ -570,8 +570,8 @@ class Page1 {
     }
 
     protected func onTransition(): Unit {
-        PageTransitionEnter(PageTransitionOptions(duration: 1200)).slide(SlideEffect.END)
-        PageTransitionExit(PageTransitionOptions(duration: 1200)).slide(SlideEffect.END)
+        PageTransitionEnter(duration: 1200).slide(SlideEffect.Right)
+        PageTransitionExit(duration: 1200).slide(SlideEffect.Right)
     }
 }
 ```

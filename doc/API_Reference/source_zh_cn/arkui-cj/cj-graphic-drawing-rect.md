@@ -30,7 +30,7 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|| **命名参数。** 矩形宽度，取值范围≥0。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 矩形宽度，取值范围≥0。|
 |height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 矩形高度，取值范围≥0。|
 
 ## 通用属性/通用事件
@@ -149,17 +149,19 @@ public func radiusWidth(value: Length): This
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("normal").fontSize(11).fontColor(0xCCCCCC).width(90.percent)
             // 绘制90% * 50的矩形
-            Column(5) {
+            Column(space: 5) {
                 Text("normal").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 绘制90% * 50矩形
                 Rect().width(90.percent).height(50).fill(Color.Green)
@@ -167,7 +169,7 @@ class EntryView {
                 Rect()
                 .width(90.percent)
                 .height(50)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .stroke(Color.Red)
                 .strokeWidth(3)
 

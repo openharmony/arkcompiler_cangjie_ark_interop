@@ -188,12 +188,12 @@ public func span(value: GridColColumnOption): This
 
 ```cangjie
 public class GridColColumnOption {
-    public var xs: Int32 = 12
-    public var sm: Int32 = 12
-    public var md: Int32 = 12
-    public var lg: Int32 = 12
-    public var xl: Int32 = 12
-    public var xxl: Int32 = 12
+    public var xs: Int32
+    public var sm: Int32
+    public var md: Int32 
+    public var lg: Int32
+    public var xl: Int32
+    public var xxl: Int32
     public init(
         xs!: Int32 = 12,
         sm!: Int32 = 12,
@@ -215,7 +215,7 @@ public class GridColColumnOption {
 #### var lg
 
 ```cangjie
-public var lg: Int32 = 12
+public var lg: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。
@@ -231,7 +231,7 @@ public var lg: Int32 = 12
 #### var md
 
 ```cangjie
-public var md: Int32 = 12
+public var md: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。
@@ -247,7 +247,7 @@ public var md: Int32 = 12
 #### var sm
 
 ```cangjie
-public var sm: Int32 = 12
+public var sm: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。
@@ -263,7 +263,7 @@ public var sm: Int32 = 12
 #### var xl
 
 ```cangjie
-public var xl: Int32 = 12
+public var xl: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。
@@ -279,7 +279,7 @@ public var xl: Int32 = 12
 #### var xs
 
 ```cangjie
-public var xs: Int32 = 12
+public var xs: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。
@@ -295,7 +295,7 @@ public var xs: Int32 = 12
 #### var xxl
 
 ```cangjie
-public var xxl: Int32 = 12
+public var xxl: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。
@@ -384,7 +384,7 @@ class EntryView {
                     value: [400.vp, 600.vp, 800.vp],
                     reference: BreakpointsReference.WindowSize
                 ),
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 //GridCol栅格子组件，必须作为栅格容器组件(GridRow)的子组件使用。
                 //构造第1个GridCol子组件，栅格占2列，为第1,2列

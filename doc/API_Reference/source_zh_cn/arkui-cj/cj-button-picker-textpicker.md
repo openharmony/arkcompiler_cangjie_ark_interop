@@ -35,7 +35,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |range|Array\<String>|是|-| **命名参数。** 选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。|
-|selected|?UInt32|否| **命名参数。** 设置默认选中项在数组中的索引值。<br>初始值：0。|
+|selected|?UInt32|否|Option.None| **命名参数。** 设置默认选中项在数组中的索引值。<br>初始值：0。|
 |value|?String|否|Option.None| **命名参数。** 设置默认选中项的值，优先级低于selected。<br>初始值：第一个元素值。<br>**说明：**<br>只有显示文本列表时该值有效。显示图片或图片加文本的列表时，该值无效。|
 
 ## 通用属性/通用事件
@@ -80,7 +80,7 @@ public func defaultPickerItemHeight(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|Picker各选择项的高度。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|Picker各选择项的高度。|
 
 ## 组件事件
 
@@ -100,7 +100,7 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnTextPickerChangeCallback](<font color="red" face="bold">please add link</font>)|是|-|当前选中项的文本和索引值。|
+|callback|OnTextPickerChangeCallback|是|-|当前选中项的文本和索引值。|
 
 ## 示例代码
 
@@ -115,6 +115,11 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -123,9 +128,9 @@ class EntryView {
     @State var fruits: Array<String> = ["apple", "banana", "orange", "peach"]
     func build() {
         Column {
-            TextPicker(this.fruits, selected: this.select)
-            .onChange({result: TextPickerResData =>
-                    nativeLog("Picker item changed, value: ${result.index}")
+            TextPicker(range: this.fruits, selected: this.select)
+            .onChange({value: String, index: UInt32  =>
+                    loggerInfo("Picker item changed, value: ${index}")
             })
         }
         .width(100.percent)

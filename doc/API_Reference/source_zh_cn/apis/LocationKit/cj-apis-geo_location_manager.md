@@ -29,7 +29,7 @@ ohos.permission.LOCATION_IN_BACKGROUND：用于应用切换到后台仍然需要
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -346,7 +346,7 @@ public var accuracy: Float64
 ### var additionSize
 
 ```cangjie
-public var additionSize: Int64
+public var additionSize: ?Int64
 ```
 
 **功能：** 附加信息数量。取值范围为大于等于0。
@@ -362,7 +362,7 @@ public var additionSize: Int64
 ### var additions
 
 ```cangjie
-public var additions: Array<String>
+public var additions: ?Array<String>
 ```
 
 **功能：** 附加信息。
@@ -378,12 +378,12 @@ public var additions: Array<String>
 ### var additionsMap
 
 ```cangjie
-public var additionsMap: Map<String, String>
+public var additionsMap: ?Map<String, String>
 ```
 
 **功能：** 附加信息。具体内容和顺序与additions一致。
 
-**类型：** [Map](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
+**类型：** Map
 
 **读写能力：** 可读写
 
@@ -410,7 +410,7 @@ public var altitude: Float64
 ### var altitudeAccuracy
 
 ```cangjie
-public var altitudeAccuracy: Float64
+public var altitudeAccuracy: ?Float64
 ```
 
 **功能：** 表示高度信息的精度，单位米。
@@ -442,7 +442,7 @@ public var direction: Float64
 ### var directionAccuracy
 
 ```cangjie
-public var directionAccuracy: Float64
+public var directionAccuracy: ?Float64
 ```
 
 **功能：** 表示航向信息的精度。单位是“度”，取值范围为0到360。
@@ -490,7 +490,7 @@ public var longitude: Float64
 ### var sourceType
 
 ```cangjie
-public var sourceType: LocationSourceType
+public var sourceType: ?LocationSourceType
 ```
 
 **功能：** 表示定位结果的来源。
@@ -506,7 +506,7 @@ public var sourceType: LocationSourceType
 ### var speed
 
 ```cangjie
-public var speed: Float64
+public var speed: ?Float64
 ```
 
 **功能：** 表示速度信息，单位米每秒。
@@ -570,7 +570,7 @@ public var timeStamp: Int64
 ### var uncertaintyOfTimeSinceBoot
 
 ```cangjie
-public var uncertaintyOfTimeSinceBoot: Int64
+public var uncertaintyOfTimeSinceBoot: ?Int64
 ```
 
 **功能：** 表示位置时间戳的不确定度。

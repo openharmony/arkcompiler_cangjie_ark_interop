@@ -47,7 +47,7 @@ class EntryView {
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 
     func build() {
-    Stack(Alignment.TopStart) {
+    Stack(alignContent: Alignment.TopStart) {
         Column {
             Column() {
                 Text(this.testTextStr)

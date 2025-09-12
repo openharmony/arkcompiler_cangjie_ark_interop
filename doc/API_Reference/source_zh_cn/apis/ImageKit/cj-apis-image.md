@@ -13,43 +13,10 @@ import kit.ImageKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 运行示例代码时，请先通过 [createImageSource](#func-createimagesourcestring-sourceoptions) 构建正确的图片源，支持从raw数组、Uri、文件描述符等构建图片源。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
-
-## func createImageCreator(Size, Int32, Int32)
-
-```cangjie
-public func createImageCreator(size: Size, format: Int32, capacity: Int32): ImageCreator
-```
-
-**功能：** 创建ImageCreator实例。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|[Size](#class-size)|是|-|图像的默认大小。|
-|format|Int32|是|-|图像格式，如YCBCR_422_SP，JPEG。|
-|capacity|Int32|是|-|同时访问的最大图像数。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ImageCreator](#class-imagecreator)|返回ImageCreator实例。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
 
 ## func createImagePacker()
 
@@ -291,7 +258,7 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|rawfile|[RawFileDescriptor](../LocalizationKit/cj-apis-resource_manager.md#class-rawfiledescriptor)|是|-|图像资源文件的RawFileDescriptor。|
+|rawfile|[RawFileDescriptor](../LocalizationKit/cj-apis-raw_file_descriptor.md#class-rawfiledescriptor)|是|-|图像资源文件的RawFileDescriptor。|
 |options|[SourceOptions](#class-sourceoptions)|否|SourceOptions(0)| **命名参数。** 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -299,40 +266,6 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
 |类型|说明|
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
-
-## func createIncrementalSource(Array\<UInt8>, SourceOptions)
-
-```cangjie
-public func createIncrementalSource(buf: Array<UInt8>, options!: SourceOptions = SourceOptions(0)): ImageSource
-```
-
-**功能：** 通过缓冲区以增量的方式创建图片源实例，IncrementalSource不支持读写Exif信息。
-
-以增量方式创建的图片源实例ImageSource，仅支持使用以下功能。
-
-- 获取图片信息：指定序号-[getImageInfo](#func-getimageinfouint32)、直接获取-[getImageInfo](#func-getimageinfo)
-- 获取图片中给定索引处图像的指定属性键的值：[getImageProperty](#func-getimagepropertypropertykey-imagepropertyoptions)
-- 批量获取图片中的指定属性键的值：[getImageProperties](#func-getimagepropertiesarraypropertykey)
-- 更新增量数据：[updateData](#func-updatedataarrayuint8-bool-uint32-uint32)
-- 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](#func-createpixelmapdecodingoptions)
-- 释放图片源实例：[release](#func-release-1)
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|buf|Array\<UInt8>|是|-|增量数据， 这个参数实际不生效。|
-|options|[SourceOptions](#class-sourceoptions)|否|SourceOptions(0)| **命名参数。** 图片属性，包括图片序号与默认属性值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[ImageSource](#class-imagesource)|返回图片源。|
 
 ## func createPixelMap(Array\<UInt8>, InitializationOptions)
 
@@ -483,7 +416,7 @@ public var desiredColorSpace:?ColorSpaceManager
 
 **功能：** 目标色彩空间。
 
-**类型：** ?[ColorSpaceManager](#class-colorspacemanager)
+**类型：** ?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)
 
 **读写能力：** 可读写
 
@@ -498,8 +431,6 @@ public var desiredDynamicRange: DecodingDynamicRange
 ```
 
 **功能：** 目标动态范围，默认值为SDR。
-
-通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource不支持设置此属性，默认解码为SDR内容。
 
 如果平台不支持HDR，设置无效，默认解码为SDR内容。
 
@@ -666,8 +597,8 @@ public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = fals
 |desiredPixelFormat|[PixelMapFormat](#enum-pixelmapformat)|否|Unknown|**命名参数。** 解码的像素格式。|
 |index|UInt32|否|0|**命名参数。** 解码图片序号。|
 |fitDensity|Int32|否|0|**命名参数。** 图像像素密度，单位为ppi。|
-|desiredColorSpace|?[ColorSpaceManager](#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
-|desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。<br>通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-sourceoptions)创建的imagesource不支持设置此属性，默认解码为SDR内容。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
+|desiredColorSpace|?[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|否|None|**命名参数。** 目标色彩空间。|
+|desiredDynamicRange|[DecodingDynamicRange](#enum-decodingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。<br>如果平台不支持HDR，设置无效，默认解码为SDR内容。|
 
 ## class Image
 
@@ -753,21 +684,6 @@ public func getComponent(componentType: ComponentType): Component
 |:----|:----|
 |[Component](#class-component)|返回组件缓冲区。|
 
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-let img = imageCreator.dequeueImage()
-let component : Component = img.getComponent(ComponentType.Jpeg)
-```
-
 ### func release()
 
 ```cangjie
@@ -779,156 +695,6 @@ public func release(): Unit
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-let img = imageCreator.dequeueImage()
-img.release()
-```
-
-## class ImageCreator
-
-```cangjie
-public class ImageCreator {}
-```
-
-**功能：** 图像创建模块，用于请求图像原生数据区域，并开放给应用编译原生图像数据的能力。 在调用以下方法前需要先创建ImageCreator实例。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-### prop capacity
-
-```cangjie
-public prop capacity: Int32
-```
-
-**功能：** 同时访问的图像数。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-### prop format
-
-```cangjie
-public prop format: Int32
-```
-
-**功能：** 图像格式。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-### func dequeueImage()
-
-```cangjie
-public func dequeueImage(): Image
-```
-
-**功能：** 从空闲队列中获取buffer图片，用于绘制UI内容。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[Image](#class-image)|用于返回最新图片。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-var imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-var image = imageCreator.dequeueImage()
-```
-
-### func queueImage(Image)
-
-```cangjie
-public func queueImage(image: Image): Unit
-```
-
-**功能：** 将绘制好的图片放入Dirty队列。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|image|[Image](#class-image)|是|-|绘制好的buffer图像。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-var imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-var image = imageCreator.dequeueImage()
-imageCreator.queueImage(image)
-```
-
-### func release()
-
-```cangjie
-public func release(): Unit
-```
-
-**功能：** 释放当前图像。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageCreator
-
-**起始版本：** 21
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.ImageKit.*
-
-let size = Size(8, 8192)
-let imageCreator = createImageCreator(size, ImageFormat.Jpeg, 8)
-imageCreator.release()
-```
 
 ## class ImageInfo
 
@@ -1133,6 +899,7 @@ public func packToData(source: ImageSource, options: PackingOption): Array<UInt8
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1142,7 +909,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSource: ImageSource = createImageSource(data, sourceOptions)
+let imageSource: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 var imagePacker = createImagePacker()
 let supportedFormats = imagePacker.supportedFormats
 let packingOption = PackingOption("image/jpeg", 98)
@@ -1246,6 +1013,7 @@ public func packToFile(source: ImageSource, fd: Int32, options: PackingOption): 
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1256,7 +1024,7 @@ import kit.CoreFileKit.{FileIo, OpenMode}
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSource: ImageSource = createImageSource(data, sourceOptions)
+let imageSource: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 var fd: Int32 = 0
 let filePath = "data/storage/el1/base/xxx.txt"
 let file = FileIo.open(filePath,mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
@@ -1591,6 +1359,7 @@ public func createPixelMap(options!: DecodingOptions = DecodingOptions()): Pixel
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1600,7 +1369,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let option = DecodingOptions(
     sampleSize: 1,
     rotate: 10,
@@ -1751,6 +1520,7 @@ public func getImageInfo(index!: UInt32 = 0): ImageInfo
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1760,7 +1530,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 imageSourceApi.getImageInfo(index : 0)
 ```
 
@@ -1810,6 +1580,7 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1819,7 +1590,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 imageSourceApi.getImageProperty(PropertyKey.ImageLength)
 ```
 
@@ -1877,7 +1648,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 imageSourceApi.release()
 ```
 
@@ -1904,6 +1675,7 @@ public func updateData(buf: Array<UInt8>, isFinished: Bool, offset: UInt32, leng
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -1913,7 +1685,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let testPng = Array<UInt8>(16500, repeat: 0)
 let bufferSize = 5000
 var offset = 0
@@ -2095,7 +1867,7 @@ public class PackingOption {
 public var bufferSize: UInt64
 ```
 
-**功能：** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int-packingoption)不受此参数限制。
+**功能：** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。
 
 **类型：** UInt64
 
@@ -2172,7 +1944,7 @@ public var quality: UInt8
 ### init(String, UInt8, UInt64, PackingDynamicRange, Bool)
 
 ```cangjie
-public init(format: String, quality: UInt8, bufferSize!: UInt64 = 25  * 1024  * 1024,
+public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
     desiredDynamicRange!: PackingDynamicRange = Sdr, needsPackProperties!: Bool = false)
 ```
 
@@ -2188,7 +1960,7 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 25  * 1024  * 
 |:---|:---|:---|:---|:---|
 |format|String|是|-|目标格式。</br>当前只支持"image/jpeg"、"image/webp"、"image/png"和"image/heif"（不同硬件设备支持情况不同）。|
 |quality|UInt8|是|-|JPEG编码中设定输出图片质量的参数，取值范围为0-100。0质量最低，100质量最高，质量越高生成图片所占空间越大。|
-|bufferSize|UInt64|否|25 * 1024 * 1024|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-intnative-packingoption)不受此参数限制。|
+|bufferSize|UInt64|否|0|**命名参数。** 接收编码数据的缓冲区大小，单位为Byte。如果不设置大小，默认为25M。如果编码图片超过25M，需要指定大小。bufferSize需大于编码后图片大小。使用[packToFile](#func-packtofileimagesource-int32-packingoption)不受此参数限制。|
 |desiredDynamicRange|[PackingDynamicRange](#enum-packingdynamicrange)|否|Sdr|**命名参数。** 目标动态范围。|
 |needsPackProperties|Bool|否|false|**命名参数。** 是否需要编码图片属性信息，例如EXIF。|
 
@@ -2198,11 +1970,11 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 25  * 1024  * 
 public class PixelMap {}
 ```
 
-**功能：** 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint-initializationoptions)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
+**功能：** 图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint8-initializationoptions)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
 
 PixelMap支持通过worker跨线程调用。当PixelMap通过Worker跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501服务器不具备完成请求的功能。
 
-在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint-initializationoptions)构建一个PixelMap对象。
+在调用PixelMap的方法前，需要先通过[createPixelMap](#func-createpixelmaparrayuint8-initializationoptions)构建一个PixelMap对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2256,7 +2028,7 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|targetColorSpace|[ColorSpaceManager](#class-colorspacemanager)|是|-|目标色彩空间，支持Srgb、DCI_P3、DisplayP3、ADOBE_RGB_1998。|
+|targetColorSpace|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|是|-|目标色彩空间，支持Srgb、DCI_P3、DisplayP3、ADOBE_RGB_1998。|
 
 **异常：**
 
@@ -2289,6 +2061,7 @@ public func createAlphaPixelmap(): PixelMap
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2298,7 +2071,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let alphaPixelmap = pixelMap.createAlphaPixelmap()
 ```
@@ -2323,6 +2096,7 @@ public func crop(region: Region): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2332,7 +2106,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let region: Region = Region(Size(100, 100), 0, 0)
 pixelMap.crop(region)
@@ -2359,6 +2133,7 @@ public func flip(horizontal: Bool, vertical: Bool): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2368,7 +2143,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let horizontal: Bool = true
 let vertical: Bool = false
@@ -2395,6 +2170,7 @@ public func getBytesNumberPerRow(): UInt32
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2404,7 +2180,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let rowCount : UInt32 = pixelMap.getBytesNumberPerRow()
 ```
@@ -2425,7 +2201,7 @@ public func getColorSpace(): ColorSpaceManager
 
 |类型|说明|
 |:----|:----|
-|[ColorSpaceManager](#class-colorspacemanager)|图像广色域信息。|
+|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|图像广色域信息。|
 
 **异常：**
 
@@ -2457,6 +2233,7 @@ public func getDensity(): Int32
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2466,7 +2243,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let getDensity : Int32 = pixelMap.getDensity()
 ```
@@ -2491,6 +2268,7 @@ public func getImageInfo(): ImageInfo
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2500,7 +2278,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 pixelMap.getImageInfo()
 ```
@@ -2525,6 +2303,7 @@ public func getPixelBytesNumber(): UInt32
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2534,7 +2313,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let pixelBytesNumber : UInt32 = pixelMap.getPixelBytesNumber()
 ```
@@ -2559,6 +2338,7 @@ public func opacity(rate: Float32): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2568,7 +2348,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let rate: Float32 = 0.5
 pixelMap.opacity(rate)
@@ -2594,6 +2374,7 @@ public func readPixels(area: PositionArea): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2603,7 +2384,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let area: PositionArea = PositionArea(
     Array<UInt8>(8, repeat: 0),
@@ -2634,6 +2415,7 @@ public func readPixelsToBuffer(dst: Array<UInt8>): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2643,7 +2425,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let readBuffer: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
 pixelMap.readPixelsToBuffer(readBuffer)
@@ -2663,6 +2445,7 @@ public func release(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2672,7 +2455,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 pixelMap.release()
 ```
@@ -2697,6 +2480,7 @@ public func rotate(angle: Float32): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2706,7 +2490,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let angle: Float32 = 90.0
 pixelMap.rotate(angle)
@@ -2747,7 +2531,7 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|colorSpace|[ColorSpaceManager](#class-colorspacemanager)|是|-|图像广色域信息。|
+|colorSpace|[ColorSpaceManager](../ArkGraphics2D/cj-apis-color_manager.md#class-colorspacemanager)|是|-|图像广色域信息。|
 
 **异常：**
 
@@ -2779,6 +2563,7 @@ public func translate(x: Float32, y: Float32): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2788,7 +2573,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let translateX: Float32 = 50.0
 let translateY: Float32 = 10.0
@@ -2815,6 +2600,7 @@ public func writeBufferToPixels(src: Array<UInt8>): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2824,7 +2610,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let color: Array<UInt8> = Array<UInt8>(96, {i => UInt8(i)}) //96为需要创建的像素buffer大小，取值为：height * width *4
 pixelMap.writeBufferToPixels(color)
@@ -2850,6 +2636,7 @@ public func writePixels(area: PositionArea): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2859,7 +2646,7 @@ import kit.ImageKit.*
 
 let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
 let sourceOptions: SourceOptions = SourceOptions(120)
-let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
 let pixelMap = imageSourceApi.createPixelMap()
 let area: PositionArea = PositionArea(
     Array<UInt8>(8, {i => UInt8(i)}),
@@ -3492,7 +3279,7 @@ public enum DecodingDynamicRange <: Equatable<DecodingDynamicRange> & ToString {
 Auto
 ```
 
-**功能：** 自适应，根据图片信息处理。即如果图片本身为HDR图片，则会按照HDR内容解码；反之按照SDR内容解码。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource会解码为SDR内容。
+**功能：** 自适应，根据图片信息处理。即如果图片本身为HDR图片，则会按照HDR内容解码；反之按照SDR内容解码。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -3504,7 +3291,7 @@ Auto
 Hdr
 ```
 
-**功能：** 按照高动态范围处理图片。通过[CreateIncrementalSource](#func-createincrementalsourcearrayuint8-asynccallbackimagesource)创建的imagesource会解码为SDR内容。
+**功能：** 按照高动态范围处理图片。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -4018,17 +3805,17 @@ public enum PropertyKey <: ToString & Equatable<PropertyKey> {
     | PhotoMode
     | ExposureTime
     | FNumber
-    | GPSLatitudeRef
-    | GPSLatitude
-    | GPSLongitudeRef
-    | GPSLongitude
-    | GPSTimeStamp
-    | GPSDateStamp
-    | ISOSpeedRatings
+    | GpsLatitudeRef
+    | GpsLatitude
+    | GpsLongitudeRef
+    | GpsLongitude
+    | GpsTimeStamp
+    | GpsDateStamp
+    | IsoSpeedRatings
     | SensitivityType
     | StandardOutputSensitivity
     | RecommendedExposureIndex
-    | ISOSpeed
+    | IsoSpeed
     | DateTimeOriginal
     | ApertureValue
     | ExposureBiasValue
@@ -4229,10 +4016,10 @@ FocusMode
 
 **起始版本：** 21
 
-### GPSDateStamp
+### GpsDateStamp
 
 ```cangjie
-GPSDateStamp
+GpsDateStamp
 ```
 
 **功能：** GPS日期戳。
@@ -4241,10 +4028,10 @@ GPSDateStamp
 
 **起始版本：** 21
 
-### GPSLatitude
+### GpsLatitude
 
 ```cangjie
-GPSLatitude
+GpsLatitude
 ```
 
 **功能：** 图片纬度。修改时应按"度,分,秒"格式传入，如"39,54,7.542"。
@@ -4253,10 +4040,10 @@ GPSLatitude
 
 **起始版本：** 21
 
-### GPSLatitudeRef
+### GpsLatitudeRef
 
 ```cangjie
-GPSLatitudeRef
+GpsLatitudeRef
 ```
 
 **功能：** 纬度引用，例如N或S。
@@ -4265,10 +4052,10 @@ GPSLatitudeRef
 
 **起始版本：** 21
 
-### GPSLongitude
+### GpsLongitude
 
 ```cangjie
-GPSLongitude
+GpsLongitude
 ```
 
 **功能：** 图片经度。修改时应按"度,分,秒"格式传入，如"116,19,42.16"。
@@ -4277,10 +4064,10 @@ GPSLongitude
 
 **起始版本：** 21
 
-### GPSLongitudeRef
+### GpsLongitudeRef
 
 ```cangjie
-GPSLongitudeRef
+GpsLongitudeRef
 ```
 
 **功能：** 经度引用，例如W或E。
@@ -4289,10 +4076,10 @@ GPSLongitudeRef
 
 **起始版本：** 21
 
-### GPSTimeStamp
+### GpsTimeStamp
 
 ```cangjie
-GPSTimeStamp
+GpsTimeStamp
 ```
 
 **功能：** GPS时间戳。
@@ -4301,10 +4088,10 @@ GPSTimeStamp
 
 **起始版本：** 21
 
-### ISOSpeed
+### IsoSpeed
 
 ```cangjie
-ISOSpeed
+IsoSpeed
 ```
 
 **功能：** ISO速度等级。
@@ -4313,10 +4100,10 @@ ISOSpeed
 
 **起始版本：** 21
 
-### ISOSpeedRatings
+### IsoSpeedRatings
 
 ```cangjie
-ISOSpeedRatings
+IsoSpeedRatings
 ```
 
 **功能：** ISO感光度，例如400。
@@ -4747,9 +4534,36 @@ public func toString(): String
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The type is not supported yet. |枚举值错误，不支持该枚举值。|请检查传入的枚举值是否正确。|
+
+## enum ReceiveType
+
+```cangjie
+public enum ReceiveType {
+    | ImageArrival
+    | ...
+}
+```
+
+**功能：** 接收图片时注册回调类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**起始版本：** 21
+
+### ImageArrival
+
+```cangjie
+ImageArrival
+```
+
+**功能：** 接收图片时事件类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**起始版本：** 21
 
 ## enum ScaleMode
 

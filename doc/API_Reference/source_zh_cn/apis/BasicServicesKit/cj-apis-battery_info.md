@@ -13,7 +13,7 @@ import kit.BasicServicesKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -357,9 +357,9 @@ public func toString(): String
 
 ```cangjie
 public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
-    | None
-    | Enable
-    | Disable
+    | UnknownChargeState
+    | Enabled
+    | Disabled
     | Full
     | ...
 }
@@ -376,10 +376,10 @@ public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
 - Equatable\<BatteryChargeState>
 - ToString
 
-### Disable
+### Disabled
 
 ```cangjie
-Disable
+Disabled
 ```
 
 **功能：** 表示电池充电状态为停止状态。
@@ -388,10 +388,10 @@ Disable
 
 **起始版本：** 21
 
-### Enable
+### Enabled
 
 ```cangjie
-Enable
+Enabled
 ```
 
 **功能：** 表示电池充电状态为使能状态。
@@ -412,10 +412,10 @@ Full
 
 **起始版本：** 21
 
-### None
+### UnknownChargeState
 
 ```cangjie
-None
+UnknownChargeState
 ```
 
 **功能：** 表示电池充电状态未知。
@@ -482,7 +482,7 @@ public func toString(): String
 
 ```cangjie
 public enum BatteryHealthState <: Equatable<BatteryHealthState> & ToString {
-    | Unknown
+    | UnknownHealthState
     | Good
     | Overheat
     | Overvoltage
@@ -563,10 +563,10 @@ Overvoltage
 
 **起始版本：** 21
 
-### Unknown
+### UnknownHealthState
 
 ```cangjie
-Unknown
+UnknownHealthState
 ```
 
 **功能：** 表示电池健康状态未知。
@@ -633,7 +633,7 @@ public func toString(): String
 
 ```cangjie
 public enum BatteryPluggedType <: Equatable<BatteryPluggedType> & ToString {
-    | None
+    | UnknownType
     | Ac
     | Usb
     | Wireless
@@ -664,10 +664,10 @@ Ac
 
 **起始版本：** 21
 
-### None
+### UnknownType
 
 ```cangjie
-None
+UnknownType
 ```
 
 **功能：** 表示未获取到连接充电器类型。

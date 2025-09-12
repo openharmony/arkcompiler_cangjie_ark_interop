@@ -6,13 +6,11 @@
 >
 > popup弹窗的显示状态在onStateChange事件回调中反馈，其显隐与组件的创建或销毁无强对应关系。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func bindPopup(Bool, CustomPopupOptions)
 
@@ -31,9 +29,7 @@ public func bindPopup(show: Bool, popup: CustomPopupOptions): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |show|Bool|是|-|是否显示。|
-|popup|[CustomPopupOptions](#)|是|-|自定义弹出框选项。|
-
-
+|popup|[CustomPopupOptions](#class-custompopupoptions)|是|-|自定义弹出框选项。|
 
 ## func bindPopup(Bool, PopupOptions)
 
@@ -52,19 +48,7 @@ public func bindPopup(show: Bool, popup: PopupOptions): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |show|Bool|是|-|是否显示。|
-|popup|[PopupOptions](#)|是|-|弹出框选项。|
-
-## func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**功能：** popup交互式关闭拦截开关及拦截结果类型。开发者需要退出时调用，不需要退出时无需调用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+|popup|[PopupOptions](#class-popupoptions)|是|-|弹出框选项。|
 
 ## 基础类型定义
 
@@ -139,7 +123,7 @@ public var arrowHeight: Length = 8.vp
 
 **功能：** 设置箭头高度。默认值：8.vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -155,7 +139,7 @@ public var arrowOffset: Length = 0.vp
 
 **功能：**  设置popup箭头在弹窗处的偏移。箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。如果显示在屏幕边缘，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -187,7 +171,7 @@ public var arrowWidth: Length = 16.vp
 
 **功能：**设置箭头宽度。若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。默认值：16.vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -367,7 +351,7 @@ public var onStateChange: Option <(PopupStateChangeParam) -> Unit>= Option.None
 
 **功能：** 设置弹窗状态变化事件回调，参数为弹窗当前的显示状态。
 
-**类型：** ([PopupStateChangeParam](#class-popupstatechangeparam))->Unit
+**类型：** ([PopupStateChangeParam](./cj-common-types.md#class-popupstatechangeparam))->Unit
 
 **读写能力：** 可读写
 
@@ -435,7 +419,7 @@ public var radius: Length = 20.vp
 
 **功能：** 设置气泡圆角半径。默认值：20.vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -483,7 +467,7 @@ public var targetSpace: Length = 0.vp
 
 **功能：** 设置popup与目标的间隙。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -521,7 +505,7 @@ public var width: Length = 0.vp
 
 **功能：** 设置弹窗宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -540,7 +524,7 @@ public init(
     enableArrow!: Bool = true,
     autoCancel!: Bool = true,
     onStateChange!: Option<(PopupStateChangeParam) -> Unit> = Option.None,
-    showInSubWindow!: Bool, // 5.1 start
+    showInSubWindow!: Bool=false, // 5.1 start
     backgroundColor!: Color = Color(0x1000000),
     arrowOffset!: Length = 0.vp,
     mask!: ?Color = None,
@@ -573,27 +557,27 @@ public init(
 |builder|()->Unit|是|-|**命名参数。**  提示气泡内容的构造器。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 |placement|[Placement](cj-common-types.md#enum-placement)|否|Placement.Bottom|**命名参数。**  气泡组件优先显示的位置。<br>**说明：** 当前位置显示不下时，会自动调整位置。|
 |maskColor| [Color](./cj-common-types.md#class-color) | 否 | Color(0x1000000) | **命名参数。**   提示气泡遮障层的颜色。 |
-|backgroundColor| [Color](cj-common-types.md#class-color) | 否 | Color(0x1000000) | **命名参数。**  提示气泡的背景颜色。 |
+|popupColor| [Color](cj-common-types.md#class-color) | 否 | Color(0x1000000) | **命名参数。**  提示气泡的背景颜色。 |
 |enableArrow| Bool | 否 | true | **命名参数。**  是否显示箭头。<br>**说明：** 如果箭头所在方位侧的气泡长度不足以显示下箭头，则会默认不显示箭头。比如：placement设置为Left，但气泡高度小于箭头的宽度（32vp），则实际不会显示箭头。 |
 |autoCancel| Bool | 否 | true | **命名参数。**  页面有操作时，是否自动关闭气泡。 |
-|onStateChange | ?([StateChangeEvent](#class-statechangeevent))->Unit | 否 | None | **命名参数。**  弹窗状态变化事件回调，参数为弹窗当前的显示状态。|
-|showInSubWindow|Bool|是|-| **命名参数。**  是否在子窗口显示气泡。|
-|arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。**  popup箭头在弹窗处的偏移。<br>**说明：** 箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。如果显示在屏幕边缘，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。|
+|onStateChange | Option<(PopupStateChangeParam) -> Unit> | 否 | Option.None | **命名参数。**  弹窗状态变化事件回调，参数为弹窗当前的显示状态。|
+|showInSubWindow|Bool|否|false| **命名参数。**  是否在子窗口显示气泡。|
+|backgroundColor| [Color](cj-common-types.md#class-color) | 否 | Color(0x1000000) | **命名参数。**  提示气泡的背景颜色。 |
+|arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  popup箭头在弹窗处的偏移。<br>**说明：** 箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。如果显示在屏幕边缘，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。|
 |mask|?[Color](cj-common-types.md#class-color)|否|None|**命名参数。**   提示气泡遮障层的颜色。|
-|targetSpace|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。**   设置popup与目标的间隙。|
+|targetSpace|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**   设置popup与目标的间隙。|
 |offset|[Position](cj-common-types.md#class-position)|否|Position(x: 0.0, y: 0.0)|**命名参数。**   popup组件相对于placement设置的显示位置的偏移。<br>**说明：** 不支持设置百分比。 |
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|**命名参数。**   弹窗宽度。<br>**说明：**  showInSubWindow=true时最大高度为设备屏幕高度，showInSubWindow=false时最大高度为应用窗口高度。高度限定逻辑=最大高度-状态栏高度（没有时高度为0）-dock栏高度（没有时高度为0）-40VP-40VP。|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**   弹窗宽度。<br>**说明：**  showInSubWindow=true时最大高度为设备屏幕高度，showInSubWindow=false时最大高度为应用窗口高度。高度限定逻辑=最大高度-状态栏高度（没有时高度为0）-dock栏高度（没有时高度为0）-40VP-40VP。|
 |arrowPointPosition|?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition)|否|None|**命名参数。**   气泡尖角相对于父组件显示位置，气泡尖角在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。|
-|arrowWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|16.vp|**命名参数。**  箭头宽度。<br>**说明：** 若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。|
-|arrowHeight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|16.vp|**命名参数。**  箭头高度。<br>**说明：** 不支持设置百分比。|
-|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|20.vp|**命名参数。**  气泡圆角半径。|
+|arrowWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。**  箭头宽度。<br>**说明：** 若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。|
+|arrowHeight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。**  箭头高度。<br>**说明：** 不支持设置百分比。|
+|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|20.vp|**命名参数。**  气泡圆角半径。|
 |shadow|[ShadowStyle](cj-common-types.md#enum-shadowstyle)|否|ShadowStyle.OuterDefaultMD|**命名参数。**  气泡阴影。|
 |backgroundBlurStyle|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick|**命名参数。**  气泡模糊背景参数。|
 |focusable|Bool|否|false|**命名参数。**   设置气泡弹出后是否获焦。|
-|transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|Option.None|**命名参数。**   自定义popup弹窗显示和退出的动画效果。<br/>**说明：**<br/>1.如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。|
-|onWillDismiss|([DismissPopupAction](#class-dismisspopupaction))->Unit|否|None|**命名参数。**   拦截退出事件且执行回调函数。<br>**说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。|
+|transition|Option<[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)>|否|Option.None|**命名参数。**   自定义popup弹窗显示和退出的动画效果。<br/>**说明：**<br/>1.如果不设置，则使用默认的显示/退出动效。<br/>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/>3.退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。|
+|onWillDismiss|Option<([DismissPopupAction](#class-dismisspopupaction))->Unit>|否|None|**命名参数。**   拦截退出事件且执行回调函数。<br>**说明：** 在onWillDismiss回调中，不能再做onWillDismiss拦截。|
 |followTransformOfTarget|Bool|否|false|**命名参数。**   气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，气泡是否能显示在对应变化后的位置上。|
-
 
 ### class DismissPopupAction
 
@@ -620,6 +604,18 @@ public let reason: DismissReason
 **类型：** [DismissReason](./cj-dialog-actionsheet.md#enum-dismissreason)
 
 **读写能力：** 只读
+
+## func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**功能：** popup交互式关闭拦截开关及拦截结果类型。开发者需要退出时调用，不需要退出时无需调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ### class PopupMessageOptions
 
@@ -687,7 +683,6 @@ public init(textColor!: ResourceColor = Color(0x000000), font!: Font = Font())
 |:---|:---|:---|:---|:---|
 |textColor|[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|Color(0x000000)|弹窗信息文本颜色。|
 |font|[Font](cj-common-types.md#class-font)|否|Font()|弹窗信息字体属性。|
-
 
 ### class PopupOptions
 
@@ -760,7 +755,7 @@ public var arrowHeight: Length = 8.0.vp
 
 **功能：** 设置箭头高度。默认值：8.vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -776,7 +771,7 @@ public var arrowOffset: Length = 0.vp
 
 **功能：** 设置popup箭头在弹窗处的偏移。箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。如果显示在屏幕边缘，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -808,7 +803,7 @@ public var arrowWidth: Length = 16.0.vp
 
 **功能：** 设置箭头宽度。若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。默认值：16.vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -952,7 +947,7 @@ public var onStateChange:?(PopupStateChangeParam) -> Unit = Option.None
 
 **功能：** 设置弹窗状态变化事件回调，参数为弹窗当前的显示状态。
 
-**类型：** ?([PopupStateChangeParam](#class-popupstatechangeparam))->Unit
+**类型：** ?([PopupStateChangeParam](./cj-common-types.md#class-popupstatechangeparam))->Unit
 
 **读写能力：** 可读写
 
@@ -1020,7 +1015,7 @@ public var primaryButton: PopupButton = PopupButton(value: "", action: { => })
 
 **功能：** 设置第一个按钮。value: 弹窗里主按钮的文本。action: 点击主按钮的回调函数。
 
-**类型：** [PopupButton](#class-popupbutton)
+**类型：** [PopupButton](./cj-common-types.md#class-popupbutton)
 
 **读写能力：** 可读写
 
@@ -1036,7 +1031,7 @@ public var radius: Length = 20.0.vp
 
 **功能：** 设置气泡圆角半径。默认值：20.vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1052,7 +1047,7 @@ public var secondaryButton: PopupButton = PopupButton(value: "", action: { => })
 
 **功能：** 设置第二个按钮。 value: 弹窗里辅助按钮的文本。action: 点击辅助按钮的回调函数。
 
-**类型：** [PopupButton](#class-popupbutton)
+**类型：** [PopupButton](./cj-common-types.md#class-popupbutton)
 
 **读写能力：** 可读写
 
@@ -1100,7 +1095,7 @@ public var targetSpace: Length = 0.vp
 
 **功能：** 设置popup与目标的间隙。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1138,7 +1133,7 @@ public var width: Length = 0.vp
 
 **功能：** 设置弹窗宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1188,26 +1183,26 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |message|String|是|-|设置弹窗信息内容|
-|primaryButton|[PopupButton](#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第一个按钮|
-|secondaryButton|[PopupButton](#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第二个按钮|
-|onStateChange|([PopupStateChangeParam](#class-popupstatechangeparam))->Unit|否|Option.None|设置弹窗状态变化事件回调|
-|arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|设置popup箭头在弹窗处的偏移|
+|primaryButton|[PopupButton](./cj-common-types.md#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第一个按钮|
+|secondaryButton|[PopupButton](./cj-common-types.md#class-popupbutton)|否|PopupButton(value: "", action: { => })|设置第二个按钮|
+|onStateChange|Option<(PopupStateChangeParam) -> Unit>|否|Option.None|设置弹窗状态变化事件回调|
+|arrowOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置popup箭头在弹窗处的偏移|
 |showInSubWindow|Bool|是|-|设置是否在子窗口显示气泡|
 |messageOptions|[PopupMessageOptions](#class-popupmessageoptions)|否|PopupMessageOptions()|设置弹窗信息文本参数|
-|mask|[Color](cj-common-types.md#class-color)|否|Color(0x1000000)|设置遮罩层的颜色|
-|targetSpace|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|设置popup与目标的间隙|
+|mask|[Color](../apis/BasicServicesKit/cj-apis-base.md#class-color)|否|Color(0x1000000)|设置遮罩层的颜色|
+|targetSpace|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置popup与目标的间隙|
 |placement|[Placement](cj-common-types.md#enum-placement)|否|Placement.BottomLeft|设置popup组件相对于目标的显示位置|
 |offset|[Position](cj-common-types.md#class-position)|否|Position(x: 0.0, y: 0.0)|设置popup组件相对于placement设置的显示位置的偏移|
 |enableArrow|Bool|否|true|设置是否显示箭头|
-|popupColor|[Color](cj-common-types.md#class-color)|否|Color(0x1000000)|设置提示气泡的颜色|
+|popupColor|[Color](../apis/BasicServicesKit/cj-apis-base.md#class-color)|否|Color(0x1000000)|设置提示气泡的颜色|
 |autoCancel|Bool|否|true|页面有操作时，设置是否自动关闭气泡|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|0.vp|设置弹窗宽度|
+|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|设置弹窗宽度|
 |arrowPointPosition|?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition)|否|None|设置气泡尖角相对于父组件显示位置|
-|arrowWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|16.vp|设置箭头宽度|
-|arrowHeight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|8.vp|设置箭头高度|
-|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|否|20.vp|设置气泡圆角半径|
+|arrowWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|设置箭头宽度|
+|arrowHeight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|8.vp|设置箭头高度|
+|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|20.vp|设置气泡圆角半径|
 |shadow|[ShadowStyle](cj-common-types.md#enum-shadowstyle)|否|ShadowStyle.OuterDefaultMD|设置气泡阴影|
 |backgroundBlurStyle|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick|设置气泡模糊背景参数|
 |transition|?[TransitionEffect](cj-animation-transition.md#class-transitioneffect)|否|Option.None|自定义设置popup弹窗显示和退出的动画效果|
-|onWillDismiss|([DismissPopupAction](#class-dismisspopupaction))->Unit|否|None|设置拦截退出事件且执行回调函数|
+|onWillDismiss|Option<(DismissPopupAction) -> Unit>|否|None|设置拦截退出事件且执行回调函数|
 |followTransformOfTarget|Bool|否|false|气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，设置气泡是否能显示在对应变化后的位置上|

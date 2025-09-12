@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## 子组件
 
-可以包含[Span](./cj-text-input-span.md#span)、[ImageSpan](./cj-text-input-imagespan.md#imagespan)、[SymbolSpan](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-symbol.md#图标小符号(SymbolGlyph/SymbolSpan))子组件。
+可以包含[Span](./cj-text-input-span.md#span)、[ImageSpan](./cj-text-input-imagespan.md#imagespan)子组件。
 
 ## 创建组件
 
@@ -36,7 +36,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 ### init(ResourceStr, TextController, () -> Unit)
 
 ```cangjie
-public init(content: ResourceStr, controller!: TextController = TextController(), chid!: () -> Unit)
+public init(content: ResourceStr, controller!: TextController = TextController(), child!: () -> Unit)
 ```
 
 **功能：** 创建Text组件。
@@ -51,12 +51,12 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 |:---|:---|:---|:---|:---|
 |content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。包含子组件Span且未设置属性字符串时不生效，显示Span内容，并且此时text组件的样式不生效。<br/>初始值：''。|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|chid|()->Unit|是|-|Text的子组件。|
+|child|()->Unit|否|{ =>}|Text的子组件。|
 
 ### init(TextController, () -> Unit)
 
 ```cangjie
-public init(controller!: TextController = TextController(), chid!: () -> Unit)
+public init(controller!: TextController = TextController(), child!: () -> Unit)
 ```
 
 **功能：** 创建Text组件。
@@ -70,7 +70,7 @@ public init(controller!: TextController = TextController(), chid!: () -> Unit)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|chid|()->Unit|是|-|Text的子组件。|
+|child|()->Unit|是|-|Text的子组件。|
 
 ### init(TextController)
 
@@ -125,7 +125,7 @@ public func baselineOffset(value: Length): This
 
 ```cangjie
 public func decoration(decorationType!: TextDecorationType, color!: ResourceColor,
-    decorationStyle!: TextDecorationStyle = TextDecorationStyle.SOLID): This
+    decorationStyle!: TextDecorationStyle = TextDecorationStyle.Solid): This
 ```
 
 **功能：** 设置文本装饰线样式及其颜色。
@@ -140,7 +140,7 @@ public func decoration(decorationType!: TextDecorationType, color!: ResourceColo
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
 |color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|**命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
-|decorationStyle|[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|TextDecorationStyle.SOLID|**命名参数。** 文本装饰线样式。|
+|decorationStyle|[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|TextDecorationStyle.Solid|**命名参数。** 文本装饰线样式。|
 
 ### func fontColor(ResourceColor)
 
@@ -278,7 +278,7 @@ public func maxFontSize(value: Length): This
 
 > **说明：**
 >
-> - 需配合[minFontSize](#func-minfontsizelength)以及[maxLines](#func-maxlinesint)或布局大小限制使用，单独设置不生效，对子组件和属性字符串不生效。
+> - 需配合[minFontSize](#func-minfontsizelength)以及[maxLines](#func-maxfontsizelength)或布局大小限制使用，单独设置不生效，对子组件和属性字符串不生效。
 > - 自适应字号生效时，fontSize设置不生效。
 > - maxFontSize小于或等于0时，自适应字号不生效，此时按照[fontSize](#func-fontsizelength)属性的值生效，未设置时按照其默认值生效。
 
@@ -395,11 +395,6 @@ public func textOverflow(value: TextOverflow): This
 >
 > - 文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格：\u200B。从API version 11开始，建议优先组合wordBreak属性设置为WordBreak.BREAK_ALL方式实现字母为单位进行截断。
 > - 当overflow设置为TextOverflow.None、TextOverflow.Clip、TextOverflow.Ellipsis时，需配合maxLines使用，单独设置不生效。设置TextOverflow.None与TextOverflow.Clip效果一样。
-> - 当overflow设置为TextOverflow.MARQUEE时：
-文本在一行内滚动显示。
-设置[maxLines](#func-maxlinesint32)及[copyOption](./cj-text-input-search.md#func-copyoptioncopyoptions)属性均不生效。
-Text组件[clip](./cj-universal-attribute-shapclip.md#func-clipbool)属性默认为true。
-[textAlign](#func-textaligntextalign)属性的生效规则：当文本不可滚动时，textAlign属性生效；当文本可滚动时，textAlign属性不生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -624,7 +619,7 @@ class EntryView {
     @State
     var message: String = "Hello"
     let controller: TextController = TextController()
-    @State var shadowOptionsArray: Array<ShadowOptions> = [ShadowOptions(radius: 10.0), ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, color: Color.Red, offsetX: 1.0, offsetY: 1.0, fill: true)]
+    @State var shadowOptionsArray: Array<ShadowOptions> = [ShadowOptions(radius: 10.0), ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, color: Color.Red, offsetX: 1.0, offsetY: 1.0, fill: true)]
     @Builder func LongPressTextCustomMenu() {
         Column() {
             Button('LongPress')
@@ -641,37 +636,6 @@ class EntryView {
         Column() {
             Button('Select')
         }
-    }
-
-    func onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
-        let items : ArrayList<TextMenuItem>=ArrayList<TextMenuItem>()
-        for (item in menuItems) {
-            if (item.id.equals(TextMenuItemId.CUT) || item.id.equals(TextMenuItemId.COPY) || item
-                .id
-                .equals(TextMenuItemId.SELECT_ALL)) {
-                items.add(item)
-            }
-        }
-        let customItem1 = TextMenuItem(content: "custom1", icon: @r(app.media.startIcon),
-            id: TextMenuItemId.of("customItem1"))
-        let customItem2 = TextMenuItem(content: "custom2", icon: @r(app.media.startIcon),
-            id: TextMenuItemId.of("customItem2"))
-        items.add(customItem1)
-        items.add(customItem2)
-        return items.toArray()
-    }
-
-    func onMenuItemClick(menuItem: TextMenuItem, start: Int32, end: Int32): Bool {
-        if (menuItem.id.equals(TextMenuItemId.CUT)) {
-            return true
-        } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
-            return false
-        } else if (menuItem.id.equals(TextMenuItemId.of("customItem1"))) {
-            return true
-        } else if (menuItem.id.equals(TextMenuItemId.of("customItem2"))) {
-            return true
-        }
-        return false
     }
 
     func build() {
@@ -732,39 +696,29 @@ class EntryView {
                 //触摸热区设置
                 Text("Hello")
                     .responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent))
-                    .responseRegionArray([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+                    .responseRegion([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
                 Text('This is the text content with given settings. This is the text content with given settings')
                     .baselineOffset(10)
-                    .copyOption(MyCopyOptions.InApp)
-                    .decoration(decorationType: TextDecorationType.Underline, color: Color.Red, decorationStyle: TextDecorationStyle.DOTTED)
-                    .draggable(false)
-                    .ellipsisMode(EllipsisMode.CENTER)
+                    .decoration(decorationType: TextDecorationType.Underline, color: Color.Red, decorationStyle: TextDecorationStyle.Dotted)
                     .fontColor(Color.Red)
                     .fontFamily("HarmonyOS Sans")
-                    .fontFeature('\"ss01\" on')
                     .fontSize(10.fp)
                     .fontStyle(FontStyle.Italic)
                     .fontWeight(FontWeight.Bolder)
-                    .halfLeading(true)
-                    .letterSpacing(3)
-                    .lineBreakStrategy(LineBreakStrategy.HIGH_QUALITY)
                     .lineHeight(40)
                     .lineSpacing(20)
                     .maxLines(1)
-                    .maxFontScale(5.0)
-                    .minFontScale(0.5)
-                    .selection(0, 1)
                     .textAlign(TextAlign.Center)
                     .textCase(TextCase.LowerCase)
-                    .textIndent(20)
                     .textOverflow(TextOverflow.None)
-                    .textSelectable(TextSelectable.SELECTABLE_FOCUSABLE)
-                    .textShadow(shadowOptionsArray)
                     .id("TextGivenSetting")
                 //展示文本设置样式的效果
                 Text('This is the text content with given font settings.')
-                    .font(TextFont(size: 15, weight: FontWeight.Bolder, family: 'HarmonyOS Sans', style: FontStyle.Italic))
-                    .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red, decorationStyle: TextDecorationStyle.DASHED)
+                    .size(width:15, height: 15)
+                    .fontWeight(FontWeight.Bolder)
+                    .fontFamily('HarmonyOS Sans')
+                    .fontStyle(FontStyle.Italic)
+                    .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red, decorationStyle: TextDecorationStyle.Dashed)
                     .textCase(TextCase.UpperCase)
                     .id("TextGivenFont")
                 //以资源调用的形式设置文本效果并展示
@@ -776,92 +730,23 @@ class EntryView {
                     .lineHeight(@r(app.string.line_height))
                     .baselineOffset(@r(app.string.baselineOffset))
                     .fontColor(@r(app.color.blue_23C452))
-                    .textShadow(ShadowOptions(radius: 10.0, shadowType: ShadowType.COLOR, color: @r(app.color.red_color)))
                     .id("TextResource")
-                //设置支持卡片敏感隐私信息
-                Text('PrivacySensitive').privacySensitive(true).id("PrivacySensitive")
-                //设置文本识别
-                Text('电话号码：+86 xxxxxxxxxxxx' + '\n' + '链接：xxx.xxxxxx.xxx' + '\n' + '邮箱：xxx@xxxxxx.xxx' + '\n' +'地址：xxxxxxxxxxxxx' + '\n' + '时间：2024年10月30日')
-                    .enableDataDetector(true)
-                    .dataDetectorConfig([TextDataDetectorType.EMAIL], onDetectResultUpdate: {_: String => Hilog.info(0,'hilog','文本识别成功回调');}, color: Color.Red,
-                        decorationType: TextDecorationType.LineThrough, decorationColor: Color.Green, decorationStyle: TextDecorationStyle.SOLID)
-                    .id("TextDetectConfig1")
-                Text('电话号码：+86 xxxxxxxxxxxx' + '\n' + '链接：xxx.xxxxxx.xxx' + '\n' + '邮箱：xxx@xxxxxx.xxx' + '\n' +'地址：xxxxxxxxxxxxx' + '\n' + '时间：2024年10月30日')
-                    .enableDataDetector(true)
-                    .dataDetectorConfig([])
-                    .copyOption(MyCopyOptions.InApp)
-                    .id("TextDetectConfig2")
-                Text('电话号码：+86 xxxxxxxxxxxx' + '\n' + '链接：xxx.xxxxxx.xxx' + '\n' + '邮箱：xxx@xxxxxx.xxx' + '\n' +'地址：xxxxxxxxxxxxx' + '\n' + '时间：2024年10月30日')
-                    .enableDataDetector(true)
-                    .copyOption(MyCopyOptions.InApp)
-                    .textSelectable(TextSelectable.UNSELECTABLE)
-                    .id("TextDetectConfig3")
 
                 Text('邮箱：xxx@xxxxxx.com')
-                    .enableDataDetector(true)
-                    .textOverflow(TextOverflow.MARQUEE)
+                    .textOverflow(TextOverflow.None)
                     .id("TextDetectConfig4")
                 //展示默认样式的字体效果
                 Text('This is the text content with default settings.')
                     .id("TextDefault1")
-                //设置文本复制
-                Text('This is onCopy text content')
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .selection(0, 10)
-                    .onCopy({value: String => Hilog.info(0,'hilog1',"Text onCopy value: ${value}")})
-                    .id("onCopy")
-                Text('This is onTextSelectionChange text content')
-                    .copyOption(MyCopyOptions.InApp)
-                    .onTextSelectionChange({start: Int32, end: Int32 => Hilog.info(0,'hilog2',"Text onTextSelectionChange start: ${start}, end: ${end}")})
-                    .id("onTextSelectionChange")
-                Text('This is closeSelectionMenu text content', controller: controller)
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(0, 10)
-                    .onTextSelectionChange({start: Int32, end: Int32 => controller.closeSelectionMenu()})
-                    .id("closeSelectionMenu")
-                Text('Text editMenuOptions')
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .editMenuOptions(onCreateMenu, onMenuItemClick)
-                    .id('TextEditMenuOptions')
-                Text('Text BindSelectionMenu')
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .bindSelectionMenu(TextSpanType.TEXT, bind(LongPressTextCustomMenu, this), TextResponseType.LONG_PRESS,
-                        onDisappear: {
-                             => Hilog.info(0,'hilog3','自定义选择菜单关闭时回调');
-                            },
-                        onAppear: {
-                            _: Int32, _: Int32 => Hilog.info(0,'hilog4','自定义选择菜单弹出时回调');
-                            }
-                    )
-                    .bindSelectionMenu(TextSpanType.IMAGE, bind(RightClickTextCustomMenu, this), TextResponseType.RIGHT_CLICK)
-                    .bindSelectionMenu(TextSpanType.MIXED, bind(SelectTextCustomMenu, this), TextResponseType.SELECT)
-                    .id("TextBindSelectionMenu")
                 //设置文本偏移
                 Text('This is the text content with percent baselineOffset.')
                     .baselineOffset(10.percent)
-                    .decoration(decorationType: TextDecorationType.Overline, color: Color.Red, decorationStyle: TextDecorationStyle.DOUBLE)
+                    .decoration(decorationType: TextDecorationType.Overline, color: Color.Red, decorationStyle: TextDecorationStyle.Double)
                     .id("TextBoundaryValue1")
-                //设置文本断行以及折行
-                Text('This is the text content over one line line line line line line line line line line line line line line line line line line line line line line line line line with EllipsisMode.START.')
-                    .maxLines(2)
-                    .textOverflow(TextOverflow.Ellipsis)
-                    .ellipsisMode(EllipsisMode.START)
-                    .decoration(decorationType: TextDecorationType.Underline, color: Color.Red, decorationStyle: TextDecorationStyle.WAVY)
-                    .id("TextBoundaryValue2")
-                Text('This is the text content over one line line line line line line line line line line line line line line line line line line line line line line line line line with EllipsisMode.CENTER.')
-                    .maxLines(2)
-                    .textOverflow(TextOverflow.Ellipsis)
-                    .ellipsisMode(EllipsisMode.CENTER)
-                    .id("TextBoundaryValue3")
                 //展示用百分比设置文字大小的效果
                 Text('This is the text content with percent fontSize.')
                     .fontSize(10.percent)
                     .id("TextBoundaryValue4")
-                //展示文本字符间距为负值时，文字压缩的效果
-                Text('This is the text content with -3 letterSpacing.')
-                    .letterSpacing(-3)
-                    .decoration(decorationType: TextDecorationType.None, color: Color.Red)
-                    .id("TextBoundaryValue5")
                 //展示文本行高为负值时的效果
                 Text('This is the text content with -10 lineHeight.')
                     .lineHeight(-10)
@@ -870,50 +755,11 @@ class EntryView {
                 Text('This is the text content with -10 lineSpacing.')
                     .lineSpacing(-10)
                     .id("TextBoundaryValue7")
-                Text('This is the text content with selection [3,2].')
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(3, 2)
-                    .id("TextBoundaryValue10")
-                //设置文本超长时以跑马灯的方式展示
-                Text('This is the text content with TextOverflow.MARQUEE line line line line line.')
-                    .textOverflow(TextOverflow.MARQUEE)
-                    .maxLines(2)
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .textAlign(TextAlign.Start)
-                    .id("TextBoundaryValue11")
-                Text('TextOverflow.MARQUEE.')
-                    .textOverflow(TextOverflow.MARQUEE)
-                    .textAlign(TextAlign.End)
-                    .border(width:1).padding(10).width(100.percent)
-                    .id("TextBoundaryValue12")
                 //设置文本超长时显示不下的文本用省略号代替
                 Text("textOverflow line line line line line line line line line line line line line line line line line.")
                     .textOverflow(TextOverflow.Ellipsis)
                     .maxLines(1)
-                    .ellipsisMode(EllipsisMode.CENTER)
                     .id("TextCombine1")
-                //设置文本高度自适应方式为以MaxLines优先。
-                Text('This is the text with the height adaptive policy set. This is the text with the height adaptive policy set.')
-                    .minFontSize(10).maxFontSize(30).maxLines(2)
-                    .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
-                    .id("TextCombine2")
-                //设置文本最大和最小显示字号
-                Text('This is the text with the height adaptive policy set. This is the text with the height adaptive policy set.')
-                    .minFontSize(10)
-                    .maxFontSize(30)
-                    .maxLines(2)
-                    .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
-                    .id("TextCombine3")
-                //设置文本高度自适应方式为以缩小字体优先
-                Text('This is the text with the height adaptive policy set. This is the text with the height adaptive policy set.')
-                    .minFontSize(10).maxFontSize(30).maxLines(1)
-                    .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
-                    .id("TextCombine4")
-                //设置文本尽可能保证在不拆词的情况下，使一个段落中每一行的宽度相同
-                Text('This is the text with BALANCEDLineBreakStrategyAndWordBreakAll.')
-                    .lineBreakStrategy(LineBreakStrategy.BALANCED)
-                    .wordBreak(WordBreak.BreakAll)
-                    .id("TextCombine5")
                 Text("This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. ")
                     .minFontSize(10)
                     .maxFontSize(30)
@@ -925,37 +771,6 @@ class EntryView {
                     .maxFontSize(30)
                     .maxLines(1)
                     .id("TextCombine7")
-                Text('This is the text content with selection and CopyOptions.None.')
-                    .copyOption(MyCopyOptions.None)
-                    .selection(0, 2)
-                    .id("TextCombine8")
-                Text('This is the text content with selection and TextOverflow.MARQUEE.')
-                    .textOverflow(TextOverflow.MARQUEE)
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(0, 2)
-                    .id("TextCombine9")
-                Text("wordBreak line line line line line line line line linelinelinelineline")
-                    .textOverflow(TextOverflow.Ellipsis).maxLines(1).wordBreak(WordBreak.Normal)
-                    .id("TextCombine10")
-                Text("wordBreaklinelinelinelinelinelinelinelinelinelinelinelineline")
-                    .textOverflow(TextOverflow.Ellipsis).maxLines(1).wordBreak(WordBreak.BreakWord)
-                    .id("TextCombine11")
-                Text("wordBreak line line line line line line line line linelinelinelineline")
-                    .textOverflow(TextOverflow.Ellipsis).maxLines(1).wordBreak(WordBreak.BreakAll)
-                    .id("TextCombine12")
-                Text('This is the text content with selection and textSelectable.UNSELECTABLE.')
-                    .textSelectable(TextSelectable.UNSELECTABLE)
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(0, 2)
-                    .id("TextCombine13")
-                Text('This is the text content with selection.')
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(-2, 1000)
-                    .id("TextCombine14")
-                Text('This is the text content with TextAlign JUSTIFY and WordBreak BreakWord')
-                    .textAlign(TextAlign.JUSTIFY)
-                    .wordBreak(WordBreak.BreakWord)
-                    .id("TextCombine15")
             }
         }.height(100.percent).width(100.percent)
     }

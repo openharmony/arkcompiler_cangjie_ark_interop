@@ -209,6 +209,7 @@ public let syscap: String
 public const init(level_val: UInt8, atomicservice!: Bool = false, crossplatform!: Bool = false, deprecated!: UInt8 = 0, form!: Bool = false, permission!: ?PermissionValue= None,
     stagemodelonly!: Bool = true, syscap!: String = "")
 ```
+
 **功能：** APILevel 构造函数。
 
 **起始版本：** 21
@@ -332,7 +333,6 @@ public const override operator func |(rhs: PermissionValue): PermissionValue
 |类型| 描述    |
 |:----|:------|
 |[PermissionValue](#interface-permissionvalue)| 运算结果。 |
-
 
 ## class PermissionOr
 

@@ -21,7 +21,7 @@ ohos.permission.INTERNET
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -1261,13 +1261,13 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetHandle>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetAvailable和NetLost事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetHandle](#class-nethandle)>|是|-|回调函数，返回数据网络句柄。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetHandle](#class-nethandle)>|是|-|回调函数，返回数据网络句柄。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetAvailable或NetLost枚举值 |
 
@@ -1290,13 +1290,13 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetBlockSt
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetBlockStatusChange事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetBlockStatusInfo](#class-netblockstatusinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）,及网络堵塞状态（blocked）。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetBlockStatusInfo](#class-netblockstatusinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）,及网络堵塞状态（blocked）。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetBlockStatusChange枚举值 |
 
@@ -1319,13 +1319,13 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetCapabil
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetCapabilitiesChange事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetCapabilityInfo](#class-netcapabilityinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的能力信息（netCap）。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetCapabilityInfo](#class-netcapabilityinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的能力信息（netCap）。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetCapabilitiesChange枚举值 |
 
@@ -1348,13 +1348,13 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetConnect
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetConnectionPropertiesChange事件。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[NetConnectionPropertyInfo](#class-netconnectionpropertyinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的连接信息（connectionProperties）。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetConnectionPropertyInfo](#class-netconnectionpropertyinfo)>|是|-|回调函数，返回数据网络句柄（netHandle）和网络的连接信息（connectionProperties）。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetConnectionPropertiesChange枚举值 |
 
@@ -1377,13 +1377,13 @@ public func on(event: NetConnectionEvent, callback: Callback0Argument): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|[NetConnectionEvent](#enum-netconnectionevent)|是|-|网络连接事件类型，仅支持NetUnavailable事件。|
-|callback|[Callback0Argument](<font color="red" face="bold">please add link</font>)|是|-|回调函数，无返回结果。|
+|callback|[Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|是|-|回调函数，无返回结果。|
 
 **异常：**
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | The parameter check failed. | 传入的event类型错误 | 请检查event参数，确保传入的是NetUnavailable枚举值 |
 

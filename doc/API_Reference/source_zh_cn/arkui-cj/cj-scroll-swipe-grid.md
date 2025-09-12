@@ -26,22 +26,10 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init()
+### init(Option\<Scroller>, <() -> Unit>)
 
 ```cangjie
-public init()
-```
-
-**功能：** 创建网格容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### init(Option\<Scroller>, Option\<() -> Unit>)
-
-```cangjie
-public init(scroller!: Option<Scroller> = Option.None, child!: Option<() -> Unit> = Option.None)
+public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建包含滚动控制器和子组件的网格容器。
@@ -54,8 +42,8 @@ public init(scroller!: Option<Scroller> = Option.None, child!: Option<() -> Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|scroller|[Option](#initoptionscroller-option---unit)\<[Scroller](./cj-common-types.md#class-scroller)>|否|Option.None|可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
-|child|[Option](#initoptionscroller-option---unit)\<()->Unit>|否|Option.None|网格容器的子组件。|
+|scroller|Option<[Scroller](./cj-scroll-swipe-scroll.md#class-scroller)>|否|Option.None|可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
+|child|Option<()->Unit>|否|Option.None|网格容器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -145,7 +133,7 @@ columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为tr
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
 auto-stretch模式只支持track-size为一个有效列宽值，并且track-size只支持px、vp和有效数字，不支持%。
 
-使用效果可以参考[示例3](#示例3grid拖拽场景)。
+使用效果可以参考[示例3](#示例代码)。
 
 设置为'0fr'时，该列的列宽为0，不显示GridItem。设置为其他非法值时，GridItem显示为固定1列。
 
@@ -260,7 +248,7 @@ class EntryView {
     var data2: Array<Int64> = [0, 1, 2, 3, 4, 5]
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("auto-fill 根据设定的列宽自动计算列数").width(90.percent)
             Grid() {
                 ForEach(
@@ -268,7 +256,7 @@ class EntryView {
                     itemGeneratorFunc: {
                         item: Int64, idx: Int64 => GridItem() {
                             Text("N ${item}").height(80)
-                        }.backgroundColor(Color.ORANGE)
+                        }.backgroundColor(Color.Gray)
                     }
                 )
             }
@@ -286,7 +274,7 @@ class EntryView {
                     itemGeneratorFunc: {
                         item: Int64, idx: Int64 => GridItem() {
                             Text("N ${item}").height(80)
-                        }.backgroundColor(Color.ORANGE)
+                        }.backgroundColor(Color.Gray)
                     }
                 )
             }
@@ -304,7 +292,7 @@ class EntryView {
                     itemGeneratorFunc: {
                         item: Int64, idx: Int64 => GridItem() {
                             Text("N ${item}").height(80)
-                        }.backgroundColor(Color.ORANGE)
+                        }.backgroundColor(Color.Gray)
                     }
                 )
             }
@@ -317,92 +305,6 @@ class EntryView {
         }.width(100.percent).height(100.percent)
     }
 }
-
 ```
 
 ![griditem](figures/grid5_api.png)
-
-### 示例2（以当前行最高的GridItem的高度为其他GridItem的高度）
-
-下面的Grid中包含两列，每列中的GridItem包括高度确定的两个Column和一个高度不确定的Text共三个子组件。
-
-在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](cj-row-column-stack-column.md#func-alignitemshorizontalalign)属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import ohos.arkui.state_macro_manage.Entry
-import ohos.arkui.state_macro_manage.Component
-import ohos.arkui.state_macro_manage.State
-import ohos.arkui.state_macro_manage.r
-import ohos.base.*
-import ohos.arkui.component.*
-import ohos.arkui.state_management.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
-import std.math.*
-import std.random.*
-
-@Entry
-@Component
-class EntryView {
-    @State
-    var data: ArrayList<Int64> = ArrayList<Int64>()
-    @State
-    var items: ArrayList<Int64> = ArrayList<Int64>()
-
-    protected override func aboutToAppear() {
-        for (i in 0..100) {
-            this.data.add(i)
-            this.items.add(this.getSize())
-        }
-    }
-
-    func getSize(): Int64 {
-        let ret = Int64(floor(Random().nextFloat64() * 5.0))
-        return max(1, ret)
-    }
-
-    func build() {
-        Column(10) {
-            Text('Grid alignItems示例代码')
-
-            Grid() {
-                ForEach(
-                    this.data,
-                    itemGeneratorFunc: {
-                        item: Int64, idx: Int64 =>
-                        // GridItem和Column不设置高度，默认会自适应子组件大小，设置STRETCH的场景下，会变成与当前行最高节点同高。
-                        // 若设置高度，则会保持已设置的高度，不会与当前行最高节点同高。
-                        GridItem() {
-                            Column() {
-                                Column().height(100).backgroundColor(0xD5D5D5).width(100.percent)
-                                // 中间的Text设置flexGrow(1)来自适应填满父组件的空缺
-                                Text(String.fromUtf8("这是一段文字。".toArray().repeat(this.items[item])))
-                                    .flexGrow(1)
-                                    .width(100.percent)
-                                    .align(Alignment.TopStart)
-                                    .backgroundColor(0xF7F7F7)
-                                Column().height(50).backgroundColor(0x707070).width(100.percent)
-                            }
-                        }.border(color: Color.Black, width: 1.vp)
-                    }
-                )
-            }
-                .columnsGap(10)
-                .rowsGap(5)
-                .columnsTemplate("1fr 1fr")
-                .width(80.percent)
-                .height(100.percent)
-                // Grid设置alignItems为STRETCH，以当前行最高的GridItem的高度为其他GridItem的高度。
-                .alignItems(GridItemAlignment.STRETCH)
-                .scrollBar(BarState.Off)
-        }.height(100.percent).width(100.percent)
-    }
-}
-
-```
-
-![griditem](figures/grid6_api.png)

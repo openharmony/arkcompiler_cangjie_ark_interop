@@ -36,7 +36,7 @@ public init(min!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|min|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../../../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 空白填充组件在容器主轴上的最小大小。不指定像素单位时，默认单位vp。不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。|
+|min|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 空白填充组件在容器主轴上的最小大小。不指定像素单位时，默认单位vp。不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。|
 
 ## 通用属性/通用事件
 
@@ -73,7 +73,7 @@ Blank组件在横竖屏占满空余空间效果。
 <!-- run -->
 
 ```cangjie
-canpackage ohos_app_cangjie_entry
+package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
@@ -86,7 +86,7 @@ class EntryView {
             Row() {
                 Text("Bluetooth").fontSize(18)
                 Blank()
-                Toggle(ToggleType.SwitchType).margin(top: 14, bottom: 14, left: 6, right: 6)
+                Toggle(ToggleType.Switch).margin(top: 14, bottom: 14, left: 6, right: 6)
             }.width(100.percent).backgroundColor(0xFFFFFF).borderRadius(15).padding( left: 12 )
         }.backgroundColor(0xEFEFEF).padding(20)
     }
@@ -111,17 +111,17 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Row() {
                 Text("Bluetooth").fontSize(18)
                 Blank().color(0xFFFF00)
-                Toggle(ToggleType.SwitchType).margin(top: 14, bottom: 14, left: 6, right: 6)
+                Toggle(ToggleType.Switch).margin(top: 14, bottom: 14, left: 6, right: 6)
             }.backgroundColor(0xFFFFFF).borderRadius(15).padding(left: 12)
 
             Row() {
                 Text("Bluetooth").fontSize(18)
                 Blank(min: 160.vp).color(0xFFFF00)
-                Toggle(ToggleType.SwitchType).margin(top: 14, bottom: 14, left: 6, right: 6)
+                Toggle(ToggleType.Switch).margin(top: 14, bottom: 14, left: 6, right: 6)
             }.backgroundColor(0xFFFFFF).borderRadius(15).padding(left: 12)
         }.backgroundColor(0xEFEFEF).padding(20).width(100.percent)
     }

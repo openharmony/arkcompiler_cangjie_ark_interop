@@ -55,7 +55,7 @@ public class Options {
     public var dataGroupId: String
     public var storageType: StorageType
     public init(name: String, dataGroupId!: String = String.empty,
-        storageType!: StorageType = StorageType.StorageTypeXml)
+        storageType!: StorageType = StorageType.Xml)
 }
 ```
 
@@ -117,7 +117,7 @@ public var storageType: StorageType
 
 ```cangjie
 public init(name: String, dataGroupId!: String = String.empty,
-    storageType!: StorageType = StorageType.StorageTypeXml)
+    storageType!: StorageType = StorageType.Xml)
 ```
 
 **Description:** Constructor for creating Options instances. By default creates Preferences instances in the application sandbox directory.
@@ -132,7 +132,7 @@ public init(name: String, dataGroupId!: String = String.empty,
 |:---|:---|:---|:---|:---|
 | name | String | Yes | - | Name of the Preferences instance. |
 | dataGroupId | String | No | String.empty | Application group ID (obtained from app market). |
-| storageType | [StorageType](#enum-storagetype) | No | StorageType.StorageTypeXml | Storage mode (optional). |
+| storageType | [StorageType](#enum-storagetype) | No | StorageType.Xml | Storage mode (optional). |
 
 ## class Preferences
 
@@ -934,8 +934,8 @@ PreferencesMultiProcessChange
 
 ```cangjie
 public enum StorageType {
-    | StorageTypeXml
-    | StorageTypeGskv
+    | Xml
+    | Gskv
 }
 ```
 
@@ -945,10 +945,10 @@ public enum StorageType {
 
 **Since:** 21
 
-### StorageTypeGskv
+### Gskv
 
 ```cangjie
-StorageTypeGskv
+Gskv
 ```
 
 **Description:** Indicates GSKV storage mode.
@@ -959,10 +959,10 @@ StorageTypeGskv
 
 **Since:** 21
 
-### StorageTypeXml
+### Xml
 
 ```cangjie
-StorageTypeXml
+Xml
 ```
 
 **Description:** Indicates XML storage mode, which is the default storage mode for Preferences.

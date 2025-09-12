@@ -13,7 +13,7 @@ import kit.CryptoArchitectureKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -139,7 +139,6 @@ public func createMd(algName: String): Md
 
 - BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
 
-
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | invalid parameters. |
@@ -250,7 +249,7 @@ public interface Key {
 }
 ```
 
-**功能：** 密钥（接口），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#class-cipher)实例的[init()](#func-initkey-paramsspec-asynccallbackcipher)方法。
+**功能：** 密钥（接口），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#class-cipher)实例的[createCipher(String)](#func-createcipherstring)方法。
 
 密钥可以通过密钥生成器来生成。
 
@@ -326,52 +325,36 @@ let key = generator.generateSymKey()
 let encodedKey = key.getEncoded()
 ```
 
-## interface ParamsSpec
+## class ParamsSpec
 
 ```cangjie
-public interface ParamsSpec {
+public class ParamsSpec {
     mut prop algName: String
     mut prop iv: DataBlob
 }
 ```
 
-**功能：** 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法。
+**功能：** 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[createCipher(String)](#func-createcipherstring)方法。
 
-适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](#func-initkey-paramsspec-asynccallbackcipher)中传入None即可）。
+适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[createCipher(String)](#func-createcipherstring)中传入None即可）。
 
 > **说明：**
 >
-> 由于[init()](#func-initkey-paramsspec-asynccallbackcipher)的params参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如IvParamsSpec），因此在构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
+> 由于[createCipher(String)](#func-createcipherstring)的params参数是ParamsSpec类型（父类），而实际需要传入具体的子类对象（如IvParamsSpec），因此在构造子类对象时应设置其父类ParamsSpec的algName参数，使算法库在init()时知道传入的是哪种子类对象。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
 **起始版本：** 21
 
-### prop algName
+### var algName
 
 ```cangjie
-mut prop algName: String
+mut var algName: String
 ```
 
 **功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
 
 **类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-### prop iv
-
-```cangjie
-mut prop iv: DataBlob
-```
-
-**功能：** 指明加解密参数iv。常见取值如下：<br/>- AES的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节<br/>- 3DES的CBCMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为8字节<br/>- SM4的CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式：iv长度为16字节。
-
-**类型：** [DataBlob](#struct-datablob)
 
 **读写能力：** 可读写
 
@@ -385,7 +368,7 @@ mut prop iv: DataBlob
 public class Cipher {}
 ```
 
-**功能：** 提供加解密的算法操作功能，按序调用本类中的[init()](#func-initkey-paramsspec-asynccallbackcipher)、[update()](#func-updatedatablob)、[doFinal()](#func-dofinaldatablob)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
+**功能：** 提供加解密的算法操作功能，按序调用本类中的[createCipher(String)](#func-createcipherstring)、[update()](#func-updatedatablob)、[doFinal()](#func-dofinaldatablob)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
@@ -432,7 +415,7 @@ public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 |:---|:---|:---|:---|:---|
 |opMode|[CryptoMode](#enum-cryptomode)|是|-|加密或者解密模式。|
 |key|[Key](#interface-key)|是|-|指定加密或解密的密钥。|
-|params|?[ParamsSpec](#interface-paramsspec)|是|-|指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入None。|
+|params|?[ParamsSpec](#class-paramsspec)|是|-|指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入None。|
 
 **异常：**
 
@@ -454,11 +437,17 @@ public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let encoder = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+encoder.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
+let message = "This is a test"
+let blob = DataBlob(message.toArray())
+let encryptText = encoder.doFinal(blob)
 ```
 
 ### func doFinal(?DataBlob)
@@ -521,12 +510,17 @@ public func doFinal(data: ?DataBlob): DataBlob
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
-cipher.doFinal(None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let encoder = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+encoder.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
+let message = "This is a test"
+let blob = DataBlob(message.toArray())
+let encryptText = encoder.doFinal(blob)
 ```
 
 ### func update(DataBlob)
@@ -537,7 +531,7 @@ public func update(data: DataBlob): DataBlob
 
 **功能：** 分段更新加密或者解密数据操作，获取加/解密数据。
 
-必须在对[Cipher](#class-cipher)实例使用[init()](#func-initkey-paramsspec-asynccallbackcipher)初始化后，才能使用本函数。
+必须在对[Cipher](#class-cipher)实例使用[createCipher(String)](#func-createcipherstring)初始化后，才能使用本函数。
 
 > **说明：**
 >
@@ -586,11 +580,14 @@ public func update(data: DataBlob): DataBlob
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let cipher = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+cipher.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
 let plainText: DataBlob = DataBlob("this is test".toArray())
 cipher.update(plainText)
 ```
@@ -1035,7 +1032,7 @@ rand.setSeed(DataBlob("test".toArray()))
 public class SymKey <:  Key {}
 ```
 
-**功能：** 对称密钥，是[Key](#interface-key)的子类，在对称加解密时需要将其对象传入[Cipher](#class-cipher)实例的[init()](#func-initkey-paramsspec-asynccallbackcipher)方法使用。
+**功能：** 对称密钥，是[Key](#interface-key)的子类，在对称加解密时需要将其对象传入[Cipher](#class-cipher)实例的[createCipher(String)](#func-createcipherstring)方法使用。
 
 对称密钥可以通过对称密钥生成器[SymKeyGenerator](#class-symkeygenerator)来生成。
 
@@ -1275,13 +1272,13 @@ public struct CcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#class-paramsspec)的子类，用于在对称加解密时作为[createCipher(String)](#func-createcipherstring)方法的参数。
 
 适用于CCM模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[createCipher(String)](#func-createcipherstring)方法前需要指定其algName属性（来源于父类[ParamsSpec](#class-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1289,7 +1286,7 @@ public struct CcmParamsSpec <: ParamsSpec {
 
 **父类型：**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop aad
 
@@ -1307,29 +1304,13 @@ public mut prop aad: DataBlob
 
 **起始版本：** 21
 
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
 ### prop authTag
 
 ```cangjie
 public mut prop authTag: DataBlob
 ```
 
-**功能：** 指明加解密参数authTag，长度为12字节。<br/>采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾12字节作为解密时[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。
+**功能：** 指明加解密参数authTag，长度为12字节。<br/>采用CCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾12字节作为解密时[createCipher(String)](#func-createcipherstring)方法的入参[CcmParamsSpec](#struct-ccmparamsspec)中的authTag。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1420,15 +1401,13 @@ public let data: Array<UInt8>
 
 **起始版本：** 21
 
-### DataBlob(Array\<UInt8>)
+### init(Array\<UInt8>)
 
 ```cangjie
-public DataBlob(
-    public let data: Array<UInt8>
-)
+public init(data: Array<UInt8>)
 ```
 
-**功能：** 创建DataBlob实例。
+**功能：** 创建DataBlob对象。
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -1438,19 +1417,7 @@ public DataBlob(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|data|Array\<UInt8>|是|-|数据。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CryptoArchitectureKit.*
-
-let blob = DataBlob("test".toArray())
-```
+|data|Array\<UInt8>|是|-|存储的数组。|
 
 ## struct GcmParamsSpec
 
@@ -1460,13 +1427,13 @@ public struct GcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#class-paramsspec)的子类，用于在对称加解密时作为[createCipher(String)](#func-createcipherstring)方法的参数。
 
 适用于GCM模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[createCipher(String)](#func-createcipherstring)方法前需要指定其algName属性（来源于父类[ParamsSpec](#class-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1474,7 +1441,7 @@ public struct GcmParamsSpec <: ParamsSpec {
 
 **父类型：**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop aad
 
@@ -1492,29 +1459,13 @@ public mut prop aad: DataBlob
 
 **起始版本：** 21
 
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/>- IvParamsSpec:适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
 ### prop authTag
 
 ```cangjie
 public mut prop authTag: DataBlob
 ```
 
-**功能：** 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。
+**功能：** 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[createCipher(String)](#func-createcipherstring)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。
 
 **类型：** [DataBlob](#struct-datablob)
 
@@ -1559,7 +1510,7 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 |algName|String|是|-|指明对称加解密参数的算法模式。可选值如下:<br/>- IvParamsSpec:适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。|
 |iv|[DataBlob](#struct-datablob)|是|-|指明加解密参数iv，长度为12字节。|
 |aad|[DataBlob](#struct-datablob)|是|-|指明加解密参数aad，长度为8字节。|
-|authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[init()](#func-initcryptomode-key-paramsspec)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。|
+|authTag|[DataBlob](#struct-datablob)|是|-|指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需要获取[doFinal()](#func-dofinaldatablob)输出的[DataBlob](#struct-datablob)，取出其末尾16字节作为解密时[createCipher(String)](#func-createcipherstring)方法的入参[GcmParamsSpec](#struct-gcmparamsspec)中的的authTag。|
 
 **示例：**
 
@@ -1581,13 +1532,13 @@ public struct IvParamsSpec <: ParamsSpec {
 }
 ```
 
-**功能：** 加解密参数[ParamsSpec](#interface-paramsspec)的子类，用于在对称加解密时作为[init()](#func-initkey-paramsspec-asynccallbackcipher)方法的参数。
+**功能：** 加解密参数[ParamsSpec](#class-paramsspec)的子类，用于在对称加解密时作为[createCipher(String)](#func-createcipherstring)方法的参数。
 
 适用于CBC、CTR、OFB、CFB这些仅使用iv作为参数的加解密模式。
 
 > **说明：**
 >
-> 传入[init()](#func-initkey-paramsspec-asynccallbackcipher)方法前需要指定其algName属性（来源于父类[ParamsSpec](#interface-paramsspec)）。
+> 传入[createCipher(String)](#func-createcipherstring)方法前需要指定其algName属性（来源于父类[ParamsSpec](#class-paramsspec)）。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1595,23 +1546,7 @@ public struct IvParamsSpec <: ParamsSpec {
 
 **父类型：**
 
-- [ParamsSpec](#interface-paramsspec)
-
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**功能：** 指明对称加解密参数的算法模式。可选值如下:<br/> - IvParamsSpec: 适用于CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB模式。<br/> - GcmParamsSpec: 适用于GCM模式。<br/> - CcmParamsSpec: 适用于CCM模式。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
+- [ParamsSpec](#class-paramsspec)
 
 ### prop iv
 
@@ -1771,15 +1706,153 @@ public func toString(): String
 |:----|:----|
 |String|枚举的说明。|
 
+## enum CipherSpecItem
+
+```cangjie
+public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
+    | OaepMdNameStr
+    | OaepMgfNameStr
+    | OaepMgf1MdStr
+    | OaepMgf1PsrcUint8Arr
+    | ...
+}
+```
+
+**功能：** 表示加解密参数的枚举。当前只支持RSA算法和SM2算法。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<CipherSpecItem>
+- ToString
+
+### OaepMdNameStr
+
+```cangjie
+OaepMdNameStr
+```
+
+**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，消息摘要功能的算法名。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+### OaepMgfNameStr
+
+```cangjie
+OaepMgfNameStr
+```
+
+**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，掩码生成算法（目前仅支持MGF1）。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+### OaepMgf1MdStr
+
+```cangjie
+OaepMgf1MdStr
+```
+
+**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，MGF1掩码生成功能的消息摘要算法。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+### OaepMgf1PsrcUint8Arr
+
+```cangjie
+OaepMgf1PsrcUint8Arr
+```
+
+**功能：** 表示RSA算法中，使用PKCS1_OAEP模式时，pSource的字节流。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+### func !=(CipherSpecItem)
+
+```cangjie
+public operator func !=(other: CipherSpecItem): Bool
+```
+
+**功能：** 判断两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值不相等返回true，否则返回false。|
+
+### func ==(CipherSpecItem)
+
+```cangjie
+public operator func ==(other: CipherSpecItem): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|两个枚举值相等返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的值。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的说明。|
+
+
 ## enum Result
 
 ```cangjie
 public enum Result <: ToString {
-    | INVALID_PARAMS
-    | NOT_SUPPORT
-    | ERR_OUT_OF_MEMORY
-    | ERR_RUNTIME_ERROR
-    | ERR_CRYPTO_OPERATION
+    | InvalidParams
+    | NotSupport
+    | ErrOutOfMemory
+    | ErrRuntimeError
+    | ErrCryptoOperation
     | ...
 }
 ```
@@ -1794,10 +1867,10 @@ public enum Result <: ToString {
 
 - ToString
 
-### ERR_CRYPTO_OPERATION
+### ErrCryptoOperation
 
 ```cangjie
-ERR_CRYPTO_OPERATION
+ErrCryptoOperation
 ```
 
 **功能：** 调用三方算法库API出错。
@@ -1806,10 +1879,10 @@ ERR_CRYPTO_OPERATION
 
 **起始版本：** 21
 
-### ERR_OUT_OF_MEMORY
+### ErrOutOfMemory
 
 ```cangjie
-ERR_OUT_OF_MEMORY
+ErrOutOfMemory
 ```
 
 **功能：** 内存错误。
@@ -1818,10 +1891,10 @@ ERR_OUT_OF_MEMORY
 
 **起始版本：** 21
 
-### ERR_RUNTIME_ERROR
+### ErrRuntimeError
 
 ```cangjie
-ERR_RUNTIME_ERROR
+ErrRuntimeError
 ```
 
 **功能：** 运行时外部错误。
@@ -1830,10 +1903,10 @@ ERR_RUNTIME_ERROR
 
 **起始版本：** 21
 
-### INVALID_PARAMS
+### InvalidParams
 
 ```cangjie
-INVALID_PARAMS
+InvalidParams
 ```
 
 **功能：** 非法入参。
@@ -1842,10 +1915,10 @@ INVALID_PARAMS
 
 **起始版本：** 21
 
-### NOT_SUPPORT
+### NotSupport
 
 ```cangjie
-NOT_SUPPORT
+NotSupport
 ```
 
 **功能：** 操作不支持。

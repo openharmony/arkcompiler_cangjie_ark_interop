@@ -940,7 +940,202 @@ public let uid: Int32
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Since:** 21## class BundleInfo
+**Since:** 21
+
+## class BundleFlag
+
+```cangjie
+public class BundleFlag {
+    public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
+    public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
+    public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
+    public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
+    public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
+    public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x00000010
+    public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
+    public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
+    public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
+    public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
+    public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
+    public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
+}
+```
+
+**Description:** Bundle information flags, indicating the content of bundle information to be retrieved.
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_DEFAULT
+
+```cangjie
+public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
+```
+
+**Description:** Retrieves only the most basic application bundle information. The retrieved bundle information does not include HAP module information, application information, signature information, or permission request information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_ABILITY
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
+```
+
+**Description:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include ability information in the retrieved HAP module information, but excludes metadata within the ability information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_APPLICATION
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
+```
+
+**Description:** On top of the most basic application bundle information, includes application information, but excludes metadata within the application information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_DISABLE
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
+```
+
+**Description:** Used to retrieve BundleInfo for disabled applications and disabled Ability information. The retrieved bundleInfo does not include signatureInfo, applicationInfo, hapModuleInfo, ability, extensionAbility, or permission information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
+```
+
+**Description:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include extension ability information in the retrieved HAP module information, but excludes metadata within the extension ability information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_HAP_MODULE
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
+```
+
+**Description:** On top of the most basic application bundle information, includes HAP module information, but excludes ability information, extension ability information, and metadata within the HAP module information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_MENU
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
+```
+
+**Description:** Used to retrieve bundleInfo that includes fileContextMenuConfig. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_METADATA
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
+```
+
+**Description:** Retrieves all metadata, including metadata within HAP module information, ability information, extension ability information, and application information. Therefore, it must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE`, `GET_BUNDLE_INFO_WITH_ABILITY`, `GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`, and `GET_BUNDLE_INFO_WITH_APPLICATION`.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x00000010
+```
+
+**Description:** On top of the most basic application bundle information, includes permission request information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_ROUTER_MAP
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
+```
+
+**Description:** Used to retrieve bundleInfo that includes routerMap. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
+```
+
+**Description:** Used to retrieve BundleInfo that includes `signatureInfo`. The retrieved BundleInfo does not include `applicationInfo`, `hapModuleInfo`, `extensionAbility`, `ability`, or `permission` information.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+### static const GET_BUNDLE_INFO_WITH_SKILL
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
+```
+
+**Description:** Used to retrieve bundleInfo that includes skills. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.
+
+**Type:** Int32
+
+**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**Since:** 21
+
+## class BundleInfo
 
 ```cangjie
 public class BundleInfo {
@@ -2798,96 +2993,6 @@ public let minWindowWidth: UInt32
 
 **System Capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-**Since:** 21## enum AbilityFlag
-
-```cangjie
-public enum AbilityFlag {
-    | GetAbilityInfoDefault
-    | GetAbilityInfoWithPermission
-    | GetAbilityInfoWithApplication
-    | GetAbilityInfoWithMetadata
-    | GetAbilityInfoWithDisable
-    | GetAbilityInfoOnlySystemApp
-    | ...
-}
-```
-
-**Description:** UIAbility component information flags, indicating the content of UIAbility component information to be retrieved.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetAbilityInfoDefault
-
-```cangjie
-GetAbilityInfoDefault
-```
-
-**Description:** Used to obtain default abilityInfo. The retrieved abilityInfo does not include permissions, metadata, or disabled abilityInfo.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetAbilityInfoOnlySystemApp
-
-```cangjie
-GetAbilityInfoOnlySystemApp
-```
-
-**Description:** Used to obtain abilityInfo exclusively for system applications.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetAbilityInfoWithApplication
-
-```cangjie
-GetAbilityInfoWithApplication
-```
-
-**Description:** Used to obtain abilityInfo that includes applicationInfo.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetAbilityInfoWithDisable
-
-```cangjie
-GetAbilityInfoWithDisable
-```
-
-**Description:** Used to obtain abilityInfo that includes disabled abilityInfo.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetAbilityInfoWithMetadata
-
-```cangjie
-GetAbilityInfoWithMetadata
-```
-
-**Description:** Used to obtain abilityInfo that includes metadata.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetAbilityInfoWithPermission
-
-```cangjie
-GetAbilityInfoWithPermission
-```
-
-**Description:** Used to obtain abilityInfo that includes permissions.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
 **Since:** 21
 
 ## enum ApplicationType
@@ -3038,232 +3143,6 @@ public func getValue(): String
 |Type|Description|
 |:----|:----|
 |String|The value of the enumeration.|
-
-## enum BundleFlag
-
-```cangjie
-public enum BundleFlag {
-    | GetBundleInfoDefault
-    | GetBundleInfoWithApplication
-    | GetBundleInfoWithHapModule
-    | GetBundleInfoWithAbility
-    | GetBundleInfoWithExtensionAbility
-    | GetBundleInfoWithRequestedPermission
-    | GetBundleInfoWithMetadata
-    | GetBundleInfoWithDisable
-    | GetBundleInfoWithSignatureInfo
-    | GetBundleInfoWithMenu
-    | GetBundleInfoWithRouterMap
-    | GetBundleInfoWithSkill
-    | ...
-}
-```
-
-**Description:** Bundle information flags, indicating the content of bundle information to be retrieved.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoDefault
-
-```cangjie
-GetBundleInfoDefault
-```
-
-**Description:** Retrieves only the most basic application bundle information. The retrieved bundle information does not include HAP module information, application information, signature information, or permission request information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithAbility
-
-```cangjie
-GetBundleInfoWithAbility
-```
-
-**Description:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include ability information in the retrieved HAP module information, but excludes metadata within the ability information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithApplication
-
-```cangjie
-GetBundleInfoWithApplication
-```
-
-**Description:** On top of the most basic application bundle information, includes application information, but excludes metadata within the application information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithDisable
-
-```cangjie
-GetBundleInfoWithDisable
-```
-
-**Description:** Used to retrieve BundleInfo for disabled applications and disabled Ability information. The retrieved bundleInfo does not include signatureInfo, applicationInfo, hapModuleInfo, ability, extensionAbility, or permission information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithExtensionAbility
-
-```cangjie
-GetBundleInfoWithExtensionAbility
-```
-
-**Description:** Must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE` to include extension ability information in the retrieved HAP module information, but excludes metadata within the extension ability information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithHapModule
-
-```cangjie
-GetBundleInfoWithHapModule
-```
-
-**Description:** On top of the most basic application bundle information, includes HAP module information, but excludes ability information, extension ability information, and metadata within the HAP module information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithMenu
-
-```cangjie
-GetBundleInfoWithMenu
-```
-
-**Description:** Used to retrieve bundleInfo that includes fileContextMenuConfig. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithMetadata
-
-```cangjie
-GetBundleInfoWithMetadata
-```
-
-**Description:** Retrieves all metadata, including metadata within HAP module information, ability information, extension ability information, and application information. Therefore, it must be specified together with `GET_BUNDLE_INFO_WITH_HAP_MODULE`, `GET_BUNDLE_INFO_WITH_ABILITY`, `GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`, and `GET_BUNDLE_INFO_WITH_APPLICATION`.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithRequestedPermission
-
-```cangjie
-GetBundleInfoWithRequestedPermission
-```
-
-**Description:** On top of the most basic application bundle information, includes permission request information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithRouterMap
-
-```cangjie
-GetBundleInfoWithRouterMap
-```
-
-**Description:** Used to retrieve bundleInfo that includes routerMap. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithSignatureInfo
-
-```cangjie
-GetBundleInfoWithSignatureInfo
-```
-
-**Description:** Used to retrieve BundleInfo that includes `signatureInfo`. The retrieved BundleInfo does not include `applicationInfo`, `hapModuleInfo`, `extensionAbility`, `ability`, or `permission` information.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### GetBundleInfoWithSkill
-
-```cangjie
-GetBundleInfoWithSkill
-```
-
-**Description:** Used to retrieve bundleInfo that includes skills. It cannot be used alone and must be used together with GET_BUNDLE_INFO_WITH_HAP_MODULE, GET_BUNDLE_INFO_WITH_ABILITY, and GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Description:** Retrieves the value of the enumeration.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Int32|The value of the enumeration.|## enum BundleType
-
-```cangjie
-public enum BundleType {
-    | App
-    | AtomicService
-    | ...
-}
-```
-
-**Description:** Identifies the type of an application.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### App
-
-```cangjie
-App
-```
-
-**Description:** The Bundle is an application.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
-
-### AtomicService
-
-```cangjie
-AtomicService
-```
-
-**Description:** The Bundle is an atomic service.
-
-**System Capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Since:** 21
 
 ## enum DisplayOrientation
 

@@ -24,7 +24,7 @@ public func foregroundColor(value: ColoringStrategy): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ColoringStrategy](#)|是|-|颜色策略。|
+|value|[ColoringStrategy](./cj-common-types.md#enum-coloringstrategy)|是|-|颜色策略。|
 
 ## func foregroundColor(ResourceColor)
 
@@ -42,5 +42,5 @@ public func foregroundColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。|
 

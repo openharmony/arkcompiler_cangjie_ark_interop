@@ -451,7 +451,7 @@ Cross-device installation-free is not supported.
 
 **错误描述**
 
-当持跨设备免安装时，方法将返回该错误码。
+当不支持跨设备免安装时，方法将返回该错误码。
 
 **可能原因**
 
@@ -1006,7 +1006,7 @@ The wantAgent object does not exist.
 
 检查传入接口的wantAgent对象是否合法。
 
-## 16000153 wangAgent对象已取消
+## 16000153 wantAgent对象已取消
 
 **错误信息**
 
@@ -1014,11 +1014,11 @@ The wantAgent object has been canceled.
 
 **错误描述**
 
-当传入接口的wangAgent对象已取消时，方法将返回该错误码。
+当传入接口的wantAgent对象已取消时，方法将返回该错误码。
 
 **可能原因**
 
-传入接口的触发的wantAgent已取消。
+传入接口触发的wantAgent已取消。
 
 **处理步骤**
 
