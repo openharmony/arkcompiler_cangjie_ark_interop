@@ -34,9 +34,11 @@
 
     ```cangjie
     // main_ability.cj
-    import kit.ArkData.{ DistributedKVStore, KVManager, KVManagerConfig }
-    import kit.AbilityKit.{ UIAbilityContext, getStageContext }
-    import kit.ArkUI.BusinessException
+    import kit.ArkData.{ DistributedKVStore, KVManagerConfig }
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import ohos.business_exception.BusinessException
+    import ohos.data.distributed_kv_store.KVManager
 
     var kvManager: Option<KVManager> = Option<KVManager>.None
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
@@ -48,22 +50,20 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // 获取context
             globalAbilityContext = this.context
 
-            let kvManagerConfig = KVManagerConfig(getStageContext(this.context), "com.example.datamanagertest")
+            let kvManagerConfig = KVManagerConfig(globalAbilityContext.getOrThrow, "com.example.datamanagertest")
             try {
                 // 创建KVManager实例
                 kvManager = DistributedKVStore.createKVManager(kvManagerConfig)
-                AppLog.info("Succeeded in creating KVManager.")
                 // 继续创建获取数据库
                 // ...
             } catch (e: BusinessException) {
-                AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+                Hilog.error(0, "ErrorCode: ${e.code}", e.message)
             }
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.START_ABILITY => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
         }
@@ -78,7 +78,8 @@
     ```cangjie
     // xxx.cj
     import kit.ArkData.*
-    import kit.ArkUI.BusinessException
+    import ohos.business_exception.BusinessException
+    import ohos.data.distributed_kv_store.SingleKVStore
 
     var kvStore: Option<SingleKVStore> = Option<SingleKVStore>.None
 
@@ -90,9 +91,9 @@
             backup: false,
             autoSync: false
         )
-        kvStore = kvManager.getOrThrow().getSingleKVStore("storeId", options)
+        kvStore = kvManager.getOrThrow().getKVStore("storeId", options)
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -102,13 +103,15 @@
 
     ```cangjie
     // xxx.cj
+    import ohos.data.distributed_kv_store.ValueType as KVValueType
+
     const KEY_TEST_STRING_ELEMENT: String = "key_test_string"
     const VALUE_TEST_STRING_ELEMENT: String = "value_test_string"
 
     try {
-        kvStore.getOrThrow().put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))
+        kvStore.getOrThrow().put(KEY_TEST_STRING_ELEMENT, KVValueType.StringValue(VALUE_TEST_STRING_ELEMENT))
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -124,15 +127,15 @@
     // xxx.cj
     try {
         let singleKVStore = kvStore.getOrThrow()
-        singleKVStore.put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))
-        AppLog.info("Succeeded in putting data.")
+        singleKVStore.put(KEY_TEST_STRING_ELEMENT, KVValueType.StringValue(VALUE_TEST_STRING_ELEMENT))
+        Hilog.info(0, "cangjie", "Succeeded in putting data.")
         let value = singleKVStore.get(KEY_TEST_STRING_ELEMENT)
         match (value) {
-            case STRING(v) => AppLog.info("The obtained value is a String: ${v}")
-            case _ => AppLog.info("The obtained value is not a string.")
+            case StringValue(v) => Hilog.info(0, "cangjie", "The obtained value is a String")
+            case _ => Hilog.info(0, "cangjie", "The obtained value is not a string.")
         }
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
    ```
 
@@ -144,11 +147,11 @@
     // xxx.cj
     try {
         let singleKVStore = kvStore.getOrThrow()
-        singleKVStore.put(KEY_TEST_STRING_ELEMENT, KVValueType.STRING(VALUE_TEST_STRING_ELEMENT))
+        singleKVStore.put(KEY_TEST_STRING_ELEMENT, KVValueType.StringValue(VALUE_TEST_STRING_ELEMENT))
         singleKVStore.delete(KEY_TEST_STRING_ELEMENT)
-        AppLog.info("delete data success.")
+        Hilog.info(0, "cangjie", "delete data success.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -160,9 +163,9 @@
     // xxx.cj
     try {
         kvManager.getOrThrow().closeKVStore("com.example.datamanagertest", "storeId")
-        AppLog.info("closeKVStore success.")
+        Hilog.info(0, "cangjie", "closeKVStore success.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```
 
@@ -174,8 +177,8 @@
     // xxx.cj
     try {
         kvManager.getOrThrow().deleteKVStore("com.example.datamanagertest", "storeId")
-        AppLog.info("deleteKVStore success.")
+        Hilog.info(0, "cangjie", "deleteKVStore success.")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     ```

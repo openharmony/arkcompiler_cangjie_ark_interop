@@ -16,7 +16,6 @@
 
 - \@Provide 和 \@Consume 可以通过相同的变量名或者相同的变量别名绑定，需要类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
 
-
 ```cangjie
 // 通过相同的变量名绑定
 @Provide
@@ -113,7 +112,7 @@ class EntryView{
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
-                selected: @Binder(this.selectedDate)
+                selected: this.selectedDate
             )
            Child()
         }
@@ -140,7 +139,7 @@ class Child{
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
-                selected: @Binder(this.selectedDate)
+                selected: this.selectedDate
             )
         }
     }
@@ -196,7 +195,7 @@ class EntryView{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{
+            ).onClick{ evt =>
                 if(isAdd == true){ Func1 = returnMinus }
                 else{ Func1 = returnAdd }
                 isAdd = !isAdd
@@ -230,7 +229,7 @@ class Child{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{
+            ).onClick{ evt =>
                 if(isAdd == true){ Func2 = returnMinus }
                 else{ Func2 = returnAdd }
                 isAdd = !isAdd
@@ -259,7 +258,6 @@ class Child{
 
     【反例】
 
-
     ```cangjie
 
     let change: Int64 = 10;
@@ -274,7 +272,6 @@ class Child{
 
     【正例】
 
-
     ```cangjie
 
     @Provide["10"]
@@ -284,7 +281,6 @@ class Child{
 2. \@Consume 装饰的变量不能本地初始化，也不能在构造参数中传入初始化，\@Consume 装饰的变量初始化不会起作用。\@Consume 仅能通过key来匹配对应的 \@Provide 变量进行初始化。
 
     【反例】
-
 
     ```cangjie
     // 父组件
@@ -315,7 +311,6 @@ class Child{
     ```
 
     【正例】
-
 
     ```cangjie
     @Component
@@ -350,7 +345,6 @@ class Child{
 
 3. \@Provide的key（变量名与别名）重复定义时，\@Consume 会根据组件树向上查找并绑定最近的 \@Provide
 
-
     ```cangjie
     // 如果变量名重复，\@Consume 会绑定最后一个 \@Provide 修饰的变量。
     // 需类型一致，若类型不一致，框架会弹出运行时错误。
@@ -370,7 +364,6 @@ class Child{
 4. 在初始化 \@Consume 变量时，如果开发者没有定义对应key的 \@Provide 变量，框架会抛出运行时错误，提示开发者初始化 \@Consume 变量失败，原因是无法找到其对应key（变量名或别名）的 \@Provide 变量。
 
     【反例】
-
 
     ```cangjie
     @Component
@@ -402,7 +395,6 @@ class Child{
     ```
 
     【正例】
-
 
     ```cangjie
     @Component
@@ -458,7 +450,7 @@ class ToDoItem {
             Text("count(${this.count})")
             Button("count(${this.count}), count + 1")
                 .onClick{
-                    => this.count += 1
+                   evt => this.count += 1
             }
         }.width(100.percent)
     }
@@ -467,7 +459,7 @@ class ToDoItem {
 @Component
 class ToDoList{
     func build(){
-        Row(5){
+        Row(space: 5){
             ToDoItem()
             ToDoItem()
         }
@@ -494,7 +486,7 @@ class EntryView{
         Column{
             Button("count(${this.count}), count + 1")
                 .onClick{
-                    => this.count += 1
+                   evt => this.count += 1
                 }
             ToDoDemo()
         }
@@ -536,27 +528,27 @@ class Child {
                     => "${idx}_${item[0]}" + item[1]
                 })
             Button("Consume init map").onClick{
-                =>
+                evt =>
                     this.message = HashMap<Int64, String>([(0,"a"),(1,"b"),(3,"c")])
                     arr = message.toArray()
             }
             Button("Consume set new one").onClick{
-                =>
+                evt =>
                     this.message.add(4,"d")
                     arr = message.toArray()
             }
             Button("Consume clear").onClick{
-                =>
+                evt =>
                     this.message.clear()
                     arr = message.toArray()
             }
             Button("Consume replace the first item").onClick{
-                =>
+                evt =>
                     this.message.add(0,"aa")
                     arr = message.toArray()
             }
             Button("Consume delete the first item").onClick{
-                =>
+                evt =>
                     this.message.remove(0)
                     arr = message.toArray()
             }
@@ -581,7 +573,7 @@ class EntryView {
         Row(){
             Column(){
                 Button("Provide init map").onClick{
-                    =>
+                    evt =>
                         this.message = HashMap<Int64,String>([(0,"a"),(1,"b"),(3,"c"),(4,"d")])
                         arr = message.toArray()
                 }
@@ -622,22 +614,22 @@ class Child{
                 Divider()
             })
             Button("Consume init set").onClick{
-                =>
+                evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4])
                     this.arr = this.message.toArray()
             }
             Button("Consume set new one").onClick{
-                =>
+                evt =>
                     this.message.add(5)
                     this.arr = this.message.toArray()
             }
             Button("Consume clear").onClick{
-                =>
+                evt =>
                     this.message.clear()
                     this.arr = this.message.toArray()
             }
             Button("Consume delete the first one").onClick{
-                =>
+                evt =>
                     this.message.remove(0)
                     this.arr = this.message.toArray()
             }
@@ -662,7 +654,7 @@ class EntryView{
         Row(){
             Column(){
                 Button("Provide init Set").onClick{
-                    =>
+                    evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4,5])
                     this.arr = this.message.toArray()
                 }

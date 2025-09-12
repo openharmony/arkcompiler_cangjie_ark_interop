@@ -157,7 +157,6 @@ func Download(): Unit {
     rRemove(task.tid)
 }
 
-
 class HttpResponseMessageCallback <: Callback1Argument<HttpResponseMessage> {
     public HttpResponseMessageCallback() {}
     public open func invoke(arg: HttpResponseMessage): Unit {

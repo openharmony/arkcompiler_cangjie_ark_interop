@@ -117,7 +117,6 @@ AppStorage中的属性可以被双向同步，数据可以是存在于本地或�
 
 1. @StorageProp/@StorageLink的参数必须为string类型，否则编译期会报错。
 
-
     ```cangjie
     let storage = AppStorage.setOrCreate("PropA", 47)
     let temp = AppStorage.get<Int64>("PropA").getOrThrow() // 47
@@ -148,7 +147,6 @@ AppStorage中的属性可以被双向同步，数据可以是存在于本地或�
 ### 从应用逻辑使用AppStorage和LocalStorage
 
 AppStorage是单例，它的所有API都是静态的，使用方法类似于LocalStorage中对应的非静态方法。
-
 
 ```cangjie
 let temp1 = AppStorage.setOrCreate<Int64>("PropA", 47)
@@ -241,7 +239,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.AppResource
-import ohos.resource_manager.__GenerateResource__
 import kit.BasicServicesKit.agent.State
 import kit.PerformanceAnalysisKit.Hilog
 
@@ -265,12 +262,12 @@ class EntryView{
 
     func build() {
         Column(){
-            Grid(this.gridScroller){
+            Grid(scroller: this.gridScroller){
                 ForEach(this.dataList, itemGeneratorFunc: {item : ViewData , idx : Int64 =>
                         GridItem(){
                             TapImage(index: idx,uri: item.uri)
                         }
-                            .aspectRatio(1)
+                            .aspectRatio(1.0)
                         })
             }
         }
@@ -298,107 +295,6 @@ class TapImage {
             Image(this.uri)
                 .objectFit(ImageFit.Cover)
                 .onClick({evt =>this.tapIndex = this.index;})
-                .border(width: 5, color: this.tapColor)
-        }
-    }
-}
-```
-
-相比借助@StorageLink的双向同步机制实现事件通知，开发者可以使用emit订阅某个事件并接收事件回调的方式来减少开销，增强代码的可读性。
-
-> **说明：**
->
-> emit接口不支持在Previewer预览器中使用。
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.AppResource
-import ohos.resource_manager.__GenerateResource__
-import kit.PerformanceAnalysisKit.Hilog
-import kit.BasicServicesKit.*
-import std.collection.HashMap
-
-class ViewData {
-    var title: String
-    var uri  : AppResource
-    var color : Color = Color.Black
-
-    init(title: String,uri: AppResource){
-        this.title = title
-        this.uri   = uri
-    }
-}
-
-@Entry
-@Component
-class EntryView{
-    // 此处"app.media.startIcon"仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    let dataList : Array<ViewData> = [ViewData("flower",@r(app.media.startIcon)),ViewData("OMG",@r(app.media.image))]
-    var gridScroller: Scroller = Scroller()
-    var preIndex : Int64 = -1
-    func build() {
-        Column(){
-            Grid(this.gridScroller){
-                ForEach(this.dataList, itemGeneratorFunc: {item : ViewData , idx : Int64 =>
-                        GridItem(){
-                            TapImage(index: idx,uri: item.uri)
-                        }
-                            .aspectRatio(1)
-                            .onClick({evt =>
-                                if(this.preIndex >= 0 && idx == this.preIndex){
-                                    Hilog.info(0, "AppLogCj", "preIndex: ${this.preIndex}, index: ${idx}, red")
-                                    let innerEvent: InnerEvent = InnerEvent(UInt32(this.preIndex))
-                                    let p = HashMap<String, EventDataType>()
-                                    p.add("red", INT64(0))
-                                    let eventData = EventData(p)
-                                    Emitter.emit(innerEvent,data: eventData)
-                                }
-                                else if(this.preIndex >= 0 && idx != this.preIndex){
-                                    Hilog.info(0, "AppLogCj", "preIndex: ${this.preIndex}, index: ${idx}, black")
-                                    let innerEvent: InnerEvent = InnerEvent(UInt32(this.preIndex))
-                                    let p = HashMap<String, EventDataType>()
-                                    p.add("black", INT64(0))
-                                    let eventData = EventData(p)
-                                    Emitter.emit(innerEvent,data: eventData)
-                                }
-                                this.preIndex = idx
-                            ;})
-                        })
-            }
-        }
-    }
-}
-
-@Component
-class TapImage {
-    @State var tapColor : Color = Color.Black
-    var index: Int64
-    var uri: AppResource
-    func onTapIndexChange(colorTag: EventData){
-        if(colorTag.data.contains("red")){
-            this.tapColor = Color.Red
-        }else{
-            this.tapColor = Color.Black
-        }
-    }
-    public func aboutToAppear(){
-        let innerEvent: InnerEvent = InnerEvent(UInt32(this.index), priority: EventPriority.IMMEDIATE)
-        let f = EventCallback(
-            "on",
-            {
-                data: EventData => this.onTapIndexChange(data)
-            }
-        )
-        Emitter.on(innerEvent,f)
-    }
-    func build() {
-        Column(){
-            Image(this.uri)
-                .objectFit(ImageFit.Cover)
                 .border(width: 5, color: this.tapColor)
         }
     }
@@ -437,7 +333,7 @@ class EntryView {
                 .onClick({evt => this.selectedDate = this.selectedDate.addDays(1);})
             DatePicker( start: DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1),
                         end: DateTime.of(year: 2100, month: Month.of(1), dayOfMonth: 1),
-                        selected: @Binder(this.selectedDate) )
+                        selected: this.selectedDate )
         }
         .width(100.percent)
     }

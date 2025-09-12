@@ -10,14 +10,8 @@
 
 - [焦点事件](./cj-common-events-focus-event.md)：通过以上方式控制组件焦点的能力和响应的事件。
 
-- [拖拽事件](./cj-common-events-drag-event.md)：由触屏事件和键鼠事件发起，包括手指/手写笔长按组件拖拽和鼠标拖拽。
+- [拖拽事件](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-drag.md)：由触屏事件和键鼠事件发起，包括手指/手写笔长按组件拖拽和鼠标拖拽。
 
 - [事件分发](./cj-common-events-distribute.md)：描述触控类事件（不包括按键、焦点）响应链的命中收集过程。
 
-手势事件由绑定手势方法和绑定的手势组成，绑定的手势可以分为单一手势和组合手势两种类型，根据手势的复杂程度进行区分。
-
-- [绑定手势方法](./cj-gesture-events-binding.md)：用于在组件上绑定单一手势或组合手势，并声明所绑定的手势的响应优先级。
-
-- [单一手势](./cj-gesture-events-single-gesture.md)：手势的基本单元，是所有复杂手势的组成部分。
-
-- [组合手势](./cj-gesture-events-combined-gestures.md)：由多个单一手势组合而成，可以根据声明的类型将多个单一手势按照一定规则组合成组合手势，并进行使用。
+手势事件由绑定手势方法和绑定的手势组成。绑定的手势可以根据复杂程度分为单一手势和组合手势两种类型。

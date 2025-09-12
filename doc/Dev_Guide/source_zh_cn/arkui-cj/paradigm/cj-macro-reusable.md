@@ -12,7 +12,7 @@
 
 - @Reusable仅用于自定义组件。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -56,19 +56,21 @@
 - @Reuasble宏不支持嵌套使用，存在增加内存和不方便维护的问题。
 
     > **说明：**
-    > 不支持嵌套使用，只是标记，会多增加一个缓存池，各自的复用缓存池存在相同树状结构，复用效率低，引发复用内存增加;
-    > 嵌套使用形成各自独立的复用缓存池之后，生命周期的传递存在问题，资源和变量管理无法共享，并不方便维护，容易引发问题;
-    > 示例中PlayButton形成的复用缓存池，并不能在PlayButton02的复用缓存池使用，但PlayButton02自己形成复用缓存相互可以使用;
-    > 在PlayButton隐藏时已经触发PlayButton02的aboutToRecycle，但是在PlayButton02单独显示时却无法执行aboutToReuse，组件复用的生命周期方法存在无法成对调用问题;
-    > 综上，不建议嵌套使用。
+    >
+    > - 不支持嵌套使用，只是标记，会多增加一个缓存池，各自的复用缓存池存在相同树状结构，复用效率低，引发复用内存增加;
+    > - 嵌套使用形成各自独立的复用缓存池之后，生命周期的传递存在问题，资源和变量管理无法共享，并不方便维护，容易引发问题;
+    > - 示例中PlayButton形成的复用缓存池，并不能在PlayButton02的复用缓存池使用，但PlayButton02自己形成复用缓存相互可以使用;
+    > - 在PlayButton隐藏时已经触发PlayButton02的aboutToRecycle，但是在PlayButton02单独显示时却无法执行aboutToReuse，组件复用的生命周期方法存在无法成对调用问题;
+    > - 综上，不建议嵌套使用。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
+
     import kit.ArkUI.*
-    import ohos.arkui.state_management.*
     import ohos.arkui.state_macro_manage.*
+    import kit.PerformanceAnalysisKit.Hilog
 
     @Entry
     @Component
@@ -106,21 +108,21 @@
                 // 父子嵌套控制
                 Text("Parent=child==is ${if(isPlaying) {""} else {"not"}} playing").fontSize(14)
                 Button("Parent=child===controll=${isPlaying}").margin(14).onClick {
-                    => isPlaying = !isPlaying
+                    e => isPlaying = !isPlaying
                 }
                 Text("==================").fontSize(14)
 
                 // 默认隐藏按钮控制
                 Text("Hiddenchild==is ${if(isPlaying01) {""} else {"not"}} playing").fontSize(14)
                 Button("Button===hiddenchild==control==${isPlaying01}").margin(14).onClick {
-                    => isPlaying01 = !isPlaying01
+                   e  => isPlaying01 = !isPlaying01
                 }
                 Text("==================").fontSize(14)
 
                 // 默认显示按钮控制
                 Text("shownchid==is ${if(isPlaying02) {""} else {"not"}} playing").fontSize(14)
                 Button("Button===shownchid==control==${isPlaying02}").margin(14).onClick {
-                    => isPlaying02 = !isPlaying02
+                    e => isPlaying02 = !isPlaying02
                 }
             }
         }
@@ -136,8 +138,8 @@
             Column() {
                 // 复用
                 PlayButton02(isPlaying02: buttonPlaying)
-                Button(if(buttonPlaying) {"parent_pause"} else {"parent_play"}).margin(12).onClick {=>
-                    buttonPlaying = !buttonPlaying
+                Button(if(buttonPlaying) {"parent_pause"} else {"parent_play"}).margin(12).onClick {
+                    e => buttonPlaying = !buttonPlaying
                 }
             }
         }
@@ -149,10 +151,10 @@
     class PlayButton02 {
         @Link var isPlaying02: Bool
         protected override func aboutToRecycle(): Unit {
-            AppLog.info("=====aboutToRecycle====PlayButton02====")
+            Hilog.info(0, "cangjie", "=====aboutToRecycle====PlayButton02====")
         }
         protected override func aboutToReuse(param: ReuseParams) {
-            AppLog.info("=====aboutToReuse====PlayButton02====")
+            Hilog.info(0, "cangjie", "=====aboutToReuse====PlayButton02====")
         }
         func build() {
             Column() {
@@ -184,9 +186,10 @@
 
 ```cangjie
 package ohos_app_cangjie_entry
+
 import kit.ArkUI.*
-import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 public class Message {
     public var value: String
@@ -219,11 +222,10 @@ public class EntryView {
 class Child {
     @State
     var message: Message = Message("about to reuse")
-    protected override func aboutToReuse(val: ReuseParams) {
-        if (val.contains("message")) {
-            let msg = val.get("message").getOrThrow()
-            message = msg as Message ?? Message("None")
-            AppLog.info("Recycle ===Child===")
+    protected override func aboutToReuse(params: ReuseParams) {
+        if (let Some(value) <- params.get<Message>("message")) {
+            message = value as Message ?? Message("None")
+            Hilog.info(0, "cangjie", "Recycle ===Child===")
         }
     }
     func build() {
@@ -246,10 +248,12 @@ class Child {
 
 ```cangjie
 package ohos_app_cangjie_entry
+
 import kit.ArkUI.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
+import kit.PerformanceAnalysisKit.Hilog
 
 class MyDataSource <: IDataSource<Int64> {
     public MyDataSource(let data_: ArrayList<Int64>) {}
@@ -306,10 +310,10 @@ public class EntryView {
 class CardView {
     @State
     var item: String = ""
-    protected override func aboutToReuse(val: ReuseParams) {
-        if (val.contains("item")) {
-            let itemTmp = val.get("item").getOrThrow()
-            item = itemTmp as String ?? ""
+    protected override func aboutToReuse(params: ReuseParams) {
+        if (let Some(value) <- params.get<String>("item")) {
+            item = value as String ?? ""
+            Hilog.info(0, "cangjie", "Recycle ===Child===")
         }
     }
     func build() {
@@ -333,7 +337,7 @@ import kit.ArkUI.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
-import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.Hilog
 
 class MyDataSource <: IDataSource<FriendMoment> {
     public MyDataSource(let data_: ArrayList<FriendMoment>) {}
@@ -375,18 +379,17 @@ public class FriendMoment {
 public class OneMoment {
     @State var moment: FriendMoment = FriendMoment("", "", @r(app.media.startIcon))
     protected override func aboutToReuse(params: ReuseParams) {
-        if (params.contains("moment")) {
-            let p = params.get("moment").getOrThrow()
-            let pVal = (p as FriendMoment) ?? FriendMoment("", "", @r(app.media.startIcon))
+        if (let Some(value) <- params.get<FriendMoment>("moment"))
+            let pVal = (value as FriendMoment) ?? FriendMoment("", "", @r(app.media.startIcon))
             this.moment = pVal
-            AppLog.info("====aboutToReuse====OnMoment==复用了==== ${pVal.text}")
+            Hilog.info(0, "cangjie", "====aboutToReuse====OnMoment==复用了==== ${pVal.text}")
         }
     }
     public func build() {
         Column() {
             Text(moment.text)
             if (moment.image.isSome()) {
-                Flex(FlexOptions(wrap: FlexWrap.Wrap)) {
+                Flex(wrap: FlexWrap.Wrap) {
                     Image((moment.image) ?? @r(app.media.background)).height(50).width(50)
                     Image((moment.image) ?? @r(app.media.background)).height(50).width(50)
                     Image((moment.image) ?? @r(app.media.background)).height(50).width(50)

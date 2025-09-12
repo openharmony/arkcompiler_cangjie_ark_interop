@@ -2,13 +2,13 @@
 
 ## 概述
 
-安全区域定义为页面的显示区域，其默认不与系统设置的非安全区域（如状态栏、导航栏）重叠，以确保开发者设计的界面均布局于安全区域内。然而，当Web组件启用沉浸式模式时，网页元素可能会出现与状态栏或导航栏重叠的问题。具体示例如图1所示，红色虚线框划定的区域即为安全区域，而顶部状态栏、屏幕挖孔区域和底部导航条则被界定为非安全区域，Web组件开启沉浸式效果时，网页内底部元素与导航条发生重叠。
+安全区域定义为页面的显示区域，其默认不与系统设置的非安全区域（如状态栏、导航栏）重叠，以确保开发者设计的界面均布局在安全区域内。然而，当Web组件启用沉浸式模式时，网页元素可能会出现与状态栏或导航栏重叠的问题。具体示例如图1所示，红色虚线框划定的区域即为安全区域，而顶部状态栏、屏幕挖孔区域和底部导航条则被界定为非安全区域。Web组件开启沉浸式效果时，网页内底部元素与导航条可能发生重叠。
 
 **图1** Web组件开启沉浸式效果时网页内底部元素与导航条发生重叠
 
 ![web-safe-area](figures/arkweb_safearea2.png)
 
-Web组件提供了利用W3C CSS进行安全区域计算并避让适配的能力，用来支持异形屏幕设备在沉浸式效果下页面的正常显示，网页开发者可以使用该能力对重叠元素进行避让。ArkWeb内核将持续监测Web组件及系统安全区域的位置与尺寸，依据两者的重叠部分，计算出当前Web组件的安全区域，以及在各个方向上所需避让的具体距离。
+Web组件提供了利用W3C CSS进行安全区域计算并避让适配的能力，用来支持异形屏幕设备在沉浸式效果下页面的正常显示。网页开发者可以使用该能力对重叠元素进行避让。ArkWeb内核将持续监测Web组件及系统安全区域的位置与尺寸，依据两者的重叠部分，计算出当前Web组件的安全区域，以及在各个方向上所需避让的具体距离。
 
 ## 实现场景
 
@@ -21,7 +21,7 @@ Web组件提供了利用W3C CSS进行安全区域计算并避让适配的能力�
 ```cangjie
 // index.cj
 import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
+import ohos.web.webview.WebviewController
 import kit.ArkUI.{ Web, SafeAreaType, SafeAreaEdge }
 
 @Entry
@@ -34,7 +34,7 @@ class EntryView {
             Web(src: 'www.example.com', controller: this.webController)
                 .width(100.percent)
                 .height(100.percent)
-                .expandSafeArea(types: [SafeAreaType.SYSTEM], edges: [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+                .expandSafeArea(types: [SafeAreaType.System], edges: [SafeAreaEdge.Top, SafeAreaEdge.Bottom])
         }
     }
 }
@@ -71,7 +71,7 @@ env(safe-area-inset-left, 1.4rem);
 >
 > `safe-area-inset-*`由四个环境变量组成，分别定义了可视窗口边缘内矩形的`top`、`right`、`bottom`和`left`，确保内容可以安全地放置，避免被非矩形显示区域切断。在矩形视口（如普通2in1设备的显示器）中，这些值等于零。而对于非矩形显示器（例如圆形表盘、移动设备屏幕等），所有内容都将在用户代理设定的四个值所形成的矩形区域内可见。
 
-不同于其他的CSS属性，用户代理定义的属性名字对大小写敏感。同时，需要注意`env()`必须配合`viewport-fit=cover`使用。
+与其他CSS属性不同，用户代理定义的属性名字对大小写敏感。同时，需要注意`env()`必须配合`viewport-fit=cover`使用。
 
 对于一些购物网站，首页网页底部为Tab形式的绝对布局元素，在沉浸式状态下这些绝对布局元素就需要进行底部避让，以防止绝对布局元素与系统导航条发生重叠遮挡，避让效果见图2：
 
@@ -81,7 +81,7 @@ env(safe-area-inset-left, 1.4rem);
 }
 ```
 
-同时，上述`env()`使用还能基于部分数学计算函数`calc()`,`min()`,`max()`组合计算，如：
+同时，`env()`还可结合CSS数学函数`calc()`、`min()`、`max()`进行组合计算，如：
 
 ```html
 .tab-bottom {

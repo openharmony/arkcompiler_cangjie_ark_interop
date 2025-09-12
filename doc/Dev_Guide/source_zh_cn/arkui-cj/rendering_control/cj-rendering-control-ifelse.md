@@ -94,7 +94,7 @@ public class CounterView {
       @State var counter: Int64 = 0;
       var label: String = 'unknown';
       func build() {
-        Column(20) {
+        Column(space: 20) {
           Text("${this.label}")
           Button("counter ${this.counter} +1")
             .onClick({ =>

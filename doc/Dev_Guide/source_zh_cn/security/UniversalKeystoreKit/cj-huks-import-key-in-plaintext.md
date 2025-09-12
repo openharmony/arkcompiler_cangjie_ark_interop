@@ -30,6 +30,9 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 /* 密钥材料 */
 let plainTextSize32: Array<UInt8> = [0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a, 0x7c, 0x86,
@@ -67,9 +70,6 @@ func importKeyFunc(): Unit {
     }
 }
 
-func loggerInfo(str: String) {
-    Hilog.info(0, "CangjieTest", str)
-}
 ```
 
 ### 导入X25519密钥公钥

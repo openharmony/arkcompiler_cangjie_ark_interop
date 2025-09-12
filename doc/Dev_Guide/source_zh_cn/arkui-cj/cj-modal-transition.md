@@ -21,7 +21,6 @@
 
 - 定义模态展示界面。
 
-
    ```cangjie
    // 通过@Builder构建模态展示界面
    @Builder
@@ -36,15 +35,14 @@
 
 - 通过模态接口调起模态展示界面，通过转场动画或者共享元素动画实现对应的动画效果。
 
-
    ```cangjie
    // 模态转场控制变量
-   @State var isPresent: boolean = false
+   @State var isPresent: Bool = false
 
    Button("Click to present model view")
      // 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择None代表系统不加默认动画，通过onDisappear控制状态变量变换
-     .bindContentCover(this.isPresent, this.MyBuilder, ContentCoverOptions(
-               modalTransition: ModalTransition.DEFAULT,
+     .bindContentCover(this.isPresent, this.MyBuilder, options: ContentCoverOptions(
+               modalTransition: ModalTransition.Default,
                onDisappear: {
                 => if (this.isPresent) {
                   this.isPresent = !this.isPresent
@@ -212,13 +210,13 @@ class EntryView {
             .padding(15.percent)
             .margin(top: -30)
             .backgroundColor(Color.White)
-            .shadow(radius: 30, color: 0xaaaaaa)
+            .shadow(radius: 30.0, color: 0xaaaaaa)
             .borderRadius(10.vp)
 
             Column {
                 Text("+ 选择乘车人")
                     .fontSize(18.vp)
-                    .fontColor(Color.ORANGE)
+                    .fontColor(Color(0xFFA500))
                     .fontWeight(FontWeight.Bold)
                     .padding(top: 10.vp, bottom: 10.vp)
                     .width(60.percent)
@@ -227,8 +225,8 @@ class EntryView {
                     .bindContentCover(
                         this.isPresent,
                         this.MyBuilder,
-                        ContentCoverOptions(
-                            modalTransition: ModalTransition.DEFAULT,
+                        options: ContentCoverOptions(
+                            modalTransition: ModalTransition.Default,
                             onDisappear: {
                                 => if (this.isPresent) {
                                     this.isPresent = !this.isPresent
@@ -272,7 +270,7 @@ class EntryView {
     @Builder
     func mySheet() {
         Column {
-            Flex(FlexOptions(direction: FlexDirection.Row, wrap: FlexWrap.Wrap)) {
+            Flex(direction: FlexDirection.Row, wrap: FlexWrap.Wrap) {
                 ForEach(
                     this.menusList,
                     itemGeneratorFunc: {
@@ -287,9 +285,9 @@ class EntryView {
                 )
             }.padding(top: 18.vp)
         }
-            .width(100.percent)
-            .height(100.percent)
-            .backgroundColor(Color.White)
+        .width(100.percent)
+        .height(100.percent)
+        .backgroundColor(Color.White)
     }
 
     func build() {
@@ -301,11 +299,11 @@ class EntryView {
                 Row {
                     Row {
                     }
-                        .width(10.vp)
-                        .height(10.vp)
-                        .backgroundColor(0xa8a8a8)
-                        .margin(right: 12.vp)
-                        .borderRadius(20.vp)
+                    .width(10.vp)
+                    .height(10.vp)
+                    .backgroundColor(0xa8a8a8)
+                    .margin(right: 12.vp)
+                    .borderRadius(20.vp)
                     Column {
                         Text("选择点餐口味和餐具")
                             .fontSize(16.vp)
@@ -316,35 +314,35 @@ class EntryView {
 
                     Row {
                     }
-                        .width(12.vp)
-                        .height(12.vp)
-                        .margin(right: 15.vp)
-                        .border(width: 2.vp, color: 0xcccccc)
-                        .rotate(45)
+                    .width(12.vp)
+                    .height(12.vp)
+                    .margin(right: 15.vp)
+                    .border(width: 2.vp, color: 0xcccccc)
+                    .rotate(angle: 45.0)
                 }
-                    .borderRadius(15.vp)
-                    .shadow(radius: 100, color: 0xededed)
-                    .width(90.percent)
-                    .alignItems(VerticalAlign.Center)
-                    .padding(left: 15.vp, top: 15.vp, bottom: 15.vp)
-                    .backgroundColor(Color.White)
-                    .bindSheet(
-                        this.isShowSheet,
-                        this.mySheet,
-                        options: SheetOptions(
-                            height: SheetSize.FIT_CONTENT,
-                            dragBar: false,
-                            onDisappear: {
-                                => this.isShowSheet = !this.isShowSheet
-                            }
-                        )
+                .borderRadius(15.vp)
+                .shadow(radius: 100.0, color: 0xededed)
+                .width(90.percent)
+                .alignItems(VerticalAlign.Center)
+                .padding(left: 15.vp, top: 15.vp, bottom: 15.vp)
+                .backgroundColor(Color.White)
+                .bindSheet(
+                    this.isShowSheet,
+                    this.mySheet,
+                    options: SheetOptions(
+                        height: SheetSize.FitContent,
+                        dragBar: false,
+                        onDisappear: {
+                            => this.isShowSheet = !this.isShowSheet
+                        }
                     )
-                    .onClick({evt => this.isShowSheet = !this.isShowSheet})
+                )
+                .onClick({evt => this.isShowSheet = !this.isShowSheet})
             }.width(100.percent)
         }
-            .width(100.percent)
-            .height(100.percent)
-            .backgroundColor(0xf1f1f1)
+        .width(100.percent)
+        .height(100.percent)
+        .backgroundColor(0xf1f1f1)
     }
 }
 ```
@@ -362,15 +360,16 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import ohos.hilog.*
 
 @Entry
 @Component
 class EntryView {
     @State
-    var items: Array<Action> = [
-        Action(value: "菜单项1", action: {=> AppLog.info("handle Menu1 select")}),
-        Action(value: "菜单项2", action: {=> AppLog.info("handle Menu2 select")})
-        ]
+    var items: Array<MenuElement> = [
+        MenuElement(value: "菜单项1", action: {=> Hilog.info(0, "cangjie", "handle Menu1 select")}),
+        MenuElement(value: "菜单项2", action: {=> Hilog.info(0, "cangjie", "handle Menu2 select")})
+    ]
 
     func build() {
         Column {
@@ -379,9 +378,9 @@ class EntryView {
                 .borderRadius(5.vp)
                 .bindMenu(this.items)
         }
-            .justifyContent(FlexAlign.Center)
-            .width(100.percent)
-            .height(437.vp)
+        .justifyContent(FlexAlign.Center)
+        .width(100.percent)
+        .height(437.vp)
     }
 }
 ```
@@ -427,7 +426,7 @@ class EntryView {
         }
         .width(140.vp)
         .borderRadius(15.vp)
-        .shadow(radius: 15, color: 0xf1f1f1)
+        .shadow(radius: 15.0, color: 0xf1f1f1)
         .backgroundColor(0xf1f1f1)
     }
 
@@ -449,7 +448,6 @@ class EntryView {
                         item: AppResource, index: Int64 => Row {
                             Image(item)
                                 .width(100.percent)
-                                .draggable(false)
                         }
                         .padding(top: 20.vp, bottom: 20.vp, left: 10.vp, right: 10.vp)
                         .bindContextMenu(builder: this.myMenu, responseType: ResponseType.LongPress)
@@ -487,7 +485,7 @@ class EntryView {
 
     @Builder
     func popupBuilder() {
-        Column(2.vp) {
+        Column(space: 2.vp) {
             Row {
             }
             .width(64.vp)
@@ -512,20 +510,21 @@ class EntryView {
                 })
                 .backgroundColor(0xf56c6c)
                 .bindPopup(
-                    popup: CustomPopupOptions(
+                    this.customPopup,
+                    CustomPopupOptions(
                         builder: bind(popupBuilder, this),
                         placement: Placement.Top,
                         maskColor: Color(0x33000000),
                         popupColor: Color(0xf56c6c),
                         enableArrow: true,
                         autoCancel: true,
+                        showInSubWindow: false,
                         onStateChange: {
                             e => if (!e.isVisible) {
                                 this.customPopup = false
                             }
                         }
-                    ),
-                    show: this.customPopup
+                    )
                 )
         }
         .justifyContent(FlexAlign.Center)
@@ -549,6 +548,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -559,7 +559,7 @@ class EntryView {
     @State
     var isShowShare: Bool = false
     private func shareFunc(): Unit {
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 500),
             {
                 => this.isShowShare = !this.isShowShare
@@ -620,10 +620,10 @@ class EntryView {
                                     .margin(right: 15.vp)
                                     .border(width: 2.vp, color: 0xcccccc)
                                     .borderWidth(EdgeWidths(top: 2.vp, right: 2.vp))
-                                    .rotate(45)
+                                    .rotate(angle: 45.0)
                                 }
                                 .borderRadius(15.vp)
-                                .shadow(radius: 100, color: 0xededed)
+                                .shadow(radius: 100.0, color: 0xededed)
                                 .width(90.percent)
                                 .alignItems(VerticalAlign.Center)
                                 .padding(top: 15.vp, bottom: 15.vp, left: 15.vp)
@@ -656,7 +656,7 @@ class EntryView {
                                 .height(16.vp)
                                 .border(width: 2.vp, color: 0x333333)
                                 .borderWidth(EdgeWidths(top: 2.vp, left: 2.vp))
-                                .rotate(-45)
+                                .rotate(angle: -45.0)
                             }
                             .padding(left: 15.vp, right: 10.vp)
                             .onClick({
@@ -707,10 +707,10 @@ class EntryView {
                                         .margin(right: 15.vp)
                                         .border(width: 2.vp, color: 0xcccccc)
                                         .borderWidth(EdgeWidths(top: 2.vp, right: 2.vp))
-                                        .rotate(45)
+                                        .rotate(angle: 45.0)
                                     }
                                     .borderRadius(15.vp)
-                                    .shadow(radius: 100, color: 0xededed)
+                                    .shadow(radius: 100.0, color: 0xededed)
                                     .width(90.percent)
                                     .alignItems(VerticalAlign.Center)
                                     .padding(left: 15.vp, top: 15.vp, bottom: 15.vp)

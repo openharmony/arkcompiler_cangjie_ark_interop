@@ -20,23 +20,23 @@ class EntryView {
                     Text('shadowOption').fontSize(12)
                 }
                 .width(100)
-                .aspectRatio(1)
+                .aspectRatio(1.0)
                 .margin(10)
                 .justifyContent(FlexAlign.Center)
                 .backgroundColor(Color.White)
                 .borderRadius(20)
-                .shadow(radius: 10, color: Color.Gray)
+                .shadow(radius: 10.0, color: Color.Gray)
 
                 Column() {
                     Text('shadowOption').fontSize(12)
                 }
                 .width(100)
-                .aspectRatio(1)
+                .aspectRatio(1.0)
                 .margin(10)
                 .justifyContent(FlexAlign.Center)
                 .backgroundColor(0xa8a888)
                 .borderRadius(20)
-                .shadow(radius: 10, color: Color.Gray, offsetX: 20, offsetY: 20)
+                .shadow(radius: 10.0, color: Color.Gray, offsetX: 20.0, offsetY: 20.0)
             }
             .width(100.percent)
             .height(100.percent)

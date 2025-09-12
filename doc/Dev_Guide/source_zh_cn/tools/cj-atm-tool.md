@@ -34,9 +34,9 @@ atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <perm
 
 | 参数                                               | 参数说明                  |
 | :-------------------------------------------------- | :---------------------- |
-| -h                                        | 帮助信息。 | atm perm支持的命令集合。 |
-| -g&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -g、-i、-p均为必选参数，通过应用进程的tokenid授予指定权限。返回是否成功。    |
-| -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -c、-i、-p均为必选参数，通过应用进程的tokenid取消指定权限。返回是否成功。    |
+| -h                                        | 帮助信息。atm perm支持的命令集合。 |
+| -g&nbsp;-i \<token-id>&nbsp;-p \<permission-name> | -g、-i、-p均为必选参数，通过应用进程的tokenid授予指定权限。返回是否成功。    |
+| -c&nbsp;-i \<token-id>&nbsp;-p \<permission-name> | -c、-i、-p均为必选参数，通过应用进程的tokenid取消指定权限。返回是否成功。    |
 
 示例：
 
@@ -62,8 +62,8 @@ atm toggle [-h] [-r -s -i <user-id> -p <permission-name> -k <status>] [-r -o -i 
 | 参数                                           | 参数说明                                |
 | :------------------------------------------------------- | :----------------------------------- |
 | -h                                                     | 帮助信息。              |
-| -r&nbsp;-s&nbsp;-i \<user-id\>&nbsp;-p \<permission-name\>&nbsp;-k \<status\> | -r、-s、-i、-p、-k均为必选参数，在指定用户下，设置指定权限的弹窗开关状态为status。返回是否成功。 |
-| -r&nbsp;-o&nbsp;-i \<user-id\>&nbsp;-p \<permission-name\> | -r、-o、-i、-p均为必选参数，在指定用户下，返回指定权限的弹窗开关状态。 |
+| -r&nbsp;-s&nbsp;-i \<user-id>&nbsp;-p \<permission-name>&nbsp;-k \<status> | -r、-s、-i、-p、-k均为必选参数，在指定用户下，设置指定权限的弹窗开关状态为status。返回是否成功。 |
+| -r&nbsp;-o&nbsp;-i \<user-id>&nbsp;-p \<permission-name> | -r、-o、-i、-p均为必选参数，在指定用户下，返回指定权限的弹窗开关状态。 |
 
 示例：
 
@@ -89,8 +89,8 @@ atm toggle [-h] [-u -s -i <user-id> -k <status>] [-u -o -i <user-id>]
 | 参数                                                           | 参数说明                                |
 | :----------------------------------------------------------------- | :----------------------------------- |
 | -h                                                     | 帮助信息。              |
-| -u&nbsp;-s&nbsp;-i \<user-id\>&nbsp;-k \<status\> | -u、-s、-i、-k均为必选参数，在指定用户下，设置权限使用记录开关状态为status。返回是否成功。 |
-| -u&nbsp;-o&nbsp;-i \<user-id\>&nbsp; | -u、-o、-i均为必选参数，在指定用户下，返回权限使用记录开关状态。 |
+| -u&nbsp;-s&nbsp;-i \<user-id>&nbsp;-k \<status> | -u、-s、-i、-k均为必选参数，在指定用户下，设置权限使用记录开关状态为status。返回是否成功。 |
+| -u&nbsp;-o&nbsp;-i \<user-id>&nbsp; | -u、-o、-i均为必选参数，在指定用户下，返回权限使用记录开关状态。 |
 
 示例：
 
@@ -123,15 +123,15 @@ atm dump [-h] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>]] [-r [-
 | ----- | ----- |
 | -h   | 帮助信息。        |
 | -t  | 必选参数，查询系统中所有应用进程信息。  |
-| -t&nbsp;-i \<token-id\>  | 可选参数，通过应用进程的tokenid，查询该应用的基本信息以及对应的[权限信息](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。 |
-| -t&nbsp;-b \<bundle-name\>   |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[权限信息](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。    |
-| -t&nbsp;-n \<process-name\>    |  可选参数，通过应用进程的进程名process-name，查询该应用的基本信息以及对应的[权限信息](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。  |
+| -t&nbsp;-i \<token-id>  | 可选参数，通过应用进程的tokenid，查询该应用的基本信息以及对应的[权限信息](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。 |
+| -t&nbsp;-b \<bundle-name>   |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[权限信息](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。    |
+| -t&nbsp;-n \<process-name>    |  可选参数，通过应用进程的进程名process-name，查询该应用的基本信息以及对应的[权限信息](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus)。  |
 | <!--DelRow-->-r                        |  必选参数，查询系统内的所有权限使用记录 |
-| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenid，查询该应用的权限使用记录 |
-| <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的使用记录  |
+| <!--DelRow-->-r&nbsp;-i \<token-id>        | 可选参数，通过应用进程的tokenid，查询该应用的权限使用记录 |
+| <!--DelRow-->-r&nbsp;-p \<permission-name> | 可选参数，通过权限名，查询该权限的使用记录  |
 | -v     | 必选参数，查询系统中所有应用进程的权限使用类型。   |
-| -v&nbsp;-i \<token-id\> | 可选参数，通过应用进程的tokenid，查询该应用的权限使用类型。  |
-| -v&nbsp;-p \<permission-name\>   | 可选参数，通过权限名，查询该权限的使用类型。   |
+| -v&nbsp;-i \<token-id> | 可选参数，通过应用进程的tokenid，查询该应用的权限使用类型。  |
+| -v&nbsp;-p \<permission-name>   | 可选参数，通过权限名，查询该权限的使用类型。   |
 
 示例：
 

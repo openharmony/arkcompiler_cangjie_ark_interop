@@ -48,6 +48,7 @@ class EntryView {
 <!-- compile -->
 
 ```cangjie
+import ohos.arkui.ui_context.*
 import kit.ArkUI.*
 
 @Entry
@@ -64,7 +65,7 @@ class EntryView {
                     .fontSize(50)
                     .fontWeight(FontWeight.Bold)
                     .onClick {
-                        evt => animateTo(
+                        evt => getUIContext().animateTo(
                             AnimateParam(
                                 duration: 1200,
                                 iterations: 10,
@@ -89,6 +90,7 @@ class EntryView {
 
 ```cangjie
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -166,7 +168,7 @@ class EntryView {
                             } else {
                                 let translateX3 = -100
                             }
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 1200,
                                     iterations: 10,

@@ -24,7 +24,7 @@ The prerequisite for gesture response control is successful gesture recognition;
 
 1. **Business Gesture Workflow**: Refers to the actual business gestures that trigger UI changes, such as PanGesture for page scrolling, TapGesture for triggering clicks, etc.
 
-2. **Monitoring Gesture Workflow**: Refers to dynamically controlling the start and stop of gesture recognizers based on contextual business state changes during the monitoring gesture operation, such as whether a component has reached the edge during nested scrolling. This monitoring event can be implemented using a PanGesture with [Parallel Gesture Binding](./cj-gesture-events-binding.md#parallelgesture-parallel-gesture-binding-method) or by using Touch events.
+2. **Monitoring Gesture Workflow**: Refers to dynamically controlling the start and stop of gesture recognizers based on contextual business state changes during the monitoring gesture operation, such as whether a component has reached the edge during nested scrolling. This monitoring event can be implemented using a PanGesture with Parallel Gesture Binding or by using Touch events.
 
 3. **Setting Parallel Gestures**: This step is not mandatory. A typical scenario is setting parallel scrolling gestures between outer and inner components in nested scrolling.
 

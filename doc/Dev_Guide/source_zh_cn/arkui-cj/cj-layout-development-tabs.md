@@ -21,7 +21,6 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 
 每一个TabContent对应的内容需要有一个页签，可以通过TabContent的tabBar属性进行配置。在如下TabContent组件上设置tabBar属性，可以设置其对应页签中的内容，tabBar作为内容的页签。
 
-
 ```cangjie
  TabContent() {
    Text('首页的内容').fontSize(30)
@@ -30,7 +29,6 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 ```
 
 设置多个内容时，需在Tabs内按照顺序放置。
-
 
 ```cangjie
 Tabs() {
@@ -66,9 +64,8 @@ Tabs() {
 
 导航栏位置使用Tabs的barPosition参数进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
-
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -82,9 +79,8 @@ Tabs(BarPosition.End) {
 
 ![tab-4](figures/tab-4.gif)
 
-
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent的内容，例如:关注、视频、游戏、数码、科技、体育、影视
     // ...
 }
@@ -100,9 +96,8 @@ Tabs(BarPosition.Start) {
 
 实现侧边导航栏需要将Tabs的vertical属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
 
-
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -124,9 +119,8 @@ Tabs(BarPosition.Start) {
 
 控制滑动切换的属性为scrollable，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
 
-
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     TabContent() {
         Column() {
             Tabs() {
@@ -137,7 +131,7 @@ Tabs(BarPosition.End) {
         .backgroundColor(0XFF08A8F1)
         .width(100.percent)
     }
-    .tabBar("首页)
+    .tabBar("首页")
 
     // 其他TabContent内容，例如：发现、推荐、我的
     // ...
@@ -155,9 +149,8 @@ Tabs(BarPosition.End) {
 
 Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
 
-
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -174,9 +167,8 @@ Tabs(BarPosition.End) {
 
 滚动导航栏需要设置Tabs组件的barMode属性，默认值为BarMode.Fixed表示为固定导航栏，BarMode.Scrollable表示可滚动导航栏
 
-
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent的内容，例如：首页、发现、推荐、我的
     // ...
 }
@@ -195,9 +187,8 @@ Tabs(BarPosition.Start) {
 
 设置自定义导航栏需要使用tabBar的参数，以其支持的CustomBuilder的方式传入自定义的函数组件样式。例如这里声明tabBuilder的自定义函数组件，传入参数包括页签文字title，对应位置index，以及选中状态和未选中状态的图片资源。通过当前活跃的currentIndex和页签对应的targetIndex匹配与否，决定UI显示的样式。
 
-
 ```cangjie
-@tate var currentIndex: Int32 = 0
+@State var currentIndex: Int32 = 0
 
 @Builder
 func tabBuilder(title: String, targetIndex: Int32, imgs: Array<AppResource>) {
@@ -218,7 +209,6 @@ func tabBuilder(title: String, targetIndex: Int32, imgs: Array<AppResource>) {
 
 在TabContent对应tabBar属性中传入自定义函数组件，并传递相应的参数。
 
-
 ```cangjie
 TabContent(){
   Text("我的内容").fontSize(30)
@@ -236,7 +226,6 @@ TabContent(){
 ![tab-10](figures/tab-10.gif)
 
 此时需要使用Tabs提供的onChange事件方法，监听索引index的变化，并将当前活跃的index值传递给currentIndex，实现页签的切换。
-
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -264,7 +253,7 @@ public class EntryView {
 
     func build() {
         Column() {
-            Tabs(BarPosition.End){
+            Tabs(barPosition: BarPosition.End){
                 TabContent(){
                     // ...
                 }.tabBar({ =>
@@ -274,19 +263,19 @@ public class EntryView {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("发现", 1)
-                }).backgroundColor(Color.YELLOW)
+                }).backgroundColor(Color(0xFFFF00))
                 TabContent() {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("推荐", 2)
-                }).backgroundColor(Color.PINK)
+                }).backgroundColor(0xFEC0CD)
                 TabContent() {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("我的", 3)
                 }).backgroundColor(Color.Blue)
             }
-            .animationDuration(0)
+            .animationDuration(0.0)
             .backgroundColor(0xF1F3F5)
             .onChange({index =>
                 this.currentIndex = index
@@ -305,23 +294,3 @@ public class EntryView {
 **图12** 切换指定页签
 
 ![tab-12](figures/tab-12.gif)
-
-开发者可以通过Tabs组件的onContentWillChange接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
-
-
-```cangjie
-Tabs(BarPosition.End, this.controller, this.currentIndex){
-  // ...
-}
-.onContentWillChange({currentIndex, commingIndex =>
-    if (commingIndex == 2) {
-        return false
-    } else {
-        return true
-    }
-})
-```
-
-**图13** 支持开发者自定义页面切换拦截事件
-
-![tab-13](figures/tab-13.gif)

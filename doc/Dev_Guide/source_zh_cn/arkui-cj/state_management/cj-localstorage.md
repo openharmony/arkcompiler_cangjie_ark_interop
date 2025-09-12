@@ -123,7 +123,6 @@ LocalStorage根据与@Component装饰的组件的同步类型不同，提供了�
 
 1. @LocalStorageProp/@LocalStorageLink的参数必须为string类型，否则编译期会报错。
 
-
     ```cangjie
     let storage =  LocalStorage()
     let temp = storage.setOrCreate("PropA", 48)
@@ -144,7 +143,6 @@ LocalStorage根据与@Component装饰的组件的同步类型不同，提供了�
 ## 使用场景
 
 ### 应用逻辑使用LocalStorage
-
 
 ```cangjie
 let storage =  LocalStorage()
@@ -386,15 +384,15 @@ class MainAbility <: UIAbility {
     }
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        AppLog.info("MainAbility OnCreated.${want.abilityName}")
+        Hilog.info(0, "cangjie", MainAbility OnCreated.${want.abilityName}")
         match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+            case LaunchReason.START_ABILITY => Hilog.info(0, "cangjie", START_ABILITY")
             case _ => ()
         }
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        AppLog.info("MainAbility onWindowStageCreate.")
+        Hilog.info(0, "cangjie", MainAbility onWindowStageCreate.")
         windowStage.loadContent("EntryView")
     }
 }
@@ -507,7 +505,7 @@ class EntryView {
                 .onClick({evt => this.selectedDate = this.selectedDate.addDays(1);})
             DatePicker( start: DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1),
                         end: DateTime.of(year: 2100, month: Month.of(1), dayOfMonth: 1),
-                        selected: @Binder(this.selectedDate) )
+                        selected: this.selectedDate )
         }
         .width(100.percent)
     }
@@ -658,75 +656,6 @@ class EntryView {
             Button("change")
                 .onClick({evt => model.change("count",this.count+1);})
             }
-    }
-}
-```
-
-### 混合UI开发使用ArkTS的LocalStorage
-
-混合UI开发中可以使用仓颉进行部分页面的UI开发，如果希望能共享ArkTS视图中的LocalStorage实例，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.loadContent。
-
-```ts
-// EntryAbility.ets
-import UIAbility from '@ohos.app.ability.UIAbility';
-import window from '@ohos.window';
-
-export default class EntryAbility extends UIAbility {
-    para:Record<string, string> = { 'PropA': '47' };
-    storage: LocalStorage = new LocalStorage(this.para);
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        windowStage.loadContent('pages/Index', this.storage);
-    }
-}
-```
-
-同时在ArkTS侧将LocalStorage的getShared()注册到globalThis。
-
-```ts
-import { CJHybridComponentV2 } from "cjhybridview" // 导入CJHybridComponentV2
-
-globalThis.localStorageGetShared = LocalStorage.getShared // 将LocalStorage的getShared()注册到globalThis
-
-// 通过getShared接口获取stage共享得LocalStorage实例
-let storage = LocalStorage.getShared()
-@Entry(storage)
-@Component
-struct Index {
-  build() {
-    Column() {
-      CJHybridComponentV2({
-        library: "ohos_app",         // 指定加载的so，对应上面的仓颉UI
-        component: "MyLocalStorage"  // 指定加载的仓颉class，对应上面仓颉UI中使用@HybridComponentEntry修饰的class
-      })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-在仓颉侧可以使用宏`@LocalStorageProp["propName", "InterOp"]`和`@LocalStorageLink["propName", "InterOp"]`与ArkTS视图LocalStorage实例中的属性建立单向和双向同步关系。
-
-
-```cangjie
-package ohos_app
-import kit.HybridUIKit.*
-import ohos.arkui.state_macro_manage.*
-
-@HybridComponentEntry
-@Component
-class MyLocalStorage {
-    @State
-    var text: String = "Text"
-    @LocalStorageLink["PropA", "InterOp"] var storage: String = "b"
-    @LocalStorageProp["PropB", "InterOp"] let storage2: String = "b"
-    public func build() {
-        Column {
-            Text(text).onClick({ evt => storage = "88" })
-            Text("PropA " + storage)
-            Text("PropB " + storage2)
-        }
     }
 }
 ```

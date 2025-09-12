@@ -14,7 +14,9 @@
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
+    import ohos.business_exception.BusinessException
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback0Argument
     ```
 
     > **说明：**
@@ -26,9 +28,12 @@
     <!-- compile -->
 
     ```cangjie
-    class ErrorCallBack <: Callback1Argument<BusinessException> {
-        public open func invoke(error: BusinessException): Unit {
-            AppLog.error("Camera input error code: ${error.code}")
+    class ErrorCallBack <: Callback0Argument {
+        public open func invoke(error:?BusinessException): Unit {
+            if (let Some(e) <- error) {
+                Hilog.error(0,"","Camera input error code: ${e.code}","")
+            }
+
         }
     }
 
@@ -53,11 +58,11 @@
         let sceneModeArray: Array<SceneMode> = cameraManager.getSupportedSceneModes(cameraDevice)
         if (sceneModeArray.size > 0) {
             for (index in 0..sceneModeArray.size) {
-                AppLog.info("Camera SceneMode : ${sceneModeArray[index]}")
+                Hilog.info(0,"","Camera SceneMode : ${sceneModeArray[index]}")
             }
             return sceneModeArray
         } else {
-            AppLog.error("cameraManager.getSupportedSceneModes error")
+            Hilog.error(0,"","cameraManager.getSupportedSceneModes error")
             return []
         }
     }
@@ -75,12 +80,12 @@
         // previewProfiles属性为获取当前设备支持的预览输出流。
         let previewProfilesArray: Array<Profile> = cameraOutputCapability.previewProfiles
         if (!previewProfilesArray.size == 0) {
-            AppLog.error("createOutput previewProfilesArray is empty")
+            Hilog.error(0,"","createOutput previewProfilesArray is empty")
         }
         //photoProfiles属性为获取当前设备支持的拍照输出流。
         let photoProfilesArray: Array<Profile> = cameraOutputCapability.photoProfiles
         if (photoProfilesArray.size == 0) {
-            AppLog.error("createOutput photoProfilesArray is empty")
+            Hilog.error(0,"","createOutput photoProfilesArray is empty")
         }
         return cameraOutputCapability
     }

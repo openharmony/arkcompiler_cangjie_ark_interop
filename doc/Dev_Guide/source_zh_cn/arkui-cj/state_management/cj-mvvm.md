@@ -99,7 +99,7 @@ class EntryView {
             .margin(top: 40.vp, bottom: 10.vp, left: 50.vp)
 
             // 待办事项
-            Row(15){
+            Row(space: 15){
                 if(this.isFinished){
                     // 此处'app.media.ic_public_todo_filled'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
                     Image(@r(app.media.ic_public_todo_filled))
@@ -115,7 +115,7 @@ class EntryView {
                 Text('学习高数')
                 .fontSize(24)
                 .fontWeight(FontWeight.Bold)
-                .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.SOLID)
+                .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough} else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
             }
             .width(100.percent)
             .margin(left: 60, top: 15)
@@ -182,7 +182,7 @@ class ThingsComponent1 {
     @Prop var isFinished: Bool;
 
     func build(){
-        Row(15){
+        Row(space: 15) {
             if(this.isFinished){
                 // 此处'app.media.ic_public_todo_filled'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
                 Image(@r(app.media.ic_public_todo_filled))
@@ -198,7 +198,7 @@ class ThingsComponent1 {
             Text("学习语文")
             .fontSize(24)
             .fontWeight(FontWeight.Bold)
-            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.SOLID)
+            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
         }
         .width(100.percent)
         .margin(left: 60, top: 15)
@@ -211,8 +211,8 @@ class ThingsComponent2 {
     @Prop var isFinished: Bool;
 
     func build(){
-        Row(15){
-            if(this.isFinished){
+        Row(space: 15){
+            if(this.isFinished) {
                 // 此处'app.media.ic_public_todo_filled'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
                 Image(@r(app.media.ic_public_todo_filled))
                 .width(28)
@@ -227,7 +227,7 @@ class ThingsComponent2 {
             Text("学习高数")
             .fontSize(24)
             .fontWeight(FontWeight.Bold)
-            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.SOLID)
+            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough} else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
         }
         .width(100.percent)
         .margin(left: 60, top: 15)
@@ -243,16 +243,12 @@ class EntryView {
 
     func build() {
         Column(){
-
             // 全部待办
             TodoComponent()
-
             // 全选
             AllChooseComponent(isFinished: this.isFinished)
-
             // 待办事项1
             ThingsComponent1(isFinished: this.isFinished)
-
             // 待办事项2
             ThingsComponent2(isFinished: this.isFinished)
         }
@@ -316,7 +312,7 @@ class ThingsComponent {
     @Prop var isFinished: Bool;
     @Prop var things: String;
     func build(){
-        Row(15){
+        Row(space: 15){
             if(this.isFinished){
                 // 此处'app.media.ic_public_todo_filled'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
                 Image(@r(app.media.ic_public_todo_filled))
@@ -332,7 +328,7 @@ class ThingsComponent {
             Text(this.things)
             .fontSize(24)
             .fontWeight(FontWeight.Bold)
-            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.SOLID)
+            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
         }
         .height(8.percent)
         .width(90.percent)
@@ -419,8 +415,8 @@ class TodoListData{
 
 @Component
 class TodoComponent{
-    func build(){
-        Row(){
+    func build() {
+        Row() {
             Text('全部待办')
             .fontSize(30)
             .fontWeight(FontWeight.Bold)
@@ -434,7 +430,7 @@ class TodoComponent{
 class AllChooseComponent {
     @Link var isFinished: Bool;
 
-    func build(){
+    func build() {
         Row(){
             Button("全选", ButtonOptions(shape: ButtonType.Capsule))
             .onClick({event => this.isFinished = !this.isFinished})
@@ -461,7 +457,7 @@ class ThingsComponent{
     }
 
     func build(){
-        Row(15){
+        Row(space: 15){
             if(this.isFinished){
                 // 此处'app.media.ic_public_todo_filled'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
                 this.displayIcon(@r(app.media.ic_public_todo_filled))
@@ -473,7 +469,7 @@ class ThingsComponent{
             Text(this.things)
             .fontSize(24)
             .fontWeight(FontWeight.Bold)
-            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.SOLID)
+            .decoration(decorationType: if(this.isFinished){TextDecorationType.LineThrough}else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
             .onClick({event => this.things += '啦'})
         }
         .height(8.percent)
@@ -496,10 +492,8 @@ class EntryView{
     func build(){
         Column(){
             TodoComponent()
-
             AllChooseComponent(isFinished: this.isFinished)
-
-            List(){
+            List() {
                 ForEach(
                     this.data.planList, {item: String, _:Int64 =>
                         ListItem(){
@@ -588,7 +582,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - index.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.view
 
@@ -624,7 +617,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - thing_model.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.model
 
@@ -639,7 +631,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todolist_model.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.model
@@ -666,7 +657,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - allchoose_component.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view
@@ -699,7 +689,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - thing_component.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.view
 
@@ -717,13 +706,13 @@ View层根据需要来组织，但View层需要区分一下三种组件：
             Image(icon)
             .width(28)
             .height(28)
-            .onClick({ evt: ClickEvent =>
-            this.thingViewModel.updateIsFinish()
-            })
+            .onClick{ evt: ClickEvent =>
+                this.thingViewModel.updateIsFinish()
+                }
         }
 
         func build() {
-            Row(15){
+            Row(space: 15){
                 if(this.thingViewModel.isFinish){
                     // 此处'app.media.ic_public_todo_filled'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
                     this.displayIcon(@r(app.media.ic_public_todo_filled))
@@ -735,8 +724,8 @@ View层根据需要来组织，但View层需要区分一下三种组件：
                 Text(this.thingViewModel.thingName)
                 .fontSize(24)
                 .fontWeight(FontWeight.Bold)
-                .decoration(decorationType: if(this.thingViewModel.isFinish) {TextDecorationType.LineThrough} else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.SOLID)
-                .onClick({event => this.thingViewModel.addSuffixes()})
+                .decoration(decorationType: if (this.thingViewModel.isFinish) {TextDecorationType.LineThrough} else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
+                .onClick{ event => this.thingViewModel.addSuffixes() }
             }
             .height(8.percent)
             .width(95.percent)
@@ -752,7 +741,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todo_component.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view
@@ -775,7 +763,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todolist_component.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view
@@ -807,7 +794,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 - thing_viewmodel.cj
 
-
     ```cangjie
     package ohos_app_cangjie_entry.view_model
 
@@ -836,7 +822,6 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     ```
 
 - todolist_viewmodel.cj
-
 
     ```cangjie
     package ohos_app_cangjie_entry.view_model

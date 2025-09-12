@@ -33,7 +33,6 @@ LazyForEach提供了一个名为keyGenerator的参数，这是一个函数，开
 
 在LazyForEach首次渲染时，会根据上述键值生成规则为数据源的每个数组项生成唯一键值，并创建相应的组件。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -89,7 +88,6 @@ public class EntryView {
 
 当不同数据项生成的键值相同时，框架的行为是不可预测的。例如，在以下代码中，LazyForEach渲染的数据项键值均相同，在滑动过程中，LazyForEach会对划入划出当前页面的子组件进行预加载，而新建的子组件和销毁的原子组件具有相同的键值，框架可能存在取用缓存错误的情况，导致子组件渲染有问题。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -144,7 +142,6 @@ public class EntryView {
 
 #### 添加数据
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -203,7 +200,6 @@ public class EntryView {
 
 #### 删除数据
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -277,7 +273,6 @@ public class EntryView {
 
 #### 交换数据
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -363,7 +358,6 @@ public class EntryView {
 
 #### 改变单个数据
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -448,7 +442,6 @@ public class EntryView {
 
 #### 改变多个数据
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -522,7 +515,6 @@ public class EntryView {
 
 #### 精准批量修改数据
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -596,7 +588,6 @@ public class EntryView {
 
 第二个例子，直接给数组赋值，operations直接从比较原数组和新数组得到。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -653,7 +644,6 @@ public class EntryView {
 
 第一个例子清楚地显示了这一点:
 
- 
 ```cangjie
 // 修改之前的数组
 ["Hello a","Hello b","Hello c","Hello d","Hello e","Hello f","Hello g","Hello h","Hello i","Hello j","Hello k","Hello l","Hello m","Hello n","Hello o","Hello p","Hello q","Hello r"]
@@ -677,7 +667,6 @@ public class EntryView {
 
 若仅靠LazyForEach的刷新机制，当item变化时若想更新子组件，需要将原来的子组件全部销毁再重新构建，在子组件结构较为复杂的情况下，靠改变键值去刷新渲染性能较低。因此框架提供了@Observed与@ObjectLink机制进行深度观测，可以做到仅刷新使用了该属性的组件，提高渲染性能。开发者可根据其自身业务特点选择使用哪种刷新方式。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -744,7 +733,6 @@ public class EntryView {
 
 ### 渲染结果非预期
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -804,7 +792,6 @@ public class EntryView {
 
 修复代码如下所示。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -872,7 +859,6 @@ public class EntryView {
 
 在List的onScrollIndex方法中调用onDataReloaded有产生屏幕闪烁的风险。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -915,7 +901,7 @@ public class EntryView {
                             Text(item)
                                 .width(100.percent)
                                 .height(80)
-                                .backgroundColor(Color.GREY)
+                                .backgroundColor(Color.Gray)
                                 .fontSize(30)
                         }.margin(left: 10, right: 10)
                     }
@@ -938,7 +924,6 @@ public class EntryView {
 
 用onDatasetChange代替onDataReloaded，不仅可以修复闪屏的问题，还能提升加载性能。
 
- 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
 
@@ -983,7 +968,7 @@ public class EntryView {
                             Text(item)
                                 .width(100.percent)
                                 .height(80)
-                                .backgroundColor(Color.GREY)
+                                .backgroundColor(Color.Gray)
                                 .fontSize(30)
                         }.margin(left: 10, right: 10)
                     }
@@ -1006,7 +991,6 @@ public class EntryView {
 
 ### 泛型类型数组的BasicDataSource代码
 
- 
 ```cangjie
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 public open class BasicDataSource<T> <: IDataSource<T> {

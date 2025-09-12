@@ -52,12 +52,12 @@ func testSyncGenerateAesKey() {
 import kit.CryptoArchitectureKit.*
 import ohos.hilog.Hilog
 
-func testSyncGenerateAesKey() {
+func testSyncGenerateSm4Key() {
     // 创建SymKeyGenerator实例。
     let symKeyGenerator = createSymKeyGenerator('SM4_128')
     // 使用密钥生成器随机生成对称密钥。
     let promiseSymKey = symKeyGenerator.generateSymKey()
-    // 获取对称密钥的二进制数据，输出128位字节流。长度为16字节。
+    // 获取对称密钥的二进制数据，输出128位密钥。长度为16字节。
     let encodedKey = promiseSymKey.getEncoded()
     Hilog.info(0,"",'key hex: ${encodedKey.data}')
 }

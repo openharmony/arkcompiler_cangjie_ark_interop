@@ -2,9 +2,9 @@
 
 RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混合内容的输入操作，例如可以输入图文的评论区。具体用法请参见[RichEditor](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md)。
 
-### 创建不使用属性字符串构建的RichEditor组件
+## 创建不使用属性字符串构建的RichEditor组件
 
-使用RichEditor(value: [RichEditorOptions](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#options))接口创建非属性字符串构建的RichEditor组件，一般用于展示简单的图文信息，例如展示联系人的信息，也可以用于内容要求格式统一的场景，例如一些代码编辑器。
+创建非属性字符串构建的RichEditor组件，一般用于展示简单的图文信息，例如展示联系人的信息，也可以用于内容要求格式统一的场景，例如一些代码编辑器。
 
  <!-- run -->
 
@@ -39,7 +39,7 @@ class EntryView {
 
 ### 设置自定义选择菜单
 
-通过[bindSelectionMenu](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-bindselectionmenuricheditorspantype----unit-responsetype-selectionmenuoptions)设置自定义选择菜单。
+通过[bindSelectionMenu](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-bindselectionmenuricheditorspantype-custombuilder-responsetype-selectionmenuoptions)设置自定义选择菜单。
 
 组件原本具有默认的文本选择菜单，包含复制、剪切和全选的功能。用户可使用该属性设定自定义菜单，例如翻译英文、加粗字体等丰富的菜单功能。
 
@@ -77,16 +77,14 @@ class EntryView {
     func build() {
         Scroll() {
             Column {
-                Text("这是一段文本，用来展示选中菜单", controller:   TextController())
-                    .fontSize(30)
-                    .copyOption(CopyOptions.InApp)
-                    .bindSelectionMenu(TextSpanType.TEXT, bind  (RightClickTextCustomMenu, this),     TextResponseType.LONG_PRESS,
-                        onDisappear: {
+                RichEditor(RichEditorController())
+                    .bindSelectionMenu(spantype: RichEditorSpanType.Text, content: {=>}, responseType: ResponseType.LongPress,
+                        options: SelectionMenuOptions( onDisappear: {
                             => Hilog.info(0, " ", "自定义选择菜单关闭时  触发该回调")
                         },
                         onAppear: {
-                            _: Int32, _: Int32 => Hilog.info(0, " ", "自定义选择菜单弹出时回调")
-                        })
+                            => Hilog.info(0, " ", "自定义选择菜单弹出时回调")
+                        }))
             }
         }
     }
@@ -99,7 +97,7 @@ class EntryView {
 
 ### 添加组件初始化完成后可触发的回调
 
-通过[onReady](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onready---unit)来添加组件初始化完成后可触发的回调。
+通过[onReady](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onreadyvoidcallback)来添加组件初始化完成后可触发的回调。
 
 该回调可在组件初始化后，有效地展示包括图文和表情在内的丰富内容。例如，利用富文本组件展示新闻时，此回调可触发从服务器获取图文数据的操作。随后，将获取到的数据填充至组件中，确保组件在初始化完成后能够迅速在页面上呈现完整的新闻内容。
 
@@ -134,7 +132,7 @@ class EntryView {
 
 ### 添加组件内容被选中时可触发的回调
 
-通过[onSelect](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onselectricheditorselection---unit)来添加组件内容被选中时可触发的回调。
+通过[onSelect](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onselectcallbackricheditorselectionunit)来添加组件内容被选中时可触发的回调。
 
 该回调可在文本选择后增强操作体验。例如，在选中文本后，可在回调中触发弹出菜单，以便用户进行文本样式的修改。或者对选中的文本进行内容分析和处理，为用户提供输入建议，从而提升文本编辑的效率和便捷性。
 
@@ -179,7 +177,7 @@ class EntryView {
 
 ### 添加图文变化前和图文变化后可触发的回调
 
-通过[onDidChange](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-ondidchangetextrange-textrange---unit)添加图文变化后可触发的回调。此回调适用于内容保存与同步，例如在用户完成内容编辑后，可使用该回调自动将最新内容保存至本地或同步至服务器。此外，它还适用于内容状态更新与渲染，例如在待办事项列表应用中，用户编辑富文本格式的待办事项描述后，可使用该回调更新待办事项在列表中的显示样式。
+通过[onDidChange](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-ondidchangeondidchangecallback)添加图文变化后可触发的回调。此回调适用于内容保存与同步，例如在用户完成内容编辑后，可使用该回调自动将最新内容保存至本地或同步至服务器。此外，它还适用于内容状态更新与渲染，例如在待办事项列表应用中，用户编辑富文本格式的待办事项描述后，可使用该回调更新待办事项在列表中的显示样式。
 
  <!-- run -->
 
@@ -220,7 +218,7 @@ class EntryView {
 
 ### 添加输入法输入内容前和完成输入后可触发的回调
 
-在添加输入法输入内容前，可以通过[aboutToIMEInput](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-abouttoimeinputricheditorinsertvalue---bool)触发回调。在输入法完成输入后，可以通过[onIMEInputComplete](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onimeinputcompletericheditortextspanresult---unit)触发回调。
+在添加输入法输入内容前，可以通过[aboutToIMEInput](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-abouttoimeinputcallbackricheditorinsertvaluebool)触发回调。在输入法完成输入后，可以通过[onIMEInputComplete](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onimeinputcompletecallbackricheditortextspanresultunit)触发回调。
 
 这两种回调机制适用于智能输入辅助。例如：在用户开始输入文本前，利用回调提供词汇联想，在用户完成输入后，利用回调执行自动化纠错或格式转换。
 
@@ -265,7 +263,7 @@ class EntryView {
 
 ### 添加完成粘贴前可触发的回调
 
-通过[onPaste](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#onpastepasteevent---unit)添加完成粘贴前可触发的回调。
+通过[onPaste](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-onpastepasteeventcallback)添加完成粘贴前可触发的回调。
 
 此回调适用于内容格式的处理。例如，当用户复制包含HTML标签的文本时，可在回调中编写代码，将其转换为富文本组件所支持的格式，同时剔除不必要的标签或仅保留纯文本内容。
 
@@ -278,7 +276,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
-import ohos.component
 
 @Entry
 @Component
@@ -308,7 +305,7 @@ class EntryView {
 
 ## 添加文本内容
 
-除了直接在组件内输入内容，也可以通过[addTextSpan](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-addtextspanstring-richeditortextspanoptions)添加文本内容。
+除了直接在组件内输入内容，也可以通过[addTextSpan](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md#func-addtextspanresourcestr-richeditortextspanoptions)添加文本内容。
 
 此接口可以实现文本样式多样化，例如需要创建混合样式文本。
 
@@ -334,9 +331,9 @@ class EntryView {
                 .width(200)
                 .height(300)
                 .fontSize(13)
-                .onClick({=>
+                .onClick{ evt =>
                     this.controller.addTextSpan(value:"新添加一段文字。")
-                })
+                }
             RichEditor(this.controller)
                 .width(200)
                 .height(200)
@@ -362,7 +359,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
-import ohos.component
 
 @Entry
 @Component
@@ -376,14 +372,14 @@ class EntryView {
                     .width(200)
                     .height(300)
                     .fontSize(13)
-                    .onClick({=>
+                    .onClick{ evt =>
                         this.controller.addImageSpan(value: @r(app.media.startIcon),
                         options: RichEditorImageSpanOptions(
                             imageStyle: RichEditorImageSpanStyle(
                                 size: (24.vp, 24.vp)
                             )
                         ))
-                    })
+                    }
                 RichEditor(this.controller)
                     .onReady({=>
                         this.controller.addTextSpan(value:"对此处文本进行复制粘贴操作可触发对应回调。")}).width(200).height(200)

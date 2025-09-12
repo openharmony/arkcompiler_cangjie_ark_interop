@@ -45,7 +45,7 @@ devicedebug kill
 | 命令 | 描述 |
 | -------- |-------|
 | help/-h | 帮助信息。|
-| -\<signal\> \<pid\> |  必选字段，signal（1-64）为终止信号，终止pid对应的debug类型的应用进程。 |
+| -\<signal> \<pid> |  必选字段，signal（1-64）为终止信号，终止pid对应的debug类型的应用进程。 |
 
 **返回值：**
 

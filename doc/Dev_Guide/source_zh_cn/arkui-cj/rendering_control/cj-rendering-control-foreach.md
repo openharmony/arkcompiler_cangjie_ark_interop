@@ -322,7 +322,7 @@ class EntryView {
             Hilog.info(0,"here","here")
     }
     func build() {
-        Column(5) {
+        Column(space: 5) {
             List() {
                 ForEach(this.articleList, itemGeneratorFunc: {item: Article,idx:Int64  =>
                     ListItem() {
@@ -333,15 +333,6 @@ class EntryView {
             .onReachEnd( {=>
                 this.isListReachEnd = true
             })
-            .parallelGesture(
-                PanGesture()
-                .onActionStart({e=>
-                    if (this.isListReachEnd) {
-                    this.loadMoreArticles()
-                    this.isListReachEnd = false
-                    }
-                })
-        )
         .padding(20)
         .scrollBar(BarState.Off)
         }
@@ -408,9 +399,9 @@ class EntryView {
             Button() {
                 Text('在第1项后插入新项').fontSize(30)
             }
-            .onClick({=>
+            .onClick{ evt =>
                 this.simpleList.insert(1,'new item')
-            })
+            }
             ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>ChildItem(item: item)
             },keyGeneratorFunc: {item: String, index: Int64 => index.toString()}
             )
@@ -472,8 +463,8 @@ class EntryView {
             Button() {
             Text('在第1项后插入新项').fontSize(30)
             }
-            .onClick({=>this.simpleList.insert(1,'new item')
-            })
+            .onClick{ evt =>this.simpleList.insert(1,'new item')
+            }
             ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>
             ChildItem(item: item)}
             )
@@ -507,7 +498,6 @@ class EntryView {
 尽管此示例中界面渲染的结果符合预期，但每次插入一条新数组项时，ForEach都会为从该数组项起后面的所有数组项全部重新创建组件。当数据源数据量较大或组件结构复杂时，由于组件无法得到复用，将导致性能体验不佳。因此，除非必要，否则不推荐将第三个参数keyGeneratorFunc函数处于缺省状态，以及在键值生成规则中包含数据项索引index。
 
 正确渲染并保证效率的ForEach写法是：
-
 
 ```cangjie
 ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>ChildItem(item: item)}, keyGeneratorFunc: {item: String, index: Int64 => item})

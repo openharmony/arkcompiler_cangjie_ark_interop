@@ -36,20 +36,17 @@ PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的
 
 1.初始化PersistentStorage：
 
-
 ```cangjie
 PersistentStorage.persistProp("aProp",47)
 ```
 
 2.在AppStorage获取对应属性：
 
-
 ```cangjie
 AppStorage.get<Int64>("aProp")
 ```
 
 &nbsp;&nbsp;或在组件内部定义
-
 
 ```cangjie
 @StorageLink["aProp"] var aProp : Int64 = 48
@@ -74,7 +71,9 @@ class EntryView {
         Row(){
             Column(){
                 Text("${this.aProp}")
-                    .onClick({etv=> this.aProp += 1;})
+                    .onClick{
+                        etv=> this.aProp += 1
+                    }
             }
         }
     }
@@ -107,7 +106,6 @@ class EntryView {
 
 该示例为反例。在调用PersistentStorage.persistProp或者persistProps之前使用接口访问AppStorage中的属性是错误的，因为这样的调用顺序会丢失上一次应用程序运行中的属性值：
 
-
 ```cangjie
 let aProp = AppStorage.setOrCreate("aProp", 47)
 let temp = PersistentStorage.persistProp("aProp", 48)
@@ -120,7 +118,6 @@ PersistentStorage.persistProp("aProp", 48)：在PersistentStorage中查找到"aP
 ### 在PersistentStorage之后访问AppStorage中的属性
 
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
-
 
 ```cangjie
 let temp = PersistentStorage.persistProp("aProp", 48)

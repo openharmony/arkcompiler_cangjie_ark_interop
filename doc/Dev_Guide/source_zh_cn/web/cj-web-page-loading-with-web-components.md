@@ -23,8 +23,12 @@
 ```cangjie
 // index.cj
 import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
-import kit.ArkUI.{ Web, BusinessException }
+import ohos.web.webview.WebviewController
+import kit.ArkUI.{ Web }
+
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -38,7 +42,7 @@ class EntryView {
                     // 点击按钮时，通过loadUrl，跳转到www.example1.com
                     webController.loadUrl('www.example1.com')
                 } catch (e: BusinessException) {
-                    AppLog.error("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
+                    loggerError("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
                 }
             }
             // 组件创建时，加载www.example.com
@@ -74,9 +78,13 @@ class EntryView {
     ```cangjie
     // index.cj
     import ohos.arkui.state_macro_manage.*
-    import kit.LocalizationKit.{__GenerateResource__}
-    import kit.ArkWeb.WebviewController
-    import kit.ArkUI.{ Web, BusinessException }
+    import kit.LocalizationKit.*
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{ Web }
+
+    func loggerError(str: String) {
+        Hilog.error(0, "CangjieTest", str)
+    }
 
     @Entry
     @Component
@@ -90,7 +98,7 @@ class EntryView {
                         // 点击按钮时，通过loadUrl，跳转到local1.html
                         webController.loadUrl(@rawfile("local1.html"))
                     } catch (e: BusinessException) {
-                        AppLog.error("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
+                        loggerError("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
                     }
                 }
                 // 组件创建时，通过$rawfile加载本地文件local.html
@@ -161,7 +169,7 @@ class EntryView {
     ```cangjie
     // index.cj
     import ohos.arkui.state_macro_manage.*
-    import kit.ArkWeb.WebviewController
+    import ohos.web.webview.WebviewController
     import kit.ArkUI.Web
 
     @Entry
@@ -198,67 +206,38 @@ class EntryView {
     <!-- compile -->
 
    ```cangjie
-   // main_ability.cj
+    // main_ability.cj
+    import kit.PerformanceAnalysisKit.Hilog
 
-   class MainAbility <: UIAbility {
-      public init() {
-          super()
-          registerSelf()
-      }
+    func loggerInfo(str: String) {
+        Hilog.info(0, "CangjieTest", str)
+    }
 
-      public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-          AppLog.info("MainAbility OnCreated.${want.abilityName}")
-          // 通过在GlobalContext对象上绑定filesDir，可以实现Ability组件与UI之间的数据同步。
-          GlobalContext.getInstance().setValue("filesDir", this.context.filesDirectory)
-          match (launchParam.launchReason) {
-              case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-              case _ => ()
-          }
-      }
+    class MainAbility <: UIAbility {
+        public init() {
+            super()
+            registerSelf()
+        }
 
-      public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-          AppLog.info("MainAbility onWindowStageCreate.")
-          windowStage.loadContent("EntryView")
-      }
-      // ...
-   }
+        public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+            loggerInfo("MainAbility OnCreated.${want.abilityName}")
+            // 通过在GlobalContext对象上绑定filesDir，可以实现Ability组件与UI之间的数据同步。
+            GlobalContext.getInstance().setValue("filesDir", this.context.filesDir)
+            match (launchParam.launchReason) {
+                case LaunchReason.START_ABILITY => loggerInfo("START_ABILITY")
+                case _ => ()
+            }
+        }
+
+        public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+            loggerInfo("MainAbility onWindowStageCreate.")
+            windowStage.loadContent("EntryView")
+        }
+        // ...
+    }
    ```
 
 ## 加载HTML格式的文本数据
-
-当开发者不需要加载整个页面，只需要显示一些页面片段时，可通过此功能来快速加载页面，当加载大量html文件时，需设置第四个参数baseUrl为"data"。
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
-import kit.ArkUI.{ Web, BusinessException }
-
-@Entry
-@Component
-class EntryView {
-    let webController = WebviewController()
-
-    func build() {
-        Column {
-            Button("loadData").onClick { evt =>
-                try {
-                    // 点击按钮时，通过loadData，加载HTML格式的文本数据
-                    webController.loadData("<html><body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
-                      "text/html",
-                      "UTF-8")
-                } catch (e: BusinessException) {
-                    AppLog.error("loadData ErrorCode: ${e.code},  Message: ${e.message}")
-                }
-            }
-            // 组件创建时，加载www.example.com
-            Web(src: 'www.example.com', controller: webController)
-        }
-    }
-}
-```
 
 Web组件可以通过data url方式直接加载HTML字符串。
 
@@ -267,7 +246,7 @@ Web组件可以通过data url方式直接加载HTML字符串。
 ```cangjie
 // index.cj
 import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
+import ohos.web.webview.WebviewController
 import kit.ArkUI.Web
 
 @Entry

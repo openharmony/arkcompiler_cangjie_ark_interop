@@ -8,7 +8,6 @@ Text可通过以下两种方式来创建：
 
 - string字符串。
 
-
   ```cangjie
   Text('我是一段文本')
   ```
@@ -18,7 +17,6 @@ Text可通过以下两种方式来创建：
 - 引用AppResource资源。
 
   资源引用类型可以通过@r创建AppResource类型对象，文件位置为/resources/base/element/string.json，具体内容如下：
-
 
   ```cangjie
   {
@@ -30,7 +28,6 @@ Text可通过以下两种方式来创建：
     ]
   }
   ```
-
 
   ```cangjie
   Text(@r(app.string.module_desc))
@@ -94,12 +91,12 @@ Text可通过以下两种方式来创建：
           Scroll {
               Column {
                   Text() {
-                      Span('我是Span1，').fontSize(16).fontColor(Color.GREY)
+                      Span('我是Span1，').fontSize(16).fontColor(Color.Gray)
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red)
                       Span('我是Span2').fontColor(Color.Blue).fontSize(16)
                         .fontStyle(FontStyle.Italic)
                         .decoration(decorationType: TextDecorationType.Underline, color: Color.Black)
-                      Span('，我是Span3').fontSize(16). fontColor(Color.GREY)
+                      Span('，我是Span3').fontSize(16). fontColor(Color.Gray)
                         .decoration(decorationType: TextDecorationType.Overline, color: Color.Green)
                   }
                   .borderWidth(1)
@@ -156,6 +153,7 @@ Text可通过以下两种方式来创建：
   import kit.ArkUI.*
   import ohos.arkui.state_macro_manage.*
   import ohos.resource_manager.*
+  import ohos.hilog.*
 
   @Entry
   @Component
@@ -167,7 +165,7 @@ Text可通过以下两种方式来创建：
                         Span('I am Upper-span').fontSize(12)
                             .textCase(TextCase.UpperCase)
                             .onClick{evt =>
-                                AppLog.info('我是Span——onClick')
+                                Hilog.info(1，'1', 'test', '我是Span——onClick')
                             }
                     }
               }
@@ -243,13 +241,6 @@ Text可通过以下两种方式来创建：
                   Text('我是超长文本，超出的部分显示省略号。I am an extra long text, with ellipses displayed for any excess。')
                       .width(250)
                       .textOverflow(TextOverflow.Ellipsis)
-                      .maxLines(1)
-                      .fontSize(12)
-                      .border(width: 1)
-                      .padding(10)
-                  Text('当文本溢出其尺寸时，文本将滚动显示。When the text overflows its dimensions, the text will scroll for displaying.')
-                      .width(250)
-                      .textOverflow(TextOverflow.MARQUEE)
                       .maxLines(1)
                       .fontSize(12)
                       .border(width: 1)
@@ -383,52 +374,6 @@ Text可通过以下两种方式来创建：
 
   ![Textdisply9](figures/Textdisply9.png)
 
-- 通过[letterSpacing](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#letterspacinglength)属性设置文本字符间距。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-
-  @Entry
-  @Component
-  class EntryView {
-      func build() {
-          Scroll {
-              Column {
-                  Text('This is the text content with letterSpacing 0.')
-                      .letterSpacing(0)
-                      .fontSize(12)
-                      .border(width: 1)
-                      .padding(10)
-                      .width(100.percent)
-                      .margin(5)
-                  Text('This is the text content with letterSpacing 3.')
-                      .letterSpacing(3)
-                      .fontSize(12)
-                      .border(width: 1)
-                      .padding(10)
-                      .width(100.percent)
-                      .margin(5)
-                  Text('This is the text content with letterSpacing -1.')
-                      .letterSpacing(-1)
-                      .fontSize(12)
-                      .border(width: 1)
-                      .padding(10)
-                      .width(100.percent)
-                      .margin(5)
-              }
-              .height(100.percent)
-              .width(100.percent)
-          }
-      }
-  }
-  ```
-
-  ![Textdisply10](figures/Textdisply10.png)
-
 - 通过[minFontSize](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#minfontsizelength)与[maxFontSize](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#maxfontsizelength)自适应字体大小。
 
   minFontSize用于设置文本的最小显示字号，maxFontSize用于设置文本的最大显示字号。这两个属性必须同时设置才能生效，并且需要与[maxLines](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#maxlinesint32)属性或布局大小限制配合使用，单独设置任一属性将不会产生效果。
@@ -531,34 +476,6 @@ Text可通过以下两种方式来创建：
 
   ![Textdisply12](figures/Textdisply12.png)
 
-- 通过[copyOption](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#copyoptioncopyoptions)属性设置文本是否可复制粘贴。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-
-  @Entry
-  @Component
-  class EntryView {
-      func build() {
-          Scroll {
-              Column {
-                  Text("这是一段可复制文本")
-                      .fontSize(30)
-                      .copyOption(CopyOptions.InApp)
-              }
-              .height(100.percent)
-              .width(100.percent)
-          }
-      }
-  }
-  ```
-
-  ![Textdisply13](figures/Textdisply13.png)
-
 ## 添加事件
 
 Text组件可以添加通用事件，可以绑定[onClick](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md#func-onclickclickevent---unit)、[onTouch](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-touch.md#func-ontouchtouchevent-unit)等事件来响应操作。
@@ -569,6 +486,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../../../API_Referenc
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import ohos.hilog.*
 
 @Entry
 @Component
@@ -578,7 +496,7 @@ class EntryView {
             Column {
                 Text('点我')
                     .onClick{ evt =>
-                        AppLog.info('我是Text的点击响应事件')
+                        Hilog.info(1，'1', 'test', '我是Text的点击响应事件')
                     }
             }
             .height(100.percent)
@@ -587,135 +505,6 @@ class EntryView {
     }
 }
 ```
-
-## 选中菜单
-
-- Text被选中时会弹出包含复制、翻译的菜单。
-
-  Text组件需要设置[copyOption](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#func-copyoptioncopyoptions)属性才可以被选中。
-
-
-  ```cangjie
-  Text("这是一段文本，用来展示选中菜单")
-      .fontSize(30)
-      .copyOption(CopyOptions.InApp)
-  ```
-
-  ![Textdisply14](figures/Textdisply14.png)
-
-- Text组件通过设置[bindSelectionMenu](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#func-bindselectionmenutextspantype----unit-textresponsetype-int32int32---unit----unit)属性绑定自定义选择菜单。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-  import ohos.resource_manager.*
-  import kit.PerformanceAnalysisKit.Hilog
-  import std.collection.ArrayList
-
-  @Entry
-  @Component
-  class EntryView {
-      let controller: TextController = TextController()
-      @Builder
-      func RightClickTextCustomMenu() {
-              Menu() {
-                  MenuItemGroup(header: "", footer: "") {
-                      =>
-                      MenuItem(startIcon: @r(app.media.startIcon),   endIcon: @r(app.string.blank), content: @r(app.string.content1), labelInfo: @r(app.string.blank) )
-                        .onChange ({ selected =>
-                          // 使用closeSelectionMenu接口关闭菜单
-                          this.controller.closeSelectionMenu()
-                        })
-                      MenuItem(startIcon: @r(app.media.startIcon),   endIcon: @r(app.string.blank), content: @r(app.string.content2), labelInfo: @r(app.string.blank) )
-                      MenuItem(startIcon: @r(app.media.startIcon),   endIcon: @r(app.string.blank), content: @r(app.string.content3), labelInfo: @r(app.string.blank) )
-                  }
-              }.backgroundColor(0XF0F0F0)
-      }
-      func build() {
-          Scroll() {
-              Column {
-                  Text("这是一段文本，用来展示选中菜单", controller:   TextController())
-                      .fontSize(30)
-                      .copyOption(CopyOptions.InApp)
-                      .bindSelectionMenu( TextSpanType.TEXT, bind  (RightClickTextCustomMenu, this),   TextResponseType.LONG_PRESS,
-                      onDisappear: {
-                          => Hilog.info(0, '', '自定义选择菜单关闭时  触发该回调')
-                      },
-                      onAppear: {
-                          _: Int32, _: Int32 => Hilog.info(0, '', '自  定义选择菜单弹出时回调')
-                      })
-              }
-          }
-      }
-  }
-  ```
-
-  ![Textdisply2](figures/Textdisply2.gif)
-
-- Text组件通过设置[editMenuOptions](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md#func-editmenuoptionsarraytextmenuitem---arraytextmenuitem-textmenuitem-int32-int32---bool)属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-  import ohos.resource_manager.*
-  import kit.PerformanceAnalysisKit.Hilog
-  import std.collection.ArrayList
-
-  @Entry
-  @Component
-  class EntryView {
-      func onCreateMenu(menuItems: Array<TextMenuItem>)  : Array<TextMenuItem> {
-          let items = ArrayList<TextMenuItem>()
-          for (item in menuItems) {
-              if (item.id.equals(TextMenuItemId.  CUT) || item.id.equals(TextMenuItemId.  COPY) || item
-                  .id
-                  .equals(TextMenuItemId.SELECT_ALL)) {
-                  items.add(item)
-              }
-          }
-          let customItem1 = TextMenuItem(content:   "custom1", id: TextMenuItemId.of  ("customItem1"))
-          let customItem2 = TextMenuItem(content:   "custom2", icon: @r(app.media.startIcon),
-              id: TextMenuItemId.of("customItem2"))
-          let customItem3 = TextMenuItem(content: @r(app.string.customItem3), icon: @r(app.media.startIcon),
-              id: TextMenuItemId.of("customItem3"))
-          items.add(customItem1)
-          items.add(customItem2)
-          items.add(customItem3)
-          return items.toArray()
-      }
-      func onMenuItemClick(menuItem: TextMenuItem,   start: Int32, end: Int32): Bool {
-          if (menuItem.id.equals(TextMenuItemId.of  ("custom2"))) {
-              Hilog.info(0, "", "拦截 id: customMenu2   start: ${start}; end: ${end}")
-              return true
-          }
-          if (menuItem.id.equals(TextMenuItemId.COPY))   {
-              Hilog.info(0, "", "拦截 COPY start: $  {start}; end: ${end}")
-              return true
-          }
-          if (menuItem.id.equals(TextMenuItemId.  SELECT_ALL)) {
-              Hilog.info(0, "", "不拦截 SELECT_ALL   start: ${start}; end: ${end}")
-              return false
-          }
-          return false
-      }
-      func build() {
-          Column() {
-              Text("这是一段文本，用来展示选中菜单")
-                .fontSize(20)
-                .copyOption(CopyOptions.LocalDevice)
-                .editMenuOptions(onCreateMenu,onMenuItemClick)
-          }
-      }
-  }
-  ```
-
-  ![Textdisply1](figures/Textdisply1.gif)
 
 ## 场景示例
 
@@ -775,7 +564,7 @@ class EntryView {
                 }.width(100.percent).margin(5)
 
             Row() {
-                Text("3").fontSize(14).fontColor(Color.ORANGE).margin(left: 10, right: 10)
+                Text("3").fontSize(14).fontColor(Color(0xFFA500)).margin(left: 10, right: 10)
                 Text("我是热搜词条3")
                     .fontSize(12)
                     .fontColor(Color.Blue)
@@ -796,7 +585,7 @@ class EntryView {
                 }.width(100.percent).margin(5)
 
             Row() {
-                Text("4").fontSize(14).fontColor(Color.GREY).margin(left: 10, right: 10)
+                Text("4").fontSize(14).fontColor(Color.Gray).margin(left: 10, right: 10)
                 Text("我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4")
                     .fontSize(12)
                     .fontColor(Color.Blue)

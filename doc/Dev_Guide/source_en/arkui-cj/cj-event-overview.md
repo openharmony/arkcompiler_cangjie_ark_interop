@@ -15,9 +15,3 @@ Common events are categorized by their trigger types, including touchscreen even
 - [Event Distribution](./cj-common-events-distribute.md): Describes the hit collection process of the response chain for touch-based events (excluding key and focus events).
 
 Gesture events consist of gesture binding methods and bound gestures. Bound gestures can be divided into two types: single gestures and combined gestures, distinguished by their complexity levels.
-
-- [Gesture Binding Methods](./cj-gesture-events-binding.md): Used to bind single gestures or combined gestures to components and declare the response priority of the bound gestures.
-
-- [Single Gestures](./cj-gesture-events-single-gesture.md): The basic units of gestures, serving as building blocks for all complex gestures.
-
-- [Combined Gestures](./cj-gesture-events-combined-gestures.md): Composed of multiple single gestures, which can be combined into combined gestures according to declared rules and used accordingly.
