@@ -448,7 +448,6 @@ public macro Bar(input: Tokens): Tokens {
 
 `pkg2` 包中定义 `addToMul` 宏：
 
-
 <!-- run -macro9 -->
 <!-- cfg="--compile-macro" -->
 

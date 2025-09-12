@@ -36,7 +36,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     return newObjValue
 }
 
-
 let EXPORT_MODULE = JSModule.registerModule {
     runtime, exports => exports["doSth"] = runtime.function(doSth).toJSValue()
 }
@@ -69,7 +68,6 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 
     return newObjValue
 }
-
 
 let EXPORT_MODULE = JSModule.registerModule {
     runtime, exports => exports["doSth"] = runtime.function(doSth).toJSValue()

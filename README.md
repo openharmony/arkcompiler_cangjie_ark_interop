@@ -66,6 +66,7 @@ At the same time, in response to the development complexity brought about by int
 ![Cangjie interoperability flow chart](./figures/api_eng.png)
 
 Module Description:
+
 - Interop Libraries: Developers can call APIs provided by Interop to achieve cross-language parameter passing, function calling, and other capabilities.
 - Interop macros: Developers use interoperability macros to mark Cangjie interfaces that need to be called by ArkTS code, and can automatically generate interop "glue" code and ArkTS interface declarations.
 
