@@ -13,7 +13,7 @@ import kit.BasicServicesKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -45,13 +45,13 @@ public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Co
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|subscribeInfo|[CommonEventSubscribeInfo](#class-commoneventsubscribeinfo)|是|-|表示订阅信息。|
+|subscribeInfo|[CommonEventSubscribeInfo](./cj-apis-common_event_subscribe_info.md#class-commoneventsubscribeinfo)|是|-|表示订阅信息。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[CommonEventSubscriber](#class-commoneventsubscriber)|订阅者对象。|
+|[CommonEventSubscriber](./cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|订阅者对象。|
 
 **示例：**
 
@@ -77,61 +77,10 @@ try {
 }
 ```
 
-### static func publish(String)
-
-```cangjie
-public static func publish(event: String): Unit
-```
-
-**功能：** 发布公共事件。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|String|是|-|表示要发送的公共事件。|
-
-**异常：**
-
-- BusinessException：对应错误码的详细介绍请参见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
-
-  | 错误码ID | 错误信息                            |
-  | :------- | :----------------------------------- |
-  | 1500004 | not System services.                |
-  | 1500007 | error sending message to Common Event Service. |
-  | 1500008 | Common Event Service does not complete initialization. |
-  | 1500009 | error obtaining system parameters.  |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.BasicServicesKit.*
-import kit.PerformanceAnalysisKit.Hilog
-import ohos.base.*
-import ohos.business_exception.*
-
-try {
-    //发布公共事件
-    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON)
-} catch (e: BusinessException) {
-    let code = e.code
-    let message = e.message
-    Hilog.error(0, "AppLogCj", "publish failed, error code: ${code}, message: ${message}.")
-}
-```
-
 ### static func publish(String, CommonEventPublishData)
 
 ```cangjie
-public static func publish(event: String, options!: CommonEventPublishData = CommonEventPublishData()): Unit
+public static func publish(event: String, options!: CommonEventPublishData =  CommonEventPublishData()): Unit
 ```
 
 **功能：** 发布公共事件。
@@ -145,7 +94,7 @@ public static func publish(event: String, options!: CommonEventPublishData = Com
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|String|是|-|表示要发送的公共事件。|
-|options|[CommonEventPublishData](#struct-commoneventpublishdata)|否|CommonEventPublishData()|**命名参数。**表示发布公共事件的属性。|
+|options|[CommonEventPublishData](./cj-apis-common_event_publish_data.md#class-commoneventpublishdata)|否|CommonEventPublishData()|**命名参数。**表示发布公共事件的属性。|
 
 **异常：**
 
@@ -153,7 +102,7 @@ public static func publish(event: String, options!: CommonEventPublishData = Com
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 1500004 | If not System services or System app. |
+  | 1500003 | The common event sending frequency too high. |
   | 1500007 | If error sending message to Common Event Service. |
   | 1500008 | If Common Event Service does not complete initialization. |
   | 1500009 | If error obtaining system parameters. |
@@ -182,10 +131,10 @@ try {
 }
 ```
 
-### static func subscribe(CommonEventSubscriber, (CommonEventData) -> Unit)
+### static func subscribe(CommonEventSubscriber, AsyncCallback\<CommonEventData>)
 
 ```cangjie
-public static func subscribe(subscriber: CommonEventSubscriber, callback: (CommonEventData) -> Unit): Unit
+public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): Unit
 ```
 
 **功能：** 以回调形式订阅公共事件。
@@ -198,60 +147,19 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: (Commo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|subscriber|[CommonEventSubscriber](#class-commoneventsubscriber)|是|-|表示订阅者对象。|
-|callback|([CommonEventData](#struct-commoneventdata))->Unit|是|-|表示接收公共事件数据的回调函数。|
+|subscriber|[CommonEventSubscriber](cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|是|-|表示订阅者对象。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)>|是|-|表示接收公共事件数据的回调函数。|
 
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
 
-  | 错误码ID | 错误信息                            |
-  | :-------- | :----------------------------------- |
-  | 801     | capability not supported.               |
-  | 1500007 | error sending message to Common Event Service. |
-  | 1500008 | Common Event Service does not complete initialization. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.BasicServicesKit.ValueType as CMEValueType
-import kit.BasicServicesKit.*
-import kit.PerformanceAnalysisKit.Hilog
-import ohos.base.*
-import ohos.business_exception.*
-import std.collection.*
-import kit.PerformanceAnalysisKit.Hilog
-
-// 订阅事件：亮屏
-let events = [Support.COMMON_EVENT_SCREEN_ON]
-// 订阅者信息
-let info = CommonEventSubscribeInfo(events)
-// 订阅者
-let sub = CommonEventManager.createSubscriber(info)
-let strV = CMEValueType.StringValue("Hello")
-let intV = CMEValueType.Int32Value(11)
-let parameter = HashMap<String, CMEValueType>()
-parameter.add("1", strV)
-parameter.add("2", intV)
-// 订阅事件回调函数
-func callback(err: ?BusinessException, c: ?CommonEventData): Unit {
-    Hilog.info(0, "cangjieTest", "Callback")
-}
-// 发布数据
-let pData = CommonEventPublishData(bundleName: "com.example.myapplication", data: "123321", code: 123321)
-try {
-    // 订阅
-    CommonEventManager.subscribe(sub, callback)
-    // 发布
-    CommonEventManager.publish(Support.COMMON_EVENT_SCREEN_ON, options: pData)
-} catch (e: BusinessException) {
-    Hilog.error(0, "AppLogCj", "errorCode = ${e.code}, errorMsg = ${e.message}")
-}
-```
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 801 | capability not supported |
+  | 1500007 | If error sending message to Common Event Service. |
+  | 1500008 | If Common Event Service does not complete initialization. |
+  | 1500010 | The count of subscriber exceed system specification. |
 
 ### static func unsubscribe(CommonEventSubscriber)
 
@@ -269,20 +177,21 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|subscriber|[CommonEventSubscriber](#class-commoneventsubscriber)|是|-|表示订阅者对象。|
+|subscriber|[CommonEventSubscriber](cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|是|-|表示订阅者对象。|
 
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
 
-  | 错误码ID | 错误信息                            |
-  | :------- | :----------------------------------- |
-  | 801     | capability not supported.               |
-  | 1500007 | error sending message to Common Event Service. |
-  | 1500008 | Common Event Service does not complete initialization. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 801 | capability not supported |
+  | 1500007 | If error sending message to Common Event Service. |
+  | 1500008 | If Common Event Service does not complete initialization. |
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -307,439 +216,15 @@ try {
 }
 ```
 
-## class CommonEventSubscribeInfo
+## class Support
 
 ```cangjie
-public class CommonEventSubscribeInfo {
-    public init(
-        events: Array<String>,
-        publisherPermission!: ?String = None,
-        publisherDeviceId!: ?String = None,
-        userId!: ?Int32 = None,
-        priority!: ?Int32 = None,
-        publisherBundleName!: ?String = None
-    )
-}
-```
-
-**功能：** 用于表示订阅者的信息。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### prop events
-
-```cangjie
-public prop events: Array<String>
-```
-
-**功能：** 表示要订阅的公共事件。
-
-**类型：** Array\<String>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### prop priority
-
-```cangjie
-public prop priority: ?Int32
-```
-
-**功能：** 表示订阅者的优先级。值的范围是-100到1000，超过上下限的优先级将被设置为上下限值。
-
-**类型：** ?Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### prop publisherBundleName
-
-```cangjie
-public prop publisherBundleName: ?String
-```
-
-**功能：** 表示要订阅的发布者的bundleName。
-
-**类型：** ?String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### prop publisherDeviceId
-
-```cangjie
-public prop publisherDeviceId: ?String
-```
-
-**功能：** 表示设备ID。通过[@ohos.deviceInfo](./cj-apis-device_info.md)获取udid，作为订阅者的设备ID。
-
-**类型：** ?String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### prop publisherPermission
-
-```cangjie
-public prop publisherPermission: ?String
-```
-
-**功能：** 表示发布者的权限，订阅方将只能接收到具有该权限的发送方发布的事件。
-
-**类型：** ?String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### prop userId
-
-```cangjie
-public prop userId: ?Int32
-```
-
-**功能：** 表示用户ID。此参数是可选的，默认值当前用户的ID。如果指定了此参数，则该值必须是系统中现有的用户ID。
-
-**类型：** ?Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### init(Array\<String>, ?String, ?String, ?Int32, ?Int32, ?String)
-
-```cangjie
-public init(
-    events: Array<String>,
-    publisherPermission!: ?String = None,
-    publisherDeviceId!: ?String = None,
-    userId!: ?Int32 = None,
-    priority!: ?Int32 = None,
-    publisherBundleName!: ?String = None
-)
-```
-
-**功能：** 构造CommonEventSubscribeInfo对象。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|events|Array\<String>|是|-|表示要订阅的公共事件。|
-|publisherPermission|?String|否|None| **命名参数。** 表示发布者的权限，订阅方将只能接收到具有该权限的发送方发布的事件。|
-|publisherDeviceId|?String|否|None| **命名参数。** 表示设备ID。通过[@ohos.deviceInfo](./cj-apis-device_info.md)获取udid，作为订阅者的设备ID。|
-|userId|?Int32|否|None| **命名参数。** 表示用户ID。此参数是可选的，默认值当前用户的ID。如果指定了此参数，则该值必须是系统中现有的用户ID。|
-|priority|?Int32|否|None| **命名参数。**  表示订阅者的优先级。值的范围是-100到1000，超过上下限的优先级将被设置为上下限值。|
-|publisherBundleName|?String|否|None| **命名参数。** 表示要订阅的发布者的bundleName。|
-
-## class CommonEventSubscriber
-
-```cangjie
-public class CommonEventSubscriber {}
-```
-
-**功能：** 描述公共事件的订阅者。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-## struct CommonEventData
-
-```cangjie
-public struct CommonEventData {
-    public let event: String
-    public let bundleName: String
-    public let code: Int32
-    public let data: String
-    public let parameters: HashMap<String, ValueType>
-}
-```
-
-**功能：** 公共事件的数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let bundleName
-
-```cangjie
-public let bundleName: String
-```
-
-**功能：** 表示包名称，当前默认为空。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let code
-
-```cangjie
-public let code: Int32
-```
-
-**功能：** 表示订阅者接收到的公共事件数据（Int32类型）。该字段取值与发布者使用[commonEventManager.publish](#static-func-publishstring)发布公共事件时，通过[CommonEventPublishData](#struct-commoneventpublishdata)中的`code`字段传递的数据一致。默认值为0。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let data
-
-```cangjie
-public let data: String
-```
-
-**功能：** 表示订阅者接收到的公共事件数据（string类型）。该字段取值与发布者使用[commonEventManager.publish](#static-func-publishstring)发布公共事件时，通过[CommonEventPublishData](#struct-commoneventpublishdata)中的`data`字段传递的数据一致。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let event
-
-```cangjie
-public let event: String
-```
-
-**功能：** 表示当前接收的公共事件名称。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let parameters
-
-```cangjie
-public let parameters: HashMap<String, ValueType>
-```
-
-**功能：** 表示订阅者接收到的公共事件的附加信息。该字段取值与发布者使用[commonEventManager.publish](#static-func-publishstring)发布公共事件时，通过[CommonEventPublishData](#struct-commoneventpublishdata)中的`parameters`字段传递的数据一致。
-
-**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-## struct CommonEventPublishData
-
-```cangjie
-public struct CommonEventPublishData {
-    public CommonEventPublishData(
-        public let bundleName: String,
-        public let data: String,
-        public let code: Int32,
-        public let subscriberPermissions!: Array<String> = Array<String>(),
-        public let isOrdered!: Bool = false,
-        public let isSticky!: Bool = false,
-        public let parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
-    )
-}
-```
-
-**功能：** 包含公共事件内容和属性。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let bundleName
-
-```cangjie
-public let bundleName: String
-```
-
-**功能：** 表示订阅者包名称，只有包名为bundleName的订阅者才能收到该公共事件。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let code
-
-```cangjie
-public let code: Int32
-```
-
-**功能：** 表示公共事件的结果代码。
-
-**类型：** Int32
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let data
-
-```cangjie
-public let data: String
-```
-
-**功能：** 表示公共事件的自定义结果数据。
-
-**类型：** String
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let isOrdered
-
-```cangjie
-public let isOrdered: Bool = false
-```
-
-**功能：** 表示是否是有序事件。
-
-**类型：** Bool
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let isSticky
-
-```cangjie
-public let isSticky: Bool = false
-```
-
-**功能：**  表示是否是粘性事件。仅系统应用或系统服务允许发送粘性事件。
-
-**类型：** Bool
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let parameters
-
-```cangjie
-public let parameters: HashMap<String, ValueType>= HashMap<String, ValueType>()
-```
-
-**功能：** 表示公共事件的附加信息。
-
-**类型：** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[ValueType](#enum-valuetype)>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### let subscriberPermissions
-
-```cangjie
-public let subscriberPermissions: Array<String>= Array<String>()
-```
-
-**功能：** 表示订阅者的权限。
-
-**类型：** Array\<String>
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### CommonEventPublishData(String, String, Int32, Array\<String>, Bool, Bool, HashMap\<String,ValueType>)
-
-```cangjie
-public CommonEventPublishData(
-    public let bundleName: String,
-    public let data: String,
-    public let code: Int32,
-    public let subscriberPermissions!: Array<String> = Array<String>(),
-    public let isOrdered!: Bool = false,
-    public let isSticky!: Bool = false,
-    public let parameters!: HashMap<String, ValueType> = HashMap<String, ValueType>()
-)
-```
-
-**功能：** 构造CommonEventPublishData对象。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|bundleName|String|是|-|表示订阅者包名称，只有包名为bundleName的订阅者才能收到该公共事件。|
-|data|String|是|-|表示公共事件的自定义结果数据。|
-|code|Int32|是|-|表示公共事件的结果代码。|
-|subscriberPermissions|Array\<String>|否|Array\<String>()| **命名参数。** 表示订阅者的权限。|
-|isOrdered|Bool|否|false| **命名参数。** 表示是否是有序事件。|
-|isSticky|Bool|否|false| **命名参数。** 表示是否是粘性事件。仅系统应用或系统服务允许发送粘性事件。|
-|parameters|HashMap\<String, [ValueType](#enum-valuetype)>|否|HashMap\<String, ValueType>()| **命名参数。** 表示公共事件的附加信息。|
-
-## struct Support
-
-```cangjie
-public struct Support {
+public class Support {
     public static const COMMON_EVENT_ABILITY_ADDED: String = "common.event.ABILITY_ADDED"
     public static const COMMON_EVENT_ABILITY_REMOVED: String = "common.event.ABILITY_REMOVED"
     public static const COMMON_EVENT_ABILITY_UPDATED: String = "common.event.ABILITY_UPDATED"
     public static const COMMON_EVENT_ACCOUNT_DELETED: String = "usual.event.data.ACCOUNT_DELETED"
     public static const COMMON_EVENT_AIRPLANE_MODE_CHANGED: String = "usual.event.AIRPLANE_MODE"
-    public static const COMMON_EVENT_AUDIO_QUALITY_CHANGE: String = "usual.event.AUDIO_QUALITY_CHANGE"
     public static const COMMON_EVENT_BATTERY_CHANGED: String = "usual.event.BATTERY_CHANGED"
     public static const COMMON_EVENT_BATTERY_LOW: String = "usual.event.BATTERY_LOW"
     public static const COMMON_EVENT_BATTERY_OKAY: String = "usual.event.BATTERY_OKAY"
@@ -783,15 +268,11 @@ public struct Support {
     public static const COMMON_EVENT_BUNDLE_REMOVED: String = "usual.event.BUNDLE_REMOVED"
     public static const COMMON_EVENT_BOOT_COMPLETED: String = "usual.event.BOOT_COMPLETED"
     public static const COMMON_EVENT_CONNECTIVITY_CHANGE: String = "usual.event.CONNECTIVITY_CHANGE"
-    public static const COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED: String = "usual.event.CELLULAR_DATA_STATE_CHANGED"
     public static const COMMON_EVENT_CALL_STATE_CHANGED: String = "usual.event.CALL_STATE_CHANGED"
     public static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED: String = "usual.event.CHARGE_IDLE_MODE_CHANGED"
-    public static const COMMON_EVENT_CHARGE_TYPE_CHANGED: String = "usual.event.CHARGE_TYPE_CHANGED"
     public static const COMMON_EVENT_CHARGING: String = "usual.event.CHARGING"
     public static const COMMON_EVENT_CONFIGURATION_CHANGED: String = "usual.event.CONFIGURATION_CHANGED"
     public static const COMMON_EVENT_CLOSE_SYSTEM_DIALOGS: String = "usual.event.CLOSE_SYSTEM_DIALOGS"
-    public static const COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED: String = "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
-    public static const COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED: String = "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
     public static const COMMON_EVENT_DISK_EJECT: String = "usual.event.data.DISK_EJECT"
     public static const COMMON_EVENT_DISK_UNMOUNTABLE: String = "usual.event.data.DISK_UNMOUNTABLE"
     public static const COMMON_EVENT_DISK_BAD_REMOVAL: String = "usual.event.data.DISK_BAD_REMOVAL"
@@ -822,7 +303,6 @@ public struct Support {
     public static const COMMON_EVENT_IVI_VOLTAGE_RECOVERY: String = "common.event.IVI_VOLTAGE_RECOVERY"
     public static const COMMON_EVENT_IVI_TEMPERATURE_RECOVERY: String = "common.event.IVI_TEMPERATURE_RECOVERY"
     public static const COMMON_EVENT_IVI_ACTIVE: String = "common.event.IVI_ACTIVE"
-    public static const COMMON_EVENT_INCOMING_CALL_MISSED: String = "usual.event.INCOMING_CALL_MISSED"
     public static const COMMON_EVENT_LOCKED_BOOT_COMPLETED: String = "usual.event.LOCKED_BOOT_COMPLETED"
     public static const COMMON_EVENT_LOCALE_CHANGED: String = "usual.event.LOCALE_CHANGED"
     public static const COMMON_EVENT_LOCATION_MODE_STATE_CHANGED: String = "usual.event.location.MODE_STATE_CHANGED"
@@ -835,7 +315,6 @@ public struct Support {
     public static const COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED: String = "usual.event.nfc.action.RF_FIELD_OFF_DETECTED"
     public static const COMMON_EVENT_NETWORK_STATE_CHANGED: String = "usual.event.NETWORK_STATE_CHANGED"
     public static const COMMON_EVENT_OFFICE_MODE: String = "common.event.OFFICE_MODE"
-    public static const COMMON_EVENT_OPERATOR_CONFIG_CHANGED: String = "usual.event.OPERATOR_CONFIG_CHANGED"
     public static const COMMON_EVENT_POWER_CONNECTED: String = "usual.event.POWER_CONNECTED"
     public static const COMMON_EVENT_POWER_DISCONNECTED: String = "usual.event.POWER_DISCONNECTED"
     public static const COMMON_EVENT_PACKAGE_ADDED: String = "usual.event.PACKAGE_ADDED"
@@ -852,11 +331,8 @@ public struct Support {
     public static const COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION: String = "usual.event.PACKAGE_NEEDS_VERIFICATION"
     public static const COMMON_EVENT_PACKAGE_VERIFIED: String = "usual.event.PACKAGE_VERIFIED"
     public static const COMMON_EVENT_POWER_SAVE_MODE_CHANGED: String = "usual.event.POWER_SAVE_MODE_CHANGED"
-    public static const COMMON_EVENT_PRIVACY_STATE_CHANGED: String = "usual.event.PRIVACY_STATE_CHANGED"
-    public static const COMMON_EVENT_PRIMARY_SLOT_ROAMING: String = "usual.event.PRIMARY_SLOT_ROAMING"
     public static const COMMON_EVENT_QUICK_FIX_APPLY_RESULT: String = "usual.event.QUICK_FIX_APPLY_RESULT"
     public static const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT: String = "usual.event.QUICK_FIX_REVOKE_RESULT"
-    public static const COMMON_EVENT_RADIO_STATE_CHANGE: String = "usual.event.RADIO_STATE_CHANGE"
     public static const COMMON_EVENT_SHUTDOWN: String = "usual.event.SHUTDOWN"
     public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
     public static const COMMON_EVENT_SCREEN_ON: String = "usual.event.SCREEN_ON"
@@ -865,22 +341,8 @@ public struct Support {
     public static const COMMON_EVENT_SPN_INFO_CHANGED: String = "usual.event.SPN_INFO_CHANGED"
     public static const COMMON_EVENT_SIGNAL_INFO_CHANGED: String = "usual.event.SIGNAL_INFO_CHANGED"
     public static const COMMON_EVENT_SIM_STATE_CHANGED: String = "usual.event.SIM_STATE_CHANGED"
-    public static const COMMON_EVENT_STK_SESSION_END: String = "usual.event.STK_SESSION_END"
-    public static const COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED: String = "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
-    public static const COMMON_EVENT_STK_COMMAND: String = "usual.event.STK_COMMAND"
-    public static const COMMON_EVENT_STK_ALPHA_IDENTIFIER: String = "usual.event.STK_ALPHA_IDENTIFIER"
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED"
-    public static const COMMON_EVENT_STK_CARD_STATE_CHANGED: String = "usual.event.STK_CARD_STATE_CHANGED"
     public static const COMMON_EVENT_SCREEN_LOCKED: String = "usual.event.SCREEN_LOCKED"
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
-    public static const COMMON_EVENT_SMS_RECEIVE_COMPLETED: String = "usual.event.SMS_RECEIVE_COMPLETED"
-    public static const COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED: String = "usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED"
     public static const COMMON_EVENT_SCREEN_UNLOCKED: String = "usual.event.SCREEN_UNLOCKED"
-    public static const COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
-    public static const COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED: String = "usual.event.SMS_CB_RECEIVE_COMPLETED"
-    public static const COMMON_EVENT_SPECIAL_CODE: String = "common.event.SPECIAL_CODE"
-    public static const COMMON_EVENT_SET_PRIMARY_SLOT_STATUS: String = "usual.event.SET_PRIMARY_SLOT_STATUS"
     public static const COMMON_EVENT_THERMAL_LEVEL_CHANGED: String = "usual.event.THERMAL_LEVEL_CHANGED"
     public static const COMMON_EVENT_TIME_TICK: String = "usual.event.TIME_TICK"
     public static const COMMON_EVENT_TIME_CHANGED: String = "usual.event.TIME_CHANGED"
@@ -1002,20 +464,6 @@ public static const COMMON_EVENT_AIRPLANE_MODE_CHANGED: String = "usual.event.AI
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_AUDIO_QUALITY_CHANGE
-
-```cangjie
-public static const COMMON_EVENT_AUDIO_QUALITY_CHANGE: String = "usual.event.AUDIO_QUALITY_CHANGE"
-```
-
-**功能：** 表示音频质量发生变化的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_BATTERY_CHANGED
 
 ```cangjie
@@ -1120,7 +568,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE
 public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE: String = "usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示蓝牙A2DP音频编解码状态更改的公共事件。
+**功能：** （预留事件，暂未支持）表示蓝牙A2DP音频编解码状态更改的公共事件。
 
 **类型：** String
 
@@ -1148,7 +596,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE: Stri
 public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE: String = "usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示使用蓝牙A2DP连接的设备处于活动状态的公共事件。
+**功能：** （预留事件，暂未支持）表示使用蓝牙A2DP连接的设备处于活动状态的公共事件。
 
 **类型：** String
 
@@ -1442,7 +890,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE: Stri
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL: String = "usual.event.bluetooth.remotedevice.CONNECT_CANCEL"
 ```
 
-**功能：**（预留事件，暂未支持）表示取消与远程蓝牙设备的连接的公共事件。
+**功能：** （预留事件，暂未支持）表示取消与远程蓝牙设备的连接的公共事件。
 
 **类型：** String
 
@@ -1456,7 +904,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL: String =
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY: String = "usual.event.bluetooth.remotedevice.CONNECT_REPLY"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备连接请求响应的公共事件。
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备连接请求响应的公共事件。
 
 **类型：** String
 
@@ -1470,7 +918,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY: String = 
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ: String = "usual.event.bluetooth.remotedevice.CONNECT_REQ"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备连接请求的公共事件。
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备连接请求的公共事件。
 
 **类型：** String
 
@@ -1484,7 +932,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ: String = "u
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED: String = "usual.event.bluetooth.remotedevice.DISCOVERED"
 ```
 
-**功能：**（预留事件，暂未支持）表示发现远程蓝牙设备的公共事件。
+**功能：** （预留事件，暂未支持）表示发现远程蓝牙设备的公共事件。
 
 **类型：** String
 
@@ -1512,7 +960,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE: String = "u
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL: String = "usual.event.bluetooth.remotedevice.PAIRING_CANCEL"
 ```
 
-**功能：**（预留事件，暂未支持）表示取消蓝牙配对的公共事件。
+**功能：** （预留事件，暂未支持）表示取消蓝牙配对的公共事件。
 
 **类型：** String
 
@@ -1526,7 +974,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL: String =
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ: String = "usual.event.bluetooth.remotedevice.PAIRING_REQ"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备配对请求的公共事件。
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备配对请求的公共事件。
 
 **类型：** String
 
@@ -1540,7 +988,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ: String = "u
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE: String = "usual.event.bluetooth.remotedevice.PAIR_STATE"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备连接状态更改的公共事件。
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备连接状态更改的公共事件。
 
 **类型：** String
 
@@ -1554,7 +1002,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE: String = "us
 public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT: String = "usual.event.bluetooth.remotedevice.SDP_RESULT"
 ```
 
-**功能：**（预留事件，暂未支持）表示远程蓝牙设备SDP状态公共事件的公共事件。
+**功能：** （预留事件，暂未支持）表示远程蓝牙设备SDP状态公共事件的公共事件。
 
 **类型：** String
 
@@ -1596,7 +1044,7 @@ public static const COMMON_EVENT_BOOT_COMPLETED: String = "usual.event.BOOT_COMP
 public static const COMMON_EVENT_BUNDLE_REMOVED: String = "usual.event.BUNDLE_REMOVED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已从设备中卸载已安装的捆绑包，但应用程序数据仍保留的公共事件。
+**功能：** （预留事件，暂未支持）表示已从设备中卸载已安装的捆绑包，但应用程序数据仍保留的公共事件。
 
 **类型：** String
 
@@ -1618,20 +1066,6 @@ public static const COMMON_EVENT_CALL_STATE_CHANGED: String = "usual.event.CALL_
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED: String = "usual.event.CELLULAR_DATA_STATE_CHANGED"
-```
-
-**功能：** 表示蜂窝数据状态更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED
 
 ```cangjie
@@ -1646,27 +1080,13 @@ public static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED: String = "usual.event
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_CHARGE_TYPE_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_CHARGE_TYPE_CHANGED: String = "usual.event.CHARGE_TYPE_CHANGED"
-```
-
-**功能：**  表示系统充电类型改变的公共事件。仅限系统应用使用。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_CHARGING
 
 ```cangjie
 public static const COMMON_EVENT_CHARGING: String = "usual.event.CHARGING"
 ```
 
-**功能：**  表示系统开始为电池充电的公共事件。
+**功能：** 表示系统开始为电池充电的公共事件。
 
 **类型：** String
 
@@ -1680,7 +1100,7 @@ public static const COMMON_EVENT_CHARGING: String = "usual.event.CHARGING"
 public static const COMMON_EVENT_CLOSE_SYSTEM_DIALOGS: String = "usual.event.CLOSE_SYSTEM_DIALOGS"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户关闭临时系统对话框的公共事件。
+**功能：** （预留事件，暂未支持）表示用户关闭临时系统对话框的公共事件。
 
 **类型：** String
 
@@ -1694,7 +1114,7 @@ public static const COMMON_EVENT_CLOSE_SYSTEM_DIALOGS: String = "usual.event.CLO
 public static const COMMON_EVENT_CONFIGURATION_CHANGED: String = "usual.event.CONFIGURATION_CHANGED"
 ```
 
-**功能：**（预留事件，暂未支持）表示设备状态（例如，方向和区域设置）已更改的公共事件。
+**功能：** （预留事件，暂未支持）表示设备状态（例如，方向和区域设置）已更改的公共事件。
 
 **类型：** String
 
@@ -1722,21 +1142,7 @@ public static const COMMON_EVENT_CONNECTIVITY_CHANGE: String = "usual.event.CONN
 public static const COMMON_EVENT_DATE_CHANGED: String = "usual.event.DATE_CHANGED"
 ```
 
-**功能：**（预留事件，暂未支持）表示系统日期已更改的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED
-
-```cangjie
-public static const COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED: String = "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
-```
-
-**功能：** 表示系统待机空闲模式下豁免应用程序列表已更新的公共事件。仅限系统应用使用。
+**功能：** （预留事件，暂未支持）表示系统日期已更改的公共事件。
 
 **类型：** String
 
@@ -1778,7 +1184,7 @@ public static const COMMON_EVENT_DISCHARGING: String = "usual.event.DISCHARGING"
 public static const COMMON_EVENT_DISK_BAD_REMOVAL: String = "usual.event.data.DISK_BAD_REMOVAL"
 ```
 
-**功能：**（预留事件，暂未支持）表示外部存储设备状态变更为挂载状态下移除的公共事件。
+**功能：** （预留事件，暂未支持）表示外部存储设备状态变更为挂载状态下移除的公共事件。
 
 **类型：** String
 
@@ -1792,7 +1198,7 @@ public static const COMMON_EVENT_DISK_BAD_REMOVAL: String = "usual.event.data.DI
 public static const COMMON_EVENT_DISK_EJECT: String = "usual.event.data.DISK_EJECT"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已表示希望删除外部存储介质的公共事件。
+**功能：** （预留事件，暂未支持）表示用户已表示希望删除外部存储介质的公共事件。
 
 **类型：** String
 
@@ -1806,7 +1212,7 @@ public static const COMMON_EVENT_DISK_EJECT: String = "usual.event.data.DISK_EJE
 public static const COMMON_EVENT_DISK_MOUNTED: String = "usual.event.data.DISK_MOUNTED"
 ```
 
-**功能：**（预留事件，暂未支持）表示外部存储设备状态变更为挂载的公共事件。
+**功能：** （预留事件，暂未支持）表示外部存储设备状态变更为挂载的公共事件。
 
 **类型：** String
 
@@ -1820,7 +1226,7 @@ public static const COMMON_EVENT_DISK_MOUNTED: String = "usual.event.data.DISK_M
 public static const COMMON_EVENT_DISK_REMOVED: String = "usual.event.data.DISK_REMOVED"
 ```
 
-**功能：**（预留事件，暂未支持）表示外部存储设备状态变更为移除的公共事件。
+**功能：** （预留事件，暂未支持）表示外部存储设备状态变更为移除的公共事件。
 
 **类型：** String
 
@@ -1834,7 +1240,7 @@ public static const COMMON_EVENT_DISK_REMOVED: String = "usual.event.data.DISK_R
 public static const COMMON_EVENT_DISK_UNMOUNTABLE: String = "usual.event.data.DISK_UNMOUNTABLE"
 ```
 
-**功能：**（预留事件，暂未支持）外部存储设备状态变更为插卡情况下无法挂载的公共事件。
+**功能：** （预留事件，暂未支持）外部存储设备状态变更为插卡情况下无法挂载的公共事件。
 
 **类型：** String
 
@@ -1848,7 +1254,7 @@ public static const COMMON_EVENT_DISK_UNMOUNTABLE: String = "usual.event.data.DI
 public static const COMMON_EVENT_DISK_UNMOUNTED: String = "usual.event.data.DISK_UNMOUNTED"
 ```
 
-**功能：**（预留事件，暂未支持）表示部存储设备状态变更为卸载的公共事件。
+**功能：** （预留事件，暂未支持）表示部存储设备状态变更为卸载的公共事件。
 
 **类型：** String
 
@@ -1862,7 +1268,7 @@ public static const COMMON_EVENT_DISK_UNMOUNTED: String = "usual.event.data.DISK
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN: String = "common.event.DISTRIBUTED_ACCOUNT_LOGIN"
 ```
 
-**功能：**（预留事件，暂未支持）表示分布式帐号登录成功的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号登录成功的公共事件。
 
 **类型：** String
 
@@ -1876,7 +1282,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN: String = "common.eve
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF: String = "common.event.DISTRIBUTED_ACCOUNT_LOGOFF"
 ```
 
-**功能：**（预留事件，暂未支持）表示分布式帐号注销的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号注销的公共事件。
 
 **类型：** String
 
@@ -1890,7 +1296,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF: String = "common.ev
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT: String = "common.event.DISTRIBUTED_ACCOUNT_LOGOUT"
 ```
 
-**功能：** （预留事件，暂未支持）表示分布式帐号登出成功的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号登出成功的公共事件。
 
 **类型：** String
 
@@ -1904,21 +1310,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT: String = "common.ev
 public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID: String = "common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID"
 ```
 
-**功能：** （预留事件，暂未支持）表示分布式帐号token令牌无效的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED: String = "usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED"
-```
-
-**功能：** 表示域账号状态发生变化的公共事件。
+**功能：** （预留事件，暂未支持）表示分布式账号token令牌无效的公共事件。
 
 **类型：** String
 
@@ -2010,20 +1402,6 @@ public static const COMMON_EVENT_HTTP_PROXY_CHANGE: String = "usual.event.HTTP_P
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_INCOMING_CALL_MISSED
-
-```cangjie
-public static const COMMON_EVENT_INCOMING_CALL_MISSED: String = "usual.event.INCOMING_CALL_MISSED"
-```
-
-**功能：** 表示未接来电的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_IVI_ACTIVE
 
 ```cangjie
@@ -2058,7 +1436,7 @@ public static const COMMON_EVENT_IVI_EXTREME_TEMPERATURE: String = "common.event
 public static const COMMON_EVENT_IVI_HIGH_TEMPERATURE: String = "common.event.IVI_HIGH_TEMPERATURE"
 ```
 
-**功能：**（预留事件，暂未支持）表示IVI温度过高的公共事件。
+**功能：** （预留事件，暂未支持）表示IVI温度过高的公共事件。
 
 **类型：** String
 
@@ -2086,7 +1464,7 @@ public static const COMMON_EVENT_IVI_LASTMODE_SAVE: String = "common.event.IVI_L
 public static const COMMON_EVENT_IVI_PAUSE: String = "common.event.IVI_PAUSE"
 ```
 
-**功能：**（预留事件，暂未支持）表示IVI已休眠，并通知应用程序停止播放的公共事件。
+**功能：** （预留事件，暂未支持）表示IVI已休眠，并通知应用程序停止播放的公共事件。
 
 **类型：** String
 
@@ -2100,7 +1478,7 @@ public static const COMMON_EVENT_IVI_PAUSE: String = "common.event.IVI_PAUSE"
 public static const COMMON_EVENT_IVI_SLEEP: String = "common.event.IVI_SLEEP"
 ```
 
-**功能：**（预留事件，暂未支持）表示表示车辆的车载信息娱乐（IVI）系统正在休眠的常见事件的公共事件。
+**功能：** （预留事件，暂未支持）表示表示车辆的车载信息娱乐（IVI）系统正在休眠的常见事件的公共事件。
 
 **类型：** String
 
@@ -2114,7 +1492,7 @@ public static const COMMON_EVENT_IVI_SLEEP: String = "common.event.IVI_SLEEP"
 public static const COMMON_EVENT_IVI_STANDBY: String = "common.event.IVI_STANDBY"
 ```
 
-**功能：**（预留事件，暂未支持）表示第三方应用暂停当前工作的公共事件。
+**功能：** （预留事件，暂未支持）表示第三方应用暂停当前工作的公共事件。
 
 **类型：** String
 
@@ -2128,7 +1506,7 @@ public static const COMMON_EVENT_IVI_STANDBY: String = "common.event.IVI_STANDBY
 public static const COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL: String = "common.event.IVI_TEMPERATURE_ABNORMAL"
 ```
 
-**功能：**（预留事件，暂未支持）表示车载系统具有极端温度的常见事件的公共事件。
+**功能：** （预留事件，暂未支持）表示车载系统具有极端温度的常见事件的公共事件。
 
 **类型：** String
 
@@ -2142,7 +1520,7 @@ public static const COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL: String = "common.even
 public static const COMMON_EVENT_IVI_TEMPERATURE_RECOVERY: String = "common.event.IVI_TEMPERATURE_RECOVERY"
 ```
 
-**功能：**（预留事件，暂未支持）表示车载系统温度恢复正常的公共事件。
+**功能：** （预留事件，暂未支持）表示车载系统温度恢复正常的公共事件。
 
 **类型：** String
 
@@ -2156,7 +1534,7 @@ public static const COMMON_EVENT_IVI_TEMPERATURE_RECOVERY: String = "common.even
 public static const COMMON_EVENT_IVI_VOLTAGE_ABNORMAL: String = "common.event.IVI_VOLTAGE_ABNORMAL"
 ```
 
-**功能：**（预留事件，暂未支持）表示车辆电源系统电压异常的公共事件。
+**功能：** （预留事件，暂未支持）表示车辆电源系统电压异常的公共事件。
 
 **类型：** String
 
@@ -2170,7 +1548,7 @@ public static const COMMON_EVENT_IVI_VOLTAGE_ABNORMAL: String = "common.event.IV
 public static const COMMON_EVENT_IVI_VOLTAGE_RECOVERY: String = "common.event.IVI_VOLTAGE_RECOVERY"
 ```
 
-**功能：**（预留事件，暂未支持）表示车辆电源系统电压恢复正常的公共事件。
+**功能：** （预留事件，暂未支持）表示车辆电源系统电压恢复正常的公共事件。
 
 **类型：** String
 
@@ -2198,7 +1576,7 @@ public static const COMMON_EVENT_LOCALE_CHANGED: String = "usual.event.LOCALE_CH
 public static const COMMON_EVENT_LOCATION_MODE_STATE_CHANGED: String = "usual.event.location.MODE_STATE_CHANGED"
 ```
 
-**功能：**（预留事件，暂未支持）表示系统定位模式已更改的公共事件。
+**功能：** （预留事件，暂未支持）表示系统定位模式已更改的公共事件。
 
 **类型：** String
 
@@ -2212,7 +1590,7 @@ public static const COMMON_EVENT_LOCATION_MODE_STATE_CHANGED: String = "usual.ev
 public static const COMMON_EVENT_LOCKED_BOOT_COMPLETED: String = "usual.event.LOCKED_BOOT_COMPLETED"
 ```
 
-**功能：**（预留事件，暂未支持）表示用户已完成引导，系统已加载，但屏幕仍锁定的公共事件。
+**功能：** （预留事件，暂未支持）表示用户已完成引导，系统已加载，但屏幕仍锁定的公共事件。
 
 **类型：** String
 
@@ -2240,7 +1618,7 @@ public static const COMMON_EVENT_MANAGE_PACKAGE_STORAGE: String = "usual.event.M
 public static const COMMON_EVENT_MY_PACKAGE_REPLACED: String = "usual.event.MY_PACKAGE_REPLACED"
 ```
 
-**功能：**（预留事件，暂未支持）表示应用程序包的新版本已取代前一个版本的公共事件。
+**功能：** （预留事件，暂未支持）表示应用程序包的新版本已取代前一个版本的公共事件。
 
 **类型：** String
 
@@ -2346,20 +1724,6 @@ public static const COMMON_EVENT_OFFICE_MODE: String = "common.event.OFFICE_MODE
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_OPERATOR_CONFIG_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_OPERATOR_CONFIG_CHANGED: String = "usual.event.OPERATOR_CONFIG_CHANGED"
-```
-
-**功能：** 表示运营商配置已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_PACKAGES_SUSPENDED
 
 ```cangjie
@@ -2380,7 +1744,7 @@ public static const COMMON_EVENT_PACKAGES_SUSPENDED: String = "usual.event.PACKA
 public static const COMMON_EVENT_PACKAGES_UNSUSPENDED: String = "usual.event.PACKAGES_UNSUSPENDED"
 ```
 
-**功能：**（预留事件，暂未支持）表示应用包未挂起的公共事件。
+**功能：** （预留事件，暂未支持）表示应用包未挂起的公共事件。
 
 **类型：** String
 
@@ -2422,7 +1786,7 @@ public static const COMMON_EVENT_PACKAGE_CACHE_CLEARED: String = "usual.event.PA
 public static const COMMON_EVENT_PACKAGE_CHANGED: String = "usual.event.PACKAGE_CHANGED"
 ```
 
-**功能：**表示应用包已更改的公共事件（例如，包中的组件已启用或禁用）。
+**功能：** 表示应用包已更改的公共事件（例如，包中的组件已启用或禁用）。
 
 **类型：** String
 
@@ -2506,7 +1870,7 @@ public static const COMMON_EVENT_PACKAGE_REMOVED: String = "usual.event.PACKAGE_
 public static const COMMON_EVENT_PACKAGE_REPLACED: String = "usual.event.PACKAGE_REPLACED"
 ```
 
-**功能：**（预留事件，暂未支持）表示已安装的应用程序包的新版本已替换设备上的旧版本的公共事件。
+**功能：** （预留事件，暂未支持）表示已安装的应用程序包的新版本已替换设备上的旧版本的公共事件。
 
 **类型：** String
 
@@ -2584,34 +1948,6 @@ public static const COMMON_EVENT_POWER_SAVE_MODE_CHANGED: String = "usual.event.
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_PRIMARY_SLOT_ROAMING
-
-```cangjie
-public static const COMMON_EVENT_PRIMARY_SLOT_ROAMING: String = "usual.event.PRIMARY_SLOT_ROAMING"
-```
-
-**功能：** 表示SIM卡默认主卡的漫游状态已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_PRIVACY_STATE_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_PRIVACY_STATE_CHANGED: String = "usual.event.PRIVACY_STATE_CHANGED"
-```
-
-**功能：** 提示设置SIM卡默认主卡的动作，其状态更新为执行中或已完成。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_QUICK_FIX_APPLY_RESULT
 
 ```cangjie
@@ -2640,20 +1976,6 @@ public static const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT: String = "usual.event.
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_RADIO_STATE_CHANGE
-
-```cangjie
-public static const COMMON_EVENT_RADIO_STATE_CHANGE: String = "usual.event.RADIO_STATE_CHANGE"
-```
-
-**功能：** 表示设备modem上下电状态变化的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_SCREEN_LOCKED
 
 ```cangjie
@@ -2674,7 +1996,7 @@ public static const COMMON_EVENT_SCREEN_LOCKED: String = "usual.event.SCREEN_LOC
 public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
 ```
 
-**功能：**  表示设备屏幕关闭且设备处于睡眠状态的公共事件。
+**功能：** 表示设备屏幕关闭且设备处于睡眠状态的公共事件。
 
 **类型：** String
 
@@ -2688,7 +2010,7 @@ public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
 public static const COMMON_EVENT_SCREEN_ON: String = "usual.event.SCREEN_ON"
 ```
 
-**功能：**  表示设备屏幕打开且设备处于交互状态的公共事件。
+**功能：** 表示设备屏幕打开且设备处于交互状态的公共事件。
 
 **类型：** String
 
@@ -2703,20 +2025,6 @@ public static const COMMON_EVENT_SCREEN_UNLOCKED: String = "usual.event.SCREEN_U
 ```
 
 **功能：** 表示屏幕解锁的公共事件的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SET_PRIMARY_SLOT_STATUS
-
-```cangjie
-public static const COMMON_EVENT_SET_PRIMARY_SLOT_STATUS: String = "usual.event.SET_PRIMARY_SLOT_STATUS"
-```
-
-**功能：** 提示设置SIM卡默认主卡的动作，其状态更新为执行中或已完成。
 
 **类型：** String
 
@@ -2752,62 +2060,6 @@ public static const COMMON_EVENT_SIGNAL_INFO_CHANGED: String = "usual.event.SIGN
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
-```
-
-**功能：** 表示SIM卡默认数据主卡已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED"
-```
-
-**功能：** 表示SIM卡默认主卡已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
-```
-
-**功能：** 表示SIM卡默认短信主卡已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED: String = "usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
-```
-
-**功能：** 表示SIM卡默认语音主卡已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_SIM_STATE_CHANGED
 
 ```cangjie
@@ -2836,83 +2088,13 @@ public static const COMMON_EVENT_SLOT_CHANGE: String = "usual.event.SLOT_CHANGE"
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED
-
-```cangjie
-public static const COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED: String = "usual.event.SMS_CB_RECEIVE_COMPLETED"
-```
-
-**功能：** 表示小区广播短信接收完成的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED
-
-```cangjie
-public static const COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED: String = "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
-```
-
-**功能：** 表示紧急小区广播短信接收完成的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SMS_RECEIVE_COMPLETED
-
-```cangjie
-public static const COMMON_EVENT_SMS_RECEIVE_COMPLETED: String = "usual.event.SMS_RECEIVE_COMPLETED"
-```
-
-**功能：** 表示设备接收到信息的动作。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED
-
-```cangjie
-public static const COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED: String = "usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED"
-```
-
-**功能：** 表示服务信息短信接收完成的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_SPECIAL_CODE
-
-```cangjie
-public static const COMMON_EVENT_SPECIAL_CODE: String = "common.event.SPECIAL_CODE"
-```
-
-**功能：** 提示暗码发送成功。在设备上发送暗码成功时，将会触发事件通知服务发布该系统公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_SPLIT_SCREEN
 
 ```cangjie
 public static const COMMON_EVENT_SPLIT_SCREEN: String = "common.event.SPLIT_SCREEN"
 ```
 
-**功能：**  表示分屏的公共事件。
+**功能：** 表示分屏的公共事件。
 
 **类型：** String
 
@@ -2934,69 +2116,13 @@ public static const COMMON_EVENT_SPN_INFO_CHANGED: String = "usual.event.SPN_INF
 
 **起始版本：** 21
 
-### static const COMMON_EVENT_STK_ALPHA_IDENTIFIER
-
-```cangjie
-public static const COMMON_EVENT_STK_ALPHA_IDENTIFIER: String = "usual.event.STK_ALPHA_IDENTIFIER"
-```
-
-**功能：** （预留事件，暂未支持）表示STK ALPHA标识符的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_STK_CARD_STATE_CHANGED
-
-```cangjie
-public static const COMMON_EVENT_STK_CARD_STATE_CHANGED: String = "usual.event.STK_CARD_STATE_CHANGED"
-```
-
-**功能：** （预留事件，暂未支持）表示STK卡状态已更新的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_STK_COMMAND
-
-```cangjie
-public static const COMMON_EVENT_STK_COMMAND: String = "usual.event.STK_COMMAND"
-```
-
-**功能：** （预留事件，暂未支持）表示发送STK命令的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### static const COMMON_EVENT_STK_SESSION_END
-
-```cangjie
-public static const COMMON_EVENT_STK_SESSION_END: String = "usual.event.STK_SESSION_END"
-```
-
-**功能：** （预留事件，暂未支持）表示STK会话结束的公共事件。
-
-**类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
 ### static const COMMON_EVENT_THERMAL_LEVEL_CHANGED
 
 ```cangjie
 public static const COMMON_EVENT_THERMAL_LEVEL_CHANGED: String = "usual.event.THERMAL_LEVEL_CHANGED"
 ```
 
-**功能：**  表示设备热状态的公共事件。
+**功能：** 表示设备热状态的公共事件。
 
 **类型：** String
 
@@ -3573,163 +2699,6 @@ public static const COMMON_EVENT_WIFI_SCAN_FINISHED: String = "usual.event.wifi.
 **功能：** 表示Wi-Fi接入点已被扫描并证明可用的公共事件。
 
 **类型：** String
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-## enum ValueType
-
-```cangjie
-public enum ValueType {
-    | INT(Int32)
-    | FLOAT64(Float64)
-    | STRING(String)
-    | BOOL(Bool)
-    | FD(Int32)
-    | ARRSTRING(Array<String>)
-    | ARRAYI32(Array<Int32>)
-    | ARRAYI64(Array<Int64>)
-    | ARRAYBOOL(Array<Bool>)
-    | ARRAYF64(Array<Float64>)
-    | ARRAYFD(Array<Int32>)
-    | ...
-}
-```
-
-**功能：** 包含公共事件附加信息的类型取值。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### ARRAYBOOL(Array\<Bool>)
-
-```cangjie
-ARRAYBOOL(Array<Bool>)
-```
-
-**功能：** 表示Bool数组类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### ARRAYF64(Array\<Float64>)
-
-```cangjie
-ARRAYF64(Array<Float64>)
-```
-
-**功能：** 表示Float64数组类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### ARRAYFD(Array\<Int32>)
-
-```cangjie
-ARRAYFD(Array<Int32>)
-```
-
-**功能：** 表示文件描述符数组数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### ARRAYI32(Array\<Int32>)
-
-```cangjie
-ARRAYI32(Array<Int32>)
-```
-
-**功能：** 表示Int32数组类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### ARRAYI64(Array\<Int64>)
-
-```cangjie
-ARRAYI64(Array<Int64>)
-```
-
-**功能：** 表示Int64数组类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### ARRSTRING(Array\<String>)
-
-```cangjie
-ARRSTRING(Array<String>)
-```
-
-**功能：** 表示String数组类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### BOOL(Bool)
-
-```cangjie
-BOOL(Bool)
-```
-
-**功能：** 表示Bool类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### FD(Int32)
-
-```cangjie
-FD(Int32)
-```
-
-**功能：** 表示文件描述符数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### FLOAT64(Float64)
-
-```cangjie
-FLOAT64(Float64)
-```
-
-**功能：** 表示Float64类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### INT(Int32)
-
-```cangjie
-INT(Int32)
-```
-
-**功能：** 表示Int32类型数据。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**起始版本：** 21
-
-### STRING(String)
-
-```cangjie
-STRING(String)
-```
-
-**功能：** 表示String类型数据。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

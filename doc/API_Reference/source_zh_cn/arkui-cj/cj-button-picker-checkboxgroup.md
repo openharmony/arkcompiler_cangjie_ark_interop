@@ -96,7 +96,7 @@ public func onChange(callback: OnCheckboxGroupChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnCheckboxGroupChangeCallback](<font color="red" face="bold">please add link</font>)|是|-|多选框群组的信息。|
+|callback|OnCheckboxGroupChangeCallback|是|-|多选框群组的信息。|
 
 ## 基础类型定义
 
@@ -288,24 +288,6 @@ public func getValue(): Int32
 |:----|:----|
 |Int32|枚举的值。|
 
-#### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取当前枚举的字符串表示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的字符串表示。|
-
 ## 示例代码
 
 ### 示例1（设置多选框群组）
@@ -318,10 +300,15 @@ public func toString(): String
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
-func formatNames(names: ArrayList<String>): String {
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func formatNames(names: Array<String>): String {
     var result = ""
     for(name in names) {
         result += name + ";"
@@ -334,28 +321,25 @@ func formatNames(names: ArrayList<String>): String {
 class EntryView {
     func build() {
         Column(){
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 CheckboxGroup(group:"checkboxGroup")
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
-                .unselectedColor(Color.Blue)
-                .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
                 .selectAll(false)
                 .onChange { val =>
-                    BaseLog.info("checkboxGroup onChange status:" + val.status.toString())
-                    BaseLog.info("checkboxGroup onChange names:" + formatNames(val.name))
+                    loggerInfo("checkboxGroup onChange names:" + formatNames(val.name))
                 }
 
                 Text("Select All").fontSize(50)
             }
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox1", group:"checkboxGroup")
                 .size(width: 50.vp, height: 50.vp)
 
                 Text("checkbox1").fontSize(50)
             }
 
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox2", group:"checkboxGroup")
                 .size(width: 50.vp, height: 50.vp)
 
@@ -378,10 +362,15 @@ class EntryView {
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
-func formatNames(names: ArrayList<String>): String {
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func formatNames(names: Array<String>): String {
     var result = ""
     for(name in names) {
         result += name + ";"
@@ -394,35 +383,32 @@ func formatNames(names: ArrayList<String>): String {
 class EntryView {
     func build() {
         Column(){
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 CheckboxGroup(group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
                 .selectAll(true)
-                .mark(strokeColor: Color.Green, size: 30.vp, strokeWidth: 10.vp)
-                .checkboxShape(CheckBoxShape.CIRCLE)
                 .onChange { val =>
-                    BaseLog.info("checkboxGroup1 onChange status:" + val.status.toString())
-                    BaseLog.info("checkboxGroup1 onChange names:" + formatNames(val.name))
+                    loggerInfo("checkboxGroup1 onChange names:" + formatNames(val.name))
                 }
 
                 Text("Select All").fontSize(50)
             }
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox1", group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
 
                 Text("checkbox1").fontSize(50)
             }
 
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox2", group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
 
                 Text("checkbox2").fontSize(50)
             }
 
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox3", group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
 

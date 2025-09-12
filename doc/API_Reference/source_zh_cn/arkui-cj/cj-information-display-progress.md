@@ -291,50 +291,6 @@ Progressing
 
 **起始版本：** 21
 
-### func !=(ProgressStatus)
-
-```cangjie
-public operator func !=(other: ProgressStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ProgressStatus](<font color="red" face="bold">please add link</font>)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func ==(ProgressStatus)
-
-```cangjie
-public operator func ==(other: ProgressStatus): Bool
-```
-
-**功能：** <font color="red" face="bold">please add description</font>
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ProgressStatus](<font color="red" face="bold">please add link</font>)|是|-|<font color="red" face="bold">please add description</font>|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|<font color="red" face="bold">please add description</font>|
-
 ## 示例代码
 
 ### 示例1（设置进度条的类型）
@@ -352,48 +308,45 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    let scaleStyle0 = ScaleRingStyleOptions(strokeWidth: 15.vp, scaleCount: 15, scaleWidth: 5.vp,
-        enableSmoothEffect: true)
-    let scaleStyle1 = ScaleRingStyleOptions(strokeWidth: 20.vp, scaleCount: 20, scaleWidth: 5.vp,
-        enableSmoothEffect: true)
-    let scaleStyle2 = ScaleRingStyleOptions(strokeWidth: 20.vp, scaleCount: 30, scaleWidth: 3.vp,
-        enableSmoothEffect: true)
+    let scaleStyle0 = RingStyleOptions(strokeWidth: 15.vp, enableSmoothEffect: true)
+    let scaleStyle1 = RingStyleOptions(strokeWidth: 20.vp, enableSmoothEffect: true)
+    let scaleStyle2 = RingStyleOptions(strokeWidth: 20.vp, enableSmoothEffect: true)
     let ringStyle = RingStyleOptions(strokeWidth: 20.vp)
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("Linear Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Progress(value: 10.0, `type`: ProgressType.Linear).width(200)
-            Progress(value: 20.0, total: 150.0, `type`: ProgressType.Linear)
+            Progress(value: 10.0, progressType: ProgressType.Linear).width(200)
+            Progress(value: 20.0, total: 150.0, progressType: ProgressType.Linear)
                 .color(Color.Gray)
                 .value(50.0)
                 .width(200)
 
             Text("Eclipse Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 10.0, `type`: ProgressType.Eclipse).width(100)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.Eclipse)
+            Row(space: 40) {
+                Progress(value: 10.0, progressType: ProgressType.Eclipse).width(100)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.Eclipse)
                     .width(100)
                     .color(Color.Gray)
                     .value(50.0)
             }
 
             Text("ScaleRing Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 10.0, `type`: ProgressType.ScaleRing).width(100)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+            Row(space: 40) {
+                Progress(value: 10.0, progressType: ProgressType.ScaleRing).width(100)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
                     .style(scaleStyle0)
             }
 
-            Row(40) {
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+            Row(space: 40) {
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
                     .style(scaleStyle1)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -401,9 +354,9 @@ class EntryView {
             }
 
             Text("Ring Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 10.0, `type`: ProgressType.Ring).width(100)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.Ring)
+            Row(space: 40) {
+                Progress(value: 10.0, progressType: ProgressType.Ring).width(100)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.Ring)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -411,9 +364,9 @@ class EntryView {
             }
 
             Text("Capsule Progress").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 10.0, `type`: ProgressType.Capsule).width(100).height(50)
-                Progress(value: 20.0, total: 150.0, `type`: ProgressType.Capsule)
+            Row(space: 40) {
+                Progress(value: 10.0, progressType: ProgressType.Capsule).width(100).height(50)
+                Progress(value: 20.0, total: 150.0, progressType: ProgressType.Capsule)
                     .color(Color.Gray)
                     .value(50.0)
                     .width(100)
@@ -441,22 +394,20 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    let colorStop0 = ColorStop(0X02fd03, 0.5)
-    let colorStop1 = ColorStop(Color.Blue, 1.0)
     let ringStyle0 = RingStyleOptions(strokeWidth: 20.vp)
     let ringStyle1 = RingStyleOptions(strokeWidth: 20.vp, shadow: true)
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("Gradient Color").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 70.0, `type`: ProgressType.Ring)
+            Row(space: 40) {
+                Progress(value: 70.0, progressType: ProgressType.Ring)
                     .width(100)
                     .style(ringStyle0)
-                    .color([colorStop0, colorStop1])
+                    .color(0X02fd03)
             }
             Text("Shadow").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 70.0, `type`: ProgressType.Ring).width(120).color(Color.Blue).style(ringStyle1)
+            Row(space: 40) {
+                Progress(value: 70.0, progressType: ProgressType.Ring).width(120).color(Color.Blue).style(ringStyle1)
             }
         }
     }
@@ -483,17 +434,17 @@ import ohos.resource_manager.*
 @Entry
 @Component
 class EntryView {
-    let ringStyle0 = RingStyleOptions(strokeWidth: 20.vp, status: ProgressStatus.LOADING)
+    let ringStyle0 = RingStyleOptions(strokeWidth: 20.vp, status: ProgressStatus.Loading)
     let ringStyle1 = RingStyleOptions(strokeWidth: 20.vp, enableScanEffect: true)
     func build() {
-        Column(15) {
+        Column(space: 15) {
             Text("Loading Effect").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 0.0, `type`: ProgressType.Ring).width(100).style(ringStyle0).color(Color.Blue)
+            Row(space: 40) {
+                Progress(value: 0.0, progressType: ProgressType.Ring).width(100).style(ringStyle0).color(Color.Blue)
             }
             Text("Shadow").fontSize(20).fontColor(0xCCCCCC).width(90.percent)
-            Row(40) {
-                Progress(value: 30.0, `type`: ProgressType.Ring).width(100).color(0X02fd03).style(ringStyle1)
+            Row(space: 40) {
+                Progress(value: 30.0, progressType: ProgressType.Ring).width(100).color(0X02fd03).style(ringStyle1)
             }
         }
     }
@@ -502,43 +453,7 @@ class EntryView {
 
 ![progress3](figures/progress3.gif)
 
-### 示例4（设置胶囊形进度条属性）
-
-该示例通过style接口的borderColor、borderWidth、content、font、fontColor、enableScanEffect、showDefaultPercentage属性，实现了胶囊形进度条视觉属性设置功能。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column(15) {
-          Row(40) {
-            Progress(value: 100.0, total: 100.0, `type`: ProgressType.Capsule).width(100).height(50)
-              .style(
-                CapsuleStyleOptions(
-                    content: 'Installing...',
-                    font: Fonts(size: 13, style: FontStyle.Normal),
-                    borderColor: Color.Blue,
-                    borderWidth: 1,
-                    fontColor: Color.Gray,
-                    enableScanEffect: false,
-                    showDefaultPercentage: false))
-          }
-        }.width(100.percent).padding( top: 5 )
-    }
-}
-```
-
-![progress4](figures/progress4.png)
-
-### 示例5（设置进度平滑动效）
+### 示例4（设置进度平滑动效）
 
 该示例通过style接口的enableSmoothEffect属性，实现了进度平滑动效开关的功能。
 
@@ -557,13 +472,13 @@ class EntryView {
     var value: Float64 = 0.0
 
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text('enableSmoothEffect: true').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5).margin( top: 20 )
-            Progress( value: this.value, total: 100.0, `type`: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: true ))
+            Progress( value: this.value, total: 100.0, progressType: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: true ))
             Text('enableSmoothEffect: false').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5)
-            Progress( value: this.value, total: 100.0, `type`: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: false ))
+            Progress( value: this.value, total: 100.0, progressType: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: false ))
             Button('value +10')
-                .onClick{ =>
+                .onClick{ evt =>
                     this.value += 10.0
             }.width(75).height(15).fontSize(9)
         }.width(50.percent).height(100.percent).margin( left: 20 )

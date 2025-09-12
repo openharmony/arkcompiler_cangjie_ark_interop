@@ -36,7 +36,7 @@ public func animationStart(value: AnimateParam): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AnimateParam](#)|是|-|动画参数。|
+|value|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|动画参数。|
 
 ## 示例代码
 
@@ -48,6 +48,7 @@ public func animationStart(value: AnimateParam): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -56,7 +57,7 @@ let animateOpt1 = AnimateParam(
     iterations: 3,
     playMode: PlayMode.Normal,
     onFinish: {
-        => AppLog.info("onfinish")
+        => Hilog.info(0, "cangjie", "onfinish")
     },
     expectedFrameRateRange: ExpectedFrameRateRange(
         min: 20,
@@ -71,7 +72,7 @@ let animateOpt2 = AnimateParam(
     iterations: -1, // 设置-1表示动画无限循环
     playMode: PlayMode.Alternate,
     onFinish: {
-        => AppLog.info("onfinish")
+        => Hilog.info(0, "cangjie", "onfinish")
     },
     expectedFrameRateRange: ExpectedFrameRateRange(
         min: 20,
@@ -92,7 +93,7 @@ class EntryView {
             Button("change size")
                 .animationStart(animateOpt1)
                 .onClick {
-                    =>
+                   evt =>
                     if (this.flag) {
                         this.widthSize = 150.vp
                         this.heightSize = 60.vp
@@ -109,10 +110,10 @@ class EntryView {
             Button('change rotate angle')
                 .animationStart(animateOpt2)
                 .onClick {
-                    => this.rotateAngle = 90.0
+                   evt => this.rotateAngle = 90.0
                 }
                 .margin(50)
-                .rotate(this.rotateAngle)
+                .rotate(angle:this.rotateAngle,)
                 .animationEnd()
         }
         .width(100.percent)

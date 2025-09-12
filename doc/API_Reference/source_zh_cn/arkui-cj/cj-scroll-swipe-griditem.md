@@ -164,7 +164,7 @@ class EntryView {
                         .height(100.percent)
                         .textAlign(TextAlign.Center)
                         .id("gridItem1")
-                }.rowStart(1).rowEnd(4).selectable(false)
+                }.rowStart(1).rowEnd(4)
 
                 //循环渲染Griditem，标记为0-15
                 ForEach(
@@ -189,107 +189,16 @@ class EntryView {
                         .height(100.percent)
                         .textAlign(TextAlign.Center)
                         .id("gridItem2")
-                }.columnStart(1).columnEnd(5).selected(true)
+                }.columnStart(1).columnEnd(5)
             }
                 .columnsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .rowsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .width(90.percent)
                 .backgroundColor(0xFAEEE0)
                 .height(300)
-                .onScrollIndex({index =>})
         }.width(100.percent).margin(top: 5)
     }
 }
 ```
 
 ![griditem](figures/griditem1.gif)
-
-### 示例2 （设置GridItem样式）
-
-使用GridItemOptions设置GridItem样式。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
-
-@Entry
-@Component
-class EntryView {
-    let scroller = Scroller()
-    @State
-    var numbers2: ArrayList<String> = ArrayList(["0", "1", "2"])
-
-    func build() {
-        Column() {
-            Grid() {
-                //循环渲染Griditem，标记为0-15
-                ForEach(
-                    this.numbers2,
-                    itemGeneratorFunc: {
-                        num: String, idx: Int64 => ForEach(
-                            this.numbers2,
-                            itemGeneratorFunc: {
-                                num: String, idx: Int64 => GridItem(GridItemOptions(style: GridItemStyle.NONE)) {
-                                    Text(num)
-                                        .fontSize(16)
-                                        .width(100.percent)
-                                        .height(100.percent)
-                                        .textAlign(TextAlign.Center)
-                                        .focusable(true)
-                                }.backgroundColor(0xF9CF93)
-                            }
-                        )
-                    }
-                )
-            }
-                .columnsTemplate("1fr 1fr 1fr")
-                .rowsTemplate("1fr 1fr")
-                .columnsGap(4)
-                .rowsGap(4)
-                .width(60.percent)
-                .backgroundColor(0xFAEEE0)
-                .height(150)
-                .padding(4.vp)
-                .onScrollIndex({index =>})
-
-            Grid() {
-                //循环渲染Griditem，标记为0-15
-                ForEach(
-                    this.numbers2,
-                    itemGeneratorFunc: {
-                        num: String, idx: Int64 => ForEach(
-                            this.numbers2,
-                            itemGeneratorFunc: {
-                                num: String, idx: Int64 => GridItem(GridItemOptions(style: GridItemStyle.PLAIN)) {
-                                    Text(num)
-                                        .fontSize(16)
-                                        .width(100.percent)
-                                        .height(100.percent)
-                                        .textAlign(TextAlign.Center)
-                                        .focusable(true)
-                                }.backgroundColor(0xF9CF93)
-                            }
-                        )
-                    }
-                )
-            }
-                .columnsTemplate("1fr 1fr 1fr")
-                .rowsTemplate("1fr 1fr")
-                .columnsGap(4)
-                .rowsGap(4)
-                .width(60.percent)
-                .backgroundColor(0xFAEEE0)
-                .height(150)
-                .padding(4.vp)
-                .onScrollIndex({index =>})
-        }.width(100.percent).margin(top: 5)
-    }
-}
-```
-
-![griditem](figures/griditem2_api.png)

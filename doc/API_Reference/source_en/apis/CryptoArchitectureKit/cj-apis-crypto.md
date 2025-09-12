@@ -1651,11 +1651,11 @@ public func toString(): String
 
 ```cangjie
 public enum Result <: ToString {
-    | INVALID_PARAMS
-    | NOT_SUPPORT
-    | ERR_OUT_OF_MEMORY
-    | ERR_RUNTIME_ERROR
-    | ERR_CRYPTO_OPERATION
+    | InvalidParams
+    | NotSupport
+    | ErrOutOfMemory
+    | ErrRuntimeError
+    | ErrCryptoOperation
     | ...
 }
 ```
@@ -1670,10 +1670,10 @@ public enum Result <: ToString {
 
 - ToString
 
-### ERR_CRYPTO_OPERATION
+### ErrCryptoOperation
 
 ```cangjie
-ERR_CRYPTO_OPERATION
+ErrCryptoOperation
 ```
 
 **Function:** Error when calling third-party cryptographic library APIs.
@@ -1682,10 +1682,10 @@ ERR_CRYPTO_OPERATION
 
 **Since:** 21
 
-### ERR_OUT_OF_MEMORY
+### ErrOutOfMemory
 
 ```cangjie
-ERR_OUT_OF_MEMORY
+ErrOutOfMemory
 ```
 
 **Function:** Memory error.
@@ -1694,10 +1694,10 @@ ERR_OUT_OF_MEMORY
 
 **Since:** 21
 
-### ERR_RUNTIME_ERROR
+### ErrRuntimeError
 
 ```cangjie
-ERR_RUNTIME_ERROR
+ErrRuntimeError
 ```
 
 **Function:** External runtime error.
@@ -1706,10 +1706,10 @@ ERR_RUNTIME_ERROR
 
 **Since:** 21
 
-### INVALID_PARAMS
+### InvalidParams
 
 ```cangjie
-INVALID_PARAMS
+InvalidParams
 ```
 
 **Function:** Invalid parameters.
@@ -1718,10 +1718,10 @@ INVALID_PARAMS
 
 **Since:** 21
 
-### NOT_SUPPORT
+### NotSupport
 
 ```cangjie
-NOT_SUPPORT
+NotSupport
 ```
 
 **Function:** Operation not supported.

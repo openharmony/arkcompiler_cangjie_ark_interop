@@ -81,7 +81,7 @@ public func font(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Medium|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"sans-serif"|**命名参数。** 指定字体系列。|
 
 ### func fontColor(ResourceColor)
@@ -118,8 +118,8 @@ public func menuAlign(alignType!: MenuAlignType, offset!: Offset): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|alignType|[MenuAlignType](#enum-menualigntype)|是|-|| **命名参数。** 对齐方式类型。<br/>初始值：MenuAlignType.START。|
-|offset|[Offset](#class-menuoffset)|是|-| **命名参数。** 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。<br>初始值：MenuOffset(0, 0)。|
+|alignType|[MenuAlignType](#enum-menualigntype)|是|-| **命名参数。** 对齐方式类型。<br/>初始值：MenuAlignType.START。|
+|offset|[Offset](./cj-common-types.md#class-offset)|是|-| **命名参数。** 按照对齐类型对齐后，下拉菜单相对下拉按钮的偏移量。<br>初始值：MenuOffset(0, 0)。|
 
 ### func menuBackgroundBlurStyle(BlurStyle)
 
@@ -198,7 +198,7 @@ public func optionFont(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Medium|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 指定字号和行高，不支持百分比设置。|
 |family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"sans-serif"|**命名参数。** 指定字体系列。|
 
 ### func optionFontColor(ResourceColor)
@@ -239,7 +239,7 @@ public func optionHeight(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单显示的最大高度。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单显示的最大高度。|
 
 ### func optionWidth(OptionWidthMode)
 
@@ -277,7 +277,7 @@ public func optionWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的宽度。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的宽度。|
 
 ### func selected(Int32)
 
@@ -338,7 +338,7 @@ public func selectedOptionFont(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Medium|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 文本尺寸。不支持百分比设置。|
+|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 文本尺寸。不支持百分比设置。|
 |family|String|否|"sans-serif"|**命名参数。** 指定字体列表。|
 
 ### func selectedOptionFontColor(ResourceColor)
@@ -375,7 +375,7 @@ public func space(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的文本与箭头之间的间距。<br>初始值：8|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的文本与箭头之间的间距。<br>初始值：8|
 
 ### func value(ResourceStr)
 
@@ -413,11 +413,11 @@ public func onSelect(callback: OnSelectCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnSelectCallback](<font color="red" face="bold">please add link</font>)|是|-|选中项的索引和值。|
+|callback|OnSelectCallback|是|-|选中项的索引和值。|
 
 ## 基础类型定义
 
-## class SelectOption
+### class SelectOption
 
 ```cangjie
 public class SelectOption {
@@ -465,7 +465,7 @@ public var value: ResourceStr
 
 **起始版本：** 21
 
-### init(ResourceStr, ResourceStr)
+#### init(ResourceStr, ResourceStr)
 
 ```cangjie
 public init(value!: ResourceStr, icon!: ResourceStr)
@@ -520,7 +520,7 @@ public init(value: String, icon!: AppResource)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|String|是|-|下拉选项内容。|
-|icon|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 下拉选项图标。|
+|icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
 #### init(AppResource, String)
 
@@ -538,7 +538,7 @@ public init(value: AppResource, icon!: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|下拉选项内容。|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
 |icon|String|是|-|**命名参数。** 下拉选项图标。|
 
 #### init(AppResource, AppResource)
@@ -557,9 +557,8 @@ public init(value: AppResource, icon!: AppResource)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|下拉选项内容。|
-|icon|[AppResource](<font color="red" face="bold">please add link</font>)|是|-|**命名参数。** 下拉选项图标。|
-
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|下拉选项内容。|
+|icon|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|**命名参数。** 下拉选项图标。|
 
 ### enum ArrowPosition
 
@@ -756,6 +755,8 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
 @Entry
 @Component
 class EntryView {
@@ -764,12 +765,12 @@ class EntryView {
     @State var space: Int64 = 8
 
     @State var values1: Array<SelectOption> = [
-            SelectOption("aaa", icon: @r(app.media.startIcon)),
-            SelectOption("bbb", icon: @r(app.media.startIcon)),
-            SelectOption("ccc", icon: @r(app.media.startIcon)),
-            SelectOption("ddd", icon: @r(app.media.startIcon))]
+            SelectOption(value: "aaa", icon: @r(app.media.startIcon)),
+            SelectOption(value: "bbb", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ccc", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ddd", icon: @r(app.media.startIcon))]
 
-    @State var arrow: ArrowPosition = ArrowPosition.END
+    @State var arrow: ArrowPosition = ArrowPosition.End
 
     func build() {
         Column {
@@ -781,7 +782,7 @@ class EntryView {
             .selectedOptionFont(size: 16.vp, weight: FontWeight.W400)
             .space(this.space)
             .arrowPosition(this.arrow)
-            .menuAlign(MenuAlignType.START, offset: MenuOffset(0, 0))
+            .menuAlign(alignType: MenuAlignType.Start, offset: Offset(0, 0))
             .optionWidth(200)
             .optionHeight(300)
             .onSelect({ index: Int32, text: String =>
@@ -796,73 +797,3 @@ class EntryView {
 ```
 
 ![selectExample](./figures/selectExample.png)
-
-### 示例2（设置分割线样式）
-
-该示例实现了分割线样式支持自定义。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("选项1", icon: ""),
-                        SelectOption("选项2", icon: ""),
-                        SelectOption("选项3", icon: ""),
-                        SelectOption("选项4", icon: "")
-                    ]
-                )
-                    .value("请选择")
-                    .divider(
-                        options: DividerOptions(strokeWidth: 5, startMargin: 15, endMargin: 1,
-                        color: Color(0XFFD700)))
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```
-
-![selectSample2](./figures/selectSample2.PNG)
-
-### 示例3（设置无分割线样式）
-
-该示例通过配置divider为null实现无分割线样式的下拉菜单。
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("选项1", icon: ""),
-                        SelectOption("选项2", icon: ""),
-                        SelectOption("选项3", icon: ""),
-                        SelectOption("选项4", icon: "")
-                    ]
-                ).value("请选择").divider(options: Option.None)
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```

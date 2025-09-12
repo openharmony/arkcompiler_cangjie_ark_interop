@@ -45,7 +45,7 @@ public init(direction!: FlexDirection = FlexDirection.Row, wrap!: FlexWrap = Fle
 |justifyContent|[FlexAlign](cj-common-types.md#enum-flexalign)|否|FlexAlign.Start| **命名参数。** 所有子组件在Flex容器主轴上的对齐格式。|
 |alignItems|[ItemAlign](cj-common-types.md#enum-itemalign)|否|ItemAlign.Start| **命名参数。** 所有子组件在Flex容器交叉轴上的对齐格式。|
 |alignContent|[FlexAlign](cj-common-types.md#enum-flexalign)|否|FlexAlign.Start| **命名参数。** 交叉轴中有额外的空间时，多行内容的对齐方式。仅在wrap为Wrap或WrapReverse下生效。|
-|child|()->Unit|否|-| **命名参数。** 声明容器内的子组件。|
+|child|()->Unit|否|{=>}| **命名参数。** 声明容器内的子组件。|
 
 ## 通用属性/通用事件
 
@@ -72,14 +72,14 @@ import std.collection.*
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text("direction:Row")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
 
                 // 子组件在容器主轴上行布局
-                Flex(FlexParams(direction: FlexDirection.Row)) {
+                Flex(direction: FlexDirection.Row) {
                     Text("1")
                     .width(20.percent)
                     .height(50)
@@ -107,7 +107,7 @@ class EntryView {
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
                 // 子组件在容器主轴上反向行布局
-                Flex(FlexParams(direction: FlexDirection.RowReverse)) {
+                Flex(direction: FlexDirection.RowReverse) {
                     Text("1")
                     .width(20.percent)
                     .height(50)
@@ -135,7 +135,7 @@ class EntryView {
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
                 // 子组件在容器主轴上列布局
-                Flex(FlexParams(direction: FlexDirection.Column)) {
+                Flex(direction: FlexDirection.Column) {
                     Text("1")
                     .width(100.percent)
                     .height(50)
@@ -162,7 +162,7 @@ class EntryView {
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
                 // 子组件在容器主轴上反向列布局
-                Flex(FlexParams(direction: FlexDirection.ColumnReverse)) {
+                Flex(direction: FlexDirection.ColumnReverse) {
                     Text("1")
                     .width(100.percent)
                     .height(50)
@@ -211,12 +211,12 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text("Wrap")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Flex(FlexParams(wrap: FlexWrap.Wrap)) {
+                Flex(wrap: FlexWrap.Wrap) {
                     Text("1")
                     .width(50.percent)
                     .height(50)
@@ -238,7 +238,7 @@ class EntryView {
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Flex(FlexParams(wrap: FlexWrap.NoWrap)) {
+                Flex(wrap: FlexWrap.NoWrap) {
                     Text("1")
                     .width(50.percent)
                     .height(50)
@@ -260,7 +260,7 @@ class EntryView {
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Flex(FlexParams(wrap: FlexWrap.WrapReverse, direction:FlexDirection.Row)) {
+                Flex(wrap: FlexWrap.WrapReverse, direction:FlexDirection.Row) {
                     Text("1")
                     .width(50.percent)
                     .height(50)
@@ -307,7 +307,7 @@ class JustifyContentFlex{
     var justifyContent :  FlexAlign  = FlexAlign.Start
 
     func build(){
-        Flex(FlexParams(justifyContent:this.justifyContent)){
+        Flex(justifyContent:this.justifyContent){
             Text('1').width(20.percent).height(50).backgroundColor(0xF5DEB3)
             Text('2').width(20.percent).height(50).backgroundColor(0xD2B48C)
             Text('3').width(20.percent).height(50).backgroundColor(0xF5DEB3)
@@ -323,7 +323,7 @@ class JustifyContentFlex{
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text('justifyContent:Start').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 JustifyContentFlex()// 子组件在容器主轴上首端对齐
                 Text('justifyContent:Center').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
@@ -368,7 +368,7 @@ class AlignItemsFlex{
     var alignItems :  ItemAlign  = ItemAlign.Auto
 
     func build(){
-        Flex(FlexParams(alignItems:this.alignItems)){
+        Flex(alignItems:this.alignItems){
             Text('1').width(33.percent).height(30).backgroundColor(0xF5DEB3)
             Text('2').width(33.percent).height(40).backgroundColor(0xD2B48C)
             Text('3').width(33.percent).height(50).backgroundColor(0xF5DEB3)
@@ -385,7 +385,7 @@ class AlignItemsFlex{
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text('alignItems:Auto').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 子组件在容器交叉轴上首部对齐
                 AlignItemsFlex()
@@ -433,7 +433,7 @@ class AlignContentFlex{
     var alignContent :  FlexAlign  = FlexAlign.Start
 
     func build(){
-        Flex(FlexParams(wrap: FlexWrap.Wrap, alignContent:this.alignContent)){
+        Flex(wrap: FlexWrap.Wrap, alignContent:this.alignContent){
             Text('1').width(50.percent).height(20).backgroundColor(0xF5DEB3)
             Text('2').width(50.percent).height(20).backgroundColor(0xD2B48C)
             Text('3').width(50.percent).height(20).backgroundColor(0xD2B48C)
@@ -450,7 +450,7 @@ class AlignContentFlex{
 class EntryView {
     func build() {
         Column {
-            Column(5) {
+            Column(space: 5) {
                 Text('alignContent:Start').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 多行布局下子组件首部对齐
                 AlignContentFlex()
@@ -468,7 +468,7 @@ class EntryView {
                 AlignContentFlex(alignContent:FlexAlign.SpaceAround)
                 Text('alignContent:SpaceEvenly').fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // 多行布局下相邻行之间的距离与第一行子组件到列首的距离、最后一行子组件到列尾的距离完全一样
-                Flex(FlexParams(wrap: FlexWrap.Wrap, alignContent:FlexAlign.SpaceEvenly)){
+                Flex(wrap: FlexWrap.Wrap, alignContent:FlexAlign.SpaceEvenly){
                     Text('1').width(50.percent).height(20).backgroundColor(0xF5DEB3)
                     Text('2').width(50.percent).height(20).backgroundColor(0xD2B48C)
                     Text('3').width(50.percent).height(20).backgroundColor(0xF5DEB3)
@@ -489,51 +489,3 @@ class EntryView {
 ```
 
 ![flex](figures/flex_5.png)
-
-### 示例6（子组件单/多行排列时的主/交叉轴间距）
-
-该示例通过设置space为单/多行排列的子组件确定在主/交叉轴上的间距。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column() {
-            Column(5) {
-                Text("Wrap").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
-                Flex(FlexOptions(wrap: FlexWrap.Wrap, space: FlexSpaceOptions(mainSpace: 50.px, crossSpace: 50.px))) {
-                    Text("1").width(40.percent).height(50).backgroundColor(0xF5DEB3)
-                    Text("2").width(40.percent).height(50).backgroundColor(0xD2B48C)
-                    Text("3").width(40.percent).height(50).backgroundColor(0xD2B48C)
-                }.width(90.percent).padding(10).backgroundColor(0xAFEEEE)
-
-                Text("NoWrap").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
-                Flex(FlexOptions(wrap: FlexWrap.NoWrap, space: FlexSpaceOptions(mainSpace: 50.px, crossSpace: 50.px))) {
-                    Text("1").width(40.percent).height(50).backgroundColor(0xF5DEB3)
-                    Text("2").width(40.percent).height(50).backgroundColor(0xD2B48C)
-                    Text("3").width(40.percent).height(50).backgroundColor(0xD2B48C)
-                }.width(90.percent).padding(10).backgroundColor(0xAFEEEE)
-
-                Text("WrapReverse").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
-                Flex(
-                    FlexOptions(wrap: FlexWrap.WrapReverse, direction: FlexDirection.Row,
-                    space: FlexSpaceOptions(mainSpace: 50.px, crossSpace: 50.px))) {
-                    Text("1").width(40.percent).height(50).backgroundColor(0xF5DEB3)
-                    Text("2").width(40.percent).height(50).backgroundColor(0xD2B48C)
-                    Text("3").width(40.percent).height(50).backgroundColor(0xD2B48C)
-                }.width(90.percent).height(120).padding(10).backgroundColor(0xAFEEEE)
-            }.width(100.percent).margin(top: 5)
-        }.width(100.percent)
-    }
-}
-```
-
-![flex](figures/flex_6.png)

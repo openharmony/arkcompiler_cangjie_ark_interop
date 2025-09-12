@@ -310,6 +310,7 @@ public init(color!: ?ResourceColor = None, font!: ?Font = None)
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 import std.time.DateTime
 import std.time.Month
@@ -333,18 +334,17 @@ class EntryView {
             DatePicker(
                 start: DateTime.of(year: 2012, month: Month.of(8), dayOfMonth: 8),
                 end: DateTime.of(year: 2045, month: Month.of(8), dayOfMonth: 8),
-                selected: @Binder(this.selectedDate)
+                selected: this.selectedDate
             )
-                .disappearTextStyle(color: Color.Gray, size: 16.fp, weight: FontWeight.Bold)
-                .textStyle(color: 0xff182431, size: 18.fp, weight: FontWeight.Normal)
-                .selectedTextStyle(color: 0xff0000FF, size: 26.fp, weight: FontWeight.Regular)
+                .disappearTextStyle(PickerTextStyle(color: Color.Gray, font: Font(size: 16.fp, weight: FontWeight.Bold)))
+                .textStyle(PickerTextStyle(color: 0xff182431, font: Font(size: 18.fp, weight: FontWeight.Normal)))
+                .selectedTextStyle(PickerTextStyle(color: 0xff0000FF, font: Font(size: 26.fp, weight: FontWeight.Regular)))
                 .lunar(this.isLunar)
                 .onDateChange(
                     { res =>
-                        this.resultedDate = DateTime.of(year: res.year, month: Month.of(res.month), dayOfMonth: res.day)
-                        Hilog.info(0, "AppLogCj",
-                        "select current date is: " + res.year.toString() + "-" + res.month.toString() + "-" +
-                        res.day.toString())
+                        this.resultedDate = DateTime.of(year: res.year, month: res.month, dayOfMonth: res.dayOfMonth)
+                        Hilog.info(0, "AppLogCj", "select current date is: " + res.year.toString() + "-" + res.month.toString() + "-" +
+                        res.dayOfMonth.toString(), "")
                 })
                 .margin(top: 30)
         }.width(100.percent)

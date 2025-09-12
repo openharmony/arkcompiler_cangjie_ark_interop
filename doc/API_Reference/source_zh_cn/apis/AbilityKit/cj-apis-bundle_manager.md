@@ -13,7 +13,7 @@ import kit.AbilityKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -47,7 +47,7 @@ public class AbilityInfo {
 }
 ```
 
-**功能：** Ability信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取Ability信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY。
+**功能：** Ability信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取Ability信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -75,7 +75,7 @@ public let appIndex: Int32
 public let applicationInfo: ApplicationInfo
 ```
 
-**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_APPLICATION的值。
+**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_APPLICATION的值。
 
 **类型：** [ApplicationInfo](#class-applicationinfo)
 
@@ -283,9 +283,9 @@ public let launchType: LaunchType
 public let metadata: Array<Metadata>
 ```
 
-**功能：** Ability的元信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_METADATA的值。
+**功能：** Ability的元信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_METADATA的值。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -347,7 +347,7 @@ public let orientation: DisplayOrientation
 public let permissions: Array<String>
 ```
 
-**功能：** 被其他应用Ability调用时需要申请的权限集合。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 被其他应用Ability调用时需要申请的权限集合。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<String>
 
@@ -381,7 +381,7 @@ public let skills: Array<Skill>
 
 **功能：** Ability的Skills信息。
 
-**类型：** Array\<[Skill]>
+**类型：** Array\<[Skill](./cj-apis-skill.md#class-skill)>
 
 **读写能力：** 只读
 
@@ -458,7 +458,7 @@ public class ApplicationInfo {
 }
 ```
 
-**功能：** 应用程序的配置信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的应用程序信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_APPLICATION。
+**功能：** 应用程序的配置信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的应用程序信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_APPLICATION。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -646,9 +646,9 @@ public let descriptionId: Int32
 public let descriptionResource: AppResource
 ```
 
-**功能：** 应用程序的描述资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
+**功能：** 应用程序的描述资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-screendensity)来获取详细的资源数据信息。
 
-**类型：** [AppResource](<font color="red" face="bold">please add link</font>)
+**类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
 **读写能力：** 只读
 
@@ -710,9 +710,9 @@ public let iconId: Int32
 public let iconResource: AppResource
 ```
 
-**功能：** 应用程序的图标资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
+**功能：** 应用程序的图标资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-screendensity)来获取详细的资源数据信息。
 
-**类型：** [AppResource](<font color="red" face="bold">please add link</font>)
+**类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
 **读写能力：** 只读
 
@@ -774,9 +774,9 @@ public let labelId: Int32
 public let labelResource: AppResource
 ```
 
-**功能：** 应用程序的标签资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-uint32)来获取详细的资源数据信息。
+**功能：** 应用程序的标签资源信息，包含了bundleName、moduleName和资源的id，可以调用全球化的接口[getMediaContent](../LocalizationKit/cj-apis-resource_manager.md#func-getmediacontentappresource-screendensity)来获取详细的资源数据信息。
 
-**类型：** [AppResource](<font color="red" face="bold">please add link</font>)
+**类型：** [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)
 
 **读写能力：** 只读
 
@@ -790,7 +790,7 @@ public let labelResource: AppResource
 public let metadataArray: Array<ModuleMetadata>
 ```
 
-**功能：** 应用程序的元信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA的值。
+**功能：** 应用程序的元信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_METADATA的值。
 
 **类型：** Array\<[ModuleMetadata](#class-modulemetadata)>
 
@@ -854,7 +854,7 @@ public let nativeLibraryPath: String
 public let permissions: Array<String>
 ```
 
-**功能：** 访问应用程序所需的权限。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 访问应用程序所需的权限。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION和GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<String>
 
@@ -944,6 +944,199 @@ public let uid: Int32
 
 **起始版本：** 21
 
+## class BundleFlag
+
+```cangjie
+public class BundleFlag {
+    public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
+    public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
+    public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
+    public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
+    public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
+    public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x00000010
+    public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
+    public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
+    public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
+    public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
+    public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
+    public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
+}
+```
+
+**功能：** 包信息标志，指示需要获取的包信息的内容。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_DEFAULT
+
+```cangjie
+public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
+```
+
+**功能：** 只获取最基础的应用包信息。获取到的应用包信息中不包含HAP模块信息、应用信息、签名信息和权限申请信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_ABILITY
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
+```
+
+**功能：** 必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`同时指定，使得获取到的HAP模块信息中包含能力信息，但不包含能力信息中的元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_APPLICATION
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
+```
+
+**功能：** 在最基础的应用包信息的基础上，附带上应用信息，但不包含应用信息中的元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_DISABLE
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
+```
+
+**功能：** 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
+```
+
+**功能：** 必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`同时指定，使得获取到的HAP模块信息中包含拓展能力信息，但不包含拓展能力信息中的元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_HAP_MODULE
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
+```
+
+**功能：** 在最基础的应用包信息的基础上，附带上HAP模块信息，但不包含HAP模块信息中的能力信息、拓展能力信息和元数据。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_MENU
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
+```
+
+**功能：** 用于获取包含fileContextMenuConfig的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_METADATA
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
+```
+
+**功能：** 获取所有的元数据，包括HAP模块信息、能力信息、拓展能力信息和应用信息中的元数据，因此必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`、`GET_BUNDLE_INFO_WITH_ABILITY`、`GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`和`GET_BUNDLE_INFO_WITH_APPLICATION`同时指定。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x00000010
+```
+
+**功能：** 在最基础的应用包信息的基础上，附带上权限申请信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_ROUTER_MAP
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
+```
+
+**功能：** 用于获取包含routerMap的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
+```
+
+**功能：** 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
+### static const GET_BUNDLE_INFO_WITH_SKILL
+
+```cangjie
+public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
+```
+
+**功能：** 用于获取包含skills的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。
+
+**类型：** Int32
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**起始版本：** 21
+
 ## class BundleInfo
 
 ```cangjie
@@ -966,7 +1159,7 @@ public class BundleInfo {
 }
 ```
 
-**功能：** 包信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的应用包信息，其中入参bundleFlags指定所返回的BundleInfo中所包含的信息。
+**功能：** 包信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的应用包信息，其中入参bundleFlags指定所返回的BundleInfo中所包含的信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -994,7 +1187,7 @@ public let appIndex: Int32
 public let appInfo: ApplicationInfo
 ```
 
-**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION的值。
+**功能：** 应用程序的配置信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_APPLICATION的值。
 
 **类型：** [ApplicationInfo](#class-applicationinfo)
 
@@ -1010,7 +1203,7 @@ public let appInfo: ApplicationInfo
 public let hapModulesInfo: Array<HapModuleInfo>
 ```
 
-**功能：** 模块的配置信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE的值。
+**功能：** 模块的配置信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE的值。
 
 **类型：** Array\<[HapModuleInfo](#class-hapmoduleinfo)>
 
@@ -1074,7 +1267,7 @@ public let name: String
 public let permissionGrantStates: Array<PermissionGrantState>
 ```
 
-**功能：** 申请权限的授予状态。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 申请权限的授予状态。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<[PermissionGrantState](#enum-permissiongrantstate)>
 
@@ -1090,7 +1283,7 @@ public let permissionGrantStates: Array<PermissionGrantState>
 public let reqPermissionDetails: Array<ReqPermissionDetail>
 ```
 
-**功能：** 应用运行时需向系统申请的权限集合的详细信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
+**功能：** 应用运行时需向系统申请的权限集合的详细信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION的值。
 
 **类型：** Array\<[ReqPermissionDetail](#class-reqpermissiondetail)>
 
@@ -1106,7 +1299,7 @@ public let reqPermissionDetails: Array<ReqPermissionDetail>
 public let routerMap: Array<RouterItem>
 ```
 
-**功能：** 应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
+**功能：** 应用的路由表配置，由hapModulesInfo下的routerMap信息，根据RouterItem中的name字段进行去重后合并得到。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
 
 **类型：** Array\<[RouterItem](#class-routeritem)>
 
@@ -1122,7 +1315,7 @@ public let routerMap: Array<RouterItem>
 public let signatureInfo: SignatureInfo
 ```
 
-**功能：** 应用包的签名信息。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO的值。
+**功能：** 应用包的签名信息。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_SIGNATURE_INFO的值。
 
 **类型：** [SignatureInfo](#class-signatureinfo)
 
@@ -1230,7 +1423,7 @@ public class BundleManager {}
 public static func canOpenLink(link: String): Bool
 ```
 
-**功能：** 查询给定的链接是否可以打开。指定链接的scheme需要在module.json文件的querySchemes字段下配置。
+**功能：** 查询给定的链接是否可以打开。指定链接的scheme需要在module.json5文件的querySchemes字段下配置。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1288,7 +1481,7 @@ public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|bundleFlags|Int32|是|-|指定返回的BundleInfo所包含的信息，具体可参考[BundleFlag](#enum-bundleflag)。|
+|bundleFlags|Int32|是|-|指定返回的BundleInfo所包含的信息，具体可参考[BundleFlag](#class-bundleflag)。|
 
 **返回值：**
 
@@ -1356,8 +1549,7 @@ import kit.AbilityKit.*
 
 let moduleName = "entry"
 let abilityName = "EntryAbility"
-let metadataName = "ohos.extension.form"
-let info = BundleManager.getProfileByAbility(moduleName, abilityName, metadataName: metadataName)
+let infoList = BundleManager.getProfileByAbility(moduleName, abilityName)
 ```
 
 ### static func getProfileByExtensionAbility(String, String, String)
@@ -1616,7 +1808,7 @@ public class ExtensionAbilityInfo {
 }
 ```
 
-**功能：** ExtensionAbilityInfo信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的ExtensionAbility信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY。
+**功能：** ExtensionAbilityInfo信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的ExtensionAbility信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1790,7 +1982,7 @@ public let metadata: Array<Metadata>
 
 **功能：** ExtensionAbility的元信息。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -1870,7 +2062,7 @@ public let skills: Array<Skill>
 
 **功能：** ExtensionAbility的Skills信息。
 
-**类型：** Array\<[Skill]>
+**类型：** Array\<[Skill](./cj-apis-skill.md#class-skill)>
 
 **读写能力：** 只读
 
@@ -1922,7 +2114,7 @@ public class HapModuleInfo {
 }
 ```
 
-**功能：** HAP信息。三方应用可以通过[getBundleInfoForSelf](#func-getbundleinfoforselfint32)获取自身的HAP信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE。
+**功能：** HAP信息。三方应用可以通过[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)获取自身的HAP信息，其中入参bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2176,7 +2368,7 @@ public let metadata: Array<Metadata>
 
 **功能：** Ability的元信息。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -2254,7 +2446,7 @@ public let preloads: Array<PreloadItem>
 public let routerMap: Array<RouterItem>
 ```
 
-**功能：** 模块的路由表配置。通过调用[getBundleInfoForSelf](#func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
+**功能：** 模块的路由表配置。通过调用[getBundleInfoForSelf](#static-func-getbundleinfoforselfint32)接口获取，bundleFlags参数传入GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ROUTER_MAP的值。
 
 **类型：** Array\<[RouterItem](#class-routeritem)>
 
@@ -2287,7 +2479,7 @@ public let metadata: Array<Metadata>
 
 **功能：** 该模块下的元数据信息列表。
 
-**类型：** Array\<[Metadata]>
+**类型：** Array\<[Metadata](./cj-apis-metadata.md#class-metadata)>
 
 **读写能力：** 只读
 
@@ -2810,98 +3002,6 @@ public let minWindowWidth: UInt32
 
 **起始版本：** 21
 
-## enum AbilityFlag
-
-```cangjie
-public enum AbilityFlag {
-    | GetAbilityInfoDefault
-    | GetAbilityInfoWithPermission
-    | GetAbilityInfoWithApplication
-    | GetAbilityInfoWithMetadata
-    | GetAbilityInfoWithDisable
-    | GetAbilityInfoOnlySystemApp
-    | ...
-}
-```
-
-**功能：** UIAbility组件信息标志，指示需要获取的UIAbility组件信息的内容。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetAbilityInfoDefault
-
-```cangjie
-GetAbilityInfoDefault
-```
-
-**功能：** 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetAbilityInfoOnlySystemApp
-
-```cangjie
-GetAbilityInfoOnlySystemApp
-```
-
-**功能：** 用于仅为系统应用程序获取abilityInfo。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetAbilityInfoWithApplication
-
-```cangjie
-GetAbilityInfoWithApplication
-```
-
-**功能：** 用于获取包含applicationInfo的abilityInfo。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetAbilityInfoWithDisable
-
-```cangjie
-GetAbilityInfoWithDisable
-```
-
-**功能：** 用于获取包含禁用的abilityInfo的abilityInfo。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetAbilityInfoWithMetadata
-
-```cangjie
-GetAbilityInfoWithMetadata
-```
-
-**功能：** 用于获取包含metadata的abilityInfo。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetAbilityInfoWithPermission
-
-```cangjie
-GetAbilityInfoWithPermission
-```
-
-**功能：** 用于获取包含permission的abilityInfo。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
 ## enum ApplicationType
 
 ```cangjie
@@ -3050,194 +3150,6 @@ public func getValue(): String
 |类型|说明|
 |:----|:----|
 |String|枚举的值。|
-
-## enum BundleFlag
-
-```cangjie
-public enum BundleFlag {
-    | GetBundleInfoDefault
-    | GetBundleInfoWithApplication
-    | GetBundleInfoWithHapModule
-    | GetBundleInfoWithAbility
-    | GetBundleInfoWithExtensionAbility
-    | GetBundleInfoWithRequestedPermission
-    | GetBundleInfoWithMetadata
-    | GetBundleInfoWithDisable
-    | GetBundleInfoWithSignatureInfo
-    | GetBundleInfoWithMenu
-    | GetBundleInfoWithRouterMap
-    | GetBundleInfoWithSkill
-    | ...
-}
-```
-
-**功能：** 包信息标志，指示需要获取的包信息的内容。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoDefault
-
-```cangjie
-GetBundleInfoDefault
-```
-
-**功能：** 只获取最基础的应用包信息。获取到的应用包信息中不包含HAP模块信息、应用信息、签名信息和权限申请信息。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithAbility
-
-```cangjie
-GetBundleInfoWithAbility
-```
-
-**功能：** 必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`同时指定，使得获取到的HAP模块信息中包含能力信息，但不包含能力信息中的元数据。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithApplication
-
-```cangjie
-GetBundleInfoWithApplication
-```
-
-**功能：** 在最基础的应用包信息的基础上，附带上应用信息，但不包含应用信息中的元数据。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithDisable
-
-```cangjie
-GetBundleInfoWithDisable
-```
-
-**功能：** 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithExtensionAbility
-
-```cangjie
-GetBundleInfoWithExtensionAbility
-```
-
-**功能：** 必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`同时指定，使得获取到的HAP模块信息中包含拓展能力信息，但不包含拓展能力信息中的元数据。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithHapModule
-
-```cangjie
-GetBundleInfoWithHapModule
-```
-
-**功能：** 在最基础的应用包信息的基础上，附带上HAP模块信息，但不包含HAP模块信息中的能力信息、拓展能力信息和元数据。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithMenu
-
-```cangjie
-GetBundleInfoWithMenu
-```
-
-**功能：** 用于获取包含fileContextMenuConfig的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithMetadata
-
-```cangjie
-GetBundleInfoWithMetadata
-```
-
-**功能：** 获取所有的元数据，包括HAP模块信息、能力信息、拓展能力信息和应用信息中的元数据，因此必须与`GET_BUNDLE_INFO_WITH_HAP_MODULE`、`GET_BUNDLE_INFO_WITH_ABILITY`、`GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY`和`GET_BUNDLE_INFO_WITH_APPLICATION`同时指定。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithRequestedPermission
-
-```cangjie
-GetBundleInfoWithRequestedPermission
-```
-
-**功能：** 在最基础的应用包信息的基础上，附带上权限申请信息。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithRouterMap
-
-```cangjie
-GetBundleInfoWithRouterMap
-```
-
-**功能：** 用于获取包含routerMap的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithSignatureInfo
-
-```cangjie
-GetBundleInfoWithSignatureInfo
-```
-
-**功能：** 用于获取包含`signatureInfo`的BundleInfo。获取到的BundleInfo不包含`applicationInfo`、`hapModuleInfo`、`extensionAbility`、`ability`和`permission`的信息。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### GetBundleInfoWithSkill
-
-```cangjie
-GetBundleInfoWithSkill
-```
-
-**功能：** 用于获取包含skills的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
 
 ## enum BundleType
 

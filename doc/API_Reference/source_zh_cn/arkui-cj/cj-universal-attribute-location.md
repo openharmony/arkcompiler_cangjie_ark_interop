@@ -2,13 +2,11 @@
 
 设置组件的对齐方式、布局方向和显示位置。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func align(Alignment)
 
@@ -26,8 +24,7 @@ public func align(value: Alignment): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Alignment](#)|是|-|对齐方式。|
-
+|value|[Alignment](./cj-common-types.md#enum-alignment)|是|-|对齐方式。|
 
 ## func alignRules(AlignRuleOption)
 
@@ -45,8 +42,7 @@ public func alignRules(value: AlignRuleOption): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AlignRuleOption](#)|是|-|对齐规则选项。|
-
+|value|[AlignRuleOption](./cj-universal-attribute-location.md#class-alignruleoption)|是|-|对齐规则选项。|
 
 ## func direction(Direction)
 
@@ -64,8 +60,7 @@ public func direction(value: Direction): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Direction](#)|是|-|布局方向。|
-
+|value|[Direction](./cj-common-types.md#enum-direction)|是|-|布局方向。|
 
 ## func markAnchor(Length, Length)
 
@@ -83,9 +78,8 @@ public func markAnchor(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴坐标。|
-
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
 ## func offset(Length, Length)
 
@@ -103,9 +97,8 @@ public func offset(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴坐标。|
-
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
 ## func position(Length, Length)
 
@@ -123,8 +116,8 @@ public func position(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴坐标。|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
 ## 基础类型定义
 
@@ -132,13 +125,13 @@ public func position(x!: Length, y!: Length): This
 
 ```cangjie
 public class AlignRuleOption {
-    public var left:?HorizontalAlignment = None
-    public var right:?HorizontalAlignment = None
-    public var middle:?HorizontalAlignment = None
-    public var top:?VerticalAlignment = None
-    public var bottom:?VerticalAlignment = None
-    public var center:?VerticalAlignment = None
-    public var bias: Bias = Bias()
+    public var left:?HorizontalAlignment
+    public var right:?HorizontalAlignment
+    public var middle:?HorizontalAlignment
+    public var top:?VerticalAlignment
+    public var bottom:?VerticalAlignment
+    public var center:?VerticalAlignment 
+    public var bias: Bias
     public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
         middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
         bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
@@ -172,12 +165,12 @@ public var bias: Bias = Bias()
 #### var bottom
 
 ```cangjie
-public var bottom:?VerticalAlignment = None
+public var bottom:?VerticalAlignment
 ```
 
 **功能：** 设置组件底部对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -188,12 +181,12 @@ public var bottom:?VerticalAlignment = None
 #### var center
 
 ```cangjie
-public var center:?VerticalAlignment = None
+public var center:?VerticalAlignment
 ```
 
 **功能：** 设置组件垂直居中对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -204,12 +197,12 @@ public var center:?VerticalAlignment = None
 #### var left
 
 ```cangjie
-public var left:?HorizontalAlignment = None
+public var left:?HorizontalAlignment
 ```
 
 **功能：** 设置组件左侧对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -220,12 +213,12 @@ public var left:?HorizontalAlignment = None
 #### var middle
 
 ```cangjie
-public var middle:?HorizontalAlignment = None
+public var middle:?HorizontalAlignment
 ```
 
 **功能：** 设置组件水平居中对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -236,12 +229,12 @@ public var middle:?HorizontalAlignment = None
 #### var right
 
 ```cangjie
-public var right:?HorizontalAlignment = None
+public var right:?HorizontalAlignment
 ```
 
 **功能：** 设置组件右侧对齐方式。
 
-**类型：** ?[HorizontalAlignment](#class-horizontalalignment)
+**类型：** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **读写能力：** 可读写
 
@@ -252,12 +245,12 @@ public var right:?HorizontalAlignment = None
 #### var top
 
 ```cangjie
-public var top:?VerticalAlignment = None
+public var top:?VerticalAlignment
 ```
 
 **功能：** 设置组件顶部对齐方式。
 
-**类型：** ?[VerticalAlignment](#class-verticalalignment)
+**类型：** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **读写能力：** 可读写
 
@@ -285,22 +278,21 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|?[HorizontalAlignment](#class-horizontalalignment)|否|None|设置组件左侧对齐方式。|
-|right|?[HorizontalAlignment](#class-horizontalalignment)|否|None|设置组件右侧对齐方式。|
-|middle|?[HorizontalAlignment](#class-horizontalalignment)|否|None|设置组件水平居中对齐方式。|
-|top|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件顶部对齐方式。|
-|bottom|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件底部对齐方式。|
-|center|?[VerticalAlignment](#class-verticalalignment)|否|None|设置组件垂直居中对齐方式。|
+|left|?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)|否|None|设置组件左侧对齐方式。|
+|right|?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)|否|None|设置组件右侧对齐方式。|
+|middle|?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)|否|None|设置组件水平居中对齐方式。|
+|top|?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)|否|None|设置组件顶部对齐方式。|
+|bottom|?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)|否|None|设置组件底部对齐方式。|
+|center|?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)|否|None|设置组件垂直居中对齐方式。|
 |bias|[Bias](#class-bias)|否|Bias()|设置组件对齐的偏移量。|
-
 
 ### class Bias
 
 ```cangjie
 public class Bias {
-    public var horizontal: Float32 = 0.5
-    public var vertical: Float32 = 0.5
-    public init(horizontal!: Float32 = 0.5, vertical!: Float32 = 0.5)
+    public var horizontal: Float32, 
+    public var vertical: Float32, 
+    public init(horizontal!: Float32, vertical!: Float32)
 }
 ```
 
@@ -313,7 +305,7 @@ public class Bias {
 #### var horizontal
 
 ```cangjie
-public var horizontal: Float32 = 0.5
+public var horizontal: Float32
 ```
 
 **功能：** 设置组件水平方向的偏移量。
@@ -329,7 +321,7 @@ public var horizontal: Float32 = 0.5
 #### var vertical
 
 ```cangjie
-public var vertical: Float32 = 0.5
+public var vertical: Float32
 ```
 
 **功能：** 设置组件垂直方向的偏移量。

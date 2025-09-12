@@ -13,9 +13,45 @@ import kit.LocalizationKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+
+## func getCalendar(String, ?CalendarType)
+
+```cangjie
+public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
+```
+
+**功能：** 获取指定区域和日历类型对应的日历对象。
+**系统能力：** SystemCapability.Global.I18n
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|locale|String|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|
+|calendarType|?CalendarType|否|None|日历类型。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Calendar|返回与指定区域和日历类型对应的日历对象。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.i18n.*
+
+let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获得一个基于 en-US 区域设置的佛教日历对象
+```
 
 ## class Calendar
 
@@ -105,42 +141,6 @@ let hour = calendar.get("hour_of_day") // 12
 let minute = calendar.get("minute") // 30
 let second = calendar.get("second") // 30
 ```
-
-### func getCalendar(String, ?CalendarType)
-
-```cangjie
-public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
-```
-
-**功能：** 获取指定区域和日历类型对应的日历对象。
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|locale|calendarType|是|-|表示区域信息的字符串，由语言、脚本、国家或地区组成。|日历类型。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Calendar|返回与指定区域和日历类型对应的日历对象。|
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.i18n.*
-
-let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist)// 获得一个基于 en-US 区域设置的佛教日历对象
-```
-
 
 ### func getDisplayName(String)
 
@@ -307,7 +307,7 @@ calendar.setTimeZone("Asia/Shanghai")
 let timeZone = calendar.getTimeZone() // timeZone = "Asia/Shanghai"
 ```
 
-### func set(Int32, Int32, Int32, Int32, Int32, Int32)
+### func set(Int32, Int32, Int32, ?Int32, ?Int32, ?Int32)
 
 ```cangjie
 public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, minute!: ?Int32 = None, second!: ?Int32 = None): Unit
@@ -325,10 +325,10 @@ public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, mi
 |:---|:---|:---|:---|:---|
 |year|Int32|是|-|设置的年。|
 |month|Int32|是|-|设置的月。说明：月份从0开始计数，如0表示一月。|
-|day|Int32|是|-|设置的日。|
-|hour|Int32|否|None|**命名参数。** 设置的小时。-1代表系统小时。|
-|minute|Int32|否|None|**命名参数。** 设置的分钟。-1代表系统分钟。|
-|second|Int32|否|None|**命名参数。** 设置的秒。-1代表系统秒。|
+|date|Int32|是|-|设置的日。|
+|hour|?Int32|否|None|**命名参数。** 设置的小时。-1代表系统小时。|
+|minute|?Int32|否|None|**命名参数。** 设置的分钟。-1代表系统分钟。|
+|second|?Int32|否|None|**命名参数。** 设置的秒。-1代表系统秒。|
 
 **示例：**
 
@@ -537,7 +537,6 @@ public enum CalendarType {
 
 **起始版本：** 21
 
-
 ### Buddhist
 
 ```cangjie
@@ -574,7 +573,6 @@ Coptic
 
 **起始版本：** 21
 
-
 ### Ethiopic
 
 ```cangjie
@@ -586,7 +584,6 @@ Ethiopic
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 21
-
 
 ### Hebrew
 
@@ -672,7 +669,6 @@ Japanese
 
 **起始版本：** 21
 
-
 ### Persian
 
 ```cangjie
@@ -684,21 +680,3 @@ Persian
 **系统能力：** SystemCapability.Global.I18n
 
 **起始版本：** 21
-
-### func toString()
-```cangjie
-public func toString(): String
-```
-**功能：**  获取当前枚举值对应的字符串表示。
-
-**系统能力：** SystemCapability.Global.I18n
-
-**起始版本：** 21
-
-**返回值:**
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|返回与枚举值对应的字符串。|

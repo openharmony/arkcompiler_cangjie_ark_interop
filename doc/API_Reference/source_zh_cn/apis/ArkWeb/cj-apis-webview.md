@@ -23,7 +23,7 @@ ohos.permission.INTERNET
 API示例代码使用说明：
 
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[接口使用说明](../../cj-development-intro.md#接口使用说明)。
 
@@ -215,7 +215,7 @@ public var title: String
 ### let icon
 
 ```cangjie
-public let icon: PixelMap
+public let icon: ?PixelMap
 ```
 
 **功能：** 历史页面图标的PixelMap对象。
@@ -364,7 +364,7 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Webview错误码](<font color="red" face="bold">please add link</font>)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -380,9 +380,10 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 // index.cj
 
 import kit.ArkWeb.*
+import ohos.business_exception.BusinessException
 
 try {
-    WebCookieManager.configCookie("https://www.example.com", "a=b", incognito: false, includeHttpOnly: false)
+    WebCookieManager.configCookie("https://www.example.com", "a=b", incognito: false)
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
@@ -1641,7 +1642,7 @@ class EntryView {
                     case SecurityLevel.NoneLevel => Hilog.info(0, "cangjieTest", "getSecurityLevel returns NONE")
                     case SecurityLevel.Secure => Hilog.info(0, "cangjieTest", "getSecurityLevel returns SECURE")
                     case SecurityLevel.Warning => Hilog.info(0, "cangjieTest", "getSecurityLevel returns WARNING")
-                    case SecurityLevel.Dangerous => Hilog.info(0, "cangjieTest", "getSecurityLevel returns DANGEROUS")
+                    case SecurityLevel.Danger => Hilog.info(0, "cangjieTest", "getSecurityLevel returns DANGEROUS")
                     case _ => throw IllegalArgumentException("The type is not supported.")
                  }
             }.width(400.px).height(150.px)
@@ -1986,76 +1987,6 @@ class EntryView {
 }
 ```
 
-### func loadUrl(ResourceStr, Array\<WebHeader>)
-
-```cangjie
-public func loadUrl(url: ResourceStr, headers!: Array<WebHeader> = Array<WebHeader>()): Unit
-```
-
-**功能：** 加载指定的URL。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|url|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|需要加载的URL。|
-|headers|Array\<[WebHeader](#class-webheader)>|否|Array<WebHeader>()|URL的附加HTTP请求头。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Invalid input parameter. |
-  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
-  | 17100002 | Invalid url. |
-  | 17100003 | Invalid resource path or file type. |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.base.*
-import kit.ArkWeb.*
-import kit.LocalizationKit.*
-import kit.ArkUI.Web
-import ohos.hilog.Hilog
-import ohos.arkui.component.button.Button
-
-@Entry
-@Component
-class EntryView {
-    let webController = WebviewController()
-    let headers = [WebHeader("headerKey", "headerValue")]
-    func build() {
-        Column(space: 10) {
-            Button("loadUrl")
-            .onClick {
-                evt =>
-                Hilog.info(0, "cangjieTest", "loadUrl")
-                webController.loadUrl("index.html", headers:headers)
-            }.width(400.px).height(150.px)
-
-            Web(src: "www.example.com", controller: webController)
-            .onPageBegin({evt =>
-                Hilog.info(0, "cangjieTest", "page begin url: ${evt.url}")
-            })
-            .onPageEnd({evt =>
-                Hilog.info(0, "cangjieTest", "page end url: ${evt.url}")
-            })
-        }
-    }
-}
-```
-
 ### func pageDown(Bool)
 
 ```cangjie
@@ -2266,4 +2197,1023 @@ public func registerJavaScriptProxy(funcs: Array<(String) -> String>, name: Stri
 |name|String|是|-|注册仓颉方法数组的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧仓颉方法。|
 |methodList|Array\<String>|是|-|参与注册的应用侧仓颉方法名，此数组的长度需要与funcs数组一致。注册完成后，后续funcs的判等会通过methodList来判断。因此后续如果想注册新的、或更改funcs，需要传入新的methodList。|
 
+### func loadUrl\<T>(T, Array\<WebHeader>) where T \<: ResourceStr
+
+```cangjie
+public func loadUrl<T>(url: T, headers!: Array<WebHeader> = Array<WebHeader>()): Unit where T <: ResourceStr
+```
+
+**功能：** 加载指定的URL。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|url|T|是|-|需要加载的URL。|
+|headers|Array\<[WebHeader](#class-webheader)>|否|Array\<WebHeader >()|URL的附加HTTP请求头。|
+
 **异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid input parameter. |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+  | 17100002 | Invalid url. |
+  | 17100003 | Invalid resource path or file type. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.LocalizationKit.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    let headers = [WebHeader("headerKey", "headerValue")]
+    func build() {
+        Column(10) {
+            Button("loadUrl")
+            .onClick {
+                evt =>
+                AppLog.info("loadUrl")
+                webController.loadUrl(@rawfile("index.html"), headers)
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func setCustomUserAgent(String)
+
+```cangjie
+public func setCustomUserAgent(userAgent: String): Unit
+```
+
+**功能：** 设置自定义用户代理，会覆盖系统的用户代理。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|userAgent|String|是|-|用户自定义代理信息。建议先使用[getUserAgent](#func-getuseragent)获取当前默认用户代理，在此基础上追加自定义用户代理信息。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid input parameter. |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    let headers = [WebHeader("headerKey", "headerValue")]
+    func build() {
+        Column(10) {
+            Button("setCustomUserAgent")
+            .onClick {
+                evt =>
+                AppLog.info("setCustomUserAgent")
+                webController.setCustomUserAgent("ua")
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func stop()
+
+```cangjie
+public func stop(): Unit
+```
+
+**功能：** 停止页面加载。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("stop")
+            .onClick {
+                evt =>
+                AppLog.info("stop")
+                webController.stop()
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func storeWebArchive(String, Bool, AsyncCallback\<String>)
+
+```cangjie
+public func storeWebArchive(baseName: String, autoName: Bool, callback: AsyncCallback<String>): Unit
+```
+
+**功能：** 以回调方式异步保存当前页面。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|baseName|String|是|-|生成的离线网页存储位置，该值不能为空。|
+|autoName|Bool|是|-|决定是否自动生成文件名。如果为false，则按baseName的文件名存储；如果为true，则根据当前Url自动生成文件名，并按baseName的文件目录存储。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<String>|是|-|返回文件存储路径。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid input parameter. |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+  | 17100003 | Invalid resource path or file type. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+let callback: AsyncCallback<String> = {
+    errorCode: Option<AsyncError>, data: Option<String> => match (errorCode) {
+        case Some(e) => AppLog.error("callback error: errcode is ${e.code}")
+        case _ =>
+            match (data) {
+                case Some(value) =>
+                    AppLog.info("callback: get data successfully and data is ${value}")
+                case _ => AppLog.error("callback: data is null")
+            }
+    }
+}
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("storeWebArchive")
+            .onClick {
+                evt =>
+                AppLog.info("storeWebArchive")
+                webController.storeWebArchive("/data/storage/el2/base/", true, callback)
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func zoom(Float32)
+
+```cangjie
+public func zoom(factor: Float32): Unit
+```
+
+**功能：** 调整当前网页的缩放比例，zoomAccess需为true。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|factor|Float32|是|-|基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid input parameter. |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+  | 17100004 | Function not enable. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("zoom")
+            .onClick {
+                evt =>
+                AppLog.info("zoom")
+                webController.zoom(2.5)
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func zoomIn()
+
+```cangjie
+public func zoomIn(): Unit
+```
+
+**功能：** 调用此接口将当前网页进行放大，比例为20%。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+  | 17100004 | Function not enable. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("zoomIn")
+            .onClick {
+                evt =>
+                AppLog.info("zoomIn")
+                webController.zoomIn()
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func zoomOut()
+
+```cangjie
+public func zoomOut(): Unit
+```
+
+**功能：** 调用此接口将当前网页进行缩小，比例为20%。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+  | 17100004 | Function not enable. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("zoomOut")
+            .onClick {
+                evt =>
+                AppLog.info("zoomOut")
+                webController.zoomOut()
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+### func runJavaScript(String, AsyncCallback\<String>)
+
+```cangjie
+public func runJavaScript(script: String, callback: AsyncCallback<String>): Unit
+```
+
+**功能：** 异步执行JavaScript脚本，并通过回调方式返回脚本执行的结果。runJavaScript需要在loadUrl完成后，比如onPageEnd中调用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|script|String|是|-|JavaScript脚本。|
+|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<String>|是|-|回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid input parameter. |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+let callback: AsyncCallback<String> = {
+    errorCode: Option<AsyncError>, data: Option<String> => match (errorCode) {
+        case Some(e) => AppLog.error("callback error: errcode is ${e.code}")
+        case _ =>
+            match (data) {
+                case Some(value) =>
+                    AppLog.info("callback: get data successfully and data is ${value}")
+                case _ => AppLog.error("callback: data is null")
+            }
+    }
+}
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("runJavaScript")
+            .onClick {
+                evt =>
+                AppLog.info("runJavaScript")
+                webController.runJavaScript("test()", callback)
+            }.width(400.px).height(150.px)
+
+            Web(src: ("index.html"), controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+加载的html文件。需要在`entry\src\main\resources\rawfile`目录下新增`index.html`文件。
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+      Hello world!
+  </body>
+  <script type="text/javascript">
+  function test() {
+      console.log('Ark WebComponent')
+      return "This value is from index.html"
+  }
+  </script>
+</html>
+```
+
+### func scrollBy(Float32, Float32, ?Int32)
+
+```cangjie
+public func scrollBy(deltaX: Float32, deltaY: Float32, duration!: ?Int32 = None): Unit
+```
+
+**功能：** 将页面滚动指定的偏移量。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deltaX|Float32|是|-|水平偏移量，其中水平向右为正方向。|
+|deltaY|Float32|是|-|垂直偏移量，其中垂直向下为正方向。|
+|duration|?Int32|否|None|**命名参数。** 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("scrollBy")
+            .onClick {
+                evt =>
+                AppLog.info("scrollBy")
+                webController.scrollBy(50.0, 50.0)
+            }.width(400.px).height(150.px)
+
+            Web(src: ("index.html"), controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+加载的html文件。需要在`entry\src\main\resources\rawfile`目录下新增`index.html`文件。
+
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+    <style>
+        body {
+            width:3000px;
+            height:3000px;
+            padding-right:170px;
+            padding-left:170px;
+            border:5px solid blueviolet
+        }
+    </style>
+</head>
+<body>
+Scroll Test
+</body>
+</html>
+```
+
+### func scrollTo(Float32, Float32, ?Int32)
+
+```cangjie
+public func scrollTo(x: Float32, y: Float32, duration!: ?Int32 = None): Unit
+```
+
+**功能：** 将页面滚动到指定的绝对位置。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|x|Float32|是|-|绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。|
+|y|Float32|是|-|绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。|
+|duration|?Int32|否|None|**命名参数。** 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | Invalid input parameter. |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("scrollTo")
+            .onClick {
+                evt =>
+                AppLog.info("scrollTo")
+                webController.scrollTo(50.0, 50.0)
+            }.width(400.px).height(150.px)
+
+            Web(src: ("index.html"), controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+加载的html文件。需要在`entry\src\main\resources\rawfile`目录下新增`index.html`文件。
+
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+    <style>
+        body {
+            width:3000px;
+            height:3000px;
+            padding-right:170px;
+            padding-left:170px;
+            border:5px solid blueviolet
+        }
+    </style>
+</head>
+<body>
+Scroll Test
+</body>
+</html>
+```
+
+### func removeCache(Bool)
+
+```cangjie
+public func removeCache(clearRom: Bool): Unit
+```
+
+**功能：** 清除应用中的资源缓存文件，此方法将会清除同一应用中所有webview的缓存文件。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|clearRom|Bool|是|-|设置为true时同时清除rom和ram中的缓存，设置为false时只清除ram中的缓存。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[Webview错误码](../../errorcodes/cj-errorcode-webview.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 17100001 | Init error.The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkWeb.*
+import kit.UIKit.Web
+
+@Entry
+@Component
+class EntryView {
+    let webController = WebviewController()
+    func build() {
+        Column(10) {
+            Button("removeCache")
+            .onClick {
+                evt =>
+                AppLog.info("removeCache")
+                webController.removeCache(true)
+            }.width(400.px).height(150.px)
+
+            Web(src: "www.example.com", controller: webController)
+            .onPageBegin({evt =>
+                AppLog.info("page begin url: ${evt.url}")
+            })
+            .onPageEnd({evt =>
+                AppLog.info("page end url: ${evt.url}")
+            })
+        }
+    }
+}
+```
+
+## enum SecurityLevel
+
+```cangjie
+public enum SecurityLevel <: Equatable<SecurityLevel> & ToString {
+    | NoneLevel
+    | Secure
+    | Warning
+    | Danger
+    | ...
+}
+```
+
+**功能：** 当前网页的安全级别。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<SecurityLevel>
+- ToString
+
+### NoneLevel
+
+```cangjie
+NoneLevel
+```
+
+**功能：** 页面既不绝对安全，也不是不安全，即是中立。例如，部分scheme非http/https的URL。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Secure
+
+```cangjie
+Secure
+```
+
+**功能：** 页面安全，页面使用的是HTTPS协议，且使用了信任的证书。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Warning
+
+```cangjie
+Warning
+```
+
+**功能：** 页面不安全。例如，使用HTTP协议或使用HTTPS协议但使用旧版TLS版本。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Danger
+
+```cangjie
+Danger
+```
+
+**功能：** 页面不安全。尝试HTTPS并失败、页面未通过身份验证、页面上包含不安全活动内容的HTTPS、恶意软件、网络钓鱼或任何其他可能危险的严重安全问题。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### func !=(SecurityLevel)
+
+```cangjie
+public operator func !=(other: SecurityLevel): Bool
+```
+
+**功能：** 判断两个枚举值是否不等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SecurityLevel](../ArkData/cj-apis-distributed_kv_store.md#enum-securitylevel)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不等，返回true，否则返回false。|
+
+### func ==(SecurityLevel)
+
+```cangjie
+public operator func ==(other: SecurityLevel): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[SecurityLevel](../ArkData/cj-apis-distributed_kv_store.md#enum-securitylevel)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的字符串表示。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的字符串表示。|
+
+## enum WebHitTestType
+
+```cangjie
+public enum WebHitTestType <: Equatable<WebHitTestType> & ToString {
+    | EditText
+    | Email
+    | Unknown
+    | ...
+}
+```
+
+**功能：** [getHitTest](#func-gethittest)用于指示游标节点。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**父类型：**
+
+- Equatable\<WebHitTestType>
+- ToString
+
+### EditText
+
+```cangjie
+EditText
+```
+
+**功能：** 可编辑的区域。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Email
+
+```cangjie
+Email
+```
+
+**功能：** 电子邮件地址。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### Unknown
+
+```cangjie
+Unknown
+```
+
+**功能：** 未知内容。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+### func !=(WebHitTestType)
+
+```cangjie
+public operator func !=(other: WebHitTestType): Bool
+```
+
+**功能：** 判断两个枚举值是否不等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WebHitTestType](#enum-webhittesttype)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不等，返回true，否则返回false。|
+
+### func ==(WebHitTestType)
+
+```cangjie
+public operator func ==(other: WebHitTestType): Bool
+```
+
+**功能：** 判断两个枚举值是否相等。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[WebHitTestType](#enum-webhittesttype)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等，返回true，否则返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 获取枚举的字符串表示。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|枚举的字符串表示。|

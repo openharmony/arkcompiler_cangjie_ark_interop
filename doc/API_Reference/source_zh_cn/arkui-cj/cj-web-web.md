@@ -39,10 +39,10 @@ public init(
 
 ## 通用属性/通用事件
 
-通用属性：仅支持[aspectRatio](./cj-universal-attribute-layoutconstraints.md#func-aspectratioint64)、[backdropBlur](./cj-universal-attribute-background.md#func-backdropblurfloat64)、[backgroundColor](./cj-universal-attribute-background.md#func-backgroundcolorresourcecolor)、[bindContentCover](./cj-universal-attribute-menu.md)、[bindContextMenu](./cj-universal-attribute-menu.md#func-bindcontextmenu---unit-responsetype)、[bindMenu](./cj-universal-attribute-menu.md#func-bindmenu---unit) 、[bindSheet](./cj-universal-attribute-sheettransition.md#func-bindsheetbool----unit-sheetoptions)、[borderColor](./cj-information-display-progress.md#var-bordercolor)、[borderRadius](./cj-common-types.md#class-borderradiuses)、[borderStyle](./cj-common-types.md#enum-borderstyle)、[borderWidth](./cj-information-display-badge.md#var-borderwidth)、[clip](./cj-common-types.md#clip)、[constraintSize](./cj-universal-attribute-size.md#func-constraintsizelength-length-length-length)、[defaultFocus](./cj-universal-attribute-focus.md#func-defaultfocusbool)、[focusable](./cj-universal-attribute-popup.md#var-focusable)、[tabIndex](./cj-universal-attribute-focus.md#func-tabindexint32)、[groupDefaultFocus](./cj-universal-attribute-focus.md#func-groupdefaultfocusbool)、[displayPriority](./cj-universal-attribute-layoutconstraints.md#func-displaypriorityint32)、[draggable](./cj-image-video-image.md#func-draggablebool)、[enabled](./cj-universal-attribute-enable.md#func-enabledbool)、[flexBasis](./cj-universal-attribute-flexlayout.md#func-flexbasislength)、[flexShrink](./cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64)、[layoutWeight](./cj-universal-attribute-size.md#func-layoutweightint32)、[id](./cj-universal-attribute-componentid.md)、[height](./cj-universal-attribute-size.md#func-heightlength)、[touchable](./cj-apis-window.md#let-touchable)、[margin](./cj-universal-attribute-size.md#func-marginlength)、[markAnchor](./cj-universal-attribute-location.md#func-markanchorlength-length)、[mask](./cj-scroll-swipe-swiper.md#func-maskbool)、[offset](./cj-apis-componentutils.md#class-offset)、[width](./cj-apis-display.md#var-width)、[zIndex](./cj-animation-sharedtransition.md#var-zindex)、[visibility](./cj-common-types.md#enum-visibility)、[scale](./cj-animation-pagetransition.md#func-scalefloat32-float32-float32-length-length)、[transform](./cj-apis-componentutils.md#let-transform)、[responseRegion](./cj-universal-attribute-touchtarget.md#func-responseregionarrayarrayrectangle)、[size](./cj-apis-componentutils.md#let-size)、[opacity](./cj-animation-pagetransition.md#func-opacityfloat64)、[shadow](./cj-information-display-progress.md#var-shadow)、[gesture](./cj-universal-gesture-bind.md#func-gesturegesturetype)、[sharedTransition](./cj-animation-sharedtransition.md#func-sharedtransitionstring-sharedtransitionoptions)、[transition](./cj-animation-transition.md#func-transition)。
+通用属性：仅支持[aspectRatio](./cj-universal-attribute-layoutconstraints.md#func-aspectratiofloat64)、[backdropBlur](./cj-universal-attribute-background.md#func-backdropblurfloat64)、[backgroundColor](./cj-universal-attribute-background.md#func-backgroundcolorresourcecolor)、[bindContentCover](./cj-universal-attribute-menu.md)、[bindContextMenu](./cj-universal-attribute-menu.md#func-bindcontextmenucustombuilder-responsetype-contextmenuoptions)、[bindMenu](./cj-universal-attribute-menu.md#func-bindmenuarraymenuelement) 、[bindSheet](./cj-universal-attribute-sheettransition.md#func-bindsheetbool-custombuilder-sheetoptions)、[borderColor](./cj-universal-attribute-border.md#func-bordercolorresourcecolor)、[borderRadius](./cj-common-types.md#class-borderradiuses)、[borderStyle](./cj-common-types.md#enum-borderstyle)、[borderWidth](./cj-universal-attribute-border.md#func-borderwidthlength)、[clip](./cj-common-types.md#clip)、[constraintSize](./cj-universal-attribute-size.md#func-constraintsizelength-length-length-length)、[defaultFocus](./cj-universal-attribute-focus.md#func-defaultfocusbool)、[focusable](./cj-universal-attribute-focus.md#func-focusablebool)、[tabIndex](./cj-universal-attribute-focus.md#func-tabindexint32)、[groupDefaultFocus](./cj-universal-attribute-focus.md#func-groupdefaultfocusbool)、[displayPriority](./cj-universal-attribute-layoutconstraints.md#func-displaypriorityint32)、[enabled](./cj-universal-attribute-enable.md#func-enabledbool)、[flexBasis](./cj-universal-attribute-flexlayout.md#func-flexbasislength)、[flexShrink](./cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64)、[layoutWeight](./cj-universal-attribute-size.md#func-layoutweightint32)、[id](./cj-universal-attribute-componentid.md)、[height](./cj-universal-attribute-size.md#func-heightoptionlength)、[margin](./cj-universal-attribute-size.md#func-marginlength)、[markAnchor](./cj-universal-attribute-location.md#func-markanchorlength-length)、[mask](./cj-scroll-swipe-swiper.md#func-maskbool)、[offset](./cj-apis-componentutils.md#class-offset)、[width](./cj-universal-attribute-size.md#func-widthoptionlength)、[zIndex](./cj-universal-attribute-zorder.md#func-zindexint32)、[visibility](./cj-common-types.md#enum-visibility)、[scale](./cj-animation-pagetransition.md#func-scalefloat32-float32-float32-length-length)、[transform](./cj-canvas-drawing-canvasrenderingcontext2d.md#func-transformfloat64-float64-float64-float64-float64-float64)、[responseRegion](./cj-universal-attribute-touchtarget.md#func-responseregionrectangle)、[size](./cj-universal-attribute-size.md#func-sizelength-length)、[opacity](./cj-animation-pagetransition.md#func-opacityfloat64)、[shadow](./cj-universal-attribute-imageeffect.md#func-shadowfloat64-resourcecolor-float64-float64)、[gesture](./cj-universal-gesture-bind.md#func-gesturemask)、[sharedTransition](./cj-animation-sharedtransition.md#func-sharedtransitionstring-sharedtransitionoptions)、[transition](./cj-animation-transition.md#func-transitiontransitioneffect)。
 
 <!-- note -->
-通用事件：仅支持[onAppear](./cj-universal-attribute-menu.md#var-onappear)、[onDisAppear](./cj-universal-attribute-menu.md#var-ondisappear)、[onBlur](cj-ui-framework.md#func-onblur---unit)、[onFocus](cj-ui-framework.md#func-onblur---unit)、[onDragEnd](./cj-universal-event-drag.md#func-ondragenddrageventstring---unit)、[onDragEnter](./cj-universal-event-drag.md#func-ondragenterdrageventstring---unit)、[onDragStart](./cj-universal-event-drag.md#func-ondragstartdrageventstring------unit)、[onDragMove](./cj-universal-event-drag.md#func-ondragmovedrageventstring---unit)、[onDragLeave](./cj-universal-event-drag.md#func-ondragleavedrageventstring---unit)、[onDrop](./cj-universal-event-drag.md#func-ondropdrageventstring---unit)、[onHover](./cj-universal-event-mouse.md)、[onMouse](./cj-universal-event-mouse.md#func-onmousemouseevent)、[onKeyEvent](./cj-universal-event-key.md#func-onkeyeventkeyevent-unit)、[onTouch](./cj-universal-event-touch.md#func-ontouchtouchevent-unit)、[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-bool-float64-unit---unit)。
+通用事件：仅支持[onAppear](./cj-ui-framework.md#func-onappear---unit)、[onDisAppear](./cj-ui-framework.md#func-ondisappear---unit)、[onBlur](cj-ui-framework.md#func-onblur---unit)、[onFocus](cj-ui-framework.md#func-onblur---unit)、[onDragEnter](./cj-universal-event-drag.md#func-ondragenterdraginfo---unit)、[onDragStart](./cj-universal-event-drag.md#func-ondragstartdraginfo---unit)、[onDragMove](./cj-universal-event-drag.md#func-ondragmovedraginfo---unit)、[onDragLeave](./cj-universal-event-drag.md#func-ondragleavedraginfo---unit)、[onDrop](./cj-universal-event-drag.md#func-ondropdraginfo---unit)、[onHover](./cj-universal-event-mouse.md)、[onMouse](./cj-universal-event-mouse.md#func-onmousemouseevent---unit)、[onKeyEvent](./cj-universal-event-key.md#func-onkeyeventkeyevent---unit)、[onTouch](./cj-universal-event-touch.md#func-ontouchtouchevent---unit)、[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)。
 
 ## 组件属性
 
@@ -200,7 +200,7 @@ public func mixedMode(mixedMode: MixedMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|mixedMode|[MixedMode](#enum-mixmode)|是|-|混合内容。<br> 初始值：MixedMode.None，表示不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。|
+|mixedMode|[MixedMode](#enum-mixedmode)|是|-|混合内容。<br> 初始值：MixedMode.None，表示不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。|
 
 ### func nestedScroll(NestedScrollMode, NestedScrollMode)
 
@@ -396,12 +396,11 @@ public var headerValue: String
 public class OnLoadInterceptEvent {
     public var data: WebResourceRequest
 
-
     public init(data: WebResourceRequest)
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 当资源加载被拦截时，加载拦截事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -413,7 +412,7 @@ public class OnLoadInterceptEvent {
 public var data: WebResourceRequest
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 网页请求的封装信息。
 
 **类型：** [WebResourceRequest](#class-webresourcerequest)
 
@@ -430,7 +429,7 @@ public var data: WebResourceRequest
 public init(data: WebResourceRequest)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -440,7 +439,7 @@ public init(data: WebResourceRequest)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|data|[WebResourceRequest](#class-webresourcerequest)|是|-|<font color="red" face="bold">please add description</font>|
+|data|[WebResourceRequest](#class-webresourcerequest)|是|-|网页请求的封装信息。|
 
 ### class OnPageBeginEvent
 
@@ -448,12 +447,11 @@ public init(data: WebResourceRequest)
 public class OnPageBeginEvent {
     public var url: String
 
-
     public init(url: String)
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 定义网页加载开始时触发的函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -482,7 +480,7 @@ public var url: String
 public init(url: String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -500,12 +498,11 @@ public init(url: String)
 public class OnPageEndEvent {
     public var url: String
 
-
     public init(url: String)
 }
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 定义网页加载结束时触发的函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -534,7 +531,7 @@ public var url: String
 public init(url: String)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -551,7 +548,6 @@ public init(url: String)
 ```cangjie
 public class OnPermissionRequestEvent {
     public var request: PermissionRequest
-
 
     public init(request: PermissionRequest)
 }
@@ -586,7 +582,7 @@ public var request: PermissionRequest
 public init(request: PermissionRequest)
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -596,7 +592,7 @@ public init(request: PermissionRequest)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|request|[PermissionRequest](#class-permissionrequest)|是|-|<font color="red" face="bold">please add description</font>|
+|request|[PermissionRequest](#class-permissionrequest)|是|-|Web组件返回授权或拒绝权限功能的对象。|
 
 ### class PermissionRequest
 
@@ -686,7 +682,7 @@ public func grant(resources: Array<String>): Unit
 public class WebResourceRequest {}
 ```
 
-**功能：** Web组件资源响应对象。示例代码参考[onHttpErrorReceive](#class-onhttperrorreceiveevent)事件。
+**功能：** Web组件资源响应对象。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -844,7 +840,7 @@ All
 Compatible
 ```
 
-**功能：** 	兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。
+**功能：**  兼容模式：混合内容兼容性模式，部分不安全的内容可能被加载。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,7 +852,7 @@ Compatible
 None
 ```
 
-**功能：** 	严格模式：不允许加载HTTP和HTTPS混合内容。不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。
+**功能：**  严格模式：不允许加载HTTP和HTTPS混合内容。不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -911,6 +907,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -918,7 +915,7 @@ class EntryView {
     let webController = WebviewController()
     @State var url: String = "www.example.com"
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("refresh")
             .onClick {
                 evt =>

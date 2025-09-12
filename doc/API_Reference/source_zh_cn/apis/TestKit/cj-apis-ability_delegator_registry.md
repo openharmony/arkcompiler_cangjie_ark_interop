@@ -13,7 +13,7 @@ import kit.TestKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -23,7 +23,7 @@ API示例代码使用说明：
 public class AbilityDelegator {}
 ```
 
-**功能：** AbilityDelegator用于创建并管理一个[AbilityMonitor](#class-abilitymonitor)对象（该对象用于监视指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)生命周期状态的更改），包括对[AbilityMonitor](#class-abilitymonitor)实例的添加、删除，等待[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)到达OnCreate生命周期、设置等待时间、获取指定Ability的生命周期状态、获取当前应用顶部[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)、启动指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)等。
+**功能：** AbilityDelegator用于创建并管理一个[AbilityMonitor](#class-abilitymonitor)对象（该对象用于监视指定[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)生命周期状态的更改），包括对[AbilityMonitor](#class-abilitymonitor)实例的添加、删除，等待[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)到达OnCreate生命周期、设置等待时间、获取指定Ability的生命周期状态、获取当前应用顶部[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)、启动指定[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)等。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -62,7 +62,7 @@ public func addAbilityMonitor(monitor: AbilityMonitor): Unit
 public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 ```
 
-**功能：** 添加一个[AbilityStageMonitor](#class-abilitystagemonitor)对象，用于监视指定[AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage)的生命周期状态更改。
+**功能：** 添加一个[AbilityStageMonitor](#class-abilitystagemonitor)对象，用于监视指定[AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage)的生命周期状态更改。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -89,7 +89,7 @@ public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 public func doAbilityBackground(ability: UIAbility): Unit
 ```
 
-**功能：** 调度指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)生命周期状态到Background状态。
+**功能：** 调度指定[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)生命周期状态到Background状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -99,7 +99,7 @@ public func doAbilityBackground(ability: UIAbility): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ability|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)|是|-|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)对象。|
+|ability|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)|是|-|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)对象。|
 
 **异常：**
 
@@ -116,7 +116,7 @@ public func doAbilityBackground(ability: UIAbility): Unit
 public func doAbilityForeground(ability: UIAbility): Unit
 ```
 
-**功能：** 调度指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)生命周期状态到Foreground状态。
+**功能：** 调度指定[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)生命周期状态到Foreground状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -126,7 +126,7 @@ public func doAbilityForeground(ability: UIAbility): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ability|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)|是|-|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)对象。|
+|ability|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)|是|-|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)对象。|
 
 **异常：**
 
@@ -197,7 +197,7 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ability|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)|是|-|指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)对象。|
+|ability|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)|是|-|指定[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)对象。|
 
 **返回值：**
 
@@ -229,7 +229,7 @@ public func getAppContext(): Context
 
 |类型|说明|
 |:----|:----|
-|[Context](../AbilityKit/cj-apis-ability.md#class-context)|应用Context。|
+|[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)|应用Context。|
 
 ### func getCurrentTopAbility()
 
@@ -237,7 +237,7 @@ public func getAppContext(): Context
 public func getCurrentTopAbility(): UIAbility
 ```
 
-**功能：** 获取当前应用顶部[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)。
+**功能：** 获取当前应用顶部[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -247,7 +247,7 @@ public func getCurrentTopAbility(): UIAbility
 
 |类型|说明|
 |:----|:----|
-|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)|返回[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)实例。|
+|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)|返回[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例。|
 
 **异常：**
 
@@ -344,7 +344,7 @@ public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 public func startAbility(want: Want): Future<Unit>
 ```
 
-**功能：** 启动指定[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)。
+**功能：** 启动指定[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -354,7 +354,7 @@ public func startAbility(want: Want): Future<Unit>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|want|[Want](../AbilityKit/cj-apis-ability.md#class-want)|是|-|启动[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)参数。|
+|want|[Want](../AbilityKit/cj-apis-app-ability-want.md#class-want)|是|-|启动[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)参数。|
 
 ### func waitAbilityMonitor(AbilityMonitor, Int64)
 
@@ -362,7 +362,8 @@ public func startAbility(want: Want): Future<Unit>
 public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility
 ```
 
-**功能：** 设置等待时间，并等待与[AbilityMonitor](#class-abilitymonitor)实例匹配的[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)到达[onCreate](../AbilityKit/cj-apis-ability.md#func-oncreatewant-launchparam)生命周期，并返回[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)实例。
+doc/API_Reference/source_zh_cn/apis/AbilityKit/
+**功能：** 设置等待时间，并等待与[AbilityMonitor](#class-abilitymonitor)实例匹配的[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)到达[onCreate](../AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)生命周期，并返回[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -379,7 +380,7 @@ public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000):
 
 |类型|说明|
 |:----|:----|
-|[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)|返回[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)实例。|
+|[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)|返回[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例。|
 
 **异常：**
 
@@ -396,7 +397,7 @@ public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000):
 public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int64 = 5000): AbilityStage
 ```
 
-**功能：** 等待并返回与给定[AbilityStageMonitor](#class-abilitystagemonitor)中设置的条件匹配的[AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage)对象。
+**功能：** 等待并返回与给定[AbilityStageMonitor](#class-abilitystagemonitor)中设置的条件匹配的[AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage)对象。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -413,7 +414,7 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 
 |类型|说明|
 |:----|:----|
-|[AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage)|返回[AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage)对象。|
+|[AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage)|返回[AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage)对象。|
 
 **异常：**
 
@@ -460,7 +461,7 @@ public mut prop parameters: HashMap<String,String>
 
 **功能：** 当前启动单元测试的参数。
 
-**类型：** [HashMap<String,String>](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md#HashMap)
+**类型：** HashMap\<String,String>
 
 **读写能力：** 可读写
 
@@ -583,7 +584,7 @@ public class AbilityMonitor <: FFIData {
 
 **父类型：**
 
-- [FFIData](../AbilityKit/cj-apis-ability.md#class-ffidata)
+- FFIData
 
 ### var abilityName
 
@@ -625,7 +626,7 @@ public var onAbilityBackground:?(UIAbility) -> Unit
 
 **功能：** ability状态变成后台时的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -641,7 +642,7 @@ public var onAbilityCreate:?(UIAbility) -> Unit
 
 **功能：** ability被启动初始化时的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -657,7 +658,7 @@ public var onAbilityDestroy:?(UIAbility) -> Unit
 
 **功能：** ability被销毁前的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -673,7 +674,7 @@ public var onAbilityForeground:?(UIAbility) -> Unit
 
 **功能：** ability状态变成前台时的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -689,7 +690,7 @@ public var onWindowStageCreate:?(UIAbility) -> Unit
 
 **功能：** window stage被创建时的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -705,7 +706,7 @@ public var onWindowStageDestroy:?(UIAbility) -> Unit
 
 **功能：** window stage被销毁前的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -721,7 +722,7 @@ public var onWindowStageRestore:?(UIAbility) -> Unit
 
 **功能：** window stage被重载时的回调函数。不设置该属性则不能收到该生命周期回调。
 
-**类型：** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**类型：** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
 **读写能力：** 可读写
 
@@ -757,13 +758,13 @@ public init(
 |:---|:---|:---|:---|:---|
 |abilityName|String|是|-|当前[AbilityMonitor](#class-abilitymonitor)绑定的ability名称。|
 |moduleName|String|否|""| **命名参数。** 当前[AbilityMonitor](#class-abilitymonitor)绑定的模块名称。|
-|onAbilityCreate|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability被启动初始化时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
-|onAbilityForeground|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability状态变成前台时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
-|onAbilityBackground|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability状态变成后台时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
-|onAbilityDestroy|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability被销毁前的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
-|onWindowStageCreate|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage被创建时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
-|onWindowStageRestore|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage被重载时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
-|onWindowStageDestroy|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage销毁前调用的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onAbilityCreate|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability被启动初始化时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onAbilityForeground|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability状态变成前台时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onAbilityBackground|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability状态变成后台时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onAbilityDestroy|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** ability被销毁前的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onWindowStageCreate|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage被创建时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onWindowStageRestore|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage被重载时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
+|onWindowStageDestroy|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage销毁前调用的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
 
 ## class AbilityStageMonitor
 
@@ -778,7 +779,7 @@ public class AbilityStageMonitor <: FFIData {
 }
 ```
 
-**功能：** [AbilityStageMonitor](#class-abilitystagemonitor)模块提供用于匹配满足指定条件的受监视的[AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage)对象的方法。最近匹配的[AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage)对象将保存在[AbilityStageMonitor](#class-abilitystagemonitor)中。
+**功能：** [AbilityStageMonitor](#class-abilitystagemonitor)模块提供用于匹配满足指定条件的受监视的[AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage)对象的方法。最近匹配的[AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage)对象将保存在[AbilityStageMonitor](#class-abilitystagemonitor)中。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -786,7 +787,7 @@ public class AbilityStageMonitor <: FFIData {
 
 **父类型：**
 
-- [FFIData](../AbilityKit/cj-apis-ability.md#class-ffidata)
+- FFIData
 
 ### var moduleName
 
@@ -899,7 +900,7 @@ public enum AbilityLifecycleState <: Equatable<AbilityLifecycleState> & ToString
 }
 ```
 
-**功能：** [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)生命周期状态，该类型为枚举，可配合[AbilityDelegator](#class-abilitydelegator)的[getAbilityState](#func-getabilitystateuiability)方法返回不同ability生命周期。
+**功能：** [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)生命周期状态，该类型为枚举，可配合[AbilityDelegator](#class-abilitydelegator)的[getAbilityState](#func-getabilitystateuiability)方法返回不同ability生命周期。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -916,7 +917,7 @@ public enum AbilityLifecycleState <: Equatable<AbilityLifecycleState> & ToString
 Background
 ```
 
-**功能：** 表示[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)处于后台状态。
+**功能：** 表示[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)处于后台状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -928,7 +929,7 @@ Background
 Create
 ```
 
-**功能：** 表示[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)处于已创建状态。
+**功能：** 表示[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)处于已创建状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -940,7 +941,7 @@ Create
 Destroy
 ```
 
-**功能：** 表示[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)处于已销毁状态。
+**功能：** 表示[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)处于已销毁状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -952,7 +953,7 @@ Destroy
 Foreground
 ```
 
-**功能：** 表示[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)处于前台状态。
+**功能：** 表示[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)处于前台状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -964,7 +965,7 @@ Foreground
 Uninitialized
 ```
 
-**功能：** 表示[UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)处于无效状态。
+**功能：** 表示[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)处于无效状态。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

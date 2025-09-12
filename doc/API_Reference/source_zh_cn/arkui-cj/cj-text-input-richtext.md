@@ -105,6 +105,7 @@ public func onStart(callback: () -> Unit): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component

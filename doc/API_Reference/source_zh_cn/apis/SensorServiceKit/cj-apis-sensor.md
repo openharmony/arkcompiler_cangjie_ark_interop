@@ -1,4 +1,4 @@
-# ohos.sensor
+# ohos.sensor（传感器）
 
 sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
 
@@ -21,14 +21,13 @@ ohos.permission.READ_HEALTH_DATA
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func getSensorList()
 
 ```cangjie
-
 public func getSensorList(): Array<Sensor>
 ```
 
@@ -50,14 +49,31 @@ public func getSensorList(): Array<Sensor>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;
-2. Sensor service ipc exception;3. Sensor data channel exception.
- |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception;3. Sensor data channel exception. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+try {
+    let sensors = getSensorList()
+    for (index in 0..sensors.size) {
+        AppLog.info("Succeeded in getting sensor${index}: ${sensors[index].sensorId} ")
+    }
+} catch (e: BusinessException) {
+    AppLog.error("Failed to get sensor list. Code: ${e.code}, message: ${e.message}")
+}
+```
 
 ## func getSingleSensor(SensorId)
 
 ```cangjie
-
 public func getSingleSensor(sensorType: SensorId): Sensor
 ```
 
@@ -85,11 +101,1291 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception;
- 2. Sensor service ipc exception;3. Sensor data channel exception.
- |
-  | 14500102 | The sensor is not supported by the device.
- |
+  | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception;3. Sensor data channel exception. |
+  | 14500102 | The sensor is not supported by the device. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+try {
+    let sensors = getSingleSensor(SensorId.ACCELEROMETER)
+    AppLog.info("Succeeded in getting sensor: ${sensors.sensorName} ")
+} catch (e: BusinessException) {
+    AppLog.error("Failed to get sensor. Code: ${e.code}, message: ${e.message}")
+}
+```
+
+## func off(SensorId, ?CallbackObject)
+
+```cangjie
+public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
+```
+
+**功能：** 取消订阅传感器数据。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
+|callback|?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|否|None|**命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+// 此处代码可添加在依赖项定义中
+class SensorCallback <: Callback1Argument<OrientationResponse> {
+    init() {}
+    public func invoke(arg: OrientationResponse): Unit {
+        AppLog.info(
+            "Succeeded in getting SensorCallback1 arg: steps: ${arg.timestamp}, alpha: ${arg.alpha},  beta: ${arg.beta},  gamma: ${arg.gamma}"
+        )
+    }
+}
+
+let callback1 = SensorCallback()
+let callback2 = SensorCallback()
+try {
+    on(SensorId.ORIENTATION, callback1)
+    on(SensorId.ORIENTATION, callback2)
+    // 仅取消callback1的注册
+    off(SensorId
+        .ORIENTATION, callback: callback1)
+    // 取消注册SensorId.ORIENTATION的所有回调
+    off(SensorId.ORIENTATION)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
+## func on\<T>(SensorId, Callback1Argument\<T>, ?Options) where T \<: Response
+
+```cangjie
+public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!: ?Options = None): Unit where T <: Response
+```
+
+**功能：** 订阅传感器数据。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数。|
+|option|?[Options](#class-options)|否|None|可选参数列表，用于设置传感器上报频率，默认值为200000000ns。|
+
+## func once\<T>(SensorId, Callback1Argument\<T>) where T \<: Response
+
+```cangjie
+public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit where T <: Response
+```
+
+**功能：** 获取一次传感器数据。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+
+## class AccelerometerResponse
+
+```cangjie
+public class AccelerometerResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+}
+```
+
+**功能：** 加速度传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** 施加在设备x轴的加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** 施加在设备y轴的加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** 施加在设备z轴的加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class AccelerometerUncalibratedResponse
+
+```cangjie
+public class AccelerometerUncalibratedResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+    public var biasX: Float32
+    public var biasY: Float32
+    public var biasZ: Float32
+}
+```
+
+**功能：** 未校准加速度计传感器数据。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var biasX
+
+```cangjie
+public var biasX: Float32
+```
+
+**功能：** 施加在设备x轴未校准的加速度偏量，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var biasY
+
+```cangjie
+public var biasY: Float32
+```
+
+**功能：** 施加在设备y轴未校准的加速度偏量，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var biasZ
+
+```cangjie
+public var biasZ: Float32
+```
+
+**功能：** 施加在设备z轴未校准的加速度偏量，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** 施加在设备x轴未校准的加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** 施加在设备y轴未校准的加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** 施加在设备z轴未校准的加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class AmbientTemperatureResponse
+
+```cangjie
+public class AmbientTemperatureResponse <: Response {
+    public var temperature: Float32
+}
+```
+
+**功能：** 温度传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var temperature
+
+```cangjie
+public var temperature: Float32
+```
+
+**功能：** 环境温度（单位：摄氏度）。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class BarometerResponse
+
+```cangjie
+public class BarometerResponse <: Response {
+    public var pressure: Float32
+}
+```
+
+**功能：** 气压计传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var pressure
+
+```cangjie
+public var pressure: Float32
+```
+
+**功能：** 压力值（单位：百帕）。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class GravityResponse
+
+```cangjie
+public class GravityResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+}
+```
+
+**功能：** 重力传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** 施加在设备x轴的重力加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** 施加在设备y轴的重力加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** 施加在设备z轴的重力加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class GyroscopeResponse
+
+```cangjie
+public class GyroscopeResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+}
+```
+
+**功能：** 陀螺仪传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** 设备x轴的旋转角速度，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** 设备y轴的旋转角速度，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** 设备z轴的旋转角速度，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class GyroscopeUncalibratedResponse
+
+```cangjie
+public class GyroscopeUncalibratedResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+    public var biasX: Float32
+    public var biasY: Float32
+    public var biasZ: Float32
+}
+```
+
+**功能：** 未校准陀螺仪传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var biasX
+
+```cangjie
+public var biasX: Float32
+```
+
+**功能：** 设备x轴未校准的旋转角速度偏量，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var biasY
+
+```cangjie
+public var biasY: Float32
+```
+
+**功能：** 设备y轴未校准的旋转角速度偏量，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var biasZ
+
+```cangjie
+public var biasZ: Float32
+```
+
+**功能：** 设备z轴未校准的旋转角速度偏量，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** 设备x轴未校准的旋转角速度，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** 设备y轴未校准的旋转角速度，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** 设备z轴未校准的旋转角速度，单位rad/s。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class HallResponse
+
+```cangjie
+public class HallResponse <: Response {
+    public var status: Float32
+}
+```
+
+**功能：** 霍尔传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var status
+
+```cangjie
+public var status: Float32
+```
+
+**功能：** 显示霍尔状态。测量设备周围是否存在磁力吸引，0表示没有，大于0表示有。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class HeartRateResponse
+
+```cangjie
+public class HeartRateResponse <: Response {
+    public var heartRate: Float32
+}
+```
+
+**功能：** 心率传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var heartRate
+
+```cangjie
+public var heartRate: Float32
+```
+
+**功能：** 心率值。测量用户的心率数值，单位：bpm。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class HumidityResponse
+
+```cangjie
+public class HumidityResponse <: Response {
+    public var humidity: Float32
+}
+```
+
+**功能：** 湿度传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var humidity
+
+```cangjie
+public var humidity: Float32
+```
+
+**功能：** 湿度值。测量环境的相对湿度，以百分比&nbsp;(%)&nbsp;表示。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class LightResponse
+
+```cangjie
+public class LightResponse <: Response {
+    public var intensity: Float32
+    public var colorTemperature:?Float32
+    public var infraredLuminance:?Float32
+}
+```
+
+**功能：** 环境光传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var colorTemperature
+
+```cangjie
+public var colorTemperature:?Float32
+```
+
+**功能：** 色温（单位：开尔文），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。
+
+**类型：** ?Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var infraredLuminance
+
+```cangjie
+public var infraredLuminance:?Float32
+```
+
+**功能：** 红外亮度（单位：cd/m²），可选参数，如果该参数不支持在js层返回未定义，支持则返回正常数值。
+
+**类型：** ?Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var intensity
+
+```cangjie
+public var intensity: Float32
+```
+
+**功能：** 光强（单位：勒克斯）。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class LinearAccelerometerResponse
+
+```cangjie
+public class LinearAccelerometerResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+}
+```
+
+**功能：** 线性加速度传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** 施加在设备x轴的线性加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** 施加在设备y轴的线性加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** 施加在设备z轴的线性加速度，单位：m/s²。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class MagneticFieldResponse
+
+```cangjie
+public class MagneticFieldResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+}
+```
+
+**功能：** 磁场传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** x轴环境磁场强度，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** y轴环境磁场强度，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** z轴环境磁场强度，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class MagneticFieldUncalibratedResponse
+
+```cangjie
+public class MagneticFieldUncalibratedResponse <: Response {
+    public var x: Float32
+    public var y: Float32
+    public var z: Float32
+    public var biasX: Float32
+    public var biasY: Float32
+    public var biasZ: Float32
+}
+```
+
+**功能：** 未校准磁场传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var biasX
+
+```cangjie
+public var biasX: Float32
+```
+
+**功能：** x轴未校准环境磁场强度偏量，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var biasY
+
+```cangjie
+public var biasY: Float32
+```
+
+**功能：** y轴未校准环境磁场强度偏量，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var biasZ
+
+```cangjie
+public var biasZ: Float32
+```
+
+**功能：** z轴未校准环境磁场强度偏量，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var x
+
+```cangjie
+public var x: Float32
+```
+
+**功能：** x轴未校准环境磁场强度，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var y
+
+```cangjie
+public var y: Float32
+```
+
+**功能：** y轴未校准环境磁场强度，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var z
+
+```cangjie
+public var z: Float32
+```
+
+**功能：** z轴未校准环境磁场强度，单位：μT。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class Options
+
+```cangjie
+public class Options {
+    public var interval: IntervalOption
+    public var sensorInfoParam:?SensorInfoParam
+    public init(interval!: IntervalOption = NormalMode, sensorInfoParam!: ?SensorInfoParam = None)
+}
+```
+
+**功能：** 传感器配置选项。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var interval
+
+```cangjie
+public var interval: IntervalOption
+```
+
+**功能：** 传感器上报频率。
+
+**类型：** [IntervalOption](#enum-intervaloption)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var sensorInfoParam
+
+```cangjie
+public var sensorInfoParam:?SensorInfoParam
+```
+
+**功能：** 传感器信息参数。
+
+**类型：** ?[SensorInfoParam](#class-sensorinfoparam)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### init(IntervalOption, ?SensorInfoParam)
+
+```cangjie
+public init(interval!: IntervalOption = NormalMode, sensorInfoParam!: ?SensorInfoParam = None)
+```
+
+**功能：** 构造函数，创建Options实例。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|interval|[IntervalOption](#enum-intervaloption)|否|NormalMode|传感器上报频率。|
+|sensorInfoParam|?[SensorInfoParam](#class-sensorinfoparam)|否|None|传感器信息参数。|
+
+## class OrientationResponse
+
+```cangjie
+public class OrientationResponse <: Response {
+    public var alpha: Float32
+    public var beta: Float32
+    public var gamma: Float32
+}
+```
+
+**功能：** 方向传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var alpha
+
+```cangjie
+public var alpha: Float32
+```
+
+**功能：** 设备围绕Z轴的旋转角度，单位：度。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var beta
+
+```cangjie
+public var beta: Float32
+```
+
+**功能：** 设备围绕X轴的旋转角度，单位：度。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var gamma
+
+```cangjie
+public var gamma: Float32
+```
+
+**功能：** 设备围绕Y轴的旋转角度，单位：度。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class PedometerDetectionResponse
+
+```cangjie
+public class PedometerDetectionResponse <: Response {
+    public var scalar: Float32
+}
+```
+
+**功能：** 计步检测传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var scalar
+
+```cangjie
+public var scalar: Float32
+```
+
+**功能：** 计步器检测。检测用户的计步动作，如果取值为1则代表用户产生了计步行走的动作，取值为0则代表用户没有发生运动。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class PedometerResponse
+
+```cangjie
+public class PedometerResponse <: Response {
+    public var steps: Float32
+}
+```
+
+**功能：** 计步传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var steps
+
+```cangjie
+public var steps: Float32
+```
+
+**功能：** 用户的行走步数。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class ProximityResponse
+
+```cangjie
+public class ProximityResponse <: Response {
+    public var distance: Float32
+}
+```
+
+**功能：** 接近光传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var distance
+
+```cangjie
+public var distance: Float32
+```
+
+**功能：** 可见物体与设备显示器的接近程度。0表示接近，大于0表示远离。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
 
 ## class Response
 
@@ -231,7 +1527,7 @@ public class Sensor {
     public var vendorName: String
     public var firmwareVersion: String
     public var hardwareVersion: String
-    public var sensorId: SensorId
+    public var sensorId: Int32
     public var maxRange: Float32
     public var minSamplePeriod: Int64
     public var maxSamplePeriod: Int64
@@ -361,12 +1657,12 @@ public var precision: Float32
 ### var sensorId
 
 ```cangjie
-public var sensorId: SensorId
+public var sensorId: Int32
 ```
 
 **功能：** 传感器类型id。
 
-**类型：** [SensorId](#enum-sensorid)
+**类型：** Int32
 
 **读写能力：** 可读写
 
@@ -406,10 +1702,270 @@ public var vendorName: String
 
 **起始版本：** 21
 
+## class SensorInfoParam
+
+```cangjie
+public class SensorInfoParam {
+    public var deviceId: Int32
+    public var sensorIndex: Int32
+    public init(deviceId!: Int32 = -1, sensorIndex!: Int32 = 0)
+}
+```
+
+**功能：** 传感器信息参数。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var deviceId
+
+```cangjie
+public var deviceId: Int32
+```
+
+**功能：** 设备ID。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### var sensorIndex
+
+```cangjie
+public var sensorIndex: Int32
+```
+
+**功能：** 传感器索引。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### init(Int32, Int32)
+
+```cangjie
+public init(deviceId!: Int32 = -1, sensorIndex!: Int32 = 0)
+```
+
+**功能：** 构造函数，创建SensorInfoParam实例。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deviceId|Int32|否|- 1|设备ID。|
+|sensorIndex|Int32|否|0|传感器索引。|
+
+## class SignificantMotionResponse
+
+```cangjie
+public class SignificantMotionResponse <: Response {
+    public var scalar: Float32
+}
+```
+
+**功能：** 有效运动传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var scalar
+
+```cangjie
+public var scalar: Float32
+```
+
+**功能：** 表示剧烈运动程度。测量三个物理轴（x、y&nbsp;和&nbsp;z）上，设备是否存在大幅度运动；若存在大幅度运动则数据上报为1。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## class WearDetectionResponse
+
+```cangjie
+public class WearDetectionResponse <: Response {
+    public var value: Float32
+}
+```
+
+**功能：** 佩戴检测传感器数据，继承自[Response](#class-response)。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Response](#class-response)
+
+### var value
+
+```cangjie
+public var value: Float32
+```
+
+**功能：** 表示设备是否被穿戴（1表示已穿戴，0表示未穿戴）。
+
+**类型：** Float32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+## enum IntervalOption
+
+```cangjie
+public enum IntervalOption <: Equatable<IntervalOption> & ToString {
+    | SensorNumber(Int64)
+    | GameMode
+    | UIMode
+    | NormalMode
+    | ...
+}
+```
+
+**功能：** 传感器上报频率的选项。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**父类型：**
+
+- [Equatable\<IntervalOption>](../BasicServicesKit/cj-apis-base.md#class-equatable)
+- ToString
+
+### GameMode
+
+```cangjie
+GameMode
+```
+
+**功能：** 用于指定传感器上报频率，频率值为20000000ns，该频率被设置在硬件支持的频率范围内时会生效。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### NormalMode
+
+```cangjie
+NormalMode
+```
+
+**功能：** 用于指定传感器上报频率，频率值为200000000ns，该频率被设置在硬件支持的频率范围内时会生效，值固定为'normal'字符串。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### SensorNumber(Int64)
+
+```cangjie
+SensorNumber(Int64)
+```
+
+**功能：** 自定义传感器上报频率，频率值为指定的纳秒数。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### UIMode
+
+```cangjie
+UIMode
+```
+
+**功能：** 用于指定传感器上报频率，频率值为60000000ns，该频率被设置在硬件支持的频率范围内时会生效。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+### func !=(IntervalOption)
+
+```cangjie
+public operator func !=(other: IntervalOption): Bool
+```
+
+**功能：** 判断两个[IntervalOption](#enum-intervaloption) 是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[IntervalOption](#enum-intervaloption)|是|-|传入的[IntervalOption](#enum-intervaloption)。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果不相等，则返回true；否则，返回false。|
+
+### func ==(IntervalOption)
+
+```cangjie
+public operator func ==(other: IntervalOption): Bool
+```
+
+**功能：** 判断两个[IntervalOption](#enum-intervaloption) 是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[IntervalOption](#enum-intervaloption)|是|-|传入的[IntervalOption](#enum-intervaloption)。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果相等，则返回true；否则，返回false。|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**功能：** 将枚举值转换为字符串。
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|String|转换后的字符串。|
+
 ## enum SensorAccuracy
 
 ```cangjie
-public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
+public enum SensorAccuracy  <: Equatable<SensorAccuracy> & ToString {
     | AccuracyUnreliable
     | AccuracyLow
     | AccuracyMedium
@@ -426,7 +1982,7 @@ public enum SensorAccuracy <: Equatable<SensorAccuracy> & ToString {
 
 **父类型：**
 
-- Equatable\<SensorAccuracy>
+- [Equatable\<SensorAccuracy>](../BasicServicesKit/cj-apis-base.md#class-equatable)
 - ToString
 
 ### AccuracyHigh
@@ -568,7 +2124,7 @@ public enum SensorId <: Equatable<SensorId> & ToString {
 
 **父类型：**
 
-- Equatable\<SensorId>
+- [Equatable\<SensorId>](../BasicServicesKit/cj-apis-base.md#class-equatable)
 - ToString
 
 ### Accelerometer
@@ -862,6 +2418,24 @@ public operator func ==(other: SensorId): Bool
 |类型|说明|
 |:----|:----|
 |Bool|如果相等，则返回true；否则，返回false。|
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**功能：** 获取枚举值。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Int32|枚举值。|
 
 ### func toString()
 

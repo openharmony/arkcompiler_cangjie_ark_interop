@@ -41,7 +41,7 @@ func getData(index: Int64): T
 
 |类型|说明|
 |:----|:----|
-|[T](#generic-type-t)|索引值index对应的数据。|
+|T|索引值index对应的数据。|
 
 ### func onRegisterDataChangeListener(DataChangeListener)
 
@@ -88,7 +88,7 @@ func totalCount(): Int64
 ## class DataChangeListener
 
 ```cangjie
-public class DataChangeListener <: RemoteData {
+public class DataChangeListener {
     public DataChangeListener(id: Int64)
 }
 ```
@@ -103,10 +103,6 @@ public class DataChangeListener <: RemoteData {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [RemoteData](<font color="red" face="bold">please add link</font>)
 
 ### DataChangeListener(Int64)
 
@@ -227,7 +223,7 @@ public class LazyForEach <: UINodeBase {
 }
 ```
 
-**功能：** 用于创建[LazyForEach](#LazyForEach)组件。
+**功能：** 用于创建[LazyForEach](#lazyforeach)组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,7 +231,7 @@ public class LazyForEach <: UINodeBase {
 
 **父类型：**
 
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### func create\<T>(Int64, CustomView, IDataSource\<T>, ItemGenFuncType\<T>, KeyGenFuncType\<T>)
 
@@ -270,12 +266,11 @@ public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|viewID|Int64|是|-|<font color="red">please add your description</font>|
-|parentView|[CustomView](./cj-ui-framework.md#class-customview)|是|-|<font color="red">please add your description</font>|
+|viewID|Int64|是|-|观察ID|
+|parentView|[CustomView](./cj-ui-framework.md#class-customview)|是|-|父观察者|
 |dataSource|[IDataSource](#interface-idatasource)\<T>|是|-|LazyForEach数据源，需要开发者实现相关接口。|
 |itemGeneratorFunc|ItemGenFuncType\<T>|是|-|子组件生成函数，为数组中的每一个数据项创建一个子组件。lambda函数的第一个泛型参数为数据类型，必须为FFIData的子类；第二个参数为当前列表项的索引值。|
-|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ _: T, idx: Int64 => uniqueKey ++ return "${viewID} - ${idx} - ${uniqueKey}" }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。当子项在数组中的位置更改时，子项的键值不得更改，当数组中的子项被新项替换时，被替换项的键值和新项的键值必须不同。键值生成器的功能是可选的，但是，为了使开发框架能够更好地识别数组更改，提高性能，建议提供。如将数组反向时，如果没有提供键值生成器，则LazyForEach中的所有节点都将重建。|
-
+|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ _: T, idx: Int64 => }|匿名函数，用于键值生成，为给定数组项生成唯一且稳定的键值。当子项在数组中的位置更改时，子项的键值不得更改，当数组中的子项被新项替换时，被替换项的键值和新项的键值必须不同。键值生成器的功能是可选的，但是，为了使开发框架能够更好地识别数组更改，提高性能，建议提供。如将数组反向时，如果没有提供键值生成器，则LazyForEach中的所有节点都将重建。|
 
 **返回值：**
 
@@ -289,7 +284,7 @@ public func create<T>(viewID: Int64, parentView: CustomView, dataSource: IDataSo
 public func initial(): Unit
 ```
 
-**功能：** <font color="red">please add your description</font>
+**功能：** 创建LazyForEach对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,12 +296,11 @@ public func initial(): Unit
 public func update(): Unit
 ```
 
-**功能：** <font color="red">please add your description</font>
+**功能：** 更新LazyForEach对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
 
 ## 示例代码
 
@@ -367,7 +361,7 @@ var changeID: Int64 = 0
 public class EntryView {
 
     public func build(): Unit {
-        Column(30) {
+        Column(space: 30) {
             Column {
                 LazyForEach(dataSourceStu, itemGeneratorFunc: {stu: Student, idx: Int64 =>
                     Column {

@@ -246,7 +246,7 @@ Hilog.warn(0, "testTag", "Warn: Hello world!")
 public enum LogLevel {
     | Debug
     | Info
-    | Warn
+    | Warning
     | Error
     | Fatal
     | ...
@@ -311,10 +311,10 @@ These logs should be recorded by the dominant module within the business to avoi
 
 **Initial Version:** 21
 
-### Warn
+### Warning
 
 ```cangjie
-Warn
+Warning
 ```
 
 **Function:** Used to record more severe unexpected conditions that have minimal impact on users. The application can recover automatically or through simple operations.

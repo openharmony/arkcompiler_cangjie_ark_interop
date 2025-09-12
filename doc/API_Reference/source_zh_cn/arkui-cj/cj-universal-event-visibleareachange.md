@@ -5,7 +5,7 @@
 ## func onVisibleAreaChange(Array\<Float64>, (Bool, Float64)->Unit)
 
 ```cangjie
-public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64)->Unit): This
+public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -> Unit): This
 ```
 
 **功能：** 组件可见区域变化时触发的事件。
@@ -18,7 +18,7 @@ public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64)->
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ratios|Array\<Float64>|是|-|阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。**说明：** 当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。|
+|raitos|Array\<Float64>|是|-|阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。**说明：** 当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。|
 |event|(Bool, Float64)->Unit|是|-|组件可见区域变化事件的回调。参数一：表示组件的可见面积与自身面积的比值与上一次变化相比的情况，比值变大为true，比值变小为false。参数二：触发回调时，组件可见面积与自身面积的比值。|
 
 > **说明：**
@@ -34,6 +34,7 @@ public func onVisibleAreaChange(ratios: Array<Float64>, event: (Bool, Float64)->
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
@@ -47,7 +48,7 @@ class EntryView {
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 
     func build() {
-    Stack(Alignment.TopStart) {
+    Stack(alignContent: Alignment.TopStart) {
         Column {
             Column() {
                 Text(this.testTextStr)
@@ -67,7 +68,7 @@ class EntryView {
                 .height(200)
                 .margin(20)
                 .backgroundColor(Color.Green)
-                // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
+                // 通过设置raitos为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
                 .onVisibleAreaChange([0.0, 1.0], {isVisible, currentRatio =>
                 this.sizeValue = isVisible.toString() + ", currentRatio:" + currentRatio.toString()
                 if (isVisible && currentRatio >= 1.0) {
@@ -101,9 +102,9 @@ class EntryView {
         .scrollBarWidth(10)
         .onScrollEdge({ edge =>
             match(edge) {
-                case Edge.Top => nativeLog("Top")
-                case Edge.Bottom => nativeLog("Bottom")
-                case _ => nativeLog("None")
+                case Edge.Top => Hilog.info(0, "cangjie", "Top")
+                case Edge.Bottom => Hilog.info(0, "cangjie", "Bottom")
+                case _ => Hilog.info(0, "cangjie", "None")
              }
          })
     }

@@ -158,7 +158,7 @@ public func fontFamily(value: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。|      |
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md)。|
 
 ### func fontSize(Length)
 
@@ -302,7 +302,7 @@ public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400
     style!: FontStyle = FontStyle.Normal): This
 ```
 
-**功能：** 设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。
+**功能：** 设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -580,7 +580,7 @@ public func setTextSelection(selectionStart: Int32, selectionEnd: Int32, options
 |:---|:---|:---|:---|:---|
 |selectionStart|Int32|是|-|文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、按照文字最大长度处理。|
 |selectionEnd|Int32|是|-|文本选择区域结束位置。<br/>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。|
-|options|[MenuPolicy](#enum-menupolicy)|否|MenuPolicy.Default|**命名参数。** 选中文字时的配置。|
+|options|[MenuPolicy](./cj-common-types.md#enum-menupolicy)|否|MenuPolicy.Default|**命名参数。** 选中文字时的配置。|
 
 #### func stopEditing()
 
@@ -913,6 +913,7 @@ Inline
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -933,7 +934,7 @@ class EntryView {
             .margin(20)
             .fontSize(14)
             .fontColor(Color.Black)
-            .inputFilter(value: '[a-z]', error: { info: String =>
+            .inputFilter('[a-z]', error: { info: String =>
               Hilog.error(0, "AppLogCj", "inputFilter error")
             })
             .onChange({ value: String =>
@@ -949,7 +950,6 @@ class EntryView {
             .width(95.percent)
             .height(40)
             .margin(20)
-            .setType(InputType.Password)
             .maxLength(9)
         // 邮箱地址自动填充类型
         TextInput(placeholder: 'input your email...' )
@@ -957,7 +957,6 @@ class EntryView {
             .height(40)
             .margin(20)
             .maxLength(9)
-            .contentType(ContentType.EMAIL_ADDRESS)
         // 内联风格输入框
         TextInput( text: 'inline style' )
             .width(95.percent)

@@ -1778,8 +1778,8 @@ public enum DeviceType {
     | DeviceTypePhone
     | DeviceTypeTablet
     | DeviceTypeCar
-    | DeviceTypePC
-    | DeviceTypeTV
+    | DeviceTypePc
+    | DeviceTypeTv
     | DeviceTypeWearable
     | DeviceType2In1
     | ...
@@ -1816,10 +1816,10 @@ DeviceTypeCar
 
 **Since:** 21
 
-### DeviceTypePC
+### DeviceTypePc
 
 ```cangjie
-DeviceTypePC
+DeviceTypePc
 ```
 
 **Function:** PC.
@@ -1840,10 +1840,10 @@ DeviceTypePhone
 
 **Since:** 21
 
-### DeviceTypeTV
+### DeviceTypeTv
 
 ```cangjie
-DeviceTypeTV
+DeviceTypeTv
 ```
 
 **Function:** TV.
@@ -1960,12 +1960,12 @@ Int32Value(Int32)
 
 ```cangjie
 public enum ScreenDensity {
-    | ScreenSDPI
-    | ScreenMDPI
-    | ScreenLDPI
-    | ScreenXLDPI
-    | ScreenXXLDPI
-    | ScreenXXXLDPI
+    | ScreenSdpi
+    | ScreenMdpi
+    | ScreenLdpi
+    | ScreenXldpi
+    | ScreenXxldpi
+    | ScreenXxxldpi
     | ...
 }
 ```
@@ -1976,10 +1976,10 @@ public enum ScreenDensity {
 
 **Since:** 21
 
-### ScreenLDPI
+### ScreenLdpi
 
 ```cangjie
-ScreenLDPI
+ScreenLdpi
 ```
 
 **Function:** Large-scale screen density.
@@ -1988,10 +1988,10 @@ ScreenLDPI
 
 **Since:** 21
 
-### ScreenMDPI
+### ScreenMdpi
 
 ```cangjie
-ScreenMDPI
+ScreenMdpi
 ```
 
 **Function:** Medium-scale screen density.
@@ -2000,10 +2000,10 @@ ScreenMDPI
 
 **Since:** 21
 
-### ScreenSDPI
+### ScreenSdpi
 
 ```cangjie
-ScreenSDPI
+ScreenSdpi
 ```
 
 **Function:** Small-scale screen density.
@@ -2012,10 +2012,10 @@ ScreenSDPI
 
 **Since:** 21
 
-### ScreenXLDPI
+### ScreenXldpi
 
 ```cangjie
-ScreenXLDPI
+ScreenXldpi
 ```
 
 **Function:** Extra-large-scale screen density.
@@ -2024,10 +2024,10 @@ ScreenXLDPI
 
 **Since:** 21
 
-### ScreenXXLDPI
+### ScreenXxldpi
 
 ```cangjie
-ScreenXXLDPI
+ScreenXxldpi
 ```
 
 **Function:** Extra-extra-large-scale screen density.
@@ -2036,10 +2036,10 @@ ScreenXXLDPI
 
 **Since:** 21
 
-### ScreenXXXLDPI
+### ScreenXxxldpi
 
 ```cangjie
-ScreenXXXLDPI
+ScreenXxxldpi
 ```
 
 **Function:** Ultra-extra-large-scale screen density.

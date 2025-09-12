@@ -6,7 +6,7 @@ Image为图片组件，常用于在应用中显示图片。支持png、jpg、jpe
 >
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于[获焦状态](./cj-universal-attribute-focus.md#func-focusontouchbool)。Image组件默认不获焦，需将[focusable](cj-apis-window.md#var-focusable)属性设置为true，即可使用TAB键将焦点切换到组件上，再将[focusOnTouch](./cj-universal-attribute-focus.md#func-focusontouchbool)  属性设置为true，即可实现点击获焦。
 > - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](../apis/ImageKit/cj-apis-image.md#svg标签说明)。
-> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+> - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)事件触发的，当可见阈值raitos大于0时，表明Image处于可见状态。
 
 ## 导入模块
 
@@ -111,7 +111,7 @@ public func alt(src: ResourceStr): This
 ### func autoResize(Bool)
 
 ```cangjie
-public func autoResize(autoResize: Bool): This
+public func autoResize(value: Bool): This
 ```
 
 **功能：** 设置图片解码过程中是否对图源自动缩放。
@@ -128,7 +128,7 @@ public func autoResize(autoResize: Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|autoResize|Bool|是|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>初始值：false。|
+|value|Bool|是|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>初始值：false。|
 
 ### func fillColor(ResourceColor)
 
@@ -155,7 +155,7 @@ public func fillColor(value: ResourceColor): This
 ### func fitOriginalSize(Bool)
 
 ```cangjie
-public func fitOriginalSize(isFitOriginalSize: Bool): This
+public func fitOriginalSize(value: Bool): This
 ```
 
 **功能：** 设置图片的显示尺寸是否跟随图源尺寸。图片组件尺寸未设置时，其显示尺寸是否跟随图源尺寸。
@@ -168,12 +168,12 @@ public func fitOriginalSize(isFitOriginalSize: Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|isFitOriginalSize|Bool|是|-|是否跟随图源尺寸。<br/>初始值：false。|
+|value|Bool|是|-|是否跟随图源尺寸。<br/>初始值：false。|
 
 ### func interpolation(ImageInterpolation)
 
 ```cangjie
-public func interpolation(interpolation: ImageInterpolation): This
+public func interpolation(value: ImageInterpolation): This
 ```
 
 **功能：** 设置图片的插值效果。
@@ -191,12 +191,12 @@ public func interpolation(interpolation: ImageInterpolation): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|interpolation|[ImageInterpolation](#enum-imageinterpolation)|是|-|图片的插值效果。<br/>初始值：ImageInterpolation.Low。|
+|value|[ImageInterpolation](#enum-imageinterpolation)|是|-|图片的插值效果。<br/>初始值：ImageInterpolation.Low。|
 
 ### func matchTextDirection(Bool)
 
 ```cangjie
-public func matchTextDirection(isMatchTextDirection: Bool): This
+public func matchTextDirection(value: Bool): This
 ```
 
 **功能：** 设置图片是否跟随系统语言方向，在RTL语言环境下显示镜像翻转显示效果。
@@ -209,7 +209,7 @@ public func matchTextDirection(isMatchTextDirection: Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|isMatchTextDirection|Bool|是|-|是否跟随系统语言方向。<br/>初始值：false。|
+|value|Bool|是|-|是否跟随系统语言方向。<br/>初始值：false。|
 
 ### func objectFit(ImageFit)
 
@@ -232,7 +232,7 @@ public func objectFit(value: ImageFit): This
 ### func objectRepeat(ImageRepeat)
 
 ```cangjie
-public func objectRepeat(objectRepeat: ImageRepeat): This
+public func objectRepeat(value: ImageRepeat): This
 ```
 
 **功能：** 设置图片的重复样式。
@@ -250,12 +250,12 @@ public func objectRepeat(objectRepeat: ImageRepeat): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|objectRepeat|[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片的重复样式。<br/>初始值：ImageRepeat.NoRepeat。|
+|value|[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片的重复样式。<br/>初始值：ImageRepeat.NoRepeat。|
 
 ### func renderMode(ImageRenderMode)
 
 ```cangjie
-public func renderMode(renderMode: ImageRenderMode): This
+public func renderMode(value: ImageRenderMode): This
 ```
 
 **功能：** 设置图片渲染的模式。
@@ -273,7 +273,7 @@ public func renderMode(renderMode: ImageRenderMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|renderMode|[ImageRenderMode](#enum-imagerendermode)|是|-|图片渲染的模式为原色或黑色。<br/>初始值：ImageRenderMode.Original。|
+|value|[ImageRenderMode](#enum-imagerendermode)|是|-|图片渲染的模式为原色或黑色。<br/>初始值：ImageRenderMode.Original。|
 
 ### func sourceSize(Length, Length)
 
@@ -297,7 +297,7 @@ public func sourceSize(width: Length, height: Length): This
 ### func syncLoad(Bool)
 
 ```cangjie
-public func syncLoad(syncLoad: Bool): This
+public func syncLoad(value: Bool): This
 ```
 
 **功能：** 设置是否同步加载图片。
@@ -314,7 +314,7 @@ public func syncLoad(syncLoad: Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|syncLoad|Bool|是|-|是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>初始值：false。|
+|value|Bool|是|-|是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>初始值：false。|
 
 ## 组件事件
 
@@ -334,7 +334,7 @@ public func onComplete(callback: ImageCompleteCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageCompleteCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片成功加载时触发。|
+|callback|ImageCompleteCallback|是|-|回调函数，图片成功加载时触发。|
 
 ### func onError(ImageErrorCallback)
 
@@ -352,12 +352,12 @@ public func onError(callback: ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[ImageErrorCallback](<font color="red" face="bold">please add link</font>)|是|-|回调函数，图片加载出现异常时触发。|
+|callback|ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。|
 
 ### func onFinish(() -> Unit)
 
 ```cangjie
-public func onFinish(callback: () -> Unit): This
+public func onFinish(event: () -> Unit): This
 ```
 
 **功能：** 当加载的源文件为带动效的svg图片时，当svg动效播放完成时会触发该事件，如果动效为无限循环动效，则不会触发这个事件。
@@ -370,7 +370,7 @@ public func onFinish(callback: () -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|回调函数，svg动效播放完成时触发。|
+|event|()->Unit|是|-|回调函数，svg动效播放完成时触发。|
 
 ## 基础类型定义
 
@@ -391,7 +391,7 @@ public class ColorFilter {
 #### init(Array\<Float32>)
 
 ```cangjie
-public init(array: Array<Float32>)
+public init(value: Array<Float32>)
 ```
 
 **功能：** 构建一个颜色滤镜矩阵。
@@ -404,21 +404,21 @@ public init(array: Array<Float32>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|array|Array\<Float32>|是|-|4x5的滤镜矩阵。|
+|value|Array\<Float32>|是|-|4x5的滤镜矩阵。|
 
 ### class ImageLoadResult
 
 ```cangjie
 public class ImageLoadResult {
-    public var width: Float64 = 0.0
-    public var height: Float64 = 0.0
-    public var componentWidth: Float64 = 0.0
-    public var componentHeight: Float64 = 0.0
-    public var loadingStatus: Int32 = 0
-    public var contentWidth: Float64 = 0.0
-    public var contentHeight: Float64 = 0.0
-    public var contentOffsetX: Float64 = 0.0
-    public var contentOffsetY: Float64 = 0.0
+    public var width: Float64
+    public var height: Float64
+    public var componentWidth: Float64
+    public var componentHeight: Float64
+    public var loadingStatus: Int32
+    public var contentWidth: Float64
+    public var contentHeight: Float64
+    public var contentOffsetX: Float64
+    public var contentOffsetY: Float64
 }
 ```
 
@@ -431,7 +431,7 @@ public class ImageLoadResult {
 #### var componentHeight
 
 ```cangjie
-public var componentHeight: Float64 = 0.0
+public var componentHeight: Float64
 ```
 
 **功能：** 组件的高度，单位为px。
@@ -447,7 +447,7 @@ public var componentHeight: Float64 = 0.0
 #### var componentWidth
 
 ```cangjie
-public var componentWidth: Float64 = 0.0
+public var componentWidth: Float64
 ```
 
 **功能：** 组件的宽度，单位为px。
@@ -463,7 +463,7 @@ public var componentWidth: Float64 = 0.0
 #### var contentHeight
 
 ```cangjie
-public var contentHeight: Float64 = 0.0
+public var contentHeight: Float64
 ```
 
 **功能：** 图片实际绘制的高度，单位为px。
@@ -483,7 +483,7 @@ public var contentHeight: Float64 = 0.0
 #### var contentOffsetX
 
 ```cangjie
-public var contentOffsetX: Float64 = 0.0
+public var contentOffsetX: Float64
 ```
 
 **功能：** 实际绘制内容相对于组件自身的x轴偏移，单位为px。
@@ -503,7 +503,7 @@ public var contentOffsetX: Float64 = 0.0
 #### var contentOffsetY
 
 ```cangjie
-public var contentOffsetY: Float64 = 0.0
+public var contentOffsetY: Float64
 ```
 
 **功能：** 实际绘制内容相对于组件自身的y轴偏移，单位为px。
@@ -523,7 +523,7 @@ public var contentOffsetY: Float64 = 0.0
 #### var contentWidth
 
 ```cangjie
-public var contentWidth: Float64 = 0.0
+public var contentWidth: Float64
 ```
 
 **功能：** 图片实际绘制的宽度，单位为px。
@@ -543,7 +543,7 @@ public var contentWidth: Float64 = 0.0
 #### var height
 
 ```cangjie
-public var height: Float64 = 0.0
+public var height: Float64
 ```
 
 **功能：** 图片的高度，单位为px。
@@ -559,7 +559,7 @@ public var height: Float64 = 0.0
 #### var loadingStatus
 
 ```cangjie
-public var loadingStatus: Int32 = 0
+public var loadingStatus: Int32
 ```
 
 **功能：** 图片加载成功的状态。
@@ -575,7 +575,7 @@ public var loadingStatus: Int32 = 0
 #### var width
 
 ```cangjie
-public var width: Float64 = 0.0
+public var width: Float64
 ```
 
 **功能：** 图片的宽度，单位为px。
@@ -591,7 +591,7 @@ public var width: Float64 = 0.0
 ### enum ImageInterpolation
 
 ```cangjie
-public enum ImageInterpolation <: Equatable<ImageInterpolation> {
+public enum ImageInterpolation {
     | None
     | High
     | Medium
@@ -782,6 +782,22 @@ public operator func ==(other: ImageRenderMode): Bool
 |:----|:----|
 |Bool|两个枚举值相等时，返回true，否则返回false。|
 
+## type ImageCompleteCallback
+
+```cangjie
+public type ImageCompleteCallback =(ImageLoadResult) -> Unit
+```
+
+**功能：** 图片加载完成回调函数类型。
+
+## type ImageErrorCallback
+
+```cangjie
+public type ImageErrorCallback =(ImageError) -> Unit
+```
+
+**功能：** 图片加载错误回调函数类型。
+
 ## 示例代码
 
 ### 示例1（加载基本类型图片）
@@ -794,24 +810,24 @@ public operator func ==(other: ImageRenderMode): Bool
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.__GenerateResource__
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                 Row() {
                     // 加载png格式图片
                     Image(@r(app.media.startIcon))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "png", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     // 加载gif格式图片
                     Image(@r(app.media.list))
                     .width(110).height(110).margin(15)
-                    .overlay(title: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "gif", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
                 Row() {
                     // 加载svg格式图片
@@ -819,13 +835,13 @@ class EntryView {
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "svg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                     // 加载jpg格式图片
                     Image(@r(app.media.startIcon_jpg))
                     .width(110)
                     .height(110)
                     .margin(15)
-                    .overlay(title: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
+                    .overlay(value: "jpg", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
                 }
             }
             .height(320)
@@ -848,7 +864,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -885,61 +900,7 @@ class EntryView {
 
 ![image2](figures/image2.gif)
 
-### 示例3（图像设置颜色滤镜效果）
-
-该示例通过colorFilter实现了给图像设置颜色滤镜效果。
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
-
-@Entry
-@Component
-class EntryView {
-    let blueColor = ColorFilter([0.38, 0.0, 0.0, 0.0, 0.0,
-                                0.0, 0.81, 0.0, 0.0, 0.0,
-                                0.0, 0.0, 0.43, 0.0, 0.0,
-                                0.0, 0.0, 0.0, 1.0, 0.0])
-    let colorFilter = ColorFilter([1.0, 0.0, 1.0, 0.0, 1.0,
-                                   0.0, 0.0, 0.0, 1.0, 0.0,
-                                   1.0, 0.0, 1.0, 0.0, 0.0,
-                                   0.0, 1.0, 0.0, 1.0, 0.0])
-
-    @State var DrawingColorFilterFirst: ColorFilter = blueColor
-    @State var DrawingColorFilterSecond: ColorFilter = colorFilter
-
-    func build() {
-        Column(5){
-            Image(@r(app.media.startIcon))
-            .width(100)
-            .height(100)
-            .colorFilter(this.DrawingColorFilterFirst)
-            .onClick{
-                    evt =>
-                    this.DrawingColorFilterFirst = colorFilter
-            }
-            Image(@r(app.media.startIcon))
-            .width(110)
-            .height(110)
-            .margin(15)
-            .colorFilter(this.DrawingColorFilterSecond)
-            .onClick{
-                    evt =>
-                    this.DrawingColorFilterSecond = blueColor
-            }
-        }
-    }
-}
-```
-
-![image3](figures/image3.gif)
-
-### 示例4（为图像设置填充效果）
+### 示例3（为图像设置填充效果）
 
 该示例通过objectFit为图像设置填充效果。
 
@@ -949,60 +910,78 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.__GenerateResource__
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
-                Row() {
-                    // 加载png格式图片
-                    Image(@r(app.media.startIcon))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(title: "png", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
-                    .objectFit(ImageFit.TOP_START)
-                    // 加载gif格式图片
-                    Image(@r(app.media.list))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(title: "gif", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
-                    .objectFit(ImageFit.BOTTOM_START)
-                }
-                Row() {
-                    // 加载svg格式图片
-                    Image(@r(app.media.svg))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(title: "svg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
-                    .objectFit(ImageFit.TOP_END)
-                    // 加载jpg格式图片
-                    Image(@r(app.media.startIcon_jpg))
-                    .width(110)
-                    .height(110)
-                    .margin(15)
-                    .overlay(title: "jpg", align: Alignment.Bottom, offset: ContentOffset(x: 0, y: 20))
-                    .border(width: 2, color: Color.PINK)
-                    .objectFit(ImageFit.CENTER)
-                }
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
+            Row() {
+                // 加载png格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Contain", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Contain)
+                // 加载gif格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Cover", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Cover)
             }
-            .height(320)
-            .width(360)
-            .padding(right: 10, top: 10)
+            Row() {
+                // 加载svg格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Fill", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Fill)
+                // 加载jpg格式图片
+                Image(@r(app.media.startIcon))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "ScaleDown", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.ScaleDown)
+            }
+            Row() {
+                // 加载png格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "Auto", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.Auto)
+                // 加载gif格式图片
+                Image(@r(app.media.view))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .overlay(value: "None", align: Alignment.Bottom, offset: OverlayOffset(x: 0.0, y: 20.0))
+                .border(width: 2, color: 0xFEC0CD)
+                .objectFit(ImageFit.None)
+            }
+        }
+        .height(480)
+        .width(360)
+        .padding(right: 10, top: 10)
     }
 }
 ```
 
-![image4](figures/image4.gif)
+![image4](figures/image10.jpg)
 
-### 示例5（切换显示不同类型图片）
+### 示例4（切换显示不同类型图片）
 
 该示例展示了png类型与svg类型作为数据源的显示图片效果。
 
@@ -1013,7 +992,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -1041,7 +1019,7 @@ class EntryView {
 
 ![image5](figures/image5.gif)
 
-### 示例6（通过sourceSize设置图片解码尺寸）
+### 示例5（通过sourceSize设置图片解码尺寸）
 
 该示例通过[sourceSize](#func-sourcesizelength-length)接口自定义图片的解码尺寸。
 
@@ -1052,7 +1030,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1080,7 +1057,7 @@ class EntryView {
 
 ![image6](figures/image6_api.png)
 
-### 示例7（通过renderMode设置图片的渲染模式）
+### 示例6（通过renderMode设置图片的渲染模式）
 
 该示例通过通过[renderMode](#func-rendermodeimagerendermode)接口设置图片渲染模式为黑白模式。
 
@@ -1091,7 +1068,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1114,7 +1090,7 @@ class EntryView {
 
 ![image7](figures/image7_api.png)
 
-### 示例8（通过objectRepeat设置图片的重复样式）
+### 示例7（通过objectRepeat设置图片的重复样式）
 
 该示例通过通过[objectRepeat](#func-objectrepeatimagerepeat)接口在竖直轴上重复绘制图片。
 
@@ -1125,7 +1101,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1149,7 +1124,7 @@ class EntryView {
 
 ![image8](figures/image8.png)
 
-### 示例9（设置SVG图片的填充颜色）
+### 示例8（设置SVG图片的填充颜色）
 
 该示例通过通过[fillColor](#func-fillcolorresourcecolor)接口在竖直轴上重复绘制图片。
 
@@ -1160,7 +1135,6 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.AppResource
-import kit.LocalizationKit.__GenerateResource__
 
 @Entry
 @Component
@@ -1174,14 +1148,14 @@ class EntryView {
                 .height(100)
                 .objectFit(ImageFit.Contain)
                 .borderWidth(1)
-            Text("fillColor传入Color.ORANGE")
+            Text("fillColor传入Color.Gray")
             Image(@r(app.media.svg))
                 .width(100)
                 .height(100)
                 .objectFit(ImageFit.Contain)
                 .borderWidth(1)
-                .fillColor(Color.ORANGE)
-            Text("fillColor传入Color.BLUE")
+                .fillColor(Color.Gray)
+            Text("fillColor传入Color.Blue")
             Image(@r(app.media.svg))
                 .width(100)
                 .height(100)

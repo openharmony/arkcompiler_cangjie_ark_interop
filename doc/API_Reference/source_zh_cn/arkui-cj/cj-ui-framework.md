@@ -165,7 +165,7 @@ func notifyRead(info: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|info|String|是|-|<font color="red" face="bold">please add description</font>|
+|info|String|是|-|UI框架信息。|
 
 ### func onStateUpdate(String, ArrayList\<Int64>)
 
@@ -239,6 +239,10 @@ public class CJPageEntry {}
 
 **功能：** 用于提供被Native调用的全局函数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ### static func getInstance()
 
 ```cangjie
@@ -252,6 +256,10 @@ public static func getInstance(): CJPageEntry
 |类型|说明|
 |:----|:----|
 |[CJPageEntry](#class-cjpageentry)|对应的CJPageEntry对象。|
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ### func registerHybridPage(String, CustomView)
 
@@ -268,6 +276,10 @@ public func registerHybridPage(name: String, cjPage: CustomView): Unit
 |name|String|是|-|注册名称。|
 |cjPage|[CustomView](#class-customview)|是|-|回调函数。|
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 ### func removeHybridPage(String)
 
 ```cangjie
@@ -281,6 +293,10 @@ public func removeHybridPage(name: String): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |name|String|是|-|混合页面名称|
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 
 ## class ContainerBase
 
@@ -328,8 +344,8 @@ public abstract class CustomView <: RemoteView & Observer {
 
 **父类型：**
 
-- [RemoteView](<font color="red" face="bold">please add link</font>)
-- [Observer](<font color="red" face="bold">please add link</font>)
+- RemoteView
+- Observer
 
 ### var isReusable
 
@@ -494,7 +510,7 @@ public func addProvideVar(value: ObservedPropertyAbstract, name: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>)|是|-| -    |
+|value|ObservedPropertyAbstract|是|-| -    |
 |name|String|是| -      | -    |
 
 ### func build()
@@ -684,7 +700,7 @@ public func initializeConsume(name: String): ObservedPropertyAbstract
 
 |类型|说明|
 |:----|:----|
-|[ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>)|-|
+|ObservedPropertyAbstract|-|
 
 ### func markLazyForEachProcess(String)
 
@@ -932,7 +948,7 @@ public class ForEach <: UINodeBase {
 
 **父类型：**
 
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### init(() -> Unit)
 
@@ -956,13 +972,13 @@ public init(subcomponent: () -> Unit)
 
 ```cangjie
 public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
-    itemGeneratorFunc!: ItemGenFuncType<T>,
-    keyGeneratorFunc!: KeyGenFuncType<T> = {
-        realData: T, idx: Int64 => match (realData) {
-            case realDataStr: ToString => realDataStr.toString()
-            case _ => idx.toString()
-        }
-    }): Unit
+itemGeneratorFunc!: ItemGenFuncType<T>,
+keyGeneratorFunc!: KeyGenFuncType<T> = {
+    realData: T, idx: Int64 => match (realData) {
+        case realDataStr: ToString => realDataStr.toString()
+        case _ => idx.toString()
+    }
+}): Unit
 ```
 
 **功能：** UI框架使用。
@@ -979,7 +995,7 @@ public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: 
 |parentView|[CustomView](#class-customview)|是|-|父组件。|
 |dataSource|[CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|数据源。|
 |itemGeneratorFunc|ItemGenFuncType\<T>|是|-|**命名参数。** 组件生成函数。|
-|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ realData: T, idx: Int64 => match(realData) {<br/>case realDataStr: ToString => realDataStr.toString()<br/>case _ => idx.toString()<br/>} }|**命名参数。** 键值生成函数。|
+|keyGeneratorFunc|KeyGenFuncType\<T>|否|{ realData: T, idx: Int64 =>}|**命名参数。** 键值生成函数。|
 
 ### static func create()
 
@@ -1037,6 +1053,10 @@ public open class HybridComponentBase <: SharedObject {}
 
 **功能：** 混合组件基础类，供混合框架使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
 **父类型：**
 
 - [SharedObject](../arkinterop/cj-apis-ark_interop.md#class-sharedobject)
@@ -1074,7 +1094,7 @@ public class If <: UINodeBase {
 
 **父类型：**
 
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### init(() -> Unit)
 
@@ -1157,7 +1177,7 @@ public func update(): Unit
 ## class InteractableView
 
 ```cangjie
-abstract sealed class InteractableView <: RemoteData {}
+abstract sealed class InteractableView {}
 ```
 
 **功能：** 组件基类，更多方法详见仓颉组件的通用事件相关章节。
@@ -1165,10 +1185,6 @@ abstract sealed class InteractableView <: RemoteData {}
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
-**父类型：**
-
-- [RemoteData](<font color="red" face="bold">please add link</font>)
 
 ### func onAppear(() -> Unit)
 
@@ -1226,24 +1242,6 @@ public func onBlur(event: () -> Unit): This
 |:---|:---|:---|:---|:---|
 |event|()->Unit|是|-|组件失去焦点时触发的回调函数。|
 
-### func onClick((ClickEvent) -> Unit)
-
-```cangjie
-public func onClick(event: (ClickEvent) -> Unit): This
-```
-
-**功能：** 组件被点击时触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([ClickEvent](#class-clickevent))->Unit|是|-|回调函数，组件被点击时触发该回调。|
-
 ### func onDisAppear(() -> Unit)
 
 ```cangjie
@@ -1262,139 +1260,6 @@ public func onDisAppear(event: () -> Unit): This
 |:---|:---|:---|:---|:---|
 |event|()->Unit|是|-|组件消失时触发的回调函数。|
 
-### func onDragEnter((DragInfo) -> Unit)
-
-```cangjie
-public func onDragEnter(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 拖拽进入组件范围内时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|拖拽进入组件范围回调函数。|
-
-### func onDragLeave((DragInfo) -> Unit)
-
-```cangjie
-public func onDragLeave(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 拖拽离开组件范围内时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|拖拽离开组件范围时触发的回调函数。|
-
-### func onDragMove((DragInfo) -> Unit)
-
-```cangjie
-public func onDragMove(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 拖拽在组件范围内移动时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|回调函数，拖拽进入组件范围移动时触发。|
-
-### func onDragStart((DragInfo) -> DragItemInfo)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> DragItemInfo): This
-```
-
-**功能：** 第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
-
-针对默认支持拖出能力的组件，如果开发者设置了onDragStart，优先执行开发者的onDragStart，并根据执行情况决定是否使用系统默认的拖出能力，具体为：
-
-- 如果开发者返回了自定义背板图，则不再使用系统默认的拖拽背板图。
-- 如果开发者设置了拖拽数据，则不再使用系统默认填充的拖拽数据。
-
-文本类组件[Search](./cj-text-input-search.md)、[TextInput](./cj-text-input-textinput.md)、[TextArea](./cj-text-input-textarea.md)、[RichEditor](./cj-text-input-richeditor.md)对选中的文本内容进行拖拽时，不支持背板图的自定义。当onDragStart与菜单预览一起使用或使用了默认支持拖出能力的组件时，预览及菜单项上的自定义内容不支持拖拽。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->[DragItemInfo](#class-dragiteminfo)|是|-|回调函数，拖拽开始时触发。传入参数为拖拽事件信息，包括拖拽点坐标。返回参数为拖拽过程中显示的组件信息。|
-
-### func onDragStart((DragInfo) -> CustomBuilder)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> CustomBuilder): This
-```
-
-**功能：** 重载拖拽事件，第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|回调函数，拖拽开始时触发。传入参数为拖拽事件信息，包括拖拽点坐标。返回参数为拖拽过程中显示的组件信息，使用时结合@Builder和bind方法使用。|
-
-### func onDragStart((DragInfo) -> Unit)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 重载拖拽事件，第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|回调函数，拖拽开始时触发。传入参数为拖拽事件信息，包括拖拽点坐标。返回参数为拖拽过程中显示的组件信息。|
-
-### func onDrop((DragInfo) -> Unit)
-
-```cangjie
-public func onDrop(event: (DragInfo) -> Unit): This
-```
-
-**功能：** 绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|是|-|回调函数，本组件范围内停止拖拽行为时触发。传入参数为拖拽事件信息，包括拖拽点坐标。|
-
 ### func onFocus(() -> Unit)
 
 ```cangjie
@@ -1412,78 +1277,6 @@ public func onFocus(event: () -> Unit): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |event|()->Unit|是|-|组件获得焦点时触发的回调函数。|
-
-### func onHover((Bool) -> Unit)
-
-```cangjie
-public func onHover(event: (Bool) -> Unit): This
-```
-
-**功能：** 鼠标悬停在组件上时触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|(Bool)->Unit|是|-|鼠标悬停状态变化时触发的回调函数。|
-
-### func onKeyEvent((KeyEvent) -> Unit)
-
-```cangjie
-public func onKeyEvent(event: (KeyEvent) -> Unit): This
-```
-
-**功能：** 绑定该方法的组件获焦后，按键动作触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([KeyEvent](#class-keyevent))->Unit|是|-|绑定该方法的组件获焦后，按键动作触发该回调。|
-
-### func onMouse((MouseEvent) -> Unit)
-
-```cangjie
-public func onMouse(event: (MouseEvent) -> Unit): This
-```
-
-**功能：** 当前组件被鼠标按键点击时或者鼠标在组件上移动时，触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([MouseEvent](#class-mouseevent))->Unit|是|-|组件被鼠标按键点击时或者鼠标在组件上移动时触发该回调。MouseEvent参数包含触发事件时的时间戳、鼠标按键、动作、点击触点在整个屏幕上的坐标和点击触点相对于当前组件的坐标。|
-
-### func onTouch((TouchEvent) -> Unit)
-
-```cangjie
-public func onTouch(event: (TouchEvent) -> Unit): This
-```
-
-**功能：** 手指触摸动作触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|event|([TouchEvent](#class-touchevent))->Unit|是|-|回调函数，手指触摸动作触发该回调。|
 
 ### func onVisibleAreaChange(Array\<Float64>, (Bool,Float64) -> Unit)
 
@@ -1507,7 +1300,7 @@ public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -
 ## class LocalStorageInterOp
 
 ```cangjie
-public open class LocalStorageInterOp {}
+class LocalStorageInterOp {}
 ```
 
 **功能：** LocalStorage内部使用的类。
@@ -1552,13 +1345,13 @@ public func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSIntero
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|propName|String|是|-|<font color="red" face="bold">please add description</font>|
+|propName|String|是|-|框架名称。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|LocalStorageInterOp中的属性名。|
+|ObservedProperty\<T>|LocalStorageInterOp中的属性名。|
 
 ### func aboutToBeDeleted()
 
@@ -1690,14 +1483,14 @@ public func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](<font color="red" face="bold">please add link</font>)|是|-|互操作上下文。|
-|callInfo|[JSCallInfo](<font color="red" face="bold">please add link</font>)|是|-|ArkTS函数调用的相关信息。|
+|context|JSContext|是|-|互操作上下文。|
+|callInfo|JSCallInfo|是|-|ArkTS函数调用的相关信息。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[JSValue](<font color="red" face="bold">please add link</font>)|-|
+|JSValue|-|
 
 ### func keys()
 
@@ -1735,7 +1528,7 @@ public func link<T>(propName: String): ObservedProperty<T> where T <: JSInteropT
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|双向绑定的数据。|
+|ObservedProperty\<T>|双向绑定的数据。|
 
 ### func set\<T>(String, T) where T \<: JSInteropType \<T>
 
@@ -1787,7 +1580,7 @@ public func setAndLink<T>(propName: String, value: T): ObservedProperty<T> where
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|该propName对应的属性的双向绑定数据。|
+|ObservedProperty\<T>|该propName对应的属性的双向绑定数据。|
 
 ### func setAndProp\<T>(String, T) where T \<: JSInteropType \<T>
 
@@ -1813,7 +1606,7 @@ public func setAndProp<T>(propName: String, value: T): ObservedProperty<T> where
 
 |类型|说明|
 |:----|:----|
-|[ObservedProperty](<font color="red" face="bold">please add link</font>)\<T>|单向绑定的数据。|
+|ObservedProperty\<T>|单向绑定的数据。|
 
 ### func setOrCreate\<T>(String, T) where T \<: JSInteropType \<T>
 
@@ -2264,7 +2057,6 @@ public func unsubscribeInner(observer: Observer): Unit
 ```cangjie
 public abstract class ObservedPropertyAbstract <: Observable {
 
-
     public init(info: String)
 }
 ```
@@ -2498,7 +2290,7 @@ public func get(id: Int64): Option<Observer>
 
 |类型|说明|
 |:----|:----|
-|[Option](<font color="red" face="bold">please add link</font>)\<[Observer](#interface-observer)>|观察者。|
+|Option\<[Observer](#interface-observer)>|观察者。|
 
 ### func has(Int64)
 
@@ -2587,7 +2379,7 @@ public static func check(_: ViewBuilder)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|[ViewBuilder](<font color="red" face="bold">please add link</font>)|是|-|UI框架使用。|
+|_|ViewBuilder|是|-|UI框架使用。|
 
 ### static func check(CustomView)
 
@@ -2601,7 +2393,7 @@ public static func check(_: CustomView)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|[CustomView](<font color="red" face="bold">please add link</font>)|是|-|UI框架使用。|
+|_|CustomView|是|-|UI框架使用。|
 
 ## class View
 
@@ -2877,7 +2669,7 @@ public open class ViewBase <: InteractableView & UINodeBase {}
 **父类型：**
 
 - [InteractableView](#class-interactableview)
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### func initial()
 
@@ -2902,7 +2694,6 @@ public open func update(): Unit
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
-
 
 ## class ViewBuilder
 
@@ -3069,3 +2860,93 @@ func update(): Unit
 ```
 
 **功能：** UI框架使用。
+
+## class RemoteView
+
+```cangjie
+public abstract class RemoteView <: FFIData {
+    public init()
+}
+```
+
+**功能：** UI框架使用的组件基础类。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**父类型：**
+
+- [FFIData](./cj-common-types.md#ffidata)
+
+### init()
+
+```cangjie
+public init()
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func build()
+
+```cangjie
+public func build(): Unit // abstract
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### func forceCompleteRerender(Bool)
+
+```cangjie
+public open func forceCompleteRerender(deep: Bool): Unit
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|deep|Bool|是|-|是否深度重新渲染。|
+
+### func purgeVariableDependenciesOnElmtId(Int64)
+
+```cangjie
+public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|_|Int64|是|-|待移除元素id。|
+
+### func rerender()
+
+```cangjie
+public open func rerender(): Unit
+```
+
+**功能：** UI框架使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21

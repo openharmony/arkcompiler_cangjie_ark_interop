@@ -25,7 +25,7 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|space|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length link)|否|0.vp|横向布局元素间距。<br>space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。<br> 初始值：0，单位：vp <br> **说明：** 可选值为大于等于0的数字。|
+|space|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|横向布局元素间距。<br>space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。<br> 初始值：0，单位：vp <br> **说明：** 可选值为大于等于0的数字。|
 |child|()->Unit|否|{ => }|容器内的子组件。|
 
 ## 通用属性/通用事件
@@ -89,13 +89,13 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-            Column(5) {
+            Column(space: 5) {
             // 设置子组件水平方向的间距为5
                 Text("space")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Row(5) {
+                Row(space: 5) {
                     Row()
                     .width(30.percent)
                     .height(50)

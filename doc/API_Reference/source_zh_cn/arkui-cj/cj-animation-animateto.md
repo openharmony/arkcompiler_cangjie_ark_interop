@@ -7,6 +7,7 @@
 ```cangjie
 import kit.ArkUI.*
 ```
+
 ## func animateTo(AnimateParam, VoidCallback)
 
 ```cangjie
@@ -24,7 +25,7 @@ public func animateTo(value: AnimateParam, event: VoidCallback): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |animation|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|设置动画效果相关参数。|
-|callback|[VoidCallback](<font color="red" face="bold">please add link</font>)|是|-|指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。|
+|callback|VoidCallback|是|-|指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。|
 
 ## class ExpectedFrameRateRange
 
@@ -130,7 +131,9 @@ public init(
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -148,15 +151,15 @@ class EntryView {
                 .margin(30)
                 .onClick(
                     {
-                        =>
+                       evt =>
                         if (this.isShow) {
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 2000,
                                     curve: Curve.EaseOut,
                                     iterations: 3,
                                     playMode: PlayMode.Normal,
-                                    onFinish: {=> AppLog.info("play end")}
+                                    onFinish: {=> Hilog.info(0, "cangjie", "play end")}
                                 ),
                                 {
                                     =>
@@ -165,7 +168,7 @@ class EntryView {
                                 }
                             )
                         } else {
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(),
                                 {
                                     =>
@@ -182,14 +185,14 @@ class EntryView {
                 .rotate(x: 0.0, y: 0.0, z: 1.0, angle: this.rotateAngle)
                 .onClick(
                     {
-                        => animateTo(
+                       evt => getUIContext().animateTo(
                             AnimateParam(
                                 duration: 1200,
                                 curve: Curve.Friction,
                                 delay: 500,
                                 iterations: -1, // 设置-1表示动画无限循环
                                 playMode: PlayMode.Alternate,
-                                onFinish: {=> AppLog.info("play end")},
+                                onFinish: {=> Hilog.info(0, "cangjie", "play end")},
                                 expectedFrameRateRange: ExpectedFrameRateRange(
                                     min: 10,
                                     max: 120,
@@ -217,6 +220,7 @@ class EntryView {
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -234,10 +238,10 @@ class EntryView {
                     .margin(50)
                     .width(200)
                     .height(this.heightSize)
-                    .backgroundColor(Color.BLUE)
+                    .backgroundColor(Color.Blue)
                     .onClick(
                         {
-                            evt => animateTo(
+                            evt => getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 2000,
                                     curve: Curve.EaseOut,

@@ -357,9 +357,9 @@ public func toString(): String
 
 ```cangjie
 public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
-    | None
-    | Enable
-    | Disable
+    | UnknownChargeState
+    | Enabled
+    | Disabled
     | Full
     | ...
 }
@@ -376,10 +376,10 @@ public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
 - Equatable\<BatteryChargeState>
 - ToString
 
-### Disable
+### Disabled
 
 ```cangjie
-Disable
+Disabled
 ```
 
 **Description:** Indicates the battery charging state is disabled.
@@ -388,10 +388,10 @@ Disable
 
 **Since:** 21
 
-### Enable
+### Enabled
 
 ```cangjie
-Enable
+Enabled
 ```
 
 **Description:** Indicates the battery charging state is enabled.
@@ -412,10 +412,10 @@ Full
 
 **Since:** 21
 
-### None
+### UnknownChargeState
 
 ```cangjie
-None
+UnknownChargeState
 ```
 
 **Description:** Indicates the battery charging state is unknown.
@@ -476,11 +476,13 @@ public func toString(): String
 
 | Type | Description |
 |:----|:----|
-| String | String corresponding to the battery charging state value. |## enum BatteryHealthState
+| String | String corresponding to the battery charging state value. |
+
+## enum BatteryHealthState
 
 ```cangjie
 public enum BatteryHealthState <: Equatable<BatteryHealthState> & ToString {
-    | Unknown
+    | UnknownHealthState
     | Good
     | Overheat
     | Overvoltage
@@ -561,10 +563,10 @@ Overvoltage
 
 **Since:** 21
 
-### Unknown
+### UnknownHealthState
 
 ```cangjie
-Unknown
+UnknownHealthState
 ```
 
 **Function:** Indicates the battery health status is unknown.
@@ -631,7 +633,7 @@ public func toString(): String
 
 ```cangjie
 public enum BatteryPluggedType <: Equatable<BatteryPluggedType> & ToString {
-    | None
+    | UnknownType
     | Ac
     | Usb
     | Wireless
@@ -662,10 +664,10 @@ Ac
 
 **Since:** 21
 
-### None
+### UnknownType
 
 ```cangjie
-None
+UnknownType
 ```
 
 **Function:** Indicates no connected charger type was detected.
