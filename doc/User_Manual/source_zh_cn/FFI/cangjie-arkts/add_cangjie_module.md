@@ -83,7 +83,7 @@
    // ...
    ```
 
-9.  然后在 **entry->src->main->ets** 中，正常使用该函数，以如下 **Index.ets** 为例：
+9. 然后在 **entry->src->main->ets** 中，正常使用该函数，以如下 **Index.ets** 为例：
 
    ```ts
    // 导入仓颉函数

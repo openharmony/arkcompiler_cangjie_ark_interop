@@ -88,7 +88,6 @@ main() {
     println("data size: ${data.size}")      // 4097
     println("last item: ${String.fromUtf8(data.toArray()[4096])}")        // a
 
-
     // 4 Close websocket,
     // Exchange CloseFrame
     websocket.writeCloseFrame(status: 1000)

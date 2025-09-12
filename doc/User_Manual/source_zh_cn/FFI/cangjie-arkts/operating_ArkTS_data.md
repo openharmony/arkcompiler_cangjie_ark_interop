@@ -260,6 +260,7 @@ interface Some {}
 ```
 
 在 entry->src->main->ets 中创建一个文件 workerTest.ets，主线程代码如下：
+
 ```typescript
 // workerTest.ets
 import hilog from '@ohos.hilog';
