@@ -154,7 +154,7 @@ try {
 
 ```cangjie
 public enum TimeType {
-    | StartUp
+    | Startup
     | Active
     | ...
 }
@@ -178,10 +178,10 @@ Active
 
 **Since:** 21
 
-### StartUp
+### Startup
 
 ```cangjie
-StartUp
+Startup
 ```
 
 **Functionality:** Milliseconds elapsed since system startup, including deep sleep time.

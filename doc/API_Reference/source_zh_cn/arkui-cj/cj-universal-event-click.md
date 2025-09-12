@@ -8,6 +8,25 @@
 import kit.ArkUI.*
 ```
 
+## func onClick((ClickEvent) -> Unit)
+
+```cangjie
+public func onClick(event: (ClickEvent) -> Unit): This
+```
+
+**功能：** 组件被点击时触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|([ClickEvent](#class-clickevent))->Unit|是|-|回调函数，组件被点击时触发该回调。|
+
+
 ## class ClickEvent
 
 ```cangjie
@@ -197,7 +216,7 @@ public var area: Area
 
 **功能：** 事件目标区域。
 
-**类型：** [Area](#class-area)
+**类型：** [Area](./cj-common-types.md#class-area)
 
 **读写能力：** 可读写
 
@@ -221,5 +240,5 @@ public init(area: Area)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|area|[Area](#class-area)|是|-|事件目标区域。|
+|area|[Area](./cj-common-types.md#class-area)|是|-|事件目标区域。|
 

@@ -44,7 +44,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频的数据源，支持本地视频和网络视频。<br/>string格式可用于加载网络视频和本地视频，常用于加载网络视频。<br/>\- 支持网络视频地址。<br/>\- 支持file://路径前缀的字符串，即应用沙箱URI：file://<bundleName>/<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>视频支持的格式是：mp4、mkv、TS。|
-|currentProgressRate|[PlaybackSpeed](#enum-playbackspeed)|否|Speed_Forward_1_00_X|**命名参数。** 视频播放倍速。<br/>取值仅支持：0.75，1.0，1.25，1.75，2.0。|
+|currentProgressRate|[PlaybackSpeed](#enum-playbackspeed)|否|SpeedForward100X|**命名参数。** 视频播放倍速。<br/>取值仅支持：0.75，1.0，1.25，1.75，2.0。|
 |previewUri|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频未播放时的预览图片路径。|
 |controller|[VideoController](#class-videocontroller)|否|VideoController()|**命名参数。** 设置视频控制器，可以控制视频的播放状态。|
 
@@ -505,11 +505,11 @@ public func stop(): Unit
 
 ```cangjie
 public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
-    | Speed_Forward_0_75_X
-    | Speed_Forward_1_00_X
-    | Speed_Forward_1_25_X
-    | Speed_Forward_1_75_X
-    | Speed_Forward_2_00_X
+    | SpeedForward075X
+    | SpeedForward100X
+    | SpeedForward125X
+    | SpeedForward175X
+    | SpeedForward200X
     | ...
 }
 ```
@@ -524,10 +524,10 @@ public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
 
 - Equatable\<PlaybackSpeed>
 
-#### Speed_Forward_0_75_X
+#### SpeedForward075X
 
 ```cangjie
-Speed_Forward_0_75_X
+SpeedForward075X
 ```
 
 **功能：** 0.75倍速播放。
@@ -536,10 +536,10 @@ Speed_Forward_0_75_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_00_X
+#### SpeedForward100X
 
 ```cangjie
-Speed_Forward_1_00_X
+SpeedForward100X
 ```
 
 **功能：** 1倍速播放。
@@ -548,10 +548,10 @@ Speed_Forward_1_00_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_25_X
+#### SpeedForward125X
 
 ```cangjie
-Speed_Forward_1_25_X
+SpeedForward125X
 ```
 
 **功能：** 1.25倍速播放。
@@ -560,10 +560,10 @@ Speed_Forward_1_25_X
 
 **起始版本：** 21
 
-#### Speed_Forward_1_75_X
+#### SpeedForward175X
 
 ```cangjie
-Speed_Forward_1_75_X
+SpeedForward175X
 ```
 
 **功能：** 1.75倍速播放。
@@ -572,10 +572,10 @@ Speed_Forward_1_75_X
 
 **起始版本：** 21
 
-#### Speed_Forward_2_00_X
+#### SpeedForward200X
 
 ```cangjie
-Speed_Forward_2_00_X
+SpeedForward200X
 ```
 
 **功能：** 2倍速播放。
@@ -743,6 +743,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -750,7 +751,7 @@ class EntryView {
     var videoSrc: AppResource = @rawfile("video.mp4")
     var previewUri: AppResource = @r(app.media.preview)
     var controller: VideoController = VideoController()
-    @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+    @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
     @State var isAutoPlay: Bool = false
     @State var showControls: Bool = true
 
@@ -769,19 +770,19 @@ class EntryView {
 
             Row() {
                 Button("start")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.start() // 开始播放
                     })
                     .margin(5)
                     .id("start")
                 Button("pause")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.pause() // 暂停播放
                     })
                     .margin(5)
                     .id("pause")
                 Button("stop")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.stop() // 暂停播放
                            this.controller.exitFullscreen()
                         }
@@ -791,19 +792,19 @@ class EntryView {
             }
             Row() {
                 Button("Fullscreen")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.requestFullscreen(true)
                     })
                     .margin(5)
                     .id("Fullscreen")
                 Button("at 10s")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
                     })
                     .margin(5)
                     .id("at 10s")
                 Button("exitFull")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.exitFullscreen()
                     })
                     .margin(5)
@@ -811,20 +812,20 @@ class EntryView {
             }
             Row() {
                 Button("rate 0.75")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_0_75_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward075X
                     })
                     .margin(5)
                     .id("rate 0.75")
                 Button("rate 1")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_1_00_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward100X
                     })
                     .margin(5)
                     .id("rate 1")
                 Button("rate 2")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_2_00_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward200X
                     })
                     .margin(5)
                     .id("rate 2")

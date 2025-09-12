@@ -258,7 +258,7 @@ The type does not match with the value of the message.
 
 **错误信息**
 
-New failed, out of memeory.
+New failed, out of memory.
 
 **错误描述**
 

@@ -114,7 +114,7 @@ class EntryView {
 
     func build() {
         Scroll() {
-            Column(5) {
+            Column(space: 5) {
                 Text("normal").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)
                 QRCode(this.value).width(140).height(140)
 
@@ -136,7 +136,7 @@ class EntryView {
 
                 // 设置二维码不透明度
                 Text("contentOpacity int").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)
-                QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0)
+                QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.0)
 
                 // 设置二维码不透明度
                 Text("contentOpacity resource").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)

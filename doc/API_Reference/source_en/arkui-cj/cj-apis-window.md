@@ -1877,7 +1877,7 @@ public var isLayoutFullScreen: Bool
 public var isPrivacyMode: Bool
 ```
 
-**Function## class WindowStage
+## class WindowStage
 
 ```cangjie
 public class WindowStage {}

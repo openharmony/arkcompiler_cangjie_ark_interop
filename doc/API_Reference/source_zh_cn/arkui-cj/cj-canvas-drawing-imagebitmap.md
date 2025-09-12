@@ -24,7 +24,7 @@ public class ImageBitmap {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-***起始版本：** 21
+**起始版本：** 21
 
 ### prop height
 
@@ -34,11 +34,13 @@ public prop height: Float64
 
 **功能：** ImageBitmap的像素高度。默认单位为vp。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 只读
 
-***起始版本：** 21
+**起始版本：** 21
 
 ### prop width
 
@@ -48,11 +50,13 @@ public prop width: Float64
 
 **功能：** ImageBitmap的像素宽度。默认单位为vp。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **类型：** Float64
 
 **读写能力：** 只读
 
-***起始版本：** 21
+**起始版本：** 21
 
 ### init(String)
 

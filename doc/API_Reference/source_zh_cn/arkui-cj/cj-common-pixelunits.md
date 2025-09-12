@@ -31,13 +31,13 @@ public func fp2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|需转换的fp单位的数值。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的fp单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)>|转换后以px为单位的数值。|
+|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以px为单位的数值。|
 
 ## func lpx2px(Length)
 
@@ -55,13 +55,13 @@ public func lpx2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|需转换的lpx单位的数值。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的lpx单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)>|转换后以px为单位的数值。|
+|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以px为单位的数值。|
 
 ## func px2fp(Length)
 
@@ -79,13 +79,13 @@ public func px2fp(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|需转换的px单位的数值。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的px单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)>|转换后以fp为单位的数值。|
+|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以fp为单位的数值。|
 
 ## func px2lpx(Length)
 
@@ -103,13 +103,13 @@ public func px2lpx(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|需转换的px单位的数值。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的px单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)>|转换后以lpx为单位的数值。|
+|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以lpx为单位的数值。|
 
 ## func px2vp(Length)
 
@@ -127,13 +127,13 @@ public func px2vp(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|需转换的px单位的数值。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的px单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)>|转换后以vp为单位的数值。|
+|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以vp为单位的数值。|
 
 ## func vp2px(Length)
 
@@ -151,11 +151,11 @@ public func vp2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|需转换的vp单位的数值。|
+|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的vp单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)>|转换后以px为单位的数值。|
+|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以px为单位的数值。|
 

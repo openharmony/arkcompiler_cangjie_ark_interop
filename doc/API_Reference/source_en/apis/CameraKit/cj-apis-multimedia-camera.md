@@ -8989,7 +8989,7 @@ public enum CameraStatus <: Equatable<CameraStatus> & ToString {
     | CameraStatusAppear
     | CameraStatusDisappear
     | CameraStatusAvailable
-    | CameraStatusUnavailabl
+    | CameraStatusUnavailable
     | ...
 }
 ```
@@ -9041,10 +9041,10 @@ CameraStatusDisappear
 
 **Since:** 21
 
-### CameraStatusUnavailabl
+### CameraStatusUnavailable
 
 ```cangjie
-CameraStatusUnavailabl
+CameraStatusUnavailable
 ```
 
 **Description:** Camera is unavailable.

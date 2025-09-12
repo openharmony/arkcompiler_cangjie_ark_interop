@@ -52,7 +52,7 @@ Couldn't resolve proxy name.
 
 **可能原因**
 
-服务器的URL不正确
+服务器的URL不正确。
 
 **处理步骤**
 
@@ -70,15 +70,13 @@ Couldn't resolve host name.
 
 **可能原因**
 
-1.传入的服务器的URL不正确。
-
-2.网络不通畅。
+1. 传入的服务器的URL不正确。
+2. 网络不通畅。
 
 **处理步骤**
 
-1.请检查输入的服务器的URL是否合理。
-
-2.请检查网络连接情况
+1. 请检查输入的服务器的URL是否合理。
+2. 请检查网络连接情况。
 
 ## 2300007 无法连接到服务器
 
@@ -92,7 +90,7 @@ Couldn't connect to server.
 
 **可能原因**
 
-可能传入的url格式不正确。
+传入的URL格式不正确。
 
 **处理步骤**
 
@@ -134,7 +132,7 @@ Access denied to remote resource.
 
 排查请求内容。
 
-## 2300016 HTT2帧层错误
+## 2300016 HTTP2帧层错误
 
 **错误信息**
 
@@ -164,7 +162,7 @@ Transferred a partial file.
 
 **可能原因**
 
-可能与服务器实现有关
+可能与服务器实现有关。
 
 **处理步骤**
 
@@ -218,7 +216,7 @@ Failed to open/read local data from file/application.
 
 **可能原因**
 
-应用没有读文件权限
+应用没有读文件权限。
 
 **处理步骤**
 
@@ -272,7 +270,7 @@ Number of redirects hit maximum amount.
 
 **可能原因**
 
-重定向次数过多
+重定向次数过多。
 
 **处理步骤**
 
@@ -326,7 +324,7 @@ Failure when receiving data from the peer.
 
 **可能原因**
 
-网络问题
+网络问题。
 
 **处理步骤**
 
@@ -362,7 +360,7 @@ Couldn't use specified SSL cipher.
 
 **可能原因**
 
-client和sever协商的加密算法系统不支持。
+client和server协商的加密算法系统不支持。
 
 **处理步骤**
 
@@ -380,7 +378,7 @@ SSL peer certificate or SSH remote key was not OK.
 
 **可能原因**
 
-无法校验服务器身份，有可能是证书过期了
+无法校验服务器身份，有可能是证书过期了。
 
 **处理步骤**
 
@@ -434,7 +432,7 @@ Remote disk full or allocation exceeded.
 
 **可能原因**
 
-服务器磁盘已满
+服务器磁盘已满。
 
 **处理步骤**
 
@@ -488,7 +486,7 @@ URL请求的文件不存在。
 
 **可能原因**
 
-URL请求的文件不存在
+URL请求的文件不存在。
 
 **处理步骤**
 

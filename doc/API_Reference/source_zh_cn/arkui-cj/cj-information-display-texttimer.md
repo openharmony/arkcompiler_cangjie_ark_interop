@@ -2,7 +2,7 @@
 
 通过文本显示计时信息并控制其计时器状态的组件。
 
-在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit)处理，可见阈值ratios大于0即视为可见状态。
+在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit)处理，可见阈值raitos大于0即视为可见状态。
 
 ## 导入模块
 
@@ -61,7 +61,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
 
 ### func fontFamily(ResourceStr)
 
@@ -286,6 +286,7 @@ public func start(): Unit
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -303,15 +304,15 @@ class EntryView {
                     Hilog.info(0, "AppLogCj", "time has been changed")
                 })
             Row() {
-                Button("start").onClick({=>
+                Button("start").onClick{ evt =>
                   this.textTimerController.start()
-                })
-                Button("pause").onClick({=>
+                }
+                Button("pause").onClick{ evt =>
                   this.textTimerController.pause()
-                })
-                Button("reset").onClick({=>
+                }
+                Button("reset").onClick{ evt =>
                     this.textTimerController.reset()
-                })
+                }
             }
         }
     }
@@ -351,7 +352,7 @@ class EntryView {
         ),
         ShadowOptions(
             radius: 10.0,
-            color: Color.BROWN,
+            color: Color.Gray,
             offsetX: 30.0,
             offsetY: 0.0
         ),
@@ -363,12 +364,12 @@ class EntryView {
         ),
         ShadowOptions(
         radius: 10.0,
-        color: Color.YELLOW,
+        color: Color.Blue,
         offsetX: 100.0,
         offsetY: 0.0
         )]
     func build() {
-        Column(8) {
+        Column(space: 8) {
             TextTimer().fontSize(50).textShadow(this.textShadows)
         }
     }
@@ -387,6 +388,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -396,10 +398,10 @@ class EntryView {
     @State var format: String = 'mm:ss.SS'
 
     func build() {
-        Column(8) {
+        Column(space: 8) {
             Scroll().height(20.percent)
             Button("openTextTimer").onClick({
-                =>
+                evt =>
 
             })
             TextTimer( isCountDown: true, count: 30000, controller: this.textTimerController )

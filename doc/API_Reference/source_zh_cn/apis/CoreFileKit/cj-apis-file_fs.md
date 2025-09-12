@@ -2,23 +2,21 @@
 
 该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.CoreFileKit.*
 ```
 
-
 ## 使用说明
 
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 获取当前应用沙箱所在路径可通过UIAbilityContext.[filesDir](../AbilityKit/cj-apis-app-ability-ui_ability.md#prop-filesdir)获取。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
-
 
 ## class ConflictFiles
 
@@ -66,7 +64,6 @@ public var srcFile: String
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## class File
 
@@ -158,6 +155,7 @@ public func getParent(): String
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -167,7 +165,7 @@ import kit.CoreFileKit.*
 import kit.PerformanceAnalysisKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let file = FileIo.open(filePath, mode: (OpenMode.READ_WRITE | OpenMode.CREATE))
 Hilog.info(0, "", "The parent path is: " + file.getParent())
 FileIo.close(file)
@@ -206,6 +204,7 @@ public func tryLock(exclusive!: Bool = false): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -214,7 +213,7 @@ public func tryLock(exclusive!: Bool = false): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let file = FileIo.open(filePath, mode:(OpenMode.READ_WRITE | OpenMode.CREATE))
 file.tryLock(exclusive: true)
 FileIo.close(file)
@@ -609,7 +608,7 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = OpenMode.
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |file|String|是|-|已打开的File对象。|
-|mode|Int64|否|OpenMode.READ_ONLY|**命名参数。** 创建文件RandomAccessFile对象的[选项](#enum-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
+|mode|Int64|否|OpenMode.READ_ONLY|**命名参数。** 创建文件RandomAccessFile对象的[选项](#class-openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。|
 |options|[RandomAccessFileOptions](#class-randomaccessfileoptions)|否|RandomAccessFileOptions()|支持如下选项：<br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。|
 
 **返回值：**
@@ -1343,7 +1342,7 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|用于保存读取到的文件数据的缓冲区。|
+|buffer|Array\<Byte>|是|-|用于保存读取到的文件数据的缓冲区。|
 |options|[ReadOptions](#class-readoptions)|否|ReadOptions()|支持如下选项：<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。默认从当前位置开始读。<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。默认缓冲区长度。|
 
 **返回值：**
@@ -1803,7 +1802,7 @@ public static func write(fd: Int32, buffer: Array<Byte>, options!: WriteOptions 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fd|Int32|是|-|已打开的文件描述符。|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据，来自字符串。|
+|buffer|Array\<Byte>|是|-|待写入文件的数据，来自字符串。|
 |options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|支持如下选项：<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。当前仅支持&nbsp;"utf-8"。|
 
 **返回值：**
@@ -1875,7 +1874,6 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
   | 13900034 | Operation would block |
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
-
 
 ## class Filter
 
@@ -2038,7 +2036,6 @@ public init(
   | :---- | :--- |
   | 13900020 | Invalid argument |
 
-
 ## class ListFileOptions
 
 ```cangjie
@@ -2131,7 +2128,6 @@ public init(
 |recursion|Bool|否|false|是否递归子目录下文件名。默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及文件夹名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。|
 |listNum|Int32|否|0|列出文件名数量。当设置0时，列出所有文件，默认为0。|
 |filter|[Filter](#class-filter)|否|Filter()|文件过滤选项。当前仅支持后缀名匹配、文件名模糊查询、文件大小过滤、最近修改时间过滤。|
-
 
 ## class OpenMode
 
@@ -2296,7 +2292,6 @@ public static const WRITE_ONLY: Int64 = 0o1
 
 **起始版本：** 21
 
-
 ## class Options
 
 ```cangjie
@@ -2350,14 +2345,13 @@ public init(
 |:---|:---|:---|:---|:---|
 |encoding|String|否|"utf-8"|用于指定字符串的编码方式。|
 
-
 ## class RandomAccessFile
 
 ```cangjie
 public class RandomAccessFile {}
 ```
 
-**功能：** 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过[createRandomAccessFile](#func-createrandomaccessfilestring-string)方法来构建一个RandomAccessFile实例。
+**功能：** 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile方法来构建一个RandomAccessFile实例。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -2409,6 +2403,7 @@ public func close(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2417,7 +2412,7 @@ public func close(): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 randomAccessFile.close()
 ```
@@ -2438,7 +2433,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|用于读取文件的缓冲区。|
+|buffer|Array\<Byte>|是|-|用于读取文件的缓冲区。|
 |options|[ReadOptions](#class-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br>- offset，?Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。|
 
 **返回值：**
@@ -2466,6 +2461,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2474,7 +2470,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let file = FileIo.open(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let randomAccessFile = FileIo.createRandomAccessFile(file)
 let length: Int64 = 4096
@@ -2487,7 +2483,7 @@ FileIo.close(file)
 ### func setFilePointer(Int64)
 
 ```cangjie
-public func setFilePointer(fp: Int64): Unit
+public func setFilePointer(filePointer: Int64): Unit
 ```
 
 **功能：** 设置文件偏置指针。
@@ -2500,10 +2496,11 @@ public func setFilePointer(fp: Int64): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fp|Int64|是|-|RandomAccessFile对象的偏置指针。|
+|filePointer|Int64|是|-|RandomAccessFile对象的偏置指针。|
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2512,7 +2509,7 @@ public func setFilePointer(fp: Int64): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 randomAccessFile.setFilePointer(1)
 randomAccessFile.close()
@@ -2564,6 +2561,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2572,7 +2570,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let option = WriteOptions(length: 5, offset: 5)
 let bytesWritten = randomAccessFile.write("hello, world", options: option)
@@ -2595,8 +2593,9 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据。|
+|buffer|Array\<Byte>|是|-|待写入文件的数据。|
 |options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br>- length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br>- offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br>- encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认"utf-8"。仅支持"utf-8"。|
+
 **返回值：**
 
 |类型|说明|
@@ -2624,6 +2623,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -2632,14 +2632,13 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let randomAccessFile = FileIo.createRandomAccessFile(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
 let option = WriteOptions(length: 5, offset: 5)
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 let bytesWritten = randomAccessFile.write(arr, options: option)
 randomAccessFile.close()
 ```
-
 
 ## class RandomAccessFileOptions
 
@@ -2668,7 +2667,7 @@ public var end: Option<Int64>
 
 **功能：** 期望读取结束的位置。可选，默认文件末尾。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -2684,7 +2683,7 @@ public var start: Option<Int64>
 
 **功能：** 期望读取文件的位置。可选，默认从当前位置开始读。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -2711,9 +2710,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
-|end|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
-
+|start|Option\<Int64>|否|None|期望读取文件的位置。可选，默认从当前位置开始读。|
+|end|Option\<Int64>|否|None|期望读取结束的位置。可选，默认文件末尾。|
 
 ## class ReaderIterator
 
@@ -2754,7 +2752,6 @@ public func next(): ReaderIteratorResult
   | 13900005 | I/O error |
   | 13900037 | No data available |
   | 13900042 | Unknown error |
-
 
 ## class ReaderIteratorResult
 
@@ -2803,7 +2800,6 @@ public var value: String
 
 **起始版本：** 21
 
-
 ## class ReadOptions
 
 ```cangjie
@@ -2831,7 +2827,7 @@ public var length: Option<UIntNative>
 
 **功能：** 期望读取数据的长度。默认缓冲区长度。
 
-**类型：** [Option](#initoptionint-optionint)\<UIntNative>
+**类型：** Option\<UIntNative>
 
 **读写能力：** 可读写
 
@@ -2847,7 +2843,7 @@ public var offset: Option<Int64>
 
 **功能：** 期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -2874,9 +2870,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
-|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
-
+|offset|Option\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
+|length|Option\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 
 ## class ReadTextOptions
 
@@ -2937,10 +2932,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
-|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
+|offset|Option\<Int64>|否|None|期望读取文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始读。|
+|length|Option\<UIntNative>|否|None|期望读取数据的长度。默认缓冲区长度。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
-
 
 ## class Stat
 
@@ -2948,7 +2942,7 @@ public init(
 public class Stat {}
 ```
 
-**功能：** 文件具体信息。在调用Stat的方法前，需要先通过[FileIo.stat()](#func-statstring-string)方法来构建一个Stat实例。
+**功能：** 文件具体信息。在调用Stat的方法前，需要先通过[FileIo.stat()](#static-func-statstring)方法来构建一个Stat实例。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -3106,6 +3100,7 @@ public func isBlockDevice(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3114,7 +3109,7 @@ public func isBlockDevice(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isBLockDevice = FileIo.stat(filePath).isBlockDevice()
 ```
 
@@ -3138,6 +3133,7 @@ public func isCharacterDevice(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3146,7 +3142,7 @@ public func isCharacterDevice(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isCharacterDevice = FileIo.stat(filePath).isCharacterDevice()
 ```
 
@@ -3170,6 +3166,7 @@ public func isDirectory(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3202,6 +3199,7 @@ public func isFIFO(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3210,7 +3208,7 @@ public func isFIFO(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isFIFO = FileIo.stat(filePath).isFIFO()
 ```
 
@@ -3234,6 +3232,7 @@ public func isFile(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3242,7 +3241,7 @@ public func isFile(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isFile = FileIo.stat(filePath).isFile()
 ```
 
@@ -3266,6 +3265,7 @@ public func isSocket(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3274,7 +3274,7 @@ public func isSocket(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isSocket = FileIo.stat(filePath).isSocket()
 ```
 
@@ -3298,6 +3298,7 @@ public func isSymbolicLink(): Bool
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3306,10 +3307,9 @@ public func isSymbolicLink(): Bool
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 ```
-
 
 ## class Stream
 
@@ -3317,7 +3317,7 @@ let isSymbolicLink = FileIo.stat(filePath).isSymbolicLink()
 public class Stream {}
 ```
 
-**功能：** 文件流。在调用Stream的方法前，需要先通过[FileIo.createStream](#func-createstreamstring-string)方法或者[FileIo.fdopenStream](#func-fdopenstreamint32-string)来构建一个Stream实例。
+**功能：** 文件流。在调用Stream的方法前，需要先通过[FileIo.createStream](#static-func-createstreamstring-string)方法或者[FileIo.fdopenStream](#static-func-fdopenstreamint32-string)来构建一个Stream实例。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
@@ -3350,6 +3350,7 @@ public func close(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3358,7 +3359,7 @@ public func close(): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 stream.close()
 ```
@@ -3396,6 +3397,7 @@ public func flush(): Unit
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3404,7 +3406,7 @@ public func flush(): Unit
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 stream.flush()
 stream.close()
@@ -3426,7 +3428,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|	用于读取文件的缓冲区。
+|buffer|Array\<Byte>|是|-| 用于读取文件的缓冲区。|
 |options|[ReadOptions](#class-readoptions)|否|ReadOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，UIntNative类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，Int64类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>|
 
 **返回值：**
@@ -3454,6 +3456,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3462,7 +3465,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 let buf = Array<Byte>(4096, repeat: 0)
 let num = stream.read(buf)
@@ -3515,6 +3518,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3523,7 +3527,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 let num = stream.write(arr)
@@ -3546,7 +3550,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|buffer|Array\<[Byte](../../../../User_Manual/source_zh_cn/basic_data_type/integer.md#无符号整数类型)>|是|-|待写入文件的数据。|
+|buffer|Array\<Byte>|是|-|待写入文件的数据。|
 |options|[WriteOptions](#class-writeoptions)|否|WriteOptions()|**命名参数。** 支持如下选项：<br/>-&nbsp;length，?UIntNative类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，?Int64类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，String类型，当数据是String类型时有效，表示数据的编码方式，默认&nbsp;"utf-8"。仅支持&nbsp;"utf-8"。|
 
 **返回值：**
@@ -3576,6 +3580,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -3584,7 +3589,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 import kit.CoreFileKit.*
 
 let pathDir = "path/to/file"
-let filePath = pathDir + "/test.txt"
+let filePath = pathDir + "/test.txt"  // 请替换正确的文件路径，获取文件路径参考本文使用说明
 let stream = FileIo.createStream(filePath, "r+")
 let arr: Array<UInt8> = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 let num = stream.write(arr)
@@ -3623,7 +3628,7 @@ public var length: Option<UIntNative>
 
 **功能：** 期望写入数据的长度。默认缓冲区长度。
 
-**类型：** [Option](#initoptionint-optionint)\<UIntNative>
+**类型：** Option\<UIntNative>
 
 **读写能力：** 可读写
 
@@ -3639,7 +3644,7 @@ public var offset: Option<Int64>
 
 **功能：** 期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。
 
-**类型：** [Option](#initoptionint-optionint)\<Int64>
+**类型：** Option\<Int64>
 
 **读写能力：** 可读写
 
@@ -3667,10 +3672,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|[Option](#initoptionint-optionint)\<UIntNative>|否|None|期望写入数据的长度。默认缓冲区长度。|
-|offset|[Option](#initoptionint-optionint)\<Int64>|否|None|期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
+|length|Option\<UIntNative>|否|None|期望写入数据的长度。默认缓冲区长度。|
+|offset|Option\<Int64>|否|None|期望写入文件位置（基于当前filePointer加上offset的位置）。默认从偏置指针（filePointer）开始写。|
 |encoding|String|否|"utf-8"|当数据是String类型时有效，表示数据的编码方式，默认"utf-8"，仅支持"utf-8"。|
-
 
 ## enum AccessFlagType
 
@@ -3698,7 +3702,6 @@ Local
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## enum AccessModeType
 
@@ -3765,7 +3768,6 @@ Write
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 21
-
 
 ## enum WhenceType
 

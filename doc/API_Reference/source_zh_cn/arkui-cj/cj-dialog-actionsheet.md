@@ -2,141 +2,6 @@
 
 列表弹窗。
 
-## class ActionSheet
-
-```cangjie
-public class ActionSheet {}
-```
-
-**功能：** 列表弹窗。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### static func show(ActionSheetOptions, ShadowOptions)
-
-```cangjie
-public static func show(value: ActionSheetOptions, shadow: ShadowOptions): Unit
-```
-
-**功能：** 定义列表弹窗并弹出。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ActionSheetOptions](#class-actionsheetoptions)|是|-|配置列表选择弹窗的参数。|
-|shadow|[ShadowOptions](cj-common-types.md#class-shadowoptions)|是|-|设置弹窗背板的阴影。|
-
-**示例：**
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column() {
-                Button("Click to Show ActionSheet").onClick(
-                    {
-                        evt =>
-                        let sheets: Array<SheetInfo> = [SheetInfo("apple", {=> Hilog.info(0, "AppLogCj", "apple")}),
-                            SheetInfo("banana", {=> Hilog.info(0, "AppLogCj", "banana")}), SheetInfo("pears", {=> Hilog.info(0, "AppLogCj", "pears")})]
-                        let confirm: Confirm = Confirm("Confirm button", {=> Hilog.info(0, "AppLogCj", "Get Alert Dialog handled")},
-                            defaultFocus: true, style: DialogButtonStyle.HIGHLIGHT)
-                        ActionSheet.show(
-                            ActionSheetOptions(
-                                "ActionSheet title",
-                                "message",
-                                sheets,
-                                subtitle: "ActionSheet subtitle",
-                                autoCancel: true,
-                                confirm: confirm,
-                                width: 300,
-                                height: 350,
-                                cornerRadius: BorderRadiuses(topLeft: 20.vp, topRight: 20.vp, bottomLeft: 20.vp,
-                                    bottomRight: 20.vp),
-                                borderWidth: 1.vp,
-                                borderStyle: EdgeStyle.SOILD,
-                                borderColor: Color.White,
-                                cancel: {=> Hilog.info(0, "AppLogCj", "actionSheet canceled")},
-                                onWillDismiss: {
-                                    action =>
-                                    match (action.reason) {
-                                        case PRESS_BACK => Hilog.info(0, "AppLogCj", "PRESS_BACK")
-                                        case TOUCH_OUTSIDE => Hilog.info(0, "AppLogCj", "TOUCH_OUTSIDE")
-                                        case CLOSE_BUTTON => Hilog.info(0, "AppLogCj", "CLOSE_BUTTON")
-                                        case SLIDE_DOWN => Hilog.info(0, "AppLogCj", "SLIDE_DOWN")
-                                        case _ => throw Exception()
-                                    }
-                                    action.dismiss()
-                                },
-                                alignment: DialogAlignment.Bottom,
-                                offset: Offset(0, -10)
-                            ),
-                            ActionSheetShadowOptions(20.0, color: Color.Gray, offsetX: 50.0, offsetY: 0.0)
-                        )
-                    }
-                )
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```
-
-![actionsheet1](./figures/actionsheet1.gif)
-
-### static func show(ActionSheetOptions, ShadowStyle)
-
-```cangjie
-public static func show(value: ActionSheetOptions, shadow: ShadowStyle): Unit
-```
-
-**功能：** 定义列表弹窗并弹出。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ActionSheetOptions](#class-actionsheetoptions)|是|-|配置列表选择弹窗的参数。|
-|shadow|[ShadowStyle](cj-common-types.md#enum-shadowstyle)|是|-|设置弹窗背板的阴影样式。|
-
-### static func show(ActionSheetOptions)
-
-```cangjie
-public static func show(value: ActionSheetOptions): Unit
-```
-
-**功能：** 定义列表弹窗并弹出。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ActionSheetOptions](#class-actionsheetoptions)|是|-|配置列表选择弹窗的参数。|
-
-
 ## class ActionSheetButtonOptions
 
 ```cangjie
@@ -270,7 +135,7 @@ public init(
 |action|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-| Button选中时的回调。 |
 |enabled|Bool|否|true| **命名参数。**  点击Button是否响应，true表示Button可以响应，false表示Button不可以响应 |
 |defaultFocus|Bool|否|false| **命名参数。**  设置Button是否是默认焦点，true表示Button是默认焦点，false表示Button不是默认焦点。 |
-|style|[DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle)|否|DialogButtonStyle.Default| DialogButtonStyle.DEFAULT | **命名参数。**  设置Button的风格样式。 |
+|style|[DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle)|否|DialogButtonStyle.Default| **命名参数。**  设置Button的风格样式。 |
 
 ## class ActionSheetOffset
 
@@ -372,6 +237,7 @@ public class ActionSheetOptions {
     public var borderStyle: EdgeStyles
     public var width:?Length
     public var height:?Length
+    public var shadow: ShadowOptions
     public var transition:?TransitionEffect
 
     /**
@@ -397,6 +263,7 @@ public class ActionSheetOptions {
      * @param { EdgeStyles } borderStyle
      * @param { ?Length } width
      * @param { ?Length } height
+     * @param { ShadowOptions } shadow
      * @param { ?TransitionEffect } transition
      * @returns { ActionSheetOptions }
      * @relation interface ActionSheetOptions
@@ -424,6 +291,7 @@ public class ActionSheetOptions {
         borderStyle!: EdgeStyles = EdgeStyles(),
         width!: ?Length = None,
         height!: ?Length = None,
+        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
         transition!: ?TransitionEffect = None
     )
 }
@@ -523,7 +391,7 @@ public var borderStyle: EdgeStyles
 
 **功能：** 设置弹窗背板的边框样式。如果使用borderStyle属性，需要和borderWidth属性一起使用。
 
-**类型：** [EdgeStyles](cj-dialog-actionsheet.md#class-edgestyle)
+**类型：** [EdgeStyles](./cj-common-types.md#class-edgestyles)
 
 **读写能力：** 可读写
 
@@ -539,7 +407,7 @@ public var borderWidth: Length
 
 **功能：** 设置弹窗背板的边框宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -603,7 +471,7 @@ public var height:?Length
 
 **功能：** 设置弹窗背板的高度。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -635,7 +503,7 @@ public var maskRect: Rectangle
 
 **功能：** 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。
 
-**类型：** [Rectangle](./cj-common-types.md#class-rectangle>)
+**类型：** [Rectangle](./cj-common-types.md#class-rectangle)
 
 **读写能力：** 可读写
 
@@ -684,6 +552,22 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 **功能：** 交互式关闭回调函数。
 
 **类型：** ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+### var shadow
+
+```cangjie
+public var shadow: ShadowOptions
+```
+
+**功能：** 设置弹窗背板的阴影。
+
+**类型：** ?[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)
 
 **读写能力：** 可读写
 
@@ -779,7 +663,7 @@ public var width:?Length
 
 **功能：** 设置弹窗背板的宽度。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -871,11 +755,11 @@ public init(
 |backgroundBlurStyle|[BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick| **命名参数。**  弹窗背板模糊材质。<br>**说明:**<br>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。 |
 |onWillDismiss|?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit>|否|None| **命名参数。**  交互式关闭回调函数。 <br>**说明:**<br> 1.当用户执行点击遮障层关闭、左滑/右滑、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。<br> 2.在onWillDismiss回调中，不能再做onWillDismiss拦截。 |
 |cornerRadius|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)| **命名参数。**  设置背板的圆角半径。可分别设置4个圆角的半径。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，若值为负，则按照默认值处理。 <br>百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。<br>**说明:**<br>当cornerRadius属性类型为LocalizedBorderRadiuses时，支持随语言习惯改变布局顺序。 |
-|borderWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|否|0.vp| **命名参数。**  设置弹窗背板的边框宽度。<br>百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。<br>当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。<br>**说明:**<br> 当borderWidth属性类型为LocalizedEdgeWidths时，支持随语言习惯改变布局顺序。|
+|borderWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。**  设置弹窗背板的边框宽度。<br>百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。<br>当弹窗左边框和右边框大于弹窗宽度，弹窗上边框和下边框大于弹窗高度，显示可能不符合预期。<br>**说明:**<br> 当borderWidth属性类型为LocalizedEdgeWidths时，支持随语言习惯改变布局顺序。|
 |borderColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。**  设置弹窗背板的边框颜色。如果使用borderColor属性，需要和borderWidth属性一起使用。<br/>**说明：**<br/>当borderColor属性类型为LocalizedEdgeColors时，支持随语言习惯改变布局顺序。 |
-|borderStyle|[EdgeStyles](#class-edgestyle)|否|EdgeStyles()| **命名参数。**  设置弹窗背板的边框样式 。 如果使用borderStyle属性，需要和borderWidth属性一起使用。 |
-|width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|否|None|Option\<Length>.None| **命名参数。**  设置弹窗背板的宽度。<br>**说明:**<br>1. 弹窗宽度默认最大值：400.vp。<br>2. 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。 |
-|height|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|否|None| **命名参数。**  设置弹窗背板的高度。<br>**说明:**<br>1. 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域） 。<br>2. 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。 |
+|borderStyle|[EdgeStyles](./cj-common-types.md#class-edgestyles)|否|EdgeStyles()| **命名参数。**  设置弹窗背板的边框样式 。 如果使用borderStyle属性，需要和borderWidth属性一起使用。 |
+|width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。**  设置弹窗背板的宽度。<br>**说明:**<br>1. 弹窗宽度默认最大值：400.vp。<br>2. 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。 |
+|height|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。**  设置弹窗背板的高度。<br>**说明:**<br>1. 弹窗高度默认最大值：0.9 *（窗口高度 - 安全区域） 。<br>2. 百分比参数方式：弹窗参考高度为（窗口高度 - 安全区域），在此基础上调小或调大。 |
 |transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|None| **命名参数。**  设置弹窗显示和退出的过渡效果。 <br>**说明:**<br> 1.如果不设置，则使用默认的显示/退出动效。 <br>2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br> 3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。 |
 
 ## class DismissDialogAction

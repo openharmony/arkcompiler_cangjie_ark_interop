@@ -17,7 +17,7 @@ ohos.permission.ACCESS_BLUETOOTH
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](./../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -49,6 +49,7 @@ public func createHfpAgProfile(): HandsFreeAudioGatewayProfile
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 try {
     let hdfProfile = createHfpAgProfile()
@@ -68,6 +69,10 @@ public class HandsFreeAudioGatewayProfile <: BaseProfile {}
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **起始版本：** 21
+
+**父类型：**
+
+- [BaseProfile](cj-apis-bluetooth-base_profile.md#interface-baseprofile)
 
 ### func getConnectedDevices()
 
@@ -116,6 +121,7 @@ public func getConnectedDevices(): Array<String>
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 try {
     let hdfProfile = createHfpAgProfile()
@@ -166,12 +172,13 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 
 **示例：**
 
+<!-- compile only -->
 <!-- compile -->
 
 ```cangjie
@@ -180,10 +187,11 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 try {
     let hdfProfile = createHfpAgProfile()
-    let ret = hdfProfile.getConnectionState("XX:XX:XX:XX:XX:XX")
+    let ret = hdfProfile.getConnectionState("XX:XX:XX:XX:XX:XX")  // 请替换您的 deviceId。
 } catch (e: BusinessException) {
     Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
 }
@@ -207,8 +215,8 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType]|是|-|回调事件类型。|
-|callback|[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject)|是|-|回调事件。|
+|eventType|[ProfileCallbackType](./cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
+|callback|[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -221,7 +229,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 
@@ -274,7 +282,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType]|是|-|回调事件类型。|
+|eventType|[ProfileCallbackType](./cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
 
 **异常：**
 
@@ -287,7 +295,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 
@@ -340,8 +348,8 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType]|是|-|填写CONNECTIONSTATECHANGE，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#type-callback1argument)\<[StateChangeParam]>|是|-|表示回调函数的入参。|
+|eventType|[ProfileCallbackType](./cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|填写CONNECTIONSTATECHANGE，表示连接状态变化事件类型。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 
@@ -354,7 +362,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
   | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. | 入参错误。 | 修改入参。 |
 

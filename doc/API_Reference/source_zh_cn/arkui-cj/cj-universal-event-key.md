@@ -8,21 +8,27 @@
 import kit.ArkUI.*
 ```
 
-## func stopPropagation()
+## 权限列表
+
+无
+
+## func onKeyEvent((KeyEvent) -> Unit)
 
 ```cangjie
-public func stopPropagation(): Unit
+public func onKeyEvent(event: (KeyEvent) -> Unit): This
 ```
 
-**功能：** 阻止事件继续传播。
+**功能：** 绑定该方法的组件获焦后，按键动作触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
-## 权限列表
+**参数：**
 
-无
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|([KeyEvent](#class-keyevent))->Unit|是|-|绑定该方法的组件获焦后，按键动作触发该回调。|
 
 ## 基础类型定义
 
@@ -185,5 +191,15 @@ public init(keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySou
 |deviceId|Int64|是|-|触发当前按键的输入设备ID。|
 |timestamp|Int64|是|-|按键发生时的时间戳。|
 
+#### func stopPropagation()
 
+```cangjie
+public func stopPropagation(): Unit
+```
+
+**功能：** 阻止事件继续传播。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
 

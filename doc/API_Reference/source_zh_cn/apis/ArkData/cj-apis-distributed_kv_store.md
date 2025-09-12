@@ -25,7 +25,7 @@ ohos.permission.DISTRIBUTED_DATASYNC
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -144,7 +144,7 @@ public class DeviceKVStore <: SingleKVStore {}
 
 比如，可以使用设备协同数据库实现设备间的图片分享，可以查看其他设备的图片，但无法修改和删除其他设备的图片。
 
-在调用DeviceKVStore的方法前，需要先通过[getDeviceKVStore](#func-getdevicekvstorestring-kvoptions)构建一个DeviceKVStore实例。
+在调用DeviceKVStore的方法前，需要先构建一个DeviceKVStore实例。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -171,7 +171,7 @@ public func get(key: String): ValueType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|key|String|是|-|要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH_DEVICE](#let-max_key_length_device)。|
+|key|String|是|-|要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH_DEVICE](#static-let-max_key_length_device)。|
 
 **返回值：**
 
@@ -185,16 +185,10 @@ public func get(key: String): ValueType
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types;
-3.Parameter verification failed.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100004 | Not found.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types;3.Parameter verification failed.|
+  | 15100003 | Database corrupted.|
+  | 15100004 | Not found.|
+  | 15100005 | Database or result set already closed.|
 
 ### func getEntries(String)
 
@@ -227,13 +221,9 @@ public func getEntries(keyPrefix: String): Array<Entry>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
 
 ### func getEntries(Query)
 
@@ -266,13 +256,9 @@ public func getEntries(query: Query): Array<Entry>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
 
 ### func getResultSet(String)
 
@@ -305,15 +291,10 @@ public func getResultSet(keyPrefix: String): KVStoreResultSet
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types.
- |
-  | 15100001 | Over max limits.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+  | 15100001 | Over max limits.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
 
 ### func getResultSet(Query)
 
@@ -346,15 +327,10 @@ public func getResultSet(query: Query): KVStoreResultSet
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types.
- |
-  | 15100001 | Over max limits.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+  | 15100001 | Over max limits.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
 
 ### func getResultSize(Query)
 
@@ -387,13 +363,9 @@ public func getResultSize(query: Query): Int32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
 
 ## class DistributedKVStore
 
@@ -436,10 +408,9 @@ public static func createKVManager(config: KVManagerConfig): KVManager
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | The context type is not supported. Only support UIAbilityContext.
- | todo | todo |
+  | The context type is not supported. Only support UIAbilityContext.| todo | todo |
 
 ## class Entry
 
@@ -447,7 +418,6 @@ public static func createKVManager(config: KVManagerConfig): KVManager
 public class Entry {
     public var key: String
     public var value: ValueType
-
 
     public init(key: String, value: ValueType)
 }
@@ -519,7 +489,6 @@ public class FieldNode {
     public var default: String
     public var type_: Int32
 
-
     public init(name: String, nullable: Bool, default: String, type_: Int32)
 }
 ```
@@ -546,6 +515,22 @@ public var default: String
 
 **起始版本：** 21
 
+### var nodeType
+
+```cangjie
+public var nodeType: Int32
+```
+
+**功能：** 表示指定节点对应的数据类型。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**起始版本：** 21
+
 ### var nullable
 
 ```cangjie
@@ -562,27 +547,11 @@ public var nullable: Bool
 
 **起始版本：** 21
 
-### var type_
-
-```cangjie
-public var type_: Int32
-```
-
-**功能：** 表示指定节点对应数据类型的值。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
-
-**起始版本：** 21
-
 ### init(String, Bool, String, Int32)
 
 ```cangjie
 
-public init(name: String, nullable: Bool, default: String, type_: Int32)
+public init(name: String, nullable: Bool, default: String, nodeType: Int32)
 ```
 
 **功能：** 创建带有值的FieldNode实例。
@@ -598,7 +567,7 @@ public init(name: String, nullable: Bool, default: String, type_: Int32)
 |name|String|是|-|FieldNode的值。|
 |nullable|Bool|是|-|表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。|
 |default|String|是|-|表示FieldNode的默认值。|
-|type_|Int32|是|-|表示指定节点对应的数据类型，取值为ValueType对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。|
+|nodeType|Int32|是|-|表示指定节点对应的数据类型，取值为ValueType对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。|
 
 ## class KVManager
 
@@ -630,7 +599,7 @@ public func closeKVStore(appId: String, storeId: String): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |appId|String|是|-|所调用数据库方的包名。|
-|storeId|String|是|-|要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#let-max_store_id_length)。|
+|storeId|String|是|-|要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#static-let-max_store_id_length)。|
 
 **异常：**
 
@@ -638,9 +607,7 @@ public func closeKVStore(appId: String, storeId: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-<br>2.Parameter verification failed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed.|
 
 ### func deleteKVStore(String, String)
 
@@ -660,7 +627,7 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |appId|String|是|-|所调用数据库方的包名。|
-|storeId|String|是|-|要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#let-max_store_id_length)。|
+|storeId|String|是|-|要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#static-let-max_store_id_length)。|
 
 **异常：**
 
@@ -668,11 +635,8 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Parameter verification failed.
- |
-  | 15100004 | Not found.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Parameter verification failed.|
+  | 15100004 | Not found.|
 
 ### func getAllKVStoreId(String)
 
@@ -681,7 +645,7 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 public func getAllKVStoreId(appId: String): Array<String>
 ```
 
-**功能：** 获取所有通过[getSingleKVStore](#func-getsinglekvstorestring-kvoptions)或者[getDeviceKVStore](#func-getdevicekvstorestring-kvoptions)方法创建、且未调用[deleteKVStore](#func-deletekvstorestring-string)方法删除的分布式键值数据库的storeId。
+**功能：** 获取所有已创建且未调用[deleteKVStore](#func-deletekvstorestring-string)方法删除的分布式键值数据库的storeId。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -705,9 +669,7 @@ public func getAllKVStoreId(appId: String): Array<String>
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-<br>2.Parameter verification failed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed.|
 
 ### func getKVStore\<T>(String, Options) where T \<: SingleKVStore
 
@@ -726,7 +688,7 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|storeId|String|是|-|数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#let-max_store_id_length)。|
+|storeId|String|是|-|数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#static-let-max_store_id_length)。|
 |options|[Options](#class-options)|是|-|创建分布式键值实例的配置信息。|
 
 **返回值：**
@@ -741,21 +703,15 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types;
-3.Parameter verification failed.
- |
-  | 15100002 | Open existed database with changed options.
- |
-  | 15100003 | Database corrupted.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types;3.Parameter verification failed.|
+  | 15100002 | Open existed database with changed options.|
+  | 15100003 | Database corrupted.|
 
 - IllegalArgumentException：
 
-| 错误信息 | 可能原因 | 处理步骤 |
+  | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | The type is not supported yet.
- | todo | todo |
+  | The type is not supported yet.| todo | todo |
 
 ## class KVManagerConfig
 
@@ -763,7 +719,6 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
 public class KVManagerConfig {
     public var context: BaseContext
     public var bundleName: String
-
 
     public init(context: BaseContext, bundleName: String)
 }
@@ -799,7 +754,7 @@ public var context: BaseContext
 
 **功能：** 应用的上下文。
 
-**类型：** [BaseContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)
+**类型：** [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)
 
 **读写能力：** 可读写
 
@@ -824,7 +779,7 @@ public init(context: BaseContext, bundleName: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[BaseContext](../../arkinterop/cj-apis-ark_interop_helper.md#type-stagecontext)|是|-|应用的上下文。|
+|context|[BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|应用的上下文。|
 |bundleName|String|是|-|调用方的包名。|
 
 ## class KVStoreResultSet
@@ -868,7 +823,6 @@ public class Options {
     public var autoSync: Bool
     public var securityLevel: SecurityLevel
     public var schema:?Schema
-
 
     public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt!: Bool = false,
         backup!: Bool = true, autoSync!: Bool = false, schema!: ?Schema = None)
@@ -957,7 +911,7 @@ public var schema:?Schema
 
 **读写能力：** 可读写
 
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **起始版本：** 21
 
@@ -1007,7 +961,6 @@ public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt
 ```cangjie
 public class Query {
 
-
     public init()
 }
 ```
@@ -1040,12 +993,11 @@ public class Schema {
     public var mode: Int32
     public var skip: Int32
 
-
     public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 }
 ```
 
-**功能：** 表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[KVOptions](#class-kvoptions)中。
+**功能：** 表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[KVOptions](#class-options)中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -1122,7 +1074,7 @@ public var skip: Int32
 public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 ```
 
-**功能：** 表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[KVOptions](#class-kvoptions)中。
+**功能：** 表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[KVOptions](#class-options)中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -1166,7 +1118,7 @@ public open func backup(file: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|file|String|是|-|备份数据库的指定名称，不能为空且长度不大于[MAX_KEY_LENGTH](#let-max_key_length)。|
+|file|String|是|-|备份数据库的指定名称，不能为空且长度不大于[MAX_KEY_LENGTH](#static-let-max_key_length)。|
 
 **异常：**
 
@@ -1174,11 +1126,8 @@ public open func backup(file: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Parameter verification failed.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Parameter verification failed.|
+  | 15100005 | Database or result set already closed.|
 
 ### func commit()
 
@@ -1199,8 +1148,7 @@ public open func commit(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 15100005 | Database or result set already closed.
- |
+  | 15100005 | Database or result set already closed.|
 
 ### func delete(String)
 
@@ -1219,7 +1167,7 @@ public open func delete(key: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|key|String|是|-|要删除数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](#let-max_key_length)。|
+|key|String|是|-|要删除数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](#static-let-max_key_length)。|
 
 **异常：**
 
@@ -1227,16 +1175,10 @@ public open func delete(key: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types;
-3.Parameter verification failed.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
-  | 14800047 | The WAL file size exceeds the default limit.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types;3.Parameter verification failed.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
+  | 14800047 | The WAL file size exceeds the default limit.|
 
 ### func deleteBatch(Array\<String>)
 
@@ -1263,16 +1205,10 @@ public open func deleteBatch(keys: Array<String>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types;
-3.Parameter verification failed.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
-  | 14800047 | The WAL file size exceeds the default limit.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types;3.Parameter verification failed.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
+  | 14800047 | The WAL file size exceeds the default limit.|
 
 ### func enableSync(Bool)
 
@@ -1299,9 +1235,7 @@ public open func enableSync(enabled: Bool): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-<br>2.Incorrect parameters types.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types.|
 
 ### func get(String)
 
@@ -1320,7 +1254,7 @@ public open func get(key: String): ValueType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|key|String|是|-|要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](#let-max_key_length)。|
+|key|String|是|-|要查询数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](#static-let-max_key_length)。|
 
 **返回值：**
 
@@ -1334,16 +1268,10 @@ public open func get(key: String): ValueType
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types;
-3.Parameter verification failed.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100004 | Not found.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types;3.Parameter verification failed.|
+  | 15100003 | Database corrupted.|
+  | 15100004 | Not found.|
+  | 15100005 | Database or result set already closed.|
 
 ### func put(String, ValueType)
 
@@ -1362,8 +1290,8 @@ public open func put(key: String, value: ValueType): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|key|String|是|-|要添加数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](#let-max_key_length)。|
-|value|[ValueType](#enum-valuetype)|是|-|要添加数据的value，支持Array\<UInt8>、String、Int32、Bool、Float32、Float64 ，Array\<UInt8>、String 的长度不大于[MAX_VALUE_LENGTH](#let-max_value_length)。|
+|key|String|是|-|要添加数据的key，不能为空且长度不大于[MAX_KEY_LENGTH](#static-let-max_key_length)。|
+|value|[ValueType](#enum-valuetype)|是|-|要添加数据的value，支持Array\<UInt8>、String、Int32、Bool、Float32、Float64 ，Array\<UInt8>、String 的长度不大于[MAX_VALUE_LENGTH](#static-let-max_value_length)。|
 
 **异常：**
 
@@ -1371,16 +1299,10 @@ public open func put(key: String, value: ValueType): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types;
-3.Parameter verification failed.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
-  | 14800047 | The WAL file size exceeds the default limit.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types;3.Parameter verification failed.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
+  | 14800047 | The WAL file size exceeds the default limit.|
 
 ### func putBatch(Array\<Entry>)
 
@@ -1407,13 +1329,9 @@ public open func putBatch(entries: Array<Entry>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Incorrect parameters types.
- |
-  | 15100003 | Database corrupted.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+  | 15100003 | Database corrupted.|
+  | 15100005 | Database or result set already closed.|
 
 ### func restore(String)
 
@@ -1432,7 +1350,7 @@ public open func restore(file: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|file|String|是|-|指定的数据库文件名称，不能为空且长度不大于[MAX_KEY_LENGTH](#let-max_key_length)。|
+|file|String|是|-|指定的数据库文件名称，不能为空且长度不大于[MAX_KEY_LENGTH](#static-let-max_key_length)。|
 
 **异常：**
 
@@ -1440,11 +1358,8 @@ public open func restore(file: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-2.Parameter verification failed.
- |
-  | 15100005 | Database or result set already closed.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Parameter verification failed.|
+  | 15100005 | Database or result set already closed.|
 
 ### func rollback()
 
@@ -1465,8 +1380,7 @@ public open func rollback(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 15100005 | Database or result set already closed.
- |
+  | 15100005 | Database or result set already closed.|
 
 ### func setSyncParam(UInt32)
 
@@ -1493,9 +1407,7 @@ public open func setSyncParam(defaultAllowedDelayMs: UInt32): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;
-<br>2.Incorrect parameters types.
- |
+  | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types.|
 
 ### func startTransaction()
 
@@ -1516,8 +1428,7 @@ public open func startTransaction(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 15100005 | Database or result set already closed.
- |
+  | 15100005 | Database or result set already closed.|
 
 ## enum SecurityLevel
 

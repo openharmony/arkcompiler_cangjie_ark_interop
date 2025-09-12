@@ -13,7 +13,7 @@ import kit.PerformanceAnalysisKit.*
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -23,7 +23,7 @@ API示例代码使用说明：
 public class Hilog {}
 ```
 
-**功能：** 日志系统对象，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容。提供DEBUG、INFO、WARN、ERROR、FATAL不同级别的日志打印方法。
+**功能：** 日志系统对象，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容。提供DEBUG、INFO、WARNING、ERROR、FATAL不同级别的日志打印方法。
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
@@ -246,7 +246,7 @@ Hilog.warn(0, "testTag", "Warn: Hello world!")
 public enum LogLevel {
     | Debug
     | Info
-    | Warn
+    | Warning
     | Error
     | Fatal
     | ...
@@ -311,10 +311,10 @@ Info
 
 **起始版本：** 21
 
-### Warn
+### Warning
 
 ```cangjie
-Warn
+Warning
 ```
 
 **功能：** 用于记录较为严重的非预期情况，但是对用户影响不大，应用可以自动恢复或通过简单的操作就可以恢复的问题。

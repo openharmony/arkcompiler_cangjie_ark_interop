@@ -46,7 +46,7 @@ public init(child: () -> Unit)
 public func nextLabel(value: String): This
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 设置右侧文本按钮内容，最后一页默认值为“开始”，其余页默认值为“下一步”。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +56,7 @@ public func nextLabel(value: String): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-|<font color="red" face="bold">please add description</font>|
+|value|String|是|-|右侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。|
 
 ### func prevLabel(String)
 
@@ -64,7 +64,7 @@ public func nextLabel(value: String): This
 public func prevLabel(value: String): This
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 设置左侧文本按钮内容，第一页没有左侧文本按钮，当步骤导航器大于一页时，除第一页外默认值都为“返回”。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +74,7 @@ public func prevLabel(value: String): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-|<font color="red" face="bold">please add description</font>|
+|value|String|是|-|左侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。|
 
 ### func status(ItemState)
 
@@ -82,7 +82,7 @@ public func prevLabel(value: String): This
 public func status(status!: ItemState = ItemState.Normal): This
 ```
 
-**功能：** <font color="red" face="bold">please add description</font>
+**功能：** 设置步骤导航器nextLabel的显示状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,13 +92,12 @@ public func status(status!: ItemState = ItemState.Normal): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|status|[ItemState](<font color="red" face="bold">please add link</font>)|否|ItemState.Normal|<font color="red" face="bold">please add description</font>|
-
+|status|ItemState|否|ItemState.Normal|步骤导航器nextLabel的显示状态。|
 
 ## enum ItemState
 
 ```cangjie
-public enum ItemState <: Equatable<ItemState> {
+public enum ItemState  <: Equatable<ItemState> {
     | Normal
     | Disabled
     | Waiting
@@ -204,3 +203,4 @@ public operator func ==(other: ItemState): Bool
 |类型|说明|
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
+

@@ -50,7 +50,7 @@ public func color(value: ResourceColor): This
 
 | 参数名   | 类型                                       | 必填  | 默认值 | 说明     |
 |:----- |:---------------------------------------- |:--- |:--- |:------ |
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | 是   | -   | 分割线颜色。 |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 是   | -   | 分割线颜色。 |
 
 ### func lineCap(LineCapStyle)
 

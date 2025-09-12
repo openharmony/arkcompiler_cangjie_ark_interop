@@ -77,7 +77,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Stack(Alignment.Bottom) {
+        Stack(alignContent: Alignment.Bottom) {
             Text("First child, show in bottom")
                 .width(90.percent)
                 .height(100.percent)

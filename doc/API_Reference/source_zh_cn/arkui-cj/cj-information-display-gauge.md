@@ -5,7 +5,6 @@
 ```cangjie
 public class Gauge <: ContainerBase {
 
-
     public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => })
 }
 ```
@@ -18,7 +17,7 @@ public class Gauge <: ContainerBase {
 
 **父类型：**
 
-- [ContainerBase](./cj-ui-framework.md#containerbase)
+- [ContainerBase](./cj-ui-framework.md#class-containerbase)
 
 ### init(Float64, Float64, Float64, () -> Unit)
 
@@ -107,7 +106,7 @@ public func colors(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。
+|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。|
 
 API version 9 默认值：Color.Black
 
@@ -136,7 +135,7 @@ public func colors(value: LinearGradient): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[LinearGradient](./cj-common-types.md#class-lineargradient)|是|-|量规图的渐变色，支持分段颜色设置，最多9组。|
+|value|[LinearGradient](./cj-information-display-datapanel.md#class-lineargradient)|是|-|量规图的渐变色，支持分段颜色设置，最多9组。|
 
 ### func description(() -> Unit)
 
@@ -236,7 +235,7 @@ public func strokeWidth(length: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值：4.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
+|length|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值：4.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
 
 ### func trackShadow(Float64, Float64, Float64)
 

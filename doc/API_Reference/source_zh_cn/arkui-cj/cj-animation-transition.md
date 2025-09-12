@@ -62,7 +62,7 @@ public var centerX: Length
 
 **功能：** 表示组件变换中心点（即锚点）的x方向坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -78,7 +78,7 @@ public var centerY: Length
 
 **功能：** 表示组件变换中心点（即锚点）的y方向坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -94,7 +94,7 @@ public var centerZ: Length
 
 **功能：** 表示z轴锚点，即3D旋转中心点的z轴分量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -170,7 +170,7 @@ public var z: Float32
 
 ```cangjie
 public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 0.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
+        centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
 ```
 
 **功能：** RotateOptions构造函数。
@@ -187,9 +187,9 @@ public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 
 |x|Float32|否|0.0| **命名参数。** 旋转轴向量x坐标。|
 |y|Float32|否|0.0| **命名参数。** 旋转轴向量y坐标。|
 |z|Float32|否|0.0| **命名参数。** 旋转轴向量z坐标。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
-|centerZ|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0| **命名参数。** z轴锚点，即3D旋转中心点的z轴分量。|
+|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerZ|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0| **命名参数。** z轴锚点，即3D旋转中心点的z轴分量。|
 |perspective|Float32|否|0.0| **命名参数。** 视距，即视点到z=0平面的距离。<br>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。|
 
 ## class ScaleOptions
@@ -220,7 +220,7 @@ public var centerX: Length
 
 **功能：** 表示变换中心点x轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -236,7 +236,7 @@ public var centerY: Length
 
 **功能：** 表示变换中心点y轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -296,7 +296,7 @@ public var z: Float32
 
 ```cangjie
 public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent)
+        centerY!: Length = 50.percent)
 ```
 
 **功能：** ScaleOptions构造函数。
@@ -312,8 +312,8 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 |x|Float32|否|1.0| **命名参数。** x轴的缩放倍数。x>1时以x轴方向放大，0<x<1时以x轴方向缩小，x<0时沿x轴反向并缩放。|
 |y|Float32|否|1.0| **命名参数。** y轴的缩放倍数。y>1时以y轴方向放大，0<y<1时以y轴方向缩小，y<0时沿y轴反向并缩放。|
 |z|Float32|否|1.0| **命名参数。** z轴的缩放倍数。z>1时以z轴方向放大，0<z<1时以z轴方向缩小，z<0时沿z轴反向并缩放。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
 
 ## class TransitionEffect
 
@@ -625,7 +625,7 @@ public var x: Length
 
 **功能：** 表示x轴的平移距离
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -641,7 +641,7 @@ public var y: Length
 
 **功能：** 表示y轴的平移距离
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -657,7 +657,7 @@ public var z: Length
 
 **功能：** 表示z轴的平移距离
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -681,9 +681,9 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|否|0.0.vp| **命名参数。** x轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|否|0.0.vp| **命名参数。** y轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
-|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|否|0.0.vp| **命名参数。** z轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** x轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** y轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
+|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** z轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
 
 ## enum TransitionEdge
 
@@ -811,7 +811,7 @@ public func transition(value: TransitionEffect): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)|是|-|以函数的形式指定转场效果。|
+|value|TransitionEffect|是|-|以函数的形式指定转场效果。|
 
 ## func transition(TransitionEffect, ?TransitionFinishCallback)
 
@@ -830,7 +830,7 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[TransitionEffect](#class-transitioneffect)|是|-|以函数的形式指定转场效果。|
-|onFinish|?[TransitionFinishCallback](#type-transitionfinishcallback)|是|-|组件转场动画的结束回调函数。|
+|onFinish|?[TransitionFinishCallback](./cj-common-types.md#type-transitionfinishcallback)|是|-|组件转场动画的结束回调函数。|
 
 ## 示例代码
 
@@ -844,6 +844,7 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -855,7 +856,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -881,7 +882,7 @@ class EntryView {
 }
 ```
 
-![transition](./../../比对/main/arkui-cj/figures/transition_api.gif)
+![transition](figures/transition_api.gif)
 
 ### 示例代码2（使用不同接口实现图片出现消失）
 
@@ -893,6 +894,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -904,7 +906,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -941,7 +943,7 @@ class EntryView {
 }
 ```
 
-![transition2](./../../比对/main/arkui-cj/figures/transition2_api.gif)
+![transition2](./figures/transition2_api.gif)
 
 ### 示例代码3（设置父子组件为transition）
 
@@ -953,7 +955,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -965,7 +968,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {

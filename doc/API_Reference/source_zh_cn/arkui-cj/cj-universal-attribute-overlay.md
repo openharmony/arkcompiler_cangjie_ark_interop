@@ -26,8 +26,8 @@ public func overlay(value!: String, align!: Alignment = Alignment.Center,
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|String|是|-| **命名参数。**  遮罩文本内容。|
-|align|[Alignment](#)|否|Alignment.Center | **命名参数。**  浮层相对于组件的方位。|
-|offset|[OverlayOffset](#)|否|OverlayOffset(x: 0.0, y: 0.0)|**命名参数。**  浮层基于自身左上角的偏移量。浮层默认处于组件左上角。|
+|align|[Alignment](./cj-common-types.md#enum-alignment)|否|Alignment.Center | **命名参数。**  浮层相对于组件的方位。|
+|offset|[OverlayOffset](./cj-common-types.md#class-overlayoffset)|否|OverlayOffset(x: 0.0, y: 0.0)|**命名参数。**  浮层基于自身左上角的偏移量。浮层默认处于组件左上角。|
 
 > **说明：**
 >

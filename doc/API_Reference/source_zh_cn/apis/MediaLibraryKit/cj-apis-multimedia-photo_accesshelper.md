@@ -19,7 +19,7 @@ ohos.permission.WRITE_IMAGEVIDEO
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -236,13 +236,13 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fetchColumns|Array\<String>|是|-| 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](#func-getstring)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
+|fetchColumns|Array\<String>|是|-| 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。|
 |predicates|[DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)|是|-| 谓词查询，显示过滤条件。|
 
 ## class FetchResult
 
 ```cangjie
-public class FetchResult<T> <:  where T <:  FetchData <T> {}
+public class FetchResult<T> {}
 ```
 
 **功能：** 文件检索结果集。
@@ -281,62 +281,13 @@ public func close(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
-```
-
-### func getAllObjects()
-
-```cangjie
-public func getAllObjects(): Array<T>
-```
-
-**功能：** 获取文件检索结果中的所有文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Array\<[T](#generic-type-t)>|返回结果集中所有文件资产数组。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let photoAssetArray = fetchResult.getAllObjects()
 ```
 
 ### func getCount()
@@ -363,7 +314,7 @@ public func getCount(): Int32
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
@@ -376,211 +327,13 @@ public func getCount(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
-```
-
-### func getFirstObject()
-
-```cangjie
-public func getFirstObject(): T
-```
-
-**功能：** 获取文件检索结果中的第一个文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中第一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-```
-
-### func getLastObject()
-
-```cangjie
-public func getLastObject(): T
-```
-
-**功能：** 获取文件检索结果中的最后一个文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中最后一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getLastObject()
-```
-
-### func getNextObject()
-
-```cangjie
-public func getNextObject(): T
-```
-
-**功能：** 获取文件检索结果中的下一个文件资产。
-
-在调用此方法之前，必须使用[isAfterLast()](#func-isafterlast)来检查当前位置是否为最后一行。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中下一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getNextObject()
-```
-
-### func getObjectByPosition(Int32)
-
-```cangjie
-public func getObjectByPosition(index: Int32): T
-```
-
-**功能：** 获取文件检索结果中具有指定索引的文件资产。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|index|Int32|是|-|要获取的文件的索引，从0开始。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[T](#generic-type-t)|返回结果集中指定索引的一个对象。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**示例：**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
 
 ### func isAfterLast()
@@ -619,21 +372,19 @@ public func isAfterLast(): Bool
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let isAfterLast = fetchResult.isAfterLast()
 ```
 
 ## class MediaAlbumChangeRequest
 
 ```cangjie
-public class MediaAlbumChangeRequest <:  MediaChangeRequest {
+public class MediaAlbumChangeRequest MediaChangeRequest {
     /**
      * The constructor to create a MediaAlbumChangeRequest instance.
      *
@@ -680,7 +431,7 @@ public init(album: Album)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|album|[Album](#class-album)|是|-|需要变更的相册。|
+|album|[Album](./cj-apis-file-photo_access_helper.md#class-album)|是|-|需要变更的相册。|
 
 **示例：**
 
@@ -691,10 +442,8 @@ public init(album: Album)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -720,7 +469,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待添加到相册中的资产数组。|
+|assets|Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)>|是|-|待添加到相册中的资产数组。|
 
 **异常：**
 
@@ -728,7 +477,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -741,10 +490,8 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -759,7 +506,7 @@ albumChangeRequest.addAssets([asset, asset])
 ### func getAlbum()
 
 ```cangjie
-public func getAlbum(): ?Album
+public func getAlbum(): Album
 ```
 
 **功能：** 获取当前相册变更请求中的相册。
@@ -772,7 +519,7 @@ public func getAlbum(): ?Album
 
 |类型|说明|
 |:----|:----|
-|?[Album](#class-album)|返回当前相册变更请求中的相册。|
+|[Album](./cj-apis-file-photo_access_helper.md#class-album)|返回当前相册变更请求中的相册。|
 
 **异常：**
 
@@ -780,7 +527,7 @@ public func getAlbum(): ?Album
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -792,10 +539,8 @@ public func getAlbum(): ?Album
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -822,7 +567,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待从相册中移除的资产数组。|
+|assets|Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)>|是|-|待从相册中移除的资产数组。|
 
 **异常：**
 
@@ -830,7 +575,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -843,10 +588,8 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -890,7 +633,7 @@ public func setAlbumName(name: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -902,10 +645,8 @@ public func setAlbumName(name: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -920,7 +661,7 @@ albumChangeRequest.setAlbumName(newAlbumName)
 ## class MediaAssetChangeRequest
 
 ```cangjie
-public class MediaAssetChangeRequest <:  MediaChangeRequest {
+public class MediaAssetChangeRequest MediaChangeRequest {
     public init(asset: PhotoAsset)
 }
 ```
@@ -951,7 +692,7 @@ public init(asset: PhotoAsset)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|asset|[PhotoAsset](#class-photoasset)|是|-|需要变更的资产。|
+|asset|[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)|是|-|需要变更的资产。|
 
 **异常：**
 
@@ -959,7 +700,7 @@ public init(asset: PhotoAsset)
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -971,10 +712,8 @@ public init(asset: PhotoAsset)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1000,8 +739,8 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
-|photoType|[PhotoType](#enum-phototype)|是|-|待创建的文件类型，IMAGE或者VIDEO类型。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|photoType|[PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)|是|-|待创建的文件类型，IMAGE或者VIDEO类型。|
 |extension|String|是|-|文件扩展名，例如：'jpg'。|
 |options|[CreateOptions](#class-createoptions)|否|CreateOptions(title: "", subtype: Default)|**命名参数。** 创建选项，例如：{title: 'testPhoto'}。|
 
@@ -1017,7 +756,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -1028,10 +767,8 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let photoType = PhotoType.Image
 let extension = "jpg"
 let options = CreateOptions(title: "testPhoto")
@@ -1057,7 +794,7 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |fileUri|String|是|-|图片资产的数据来源，在应用沙箱下的uri。|
 
 **返回值：**
@@ -1072,7 +809,7 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System inner fail |
 
@@ -1084,10 +821,8 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createImageAssetRequest(ctx,
@@ -1113,7 +848,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |fileUri|String|是|-|视频资产的数据来源，在应用沙箱下的uri。|
 
 **返回值：**
@@ -1128,7 +863,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System inner fail |
 
@@ -1140,10 +875,8 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.mp4"
 let assetChangeRequest = MediaAssetChangeRequest.createVideoAssetRequest(ctx,
@@ -1169,8 +902,8 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
-|assets|Array\<[PhotoAsset](#class-photoasset)>|是|-|待删除的媒体文件uri数组。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|assets|Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)>|是|-|待删除的媒体文件uri数组。|
 
 **异常：**
 
@@ -1179,7 +912,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -1191,10 +924,8 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1221,7 +952,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
+|context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|传入Ability实例的Context。|
 |assets|Array\<String>|是|-|待删除的媒体文件uri数组。|
 
 **异常：**
@@ -1231,7 +962,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000002 | The uri format is incorrect or does not exist. |
   | 14000011 | System inner fail |
 
@@ -1244,10 +975,8 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1281,7 +1010,7 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
@@ -1294,10 +1023,8 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1333,7 +1060,7 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -1345,10 +1072,8 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1389,10 +1114,8 @@ public func discardCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1406,7 +1129,7 @@ phAccessHelper.applyChanges(assetChangeRequest)
 ### func getAsset()
 
 ```cangjie
-public func getAsset(): ?PhotoAsset
+public func getAsset(): PhotoAsset
 ```
 
 **功能：** 获取当前资产变更请求中的资产。
@@ -1419,7 +1142,7 @@ public func getAsset(): ?PhotoAsset
 
 |类型|说明|
 |:----|:----|
-|?[PhotoAsset](#class-photoasset)|返回当前资产变更请求中的资产。|
+|[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)|返回当前资产变更请求中的资产。|
 
 **异常：**
 
@@ -1427,7 +1150,7 @@ public func getAsset(): ?PhotoAsset
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -1439,10 +1162,8 @@ public func getAsset(): ?PhotoAsset
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1479,7 +1200,7 @@ public func getWriteCacheHandler(): Int32
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14000011 | System inner fail |
   | 14000016 | Operation Not Support |
 
@@ -1492,10 +1213,8 @@ public func getWriteCacheHandler(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.CoreFileKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx,
     PhotoType.Video, "mp4")
@@ -1534,10 +1253,8 @@ public func saveCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1572,7 +1289,7 @@ public func setTitle(title: String): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 **示例：**
@@ -1584,10 +1301,8 @@ public func setTitle(title: String): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1638,14 +1353,14 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 201 | Permission denied |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | System inner fail |
 
 ### func getAlbums(AlbumType, AlbumSubtype, FetchOptions)
 
 ```cangjie
 public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
-    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): FetchResult<Album>
+    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): AlbumResult
 ```
 
 **功能：** 根据检索选项和相册类型获取相册。获取相册前需先保证相册存在。
@@ -1668,7 +1383,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[Album](#class-album)>|返回获取相册的结果集。|
+|AlbumResult|返回获取相册的结果集。|
 
 **异常：**
 
@@ -1676,7 +1391,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 201 | Permission denied |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
@@ -1690,21 +1405,19 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.User,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.User,
     AlbumSubtype.UserGeneric, options: fetchOptions)
 ```
 
 ### func getAssets(FetchOptions)
 
 ```cangjie
-public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
+public func getAssets(options: FetchOptions): PhotoAssetResult
 ```
 
 **功能：** 获取图片和视频资源。
@@ -1725,7 +1438,7 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回获取连拍照片的结果集。|
+|PhotoAssetResult|返回获取连拍照片的结果集。|
 
 **异常：**
 
@@ -1746,20 +1459,18 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 ```
 
 ### func getBurstAssets(String, FetchOptions)
 
 ```cangjie
-public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult<PhotoAsset>
+public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetResult
 ```
 
 **功能：** 获取连拍照片资源。
@@ -1781,7 +1492,7 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 |类型|说明|
 |:----|:----|
-|[FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)>|返回获取连拍照片的结果集。|
+|PhotoAssetResult|返回获取连拍照片的结果集。|
 
 **异常：**
 
@@ -1801,15 +1512,13 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 
 ### func registerChange(String, Bool, Callback1Argument\<ChangeData>)
@@ -1830,7 +1539,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
 |forChildUris|Bool|是|-|是否模糊监听，uri为相册uri时，forChildUris为true能监听到相册中文件的变化，如果是false只能监听相册本身变化。uri为photoAsset时，forChildUris为true、false没有区别，uri为DefaultChangeUri时，forChildUris必须为true，如果为false将找不到该uri，收不到任何消息。|
-|callback|[Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)>|是|-|返回要监听的[ChangeData](#class-changedata)。注：uri可以注册多个不同的callback监听，[unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata)可以关闭该uri所有监听，也可以关闭指定callback的监听。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|是|-|返回要监听的[ChangeData](#class-changedata)。注：uri可以注册多个不同的callback监听，[unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata)可以关闭该uri所有监听，也可以关闭指定callback的监听。|
 
 **异常：**
 
@@ -1838,7 +1547,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900012 | Permission denied |
   | 13900020 | Invalid argument |
 
@@ -1851,8 +1560,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.*
@@ -1867,9 +1575,8 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
@@ -1879,7 +1586,7 @@ let callback1 = MyCallback<ChangeData>(
     })
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
 ```
@@ -1902,7 +1609,7 @@ public func release(): Unit
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
@@ -1915,14 +1622,12 @@ public func release(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 phAccessHelper.release()
 ```
@@ -1946,7 +1651,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 |:---|:---|:---|:---|:---|
 |srcFileUris|Array\<String>|是|-|需保存到媒体库中的图片/视频文件对应的媒体库uri。<br>**注意：**  仅支持处理图片、视频uri。|
 |photoCreationConfigs|Array\<[PhotoCreationConfig](#class-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
 
 **异常：**
 
@@ -1954,7 +1659,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14000011 | Internal system error |
 
 **示例：**
@@ -1966,8 +1671,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.*
@@ -1982,9 +1686,8 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback3 = MyCallback<Array<String>>(
     {
@@ -2026,7 +1729,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
-|callback|?[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
+|callback|?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
 
 **异常：**
 
@@ -2034,7 +1737,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900012 | Permission denied |
   | 13900020 | Invalid argument |
 
@@ -2047,8 +1750,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.callback_invoke.*
 import ohos.business_exception.BusinessException
@@ -2063,9 +1765,8 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // 需获取Context应用上下文，详见本文使用说明
+let ctx = Global.abilityContext // 需获取Context应用上下文，详见本文使用说明
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
@@ -2076,7 +1777,7 @@ let callback1 = MyCallback<ChangeData>(
 
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
@@ -2126,7 +1827,7 @@ public var photoType: PhotoType
 
 **功能：** 文件类型。
 
-**类型：** [PhotoType](#enum-phototype)
+**类型：** [PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)
 
 **读写能力：** 可读写
 
@@ -2183,7 +1884,7 @@ public init(fileNameExtension: String, photoType: PhotoType, title!: String = ""
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |fileNameExtension|String|是|-|文件扩展名，例如'jpg'。|
-|photoType|[PhotoType](#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
+|photoType|[PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)|是|-|创建的文件类型，IMAGE或者VIDEO。|
 |title|String|否|""| **命名参数。** 图片或者视频的标题。|
 |subtype|[PhotoSubtype](#enum-photosubtype)|否|Default| **命名参数。** 图片或者视频的文件子类型，Default或者MovingPhoto。|
 
@@ -2328,7 +2029,7 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
     | Favorite
     | Video
     | Image
-    | Any
+    | AnyAlbum
     | ...
 }
 ```
@@ -2344,10 +2045,10 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 - Equatable\<AlbumSubtype>
 - ToString
 
-### Any
+### AnyAlbum
 
 ```cangjie
-Any
+AnyAlbum
 ```
 
 **功能：** 任意相册。
@@ -3028,7 +2729,7 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
     | Title
     | DateAddedMs
     | DateModifiedMs
-    | PhotoSubType
+    | PhotoSubtype
     | DynamicRangeType
     | CoverPosition
     | BurstKey
@@ -3221,10 +2922,10 @@ Orientation
 
 **起始版本：** 21
 
-### PhotoSubType
+### PhotoSubtype
 
 ```cangjie
-PhotoSubType
+PhotoSubtype
 ```
 
 **功能：** 媒体文件的动态范围类型。
@@ -3609,7 +3310,7 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
     | QrOrBarCode
     | QrCode
     | BarCode
-    | IDCard
+    | IdCard
     | ProfilePicture
     | PassPort
     | BankCard
@@ -3691,10 +3392,10 @@ FeaturedSinglePortrait
 
 **起始版本：** 21
 
-### IDCard
+### IdCard
 
 ```cangjie
-IDCard
+IdCard
 ```
 
 **功能：** 身份证。

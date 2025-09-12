@@ -121,7 +121,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-|| **命名参数。** 布局列数设置。|
+|columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-| **命名参数。** 布局列数设置。|
 |gutter|[GutterOption](#class-gutteroption)|是|-| **命名参数。** 栅格布局间距，x代表水平方向。|
 |breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
 |direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
@@ -179,8 +179,8 @@ public func onBreakpointChange(callback: (String) -> Unit): This
 
 ```cangjie
 public class BreakPoints {
-    public var value: Array<Length>=[320.vp, 600.vp, 840.vp]
-    public var reference: BreakpointsReference = BreakpointsReference.WindowSize
+    public var value: Array<Length>
+    public var reference: BreakpointsReference
     public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
         reference!: BreakpointsReference = BreakpointsReference.WindowSize
     )
@@ -196,7 +196,7 @@ public class BreakPoints {
 #### var reference
 
 ```cangjie
-public var reference: BreakpointsReference = BreakpointsReference.WindowSize
+public var reference: BreakpointsReference
 ```
 
 **功能：** 断点切换参照物。
@@ -212,7 +212,7 @@ public var reference: BreakpointsReference = BreakpointsReference.WindowSize
 #### var value
 
 ```cangjie
-public var value: Array<Length>=[320.vp, 600.vp, 840.vp]
+public var value: Array<Length>
 ```
 
 **功能：** 断点位置的单调递增数组设置。
@@ -243,7 +243,7 @@ public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置
+|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置|
 |reference|[BreakpointsReference](#enum-breakpointsreference)|否|BreakpointsReference.WindowSize| **命名参数。** 断点切换参照物。|
 
 ### class GridRowSizeOption
@@ -264,7 +264,7 @@ public class GridRowSizeOption {
         xl!: Length = 0.vp,
         xxl!: Length = 0.vp
     )
-    public init(value!: Length = 0.vp)
+    public init(value: Length)
 }
 ```
 
@@ -403,7 +403,7 @@ public init(
 #### init(Length)
 
 ```cangjie
-public init(value!: Length = 0.vp)
+public init(value: Length)
 ```
 
 **功能：** 构造一个GridRowColumnOption对象。
@@ -475,12 +475,12 @@ public init(x!: GridRowSizeOption, y!: GridRowSizeOption)
 
 ```cangjie
 public class GridRowColumnOption {
-    public var xs: Int32 = 2
-    public var sm: Int32 = 4
-    public var md: Int32 = 8
-    public var lg: Int32 = 12
-    public var xl: Int32 = 12
-    public var xxl: Int32 = 12
+    public var xs: Int32
+    public var sm: Int32
+    public var md: Int32
+    public var lg: Int32
+    public var xl: Int32
+    public var xxl: Int32
     public init(
         xs!: Int32 = 2,
         sm!: Int32 = 4,
@@ -502,7 +502,7 @@ public class GridRowColumnOption {
 #### var lg
 
 ```cangjie
-public var lg: Int32 = 12
+public var lg: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。
@@ -518,7 +518,7 @@ public var lg: Int32 = 12
 #### var md
 
 ```cangjie
-public var md: Int32 = 8
+public var md: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。
@@ -534,7 +534,7 @@ public var md: Int32 = 8
 #### var sm
 
 ```cangjie
-public var sm: Int32 = 4
+public var sm: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。
@@ -550,7 +550,7 @@ public var sm: Int32 = 4
 #### var xl
 
 ```cangjie
-public var xl: Int32 = 12
+public var xl: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。
@@ -566,7 +566,7 @@ public var xl: Int32 = 12
 #### var xs
 
 ```cangjie
-public var xs: Int32 = 2
+public var xs: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。
@@ -582,7 +582,7 @@ public var xs: Int32 = 2
 #### var xxl
 
 ```cangjie
-public var xxl: Int32 = 12
+public var xxl: Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。
@@ -849,7 +849,7 @@ class EntryView {
                     reference: BreakpointsReference.WindowSize
                 ), //设置为以窗口为参照。
                 //设置栅格布局排列方向,按照行方向排列。
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 //循环渲染出bgColors对应颜色的栅格
                 ForEach(
@@ -882,7 +882,7 @@ class EntryView {
                     value: [400.vp, 600.vp, 800.vp], //设置断点位置的单调递增数组。
                     reference: BreakpointsReference.WindowSize //设置为以窗口为参照。
                 ),
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 ForEach(
                     bgColors,

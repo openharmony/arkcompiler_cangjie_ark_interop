@@ -17,7 +17,7 @@ ohos.permission.ACCESS_BLUETOOTH
 API示例代码使用说明：
 
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -171,7 +171,7 @@ func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](<font color="red" face="bold">please add link</font>)|是|-|回调事件。|
+|callback|[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
@@ -294,7 +294,7 @@ func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeP
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](#enum-profilecallbacktype)|是|-|传入`CONNECTIONSTATECHANGE`，表示连接状态变化事件类型。|
-|callback|[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
+|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)\<[StateChangeParam](#class-statechangeparam)>|是|-|表示回调函数的入参。|
 
 **异常：**
 

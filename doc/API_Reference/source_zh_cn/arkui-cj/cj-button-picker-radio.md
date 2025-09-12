@@ -39,13 +39,12 @@ public init(value!: String, group!: String)
 
 通用事件：全部支持。
 
-
 ## 组件属性
 
 ### func checked(Bool)
 
 ```cangjie
-public func checked(isChecked: Bool): This
+public func checked(value: Bool): This
 ```
 
 **功能：** 单选框的选中状态。
@@ -59,7 +58,6 @@ public func checked(isChecked: Bool): This
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|Bool|是|-|设置单选框的选中状态。<br>初始值：false。<br/>**说明**：<br/>value为true时，表示从未选中变为选中。value为false时，表示从选中变为未选中。|
-
 
 ## 组件事件
 
@@ -99,8 +97,7 @@ class EntryView {
     @State var radioName: String = "Null"
 
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center
-        )) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
             Column() {
                 Text("Radio1")
                 Radio(group: "radioGroup", value: "Radio1").checked(true).height(50).width(50)

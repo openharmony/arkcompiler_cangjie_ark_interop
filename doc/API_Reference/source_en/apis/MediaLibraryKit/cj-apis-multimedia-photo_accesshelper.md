@@ -2186,7 +2186,7 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
     | Favorite
     | Video
     | Image
-    | Any
+    | AnyAlbum
     | ...
 }
 ```
@@ -2202,10 +2202,10 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 - Equatable\<AlbumSubtype>
 - ToString
 
-### Any
+### AnyAlbum
 
 ```cangjie
-Any
+AnyAlbum
 ```
 
 **Description:** Any album.
@@ -2864,7 +2864,8 @@ public func toString(): String
 |Type|Description|
 |:----|:----|
 |String|The description of the enum.|
-```## enum PhotoKeys
+
+## enum PhotoKeys
 
 ```cangjie
 public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
@@ -2883,7 +2884,7 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
     | Title
     | DateAddedMs
     | DateModifiedMs
-    | PhotoSubType
+    | PhotoSubtype
     | DynamicRangeType
     | CoverPosition
     | BurstKey
@@ -3076,10 +3077,10 @@ Orientation
 
 **Since:** 21
 
-### PhotoSubType
+### PhotoSubtype
 
 ```cangjie
-PhotoSubType
+PhotoSubtype
 ```
 
 **Function:** Dynamic range type of the media file.
@@ -3463,7 +3464,7 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
     | QrOrBarCode
     | QrCode
     | BarCode
-    | IDCard
+    | IdCard
     | ProfilePicture
     | PassPort
     | BankCard
@@ -3545,10 +3546,10 @@ FeaturedSinglePortrait
 
 **Since:** 21
 
-### IDCard
+### IdCard
 
 ```cangjie
-IDCard
+IdCard
 ```
 
 **Function:** ID card.

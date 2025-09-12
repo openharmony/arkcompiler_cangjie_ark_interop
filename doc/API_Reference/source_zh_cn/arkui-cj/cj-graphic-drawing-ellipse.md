@@ -73,7 +73,7 @@ class EntryView {
             Ellipse()
                 .width(150)
                 .height(100)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .stroke(Color.Red)
                 .strokeWidth(3)
                 .padding(top: 10)

@@ -232,3 +232,52 @@ Vertical
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
+
+#### func &(PanDirection)
+
+```cangjie
+public operator func &(right: PanDirection): PanDirection
+```
+
+**功能：** 对PanDirection进行逻辑与(&)运算。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|right|[PanDirection](#enum-pandirection)|是|-|滑动方向|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[PanDirection](#enum-pandirection)|滑动方向|
+
+#### func |(PanDirection)
+
+```cangjie
+public operator func |(right: PanDirection): PanDirection
+```
+
+**功能：** 对PanDirection进行逻辑或(|)运算。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|right|[PanDirection](#enum-pandirection)|是|-|滑动方向|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|[PanDirection](#enum-pandirection)|滑动方向|
+

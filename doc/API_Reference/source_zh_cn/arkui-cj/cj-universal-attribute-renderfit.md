@@ -2,13 +2,11 @@
 
 用于决定在组件的宽高动画过程中，如何将动画最终的组件内容绘制在组件上。
 
-
 ## 导入模块
 
 ```cangjie
 import kit.ArkUI.*
 ```
-
 
 ## func renderFit(RenderFit)
 
@@ -26,7 +24,7 @@ public func renderFit(fitMode: RenderFit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fitMode|[RenderFit](#)|是|-|渲染适配模式。|
+|fitMode|[RenderFit](#enum-renderfit)|是|-|渲染适配模式。|
 
 ## func !=(RenderFit)
 
