@@ -97,10 +97,10 @@ class EntryView {
                     .position(x: this.positionX, y: this.positionY)
                     .animationEnd()
                     .onTouch({ event: TouchEvent =>
-                    if (event.eventType.getValue() == TouchType.Move.getValue()) {
+                    if (event.eventType == TouchType.Move) {
                         this.positionX = event.touches[0].screenX - this.diameter / 2.0
                         this.positionY = event.touches[0].screenY - this.diameter / 2.0
-                    } else if (event.eventType.getValue() == TouchType.Up.getValue()) {
+                    } else if (event.eventType == TouchType.Up) {
                         this.positionX = 100.0
                         this.positionY = 100.0
                     }
@@ -109,9 +109,9 @@ class EntryView {
             .width(100.percent)
             .height(80.percent)
             .clip(true) // 如果球超出父组件范围，使球不可见
-            .backgroundColor(Color.ORANGE)
+            .backgroundColor(0xFEA400)
 
-            Flex(FlexParams(direction: FlexDirection.Row,justifyContent: FlexAlign.Center, alignItems: ItemAlign.Start)) {
+            Flex(direction: FlexDirection.Row,justifyContent: FlexAlign.Center, alignItems: ItemAlign.Start) {
                 Text("拖动小球").fontSize(16)
             }
             .width(100.percent)

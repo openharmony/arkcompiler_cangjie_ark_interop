@@ -21,7 +21,6 @@
 
 1. 创建TransitionEffect。
 
-
     ```cangjie
     // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
     // 用于说明各个effect跟随的动画参数
@@ -43,7 +42,7 @@
     // 添加平移转场效果，动画参数会跟随其之上带animation的TransitionEffect,也就是Curve.Smooth
     .combine(TransitionEffect.translate(TranslateOptions(y: 150)).animation(AnimateParam(curve: Curve.Smooth)))
     // 添加move转场效果，并指定了curve曲线
-    .combine(TransitionEffect.move(TransitionEdge.END).animation(AnimateParam(curve: Curve.Linear)))
+    .combine(TransitionEffect.move(TransitionEdge.End).animation(AnimateParam(curve: Curve.Linear)))
     // 添加非对称的转场效果，由于这里没有设置animation，会跟随上面的TransitionEffect的animation效果，也就是Curve.Linear
     .combine(TransitionEffect.asymmetric(TransitionEffect.scale(ScaleOptions(x: 0.0,y: 0.0)),
             TransitionEffect.rotate(RotateOptions(
@@ -60,14 +59,12 @@
 
 2. 将转场效果通过[transition](../../../API_Reference/source_zh_cn/arkui-cj/cj-animation-transition.md#func-transition)接口设置到组件。
 
-
     ```cangjie
     Text("test")
     .transition(this.effect)
     ```
 
 3. 新增或者删除组件触发转场。
-
 
     ```cangjie
     @State var isPresent: Bool = false
@@ -80,7 +77,7 @@
 
     // 控制新增或者删除组件
     // 方式一：将控制变量放到animateTo闭包内，未通过animation接口定义动画参数的TransitionEffect将跟随animateTo的动画参数
-    animateTo(AnimateParam(curve: Curve.Smooth), { =>
+    getUIContext().animateTo(AnimateParam(curve: Curve.Smooth), { =>
             this.isPresent = false})
 
     // 方式二：直接控制删除或者新增组件，动画参数由TransitionEffect的animation接口配置
@@ -157,6 +154,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 const ITEM_COUNTS: Int64 = 9
@@ -207,8 +205,9 @@ class EntryView {
             .size(width: 100.percent, height: 100.percent)
             .onClick(
                 {
-                    evt => animateTo(
-                        AnimateParam(duration: DURATION + INTERVAL * (Int32(ITEM_COUNTS) - 1), curve: Curve.Friction),
+                    evt => getUIContext().animateTo(
+                        AnimateParam(duration: DURATION,
+                        delay: INTERVAL * (Int32(ITEM_COUNTS) - 1), curve: Curve.Friction),
                         {
                             => this.isGridShow = !this.isGridShow
                         }

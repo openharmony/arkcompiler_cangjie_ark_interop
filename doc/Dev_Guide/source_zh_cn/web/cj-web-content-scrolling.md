@@ -31,7 +31,7 @@ class EntryView {
                 } catch (e: BusinessException) {
                     AppLog.error("scrollTo ErrorCode: ${e.code},  Message: ${e.message}")
                 }
-            }
+            }.margin(10)
             Button("scrollBy").onClick { evt =>
                 try {
                     webController.scrollBy(50.0, 50.0, duration: 500)
@@ -39,7 +39,7 @@ class EntryView {
                 } catch (e: BusinessException) {
                     AppLog.error("scrollBy ErrorCode: ${e.code},  Message: ${e.message}")
                 }
-            }
+            }.margin(10)
             Button("scrollStop").onClick { evt =>
                 try {
                     webController.scrollBy(0.0, 0.0, duration: 1)
@@ -47,7 +47,7 @@ class EntryView {
                 } catch (e: BusinessException) {
                     AppLog.error("scrollStop ErrorCode: ${e.code},  Message: ${e.message}")
                 }
-            }
+            }.margin(10)
             Web(src: @rawfile("index.html"), controller: webController)
         }
     }

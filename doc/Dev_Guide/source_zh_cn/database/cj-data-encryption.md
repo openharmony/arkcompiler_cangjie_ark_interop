@@ -20,10 +20,8 @@
 
     ```cangjie
     // main_ability.cj
-    internal import ohos.base.AppLog
-    internal import ohos.ability.AbilityStage
-    internal import ohos.ability.LaunchReason
-    import kit.AbilityKit.{UIAbility,UIAbilityContext,LaunchParam,Want}
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -34,15 +32,14 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // 获取context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
@@ -53,29 +50,30 @@
 
     ```cangjie
     // xxx.cj
-    import kit.ArkData.*
-    import kit.ArkUI.BusinessException
+    import kit.ArkData.{DistributedKVStore, KVManagerConfig}
+    import ohos.business_exception.BusinessException
     import kit.AbilityKit.getStageContext
+    import ohos.data.distributed_kv_store.Options as KVOptions
+    import ohos.data.distributed_kv_store.SecurityLevel as KVSecurityLevel
 
     try {
-        // globalAbilityContext 在Ability onCreate时获取
         let context = globalAbilityContext.getOrThrow()
-        let kvManagerConfig = KVManagerConfig(getStageContext(context), "com.example.datamanagertest")
+        let kvManagerConfig = KVManagerConfig(globalAbilityContext.getOrThrow(), "com.example.datamanagertest")
         // 创建KVManager实例
         let kvManager = DistributedKVStore.createKVManager(kvManagerConfig)
-        AppLog.info("Succeeded in creating KVManager.")
+        Hilog.info(0, "cangjie", "Succeeded in creating KVManager.")
 
         let options = KVOptions(
-            KVSecurityLevel.S3,
+            KVSecurityLevel.S3, // 设置安全等级为S3
             createIfMissing: true,
-            encrypt: true, // 设置数据库加密
+            encrypt: true,
             backup: false,
             autoSync: false,
         )
-        let kvStore = kvManager.getSingleKVStore("storeId", options)
-        AppLog.info("getSingleKVStore success")
+        let kvStore = kvManager.getKVStore("storeId", options)
+        Hilog.info(0, "cangjie", "getSingleKVStore success")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     // 进行其它数据库相关的操作
     // ...
@@ -93,10 +91,8 @@
 
     ```cangjie
     // main_ability.cj
-    internal import ohos.base.AppLog
-    internal import ohos.ability.AbilityStage
-    internal import ohos.ability.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -107,15 +103,14 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // 获取context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
@@ -126,21 +121,20 @@
 
     ```cangjie
     import kit.ArkData.{ getRdbStore, StoreConfig, RelationalStoreSecurityLevel }
-    import kit.ArkUI.BusinessException
-    import kit.AbilityKit.getStageContext
+    import ohos.business_exception.BusinessException
 
     try {
         // globalAbilityContext 在Ability onCreate时获取
         let context = globalAbilityContext.getOrThrow()
         let storeConfig = StoreConfig(
-            "RdbTest.db", // 数据库文件名
             RelationalStoreSecurityLevel.S3, // 数据库安全级别
+            name: "RdbTest.db", // 数据库文件名
             encrypt: true, // 设置数据库加密
         )
-        let rdbStore = getRdbStore(getStageContext(this.context), storeConfig)
-        AppLog.info("getRdbStore success")
+        let rdbStore = getRdbStore(context, storeConfig)
+        Hilog.info(0, "cangjie", "getRdbStore success")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     // 进行其它数据库相关的操作
     // ...

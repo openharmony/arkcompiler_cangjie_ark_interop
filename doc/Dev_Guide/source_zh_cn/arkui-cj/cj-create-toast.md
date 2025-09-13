@@ -38,6 +38,7 @@
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -53,9 +54,9 @@ class EntryView{
 
             }.onClick({
                 evt =>
-                PromptAction.showToast(
-                        message: "ok，我是DEFAULT toast",duration: 2000,
-                        bottom: "80.vp",showMode: ToastShowMode.Default)
+                getUIContext().getPromptAction().showToast(
+                        ShowToastOptions(message: "ok，我是DEFAULT toast", duration: 2000,
+                        bottom: 80.vp, showMode: ToastShowMode.Default))
             }).align(Alignment.Center)
 
             Button(){
@@ -64,9 +65,9 @@ class EntryView{
                 .fontWeight(FontWeight.Bold)
             }.onClick({
                 evt =>
-                PromptAction.showToast(
-                        message: "ok，我是TOP_MOST toast",duration: 2000,
-                        bottom: "85.vp",showMode: ToastShowMode.TopMost)
+                getUIContext().getPromptAction().showToast(
+                        ShowToastOptions(message: "ok，我是TOP_MOST toast", duration: 2000,
+                        bottom: 85.vp, showMode: ToastShowMode.TopMost))
             })
         }
     }
@@ -85,6 +86,7 @@ class EntryView{
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -96,7 +98,7 @@ class EntryView{
             Button("Show toast").fontSize(20)
             .onClick{
                     =>
-                    PromptAction.showToast(message: "Hello Word",duration: 2000)
+                    getUIContext().getPromptAction().showToast(message: "Hello Word",duration: 2000)
             }
         }.size(width: 100.percent,height: 100.percent).justifyContent(FlexAlign.Center)
     }

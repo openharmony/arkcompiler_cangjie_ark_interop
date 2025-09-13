@@ -15,7 +15,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -59,11 +59,11 @@ import ohos.display.{Orientation as DisplayOrientation}
 
 func matchor(orientation: DisplayOrientation): String {
     match(orientation){
-        case PORTRAIT => "PORTRAIT"
-        case LANDSCAPE => "LANDSCAPE"
-        case PORTRAIT_INVERTED => "PORTRAIT_INVERTED"
-        case LANDSCAPE_INVERTED => "LANDSCAPE_INVERTED"
-        case _ => throw IllegalArgumentException("The type is not supported yet.")
+        case Landscape => "Landscape"
+        case Portrait => "Portrait"
+        case LandscapeInverted => "LandscapeInverted"
+        case PortraitInverted => "PortraitInverted"
+        case _ => "FollowDesktop"
     }
 }
 
@@ -71,18 +71,18 @@ func matchor(orientation: DisplayOrientation): String {
 @Component
 class EntryView{
     // 获取通过监听窗口的windowsSizeChange事件得到的屏幕显示方向
-    @StorageLink["orientation"] var orientation: DisplayOrientation  = DisplayOrientation.PORTRAIT
+    @StorageLink["orientation"] var orientation: DisplayOrientation  = DisplayOrientation.Portrait
 
     func build(){
         Stack() {
-            if(matchor(orientation) == "PORTRAIT"|| matchor(orientation) == "PORTRAIT_INVERTED"){
-                Image(@r(app.media.img_1))
+            if(matchor(orientation) == "Portrait"|| matchor(orientation) == "PortraitInverted"){
+                Image(@r(app.media.startIcon))
                     .size(width: 100, height: 100 )
                     .id('image1')
                   // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
 //                   .transition(TransitionEffect.OPACITY)
             }else{
-                Image(@r(app.media.img_2))
+                Image(@r(app.media.startIcon))
                     .position(x: 0, y: 0 )
                     .size( width: 200, height: 200)
                     .id('image2')
@@ -95,62 +95,6 @@ class EntryView{
 ```
 
 监听窗口旋转的同步事件windowsSizeChange来实现视图的切换。例如可在main_ability.cj文件的onWindowStageCreate方法中添加处理逻辑以获取屏幕的显示方向。
-
- <!-- run -example1 -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-internal import ohos.base.AppLog
-internal import ohos.ability.AbilityStage
-internal import ohos.ability.LaunchReason
-import ohos.display.getDefaultDisplaySync
-import ohos.window.*
-import ohos.arkui.state_management.*
-import ohos.base.Callback1Argument
-import ohos.window.{Size as WindowSize}
-import ohos.display.{Orientation as DisplayOrientation}
-import ohos.display.Display
-
-class Callback1ArgumentImpl<WindowSize> <: Callback1Argument<WindowSize> {
-    public Callback1ArgumentImpl(let callback: (WindowSize) -> Unit) {}
-
-    public open func invoke(arg1: WindowSize) {
-        callback(arg1)
-    }
-}
-
-class MainAbility <: Ability {
-    public init() {
-        super()
-        registerSelf()
-    }
-
-    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        AppLog.info("MainAbility OnCreated.${want.abilityName}")
-        match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-            case _ => ()
-        }
-    }
-
-    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        AppLog.info("MainAbility onWindowStageCreate.")
-        let callback: Callback1Argument<WindowSize> = Callback1ArgumentImpl<WindowSize>({
-                size: WindowSize =>
-                    let displayClass = getDefaultDisplaySync()
-                    AppStorage.set<DisplayOrientation>("orientation", displayClass.orientation)
-            })
-
-        let mainWindow: Window = windowStage.getMainWindow()
-        let display: Display = getDefaultDisplaySync()
-        AppStorage.setOrCreate<DisplayOrientation>("orientation", display.orientation)
-        mainWindow.on(WindowCallbackType.WindowSizeChange, callback)
-
-        windowStage.loadContent("EntryView")
-    }
-}
-```
 
 需要在项目的 module.json5 文件中的 abilities 列表里添加 "orientation"，指定为 "auto_rotation"。
 

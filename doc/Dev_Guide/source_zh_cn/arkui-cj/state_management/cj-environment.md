@@ -25,14 +25,12 @@ Environment提供了读取系统某些环境变量的能力，具体见[Environm
 
 - 使用Environment.envProp将设备运行的环境变量存入AppStorage中。
 
-
     ```cangjie
     // 将设备的语言code存入AppStorage，默认值为en
     Environment.envProp<String>("languageCode", "en")
     ```
 
 - 可以使用@StorageProp链接到Component中。
-
 
     ```cangjie
     @StorageProp["languageCode"] let languageCode: String = "en"
@@ -90,7 +88,7 @@ class EntryView {
             Column() {
                 Button("lang")
                 .onClick {
-                    =>
+                    evt =>
                         if (lang.get()=='zh') {
                             Hilog.info(0, "Chinese", "你好")
                         } else {

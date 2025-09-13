@@ -4,7 +4,6 @@ photoAccessHelper仅提供开发者对收藏夹、视频相册、截屏和录屏
 
 > **说明：**
 >
->
 > 文档中使用到 `PhotoAccessHelper` 的地方，默认为使用开发准备中获取的对象。如未添加此段代码导致 `PhotoAccessHelper` 未定义的错误，请自行添加。
 
 如无特别说明，文档中涉及的待获取资源均视为已经预置且在数据库中存在相应数据。如按示例代码执行后仍无法获取资源，请确认文件是否已预置，数据库中是否存在该文件的数据。
@@ -37,7 +36,7 @@ func example() {
   try {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
-    let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
+    let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
     let album: Album = fetchResult.getFirstObject()
     AppLog.info('get favorite album successfully, albumUri: ' + album.albumUri)
     fetchResult.close()
@@ -112,11 +111,11 @@ func example() {
     )
 
   try {
-    let albumFetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
+    let albumFetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
     let album: Album = albumFetchResult.getFirstObject()
     AppLog.info('get favorite album successfully, albumUri: ' + album.albumUri)
 
-    let photoFetchResult: FetchResult<PhotoAsset> = album.getAssets(fetchOptions)
+    let photoFetchResult: PhotoAssetResult = album.getAssets(fetchOptions)
     let photoAsset: PhotoAsset = photoFetchResult.getFirstObject()
     AppLog.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName)
     photoFetchResult.close()
@@ -186,7 +185,7 @@ func example() {
   try {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
-    let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
+    let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
     let album: Album = fetchResult.getFirstObject()
     AppLog.info('get video album successfully, albumUri: ' + album.albumUri)
     fetchResult.close()
@@ -261,11 +260,11 @@ func example() {
     )
 
   try {
-    let albumFetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
+    let albumFetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
     let album: Album = albumFetchResult.getFirstObject()
     AppLog.info('get video album successfully, albumUri: ' + album.albumUri)
 
-    let videoFetchResult: FetchResult<PhotoAsset> = album.getAssets(fetchOptions)
+    let videoFetchResult: PhotoAssetResult = album.getAssets(fetchOptions)
     let photoAsset: PhotoAsset = videoFetchResult.getFirstObject()
     AppLog.info('video album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName)
     videoFetchResult.close()

@@ -62,8 +62,8 @@ func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
 
 func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
-    let aesGenerator = createSymKeyGenerator('SM4_128')
-    let symKey = aesGenerator.convertKey(symKeyBlob)
+    let sm4Generator = createSymKeyGenerator('SM4_128')
+    let symKey = sm4Generator.convertKey(symKeyBlob)
     Hilog.info(0,"","convertKey success")
     return symKey
 }

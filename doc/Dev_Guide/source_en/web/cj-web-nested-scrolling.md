@@ -50,7 +50,7 @@ class EntryView {
     func build() {
         Flex() {
             Scroll(this.scrollerForScroll) {
-                Column(5) {
+                Column(space: 5) {
                     Row() {
                         Text('Switch Forward Scroll Mode').fontSize(5)
                         Button("SELF_ONLY").onClick { evt =>

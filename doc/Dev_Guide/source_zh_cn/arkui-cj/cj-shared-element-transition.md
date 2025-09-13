@@ -34,15 +34,15 @@
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.AppResource
-import ohos.resource_manager.__GenerateResource__
+import ohos.resource_manager.*
 import std.collection.ArrayList
 
 let storage: LocalStorage = LocalStorage()
 
 class PostData{
-    public var avatar: AppResource = @r(app.media.app_foreground)
+    public var avatar: AppResource = @r(app.media.foreground)
     public var name: String = ""
     public var message: String = ""
     public var images: Array<AppResource> = []
@@ -62,16 +62,16 @@ class EntryView {
     @State @Watch[onItemClicked] var selectedIndex: Int64 = -1
 
     private var allPostData: Array<PostData> = [
-        PostData(@r(app.media.flower),"Alice","天气晴朗",[@r(app.media.spring), @r(app.media.tree)] ),
-        PostData(@r(app.media.sky),"Bob","你好世界",[@r(app.media.island)]),
-        PostData(@r(app.media.tree),"Carl","万物生长",[@r(app.media.flower),@r(app.media.sky),@r(app.media.spring)])
+        PostData(@r(app.media.startIcon),"Alice","天气晴朗",[@r(app.media.startIcon), @r(app.media.startIcon)] ),
+        PostData(@r(app.media.startIcon),"Bob","你好世界",[@r(app.media.startIcon)]),
+        PostData(@r(app.media.startIcon),"Carl","万物生长",[@r(app.media.startIcon),@r(app.media.startIcon),@r(app.media.startIcon)])
         ]
 
     private func onItemClicked():Unit {
         if(this.selectedIndex<0){
             return
         }
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 350,curve: Curve.Friction),
             {
                 => this.isExpand = !this.isExpand
@@ -98,7 +98,7 @@ class EntryView {
              )
         }
         .size(width: 100.percent, height: 100.percent)
-        .backgroundColor(Color.GREY)
+        .backgroundColor(Color.Gray)
     }
 }
 
@@ -151,7 +151,7 @@ class Post{
             evt =>
                 this.selecteIndex = -1
                 this.selecteIndex = this.index
-                animateTo(AnimateParam(duration:350,curve:Curve.Friction),{
+                getUIContext().animateTo(AnimateParam(duration:350,curve:Curve.Friction),{
                     =>
                     // 对展开的post做宽高动画，并对头像尺寸和图片尺寸加动画
                     this.isExpand = !this.isExpand
@@ -194,6 +194,7 @@ geometryTransition绑定两个对象的实现方式使得geometryTransition区�
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
 
@@ -202,9 +203,9 @@ import kit.LocalizationKit.*
 class EntryView {
     @State var isShow: Bool = false
     func build() {
-        Stack(Alignment.Center) {
+        Stack(alignContent: Alignment.Center) {
             if (this.isShow) {
-                Image(@r(app.media.spring))
+                Image(@r(app.media.startIcon))
                     .autoResize(false)
                     .clip(true)
                     .width(200)
@@ -216,7 +217,7 @@ class EntryView {
             } else {
                 Column() {
                     Column() {
-                        Image(@r(app.media.sky))
+                        Image(@r(app.media.startIcon))
                             .width(100.percent).height(100.percent)
                     }.width(100.percent).height(100.percent)
                 }
@@ -234,7 +235,7 @@ class EntryView {
             }
         }
         .onClick({
-            event => animateTo(AnimateParam(duration:1000,curve:Curve.Linear), ({=>this.isShow = !this.isShow}))
+            event => getUIContext().animateTo(AnimateParam(duration:1000,curve:Curve.Linear), ({=>this.isShow = !this.isShow}))
         })
         .size(width:100.percent,height:100.percent)
     }
@@ -253,18 +254,16 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 import ohos.resource_manager.AppResource
-import ohos.resource_manager.__GenerateResource__
 import std.collection.ArrayList
 import kit.PerformanceAnalysisKit.Hilog
-
-
 
 let storage: LocalStorage = LocalStorage()
 
 class PostData{
-    public var avatar: AppResource = @r(app.media.app_foreground)
+    public var avatar: AppResource = @r(app.media.foreground)
     public var name: String = ""
     public var message: String = ""
     public var images: Array<AppResource> = []
@@ -282,38 +281,38 @@ class PostData{
 class EntryView {
     @State var isPersonalPageShow: Bool = false;
     @State var selectedIndex: Int = 0
-    @State var alphaValue: Int = 1
+    @State var alphaValue: Float64 = 1.0
 
     private var allPostData: Array<PostData> = [
-        PostData(@r(app.media.flower),"Alice","天气晴朗",[@r(app.media.spring), @r(app.media.tree)] ),
-        PostData(@r(app.media.sky),"Bob","你好世界",[@r(app.media.island)]),
-        PostData(@r(app.media.tree),"Carl","万物生长",[@r(app.media.flower),@r(app.media.sky),@r(app.media.spring)])
+        PostData(@r(app.media.startIcon),"Alice","天气晴朗",[@r(app.media.startIcon), @r(app.media.startIcon)] ),
+        PostData(@r(app.media.startIcon),"Bob","你好世界",[@r(app.media.startIcon)]),
+        PostData(@r(app.media.startIcon),"Carl","万物生长",[@r(app.media.startIcon),@r(app.media.startIcon),@r(app.media.startIcon)])
         ]
 
     public func onAppear() {
-        AppLog.info("BindContentCover onAppear.")
+        Hilog.info(0, "cangjie", "BindContentCover onAppear.")
     }
     public func onDisappear() {
-        AppLog.info("BindContentCover onDisappear.")
+        Hilog.info(0, "cangjie", "BindContentCover onDisappear.")
     }
 
     private func onAvatarClicked(index: Int):Unit {
         this.selectedIndex = index
-        animateTo(
+        getUIContext().animateTo(
             AnimateParam(duration: 350,curve: Curve.Friction),
             {
                 =>
                 this.isPersonalPageShow = !this.isPersonalPageShow
-                this.alphaValue = 0
+                this.alphaValue = 0.0
             }
         )
     }
 
     private func onPersonalPageBack(index: Int):Unit{
-        animateTo(AnimateParam(duration: 350,curve: Curve.Friction),{
+        getUIContext().animateTo(AnimateParam(duration: 350,curve: Curve.Friction),{
             =>
             this.isPersonalPageShow = !this.isPersonalPageShow;
-            this.alphaValue = 1;
+            this.alphaValue = 1.0;
         })
     }
 
@@ -329,7 +328,6 @@ class EntryView {
             .transition(TransitionEffect.opacity(0.99))
 
             Text(this.allPostData[this.selectedIndex].name)
-            .font(TextFont(size:30,weight:FontWeight.W600))
             // 对文本添加出现转场效果
             .transition(TransitionEffect.asymmetric(
                 TransitionEffect.OPACITY.combine(TransitionEffect.translate(TranslateOptions(x:100,y:100,z:100))),
@@ -363,10 +361,10 @@ class EntryView {
              )
         }
         .size(width: 100.percent, height: 100.percent)
-        .backgroundColor(Color.GREY)
+        .backgroundColor(Color.Gray)
         .bindContentCover(this.isPersonalPageShow, this.PersonalPageBuilder,
-            ContentCoverOptions(
-            modalTransition: ModalTransition.NONE,
+            options: ContentCoverOptions(
+            modalTransition: ModalTransition.None,
             onAppear: onAppear,
             onDisappear: onDisappear)
             )

@@ -45,7 +45,7 @@
         import kit.LocalizationKit.*
         import ohos.hilog.Hilog
 
-        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+        var abilityContext = Global.abilityContext
         // 获取resourceManager资源管理器。
         let resourceManager = abilityContext.resourceManager
         ```
@@ -70,7 +70,7 @@
         // 导入resourceManager资源管理器。
         import kit.LocalizationKit.*
 
-        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+        var abilityContext = Global.abilityContext
         // 获取resourceManager资源管理器。
         let resourceManager = abilityContext.resourceManager
         ```
@@ -133,7 +133,7 @@
         import kit.AbilityKit.*
         import ohos.resource_manager.AppResource
 
-        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+        var abilityContext = Global.abilityContext
         // 获取resourceManager资源管理器。
         let resourceManager = abilityContext.resourceManager
 
@@ -154,7 +154,7 @@
         import kit.AbilityKit.*
         import ohos.resource_manager.AppResource
 
-        var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+        var abilityContext = Global.abilityContext
         // 获取resourceManager资源管理器。
         let resourceManager = abilityContext.resourceManager
 
@@ -193,9 +193,8 @@
     import kit.LocalizationKit.*
     import kit.AbilityKit.*
 
-
     // globalcontext需要在main_ability.cj中的func onCreate中赋值：globalcontext = this.context
-    var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
+    var abilityContext = Global.abilityContext
     // 获取resourceManager资源管理器。
     let resourceManager = abilityContext.resourceManager
     ```

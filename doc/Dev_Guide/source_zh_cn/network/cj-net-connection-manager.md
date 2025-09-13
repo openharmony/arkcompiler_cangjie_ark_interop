@@ -88,7 +88,6 @@ func loggerError(str: String) {
     Hilog.error(0, "CangjieTest", str)
 }
 
-
 class NetAvailableCb <: Callback1Argument<NetHandle> {
     let callback_: (NetHandle)->Unit
     public init(callback: (NetHandle)->Unit) {callback_ = callback}

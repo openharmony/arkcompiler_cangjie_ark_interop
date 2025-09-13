@@ -15,13 +15,14 @@ import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
 import std.collection.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView{
     @State var needsUpdate: Bool = true
     var realStateArr: ArrayList<Int64> = ArrayList<Int64>([4, 1, 3, 2])
-    var realState: Color = Color.YELLOW
+    var realState: Color = Color(0xFFFF00)
 
     func updateUIArr(param: ArrayList<Int64>): ArrayList<Int64>{
         let triggerAGet: Bool = this.needsUpdate
@@ -34,30 +35,31 @@ class EntryView{
     }
 
     func build(){
-        Column(20){
+        Column(space: 20){
             ForEach(this.updateUIArr(this.realStateArr), {item: Int64, _: Int64 => Text("${item}")})
             Text("add item")
-            .onClick({event =>
+            .onClick{ event =>
                     // 改变realStateArr不会触发UI视图更新
                     this.realStateArr.add(this.realStateArr[this.realStateArr.size - 1] + 1)
 
                     // 触发UI视图更新
                     this.needsUpdate = !this.needsUpdate
-                    })
+                }
 
             Text("chg color")
             .onClick({event =>
                 // 改变realState不会触发UI视图更新
                 match {
-                    case this.realState.toUInt32() == Color.YELLOW.toUInt32() => this.realState = Color.Red
-                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color.YELLOW
-                    case _ => AppLog.error("realState invalid")
+                    case this.realState.toUInt32() == Color(0xFFFF00).toUInt32() => this.realState = Color.Red
+                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color(0xFFFF00)
+                    case _ => Hilog.error(0, "test", "realState invalid")
                 }
 
                 // 触发UI视图更新
                 this.needsUpdate = !this.needsUpdate
             })
-        }.backgroundColor(this.updateUI(this.realState))
+        }
+        .backgroundColor(this.updateUI(this.realState))
         .width(200).height(500)
     }
 }
@@ -79,32 +81,34 @@ class EntryView{
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView{
     @State var realStateArr: ObservedArrayList<Int64> = ObservedArrayList<Int64>([4, 1, 3, 2])
-    @State var realState: Color = Color.YELLOW
+    @State var realState: Color = Color(0xFFFF00)
 
     func build(){
-        Column(20){
+        Column(space: 20){
             ForEach(this.realStateArr, {item: Int64, _: Int64 => Text("${item}")})
 
             Text("add item")
-            .onClick({event =>
+            .onClick{event =>
                 // 改变realStateArr触发UI视图更新
                 this.realStateArr.append((this.realStateArr[this.realStateArr.size - 1] + 1))
-            })
+            }
 
             Text("chg color")
-            .onClick({event =>
+            .onClick{event =>
                 // 改变realState触发UI视图更新
                 match {
-                    case this.realState.toUInt32() == Color.YELLOW.toUInt32() => this.realState = Color.Red
-                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color.YELLOW
-                    case _ => AppLog.error("realState invalid")
+                    case this.realState.toUInt32() == Color(0xFFFF00).toUInt32() => this.realState = Color.Red
+                    case this.realState.toUInt32() == Color.Red.toUInt32() => this.realState = Color(0xFFFF00)
+                    case _ => Hilog.error(0, "test", "realState invalid")
                 }
-            }).backgroundColor(this.realState)
+            }
+            .backgroundColor(this.realState)
             .width(200).height(500)
         }
     }
@@ -252,7 +256,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.hi_tracemeter.HiTraceMeter
+import ohos.hi_trace_meter.HiTraceMeter
 
 @Entry
 @Component

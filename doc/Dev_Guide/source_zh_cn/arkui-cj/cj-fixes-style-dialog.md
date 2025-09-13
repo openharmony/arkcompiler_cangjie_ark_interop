@@ -26,7 +26,9 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.*
 import ohos.prompt_action.ButtonInfo
-import ohos.prompt_action.PromptAction
+import ohos.arkui.ui_context.*
+import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -37,16 +39,16 @@ class EntryView {
             Button("showActionMenu").onClick(
                 {
                     evt =>
-                    let buttons: Array<ButtonInfo> = [ButtonInfo("item1", Color.Gray), ButtonInfo("item2", Color.Black)]
-                    PromptAction.showActionMenu(title: "showActionMenu Title Info", buttons: buttons,
+                    let buttons: Array<ButtonInfo> = [ButtonInfo(text: "item1", color: Color.Gray), ButtonInfo(text: "item2", color: Color.Black)]
+                    getUIContext().getPromptAction().showActionMenu(ActionMenuOptions(title: "showActionMenu Title Info", buttons: buttons),
                         callback: {
-                            err: Option<AsyncError>, i: Option<Int32> => try {
+                            err: Option<BusinessException>, i: Option<Int32> => try {
                                 match (err) {
-                                    case Some(e) => AppLog.error("error: errcode is ${e.code}")
+                                    case Some(e) => Hilog.info(0, "cangjie", "error: errcode is ${e.code}")
                                     case _ => index1 = i.getOrThrow()
                                 }
                             } catch (e: Exception) {
-                                AppLog.error(e.toString())
+                                Hilog.info(0, "cangjie", e.toString())
                             }
                         })
                 }
@@ -62,55 +64,6 @@ class EntryView {
 ## 对话框（showDialog）
 
 对话框通过PromptAction方法获取到PromptAction对象，支持在回调或开发者自定义类中使用。
-
-创建并显示对话框，对话框响应后异步返回选中按钮在buttons数组中的索引。
-
- <!-- run -->
-
-```cangjie
-// xxx.cj
-package ohos_app_cangjie_entry
-
-import ohos.base.*
-import ohos.arkui.component.*
-import ohos.arkui.state_management.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.*
-import ohos.prompt_action.ButtonInfo
-import ohos.prompt_action.PromptAction
-
-@Entry
-@Component
-class EntryView {
-    @State var index0: Int32 = 0
-    func build() {
-        Column {
-            Button("showDialog").onClick(
-                {
-                    evt =>
-                    let buttons: Array<ButtonInfo> = [
-                        ButtonInfo("button1", Color.Black),
-                        ButtonInfo("button2", Color.Black)]
-                    PromptAction.showDialog(title: "showDialog Title Info", message: "Message Info", buttons: buttons,
-                        callback: {
-                            err: Option<AsyncError>, i: Option<Int32> => try {
-                                match (err) {
-                                    case Some(e) => AppLog.error("error: errcode is ${e.code}")
-                                    case _ => index0 = i.getOrThrow()
-                                }
-                            } catch (e: Exception) {
-                                AppLog.error(e.toString())
-                            }
-                        })
-                }
-            )
-        }.width(100.percent).padding(top: 5)
-    }
-}
-
-```
-
-![image](figures/UIShowDialog.gif)
 
 ## 选择器弹窗（PickerDialog）
 
@@ -128,144 +81,6 @@ class EntryView {
 | onWillAppear    | () -> Unit | 弹窗显示动效前的事件回调。 |
 | onWillDisappear | () -> Unit | 弹窗退出动效前的事件回调。 |
 
-### 日历选择器弹窗（CalendarPickerDialog）
-
-日历选择器弹窗提供日历视图，包含年、月和星期信息，开发者可调用show函数，定义并弹出日历选择器弹窗。
-
-通过配置 acceptButtonStyle、cancelButtonStyle可以实现自定义按钮样式。
-
- <!-- run -->
-
-```cangjie
-// xxx.cj
-package ohos_app_cangjie_entry
-
-import ohos.base.*
-import ohos.arkui.component.*
-import ohos.arkui.state_management.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.*
-import std.time.DateTime
-import kit.PerformanceAnalysisKit.Hilog
-
-@Entry
-@Component
-class EntryView {
-    @State
-    var selectedDate: DateTime = DateTime.now()
-    func build() {
-        Row {
-            Column {
-                Button("Show CalendarPicker Dialog").onClick {
-                    Hilog.info(0, "AppLogCj", "CalendarDialog.show")
-                    let acceptButtonStyle = PickerDialogButtonStyle(
-                        fontColor: Color.Blue,
-                        fontSize: 16.fp,
-                        fontStyle: FontStyle.Normal,
-                        fontFamily: "sans-serif",
-                        backgroundColor: Color.White,
-                        borderRadius: BorderRadiuses(topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10)
-                    )
-
-                    let cancelButtonStyle = PickerDialogButtonStyle(
-                        fontColor: Color.Red,
-                        fontSize: 16.fp,
-                        fontStyle: FontStyle.Normal,
-                        fontFamily: "sans-serif",
-                        backgroundColor: Color.White,
-                        borderRadius: BorderRadiuses(topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10)
-                    )
-                    CalendarPickerDialog.show(
-                        options: CalendarDialogOptions(
-                            selected: selectedDate,
-                            acceptButtonStyle: acceptButtonStyle,
-                            cancelButtonStyle: cancelButtonStyle,
-                            onAccept: {
-                                value => Hilog.info(0, "AppLogCj",
-                                    "calendar onAccept: ${value.year}-${value.monthValue}-${value.dayOfMonth}")
-                            },
-                            onCancel: {=> Hilog.info(0, "AppLogCj", "calendar onCancel")},
-                            onChange: {
-                                value => Hilog.info(0, "AppLogCj",
-                                    "calendar onChange: ${value.year}-${value.monthValue}-${value.dayOfMonth}")
-                            },
-                            onDidAppear: {=> Hilog.info(0, "AppLogCj", "calendar onDidAppear")},
-                            onDidDisappear: {=> Hilog.info(0, "AppLogCj", "calendar onDidDisappear")},
-                            onWillAppear: {=> Hilog.info(0, "AppLogCj", "calendar onWillAppear")},
-                            onWillDisappear: {=> Hilog.info(0, "AppLogCj", "calendar onWillDisappear")},
-                            shadow: ShadowOptions(radius: 20.0, color: Color.Gray, offsetX: 50.0, offsetY: 10.0)
-                        )
-                    )
-                }
-            }.width(100.percent).padding(top: 5)
-        }
-    }
-}
-
-```
-
-![image](figures/UIContextShowCalendarpickerDialog.gif)
-
-### 日期滑动选择器弹窗（DatePickerDialog）
-
-开发者可以根据指定的日期范围，创建日期滑动选择器弹窗，将日期信息清晰地展示在弹出的窗口上。
-
-弹窗中配置lunarSwitch、showTime为true时，展示切换农历的开关以及时间，当checkbox被选中时，显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.time.*
-import ohos.hilog.*
-
-@Entry
-@Component
-class EntryView {
-    @State
-    var selectedDate: DateTime = DateTime.of(year: 2023, month: Month.of(1), dayOfMonth: 1)
-    func build() {
-        Column {
-            Button("DatePickerDialog")
-                .margin(20)
-                .onClick {
-                    Hilog.info(0, "AppLogCj", "DatePickerDialog.show")
-                    DatePickerDialog.show(
-                        options: DatePickerDialogOptions(
-                            start: DateTime.of(year: 2000, month: Month.of(1), dayOfMonth: 1),
-                            end: DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31),
-                            selected: this.selectedDate,
-                            showTime: true,
-                            lunarSwitch: true,
-                            useMilitaryTime: false,
-                            disappearTextStyle: PickerTextStyle(Color.PINK, MyFont(size: 22.fp, weight: FontWeight.Bold)),
-                            textStyle: PickerTextStyle(0xff00ff00, MyFont(size: 18.fp, weight: FontWeight.Normal)),
-                            selectedTextStyle: PickerTextStyle(0xff182431, MyFont(size: 14.fp, weight: FontWeight.Regular)),
-                            onDateAccept: {
-                                value => Hilog.info(0, "AppLogCj",
-                                    "DatePickerDialog:onDateAccept(): ${value.year}-${value.monthValue}-${value.dayOfMonth}")
-                            },
-                            onCancel: {=> Hilog.info(0, "AppLogCj", "DatePickerDialog:onCancel()")},
-                            onDateChange: {
-                                value => Hilog.info(0, "AppLogCj",
-                                    "DatePickerDialog:onDateChange(): ${value.year}-${value.monthValue}-${value.dayOfMonth}")
-                            },
-                            onDidAppear: {=> Hilog.info(0, "AppLogCj", "DatePickerDialog:onDidAppear()")},
-                            onDidDisappear: {=> Hilog.info(0, "AppLogCj", "DatePickerDialog:onDidDisappear()")},
-                            onWillAppear: {=> Hilog.info(0, "AppLogCj", "DatePickerDialog:onWillAppear()")},
-                            onWillDisappear: {=> Hilog.info(0, "AppLogCj", "DatePickerDialog:onWillDisappear()")}
-                        )
-                    )
-                }
-        }.width(100.percent)
-    }
-}
-```
-
-![datapickerdialog](./figures/datapickerdialog.gif)
-
 ## 列表选择弹窗（ActionSheet）
 
 列表选择器弹窗适用于呈现多个操作选项，尤其当界面中仅需展示操作列表而无其他内容时。
@@ -282,27 +97,28 @@ package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import std.collection.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
 class EntryView {
     func build() {
         Column() {
-            Button('showActionSheet').onClick {
-                let confirm: Confirm = Confirm("Confirm button", {=> AppLog.info("Get Alert Dialog handled")},
-                    defaultFocus: true, style: DialogButtonStyle.DEFAULT)
+            Button('showActionSheet').onClick { e =>
+                let confirm: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "Confirm button", action: {=> Hilog.info(0, "cangjie", "Get Alert Dialog handled")},
+                    defaultFocus: true, style: DialogButtonStyle.Default)
                 let sheets: Array<SheetInfo> = [
-                    SheetInfo("apple", {=> AppLog.info("apple")}),
-                    SheetInfo("banana", {=> AppLog.info("banana")}),
-                    SheetInfo("pears", {=> AppLog.info("pears")})]
-                ActionSheet.show(
+                    SheetInfo(title: "apple", action: {=> Hilog.info(0, "cangjie", "apple")}),
+                    SheetInfo(title: "banana", action: {=> Hilog.info(0, "cangjie", "banana")}),
+                    SheetInfo(title: "pears", action: {=> Hilog.info(0, "cangjie", "pears")})]
+                getUIContext().showActionSheet(
                     ActionSheetOptions(
-                        'ActionSheet title',
-                        'message',
-                        sheets,
+                        title: 'ActionSheet title',
+                        message: 'message',
+                        sheets: sheets,
                         autoCancel: false,
                         confirm: confirm,
                         width: 300,
@@ -310,7 +126,7 @@ class EntryView {
                         cornerRadius: BorderRadiuses(topLeft: 20.vp, topRight: 20.vp, bottomLeft: 20.vp,
                             bottomRight: 20.vp),
                         borderWidth: 1.vp,
-                        borderStyle: EdgeStyle.SOILD,
+                        borderStyle: EdgeStyles(),
                         borderColor: Color.Blue,
                         backgroundColor: Color.White,
                         transition: TransitionEffect.asymmetric(
@@ -357,8 +173,10 @@ package ohos_app_cangjie_entry
 
 import ohos.base.*
 import ohos.arkui.component.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -367,24 +185,25 @@ class EntryView {
         Column() {
             Button('showAlertDialog')
                 .onClick {
+                    evt =>
                     let primaryButton = AlertDialogButtonOptions(
                         value: 'cancel',
                         action: {
-                            => AppLog.info('Callback when the first button is clicked')
+                            => Hilog.info(0, "cangjie", 'Callback when the first button is clicked')
                         }
                     )
                     let secondaryButton = AlertDialogButtonOptions(
                         enabled: true,
                         defaultFocus: true,
-                        style: DialogButtonStyle.HIGHLIGHT,
+                        style: DialogButtonStyle.Highlight,
                         value: 'ok',
                         action: {
-                            => AppLog.info('Callback when the second button is clicked')
+                            => Hilog.info(0, "cangjie", 'Callback when the second button is clicked')
                         }
                     )
-                    AlertDialog.show(
+                    getUIContext().showAlertDialog(
                         AlertDialogParamWithButtons(
-                            'text',
+                            message: 'text',
                             title: 'title',
                             autoCancel: true,
                             alignment: DialogAlignment.Center,

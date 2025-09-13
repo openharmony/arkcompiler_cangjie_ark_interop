@@ -37,7 +37,6 @@
 
 \@Observed装饰的类，如果其成员为非简单类型，比如class或数组，class类型需要被\@Observed装饰，数组类型建议使用ObservedArray或ObservedArrayList，否则将观察不到其属性的变化。
 
-
 ```cangjie
 class Child{
     var num: Int64 = 0
@@ -61,7 +60,6 @@ class Parent{
 以上示例中，Parent被 \@Observed 装饰，其被 \@Publish 修饰的成员变量的赋值的变化是可以被观察到的。
 
 对于child，因其类型Child没有被 \@Observed 装饰，且其中的属性没有被\@Publish属性修饰，其属性的修改不能被观察到；而数组arr，作为一种复杂类型，建议使用ObservedArray类型替换。
-
 
 ```cangjie
 var parent: Parent = (child: Child(1), count: 1);
@@ -101,23 +99,23 @@ class EntryView{
     var Time: TimeClass = TimeClass(time: DateTime.now())
 
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)){
+        Flex(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center){
             Column(){
                 Text("Time: ${Time.time.format("HH:mm:ss")}").margin(10)
                 Button("time update").onClick{
-                    =>
+                    evt =>
                         Time.time = DateTime.now()
                 }
                 Button("time addHours by 2").onClick{
-                    =>
+                    evt =>
                         Time.time = Time.time.addHours(2)
                 }
                 Button("time addMinutes by 31").onClick{
-                    =>
+                    evt =>
                         Time.time = Time.time.addMinutes(31)
                 }
                 Button("add 31 seconds").onClick{
-                    =>
+                    evt =>
                         Time.time = Time.time.addSeconds(31)
                 }
             }
@@ -186,7 +184,7 @@ class EntryView{
         Column{
             Text("Index: ${this.bag.book.name}")
             Button("change book.name").onClick{
-                =>
+                evt =>
                     this.bag.book.name = "ArkUI"
             }
         }
@@ -204,7 +202,6 @@ class EntryView{
 
 【反例】
 
-
 ```cangjie
 
 @Observed
@@ -218,7 +215,6 @@ class Info1{
 ```
 
 【正例】
-
 
 ```cangjie
 
@@ -244,7 +240,6 @@ class Test{
 ### \@Publish 装饰成员变量未触发UI更新
 
 如果需要观察到自定义类型的成员变化，触发UI重新渲染。\@Publish 装饰的变量需要是自定义类型中的成员变量，且该自定义类型需要被 \@Observed 装饰，否则缺少任意条件，其内容更新都不会触发UI更新。
-
 
 ```cangjie
 @Observed
@@ -278,7 +273,6 @@ class Page{
 
 以下示例创建了一个Parent类，包含一个自定义类型Child。
 
-
 ```cangjie
 package ohos_app_cangjie_entry
 
@@ -297,23 +291,22 @@ class Child{
     var childId: Int64=1
 }
 
-
 @Entry
 @Component
 class EntryView{
     @State
     var parent1: Parent = Parent(parentId: 0,child: Child())
     func build(){
-        Column(10){
+        Column(space: 10){
             Text("parentId: ${parent1.parentId}")
             Button("change parentId by 1").onClick{
-                =>
+                evt =>
                     parent1.parentId += 1
             }
 
             Text("childId: ${parent1.child.childId}")
             Button("change childId by 1").onClick{
-                =>
+                evt =>
                     parent1.child.childId += 1
             }
         }
@@ -351,23 +344,22 @@ class Child{
     var childId: Int64
 }
 
-
 @Entry
 @Component
 class EntryView{
     @State
     var parent1: Parent = Parent(parentId: 0,child: Child(childId: 1))
     func build(){
-        Column(10){
+        Column(space: 10){
             Text("parentId: ${parent1.parentId}")
             Button("change parentId by 1").onClick{
-                =>
+                evt =>
                     parent1.parentId += 1
             }
 
             Text("childId: ${parent1.child.childId}")
             Button("change childId by 1").onClick{
-                =>
+                evt =>
                     parent1.child.childId += 1
             }
         }

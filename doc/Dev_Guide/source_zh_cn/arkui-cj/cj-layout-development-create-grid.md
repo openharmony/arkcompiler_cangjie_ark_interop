@@ -50,10 +50,9 @@ rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间
 
 只要将rowsTemplate的值为"1fr 1fr 1fr"，同时将columnsTemplate的值为"1fr 2fr 1fr"，即可实现上述网格布局。
 
-
 ```cangjie
 Grid() {
-  ...
+  // ...
 }
 .rowsTemplate("1fr 1fr 1fr")
 .columnsTemplate("1fr 2fr 1fr")
@@ -61,32 +60,7 @@ Grid() {
 
 > **说明：**
 >
-> 当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md#组件属性)。
-
-### 设置主轴方向
-
-使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过layoutDirection设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合minCount和maxCount属性来约束主轴方向上的网格数量。
-
-**图4** 主轴方向示意图
-
-![GridItem3](figures/GridItem3.png)
-
-当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，如上图4所示。此时，将maxCount属性设为3，表示主轴方向上最大显示的网格单元数量为3。
-
-
-```cangjie
-Grid() {
-  ...
-}
-.maxCount(3)
-.layoutDirection(GridDirection.Row)
-```
-
-> **说明：**
->
-> - layoutDirection属性仅在不设置rowsTemplate和columnsTemplate时生效，此时元素在layoutDirection方向上排列。
-> - 仅设置rowsTemplate时，Grid主轴为水平方向，交叉轴为垂直方向。
-> - 仅设置columnsTemplate时，Grid主轴为垂直方向，交叉轴为水平方向。
+> 当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、cellLength属性不生效，属性说明可参考[Grid-属性](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md#组件属性)。
 
 ## 在网格布局中显示数据
 
@@ -98,27 +72,26 @@ Grid() {
 
 Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 
-
 ```cangjie
 Grid() {
     GridItem() {
         Text("会议")
-          ...
+        //  ...
     }
 
     GridItem() {
         Text("签到")
-          ...
+        //  ...
     }
 
     GridItem() {
         Text("投票")
-          ...
+        //  ...
     }
 
     GridItem() {
         Text("打印")
-          ...
+        //  ...
     }
 }
 .rowsTemplate("1fr 1fr")
@@ -165,10 +138,9 @@ class EntryView {
 
 通过Grid的rowsGap和columnsGap可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15.vp，列间距为10.vp。
 
-
 ```cangjie
 Grid() {
-  ...
+  // ...
 }
 .columnsGap(10)
 .rowsGap(15)
@@ -186,7 +158,6 @@ Grid() {
 
 如上图7所示的横向可滚动网格布局，只要设置rowsTemplate属性的值且不设置columnsTemplate属性，当内容超出Grid组件宽度时，Grid可横向滚动进行内容展示。
 
-
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
@@ -198,7 +169,7 @@ import ohos.resource_manager.*
 class EntryView {
     @State var services: Array<String> = ["直播", "进口"]
     func build() {
-            Column(5) {
+            Column(space: 5) {
                 Grid() {
                     ForEach(this.services, itemGeneratorFunc: {service: String, _: Int64 =>
                         GridItem() {
@@ -225,13 +196,11 @@ class EntryView {
 
 Grid组件初始化时，可以绑定一个[Scroller](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md#scroll)对象，用于进行滚动控制，例如通过Scroller对象的[scrollPage](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md#func-scrollpagebool)方法进行翻页。
 
-
 ```cangjie
 var scroller: Scroller = Scroller()
 ```
 
 在日历页面中，用户在点击“下一页”按钮时，应用响应点击事件，通过指定scrollPage方法的参数next为true，滚动到下一页。
-
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -245,7 +214,7 @@ class EntryView {
     var scroller: Scroller = Scroller()
     func build() {
         Column() {
-            Grid(this.scroller) {
+            Grid(scroller: this.scroller) {
               // 添加内容
             }
             .columnsTemplate("1fr 1fr 1fr 1fr 1fr 1fr 1fr")
@@ -283,7 +252,6 @@ class EntryView {
 当使用懒加载方式渲染网格时，为了更好的滚动体验，减少滑动时出现白块，Grid组件中也可通过cachedCount属性设置GridItem的预加载数量，只在懒加载LazyForEach中生效。
 
 设置预加载数量后，会在Grid显示区域前后各缓存cachedCount\*列数个GridItem，超出显示和缓存范围的GridItem会被释放。
-
 
 ```cangjie
 Grid() {

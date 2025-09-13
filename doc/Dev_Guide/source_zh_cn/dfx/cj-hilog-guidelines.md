@@ -44,6 +44,7 @@ HiLog中定义了DEBUG、INFO、Warn、ERROR、FATAL五种日志级别，并提�
 1. 新建一个工程，选择“[Cangjie] Empty Ability”。
 
 2. 在**Project**窗口单击entry &gt; src &gt; main &gt; cangjie，打开工程中的index.cj文件，添加一个按钮，单击按钮打印日志。
+
    示例代码如下：
 
    <!-- compile -->
@@ -88,6 +89,7 @@ HiLog中定义了DEBUG、INFO、Warn、ERROR、FATAL五种日志级别，并提�
 3. 在真机上运行该工程，单击应用/服务界面上的“Next”按钮。
 
 4. 在DevEco Studio的底部，切换到“Log”窗口，设置日志的过滤条件。
+
    选择当前的设备及进程，日志级别选择Verbose，搜索内容设置为“testTag”。此时窗口仅显示符合条件的日志。
 
    打印日志结果为:

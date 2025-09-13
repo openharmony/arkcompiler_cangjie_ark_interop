@@ -58,6 +58,10 @@
     import kit.AbilityKit.*
     import kit.UniversalKeystoreKit.*
 
+    func loggerInfo(str: String) {
+        Hilog.info(0, "CangjieTest", str)
+    }
+
     /*
      * 确定密钥别名和封装密钥属性参数集
      */
@@ -308,9 +312,6 @@
         }
     }
 
-    func loggerInfo(str: String) {
-        Hilog.info(0, "CangjieTest", str)
-    }
     ```
 
 - DH密钥协商用例
@@ -331,7 +332,6 @@
     func loggerInfo(str: String) {
         Hilog.info(0, "CangjieTest", str)
     }
-
 
     func StringToUint8Array(str: String) {
         return str.toArray()

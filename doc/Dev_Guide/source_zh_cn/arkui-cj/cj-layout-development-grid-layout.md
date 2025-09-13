@@ -42,13 +42,11 @@
 
 - 针对断点位置，开发者根据实际使用场景，通过一个单调递增数组设置。由于breakpoints最多支持六个断点，单调递增数组长度最大为5。
 
-
     ```cangjie
     breakpoints: BreakPoints(value: [100.vp, 200.vp])
     ```
 
     表示启用xs、sm、md共3个断点，小于100.vp为xs，100.vp-200.vp为sm，大于200.vp为md。
-
 
     ```cangjie
     breakpoints: BreakPoints(value: [320.vp, 520.vp, 840.vp, 1080.vp])
@@ -60,7 +58,7 @@
 
     例如，使用栅格的默认列数12列，通过断点设置将应用宽度分成六个区间，在各区间中，每个栅格子元素占用的列数均不同。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -79,7 +77,7 @@
                     value: [200.vp, 300.vp, 400.vp, 500.vp, 600.vp],
                     reference: BreakpointsReference.WindowSize
                 ),
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
                 ForEach(
                     bgColors,
@@ -108,7 +106,7 @@ GridRow中通过columns设置栅格布局的总列数。
 
 - columns默认值为12，即在未设置columns时，任何断点下，栅格布局被分成12列。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -143,7 +141,7 @@ GridRow中通过columns设置栅格布局的总列数。
 
 - 当columns为自定义值，栅格布局在任何尺寸设备下都被分为columns列。下面分别设置栅格布局列数为4和8，子元素默认占一列，效果如下：
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -219,7 +217,7 @@ GridRow中通过columns设置栅格布局的总列数。
 
 - 当columns类型为GridRowColumnOption时，支持下面六种不同尺寸（xs, sm, md, lg, xl, xxl）设备的总列数设置，各个尺寸下数值可不同。
 
-         <!-- run-->
+    <!-- run-->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -266,15 +264,13 @@ GridRow中通过columns设置栅格布局的总列数。
 
 - 子组件默认从左往右排列。
 
-
     ```cangjie
-    GridRow(direction: GridRowDirection.GridRowRow ){}
+    GridRow(direction: GridRowDirection.Row ){}
     ```
 
     ![Grid4](figures/Grid4.png)
 
 - 子组件从右往左排列。
-
 
     ```cangjie
     GridRow(direction: GridRowDirection.RowReverse ){}
@@ -288,7 +284,6 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 - 当gutter类型为Length时，同时设置栅格子组件间水平和垂直方向边距且相等。下例中，设置子组件水平与垂直方向距离相邻元素的间距为10。
 
-
     ```cangjie
     GridRow( gutter: 10.vp ){}
     ```
@@ -296,7 +291,6 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
     ![Grid6](figures/Grid6.png)
 
 - 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
-
 
     ```cangjie
     GridRow( gutter: GutterOption(x: 20.vp, y: 50.vp) ){}
@@ -310,29 +304,23 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 设置span。
 
-
     ```cangjie
     GridCol( span: 2 ){}
-    GridCol( span:GridColColumnOption(xs: 1, sm:2, md:3, lg:4, xl:12, xxl: 12) ){}
     GridCol(){}.span(2)
     GridCol(){}.span(GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12))
     ```
 
 - 设置offset。
 
-
     ```cangjie
-    GridCol( gridColOffset: 2 ){}
-    GridCol( gridColOffset:GridColColumnOption(xs: 1, sm:2, md:3, lg:4, xl:12, xxl: 12) ){}
-    GridCol(){}.gridColOffset((GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12,     xxl: 12)))
+    GridCol( offset: 2 ){}
+    GridCol(){}.gridColOffset((GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12)))
     ```
 
 - 设置order。
 
-
     ```cangjie
     GridCol( order: 2 ){}
-    GridCol( order:GridColColumnOption(xs: 1, sm:2, md:3, lg:4, xl:12, xxl: 12) ){}
     GridCol(){}.order(2)
     GridCol(){}.order(GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12))
     ```
@@ -343,7 +331,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 当类型为Int32时，子组件在所有尺寸设备下占用的列数相同。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -378,7 +366,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 当类型为GridColColumnOption时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -419,7 +407,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 当类型为Int32时，子组件偏移相同列数。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -456,7 +444,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 当类型为GridColColumnOption时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件所占列数设置,各个尺寸下数值可不同。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -481,7 +469,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                             .height(50.vp)
                         }
                         .backgroundColor(color)
-                        .offset(GridColColumnOption(xs: 1, sm: 2, md: 3, lg: 4, xl: 12, xxl: 12))
+                        .gridColOffset(GridColColumnOption(xs: 1, sm: 2, md: 3, lg: 4, xl: 12, xxl: 12))
                     }
                 )
             }
@@ -499,7 +487,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 当类型为Int32时，子组件在任何尺寸下排序次序一致。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -548,7 +536,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 - 当类型为GridColColumnOption时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234：sm为2341，md为3412，lg为2431。
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -576,7 +564,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                     .width(100.percent)
                     .height(50.vp)
                 }
-                .backgroundColor(Color.ORANGE)
+                .backgroundColor(Color(0xFFA500))
                 .order(GridColColumnOption(xs: 2, sm: 2, md: 6, lg: 1, xl: 12, xxl:     12))
                 GridCol() {
                     Row() {
@@ -585,7 +573,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                     .width(100.percent)
                     .height(50.vp)
                 }
-                .backgroundColor(Color.YELLOW)
+                .backgroundColor(Color(0xFFFF00))
                 .order(GridColColumnOption(xs: 3, sm: 3, md: 1, lg: 6, xl: 12, xxl:     12))
                 GridCol() {
                     Row() {
@@ -651,7 +639,7 @@ class EntryView {
                 }
                 .width(100.percent)
                 .height(10.percent)
-                .backgroundColor(Color.PINK)
+                .backgroundColor(0xFEC0CD)
             }.span(GridColColumnOption(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
         }
         .width(100.percent)

@@ -110,7 +110,7 @@ Button has four optional types: Capsule, Circle, Normal, and ROUNDED_RECTANGLE, 
   ```cangjie
   Button('font style', ButtonOptions(shape: ButtonType.Normal))
       .fontSize(20)
-      .fontColor(Color.PINK)
+      .fontColor(0xFEC0CD)
       .fontWeight(W800)
   ```
 
