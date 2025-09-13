@@ -23,7 +23,7 @@
    由于已使用update传入数据，此处data传入None。
 
 6. 读取[GcmParamsSpec](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#struct-gcmparamsspec).authTag作为解密的认证信息。
-   在GCM模式下，算法库当前只支持16字节的authTag，作为解密时初始化的认证信息。示例中authTag恰好为16字节。
+   在GCM模式下，算法库当前只支持16字节的authTag，作为解密时初始化的认证信息。示例中authTag长度恰好为16字节。
 
 ## 解密
 
@@ -66,7 +66,7 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
     let cipher = createCipher('AES128|GCM|PKCS7')
     cipher.initialize(CryptoMode.EncryptMode, symKey, gcmParams)
     let encryptUpdate = cipher.update(plainText)
-    // gcm模式加密doFinal时传入空，获得tag数据，并更新至gcmParams对象中。
+    // GCM模式加密doFinal时传入空，获得tag数据，并更新至gcmParams对象中。
     gcmParams.authTag = cipher.doFinal(None)
     return encryptUpdate
 }
@@ -77,7 +77,7 @@ func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
     decoder.initialize(CryptoMode.DecryptMode, symKey, gcmParams)
     let decryptUpdate = decoder.update(cipherText)
     decoder.doFinal(None)
-    return decryptUpdate;
+    return decryptUpdate
 }
 
 func genSymKeyByData(symKeyData: Array<UInt8>) {

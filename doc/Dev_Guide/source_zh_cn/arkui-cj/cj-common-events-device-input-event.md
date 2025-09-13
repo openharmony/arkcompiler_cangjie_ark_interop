@@ -29,7 +29,6 @@
 
 ### onHover
 
-
 ```cangjie
 public func onHover(callback: (Bool)->Unit): This
 ```
@@ -94,14 +93,13 @@ class EntryView {
 
 ### onMouse
 
-
 ```cangjie
 public func onMouse(callback: (MouseEvent)->Unit): This
 ```
 
-鼠标事件回调。绑定该API的组件每当鼠标指针在该组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-mouse.md#struct-mouseevent)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
+鼠标事件回调。绑定该API的组件每当鼠标指针在该组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-mouse.md#class-mouseevent)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
 
-开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（screenX/screenY/x/y）、按键（[MouseButton](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mousebutton)）、行为（[MouseAction](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mouseaction)）、时间戳（timestamp）、交互组件的区域（[EventTarget](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md#struct-eventtarget)）、事件来源（[SourceType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-sourcetype)）等。
+开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（screenX/screenY/x/y）、按键（[MouseButton](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mousebutton)）、行为（[MouseAction](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mouseaction)）、时间戳（timestamp）、交互组件的区域（[EventTarget](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md#class-eventtarget)）、事件来源（[SourceType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-sourcetype)）等。
 
 > **说明：**
 >
@@ -123,7 +121,7 @@ class EntryView {
     @State var color: Color = Color.Gray
 
     func build() {
-        Column(20) {
+        Column(space: 20) {
             Button(this.hoverText)
                 .width(200)
                 .height(100)
@@ -139,8 +137,6 @@ class EntryView {
                 })
                 .onMouse({event =>
                 this.buttonText = "Button onMouse:\n" +
-                    "button = ${event.button.toString()}\n" +
-                    "action = ${event.action.toString()}\n" +
                     "x,y = (${event.x},${event.y})\n" +
                     "windowXY=(${event.screenX},${event.screenY})"
                 })
@@ -156,8 +152,6 @@ class EntryView {
         .borderColor(Color.Red)
         .onMouse({event =>
                 this.columnText = "Column onMouse:\n" +
-                    "button = ${event.button.toString()}\n" +
-                    "action = ${event.action.toString()}\n" +
                     "x,y = (${event.x},${event.y})\n" +
                     "windowXY=(${event.screenX},${event.screenY})"
         })
@@ -167,76 +161,15 @@ class EntryView {
 
 ![onMouse1](./figures/onMouse1.gif)
 
-### hoverEffect
-
-
-```cangjie
-public func hoverEffect(value: HoverEffect)
-```
-
-鼠标悬浮态效果设置的通用属性。参数类型为HoverEffect，HoverEffect提供的Auto、Scale、Highlight效果均为固定效果，开发者无法自定义设置效果参数。
-
-| HoverEffect枚举值                    | 效果说明                                      |
-|:---------------------------------------- |:---------------------------------------- |
-|  Auto | 组件默认提供的悬浮态效果，由各组件定义。|
-|  Scale | 动画播放方式，鼠标悬浮时：组件大小从100%放大至105%，鼠标离开时：组件大小从105%缩小至100%。|
-|  Highlight | 动画播放方式，鼠标悬浮时：组件背景色叠加一个5%透明度的白色，视觉效果是组件的原有背景色变暗，鼠标离开时：组件背景色恢复至原有样式。|
-|  None | 禁用悬浮态效果。|
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column(10) {
-            Text("Auto")
-                .width(170)
-                .height(70)
-                .backgroundColor(Color.PINK)
-            Text("Scale")
-                .width(170)
-                .height(70)
-                .hoverEffect(HoverEffect.Scale)
-                .backgroundColor(Color.PINK)
-            Text("Highlight")
-                .width(170)
-                .height(70)
-                .hoverEffect(HoverEffect.Highlight)
-                .backgroundColor(Color.PINK)
-            Text("None")
-                .width(170)
-                .height(70)
-                .hoverEffect(HoverEffect.None)
-                .backgroundColor(Color.PINK)
-        }
-            .width(100.percent)
-            .height(100.percent)
-            .justifyContent(FlexAlign.Center)
-    }
-}
-```
-
-![hoverEffect](./figures/hoverEffect.gif)
-
-Text默认的悬浮态效果就是None，None会禁用悬浮态效果，Scale会让组件缩放，Highlight会使背板颜色变暗。
-
 ## 按键事件
 
 ### onKeyEvent
-
 
 ```cangjie
 public func onKeyEvent(callback: (KeyEvent)->Unit): This
 ```
 
-当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。
+当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#class-keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。
 
  <!-- run -->
 
@@ -260,10 +193,10 @@ class EntryView {
                 .width(140)
                 .height(70)
                 .onKeyEvent({ event =>
-                    if (event.keyType.getValue() == KeyType.Down.getValue()) {
+                    if (event.keyType == KeyType.Down) {
                         this.buttonType = 'Down'
                     }
-                    if (event.keyType.getValue() == KeyType.Up.getValue()) {
+                    if (event.keyType == KeyType.Up) {
                         this.buttonType = 'Up'
                     }
                     this.buttonText = """
@@ -284,10 +217,10 @@ class EntryView {
         .height(100.percent)
         .justifyContent(FlexAlign.Center)
         .onKeyEvent({ event =>
-            if (event.keyType.getValue() == KeyType.Down.getValue()) {
+            if (event.keyType == KeyType.Down) {
                 this.columnType = 'Down'
             }
-            if (event.keyType.getValue() == KeyType.Up.getValue()) {
+            if (event.keyType == KeyType.Up) {
                 this.columnType = 'Up'
             }
             this.columnText = """
@@ -338,10 +271,10 @@ class EntryView {
                 .onKeyEvent({ event =>
                     // 通过stopPropagation阻止事件冒泡
                     event.stopPropagation()
-                    if (event.keyType.getValue() == KeyType.Down.getValue()) {
+                    if (event.keyType == KeyType.Down) {
                         this.buttonType = 'Down'
                     }
-                    if (event.keyType.getValue() == KeyType.Up.getValue()) {
+                    if (event.keyType == KeyType.Up) {
                         this.buttonType = 'Up'
                     }
                     this.buttonText = """
@@ -362,10 +295,10 @@ class EntryView {
         .height(100.percent)
         .justifyContent(FlexAlign.Center)
         .onKeyEvent({ event =>
-            if (event.keyType.getValue() == KeyType.Down.getValue()) {
+            if (event.keyType == KeyType.Down) {
                 this.columnType = 'Down'
             }
-            if (event.keyType.getValue() == KeyType.Up.getValue()) {
+            if (event.keyType == KeyType.Up) {
                 this.columnType = 'Up'
             }
             this.columnText = """

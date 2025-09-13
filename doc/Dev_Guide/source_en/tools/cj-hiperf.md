@@ -55,7 +55,6 @@ command:
         report: report sampling information from perf.data format file
         stat:   Collect performance counter information
 
-
 See 'hiperf help [command]' for more information on a specific command.
 ```
 
@@ -115,7 +114,6 @@ hiperf list hw
 ```bash
 $ hiperf list hw
 event not support hw-ref-cpu-cycles
-
 
 Supported events for hardware:
         hw-cpu-cycles

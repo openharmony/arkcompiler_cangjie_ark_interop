@@ -32,7 +32,6 @@
 - 不建议在@Watch函数中调用异步操作，因为@Watch设计的用途是为了快速的计算，异步行为可能会导致重新渲染速度的性能问题。
 - @Watch参数为必选，且参数必须是声明的方法名，否则编译期会报错。
 
-
   ```cangjie
   @State @Watch[] var count : Int64 = 10
   @State @Watch["onChanged"] var count : Int64 = 10
@@ -44,7 +43,6 @@
   ```
 
 - @Watch内的参数必须是声明的方法名，否则编译期会报错。
-
 
   ```cangjie
   // 错误写法，没有对应名称的函数，编译报错
@@ -61,7 +59,6 @@
   ```
 
 - 常规变量不能被@Watch装饰，否则编译期会报错。
-
 
   ```cangjie
   // 错误写法
@@ -110,9 +107,9 @@ class EntryView {
   func build() {
     Column() {
       Button("add to basket")
-        .onClick({ =>
+        .onClick{ e =>
           this.count++
-        })
+        }
       TotalView(count: this.count)
     }
   }
@@ -142,12 +139,12 @@ import std.random.*
 class BasketViewer{
     @Link @Watch[onBasketUpdated] var shopBasket : ArrayList<Float64>
     @State var totalPurchase: Float64 = 0.0
-    func updateTotal():Float64{
+    func updateTotal(): Float64 {
         var total : Float64 = 0.0
         for(i in shopBasket){
             total += i
         }
-        if(total>=100.0){
+        if (total >= 100.0) {
             total = 0.9 * total
         }
         return total
@@ -159,7 +156,7 @@ class BasketViewer{
     func build() {
         Column(){
             ForEach(this.shopBasket,itemGeneratorFunc:
-                {item: Float64, index : Int64 =>
+                { item: Float64, index : Int64 =>
                     Text("${index}")
                     Text("Price：${item} €")
                     }
@@ -177,10 +174,10 @@ class EntryView {
     func build() {
         Column(){
             Button("Add to basket")
-                .onClick({etv=>
-                var temp = this.shopBasket.clone()
-                temp.add(100.0 * m.nextFloat64())
-                this.shopBasket = temp})
+                .onClick{ etv =>
+                    var temp = this.shopBasket.clone()
+                    temp.add(100.0 * m.nextFloat64())
+                    this.shopBasket = temp }
             BasketViewer(shopBasket : shopBasket)
         }
     }
@@ -213,7 +210,7 @@ class EntryView{
     @State var propName :String = "test"
     @State var fruit : Int64 = 0
     func countUpdated(){
-        if(this.propName=="apple"){
+        if (this.propName=="apple") {
             this.fruit = this.apple
         }
     }
@@ -226,11 +223,11 @@ class EntryView{
             Text("Total number of fruits: ${this.fruit.toString()}")
                 .fontSize(30)
             Button("Add apples")
-                .onClick({etv=> this.apple++
-                    this.propName = "apple"})
+                .onClick{etv=> this.apple++
+                    this.propName = "apple"}
             Button("Add cabbages")
-                .onClick({etv=> this.cabbage++
-                    this.propName = "cabbages"})
+                .onClick{etv=> this.cabbage++
+                    this.propName = "cabbages"}
 
         }
     }

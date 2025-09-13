@@ -20,7 +20,7 @@ class EntryView {
                     Button('shadowOption').fontSize(12)
                 }
                 .width(100)
-                .aspectRatio(1)
+                .aspectRatio(1.0)
                 .margin(10)
                 .justifyContent(FlexAlign.Center)
                 .backgroundColor(Color.WHITE)
@@ -31,7 +31,7 @@ class EntryView {
                     Button('shadowOption').fontSize(12)
                 }
                 .width(100)
-                .aspectRatio(1)
+                .aspectRatio(1.0)
                 .margin(10)
                 .justifyContent(FlexAlign.Center)
                 .backgroundColor(0xa8a888)

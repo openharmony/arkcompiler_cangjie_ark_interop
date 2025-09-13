@@ -52,7 +52,6 @@ class EntryView {
 
 使用方法：
 
-
 ```cangjie
 this.showTextBuilder()
 ```
@@ -95,7 +94,6 @@ class EntryView {
 ```
 
 使用方法：
-
 
 ```cangjie
 showTextBuilder()
@@ -152,7 +150,6 @@ class EntryView {
 ### 按引用传递参数
 
 按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起@Builder方法内的UI刷新。
-
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -240,10 +237,10 @@ class EntryView {
 
                 this.builder()
                 Button("点击改变builder_value内容")
-                .onClick({
-                    =>
+                .onClick{
+                    e =>
                     this.builder_value = "builder_value被点击了"
-                })
+                }
             }
         }
     }
@@ -422,17 +419,17 @@ class EntryView {
     func build() {
         Column {
             Button("局部 Builder")
-            .onClick({
-              => this.isShow = true
-            })
+            .onClick{
+              e => this.isShow = true
+            }
             .fontSize(20)
             .margin(10)
             .bindSheet(this.isShow, myBuilder, options: SheetOptions(onDisappear: {=> this.isShow = false}) )
 
             Button("全局 Builder")
-            .onClick({
-              => this.isShow2 = true
-            })
+            .onClick{
+              e => this.isShow2 = true
+            }
             .fontSize(20)
             .margin(10)
             .bindSheet(this.isShow2, myBuilder2, options: SheetOptions(onDisappear: {=> this.isShow2 = false}) )

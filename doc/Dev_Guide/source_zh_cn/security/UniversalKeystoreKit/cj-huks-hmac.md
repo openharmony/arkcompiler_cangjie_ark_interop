@@ -22,7 +22,7 @@ HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentic
 
 3. 调用[initSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions)初始化密钥会话，并获取会话的句柄handle。
 
-4. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，获取哈希后的数据。
+4. 调用[finishSession](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes)结束密钥会话，获取HMAC结果。
 
 ## 示例
 
@@ -38,7 +38,7 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-let HmackeyAlias = 'test_HMAC' // 密钥别名，用户自行指定，用于生成密钥
+let HmacKeyAlias = 'test_HMAC' // 密钥别名，用户自行指定，用于生成密钥
 var handle: ?HuksHandleId = None
 let plainText = '123456' // 待运算的数据
 var hashData: ?Array<UInt8> = None // HMAC运算后的数据
@@ -59,7 +59,7 @@ func GetHMACProperties() {
         ),
         HuksParam(
             HuksTag.HuksTagKeySize,
-            HuksKeySize.HUKS_AES_KEY_SIZE_256
+            HuksKeySize.HUKS_KEY_SIZE_256
         ),
         HuksParam(
             HuksTag.HuksTagPurpose,
@@ -67,26 +67,25 @@ func GetHMACProperties() {
         ),
         HuksParam(
             HuksTag.HuksTagDigest,
-            HuksKeyDigest.HUKS_DIGEST_SHA384,
+            HuksKeyDigest.HUKS_DIGEST_SHA384
         )
     ]
     return properties
 }
 
 /*
- * 模拟生成密钥场景
+ * 模拟密钥生成场景
  */
 func GenerateHMACKey() {
     // 获取生成密钥算法参数配置
     let genProperties = GetHMACProperties()
     let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
-    // 调用generateKeyItem生成密钥，HmackeyAlias是密钥别名，在生成密钥时进行指定的
-    generateKeyItem(HmackeyAlias, options)
+    // 调用generateKeyItem生成密钥，HmacKeyAlias是密钥别名，在生成密钥时进行指定的
+    generateKeyItem(HmacKeyAlias, options)
 }
 
-
 /*
- * 模拟HMAC场景
+ * 模拟HMAC计算场景
  */
 func HMACData() {
     // 获取HMAC算法参数配置
@@ -95,8 +94,8 @@ func HMACData() {
         properties: hmacProperties,
         inData: StringToUint8Array(plainText)
     )
-    // 调用initSession获取handle，HmackeyAlias是密钥别名，在生成密钥时进行指定的
-    initSession(HmackeyAlias, options)
+    // 调用initSession获取handle，HmacKeyAlias是密钥别名，在生成密钥时进行指定的
+    handle = initSession(HmacKeyAlias, options)
     // 调用finishSession获取HMAC的结果
     hashData = finishSession(handle.getOrThrow(), options)
 }

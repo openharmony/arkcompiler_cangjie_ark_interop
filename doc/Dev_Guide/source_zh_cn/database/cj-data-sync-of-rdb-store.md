@@ -58,10 +58,8 @@
     <!-- compile -->
 
     ```cangjie
-    import kit.ArkData.RelationalStoreSecurityLevel
-    import ohos.relational_store.*
-    import kit.AbilityKit.getStageContext
-    import kit.ArkUI.{BusinessException, Callback1Argument}
+    import ohos.data.relational_store.SecurityLevel as RelationalStoreSecurityLevel
+    import ohos.business_exception.BusinessException
     ```
 
 2. 请求权限。
@@ -76,6 +74,11 @@
 
     ```cangjie
     // main_ability.cj
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
+    import ohos.data.relational_store.RdbStore
+    import kit.ArkData.{StoreConfig, getRdbStore, RdbPredicates}
+    import kit.ArkUI.{WindowStage}
+
     var rdbStore: Option<RdbStore> = Option<RdbStore>.None
 
     class MainAbility <: UIAbility {
@@ -85,78 +88,32 @@
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
         }
 
         public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-            AppLog.info("MainAbility onWindowStageCreate.")
+            Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
             windowStage.loadContent("EntryView")
 
             let storeConfig = StoreConfig(
-                "RdbTest.db", // 数据库文件名
                 RelationalStoreSecurityLevel.S3, // 数据库安全级别
+                name: "RdbTest.db", // 数据库文件名
+                
             )
 
             try {
-                let store = getRdbStore(getStageContext(this.context), storeConfig)
+                let store = getRdbStore(this.context, storeConfig)
                 store.executeSql("CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))")
                 store.setDistributedTables(['EMPLOYEE'])
                 rdbStore = store
                 // 后续可进行数据的相关操作
             } catch (e: BusinessException) {
-                AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+                Hilog.error(0, "ErrorCode: ${e.code}", e.message)
             }
             // ...
         }
-    }
-    ```
-
-4. 分布式数据同步。使用SYNC_MODE_PUSH触发同步后，数据将从本设备向组网内的其它所有设备同步。
-
-    <!-- compile -->
-
-    ```cangjie
-    // 构造用于同步分布式表的谓词对象
-    let predicates = RdbPredicates('EMPLOYEE')
-    try {
-        // 调用同步数据的接口
-        let result = rdbStore.getOrThrow().sync(SYNC_MODE_PUSH, predicates)
-        for (i in (0..result.size)) {
-            AppLog.info("device:${result[i][0]}, status:${result[i][1]}")
-        }
-    } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
-    }
-    ```
-
-5. 分布式数据订阅。数据同步变化将触发订阅回调方法执行，回调方法的入参为发生变化的设备ID。
-
-    <!-- compile -->
-
-    ```cangjie
-    // 自定义回调函数
-    class TestCallback <: Callback1Argument<Array<ChangeInfo>> {
-        public init() {}
-        public open func invoke(arr: Array<ChangeInfo>): Unit {
-            AppLog.info("Call invoke.")
-        }
-    }
-    // 调用分布式数据订阅接口，注册数据库的观察者
-    // 当分布式数据库中的数据发生更改时，将调用回调
-    try {
-        rdbStore.getOrThrow().onDataChange(SubscribeType.SUBSCRIBE_TYPE_REMOTE, TestCallback())
-    } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
-    }
-
-    // 当前不需要订阅数据变化时，可以将其取消。
-    try {
-        rdbStore.getOrThrow().offDataChange(SubscribeType.SUBSCRIBE_TYPE_REMOTE, TestCallback())
-    } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
     }
     ```

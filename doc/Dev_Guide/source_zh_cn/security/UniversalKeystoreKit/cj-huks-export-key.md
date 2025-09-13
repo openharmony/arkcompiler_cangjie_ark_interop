@@ -1,6 +1,6 @@
 # 密钥导出（仓颉）
 
-业务需要获取持久化存储的非对称密钥的公钥时使用，当前支持ECC/RSA/ED25519/X25519/SM2的公钥导出。
+当业务需要获取持久化存储的非对称密钥的公钥时使用，当前支持ECC/RSA/ED25519/X25519/SM2的公钥导出。
 
 > **说明：**
 >
@@ -25,21 +25,22 @@ import kit.CoreFileKit.*
 import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
 /* 1. 设置密钥别名 */
 let keyAlias = "keyAlias"
 
-/* 2. option对象传空 */
+/* 2. options对象传空 */
 let emptyOptions: HuksOptions = HuksOptions(properties: [], inData: Bytes())
 
 try {
-    /* 3. 导出密钥 */
+    /* 3. 导出公钥 */
     let b = exportKeyItem(keyAlias, emptyOptions)
     loggerInfo("exportKeyItem success")
 } catch (e: Exception) {
     loggerInfo("exportKeyItem input arg invalid")
 }
 
-func loggerInfo(str: String) {
-    Hilog.info(0, "CangjieTest", str)
-}
 ```

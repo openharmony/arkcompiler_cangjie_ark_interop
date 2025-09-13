@@ -37,13 +37,11 @@ class EntryView {
 
 - Image组件的必选参数src。
 
-
   ```cangjie
   Image("https://xyz/test.jpg")
   ```
 
 - Text组件的非必选参数content。
-
 
   ```cangjie
   // string类型的参数
@@ -58,7 +56,6 @@ class EntryView {
 
   例如，设置变量或表达式来构造Image和Text组件的参数。
 
-
   ```cangjie
   Image(this.imagePath)
   Image("https://" + this.imageUrl)
@@ -71,14 +68,12 @@ class EntryView {
 
 - 配置Text组件的字体大小。
 
-
   ```cangjie
   Text("test")
     .fontSize(12)
   ```
 
 - 配置组件的多个属性。
-
 
   ```cangjie
   Image("test.jpg")
@@ -88,7 +83,6 @@ class EntryView {
   ```
 
 - 除了直接传递常量参数外，还可以传递变量或表达式。
-
 
   ```cangjie
   Text("hello")
@@ -101,7 +95,6 @@ class EntryView {
 - 对于系统组件，仓颉编程语言还为其属性预定义了一些枚举类型供开发者调用，枚举类型可以作为参数传递，但必须满足参数类型要求。
 
   例如，可以按以下方式配置Text组件的颜色和字体样式。
-
 
   ```cangjie
   Text("hello")
@@ -116,7 +109,6 @@ class EntryView {
 
 - 使用箭头函数配置组件的事件方法。
 
-
   ```cangjie
   Button("Click me")
   .onClick({ =>
@@ -126,7 +118,6 @@ class EntryView {
 
 - 使用箭头函数表达式配置组件的事件方法，要求使用“{ => ...}”，以确保函数与组件绑定，同时符合仓颉编程语言语法规范。
 
-
   ```cangjie
   Button("add counter")
     .onClick({ =>
@@ -135,7 +126,6 @@ class EntryView {
   ```
 
 - 使用声明的Lambda表达式，可以直接调用。
-
 
   ```cangjie
   var fn: () -> Unit = {=>}
@@ -159,7 +149,6 @@ class EntryView {
 
 以下是简单的Column组件配置子组件的示例。
 
-
 ```cangjie
 Column() {
   Text("Hello")
@@ -173,7 +162,6 @@ Column() {
 
 容器组件均支持子组件配置，可以实现相对复杂的多级嵌套。
 
-
 ```cangjie
 Column() {
   Row() {
@@ -182,7 +170,7 @@ Column() {
       .height(100)
     Button("click +1")
       .onClick({ =>
-        AppLog.info("+1 clicked!");
+        Hilog.info(0, "cangjie", +1 clicked!");
       })
   }
 }

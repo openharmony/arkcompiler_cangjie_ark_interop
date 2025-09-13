@@ -12,7 +12,6 @@
 
 使用全局的自定义构建函数，在本地初始化@BuilderParam。
 
-
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
@@ -194,12 +193,10 @@ class EntryView{
 
 【反例】
 
-
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import std.ast.FuncType
 
 @Builder func globalBuilder() {
     Text('Hello World')
@@ -237,7 +234,6 @@ class ChildPage {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import std.ast.FuncType
 
 @Builder func globalBuilder() {
     Text('Hello World')

@@ -19,7 +19,6 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 菜单需要调用bindMenu接口来实现。bindMenu响应绑定组件的点击事件，绑定组件后手势点击对应组件后即可弹出。
 
-
 ```cangjie
 Button("click for Menu").bindMenu(
     Action(
@@ -43,6 +42,7 @@ Button("click for Menu").bindMenu(
 
 ```cangjie
 package ohos_app_cangjie_entry
+
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
@@ -73,15 +73,15 @@ class EntryView {
     @Builder
     func MyMenu() {
         Menu() {
-            MenuItem(startIcon: @r(app.media.app_background), content: @r(app.string.Content_name),
-                endIcon: @r(app.string.Content_empty), labelInfo: @r(app.string.Content_empty))
-            MenuItem(startIcon: @r(app.media.app_background), content: @r(app.string.Content_name),
-                endIcon: @r(app.string.Content_empty), labelInfo: @r(app.string.Content_empty)).enabled(false)
+            MenuItem(startIcon: @r(app.media.startIcon), content: @r(app.string.module_desc),
+                endIcon: @r(app.string.module_desc), labelInfo: @r(app.string.module_desc))
+            MenuItem(startIcon: @r(app.media.startIcon), content: @r(app.string.module_desc),
+                endIcon: @r(app.string.module_desc), labelInfo: @r(app.string.module_desc)).enabled(false)
             MenuItem(
                 startIcon: this.iconStr,
-                content: @r(app.string.Content_name),
+                content: @r(app.string.module_desc),
                 endIcon: @r(app.media.startIcon),
-                labelInfo: @r(app.string.Content_empty),
+                labelInfo: @r(app.string.module_desc),
                 // 当builder参数进行配置时，表示与menuItem项绑定了子菜单。鼠标hover在该菜单项时，会显示子菜单。
                 builder: {=> bind(this.SubMenu, this)()}
             )
@@ -93,25 +93,24 @@ class EntryView {
                     .onChange(
                         {
                             selected =>
-                            AppLog.info("menuItem select${selected}")
                             let Str: Tmp = Tmp()
                             Str.set(@r(app.media.startIcon))
                         }
                     )
                 MenuItem(
                     startIcon: @r(app.media.startIcon),
-                    content: @r(app.string.Content_empty),
+                    content: @r(app.string.module_desc),
                     endIcon: @r(app.media.startIcon),
-                    labelInfo: @r(app.string.Content_empty),
+                    labelInfo: @r(app.string.module_desc),
                     builder: {=> bind(this.SubMenu, this)()}
                 )
             }
 
             MenuItem(
                 startIcon: this.iconStr2,
-                content: @r(app.string.Content_name),
+                content: @r(app.string.module_desc),
                 endIcon: @r(app.media.startIcon),
-                labelInfo: @r(app.string.Content_empty)
+                labelInfo: @r(app.string.module_desc)
             )
         }
     }
@@ -123,7 +122,6 @@ class EntryView {
 ```
 
 ### bindMenu属性绑定组件
-
 
 ```cangjie
 Button('click for Menu')
@@ -138,7 +136,6 @@ Button('click for Menu')
 
 - @Builder开发菜单内的内容与上文写法相同。
 - 确认菜单的弹出方式，使用bindContextMenu属性绑定组件。示例中为右键弹出菜单。
-
 
 ```cangjie
 Button('click for Menu')

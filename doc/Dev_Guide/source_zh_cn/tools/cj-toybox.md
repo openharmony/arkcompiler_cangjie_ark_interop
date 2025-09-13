@@ -52,7 +52,7 @@ toybox的执行方式有两种：
 
 | 命令 | 说明 |
 | :- | :- |
-| ascii     | 显示acsii编码表。<br/>usage: ascii |
+| ascii     | 显示ascii编码表。<br/>usage: ascii |
 | factor     | 分解质因数。<br/>usage: factor NUMBER... |
 | mcookie | 生成128位强随机数。<br/>usage: mcookie [-vV] |
 | mkpasswd | 对密码进行加密。<br/>usage: mkpasswd [-P FD] [-m TYPE] [-S SALT] [PASSWORD] [SALT] |
@@ -93,7 +93,7 @@ toybox的执行方式有两种：
 | hostname  | 获取当前主机名。<br/>usage: hostname [-bdsf] [-F FILENAME] [newname] |
 | insmod    | 加载内核模块。<br/>usage: insmod MODULE [MODULE_OPTIONS] |
 | logger    | 记录系统日志。<br/>usage: logger [-s] [-t TAG] [-p [FACILITY.]PRIORITY] [message...] |
-| lsmod     | 显示当前已经加载的模块，他们的大小和依赖。<br/>usage: lsmod |
+| lsmod     | 显示当前已经加载的模块，它们的大小和依赖关系。<br/>usage: lsmod |
 | mix       | 显示OSS声道，或者设置音量。<br/>usage: mix [-d DEV] [-c CHANNEL] [-l VOL] [-r RIGHT] |
 | modinfo   | 显示内核模块信息。<br/>usage: modinfo [-0] [-b basedir] [-k kernel] [-F field] [module \| file...] |
 | nproc     | 打印处理器数量。<br/>usage: nproc [--all] |

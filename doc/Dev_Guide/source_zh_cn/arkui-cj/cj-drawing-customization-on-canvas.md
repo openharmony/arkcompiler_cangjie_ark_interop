@@ -4,8 +4,6 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
 
 ## 使用画布组件绘制自定义图形
 
-可以由以下三种形式在画布绘制自定义图形：
-
 - 使用[CanvasRenderingContext2D](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md)对象在Canvas画布上绘制。
 
      <!-- run -->
@@ -24,8 +22,7 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
       //用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
       var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
       func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)
-          ) {
+          Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               //在canvas中调用CanvasRenderingContext2D对象。
               Canvas(this.context)
                   .width(100.percent)
@@ -35,8 +32,8 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
                       {
                           =>
                           //可以在这里绘制内容。
-                          this.context.lineWidth(0.6)
-                          this.context.strokeRect(50, 50, 200, 150);
+                          this.context.lineWidth = 0.6
+                          this.context.strokeRect(50.0, 50.0, 200.0, 150.0);
                       }
                   )
           }.width(100.percent).height(100.percent)
@@ -45,59 +42,6 @@ Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRe
   ```
 
   ![Canvas](figures/Canvas.jpg)
-
-- 离屏绘制是指将需要绘制的内容先绘制在缓存区，再将其转换成图片，一次性绘制到Canvas上，加快了绘制速度。过程为：
-
-  1. 通过transferToImageBitmap方法将离屏画布最近渲染的图像创建为一个ImageBitmap对象。
-  2. 通过CanvasRenderingContext2D对象的transferFromImageBitmap方法显示给定的ImageBitmap对象。
-
-  具体使用参考[OffscreenCanvasRenderingContext2D](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-
-  @Entry
-  @Component
-  class EntryView {
-      //用来配置CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。true表明开启抗锯齿
-      private let settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
-      private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
-      //用来创建OffscreenCanvas对象，width为离屏画布的宽度，height为离屏画布的高度。通过在canvas中调用OffscreenCanvasRenderingContext2D对象来绘制。
-      private let offCanvas: OffscreenCanvas = OffscreenCanvas(600.0, 600.0)
-      func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
-              //在canvas中调用CanvasRenderingContext2D对象。
-              Canvas(this.context)
-                  .width(100.percent)
-                  .height(100.percent)
-                  .backgroundColor(0XF5DC62)
-                  .onReady(
-                      {
-                          =>
-                          let offContext = this.offCanvas.getContext(contextType: ContextType.type_2d, options: this.settings)
-                          //可以在这里绘制内容
-                          offContext.strokeRect(50, 50, 200, 150)
-                          //将离屏绘值渲染的图像在普通画布上显示
-                          let image = this.offCanvas.transferToImageBitmap()
-                          this.context.lineWidth(5)
-                          this.context.transferFromImageBitmap(image)
-                      }
-                  )
-          }.width(100.percent).height(100.percent)
-      }
-  }
-  ```
-
-  ![Canvas](figures/Canvas.jpg)
-
-  > **说明：**
-  >
-  > 在画布组件中，通过CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制时调用的接口相同，接口参数如无特别说明，单位均为vp。
 
 ## 初始化画布组件
 
@@ -111,15 +55,25 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 
-Canvas(this.context)
-.width(100.percent)
-.height(100.percent)
-.backgroundColor(0XF5DC62)
-.onReady({
-  =>
-  this.context.fillStyle(0X0097D4)
-  this.context.fillRect(50, 50, 100, 100)
-})
+@Entry
+@Component
+class EntryView {
+    //用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿，true表明开启抗锯齿。
+    var settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
+    //用来创建CanvasRenderingContext2D对象，通过在canvas中调用CanvasRenderingContext2D对象来绘制。
+    var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
+    func build() {
+        Canvas(this.context)
+        .width(100.percent)
+        .height(100.percent)
+        .backgroundColor(0XF5DC62)
+        .onReady({
+            =>
+            this.context.fillStyle(0X0097D4)
+            this.context.fillRect(50.0, 50.0, 100.0, 100.0)
+        })
+    }
+}
 ```
 
 ![Canvas1](figures/Canvas1.jpg)
@@ -145,7 +99,7 @@ Canvas(this.context)
       private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
       func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+          Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               Canvas(this.context)
                   .width(100.percent)
                   .height(100.percent)
@@ -154,8 +108,8 @@ Canvas(this.context)
                       {
                           =>
                           this.context.beginPath()
-                          this.context.moveTo(50, 50)
-                          this.context.lineTo(280, 160)
+                          this.context.moveTo(50.0, 50.0)
+                          this.context.lineTo(280.0, 160.0)
                           this.context.stroke()
                       }
                   )
@@ -184,7 +138,7 @@ Canvas(this.context)
 
       var region: Path2D = Path2D()
       func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+          Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               Canvas(this.context)
                   .width(100.percent)
                   .height(100.percent)
@@ -227,7 +181,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
   private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
   func build() {
-      Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+      Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               Canvas(this.context)
               .width(100.percent)
               .height(100.percent)
@@ -236,7 +190,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                   =>
                       //绘制矩形
                       this.context.beginPath()
-                      this.context.rect(100, 50, 100, 100)
+                      this.context.rect(100.0, 50.0, 100.0, 100.0)
                       this.context.stroke()
                       //绘制圆形
                       this.context.beginPath()
@@ -273,7 +227,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
       private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
       func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+          Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               Canvas(this.context)
                   .width(100.percent)
                   .height(100.percent)
@@ -282,12 +236,12 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                       =>
                       // 文本填充
                       this.context.font(size: 50.px, weight: FontWeight.Bolder, family: "sans-serif")
-                      this.context.fillText("Hello World!", 50, 100)
+                      this.context.fillText("Hello World!", 50.0, 100.0)
                       // 文本描边
                       this.context.strokeStyle(0Xff0000)
-                      this.context.lineWidth(0.7)
+                      this.context.lineWidth = 0.7
                       this.context.font(size: 50.px, weight: FontWeight.Bolder, family: "sans-serif")
-                      this.context.strokeText("Hello World!", 50, 120)
+                      this.context.strokeText("Hello World!", 50.0, 120.0)
                       }
                   )
           }.width(100.percent).height(100.percent)
@@ -296,53 +250,6 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
   ```
 
   ![Canvas5](figures/Canvas5.jpg)
-
-- 绘制图片和图像像素信息处理。
-
-  可以通过[drawImage](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-drawimageimagebitmap-float64-float64)（图像绘制）、[putImageData](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-putimagedataimagedata-float64-float64)（使用[ImageData](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#class-imagedata)数据填充新的矩形区域）等接口绘制图片，通过[createImageData](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-createimagedataimagedata)（创建新的ImageData 对象）、[getPixelMap](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-getpixelmapfloat64-float64-float64-float64)（以当前canvas指定区域内的像素创建[PixelMap](../../../API_Reference/source_zh_cn/apis/ImageKit/cj-apis-image.md#class-pixelmap)对象）、[getImageData](../../../API_Reference/source_zh_cn/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-getimagedatafloat64-float64-float64-float64)（以当前canvas指定区域内的像素创建ImageData对象）等接口进行图像像素信息处理。
-
-     <!-- run -->
-
-  ```cangjie
-  package ohos_app_cangjie_entry
-
-  import kit.ArkUI.*
-  import ohos.arkui.state_macro_manage.*
-
-  @Entry
-  @Component
-  class EntryView {
-      private let settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
-      private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
-      private var offCanvas: OffscreenCanvas = OffscreenCanvas(600.0, 600.0)
-      private let img: ImageBitmap = ImageBitmap("resource://RAWFILE/1234.jpg")
-      func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
-              Canvas(this.context)
-                  .width(100.percent)
-                  .height(100.percent)
-                  .backgroundColor(0XF5DC62)
-                  .onReady(
-                      {
-                      =>
-                          let offContext = this.offCanvas.getContext(contextType: ContextType.type_2d, options: this.settings)
-                          // 使用drawImage接口将图片画在（0，0）为起点，宽高130的区域
-                          offContext.drawImage(this.img, 0, 0, 130, 130)
-                          // 使用getImageData接口，获得canvas组件区域中，（50，50）为起点，宽高130范围内的绘制内容
-                          let imagedata = offContext.getImageData(50, 50, 130, 130)
-                          // 使用putImageData接口将得到的ImageData画在起点为（150， 150）的区域中
-                          offContext.putImageData(imagedata, 150, 150)
-                          // 将离屏绘制的内容画到canvas组件上
-                          let image = this.offCanvas.transferToImageBitmap()
-                          this.context.transferFromImageBitmap(image)
-                      }
-                  )
-          }.width(100.percent).height(100.percent)
-      }
-  }
-  ```
-
-  ![drawimage](figures/drawimage.png)
 
 - 其他方法。
 
@@ -355,25 +262,34 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
   import kit.ArkUI.*
   import ohos.arkui.state_macro_manage.*
+  
+  @Entry
+  @Component
+  class EntryView {
+      private let settings: RenderingContextSettings = RenderingContextSettings(antialias: true)
+      private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
-  Canvas(this.context)
-      .width(100.percent)
-      .height(100.percent)
-      .backgroundColor(0XF5DC62)
-      .onReady(
-          {
-              =>
-              //创建一个径向渐变色的CanvasGradient对象
-              let grad = this.context.createRadialGradient(200, 200, 50, 200, 200, 200)
-              //为CanvasGradient对象设置渐变断点值，包括偏移和颜色
-              grad.addColorStop(0.0, 0XE87361)
-              grad.addColorStop(0.5, 0XFFFFF0)
-              grad.addColorStop(1.0, 0XBDDB69)
-              //用CanvasGradient对象填充矩形
-              this.context.fillStyle(grad)
-              this.context.fillRect(0, 0, 400, 400)
-          }
-      )
+      func build() {
+            Canvas(this.context)
+                .width(100.percent)
+                .height(100.percent)
+                .backgroundColor(0XF5DC62)
+                .onReady(
+                    {
+                        =>
+                        //创建一个径向渐变色的CanvasGradient对象
+                        let grad = this.context.createRadialGradient(200.0, 200.0, 50.0, 200.0, 200.0, 200.0)
+                        //为CanvasGradient对象设置渐变断点值，包括偏移和颜色
+                        grad.addColorStop(0.0, 0XE87361)
+                        grad.addColorStop(0.5, 0XFFFFF0)
+                        grad.addColorStop(1.0, 0XBDDB69)
+                        //用CanvasGradient对象填充矩形
+                        this.context.fillStyle(grad)
+                        this.context.fillRect(0.0, 0.0, 400.0, 400.0)
+                    }
+                )
+        }
+  }
   ```
 
   ![Canvas6](figures/Canvas6.jpg)
@@ -397,7 +313,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
       private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
       func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+          Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               Canvas(this.context)
                   .width(100.percent)
                   .height(100.percent)
@@ -408,9 +324,9 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                           // 设定填充样式，填充颜色设为蓝色
                           this.context.fillStyle(0X0097D4)
                           // 以(50, 50)为左上顶点，画一个宽高200的矩形
-                          this.context.fillRect(50, 50, 200, 200)
+                          this.context.fillRect(50.0, 50.0, 200.0, 200.0)
                           // 以(70, 70)为左上顶点，清除宽150高100的区域
-                          this.context.clearRect(70, 70, 150, 100)
+                          this.context.clearRect(70.0, 70.0, 150.0, 100.0)
                       }
                   )
           }.width(100.percent).height(100.percent)
@@ -439,7 +355,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
       // 使用Path2D的接口构造一个五边形
       var path: Path2D = Path2D()
       func build() {
-          Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+          Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
               Canvas(this.context)
                   .width(100.percent)
                   .height(100.percent)
@@ -447,11 +363,11 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                   .onReady(
                       {
                       =>
-                      path.moveTo(150, 50)
-                      path.lineTo(50, 150)
-                      path.lineTo(100, 250)
-                      path.lineTo(200, 250)
-                      path.lineTo(250, 150)
+                      path.moveTo(150.0, 50.0)
+                      path.lineTo(50.0, 150.0)
+                      path.lineTo(100.0, 250.0)
+                      path.lineTo(200.0, 250.0)
+                      path.lineTo(250.0, 150.0)
                       path.closePath()
                       // 设定填充色为蓝色
                       this.context.fillStyle(0X0097D4)

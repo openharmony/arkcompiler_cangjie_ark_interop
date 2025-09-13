@@ -79,7 +79,6 @@ func GenerateHMACKey() {
     generateKeyItem(HmackeyAlias, options)
 }
 
-
 /*
  * Simulate HMAC scenario
  */

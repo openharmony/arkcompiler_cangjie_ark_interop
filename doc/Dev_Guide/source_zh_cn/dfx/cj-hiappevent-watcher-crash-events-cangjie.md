@@ -19,7 +19,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 以实现对用户点击按钮触发崩溃场景生成的崩溃事件订阅为例，说明开发步骤。
 
-1. 新建一个仓颉应用工程，编辑工程中的“entry > src > main > cangjie > main_bility.cj”文件，导入依赖模块：
+1. 新建仓颉应用工程，编辑“entry > src > main > cangjie > main_bility.cj”文件，导入依赖模块：
 
    <!-- compile -->
 
@@ -28,7 +28,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    import kit.PerformanceAnalysisKit.{HiAppEvent, Hilog}
    ```
 
-2. 编辑工程中的“entry > src > main > cangjie > main_bility.cj”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
+2. 在“entry > src > main > cangjie > main_bility.cj”文件的onCreate函数中添加系统事件订阅，示例：
 
    <!-- compile -->
 
@@ -66,7 +66,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
     HiAppEvent.addWatcher(watcher)
    ```
 
-3. 编辑工程中的“entry > src > main > cangjie > Index.cj”文件，添加按钮并在其onClick函数构造崩溃场景，以触发崩溃事件，示例代码如下：
+3. 编辑“entry > src > main > cangjie > Index.cj”，添加按钮并在onClick中构造崩溃场景以触发事件，示例代码如下：
 
    <!-- compile -->
 
@@ -81,13 +81,13 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 4. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appCrash”，触发一次崩溃事件。崩溃事件发生后，系统会根据崩溃类型（CjError或NativeCrash）采用不同的栈回溯方式生成崩溃日志，然后再进行回调。其中NativeCrash栈回溯耗时约2秒，实际耗时与业务线程数量、进程间通信耗时有关。CjError触发进程内栈回溯，NativeCrash触发进程外栈回溯，因此NativeCrash栈回溯会比CjError栈回溯更耗时。用户可以订阅崩溃事件，栈回溯完成后会异步上报，不会阻塞当前业务。
 
-5. 若应用未捕获崩溃异常，则系统处理崩溃后应用退出，应用下次启动后HiAppEvent将崩溃事件上报给应用已注册的监听，完成回调。
+5. 若应用未捕获崩溃异常，系统处理后应用退出；下次启动时，HiAppEvent会将崩溃事件上报给已注册的监听并回调。
 
 若应用主动捕获崩溃异常，如下两种场景，HiAppEvent事件将会在应用退出前回调。
 
-场景1：异常处理中未主动退出，应用发生崩溃后将不会退出。例如采用[errorManger.on](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#static-func-onstring-errorobserver)方法捕获CjError崩溃；应用主动注册NativeCrash崩溃信号处理函数未主动退出。
+场景1：异常处理中未主动退出，应用崩溃后不退出。例如采用[errorManger.on](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-error_manager.md#static-func-onErrorManagerEvent-errorobserver)捕获CjError，或主动注册NativeCrash信号处理函数但未退出。
 
-场景2：异常处理耗时太久，应用退出时机延后。
+场景2：异常处理耗时过久，应用退出时机延后。
 
 HiAppEvent上报事件完成回调后，可以在Log窗口看到对系统事件数据的处理日志：
 

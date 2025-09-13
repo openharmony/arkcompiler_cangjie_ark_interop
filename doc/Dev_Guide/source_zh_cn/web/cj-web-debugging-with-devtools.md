@@ -15,8 +15,13 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前�
     ```cangjie
     // xxx.cj
     import ohos.arkui.state_macro_manage.*
-    import kit.ArkWeb.WebviewController
-    import kit.ArkUI.{Web, BusinessException}
+    import kit.PerformanceAnalysisKit.Hilog
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{Web}
+
+    func loggerError(str: String) {
+        Hilog.error(0, "CangjieTest", str)
+    }
 
     @Entry
     @Component
@@ -28,15 +33,15 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是一个Web前�
                 // 配置Web开启调试模式
                 WebviewController.setWebDebuggingAccess(true)
             } catch (e: BusinessException) {
-                AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+                loggerError("ErrorCode: ${e.code},  Message: ${e.message}")
             }
         }
 
-      func build() {
-          Column {
-              Web(src: 'www.example.com', controller: this.webController)
-          }
-      }
+        func build() {
+            Column {
+                Web(src: 'www.example.com', controller: this.webController)
+            }
+        }
     }
     ```
 
@@ -403,7 +408,7 @@ hdc fport ls
 - 请确保设备端的domain socket还存在。
 - 请确保domain socket名称里的进程号与被调试的应用的进程号相同。
 - 请删除hdc里其他不必要的转发任务。
-- 转发成功后，请用电脑端的Chrome浏览器打开网址 http://localhost:9222/json ，URL里的9222需要改为自己实际配置的TCP端口。
+- 转发成功后，请用电脑端的Chrome浏览器打开网址 <http://localhost:9222/json> ，URL里的9222需要改为自己实际配置的TCP端口。
 
     - 如果网页有内容， 说明端口转发成功，请在Chrome的调试页面[等待被调试页面的出现](#等待发现被调试页面)。
 
@@ -413,7 +418,7 @@ hdc fport ls
 
       ![chrome_localhost_refused](figures/devtools_resources_chrome_localhost_refused.jpg)
 
-- 电脑端Chrome浏览器打开 http://localhost:9222/json 页面有内容，但是Chrome的调试工具界面还是无法发现调试目标。
+- 电脑端Chrome浏览器打开 <http://localhost:9222/json> 页面有内容，但是Chrome的调试工具界面还是无法发现调试目标。
     - 请确保Chrome调试工具界面的 "Configure" 中配置的端口号，与端口转发指定的TCP端口号一致。
     - 在本文档中，默认使用的TCP端口号为9222。
       如果开发者使用了其他的TCP端口号(比如9223)，请同时修改[端口转发](#端口转发)中的TCP端口号和[Chrome调试工具界面"Configure"配置](#在chrome浏览器上打开调试工具页面)中的端口号。

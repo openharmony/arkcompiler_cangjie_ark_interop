@@ -16,7 +16,6 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为true
 
-
   ```cangjie
   Swiper() {
   Text('0')
@@ -36,7 +35,7 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
   Text('2')
     .width(90.percent)
     .height(100.percent)
-    .backgroundColor(Color.PINK)
+    .backgroundColor(0xFEC0CD)
     .textAlign(TextAlign.Center)
     .fontSize(30)
   }
@@ -48,7 +47,6 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
   ![loop_true](figures/loop_true.gif)
 
 - loop为false
-
 
   ```cangjie
   Swiper() {
@@ -66,7 +64,6 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 Swiper通过设置autoPlay属性，控制是否自动轮播子组件。该属性默认值为false。
 
 autoPlay为true时，会自动切换播放子组件，子组件与子组件之间的播放间隔通过interval属性设置。interval属性默认值为3000，单位毫秒。
-
 
 ```cangjie
 Swiper() {
@@ -87,7 +84,6 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 
 - 导航点使用默认样式
 
-
   ```cangjie
   Swiper() {
       Text('0')
@@ -107,7 +103,7 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
       Text('2')
       .width(90.percent)
       .height(100.percent)
-      .backgroundColor(Color.PINK)
+      .backgroundColor(0xFEC0CD)
       .textAlign(TextAlign.Center)
       .fontSize(30)
       }
@@ -120,7 +116,6 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 - 自定义导航点样式
 
   导航点直径设为30.vp，左边距为0，导航点颜色设为红色。
-
 
   ```cangjie
   Swiper() {
@@ -142,49 +137,9 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 
   ![ind](figures/ind.png)
 
-Swiper通过设置[displayArrow](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-swiper.md#func-displayarrowarrowstyle-bool)属性，可以控制导航点箭头的大小、位置、颜色，底板的大小及颜色，以及鼠标悬停时是否显示箭头。
-
-- 箭头使用默认样式
-
-
-  ```cangjie
-  Swiper() {
-    // ...
-  }
-  .width(100.percent)
-  .height(30.percent)
-  .displayArrow(true, isHoverShow: false)
-  ```
-
-  ![arrow1](figures/arrow1.gif)
-
-- 自定义箭头样式
-
-  箭头显示在组件两侧，大小为18.vp，导航点箭头颜色设为蓝色。
-
-
-  ```cangjie
-  Swiper() {
-    // ...
-  }
-  .width(100.percent)
-  .height(30.percent)
-  .displayArrow(
-  ArrowStyle(
-    showBackground: true,
-    isSidebarMiddle: true,
-    backgroundSize: 24,
-    backgroundColor: Color.White,
-    arrowSize: 18,
-    arrowColor: Color.Blue),
-  isHoverShow: false)
-  ```
-
-  ![arrow2](figures/arrow2.gif)
-
 ## 页面切换方式
 
-Swiper支持手指滑动、点击导航点和通过控制器三种方式切换页面，以下示例展示通过控制器切换页面的方法。
+Swiper支持手指滑动和点击导航点两种方式切换页面，以下示例展示通过控制器切换页面的方法。
 
  <!-- run -->
 
@@ -196,14 +151,13 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    private var swiperBackgroundColors: Array<Color> = [Color.Blue, Color.BROWN, Color.Gray, Color.Green, Color.ORANGE,
-        Color.PINK, Color.Red, Color.YELLOW]
+    private var swiperBackgroundColors: Array<Color> = [Color.Blue, Color.Black, Color.Gray, Color.Green, Color.White, Color.Red]
     private var swiperController: SwiperController = SwiperController();
     @State var animationModeStr: Bool = false
     @State var targetIndex: Int64 = 0
     func build() {
-        Column(5) {
-            Swiper(this.swiperController) {
+        Column(space: 5) {
+            Swiper(controller: this.swiperController) {
                 ForEach(
                     this.swiperBackgroundColors,
                     itemGeneratorFunc: {
@@ -220,12 +174,12 @@ class EntryView {
 
             Row(12) {
                 Button('showNext').onClick({
-                    => this
+                    evt => this
                         .swiperController
                         .showNext(); // 通过controller切换到后一页
                 })
                 Button('showPrevious').onClick({
-                    => this
+                    evt => this
                         .swiperController
                         .showPrevious(); // 通过controller切换到前一页
                 })
@@ -235,7 +189,7 @@ class EntryView {
                 Text('Index:')
                 Button(this.targetIndex.toString()).onClick(
                     {
-                        => this.targetIndex = (this.targetIndex + 1) % this.swiperBackgroundColors.toArray().size
+                        evt => this.targetIndex = (this.targetIndex + 1) % this.swiperBackgroundColors.toArray().size
                     })
             }
             .margin(5)
@@ -243,18 +197,11 @@ class EntryView {
                 Text('AnimationMode:')
                 Button(this.animationModeStr.toString()).onClick(
                     {
-                        => if (this.animationModeStr == false) {
+                        evt => if (this.animationModeStr == false) {
                             this.animationModeStr = true
                         } else {
                             this.animationModeStr = false
                         }
-                    })
-            }
-            .margin(5)
-            Row(12) {
-                Button("changeIndex(${this.targetIndex},${this.animationModeStr})").onClick(
-                    {
-                        => this.swiperController.changeIndex(Int32(this.targetIndex), this.animationModeStr)
                     })
             }
             .margin(5)
@@ -275,7 +222,6 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
 
 - 设置水平方向上轮播。
 
-
   ```cangjie
   Swiper() {
     // ...
@@ -287,7 +233,6 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
   ![verticalFalse](figures/verticalFalse.PNG)
 
 - 设置垂直方向轮播。
-
 
   ```cangjie
   Swiper() {
@@ -314,7 +259,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(5) {
+        Column(space: 5) {
               Swiper() {
                   Text('0')
                     .width(250)
@@ -331,7 +276,7 @@ class EntryView {
                   Text('2')
                     .width(250)
                     .height(250)
-                    .backgroundColor(Color.PINK)
+                    .backgroundColor(0xFEC0CD)
                     .textAlign(TextAlign.Center)
                     .fontSize(30)
                   Text('3')
@@ -350,82 +295,3 @@ class EntryView {
 ```
 
 ![two](figures/two.PNG)
-
-## 自定义切换动画
-
-Swiper支持通过[customContentTransition](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-swiper.md#func-customcontenttransitionswipercontentanimatedtransition)设置自定义切换动画，可以在回调中对视窗内所有页面逐帧设置透明度、缩放比例、位移、渲染层级等属性实现自定义切换动画。
-
- <!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    private let DISPLAY_COUNT: Int32 = 2
-    private let MIN_SCALE: Float64 = 0.75
-
-    @State var backgroundColors: Array<Color> = [Color.Green, Color.Blue, Color.YELLOW, Color.PINK, Color.Gray, Color.ORANGE]
-    @State var opacityList: Array<Float64> = Array<Float64>(6, repeat: 1.0)
-    @State var scaleList: Array<Float64> = Array<Float64>(6, repeat: 1.0)
-    @State var translateList: Array<Float64> = Array<Float64>(6, repeat: 0.0)
-    @State var zIndexList: Array<Float64> = Array<Float64>(6, repeat: 0.0)
-
-    func build() {
-        Column() {
-            Swiper() {
-                ForEach(
-                    this.backgroundColors,
-                    itemGeneratorFunc: {
-                        backgroundColor: Color, index: Int64 => Text(index.toString())
-                        .width(100.percent)
-                        .height(100.percent)
-                        .fontSize(50)
-                        .textAlign(TextAlign.Center)
-                        .backgroundColor(backgroundColor)
-                        .opacity(this.opacityList[index])
-                        .scale(x: Float32(this.scaleList[index]), y: Float32(this.scaleList[index]))
-                        .translate(x: this.translateList[index])
-                        .zIndex(Int32(this.zIndexList[index]))
-                    }
-                )
-            }
-            .height(300)
-            .indicator(false)
-            .displayCount(this.DISPLAY_COUNT, true)
-            .customContentTransition(
-                SwiperContentAnimatedTransition(
-                    1000,
-                    {
-                        proxy: SwiperContentTransitionProxy => if (proxy.position <= Float64(proxy.index % this.DISPLAY_COUNT) || proxy.position >= Float64(this.DISPLAY_COUNT + proxy.index % this.DISPLAY_COUNT)) {
-                            // 同组页面完全滑出视窗外时，重置属性值
-                            this.opacityList[Int64(proxy.index)] = 1.0
-                            this.scaleList[Int64(proxy.index)] = 1.0
-                            this.translateList[Int64(proxy.index)] = 0.0
-                            this.zIndexList[Int64(proxy.index)] = 0.0
-                        } else {
-                            // 同组页面未滑出视窗外时，对同组中左右两个页面，逐帧根据position修改属性值
-                            if (proxy.index % this.DISPLAY_COUNT == 0) {
-                                this.opacityList[Int64(proxy.index)] = 1.0 - proxy.position / Float64(this.DISPLAY_COUNT)
-                                this.scaleList[Int64(proxy.index)] = this.MIN_SCALE + (1.0 - this.MIN_SCALE) * (1.0 - proxy.position / Float64(this.DISPLAY_COUNT))
-                                this.translateList[Int64(proxy.index)] = -proxy.position * proxy.mainAxisLength + (1.0 - this.scaleList[Int64(proxy.index)]) * proxy.mainAxisLength / 2.0
-                            } else {
-                                this.opacityList[Int64(proxy.index)] = 1.0 - (proxy.position - 1.0) / Float64(this.DISPLAY_COUNT)
-                                this.scaleList[Int64(proxy.index)] = this.MIN_SCALE + (1.0 - this.MIN_SCALE) * (1.0 - (proxy.position - 1.0) / Float64(this.DISPLAY_COUNT))
-                                this.translateList[Int64(proxy.index)] = -(proxy.position - 1.0) * proxy.mainAxisLength - (1.0 - this.scaleList[Int64(proxy.index)]) * proxy.mainAxisLength / 2.0
-                            }
-                            this.zIndexList[Int64(proxy.index)] = -1.0
-                        }
-                    }
-                )
-            )
-        }
-        .width(100.percent)
-    }
-}
-```
-
-![customAnimation](figures/swiper-custom-animation.gif)

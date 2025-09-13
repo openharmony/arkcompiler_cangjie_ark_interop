@@ -763,7 +763,7 @@ error: install parse profile prop check error.
 
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
-        ```
+        ```bash
         hdc target mount
         hdc file send install_list_capability.json /system/etc/app/install_list_capability.json
         hdc shell chmod 644 /system/etc/app/install_list_capability.json
@@ -2292,7 +2292,7 @@ error: Failed to install the plugin because host application check permission fa
 **处理步骤**
 
 1. 参考[权限申请指导](../security/AccessToken/cj-declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/cj-restricted-permissions.md#ohospermissionkernelsupport_plugin)。<!--Del-->
-2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/cj-app-permission-mgmt-overview.md#权限机制)低于system_basic，请[申请受限权限](../security/AccessToken/cj-declare-permissions-in-acl.md)。
+2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/cj-app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/cj-declare-permissions-in-acl.md)。
 
 <!--DelEnd-->
 

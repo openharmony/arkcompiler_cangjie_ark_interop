@@ -137,7 +137,7 @@ class EntryView {
     @State var twoButtonColor: Color = Color.GRAY
     @State var threeButtonColor: Color = Color.GRAY
     func build() {
-        Column(20) {
+        Column(space: 20) {
         // Use up/down arrow keys to move focus between buttons. Button color changes on focus gain and reverts on loss.
         Button("First Button")
             .backgroundColor(oneButtonColor)
@@ -252,7 +252,7 @@ class EntryView {
     @State var threeButtonColor: Color = Color.GRAY
 
     func build() {
-        Column(20) {
+        Column(space: 20) {
             // Using up/down arrow keys on an external keyboard allows focus movement between three buttons. Button color changes when focused and reverts when blurred.
             Button("First Button")
                 .width(260)
@@ -384,7 +384,7 @@ import ohos.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Button("small black focus box")
                 .focusBox(FocusBoxStyle(
                     margin: 0.px,
@@ -433,8 +433,8 @@ class EntryView {
     @State var btColor2: UInt32 = 0x2787d9
 
     func build() {
-        Column(20) {
-            Column(5) {
+        Column(space: 20) {
+            Column(space: 5) {
                 Button("Button")
                     .width(200)
                     .height(70)
@@ -473,7 +473,7 @@ class EntryView {
                     .width(200)
                     .height(70)
                     .fontColor(Color.WHITE)
-                    .onClick({ =>
+                    .onClick({ evt =>
                         FocusControl.requestFocus("testButton2")
                     })
                     .backgroundColor(0xff2787d9)
@@ -516,13 +516,13 @@ class EntryView {
     func build() {
         Scroll {
             Row(20) { // Component spacing set to 20
-                Column(20) {  // Marked as Column1
-                    Column(5) {
+                Column(space: 20) {  // Marked as Column1
+                    Column(space: 5) {
                         Button("Group1")
                             .width(165)
                             .height(40)
                             .fontColor(Color.WHITE)
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -532,7 +532,7 @@ class EntryView {
                                 .height(40)
                                 .fontColor(Color.WHITE)
                         }
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -547,12 +547,12 @@ class EntryView {
                     .borderColor(Color.RED)
                     .borderStyle(BorderStyle.Dashed)
 
-                    Column(5) {
+                    Column(space: 5) {
                         Button("Group2")
                             .width(165)
                             .height(40)
                             .fontColor(Color.WHITE)
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -563,7 +563,7 @@ class EntryView {
                                 .fontColor(Color.WHITE)
                                 .focusScopePriority('ColumnScope1',priority: FocusPriority.PRIOR)  // Column1 gets focus first when focused
                         }
-                        Row(5) {
+                        Row(space: 5) {
                             Button()
                                 .width(80)
                                 .height(40)
@@ -580,7 +580,7 @@ class EntryView {
                 }
                 .focusScopeId('ColumnScope1')
 
-                Column(5) {  // Marked as Column2
+                Column(space: 5) {  // Marked as Column2
                     TextInput(placeholder: "input", text: inputValue)
                         .onChange({ value: String =>
                             inputValue = value
@@ -590,7 +590,7 @@ class EntryView {
                         .width(165)
                         .height(40)
                         .fontColor(Color.WHITE)
-                    Row(5) {
+                    Row(space: 5) {
                         Button()
                             .width(80)
                             .height(40)
@@ -605,7 +605,7 @@ class EntryView {
                         .height(40)
                         .fontColor(Color.WHITE)
                         .focusScopePriority('ColumnScope2',priority: FocusPriority.PREVIOUS)  // Gets focus when Column2 is focused
-                    Row(5) {
+                    Row(space: 5) {
                         Button()
                             .width(80)
                             .height(40)
@@ -619,7 +619,7 @@ class EntryView {
                         .width(165)
                         .height(40)
                         .fontColor(Color.WHITE)
-                    Row(5) {
+                    Row(space: 5) {
                         Button()
                             .width(80)
                             .height(40)

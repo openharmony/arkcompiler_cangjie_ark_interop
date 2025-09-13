@@ -19,7 +19,7 @@ PDF文档预览加载过程中，若涉及网络文档获取，请在module.json
 ```cangjie
 // index.cj
 import ohos.arkui.state_macro_manage.*
-import kit.ArkWeb.WebviewController
+import ohos.web.webview.WebviewController
 import kit.ArkUI.Web
 
 @Entry
@@ -73,6 +73,12 @@ Web().domStorageAccess(true)
         ```cangjie
         // main_ability.cj
         import kit.AbilityKit.UIAbilityContext
+        import kit.PerformanceAnalysisKit.Hilog
+        
+        func loggerInfo(str: String) {
+            Hilog.info(0, "CangjieTest", str)
+        }
+
         var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
         class MainAbility <: UIAbility {
@@ -88,7 +94,7 @@ Web().domStorageAccess(true)
                 globalAbilityContext = Option<UIAbilityContext>.Some(this.context)
 
                 match (launchParam.launchReason) {
-                    case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                    case LaunchReason.StartAbility => AppLog.info("StartAbility")
                     case _ => ()
                 }
             }
@@ -112,7 +118,7 @@ Web().domStorageAccess(true)
     <!-- compile -->
 
     ```cangjie
-    import kit.LocalizationKit.{__GenerateResource__}
+    import kit.LocalizationKit.*
 
     Web(src: @rawfile("test.pdf"), controller: this.webController)
         .domStorageAccess(true)

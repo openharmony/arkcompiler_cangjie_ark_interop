@@ -18,7 +18,9 @@
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback1Argument
+    import ohos.business_exception.BusinessException
     ```
 
 2. 通过[CameraManager](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager)类中的[isTorchSupported](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-istorchsupported)方法，检测当前设备是否支持手电筒功能。
@@ -28,7 +30,7 @@
     ```cangjie
     func isTorchSupported(cameraManager: CameraManager): Bool {
         let torchSupport: Bool = cameraManager.isTorchSupported()
-        AppLog.info("Returned with the torch support status: ${torchSupport}")
+        Hilog.info(0,"","Returned with the torch support status: ${torchSupport}")
         return torchSupport
     }
     ```
@@ -69,8 +71,8 @@
 
 ```cangjie
 class TorchStatusChangeCallBack <: Callback1Argument<TorchStatusInfo> {
-    public open func invoke(torchStatusInfo: TorchStatusInfo): Unit {
-        AppLog.info("onTorchStatusChange, isTorchAvailable: ${torchStatusInfo.isTorchAvailable}, isTorchActive: ${torchStatusInfo.isTorchActive}, level: ${torchStatusInfo.torchLevel}")
+    public open func invoke(error: ?BusinessException,torchStatusInfo: TorchStatusInfo): Unit {
+        Hilog.info(0,"","onTorchStatusChange, isTorchAvailable: ${torchStatusInfo.isTorchAvailable}, isTorchActive: ${torchStatusInfo.isTorchActive}, level: ${torchStatusInfo.torchLevel}")
     }
 }
 

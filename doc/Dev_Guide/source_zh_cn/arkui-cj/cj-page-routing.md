@@ -4,7 +4,7 @@
 
 > **说明：**
 >
-> [组件导航 (Navigation)](./cj-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异请参见[Router切换Navigation](./cj-router-to-navigation.md)指导。
+> [组件导航 (Navigation)](./cj-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。
 
 ## 页面跳转
 
@@ -32,13 +32,11 @@ Router模块提供了两种跳转模式，分别是[Router.pushUrl](../../../API
 
 在使用Router相关功能之前，需要在代码中先导入Router模块。
 
-
 ```cangjie
 import kit.ArkUI.Router
 ```
 
 - 场景一：有一个主页（Home）和一个详情页（Detail），希望从主页点击一个商品，跳转到详情页。同时，需要保留主页在页面栈中，以便返回时恢复状态。这种场景下，可以使用pushUrl方法，并且使用Standard实例模式（或者省略）。
-
 
   ```cangjie
   import kit.ArkUI.Router
@@ -54,7 +52,6 @@ import kit.ArkUI.Router
 
 - 场景二：有一个登录页（Login）和一个个人中心页（Profile），希望从登录页成功登录后，跳转到个人中心页。同时，销毁登录页，在返回时直接退出应用。这种场景下，可以使用replaceUrl方法，并且使用Standard实例模式（或者省略）。
 
-
   ```cangjie
   import kit.ArkUI.Router
 
@@ -69,7 +66,6 @@ import kit.ArkUI.Router
 
 - 场景三：有一个设置页（Setting）和一个主题切换页（Theme），希望从设置页点击主题选项，跳转到主题切换页。同时，需要保证每次只有一个主题切换页存在于页面栈中，在返回时直接回到设置页。这种场景下，可以使用pushUrl方法，并且使用Single实例模式。
 
-
   ```cangjie
   import kit.ArkUI.Router
 
@@ -81,7 +77,6 @@ import kit.ArkUI.Router
   ```
 
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
-
 
   ```cangjie
   import kit.ArkUI.Router
@@ -97,7 +92,6 @@ import kit.ArkUI.Router
 
 如果需要在跳转时传递一些数据给目标页面，则可以在调用Router模块的方法时，添加一个params属性，并指定一个字符串作为参数。例如：
 
-
 ```cangjie
 import kit.ArkUI.Router
 
@@ -107,7 +101,6 @@ func onJumpClick() {
 ```
 
 在目标页面中，可以通过调用Router模块的[getParams](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-getParams)方法来获取传递过来的参数。例如:
-
 
 ```cangjie
 import kit.ArkUI.Router
@@ -127,7 +120,6 @@ var id : Option<String> = params_get
 
 在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
 
-
 ```cangjie
 import kit.ArkUI.Router
 ```
@@ -135,7 +127,6 @@ import kit.ArkUI.Router
 可以使用以下几种方式返回页面：
 
 - 方式一：返回到上一个页面。
-
 
   ```cangjie
   import kit.ArkUI.Router
@@ -149,7 +140,6 @@ import kit.ArkUI.Router
 
   返回普通页面。
 
-
   ```cangjie
   import kit.ArkUI.Router
 
@@ -159,7 +149,6 @@ import kit.ArkUI.Router
   ```
 
   返回命名路由页面。
-
 
   ```cangjie
   import kit.ArkUI.Router
@@ -175,7 +164,6 @@ import kit.ArkUI.Router
 
   返回到普通页面。
 
-
   ```cangjie
   import kit.ArkUI.Router
 
@@ -186,7 +174,6 @@ import kit.ArkUI.Router
   ```
 
   返回命名路由页面。
-
 
   ```cangjie
   import kit.ArkUI.Router
@@ -200,7 +187,6 @@ import kit.ArkUI.Router
   这种方式不仅可以返回到指定页面，还可以在返回的同时传递自定义参数信息。这些参数信息可以在目标页面中通过调用Router.getParams方法进行获取和解析。
 
 在目标页面中，在需要获取参数的位置调用Router.getParams方法即可:
-
 
 ```cangjie
 import kit.ArkUI.Router
@@ -240,13 +226,11 @@ class EntryView {
 
 在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
 
-
 ```cangjie
 import kit.ArkUI.Router
 ```
 
 如果想要在目标界面开启页面返回询问框，需要在调用[Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)方法之前，通过调用[Router.showAlertBeforeBackPage](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage)方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
-
 
 ```cangjie
 func onBackClick() {
@@ -277,13 +261,11 @@ message：String类型，表示询问框的内容。
 
 在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
 
-
 ```cangjie
 import kit.ArkUI.Router
 ```
 
 在事件回调中，调用弹窗的方法:
-
 
 ```cangjie
 import kit.ArkUI.Router

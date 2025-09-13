@@ -34,6 +34,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.*
 import std.collection.*
 
 struct PersonList{
@@ -57,10 +58,10 @@ class EntryView {
     // 全模态转场控制变量
     @State var isPresent: Bool = false
     public func onAppear() {
-        AppLog.info("BindContentCover onAppear.")
+        Hilog.info(0, "cangjie", "BindContentCover onAppear.")
     }
     public func onDisappear() {
-        AppLog.info("BindContentCover onDisappear.")
+        Hilog.info(0, "cangjie", "BindContentCover onDisappear.")
     }
 
     @Builder
@@ -108,7 +109,7 @@ class EntryView {
             .height(40)
             .fontColor(Color.Blue)
             .onClick({
-                =>
+                evt =>
                 this.isPresent = !this.isPresent
             })
         }
@@ -149,13 +150,13 @@ class EntryView {
                 Button("+ 选择乘车人")
                 .fontSize(18)
                 .onClick({
-                    =>
+                    evt =>
                     // 第三步：通过全模态接口调起全模态展示界面，新拉起的模态面板默认显示在最上层
                     this.isPresent = !this.isPresent
                 })
                 // 通过全模态接口，绑定模态展示界面MyContentCoverBuilder。
-                .bindContentCover(this.isPresent,MycontentCoverBulider,ContentCoverOptions(
-                          modalTransition: ModalTransition.DEFAULT,backgroundColor: Color.White,onAppear: onAppear,onDisappear:onDisappear)
+                .bindContentCover(this.isPresent,MycontentCoverBulider,options: ContentCoverOptions(
+                          modalTransition: ModalTransition.Default,backgroundColor: Color.White,onAppear: onAppear,onDisappear:onDisappear)
                     )
             }
             .justifyContent(FlexAlign.Center)
@@ -172,7 +173,7 @@ class EntryView {
             Column(){
                 Button("选择乘车人")
                 .onClick({
-                    =>
+                    evt =>
                     this.isSheetShow = !this.isSheetShow
                 })
                 // 第一步：定义半模态转场效果

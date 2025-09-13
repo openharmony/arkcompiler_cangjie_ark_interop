@@ -30,7 +30,7 @@ class EntryView {
         Row {
             Checkbox(name: 'checkbox1', group: "checkboxGroup")
                 .select(true)
-                .shape(CheckBoxShape.CIRCLE)
+                .shape(CheckBoxShape.Circle)
                 .size(width: 50, height: 50)
         }
         .width(100.percent)

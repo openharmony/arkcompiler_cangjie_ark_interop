@@ -1,6 +1,6 @@
 # 应用程序包概述
 
-在基于[Stage模型](application-configuration-file-overview-stage.md#应用配置文件概述（Stage模型）)开发应用之前，开发者需要了解应用的设计机制、应用程序包结构等基础知识。
+在基于[Stage模型](application-configuration-file-overview-stage.md#应用配置文件概述stage模型)开发应用之前，开发者需要了解应用的设计机制、应用程序包结构等基础知识。
 
 ## 应用与应用程序包
 
@@ -26,6 +26,7 @@ Module按照使用场景可以分为两种类型：
     - Static Library：静态共享库。编译后生成一个以.har为后缀的文件，即静态共享包HAR（Harmony Archive）。
 
   HAR共享包的特点：
+
   | 共享包类型 | 编译和运行方式  | 发布和引用方式 |
   | --------  | ---- | --- |
   | HAR | HAR中的代码和资源跟随使用方编译，如果有多个使用方，它们的编译产物中会存在多份相同拷贝。<br/>注意：[编译HAR](har-package.md#编译)时，建议开启混淆能力，保护代码资产。 | HAR除了支持应用内引用，还可以独立打包发布，供其他应用引用。 |
