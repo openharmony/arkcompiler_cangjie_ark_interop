@@ -1843,7 +1843,6 @@ public func toString(): String
 |:----|:----|
 |String|枚举的说明。|
 
-
 ## enum Result
 
 ```cangjie
