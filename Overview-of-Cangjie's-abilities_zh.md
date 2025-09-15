@@ -176,7 +176,7 @@ func callInterop(x: Float64, y: Float64): Float64 {
 
 ### 4. IDE 功能
 
-提供DevEco Studio仓颉开发插件，支持使用仓颉进行OpenHarmony应用的开发(纯仓颉应用、仓颉+ArkTS混合应用)，支持开发仓颉的静态库和动态库。
+提供DevEco Studio仓颉开发插件，支持使用仓颉进行OpenHarmony应用的开发(纯仓颉应用、仓颉+ArkTS混合应用)，支持开发仓颉的静态库，提供基础的工程管理、编译构建、语言服务、调试服务等应用开发能力，暂不支持动态库、UI预览、静态检查、性能调优、测试服务功能。
 开发者在下载安装DevEco Studio后，获取并安装仓颉开发插件至对应版本的DevEco Studio，下载对应OpenHarmony SDK，进行仓颉OpenHarmony应用开发。 仓颉开发的特性全貌将主要有以下方面：
 
 - 工程管理和创建：
