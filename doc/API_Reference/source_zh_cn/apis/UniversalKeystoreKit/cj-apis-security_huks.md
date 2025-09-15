@@ -2262,371 +2262,7 @@ public var handle: HuksHandleId
 
 **起始版本：** 21
 
-## class HuksTagType
-
-```cangjie
-public class HuksTagType {
-    public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
-    public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
-    public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
-    public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
-    public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
-    public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28
-}
-```
-
-**功能：** 表示Tag的数据类型。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_TAG_TYPE_BOOL
-
-```cangjie
-public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
-```
-
-**功能：** 表示该Tag的数据类型为boolean。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_TAG_TYPE_BYTES
-
-```cangjie
-public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28
-```
-
-**功能：** 表示该Tag的数据类型为Uint8Array。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_TAG_TYPE_INT
-
-```cangjie
-public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
-```
-
-**功能：** 表示该Tag的数据类型为UInt32。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_TAG_TYPE_INVALID
-
-```cangjie
-public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
-```
-
-**功能：** 表示非法的Tag类型。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_TAG_TYPE_UINT
-
-```cangjie
-public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
-```
-
-**功能：** 表示该Tag的数据类型为UInt32。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_TAG_TYPE_ULONG
-
-```cangjie
-public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
-```
-
-**功能：** 表示该Tag的数据类型为bigint。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-## class HuksUnwrapSuite
-
-```cangjie
-public class HuksUnwrapSuite {
-    public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
-    public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
-}
-```
-
-**功能：** 表示导入加密密钥的算法套件。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
-
-```cangjie
-public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
-```
-
-**功能：** 导入加密密钥时，ECDH密钥协商后使用AES-256 GCM加密。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
-
-```cangjie
-public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
-```
-
-**功能：** 导入加密密钥时，X25519密钥协商后使用AES-256 GCM加密。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-## class HuksUserAuthType
-
-```cangjie
-public class HuksUserAuthType {
-    public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
-    public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
-    public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
-}
-```
-
-**功能：** 表示用户认证类型。
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-### static const HUKS_USER_AUTH_TYPE_FACE
-
-```cangjie
-public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
-```
-
-**功能：** 表示用户认证类型为人脸。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-### static const HUKS_USER_AUTH_TYPE_FINGERPRINT
-
-```cangjie
-public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
-```
-
-**功能：** 表示用户认证类型为指纹。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-### static const HUKS_USER_AUTH_TYPE_PIN
-
-```cangjie
-public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
-```
-
-**功能：** 表示用户认证类型为PIN码。
-
-**类型：** UInt32
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**起始版本：** 21
-
-## enum CipherSpecItem
-
-```cangjie
-public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
-    | OaepMdNameStr
-    | OaepMgfNameStr
-    | OaepMgf1MdStr
-    | OaepMgf1PsrcUint8Arr
-    | ...
-}
-```
-
-**功能：** 表示加解密参数的枚举，这些加解密参数支持通过setCipherSpec接口设置/通过getCipherSpec接口获取。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<CipherSpecItem>
-- ToString
-
-### func !=(CipherSpecItem)
-
-```cangjie
-public operator func !=(other: CipherSpecItem): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(CipherSpecItem)
-
-```cangjie
-public operator func ==(other: CipherSpecItem): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[CipherSpecItem](#enum-cipherspecitem)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|String|枚举的说明。|
-
-## enum HuksParamValue
-
-```cangjie
-public enum HuksParamValue {
-    | BooleanValue(Bool)
-    | Int32Value(Int32)
-    | Uint32Value(UInt32)
-    | Uint64Value(UInt64)
-    | BytesValue(Bytes)
-    | ...
-}
-```
-
-**功能：** 用于表示HuksParam中value的值，支持Bool、Int32、UInt32、UInt64、Array\<UInt8>格式。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### BooleanValue(Bool)
-
-```cangjie
-BooleanValue(Bool)
-```
-
-**功能：** 该字段用于传入Bool类型的value值。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### BytesValue(Bytes)
-
-```cangjie
-BytesValue(Bytes)
-```
-
-**功能：** 该字段用于传入Bytes类型的value值。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### Int32Value(Int32)
-
-```cangjie
-Int32Value(Int32)
-```
-
-**功能：** 该字段用于传入Int32类型的value值。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### Uint32Value(UInt32)
-
-```cangjie
-Uint32Value(UInt32)
-```
-
-**功能：** 该字段用于传入UInt32类型的value值。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-### Uint64Value(UInt64)
-
-```cangjie
-Uint64Value(UInt64)
-```
-
-**功能：** 该字段用于传入UInt64类型的value值。
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
-**起始版本：** 21
-
-## enum HuksTag
+## class HuksTag
 
 ```cangjie
 public class HuksTag {
@@ -3294,6 +2930,289 @@ public static const HUKS_TAG_AUTH_STORAGE_LEVEL: UInt32 = HuksTagType.HUKS_TAG_T
 **功能：** 密钥存储安全级别，即HuksAuthStorageLevel的一个取值。
 
 **类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+## class HuksTagType
+
+```cangjie
+public class HuksTagType {
+    public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
+    public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
+    public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
+    public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
+    public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
+    public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28
+}
+```
+
+**功能：** 表示Tag的数据类型。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_TAG_TYPE_BOOL
+
+```cangjie
+public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
+```
+
+**功能：** 表示该Tag的数据类型为boolean。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_TAG_TYPE_BYTES
+
+```cangjie
+public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28
+```
+
+**功能：** 表示该Tag的数据类型为Uint8Array。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_TAG_TYPE_INT
+
+```cangjie
+public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
+```
+
+**功能：** 表示该Tag的数据类型为UInt32。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_TAG_TYPE_INVALID
+
+```cangjie
+public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
+```
+
+**功能：** 表示非法的Tag类型。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_TAG_TYPE_UINT
+
+```cangjie
+public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
+```
+
+**功能：** 表示该Tag的数据类型为UInt32。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_TAG_TYPE_ULONG
+
+```cangjie
+public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
+```
+
+**功能：** 表示该Tag的数据类型为bigint。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+## class HuksUnwrapSuite
+
+```cangjie
+public class HuksUnwrapSuite {
+    public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
+    public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
+}
+```
+
+**功能：** 表示导入加密密钥的算法套件。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
+
+```cangjie
+public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
+```
+
+**功能：** 导入加密密钥时，ECDH密钥协商后使用AES-256 GCM加密。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
+
+```cangjie
+public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
+```
+
+**功能：** 导入加密密钥时，X25519密钥协商后使用AES-256 GCM加密。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+## class HuksUserAuthType
+
+```cangjie
+public class HuksUserAuthType {
+    public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
+    public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
+    public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
+}
+```
+
+**功能：** 表示用户认证类型。
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**起始版本：** 21
+
+### static const HUKS_USER_AUTH_TYPE_FACE
+
+```cangjie
+public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
+```
+
+**功能：** 表示用户认证类型为人脸。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**起始版本：** 21
+
+### static const HUKS_USER_AUTH_TYPE_FINGERPRINT
+
+```cangjie
+public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
+```
+
+**功能：** 表示用户认证类型为指纹。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**起始版本：** 21
+
+### static const HUKS_USER_AUTH_TYPE_PIN
+
+```cangjie
+public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
+```
+
+**功能：** 表示用户认证类型为PIN码。
+
+**类型：** UInt32
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**起始版本：** 21
+
+## enum HuksParamValue
+
+```cangjie
+public enum HuksParamValue {
+    | BooleanValue(Bool)
+    | Int32Value(Int32)
+    | Uint32Value(UInt32)
+    | Uint64Value(UInt64)
+    | BytesValue(Bytes)
+    | ...
+}
+```
+
+**功能：** 用于表示HuksParam中value的值，支持Bool、Int32、UInt32、UInt64、Array\<UInt8>格式。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### BooleanValue(Bool)
+
+```cangjie
+BooleanValue(Bool)
+```
+
+**功能：** 该字段用于传入Bool类型的value值。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### BytesValue(Bytes)
+
+```cangjie
+BytesValue(Bytes)
+```
+
+**功能：** 该字段用于传入Bytes类型的value值。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### Int32Value(Int32)
+
+```cangjie
+Int32Value(Int32)
+```
+
+**功能：** 该字段用于传入Int32类型的value值。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### Uint32Value(UInt32)
+
+```cangjie
+Uint32Value(UInt32)
+```
+
+**功能：** 该字段用于传入UInt32类型的value值。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**起始版本：** 21
+
+### Uint64Value(UInt64)
+
+```cangjie
+Uint64Value(UInt64)
+```
+
+**功能：** 该字段用于传入UInt64类型的value值。
 
 **系统能力：** SystemCapability.Security.Huks.Core
 

@@ -1324,8 +1324,8 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 - IllegalStateException：
 
   | 错误信息 | 可能原因 | 处理步骤 |
-| :---- | :--- | :--- |
-| If the instance id invallid.| todo | todo |
+  | :---- | :--- | :--- |
+  | If the instance id invallid.| todo | todo |
 
 ### func getString(AppResource, Array\<ArgsValueType>)
 
@@ -1357,75 +1357,75 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-| 错误码ID | 错误信息 |
-| :---- | :--- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
-| 9001001 | Invalid resource ID.|
-| 9001002 | No matching resource is found based on the resource ID.|
-| 9001006 | The resource is referenced cyclically.|
-| 9001007 | Failed to format the resource obtained based on the resource ID.|
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.|
+  | 9001001 | Invalid resource ID.|
+  | 9001002 | No matching resource is found based on the resource ID.|
+  | 9001006 | The resource is referenced cyclically.|
+  | 9001007 | Failed to format the resource obtained based on the resource ID.|
 
 - IllegalStateException：
 
   | 错误信息 | 可能原因 | 处理步骤 |
-| :---- | :--- | :--- |
-| If the instance id invallid.| todo | todo |
+  | :---- | :--- | :--- |
+  | If the instance id invallid.| todo | todo |
 
 ### func getStringArrayByName(String)
 
- ```cangjie
- public func getStringArrayByName(resName: String): Array<String>
- ```
+```cangjie
+public func getStringArrayByName(resName: String): Array<String>
+```
 
- **功能：** 获取资源名对应的字符串数组资源。
+**功能：** 获取资源名对应的字符串数组资源。
 
- **系统能力：** SystemCapability.Global.ResourceManager
+**系统能力：** SystemCapability.Global.ResourceManager
 
- **起始版本：** 21
+**起始版本：** 21
 
- **参数：**
+**参数：**
 
- |参数名|类型|必填|默认值|说明|
- |:---|:---|:---|:---|:---|
- |resName|String|是|-|资源名。|
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|resName|String|是|-|资源名。|
 
- **返回值：**
+**返回值：**
 
- |类型|说明|
- |:----|:----|
- |Array\<String>|资源名对应的字符串数组资源。|
+|类型|说明|
+|:----|:----|
+|Array\<String>|资源名对应的字符串数组资源。|
 
- **异常：**
+**异常：**
 
- - BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
+- BusinessException：对应错误码如下表，详见[资源管理错误码](../../errorcodes/cj-errorcode-resource-manager.md)。
 
-   | 错误码ID | 错误信息 |
-   | :---- | :--- |
-   | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types. |
-   | 9001003 | Invalid resource name. |
-   | 9001004 | No matching resource is found based on the resource name. |
-   | 9001006 | The resource is referenced cyclically. |
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 401 | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+  | 9001003 | Invalid resource name. |
+  | 9001004 | No matching resource is found based on the resource name. |
+  | 9001006 | The resource is referenced cyclically. |
 
- - IllegalStateException：
+- IllegalStateException：
 
- | 错误信息 | 可能原因 | 处理步骤 |
-   | :---- | :--- | :--- |
-   | If the instance id invallid. | todo | todo |
+  | 错误信息 | 可能原因 | 处理步骤 |
+  | :---- | :--- | :--- |
+  | If the instance id invallid. | todo | todo |
 
- **示例：**
+**示例：**
 
- <!-- compile -->
+<!-- compile -->
 
- ```cangjie
- // index.cj
- 
- import kit.LocalizationKit.*
- import kit.AbilityKit.*
- 
- let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
- let resourceManager = ResourceManager.getResourceManager(stageContext)
- resourceManager.getStringArrayByName("test")
- ```
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getStringArrayByName("test")
+```
 
 ### func getStringArrayValue(UInt32)
 

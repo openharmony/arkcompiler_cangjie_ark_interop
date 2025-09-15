@@ -32,7 +32,7 @@ public func bindContentCover(isShow: Bool, builder: CustomBuilder,
 |:---|:---|:---|:---|:---|
 |isShow|Bool|是|-|是否显示。|
 |builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|自定义构建器。|
-|options|[ContentCoverOptions](#class-contentcoveroptions))|否|ContentCoverOptions()|内容覆盖层选项。|
+|options|[ContentCoverOptions](#class-contentcoveroptions)|否|ContentCoverOptions()|内容覆盖层选项。|
 
 ## 基础类型定义
 

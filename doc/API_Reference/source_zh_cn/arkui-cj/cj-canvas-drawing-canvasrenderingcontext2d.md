@@ -492,7 +492,7 @@ public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZer
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |path|[Path2D](./cj-canvas-drawing-path2d.md#class-path2d)|是|-|Path2D剪切路径。|
-|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.nonzero|**命名参数。** 指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。|
+|fillRule|[CanvasFillRule](./cj-common-types.md#enum-canvasfillrule)|否|CanvasFillRule.NonZero|**命名参数。** 指定要剪切对象的规则。<br/>可选参数为：nonzero, evenodd。|
 
 ### func closePath()
 
@@ -850,7 +850,7 @@ public func ellipse(
 |rotation|Float64|是|-|椭圆的旋转角度，单位为弧度。|
 |startAngle|Float64|是|-|椭圆绘制的起始点角度，以弧度表示。|
 |endAngle|Float64|是|-|椭圆绘制的结束点角度，以弧度表示。|
-|anticlockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。</br>true:逆时针方向绘制椭圆。</br>false:顺时针方向绘制椭圆。|
+|counterclockwise|Bool|否|false| **命名参数。** 是否以逆时针方向绘制椭圆。</br>true:逆时针方向绘制椭圆。</br>false:顺时针方向绘制椭圆。|
 
 ### func fill(CanvasFillRule)
 
@@ -1574,7 +1574,7 @@ public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<F
 |text|String|是|-|需要绘制的文本内容。|
 |x|Float64|是|-|需要绘制的文本的左下角x坐标。<br>默认单位：vp。|
 |y|Float64|是|-|需要绘制的文本的左下角y坐标。<br>默认单位：vp。|
-|maxWidth|Float64|否|Option.None|需要绘制的文本的最大宽度。<br>默认单位：vp。|
+|maxWidth|Option\<Float64>|否|Option.None|需要绘制的文本的最大宽度。<br>默认单位：vp。|
 
 ### func toDataURL(ImageType, Float64)
 
