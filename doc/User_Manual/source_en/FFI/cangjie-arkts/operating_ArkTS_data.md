@@ -1,62 +1,62 @@
 # Using ArkTS Data in Cangjie
 
-This chapter details how to use ArkTS data through the JSValue type.
+This chapter details how to work with ArkTS data through the JSValue type.
 
 ## Usage Methods
 
 1. Obtain the ArkTS type corresponding to JSValue
 
-   Parameters passed from ArkTS are of the anonymous type `JSValue`. To use them, you first need to determine their type. There are two ways to obtain the type:
+   Parameters passed from ArkTS are of the anonymous type `JSValue`. To determine their actual type, you can:
 
    - Use `JSValue.typeof()` to get the type enumeration `JSType`.
-   - Know the type through other means (including but not limited to reading ArkTS source code, referencing documentation, etc.) and then verify it using type-checking interfaces, such as `JSValue.isNumber()` to check if it's a number type.
+   - Verify the type through validation interfaces (e.g., `JSValue.isNumber()`) if the type is known via other means (source code review, documentation, etc.).
 
-2. Using JSValue
+2. Working with JSValue
 
-   After determining the JSValue type, you can convert `JSValue` to the corresponding Cangjie type or ArkTS reference.
+   After determining the JSValue type, you can convert it to either a Cangjie type or an ArkTS reference:
 
-   - Convert to Cangjie type: The Cangjie data will be a copy of the ArkTS data, and the ArkTS data may be released during the Cangjie variable's lifecycle. For example, converting an ArkTS string to a Cangjie String: `var a:String = JSValue.toString(JSContext)`.
-   - Convert to ArkTS reference: The Cangjie data will be a reference to the ArkTS data, and the ArkTS data must not be released during the Cangjie variable's lifecycle. For example, converting an ArkTS string to JSString: `var b:JSString = JSValue.asString(JSContext)`.
+   - **Convert to Cangjie type**: Creates a copy of ArkTS data in Cangjie. The original ArkTS data may be released during the Cangjie variable's lifecycle. Example: Converting ArkTS string to Cangjie String: `var a:String = JSValue.toString(JSContext)`.
+   - **Convert to ArkTS reference**: Creates a reference to ArkTS data. The original data must not be released during the Cangjie variable's lifecycle. Example: Converting ArkTS string to JSString: `var b:JSString = JSValue.asString(JSContext)`.
 
 3. Constructing ArkTS Data from Cangjie Types
 
-   ArkTS data can be constructed from Cangjie types using methods from JSContext. For example, to create a `number`: `var a : Float64 = JSContext.number(Float64)`.
+   Use JSContext methods to construct ArkTS data from Cangjie types. For example, creating a `number`: `var a : Float64 = JSContext.number(Float64)`.
 
-   The mapping of major ArkTS data types to Cangjie types is as follows:
+   The mapping between major ArkTS types and Cangjie types is as follows:
 
-| ArkTS Type | Reference Type | typeof Type      |
-| ---------- | -------------- | ---------------- |
-| undefined  | JSUndefined    | JSType.UNDEFINED |
-| null       | JSNull         | JSType.NULL      |
-| boolean    | JSBoolean      | JSType.BOOL      |
-| number     | JSNumber       | JSType.NUMBER    |
-| string     | JSString       | JSType.STRING    |
-| object     | JSObject       | JSType.OBJECT    |
-| Array      | JSArray        | JSType.OBJECT    |
-| bigint     | JSBigInt       | JSType.BIGINT    |
-| function   | JSFunction     | JSType.FUNCTION  |
-| symbol     | JSSymbol       | JSType.SYMBOL    |
+| ArkTS Type | Reference Type | typeof Type       |
+| ---------- | -------------- | ----------------- |
+| undefined  | JSUndefined    | JSType.UNDEFINED  |
+| null       | JSNull         | JSType.NULL       |
+| boolean    | JSBoolean      | JSType.BOOL       |
+| number     | JSNumber       | JSType.NUMBER     |
+| string     | JSString       | JSType.STRING     |
+| object     | JSObject       | JSType.OBJECT     |
+| Array      | JSArray        | JSType.OBJECT     |
+| bigint     | JSBigInt       | JSType.BIGINT     |
+| function   | JSFunction     | JSType.FUNCTION   |
+| symbol     | JSSymbol       | JSType.SYMBOL     |
 
 ## Usage Examples
 
-### Manipulating ArkTS Plain Objects
+### Working with ArkTS Plain Objects
 
-Example from an interoperability function implementation:
+Example implementation of an interop function:
 
 1. Cangjie function implementation:
 
     ```cangjie
-    // Define the package name, which must match the package name in cjpm.toml
+    // Package name must match package name in cjpm.toml
     package ohos_app_cangjie_entry
 
-    // Import the interoperability library ark_interop and macros
+    // Import interop libraries and macros
     import ohos.ark_interop.*
 
-    // Define the interoperability function. The parameter types must be (JSContext, JSCallInfo), and the return type must be JSValue.
+    // Interop function signature: parameters must be (JSContext, JSCallInfo), return type must be JSValue
     func addByObject(context: JSContext, callInfo: JSCallInfo): JSValue {
-        // callInfo records the function call parameters. Below retrieves the first parameter:
+        // Get first argument from callInfo
         let arg0 = callInfo[0]
-        // Check if parameter 0 is an object; otherwise, return undefined
+        // Verify arg0 is an object, otherwise return undefined
         if (!arg0.isObject()) {
             return context.undefined().toJSValue()
         }
@@ -68,70 +68,70 @@ Example from an interoperability function implementation:
         return context.number(result).toJSValue()
     }
 
-    // Must register the function in JSModule
+    // Must register function with JSModule
     let EXPORT_MODULE = JSModule.registerModule {
         runtime, exports =>
             exports["addByObject"] = runtime.function(addByObject).toJSValue()
     }
     ```
 
-2. Interoperability interface declaration:
+2. Interop interface declaration:
 
     ```typescript
-    // Index.d.ts corresponding to libohos_app_cangjie_entry.so
+    // Index.d.ts for libohos_app_cangjie_entry.so
     export declare interface CustomObject {
         a: number;
         b: number;
     }
-    // Define the Cangjie interoperability function, with the same name as registered on the Cangjie side
+    // Cangjie interop function name must match registration name
     export declare function addByObject(args: CustomObject): number;
     ```
 
 3. ArkTS function call:
 
     ```typescript
-    // Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
+    // Import Cangjie dynamic library (name must match package name)
     import { addByObject } from "libohos_app_cangjie_entry.so";
 
-    // Call the Cangjie interface
+    // Call Cangjie interface
     let result = addByObject({a: 1, b: 2});
     console.log("result = " + result);
     ```
 
-In addition to reading properties from objects, you can also assign values to properties or create new properties using `JSObject[key] = value`, where `key` can be a Cangjie String, JSString, or JSSymbol type, and `value` is a JSValue type.
+You can also assign values to object properties or create new properties using `JSObject[key] = value`, where key can be Cangjie String, JSString, or JSSymbol types, and value is JSValue type.
 
 > **Note:**
 >
-> When defining properties via `JSObject[key] = value`, the property is writable, enumerable, and configurable.
-> For more details, refer to [JavaScript Standard Built-in Objects](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object).
+> Properties defined via `JSObject[key] = value` are writable, enumerable, and configurable.
+> See [JavaScript Standard Built-in Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) for more details.
 
-**Important Notes:**
+**Important Considerations:**
 
-1. Property assignment may fail silently in the following scenarios:
-   1. The target object is a sealed object (created via `Object.seal()`), which prevents modification of existing properties or creation of new ones.
-   2. The target property's `writable` is `false` (defined via `Object.defineProperty(object, key, {writable: false, value: xxx})`).
+1. Property assignment may fail silently in these scenarios:
+   1. Target object is sealed (created via `Object.seal()`), preventing property modification.
+   2. Target property has `writable: false` (set via `Object.defineProperty(object, key, {writable: false, value: xxx})`).
 
-2. For an unknown object, you can enumerate its enumerable properties:
+2. Enumerate enumerable properties of unknown objects:
 
    ```cangjie
    func handleUnknownObject(context: JSContext, target: JSObject): Unit {
-       // Enumerate the object's enumerable properties using the keys interface
+       // Enumerate object's enumerable properties
        let keys = target.keys()
        println("target keys: ${keys}")
    }
    ```
 
-3. To create a new ArkTS object, use `JSContext.object()`.
+3. Create new ArkTS objects using `JSContext.object()`.
 
-4. The ArkTS runtime has a special global object accessible from any ArkTS code. On the Cangjie side, it can be accessed via `JSContext.global`.
+4. Access the special ArkTS global object (available in all ArkTS code) via `JSContext.global`.
 
-### Manipulating ArkTS Sendable Objects
+### Working with ArkTS Sendable Objects
 
-ArkTS provides sendable object types to support reference passing during concurrent communication, addressing the need for large-scale object transfers.
+ArkTS provides sendable objects for reference passing during concurrent communication.
 
-On the Cangjie side, sendable objects are handled the same way as regular ArkTS objects.
+Cangjie handles sendable objects the same way as regular ArkTS objects.
 
-Define a sendable object in ArkTS:
+Defining a sendable object in ArkTS:
 
 ```typescript
 // Function definition
@@ -149,16 +149,16 @@ class SendableTestClass {
 }
 ```
 
-Manipulate the sendable object in Cangjie:
+Operating on sendable objects in Cangjie:
 
 ```cangjie
-// Define the package name, which must match the package name in cjpm.toml
+// Package name must match package name in cjpm.toml
 package ohos_app_cangjie_entry
 
-// Import the interoperability library ark_interop and macros
+// Import interop libraries and macros
 import ohos.ark_interop.*
 
-// Define the interoperability function. The parameter types must be (JSContext, JSCallInfo), and the return type must be JSValue.
+// Interop function signature
 func readNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
     let obj = callInfo[0].asObject()
     // Get properties from JSObject
@@ -172,43 +172,43 @@ func readNumber(context: JSContext, callInfo: JSCallInfo): JSValue {
     return context.number(result).toJSValue()
 }
 
-// Must register the function in JSModule
+// Register function with JSModule
 let EXPORT_MODULE = JSModule.registerModule {
     runtime, exports =>
         exports["readNumber"] = runtime.function(readNumber).toJSValue()
 }
 ```
 
-Declare the interoperability interface in Index.d.ts:
+Interop interface declaration in Index.d.ts:
 
 ```typescript
-// Index.d.ts corresponding to libohos_app_cangjie_entry.so
+// Index.d.ts for libohos_app_cangjie_entry.so
 export declare function readNumber(data: SendableTestClass): number;
 
 interface SendableTestClass {}
 ```
 
-Construct the sendable object in ArkTS:
+Creating sendable objects in ArkTS:
 
 ```typescript
-// Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
+// Import Cangjie dynamic library
 import { readNumber } from "libohos_app_cangjie_entry.so"
 
-// Construct the sendable object
+// Create sendable object
 let a = new SendableTestClass();
-// Call the Cangjie interface
+// Call Cangjie interface
 let result = readNumber(a);
 console.log("result = " + result);
 ```
 
 ### ArkTS Async Lock
 
-To address data race issues between concurrent instances, ArkTS introduces asynchronous lock capabilities. For developer efficiency, AsyncLock objects support cross-concurrent instance reference passing. For details, refer to [Async Lock](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/arkts-utils/arkts-async-lock-introduction.md). This section focuses on AsyncLock combined with sendable objects.
+To address data races between concurrent instances, ArkTS introduces async lock capabilities. AsyncLock objects support cross-instance reference passing. See [Async Lock](https://docs.openharmony.cn/pages/v5.1/en/application-dev/arkts-utils/arkts-async-lock-introduction.md) for details. This section focuses on async lock with sendable objects.
 
 Cangjie implementation:
 
 ```cangjie
-// Define the package name, which must match the package name in cjpm.toml
+// Package name must match package name in cjpm.toml
 package ohos_app_cangjie_entry
 
 internal import ohos.ark_interop.JSModule
@@ -223,10 +223,10 @@ func testAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     // Create PromiseCapability
     let promise = context.promiseCapability()
     spawn {
-        // Execute compute-intensive tasks on a new thread
-        // Return to the ArkTS thread
+        // Execute compute-intensive task in new thread
+        // Return to ArkTS thread
         context.postJSTask {
-            // Return the result to ArkTS
+            // Return result to ArkTS
             promise.resolve(context.string("abcdedf").toJSValue())
         }
     }
@@ -248,17 +248,17 @@ let EXPORT_MODULE = JSModule.registerModule {
 }
 ```
 
-Declare the interoperability interface in Index.d.ts:
+Interop interface declaration in Index.d.ts:
 
 ```typescript
-// Index.d.ts corresponding to libohos_app_cangjie_entry.so
+// Index.d.ts for libohos_app_cangjie_entry.so
 export declare function testAsync(): Promise<boolean>;
 export declare function readName(data: Some): Promise<string>;
 
 interface Some {}
 ```
 
-Create workerTest.ets in entry->src->main->ets. Main thread code:
+Main thread code in workerTest.ets:
 
 ```typescript
 // workerTest.ets
@@ -266,10 +266,10 @@ import hilog from '@ohos.hilog';
 import worker, {MessageEvents} from '@ohos.worker';
 import {ArkTSUtils} from "@kit.ArkTS";
 
-// Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
+// Import Cangjie dynamic library
 import { readName } from "libohos_app_cangjie_entry.so";
 
-// Define the Sendable class
+// Define Sendable class
 @Sendable
 export class Some {
   name: string = "safd";
@@ -298,7 +298,7 @@ export async function startTestWorker() {
   hilog.info(0, "test", "worker test begin");
   // Create worker
   const thread = new worker.ThreadWorker("entry/ets/workers/Worker.ets");
-  // Create and initialize the event callback table
+  // Initialize event handler map
   const eventHandlers = new Map<string, (msg: MessageEvents) => void>();
   eventHandlers.set("close", (evt) => {
     thread.terminate();
@@ -308,7 +308,7 @@ export async function startTestWorker() {
     const name = await a.getName();
     hilog.info(0, "worker", `result is ${result}, name is ${name}`);
   });
-  // Listen to worker messages
+  // Listen for worker messages
   thread.onmessage = (evt) => {
     let type = evt.data.type as string;
     if (eventHandlers.has(type)) {
@@ -319,29 +319,29 @@ export async function startTestWorker() {
   };
   // Create Sendable object
   let a = new Some();
-  // Call the Cangjie interface
+  // Call Cangjie interface
   hilog.info(0, "test", `name: ${await readName(a)}`);
-  // Send "begin" message to the worker
+  // Send "begin" message to worker
   a.type = "begin";
   thread.postMessageWithSharedSendable(a);
 }
 ```
 
-Create Workers.ets in entry->src->main->ets/workers:
+Worker implementation in Worker.ets:
 
 ```typescript
-// Workers.ets
+// Worker.ets
 import {ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker} from '@kit.ArkTS';
 import hilog from '@ohos.hilog';
 
-// Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
+// Import Cangjie dynamic library
 import { readName, testAsync } from "libohos_app_cangjie_entry.so";
 
 import {Some} from "../workerTest";
 
-// Get the worker thread environment
+// Get worker thread environment
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-// Listen to main thread messages
+// Listen for main thread messages
 workerPort.onmessage = (evt) => {
   let some = evt.data as Some;
   if (some.type == "begin") {
@@ -350,11 +350,11 @@ workerPort.onmessage = (evt) => {
 }
 
 async function beginTask(some: Some) {
-  // Modify object properties in the worker thread
+  // Modify object property in worker thread
   await some.setName("modified");
   some.type = "modify";
   hilog.info(0, "worker", `worker name: ${await readName(some)}`);
-  // Call the Cangjie function
+  // Call Cangjie function
   testAsync().then(data => {
     hilog.info(0, "worker", `resolved: ${data}`);
     workerPort.postMessage({"type": "result", value: data});
@@ -365,13 +365,13 @@ async function beginTask(some: Some) {
 }
 ```
 
-Start the Worker in ArkTS:
+Starting the Worker in ArkTS:
 
 ```typescript
-// Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
+// Import Cangjie dynamic library
 import { startTestWorker } from "../workerTest"
 
-// Start the Worker
+// Start Worker
 startTestWorker();
 ```
 
@@ -379,26 +379,24 @@ startTestWorker();
 
 #### Regular Function Calls
 
-After obtaining an ArkTS function (via parameter passing, global variables, or retrieving from ArkTS data collections like arrays), you can call it directly in Cangjie.
+After obtaining an ArkTS function (via parameter passing, global variables, or collection access), you can call it directly from Cangjie. This example shows ArkTS calling a Cangjie function, which then calls back to an ArkTS function.
 
-This example first calls a Cangjie function from ArkTS, then calls back an ArkTS function within the Cangjie function implementation.
-
-1. ArkTS calls Cangjie:
+1. ArkTS calling Cangjie:
 
     ```typescript
-    // Index.d.ts corresponding to libohos_app_cangjie_entry.so
+    // Index.d.ts for libohos_app_cangjie_entry.so
     export declare function addByCallback(a: number, b: number, callback: (result: number) => void): void;
     ```
 
     ```typescript
-    // 1. Import the Cangjie dynamic library. The library name is the Cangjie package name, which must match the package name of the interoperability interface.
+    // 1. Import Cangjie dynamic library
     import { addByCallback } from "libohos_app_cangjie_entry.so";
 
-    // 2. Call the Cangjie interface
+    // 2. Call Cangjie interface
     addByCallback(1, 2, (result) => {
         console.log(`1 + 2 = ${result}`);
     });
-    ```2. Calling Back ArkTS Functions from Cangjie Code:
+    ```2. Calling Back ArkTS Functions in Cangjie Code:
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -418,7 +416,7 @@ This example first calls a Cangjie function from ArkTS, then calls back an ArkTS
         let result = a + b
         // Create ArkTS number from Cangjie Float64
         let retJSValue = context.number(result).toJSValue()
-        // Invoke the callback function
+        // Call the callback function
         callback.call(retJSValue)
     }
 
@@ -430,7 +428,7 @@ This example first calls a Cangjie function from ArkTS, then calls back an ArkTS
 
 #### Function Calls with `this` Pointer
 
-The function in this example doesn't involve a `this` pointer. For method calls that require a `this` pointer, you can specify it using the named parameter `thisArg`.
+The function in this example doesn't have a `this` pointer. For method calls that require a `this` pointer, you can specify it through the named parameter `thisArg`.
 
 ```cangjie
 func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
@@ -441,7 +439,7 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
 }
 ```
 
-In ArkTS code, you can use `object.method(...)` for invocation, which implicitly passes the `this` pointer.
+In ArkTS code, you can call it through `object.method(...)`, which implicitly passes the `this` pointer.
 
 ```typescript
 class Someone {
@@ -453,26 +451,26 @@ class Someone {
 
 let target = new Someone();
 
-// This implicitly passes the this pointer and works correctly
+// Here the `this` pointer is implicitly passed, and the call works normally
 target.doSth();
 
 let doSth = target.doSth;
-// This doesn't pass the this pointer and will throw `can't read property of undefined` error
+// Here the `this` pointer is not passed, causing an exception `can't read property of undefined`
 doSth.call();
 ```
 
-The corresponding implementation in Cangjie would be:
+In Cangjie, the corresponding implementation is as follows:
 
 ```cangjie
 func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     let object = callInfo[0].asObject(context)
-    // Implicitly passes the this pointer and works correctly
+    // The `this` pointer is implicitly passed, and the call works normally
     object.callMethod("doSth")
 
     let doSth = object["doSth"].asFunction(context)
-    // Doesn't pass the this pointer, will throw `can't read property of undefined` error
+    // The `this` pointer is not passed, causing an exception `can't read property of undefined`
     doSth.call()
-    // Explicitly passes the this pointer and works correctly
+    // Explicitly passing the `this` pointer makes the call work normally
     doSth.call(thisArg: object.toJSValue())
 }
 ```

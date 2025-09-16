@@ -4,7 +4,7 @@ The character type is represented using `Rune`, which can represent all characte
 
 ## Character Type Literals
 
-Character type literals come in three forms: single characters, escape sequences, and universal characters. A `Rune` literal starts with the character `r`, followed by a character enclosed in either single or double quotes.
+Character type literals come in three forms: single characters, escape characters, and universal characters. A `Rune` literal starts with the character `r`, followed by a character enclosed in single or double quotes.
 
 **Single character** literals examples:
 
@@ -15,7 +15,7 @@ let a: Rune = r'a'
 let b: Rune = r"b"
 ```
 
-**Escape sequences** are character sequences that reinterpret the following character. They begin with the escape symbol `\`, followed by the character to be escaped. Examples:
+**Escape characters** are character sequences that reinterpret the following character. Escape characters begin with the escape symbol `\`, followed by the character to be escaped. Examples:
 
 <!-- compile -->
 
@@ -46,6 +46,6 @@ Compiling and executing the above code will output:
 
 ## Supported Operations for Character Type
 
-Character types support the following operators: relational operators, namely less than (`<`), greater than (`>`), less than or equal to (`<=`), greater than or equal to (`>=`), equal to (`==`), and not equal to (`!=`). The comparison is based on the Unicode values of the characters.
+Character types support the following relational operators: less than (`<`), greater than (`>`), less than or equal to (`<=`), greater than or equal to (`>=`), equal to (`==`), and not equal to (`!=`). These comparisons are based on the Unicode values of the characters.
 
 `Rune` can be converted to `UInt32`, and integer types can be converted to `Rune`. For specific type conversion syntax and rules, please refer to [`Rune` to `UInt32` and Integer Type to `Rune` Conversion](../class_and_interface/typecast.md#rune-to-uint32-and-integer-type-to-rune-conversion).

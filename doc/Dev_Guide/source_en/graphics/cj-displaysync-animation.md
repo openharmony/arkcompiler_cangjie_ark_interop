@@ -1,15 +1,15 @@
 # Requesting Animation Frame Rate
 
-In application development, property animations and explicit animations can utilize the optional parameter ExpectedFrameRateRange to configure different desired rendering frame rates for various animations.
+In application development, [property animations](../../../API_Reference/source_en/arkui-cj/cj-animation-animation.md) and [explicit animations](../../../API_Reference/source_en/arkui-cj/cj-animation-animateto.md) can use the optional parameter [ExpectedFrameRateRange](../../../API_Reference/source_en/arkui-cj/cj-animation-animateto.md#expectedframeraterange) to configure different expected rendering frame rates for various animations.
 
 ## Requesting Frame Rate for Property Animation
 
-Defining a property animation for a text component with a requested rendering frame rate of 60, example as follows:
+Define a property animation for a text component with a requested rendering frame rate of 60, as shown in the following example:
 
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.*
+import kit.ArkUI.*
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -43,13 +43,13 @@ class EntryView {
 
 ## Requesting Frame Rate for Explicit Animation
 
-Defining an explicit animation for a button component with a requested rendering frame rate of 30, example as follows:
+Define an explicit animation for a button component with a requested rendering frame rate of 30, as shown in the following example:
 
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.*
 import ohos.arkui.ui_context.*
+import kit.ArkUI.*
 
 @Entry
 @Component
@@ -89,7 +89,7 @@ class EntryView {
 <!-- compile -->
 
 ```cangjie
-import kit.UIKit.*
+import kit.ArkUI.*
 import ohos.arkui.ui_context.*
 
 let animateOpt1 = AnimateParam(
@@ -119,7 +119,7 @@ class EntryView {
                 Text('30')
                     .fontWeight(FontWeight.Bold)
                     .fontSize(16)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .textAlign(TextAlign.Center)
                     .borderRadius(10)
                     .backgroundColor(0xF56C6C)
@@ -131,7 +131,7 @@ class EntryView {
                 Text('40')
                     .fontWeight(FontWeight.Bold)
                     .fontSize(16)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .textAlign(TextAlign.Center)
                     .borderRadius(10)
                     .backgroundColor(0x2E8B57)
@@ -143,7 +143,7 @@ class EntryView {
                 Text('60')
                     .fontWeight(FontWeight.Bold)
                     .fontSize(16)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .textAlign(TextAlign.Center)
                     .borderRadius(10)
                     .backgroundColor(0x008B8B)
@@ -158,7 +158,7 @@ class EntryView {
                     .fontSize(14)
                     .fontWeight(FontWeight.W500)
                     .margin(bottom: 10, left: 5)
-                    .fontColor(Color.WHITE)
+                    .fontColor(Color.White)
                     .onClick(
                         {
                             evt =>
@@ -168,7 +168,7 @@ class EntryView {
                             } else {
                                 let translateX3 = -100
                             }
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 1200,
                                     iterations: 10,

@@ -1,6 +1,6 @@
 # Generic Interfaces
 
-Generics can be used to define generic interfaces. Taking the `Iterable` interface defined in the standard library as an example, its member function `iterator` needs to return an `Iterator` type, which serves as a container's traverser. `Iterator` is a generic interface that contains a `next` member function for retrieving the next element from the container type. The return type of the `next` member function needs to be specified during usage, so `Iterator` requires the declaration of generic parameters.
+Generics can be used to define generic interfaces. Taking `Iterable` from the standard library as an example, its member function `iterator` needs to return an `Iterator` type, which serves as a container's traverser. `Iterator` is a generic interface that contains a `next` member function for returning the next element from the container. Since the return type of the `next` function needs to be specified during usage, `Iterator` requires the declaration of generic parameters.
 
 <!-- compile -->
 

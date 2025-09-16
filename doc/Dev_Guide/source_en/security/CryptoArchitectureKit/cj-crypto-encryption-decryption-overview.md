@@ -7,5 +7,3 @@ Typical use cases for encryption and decryption operations include:
 1. Encryption and decryption operations using symmetric keys.
 
 2. Encryption and decryption operations using asymmetric keys.
-
-3. When using RSA (with PKCS1_OAEP padding mode), obtaining and setting CipherSpecItem parameters.

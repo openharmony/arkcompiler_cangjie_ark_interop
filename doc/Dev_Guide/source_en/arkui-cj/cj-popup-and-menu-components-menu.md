@@ -1,23 +1,23 @@
 # Menu Control (Menu)
 
-Menu is a menu interface, typically used for right-click pop-ups, click-triggered pop-ups, etc. For specific usage, please refer to [Menu Control](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-menu.md).
+Menu is an interface for contextual menus, commonly used for right-click pop-ups, click-triggered pop-ups, etc. For specific usage, please refer to [Menu Control](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-menu.md).
 
-When using [bindContextMenu](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-menu.md#func-bindcontextmenu---unit-responsetype) with a preview image set, the menu will have an overlay when popped up, making it modal.
+When using [bindContextMenu](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-menu.md#func-bindcontextmenu---unit-responsetype) with a preview image set, the menu will appear with an overlay layer, making it modal.
 
-When using [bindMenu](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-menu.md#func-bindmenu---unit) or bindContextMenu without setting a preview image, the menu will pop up without an overlay, making it non-modal.
+When using [bindMenu](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-menu.md#func-bindmenu---unit) or bindContextMenu without setting a preview image, the menu will appear without an overlay layer, making it non-modal.
 
 ## Lifecycle
 
 | Name | Type | Description |
 |:---|:---|:---|
-| aboutToAppear | () -> Unit | Callback event before the menu display animation. |
-| onAppear | () -> Unit | Callback event when the menu pops up. |
-| aboutToDisappear | () -> Unit | Callback event before the menu exit animation. |
-| onDisappear | () -> Unit | Callback event when the menu disappears. |
+| aboutToAppear | () -> Unit | Callback triggered before the menu display animation. |
+| onAppear | () -> Unit | Callback triggered when the menu pops up. |
+| aboutToDisappear | () -> Unit | Callback triggered before the menu exit animation. |
+| onDisappear | () -> Unit | Callback triggered when the menu disappears. |
 
-## Creating a Default-Style Menu
+## Creating Default-Style Menus
 
-The menu needs to be implemented by calling the bindMenu interface. bindMenu responds to the click event of the bound component. After binding the component, the menu will pop up when the corresponding component is clicked.
+Menus need to be implemented by calling the bindMenu interface. bindMenu responds to click events on bound components. After binding to a component, the menu will pop up when the corresponding component is clicked.
 
 ```cangjie
 Button("click for Menu").bindMenu(
@@ -32,9 +32,9 @@ Button("click for Menu").bindMenu(
 
 ![menu](figures/menu1.png)
 
-### Creating a Custom-Style Menu
+### Creating Custom-Style Menus
 
-When the default style does not meet development requirements, you can use [@Builder](./paradigm/cj-macro-builder.md) to customize the menu content and implement it via the bindMenu interface.
+When the default style doesn't meet development requirements, you can use [@Builder](./paradigm/cj-macro-builder.md) to customize menu content and implement custom menus through the bindMenu interface.
 
 #### Developing Menu Content with @Builder
 
@@ -42,6 +42,7 @@ When the default style does not meet development requirements, you can use [@Bui
 
 ```cangjie
 package ohos_app_cangjie_entry
+
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
@@ -72,16 +73,16 @@ class EntryView {
     @Builder
     func MyMenu() {
         Menu() {
-            MenuItem(startIcon: @r(app.media.app_background), content: @r(app.string.Content_name),
-                endIcon: @r(app.string.Content_empty), labelInfo: @r(app.string.Content_empty))
-            MenuItem(startIcon: @r(app.media.app_background), content: @r(app.string.Content_name),
-                endIcon: @r(app.string.Content_empty), labelInfo: @r(app.string.Content_empty)).enabled(false)
+            MenuItem(startIcon: @r(app.media.startIcon), content: @r(app.string.module_desc),
+                endIcon: @r(app.string.module_desc), labelInfo: @r(app.string.module_desc))
+            MenuItem(startIcon: @r(app.media.startIcon), content: @r(app.string.module_desc),
+                endIcon: @r(app.string.module_desc), labelInfo: @r(app.string.module_desc)).enabled(false)
             MenuItem(
                 startIcon: this.iconStr,
-                content: @r(app.string.Content_name),
+                content: @r(app.string.module_desc),
                 endIcon: @r(app.media.startIcon),
-                labelInfo: @r(app.string.Content_empty),
-                // When the builder parameter is configured, it indicates a submenu bound to the menuItem. Hovering over this menu item will display the submenu.
+                labelInfo: @r(app.string.module_desc),
+                // When the builder parameter is configured, it indicates a submenu bound to the menu item. Hovering over this menu item will display the submenu.
                 builder: {=> bind(this.SubMenu, this)()}
             )
             MenuItemGroup(header: "Subtitle", footer: "") {
@@ -92,25 +93,24 @@ class EntryView {
                     .onChange(
                         {
                             selected =>
-                            AppLog.info("menuItem select${selected}")
                             let Str: Tmp = Tmp()
                             Str.set(@r(app.media.startIcon))
                         }
                     )
                 MenuItem(
                     startIcon: @r(app.media.startIcon),
-                    content: @r(app.string.Content_empty),
+                    content: @r(app.string.module_desc),
                     endIcon: @r(app.media.startIcon),
-                    labelInfo: @r(app.string.Content_empty),
+                    labelInfo: @r(app.string.module_desc),
                     builder: {=> bind(this.SubMenu, this)()}
                 )
             }
 
             MenuItem(
                 startIcon: this.iconStr2,
-                content: @r(app.string.Content_name),
+                content: @r(app.string.module_desc),
                 endIcon: @r(app.media.startIcon),
-                labelInfo: @r(app.string.Content_empty)
+                labelInfo: @r(app.string.module_desc)
             )
         }
     }
@@ -121,7 +121,7 @@ class EntryView {
 }
 ```
 
-### Binding Components with bindMenu Attribute
+### Binding Components with bindMenu Property
 
 ```cangjie
 Button('click for Menu')
@@ -130,12 +130,12 @@ Button('click for Menu')
 
 ![menu](figures/menu2.png)
 
-## Creating a Right-Click or Long-Press Menu
+## Creating Right-Click or Long-Press Menus
 
-Customize the menu via the bindContextMenu interface and set the trigger method for menu pop-up, which can be right-click or long-press. The menu items popped up via bindContextMenu are in an independent sub-window and can appear outside the application window.
+Customize menus through the bindContextMenu interface and set the trigger method for menu display, which can be right-click or long-press. Menus triggered by bindContextMenu appear in an independent sub-window and can display outside the application window.
 
-- The method for developing menu content with @Builder is the same as above.
-- Confirm the menu pop-up method and bind components with the bindContextMenu attribute. The example shows a right-click pop-up menu.
+- Developing menu content with @Builder follows the same approach as described above.
+- Determine the menu trigger method and bind components using the bindContextMenu property. The example shows right-click menu triggering.
 
 ```cangjie
 Button('click for Menu')

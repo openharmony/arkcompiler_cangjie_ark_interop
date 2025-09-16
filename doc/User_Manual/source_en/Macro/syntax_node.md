@@ -1,6 +1,6 @@
 # Syntax Nodes
 
-In the compilation process of the Cangjie language, the code is first converted into `Tokens` through lexical analysis, followed by syntactic parsing of the `Tokens` to generate a syntax tree. Each node in the syntax tree may represent an expression, declaration, type, pattern, etc. The Cangjie standard library `std.ast` package provides corresponding classes for each type of node, with appropriate inheritance relationships. The main abstract classes are as follows:
+In the compilation process of the Cangjie language, the code is first converted into `Tokens` through lexical analysis, and then the `Tokens` are parsed syntactically to generate a syntax tree. Each node in the syntax tree may represent an expression, declaration, type, pattern, etc. The Cangjie standard library `std.ast` package provides corresponding classes for each type of node, with appropriate inheritance relationships. The main abstract classes are as follows:
 
 - `Node`: The parent class of all syntax nodes
 - `TypeNode`: The parent class of all type nodes
@@ -8,7 +8,7 @@ In the compilation process of the Cangjie language, the code is first converted 
 - `Decl`: The parent class of all declaration nodes
 - `Pattern`: The parent class of all pattern nodes
 
-There are numerous specific node types. For detailed information, please refer to the *Cangjie Programming Language Library API*. The following nodes are primarily used in the examples below:
+There are numerous specific node types. For detailed information, please refer to the *Cangjie Programming Language Library API*. In the following examples, the following nodes are primarily used:
 
 - `BinaryExpr`: Binary operation expressions
 - `FuncDecl`: Function declarations
@@ -22,15 +22,15 @@ Using the `std.ast` standard library package, virtually every type of node can b
 The following functions are used to parse and construct arbitrary syntax nodes from `Tokens`:
 
 - `parseExpr(input: Tokens): Expr`: Parses the input `Tokens` into an expression node.
-- `parseExprFragment(input: Tokens, startFrom!: Int64 = 0): (Expr, Int64)`: Parses a fragment of the input `Tokens` into an expression node, starting from the `startFrom` index. The parsing may consume only a portion of the fragment starting from `startFrom`, and returns the index of the first unconsumed `Token` (if the entire fragment is consumed, the return value is `input.size`).
-- `parseDecl(input: Tokens, astKind!: String = "")`: Parses the input `Tokens` into a declaration node. `astKind` is an additional setting; refer to the *Cangjie Programming Language Library API* documentation for details.
+- `parseExprFragment(input: Tokens, startFrom!: Int64 = 0): (Expr, Int64)`: Parses a fragment of the input `Tokens` into an expression node, starting from the `startFrom` index. The parsing may consume only part of the fragment starting from `startFrom`, and returns the index of the first unconsumed `Token` (if the entire fragment is consumed, the return value is `input.size`).
+- `parseDecl(input: Tokens, astKind!: String = "")`: Parses the input `Tokens` into a declaration node, where `astKind` is an additional setting (see the *Cangjie Programming Language Library API* documentation for details).
 - `parseDeclFragment(input: Tokens, startFrom!: Int64 = 0): (Decl, Int64)`: Parses a fragment of the input `Tokens` into a declaration node. The `startFrom` parameter and the meaning of the returned index are the same as in `parseExpr`.
 - `parseType(input: Tokens): TypeNode`: Parses the input `Tokens` into a type node.
 - `parseTypeFragment(input: Tokens, startFrom!: Int64 = 0): (TypeNode, Int64)`: Parses a fragment of the input `Tokens` into a type node. The `startFrom` parameter and the meaning of the returned index are the same as in `parseExpr`.
 - `parsePattern(input: Tokens): Pattern`: Parses the input `Tokens` into a pattern node.
 - `parsePatternFragment(input: Tokens, startFrom!: Int64 = 0): (Pattern, Int64)`: Parses a fragment of the input `Tokens` into a pattern node. The `startFrom` parameter and the meaning of the returned index are the same as in `parseExpr`.
 
-If parsing fails, an exception is thrown. This parsing method is suitable for code fragments of unknown types. If a specific subtype node is required, the parsing result must be manually cast to the desired subtype.
+If parsing fails, an exception will be thrown. This parsing method is suitable for code fragments of unknown types. If a specific subtype node is required, the parsing result must be manually cast to the corresponding subtype.
 
 These functions are used as shown in the following example:
 
@@ -91,7 +91,7 @@ let binExpr = BinaryExpr(quote(a + b))
 let funcDecl = FuncDecl(quote(func f1(x: Int64) { return x + 1 }))
 ```
 
-If parsing fails, an exception is thrown. This parsing method is suitable for code fragments of known types, eliminating the need to manually cast the result to a specific subtype.
+If parsing fails, an exception will be thrown. This parsing method is suitable for code fragments of known types, as the parsed result does not require manual casting to a specific subtype.
 
 ## Components of Nodes
 
@@ -112,7 +112,7 @@ After parsing nodes from `Tokens`, you can examine their components. As examples
 - `Block` node (partial):
     - `nodes: ArrayList<Node>`: Expressions and declarations within the block
 
-Each component is a `public mut prop`, meaning it can be inspected and updated. The results of such updates are demonstrated in the following examples.
+Each component is a `public mut prop` and can therefore be inspected and updated. The results of updates are demonstrated through examples.
 
 ### BinaryExpr Example
 
@@ -134,7 +134,7 @@ The output is:
 a + b + y
 ```
 
-First, parsing yields `binExpr` as the node `x * y`, represented as follows:
+First, through parsing, `binExpr` is obtained as the node `x * y`, represented as follows:
 
 ```text
     *
@@ -142,7 +142,7 @@ First, parsing yields `binExpr` as the node `x * y`, represented as follows:
  x     y
 ```
 
-Next, the left node (`x`) is replaced with `a + b`, resulting in the following syntax tree:
+In the second step, the left node (`x`) is replaced with `a + b`, resulting in the following syntax tree:
 
 ```text
       *
@@ -152,9 +152,9 @@ Next, the left node (`x`) is replaced with `a + b`, resulting in the following s
  a   b
 ```
 
-When outputting this syntax tree, parentheses must be added around `a + b` to yield `(a + b) * y` (outputting `a + b * y` would imply multiplication before addition, which differs from the syntax tree's meaning). The `ast` library automatically adds parentheses when outputting syntax trees.
+When outputting this syntax tree, parentheses must be added around `a + b` to yield `(a + b) * y` (if `a + b * y` were output, it would imply multiplication before addition, which differs from the syntax tree's meaning). The `ast` library automatically adds parentheses when outputting syntax trees.
 
-Finally, the operator at the root of the syntax tree is changed from `*` to `+`, resulting in the following syntax tree:
+In the third step, the operator at the root of the syntax tree is changed from `*` to `+`, resulting in the following syntax tree:
 
 ```text
       +
@@ -164,7 +164,7 @@ Finally, the operator at the root of the syntax tree is changed from `*` to `+`,
  a   b
 ```
 
-This syntax tree can be output as `a + b + y` because addition is left-associative, eliminating the need for parentheses on the left side.
+This syntax tree can be output as `a + b + y` because addition is left-associative and does not require parentheses on the left side.
 
 ### FuncDecl Example
 
@@ -193,7 +193,7 @@ func foo(a: Int64) {
 
 ## Interpolating Syntax Nodes Using `quote`
 
-Any syntax node can be interpolated within a `quote` statement, and some `ArrayList` lists of syntax nodes can also be interpolated (primarily corresponding to scenarios where such node lists are encountered in practice). Interpolation is expressed directly via `$(node)`, where `node` is an instance of any node type.
+Any syntax node can be interpolated within a `quote` statement, and some `ArrayList` lists of syntax nodes can also be interpolated (primarily corresponding to scenarios where such node lists occur in practice). Interpolation is expressed directly via `$(node)`, where `node` is an instance of any node type.
 
 Below are examples demonstrating node interpolation.
 
@@ -220,7 +220,7 @@ c: 1
 d: 1 + 2.leftExpr
 ```
 
-Generally, the expression following the interpolation operator is enclosed in parentheses to delimit its scope, e.g., `$(binExpr)`. However, when followed by a single identifier, the parentheses can be omitted, i.e., written as `$binExpr`. Thus, in the example, both `a` and `b` interpolate the `binExpr` node within `quote`, resulting in `1 + 2`. However, if the expression following the interpolation operator is more complex, omitting parentheses may lead to scope errors. For instance, the expression `binExpr.leftExpr` evaluates to the left expression of `1 + 2`, i.e., `1`, so `c` is correctly assigned `1`. However, the interpolation in `d` is interpreted as `($binExpr).leftExpr`, resulting in `1 + 2.leftExpr`. To clarify the scope of interpolation, it is recommended to use parentheses with the interpolation operator.
+Generally, the expression following the interpolation operator is enclosed in parentheses to delimit its scope, e.g., `$(binExpr)`. However, when followed by a single identifier, the parentheses can be omitted, i.e., written as `$binExpr`. Thus, in the example, both `a` and `b` interpolate the `binExpr` node within `quote`, resulting in `1 + 2`. However, if the expression following the interpolation operator is more complex, omitting parentheses may lead to scope errors. For example, the expression `binExpr.leftExpr` evaluates to the left expression of `1 + 2`, i.e., `1`, so `c` is correctly assigned `1`. But in `d`, the interpolation is interpreted as `($binExpr).leftExpr`, resulting in `1 + 2.leftExpr`. To clarify the scope of interpolation, it is recommended to use parentheses with the interpolation operator.
 
 The following example demonstrates the interpolation of node lists (`ArrayList`).
 
@@ -256,7 +256,7 @@ func foo(n: Int64) {
 
 In this example, a node list `incrs` is created, containing the expressions `x += 1`, ..., `x += 5`. Interpolating `incrs` lists the nodes sequentially, with a newline after each node. This is suitable for inserting expressions and declarations that need to be executed sequentially.
 
-The following example demonstrates cases where parentheses are required around interpolations to ensure correctness.
+The following example demonstrates cases where parentheses are needed around interpolations to ensure correctness.
 
 <!-- verify -->
 
@@ -279,4 +279,4 @@ binExpr2.rightExpr: y * z
 binExpr3: (x + y) * z
 ```
 
-First, the expression `x + y` is constructed, then interpolated into the template `$(binExpr1) * z`. The intention is to obtain an expression that first computes `x + y` and then multiplies by `z`. However, the interpolation yields `x + y * z`, which computes `y * z` before adding `x`. This occurs because interpolation does not automatically add parentheses to ensure the atomicity of the interpolated expression (unlike the replacement of `leftExpr` described earlier). Thus, parentheses must be added around `$(binExpr1)` to ensure the correct result.
+First, the expression `x + y` is constructed, then interpolated into the template `$(binExpr1) * z`. The intention is to obtain an expression that first computes `x + y` and then multiplies by `z`. However, the interpolation yields `x + y * z`, which computes `y * z` before adding `x`. This occurs because interpolation does not automatically add parentheses to ensure the atomicity of the interpolated expression (unlike the replacement of `leftExpr` described earlier). Therefore, parentheses must be added around `$(binExpr1)` to ensure the correct result.

@@ -2,7 +2,7 @@
 
 Page loading is a fundamental feature of Web components. Based on the data source, page loading can be categorized into three common scenarios: loading network pages, loading local pages, and loading HTML-formatted rich text data.
 
-During the page loading process, if network resource acquisition is involved, please configure network access permissions in module.json5. For adding methods, refer to [Declaring Permissions in Configuration Files](../security/AccessToken/cj-declare-permissions.md).
+During the page loading process, if network resource acquisition is involved, please configure network access permissions in module.json5. For the method to add permissions, refer to [Declaring Permissions in Configuration Files](../security/AccessToken/cj-declare-permissions.md).
 
 ```json
 "requestPermissions":[
@@ -14,7 +14,7 @@ During the page loading process, if network resource acquisition is involved, pl
 
 ## Loading Network Pages
 
-Developers can specify the default network page to load when creating a Web component. After the default page is loaded, if developers need to change the displayed network page, they can load the specified webpage by calling the `loadUrl()` interface. The first parameter variable `src` of the Web component cannot be dynamically changed via state variables (e.g., `@State`). If modification is required, reload it using `loadUrl()`.
+Developers can specify the default network page to load when creating a Web component. The first parameter variable `src` of the [Web component](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#web) cannot be dynamically changed using state variables (e.g., `@State`).
 
 In the following example, after the Web component loads the "www.example.com" page, developers can use the `loadUrl` interface to change the displayed page to "www.example1.com".
 
@@ -22,9 +22,13 @@ In the following example, after the Web component loads the "www.example.com" pa
 
 ```cangjie
 // index.cj
-import ohos.state_macro_manage.*
-import kit.ArkWeb.WebviewController
-import kit.UIKit.{ Web, BusinessException, Button }
+import ohos.arkui.state_macro_manage.*
+import ohos.web.webview.WebviewController
+import kit.ArkUI.{ Web }
+
+func loggerError(str: String) {
+    Hilog.error(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -38,7 +42,7 @@ class EntryView {
                     // When the button is clicked, use loadUrl to navigate to www.example1.com
                     webController.loadUrl('www.example1.com')
                 } catch (e: BusinessException) {
-                    AppLog.error("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
+                    loggerError("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
                 }
             }
             // Load www.example.com when the component is created
@@ -52,7 +56,7 @@ class EntryView {
 
 The following example demonstrates how to load local page files:
 
-Place the local page file in the application's `rawfile` directory. Developers can specify the default local page to load when creating the Web component and change the current Web component's page by calling the `loadUrl()` interface after loading is complete.
+Place the local page files in the application's `rawfile` directory. Developers can specify the default local page to load when creating the Web component.
 
 To reference local CSS style files when loading local HTML files, use the following methods:
 
@@ -73,10 +77,14 @@ To reference local CSS style files when loading local HTML files, use the follow
 
     ```cangjie
     // index.cj
-    import ohos.state_macro_manage.*
-    import kit.LocalizationKit.{__GenerateResource__}
-    import kit.ArkWeb.WebviewController
-    import kit.UIKit.{ Web, BusinessException, Button }
+    import ohos.arkui.state_macro_manage.*
+    import kit.LocalizationKit.*
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{ Web }
+
+    func loggerError(str: String) {
+        Hilog.error(0, "CangjieTest", str)
+    }
 
     @Entry
     @Component
@@ -90,7 +98,7 @@ To reference local CSS style files when loading local HTML files, use the follow
                         // When the button is clicked, use loadUrl to navigate to local1.html
                         webController.loadUrl(@rawfile("local1.html"))
                     } catch (e: BusinessException) {
-                        AppLog.error("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
+                        loggerError("loadUrl ErrorCode: ${e.code},  Message: ${e.message}")
                     }
                 }
                 // Load the local file local.html via $rawfile when the component is created
@@ -126,7 +134,7 @@ To reference local CSS style files when loading local HTML files, use the follow
 
 Example of loading local page files under the sandbox path:
 
-1. Obtain the sandbox path via the singleton object `GlobalContext`. File system access permission (`fileAccess`) must be enabled in the application.
+1. Obtain the sandbox path through the singleton object `GlobalContext`. File system access permissions ([fileAccess](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-fileaccessbool)) must be enabled in the application.
 
     <!-- compile -->
 
@@ -160,9 +168,9 @@ Example of loading local page files under the sandbox path:
 
     ```cangjie
     // index.cj
-    import ohos.state_macro_manage.*
-    import kit.ArkWeb.WebviewController
-    import kit.UIKit.Web
+    import ohos.arkui.state_macro_manage.*
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.Web
 
     @Entry
     @Component
@@ -179,7 +187,7 @@ Example of loading local page files under the sandbox path:
     }
     ```
 
-    Loaded HTML file:
+    HTML file to load:
 
     ```html
     <!-- resources/rawfile/index.html -->
@@ -195,46 +203,51 @@ Example of loading local page files under the sandbox path:
 
    Take `filesDir` as an example to obtain the sandbox path.
 
-   <!-- compile -->
+    <!-- compile -->
 
    ```cangjie
-   // main_ability.cj
+    // main_ability.cj
+    import kit.PerformanceAnalysisKit.Hilog
 
-   class MainAbility <: UIAbility {
-      public init() {
-          super()
-          registerSelf()
-      }
+    func loggerInfo(str: String) {
+        Hilog.info(0, "CangjieTest", str)
+    }
 
-      public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-          AppLog.info("MainAbility OnCreated.${want.abilityName}")
-          // Binding filesDir on the GlobalContext object enables data synchronization between Ability components and the UI.
-          GlobalContext.getInstance().setValue("filesDir", this.context.filesDirectory)
-          match (launchParam.launchReason) {
-              case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
-              case _ => ()
-          }
-      }
+    class MainAbility <: UIAbility {
+        public init() {
+            super()
+            registerSelf()
+        }
 
-      public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-          AppLog.info("MainAbility onWindowStageCreate.")
-          windowStage.loadContent("EntryView")
-      }
-      // ...
-   }
+        public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+            loggerInfo("MainAbility OnCreated.${want.abilityName}")
+            // By binding filesDir to the GlobalContext object, data synchronization between Ability components and the UI can be achieved.
+            GlobalContext.getInstance().setValue("filesDir", this.context.filesDir)
+            match (launchParam.launchReason) {
+                case LaunchReason.START_ABILITY => loggerInfo("START_ABILITY")
+                case _ => ()
+            }
+        }
+
+        public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+            loggerInfo("MainAbility onWindowStageCreate.")
+            windowStage.loadContent("EntryView")
+        }
+        // ...
+    }
    ```
 
 ## Loading HTML-Formatted Text Data
 
-Web components can directly load HTML strings via the `data url` method.
+Web components can directly load HTML strings using the `data url` method.
 
 <!-- compile -->
 
 ```cangjie
 // index.cj
-import ohos.state_macro_manage.*
-import kit.ArkWeb.WebviewController
-import kit.UIKit.Web
+import ohos.arkui.state_macro_manage.*
+import ohos.web.webview.WebviewController
+import kit.ArkUI.Web
 
 @Entry
 @Component

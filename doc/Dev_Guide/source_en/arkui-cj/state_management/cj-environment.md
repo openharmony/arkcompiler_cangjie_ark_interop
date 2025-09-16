@@ -17,7 +17,7 @@ Before reading this document, it is recommended to first review: [AppStorage](./
 | fontScale | Float64 | Font size scaling factor. Range: [0.85, 1.45]. |
 | fontWeightScale | Float64 | Font weight scaling factor. Range: [0.6, 1.6]. |
 | layoutDirection | LayoutDirection | Layout direction type: includes LayoutDirection.Ltr (left-to-right) and LayoutDirection.Rtl (right-to-left). |
-| languageCode | String | Current system language code, which must be in lowercase letters (e.g., "zh"). |
+| languageCode | String | Current system language value, which must be in lowercase letters (e.g., "zh"). |
 
 ## Usage Scenarios
 
@@ -40,7 +40,7 @@ The update chain from device environment to Component: Environment --> AppStorag
 
 > **Note:**
 >
-> Environment parameters linked via `@StorageProp` can be modified locally but cannot be synchronized back to AppStorage because applications cannot write to environment variables. These variables can only be queried in Environment.
+> Environment parameters linked via `@StorageProp` can be modified locally but cannot be synchronized back to AppStorage because the application cannot write to environment variables. They can only be queried in Environment.
 
  <!-- run -->
 
@@ -79,16 +79,16 @@ import kit.PerformanceAnalysisKit.Hilog
 @Entry
 @Component
 class EntryView {
-    // Use Environment.envProp to store the device's languageCode in AppStorage
+    // Use Environment.EnvProp to store the device's languageCode in AppStorage
     let SysLanguageCode = Environment.envProp<String>("languageCode", "en")
-    // Retrieve a one-way bound languageCode variable from AppStorage
+    // Retrieve the languageCode variable from AppStorage with one-way binding
     let lang: ObservedProperty<String> = AppStorage.`prop`<String>('languageCode').getOrThrow()
     func build() {
         Row() {
             Column() {
                 Button("lang")
                 .onClick {
-                    =>
+                    evt =>
                         if (lang.get()=='zh') {
                             Hilog.info(0, "Chinese", "Hello")
                         } else {

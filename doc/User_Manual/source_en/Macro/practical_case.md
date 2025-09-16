@@ -399,7 +399,8 @@ public macro linq(input: Tokens) {
         }
     )
 }
-``````
+```
+
 Usage Example:
 
 <!-- verify -macro16 -->

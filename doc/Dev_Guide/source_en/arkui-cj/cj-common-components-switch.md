@@ -1,32 +1,32 @@
 # Toggle Button (Toggle)
 
-The Toggle component provides state button styles, checkbox styles, and switch styles, typically used for switching between two states. For specific usage, please refer to [Toggle](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-toggle.md).
+The Toggle component provides state button styles, checkbox styles, and switch styles, typically used for toggling between two states. For specific usage, please refer to [Toggle](../../../API_Reference/source_en/arkui-cj/cj-button-picker-toggle.md).
 
 ## Creating a Toggle Button
 
-Toggle is created by calling an interface with the following syntax:
+Toggle is created by calling the interface, with the following invocation format:
 
 ```cangjie
 Toggle(toggleType: ToggleType, isOn!: Bool = false)
 ```
 
-Where `ToggleType` specifies the switch type, including `ButtonType`, `CheckboxType`, and `SwitchType`, and `isOn` represents the state of the toggle button.
+Here, `ToggleType` represents the switch type, including `ButtonType`, `CheckboxType`, and `SwitchType`, while `isOn` indicates the state of the toggle button.
 
-There are two forms of interface calls:
+There are two forms of interface invocation:
 
 - Creating a Toggle without child components.
-  When `ToggleType` is `CheckboxType` or `SwitchType`, it creates a Toggle without child components:
+  When `ToggleType` is `CheckboxType` or `SwitchType`, it is used to create a Toggle without child components:
 
   ```cangjie
-  Toggle(ToggleType.CheckboxType, isOn: false)
-  Toggle(ToggleType.CheckboxType, isOn: true)
+  Toggle(ToggleType.Checkbox, isOn: false)
+  Toggle(ToggleType.Checkbox, isOn: true)
   ```
 
   ![Toggle](figures/Toggle.png)
 
   ```cangjie
-  Toggle(ToggleType.SwitchType, isOn: false)
-  Toggle(ToggleType.SwitchType, isOn: true)
+  Toggle(ToggleType.Switch, isOn: false)
+  Toggle(ToggleType.Switch, isOn: true)
   ```
 
   ![Toggle1](figures/Toggle1.png)
@@ -36,12 +36,12 @@ There are two forms of interface calls:
   When `ToggleType` is `ButtonType`, it can only contain one child component. If the child component has text settings, the corresponding text content will be displayed on the button.
 
   ```cangjie
-  Toggle(ToggleType.ButtonType, false) {
+  Toggle(ToggleType.Button, false) {
       Text('status button')
           .fontColor(0x182431)
           .fontSize(12)
   }.width(100)
-  Toggle(ToggleType.ButtonType, true) {
+  Toggle(ToggleType.Button, true) {
       Text('status button')
           .fontColor(0x182431)
           .fontSize(12)
@@ -52,40 +52,40 @@ There are two forms of interface calls:
 
 ## Customizing Styles
 
-- Use the `selectedColor` property to set the background color when the Toggle is in the "on" state.
+- Use the `selectedColor` property to set the background color when the Toggle is selected and turned on.
 
   ```cangjie
-  Toggle(ToggleType.ButtonType, true) {
+  Toggle(ToggleType.Button, true) {
       Text('status button')
           .fontColor(0x182431)
           .fontSize(12)
   }
       .width(100)
-      .selectedColor(Color.PINK)
-  Toggle(ToggleType.CheckboxType, isOn: true).selectedColor(Color.PINK)
-  Toggle(ToggleType.SwitchType, isOn: true).selectedColor(Color.PINK)
+      .selectedColor(0xFEC0CD)
+  Toggle(ToggleType.Checkbox, isOn: true).selectedColor(0xFEC0CD)
+  Toggle(ToggleType.Switch, isOn: true).selectedColor(0xFEC0CD)
   ```
 
   ![Toggle3](figures/Toggle3.png)
 
-- Use the `switchPointColor` property to set the color of the circular slider for `SwitchType`. This only applies when `toggleType` is `ToggleType.SwitchType`.
+- Use the `switchPointColor` property to set the color of the circular slider for the `SwitchType`. This only takes effect when `toggleType` is `ToggleType.Switch`.
 
   ```cangjie
-  Toggle(ToggleType.SwitchType, isOn: false).switchPointColor(Color.PINK)
-  Toggle(ToggleType.SwitchType, isOn: true).switchPointColor(Color.PINK)
+  Toggle(ToggleType.Switch, isOn: false).switchPointColor(0xFEC0CD)
+  Toggle(ToggleType.Switch, isOn: true).switchPointColor(0xFEC0CD)
   ```
 
   ![Toggle4](figures/Toggle4.png)
 
 ## Adding Events
 
-In addition to supporting [Universal Events](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md), Toggle can also trigger certain actions when selected or deselected. You can bind the `onChange` event to respond with custom behavior after the operation.
+In addition to supporting [Universal Events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md), Toggle can also trigger certain actions upon selection and deselection. You can bind the `onChange` event to respond to custom behaviors after these actions.
 
 ```cangjie
-Toggle(ToggleType.SwitchType, isOn: false)
+Toggle(ToggleType.Switch, isOn: false)
     .onChange {
         isOn => if (isOn) {
-            // Actions to be performed
+            // Operations to be performed
         }
     }
 ```
@@ -94,11 +94,12 @@ Toggle(ToggleType.SwitchType, isOn: false)
 
 Toggle is used to switch the Bluetooth state.
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -118,13 +119,13 @@ class EntryView {
                     .fontSize(16)
                     .textAlign(TextAlign.Start)
                     .backgroundColor(0xFFFFFF)
-                Toggle(ToggleType.SwitchType)
+                Toggle(ToggleType.Switch)
                     .margin(left: 200, right: 10)
                     .onChange {
                         isOn => if (isOn) {
-                            PromptAction.showToast(message: 'Bluetooth is on.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Bluetooth is on.'))
                         } else {
-                            PromptAction.showToast(message: 'Bluetooth is off.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Bluetooth is off.'))
                         }
                     }
             }.backgroundColor(0xFFFFFF)

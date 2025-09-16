@@ -1,8 +1,8 @@
 # Traditional Curves
 
-Traditional curves are based on mathematical formulas, creating animation curves whose shapes align with developers' expectations. Represented by cubic Bézier curves, the shape of the curve can be altered by adjusting its control points, thereby producing animation effects such as ease-in and ease-out. For the same traditional curve, due to its lack of physical meaning, its shape remains unchanged regardless of user interactions, lacking the natural and dynamic feel of physical animations. It is recommended to prioritize using physical curves for animations and reserve traditional curves as supplementary tools for very specific scenarios.
+Traditional curves are based on mathematical formulas, creating animation curves with shapes that align with developers' expectations. Represented by cubic Bézier curves, these curves can be adjusted by modifying their control points to achieve effects like ease-in and ease-out. For the same traditional curve, since it lacks physical meaning, its shape remains unchanged regardless of user interactions, resulting in a lack of the natural and dynamic feel of physical animations. It is recommended to prioritize using physical curves for animations and reserve traditional curves for rare, necessary scenarios as supplementary options.
 
-ArkUI provides interfaces for traditional curves such as Bézier curves and step curves. Developers can refer to [Interpolation Calculation](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-curves.md) for details.
+ArkUI provides traditional curve interfaces such as Bézier curves and step curves. Developers can refer to [Interpolation Calculation](../../../API_Reference/source_en/arkui-cj/cj-apis-curves.md) for details.
 
 Examples and effects of traditional curves are as follows:
 
@@ -83,7 +83,7 @@ class EntryView {
                         .width(20)
                         .height(300)
                         .animationStart(AnimateParam(duration: 2000, curve: item.curve, delay: 100, iterations: -1))
-                        .rotate(this.dRotate)
+                        .rotate(x: this.dRotate)
                         .animationEnd()
                     }
                 )

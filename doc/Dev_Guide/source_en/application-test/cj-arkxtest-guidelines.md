@@ -100,7 +100,7 @@ In the unit testing framework, test scripts must include the following basic ele
 
 This section introduces the capabilities supported by the UI testing framework and the corresponding API usage methods.
 
-UI testing is based on unit testing. UI test scripts extend unit test scripts by adding UiTest interfaces. For details, refer to the [API documentation](../../../API_Reference/source_zh_cn/apis/TestKit/cj-apis-ui_test.md).
+UI testing is based on unit testing. UI test scripts extend unit test scripts by adding UiTest interfaces. For details, refer to the [API documentation](../../../API_Reference/source_en/apis/TestKit/cj-apis-ui_test.md).
 
 The following example code builds upon the unit test script above, implementing a scenario where a click operation is performed on the launched application page, and the resulting page change is checked to see if it matches the expected change.
 
@@ -469,7 +469,7 @@ hdc shell uitest uiInput inputText 100 100 hello
 
 > **Note:**
 >
-> A maximum of three key values can be passed. For specific key values, refer to [KeyCode](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#var-keycode).
+> A maximum of three key values can be passed. For specific key values, refer to [KeyCode](../../../API_Reference/source_en/arkui-cj/cj-universal-event-key.md#var-keycode).
 
 ```shell
 # Return to home screen.

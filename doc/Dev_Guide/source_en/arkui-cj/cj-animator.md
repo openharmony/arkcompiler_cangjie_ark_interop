@@ -1,13 +1,13 @@
 # Frame Animation (ohos.animator)
 
-Frame animation features frame-by-frame callback capabilities, enabling developers to process properties requiring adjustment in each frame. By providing an onFrame callback to applications, frame animation allows developers to set property values in each frame of the application, achieving natural transitions in component property value changes and creating animation effects.
+Frame animation features frame-by-frame callback capabilities, enabling developers to process properties requiring adjustment in each frame. By providing an onFrame callback to applications, frame animation allows developers to set property values in each frame of the application, thereby achieving smooth transitions in component property value changes and creating animation effects.
 
-Compared to property animation, frame animation allows developers to perceive animation progress in real-time and adjust UI values instantly, offering advantages in immediate event response and pausability. However, it performs slightly worse than property animation in terms of performance. When property animation meets requirements, it is recommended to prioritize using property animation interfaces. For property animation interfaces, refer to [Implementing Property Animation](cj-attribute-animation-apis.md).
+Compared to property animation, frame animation enables developers to perceive animation progress in real-time and adjust UI values instantly, offering advantages in immediate event response and pausability. However, it performs slightly worse than property animation in terms of performance. When property animation can meet requirements, it is recommended to prioritize using property animation interfaces. For property animation interfaces, refer to [Implementing Property Animation](cj-attribute-animation-apis.md).
 
 | Name | Implementation | Event Response | Pausable | Performance |
 |:---|:---|:---|:---|:---|
-| Frame Animation (ohos.animator) | Developers can modify UI-side property values frame-by-frame, with real-time updates to UI-side properties | Real-time response | Yes | Poor |
-| Property Animation | UI-side only calculates the final state of the animation. The animation process involves changing rendered values, while the UI-side remains in the final state without perceiving real-time rendered values | Responds based on final state | No | Good |
+| Frame Animation (ohos.animator) | Developers can modify UI-side property values frame-by-frame, with real-time UI-side property updates | Real-time response | Yes | Poor |
+| Property Animation | UI-side only calculates the final animation state; the animation process involves changing rendered values while the UI-side remains in the final animation state, unaware of real-time rendered values | Responds based on final state | No | Good |
 
 As shown in the diagram, frame animation responds in real-time during the animation process, while property animation responds based on the final state.
 
@@ -17,9 +17,9 @@ As shown in the diagram, frame animation responds in real-time during the animat
 
 ## Implementing Animation Effects Using Frame Animation
 
-Follow these steps to create a simple animator and print the current interpolation value in each frame callback.
+Follow these steps to create a simple animator and print the current interpolation in each frame callback.
 
-1. Import the required dependencies.
+1. Import the necessary dependencies.
 
     ```cangjie
     import kit.ArkUI.*
@@ -29,22 +29,21 @@ Follow these steps to create a simple animator and print the current interpolati
 
     ```cangjie
     // Create initial parameters for the animation
-    this.backAnimator = AnimatorResult(AnimatorOptions(
+    this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
       duration: 1500,
       easing: "friction",
       delay: 0,
       fill: AnimatorFill.Forwards,
       direction: AnimatorDirection.Normal,
       iterations: 2,
-      // Initial value for onFrame interpolation
+      // Initial value for onFrame interpolation in the first frame
       begin: 200.0,
-      // Final value for onFrame interpolation
+      // Final value for onFrame interpolation in the last frame
       end: 400.0
     ))
-    var animatorOptions: AnimatorResult = AnimatorResult(AnimatorOptions(duration: 0))
-    // Set the frame callback, which is invoked for each frame during animation playback
+    // Set the callback for receiving frames; the onFrame callback is invoked for each frame during animation playback
     this.backAnimator?.onFrame =  {  progress: Float64 =>
-      AppLog.info("current value is :" + progress.toString())
+      Hilog.info(0,"", "current value is: " + progress.toString())
     }
     ```
 
@@ -64,7 +63,7 @@ Follow these steps to create a simple animator and print the current interpolati
 
 ## Implementing Parabolic Motion of a Ball Using Frame Animation
 
-1. Import the required dependencies.
+1. Import the necessary dependencies.
 
     ```cangjie
     import kit.ArkUI.*
@@ -85,7 +84,7 @@ Follow these steps to create a simple animator and print the current interpolati
     ```cangjie
     // Create the animatorResult object
     protected override func onPageShow() {
-      this.backAnimator = AnimatorResult(AnimatorOptions(
+      this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
         duration: 4000,
         easing: "ease",
         delay: 0,
@@ -111,7 +110,7 @@ Follow these steps to create a simple animator and print the current interpolati
       }
       // Method executed when the animation repeats
       this.backAnimator?.onRepeat = { =>
-          AppLog.info("Animation repeated")
+          Hilog.info(0,"", "Animation repeated")
       }
     }
     ```
@@ -151,6 +150,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import std.math.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -165,10 +165,8 @@ class EntryView {
     var translateX: Int64 = 0
     @State
     var translateY: Int64 = 0
-    @State
-    var animatorOptions: AnimatorResult = AnimatorResult(AnimatorOptions(duration: 0))
     protected override func onPageShow() {
-        this.backAnimator = AnimatorResult(AnimatorOptions(
+        this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
           duration: 4000,
           easing: "ease",
           delay: 0,
@@ -191,7 +189,7 @@ class EntryView {
           this.animatorStatus = 'Completed'
         }
         this.backAnimator?.onRepeat = { =>
-            AppLog.info("Animation repeated")
+            Hilog.info(0,"", "Animation repeated")
         }
     }
     protected override func onPageHide() {
@@ -199,16 +197,16 @@ class EntryView {
     }
     func build() {
         Column() {
-          Column(30) {
-            Button('Play').onClick({ =>
+          Column(space:30) {
+            Button('Play').onClick({ evt=>
               this.backAnimator?.play()
               this.animatorStatus = 'Playing'
             }).width(80).height(35)
-            Button("Reset").onClick({ =>
+            Button("Reset").onClick({ evt=>
               this.translateX = 0
               this.translateY = 0
             }).width(80).height(35)
-            Button("Pause").onClick({ =>
+            Button("Pause").onClick({ evt=>
               this.backAnimator?.pause()
               this.animatorStatus = 'Paused'
             }).width(80).height(35)

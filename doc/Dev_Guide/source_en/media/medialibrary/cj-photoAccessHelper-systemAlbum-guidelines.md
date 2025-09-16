@@ -4,9 +4,9 @@ photoAccessHelper only provides developers with operations related to favorites,
 
 > **Note:**
 >
-> In the documentation, where `PhotoAccessHelper` is used, it defaults to the object obtained during development preparation. If you encounter an undefined `PhotoAccessHelper` error due to not adding this code segment, please add it yourself.
+> In the documentation, where `PhotoAccessHelper` is used, it defaults to using the object obtained during development preparation. If an undefined `PhotoAccessHelper` error occurs due to not adding this code segment, please add it manually.
 
-Unless otherwise specified, the resources to be obtained in the documentation are assumed to be pre-configured and have corresponding data in the database. If you still cannot obtain the resources after executing the sample code, please confirm whether the files have been pre-configured and whether the data exists in the database.
+Unless otherwise specified, the resources to be obtained in the documentation are considered pre-configured and existing in the database. If resources cannot be obtained after executing the sample code, please confirm whether the file has been pre-configured and whether the data exists in the database.
 
 ## Favorites
 
@@ -14,7 +14,7 @@ Favorites is a system album. When an image or video is marked as a favorite, it 
 
 ### Obtaining the Favorites Album Object
 
-Use the [getAlbums](../../../../API_Reference/source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the favorites album object.
+Use the [getAlbums](../../../../API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the favorites album object.
 
 **Prerequisites**
 
@@ -36,7 +36,7 @@ func example() {
   try {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
-    let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
+    let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
     let album: Album = fetchResult.getFirstObject()
     AppLog.info('get favorite album successfully, albumUri: ' + album.albumUri)
     fetchResult.close()
@@ -79,20 +79,20 @@ class MainAbility <: UIAbility {
 
 ### Obtaining Images and Videos from the Favorites Album
 
-First, [obtain the favorites album object](#obtaining-the-favorites-album-object), then call the [getAssets](../../../../API_Reference/source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) interface to obtain the resources in the favorites album.
+First, [obtain the favorites album object](#obtaining-the-favorites-album-object), then call the [getAssets](../../../../API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) interface to obtain resources from the favorites album.
 
 **Prerequisites**
 
 - Obtain an instance of the photoAccessHelper module for album management.
 
-The following example demonstrates how to obtain an image from the favorites album.
+The following example demonstrates obtaining an image from the favorites album.
 
 **Development Steps**
 
 1. [Obtain the favorites album object](#obtaining-the-favorites-album-object).
 2. Set up image retrieval conditions to obtain the image.
 3. Call the `Album.getAssets` interface to obtain the image resource.
-4. Call the [getFirstObject](../../../../API_Reference/source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject) interface to obtain the first image.
+4. Call the [getFirstObject](../../../../API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject) interface to obtain the first image.
 
 <!-- compile -->
 
@@ -111,11 +111,11 @@ func example() {
     )
 
   try {
-    let albumFetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
+    let albumFetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.FAVORITE)
     let album: Album = albumFetchResult.getFirstObject()
     AppLog.info('get favorite album successfully, albumUri: ' + album.albumUri)
 
-    let photoFetchResult: FetchResult<PhotoAsset> = album.getAssets(fetchOptions)
+    let photoFetchResult: PhotoAssetResult = album.getAssets(fetchOptions)
     let photoAsset: PhotoAsset = photoFetchResult.getFirstObject()
     AppLog.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName)
     photoFetchResult.close()
@@ -163,7 +163,7 @@ The video album is a system album. Media files of the video type in user files a
 
 ### Obtaining the Video Album Object
 
-Use the [getAlbums](../../../../API_Reference/source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the video album object.
+Use the [getAlbums](../../../../API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the video album object.
 
 **Prerequisites**
 
@@ -185,7 +185,7 @@ func example() {
   try {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
-    let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
+    let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
     let album: Album = fetchResult.getFirstObject()
     AppLog.info('get video album successfully, albumUri: ' + album.albumUri)
     fetchResult.close()
@@ -228,20 +228,20 @@ class MainAbility <: UIAbility {
 
 ### Obtaining Videos from the Video Album
 
-First, [obtain the video album object](#obtaining-the-video-album-object). Then call the [getAssets](../../../../API_Reference/source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) interface to obtain the video resources from the video album object.
+First, [obtain the video album object](#obtaining-the-video-album-object), then call the [getAssets](../../../../API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) interface to obtain video resources from the video album.
 
 **Prerequisites**
 
 - Obtain an instance of the photoAccessHelper module for album management.
 
-The following example demonstrates how to obtain a video from the video album.
+The following example demonstrates obtaining a video from the video album.
 
 **Development Steps**
 
 1. First, [obtain the video album object](#obtaining-the-video-album-object).
 2. Set up video retrieval conditions to obtain the video.
 3. Call the `Album.getAssets` interface to obtain the video resource.
-4. Call the [getFirstObject](../../../../API_Reference/source_zh_cn/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject) interface to obtain the first video.
+4. Call the [getFirstObject](../../../../API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject) interface to obtain the first video.
 
 <!-- compile -->
 
@@ -260,11 +260,11 @@ func example() {
     )
 
   try {
-    let albumFetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
+    let albumFetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.SYSTEM, AlbumSubtype.VIDEO)
     let album: Album = albumFetchResult.getFirstObject()
     AppLog.info('get video album successfully, albumUri: ' + album.albumUri)
 
-    let videoFetchResult: FetchResult<PhotoAsset> = album.getAssets(fetchOptions)
+    let videoFetchResult: PhotoAssetResult = album.getAssets(fetchOptions)
     let photoAsset: PhotoAsset = videoFetchResult.getFirstObject()
     AppLog.info('video album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName)
     videoFetchResult.close()
@@ -296,6 +296,7 @@ class MainAbility <: UIAbility {
             case _ => ()
         }
     }
+
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
         AppLog.info("MainAbility onWindowStageCreate.")
         windowStage.loadContent("EntryView")
