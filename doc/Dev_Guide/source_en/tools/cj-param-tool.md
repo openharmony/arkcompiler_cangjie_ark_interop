@@ -1,6 +1,6 @@
 # param Tool
 
-param is a tool provided for developers to manage operating system parameters, supporting only standard systems.
+param is a system parameter operation tool provided for developers, which only supports standard systems.
 
 ## Environment Requirements
 
@@ -11,24 +11,24 @@ param is a tool provided for developers to manage operating system parameters, s
 
 | Option | Description |
 | ----------------- | ------------------------------------------ |
-| -h | Display the list of supported param commands. |
-| ls [-r] [name] | Display system parameter information matching the specified name. Use "-r" to retrieve information based on parameter permissions; omit "-r" to directly fetch parameter information. |
-| get [name] | Retrieve the value of the specified system parameter. If no name is specified, returns all system parameters. |
-| set name value | Set the value of the specified system parameter. |
-| wait name [value] [timeout] | Synchronously wait for the specified system parameter to match the given value. Supports fuzzy matching (e.g., "*" for any value, "val*" for values starting with "val"). Timeout is in seconds (default: 30s). |
+| -h | Get the commands supported by param. |
+| ls [-r] [name] | Display system parameter information matching the specified name. With "-r", it retrieves information based on parameter permissions; without "-r", it directly fetches parameter information. |
+| get [name] | Get the value of the specified system parameter by name; if no name is specified, returns all system parameters. |
+| set name value | Set the value of the specified system parameter by name to the given value. |
+| wait name [value] [timeout] | Synchronously wait for the specified system parameter to match the given value. The value supports fuzzy matching, e.g., "\*" matches any value, "val\*" matches values starting with "val". Timeout specifies the wait duration (in seconds), defaulting to 30s if not set. |
 | save | Save persist parameters to the workspace. |
 
-## Display Supported Commands
+## Get Commands Supported by param
 
-- To display the list of supported param commands, use the following format:
+- To get the commands supported by param, use the following format:
 
   ```bash
   param -h
   ```
 
-## Retrieve System Parameter Information
+## Get System Parameter Information
 
-- Display system parameter information matching the specified name:
+- Display system parameter information matching the specified name with the following command:
 
   ```bash
   param ls [-r] [name]
@@ -42,7 +42,7 @@ param is a tool provided for developers to manage operating system parameters, s
 
 ## Get System Parameter Values
 
-- Retrieve the value of the specified system parameter:
+- Get the value of the specified system parameter with the following command:
 
   ```bash
   param get [name]
@@ -54,7 +54,7 @@ param is a tool provided for developers to manage operating system parameters, s
 
 ## Set System Parameter Values
 
-- Set the value of the specified system parameter:
+- Set the value of the specified system parameter with the following command:
 
   ```bash
   param set name value
@@ -64,9 +64,9 @@ param is a tool provided for developers to manage operating system parameters, s
 
   ![set](./figures/param-set.png)
 
-## Wait for Parameter Value Match
+## Wait for System Parameter Value Match
 
-- Synchronously wait for the specified system parameter to match the given value:
+- Synchronously wait for the specified system parameter to match the given value with the following command:
 
   ```bash
   param wait name [value] [timeout]
@@ -78,7 +78,7 @@ param is a tool provided for developers to manage operating system parameters, s
 
 ## Save Persist Parameters
 
-- Save persist parameters to the workspace:
+- Save persist parameters to the workspace with the following command:
 
   ```bash
   param save

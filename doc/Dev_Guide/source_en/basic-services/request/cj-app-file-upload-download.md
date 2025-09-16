@@ -1,67 +1,66 @@
 # Application File Upload and Download
 
-Applications can upload files to web servers and download network resource files to local application directories.
+Applications can upload files to a web server or download network resource files to the local application file directory.
 
 ## Uploading Application Files
 
-Developers can use the upload interface of the Upload-Download module ([ohos.request](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)) to upload local files. The file upload process is completed through a system service proxy, supporting custom proxy address configuration.
+Developers can use the upload interface of the upload-download module ([ohos.request](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)) to upload local files. The file upload process is completed using a system service proxy, which supports custom proxy address configuration.
 
 > **Note:**
 >
-> The current file upload functionality only supports uploading files from the application cache directory (cacheDir).
+> Currently, the file upload functionality only supports uploading files from the application cache directory (cacheDir).
 >
-> To use the Upload-Download module, please declare the permission: [ohos.permission.INTERNET](../../security/AccessToken/cj-declare-permissions.md).
-> For Global definition, refer to [Usage Instructions](../../../../API_Reference/source_en/cj-development-intro.md)
+> To use the upload-download module, refer to [Permission Declaration](../../security/AccessToken/cj-declare-permissions.md): ohos.permission.INTERNET.
 
-The following example demonstrates how to upload files from the application cache directory to a web server:
+The following example demonstrates how to upload a file from the application cache directory to a web server:
 
 <!-- compile -->
 
 ```cangjie
 // pages/xxx.cj
-import ohos.file_fs.{FileFs, OpenMode}
-import ohos.ability.{AbilityStageContext, UIAbilityContext, getStageContext, Want}
-import ohos.base.Callback1Argument
-import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove
-    }
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
+import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove}
 
 func Upload(): Unit {
     // Get application file path
-    let stageContext = Global.getStageContext() // Context acquisition required, see usage instructions
+    let UiStageContext = Global.abilityContext
     let DefaultSandBoxCache = "/data/storage/el2/base/haps/entry/cache"
-    // Create a local application file
+    // Create a new local application file
     let filePath = "${DefaultSandBoxCache}/test.txt"
-    let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | READ_WRITE.mode))
-    FileFs.write(file.fd, "hello world")
-    FileFs.fdatasync(file.fd)
-    let randomAccessFile = FileFs.createRandomAccessFile(file)
+    let file = FileIo.open(filePath, mode: (OpenMode.CREATE | OpenMode.READ_WRITE))
+    FileIo.write(file.fd, "hello world")
+    FileIo.fdatasync(file.fd)
+    let randomAccessFile = FileIo.createRandomAccessFile(file)
     randomAccessFile.close()
     let responseCallback = ProgressCallback()
 
     let fileSpec = FileSpec(
-        path: "./test.txt",
+        "./test.txt",
         filename: "test.txt",
         mimeType: "application/octet-stream"
     )
-    let attachments = ConfigDataType.FORMITEMS([
+    let attachments = ConfigData.FormItems([
         FormItem(
-            name: "taskOnTest",
-            value: FormItemValueType.FILE(fileSpec)
+            "taskOnTest",
+            FormItemValue.FileItem(fileSpec)
         )
     ])
 
     let uploadConfig = Config(
-        action: RAction.UPLOAD,
-        url: "http://xxx",
+        RAction.Upload,
+        "http://xxx",
         title: "taskOnTest",
-        mode: Mode.FOREGROUND,
+        mode: Mode.Foreground,
         description: "Sample code for event listening",
         overwrite: false,
         method: "POST",
         data: attachments,
         saveas: "./",
-        network: Network.CELLULAR,
+        network: Network.Cellular,
         metered: false,
         roaming: true,
         retry: true,
@@ -73,94 +72,94 @@ func Upload(): Unit {
         precise: false,
         token: "it is a secret"
     )
-    let task = create(stageContext, uploadConfig)
-    task.on("progress", responseCallback)
+    let task = create(UiStageContext, uploadConfig)
+    task.on(EventCallbackType.Progress, responseCallback)
     task.start()
 }
 
-class ProgressCallback <: Callback1Argument<Progress> {
-    public init() {}
-    public open func invoke(arg: Progress): Unit {
-        AppLog.info("progress callback.")
+public class ProgressCallback <: Callback1Argument<RProgress> {
+    public ProgressCallback() {}
+
+    public open func invoke(err: ?BusinessException, arg: RProgress): Unit {
+        Hilog.info(0, "CangjieTest", "ProgressCallback Invoke")
     }
 }
 ```
 
 ## Downloading Network Resource Files to Application Directory
 
-Developers can use the download interface of the Upload-Download module ([ohos.request](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)) to download network resource files to the application directory. For downloaded files, developers can access them using basic file I/O interfaces ([ohos.file_fs](../../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md)), with usage consistent with [Application File Access](../../file-management/cj-app-file-access.md). The download process uses a system service proxy and supports custom proxy address configuration.
+Developers can use the download interface of the upload-download module ([ohos.request](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)) to download network resource files to the application directory. For downloaded files, developers can access them using basic file I/O interfaces ([ohos.file_fs](../../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md)), following the same approach as [Application File Access](../../file-management/cj-app-file-access.md). The download process uses a system service proxy, supporting custom proxy address configuration.
 
 > **Note:**
 >
 > Currently, network resource files can only be downloaded to the application directory.
 >
-> To use the Upload-Download module, please declare the permission: [ohos.permission.INTERNET](../../security/AccessToken/cj-declare-permissions.md).
+> To use the upload-download module, refer to [Permission Declaration](../../security/AccessToken/cj-declare-permissions.md): ohos.permission.INTERNET.
 
-The following example demonstrates how to download network resource files to the application directory:
+The following example demonstrates how to download a network resource file to the application directory:
 
 <!-- compile -->
 
 ```cangjie
 // pages/xxx.cj
-// Download network resource files to application directory
-import ohos.file_fs.{FileFs, OpenMode}
-import ohos.ability.{AbilityStageContext, UIAbilityContext, getStageContext, Want}
-import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove
-    }
+// Download network resource file to application directory
+import ohos.callback_invoke.*
+import ohos.business_exception.*
 import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
+import kit.BasicServicesKit.{State as RState, Filter as RFilter, Action as RAction, Progress as RProgress, remove as rRemove}
 import std.time.*
 import std.collection.*
 import std.runtime.*
 import std.sync.*
-import ohos.base.Callback1Argument
 
 // Download function
 func Download(): Unit {
     // Get application file path
-    let stageContext = Global.getStageContext()
+    let UiStageContext = Global.abilityContext
     let DefaultSandBoxCache = "/data/storage/el2/base/haps/entry/cache"
     let fileName = "test.txt"
     let filePath = "${DefaultSandBoxCache}/${fileName}"
 
     // Download URL
     let fileURL = "https://xxx.txt"
-    let responseCallback = HttpResponseMessageCallback()
+    let responseCallback = HttpResponseCallback()
 
     let config = Config(
-        action: RAction.DOWNLOAD,
-        url: fileURL,
+        RAction.Download,
+        fileURL,
         saveas: fileName,
         headers: HashMap<String, String>([("headers", "http")]),
         metered: false,
         roaming: true,
         description: "download test",
-        network: Network.ANY,
+        network: Network.AnyType,
         title: "download test title"
     )
-    let task = create(stageContext, config)
-    task.on("response", responseCallback)
+    let task = create(UiStageContext, config)
+    task.on(EventCallbackType.Response, responseCallback)
 
     task.start()
     requestWaitFor(Duration.second * 10) {
         =>
-        let stat = FileFs.stat(filePath)
+        let stat = FileIo.stat(filePath)
         let size = stat.size
-        AppLog.info("size = ${size}")
         size > 0
     }
     // Check if file exists
-    if (FileFs.access(filePath)) {
+    if (FileIo.access(filePath)) {
         // Delete file
-        FileFs.unlink(filePath)
+        FileIo.unlink(filePath)
     }
-    // Terminate task
+    // End task
     rRemove(task.tid)
 }
 
-class HttpResponseMessageCallback <: Callback1Argument<HttpResponseMessage> {
-    public HttpResponseMessageCallback() {}
-    public open func invoke(arg: HttpResponseMessage): Unit {
-        logger.info("HttpResponseMessage is ${arg.toString()}")
+class HttpResponseCallback <: Callback1Argument<HttpResponse> {
+    public HttpResponseCallback() {}
+    public open func invoke(err: ?BusinessException, arg: HttpResponse): Unit {
+        Hilog.info(0, "CangjieTest", "HttpResponse Invoke")
     }
 }
 

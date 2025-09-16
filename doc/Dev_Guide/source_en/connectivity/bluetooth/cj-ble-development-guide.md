@@ -13,7 +13,7 @@ Main scenarios include:
 
 ## API Description
 
-For complete Cangjie API documentation and sample code, refer to: [BLE APIs](../../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-bluetooth-ble.md).
+For complete Cangjie API documentation and sample code, refer to: [BLE APIs](../../../../API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-ble.md).
 
 Detailed API descriptions are shown in the following table.
 
@@ -141,7 +141,7 @@ Detailed API descriptions are shown in the following table.
     let bleAdvertisingManager = BleAdvertisingManager()
     ```
 
-7. For error codes, refer to [Bluetooth Service Subsystem Error Codes](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md).
+7. For error codes, refer to [Bluetooth Service Subsystem Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
 
 ### Starting/Stopping Scanning
 
@@ -360,5 +360,5 @@ Detailed API descriptions are shown in the following table.
     let bleScanManager = BleScanManager()
 ```
 
-8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md).
+8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
 ```

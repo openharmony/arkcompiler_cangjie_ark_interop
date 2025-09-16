@@ -1,8 +1,8 @@
 # PDF Document Preview Capability Using Web Components
 
-Web components provide the ability to preview PDF documents within web pages. Applications can load PDF documents by passing them through the `src` parameter of Web components or the `loadUrl()` interface. Depending on the source of the PDF document, there are three common scenarios: loading network PDF documents, loading local PDF documents, and loading in-app resource PDF documents.
+Web components provide the ability to preview PDFs within web pages. Applications can load PDF documents by passing PDF files through the [src](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#web) parameter interface of Web components. Depending on the source of the PDF document, there are three common scenarios: loading network PDF documents, loading local PDF documents, and loading in-app resource PDF documents.
 
-During the PDF document preview loading process, if network document retrieval is involved, please configure network access permissions in `module.json5`. For the configuration method, refer to [Declaring Permissions in Configuration Files](../security/AccessToken/cj-declare-permissions.md).
+During the PDF document preview loading process, if network document retrieval is involved, please configure network access permissions in module.json5. For adding methods, refer to [Declaring Permissions in Configuration Files](../security/AccessToken/cj-declare-permissions.md).
 
 ```json
 "requestPermissions":[
@@ -12,15 +12,15 @@ During the PDF document preview loading process, if network document retrieval i
 ]
 ```
 
-In the following example, the Web component specifies the default network PDF document to load as `www.example.com/test.pdf` upon creation. This address is for demonstration purposes only and should be replaced with a real accessible address during actual use:
+In the following example, the Web component is created with a default network PDF document `www.example.com/test.pdf` specified for loading. This address is for demonstration purposes only; replace it with a real accessible address when in use:
 
 <!-- compile -->
 
 ```cangjie
 // index.cj
-import ohos.state_macro_manage.*
-import kit.ArkWeb.WebviewController
-import kit.UIKit.Web
+import ohos.arkui.state_macro_manage.*
+import ohos.web.webview.WebviewController
+import kit.ArkUI.Web
 
 @Entry
 @Component
@@ -30,11 +30,11 @@ class EntryView {
     func build() {
         Column {
             /*
-            * Methods for setting src:
-            * Method 1: Load network PDF document - "https://www.example.com/test.pdf"
-            * Method 2: Load local application sandbox PDF document - abilityContext.filesDirectory + "/test.pdf"
-            * Method 3: Load in-app resource PDF document - "resource://rawfile/test.pdf"
-            * Method 4: Load in-app resource PDF document - @rawfile("test.pdf")
+            * src setting methods:
+            * Method 1: Load network PDF document: "https://www.example.com/test.pdf"
+            * Method 2: Load local app sandbox PDF document: abilityContext.filesDirectory + "/test.pdf"
+            * Method 3: In-app resource PDF document: "resource://rawfile/test.pdf"
+            * Method 4: In-app resource PDF document: @rawfile(“test.pdf”)
             */
             Web(src: "https://www.example.com/test.pdf", controller: this.webController)
                 .domStorageAccess(true)
@@ -43,7 +43,7 @@ class EntryView {
 }
 ```
 
-In the above example, since the PDF preview page persistently records whether the sidebar navigation is expanded based on user operations using `window.localStorage`, the Document Object Model storage permission `domStorageAccess` needs to be enabled:
+In the above example, since the PDF preview page persists the sidebar navigation panel's expanded/collapsed state using `window.localStorage` based on user operations, the Document Object Model storage [domStorageAccess](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-domstorageaccessbool) permission must be enabled:
 
 <!-- compile -->
 
@@ -51,11 +51,11 @@ In the above example, since the PDF preview page persistently records whether th
 Web().domStorageAccess(true)
 ```
 
-When creating the Web component, specify the default PDF document to load. After the default PDF document is loaded, if you need to change the PDF document displayed by this Web component, you can load the specified PDF document by calling the `loadUrl()` interface. The first parameter variable `src` of the Web component cannot be dynamically changed through state variables (e.g., `@State`). If changes are needed, reload via `loadUrl()`.
+When creating the Web component, specify the default PDF document to load. The first parameter variable src of the [Web component](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#web) cannot be dynamically changed via state variables (e.g., @State).
 
-The following demonstrates three PDF document loading and preview scenarios:
+Three PDF document loading preview scenarios are included:
 
-- Preview and load network PDF files.
+- Preview loading network PDF file.
 
     <!-- compile -->
 
@@ -64,15 +64,21 @@ The following demonstrates three PDF document loading and preview scenarios:
         .domStorageAccess(true)
     ```
 
-- Preview and load PDF files within the application sandbox. This requires enabling the `fileAccess` permission for accessing the application's file system.
+- Preview loading app sandbox PDF file, requires enabling file system access [fileAccess](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-fileaccessbool) permission.
 
-    1. Obtain the context
+    1. Get context
 
         <!-- compile -->
 
         ```cangjie
         // main_ability.cj
         import kit.AbilityKit.UIAbilityContext
+        import kit.PerformanceAnalysisKit.Hilog
+        
+        func loggerInfo(str: String) {
+            Hilog.info(0, "CangjieTest", str)
+        }
+
         var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
         class MainAbility <: UIAbility {
@@ -84,11 +90,11 @@ The following demonstrates three PDF document loading and preview scenarios:
             public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
                 AppLog.info("MainAbility OnCreated.${want.abilityName}")
 
-                // Obtain the context
+                // Get context
                 globalAbilityContext = Option<UIAbilityContext>.Some(this.context)
 
                 match (launchParam.launchReason) {
-                    case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                    case LaunchReason.StartAbility => AppLog.info("StartAbility")
                     case _ => ()
                 }
             }
@@ -97,7 +103,7 @@ The following demonstrates three PDF document loading and preview scenarios:
         }
         ```
 
-    2. Enable file system access within the application
+    2. Enable file system access in the app
 
         <!-- compile -->
 
@@ -107,12 +113,12 @@ The following demonstrates three PDF document loading and preview scenarios:
             .fileAccess(true)
         ```
 
-- Preview and load in-app PDF resource files. There are two usage forms. The `@rawfile("test.pdf")` form cannot specify the preview parameters described below.
+- Preview loading in-app PDF resource file, available in two forms. The `@rawfile("test.pdf")` form cannot specify the preview parameters described below.
 
     <!-- compile -->
 
     ```cangjie
-    import kit.LocalizationKit.{__GenerateResource__}
+    import kit.LocalizationKit.*
 
     Web(src: @rawfile("test.pdf"), controller: this.webController)
         .domStorageAccess(true)
@@ -131,9 +137,9 @@ Currently supported parameters:
 
 | Syntax  | Description  |
 | :--------- | :---------- |
-| nameddest=destination  |  Specifies a named destination within the PDF document. |
-| page=pagenum  | Uses an integer to specify the page number in the document, where the first page has a pagenum value of 1. |
-| zoom=scale    zoom=scale,left,top | Uses floating-point or integer values to set zoom and scroll factors. For example, a zoom value of 100 indicates a zoom level of 100%. The left and top scroll values are in a coordinate system where 0,0 represents the top-left corner of the visible page, regardless of document rotation. |
+| nameddest=destination  |  Specifies a named destination in the PDF document. |
+| page=pagenum  | Uses an integer to specify the page number in the document, where pagenum=1 indicates the first page. |
+| zoom=scale    zoom=scale,left,top | Uses float or integer values to set zoom and scroll factors. For example: a zoom value of 100 means 100% zoom. Left and top scroll values are in a coordinate system where 0,0 represents the top-left corner of the visible page, regardless of document rotation. |
 | toolbar=1 \| 0 | Turns the top toolbar on or off. |
 | navpanes=1 \| 0 | Turns the sidebar navigation pane on or off. |
 

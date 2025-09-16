@@ -1,10 +1,10 @@
 # Video Playback (Video)
 
-The Video component is used to play video files and control their playback state, commonly employed in short video applications and list pages for in-app videos. It automatically plays when fully displayed, pauses upon user click on the video area while showing a progress bar that allows seeking to specific positions. For detailed usage, refer to [Video](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md).
+The Video component is used to play video files and control their playback state, commonly employed for short video lists and in-app video pages. It automatically plays when fully displayed, pauses upon user click on the video area while showing a progress bar that allows seeking to specific positions. For detailed usage, refer to [Video](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md).
 
 ## Creating a Video Component
 
-The Video component is created by calling an interface. For interface invocation methods, see [Creating a Video Component](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md#创建组件).
+The Video component is created through API calls. For interface invocation forms, see [Creating a Video Component](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#创建组件).
 
 ## Loading Video Resources
 
@@ -19,7 +19,6 @@ To load a local video, first specify the corresponding file in the local rawfile
 ![Video](figures/Video.png)
 
 Then reference the video resource using the resource accessor @rawfile().
-
 
 ```cangjie
 @Component
@@ -40,7 +39,6 @@ class VideoPlayer {
 
 Supports strings with the file:// path prefix for reading resources within the application sandbox path. Ensure the file exists in the application sandbox directory and has read permissions.
 
-
 ```cangjie
 @Component
 class VideoPlayer {
@@ -57,8 +55,7 @@ class VideoPlayer {
 
 ### Loading Network Videos
 
-Loading network videos requires the ohos.permission.INTERNET permission. In this case, the Video's src property is the URL of the network video.
-
+Loading network videos requires the ohos.permission.INTERNET permission. In this case, the Video's src property should be the URL of the network video.
 
 ```cangjie
 @Component
@@ -77,8 +74,7 @@ class VideoPlayer {
 
 ## Adding Properties
 
-Video component [properties](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md#组件属性) primarily configure video playback behavior, such as muting, displaying control bars, etc.
-
+Video component [properties](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#组件属性) primarily configure playback behavior, such as muting, displaying control bars, etc.
 
 ```cangjie
 @Component
@@ -88,10 +84,10 @@ class VideoPlayer {
     func build() {
         Column() {
             Video(controller: this.controller)
-                .muted(false) // Set whether to mute
-                .controls(false) // Set whether to show default controls
-                .autoPlay(false) // Set whether to autoplay
-                .loop(false) // Set whether to loop
+                .muted(false) // Set mute status
+                .controls(false) // Show default control bar
+                .autoPlay(false) // Enable autoplay
+                .loop(false) // Enable loop playback
                 .objectFit(ImageFit.Contain) // Set video scaling mode
         }
     }
@@ -100,8 +96,7 @@ class VideoPlayer {
 
 ## Event Invocation
 
-Video component callback events include playback start, pause/end, playback failure, playback stop, video preparation, and progress bar operations. Additionally, it supports generic events like click and touch. For details, see [Event Description](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md#组件事件).
-
+Video component callback events include playback start, pause/end, failure, stop, preparation, and progress bar operations. It also supports general events like click and touch. For details, see [Event Description](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#组件事件).
 
 ```cangjie
 @Component
@@ -114,16 +109,13 @@ class VideoPlayer {
         Column() {
             Video(src: this.innerResource, previewUri: this.previewUris, controller: this.controller)
                 .onUpdate({ value => // Update event callback
-                    AppLog.info("video update.")
+                    Hilog.info(0, "cangjie", "video update.")
                 })
                 .onPrepared({ value => // Preparation event callback
-                    AppLog.info("video prepared.")
+                    Hilog.info(0, "cangjie", "video prepared.")
                 })
                 .onError({ => // Error event callback
-                    AppLog.info("video error.")
-                })
-                .onStop({ => // Stop event callback
-                    AppLog.info("video stopped.")
+                    Hilog.info(0, "cangjie", "video error.")
                 })
         }
     }
@@ -132,11 +124,11 @@ class VideoPlayer {
 
 ## Video Controller Usage
 
-The Video controller primarily manages video states including play, pause, stop, and seeking. For details, see [VideoController Usage](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md#class-videocontroller).
+The Video controller primarily manages video states including play, pause, stop, and seeking. For details, see [VideoController Usage](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#class-videocontroller).
 
 - Default Controller
 
-  The default controller supports four basic functions: play, pause, seeking, and fullscreen display.
+  The default controller supports basic functions: play, pause, seeking, and fullscreen display.
 
      <!-- run -->
 
@@ -150,9 +142,9 @@ The Video controller primarily manages video states including play, pause, stop,
   @Entry
   @Component
   class EntryView {
-      @State var videoSrc: AppResource = @rawfile("video.mp4")
-      @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+      @State var videoSrc: AppResource = @r(app.media.startIcon) // Requires valid video source
+      @State var previewUri: AppResource = @r(app.media.startIcon)
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
 
       func build() {
           Row() {
@@ -168,7 +160,7 @@ The Video controller primarily manages video states including play, pause, stop,
 
 - Custom Controller
 
-  For custom controllers, first disable the default controller, then use components like buttons and sliders for customized control and display, suitable for highly customized scenarios.
+  For custom controllers, first disable the default controller, then use components like Button and Slider for customized control and display, suitable for highly customized scenarios.
 
      <!-- run -->
 
@@ -182,9 +174,9 @@ The Video controller primarily manages video states including play, pause, stop,
   @Entry
   @Component
   class EntryView {
-      @State var videoSrc: AppResource = @rawfile("video.mp4")
-      @State var previewUri: AppResource = @r(app.media.preview)
-      @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+      @State var videoSrc: AppResource = @r(app.media.startIcon) // Requires valid video source
+      @State var previewUri: AppResource = @r(app.media.startIcon)
+      @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
       @State var isAutoPlay: Bool = false
       @State var showControls: Bool = true
       @State var sliderStartTime: String = ""
@@ -199,10 +191,10 @@ The Video controller primarily manages video states including play, pause, stop,
                       .controls(false)
                       .autoPlay(true)
                       .onPrepared({
-                              value => this.durationTime = value
+                              value => this.durationTime = value.duration
                           })
                       .onUpdate({
-                              value => this.currentTime = value
+                              value => this.currentTime = value.time
                           })
                   Row() {
                       Text("${this.currentTime}s")
@@ -223,4 +215,4 @@ The Video controller primarily manages video states including play, pause, stop,
 
 ## Additional Notes
 
-The Video component has encapsulated basic video playback capabilities. Developers don't need to create video instances or set/get video information—simply configure the data source and basic information to play videos, though this limits extensibility.
+The Video component encapsulates basic video playback capabilities. Developers don't need to create video instances or set/get video information—simply configure the data source and basic information to play videos, though with relatively limited extensibility.

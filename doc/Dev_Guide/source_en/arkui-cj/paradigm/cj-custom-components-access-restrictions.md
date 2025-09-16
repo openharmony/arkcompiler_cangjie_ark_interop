@@ -1,8 +1,8 @@
 # Restrictions on Access Modifiers for Custom Component Member Properties
 
-In state management, when component developers encapsulate custom components, the lack of clear input/output identifiers makes it impossible for callers to uniformly determine which variables should be passed as component parameters. In state management, qualifiers cannot be used to modify state variables.
+In state management, when component developers encapsulate custom components, the absence of clear input/output identifiers makes it impossible for callers to uniformly determine which variables should be passed as component parameters. In state management, qualifiers cannot be used to modify state variables.
 
-Cangjie will validate the access modifiers (private/public/protected) used for member variables in custom components. When these modifiers are not used according to specifications, corresponding log messages will be generated.
+Cangjie validates the access modifiers (private/public/protected) used for member variables in custom components. When these access modifiers are not used according to specifications, corresponding log messages will be generated.
 
 Before reading this document, it is recommended to first read: [State Management Overview](../state_management/cj-state-management-overview.md).
 
@@ -71,7 +71,7 @@ Before reading this document, it is recommended to first read: [State Management
 
     **Correct Example**
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -167,7 +167,7 @@ Before reading this document, it is recommended to first read: [State Management
 
     **Correct Example**
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -248,7 +248,7 @@ Before reading this document, it is recommended to first read: [State Management
 
     **Correct Example**
 
-         <!-- run -->
+     <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry

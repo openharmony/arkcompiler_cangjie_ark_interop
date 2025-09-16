@@ -1,6 +1,6 @@
 # HMAC (Cangjie)
 
-HMAC stands for Hash-based Message Authentication Code, which is a keyed-hash message authentication code. For specific usage scenarios and supported algorithm specifications, please refer to [HMAC Introduction and Algorithm Specifications](./cj-huks-hmac-overview.md).
+HMAC stands for Hash-based Message Authentication Code, which is a key-dependent cryptographic hash function. For specific usage scenarios and supported algorithm specifications, please refer to [HMAC Introduction and Algorithm Specifications](./cj-huks-hmac-overview.md).
 
 ## Development Steps
 
@@ -10,7 +10,7 @@ HMAC stands for Hash-based Message Authentication Code, which is a keyed-hash me
 
 2. Initialize the key property set.
 
-3. Call [generateKeyItem](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For supported HMAC specifications, see [Key Generation](./cj-huks-key-generation-overview.md#supported-algorithms).
+3. Call [generateKeyItem](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For HMAC-supported specifications, see [Key Generation](./cj-huks-key-generation-overview.md#supported-algorithms).
 
 Alternatively, developers can refer to the specifications in [Key Import](./cj-huks-key-import-overview.md#supported-algorithms) to import an existing key.
 
@@ -22,21 +22,26 @@ Alternatively, developers can refer to the specifications in [Key Import](./cj-h
 
 3. Call [initSession](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-4. Call [finishSession](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and obtain the hashed data.
+4. Call [finishSession](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the HMAC result.
 
 ## Example
 
-<!--compile-->
+<!-- compile -->
+
 ```cangjie
 /*
- * The following demonstrates HMAC key operations
+ * The following demonstrates the usage of HMAC key operations
  */
+import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
+import kit.CoreFileKit.*
+import kit.AbilityKit.*
 import kit.UniversalKeystoreKit.*
 
-let HmackeyAlias = 'test_HMAC' // Key alias, user-defined for key generation
-var handle: ?HuksHandle = None
+let HmacKeyAlias = 'test_HMAC' // Key alias, user-defined for key generation
+var handle: ?HuksHandleId = None
 let plainText = '123456' // Data to be processed
-var hashData: ?Array<UInt8> = None // HMAC-processed data
+var hashData: ?Array<UInt8> = None // Data after HMAC operation
 
 func StringToUint8Array(str: String) {
     return str.toArray()
@@ -49,20 +54,20 @@ func Uint8ArrayToString(fileData: Array<UInt8>) {
 func GetHMACProperties() {
     let properties: Array<HuksParam> = [
         HuksParam(
-            HuksTag.HUKS_TAG_ALGORITHM,
+            HuksTag.HuksTagAlgorithm,
             HuksKeyAlg.HUKS_ALG_HMAC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_KEY_SIZE,
-            HuksKeySize.HUKS_AES_KEY_SIZE_256
+            HuksTag.HuksTagKeySize,
+            HuksKeySize.HUKS_KEY_SIZE_256
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_PURPOSE,
+            HuksTag.HuksTagPurpose,
             HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
         ),
         HuksParam(
-            HuksTag.HUKS_TAG_DIGEST,
-            HuksKeyDigest.HUKS_DIGEST_SHA384,
+            HuksTag.HuksTagDigest,
+            HuksKeyDigest.HUKS_DIGEST_SHA384
         )
     ]
     return properties
@@ -74,23 +79,23 @@ func GetHMACProperties() {
 func GenerateHMACKey() {
     // Get algorithm parameter configuration for key generation
     let genProperties = GetHMACProperties()
-    let options: HuksOptions = HuksOptions(genProperties, None)
-    // Call generateKeyItem to generate the key. HmackeyAlias is the key alias specified during generation
-    generateKeyItem(HmackeyAlias, options)
+    let options: HuksOptions = HuksOptions(properties: genProperties, inData: Bytes())
+    // Call generateKeyItem to generate the key. HmacKeyAlias is the key alias specified during key generation.
+    generateKeyItem(HmacKeyAlias, options)
 }
 
 /*
- * Simulate HMAC scenario
+ * Simulate HMAC calculation scenario
  */
 func HMACData() {
     // Get HMAC algorithm parameter configuration
     let hmacProperties = GetHMACProperties()
     let options: HuksOptions = HuksOptions(
-        hmacProperties,
-        StringToUint8Array(plainText)
+        properties: hmacProperties,
+        inData: StringToUint8Array(plainText)
     )
-    // Call initSession to obtain the handle. HmackeyAlias is the key alias specified during generation
-    initSession(HmackeyAlias, options)
+    // Call initSession to obtain the handle. HmacKeyAlias is the key alias specified during key generation.
+    handle = initSession(HmacKeyAlias, options)
     // Call finishSession to obtain the HMAC result
     hashData = finishSession(handle.getOrThrow(), options)
 }

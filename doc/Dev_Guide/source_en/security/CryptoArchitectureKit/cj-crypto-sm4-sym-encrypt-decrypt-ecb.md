@@ -6,18 +6,18 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
 1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 as the key algorithm and 128-bit key length.
 
-    For guidance on generating an SM4 symmetric key, developers can refer to the example below, combined with [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that reference documents may have parameter differences from the current example, so please pay attention to distinctions when reading.
+    For guidance on generating an SM4 symmetric key, developers can refer to the example below and consult [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that reference documents may have parameter differences from the current example—please pay attention to these distinctions when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance with SM4_128 as the symmetric key type, ECB as the block mode, and PKCS7 as the padding mode, which will be used to perform encryption operations.
+2. Call [createCipher](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance configured for SM4_128 symmetric key type, ECB block mode, and PKCS7 padding mode, which will be used to perform encryption.
 
-3. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey), and initialize the encryption Cipher instance.
+3. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and initialize the encryption Cipher instance.
 
-    ECB mode does not require encryption parameters, so pass None directly.
+    ECB mode has no encryption parameters, so pass None directly.
 
 4. Call [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
 
-    - For small data volumes, you can directly call doFinal after init.
-    - For large data volumes, you can call update multiple times, i.e., perform segmented encryption/decryption.
+    - For small data volumes, you can directly call doFinal after initialization.
+    - For large data volumes, you can call update multiple times to perform segmented encryption/decryption.
 
 5. Call [doFinal](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
@@ -25,9 +25,9 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance with SM4_128 as the symmetric key type, ECB as the block mode, and PKCS7 as the padding mode, which will be used to perform decryption operations.
+1. Call [createCipher](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance configured for SM4_128 symmetric key type, ECB block mode, and PKCS7 padding mode, which will be used to perform decryption.
 
-2. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey), and initialize the decryption Cipher instance. ECB mode does not require encryption parameters, so pass None directly.
+2. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and initialize the decryption Cipher instance. ECB mode has no encryption parameters, so pass None directly.
 
 3. Call [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
 
@@ -41,12 +41,13 @@ The synchronous method example is as follows:
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
-import ohos.base.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.business_exception.BusinessException
 
 // Encrypt message.
 func encryptMessage(symKey: SymKey, plainText: DataBlob) {
     let cipher = createCipher('SM4_128|ECB|PKCS7')
-    cipher.`init`(ENCRYPT_MODE, symKey, None)
+    cipher.initialize(CryptoMode.EncryptMode, symKey, None)
     let cipherData = cipher.doFinal(plainText)
     return cipherData
 }
@@ -54,16 +55,16 @@ func encryptMessage(symKey: SymKey, plainText: DataBlob) {
 // Decrypt message.
 func decryptMessage(symKey: SymKey, cipherText: DataBlob) {
     let decoder = createCipher('SM4_128|ECB|PKCS7')
-    decoder.`init`(DECRYPT_MODE, symKey, None)
+    decoder.initialize(CryptoMode.DecryptMode, symKey, None)
     let decryptData = decoder.doFinal(cipherText)
     return decryptData
 }
 
 func genSymKeyByData(symKeyData: Array<UInt8>) {
     let symKeyBlob: DataBlob = DataBlob(symKeyData)
-    let aesGenerator = createSymKeyGenerator('SM4_128')
-    let symKey = aesGenerator.convertKey(symKeyBlob)
-    AppLog.info('convertKey success')
+    let sm4Generator = createSymKeyGenerator('SM4_128')
+    let symKey = sm4Generator.convertKey(symKeyBlob)
+    Hilog.info(0,"","convertKey success")
     return symKey
 }
 
@@ -76,13 +77,13 @@ func test() {
         let encryptText = encryptMessage(symKey, plainText)
         let decryptText = decryptMessage(symKey, encryptText)
         if (plainText.data.toString() == decryptText.data.toString()) {
-            AppLog.info('decrypt ok')
-            AppLog.info('decrypt plainText: ' + String.fromUtf8(decryptText.data))
+            Hilog.info(0,"",'decrypt ok')
+            Hilog.info(0,"",'decrypt plainText: ' + String.fromUtf8(decryptText.data))
         } else {
-            AppLog.error('decrypt failed')
+            Hilog.error(0,"",'decrypt failed')
         }
     } catch (e: BusinessException) {
-        AppLog.error("SM4 ${e}, error code: ${e.code}")
+        Hilog.error(0,"","SM4 ${e}, error code: ${e.code}")
     }
 }
 ```

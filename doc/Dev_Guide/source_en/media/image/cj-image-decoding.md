@@ -1,6 +1,6 @@
 # Using ImageSource for Image Decoding
 
-Image decoding refers to converting archived images in supported formats into a unified [PixelMap](./cj-image-overview.md) for image display or [image processing](./cj-image-transformation.md) in applications or systems. Currently supported archived image formats include JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, and HEIF (support may vary across different hardware devices).
+Image decoding refers to the process of converting archived images in supported formats into a unified [PixelMap](./cj-image-overview.md) for image display or [image processing](./cj-image-transformation.md) within applications or systems. Currently supported archived image formats include JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, and HEIF (availability may vary across different hardware devices).
 
 ## Development Steps
 
@@ -12,58 +12,45 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
 
     ```cangjie
     import kit.ImageKit.*
-    import kit.AbilityKit.*
     ```
 
 2. Obtain the image.
-    - Method 1: Get the sandbox path. Refer to "Obtaining Application File Paths" for details.
-
-        <!-- compile -->
-
-        ```cangjie
-        // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let filePath = globalAbilityContext.getOrThrow().cacheDir + '/test.jpg'
-        ```
-
-    - Method 2: Obtain the file descriptor through the sandbox path. Refer to [file.fs API Documentation](../../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md).
-      This method requires importing the kit.CoreFileKit module first.
+    - Method 1: Get the file descriptor through the sandbox path. Refer to the [file.fs API documentation](../../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md).
+       This method requires importing the kit.CoreFileKit and kit.AbilityKit modules first.
 
         <!-- compile -->
 
         ```cangjie
         import kit.CoreFileKit.*
+        import kit.AbilityKit.*
         ```
 
-        Then call FileFs.open() to get the file descriptor.
+        Then call FileFs.open() to obtain the file descriptor.
 
         <!-- compile -->
 
         ```cangjie
-        // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let filePath = globalAbilityContext.getOrThrow().cacheDir + '/test.jpg'
-        let file = FileFs.open(filePath, mode: OpenMode.READ_WRITE.mode)
-        let fd = file.fd
+        let cacheDir = "/data/storage/el2/base/haps/entry/cache"
+        let filePath = cacheDir + '/test.jpg'
+        let file = FileIo.open(filePath, mode: OpenMode.READ_WRITE)
+        let fd = file.fd 
         ```
 
-    - Method 3: Obtain the resource file's Array\<UInt8> through the ResourceManager. Refer to [ResourceManager API Documentation](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfilecontentstring).
+    - Method 2: Get the resource file's Array\<UInt8> through the resource manager. Refer to the [ResourceManager API documentation](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfilecontentstring).
 
         <!-- compile -->
 
         ```cangjie
         // Import the resourceManager.
         import kit.LocalizationKit.*
-        import ohos.base.BusinessException
+        import ohos.hilog.Hilog
 
-        // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = Global.abilityContext
         // Get the resourceManager.
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
         ```
 
-        Different models may have different ways to obtain the ResourceManager. After obtaining it, call getRawFileContent() to get the resource file's Array\<UInt8>.
+        Different models may have different ways to obtain the resource manager. After obtaining it, call getRawFileContent() to get the resource file's Array\<UInt8>.
 
         <!-- compile -->
 
@@ -71,27 +58,24 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         try {
           let buffer = resourceManager.getRawFileContent("test.jpg")
         } catch (e: BusinessException) {
-          AppLog.error("Failed to get RawFileContent")
+          Hilog.error(0, "Failed to get RawFileContent", e.message)
         }
         ```
 
-    - Method 4: Obtain the resource file's RawFileDescriptor through the ResourceManager. Refer to [ResourceManager API Documentation](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring).
+    - Method 4: Get the resource file's RawFileDescriptor through the resource manager. Refer to the [ResourceManager API documentation](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring).
 
         <!-- compile -->
 
         ```cangjie
         // Import the resourceManager.
         import kit.LocalizationKit.*
-        import ohos.base.BusinessException
 
-        // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = Global.abilityContext
         // Get the resourceManager.
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
         ```
 
-        Different models may have different ways to obtain the ResourceManager. After obtaining it, call getRawFd() to get the resource file's RawFileDescriptor.
+        Different models may have different ways to obtain the resource manager. After obtaining it, call getRawFd() to get the resource file's RawFileDescriptor.
 
         <!-- compile -->
 
@@ -99,7 +83,7 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         try {
           let rawFileDescriptor = resourceManager.getRawFd("test.jpg")
         } catch (e: BusinessException) {
-          AppLog.error("Failed to get RawFileDescriptor")
+          Hilog.error(0, "Failed to get RawFileContent", e.message)
         }
         ```
 
@@ -139,7 +123,7 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         let imageSource = createImageSource(rawFileDescriptor);
         ```
 
-4. Set decoding parameters (DecodingOptions) and decode to obtain the pixelMap image object.
+4. Set the decoding parameters (DecodingOptions) and decode to obtain the pixelMap image object.
     - Decode with the desired format:
 
         <!-- compile -->
@@ -147,20 +131,18 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         ```cangjie
         import kit.ImageKit.*
         import kit.AbilityKit.*
-		import ohos.state_macro_manage.r
+        import ohos.resource_manager.AppResource
 
-        // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = Global.abilityContext
         // Get the resourceManager.
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
 
-        let img = resourceManager.getMediaContent(@r(app.media.layered_image), 0)
-        let imagesource = createImageSource(img)
-        let decodingOptions = DecodingOptions(editable: true, desiredPixelFormat: PixelMapFormat.RGBA_8888)
+        let img = resourceManager.getMediaContent(@r(app.media.layered_image))
+        let imageSource = createImageSource(img)
+        let decodingOptions = DecodingOptions(editable: true, desiredPixelFormat: PixelMapFormat.Rgba8888)
 
         // Create pixelMap.
-        let pixelMap = imagesource.createPixelMap(options: decodingOptions)
+        let pixelMap = imageSource.createPixelMap(options: decodingOptions)
         ```
 
     - HDR Image Decoding
@@ -170,37 +152,34 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         ```cangjie
         import kit.ImageKit.*
         import kit.AbilityKit.*
-		import ohos.state_macro_manage.r
+        import ohos.resource_manager.AppResource
 
-        // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-        var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-        let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+        var abilityContext = Global.abilityContext
         // Get the resourceManager.
-        let resourceManager = ResourceManager.getResourceManager(stageContext)
+        let resourceManager = abilityContext.resourceManager
 
-        let img = resourceManager.getMediaContent(@r(app.media.layered_image), 0)
-        let imagesource = createImageSource(img)
-        // Set to AUTO to decode based on the image resource format. If the resource is HDR, it will decode to an HDR pixelmap.
-        let decodingOptions = DecodingOptions(desiredDynamicRange: DecodingDynamicRange.AUTO)
+        let img = resourceManager.getMediaContent(@r(app.media.layered_image))
+        let imageSource = createImageSource(img)
+        // Setting to AUTO will decode based on the image resource format. If the resource is HDR, it will decode to an HDR pixelmap.
+        let decodingOptions = DecodingOptions(desiredDynamicRange: DecodingDynamicRange.Auto)
 
         // Create pixelMap.
-        let pixelMap = imagesource.createPixelMap(options: decodingOptions)
+        let pixelMap = imageSource.createPixelMap(options: decodingOptions)
         // Check if the pixelmap contains HDR content.
         let info = pixelMap.getImageInfo()
-        AppLog.info('pixelmap isHdr: ${info.isHdr}')
         ```
 
     After decoding is complete and the pixelMap object is obtained, you can proceed with subsequent [image processing](./cj-image-transformation.md).
 
 5. Release pixelMap and imageSource.
 
-    Ensure that the pixelMap and imageSource methods have completed execution. When these variables are no longer needed, manually call the following methods to release them as required.
+    Ensure that all pixelMap and imageSource operations are completed. When these variables are no longer needed, manually call the following methods to release them as required.
 
     <!-- compile -->
 
     ```cangjie
-    pixelMap.Release();
-    imageSource.Release();
+    pixelMap.release();
+    imageSource.release();
     ```
 
 ## Development Example - Decoding an Image from Resource Files
@@ -215,14 +194,13 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
     import kit.AbilityKit.*
 
     // globalcontext needs to be assigned in func onCreate of main_ability.cj: globalcontext = this.context
-    var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
-    let stageContext = getStageContext(globalAbilityContext.getOrThrow())
+    var abilityContext = Global.abilityContext
     // Get the resourceManager.
-    let resourceManager = ResourceManager.getResourceManager(stageContext)
+    let resourceManager = abilityContext.resourceManager
     ```
 
 2. Create ImageSource.
-    - Method 1: Create using Array\<UInt8> from test.jpg in the rawfile folder.
+    - Method 1: Create through Array\<UInt8> of test.jpg in the rawfile folder.
 
         <!-- compile -->
 
@@ -231,7 +209,7 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         let imageSource = createImageSource(buffer)
         ```
 
-    - Method 2: Create using RawFileDescriptor from test.jpg in the rawfile folder.
+    - Method 2: Create through RawFileDescriptor of test.jpg in the rawfile folder.
 
         <!-- compile -->
 
@@ -250,11 +228,11 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
 
 4. Release pixelMap and imageSource.
 
-    Ensure that the pixelMap and imageSource methods have completed execution. When these variables are no longer needed, manually call the following methods to release them as required.
+    Ensure that all pixelMap and imageSource operations are completed. When these variables are no longer needed, manually call the following methods to release them as required.
 
     <!-- compile -->
 
     ```cangjie
-    pixelMap.Release();
-    imageSource.Release();
+    pixelMap.release();
+    imageSource.release();
     ```

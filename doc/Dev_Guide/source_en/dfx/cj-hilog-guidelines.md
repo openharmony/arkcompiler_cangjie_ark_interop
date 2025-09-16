@@ -1,6 +1,6 @@
 # Using HiLog for Logging (Cangjie)
 
-During application development, you can output log information at critical code points. After running the application, analyze the execution status (e.g., whether the application runs normally, code execution sequence, whether logical branches execute correctly, etc.) by reviewing the log information.
+During application development, you can output log information at critical code points. After running the application, analyze the execution status (such as whether the application is running normally, code execution sequence, whether logical branches execute correctly, etc.) by reviewing the log information.
 
 ## Interface Description
 
@@ -9,13 +9,13 @@ HiLog defines five log levels: DEBUG, INFO, WARN, ERROR, and FATAL, and provides
 | Interface Name | Description |
 | -------- | -------- |
 | isLoggable(domain: UInt32, tag: String, level: LogLevel): Bool | Call this interface before printing logs to check whether logs with the specified domain identifier, log tag, and level can be printed. |
-| debug(domain: UInt32, tag: String, format: String): Unit | Outputs DEBUG-level logs. Used only for application/service debugging.<br/>In DevEco Studio's terminal window or cmd, use the command "hdc shell hilogcat" to set the printable log level to DEBUG. |
-| info(domain: UInt32, tag: String, format: String): Unit | Outputs INFO-level logs. Indicates general information. |
-| warn(domain: UInt32, tag: String, format: String): Unit | Outputs WARN-level logs. Indicates the presence of warnings. |
-| error(domain: UInt32, tag: String, format: String): Unit | Outputs ERROR-level logs. Indicates the presence of errors. |
-| fatal(domain: UInt32, tag: String, format: String): Unit | Outputs FATAL-level logs. Indicates critical or unrecoverable errors. |
+| debug(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | Outputs DEBUG-level logs. Used only for application/service debugging.<br/>In DevEco Studio's terminal window or cmd, use the command "hdc shell hilogcat" to set the printable log level to DEBUG. |
+| info(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | Outputs INFO-level logs. Indicates general information. |
+| warn(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | Outputs WARN-level logs. Indicates the presence of warnings. |
+| error(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | Outputs ERROR-level logs. Indicates the presence of errors. |
+| fatal(domain: UInt32, tag: String, format: String, args: Array<String>): Unit | Outputs FATAL-level logs. Indicates fatal or unrecoverable errors. |
 
-### Parameter Analysis
+### Parameter Parsing
 
 > **Note:**
 >
@@ -25,11 +25,13 @@ HiLog defines five log levels: DEBUG, INFO, WARN, ERROR, and FATAL, and provides
 
 - **domain**: Specifies the business domain corresponding to the output log. The value ranges from 0x0000 to 0xFFFF, and developers can customize it as needed.
 
-- **tag**: Specifies the log identifier, which can be any string. It is recommended to identify the calling class or business behavior. The tag should not exceed 31 bytes; excess characters will be truncated. Chinese characters are not recommended as they may cause garbled text or alignment issues.
+- **tag**: Specifies the log identifier, which can be any string. It is recommended to identify the calling class or business behavior. The tag can be up to 31 bytes; exceeding this limit will truncate the tag. Chinese characters are not recommended as they may cause garbled text or alignment issues.
 
 - **level**: Specifies the log level. For possible values, see [LogLevel](../../../API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hilog.md#enum-loglevel).
 
-- **format**: A format string used for formatted log output.
+- **format**: A format string for formatted log output.
+
+- **args**: Parameters for the format string.
 
 ## Constraints and Limitations
 
@@ -42,10 +44,12 @@ Add a click event to a button to print a log when the button is clicked.
 1. Create a new project and select "[Cangjie] Empty Ability."
 
 2. In the **Project** window, click entry > src > main > cangjie, then open the index.cj file in the project. Add a button that prints a log when clicked.
-   Example code:
 
-    <!--compile-->
-    ```cangjie
+   Sample code:
+
+   <!-- compile -->
+
+   ```cangjie
     // index.cj
 
     import kit.PerformanceAnalysisKit.*
@@ -64,9 +68,9 @@ Add a click event to a button to print a log when the button is clicked.
                         .fontWeight(FontWeight.Bold)
                         .onClick {
                             evt => this.message = "Hello Cangjie"
-                            Hilog.isLoggable(0xFF00, "testTag", LogLevel.INFO)
+                            Hilog.isLoggable(0xFF00, "testTag", LogLevel.Info)
                             Hilog.info(0xFF00, "testTag", "hello world")
-                            // Set the minimum printable log level for the application. After setting, logs below the Warn level will not be printed.
+                            // Set the minimum printable log level for the application. After setting, logs below the WARN level will not be printed.
                             Hilog.info(0x0000, 'testTag', 'this is an info level log')
                             Hilog.error(0x0000, 'testTag', 'this is an error level log')
                         }
@@ -85,7 +89,8 @@ Add a click event to a button to print a log when the button is clicked.
 3. Run the project on a real device and click the "Next" button on the application/service interface.
 
 4. At the bottom of DevEco Studio, switch to the "Log" window and set the log filtering conditions.
-   Select the current device and process, set the log level to Verbose, and set the search content to "testTag." The window will now display only logs that meet the criteria.
+
+   Select the current device and process, set the log level to Verbose, and set the search content to "testTag." The window will then display only logs that meet the criteria.
 
    The printed log results are:
 

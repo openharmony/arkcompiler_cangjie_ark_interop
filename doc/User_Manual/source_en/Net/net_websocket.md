@@ -2,17 +2,17 @@
 
 In network programming, WebSocket is a commonly used application-layer protocol. Like HTTP, it is also built on top of the TCP protocol and is frequently employed in web server application development.
 
-Unlike HTTP, WebSocket only requires a single handshake between the client and server to establish a persistent connection, enabling bidirectional data transmission. This means that WebSocket-based servers can actively push data to clients, facilitating real-time communication.
+Unlike HTTP, WebSocket only requires a single handshake between client and server to establish a persistent connection, enabling bidirectional data transmission. This means WebSocket-based servers can actively push data to clients, achieving real-time communication.
 
-WebSocket is an independent protocol. Its connection to HTTP lies in the fact that its handshake is interpreted by HTTP servers as an upgrade request. Therefore, Cangjie includes WebSocket within the http package.
+WebSocket is an independent protocol. Its connection to HTTP lies in the fact that its handshake is interpreted by HTTP servers as an upgrade request. Therefore, Cangjie includes WebSocket in the `http` package.
 
-Cangjie abstracts the WebSocket communication mechanism into the WebSocket class, providing methods to upgrade an http/1.1 or http/2.0 server handle to a WebSocket protocol instance. Communication is then conducted through the returned WebSocket instance, such as reading and writing data packets.
+Cangjie abstracts the WebSocket communication mechanism into the `WebSocket` class, providing methods to upgrade an HTTP/1.1 or HTTP/2.0 server handle to a WebSocket protocol instance. Communication is then conducted through the returned `WebSocket` instance, such as reading and writing data packets.
 
-In Cangjie, the fundamental data unit transmitted via WebSocket is called a frame. Frames are divided into two categories: one type transmits control information, including Close Frame for closing connections, Ping Frame for implementing Keep-Alive, and Pong Frame as the response type to Ping Frame. The other type transmits application data, supporting segmented transmission.
+In Cangjie, the fundamental data unit transmitted via WebSocket is called a frame. Frames are divided into two categories: one type transmits control information (e.g., Close Frame for connection termination, Ping Frame for keep-alive, Pong Frame as the response type for Ping Frame); the other type transmits application data, supporting fragmented transmission.
 
-Cangjie's frames consist of three attributes: fin and frameType together indicate whether the frame is segmented and its type, while payload contains the frame's data payload. Developers don't need to concern themselves with other attributes for packet transmission.
+Cangjie's frames consist of three attributes: `fin` and `frameType` jointly indicate whether the frame is fragmented and its type, while `payload` contains the frame's data payload. Developers don't need to concern themselves with other attributes for packet transmission.
 
-The following example demonstrates the WebSocket handshake and message exchange process: creating HTTP client and server instances, initiating WebSocket upgrade (or handshake), and beginning frame read/write operations after successful handshake.
+The following example demonstrates WebSocket handshaking and message exchange: creating HTTP client and server instances, initiating WebSocket upgrade (handshake), and performing frame read/write operations after successful handshake.
 
 > **Note:**
 >
@@ -88,7 +88,7 @@ main() {
     println("data size: ${data.size}")      // 4097
     println("last item: ${String.fromUtf8(data.toArray()[4096])}")        // a
 
-    // 4 Close websocket,
+    // 4 Close WebSocket
     // Exchange CloseFrame
     websocket.writeCloseFrame(status: 1000)
     let websocketFrame = websocket.read()
@@ -109,7 +109,7 @@ func startServer() {
 
 // server:
 func handler1(ctx: HttpContext): Unit {
-    // 2 Complete websocket handshake, obtain websocket instance
+    // 2 Complete WebSocket handshake, obtain WebSocket instance
     let websocketServer = WebSocket.upgradeFromServer(ctx, subProtocols: ArrayList<String>(["foo", "bar", "foo1"]),
         userFunc: {request: HttpRequest =>
             let value = request.headers.getFirst("test") ?? ""
@@ -149,7 +149,7 @@ func handler1(ctx: HttpContext): Unit {
     // Send 4097 'a's
     websocketServer.write(TextWebFrame, Array<UInt8>(4097, repeat: 97))
 
-    // 4 Close websocket,
+    // 4 Close WebSocket
     // Exchange CloseFrame
     let websocketFrame = websocketServer.read()
     println("close frame type: ${websocketFrame.frameType}")   // CloseWebFrame
@@ -160,7 +160,7 @@ func handler1(ctx: HttpContext): Unit {
 }
 ```
 
-The example produces the following output:
+The example execution results are as follows:
 
 ```text
 subProtocol: foo1

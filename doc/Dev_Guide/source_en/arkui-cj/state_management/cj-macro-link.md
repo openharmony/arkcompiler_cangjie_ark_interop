@@ -1,79 +1,79 @@
-# @Link Macro: Two-Way Synchronization Between Parent and Child
+# @Link Macro: Bidirectional Parent-Child Synchronization
 
-Variables decorated with \@Link in child components establish two-way data binding with their corresponding data sources in parent components.
+Variables decorated with \@Link in child components establish bidirectional data binding with their corresponding data sources in parent components.
 
 Before reading the \@Link documentation, developers are advised to first understand the basic usage of [\@State](./cj-macro-state.md).
 
 ## Overview
 
-Variables decorated with \@Link share the same value with their data sources in parent components.
+Variables decorated with \@Link share the same value as their parent component's data source.
 
-## Macro Usage Rules
+## Macro Usage Rules Explanation
 
 |\@Link|Description|
 |:---|:---|
 |Non-attribute Macro|None.|
-|Synchronization Type|Two-way synchronization.<br/>State variables in parent components can establish two-way synchronization with \@Link-decorated variables in child components. Changes in one party will be detected by the other.|
-|Allowed Variable Types|Supports basic data types. For String, Int64, Float64, and Bool types, the type can be omitted. Other types must be explicitly specified.<br/>Supports Enum, Option types, and struct types (internal modifications are not allowed for struct types).<br/>Supports class types. To observe internal changes, the class must be decorated with [\@Observed](./cj-macro-observed-and-publish.md), and its properties or nested properties must be decorated with [\@Publish](./cj-macro-observed-and-publish.md) to detect changes.<br/>Supports array types. To observe internal changes, use [ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). For custom array items, use [\@Observed](./cj-macro-observed-and-publish.md) and [\@Publish](./cj-macro-observed-and-publish.md) to observe property assignments. Other array and Collection types (e.g., Array, Varray, ArrayList, HashMap, HashSet) support assigning new arrays but cannot detect internal element changes.<br/>Supports [Color](../../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#class-color) type.<br/>For supported scenarios, see [Observing Changes](#observing-changes).<br/>Does not support Any.|
-|Initial Value of Decorated Variables|\@Link-decorated variables must be initialized using variables provided by the parent component. Initialization in child components is not allowed.|
+|Synchronization Type|Bidirectional synchronization.<br/>State variables in parent components can establish bidirectional synchronization with \@Link-decorated variables in child components. Changes in one party will be detected by the other.|
+|Allowed Variable Types|Supports basic data types. For String, Int64, Float64, and Bool types, type specification can be omitted. Other types must be explicitly specified.<br/>Supports Enum, Option types, and struct types (internal modifications are not allowed for struct types).<br/>Supports class types. To observe internal changes, the class must be decorated with [\@Observed](./cj-macro-observed-and-publish.md) during definition, and its properties/nested properties must use [\@Publish](./cj-macro-observed-and-publish.md) to detect changes.<br/>Supports array types. To observe internal changes, use [ObservedArray\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). For custom array items, use [\@Observed](./cj-macro-observed-and-publish.md) and [\@Publish](./cj-macro-observed-and-publish.md) to observe property assignments. Other array and Collection types (Array, Varray, ArrayList, HashMap, HashSet) support new array assignments but cannot detect internal element changes.<br/>Supports [Color](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-base.md#class-color) type.<br/>For supported scenarios, see [Observing Changes](#观察变化).<br/>Does not support Any.|
+|Initial Value of Decorated Variable|\@Link-decorated variables must be initialized using variables provided by the parent component. Local initialization in child components is prohibited.|
 
-## Variable Passing/Access Rules
+## Variable Passing/Access Rules Explanation
 
 |Passing/Access|Description|
 |:---|:---|
-|Initialization and Update from Parent Component|Local initialization is prohibited. Initialization occurs when the custom component instance is created, with the initial value provided by the parent component's state variable. Allows initialization of child component \@Link variables using parent component variables decorated with [\@State](./cj-macro-state.md), \@Link, [\@Prop](./cj-macro-prop.md), [\@Provide](./cj-macro-provide-and-consume.md), or [\@Consume](./cj-macro-provide-and-consume.md).|
-|Initializing Child Components|Can be used as a data source to initialize child components. Can initialize regular variables, \@State, \@Link, \@Prop, and \@Provide.|
-|Access Outside Component|Private, only accessible within the component.|
+|Initialization and Updates from Parent Component|Local initialization is prohibited. Initialization occurs when creating the custom component instance, with initial values provided by state variables from the direct parent component. Allows initialization of child \@Link variables using parent [\@State](./cj-macro-state.md), \@Link, [\@Prop](./cj-macro-prop.md), [\@Provide](./cj-macro-provide-and-consume.md), or [\@Consume](./cj-macro-provide-and-consume.md) variables.|
+|Initializing Child Components|Can be used as a data source to initialize child components. Supports initializing regular variables, \@State, \@Link, \@Prop, and \@Provide.|
+|External Component Access|Private, only accessible within the owning component.|
 
-## Observing Changes and Behavior
+## Observing Changes and Behavioral Patterns
 
 ### Observing Changes
 
-- When the decorated data type is a basic type, numerical changes can be observed synchronously. See [\@Link with Simple and Class Types](#\@link-with-simple-and-class-types) for an example.
+- For basic data types, numerical changes can be observed synchronously. See example in [Simple and Class Object Types with \@Link](#简单类型和类对象类型的link).
 
-- When the decorated data type is a class, it must be decorated with [\@Observed](./cj-macro-observed-and-publish.md), and properties requiring change detection must be decorated with [\@Publish](./cj-macro-observed-and-publish.md). Without [\@Observed](./cj-macro-observed-and-publish.md), internal changes (e.g., member variables) cannot be detected. See [\@Link with Simple and Class Types](#\@link-with-simple-and-class-types) for an example.
+- For class types, the class must be decorated with [@Observed](./cj-macro-observed-and-publish.md), and properties requiring change detection must use [@Publish](./cj-macro-observed-and-publish.md). Without [@Observed](./cj-macro-observed-and-publish.md), internal member variable changes cannot be detected. See example in [Simple and Class Object Types with \@Link](#简单类型和类对象类型的link).
 
-- When the decorated object is an array, individual array item changes cannot be detected, but overall changes can. To detect internal changes, use [ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). See [\@Link with Array Types](#\@link-with-array-types) for an example.
+- For arrays, individual item changes cannot be detected, but overall changes can. To observe internal changes, use [ObservedArray\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). See example in [Array Types with \@Link](#数组类型的link).
 
-- For other array and Collection types (e.g., Array, Varray, ArrayList, HashMap, HashSet), assigning new arrays is supported, but internal element changes cannot be detected.
+- Other array and Collection types (Array, Varray, ArrayList, HashMap, HashSet) support new array assignments but cannot detect internal element changes.
 
 ### Framework Behavior
 
-\@Link-decorated variables share the lifecycle with their custom components.
+\@Link-decorated variables share the lifecycle with their owning custom component.
 
-To understand the initialization and update mechanism of \@Link variables, it is essential to understand the relationship between the parent component and the child component containing the \@Link variable, as well as the initial rendering and two-way update process (using \@State in the parent component as an example).
+To understand \@Link initialization and update mechanisms, it's essential to grasp the parent-child relationship and the bidirectional update flow (using parent \@State as an example):
 
-1. **Initial Rendering**: After executing the parent component's `build()` function, a new instance of the child component is created. The initialization process is as follows:
-   a. The \@State variable in the parent component must be specified to initialize the \@Link variable in the child component. The child component's \@Link variable remains synchronized with the parent component's data source variable (two-way data synchronization).
-   b. The parent component's \@State wrapper class is passed to the child component via the constructor. The child component's \@Link wrapper class registers its `this` pointer with the parent component's \@State variable.
+1. **Initial Rendering**: After executing the parent's `build()`, a new child instance is created:
+   a. Parent \@State variables must be specified to initialize child \@Link variables, maintaining bidirectional synchronization.
+   b. Parent \@State wrapper passes its reference to child \@Link wrapper, which registers its `this` pointer with the parent \@State.
 
-2. **Update of \@Link Data Source**: When the state variable in the parent component updates, the child component's \@Link is updated accordingly. Steps:
-   a. As seen in the initial rendering step, the child component's \@Link wrapper class registers its `this` pointer with the parent component. After the parent component's \@State variable changes, it traverses and updates all dependent system components (`elementid`) and state variables (e.g., \@Link wrapper classes).
-   b. After notifying the \@Link wrapper class of the update, all system components (`elementId`) in the child component that depend on the \@Link state variable are notified. This achieves state data synchronization from the parent to the child component.
+2. **Data Source Updates (Parent \@State changes)**:
+   a. Parent \@State updates notify all dependent components (including child \@Link wrappers).
+   b. Child \@Link updates then notify its dependent UI elements for refresh.
 
-3. **Update of \@Link**: When the child component's \@Link updates, the following steps occur (using \@State in the parent component as an example):
-   a. After the \@Link updates, the parent component's \@State wrapper class `set` method is called to synchronize the updated value back to the parent component.
-   b. The child component's \@Link and parent component's \@State traverse their dependent system components to update the UI accordingly. This achieves synchronization from the child component's \@Link back to the parent component's \@State.
+3. **\@Link Updates (Child changes)**:
+   a. Child \@Link updates propagate back to parent \@State via its wrapper's `set` method.
+   b. Both components update their dependent UI elements accordingly.
 
 ## Constraints
 
-1. The \@Link macro decorates state owned by the current component and can only be defined in child components. It cannot be used in custom components decorated with [\@Entry](../paradigm/cj-create-custom-components.md#basic-structure-of-custom-components).
+1. \@Link can only decorate child component states, not [\@Entry](../paradigm/cj-create-custom-components.md#自定义组件的基本结构)-decorated root components.
 
-2. \@Link-decorated variables are mutable and must be declared with `var`. The type must be explicitly specified.
+2. \@Link variables are mutable, must be declared with `var`, and require explicit type specification.
 
-3. \@Link-decorated variables cannot be initialized locally. They must be initialized by the parent component; otherwise, a compilation error occurs.
+3. Local initialization is prohibited. Must be initialized from parent component, otherwise compilation error occurs.
 
     ```cangjie
-    // Incorrect: Compilation error
+    // Wrong - compilation error
     @Link var count: Int64 = 10
 
     // Correct
     @Link var count: Int64
     ```
 
-4. The type of the \@Link-decorated variable must match the data source type. See [\@Link Decorated State Variable Type Error](#\@link-decorated-state-variable-type-error).
+4. \@Link variable types must match data source types. See [\@Link Type Mismatch Errors](#link装饰状态变量类型错误).
 
-    **Counterexample**:
+    **Counter Example**:
 
     ```cangjie
     class Info {
@@ -86,7 +86,7 @@ To understand the initialization and update mechanism of \@Link variables, it is
 
     @Component
     class Child {
-        // Incorrect: \@Link and \@State data source types do not match
+        // Wrong - type mismatch
         @Link var test: Cousin
         func build() {
             Column() {
@@ -101,7 +101,7 @@ To understand the initialization and update mechanism of \@Link variables, it is
         @State var info: Info = Info()
         func build() {
             Column {
-                // Incorrect: \@Link and \@State data source types do not match
+                // Wrong - type mismatch
                 Child(test: this.info)
             }
         }
@@ -140,9 +140,9 @@ To understand the initialization and update mechanism of \@Link variables, it is
     }
     ```
 
-5. \@Link-decorated variables can only be initialized by state variables (e.g., \@State). Initialization with constants is not allowed, and the data source must be a macro-decorated state variable; otherwise, an editor error occurs.
+5. \@Link variables can only be initialized by state variables (e.g., \@State), not constants. Otherwise, editor error occurs.
 
-    **Counterexample**:
+    **Counter Example**:
 
     ```cangjie
     class Info {
@@ -167,7 +167,7 @@ To understand the initialization and update mechanism of \@Link variables, it is
         @State var info: Info = Info()
         func build() {
             Column {
-                // Incorrect: Regular variables cannot initialize \@Link
+                // Wrong - regular variables can't initialize @Link
                 Child(msg: 'World', info: this.info.info)
             }
         }
@@ -206,17 +206,17 @@ To understand the initialization and update mechanism of \@Link variables, it is
     }
     ```
 
-6. \@Link does not support decorating Function-type variables. A compilation error will occur.
+6. \@Link does not support Function-type variables (compilation error).
 
 ## Usage Scenarios
 
-### \@Link with Simple and Class Types
+### Simple and Class Object Types with \@Link
 
-In the following example, clicking "Parent View: Set yellowButton" and "Parent View: Set GreenButton" in the parent component `EntryView` synchronizes changes from the parent to the child component.
+In this example, clicking "Parent View: Set yellowButton" or "Parent View: Set GreenButton" in the parent component synchronizes changes to child components.
 
-1. Clicking the Button in the child components `GreenButton` and `YellowButton` triggers changes in the child components, which are synchronized back to the parent component. Since \@Link is two-way, changes are synchronized to \@State.
+1. Clicking buttons in child components (GreenButton/YellowButton) updates both child and parent components via bidirectional \@Link-\@State synchronization.
 
-2. Clicking the Button in the parent component `EntryView` updates \@State, which is synchronized to \@Link, refreshing the child component accordingly.
+2. Clicking parent buttons updates \@State, which propagates to \@Link-decorated child components.
 
  <!-- run -->
 
@@ -238,14 +238,14 @@ class GreenButton {
         Button("Green Button")
             .width(this.greenButtonState.width)
             .height(40)
-            .backgroundColor(Color.GREEN)
+            .backgroundColor(Color.Green)
             .margin(12)
             .onClick {
                 evt => if (this.greenButtonState.width < 700) {
-                    // Updating class properties can be observed and synchronized back to the parent
+                    // Updates class property - changes propagate to parent
                     this.greenButtonState.width += 60
                 } else {
-                    // Updating the class itself can be observed and synchronized back to the parent
+                    // Updates entire class - changes propagate to parent
                     this.greenButtonState = GreenButtonState(width: 180)
                 }
             }
@@ -260,12 +260,12 @@ class YellowButton {
         Button("Yellow Button")
             .width(this.yellowButtonState)
             .height(40)
-            .backgroundColor(Color.YELLOW)
-            .fontColor(Color.BLACK)
+            .backgroundColor(Color(0xFFFF00))
+            .fontColor(Color.Black)
             .margin(12)
             .onClick {
                 evt =>
-                // Simple types in child components can synchronize back to the parent
+                // Simple type updates propagate to parent
                 this.yellowButtonState += 40
             }
     }
@@ -278,8 +278,8 @@ class EntryView {
     @State var yellowButtonProp: Int64 = 180
     func build() {
         Column() {
-            Flex(FlexOptions(direction: FlexDirection.Column, alignItems: ItemAlign.Center)) {
-                // Simple type synchronization from parent \@State to child \@Link
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center) {
+                // Simple type sync from parent @State to child @Link
                 Button("Parent View: Set yellowButton")
                     .width(this.yellowButtonProp)
                     .height(40)
@@ -291,7 +291,7 @@ class EntryView {
                             this.yellowButtonProp = 100
                         }
                     }
-                // Class type synchronization from parent \@State to child \@Link
+                // Class type sync from parent @State to child @Link
                 Button("Parent View: Set GreenButton")
                     .width(this.greenButtonState.width)
                     .height(40)
@@ -303,9 +303,9 @@ class EntryView {
                             this.greenButtonState.width = 100
                         }
                     }
-                // Class type initialization with @Link
+                // Class type initializes @Link
                 GreenButton(greenButtonState: this.greenButtonState)
-                // Simple type initialization with @Link
+                // Simple type initializes @Link
                 YellowButton(yellowButtonState: this.yellowButtonProp)
             }
         }
@@ -315,11 +315,11 @@ class EntryView {
 
 ![Video-link-UsageScenario-one](figures/Video-link-UsageScenario-one.gif)
 
-### Array Type @Link
+### Array Types with \@Link
 
-In the following example, when using ObservedArrayList\<Int\> to decorate items, it can detect the addition, deletion, and replacement of array elements.
+This example demonstrates how ObservedArrayList\<Int> detects array element additions, deletions, and replacements.
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -336,14 +336,14 @@ class Child{
                 .margin(12)
                 .size(width: 312, height: 40)
                 .onClick{
-                    => this.items.append(this.items.size + 1)
+                    evt => this.items.append(this.items.size + 1)
                 }
 
             Button("Button 2: replace whole item")
                 .margin(12)
                 .size(width: 312, height:40)
                 .onClick{
-                    => this.items = ObservedArrayList<Int>([100,200,300])
+                    ect => this.items = ObservedArrayList<Int>([100,200,300])
                 }
         }
     }
@@ -361,8 +361,8 @@ class EntryView{
                     Button("${item}")
                         .margin(12)
                         .size(width: 312,height: 40)
-                        .backgroundColor(Color.WHITE)
-                        .fontColor(Color.BLACK)
+                        .backgroundColor(Color.White)
+                        .fontColor(Color.Black)
                     })
         }
     }
@@ -371,13 +371,13 @@ class EntryView{
 
 ![Video-link-UsageScenario-two](figures/Video-link-UsageScenario-two.gif)
 
-### Modifying Local Variables Using Two-Way Synchronization Mechanism
+### Modifying Local Variables via Bidirectional Sync
 
-Using [@Watch](./cj-macro-watch.md) allows modifying local variables during two-way synchronization.
+Using [\@Watch](./cj-macro-watch.md) enables local variable modifications during bidirectional synchronization.
 
-In the example below, modifying the @State-decorated variable sourceNumber within @Watch of @Link achieves variable synchronization between parent and child components. However, local modifications to the @State-decorated variable memberMessage do not affect changes in the parent component's variables.
+In this example, \@Watch modifies \@State variable `sourceNumber` during \@Link synchronization, achieving parent-child variable sync. However, local modifications to \@State variable `memberMessage` don't affect the parent component.
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -394,10 +394,10 @@ class Child {
     func build() {
         Column() {
             Text(this.memberMessage)
-            Text("Child component's sourceNumber：" + this.sourceNumber.toString())
-            Button("Child component modifies memberMessage")
+            Text("Child's sourceNumber：" + this.sourceNumber.toString())
+            Button("Child modifies memberMessage")
               .onClick {
-                  => this.memberMessage = "Hello memberMessage"
+                  evt => this.memberMessage = "Hello memberMessage"
             }
         }
         .margin(10)
@@ -410,28 +410,26 @@ class EntryView {
     @State var sourceNumber: Int64 = 0;
     func build() {
         Column() {
-            Text("Parent component's sourceNumber：" + this.sourceNumber.toString())
+            Text("Parent's sourceNumber：" + this.sourceNumber.toString())
             Child(sourceNumber: this.sourceNumber)
-            Button("Parent component modifies sourceNumber")
+            Button("Parent modifies sourceNumber")
               .onClick {
-                  => this.sourceNumber++
+                  evt => this.sourceNumber++
             }
         }
     }
 }
 ```
 
-![Video-link-UsageScenario-three](figures/Video-link-UsageScenario-three.gif)
+![Video-link-UsageScenario-three](figures/Video-link-UsageScenario-three.gif)## Frequently Asked Questions
 
-## Common Issues
+### Type Error in @Link Decorated State Variables
 
-### Incorrect @Link Decorated State Variable Type
-
-When using @Link to decorate state variables in child components, ensure the variable type exactly matches the data source type, and the data source must be a state variable decorated with @State or similar.
+When using the `@Link` decorator on state variables in child components, it is essential to ensure that the variable type exactly matches the data source type. Additionally, the data source must be a state variable decorated with decorators such as `@State`.
 
 【Counterexample】
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -462,20 +460,20 @@ class EntryView {
             Text("Parent testNum ${this.info.age}").onClick({
                 evt => this.info.age += 1
             })
-            // @Link-decorated variable must match the data source @State type
+            // The variable decorated with @Link must match the type of the data source @State
             LinkChild(testNum: this.info.age)
         }
     }
 }
 ```
 
-`@Link var testNum: Int64` is initialized from the parent component's `LinkChild(testNum: this.info.age)`. The data source for @Link must be a state variable decorated with a macro. In short, the @Link-decorated data must match the data source type, e.g., @Link: T and @State: T. Therefore, this should be modified to `@Link var testNum: Info`, with initialization from the parent component as `LinkChild(testNum: this.info)`.
+`@Link var testNum: Int64` is initialized from the parent component's `LinkChild(testNum: this.info.age)`. The data source for `@Link` must be a state variable decorated with a macro. In other words, the data decorated with `@Link` must be of the same type as the data source, e.g., `@Link: T` and `@State: T`. Therefore, this should be modified to `@Link var testNum: Info`, and the initialization from the parent component should be `LinkChild(testNum: this.info)`.
 
 ![Video-link-typeerror](figures/Video-link-typeerror.gif)
 
 【Correct Example】
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -509,7 +507,7 @@ class EntryView {
             Text("Parent testNum ${this.info.age}").onClick({
                 evt => this.info.age += 1
             })
-            // @Link-decorated variable must match the data source @State type
+            // The variable decorated with @Link must match the type of the data source @State
             LinkChild(testNum: this.info)
         }
     }

@@ -1,34 +1,34 @@
 # Page Routing (ohos.router) (Not Recommended)
 
-Page routing refers to the implementation of navigation and data transfer between different pages in an application. The Router module facilitates page routing through different URL addresses, enabling easy access to various pages. This document will introduce how to implement page routing using the Router module from the aspects of [Page Navigation](#page-navigation), [Page Return](#page-return), and [Adding a Confirmation Dialog Before Page Return](#adding-a-confirmation-dialog-before-page-return).
+Page routing refers to navigating between different pages and passing data within an application. The Router module facilitates page routing through different URL addresses, enabling easy access to various pages. This document will introduce how to implement page routing using the Router module from the aspects of [Page Navigation](#page-navigation), [Page Return](#page-return), and [Adding a Confirmation Dialog Before Page Return](#adding-a-confirmation-dialog-before-page-return).
 
 > **Note:**
 >
-> The [Navigation component](./cj-navigation-navigation.md) offers more powerful features and customization capabilities. It is recommended to use this component as the routing framework for applications. For differences between Navigation and Router, refer to the [Router to Navigation Migration Guide](./cj-router-to-navigation.md).
+> The [Navigation component](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) offers more powerful features and customization capabilities. It is recommended to use this component as the routing framework for applications.
 
 ## Page Navigation
 
-Page navigation is a crucial part of the development process. When using an application, users often need to navigate between different pages, sometimes transferring data from one page to another.
+Page navigation is a crucial part of the development process. When using an application, users often need to navigate between different pages, sometimes while passing data from one page to another.
 
 **Figure 1** Page Navigation
 
 ![Page Navigation](./figures/page-router.gif)
 
-The Router module provides two navigation modes: [Router.pushUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-pushUrl) and [Router.replaceUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-replaceUrl). These modes determine whether the target page will replace the current page.
+The Router module provides two navigation modes: [Router.pushUrl](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-pushurl) and [Router.replaceUrl](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-replaceurl). These modes determine whether the target page will replace the current page.
 
-- Router.pushUrl: The target page does not replace the current page but is pushed onto the page stack. This preserves the current page's state, allowing users to return to it via the back button or by calling the [Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back) method.
+- **Router.pushUrl**: The target page does not replace the current page but is pushed onto the page stack. This preserves the current page's state, allowing users to return to it via the back button or by calling the [Router.back](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-back) method.
 
-- Router.replaceUrl: The target page replaces the current page, and the current page is destroyed. This releases the current page's resources, making it impossible to return to it.
+- **Router.replaceUrl**: The target page replaces the current page, and the current page is destroyed. This releases the current page's resources, making it impossible to return to it.
 
 > **Note:**
 >
-> The maximum capacity of the page stack is 32 pages. If this limit is exceeded, you can call the [Router.clear](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-clear) method to clear the historical page stack and free up memory space.
+> The maximum capacity of the page stack is 32 pages. If this limit is exceeded, you can call the [Router.clear](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-clear) method to clear the historical page stack and free up memory space.
 
-Additionally, the Router module provides two instance modes: Standard and Single. These modes determine whether the target URL corresponds to multiple instances.
+Additionally, the Router module provides two instance modes: Standard and Single. These modes determine whether the target URL can correspond to multiple instances.
 
-- Standard: Multi-instance mode, which is the default navigation mode. The target page is added to the top of the page stack, regardless of whether a page with the same URL exists in the stack.
+- **Standard**: Multi-instance mode, which is the default navigation mode. The target page is added to the top of the page stack, regardless of whether a page with the same URL exists in the stack.
 
-- Single: Single-instance mode. If a page with the target URL already exists in the page stack, the closest page with the same URL to the top of the stack is moved to the top, becoming the new page. If no page with the target URL exists in the stack, the navigation proceeds in the default multi-instance mode.
+- **Single**: Single-instance mode. If the target page's URL already exists in the page stack, the closest page with the same URL (from the top of the stack) is moved to the top, becoming the new page. If no page with the target URL exists in the stack, the navigation follows the default multi-instance mode.
 
 Before using Router-related functionalities, you need to import the Router module in your code.
 
@@ -36,7 +36,7 @@ Before using Router-related functionalities, you need to import the Router modul
 import kit.ArkUI.Router
 ```
 
-- **Scenario 1**: There is a home page (Home) and a details page (Detail). You want to navigate from the home page to the details page by clicking on a product. The home page should remain in the page stack so that its state can be restored upon return. In this scenario, use the pushUrl method with the Standard instance mode (or omit it).
+- **Scenario 1**: There is a home page (Home) and a details page (Detail). You want to navigate from the home page to the details page when a product is clicked. The home page should remain in the page stack to restore its state upon return. In this scenario, use the `pushUrl` method with the Standard instance mode (or omit the mode parameter).
 
   ```cangjie
   import kit.ArkUI.Router
@@ -48,9 +48,9 @@ import kit.ArkUI.Router
 
   > **Note:**
   >
-  > In multi-instance mode, the RouterMode.Standard parameter can be omitted.
+  > In multi-instance mode, the `RouterMode.Standard` parameter can be omitted.
 
-- **Scenario 2**: There is a login page (Login) and a profile page (Profile). After successful login, you want to navigate from the login page to the profile page. The login page should be destroyed, and the application should exit directly upon return. In this scenario, use the replaceUrl method with the Standard instance mode (or omit it).
+- **Scenario 2**: There is a login page (Login) and a profile page (Profile). After successful login, you want to navigate to the profile page and destroy the login page so that returning exits the application. In this scenario, use the `replaceUrl` method with the Standard instance mode (or omit the mode parameter).
 
   ```cangjie
   import kit.ArkUI.Router
@@ -62,9 +62,9 @@ import kit.ArkUI.Router
 
   > **Note:**
   >
-  > In multi-instance mode, the RouterMode.Standard parameter can be omitted.
+  > In multi-instance mode, the `RouterMode.Standard` parameter can be omitted.
 
-- **Scenario 3**: There is a settings page (Setting) and a theme-switching page (Theme). You want to navigate from the settings page to the theme-switching page by clicking on a theme option. Only one theme-switching page should exist in the page stack at any time, and returning should take you directly back to the settings page. In this scenario, use the pushUrl method with the Single instance mode.
+- **Scenario 3**: There is a settings page (Setting) and a theme-switching page (Theme). You want to navigate from the settings page to the theme-switching page when the theme option is clicked. Ensure only one theme-switching page exists in the stack, and return directly to the settings page. In this scenario, use the `pushUrl` method with the Single instance mode.
 
   ```cangjie
   import kit.ArkUI.Router
@@ -76,7 +76,7 @@ import kit.ArkUI.Router
   }
   ```
 
-- **Scenario 4**: There is a search results list page (SearchResult) and a search details page (SearchDetail). You want to navigate from the search results list page to the search details page by clicking on a result. If the result has already been viewed, a new details page should not be created; instead, navigation should proceed to the existing details page. In this scenario, use the replaceUrl method with the Single instance mode.
+- **Scenario 4**: There is a search results page (SearchResult) and a search details page (SearchDetail). When a search result is clicked, navigate to the details page. If the result has already been viewed, reuse the existing details page instead of creating a new one. In this scenario, use the `replaceUrl` method with the Single instance mode.
 
   ```cangjie
   import kit.ArkUI.Router
@@ -88,9 +88,9 @@ import kit.ArkUI.Router
   }
   ```
 
-The above scenarios do not involve parameter transfer.
+The above scenarios do not involve passing parameters.
 
-If you need to pass data to the target page during navigation, you can add a params property when calling the Router module's methods and specify a string as the parameter. For example:
+To pass data to the target page during navigation, add a `params` property to the Router method call and specify a string as the parameter. For example:
 
 ```cangjie
 import kit.ArkUI.Router
@@ -100,7 +100,7 @@ func onJumpClick() {
 }
 ```
 
-In the target page, you can retrieve the passed parameters by calling the Router module's [getParams](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-getParams) method. For example:
+In the target page, you can retrieve the passed parameters by calling the Router module's [getParams](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-getParams) method. For example:
 
 ```cangjie
 import kit.ArkUI.Router
@@ -112,13 +112,13 @@ var id : Option<String> = params_get
 
 ## Page Return
 
-After completing operations on a page, users often need to return to the previous page or a specified page, which requires the page return functionality. During the return process, you may need to pass data to the target page, which requires the data transfer functionality.
+After completing operations on a page, users often need to return to the previous page or a specified page. This requires the page return functionality. During the return process, data may need to be passed to the target page, which involves data transfer.
 
 **Figure 2** Page Return
 
 ![Page Return](./figures/page_back.gif)
 
-Before using the page routing Router-related functionalities, you need to import the Router module in your code.
+Before using Router-related functionalities, import the Router module in your code.
 
 ```cangjie
 import kit.ArkUI.Router
@@ -134,7 +134,7 @@ You can use the following methods to return to a page:
   Router.back()
   ```
 
-  This method returns to the previous page, i.e., the page's position in the stack. However, the previous page must exist in the stack for this method to work; otherwise, it will be ineffective.
+  This method returns to the previous page, i.e., the page's position in the stack. The previous page must exist in the stack; otherwise, the method will have no effect.
 
 - **Method 2**: Return to a specified page.
 
@@ -154,11 +154,11 @@ You can use the following methods to return to a page:
   import kit.ArkUI.Router
 
   Router.back(
-    url: 'myPage' // myPage is the alias of the named route page to return to
+    url: 'myPage' // myPage is the alias of the named route page
   )
   ```
 
-  This method allows returning to a specified page by providing the target page's path. The target page must exist in the stack for this method to work.
+  This method returns to the specified page, which must exist in the stack.
 
 - **Method 3**: Return to a specified page and pass custom parameters.
 
@@ -184,9 +184,9 @@ You can use the following methods to return to a page:
   )
   ```
 
-  This method not only returns to a specified page but also passes custom parameters during the return. These parameters can be retrieved and parsed in the target page by calling the Router.getParams method.
+  This method not only returns to the specified page but also passes custom parameters. These parameters can be retrieved and parsed in the target page using the `Router.getParams` method.
 
-In the target page, call the Router.getParams method where needed to retrieve the parameters:
+In the target page, call `Router.getParams` where needed:
 
 ```cangjie
 import kit.ArkUI.Router
@@ -198,7 +198,7 @@ class EntryView {
 
   public override func onPageShow() {
     var params:Option<String> = Router.getParams() // Retrieve the passed parameter object
-        var info: Option<String> = params // Retrieve the value of the info property
+        var info: Option<String> = params // Get the value of the info property
   }
   // ...
 }
@@ -206,15 +206,15 @@ class EntryView {
 
 > **Note:**
 >
-> When using the Router.back method to return to a specified page, all pages from the top of the stack (inclusive) to the specified page (exclusive) will be popped from the stack and destroyed.
+> When using `Router.back` to return to a specified page, all pages from the top of the stack (inclusive) to the specified page (exclusive) are popped and destroyed.
 >
-> Additionally, if the Router.back method is used to return to the original page, the original page will not be recreated. Therefore, variables declared with @State will not be redeclared, and the page's aboutToAppear lifecycle callback will not be triggered. If you need to use custom parameters passed during the return in the original page, parse the parameters where needed. For example, parse the parameters in the onPageShow lifecycle callback.
+> Additionally, if `Router.back` is used to return to the original page, the original page is not recreated. Thus, variables declared with `@State` are not redeclared, and the `aboutToAppear` lifecycle callback is not triggered. To use custom parameters passed during the return, parse them where needed, such as in the `onPageShow` lifecycle callback.
 
 ## Adding a Confirmation Dialog Before Page Return
 
-During application development, to prevent user misoperations or data loss, it is sometimes necessary to display a confirmation dialog before the user returns from one page to another, asking for confirmation to proceed.
+In application development, to prevent accidental operations or data loss, you may need to display a confirmation dialog before users return to another page, asking them to confirm the action.
 
-This document will introduce how to implement this functionality from the aspects of [System Default Confirmation Dialog](#system-default-confirmation-dialog) and [Custom Confirmation Dialog](#custom-confirmation-dialog).
+This document introduces how to implement this functionality using [System Default Confirmation Dialog](#system-default-confirmation-dialog) and [Custom Confirmation Dialog](#custom-confirmation-dialog).
 
 **Figure 3** Adding a Confirmation Dialog Before Page Return
 
@@ -222,22 +222,22 @@ This document will introduce how to implement this functionality from the aspect
 
 ### System Default Confirmation Dialog
 
-To implement this functionality, you can use two methods provided by the Router module: [Router.showAlertBeforeBackPage](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage) and [Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back).
+To achieve this, use the Router module's [Router.showAlertBeforeBackPage](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage) and [Router.back](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-back) methods.
 
-Before using the Router-related functionalities, you need to import the Router module in your code.
+Before using Router-related functionalities, import the Router module in your code.
 
 ```cangjie
 import kit.ArkUI.Router
 ```
 
-To enable a confirmation dialog before returning from the target page, you need to call the [Router.showAlertBeforeBackPage](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage) method to set the dialog's message before calling the [Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back) method. For example, define a click event handler for a back button in a payment page:
+To enable the confirmation dialog before returning from the target page, call `Router.showAlertBeforeBackPage` before `Router.back` to set the dialog message. For example, define a back button click event handler in the payment page:
 
 ```cangjie
 func onBackClick() {
-  // Call router.showAlertBeforeBackPage() to set the confirmation dialog's message
+  // Call router.showAlertBeforeBackPage() to set the confirmation dialog message
   try {
     Router.showAlertBeforeBackPage(
-      'You have not completed the payment. Are you sure you want to return?' // Set the dialog's content
+      'You have not completed the payment. Are you sure you want to return?' // Dialog content
       ,{ code => })
     } catch (e: Exception) {
         AppLog.error(e.toString())
@@ -247,19 +247,19 @@ func onBackClick() {
 }
 ```
 
-The Router.showAlertBeforeBackPage method accepts an object as a parameter, which includes the following property:
+The `Router.showAlertBeforeBackPage` method accepts an object with the following property:
 
-message: A String representing the dialog's content.
+- `message`: String type, representing the dialog content.
 
-If the call is successful, the confirmation dialog will be displayed before returning from the target page.
+If successful, the confirmation dialog will appear before returning.
 
-When the user clicks the "Back" button, a confirmation dialog will appear, asking if they are sure they want to return. Selecting "Cancel" will keep the user on the current page; selecting "Confirm" will trigger the Router.back method and execute the navigation based on the parameters.
+When the user clicks the "Back" button, a confirmation dialog will prompt them to confirm the action. Selecting "Cancel" keeps the user on the current page, while "Confirm" triggers `Router.back` and executes the navigation based on parameters.
 
 ### Custom Confirmation Dialog
 
-A custom confirmation dialog can differentiate the application's interface from the system default dialog, improving the user experience. This document uses a popup as an example to demonstrate how to implement a custom confirmation dialog.
+A custom confirmation dialog can differentiate the application's UI from the system default dialog, enhancing user experience. This example uses a popup to demonstrate a custom confirmation dialog.
 
-Before using the Router-related functionalities, you need to import the Router module in your code.
+Before using Router-related functionalities, import the Router module in your code.
 
 ```cangjie
 import kit.ArkUI.Router
@@ -271,10 +271,10 @@ In the event callback, call the popup method:
 import kit.ArkUI.Router
 
 func onBackClick() {
-  // Display the custom confirmation dialog
+  // Display a custom confirmation dialog
   let buttons: Array<ButtonInfo> = [
-                    ButtonInfo("Back", Color.BLACK),
-                    ButtonInfo("Confirm", Color.BLACK)
+                    ButtonInfo("Back", Color.Black),
+                    ButtonInfo("Confirm", Color.Black)
                 ]
   PromptAction.showDialog(
             message: 'You have not completed the payment. Are you sure you want to return?',
@@ -292,4 +292,4 @@ func onBackClick() {
 }
 ```
 
-When the user clicks the "Back" button, a custom confirmation dialog will pop up, asking whether to confirm the return action. Selecting "Cancel" will keep the user on the current target page; selecting "Confirm" will trigger the `Router.back` method, and the navigation behavior will be determined based on the parameters.
+When the user clicks the "Back" button, the custom confirmation dialog appears. Selecting "Cancel" keeps the user on the current page, while "Confirm" triggers `Router.back` and executes the navigation based on parameters.

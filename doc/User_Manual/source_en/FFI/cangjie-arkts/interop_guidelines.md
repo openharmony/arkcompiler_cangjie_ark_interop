@@ -4,9 +4,9 @@
 
 **[Rule]** Cross-engine instance access to JS objects is prohibited.
 
-In multi-engine instance scenarios, each JS object (such as instances of JSValue and its subclasses) is bound to the engine instance (JSContext) that created it. Different engine instances operate independently and cannot share JS objects. Accessing JS objects from non-owning engine instances may cause program crashes.
+In multi-engine instance scenarios, each JS object (such as instances of JSValue and its subclasses) is bound to the engine instance (JSContext) that created it. Different engine instances operate independently and cannot share JS objects. Accessing JS objects from non-owning engines may cause program crashes.
 
-In the Cangjie-ArkTS interoperability library, early interfaces for accessing JS objects required developers to manually pass JSContext parameters. When calling these interfaces, developers must ensure the correct instance is passed. Such interfaces have been marked as "deprecated" and it is recommended to use new interfaces without JSContext parameters instead, which automatically select the correct engine instance.
+In the Cangjie-ArkTS interoperability library, early interfaces for accessing JS objects required developers to manually pass JSContext parameters. When calling these interfaces, developers must ensure the correct instance is passed. Such interfaces have been marked as "deprecated" and it is recommended to uniformly use new interfaces without JSContext parameters, which automatically select the correct engine instance.
 
 **Incorrect Example:**
 
@@ -60,10 +60,10 @@ func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
     // Correct: Converting new object's JSValue using new runtime instance
     let newObj = newObjValue.asObject()
 
-    // Correct: Using non-deprecated interface when setting property (without explicit context passing)
+    // Correct: Using non-deprecated interface when setting property (no explicit context passing)
     newObjValue.setProperty(newContext.string("a"), newContext.boolean(false).toJSValue())
 
-    // Correct: Using string key created by new runtime when getting object property
+    // Correct: Using string key created by new runtime when getting property
     newObjValue.getProperty(newContext.string("a"))
 
     return newObjValue
@@ -78,7 +78,7 @@ let EXPORT_MODULE = JSModule.registerModule {
 
 **[Rule]** Use try statements to catch and handle cross-language call exceptions.
 
-In cross-language function calls, exceptions thrown by the callee are automatically converted by the interoperability library into exceptions that can be caught by the caller. The caller should use try statements to catch and handle these exceptions to prevent program errors or crashes.
+In cross-language function calls, exceptions thrown by the callee are automatically converted by the interoperability library into exceptions that can be caught by the caller. The caller should use try statements to catch and handle exceptions to prevent program errors or crashes.
 
 **Correct Example (Catching Cangjie exceptions on ArkTS side):**
 
@@ -177,7 +177,7 @@ class Data <: SharedObject {
     ) {}
 
     static init() {
-        // Register functions exported to ark
+        // Register functions exported to ArkTS
         JSModule.registerFunc("createData", createData)
         JSModule.registerFunc("setDataId", setDataId)
         JSModule.registerFunc("getDataId", getDataId)
@@ -199,7 +199,7 @@ class Data <: SharedObject {
         let arg0 = callInfo[0]
         let arg1 = callInfo[1]
 
-        // Convert parameter 0 to JS reference to Cangjie object
+        // Convert parameter 0 to JS reference of Cangjie object
         let jsExternal = arg0.asExternal(context)
         // Get Cangjie object
         let data: Data = jsExternal.cast<Data>().getOrThrow()
@@ -228,7 +228,7 @@ class Data <: SharedObject {
 }
 ```
 
-ArkTS interface declaration corresponding to Cangjie side code:
+Corresponding ArkTS interface declaration for Cangjie side code:
 
 ```javascript
 export declare function createData(): undefined;
@@ -267,7 +267,7 @@ class Data <: SharedObject {
     ) {}
 
     static init() {
-        // Register function exported to ark
+        // Register function exported to ArkTS
         JSModule.registerFunc("createData", createData)
     }
 
@@ -323,7 +323,7 @@ class Data <: SharedObject {
 }
 ```
 
-ArkTS interface declaration corresponding to Cangjie side code:
+Corresponding ArkTS interface declaration for Cangjie side code:
 
 ```javascript
 export declare interface Data {
@@ -352,13 +352,13 @@ console.log("id is " + id);
 
 **[Rule]** When passing objects across languages, developers should avoid having local proxy objects hold references to native objects, or promptly nullify such references after use to prevent memory leaks.
 
-During cross-language interoperability, circular references between cross-language objects can easily occur, preventing related objects from being released and causing memory leaks. The root cause of circular references lies in the circular dependency formed between proxy objects of cross-language objects (typically parameters or return values of cross-language methods) and native objects. Since their respective garbage collection (GC) mechanisms cannot automatically identify and handle such cross-runtime references, manual management by developers is required.
+During cross-language interoperability, circular references between cross-language objects can easily occur, preventing related objects from being released and causing memory leaks. The root cause of circular references lies in the ring-shaped dependency formed between proxy objects of cross-language methods (typically parameters or return values) and native objects. Since garbage collection (GC) mechanisms cannot automatically identify and handle such cross-runtime references, developers must manually manage them.
 
 ![interop-circle](../../figures/interop-circle.png)
 
-As shown in the diagram above, to avoid such issues, it is recommended that developers avoid having proxy objects directly reference native objects during design. If business scenarios genuinely require proxy objects to hold references to native objects, developers should promptly release the references to native objects after use.
+As shown in the diagram above, to avoid such issues, it is recommended that developers avoid having proxy objects directly reference native objects during design. If business scenarios truly require proxy objects to hold references to native objects, developers should promptly release these references after use.
 
-Circular reference incorrect example:
+**Circular Reference Error Example:**
 
 Cangjie side code:
 
@@ -396,7 +396,7 @@ let EXPORT_MODULE = JSModule.registerModule {
 }
 ```
 
-ArkTS interface declaration corresponding to Cangjie side code:
+Corresponding ArkTS interface declaration for Cangjie side code:
 
 ```javascript
 export declare interface CJData {
@@ -420,26 +420,26 @@ data.callback = () => {
 
 The circular reference in the above example occurs as follows:
 
-1. The CJData object **data** created on the ArkTS side holds the Cangjie object via external
+1. The CJData object **data** created on the ArkTS side holds a Cangjie object through external
 2. The Cangjie object (of type CJData) holds the **callback** variable
 3. **callback** captures the callback function from the ArkTS side
 4. The callback function on the ArkTS side captures the CJData object **data** created on the ArkTS side
 
-Assuming this scenario is required by business needs, developers should promptly nullify data.callback after its execution to break the circular reference. Example:
+Assuming this scenario is required by business needs, developers should nullify data.callback after execution to break the circular reference. Example:
 
 ```cangjie
 // ...
 data.callback()
 data.callback = () = {}
 // ...
-```## In ArkTS main thread calls to Cangjie interfaces, blocking waits for spawn(Main) execution results are prohibited
+```## In ArkTS Main Thread, Cannot Block and Wait for Execution Results of spawn(Main) in Cangjie Interfaces
 
-**【Rule】** In ArkTS main thread calls to Cangjie interfaces, blocking waits for spawn(Main) execution results must not occur in the main thread, otherwise it will cause deadlock and trigger App Freeze failures.
+**【Rule】** In Cangjie interfaces called from the ArkTS main thread, the main thread must not block and wait for the execution results of `spawn(Main)`. Otherwise, it will cause a deadlock and trigger an App Freeze failure.
 
-When calling Cangjie interfaces from the ArkTS main thread, Cangjie code may use spawn(Main) expressions to dispatch asynchronous tasks to the main thread. This operation is typically used to return Cangjie interface execution results to the ArkTS side. Developers must note that blocking waits for spawn(Main) execution results must not occur in the main thread, otherwise it will cause deadlock and trigger App Freeze failures (APP_INPUT_BLOCK). Common blocking behaviors include but are not limited to:
+When calling Cangjie interfaces from the ArkTS main thread, the Cangjie code may use the `spawn(Main)` expression to dispatch an asynchronous task to the main thread. This operation is typically used to return the execution results of the Cangjie interface to the ArkTS side. Developers must ensure that the main thread does not block and wait for the execution results of `spawn(Main)`, as this will cause a deadlock and trigger an App Freeze failure (APP_INPUT_BLOCK). Common blocking behaviors include but are not limited to:
 
-- Using future.get() to wait for spawn(Main) expression return values;
-- Using Mutex's lock() interface to acquire locks that would be released in spawn(Main) tasks.
+- Using `future.get()` to wait for the return value of the `spawn(Main)` expression;
+- Using the `lock()` interface of `Mutex` to acquire a lock that will be released in the `spawn(Main)` task.
 
 **Incorrect Example:**
 
@@ -456,7 +456,7 @@ public func testCJ(): Unit {
     let future = spawn(Main) {
         // ...
     }
-    future.get() // Error: spawn(Main) creates a Cangjie task for the main thread, while future.get() waits in the main thread, causing deadlock
+    future.get() // Error: `spawn(Main)` creates a Cangjie task on the main thread, and `future.get()` waits on the main thread, causing a deadlock
     // ...
 }
 ```
@@ -470,21 +470,21 @@ import { testCJ } from "libohos_app_cangjie_entry.so"
 @Component
 struct Index {
    // ...
-   testCJ() // Calling Cangjie interface in ArkTS main thread
+   testCJ() // Calling Cangjie interface from the ArkTS main thread
    // ...
 }
 ```
 
-## Cangjie-ArkTS interoperation logic must execute on system threads bound to ArkTS runtime
+## Cangjie and ArkTS Interoperation Logic Must Execute on System Threads Bound to ArkTS Runtime
 
-**【Rule】** When Cangjie calls ArkTS, all operations involving ArkTS data access or interface calls must execute on system threads bound to the ArkTS runtime. Otherwise, JSThreadMisMatch exceptions will be triggered.
+**【Rule】** When Cangjie calls ArkTS, all operations involving ArkTS data access or interface calls must execute on system threads bound to the ArkTS runtime. Otherwise, a `JSThreadMisMatch` exception will be triggered.
 
-Cangjie threads are user-mode threads, and the runtime schedules Cangjie threads to execute on system threads, so Cangjie programs are not bound to specific system threads by default. However, Cangjie-ArkTS interoperation logic must execute on system threads bound to the ArkTS runtime. Therefore, developers must pay attention to the thread where interoperation occurs during development. If not on an ArkTS thread, developers need to use interfaces provided by the interoperation library to switch to ArkTS threads for execution. Developers can use the following interfaces to ensure correct execution of interoperation logic:
+Cangjie threads are user-mode threads, and the runtime schedules Cangjie threads to execute on system threads. Therefore, Cangjie programs are not bound to specific system threads by default. However, Cangjie and ArkTS interoperation logic must execute on system threads bound to the ArkTS runtime. Thus, developers must pay attention to the thread where interoperation occurs. If it is not an ArkTS thread, developers must use the interfaces provided by the interoperation library to switch to the ArkTS thread for execution. Developers can use the following interfaces to ensure correct execution of interoperation logic:
 
-- Use JSContext.isInBindThread() to determine whether the current thread can execute interoperation interfaces;
-- If thread switching is required, use:
-    - JSContext.postJSTask { ... } to create tasks executing on ArkTS threads;
-    - If ArkTS is deployed on the main thread, developers can use spawn(Main) syntax to schedule interoperation logic threads to execute on the main thread.
+- Use `JSContext.isInBindThread()` to determine whether the current thread can execute interoperation interfaces;
+- To switch threads for execution, use:
+    - `JSContext.postJSTask { ... }` to create a task that executes on the ArkTS thread;
+    - If ArkTS is deployed on the main thread, developers can use the `spawn(Main)` syntax to schedule the interoperation logic to execute on the main thread.
 
 **Incorrect Example:**
 
@@ -504,13 +504,13 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     let b: Float64 = arg1.toNumber()
     let callback = arg2.asFunction(context)
 
-    // Create new Cangjie thread
+    // Create a new Cangjie thread
     spawn {
         // Actual Cangjie function behavior
         let value = a + b
         // Create result
-        let result = context.number(value).toJSValue() // Error: Not executing on system thread bound to ArkTS runtime
-        // Call js callback
+        let result = context.number(value).toJSValue() // Error: Not executing on a system thread bound to the ArkTS runtime
+        // Call JS callback
         callback.call(result)
     }
 
@@ -523,7 +523,7 @@ let EXPORT_MODULE = JSModule.registerModule {
 }
 ```
 
-**Correct Example (isInBindThread & postJSTask usage):**
+**Correct Example (Usage of `isInBindThread` & `postJSTask`):**
 
 Cangjie code:
 
@@ -541,20 +541,20 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     let b: Float64 = arg1.toNumber()
     let callback = arg2.asFunction(context)
 
-    // Create new Cangjie thread
+    // Create a new Cangjie thread
     spawn {
         // Actual Cangjie function behavior
         let value = a + b
-        if (context.isInBindThread()) { // Correct: If current thread is system thread bound to ArkTS runtime, synchronous calls can be made directly
+        if (context.isInBindThread()) { // Correct: If the current thread is bound to the ArkTS runtime, synchronous calls can be made directly
             // Create result
             let result = context.number(value).toJSValue()
-            // Call js callback
+            // Call JS callback
             callback.call(result)
-        } else {                        // Correct: Otherwise use postJSTask to asynchronously dispatch callback to ArkTS thread
+        } else {                        // Correct: Otherwise, use `postJSTask` to asynchronously dispatch the callback to the ArkTS thread
             context.postJSTask {
                 // Create result
                 let result = context.number(value).toJSValue()
-                // Call js callback
+                // Call JS callback
                 callback.call(result)
             }
         }
@@ -569,7 +569,7 @@ let EXPORT_MODULE = JSModule.registerModule {
 }
 ```
 
-**Correct Example (spawn(Main) usage):**
+**Correct Example (Usage of `spawn(Main)`):**
 
 Cangjie code:
 
@@ -588,14 +588,14 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     let b: Float64 = arg1.toNumber()
     let callback = arg2.asFunction(context)
 
-    // Create new Cangjie thread
+    // Create a new Cangjie thread
     spawn {
         // Actual Cangjie function behavior
         let value = a + b
-        spawn(Main) { // Correct: Schedule to execute on ArkTS main thread
+        spawn(Main) { // Correct: Schedule execution on the ArkTS main thread
             // Create result
             let result = context.number(value).toJSValue()
-            // Call js callback
+            // Call JS callback
             callback.call(result)
         }
     }
@@ -609,11 +609,11 @@ let EXPORT_MODULE = JSModule.registerModule {
 }
 ```
 
-## In Cangjie applications, ArkTS runtime can only be created using JSRuntime() on the main thread
+## In Cangjie Applications, ArkTS Runtime Can Only Be Created Using `JSRuntime()` on the Main Thread
 
-**【Rule】** In Cangjie applications, ArkTS runtime can only be created using JSRuntime() on the main thread.
+**【Rule】** In Cangjie applications, the ArkTS runtime can only be created using `JSRuntime()` on the main thread.
 
-Thread environment requirements dictate that JSRuntime must bind to a system thread, and all interoperation interfaces can only be called on this system thread; otherwise undefined behavior will occur. However, Cangjie threads and system threads do not have a 1:1 binding relationship, meaning that JSRuntime created in Cangjie threads spawned by spawn will appear as synchronous calls from the Cangjie perspective, while thread switching will occur from the ArkTS perspective, triggering undefined behavior or crashes. Therefore, creation of JSRuntime is restricted to system threads and prohibited in Cangjie threads.
+The thread environment requires that `JSRuntime` be bound to a system thread, and all interoperation interfaces can only be called on this system thread. Otherwise, undefined behavior will occur. However, Cangjie threads are not 1:1 bound to system threads. As a result, creating a `JSRuntime` in a Cangjie thread spawned via `spawn` appears as a synchronous call from the Cangjie perspective but involves thread switching from the ArkTS perspective, leading to undefined behavior or crashes. Therefore, `JSRuntime` can only be created on system threads and not in Cangjie threads.
 
 **Incorrect Example:**
 
@@ -633,9 +633,9 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     let b: Float64 = arg1.toNumber()
     let callback = arg2.asFunction(context)
 
-    // Create new Cangjie thread
+    // Create a new Cangjie thread
     spawn {
-        let runtime = JSRuntime() // Error: ArkTS runtime can only be created using JSRuntime() on the main thread
+        let runtime = JSRuntime() // Error: ArkTS runtime can only be created using `JSRuntime()` on the main thread
         // ...
     }
 

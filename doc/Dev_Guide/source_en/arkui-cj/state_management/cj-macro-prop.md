@@ -1,53 +1,53 @@
 # @Prop Macro: Unidirectional Synchronization Between Parent and Child Components
 
-The variable decorated by \@Prop can establish a unidirectional synchronization relationship with the parent component. The variable decorated by \@Prop is mutable, but changes will not be synchronized back to its parent component.
+Variables decorated with \@Prop can establish a unidirectional synchronization relationship with the parent component. \@Prop-decorated variables are mutable, but changes will not be synchronized back to the parent component.
 
 Before reading the \@Prop documentation, developers are advised to first understand the basic usage of [\@State](./cj-macro-state.md).
 
 ## Overview
 
-The variable decorated by \@Prop establishes a unidirectional synchronization relationship with the parent component:
+\@Prop-decorated variables establish a unidirectional synchronization relationship with the parent component:
 
-- The \@Prop variable allows local modifications, but the changes will not be synchronized back to the parent component.
-- When the data source changes, the \@Prop-decorated variable will be updated and will override all local changes. Therefore, the synchronization of values is from the parent component to the child component (the owning component), and changes in the child component's values will not be synchronized to the parent component.
+- \@Prop variables can be modified locally, but the changes will not be synchronized back to the parent component.
+- When the data source changes, \@Prop-decorated variables will be updated, overriding all local modifications. Therefore, synchronization is from the parent component to the child component (the owning component), and changes in the child component's values will not be synchronized to the parent component.
 
 ## Constraints
 
 - \@Prop modifies the state owned by the current component and can only be defined in child components. It cannot be used in custom components decorated with [\@Entry](../paradigm/cj-create-custom-components.md#basic-structure-of-custom-components).
-- The variable decorated by \@Prop is mutable and must be declared with `var`, and its type must be specified.
-- Local initialization of \@Prop is prohibited; it must be initialized from the parent component.
-- The type of the \@Prop-decorated variable must match the data source type, and the data source must be a state variable decorated with a macro (e.g., \@State).
+- \@Prop-decorated variables are mutable and must be declared with `var`, and their type must be specified.
+- \@Prop prohibits local initialization and must be initialized from the parent component.
+- The type of \@Prop-decorated variables must match the data source type, and the data source must be a state variable decorated with a macro (e.g., \@State).
 
-## Macro Usage Rules Explanation
+## Macro Usage Rules
 
 |\@Prop|Description|
 |:---|:---|
 |Non-attribute macro|None.|
-|Synchronization type|Unidirectional synchronization: Modifications to the parent component's state variable value will be synchronized to the child component's \@Prop-decorated variable. Modifications to the child component's \@Prop variable will not be synchronized back to the parent component's state variable. For nested scenarios, see [Observing Changes](#observing-changes).|
-|Allowed variable types|Supports basic data types. For String, Int64, Float64, and Bool types, the type can be omitted. Other types must be explicitly specified.<br/>Supports enum, struct, and Option types. Internal modifications of struct types are not allowed.<br/>Supports class types. To observe internal changes, the class must be decorated with [\@Observed](./cj-macro-observed-and-publish.md) at definition time. Class properties and nested properties must be decorated with [\@Publish](./cj-macro-observed-and-publish.md) to observe changes. Nested classes follow the same rule. Since classes are reference types, modifying internal variables in the child component when decorated with \@Observed will affect the parent component.<br/>Supports array types. To observe internal changes, use [ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). For custom array item types, use [\@Observed](./cj-macro-observed-and-publish.md) and [\@Publish](./cj-macro-observed-and-publish.md) to observe property assignments within array items. Other array and Collection types, such as Array, Varray, ArrayList, HashMap, and HashSet, support assigning new arrays but cannot observe changes to internal elements.<br/>Supports [Color](../../../../API_Reference//source_zh_cn/arkui-cj/cj-common-types.md#class-color) type.<br/>\@Prop and the [data source](./cj-state-management-overview.md#basic-concepts) types must match. There are three scenarios:<br/>- The types of \@Prop-decorated variables and \@State or other macros must be identical when synchronizing. See [Parent Component @State to Child Component @Prop Simple Data Type Synchronization](#parent-component-state-to-child-component-prop-simple-data-type-synchronization).<br/>- When synchronizing \@Prop-decorated variables with array items decorated by \@State or other macros, the \@Prop type must match the array item type. For example, \@Prop : T and \@State : Array\<T\>. See [Parent Component @State Array Item to Child Component @Prop Simple Data Type Synchronization](#parent-component-state-array-item-to-child-component-prop-simple-data-type-synchronization).<br/>- When the parent component's state variable is a struct or class, the \@Prop-decorated variable must match the property type of the parent component's state variable. See [Synchronization from Parent Component's @State Class Object Property to @Prop Simple Type](#synchronization-from-parent-components-state-class-object-property-to-prop-simple-type).<br/>For supported scenarios, see [Observing Changes](#observing-changes).|
-|Nested passing depth|In component reuse scenarios, it is recommended that \@Prop-decorated deeply nested data does not exceed 5 levels. Excessive nesting may lead to excessive space usage due to deep copying and Garbage Collection, causing performance issues.|
-|Initial value of decorated variable|The \@Prop-decorated variable must be initialized using variables provided by the parent component. Initialization within the child component is not allowed.|
+|Synchronization type|Unidirectional synchronization: Modifications to the parent component's state variable values will be synchronized to the child component's \@Prop-decorated variables, but modifications to the child component's \@Prop variables will not be synchronized back to the parent component's state variables. For nested scenarios, see [Observing Changes](#observing-changes).|
+|Allowed variable types|Supports basic data types. For String, Int64, Float64, and Bool types, the type can be omitted. For other types, the type must be specified.<br/>Supports enum, struct, and Option types. Struct types cannot be modified internally.<br/>Supports class types. To observe internal changes, the class must be decorated with [\@Observed](./cj-macro-observed-and-publish.md) at definition time, and its properties and nested properties must be decorated with [\@Publish](./cj-macro-observed-and-publish.md) to observe changes. The same applies to nested classes. Since classes are reference types, modifying internal variables in the child component when decorated with \@Observed will affect the parent component.<br/>Supports array types. To observe internal changes, use [ObservedArray\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). When array items are custom types, using [\@Observed](./cj-macro-observed-and-publish.md) and [\@Publish](./cj-macro-observed-and-publish.md) allows observing property assignments within array items. Other array and Collection types, such as Array, Varray, ArrayList, HashMap, and HashSet, support assigning new arrays but cannot observe changes to internal elements.<br/>Supports the [Color](../../../../API_Reference//source_en/apis/BasicServicesKit/cj-apis-base.md#class-color) type.<br/>\@Prop and the [data source](./cj-state-management-overview.md#basic-concepts) types must match. There are three scenarios:<br/>- The types of \@Prop-decorated variables and \@State or other macros must match when synchronizing. See [Parent Component @State to Child Component @Prop Simple Data Type Synchronization](#parent-component-state-to-child-component-prop-simple-data-type-synchronization) for an example.<br/>- When \@Prop-decorated variables synchronize with array items decorated with \@State or other macros, the \@Prop type must match the array item type of the \@State-decorated array, e.g., \@Prop: T and \@State: Array\<T>. See [Parent Component @State Array Item to Child Component @Prop Simple Data Type Synchronization](#parent-component-state-array-item-to-child-component-prop-simple-data-type-synchronization) for an example.<br/>- When the parent component's state variable is a struct or class, the \@Prop-decorated variable must match the property type of the parent component's state variable. See [Synchronization from Parent Component's @State Class Object Property to @Prop Simple Type](#synchronization-from-parent-components-state-class-object-property-to-prop-simple-type) for an example.<br/>For supported scenarios, see [Observing Changes](#observing-changes).|
+|Nested passing depth|In component reuse scenarios, it is recommended that \@Prop-decorated nested data does not exceed 5 levels. Excessive nesting can lead to large deep copy space usage and Garbage Collection, causing performance issues.|
+|Initial value of decorated variables|\@Prop-decorated variables must be initialized using variables provided by the parent component. Initialization within the child component is not allowed.|
 
-## Variable Passing/Access Rules Explanation
+## Variable Passing/Access Rules
 
 |Passing/Access|Description|
 |:---|:---|
-|Initialization from parent component|When creating a new instance of a component, all \@Prop variables must be initialized. Initialization within the component is not supported. Supports initialization of child component \@Prop variables using regular variables in the parent component (assigning regular variables to \@Prop only initializes the value; changes to regular variables do not trigger UI updates. Only state variables can trigger UI updates), [\@State](./cj-macro-state.md), [\@Link](./cj-macro-link.md), \@Prop, [\@Provide](./cj-macro-provide-and-consume.md), [\@Consume](./cj-macro-provide-and-consume.md), [Publish](./cj-macro-observed-and-publish.md), [\@StorageLink](./cj-appstorage.md#storragelink), [\@StorageProp](./cj-appstorage.md#storrageprop), [\@LocalStorageLink](./cj-localstorage.md#localstoragelink), and [\@LocalStorageProp](./cj-localstorage.md#localstorageprop).|
-|Initialization of child components|\@Prop supports initializing regular variables, \@State, \@Link, \@Prop, and \@Provide in child components.|
-|External component access|The \@Prop-decorated variable is private and can only be accessed within the component. It cannot be modified by access modifiers.|
+|Initialization from parent component|When creating a new instance of a component, all \@Prop variables must be initialized. Initialization within the component is not supported. Supports initialization from regular variables in the parent component (assigning regular variables to \@Prop only initializes the value; changes to regular variables will not trigger UI updates. Only state variables can trigger UI updates), [\@State](./cj-macro-state.md), [\@Link](./cj-macro-link.md), \@Prop, [\@Provide](./cj-macro-provide-and-consume.md), [\@Consume](./cj-macro-provide-and-consume.md), [Publish](./cj-macro-observed-and-publish.md), [\@StorageLink](./cj-appstorage.md#storragelink), [\@StorageProp](./cj-appstorage.md#storrageprop), [\@LocalStorageLink](./cj-localstorage.md#localstoragelink), and [\@LocalStorageProp](./cj-localstorage.md#localstorageprop) to initialize \@Prop variables in the child component.|
+|Initializing child components|\@Prop supports initializing regular variables, \@State, \@Link, \@Prop, and \@Provide in child components.|
+|Access outside component|\@Prop-decorated variables are private and can only be accessed within the component. They cannot be modified by access modifiers.|
 
 ## Observing Changes and Behavior
 
 ### Observing Changes
 
-The data decorated by \@Prop can observe the following changes.
+\@Prop-decorated data can observe the following changes:
 
 - When the decorated data type is a basic data type, numerical changes can be observed.
 
     ```cangjie
     // Simple type
     @Prop var count: Int
-    // Value assignment changes can be observed
+    // Assignment changes can be observed
     this.count = 1
     ```
 
@@ -73,21 +73,21 @@ The data decorated by \@Prop can observe the following changes.
     @Prop var person: Person
     ```
 
-    Overall assignment to the \@Prop-decorated variable is allowed.
+    Overall assignment to \@Prop-decorated variables is allowed.
 
     ```cangjie
     // Struct type assignment
     this.person = Person(2, "muller")
     ```
 
-    Assignment to the \@Prop-decorated variable's properties is not allowed, as indicated by the compiler.
+    Assignment to \@Prop-decorated variables shows that modifications are not allowed.
 
     ```cangjie
     // Struct property assignment
     this.person.id = 3
     ```
 
-- When the decorated data type is a class, it must be decorated with [@Observed](./cj-macro-observed-and-publish.md), and properties that need to observe changes internally must be decorated with [@Publish](./cj-macro-observed-and-publish.md). Without [@Observed](./cj-macro-observed-and-publish.md), internal changes such as member variables cannot be observed. For details, see [@Prop Nested Scenarios](#prop-nested-scenarios).
+- When the decorated data type is a class, it must be decorated with [\@Observed](./cj-macro-observed-and-publish.md), and properties that need to observe changes internally must be decorated with [\@Publish](./cj-macro-observed-and-publish.md). Without [\@Observed](./cj-macro-observed-and-publish.md), internal changes such as member variables cannot be observed. See [\@Prop Nested Scenarios](#prop-nested-scenarios) for details.
 
     Declare Person and Model classes.
 
@@ -104,20 +104,20 @@ The data decorated by \@Prop can observe the following changes.
     }
     ```
 
-    \@Prop decorates type Model.
+    \@Prop decorates Model type.
 
     ```cangjie
     @Prop var title: Model
     ```
 
-    Assignment to the \@Prop-decorated variable.
+    Assignment to \@Prop-decorated variables.
 
     ```cangjie
     // Class property assignment
     this.title = Model(value: 'Hi', name: Person(value: 'ArkUI'))
     ```
 
-    Assignments to both the \@Prop-decorated variable's properties and nested properties can be observed.
+    Assignments to \@Prop-decorated properties and nested properties can be observed.
 
     ```cangjie
     // Class property assignment
@@ -126,9 +126,9 @@ The data decorated by \@Prop can observe the following changes.
     this.title.name.value = 'ArkUI'
     ```
 
-- When the decorated object is an array, individual array item changes cannot be observed, but overall changes can. To observe internal changes, use [ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist).
+- When the decorated object is an array, individual array item changes cannot be observed, but overall changes can. To observe internal changes, use [ObservedArray\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist).
 
-    When the \@Prop-decorated object is an ArrayList type array.
+    When \@Prop decorates an ArrayList type array.
 
     ```cangjie
     @Prop var arrlist: ArrayList<Int16>
@@ -155,18 +155,18 @@ The data decorated by \@Prop can observe the following changes.
     }
     ```
 
-    When the \@Prop-decorated object is an ObservedArray\<Model\> type array.
+    When \@Prop decorates an ObservedArray\<Model> type array.
 
     ```cangjie
     // ObservedArray array type
-    @Prop var title: ObservedArray<Model>
+    @Prop var title: ObservedArrayList<Model>
     ```
 
-    Array self-assignments can be observed.
+    Array self-assignment can be observed.
 
     ```cangjie
     // Array assignment
-    this.title = ObservedArray<Model>([Model(value: 2)])
+    this.title = ObservedArrayList<Model>([Model(value: 2)])
     ```
 
     Array item assignments can be observed.
@@ -179,11 +179,11 @@ The data decorated by \@Prop can observe the following changes.
     Property assignments within array items can be observed.
 
     ```cangjie
-    // Nested property assignments can be observed
+    // Nested property assignment can be observed
     this.title[0].value = 6
     ```
 
-    When the \@Prop-decorated object is an ObservedArrayList\<Model\> type array, adding and removing array items can be observed.
+    When \@Prop decorates an ObservedArrayList\<Model> type array, adding and removing array items can be observed.
 
     Removing array items can be observed.
 
@@ -202,15 +202,15 @@ The data decorated by \@Prop can observe the following changes.
 For \@State and \@Prop synchronization scenarios:
 
 - Use the value of the parent component's \@State variable to initialize the child component's \@Prop variable. When the \@State variable changes, its value will also be synchronized to the \@Prop variable.
-- Modifications to the \@Prop-decorated variable will not affect the value of its data source \@State-decorated variable.
+- Modifications to \@Prop-decorated variables will not affect the value of the data source \@State-decorated variable.
 - Besides \@State, the data source can also be decorated with \@Link or \@Prop, and the synchronization mechanism for \@Prop is the same.
 - The data source and \@Prop variable types must match. \@Prop allows simple types and class types.
 
 - When the decorated variable is another array type or Collection type, such as Array, Varray, ArrayList, HashMap, and HashSet, assigning new arrays is supported, but changes to internal elements cannot be observed.
-    Using HashSet as an example.
+    Take HashSet as an example.
 
     ```cangjie
-    // When the \@Prop-decorated object is a HashSet
+    // When \@Prop decorates a HashSet
     @Prop var message: HashSet<Int64>
     ```
 
@@ -228,27 +228,27 @@ For \@State and \@Prop synchronization scenarios:
 
 ### Framework Behavior
 
-To understand the initialization and update mechanism of \@Prop variable values, it is necessary to understand the initial rendering and update process of the parent component and the child component with \@Prop variables.
+To understand the initialization and update mechanism of \@Prop variable values, it is necessary to understand the initial rendering and update process of the parent component and the child component owning \@Prop variables.
 
 1. Initial rendering:
    a. Execute the parent component's build() function to create a new instance of the child component and pass the data source to the child component;
    b. Initialize the child component's \@Prop-decorated variables.
 
 2. Update:
-   a. When the child component's \@Prop is updated, the update remains in the current child component and will not be synchronized back to the parent component;
-   b. When the parent component's data source is updated, the child component's \@Prop-decorated variables will be reset by the parent component's data source, and all local modifications to \@Prop will be overwritten by the parent component's update.
+   a. When the child component's \@Prop is updated, the update stays within the current child component and will not be synchronized back to the parent component;
+   b. When the parent component's data source is updated, the child component's \@Prop-decorated variables will be reset by the parent component's data source, and all local modifications to \@Prop will be overwritten by the parent component's updates.
 
 > **Note:**
 >
-> Data updates decorated by \@Prop depend on the re-rendering of their owning custom component. Therefore, \@Prop cannot refresh when the application enters the background. It is recommended to use \@Link instead.
+> \@Prop-decorated data updates depend on the re-rendering of their owning custom component, so \@Prop cannot refresh when the app enters the background. It is recommended to use \@Link instead.
 
 ## Usage Scenarios
 
 ### Parent Component @State to Child Component @Prop Simple Data Type Synchronization
 
-The following example demonstrates \@State to child component \@Prop simple data synchronization. The parent component EntryView's state variable countDownStartValue initializes the child component CountDownComponent's \@Prop-decorated count. Clicking "Try again" will modify count only within CountDownComponent and not synchronize it back to the parent component EntryView.
+The following example demonstrates synchronization from \@State in the parent component to \@Prop in the child component for simple data types. The parent component EntryView's state variable countDownStartValue initializes the \@Prop-decorated count in the child component CountDownComponent. Clicking "Try again" modifies count only within CountDownComponent and does not synchronize back to the parent component EntryView.
 
-Changes to the parent component EntryView's state variable countDownStartValue will reset the child component CountDownComponent's count.
+Changes to the parent component's state variable countDownStartValue will reset CountDownComponent's count.
 
  <!-- run -->
 
@@ -268,7 +268,7 @@ class CountDownComponent {
             } else {
                 Text('Game over!')
             }
-            // @Prop-decorated variables will not be synchronized to the parent component
+            // @Prop-decorated variables will not sync back to the parent component
             Button("Try again")
                 .margin(10)
                 .onClick {
@@ -277,6 +277,7 @@ class CountDownComponent {
         }
     }
 }
+
 @Entry
 @Component
 class EntryView {
@@ -284,13 +285,13 @@ class EntryView {
     func build() {
         Column {
             Text("Grant ${this.countDownStartValue} nuggets to play.")
-            // Modifications to the parent component's data source will be synchronized to child components
+            // Parent component data source changes will sync to the child component
             Button("+1 - Nuggets in New Game")
                 .margin(10)
                 .onClick {
                     evt => this.countDownStartValue += 1
                 }
-            // Parent component modifications will be synchronized to child components
+            // Parent component changes will sync to the child component
             Button("-1  - Nuggets in New Game")
                 .margin(10)
                 .onClick {
@@ -306,19 +307,19 @@ class EntryView {
 
 In the above example:
 
-1. When the CountDownComponent child component is first created, its `@Prop` decorated `count` variable will be initialized from the parent component's `@State` decorated `countDownStartValue` variable.
+1. When the CountDownComponent child component is first created, its \@Prop-decorated count variable will be initialized from the parent component's \@State-decorated countDownStartValue variable;
 
-2. When clicking the "+1" or "-1" buttons, the parent component's `@State` decorated `countDownStartValue` value changes, triggering the parent component to re-render. During this process, UI components using the `countDownStartValue` state variable will be refreshed, and the `count` value in the CountDownComponent child component will be updated unidirectionally.
+2. When the "+1" or "-1" buttons are pressed, the parent component's \@State-decorated countDownStartValue value changes, triggering the parent component to re-render. During re-rendering, the UI components using the countDownStartValue state variable will be refreshed, and the count value in the CountDownComponent child component will be updated unidirectionally;
 
-3. Updating the `count` state variable also triggers the re-rendering of CountDownComponent. During re-rendering, the `if` statement condition (`this.count > 0`) using the `count` state variable is evaluated, and the UI components in the `true` branch are executed to update the Text component's display.
+3. Updating the count state variable value also triggers CountDownComponent's re-rendering. During re-rendering, the if statement condition (this.count > 0) using the count state variable is evaluated, and the UI components in the true branch using the count state variable are executed to update the Text component's UI display;
 
-4. When clicking the "Try again" button in the child component CountDownComponent, its `@Prop` variable `count` will be modified, but this change will not affect the parent component's `countDownStartValue` value.
+4. When the "Try again" button in the child component CountDownComponent is pressed, its \@Prop variable count will be modified, but the count value change will not affect the parent component's countDownStartValue value;
 
-5. When the parent component's `countDownStartValue` value changes, the parent component's modifications will override any local changes made to the `count` variable in the child component CountDownComponent.
+5. When the parent component's countDownStartValue value changes, the parent component's modifications will overwrite any local modifications to count in the child component CountDownComponent.
 
-### Synchronization from Parent Component's `@State` Array Items to Child Component's `@Prop` Simple Data Type
+### Parent Component @State Array Item to Child Component @Prop Simple Data Type Synchronization
 
-If the parent component's `@State` decorates an array, its array items can also initialize `@Prop`. In the following example, the parent component Index's `@State` decorated array `arr` initializes the child component Child's `@Prop` decorated `value` with its array items.
+If the parent component's \@State decorates an array, its array items can also initialize \@Prop. In the following example, the parent component Index's \@State-decorated array arr initializes the \@Prop-decorated value in the child component Child with its array items.
 
  <!-- run -->
 
@@ -355,64 +356,11 @@ class EntryView {
                     itemGeneratorFunc: {
                         item: Int64, _: Int64 => Child(value: item)
                     },
-                    keyGeneratorFunc: {
-                        item: Int64, _: Int64 => item.toString()
-                    }
-                )
-                Text('replace entire arr')
-                    .fontSize(50)
-                    .onClick {
-                        evt => if (this.arr[0] == 1) {
-                            this.arr = [3, 4, 5]
-                        } else {
-                            this.arr = [1, 2, 3]
-                        }
-                    }
-            }
-        }
-    }
-}
-```
+                    keyGenerator### Synchronization from \@State Class Object Properties in Parent Component to \@Prop Simple Types
 
-Initial rendering creates 6 child component instances, each with a local copy of the array item for the `@Prop` decorated variable. The child component's `onClick` event handler modifies the local variable value.
+In this example, the `Book` class uses the `\@Observed` macro. Since `class` is a reference type, modifications to the internal variables of the `class` within the child component will affect the parent component when decorated with `\@Observed`. Therefore, changes to any property in `ReaderComp` will result in changes to the `book` object.
 
-If you click "1" six times, "2" five times, and "3" four times, all local variable values will become "7".
-
-```text
-7
-7
-7
-----
-7
-7
-7
-```
-
-After clicking "replace entire arr", the screen will display the following:
-
-```text
-7
-7
-7
-----
-7
-4
-5
-```
-
-- All modifications made in the child component Child will not be synchronized back to the parent component Index. Therefore, even though all 6 components display "7", the parent component Index's `this.arr` still holds the original value `[1, 2, 3]`.
-
-- Clicking "replace entire arr" checks if `this.arr[0] == 1` is true, then assigns `this.arr` to `[3, 4, 5]`.
-
-- Although `this.arr[0]` has changed, modifying the `@State` array in this scenario does not trigger updates to the child component's UI, meaning the changes are not synchronized to the `@Prop` variable. Thus, the value of `Child({value: this.arr[0]})` remains "7".
-
-- The change to `this.arr` triggers a ForEach update. Both the old and new arrays contain the value "3": `[3, 4, 5]` and `[1, 2, 3]`. According to the diff algorithm, the array item "3" will be retained, while items "1" and "2" will be deleted, and items "4" and "5" will be added. This means the component corresponding to "3" will not be regenerated but moved to the first position. Thus, the component for "3" remains unchanged with a value of "7", and the final rendering result of ForEach is "7", "4", "5".
-
-### Synchronization from Parent Component's `@State` Class Object Property to `@Prop` Simple Type
-
-In this example, the Book class uses the `@Observed` macro. Since `class` is a reference type, decorating it with `@Observed` means modifications to the class's internal variables in the child component will affect the parent component. Thus, any property change in a ReaderComp will cause the `book` object to change.
-
- <!-- run -->
+<!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -458,16 +406,17 @@ class EntryView {
 
 ![Video-Prop-Book](figures/Video-Prop-Book.gif)
 
-### Synchronization from Parent Component's `@State` Array Items to `@Prop` Class Type
+### Synchronization from \@State Array Items in Parent Component to \@Prop Class Types
 
-In the following example, modifying properties of Book objects in the `@State` decorated `allBooks` array requires decorating the `class Book` with `@Observed`. The properties of Book will be observed, and `ObservedArrayList` will be used to monitor additions, deletions, and modifications of Book objects.
+In the following example, changes are made to the properties of `Book` objects in the `\@State`-decorated `allBooks` array. The `class Book` must be decorated with `\@Observed`, and the properties of `Book` will be observed. Additionally, `ObservedArrayList` is used to monitor additions, deletions, and modifications of `Book` objects.
 
- <!-- run -->
+<!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Observed
@@ -546,7 +495,7 @@ class EntryView {
                         evt => if (this.allBooks.size > 0) {
                             this.allBooks.remove(0)
                         } else {
-                            AppLog.info("length <= 0")
+                            Hilog.info(0, "cangjie", "length <= 0")
                         }
                     })
         }
@@ -554,15 +503,15 @@ class EntryView {
 }
 ```
 
-Instances of classes decorated with `@Observed` are wrapped in opaque proxy objects that detect all property changes within the wrapped object. If such changes occur, the proxy notifies `@Prop`, and the `@Prop` object's value is updated.
+Instances of classes decorated with `\@Observed` are wrapped by opaque proxy objects. These proxies can detect all property changes within the wrapped object. If such changes occur, the proxy notifies `\@Prop`, and the `\@Prop` object's value is updated.
 
 ![Video-prop-UsageScenario-one](figures/Video-prop-UsageScenario-one.gif)
 
-### `@Prop` Nested Scenario
+### \@Prop Nested Scenarios
 
-In nested scenarios, each layer must be decorated with `@Observed` and received by `@Prop` to ensure changes are detected.
+In nested scenarios, each layer must be decorated with `\@Observed`, and each layer must be received by `\@Prop` to ensure awareness of the nested scenario.
 
- <!-- run -->
+<!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -580,7 +529,7 @@ class Father {
     @Publish var name: String
     @Publish var son: Son
 }
-// The following component hierarchy demonstrates the data structure of an @Prop nesting scenario.
+// The following component hierarchy presents the data structure for the \@Prop nested scenario.
 @Entry
 @Component
 class EntryView {
@@ -588,16 +537,16 @@ class EntryView {
     func build() {
         Column {
             Flex(
-                FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-                    justifyContent: FlexAlign.SpaceBetween)) {
-                Button('Change Father Name')
+                direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+                    justifyContent: FlexAlign.SpaceBetween) {
+                Button('change Father name')
                     .width(312)
                     .height(40)
                     .margin(12)
                     .onClick({
                         evt => this.person.name = 'Hi'
                     })
-                Button('Change Son Title')
+                Button('change Son title')
                     .width(312)
                     .height(40)
                     .margin(12)

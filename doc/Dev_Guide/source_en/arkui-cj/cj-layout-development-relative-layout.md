@@ -2,35 +2,35 @@
 
 ## Overview
 
-During application development, designing complex interfaces often involves nesting multiple components of the same or different types. Excessive nesting depth or an excessive number of nested components can introduce additional overhead. Optimizing the layout approach can effectively enhance performance and reduce time costs.
+During application development, designing complex interfaces often involves nesting multiple components of the same or different types. Excessive nesting depth or too many nested components can introduce additional overhead. Optimizing the layout approach can effectively enhance performance and reduce time costs.
 
-The RelativeContainer is a container that employs relative layout, supporting the setting of relative positional relationships among its child elements. It is suitable for complex interface scenarios, facilitating the alignment and arrangement of multiple child components. Child elements can specify sibling elements or the parent container as anchor points for relative positioning. Figure 1 illustrates a conceptual diagram of the RelativeContainer, where dashed lines indicate positional dependencies.
+RelativeContainer is a container that employs relative layout, supporting the definition of positional relationships among child elements within the container. It is suitable for complex interface scenarios, facilitating the alignment and arrangement of multiple child components. Child elements can specify sibling elements or the parent container as anchor points for relative positioning. Figure 1 illustrates a conceptual diagram of RelativeContainer, where dashed lines indicate dependency relationships for positioning.
 
 **Figure 1** Relative Layout Schematic
 
 ![relative-layout](figures/relative-layout.png)
 
-Child elements do not strictly adhere to the dependency relationships shown in the diagram. For example, Item4 can depend on Item2 as an anchor point or on the RelativeContainer parent container as an anchor point.
+Child elements do not strictly follow the dependency relationships shown above. For example, Item4 can use either Item2 or the parent RelativeContainer as its anchor point.
 
 ## Basic Concepts
 
 - **Reference Boundary**: Specifies which boundary of the current component aligns with the anchor point.
   
-- **Anchor Point**: Determines the position of the current element relative to another element.
+- **Anchor Point**: Defines the element used as the reference for positioning the current element.
   
-- **Alignment Method**: Specifies whether the current element aligns with the anchor point's top, center, or bottom (vertical) or left, center, or right (horizontal).
+- **Alignment Mode**: Determines whether the current element aligns with the anchor point's top, center, or bottom (vertical), or left, center, or right (horizontal).
 
 ## Setting Dependency Relationships
 
 ### Setting Reference Boundaries
 
-Specifies which boundary of the current component aligns with the anchor point. The reference boundaries of child components within the container are distinguished by horizontal and vertical directions.
+Specifies which boundary of the current component aligns with the anchor point. Reference boundaries for child components within the container are differentiated by horizontal and vertical directions.
 
-- **Horizontal Direction**: The component boundary can align with the anchor point based on the start (left), middle (center), or end (right). When all three boundaries are set, only the start (left) and middle (center) boundaries take effect.
+- **Horizontal Direction**: Component boundaries can align with the anchor point based on start (left), middle (center), or end (right). When all three boundaries are set, only start (left) and middle (center) take effect.
 
     ![relative-layout2](./figures/relative-layout2.png)
 
-- **Vertical Direction**: The component boundary can align with the anchor point based on the top, center, or bottom. When all three boundaries are set, only the top and center boundaries take effect.
+- **Vertical Direction**: Component boundaries can align with the anchor point based on top, center, or bottom. When all three boundaries are set, only top and center take effect.
 
     ![relative-layout3](./figures/relative-layout3.png)
 
@@ -38,15 +38,16 @@ Specifies which boundary of the current component aligns with the anchor point. 
 
 Anchor points define the positional dependencies of child elements relative to their parent or sibling elements. Specifically, child elements can anchor their positions to the RelativeContainer, guidelines, barriers, or other child elements.
 
-To precisely define anchor points, child elements of the RelativeContainer must have unique component identifiers (id) to specify anchor information. The parent RelativeContainer's identifier defaults to `__container__`, while other child elements' identifiers are set via the [id](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-componentid.md) attribute.
+To precisely define anchor points, child elements of RelativeContainer must have unique component identifiers (id) for specifying anchor information. The parent RelativeContainer's identifier defaults to `__container__`, while other child elements' identifiers are set via the [id](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-componentid.md) attribute.
 
 > **Note:**
-> - Components without an `id` can still be displayed but cannot be referenced as anchor points by other components. The RelativeContainer will assign an identifier, but the pattern of these identifiers is not exposed to the application. Guidelines and barriers must ensure unique `id`s to avoid conflicts with any components. In case of duplicates, the priority order is: component > guideline > barrier.
-> - Avoid creating dependency loops (except for chain dependencies) when setting anchor points between components, as loops will prevent child components from being positioned correctly and ultimately fail to render.
+>
+> - Components without an id can still be displayed but cannot be referenced as anchor points by other components. The RelativeContainer will auto-generate an id for such components, but the pattern of these ids cannot be perceived by the application. Guideline and barrier ids must be unique to avoid conflicts with any components. In case of duplicates, the priority order is: component > guideline > barrier.
+> - Avoid creating dependency loops when setting anchor points between components (except for chain dependencies). Dependency loops will prevent child components from having a positioning reference, ultimately making them unrenderable.
 
-- **Parent RelativeContainer as Anchor Point**: `__container__` represents the container's component identifier.
+- **Parent RelativeContainer as Anchor Point**: `__container__` represents the container's component id.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -67,8 +68,8 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start)
                     )
                 )
                 .id("row1")
@@ -82,8 +83,8 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End)
                     )
                 )
                 .id("row2")
@@ -98,9 +99,9 @@ To precisely define anchor points, child elements of the RelativeContainer must 
 
     ![RelativeContainer](figures/RelativeContainer1.png)
 
-- **Sibling Element as Anchor Point**:
+- **Sibling Element as Anchor Point**.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -121,8 +122,8 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start)
                     )
                 )
                 .id("row1")
@@ -136,8 +137,8 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.Start)
+                        top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row1", HorizontalAlign.Start)
                     )
                 )
                 .id("row2")
@@ -152,9 +153,9 @@ To precisely define anchor points, child elements of the RelativeContainer must 
 
     ![RelativeContainer2](figures/RelativeContainer2.png)
 
-- **Child Component Anchor Points Can Be Arbitrarily Selected**, but ensure no mutual dependencies.
+- **Child components can freely choose anchor points**, but ensure no mutual dependencies.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -174,8 +175,8 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                     .backgroundColor(0xa3cf62)
                     .alignRules(
                         AlignRuleOption(
-                            top: VerticalAnchor("__container__", VerticalAlign.Top),
-                            left: HorizontalAnchor("__container__",HorizontalAlign.Start)
+                            top: VerticalAlignment("__container__", VerticalAlign.Top),
+                            left: HorizontalAlignment("__container__",HorizontalAlign.Start)
                         )
                     )
                     .id("row1")
@@ -185,9 +186,9 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                     .backgroundColor(0x00ae9d)
                     .alignRules(
                         AlignRuleOption(
-                            top: VerticalAnchor("__container__", VerticalAlign.Top),
-                            right: HorizontalAnchor("__container__",HorizontalAlign.End),
-                            bottom: VerticalAnchor("row1", VerticalAlign.Center),
+                            top: VerticalAlignment("__container__", VerticalAlign.Top),
+                            right: HorizontalAlignment("__container__",HorizontalAlign.End),
+                            bottom: VerticalAlignment("row1", VerticalAlign.Center),
                         )
                     )
                     .id("row2")
@@ -197,9 +198,9 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                     .backgroundColor(0x0a59f7)
                     .alignRules(
                         AlignRuleOption(
-                            top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                            left: HorizontalAnchor("row1", HorizontalAlign.Start),
-                            right: HorizontalAnchor("row2", HorizontalAlign.Start)
+                            top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                            left: HorizontalAlignment("row1", HorizontalAlign.Start),
+                            right: HorizontalAlignment("row2", HorizontalAlign.Start)
                         )
                     )
                     .id("row3")
@@ -208,9 +209,9 @@ To precisely define anchor points, child elements of the RelativeContainer must 
                     .backgroundColor(0x2ca9e0)
                     .alignRules(
                         AlignRuleOption(
-                            top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                            left: HorizontalAnchor("row1", HorizontalAlign.Center),
-                            right: HorizontalAnchor("row2", HorizontalAlign.End)
+                            top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                            left: HorizontalAlignment("row1", HorizontalAlign.Center),
+                            right: HorizontalAlignment("row2", HorizontalAlign.End)
                         )
                     )
                     .id("row4")
@@ -228,19 +229,19 @@ To precisely define anchor points, child elements of the RelativeContainer must 
 
 ### Setting Alignment Relative to Anchor Points
 
-After setting the anchor point, use the [alignRules](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#func-alignrulesalignruleoption) attribute to specify the alignment relative to the anchor point.
+After setting anchor points, use the [alignRules](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#func-alignrulesalignruleoption) attribute to define alignment positions relative to the anchor points.
 
-- **Horizontal Alignment**: Options include `HorizontalAlign.Start`, `HorizontalAlign.Center`, and `HorizontalAlign.End`.
+- **Horizontal Alignment**: Positions can be set as `HorizontalAlign.Start`, `HorizontalAlign.Center`, or `HorizontalAlign.End`.
 
 ![alignment-relative-anchor-horizontal](figures/alignment-relative-anchor-horizontal.png)
 
-- **Vertical Alignment**: Options include `VerticalAlign.Top`, `VerticalAlign.Center`, and `VerticalAlign.Bottom`.
+- **Vertical Alignment**: Positions can be set as `VerticalAlign.Top`, `VerticalAlign.Center`, or `VerticalAlign.Bottom`.
 
 ![alignment-relative-anchor-vertical](figures/alignment-relative-anchor-vertical.png)
 
 ### Child Component Position Offset
 
-After relative alignment, the position of a child component may still not meet the target requirements. Developers can apply additional offsets using the `offset` property. When a component adjusted by `offset` is used as an anchor point, the alignment position is based on its pre-offset position. It is recommended to use [bias](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#class-bias) for additional offsets.
+After relative alignment, child components may still not be in their target positions. Developers can apply additional offsets using the `offset` property. When a component adjusted by `offset` serves as an anchor point, the alignment position is based on its pre-offset position. It is recommended to use [bias](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#class-bias) for additional offsets.
 
  <!-- run -->
 
@@ -265,8 +266,8 @@ class EntryView {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start)
                     )
                 )
                 .id("row1")
@@ -279,9 +280,9 @@ class EntryView {
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        right: HorizontalAnchor("__container__",HorizontalAlign.End),
-                        bottom: VerticalAnchor("row1", VerticalAlign.Center)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        right: HorizontalAlignment("__container__",HorizontalAlign.End),
+                        bottom: VerticalAlignment("row1", VerticalAlign.Center)
                     )
                 )
                 .offset(x: -40, y: -20)
@@ -295,9 +296,9 @@ class EntryView {
                 .backgroundColor(0x0a59f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.End),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Start)
+                        top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row1", HorizontalAlign.End),
+                        right: HorizontalAlignment("row2", HorizontalAlign.Start)
                     )
                 )
                 .offset(x: -10, y: -20)
@@ -310,10 +311,10 @@ class EntryView {
                 .backgroundColor(0x2ca9e0)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start),
-                        right: HorizontalAnchor("row1", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start),
+                        right: HorizontalAlignment("row1", HorizontalAlign.End)
                     )
                 )
                 .offset(x: -10, y: -30)
@@ -325,10 +326,10 @@ class EntryView {
                 .backgroundColor(0x30c9f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row2", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row2", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row2", HorizontalAlign.Start),
+                        right: HorizontalAlignment("row2", HorizontalAlign.End)
                     )
                 )
                 .offset(x: 10, y: 20)
@@ -340,10 +341,10 @@ class EntryView {
                 .backgroundColor(0xff33ffb5)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("row4", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row3", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row3", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("row4", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row3", HorizontalAlign.Start),
+                        right: HorizontalAlignment("row3", HorizontalAlign.End)
                     )
                 )
                 .offset(x: -15, y: 10)
@@ -364,7 +365,7 @@ class EntryView {
 
 ## Alignment Layout for Multiple Components
 
-Row, Column, Flex, Stack, and other layout components can be aligned and arranged according to the rules of the RelativeContainer component.
+Components like `Row`, `Column`, `Flex`, and `Stack` can be aligned and arranged according to RelativeContainer rules.
 
  <!-- run -->
 
@@ -385,8 +386,8 @@ class EntryView {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start)
                     )
                 )
                 .id("row1")
@@ -396,13 +397,13 @@ class EntryView {
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Center)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Center)
                     )
                 )
                 .id("row2")
 
-                Flex(FlexParams(direction: FlexDirection.Row)) {
+                Flex(direction: FlexDirection.Row) {
                     Text('1')
                         .width(20.percent)
                         .height(50)
@@ -424,15 +425,15 @@ class EntryView {
                 .backgroundColor(0x30c9f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row2", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Center),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Center)
+                        top: VerticalAlignment("row2", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Center),
+                        right: HorizontalAlignment("row2", HorizontalAlign.Center)
                     )
                 )
                 .id("row3")
 
-                Stack(Alignment.Bottom) {
+                Stack(alignContent: Alignment.Bottom) {
                     Text('First child, show in bottom')
                         .width(90.percent)
                         .height(100.percent)
@@ -447,10 +448,10 @@ class EntryView {
                 .margin(top: 5)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        right: HorizontalAnchor("row3", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        right: HorizontalAlignment("row3", HorizontalAlign.End)
                     )
                 )
                 .id("row4")
@@ -464,16 +465,14 @@ class EntryView {
 }
 ```
 
-![Simplify-Component-Layout](figures/simplify-component-layout-image3.png)
+![Simplify-Component-Layout](figures/simplify-component-layout-image3.png)## Component Sizing
 
-## Component Dimensions
-
-When both frontend-defined component dimensions and relative layout rules exist, the component's rendering dimensions are determined by constraint rules. The component's self-defined dimensions take precedence over the alignment anchor dimensions in relative layout rules. Therefore, to ensure strict alignment with anchors, use only `alignRules` and avoid using [size settings](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-size.md).
+When both frontend-defined child component dimensions and relative layout rules coexist, the rendering size of child components is determined based on constraint rules. The size set by the child component itself takes precedence over the alignment anchor dimensions in relative layout rules. Therefore, to achieve strict alignment between child components and anchors, only use `alignRules` and avoid using [size settings](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-size.md).
 
 > **Note:**
 >
-> - If the component size cannot be determined based on constraints and its own `size` property, the component will not be rendered.
-> - If two or more anchors are set in the same direction with incorrect positional order, the component will be treated as having a size of 0 and will not be rendered.
+> - If the child component's size cannot be determined based on constraints and its own `size` property, the component will not be rendered.
+> - When two or more anchors are set in the same direction with incorrect positional order, the child component will be treated as having a size of 0 and will not be rendered.
 
  <!-- run -->
 
@@ -497,8 +496,8 @@ class EntryView {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start)
                     )
                 )
                 .id("row1")
@@ -511,9 +510,9 @@ class EntryView {
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        right: HorizontalAnchor("__container__",HorizontalAlign.End),
-                        bottom: VerticalAnchor("row1", VerticalAlign.Center)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        right: HorizontalAlignment("__container__",HorizontalAlign.End),
+                        bottom: VerticalAlignment("row1", VerticalAlign.Center)
                     )
                 )
                 .id("row2")
@@ -526,9 +525,9 @@ class EntryView {
                 .backgroundColor(0x0a59f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row1", HorizontalAlign.End),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Start),
+                        top: VerticalAlignment("row1", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row1", HorizontalAlign.End),
+                        right: HorizontalAlignment("row2", HorizontalAlign.Start),
                     )
                 )
                 .id("row3")
@@ -540,10 +539,10 @@ class EntryView {
                 .backgroundColor(0x2ca9e0)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start),
-                        right: HorizontalAnchor("row1", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start),
+                        right: HorizontalAlignment("row1", HorizontalAlign.End)
                     )
                 )
                 .id("row4")
@@ -555,10 +554,10 @@ class EntryView {
                 .backgroundColor(0x30c9f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row2", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row2", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row2", HorizontalAlign.Start),
+                        right: HorizontalAlignment("row2", HorizontalAlign.End)
                     )
                 )
                 .id("row5")
@@ -570,10 +569,10 @@ class EntryView {
                 .backgroundColor(0xff33ffb5)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row3", VerticalAlign.Bottom),
-                        bottom: VerticalAnchor("row4", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("row3", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row3", HorizontalAlign.End)
+                        top: VerticalAlignment("row3", VerticalAlign.Bottom),
+                        bottom: VerticalAlignment("row4", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("row3", HorizontalAlign.Start),
+                        right: HorizontalAlignment("row3", HorizontalAlign.End)
                     )
                 )
                 .id("row6")
@@ -591,11 +590,13 @@ class EntryView {
 
 ![Simplify-Component-Layout](figures/simplify-component-layout-image4.png)
 
-## Forming Chains with Multiple Components
+## Multiple Components Forming a Chain
 
-Chain formation relies on inter-component relationships. Taking the simplest horizontal chain between components A and B as an example, the dependency is: Anchor 1 <-- Component A <--> Component B --> Anchor 2. This means A has a left anchor, B has a right anchor, A's right anchor aligns with B's `HorizontalAlign.Start`, and B's left anchor aligns with A's `HorizontalAlign.End`.
+Chain formation relies on inter-component relationships. Taking the simplest horizontal chain composed of components A and B as an example, the dependency relationship is: Anchor1 <-- ComponentA <--> ComponentB --> Anchor2. This means A has a left anchor, B has a right anchor, while A's right anchor aligns with B's `HorizontalAlign.Start`, and B's left anchor aligns with A's `HorizontalAlign.End`.
 
-- The chain's direction and style are declared in the chain head component's [chainMode](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle) interface. The `bias` property of chain elements becomes invalid, while the chain head's `bias` property applies to the entire chain. The chain head is the first component in the chain (leftmost in horizontal direction, rightmost in RTL languages; topmost in vertical direction).- If the combined size of all elements in the chain exceeds the anchor constraints of the chain, the excess portion will be evenly distributed to both sides of the chain. In a [Packed](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#packed) chain, the distribution of the excess portion can be configured via [bias](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#class-bias).
+- The chain's direction and format are declared in the chain head component's [chainMode](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle) interface. The `bias` properties of chain elements become invalid, while the chain head's `bias` property serves as the chain's overall bias. The chain head refers to the first component in the chain that satisfies chain formation rules (horizontally starting from the left, or right in RTL languages; vertically starting from the top).
+
+- If the combined size of all chain elements exceeds the anchor constraints, the excess portion will be evenly distributed on both sides of the chain. In [Packed](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#packed) chains, the distribution of excess space can be adjusted via [bias](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#class-bias).
 
  <!-- run -->
 
@@ -619,9 +620,9 @@ class EntryView {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("__container__", VerticalAlign.Top),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start),
-                        right: HorizontalAnchor("row2", HorizontalAlign.Start)
+                        top: VerticalAlignment("__container__", VerticalAlign.Top),
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start),
+                        right: HorizontalAlignment("row2", HorizontalAlign.Start)
                     )
                 )
                 .id("row1")
@@ -636,9 +637,9 @@ class EntryView {
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        right: HorizontalAnchor("row3",HorizontalAlign.Start),
-                        left: HorizontalAnchor("row1",HorizontalAlign.End)
+                        top: VerticalAlignment("row1", VerticalAlign.Top),
+                        right: HorizontalAlignment("row3",HorizontalAlign.Start),
+                        left: HorizontalAlignment("row1",HorizontalAlign.End)
                     )
                 )
                 .id("row2")
@@ -652,9 +653,9 @@ class EntryView {
                 .backgroundColor(0x0a59f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row1", VerticalAlign.Top),
-                        left: HorizontalAnchor("row2", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End),
+                        top: VerticalAlignment("row1", VerticalAlign.Top),
+                        left: HorizontalAlignment("row2", HorizontalAlign.End),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End),
                     )
                 )
                 .id("row3")
@@ -669,8 +670,8 @@ class EntryView {
                 .alignRules(
                     AlignRuleOption(
                         center: VerticalAnchor("__container__", VerticalAlign.Center),
-                        left: HorizontalAnchor("__container__",HorizontalAlign.Start),
-                        right: HorizontalAnchor("row5", HorizontalAlign.Start)
+                        left: HorizontalAlignment("__container__",HorizontalAlign.Start),
+                        right: HorizontalAlignment("row5", HorizontalAlign.Start)
                     )
                 )
                 .id("row4")
@@ -685,9 +686,9 @@ class EntryView {
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row4", VerticalAlign.Top),
-                        left: HorizontalAnchor("row4", HorizontalAlign.End),
-                        right: HorizontalAnchor("row6", HorizontalAlign.Start)
+                        top: VerticalAlignment("row4", VerticalAlign.Top),
+                        left: HorizontalAlignment("row4", HorizontalAlign.End),
+                        right: HorizontalAlignment("row6", HorizontalAlign.Start)
                     )
                 )
                 .id("row5")
@@ -701,9 +702,9 @@ class EntryView {
                 .backgroundColor(0x0a59f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row4", VerticalAlign.Top),
-                        left: HorizontalAnchor("row5", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End)
+                        top: VerticalAlignment("row4", VerticalAlign.Top),
+                        left: HorizontalAlignment("row5", HorizontalAlign.End),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End)
                     )
                 )
                 .id("row6")
@@ -717,9 +718,9 @@ class EntryView {
                 .backgroundColor(0xa3cf62)
                 .alignRules(
                     AlignRuleOption(
-                        bottom: VerticalAnchor("__container__", VerticalAlign.Bottom),
-                        left: HorizontalAnchor("__container__", HorizontalAlign.Start),
-                        right: HorizontalAnchor("row8", HorizontalAlign.Start)
+                        bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
+                        left: HorizontalAlignment("__container__", HorizontalAlign.Start),
+                        right: HorizontalAlignment("row8", HorizontalAlign.Start)
                     )
                 )
                 .id("row7")
@@ -734,9 +735,9 @@ class EntryView {
                 .backgroundColor(0x00ae9d)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row7", VerticalAlign.Top),
-                        left: HorizontalAnchor("row7", HorizontalAlign.End),
-                        right: HorizontalAnchor("row9", HorizontalAlign.Start)
+                        top: VerticalAlignment("row7", VerticalAlign.Top),
+                        left: HorizontalAlignment("row7", HorizontalAlign.End),
+                        right: HorizontalAlignment("row9", HorizontalAlign.Start)
                     )
                 )
                 .id("row8")
@@ -750,9 +751,9 @@ class EntryView {
                 .backgroundColor(0x0a59f7)
                 .alignRules(
                     AlignRuleOption(
-                        top: VerticalAnchor("row7", VerticalAlign.Top),
-                        left: HorizontalAnchor("row8", HorizontalAlign.End),
-                        right: HorizontalAnchor("__container__", HorizontalAlign.End)
+                        top: VerticalAlignment("row7", VerticalAlign.Top),
+                        left: HorizontalAlignment("row8", HorizontalAlign.End),
+                        right: HorizontalAlignment("__container__", HorizontalAlign.End)
                     )
                 )
                 .id("row9")

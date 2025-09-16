@@ -1,24 +1,27 @@
 # Debugging Frontend Pages Using DevTools
 
-Web components support debugging frontend pages using DevTools. DevTools is a web frontend development debugging tool that enables debugging mobile device frontend pages on a computer. Developers can enable Web component frontend page debugging capabilities through the `setWebDebuggingAccess()` interface. Using DevTools, they can debug frontend web pages on mobile devices from a computer. The device must be version 4.1.0 or higher.
+Web components support debugging frontend pages using DevTools. DevTools is a web frontend development debugging tool that provides the capability to debug mobile device frontend pages on a computer. Developers can use DevTools to debug frontend web pages on mobile devices from a computer. The device must be version 4.1.0 or higher.
 
 ## Debugging Steps
 
 ### Enable Web Debugging in Application Code
 
-Before debugging a webpage, the application-side code must call the `setWebDebuggingAccess()` interface to enable Web debugging.
-
-If the Web debugging switch is not enabled, DevTools cannot detect the webpage to be debugged.
+If the Web debugging switch is not enabled, DevTools cannot discover the webpage to be debugged.
 
 1. Enable the Web debugging switch in the application code as follows:
 
     <!-- compile -->
 
     ```cangjie
-    // index.cj
-    import ohos.state_macro_manage.*
-    import kit.ArkWeb.WebviewController
-    import kit.UIKit.{Web, BusinessException}
+    // xxx.cj
+    import ohos.arkui.state_macro_manage.*
+    import kit.PerformanceAnalysisKit.Hilog
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{Web}
+
+    func loggerError(str: String) {
+        Hilog.error(0, "CangjieTest", str)
+    }
 
     @Entry
     @Component
@@ -30,19 +33,19 @@ If the Web debugging switch is not enabled, DevTools cannot detect the webpage t
                 // Configure Web to enable debugging mode
                 WebviewController.setWebDebuggingAccess(true)
             } catch (e: BusinessException) {
-                AppLog.error("ErrorCode: ${e.code},  Message: ${e.message}")
+                loggerError("ErrorCode: ${e.code},  Message: ${e.message}")
             }
         }
 
-      func build() {
-          Column {
-              Web(src: 'www.example.com', controller: this.webController)
-          }
-      }
+        func build() {
+            Column {
+                Web(src: 'www.example.com', controller: this.webController)
+            }
+        }
     }
     ```
 
-2. To enable debugging functionality, add the following permission to the `module.json5` file in the DevEco Studio application project's HAP module. For details on adding permissions, refer to [Declaring Permissions in Configuration Files](../security/AccessToken/cj-declare-permissions.md).
+2. To enable debugging functionality, add the following permission to the module.json5 file of the DevEco Studio project's hap module. For the method to add permissions, refer to [Declaring Permissions in the Configuration File](../security/AccessToken/cj-declare-permissions.md).
 
     ```json
     "requestPermissions":[
@@ -52,35 +55,35 @@ If the Web debugging switch is not enabled, DevTools cannot detect the webpage t
     ]
     ```
 
-### Connect the Device to a Computer
+### Connect the Device to the Computer
 
-Connect the device to a computer and enable Developer Mode to prepare for subsequent port forwarding operations.
+Connect the device to the computer and enable Developer Mode to prepare for subsequent port forwarding operations.
 
-1. Enable Developer Mode on the device and turn on USB debugging.
+1. Enable Developer Mode on the device and activate USB debugging.
 
-    (1) In the terminal system, check if "Developer Options" exists under "Settings > System." If not, go to "Settings > About" and tap "Version Number" seven times consecutively until the prompt "Enable Developer Mode" appears. Click "Confirm" and enter the PIN (if set). The device will restart automatically.
+    (1) Check if "Developer Options" exists under "Settings > System" on the terminal system. If not, go to "Settings > About" and click "Version Number" seven times consecutively until the prompt "Developer Mode Enabled" appears. Click "Confirm Enable," enter the PIN (if set), and the device will restart automatically.
 
-    (2) Connect the terminal to the computer using a USB cable. Under "Settings > System > Developer Options," toggle the "USB Debugging" switch. Click "Allow" in the "Allow USB Debugging" pop-up.
+    (2) Connect the terminal to the computer using a USB cable. Under "Settings > System > Developer Options," toggle the "USB Debugging" switch. Click "Allow" on the "Allow USB Debugging" popup.
 
-2. Use the `hdc` command to connect to the device.
+2. Use the hdc command to connect to the device.
 
-    Open the command line and execute the following command to check if `hdc` can detect the device.
+    Open the command line and execute the following command to check if hdc can discover the device.
 
     ```shell
     hdc list targets
     ```
 
-    - If the command returns the device ID, `hdc` has successfully connected to the device.
+    - If the command returns the device ID, it means hdc has successfully connected to the device.
 
         ![hdc_list_targets_success](figures/devtools_resources_hdc_list_targets_success.png)
 
-    - If the command returns `[Empty]`, `hdc` has not detected the device.
+    - If the command returns `[Empty]`, it means hdc has not discovered the device.
 
         ![hdc_list_targets_empty](figures/devtools_resources_hdc_list_targets_empty.jpg)
 
-3. Enter the `hdc shell`.
+3. Enter hdc shell.
 
-    After the `hdc` command connects to the device, execute the following command to enter the `hdc shell`.
+    After hdc successfully connects to the device, execute the following command to enter hdc shell.
 
     ```shell
     hdc shell
@@ -88,21 +91,21 @@ Connect the device to a computer and enable Developer Mode to prepare for subseq
 
 ### Port Forwarding
 
-When the application code calls the `setWebDebuggingAccess` interface to enable Web debugging, the ArkWeb kernel starts a domain socket listener to implement DevTools' webpage debugging functionality.
+When the application code calls the `setWebDebuggingAccess` interface to enable the Web debugging switch, the ArkWeb kernel starts a domain socket listener to implement the webpage debugging functionality for DevTools.
 
-However, Chrome browsers cannot directly access domain sockets on the device. Therefore, the domain socket on the device must be forwarded to the computer.
+However, Chrome browser cannot directly access the domain socket on the device, so the domain socket on the device needs to be forwarded to the computer.
 
-1. First, execute the following command in the `hdc shell` to query the domain socket created by ArkWeb on the device.
+1. First, execute the following command in hdc shell to query the domain socket created by ArkWeb on the device.
 
     ```shell
     cat /proc/net/unix | grep devtools
     ```
 
-    - If the previous steps were executed correctly, this command will display the domain socket port for debugging.
+    - If the previous steps were performed correctly, the command will display the domain socket port for querying.
 
         ![hdc_grep_devtools_38532](figures/devtools_resources_hdc_grep_devtools_38532.jpg)
 
-    - If no results are returned, verify the following:
+    - If no result is found, verify the following:
 
         (1) The application has enabled the Web debugging switch.
 
@@ -110,7 +113,7 @@ However, Chrome browsers cannot directly access domain sockets on the device. Th
 
 2. Forward the queried domain socket to the computer's TCP port 9222.
 
-    Execute `exit` to leave the `hdc shell`.
+    Execute `exit` to leave hdc shell.
 
     ```shell
     exit
@@ -125,23 +128,23 @@ However, Chrome browsers cannot directly access domain sockets on the device. Th
     > **Note:**
     >
     > - The number after "webview_devtools_remote_" represents the process ID of the ArkWeb application. This number is not fixed. Replace it with the value you queried.
-    > - If the application's process ID changes (e.g., the application restarts), port forwarding must be reconfigured.
+    > - If the application's process ID changes (e.g., the application restarts), you need to perform port forwarding again.
 
     Successful execution of the command:
 
     ![hdc_fport_38532_success](figures/devtools_resources_hdc_fport_38532_success.jpg)
 
-3. Execute the following command in the command line to check if port forwarding succeeded.
+3. Execute the following command in the command line to check if the port forwarding was successful.
 
     ```shell
     hdc fport ls
     ```
 
-    - If the command returns a port forwarding task, the port forwarding was successful.
+    - If the port forwarding task is listed, the port forwarding was successful.
 
         ![hdc_fport_ls_38532](figures/devtools_resources_hdc_fport_ls_38532.png)
 
-    - If the command returns `[Empty]`, the port forwarding failed.
+    - If `[Empty]` is returned, the port forwarding failed.
 
         ![hdc_fport_ls_empty](figures/devtools_resources_hdc_fport_ls_empty.jpg)
 
@@ -149,23 +152,23 @@ However, Chrome browsers cannot directly access domain sockets on the device. Th
 
 1. Enter the debugging tool address `chrome://inspect/#devices` in the Chrome browser's address bar on the computer and open the page.
 
-2. Configure Chrome's debugging tool.
+2. Modify Chrome DevTools configuration.
 
-    To detect the webpage to be debugged from the local TCP port 9222, ensure "Discover network targets" is checked. Then configure the network settings.
+    To discover the webpage to be debugged from the local TCP port 9222, ensure "Discover network targets" is checked. Then configure the network settings.
 
     (1) Click the "Configure" button.
 
-    (2) Add the local port `localhost:9222` to the "Target discovery settings."
+    (2) Add the local port `localhost:9222` to "Target discovery settings."
 
     ![chrome_configure](figures/devtools_resources_chrome_configure.jpg)
 
 3. To debug multiple applications simultaneously, add multiple port numbers in the "Devices" section under "configure" in Chrome's debugging tool page.
 
-   ![debug-effect](figures/debug-domains.png)
+    ![debug-effect](figures/debug-domains.png)
 
-### Wait for the Debugging Page to Be Detected
+### Wait for the Debugging Page to Be Discovered
 
-If the previous steps were executed successfully, Chrome's debugging page will soon display the webpage to be debugged.
+If the previous steps were executed successfully, the debugging page in Chrome will soon display the webpage to be debugged.
 
 ![chrome_inspect](figures/devtools_resources_chrome_inspect.jpg)
 
@@ -177,7 +180,7 @@ If the previous steps were executed successfully, Chrome's debugging page will s
 
 ### Windows Platform
 
-Copy the following information to create a `.bat` file and execute it after enabling the debugging application.
+Copy the following information to create a bat file and execute it after enabling the debugging application.
 
 ```bat
 @echo off
@@ -255,9 +258,9 @@ endlocal
 
 ### Linux or Mac Platform
 
-Copy the following information to create a `.sh` file. Note to run `chmod` and format conversion, then execute it after enabling the debugging application.
+Copy the following information to create an sh file. Note to perform `chmod` and format conversion, then execute it after enabling the debugging application.
 
-This script first deletes all port forwarding rules. If other tools (e.g., DevEco Studio) are also using port forwarding, they will be affected.
+This script will first delete all port forwarding rules. If other tools (e.g., DevEco Studio) are also using port forwarding, they will be affected.
 
 ```shell
 #!/bin/bash
@@ -322,11 +325,11 @@ hdc fport ls
 
 ## Common Issues and Solutions
 
-### hdc Cannot Detect Device
+### hdc Cannot Discover the Device
 
-**Symptom**
+**Issue**
 
-No device ID is listed after executing the following command in the terminal:
+After executing the following command in the command line, no device ID is listed.
 
 ```shell
 hdc list targets
@@ -335,27 +338,27 @@ hdc list targets
 **Solution**
 
 - Ensure USB debugging is enabled on the device.
-- Verify the device is properly connected to the computer.
+- Ensure the device is connected to the computer.
 
 ### hdc Command Shows Device as "Unauthorized"
 
-**Symptom**
+**Issue**
 
-When executing hdc commands, the device is displayed as "未授权" or "unauthorized".
+When executing the hdc command, the device is shown as "unauthorized."
 
-**Root Cause**
+**Cause**
 
 The device has not authorized the computer for debugging.
 
 **Solution**
 
-After connecting a device with USB debugging enabled to an unauthorized computer, a prompt will appear asking "Allow USB debugging?". Select "Allow".
+After connecting a device with USB debugging enabled to an unauthorized computer, a popup will prompt "Allow USB debugging?" Select "Allow."
 
 ### Cannot Find DevTools Domain Socket
 
-**Symptom**
+**Issue**
 
-No results appear after executing the following command in hdc shell:
+After executing the following command in hdc shell, no result is returned.
 
 ```shell
 cat /proc/net/unix | grep devtools
@@ -363,14 +366,14 @@ cat /proc/net/unix | grep devtools
 
 **Solution**
 
-- Ensure the application has [enabled web debugging](#application-code-enables-web-debugging).
-- Verify the application uses Web components to load web pages.
+- Ensure the application has [enabled the Web debugging switch](#enable-web-debugging-in-application-code).
+- Ensure the application has loaded a webpage using the Web component.
 
 ### Port Forwarding Fails
 
-**Symptom**
+**Issue**
 
-Previously configured forwarding tasks are not listed after executing:
+After executing the following command in the command line, no previously set forwarding tasks are listed.
 
 ```shell
 hdc fport ls
@@ -378,44 +381,29 @@ hdc fport ls
 
 **Solution**
 
-- Confirm the domain socket exists on the device.
-- Ensure the local tcp:9222 port on the computer is not occupied.
+- Ensure the domain socket exists on the device.
+- Ensure the computer's TCP port 9222 is not occupied.
 
-    - If tcp:9222 is occupied, forward the domain socket to another available TCP port (e.g., 9223).
-    - If forwarding to a new TCP port, update the port number in the "Target discovery settings" of the Chrome browser on the computer.
+    - If TCP port 9222 is occupied, forward the domain socket to another available TCP port, such as 9223.
+    - If forwarding to a new TCP port, update the port number in Chrome's "Target discovery settings" on the computer.- The process ID of the application in the device has changed (e.g., due to application restart), which may cause the old forwarding tasks in hdc to become invalid.
+- Abnormal configurations, such as multiple forwarding tasks targeting the same port, may lead to forwarding failures.
 
-### After Successful Port Forwarding, Chrome Cannot Detect Debuggable Web Page
+**Solutions**
 
-**Symptom**
-
-The Chrome browser on the computer cannot detect the debuggable web page.
-
-**Root Cause**
-
-Port forwarding may fail due to:
-
-- Disconnection between device and computer, which clears all forwarding tasks in hdc.
-- Restarting hdc service, which also clears all forwarding tasks.
-- Process ID changes of the application on the device (e.g., app restart), making old forwarding tasks invalid.
-- Abnormal configurations like multiple forwarding tasks using the same port.
-
-**Solution**
-
-- Ensure the local tcp:9222 (or other configured TCP port) on the computer is not occupied.
-- Verify the domain socket still exists on the device.
-- Confirm the process ID in the domain socket name matches the debuggable application's process ID.
+- Ensure that the local TCP port 9222 (or other configured TCP ports) on the computer is not occupied.
+- Ensure that the domain socket on the device side still exists.
+- Ensure that the process ID in the domain socket name matches the process ID of the debugged application.
 - Remove unnecessary forwarding tasks in hdc.
-- After successful forwarding, open http://localhost:9222/json in Chrome (replace 9222 with the actual TCP port used).
+- After successful forwarding, open the URL <http://localhost:9222/json> in the Chrome browser on the computer. Replace 9222 with the actual configured TCP port if different.
 
-    - If the page displays content, port forwarding is successful. Wait for the debuggable page to appear in [Chrome's debugging interface](#wait-for-debuggable-page-to-appear).
+    - If the webpage displays content, it indicates successful port forwarding. Proceed to [wait for the debug target to appear](#waiting-for-the-debug-target-to-appear) in Chrome's debugging page.
 
       ![chrome_localhost](figures/devtools_resources_chrome_localhost.jpg)
 
-    - If an error page appears, port forwarding has failed. Refer to [Port Forwarding Fails](#port-forwarding-fails) for solutions.
+    - If an error page is displayed, it indicates port forwarding failure. Refer to the solutions above under [Port Forwarding Unsuccessful](#port-forwarding-unsuccessful).
 
       ![chrome_localhost_refused](figures/devtools_resources_chrome_localhost_refused.jpg)
 
-- Chrome's http://localhost:9222/json page displays content, but the debugging tool still cannot detect targets.
-    - Ensure the port number in Chrome's debugging tool "Configure" matches the forwarded TCP port.
-    - This document uses TCP port 9222 by default. If another port (e.g., 9223) is used, update both the [port forwarding](#port-forwarding) TCP port and the [Chrome debugging tool "Configure" port](#open-debugging-tool-page-in-chrome-browser).
-```
+- The Chrome browser on the computer successfully opens the <http://localhost:9222/json> page and displays content, but the debug target still cannot be found in Chrome's debugging tool interface.
+    - Ensure that the port number configured in the "Configure" section of Chrome's debugging tool matches the TCP port number specified in the port forwarding settings.
+    - In this document, the default TCP port number used is 9222. If developers use a different TCP port number (e.g., 9223), modify both the TCP port number in [Port Forwarding](#port-forwarding) and the port number in [Chrome Debugging Tool Interface "Configure" Settings](#opening-the-debugging-tool-page-in-chrome-browser).

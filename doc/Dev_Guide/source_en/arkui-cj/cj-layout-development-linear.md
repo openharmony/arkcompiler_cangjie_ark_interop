@@ -2,7 +2,7 @@
 
 ## Overview
 
-Linear Layout (LinearLayout) is the most commonly used layout in development, constructed through linear containers [Row](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-row.md) and [Column](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-column.md). Linear layout serves as the foundation for other layouts, with its child elements arranged sequentially in linear directions (horizontal and vertical). The arrangement direction of a linear layout is determined by the selected container component: child elements in a Column container are arranged vertically, while those in a Row container are arranged horizontally. Depending on the arrangement direction, developers can choose to use either Row or Column containers to create a linear layout.
+Linear Layout (LinearLayout) is the most commonly used layout in development, constructed through linear containers [Row](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-row.md) and [Column](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-column.md). Linear layout serves as the foundation for other layouts, with its child elements arranged sequentially along a linear direction (horizontal and vertical). The arrangement direction of a linear layout is determined by the selected container component: child elements within a Column container are arranged vertically, while those within a Row container are arranged horizontally. Depending on the desired arrangement direction, developers can choose to use either Row or Column containers to create a linear layout.
 
 **Figure 1** Illustration of Child Element Arrangement in a Column Container
 
@@ -16,50 +16,96 @@ Linear Layout (LinearLayout) is the most commonly used layout in development, co
 
 - **Layout Container**: A component container with layout capabilities that can host other elements as its children. The layout container calculates dimensions and arranges its child elements.
 
-- **Layout Child Element**: Elements inside a layout container.
+- **Layout Child Element**: Elements contained within a layout container.
 
-- **Main Axis**: The axis along the layout direction of a linear layout container, where child elements are arranged by default. The main axis of a Row container is horizontal, while that of a Column container is vertical.
+- **Main Axis**: The axis along the layout direction of a linear layout container, where child elements are arranged by default. For a Row container, the main axis is horizontal; for a Column container, it is vertical.
 
-- **Cross Axis**: The axis perpendicular to the main axis. The cross axis of a Row container is vertical, while that of a Column container is horizontal.
+- **Cross Axis**: The axis perpendicular to the main axis. For a Row container, the cross axis is vertical; for a Column container, it is horizontal.
 
-- **Spacing**: The spacing between child elements in the layout.
+- **Spacing**: The spacing between child elements in a layout.
 
-## Spacing Between Child Elements in the Arrangement Direction
+## Spacing Between Child Elements Along the Arrangement Direction
 
-Within a layout container, the `space` property can be used to set the spacing between child elements in the arrangement direction, ensuring equal spacing between them.
+Within a layout container, the `space` property can be used to set the spacing between child elements along the arrangement direction, ensuring equal spacing between them.
 
-### Spacing in the Arrangement Direction Within a Column Container
+### Spacing Along the Arrangement Direction in a Column Container
 
-**Figure 3** Spacing Diagram in the Arrangement Direction Within a Column Container
+**Figure 3** Spacing Diagram Along the Arrangement Direction in a Column Container
 
 ![arrangement-direction-column](figures/arrangement-direction-column.png)
 
-### Spacing in the Arrangement Direction Within a Row Container
+ <!-- run -->
 
-**Figure 4** Spacing Diagram in the Arrangement Direction Within a Row Container
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    func build() {
+        Column(space: 20) {
+            Text('space: 20').fontSize(15).fontColor(Color.Gray).width(90.percent)
+            Row().width(90.percent).height(50).backgroundColor(0xF5DEB3)
+            Row().width(90.percent).height(50).backgroundColor(0xD2B48C)
+            Row().width(90.percent).height(50).backgroundColor(0xF5DEB3)
+        }.width(100.percent)
+    }
+}
+```
+
+![arrangement-direction-column01](figures/arrangement-direction-column01.PNG)
+
+### Spacing Along the Arrangement Direction in a Row Container
+
+**Figure 4** Spacing Diagram Along the Arrangement Direction in a Row Container
 
 ![arrangement-direction-row](figures/arrangement-direction-row.png)
 
+ <!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    func build() {
+        Row(space: 35) {
+            Text('space: 35').fontSize(15).fontColor(Color.Gray)
+            Row().width(10.percent).height(150).backgroundColor(0xF5DEB3)
+            Row().width(10.percent).height(150).backgroundColor(0xD2B48C)
+            Row().width(10.percent).height(150).backgroundColor(0xF5DEB3)
+        }.width(90.percent)
+    }
+}
+```
+
+![image01](figures/image01.PNG)
+
 ## Alignment of Child Elements Along the Cross Axis
 
-Within a layout container, the `alignItems` property can be used to set the alignment of child elements along the cross axis (perpendicular to the arrangement direction). This behavior remains consistent across screens of various sizes. When the cross axis is vertical, the alignment is of type [VerticalAlign](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-verticalalign); when horizontal, it is of type [HorizontalAlign](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-horizontalalign).
+Within a layout container, the `alignItems` property can be used to set the alignment of child elements along the cross axis (perpendicular to the arrangement direction). This behavior remains consistent across screens of different sizes. For a vertical cross axis, the alignment is specified using the [VerticalAlign](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-verticalalign) type; for a horizontal cross axis, the [HorizontalAlign](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-horizontalalign) type is used.
 
 The `alignSelf` property controls the alignment of a single child element along the container's cross axis and takes precedence over the `alignItems` property. If `alignSelf` is set, it overrides `alignItems` for that specific child element.
 
-### Horizontal Arrangement of Child Elements Within a Column Container
+### Horizontal Alignment of Child Elements in a Column Container
 
-**Figure 5** Illustration of Horizontal Arrangement of Child Elements Within a Column Container
+**Figure 5** Horizontal Alignment Diagram of Child Elements in a Column Container
 
 ![horizontal-arrangement-child-column](figures/horizontal-arrangement-child-column.png)
 
 - **HorizontalAlign.Start**: Child elements are left-aligned horizontally.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -81,12 +127,12 @@ The `alignSelf` property controls the alignment of a single child element along 
 
 - **HorizontalAlign.Center**: Child elements are center-aligned horizontally.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -108,12 +154,12 @@ The `alignSelf` property controls the alignment of a single child element along 
 
 - **HorizontalAlign.End**: Child elements are right-aligned horizontally.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -133,20 +179,20 @@ The `alignSelf` property controls the alignment of a single child element along 
 
   ![Column3](figures/Column3.PNG)
 
-### Vertical Arrangement of Child Elements Within a Row Container
+### Vertical Alignment of Child Elements in a Row Container
 
-**Figure 6** Illustration of Vertical Arrangement of Child Elements Within a Row Container
+**Figure 6** Vertical Alignment Diagram of Child Elements in a Row Container
 
 ![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
 
 - **VerticalAlign.Top**: Child elements are top-aligned vertically.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -168,12 +214,12 @@ The `alignSelf` property controls the alignment of a single child element along 
 
 - **VerticalAlign.Center**: Child elements are center-aligned vertically.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -190,17 +236,17 @@ The `alignSelf` property controls the alignment of a single child element along 
       }
   }
   ```
-
+  
   ![Column5](figures/Column5.PNG)
 
 - **VerticalAlign.Bottom**: Child elements are bottom-aligned vertically.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -220,24 +266,24 @@ The `alignSelf` property controls the alignment of a single child element along 
 
   ![Column6](figures/Column6.PNG)
 
-## Arrangement of Child Elements Along the Main Axis
+## Alignment of Child Elements Along the Main Axis in Layout
 
-Within a layout container, the `justifyContent` property can be used to set the arrangement of child elements along the main axis. Child elements can be arranged starting from the beginning of the main axis, from the end, or with equal spacing dividing the main axis space.
+Within a layout container, the `justifyContent` property can be used to set the alignment of child elements along the container's main axis. Elements can be aligned starting from the beginning of the main axis, from the end of the main axis, or by evenly distributing the space along the main axis.
 
-### Vertical Arrangement of Child Elements Within a Column Container
+### Vertical Alignment of Child Elements in a Column Container
 
-**Figure 7** Illustration of Vertical Arrangement of Child Elements Within a Column Container
+**Figure 7** Vertical Alignment of Child Elements in a Column Container
 
 ![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
 
-- **justifyContent(FlexAlign.Start)**: Elements are aligned at the start of the vertical direction, with the first element aligned to the top and subsequent elements aligned to the previous one.
+- `justifyContent(FlexAlign.Start)`: Elements are aligned at the start of the vertical direction, with the first element aligned to the top of the container and subsequent elements aligned to the previous one.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -257,14 +303,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column7](figures/Column7.PNG)
 
-- **justifyContent(FlexAlign.Center)**: Elements are center-aligned vertically, with the distance from the first element to the top equal to the distance from the last element to the bottom.
+- `justifyContent(FlexAlign.Center)`: Elements are center-aligned in the vertical direction, with the distance from the first element to the top of the container equal to the distance from the last element to the bottom.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -284,14 +330,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column8](figures/Column8.PNG)
 
-- **justifyContent(FlexAlign.End)**: Elements are aligned at the end of the vertical direction, with the last element aligned to the bottom and other elements aligned to the next one.
+- `justifyContent(FlexAlign.End)`: Elements are aligned at the end of the vertical direction, with the last element aligned to the bottom of the container and other elements aligned to the next one.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -311,14 +357,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column9](figures/Column9.PNG)
 
-- justifyContent(FlexAlign.SpaceBetween): Evenly distributes elements vertically with equal spacing between adjacent elements. The first element aligns with the container start, and the last element aligns with the container end.
+- `justifyContent(FlexAlign.SpaceBetween)`: Elements are evenly distributed along the vertical direction, with equal spacing between adjacent elements. The first element is aligned to the top, and the last element is aligned to the bottom.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -338,14 +384,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column10](figures/Column10.PNG)
 
-- justifyContent(FlexAlign.SpaceAround): Evenly distributes elements vertically with equal spacing between adjacent elements. The spacing between the first element and container start (or last element and container end) is half of the inter-element spacing.
+- `justifyContent(FlexAlign.SpaceAround)`: Elements are evenly distributed along the vertical direction, with equal spacing between adjacent elements. The spacing from the first element to the top and the last element to the bottom is half the spacing between adjacent elements.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -365,14 +411,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column11](figures/Column11.PNG)
 
-- justifyContent(FlexAlign.SpaceEvenly): Evenly distributes elements vertically with identical spacing between all elements, including between the first/last elements and container edges.
+- `justifyContent(FlexAlign.SpaceEvenly)`: Elements are evenly distributed along the vertical direction, with equal spacing between adjacent elements, as well as equal spacing from the first element to the top and the last element to the bottom.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -392,20 +438,20 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column12](figures/Column12.PNG)
 
-### Horizontal Arrangement of Child Elements in Row Container
+### Horizontal Alignment of Child Elements in a Row Container
 
-**Figure 8** Horizontal arrangement of child elements in Row container
+**Figure 8** Horizontal Alignment of Child Elements in a Row Container
 
 ![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
 
-- justifyContent(FlexAlign.Start): Elements align horizontally at the start. The first element aligns with container start, subsequent elements align with preceding ones.
+- `justifyContent(FlexAlign.Start)`: Elements are aligned at the start of the horizontal direction, with the first element aligned to the left of the container and subsequent elements aligned to the previous one.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -425,14 +471,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column13](figures/Column13.PNG)
 
-- justifyContent(FlexAlign.Center): Elements center horizontally. The distance from first element to container start equals the distance from last element to container end.
+- `justifyContent(FlexAlign.Center)`: Elements are center-aligned in the horizontal direction, with the distance from the first element to the left of the container equal to the distance from the last element to the right.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -452,14 +498,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column14](figures/Column14.PNG)
 
-- justifyContent(FlexAlign.End): Elements align horizontally at the end. The last element aligns with container end, others align with succeeding ones.
+- `justifyContent(F FlexAlign.End)`: Elements are aligned at the end of the horizontal direction, with the last element aligned to the right of the container and other elements aligned to the next one.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -479,14 +525,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column15](figures/Column15.PNG)
 
-- justifyContent(FlexAlign.SpaceBetween): Evenly distributes elements horizontally with equal spacing between adjacent elements. First element aligns with container start, last with container end.
+- `justifyContent(FlexAlign.SpaceBetween)`: Elements are evenly distributed along the horizontal direction, with equal spacing between adjacent elements. The first element is aligned to the left, and the last element is aligned to the right.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -506,14 +552,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column16](figures/Column16.PNG)
 
-- justifyContent(FlexAlign.SpaceAround): Evenly distributes elements horizontally with equal spacing between adjacent elements. Spacing between first/last elements and container edges is half of inter-element spacing.
+- `justifyContent(FlexAlign.SpaceAround)`: Elements are evenly distributed along the horizontal direction, with equal spacing between adjacent elements. The spacing from the first element to the left and the last element to the right is half the spacing between adjacent elements.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -533,14 +579,14 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
   ![Column17](figures/Column17.PNG)
 
-- justifyContent(FlexAlign.SpaceEvenly): Evenly distributes elements horizontally with identical spacing between all elements, including between first/last elements and container edges.
+- `justifyContent(FlexAlign.SpaceEvenly)`: Elements are evenly distributed along the horizontal direction, with equal spacing between adjacent elements, as well as equal spacing from the first element to the left and the last element to the right.
 
-  <!-- run -->
+     <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
-  import kit.UIKit.*
-  import ohos.state_macro_manage.*
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
 
   @Entry
   @Component
@@ -559,4 +605,255 @@ Within a layout container, the `justifyContent` property can be used to set the 
   ```
 
   ![Column18](figures/Column18.PNG)
-  
+
+## Adaptive Stretching
+
+In linear layouts, the [Blank](../../../API_Reference/source_en/arkui-cj/cj-blank-divider-blank.md) component is commonly used to automatically fill blank space along the main axis of the container, achieving an adaptive stretching effect. When Row and Column serve as containers, simply setting width and height as percentages will create an adaptive effect when screen dimensions change.
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    func build() {
+        Column(){
+            Row() {
+                Text('Bluetooth').fontSize(18)
+                Blank()
+                Toggle(ToggleType.Switch,isOn: true)
+            }.backgroundColor(0xFFFFFF).borderRadius(15).padding(left:12).width(100.percent)
+        }.backgroundColor(0xEFEFEF).padding(20).width(100.percent)
+    }
+}
+```
+
+**Figure 9** Vertical Screen with Adaptive Stretching  
+
+![Column19](figures/Column19.PNG)  
+
+**Figure 10** Horizontal Screen with Adaptive Stretching  
+
+![Column20](figures/Column20.png)  
+
+## Adaptive Scaling  
+
+Adaptive scaling refers to child elements automatically adjusting their dimensions proportionally based on the container's size changes, accommodating devices of various sizes. In linear layouts, the following two methods can achieve adaptive scaling:  
+
+- **Using the `layoutWeight` Property**: When the parent container's dimensions are fixed, the `layoutWeight` property can be set for child elements to distribute remaining space along the main axis, ignoring their original size settings. This ensures they adaptively fill the available space on any device.  
+
+    <!-- run -->
+
+  ```cangjie
+  package ohos_app_cangjie_entry
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
+
+  @Entry
+  @Component
+  class EntryView {
+      func build() {
+          Column() {
+              Text('1:2:3').width(100.percent)
+              Row() {
+                  Column() {
+                      Text('layoutWeight(1)').textAlign(TextAlign.Center)
+                  }
+                  .layoutWeight(1)
+                  .backgroundColor(0xF5DEB3)
+                  .height(100.percent)
+                  Column() {
+                      Text('layoutWeight(2)').textAlign(TextAlign.Center)
+                  }
+                  .layoutWeight(2)
+                  .backgroundColor(0xD2B48C)
+                  .height(100.percent)
+                  Column() {
+                      Text('layoutWeight(3)').textAlign(TextAlign.Center)
+                  }
+                  .layoutWeight(3)
+                  .backgroundColor(0xF5DEB3)
+                  .height(100.percent)
+              }
+              .backgroundColor(0xffd306)
+              .height(30.percent)
+              Text('2:5:3').width(100.percent)
+              Row() {
+                  Column() {
+                      Text('layoutWeight(2)').textAlign(TextAlign.Center)
+                  }
+                  .layoutWeight(2)
+                  .backgroundColor(0xF5DEB3)
+                  .height(100.percent)
+                  Column() {
+                      Text('layoutWeight(5)').textAlign(TextAlign.Center)
+                  }
+                  .layoutWeight(5)
+                  .backgroundColor(0xD2B48C)
+                  .height(100.percent)
+                  Column() {
+                      Text('layoutWeight(3)').textAlign(TextAlign.Center)
+                  }
+                  .layoutWeight(3)
+                  .backgroundColor(0xF5DEB3)
+                  .height(100.percent)
+              }
+              .backgroundColor(0xffd306)
+              .height(30.percent)
+          }
+      }
+  }
+  ```
+
+  **Figure 11** Horizontal Screen with `layoutWeight` in Custom Scaling  
+
+  ![Column21](figures/Column21.png)  
+
+  **Figure 12** Vertical Screen with `layoutWeight` in Custom Scaling  
+
+  ![Column22](figures/Column22.png)  
+
+- **Using Percentage-Based Width**: When the parent container's dimensions are fixed, setting child elements' widths as percentages ensures they maintain a fixed proportional layout across devices.  
+
+    <!-- run -->
+
+  ```cangjie
+  package ohos_app_cangjie_entry
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
+
+  @Entry
+  @Component
+  class EntryView {
+      func build() {
+          Column() {
+              Row() {
+                  Column() {
+                      Text('left width 20%').textAlign(TextAlign.Center)
+                  }
+                  .width(20.percent)
+                  .backgroundColor(0xF5DEB3)
+                  .height(100.percent)
+                  Column() {
+                      Text('center width 50%').textAlign(TextAlign.Center)
+                  }
+                  .width(50.percent)
+                  .backgroundColor(0xD2B48C)
+                  .height(100.percent)
+                  Column() {
+                      Text('right width 30%').textAlign(TextAlign.Center)
+                  }
+                  .width(30.percent)
+                  .backgroundColor(0xF5DEB3)
+                  .height(100.percent)
+              }
+              .backgroundColor(0xffd306)
+              .height(30.percent)
+          }
+      }
+  }
+  ```
+
+  **Figure 13** Horizontal Screen with Percentage-Based Scaling  
+
+  ![Column23](figures/Column23.png)  
+
+  **Figure 14** Vertical Screen with Percentage-Based Scaling  
+
+  ![Column24](figures/Column24.png)  
+
+## Adaptive Extension  
+
+Adaptive extension refers to scenarios where content exceeds the screen size and requires scrolling for full visibility. This is applicable in linear layouts where content cannot fit entirely on one screen. Two common implementation methods are:  
+
+- **[Adding Scrollbars to Lists](cj-layout-development-create-list.md)**: When a List contains too many items to display on one screen, each item can be placed in separate components and scrolled through. The `scrollBar` property can be used to control the scrollbar's persistent state.  
+
+- **Using the Scroll Component**: In linear layouts, developers can arrange content vertically or horizontally. When content overflows, wrapping Column or Row components with a Scroll container enables scrollable layouts.  
+
+  **Vertical Layout with Scroll Component**:  
+
+    <!-- run -->
+
+  ```cangjie
+  package ohos_app_cangjie_entry
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
+
+  @Entry
+  @Component
+  class EntryView {
+      let scroller: Scroller = Scroller()
+      private var arr: Array<Int64> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      func build() {
+          Scroll(this.scroller) {
+              Column() {
+                  ForEach(this.arr,itemGeneratorFunc: {
+                      item: Int64, idx: Int64 => Text(item.toString())
+                          .width(90.percent)
+                          .height(150)
+                          .backgroundColor(0xFFFFFF)
+                          .borderRadius(15)
+                          .fontSize(16)
+                          .textAlign(TextAlign.Center)
+                          .margin(top: 10)
+                      },
+                      keyGeneratorFunc: {item: Int64, idx: Int64 => idx.toString()}
+                  )
+              }.width(100.percent)
+          }
+          .backgroundColor(0xDCDCDC)
+          .scrollable(ScrollDirection.Vertical) // Vertical scrolling direction
+          .scrollBar(BarState.On) // Persistent scrollbar
+          .scrollBarColor(Color.Gray) // Scrollbar color
+          .scrollBarWidth(8.vp) // Scrollbar width
+      }
+  }
+  ```
+
+  ![Column25](figures/Column25.gif)  
+
+  **Horizontal Layout with Scroll Component**:  
+
+    <!-- run -->
+
+  ```cangjie
+  package ohos_app_cangjie_entry
+  import kit.ArkUI.*
+  import ohos.arkui.state_macro_manage.*
+
+  @Entry
+  @Component
+  class EntryView {
+      let scroller: Scroller = Scroller()
+      private var arr: Array<Int64> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      func build() {
+          Scroll(this.scroller) {
+              Row() {
+                  ForEach(this.arr,itemGeneratorFunc: {
+                      item: Int64, idx: Int64 =>
+                      Text(item.toString())
+                          .width(150)
+                          .height(90.percent)
+                          .backgroundColor(0xFFFFFF)
+                          .borderRadius(15)
+                          .fontSize(16)
+                          .textAlign(TextAlign.Center)
+                          .margin(left: 10)
+                      }
+                  )
+              }.height(100.percent)
+          }
+          .backgroundColor(0xDCDCDC)
+          .scrollable(ScrollDirection.Horizontal) // Horizontal scrolling direction
+          .scrollBar(BarState.On) // Persistent scrollbar
+          .scrollBarColor(Color.Gray) // Scrollbar color
+          .scrollBarWidth(8.vp) // Scrollbar width
+      }
+  }
+  ```
+
+  ![Column26](figures/Column26.gif)
