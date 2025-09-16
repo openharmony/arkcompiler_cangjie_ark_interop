@@ -603,7 +603,7 @@ public func forEachUpdateFunction<T>(
 |elmtId|Int64|是|-|-|
 |arr|[CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|-|
 |itemGenFunc|(T,Int64)->Unit|是|-|**命名参数。** -|
-|keyGeneratorFunc|(T,Int64)->String|否|{ realData: T, idx: Int64 => match(realData) { case realDataStr: ToString => idx.toString() + "_" + realDataStr.toString() case _ => idx.toString() } }|**命名参数。** -|
+|keyGeneratorFunc|(T,Int64)->String|否|{ realData: T, idx: Int64 => match(realData) { case realDataStr: ToString => idx.toString() + "_" + realDataStr.toString() <br>case _ => idx.toString() } }|**命名参数。** -|
 
 ### func forceCompleteRerender(Bool)
 

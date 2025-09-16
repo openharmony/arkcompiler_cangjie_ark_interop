@@ -30,7 +30,7 @@ public init(value: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|图片的数据源，支持本地图片和网络图片。<br/>支持的图片格式包括png、jpg、bmp、svg、gif和heif。|
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片的数据源，支持本地图片和网络图片。<br/>支持的图片格式包括png、jpg、bmp、svg、gif和heif。|
 
 ### init(PixelMap)
 
