@@ -1,0 +1,48 @@
+{
+  "float": [
+    {
+      "name": "float_size_5",
+      "value": "5.0"
+    },
+    {
+      "name": "float_size_10",
+      "value": "10.0"
+    },
+    {
+      "name": "float_size_15",
+      "value": "15.0"
+    },
+    {
+      "name": "float_size_20",
+      "value": "20.0"
+    },
+    {
+      "name": "float_size_30",
+      "value": "30.0"
+    },
+    {
+      "name": "float_size_50",
+      "value": "50.0"
+    },
+    {
+      "name": "float_size_60",
+      "value": "60.0"
+    },
+    {
+      "name": "float_size_80",
+      "value": "80.0"
+    },
+    {
+      "name": "float_size_100",
+      "value": "100.0"
+    },
+    {
+      "name": "float_size_150",
+      "value": "150.0"
+    },
+    {
+      "name": "float_size_200",
+      "value": "200.0"
+    }
+  ]
+}

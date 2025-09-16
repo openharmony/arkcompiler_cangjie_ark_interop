@@ -1,0 +1,20 @@
+{
+  "color": [
+    {
+      "name": "color_1",
+      "value": "#ff0000"
+    },
+    {
+      "name": "color_hello",
+      "value": "#ffff0000"
+    },
+    {
+      "name": "color_world",
+      "value": "#ff0000ff"
+    },
+    {
+      "name": "color_arkui",
+      "value": "#ffffff00"
+    }
+  ]
+}

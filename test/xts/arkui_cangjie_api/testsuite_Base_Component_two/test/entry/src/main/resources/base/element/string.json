@@ -1,0 +1,92 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "alphabetIndexerStr1",
+      "value": "16.vp"
+    },
+    {
+      "name": "alphabetIndexerStr2",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "alphabetIndexerStr3",
+      "value": "30.vp"
+    },
+    {
+      "name": "alphabetIndexerStr4",
+      "value": "10.vp"
+    },
+    {
+      "name": "contentName",
+      "value": "菜单选项"
+    },
+    {
+      "name": "zeroName",
+      "value": "000"
+    },
+    {
+      "name": "emptyName",
+      "value": " "
+    },
+    {
+      "name": "headerName",
+      "value": "小标题"
+    },
+    {
+      "name": "family_desc",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "size_desc",
+      "value": "20.vp"
+    },
+    {
+      "name": "contentName1",
+      "value": "菜单"
+    },
+    {
+      "name": "test_button",
+      "value": "Test_button2"
+    },
+    {
+      "name": "test_boolean",
+      "value": "true"
+    },
+    {
+      "name": "test_Arial",
+      "value": "Arial"
+    },
+    {
+      "name": "menuItemGroup_header",
+      "value": "小标题2"
+    },
+    {
+      "name": "menuItemGroup_footer",
+      "value": "Test"
+    },
+    {
+      "name": "QRCode_contentOpacity",
+      "value": "0.2"
+    },
+    {
+      "name": "textArea_Font",
+      "value": "20.fp"
+    },
+    {
+      "name": "textArea_placeholder",
+      "value": "TextArea onSubmit"
+    }
+  ]
+}

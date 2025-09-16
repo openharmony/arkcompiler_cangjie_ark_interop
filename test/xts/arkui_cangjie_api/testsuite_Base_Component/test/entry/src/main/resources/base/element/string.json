@@ -1,0 +1,44 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "contentName",
+      "value": "菜单选项"
+    },
+    {
+      "name": "zeroName",
+      "value": "000"
+    },
+    {
+      "name": "emptyName",
+      "value": " "
+    },
+    {
+      "name": "headerName",
+      "value": "小标题"
+    },
+    {
+      "name": "family_desc",
+      "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "size_desc",
+      "value": "20.vp"
+    },
+    {
+      "name": "contentName1",
+      "value": "菜单"
+    }
+  ]
+}
