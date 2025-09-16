@@ -41,8 +41,6 @@ protected func getUniversalErrorMsg(code: Int32): ?String {
  */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true
 ]
 public class BusinessException <: Exception {
@@ -74,20 +72,12 @@ public class BusinessException <: Exception {
         }
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init(code: Int32, msg: String, data!: ?Any = None) {
+    protected init(code: Int32, msg: String, data!: ?Any = None) {
         super(msg)
         this.code = code
         this.errData = data
     }
 
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
     protected override func getClassName(): String {
         "BusinessException"
     }
