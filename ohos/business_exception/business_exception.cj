@@ -41,11 +41,9 @@ protected func getUniversalErrorMsg(code: Int32): ?String {
  */
 @!APILevel[
     21,
-    atomicservice: true,
-    crossplatform: true,
     stagemodelonly: true
 ]
-public open class BusinessException <: Exception {
+public class BusinessException <: Exception {
     /**
      * Defines the basic error code.
      */
@@ -54,23 +52,32 @@ public open class BusinessException <: Exception {
         stagemodelonly: true
     ]
     public let code: Int32
+
+    private var errData: ?Any
+
+    /**
+     * Defines the additional information for business
+     *
+     * @relation data?: T
+     */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true
     ]
-    public init(code: Int32, msg: String) {
-        super(msg)
-        this.code = code
+    public func getData<T>(): ?T {
+        if (let Some(v) <- errData) {
+            return v as T
+        } else {
+            return None
+        }
     }
 
-    @!APILevel[
-        21,
-        atomicservice: true,
-        crossplatform: true,
-        stagemodelonly: true
-    ]
+    protected init(code: Int32, msg: String, data!: ?Any = None) {
+        super(msg)
+        this.code = code
+        this.errData = data
+    }
+
     protected override func getClassName(): String {
         "BusinessException"
     }
@@ -80,43 +87,15 @@ public open class BusinessException <: Exception {
      */
     @!APILevel[
         21,
-        atomicservice: true,
-        crossplatform: true,
         stagemodelonly: true
     ]
-    public open func toString(): String {
+    public func toString(): String {
         let className: String = getClassName()
         let message: String = this.message
         if (message.isEmpty()) {
             return "${className}:  errorcode: ${code}"
         }
         return "${className}: errorcode: ${code}, message: ${message}"
-    }
-}
-
-/**
- * Defines the error interface.
- */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
-public class BusinessError<T> <: BusinessException {
-    /**
-     * Defines the additional information for business
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public var data: T
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
-    public init (data: T, code: Int32, msg: String) {
-        super(code, msg)
-        this.data = data
     }
 }
 
