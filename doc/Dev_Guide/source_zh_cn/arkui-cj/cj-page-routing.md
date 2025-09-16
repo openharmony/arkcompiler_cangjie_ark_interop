@@ -4,7 +4,7 @@
 
 > **说明：**
 >
-> [组件导航 (Navigation)](./cj-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。
+> [组件导航 (Navigation)](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。
 
 ## 页面跳转
 
@@ -14,7 +14,7 @@
 
 ![页面跳转](./figures/page-router.gif)
 
-Router模块提供了两种跳转模式，分别是[Router.pushUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-pushUrl)和[Router.replaceUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-replaceUrl)。这两种模式决定了目标页面是否会替换当前页。
+Router模块提供了两种跳转模式，分别是[Router.pushUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-pushurl)和[Router.replaceUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-replaceurl)。这两种模式决定了目标页面是否会替换当前页。
 
 - Router.pushUrl：目标页面不会替换当前页，而是压入页面栈。这样可以保留当前页的状态，并且可以通过返回键或者调用[Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)方法返回到当前页。
 

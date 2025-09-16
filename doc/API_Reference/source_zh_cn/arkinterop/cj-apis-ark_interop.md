@@ -18,8 +18,9 @@ sealed interface JSInteropByte {}
 
 如下类型扩展了此接口：
 
-* Byte
-* 
+- Byte
+-
+
 **起始版本：** 21
 
 ## interface JSInteropType
@@ -36,9 +37,9 @@ public interface JSInteropType<T> {
 
 如下类型扩展了此接口：
 
-* 被@Interop[ArkTS]修饰的用户自定义class
+- 被@Interop[ArkTS]修饰的用户自定义class
 
-* 被@Interop[ArkTS]修饰的用户自定义interface
+- 被@Interop[ArkTS]修饰的用户自定义interface
 
 **起始版本：** 21
 
@@ -116,8 +117,8 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 **父类型：**
 
-* ToString
-* ToJSValue
+- ToString
+- ToJSValue
 
 ## interface ToJSValue
 
@@ -1243,7 +1244,7 @@ public class JSArray <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop size
 
@@ -1362,7 +1363,7 @@ public class JSArrayBuffer <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop byteLength
 
@@ -1760,7 +1761,7 @@ public class JSArrayEx<T> <: JSInteropType<JSArrayEx<T>> where T <: JSInteropTyp
 
 **父类型：**
 
-* [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
+- [JSInteropType\<JSArrayEx\<T>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -2013,7 +2014,7 @@ public class JSBigInt <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func toBigInt()
 
@@ -2043,7 +2044,7 @@ public class JSClass <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### prop prototype
 
@@ -3315,7 +3316,7 @@ JSExternal的目标是传递一个仓颉对象的强引用到ArkTS运行时，�
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func cast\<T>() where T <: SharedObject
 
@@ -3400,7 +3401,7 @@ public class JSFunction <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func call(JSValue)
 
@@ -3518,7 +3519,7 @@ public class JSHashMapEx<K, V> <: JSInteropType<JSHashMapEx<K,V>> where K <: JSK
 
 **父类型：**
 
-* [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
+- [JSInteropType\<JSHashMapEx\<K,V>>](#interface-jsinteroptype)
 
 ### prop size
 
@@ -4100,7 +4101,7 @@ public class JSObject <: JSObjectBase {}
 
 **父类型：**
 
-* [JSObjectBase](#class-jsobjectbase)
+- [JSObjectBase](#class-jsobjectbase)
 
 ## class JSObjectBase
 
@@ -4114,7 +4115,7 @@ sealed abstract class JSObjectBase <: JSHeapObject {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func attachCJObject(JSExternal)
 
@@ -4577,7 +4578,7 @@ JSPromise的生命周期超过引用的 ArkTS 对象。
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
+- [JSHeapObject](#class-jsheapobject)
 
 ### func catchError(JSFunction)
 
@@ -4821,9 +4822,9 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
-* ToString
-* [JSKeyable](#interface-jskeyable)
+- [JSHeapObject](#class-jsheapobject)
+- ToString
+- [JSKeyable](#interface-jskeyable)
 
 ### func toJSValue(JSContext)
 
@@ -4905,9 +4906,9 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 
 **父类型：**
 
-* [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
-* Equatable\<JSStringEx>
-* ToString
+- [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
+- Equatable\<JSStringEx>
+- ToString
 
 ### init(String)
 
@@ -5058,8 +5059,8 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 
 **父类型：**
 
-* [JSHeapObject](#class-jsheapobject)
-* [JSKeyable](#interface-jskeyable)
+- [JSHeapObject](#class-jsheapobject)
+- [JSKeyable](#interface-jskeyable)
 
 ### prop description
 
@@ -6767,11 +6768,11 @@ public class Utf16String <: ToString & Equatable<Utf16String> & Hashable & JSKey
 
 **父类型：**
 
-* ToString
-* Equatable\<Utf16String>
-* Hashable
-* [JSKeyable](#interface-jskeyable)
-* [JSInteropType\<Utf16String>](#interface-jsinteroptype)
+- ToString
+- Equatable\<Utf16String>
+- Hashable
+- [JSKeyable](#interface-jskeyable)
+- [JSInteropType\<Utf16String>](#interface-jsinteroptype)
 
 ### prop accessible
 

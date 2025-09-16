@@ -91,7 +91,7 @@ public var title: ResourceStr
 
 **功能：** 操作菜单的标题。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -120,7 +120,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|''|操作菜单的标题。|
+|title|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|''|操作菜单的标题。|
 |buttons|Array\<[ButtonInfo](#class-buttoninfo)>|是|-|菜单中菜单项按钮的数组，结构为：ButtonInfo("button",Color.BLACK)，支持1-6个按钮。按钮数量大于6个时，仅显示前6个按钮，之后的按钮不显示。|
 |showInSubWindow|Bool|否|false|某弹框需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认弹窗显示在应用内，而非独立子窗口。<br>**说明：** <br> - showInSubWindow 为 true 的弹窗无法触发显示另一个 showInSubWindow 为 true 的弹窗。|
 |isModal|Bool|否|true|弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。默认弹窗有蒙层。|
@@ -515,7 +515,7 @@ public var text: ResourceStr
 
 **功能：** 表示按钮文本内容。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -539,7 +539,7 @@ public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|text|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|按钮文本内容。|
+|text|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|按钮文本内容。|
 |color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|按钮文本颜色。|
 |primary|Bool|否|false|在弹窗获焦且未进行tab键走焦时，按钮是否默认响应Enter键。|
 
@@ -1125,7 +1125,7 @@ public var message: ResourceStr
 
 **功能：** 表示对话框的消息内容。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1189,7 +1189,7 @@ public var title: ResourceStr
 
 **功能：** 表示对话框的标题。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1227,8 +1227,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|''|对话框的标题文本。|
-|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|''|对话框的消息内容文本。|
+|title|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|''|对话框的标题文本。|
+|message|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|''|对话框的消息内容文本。|
 |buttons|Array\<[ButtonInfo](#class-buttoninfo)>|否|[]|对话框中按钮的数组，支持1-3个按钮。|
 |alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default|弹窗在竖直方向上的对齐方式。|
 |offset|[Offset](./cj-apis-componentutils.md#class-offset)|否|Offset(0.vp, 0.vp)|弹窗相对alignment所在位置的偏移量。|
@@ -1400,7 +1400,7 @@ public var message: ResourceStr
 
 **功能：** 表示文本提示框的消息内容。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1501,7 +1501,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|显示的文本信息。|
+|message|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|显示的文本信息。|
 |duration|UInt32|否|1500|弹窗持续时间，取值区间：1500ms-10000ms。若小于1500ms则取默认值，若大于10000ms则取上限值10000ms。|
 |bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|80.vp|设置弹窗底部边框距离导航条的高度。|
 |showMode|[ToastShowMode](#enum-toastshowmode)|否|ToastShowMode.Default|设置弹窗是否显示在应用之上。默认显示在应用内。|

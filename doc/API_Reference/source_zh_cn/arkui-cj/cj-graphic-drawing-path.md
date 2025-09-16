@@ -66,7 +66,7 @@ public init(width!: Length, height!: Length, commands!: ResourceStr = "")
 public func commands(commands: ResourceStr): This
 ```
 
-**功能：** 设置符合[SVG路径描述规范](#svg路径描述规范)的命令字符串，单位为px。像素单位转换方法请参考[像素单位转换](./cj-common-types.md#像素单位转换)。
+**功能：** 设置符合[SVG路径描述规范](#svg路径描述规范)的命令字符串，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +109,7 @@ public class PathShape <: BaseShape {
 
 **父类型：**
 
-- [BaseShape](./cj-graphic-drawing-common.md#class-baseshape)
+- [BaseShape](./cj-graphic-drawing-shape.md#class-baseshape)
 
 #### init(ResourceStr)
 
@@ -127,7 +127,7 @@ public init(commands!: ResourceStr = "")
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|commands|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
+|commands|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
 
 #### init(Length, Length, ResourceStr)
 
@@ -147,7 +147,7 @@ public init(width!: Length, height!: Length, commands!: ResourceStr = "")
 |:---|:---|:---|:---|:---|
 |width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
 |height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 路径所在矩形的高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
-|commands|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
+|commands|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。** 路径绘制的命令字符串。|
 
 ## SVG路径描述规范
 

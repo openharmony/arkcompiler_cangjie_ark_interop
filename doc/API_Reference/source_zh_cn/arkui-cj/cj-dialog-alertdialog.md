@@ -143,7 +143,7 @@ public var value: ResourceStr
 
 **功能：** 点击Button是否响应。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -178,7 +178,7 @@ public init(
 |enabled|Bool|否|true| **命名参数。**  点击Button是否响应。 |
 |defaultFocus|Bool|否|false| **命名参数。**  设置Button是否是默认焦点。 |
 |style|DialogButtonStyle|否|DialogButtonStyle.Default| **命名参数。**  设置Button的风格样式。 |
-|value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。**  Button的文本内容。 |
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| **命名参数。**  Button的文本内容。 |
 |fontColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None| **命名参数。**  Button的文本颜色。 |
 |backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None| **命名参数。**  Button背景颜色。 |
 |action|VoidCallback|是|-| **命名参数。**  Button选中时的回调。 |
@@ -255,7 +255,7 @@ public init(
 |enabled|Bool|否|true| **命名参数。**  点击Button是否响应。 |
 |defaultFocus|Bool|否|false| **命名参数。**  设置Button是否是默认焦点。 |
 |style|DialogButtonStyle|否|DialogButtonStyle.Default| **命名参数。**  设置Button的风格样式。 |
-|value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。**  Button的文本内容。 |
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| **命名参数。**  Button的文本内容。 |
 |fontColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None| **命名参数。**  Button的文本颜色。 |
 |backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None| **命名参数。**  Button背景颜色。 |
 |action|VoidCallback|是|-| **命名参数。**  Button选中时的回调。 |
@@ -539,7 +539,7 @@ public var message: ResourceStr
 
 **功能：** 弹窗内容。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -603,7 +603,7 @@ public var subtitle: ResourceStr
 
 **功能：** 弹窗副标题。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -651,7 +651,7 @@ public var title: ResourceStr
 
 **功能：** 弹窗标题。
 
-**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
+**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -731,9 +731,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
-|subtitle|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
-|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|  弹窗内容。  |
+|title|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
+|subtitle|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
+|message|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|  弹窗内容。  |
 |autoCancel|Bool|否|true| **命名参数。**  点击遮障层时是否关闭弹窗。true表示关闭弹窗,false表示不关闭弹窗。 |
 |cancel|VoidCallback|否|{ => }| **命名参数。**  点击遮障层关闭dialog时的回调。 |
 |alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。**  弹窗在竖直方向上的对齐方式。|
@@ -874,9 +874,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
-|subtitle|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
-|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| 弹窗内容。 |
+|title|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
+|subtitle|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
+|message|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| 弹窗内容。 |
 |autoCancel|Bool|否|true| **命名参数。**  点击遮障层时是否关闭弹窗。true表示关闭弹窗,false表示不关闭弹窗。 |
 |cancel|VoidCallback|否|{ => }| **命名参数。**  点击遮障层关闭dialog时的回调。 |
 |alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。**  弹窗在竖直方向上的对齐方式。|
@@ -1000,9 +1000,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
-|subtitle|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
-|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| 弹窗内容。 |
+|title|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
+|subtitle|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
+|message|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| 弹窗内容。 |
 |autoCancel|Bool|否|true| **命名参数。**  点击遮障层时是否关闭弹窗。true表示关闭弹窗,false表示不关闭弹窗。 |
 |cancel|VoidCallback|否|{ => }| **命名参数。**  点击遮障层关闭dialog时的回调。 |
 |alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。**  弹窗在竖直方向上的对齐方式。|
@@ -1144,9 +1144,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
-|subtitle|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
-|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| 弹窗内容。 |
+|title|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗标题。 |
+|subtitle|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""| **命名参数。**  弹窗副标题。 |
+|message|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| 弹窗内容。 |
 |autoCancel|Bool|否|true| **命名参数。**  点击遮障层时是否关闭弹窗。true表示关闭弹窗,false表示不关闭弹窗。 |
 |cancel|VoidCallback|否|{ => }| **命名参数。**  点击遮障层关闭dialog时的回调。 |
 |alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。**  弹窗在竖直方向上的对齐方式。|

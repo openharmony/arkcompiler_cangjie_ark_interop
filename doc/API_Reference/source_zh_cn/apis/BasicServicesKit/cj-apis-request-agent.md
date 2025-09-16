@@ -667,10 +667,10 @@ public var url: String
 
 public init(action: Action, url: String, title!: ?String = None, description!: String = "",
     mode!: Mode = Mode.Background, overwrite!: Bool = false, method!: ?String = None,
-    headers!: HashMap<String, String> = HashMap<String, String>(), data!: ?ConfigData = None, saveas!: ?String = None,
+    headers!: HashMap<String, String> = HashMap<String, String>(), data!: ?ConfigData = None, saveas!: ?String = "./",
     network!: Network = Network.AnyType, metered!: Bool = false, roaming!: Bool = true, retry!: Bool = true,
     redirect!: Bool = true, index!: UInt32 = 0, begins!: Int64 = 0, ends!: Int64 = -1, gauge!: Bool = false,
-    precise!: Bool = false, token!: String = "", priority!: UInt32 = 0,extras!: HashMap<String, String> = HashMap<String, String>()
+    precise!: Bool = false, token!: ?String = None, priority!: UInt32 = 0,extras!: HashMap<String, String> = HashMap<String, String>()
 )
 ```
 
@@ -693,7 +693,7 @@ public init(action: Action, url: String, title!: ?String = None, description!: S
 |method|?String|否|None| **命名参数。** 上传或下载的HTTP标准方法，包括GET、POST和PUT，不区分大小写。<br>-上传时，使用PUT或POST，默认值为PUT。<br>-下载时，使用GET或POST，默认值为GET。|
 |headers|HashMap\<String,String>|否|HashMap<String,String>()| **命名参数。** 添加要包含在任务中的HTTP协议标志头。<br>-对于上传请求，默认的Content-Type为"multipart/form-data"。<br>-对于下载请求，默认的Content-Type为"application/json"。 |
 |data|?[ConfigData](#enum-configdata)|否|None| **命名参数。** -下载时，data为字符串类型，通常使用json(object将被转换为json文本)，默认为空。<br>-上传时，data是表单项数组Array&lt;FormItem&gt;，默认为空。|
-|saveas|?String|否|None| **命名参数。** 保存下载文件的路径，包括如下几种：<br>-相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br>-internal协议路径，仅支持"internal://cache/"及其子路径，如"internal://cache/path/to/file.txt"。<br>-应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br>-file协议路径，必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。<br>默认为相对路径，即下载至调用方当前缓存路径下。|
+|saveas|?String|否|"./"| **命名参数。** 保存下载文件的路径，包括如下几种：<br>-相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br>-internal协议路径，仅支持"internal://cache/"及其子路径，如"internal://cache/path/to/file.txt"。<br>-应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br>-file协议路径，必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。<br>默认为相对路径，即下载至调用方当前缓存路径下。|
 |network|[Network](#enum-network)|否|Network.AnyType| **命名参数。** 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。|
 |metered|Bool|否|false| **命名参数。** 是否允许在按流量计费的网络中工作，默认为false。<br>-true：是<br>-false：否|
 |roaming|Bool|否|true| **命名参数。** 是否允许在漫游网络中工作，默认为true。<br>-true：是<br>-false：否|
@@ -704,7 +704,7 @@ public init(action: Action, url: String, title!: ?String = None, description!: S
 |ends|Int64|否|- 1| **命名参数。** 文件终点，通常用于断点续传。默认值为-1，取值为闭区间。<br>-下载时，请求读取服务器开始下载文件时的结束位置（http协议中设置"Range"选项）。<br>-上传时，在上传时结束读取。|
 |gauge|Bool|否|false| **命名参数。** 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br>-false：代表仅完成或失败的通知。<br>-true：发出每个进度已完成或失败的通知。|
 |precise|Bool|否|false| **命名参数。** -如果设置为true，在上传/下载无法获取文件大小时任务失败。<br>-如果设置为false，将文件大小设置为-1时任务继续。<br>默认值为false。|
-|token|String|否|""| **命名参数。** 当创建了一个带有token的任务后，token则为正常查询期间必须提供的，否则将无法通过查询进行检索。其最小为8个字节，最大为2048个字节。默认为空。|
+|token|?String|否|None| **命名参数。** 当创建了一个带有token的任务后，token则为正常查询期间必须提供的，否则将无法通过查询进行检索。其最小为8个字节，最大为2048个字节。默认为空。|
 |priority|UInt32|否|0| **命名参数。** 任务的优先级。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。|
 |extras|HashMap\<String,String>|否|HashMap\<String, String>()| **命名参数。** 配置的附加功能，默认为空。|
 
