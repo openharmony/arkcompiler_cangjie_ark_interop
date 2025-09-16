@@ -1,0 +1,39 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name":"string_hello",
+      "value":"Hello_base"
+    },
+    {
+      "name":"string_world",
+      "value":"World_base"
+    },
+    {
+      "name":"string_arkui",
+      "value":"Arkui_base",
+      "attr": {
+        "translatable": false
+      }
+    },
+    {
+      "name":"string_common",
+      "value":"common",
+      "attr": {
+        "translatable": true
+      }
+    },
+
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    }
+  ]
+}

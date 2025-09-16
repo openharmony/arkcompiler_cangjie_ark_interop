@@ -1,0 +1,76 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "width",
+      "value": "100.vp"
+    },
+    {
+      "name": "height",
+      "value": "100.vp"
+    },
+    {
+      "name": "padding",
+      "value": "5.vp"
+    },
+    {
+      "name": "margin",
+      "value": "5.vp"
+    },
+    {
+      "name": "positionx",
+      "value": "50"
+    },
+    {
+      "name": "positiony",
+      "value": "50"
+    },
+    {
+      "name": "borderWidth",
+      "value": "10.vp"
+    },
+    {
+      "name": "borderRadius",
+      "value": "5.vp"
+    },
+    {
+      "name": "centerx",
+      "value": "10.vp"
+    },
+    {
+      "name": "centery",
+      "value": "10.vp"
+    },
+    {
+      "name": "traslatex",
+      "value": "10.vp"
+    },
+    {
+      "name": "traslatey",
+      "value": "10.vp"
+    },
+    {
+      "name": "traslatez",
+      "value": "10.vp"
+    },
+    {
+      "name": "fontSize",
+      "value": "10.vp"
+    },
+    {
+      "name": "fontFamily",
+      "value": "sans-serif"
+    }
+  ]
+}

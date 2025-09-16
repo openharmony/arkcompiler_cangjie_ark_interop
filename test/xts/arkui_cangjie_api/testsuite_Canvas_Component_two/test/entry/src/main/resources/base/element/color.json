@@ -1,0 +1,20 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "red",
+      "value": "#FFD94242"
+    },
+    {
+      "name": "rectGreen",
+      "value": "#FF18BA73"
+    },
+    {
+      "name": "rectBack",
+      "value": "#F3161A18"
+    }
+  ]
+}

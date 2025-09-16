@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="ayu" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>应用开发（封面） - DevEco Studio 使用指南（仓颉）</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="assets/style.css">
+        <link rel="stylesheet" href="assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cover0.html" class="active"><strong aria-hidden="true">1.</strong> 应用开发（封面）</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.</strong> 入门</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">2.1.</strong> 快速入门</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/start/cj-start-overview.html"><strong aria-hidden="true">2.1.1.</strong> 开发准备</a></li><li class="chapter-item "><a href="source_zh_cn/start/cj-first-cangjie-app.html"><strong aria-hidden="true">2.1.2.</strong> 构建第一个仓颉应用</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/arkts-cj/cj-cangjie-in-arkts.html"><strong aria-hidden="true">2.2.</strong> 在ArkTS应用中使用仓颉模块</a></li><li class="chapter-item "><a href="source_zh_cn/arkts-cj/cj-arktsapi-in-cangjie.html"><strong aria-hidden="true">2.3.</strong> 在仓颉应用中使用ArkTS的API</a></li><li class="chapter-item "><a href="source_zh_cn/start/ide-resource-categories-and-access.html"><strong aria-hidden="true">2.4.</strong> 资源分类与访问</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">3.</strong> DevEco Studio 使用指南（仓颉）</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/cj-ide-tools-overview.html"><strong aria-hidden="true">3.1.</strong> 工具简介</a></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-env-config.html"><strong aria-hidden="true">3.2.</strong> 配置开发环境</a></li><li class="chapter-item "><a href="source_zh_cn/project-manager/cj-ide-project.html"><strong aria-hidden="true">3.3.</strong> 工程管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/project-manager/cj-project-overview.html"><strong aria-hidden="true">3.3.1.</strong> 工程介绍</a></li><li class="chapter-item "><a href="source_zh_cn/project-manager/cj-create-new-project.html"><strong aria-hidden="true">3.3.2.</strong> 创建一个新的工程</a></li><li class="chapter-item "><a href="source_zh_cn/project-manager/cj-module-management.html"><strong aria-hidden="true">3.3.3.</strong> 模块管理</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/code-editing/cj-ide-code-edit.html"><strong aria-hidden="true">3.4.</strong> 代码编辑</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/code-editing/cj-code-overview-edit.html"><strong aria-hidden="true">3.4.1.</strong> 代码阅读与编辑</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-develop-app.html"><strong aria-hidden="true">3.5.</strong> 应用/服务开发</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj-ide-build.html"><strong aria-hidden="true">3.6.</strong> 编译构建</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/build/cj-hvigor.html"><strong aria-hidden="true">3.6.1.</strong> 概述</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/build/cj_build_lifecycle.html"><strong aria-hidden="true">3.6.1.1.</strong> 构建生命周期</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj_build_config_files.html"><strong aria-hidden="true">3.6.1.2.</strong> 配置文件说明</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/build/cj_build_hvigor_config.html"><strong aria-hidden="true">3.6.1.2.1.</strong> hvigor-config.json5</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj_build_build_profile.html"><strong aria-hidden="true">3.6.1.2.2.</strong> build-profile.json5</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/build/cj_build_tasks.html"><strong aria-hidden="true">3.6.1.3.</strong> 构建任务说明</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/build/cj-hvigor-configuration.html"><strong aria-hidden="true">3.6.2.</strong> 配置构建</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj-build-customization.html"><strong aria-hidden="true">3.6.3.</strong> 定制构建</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj-build-optimized.html"><strong aria-hidden="true">3.6.4.</strong> 优化构建</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj-build-expanding.html"><strong aria-hidden="true">3.6.5.</strong> 扩展构建</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj-build-reinforcement.html"><strong aria-hidden="true">3.6.6.</strong> 加固构建</a></li><li class="chapter-item "><a href="source_zh_cn/build/cj-hvigor-faq.html"><strong aria-hidden="true">3.6.7.</strong> 问题排查</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-signing.html"><strong aria-hidden="true">3.7.</strong> 应用/服务签名</a></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-running-app.html"><strong aria-hidden="true">3.8.</strong> 应用/服务运行</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-ide-debug-app.html"><strong aria-hidden="true">3.9.</strong> 应用/服务调试</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/debug/cj-debug-device.html"><strong aria-hidden="true">3.9.1.</strong> 调试概述</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-run-debug-configurations.html"><strong aria-hidden="true">3.9.2.</strong> 自定义运行/调试配置</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-code-debugging.html"><strong aria-hidden="true">3.9.3.</strong> 代码调试</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-setup-hilog.html"><strong aria-hidden="true">3.9.4.</strong> 日志分析</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-fault-analysis.html"><strong aria-hidden="true">3.9.5.</strong> 故障分析</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-inspector.html"><strong aria-hidden="true">3.9.6.</strong> 布局分析</a></li><li class="chapter-item "><a href="source_zh_cn/debug/cj-device-file-explorer.html"><strong aria-hidden="true">3.9.7.</strong> 查看设备文件</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-insight.html"><strong aria-hidden="true">3.10.</strong> 性能分析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/insight/cj-insight-performance-tuning-overview.html"><strong aria-hidden="true">3.10.1.</strong> DevEco Profiler性能调优概述</a></li><li class="chapter-item "><a href="source_zh_cn/insight/cj-insight-introduction.html"><strong aria-hidden="true">3.10.2.</strong> Profiler工具简介</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/insight/introduction/cj-insight-introduction-concept.html"><strong aria-hidden="true">3.10.2.1.</strong> 整体界面布局及概念</a></li><li class="chapter-item "><a href="source_zh_cn/insight/introduction/cj-insight-introduction-session.html"><strong aria-hidden="true">3.10.2.2.</strong> 会话区</a></li><li class="chapter-item "><a href="source_zh_cn/insight/introduction/cj-insight-introduction-data.html"><strong aria-hidden="true">3.10.2.3.</strong> 数据区</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/insight/cj-insight-profiler.html"><strong aria-hidden="true">3.10.3.</strong> 使用Profiler进行性能调优</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/insight/profiler/cj-insight-profiler-introduction.html"><strong aria-hidden="true">3.10.3.1.</strong> 性能优化过程简介</a></li><li class="chapter-item "><a href="source_zh_cn/insight/profiler/cj-insight-real-monitor.html"><strong aria-hidden="true">3.10.3.2.</strong> 性能问题定界：实时监控</a></li><li class="chapter-item "><a href="source_zh_cn/insight/profiler/cj-insight-profiler-deep-recording.html"><strong aria-hidden="true">3.10.3.3.</strong> 性能问题定位：深度录制</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/insight/cj-insight-cpu.html"><strong aria-hidden="true">3.10.4.</strong> CPU活动分析：CPU分析</a></li><li class="chapter-item "><a href="source_zh_cn/insight/cj-insight-appendix.html"><strong aria-hidden="true">3.10.5.</strong> 附录</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-app-test.html"><strong aria-hidden="true">3.11.</strong> 应用/服务测试</a></li><li class="chapter-item "><a href="source_zh_cn/cj-ide-publish-app.html"><strong aria-hidden="true">3.12.</strong> HOS应用/服务发布</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.13.</strong> 附录</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/command/cj-command-tools.html"><strong aria-hidden="true">3.13.1.</strong> 命令行工具</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="source_zh_cn/command/cjpm-tool.html"><strong aria-hidden="true">3.13.1.1.</strong> 包管理工具cjpm</a></li><li class="chapter-item "><a href="source_zh_cn/command/cjdb-tool.html"><strong aria-hidden="true">3.13.1.2.</strong> 调试工具cjdb</a></li><li class="chapter-item "><a href="source_zh_cn/command/cjformat-tool.html"><strong aria-hidden="true">3.13.1.3.</strong> 格式化工具cjfmt</a></li><li class="chapter-item "><a href="source_zh_cn/command/cjlint-tool.html"><strong aria-hidden="true">3.13.1.4.</strong> 静态检查工具cjlint</a></li><li class="chapter-item "><a href="source_zh_cn/command/cjcov-tool.html"><strong aria-hidden="true">3.13.1.5.</strong> 覆盖率统计工具cjcov</a></li><li class="chapter-item "><a href="source_zh_cn/command/api-cjdoc-tool.html"><strong aria-hidden="true">3.13.1.6.</strong> API文档生成工具cjdoc</a></li></ol></li><li class="chapter-item "><a href="source_zh_cn/code-editing/cj-code-linter-rules.html"><strong aria-hidden="true">3.13.2.</strong> Cangjie Lint代码检查规则</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">DevEco Studio 使用指南（仓颉）</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div style='height:900px;width:89.5%'>
+    <div style="margin-top:10%;font-size:28px;width:100%;height:80%;font-weight:600;letter-spacing:2px;text-align:center">
+        <span style=''>应用开发（封面）</span>
+        <div style="margin-top:10%;font-size:20px;">版本号：****</div>
+        <div style="margin-top:3%;font-size:20px;">发布时间：2024-10-23</div>
+    </div>
+    <div style="font-size:16px;font-weight:600;letter-spacing:2px;text-align:center">
+        <span style=''>华为技术有限公司</span>
+    </div>
+</div>
+<style type='text/css'>
+    @media only screen and (min-width:1200px) {
+        .content main {
+            width: 100%;
+        }
+    }
+</style>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="source_zh_cn/start/cj-start-overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="source_zh_cn/start/cj-start-overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="cangjie-highlight-export.js"></script><script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="cangjie-highlight-export.js"></script><script src="highlight.js"></script>
+        <script src="assets/elasticlunr.js"></script>
+        <script src="assets/fzf.umd.js"></script>
+        <script src="assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>

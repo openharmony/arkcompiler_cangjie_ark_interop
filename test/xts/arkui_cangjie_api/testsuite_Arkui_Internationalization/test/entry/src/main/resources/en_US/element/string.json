@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name":"string_hello",
+      "value":"Hello_us"
+    },
+    {
+      "name":"string_world",
+      "value":"World_us"
+    },
+    {
+      "name":"string_arkui",
+      "value":"Arkui_us"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    }
+  ]
+}
