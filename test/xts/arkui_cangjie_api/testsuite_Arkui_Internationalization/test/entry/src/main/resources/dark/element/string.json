@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name":"string_hello_dark_light",
+      "value":"Hello_dark"
+    },
+    {
+      "name":"string_world_dark_light",
+      "value":"World_dark"
+    },
+    {
+      "name":"string_arkui_dark_light",
+      "value":"World_dark"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    }
+  ]
+}
