@@ -1,11 +1,11 @@
 # Scroll
 
-A scrollable container component that allows content to scroll when the layout size of child components exceeds the parent component's dimensions.
+A scrollable container component that allows content to scroll when the layout dimensions of child components exceed those of the parent component.
 
 > **Note:**
 >
 > - When this component nests a List child component for scrolling, if the List does not have width and height set, it will load all content by default. For performance-sensitive scenarios, it is recommended to specify the List's width and height.
-> - The prerequisite for this component to scroll is that the main axis size is smaller than the content size.
+> - Scrolling occurs only when the main axis size is smaller than the content size.
 > - The default value of the Scroll component's [universal attribute clip](./cj-universal-attribute-shapclip.md#func-clipbool) is true.
 
 ## Import Module
@@ -16,15 +16,15 @@ import kit.ArkUI.*
 
 ## Child Components
 
-The layout size exceeds the parent component's dimensions, allowing content to scroll.
+Content can scroll when the layout dimensions of child components exceed those of the parent component.
 
 > **Note:**
 >
 > - When this component nests a List child component for scrolling, if the List does not have width and height set, it will load all content by default. For performance-sensitive scenarios, it is recommended to specify the List's width and height.
-> - The prerequisite for this component to scroll is that the main axis size is smaller than the content size.
+> - Scrolling occurs only when the main axis size is smaller than the content size.
 > - The default value of the Scroll component's [universal attribute clip](./cj-universal-attribute-shapclip.md#func-clipbool) is true.
 
-## Create Component
+## Creating Components
 
 ### init()
 
@@ -52,9 +52,9 @@ public init(child: () -> Unit)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| child | ()->Unit | Yes | - | Declares the child components within the container. |
+| child | () -> Unit | Yes | - | Declares the child components within the container. |
 
 ### init(Scroller, () -> Unit)
 
@@ -70,10 +70,10 @@ public init(scroller: Scroller, child: () -> Unit)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | scroller | [Scroller](#class-scroller) | Yes | - | The scrollbar controller. |
-| child | ()->Unit | Yes | - | Declares the child components within the container. |
+| child | () -> Unit | Yes | - | Declares the child components within the container. |
 
 ## Component Attributes
 
@@ -91,7 +91,7 @@ public func scrollable(scrollDirection: ScrollDirection): This
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | scrollDirection | [ScrollDirection](./cj-common-types.md#enum-scrolldirection) | Yes | - | The scrolling direction.<br>Initial value: ScrollDirection.Vertical. |
 
@@ -113,7 +113,7 @@ Conditions for triggering this event:
 
 2. Triggered when called via the scroll controller API.
 
-3. Overbound rebound.
+3. Triggered during overscroll bounce-back.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,9 +121,9 @@ Conditions for triggering this event:
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [ScrollOnScrollCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function, triggered when Scroll scrolls.<br>Parameter 1: Horizontal offset per frame during scrolling. Positive when content scrolls left, negative when content scrolls right. Unit: vp.<br>Parameter 2: Vertical offset per frame during scrolling. Positive when content scrolls up, negative when content scrolls down. Unit: vp.<br>Parameter 3: Current scroll state. |
+| callback | ScrollOnScrollCallback | Yes | - | Callback function triggered when Scroll scrolls.<br>Parameter 1: Horizontal offset during each frame's scroll. Positive when content scrolls left, negative when content scrolls right. Unit: vp.<br>Parameter 2: Vertical offset during each frame's scroll. Positive when content scrolls up, negative when content scrolls down. Unit: vp.<br>Parameter 3: Current scroll state. |
 
 ### func onScrollEdge(OnScrollEdgeCallback)
 
@@ -131,7 +131,7 @@ Conditions for triggering this event:
 public func onScrollEdge(event: OnScrollEdgeCallback): This
 ```
 
-**Function:** Triggered when scrolling to the edge.
+**Function:** Triggered when scrolling reaches the edge.
 
 Conditions for triggering this event:
 
@@ -139,7 +139,7 @@ Conditions for triggering this event:
 
 2. Triggered when called via the scroll controller API.
 
-3. Overbound rebound.
+3. Triggered during overscroll bounce-back.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,9 +147,9 @@ Conditions for triggering this event:
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | [OnScrollEdgeCallback](<font color="red" face="bold">please add link</font>) | Yes | - | The edge position reached during scrolling.<br>When Scroll is set to horizontal scrolling, Edge.Center indicates the starting position in the horizontal direction, and Edge.Baseline indicates the ending position in the horizontal direction. Since the Edge.Center and Edge.Baseline enum values are deprecated, it is recommended to use onReachStart and onReachEnd events to monitor whether scrolling reaches the boundary. |
+| event | OnScrollEdgeCallback | Yes | - | The edge position reached during scrolling.<br>When Scroll is set to horizontal scrolling, Edge.Center indicates the starting position in the horizontal direction, and Edge.Baseline indicates the ending position in the horizontal direction. Since the Edge.Center and Edge.Baseline enum values are deprecated, it is recommended to use the onReachStart and onReachEnd events to monitor boundary scrolling. |
 
 ### func onScrollFrameBegin(OnScrollFrameBeginCallback)
 
@@ -157,11 +157,11 @@ Conditions for triggering this event:
 public func onScrollFrameBegin(event: OnScrollFrameBeginCallback): This
 ```
 
-**Function:** Triggered at the start of each frame's scroll. The event parameters include the upcoming scroll amount. The event handler can calculate the actual required scroll amount based on the application scenario and return it as the handler's return value. Scroll will scroll according to the returned actual scroll amount.
+**Function:** Triggered at the start of each frame's scroll. The event parameters include the upcoming scroll amount. The event handler can calculate the actual required scroll amount based on the application scenario and return it as the handler's return value. Scroll will proceed with the returned actual scroll amount.
 
-Supports negative values for offsetRemain.
+Negative values for offsetRemain are supported.
 
-If implementing nested scrolling via the onScrollFrameBegin event and scrollBy method, set the child scroll node's EdgeEffect to None. For example, when Scroll nests a List for scrolling, the List component's edgeEffect property should be set to EdgeEffect.None.
+If nested scrolling is implemented via the onScrollFrameBegin event and the scrollBy method, the child scroll node's EdgeEffect must be set to None. For example, when Scroll nests a List for scrolling, the List component's edgeEffect attribute must be set to EdgeEffect.None.
 
 Conditions for triggering this event:
 
@@ -169,7 +169,7 @@ Conditions for triggering this event:
 
 2. Not triggered when called via the controller API.
 
-3. Not triggered during overbound rebound.
+3. Not triggered during overscroll bounce-back.
 
 4. Not triggered when dragging the scrollbar.
 
@@ -179,9 +179,9 @@ Conditions for triggering this event:
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | [OnScrollFrameBeginCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function triggered at the start of each frame's scroll. |
+| event | OnScrollFrameBeginCallback | Yes | - | Callback function triggered at the start of each frame's scroll. |
 
 ### func onWillScroll((Float64,Float64,ScrollState,ScrollSource) -> OffsetResult)
 
@@ -191,7 +191,7 @@ public func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) 
 
 **Function:** Scroll event callback, triggered before Scroll scrolls.
 
-Returns the upcoming scroll offset, current scroll state, and scroll operation source. The returned offset is the calculated upcoming scroll value, not the final actual scroll offset. The callback return value can specify the upcoming scroll offset.
+The callback returns the upcoming scroll offset for the current frame, the current scroll state, and the source of the scroll operation. The returned offset is the calculated upcoming scroll value, not the final actual scroll offset. The callback's return value can specify the upcoming scroll offset for Scroll.
 
 Conditions for triggering this event:
 
@@ -199,7 +199,7 @@ Conditions for triggering this event:
 
 2. Triggered when called via the scroll controller API.
 
-3. Overbound rebound.
+3. Triggered during overscroll bounce-back.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,9 +207,9 @@ Conditions for triggering this event:
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| handler | (Float64,Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->[OffsetResult](#class-offsetresult) | Yes | - | Callback function, triggered before Scroll scrolls.<br>Parameter 1: Horizontal offset per frame during scrolling. Positive when content scrolls left, negative when content scrolls right. Unit: vp.<br>Parameter 2: Vertical offset per frame during scrolling. Positive when content scrolls up, negative when content scrolls down. Unit: vp.<br>Parameter 3: Current scroll state.<br>Parameter 4: Source of the current scroll operation.<br>Return value: Scroll offset object. Returns OffsetResult to scroll according to the developer-specified offset. |
+| handler | (Float64,Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->[OffsetResult](#class-offsetresult) | Yes | - | Callback function triggered before Scroll scrolls.<br>Parameter 1: Horizontal offset for the current frame's scroll. Positive when content scrolls left, negative when content scrolls right. Unit: vp.<br>Parameter 2: Vertical offset for the current frame's scroll. Positive when content scrolls up, negative when content scrolls down. Unit: vp.<br>Parameter 3: Current scroll state.<br>Parameter 4: Source of the current scroll operation.<br>Return value: Scroll offset object. Returns OffsetResult to scroll according to the developer-specified offset. |
 
 ### func onWillScroll((Float64,Float64,ScrollState,ScrollSource) -> Unit)
 
@@ -219,7 +219,7 @@ public func onWillScroll(handler: (Float64, Float64, ScrollState, ScrollSource) 
 
 **Function:** Scroll event callback, triggered before Scroll scrolls.
 
-Returns the upcoming scroll offset, current scroll state, and scroll operation source. The returned offset is the calculated upcoming scroll value, not the final actual scroll offset. The callback return value can specify the upcoming scroll offset.
+The callback returns the upcoming scroll offset for the current frame, the current scroll state, and the source of the scroll operation. The returned offset is the calculated upcoming scroll value, not the final actual scroll offset. The callback's return value can specify the upcoming scroll offset for Scroll.
 
 Conditions for triggering this event:
 
@@ -227,7 +227,7 @@ Conditions for triggering this event:
 
 2. Triggered when called via the scroll controller API.
 
-3. Overbound rebound.
+3. Triggered during overscroll bounce-back.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,9 +235,9 @@ Conditions for triggering this event:
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| handler | (Float64,Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->Unit | Yes | - | Callback function, triggered before Scroll scrolls.<br>Parameter 1: Horizontal offset per frame during scrolling. Positive when content scrolls left, negative when content scrolls right. Unit: vp.<br>Parameter 2: Vertical offset per frame during scrolling. Positive when content scrolls up, negative when content scrolls down. Unit: vp.<br>Parameter 3: Current scroll state.<br>Parameter 4: Source of the current scroll operation. |
+| handler | (Float64,Float64,[ScrollState](./cj-common-types.md#enum-scrollstate),[ScrollSource](./cj-common-types.md#enum-scrollsource))->Unit | Yes | - | Callback function triggered before Scroll scrolls.<br>Parameter 1: Horizontal offset for the current frame's scroll. Positive when content scrolls left, negative when content scrolls right. Unit: vp.<br>Parameter 2: Vertical offset for the current frame's scroll. Positive when content scrolls up, negative when content scrolls down. Unit: vp.<br>Parameter 3: Current scroll state.<br>Parameter 4: Source of the current scroll operation. |
 
 ## Basic Type Definitions
 
@@ -267,7 +267,7 @@ If the set length exceeds half the container height, the fading length is set to
 
 **Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read/Write:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +287,7 @@ public init(fadingEdgeLength!: Length = 32.vp)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | fadingEdgeLength | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 32.vp | Sets the edge fading length. If set to a value less than 0, the default value is used. The default length is 32vp. If the set length exceeds half the container height, the fading length is set to half the container height. |
 
@@ -297,7 +297,8 @@ public init(fadingEdgeLength!: Length = 32.vp)
 public class NestedScrollOptions {
     public NestedScrollOptions(
         public var scrollForward: NestedScrollMode,
-        public var scrollBackward: NestedScrollMode
+        public var scrollBackward: NestedScrollMode,
+        public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode)
     )
 }
 ```
@@ -314,11 +315,11 @@ public class NestedScrollOptions {
 public var scrollBackward: NestedScrollMode
 ```
 
-**Function:** Nested scroll option when the scroll component scrolls toward the start.
+**Function:** Nested scroll options when the scroll component scrolls toward the start.
 
 **Type:** [NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode)
 
-**Read/Write:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -330,20 +331,39 @@ public var scrollBackward: NestedScrollMode
 public var scrollForward: NestedScrollMode
 ```
 
-**Function:** Nested scroll option when the scroll component scrolls toward the end.
+**Function:** Nested scroll options when the scroll component scrolls toward the end.
 
 **Type:** [NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode)
 
-**Read/Write:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Initial Version:** 21
 
+#### init(NestedScrollMode, NestedScrollMode)
+
+```cangjie
+public init(scrollForward: NestedScrollMode, scrollBackward: NestedScrollMode)
+```
+
+**Function:** Constructs a NestedScrollOptions object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Initial Version:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| scrollForward | NestedScrollMode | Yes | - | Nested scroll options when the scroll component scrolls toward the end. |
+| scrollBackward | NestedScrollMode | Yes | - | Nested scroll options when the scroll component scrolls toward the start. |
+
 #### NestedScrollOptions(NestedScrollMode, NestedScrollMode)
 
 ```cangjie
-public NestedScrollOptions(
+public class NestedScrollOptions(
     public var scrollForward: NestedScrollMode,
     public var scrollBackward: NestedScrollMode
 )
@@ -357,10 +377,10 @@ public NestedScrollOptions(
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| scrollForward | [NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode) | Yes | - | Nested scroll option when the scroll component scrolls toward the end. |
-| scrollBackward | [NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode) | Yes | - | Nested scroll option when the scroll component scrolls toward the start. |
+| scrollForward | [NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode) | Yes | - | Nested scroll options when the scroll component scrolls toward the end. |
+| scrollBackward | [NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode) | Yes | - | Nested scroll options when the scroll component scrolls toward the start. |
 
 ### class OffsetResult
 
@@ -388,7 +408,7 @@ public var xOffset: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -404,7 +424,7 @@ public var yOffset: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -424,7 +444,7 @@ public init(xOffset: Float64, yOffset: Float64)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | xOffset | Float64 | Yes | - | Horizontal scroll offset. Unit: vp. |
 | yOffset | Float64 | Yes | - | Vertical scroll offset. Unit: vp. |### class RectResult
@@ -444,7 +464,7 @@ public class RectResult {
 }
 ```
 
-**Description:** Size and position of a subcomponent relative to its parent component. Unit: vp.
+**Description:** Size and position of a child component relative to its parent. Unit: vp.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -456,11 +476,11 @@ public class RectResult {
 public var height: Float64
 ```
 
-**Description:** Component height
+**Description:** Height of the component.
 
 **Type:** Float64
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -472,11 +492,11 @@ public var height: Float64
 public var width: Float64
 ```
 
-**Description:** Component width
+**Description:** Width of the component.
 
 **Type:** Float64
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -488,11 +508,11 @@ public var width: Float64
 public var x: Float64
 ```
 
-**Description:** Horizontal offset
+**Description:** Horizontal offset.
 
 **Type:** Float64
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,11 +524,11 @@ public var x: Float64
 public var y: Float64
 ```
 
-**Description:** Vertical offset
+**Description:** Vertical offset.
 
 **Type:** Float64
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -533,12 +553,12 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | Horizontal offset |
-| y | Float64 | Yes | - | Vertical offset |
-| width | Float64 | Yes | - | Component width |
-| height | Float64 | Yes | - | Component height |
+| Parameter | Type    | Required | Default | Description           |
+|:----------|:--------|:---------|:--------|:----------------------|
+| x         | Float64 | Yes      | -       | Horizontal offset     |
+| y         | Float64 | Yes      | -       | Vertical offset       |
+| width     | Float64 | Yes      | -       | Width of the component|
+| height    | Float64 | Yes      | -       | Height of the component|
 
 ### class ScrollAnimationOptions
 
@@ -571,7 +591,7 @@ public var canOverScroll: Bool
 
 **Type:** Bool
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -587,7 +607,7 @@ public var curve: Curve
 
 **Type:** [Curve](./cj-common-types.md#enum-curve)
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -603,7 +623,7 @@ public var duration: Float64
 
 **Type:** Float64
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -627,11 +647,11 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| duration | Float64 | No | 1000.0 | **Named parameter.** Sets the scroll duration. If set to a value less than 0, the default value is used. |
-| curve | [Curve](./cj-common-types.md#enum-curve) | No | Curve.Ease | **Named parameter.** Sets the scroll curve. |
-| canOverScroll | Bool | No | false | **Named parameter.** Sets whether scrolling can overshoot boundaries.<br>**Note:**<br>Overscrolling is only allowed when set to true and the component's edgeEffect is set to EdgeEffect.Spring, triggering a bounce animation when overshooting occurs. |
+| Parameter    | Type                          | Required | Default    | Description                                                                 |
+|:-------------|:------------------------------|:---------|:-----------|:----------------------------------------------------------------------------|
+| duration     | Float64                       | No       | 1000.0     | **Named parameter.** Scroll duration. If set to a negative value, the default value is used. |
+| curve        | [Curve](./cj-common-types.md#enum-curve) | No       | Curve.Ease | **Named parameter.** Scroll curve.                                          |
+| canOverScroll| Bool                          | No       | false      | **Named parameter.** Sets whether scrolling can overshoot boundaries.<br>**Note:**<br>Overscrolling is only allowed when set to true and the component's edgeEffect is set to EdgeEffect.Spring, triggering a bounce animation upon overscroll. |
 
 ### class ScrollEdgeOptions
 
@@ -642,7 +662,11 @@ public class ScrollEdgeOptions {
 }
 ```
 
-**Description:** Parameters for scrolling to edge positions.
+**Description:** Parameters for scrolling to the edge position.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 #### var velocity
 
@@ -650,11 +674,16 @@ public class ScrollEdgeOptions {
 public var velocity: Float32 = 0.0
 ```
 
-**Description:** Sets the fixed speed for scrolling to container edges.
+**Description:** Sets the fixed speed for scrolling to the container edge.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 **Type:** Float32
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
+
 
 #### init(Float32)
 
@@ -664,11 +693,15 @@ public init(velocity!: Float32 = 0.0)
 
 **Description:** Constructs a ScrollEdgeOptions object.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| velocity | Float32 | No | 0.0 | Sets the fixed speed for scrolling to container edges. If set to a value less than or equal to 0, this parameter does not take effect.<br>Default: 0<br>Unit: vp/s |
+| Parameter | Type   | Required | Default | Description                                                                 |
+|:----------|:-------|:---------|:--------|:----------------------------------------------------------------------------|
+| velocity  | Float32| No       | 0.0     | Fixed speed for scrolling to the container edge. If set to ≤0, this parameter is ignored.<br>Default: 0<br>Unit: vp/s |
 
 ### class ScrollResult
 
@@ -691,11 +724,11 @@ public class ScrollResult {
 public var offsetRemain: Float64
 ```
 
-**Description:** Pending scroll offset
+**Description:** Pending scroll offset.
 
 **Type:** Float64
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -715,9 +748,9 @@ public init(offsetRemain!: Float64)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| offsetRemain | Float64 | Yes | - | Pending scroll offset, in vp. |
+| Parameter    | Type    | Required | Default | Description                     |
+|:-------------|:--------|:---------|:--------|:--------------------------------|
+| offsetRemain | Float64 | Yes      | -       | Pending scroll offset. Unit: vp.|
 
 ### class ScrollToIndexOptions
 
@@ -730,17 +763,25 @@ public class ScrollToIndexOptions {
 
 **Description:** Parameters for scrolling to a specified index.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 #### var extraOffset
 
 ```cangjie
 public var extraOffset: Length = 0.vp
 ```
 
-**Description:** Extra offset for scrolling to a specified index.
+**Description:** Extra offset for scrolling to the specified index.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 **Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Access:** Read-Write
+**Readable/Writable:** Yes
 
 #### init(Length)
 
@@ -750,11 +791,15 @@ public init(extraOffset!: Length = 0.vp)
 
 **Description:** Constructs a ScrollToIndexOptions object.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| extraOffset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Extra offset for scrolling to a specified index. A positive value adds an offset towards the bottom, while a negative value adds an offset towards the top. |
+| Parameter   | Type                                      | Required | Default | Description                                                                 |
+|:------------|:------------------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
+| extraOffset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No       | 0.vp    | Extra offset for scrolling to the specified index. Positive values add an offset toward the bottom; negative values add an offset toward the top. |
 
 ### class ScrollableBase
 
@@ -786,9 +831,9 @@ public func clipContent(clip: ContentClipMode): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| clip | [ContentClipMode](#enum-contentclipmode) | Yes | Default: ContentClipMode.BOUNDARY for Grid and Scroll, ContentClipMode.CONTENT_ONLY for List and WaterFlow. | Clipping only applies to the content of the scrollable container (i.e., its child nodes), and does not affect the background. When using RectShape to define a custom rectangular area, only width, height, and [offset](./cj-universal-attribute-location.md#func-offsetlength-length) relative to the component's top-left corner are supported; rounded corners are not supported.<br/> |
+| Parameter | Type                          | Required | Default | Description                                                                 |
+|:----------|:------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
+| clip      | [ContentClipMode](#enum-contentclipmode) | Yes      | -       | Default: ContentClipMode.BOUNDARY for Grid and Scroll; ContentClipMode.CONTENT_ONLY for List and WaterFlow. Clipping applies only to the container's content (child nodes); backgrounds are unaffected. When using RectShape to define a custom rectangular area, only width, height, and [offset](./cj-universal-attribute-location.md#func-offsetlength-length) relative to the component's top-left corner are supported; rounded corners are not supported. |
 
 #### func clipContent(RectShape)
 
@@ -804,9 +849,9 @@ public func clipContent(clip: RectShape): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| clip | [RectShape](<font color="red" face="bold">please add link</font>) | Yes | Default: ContentClipMode.BOUNDARY for Grid and Scroll, ContentClipMode.CONTENT_ONLY for List and WaterFlow. | Clipping only applies to the content of the scrollable container (i.e., its child nodes), and does not affect the background. When using RectShape to define a custom rectangular area, only width, height, and [offset](./cj-universal-attribute-location.md#func-offsetlength-length) relative to the component's top-left corner are supported; rounded corners are not supported.<br/> |
+| Parameter | Type      | Required | Default | Description                                                                 |
+|:----------|:----------|:---------|:--------|:----------------------------------------------------------------------------|
+| clip      | RectShape | Yes      | -       | Default: ContentClipMode.BOUNDARY for Grid and Scroll; ContentClipMode.CONTENT_ONLY for List and WaterFlow. Clipping applies only to the container's content (child nodes); backgrounds are unaffected. When using RectShape to define a custom rectangular area, only width, height, and [offset](./cj-universal-attribute-location.md#func-offsetlength-length) relative to the component's top-left corner are supported; rounded corners are not supported. |
 
 #### func enableScrollInteraction(Bool)
 
@@ -822,9 +867,9 @@ public func enableScrollInteraction(value: Bool): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | Bool | Yes | true | Whether scroll gestures are supported. When set to true, scrolling can be performed via finger or mouse; when set to false, scrolling via finger or mouse is disabled, but scrolling via the [Scroller](https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) controller is unaffected.<br/> |
+| Parameter | Type | Required | Default | Description                                                                 |
+|:----------|:-----|:---------|:--------|:----------------------------------------------------------------------------|
+| value     | Bool | Yes      | -       | Whether scroll gestures are supported. When set to true, scrolling can be triggered via touch or mouse; when set to false, scrolling via touch or mouse is disabled, but scrolling via the [Scroller](https://docs.openharmony.cn/pages/v5.0/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) controller remains unaffected. |
 
 #### func fadingEdge(Option\<Bool>)
 
@@ -832,7 +877,7 @@ public func enableScrollInteraction(value: Bool): This
 public func fadingEdge(enabled: Option<Bool>): This
 ```
 
-**Description:** Enables or disables edge fading effects and sets the fading length.
+**Description:** Enables/disables edge fading effects and sets the fading length.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -840,9 +885,9 @@ public func fadingEdge(enabled: Option<Bool>): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| enabled | [Option](<font color="red" face="bold">please add link</font>)\<Bool> | Yes | false | When fadingEdge is enabled, it overrides the component's .overlay() property.<br/>When fadingEdge is enabled, it is recommended not to set background-related properties on the component, as this may affect the fading display effect.<br/>When fadingEdge is enabled, the component is clipped to its boundaries, and setting the component's clip property to false does not take effect.<br/>Set to true to enable edge fading effects; set to false to disable them. |
+| Parameter | Type          | Required | Default | Description                                                                 |
+|:----------|:--------------|:---------|:--------|:----------------------------------------------------------------------------|
+| enabled   | Option\<Bool> | Yes      | -       | When fadingEdge is enabled, it overrides the component's .overlay() property.<br>When fadingEdge is enabled, avoid setting background-related properties on the component, as they may affect the fading effect.<br>When fadingEdge is enabled, the component is clipped to its boundaries, and setting clip to false has no effect.<br>Set to true to enable edge fading; set to false to disable it. |
 
 #### func fadingEdge(Option\<Bool>, FadingEdgeOptions)
 
@@ -850,7 +895,7 @@ public func fadingEdge(enabled: Option<Bool>): This
 public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): This
 ```
 
-**Description:** Enables or disables edge fading effects and sets the fading length.
+**Description:** Enables/disables edge fading effects and sets the fading length.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -858,10 +903,10 @@ public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| enabled | [Option](<font color="red" face="bold">please add link</font>)\<Bool> | Yes | false | When fadingEdge is enabled, it overrides the component's .overlay() property.<br/>When fadingEdge is enabled, it is recommended not to set background-related properties on the component, as this may affect the fading display effect.<br/>When fadingEdge is enabled, the component is clipped to its boundaries, and setting the component's clip property to false does not take effect.<br/>Set to true to enable edge fading effects; set to false to disable them. |
-| options | [FadingEdgeOptions](#class-fadingedgeoptions) | Yes | - | Edge fading parameters object. This object can be used to define edge fading effect properties, such as fading length. |
+| Parameter | Type                   | Required | Default | Description                                                                 |
+|:----------|:-----------------------|:---------|:--------|:----------------------------------------------------------------------------|
+| enabled   | Option\<Bool>          | Yes      | -       | When fadingEdge is enabled, it overrides the component's .overlay() property.<br>When fadingEdge is enabled, avoid setting background-related properties on the component, as they may affect the fading effect.<br>When fadingEdge is enabled, the component is clipped to its boundaries, and setting clip to false has no effect.<br>Set to true to enable edge fading; set to false to disable it. |
+| options   | [FadingEdgeOptions](#class-fadingedgeoptions) | Yes      | -       | Edge fading parameters. This object defines edge fading properties, such as fading length. |
 
 #### func flingSpeedLimit(Float64)
 
@@ -869,7 +914,7 @@ public func fadingEdge(enabled: Option<Bool>, options: FadingEdgeOptions): This
 public func flingSpeedLimit(speedLimit: Float64): This
 ```
 
-**Description:** Limits the maximum initial speed when a fling animation starts after finger-tracking scrolling ends.
+**Description:** Limits the maximum initial speed when a fling animation starts after a scroll gesture ends.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -877,9 +922,9 @@ public func flingSpeedLimit(speedLimit: Float64): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| speedLimit | Float64 | Yes | 9000 | Maximum initial speed when a fling animation starts. Unit: vp/s<br/>Valid range: (0, +∞). If set to a value less than or equal to 0, the default value is used. |
+| Parameter   | Type    | Required | Default | Description                                                                 |
+|:------------|:--------|:---------|:--------|:----------------------------------------------------------------------------|
+| speedLimit  | Float64 | Yes      | -       | Maximum initial speed when a fling animation starts. Unit: vp/s<br>Range: (0, +∞). If set to ≤0, the default value is used. |
 
 #### func friction(Float64)
 
@@ -887,7 +932,7 @@ public func flingSpeedLimit(speedLimit: Float64): This
 public func friction(value: Float64): This
 ```
 
-**Description:** Sets the friction coefficient, which takes effect during manual scrolling and only affects the inertial scrolling process, indirectly influencing chained effects during inertial scrolling. If set to a value less than or equal to 0, the default value is used.
+**Description:** Sets the friction coefficient, which takes effect during manual scrolling and affects only the inertial scrolling process, indirectly influencing chained effects during inertial scrolling. If set to ≤0, the default value is used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -895,9 +940,9 @@ public func friction(value: Float64): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | Float64 | Yes | Default: 0.6 for non-wearable devices, 0.9 for wearable devices.<br/>From API version 11, the default is 0.7 for non-wearable devices.<br/>From API version 12, the default is 0.75 for non-wearable devices.<br/>Valid range: (0, +∞). If set to a value less than or equal to 0, the default value is used. | Friction coefficient. |
+| Parameter | Type    | Required | Default | Description                                                                 |
+|:----------|:--------|:---------|:--------|:----------------------------------------------------------------------------|
+| value     | Float64 | Yes      | -       | Friction coefficient. Default: 0.6 for non-wearable devices; 0.9 for wearable devices.<br>From API version 11, the default for non-wearable devices is 0.7.<br>From API version 12, the default for non-wearable devices is 0.75.<br>Range: (0, +∞). If set to ≤0, the default value is used. |
 
 #### func friction(AppResource)
 
@@ -905,7 +950,7 @@ public func friction(value: Float64): This
 public func friction(value: AppResource): This
 ```
 
-**Description:** Sets the friction coefficient, which takes effect during manual scrolling and only affects the inertial scrolling process, indirectly influencing chained effects during inertial scrolling. If set to a value less than or equal to 0, the default value is used.
+**Description:** Sets the friction coefficient, which takes effect during manual scrolling and affects only the inertial scrolling process, indirectly influencing chained effects during inertial scrolling. If set to ≤0, the default value is used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -913,9 +958,9 @@ public func friction(value: AppResource): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | Default: 0.6 for non-wearable devices, 0.9 for wearable devices.<br/>From API version 11, the default is 0.7 for non-wearable devices.<br/>From API version 12, the default is 0.75 for non-wearable devices.<br/>Valid range: (0, +∞). If set to a value less than or equal to 0, the default value is used. | Friction coefficient. |
+| Parameter | Type                                | Required | Default | Description                                                                 |
+|:----------|:------------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
+| value     | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes      | -       | Friction coefficient. Default: 0.6 for non-wearable devices; 0.9 for wearable devices.<br>From API version 11, the default for non-wearable devices is 0.7.<br>From API version 12, the default for non-wearable devices is 0.75.<br>Range: (0, +∞). If set to ≤0, the default value is used. |
 
 #### func nestedScroll(NestedScrollOptions)
 
@@ -923,7 +968,7 @@ public func friction(value: AppResource): This
 public func nestedScroll(value: NestedScrollOptions): This
 ```
 
-**Description:** Sets the nested scroll mode for both forward and backward directions to achieve scroll linkage with parent components.
+**Description:** Sets the nested scroll mode for both directions to achieve coordinated scrolling with the parent component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -931,9 +976,9 @@ public func nestedScroll(value: NestedScrollOptions): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [NestedScrollOptions](#class-nestedscrolloptions) | Yes | - | Nested scroll options. |
+| Parameter | Type                              | Required | Default | Description                     |
+|:----------|:----------------------------------|:---------|:--------|:--------------------------------|
+| value     | [NestedScrollOptions](#class-nestedscrolloptions) | Yes      | -       | Nested scroll options.          |
 
 #### func onDidScroll(OnScrollCallBack)
 
@@ -949,9 +994,9 @@ public func onDidScroll(handler: OnScrollCallBack): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| handler | [OnScrollCallBack](<font color="red" face="bold">please add link</font>) | Yes | - | Callback triggered when the scrollable component is scrolled. |
+| Parameter | Type              | Required | Default | Description                     |
+|:----------|:------------------|:---------|:--------|:--------------------------------|
+| handler   | OnScrollCallBack  | Yes      | -       | Callback triggered during scrolling. |
 
 #### func onReachEnd(() -> Unit)
 
@@ -959,11 +1004,7 @@ public func onDidScroll(handler: OnScrollCallBack): This
 public func onReachEnd(event: () -> Unit): This
 ```
 
-**Description:** Triggered when a scrollable component reaches the end position.
-
-When the edge effect is set to spring, this event is triggered once when scrolling past the end position and again when bouncing back to the end position.
-
-**System Capability:** System### class Scroller
+**Description:** Triggered when a scrollable component reaches the### class Scroller
 
 ```cangjie
 public class Scroller {
@@ -971,17 +1012,17 @@ public class Scroller {
 }
 ```
 
-**Function:** Controller for scrollable container components. It can be bound to container components to control their scrolling behavior. A single controller cannot manage multiple container components. Currently supports binding to List, Scroll, ScrollBar, Grid, and WaterFlow.
+**Function:** Controller for scrollable container components. This component can be bound to a container component to control its scrolling behavior. A single controller cannot manage multiple container components. Currently supports binding to List, Scroll, ScrollBar, Grid, and WaterFlow.
 
-> **Note:**
+> **Notes:**
 >
-> 1. The binding between the Scroller controller and scrollable container components occurs during the component creation phase.
+> 1. The binding between the Scroller controller and the scrollable container component occurs during the component creation phase.
 >
-> 2. The Scroller methods can only be called normally after the controller is bound to a scrollable container component. Otherwise, depending on the interface called, the operation may either fail silently or throw an exception.
+> 2. The Scroller methods can only be called normally after the controller is bound to the scrollable container component. Otherwise, depending on the interface called, the operation may either fail silently or throw an exception.
 >
-> 3. Taking [aboutToAppear](cj-universal-attribute-menu.md#func-abouttoappear) as an example, `aboutToAppear` executes after creating a new instance of a custom component but before its `build()` method. Therefore, if the scrollable component is within the `build` method of a custom component, the Scroller methods cannot be called normally during the `aboutToAppear` execution of that custom component because the internal scrollable component has not yet been created.
+> 3. Taking [aboutToAppear](cj-universal-attribute-menu.md#func-abouttoappear) as an example, `aboutToAppear` executes after creating a new instance of a custom component but before its `build()` method is executed. Therefore, if the scrollable component is within the `build` method of a custom component, the Scroller methods cannot be called normally during the execution of `aboutToAppear` for that custom component, as the internal scrollable component has not yet been created.
 >
-> 4. Taking [onAppear](cj-ui-framework.md#func-Onappear---unit) as an example, this callback is triggered after the component is mounted and displayed. Thus, during the `onAppear` callback of the scrollable component, the component has already been created and successfully bound to the Scroller, allowing normal invocation of Scroller methods.
+> 4. Taking [onAppear](cj-ui-framework.md#func-Onappear---unit) as an example, this callback is triggered after the component is mounted and displayed. Thus, during the execution of the scrollable component's `onAppear` callback, the scrollable component has already been created and successfully bound to the Scroller, allowing normal invocation of Scroller methods.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1015,7 +1056,7 @@ public func currentOffset(): OffsetResult
 
 | Type | Description |
 |:----|:----|
-|[OffsetResult](#class-offsetresult)|Returns the current scroll offset.<br/>**Note:**<br/>When the Scroller controller is not bound to a container component or the container component is abnormally released, `currentOffset` returns an empty value.|
+|[OffsetResult](#class-offsetresult)| Returns the current scroll offset.<br/>**Note:**<br/>If the Scroller controller is not bound to a container component or the container component is abnormally released, the return value of `currentOffset` will be empty.|
 
 #### func fling(Float64)
 
@@ -1023,7 +1064,7 @@ public func currentOffset(): OffsetResult
 public func fling(velocity: Float64): Unit
 ```
 
-**Function:** Enables inertial scrolling for scrollable components based on the provided initial velocity.
+**Function:** Enables inertial scrolling for the scrollable component based on the provided initial velocity.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1031,9 +1072,9 @@ public func fling(velocity: Float64): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|velocity|Float64|Yes|A `velocity` value of 0 is considered invalid, and scrolling will not occur. Positive values scroll toward the top; negative values scroll toward the bottom.<br/>Range: (-∞, +∞)|Initial velocity for inertial scrolling. Unit: vp/s|
+|velocity|Float64|Yes|-|If the `velocity` value is set to 0, it is treated as an invalid value, and scrolling will not occur. A positive value scrolls toward the top, while a negative value scrolls toward the bottom.<br/>Range: (-∞, +∞) Initial velocity for inertial scrolling. Unit: vp/s|
 
 #### func getItemIndex(Float64, Float64)
 
@@ -1049,12 +1090,12 @@ public func getItemIndex(x: Float64, y: Float64): Int32
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 |x|Float64|Yes|-|X-axis coordinate, in vp.|
 |y|Float64|Yes|-|Y-axis coordinate, in vp.|
 
-**Note:**
+**Notes:**
 
 - Invalid values return an index of -1.
 
@@ -1078,7 +1119,7 @@ public func getItemRect(index: Int32): RectResult
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 |index|Int32|Yes|-|Index value of the child component.|
 
@@ -1086,7 +1127,7 @@ public func getItemRect(index: Int32): RectResult
 
 | Type | Description |
 |:----|:----|
-|[RectResult](#class-rectresult)|Size and position of the child component relative to the container.<br/>Unit: vp.|
+|[RectResult](#class-rectresult)|Size and position of the child component relative to the container component.<br/>Unit: vp.|
 
 #### func isAtEnd()
 
@@ -1114,7 +1155,7 @@ public func scrollBy(xOffset!: Length, yOffset!: Length): Unit
 
 **Function:** Scrolls by a specified distance.
 
-**Note:**
+**Notes:**
 
 - Supports Scroll, List, Grid, and WaterFlow components.
 
@@ -1124,7 +1165,7 @@ public func scrollBy(xOffset!: Length, yOffset!: Length): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 |xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll distance. Percentage values are not supported.<br/>Range: (-∞, +∞)|
 |yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll distance. Percentage values are not supported. Range: (-∞, +∞)|
@@ -1135,7 +1176,7 @@ public func scrollBy(xOffset!: Length, yOffset!: Length): Unit
 public func scrollEdge(value: Edge): Unit
 ```
 
-**Function:** Scrolls to the edge of the container, regardless of the scroll axis direction. `Edge.Top` and `Edge.Start` behave the same, as do `Edge.Bottom` and `Edge.End`. Scroll components have animations by default; Grid, List, and WaterFlow components do not.
+**Function:** Scrolls to the edge of the container, regardless of the scroll axis direction. `Edge.Top` and `Edge.Start` behave the same, as do `Edge.Bottom` and `Edge.End`. Scroll components have animations by default, while Grid, List, and WaterFlow components do not.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1143,9 +1184,9 @@ public func scrollEdge(value: Edge): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|value|[Edge](./cj-common-types.md#enum-edge)|Yes|-|Edge position to scroll to.|
+|value|[Edge](./cj-common-types.md#enum-edge)|Yes|-| Edge position to scroll to. |
 
 #### func scrollEdge(Edge, ScrollEdgeOptions)
 
@@ -1153,7 +1194,7 @@ public func scrollEdge(value: Edge): Unit
 public func scrollEdge(value: Edge, options: ScrollEdgeOptions): Unit
 ```
 
-**Function:** Scrolls to the edge of the container, regardless of the scroll axis direction. `Edge.Top` and `Edge.Start` behave the same, as do `Edge.Bottom` and `Edge.End`. Scroll components have animations by default; Grid, List, and WaterFlow components do not.
+**Function:** Scrolls to the edge of the container, regardless of the scroll axis direction. `Edge.Top` and `Edge.Start` behave the same, as do `Edge.Bottom` and `Edge.End`. Scroll components have animations by default, while Grid, List, and WaterFlow components do not.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1161,10 +1202,10 @@ public func scrollEdge(value: Edge, options: ScrollEdgeOptions): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 |value|[Edge](./cj-common-types.md#enum-edge)|Yes|-|Edge position to scroll to.|
-|options|[ScrollEdgeOptions](#class-scrolledgeoptions)|No||Configures the mode for scrolling to the edge.|
+|options|[ScrollEdgeOptions](#class-scrolledgeoptions)|Yes||Mode for scrolling to the edge position.|
 
 #### func scrollPage(Bool)
 
@@ -1180,9 +1221,9 @@ public func scrollPage(next: Bool): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|next|Bool|Yes|-|Whether to scroll to the next page. `true` scrolls down; `false` scrolls up.|
+|next|Bool|Yes|-|Whether to scroll to the next page. `true` scrolls to the next page; `false` scrolls to the previous page.|
 
 #### func scrollPage(Bool, Bool)
 
@@ -1198,10 +1239,10 @@ public func scrollPage(next: Bool, animation!: Bool = false): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|next|Bool|Yes|-|Whether to scroll to the next page. `true` scrolls down; `false` scrolls up.|
-|animation|Bool|No|false|Animation configuration.<br/>\- `boolean`: Enables the default spring animation.|
+|next|Bool|Yes|-|Whether to scroll to the next page. `true` scrolls to the next page; `false` scrolls to the previous page.|
+|animation|Bool|No|false|Animation configuration.<br/>\- boolean: Enables the default spring animation.|
 
 #### func scrollTo(Length, Length)
 
@@ -1217,10 +1258,10 @@ public func scrollTo(xOffset!: Length, yOffset!: Length): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Horizontal scroll offset (values of type Int64 or Float64 are in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the x-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. |
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Vertical scroll offset (values of type Int64 or Float64 are in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the y-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position.|
+|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Horizontal scroll offset (Int64, Float64 values in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the x-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. |
+|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Vertical scroll offset (Int64, Float64 values in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the y-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position.|
 
 #### func scrollTo(Length, Length, ScrollAnimationOptions)
 
@@ -1236,11 +1277,11 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ScrollAnima
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. The `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. The `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
-|animation|[ScrollAnimationOptions](#class-scrollanimationoptions)\|Bool|No|Default: ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } boolean: false|Animation configuration. - ScrollAnimationOptions: Custom scroll animation. - boolean: Enables the default spring animation.|
+|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|animation|[ScrollAnimationOptions](#class-scrollanimationoptions)|Yes|-|Custom scroll animation. Initial value: ScrollAnimationOptions(duration: 1000, curve: Curve.Ease, canOverScroll: false)|
 
 #### func scrollTo(Length, Length, Bool)
 
@@ -1256,11 +1297,11 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: Bool): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. The `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. The `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
-| animation | Bool | Yes | \- | **Named parameter.** Animation configuration, enabling the default spring animation.<br>Initial value: false.|
+|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+| animation | Bool | Yes | - | **Named parameter.** Animation configuration, enabling the default spring animation.<br>Initial value: false.|
 
 #### func scrollToIndex(Int32, Bool, ScrollAlign, ScrollToIndexOptions)
 
@@ -1275,7 +1316,7 @@ public func scrollToIndex(
 
 **Function:** Scrolls to a specified index, supporting additional offset configuration.
 
-Enabling `smooth` animation may cause performance issues when loading and laying out numerous items during scrolling.
+Enabling the `smooth` animation may cause performance issues when loading and laying out a large number of items.
 
 > **Note:**
 >
@@ -1287,12 +1328,12 @@ Enabling `smooth` animation may cause performance issues when loading and laying
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|index|Int32|Yes|-|Target element index within the current container.<br/>**Note:**<br/>Negative values or values exceeding the maximum index of child components are invalid, and scrolling will not occur.|
-|smooth|Bool|No|false|Whether to enable smooth animation when scrolling to the target index. `true` enables animation; `false` disables it.<br/>Default: false.|
-|align|[ScrollAlign](#enum-scrollalign)|No|Default for List: ScrollAlign.START. Default for Grid: ScrollAlign.AUTO. Default for WaterFlow: ScrollAlign.START. **Note:** Only List, Grid, and WaterFlow components support this parameter.|Alignment of the target element relative to the container.|
-|options|[ScrollToIndexOptions](#class-scrolltoindexoptions)|No|ScrollToIndexOptions()|Options for scrolling to the specified index, such as additional offsets.<br/>Default: 0, unit: vp.|
+|index|Int32|Yes|-|Target element index within the current container.<br/>**Note:**<br/>Negative values or values exceeding the maximum child component index are treated as invalid, and the operation will not proceed.|
+|smooth|Bool|No|false|Whether to enable animation when scrolling to the specified index. `true` enables animation; `false` disables it.<br/>Default: false.|
+|align|[ScrollAlign](#enum-scrollalign)|No|ScrollAlign.Start|Default value for List: ScrollAlign.START. Default for Grid: ScrollAlign.AUTO. Default for WaterFlow: ScrollAlign.START. **Note:** Only List, Grid, and WaterFlow components support this parameter. Specifies the alignment of the target element relative to the container.|
+|options|[ScrollToIndexOptions](#class-scrolltoindexoptions)|No|ScrollToIndexOptions()|Options for scrolling to the specified index, such as additional offsets.<br/>Default: 0, Unit: vp.|
 
 ### enum ContentClipMode
 
@@ -1371,7 +1412,7 @@ Auto
 
 **Function:** Auto alignment.
 
-If the specified item is entirely within the display area, no adjustment is made. Otherwise, it aligns the item's start or end with the List based on the shortest scroll distance to ensure the item is fully visible.
+If the specified item is fully within the display area, no adjustment is made. Otherwise, it aligns the item's start or end with the List based on the shortest scroll distance, ensuring the item is fully visible.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1411,7 +1452,7 @@ Start
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21## Example Code 1 (Setting Scroller Controller)
+**Since:** 21## Sample Code 1 (Setting Scroller Controller)
 
 This example demonstrates the usage of some properties of the Scroll component and the scroller controller.
 
@@ -1423,6 +1464,11 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -1431,7 +1477,7 @@ class EntryView {
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Scroll(this.scroller) {
                 Column {
                     ForEach(
@@ -1449,22 +1495,21 @@ class EntryView {
                     )
                 }
             }
-                .scrollable(ScrollDirection.Vertical) // Vertical scrolling direction
+                .scrollable(ScrollDirection.Vertical) // Vertical scroll direction
                 .scrollBar(BarState.On) // Persistent scrollbar display
                 .scrollBarColor(Color.Gray) // Scrollbar color
                 .scrollBarWidth(10.px) // Scrollbar width
                 .friction(0.6)
-                .edgeEffect(EdgeEffect.None)
                 .onScrollEdge(
                     {
                         edge => match (edge) {
-                            case Edge.Top => nativeLog("Top")
-                            case Edge.Bottom => nativeLog("Bottom")
-                            case _ => nativeLog("None")
+                            case Edge.Top => loggerInfo("Top")
+                            case Edge.Bottom => loggerInfo("Bottom")
+                            case _ => loggerInfo("None")
                         }
                     })
                 .onScrollStop({
-                    => nativeLog("Scroll Stop")
+                    => loggerInfo("Scroll Stop")
                 })
 
             Button("scroll 150")
@@ -1479,16 +1524,16 @@ class EntryView {
             Button("scroll 100")
                 .onClick(
                     {
-                        evt => // Scroll to specified position (100.0vp down) after click
-                        nativeLog("current offset ${this.scroller.currentOffset().yOffset}")
-                        nativeLog("CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
+                        evt => // Scroll to specified position (down 100.0vp) after click
+                        loggerInfo("current offset ${this.scroller.currentOffset().yOffset}")
+                        loggerInfo("CALCULATE offset ${this.scroller.currentOffset().yOffset + 100.0}")
                         let curyOffset = this
                             .scroller
                             .currentOffset()
                             .yOffset
                         this
                             .scroller
-                            .scrollTo(xOffset: 0.vp, yOffset: (curyOffset + 100.0).vp, duration: 0.0, curve: Curve.Ease)
+                            .scrollTo(xOffset: 0.vp, yOffset: (curyOffset + 100.0).vp, animation: ScrollAnimationOptions(duration: 0.0, curve: Curve.Ease))
                     }
                 )
                 .margin(top: 60, left: 20)
@@ -1516,7 +1561,7 @@ class EntryView {
                     evt => // Trigger inertial scrolling with initial velocity of -3000vp/s after click
                     this
                         .scroller
-                        .fling(-3000)
+                        .fling(-3000.0)
                 })
                 .margin(top: 210, left: 20)
 
@@ -1536,9 +1581,9 @@ class EntryView {
 }
 ```
 
-## Example Code 2 (Nested Scrolling Implementation Method 1)
+## Sample Code 2 (Nested Scrolling Implementation Method 1)
 
-This example implements nested scrolling between an inner List component and an outer Scroll component using the onScrollFrameBegin event.
+This example uses the onScrollFrameBegin event to implement nested scrolling between the inner List component and outer Scroll component.
 
 <!-- run -->
 
@@ -1553,7 +1598,7 @@ import std.collection.ArrayList
 @Component
 class EntryView {
     @State
-    var listPosition: Int32 = 0 // 0 means scrolled to top of List, 1 means intermediate value, 2 means scrolled to bottom of List.
+    var listPosition: Int32 = 0 // 0 means scrolled to List top, 1 means intermediate value, 2 means scrolled to List bottom.
     let scroller = Scroller()
     let scrollerForList = Scroller()
     var arr: ArrayList<String> = ArrayList(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
@@ -1572,74 +1617,74 @@ class EntryView {
                             {
                                 evt => this
                                     .scrollerForList
-                                    .scrollToIndex(5, smooth: false, align: ScrollAlign.START, extraOffset: 5.vp)
+                                    .scrollToIndex(5, smooth: false, align: ScrollAlign.Start, options: ScrollToIndexOptions(extraOffset: 5.vp))
                             })
 
                     List(space: 20, scroller: this.scrollerForList) {
                         ForEach(
                             this.arr,
-                            itemGeneratorFunc: {
-                                item: String, idx: Int64 => ListItem() {
-                                    Text("ListItem" + item)
-                                        .width(100.percent)
-                                        .height(100.percent)
-                                        .backgroundColor(Color.White)
-                                        .borderRadius(15)
-                                        .textAlign(TextAlign.Center)
-                                        .fontSize(16)
-                                        .margin(top: 10)
-                                }
+                        itemGeneratorFunc: {
+                            item: String, idx: Int64 => ListItem() {
+                                Text("ListItem" + item)
                                     .width(100.percent)
-                                    .height(100)
+                                    .height(100.percent)
+                                    .backgroundColor(Color.White)
+                                    .borderRadius(15)
+                                    .textAlign(TextAlign.Center)
+                                    .fontSize(16)
+                                    .margin(top: 10)
                             }
-                        )
-                    }
-                        .width(100.percent)
-                        .height(50.percent)
-                        .edgeEffect(EdgeEffect.None)
-                        .friction(0.6)
-                        .onReachStart({
-                            => this.listPosition = 0
-                        })
-                        .onReachEnd({
-                            => this.listPosition = 2
-                        })
-                        .onScrollFrameBegin(
-                            {
-                                x: Float64, y: ScrollState =>
-                                if ((this.listPosition == 0 && x <= 0.0) || (this.listPosition == 2 && x >= 0.0)) {
-                                    this
-                                        .scroller
-                                        .scrollBy(xOffset: 0.0, yOffset: x)
-                                    return 0.0
-                                }
-                                this.listPosition = 1
-                                return x
-                            }
-                        )
-
-                    Text("Scroll Area")
-                        .width(100.percent)
-                        .height(40.percent)
-                        .backgroundColor(0x330000FF)
-                        .fontSize(16)
-                        .textAlign(TextAlign.Center)
+                                .width(100.percent)
+                                .height(100)
+                        }
+                    )
                 }
+                    .width(100.percent)
+                    .height(50.percent)
+                    .edgeEffect(EdgeEffect.None)
+                    .friction(0.6)
+                    .onReachStart({
+                        => this.listPosition = 0
+                    })
+                    .onReachEnd({
+                        => this.listPosition = 2
+                    })
+                    .onScrollFrameBegin(
+                        {
+                            x: Float64, y: ScrollState =>
+                            if ((this.listPosition == 0 && x <= 0.0) || (this.listPosition == 2 && x >= 0.0)) {
+                                this
+                                    .scroller
+                                    .scrollBy(xOffset: 0.0, yOffset: x)
+                                return onScrollFrameBeginHandleResult(offsetRemain: 0.0)
+                            }
+                            this.listPosition = 1
+                            return onScrollFrameBeginHandleResult(offsetRemain: x)
+                        }
+                    )
+
+                Text("Scroll Area")
+                    .width(100.percent)
+                    .height(40.percent)
+                    .backgroundColor(0x330000FF)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
             }
-                .width(100.percent)
-                .height(100.percent)
         }
             .width(100.percent)
             .height(100.percent)
-            .backgroundColor(0xDCDCDC)
-            .padding(20)
+    }
+        .width(100.percent)
+        .height(100.percent)
+        .backgroundColor(0xDCDCDC)
+        .padding(20)
     }
 }
 ```
 
-## Example Code 3 (Nested Scrolling Implementation Method 2)
+## Sample Code 3 (Nested Scrolling Implementation Method 2)
 
-This example implements nested scrolling between an inner List component and an outer Scroll component using the nestedScroll property.
+This example uses the nestedScroll property to implement nested scrolling between the inner List component and outer Scroll component.
 
 <!-- run -->
 
@@ -1664,7 +1709,7 @@ class EntryView {
                     .height(40.percent)
                     .backgroundColor(0x00800C)
                     .textAlign(TextAlign.Center)
-                Tabs(BarPosition.Start) {
+                Tabs(barPosition: BarPosition.Start) {
                     TabContent {
                         List(space: 10) {
                             ForEach(
@@ -1686,7 +1731,7 @@ class EntryView {
                             .width(100.percent)
                             .edgeEffect(EdgeEffect.Spring)
                             .nestedScroll(
-                                NestedScrollOptions(NestedScrollMode.PARENT_FIRST, NestedScrollMode.SELF_FIRST))
+                                NestedScrollOptions(NestedScrollMode.ParentFirst, NestedScrollMode.SelfFirst))
                     }.tabBar("Tab1")
 
                     TabContent {
@@ -1696,7 +1741,6 @@ class EntryView {
                     .height(100.percent)
             }.width(100.percent)
         }
-            .edgeEffect(EdgeEffect.Spring)
             .friction(0.6)
             .backgroundColor(0xDCDCDC)
             .scrollBar(BarState.Off)
@@ -1712,9 +1756,9 @@ class EntryView {
 }
 ```
 
-## Example Code 4 (Parent-to-Child Scrolling Transfer in Nested Scrolling)
+## Sample Code 4 (Parent-to-Child Scrolling Transfer in Nested Scrolling)
 
-This example implements scrolling transfer from parent component to child component using the enableScrollInteraction property and onScrollFrameBegin event.
+This example uses the enableScrollInteraction property and onScrollFrameBegin event to implement scrolling transfer from parent component to child component.
 
 <!-- run -->
 
@@ -1748,9 +1792,6 @@ class EntryView {
                     .backgroundColor(0x330000FF)
                     .fontSize(16)
                     .textAlign(TextAlign.Center)
-                    .onAreaChange({
-                        oldValue: Area, newValue: Area => this.headerHeight = newValue.height
-                    })
 
                 List(space: 20, scroller: this.scrollerForChild) {
                     ForEach(
@@ -1788,7 +1829,6 @@ class EntryView {
             }
         }
             .scrollBar(BarState.Off)
-            .edgeEffect(EdgeEffect.Spring)
             .onScrollFrameBegin(
                 {
                     offset: Float64, state: ScrollState =>
@@ -1841,9 +1881,9 @@ class EntryView {
             .backgroundColor(0xDCDCDC)
     }
 }
-```## Sample Code 5 (Setting Scroll Limits)
+```## Sample Code 5 (Setting Scroll Boundary)
 
-This example demonstrates scroll boundary limitation for the Scroll component.
+This example demonstrates the implementation of boundary-limited scrolling for the Scroll component.
 
 <!-- run -->
 
@@ -1876,80 +1916,13 @@ class EntryView {
         }
         .backgroundColor(Color.White)
         .height(100.percent)
-        .edgeEffect(EdgeEffect.Spring)
-        .scrollSnap(ScrollSnapOptions(ScrollSnapAlign.START, snapPagination: 400, enableSnapToStart: true, enableSnapToEnd: true))
-    }
-}
-```
-
-## Sample Code 6 (Setting Child Component Index)
-
-This example shows how to obtain child component indices in a List component.
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.ArrayList
-
-@Entry
-@Component
-class EntryView {
-    private var arr: ArrayList<Int64> = ArrayList<Int64>([])
-    private var scroller: ListScroller = ListScroller()
-    @State
-    var listSpace: Int64 = 10
-    @State
-    var listIndex: Int64 = 0
-
-    protected override func aboutToAppear() {
-        for (i in 0..10) {
-            this.arr.add(i)
-        }
-    }
-
-    func build() {
-        Column {
-            List(space: this.listSpace, initialIndex: 4, scroller: this.scroller) {
-                ForEach(
-                    this.arr,
-                    itemGeneratorFunc: {
-                        item: Int64, idx: Int64 => ListItem {
-                            Text("item-" + item.toString())
-                                .height(100)
-                                .width(90.percent)
-                                .fontSize(16)
-                                .textAlign(TextAlign.Center)
-                                .borderRadius(10)
-                                .backgroundColor(Color.White)
-                                .onClick({
-                                    _ => this.listIndex = item
-                                })
-                        }
-                    }
-                )
-            }
-                .backgroundColor(Color.Gray)
-                .layoutWeight(1)
-                .scrollBar(BarState.On)
-                .alignListItem(ListItemAlign.Center)
-
-            Text("Current item index: " + this
-                .listIndex
-                .toString())
-                .fontColor(Color.Red)
-                .height(50)
-        }
     }
 }
 ```
 
 ## Sample Code 7 (Setting Edge Fading Effect)
 
-This example implements edge fading effect for the Scroll component and configures the fading length.
+This example demonstrates enabling edge fading effect for the Scroll component and configuring the fading edge length.
 
 <!-- run -->
 
@@ -1967,7 +1940,7 @@ class EntryView {
     private var arr: ArrayList<Int64> = ArrayList<Int64>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 
     func build() {
-        Stack(Alignment.TopStart) {
+        Stack(alignContent: Alignment.TopStart) {
             Scroll(this.scroller) {
                 Column {
                     ForEach(

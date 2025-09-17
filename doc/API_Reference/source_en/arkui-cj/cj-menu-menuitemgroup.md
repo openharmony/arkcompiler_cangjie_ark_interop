@@ -30,14 +30,14 @@ public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit =
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| header | ResourceStr | Yes | - | **Named parameter.** Sets the header display information for the corresponding group. |
-| footer | ResourceStr | Yes | - | **Named parameter.** Sets the footer display information for the corresponding group. |
+| header | ResourceStr | No | "" | **Named parameter.** Sets the header display information for the corresponding group. |
+| footer | ResourceStr | No | "" | **Named parameter.** Sets the footer display information for the corresponding group. |
 | child | ()->Unit | No | { => } | **Named parameter.** Declares the child components within the container. |
 
 ### init(CustomBuilder, CustomBuilder, () -> Unit)
 
 ```cangjie
-public init(header!: AppResource, footer!: AppResource, child!: () -> Unit = {=>})
+public init(header!: CustomBuilder, footer!: CustomBuilder, child!: () -> Unit = {=>})
 ```
 
 **Function:** Creates a group for displaying menu items (MenuItem).
@@ -50,8 +50,8 @@ public init(header!: AppResource, footer!: AppResource, child!: () -> Unit = {=>
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| header | [CustomBuilder](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Sets the header display information for the corresponding group. |
-| footer | [CustomBuilder](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Sets the footer display information for the corresponding group. |
+| header | CustomBuilder | Yes | - | **Named parameter.** Sets the header display information for the corresponding group. |
+| footer | CustomBuilder | Yes | - | **Named parameter.** Sets the footer display information for the corresponding group. |
 | child | ()->Unit | No | { => } | **Named parameter.** Declares the child components within the container. |
 
 ## Universal Attributes/Events
@@ -64,4 +64,4 @@ Universal Events: All supported.
 
 Example Code
 
-Refer to the [Menu](cj-menu-menu.md#example-code) component example for details.
+For details, see the example in the [Menu](cj-menu-menu.md#example-code) component.

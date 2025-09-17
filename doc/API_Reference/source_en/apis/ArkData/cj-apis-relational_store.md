@@ -1,14 +1,14 @@
 # ohos.data.relational_store
 
-A Relational Database (RDB) is a database that manages data based on the relational model. The relational database provides a complete mechanism for managing local databases based on the SQLite component, offering a series of interfaces for CRUD (Create, Read, Update, Delete) operations. It can also directly execute user-input SQL statements to meet complex scenario requirements. Worker threads are not supported.
+A Relational Database (RDB) is a database that manages data based on the relational model. Built upon the SQLite component, the relational database provides a comprehensive mechanism for managing local databases. It offers a series of interfaces for operations such as insert, delete, update, and query, and can also directly execute user-input SQL statements to meet complex scenario requirements. Worker threads are not supported.
 
-Basic data types supported by the Cangjie side: Int64, Float64, String, binary data, Bool. To ensure successful data insertion and retrieval, it is recommended that a single piece of data does not exceed 2MB. If the size exceeds this limit, insertion may succeed but retrieval will fail.
+Basic data types supported on the Cangjie side: Int64, Float64, String, binary data, Bool. To ensure successful data insertion and retrieval, it is recommended that a single piece of data does not exceed 2MB. Data exceeding this size may be inserted successfully but fail to be read.
 
 This module provides the following common functionalities related to relational databases:
 
-- [RdbPredicates](#class-rdbpredicates): Terms used in the database to represent the properties, characteristics of data entities, or relationships between data entities, mainly used to define database operation conditions.
+- [RdbPredicates](#class-rdbpredicates): Terms used in the database to represent the properties, characteristics of data entities, or relationships between data entities, primarily used to define database operation conditions.
 - [RdbStore](#class-rdbstore): An interface that provides methods for managing relational databases (RDB).
-- [ResultSet](#class-resultset): A result set returned after users call relational database query interfaces.
+- [ResultSet](#class-resultset): The result set returned after users call relational database query interfaces.
 
 ## Import Module
 
@@ -20,14 +20,14 @@ import kit.ArkData.*
 
 ohos.permission.DISTRIBUTED_DATASYNC
 
-## Usage Instructions
+## Usage Guidelines
 
-API example code usage instructions:
+API example code usage guidelines:
 
 - If the first line of the example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above example project and configuration template, please refer to [Cangjie Example Code Description](../../cj-development-intro.md#仓颉示例代码说明).
+For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## func deleteRdbStore(UIAbilityContext, String)
 
@@ -35,7 +35,7 @@ For the above example project and configuration template, please refer to [Cangj
 public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 ```
 
-**Function:** Deletes the database using the specified database file configuration. After successful deletion, it is recommended to set the database object to None. If a custom path is configured in [StoreConfig](#class-storeconfig) when creating the database, calling this interface for deletion will be invalid, and the [deleteRdbStore(StageContext, StoreConfig)](#func-deleterdbstorestagecontext-storeconfig) interface must be used for deletion.
+**Function:** Deletes a database using the specified database file configuration. After successful deletion, it is recommended to set the database object to None. If a custom path is configured in [StoreConfig](#class-storeconfig) when creating the database, calling this interface for deletion will be ineffective, and the [deleteRdbStore(UIAbilityContext, StoreConfig)](#func-deleterdbstoreuiabilitycontext-storeconfig) interface must be used instead.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -43,25 +43,25 @@ public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The context of the application. For how to obtain the context, see [getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext). |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The context of the application. |
 | name | String | Yes | - | The name of the database. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800010 | Failed to open or delete the database by an invalid database path. |
 
 - IllegalArgumentException:
 
-| Error Message | Possible Cause | Handling Steps |
-  |:----|:---|:---|
+  | Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
   | The context is invalid. | todo | todo |
 
 ## func deleteRdbStore(UIAbilityContext, StoreConfig)
@@ -70,7 +70,7 @@ public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 ```
 
-**Function:** Deletes the database using the specified database file configuration. After successful deletion, it is recommended to set the database object to None. If the database file is in the public sandbox directory, this interface must be used for deletion. When multiple processes operate on the same database, it is recommended to send a database deletion notification to other processes to make them aware and handle it. If a custom path is configured in [StoreConfig](#class-storeconfig) when creating the database, this interface must be used for deletion.
+**Function:** Deletes a database using the specified database file configuration. After successful deletion, it is recommended to set the database object to None. If the database file is in the public sandbox directory, this interface must be used for deletion. When multiple processes operate on the same database, it is recommended to send a database deletion notification to other processes to make them aware and handle it. If a custom path is configured in [StoreConfig](#class-storeconfig) when creating the database, this interface must be called for deletion.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -78,17 +78,17 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The context of the application. For how to obtain the context, see [getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext). |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The context of the application. |
 | config | [StoreConfig](#class-storeconfig) | Yes | - | The database configuration related to this RDB store. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800010 | Failed to open or delete the database by an invalid database path. |
@@ -97,8 +97,8 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 
 - IllegalArgumentException:
 
-| Error Message | Possible Cause | Handling Steps |
-  |:----|:---|:---|
+  | Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
   | The context is invalid. | todo | todo |
 
 ## func getRdbStore(UIAbilityContext, StoreConfig)
@@ -107,7 +107,7 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStore
 ```
 
-**Function:** Obtains a related RdbStore to operate the relational database. Users can configure the parameters of the RdbStore according to their needs and then call the RdbStore interface to perform related data operations.
+**Function:** Obtains a related RdbStore to operate the relational database. Users can configure RdbStore parameters according to their needs and then call RdbStore interfaces to perform related data operations.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -115,9 +115,9 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The context of the application. For how to obtain the context, see [getStageContext](../AbilityKit/cj-apis-ability.md#func-getstagecontextabilitycontext). |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The context of the application. |
 | config | [StoreConfig](#class-storeconfig) | Yes | - | The database configuration related to this RDB store. |
 
 **Return Value:**
@@ -128,10 +128,10 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  |:----|:---|
+  | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14800000 | Inner error. |
   | 14800010 | Failed to open or delete the database by an invalid database path. |
@@ -150,8 +150,8 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
 
 - IllegalArgumentException:
 
-| Error Message | Possible Cause | Handling Steps |
-  |:----|:---|:---|
+  | Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
   | The context is invalid. | todo | todo |
 
 ## class Asset
@@ -165,7 +165,6 @@ public class Asset {
     public var modifyTime: String
     public var size: String
     public var status: AssetStatus
-
 
     public init(name: String, uri: String, path: String, createTime: String, modifyTime: String, size: String,
         status!: AssetStatus = AssetStatus.AssetNormal)
@@ -188,7 +187,7 @@ public var createTime: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -204,7 +203,7 @@ public var modifyTime: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -220,7 +219,7 @@ public var name: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -236,7 +235,7 @@ public var path: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -252,7 +251,7 @@ public var size: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -268,7 +267,7 @@ public var status: AssetStatus
 
 **Type:** [AssetStatus](#enum-assetstatus)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -280,11 +279,11 @@ public var status: AssetStatus
 public var uri: String
 ```
 
-**Function:** The URI of the asset, which is the absolute path in the system.
+**Function:** The URI of the asset, representing its absolute path in the system.
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -305,10 +304,10 @@ public init(name: String, uri: String, path: String, createTime: String, modifyT
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | name | String | Yes | - | The name of the asset. |
-| uri | String | Yes | - | The URI of the asset, which is the absolute path in the system. |
+| uri | String | Yes | - | The URI of the asset, representing its absolute path in the system. |
 | path | String | Yes | - | The path of the asset in the application sandbox. |
 | createTime | String | Yes | - | The time when the asset was created. |
 | modifyTime | String | Yes | - | The last time the asset was modified. |
@@ -326,7 +325,6 @@ public class CryptoParam {
     public var kdfAlgo:?KdfAlgo
     public var cryptoPageSize: UInt32
 
-
     public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
         encryptionAlgo!: EncryptionAlgo = EncryptionAlgo.Aes256Gcm,
         hmacAlgo!: HmacAlgo = HmacAlgo.Sha256, kdfAlgo!: ?KdfAlgo = None,
@@ -334,7 +332,7 @@ public class CryptoParam {
 }
 ```
 
-**Function:** Configuration parameters for database encryption. This configuration is only valid when the encrypt option in StoreConfig is set to true.
+**Function:** Configuration parameters for database encryption. This configuration is only effective when the encrypt option in StoreConfig is set to true.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -346,11 +344,11 @@ public class CryptoParam {
 public var cryptoPageSize: UInt32
 ```
 
-**Function:** An integer type that specifies the page size used for database encryption and decryption.
+**Function:** An integer type specifying the page size used for database encryption and decryption.
 
 **Type:** UInt32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -366,7 +364,7 @@ public var encryptionAlgo: EncryptionAlgo
 
 **Type:** [EncryptionAlgo](#enum-encryptionalgo)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -382,7 +380,7 @@ public var encryptionKey: Array<UInt8>
 
 **Type:** Array\<UInt8>
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -398,7 +396,7 @@ public var hmacAlgo: HmacAlgo
 
 **Type:** [HmacAlgo](#enum-hmacalgo)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -410,11 +408,11 @@ public var hmacAlgo: HmacAlgo
 public var iterationCount: Int32
 ```
 
-**Function:** An integer type that specifies the iteration count for the PBKDF2 algorithm used by the database, with a default value of 10000.
+**Function:** An integer type specifying the iteration count for the PBKDF2 algorithm used in the database, with a default value of 10000.
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -430,7 +428,7 @@ public var kdfAlgo:?KdfAlgo
 
 **Type:** ?[KdfAlgo](#enum-kdfalgo)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -445,7 +443,7 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
     cryptoPageSize!: UInt32 = 1024)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Constructor for the CryptoParam class.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -453,20 +451,20 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| encryptionKey | Array\<UInt8> | Yes | - | Specifies the key used for database encryption and decryption. If the passed key is empty, the database will generate and save the key, and use the generated key to open the database file. After use, the user needs to zero out all key contents. |
-| iterationCount | Int32 | No | 10000 | An integer type that specifies the iteration count for the PBKDF2 algorithm used by the database, with a default value of## class RdbPredicates
+| encryptionKey | Array\<UInt8> | Yes | - | Specifies the key used for database encryption and decryption. If an empty key is passed, the database will generate and save the key, and use the generated key to open the database file. After use, the user must set all key contents to zero. |
+| iterationCount | Int32 | No | 10000 | An integer type specifying the iteration count for the PBKDF2 algorithm used in the database, with a default value of 10000. The iteration count should be a positive integer; if not, it will be rounded down. If this parameter is not specified or is set to zero, the default value of 10000 will be used, along with the default encryption algorithm AES_256_GCM. |
+| encryptionAlgo | [EncryptionAlgo](#enum-encryptionalgo) | No | EncryptionAlgo.Aes256Gcm |## class RdbPredicates
 
 ```cangjie
 public class RdbPredicates {
-
 
     public init(name: String)
 }
 ```
 
-**Description:** Represents predicates for a relational database (RDB). This class determines whether the value of a conditional expression in the RDB is true or false. This type is not thread-safe. If there are multiple threads operating on instances derived from this class in the application, ensure proper locking mechanisms are in place.
+**Description:** Represents predicates for relational databases (RDB). This class determines whether the value of a conditional expression in an RDB is true or false. This type is not thread-safe. If there are multi-thread operations on instances derived from this class in the application, ensure proper locking protection.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -475,7 +473,6 @@ public class RdbPredicates {
 ### init(String)
 
 ```cangjie
-
 public init(name: String)
 ```
 
@@ -487,18 +484,17 @@ public init(name: String)
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| name | String | Yes | - | Name of the database table. |
+| Parameter | Type   | Mandatory | Default | Description          |
+| :--------| :----- | :-------- | :------ | :------------------- |
+| name     | String | Yes       | -       | Name of the database table. |
 
 ### func `in`(String, Array\<ValueType>)
 
 ```cangjie
-
 public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value falls within the given range.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table falls within the given range.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -506,15 +502,15 @@ public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | Array\<[ValueType](#enum-valuetype)> | Yes | - | Values to match, specified as an array of RelationalStoreValueType. |
+| Parameter | Type                  | Mandatory | Default | Description                                      |
+| :--------| :-------------------- | :-------- | :------ | :----------------------------------------------- |
+| field    | String                | Yes       | -       | Column name in the database table.               |
+| value    | Array\<[ValueType](#enum-valuetype)> | Yes       | -       | Values to match, specified as an array of RelationalStoreValueType. |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -522,15 +518,12 @@ public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func and()
 
 ```cangjie
-
 public func and(): RdbPredicates
 ```
 
@@ -542,14 +535,13 @@ public func and(): RdbPredicates
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
-| [RdbPredicates](#class-rdbpredicates) | Returns the RdbPredicates with the AND condition. |
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
+| [RdbPredicates](#class-rdbpredicates) | Returns the RDB predicate with the AND condition. |
 
 ### func beginWrap()
 
 ```cangjie
-
 public func beginWrap(): RdbPredicates
 ```
 
@@ -561,18 +553,17 @@ public func beginWrap(): RdbPredicates
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
-| [RdbPredicates](#class-rdbpredicates) | Returns the RdbPredicates with the left parenthesis. |
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
+| [RdbPredicates](#class-rdbpredicates) | Returns the RDB predicate with the left parenthesis. |
 
 ### func beginsWith(String, String)
 
 ```cangjie
-
 public func beginsWith(field: String, value: String): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value starts with the given string.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table starts with `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -580,15 +571,15 @@ public func beginsWith(field: String, value: String): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | String | Yes | - | Value to match with the predicate. |
+| Parameter | Type   | Mandatory | Default | Description                                      |
+| :--------| :----- | :-------- | :------ | :----------------------------------------------- |
+| field    | String | Yes       | -       | Column name in the database table.               |
+| value    | String | Yes       | -       | Value to match with the predicate.               |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -596,19 +587,16 @@ public func beginsWith(field: String, value: String): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func between(String, ValueType, ValueType)
 
 ```cangjie
-
 public func between(field: String, low: ValueType, high: ValueType): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value falls within the given range (inclusive).
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table falls within the given range (inclusive of boundaries).
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -616,16 +604,16 @@ public func between(field: String, low: ValueType, high: ValueType): RdbPredicat
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| low | [ValueType](#enum-valuetype) | Yes | - | Minimum value to match with the predicate. |
-| high | [ValueType](#enum-valuetype) | Yes | - | Maximum value to match with the predicate. |
+| Parameter | Type                  | Mandatory | Default | Description                                      |
+| :--------| :-------------------- | :-------- | :------ | :----------------------------------------------- |
+| field    | String                | Yes       | -       | Column name in the database table.               |
+| low      | [ValueType](#enum-valuetype) | Yes       | -       | Minimum value to match with the predicate.       |
+| high     | [ValueType](#enum-valuetype) | Yes       | -       | Maximum value to match with the predicate.       |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -633,19 +621,16 @@ public func between(field: String, low: ValueType, high: ValueType): RdbPredicat
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func contains(String, String)
 
 ```cangjie
-
 public func contains(field: String, value: String): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value contains the given string.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table contains `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -653,15 +638,15 @@ public func contains(field: String, value: String): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | String | Yes | - | Value to match with the predicate. |
+| Parameter | Type   | Mandatory | Default | Description                                      |
+| :--------| :----- | :-------- | :------ | :----------------------------------------------- |
+| field    | String | Yes       | -       | Column name in the database table.               |
+| value    | String | Yes       | -       | Value to match with the predicate.               |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -669,15 +654,12 @@ public func contains(field: String, value: String): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func distinct()
 
 ```cangjie
-
 public func distinct(): RdbPredicates
 ```
 
@@ -689,14 +671,13 @@ public func distinct(): RdbPredicates
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
-| [RdbPredicates](#class-rdbpredicates) | Returns the predicate that can be used to filter duplicate records. |
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
+| [RdbPredicates](#class-rdbpredicates) | Returns the predicate for filtering duplicate records. |
 
 ### func endWrap()
 
 ```cangjie
-
 public func endWrap(): RdbPredicates
 ```
 
@@ -708,18 +689,17 @@ public func endWrap(): RdbPredicates
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
-| [RdbPredicates](#class-rdbpredicates) | Returns the RdbPredicates with the right parenthesis. |
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
+| [RdbPredicates](#class-rdbpredicates) | Returns the RDB predicate with the right parenthesis. |
 
 ### func endsWith(String, String)
 
 ```cangjie
-
 public func endsWith(field: String, value: String): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value ends with the given string.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table ends with `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -727,15 +707,15 @@ public func endsWith(field: String, value: String): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | String | Yes | - | Value to match with the predicate. |
+| Parameter | Type   | Mandatory | Default | Description                                      |
+| :--------| :----- | :-------- | :------ | :----------------------------------------------- |
+| field    | String | Yes       | -       | Column name in the database table.               |
+| value    | String | Yes       | -       | Value to match with the predicate.               |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -743,19 +723,16 @@ public func endsWith(field: String, value: String): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func equalTo(String, ValueType)
 
 ```cangjie
-
 public func equalTo(field: String, value: ValueType): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value equals the given value.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table equals `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -763,15 +740,15 @@ public func equalTo(field: String, value: ValueType): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | [ValueType](#enum-valuetype) | Yes | - | Value to match with the predicate. |
+| Parameter | Type                  | Mandatory | Default | Description                                      |
+| :--------| :-------------------- | :-------- | :------ | :----------------------------------------------- |
+| field    | String                | Yes       | -       | Column name in the database table.               |
+| value    | [ValueType](#enum-valuetype) | Yes       | -       | Value to match with the predicate.               |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -779,19 +756,16 @@ public func equalTo(field: String, value: ValueType): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func glob(String, String)
 
 ```cangjie
-
 public func glob(field: String, value: String): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match the specified field in the data table where the value matches the given pattern.
+**Description:** Configures the predicate to match the specified field where the data field equals `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -799,15 +773,15 @@ public func glob(field: String, value: String): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | String | Yes | - | Value to match with the predicate.<br>Wildcards are supported: * represents zero, one, or multiple digits or characters; ? represents one digit or character. |
+| Parameter | Type   | Mandatory | Default | Description                                      |
+| :--------| :----- | :-------- | :------ | :----------------------------------------------- |
+| field    | String | Yes       | -       | Column name in the database table.               |
+| value    | String | Yes       | -       | Value to match with the predicate.<br>Wildcards are supported: `*` represents 0, 1, or multiple digits or characters; `?` represents 1 digit or character. |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -815,19 +789,16 @@ public func glob(field: String, value: String): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
 ### func greaterThan(String, ValueType)
 
 ```cangjie
-
 public func greaterThan(field: String, value: ValueType): RdbPredicates
 ```
 
-**Description:** Configures the predicate to match fields in the specified column of the data table where the value is greater than the given value.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table is greater than `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -835,15 +806,15 @@ public func greaterThan(field: String, value: ValueType): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | Column name in the database table. |
-| value | [ValueType](#enum-valuetype) | Yes | - | Value to match with the predicate. |
+| Parameter | Type                  | Mandatory | Default | Description                                      |
+| :--------| :-------------------- | :-------- | :------ | :----------------------------------------------- |
+| field    | String                | Yes       | -       | Column name in the database table.               |
+| value    | [ValueType](#enum-valuetype) | Yes       | -       | Value to match with the predicate.               |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -851,17 +822,16 @@ public func greaterThan(field: String, value: ValueType): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-<br>2. Incorrect parameter types.
- |### func greaterThanOrEqualTo(String, ValueType)
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+### func greaterThanOrEqualTo(String, ValueType)
 
 ```cangjie
-
 public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is greater than or equal to the given value.
+**Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table is greater than or equal to `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -869,15 +839,15 @@ public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| value | [ValueType](#enum-valuetype) | Yes | - | Specifies the value to match with the predicate. |
+| Parameter | Type                  | Mandatory | Default | Description                                      |
+| :--------| :-------------------- | :-------- | :------ | :----------------------------------------------- |
+| field    | String                | Yes       | -       | Column name in the database table.               |
+| value    | [ValueType](#enum-valuetype) | Yes       | -       | Value to match with the predicate.               |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description                                  |
+| :-------------------- | :------------------------------------------- |
 | [RdbPredicates](#class-rdbpredicates) | Returns the predicate matching the specified field. |
 
 **Exceptions:**
@@ -885,17 +855,15 @@ public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-
-### func groupBy(Array\<String>)
+  | :------------ | :------------ |
+  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |### func groupBy(Array\<String>)
 
 ```cangjie
 
 public func groupBy(fields: Array<String>): RdbPredicates
 ```
 
-**Function:** Configures a predicate to group query results by specified columns.
+**Description:** Configures the predicate to group query results by specified columns.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -905,7 +873,7 @@ public func groupBy(fields: Array<String>): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| fields | Array\<String> | Yes | - | Specifies the column names for grouping. |
+| fields | Array\<String> | Yes | - | Column names on which grouping depends. |
 
 **Return Value:**
 
@@ -928,7 +896,7 @@ public func groupBy(fields: Array<String>): RdbPredicates
 public func inAllDevices(): RdbPredicates
 ```
 
-**Function:** Connects to all remote devices in the network when synchronizing distributed databases.
+**Description:** Connects to all remote devices in the network when synchronizing distributed databases.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -947,7 +915,7 @@ public func inAllDevices(): RdbPredicates
 public func isNotNull(field: String): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is not null.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is not null.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -957,7 +925,7 @@ public func isNotNull(field: String): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
+| field | String | Yes | - | Column name in the database table. |
 
 **Return Value:**
 
@@ -980,7 +948,7 @@ public func isNotNull(field: String): RdbPredicates
 public func isNull(field: String): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is null.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is null.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -990,7 +958,7 @@ public func isNull(field: String): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
+| field | String | Yes | - | Column name in the database table. |
 
 **Return Value:**
 
@@ -1013,7 +981,7 @@ public func isNull(field: String): RdbPredicates
 public func lessThan(field: String, value: ValueType): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is less than the given value.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is less than `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1023,8 +991,8 @@ public func lessThan(field: String, value: ValueType): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| value | [ValueType](#enum-valuetype) | Yes | - | Specifies the value to match with the predicate. |
+| field | String | Yes | - | Column name in the database table. |
+| value | [ValueType](#enum-valuetype) | Yes | - | Value to match with the predicate. |
 
 **Return Value:**
 
@@ -1047,7 +1015,7 @@ public func lessThan(field: String, value: ValueType): RdbPredicates
 public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is less than or equal to the given value.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is less than or equal to `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1057,8 +1025,8 @@ public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| value | [ValueType](#enum-valuetype) | Yes | - | Specifies the value to match with the predicate. |
+| field | String | Yes | - | Column name in the database table. |
+| value | [ValueType](#enum-valuetype) | Yes | - | Value to match with the predicate. |
 
 **Return Value:**
 
@@ -1081,7 +1049,7 @@ public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 public func like(field: String, value: String): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is similar to the given value.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is similar to `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1091,8 +1059,8 @@ public func like(field: String, value: String): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| value | String | Yes | - | Specifies the value to match with the predicate. |
+| field | String | Yes | - | Column name in the database table. |
+| value | String | Yes | - | Value to match with the predicate. |
 
 **Return Value:**
 
@@ -1115,7 +1083,7 @@ public func like(field: String, value: String): RdbPredicates
 public func limitAs(value: Int32): RdbPredicates
 ```
 
-**Function:** Sets the predicate for the maximum number of data records.
+**Description:** Sets the predicate for the maximum number of data records.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1125,7 +1093,7 @@ public func limitAs(value: Int32): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int32 | Yes | - | The maximum number of data records. |
+| value | Int32 | Yes | - | Maximum number of data records. |
 
 **Return Value:**
 
@@ -1148,7 +1116,7 @@ public func limitAs(value: Int32): RdbPredicates
 public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table falls outside the given range (excluding the range boundaries).
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table falls outside the given range (excluding the range boundaries).
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1158,9 +1126,9 @@ public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredi
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| low | [ValueType](#enum-valuetype) | Yes | - | Specifies the minimum value to match with the predicate. |
-| high | [ValueType](#enum-valuetype) | Yes | - | Specifies the maximum value to match with the predicate. |
+| field | String | Yes | - | Column name in the database table. |
+| low | [ValueType](#enum-valuetype) | Yes | - | Minimum value to match with the predicate. |
+| high | [ValueType](#enum-valuetype) | Yes | - | Maximum value to match with the predicate. |
 
 **Return Value:**
 
@@ -1183,7 +1151,7 @@ public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredi
 public func notEqualTo(field: String, value: ValueType): RdbPredicates
 ```
 
-**Function:** Configures a predicate to match fields where the value in the specified column of the data table is not equal to the given value.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is not equal to `value`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1193,8 +1161,8 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| value | [ValueType](#enum-valuetype) | Yes | - | Specifies the value to match with the predicate. |
+| field | String | Yes | - | Column name in the database table. |
+| value | [ValueType](#enum-valuetype) | Yes | - | Value to match with the predicate. |
 
 **Return Value:**
 
@@ -1217,7 +1185,7 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
 public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
-**Function:** Configures the predicate to match fields where the value in the specified column of the data table is not in the given array of values.
+**Description:** Configures the predicate to match fields where the value in the `field` column of the data table is not in the specified range of `ValueType`.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1227,8 +1195,8 @@ public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
-| value | Array\<[ValueType](#enum-valuetype)> | Yes | - | Specifies the values to exclude, provided as an array of ValueType. |
+| field | String | Yes | - | Column name in the database table. |
+| value | Array\<[ValueType](#enum-valuetype)> | Yes | - | Values to match with the predicate, specified as an array of `ValueType`. |
 
 **Return Value:**
 
@@ -1251,7 +1219,7 @@ public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 public func offsetAs(rowOffset: Int32): RdbPredicates
 ```
 
-**Function:** Configures the predicate to specify the starting position of the returned results. This method must be used in conjunction with [limitAs](#func-limitasint32).
+**Description:** Configures the predicate to specify the starting position of the returned results. This method must be used together with [limitAs](#func-limitasint32).
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1261,7 +1229,7 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| rowOffset | Int32 | Yes | - | The starting position of the returned results, which must be a positive integer. |
+| rowOffset | Int32 | Yes | - | Starting position of the returned results, which must be a positive integer. |
 
 **Return Value:**
 
@@ -1284,7 +1252,7 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
 public func or(): RdbPredicates
 ```
 
-**Function:** Adds an OR condition to the predicate.
+**Description:** Adds an OR condition to the predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1294,7 +1262,7 @@ public func or(): RdbPredicates
 
 | Type | Description |
 |:----|:----|
-| [RdbPredicates](#class-rdbpredicates) | Returns the RdbPredicates with the OR condition. |
+| [RdbPredicates](#class-rdbpredicates) | Returns the Rdb predicate with the OR condition. |
 
 ### func orderByAsc(String)
 
@@ -1303,7 +1271,7 @@ public func or(): RdbPredicates
 public func orderByAsc(field: String): RdbPredicates
 ```
 
-**Function:** Configures a predicate to sort the specified column of the data table in ascending order.
+**Description:** Configures the predicate to sort the values in the `field` column of the data table in ascending order.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1313,7 +1281,7 @@ public func orderByAsc(field: String): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
+| field | String | Yes | - | Column name in the database table. |
 
 **Return Value:**
 
@@ -1336,7 +1304,7 @@ public func orderByAsc(field: String): RdbPredicates
 public func orderByDesc(field: String): RdbPredicates
 ```
 
-**Function:** Configures a predicate to sort the specified column of the data table in descending order.
+**Description:** Configures the predicate to sort the values in the `field` column of the data table in descending order.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1346,13 +1314,13 @@ public func orderByDesc(field: String): RdbPredicates
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| field | String | Yes | - | The column name in the database table. |
+| field | String | Yes | - | Column name in the database table. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [RdbPredicates](#class-rdbpredicates) | The column name in the database table. |
+| [RdbPredicates](#class-rdbpredicates) | Column name in the database table. |
 
 **Exceptions:**
 
@@ -1366,7 +1334,7 @@ public func orderByDesc(field: String): RdbPredicates
 public class RdbStore {}
 ```
 
-**Description:** Provides interfaces for managing relational database (RDB) methods.
+**Description:** Provides interfaces for managing relational databases (RDB).
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1387,7 +1355,7 @@ public func backup(destName: String): Unit
 **Parameters:**
 
 | Parameter | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+|:---|:---|:---|:---|:---|
 | destName | String | Yes | - | Specifies the backup file name of the database. |
 
 **Exceptions:**
@@ -1396,12 +1364,12 @@ public func backup(destName: String): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
   | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800022 | SQLite: Callback routine requested an abort. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
@@ -1431,15 +1399,15 @@ public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
 **Parameters:**
 
 | Parameter | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| table | String | Yes | - | Specifies the target table name. |
+|:---|:---|:---|:---|:---|
+| table | String | Yes | - | Specifies the name of the target table. |
 | values | Array\<[ValuesBucket](#type-valuesbucket)> | Yes | - | Represents the set of data to be inserted into the table. |
 
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
-| Int64 | Returns the number of inserted data rows if the operation is successful; otherwise, returns -1. |
+|:----|:----|
+| Int64 | If the operation is successful, returns the number of inserted data rows; otherwise, returns -1. |
 
 **Exceptions:**
 
@@ -1447,11 +1415,11 @@ public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
   | 14800025 | SQLite: A table in the database is locked. |
@@ -1486,7 +1454,7 @@ public func beginTransaction(): Unit
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
   | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800022 | SQLite: Callback routine requested an abort. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
@@ -1525,7 +1493,7 @@ public func commit(): Unit
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
   | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800022 | SQLite: Callback routine requested an abort. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
@@ -1555,13 +1523,13 @@ public func delete(predicates: RdbPredicates): Int64
 **Parameters:**
 
 | Parameter | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
+|:---|:---|:---|:---|:---|
 | predicates | [RdbPredicates](#class-rdbpredicates) | Yes | - | Specifies the deletion conditions defined by the RdbPredicates instance. |
 
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
+|:----|:----|
 | Int64 | Number of affected rows. |
 
 **Exceptions:**
@@ -1570,12 +1538,12 @@ public func delete(predicates: RdbPredicates): Int64
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
   | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800022 | SQLite: Callback routine requested an abort. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
@@ -1597,7 +1565,7 @@ public func delete(predicates: RdbPredicates): Int64
 public func emit(event: String): Unit
 ```
 
-**Description:** Notifies inter-process or intra-process listeners registered via [on](#func-onstring-bool-callback0argument).
+**Description:** Notifies the inter-process or intra-process listeners registered via [on](#func-onstring-bool-callback0argument).
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1606,8 +1574,8 @@ public func emit(event: String): Unit
 **Parameters:**
 
 | Parameter | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| event | String | Yes | - | Specifies the name of the subscribed event to be notified. |
+|:---|:---|:---|:---|:---|
+| event | String | Yes | - | Specifies the name of the event to notify. |
 
 **Exceptions:**
 
@@ -1615,7 +1583,7 @@ public func emit(event: String): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 801 | Capability not supported. |
   | 14800000 | Inner error. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
@@ -1624,10 +1592,10 @@ public func emit(event: String): Unit
 ### func executeSql(String, Array\<ValueType>)
 
 ```cangjie
-public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>()): Unit
+public func executeSql(sql: String, bindArgs!: Array<ValueType> = []): Unit
 ```
 
-**Description:** Executes an SQL statement with specified parameters but does not return a value.
+**Description:** Executes an SQL statement with specified parameters that does not return a value.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1636,9 +1604,9 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueTyp
 **Parameters:**
 
 | Parameter | Type | Mandatory | Default Value | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| sql | String | Yes | - | Specifies the SQL statement to be executed. |
-| bindArgs | Array\<[ValueType](#enum-valuetype)> | No | Array<ValueType>() | Values of the parameters in the SQL statement, corresponding to the placeholders in the SQL statement. This parameter is optional if the SQL statement is complete. |
+|:---|:---|:---|:---|:---|
+| sql | String | Yes | - | Specifies the SQL statement to execute. |
+| bindArgs | Array\<[ValueType](#enum-valuetype)> | No | [] | Specifies the parameter values for the SQL statement, corresponding to the placeholders in the SQL statement. If the SQL statement is complete, this parameter can be omitted. |
 
 **Exceptions:**
 
@@ -1646,66 +1614,13 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = Array<ValueTyp
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 801 | Capability not supported the sql(attach,begin,commit,rollback etc.). |
   | 14800000 | Inner error. |
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
   | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022 | SQLite: Callback routine requested an abort. |
-  | 14800023 | SQLite: Access permission denied. |
-  | 14800024 | SQLite: The database file is locked. |
-  | 14800025 | SQLite: A table in the database is locked. |
-  | 14800026 | SQLite: The database is out of memory. |
-  | 14800027 | SQLite: Attempt to write a readonly database. |
-  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |
-  | 14800047 | The WAL file size exceeds the default limit. |### func insert(String, ValuesBucket, ConflictResolution)
-
-```cangjie
-
-public func insert(table: String, values: ValuesBucket,
-    conflict!: ConflictResolution = ConflictResolution.OnConflictNone): Int64
-```
-
-**Function:** Inserts a row of data into the target table.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| table | String | Yes | - | Specifies the target table name. |
-| values | [ValuesBucket](#type-valuesbucket) | Yes | - | Represents the data row to be inserted into the table. |
-| conflict | [ConflictResolution](#enum-conflictresolution) | No | ConflictResolution.OnConflictNone | Specifies the conflict resolution method. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int64 | Returns the row ID if the operation is successful; otherwise, returns -1. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 14800000 | Internal error. |
-  | 14800011 | Failed to open the database because it is corrupted. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800022 | SQLite: Callback routine requested an abort. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
@@ -1721,239 +1636,14 @@ public func insert(table: String, values: ValuesBucket,
   | 14800034 | SQLite: Library used incorrectly. |
   | 14800047 | The WAL file size exceeds the default limit. |
 
-### func off(String, Bool, ?Callback0Argument)
+### func insert(String, ValuesBucket, ConflictResolution)
 
 ```cangjie
-
-public func off(event: String, interProcess: Bool, callback!: ?Callback0Argument = None): Unit
-```
-
-**Function:** Unsubscribes from data change event listeners.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| event | String | Yes | - | Name of the event to unsubscribe from. |
-| interProcess | Bool | Yes | - | Specifies whether to unsubscribe inter-process or intra-process. true: inter-process; false: intra-process. |
-| callback | ?[Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument) | No | None | Specifies the callback object to unsubscribe. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 801 | Capability not supported. |
-  | 14800000 | Internal error. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800050 | Failed to obtain the subscription service. |
-
-### func on(String, Bool, Callback0Argument)
-
-```cangjie
-
-public func on(event: String, interProcess: Bool, callback: Callback0Argument): Unit
-```
-
-**Function:** Registers an intra-process or inter-process event listener for the database. The callback will be invoked when the [emit](#func-emitstring) interface is called.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| event | String | Yes | - | Name of the event to subscribe to. |
-| interProcess | Bool | Yes | - | Specifies whether to subscribe inter-process or intra-process.<br/> true: inter-process;<br/> false: intra-process. |
-| callback | [Callback0Argument](../BasicServicesKit/cj-apis-base.md#class-callback0argument) | Yes | - | Callback function object. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 801 | Capability not supported. |
-  | 14800000 | Internal error. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800050 | Failed to obtain the subscription service. |
-
-### func query(RdbPredicates, Array\<String>)
-
-```cangjie
-
-public func query(predicates: RdbPredicates, columns: Array<String>): ResultSet
-```
-
-**Function:** Queries data in the database based on specified conditions.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| predicates | [RdbPredicates](#class-rdbpredicates) | Yes | - | RdbPredicates instance object specifying the query conditions. |
-| columns | Array\<String> | Yes | - | Represents the columns to query. If the value is empty, the query applies to all columns. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [ResultSet](#class-resultset) | ResultSet object. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 14800000 | Internal error. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800015 | The database does not respond. |
-
-### func querySql(String, Array\<ValueType>)
-
-```cangjie
-
-public func querySql(sql: String, bindArgs!: Array<ValueType> = Array<ValueType>()): ResultSet
-```
-
-**Function:** Queries data in the database based on the specified SQL statement.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| sql | String | Yes | - | Specifies the SQL statement to execute. |
-| bindArgs | Array\<[ValueType](#enum-valuetype)> | No | Array<ValueType>() | **Named parameter.** Values of parameters in the SQL statement. This value corresponds to the placeholders in the sql parameter statement. If the sql parameter statement is complete, this parameter can be omitted. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| [ResultSet](#class-resultset) | Returns a ResultSet object if the operation is successful. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 14800000 | Internal error. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800015 | The database does not respond. |
-
-### func restore(String)
-
-```cangjie
-
-public func restore(srcName: String): Unit
-```
-
-**Function:** Restores the database from the specified database backup file.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| srcName | String | Yes | - | Specifies the backup file name of the database. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 14800000 | Internal error. |
-  | 14800011 | Failed to open the database because it is corrupted. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022 | SQLite: Callback routine requested an abort. |
-  | 14800023 | SQLite: Access permission denied. |
-  | 14800024 | SQLite: The database file is locked. |
-  | 14800025 | SQLite: A table in the database is locked. |
-  | 14800026 | SQLite: The database is out of memory. |
-  | 14800027 | SQLite: Attempt to write a readonly database. |
-  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |
-
-### func rollBack()
-
-```cangjie
-
-public func rollBack(): Unit
-```
-
-**Function:** Rolls back executed SQL statements. This interface does not support multi-process or multi-thread usage.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. The store must not be nullptr. |
-  | 14800000 | Internal error. |
-  | 14800011 | Failed to open the database because it is corrupted. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022 | SQLite: Callback routine requested an abort. |
-  | 14800023 | SQLite: Access permission denied. |
-  | 14800024 | SQLite: The database file is locked. |
-  | 14800025 | SQLite: A table in the database is locked. |
-  | 14800026 | SQLite: The database is out of memory. |
-  | 14800027 | SQLite: Attempt to write a readonly database. |
-  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |
-
-### func update(ValuesBucket, RdbPredicates, ConflictResolution)
-
-```cangjie
-
-public func update(values: ValuesBucket, predicates: RdbPredicates,
+public func insert(table: String, values: ValuesBucket,
     conflict!: ConflictResolution = ConflictResolution.OnConflictNone): Int64
 ```
 
-**Function:** Updates data in the database based on the specified RdbPredicates instance object.
+**Description:** Inserts a row of data into the specified table.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1961,30 +1651,30 @@ public func update(values: ValuesBucket, predicates: RdbPredicates,
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| values | [ValuesBucket](#type-valuesbucket) | Yes | - | values indicates the data row to be updated in the database. Key-value pairs are associated with column names in the database table. |
-| predicates | [RdbPredicates](#class-rdbpredicates) | Yes | - | RdbPredicates instance object specifying the update conditions. |
-| conflict | [ConflictResolution](#enum-conflictresolution) | No | ConflictResolution.OnConflictNone | Specifies the conflict resolution method. |
+| table | String | Yes | - | Specifies the name of the target table. |
+| values | [ValuesBucket](#type-valuesbucket) | Yes | - | Represents the row of data to be inserted into the table. |
+| conflict | [ConflictResolution](#enum-conflictresolution) | No | ConflictResolution.OnConflictNone | Specifies the conflict resolution strategy. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Int64 | Returns the number of affected rows. |
+| Int64 | If the operation is successful, returns the row ID; otherwise, returns -1. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
-  | 14800000 | Internal error. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 14800000 | Inner error. |
   | 14800011 | Failed to open the database because it is corrupted. |
   | 14800014 | The RdbStore or ResultSet is already closed. |
   | 14800015 | The database does not respond. |
-  | 14800021 | SQLite: Generic error.<br>Possible causes: Insert failed or the updated data does not exist. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
   | 14800022 | SQLite: Callback routine requested an abort. |
   | 14800023 | SQLite: Access permission denied. |
   | 14800024 | SQLite: The database file is locked. |
@@ -1992,19 +1682,13 @@ public func update(values: ValuesBucket, predicates: RdbPredicates,
   | 14800026 | SQLite: The database is out of memory. |
   | 14800027 | SQLite: Attempt to write a readonly database. |
   | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |
-  | 14800047 | The WAL file size exceeds the default limit. |## class ResultSet
+  | 14800029## class ResultSet
 
 ```cangjie
 public class ResultSet {}
 ```
 
-**Function:** Provides methods to access database result sets generated through queries. A result set refers to the collection of results returned after a user invokes a relational database query interface, offering various flexible data access methods for users to retrieve data items.
+**Description:** Provides methods for accessing database result sets generated by queries. A result set refers to the collection of results returned after a user calls a relational database query interface, offering various flexible data access methods for users to retrieve data items.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2016,7 +1700,7 @@ public class ResultSet {}
 public prop columnCount: Int32
 ```
 
-**Function:** Gets the number of columns in the result set.
+**Description:** Gets the number of columns in the result set.
 
 **Type:** Int32
 
@@ -2032,9 +1716,9 @@ public prop columnCount: Int32
 public prop columnNames: Array<String>
 ```
 
-**Function:** Gets the names of all columns in the result set.
+**Description:** Gets the names of all columns in the result set.
 
-**Type:** [Array<String>](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array)
+**Type:** Array\<String>
 
 **Read-Write Attribute:** Read-only
 
@@ -2048,7 +1732,7 @@ public prop columnNames: Array<String>
 public prop isAtFirstRow: Bool
 ```
 
-**Function:** Checks whether the result set is positioned at the first row.
+**Description:** Checks whether the result set is positioned at the first row.
 
 **Type:** Bool
 
@@ -2064,7 +1748,7 @@ public prop isAtFirstRow: Bool
 public prop isAtLastRow: Bool
 ```
 
-**Function:** Checks whether the result set is positioned at the last row.
+**Description:** Checks whether the result set is positioned at the last row.
 
 **Type:** Bool
 
@@ -2080,7 +1764,7 @@ public prop isAtLastRow: Bool
 public prop isClosed: Bool
 ```
 
-**Function:** Checks whether the current result set is closed.
+**Description:** Checks whether the current result set is closed.
 
 **Type:** Bool
 
@@ -2096,7 +1780,7 @@ public prop isClosed: Bool
 public prop isEnded: Bool
 ```
 
-**Function:** Checks whether the result set is positioned after the last row.
+**Description:** Checks whether the result set is positioned after the last row.
 
 **Type:** Bool
 
@@ -2112,7 +1796,7 @@ public prop isEnded: Bool
 public prop isStarted: Bool
 ```
 
-**Function:** Checks whether the cursor has moved.
+**Description:** Checks whether the cursor has moved.
 
 **Type:** Bool
 
@@ -2128,7 +1812,7 @@ public prop isStarted: Bool
 public prop rowCount: Int32
 ```
 
-**Function:** Gets the number of rows in the result set.
+**Description:** Gets the number of rows in the result set.
 
 **Type:** Int32
 
@@ -2144,7 +1828,7 @@ public prop rowCount: Int32
 public prop rowIndex: Int32
 ```
 
-**Function:** Gets the index of the current row in the result set.
+**Description:** Gets the index of the current row in the result set.
 
 **Type:** Int32
 
@@ -2157,10 +1841,11 @@ public prop rowIndex: Int32
 ### func close()
 
 ```cangjie
+
 public func close(): Unit
 ```
 
-**Function:** Closes the result set.
+**Description:** Closes the result set.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2168,20 +1853,21 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 14800000 | Inner error. |
-  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800000 | Inner error.|
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.|
 
 ### func getAsset(Int32)
 
 ```cangjie
+
 public func getAsset(columnIndex: Int32): Asset
 ```
 
-**Function:** Gets the value of the specified column in the current row.
+**Description:** Gets the value of the specified column in the current row.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2189,9 +1875,9 @@ public func getAsset(columnIndex: Int32): Asset
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| columnIndex | Int32 | Yes | - | The specified column index, starting from 0. |
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
 
 **Return Value:**
 
@@ -2201,89 +1887,91 @@ public func getAsset(columnIndex: Int32): Asset
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000 | Inner error. |
-  | 14800011 | Failed to open the database because it is corrupted. |
-  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013 | Resultset is empty or column index is out of bounds. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022 | SQLite: Callback routine requested an abort. |
-  | 14800023 | SQLite: Access permission denied. |
-  | 14800024 | SQLite: The database file is locked. |
-  | 14800025 | SQLite: A table in the database is locked. |
-  | 14800026 | SQLite: The database is out of memory. |
-  | 14800027 | SQLite: Attempt to write a readonly database. |
-  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+  | 14800000 | Inner error.|
+  | 14800011 | Failed to open the database because it is corrupted.|
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.|
+  | 14800013 | Resultset is empty or column index is out of bounds.|
+  | 14800014 | The RdbStore or ResultSet is already closed.|
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.|
+  | 14800022 | SQLite: Callback routine requested an abort.|
+  | 14800023 | SQLite: Access permission denied.|
+  | 14800024 | SQLite: The database file is locked.|
+  | 14800025 | SQLite: A table in the database is locked.|
+  | 14800026 | SQLite: The database is out of memory.|
+  | 14800027 | SQLite: Attempt to write a readonly database.|
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.|
+  | 14800029 | SQLite: The database is full.|
+  | 14800030 | SQLite: Unable to open the database file.|
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.|
+  | 14800032 | SQLite: Abort due to constraint violation.|
+  | 14800033 | SQLite: Data type mismatch.|
+  | 14800034 | SQLite: Library used incorrectly.|
 
 ### func getAssets(Int32)
 
 ```cangjie
+
 public func getAssets(columnIndex: Int32): Assets
 ```
 
-**Function:** Gets the value of the specified column in the current row.
+**Description:** Gets the value of the specified column in the current row.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DDistributedDataManager.RelationalStore.Core
 
 **Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| columnIndex | Int32 | Yes | - | The specified column index, starting from 0. |
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
 
 **Return Value:**
 
 | Type | Description |
 | :---- | :---- |
-| [Assets](#type-assets) | Returns the value of the specified column as an Array\<[Asset](#struct-asset)>. |
+| Assets | Returns the value of the specified column as an Array\<[Asset](#class-asset)>. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000 | Inner error. |
-  | 14800011 | Failed to open the database because it is corrupted. |
-  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013 | Resultset is empty or column index is out of bounds. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022 | SQLite: Callback routine requested an abort. |
-  | 14800023 | SQLite: Access permission denied. |
-  | 14800024 | SQLite: The database file is locked. |
-  | 14800025 | SQLite: A table in the database is locked. |
-  | 14800026 | SQLite: The database is out of memory. |
-  | 14800027 | SQLite: Attempt to write a readonly database. |
-  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+  | 14800000 | Inner error.|
+  | 14800011 | Failed to open the database because it is corrupted.|
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.|
+  | 14800013 | Resultset is empty or column index is out of bounds.|
+  | 14800014 | The RdbStore or ResultSet is already closed.|
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.|
+  | 14800022 | SQLite: Callback routine requested an abort.|
+  | 14800023 | SQLite: Access permission denied.|
+  | 14800024 | SQLite: The database file is locked.|
+  | 14800025 | SQLite: A table in the database is locked.|
+  | 14800026 | SQLite: The database is out of memory.|
+  | 14800027 | SQLite: Attempt to write a readonly database.|
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.|
+  | 14800029 | SQLite: The database is full.|
+  | 14800030 | SQLite: Unable to open the database file.|
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.|
+  | 14800032 | SQLite: Abort due to constraint violation.|
+  | 14800033 | SQLite: Data type mismatch.|
+  | 14800034 | SQLite: Library used incorrectly.|
 
 ### func getBlob(Int32)
 
 ```cangjie
+
 public func getBlob(columnIndex: Int32): Array<UInt8>
 ```
 
-**Function:** Gets the value of the specified column in the current row.
+**Description:** Gets the value of the specified column in the current row.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2291,9 +1979,9 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| columnIndex | Int32 | Yes | - | The specified column index, starting from 0. |
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
 
 **Return Value:**
 
@@ -2303,37 +1991,39 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000 | Inner error. |
-  | 14800011 | Failed to open the database because it is corrupted. |
-  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013 | Resultset is empty or column index is out of bounds. |
-  | 14800014 | The RdbStore or ResultSet is already closed. |
-  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022 | SQLite: Callback routine requested an abort. |
-  | 14800023 | SQLite: Access permission denied. |
-  | 14800024 | SQLite: The database file is locked. |
-  | 14800025 | SQLite: A table in the database is locked. |
-  | 14800026 | SQLite: The database is out of memory. |
-  | 14800027 | SQLite: Attempt to write a readonly database. |
-  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029 | SQLite: The database is full. |
-  | 14800030 | SQLite: Unable to open the database file. |
-  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032 | SQLite: Abort due to constraint violation. |
-  | 14800033 | SQLite: Data type mismatch. |
-  | 14800034 | SQLite: Library used incorrectly. |### func getColumnIndex(String)
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+  | 14800000 | Inner error.|
+  | 14800011 | Failed to open the database because it is corrupted.|
+  | 14800012 | ResultSet is empty or pointer index is out of bounds.|
+  | 14800013 | Resultset is empty or column index is out of bounds.|
+  | 14800014 | The RdbStore or ResultSet is already closed.|
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.|
+  | 14800022 | SQLite: Callback routine requested an abort.|
+  | 14800023 | SQLite: Access permission denied.|
+  | 14800024 | SQLite: The database file is locked.|
+  | 14800025 | SQLite: A table in the database is locked.|
+  | 14800026 | SQLite: The database is out of memory.|
+  | 14800027 | SQLite: Attempt to write a readonly database.|
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.|
+  | 14800029 | SQLite: The database is full.|
+  | 14800030 | SQLite: Unable to open the database file.|
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.|
+  | 14800032 | SQLite: Abort due to constraint violation.|
+  | 14800033 | SQLite: Data type mismatch.|
+  | 14800034 | SQLite: Library used incorrectly.|
+
+### func getColumnIndex(String)
 
 ```cangjie
 
 public func getColumnIndex(columnName: String): Int32
 ```
 
-**Function:** Gets the column index based on the specified column name.
+**Description:** Gets the column index based on the specified column name.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2341,42 +2031,42 @@ public func getColumnIndex(columnName: String): Int32
 
 **Parameters:**
 
-| Name       | Type   | Mandatory | Default | Description                  |
-|:-----------|:-------|:----------|:--------|:-----------------------------|
-| columnName | String | Yes       | -       | The name of the specified column in the result set.
+| Parameter Name | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| columnName | String | Yes | - | Specifies the name of the column in the result set. |
 
 **Return Value:**
 
-| Type  | Description                  |
-|:------|:-----------------------------|
+| Type | Description |
+| :---- | :---- |
 | Int32 | Returns the index of the specified column. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :------------ | :------------ |
-  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000      | Inner error. |
-  | 14800011      | Failed to open the database because it is corrupted. |
-  | 14800013      | Resultset is empty or column index is out of bounds. |
-  | 14800014      | The RdbStore or ResultSet is already closed. |
-  | 14800019      | The SQL must be a query statement. |
-  | 14800021      | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022      | SQLite: Callback routine requested an abort. |
-  | 14800023      | SQLite: Access permission denied. |
-  | 14800024      | SQLite: The database file is locked. |
-  | 14800025      | SQLite: A table in the database is locked. |
-  | 14800026      | SQLite: The database is out of memory. |
-  | 14800027      | SQLite: Attempt to write a readonly database. |
-  | 14800028      | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029      | SQLite: The database is full. |
-  | 14800030      | SQLite: Unable to open the database file. |
-  | 14800031      | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032      | SQLite: Abort due to constraint violation. |
-  | 14800033      | SQLite: Data type mismatch. |
-  | 14800034      | SQLite: Library used incorrectly. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+  | 14800000 | Inner error.|
+  | 14800011 | Failed to open the database because it is corrupted.|
+  | 14800013 | Resultset is empty or column index is out of bounds.|
+  | 14800014 | The RdbStore or ResultSet is already closed.|
+  | 14800019 | The SQL must be a query statement.|
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.|
+  | 14800022 | SQLite: Callback routine requested an abort.|
+  | 14800023 | SQLite: Access permission denied.|
+  | 14800024 | SQLite: The database file is locked.|
+  | 14800025 | SQLite: A table in the database is locked.|
+  | 14800026 | SQLite: The database is out of memory.|
+  | 14800027 | SQLite: Attempt to write a readonly database.|
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.|
+  | 14800029 | SQLite: The database is full.|
+  | 14800030 | SQLite: Unable to open the database file.|
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.|
+  | 14800032 | SQLite: Abort due to constraint violation.|
+  | 14800033 | SQLite: Data type mismatch.|
+  | 14800034 | SQLite: Library used incorrectly.|
 
 ### func getColumnName(Int32)
 
@@ -2385,7 +2075,7 @@ public func getColumnIndex(columnName: String): Int32
 public func getColumnName(columnIndex: Int32): String
 ```
 
-**Function:** Gets the column name based on the specified column index.
+**Description:** Gets the column name based on the specified column index.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2393,44 +2083,42 @@ public func getColumnName(columnIndex: Int32): String
 
 **Parameters:**
 
-| Name        | Type  | Mandatory | Default | Description                  |
-|:------------|:------|:----------|:--------|:-----------------------------|
-| columnIndex | Int32 | Yes       | -       | The index of the specified column in the result set. |
+| Parameter Name | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| columnIndex | Int32 | Yes | - | Specifies the index of the column in the result set. |
 
 **Return Value:**
 
-| Type   | Description                  |
-|:-------|:-----------------------------|
+| Type | Description |
+| :---- | :---- |
 | String | Returns the name of the specified column. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :------------ | :------------ |
-  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000      | Inner error. |
-  | 14800011      | Failed to open the database because it is corrupted. |
-  | 14800013      | Resultset is empty or column index is out of bounds. |
-  | 14800014      | The RdbStore or ResultSet is already closed. |
-  | 14800019      | The SQL must be a query statement. |
-  | 14800021      | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022      | SQLite: Callback routine requested an abort. |
-  | 14800023      | SQLite: Access permission denied. |
-  | 14800024      | SQLite: The database file is locked. |
-  | 14800025      | SQLite: A table in the database is locked. |
-  | 14800026      | SQLite: The database is out of memory. |
-  | 14800027      | SQLite: Attempt to write a readonly database. |
-  | 14800028      | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029      | SQLite: The database is full. |
-  | 14800030      | SQLite: Unable to open the database file. |
-  | 14800031      | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032      | SQLite: Abort due to constraint violation. |
-  | 14800033      | SQLite: Data type mismatch. |
-  | 14800034      | SQLite: Library used incorrectly. |
-
-### func getDouble(Int32)
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+  | 14800000 | Inner error.|
+  | 14800011 | Failed to open the database because it is corrupted.|
+  | 14800013 | Resultset is empty or column index is out of bounds.|
+  | 14800014 | The RdbStore or ResultSet is already closed.|
+  | 14800019 | The SQL must be a query statement.|
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.|
+  | 14800022 | SQLite: Callback routine requested an abort.|
+  | 14800023 | SQLite: Access permission denied.|
+  | 14800024 | SQLite: The database file is locked.|
+  | 14800025 | SQLite: A table in the database is locked.|
+  | 14800026 | SQLite: The database is out of memory.|
+  | 14800027 | SQLite: Attempt to write a readonly database.|
+  | 14800028 | SQLite: Some kind of disk I/O error occurred.|
+  | 14800029 | SQLite: The database is full.|
+  | 14800030 | SQLite: Unable to open the database file.|
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit.|
+  | 14800032 | SQLite: Abort due to constraint violation.|
+  | 14800033 | SQLite: Data type mismatch.|
+  | 14800034 | SQLite: Library used incorrectly.|### func getDouble(Int32)
 
 ```cangjie
 
@@ -2445,42 +2133,42 @@ public func getDouble(columnIndex: Int32): Float64
 
 **Parameters:**
 
-| Name        | Type  | Mandatory | Default | Description                  |
-|:------------|:------|:----------|:--------|:-----------------------------|
-| columnIndex | Int32 | Yes       | -       | The index of the specified column, starting from 0. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
 
 **Return Value:**
 
-| Type   | Description                  |
-|:-------|:-----------------------------|
+| Type | Description |
+|:----|:----|
 | Float64 | Returns the value of the specified column as Float64. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :------------ | :------------ |
-  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000      | Inner error. |
-  | 14800011      | Failed to open the database because it is corrupted. |
-  | 14800012      | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013      | Resultset is empty or column index is out of bounds. |
-  | 14800014      | The RdbStore or ResultSet is already closed. |
-  | 14800021      | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022      | SQLite: Callback routine requested an abort. |
-  | 14800023      | SQLite: Access permission denied. |
-  | 14800024      | SQLite: The database file is locked. |
-  | 14800025      | SQLite: A table in the database is locked. |
-  | 14800026      | SQLite: The database is out of memory. |
-  | 14800027      | SQLite: Attempt to write a readonly database. |
-  | 14800028      | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029      | SQLite: The database is full. |
-  | 14800030      | SQLite: Unable to open the database file. |
-  | 14800031      | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032      | SQLite: Abort due to constraint violation. |
-  | 14800033      | SQLite: Data type mismatch. |
-  | 14800034      | SQLite: Library used incorrectly. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 14800000 | Inner error. |
+  | 14800011 | Failed to open the database because it is corrupted. |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800013 | Resultset is empty or column index is out of bounds. |
+  | 14800014 | The RdbStore or ResultSet is already closed. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+  | 14800022 | SQLite: Callback routine requested an abort. |
+  | 14800023 | SQLite: Access permission denied. |
+  | 14800024 | SQLite: The database file is locked. |
+  | 14800025 | SQLite: A table in the database is locked. |
+  | 14800026 | SQLite: The database is out of memory. |
+  | 14800027 | SQLite: Attempt to write a readonly database. |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
+  | 14800029 | SQLite: The database is full. |
+  | 14800030 | SQLite: Unable to open the database file. |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
+  | 14800032 | SQLite: Abort due to constraint violation. |
+  | 14800033 | SQLite: Data type mismatch. |
+  | 14800034 | SQLite: Library used incorrectly. |
 
 ### func getLong(Int32)
 
@@ -2491,49 +2179,48 @@ public func getLong(columnIndex: Int32): Int64
 
 **Function:** Gets the value of the specified column in the current row.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.RRelationalStore.Core
 
 **Since:** 21
 
 **Parameters:**
 
-| Name        | Type  | Mandatory | Default | Description                  |
-|:------------|:------|:----------|:--------|:-----------------------------|
-| columnIndex | Int32 | Yes       | -       | The index of the specified column, starting from 0. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
 
 **Return Value:**
 
-| Type  | Description                  |
-|:------|:-----------------------------|
-| Int64 | Returns the value of the specified column as Int64. <br>This API supports data in the range of Number.MIN_SAFE_INTEGER to Number.MAX_SAFE_INTEGER. If the data exceeds this range, use [getDouble](#func-getdoubleint32) instead. |
+| Type | Description |
+|:----|:----|
+| Int64 | Returns the value of the specified column as Int64.<br>This interface supports data range: Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER. If the value exceeds this range, it is recommended to use [getDouble](#func-getdoubleint32). |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :------------ | :------------ |
-  | 401           | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000      | Inner error. |
-  | 14800011      | Failed to open the database because it is corrupted. |
-  | 14800012      | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013      | Resultset is empty or column index is out of bounds. |
-  | 14800014      | The RdbStore or ResultSet is already closed. |
-  | 14800021      | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022      | SQLite: Callback routine requested an abort. |
-  | 14800023      | SQLite: Access permission denied. |
-  | 14800024      | SQLite: The database file is locked. |
-  | 14800025      | SQLite: A table in the database is locked. |
-  | 14800026      | SQLite: The database is out of memory. |
-  | 14800027      | SQLite: Attempt to write a readonly database. |
-  | 14800028      | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029      | SQLite: The database is full. |
-  | 14800030      | SQLite: Unable to open the database file. |
-  | 极客时间  | 极客时间 is a technology learning platform. |
-  | 14800031      | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032      | SQLite: Abort due to constraint violation. |
-  | 14800033      | SQLite: Data type mismatch. |
-  | 14800034      | SQLite: Library used incorrectly. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 14800000 | Inner error. |
+  | 14800011 | Failed to open the database because it is corrupted. |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800013 | Resultset is empty or column index is out of bounds. |
+  | 14800014 | The RdbStore or ResultSet is already closed. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+  | 14800022 | SQLite: Callback routine requested an abort. |
+  | 14800023 | SQLite: Access permission denied. |
+  | 14800024 | SQLite: The database file is locked. |
+  | 14800025 | SQLite: A table in the database is locked. |
+  | 14800026 | SQLite: The database is out of memory. |
+  | 14800027 | SQLite: Attempt to write a readonly database. |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
+  | 14800029 | SQLite: The database is full. |
+  | 14800030 | SQLite: Unable to open the database file. |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
+  | 14800032 | SQLite: Abort due to constraint violation. |
+  | 14800033 | SQLite: Data type mismatch. |
+  | 14800034 | SQLite: Library used incorrectly. |
 
 ### func getRow()
 
@@ -2550,35 +2237,35 @@ public func getRow(): ValuesBucket
 
 **Return Value:**
 
-| Type          | Description                  |
-|:--------------|:-----------------------------|
+| Type | Description |
+|:----|:----|
 | [ValuesBucket](#type-valuesbucket) | Returns the value of the specified row. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Relational Database Error Codes](../../errorcodes/c极客时间-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :------------ | :------------ |
-  | 14800000      | Inner error. |
-  | 14800011      | Failed to open the database because it is corrupted. |
-  | 14800012      | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013      | Resultset is empty or column index is out of bounds. |
-  | 14800014      | The RdbStore or ResultSet is already closed. |
-  | 14800021      | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022      | SQLite: Callback routine requested an abort. |
-  | 14800023      | SQLite: Access permission denied. |
-  | 14800024      | SQLite: The database file is locked. |
-  | 14800025      | SQLite: A table in the database is locked. |
-  | 14800026      | SQLite: The database is out of memory. |
-  | 14800027      | SQLite: Attempt to write a readonly database. |
-  | 14800028      | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029      | SQLite: The database is full. |
-  | 14800030      | SQLite: Unable to open the database file. |
-  | 14800031      | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032      | SQLite: Abort due to constraint violation. |
-  | 14800033      | SQLite: Data type mismatch. |
-  | 14800034      | SQLite: Library used incorrectly. |
+  | :---- | :--- |
+  | 14800000 | Inner error. |
+  | 14800011 | Failed to open the database because it is corrupted. |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800013 | Resultset is empty or column index is out of bounds. |
+  | 14800014 | The RdbStore or ResultSet is already closed. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+  | 14800022 | SQLite: Callback routine requested an abort. |
+  | 14800023 | SQLite: Access permission denied. |
+  | 14800024 | SQLite: The database file is locked. |
+  | 14800025 | SQLite: A table in the database is locked. |
+  | 14800026 | SQLite: The database is out of memory. |
+  | 14800027 | SQLite: Attempt to write a readonly database. |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
+  | 14800029 | SQLite: The database is full. |
+  | 14800030 | SQLite: Unable to open the database file. |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
+  | 14800032 | SQLite: Abort due to constraint violation. |
+  | 14800033 | SQLite: Data type mismatch. |
+  | 14800034 | SQLite: Library used incorrectly. |
 
 ### func getString(Int32)
 
@@ -2595,42 +2282,42 @@ public func getString(columnIndex: Int32): String
 
 **Parameters:**
 
-| Name        | Type  | Mandatory | Default | Description                  |
-|:------------|:------|:----------|:--------|:-----------------------------|
-| columnIndex | Int32 | Yes       | -       | The index of the specified column, starting from 0. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
 
 **Return Value:**
 
-| Type   | Description                  |
-|:-------|:-----------------------------|
+| Type | Description |
+|:----|:----|
 | String | Returns the value of the specified column as a string. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :------------ | :------------ |
-  | 401           | Parameter error. Possible causes: 极客时间 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14800000      | Inner error. |
-  | 14800011      | Failed to open the database because it is corrupted. |
-  | 14800012      | ResultSet is empty or pointer index is out of bounds. |
-  | 14800013      | Resultset is empty or column index is out of bounds. |
-  | 14800014      | The RdbStore or ResultSet is already closed. |
-  | 14800021      | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-  | 14800022      | SQLite: Callback routine requested an abort. |
-  | 14800023      | SQLite: Access permission denied. |
-  | 14800024      | SQLite: The database file is locked. |
-  | 14800025      | SQLite: A table in the database is locked. |
-  | 14800026      | SQLite: The database is out of memory. |
-  | 14800027      | SQLite: Attempt to write a readonly database. |
-  | 14800028      | SQLite: Some kind of disk I/O error occurred. |
-  | 14800029      | SQLite: The database is full. |
-  | 14800030      | SQLite: Unable to open the database file. |
-  | 14800031      | SQLite: TEXT or BLOB exceeds size limit. |
-  | 14800032      | SQLite: Abort due to constraint violation. |
-  | 14800033      | SQLite: Data type mismatch. |
-  | 14800034      | SQLite: Library used incorrectly. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 14800000 | Inner error. |
+  | 14800011 | Failed to open the database because it is corrupted. |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800013 | Resultset is empty or column index is out of bounds. |
+  | 14800014 | The RdbStore or ResultSet is already closed. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+  | 14800022 | SQLite: Callback routine requested an abort. |
+  | 14800023 | SQLite: Access permission denied. |
+  | 14800024 | SQLite: The database file is locked. |
+  | 14800025 | SQLite: A table in the database is locked. |
+  | 14800026 | SQLite: The database is out of memory. |
+  | 14800027 | SQLite: Attempt to write a readonly database. |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
+  | 14800029 | SQLite: The database is full. |
+  | 14800030 | SQLite: Unable to open the database file. |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
+  | 14800032 | SQLite: Abort due to constraint violation. |
+  | 14800033 | SQLite: Data type mismatch. |
+  | 14800034 | SQLite: Library used incorrectly. |
 
 ### func goTo(Int32)
 
@@ -2639,7 +2326,7 @@ public func getString(columnIndex: Int32): String
 public func goTo(offset: Int32): Bool
 ```
 
-**Function:** Moves the result set forward or backward by the specified offset relative to its current position.
+**Function:** Moves the result set forward or backward to the specified row relative to its current position.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2647,15 +2334,15 @@ public func goTo(offset: Int32): Bool
 
 **Parameters:**
 
-| Name   | Type  | Mandatory | Default | Description                  |
-|:-------|:------|:----------|:--------|:-----------------------------|
-| offset | Int32 | Yes       | -       | The offset relative to the current position. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| offset | Int32 | Yes | - | Indicates the offset relative to the current position. |
 
 **Return Value:**
 
-| Type | Description                  |
-|:-----|:-----------------------------|
-| Bool | Returns true if the result set is moved successfully; otherwise, returns false. |
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the result set is successfully moved; otherwise, returns false. |
 
 ### func goToFirstRow()
 
@@ -2672,15 +2359,15 @@ public func goToFirstRow(): Bool
 
 **Return Value:**
 
-| Type | Description                  |
-|:-----|:-----------------------------|
-| Bool | Returns true if the result set is moved successfully; otherwise, returns false. |
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the result set is successfully moved; otherwise, returns false. |
 
 ### func goToLastRow()
 
 ```cangjie
 
-public func go极客时间ToLastRow(): Bool
+public func goToLastRow(): Bool
 ```
 
 **Function:** Moves to the last row of the result set.
@@ -2691,13 +2378,150 @@ public func go极客时间ToLastRow(): Bool
 
 **Return Value:**
 
-| Type | Description                  |
-|:-----|:-----------------------------|
-| Bool | Returns true if the result set is moved successfully; otherwise, returns false. |
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the result set is successfully moved; otherwise, returns false. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rd## class StoreConfig
+- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 14800000 | Inner error. |
+  | 14800011 | Failed to open the database because it is corrupted. |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800014 | The RdbStore or ResultSet is already closed. |
+  | 14800019 | The SQL must be a query statement. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+  | 14800022 | SQLite: Callback routine requested an abort. |
+  | 14800023 | SQLite: Access permission denied. |
+  | 14800024 | SQLite: The database file is locked. |
+  | 14800025 | SQLite: A table in the database is locked. |
+  | 14800026 | SQLite: The database is out of memory. |
+  | 14800027 | SQLite: Attempt to write a readonly database. |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
+  | 14800029 | SQLite: The database is full. |
+  | 14800030 | SQLite: Unable to open the database file. |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
+  | 14800032 | SQLite: Abort due to constraint violation. |
+  | 14800033 | SQLite: Data type mismatch. |
+  | 14800034 | SQLite: Library used incorrectly. |
+
+### func goToNextRow()
+
+```cangjie
+
+public func goToNextRow(): Bool
+```
+
+**Function:** Moves to the next row of the result set.
+
+**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the result set is successfully moved; otherwise, returns false. |
+
+### func goToPreviousRow()
+
+```cangjie
+
+public func goToPreviousRow(): Bool
+```
+
+**Function:** Moves to the previous row of the result set.
+
+**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the result set is successfully moved; otherwise, returns false. |
+
+### func goToRow(Int32)
+
+```cangjie
+
+public func goToRow(position: Int32): Bool
+```
+
+**Function:** Moves to the specified row of the result set.
+
+**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| position | Int32 | Yes | - | Specifies the position to move to. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the result set is successfully moved; otherwise, returns false. |
+
+### func isColumnNull(Int32)
+
+```cangjie
+
+public func isColumnNull(columnIndex: Int32): Bool
+```
+
+**Function:** Checks whether the value of the specified column in the current row is null.
+
+**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| columnIndex | Int32 | Yes | - | Specified column index, starting from 0. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the value of the specified column in the current row is null; otherwise, returns false. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+  | 14800000 | Inner error. |
+  | 14800011 | Failed to open the database because it is corrupted. |
+  | 14800012 | ResultSet is empty or pointer index is out of bounds. |
+  | 14800013 | Resultset is empty or column index is out of bounds. |
+  | 14800014 | The RdbStore or ResultSet is already closed. |
+  | 14800021 | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+  | 14800022 | SQLite: Callback routine requested an abort. |
+  | 14800023 | SQLite: Access permission denied. |
+  | 14800024 | SQLite: The database file is locked. |
+  | 14800025 | SQLite: A table in the database is locked. |
+  | 14800026 | SQLite: The database is out of memory. |
+  | 14800027 | SQLite: Attempt to write a readonly database. |
+  | 14800028 | SQLite: Some kind of disk I/O error occurred. |
+  | 14800029 | SQLite: The database is full. |
+  | 14800030 | SQLite: Unable to open the database file. |
+  | 14800031 | SQLite: TEXT or BLOB exceeds size limit. |
+  | 14800032 | SQLite: Abort due to constraint violation. |
+  | 14800033 | SQLite: Data type mismatch. |
+  | 14800034 | SQLite: Library used incorrectly. |## class StoreConfig
 
 ```cangjie
 public class StoreConfig {
@@ -2716,7 +2540,6 @@ public class StoreConfig {
     public var tokenizer: Tokenizer
     public var persist: Bool
     public var enableSemanticIndex: Bool
-
 
     public init(securityLevel: SecurityLevel, name!: String = "",
         encrypt!: Bool = false, dataGroupId!: String = "",
@@ -2741,11 +2564,11 @@ public class StoreConfig {
 public var allowRebuild: Bool
 ```
 
-**Function:** Specifies whether the database supports automatic deletion and recreation of empty tables in case of exceptions. Default is false (no deletion).
+**Function:** Specifies whether the database supports automatic deletion and recreation of empty databases/tables upon exceptions. Default is false (no deletion).
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2757,11 +2580,11 @@ public var allowRebuild: Bool
 public var autoCleanDirtyData: Bool
 ```
 
-**Function:** Specifies whether to automatically clean data deleted from the cloud and synced to the local device. true means automatic cleanup, false means manual cleanup (default is true). For cloud-device collaborative databases, when data deleted from the cloud is synced to the device, this parameter determines whether the device automatically cleans it up. Manual cleanup can be performed via the cleanDirtyData interface.
+**Function:** Specifies whether to automatically clean data synchronized from the cloud after deletion. true means automatic cleanup, false means manual cleanup (default is true). For cloud-device collaborative databases, this parameter determines whether the device automatically cleans up cloud-deleted data. Manual cleanup can be performed via the cleanDirtyData interface.
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2777,7 +2600,7 @@ public var cryptoParam: CryptoParam
 
 **Type:** [CryptoParam](#class-cryptoparam)
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2789,11 +2612,11 @@ public var cryptoParam: CryptoParam
 public var customDir: String
 ```
 
-**Function:** Custom directory path for the database.
+**Function:** Custom database directory path.
 
 **Type:** String
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2809,7 +2632,7 @@ public var dataGroupId: String
 
 **Type:** String
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2825,7 +2648,7 @@ public var enableSemanticIndex: Bool
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2841,7 +2664,7 @@ public var encrypt: Bool
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2857,7 +2680,7 @@ public var isReadOnly: Bool
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2873,7 +2696,7 @@ public var name: String
 
 **Type:** String
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2885,11 +2708,11 @@ public var name: String
 public var persist: Bool
 ```
 
-**Function:** Specifies whether the database should be persisted. true means persisted, false means in-memory database (default is true).
+**Function:** Specifies whether the database requires persistence. true means persistent storage, false means in-memory database (default is true).
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2901,11 +2724,11 @@ public var persist: Bool
 public var pluginLibs: Array<String>
 ```
 
-**Function:** An array of dynamic library names that provide capabilities like FTS (Full-Text Search).
+**Function:** An array of dynamic library names containing capabilities like FTS (Full-Text Search).
 
 **Type:** Array\<String>
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2921,7 +2744,7 @@ public var rootDir: String
 
 **Type:** String
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2933,11 +2756,11 @@ public var rootDir: String
 public var securityLevel: SecurityLevel
 ```
 
-**Function:** Sets the security level of the database.
+**Function:** Sets the database security level.
 
 **Type:** [SecurityLevel](#enum-securitylevel)
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2953,7 +2776,7 @@ public var tokenizer: Tokenizer
 
 **Type:** [Tokenizer](#enum-tokenizer)
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2969,7 +2792,7 @@ public var vector: Bool
 
 **Type:** Bool
 
-**Read-Write Attribute:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2978,18 +2801,17 @@ public var vector: Bool
 ### init(SecurityLevel, String, Bool, String, String, String, Bool, Bool, Bool, Array\<String>, CryptoParam, Bool, Tokenizer, Bool, Bool)
 
 ```cangjie
-
 public init(securityLevel: SecurityLevel, name!: String = "",
     encrypt!: Bool = false, dataGroupId!: String = "",
     customDir!: String = "", rootDir!: String = "",
     autoCleanDirtyData!: Bool = true, allowRebuild!: Bool = false,
     isReadOnly!: Bool = false, pluginLibs!: Array<String> = Array<String>(),
-    cryptoParam!: CryptoParam, vector!: Bool = false,
+    cryptoParam = CryptoParam([]), vector!: Bool = false,
     tokenizer!: Tokenizer = Tokenizer.NoneTokenizer, persist!: Bool = true,
     enableSemanticIndex!: Bool = false)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Constructor for the StoreConfig class.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2997,23 +2819,23 @@ public init(securityLevel: SecurityLevel, name!: String = "",
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|securityLevel|[SecurityLevel](#enum-securitylevel)|Yes|-|Sets the security level of the database.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|name|String|No|""|Database filename.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|encrypt|Bool|No|false| **Named parameter.** Specifies whether the database is encrypted (default is false).<br/> true: encrypted.<br/> false: unencrypted.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|dataGroupId|String|No|""| **Named parameter.** Application group ID, which must be obtained from the application market.<br/>**Model Constraint:** This attribute is only available in Stage model.<br/>Specifies creating an RdbStore instance in the sandbox path corresponding to this dataGroupId. If this parameter is not provided, the RdbStore instance is created in the application's default sandbox directory.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|customDir|String|No|""|Custom directory path for the database.<br/>**Usage Constraint:** The database path size is limited to 128 bytes. Exceeding this limit will cause the database to fail to open and return an error.<br/>The database will be created in the following directory structure: context.databaseDir + "/rdb/" + customDir, where context.databaseDir is the application sandbox path, "/rdb/" indicates a relational database, and customDir is the custom path. If this parameter is not provided, the RdbStore instance is created in the application's default sandbox directory.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core|
-|rootDir|String|No|""|Specifies the root directory path for the database.<br>From API version 18, this optional parameter is supported. The database will be opened or deleted from the following directory: rootDir + "/" + customDir. Databases opened with this parameter are in read-only mode; write operations will return error code 801. When opening or deleting a database with this parameter, ensure the database files exist in the specified path and have read permissions; otherwise, error code 14800010 will be returned.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|autoCleanDirtyData|Bool|No|true| **Named parameter.** Specifies whether to automatically clean data deleted from the cloud and synced to the local device. true means automatic cleanup, false means manual cleanup (default is true).<br/>For cloud-device collaborative databases, when data deleted from the cloud is synced to the device, this parameter determines whether the device automatically cleans it up. Manual cleanup can be performed via the cleanDirtyData interface.<br/>**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client|
-|allowRebuild|Bool|No|false|Specifies whether the database supports automatic deletion and recreation of empty tables in case of exceptions (default is false).<br>true: automatic deletion.<br>false: no automatic deletion.<br>From API version 12, this optional parameter is supported.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|isReadOnly|Bool|No|false|Specifies whether the database is read-only (default is read-write).<br>true: only allows reading data; write operations will return error code 801.<br>false: allows read and write operations.<br>From API version 12, this optional parameter is supported.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|pluginLibs|Array\<String>|No|Array<String>()|An array of dynamic library names that provide capabilities like FTS (Full-Text Search).<br>Usage Constraints:<br>1. The number of dynamic library names is limited to 16. Exceeding this limit will cause the database to fail to open and return an error.<br>2. Dynamic libraries must be located in the application sandbox path or system path. If a dynamic library cannot be loaded, the database will fail to open and return an error.<br>3. Dynamic library names must be full paths for SQLite to load them.<br>Example: [context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so], where context.bundleCodeDir is the application sandbox path, "/libs/arm64/" is the subdirectory, and libtokenizer.so is the dynamic library filename. If this parameter is not provided, no dynamic libraries are loaded by default.<br>4. Dynamic libraries must include all dependencies to avoid runtime failures due to missing dependencies.<br>For example: In an NDK project, building libtokenizer.so with default compilation parameters makes it dependent on the C++ standard library. When loading this library, if the namespace differs from compilation time, it may link to the wrong libc++_shared.so, causing the __emutls_get_address symbol to be missing. To resolve this, statically link the C++ standard library during compilation. Refer to the NDK project build overview for details.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|cryptoParam|[CryptoParam](#class-cryptoparam)|No|-|**Named parameter.** Specifies user-defined encryption parameters.<br>If this parameter is not provided, default encryption parameters are used (see CryptoParam default values).<br>This configuration only takes effect when the encrypt option is set to true.<br>From API version 14, this optional parameter is supported.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|vector|Bool|No|false|Specifies whether the database is a vector database. true means vector database, false means relational database (default is false).<br>Vector databases are suitable for storing and processing high-dimensional vector data, while relational databases are for structured data.<br>When using a vector database, ensure all opened RdbStore and ResultSet instances are properly closed before calling deleteRdbStore.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|tokenizer|[Tokenizer](#enum-tokenizer)|No|Tokenizer.NoneTokenizer|Specifies which tokenizer to use in FTS scenarios.<br>If this parameter is not provided, FTS will not support Chinese or multilingual tokenization but will still support English tokenization.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|persist|Bool|No|true|Specifies whether the database should be persisted. true means persisted, false means in-memory database (default is true).<br>In-memory databases do not support encryption, backup, restore, cross-process access, or distributed capabilities. The securityLevel attribute is ignored.<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
-|enableSemanticIndex|Bool|No|false|Specifies whether to enable semantic indexing for the database. true enables it, false disables it (default is false).<br>System Capability: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| securityLevel | [SecurityLevel](#enum-securitylevel) | Yes | - | Sets the database security level.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| name | String | No | "" | Database filename.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| encrypt | Bool | No | false | **Named parameter.** Specifies whether the database is encrypted (default is false).<br/> true: encrypted.<br/> false: unencrypted.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| dataGroupId | String | No | "" | **Named parameter.** Application group ID, which must be obtained from the application market.<br/>**Model Constraint:** This property is only available in Stage model.<br/>Specifies creating an RdbStore instance in the sandbox path corresponding to this dataGroupId. If not provided, it defaults to the application's sandbox directory.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| customDir | String | No | "" | Custom database directory path.<br/>**Usage Constraint:** The database path size is limited to 128 bytes. Exceeding this limit will cause failure with an error.<br/>The database will be created in the following directory structure: context.databaseDir + "/rdb/" + customDir, where context.databaseDir is the application sandbox path, "/rdb/" indicates a relational database, and customDir is the custom path. If not provided, it defaults to the application's sandbox directory.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| rootDir | String | No | "" | Specifies the root directory path for the database.<br/>From API version 18, this optional parameter is supported. The database will be opened or deleted from: rootDir + "/" + customDir. Databases opened with this parameter are read-only; write operations will return error code 801. Ensure the database file exists and has read permissions, otherwise error code 14800010 will be returned.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| autoCleanDirtyData | Bool | No | true | **Named parameter.** Specifies whether to automatically clean data synchronized from the cloud after deletion (default is true).<br/>For cloud-device collaborative databases, this determines automatic cleanup of cloud-deleted data on the device. Manual cleanup can be done via cleanDirtyData.<br/>**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client |
+| allowRebuild | Bool | No | false | Specifies whether the database supports automatic deletion and recreation upon exceptions (default is false).<br/>true: automatic deletion.<br/>false: no automatic deletion.<br/>Supported since API version 12.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| isReadOnly | Bool | No | false | Specifies whether the database is read-only (default is read-write).<br/>true: read-only (write operations return error code 801).<br/>false: read-write.<br/>Supported since API version 12.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| pluginLibs | Array\<String> | No | Array<String>() | Array of dynamic library names containing capabilities like FTS.<br/>**Usage Constraints:**<br/>1. Maximum of 16 library names; exceeding this will cause failure.<br/>2. Libraries must be in the application sandbox or system paths; loading failures will cause errors.<br/>3. Full paths are required for SQLite loading.<br/>Example: [context.bundleCodeDir + "/libs/arm64/" + libtokenizer.so]. If not provided, no libraries are loaded.<br/>4. Libraries must include all dependencies to avoid runtime errors.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| cryptoParam | [CryptoParam](#class-cryptoparam) | No | CryptoParam([]) | **Named parameter.** Specifies user-defined encryption parameters.<br/>If not provided, default encryption parameters are used (see CryptoParam defaults). Only effective when encrypt is true.<br/>Supported since API version 14.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| vector | Bool | No | false | Specifies whether the database is a vector database (default is false).<br/>Vector databases are suitable for high-dimensional vector data, while relational databases are for structured data.<br/>Ensure all RdbStore and ResultSet instances are closed before calling deleteRdbStore for vector databases.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| tokenizer | [Tokenizer](#enum-tokenizer) | No | Tokenizer.NoneTokenizer | Specifies the tokenizer for FTS scenarios.<br/>If not provided, FTS will not support Chinese or multilingual tokenization (English tokenization remains supported).<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| persist | Bool | No | true | Specifies database persistence (default is true).<br/>In-memory databases do not support encryption, backup, restore, cross-process access, or distributed capabilities. securityLevel is ignored.<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| enableSemanticIndex | Bool | No | false | Specifies whether to enable semantic indexing (default is false).<br/>**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core |
 
 ## enum AssetStatus
 
@@ -3029,7 +2851,7 @@ public enum AssetStatus {
 }
 ```
 
-**Function:** Enumerates the statuses of asset attachments.
+**Function:** Enumerates the status of asset attachments.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3053,7 +2875,7 @@ AssetAbnormal
 AssetDelete
 ```
 
-**Function:** Indicates that the asset needs to be deleted from the cloud.
+**Function:** Indicates the asset needs to be deleted from the cloud.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3065,7 +2887,7 @@ AssetDelete
 AssetDownloading
 ```
 
-**Function:** Indicates that the asset is being downloaded to the local device.
+**Function:** Indicates the asset is being downloaded to the local device.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3077,7 +2899,7 @@ AssetDownloading
 AssetInsert
 ```
 
-**Function:** Indicates that the asset needs to be inserted into the cloud.
+**Function:** Indicates the asset needs to be inserted into the cloud.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3101,7 +2923,7 @@ AssetNormal
 AssetUpdate
 ```
 
-**Function:** Indicates that the asset needs to be updated in the cloud.
+**Function:** Indicates the asset needs to be updated in the cloud.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3159,7 +2981,7 @@ public enum ConflictResolution {
 }
 ```
 
-**Function:** Conflict resolution methods for insert and update interfaces.
+**Function:** Conflict resolution methods for insert and update operations.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3171,7 +2993,7 @@ public enum ConflictResolution {
 OnConflictAbort
 ```
 
-**Function:** When a conflict occurs, aborts the current SQL statement and rolls back any changes made by it, while preserving changes caused by previous SQL statements in the same transaction and keeping the transaction active.
+**Function:** When a conflict occurs, aborts the current SQL statement and rolls back any changes made by it, while preserving changes from prior SQL statements in the same transaction and keeping the transaction active.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3183,7 +3005,7 @@ OnConflictAbort
 OnConflictFail
 ```
 
-**Function:** When a conflict occurs, aborts the current SQL statement but does not roll back changes made by the failed SQL statement or terminate the transaction.
+**Function:** When a conflict occurs, aborts the current SQL statement without rolling back its prior changes or terminating the transaction.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3195,7 +3017,7 @@ OnConflictFail
 OnConflictIgnore
 ```
 
-**Function:** When a conflict occurs, skips the row that violates the constraint and continues processing subsequent rows in the SQL statement.
+**Function:** When a conflict occurs, skips the row that violates constraints and continues processing subsequent rows in the SQL statement.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3219,7 +3041,7 @@ OnConflictNone
 OnConflictReplace
 ```
 
-**Function:** When a conflict occurs, deletes the pre-existing row that caused the constraint violation before inserting or updating the current row, and continues normal execution of the command.
+**Function:** When a conflict occurs, deletes pre-existing rows that caused constraint violations before inserting or updating the current row, then continues normal execution.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3259,9 +3081,9 @@ public enum DistributedType {
 DistributedCloud
 ```
 
-**Function:** Indicates a database table distributed between devices and the cloud.
+**Function:** Indicates a database table distributed between devices and cloud.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3287,7 +3109,7 @@ public enum EncryptionAlgo {
 }
 ```
 
-**Function:** Enumeration of database encryption algorithms. Use the enum name rather than the enum value.
+**Function:** Enumeration of database encryption algorithms. Use enum names rather than values.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3355,7 +3177,7 @@ CursorField
 DeletedFlagField
 ```
 
-**Function:** Field populated in the result set returned by cursor lookup, indicating whether data synchronized from the cloud to the local device has been cleaned up. In the result set, a value of false for this field indicates the data has not been cleaned up, while true indicates it has been cleaned up.
+**Function:** Field populated in result sets during cursor lookup, indicating whether cloud-deleted data has been cleaned locally. A value of false means data remains, true means cleaned.
 
 **System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -3367,7 +3189,7 @@ DeletedFlagField
 OriginField
 ```
 
-**Function:** Field name used to specify the data source during cursor lookup.
+**Function:** Field name specifying data source during cursor lookup.
 
 **System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -3379,7 +3201,7 @@ OriginField
 OwnerField
 ```
 
-**Function:** Field populated in the result set when querying the owner in a shared table, indicating the initiator of the current shared record.
+**Function:** Field populated in shared table result sets, indicating the initiator of the shared record.
 
 **System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -3391,7 +3213,7 @@ OwnerField
 PrivilegeField
 ```
 
-**Function:** Field populated in the result set when querying data sharing permissions in a shared table, indicating the allowed operation permissions for the current shared record.
+**Function:** Field populated in shared table result sets, indicating permitted operation privileges for the shared record.
 
 **System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -3403,7 +3225,7 @@ PrivilegeField
 SharingResourceField
 ```
 
-**Function:** Field populated in the result set when querying shared resource identifiers during data sharing, indicating the shared resource identifier of the shared data.
+**Function:** Field populated during data sharing lookups, identifying the shared resource marker.
 
 **System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -3420,7 +3242,7 @@ public enum HmacAlgo {
 }
 ```
 
-**Function:** Enumeration of HMAC algorithms for databases.
+**Function:** Enumeration of database HMAC algorithms.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3473,7 +3295,7 @@ public enum KdfAlgo {
 }
 ```
 
-**Function:** Enumeration of PBKDF2 algorithms for databases.
+**Function:** Enumeration of database PBKDF2 algorithms.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3524,9 +3346,9 @@ public enum Origin {
 }
 ```
 
-**Description:** Indicates the data source.
+**Function:** Indicates the data source.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3536,9 +3358,9 @@ public enum Origin {
 Cloud
 ```
 
-**Description:** Indicates data synchronized from the cloud.
+**Function:** Represents data synchronized from the cloud.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3548,9 +3370,9 @@ Cloud
 Local
 ```
 
-**Description:** Indicates local data.
+**Function:** Represents local data.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3560,9 +3382,9 @@ Local
 Remote
 ```
 
-**Description:** Indicates peer-to-peer synchronized data.
+**Function:** Represents data synchronized between devices.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3577,7 +3399,7 @@ public enum Progress {
 }
 ```
 
-**Description:** Describes the device-cloud synchronization process.
+**Function:** Describes the device-cloud synchronization process.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3589,7 +3411,7 @@ public enum Progress {
 SyncBegin
 ```
 
-**Description:** Indicates the start of device-cloud synchronization.
+**Function:** Indicates the start of the device-cloud synchronization process.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3601,7 +3423,7 @@ SyncBegin
 SyncFinish
 ```
 
-**Description:** Indicates the completion of device-cloud synchronization.
+**Function:** Indicates the completion of the device-cloud synchronization process.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3613,112 +3435,7 @@ SyncFinish
 SyncInProgress
 ```
 
-**Description:** Indicates that device-cloud synchronization is in progress.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-## enum ProgressCode
-
-```cangjie
-public enum ProgressCode {
-    | Success
-    | UnknownError
-    | NetworkError
-    | CloudDisabled
-    | LockedByOthers
-    | RecordLimitExceeded
-    | NoSpaceForAsset
-    | ...
-}
-```
-
-**Description:** Indicates the status of device-cloud synchronization.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### CloudDisabled
-
-```cangjie
-CloudDisabled
-```
-
-**Description:** Indicates that the cloud service is unavailable.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### LockedByOthers
-
-```cangjie
-LockedByOthers
-```
-
-**Description:** Indicates that another device is performing device-cloud synchronization, preventing this device from initiating synchronization. Ensure no other device is occupying cloud resources before attempting synchronization on this device.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### NetworkError
-
-```cangjie
-NetworkError
-```
-
-**Description:** Indicates a network error occurred during device-cloud synchronization.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### NoSpaceForAsset
-
-```cangjie
-NoSpaceForAsset
-```
-
-**Description:** Indicates insufficient cloud storage space for the asset to be synchronized.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### RecordLimitExceeded
-
-```cangjie
-RecordLimitExceeded
-```
-
-**Description:** Indicates the number or size of records to be synchronized exceeds the maximum limit configured by the cloud.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### Success
-
-```cangjie
-Success
-```
-
-**Description:** Indicates successful device-cloud synchronization.
-
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 21
-
-### UnknownError
-
-```cangjie
-UnknownError
-```
-
-**Description:** Indicates an unknown error occurred during device-cloud synchronization.
+**Function:** Indicates that the device-cloud synchronization is in progress.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3736,7 +3453,7 @@ public enum SecurityLevel {
 }
 ```
 
-**Description:** Enumerates database security levels.
+**Function:** Enumerates the security levels of databases.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3748,7 +3465,7 @@ public enum SecurityLevel {
 S1
 ```
 
-**Description:** Indicates a low security level where data leakage would have minor impact. Example: databases containing system data like wallpapers.
+**Function:** Indicates a low security level for the database, where data leakage would have minor impact. For example, databases containing system data such as wallpapers.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3760,7 +3477,7 @@ S1
 S2
 ```
 
-**Description:** Indicates a medium security level where data leakage would have significant impact. Example: databases containing user-generated content like recordings/videos or call logs.
+**Function:** Indicates a medium security level for the database, where data leakage would have significant impact. For example, databases containing user-generated data such as audio recordings, videos, or call logs.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3772,7 +3489,7 @@ S2
 S3
 ```
 
-**Description:** Indicates a high security level where data leakage would have major impact. Example: databases containing user activity, health, or location data.
+**Function:** Indicates a high security level for the database, where data leakage would have major impact. For example, databases containing user activity, health, or location information.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3784,7 +3501,7 @@ S3
 S4
 ```
 
-**Description:** Indicates a critical security level where data leakage would have severe impact. Example: databases containing authentication credentials or financial data.
+**Function:** Indicates a critical security level for the database, where data leakage would have severe impact. For example, databases containing authentication credentials or financial data.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3801,7 +3518,7 @@ public enum SubscribeType {
 }
 ```
 
-**Description:** Describes subscription types.
+**Function:** Describes subscription types.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3813,9 +3530,9 @@ public enum SubscribeType {
 SubscribeTypeCloud
 ```
 
-**Description:** Subscribes to cloud data changes.
+**Function:** Subscribes to cloud data changes.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3825,9 +3542,9 @@ SubscribeTypeCloud
 SubscribeTypeCloudDetails
 ```
 
-**Description:** Subscribes to detailed cloud data changes.
+**Function:** Subscribes to detailed cloud data changes.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3837,7 +3554,7 @@ SubscribeTypeCloudDetails
 SubscribeTypeRemote
 ```
 
-**Description:** Subscribes to remote data changes.
+**Function:** Subscribes to remote data changes.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3856,7 +3573,7 @@ public enum SyncMode {
 }
 ```
 
-**Description:** Specifies database synchronization modes.
+**Function:** Indicates database synchronization modes.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3868,9 +3585,9 @@ public enum SyncMode {
 SyncModeCloudFirst
 ```
 
-**Description:** Indicates data synchronization from cloud to local device.
+**Function:** Indicates data synchronization from the cloud to the local device.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3880,9 +3597,9 @@ SyncModeCloudFirst
 SyncModeNativeFirst
 ```
 
-**Description:** Indicates data synchronization from local device to cloud.
+**Function:** Indicates data synchronization from the local device to the cloud.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Since:** 21
 
@@ -3892,7 +3609,7 @@ SyncModeNativeFirst
 SyncModePull
 ```
 
-**Description:** Indicates data pull from remote device to local device.
+**Function:** Indicates data being pulled from a remote device to the local device.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3904,7 +3621,7 @@ SyncModePull
 SyncModePush
 ```
 
-**Description:** Indicates data push from local device to remote device.
+**Function:** Indicates data being pushed from the local device to a remote device.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3916,11 +3633,13 @@ SyncModePush
 SyncModeTimeFirst
 ```
 
-**Description:** Indicates data synchronization from the endpoint with more recent modifications to the endpoint with older modifications.
+**Function:** Indicates data synchronization from the end with the more recent modification time to the end with the older modification time.
 
-**System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+**System Capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**Since:** 21## enum Tokenizer
+**Since:** 21
+
+## enum Tokenizer
 
 ```cangjie
 public enum Tokenizer {
@@ -3931,7 +3650,7 @@ public enum Tokenizer {
 }
 ```
 
-**Description:** Enumerates the tokenizers used in full-text search (FTS) scenarios.
+**Function:** Enumerates tokenizers used in full-text search (FTS) scenarios.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3943,7 +3662,7 @@ public enum Tokenizer {
 CustomTokenizer
 ```
 
-**Description:** Indicates the use of a proprietary tokenizer that supports Chinese (Simplified and Traditional), English, and Arabic numerals.
+**Function:** Indicates the use of a custom tokenizer, supporting Chinese (Simplified and Traditional), English, and Arabic numerals.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3955,7 +3674,7 @@ CustomTokenizer
 IcuTokenizer
 ```
 
-**Description:** Indicates the use of an ICU tokenizer that supports Chinese and multiple other languages.
+**Function:** Indicates the use of the ICU tokenizer, supporting Chinese and multiple languages.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3967,7 +3686,7 @@ IcuTokenizer
 NoneTokenizer
 ```
 
-**Description:** Indicates no tokenizer is used.
+**Function:** Indicates no tokenizer is used.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3989,7 +3708,7 @@ public enum ValueType {
 }
 ```
 
-**Description:** Represents the allowed data field types. The specific type of interface parameters depends on their functionality.
+**Function:** Represents allowed data field types. The specific type of interface parameters depends on their functionality.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4001,7 +3720,7 @@ public enum ValueType {
 AssetEnum(Asset)
 ```
 
-**Description:** Indicates the value type is an attachment [Asset](#struct-asset).
+**Function:** Indicates the value type is an attachment [Asset](#type-assets).
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4013,7 +3732,7 @@ AssetEnum(Asset)
 AssetsEnum(Array<Asset>)
 ```
 
-**Description:** Indicates the value type is an attachment array Array\<[Asset](#struct-asset)>.
+**Function:** Indicates the value type is an array of attachments Array\<[Asset](#class-asset)>.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4025,7 +3744,7 @@ AssetsEnum(Array<Asset>)
 Boolean(Bool)
 ```
 
-**Description:** Indicates the value type is a boolean.
+**Function:** Indicates the value type is a boolean.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4037,7 +3756,7 @@ Boolean(Bool)
 Double(Float64)
 ```
 
-**Description:** Indicates the value type is a floating-point number.
+**Function:** Indicates the value type is a floating-point number.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4049,7 +3768,7 @@ Double(Float64)
 Integer(Int64)
 ```
 
-**Description:** Indicates the value type is an integer.
+**Function:** Indicates the value type is an integer.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4061,7 +3780,7 @@ Integer(Int64)
 Null
 ```
 
-**Description:** Indicates the value type is null.
+**Function:** Indicates the value type is null.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4073,7 +3792,7 @@ Null
 StringValue(String)
 ```
 
-**Description:** Indicates the value type is a string.
+**Function:** Indicates the value type is a string.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -4085,19 +3804,17 @@ StringValue(String)
 Uint8Array(Array<UInt8>)
 ```
 
-**Description:** Indicates the value type is an array of UInt8.
+**Function:** Indicates the value type is an array of UInt8.
 
 **System Capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**Since:** 21
-
-## type Assets
+**Since:** 21## type Assets
 
 ```cangjie
 public type Assets = Array<Asset>
 ```
 
-**Description:** [Assets](#type-assets) is a type alias for [Array < Asset >](../../../../User_Manual/source_zh_cn/basic_data_type/array.md#array).
+**Function:** [Assets](#type-assets) is a type alias for [Array\<Asset>](../../../../User_Manual/source_en/basic_data_type/array.md#array).
 
 ## type ValuesBucket
 
@@ -4105,4 +3822,4 @@ public type Assets = Array<Asset>
 public type ValuesBucket = Map<String, ValueType>
 ```
 
-**Description:** [ValuesBucket](#type-valuesbucket) is a type alias for [Map<String,ValueType>](../../../../User_Manual/source_zh_cn/generic/generic_class.md#泛型类).
+**Function:** [ValuesBucket](#type-valuesbucket) is a type alias for [Map\<String,ValueType>](../../../../User_Manual/source_en/generic/generic_class.md#泛型类).

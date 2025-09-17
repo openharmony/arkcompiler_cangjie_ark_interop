@@ -15,7 +15,7 @@ import kit.ArkData.*
 API sample code usage instructions:
 
 - If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
 For details about the above sample project and configuration template, see [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
@@ -31,7 +31,7 @@ public class DataSharePredicates {
 
 > **Note:**
 >
-> This class is not thread-safe. If there are multiple threads simultaneously operating instances derived from this class in the application, ensure proper locking protection.
+> This class is not thread-safe. If there are multiple threads in the application simultaneously operating instances derived from this class, ensure proper locking protection.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -55,7 +55,7 @@ public init()
 public func `in`(field: String, value: Array<ValueType>): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match fields whose values fall within the specified range. Currently, only RDB and KVDB(schema) support this predicate.
+**Function:** Configures the predicate to match fields with values within the specified range. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -147,7 +147,7 @@ predicates.equalTo("NAME", VBValueType.StringValue("lisi"))
 public func equalTo(field: String, value: ValueType): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match fields whose values equal the specified value. Currently, only RDB and KVDB(schema) support this predicate.
+**Function:** Configures the predicate to match fields with values equal to the specified value. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -245,7 +245,7 @@ predicates.equalTo("NAME", VBValueType.StringValue("Rose")).limit(10, 3)
 public func orderByAsc(field: String): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match columns whose values are sorted in ascending order. Currently, only RDB and KVDB(schema) support this predicate.
+**Function:** Configures the predicate to match columns sorted in ascending order by their values. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -292,7 +292,7 @@ predicates.orderByAsc("AGE")
 public func orderByDesc(field: String): DataSharePredicates
 ```
 
-**Function:** Configures the predicate to match columns whose values are sorted in descending order. Currently, only RDB and KVDB(schema) support this predicate.
+**Function:** Configures the predicate to match columns sorted in descending order by their values. Currently, only RDB and KVDB(schema) support this predicate.
 
 **System Capability:** SystemCapability.DistributedDataManager.DataShare.Core
 

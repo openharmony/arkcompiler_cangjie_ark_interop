@@ -5,12 +5,11 @@
 ```cangjie
 public class Gauge <: ContainerBase {
 
-
     public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => })
 }
 ```
 
-**Description:** A gauge chart component that displays data as a circular chart.
+**Description:** A data gauge chart component that displays data as a circular dial.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +17,7 @@ public class Gauge <: ContainerBase {
 
 **Parent Type:**
 
-- [ContainerBase](./cj-ui-framework.md#containerbase)
+- [ContainerBase](./cj-ui-framework.md#class-containerbase)
 
 ### init(Float64, Float64, Float64, () -> Unit)
 
@@ -27,7 +26,7 @@ public class Gauge <: ContainerBase {
 public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!: () -> Unit = { => })
 ```
 
-**Description:** Creates a gauge chart component.
+**Description:** Creates a data gauge chart component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,10 +36,10 @@ public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!:
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Float64 | Yes | - | **Named parameter.** The current data value of the gauge, indicating the pointer position. Used to preset the initial value when creating the component.<br>**Note:**<br>When value is outside the min and max range, min will be used as the default value. |
+| value | Float64 | Yes | - | **Named parameter.** The current data value of the gauge, indicating the pointer position. Used to preset the initial value when creating the component.<br>**Note:**<br>If value is outside the min and max range, min will be used as the default value. |
 | min | Float64 | No | 0.0 | **Named parameter.** The minimum value of the current data segment. |
-| max | Float64 | No | 100.0 | **Named parameter.** The maximum value of the current data segment.<br>**Note:**<br>When max is less than min, the default values 0.0 and 100.0 will be used.<br>Negative values are supported for max and min. |
-| child | () -> Unit | No | { => } | **Named parameter.** Declares the child components of the current component. |
+| max | Float64 | No | 100.0 | **Named parameter.** The maximum value of the current data segment.<br>**Note:**<br>If max is less than min, the default values 0.0 and 100.0 will be used.<br>Negative values are supported for both max and min. |
+| child | ()->Unit | No | { => } | **Named parameter.** Declares the child components of the current component. |
 
 ### func colors(Array\<(ResourceColor,Float32)>)
 
@@ -49,7 +48,7 @@ public init(value!: Float64, min!: Float64 = 0.0, max!: Float64 = 100.0, child!:
 public func colors(value: Array<(ResourceColor, Float32)>): This
 ```
 
-**Description:** Sets the colors of the gauge chart.
+**Description:** Sets the colors of the gauge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +58,7 @@ public func colors(value: Array<(ResourceColor, Float32)>): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float32)> | Yes | - | The colors of the gauge chart, supporting segmented color settings. |
+| value | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float32)> | Yes | - | The colors of the gauge, supporting segmented color settings. |
 
 ### func colors(Array\<(LinearGradient,Float32)>)
 
@@ -68,7 +67,7 @@ public func colors(value: Array<(ResourceColor, Float32)>): This
 public func colors(value: Array<(LinearGradient, Float32)>): This
 ```
 
-**Description:** Sets the segmented gradient color groups for the gauge chart.
+**Description:** Sets the segmented gradient color groups for the gauge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +77,7 @@ public func colors(value: Array<(LinearGradient, Float32)>): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<([LinearGradient](cj-information-display-datapanel.md),Float32)> | Yes | - | The gradient colors of the gauge chart, supporting segmented color settings (up to 9 groups). LinearGradient type refers to the datapanel component, and Float32 represents the width range of the color segment. |
+| value | Array\<([LinearGradient](cj-information-display-datapanel.md),Float32)> | Yes | - | The gradient colors of the gauge, supporting segmented color settings (up to 9 groups). LinearGradient type is defined in the datapanel component, and Float32 represents the width range of the color segment. |
 
 ### func colors(ResourceColor)
 
@@ -87,15 +86,15 @@ public func colors(value: Array<(LinearGradient, Float32)>): This
 public func colors(value: ResourceColor): This
 ```
 
-**Description:** Sets the color of the gauge chart.
+**Description:** Sets the color of the gauge.
 
 Starting from API version 11, this interface follows these rules:
 
 - If the parameter type is ResourceColor, the ring type is a single-color ring.
 - If the parameter type is LinearGradient, the ring type is a gradient ring.
-- If the parameter type is an array, the ring type is a segmented gradient ring. The first parameter is the color value (if set to a non-color type, it defaults to "0xFFE84026"). The second parameter is the weight of the color (if set to a negative or non-numeric value, the weight defaults to 0).
+- If the parameter type is an array, the ring type is a segmented gradient ring. The first parameter is the color value (if set to a non-color type, it defaults to "0xFFE84026"). The second parameter is the weight of the color segment (if set to a negative or non-numeric value, the weight defaults to 0).
 
-The maximum number of segments for a segmented gradient ring is 9. Any additional segments beyond this limit will not be displayed.
+The segmented gradient ring supports up to 9 segments. Any additional segments will not be displayed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,17 +104,17 @@ The maximum number of segments for a segmented gradient ring is 9. Any additiona
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the gauge chart, supporting segmented color settings.
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the gauge, supporting segmented color settings. |
 
 API version 9 default: Color.Black
 
 API version 11 default:
 
-If no color is passed, or the array is empty, the ring type and color cannot be determined, and the ring will default to a gradient of "0xFF64BB5C", "0xFFF7CE00", "0xFFE84026".
+If no color is passed or the array is empty (unable to determine the ring type and color), the ring color defaults to a gradient of "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026".
 
-If an invalid color is passed, it will default to "0xFFE84026".
+If an invalid color value is passed, the color defaults to "0xFFE84026".
 
-If the weight of a color is 0, that color will not be displayed in the ring. If all color weights are 0, the ring will not be displayed. |
+If the weight of a color segment is 0, that color will not be displayed. If all color weights are 0, the ring will not be displayed. |
 
 ### func colors(LinearGradient)
 
@@ -124,7 +123,7 @@ If the weight of a color is 0, that color will not be displayed in the ring. If 
 public func colors(value: LinearGradient): This
 ```
 
-**Description:** Sets the segmented gradient color groups for the gauge chart.
+**Description:** Sets the segmented gradient color groups for the gauge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +133,7 @@ public func colors(value: LinearGradient): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [LinearGradient](./cj-common-types.md#class-lineargradient) | Yes | - | The gradient colors of the gauge chart, supporting segmented color settings (up to 9 groups). |
+| value | [LinearGradient](./cj-information-display-datapanel.md#class-lineargradient) | Yes | - | The gradient colors of the gauge, supporting segmented color settings (up to 9 groups). |
 
 ### func description(() -> Unit)
 
@@ -143,7 +142,7 @@ public func colors(value: LinearGradient): This
 public func description(builder: () -> Unit): This
 ```
 
-**Description:** Sets the description content for the gauge chart.
+**Description:** Sets the description content for the gauge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +152,7 @@ public func description(builder: () -> Unit): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| builder | () -> Unit | Yes | - | The description content. The content in @Builder is customizable by developers, and text is recommended. |
+| builder | ()->Unit | Yes | - | The description content, customized by the developer in @Builder. Text is recommended. |
 
 ### func endAngle(Float64)
 
@@ -166,7 +165,7 @@ public func endAngle(angle: Float64): This
 
 > **Note:**
 >
-> If the difference between the start and end angles is too small, abnormal rendering may occur. Please use reasonable start and end angle positions.
+> If the difference between the start and end angles is too small, abnormal rendering may occur. Ensure reasonable start and end angle positions.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,7 +175,7 @@ public func endAngle(angle: Float64): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| angle | Float64 | Yes | - | The end angle position, where 0 degrees is at the 12 o'clock position, and positive angles are measured clockwise.<br>Initial value: 360.0. |
+| angle | Float64 | Yes | - | The end angle position, where 0 degrees is at the 12 o'clock position, and positive angles are measured clockwise.<br>Default: 360.0. |
 
 ### func indicator(ResourceStr, Length)
 
@@ -205,7 +204,7 @@ public func indicator(icon!: ResourceStr = "default", space!: Length = 8.0.vp): 
 public func startAngle(angle: Float64): This
 ```
 
-**Description:** Sets the start angle position for the gauge chart.
+**Description:** Sets the start angle position for the gauge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,7 +233,7 @@ public func strokeWidth(length: Length): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| length | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | The thickness of the circular gauge ring.<br>Initial value: 4.vp.<br>Unit: vp.<br>**Note:**<br>If a value less than 0 is set, the default value will be used.<br>The maximum thickness is the radius of the ring; values exceeding this will be capped.<br>Percentage values are not supported. |
+| length | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the circular gauge ring.<br>Default: 4.vp.<br>Unit: vp.<br>**Note:**<br>If set to a negative value, the default value will be used.<br>The maximum thickness is the radius of the ring. Values exceeding this will be capped.<br>Percentage values are not supported. |
 
 ### func trackShadow(Float64, Float64, Float64)
 
@@ -264,7 +263,7 @@ public func trackShadow(radius!: Float64 = 20.0, offsetX!: Float64 = 5.0, offset
 public func value(value: Float32): This
 ```
 
-**Description:** Sets the data value of the gauge chart.
+**Description:** Sets the data value of the gauge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,4 +273,4 @@ public func value(value: Float32): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Float32 | Yes | - | The data value of the gauge chart, which can be used to dynamically modify the gauge's value.<br>Initial value: 0.0. |
+| value | Float32 | Yes | - | The data value of the gauge, used to dynamically update the gauge's value.<br>Default: 0.0. |

@@ -43,7 +43,7 @@ public func foregroundBlurStyle(value: BlurStyle, options: ForegroundBlurStyleOp
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | Yes | - | Content blur style. |
-| options | [ForegroundBlurStyleOptions](#) | Yes | - | Content blur options. |
+| options | [ForegroundBlurStyleOptions](#class-foregroundblurstyleoptions) | Yes | - | Content blur options. |
 
 ## Basic Type Definitions
 
@@ -157,7 +157,7 @@ public var blurOptions: BlurOptions = BlurOptions([0.0, 0.0])
 public var colorMode: ThemeColorMode = ThemeColorMode.System
 ```
 
-**Function:** Light/dark mode used for content blur effect.
+**Function:** Light/dark color mode used for content blur effect.
 
 **Type:** [ThemeColorMode](cj-common-types.md#enum-themecolormode)
 
@@ -204,7 +204,7 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| colorMode | [ThemeColorMode](cj-common-types.md#enum-themecolormode) | No | ThemeColorMode.System | Light/dark mode used for content blur effect. |
+| colorMode | [ThemeColorMode](cj-common-types.md#enum-themecolormode) | No | ThemeColorMode.System | Light/dark color mode used for content blur effect. |
 | adaptiveColor | [AdaptiveColor](cj-common-types.md#enum-adaptivecolor) | No | AdaptiveColor.Default | Color sampling mode used for content blur effect. |
 | blurOptions | [BlurOptions](#class-bluroptions) | No | BlurOptions([0.0, 0.0]) | Grayscale blur parameters. |
 | scale | Float32 | No | 1.0 | Intensity of content blur effect.<br>Value range: [0.0, 1.0]. |

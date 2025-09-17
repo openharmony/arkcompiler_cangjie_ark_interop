@@ -1,8 +1,8 @@
 # ohos.file.photo_access_helper (Photo Album Management Module)
 
-This module provides photo album management capabilities, including creating albums and accessing/modifying media data within albums.
+This module provides photo album management capabilities, including creating albums and accessing/modifying media data information within albums.
 
-## Importing the Module
+## Import Module
 
 ```cangjie
 import kit.MediaLibraryKit.*
@@ -18,8 +18,8 @@ ohos.permission.WRITE_IMAGEVIDEO
 
 API sample code usage instructions:
 
-- If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment in the first line, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
 For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
@@ -61,7 +61,7 @@ public var extraUris: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -77,7 +77,7 @@ public var notifyType: NotifyType
 
 **Type:** [NotifyType](#enum-notifytype)
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -93,7 +93,7 @@ public var uris: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -114,8 +114,8 @@ public class CreateOptions {
 Title parameter specifications:
 
 - Should not contain file extensions.
-- Filename string length: 1-255 characters.
-- Invalid English characters not allowed in filenames include: . .. \ / : * ? " ' ` < > | { } [ ]
+- Filename string length: 1~255 characters.
+- Illegal English characters not allowed in filenames include: . .. \ / : * ? " ' ` < > | { } [ ]
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -131,7 +131,7 @@ public var subtype: PhotoSubtype
 
 **Type:** [PhotoSubtype](#enum-photosubtype)
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -147,7 +147,7 @@ public var title: String = ""
 
 **Type:** String
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -168,7 +168,7 @@ public init(title!: String = "", subtype!: PhotoSubtype = Default)
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
+|:---|:---|:---|:---|:---|
 | title | String | No | "" | **Named parameter.** Title of the image or video. |
 | subtype | [PhotoSubtype](#enum-photosubtype) | No | Default | **Named parameter.** File subtype of the image or video. |
 
@@ -198,7 +198,7 @@ public var fetchColumns: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -214,7 +214,7 @@ public var predicates: DataSharePredicates
 
 **Type:** [DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates)
 
-**Read/Write:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -235,14 +235,14 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| fetchColumns | Array\<String> | Yes | - | Retrieval conditions, specifying column names for query.<br>For photos, if this parameter is empty, it defaults to querying 'uri', 'media_type', 'subtype', and 'display_name'. Calling the [get](#func-getstring) interface to obtain other properties of the current object will result in an error. Example: fetchColumns: ['uri', 'title'].<br>For albums, if this parameter is empty, it defaults to querying 'uri' and 'album_name'. |
-| predicates | [DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates) | Yes | - | Predicate query, displaying filtering conditions. |
+|:---|:---|:---|:---|:---|
+| fetchColumns | Array\<String> | Yes | - | Retrieval conditions, specifying column names for query.<br>For photos, if this parameter is empty, it defaults to querying 'uri', 'media_type', 'subtype', and 'display_name'. Example: fetchColumns: ['uri', 'title'].<br>For albums, if this parameter is empty, it defaults to querying 'uri' and 'album_name'. |
+| predicates | [DataSharePredicates](../ArkData/cj-apis-data_share_predicates.md#class-datasharepredicates) | Yes | - | Predicate query, displaying filter conditions. |
 
 ## class FetchResult
 
 ```cangjie
-public class FetchResult<T> <:  where T <:  FetchData <T> {}
+public class FetchResult<T> {}
 ```
 
 **Description:** File retrieval result set.
@@ -257,7 +257,7 @@ public class FetchResult<T> <:  where T <:  FetchData <T> {}
 public func close(): Unit
 ```
 
-**Description:** Releases the FetchResult instance and invalidates it. No other methods can be called afterward.
+**Description:** Releases the FetchResult instance and invalidates it. No other methods can be called.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -281,62 +281,13 @@ public func close(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
-```
-
-### func getAllObjects()
-
-```cangjie
-public func getAllObjects(): Array<T>
-```
-
-**Description:** Retrieves all file assets in the file retrieval result set.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| Array\<[T](#generic-type-t)> | Returns an array of all file assets in the result set. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let photoAssetArray = fetchResult.getAllObjects()
 ```
 
 ### func getCount()
@@ -345,7 +296,7 @@ let photoAssetArray = fetchResult.getAllObjects()
 public func getCount(): Int32
 ```
 
-**Description:** Retrieves the total number of files in the file retrieval result set.
+**Description:** Gets the total number of files in the file retrieval result.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -354,7 +305,7 @@ public func getCount(): Int32
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
+|:----|:----|
 | Int32 | Total number of files retrieved. |
 
 **Exceptions:**
@@ -363,7 +314,7 @@ public func getCount(): Int32
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 13900020 | Invalid argument |
   | 14000011 | System inner fail |
 
@@ -376,211 +327,13 @@ public func getCount(): Int32
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
 let count = fetchResult.getCount()
-```
-
-### func getFirstObject()
-
-```cangjie
-public func getFirstObject(): T
-```
-
-**Description:** Retrieves the first file asset in the file retrieval result set.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [T](#generic-type-t) | Returns the first object in the result set. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getFirstObject()
-```
-
-### func getLastObject()
-
-```cangjie
-public func getLastObject(): T
-```
-
-**Description:** Retrieves the last file asset in the file retrieval result set.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [T](#generic-type-t) | Returns the last object in the result set. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getLastObject()
-```
-
-### func getNextObject()
-
-```cangjie
-public func getNextObject(): T
-```
-
-**Description:** Retrieves the next file asset in the file retrieval result set.
-
-Before calling this method, you must use [isAfterLast()](#func-isafterlast) to check whether the current position is the last row.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [T](#generic-type-t) | Returns the next object in the result set. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let firstPhotoAsset = fetchResult.getNextObject()
-```
-
-### func getObjectByPosition(Int32)
-
-```cangjie
-public func getObjectByPosition(index: Int32): T
-```
-
-**Description:** Retrieves the file asset at the specified index in the file retrieval result set.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| index | Int32 | Yes | - | Index of the file to retrieve, starting from 0. |
-
-**Return Value:**
-
-| Type | Description |
-| :---- | :---- |
-| [T](#generic-type-t) | Returns the object at the specified index in the result set. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 13900020 | Invalid argument |
-  | 14000011 | System inner fail |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
-let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 ```
 
 ### func isAfterLast()
@@ -589,7 +342,7 @@ let positionPhotoAsset = fetchResult.getObjectByPosition(1)
 public func isAfterLast(): Bool
 ```
 
-**Description:** Checks whether the result set points to the last row.
+**Description:** Checks if the result set points to the last row.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -598,8 +351,8 @@ public func isAfterLast(): Bool
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
-| Bool | Returns true if there are no more records after reading the last one; otherwise, returns false. |
+|:----|:----|
+| Bool | Returns true when reading the last record and no subsequent records exist; otherwise, returns false. |
 
 **Exceptions:**
 
@@ -619,16 +372,19 @@ public func isAfterLast(): Bool
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions above.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
-let```markdown
+let predicates = DataSharePredicates()
+let fetchOptions: FetchOptions = FetchOptions([], predicates)
+let fetchResult: PhotoAccessResult = phAccessHelper.getAssets(fetchOptions)
+let isAfterLast = fetchResult.isAfterLast()
+```
+
 ## class MediaAlbumChangeRequest
 
 ```cangjie
-public class MediaAlbumChangeRequest <: MediaChangeRequest {
+public class MediaAlbumChangeRequest MediaChangeRequest {
     /**
      * The constructor to create a MediaAlbumChangeRequest instance.
      *
@@ -641,7 +397,7 @@ public class MediaAlbumChangeRequest <: MediaChangeRequest {
 }
 ```
 
-**Function:** Album change request.
+**Description:** Album change request.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -665,7 +421,7 @@ public class MediaAlbumChangeRequest <: MediaChangeRequest {
 public init(album: Album)
 ```
 
-**Function:** Constructs a MediaAlbumChangeRequest object.
+**Description:** Constructs a MediaAlbumChangeRequest object.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -675,7 +431,7 @@ public init(album: Album)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| album | [Album](#class-album) | Yes | - | The album to be modified. |
+| album | [Album](./cj-apis-file-photo_access_helper.md#class-album) | Yes | - | Album to be modified. |
 
 **Example:**
 
@@ -686,10 +442,8 @@ public init(album: Album)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -705,7 +459,7 @@ let albumChangeRequest = MediaAlbumChangeRequest(album)
 public func addAssets(assets: Array<PhotoAsset>): Unit
 ```
 
-**Function:** Adds assets to an album.
+**Description:** Adds assets to the album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -715,11 +469,11 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | Array of assets to be added to the album. |
+| assets | Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)> | Yes | - | Array of assets to be added to the album. |
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -736,10 +490,8 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -754,10 +506,10 @@ albumChangeRequest.addAssets([asset, asset])
 ### func getAlbum()
 
 ```cangjie
-public func getAlbum(): ?Album
+public func getAlbum(): Album
 ```
 
-**Function:** Gets the album in the current album change request.
+**Description:** Gets the album in the current album change request.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -767,11 +519,11 @@ public func getAlbum(): ?Album
 
 | Type | Description |
 |:----|:----|
-| ?[Album](#class-album) | Returns the album in the current album change request. |
+| [Album](./cj-apis-file-photo_access_helper.md#class-album) | Returns the album in the current album change request. |
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -787,10 +539,8 @@ public func getAlbum(): ?Album
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -807,7 +557,7 @@ var changeRequestAlbum = albumChangeRequest.getAlbum()
 public func removeAssets(assets: Array<PhotoAsset>): Unit
 ```
 
-**Function:** Removes assets from an album.
+**Description:** Removes assets from the album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -817,11 +567,11 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | Array of assets to be removed from the album. |
+| assets | Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)> | Yes | - | Array of assets to be removed from the album. |
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -838,10 +588,8 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions above.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -860,61 +608,10 @@ phAccessHelper.applyChanges(albumChangeRequest)
 public func setAlbumName(name: String): Unit
 ```
 
-**Function:** Sets the album name.
-
-Album name specifications:
-- Length: 1~255 characters.
-- Illegal characters are not allowed, including: . .. \ / : * ? " ' ` < > | { } [ ]
-- Case-insensitive for English characters.
-- Duplicate names are not allowed.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| name | String | Yes | - | The new album name to be set. |
-
-**Exceptions:**
-
-- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System inner fail |
-
-**Example:**
-
-<!-- compile -->
+**Description:** Sets the album## class MediaAssetChangeRequest
 
 ```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult = phAccessHelper.getAlbums(AlbumType.User, AlbumSubtype.UserGeneric,
-    options: fetchOptions)
-let album = fetchResult.getFirstObject()
-let albumChangeRequest = MediaAlbumChangeRequest(album)
-let newAlbumName = "newAAA"
-albumChangeRequest.setAlbumName(newAlbumName)
-```
-
-## class MediaAssetChangeRequest
-
-```cangjie
-public class MediaAssetChangeRequest <: MediaChangeRequest {
+public class MediaAssetChangeRequest MediaChangeRequest {
     public init(asset: PhotoAsset)
 }
 ```
@@ -943,13 +640,13 @@ public init(asset: PhotoAsset)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| asset | [PhotoAsset](#class-photoasset) | Yes | - | The asset to be modified. |
+| asset | [PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset) | Yes | - | The asset to be modified. |
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -965,10 +662,8 @@ public init(asset: PhotoAsset)
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -992,12 +687,12 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| photoType | [PhotoType](#enum-phototype) | Yes | - | The file type to be created, either IMAGE or VIDEO. |
-| extension | String | Yes | - | The file extension, e.g., 'jpg'. |
-| options | [CreateOptions](#class-createoptions) | No | CreateOptions(title: "", subtype: Default) | **Named parameter.** Creation options, e.g., {title: 'testPhoto'}. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
+| photoType | [PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype) | Yes | - | The file type to be created, either IMAGE or VIDEO. |
+| extension | String | Yes | - | The file extension, for example: 'jpg'. |
+| options | [CreateOptions](#class-createoptions) | No | CreateOptions(title: "", subtype: Default) | **Named parameter.** Creation options, for example: {title: 'testPhoto'}. |
 
 **Return Value:**
 
@@ -1007,7 +702,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1022,51 +717,51 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required, see usage instructions
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let photoType = PhotoType.Image
 let extension = "jpg"
 let options = CreateOptions(title: "testPhoto")
 let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx, photoType,
     extension, options: options)
-```### static func createImageAssetRequest(UIAbilityContext, String)
+```
+
+### static func createImageAssetRequest(UIAbilityContext, String)
 
 ```cangjie
 public static func createImageAssetRequest(context: UIAbilityContext, fileUri: String): MediaAssetChangeRequest
 ```
 
-**Function:** Creates an image asset modification request.
+**Function:** Creates an image asset change request.
 
-Specifies the data source of the asset to be created via `fileUri`. Refer to [FileUri](../CoreFileKit/cj-apis-file_fileuri.md).
+Specifies the data source of the asset to be created via fileUri. Refer to [FileUri](../CoreFileKit/cj-apis-file_fileuri.md).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| fileUri | String | Yes | - | The data source URI of the image asset within the application sandbox. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
+| fileUri | String | Yes | - | The data source of the image asset, a URI within the application sandbox. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset creation modification request. |
+| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset change request for creation. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
-  | 14000011 | System internal failure. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1076,10 +771,8 @@ Specifies the data source of the asset to be created via `fileUri`. Refer to [Fi
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.jpg"
 let assetChangeRequest = MediaAssetChangeRequest.createImageAssetRequest(ctx,
@@ -1093,36 +786,36 @@ phAccessHelper.applyChanges(assetChangeRequest)
 public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: String): MediaAssetChangeRequest
 ```
 
-**Function:** Creates a video asset modification request.
+**Function:** Creates a video asset change request.
 
-Specifies the data source of the asset to be created via `fileUri`. Refer to [FileUri](../CoreFileKit/cj-apis-file_fileuri.md).
+Specifies the data source of the asset to be created via fileUri. Refer to [FileUri](../CoreFileKit/cj-apis-file_fileuri.md).
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| fileUri | String | Yes | - | The data source URI of the video asset within the application sandbox. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
+| fileUri | String | Yes | - | The data source of the video asset, a URI within the application sandbox. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset creation modification request. |
+| [MediaAssetChangeRequest](#class-mediaassetchangerequest) | Returns the asset change request for creation. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
-  | 14000011 | System internal failure. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1132,10 +825,8 @@ Specifies the data source of the asset to be created via `fileUri`. Refer to [Fi
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let fileUri = "file://com.example.xxx/data/storage/el2/base/haps/entry/files/test.mp4"
 let assetChangeRequest = MediaAssetChangeRequest.createVideoAssetRequest(ctx,
@@ -1155,24 +846,24 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
-| assets | Array\<[PhotoAsset](#class-photoasset)> | Yes | - | The array of URIs of the media files to be deleted. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
+| assets | Array\<[PhotoAsset](./cj-apis-file-photo_access_helper.md#class-photoasset)> | Yes | - | The array of URIs of the media files to be deleted. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 201 | Permission denied. |
+  | 201 | Permission denied |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System internal failure. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1183,10 +874,8 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1207,25 +896,25 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The Context of the Ability instance. |
 | assets | Array\<String> | Yes | - | The array of URIs of the media files to be deleted. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 201 | Permission denied. |
+  | 201 | Permission denied |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000002 | The URI format is incorrect or does not exist. |
-  | 14000011 | System internal failure. |
+  | 14000002 | The uri format is incorrect or does not exist. |
+  | 14000011 | System inner fail |
 
 **Example:**
 
@@ -1236,10 +925,8 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
@@ -1258,25 +945,25 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resourceType | [ResourceType](#enum-resourcetype) | Yes | - | The type of resource to be added. |
-| fileUri | String | Yes | - | The data source URI of the resource to be added within the application sandbox. |
+| fileUri | String | Yes | - | The data source of the resource to be added, a URI within the application sandbox. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 13900002 | The file corresponding to the URI is not in the app sandbox. |
-  | 14000011 | System internal failure. |
-  | 14000016 | Operation not supported. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **Example:**
 
@@ -1286,10 +973,8 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1310,24 +995,24 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resourceType | [ResourceType](#enum-resourcetype) | Yes | - | The type of resource to be added. |
 | data | Array\<Byte> | Yes | - | The data of the resource to be added. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 14000011 | System internal failure. |
-  | 14000016 | Operation not supported. |
+  | 14000011 | System inner fail |
+  | 14000016 | Operation Not Support |
 
 **Example:**
 
@@ -1337,10 +1022,8 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 // index.cj
 
 import kit.MediaLibraryKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let photoType = PhotoType.Image
 let extension = "jpg"
@@ -1361,16 +1044,16 @@ public func discardCameraPhoto(): Unit
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 14000011 | Internal system error. |
-  | 14000016 | Operation not supported. |
+  | 14000011 | Internal system error |
+  | 14000016 | Operation Not Support |
 
 **Example:**
 
@@ -1381,10 +1064,8 @@ public func discardCameraPhoto(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
+let ctx = Global.abilityContext // Context application context needs to be obtained. See usage instructions for details.
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions = FetchOptions([], predicates)
@@ -1398,130 +1079,26 @@ phAccessHelper.applyChanges(assetChangeRequest)
 ### func getAsset()
 
 ```cangjie
-public func getAsset(): ?PhotoAsset
+public func getAsset(): PhotoAsset
 ```
 
-**Function:** Retrieves the asset in the current asset modification request.
+**Function:** Obtains the asset in the current asset change request.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| ?[PhotoAsset](#class-photoasset) | Returns the asset in the current asset modification request. |
-
-**Exceptions:**
-
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14000011 | System internal failure. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let predicates = DataSharePredicates()
-let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult = phAccessHelper.getAssets(fetchOptions)
-let photoAsset = fetchResult.getFirstObject()
-let assetChangeRequest = MediaAssetChangeRequest(photoAsset)
-let asset = assetChangeRequest.getAsset()
-```
-
-### func getWriteCacheHandler()
-
-```cangjie
-public func getWriteCacheHandler(): Int32
-```
-
-**Function:** Retrieves the temporary file write handle.
-
-**Required Permission:** ohos.permission.WRITE_IMAGEVIDEO
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Initial Version:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | Returns the temporary file write handle. |
-
-**Exceptions:**
-
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 201 | Permission denied. |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-  | 14000011 | System internal failure. |
-  | 14000016 | Operation not supported. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.MediaLibraryKit.*
-import kit.CoreFileKit.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
-
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Obtain the Context application context. Refer to the usage instructions in this document.
-let phAccessHelper = getPhotoAccessHelper(ctx)
-let assetChangeRequest = MediaAssetChangeRequest.createAssetRequest(ctx,
-    PhotoType.Video, "mp4")
-let fd = assetChangeRequest.getWriteCacheHandler()
-FileIo.close(fd)
-phAccessHelper.applyChanges(assetChangeRequest)
-```
-
-### func saveCameraPhoto()
-
-```cangjie
-public func saveCameraPhoto(): Unit
-```
-
-**Function:** Saves a photo taken by the camera.
-
-**System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**Initial Version:** 21
-
-**Exceptions:**
-
-- BusinessException: Error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 14000011 | System internal failure. |
-  | 14000016 |## class PhotoAccessHelper
+| [## class PhotoAccessHelper
 
 ```cangjie
 public class PhotoAccessHelper {}
 ```
 
-**Description:** Provides access to image and video resources.
+**Description:** Obtains image and video resources.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1545,11 +1122,11 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| mediaChangeRequest | [MediaChangeRequest](#interface-mediachangerequest) | Yes | - | The media change request, supporting asset change requests and album change requests. |
+| mediaChangeRequest | [MediaChangeRequest](#interface-mediachangerequest) | Yes | - | Media change request, supporting asset change requests and album change requests. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1561,7 +1138,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 ```cangjie
 public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
-    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): FetchResult<Album>
+    options!: FetchOptions = FetchOptions(["uri", "album_name"], DataSharePredicates())): AlbumResult
 ```
 
 **Description:** Retrieves albums based on search options and album type. Ensure the album exists before retrieval.
@@ -1576,19 +1153,19 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| albumType | [AlbumType](#enum-albumtype) | Yes | - | The type of the album. |
-| subtype | [AlbumSubtype](#enum-albumsubtype) | Yes | - | The subtype of the album. |
-| options | [FetchOptions](#class-fetchoptions) | No | FetchOptions(["uri", "album_name"], DataSharePredicates()) | **Named parameter.** The search options. |
+| albumType | [AlbumType](#enum-albumtype) | Yes | - | Album type. |
+| subtype | [AlbumSubtype](#enum-albumsubtype) | Yes | - | Album subtype. |
+| options | [FetchOptions](#class-fetchoptions) | No | FetchOptions(["uri", "album_name"], DataSharePredicates()) | **Named parameter.** Search options. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [FetchResult](#class-fetchresult)\<[Album](#class-album)> | Returns the result set of retrieved albums. |
+| AlbumResult | Returns the result set of retrieved albums. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1606,21 +1183,19 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
+let ctx = Global.abilityContext // Obtain the Context application context as described in the usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<Album> = phAccessHelper.getAlbums(AlbumType.User,
+let fetchResult: AlbumResult = phAccessHelper.getAlbums(AlbumType.User,
     AlbumSubtype.UserGeneric, options: fetchOptions)
 ```
 
 ### func getAssets(FetchOptions)
 
 ```cangjie
-public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
+public func getAssets(options: FetchOptions): PhotoAssetResult
 ```
 
 **Description:** Retrieves image and video resources.
@@ -1635,17 +1210,17 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| options | [FetchOptions](#class-fetchoptions) | Yes | - | The search options for images and videos. |
+| options | [FetchOptions](#class-fetchoptions) | Yes | - | Image and video search options. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)> | Returns the result set of retrieved burst photos. |
+| PhotoAssetResult | Returns the result set of retrieved burst photos. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1662,20 +1237,18 @@ public func getAssets(options: FetchOptions): FetchResult<PhotoAsset>
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
+let ctx = Global.abilityContext // Obtain the Context application context as described in the usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 ```
 
 ### func getBurstAssets(String, FetchOptions)
 
 ```cangjie
-public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult<PhotoAsset>
+public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetResult
 ```
 
 **Description:** Retrieves burst photo resources.
@@ -1690,18 +1263,18 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| burstKey | String | Yes | - | The unique identifier for a set of burst photos: uuid (can be passed as BURST_KEY from [PhotoKeys](#enum-photokeys)). |
-| options | [FetchOptions](#class-fetchoptions) | Yes | - | The search options for burst photos. |
+| burstKey | String | Yes | - | Unique identifier for a set of burst photos: uuid (can pass the BURST_KEY of [PhotoKeys](#enum-photokeys)). |
+| options | [FetchOptions](#class-fetchoptions) | Yes | - | Burst photo search options. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [FetchResult](#class-fetchresult)\<[PhotoAsset](#class-photoasset)> | Returns the result set of retrieved burst photos. |
+| PhotoAssetResult | Returns the result set of retrieved burst photos. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1717,15 +1290,13 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): FetchResult
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
+let ctx = Global.abilityContext // Obtain the Context application context as described in the usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
 let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 
 ### func registerChange(String, Bool, Callback1Argument\<ChangeData>)
@@ -1734,7 +1305,7 @@ let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getBurstAssets(burstKe
 public func registerChange(uri: String, forChildUris: Bool, callback: Callback1Argument<ChangeData>): Unit
 ```
 
-**Description:** Registers a listener for the specified URI, returning asynchronous results via callback.
+**Description:** Registers a listener for the specified URI and returns the asynchronous result via callback.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1744,13 +1315,13 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| uri | String | Yes | - | The URI of PhotoAsset, Album, or a value from [DefaultChangeUri](#enum-defaultchangeuri). |
-| forChildUris | Bool | Yes | - | Whether to listen broadly. When URI is an album URI, setting forChildUris to true allows listening to changes in files within the album; if false, only changes to the album itself are monitored. For PhotoAsset URIs, forChildUris has no effect. For DefaultChangeUri, forChildUris must be true; if false, the URI will not be found, and no messages will be received. |
-| callback | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<[ChangeData](#class-changedata)> | Yes | - | Returns the [ChangeData](#class-changedata) to be monitored. Note: Multiple different callback listeners can be registered for the same URI. [unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata) can close all listeners for the URI or just the specified callback listener. |
+| uri | String | Yes | - | URI of PhotoAsset, Album, or value of [DefaultChangeUri](#enum-defaultchangeuri). |
+| forChildUris | Bool | Yes | - | Whether to listen broadly. When URI is an album URI, setting forChildUris to true allows listening to changes in files within the album; if false, only changes to the album itself are listened to. When URI is a photoAsset, forChildUris being true or false makes no difference. When URI is DefaultChangeUri, forChildUris must be true; if false, the URI cannot be found, and no messages will be received. |
+| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)> | Yes | - | Returns the [ChangeData](#class-changedata) to be listened to. Note: Multiple different callbacks can be registered for the same URI. [unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata) can close all listeners for the URI or only the specified callback listener. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1767,8 +1338,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.*
@@ -1783,9 +1353,8 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
+let ctx = Global.abilityContext // Obtain the Context application context as described in the usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback1 = MyCallback<ChangeData>(
     {
@@ -1795,7 +1364,7 @@ let callback1 = MyCallback<ChangeData>(
     })
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions(['title'], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 let firstPhotoAsset = fetchResult.getFirstObject()
 phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
 ```
@@ -1806,7 +1375,7 @@ phAccessHelper.registerChange(firstPhotoAsset.uri, false, callback1)
 public func release(): Unit
 ```
 
-**Description:** Releases the PhotoAccessHelper instance. Call this when the methods in the PhotoAccessHelper instance are no longer needed.
+**Description:** Releases the PhotoAccessHelper instance. Call this method when the methods in the PhotoAccessHelper instance are no longer needed.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1814,7 +1383,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1831,14 +1400,12 @@ public func release(): Unit
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
+let ctx = Global.abilityContext // Obtain the Context application context as described in the usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let fetchResult: FetchResult<PhotoAsset> = phAccessHelper.getAssets(fetchOptions)
+let fetchResult: PhotoAssetResult = phAccessHelper.getAssets(fetchOptions)
 fetchResult.close()
 phAccessHelper.release()
 ```
@@ -1850,7 +1417,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
     callback: Callback1Argument<Array<String>>): Unit
 ```
 
-**Description:** Invokes an interface to display a save confirmation dialog. If the user agrees to save, the callback returns a list of URIs that have been created and granted save permissions. This list is permanently valid, and the application can use these URIs to write images/videos. If the user refuses to save, an empty list is returned.
+**Description:** Invokes the interface to display a save confirmation dialog. If the user agrees to save, the callback returns a list of URIs that have been created and granted save permissions. This list is permanently effective, and the application can use these URIs to write images/videos. If the user refuses to save, an empty list is returned.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1860,13 +1427,13 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| srcFileUris | Array\<String> | Yes | - | The media library URIs corresponding to the image/video files to be saved to the media library.<br>**Note:** Only image and video URIs are supported. |
-| photoCreationConfigs | Array\<[PhotoCreationConfig](#class-photocreationconfig)> | Yes | - | The configuration for saving images/videos to the media library, including file names, etc., corresponding one-to-one with srcFileUris. |
-| callback | [Callback1Argument](<font color="red" face="bold">please add link</font>)\<Array\<String>> | Yes | - | The callback function to retrieve the list of media library file URIs returned to the application. |
+| srcFileUris | Array\<String> | Yes | - | URIs of the image/video files to be saved to the media library.<br>**Note:** Only image and video URIs are supported. |
+| photoCreationConfigs | Array\<[PhotoCreationConfig](#class-photocreationconfig)> | Yes | - | Configuration for saving images/videos to the media library, including file names, etc., corresponding one-to-one with srcFileUris. |
+| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<String>> | Yes | - | Callback function to obtain the list of media library file URIs returned to the application. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1882,8 +1449,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 import kit.MediaLibraryKit.*
 import kit.ArkData.*
-import kit.AbilityKit.UIAbilityContext
-import ohos.arkui.state_management.AppStorage
+
 import ohos.base.*
 import ohos.business_exception.BusinessException
 import ohos.callback_invoke.*
@@ -1898,9 +1464,8 @@ class MyCallback<T> <: Callback1Argument<T> {
         callabck_(arg)
     }
 }
-import ohos.arkui.state_management.AppStorage
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context required. See usage instructions for details.
+let ctx = Global.abilityContext // Obtain the Context application context as described in the usage instructions
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let callback3 = MyCallback<Array<String>>(
     {
@@ -1911,8 +1476,8 @@ let callback3 = MyCallback<Array<String>>(
         }
     }
 )
-// Get the URIs of images/videos located in the application sandbox that need to be saved to the media library
-// Use actual URIs in real scenarios
+// Obtain the URIs of images/videos located in the application sandbox that need to be saved to the media library
+// In actual scenarios, use real URIs
 let srcFileUris: Array<String> = ["file://media/Photo/37/IMG_1731463495_028/IMG_20241113_100315.jpg"]
 let photoCreationConfigs: Array<PhotoCreationConfig> = [
     PhotoCreationConfig(
@@ -1931,7 +1496,7 @@ phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs, callb
 public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeData> = None): Unit
 ```
 
-**Description:** Unregisters the listener for the specified URI. Multiple callback listeners can be registered for the same URI. When multiple callback listeners exist, a specific registered callback listener can be unregistered. If no callback is specified, all listeners for the URI are unregistered.
+**Description:** Unregisters the listener for the specified URI. Multiple callbacks can be registered for a URI. When multiple callback listeners exist, you can unregister a specific callback listener. If no callback is specified, all listeners for the URI are unregistered.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1941,8 +1506,34 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 | Parameter Name | Type | Mandatory | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| uri | String | Yes | - | The URI of PhotoAsset, Album, or a value from [DefaultChangeUri](#enum-defaultchangeuri). |
-| callback | ?[Callback1Argument](<font color="red" face="bold">please add link</font>)\<[ChangeData## class PhotoCreationConfig
+| uri | String | Yes | - | URI of PhotoAsset, Album, or value of [DefaultChangeUri](#enum-defaultchangeuri). |
+| callback | ?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)> | No | None | **Named parameter.** Unregisters the callback listener registered via [registerChange](#func-registerchangestring-bool-callback1argumentchangedata). If not specified, all listeners for the URI are unregistered. Note: After unregistering a specific callback, it will no longer trigger this callback. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+  | 13900012 | Permission denied |
+  | 13900020 | Invalid argument |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.MediaLibraryKit.*
+import kit.ArkData.*
+
+import ohos.base.*
+import ohos.callback_invoke.*
+import ohos.business_exception.BusinessException
+
+//## class PhotoCreationConfig
 
 ```cangjie
 public class PhotoCreationConfig {
@@ -1954,7 +1545,7 @@ public class PhotoCreationConfig {
 }
 ```
 
-**Description:** Configuration for saving images/videos to the media library, including file naming conventions.
+**Description:** Configuration for saving images/videos to the media library, including file naming etc.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1970,7 +1561,7 @@ public var fileNameExtension: String
 
 **Type:** String
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1984,9 +1575,9 @@ public var photoType: PhotoType
 
 **Description:** File type.
 
-**Type:** [PhotoType](#enum-phototype)
+**Type:** [PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2002,7 +1593,7 @@ public var subtype: PhotoSubtype
 
 **Type:** [PhotoSubtype](#enum-photosubtype)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2018,7 +1609,7 @@ public var title: String
 
 **Type:** String
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2038,10 +1629,10 @@ public init(fileNameExtension: String, photoType: PhotoType, title!: String = ""
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| fileNameExtension | String | Yes | - | File extension, e.g., 'jpg'. |
-| photoType | [PhotoType](#enum-phototype) | Yes | - | Type of file to create, IMAGE or VIDEO. |
+| fileNameExtension | String | Yes | - | File extension, e.g. 'jpg'. |
+| photoType | [PhotoType](./cj-apis-file-photo_access_helper.md#enum-phototype) | Yes | - | Type of file to create, IMAGE or VIDEO. |
 | title | String | No | "" | **Named parameter.** Title of the image or video. |
 | subtype | [PhotoSubtype](#enum-photosubtype) | No | Default | **Named parameter.** Subtype of the image or video file, Default or MovingPhoto. |
 
@@ -2069,7 +1660,7 @@ public var deliveryMode: DeliveryMode
 
 **Type:** [DeliveryMode](#enum-deliverymode)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2085,7 +1676,7 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 }
 ```
 
-**Description:** Key information about albums.
+**Description:** Key album information.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2130,7 +1721,7 @@ public operator func !=(other: AlbumKeys): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AlbumKeys](#enum-albumkeys) | Yes | - | Another enum value. |
 
@@ -2150,7 +1741,7 @@ public operator func ==(other: AlbumKeys): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AlbumKeys](#enum-albumkeys) | Yes | - | Another enum value. |
 
@@ -2272,7 +1863,7 @@ public operator func !=(other: AlbumSubtype): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AlbumSubtype](#enum-albumsubtype) | Yes | - | Another enum value. |
 
@@ -2292,7 +1883,7 @@ public operator func ==(other: AlbumSubtype): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AlbumSubtype](#enum-albumsubtype) | Yes | - | Another enum value. |
 
@@ -2326,7 +1917,7 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 }
 ```
 
-**Description:** Album type, indicating whether it is a user album or a system preset album.
+**Description:** Album type, indicating whether it's a user album or a system preset album.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2371,7 +1962,7 @@ public operator func !=(other: AlbumType): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AlbumType](#enum-albumtype) | Yes | - | Another enum value. |
 
@@ -2391,7 +1982,7 @@ public operator func ==(other: AlbumType): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AlbumType](#enum-albumtype) | Yes | - | Another enum value. |
 
@@ -2413,7 +2004,9 @@ public func toString(): String
 
 | Type | Description |
 |:----|:----|
-| String | Description of the enum. |## enum DefaultChangeUri
+| String | Description of the enum. |
+
+## enum DefaultChangeUri
 
 ```cangjie
 public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
@@ -2464,19 +2057,19 @@ DefaultPhotoUri
 public operator func !=(other: DefaultChangeUri): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[DefaultChangeUri](#enum-defaultchangeuri)|Yes|-|Another enum value.|
+| other | [DefaultChangeUri](#enum-defaultchangeuri) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(DefaultChangeUri)
 
@@ -2488,15 +2081,15 @@ public operator func ==(other: DefaultChangeUri): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[DefaultChangeUri](#enum-defaultchangeuri)|Yes|-|Another enum value.|
+| other | [DefaultChangeUri](#enum-defaultchangeuri) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -2512,9 +2105,9 @@ public func toString(): String
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|The description of the enum.|
+| String | The description of the enum. |
 
 ## enum DeliveryMode
 
@@ -2580,19 +2173,19 @@ HighQualityMode
 public operator func !=(other: DeliveryMode): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[DeliveryMode](#enum-deliverymode)|Yes|-|Another enum value.|
+| other | [DeliveryMode](#enum-deliverymode) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(DeliveryMode)
 
@@ -2604,15 +2197,15 @@ public operator func ==(other: DeliveryMode): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[DeliveryMode](#enum-deliverymode)|Yes|-|Another enum value.|
+| other | [DeliveryMode](#enum-deliverymode) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -2624,9 +2217,9 @@ public func toString(): String
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|The description of the enum.|
+| String | The description of the enum. |
 
 ## enum DynamicRangeType
 
@@ -2679,19 +2272,19 @@ Sdr
 public operator func !=(other: DynamicRangeType): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[DynamicRangeType](#enum-dynamicrangetype)|Yes|-|Another enum value.|
+| other | [DynamicRangeType](#enum-dynamicrangetype) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(DynamicRangeType)
 
@@ -2703,15 +2296,15 @@ public operator func ==(other: DynamicRangeType): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[DynamicRangeType](#enum-dynamicrangetype)|Yes|-|Another enum value.|
+| other | [DynamicRangeType](#enum-dynamicrangetype) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -2723,9 +2316,9 @@ public func toString(): String
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|The description of the enum.|
+| String | The description of the enum. |
 
 ## enum NotifyType
 
@@ -2817,19 +2410,19 @@ NotifyUpdate
 public operator func !=(other: NotifyType): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[NotifyType](#enum-notifytype)|Yes|-|Another enum value.|
+| other | [NotifyType](#enum-notifytype) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(NotifyType)
 
@@ -2841,15 +2434,15 @@ public operator func ==(other: NotifyType): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default Value|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[NotifyType](#enum-notifytype)|Yes|-|Another enum value.|
+| other | [NotifyType](#enum-notifytype) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -2861,11 +2454,10 @@ public func toString(): String
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|The description of the enum.|
-
-## enum PhotoKeys
+| String | The description of the enum. |
+```## enum PhotoKeys
 
 ```cangjie
 public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
@@ -3173,15 +2765,15 @@ public operator func !=(other: PhotoKeys): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [PhotoKeys](#enum-photokeys) | Yes | - | Another enum value. |
+|other|[PhotoKeys](#enum-photokeys)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise false. |
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(PhotoKeys)
 
@@ -3193,15 +2785,15 @@ public operator func ==(other: PhotoKeys): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [PhotoKeys](#enum-photokeys) | Yes | - | Another enum value. |
+|other|[PhotoKeys](#enum-photokeys)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise false. |
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
 ### func toString()
 
@@ -3209,7 +2801,7 @@ public operator func ==(other: PhotoKeys): Bool
 public func toString(): String
 ```
 
-**Function:** Gets the value of the enum.
+**Function:** Gets the enum value.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3217,9 +2809,9 @@ public func toString(): String
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | Description of the enum. |
+|String|Description of the enum.|
 
 ## enum PhotoSubtype
 
@@ -3289,15 +2881,15 @@ public operator func !=(other: PhotoSubtype): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [PhotoSubtype](#enum-photosubtype) | Yes | - | Another enum value. |
+|other|[PhotoSubtype](#enum-photosubtype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise false. |
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(PhotoSubtype)
 
@@ -3309,15 +2901,15 @@ public operator func ==(other: PhotoSubtype): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [PhotoSubtype](#enum-photosubtype) | Yes | - | Another enum value. |
+|other|[PhotoSubtype](#enum-photosubtype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise false. |
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
 ### func toString()
 
@@ -3325,13 +2917,14 @@ public operator func ==(other: PhotoSubtype): Bool
 public func toString(): String
 ```
 
-**Function:** Gets the value of the enum.
+**Function:** Gets the enum value.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | Description of the enum. |```markdown
+|String|Description of the enum.|
+
 ## enum PhotoViewMIMETypes
 
 ```cangjie
@@ -3344,7 +2937,7 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 }
 ```
 
-**Function:** Selectable media file types.
+**Description:** Selectable media file types.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3361,7 +2954,7 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 ImageType
 ```
 
-**Function:** Image type.
+**Description:** Image type.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3373,7 +2966,7 @@ ImageType
 ImageVideoType
 ```
 
-**Function:** Image and video types.
+**Description:** Image and video types.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3385,7 +2978,7 @@ ImageVideoType
 MovingPhotoImageType
 ```
 
-**Function:** Moving photo type.
+**Description:** Moving photo type.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3397,7 +2990,7 @@ MovingPhotoImageType
 VideoType
 ```
 
-**Function:** Video type.
+**Description:** Video type.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3409,11 +3002,11 @@ VideoType
 public operator func !=(other: PhotoViewMIMETypes): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | Yes | - | Another enum value. |
 
@@ -3421,7 +3014,7 @@ public operator func !=(other: PhotoViewMIMETypes): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the enum values are unequal, otherwise returns false. |
 
 ### func ==(PhotoViewMIMETypes)
 
@@ -3429,11 +3022,11 @@ public operator func !=(other: PhotoViewMIMETypes): Bool
 public operator func ==(other: PhotoViewMIMETypes): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [PhotoViewMIMETypes](#enum-photoviewmimetypes) | Yes | - | Another enum value. |
 
@@ -3441,7 +3034,7 @@ public operator func ==(other: PhotoViewMIMETypes): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+| Bool | Returns true if the enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -3449,13 +3042,13 @@ public operator func ==(other: PhotoViewMIMETypes): Bool
 public func toString(): String
 ```
 
-**Function:** Gets the value of the enum.
+**Description:** Gets the value of the enum.
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | Description of the enum. |
+| String | The description of the enum. |
 
 ## enum RecommendationType
 
@@ -3475,7 +3068,7 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 }
 ```
 
-**Function:** Recommended image types.
+**Description:** Recommended image types.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3492,7 +3085,7 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 BankCard
 ```
 
-**Function:** Bank card.
+**Description:** Bank card.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3504,7 +3097,7 @@ BankCard
 BarCode
 ```
 
-**Function:** Barcode.
+**Description:** Barcode.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3516,7 +3109,7 @@ BarCode
 DriverLicense
 ```
 
-**Function:** Driver's license.
+**Description:** Driver's license.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3528,7 +3121,7 @@ DriverLicense
 DrivingLicense
 ```
 
-**Function:** Vehicle license.
+**Description:** Vehicle license.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3540,7 +3133,7 @@ DrivingLicense
 FeaturedSinglePortrait
 ```
 
-**Function:** Recommended portrait.
+**Description:** Recommended portrait.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3552,7 +3145,7 @@ FeaturedSinglePortrait
 IdCard
 ```
 
-**Function:** ID card.
+**Description:** ID card.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3564,7 +3157,7 @@ IdCard
 PassPort
 ```
 
-**Function:** Passport.
+**Description:** Passport.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3576,7 +3169,7 @@ PassPort
 ProfilePicture
 ```
 
-**Function:** Profile picture.
+**Description:** Profile picture.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3588,7 +3181,7 @@ ProfilePicture
 QrCode
 ```
 
-**Function:** QR code.
+**Description:** QR code.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3600,7 +3193,7 @@ QrCode
 QrOrBarCode
 ```
 
-**Function:** QR code or barcode.
+**Description:** QR code or barcode.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3612,11 +3205,11 @@ QrOrBarCode
 public operator func !=(other: RecommendationType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [RecommendationType](#enum-recommendationtype) | Yes | - | Another enum value. |
 
@@ -3624,7 +3217,7 @@ public operator func !=(other: RecommendationType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the enum values are unequal, otherwise returns false. |
 
 ### func ==(RecommendationType)
 
@@ -3632,11 +3225,11 @@ public operator func !=(other: RecommendationType): Bool
 public operator func ==(other: RecommendationType): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [RecommendationType](#enum-recommendationtype) | Yes | - | Another enum value. |
 
@@ -3644,7 +3237,7 @@ public operator func ==(other: RecommendationType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+| Bool | Returns true if the enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -3652,13 +3245,13 @@ public operator func ==(other: RecommendationType): Bool
 public func toString(): String
 ```
 
-**Function:** Gets the value of the enum.
+**Description:** Gets the value of the enum.
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | Description of the enum. |
+| String | The description of the enum. |
 
 ## enum ResourceType
 
@@ -3670,7 +3263,7 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 }
 ```
 
-**Function:** Represents image resources.
+**Description:** Represents image resources.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3687,7 +3280,7 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 ImageResource
 ```
 
-**Function:** Represents image resources.
+**Description:** Represents image resources.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3699,7 +3292,7 @@ ImageResource
 VideoResource
 ```
 
-**Function:** Represents video resources.
+**Description:** Represents video resources.
 
 **System Capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -3711,11 +3304,11 @@ VideoResource
 public operator func !=(other: ResourceType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [ResourceType](#enum-resourcetype) | Yes | - | Another enum value. |
 
@@ -3723,7 +3316,7 @@ public operator func !=(other: ResourceType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the enum values are unequal, otherwise returns false. |
 
 ### func ==(ResourceType)
 
@@ -3731,11 +3324,11 @@ public operator func !=(other: ResourceType): Bool
 public operator func ==(other: ResourceType): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [ResourceType](#enum-resourcetype) | Yes | - | Another enum value. |
 
@@ -3743,7 +3336,7 @@ public operator func ==(other: ResourceType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+| Bool | Returns true if the enum values are equal, otherwise returns false. |
 ```### func toString()
 
 ```cangjie

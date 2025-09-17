@@ -22,7 +22,7 @@ public init(group!: String = "")
 
 **Function:** Creates a checkbox group that can control the select-all or deselect-all state of checkboxes within the group. Checkboxes and CheckboxGroups with the same group value belong to the same group.
 
-When used with cached components (e.g., List), the selected state of checkboxes that have not been created needs to be manually controlled by the application.
+When used with cached components (e.g., List), the selected state of uncreated checkboxes needs to be manually controlled by the application.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,15 +30,15 @@ When used with cached components (e.g., List), the selected state of checkboxes 
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| group     | String | No       | ""      | **Named parameter.** The group name of the checkboxes.<br/>**Note:**<br/>Among multiple CheckboxGroups with the same group name, only the first CheckboxGroup takes effect. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| group | String | No | "" | **Named parameter.** The group name of the checkboxes.<br/>**Note:**<br/>Among multiple CheckboxGroups with the same group name, only the first CheckboxGroup takes effect. |
 
-## Common Attributes/Common Events
+## Universal Attributes/Events
 
-Common Attributes: All supported.
+Universal Attributes: All supported.
 
-Common Events: All supported.
+Universal Events: All supported.
 
 ## Component Attributes
 
@@ -57,8 +57,8 @@ public func selectAll(value: Bool): This
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
-|:----------|:-----|:---------|:--------|:------------|
-| value     | Bool | Yes      | -       | Whether to select all.<br>Initial value: false.<br>When true, all checkboxes in the group are selected. When false, none are selected. |
+|:---|:---|:---|:---|:---|
+| value | Bool | Yes | - | Whether to select all.<br>Initial value: false.<br>When true, all checkboxes in the group are selected. When false, none are selected. |
 
 ### func selectedColor(ResourceColor)
 
@@ -74,9 +74,9 @@ public func selectedColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| value     | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color for the selected or partially selected state.<br/>Initial value:<br/>@r(sys.color.ohos_id_color_text_primary_activated).<br/>Invalid values are treated as the default. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color for the selected or partially selected state.<br/>Initial value:<br/>@r(sys.color.ohos_id_color_text_primary_activated).<br/>Invalid values are handled as the default. |
 
 ## Component Events
 
@@ -86,7 +86,7 @@ public func selectedColor(value: ResourceColor): This
 public func onChange(callback: OnCheckboxGroupChangeCallback): This
 ```
 
-**Function:** Triggers a callback when the selected state of the CheckboxGroup or any checkbox within the group changes.
+**Function:** Triggers a callback when the selected state of the CheckboxGroup or the checkboxes within the group changes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,9 +94,9 @@ public func onChange(callback: OnCheckboxGroupChangeCallback): This
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| callback  | [OnCheckboxGroupChangeCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Information about the checkbox group. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| callback | OnCheckboxGroupChangeCallback | Yes | - | Information about the checkbox group. |
 
 ## Basic Type Definitions
 
@@ -129,7 +129,7 @@ public var name: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,11 +141,11 @@ public var name: Array<String>
 public var status: SelectStatus
 ```
 
-**Function:** The selection status.
+**Function:** Selection status.
 
 **Type:** [SelectStatus](#enum-selectstatus)
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,10 +168,10 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| status    | [SelectStatus](#enum-selectstatus) | Yes | - | The selection status. |
-| name      | Array\<String> | Yes | - | Names of all selected checkboxes in the group. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| status | [SelectStatus](#enum-selectstatus) | Yes | - | Selection status. |
+| name | Array\<String> | Yes | - | Names of all selected checkboxes in the group. |
 
 ### enum SelectStatus
 
@@ -184,7 +184,7 @@ public enum SelectStatus <: Equatable<SelectStatus> {
 }
 ```
 
-**Function:** Types of selection states for checkboxes.
+**Function:** Types of checkbox selection states.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,14 +240,14 @@ public operator func !=(other: SelectStatus): Bool
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| other     | [SelectStatus](#enum-selectstatus) | Yes | - | Another enum value. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [SelectStatus](#enum-selectstatus) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Bool | Returns true if the enum values are not equal, otherwise false. |
 
 #### func ==(SelectStatus)
@@ -260,14 +260,14 @@ public operator func ==(other: SelectStatus): Bool
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| other     | [SelectStatus](#enum-selectstatus) | Yes | - | Another enum value. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [SelectStatus](#enum-selectstatus) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Bool | Returns true if the enum values are equal, otherwise false. |
 
 #### func getValue()
@@ -284,27 +284,9 @@ public func getValue(): Int32
 
 **Return Value:**
 
-| Type  | Description |
-|:------|:------------|
+| Type | Description |
+|:----|:----|
 | Int32 | The value of the enum. |
-
-#### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the string representation of the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type   | Description |
-|:-------|:------------|
-| String | The string representation of the enum. |
 
 ## Example Code
 
@@ -318,10 +300,15 @@ This example controls the select-all or deselect-all state of checkboxes.
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
-func formatNames(names: ArrayList<String>): String {
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func formatNames(names: Array<String>): String {
     var result = ""
     for(name in names) {
         result += name + ";"
@@ -334,28 +321,25 @@ func formatNames(names: ArrayList<String>): String {
 class EntryView {
     func build() {
         Column(){
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 CheckboxGroup(group:"checkboxGroup")
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
-                .unselectedColor(Color.Blue)
-                .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
                 .selectAll(false)
                 .onChange { val =>
-                    BaseLog.info("checkboxGroup onChange status:" + val.status.toString())
-                    BaseLog.info("checkboxGroup onChange names:" + formatNames(val.name))
+                    loggerInfo("checkboxGroup onChange names:" + formatNames(val.name))
                 }
 
                 Text("Select All").fontSize(50)
             }
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox1", group:"checkboxGroup")
                 .size(width: 50.vp, height: 50.vp)
 
                 Text("checkbox1").fontSize(50)
             }
 
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox2", group:"checkboxGroup")
                 .size(width: 50.vp, height: 50.vp)
 
@@ -378,10 +362,15 @@ This example implements a custom checkmark style for the checkbox group by confi
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
-func formatNames(names: ArrayList<String>): String {
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
+
+func formatNames(names: Array<String>): String {
     var result = ""
     for(name in names) {
         result += name + ";"
@@ -394,35 +383,32 @@ func formatNames(names: ArrayList<String>): String {
 class EntryView {
     func build() {
         Column(){
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 CheckboxGroup(group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
-                .selectAll(true)```markdown
-                .mark(strokeColor: Color.Green, size: 30.vp, strokeWidth: 10.vp)
-                .checkboxShape(CheckBoxShape.CIRCLE)
+                .selectAll(true)
                 .onChange { val =>
-                    BaseLog.info("checkboxGroup1 onChange status:" + val.status.toString())
-                    BaseLog.info("checkboxGroup1 onChange names:" + formatNames(val.name))
+                    loggerInfo("checkboxGroup1 onChange names:" + formatNames(val.name))
                 }
 
                 Text("Select All").fontSize(50)
             }
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox1", group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
 
-                Text("checkbox1").fontSize(50)
+                Text("checkbox1").fontSize(50)```typescript
             }
 
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox2", group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
 
                 Text("checkbox2").fontSize(50)
             }
 
-            Flex(FlexParams(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center) {
                 Checkbox(name: "checkbox3", group:"checkboxGroup1")
                 .size(width: 50.vp, height: 50.vp)
 
@@ -434,4 +420,3 @@ class EntryView {
 ```
 
 ![checkbox_group2](figures/checkbox_group2.gif)
-```

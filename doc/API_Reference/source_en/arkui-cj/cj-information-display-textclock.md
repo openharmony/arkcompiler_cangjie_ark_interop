@@ -1,8 +1,8 @@
 # TextClock
 
-The TextClock component displays the current system time on the device through text. It supports time display across different time zones with precision up to seconds.
+The TextClock component displays the current system time on the device through text. It supports displaying time in different time zones with second-level precision.
 
-Time updates will stop when the component is invisible. The visibility state of the component is determined by [onVisibleAreaChange] handling, where a visibility threshold ratio greater than 0 is considered visible.
+When the component is not visible, time updates will stop. The visibility state of the component is based on [onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit) handling, where a visibility threshold ratio greater than 0 is considered visible.
 
 ## Import Module
 
@@ -10,7 +10,7 @@ Time updates will stop when the component is invisible. The visibility state of 
 import kit.ArkUI.*
 ```
 
-## Subcomponents
+## Child Components
 
 None
 
@@ -26,14 +26,14 @@ public init(timeZoneOffset!: ?Float32 = None, controller!: TextClockController =
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| timeZoneOffset | ?Float32 | No | None | **Named parameter.** Sets the time zone offset.<br/>Range: [-14, 12], representing UTC+12 to UTC-12, where negative values indicate east time zones and positive values indicate west time zones (e.g., UTC+8 is -8). Floating-point numbers within this range will be truncated (decimal part discarded).<br/>Floating-point numbers in the set { 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 } will not be truncated.<br/>For countries or regions crossing the International Date Line, -13 (UTC+13) and -14 (UTC+14) ensure the entire country/region shares the same time. If the value is outside the valid range, the system's current time zone offset will be used. |
-| controller | [TextClockController](#class-textclockcontroller) | No | TextClockController() | **Named parameter.** Binds a controller to manage the text clock's state. |
+| timeZoneOffset | ?Float32 | No | None | **Named parameter.** Sets the time zone offset.<br/>Valid range is [-14, 12], representing UTC+12 to UTC-12, where negative values indicate east time zones and positive values indicate west time zones. For example, UTC+8 is -8. Floating-point numbers within this range will be truncated (decimal part discarded).<br/>Floating-point numbers in the set { 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 } will not be truncated.<br/>For countries or regions crossing the International Date Line, -13 (UTC+13) and -14 (UTC+14) are used to ensure the entire country or region is in the same time. If the set value is outside the valid range, the current system time zone offset will be used. |
+| controller | [TextClockController](#class-textclockcontroller) | No | TextClockController() | **Named parameter.** Binds a controller to manage the state of the text clock. |
 
 ## Common Attributes/Common Events
 
@@ -53,13 +53,13 @@ public func fontColor(value: ResourceColor): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | Font color. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
 
 ### func fontFamily(ResourceStr)
 
@@ -71,7 +71,7 @@ public func fontFamily(value: ResourceStr): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -89,13 +89,13 @@ public func fontSize(value: Length): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | Font size. When fontSize is Int64 or Float64, the unit is fp. Initial value: 16.fp. Percentage values are not supported. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is Int64 or Float64, the unit is fp. Initial value: 16.fp. Percentage values are not supported. |
 
 ### func fontStyle(FontStyle)
 
@@ -107,7 +107,7 @@ public func fontStyle(value: FontStyle): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -121,11 +121,11 @@ public func fontStyle(value: FontStyle): This
 public func fontWeight(value: FontWeight): This
 ```
 
-**Function:** Sets the font weight of the text. Setting too large a value may cause truncation in some fonts.
+**Function:** Sets the font weight of the text. Setting too large a value may cause truncation in different fonts.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -139,7 +139,7 @@ public func fontWeight(value: FontWeight): This
 public func format(value: ResourceStr): This
 ```
 
-**Function:** Sets the time display format, such as "yyyy/MM/dd" or "yyyy-MM-dd".
+**Function:** Sets the time display format, such as "yyyy/MM/dd", "yyyy-MM-dd".
 
 y: Year (yyyy for full year, yy for last two digits)
 
@@ -147,7 +147,7 @@ M: Month (use MM for two-digit months)
 
 d: Day (use dd for two-digit days)
 
-E: Weekday (use EEEE for full weekday names like "Saturday," E/EE/EEE for short names like "Sat")
+E: Weekday (use EEEE for full weekday names like "Saturday", E/EE/EEE for abbreviated names like "Sat")
 
 H: Hour (24-hour format)
 
@@ -157,29 +157,29 @@ m: Minute
 
 s: Second
 
-SS: Centiseconds (if the number of S in format is <3, treated as centiseconds)
+SS: Centisecond (if the number of S in format is <3, treated as centiseconds)
 
-SSS: Milliseconds (if the number of S in format is >=3, treated as milliseconds)
+SSS: Millisecond (if the number of S in format is >=3, treated as milliseconds)
 
-a: AM/PM (does not take effect when hour format is H)
+a: AM/PM (does not take effect when hour format is set to H)
 
-Date separators: "年月日", "/", "-", "." (custom separators are allowed; separators cannot be letters; Chinese characters are treated as separators)
+Date separators: "年月日", "/", "-", "." (custom separators are allowed, but letters cannot be used as separators; Chinese characters are treated as separators)
 
-You can freely combine display formats by arranging year, month, day, weekday, hour, minute, second, and millisecond sub-elements. The maximum update frequency is once per second; setting centisecond or millisecond formats alone is not recommended.
+Allows custom combinations of display formats, i.e., year, month, day, weekday, hour, minute, second, and millisecond can be split into sub-elements and arranged freely. The maximum update frequency is once per second; setting centisecond or millisecond formats alone is not recommended.
 
-Invalid letters (non-listed above) will be ignored. If the format consists entirely of invalid letters, the display follows the system language and hour format. For example, in Chinese with 12-hour format: "yyyy/MM/dd aa hh:mm:ss.SSS"; in 24-hour format: "yyyy/MM/dd HH:mm:ss.SSS".
+Invalid letters (non-listed letters are considered invalid) will be ignored. If the format consists entirely of invalid letters, the display format follows the system language and hour format. For example, when the system language is Chinese, the 12-hour format displays as "yyyy/MM/dd aa hh:mm:ss.SSS", and the 24-hour format displays as "yyyy/MM/dd HH:mm:ss.SSS".
 
 If format is empty, the initial value is used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Time display format, such as `yyyy/MM/dd` or `yyyy-MM-dd`. |
+| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the time display format, such as `yyyy/MM/dd`, `yyyy-MM-dd`. |
 
 ### func textShadow(Array\<ShadowOptions>)
 
@@ -187,11 +187,11 @@ If format is empty, the initial value is used.
 public func textShadow(values: Array<ShadowOptions>): This
 ```
 
-**Function:** Sets text shadow effects. This method accepts an array for multiple text shadows. Does not support the fill field or smart color mode.
+**Function:** Sets text shadow effects. This interface accepts an array parameter to achieve multiple text shadows. Does not support the fill field or smart color mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -209,13 +209,13 @@ public func textShadow(value: ShadowOptions): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ShadowOptions](./cj-common-types.md#interface-shadowoptions) | Yes | - | Shadow options. |
+| value | [ShadowOptions](./cj-text-input-text.md#class-shadowoptions) | Yes | - | Shadow options. |
 
 ## Component Events
 
@@ -225,17 +225,17 @@ public func textShadow(value: ShadowOptions): This
 public func onDateChange(callback: (Int64) -> Unit): This
 ```
 
-**Function:** Triggered when the time changes. The callback interval is per second. Not triggered when the component is invisible.
+**Function:** Triggered when the time changes. The callback interval is per second. Not triggered when the component is not visible.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (Int64)->Unit | Yes | - | Unix Time Stamp, representing the number of seconds since January 1, 1970 (UTC). |
+| callback | (Int64)->Unit | Yes | - | Unix Time Stamp, i.e., the number of seconds elapsed since January 1, 1970 (UTC). |
 
 ## Basic Type Definitions
 
@@ -263,7 +263,6 @@ public class DateTimeOptions {
     public var localeMatcher: String
     public var formatMatcher: String
 
-
     public init(locale!: String = "zh-Hans-CN", dateStyle!: String = "long", timeStyle!: String = "long",
         hourCycle!: String = "h11", timeZone!: String = "", numberingSystem!: String = "adlm", hour12!: Bool = false,
         weekday!: String = "long", era!: String = "long", year!: String = "numeric", month!: String = "numeric",
@@ -277,7 +276,7 @@ public class DateTimeOptions {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var dateStyle
 
@@ -285,15 +284,15 @@ public class DateTimeOptions {
 public var dateStyle: String
 ```
 
-**Function:** Date display format. Options: "long", "short", "medium", "full", "auto".
+**Function:** Date display format, including: "long", "short", "medium", "full", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var day
 
@@ -301,15 +300,15 @@ public var dateStyle: String
 public var day: String
 ```
 
-**Function:** Day display format. Options: "numeric", "2-digit".
+**Function:** Day display format, including: "numeric", "2-digit".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var dayPeriod
 
@@ -317,15 +316,15 @@ public var day: String
 public var dayPeriod: String
 ```
 
-**Function:** Period display format. Options: "long", "short", "narrow", "auto".
+**Function:** Period display format, including: "long", "short", "narrow", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var era
 
@@ -333,15 +332,15 @@ public var dayPeriod: String
 public var era: String
 ```
 
-**Function:** Era display format. Options: "long", "short", "narrow", "auto".
+**Function:** Era display format, including: "long", "short", "narrow", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var formatMatcher
 
@@ -349,15 +348,15 @@ public var era: String
 public var formatMatcher: String
 ```
 
-**Function:** Format matching algorithm. Options: "basic", "best fit".
+**Function:** Format matching algorithm to use, including: "basic", "best fit".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var hour
 
@@ -365,15 +364,15 @@ public var formatMatcher: String
 public var hour: String
 ```
 
-**Function:** Hour display format. Options: "numeric", "2-digit".
+**Function:** Hour display format, including: "numeric", "2-digit".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var hour12
 
@@ -381,15 +380,15 @@ public var hour: String
 public var hour12: Bool
 ```
 
-**Function:** Whether to use 12-hour format. If hour12 and hourCycle are unset and the system's 24-hour switch is enabled, the default value is false.
+**Function:** Whether to use 12-hour format. If hour12 and hourCycle are not set and the system 24-hour switch is on, the default value of hour12 is false.
 
 **Type:** Bool
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var hourCycle
 
@@ -397,15 +396,15 @@ public var hour12: Bool
 public var hourCycle: String
 ```
 
-**Function:** Hour cycle format. Options: "h11", "h12", "h23", "h24".
+**Function:** Hour cycle format, including: "h11", "h12", "h23", "h24".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var locale
 
@@ -417,11 +416,11 @@ public var locale: String
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var localeMatcher
 
@@ -429,15 +428,15 @@ public var locale: String
 public var localeMatcher: String
 ```
 
-**Function:** Locale matching algorithm. Options: "lookup", "best fit".
+**Function:** Locale matching algorithm to use, including: "lookup", "best fit".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var minute
 
@@ -445,15 +444,15 @@ public var localeMatcher: String
 public var minute: String
 ```
 
-**Function:** Minute display format. Options: "numeric", "2-digit".
+**Function:** Minute display format, including: "numeric", "2-digit".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var month
 
@@ -461,15 +460,15 @@ public var minute: String
 public var month: String
 ```
 
-**Function:** Month display format. Options: "numeric", "2-digit", "long", "short", "narrow", "auto".
+**Function:** Month display format, including: "numeric", "2-digit", "long", "short", "narrow", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var numberingSystem
 
@@ -477,15 +476,15 @@ public var month: String
 public var numberingSystem: String
 ```
 
-**Function:** Numbering system. Options: "adlm", "ahom", "arab", "arabext", "bali", "beng", "bhks", "brah", "cakm", "cham", "deva", "diak", "fullwide", "gong", "gonm", "gujr", "guru", "hanidec", "hmng", "hmnp", "java", "kali", "khmr", "knda", "lana", "lanatham", "laoo", "latn", "lepc", "limb", "mathbold", "mathdbl", "mathmono", "mathsanb", "mathsans", "mlym", "modi", "mong", "mroo", "mtei", "mymr", "mymrshan", "mymrtlng", "newa", "nkoo", "olck", "orya", "osma", "rohg", "saur", "segment", "shrd", "sind", "sinh", "sora", "sund", "takr", "talu", "tamldec", "telu", "thai", "tibt", "tirh", "vaii", "wara", "wcho".
+**Function:** Numbering system, including: "adlm", "ahom", "arab", "arabext", "bali", "beng", "bhks", "brah", "cakm", "cham", "deva", "diak", "fullwide", "gong", "gonm", "gujr", "guru", "hanidec", "hmng", "hmnp", "java", "kali", "khmr", "knda", "lana", "lanatham", "laoo", "latn", "lepc", "limb", "mathbold", "mathdbl", "mathmono", "mathsanb", "mathsans", "mlym", "modi", "mong", "mroo", "mtei", "mymr", "mymrshan", "mymrtlng", "newa", "nkoo", "olck", "orya", "osma", "rohg", "saur", "segment", "shrd", "sind", "sinh", "sora", "sund", "takr", "talu", "tamldec", "telu", "thai", "tibt", "tirh", "vaii", "wara", "wcho".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var second
 
@@ -493,15 +492,15 @@ public var numberingSystem: String
 public var second: String
 ```
 
-**Function:** Second display format. Options: "numeric", "2-digit".
+**Function:** Second display format, including: "numeric", "2-digit".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var timeStyle
 
@@ -509,15 +508,15 @@ public var second: String
 public var timeStyle: String
 ```
 
-**Function:** Time display format. Options: "long", "short", "medium", "full", "auto".
+**Function:** Time display format, including: "long", "short", "medium", "full", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var timeZone
 
@@ -525,15 +524,15 @@ public var timeStyle: String
 public var timeZone: String
 ```
 
-**Function:** Time zone (valid IANA time zone ID).
+**Function:** Time zone to use (valid IANA time zone ID).
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var timeZoneName
 
@@ -541,15 +540,15 @@ public var timeZone: String
 public var timeZoneName: String
 ```
 
-**Function:** Localized representation of time zone names. Options: "long", "short", "auto".
+**Function:** Localized representation of time zone name, including: "long", "short", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var weekday
 
@@ -557,15 +556,15 @@ public var timeZoneName: String
 public var weekday: String
 ```
 
-**Function:** Weekday display format. Options: "long", "short", "narrow", "auto".
+**Function:** Weekday display format, including: "long", "short", "narrow", "auto".
 
 **Type:** String
 
-**Read/Write:** Read-Write
+**Read/Write:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var year
 
@@ -573,21 +572,11 @@ public var weekday: String
 public var year: String
 ```
 
-**Function:** Year display format. Options: "numeric", "2-digit".
-
-**Type:** String
-
-**Read/Write:** Read-Write
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Initial Version:** 21
-
-#### init(String,## Sample Code
+**Function:** Year display format, including: "numeric", "## Sample Code
 
 ### Example 1 (Setting Text Shadow Style)
 
-This example demonstrates how to set the text shadow style for a text clock using the textShadow property.
+This example demonstrates how to set text shadow styles for a text clock using the `textShadow` property.
 
 <!-- run -->
 
@@ -601,15 +590,15 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State
     var shadowoptions: Array<ShadowOptions> = [
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 10.0, offsetY: 0.0, color: 0xffff0000,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 10.0, offsetY: 0.0, color: 0xffff0000,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 20.0, offsetY: 0.0, color: 0xff000000,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 20.0, offsetY: 0.0, color: 0xff000000,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 30.0, offsetY: 0.0, color: 0xffc0c0c0,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 30.0, offsetY: 0.0, color: 0xffc0c0c0,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 40.0, offsetY: 0.0, color: 0xff00ff00,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 40.0, offsetY: 0.0, color: 0xff00ff00,
             fill: false),
-        ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, offsetX: 100.0, offsetY: 0.0, color: 0xff0000ff,
+        ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, offsetX: 100.0, offsetY: 0.0, color: 0xff0000ff,
             fill: false)
     ]
     public func build() {
@@ -624,11 +613,11 @@ class EntryView {
 
 ### Example 2 (Text Style Clock with Start/Stop Functionality)
 
-This example shows the basic usage of the TextClock component by setting the clock text format through the format property.
+This example demonstrates the basic usage of the `TextClock` component by setting the clock text format through the `format` property.
 
-Clicking the "start TextClock" button invokes the callback function to start the text clock using TextClockController. Clicking the "stop TextClock" button pauses the text clock via TextClockController.
+Clicking the "start TextClock" button triggers the callback function to start the text clock using `TextClockController`. Clicking the "stop TextClock" button pauses the text clock.
 
-The component in this example continuously updates the accumulateTime content when the text clock refreshes by setting the onDateChange callback function.
+The component in this example continuously updates the `accumulateTime` content when the text clock refreshes by setting the `onDateChange` callback function.
 
 <!-- run -->
 
@@ -646,7 +635,7 @@ class EntryView {
     public func build() {
         Column {
             Text('Current milliseconds is ${this.accumulateTime}').fontSize(20).margin(10)
-            // Displays system time in UTC+8 using 12-hour format with seconds precision
+            // Display system time in UTC+8 with 12-hour format, precise to seconds.
             TextClock(timeZoneOffset: -8.0, controller: this.controller)
                 .format('aa hh:mm:ss')
                 .onDateChange({
@@ -670,36 +659,3 @@ class EntryView {
 ```
 
 ![text_clock2](figures/text_clock2.gif)
-
-### Example 3 (Setting Leading Zero)
-
-This example demonstrates the dateTimeOptions property's functionality for adding or removing leading zeros in the hour field. By default, the 24-hour format hour field includes a leading zero, which can be removed via dateTimeOptions. The 12-hour format hour field normally omits the leading zero, which can be added through dateTimeOptions.
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    let numericOption = DateTimeOptions(hour: "numeric")
-    let digitOption = DateTimeOptions(hour: "2-digit")
-    public func build() {
-        Column {
-            Row() {
-                Text("24-hour format without leading zero:").fontSize(20)
-                TextClock().fontSize(20).format("HH:mm:ss").dateTimeOptions(numericOption)
-            }
-            Row() {
-                Text("12-hour format with leading zero:").fontSize(20).margin(10)
-                TextClock().fontSize(20).format("aa hh:mm:ss").dateTimeOptions(digitOption)
-            }
-        }
-    }
-}
-```
-
-![text_clock3](figures/text_clock3.jpg)

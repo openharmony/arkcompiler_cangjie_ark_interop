@@ -36,15 +36,15 @@ public init(
 
 **Parameters:**
 
-| Parameter Name | Type      | Required | Default Value | Description |
-|:--------------|:----------|:---------|:--------------|:------------|
-| min           | Float64   | No       | 0.0           | **Named parameter.** Sets the minimum value. |
-| max           | Float64   | No       | 100.0         | **Named parameter.** Sets the maximum value.<br>Initial value: 100.<br>**Note:**<br>If min >= max, the initial values are used (min = 0, max = 100).<br>If value is outside [min, max], it is clamped to min or max (whichever is closer). |
-| step          | Float64   | No       | 1.0           | **Named parameter.** Sets the step size for slider movement.<br>**Note:**<br>If step <= 0 or step >= (max - min), the initial value is used. |
-| value         | Float64   | No       | min           | **Named parameter.** The current progress value. |
-| style         | [SliderStyle](#enum-sliderstyle) | No | SliderStyle.OutSet | **Named parameter.** Sets the slider's thumb style. |
-| direction     | [Axis](./cj-common-types.md#enum-axis) | No | Axis.Horizontal | **Named parameter.** Sets the slider's direction (horizontal or vertical). |
-| reverse       | Bool      | No       | false         | **Named parameter.** Sets whether the slider's value range is reversed.<br>**Note:**<br>When false, horizontal sliders move left to right, and vertical sliders move top to bottom.<br>When true, horizontal sliders move right to left, and vertical sliders move bottom to top. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| min | Float64 | No | 0.0 | **Named parameter.** Sets the minimum value. |
+| max | Float64 | No | 100.0 | **Named parameter.** Sets the maximum value.<br/>Initial value: 100.<br/>**Note:**<br/>If min >= max (abnormal case), min defaults to 0 and max defaults to 100.<br/>If value is outside [min, max], it will be set to min or max (whichever is closer). |
+| step | Float64 | No | 1.0 | **Named parameter.** Sets the step size for slider movement.<br/>**Note:**<br/>If step <= 0 or step >= max - min, the initial value is used. |
+| value | Float64 | No | min | **Named parameter.** The current progress value. |
+| style | [SliderStyle](#enum-sliderstyle) | No | SliderStyle.OutSet | **Named parameter.** Sets the slider's thumb style. |
+| direction | [Axis](./cj-common-types.md#enum-axis) | No | Axis.Horizontal | **Named parameter.** Sets the slider's movement direction (horizontal or vertical). |
+| reverse | Bool | No | false | **Named parameter.** Sets whether the slider's value range is reversed.<br/>**Note:**<br/>When false, horizontal sliders move left to right, and vertical sliders move top to bottom.<br/>When true, horizontal sliders move right to left, and vertical sliders move bottom to top. |
 
 ## Common Attributes/Events
 
@@ -66,7 +66,7 @@ When the slider thumb shape is set to SliderBlockType.DEFAULT, `blockBorderColor
 
 When the slider thumb shape is set to SliderBlockType.IMAGE, the thumb has no border, and `blockBorderColor` has no effect.
 
-When the slider thumb shape is set to SliderBlockType.SHAPE, `blockBorderColor` sets the color of the lines in the custom shape.
+When the slider thumb shape is set to SliderBlockType.SHAPE, `blockBorderColor` sets the color of the line in the custom shape.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,9 +74,9 @@ When the slider thumb shape is set to SliderBlockType.SHAPE, `blockBorderColor` 
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | The border color of the slider thumb.<br>Initial value: 0x00000000. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The border color of the slider thumb.<br/>Initial value: 0x00000000. |
 
 ### func blockColor(ResourceColor)
 
@@ -84,9 +84,9 @@ When the slider thumb shape is set to SliderBlockType.SHAPE, `blockBorderColor` 
 public func blockColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the fill color of the slider thumb.
+**Function:** Sets the color of the slider thumb.
 
-When the slider thumb shape is set to SliderBlockType.DEFAULT, `blockColor` sets the fill color of the default circular thumb.
+When the slider thumb shape is set to SliderBlockType.DEFAULT, `blockColor` sets the color of the default circular thumb.
 
 When the slider thumb shape is set to SliderBlockType.IMAGE, the thumb has no fill, and `blockColor` has no effect.
 
@@ -98,9 +98,9 @@ When the slider thumb shape is set to SliderBlockType.SHAPE, `blockColor` sets t
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | The fill color of the slider thumb.<br>Initial value: @r(sys.color.ohos_id_color_foreground_contrary). |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the slider thumb.<br/>Initial value: @r(sys.color.ohos_id_color_foreground_contrary). |
 
 ### func selectedColor(ResourceColor)
 
@@ -108,7 +108,7 @@ When the slider thumb shape is set to SliderBlockType.SHAPE, `blockColor` sets t
 public func selectedColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the color of the filled portion of the slider track.
+**Function:** Sets the color of the track's filled portion based on the specified Color.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,9 +116,9 @@ public func selectedColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | The color of the filled portion of the track.<br>Initial value: @r(sys.color.ohos_id_color_emphasize). |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the track's filled portion.<br/>Initial value: @r(sys.color.ohos_id_color_emphasize). |
 
 ### func showSteps(Bool)
 
@@ -134,9 +134,9 @@ public func showSteps(value: Bool): This
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | Bool | Yes | - | Whether to display step markers.<br>Initial value: false. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | Bool | Yes | - | Whether to display step markers.<br/>Initial value: false. |
 
 ### func showTips(Bool, ?ResourceStr)
 
@@ -144,11 +144,11 @@ public func showSteps(value: Bool): This
 public func showTips(value: Bool, content!: ?ResourceStr = None): This
 ```
 
-**Function:** Sets whether to display a tooltip bubble during sliding.
+**Function:** Sets whether to display a bubble tip during sliding.
 
-When `direction` is Axis.Horizontal, the tooltip appears above the thumb (or below if space is insufficient). When `direction` is Axis.Vertical, the tooltip appears to the left of the thumb (or to the right if space is insufficient). If margins are small or unset, the tooltip may be clipped.
+When `direction` is Axis.Horizontal, the tip appears above the thumb (or below if space is insufficient). When `direction` is Axis.Vertical, the tip appears to the left of the thumb (or to the right if space is insufficient). If margins are not set or are too small, the tip may be truncated.
 
-The tooltip is drawn in the overlay area of the Slider node.
+The tip's drawing area is the overlay of the Slider component's node.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,10 +156,10 @@ The tooltip is drawn in the overlay area of the Slider node.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | Bool | Yes | - | Whether to display a tooltip bubble during sliding.<br>Initial value: false. |
-| content | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** The text content of the tooltip. Defaults to the current percentage. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | Bool | Yes | - | Whether to display a bubble tip during sliding.<br/>Initial value: false. |
+| content | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** The text content of the bubble tip. By default, it displays the current percentage. |
 
 ### func trackColor(ResourceColor)
 
@@ -167,7 +167,7 @@ The tooltip is drawn in the overlay area of the Slider node.
 public func trackColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the background color of the slider track.
+**Function:** Sets the background color of the track based on the specified Color.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,9 +175,9 @@ public func trackColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | The background color of the track.<br>**Note:**<br>For gradient colors, invalid color stops or empty gradient stops will disable the gradient effect.<br>Initial value: @r(sys.color.ohos_id_color_component_normal). |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the track.<br/>**Note:**<br/>For gradient colors, if the color stop value is invalid or the gradient stop is empty, the gradient effect will not apply.<br>Initial value: @r(sys.color.ohos_id_color_component_normal). |
 
 ### func trackThickness(Length)
 
@@ -185,13 +185,13 @@ public func trackColor(value: ResourceColor): This
 public func trackThickness(value: Length): This
 ```
 
-**Function:** Sets the thickness of the slider track. Values ≤ 0 will revert to the initial value.
+**Function:** Sets the thickness of the track based on the specified Length. If the value is less than or equal to 0, the initial value is used.
 
-To maintain the SliderStyle appearance, the thumb size (`blockSize`) scales proportionally with `trackThickness`.
+To maintain the SliderStyle of the thumb and track, `blockSize` adjusts proportionally with `trackThickness`.
 
-For SliderStyle.OutSet, the ratio is trackThickness : blockSize = 1 : 4. For SliderStyle.InSet, the ratio is 5 : 3.
+When `style` is SliderStyle.OutSet, the ratio is `trackThickness : blockSize = 1 : 4`. When `style` is SliderStyle.InSet, the ratio is `trackThickness : blockSize = 5 : 3`.
 
-If `trackThickness` or `blockSize` exceeds the slider's width or height (especially for SliderStyle.OutSet), the initial values are used.
+During `trackThickness` adjustment, if `trackThickness` or `blockSize` exceeds the slider component's width or height (for SliderStyle.OutSet, `blockSize` might exceed even if `trackThickness` does not), the initial value is used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,9 +199,9 @@ If `trackThickness` or `blockSize` exceeds the slider's width or height (especia
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | The thickness of the track.<br>Initial value: 4.0.vp for SliderStyle.OutSet, 20.0.vp for SliderStyle.InSet. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the track.<br/>Initial value: 4.0.vp for SliderStyle.OutSet, 20.0.vp for SliderStyle.InSet. |
 
 ## Component Events
 
@@ -213,7 +213,7 @@ public func onChange(callback: (Float64, SliderChangeMode) -> Unit): This
 
 **Function:** Triggers an event callback when the slider is dragged or clicked.
 
-The Begin and End states trigger on gesture/mouse down and up. Moving and Click states trigger when the value changes.
+The Begin and End states are triggered when a gesture is clicked. The Moving and Click states are triggered when the `value` changes.
 
 A continuous drag action does not trigger the Click state.
 
@@ -223,9 +223,9 @@ A continuous drag action does not trigger the Click state.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
-| callback | (Float64, [SliderChangeMode](#enum-sliderchangemode)) -> Unit | Yes | - | Callback triggered when the slider is dragged or clicked.<br>Parameter 1: Current progress value, constrained by the step size.<br>Parameter 2: The event's trigger state. |
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| callback | (Float64, [SliderChangeMode](#enum-sliderchangemode)) -> Unit | Yes | - | The event callback triggered when the slider is dragged or clicked.<br>Parameter 1: The current progress value, ranging over the corresponding step array.<br>Parameter 2: The state value related to the triggered event. |
 
 ## Basic Type Definitions
 
@@ -241,7 +241,7 @@ public enum SliderChangeMode <: Equatable<SliderChangeMode> {
 }
 ```
 
-**Function:** The trigger states for slider drag or click events.
+**Function:** The state value triggered when the slider is dragged or clicked.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,7 +257,7 @@ public enum SliderChangeMode <: Equatable<SliderChangeMode> {
 Begin
 ```
 
-**Function:** Gesture/mouse contact or press on the slider thumb.
+**Function:** Gesture/mouse contact or pressing the slider thumb.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,7 +269,7 @@ Begin
 Click
 ```
 
-**Function:** Clicking the slider track to move the thumb.
+**Function:** Clicking the slider to move the thumb.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,19 +305,19 @@ Moving
 public operator func !=(other: SliderChangeMode): Bool
 ```
 
-**Function:** Checks if two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
 | other | [SliderChangeMode](#enum-sliderchangemode) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
-| Bool | Returns true if unequal, false otherwise. |
+|:----|:----|
+| Bool | Returns true if the enum values are unequal, otherwise false. |
 
 #### func ==(SliderChangeMode)
 
@@ -325,19 +325,19 @@ public operator func !=(other: SliderChangeMode): Bool
 public operator func ==(other: SliderChangeMode): Bool
 ```
 
-**Function:** Checks if two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
 | other | [SliderChangeMode](#enum-sliderchangemode) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
-| Bool | Returns true if equal, false otherwise. |
+|:----|:----|
+| Bool | Returns true if the enum values are equal, otherwise false. |
 
 ### enum SliderStyle
 
@@ -377,7 +377,7 @@ InSet
 OutSet
 ```
 
-**Function:** The thumb is overlaid on the track.
+**Function:** The thumb is placed on the track.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -389,19 +389,19 @@ OutSet
 public operator func !=(other: SliderStyle): Bool
 ```
 
-**Function:** Checks if two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
 | other | [SliderStyle](#enum-sliderstyle) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
-| Bool | Returns true if unequal, false otherwise. |
+|:----|:----|
+| Bool | Returns true if the enum values are unequal, otherwise false. |
 
 #### func ==(SliderStyle)
 
@@ -409,23 +409,23 @@ public operator func !=(other: SliderStyle): Bool
 public operator func ==(other: SliderStyle): Bool
 ```
 
-**Function:** Checks if two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:---------|:--------------|:------------|
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
 | other | [SliderStyle](#enum-sliderstyle) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
-| Bool | Returns true if equal, false otherwise. |## Sample Code
+|:----|:----|
+| Bool | Returns true if the enum values are equal, otherwise false. |## Sample Code
 
 ### Example 1 (Basic Slider Styles)
 
-This example controls the display of tooltips, scale values, sliders, and tracks by configuring `style`, `showTips`, and `showSteps`.
+This example demonstrates how to control the display of tooltips, scale values, sliders, and tracks by configuring `style`, `showTips`, and `showSteps`.
 
 <!-- run -->
 
@@ -517,7 +517,7 @@ class EntryView {
                     value: this.noneValueOne,
                     min: 0.0,
                     max: 100.0,
-                    style: SliderStyle.NONE
+                    style: SliderStyle.OutSet
                 )
                     .blockColor(0x191970)
                     .trackColor(0xADD8E6)
@@ -569,7 +569,7 @@ class EntryView {
                             value: this.vInSetValueOne,
                             style: SliderStyle.InSet,
                             direction: Axis.Vertical,
-                            reverse: true // Vertical sliders default to min value at the top and max value at the bottom. To slide from bottom to top, set reverse to true
+                            reverse: true // By default, vertical Sliders have min value at the top and max at the bottom. Setting reverse to true enables bottom-to-top sliding.
                         )
                             .showTips(true)
                             .onChange({
@@ -595,61 +595,3 @@ class EntryView {
 ```
 
 ![slider](figures/slider1.gif)
-
-### Example 2 (Customizing Slider Styles)
-
-This example sets the slider style via `blockBorderColor`, `blockSize`, `blockBorderWidth`, and `blockStyle`, configures scale value styles using `stepSize` and `stepColor`, adjusts track corner radius with `trackBorderRadius`, and modifies the selected section's corner radius with `selectedBorderRadius`.
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-internal import kit.LocalizationKit.{AppResource, __GenerateResource__}
-
-@Entry
-@Component
-class EntryView {
-    @State var tipsValue: Float64 = 40.0
-
-    func build() {
-        Column {
-            Text('block').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.OutSet, value: 40.0)
-                .blockSize(width: 40.0, height: 40.0)
-                .blockBorderColor(Color.Red)
-                .blockBorderWidth(5)
-            Divider()
-            Text('step').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: 40.0, step: 10.0).showSteps(true).stepSize(8).stepColor(0xFFFF00)
-            Divider()
-            Text('track').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: 40.0).trackBorderRadius(2)
-            Divider()
-            Text('selected').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: 40.0).selectedBorderRadius(2)
-            Divider()
-            Text('blockStyle').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.OutSet, value: 40.0).blockStyle(SliderBlockType.DEFAULT)
-            Slider(style: SliderStyle.OutSet, value: 40.0).blockStyle(SliderBlockType.IMAGE,
-                image: @r(app.media.startIcon))
-            //            .blockStyle( SliderBlockType.IMAGE, image: "app.media.startIcon" )
-            Slider(style: SliderStyle.OutSet, value: 40.0)
-                .blockSize(width: 60.px, height: 60.px)
-                .blockColor(Color.Red)
-                .blockStyle(SliderBlockType.SHAPE, shape: PathShape(commands: 'M60 60 M30 30 L15 56 L45 56 Z'))
-            Divider()
-            Text('tips').fontSize(9).fontColor(0xCCCCCC).margin(15).width(90.percent)
-            Slider(style: SliderStyle.InSet, value: this.tipsValue)
-                .showTips(true, content: "${Int64(this.tipsValue)}")
-                .onChange({
-                    value: Float64, mode: SliderChangeMode => this.tipsValue = value
-                })
-        }
-    }
-}
-```
-
-![slider](figures/slider2.png)

@@ -1,8 +1,8 @@
 # ohos.hiviewdfx.hi_app_event (Application Event Logging)
 
-This module provides application event logging capabilities, including event persistence, subscription, cleanup, and logging configuration.
+This module provides capabilities for application event logging, including event persistence, event subscription, event cleanup, and logging configuration.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.PerformanceAnalysisKit.*
@@ -12,10 +12,10 @@ import kit.PerformanceAnalysisKit.*
 
 API sample code usage instructions:
 
-- If the sample code has a "// index.cj" comment in the first line, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, see [Cangjie Sample Code Description](../../cj-development-intro.md#Cangjie-Sample-Code-Description).
+For details about the example projects and configuration templates mentioned above, refer to [Cangjie Sample Code Description](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## class AppEventFilter
 
@@ -28,7 +28,7 @@ public class AppEventFilter {
 }
 ```
 
-**Description:** Provides parameter options for filtering application events.
+**Description:** Provides parameter options for setting subscription filter conditions in Watchers. Used to configure event filtering conditions in event observers, ensuring only events meeting the filter conditions are processed.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -40,11 +40,11 @@ public class AppEventFilter {
 public var domain: String
 ```
 
-**Description:** The domain of events to subscribe to.
+**Description:** The event domain to subscribe to. Can be either system event domains (hiAppEvent.domain.OS) or custom event domains specified in the AppEventInfo when using the Write interface.
 
 **Type:** String
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -60,7 +60,7 @@ public var eventTypes: Array<EventType>
 
 **Type:** Array\<[EventType](#enum-eventtype)>
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -76,7 +76,7 @@ public var names: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -98,7 +98,7 @@ public init(domain: String, eventTypes!: Array<EventType> = [], names!: Array<St
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| domain | String | Yes | - | The domain of events to subscribe to. |
+| domain | String | Yes | - | The event domain to subscribe to. |
 | eventTypes | Array\<[EventType](#enum-eventtype)> | No | [] | **Named parameter.** The collection of event types to subscribe to. |
 | names | Array\<String> | No | [] | **Named parameter.** The collection of event names to subscribe to. |
 
@@ -127,7 +127,7 @@ public var appEventInfos: Array<AppEventInfo>
 
 **Type:** Array\<[AppEventInfo](#class-appeventinfo)>
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -143,7 +143,7 @@ public var name: String
 
 **Type:** String
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -173,11 +173,11 @@ public class AppEventInfo {
 public var domain: String
 ```
 
-**Description:** The event domain. The domain name supports digits, letters, and underscores, must start with a letter, cannot end with an underscore, and must be non-empty with a length not exceeding 32 characters.
+**Description:** The event domain. Domain names support digits, letters, and underscores, must start with a letter and cannot end with an underscore, with a non-empty length not exceeding 32 characters.
 
 **Type:** String
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -193,7 +193,7 @@ public var eventType: EventType
 
 **Type:** [EventType](#enum-eventtype)
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -205,11 +205,11 @@ public var eventType: EventType
 public var name: String
 ```
 
-**Description:** The event name. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The name must be non-empty with a length not exceeding 48 characters.
+**Description:** The event name. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter, with a non-empty length not exceeding 48 characters.
 
 **Type:** String
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -221,15 +221,17 @@ public var name: String
 public var params: HashMap<String, EventValueType>
 ```
 
-**Description:** The event parameter object, where each parameter includes a name and value. The specifications are as follows:
+**Description:** The event parameter object, where each parameter includes a name and value, with specifications as follows:
 
-- Parameter names are of type String. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The name must be non-empty with a length not exceeding 32 characters.
-- Parameter values support String, Int32, Float64, Bool, and array types. String-type parameters must not exceed 8*1024 characters. Array-type parameters must contain elements of only one type (String, Int32, Float64, or Bool) and must not exceed 100 elements.
-- The number of parameters must not exceed 32.
+Parameter names are of String type, must start with a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter, with a non-empty length not exceeding 32 characters.
 
-**Type:** [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[EventValueType](#enum-eventvaluetype)>
+Parameter values support String, Int32, Float64, Bool, and array types. String parameters must be within 8*1024 characters; array parameters must contain elements of only one type (String, Int32, Float64, or Bool), with no more than 100 elements.
 
-**Read/Write:** Readable and Writable
+The number of parameters must not exceed 32.
+
+**Type:** HashMap\<String,[EventValueType](#enum-eventvaluetype)>
+
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -251,10 +253,10 @@ public init(domain: String, name: String, event: EventType, params: HashMap<Stri
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| domain | String | Yes | - | The event domain. The domain name supports digits, letters, and underscores, must start with a letter, cannot end with an underscore, and must be non-empty with a length not exceeding 32 characters. |
-| name | String | Yes | - | The event name. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The name must be non-empty with a length not exceeding 48 characters. |
+| domain | String | Yes | - | The event domain. Domain names support digits, letters, and underscores, must start with a letter and cannot end with an underscore, with a non-empty length not exceeding 32 characters. |
+| name | String | Yes | - | The event name. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter, with a non-empty length not exceeding 48 characters. |
 | event | [EventType](#enum-eventtype) | Yes | - | The event type. |
-| params | [HashMap](../../.../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,[EventValueType](#enum-eventvaluetype)> | Yes | - | The event parameter object, where each parameter includes a name and value. The specifications are as follows:<br>- Parameter names are of type String. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The name must be non-empty with a length not exceeding 32 characters.<br>- Parameter values support String, Int32, Float64, Bool, and array types. String-type parameters must not exceed 8*1024 characters. Array-type parameters must contain elements of only one type (String, Int32, Float64, or Bool) and must not exceed 100 elements.<br>- The number of parameters must not exceed 32. |
+| params | HashMap\<String,[EventValueType](#enum-eventvaluetype)> | Yes | - | The event parameter object, where each parameter includes a name and value, with specifications as follows:<br>Parameter names are of String type, must start with a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter, with a non-empty length not exceeding 32 characters.<br>Parameter values support String, Int32, Float64, Bool, and array types. String parameters must be within 8*1024 characters; array parameters must contain elements of only one type (String, Int32, Float64, or Bool), with no more than 100 elements.<br>The number of parameters must not exceed 32. |
 
 ## class AppEventPackage
 
@@ -283,7 +285,7 @@ public var data: Array<String>
 
 **Type:** Array\<String>
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -295,11 +297,11 @@ public var data: Array<String>
 public var packageId: Int32
 ```
 
-**Description:** The package ID, which auto-increments starting from 0.
+**Description:** The event package ID, auto-incremented starting from 0.
 
 **Type:** Int32
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -315,7 +317,7 @@ public var row: Int32
 
 **Type:** Int32
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -331,7 +333,7 @@ public var size: Int32
 
 **Type:** Int32
 
-**Read/Write:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -345,7 +347,7 @@ public class AppEventPackageHolder {
 }
 ```
 
-**Description:** A subscription data holder class used to process subscribed events.
+**Description:** A subscription data holder class used for processing subscribed events.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -357,7 +359,7 @@ public class AppEventPackageHolder {
 public init(watcherName: String)
 ```
 
-**Description:** Class constructor that creates a subscription data holder instance, associating it with an existing watcher object in the application via the watcher name.
+**Description:** Class constructor that creates a subscription data holder instance, associating it with an existing watcher object added via addWatcher.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -367,7 +369,7 @@ public init(watcherName: String)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| watcherName | String | Yes | - | The watcher name. |
+| watcherName | String | Yes | - | The name of the watcher added via addWatcher. If not added via addWatcher, no data will be available by default. |
 
 ### func setSize(Int32)
 
@@ -385,11 +387,11 @@ public func setSize(size: Int32): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | Int32 | Yes | - | The data size threshold in bytes. The value must be greater than or equal to 0. Out-of-range values will throw an exception. |
+| size | Int32 | Yes | - | The data size threshold in bytes, must be ≥ 0. Out-of-range values will throw an exception. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes as shown below. Refer to [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -407,6 +409,16 @@ import ohos.base.*
 import kit.PerformanceAnalysisKit.*
 import kit.PerformanceAnalysisKit.Hilog
 
+// Add data watcher "Watcher1" to subscribe to system events
+HiAppEvent.addWatcher(Watcher(
+    "Watcher1",
+    appEventFilters: [
+        AppEventFilter(
+
+        )
+    ]
+))
+
 let holder = AppEventPackageHolder("watcher2")
 holder.setSize(100)
 ```
@@ -417,7 +429,7 @@ holder.setSize(100)
 public func takeNext(): Option<AppEventPackage>
 ```
 
-**Description:** Retrieves subscribed event data based on the set data size threshold. Returns None when all subscribed event data has been retrieved.
+**Description:** Retrieves subscribed event data based on the set size threshold. Returns None when all subscribed event data has been retrieved.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -427,7 +439,7 @@ public func takeNext(): Option<AppEventPackage>
 
 | Type | Description |
 |:----|:----|
-| [Option](<font color="red" face="bold">please add link</font>)\<[AppEventPackage](#class-appeventpackage)> | The retrieved event package object. Returns None when all subscribed event data has been retrieved. |
+| Option\<[AppEventPackage](#class-appeventpackage)> | The retrieved event package object. Returns None when all data has been retrieved. |
 
 **Example:**
 
@@ -474,7 +486,7 @@ public var domain: String
 
 **Type:** String
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -486,11 +498,11 @@ public var domain: String
 public var isRealTime: Bool
 ```
 
-**Function:** Whether to report events in real time. A value of true indicates real-time event reporting, while false indicates non-real-time reporting.
+**Function:** Whether to report events in real time. A value of `true` indicates real-time reporting, while `false` indicates non-real-time reporting.
 
 **Type:** Bool
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -502,11 +514,11 @@ public var isRealTime: Bool
 public var name: String
 ```
 
-**Function:** Event name. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The length must be non-empty and not exceed 48 characters.
+**Function:** Event name. The first character must be a letter or `$`, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The length must be non-empty and not exceed 48 characters.
 
 **Type:** String
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -529,8 +541,8 @@ public init(domain!: String = "", name!: String = "", isRealTime!: Bool = false)
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | domain | String | No | "" | **Named parameter.** Event domain. The domain name supports digits, letters, and underscores, must start with a letter and cannot end with an underscore. The length must be non-empty and not exceed 32 characters. |
-| name | String | No | "" | **Named parameter.** Event name. The first character must be a letter or $, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The length must be non-empty and not exceed 48 characters. |
-| isRealTime | Bool | No | false | **Named parameter.** Whether to report events in real time. A value of true indicates real-time event reporting, while false indicates non-real-time reporting. |
+| name | String | No | "" | **Named parameter.** Event name. The first character must be a letter or `$`, middle characters must be digits, letters, or underscores, and the last character must be a digit or letter. The length must be non-empty and not exceed 48 characters. |
+| isRealTime | Bool | No | false | **Named parameter.** Whether to report events in real time. A value of `true` indicates real-time reporting, while `false` indicates non-real-time reporting. |
 
 ## class ConfigOption
 
@@ -554,11 +566,11 @@ public class ConfigOption {
 public var disable: Bool
 ```
 
-**Function:** Logging function switch, default is false. true: Disable logging, false: Enable logging.
+**Function:** Event logging switch, default is `false`. `true`: Disables event logging, `false`: Enables event logging.
 
 **Type:** Bool
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -570,18 +582,18 @@ public var disable: Bool
 public var maxStorage: String
 ```
 
-**Function:** Quota size for the directory storing logged data, default is "10M".
+**Function:** Quota size for the directory storing event logging data, default is "10M".
 
-When the directory size exceeds the quota, the next logging operation will trigger a cleanup: deleting logged data files from oldest to newest until the directory size is within the quota.
+When the directory size exceeds the quota, the next logging operation will trigger a cleanup: deleting event data files from oldest to newest until the directory size no longer exceeds the quota.
 
 Quota string specifications:
 
-- The quota string consists only of digits and size units (supported units: [b|k|kb|m|mb|g|gb|t|tb], case-insensitive).
-- The quota string must start with a digit, followed optionally by a unit character (default unit is byte) or ending with a unit character.
+- The quota string consists of digits and size units (supported units: [b|k|kb|m|mb|g|gb|t|tb], case-insensitive).
+- The quota string must start with a digit, followed by an optional unit character (default unit is byte if omitted).
 
 **Type:** String
 
-**Access:** Read-write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -603,8 +615,8 @@ public init(disable!: Bool = false, maxStorage!: String = "10M")
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| disable | Bool | No | false | Logging function switch |
-| maxStorage | String | No | "10M" | Quota size for the directory storing logged data |
+| disable | Bool | No | false | Event logging switch |
+| maxStorage | String | No | "10M" | Quota size for the directory storing event logging data |
 
 ## class Domain
 
@@ -662,7 +674,7 @@ public static const APP_CRASH = "APP_CRASH"
 
 **Type:** String
 
-**Access:** Read-only
+**Read/Write:** Read-only
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -678,7 +690,7 @@ public static const APP_FREEZE = "APP_FREEZE"
 
 **Type:** String
 
-**Access:** Read-only
+**Read/Write:** Read-only
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -694,7 +706,7 @@ public static const DISTRIBUTED_SERVICE_START = "hiappevent.distributed_service_
 
 **Type:** String
 
-**Access:** Read-only
+**Read/Write:** Read-only
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -710,7 +722,7 @@ public static const USER_LOGIN = "hiappevent.user_login"
 
 **Type:** String
 
-**Access:** Read-only
+**Read/Write:** Read-only
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -726,7 +738,7 @@ public static const USER_LOGOUT = "hiappevent.user_logout"
 
 **Type:** String
 
-**Access:** Read-only
+**Read/Write:** Read-only
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -750,9 +762,9 @@ public class HiAppEvent {}
 public static func addProcessor(processor: Processor): Int64
 ```
 
-**Function:** Developers can add data processors, which are used to provide event cloud reporting functionality. The implementation of data processors can be pre-installed on devices, and developers can set properties according to the constraints of the data processors.
+**Function:** Developers can add data processors to enable event cloud reporting. The implementation of data processors can be pre-installed on devices. Developers can set properties based on the constraints of the data processors.
 
-The configuration information for Processor needs to be provided by the data processor. Currently, there are no pre-installed data processors available for interaction on devices, so the event cloud reporting functionality is currently unavailable.
+Processor configuration information must be provided by the data processor. Currently, no pre-installed interactive data processors are available on devices, so cloud reporting functionality is currently unavailable.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -768,7 +780,7 @@ The configuration information for Processor needs to be provided by the data pro
 
 | Type | Description |
 |:----|:----|
-| Int64 | ID of the added event reporting data processor. Returns -1 if addition fails, or a value greater than 0 if successful. |
+| Int64 | ID of the added event reporting data processor. Returns -1 on failure, or a value greater than 0 on success. |
 
 **Example:**
 
@@ -792,7 +804,7 @@ Hilog.info(0, "AppLogCj", "HiAppEvent::processorId is ${processorId}.")
 public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 ```
 
-**Function:** Adds an application event watcher method, which can be used to subscribe to application events.
+**Function:** Adds an application event watcher for subscribing to application events.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -808,7 +820,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 | Type | Description |
 |:----|:----|
-| [Option](<font color="red" face="bold">please add link</font>)\<[AppEventPackageHolder](#class-appeventpackageholder)> | Subscription data holder. Returns None if subscription fails. |
+| Option\<[AppEventPackageHolder](#class-appeventpackage)> | Holder for subscribed data. Returns `None` on subscription failure. |
 
 **Exceptions:**
 
@@ -835,7 +847,7 @@ import kit.PerformanceAnalysisKit.*
 import kit.PerformanceAnalysisKit.Hilog
 
 func f1(){
-    // If the watcher passes callback-related parameters, the subscribed events can be processed in the automatically triggered callback function
+    // If the watcher includes callback parameters, the automatically triggered callback function can be used to process subscribed events
     var condition = TriggerCondition(row: 1)
     var appEventFilter = [AppEventFilter("button")]
     var watcher = Watcher("watcher1", triggerCondition: condition,
@@ -855,7 +867,7 @@ func f1(){
 }
 
 func f2(){
-    // If the watcher does not pass callback-related parameters, the returned holder object can be used to manually process subscribed events
+    // If the watcher does not include callback parameters, the returned holder object can be used to manually process subscribed events
     let watcher =  Watcher("watcher2")
     let holder = HiAppEvent.addWatcher(watcher)
     if (let Some(v1) <- holder) {
@@ -876,7 +888,7 @@ func f3(){
     var condition = TriggerCondition(row: 1, size: 100)
     let watcher= Watcher("watcher", triggerCondition: condition,
              onTrigger: {row, size, holder =>
-                Hilog.info(0, "AppLogCj", "HiAppEvent onTrigger: curRow=${row}, curSize=${size}")},
+                Hilog.info(0, "AppLogCj", "HiAppEvent onTrigger: curRow=${row}, curSize=${size}"},
              onReceive: {domain, AppEventGroups =>
                 Hilog.info(0, "AppLogCj", "domain =${domain}")
                 let groupSize = AppEventGroups.size
@@ -909,7 +921,7 @@ func test() {
 public static func clearData(): Unit
 ```
 
-**Function:** Clears locally stored application event tracking data.
+**Function:** Clears the locally stored application event tracking data.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -929,7 +941,7 @@ import std.collection.Map
 
 let params = HashMap<String, EventValueType>()
 params.add("cangjie", IntValue(1001))
-params.add("cangjie2, StringValue("1001"))
+params.add("cangjie2", StringValue("1001"))
 var appInfo: AppEventInfo = AppEventInfo("cangjie1", "test_event", EventType.Fault, params)
 HiAppEvent.write(appInfo)
 HiAppEvent.clearData()
@@ -941,7 +953,7 @@ HiAppEvent.clearData()
 public static func configure(config: ConfigOption): Unit
 ```
 
-**Function:** Configures application event tracking, including enabling/disabling tracking and setting storage quota.
+**Function:** Configures application event tracking, including enabling/disabling tracking and setting storage quota size.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -949,9 +961,9 @@ public static func configure(config: ConfigOption): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|config|[ConfigOption](#class-configoption)|Yes|-|Configuration object for application event tracking.|
+| config | [ConfigOption](#class-configoption) | Yes | - | Configuration object for application event tracking. |
 
 **Example:**
 
@@ -982,15 +994,15 @@ public static func getUserId(name: String): String
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|name|String|Yes|-|Key for the user ID. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters.|
+| name | String | Yes | - | Key for the user ID. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|Value of the user ID. Returns an empty string if not found.|
+| String | The value of the user ID. Returns an empty string if not found. |
 
 **Example:**
 
@@ -1021,15 +1033,15 @@ public static func getUserProperty(name: String): String
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|name|String|Yes|-|Key for the user property. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters.|
+| name | String | Yes | - | Key for the user property. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|String|Value of the user property. Returns an empty string if not found.|
+| String | The value of the user property. Returns an empty string if not found. |
 
 **Example:**
 
@@ -1060,9 +1072,9 @@ public static func removeProcessor(id: Int64): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|id|Int64|Yes|-|ID of the event data processor. Must be greater than 0.|
+| id | Int64 | Yes | - | ID of the event data processor. Must be greater than 0. |
 
 **Example:**
 
@@ -1086,7 +1098,7 @@ Hilog.info(0, "AppLogCj", "HiAppEvent::removeProcessor test over.")
 public static func removeWatcher(watcher: Watcher): Unit
 ```
 
-**Function:** Removes an application event watcher, used to unsubscribe from application events.
+**Function:** Removes an application event watcher to unsubscribe from events.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1094,13 +1106,13 @@ public static func removeWatcher(watcher: Watcher): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|watcher|[Watcher](#class-watcher)|Yes|-|Application event watcher.|
+| watcher | [Watcher](#class-watcher) | Yes | - | The application event watcher. |
 
 **Exceptions:**
 
-- BusinessException: Error codes as follows, see [Application Event Tracking Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes as follows, see [Application Event Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1139,10 +1151,10 @@ public static func setUserId(name: String, value: String): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|name|String|Yes|-|Key for the user ID. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters.|
-|value|String|Yes|-|Value of the user ID. Must not exceed 256 characters. If the value is null or an empty string, the user ID is cleared.|
+| name | String | Yes | - | Key for the user ID. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters. |
+| value | String | Yes | - | Value for the user ID. Must not exceed 256 characters. If the value is null or an empty string, the user ID is cleared. |
 
 ### static func setUserProperty(String, String)
 
@@ -1158,10 +1170,10 @@ public static func setUserProperty(name: String, value: String): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|name|String|Yes|-|Key for the user property. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters.|
-|value|String|Yes|-|Value of the user property. Must not exceed 1024 characters. If the value is null or an empty string, the user property is cleared.|
+| name | String | Yes | - | Key for the user property. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters. |
+| value | String | Yes | - | Value for the user property. Must not exceed 1024 characters. If the value is null or an empty string, the user property is cleared. |
 
 ### static func write(AppEventInfo)
 
@@ -1169,7 +1181,7 @@ public static func setUserProperty(name: String, value: String): Unit
 public static func write(info: AppEventInfo): Unit
 ```
 
-**Function:** Writes an application event to the daily event file, accepting an [AppEventInfo](#class-appeventinfo) object.
+**Function:** Writes an event to the daily event file, accepting an [AppEventInfo](#class-appeventinfo) object.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1177,9 +1189,9 @@ public static func write(info: AppEventInfo): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|info|[AppEventInfo](#class-appeventinfo)|Yes|-|Application event object.|
+| info | [AppEventInfo](#class-appeventinfo) | Yes | - | The application event object. |
 
 ## class Param
 
@@ -1279,7 +1291,7 @@ public class Processor {
 public var appId: String
 ```
 
-**Function:** Application ID, defaults to an empty string. If the input string exceeds 8KB, it will be reset to the default value.
+**Function:** Application ID, defaults to an empty string. If the input exceeds 8KB, it will be reset to the default value.
 
 **Type:** String
 
@@ -1295,7 +1307,7 @@ public var appId: String
 public var batchReport: Int32
 ```
 
-**Function:** Threshold for event reporting. Events are reported when the count reaches this threshold. Must be greater than 0 and less than 1000. Invalid values will be reset to the default 0, disabling reporting.
+**Function:** Threshold for event reporting. Events are reported when the count reaches this threshold. Must be greater than 0 and less than 1000. Invalid values will be reset to 0, disabling reporting.
 
 **Type:** Int32
 
@@ -1311,7 +1323,7 @@ public var batchReport: Int32
 public var debugMode: Bool
 ```
 
-**Function:** Enables or disables debug mode, default is false. true enables debug mode, false disables it.
+**Function:** Enables or disables debug mode, defaulting to false. True enables debug mode, false disables it.
 
 **Type:** Bool
 
@@ -1359,7 +1371,7 @@ public var name: String
 public var onBackgroundReport: Bool
 ```
 
-**Function:** Determines whether to report events when the application enters the background, default is false. true enables reporting, false disables it.
+**Function:** Determines whether to report events when the application enters the background, defaulting to false. True enables reporting, false disables it.
 
 **Type:** Bool
 
@@ -1375,7 +1387,7 @@ public var onBackgroundReport: Bool
 public var onStartReport: Bool
 ```
 
-**Function:** Determines whether to report events when the processor starts, default is false. true enables reporting, false disables it.
+**Function:** Determines whether to report events when the processor starts, defaulting to false. True enables reporting, false disables it.
 
 **Type:** Bool
 
@@ -1391,7 +1403,7 @@ public var onStartReport: Bool
 public var periodReport: Int32
 ```
 
-**Function:** Periodic event reporting interval in seconds. Must be greater than or equal to 0. Negative values will be reset to the default 0, disabling periodic reporting.
+**Function:** Periodic event reporting interval in seconds. Must be greater than or equal to 0. Negative values will be reset to 0, disabling periodic reporting.
 
 **Type:** Int32
 
@@ -1407,7 +1419,7 @@ public var periodReport: Int32
 public var routeInfo: String
 ```
 
-**Function:** Server location information, defaults to an empty string. If the input string exceeds 8KB, it will be reset to the default value.
+**Function:** Server location information, defaults to an empty string. If the input exceeds 8KB, it will be reset to the default value.
 
 **Type:** String
 
@@ -1423,7 +1435,7 @@ public var routeInfo: String
 public var userIds: Array<String>
 ```
 
-**Function:** Array of user ID names that the processor can report. Corresponds to the name parameter in the [setUserId](#static-func-setuseridstring-string) interface.
+**Function:** Array of user ID names that the processor can report. Corresponds to the name parameter in [setUserId](#static-func-setuseridstring-string).
 
 **Type:** Array\<String>
 
@@ -1439,7 +1451,7 @@ public var userIds: Array<String>
 public var userProperties: Array<String>
 ```
 
-**Function:** Array of user property names that the processor can report. Corresponds to the name parameter in the [setUserProperty](#static-func-setuserpropertystring-string) interface.
+**Function:** Array of user property names that the processor can report. Corresponds to the name parameter in [setUserProperty](#static-func-setuserpropertystring-string).
 
 **Type:** Array\<String>
 
@@ -1466,19 +1478,19 @@ public init(name: String, debugMode!: Bool = false, routeInfo!: String = "", app
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|name|String|Yes|-|Name of the processor. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters.|
-|debugMode|Bool|No|false|**Named parameter.** Enables or disables debug mode, default is false. true enables debug mode, false disables it.|
-|routeInfo|String|No|""|**Named parameter.** Server location information, defaults to an empty string. If the input string exceeds 8KB, it will be reset to the default value.|
-|appId|String|No|""|**Named parameter.** Application ID, defaults to an empty string. If the input string exceeds 8KB, it will be reset to the default value.|
-|onStartReport|Bool|No|false|**Named parameter.** Determines whether to report events when the processor starts, default is false. true enables reporting, false disables it.|
-|onBackgroundReport|Bool|No|false|**Named parameter.** Determines whether to report events when the application enters the background, default is false. true enables reporting, false disables it.|
-|periodReport|Int32|No|0|**Named parameter.** Periodic event reporting interval in seconds. Must be greater than or equal to 0. Negative values will be reset to the default 0, disabling periodic reporting.|
-|batchReport|Int32|No|0|**Named parameter.** Threshold for event reporting. Events are reported when the count reaches this threshold. Must be greater than 0 and less than 1000. Invalid values will be reset to the default 0, disabling reporting.|
-|userIds|Array\<String>|No|[]|**Named parameter.** Array of user ID names that the processor can report. Corresponds to the name parameter in the [setUserId](#static-func-setuseridstring-string) interface.|
-|userProperties|Array\<String>|No|[]|**Named parameter.** Array of user property names that the processor can report. Corresponds to the name parameter in the [setUserProperty](#static-func-setuserpropertystring-string) interface.|
-|eventConfigs|Array\<[AppEventReportConfig](#class-appeventreportconfig)>## class TriggerCondition
+| name | String | Yes | - | Name of the processor. Can only contain letters, numbers, underscores, and $, cannot start with a number, and must not exceed 256 characters. |
+| debugMode | Bool | No | false | **Named parameter.** Enables or disables debug mode, defaulting to false. True enables debug mode, false disables it. |
+| routeInfo | String | No | "" | **Named parameter.** Server location information, defaults to an empty string. If the input exceeds 8KB, it will be reset to the default value. |
+| appId | String | No | "" | **Named parameter.** Application ID, defaults to an empty string. If the input exceeds 8KB, it will be reset to the default value. |
+| onStartReport | Bool | No | false | **Named parameter.** Determines whether to report events when the processor starts, defaulting to false. True enables reporting, false disables it. |
+| onBackgroundReport | Bool | No | false | **Named parameter.** Determines whether to report events when the application enters the background, defaulting to false. True enables reporting, false disables it. |
+| periodReport | Int32 | No | 0 | **Named parameter.** Periodic event reporting interval in seconds. Must be greater than or equal to 0. Negative values will be reset to 0, disabling periodic reporting. |
+| batchReport | Int32 | No | 0 | **Named parameter.** Threshold for event reporting. Events are reported when the count reaches this threshold. Must be greater than 0 and less than 1000. Invalid values will be reset to 0, disabling reporting. |
+| userIds | Array\<String> | No | [] | **Named parameter.** Array of user ID names that the processor can report. Corresponds to the name parameter in [setUserId](#static-func-setuseridstring-string). |
+| userProperties | Array\<String> | No | [] | **Named parameter.** Array of user property names that the processor can report. Corresponds to the name parameter in [setUserProperty](#static-func-setuserpropertystring-string). |
+| eventConfigs | Array\<[AppEventReportConfig](#class-appeventreport## class TriggerCondition
 
 ```cangjie
 public class TriggerCondition {
@@ -1501,11 +1513,11 @@ public class TriggerCondition {
 public var row: Int32
 ```
 
-**Function:** The total number of events required to trigger the callback (positive integer). Default value 0 means no callback will be triggered. Negative values will be reset to default.
+**Function:** The total number of events required to trigger the callback, a positive integer. Default value is 0, which means no callback will be triggered. Negative values will be reset to the default value.
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1517,11 +1529,11 @@ public var row: Int32
 public var size: Int32
 ```
 
-**Function:** The total size of events required to trigger the callback (positive integer, unit: byte). Default value 0 means no callback will be triggered. Negative values will be reset to default.
+**Function:** The total size of events required to trigger the callback, a positive integer, in bytes. Default value is 0, which means no callback will be triggered. Negative values will be reset to the default value.
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1533,11 +1545,11 @@ public var size: Int32
 public var timeOut: Int32
 ```
 
-**Function:** The timeout duration required to trigger the callback (positive integer, unit: 30s). Default value 0 means no callback will be triggered. Negative values will be reset to default.
+**Function:** The timeout duration required to trigger the callback, a positive integer, in units of 30 seconds. Default value is 0, which means no callback will be triggered. Negative values will be reset to the default value.
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1557,11 +1569,11 @@ public init(row!: Int32 = 0, size!: Int32 = 0, timeOut!: Int32 = 0)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| row | Int32 | No | 0 | **Named parameter.** The total number of events required to trigger the callback (positive integer). Default value 0 means no callback will be triggered. Negative values will be reset to default. |
-| size | Int32 | No | 0 | **Named parameter.** The total size of events required to trigger the callback (positive integer, unit: byte). Default value 0 means no callback will be triggered. Negative values will be reset to default. |
-| timeOut | Int32 | No | 0 | **Named parameter.** The timeout duration required to trigger the callback (positive integer, unit: 30s). Default value 0 means no callback will be triggered. Negative values will be reset to default. |
+| row | Int32 | No | 0 | **Named parameter.** The total number of events required to trigger the callback, a positive integer. Default value is 0, which means no callback will be triggered. Negative values will be reset to the default value. |
+| size | Int32 | No | 0 | **Named parameter.** The total size of events required to trigger the callback, a positive integer, in bytes. Default value is 0, which means no callback will be triggered. Negative values will be reset to the default value. |
+| timeOut | Int32 | No | 0 | **Named parameter.** The timeout duration required to trigger the callback, a positive integer, in units of 30 seconds. Default value is 0, which means no callback will be triggered. Negative values will be reset to the default value. |
 
 ## class Watcher
 
@@ -1591,11 +1603,11 @@ public class Watcher {
 public var appEventFilters: Array<AppEventFilter>
 ```
 
-**Function:** Subscription filter conditions, used when event filtering is required.
+**Function:** Subscription filter conditions, used when filtering subscribed events is required.
 
 **Type:** Array\<[AppEventFilter](#class-appeventfilter)>
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1611,7 +1623,7 @@ public var name: String
 
 **Type:** String
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1623,11 +1635,11 @@ public var name: String
 public var onReceive: Option <(String, Array<AppEventGroup>) -> Unit>
 ```
 
-**Function:** Real-time subscription callback function. When both this and onTrigger exist, only this callback will be triggered. The first parameter represents the domain name of callback events, and the second parameter represents the collection of callback events.
+**Function:** Real-time subscription callback function. If both this callback and the `onTrigger` callback exist, only this callback will be triggered. The first parameter of the callback function represents the domain name of the callback event, and the second parameter represents the collection of callback events.
 
-**Type:** [Option](<font color="red" face="bold">please add link</font>)\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit>
+**Type:** [AppEventGroup](#class-appeventgroup)->Unit
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1639,11 +1651,11 @@ public var onReceive: Option <(String, Array<AppEventGroup>) -> Unit>
 public var onTrigger: Option <(Int32, Int32, AppEventPackageHolder) -> Unit>
 ```
 
-**Function:** Subscription callback function, which takes effect only when used with triggerCondition. The first parameter represents the total number of subscribed events when triggered. The second parameter represents the total size of subscribed events when triggered (unit: byte). The third parameter represents the subscription data holder object for event processing.
+**Function:** Subscription callback function, which takes effect only when used together with the callback trigger condition `triggerCondition`. The first parameter of the callback function represents the total number of subscribed events when the callback is triggered. The second parameter represents the total size of subscribed events when the callback is triggered, in bytes. The third parameter represents the subscription data holder object, which can be used to process subscribed events.
 
-**Type:** [Option](<font color="red" face="bold">please add link</font>)\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit>
+**Type:** (Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1655,11 +1667,11 @@ public var onTrigger: Option <(Int32, Int32, AppEventPackageHolder) -> Unit>
 public var triggerCondition: TriggerCondition
 ```
 
-**Function:** Subscription callback trigger conditions, which take effect only when used with onTrigger callback function.
+**Function:** Subscription callback trigger condition, which takes effect only when used together with the callback function `onTrigger`.
 
 **Type:** [TriggerCondition](#class-triggercondition)
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1682,13 +1694,13 @@ public init(name: String, triggerCondition!: TriggerCondition = TriggerCondition
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | name | String | Yes | - | Watcher name, used to uniquely identify the watcher. |
-| triggerCondition | [TriggerCondition](#class-triggercondition) | No | TriggerCondition() | **Named parameter.** Subscription callback trigger conditions, which take effect only when used with onTrigger callback function. |
-| appEventFilters | Array\<[AppEventFilter](#class-appeventfilter)> | No | [] | **Named parameter.** Subscription filter conditions, used when event filtering is required. |
-| onTrigger | [Option](<font color="red" face="bold">please add link</font>)\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit> | No | None | **Named parameter.** Subscription callback function, which takes effect only when used with triggerCondition. Parameters:<br>curRow: Total number of subscribed events when triggered;<br>curSize: Total size of subscribed events when triggered (unit: byte);<br/>holder: Subscription data holder object for event processing. |
-| onReceive | [Option](<font color="red" face="bold">please add link</font>)\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit> | No | None | **Named parameter.** Real-time subscription callback function. When both this and onTrigger exist, only this callback will be triggered. Parameters:<br>domain: Domain name of callback events;<br>appEventGroups: Collection of callback events. |
+| triggerCondition | [TriggerCondition](#class-triggercondition) | No | TriggerCondition() | **Named parameter.** Subscription callback trigger condition, which takes effect only when used together with the callback function `onTrigger`. |
+| appEventFilters | Array\<[AppEventFilter](#class-appeventfilter)> | No | [] | **Named parameter.** Subscription filter conditions, used when filtering subscribed events is required. |
+| onTrigger | Option\<(Int32,Int32,[AppEventPackageHolder](#class-appeventpackageholder))->Unit> | No | None | **Named parameter.** Subscription callback function, which takes effect only when used together with the callback trigger condition `triggerCondition`. Function parameters are as follows: <br>curRow: Total number of subscribed events when the callback is triggered; <br>curSize: Total size of subscribed events when the callback is triggered, in bytes;<br/>holder: Subscription data holder object, which can be used to process subscribed events. |
+| onReceive | Option\<(String,Array\<[AppEventGroup](#class-appeventgroup)>)->Unit> | No | None | **Named parameter.** Real-time subscription callback function. If both this callback and the `onTrigger` callback exist, only this callback will be triggered. Function parameters are as follows: <br>domain: Domain name of the callback event; <br>appEventGroups: Collection of callback events. |
 
 ## enum EventType
 
@@ -1714,7 +1726,7 @@ public enum EventType {
 Behavior
 ```
 
-**Function:** Behavior type events.
+**Function:** Behavior type event.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1726,7 +1738,7 @@ Behavior
 Fault
 ```
 
-**Function:** Fault type events.
+**Function:** Fault type event.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1738,7 +1750,7 @@ Fault
 Security
 ```
 
-**Function:** Security type events.
+**Function:** Security type event.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1750,7 +1762,7 @@ Security
 Statistic
 ```
 
-**Function:** Statistical type events.
+**Function:** Statistical type event.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1762,7 +1774,7 @@ Statistic
 public func getValue(): UInt32
 ```
 
-**Function:** Gets the enumeration value.
+**Function:** Gets the value of the enumeration.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1772,7 +1784,7 @@ public func getValue(): UInt32
 
 | Type | Description |
 |:----|:----|
-| UInt32 | The enumeration value. |
+| UInt32 | Gets the value of the enumeration. |
 
 ## enum EventValueType
 
@@ -1808,7 +1820,7 @@ public enum EventValueType <: ToString {
 ArrBool(Array<Bool>)
 ```
 
-**Function:** Boolean array data.
+**Function:** Bool type array data.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1820,7 +1832,7 @@ ArrBool(Array<Bool>)
 ArrF64(Array<Float64>)
 ```
 
-**Function:** Float64 array data.
+**Function:** Float64 type array data.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1832,7 +1844,7 @@ ArrF64(Array<Float64>)
 ArrI32(Array<Int32>)
 ```
 
-**Function:** Int32 array data.
+**Function:** Int32 type array data.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1844,7 +1856,7 @@ ArrI32(Array<Int32>)
 ArrInt64(Array<Int64>)
 ```
 
-**Function:** Int64 array data.
+**Function:** Int64 type array data.
 
 **System Capability:** SystemCapability.HiviewDFX.HiAppEvent
 

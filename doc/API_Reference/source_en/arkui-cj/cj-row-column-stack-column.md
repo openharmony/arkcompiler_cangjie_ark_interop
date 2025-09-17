@@ -20,7 +20,7 @@ Can contain child components.
 public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 ```
 
-**Function:** Creates a Column container with vertical spacing between elements set to `space` that can contain child components.
+**Function:** Creates a Column container with vertical spacing between child elements set to `space` that can contain child components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,7 +30,7 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Vertical spacing between elements in the column layout.<br> Does not take effect when space is negative or when [justifyContent](#func-justifycontentflexalign) is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly. <br> Initial value: 0 <br> Unit: vp <br> **Note:** <br> space must be a number greater than or equal to 0. |
+| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Vertical spacing between child elements in the Column layout.<br> Does not take effect when space is negative or when [justifyContent](#func-justifycontentflexalign) is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly. <br> Initial value: 0 <br> Unit: vp <br> **Note:** <br> space must be a number greater than or equal to 0. |
 | child | () -> Unit | No | { => } | Child components of the Column container |
 
 ## Common Attributes/Common Events
@@ -47,7 +47,7 @@ Common Events: All supported.
 public func alignItems(value: HorizontalAlign): This
 ```
 
-**Function:** Sets the horizontal alignment format for child components.
+**Function:** Sets the horizontal alignment of child components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +65,7 @@ public func alignItems(value: HorizontalAlign): This
 public func justifyContent(value: FlexAlign): This
 ```
 
-**Function:** Sets the vertical alignment format for child components.
+**Function:** Sets the vertical alignment of child components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +96,7 @@ class EntryView {
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-            Column(5) {
+            Column(space: 5) {
                 Column()
                 .width(100.percent)
                 .height(30)

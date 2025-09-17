@@ -1,7 +1,6 @@
-```markdown
 # ohos.arkui.state_management
 
-Provides `ObservedArray` and `ObservedArrayList` as array types for state management. When changes occur in these arrays, such as modifying an item's value, deleting or adding an item, UI updates will be triggered.
+Provides `ObservedArray` and `ObservedArrayList` as array types for state management. When changes occur in these arrays, such as modifying an item's value, deleting or adding an item, it triggers UI updates.
 
 ## Import Module
 
@@ -14,24 +13,22 @@ import kit.ArkUI.*
 ```cangjie
 public class ObservedArrayList<T> <: ObservedComplexAbstract {
 
-
     public init(initValue: ArrayList<T>)
-
 
     public init(initValue: Array<T>)
 }
 ```
 
-**Function:** Provides functionality for mutable-length arrays that support state management and can detect internal changes.
+**Functionality:** Provides dynamically-sized array functionality with state management support, capable of detecting internal changes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parent Types:**
 
 - [ObservedComplexAbstract](./cj-state-rendering-appstatemanagement.md#class-observedcomplexabstract)
-- [CollectionEx](please add link)\<T>
+- CollectionEx\<T>
 
 ### prop size
 
@@ -39,7 +36,7 @@ public class ObservedArrayList<T> <: ObservedComplexAbstract {
 public prop size: Int64
 ```
 
-**Function:** The number of elements in this `ObservedArrayList`.
+**Functionality:** The number of elements in this `ObservedArrayList`.
 
 **Type:** Int64
 
@@ -47,7 +44,7 @@ public prop size: Int64
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### init(ArrayList\<T>)
 
@@ -55,11 +52,11 @@ public prop size: Int64
 public init(initValue: ArrayList<T>)
 ```
 
-**Function:** Constructs an `ObservedArrayList` containing all elements from the specified `ArrayList`.
+**Functionality:** Constructs an `ObservedArrayList` containing all elements from the specified `ArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -73,11 +70,11 @@ public init(initValue: ArrayList<T>)
 public init(initValue: Array<T>)
 ```
 
-**Function:** Constructs an `ObservedArrayList` containing all elements from the specified `Array`.
+**Functionality:** Constructs an `ObservedArrayList` containing all elements from the specified `Array`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -91,17 +88,17 @@ public init(initValue: Array<T>)
 public func append(element: T): Unit
 ```
 
-**Function:** Appends the specified element to the end of this `ObservedArrayList`.
+**Functionality:** Appends the specified element to the end of this `ObservedArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| element | T | Yes | - | The element to append. |
+| element | T | Yes | - | The element to be appended. |
 
 ### func appendAll(Collection\<T>)
 
@@ -109,17 +106,17 @@ public func append(element: T): Unit
 public func appendAll(elements: Collection<T>): Unit
 ```
 
-**Function:** Appends all elements from the specified collection to the end of this `ObservedArrayList`. The function traverses the input collection in iterator order and inserts all elements to the tail of this `ObservedArrayList`.
+**Functionality:** Appends all elements from the specified collection to the end of this `ObservedArrayList`. The function traverses the input collection in iterator order and inserts all elements to the tail of this `ObservedArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| elements | [Collection](<font color="red" face="bold">please add link</font>)\<T> | Yes | - | The collection of elements to append. |
+| elements | Collection\<T> | Yes | - | The collection of elements to be appended. |
 
 ### func clear()
 
@@ -127,11 +124,11 @@ public func appendAll(elements: Collection<T>): Unit
 public func clear(): Unit
 ```
 
-**Function:** Removes all elements from this `ObservedArrayList`.
+**Functionality:** Removes all elements from this `ObservedArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func clone()
 
@@ -139,11 +136,11 @@ public func clear(): Unit
 public func clone(): ObservedArrayList<T>
 ```
 
-**Function:** Returns a shallow copy of this `ObservedArrayList` instance.
+**Functionality:** Returns a shallow copy of this `ObservedArrayList` instance.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -157,11 +154,11 @@ public func clone(): ObservedArrayList<T>
 public func get(): ArrayList<T>
 ```
 
-**Function:** Returns an `ArrayList` containing all elements of this `ObservedArrayList` in proper sequence.
+**Functionality:** Returns an `ArrayList` containing all elements of this `ObservedArrayList` in proper sequence.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -175,18 +172,18 @@ public func get(): ArrayList<T>
 public func insert(index: Int64, element: T): Unit
 ```
 
-**Function:** Inserts the specified element at the specified position in this `ObservedArrayList`.
+**Functionality:** Inserts the specified element at the specified position in this `ObservedArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | index | Int64 | Yes | - | The target index for insertion. |
-| element | T | Yes | - | The element of type `T` to insert. |
+| element | T | Yes | - | The element of type T to be inserted. |
 
 ### func insertAll(Int64, Collection\<T>)
 
@@ -194,18 +191,18 @@ public func insert(index: Int64, element: T): Unit
 public func insertAll(index: Int64, elements: Collection<T>): Unit
 ```
 
-**Function:** Inserts all elements from the specified collection into this `ObservedArrayList` starting at the specified position. The function traverses the input collection in iterator order and inserts all elements at the specified position.
+**Functionality:** Inserts all elements from the specified collection into this `ObservedArrayList` starting from the specified position. The function traverses the input collection in iterator order and inserts all elements at the specified position.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | index | Int64 | Yes | - | The target index for insertion. |
-| elements | [Collection](<font color="red" face="bold">please add link</font>)\<T> | Yes | - | The collection of elements to insert. |
+| elements | Collection\<T> | Yes | - | The collection of elements of type T to be inserted. |
 
 ### func isEmpty()
 
@@ -213,11 +210,11 @@ public func insertAll(index: Int64, elements: Collection<T>): Unit
 public func isEmpty(): Bool
 ```
 
-**Function:** Checks if this `ObservedArrayList` is empty.
+**Functionality:** Determines whether this `ObservedArrayList` is empty.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -231,17 +228,17 @@ public func isEmpty(): Bool
 public func prepend(element: T): Unit
 ```
 
-**Function:** Prepends the specified element to the beginning of this `ObservedArrayList`.
+**Functionality:** Prepends the specified element to the beginning of this `ObservedArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| element | T | Yes | - | The element to prepend. |
+| element | T | Yes | - | The element to be prepended. |
 
 ### func prependAll(Collection\<T>)
 
@@ -249,17 +246,17 @@ public func prepend(element: T): Unit
 public func prependAll(elements: Collection<T>): Unit
 ```
 
-**Function:** Prepends all elements from the specified collection to the beginning of this `ObservedArrayList`. The function traverses the input collection in iterator order and inserts all elements at the start.
+**Functionality:** Prepends all elements from the specified collection to the beginning of this `ObservedArrayList`. The function traverses the input collection in iterator order and inserts all elements at the start position.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| elements | [Collection](<font color="red" face="bold">please add link</font>)\<T> | Yes | - | The collection of elements to prepend. |
+| elements | Collection\<T> | Yes | - | The collection of elements to be prepended. |
 
 ### func remove(Int64)
 
@@ -267,17 +264,17 @@ public func prependAll(elements: Collection<T>): Unit
 public func remove(index: Int64): T
 ```
 
-**Function:** Removes the element at the specified position in this `ObservedArrayList` and returns the removed element.
+**Functionality:** Removes the element at the specified position in this `ObservedArrayList`. Returns the removed element.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| index | Int64 | Yes | - | The index of the element to remove. |
+| index | Int64 | Yes | - | The index of the element to be removed. |
 
 **Return Value:**
 
@@ -291,17 +288,17 @@ public func remove(index: Int64): T
 public func remove(range: Range<Int64>): Unit
 ```
 
-**Function:** Removes all elements within the specified range from this `ObservedArrayList`.
+**Functionality:** Removes all elements within the specified range from this `ObservedArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| range | [Range](<font color="red" face="bold">please add link</font>)\<Int64> | Yes | - | The range of elements to remove. |
+| range | Range\<Int64> | Yes | - | The range of elements to be removed. |
 
 ### func removeIf((T) -> Bool)
 
@@ -309,11 +306,11 @@ public func remove(range: Range<Int64>): Unit
 public func removeIf(predicate: (T) -> Bool): Unit
 ```
 
-**Function:** Removes all elements from this `ObservedArrayList` that satisfy the given predicate function.
+**Functionality:** Removes all elements from this `ObservedArrayList` that satisfy the given lambda expression or function.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -327,17 +324,17 @@ public func removeIf(predicate: (T) -> Bool): Unit
 public func set(newValue: ArrayList<T>): Unit
 ```
 
-**Function:** Resets the value of this `ObservedArrayList` using an `ArrayList`.
+**Functionality:** Resets the value of this `ObservedArrayList` using an `ArrayList`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| newValue | ArrayList\<T> | Yes | - | The `ArrayList` used to set the value of this `ObservedArrayList`. |
+| newValue | ArrayList\<T> | Yes | - | The `ArrayList` used to set the value of the `ObservedArrayList`. |
 
 ### func set(Array\<T>)
 
@@ -345,17 +342,17 @@ public func set(newValue: ArrayList<T>): Unit
 public func set(newValue: Array<T>): Unit
 ```
 
-**Function:** Resets the value of this `ObservedArrayList` using an `Array`.
+**Functionality:** Resets the value of this `ObservedArrayList` using an `Array`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| newValue | Array\<T> | Yes | - | The `Array` used to set the value of this `ObservedArrayList`. |
+| newValue | Array\<T> | Yes | - | The `Array` used to set the value of the `ObservedArrayList`. |
 
 ### func set(ObservedComplexAbstract)
 
@@ -363,17 +360,17 @@ public func set(newValue: Array<T>): Unit
 public func set(newValue: ObservedComplexAbstract): Unit
 ```
 
-**Function:** Resets the value of this `ObservedArrayList` using an `ObservedComplexAbstract`.
+**Functionality:** Resets the value of this `ObservedArrayList` using an `ObservedComplexAbstract`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| newValue | [ObservedComplexAbstract](<font color="red" face="bold">please add link</font>) | Yes | - | The `ObservedComplexAbstract` used to set the value of this `ObservedArrayList`. |
+| newValue | ObservedComplexAbstract | Yes | - | The `ObservedComplexAbstract` data used to set the value of the `ObservedArrayList`. |
 
 ### func subscribeInner(Observer)
 
@@ -381,17 +378,17 @@ public func set(newValue: ObservedComplexAbstract): Unit
 public func subscribeInner(observer: Observer): Unit
 ```
 
-**Function:** Recursively binds observation to each item in the state-managed array.
+**Functionality:** Recursively binds observation to each item in the state-managed array.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| observer | [Observer](<font color="red" face="bold">please add link</font>) | Yes | - | The observer class to bind. |
+| observer | Observer | Yes | - | The observer class to bind. |
 
 ### func unsubscribeInner(Observer)
 
@@ -399,17 +396,17 @@ public func subscribeInner(observer: Observer): Unit
 public func unsubscribeInner(observer: Observer): Unit
 ```
 
-**Function:** Recursively unbinds observation from each item in the state-managed array.
+**Functionality:** Recursively unbinds observation from each item in the state-managed array.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| observer | [Observer](<font color="red" face="bold">please add link</font>) | Yes | - | The observer class to unbind. |
+| observer | Observer | Yes | - | The observer class to unbind. |
 
 ### func \[](int64)
 
@@ -417,11 +414,11 @@ public func unsubscribeInner(observer: Observer): Unit
 public operator func [](index: Int64): T
 ```
 
-**Function:** Operator overload - get. Returns the value of the element at the specified index.
+**Functionality:** Operator overload - get. Returns the value of the element at the specified index.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -441,18 +438,18 @@ public operator func [](index: Int64): T
 public operator func [](index: Int64, value!: T): Unit
 ```
 
-**Function:** Operator overload - set. Replaces the element at the specified position in this list with the specified element using the subscript operator.
+**Functionality:** Operator overload - set. Replaces the element at the specified position in this list with the specified element using the subscript operator.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | index | Int64 | Yes | - | The index to set. |
-| value | T | Yes | - | **Named parameter.** The value of type `T` to set. |
+| value | T | Yes | - | **Named parameter.** The value of type T to set. |
 
 ### Example Code
 
@@ -467,12 +464,12 @@ import ohos.arkui.state_macro_manage.*
 @Entry
 @Component
 class EntryView {
-    @State var arr: ObservedArray<Int64> = ObservedArray<Int64>([1, 2])
+    @State var arr: ObservedArrayList<Int64> = ObservedArrayList<Int64>([1, 2])
 
     func build() {
         Column {
             Text("arr[0] is ${arr[0]}")
-            Button("click").onClick {
+            Button("click").onClick { evt =>
                 arr[0] = 0
             }
         }
@@ -496,10 +493,10 @@ class EntryView {
     func build() {
         Column {
             Text("arr[0] is ${arr[0]}")
-            Button("click").onClick {
+            Button("click").onClick { evt =>
                 arr[0] = 0
             }
-            Button("append").onClick {
+            Button("append").onClick { evt =>
                 arr.append(0)
             }
         }
@@ -521,7 +518,7 @@ public open class ObservedProperty<T> <: ObservedPropertyAbstract {
 
 **Parent Type:**
 
-- [ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>)
+- [ObservedPropertyAbstract](./cj-ui-framework.md#class-observedpropertyabstract)
 
 ### init(String, T)
 
@@ -548,7 +545,7 @@ public init(info: String, initValue: T)
 public func createProp(info: String): ObservedProperty<T>
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Creates and returns a one-way binding copy of the current property. The newly created property remains synchronized with the original property, but modifications to the new property will not affect the original one.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,13 +555,13 @@ public func createProp(info: String): ObservedProperty<T>
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| info | String | Yes | - | <font color="red" face="bold">please add description</font> |
+| info | String | Yes | - | Description information for the newly created property. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ObservedProperty](#class-observedproperty)\<T> | <font color="red" face="bold">please add description</font> |
+| [ObservedProperty](#class-observedproperty)\<T> | A one-way binding copy of the current property. |
 
 ### func get()
 
@@ -572,7 +569,7 @@ public func createProp(info: String): ObservedProperty<T>
 public func get(): T
 ```
 
-**Function:** Reads the data of a synchronous property.
+**Function:** Reads the data of the synchronized property.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -582,7 +579,7 @@ public func get(): T
 
 | Type | Description |
 |:----|:----|
-| T | Data of the synchronous property. |
+| T | Data of the synchronized property. |
 
 ### func getInner()
 
@@ -590,7 +587,7 @@ public func get(): T
 public func getInner(): T
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Gets the internal value of the property without triggering state updates.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -600,7 +597,7 @@ public func getInner(): T
 
 | Type | Description |
 |:----|:----|
-| T | <font color="red" face="bold">please add description</font> |
+| T | Internal value of the property. |
 
 ### func set(T)
 
@@ -608,7 +605,7 @@ public func getInner(): T
 public open func set(newValue: T): Unit
 ```
 
-**Function:** Sets the data of a synchronous property.
+**Function:** Sets the data of the synchronized property.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -626,7 +623,7 @@ public open func set(newValue: T): Unit
 public func subscribeEx(observer: Observer)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Adds an observer for property changes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,7 +633,7 @@ public func subscribeEx(observer: Observer)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| observer | [Observer](<font color="red" face="bold">please add link</font>) | Yes | - | <font color="red" face="bold">please add description</font> |
+| observer | Observer | Yes | - | Observer for property changes. |
 
 ### func unsubscribeEx(Observer)
 
@@ -644,7 +641,7 @@ public func subscribeEx(observer: Observer)
 public func unsubscribeEx(observer: Observer)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Removes an observer for property changes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -654,11 +651,11 @@ public func unsubscribeEx(observer: Observer)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| observer | [Observer](<font color="red" face="bold">please add link</font>) | Yes | - | <font color="red" face="bold">please add description</font> |
+| observer | Observer | Yes | - | Observer to be removed. |
 
 ## Example Code
 
-**Notes on State Updates:** Concurrent modification of state variables within `spawn` expressions is not allowed, as it may lead to concurrency safety issues. When modifying state variables, it is recommended to use the `launch` method provided by the `concurrency` package to ensure state updates are executed on the main thread for concurrency safety. The following example demonstrates how to update state variables within a `spawn` expression:
+**Note on State Updates:** Concurrent modification of state variables within `spawn` expressions is not allowed, as it may lead to concurrency safety issues. When modifying state variables, it is recommended to use the `launch` method provided by the `concurrency` package to ensure state updates are executed on the main thread for concurrency safety. The following example demonstrates how to update state variables within a `spawn` expression:
 
 <!-- run -->
 
@@ -674,7 +671,7 @@ class EntryView {
     @State var text: String = "begin"
 
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Button(text).onClick { evt =>
                 changeText({ p: String =>
                     // Use the launch expression to update state variables on the main thread

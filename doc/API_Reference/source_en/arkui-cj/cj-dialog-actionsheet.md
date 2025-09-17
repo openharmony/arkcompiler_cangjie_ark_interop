@@ -1,141 +1,6 @@
 # Action Sheet Dialog (ActionSheet)
 
-A list dialog.
-
-## class ActionSheet
-
-```cangjie
-public class ActionSheet {}
-```
-
-**Function:** List dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### static func show(ActionSheetOptions, ShadowOptions)
-
-```cangjie
-public static func show(value: ActionSheetOptions, shadow: ShadowOptions): Unit
-```
-
-**Function:** Defines and displays a list dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| value | [ActionSheetOptions](#class-actionsheetoptions) | Yes | - | Parameters for configuring the action sheet dialog. |
-| shadow | [ShadowOptions](cj-common-types.md#class-shadowoptions) | Yes | - | Sets the shadow of the dialog backdrop. |
-
-**Example:**
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column() {
-                Button("Click to Show ActionSheet").onClick(
-                    {
-                        evt =>
-                        let sheets: Array<SheetInfo> = [SheetInfo("apple", {=> Hilog.info(0, "AppLogCj", "apple")}),
-                            SheetInfo("banana", {=> Hilog.info(0, "AppLogCj", "banana")}), SheetInfo("pears", {=> Hilog.info(0, "AppLogCj", "pears")})]
-                        let confirm: Confirm = Confirm("Confirm button", {=> Hilog.info(0, "AppLogCj", "Get Alert Dialog handled")},
-                            defaultFocus: true, style: DialogButtonStyle.HIGHLIGHT)
-                        ActionSheet.show(
-                            ActionSheetOptions(
-                                "ActionSheet title",
-                                "message",
-                                sheets,
-                                subtitle: "ActionSheet subtitle",
-                                autoCancel: true,
-                                confirm: confirm,
-                                width: 300,
-                                height: 350,
-                                cornerRadius: BorderRadiuses(topLeft: 20.vp, topRight: 20.vp, bottomLeft: 20.vp,
-                                    bottomRight: 20.vp),
-                                borderWidth: 1.vp,
-                                borderStyle: EdgeStyle.SOILD,
-                                borderColor: Color.White,
-                                cancel: {=> Hilog.info(0, "AppLogCj", "actionSheet canceled")},
-                                onWillDismiss: {
-                                    action =>
-                                    match (action.reason) {
-                                        case PRESS_BACK => Hilog.info(0, "AppLogCj", "PRESS_BACK")
-                                        case TOUCH_OUTSIDE => Hilog.info(0, "AppLogCj", "TOUCH_OUTSIDE")
-                                        case CLOSE_BUTTON => Hilog.info(0, "AppLogCj", "CLOSE_BUTTON")
-                                        case SLIDE_DOWN => Hilog.info(0, "AppLogCj", "SLIDE_DOWN")
-                                        case _ => throw Exception()
-                                    }
-                                    action.dismiss()
-                                },
-                                alignment: DialogAlignment.Bottom,
-                                offset: Offset(0, -10)
-                            ),
-                            ActionSheetShadowOptions(20.0, color: Color.Gray, offsetX: 50.0, offsetY: 0.0)
-                        )
-                    }
-                )
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```
-
-![actionsheet1](./figures/actionsheet1.gif)
-
-### static func show(ActionSheetOptions, ShadowStyle)
-
-```cangjie
-public static func show(value: ActionSheetOptions, shadow: ShadowStyle): Unit
-```
-
-**Function:** Defines and displays a list dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| value | [ActionSheetOptions](#class-actionsheetoptions) | Yes | - | Parameters for configuring the action sheet dialog. |
-| shadow | [ShadowStyle](cj-common-types.md#enum-shadowstyle) | Yes | - | Sets the shadow style of the dialog backdrop. |
-
-### static func show(ActionSheetOptions)
-
-```cangjie
-public static func show(value: ActionSheetOptions): Unit
-```
-
-**Function:** Defines and displays a list dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| value | [ActionSheetOptions](#class-actionsheetoptions) | Yes | - | Parameters for configuring the action sheet dialog. |
-
+A list dialog component.
 
 ## class ActionSheetButtonOptions
 
@@ -157,7 +22,7 @@ public class ActionSheetButtonOptions {
 }
 ```
 
-**Function:** Styles for buttons in the dialog.
+**Description:** Styles for buttons in the dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,7 +34,7 @@ public class ActionSheetButtonOptions {
 public var action: VoidCallback
 ```
 
-**Function:** Callback when the button is selected.
+**Description:** Callback when the button is selected.
 
 **Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
@@ -185,7 +50,7 @@ public var action: VoidCallback
 public var defaultFocus: Bool
 ```
 
-**Function:** Sets whether the button is the default focus.
+**Description:** Sets whether the button is the default focus.
 
 **Type:** Bool
 
@@ -201,7 +66,7 @@ public var defaultFocus: Bool
 public var enabled: Bool
 ```
 
-**Function:** Whether the button responds to clicks.
+**Description:** Determines whether the button responds to clicks.
 
 **Type:** Bool
 
@@ -217,7 +82,7 @@ public var enabled: Bool
 public var style: DialogButtonStyle
 ```
 
-**Function:** Sets the style of the button.
+**Description:** Sets the style of the button.
 
 **Type:** [DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle)
 
@@ -233,7 +98,7 @@ public var style: DialogButtonStyle
 public var value: ResourceStr
 ```
 
-**Function:** Text content of the button.
+**Description:** Text content of the button.
 
 **Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
@@ -246,7 +111,6 @@ public var value: ResourceStr
 ### init(ResourceStr, VoidCallback, Bool, Bool, DialogButtonStyle)
 
 ```cangjie
-
 public init(
     value!: ResourceStr,
     action!: VoidCallback,
@@ -256,7 +120,7 @@ public init(
 )
 ```
 
-**Function:** Button parameters.
+**Description:** Button parameters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,13 +128,13 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the button. |
 | action | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback when the button is selected. |
-| enabled | Bool | No | true | **Named parameter.** Whether the button responds to clicks. true means the button responds, false means it does not. |
-| defaultFocus | Bool | No | false | **Named parameter.** Sets whether the button is the default focus. true means it is the default focus, false means it is not. |
-| style | [DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle) | No | DialogButtonStyle.Default | DialogButtonStyle.DEFAULT | **Named parameter.** Sets the style of the button. |
+| enabled | Bool | No | true | **Named parameter.** Whether the button responds to clicks. `true` means the button responds, `false` means it doesn't. |
+| defaultFocus | Bool | No | false | **Named parameter.** Sets whether the button is the default focus. `true` means it is the default focus, `false` means it isn't. |
+| style | [DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle) | No | DialogButtonStyle.Default | **Named parameter.** Sets the style of the button. |
 
 ## class ActionSheetOffset
 
@@ -286,7 +150,7 @@ public class ActionSheetOffset {
 }
 ```
 
-**Function:** Alignment method for the dialog.
+**Description:** Alignment settings for the dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -298,7 +162,7 @@ public class ActionSheetOffset {
 public var dx: Length
 ```
 
-**Function:** The dx offset of the popup window relative to the alignment position. Requires explicit pixel units, e.g., '10px', or percentage strings, e.g., '100%'.
+**Description:** Horizontal offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%').
 
 **Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
@@ -314,7 +178,7 @@ public var dx: Length
 public var dy: Length
 ```
 
-**Function:** The dy offset of the popup window relative to the alignment position. Requires explicit pixel units, e.g., '10px', or percentage strings, e.g., '100%'.
+**Description:** Vertical offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%').
 
 **Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
@@ -327,14 +191,13 @@ public var dy: Length
 ### init(Length, Length)
 
 ```cangjie
-
 public init(
     dx!: Length,
     dy!: Length
 )
 ```
 
-**Function:** Constructor for the ActionSheetOffset class.
+**Description:** Constructor for the ActionSheetOffset class.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -342,10 +205,10 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The dx offset of the popup window relative to the alignment position. Requires explicit pixel units, e.g., '10px', or percentage strings, e.g., '100%'. |
-| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The dy offset of the popup window relative to the alignment position. Requires explicit pixel units, e.g., '10px', or percentage strings, e.g., '100%'. |
+| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Horizontal offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%'). |
+| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Vertical offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%'). |
 
 ## class ActionSheetOptions
 
@@ -372,6 +235,7 @@ public class ActionSheetOptions {
     public var borderStyle: EdgeStyles
     public var width:?Length
     public var height:?Length
+    public var shadow: ShadowOptions
     public var transition:?TransitionEffect
 
     /**
@@ -397,6 +261,7 @@ public class ActionSheetOptions {
      * @param { EdgeStyles } borderStyle
      * @param { ?Length } width
      * @param { ?Length } height
+     * @param { ShadowOptions } shadow
      * @param { ?TransitionEffect } transition
      * @returns { ActionSheetOptions }
      * @relation interface ActionSheetOptions
@@ -424,26 +289,29 @@ public class ActionSheetOptions {
         borderStyle!: EdgeStyles = EdgeStyles(),
         width!: ?Length = None,
         height!: ?Length = None,
+        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
         transition!: ?TransitionEffect = None
     )
 }
 ```
 
-**Function:** Constructs an object of type ActionSheetOptions.
+**Description:** Constructs an object of type ActionSheetOptions.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21### var alignment
+**Since:** 21
+
+### var alignment
 
 ```cangjie
 public var alignment: DialogAlignment
 ```
 
-**Function:** The vertical alignment of the popup dialog.
+**Description:** Vertical alignment of the dialog.
 
 **Type:** [DialogAlignment](./cj-common-types.md#enum-dialogalignment)
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -455,11 +323,11 @@ public var alignment: DialogAlignment
 public var autoCancel: Bool
 ```
 
-**Function:** Whether to close the popup when clicking the mask layer.
+**Description:** Whether the dialog closes when clicking the mask layer.
 
 **Type:** Bool
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,11 +339,11 @@ public var autoCancel: Bool
 public var backgroundBlurStyle: BlurStyle
 ```
 
-**Function:** The blur material of the popup's background panel.
+**Description:** Blur effect style for the dialog background.
 
 **Type:** [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -487,11 +355,11 @@ public var backgroundBlurStyle: BlurStyle
 public var backgroundColor: ResourceColor
 ```
 
-**Function:** The background color of the popup panel.
+**Description:** Background color of the dialog.
 
 **Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -503,11 +371,11 @@ public var backgroundColor: ResourceColor
 public var borderColor: ResourceColor
 ```
 
-**Function:** Sets the border color of the popup's background panel. If using the `borderColor` property, it must be used together with the `borderWidth` property.
+**Description:** Sets the border color of the dialog background. Must be used with the `borderWidth` property.
 
 **Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -519,27 +387,25 @@ public var borderColor: ResourceColor
 public var borderStyle: EdgeStyles
 ```
 
-**Function:** Sets the border style of the popup's background panel. If using the `borderStyle` property, it must be used together with the `borderWidth` property.
+**Description:** Sets the border style of the dialog background. Must be used with the `borderWidth` property.
 
-**Type:** [EdgeStyles](cj-dialog-actionsheet.md#class-edgestyle)
+**Type:** [EdgeStyles](./cj-common-types.md#class-edgestyles)
 
-**Read-Write Capability:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
-
-### var borderWidth
+**Since:** 21### var borderWidth
 
 ```cangjie
 public var borderWidth: Length
 ```
 
-**Function:** Sets the border width of the popup's background panel.
+**Function:** Sets the border width of the dialog backdrop.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -551,11 +417,11 @@ public var borderWidth: Length
 public var cancel: VoidCallback
 ```
 
-**Function:** Callback when the dialog is closed by clicking the mask layer.
+**Function:** Callback triggered when clicking the mask layer to close the dialog.
 
 **Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -567,11 +433,11 @@ public var cancel: VoidCallback
 public var confirm: ActionSheetButtonOptions
 ```
 
-**Function:** The enabled state, default focus, button style, text content, and click callback of the confirm button. When the popup gains focus and no tab key navigation is performed, this button defaults to responding to the Enter key, and multiple popups can automatically gain focus for continuous responses.
+**Function:** Configures the enabled state, default focus, button style, text content, and click callback of the confirmation button. When the dialog gains focus and no tab key navigation is performed, this button responds to the Enter key by default, and multiple dialogs can automatically gain focus for continuous response.
 
 **Type:** [ActionSheetButtonOptions](#class-actionsheetbuttonoptions)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -583,11 +449,11 @@ public var confirm: ActionSheetButtonOptions
 public var cornerRadius: BorderRadiuses
 ```
 
-**Function:** Sets the corner radius of the background panel. The radius of each of the four corners can be set separately.
+**Function:** Sets the corner radius of the backdrop. The radius of each corner can be set individually.
 
 **Type:** [BorderRadiuses](./cj-common-types.md#class-borderradiuses)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -599,11 +465,11 @@ public var cornerRadius: BorderRadiuses
 public var height:?Length
 ```
 
-**Function:** Sets the height of the popup's background panel.
+**Function:** Sets the height of the dialog backdrop.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -615,11 +481,11 @@ public var height:?Length
 public var isModal: Bool
 ```
 
-**Function:** Whether the popup is a modal window. Modal windows have a mask layer, while non-modal windows do not.
+**Function:** Indicates whether the dialog is a modal window. Modal windows have a mask layer, while non-modal windows do not.
 
 **Type:** Bool
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -631,11 +497,11 @@ public var isModal: Bool
 public var maskRect: Rectangle
 ```
 
-**Function:** The area of the popup's mask layer. Events within the mask layer area are not transmitted, while events outside the mask layer area are transmitted.
+**Function:** Specifies the mask layer area of the dialog. Events within the mask layer area are not transmitted, while events outside the area are transmitted.
 
-**Type:** [Rectangle](./cj-common-types.md#class-rectangle>)
+**Type:** [Rectangle](./cj-common-types.md#class-rectangle)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -647,11 +513,11 @@ public var maskRect: Rectangle
 public var message: ResourceStr
 ```
 
-**Function:** The content of the popup.
+**Function:** Content of the dialog.
 
 **Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -663,11 +529,11 @@ public var message: ResourceStr
 public var offset: ActionSheetOffset
 ```
 
-**Function:** The offset of the popup relative to the position specified by `alignment`.
+**Function:** Offset of the dialog relative to the position specified by `alignment`.
 
 **Type:** [ActionSheetOffset](#class-actionsheetoffset)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -683,7 +549,23 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 
 **Type:** ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit>
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### var shadow
+
+```cangjie
+public var shadow: ShadowOptions
+```
+
+**Function:** Sets the shadow of the dialog backdrop.
+
+**Type:** ?[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)
+
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -695,11 +577,11 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 public var sheets: Array<SheetInfo>
 ```
 
-**Function:** Sets the option content, where each option supports setting an image, text, and selection callback.
+**Function:** Sets the option content. Each option supports configuring an image, text, and selection callback.
 
 **Type:** Array\<[SheetInfo](#class-sheetinfo)>
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -711,11 +593,11 @@ public var sheets: Array<SheetInfo>
 public var showInSubWindow: Bool
 ```
 
-**Function:** Whether to display this popup in a sub-window when it needs to be shown outside the main window.
+**Function:** Determines whether the dialog should be displayed in a sub-window when it needs to appear outside the main window.
 
 **Type:** Bool
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -727,11 +609,11 @@ public var showInSubWindow: Bool
 public var subtitle: ResourceStr
 ```
 
-**Function:** The subtitle of the popup.
+**Function:** Subtitle of the dialog.
 
 **Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -743,11 +625,11 @@ public var subtitle: ResourceStr
 public var title: ResourceStr
 ```
 
-**Function:** The title of the popup.
+**Function:** Title of the dialog.
 
 **Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,11 +641,11 @@ public var title: ResourceStr
 public var transition:?TransitionEffect
 ```
 
-**Function:** Sets the transition effect for the popup's display and exit.
+**Function:** Sets the transition effect for displaying and exiting the dialog.
 
 **Type:** ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -775,11 +657,11 @@ public var transition:?TransitionEffect
 public var width:?Length
 ```
 
-**Function:** Sets the width of the popup's background panel.
+**Function:** Sets the width of the dialog backdrop.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -851,85 +733,28 @@ public init(
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| title | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The title of the popup. <br/>If the text content is too long to display, an ellipsis replaces the hidden part. |
-| message | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The content of the popup. <br/>A scrollbar is triggered if the text is too long. |
-| sheets | Array\<[SheetInfo](#class-sheetinfo)> | Yes | - | Sets the option content, where each option supports setting an image, text, and selection callback. |
-| subtitle | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The subtitle of the popup. <br/>If the text content is too long to display, an ellipsis replaces the hidden part. |
-| confirm | [ActionSheetButtonOptions](#class-actionsheetbuttonoptions) | No | ActionSheetButtonOptions(value: "", action: { => }) | **Named parameter.** The enabled state, default focus, button style, text content, and click callback of the confirm button. When the popup gains focus and no tab key navigation is performed, this button defaults to responding to the Enter key, and multiple popups can automatically gain focus for continuous responses. The default Enter key response does not take effect when `defaultFocus` is true. <br/>`enabled`: Whether the button responds to clicks. `true` means the button can respond, `false` means it cannot. <br/>Initial value: `true`. <br/>`defaultFocus`: Sets whether the button is the default focus. `true` means it is the default focus, `false` means it is not. <br/>Initial value: `false`. <br/>`style`: Sets the button's style. <br/>Initial value: `DialogButtonStyle.DEFAULT`. <br/>`value`: The button's text content. If the text is too long to display, an ellipsis replaces the hidden part. <br/>`action`: Callback when the button is selected. |
-| autoCancel | Bool | No | true | **Named parameter.** Whether to close the popup when clicking the mask layer. <br/>`true` means clicking the mask layer closes the popup, `false` means it does not. |
-| cancel | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | No | { => } | **Named parameter.** Callback when the dialog is closed by clicking the mask layer. |
-| alignment | [DialogAlignment](./cj-common-types.md#enum-dialogalignment) | No | DialogAlignment.Bottom | **Named parameter.** The vertical alignment of the popup. |
-| offset | ?[ActionSheetOffset](#class-actionsheetoffset) | No | None | **Named parameter.** Requires explicit specification of pixel units, e.g., `10.vp`, or percentage strings, e.g., `100.percent`. <br/>If pixel units are not specified, the default unit is `vp`, e.g., `10` is equivalent to `10.vp`. <br/>The offset of the popup relative to the position specified by `alignment`. <br/>Initial values: <br/>1. When `alignment` is set to `Top`, `TopStart`, or `TopEnd`, the default is `{dx: 0, dy: 40.vp}`. <br/>2. For other `alignment` settings, the default is `{dx: 0, dy: -40.vp}`. |
-| maskRect | [Rectangle](./cj-common-types.md#class-rectangle) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** The area of the popup's mask layer. Events within the mask layer area are not transmitted, while events outside the mask layer area are transmitted. <br>**Note:** <br> `maskRect` does not take effect when `showInSubWindow` is `true`. |
-| showInSubWindow | Bool | No | false | **Named parameter.** Whether to display this popup in a sub-window when it needs to be shown outside the main window. <br>Initial value: `false`, meaning the popup is displayed within the application, not in an independent sub-window. <br>**Note:** <br> A popup with `showInSubWindow` set to `true` cannot trigger another popup with `showInSubWindow` set to `true`. |
-| isModal | Bool | No | true | **Named parameter.** Whether the popup is a modal window. Modal windows have a mask layer, while non-modal windows do not. <br/>Initial value: `true`, meaning the popup has a mask layer. |
-| backgroundColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** The background color of the popup panel. <br>**Note:** <br> When `backgroundColor` is set to a non-transparent color, `backgroundBlurStyle` must be set to `BlurStyle.NONE`; otherwise, the color display may not meet expectations. |
-| backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | **Named parameter.** The blur material of the popup's background panel. <br>**Note:** <br> Set to `BlurStyle.NONE` to disable background blurring. When `backgroundBlurStyle` is set to a non-`NONE` value, do not set `backgroundColor`; otherwise, the color display may not meet expectations. |
-| onWillDismiss | ?[Callback](../apis/B## class DismissDialogAction
-
-```cangjie
-public class DismissDialogAction {
-    public var reason: DismissReason
-
-    public init(reason: DismissReason)
-}
-```
-
-**Function:** Information about Dialog closure.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### var reason
-
-```cangjie
-public var reason: DismissReason
-```
-
-**Function:** Reason why the Dialog cannot be closed. Allows developers to choose whether the Dialog should close under different operations.
-
-**Type:** [DismissReason](cj-dialog-actionsheet.md#enum-dismissreason)
-
-**Access:** Read-Write
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### init(DismissReason)
-
-```cangjie
-public init(reason: DismissReason)
-```
-
-**Function:** Information about Dialog closure.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| reason | [DismissReason](cj-dialog-actionsheet.md#enum-dismissreason) | Yes | - | Reason why the Dialog cannot be closed. Allows developers to choose whether the Dialog should close under different operations. |
-
-### func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**Function:** Dialog closure callback function. Invoked by developers when exiting is required; no invocation is needed otherwise.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-## class SheetInfo
+| title | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Title of the dialog. <br/>If the text is too long to display, an ellipsis replaces the hidden part. |
+| message | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Content of the dialog. <br/>A scrollbar appears if the text exceeds the display area. |
+| sheets | Array\<[SheetInfo](#class-sheetinfo)> | Yes | - | Sets the option content. Each option supports configuring an image, text, and selection callback. |
+| subtitle | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Subtitle of the dialog. <br/>If the text is too long to display, an ellipsis replaces the hidden part. |
+| confirm | [ActionSheetButtonOptions](#class-actionsheetbuttonoptions) | No | ActionSheetButtonOptions(value: "", action: { => }) | **Named parameter.** Configures the enabled state, default focus, button style, text content, and click callback of the confirmation button. When the dialog gains focus and no tab key navigation is performed, this button responds to the Enter key by default, and multiple dialogs can automatically gain focus for continuous response. The default Enter key response does not take effect when `defaultFocus` is true. <br/>`enabled`: Determines whether the button responds to clicks. `true` means the button can respond; `false` means it cannot. <br/>Initial value: `true`. <br/>`defaultFocus`: Sets whether the button is the default focus. `true` means it is the default focus; `false` means it is not. <br/>Initial value: `false`. <br/>`style`: Sets the button's style. <br/>Initial value: `DialogButtonStyle.DEFAULT`. <br/>`value`: Text content of the button. If the text is too long to display, an ellipsis replaces the hidden part. <br/>`action`: Callback triggered when the button is selected. |
+| autoCancel | Bool | No | true | **Named parameter.** Determines whether clicking the mask layer closes the dialog. <br/>`true` means clicking the mask layer closes the dialog; `false` means it does not. |
+| cancel | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | No | { => } | **Named parameter.** Callback triggered when clicking the mask layer to close the dialog. |
+| alignment | [DialogAlignment](./cj-common-types.md#enum-dialogalignment) | No | DialogAlignment.Bottom | **Named parameter.** Vertical alignment of the dialog. |
+| offset | ?[ActionSheetOffset](#class-actionsheetoffset) | No | None | **Named parameter.** Requires explicit pixel units (e.g., `10.vp`) or percentage strings (e.g., `100.percent`). <br/>If no unit is specified, `vp` is used by default (e.g., `10` is equivalent to `10.vp`). <br/>Offset of the dialog relative to the position specified by `alignment`. <br/>Initial value: <br/>1. When `alignment` is set to `Top`, `TopStart`, or `TopEnd`, the default is `{dx: 0, dy: 40.vp}`. <br/>2. For other alignments, the default is `{dx: 0, dy: -40.vp}`. |
+| maskRect | [Rectangle](./cj-common-types.md#class-rectangle) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within this area are not transmitted; events outside are transmitted. <br>**Note:** <br> `maskRect` does not take effect when `showInSubWindow` is `true`. |
+| showInSubWindow | Bool | No | false | **Named parameter.** Determines whether the dialog should be displayed in a sub-window when it needs to appear outside the main window. <br>Initial value: `false`, meaning the dialog appears within the application, not in an independent sub-window. <br>**Note:** <br> A dialog with `showInSubWindow` set to `true` cannot trigger another dialog with `showInSubWindow` set to `true`. |
+| isModal | Bool | No | true | **Named parameter.** Indicates whether the dialog is a modal window. Modal windows have a mask layer; non-modal windows do not. <br/>Initial value: `true`, meaning the dialog has a mask layer. |
+| backgroundColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** Background color of the dialog backdrop. <br>**Note:** <br> When `backgroundColor` is set to a non-transparent color, `backgroundBlurStyle` must be set to `BlurStyle.NONE`; otherwise, the color display may not meet expectations. |
+| backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | **Named parameter.** Blur material of the dialog backdrop. <br>**Note:** <br> Set to `BlurStyle.NONE` to disable background blurring. When `backgroundBlurStyle` is set to a non-`NONE` value, avoid setting `backgroundColor`; otherwise, the color display may not meet expectations. |
+| onWillDismiss | ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit> | No | None | **Named parameter.** Interactive close callback function. <br>**Note:** <br> 1. When the user performs actions like clicking the mask layer to close, swiping left/right, pressing the back button, or using the ESC key to close the dialog, if this callback is registered, the dialog will not close immediately. The callback provides the `reason` for the close attempt, allowing conditional closure based on the operation type. The current component does not support the `CLOSE_BUTTON` enum value in the `reason` parameter. <br> 2. The `onWillDismiss` callback cannot intercept itself. |
+| cornerRadius | [BorderRadiuses](./cj-common-types.md#class-borderradiuses) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | **Named parameter.** Sets the corner radius of the backdrop. Each corner's radius can be set individually. <br>The maximum corner radius is limited by the component's dimensions (half of the width or height). Negative values are treated as the default. <br>Percentage-based parameters: The corner radius is calculated as a percentage of the dialog's width and height. <br>**Note:** <br> When `cornerRadius` is of type `LocalizedBorderRadiuses`, it supports layout adjustments based on language preferences. |
+| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Sets the border width of the dialog backdrop. <br>Percentage-based parameters: The border width is calculated as a percentage of the dialog's width and height. <br>If the left/right borders exceed the dialog's width or the top/bottom borders exceed its height, the display may not meet expectations. <br>**Note:** <br> When `borderWidth` is of type `LocalizedEdgeWidths`, it supports layout adjustments based on language preferences. |
+| borderColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Sets the border color of the dialog backdrop. Requires `borderWidth` to be set. <br>**Note:** <br> When `borderColor` is of type `LocalizedEdgeColors`, it supports layout adjustments based on language preferences. |
+| borderStyle | [EdgeStyles](./cj-common-types.md#class-edgestyles) | No | EdgeStyles() | **Named parameter.** Sets the border style of the dialog backdrop. Requires `borderWidth` to be set. |
+| width | ?[Length](../apis/BasicServices## class SheetInfo
 
 ```cangjie
 public class SheetInfo {
@@ -945,7 +770,7 @@ public class SheetInfo {
 }
 ```
 
-**Function:** Sets option content. Each option supports configuring an image, text, and selection callback.
+**Function:** Configures option content, where each option supports setting an image, text, and selection callback.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -961,7 +786,7 @@ public var action: VoidCallback
 
 **Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
-**Access:** Read-Write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -973,11 +798,11 @@ public var action: VoidCallback
 public var icon:?ResourceStr
 ```
 
-**Function:** Icon for the option. No icon is displayed by default.
+**Function:** Icon of the option. No icon is displayed by default.
 
 **Type:** ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
-**Access:** Read-Write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -993,7 +818,7 @@ public var title: ResourceStr
 
 **Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
-**Access:** Read-Write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1009,7 +834,7 @@ public init(
 )
 ```
 
-**Function:** Option content parameters.
+**Function:** Parameters for option content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1017,11 +842,11 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| title | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the option.<br/>A scrollbar appears when the text exceeds the display area. |
+| title | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the option.<br/>A scroll bar appears when the text is too long. |
 | action | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback when the option is selected. |
-| icon | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** Icon for the option. No icon is displayed by default.<br/>String format can be used to load web or local images, typically for web images. When referencing local images using relative paths, e.g., Image("common/test.jpg"). |
+| icon | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** Icon of the option. No icon is displayed by default.<br/>The string format can be used to load network images and local images, and is commonly used to load network images. When referencing a local image using a relative path, for example, Image("common/test.jpg"). |
 
 ## enum DismissReason
 
@@ -1035,7 +860,7 @@ public enum DismissReason {
 }
 ```
 
-**Function:** Reason for popup closure.
+**Function:** Reason for closing the popup.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1047,7 +872,7 @@ public enum DismissReason {
 CloseButton
 ```
 
-**Function:** Clicked the close button.
+**Function:** The close button was clicked.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1059,7 +884,7 @@ CloseButton
 PressBack
 ```
 
-**Function:** Pressed the three-key back, swiped left/right, or pressed ESC on the keyboard.
+**Function:** Three-key back, left/right swipe, or ESC key was pressed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1083,7 +908,7 @@ SlideDown
 TouchOutside
 ```
 
-**Function:** Clicked the mask layer.
+**Function:** Clicked on the mask layer.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 

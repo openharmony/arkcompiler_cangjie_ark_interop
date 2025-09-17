@@ -8,176 +8,6 @@ Displays an alert dialog component, allowing configuration of text content and r
 import kit.ArkUI.*
 ```
 
-## Component Attributes
-
-### static func show(AlertDialogParamWithConfirm)
-
-```cangjie
-public static func show(value: AlertDialogParamWithConfirm): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithConfirm](#class-alertdialogparamwithconfirm) | Yes | - | Defines and displays the AlertDialog component. |
-
-### static func show(AlertDialogParamWithConfirm, ShadowOptions)
-
-```cangjie
-public static func show(value: AlertDialogParamWithConfirm, shadow: ShadowOptions): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithConfirm](#class-alertdialogparamwithconfirm) | Yes | - | Defines and displays the AlertDialog component. |
-| shadow | [ShadowOptions](<font color="red" face="bold">please add link</font>) | Yes | - | Sets the shadow of the dialog backdrop. Default is no shadow. |
-
-### static func show(AlertDialogParamWithConfirm, ShadowStyle)
-
-```cangjie
-public static func show(value: AlertDialogParamWithConfirm, shadow: ShadowStyle): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithConfirm](#class-alertdialogparamwithconfirm) | Yes | - | Defines and displays the AlertDialog component. |
-| shadow | [ShadowStyle](<font color="red" face="bold">please add link</font>) | Yes | - | Sets the shadow of the dialog backdrop. Default is no shadow. |
-
-### static func show(AlertDialogParamWithButtons)
-
-```cangjie
-public static func show(value: AlertDialogParamWithButtons): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithButtons](#class-alertdialogparamwithbuttons) | Yes | - | Defines and displays the AlertDialog component. |
-
-### static func show(AlertDialogParamWithButtons, ShadowOptions)
-
-```cangjie
-public static func show(value: AlertDialogParamWithButtons, shadow: ShadowOptions): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithButtons](#class-alertdialogparamwithbuttons) | Yes | - | Defines and displays the AlertDialog component. |
-| shadow | [ShadowOptions](<font color="red" face="bold">please add link</font>) | Yes | - | Sets the shadow of the dialog backdrop. Default is no shadow. |
-
-### static func show(AlertDialogParamWithButtons, ShadowStyle)
-
-```cangjie
-public static func show(value: AlertDialogParamWithButtons, shadow: ShadowStyle): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithButtons](#class-alertdialogparamwithbuttons) | Yes | - | Defines and displays the AlertDialog component. |
-| shadow | [ShadowStyle](<font color="red" face="bold">please add link</font>) | Yes | - | Sets the shadow of the dialog backdrop. Default is no shadow. |
-
-### static func show(AlertDialogParamWithOptions)
-
-```cangjie
-public static func show(value: AlertDialogParamWithOptions): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithOptions](#class-alertdialogparamwithoptions) | Yes | - | Defines and displays the AlertDialog component. |
-
-### static func show(AlertDialogParamWithOptions, ShadowOptions)
-
-```cangjie
-public static func show(value: AlertDialogParamWithOptions, shadow: ShadowOptions): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithOptions](#class-alertdialogparamwithoptions) | Yes | - | Defines and displays the AlertDialog component. |
-| shadow | [ShadowOptions](<font color="red" face="bold">please add link</font>) | Yes | - | Sets the shadow of the dialog backdrop. Default is no shadow. |
-
-### static func show(AlertDialogParamWithOptions, ShadowStyle)
-
-```cangjie
-public static func show(value: AlertDialogParamWithOptions, shadow: ShadowStyle): Unit
-```
-
-**Function:** Defines and displays an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| value | [AlertDialogParamWithOptions](#class-alertdialogparamwithoptions) | Yes | - | Defines and displays the AlertDialog component. |
-| shadow | [ShadowStyle](<font color="red" face="bold">please add link</font>) | Yes | - | Sets the shadow of the dialog backdrop. Default is no shadow. |
-
 ## Basic Type Definitions
 
 ### class AlertDialogButtonBaseOptions
@@ -203,7 +33,7 @@ public open class AlertDialogButtonBaseOptions {
 }
 ```
 
-**Function:** Defines a button in an alert dialog.
+**Function:** Defines buttons in an alert dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,9 +47,9 @@ public var action: VoidCallback
 
 **Function:** Callback when the button is selected.
 
-**Type:** [VoidCallback](<font color="red" face="bold">please add link</font>)
+**Type:** VoidCallback
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,9 +63,9 @@ public var backgroundColor:?ResourceColor
 
 **Function:** Background color of the button.
 
-**Type:** ?[ResourceColor](<font color="red" face="bold">please add link</font>)
+**Type:** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,7 +81,7 @@ public var defaultFocus: Bool
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,7 +97,7 @@ public var enabled: Bool
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,9 +111,9 @@ public var fontColor:?ResourceColor
 
 **Function:** Text color of the button.
 
-**Type:** ?[ResourceColor](<font color="red" face="bold">please add link</font>)
+**Type:** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,9 +127,9 @@ public var style: DialogButtonStyle
 
 **Function:** Sets the style of the button.
 
-**Type:** [DialogButtonStyle](<font color="red" face="bold">please add link</font>)
+**Type:** DialogButtonStyle
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,9 +143,9 @@ public var value: ResourceStr
 
 **Function:** Determines whether the button responds to clicks.
 
-**Type:** [ResourceStr](<font color="red" face="bold">please add link</font>)
+**Type:** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,7 +165,7 @@ public init(
 )
 ```
 
-**Function:** Defines a button in an alert dialog.
+**Function:** Defines buttons in an alert dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,15 +173,15 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| enabled | Bool | No | true | **Named parameter.** Determines whether the button responds to clicks. |
-| defaultFocus | Bool | No | false | **Named parameter.** Sets whether the button is the default focus. |
-| style | [DialogButtonStyle](<font color="red" face="bold">please add link</font>) | No | DialogButtonStyle.Default | **Named parameter.** Sets the style of the button. |
-| value | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Text content of the button. |
-| fontColor | ?[ResourceColor](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Text color of the button. |
-| backgroundColor | ?[ResourceColor](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Background color of the button. |
-| action | [VoidCallback](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Callback when the button is selected. |
+|enabled|Bool|No|true| **Named parameter.** Determines whether the button responds to clicks. |
+|defaultFocus|Bool|No|false| **Named parameter.** Sets whether the button is the default focus. |
+|style|DialogButtonStyle|No|DialogButtonStyle.Default| **Named parameter.** Sets the style of the button. |
+|value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|Yes|-| **Named parameter.** Text content of the button. |
+|fontColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Text color of the button. |
+|backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Background color of the button. |
+|action|VoidCallback|Yes|-| **Named parameter.** Callback when the button is selected. |
 
 ### class AlertDialogButtonOptions
 
@@ -371,7 +201,7 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 }
 ```
 
-**Function:** Defines a button in an alert dialog.
+**Function:** Defines buttons in an alert dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,11 +217,11 @@ public class AlertDialogButtonOptions <: AlertDialogButtonBaseOptions {
 public var primary: Bool
 ```
 
-**Function:** Determines whether the button responds to the Enter key when the dialog is focused and no tab navigation has occurred. Only one button can have this field set to true among multiple buttons; otherwise, none will respond. Multiple dialogs can automatically focus and respond sequentially. Does not take effect when defaultFocus is true.
+**Function:** Determines whether the button responds to the Enter key by default when the dialog is focused and no tab key navigation has occurred. For multiple buttons, only one button can have this field set to true; otherwise, none will respond. Nested dialogs can automatically focus and respond continuously. Does not take effect when defaultFocus is true.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-Write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -412,7 +242,7 @@ public init(
 )
 ```
 
-**Function:** Defines a button in an alert dialog.
+**Function:** Defines buttons in an alert dialog.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,16 +250,18 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| enabled | Bool | No | true | **Named parameter.** Determines whether the button responds to clicks. |
-| defaultFocus | Bool | No | false | **Named parameter.** Sets whether the button is the default focus. |
-| style | [DialogButtonStyle](<font color="red" face="bold">please add link</font>) | No | DialogButtonStyle.Default | **Named parameter.** Sets the style of the button. |
-| value | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Text content of the button. |
-| fontColor | ?[ResourceColor](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Text color of the button. |
-| backgroundColor | ?[ResourceColor](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Background color of the button. |
-| action | [VoidCallback](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Callback when the button is selected. |
-| primary | Bool | No | false | **Named parameter.** Determines whether the button responds to the Enter key when the dialog is focused and no tab navigation has occurred. Only one button can have this field set to true among multiple buttons; otherwise, none will respond. Multiple dialogs can automatically focus and respond sequentially. Does not take effect when defaultFocus is true. |### class AlertDialogParam
+|enabled|Bool|No|true| **Named parameter.** Determines whether the button responds to clicks. |
+|defaultFocus|Bool|No|false| **Named parameter.** Sets whether the button is the default focus. |
+|style|DialogButtonStyle|No|DialogButtonStyle.Default| **Named parameter.** Sets the style of the button. |
+|value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|Yes|-| **Named parameter.** Text content of the button. |
+|fontColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Text color of the button. |
+|backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Background color of the button. |
+|action|VoidCallback|Yes|-| **Named parameter.** Callback when the button is selected. |
+|primary|Bool|No|false| **Named parameter.** Determines whether the button responds to the Enter key by default when the dialog is focused and no tab key navigation has occurred. For multiple buttons, only one button can have this field set to true; otherwise, none will respond. Nested dialogs can automatically focus and respond continuously. Does not take effect when defaultFocus is true.|
+
+### class AlertDialogParam
 
 ```cangjie
 public open class AlertDialogParam {
@@ -454,6 +286,7 @@ public open class AlertDialogParam {
     public var borderWidth: Length
     public var borderColor: ResourceColor
     public var borderStyle: EdgeStyles
+    public var shadow: ShadowOptions
     public var textStyle: WordBreak
     public init(
         title!: ResourceStr = "",
@@ -478,6 +311,7 @@ public open class AlertDialogParam {
         borderWidth!: Length = 0,
         borderColor!: ResourceColor = Color.Black,
         borderStyle!: EdgeStyles = EdgeStyles(),
+        shadow!: ShadowOptions = ShadowOptions(radius: 0.0),
         textStyle!: WordBreak = WordBreak.BreakAll
     )
 }
@@ -497,9 +331,9 @@ public var alignment: DialogAlignment
 
 **Function:** Vertical alignment of the dialog.
 
-**Type:** [DialogAlignment](<font color="red" face="bold">please add link</font>)
+**Type:** DialogAlignment
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -511,11 +345,11 @@ public var alignment: DialogAlignment
 public var autoCancel: Bool
 ```
 
-**Function:** Whether to close the dialog when clicking the mask layer.
+**Function:** Determines whether the dialog closes when the mask layer is clicked.
 
 **Type:** Bool
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -527,11 +361,11 @@ public var autoCancel: Bool
 public var backgroundBlurStyle: BlurStyle
 ```
 
-**Function:** Blur material of the dialog background panel.
+**Function:** Blur material for the dialog's background panel.
 
-**Type:** [BlurStyle](<font color="red" face="bold">please add link</font>)
+**Type:** [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -543,11 +377,11 @@ public var backgroundBlurStyle: BlurStyle
 public var backgroundColor: ResourceColor
 ```
 
-**Function:** Background color of the dialog panel.
+**Function:** Background color of the dialog.
 
-**Type:** [ResourceColor](<font color="red" face="bold">please add link</font>)
+**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -559,11 +393,11 @@ public var backgroundColor: ResourceColor
 public var borderColor: ResourceColor
 ```
 
-**Function:** Sets the border color of the dialog background panel. Must be used together with the borderWidth property.
+**Function:** Sets the border color of the dialog's background panel. If using borderColor, it must be used together with borderWidth.
 
-**Type:** [ResourceColor](<font color="red" face="bold">please add link</font>)
+**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -575,11 +409,11 @@ public var borderColor: ResourceColor
 public var borderStyle: EdgeStyles
 ```
 
-**Function:** Sets the border style of the dialog background panel. Must be used together with the borderWidth property.
+**Function:** Sets the border style of the dialog's background panel. If using borderStyle, it must be used together with borderWidth.
 
-**Type:** [EdgeStyles](<font color="red" face="bold">please add link</font>)
+**Type:** [EdgeStyles](./cj-common-types.md#class-edgestyles)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -591,11 +425,11 @@ public var borderStyle: EdgeStyles
 public var borderWidth: Length
 ```
 
-**Function:** Sets the border width of the dialog background panel.
+**Function:** Sets the border width of the dialog's background panel.
 
-**Type:** [Length](<font color="red" face="bold">please add link</font>)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -609,9 +443,9 @@ public var cancel: VoidCallback
 
 **Function:** Callback when the dialog is closed by clicking the mask layer.
 
-**Type:** [VoidCallback](<font color="red" face="bold">please add link</font>)
+**Type:** VoidCallback
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,11 +457,11 @@ public var cancel: VoidCallback
 public var cornerRadius: BorderRadiuses
 ```
 
-**Function:** Sets the corner radius of the background panel. Can set radius for each corner separately.
+**Function:** Sets the corner radius of the background panel. Can set the radius for each of the four corners separately.
 
-**Type:** [BorderRadiuses](<font color="red" face="bold">please add link</font>)
+**Type:** [BorderRadiuses](./cj-common-types.md#class-borderradiuses)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -639,11 +473,11 @@ public var cornerRadius: BorderRadiuses
 public var gridCount: UInt32
 ```
 
-**Function:** Number of grid columns occupied by the dialog container width.
+**Function:** Number of grid columns occupied by the dialog container's width.
 
 **Type:** UInt32
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -655,11 +489,11 @@ public var gridCount: UInt32
 public var height:?Length
 ```
 
-**Function:** Sets the height of the dialog background panel.
+**Function:** Sets the height of the dialog's background panel.
 
-**Type:** ?[Length](<font color="red" face="bold">please add link</font>)
+**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -671,11 +505,11 @@ public var height:?Length
 public var isModal: Bool
 ```
 
-**Function:** Whether the dialog is a modal window. Modal windows have a mask layer, non-modal windows don't.
+**Function:** Determines whether the dialog is a modal window. Modal windows have a mask layer; non-modal windows do not.
 
 **Type:** Bool
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -687,11 +521,11 @@ public var isModal: Bool
 public var maskRect: Rectangle
 ```
 
-**Function:** Mask layer area of the dialog. Events within this area are not passed through, while events outside are.
+**Function:** Mask layer area of the dialog. Events within the mask layer area are not passed through; events outside are passed through.
 
-**Type:** [Rectangle](<font color="red" face="bold">please add link</font>)
+**Type:** [Rectangle](./cj-common-types.md#class-rectangle>)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -705,9 +539,9 @@ public var message: ResourceStr
 
 **Function:** Content of the dialog.
 
-**Type:** [ResourceStr](<font color="red" face="bold">please add link</font>)
+**Type:** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -721,9 +555,9 @@ public var offset: Offset
 
 **Function:** Offset of the dialog relative to the alignment position.
 
-**Type:** [Offset](<font color="red" face="bold">please add link</font>)
+**Type:** Offset
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -737,9 +571,9 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 
 **Function:** Interactive close callback function.
 
-**Type:** ?[Callback](<font color="red" face="bold">please add link</font>)\<[DismissDialogAction](<font color="red" face="bold">please add link</font>),Unit>
+**Type:** ?Callback\<DismissDialogAction,Unit>
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -751,11 +585,11 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 public var showInSubWindow: Bool
 ```
 
-**Function:** Whether to display this dialog in a sub-window when it needs to appear outside the main window.
+**Function:** Determines whether the dialog is displayed in a sub-window when it needs to appear outside the main window.
 
 **Type:** Bool
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -769,9 +603,25 @@ public var subtitle: ResourceStr
 
 **Function:** Subtitle of the dialog.
 
-**Type:** [ResourceStr](<font color="red" face="bold">please add link</font>)
+**Type:** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
-**Access:** Read-write
+**Read-Write Permission:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var shadow
+
+```cangjie
+public var shadow: ShadowOptions
+```
+
+**Function:** Sets the shadow of the dialog's background panel.
+
+**Type:** ?[ShadowOptions](./cj-text-input-text.md#class-shadowoptions)
+
+**Read-Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -783,121 +633,11 @@ public var subtitle: ResourceStr
 public var textStyle: WordBreak
 ```
 
-**Function:** Sets the text style of the dialog message content.
+**Function:** Sets the text style of the dialog's message content.
 
-**Type:** [WordBreak](<font color="red" face="bold">please add link</font>)
+**Type:** WordBreak
 
-**Access:** Read-write
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-#### var title
-
-```cangjie
-public var title: ResourceStr
-```
-
-**Function:** Title of the dialog.
-
-**Type:** [ResourceStr](<font color="red" face="bold">please add link</font>)
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-#### var transition
-
-```cangjie
-public var transition:?TransitionEffect
-```
-
-**Function:** Sets the transition effect when the dialog appears and exits.
-
-**Type:** ?[TransitionEffect](<font color="red" face="bold">please add link</font>)
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-#### var width
-
-```cangjie
-public var width:?Length
-```
-
-**Function:** Sets the width of the dialog background panel.
-
-**Type:** ?[Length](<font color="red" face="bold">please add link</font>)
-
-**Access:** Read-write
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-#### init(ResourceStr, ResourceStr, ResourceStr, Bool, VoidCallback, DialogAlignment, Offset, UInt32, Rectangle, Bool, Bool, ResourceColor, BlurStyle, ?Callback\<DismissDialogAction,Unit>, BorderRadiuses, ?TransitionEffect, ?Length, ?Length, Length, ResourceColor, EdgeStyles, WordBreak)
-
-```cangjie
-public init(
-    title!: ResourceStr = "",
-    subtitle!:ResourceStr = "",
-    message!: ResourceStr,
-    autoCancel!: Bool = true,
-    cancel!: VoidCallback = {=>},
-    alignment!: DialogAlignment = DialogAlignment.Default,
-    offset!: Offset = Offset(0, 0),
-    gridCount!: UInt32 = 4,
-    maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
-    showInSubWindow!: Bool = false,
-    isModal!: Bool = true,
-    backgroundColor!: ResourceColor = Color.Transparent,
-    backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
-    onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
-    cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
-        bottomRight: 32.vp),
-    transition!: ?TransitionEffect = None,
-    width!: ?Length = None,
-    height!: ?Length = None,
-    borderWidth!: Length = 0,
-    borderColor!: ResourceColor = Color.Black,
-    borderStyle!: EdgeStyles = EdgeStyles(),
-    textStyle!: WordBreak = WordBreak.BreakAll
-)
-```
-
-**Function:** Defines an alert dialog.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| title | [ResourceStr](<font color="red" face="bold">please add link</font>) | No | "" | **Named parameter.** Title of the dialog. |
-| subtitle | [ResourceStr](<font color="red" face="bold">please add link</font>) | No | "" | **Named parameter.** Subtitle of the dialog. |
-| message | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | Content of the dialog. |
-| autoCancel | Bool | No | true | **Named parameter.** Whether to close the dialog when clicking the mask layer. true means close, false means don't close. |
-| cancel | [VoidCallback](<font color="red" face="bold">please add link</font>) | No | { => } | **Named parameter.** Callback when the dialog is closed by clicking the mask layer. |
-| alignment | [DialogAlignment](<font color="red" face="bold">please add link</font>) | No | DialogAlignment.Default | **Named parameter.** Vertical alignment of the dialog. |
-| offset | [Offset](<font color="red" face="bold">please add link</font>) | No | Offset(0, 0) | **Named parameter.** Offset of the dialog relative to the alignment position. |
-| gridCount | UInt32 | No | 4 | **Named parameter.** Number of grid columns occupied by the dialog container width. |
-| maskRect | [Rectangle](<font color="red" face="bold">please add link</font>) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within this area are not passed through, while events outside are.<br/>**Note:**<br/>maskRect doesn't take effect when showInSubWindow is true. |
-| showInSubWindow | Bool | No | false | **Named parameter.** Whether to display this dialog in a sub-window when it needs to appear outside the main window.<br/>Default: false, dialog appears within the application, not in an independent sub-window.<br/>**Note:** Dialogs with showInSubWindow=true cannot trigger another dialog with showInSubWindow=true. |
-| isModal | Bool | No | true | **Named parameter.** Whether the dialog is a modal window. Modal windows have a mask layer, non-modal windows don't.<br/>Default: true, dialog has a mask layer. |
-| backgroundColor | [ResourceColor](<font color="red" face="bold">please add link</font>) | No | Color.Transparent | **Named parameter.** Background color of the dialog panel.<br/>**Note:** <br/>When backgroundColor is set to a non-transparent color, backgroundBlurStyle should be set to BlurStyle.NONE, otherwise the color display may not meet expectations. |
-| backgroundBlurStyle | [BlurStyle](<font color="red" face="bold">please add link</font>) | No | BlurStyle.ComponentUltraThick | **Named parameter.** Blur material of the dialog background panel.<br/>**Note:** <br/>Set to BlurStyle.NONE to disable background blur. When backgroundBlurStyle is set to a non-NONE value, backgroundColor should not be set, otherwise the color display may not meet expectations. |
-| onWillDismiss | ?[Callback](<font color="red" face="bold">please add link</font>)\<[DismissDialogAction](<font color="red" face="bold">please add link</font>),Unit> | No | None | **Named parameter.** Interactive close callback function.<br/>**Note:**<br/>1. When users perform actions like clicking the mask layer to close, swiping left/right, pressing back button, or ESC key to close, if this callback is registered, the dialog won't close immediately. The callback can get the operation type that triggered the close attempt through reason, and decide whether to allow closing based on the reason. Currently, the reason returned by this component doesn't support the CLOSE_BUTTON enum value.<br/>2. The onWillDismiss callback cannot intercept another onWillDismiss callback. |
-| cornerRadius | [BorderRadiuses](<font color="red" face="bold">please add link</font>) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | **Named parameter.** Sets the corner radius of the background panel.<br />Can set radius for each corner separately.<br />The corner radius is limited by component dimensions, with a maximum value of half the component's width or height. Negative values will be treated as default values.<br />Percentage parameter: Sets the dialog's corner radius as a percentage of the parent dialog's width and height.<br/>**Note:**<br/>When cornerRadius is of type LocalizedBorderRadiuses, it supports changing layout order based on language conventions. |
-| transition | ?[TransitionEffect](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Sets the transition effect when the dialog appears and exits.<br/>**Note:**<br/>1. If not set, default appear/exit animations are used.<br/>2. Pressing back during appear animation will interrupt it and execute exit animation, with the effect being a combination of both animations.<br/>3. Pressing back during exit animation won't interrupt it, the animation continues, and pressing back again exits the application. |
-| width | ?[Length](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Sets the width of the dialog background panel.<br />### class AlertDialogParamWithButtons
+**Read-Write Permission:** Readable### class AlertDialogParamWithButtons
 
 ```cangjie
 public class AlertDialogParamWithButtons <: AlertDialogParam {
@@ -949,7 +689,7 @@ public class AlertDialogParamWithButtons <: AlertDialogParam {
 public var primaryButton: AlertDialogButtonBaseOptions
 ```
 
-**Function:** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback for the primary confirmation button.
+**Function:** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback of the primary confirmation button.
 
 **Type:** [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions)
 
@@ -965,7 +705,7 @@ public var primaryButton: AlertDialogButtonBaseOptions
 public var secondaryButton: AlertDialogButtonBaseOptions
 ```
 
-**Function:** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback for the secondary confirmation button.
+**Function:** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback of the secondary confirmation button.
 
 **Type:** [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions)
 
@@ -1015,32 +755,32 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| title | [ResourceStr](<font color="red" face="bold">please add link</font>) | No | "" | **Named parameter.** Dialog title. |
-| subtitle | [ResourceStr](<font color="red" face="bold">please add link</font>) | No | "" | **Named parameter.** Dialog subtitle. |
-| message | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | Dialog content. |
-| autoCancel | Bool | No | true | **Named parameter.** Whether to close the dialog when clicking the mask layer. true: close; false: do not close. |
-| cancel | [VoidCallback](<font color="red" face="bold">please add link</font>) | No | { => } | **Named parameter.** Callback when the dialog is closed by clicking the mask layer. |
-| alignment | [DialogAlignment](<font color="red" face="bold">please add link</font>) | No | DialogAlignment.Default | **Named parameter.** Vertical alignment of the dialog. |
-| offset | [Offset](<font color="red" face="bold">please add link</font>) | No | Offset(0, 0) | **Named parameter.** Offset relative to the alignment position. |
+| title | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "" | **Named parameter.** Dialog title. |
+| subtitle | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "" | **Named parameter.** Dialog subtitle. |
+| message | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | Dialog content. |
+| autoCancel | Bool | No | true | **Named parameter.** Whether to close the dialog when clicking the mask layer. true means close the dialog, false means do not close the dialog. |
+| cancel | VoidCallback | No | { => } | **Named parameter.** Callback when the dialog is closed by clicking the mask layer. |
+| alignment | DialogAlignment | No | DialogAlignment.Default | **Named parameter.** Vertical alignment of the dialog. |
+| offset | Offset | No | Offset(0, 0) | **Named parameter.** Offset of the dialog relative to the alignment position. |
 | gridCount | UInt32 | No | 4 | **Named parameter.** Number of grid columns occupied by the dialog container width. |
-| maskRect | [Rectangle](<font color="red" face="bold">please add link</font>) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within this area are not transmitted, while events outside are transmitted.<br/>**Note:**<br/>maskRect does not take effect when showInSubWindow is true. |
-| showInSubWindow | Bool | No | false | **Named parameter.** Whether to display the dialog in a sub-window when it needs to be shown outside the main window.<br/>Default: false, the dialog is displayed within the application rather than in an independent sub-window.<br/>**Note:** A dialog with showInSubWindow=true cannot trigger another dialog with showInSubWindow=true. |
-| isModal | Bool | No | true | **Named parameter.** Whether the dialog is a modal window. Modal windows have a mask layer, while non-modal windows do not.<br/>Default: true, the dialog has a mask layer. |
-| backgroundColor | [ResourceColor](<font color="red" face="bold">please add link</font>) | No | Color.Transparent | **Named parameter.** Background color of the dialog.<br/>**Note:** <br/>When backgroundColor is set to a non-transparent color, backgroundBlurStyle must be set to BlurStyle.NONE; otherwise, the color display may not meet expectations. |
-| backgroundBlurStyle | [BlurStyle](<font color="red" face="bold">please add link</font>) | No | BlurStyle.ComponentUltraThick | **Named parameter.** Background blur effect of the dialog.<br/>**Note:** <br/>Set to BlurStyle.NONE to disable background blur. When backgroundBlurStyle is set to a non-NONE value, do not set backgroundColor; otherwise, the color display may not meet expectations. |
-| onWillDismiss | ?[Callback](<font color="red" face="bold">please add link</font>)\<[DismissDialogAction](<font color="red" face="bold">please add link</font>),Unit> | No | None | **Named parameter.** Interactive close callback function.<br/>**Note:**<br/>1. When the user performs operations such as clicking the mask layer to close, swiping left/right, pressing the back button, or pressing the ESC key to close the dialog, if this callback is registered, the dialog will not close immediately. The callback function can determine whether to close the dialog based on the operation type obtained from reason. Currently, the reason returned by this component does not support the CLOSE_BUTTON enumeration value.<br/>2. The onWillDismiss callback cannot be intercepted within the onWillDismiss callback. |
-| cornerRadius | [BorderRadiuses](<font color="red" face="bold">please add link</font>) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | **Named parameter.** Sets the corner radius of the background.<br />The radius of each corner can be set separately.<br />The corner radius is limited by the component size, with a maximum value of half the component width or height. Negative values are treated as default values.<br />Percentage parameter: Sets the dialog corner radius as a percentage of the parent dialog's width and height.<br/>**Note:**<br/>When the cornerRadius property type is LocalizedBorderRadiuses, it supports layout order changes based on language habits. |
-| transition | ?[TransitionEffect](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Sets the transition effect for dialog display and exit.<br/>**Note:**<br/>1. If not set, the default show/exit animation is used.<br/>2. Pressing the back key during the show animation interrupts the show animation and executes the exit animation, with the effect being a combination of the show and exit animation curves.<br/>3. Pressing the back key during the exit animation does not interrupt the exit animation, which continues to execute, and pressing the back key again exits the application. |
-| width | ?[Length](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Sets the width of the dialog background.<br />**Note:**<br>- Default maximum dialog width: None.<br />- Percentage parameter: The reference width is the window width, which can be adjusted up or down. |
-| height | ?[Length](<font color="red" face="bold">please add link</font>) | No | None | **Named parameter.** Sets the height of the dialog background.<br />**Note:**<br />- Default maximum dialog height: None.<br />- Percentage parameter: The reference height is (window height - safe area), which can be adjusted up or down. |
-| borderWidth | [Length](<font color="red" face="bold">please add link</font>) | No | 0 | **Named parameter.** Sets the width of each border separately.<br />Percentage parameter: Sets the dialog border width as a percentage of the parent dialog's width.<br />If the left/right borders exceed the dialog width or the top/bottom borders exceed the dialog height, the display may not meet expectations.<br/>**Note:**<br/>When the borderWidth property type is LocalizedEdgeWidths, it supports layout order changes based on language habits. |
-| borderColor | [ResourceColor](<font color="red" face="bold">please add link</font>) | No | Color.Black | **Named parameter.** Sets the border color of the dialog background.<br/>The borderColor property must be used together with the borderWidth property.<br/>**Note:**<br/>When the borderColor property type is LocalizedEdgeColors, it supports layout order changes based on language habits. |
-| borderStyle | [EdgeStyles](<font color="red" face="bold">please add link</font>) | No | EdgeStyles() | **Named parameter.** Sets the border style of the dialog background.<br/>The borderStyle property must be used together with the borderWidth property. |
-| textStyle | [WordBreak](<font color="red" face="bold">please add link</font>) | No | WordBreak.BreakAll | **Named parameter.** Sets the text style of the dialog message content. |
-| primaryButton | [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions) | Yes | - | **Named parameter.** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback for the primary confirmation button. |
-| secondaryButton | [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions) | Yes | - | **Named parameter.** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback for the secondary confirmation button. |
+| maskRect | [Rectangle](./cj-common-types.md#class-rectangle>) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within the mask layer area are not transmitted, while events outside the mask layer area are transmitted.<br/>**Note:**<br/>maskRect does not take effect when showInSubWindow is true. |
+| showInSubWindow | Bool | No | false | **Named parameter.** Whether to display the dialog in a sub-window when it needs to be displayed outside the main window.<br/>Initial value: false, the dialog is displayed within the application, not in an independent sub-window.<br/>**Note:** A dialog with showInSubWindow set to true cannot trigger another dialog with showInSubWindow set to true. |
+| isModal | Bool | No | true | **Named parameter.** Whether the dialog is a modal window. Modal windows have a mask layer, while non-modal windows do not.<br/>Initial value: true, the dialog has a mask layer. |
+| backgroundColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** Background color of the dialog.<br/>**Note:** <br/>When backgroundColor is set to a non-transparent color, backgroundBlurStyle should be set to BlurStyle.NONE; otherwise, the color display may not meet expectations. |
+| backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | **Named parameter.** Background blur material of the dialog.<br/>**Note:** <br/>Set to BlurStyle.NONE to disable background blur. When backgroundBlurStyle is set to a non-NONE value, do not set backgroundColor; otherwise, the color display may not meet expectations. |
+| onWillDismiss | ?Callback\<DismissDialogAction,Unit> | No | None | **Named parameter.** Interactive close callback function.<br/>**Note:**<br/>1. When the user performs operations like clicking the mask layer to close, swiping left/right, pressing the back key, or pressing the ESC key to close the dialog, if this callback is registered, the dialog will not close immediately. The callback function can determine whether to close the dialog based on the operation type obtained from reason. Currently, the reason returned by this component does not support the CLOSE_BUTTON enumeration value.<br/>2. In the onWillDismiss callback, onWillDismiss interception cannot be performed again. |
+| cornerRadius | [BorderRadiuses](./cj-common-types.md#class-borderradiuses) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | **Named parameter.** Sets the corner radius of the background panel.<br />The radius of each corner can be set separately.<br />The corner radius is limited by the component size, with the maximum value being half of the component width or height. Negative values are treated as default values.<br />Percentage parameter method: Sets the corner radius of the dialog as a percentage of the parent dialog's width and height.<br/>**Note:**<br/>When the cornerRadius property type is LocalizedBorderRadiuses, it supports changing the layout order according to language habits. |
+| transition | ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | None | **Named parameter.** Sets the transition effect for dialog display and exit.<br/>**Note:**<br/> 1. If not set, the default display/exit animation is used.<br/> 2. Pressing the back key during the display animation interrupts the display animation and executes the exit animation. The animation effect is a superposition of the display and exit animation curves.<br/> 3. Pressing the back key during the exit animation does not interrupt the exit animation. The exit animation continues, and pressing the back key again exits the application. |
+| width | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** Sets the width of the dialog background panel.<br />**Note:**<br>- Default maximum width of the dialog: None.<br />- Percentage parameter method: Adjusts the dialog width based on the window width. |
+| height | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** Sets the height of the dialog background panel.<br />**Note:**<br />- Default maximum height of the dialog: None.<br />- Percentage parameter method: Adjusts the dialog height based on (window height - safe area). |
+| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Sets the width of each border separately.<br />Percentage parameter method: Sets the border width of the dialog as a percentage of the parent dialog's width.<br />When the left and right borders exceed the dialog width, or the top and bottom borders exceed the dialog height, the display may not meet expectations.<br/>**Note:**<br/>When the borderWidth property type is LocalizedEdgeWidths, it supports changing the layout order according to language habits. |
+| borderColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Sets the border color of the dialog background panel.<br/> If the borderColor property is used, it must be used together with the borderWidth property.<br/>**Note:**<br/>When the borderColor property type is LocalizedEdgeColors, it supports changing the layout order according to language habits. |
+| borderStyle | [EdgeStyles](./cj-common-types.md#class-edgestyles) | No | EdgeStyles() | **Named parameter.** Sets the border style of the dialog background panel.<br/>If the borderStyle property is used, it must be used together with the borderWidth property. |
+| textStyle | WordBreak | No | WordBreak.BreakAll | **Named parameter.** Sets the text style of the dialog message content. |
+| primaryButton | [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions) | Yes | - | **Named parameter.** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback of the primary confirmation button. |
+| secondaryButton | [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions) | Yes | - | **Named parameter.** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback of the secondary confirmation button. |
 
 ### class AlertDialogParamWithConfirm
 
@@ -1056,9 +796,104 @@ public class AlertDialogParamWithConfirm <: AlertDialogParam {
         alignment!: DialogAlignment = DialogAlignment.Default,
         offset!: Offset = Offset(0, 0),
         gridCount!: UInt32 = 4,
-        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 极抱歉，我还没有学会回答这个问题。如果你有其他问题，我非常乐意为你提供帮助。## Sample Code
+        maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+        showInSubWindow!: Bool = false,
+        isModal!: Bool = true,
+        backgroundColor!: ResourceColor = Color.Transparent,
+        backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+        onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
+        cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+            bottomRight: 32.vp),
+        transition!: ?TransitionEffect = None,
+        width!: ?Length = None,
+        height!: ?Length = None,
+        borderWidth!: Length = 0,
+        borderColor!: ResourceColor = Color.Black,
+        borderStyle!: EdgeStyles = EdgeStyles(),
+        textStyle!: WordBreak = WordBreak.BreakAll,
+        confirm!: AlertDialogButtonBaseOptions = AlertDialogButtonOptions(value: "", action: {=>})
+    )
+}
+```
 
-### Example 1 (Popup with Multiple Buttons)
+**Function:** Defines an alert dialog with a confirmation button.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parent Type:**
+
+- [AlertDialogParam](#class-alertdialogparam)
+
+#### var confirm
+
+```cangjie
+public var confirm: AlertDialogButtonBaseOptions
+```
+
+**Function:** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback of the confirmation button.
+
+**Type:** [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions)
+
+**Access:** Read-write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(ResourceStr, ResourceStr, ResourceStr, Bool, VoidCallback, DialogAlignment, Offset, UInt32, Rectangle, Bool, Bool, ResourceColor, BlurStyle, ?Callback\<DismissDialogAction,Unit>, BorderRadiuses, ?TransitionEffect, ?Length, ?Length, Length, ResourceColor, EdgeStyles, WordBreak, AlertDialogButtonBaseOptions)
+
+```cangjie
+public init(
+    title!: ResourceStr = "",
+    subtitle!:ResourceStr = "",
+    message!: ResourceStr,
+    autoCancel!: Bool = true,
+    cancel!: VoidCallback = {=>},
+    alignment!: DialogAlignment = DialogAlignment.Default,
+    offset!: Offset = Offset(0, 0),
+    gridCount!: UInt32 = 4,
+    maskRect!: Rectangle = Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent),
+    showInSubWindow!: Bool = false,
+    isModal!: Bool = true,
+    backgroundColor!: ResourceColor = Color.Transparent,
+    backgroundBlurStyle!: BlurStyle = BlurStyle.ComponentUltraThick,
+    onWillDismiss!: ?Callback<DismissDialogAction, Unit> = None,
+    cornerRadius!: BorderRadiuses = BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp,
+        bottomRight: 32.vp),
+    transition!: ?TransitionEffect = None,
+    width!: ?Length = None,
+    height!: ?Length = None,
+    borderWidth!: Length = 0,
+    borderColor!: ResourceColor = Color.Black,
+    borderStyle!: EdgeStyles = EdgeStyles(),
+    textStyle!: WordBreak = WordBreak.BreakAll,
+    confirm!: AlertDialogButtonBaseOptions = AlertDialogButtonOptions(value: "", action: {=>})
+)
+```
+
+**Function:** Defines an alert dialog with a confirmation button.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| title | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "" | **Named parameter.** Dialog title. |
+| subtitle | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "" | **Named parameter.** Dialog subtitle. |
+| message | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | Dialog content. |
+| autoCancel | Bool | No | true | **Named parameter.** Whether to close the dialog when clicking the mask layer. true means close the dialog, false means do not close the dialog. |
+| cancel | VoidCallback | No | { => } | **Named parameter.** Callback when the dialog is closed by clicking the mask layer. |
+| alignment | DialogAlignment | No | DialogAlignment.Default | **Named parameter.** Vertical alignment of the dialog. |
+| offset | Offset | No | Offset(0, 0) | **Named parameter.** Offset of the dialog relative to the alignment position. |
+| gridCount | UInt32 | No | 4 | **Named parameter.** Number of grid columns occupied by the dialog container width. |
+| maskRect | [Rectangle](./cj-common-types.md#class-rectangle>) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within the mask layer area are not transmitted, while events outside## Sample Code
+
+### Example 1 (Dialog with Multiple Buttons)
 
 <!-- run -->
 
@@ -1068,16 +903,16 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(5.vp) {
+        Column(space:5.vp) {
             Button("one button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
-                        AlertDialogParamWithConfirm("text",
+                .onClick({ evt =>
+                        AlertDialogParamWithConfirm(message:"text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1091,13 +926,12 @@ class EntryView {
                                 }
                             },
                             confirm: AlertDialogButtonOptions(value: "button",
-                                action: {=> Hilog.info(0, "AppLogCj", "Button-clicking callback")})))
+                                action: {=> Hilog.info(0, "AppLogCj", "Button-clicking callback")}))
                 })
             .backgroundColor(0x317aff)
             Button("two button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
-                        AlertDialogParamWithButtons("text",
+                .onClick({ evt =>
+                        AlertDialogParamWithButtons(message: "text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1114,15 +948,14 @@ class EntryView {
                             primaryButton: AlertDialogButtonOptions(value: "Cancel",
                                 action: {=> Hilog.info(0, "AppLogCj", "Callback when second button is clicked")}),
                             secondaryButton: AlertDialogButtonOptions(enabled: true, defaultFocus: true,
-                                style: DialogButtonStyle.HIGHLIGHT, value: "OK",
-                                action: {=> Hilog.info(0, "AppLogCj", "Callback when second button is clicked")})))
+                                style: DialogButtonStyle.Highlight, value: "OK",
+                                action: {=> Hilog.info(0, "AppLogCj", "Callback when second button is clicked")}))
                 })
             .backgroundColor(0x317aff)
             Button("three button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
+                .onClick({ evt =>
                         AlertDialogParamWithOptions(
-                            "text",
+                            message: "text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1146,7 +979,6 @@ class EntryView {
                                     action: {=> Hilog.info(0, "AppLogCj", "Callback when button1 is clicked")})
                             ]
                         )
-                    )
                 })
                 .backgroundColor(0x317aff)
         }
@@ -1154,9 +986,9 @@ class EntryView {
 }
 ```
 
-![alertdialog1](<font color="red" face="bold">please add link</font>)
+!alertdialog1
 
-### Example 2 (Popup Displayable Outside Main Window)
+### Example 2 (Dialog That Can Pop Up Outside the Main Window)
 
 <!-- run -->
 
@@ -1166,17 +998,17 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(5.vp) {
+        Column(space: 5.vp) {
             Button("button dialog")
-                .onClick({ =>
-                    AlertDialog.show(
+                .onClick({ evt =>
                         AlertDialogParamWithOptions(
-                            "text",
+                            message: "text",
                             title: "title",
                             subtitle: "subtitle",
                             autoCancel: true,
@@ -1184,7 +1016,7 @@ class EntryView {
                             alignment: DialogAlignment.Center,
                             offset: Offset(0, -20),
                             showInSubWindow: true,
-                            buttonDirection: DialogButtonDirection.HORIZONTAL,
+                            buttonDirection: DialogButtonDirection.Horizontal,
                             gridCount: 4,
                             onWillDismiss: {
                                 dismissDialogAction: DismissDialogAction => match (dismissDialogAction.reason) {
@@ -1202,7 +1034,6 @@ class EntryView {
                                     action: {=> Hilog.info(0, "AppLogCj", "Callback when button1 is clicked")})
                             ]
                         )
-                    )
                 })
                 .backgroundColor(0x317aff)
         }
@@ -1211,59 +1042,4 @@ class EntryView {
 
 ```
 
-![alertdialog2](<font color="red" face="bold">please add link</font>)
-
-### Example 3 (Setting Popup Styles)
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Column(5.vp) {
-            Button("button dialog")
-                .onClick(
-                    {
-                        => AlertDialog.show(
-                            AlertDialogParamWithConfirm(
-                                "button dialog",
-                                title: "AlertDialog 1",
-                                autoCancel: true,
-                                cancel: {=> Hilog.info(0, "AppLogCj", "Closed callbacks")},
-                                alignment: DialogAlignment.Center,
-                                offset: Offset(0, -20),
-                                gridCount: 3,
-                                width: 300,
-                                height: 200,
-                                cornerRadius: BorderRadiuses(topLeft: 20, topRight: 20, bottomLeft: 20, bottomRight: 20),
-                                borderWidth: 1,
-                                borderStyle: EdgeStyle.DASHED,
-                                borderColor: Color.Blue,
-                                backgroundColor: Color.White,
-                                onWillDismiss: {
-                                    dismissDialogAction: DismissDialogAction => match (dismissDialogAction.reason) {
-                                        case PRESS_BACK => dismissDialogAction.dismiss()
-                                        case TOUCH_OUTSIDE => dismissDialogAction.dismiss()
-                                        case _ => ()
-                                    }
-                                },
-                                confirm: AlertDialogButtonOptions(value: "button",
-                                    action: {=> Hilog.info(0, "AppLogCj", "Button-clicking callback")})
-                            ), ActionSheetShadowOptions(20.0, color: Color.GREY, offsetX: 50.0, offsetY: 0.0)
-                        )
-                    })
-                .backgroundColor(0x317aff)
-        }
-    }
-}
-```
-
-![alertdialog3](<font color="red" face="bold">please add link</font>)
+!alertdialog2

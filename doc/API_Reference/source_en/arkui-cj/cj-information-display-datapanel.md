@@ -17,7 +17,7 @@ None
 ### init(Array\<Float64>, Float64, DataPanelType)
 
 ```cangjie
-public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.CircleType)
+public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.Circle)
 ```
 
 **Function:** Creates a data panel component.
@@ -31,10 +31,10 @@ public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPane
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | values | Array\<Float64> | Yes | - | **Named parameter.** List of data values, containing up to 9 data points. If more than 9 data points are provided, only the first 9 will be used. If a data value is less than 0, it will be set to 0. |
-| max | Float64 | No | 100.0 | **Named parameter.** \- If max > 0, it represents the maximum value of the data. <br> \- If max ≤ 0, max equals the sum of the values in the value array, displayed proportionally. |
-| panelType | [DataPanelType](./cj-common-types.md#enum-datapaneltype) | No | DataPanelType.CircleType | **Named parameter.** The type of the data panel (dynamic modification is not supported). |
+| max | Float64 | No | 100.0 | **Named parameter.** <br> - If max > 0, it represents the maximum value of the data. <br> - If max ≤ 0, max equals the sum of all values in the array, displayed proportionally. |
+| panelType | [DataPanelType](./cj-information-display-datapanel.md#enum-datapaneltype) | No | DataPanelType.Circle | **Named parameter.** The type of the data panel (dynamic modification is not supported). |
 
-## Common Attributes/Events
+## Common Attributes/Common Events
 
 Common Attributes: All supported.
 
@@ -74,7 +74,7 @@ public func strokeWidth(value: Length): This
 
 > **Note:**
 >
-> This attribute does not take effect when the data panel type is DataPanelType.LineType.
+> This attribute does not take effect when the data panel type is DataPanelType.Line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +84,7 @@ public func strokeWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the ring.<br>Initial value: 24.vp.<br>Unit: vp.<br>If a value less than 0 is set, the default value is displayed. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the ring.<br>Initial value: 24.vp.<br>Unit: vp.<br>If a value less than 0 is set, the default value will be displayed. |
 
 ### func trackBackgroundColor(ResourceColor)
 
@@ -120,7 +120,7 @@ public func trackShadow(value: DataPanelShadowOptions): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [DataPanelShadowOptions](#class-datapanelshadowoptions) | Yes | - | The shadow style.<br>If not set, shadows are disabled by default. |
+| value | [DataPanelShadowOptions](#class-datapanelshadowoptions) | Yes | - | The shadow style.<br>If not set, the shadow is disabled by default. |
 
 ### func valueColors(Array\<LinearGradient>)
 
@@ -128,7 +128,7 @@ public func trackShadow(value: DataPanelShadowOptions): This
 public func valueColors(value: Array<LinearGradient>): This
 ```
 
-**Function:** Sets the colors for each data segment.
+**Function:** Sets the colors of each data segment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +138,7 @@ public func valueColors(value: Array<LinearGradient>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[LinearGradient](#class-lineargradient)> | Yes | - | The colors for each data segment, where ResourceColor represents a solid color and LinearGradient represents a gradient color. |
+| value | Array\<[LinearGradient](#class-lineargradient)> | Yes | - | The colors of each data segment, where ResourceColor represents a solid color and LinearGradient represents a gradient color. |
 
 ## Basic Type Definitions
 
@@ -152,7 +152,7 @@ public class ColorStop {
 }
 ```
 
-**Function:** A color stop type used to describe gradient color stops.
+**Function:** The color stop type, used to describe gradient color stops.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +180,7 @@ public var color: ResourceColor
 public var offset: Length
 ```
 
-**Function:** The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if greater than 1, it is set to 1).
+**Function:** The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if the value is greater than 1, it is set to 1).
 
 **Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
@@ -207,7 +207,7 @@ public init(color: ResourceColor, offset: Length)
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color value. |
-| offset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if greater than 1, it is set to 1). |
+| offset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if the value is greater than 1, it is set to 1). |
 
 ### class DataPanelShadowOptions
 
@@ -218,7 +218,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 }
 ```
 
-**Function:** Shadow style.
+**Function:** The shadow style.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,7 +226,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 
 **Parent Type:**
 
-- [MultiShadowOptions](./cj-common-types.md#class-multishadowoptions)
+- [MultiShadowOptions](./cj-information-display-datapanel.md#class-multishadowoptions)
 
 #### var colors
 
@@ -301,7 +301,7 @@ public init(colorStops: Array<ColorStop>)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| colorStops | Array\<[ColorStop](#class-colorstop)> | Yes | - | Stores gradient colors and stops. |
+| colorStops | Array\<[ColorStop](#class-colorstop)> | Yes | - | Stores the gradient colors and stops. |
 
 #### init(ResourceColor)
 
@@ -331,7 +331,7 @@ public open class MultiShadowOptions {
 }
 ```
 
-**Function:** Multiple shadow options.
+**Function:** Multi-shadow options.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -345,7 +345,7 @@ public var offsetX: Length = 5.vp
 
 **Function:** Sets the horizontal offset of the shadow.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -361,7 +361,7 @@ public var offsetY: Length = 5.vp
 
 **Function:** Sets the vertical offset of the shadow.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -377,7 +377,7 @@ public var radius: Length = 20.vp
 
 **Function:** Sets the blur radius of the shadow.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -389,8 +389,8 @@ public var radius: Length = 20.vp
 
 ```cangjie
 public enum DataPanelType <: Equatable<DataPanelType> {
-    | CircleType
-    | LineType
+    | Circle
+    | Line
     | ...
 }
 ```
@@ -405,10 +405,10 @@ public enum DataPanelType <: Equatable<DataPanelType> {
 
 - Equatable\<DataPanelType>
 
-### CircleType
+### Circle
 
 ```cangjie
-CircleType
+Circle
 ```
 
 **Function:** A circular data panel.
@@ -417,10 +417,10 @@ CircleType
 
 **Initial Version:** 21
 
-### LineType
+### Line
 
 ```cangjie
-LineType
+Line
 ```
 
 **Function:** A linear data panel.
@@ -441,7 +441,7 @@ public operator func !=(other: DataPanelType): Bool
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [DataPanelType](#enum-datapaneltype) | Yes | - | The enum value to compare |
+| other | [DataPanelType](#enum-datapaneltype) | Yes | - | The enum value to compare. |
 
 **Return Value:**
 
@@ -461,7 +461,7 @@ public operator func ==(other: DataPanelType): Bool
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [DataPanelType](#enum-datapaneltype) | Yes | - | The enum value to compare |
+| other | [DataPanelType](#enum-datapaneltype) | Yes | - | The enum value to compare. |
 
 **Return Value:**
 
@@ -471,7 +471,7 @@ public operator func ==(other: DataPanelType): Bool
 
 ### Example 1 (Setting Data Panel Type)
 
-This example demonstrates how to set the type of a data panel using the `type` property.
+This example demonstrates how to set the type of a data panel using the `type` attribute.
 
 <!-- run -->
 
@@ -488,7 +488,7 @@ class EntryView {
         Column {
             Row() {
                 Stack() {
-                    DataPanel(values: [30.0], max: 100.0, panelType: DataPanelType.CircleType).width(168).height(168)
+                    DataPanel(values: [30.0], max: 100.0, panelType: DataPanelType.Circle).width(168).height(168)
                     Column() {
                         Text("30")
                             .fontSize(35)
@@ -507,7 +507,7 @@ class EntryView {
                         .position(x: 104.42, y: 78.17)
                 }.margin(right: 44)
                 Stack() {
-                    DataPanel(values: [50.0, 12.0, 8.0, 5.0], max: 100.0, panelType: DataPanelType.CircleType)
+                    DataPanel(values: [50.0, 12.0, 8.0, 5.0], max: 100.0, panelType: DataPanelType.Circle)
                         .width(168)
                         .height(168)
                     Column() {
@@ -529,7 +529,7 @@ class EntryView {
                 }
             }
                 .margin(bottom: 59)
-            DataPanel(values: this.valueArr, max: 100.0, panelType: DataPanelType.LineType)
+            DataPanel(values: this.valueArr, max: 100.0, panelType: DataPanelType.Line)
                 .width(300)
                 .height(10)
         }
@@ -576,7 +576,7 @@ class EntryView {
                 .textAlign(TextAlign.Start)
                 .width(100.percent)
                 .margin(top: 20, left: 20)
-            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.CircleType)
+            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.Circle)
                 .width(300)
                 .height(300).
                 valueColors(this.colorArray)
@@ -636,7 +636,7 @@ class EntryView {
                 .textAlign(TextAlign.Start)
                 .width(100.percent)
                 .margin(top: 20, left: 20)
-            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.CircleType)
+            DataPanel(values: this.values1, max: 100.0, panelType: DataPanelType.Circle)
                 .width(300)
                 .height(300).
                 valueColors(this.colorArray)

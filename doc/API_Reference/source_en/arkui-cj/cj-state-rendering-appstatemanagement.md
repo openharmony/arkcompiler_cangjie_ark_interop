@@ -1,6 +1,6 @@
 # Application-Level Variable State Management
 
-The state management module provides capabilities for application data storage, persistent data management, UIAbility data storage, and the environmental state required by applications.
+The state management module provides data storage capabilities for applications, persistent data management capabilities, UIAbility data storage capabilities, and the environmental state required by applications.
 
 ## Import Module
 
@@ -12,11 +12,11 @@ import warningwarning!.*
 
 AppStorage is a singleton created when the application starts. Its purpose is to provide centralized storage for application state data that is accessible at the application level. AppStorage retains its properties throughout the application's runtime. Properties are accessed via unique key string values.
 
-AppStorage can synchronize with UI components and can be accessed within application business logic.
+AppStorage can synchronize with UI components and can be accessed within the application's business logic.
 
 AppStorage supports state sharing among multiple UIAbility instances within the application's main thread.
 
-Properties in AppStorage can be bidirectionally synchronized. Data may exist locally or on remote devices and serves different functions, such as data persistence (see [PersistentStorage](#persistentstorage-persistent-ui-state-storage)). This data is implemented in business logic, decoupled from the UI. To use this data in the UI, @StorageProp and @StorageLink are required.
+Properties in AppStorage can be bidirectionally synchronized. Data may reside locally or on remote devices and serve different functions, such as data persistence (see [PersistentStorage](#class-persistentstorage)). This data is implemented in the business logic and decoupled from the UI. To use this data in the UI, @StorageProp and @StorageLink are required.
 
 ## class AppStorage
 
@@ -24,7 +24,7 @@ Properties in AppStorage can be bidirectionally synchronized. Data may exist loc
 public class AppStorage {}
 ```
 
-**Function:** Establishes a one-way property binding with the corresponding propName in AppStorage. If the given propName exists in AppStorage, returns the one-way bound data corresponding to the propName property in AppStorage. If propName does not exist in AppStorage, returns None. Modifications to one-way bound data will not be synchronized back to AppStorage.
+**Function:** Establishes a one-way property binding with the corresponding propName in AppStorage. If the given propName exists in AppStorage, it returns the one-way bound data corresponding to the propName in AppStorage. If the propName does not exist in AppStorage, it returns None. Modifications to the one-way bound data will not be synchronized back to AppStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +36,7 @@ public class AppStorage {}
 public static func `prop`<T>(propName: String): ?ObservedProperty<T>
 ```
 
-**Function:** Establishes a one-way property binding with the corresponding propName in AppStorage. If the given propName exists in AppStorage, returns the one-way bound data corresponding to the propName property in AppStorage. If propName does not exist in AppStorage, returns None. Modifications to one-way bound data will not be synchronized back to AppStorage.
+**Function:** Establishes a one-way property binding with the corresponding propName in AppStorage. If the given propName exists in AppStorage, it returns the one-way bound data corresponding to the propName in AppStorage. If the propName does not exist in AppStorage, it returns None. Modifications to the one-way bound data will not be synchronized back to AppStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ public static func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 | Type | Description |
 |:----|:----|
-| ?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | Returns the one-way bound data. If the corresponding property value does not exist in AppStorage, returns None. |
+| ?ObservedProperty<T> | Returns the one-way bound data. If the corresponding property value does not exist in AppStorage, returns None. |
 
 ### static func clear()
 
@@ -70,7 +70,7 @@ public static func clear(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | If there are no subscribers left for the properties in AppStorage, the deletion succeeds and returns true. Otherwise, returns false. |
+| Bool | Returns true if all properties in AppStorage have no subscribers and are successfully deleted. Otherwise, returns false. |
 
 ### static func delete(String)
 
@@ -78,7 +78,7 @@ public static func clear(): Bool
 public static func delete(propName: String): Bool
 ```
 
-**Function:** Deletes the property corresponding to propName in AppStorage. The prerequisite for deleting the property in AppStorage is that the property has no subscribers. If there are subscribers, returns false. If there are no subscribers, the deletion succeeds and returns true.
+**Function:** Deletes the property corresponding to propName in AppStorage. The prerequisite for deleting the property is that it has no subscribers. If there are subscribers, returns false. If there are no subscribers, the deletion succeeds and returns true.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +94,7 @@ public static func delete(propName: String): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | If the corresponding property exists in AppStorage and has no subscribers, the deletion succeeds and returns true. If the property does not exist or still has subscribers, returns false. |
+| Bool | Returns true if the corresponding property exists in AppStorage and has no subscribers, and the deletion succeeds. Returns false if the property does not exist or still has subscribers. |
 
 ### static func get\<T>(String)
 
@@ -118,7 +118,7 @@ public static func get<T>(propName: String): ?T
 
 | Type | Description |
 |:----|:----|
-| ?T | The property value corresponding to propName in AppStorage. If it does not exist, returns None. |
+| ?T | The property value corresponding to propName in AppStorage. Returns None if the property does not exist. |
 
 ### static func has(String)
 
@@ -160,7 +160,7 @@ public static func keys(): EquatableCollection<String>
 
 | Type | Description |
 |:----|:----|
-| [EquatableCollection](./cj-common-types.md#interface-equatablecollection) | All property names in AppStorage. |
+| EquatableCollection<String> | All property names in AppStorage. |
 
 ### static func link\<T>(String)
 
@@ -168,11 +168,11 @@ public static func keys(): EquatableCollection<String>
 public static func link<T>(propName: String): ?ObservedProperty<T>
 ```
 
-**Function:** If the given propName exists in the AppStorage instance, returns the bidirectional bound data corresponding to the propName property in AppStorage.
+**Function:** If the given propName exists in the AppStorage instance, returns the bidirectional bound data corresponding to the propName in AppStorage.
 
-Modifications to bidirectional bound data will be synchronized back to AppStorage, and AppStorage will propagate the changes to all data and Components bound to this propName.
+Modifications to the bidirectional bound data will be synchronized back to AppStorage, and AppStorage will propagate the changes to all data and Components bound to this propName.
 
-If propName does not exist in AppStorage, returns None.
+If the propName does not exist in AppStorage, returns None.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +188,7 @@ If propName does not exist in AppStorage, returns None.
 
 | Type | Description |
 |:----|:----|
-| ?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of Option\<ObservedProperty\<T>> representing the bidirectional bound data corresponding to the propName property in AppStorage. If the corresponding propName does not exist in AppStorage, returns None. |
+| ?ObservedProperty<T> | An instance of Option\<ObservedProperty\<T>>, representing the bidirectional bound data corresponding to the propName in AppStorage. Returns None if the propName does not exist in AppStorage. |
 
 ### static func set\<T>(String, T)
 
@@ -196,7 +196,7 @@ If propName does not exist in AppStorage, returns None.
 public static func set<T>(propName: String, newValue: T): Bool
 ```
 
-**Function:** Sets the value of the property corresponding to propName in AppStorage. If newValue is the same as the current value of the property corresponding to propName (i.e., no assignment is needed), the state variable will not notify the UI to refresh the property value.
+**Function:** Sets the value of the property corresponding to propName in AppStorage. If the newValue is the same as the current value of the property, no assignment is performed, and the state variable will not notify the UI to refresh the property value.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,7 +221,7 @@ public static func set<T>(propName: String, newValue: T): Bool
 public static func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T>
 ```
 
-**Function:** Similar to the link interface. If the given propName exists in AppStorage, returns the bidirectional bound data corresponding to the propName property. If it does not exist, creates and initializes the propName property in AppStorage using defaultValue and returns its bidirectional bound data.
+**Function:** Similar to the link interface. If the given propName exists in AppStorage, returns the bidirectional bound data corresponding to the propName. If it does not exist, creates and initializes the property in AppStorage using defaultValue and returns its bidirectional bound data.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,7 +238,7 @@ public static func setAndLink<T>(propName: String, defaultValue: T): ObservedPro
 
 | Type | Description |
 |:----|:----|
-| [ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of ObservedProperty\<T> representing the bidirectional bound data corresponding to the propName property in AppStorage. |
+| ObservedProperty<T> | An instance of ObservedProperty\<T>, representing the bidirectional bound data corresponding to the propName in AppStorage. |
 
 ### static func setAndProp\<T>(String, T)
 
@@ -246,7 +246,7 @@ public static func setAndLink<T>(propName: String, defaultValue: T): ObservedPro
 public static func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T>
 ```
 
-**Function:** Similar to the Prop interface. If the given propName exists in AppStorage, returns the one-way bound data corresponding to the propName property. If it does not exist, creates and initializes the propName property in AppStorage using defaultValue and returns its one-way bound data.
+**Function:** Similar to the Prop interface. If the given propName exists in AppStorage, returns the one-way bound data corresponding to the propName. If it does not exist, creates and initializes the property in AppStorage using defaultValue and returns its one-way bound data.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,13 +257,13 @@ public static func setAndProp<T>(propName: String, defaultValue: T): ObservedPro
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | propName | String | Yes | - | The property name in AppStorage. |
-| defaultValue | T | Yes | - | If propName does not exist in AppStorage, uses defaultValue to initialize the corresponding propName in AppStorage. defaultValue cannot be None. |
+| defaultValue | T | Yes | - | If propName does not exist in AppStorage, uses defaultValue to initialize the corresponding propName. defaultValue cannot be None. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of ObservedProperty\<T>. |
+| ObservedProperty<T> | An instance of ObservedProperty\<T>. |
 
 ### static func setOrCreate\<T>(String, T)
 
@@ -271,7 +271,7 @@ public static func setAndProp<T>(propName: String, defaultValue: T): ObservedPro
 public static func setOrCreate<T>(propName: String, newValue: T): Unit
 ```
 
-**Function:** If propName already exists in AppStorage and newValue differs from the current value of the property corresponding to propName, sets the property value to newValue. Otherwise, the state variable will not notify the UI to refresh the property value.
+**Function:** If propName already exists in AppStorage and newValue differs from the current property value, sets the property value to newValue. Otherwise, the state variable will not notify the UI to refresh the property value.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,7 +308,7 @@ public static func size(): Int64
 public class Environment {}
 ```
 
-**Function:** Stores the built-in environment variable key of Environment into AppStorage. If the system does not find the value of the environment variable key, uses the default value value. Returns true if the storage succeeds. If the corresponding key already exists in AppStorage, returns false.
+**Function:** Stores the built-in environment variable key of Environment into AppStorage. If the system does not find the value of the environment variable key, uses the default value value. Returns true if the storage succeeds. If the key already exists in AppStorage, returns false.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,7 +320,7 @@ public class Environment {}
 public static func aboutToBeDeleted(): Unit
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Cancels the one-way or two-way synchronization relationship between the SubscribedAbstractProperty instance and AppStorage/LocalStorage and invalidates the SubscribedAbstractProperty instance. After calling this method, the SubscribedAbstractProperty instance can no longer be used to call set or get methods.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,11 +332,11 @@ public static func aboutToBeDeleted(): Unit
 public static func envProp<T>(key: String, defaultValue: T): Bool
 ```
 
-**Function:** Stores the built-in environment variable key of Environment into AppStorage. If the system does not find the value of the environment variable key, uses the default value value. Returns true if the storage succeeds. If the corresponding key already exists in AppStorage, returns false.
+**Function:** Stores the built-in environment variable key of Environment into AppStorage. If the system does not find the value of the environment variable key, uses the default value value. Returns true if the storage succeeds. If the key already exists in AppStorage, returns false.
 
 It is recommended to call this interface when the program starts.
 
-Using AppStorage to read environment variables without calling envProp is incorrect.
+Attempting to read environment variables via AppStorage without calling envProp is incorrect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,7 +353,7 @@ Using AppStorage to read environment variables without calling envProp is incorr
 
 | Type | Description |
 |:----|:----|
-| Bool | If the property corresponding to key exists in AppStorage, returns false. If it does not exist, creates the property in AppStorage using value as the default value and returns true. |
+| Bool | Returns false if the property corresponding to the key exists in AppStorage. Otherwise, creates the property in AppStorage using value as the default value and returns true. |
 
 ### static func keys()
 
@@ -361,7 +361,7 @@ Using AppStorage to read environment variables without calling envProp is incorr
 public static func keys(): Array<String>
 ```
 
-**Function:** Returns the collection of property keys for environment variables.
+**Function:** Returns the collection of environment variable property keys.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,11 +377,12 @@ public static func keys(): Array<String>
 
 ```cangjie
 public class LocalStorage {
+
     public init()
 }
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Page-level UI state storage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -404,7 +405,7 @@ public init()
 public func `prop`<T>(propName: String): ?ObservedProperty<T>
 ```
 
-**Function:** If the given propName exists in LocalStorage, returns the one-way bound data corresponding to the property in LocalStorage. If propName does not exist in LocalStorage, returns None. Modifications to the one-way bound data will not be synchronized back to LocalStorage.
+**Function:** If the given propName exists in LocalStorage, returns the one-way bound data corresponding to the propName attribute in LocalStorage. If propName does not exist in LocalStorage, returns None. Modifications to the one-way bound data will not be synchronized back to LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -414,13 +415,13 @@ public func `prop`<T>(propName: String): ?ObservedProperty<T>
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| ?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of ObservedProperty\<T>, representing the one-way bound data corresponding to the property in LocalStorage. If the propName does not exist in LocalStorage, returns None. |
+| ?ObservedProperty<T> | An instance of ObservedProperty\<T>, representing the one-way bound data corresponding to the propName attribute in LocalStorage. If the corresponding propName does not exist in LocalStorage, returns None. |
 
 ### func aboutToBeDeleted()
 
@@ -429,7 +430,7 @@ public func `prop`<T>(propName: String): ?ObservedProperty<T>
 public func aboutToBeDeleted(): Bool
 ```
 
-**Function:** Deletes all properties in LocalStorage. The deletion will only succeed if there are no subscribers left. If there are subscribers, the clear operation will not take effect and return false. If there are no subscribers, the deletion will succeed and return true.
+**Function:** Deletes all attributes in LocalStorage. The prerequisite for deleting all attributes is that there are no subscribers left. If subscribers exist, the clear operation will not take effect and returns false. If no subscribers exist, the deletion succeeds and returns true.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -439,7 +440,7 @@ public func aboutToBeDeleted(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if all properties in LocalStorage have no subscribers and are successfully deleted. Otherwise, returns false. |
+| Bool | If there are no subscribers left for the attributes in LocalStorage, the deletion succeeds and returns true. Otherwise, returns false. |
 
 ### func clear()
 
@@ -448,7 +449,7 @@ public func aboutToBeDeleted(): Bool
 public func clear(): Bool
 ```
 
-**Function:** Deletes all properties in LocalStorage. The deletion will only succeed if there are no subscribers left. If there are subscribers, the clear operation will not take effect and return false. If there are no subscribers, the deletion will succeed and return true.
+**Function:** Deletes all attributes in LocalStorage. The prerequisite for deleting all attributes is that there are no subscribers left. If subscribers exist, the clear operation will not take effect and returns false. If no subscribers exist, the deletion succeeds and returns true.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,7 +459,7 @@ public func clear(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if all properties in LocalStorage have no subscribers and are successfully deleted. Otherwise, returns false. |
+| Bool | If there are no subscribers left for the attributes in LocalStorage, the deletion succeeds and returns true. Otherwise, returns false. |
 
 ### func delete(String)
 
@@ -467,9 +468,9 @@ public func clear(): Bool
 public func delete(propName: String): Bool
 ```
 
-**Function:** Deletes the property corresponding to propName in LocalStorage. The deletion will only succeed if the property has no subscribers. If there are subscribers, it returns false. If there are no subscribers, the deletion succeeds and returns true.
+**Function:** Deletes the attribute corresponding to propName in LocalStorage. The prerequisite for deleting the attribute is that it has no subscribers. If subscribers exist, returns false. If no subscribers exist, the deletion succeeds and returns true.
 
-Subscribers include propName bound via interfaces like `link`, as well as `@LocalStorageLink["propName"]` and `@LocalStorageProp["propName"]`. If a custom component uses `@LocalStorageLink["propName"]`, `@LocalStorageProp["propName"]`, or an ObservedProperty instance (return type of the `link` interface) that still maintains a synchronization relationship with propName, the property cannot be deleted from LocalStorage.
+Subscribers of an attribute include propName bound by interfaces like link, as well as @LocalStorageLink["propName"] and @LocalStorageProp["propName"]. If custom components use @LocalStorageLink["propName"] and @LocalStorageProp["propName"] or ObservedProperty instances (return type of the link interface) still maintain a synchronization relationship with propName, the attribute cannot be deleted from LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -479,13 +480,13 @@ Subscribers include propName bound via interfaces like `link`, as well as `@Loca
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the property exists in LocalStorage and has no subscribers, and is successfully deleted. Returns false if the property does not exist or still has subscribers. |
+| Bool | If the corresponding attribute exists in LocalStorage and has no subscribers, the deletion succeeds and returns true. If the attribute does not exist or still has subscribers, returns false. |
 
 ### func get\<T>(String)
 
@@ -494,7 +495,7 @@ Subscribers include propName bound via interfaces like `link`, as well as `@Loca
 public func get<T>(propName: String): ?T
 ```
 
-**Function:** Retrieves the property value corresponding to propName in LocalStorage.
+**Function:** Retrieves the attribute value corresponding to propName in LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,13 +505,13 @@ public func get<T>(propName: String): ?T
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| ?T | The property value corresponding to propName in LocalStorage. Returns None if the property does not exist. |
+| ?T | The attribute value corresponding to propName in LocalStorage. If it does not exist, returns None. |
 
 ### func has(String)
 
@@ -519,7 +520,7 @@ public func get<T>(propName: String): ?T
 public func has(propName: String): Bool
 ```
 
-**Function:** Checks whether the property corresponding to propName exists in LocalStorage.
+**Function:** Determines whether the attribute corresponding to propName exists in LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -529,13 +530,13 @@ public func has(propName: String): Bool
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the property exists in LocalStorage. Otherwise, returns false. |
+| Bool | Returns true if the attribute corresponding to propName exists in LocalStorage. Otherwise, returns false. |
 
 ### func keys()
 
@@ -544,7 +545,7 @@ public func has(propName: String): Bool
 public func keys(): EquatableCollection<String>
 ```
 
-**Function:** Returns all property names in LocalStorage.
+**Function:** Returns all attribute names in LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -554,7 +555,7 @@ public func keys(): EquatableCollection<String>
 
 | Type | Description |
 |:----|:----|
-| [EquatableCollection](./cj-common-types.md#interface-equatablecollection) | All property names in LocalStorage. |
+| EquatableCollection<String> | All attribute names in LocalStorage. |
 
 ### func link\<T>(String)
 
@@ -563,9 +564,9 @@ public func keys(): EquatableCollection<String>
 public func link<T>(propName: String): ?ObservedProperty<T>
 ```
 
-**Function:** If the given propName exists in the LocalStorage instance, returns the two-way bound data corresponding to the property in LocalStorage.
+**Function:** If the given propName exists in the LocalStorage instance, returns the two-way bound data corresponding to the propName attribute in LocalStorage.
 
-Modifications to the two-way bound data will be synchronized back to LocalStorage, and LocalStorage will propagate the changes to all data and Components bound to this propName.
+Modifications to the two-way bound data will be synchronized back to LocalStorage, which will then propagate the changes to all data and Components bound to this propName.
 
 If propName does not exist in LocalStorage, returns None.
 
@@ -577,13 +578,13 @@ If propName does not exist in LocalStorage, returns None.
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| ?[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of Option\<ObservedProperty\<T>>, representing the two-way bound data corresponding to the property in LocalStorage. Returns None if the propName does not exist in LocalStorage. |
+| ?ObservedProperty<T> | An instance of Option\<ObservedProperty\<T>>, representing the two-way bound data corresponding to the propName attribute in LocalStorage. If the corresponding propName does not exist in LocalStorage, returns None. |
 
 ### func set\<T>(String, T)
 
@@ -592,7 +593,7 @@ If propName does not exist in LocalStorage, returns None.
 public func set<T>(propName: String, newValue: T): Bool
 ```
 
-**Function:** Sets the value of the property corresponding to propName in LocalStorage. If newValue is the same as the current value of the property, no assignment operation is performed, and the state variable will not trigger a UI refresh for the property.
+**Function:** Sets the value of the attribute corresponding to propName in LocalStorage. If the value of newValue is the same as the current value of the propName attribute, no assignment operation is performed, and the state variable will not notify the UI to refresh the value of the propName attribute.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -602,14 +603,14 @@ public func set<T>(propName: String, newValue: T): Bool
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
-| newValue | T | Yes | - | The property value. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
+| newValue | T | Yes | - | The attribute value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns false if the property does not exist in LocalStorage. Returns true if the setting is successful. |
+| Bool | Returns false if the attribute corresponding to propName does not exist in LocalStorage. Returns true if the setting succeeds. |
 
 ### func setAndLink\<T>(String, T)
 
@@ -618,7 +619,7 @@ public func set<T>(propName: String, newValue: T): Bool
 public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T>
 ```
 
-**Function:** Similar to the `link` interface. If the given propName exists in LocalStorage, returns the two-way bound data corresponding to the property. If it does not exist, creates and initializes the property in LocalStorage using defaultValue, then returns its two-way bound data.
+**Function:** Similar to the link interface. If the given propName exists in LocalStorage, returns the two-way bound data corresponding to the propName attribute. If it does not exist, uses defaultValue to create and initialize the propName attribute in LocalStorage and returns its two-way bound data.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -628,14 +629,14 @@ public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
-| defaultValue | T | Yes | - | If propName does not exist in LocalStorage, initializes the property with defaultValue. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
+| defaultValue | T | Yes | - | If propName does not exist in LocalStorage, uses defaultValue to initialize the corresponding propName in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of ObservedProperty\<T>, representing the two-way bound data corresponding to the property in LocalStorage. |
+| ObservedProperty<T> | An instance of ObservedProperty\<T>, representing the two-way bound data corresponding to the propName attribute in LocalStorage. |
 
 ### func setAndProp\<T>(String, T)
 
@@ -644,7 +645,7 @@ public func setAndLink<T>(propName: String, defaultValue: T): ObservedProperty<T
 public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T>
 ```
 
-**Function:** Similar to the `prop` interface. If propName exists in LocalStorage, returns the one-way bound data corresponding to the property. If it does not exist, creates and initializes the property in LocalStorage using defaultValue, then returns its one-way bound data.
+**Function:** Similar to the prop interface. If propName exists in LocalStorage, returns the one-way bound data corresponding to the propName attribute. If it does not exist, uses defaultValue to create and initialize the propName attribute in LocalStorage and returns its one-way bound data.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -654,14 +655,14 @@ public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
-| defaultValue | T | Yes | - | If propName does not exist in LocalStorage, initializes the property with defaultValue. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
+| defaultValue | T | Yes | - | If propName does not exist in LocalStorage, uses defaultValue to initialize the corresponding propName in LocalStorage. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty) | An instance of ObservedProperty\<T>, representing the one-way bound data corresponding to the property in LocalStorage. |
+| ObservedProperty<T> | An instance of ObservedProperty\<T>, representing the one-way bound data corresponding to the propName attribute in LocalStorage. |
 
 ### func setOrCreate\<T>(String, T)
 
@@ -670,7 +671,7 @@ public func setAndProp<T>(propName: String, defaultValue: T): ObservedProperty<T
 public func setOrCreate<T>(propName: String, newValue: T): Bool
 ```
 
-**Function:** If propName already exists in LocalStorage and newValue differs from the current property value, sets the property value to newValue. Otherwise, the state variable will not trigger a UI refresh for the property. If propName does not exist, creates the property with newValue as its value. `setOrCreate` can only create a single LocalStorage key-value pair. To create multiple key-value pairs, call this method multiple times.
+**Function:** If propName already exists in LocalStorage and newValue differs from the current value of the propName attribute, sets the value of the propName attribute to newValue. Otherwise, the state variable will not notify the UI to refresh the value of the propName attribute. If propName does not exist, creates the propName attribute with the value newValue. setOrCreate can only create a single LocalStorage key-value pair. To create multiple LocalStorage key-value pairs, call this method multiple times.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,14 +681,14 @@ public func setOrCreate<T>(propName: String, newValue: T): Bool
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorage. |
-| newValue | T | Yes | - | The property value. |
+| propName | String | Yes | - | The attribute name in LocalStorage. |
+| newValue | T | Yes | - | The attribute value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if propName exists in LocalStorage and its value is updated to newValue. If propName does not exist, creates the property with newValue and returns true. |
+| Bool | If propName exists in LocalStorage, updates its value to newValue and returns true. If propName does not exist in LocalStorage, creates propName and initializes its value to newValue, then returns true. |
 
 ### func size()
 
@@ -696,7 +697,7 @@ public func setOrCreate<T>(propName: String, newValue: T): Bool
 public func size(): Int64
 ```
 
-**Function:** Returns the number of properties in LocalStorage.
+**Function:** Returns the number of attributes in LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -706,7 +707,7 @@ public func size(): Int64
 
 | Type | Description |
 |:----|:----|
-| Int64 | The number of properties in LocalStorage. |
+| Int64 | The number of attributes in LocalStorage. |
 
 ## class PersistentStorage
 
@@ -714,7 +715,7 @@ public func size(): Int64
 public class PersistentStorage <: Observer {}
 ```
 
-**Function:** Deletes the property corresponding to the key from PersistentStorage.
+**Function:** Deletes the attribute corresponding to the key from PersistentStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -731,7 +732,7 @@ public class PersistentStorage <: Observer {}
 public static func deleteProp(key: String): Unit
 ```
 
-**Function:** Deletes the property corresponding to the key from PersistentStorage.
+**Function:** Deletes the attribute corresponding to the key from PersistentStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -741,7 +742,7 @@ public static func deleteProp(key: String): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| key | String | Yes | - | The property name in PersistentStorage. |
+| key | String | Yes | - | The attribute name in PersistentStorage. |
 
 ### static func keys()
 
@@ -750,7 +751,7 @@ public static func deleteProp(key: String): Unit
 public static func keys(): Array<String>
 ```
 
-**Function:** Returns a collection of all persistent property names.
+**Function:** Returns a collection of all persistent attribute names.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -760,7 +761,7 @@ public static func keys(): Array<String>
 
 | Type | Description |
 |:----|:----|
-| Array\<String> | A collection of all persistent property names. |
+| Array\<String> | Returns a collection of all persistent attribute names. |
 
 ### static func persistProp\<T>(String, T)
 
@@ -769,17 +770,17 @@ public static func keys(): Array<String>
 public static func persistProp<T>(key: String, defaultValue: T): Unit
 ```
 
-**Function:** Persists the property corresponding to the key in AppStorage to a file. This method is typically called before accessing AppStorage.
+**Function:** Persists the attribute corresponding to the key in AppStorage to a file. This method is typically called before accessing AppStorage.
 
-The type and value of the property are determined as follows:
+The order for determining the attribute type and value is as follows:
 
-1. If the key exists in the PersistentStorage file, creates the corresponding propName in AppStorage and initializes it with the property value found in PersistentStorage.
+1. If the attribute corresponding to the key exists in the PersistentStorage file, creates the corresponding propName in AppStorage and initializes it with the attribute value found in PersistentStorage.
 
-2. If the key is not found in PersistentStorage, searches for the key in AppStorage. If found, persists the property.
+2. If the attribute corresponding to the key is not found in the PersistentStorage file, searches for the key in AppStorage. If found, persists the attribute.
 
-3. If the key is not found in AppStorage either, creates the property in AppStorage, initializes it with defaultValue, and persists it.
+3. If the key is not found in AppStorage either, creates the attribute corresponding to the key in AppStorage, initializes it with defaultValue, and persists the attribute.
 
-According to this initialization flow, if the property exists in AppStorage, its value will override the value in the PersistentStorage file. Since AppStorage is in-memory data, this behavior may result in loss of persistence.
+According to the above initialization process, if the attribute exists in AppStorage, its value will be used, overriding the value in the PersistentStorage file. Since AppStorage is in-memory data, this behavior may result in loss of persistence capability.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -789,8 +790,8 @@ According to this initialization flow, if the property exists in AppStorage, its
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| key | String | Yes | - | The property name. |
-| defaultValue | T | Yes | - | The default value used for initialization if the property is not found in PersistentStorage or AppStorage. |
+| key | String | Yes | - | The attribute name. |
+| defaultValue | T | Yes | - | If the key is not found in PersistentStorage or AppStorage, uses the default value for initialization. |
 
 ### static func persistProps\<T>(Array\<(String,T)>)
 
@@ -799,7 +800,7 @@ According to this initialization flow, if the property exists in AppStorage, its
 public static func persistProps<T>(props: Array<(String, T)>): Unit
 ```
 
-**Function:** Similar to `persistProp`, but allows persisting multiple data entries at once, suitable for initialization during application startup.
+**Function:** Similar in behavior to persistProp, but allows persisting multiple data items at once, suitable for initialization during application startup.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -809,7 +810,7 @@ public static func persistProps<T>(props: Array<(String, T)>): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| props | Array\<(String,T)> | Yes | - | An array of persistent data, where each element is a tuple (key, defaultValue). |
+| props | Array\<(String,T)> | Yes | - | An array of persistent data, where each element is represented as a tuple (key, defaultValue). |
 
 ### func aboutToBeDeleted()
 
@@ -818,7 +819,7 @@ public static func persistProps<T>(props: Array<(String, T)>): Unit
 public func aboutToBeDeleted(): Unit
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Cancels the one/two-way synchronization relationship between the SubscribedAbstractProperty instance and AppStorage/LocalStorage, and invalidates the SubscribedAbstractProperty instance. After calling the aboutToBeDeleted method, the SubscribedAbstractProperty instance can no longer be used to call set or get methods.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -831,7 +832,7 @@ public func aboutToBeDeleted(): Unit
 public func id(): Int64
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Returns the attribute ID.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -841,7 +842,7 @@ public func id(): Int64
 
 | Type | Description |
 |:----|:----|
-| Int64 | <font color="red" face="bold">please add description</font> |
+| Int64 | The attribute ID. |
 
 ### func notifyRead(String)
 
@@ -850,7 +851,7 @@ public func id(): Int64
 public func notifyRead(_: String): Unit
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Reads the attribute name.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -860,7 +861,7 @@ public func notifyRead(_: String): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| _ | String | Yes | - | <font color="red" face="bold">please add description</font> |
+| _ | String | Yes | - | The attribute name. |
 
 ### func onStateUpdate(String, ArrayList\<Int64>)
 
@@ -869,7 +870,7 @@ public func notifyRead(_: String): Unit
 public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Updates the state.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -879,8 +880,8 @@ public func onStateUpdate(_: String, _: ArrayList<Int64>): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| _ | String | Yes | - | <font color="red" face="bold">please add description</font> |
-| _ | ArrayList\<Int64> | Yes | - | <font color="red" face="bold">please add description</font> |## enum ColorMode
+| _ | String | Yes | - | The attribute name. |
+| _ | ArrayList\<Int64> | Yes | - | The attribute list. |## enum ColorMode
 
 ```cangjie
 public enum ColorMode {
@@ -943,7 +944,7 @@ public enum LayoutDirection {
 Auto
 ```
 
-**Description:** <font color="red" face="bold">please add description</font>
+**Description:** Follow system settings.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 

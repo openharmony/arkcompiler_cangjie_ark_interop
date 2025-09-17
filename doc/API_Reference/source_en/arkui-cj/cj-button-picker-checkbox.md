@@ -25,8 +25,8 @@ public init(name!: String = "", group!: String = "", indicatorBuilder!: ?CustomB
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | name | String | No | "" | **Named parameter.** The name of the checkbox. |
-| group | String | No | "" | **Named parameter.** Specifies the name of the group to which the checkbox belongs (i.e., the name of the [CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)).<br/>**Note:**<br/>This parameter is irrelevant when not used in conjunction with the [CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup) component. |
-| indicatorBuilder | ?[CustomBuilder](./cj-common-types.md#type-custombuilder) | No | None | **Named parameter.** Configures the selected style of the checkbox as a custom UI description. The custom UI description is center-aligned with the Checkbox component. When indicatorBuilder is set to None, it defaults to the unset state. Use in combination with [@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
+| group | String | No | "" | **Named parameter.** Specifies the name of the group to which the checkbox belongs (i.e., the name of the [CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)).<br/>**Note:**<br/>This parameter is irrelevant when not used with the [CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup) component. |
+| indicatorBuilder | ?[CustomBuilder](./cj-common-types.md#type-custombuilder) | No | None | **Named parameter.** Configures the selected style of the checkbox as a custom UI description. The custom UI description is center-aligned with the Checkbox component. When set to None, it defaults to the unset state of indicatorBuilder. Use in conjunction with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
 
 ## Common Attributes/Common Events
 
@@ -52,7 +52,7 @@ public func select(value: Bool): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether the checkbox is selected.<br>Initial value: false<br>When true, the checkbox is selected. When false, the checkbox is not selected. |
+| value | Bool | Yes | - | Whether the checkbox is selected.<br>Initial value: false<br>When true, the checkbox is selected. When false, it is not selected. |
 
 ### func selectedColor(ResourceColor)
 
@@ -88,7 +88,7 @@ public func shape(value: CheckBoxShape): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [CheckBoxShape](./cj-common-types.md#enum-checkboxshape) | Yes | - | Toggles the shape of the CheckBox component, including circular and rounded square.<br>Initial value:<br>CheckBoxShape.CIRCLE. |
+| value | [CheckBoxShape](./cj-common-types.md#enum-checkboxshape) | Yes | - | Toggles the shape of the CheckBox component between circular and rounded square.<br>Initial value:<br>CheckBoxShape.Circle. |
 
 ## Component Events
 
@@ -110,6 +110,20 @@ public func onChange(callback: OnCheckboxChangeCallback): This
 |:---|:---|:---|:---|:---|
 | callback | [OnCheckboxChangeCallback](#type-oncheckboxchangecallback) | Yes | - | The callback triggered when the selected state changes.<br>\- When the Bool value is true, it indicates selected.<br>\- When the Bool value is false, it indicates not selected. |
 
+## Basic Type Definitions
+
+### type OnCheckboxChangeCallback
+
+```cangjie
+public type OnCheckboxChangeCallback = (Bool) -> Unit
+```
+
+**Function:** Type alias for (Bool) -> Unit.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 ## Example Code
 
 ### Example 1 (Setting Checkbox Shape)
@@ -123,26 +137,31 @@ This example demonstrates circular and rounded square checkbox styles by configu
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
 class EntryView {
     func build(){
-        Flex(FlexParams(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center)){
+        Flex(justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center){
             Checkbox(name: "checkbox1", group: "checkboxGroup")
             .select(true)
             .selectedColor(0xed6f21)
-            .shape(CheckBoxShape.CIRCLE)
+            .shape(CheckBoxShape.Circle)
             .onChange({value: Bool =>
-                BaseLog.info("Checkbox1 change is" + value.toString())
+                loggerInfo("Checkbox1 change is" + value.toString())
             })
             .size(width: 50.vp, height: 50.vp)
             Checkbox(name: "checkbox2", group: "checkboxGroup")
             .select(false)
             .selectedColor(0x39a2db)
-            .shape(CheckBoxShape.ROUNDED_SQUARE)
+            .shape(CheckBoxShape.RoundedSquare)
             .onChange({value: Bool =>
-                BaseLog.info("Checkbox2 change is" + value.toString())
+                loggerInfo("Checkbox2 change is" + value.toString())
             })
             .width(50.vp)
             .height(50.vp)
@@ -156,7 +175,7 @@ class EntryView {
 
 ### Example 2 (Custom Checkbox Style)
 
-This example demonstrates the functionality of custom checkbox styles.
+This example implements the functionality of custom checkbox styles.
 
 <!-- run -->
 
@@ -176,14 +195,14 @@ class EntryView {
             }
             Row() {
                 Checkbox(name: "mark")
-                    .mark(strokeColor: Color.Red, size: 40.vp, strokeWidth: 6.vp)
+                    .selectedColor(Color.Red)
                     .width(60.vp)
                     .height(60.vp)
                 Text("mark")
             }
             Row() {
                 Checkbox(name: "mark")
-                    .mark(strokeColor: Color.Green, strokeWidth: 6.vp)
+                    .selectedColor(Color.Green)
                     .width(40.vp)
                     .height(40.vp)
                 Text("mark")
@@ -197,7 +216,7 @@ class EntryView {
 
 ### Example 3 (Setting Text Checkbox Style)
 
-This example demonstrates setting the selected style as Text by configuring indicatorBuilder.
+This example demonstrates a selected style as Text by configuring indicatorBuilder.
 
 <!-- run -->
 
@@ -226,11 +245,11 @@ class EntryView {
                 Text("BBB")
             }
             Row() {
-                Checkbox(name: "CCC").unselectedColor(Color.Red)
+                Checkbox(name: "CCC").selectedColor(Color.Red)
                 Text("CCC")
             }
             Row() {
-                Checkbox(name: "DDD").unselectedColor(Color.Blue)
+                Checkbox(name: "DDD").selectedColor(Color.Blue)
                 Text("DDD")
             }
         }.width(100.percent)
