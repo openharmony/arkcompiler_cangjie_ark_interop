@@ -1,6 +1,6 @@
 # Property Animation
 
-When certain common properties of a component change, property animation can be used to achieve smooth transition effects, enhancing the user experience. Supported properties include [width](./cj-universal-attribute-size.md#func-widthlength), [height](./cj-universal-attribute-size.md#func-heightlength), [backgroundColor](cj-universal-attribute-background.md#func-backgroundcolorresourcecolor), [opacity](cj-universal-attribute-opacity.md#func-opacityfloat64), [scale](./cj-universal-attribute-transform.md#func-scalefloat32-float32-float32-length-length), [rotate](./cj-universal-attribute-transform.md#func-rotatefloat32-float32-float32-float64-length-length), [translate](./cj-universal-attribute-transform.md#func-translatelength-length-length), etc. For layout animations that change width and height, the content directly transitions to the final state (e.g., text, [Canvas](./cj-canvas-drawing-canvas.md) content). To make content follow width and height changes, use the [renderFit](./cj-universal-attribute-renderfit.md) property configuration.
+When certain common properties of a component change, property animation can be used to achieve smooth transition effects, enhancing user experience. Supported properties include [width](./cj-universal-attribute-size.md#func-widthlength), [height](./cj-universal-attribute-size.md#func-heightlength), [backgroundColor](cj-universal-attribute-background.md#func-backgroundcolorresourcecolor), [opacity](cj-universal-attribute-opacity.md#func-opacityfloat64), [scale](./cj-universal-attribute-transform.md#func-scalefloat32-float32-float32-length-length), [rotate](./cj-universal-attribute-transform.md#func-rotatefloat32-float32-float32-float64-length-length), [translate](./cj-universal-attribute-transform.md#func-translatelength-length-length), etc. For layout animations that change width and height, the content jumps directly to the final state (e.g., text, [Canvas](./cj-canvas-drawing-canvas.md) content). To make content follow width/height changes, use the [renderFit](./cj-universal-attribute-renderfit.md) property.
 
 ## Import Module
 
@@ -14,11 +14,11 @@ import kit.ArkUI.*
 public func animationEnd(): This
 ```
 
-**Function:** Ends the animation.
+**Function:** Stops the animation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since Version:** 21
+**Since:** 21
 
 ## func animationStart(AnimateParam)
 
@@ -30,13 +30,13 @@ public func animationStart(value: AnimateParam): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [AnimateParam](#) | Yes | - | Animation parameters. |
+| value | [AnimateParam](./cj-common-types.md#class-animateparam) | Yes | - | Animation parameters. |
 
 ## Example Code
 
@@ -48,6 +48,7 @@ This example demonstrates component property animation using `animation`.
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -56,7 +57,7 @@ let animateOpt1 = AnimateParam(
     iterations: 3,
     playMode: PlayMode.Normal,
     onFinish: {
-        => AppLog.info("onfinish")
+        => Hilog.info(0, "cangjie", "onfinish")
     },
     expectedFrameRateRange: ExpectedFrameRateRange(
         min: 20,
@@ -68,10 +69,10 @@ let animateOpt2 = AnimateParam(
     duration: 1200,
     curve: Curve.Friction,
     delay: 500,
-    iterations: -1, // Setting -1 means the animation loops infinitely
+    iterations: -1, // -1 means infinite loop
     playMode: PlayMode.Alternate,
     onFinish: {
-        => AppLog.info("onfinish")
+        => Hilog.info(0, "cangjie", "onfinish")
     },
     expectedFrameRateRange: ExpectedFrameRateRange(
         min: 20,
@@ -92,7 +93,7 @@ class EntryView {
             Button("change size")
                 .animationStart(animateOpt1)
                 .onClick {
-                    =>
+                   evt =>
                     if (this.flag) {
                         this.widthSize = 150.vp
                         this.heightSize = 60.vp
@@ -109,10 +110,10 @@ class EntryView {
             Button('change rotate angle')
                 .animationStart(animateOpt2)
                 .onClick {
-                    => this.rotateAngle = 90.0
+                   evt => this.rotateAngle = 90.0
                 }
                 .margin(50)
-                .rotate(this.rotateAngle)
+                .rotate(angle:this.rotateAngle,)
                 .animationEnd()
         }
         .width(100.percent)

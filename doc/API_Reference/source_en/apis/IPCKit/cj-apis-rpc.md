@@ -1,6 +1,6 @@
 # ohos.rpc
 
-This module provides inter-process communication (IPC) capabilities, including intra-device IPC (based on Binder driver) and inter-device IPC (RPC, based on soft bus driver).
+This module provides inter-process communication capabilities, including intra-device inter-process communication (IPC) and inter-device inter-process communication (RPC). The former is based on the Binder driver, while the latter is based on the soft bus driver.
 
 ## Importing the Module
 
@@ -10,21 +10,19 @@ import kit.IPCKit.*
 
 ## Usage Instructions
 
-API sample code usage instructions:
+API example code usage instructions:
 
-- If the sample code has a "// index.cj" comment in the first line, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample projects and configuration templates mentioned above, refer to [Cangjie Sample Code Description](../../cj-development-intro.md#cangjie-sample-code-description).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
 
 ## interface Parcelable
 
 ```cangjie
 public interface Parcelable {
 
-
     func marshalling(dataOut: MessageSequence): Bool
-
 
     func unmarshalling(dataIn: MessageSequence): Bool
 }
@@ -51,14 +49,14 @@ func marshalling(dataOut: MessageSequence): Bool
 
 **Parameters:**
 
-| Name      | Type               | Mandatory | Default | Description                          |
-|-----------|--------------------|-----------|---------|--------------------------------------|
-| dataOut   | [MessageSequence](#class-messagesequence) | Yes       | -       | The MessageSequence object to which the serializable object will be marshaled. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| dataOut | [MessageSequence](#class-messagesequence) | Yes | - | The MessageSequence object to which the serializable object will be marshaled. |
 
 **Return Value:**
 
-| Type | Description                          |
-|------|--------------------------------------|
+| Type | Description |
+|:----|:----|
 | Bool | true: Marshaling succeeded; false: Marshaling failed. |
 
 ### func unmarshalling(MessageSequence)
@@ -76,14 +74,14 @@ func unmarshalling(dataIn: MessageSequence): Bool
 
 **Parameters:**
 
-| Name      | Type               | Mandatory | Default | Description                          |
-|-----------|--------------------|-----------|---------|--------------------------------------|
-| dataIn    | [MessageSequence](#class-messagesequence) | Yes       | -       | The MessageSequence object containing the marshaled serializable object. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| dataIn | [MessageSequence](#class-messagesequence) | Yes | - | The MessageSequence object containing the marshaled serializable object. |
 
 **Return Value:**
 
-| Type | Description                          |
-|------|--------------------------------------|
+| Type | Description |
+|:----|:----|
 | Bool | true: Unmarshaling succeeded; false: Unmarshaling failed. |
 
 ## class Ashmem
@@ -97,7 +95,7 @@ public class Ashmem {
 }
 ```
 
-**Description:** Provides methods related to anonymous shared memory objects, including creating, closing, mapping and unmapping Ashmem, reading from and writing to Ashmem, obtaining Ashmem size, and setting Ashmem protection.
+**Description:** Provides methods related to anonymous shared memory objects, including creating, closing, mapping, and unmapping Ashmem; reading from and writing to Ashmem; obtaining Ashmem size; and setting Ashmem protection.
 
 Shared memory is only applicable for cross-process communication within the same device.
 
@@ -168,7 +166,7 @@ public static const PROT_WRITE: UInt32 = 2
 public static func create(name: String, size: Int32): Ashmem
 ```
 
-**Description:** Static method that creates an Ashmem object by copying the file descriptor (fd) of an existing Ashmem object. Both Ashmem objects point to the same shared memory region.
+**Description:** A static method that creates an Ashmem object by copying the file descriptor (fd) of an existing Ashmem object. Both Ashmem objects point to the same shared memory region.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -176,15 +174,15 @@ public static func create(name: String, size: Int32): Ashmem
 
 **Parameters:**
 
-| Name      | Type    | Mandatory | Default | Description                          |
-|-----------|---------|-----------|---------|--------------------------------------|
-| name      | String  | Yes       | -       | Name used to query Ashmem information. |
-| size      | Int32   | Yes       | -       | Size of the Ashmem in bytes. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| name | String | Yes | - | The name used to query Ashmem information. |
+| size | Int32 | Yes | - | The size of the Ashmem in bytes. |
 
 **Return Value:**
 
-| Type               | Description                          |
-|--------------------|--------------------------------------|
+| Type | Description |
+|:----|:----|
 | [Ashmem](#class-ashmem) | Returns the created Ashmem object. |
 
 **Exceptions:**
@@ -192,8 +190,8 @@ public static func create(name: String, size: Int32): Ashmem
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. The passed parameter is not an Ahmem object;<br>3. The ashmem instance for obtaining packaging is empty. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. The passed parameter is not an Ashmem object;<br>3. The Ashmem instance for obtaining packaging is empty. |
 
 ### static func create(Ashmem)
 
@@ -202,7 +200,7 @@ public static func create(name: String, size: Int32): Ashmem
 public static func create(ashmem: Ashmem): Ashmem
 ```
 
-**Description:** Static method that creates an Ashmem object by copying the file descriptor (fd) of an existing Ashmem object. Both Ashmem objects point to the same shared memory region.
+**Description:** A static method that creates an Ashmem object by copying the file descriptor (fd) of an existing Ashmem object. Both Ashmem objects point to the same shared memory region.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -210,14 +208,14 @@ public static func create(ashmem: Ashmem): Ashmem
 
 **Parameters:**
 
-| Name      | Type               | Mandatory | Default | Description                          |
-|-----------|--------------------|-----------|---------|--------------------------------------|
-| ashmem    | [Ashmem](#class-ashmem) | Yes       | -       | The existing Ashmem object. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| ashmem | [Ashmem](#class-ashmem) | Yes | - | The existing Ashmem object. |
 
 **Return Value:**
 
-| Type               | Description                          |
-|--------------------|--------------------------------------|
+| Type | Description |
+|:----|:----|
 | [Ashmem](#class-ashmem) | Returns the created Ashmem object. |
 
 **Exceptions:**
@@ -225,8 +223,8 @@ public static func create(ashmem: Ashmem): Ashmem
 - BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. The passed parameter is not an Ahmem object;<br>3. The ashmem instance for obtaining packaging is empty. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. The passed parameter is not an Ashmem object;<br>3. The Ashmem instance for obtaining packaging is empty. |
 
 ### func closeAshmem()
 
@@ -256,8 +254,8 @@ public func getAshmemSize(): Int32
 
 **Return Value:**
 
-| Type | Description                          |
-|------|--------------------------------------|
+| Type | Description |
+|:----|:----|
 | Int32 | Returns the memory size of the Ashmem object. |
 
 ### func mapReadWriteAshmem()
@@ -267,7 +265,7 @@ public func getAshmemSize(): Int32
 public func mapReadWriteAshmem(): Unit
 ```
 
-**Description:** Creates a readable and writable shared file mapping in the virtual address space of this process.
+**Description:** Creates a readable and writable shared file mapping on the virtual address space of this process.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -278,9 +276,9 @@ public func mapReadWriteAshmem(): Unit
 - BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. The parameter is not an instance of the Ashmem object. |
-  | 1900001      | Failed to call mmap. |
+  | :--- | :--- |
+  | 401 | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. The parameter is not an instance of the Ashmem object. |
+  | 1900001 | Failed to call mmap. |
 
 ### func mapReadonlyAshmem()
 
@@ -289,7 +287,7 @@ public func mapReadWriteAshmem(): Unit
 public func mapReadonlyAshmem(): Unit
 ```
 
-**Description:** Creates a read-only shared file mapping in the virtual address space of this process.
+**Description:** Creates a read-only shared file mapping on the virtual address space of this process.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -297,11 +295,11 @@ public func mapReadonlyAshmem(): Unit
 
 **Exceptions:**
 
-- BusinessException: For details about corresponding error codes, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 1900001      | Failed to call mmap. |
+  | :---- | :--- |
+  | 1900001 | Failed to call mmap. |
 
 ### func mapTypedAshmem(UInt32)
 
@@ -310,7 +308,7 @@ public func mapReadonlyAshmem(): Unit
 public func mapTypedAshmem(mapType: UInt32): Unit
 ```
 
-**Description:** Creates a shared file mapping in the virtual address space of this process. The size of the mapped region is specified by this Ashmem object.
+**Description:** Creates a shared file mapping on the virtual address space of this process. The size of the mapped region is specified by this Ashmem object.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -318,18 +316,18 @@ public func mapTypedAshmem(mapType: UInt32): Unit
 
 **Parameters:**
 
-| Name      | Type    | Mandatory | Default | Description                          |
-|-----------|---------|-----------|---------|--------------------------------------|
-| mapType   | UInt32  | Yes       | -       | Specifies the protection level of the mapped memory region. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| mapType | UInt32 | Yes | - | Specifies the protection level of the mapped memory region. |
 
 **Exceptions:**
 
-- BusinessException: For details about corresponding error codes, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch;<br>3. The passed mapType exceeds the maximum protection level. |
-  | 1900001      | Failed to call mmap. |
+  | :--- | :--- |
+  | 401 | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch;<br>3. The passed mapType exceeds the maximum protection level. |
+  | 1900001 | Failed to call mmap. |
 
 ### func readDataFromAshmem(Int64, Int64)
 
@@ -346,25 +344,25 @@ public func readDataFromAshmem(size: Int64, offset: Int64): Array<Byte>
 
 **Parameters:**
 
-| Name      | Type    | Mandatory | Default | Description                          |
-|-----------|---------|-----------|---------|--------------------------------------|
-| size      | Int64   | Yes       | -       | Size of the data to read. |
-| offset    | Int64   | Yes       | -       | Starting position of the data to read in the memory region associated with this Ashmem object. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:--- |
+| size | Int64 | Yes | - | The size of the data to be read. |
+| offset | Int64 | Yes | - | The starting position of the data to be read in the memory region associated with this Ashmem object. |
 
 **Return Value:**
 
-| Type         | Description                          |
-|--------------|--------------------------------------|
+| Type | Description |
+|:----|:----|
 | Array\<Byte> | Returns the read data. |
 
 **Exceptions:**
 
-- BusinessException: For details about corresponding error codes, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch. |
-  | 1900004      | Failed to read data from the shared memory. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900004 | Failed to read data from the shared memory. |
 
 ### func setProtectionType(UInt32)
 
@@ -381,18 +379,18 @@ public func setProtectionType(protectionType: UInt32): Unit
 
 **Parameters:**
 
-| Name            | Type    | Mandatory | Default | Description                          |
-|-----------------|---------|-----------|---------|--------------------------------------|
-| protectionType  | UInt32  | Yes       | -       | Protection type to set. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:--- |
+| protectionType | UInt32 | Yes | - | The protection type to be set. |
 
 **Exceptions:**
 
-- BusinessException: For details about corresponding error codes, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch. |
-  | 1900002      | Failed to call ioctl. |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900002 | Failed to call ioctl. |
 
 ### func unmapAshmem()
 
@@ -422,20 +420,20 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 
 **Parameters:**
 
-| Name      | Type         | Mandatory | Default | Description                          |
-|-----------|--------------|-----------|---------|--------------------------------------|
-| buf       | Array\<Byte> | Yes       | -       | Data to write to the Ashmem object. |
-| size      | Int64        | Yes       | -       | Size of the data to write. |
-| offset    | Int64        | Yes       | -       | Starting position of the data to write in the memory region associated with this Ashmem object. |
+| Parameter | Type | Mandatory | Default Value | Description |
+|:---|:---|:---|:---|:--- |
+| buf | Array\<Byte> | Yes | - | The data to be written to the Ashmem object. |
+| size | Int64 | Yes | - | The size of the data to be written. |
+| offset | Int64 | Yes | - | The starting position of the data to be written in the memory region associated with this Ashmem object. |
 
 **Exceptions:**
 
-- BusinessException: For details about corresponding error codes, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
-  | :----------- | :------------ |
-  | 401          | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch;<br>3. Failed to obtain arrayBuffer information. |
-  | 1900003      | Failed to write data to the shared memory. |## class MessageSequence
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. Failed to obtain arrayBuffer information. |
+  | 1900003 | Failed to write data to the shared memory. |## class MessageSequence
 
 ```cangjie
 public class MessageSequence {}
@@ -461,7 +459,7 @@ public static func closeFileDescriptor(fd: Int32): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | fd | Int32 | Yes | - | The file descriptor to be closed. |
 
@@ -471,7 +469,7 @@ public static func closeFileDescriptor(fd: Int32): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
 
 ### static func create()
 
@@ -493,7 +491,7 @@ public static func create(): MessageSequence
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: For error codes, see the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -513,7 +511,7 @@ public static func dupFileDescriptor(fd: Int32): Int32
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | fd | Int32 | Yes | - | Represents an existing file descriptor. |
 
@@ -529,7 +527,7 @@ public static func dupFileDescriptor(fd: Int32): Int32
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:<br>1. Incorrect number of parameters;<br>2. Parameter type mismatch. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
   | 1900013 | Failed to call dup. |
 
 ### func containFileDescriptors()
@@ -584,7 +582,7 @@ public func getRawDataCapacity(): UInt32
 
 | Type | Description |
 |:----|:----|
-| UInt32 | Returns the maximum raw data capacity that MessageSequence can hold, which is 128MB. |
+| UInt32 | Returns the maximum raw data capacity that MessageSequence can hold, i.e., 128MB. |
 
 ### func getReadPosition()
 
@@ -700,7 +698,7 @@ public func readAshmem(): Ashmem
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Check param failed. |
+  | 401 | Check param failed |
   | 1900004 | Failed to read data from the shared memory. |
 
 ### func readBoolean()
@@ -805,14 +803,15 @@ public func readByteArray(): Array<Int8>
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 1900010 | Failed to read data from the message sequence. |### func readChar()
+  | 1900010 | Failed to read data from the message sequence. |
+
+### func readChar()
 
 ```cangjie
-
 public func readChar(): UInt8
 ```
 
-**Description:** Reads a single character value from the MessageSequence instance.
+**Function:** Reads a single character value from the MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -821,8 +820,8 @@ public func readChar(): UInt8
 **Return Value:**
 
 | Type | Description |
-| :---- | :---- |
-| UInt8 | Returns a single character value. |
+|:----|:----|
+| UInt8 | Returns the single character array. |
 
 **Exceptions:**
 
@@ -830,17 +829,14 @@ public func readChar(): UInt8
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
-
-### func readCharArray()
+  | 1900010 | Failed to read data from the message sequence. |### func readCharArray()
 
 ```cangjie
 
 public func readCharArray(): Array<UInt8>
 ```
 
-**Description:** Reads a single character array from the MessageSequence instance.
+**Function:** Reads a single character array from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -854,12 +850,11 @@ public func readCharArray(): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readDouble()
 
@@ -868,7 +863,7 @@ public func readCharArray(): Array<UInt8>
 public func readDouble(): Float64
 ```
 
-**Description:** Reads a double-precision floating-point value from the MessageSequence instance.
+**Function:** Reads a double-precision floating-point value from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -882,12 +877,11 @@ public func readDouble(): Float64
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readDoubleArray()
 
@@ -896,7 +890,7 @@ public func readDouble(): Float64
 public func readDoubleArray(): Array<Float64>
 ```
 
-**Description:** Reads all double-precision floating-point arrays from the MessageSequence instance.
+**Function:** Reads all double-precision floating-point arrays from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -910,12 +904,11 @@ public func readDoubleArray(): Array<Float64>
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readException()
 
@@ -924,7 +917,7 @@ public func readDoubleArray(): Array<Float64>
 public func readException(): Unit
 ```
 
-**Description:** Reads an exception from the MessageSequence.
+**Function:** Reads an exception from the MessageSequence.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -932,12 +925,11 @@ public func readException(): Unit
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readFileDescriptor()
 
@@ -946,7 +938,7 @@ public func readException(): Unit
 public func readFileDescriptor(): Int32
 ```
 
-**Description:** Reads a file descriptor from the MessageSequence.
+**Function:** Reads a file descriptor from the MessageSequence.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -956,16 +948,15 @@ public func readFileDescriptor(): Int32
 
 | Type | Description |
 | :---- | :---- |
-| Int32 | Returns a file descriptor. |
+| Int32 | Returns the file descriptor. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readFloat()
 
@@ -974,7 +965,7 @@ public func readFileDescriptor(): Int32
 public func readFloat(): Float32
 ```
 
-**Description:** Reads a floating-point value from the MessageSequence instance.
+**Function:** Reads a floating-point value from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -984,16 +975,15 @@ public func readFloat(): Float32
 
 | Type | Description |
 | :---- | :---- |
-| Float32 | Returns a floating-point value. |
+| Float32 | Returns the floating-point value. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readFloatArray()
 
@@ -1002,7 +992,7 @@ public func readFloat(): Float32
 public func readFloatArray(): Array<Float32>
 ```
 
-**Description:** Reads a floating-point array from the MessageSequence instance.
+**Function:** Reads a floating-point array from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1012,16 +1002,15 @@ public func readFloatArray(): Array<Float32>
 
 | Type | Description |
 | :---- | :---- |
-| Array\<Float32> | Returns a floating-point array. |
+| Array\<Float32> | Returns the floating-point array. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readInt()
 
@@ -1030,7 +1019,7 @@ public func readFloatArray(): Array<Float32>
 public func readInt(): Int32
 ```
 
-**Description:** Reads an integer value from the MessageSequence instance.
+**Function:** Reads an integer value from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1040,16 +1029,15 @@ public func readInt(): Int32
 
 | Type | Description |
 | :---- | :---- |
-| Int32 | Returns an integer value. |
+| Int32 | Returns the integer value. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readIntArray()
 
@@ -1058,7 +1046,7 @@ public func readInt(): Int32
 public func readIntArray(): Array<Int32>
 ```
 
-**Description:** Reads an integer array from the MessageSequence instance.
+**Function:** Reads an integer array from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1068,16 +1056,15 @@ public func readIntArray(): Array<Int32>
 
 | Type | Description |
 | :---- | :---- |
-| Array\<Int32> | Returns an integer array. |
+| Array\<Int32> | Returns the integer array. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readInterfaceToken()
 
@@ -1086,7 +1073,7 @@ public func readIntArray(): Array<Int32>
 public func readInterfaceToken(): String
 ```
 
-**Description:** Reads an interface descriptor from the MessageSequence object. The interface descriptor is read in the order it was written to the MessageSequence. Local objects can use this information to verify the current communication.
+**Function:** Reads an interface descriptor from the MessageSequence object. The interface descriptors are read in the order they were written to the MessageSequence. Local objects can use this information to verify the current communication.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1100,12 +1087,11 @@ public func readInterfaceToken(): String
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readLong()
 
@@ -1114,7 +1100,7 @@ public func readInterfaceToken(): String
 public func readLong(): Int64
 ```
 
-**Description:** Reads a long integer value from the MessageSequence instance.
+**Function:** Reads a long integer value from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1124,16 +1110,15 @@ public func readLong(): Int64
 
 | Type | Description |
 | :---- | :---- |
-| Int64 | Returns a long integer value. |
+| Int64 | Returns the long integer value. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readLongArray()
 
@@ -1142,7 +1127,7 @@ public func readLong(): Int64
 public func readLongArray(): Array<Int64>
 ```
 
-**Description:** Reads all long integer arrays from the MessageSequence instance.
+**Function:** Reads all long integer arrays from a MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1152,16 +1137,15 @@ public func readLongArray(): Array<Int64>
 
 | Type | Description |
 | :---- | :---- |
-| Array\<Int64> | Returns a long integer array. |
+| Array\<Int64> | Returns the integer array. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readParcelable\<T>(T) where T \<: Parcelable
 
@@ -1170,7 +1154,7 @@ public func readLongArray(): Array<Int64>
 public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
 ```
 
-**Description:** Reads member variables from the MessageSequence instance into the specified object (dataIn).
+**Function:** Reads member variables from the MessageSequence instance into the specified object (dataIn).
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1184,17 +1168,13 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
-  | 1900012 | Failed to call the JS callback function.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters. |
+  | 1900010 | Failed to read data from the message sequence. |
+  | 1900012 | Failed to call the JS callback function. |
 
 ### func readParcelableArray\<T>(Array\<T>) where T \<: Parcelable
 
@@ -1203,7 +1183,7 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
 public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: Parcelable
 ```
 
-**Description:** Reads a serializable object array from the MessageSequence instance.
+**Function:** Reads a serializable object array from the MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1217,59 +1197,47 @@ public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: P
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The length of the array passed when reading is not equal to the length passed when writing to the array;
-5. The element does not exist in the array.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
-  | 1900012 | Failed to call the JS callback function.
- |### func readRawDataBuffer(Int64)
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The length of the array passed when reading is not equal to the length passed when writing to the array; 5. The element does not exist in the array. |
+  | 1900010 | Failed to read data from the message sequence. |
+  | 1900012 | Failed to call the JS callback function. |
+
+### func readRawDataBuffer(Int64)
 
 ```cangjie
 
 public func readRawDataBuffer(size: Int64): Array<Byte>
 ```
 
-**Function:** Reads raw data from MessageSequence.
+**Function:** Reads raw data from the MessageSequence.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| size | Int64 | Yes | - | Size of the raw data to be read. |
+| :--- | :--- | :--- | :--- | :--- |
+| size | Int64 | Yes | - | The size of the raw data to be read. |
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
-| Array\<[Byte]> | Returns the raw data (in bytes). |
+| :---- | :---- |
+| Array\<Byte> | Returns the raw data (in bytes). |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
-
-### func readShort()
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900010 | Failed to read data from the message sequence. |### func readShort()
 
 ```cangjie
 
@@ -1280,12 +1248,12 @@ public func readShort(): Int16
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Int16 | Returns the short integer value. |
 
 **Exceptions:**
@@ -1294,8 +1262,7 @@ public func readShort(): Int16
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readShortArray()
 
@@ -1308,12 +1275,12 @@ public func readShortArray(): Array<Int16>
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Array\<Int16> | The array of short integers to be read. |
 
 **Exceptions:**
@@ -1322,8 +1289,7 @@ public func readShortArray(): Array<Int16>
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readString()
 
@@ -1336,12 +1302,12 @@ public func readString(): String
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | String | Returns the string value. |
 
 **Exceptions:**
@@ -1350,8 +1316,7 @@ public func readString(): String
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readStringArray()
 
@@ -1364,12 +1329,12 @@ public func readStringArray(): Array<String>
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Array\<String> | Returns the array of strings. |
 
 **Exceptions:**
@@ -1378,8 +1343,7 @@ public func readStringArray(): Array<String>
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readUInt16Array()
 
@@ -1392,12 +1356,12 @@ public func readUInt16Array(): Array<UInt16>
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Array\<UInt16> | The data read. |
 
 **Exceptions:**
@@ -1406,13 +1370,8 @@ public func readUInt16Array(): Array<UInt16>
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch;
-3. Incorrect obtained value of typeCode.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. Incorrect obtained value of typeCode. |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readUInt32Array()
 
@@ -1425,12 +1384,12 @@ public func readUInt32Array(): Array<UInt32>
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Array\<UInt32> | The data read. |
 
 **Exceptions:**
@@ -1439,13 +1398,8 @@ public func readUInt32Array(): Array<UInt32>
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch;
-3. Incorrect obtained value of typeCode.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. Incorrect obtained value of typeCode. |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readUInt64Array()
 
@@ -1458,12 +1412,12 @@ public func readUInt64Array(): Array<UInt64>
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Array\<UInt64> | The data read. |
 
 **Exceptions:**
@@ -1472,13 +1426,8 @@ public func readUInt64Array(): Array<UInt64>
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch;
-3. Incorrect obtained value of typeCode.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. Incorrect obtained value of typeCode. |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func readUInt8Array()
 
@@ -1491,12 +1440,12 @@ public func readUInt8Array(): Array<UInt8>
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
+| :---- | :---- |
 | Array\<UInt8> | The data read. |
 
 **Exceptions:**
@@ -1505,13 +1454,8 @@ public func readUInt8Array(): Array<UInt8>
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch;
-3. Incorrect obtained value of typeCode.
- |
-  | 1900010 | Failed to read data from the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. Incorrect obtained value of typeCode. |
+  | 1900010 | Failed to read data from the message sequence. |
 
 ### func reclaim()
 
@@ -1524,7 +1468,7 @@ public func reclaim(): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func rewindRead(UInt32)
 
@@ -1537,13 +1481,13 @@ public func rewindRead(pos: UInt32): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pos | UInt32 | Yes | - | Target position to start reading data. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| pos | UInt32 | Yes | - | The target position to start reading data. |
 
 **Exceptions:**
 
@@ -1551,10 +1495,7 @@ public func rewindRead(pos: UInt32): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
 
 ### func rewindWrite(UInt32)
 
@@ -1567,13 +1508,13 @@ public func rewindWrite(pos: UInt32): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pos | UInt32 | Yes | - | Target position to start writing data. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| pos | UInt32 | Yes | - | The target position to start writing data. |
 
 **Exceptions:**
 
@@ -1581,10 +1522,7 @@ public func rewindWrite(pos: UInt32): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
 
 ### func setCapacity(UInt32)
 
@@ -1597,13 +1535,13 @@ public func setCapacity(size: UInt32): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| size | UInt32 | Yes | - | Storage capacity of the MessageSequence instance, in bytes. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| size | UInt32 | Yes | - | The storage capacity of the MessageSequence instance, in bytes. |
 
 **Exceptions:**
 
@@ -1611,12 +1549,8 @@ public func setCapacity(size: UInt32): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900011 | Memory allocation failed.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900011 | Memory allocation failed. |
 
 ### func setSize(UInt32)
 
@@ -1625,35 +1559,7 @@ public func setCapacity(size: UInt32): Unit
 public func setSize(size: UInt32): Unit
 ```
 
-**Function:** Sets the size of the data contained in the MessageSequence object.
-
-**System Capability:** SystemCapability.Communication.IPC.Core
-
-**Initial Version:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| size | UInt32 | Yes | - | Data size of the MessageSequence instance, in bytes. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |### func writeAshmem(Ashmem)
-
-```cangjie
-
-public func writeAshmem(ashmem: Ashmem): Unit
-```
-
-**Function:** Writes the specified anonymous shared memory object to this MessageSequence.
+**Function:** Sets the data size contained in the MessageSequence object.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1661,9 +1567,36 @@ public func writeAshmem(ashmem: Ashmem): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| ashmem | [Ashmem](#class-ashmem) | Yes | - | The anonymous shared memory object to be written to the MessageSequence. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| size | UInt32 | Yes | - | The data size of the MessageSequence instance, in bytes. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+
+### func writeAshmem(Ashmem)
+
+```cangjie
+
+public func writeAshmem(ashmem: Ashmem): Unit
+```
+
+**Function:** Writes the specified anonymous shared object to this MessageSequence.
+
+**System Capability:** SystemCapability.Communication.IPC.Core
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| ashmem | [Ashmem](#class-ashmem) | Yes | - | The anonymous shared object to be written to the MessageSequence. |
 
 **Exceptions:**
 
@@ -1671,12 +1604,8 @@ public func writeAshmem(ashmem: Ashmem): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. The parameter is not an instance of the Ashmem object.
- |
-  | 1900003 | Failed to write data to the shared memory.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. The parameter is not an instance of the Ashmem object. |
+  | 1900003 | Failed to write data to the shared memory. |
 
 ### func writeBoolean(Bool)
 
@@ -1693,8 +1622,8 @@ public func writeBoolean(val: Bool): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
 | val | Bool | Yes | - | The boolean value to be written. |
 
 **Exceptions:**
@@ -1703,12 +1632,8 @@ public func writeBoolean(val: Bool): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeBooleanArray(Array\<Bool>)
 
@@ -1717,7 +1642,7 @@ public func writeBoolean(val: Bool): Unit
 public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 ```
 
-**Function:** Writes a boolean array to the MessageSequence instance.
+**Function:** Writes an array of boolean values to the MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -1725,9 +1650,9 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| booleanArray | Array\<Bool> | Yes | - | The boolean array to be written. |
+| Parameter | Type | Mandatory | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| booleanArray | Array\<Bool> | Yes | - | The array of boolean values to be written. |
 
 **Exceptions:**
 
@@ -1735,16 +1660,8 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. Incorrect number of parameters;
-3. Parameter type mismatch;
-4. The element does not exist in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
-
-### func writeByte(Int8)
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array. |
+  | 1900009 | Failed to write data to the message sequence. |### func writeByte(Int8)
 
 ```cangjie
 
@@ -1759,22 +1676,18 @@ public func writeByte(val: Int8): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | Int8 | Yes | - | The byte value to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeByteArray(Array\<Int8>)
 
@@ -1791,25 +1704,18 @@ public func writeByteArray(byteArray: Array<Int8>): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | byteArray | Array\<Int8> | Yes | - | The byte array to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. Incorrect number of parameters;
-3. Parameter type mismatch;
-4. The element does not exist in the array;
-5. Incorrect type of the element in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array; 5. Incorrect type of the element in the array. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeChar(UInt8)
 
@@ -1826,22 +1732,18 @@ public func writeChar(val: UInt8): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | UInt8 | Yes | - | The single character value to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeCharArray(Array\<UInt8>)
 
@@ -1858,24 +1760,18 @@ public func writeCharArray(charArray: Array<UInt8>): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | charArray | Array\<UInt8> | Yes | - | The single character array to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. Incorrect number of parameters;
-3. Parameter type mismatch;
-4. The element does not exist in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeDouble(Float64)
 
@@ -1892,22 +1788,18 @@ public func writeDouble(val: Float64): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | Float64 | Yes | - | The double-precision floating-point value to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeDoubleArray(Array\<Float64>)
 
@@ -1924,25 +1816,18 @@ public func writeDoubleArray(doubleArray: Array<Float64>): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | doubleArray | Array\<Float64> | Yes | - | The double-precision floating-point array to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. Incorrect number of parameters;
-3. Parameter type mismatch;
-4. The element does not exist in the array;
-5. Incorrect type of the element in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array; 5. Incorrect type of the element in the array. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeFileDescriptor(Int32)
 
@@ -1959,22 +1844,18 @@ public func writeFileDescriptor(fd: Int32): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | fd | Int32 | Yes | - | The file descriptor. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeFloat(Float32)
 
@@ -1991,22 +1872,18 @@ public func writeFloat(val: Float32): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | Float32 | Yes | - | The floating-point value to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeFloatArray(Array\<Float32>)
 
@@ -2023,25 +1900,18 @@ public func writeFloatArray(floatArray: Array<Float32>): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | floatArray | Array\<Float32> | Yes | - | The data to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. Incorrect number of parameters;
-3. Parameter type mismatch;
-4. The element does not exist in the array;
-5. Incorrect type of the element in the array.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array; 5. Incorrect type of the element in the array. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeInt(Int32)
 
@@ -2058,22 +1928,20 @@ public func writeInt(val: Int32): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | Int32 | Yes | - | The integer value to be written. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. Incorrect number of parameters;
-2. Parameter type mismatch.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |### func writeIntArray(Array\<Int32>)
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
+  | 1900009 | Failed to write data to the message sequence. |
+
+### func writeIntArray(Array\<Int32>)
 
 ```cangjie
 
@@ -2088,7 +1956,7 @@ public func writeIntArray(intArray: Array<Int32>): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | intArray | Array\<Int32> | Yes | - | The integer array to be written. |
 
@@ -2098,12 +1966,7 @@ public func writeIntArray(intArray: Array<Int32>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The element does not exist in the array;
-5. The type of the element in the array is incorrect. |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array; 5. Incorrect type of the element in the array. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeInterfaceToken(String)
@@ -2121,7 +1984,7 @@ public func writeInterfaceToken(token: String): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | token | String | Yes | - | The string-type descriptor. |
 
@@ -2131,11 +1994,7 @@ public func writeInterfaceToken(token: String): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect;
-2. The parameter type does not match;
-3. The String length exceeds 40960 bytes;
-4. The number of bytes copied to the buffer is different from the length of the obtained String. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. The String length exceeds 40960 bytes; 4. The number of bytes copied to the buffer differs from the length of the obtained String. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeLong(Int64)
@@ -2153,7 +2012,7 @@ public func writeLong(val: Int64): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | Int64 | Yes | - | The long integer value to be written. |
 
@@ -2163,9 +2022,7 @@ public func writeLong(val: Int64): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect;
-2. The parameter type does not match. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeLongArray(Array\<Int64>)
@@ -2183,7 +2040,7 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | longArray | Array\<Int64> | Yes | - | The long integer array to be written. |
 
@@ -2193,12 +2050,7 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The element does not exist in the array;
-5. The type of the element in the array is incorrect. |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array; 5. Incorrect type of the element in the array. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeNoException()
@@ -2208,7 +2060,7 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 public func writeNoException(): Unit
 ```
 
-**Function:** Writes a "no exception occurred" indication to the MessageSequence.
+**Function:** Writes "no exception occurred" information to the MessageSequence.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
@@ -2220,9 +2072,7 @@ public func writeNoException(): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 1900009 | Failed to write data to the message sequence. |
-
-### func writeParcelable\<T>(T) where T \<: Parcelable
+  | 1900009 | Failed to write data to the message sequence. |### func writeParcelable\<T>(T) where T \<: Parcelable
 
 ```cangjie
 
@@ -2233,11 +2083,11 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | T | Yes | - | The serializable object to be written. |
 
@@ -2247,9 +2097,7 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect;
-2. The parameter type does not match. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeParcelableArray\<T>(Array\<T>) where T \<: Parcelable
@@ -2263,11 +2111,11 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | parcelableArray | Array\<T> | Yes | - | The array of serializable objects to be written. |
 
@@ -2277,11 +2125,7 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The element does not exist in the array. |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeRawDataBuffer(Array\<Byte>, Int64)
@@ -2295,13 +2139,13 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| rawData | Array\<[Byte]> | Yes | - | The raw data to be written. |
+| rawData | Array\<Byte> | Yes | - | The raw data to be written. |
 | size | Int64 | Yes | - | The size of the raw data to be sent, in bytes. |
 
 **Exceptions:**
@@ -2310,13 +2154,7 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect;
-2. The parameter type does not match;
-3. Failed to obtain array information;
-4. The transferred size cannot be obtained;
-5. The transferred size is less than or equal to 0;
-6. The transferred size is greater than the byte length of rawData. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. Failed to obtain array information; 4. Failed to obtain the transferred size; 5. The transferred size is less than or equal to 0; 6. The transferred size exceeds the byte length of rawData. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeShort(Int16)
@@ -2330,11 +2168,11 @@ public func writeShort(val: Int16): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | val | Int16 | Yes | - | The short integer value to be written. |
 
@@ -2344,9 +2182,7 @@ public func writeShort(val: Int16): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect;
-2. The parameter type does not match. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeShortArray(Array\<Int16>)
@@ -2356,17 +2192,17 @@ public func writeShort(val: Int16): Unit
 public func writeShortArray(shortArray: Array<Int16>): Unit
 ```
 
-**Function:** Writes a short integer array to the MessageSequence instance.
+**Function:** Writes an array of short integers to the MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| shortArray | Array\<Int16> | Yes | - | The short integer array to be written. |
+| shortArray | Array\<Int16> | Yes | - | The array of short integers to be written. |
 
 **Exceptions:**
 
@@ -2374,12 +2210,7 @@ public func writeShortArray(shortArray: Array<Int16>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The element does not exist in the array;
-5. The type of the element in the array is incorrect. |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The element does not exist in the array; 5. Incorrect type of the element in the array. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeString(String)
@@ -2393,13 +2224,13 @@ public func writeString(val: String): Unit
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| val | String | Yes | - | The string value to be written. Its length should be less than 40960 bytes. |
+| val | String | Yes | - | The string value to be written, with a length less than 40960 bytes. |
 
 **Exceptions:**
 
@@ -2407,11 +2238,7 @@ public func writeString(val: String): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The number of parameters is incorrect;
-2. The parameter type does not match;
-3. The String length exceeds 40960 bytes;
-4. The number of bytes copied to the buffer is different from the length of the obtained String. |
+  | 401 | Parameter error. Possible causes: 1. Incorrect number of parameters; 2. Parameter type mismatch; 3. The String length exceeds 40960 bytes; 4. The number of bytes copied to the buffer differs from the length of the obtained String. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeStringArray(Array\<String>)
@@ -2421,17 +2248,17 @@ public func writeString(val: String): Unit
 public func writeStringArray(stringArray: Array<String>): Unit
 ```
 
-**Function:** Writes a string array to the MessageSequence instance.
+**Function:** Writes an array of strings to the MessageSequence instance.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| stringArray | Array\<String> | Yes | - | The string array to be written. The length of each element in the array should be less than 40960 bytes. |
+| stringArray | Array\<String> | Yes | - | The array of strings to be written, with each element's length less than 40960 bytes. |
 
 **Exceptions:**
 
@@ -2439,12 +2266,7 @@ public func writeStringArray(stringArray: Array<String>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The String length exceeds 40960 bytes;
-5. The number of bytes copied to the buffer is different from the length of the obtained String. |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. The String length exceeds 40960 bytes; 5. The number of bytes copied to the buffer differs from the length of the obtained String. |
   | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeUInt16Array(Array\<UInt16>)
@@ -2454,15 +2276,15 @@ public func writeStringArray(stringArray: Array<String>): Unit
 public func writeUInt16Array(buf: Array<UInt16>): Unit
 ```
 
-**Function:** Writes Array\<UInt16> type data to the MessageSequence object.
+**Function:** Writes data of type Array\<UInt16> to the MessageSequence object.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | buf | Array\<UInt16> | Yes | - | The data to be written. |
 
@@ -2472,24 +2294,21 @@ public func writeUInt16Array(buf: Array<UInt16>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The obtained value of typeCode is incorrect;
-5. Failed to obtain array information. |
-  | 1900009 | Failed to write data to the message sequence. |### func writeUInt32Array(Array\<UInt32>)
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. Incorrect obtained value of typeCode; 5. Failed to obtain array information. |
+  | 1900009 | Failed to write data to the message sequence. |
+
+### func writeUInt32Array(Array\<UInt32>)
 
 ```cangjie
 
 public func writeUInt32Array(buf: Array<UInt32>): Unit
 ```
 
-**Function:** Writes data of type Array\<UInt32> into the MessageSequence object.
+**Function:** Writes data of type Array\<UInt32> to the MessageSequence object.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2503,15 +2322,8 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The obtained value of typeCode is incorrect;
-5. Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. Incorrect obtained value of typeCode; 5. Failed to obtain array information. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeUInt64Array(Array\<UInt64>)
 
@@ -2520,11 +2332,11 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
 public func writeUInt64Array(buf: Array<UInt64>): Unit
 ```
 
-**Function:** Writes data of type Array\<UInt64> into the MessageSequence object.
+**Function:** Writes data of type Array\<UInt64> to the MessageSequence object.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2538,15 +2350,8 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The obtained value of typeCode is incorrect;
-5. Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. Incorrect obtained value of typeCode; 5. Failed to obtain array information. |
+  | 1900009 | Failed to write data to the message sequence. |
 
 ### func writeUInt8Array(Array\<UInt8>)
 
@@ -2555,11 +2360,11 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
 public func writeUInt8Array(buf: Array<UInt8>): Unit
 ```
 
-**Function:** Writes data of type Array\<UInt8> into the MessageSequence object.
+**Function:** Writes data of type Array\<UInt8> to the MessageSequence object.
 
 **System Capability:** SystemCapability.Communication.IPC.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -2573,12 +2378,5 @@ public func writeUInt8Array(buf: Array<UInt8>): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes:
-1. The parameter is an empty array;
-2. The number of parameters is incorrect;
-3. The parameter type does not match;
-4. The obtained value of typeCode is incorrect;
-5. Failed to obtain array information.
- |
-  | 1900009 | Failed to write data to the message sequence.
- |
+  | 401 | Parameter error. Possible causes: 1. The parameter is an empty array; 2. Incorrect number of parameters; 3. Parameter type mismatch; 4. Incorrect obtained value of typeCode; 5. Failed to obtain array information. |
+  | 1900009 | Failed to write data to the message sequence. |

@@ -1,6 +1,6 @@
 # ohos.arkui.component_utils
 
-Provides the capability to obtain the coordinates and size of a component's drawing area.
+Provides the capability to obtain the coordinates and dimensions of a component's drawing area.
 
 ## Import Module
 
@@ -26,7 +26,7 @@ public class ComponentInfo {
 }
 ```
 
-**Description:** Information about the coordinate position and size of a component instance object.
+**Description:** Information about the coordinate position and dimensions of a component instance object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +42,7 @@ public var localOffset: Offset
 
 **Type:** [Offset](#class-offset)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +58,7 @@ public var rotate: RotateResult
 
 **Type:** [RotateResult](#class-rotateresult)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +74,7 @@ public var scale: ScaleResult
 
 **Type:** [ScaleResult](#class-scaleresult)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +90,7 @@ public var screenOffset: Offset
 
 **Type:** [Offset](#class-offset)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,11 +102,11 @@ public var screenOffset: Offset
 public var size: Size
 ```
 
-**Description:** Sets the component's size.
+**Description:** Sets the component's dimensions.
 
 **Type:** [Size](#class-size)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ public var transform: VArray<Float32, $16>
 
 **Type:** VArray\<Float32,$16>
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +138,7 @@ public var translate: TranslateResult
 
 **Type:** [TranslateResult](#class-translateresult)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,7 +154,7 @@ public var windowOffset: Offset
 
 **Type:** [Offset](#class-offset)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,7 +167,7 @@ public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset:
     scale: ScaleResult, rotate: RotateResult, transform: VArray<Float32, $16>)
 ```
 
-**Description:** Constructs a ComponentInfo object.
+**Description:** Constructs a ComponentInfo-type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,16 +175,16 @@ public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset:
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| size | [Size] | Yes | - | The component's size. |
-| localOffset | [Offset](#class-offset) | Yes | - | The component's information relative to its parent component. |
-| windowOffset | [Offset](#class-offset) | Yes | - | The component's information relative to the window. |
-| screenOffset | [Offset](#class-offset) | Yes | - | The component's information relative to the screen. |
-| translate | [TranslateResult](#class-translateresult) | Yes | - | The component's translation information. |
-| scale | [ScaleResult](#class-scaleresult) | Yes | - | The component's scaling information. |
-| rotate | [RotateResult](#class-rotateresult) | Yes | - | The component's rotation information. |
-| transform | Array\<Float32> | Yes | - | The affine matrix information, creating a fourth-order matrix object based on the input parameters. |
+| Name          | Type                              | Mandatory | Default | Description                                                                 |
+|:--------------|:----------------------------------|:----------|:--------|:----------------------------------------------------------------------------|
+| size          | [Size]                            | Yes       | -       | Component dimensions.                                                       |
+| localOffset   | [Offset](#class-offset)           | Yes       | -       | Component's information relative to its parent component.                  |
+| windowOffset  | [Offset](#class-offset)           | Yes       | -       | Component's information relative to the window.                            |
+| screenOffset  | [Offset](#class-offset)           | Yes       | -       | Component's information relative to the screen.                            |
+| translate     | [TranslateResult](#class-translateresult) | Yes       | -       | Component's translation information.                                        |
+| scale         | [ScaleResult](#class-scaleresult) | Yes       | -       | Component's scaling information.                                            |
+| rotate        | [RotateResult](#class-rotateresult) | Yes       | -       | Component's rotation information.                                           |
+| transform     | VArray<Float32, $16>              | Yes       | -       | Affine matrix information, creating a fourth-order matrix object based on input parameters. |
 
 ## class ComponentUtils
 
@@ -192,7 +192,7 @@ public init(size: Size, localOffset: Offset, windowOffset: Offset, screenOffset:
 public class ComponentUtils {}
 ```
 
-**Description:** Provides the capability to obtain the coordinates and size of a specified component's drawing area.
+**Description:** Provides the capability to obtain the coordinates and dimensions of a specified component's drawing area.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,7 +204,7 @@ public class ComponentUtils {}
 public static func getRectangleById(id: String): ComponentInfo
 ```
 
-**Description:** Obtains the component instance object based on the component ID and synchronously returns the obtained coordinate position and size to the developer through the component instance object.
+**Description:** Obtains the component instance object based on the component ID and synchronously returns the obtained coordinate position and dimensions to the developer through the component instance object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,15 +212,15 @@ public static func getRectangleById(id: String): ComponentInfo
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| id | String | Yes | - | The specified component ID. |
+| Name | Type   | Mandatory | Default | Description            |
+|:-----|:-------|:----------|:--------|:-----------------------|
+| id   | String | Yes       | -       | Specified component ID. |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
-| [ComponentInfo](#class-componentinfo) | Information about the component's size, position, translation, scaling, rotation, and affine matrix attributes. |
+| Type                          | Description                                                                 |
+|:------------------------------|:----------------------------------------------------------------------------|
+| [ComponentInfo](#class-componentinfo) | Component's dimensions, position, translation, scaling, rotation, and affine matrix attribute information. |
 
 ## class Offset
 
@@ -248,7 +248,7 @@ public var x: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,7 +264,7 @@ public var y: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,7 +276,7 @@ public var y: Float32
 public init(x: Float32, y: Float32)
 ```
 
-**Description:** Constructs an Offset object.
+**Description:** Constructs an Offset-type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,10 +284,10 @@ public init(x: Float32, y: Float32)
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| x | Float32 | Yes | - | The x-coordinate.<br>Unit: px. |
-| y | Float32 | Yes | - | The y-coordinate.<br>Unit: px. |
+| Name | Type   | Mandatory | Default | Description                |
+|:-----|:-------|:----------|:--------|:---------------------------|
+| x    | Float32 | Yes       | -       | x-coordinate.<br>Unit: px. |
+| y    | Float32 | Yes       | -       | y-coordinate.<br>Unit: px. |
 
 ## class RotateResult
 
@@ -322,7 +322,7 @@ public var angle: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,7 +338,7 @@ public var centerX: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -354,7 +354,7 @@ public var centerY: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,7 +370,7 @@ public var x: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,7 +386,7 @@ public var y: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -402,7 +402,7 @@ public var z: Float32
 
 **Type:** Float32
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,7 +417,7 @@ public var z: Float32
 public init(x: Float32, y: Float32, z: Float32, centerX: Float32, centerY: Float32, angle: Float32)
 ```
 
-**Description:** Constructs a RotateResult object.
+**Description:** Constructs a RotateResult-type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -425,14 +425,14 @@ public init(x: Float32, y: Float32, z: Float32, centerX: Float32, centerY: Float
 
 **Parameters:**
 
-| Name | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| x | Float32 | Yes | - | The x-coordinate of the rotation axis vector.<br>Unit: px. |
-| y | Float32 | Yes | - | The y-coordinate of the rotation axis vector.<br>Unit: px. |
-| z | Float32 | Yes | - | The z-coordinate of the rotation axis vector.<br>Unit: px. |
-| centerX | Float32 | Yes | - | The x-coordinate of the transformation center point.<br>Unit: px. |
-| centerY | Float32 | Yes | - | The y-coordinate of the transformation center point.<br>Unit: px. |
-| angle | Float32 | Yes | - | The rotation angle.<br>Unit: px. |## class ScaleResult
+| Name    | Type   | Mandatory | Default | Description                          |
+|:--------|:-------|:----------|:--------|:-------------------------------------|
+| x       | Float32 | Yes       | -       | x-coordinate of the rotation axis vector.<br>Unit: px. |
+| y       | Float32 | Yes       | -       | y-coordinate of the rotation axis vector.<br>Unit: px. |
+| z       | Float32 | Yes       | -       | z-coordinate of the rotation axis vector.<br>Unit: px. |
+| centerX | Float32 | Yes       | -       | x-coordinate of the transformation center point.<br>Unit: px. |
+| centerY | Float32 | Yes       | -       | y-coordinate of the transformation center point.<br>Unit: px. |
+| angle   | Float32 | Yes       | -       | Rotation angle.<br>Unit: px.        |## class ScaleResult
 
 ```cangjie
 public class ScaleResult {
@@ -461,7 +461,7 @@ public var centerX: Float32
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -477,7 +477,7 @@ public var centerY: Float32
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -489,11 +489,11 @@ public var centerY: Float32
 public var x: Float32
 ```
 
-**Function:** Sets the x-axis scaling factor.
+**Function:** Sets the scaling factor on the x-axis.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -505,11 +505,11 @@ public var x: Float32
 public var y: Float32
 ```
 
-**Function:** Sets the y-axis scaling factor.
+**Function:** Sets the scaling factor on the y-axis.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -521,11 +521,11 @@ public var y: Float32
 public var z: Float32
 ```
 
-**Function:** Sets the z-axis scaling factor.
+**Function:** Sets the scaling factor on the z-axis.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -545,13 +545,13 @@ public init(x: Float32, y: Float32, z: Float32, centerX: Float32, centerY: Float
 
 **Parameters:**
 
-| Parameter Name | Type    | Required | Default Value | Description |
-|:---------------|:--------|:---------|:--------------|:------------|
-| x              | Float32 | Yes      | -             | X-axis scaling factor.<br>Unit: px. |
-| y              | Float32 | Yes      | -             | Y-axis scaling factor.<br>Unit: px. |
-| z              | Float32 | Yes      | -             | Z-axis scaling factor.<br>Unit: px. |
-| centerX        | Float32 | Yes      | -             | X-axis coordinate of the transformation center point.<br>Unit: px. |
-| centerY        | Float32 | Yes      | -             | Y-axis coordinate of the transformation center point.<br>Unit: px. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float32 | Yes      | -       | Scaling factor on the x-axis.<br>Unit: px. |
+| y         | Float32 | Yes      | -       | Scaling factor on the y-axis.<br>Unit: px. |
+| z         | Float32 | Yes      | -       | Scaling factor on the z-axis.<br>Unit: px. |
+| centerX   | Float32 | Yes      | -       | x-axis coordinate of the transformation center point.<br>Unit: px. |
+| centerY   | Float32 | Yes      | -       | y-axis coordinate of the transformation center point.<br>Unit: px. |
 
 ## class Size
 
@@ -579,7 +579,7 @@ public var height: Float32
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,7 +595,7 @@ public var width: Float32
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -615,10 +615,10 @@ public init(width: Float32, height: Float32)
 
 **Parameters:**
 
-| Parameter Name | Type    | Required | Default Value | Description |
-|:---------------|:--------|:---------|:--------------|:------------|
-| width          | Float32 | Yes      | -             | Component width.<br>Unit: px. |
-| height         | Float32 | Yes      | -             | Component height.<br>Unit: px. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| width     | Float32 | Yes      | -       | Component width.<br>Unit: px. |
+| height    | Float32 | Yes      | -       | Component height.<br>Unit: px. |
 
 ## class TranslateResult
 
@@ -643,11 +643,11 @@ public class TranslateResult {
 public var x: Float32
 ```
 
-**Function:** Sets the x-axis translation distance.
+**Function:** Sets the translation distance on the x-axis.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -659,11 +659,11 @@ public var x: Float32
 public var y: Float32
 ```
 
-**Function:** Sets the y-axis translation distance.
+**Function:** Sets the translation distance on the y-axis.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -675,11 +675,11 @@ public var y: Float32
 public var z: Float32
 ```
 
-**Function:** Sets the z-axis translation distance.
+**Function:** Sets the translation distance on the z-axis.
 
 **Type:** Float32
 
-**Read/Write Permission:** Readable and Writable
+**Readable/Writable:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -699,11 +699,11 @@ public init(x: Float32, y: Float32, z: Float32)
 
 **Parameters:**
 
-| Parameter Name | Type    | Required | Default Value | Description |
-|:---------------|:--------|:---------|:--------------|:------------|
-| x              | Float32 | Yes      | -             | X-axis translation distance.<br>Unit: px. |
-| y              | Float32 | Yes      | -             | Y-axis translation distance.<br>Unit: px. |
-| z              | Float32 | Yes      | -             | Z-axis translation distance.<br>Unit: px. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float32 | Yes      | -       | Translation distance on the x-axis.<br>Unit: px. |
+| y         | Float32 | Yes      | -       | Translation distance on the y-axis.<br>Unit: px. |
+| z         | Float32 | Yes      | -       | Translation distance on the z-axis.<br>Unit: px. |
 
 **Example:**
 
@@ -713,8 +713,8 @@ public init(x: Float32, y: Float32, z: Float32)
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.component_utils.ComponentUtils
-import ohos.resource_manager.__GenerateResource__
+import ohos.arkui.component_utils.ComponentUtils
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -741,7 +741,8 @@ class EntryView {
                     angle: 300.0
                 )
                 .id("image")
-            Button("getRectangleById").onClick {
+            Button("getRectangleById").onClick ({
+                evt =>
                 let info = ComponentUtils.getRectangleById("image")
                 message1 = info
                     .size
@@ -755,7 +756,7 @@ class EntryView {
                     .rotate
                     .angle
                     .toString()
-            }
+            })
             Text(this.message1 + this.message2 + this.message3)
                 .margin(20)
                 .width(300)

@@ -24,11 +24,11 @@ public init(value: ResourceStr)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The content string of the QR code. Supports up to 512 characters. If exceeded, only the first 512 characters will be used. |
 
@@ -50,13 +50,13 @@ public func color(value: ResourceColor): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the QR code.<br/>Default: 0xff000000, and does not change with the system's light/dark mode. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the QR code.<br/>Initial value: 0xff000000, and does not change with system light/dark mode switching. |
 
 ### func contentOpacity(Float64)
 
@@ -68,13 +68,13 @@ public func contentOpacity(value: Float64): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Float64 | Yes | - | The opacity of the QR code content color.<br/>Default: 1.0<br/>Range: [0.0, 1.0]. Values outside this range will be treated as the default. |
+| value | Float64 | Yes | - | The opacity of the QR code content color.<br/>Initial value: 1.0<br/>Valid range: [0.0, 1.0]. Values outside this range will be treated as the initial value. |
 
 ### func contentOpacity(AppResource)
 
@@ -86,17 +86,17 @@ public func contentOpacity(value: AppResource): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | [AppResource](./cj-common-types.md#class-appresource) | Yes | - | The opacity of the QR code content color. |
 
 ## Example Code
 
-This example demonstrates the basic usage of the QRCode component, setting the QR code color via the `color` attribute, the background color via the `backgroundColor` attribute, and the opacity via the `contentOpacity` attribute.
+This example demonstrates the basic usage of the QRCode component, including setting the QR code color via the `color` attribute, the background color via the `backgroundColor` attribute, and the opacity via the `contentOpacity` attribute.
 
 <!-- run -->
 
@@ -114,7 +114,7 @@ class EntryView {
 
     func build() {
         Scroll() {
-            Column(5) {
+            Column(space: 5) {
                 Text("normal").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)
                 QRCode(this.value).width(140).height(140)
 
@@ -136,7 +136,7 @@ class EntryView {
 
                 // Set QR code opacity
                 Text("contentOpacity int").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)
-                QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0)
+                QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.0)
 
                 // Set QR code opacity
                 Text("contentOpacity resource").fontSize(9).width(90.percent).fontColor(0xCCCCCC).fontSize(30)

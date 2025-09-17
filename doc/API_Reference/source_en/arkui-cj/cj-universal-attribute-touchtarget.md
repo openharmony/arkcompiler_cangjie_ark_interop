@@ -14,17 +14,17 @@ import kit.ArkUI.*
 public func responseRegion(value: Rectangle): This
 ```
 
-**Function:** Sets the response region of a component.
+**Function:** Sets the response region of the component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Rectangle](#) | Yes | - | Response region rectangle. |
+| value | [Rectangle](./cj-common-types.md#class-rectangle) | Yes | - | Response region rectangle. |
 
 ## func responseRegion(Array\<Rectangle>)
 
@@ -32,14 +32,14 @@ public func responseRegion(value: Rectangle): This
 public func responseRegion(value: Array<Rectangle>): This
 ```
 
-**Function:** Sets an array of response regions for a component.
+**Function:** Sets the response region array for the component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[Rectangle](#)> | Yes | - | Array of rectangles. |
+| value | Array\<[Rectangle](./cj-common-types.md#class-rectangle)> | Yes | - | Array of rectangles. |

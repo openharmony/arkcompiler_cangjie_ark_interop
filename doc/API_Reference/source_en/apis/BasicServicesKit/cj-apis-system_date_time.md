@@ -1,6 +1,6 @@
-# ohos.system_date_time (System Time and Timezone)
+# ohos.system_date_time (System Time & Timezone)
 
-This module primarily consists of system time and timezone functionalities. Developers can set and retrieve the system time and timezone.
+This module primarily consists of system time and timezone functionalities. Developers can set and retrieve system time and timezone information.
 
 ## Importing the Module
 
@@ -12,10 +12,10 @@ import kit.BasicServicesKit.*
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For the aforementioned sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## class SystemDateTime
 
@@ -23,7 +23,7 @@ For the aforementioned sample project and configuration template, refer to [Cang
 public class SystemDateTime {}
 ```
 
-**Functionality:** System time and timezone utility class.
+**Description:** Class for system time and timezone functionalities.
 
 **System Capability:** SystemCapability.MiscServices.Time
 
@@ -35,7 +35,7 @@ public class SystemDateTime {}
 public static func getTime(isNanoseconds!: Bool = false): Int64
 ```
 
-**Functionality:** Retrieves the elapsed time since the Unix epoch.
+**Description:** Gets the elapsed time since the Unix epoch.
 
 **System Capability:** SystemCapability.MiscServices.Time
 
@@ -44,13 +44,13 @@ public static func getTime(isNanoseconds!: Bool = false): Int64
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:--------|:-------------|:------------|
-| isNanoseconds | Bool | No | false | **Named parameter.** Whether the result should be in nanoseconds.<br>- true: Returns the result in nanoseconds (ns).<br>- false: Returns the result in milliseconds (ms). |
+|:---|:---|:---|:---|:---|
+| isNanoseconds | Bool | No | false | **Named parameter.** Whether to return the result in nanoseconds.<br>- true: Returns the result in nanoseconds (ns).<br>- false: Returns the result in milliseconds (ms). |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Int64 | Elapsed time since the Unix epoch. |
 
 **Example:**
@@ -77,7 +77,7 @@ try {
 public static func getTimezone(): String
 ```
 
-**Functionality:** Retrieves the system timezone.
+**Description:** Gets the system timezone.
 
 **System Capability:** SystemCapability.MiscServices.Time
 
@@ -86,8 +86,8 @@ public static func getTimezone(): String
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
-| String | Returns the system timezone. For details, see [Supported System Timezones](#Supported-System-Timezones). |
+|:----|:----|
+| String | Returns the system timezone. |
 
 **Example:**
 
@@ -113,7 +113,7 @@ try {
 public static func getUptime(timeType: TimeType, isNanoseconds!: Bool = false): Int64
 ```
 
-**Functionality:** Retrieves the elapsed time since system startup.
+**Description:** Gets the elapsed time since system startup.
 
 **System Capability:** SystemCapability.MiscServices.Time
 
@@ -122,14 +122,14 @@ public static func getUptime(timeType: TimeType, isNanoseconds!: Bool = false): 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
-|:--------------|:-----|:--------|:-------------|:------------|
+|:---|:---|:---|:---|:---|
 | timeType | [TimeType](#enum-timetype) | Yes | - | Type of time to retrieve. |
-| isNanoseconds | Bool | No | false | **Named parameter.** Whether the result should be in nanoseconds.<br>- true: Returns the result in nanoseconds (ns).<br>- false: Returns the result in milliseconds (ms). |
+| isNanoseconds | Bool | No | false | **Named parameter.** Whether to return the result in nanoseconds.<br/>- true: Returns the result in nanoseconds (ns).<br/>- false: Returns the result in milliseconds (ms). |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Int64 | Elapsed time since system startup. |
 
 **Example:**
@@ -160,7 +160,7 @@ public enum TimeType {
 }
 ```
 
-**Functionality:** Defines the enumeration type for retrieving time.
+**Description:** Defines enumeration types for retrieving time.
 
 **System Capability:** SystemCapability.MiscServices.Time
 
@@ -172,7 +172,7 @@ public enum TimeType {
 Active
 ```
 
-**Functionality:** Milliseconds elapsed since system startup, excluding deep sleep time.
+**Description:** Milliseconds elapsed since system startup, excluding deep sleep time.
 
 **System Capability:** SystemCapability.MiscServices.Time
 
@@ -184,7 +184,7 @@ Active
 Startup
 ```
 
-**Functionality:** Milliseconds elapsed since system startup, including deep sleep time.
+**Description:** Milliseconds elapsed since system startup, including deep sleep time.
 
 **System Capability:** SystemCapability.MiscServices.Time
 

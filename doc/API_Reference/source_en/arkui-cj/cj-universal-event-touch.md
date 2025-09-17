@@ -1,4 +1,4 @@
-# Touch Events
+# Touch Event
 
 Triggered when a finger presses, slides, or lifts on a component.
 
@@ -14,7 +14,7 @@ import kit.ArkUI.*
 public func stopPropagation(): Unit
 ```
 
-**Function:** Prevents the event from continuing to propagate.
+**Function:** Stops event propagation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +23,24 @@ public func stopPropagation(): Unit
 ## Permission List
 
 None
+
+## func onTouch((TouchEvent) -> Unit)
+
+```cangjie
+public func onTouch(event: (TouchEvent) -> Unit): This
+```
+
+**Function:** Triggered by finger touch actions.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | ([TouchEvent](#class-touchevent))->Unit | Yes | - | Callback function triggered by finger touch actions. |
 
 ## Basic Type Definitions
 
@@ -39,7 +57,7 @@ public class TouchEvent {
 }
 ```
 
-**Function:** Inherits from BaseEvent. In non-event injection scenarios, `changedTouches` are points resampled at the screen refresh rate, while `touches` are points reported at the device refresh rate. The data in `changedTouches` may differ from that in `touches`.
+**Function:** In non-event injection scenarios, `changedTouches` contains points resampled at the screen refresh rate, while `touches` contains points reported at the device refresh rate. The data in `changedTouches` may differ from that in `touches`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +69,7 @@ public class TouchEvent {
 public var changedTouches: Array<TouchObject>
 ```
 
-**Function:** Information about the fingers currently undergoing changes.
+**Function:** Information about currently changed fingers.
 
 **Type:** Array\<[TouchObject](#class-touchobject)>
 
@@ -67,7 +85,7 @@ public var changedTouches: Array<TouchObject>
 public var eventType: TouchType
 ```
 
-**Function:** The type of touch event.
+**Function:** Type of touch event.
 
 **Type:** [TouchType](cj-common-types.md#enum-touchtype)
 
@@ -83,7 +101,7 @@ public var eventType: TouchType
 public var source: SourceType
 ```
 
-**Function:** The input device of the event.
+**Function:** Event input device.
 
 **Type:** [SourceType](cj-common-types.md#enum-sourcetype)
 
@@ -99,7 +117,7 @@ public var source: SourceType
 public var target: EventTarget
 ```
 
-**Function:** The object of the touched element.
+**Function:** Object of the touched element.
 
 **Type:** [EventTarget](cj-universal-event-click.md#class-eventtarget)
 
@@ -115,7 +133,7 @@ public var target: EventTarget
 public var timestamp: Int64
 ```
 
-**Function:** The timestamp relative to the system startup time, in milliseconds.
+**Function:** Timestamp relative to system startup time, in milliseconds.
 
 **Type:** Int64
 
@@ -141,7 +159,6 @@ public var touches: Array<TouchObject>
 
 **Since:** 21
 
-
 ### class TouchObject
 
 ```cangjie
@@ -156,7 +173,7 @@ public class TouchObject {
 }
 ```
 
-**Function:** Represents the type of information about the currently changing finger.
+**Function:** Represents the type of information about currently changed fingers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +185,7 @@ public class TouchObject {
 public var id: Int32
 ```
 
-**Function:** The unique identifier of the finger.
+**Function:** Unique identifier of the finger.
 
 **Type:** Int32
 
@@ -184,7 +201,7 @@ public var id: Int32
 public var screenX: Float64
 ```
 
-**Function:** The X-coordinate of the touch point relative to the left edge of the device screen.
+**Function:** X-coordinate of the touch point relative to the left edge of the device screen.
 
 **Type:** Float64
 
@@ -200,7 +217,7 @@ public var screenX: Float64
 public var screenY: Float64
 ```
 
-**Function:** The Y-coordinate of the touch point relative to the top edge of the device screen.
+**Function:** Y-coordinate of the touch point relative to the top edge of the device screen.
 
 **Type:** Float64
 
@@ -216,7 +233,7 @@ public var screenY: Float64
 public var touchType: TouchType
 ```
 
-**Function:** The type of touch event.
+**Function:** Type of touch event.
 
 **Type:** [TouchType](cj-common-types.md#enum-touchtype)
 
@@ -232,7 +249,7 @@ public var touchType: TouchType
 public var x: Float64
 ```
 
-**Function:** The X-coordinate of the touch point relative to the left edge of the touched element.
+**Function:** X-coordinate of the touch point relative to the left edge of the touched element.
 
 **Type:** Float64
 
@@ -248,7 +265,7 @@ public var x: Float64
 public var y: Float64
 ```
 
-**Function:** The Y-coordinate of the touch point relative to the top edge of the touched element.
+**Function:** Y-coordinate of the touch point relative to the top edge of the touched element.
 
 **Type:** Float64
 
@@ -268,11 +285,11 @@ public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64,
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| touchType | [TouchType](cj-common-types.md#enum-touchtype) | Yes | - | The type of touch event. |
-| id | Int32 | Yes | - | The unique identifier of the finger. |
-| screenX | Float64 | Yes | - | The X-coordinate of the touch point relative to the left edge of the device screen. |
-| screenY | Float64 | Yes | - | The Y-coordinate of the touch point relative to the top edge of the device screen. |
-| x | Float64 | Yes | - | The X-coordinate of the touch point relative to the left edge of the touched element. |
-| y | Float64 | Yes | - | The Y-coordinate of the touch point relative to the top edge of the touched element. |
+| touchType | [TouchType](cj-common-types.md#enum-touchtype) | Yes | - | Type of touch event. |
+| id | Int32 | Yes | - | Unique identifier of the finger. |
+| screenX | Float64 | Yes | - | X-coordinate of the touch point relative to the left edge of the device screen. |
+| screenY | Float64 | Yes | - | Y-coordinate of the touch point relative to the top edge of the device screen. |
+| x | Float64 | Yes | - | X-coordinate of the touch point relative to the left edge of the touched element. |
+| y | Float64 | Yes | - | Y-coordinate of the touch point relative to the top edge of the touched element. |

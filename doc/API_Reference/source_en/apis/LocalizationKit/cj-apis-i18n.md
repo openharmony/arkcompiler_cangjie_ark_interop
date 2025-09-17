@@ -1,6 +1,6 @@
 # ohos.i18n (Internationalization-I18n)
 
-This module provides system-related or enhanced internationalization capabilities, including locale management, phone number processing, calendars, etc. The interfaces here supplement those not defined in the ECMA 402 standard. The Intl module offers basic internationalization interfaces as defined by ECMA 402, which when used together with this module provide comprehensive internationalization support.
+This module provides system-related or enhanced internationalization capabilities, including locale management, phone number processing, calendars, etc. The interfaces here serve as supplements to those not defined in the ECMA 402 standard. The Intl module offers basic internationalization interfaces defined by ECMA 402, and when used together with this module, they provide comprehensive internationalization support.
 
 ## Importing the Module
 
@@ -10,12 +10,48 @@ import kit.LocalizationKit.*
 
 ## Usage Instructions
 
-API sample code usage instructions:
+API example code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of a Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#Cangjie-example-code-instructions).
+
+## func getCalendar(String, ?CalendarType)
+
+```cangjie
+public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
+```
+
+**Function:** Obtains a calendar object corresponding to the specified locale and calendar type.  
+**System Capability:** SystemCapability.Global.I18n  
+
+**Initial Version:** 21  
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| locale | String | Yes | - | A string representing locale information, composed of language, script, country, or region. |
+| calendarType | ?CalendarType | No | None | The calendar type. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Calendar | Returns the calendar object corresponding to the specified locale and calendar type. |
+
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.i18n.*
+
+let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist) // Obtains a Buddhist calendar object based on the en-US locale.
+```
 
 ## class Calendar
 
@@ -23,11 +59,11 @@ For details about the sample project and configuration template mentioned above,
 public class Calendar {}
 ```
 
-**Description:** A physical calendar object.
+**Function:** A physical calendar object.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 ### func add(String, Int32)
 
@@ -35,18 +71,18 @@ public class Calendar {}
 public func add(field: String, amount: Int32): Unit
 ```
 
-**Description:** Performs addition or subtraction operations on a specified field of the calendar.
+**Function:** Performs addition or subtraction operations on the specified field of the calendar.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| field     | String | Yes      | -       | Specifies the calendar field to operate on. Currently supported field values include year, month, week_of_year, week_of_month, date, day_of_year, day_of_week, day_of_week_in_month, hour, hour_of_day, minute, second, millisecond. |
-| amount    | Int32  | Yes      | -       | The specific value for the addition or subtraction operation. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| field | String | Yes | - | Specifies the calendar field to operate on. Currently supported field values include year, month, week_of_year, week_of_month, date, day_of_year, day_of_week, day_of_week_in_month, hour, hour_of_day, minute, second, millisecond. |
+| amount | Int32 | Yes | - | The specific value for the addition or subtraction operation. |
 
 **Example:**
 
@@ -58,7 +94,7 @@ public func add(field: String, amount: Int32): Unit
 import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
-calendar.set(2021,11,11) // set time to 2021.12.11
+calendar.set(2021,11,11) // Set time to 2021.12.11
 calendar.add("year", 3)
 let res = calendar.get("year") // res = 2024
 ```
@@ -69,22 +105,22 @@ let res = calendar.get("year") // res = 2024
 public func get(field: String): Int32
 ```
 
-**Description:** Retrieves the value associated with the specified field in the calendar object.
+**Function:** Obtains the value associated with the specified field in the calendar object.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| field     | String | Yes      | -       | The field used to retrieve the corresponding value from the calendar object. For currently supported field values, refer to the table below. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| field | String | Yes | - | Obtains the corresponding value of the calendar object through the field. For currently supported field values, refer to the table below. |
 
 **Return Value:**
 
-| Type  | Description |
-|:------|:------------|
+| Type | Description |
+|:----|:----|
 | Int32 | The value associated with the field. For example, if the internal date year of the current Calendar object is 1990, get("year") returns 1990. |
 
 **Example:**
@@ -106,66 +142,29 @@ let minute = calendar.get("minute") // 30
 let second = calendar.get("second") // 30
 ```
 
-### func getCalendar(String, ?CalendarType)
-
-```cangjie
-public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Calendar
-```
-
-**Description:** Retrieves a calendar object corresponding to the specified locale and calendar type.
-
-**System Capability:** SystemCapability.Global.I18n
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter     | Type         | Required | Default | Description |
-|:--------------|:-------------|:---------|:--------|:------------|
-| locale        | String       | Yes      | -       | A string representing locale information, composed of language, script, country, or region. |
-| calendarType  | CalendarType | No       | None    | The calendar type. |
-
-**Return Value:**
-
-| Type     | Description |
-|:---------|:------------|
-| Calendar | Returns the calendar object corresponding to the specified locale and calendar type. |
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import ohos.i18n.*
-
-let calendar = getCalendar("en-US", calendarType: CalendarType.Buddhist) // Obtains a Buddhist calendar object based on the en-US locale.
-```
-
 ### func getDisplayName(String)
 
 ```cangjie
 public func getDisplayName(locale: String): String
 ```
 
-**Description:** Retrieves the name of the calendar object in the specified locale.
+**Function:** Obtains the name of the calendar object in the specified locale.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| locale    | String | Yes      | -       | A string representing locale information, composed of language, script, country, or region. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| locale | String | Yes | - | A string representing locale information, composed of language, script, country, or region. |
 
 **Return Value:**
 
-| Type   | Description |
-|:-------|:------------|
-| String | The name of the calendar in the locale specified by `locale`. For example, "Buddhist Calendar" is the display name for "buddhist" in en-US. |
+| Type | Description |
+|:----|:----|
+| String | The name of the calendar in the locale specified by `locale`. For example, "Buddhist" displays as "Buddhist Calendar" in en-US. |
 
 **Example:**
 
@@ -187,16 +186,16 @@ let res = calendar.getDisplayName("zh") // res = "佛历"
 public func getFirstDayOfWeek(): Int32
 ```
 
-**Description:** Retrieves the first day of the week for the calendar object.
+**Function:** Obtains the first day of the week for the calendar object.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Return Value:**
 
-| Type  | Description |
-|:------|:------------|
+| Type | Description |
+|:----|:----|
 | Int32 | The first day of the week, where 1 represents Sunday and 7 represents Saturday. |
 
 **Example:**
@@ -218,17 +217,17 @@ let res = calendar.getFirstDayOfWeek() // res = 1
 public func getMinimalDaysInFirstWeek(): Int32
 ```
 
-**Description:** Retrieves the minimal number of days required in the first week of the year.
+**Function:** Obtains the minimal number of days in the first week of the year.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Return Value:**
 
-| Type  | Description |
-|:------|:------------|
-| Int32 | The minimal number of days required in the first week of the year. This indicates the minimum number of days needed to determine the first week of the year. For example, if this value is set to 4, the first week of the year must contain at least 4 days; otherwise, those days will be counted as part of the last week of the previous year. This setting ensures the week count calculation aligns with regional customs. |
+| Type | Description |
+|:----|:----|
+| Int32 | The minimal number of days in the first week of the year. This indicates the minimum number of days required to determine the first week of the year. For example, if this value is set to 4, the first week of the year must contain at least 4 days; otherwise, these days will be counted as part of the last week of the previous year. This setting ensures that week numbering conforms to regional customs. |
 
 **Example:**
 
@@ -249,16 +248,16 @@ let res = calendar.getMinimalDaysInFirstWeek() // res = 1
 public func getTimeInMillis(): Float64
 ```
 
-**Description:** Retrieves the current calendar's UTC time in milliseconds.
+**Function:** Obtains the current calendar's UTC time in milliseconds.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Return Value:**
 
-| Type    | Description |
-|:--------|:------------|
+| Type | Description |
+|:----|:----|
 | Float64 | The current calendar's UTC time in milliseconds. |
 
 **Example:**
@@ -281,16 +280,16 @@ let millis = calendar.getTimeInMillis() // millis = 5000
 public func getTimeZone(): String
 ```
 
-**Description:** Retrieves the time zone of the calendar object.
+**Function:** Obtains the time zone of the calendar object.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Return Value:**
 
-| Type   | Description |
-|:-------|:------------|
+| Type | Description |
+|:----|:----|
 | String | A valid time zone ID, such as "Asia/Shanghai". |
 
 **Example:**
@@ -308,28 +307,28 @@ calendar.setTimeZone("Asia/Shanghai")
 let timeZone = calendar.getTimeZone() // timeZone = "Asia/Shanghai"
 ```
 
-### func set(Int32, Int32, Int32, Int32, Int32, Int32)
+### func set(Int32, Int32, Int32, ?Int32, ?Int32, ?Int32)
 
 ```cangjie
 public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, minute!: ?Int32 = None, second!: ?Int32 = None): Unit
 ```
 
-**Description:** Sets the year, month, day, hour, minute, and second of the calendar object.
+**Function:** Sets the year, month, day, hour, minute, and second of the calendar object.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| year      | Int32  | Yes      | -       | The year to set. |
-| month     | Int32  | Yes      | -       | The month to set. Note: Months are zero-indexed, e.g., 0 represents January. |
-| day       | Int32  | Yes      | -       | The day to set. |
-| hour      | Int32  | No       | None    | **Named parameter.** The hour to set. -1 represents the system hour. |
-| minute    | Int32  | No       | None    | **Named parameter.** The minute to set. -1 represents the system minute. |
-| second    | Int32  | No       | None    | **Named parameter.** The second to set. -1 represents the system second. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| year | Int32 | Yes | - | The year to set. |
+| month | Int32 | Yes | - | The month to set. Note: Months are counted from 0, where 0 represents January. |
+| date | Int32 | Yes | - | The day to set. |
+| hour | ?Int32 | No | None | **Named parameter.** The hour to set. -1 represents the system hour. |
+| minute | ?Int32 | No | None | **Named parameter.** The minute to set. -1 represents the system minute. |
+| second | ?Int32 | No | None | **Named parameter.** The second to set. -1 represents the system second. |
 
 **Example:**
 
@@ -341,7 +340,7 @@ public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, mi
 import kit.LocalizationKit.getCalendar
 
 let calendar = getCalendar("zh-Hans")
-calendar.set(2021,11,11)  // set time to 2021.12.11
+calendar.set(2021,11,11)  // Set time to 2021.12.11
 ```
 
 ### func setFirstDayOfWeek(Int32)
@@ -350,17 +349,17 @@ calendar.set(2021,11,11)  // set time to 2021.12.11
 public func setFirstDayOfWeek(value: Int32): Unit
 ```
 
-**Description:** Sets the first day of the week.
+**Function:** Sets the first day of the week.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type  | Required | Default | Description |
-|:----------|:------|:---------|:--------|:------------|
-| value     | Int32 | Yes      | -       | The first day of the week, where 1 represents Sunday and 7 represents Saturday. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | Int32 | Yes | - | The first day of the week to set, where 1 represents Sunday and 7 represents Saturday. |
 
 **Example:**
 
@@ -382,17 +381,17 @@ let firstDayOfWeek = calendar.getFirstDayOfWeek() // firstDayOfWeek = 3
 public func setMinimalDaysInFirstWeek(value: Int32): Unit
 ```
 
-**Description:** Sets the minimal number of days required in the first week of the year.
+**Function:** Sets the minimal number of days in the first week of the year.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type  | Required | Default | Description |
-|:----------|:------|:---------|:--------|:------------|
-| value     | Int32 | Yes      | -       | The minimal number of days required in the first week of the year. This indicates the minimum number of days needed to determine the first week of the year. For example, if this value is set to 4, the first week of the year must contain at least 4 days; otherwise, those days will be counted as part of the last week of the previous year. This setting ensures the week count calculation aligns with regional customs. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| value | Int32 | Yes | - | The minimal number of days in the first week of the year. This indicates the minimum number of days required to determine the first week of the year. For example, if this value is set to 4, the first week of the year must contain at least 4 days; otherwise, these days will be counted as part of the last week of the previous year. This setting ensures that week numbering conforms to regional customs. |
 
 **Example:**
 
@@ -414,17 +413,17 @@ let minimalDaysInFirstWeek = calendar.getMinimalDaysInFirstWeek() // minimalDays
 public func setTime(time: Float64): Unit
 ```
 
-**Description:** Sets the internal date and time of the calendar object, where `time` is the number of milliseconds elapsed since 1970.1.1 00:00:00 GMT.
+**Function:** Sets the internal date and time of the calendar object, where `time` is the number of milliseconds elapsed since 1970.1.1 00:00:00 GMT.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type    | Required | Default | Description |
-|:----------|:--------|:---------|:--------|:------------|
-| time      | Float64 | Yes      | -       | The number of milliseconds elapsed since 1970.1.1 00:00:00 GMT. |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| time | Float64 | Yes | - | The number of milliseconds elapsed since 1970.1.1 00:00:00 GMT. |
 
 **Example:**
 
@@ -445,17 +444,17 @@ calendar.setTime(10540800000.0)
 public func setTimeZone(timeZone: String): Unit
 ```
 
-**Description:** Sets the time zone of the calendar object.
+**Function:** Sets the time zone of the calendar object.  
 
-**System Capability:** SystemCapability.Global.I18n
+**System Capability:** SystemCapability.Global.I18n  
 
-**Since:** 21
+**Initial Version:** 21  
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| timeZone  | String | Yes      | -       | A valid time zone ID, such as "Asia/Shanghai". |
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| timeZone | String | Yes | - | A valid time zone ID, such as "Asia/Shanghai". |
 
 **Example:**
 
@@ -474,11 +473,11 @@ calendar.setTimeZone("Asia/Shanghai")
 public class System {}
 ```
 
-**Functionality:** I18n system object.
+**Function:** I18n system object.
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### static func getAppPreferredLanguage()
 
@@ -486,11 +485,11 @@ public class System {}
 public static func getAppPreferredLanguage(): String
 ```
 
-**Functionality:** Gets the preferred language of the application.
+**Function:** Gets the preferred language of the application.
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
@@ -530,12 +529,11 @@ public enum CalendarType {
 }
 ```
 
-**Functionality:** Calendar type enumeration, used to specify different calendar systems.
+**Function:** Calendar type enumeration, used to specify different calendar systems.
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
-
+**Since:** 21
 
 ### Buddhist
 
@@ -543,11 +541,11 @@ public enum CalendarType {
 Buddhist
 ```
 
-**Functionality:** Buddhist calendar type
+**Function:** Buddhist calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Chinese
 
@@ -555,11 +553,11 @@ Buddhist
 Chinese
 ```
 
-**Functionality:** Chinese calendar type
+**Function:** Chinese calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Coptic
 
@@ -567,12 +565,11 @@ Chinese
 Coptic
 ```
 
-**Functionality:** Coptic calendar type
+**Function:** Coptic calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
-
+**Since:** 21
 
 ### Ethiopic
 
@@ -580,12 +577,11 @@ Coptic
 Ethiopic
 ```
 
-**Functionality:** Ethiopic calendar type
+**Function:** Ethiopic calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
-
+**Since:** 21
 
 ### Hebrew
 
@@ -593,11 +589,11 @@ Ethiopic
 Hebrew
 ```
 
-**Functionality:** Hebrew calendar type
+**Function:** Hebrew calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Gregory
 
@@ -605,11 +601,11 @@ Hebrew
 Gregory
 ```
 
-**Functionality:** Gregorian calendar type
+**Function:** Gregorian calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Indian
 
@@ -617,11 +613,11 @@ Gregory
 Indian
 ```
 
-**Functionality:** Indian calendar type
+**Function:** Indian calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### IslamicCivil
 
@@ -629,11 +625,11 @@ Indian
 IslamicCivil
 ```
 
-**Functionality:** Islamic Civil calendar type
+**Function:** Islamic Civil calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### IslamicTbla
 
@@ -641,11 +637,11 @@ IslamicCivil
 IslamicTbla
 ```
 
-**Functionality:** Islamic Tabular calendar type
+**Function:** Islamic Tabular calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### IslamicUmalqura
 
@@ -653,11 +649,11 @@ IslamicTbla
 IslamicUmalqura
 ```
 
-**Functionality:** Islamic Umm al-Qura calendar type
+**Function:** Islamic Umm al-Qura calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Japanese
 
@@ -665,12 +661,11 @@ IslamicUmalqura
 Japanese
 ```
 
-**Functionality:** Japanese calendar type
+**Function:** Japanese calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
-
+**Since:** 21
 
 ### Persian
 
@@ -678,24 +673,8 @@ Japanese
 Persian
 ```
 
-**Functionality:** Persian calendar type
+**Function:** Persian calendar type
 
 **System Capability:** SystemCapability.Global.I18n
 
-**Initial Version:** 21
-
-### func toString()
-```cangjie
-public func toString(): String
-```
-**Functionality:** Gets the string representation corresponding to the current enumeration value.
-
-**System Capability:** SystemCapability.Global.I18n
-
-**Initial Version:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|String|Returns the string corresponding to the enumeration value.|
+**Since:** 21

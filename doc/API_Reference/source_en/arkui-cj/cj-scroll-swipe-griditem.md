@@ -4,8 +4,8 @@ A single item container within a grid container.
 
 > **NOTE:**
 >
-> - Can only be used as a child component of the [Grid](./cj-scroll-swipe-grid.md) component.
-> - When GridItem is used with [LazyForEach](cj-state-rendering-lazyforeach.md), the child components of GridItem are created when the GridItem is created. When used with [if/else](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or when the parent component is Grid, the child components of GridItem are created during GridItem layout.
+> - Only supported as a child component of the [Grid](./cj-scroll-swipe-grid.md) component.
+> - When GridItem is used with [LazyForEach](cj-state-rendering-lazyforeach.md), GridItem's child components are created when the GridItem is created. When used with [if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or when the parent component is Grid, GridItem's child components are created during GridItem layout.
 
 ## Import Module
 
@@ -25,7 +25,7 @@ Can contain a single child component.
 public init()
 ```
 
-**Function:** Creates a single item content component within a grid container.
+**Function:** Creates a single item component within a grid container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +37,7 @@ public init()
 public init(child: () -> Unit)
 ```
 
-**Function:** Creates a single item content component within a grid container that can contain child components.
+**Function:** Creates a single item component within a grid container that can contain child components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +73,7 @@ public func columnEnd(columnEnd: Int32): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| columnEnd | Int32 | Yes | - | The ending column number of the current element, used in conjunction with columnStart. For scenarios requiring specification of GridItem's starting row/column numbers and span, it is recommended to use the [layoutOptions parameter of Grid](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total columns - 1]. |
+| columnEnd | Int32 | Yes | - | The ending column number of the current element, used in conjunction with columnStart. For scenarios requiring specification of GridItem's starting row/column numbers and occupied rows/columns, it is recommended to use [Grid's layoutOptions parameter](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total columns - 1]. |
 
 ### func columnStart(Int32)
 
@@ -91,7 +91,7 @@ public func columnStart(columnStart: Int32): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| columnStart | Int32 | Yes | - | The starting column number of the current element, used in conjunction with columnEnd. For scenarios requiring specification of GridItem's starting row/column numbers and span, it is recommended to use the [layoutOptions parameter of Grid](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total columns - 1] |
+| columnStart | Int32 | Yes | - | The starting column number of the current element, used in conjunction with columnEnd. For scenarios requiring specification of GridItem's starting row/column numbers and occupied rows/columns, it is recommended to use [Grid's layoutOptions parameter](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total columns - 1] |
 
 ### func rowEnd(Int32)
 
@@ -109,7 +109,7 @@ public func rowEnd(rowEnd: Int32): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| rowEnd | Int32 | Yes | - | The ending row number of the current element, used in conjunction with rowStart. For scenarios requiring specification of GridItem's starting row/column numbers and span, it is recommended to use the [layoutOptions parameter of Grid](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total rows - 1] |
+| rowEnd | Int32 | Yes | - | The ending row number of the current element, used in conjunction with rowStart. For scenarios requiring specification of GridItem's starting row/column numbers and occupied rows/columns, it is recommended to use [Grid's layoutOptions parameter](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total rows - 1] |
 
 ### func rowStart(Int32)
 
@@ -127,13 +127,13 @@ public func rowStart(rowStart: Int32): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| rowStart | Int32 | Yes | - | The starting row number of the current element, used in conjunction with rowEnd. For scenarios requiring specification of GridItem's starting row/column numbers and span, it is recommended to use the [layoutOptions parameter of Grid](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total rows - 1] |
+| rowStart | Int32 | Yes | - | The starting row number of the current element, used in conjunction with rowEnd. For scenarios requiring specification of GridItem's starting row/column numbers and occupied rows/columns, it is recommended to use [Grid's layoutOptions parameter](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).<br/>Valid range: [0, total rows - 1] |
 
 ## Example Code
 
 ### Example 1 (Setting GridItem Position)
 
-GridItem sets its own position by configuring appropriate ColumnStart, ColumnEnd, RowStart, and RowEnd attributes. For scenarios requiring specification of GridItem's starting row/column numbers and span, it is recommended to use the [layoutOptions parameter of Grid](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).
+GridItem sets its position by configuring appropriate ColumnStart, ColumnEnd, RowStart, and RowEnd attributes. For scenarios requiring specification of GridItem's starting row/column numbers and occupied rows/columns, it is recommended to use [Grid's layoutOptions parameter](./cj-scroll-swipe-grid.md#class-gridlayoutoptions).
 
 <!-- run -->
 
@@ -155,7 +155,7 @@ class EntryView {
     func build() {
         Column() {
             Grid {
-                //Specifies the starting row number as 1 and ending row number as 4 for the current GridItem component
+                // Set the starting row number to 1 and ending row number to 4 for the current GridItem component
                 GridItem {
                     Text("4")
                         .fontSize(16)
@@ -164,9 +164,9 @@ class EntryView {
                         .height(100.percent)
                         .textAlign(TextAlign.Center)
                         .id("gridItem1")
-                }.rowStart(1).rowEnd(4).selectable(false)
+                }.rowStart(1).rowEnd(4)
 
-                //Renders GridItems in a loop, labeled 0-15
+                // Render GridItems in a loop, labeled 0-15
                 ForEach(
                     this.numbers,
                     itemGeneratorFunc: {
@@ -180,7 +180,7 @@ class EntryView {
                         }
                     }
                 )
-                //Specifies the starting column number as 1 and ending column number as 5 for the current GridItem component
+                // Set the starting column number to 1 and ending column number to 5 for the current GridItem component
                 GridItem {
                     Text("5")
                         .fontSize(16)
@@ -189,107 +189,16 @@ class EntryView {
                         .height(100.percent)
                         .textAlign(TextAlign.Center)
                         .id("gridItem2")
-                }.columnStart(1).columnEnd(5).selected(true)
+                }.columnStart(1).columnEnd(5)
             }
                 .columnsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .rowsTemplate("1fr 1fr 1fr 1fr 1fr")
                 .width(90.percent)
                 .backgroundColor(0xFAEEE0)
                 .height(300)
-                .onScrollIndex({index =>})
         }.width(100.percent).margin(top: 5)
     }
 }
 ```
 
 ![griditem](figures/griditem1.gif)
-
-### Example 2 (Setting GridItem Style)
-
-Configures GridItem style using GridItemOptions.
-
-<!-- run -->
-
-```cangjie
-package ohos_app_cangjie_entry
-
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-import std.collection.{ArrayList, HashMap}
-
-@Entry
-@Component
-class EntryView {
-    let scroller = Scroller()
-    @State
-    var numbers2: ArrayList<String> = ArrayList(["0", "1", "2"])
-
-    func build() {
-        Column() {
-            Grid() {
-                //Renders GridItems in a loop, labeled 0-15
-                ForEach(
-                    this.numbers2,
-                    itemGeneratorFunc: {
-                        num: String, idx: Int64 => ForEach(
-                            this.numbers2,
-                            itemGeneratorFunc: {
-                                num: String, idx: Int64 => GridItem(GridItemOptions(style: GridItemStyle.NONE)) {
-                                    Text(num)
-                                        .fontSize(16)
-                                        .width(100.percent)
-                                        .height(100.percent)
-                                        .textAlign(TextAlign.Center)
-                                        .focusable(true)
-                                }.backgroundColor(0xF9CF93)
-                            }
-                        )
-                    }
-                )
-            }
-                .columnsTemplate("1fr 1fr 1fr")
-                .rowsTemplate("1fr 1fr")
-                .columnsGap(4)
-                .rowsGap(4)
-                .width(60.percent)
-                .backgroundColor(0xFAEEE0)
-                .height(150)
-                .padding(4.vp)
-                .onScrollIndex({index =>})
-
-            Grid() {
-                //Renders GridItems in a loop, labeled 0-15
-                ForEach(
-                    this.numbers2,
-                    itemGeneratorFunc: {
-                        num: String, idx: Int64 => ForEach(
-                            this.numbers2,
-                            itemGeneratorFunc: {
-                                num: String, idx: Int64 => GridItem(GridItemOptions(style: GridItemStyle.PLAIN)) {
-                                    Text(num)
-                                        .fontSize(16)
-                                        .width(100.percent)
-                                        .height(100.percent)
-                                        .textAlign(TextAlign.Center)
-                                        .focusable(true)
-                                }.backgroundColor(0xF9CF93)
-                            }
-                        )
-                    }
-                )
-            }
-                .columnsTemplate("1fr 1fr 1fr")
-                .rowsTemplate("1fr 1fr")
-                .columnsGap(4)
-                .rowsGap(4)
-                .width(60.percent)
-                .backgroundColor(0xFAEEE0)
-                .height(150)
-                .padding(4.vp)
-                .onScrollIndex({index =>})
-        }.width(100.percent).margin(top: 5)
-    }
-}
-```
-
-![griditem](figures/griditem2_api.png)

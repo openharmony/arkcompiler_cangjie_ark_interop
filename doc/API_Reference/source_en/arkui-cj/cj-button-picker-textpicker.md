@@ -24,7 +24,7 @@ public init(
 )
 ```
 
-**Function:** Creates a text picker based on the specified selection range in `range`.
+**Function:** Creates a text picker based on the selection range specified by `range`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,11 +32,11 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| range | Array\<String> | Yes | - | **Named parameter.** The data selection list for the picker. Cannot be set as an empty array. If set as an empty array, it will not display; if dynamically changed to an empty array, it will maintain the current valid value display. |
-| selected | ?UInt32 | No | **Named parameter.** Sets the index value of the default selected item in the array.<br>Initial value: 0. |
-| value | ?String | No | Option.None | **Named parameter.** Sets the value of the default selected item, with lower priority than `selected`.<br>Initial value: First element value.<br>**Note:**<br>This value is only valid when displaying a text list. It is invalid when displaying an image list or an image-plus-text list. |
+| range | Array\<String> | Yes | - | **Named parameter.** The data selection list for the picker. Cannot be set as an empty array. If set as empty, nothing will be displayed; if dynamically changed to empty, the current valid values will remain displayed. |
+| selected | ?UInt32 | No | Option.None | **Named parameter.** Sets the index of the default selected item in the array.<br>Initial value: 0. |
+| value | ?String | No | Option.None | **Named parameter.** Sets the value of the default selected item, with lower priority than `selected`.<br>Initial value: First element value.<br>**Note:**<br>This value is only effective when displaying a text list. It is invalid when displaying an image list or an image-plus-text list. |
 
 ## Common Attributes/Common Events
 
@@ -52,7 +52,7 @@ Common Events: All supported.
 public func canLoop(value: Bool): This
 ```
 
-**Function:** Sets whether the picker can scroll in a loop.
+**Function:** Sets whether the picker can loop scroll.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,9 +60,9 @@ public func canLoop(value: Bool): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether the picker can scroll in a loop.<br>true: Can loop; false: Cannot loop.<br>Initial value: true. |
+| value | Bool | Yes | - | Whether the picker can loop scroll.<br>true: Can loop; false: Cannot loop.<br>Initial value: true. |
 
 ### func defaultPickerItemHeight(Length)
 
@@ -78,9 +78,9 @@ public func defaultPickerItemHeight(value: Length): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of each picker item. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of each picker item. |
 
 ## Component Events
 
@@ -98,15 +98,15 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [OnTextPickerChangeCallback](<font color="red" face="bold">please add link</font>) | Yes | - | The text and index value of the currently selected item. |
+| callback | OnTextPickerChangeCallback | Yes | - | The text and index value of the currently selected item. |
 
 ## Example Code
 
 ### Example 1 (Setting the Number of Picker Columns)
 
-This example demonstrates how to configure `range` to implement a single-column or multi-column text picker.
+This example demonstrates how to implement a single-column or multi-column text picker by configuring `range`.
 
 <!-- run -->
 
@@ -115,6 +115,11 @@ This example demonstrates how to configure `range` to implement a single-column 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
@@ -123,9 +128,9 @@ class EntryView {
     @State var fruits: Array<String> = ["apple", "banana", "orange", "peach"]
     func build() {
         Column {
-            TextPicker(this.fruits, selected: this.select)
-            .onChange({result: TextPickerResData =>
-                    nativeLog("Picker item changed, value: ${result.index}")
+            TextPicker(range: this.fruits, selected: this.select)
+            .onChange({value: String, index: UInt32  =>
+                    loggerInfo("Picker item changed, value: ${index}")
             })
         }
         .width(100.percent)

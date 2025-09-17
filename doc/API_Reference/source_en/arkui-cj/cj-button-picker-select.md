@@ -28,15 +28,15 @@ public init(values: Array<SelectOption>)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | values | Array\<[SelectOption](#class-selectoption)> | Yes | - | Sets the dropdown options. |
 
 ## Universal Attributes/Events
 
-Universal attributes: All supported.
+Universal Attributes: All supported.
 
-Universal events: All supported.
+Universal Events: All supported.
 
 ## Component Attributes
 
@@ -54,7 +54,7 @@ public func arrowPosition(value: ArrowPosition): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [ArrowPosition](#enum-arrowposition) | Yes | - | The alignment between the text and arrow of dropdown menu items.<br>Initial value: ArrowPosition.END. |
 
@@ -77,11 +77,11 @@ public func font(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Medium | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage settings are not supported. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage values are not supported. |
 | family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "sans-serif" | **Named parameter.** Specifies the font family. |
 
 ### func fontColor(ResourceColor)
@@ -98,9 +98,9 @@ public func fontColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the dropdown button itself.<br>Initial value: @r(sys.color.ohos_id_color_text_primary) mixed with the transparency of @r(sys.color.ohos_id_alpha_content_primary). |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the dropdown button itself.<br>Initial value: @r(sys.color.ohos_id_color_text_primary) blended with the transparency of @r(sys.color.ohos_id_alpha_content_primary). |
 
 ### func menuAlign(MenuAlignType, Offset)
 
@@ -116,10 +116,10 @@ public func menuAlign(alignType!: MenuAlignType, offset!: Offset): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | alignType | [MenuAlignType](#enum-menualigntype) | Yes | - | **Named parameter.** The alignment type.<br/>Initial value: MenuAlignType.START. |
-| offset | [Offset](#class-menuoffset) | Yes | - | **Named parameter.** The offset of the dropdown menu relative to the dropdown button after alignment.<br>Initial value: MenuOffset(0, 0). |
+| offset | [Offset](./cj-common-types.md#class-offset) | Yes | - | **Named parameter.** The offset of the dropdown menu relative to the dropdown button after alignment.<br>Initial value: MenuOffset(0, 0). |
 
 ### func menuBackgroundBlurStyle(BlurStyle)
 
@@ -135,7 +135,7 @@ public func menuBackgroundBlurStyle(value: BlurStyle): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | Yes | - | The background blur material of the dropdown menu.<br/>Initial value: BlurStyle.COMPONENT_ULTRA_THICK. |
 
@@ -153,7 +153,7 @@ public func menuBackgroundColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the dropdown menu.<br>Initial value: Color.Transparent. |
 
@@ -171,7 +171,7 @@ public func optionBgColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of dropdown menu items.<br>Initial value: Color.Transparent. |
 
@@ -194,11 +194,11 @@ public func optionFont(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Medium | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage settings are not supported. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage values are not supported. |
 | family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "sans-serif" | **Named parameter.** Specifies the font family. |
 
 ### func optionFontColor(ResourceColor)
@@ -215,7 +215,7 @@ public func optionFontColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of dropdown menu items.<br>Initial value: @r(sys.color.ohos_id_color_text_primary). |
 
@@ -225,9 +225,9 @@ public func optionFontColor(value: ResourceColor): This
 public func optionHeight(value: Length): This
 ```
 
-**Function:** Sets the maximum height of the dropdown menu display based on the specified Length type value. The initial maximum height of the dropdown menu is 80% of the available screen height. The set maximum height cannot exceed the initial maximum height.
+**Function:** Sets the maximum height of the dropdown menu based on the specified Length value. The initial maximum height of the dropdown menu is 80% of the available screen height. The set maximum height cannot exceed this initial value.
 
-When set to a negative value or zero, the attribute does not take effect, and the maximum height of the dropdown menu reverts to the initial value (80% of the available screen height).
+When set to a negative value or zero, the attribute does not take effect, and the dropdown menu's maximum height reverts to the initial value (80% of the available screen height).
 
 Valid values are greater than 0. If the actual height of all dropdown menu items is less than the set height, the dropdown menu height adjusts to the actual height.
 
@@ -237,9 +237,9 @@ Valid values are greater than 0. If the actual height of all dropdown menu items
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The maximum height of the dropdown menu display. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The maximum height of the dropdown menu. |
 
 ### func optionWidth(OptionWidthMode)
 
@@ -255,7 +255,7 @@ public func optionWidth(value: OptionWidthMode): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [OptionWidthMode](./cj-common-types.md#enum-optionwidthmode) | Yes | - | The width of dropdown menu items. |
 
@@ -265,7 +265,7 @@ public func optionWidth(value: OptionWidthMode): This
 public func optionWidth(value: Length): This
 ```
 
-**Function:** Sets the width of dropdown menu items based on the specified Length type value. Percentage settings are not supported.
+**Function:** Sets the width of dropdown menu items based on the specified Length value. Percentage values are not supported.
 
 When set to an invalid value or less than the minimum width (56.vp), the attribute does not take effect, and the menu item width reverts to the initial value (2 grid units).
 
@@ -275,9 +275,9 @@ When set to an invalid value or less than the minimum width (56.vp), the attribu
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of dropdown menu items. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of dropdown menu items. |
 
 ### func selected(Int32)
 
@@ -293,7 +293,7 @@ public func selected(value: Int32): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | Int32 | Yes | - | The index of the initial selected option in the dropdown menu. |
 
@@ -311,11 +311,11 @@ public func selectedOptionBgColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_component_activated) mixed with the transparency of @r(sys.color.ohos_id_alpha_highlight_bg). |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_component_activated) blended with the transparency of @r(sys.color.ohos_id_alpha_highlight_bg). |
 
-### func selectedOptionFont(FontStyle, FontWeight, Length, String)
+### func selectedOptionFont(FFontStyle, FontWeight, Length, String)
 
 ```cangjie
 public func selectedOptionFont(
@@ -334,11 +334,11 @@ public func selectedOptionFont(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Medium | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the text size. Percentage settings are not supported. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the text size. Percentage values are not supported. |
 | family | String | No | "sans-serif" | **Named parameter.** Specifies the font list. |
 
 ### func selectedOptionFontColor(ResourceColor)
@@ -355,7 +355,7 @@ public func selectedOptionFontColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_text_primary_activated) |
 
@@ -365,7 +365,7 @@ public func selectedOptionFontColor(value: ResourceColor): This
 public func space(value: Length): This
 ```
 
-**Function:** Sets the spacing between the text and arrow of dropdown menu items based on the specified Length type value. Percentage settings are not supported. If the value is less than or equal to 8, the initial value is used.
+**Function:** Sets the spacing between the text and arrow of dropdown menu items based on the specified Length value. Percentage values are not supported. If set to a value less than or equal to 8, the initial value is used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -373,9 +373,9 @@ public func space(value: Length): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The spacing between the text and arrow of dropdown menu items.<br>Initial value: 8 |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The spacing between the text and arrow of dropdown menu items.<br>Initial value: 8 |
 
 ### func value(ResourceStr)
 
@@ -383,7 +383,7 @@ public func space(value: Length): This
 public func value(value: ResourceStr): This
 ```
 
-**Function:** Sets the text content of the dropdown button itself. By default, it is replaced with the menu item text when a menu item is selected.
+**Function:** Sets the text content of the dropdown button itself. By default, it is replaced with the menu item text when an item is selected.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -391,7 +391,7 @@ public func value(value: ResourceStr): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the dropdown button itself. If the text length exceeds the column width, it is truncated. |
 
@@ -411,11 +411,11 @@ public func onSelect(callback: OnSelectCallback): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [OnSelectCallback](<font color="red" face="bold">please add link</font>) | Yes | - | The index and value of the selected item. |## Basic Type Definitions
+| callback | OnSelectCallback | Yes | - | The index and value of the selected item. |## Basic Type Definitions
 
-## class SelectOption
+### class SelectOption
 
 ```cangjie
 public class SelectOption {
@@ -425,7 +425,7 @@ public class SelectOption {
 }
 ```
 
-**Function:** An object for configuring dropdown menu component parameters.
+**Function:** An object for setting parameters of the dropdown menu component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -441,7 +441,7 @@ public var icon: ResourceStr
 
 **Type:** ResourceStr
 
-**Read-Write Attribute:** Read-Write
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -457,13 +457,13 @@ public var value: ResourceStr
 
 **Type:** ResourceStr
 
-**Read-Write Attribute:** Read-Write
+**Read-Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### init(ResourceStr, ResourceStr)
+#### init(ResourceStr, ResourceStr)
 
 ```cangjie
 public init(value!: ResourceStr, icon!: ResourceStr)
@@ -477,7 +477,7 @@ public init(value!: ResourceStr, icon!: ResourceStr)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Content of the dropdown option. |
 | icon | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Icon for the dropdown option. |
@@ -496,7 +496,7 @@ public init(value: String, icon!: String)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | String | Yes | - | Content of the dropdown option. |
 | icon | String | Yes | - | **Named parameter.** Icon for the dropdown option. |
@@ -515,10 +515,10 @@ public init(value: String, icon!: AppResource)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | String | Yes | - | Content of the dropdown option. |
-| icon | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Icon for the dropdown option. |
+| icon | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 #### init(AppResource, String)
 
@@ -534,9 +534,9 @@ public init(value: AppResource, icon!: String)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Content of the dropdown option. |
+| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Content of the dropdown option. |
 | icon | String | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 #### init(AppResource, AppResource)
@@ -553,10 +553,10 @@ public init(value: AppResource, icon!: AppResource)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Content of the dropdown option. |
-| icon | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Icon for the dropdown option. |
+| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Content of the dropdown option. |
+| icon | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 ### enum ArrowPosition
 
@@ -568,7 +568,7 @@ public enum ArrowPosition <: Equatable<ArrowPosition> {
 }
 ```
 
-**Function:** Alignment between the text and arrow in a dropdown menu item.
+**Function:** Alignment between the text and arrow of a dropdown menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,11 +608,11 @@ START
 public operator func !=(other: ArrowPosition): Bool
 ```
 
-**Function:** Checks if two enum values are not equal.
+**Function:** Compares whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [ArrowPosition](#enum-arrowposition) | Yes | - | Another enum value to compare. |
 
@@ -620,7 +620,7 @@ public operator func !=(other: ArrowPosition): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are not equal, otherwise `false`. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 #### func ==(ArrowPosition)
 
@@ -628,11 +628,11 @@ public operator func !=(other: ArrowPosition): Bool
 public operator func ==(other: ArrowPosition): Bool
 ```
 
-**Function:** Checks if two enum values are equal.
+**Function:** Compares whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [ArrowPosition](#enum-arrowposition) | Yes | - | Another enum value to compare. |
 
@@ -640,7 +640,7 @@ public operator func ==(other: ArrowPosition): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are equal, otherwise `false`. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### enum MenuAlignType
 
@@ -681,7 +681,7 @@ CENTER
 END
 ```
 
-**Function:** Aligns to the end based on language direction.
+**Function:** Aligns to the end according to the language direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -693,7 +693,7 @@ END
 START
 ```
 
-**Function:** Aligns to the start based on language direction.
+**Function:** Aligns to the start according to the language direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -705,11 +705,11 @@ START
 public operator func !=(other: MenuAlignType): Bool
 ```
 
-**Function:** Checks if two enum values are not equal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [MenuAlignType](#enum-menualigntype) | Yes | - | Another enum value to compare. |
 
@@ -717,7 +717,7 @@ public operator func !=(other: MenuAlignType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are not equal, otherwise `false`. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 #### func ==(MenuAlignType)
 
@@ -725,11 +725,11 @@ public operator func !=(other: MenuAlignType): Bool
 public operator func ==(other: MenuAlignType): Bool
 ```
 
-**Function:** Checks if two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [MenuAlignType](#enum-menualigntype) | Yes | - | Another enum value to compare. |
 
@@ -737,11 +737,11 @@ public operator func ==(other: MenuAlignType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are equal, otherwise `false`. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## Example Code
 
-### Example 1 (Configuring a Dropdown Menu)
+### Example 1 (Setting a Dropdown Menu)
 
 This example implements a dropdown menu by configuring SelectOptions.
 
@@ -753,6 +753,8 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
 @Entry
 @Component
 class EntryView {
@@ -761,12 +763,12 @@ class EntryView {
     @State var space: Int64 = 8
 
     @State var values1: Array<SelectOption> = [
-            SelectOption("aaa", icon: @r(app.media.startIcon)),
-            SelectOption("bbb", icon: @r(app.media.startIcon)),
-            SelectOption("ccc", icon: @r(app.media.startIcon)),
-            SelectOption("ddd", icon: @r(app.media.startIcon))]
+            SelectOption(value: "aaa", icon: @r(app.media.startIcon)),
+            SelectOption(value: "bbb", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ccc", icon: @r(app.media.startIcon)),
+            SelectOption(value: "ddd", icon: @r(app.media.startIcon))]
 
-    @State var arrow: ArrowPosition = ArrowPosition.END
+    @State var arrow: ArrowPosition = ArrowPosition.End
 
     func build() {
         Column {
@@ -778,7 +780,7 @@ class EntryView {
             .selectedOptionFont(size: 16.vp, weight: FontWeight.W400)
             .space(this.space)
             .arrowPosition(this.arrow)
-            .menuAlign(MenuAlignType.START, offset: MenuOffset(0, 0))
+            .menuAlign(alignType: MenuAlignType.Start, offset: Offset(0, 0))
             .optionWidth(200)
             .optionHeight(300)
             .onSelect({ index: Int32, text: String =>
@@ -793,71 +795,3 @@ class EntryView {
 ```
 
 ![selectExample](./figures/selectExample.png)
-
-### Example 2 (Configuring Divider Style)
-
-This example implements custom divider styles.
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("Option 1", icon: ""),
-                        SelectOption("Option 2", icon: ""),
-                        SelectOption("Option 3", icon: ""),
-                        SelectOption("Option 4", icon: "")
-                    ]
-                )
-                    .value("Please select")
-                    .divider(
-                        options: DividerOptions(strokeWidth: 5, startMargin: 15, endMargin: 1,
-                        color: Color(0XFFD700)))
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```
-
-![selectSample2](./figures/selectSample2.PNG)### Example 3 (Setting No Divider Style)
-
-This example demonstrates a dropdown menu without dividers by configuring the divider as null.
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    func build() {
-        Row {
-            Column {
-                Select(
-                    [
-                        SelectOption("Option 1", icon: ""),
-                        SelectOption("Option 2", icon: ""),
-                        SelectOption("Option 3", icon: ""),
-                        SelectOption("Option 4", icon: "")
-                    ]
-                ).value("Please select").divider(options: Option.None)
-            }.width(100.percent)
-        }.height(100.percent)
-    }
-}
-```

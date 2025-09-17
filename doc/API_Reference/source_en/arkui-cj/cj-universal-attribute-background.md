@@ -14,7 +14,7 @@ import kit.ArkUI.*
 public func backdropBlur(value: Float64): This
 ```
 
-**Description:** Sets the background blur effect.
+**Function:** Sets the background blur effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,7 +32,7 @@ public func backdropBlur(value: Float64): This
 public func backgroundColor(value: ResourceColor): This
 ```
 
-**Description:** Sets the background color of the component.
+**Function:** Sets the background color of the component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +42,7 @@ public func backgroundColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](#) | Yes | - | Background color. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color. |
 
 ## func backgroundImage(ResourceStr)
 
@@ -50,7 +50,7 @@ public func backgroundColor(value: ResourceColor): This
 public func backgroundImage(src: ResourceStr): This
 ```
 
-**Description:** Sets the background image of the component.
+**Function:** Sets the background image of the component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +60,7 @@ public func backgroundImage(src: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](#) | Yes | - | Image resource path. |
+| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Image resource path. |
 
 ## func backgroundImage(ResourceStr, ImageRepeat)
 
@@ -68,7 +68,7 @@ public func backgroundImage(src: ResourceStr): This
 public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 ```
 
-**Description:** Sets the background image and repeat mode of the component.
+**Function:** Sets the background image and repeat mode of the component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,8 +78,8 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](#) | Yes | - | Image resource path. |
-| repeat | [ImageRepeat](#) | Yes | - | Image repeat mode. |
+| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Image resource path. |
+| repeat | [ImageRepeat](./cj-common-types.md#enum-imagerepeat) | Yes | - | Image repeat mode. |
 
 ## func backgroundImagePosition(Alignment)
 
@@ -87,7 +87,7 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 public func backgroundImagePosition(value: Alignment): This
 ```
 
-**Description:** Sets the alignment of the background image.
+**Function:** Sets the alignment of the background image.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,7 +97,7 @@ public func backgroundImagePosition(value: Alignment): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Alignment](#) | Yes | - | Alignment mode. |
+| value | [Alignment](./cj-common-types.md#enum-alignment) | Yes | - | Alignment mode. |
 
 ## func backgroundImagePosition(Length, Length)
 
@@ -105,7 +105,7 @@ public func backgroundImagePosition(value: Alignment): This
 public func backgroundImagePosition(x!: Length = 0.vp, y!: Length = 0.vp): This
 ```
 
-**Description:** Sets the position of the background image.
+**Function:** Sets the position of the background image.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +124,7 @@ public func backgroundImagePosition(x!: Length = 0.vp, y!: Length = 0.vp): This
 public func backgroundImageSize(value: ImageSize): This
 ```
 
-**Description:** Sets the size of the background image.
+**Function:** Sets the size of the background image.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +134,7 @@ public func backgroundImageSize(value: ImageSize): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ImageSize](#) | Yes | - | Image size. |
+| value | [ImageSize](./cj-common-types.md#enum-imagesize) | Yes | - | Image size. |
 
 ## func backgroundImageSize(Length, Length)
 
@@ -142,7 +142,7 @@ public func backgroundImageSize(value: ImageSize): This
 public func backgroundImageSize(width!: Length = 0.vp, height!: Length = 0.vp): This
 ```
 
-**Description:** Sets the width and height of the background image.
+**Function:** Sets the width and height of the background image.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,7 +178,7 @@ public enum BlurStyle <: Equatable<BlurStyle> {
 }
 ```
 
-**Description:** Blur settings.
+**Function:** Blur settings.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,7 +194,7 @@ public enum BlurStyle <: Equatable<BlurStyle> {
 BackgroundRegular
 ```
 
-**Description:** Medium-depth background blur.
+**Function:** Medium-distance depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,7 +206,7 @@ BackgroundRegular
 BackgroundThick
 ```
 
-**Description:** Far-depth background blur.
+**Function:** Far-distance depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,7 +218,7 @@ BackgroundThick
 BackgroundThin
 ```
 
-**Description:** Near-depth background blur.
+**Function:** Close-distance depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,19 +230,19 @@ BackgroundThin
 BackgroundUltraThick
 ```
 
-**Description:** Ultra-far-depth background blur.
+**Function:** Ultra-far-distance depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### ComponentRegular
+#### ComponentRegular
 
 ```cangjie
 ComponentRegular
 ```
 
-**Description:** Component normal material blur.
+**Function:** Component regular material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,7 +254,7 @@ ComponentRegular
 ComponentThick
 ```
 
-**Description:** Component thick material blur.
+**Function:** Component thick material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,19 +266,19 @@ ComponentThick
 ComponentThin
 ```
 
-**Description:** Component thin material blur.
+**Function:** Component thin material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### ComponentUltraThick
+#### ComponentUltraThick
 
 ```cangjie
 ComponentUltraThick
 ```
 
-**Description:** Component ultra-thick material blur.
+**Function:** Component ultra-thick material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -290,7 +290,7 @@ ComponentUltraThick
 ComponentUltraThin
 ```
 
-**Description:** Component ultra-thin material blur.
+**Function:** Component ultra-thin material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,7 +302,7 @@ ComponentUltraThin
 None
 ```
 
-**Description:** Disables blur.
+**Function:** Disables blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,7 +314,7 @@ None
 Regular
 ```
 
-**Description:** Normal thickness material blur.
+**Function:** Regular thickness material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,7 +326,7 @@ Regular
 Thick
 ```
 
-**Description:** Thick material blur.
+**Function:** Thick material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,7 +338,7 @@ Thick
 Thin
 ```
 
-**Description:** Thin material blur.
+**Function:** Thin material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -350,7 +350,7 @@ Thin
 public operator func !=(other: BlurStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
@@ -370,7 +370,7 @@ public operator func !=(other: BlurStyle): Bool
 public operator func ==(other: BlurStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 

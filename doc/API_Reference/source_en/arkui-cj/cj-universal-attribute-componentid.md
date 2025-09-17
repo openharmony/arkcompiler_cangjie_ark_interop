@@ -1,10 +1,10 @@
 # Component Identification
 
-The `id` serves as the unique identifier for a component and must be unique within the entire application. This module provides interfaces related to component identification, enabling retrieval of attributes for a specified component by its `id`, as well as the functionality to send events to a specified component by its `id`.
+The `id` serves as the unique identifier for a component within the entire application. This module provides interfaces related to component identification, enabling retrieval of attributes for a specified component by its `id`, as well as the functionality to send events to a component with a given `id`.
 
 > **Note:**
 >
-> If multiple `id` or `key` values are set for the same component, the last one set takes effect.
+> If multiple `id` or `key` values are set for the same component, the last one configured takes effect.
 
 ## Import Module
 
@@ -26,15 +26,15 @@ public func getInspectorByKey(id: String): String
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| id        | String | Yes      | -       | The `id` of the component whose attributes are to be retrieved. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| id | String | Yes | - | The `id` of the component whose attributes are to be retrieved. |
 
 **Return Value:**
 
-| Type   | Description |
-|:-------|:------------|
-| String | A JSON-formatted string containing the component's attribute list.<br>**Note:** <br>The string includes the component's tag, `id`, position information (coordinates relative to the top-left corner of the window), and relevant attribute information for testing purposes. |
+| Type | Description |
+|:----|:----|
+| String | A JSON-formatted string listing the component's attributes.<br>**Note:** <br>The string includes the component's tag, `id`, positional information (coordinates relative to the top-left corner of the window), and relevant attribute information for testing purposes. |
 
 ## func getInspectorTree()
 
@@ -42,7 +42,7 @@ public func getInspectorByKey(id: String): String
 public func getInspectorTree(): String
 ```
 
-**Function:** Retrieves the component tree and component attributes. This interface is intended solely for application testing purposes. Due to its time-consuming nature, its use is not recommended.
+**Function:** Retrieves the component tree along with component attributes. This interface is intended solely for application testing purposes. Due to its time-consuming nature, its use is not recommended.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,9 +50,9 @@ public func getInspectorTree(): String
 
 **Return Value:**
 
-| Type   | Description |
-|:-------|:------------|
-| String | A JSON object containing the component tree and component attribute list. |
+| Type | Description |
+|:----|:----|
+| String | A JSON object containing the component tree and attribute list. |
 
 ## func sendEventByKey(String, IntNative, String)
 
@@ -68,16 +68,16 @@ public func sendEventByKey(id: String, action: IntNative, params: String): Bool
 
 **Parameters:**
 
-| Parameter | Type      | Required | Default | Description |
-|:----------|:----------|:---------|:--------|:------------|
-| id        | String    | Yes      | -       | The `id` of the component to trigger the event. |
-| action    | IntNative | Yes      | -       | The type of event to trigger. Currently supported values:<br/>- Click event: 10.<br/>- Long press event: 11. |
-| params    | String    | Yes      | -       | Event parameters. Pass an empty string `""` if no parameters are required. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| id | String | Yes | - | The `id` of the component to trigger the event. |
+| action | IntNative | Yes | - | The type of event to trigger. Currently supported values:<br/>- Click event: 10.<br/>- Long press event: 11. |
+| params | String | Yes | - | Event parameters. Pass an empty string `""` if no parameters are required. |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Bool | Returns `false` if the specified `id` is not found; otherwise, returns `true`. |
 
 ## func sendKeyEvent(KeyEvent)
@@ -94,14 +94,14 @@ public func sendKeyEvent(event: KeyEvent): Bool
 
 **Parameters:**
 
-| Parameter | Type                          | Required | Default | Description |
-|:----------|:------------------------------|:---------|:--------|:------------|
-| event     | [KeyEvent](./cj-universal-event-key.md#class-keyevent) | Yes      | -       | The key event. For details on the `event` parameter, refer to [KeyEvent](./cj-universal-event-key.md#class-keyevent). |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| event | [KeyEvent](./cj-universal-event-key.md#class-keyevent) | Yes | - | The key event. For details on the `event` parameter, refer to [KeyEvent](./cj-universal-event-key.md#class-keyevent). |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Bool | Returns `false` if the event fails to send; otherwise, returns `true`. |
 
 ## func sendMouseEvent(MouseEvent)
@@ -118,14 +118,14 @@ public func sendMouseEvent(event: MouseEvent): Bool
 
 **Parameters:**
 
-| Parameter | Type                            | Required | Default | Description |
-|:----------|:--------------------------------|:---------|:--------|:------------|
-| event     | [MouseEvent](./cj-universal-event-mouse.md#class-mouseevent) | Yes      | -       | The mouse event. For details on the `event` parameter, refer to [MouseEvent](./cj-universal-event-mouse.md#class-mouseevent). |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| event | [MouseEvent](./cj-universal-event-mouse.md#class-mouseevent) | Yes | - | The mouse event. For details on the `event` parameter, refer to [MouseEvent](./cj-universal-event-mouse.md#class-mouseevent). |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Bool | Returns `false` if the event fails to send; otherwise, returns `true`. |
 
 ## func sendTouchEvent(TouchObject)
@@ -142,14 +142,14 @@ public func sendTouchEvent(event: TouchObject): Bool
 
 **Parameters:**
 
-| Parameter | Type                              | Required | Default | Description |
-|:----------|:----------------------------------|:---------|:--------|:------------|
-| event     | [TouchObject](./cj-universal-event-touch.md#class-touchobject) | Yes      | -       | The position triggering the touch event. For details on the `event` parameter, refer to the `TouchObject` section in [TouchEvent](./cj-universal-event-touch.md#class-touchevent). |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| event | [TouchObject](./cj-universal-event-touch.md#class-touchobject) | Yes | - | The touch event location. For details on the `event` parameter, refer to `TouchObject` in [TouchEvent](./cj-universal-event-touch.md#class-touchevent). |
 
 **Return Value:**
 
 | Type | Description |
-|:-----|:------------|
+|:----|:----|
 | Bool | Returns `false` if the event fails to send; otherwise, returns `true`. |
 
 ## func id(String)
@@ -158,7 +158,7 @@ public func sendTouchEvent(event: TouchObject): Bool
 public func id(value: String): This
 ```
 
-**Function:** Sets the ID of the component.
+**Function:** Sets the `id` of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,9 +166,9 @@ public func id(value: String): This
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| value     | String | Yes      | -       | The unique identifier of the component. Uniqueness must be ensured by the user. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | String | Yes | - | The unique identifier of the component. Uniqueness must be ensured by the user. |
 
 ## func key(String)
 
@@ -176,7 +176,7 @@ public func id(value: String): This
 public func key(value: String): This
 ```
 
-**Function:** Sets the key value of the component.
+**Function:** Sets the key value of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,6 +184,6 @@ public func key(value: String): This
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| value     | String | Yes      | -       | The unique identifier of the component. Uniqueness must be ensured by the user. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | String | Yes | - | The unique identifier of the component. Uniqueness must be ensured by the user. |

@@ -2,9 +2,9 @@
 
 The ScrollBar component is used in conjunction with scrollable components such as [List](./cj-scroll-swipe-list.md#class-list), [Grid](./cj-scroll-swipe-grid.md#class-grid), and [Scroll](./cj-scroll-swipe-scroll.md#class-scroll).
 
-> **NOTE:**
+> **Note:**
 >
-> When the main axis size of ScrollBar is not set, it adopts the maxSize from the parent component's <!--[-->layout constraints<!--]()-->. If the parent component of ScrollBar contains a scrollable component (e.g., [List](./cj-scroll-swipe-list.md#class-list), [Grid](./cj-scroll-swipe-grid.md#class-grid), or [Scroll](./cj-scroll-swipe-scroll.md#class-scroll)), it is recommended to set the main axis size of ScrollBar; otherwise, the main axis size of ScrollBar may become infinite.
+> When the main axis size of ScrollBar is not set, it adopts the maxSize from the parent component's <!--[-->layout constraints<!--]()-->. If the parent component of ScrollBar contains a scrollable component (e.g., [List](./cj-scroll-swipe-list.md#class-list), [Grid](./cj-scroll-swipe-grid.md#class-grid), or [Scroll](./cj-scroll-swipe-scroll.md#class-scroll)), it is recommended to explicitly set the main axis size of ScrollBar. Otherwise, the main axis size of ScrollBar may become infinite.
 
 ## Import Module
 
@@ -29,20 +29,20 @@ public init(
 )
 ```
 
-**Function:** Creates a scrollbar component.
+**Function:** Creates a scroll bar component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| scroller | [Scroller](./cj-common-types.md#class-scroller) | Yes | - | The controller for the scrollable component. Used to bind with the scrollable component. |
-| direction | [ScrollBarDirection](./cj-common-types.md#enum-scrollbardirection) | No | ScrollBarDirection.Vertical | The direction of the scrollbar, controlling the scrolling of the scrollable component in the corresponding direction. |
-| state | [BarState](./cj-common-types.md#enum-barstate) | No | BarState.Auto | The state of the scrollbar. |
-| child | () -> Unit | No | { => } | The child component within the container. |
+| scroller | [Scroller](./cj-common-types.md#class-scroller) | Yes | - | Controller for the scrollable component. Used to bind with the scrollable component. |
+| direction | [ScrollBarDirection](./cj-common-types.md#enum-scrollbardirection) | No | ScrollBarDirection.Vertical | Direction of the scroll bar, controlling scrolling in the corresponding direction of the scrollable component. |
+| state | [BarState](./cj-common-types.md#enum-barstate) | No | BarState.Auto | State of the scroll bar. |
+| child | () -> Unit | No | { => } | Child component within the container. |
 
 ## Common Attributes/Common Events
 
@@ -53,7 +53,7 @@ Common Events: All supported
 
 ### Example 1 (With Child Component)
 
-This example demonstrates the scrollbar style when the ScrollBar component has a child component.
+This example demonstrates the scroll bar style when the ScrollBar component has a child component.
 
 <!-- run -->
 
@@ -70,9 +70,9 @@ class EntryView {
     let scroller = Scroller()
     func build() {
         Column() {
-            Stack(Alignment.End) {
+            Stack(alignContent: Alignment.End) {
                 Scroll(this.scroller) {
-                    Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+                    Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                         ForEach(this.arr, itemGeneratorFunc: { item: Int64, idx: Int64 =>
                             Row() {
                                 Text(item.toString())
@@ -91,7 +91,7 @@ class EntryView {
                 .width(90.percent)
                 .scrollBar(BarState.Off)
                 .scrollable(ScrollDirection.Vertical)
-                ScrollBar(this.scroller, ScrollBarDirection.Vertical, BarState.Auto) {
+                ScrollBar(scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto) {
                     Text("")
                     .width(20)
                     .height(100)
@@ -110,7 +110,7 @@ class EntryView {
 
 ### Example 2 (Without Child Component)
 
-This example demonstrates the scrollbar style when the ScrollBar component has no child component.
+This example demonstrates the scroll bar style when the ScrollBar component has no child component.
 
 <!-- run -->
 
@@ -127,9 +127,9 @@ class EntryView {
     let scroller = Scroller()
     func build() {
         Column() {
-            Stack(Alignment.End) {
+            Stack(alignContent: Alignment.End) {
                 Scroll(this.scroller) {
-                    Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) {
+                    Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
                         ForEach(
                             this.arr,
                             itemGeneratorFunc: {
@@ -141,7 +141,7 @@ class EntryView {
                         )
                     }.margin(right: 15)
                 }.width(90.percent).scrollBar(BarState.Off).scrollable(ScrollDirection.Vertical)
-                ScrollBar(this.scroller, ScrollBarDirection.Vertical, BarState.Auto) {}
+                ScrollBar(scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto) {}
             }
         }
     }

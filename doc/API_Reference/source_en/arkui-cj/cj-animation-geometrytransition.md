@@ -18,13 +18,13 @@ public func geometryTransition(id: String, followWithoutTransition!: Bool = fals
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| id | String | Yes | - | Used to establish binding relationships. Setting an empty string clears the binding to avoid participation in shared behavior. The ID can be changed to re-establish binding relationships. Only two components can be bound to the same ID, and they must play different in/out roles. Multiple components cannot share the same ID. |
+| id | String | Yes | - | Sets the binding relationship. Setting id to an empty string clears the binding to avoid participation in shared behavior. The id can be changed to re-establish binding relationships. Only two components can be bound to the same id, and they must play different in/out roles. Multiple components cannot share the same id. |
 | followWithoutTransition | Bool | No | false | Whether to follow without transition animation. |
 
 ## Example Code
@@ -42,7 +42,7 @@ import kit.LocalizationKit.*
 class EntryView {
     @State var isShow: Bool = false
     func build() {
-        Stack(Alignment.Center) {
+        Stack(alignContent:Alignment.Center) {
             if (this.isShow) {
                 Image(@r(app.media.startIcon))
                     .autoResize(false)
@@ -70,7 +70,7 @@ class EntryView {
                     .transition(TransitionEffect.OPACITY)
             }
         }.onClick({
-            event => animateTo(AnimateParam(duration: 1000), ({=> this.isShow = !this.isShow}))
+            event => getUIContext().animateTo(AnimateParam(duration: 1000), ({=> this.isShow = !this.isShow}))
         })
     }
 }

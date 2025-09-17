@@ -12,10 +12,10 @@ import kit.ArkGraphics2D.*
 
 API sample code usage instructions:
 
-- If the sample code begins with a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## func create(ColorSpace)
 
@@ -27,13 +27,13 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| colorSpaceName | [ColorSpace](#enum-colorspace) | Yes | - | Enumeration value for standard color gamut types. UNKNOWN and CUSTOM cannot be used to directly create color gamut objects. |
+| colorSpaceName | [ColorSpace](#enum-colorspace) | Yes | - | Standard color gamut type enumeration value. UNKNOWN and CUSTOM cannot be used to directly create color gamut objects. |
 
 **Return Value:**
 
@@ -43,11 +43,11 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
+  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type.2.Parameter verification failed. |
   | 18600001 | The parameter value is abnormal. |
 
 ## func create(ColorSpacePrimaries, Float32)
@@ -60,13 +60,13 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| primaries | [ColorSpacePrimaries](#class-colorspaceprimaries) | Yes | - | Standard tristimulus values for the color gamut. |
+| primaries | [ColorSpacePrimaries](#class-colorspaceprimaries) | Yes | - | Standard tristimulus values of the color gamut. |
 | gamma | Float32 | Yes | - | Gamma value of the color gamut. |
 
 **Return Value:**
@@ -77,11 +77,11 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed. |
+  | 401 | Parameter error. Possible cause: 1.Incorrect parameter type.2.Parameter verification failed. |
   | 18600001 | The parameter value is abnormal. |
 
 ## class ColorSpaceManager
@@ -98,7 +98,7 @@ public class ColorSpaceManager {}
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func getColorSpaceName()
 
@@ -110,17 +110,17 @@ public func getColorSpaceName(): ColorSpace
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ColorSpace](#enum-colorspace) | Returns the enumeration value of the color gamut type. |
+| [ColorSpace](#enum-colorspace) | Returns the color gamut type enumeration value. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -150,7 +150,7 @@ public func getGamma(): Float32
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
@@ -160,7 +160,7 @@ public func getGamma(): Float32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -190,7 +190,7 @@ public func getWhitePoint(): Array<Float32>
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
@@ -200,7 +200,7 @@ public func getWhitePoint(): Array<Float32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -236,11 +236,11 @@ public class ColorSpacePrimaries {
 }
 ```
 
-**Function:** Standard tristimulus values (red, green, blue) and white point of the color gamut, represented by (x, y) coordinates in the CIE XYZ color space.
+**Function:** Standard tristimulus values (red, green, blue) and white point of the color gamut, represented using (x, y) coordinates in the CIE XYZ color space.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var blueX
 
@@ -252,11 +252,11 @@ public var blueX: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var blueY
 
@@ -268,11 +268,11 @@ public var blueY: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var greenX
 
@@ -284,11 +284,11 @@ public var greenX: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var greenY
 
@@ -300,11 +300,11 @@ public var greenY: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var redX
 
@@ -316,11 +316,11 @@ public var redX: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var redY
 
@@ -332,11 +332,11 @@ public var redY: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var whitePointX
 
@@ -348,11 +348,11 @@ public var whitePointX: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### var whitePointY
 
@@ -364,11 +364,11 @@ public var whitePointY: Float32
 
 **Type:** Float32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### init(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
 
@@ -380,7 +380,7 @@ public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blue
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -434,11 +434,11 @@ public enum ColorSpace <: Equatable<ColorSpace> & ToString {
 }
 ```
 
-**Function:** Enumeration of color gamut types.
+**Function:** Color gamut type enumeration.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parent Types:**
 
@@ -449,11 +449,11 @@ public enum ColorSpace <: Equatable<ColorSpace> & ToString {
 AdobeRgb1998
 ```
 
-**Function:** RGB color gamut is Adobe RGB (1998) type; transfer function is Adobe RGB (1998) type; encoding range is Full type.
+**Function:** RGB color gamut of Adobe RGB (1998) type; transfer function of Adobe RGB (1998) type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### AdobeRgb1998Limit
 
@@ -461,11 +461,11 @@ AdobeRgb1998
 AdobeRgb1998Limit
 ```
 
-**Function:** RGB color gamut is Adobe RGB (1998) type; transfer function is Adobe RGB (1998) type; encoding range is Limit type.
+**Function:** RGB color gamut of Adobe RGB (1998) type; transfer function of Adobe RGB (1998) type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt2020Hlg
 
@@ -473,11 +473,11 @@ AdobeRgb1998Limit
 Bt2020Hlg
 ```
 
-**Function:** RGB color gamut is BT2020 type; transfer function is HLG type; encoding range is Full type.
+**Function:** RGB color gamut of BT2020 type; transfer function of HLG type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt2020HlgLimit
 
@@ -485,11 +485,11 @@ Bt2020Hlg
 Bt2020HlgLimit
 ```
 
-**Function:** RGB color gamut is BT2020 type; transfer function is HLG type; encoding range is Limit type.
+**Function:** RGB color gamut of BT2020 type; transfer function of HLG type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt2020Pq
 
@@ -497,11 +497,11 @@ Bt2020HlgLimit
 Bt2020Pq
 ```
 
-**Function:** RGB color gamut is BT2020 type; transfer function is PQ type; encoding range is Full type.
+**Function:** RGB color gamut of BT2020 type; transfer function of PQ type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt2020PqLimit
 
@@ -509,11 +509,11 @@ Bt2020Pq
 Bt2020PqLimit
 ```
 
-**Function:** RGB color gamut is BT2020 type; transfer function is PQ type; encoding range is Limit type.
+**Function:** RGB color gamut of BT2020 type; transfer function of PQ type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt601Ebu
 
@@ -521,11 +521,11 @@ Bt2020PqLimit
 Bt601Ebu
 ```
 
-**Function:** RGB color gamut is BT601_P type; transfer function is BT709 type; encoding range is Full type.
+**Function:** RGB color gamut of BT601_P type; transfer function of BT709 type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt601EbuLimit
 
@@ -533,11 +533,11 @@ Bt601Ebu
 Bt601EbuLimit
 ```
 
-**Function:** RGB color gamut is BT601_P type; transfer function is BT709 type; encoding range is Limit type.
+**Function:** RGB color gamut of BT601_P type; transfer function of BT709 type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt601SmpteC
 
@@ -545,11 +545,11 @@ Bt601EbuLimit
 Bt601SmpteC
 ```
 
-**Function:** RGB color gamut is BT601_N type; transfer function is BT709 type; encoding range is Full type.
+**Function:** RGB color gamut of BT601_N type; transfer function of BT709 type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt601SmpteCLimit
 
@@ -557,11 +557,11 @@ Bt601SmpteC
 Bt601SmpteCLimit
 ```
 
-**Function:** RGB color gamut is BT601_N type; transfer function is BT709 type; encoding range is Limit type.
+**Function:** RGB color gamut of BT601_N type; transfer function of BT709 type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt709
 
@@ -569,11 +569,11 @@ Bt601SmpteCLimit
 Bt709
 ```
 
-**Function:** RGB color gamut is BT709 type; transfer function is BT709 type; encoding range is Full type.
+**Function:** RGB color gamut of BT709 type; transfer function of BT709 type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Bt709Limit
 
@@ -581,11 +581,11 @@ Bt709
 Bt709Limit
 ```
 
-**Function:** RGB color gamut is BT709 type; transfer function is BT709 type; encoding range is Limit type.
+**Function:** RGB color gamut of BT709 type; transfer function of BT709 type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Custom
 
@@ -597,7 +597,7 @@ Custom
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DciP3
 
@@ -605,11 +605,11 @@ Custom
 DciP3
 ```
 
-**Function:** RGB color gamut is DCI-P3 type; transfer function is Gamma 2.6 type; encoding range is Full type.
+**Function:** RGB color gamut of DCI-P3 type; transfer function of Gamma 2.6 type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DisplayP3
 
@@ -617,11 +617,11 @@ DciP3
 DisplayP3
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is Srgb type; encoding range is Full type.
+**Function:** RGB color gamut of Display P3 type; transfer function of Srgb type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DisplayP3Hlg
 
@@ -629,11 +629,11 @@ DisplayP3
 DisplayP3Hlg
 ```
 
-**Function:** Same as P3_HLG; RGB color gamut is Display P3 type; transfer function is HLG type; encoding range is Full type.
+**Function:** Same as P3_HLG; RGB color gamut of Display P3 type; transfer function of HLG type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DisplayP3Limit
 
@@ -641,11 +641,11 @@ DisplayP3Hlg
 DisplayP3Limit
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is Srgb type; encoding range is Limit type.
+**Function:** RGB color gamut of Display P3 type; transfer function of Srgb type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DisplayP3Pq
 
@@ -653,11 +653,11 @@ DisplayP3Limit
 DisplayP3Pq
 ```
 
-**Function:** Same as P3_PQ; RGB color gamut is Display P3 type; transfer function is PQ type; encoding range is Full type.
+**Function:** Same as P3_PQ; RGB color gamut of Display P3 type; transfer function of PQ type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DisplayP3Srgb
 
@@ -665,11 +665,11 @@ DisplayP3Pq
 DisplayP3Srgb
 ```
 
-**Function:** Same as DisplayP3; RGB color gamut is Display P3 type; transfer function is Srgb type; encoding range is Full type.
+**Function:** Same as DisplayP3; RGB color gamut of Display P3 type; transfer function of Srgb type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### DisplaySrgb
 
@@ -677,11 +677,11 @@ DisplayP3Srgb
 DisplaySrgb
 ```
 
-**Function:** Same as Srgb; RGB color gamut is Srgb type; transfer function is Srgb type; encoding range is Full type.
+**Function:** Same as Srgb; RGB color gamut of Srgb type; transfer function of Srgb type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### LinearBt2020
 
@@ -689,11 +689,11 @@ DisplaySrgb
 LinearBt2020
 ```
 
-**Function:** RGB color gamut is BT2020 type; transfer function is Linear type.
+**Function:** RGB color gamut of BT2020 type; transfer function of Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### LinearBt709
 
@@ -701,11 +701,11 @@ LinearBt2020
 LinearBt709
 ```
 
-**Function:** Same as LINEAR_Srgb; RGB color gamut is BT709 type; transfer function is Linear type.
+**Function:** Same as LINEAR_Srgb; RGB color gamut of BT709 type; transfer function of Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### LinearP3
 
@@ -713,11 +713,11 @@ LinearBt709
 LinearP3
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is Linear type.
+**Function:** RGB color gamut of Display P3 type; transfer function of Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### LinearSrgb
 
@@ -725,11 +725,11 @@ LinearP3
 LinearSrgb
 ```
 
-**Function:** RGB color gamut is Srgb type; transfer function is Linear type.
+**Function:** RGB color gamut of Srgb type; transfer function of Linear type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### P3Hlg
 
@@ -737,11 +737,11 @@ LinearSrgb
 P3Hlg
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is HLG type; encoding range is Full type.
+**Function:** RGB color gamut of Display P3 type; transfer function of HLG type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### P3HlgLimit
 
@@ -749,11 +749,11 @@ P3Hlg
 P3HlgLimit
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is HLG type; encoding range is Limit type.
+**Function:** RGB color gamut of Display P3 type; transfer function of HLG type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### P3Pq
 
@@ -761,11 +761,11 @@ P3HlgLimit
 P3Pq
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is PQ type; encoding range is Full type.
+**Function:** RGB color gamut of Display P3 type; transfer function of PQ type; encoding range of Full type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### P3PqLimit
 
@@ -773,11 +773,11 @@ P3Pq
 P3PqLimit
 ```
 
-**Function:** RGB color gamut is Display P3 type; transfer function is PQ type; encoding range is Limit type.
+**Function:** RGB color gamut of Display P3 type; transfer function of PQ type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Srgb
 
@@ -785,11 +785,11 @@ P3PqLimit
 Srgb
 ```
 
-**Function:** RGB color gamut is Srgb type; transfer function is Srgb type; encoding range is Full type; default system color gamut type.
+**Function:** RGB color gamut of Srgb type; transfer function of Srgb type; encoding range of Full type; default system color gamut type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### SrgbLimit
 
@@ -797,11 +797,11 @@ Srgb
 SrgbLimit
 ```
 
-**Function:** RGB color gamut is Srgb type; transfer function is Srgb type; encoding range is Limit type.
+**Function:** RGB color gamut of Srgb type; transfer function of Srgb type; encoding range of Limit type.
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### Unknown
 
@@ -813,7 +813,7 @@ Unknown
 
 **System Capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func !=(ColorSpace)
 

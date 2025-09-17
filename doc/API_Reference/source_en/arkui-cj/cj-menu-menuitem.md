@@ -1,6 +1,6 @@
 # MenuItem
 
-Used to display specific item entries in a Menu component.
+Used to display specific menu items in the Menu component.
 
 ## Import Module
 
@@ -17,7 +17,7 @@ None
 ### init(() -> Unit)
 
 ```cangjie
-public init(builder!: () -> Unit = {=>})
+public init(child!: () -> Unit = {=>}) 
 ```
 
 **Function:** Constructs a menu item with a secondary menu.
@@ -30,7 +30,7 @@ public init(builder!: () -> Unit = {=>})
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| builder | ()->Unit | No | { => } | **Named parameter.** Custom UI description. Use in combination with [@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
+| child | ()->Unit | No | { => } | **Named parameter.** Custom UI description. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
 
 ### init(ResourceStr, ResourceStr, ResourceStr, ResourceStr, Option\<() -> Unit>)
 
@@ -49,11 +49,11 @@ public init(startIcon!: ResourceStr, content!: ResourceStr, endIcon!: ResourceSt
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| startIcon | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Path to the icon displayed on the left side of the item. |
-| content | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Content information of the item. |
-| endIcon | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Path to the icon displayed on the right side of the item. |
-| labelInfo | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | **Named parameter.** Defines the end label information, such as shortcuts like Ctrl+C. |
-| builder | [Option](<font color="red" face="bold">please add link</font>)\<()->Unit> | No | None | **Named parameter.** Custom UI description. Use in combination with [@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
+| startIcon | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Path of the icon displayed on the left side of the item. |
+| content | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Content information of the item. |
+| endIcon | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Path of the icon displayed on the right side of the item. |
+| labelInfo | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Defines the end label information, such as shortcuts like Ctrl+C. |
+| builder | Option\<()->Unit> | No | None | **Named parameter.** Custom UI description. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
 
 ## Common Attributes/Events
 
@@ -74,7 +74,7 @@ public func contentFont(
 ): This
 ```
 
-**Function:** Sets the font style for the content information in the menu item.
+**Function:** Sets the font style of the content information in the menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,10 +84,10 @@ public func contentFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](<font color="red" face="bold">please add link</font>) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp units. Percentage settings are not supported. |
-| weight | [FontWeight](<font color="red" face="bold">please add link</font>) | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
-| family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list for the text. Multiple fonts can be specified, separated by commas, with priority given in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font and [custom font registration](cj-apis-font.md). |
-| style | [FontStyle](<font color="red" face="bold">please add link</font>) | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
+| family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font and [custom font registration](cj-apis-font.md). |
+| style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
 
 ### func contentFont(Length, FontWeight, ResourceColor, FontStyle)
 
@@ -100,7 +100,7 @@ public func contentFont(
 ): This
 ```
 
-**Function:** Sets the font style for the content information in the menu item.
+**Function:** Sets the font style of the content information in the menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,10 +110,10 @@ public func contentFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](<font color="red" face="bold">please add link</font>) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp units. Percentage settings are not supported. |
-| weight | [FontWeight](<font color="red" face="bold">please add link</font>) | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
-| family | [ResourceStr](<font color="red" face="bold">please add link</font>) | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list for the text. Multiple fonts can be specified, separated by commas, with priority given in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font and [custom font registration](cj-apis-font.md). |
-| style | [FontStyle](<font color="red" face="bold">please add link</font>) | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
+| family | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font and [custom font registration](cj-apis-font.md). |
+| style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
 
 ### func contentFontColor(ResourceColor)
 
@@ -121,7 +121,7 @@ public func contentFont(
 public func contentFontColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the font color for the content information in the menu item.
+**Function:** Sets the font color of the content information in the menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,7 +131,7 @@ public func contentFontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color for the content information in the menu item.<br/>Initial value: 0xE5000000 |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color of the content information in the menu item.<br/>Initial value: 0xE5000000 |
 
 ### func labelFont(Length, FontWeight, String, FontStyle)
 
@@ -144,7 +144,7 @@ public func labelFont(
 ): This
 ```
 
-**Function:** Sets the font style for the label information in the menu item.
+**Function:** Sets the font style of the label information in the menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,10 +154,10 @@ public func labelFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](<font color="red" face="bold">please add link</font>) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp units. Percentage settings are not supported. |
-| weight | [FontWeight](<font color="red" face="bold">please add link</font>) | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
-| family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list for the text. Multiple fonts can be specified, separated by commas, with priority given in order. Example: 'Arial, HarmonyOS Sans'. |
-| style | [FontStyle](<font color="red" face="bold">please add link</font>) | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
+| family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. |
+| style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
 
 ### func labelFont(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -170,7 +170,7 @@ public func labelFont(
 ): This
 ```
 
-**Function:** Sets the font style for the label information in the menu item.
+**Function:** Sets the font style of the label information in the menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,10 +180,10 @@ public func labelFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](<font color="red" face="bold">please add link</font>) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp units. Percentage settings are not supported. |
-| weight | [FontWeight](<font color="red" face="bold">please add link</font>) | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
-| family | [ResourceStr](<font color="red" face="bold">please add link</font>) | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list for the text. Multiple fonts can be specified, separated by commas, with priority given in order. Example: 'Arial, HarmonyOS Sans'. |
-| style | [FontStyle](<font color="red" face="bold">please add link</font>) | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
+| family | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. |
+| style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
 
 ### func labelFontColor(ResourceColor)
 
@@ -191,7 +191,7 @@ public func labelFont(
 public func labelFontColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the font color for the label information in the menu item.
+**Function:** Sets the font color of the label information in the menu item.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,7 +201,7 @@ public func labelFontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](<font color="red" face="bold">please add link</font>) | Yes | - | Font color for the label information in the menu item.<br/>Initial value: '0x99000000' |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color of the label information in the menu item.<br/>Initial value: '0x99000000' |
 
 ### func selectIcon(Bool)
 
@@ -227,7 +227,7 @@ public func selectIcon(value: Bool): This
 public func selectIcon(value: ResourceStr): This
 ```
 
-**Function:** Sets the icon to display when the menu item is selected.
+**Function:** Sets whether to display the selected icon when the menu item is selected.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,7 +237,7 @@ public func selectIcon(value: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | Icon to display when the menu item is selected. |
+| value | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | Displays the specified icon when the menu item is selected. |
 
 ### func selected(Bool)
 
@@ -265,7 +265,7 @@ public func selected(value: Bool): This
 public func onChange(callback: (Bool) -> Unit): This
 ```
 
-**Function:** Triggered when the selected state changes. The onChange event is only triggered when the state changes due to manual interaction.
+**Function:** Triggered when the selected state changes. The onChange event is only triggered when manually triggered and the MenuItem state changes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,7 +275,7 @@ public func onChange(callback: (Bool) -> Unit): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | (Bool)->Unit | Yes | - | Callback triggered when the selected state changes.<br/>Returns true when selected, false when not selected. |
+| callback | (Bool)->Unit | Yes | - | Callback triggered when the selected state changes.<br/>Returns true when selected, and false when not selected. |
 
 ## Example Code
 

@@ -1,14 +1,14 @@
-# ohos.hi_trace.meter (Performance Tracing)
+# ohos.hi_trace_meter (Performance Tracing)
 
-This module provides the capability to trace process trajectories and measure program execution performance. The traced data is intended for analysis by the hiTraceMeter tool.
+This module provides the capability to trace process trajectories and measure program execution performance. The traced data is intended for analysis using the hiTraceMeter tool.
 
 > **Note**
 >
-> The performance tracing interfaces `startTrace`, `finishTrace`, and `traceByValue` cannot specify the trace output level, which defaults to COMMERCIAL level performance tracing.
+> The performance tracing interfaces `startTrace`, `finishTrace`, and `traceByValue` cannot specify the trace output level, which defaults to the COMMERCIAL level.
 >
-> User-space trace format uses the vertical bar `|` as a delimiter. Therefore, string parameters passed through performance tracing interfaces should avoid containing this character to prevent trace parsing exceptions.
+> User-space trace format uses the vertical bar `|` as a separator. Therefore, string parameters passed through performance tracing interfaces should avoid containing this character to prevent trace parsing exceptions.
 >
-> The total length of user-space traces is limited to 512 characters. Any excess will be truncated.
+> The total length of user-space traces is limited to 512 characters. Excess characters will be truncated.
 
 ## Importing the Module
 
@@ -20,8 +20,8 @@ import kit.PerformanceAnalysisKit.*
 
 API sample code usage instructions:
 
-- If the sample code's first line contains a `// index.cj` comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of sample code contains a `// index.cj` comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
 For details about the sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
@@ -31,7 +31,7 @@ For details about the sample project and configuration template, refer to [Cangj
 public class HiTraceMeter {}
 ```
 
-**Function:** This class provides the capability to trace process trajectories and measure program execution performance.
+**Description:** This class provides the capability to trace process trajectories and measure program execution performance.
 
 **System Capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -43,9 +43,9 @@ public class HiTraceMeter {}
 public static func finishTrace(name: String, taskId: Int32): Unit
 ```
 
-**Function:** Marks the end of a pre-traced time-consuming task.
+**Description:** Marks the end of a pre-traced time-consuming task.
 
-The `name` and `taskId` in [finishTrace](#static-func-finishtracestring-int32) must match the corresponding parameter values in the process-starting [startTrace](#static-func-starttracestring-int32).
+The `name` and `taskId` in [finishTrace](#static-func-finishtracestring-int32) must correspond to the parameters in the initiating [startTrace](#static-func-starttracestring-int32).
 
 **System Capability:** SystemCapability.HiviewDFX.HiTrace
 
@@ -73,24 +73,24 @@ func f1(){
 }
 
 func f2(){
-    // Trace parallel execution of tasks with the same name
+    // Tracing parallel execution of tasks with the same name
     HiTraceMeter.startTrace("myTestFunc", 1)
-    // Business process code
-    HiTraceMeter.startTrace("myTestFunc", 2)  // The second traced task starts while the first traced task with the same name hasn't ended, indicating parallel execution. The taskId for corresponding interfaces must differ.
-    // Business process code
+    // Business logic code
+    HiTraceMeter.startTrace("myTestFunc", 2)  // Second traced task starts while the first traced task with the same name hasn't ended, indicating parallel execution. The taskId must differ.
+    // Business logic code
     HiTraceMeter.finishTrace("myTestFunc", 1)
-    // Business process code
+    // Business logic code
     HiTraceMeter.finishTrace("myTestFunc", 2)
 }
 
 func f3(){
-    // Trace serial execution of tasks with the same name
+    // Tracing serial execution of tasks with the same name
     HiTraceMeter.startTrace("myTestFunc", 1)
-    // Business process code
-    HiTraceMeter.finishTrace("myTestFunc", 1)  // The first traced task ends
-    // Business process code
-    HiTraceMeter.startTrace("myTestFunc", 1)   // The second traced task with the same name starts, indicating serial execution of tasks with the same name.
-    // Business process code
+    // Business logic code
+    HiTraceMeter.finishTrace("myTestFunc", 1)  // First traced task ends
+    // Business logic code
+    HiTraceMeter.startTrace("myTestFunc", 1)   // Second traced task with the same name starts, executing serially.
+    // Business logic code
     HiTraceMeter.finishTrace("myTestFunc", 1)
 }
 
@@ -105,11 +105,11 @@ f3()
 public static func startTrace(name: String, taskId: Int32): Unit
 ```
 
-**Function:** Marks the start of a pre-traced time-consuming task.
+**Description:** Marks the beginning of a pre-traced time-consuming task.
 
-If multiple tasks with the same `name` need to be traced or the same task needs to be traced multiple times, and these tasks are executed concurrently, the `taskId` for each call to [startTrace](#static-func-starttracestring-int32) must differ.
+If multiple tasks with the same `name` need to be traced or the same task needs to be traced multiple times while executing concurrently, each call to [startTrace](#static-func-starttracestring-int32) must use a different `taskId`.
 
-If tasks with the same `name` are executed serially, the `taskId` can be the same. For specific examples, refer to the samples in [HiTraceMeter.finishTrace](#static-func-finishtracestring-int32).
+If tasks with the same `name` execute serially, the `taskId` can remain the same. Refer to the example in [HiTraceMeter.finishTrace](#static-func-finishtracestring-int32) for details.
 
 **System Capability:** SystemCapability.HiviewDFX.HiTrace
 

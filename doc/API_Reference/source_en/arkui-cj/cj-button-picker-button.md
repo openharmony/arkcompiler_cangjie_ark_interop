@@ -1,12 +1,24 @@
 # Button
 
-A button component that can quickly create buttons with different styles.
+A button component that allows for quick creation of buttons with different styles.
 
 ## Subcomponents
 
 Can contain a single subcomponent.
 
 ## Creating the Component
+
+### init()
+
+```cangjie
+public init()
+```
+
+**Function:** Creates a button.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Initial Version:** 21
 
 ### init(() -> Unit)
 
@@ -24,7 +36,7 @@ public init(child: () -> Unit)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| child | ()->Unit | Yes | - | The subcomponents contained within the button. |
+| child | ()->Unit | Yes | - | Subcomponents contained within the button. |
 
 ### init(ResourceStr)
 
@@ -32,8 +44,8 @@ public init(child: () -> Unit)
 public init(label: ResourceStr)
 ```
 
-**Function:** Creates a corresponding button component using text content. In this case, the Button cannot contain subcomponents.
-The text content is displayed in a single line by default.
+**Function:** Creates a corresponding button component with text content. In this case, the Button cannot contain subcomponents.  
+Text content is displayed in a single line by default.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +63,7 @@ The text content is displayed in a single line by default.
 public init(options: ButtonOptions)
 ```
 
-**Function:** Creates a corresponding button component using text content. In this case, the Button cannot contain subcomponents.
+**Function:** Creates a corresponding button component with text content. In this case, the Button cannot contain subcomponents.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +92,7 @@ public init(options: ButtonOptions, child: () -> Unit)
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | options | [ButtonOptions](#class-buttonoptions) | Yes | - | Configures the display style of the button. |
-| child | ()->Unit | Yes | - | The subcomponents contained within the button. |
+| child | ()->Unit | Yes | - | Subcomponents contained within the button. |
 
 ### init(ResourceStr, ButtonOptions)
 
@@ -88,8 +100,8 @@ public init(options: ButtonOptions, child: () -> Unit)
 public init(label: ResourceStr, options: ButtonOptions)
 ```
 
-**Function:** Creates a corresponding button component using text content. In this case, the Button cannot contain subcomponents.
-The text content is displayed in a single line by default.
+**Function:** Creates a corresponding button component with text content. In this case, the Button cannot contain subcomponents.  
+Text content is displayed in a single line by default.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +111,7 @@ The text content is displayed in a single line by default.
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| label | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the text content.<br>**Note:**<br>When the length of the text exceeds the width of the button itself, the text will be truncated. |
+| label | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the text content. <br>**Note:** <br>When the length of the text exceeds the width of the button itself, the text will be truncated. |
 | options | [ButtonOptions](#class-buttonoptions) | Yes | - | Configures the display style of the button. |
 
 ## Common Attributes/Common Events
@@ -126,7 +138,7 @@ public func buttonStyle(value: ButtonStyleMode): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ButtonStyleMode](#enum-buttonstylemode) | Yes | - | The style and importance level of the Button component.<br>Initial value: ButtonStyleMode.EMPHASIZED. |
+| value | [ButtonStyleMode](#enum-buttonstylemode) | Yes | - | The style and importance level of the Button component. <br>Initial value: ButtonStyleMode.EMPHASIZED. |
 
 ### func fontColor(ResourceColor)
 
@@ -144,7 +156,7 @@ public func fontColor(color: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor] | Yes | - | The text color of the button. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the button. |
 
 ### func fontFamily(ResourceStr)
 
@@ -180,7 +192,7 @@ public func fontSize(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length] | Yes | - | The text size of the button. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The text size of the button. |
 
 ### func fontStyle(FontStyle)
 
@@ -216,7 +228,7 @@ public func fontWeight(value: FontWeight): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [FontWeight](./cj-common-types.md#enum-fontweight) | Yes | - | The text weight of the button. |
+| value | [FontWeight](./cj-common-types.md#enum-fontweight) | Yes | - | The font weight of the button text. |
 
 ### func shape(ButtonType)
 
@@ -252,7 +264,7 @@ public func stateEffect(value: Bool): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to enable the pressed state display effect when the button is pressed. When set to false, the pressed effect is disabled.<br/>Initial value: true |
+| value | Bool | Yes | - | Whether to enable the pressed state display effect when the button is pressed. When set to false, the pressed effect is disabled. <br/>Initial value: true |
 
 ## Basic Type Definitions
 
@@ -265,7 +277,6 @@ public class ButtonOptions {
     public var buttonStyle: ButtonStyleMode
     public var controlSize: ControlSize
     public var role: ButtonRole
-
 
     public init(
         shape!: ButtonType = ButtonType.Capsule,
@@ -293,7 +304,7 @@ public var buttonStyle: ButtonStyleMode
 
 **Type:** [ButtonStyleMode](#enum-buttonstylemode)
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,7 +320,7 @@ public var controlSize: ControlSize
 
 **Type:** [ControlSize](./cj-common-types.md#enum-controlsize)
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -325,7 +336,7 @@ public var role: ButtonRole
 
 **Type:** [ButtonRole](#enum-buttonrole)
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,7 +352,7 @@ public var shape: ButtonType
 
 **Type:** [ButtonType](#enum-buttontype)
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -357,7 +368,7 @@ public var stateEffect: Bool
 
 **Type:** Bool
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,8 +397,8 @@ public init(
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | shape | [ButtonType](#enum-buttontype) | No | ButtonType.Capsule | **Named parameter.** The shape of the button. |
-| stateEffect | Bool | No | true | **Named parameter.** Whether to enable the pressed state display effect when the button is pressed. When set to false, the pressed effect is disabled.<br>**Note:**<br>When the pressed state display effect is enabled, developers setting state styles will have the background color overlaid based on the completed state style settings. |
-| buttonStyle | [ButtonStyleMode](#enum-buttonstylemode) | No | ButtonStyleMode.Emphasized | **Named parameter.** Describes the style and importance level of the button.<br/>**Note:**<br/>Button importance levels: Emphasized button > Normal button > Textual button. |
+| stateEffect | Bool | No | true | **Named parameter.** Whether to enable the pressed state display effect when the button is pressed. When set to false, the pressed effect is disabled. <br>**Note:** <br>When the pressed state display effect is enabled, developers setting the state style will perform color overlay based on the background color set after the state style is completed. |
+| buttonStyle | [ButtonStyleMode](#enum-buttonstylemode) | No | ButtonStyleMode.Emphasized | **Named parameter.** Describes the style and importance level of the button. <br/>**Note:** <br/>Button importance levels: Emphasized button > Normal button > Textual button. |
 | controlSize | [ControlSize](./cj-common-types.md#enum-controlsize) | No | ControlSize.Normal | **Named parameter.** Describes the size of the button. |
 | role | [ButtonRole](#enum-buttonrole) | No | ButtonRole.Normal | **Named parameter.** Describes the role of the button. |
 
@@ -549,7 +560,7 @@ RoundRectangle
 
 ### Example 1 (Setting Button Display Styles)
 
-This example demonstrates two methods of creating buttons: using child components or text content to create corresponding buttons.
+This example demonstrates two methods for creating buttons: using child components or text content to create corresponding buttons.
 
 <!-- run -->
 
@@ -558,32 +569,37 @@ This example demonstrates two methods of creating buttons: using child component
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func loggerInfo(str: String) {
+    Hilog.info(0, "CangjieTest", str)
+}
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text("Common button").fontSize(9).fontColor(0xCCCCCC)
 
-            Flex(FlexParams(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween) {
                 Button("Ok").shape(ButtonType.Normal).stateEffect(true).borderRadius(8)
-                    .width(90).role(ButtonRole.NORMAL)
+                    .width(90)
                 Button(ButtonOptions()) {
                     Row() {
                         LoadingProgress().width(20).height(20).color(Color.White)
                         Text("loading").fontSize(12).fontColor(0xffffff).margin(left: 5, right: 12)
                     }.alignItems(VerticalAlign.Center).width(90).height(40)
-                }.shape(ButtonType.Normal).stateEffect(true).borderRadius(8).width(90).role(ButtonRole.NORMAL)
+                }.shape(ButtonType.Normal).stateEffect(true).borderRadius(8).width(90)
                 Button("Disable").shape(ButtonType.Normal).stateEffect(true).opacity(0.5)
-                    .borderRadius(8).width(90).role(ButtonRole.ERROR)
+                    .borderRadius(8).width(90)
                 }
 
             Text("Capsule button").fontSize(9).fontColor(0xCCCCCC)
 
-            Flex(FlexParams(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween) {
                 Button("Ok").shape(ButtonType.Capsule).stateEffect(true).borderRadius(8)
-                    .width(90).role(ButtonRole.NORMAL)
+                    .width(90)
                 Button(ButtonOptions()) {
                     Row() {
                         LoadingProgress().width(20).height(20).color(Color.White)
@@ -591,19 +607,19 @@ class EntryView {
                     }.alignItems(VerticalAlign.Center).width(90).height(40)
                 }.shape(ButtonType.Capsule).stateEffect(true).borderRadius(8).width(90)
                 .onClick { evt =>
-                    nativeLog("The login is successful")
-                }.role(ButtonRole.NORMAL)
+                    loggerInfo("The login is successful")
+                }
                 Button("Disable").shape(ButtonType.Capsule).stateEffect(true).opacity(0.5)
-                    .borderRadius(8).width(90).role(ButtonRole.ERROR)
+                    .borderRadius(8).width(90)
             }
 
             Text("Circle button").fontSize(9).fontColor(0xCCCCCC)
 
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
                 Button("YES").shape(ButtonType.Circle).stateEffect(true).width(55)
-                    .height(55).role(ButtonRole.NORMAL)
+                    .height(55)
                 Button("NO").shape(ButtonType.Capsule).stateEffect(true).width(55)
-                    .height(55).margin(left: 20).role(ButtonRole.ERROR).fontSize(15)
+                    .height(55).margin(left: 20).fontSize(15)
                 }
         }.height(400).padding(left: 35, right: 35, top: 35)
     }
@@ -649,50 +665,9 @@ class EntryView {
 
 ![Button2](figures/button_2.gif)
 
-### Example 3 (Setting Button Text Styles)
+### Example 3 (Setting Importance Levels for Different Button Sizes)
 
-This example customizes button text display styles by configuring labelStyle.
-
-<!-- run -->
-
-```cangjie
-
-package ohos_app_cangjie_entry
-import kit.ArkUI.*
-import ohos.arkui.state_macro_manage.*
-
-@Entry
-@Component
-class EntryView {
-    @State var txt: String = 'overflowTextOverlengthTextOverflow.Clip'
-    func build() {
-        Column() {
-            Button(this.txt)
-                .width(210)
-                .height(100)
-                .backgroundColor(0x317aff)
-                .labelStyle(overflow: TextOverflow.Clip,
-                    maxLines: 1,
-                    minFontSize: 20.fp,
-                    maxFontSize: 20.fp,
-                    font: Fonts(
-                        size: 20.fp,
-                        weight: FontWeight.Bolder,
-                        family: 'cursive',
-                        style: FontStyle.Italic
-                    )
-                )
-                .fontSize(40)
-        }.height(100.percent).width(100.percent).justifyContent(FlexAlign.Center)
-    }
-}
-```
-
-![Button3](figures/button_3.png)
-
-### Example 4 (Setting Importance Levels for Different-Sized Buttons)
-
-This example implements importance levels for different-sized buttons by configuring controlSize and buttonStyle.
+This example configures controlSize and buttonStyle to achieve different importance levels for various button sizes.
 
 <!-- run -->
 
@@ -707,19 +682,19 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State var txt: String = 'overflowTextOverlengthTextOverflow.Clip'
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text('Normal size button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized').buttonStyle(ButtonStyleMode.EMPHASIZED)
-                Button('Normal').buttonStyle(ButtonStyleMode.NORMAL)
-                Button('Textual').buttonStyle(ButtonStyleMode.TEXTUAL)
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized').buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal').buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual').buttonStyle(ButtonStyleMode.Textual)
             }
 
             Text('Small size button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized'). controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.EMPHASIZED)
-                Button('Normal').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.NORMAL)
-                Button('Textual').controlSize(ControlSize.SMALL).buttonStyle(ButtonStyleMode.TEXTUAL)
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized', ButtonOptions(controlSize: ControlSize.Small)).buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal', ButtonOptions(controlSize: ControlSize.Small)).buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual', ButtonOptions(controlSize: ControlSize.Small)).buttonStyle(ButtonStyleMode.Textual)
             }
         }.height(400).padding(left: 35, right: 35, top: 35)
     }
@@ -728,9 +703,9 @@ class EntryView {
 
 ![Button4](figures/button_4.png)
 
-### Example 5 (Setting Button Roles)
+### Example 4 (Setting Button Roles)
 
-This example implements button roles by configuring the role property.
+This example configures the role property to define button roles.
 
 <!-- run -->
 
@@ -745,19 +720,19 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     @State var txt: String = 'overflowTextOverlengthTextOverflow.Clip'
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween) {
             Text('Role is Normal button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized').buttonStyle(ButtonStyleMode.EMPHASIZED).role(ButtonRole.NORMAL)
-                Button('Normal').buttonStyle(ButtonStyleMode.NORMAL).role(ButtonRole.NORMAL)
-                Button('Textual').buttonStyle(ButtonStyleMode.TEXTUAL).role(ButtonRole.NORMAL);
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized', ButtonOptions(role: ButtonRole.Normal)).buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal', ButtonOptions(role: ButtonRole.Normal)).buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual', ButtonOptions(role: ButtonRole.Normal)).buttonStyle(ButtonStyleMode.Textual);
             }
 
             Text('Role is Error button').fontSize(9).fontColor(0xCCCCCC)
-            Flex(FlexParams(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap)) {
-                Button('Emphasized').buttonStyle(ButtonStyleMode.EMPHASIZED).role(ButtonRole.ERROR)
-                Button('Normal').buttonStyle(ButtonStyleMode.NORMAL).role(ButtonRole.ERROR)
-                Button('Textual').buttonStyle(ButtonStyleMode.TEXTUAL).role(ButtonRole.ERROR);
+            Flex(alignItems: ItemAlign.Center, wrap: FlexWrap.Wrap) {
+                Button('Emphasized', ButtonOptions(role: ButtonRole.Error)).buttonStyle(ButtonStyleMode.Emphasized)
+                Button('Normal', ButtonOptions(role: ButtonRole.Error)).buttonStyle(ButtonStyleMode.Normal)
+                Button('Textual', ButtonOptions(role: ButtonRole.Error)).buttonStyle(ButtonStyleMode.Textual);
             }
         }.height(400).padding(left: 35, right: 35, top: 35)
     }

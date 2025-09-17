@@ -714,7 +714,8 @@ When installing an application, the version of the application to update is not 
 **Resolution Steps**
 
 1. Set the application's version number to be greater than the current version.
-2. If you want to update the application without upgrading the version number, set the installFlag to REPLACE_EXISTING.```markdown
+2. If you want to update the application without upgrading the version number, set the installFlag to REPLACE_EXISTING.
+
 ## 17700048 Code Signature Verification Failed
 
 **Error Message**

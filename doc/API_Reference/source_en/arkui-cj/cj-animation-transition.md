@@ -1,4 +1,4 @@
-# Component Transition (transition)
+# Component Transition
 
 Component transition primarily configures transition parameters through the `transition` attribute, displaying transition animations when components are inserted or deleted. It is mainly used to enhance user experience during the insertion and deletion of child components within container components.
 
@@ -6,8 +6,8 @@ Component transition primarily configures transition parameters through the `tra
 >
 > Currently, there are two ways to trigger component transition:
 >
-> - When a component is inserted or deleted (e.g., due to changes in `if` conditions or `ForEach` adding/removing components), the transition effect will recursively trigger for all newly inserted/deleted components.
-> - When the [Visibility](./cj-universal-attribute-visibility.md) attribute of a component changes between visible and invisible, only the transition effect of that component will be triggered.
+> - When a component is inserted or deleted (e.g., due to `if` condition changes or `ForEach` adding/removing components), the transition effects of all newly inserted/deleted components will be triggered recursively.
+> - When the [Visibility](./cj-universal-attribute-visibility.md) attribute of a component changes between visible and invisible, only the transition effect of that component is triggered.
 
 ## Import Module
 
@@ -44,7 +44,7 @@ public class RotateOptions {
 public var angle: Float32
 ```
 
-**Function:** Represents the rotation angle.
+**Function:** Specifies the rotation angle.
 
 **Type:** Float32
 
@@ -60,9 +60,9 @@ public var angle: Float32
 public var centerX: Length
 ```
 
-**Function:** Represents the x-coordinate of the component's transformation center point (i.e., anchor point).
+**Function:** Specifies the x-coordinate of the component's transformation center point (i.e., anchor point).
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -76,9 +76,9 @@ public var centerX: Length
 public var centerY: Length
 ```
 
-**Function:** Represents the y-coordinate of the component's transformation center point (i.e., anchor point).
+**Function:** Specifies the y-coordinate of the component's transformation center point (i.e., anchor point).
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -92,9 +92,9 @@ public var centerY: Length
 public var centerZ: Length
 ```
 
-**Function:** Represents the z-axis anchor point, i.e., the z-axis component of the 3D rotation center point.
+**Function:** Specifies the z-axis anchor point, i.e., the z-axis component of the 3D rotation center point.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -108,7 +108,7 @@ public var centerZ: Length
 public var perspective: Float32
 ```
 
-**Function:** Represents the perspective distance, i.e., the distance from the viewpoint to the z=0 plane.
+**Function:** Specifies the perspective distance, i.e., the distance from the viewpoint to the z=0 plane.
 
 **Type:** Float32
 
@@ -124,7 +124,7 @@ public var perspective: Float32
 public var x: Float32
 ```
 
-**Function:** Represents the x-coordinate of the rotation axis vector.
+**Function:** Specifies the x-coordinate of the rotation axis vector.
 
 **Type:** Float32
 
@@ -140,7 +140,7 @@ public var x: Float32
 public var y: Float32
 ```
 
-**Function:** Represents the y-coordinate of the rotation axis vector.
+**Function:** Specifies the y-coordinate of the rotation axis vector.
 
 **Type:** Float32
 
@@ -156,7 +156,7 @@ public var y: Float32
 public var z: Float32
 ```
 
-**Function:** Represents the z-coordinate of the rotation axis vector.
+**Function:** Specifies the z-coordinate of the rotation axis vector.
 
 **Type:** Float32
 
@@ -170,7 +170,7 @@ public var z: Float32
 
 ```cangjie
 public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 0.0, centerX!: Length = 50.percent,
-    centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
+        centerY!: Length = 50.percent, centerZ!: Length = 0, perspective!: Float32 = 0.0)
 ```
 
 **Function:** Constructor for RotateOptions.
@@ -187,10 +187,10 @@ public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 
 | x | Float32 | No | 0.0 | **Named parameter.** X-coordinate of the rotation axis vector. |
 | y | Float32 | No | 0.0 | **Named parameter.** Y-coordinate of the rotation axis vector. |
 | z | Float32 | No | 0.0 | **Named parameter.** Z-coordinate of the rotation axis vector. |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., anchor point). |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., anchor point). |
-| centerZ | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Z-axis anchor point, i.e., the z-axis component of the 3D rotation center point. |
-| perspective | Float32 | No | 0.0 | **Named parameter.** Perspective distance, i.e., the distance from the viewpoint to the z=0 plane.<br>The rotation axis and center point are based on the coordinate system settings; the coordinate system does not move when the component is displaced. |
+| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Specifies the x-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Specifies the y-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerZ | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Z-axis anchor point, i.e., the z-axis component of the 3D rotation center point. |
+| perspective | Float32 | No | 0.0 | **Named parameter.** Perspective distance, i.e., the distance from the viewpoint to the z=0 plane.<br>The rotation axis and rotation center point are based on the coordinate system settings. When the component moves, the coordinate system does not follow. |
 
 ## class ScaleOptions
 
@@ -218,9 +218,9 @@ public class ScaleOptions {
 public var centerX: Length
 ```
 
-**Function:** Represents the x-coordinate of the transformation center point.
+**Function:** Specifies the x-coordinate of the transformation center point.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -234,9 +234,9 @@ public var centerX: Length
 public var centerY: Length
 ```
 
-**Function:** Represents the y-coordinate of the transformation center point.
+**Function:** Specifies the y-coordinate of the transformation center point.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -250,7 +250,7 @@ public var centerY: Length
 public var x: Float32
 ```
 
-**Function:** Represents the scaling factor on the x-axis. Values >1 scale up along the x-axis; values between 0 and 1 scale down; values <0 reverse and scale along the x-axis.
+**Function:** Specifies the scaling factor along the x-axis. Values >1 scale up along the x-axis; values between 0 and 1 scale down along the x-axis; values <0 reverse and scale along the x-axis.
 
 **Type:** Float32
 
@@ -266,7 +266,7 @@ public var x: Float32
 public var y: Float32
 ```
 
-**Function:** Represents the scaling factor on the y-axis. Values >1 scale up along the y-axis; values between 0 and 1 scale down; values <0 reverse and scale along the y-axis.
+**Function:** Specifies the scaling factor along the y-axis. Values >1 scale up along the y-axis; values between 0 and 1 scale down along the y-axis; values <0 reverse and scale along the y-axis.
 
 **Type:** Float32
 
@@ -282,7 +282,7 @@ public var y: Float32
 public var z: Float32
 ```
 
-**Function:** Represents the scaling factor on the z-axis. Values >1 scale up along the z-axis; values between 0 and 1 scale down; values <0 reverse and scale along the z-axis.
+**Function:** Specifies the scaling factor along the z-axis. Values >1 scale up along the z-axis; values between 0 and 1 scale down along the z-axis; values <0 reverse and scale along the z-axis.
 
 **Type:** Float32
 
@@ -295,8 +295,8 @@ public var z: Float32
 ### init(Float32, Float32, Float32, Length, Length)
 
 ```cangjie
-public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 极客时间 50.percent,
-    centerY!: Length = 50.percent)
+public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: Length = 50.percent,
+        centerY!: Length = 50.percent)
 ```
 
 **Function:** Constructor for ScaleOptions.
@@ -309,11 +309,11 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | Float32 | No | 1.0 | **Named parameter.** Scaling factor on the x-axis. Values >1 scale up along the x-axis; values between 0 and 1 scale down; values <0 reverse and scale along the x-axis. |
-| y | Float32 | No | 1.0 | **Named parameter.** Scaling factor on the y-axis. Values >1 scale up along the y-axis; values between 0 and 1 scale down; values <0 reverse and scale along the y-axis. |
-| z | Float32 | No | 1.极客时间 0 | **Named parameter.** Scaling factor on the z-axis. Values >1 scale up along the z-axis; values between 0 and 1 scale down; values <0 reverse and scale along the z-axis. |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., anchor point). |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., anchor point). |
+| x | Float32 | No | 1.0 | **Named parameter.** Scaling factor along the x-axis. Values >1 scale up along the x-axis; values between 0 and 1 scale down along the x-axis; values <0 reverse and scale along the x-axis. |
+| y | Float32 | No | 1.0 | **Named parameter.** Scaling factor along the y-axis. Values >1 scale up along the y-axis; values between 0 and 1 scale down along the y-axis; values <0 reverse and scale along the y-axis. |
+| z | Float32 | No | 1.0 | **Named parameter.** Scaling factor along the z-axis. Values >1 scale up along the z-axis; values between 0 and 1 scale down along the z-axis; values <0 reverse and scale along the z-axis. |
+| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Specifies the x-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Specifies the y-coordinate of the component's transformation center point (i.e., anchor point). |
 
 ## class TransitionEffect
 
@@ -330,14 +330,14 @@ public class TransitionEffect {
 
 > **Note:**
 >
-> - TransitionEffect can combine multiple transition effects via the `combine` function. Each effect can specify its own `animation` parameters, and the `animation` parameters from the previous effect can also apply to subsequent effects. For example, `TransitionEffect.OPACITY.animation(AnimateParam(duration: 1000)).combine(TransitionEffect.translate(TranslateOptions(x:100)))` means the 1000ms duration applies to both `OPACITY` and `translate`.
-> - The order of precedence for animation parameters is: animation parameters specified in this TransitionEffect > animation parameters specified in previous TransitionEffect > animation parameters in the `animateTo` that triggered the component's appearance/disappearance.
+> - TransitionEffect can combine multiple transition effects using the `combine` function. Each effect can have its own `animation` parameters, and the `animation` parameters of the previous effect can also apply to the subsequent effects. For example, `TransitionEffect.OPACITY.animation(AnimateParam(duration: 1000)).combine(TransitionEffect.translate(TranslateOptions(x:100)))` means the animation duration of 1000ms applies to both `OPACITY` and `translate`.
+> - The order of animation parameter application is: animation parameters specified in this TransitionEffect > animation parameters specified in the previous TransitionEffect > animation parameters in the `animateTo` that triggers the component's appearance/disappearance.
 > - If `animateTo` is not used to trigger the transition animation and no animation parameters are specified in TransitionEffect, the component will appear or disappear directly.
-> - If the attribute values specified in TransitionEffect are the same as the default values, no transition animation will be generated for that attribute. For example, `TransitionEffect.opacity(1.0).animation(AnimateParam(duration: 1000))` will not generate an opacity animation since the default opacity is also 1.0, causing the component to appear or disappear directly.
+> - If the attribute values specified in TransitionEffect are the same as the default values, no transition animation will be generated for that attribute. For example, `TransitionEffect.opacity(1.0).animation(AnimateParam(duration: 1000))` will not generate an opacity animation because the default opacity value is also 1.0, causing the component to appear or disappear directly.
 > - For more details on `scale` and `rotate` effects, refer to [Graphic Transformation](./cj-universal-attribute-transform.md).
-> - If a component's tree attachment/detachment or visibility ([Visibility](./cj-universal-attribute-visibility.md)) changes within an animation scope ([animateTo](./cj-animation-animateto.md), [animation](./cj-animation-animation.md)) and the root component has no `transition` configured, a default opacity transition (`TransitionEffect.OPACITY`) will be added to the component, with animation parameters following the surrounding animation environment. To disable this, explicitly configure `TransitionEffect.IDENTITY` to make the component appear or disappear directly.
-> - When triggering a disappearance transition by deleting an entire subtree, ensure the root component of the deleted subtree has sufficient disappearance transition time to see the complete process. See [Example 3](#示例代码3设置父子组件为transition).
-> - The static functions provided below are used to construct TransitionEffect objects, while non-static functions operate on constructed TransitionEffect objects to specify combined effects and animation parameters.
+> - If a component's tree attachment/detachment or visibility ([Visibility](./cj-universal-attribute-visibility.md)) changes within an animation scope (`animateTo` or `animation`) and the root component has no transition configured, a default opacity transition (`TransitionEffect.OPACITY`) will be applied to the component, with animation parameters following the surrounding animation environment. To disable this, explicitly configure `TransitionEffect.IDENTITY` to make the component appear or disappear directly.
+> - When triggering a disappearance transition by deleting an entire subtree, ensure the root component of the deleted subtree has sufficient disappearance transition time to see the complete transition process. See [Example 3](#example-code-3-setting-parent-and-child-components-as-transition).
+> - The static functions provided below are used to construct TransitionEffect objects, while non-static functions operate on constructed TransitionEffect objects to specify combinations of transition effects and animation parameters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -363,7 +363,7 @@ public static let IDENTITY: TransitionEffect = unsafe {    TransitionEffect(FfiO
 public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
 ```
 
-**Function:** Adds an opacity transition effect to the component, fading in from 0 to 1 when appearing and fading out from 1 to 0 when disappearing. Equivalent to `TransitionEffect.opacity(0.0)`.
+**Function:** Adds an opacity transition effect to the component, fading in from 0 to 1 and fading out from 1 to 0, equivalent to `TransitionEffect.opacity(0.0)`.
 
 **Type:** [TransitionEffect](#class-transitioneffect)
 
@@ -377,7 +377,7 @@ public static let OPACITY: TransitionEffect = TransitionEffect.opacity(0.0)
 public static let SLIDE: TransitionEffect = TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.Start), TransitionEffect.move(TransitionEdge.End))
 ```
 
-**Function:** Sets sliding in from the START edge and sliding out from the END edge. In LTR mode, this means sliding in from the left and out from the right; in RTL mode, sliding in from the right and out from the left. Equivalent to `TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))`.
+**Function:** Sets the slide-in from the START edge and slide-out from the END edge. In LTR mode, slides in from the left and out from the right; in RTL mode, slides in from the right and out from the left. Equivalent to `TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))`.
 
 **Type:** [TransitionEffect](#class-transitioneffect)
 
@@ -391,7 +391,7 @@ public static let SLIDE: TransitionEffect = TransitionEffect.asymmetric(Transiti
 public static let SLIDE_SWITCH: TransitionEffect = unsafe {    TransitionEffect(FfiOHOSAceFrameworkTransitionEffectSlideSwitch())}
 ```
 
-**Function:** Specifies a transition effect where the component slides in from the right with scaling (first shrinking then expanding) when appearing and slides out to the left with scaling when disappearing. Comes with built-in animation parameters (duration: 600ms, curve: cubicBezierCurve(0.24, 0.0, 0.50, 1.0), minimum scale: 0.8), which can be overridden.
+**Function:** Specifies a transition effect where the component slides in from the right, first shrinking and then expanding, and slides out from the left, first shrinking and then expanding. Comes with built-in animation parameters (duration: 600ms, curve: cubicBezierCurve(0.24, 0.0, 0.50, 1.0), minimum scale: 0.8), which can be overridden.
 
 **Type:** [TransitionEffect](#class-transitioneffect)
 
@@ -409,7 +409,7 @@ public static func asymmetric(appear: TransitionEffect, disappear: TransitionEff
 
 > **Note:**
 >
-> If TransitionEffect is not constructed via `asymmetric`, the effect applies to both appearance and disappearance.
+> If TransitionEffect is not constructed using the `asymmetric` function, the effect applies to both component appearance and disappearance.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,8 +420,31 @@ public static func asymmetric(appear: TransitionEffect, disappear: TransitionEff
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | appear | [TransitionEffect](#class-transitioneffect) | Yes | - | Specifies the appearance transition effect. |
-| disappear | [TransitionEffect](#class-trans```markdown
-## class TranslateOptions
+| disappear | [TransitionEffect](#class-transitioneffect) | Yes | - | Specifies the disappearance transition effect. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [TransitionEffect](#class-transitioneffect) | Component transition effect. |
+
+### static func move(TransitionEdge)
+
+```cangjie
+public static func move(edge: TransitionEdge): TransitionEffect
+```
+
+**Function:** Specifies a slide-in/slide-out transition effect from the screen edges.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| edge | [TransitionEdge](### class TranslateOptions
 
 ```cangjie
 public class TranslateOptions {
@@ -432,7 +455,7 @@ public class TranslateOptions {
 }
 ```
 
-**Function:** Configure translation parameters
+**Function:** Sets translation parameters
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -444,11 +467,11 @@ public class TranslateOptions {
 public var x: Length
 ```
 
-**Function:** Translation distance along the x-axis
+**Function:** Represents the translation distance along the x-axis
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Attribute:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,11 +483,11 @@ public var x: Length
 public var y: Length
 ```
 
-**Function:** Translation distance along the y-axis
+**Function:** Represents the translation distance along the y-axis
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Attribute:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -476,11 +499,11 @@ public var y: Length
 public var z: Length
 ```
 
-**Function:** Translation distance along the z-axis
+**Function:** Represents the translation distance along the z-axis
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Access:** Read-write
+**Read-Write Attribute:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -492,7 +515,7 @@ public var z: Length
 public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 ```
 
-**Function:** TranslateOptions constructor
+**Function:** Constructor for TranslateOptions
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -500,11 +523,11 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along x-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along y-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
-|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along z-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
+|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along x-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
+|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along y-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
+|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along z-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
 
 ## enum TransitionEdge
 
@@ -586,9 +609,9 @@ public operator func !=(other: TransitionEdge): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[TransitionEdge](#enum-transitionedge)|Yes|-|Another enum value for comparison.|
+|other|[TransitionEdge](#enum-transitionedge)|Yes|-|Another enum value to compare.|
 
 **Return Value:**
 
@@ -606,9 +629,9 @@ public operator func ==(other: TransitionEdge): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[TransitionEdge](#enum-transitionedge)|Yes|-|Another enum value for comparison.|
+|other|[TransitionEdge](#enum-transitionedge)|Yes|-|Another enum value to compare.|
 
 **Return Value:**
 
@@ -622,7 +645,7 @@ public operator func ==(other: TransitionEdge): Bool
 public func transition(value: TransitionEffect): This
 ```
 
-**Function:** Sets the transition effect for a component.
+**Function:** Sets transition effects for components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -630,9 +653,9 @@ public func transition(value: TransitionEffect): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|value|[TransitionEffect](<font color="yellow" face="bold">please add lnk</font>)|Yes|-|Specifies the transition effect in function form.|
+|value|TransitionEffect|Yes|-|Specifies transition effects in function form.|
 
 ## func transition(TransitionEffect, ?TransitionFinishCallback)
 
@@ -640,7 +663,7 @@ public func transition(value: TransitionEffect): This
 public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallback): This
 ```
 
-**Function:** Sets the transition effect for component insertion/display and removal/hiding, along with a transition animation completion callback.
+**Function:** Sets insertion/display and removal/hiding transition effects with animation completion callback.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -648,10 +671,10 @@ public func transition(value: TransitionEffect, onFinish: ?TransitionFinishCallb
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|value|[TransitionEffect](#class-transitioneffect)|Yes|-|Specifies the transition effect in function form.|
-|onFinish|?[TransitionFinishCallback](#type-transitionfinishcallback)|Yes|-|Callback function triggered upon completion of component transition animation.|
+|value|[TransitionEffect](#class-transitioneffect)|Yes|-|Specifies transition effects in function form.|
+|onFinish|?[TransitionFinishCallback](./cj-common-types.md#type-transitionfinishcallback)|Yes|-|Callback function when component transition animation completes.|
 
 ## Example Code
 
@@ -665,6 +688,7 @@ This example demonstrates how to use the same TransitionEffect for both appearan
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -676,7 +700,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -702,11 +726,11 @@ class EntryView {
 }
 ```
 
-![transition](./../../比对/main/arkui-cj/figures/transition_api.gif)
+![transition](figures/transition_api.gif)
 
 ### Example 2 (Using different interfaces for appearance/disappearance)
 
-This example demonstrates using different TransitionEffects for image appearance and disappearance.
+This example demonstrates using different TransitionEffects for appearance and disappearance of an image.
 
 <!-- run -->
 
@@ -714,6 +738,7 @@ This example demonstrates using different TransitionEffects for image appearance
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -725,7 +750,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -762,11 +787,11 @@ class EntryView {
 }
 ```
 
-![transition2](./../../比对/main/arkui-cj/figures/transition2_api.gif)
+![transition2](./figures/transition2_api.gif)
 
 ### Example 3 (Setting parent-child components with transition)
 
-This example demonstrates configuring transitions for both parent and child components to achieve image appearance and disappearance.
+This example demonstrates configuring transitions for both parent and child components to achieve image appearance/disappearance effects.
 
 <!-- run -->
 
@@ -774,7 +799,8 @@ This example demonstrates configuring transitions for both parent and child comp
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import ohos.resource_manager.__GenerateResource__
+import kit.PerformanceAnalysisKit.Hilog
+import ohos.resource_manager.AppResource
 
 @Entry
 @Component
@@ -786,7 +812,7 @@ class EntryView {
             Button(this.show)
                 .onClick {
                     evt =>
-                    AppLog.info("Hello Cangjie")
+                    Hilog.info(0, "cangjie", "Hello Cangjie")
                     if (this.flag) {
                         this.show = "hide"
                     } else {
@@ -818,11 +844,10 @@ class EntryView {
                 }.transition(TransitionEffect
                     .OPACITY
                     .animation(AnimateParam(duration: 1000)))
-            }
+            }```
         }
     }
 }
-``````
+```
 
 ![transition3](figures/transition3.gif)
-```

@@ -1,8 +1,8 @@
 # ohos.bluetooth.a2dp (Bluetooth A2DP Module)
 
-The A2DP module provides methods to access Bluetooth audio interfaces.
+The a2dp module provides methods to access Bluetooth audio interfaces.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.ConnectivityKit.*
@@ -16,10 +16,10 @@ ohos.permission.ACCESS_BLUETOOTH
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](./../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment on the first line, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](./../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## func createA2dpSrcProfile()
 
@@ -27,17 +27,17 @@ For the above sample projects and configuration templates, refer to [Cangjie Sam
 public func createA2dpSrcProfile(): A2dpSourceProfile
 ```
 
-**Description:** Creates an A2DP profile instance.
+**Function:** Creates an A2DP profile instance.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
-|[A2dpSourceProfile](#class-a2dpsourceprofile)|Returns an instance of this profile.|
+| :---- | :---- |
+| [A2dpSourceProfile](#class-a2dpsourceprofile) | Returns an instance of this profile. |
 
 **Example:**
 
@@ -49,7 +49,7 @@ public func createA2dpSrcProfile(): A2dpSourceProfile
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpProfile = createA2dpSrcProfile()
@@ -64,11 +64,11 @@ try {
 public class A2dpSourceProfile <: BaseProfile {}
 ```
 
-**Description:** Before using A2dpSourceProfile methods, you need to create an instance of this class for operations. Construct this instance via the [createA2dpSrcProfile()](#func-createa2dpsrcprofile) method.
+**Function:** Before using A2dpSourceProfile methods, you need to create an instance of this class for operations. Construct this instance via the [createA2dpSrcProfile()](#func-createa2dpsrcprofile) method.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parent Type:**
 
@@ -80,23 +80,23 @@ public class A2dpSourceProfile <: BaseProfile {}
 public func getConnectedDevices(): Array<String>
 ```
 
-**Description:** Gets the list of connected devices.
+**Function:** Gets the list of connected devices.
 
 **Required Permission:** ohos.ACCESS_BLUETOOTH
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
-|Array\<String>|Returns the addresses of currently connected devices. For security considerations, the device addresses obtained here are randomized MAC addresses. This address remains unchanged after pairing; however, it will change when a paired device is unpaired and rescanned or when the Bluetooth service is powered off.|
+| :---- | :---- |
+| Array\<String> | Returns the addresses of currently connected devices. For security considerations, the device address obtained here is a randomized MAC address. This address remains unchanged after successful pairing; however, it will change when a paired device is unpaired and rescanned or when the Bluetooth service is powered down. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -117,7 +117,7 @@ public func getConnectedDevices(): Array<String>
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -133,34 +133,34 @@ try {
 public func getConnectionState(deviceId: String): ProfileConnectionState
 ```
 
-**Description:** Gets the connection state of a device profile.
+**Function:** Gets the connection state of a device profile.
 
 **Required Permission:** ohos.ACCESS_BLUETOOTH
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-|deviceId|String|Yes|-|Remote device address.|
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| deviceId | String | Yes | - | Remote device address. |
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
-|[ProfileConnectionState](cj-apis-bluetooth-constant.md#enum-profileconnectionstate)|Returns the connection state of the profile.|
+| :---- | :---- |
+| [ProfileConnectionState](cj-apis-bluetooth-constant.md#enum-profileconnectionstate) | Returns the connection state of the profile. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 201 | Permission denied. |
-  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
   | 801 | Capability not supported. |
   | 2900001 | Service stopped. |
   | 2900003 | Bluetooth disabled. |
@@ -177,7 +177,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -193,34 +193,34 @@ try {
 public func getPlayingState(deviceId: String): PlayingState
 ```
 
-**Description:** Gets the playback state of a device.
+**Function:** Gets the playback state of a device.
 
 **Required Permission:** ohos.ACCESS_BLUETOOTH
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-|deviceId|String|Yes|-|Remote device address.|
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| deviceId | String | Yes | - | Remote device address. |
 
 **Return Value:**
 
 | Type | Description |
-|:----|:----|
-|[PlayingState](#enum-playingstate)|Playback state of the remote device.|
+| :---- | :---- |
+| [PlayingState](#enum-playingstate) | Playback state of the remote device. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 201 | Permission denied. |
-  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
   | 801 | Capability not supported. |
   | 2900001 | Service stopped. |
   | 2900003 | Bluetooth disabled. |
@@ -237,7 +237,7 @@ public func getPlayingState(deviceId: String): PlayingState
 import ohos.base.*
 import kit.ConnectivityKit.*
 import kit.PerformanceAnalysisKit.Hilog
-import ohos.bussiness_exception.*
+import ohos.business_exception.*
 
 try {
     let a2dpSrc = createA2dpSrcProfile()
@@ -253,29 +253,29 @@ try {
 public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 ```
 
-**Description:** Unsubscribes from all connection state change events.
+**Function:** Unsubscribes from all connection state change events.
 
 **Required Permission:** ohos.ACCESS_BLUETOOTH
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|Yes|-|Callback event type.|
-|callback|[CallbackObject](<font color="red" face="bold">please add link</font>)|Yes|-|Callback event.|
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| eventType | [ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype) | Yes | - | Callback event type. |
+| callback | [CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | Yes | - | Callback event. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 201 | Permission denied. |
-  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
   | 801 | Capability not supported. |
 
 **Example:**
@@ -315,28 +315,28 @@ try {
 public func off(eventType: ProfileCallbackType): Unit
 ```
 
-**Description:** Unsubscribes from all connection state change events.
+**Function:** Unsubscribes from all connection state change events.
 
 **Required Permission:** ohos.ACCESS_BLUETOOTH
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|Yes|-|Callback event type.|
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| eventType | [ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype) | Yes | - | Callback event type. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 201 | Permission denied. |
-  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
   | 801 | Capability not supported. |
 
 **Example:**
@@ -376,29 +376,29 @@ try {
 public func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeParam>): Unit
 ```
 
-**Description:** Subscribes to connection state change events. Uses Callback for asynchronous callbacks.
+**Function:** Subscribes to connection state change events. Uses Callback for asynchronous callbacks.
 
 **Required Permission:** ohos.ACCESS_BLUETOOTH
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-|eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|Yes|-|Pass [CONNECTION_STATE_CHANGE](./cj-apis-bluetooth-base_profile.md#connectionstatechange) to indicate the connection state change event type.|
-|callback|[Callback1Argument][StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)|Yes|-|Represents the input parameter of the callback function.|
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| eventType | [ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype) | Yes | - | Pass [CONNECTION_STATE_CHANGE](./cj-apis-bluetooth-base_profile.md#connectionstatechange) to indicate the connection state change event type. |
+| callback | Callback1Argument\<[StateChangeParam](cj-apis-bluetooth-base_profile.md#class-statechangeparam)> | Yes | - | Represents the input parameter of the callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 201 | Permission denied. |
-  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types. 3. Parameter verification failed. |
+  | 401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
   | 801 | Capability not supported. |
 
 **Example:**
@@ -453,7 +453,7 @@ public class CodecInfo {
 public var codecBitsPerSample: CodecBitsPerSample
 ```
 
-**Description:** Indicates the number of bits per sample, with an initial value of CODEC_BITS_PER_SAMPLE_NONE.
+**Description:** Represents the number of bits per sample, with an initial value of CODEC_BITS_PER_SAMPLE_NONE.
 
 **Type:** [CodecBitsPerSample](#enum-codecbitspersample)
 
@@ -469,7 +469,7 @@ public var codecBitsPerSample: CodecBitsPerSample
 public var codecChannelMode: CodecChannelMode
 ```
 
-**Description:** Indicates the channel mode of the codec, with an initial value of CODEC_CHANNEL_MODE_NONE.
+**Description:** Represents the channel mode of the codec, with an initial value of CODEC_CHANNEL_MODE_NONE.
 
 **Type:** [CodecChannelMode](#enum-codecchannelmode)
 
@@ -485,7 +485,7 @@ public var codecChannelMode: CodecChannelMode
 public var codecSampleRate: CodecSampleRate
 ```
 
-**Description:** Indicates the sample rate of the codec, with an initial value of CODEC_BITS_PER_SAMPLE_NONE.
+**Description:** Represents the sample rate of the codec, with an initial value of CODEC_BITS_PER_SAMPLE_NONE.
 
 **Type:** [CodecSampleRate](#enum-codecsamplerate)
 
@@ -501,7 +501,7 @@ public var codecSampleRate: CodecSampleRate
 public var codecType: CodecType
 ```
 
-**Description:** Indicates the type of codec, with an initial value of CODEC_TYPE_SBC.
+**Description:** Represents the codec type, with an initial value of CODEC_TYPE_SBC.
 
 **Type:** [CodecType](#enum-codectype)
 
@@ -576,7 +576,7 @@ CodecBitsPerSample32
 CodecBitsPerSampleNone
 ```
 
-**Description:** Unknown number of bits per sample.
+**Description:** Unknown bits per sample.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -664,7 +664,7 @@ public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
 CodecChannelModeMono
 ```
 
-**Description:** Mono channel mode.
+**Description:** Mono channel.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -688,7 +688,7 @@ CodecChannelModeNone
 CodecChannelModeStereo
 ```
 
-**Description:** Stereo channel mode.
+**Description:** Stereo channel.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -910,7 +910,9 @@ public func toString(): String
 
 |Type|Description|
 |:----|:----|
-|String|String representation of the sample rate.|## enum CodecType
+|String|String representation of the sample rate.|
+
+```## enum CodecType
 
 ```cangjie
 public enum CodecType <: Equatable<CodecType> & ToString {
@@ -922,7 +924,7 @@ public enum CodecType <: Equatable<CodecType> & ToString {
 }
 ```
 
-**Description:** Bluetooth codec types.
+**Function:** Bluetooth codec types.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -939,7 +941,7 @@ public enum CodecType <: Equatable<CodecType> & ToString {
 CodecTypeAac
 ```
 
-**Description:** AAC codec.
+**Function:** AAC.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -951,7 +953,7 @@ CodecTypeAac
 CodecTypeInvalid
 ```
 
-**Description:** Unknown codec type.
+**Function:** Unknown codec type.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -963,7 +965,7 @@ CodecTypeInvalid
 CodecTypeL2hc
 ```
 
-**Description:** L2HC codec.
+**Function:** L2HC.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -975,7 +977,7 @@ CodecTypeL2hc
 CodecTypeSbc
 ```
 
-**Description:** SBC codec.
+**Function:** SBC.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -987,19 +989,19 @@ CodecTypeSbc
 public operator func !=(other: CodecType): Bool
 ```
 
-**Description:** Checks inequality between Bluetooth codec types.
+**Function:** Checks inequality between Bluetooth codec types.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [CodecType](#enum-codectype) | Yes | - | Bluetooth codec type. |
+|other|[CodecType](#enum-codectype)|Yes|-|Bluetooth codec type.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if Bluetooth codec types differ, otherwise returns false. |
+|Bool|Returns true if Bluetooth codec types are different, otherwise returns false.|
 
 ### func ==(CodecType)
 
@@ -1007,19 +1009,19 @@ public operator func !=(other: CodecType): Bool
 public operator func ==(other: CodecType): Bool
 ```
 
-**Description:** Checks equality between Bluetooth codec types.
+**Function:** Checks equality between Bluetooth codec types.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [CodecType](#enum-codectype) | Yes | - | Bluetooth codec type. |
+|other|[CodecType](#enum-codectype)|Yes|-|Bluetooth codec type.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if Bluetooth codec types are identical, otherwise returns false. |
+|Bool|Returns true if Bluetooth codec types are identical, otherwise returns false.|
 
 ### func toString()
 
@@ -1027,13 +1029,13 @@ public operator func ==(other: CodecType): Bool
 public func toString(): String
 ```
 
-**Description:** Returns the string representation of a Bluetooth codec type.
+**Function:** Returns the string representation of a Bluetooth codec type.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | String representation of the Bluetooth codec type. |
+|String|String representation of the Bluetooth codec type.|
 
 ## enum PlayingState
 
@@ -1045,7 +1047,7 @@ public enum PlayingState <: Equatable<PlayingState> & ToString {
 }
 ```
 
-**Description:** Bluetooth A2DP playback states.
+**Function:** Bluetooth A2DP playback states.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1062,7 +1064,7 @@ public enum PlayingState <: Equatable<PlayingState> & ToString {
 StateNotPlaying
 ```
 
-**Description:** Indicates not playing.
+**Function:** Indicates not playing.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1074,7 +1076,7 @@ StateNotPlaying
 StatePlaying
 ```
 
-**Description:** Indicates currently playing.
+**Function:** Indicates currently playing.
 
 **System Capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1086,19 +1088,19 @@ StatePlaying
 public operator func !=(other: PlayingState): Bool
 ```
 
-**Description:** Checks inequality between Bluetooth A2DP playback states.
+**Function:** Checks inequality between Bluetooth A2DP playback states.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [PlayingState](#enum-playingstate) | Yes | - | Bluetooth A2DP playback state. |
+|other|[PlayingState](#enum-playingstate)|Yes|-|Bluetooth A2DP playback state.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if Bluetooth A2DP playback states differ, otherwise returns false. |
+|Bool|Returns true if Bluetooth A2DP playback states are different, otherwise returns false.|
 
 ### func ==(PlayingState)
 
@@ -1106,19 +1108,19 @@ public operator func !=(other: PlayingState): Bool
 public operator func ==(other: PlayingState): Bool
 ```
 
-**Description:** Checks equality between Bluetooth A2DP playback states.
+**Function:** Checks equality between Bluetooth A2DP playback states.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [PlayingState](#enum-playingstate) | Yes | - | Bluetooth A2DP playback state. |
+|other|[PlayingState](#enum-playingstate)|Yes|-|Bluetooth A2DP playback state.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if Bluetooth A2DP playback states are identical, otherwise returns false. |
+|Bool|Returns true if Bluetooth A2DP playback states are identical, otherwise returns false.|
 
 ### func toString()
 
@@ -1126,10 +1128,10 @@ public operator func ==(other: PlayingState): Bool
 public func toString(): String
 ```
 
-**Description:** Returns the string representation of a Bluetooth A2DP playback state.
+**Function:** Returns the string representation of a Bluetooth A2DP playback state.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | String representation of the Bluetooth A2DP playback state. |
+|String|String representation of the Bluetooth A2DP playback state.|

@@ -1,6 +1,6 @@
 # Radio
 
-A radio button that provides corresponding user interaction options.
+A radio button component that provides corresponding user interaction options.
 
 ## Import Module
 
@@ -12,7 +12,7 @@ import kit.ArkUI.*
 
 None
 
-## Creating Components
+## Creating the Component
 
 ### init(String, String)
 
@@ -28,10 +28,10 @@ public init(value!: String, group!: String)
 
 **Parameters:**
 
-| Parameter | Type   | Required | Default | Description |
-|:----------|:-------|:---------|:--------|:------------|
-| value     | String | Yes      | -       | **Named parameter.** The value of the current radio button. |
-| group     | String | Yes      | -       | **Named parameter.** The group name to which the current radio button belongs. Only one radio button with the same group can be selected. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | String | Yes | - | **Named parameter.** The value of the current radio button. |
+| group | String | Yes | - | **Named parameter.** The group name to which the current radio button belongs. Only one radio button with the same group can be selected. |
 
 ## Common Attributes/Common Events
 
@@ -44,7 +44,7 @@ Common Events: All supported.
 ### func checked(Bool)
 
 ```cangjie
-public func checked(isChecked: Bool): This
+public func checked(value: Bool): This
 ```
 
 **Function:** The selected state of the radio button.
@@ -56,8 +56,8 @@ public func checked(isChecked: Bool): This
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
-|:----------|:-----|:---------|:--------|:------------|
-| value     | Bool | Yes      | -       | Sets the selected state of the radio button.<br>Initial value: false.<br/>**Note:**<br/>When value is true, it indicates a change from unselected to selected. When value is false, it indicates a change from selected to unselected. |
+|:---|:---|:---|:---|:---|
+| value | Bool | Yes | - | Sets the selected state of the radio button.<br>Initial value: false.<br/>**Note:**<br/>When value is true, it indicates a change from unselected to selected. When value is false, it indicates a change from selected to unselected. |
 
 ## Component Events
 
@@ -75,9 +75,9 @@ public func onChange(callback: (Bool) -> Unit): This
 
 **Parameters:**
 
-| Parameter | Type            | Required | Default | Description |
-|:----------|:----------------|:---------|:--------|:------------|
-| callback  | (Bool) -> Unit  | Yes      | -       | The state of the radio button. |
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| callback | (Bool)->Unit | Yes | - | The state of the radio button. |
 
 ## Example (Setting Background Color)
 
@@ -97,8 +97,7 @@ class EntryView {
     @State var radioName: String = "Null"
 
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center
-        )) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
             Column() {
                 Text("Radio1")
                 Radio(group: "radioGroup", value: "Radio1").checked(true).height(50).width(50)

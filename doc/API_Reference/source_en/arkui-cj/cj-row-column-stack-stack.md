@@ -1,6 +1,6 @@
 # Stack
 
-A stacking container where child components are pushed onto the stack in sequence, with each subsequent child component overlaying the previous one.
+A stacking container where child components are sequentially pushed onto the stack, with each subsequent child component overlaying the previous one.
 
 ## Import Module
 
@@ -30,7 +30,7 @@ public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit = {=
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| alignContent | [Alignment](cj-common-types.md#enum-alignment) | No | Alignment.Center | Sets the alignment of child components within the container. <br> Default: Alignment.Center |
+| alignContent | [Alignment](cj-common-types.md#enum-alignment) | No | Alignment.Center | Sets the alignment of child components within the container.<br> Default: Alignment.Center |
 | child | ()->Unit | No | { => } | Declares the child components within the container. |
 
 ## Universal Attributes/Events
@@ -57,7 +57,7 @@ public func alignContent(value: Alignment): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Alignment](cj-common-types.md#enum-alignment) | Yes | - | The alignment of all child components within the container. <br> Default: Alignment.Center |
+| value | [Alignment](cj-common-types.md#enum-alignment) | Yes | - | Alignment of all child components within the container.<br> Default: Alignment.Center |
 
 ## Example Code
 
@@ -75,7 +75,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Stack(Alignment.Bottom) {
+        Stack(alignContent: Alignment.Bottom) {
             Text("First child, show in bottom")
                 .width(90.percent)
                 .height(100.percent)

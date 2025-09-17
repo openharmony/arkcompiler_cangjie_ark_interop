@@ -1,12 +1,31 @@
 # Click Event
 
-A click event refers to the event triggered when a component is clicked.
+A click event refers to an event triggered when a component is clicked.
 
 ## Import Module
 
 ```cangjie
 import kit.ArkUI.*
 ```
+
+## func onClick((ClickEvent) -> Unit)
+
+```cangjie
+public func onClick(event: (ClickEvent) -> Unit): This
+```
+
+**Function:** Triggered when the component is clicked.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| event | ([ClickEvent](#class-clickevent))->Unit | Yes | - | Callback function triggered when the component is clicked. |
+
 
 ## class ClickEvent
 
@@ -40,7 +59,7 @@ public var displayX: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +75,7 @@ public var displayY: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +91,7 @@ public var source: SourceType
 
 **Type:** [SourceType](cj-common-types.md#enum-sourcetype)
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +107,7 @@ public var target: EventTarget
 
 **Type:** [EventTarget](#class-eventtarget)
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +123,7 @@ public var timestamp: Int64
 
 **Type:** Int64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,7 +139,7 @@ public var windowX: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,7 +155,7 @@ public var windowY: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +171,7 @@ public var x: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +187,7 @@ public var y: Float64
 
 **Type:** Float64
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,9 +216,9 @@ public var area: Area
 
 **Function:** Event target area.
 
-**Type:** [Area](#class-area)
+**Type:** [Area](./cj-common-types.md#class-area)
 
-**Read/Write:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,4 +240,4 @@ public init(area: Area)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| area | [Area](#class-area) | Yes | - | Event target area. |
+| area | [Area](./cj-common-types.md#class-area) | Yes | - | Event target area. |

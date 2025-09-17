@@ -1,6 +1,6 @@
 # Border Settings
 
-Configure the border style of components.
+Configure component border styles.
 
 ## Import Module
 
@@ -15,7 +15,7 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
     style!: BorderStyle = BorderStyle.Solid): This
 ```
 
-**Description:** Sets the border style of a component.
+**Function:** Sets the border style of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,10 +25,10 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | Yes | - | Border width. |
-| color | [ResourceColor](#) | No | Color.Black | Border color. |
-| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | No | 0.vp | Border corner radius. |
-| style | [BorderStyle](#) | No | BorderStyle.Solid | Border style. |
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border width. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Border color. |
+| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Border corner radius. |
+| style | [BorderStyle](./cj-common-types.md#enum-borderstyle) | No | BorderStyle.Solid | Border style. |
 
 ## func borderColor(ResourceColor)
 
@@ -36,7 +36,7 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
 public func borderColor(value: ResourceColor): This
 ```
 
-**Description:** Sets the border color of a component.
+**Function:** Sets the border color of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +46,7 @@ public func borderColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](#) | Yes | - | Border color. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Border color. |
 
 ## func borderRadius(Length)
 
@@ -54,7 +54,7 @@ public func borderColor(value: ResourceColor): This
 public func borderRadius(value: Length): This
 ```
 
-**Description:** Sets the corner radius of a component.
+**Function:** Sets the corner radius of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +64,7 @@ public func borderRadius(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | Yes | - | Corner radius. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Corner radius. |
 
 ## func borderRadius(Length, Length, Length, Length)
 
@@ -73,7 +73,7 @@ public func borderRadius(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bott
     bottomRight!: Length = 0.vp): This
 ```
 
-**Description:** Sets the corner radius for all four corners of a component.
+**Function:** Sets the corner radii for all four corners of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,18 +83,18 @@ public func borderRadius(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bott
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| topLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | No | 0.vp | Top-left corner radius. |
-| topRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | No | 0.vp | Top-right corner radius. |
-| bottomLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | No | 0.vp | Bottom-left corner radius. |
-| bottomRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | No | 0.vp | Bottom-right corner radius. |
+| topLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-left corner radius. |
+| topRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-right corner radius. |
+| bottomLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-left corner radius. |
+| bottomRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-right corner radius. |
 
-## func borderStyle(BorderStyle)
+## func borderStyle(BBorderStyle)
 
 ```cangjie
 public func borderStyle(value: BorderStyle): This
 ```
 
-**Description:** Sets the border style of a component.
+**Function:** Sets the border style of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +104,7 @@ public func borderStyle(value: BorderStyle): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [BorderStyle](#) | Yes | - | Border style value. |
+| value | [BorderStyle](./cj-common-types.md#enum-borderstyle) | Yes | - | Border style value. |
 
 ## func borderWidth(EdgeWidths)
 
@@ -112,7 +112,7 @@ public func borderStyle(value: BorderStyle): This
 public func borderWidth(value: EdgeWidths): This
 ```
 
-**Description:** Sets the brightness of a component.
+**Function:** Sets the brightness of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ public func borderWidth(value: EdgeWidths): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [EdgeWidths](#) | Yes | - | Edge widths. |
+| value | [EdgeWidths](./cj-universal-attribute-border.md#class-edgewidths) | Yes | - | Edge widths. |
 
 ## func borderWidth(Length)
 
@@ -130,7 +130,7 @@ public func borderWidth(value: EdgeWidths): This
 public func borderWidth(value: Length): This
 ```
 
-**Description:** Sets the border width of a component.
+**Function:** Sets the border width of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,13 +140,13 @@ public func borderWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | Yes | - | Border width. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border width. |
 
 **Exceptions:**
 
 - IllegalArgumentException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Resolution Steps |
   | :---- | :--- | :--- |
   | Percentage values are not supported. | todo | todo |
 
@@ -164,7 +164,7 @@ public class EdgeWidths {
 }
 ```
 
-**Description:** Sets the border width of the popup backplate. At least one parameter must be provided when initializing this object.
+**Function:** Sets the border width of a popup backdrop. At least one parameter must be provided when instantiating this object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,11 +176,11 @@ public class EdgeWidths {
 public var bottom: Length
 ```
 
-**Description:** Bottom border width.
+**Function:** Bottom border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read/Write:** Read-Write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,11 +192,11 @@ public var bottom: Length
 public var left: Length
 ```
 
-**Description:** Left border width.
+**Function:** Left border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read/Write:** Read-Write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,11 +208,11 @@ public var left: Length
 public var right: Length
 ```
 
-**Description:** Right border width.
+**Function:** Right border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read/Write:** Read-Write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,11 +224,11 @@ public var right: Length
 public var top: Length
 ```
 
-**Description:** Top border width.
+**Function:** Top border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read/Write:** Read-Write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,7 +240,7 @@ public var top: Length
 public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp)
 ```
 
-**Description:** Constructs an EdgeWidths object.
+**Function:** Constructs an EdgeWidths object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,7 +250,7 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Top border width. |
-| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Right border width. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Bottom border width. |
-| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Left border width. |
+| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top border width. |
+| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right border width. |
+| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom border width. |
+| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left border width. |

@@ -14,15 +14,15 @@ import ohos.base.*
 public let Main: MainThreadContext = MainThreadContext.instance_
 ```
 
-**Functionality:** Main is actually an object of type MainThreadContext, indicating that the thread in this context will be bound to the main thread (UI thread).
+**Function:** Main is actually an object of type MainThreadContext, indicating that the thread in this context will be bound to the main thread (UI thread).
 
-**Type:** [MainThreadContext](#class-MainThreadContext)
+**Type:** [MainThreadContext](#class-mainthreadcontext)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ## func launch(() -> Unit)
 
@@ -30,17 +30,17 @@ public let Main: MainThreadContext = MainThreadContext.instance_
 public func launch(task: () -> Unit): Unit
 ```
 
-**Functionality:** Submits a task to the main thread for execution.
+**Function:** Submits a task to the main thread for execution.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter Name|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| task | ()->Unit | Yes | - | The task to execute. |
+|task|()->Unit|Yes|-|The task to execute.|
 
 ## interface CollectionEx
 
@@ -52,11 +52,11 @@ public interface CollectionEx<T> {
 }
 ```
 
-**Functionality:** Array type. Internal interface, used by the framework.
+**Function:** Array type. Internal interface, used by the framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop size
 
@@ -64,15 +64,15 @@ public interface CollectionEx<T> {
 prop size: Int64
 ```
 
-**Functionality:** Array size.
+**Function:** Array size.
 
 **Type:** Int64
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### func [](Int64, T)
 
@@ -80,18 +80,18 @@ prop size: Int64
 operator func [](idx: Int64, value!: T): Unit
 ```
 
-**Functionality:** Writes an array element at the specified index.
+**Function:** Writes an array element at the specified index.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter Name|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| idx | Int64 | Yes | - | Index value. |
-| value | T | Yes | - | **Named parameter.** The value to write. |
+|idx|Int64|Yes|-|Index value.|
+|value|T|Yes|-| **Named parameter.** The value to write.|
 
 ### func \[](Int64)
 
@@ -99,23 +99,23 @@ operator func [](idx: Int64, value!: T): Unit
 operator func [](idx: Int64): T
 ```
 
-**Functionality:** Retrieves an array element by index.
+**Function:** Retrieves an array element by index.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter Name|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| idx | Int64 | Yes | - | Index value. |
+|idx|Int64|Yes|-|Index value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| T | Array element. |
+|T|Array element.|
 
 ## interface Length
 
@@ -126,11 +126,11 @@ public interface Length {
 }
 ```
 
-**Functionality:** Float64, Int64, and AppResource all implement the Length interface type.
+**Function:** Float64, Int64, and AppResource all implement the Length interface type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop unitType
 
@@ -138,15 +138,15 @@ public interface Length {
 prop unitType: LengthType
 ```
 
-**Functionality:** Used by the UI framework.
+**Function:** Used by the UI framework.
 
-**Type:** [LengthType](#enum-LengthType)
+**Type:** [LengthType](#enum-lengthtype)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop value
 
@@ -154,15 +154,15 @@ prop unitType: LengthType
 prop value: Float64
 ```
 
-**Functionality:** Used by the UI framework.
+**Function:** Used by the UI framework.
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ## interface LengthProp
 
@@ -176,11 +176,11 @@ public interface LengthProp {
 }
 ```
 
-**Functionality:** Pixel units. Used by the UI framework.
+**Function:** Pixel units. Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop fp
 
@@ -188,15 +188,15 @@ public interface LengthProp {
 prop fp: Length
 ```
 
-**Functionality:** Font pixels, similar to vp, adapt to screen density changes and adjust with system font size settings.
+**Function:** Font pixel, similar to vp, adapts to screen density changes and varies with system font size settings.
 
-**Type:** [Length](#interface-Length)
+**Type:** [Length](#interface-length)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop lpx
 
@@ -204,15 +204,15 @@ prop fp: Length
 prop lpx: Length
 ```
 
-**Functionality:** Logical pixel unit for viewports. The l.px unit is the ratio of the actual screen width to the logical width (configured via designWidth), with a default designWidth of 720. When designWidth is 720, on a screen with an actual width of 1440 physical pixels, 1l.px equals 2.px in size.
+**Function:** Logical pixel unit of the viewport. The l.px unit is the ratio of the actual screen width to the logical width (configured via designWidth), with the default designWidth value being 720. When designWidth is 720, on a screen with an actual width of 1440 physical pixels, 1l.px equals 2.px in size.
 
-**Type:** [Length](#interface-Length)
+**Type:** [Length](#interface-length)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop percent
 
@@ -220,15 +220,15 @@ prop lpx: Length
 prop percent: Length
 ```
 
-**Functionality:** Percentage type, used to describe lengths in percent pixel units.
+**Function:** Percentage type, used to describe lengths in percent pixel units.
 
-**Type:** [Length](#interface-Length)
+**Type:** [Length](#interface-length)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop px
 
@@ -236,15 +236,15 @@ prop percent: Length
 prop px: Length
 ```
 
-**Functionality:** Screen physical pixel unit.
+**Function:** Physical pixel unit of the screen.
 
-**Type:** [Length](#interface-Length)
+**Type:** [Length](#interface-length)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### prop vp
 
@@ -252,15 +252,15 @@ prop px: Length
 prop vp: Length
 ```
 
-**Functionality:** Screen density-dependent pixels, converted to screen physical pixels based on screen pixel density. When no unit is specified, the default unit is vp. On a screen with an actual width of 1440 physical pixels, 1vp is approximately equal to 3px.<br/>**Note:** <br/> The ratio of vp to px depends on the screen pixel density.
+**Function:** Screen density-related pixel, converted to physical screen pixels based on screen pixel density. When a value has no unit, the default unit is vp. On a screen with an actual width of 1440 physical pixels, 1vp is approximately equal to 3px.<br/>**Note:** <br/> The ratio of vp to px depends on the screen pixel density.
 
-**Type:** [Length](#interface-Length)
+**Type:** [Length](#interface-length)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ## interface ResourceColor
 
@@ -270,11 +270,11 @@ public interface ResourceColor {
 }
 ```
 
-**Functionality:** Color, UInt32, Int64, and AppResource all implement the ResourceColor interface type.
+**Function:** Color, UInt32, Int64, and AppResource all implement the ResourceColor interface type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### func toUInt32()
 
@@ -282,13 +282,13 @@ public interface ResourceColor {
 func toUInt32(): UInt32
 ```
 
-**Functionality:** Converts to a Uint32 color value.
+**Function:** Converts to a Uint32 color value.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| UInt32 | Uint32 color value. |
+|UInt32|Uint32 color value.|
 
 ## interface ResourceStr
 
@@ -296,11 +296,11 @@ func toUInt32(): UInt32
 public interface ResourceStr {}
 ```
 
-**Functionality:** String type, used to describe the types that can be used for string parameters.
+**Function:** String type, used to describe the types of string parameters that can be used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ## class Color
 
@@ -318,15 +318,15 @@ public class Color <: ResourceColor {
 }
 ```
 
-**Functionality:** Color type.
+**Function:** Color type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 **Parent Type:**
 
-- [ResourceColor](#interface-ResourceColor)
+- [ResourceColor](#interface-resourcecolor)
 
 ### static let Black
 
@@ -334,15 +334,15 @@ public class Color <: ResourceColor {
 public static let Black: Color = Color(0xff000000)
 ```
 
-**Functionality:** Black.
+**Function:** Black.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### static let Blue
 
@@ -350,15 +350,15 @@ public static let Black: Color = Color(0xff000000)
 public static let Blue: Color = Color(0xff0000ff)
 ```
 
-**Functionality:** Blue.
+**Function:** Blue.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### static let Gray
 
@@ -366,15 +366,15 @@ public static let Blue: Color = Color(0xff0000ff)
 public static let Gray: Color = Color(0xff808080)
 ```
 
-**Functionality:** Gray.
+**Function:** Gray.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### static let Green
 
@@ -382,15 +382,15 @@ public static let Gray: Color = Color(0xff808080)
 public static let Green: Color = Color(0xff008000)
 ```
 
-**Functionality:** Green.
+**Function:** Green.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### static let Red
 
@@ -398,15 +398,15 @@ public static let Green: Color = Color(0xff008000)
 public static let Red: Color = Color(0xffff0000)
 ```
 
-**Functionality:** Red.
+**Function:** Red.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### static let Transparent
 
@@ -414,15 +414,15 @@ public static let Red: Color = Color(0xffff0000)
 public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
 ```
 
-**Functionality:** Transparent.
+**Function:** Transparent.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### static let White
 
@@ -430,15 +430,15 @@ public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
 public static let White: Color = Color(0xffffffff)
 ```
 
-**Functionality:** White.
+**Function:** White.
 
-**Type:** [Color](#class-Color)
+**Type:** [Color](#class-color)
 
-**Read-Write Capability:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 ### init(UInt8, UInt8, UInt8, Float32)
 
@@ -446,20 +446,20 @@ public static let White: Color = Color(0xffffffff)
 public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0)
 ```
 
-**Functionality:** Constructs a Color type object.
+**Function:** Constructs a Color type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter Name|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| red | UInt8 | Yes | - | Red channel value in RGB. |
-| green | UInt8 | Yes | - | Green channel value in RGB. |
-| blue | UInt8 | Yes | - | Blue channel value in RGB. |
-| alpha | Float32 | No | 1.0 | **Named parameter.** Transparency channel value, range [0.0, 1.0]. |
+|red|UInt8|Yes|-|Red channel value in RGB.|
+|green|UInt8|Yes|-|Green channel value in RGB.|
+|blue|UInt8|Yes|-|Blue channel value in RGB.|
+|alpha|Float32|No|1.0|***\*Named parameter.\**** Transparency channel value, range [0.0, 1.0].|
 
 ### init(UInt32)
 
@@ -467,17 +467,17 @@ public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0)
 public init(value: UInt32)
 ```
 
-**Functionality:** Constructs a Color type object.
+**Function:** Constructs a Color type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Since Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter Name|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| value | UInt32 | Yes | - | Uint32 color value. The alpha, R, G, and B channels each occupy 8 bits of the input in order. If only R, G, and B channels are input, the alpha channel defaults to 0xff. |
+|value|UInt32|Yes|-|Uint32 color value. The alpha, R, G, and B channels each occupy 8 bits of the input in order. If only R, G, and B channels are input, the alpha channel defaults to 0xff.|
 
 ### func toUInt32()
 
@@ -485,16 +485,16 @@ public init(value: UInt32)
 public func toUInt32(): UInt32
 ```
 
-**Functionality:** Converts to a Uint32 color value.
+**Function:** Converts to a Uint32 color value.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| UInt32 | Uint32 color value. |## class MainThreadContext
+|UInt32|Uint32 color value.|## class MainThreadContext
 
 ```cangjie
-public class MainThreadContext <: ThreadContext {}
+public class MainThreadContext {}
 ```
 
 **Function:** Thread context used by the framework.
@@ -502,10 +502,6 @@ public class MainThreadContext <: ThreadContext {}
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-**Parent Type:**
-
-- [ThreadContext](#class-threadcontext)
 
 ### func end()
 
@@ -557,7 +553,7 @@ public class ReuseParams {
 public init(arr: Array<(String, Any)>)
 ```
 
-**Function:** Creates a ReuseParams object, typically not invoked by developers.
+**Function:** Creates a ReuseParams object, typically not called by developers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -567,7 +563,7 @@ public init(arr: Array<(String, Any)>)
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|arr| Array\<(String, Any)> |Yes|-|Array containing tuples of component construction parameters.|
+|arr| Array\<(String, Any)> |Yes|-|An array containing tuples of component construction parameters.|
 
 ### func get\<T>(String)
 
@@ -585,13 +581,13 @@ public func get<T>(key: String): ?T
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|key|String|Yes|-|Name of the construction parameter.|
+|key|String|Yes|-|The name of the construction parameter.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|?T|Value of the construction parameter.|
+|?T|The value of the construction parameter.|
 
 ## enum LengthType
 
@@ -685,7 +681,7 @@ public prop unitType: LengthType
 
 **Function:** Used by the UI framework.
 
-**Type:** [LengthType](#enum-LengthType)
+**Type:** [LengthType](#enum-lengthtype)
 
 **Access:** Read-only
 
@@ -725,13 +721,13 @@ public static func parse(value: Int32): LengthType
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|value|Int32|Yes|-|Value of the length type.|
+|value|Int32|Yes|-|The value of the length type.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|[LengthType](#enum-LengthType)|LengthType instance.|
+|[LengthType](#enum-lengthtype)|The LengthType instance.|
 
 ### func !=(LengthType)
 
@@ -745,7 +741,7 @@ public operator func !=(other: LengthType): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[LengthType](#enum-LengthType)|Yes|-|Another enum value.|
+|other|[LengthType](#enum-lengthtype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
@@ -765,7 +761,7 @@ public operator func ==(other: LengthType): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[LengthType](#enum-LengthType)|Yes|-|Another enum value.|
+|other|[LengthType](#enum-lengthtype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
@@ -789,7 +785,7 @@ public func getValue(): Int32
 
 |Type|Description|
 |:----|:----|
-|Int32|Value of the enum.|
+|Int32|The value of the enum.|
 
 ## type Callback
 
@@ -797,7 +793,7 @@ public func getValue(): Int32
 public type Callback<T, V>=(T) -> V
 ```
 
-**Function:** [Callback](#type-Callback) is an alias for the [(T) -> V](#type-callback) type.
+**Function:** [Callback](#type-callback) is an alias for the [(T) -> V](#type-callback) type.
 
 ## type VoidCallback
 
@@ -805,4 +801,4 @@ public type Callback<T, V>=(T) -> V
 public type VoidCallback =() -> Unit
 ```
 
-**Function:** [VoidCallback](#type-VoidCallback) is an alias for the [() -> Unit](#type-voidcallback) type.
+**Function:** [VoidCallback](#type-voidcallback) is an alias for the [() -> Unit](#type-voidcallback) type.

@@ -14,7 +14,7 @@ import kit.ArkUI.*
 public func blur(value: Float64): This
 ```
 
-**Function:** Sets the blur effect for a component.
+**Description:** Sets the blur effect for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,7 +32,7 @@ public func blur(value: Float64): This
 public func brightness(value: Float64): This
 ```
 
-**Function:** Sets the brightness of a component.
+**Description:** Sets the brightness for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +50,7 @@ public func brightness(value: Float64): This
 public func colorBlend(value: ResourceColor): This
 ```
 
-**Function:** Sets the color blend mode for a component.
+**Description:** Sets the color blend mode for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +60,7 @@ public func colorBlend(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](#) | Yes | - | Color blend value. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Color blend value. |
 
 ## func contrast(Float64)
 
@@ -68,7 +68,7 @@ public func colorBlend(value: ResourceColor): This
 public func contrast(value: Float64): This
 ```
 
-**Function:** Sets the contrast of a component.
+**Description:** Sets the contrast for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +86,7 @@ public func contrast(value: Float64): This
 public func grayscale(value: Float64): This
 ```
 
-**Function:** Sets the grayscale value for a component.
+**Description:** Sets the grayscale value for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +104,7 @@ public func grayscale(value: Float64): This
 public func hueRotate(value: Float32): This
 ```
 
-**Function:** Sets the hue rotation for a component.
+**Description:** Sets the hue rotation for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ public func hueRotate(value: Float32): This
 public func invert(value: Float64): This
 ```
 
-**Function:** Sets the color inversion value for a component.
+**Description:** Sets the color inversion value for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,7 +140,7 @@ public func invert(value: Float64): This
 public func invert(low!: Float64, high!: Float64, threshold!: Float64, thresholdRange!: Float64): This
 ```
 
-**Function:** Sets the inversion range and threshold for a component.
+**Description:** Sets the inversion range and threshold for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,7 +161,7 @@ public func invert(low!: Float64, high!: Float64, threshold!: Float64, threshold
 public func saturate(value: Float64): This
 ```
 
-**Function:** Sets the saturation for a component.
+**Description:** Sets the saturation for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,7 +179,7 @@ public func saturate(value: Float64): This
 public func sepia(value: Float64): This
 ```
 
-**Function:** Sets the sepia tone for a component.
+**Description:** Sets the sepia tone for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,7 +189,7 @@ public func sepia(value: Float64): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Float64 | Yes | - | Converts the image to sepia, reducing color saturation to create a warm, vintage style. A value of 1 results in a fully sepia image, values ≤ 0 leave the image unchanged, and values > 1 amplify color shifts, making the image brighter with more yellow/red tones (though this is not standard sepia effect).<br> Valid range: [0.0, +∞), recommended range: (0.0, 1.0]. |
+| value | Float64 | Yes | - | Converts the image to sepia, reducing color saturation to create a warm vintage style. A value of 1 results in full sepia, values ≤ 0 leave the image unchanged, and values > 1 amplify color shifts, making the image brighter with more yellow/red tones (non-standard sepia effect).<br> Value range: [0.0, +∞), recommended range: (0.0, 1.0]. |
 
 ## func shadow(Float64, ResourceColor, Float64, Float64)
 
@@ -198,7 +198,7 @@ public func shadow(radius!: Float64, color!: ResourceColor = Color(0x666666), of
     offsetY!: Float64 = 0.0): This
 ```
 
-**Function:** Sets the shadow for a component.
+**Description:** Sets the shadow for a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,6 +209,6 @@ public func shadow(radius!: Float64, color!: ResourceColor = Color(0x666666), of
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | radius | Float64 | Yes | - | Shadow blur radius. |
-| color | [ResourceColor](#) | No | Color(0x666666) | Shadow color. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x666666) | Shadow color. |
 | offsetX | Float64 | No | 0.0 | Shadow X-axis offset. |
 | offsetY | Float64 | No | 0.0 | Shadow Y-axis offset. |

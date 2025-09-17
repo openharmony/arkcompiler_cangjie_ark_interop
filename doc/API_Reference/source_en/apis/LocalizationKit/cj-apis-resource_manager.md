@@ -1,6 +1,6 @@
 # ohos.resource_manager
 
-The resource management module provides interfaces for accessing application resource objects based on the current configuration: language, region, screen orientation, MCC (Mobile Country Code), MNC (Mobile Network Code), device capability, and screen density.
+The resource management module provides interfaces for retrieving application resource objects based on the current configuration: language, region, screen orientation, MCC (Mobile Country Code), MNC (Mobile Network Code), device capability (device type), and density (resolution).
 
 ## Import Module
 
@@ -13,9 +13,9 @@ import kit.LocalizationKit.*
 API example code usage instructions:
 
 - If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#Cangjie-Example-Code-Instructions).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## class Configuration
 
@@ -47,7 +47,7 @@ public var colorMode: ColorMode
 
 **Type:** [ColorMode](#enum-colormode)
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -63,7 +63,7 @@ public var deviceType: DeviceType
 
 **Type:** [DeviceType](#enum-devicetype)
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -79,7 +79,7 @@ public var direction: Direction
 
 **Type:** [Direction](#enum-direction)
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -95,7 +95,7 @@ public var locale: String
 
 **Type:** String
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -111,7 +111,7 @@ public var mcc: UInt32
 
 **Type:** UInt32
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -127,7 +127,7 @@ public var mnc: UInt32
 
 **Type:** UInt32
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -143,7 +143,7 @@ public var screenDensity: ScreenDensity
 
 **Type:** [ScreenDensity](#enum-screendensity)
 
-**Access:** Readable and writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -202,7 +202,7 @@ public let screenDensity: ScreenDensity
 public class ResourceManager {}
 ```
 
-**Description:** Provides the capability to access application resources.
+**Description:** Provides the ability to access application resources.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -214,7 +214,7 @@ public class ResourceManager {}
 public func addResource(path: String): Unit
 ```
 
-**Description:** Loads the specified resource path during application runtime to implement resource overlay.
+**Description:** Loads the specified resource path during application runtime to achieve resource overlay.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -222,13 +222,13 @@ public func addResource(path: String): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | path | String | Yes | - | Resource path. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -236,7 +236,7 @@ public func addResource(path: String): Unit
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance id is invalid. | todo | todo |
 
@@ -254,13 +254,13 @@ public func closeRawFd(path: String): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | path | String | Yes | - | Rawfile file path. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -269,7 +269,7 @@ public func closeRawFd(path: String): Unit
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance id is invalid. | todo | todo |
 
@@ -279,7 +279,7 @@ public func closeRawFd(path: String): Unit
 public func getBoolean(resId: UInt32): Bool
 ```
 
-**Description:** Gets the boolean result corresponding to the resource ID.
+**Description:** Retrieves the boolean result corresponding to the resource ID.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -287,7 +287,7 @@ public func getBoolean(resId: UInt32): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | resId | UInt32 | Yes | - | Resource ID. |
 
@@ -299,7 +299,7 @@ public func getBoolean(resId: UInt32): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -310,7 +310,7 @@ public func getBoolean(resId: UInt32): Bool
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance id is invalid. | todo | todo |
 
@@ -320,7 +320,7 @@ public func getBoolean(resId: UInt32): Bool
 public func getBoolean(resource: AppResource): Bool
 ```
 
-**Description:** Gets the boolean result corresponding to the resource object. This interface is used for cross-package access in multi-project applications.
+**Description:** Retrieves the boolean result corresponding to the resource object. This interface is used for cross-package access within multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -328,9 +328,9 @@ public func getBoolean(resource: AppResource): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Resource object. |
 
 **Return Value:**
 
@@ -340,7 +340,7 @@ public func getBoolean(resource: AppResource): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -351,7 +351,7 @@ public func getBoolean(resource: AppResource): Bool
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance id is invalid. | todo | todo |
 
@@ -361,7 +361,7 @@ public func getBoolean(resource: AppResource): Bool
 public func getBooleanByName(resName: String): Bool
 ```
 
-**Description:** Gets the boolean result corresponding to the resource name.
+**Description:** Retrieves the boolean result corresponding to the resource name.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -369,7 +369,7 @@ public func getBooleanByName(resName: String): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | resName | String | Yes | - | Resource name. |
 
@@ -381,7 +381,7 @@ public func getBooleanByName(resName: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -392,7 +392,7 @@ public func getBooleanByName(resName: String): Bool
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance id is invalid. | todo | todo |### func getColor(AppResource)
 
@@ -401,7 +401,7 @@ public func getBooleanByName(resName: String): Bool
 public func getColor(resource: AppResource): UInt32
 ```
 
-**Function:** Gets the color resource value corresponding to the resource object. This interface is used for cross-package access in multi-project applications.
+**Function:** Retrieves the color resource value corresponding to the resource object. This interface is used for cross-package access in multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -409,9 +409,9 @@ public func getColor(resource: AppResource): UInt32
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | The resource object. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | The resource object. |
 
 **Return Value:**
 
@@ -432,7 +432,7 @@ public func getColor(resource: AppResource): UInt32
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -443,7 +443,7 @@ public func getColor(resource: AppResource): UInt32
 public func getColor(resId: UInt32): UInt32
 ```
 
-**Function:** Gets the color resource value corresponding to the resource ID.
+**Function:** Retrieves the color resource value corresponding to the resource ID.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -451,7 +451,7 @@ public func getColor(resId: UInt32): UInt32
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resId | UInt32 | Yes | - | The resource ID. |
 
@@ -474,7 +474,7 @@ public func getColor(resId: UInt32): UInt32
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -485,7 +485,7 @@ public func getColor(resId: UInt32): UInt32
 public func getColorByName(resName: String): UInt32
 ```
 
-**Function:** Gets the color resource value corresponding to the resource name.
+**Function:** Retrieves the color resource value corresponding to the resource name.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -493,7 +493,7 @@ public func getColorByName(resName: String): UInt32
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resName | String | Yes | - | The resource name. |
 
@@ -516,7 +516,7 @@ public func getColorByName(resName: String): UInt32
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -527,7 +527,7 @@ public func getColorByName(resName: String): UInt32
 public func getConfiguration(): Configuration
 ```
 
-**Function:** Gets the device configuration information and returns a [Configuration](#class-configuration) object.
+**Function:** Retrieves the device configuration information and returns a [Configuration](#class-configuration) object.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -543,7 +543,7 @@ public func getConfiguration(): Configuration
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. @returns { Configuration } the device configuration. | todo | todo |
 
@@ -554,7 +554,7 @@ public func getConfiguration(): Configuration
 public func getDeviceCapability(): DeviceCapability
 ```
 
-**Function:** Gets the device capability and returns a [DeviceCapability](#class-devicecapability) object.
+**Function:** Retrieves the device capability and returns a [DeviceCapability](#class-devicecapability) object.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -570,7 +570,7 @@ public func getDeviceCapability(): DeviceCapability
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. @returns { DeviceCapability } the device capability. | todo | todo |
 
@@ -581,7 +581,7 @@ public func getDeviceCapability(): DeviceCapability
 public func getLocales(includeSystem!: Bool = false): Array<String>
 ```
 
-**Function:** Gets the language list of the application.
+**Function:** Retrieves the language list of the application.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -589,15 +589,15 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| includeSystem | Bool | No | false | **Named parameter.** Whether to include system resources. The default value is false. <br> false: Indicates that only the language list of application resources is obtained. <br> true: Indicates that the language list of both system and application resources is obtained. <br> When the system resource manager obtains the language list, the includeSystem value is invalid, and the system resource language list is returned. |
+| includeSystem | Bool | No | false | **Named parameter.** Whether to include system resources. Default value is false. <br> false: Indicates only retrieving the language list of application resources. <br> true: Indicates retrieving the language list of both system and application resources. <br> When retrieving the language list for system resource management objects, the includeSystem value is invalid, and the system resource language list is returned. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Array\<String> | Returns the obtained language list. The strings in the list are composed of language, script (optional), and region (optional), connected in order by hyphens "-". |
+| Array\<String> | Returns the retrieved language list. Strings in the list are composed of language, script (optional), and region (optional), concatenated in order with hyphens "-". |
 
 **Exceptions:**
 
@@ -609,7 +609,7 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -620,7 +620,7 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
 public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = None): String
 ```
 
-**Function:** Gets the image resource corresponding to the specified screen density by resource name and returns the Base64 encoding of the image resource.
+**Function:** Retrieves the image resource corresponding to the resource name for the specified screen density and returns the Base64 encoding of the image resource.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -628,10 +628,10 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resName | String | Yes | - | The resource ID. |
-| density | ?[ScreenDensity](#enum-screendensity) | No | None | **Named parameter.** The screen density required for resource acquisition. 0 or default indicates the default screen density. |
+| density | ?[ScreenDensity](#enum-screendensity) | No | None | **Named parameter.** The screen density required for resource retrieval. 0 or omitted indicates the default screen density. |
 
 **Return Value:**
 
@@ -645,19 +645,19 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+  | 401 | If the input parameter is invalid. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
   | 9001003 | Invalid resource name. |
   | 9001004 | No matching resource is found based on the resource name. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
 - IllegalMemoryException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | Out of memory. | todo | todo |
 
@@ -668,7 +668,7 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
 public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Array<UInt8>
 ```
 
-**Function:** Gets the media file content corresponding to the specified screen density by resource name.
+**Function:** Retrieves the media file content corresponding to the resource name for the specified screen density.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -676,10 +676,10 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resName | String | Yes | - | The resource name. |
-| density | ?[ScreenDensity](#enum-screendensity) | No | None | The screen density required for resource acquisition. 0 indicates the default screen density. |
+| density | ?[ScreenDensity](#enum-screendensity) | No | None | The screen density required for resource retrieval. 0 indicates the default screen density. |
 
 **Return Value:**
 
@@ -693,13 +693,13 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+  | 401 | If the input parameter is invalid. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
   | 9001003 | Invalid resource name. |
   | 9001004 | No matching resource is found based on the resource name. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -710,7 +710,7 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
 public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Array<UInt8>
 ```
 
-**Function:** Gets the media file content corresponding to the specified screen density by resource ID.
+**Function:** Retrieves the media file content corresponding to the resource ID for the specified screen density.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -718,10 +718,10 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resId | UInt32 | Yes | - | The resource ID. |
-| density | ?[ScreenDensity](#enum-screendensity) | No | None | The screen density required for resource acquisition. 0 indicates the default screen density. |
+| density | ?[ScreenDensity](#enum-screendensity) | No | None | The screen density required for resource retrieval. 0 indicates the default screen density. |
 
 **Return Value:**
 
@@ -735,13 +735,13 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+  | 401 | If the input parameter is invalid. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
   | 9001001 | Invalid resource ID. |
   | 9001002 | No matching resource is found based on the resource ID. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -752,7 +752,7 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
 public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = None): Array<UInt8>
 ```
 
-**Function:** Gets the media file content corresponding to the specified screen density by resource object. This interface is used for cross-package access in multi-project applications.
+**Function:** Retrieves the media file content corresponding to the resource object for the specified screen density. This interface is used for cross-package access in multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -760,10 +760,10 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | The resource object. |
-| density | ?[ScreenDensity](#enum-screendensity) | No | None | The screen density required for resource acquisition. 0 indicates the default screen density. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | The resource object. |
+| density | ?[ScreenDensity](#enum-screendensity) | No | None | The screen density required for resource retrieval. 0 indicates the default screen density. |
 
 **Return Value:**
 
@@ -777,22 +777,24 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+  | 401 | If the input parameter is invalid. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
   | 9001001 | Invalid resource ID. |
   | 9001002 | No matching resource is found based on the resource ID. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |### func getMediaContentBase64(UInt32, ?ScreenDensity)
+  | If the instance ID is invalid. | todo | todo |
+
+### func getMediaContentBase64(UInt32, ?ScreenDensity)
 
 ```cangjie
 
 public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None): String
 ```
 
-**Function:** Retrieves the image resource corresponding to the specified resource ID and screen density, returning the Base64 encoding of the image resource.
+**Function:** Retrieves the image resource corresponding to the resource ID for the specified screen density and returns the Base64 encoding of the image resource.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -800,16 +802,16 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resId | UInt32 | Yes | - | Resource ID. |
-| density | ?[ScreenDensity](#enum-screendensity) | No | None | **Named parameter.** The screen density required for resource retrieval. 0 or omission indicates the default screen density. |
+| resId | UInt32 | Yes | - | The resource ID. |
+| density | ?[ScreenDensity](#enum-screendensity) | No | None | **Named parameter.** The screen density required for resource retrieval. 0 or omitted indicates the default screen density. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The [DrawableDescriptor](#class-drawabledescriptor) object of the image resource corresponding to the resource ID. |
+| String | The Base64 encoding of the image resource corresponding to the resource ID. |
 
 **Exceptions:**
 
@@ -823,24 +825,22 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
 - IllegalMemoryException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
-  | Out of memory. | todo | todo |
-
-### func getMediaContentBase64(AppResource, ?ScreenDensity)
+  | Out of memory. | todo | todo |### func getMediaContentBase64(AppResource, ?ScreenDensity)
 
 ```cangjie
 
 public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensity = None): String
 ```
 
-**Function:** Retrieves the image resource corresponding to the specified resource object and screen density, returning the Base64 encoding of the image resource. This interface is used for cross-package access within multi-project applications.
+**Function:** Retrieves the image resource corresponding to the specified screen density from the resource object and returns its Base64 encoding. This interface is used for cross-package access within multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -848,16 +848,16 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | The resource object. |
 | density | ?[ScreenDensity](#enum-screendensity) | No | None | **Named parameter.** The screen density required for resource retrieval. 0 or omission indicates the default screen density. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The Base64 encoding of the image resource corresponding to the resource object. |
+| String | Base64 encoding of the image resource corresponding to the resource object. |
 
 **Exceptions:**
 
@@ -871,13 +871,13 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
 - IllegalMemoryException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | Out of memory. | todo | todo |
 
@@ -896,9 +896,9 @@ public func getNumber(resId: UInt32): NumberValueType
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resId | UInt32 | Yes | - | Resource ID. |
+| resId | UInt32 | Yes | - | The resource ID. |
 
 **Return Value:**
 
@@ -919,7 +919,7 @@ public func getNumber(resId: UInt32): NumberValueType
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -930,7 +930,7 @@ public func getNumber(resId: UInt32): NumberValueType
 public func getNumber(resource: AppResource): NumberValueType
 ```
 
-**Function:** Retrieves the numeric resource corresponding to the specified resource object. This interface is used for cross-package access within multi-project applications.
+**Function:** Retrieves the numeric resource from the resource object. This interface is used for cross-package access within multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -938,9 +938,9 @@ public func getNumber(resource: AppResource): NumberValueType
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | The resource object. |
 
 **Return Value:**
 
@@ -961,7 +961,7 @@ public func getNumber(resource: AppResource): NumberValueType
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -972,7 +972,7 @@ public func getNumber(resource: AppResource): NumberValueType
 public func getNumberByName(resName: String): NumberValueType
 ```
 
-**Function:** Retrieves the numeric resource corresponding to the specified resource name. If integer and float resources share the same `resName`, the integer resource value is prioritized.
+**Function:** Retrieves the numeric resource corresponding to the specified resource name. If both integer and float resources share the same `resName`, the integer resource value is prioritized.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -980,9 +980,9 @@ public func getNumberByName(resName: String): NumberValueType
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resName | String | Yes | - | Resource name. |
+| resName | String | Yes | - | The resource name. |
 
 **Return Value:**
 
@@ -1003,7 +1003,7 @@ public func getNumberByName(resName: String): NumberValueType
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -1014,7 +1014,7 @@ public func getNumberByName(resName: String): NumberValueType
 public func getPluralStringByName(resName: String, num: Int64): String
 ```
 
-**Function:** Retrieves the plural string resource corresponding to the specified resource name and formats the string based on the given quantity.
+**Function:** Retrieves the singular/plural string resource corresponding to the specified resource name and formats the string based on the given quantity.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1022,16 +1022,16 @@ public func getPluralStringByName(resName: String, num: Int64): String
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resName | String | Yes | - | Resource name. |
-| num | Int64 | Yes | - | Quantity value. |
+| resName | String | Yes | - | The resource name. |
+| num | Int64 | Yes | - | The quantity value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The plural string resource corresponding to the specified resource name. |
+| String | The singular/plural string resource corresponding to the specified resource name. |
 
 **Exceptions:**
 
@@ -1046,13 +1046,13 @@ public func getPluralStringByName(resName: String, num: Int64): String
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
 - IllegalMemoryException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | Out of memory. | todo | todo |
 
@@ -1063,7 +1063,7 @@ public func getPluralStringByName(resName: String, num: Int64): String
 public func getPluralStringValue(resId: UInt32, num: Int64): String
 ```
 
-**Function:** Retrieves the plural string resource corresponding to the specified resource ID and formats the string based on the given quantity.
+**Function:** Retrieves the singular/plural string resource corresponding to the specified resource ID and formats the string based on the given quantity.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1071,16 +1071,16 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resId | UInt32 | Yes | - | Resource ID. |
-| num | Int64 | Yes | - | Quantity value. |
+| resId | UInt32 | Yes | - | The resource ID. |
+| num | Int64 | Yes | - | The quantity value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The plural string resource corresponding to the specified resource object. |
+| String | The singular/plural string resource corresponding to the specified resource object. |
 
 **Exceptions:**
 
@@ -1095,13 +1095,13 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
 - IllegalMemoryException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | Out of memory. | todo | todo |
 
@@ -1112,7 +1112,7 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
 public func getPluralStringValue(resource: AppResource, num: Int64): String
 ```
 
-**Function:** Retrieves the plural string resource corresponding to the specified resource object and formats the string based on the given quantity. This interface is used for cross-package access within multi-project applications.
+**Function:** Retrieves the singular/plural string resource from the resource object and formats the string based on the given quantity. This interface is used for cross-package access within multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1120,16 +1120,16 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
-| num | Int64 | Yes | - | Quantity value. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | The resource object. |
+| num | Int64 | Yes | - | The quantity value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | The plural string resource corresponding to the specified resource object. |
+| String | The singular/plural string resource corresponding to the specified resource object. |
 
 **Exceptions:**
 
@@ -1144,38 +1144,40 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
 - IllegalMemoryException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
-  | Out of memory. | todo | todo |### func getRawFd(String)
+  | Out of memory. | todo | todo |
+
+### func getRawFd(String)
 
 ```cangjie
 
 public func getRawFd(path: String): RawFileDescriptor
 ```
 
-**Function:** Gets the descriptor of the corresponding rawfile under the resources/rawfile directory.
+**Function:** Retrieves the descriptor of the rawfile file corresponding to the specified path in the resources/rawfile directory.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| path | String | Yes | - | Path of the rawfile. |
+| path | String | Yes | - | The path to the rawfile file. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [RawFileDescriptor](#class-rawfiledescriptor) | Descriptor of the rawfile. |
+| [RawFileDescriptor](./cj-apis-raw_file_descriptor.md#class-rawfiledescriptor) | The descriptor of the rawfile file. |
 
 **Exceptions:**
 
@@ -1188,7 +1190,7 @@ public func getRawFd(path: String): RawFileDescriptor
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -1199,23 +1201,23 @@ public func getRawFd(path: String): RawFileDescriptor
 public func getRawFileContent(path: String): Array<UInt8>
 ```
 
-**Function:** Gets the content of the corresponding rawfile under the resources/rawfile directory and returns a byte array.
+**Function:** Retrieves the content of the rawfile file corresponding to the specified path in the resources/rawfile directory and returns it as a byte array.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| path | String | Yes | - | Path of the rawfile. |
+| path | String | Yes | - | The path to the rawfile file. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Array\<UInt8> | Content of the rawfile. |
+| Array\<UInt8> | The content of the rawfile file. |
 
 **Exceptions:**
 
@@ -1228,28 +1230,26 @@ public func getRawFileContent(path: String): Array<UInt8>
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
-
-### func getRawFileList(String)
+  | If the instance ID is invalid. | todo | todo |### func getRawFileList(String)
 
 ```cangjie
 
 public func getRawFileList(path: String): Array<String>
 ```
 
-**Function:** Gets the list of folders and files under the resources/rawfile directory and returns a string array of the file list.
+**Function:** Retrieves the list of folders and files under the resources/rawfile directory, returning a string array of the file list.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| path | String | Yes | - | Path of the rawfile folder. |
+| path | String | Yes | - | Path to the rawfile folder. |
 
 **Return Value:**
 
@@ -1268,57 +1268,9 @@ public func getRawFileList(path: String): Array<String>
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
-
-### func getString(UInt32)
-
-```cangjie
-
-public func getString(resId: UInt32): String
-```
-
-**Function:** Gets the string resource corresponding to the resource ID.
-
-**System Capability:** SystemCapability.Global.ResourceManager
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| resId | UInt32 | Yes | - | Resource ID. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | String resource corresponding to the resource ID. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
-  | 9001001 | Invalid resource ID. |
-  | 9001002 | No matching resource is found based on the resource ID. |
-  | 9001006 | The resource is referenced cyclically. |
-
-- IllegalStateException:
-
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
-
-- IllegalMemoryException:
-
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | Out of memory. | todo | todo |
 
 ### func getString(UInt32, Array\<ArgsValueType>)
 
@@ -1327,18 +1279,18 @@ public func getString(resId: UInt32): String
 public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 ```
 
-**Function:** Gets the string resource corresponding to the resource ID and formats it based on the args parameter.
+**Function:** Retrieves the string resource corresponding to the resource ID and formats it based on the args parameter.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resId | UInt32 | Yes | - | Resource object. |
-| args | Array\<[ArgsValueType](#enum-argsvaluetype)> | Yes | - | Parameters for formatting the string resource. <br>Supported parameter types: <br /> %d, %f, %s, %%. <br>Note: %% is an escape character, escaping %. <br>Example: %%d is formatted as the string %d. |
+| args | Array\<[ArgsValueType](#enum-argsvaluetype)> | Yes | - | Parameters for formatting the string resource. <br>Supported parameter types: <br /> %d, %f, %s, %%. <br>Note: %% is an escape character, escaping %. <br>Example: %%d will be formatted as the string %d. |
 
 **Return Value:**
 
@@ -1350,61 +1302,19 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 
 - BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | If the input parameter is invalid. |
-  | 9001001 | Invalid resource ID. |
-  | 9001002 | No matching resource is found based on the resource ID. |
-  | 9001006 | The resource is referenced cyclically. |
-  | 9001007 | Failed to format the resource obtained based on the resource ID. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | If the input parameter is invalid. |
+| 9001001 | Invalid resource ID. |
+| 9001002 | No matching resource is found based on the resource ID. |
+| 9001006 | The resource is referenced cyclically. |
+| 9001007 | Failed to format the resource obtained based on the resource ID. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
-
-### func getString(AppResource)
-
-```cangjie
-
-public func getString(resource: AppResource): String
-```
-
-**Function:** Gets the string resource corresponding to the resource object. This API is used for cross-package access in multi-project applications.
-
-**System Capability:** SystemCapability.Global.ResourceManager
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | String resource corresponding to the resource object. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
-  | 9001001 | Invalid resource ID. |
-  | 9001002 | No matching resource is found based on the resource ID. |
-  | 9001006 | The resource is referenced cyclically. |
-
-- IllegalStateException:
-
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
+  | Error Message | Possible Cause | Handling Steps |
+| :---- | :--- | :--- |
+| If the instance ID is invalid. | todo | todo |
 
 ### func getString(AppResource, Array\<ArgsValueType>)
 
@@ -1413,18 +1323,18 @@ public func getString(resource: AppResource): String
 public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 ```
 
-**Function:** Gets the string resource corresponding to the resource object and formats it based on the args parameter.
+**Function:** Retrieves the string resource corresponding to the resource object and formats it based on the args parameter.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
-| args | Array\<[ArgsValueType](#enum-argsvaluetype)> | Yes | - | Parameters for formatting the string resource. <br>Supported parameter types: <br /> %d, %f, %s, %%. <br>Note: %% is an escape character, escaping %. <br>Example: %%d is formatted as the string %d. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Resource object. |
+| args | Array\<[ArgsValueType](#enum-argsvaluetype)> | Yes | - | Parameters for formatting the string resource. <br>Supported parameter types: <br /> %d, %f, %s, %%. <br>Note: %% is an escape character, escaping %. <br>Example: %%d will be formatted as the string %d. |
 
 **Return Value:**
 
@@ -1436,61 +1346,75 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 - BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
-  | 9001001 | Invalid resource ID. |
-  | 9001002 | No matching resource is found based on the resource ID. |
-  | 9001006 | The resource is referenced cyclically. |
-  | 9001007 | Failed to format the resource obtained based on the resource ID. |
+| Error Code ID | Error Message |
+| :---- | :--- |
+| 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 9001001 | Invalid resource ID. |
+| 9001002 | No matching resource is found based on the resource ID. |
+| 9001006 | The resource is referenced cyclically. |
+| 9001007 | Failed to format the resource obtained based on the resource ID. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
+  | Error Message | Possible Cause | Handling Steps |
+| :---- | :--- | :--- |
+| If the instance ID is invalid. | todo | todo |
 
 ### func getStringArrayByName(String)
 
-```cangjie
+ ```cangjie
+ public func getStringArrayByName(resName: String): Array<String>
+ ```
 
-public func getStringArrayByName(resName: String): Array<String>
-```
+ **Function:** Retrieves the string array resource corresponding to the resource name.
 
-**Function:** Gets the string array resource corresponding to the resource name.
+ **System Capability:** SystemCapability.Global.ResourceManager
 
-**System Capability:** SystemCapability.Global.ResourceManager
+ **Initial Version:** 21
 
-**Since:** 21
+ **Parameters:**
 
-**Parameters:**
+ | Parameter | Type | Required | Default Value | Description |
+ |:---|:---|:---|:---|:---|
+ | resName | String | Yes | - | Resource name. |
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| resName | String | Yes | - | Resource name. |
+ **Return Value:**
 
-**Return Value:**
+ | Type | Description |
+ |:----|:----|
+ | Array\<String> | String array resource corresponding to the resource name. |
 
-| Type | Description |
-|:----|:----|
-| Array\<String> | String array corresponding to the resource name. |
+ **Exceptions:**
 
-**Exceptions:**
+ - BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+   | Error Code ID | Error Message |
+   | :---- | :--- |
+   | 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
+   | 9001003 | Invalid resource name. |
+   | 9001004 | No matching resource is found based on the resource name. |
+   | 9001006 | The resource is referenced cyclically. |
 
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
-  | 9001003 | Invalid resource name. |
-  | 9001004 | No matching resource is found based on the resource name. |
-  | 9001006 | The resource is referenced cyclically. |
+ - IllegalStateException:
 
-- IllegalStateException:
+ | Error Message | Possible Cause | Handling Steps |
+   | :---- | :--- | :--- |
+   | If the instance ID is invalid. | todo | todo |
 
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
+ **Example:**
+
+ <!-- compile -->
+
+ ```cangjie
+ // index.cj
+ 
+ import kit.LocalizationKit.*
+ import kit.AbilityKit.*
+ 
+ let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+ let resourceManager = ResourceManager.getResourceManager(stageContext)
+ resourceManager.getStringArrayByName("test")
+ ```
 
 ### func getStringArrayValue(UInt32)
 
@@ -1499,15 +1423,15 @@ public func getStringArrayByName(resName: String): Array<String>
 public func getStringArrayValue(resId: UInt32): Array<String>
 ```
 
-**Function:** Gets the string array resource corresponding to the resource ID.
+**Function:** Retrieves the string array resource corresponding to the resource ID.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resId | UInt32 | Yes | - | Resource ID. |
 
@@ -1530,7 +1454,7 @@ public func getStringArrayValue(resId: UInt32): Array<String>
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -1541,17 +1465,17 @@ public func getStringArrayValue(resId: UInt32): Array<String>
 public func getStringArrayValue(resource: AppResource): Array<String>
 ```
 
-**Function:** Gets the string array resource corresponding to the resource object. This API is used for cross-package access in multi-project applications.
+**Function:** Retrieves the string array resource corresponding to the resource object. This interface is used for cross-package access within multi-project applications.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resource | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Resource object. |
+| resource | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Resource object. |
 
 **Return Value:**
 
@@ -1572,49 +1496,7 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
-  | :---- | :--- | :--- |
-  | If the instance ID is invalid. | todo | todo |
-
-### func getStringByName(String)
-
-```cangjie
-
-public func getStringByName(resName: String): String
-```
-
-**Function:** Gets the string resource corresponding to the resource name.
-
-**System Capability:** SystemCapability.Global.ResourceManager
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| resName | String | Yes | - | Resource name. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | String resource corresponding to the resource name. |
-
-**Exceptions:**
-
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
-
-  | Error Code ID | Error Message |
-  | :---- | :--- |
-  | 401 | If the input parameter is invalid. Possible causes: Incorrect parameter types. |
-  | 9001003 | Invalid resource name. |
-  | 9001004 | No matching resource is found based on the resource name. |
-  | 9001006 | The resource is referenced cyclically. |
-
-- IllegalStateException:
-
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -1625,18 +1507,18 @@ public func getStringByName(resName: String): String
 public func getStringByName(resName: String, args: Array<ArgsValueType>): String
 ```
 
-**Function:** Gets the string resource corresponding to the resource name and formats it based on the args parameter.
+**Function:** Retrieves the string resource corresponding to the resource name and formats it based on the args parameter.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | resName | String | Yes | - | Resource name. |
-| args | Array\<[ArgsValueType](#enum-argsvaluetype)> | Yes | - | Parameters for formatting the string resource. <br>Supported parameter types: <br /> %d, %f, %s, %%. <br>Note: %% is an escape character, escaping %. <br>Example: %%d is formatted as the string %d. |
+| args | Array\<[ArgsValueType](#enum-argsvaluetype)> | Yes | - | Parameters for formatting the string resource. <br>Supported parameter types: <br /> %d, %f, %s, %%. <br>Note: %% is an escape character, escaping %. <br>Example: %%d will be formatted as the string %d. |
 
 **Return Value:**
 
@@ -1654,11 +1536,11 @@ public func getStringByName(resName: String, args: Array<ArgsValueType>): String
   | 9001003 | Invalid resource name. |
   | 9001004 | No matching resource is found based on the resource name. |
   | 9001006 | The resource is referenced cyclically. |
-  | 9001008 | Failed to format the resource obtained based on the resource name. |
+  | 9001008 | Failed to format the resource obtained based on the resource Name. |
 
 - IllegalStateException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | If the instance ID is invalid. | todo | todo |
 
@@ -1669,16 +1551,33 @@ public func getStringByName(resName: String, args: Array<ArgsValueType>): String
 public func removeResource(path: String): Unit
 ```
 
-**Function:** Removes the specified resource path during runtime and restores the resources before being overwritten.
+**Function:** Removes the specified resource path at runtime, restoring the resources to their state before being overridden.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Mandatory | Default Value | Description |
-|:---|:---|:---|:---|:---## enum ArgsValueType
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| path | String | Yes | - | Resource path. |
+
+**Exceptions:**
+
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+
+  | Error Code ID | Error Message |
+  | :---- | :--- |
+  | 9001010 | Invalid overlay path. |
+
+- IllegalStateException:
+
+  | Error Message | Possible Cause | Handling Steps |
+  | :---- | :--- | :--- |
+  | If the instance ID is invalid. | todo | todo |
+
+## enum ArgsValueType
 
 ```cangjie
 public enum ArgsValueType {
@@ -1689,11 +1588,11 @@ public enum ArgsValueType {
 }
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Enumeration type for formatting string resource parameters.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Float32Value(Float32)
 
@@ -1701,11 +1600,11 @@ public enum ArgsValueType {
 Float32Value(Float32)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Enumeration value for Float32 type formatting string resource parameters.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Int32Value(Int32)
 
@@ -1713,11 +1612,11 @@ Float32Value(Float32)
 Int32Value(Int32)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Enumeration value for Int32 type formatting string resource parameters.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 ### StringValue(String)
 
@@ -1725,11 +1624,11 @@ Int32Value(Int32)
 StringValue(String)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Enumeration value for String type formatting string resource parameters.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 ## enum ColorMode
 
@@ -1745,7 +1644,7 @@ public enum ColorMode {
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Dark
 
@@ -1757,7 +1656,7 @@ Dark
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Light
 
@@ -1769,9 +1668,7 @@ Light
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
-**Since:** 21
-
-## enum DeviceType
+**Initial Version:** 21## enum DeviceType
 
 ```cangjie
 public enum DeviceType {
@@ -1786,7 +1683,7 @@ public enum DeviceType {
 }
 ```
 
-**Function:** Represents the current device type.
+**Function:** Indicates the current device type.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1810,7 +1707,7 @@ DeviceType2In1
 DeviceTypeCar
 ```
 
-**Function:** Car.
+**Function:** Automotive device.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1822,7 +1719,7 @@ DeviceTypeCar
 DeviceTypePc
 ```
 
-**Function:** PC.
+**Function:** Personal computer.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1834,7 +1731,7 @@ DeviceTypePc
 DeviceTypePhone
 ```
 
-**Function:** Phone.
+**Function:** Smartphone.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1846,7 +1743,7 @@ DeviceTypePhone
 DeviceTypeTv
 ```
 
-**Function:** TV.
+**Function:** Television.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1858,7 +1755,7 @@ DeviceTypeTv
 DeviceTypeTablet
 ```
 
-**Function:** Tablet.
+**Function:** Tablet device.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1886,7 +1783,7 @@ public enum Direction {
 }
 ```
 
-**Function:** Represents the device screen orientation.
+**Function:** Indicates the device screen orientation.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1926,7 +1823,7 @@ public enum NumberValueType {
 }
 ```
 
-**Function:** Represents the numeric type obtained from resources.
+**Function:** Represents numeric types obtained from resources.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -1970,7 +1867,7 @@ public enum ScreenDensity {
 }
 ```
 
-**Function:** Represents the current device screen density.
+**Function:** Indicates the current device screen density.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 
@@ -2042,7 +1939,7 @@ ScreenXxldpi
 ScreenXxxldpi
 ```
 
-**Function:** Ultra-extra-large-scale screen density.
+**Function:** Extra-extra-extra-large-scale screen density.
 
 **System Capability:** SystemCapability.Global.ResourceManager
 

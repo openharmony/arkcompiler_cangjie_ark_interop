@@ -1,6 +1,6 @@
 # Full-Screen Modal Transition
 
-The `bindContentCover` property can be used to bind a full-screen modal page to a component. Transition effects can be displayed during component insertion and deletion by setting the `ModalTransition` parameters.
+The `bindContentCover` property allows components to be bound to a full-screen modal page. Transition effects can be displayed during component insertion and removal by configuring the `ModalTransition` parameter.
 
 > **Note:**
 >
@@ -20,7 +20,7 @@ public func bindContentCover(isShow: Bool, builder: CustomBuilder,
     options!: ContentCoverOptions = ContentCoverOptions()): This
 ```
 
-**Function:** Binds a content overlay.
+**Function:** Binds a content overlay layer.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,8 +31,8 @@ public func bindContentCover(isShow: Bool, builder: CustomBuilder,
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | isShow | Bool | Yes | - | Whether to display. |
-| builder | [CustomBuilder](#type-custombuilder) | Yes | - | Custom builder. |
-| options | [ContentCoverOptions](#) | No | ContentCoverOptions() | Content overlay options. |
+| builder | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | Custom builder. |
+| options | [ContentCoverOptions](#class-contentcoveroptions)) | No | ContentCoverOptions() | Content overlay options. |
 
 ## Basic Type Definitions
 
@@ -61,7 +61,7 @@ public class ContentCoverOptions <: BindOptions {
 
 **Parent Type:**
 
-- [BindOptions](#class-bindoptions)
+- [BindOptions](./cj-universal-attribute-sheettransition.md#class-bindoptions)
 
 #### init(ModalTransition, ?(DismissContentCoverAction) -> Unit, ?TransitionEffect, ?ResourceColor, ?() -> Unit, ?() -> Unit, ?() -> Unit, ?() -> Unit)
 
@@ -88,11 +88,11 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| modalTransition | [ModalTransition](#enum-modaltransition) | No | ModalTransition.Default | **Named parameter.** Transition style for the full-screen modal page. |
-| onWillDismiss | ?([DismissContentCoverAction](#class-dismisscontentcoveraction))->Unit | No | Option.None | **Named parameter.** Callback function for interactive closing of the full-screen modal page. |
-| transition | ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | Option.None | **Named parameter.** Custom transition style for the full-screen modal page. |
-| backgroundColor | ?[ResourceColor](cj-common-types.md#interface-resourcecolor) | No | Option.None | **Named parameter.** Background color of the full-screen modal page. |
-| onAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function after the full-screen modal page is displayed (after animation ends). |
-| onDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function after the full-screen modal page is dismissed (after animation ends). |
-| onWillAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function before the full-screen modal page is displayed (before animation starts). |
-| onWillDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function before the full-screen modal page is dismissed (before animation starts). |
+| modalTransition | [ModalTransition](./cj-common-types.md#enum-modaltransition) | No | ModalTransition.Default | **Named parameter.** Transition method for the full-screen modal page. |
+| onWillDismiss | ?([DismissContentCoverAction](./cj-common-types.md#class-dismisscontentcoveraction))->Unit | No | Option.None | **Named parameter.** Callback function for interactive dismissal of the full-screen modal page. |
+| transition | ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | Option.None | **Named parameter.** Custom transition method for the full-screen modal page. |
+| backgroundColor | ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Option.None | **Named parameter.** Background color of the full-modal page. |
+| onAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function after the full-modal page is displayed (after animation ends). |
+| onDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function after the full-modal page is dismissed (after animation ends). |
+| onWillAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function before the full-modal page is displayed (before animation starts). |
+| onWillDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function before the full-modal page is dismissed (before animation starts). |
