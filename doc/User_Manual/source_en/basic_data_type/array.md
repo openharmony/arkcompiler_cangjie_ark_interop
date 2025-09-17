@@ -130,7 +130,7 @@ let arr3 = arr1[2..] // arr3 contains elements 2, 3, 4, 5, 6
 
 ### Modifying Arrays
 
-An Array is a fixed-length [Collection type](../../source_en/collections/collection_overview.md), so it does not provide member functions for adding or removing elements.
+An Array is a fixed-length [Collection type](../collections/collection_overview.md), so it does not provide member functions for adding or removing elements.
 
 However, Arrays allow modification of their elements using subscript syntax.
 

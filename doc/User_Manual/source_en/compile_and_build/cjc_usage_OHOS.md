@@ -6,7 +6,7 @@
 
 ## Basic Usage of `cjc`
 
-This section introduces the basic usage of `cjc`. For details on compilation options, please refer to the [cjc Compilation Options](../Appendix/compile_options_OHOS.md) chapter.
+This section introduces the basic usage of `cjc`. For detailed compilation options, please refer to the [cjc Compilation Options](../Appendix/compile_options_OHOS.md) chapter.
 
 The usage of `cjc` is as follows:
 
@@ -30,6 +30,6 @@ You can compile this file using the following command:
 $ cjc hello.cj
 ```
 
-This will create an executable file named `main` in the working directory. By default, `cjc` compiles the given source code file into an executable and names it `main`.
+This will generate an executable file named `main` in the working directory. By default, `cjc` compiles the given source code files into an executable and names it `main`.
 
 The above describes `cjc`'s default behavior when no compilation options are provided. You can control `cjc`'s behavior using compilation options, such as instructing `cjc` to perform whole-package compilation or specifying the name of the output file.

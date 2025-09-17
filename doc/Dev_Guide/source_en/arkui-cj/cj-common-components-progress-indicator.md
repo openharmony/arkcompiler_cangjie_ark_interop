@@ -1,135 +1,127 @@
 # Progress Bar (Progress)
 
-Progress is a component that displays the current progress of a target operation. For specific usage, please refer to [Progress](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-progress.md).
+Progress is a display component that shows the current progress of a target operation. For specific usage, please refer to [Progress](../../../API_Reference/source_en/arkui-cj/cj-information-display-progress.md).
 
 ## Creating a Progress Bar
 
-Progress is created by calling the interface in the following form:
+Progress is created by calling the interface, with the following syntax:
 
 ```cangjie
-Progress(value!: Float64, total!: Float64 = 100.0, `type`!: ProgressType = ProgressType.Linear)
+Progress(value!: Float64, total!: Float64 = 100.0, progressType!: ProgressType = ProgressType.Linear)
 ```
 
-Where:
-- `value` sets the initial progress value
-- `total` sets the total length of the progress
-- `ProgressType` sets the style of the progress bar
+Here, `value` sets the initial progress value, `total` sets the total length of the progress, and `ProgressType` sets the style of the progress bar.
 
 ```cangjie
-Progress(value: 24.0, total: 100.0, `type`: ProgressType.Linear) // Creates a linear progress bar with total length 100 and initial progress value 24
+Progress(value: 24.0, total: 100.0, progressType: ProgressType.Linear) // Creates a linear progress bar with total length 100 and initial progress value 24
 ```
 
 ![create](figures/create.png)
 
 ## Setting Progress Bar Styles
 
-Progress has 5 optional types. The style can be set via `ProgressType`, which includes:
-- `ProgressType.Linear` (Linear style)
-- `ProgressType.Ring` (Ring style without scales)
-- `ProgressType.ScaleRing` (Ring style with scales)
-- `ProgressType.Eclipse` (Circular style)
-- `ProgressType.Capsule` (Capsule style)
+Progress has 5 optional types, which can be set via `ProgressType`. The types include: `ProgressType.Linear` (linear style), `ProgressType.Ring` (ring style without scales), `ProgressType.ScaleRing` (ring style with scales), `ProgressType.Eclipse` (circular style), and `ProgressType.Capsule` (capsule style).
 
-- Linear style progress bar (default type)
+- Linear Style Progress Bar (default type)
 
   ```cangjie
-  Progress(value: 20.0, total: 100.0, `type`: ProgressType.Linear)
+  Progress(value: 20.0, total: 100.0, progressType: ProgressType.Linear)
       .width(200)
       .height(50)
-  Progress(value: 20.0, total: 100.0, `type`: ProgressType.Linear)
+  Progress(value: 20.0, total: 100.0, progressType: ProgressType.Linear)
       .width(50)
       .height(200)
   ```
 
   ![progress_linear](figures/progress_linear.png)
 
-- Ring style progress bar without scales
+- Ring Style Progress Bar Without Scales
 
   ```cangjie
-  // Left to right: 1st ring progress bar with default blue gradient foreground and default strokeWidth of 2.vp
-  Progress(value: 40.0, total: 150.0, `type`: ProgressType.Ring)
+  // From left to right, 1st ring progress bar with default foreground color as blue gradient and default strokeWidth of 2.vp
+  Progress(value: 40.0, total: 150.0, progressType: ProgressType.Ring)
       .width(100)
       .height(100)
-  // Left to right: 2nd ring progress bar
-  Progress(value: 40.0, total: 150.0, `type`: ProgressType.Ring)
+  // From left to right, 2nd ring progress bar
+  Progress(value: 40.0, total: 150.0, progressType: ProgressType.Ring)
       .width(100)
       .height(100)
-      .color(Color.GRAY) // Sets progress bar foreground color to gray
+      .color(Color.Gray) // Sets foreground color to gray
       .style(strokeWidth: 15.vp) // Sets strokeWidth to 15.vp
   ```
 
   ![progress_ring](figures/progress_ring.png)
 
-- Ring style progress bar with scales
+- Ring Style Progress Bar With Scales
 
   ```cangjie
-  Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+  Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
       .width(100)
       .height(100)
-      .backgroundColor(Color.BLACK)
+      .backgroundColor(Color.Black)
       .style(scaleCount: 20, scaleWidth: 5.vp) // Sets total scale count to 20 and scale width to 5.vp
-  Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+  Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
       .width(100)
       .height(100)
-      .backgroundColor(Color.BLACK)
-      .style(strokeWidth: 15.vp, scaleCount: 20, scaleWidth: 5.vp) // Sets progress bar width to 15.vp, total scale count to 20, and scale width to 5.vp
-  Progress(value: 20.0, total: 150.0, `type`: ProgressType.ScaleRing)
+      .backgroundColor(Color.Black)
+      .style(strokeWidth: 15.vp, scaleCount: 20, scaleWidth: 5.vp) // Sets strokeWidth to 15.vp, scale count to 20, and scale width to 5.vp
+  Progress(value: 20.0, total: 150.0, progressType: ProgressType.ScaleRing)
       .width(100)
       .height(100)
-      .backgroundColor(Color.BLACK)
-      .style(strokeWidth: 15.vp, scaleCount: 20, scaleWidth: 3.vp) // Sets progress bar width to 15.vp, total scale count to 20, and scale width to 3.vp
+      .backgroundColor(Color.Black)
+      .style(strokeWidth: 15.vp, scaleCount: 20, scaleWidth: 3.vp) // Sets strokeWidth to 15.vp, scale count to 20, and scale width to 3.vp
   ```
 
   ![progress_scalering](figures/progress_scalering.png)
 
-- Circular style progress bar
+- Circular Style Progress Bar
 
   ```cangjie
-  // Left to right: 1st circular progress bar with default blue foreground
-  Progress(value: 10.0, total: 150.0, `type`: ProgressType.Eclipse)
+  // From left to right, 1st circular progress bar with default foreground color as blue
+  Progress(value: 10.0, total: 150.0, progressType: ProgressType.Eclipse)
       .width(100)
       .height(100)
-  // Left to right: 2nd circular progress bar with gray foreground
-  Progress(value: 20.0, total: 150.0, `type`: ProgressType.Eclipse)
-      .color(Color.GREY)
+  // From left to right, 2nd circular progress bar with foreground color set to gray
+  Progress(value: 20.0, total: 150.0, progressType: ProgressType.Eclipse)
+      .color(Color.Gray)
       .width(100)
       .height(100)
   ```
 
   ![progress_circle](figures/progress_circle.png)
 
-- Capsule style progress bar
+- Capsule Style Progress Bar
 
 > **Note:**
 >
-> - The progress display at the rounded ends is similar to `ProgressType.Eclipse` style.
+> - The progress display effect at the rounded ends is the same as `ProgressType.Eclipse`.
 >
-> - The middle section displays progress as rectangular bars, similar to `ProgressType.Linear` style.
+> - The middle segment displays as a rectangular bar, similar to `ProgressType.Linear`.
 >
-> - Automatically switches to vertical display when component height exceeds width.
+> - Automatically adjusts to vertical display when height exceeds width.
 
   ```cangjie
-  Progress(value: 10.0, total: 150.0, `type`: ProgressType.Capsule)
+  Progress(value: 10.0, total: 150.0, progressType: ProgressType.Capsule)
       .width(100)
       .height(50)
-  Progress(value: 20.0, total: 150.0, `type`: ProgressType.Capsule)
+  Progress(value: 20.0, total: 150.0, progressType: ProgressType.Capsule)
       .width(50)
       .height(100)
-      .color(Color.GREY)
-  Progress(value: 50.0, total: 150.0, `type`: ProgressType.Capsule)
+      .color(Color.Gray)
+  Progress(value: 50.0, total: 150.0, progressType: ProgressType.Capsule)
       .width(50)
       .height(100)
-      .color(Color.BLUE)
-      .backgroundColor(Color.BLACK)
+      .color(Color.Blue)
+      .backgroundColor(Color.Black)
   ```
 
   ![progress_captule](figures/progress_captule.png)
 
 ## Usage Example
 
-Updating current progress value, such as in an application installation progress bar. Clicking a Button can increase `progressValue`, and the `value` property assigns `progressValue` to the Progress component, triggering a refresh to update the current progress.
+Updating the current progress value, such as in an app installation progress bar, can be achieved by clicking a Button to increment `progressValue`. The `value` property assigns `progressValue` to the Progress component, triggering a refresh to update the current progress.
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -144,7 +136,7 @@ class EntryView {
     func build() {
         Column() {
             Column() {
-                Progress(value: 0.0, total: 100.0, `type`: ProgressType.Capsule)
+                Progress(value: 0.0, total: 100.0, progressType: ProgressType.Capsule)
                     .width(200)
                     .height(50)
                     .value(this.progressValue)

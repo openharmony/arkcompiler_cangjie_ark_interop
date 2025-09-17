@@ -1,6 +1,6 @@
 # devicedebug Tool
 
-The devicedebug tool provides developers with the capability to send signals to debug applications. Currently, it only supports sending signal signals to the process IDs (pids) of debug-type application processes managed by AMS, enabling the termination of the corresponding pid processes.
+The devicedebug tool provides developers with the capability to send signals to debug applications. Currently, it only supports sending signal signals to the process IDs (pids) of debug-type application processes managed by AMS, enabling the termination of corresponding pid processes.
 
 > **Note:**
 >
@@ -45,11 +45,11 @@ Used to send a signal (1-64) to a debug-type application process. Upon receiving
 | Command | Description |
 | -------- |-------|
 | help/-h | Help information. |
-| -\<signal\> \<pid\> |  Required field, where signal (1-64) is the termination signal, used to terminate the debug-type application process corresponding to the pid. |
+| -\<signal> \<pid> |  Required field, where signal (1-64) is the termination signal, used to terminate the debug-type application process corresponding to the pid. |
 
 **Return Value:**
 
-If the process corresponding to the pid is not an application process, it returns "devicedebug: kill: {pid}: No such app process". If the process corresponding to the pid is not a debug-type application process, it returns "devicedebug: kill: process: {pid} is not debuggable app".
+When the process corresponding to the pid is not an application process, it returns "devicedebug: kill: {pid}: No such app process"; when the process corresponding to the pid is not a debug-type application process, it returns "devicedebug: kill: process: {pid} is not debuggable app".
 
 Example:
 

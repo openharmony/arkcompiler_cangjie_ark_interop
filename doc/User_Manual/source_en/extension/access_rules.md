@@ -399,7 +399,8 @@ public class Foo {}
 extend Foo {
     public func f() {}
 }
-``````
+```
+
 <!-- run -access_rules4 -->
 <!-- cfg="-p b --output-type=staticlib liba.a" -->
 

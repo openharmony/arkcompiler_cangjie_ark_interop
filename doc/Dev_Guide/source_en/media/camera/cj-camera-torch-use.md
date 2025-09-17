@@ -1,16 +1,16 @@
 # Flashlight Usage (Cangjie)
 
-The flashlight mode is activated by operating the device to enable the flashlight function, keeping the device's flashlight in a continuously illuminated state.
+The flashlight mode is activated by operating the terminal to enable the flashlight function, keeping the device's flashlight in a constant on state.
 
 When using the camera application and operating the flashlight function, the following scenarios apply:
 
 - When using the rear camera with the flash mode [FlashMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#enum-flashmode) set to off, the flashlight function cannot be enabled.
-- When using the front camera, the flashlight can be normally enabled and maintained in an illuminated state.
-- When switching from the front camera to the rear camera, if the flashlight was originally turned on, it will be automatically turned off.
+- When using the front camera, the flashlight can be normally enabled and maintained in a constant on state.
+- When switching from the front camera to the rear camera, if the flashlight was originally in an on state, it will be automatically turned off.
 
 ## Development Steps
 
-For detailed API descriptions, refer to the [Camera API Reference](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md).
+For detailed API specifications, refer to the [Camera API Reference](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md).
 
 1. Import the camera interface, which provides camera-related properties and methods. The import method is as follows:
 
@@ -18,8 +18,9 @@ For detailed API descriptions, refer to the [Camera API Reference](../../../../A
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
-    import ohos.base.Callback1Argument
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback1Argument
+    import ohos.business_exception.BusinessException
     ```
 
 2. Use the [isTorchSupported](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-istorchsupported) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to check whether the current device supports the flashlight function.
@@ -29,7 +30,7 @@ For detailed API descriptions, refer to the [Camera API Reference](../../../../A
     ```cangjie
     func isTorchSupported(cameraManager: CameraManager): Bool {
         let torchSupport: Bool = cameraManager.isTorchSupported()
-        AppLog.info("Returned with the torch support status: ${torchSupport}")
+        Hilog.info(0,"","Returned with the torch support status: ${torchSupport}")
         return torchSupport
     }
     ```
@@ -44,11 +45,11 @@ For detailed API descriptions, refer to the [Camera API Reference](../../../../A
     }
     ```
 
-4. Use the [setTorchMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-settorchmodetorchmode) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to set the flashlight mode of the current device. Additionally, use the [getTorchMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to retrieve the current flashlight mode of the device.
+4. Use the [setTorchMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-settorchmodetorchmode) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to set the flashlight mode for the current device. Additionally, use the [getTorchMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to retrieve the current flashlight mode.
 
     > **Note:**
     >
-    > Before using the [getTorchMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method, you must first register to monitor flashlight status changes. Refer to [Status Monitoring](#状态监听).
+    > Before using the [getTorchMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method, you must first register a listener for flashlight state changes. Refer to [State Monitoring](#状态监听).
 
     <!-- compile -->
 
@@ -60,22 +61,22 @@ For detailed API descriptions, refer to the [Camera API Reference](../../../../A
     }
     ```
 
-## Status Monitoring
+## State Monitoring
 
-During camera application development, you can monitor the flashlight status at any time, including flashlight on, flashlight off, flashlight unavailable, and flashlight restored to available. When the flashlight status changes, the flashlight mode changes can be obtained through a callback function.
+During camera application development, you can monitor the flashlight state at any time, including flashlight on, flashlight off, flashlight unavailable, and flashlight restored to available. When the flashlight state changes, the flashlight mode changes can be obtained through a callback function.
 
-By registering the TorchStatusChange event, the monitoring results are returned via a callback. The callback returns the TorchStatusInfo parameter. For specific details of the parameter, refer to the camera manager callback interface instance [TorchStatusInfo](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#struct-torchstatusinfo).
+Register the TorchStatusChange event and return the monitoring result through a callback. The callback returns the TorchStatusInfo parameter. For specific details of the parameter, refer to the camera manager callback interface instance [TorchStatusInfo](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-torchstatusinfo).
 
 <!-- compile -->
 
 ```cangjie
 class TorchStatusChangeCallBack <: Callback1Argument<TorchStatusInfo> {
-    public open func invoke(torchStatusInfo: TorchStatusInfo): Unit {
-        AppLog.info("onTorchStatusChange, isTorchAvailable: ${torchStatusInfo.isTorchAvailable}, isTorchActive: ${torchStatusInfo.isTorchActive}, level: ${torchStatusInfo.torchLevel}")
+    public open func invoke(error: ?BusinessException,torchStatusInfo: TorchStatusInfo): Unit {
+        Hilog.info(0,"","onTorchStatusChange, isTorchAvailable: ${torchStatusInfo.isTorchAvailable}, isTorchActive: ${torchStatusInfo.isTorchActive}, level: ${torchStatusInfo.torchLevel}")
     }
 }
 
 func onTorchStatusChange(cameraManager: CameraManager): Unit {
-    cameraManager.on(CameraCallbackType.TorchStatusChange, TorchStatusChangeCallBack())
+    cameraManager.on(CameraEvents.TorchStatusChange, TorchStatusChangeCallBack())
 }
 ```

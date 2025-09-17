@@ -1,10 +1,10 @@
 # Using ImagePacker for Image Encoding
 
-Image encoding refers to the process of converting PixelMap into various archive image formats. Currently supported formats include JPEG, WebP, PNG, and HEIF (availability may vary across different hardware devices), which can be used for subsequent processing such as storage or transmission.
+Image encoding refers to the process of encoding a PixelMap into archived images of different formats. Currently supported formats include JPEG, WebP, PNG, and HEIF (support varies across different hardware devices), which can be used for subsequent processing such as storage and transmission.
 
 ## Development Procedure
 
-For detailed API documentation on image encoding, refer to: [Image Encoding API Reference](../../../../API_Reference/source_zh_cn/apis/ImageKit/cj-apis-image.md#class-imagepacker).
+For detailed information about image encoding APIs, refer to: [Image Encoding Interface Documentation](../../../../API_Reference/source_en/apis/ImageKit/cj-apis-image.md#class-imagepacker).
 
 ### Encoding Images into File Streams
 
@@ -19,12 +19,13 @@ For detailed API documentation on image encoding, refer to: [Image Encoding API 
     let imagePackerApi = createImagePacker()
     ```
 
-2. Configure encoding output stream and encoding parameters.
+2. Set the encoding output stream and encoding parameters.
 
-    - format specifies the image encoding format; quality indicates image quality ranging from 0-100, where 100 represents the best quality.
+    - format specifies the image encoding format; quality indicates image quality, ranging from 0-100 with 100 being the best quality.
 
         > **Note:**
-        > According to MIME standards, the standard encoding format is image/jpeg. When using image encoding, set PackingOption.format to image/jpeg. The file extension for encoded images can be .jpg or .jpeg, and can be used on platforms supporting image/jpeg decoding.
+        >
+        > According to MIME standards, the standard encoding format is image/jpeg. When using image encoding, set PackingOption.format to image/jpeg. The file extension for encoded images can be .jpg or .jpeg, which can be used on platforms supporting image/jpeg decoding.
 
         <!-- compile -->
 
@@ -49,7 +50,7 @@ For detailed API documentation on image encoding, refer to: [Image Encoding API 
     <!-- compile -->
 
     ```cangjie
-    // 'data' contains the packed file stream, which can be written to a file to obtain the final image.
+    // data is the file stream obtained from packing. Writing it to a file will save the image.
     let data = imagePackerApi.packToData(pixelMap, packOpts)
     ```
 
@@ -58,13 +59,13 @@ For detailed API documentation on image encoding, refer to: [Image Encoding API 
     <!-- compile -->
 
     ```cangjie
-    // 'data' contains the packed file stream, which can be written to a file to obtain the final image.
+    // data is the file stream obtained from packing. Writing it to a file will save the image.
     let data = imagePackerApi.packToData(imageSource, packOpts)
     ```
 
 ### Encoding Images into Files
 
-During encoding, developers can specify a target file path, and the encoded memory data will be directly written to the file.
+During encoding, developers can specify a file path, and the encoded memory data will be directly written to the file.
 
 Method 1: Encode PixelMap into a file.
 
@@ -72,8 +73,9 @@ Method 1: Encode PixelMap into a file.
 
 ```cangjie
 import kit.CoreFileKit.*
-var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
-// Obtain the resourceManager.
+
+var abilityContext = Global.abilityContext
+// Get the resourceManager.
 let resourceManager = abilityContext.resourceManager   
         
 let img = resourceManager.getMediaContent(@r(app.media.layered_image))
@@ -93,8 +95,9 @@ Method 2: Encode ImageSource into a file.
 
 ```cangjie
 import kit.CoreFileKit.*
-var abilityContext = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow()
-// Obtain the resourceManager.
+
+var abilityContext = Global.abilityContext
+// Get the resourceManager.
 let resourceManager = abilityContext.resourceManager   
         
 let img = resourceManager.getMediaContent(@r(app.media.layered_image))

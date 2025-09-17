@@ -1,12 +1,12 @@
 # HAR  
 
-HAR (Harmony Archive) is a static shared package that can contain code, C++ libraries, resources, and configuration files. It enables multiple modules or projects to share Cangjie components, resources, and related code.  
+HAR (Harmony Archive) is a static shared package that can contain code, C++ libraries, resources, and configuration files. HAR enables the sharing of Cangjie components and resources across multiple modules or projects.  
 
 ## Usage Scenarios  
 
-- Supports intra-application sharing and can be published as a second-party library (SDK) or third-party library (SDK) for use by other applications.  
+- Supports in-application sharing and can also be published as a second-party library (SDK) or third-party library (SDK) for use by other applications.  
 
-- As a second-party library (SDK), it can be published to the [OHPM Private Repository](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo) for use by other applications within the company.  
+- As a second-party library (SDK), it can be published to the [OHPM Private Repository](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo) for internal use by other applications within the company.  
 
 - As a third-party library (SDK), it can be published to the [OHPM Central Repository](https://ohpm.openharmony.cn/) for use by other applications.  
 
@@ -14,68 +14,70 @@ HAR (Harmony Archive) is a static shared package that can contain code, C++ libr
 
 - HAR cannot be installed or run independently on a device; it can only be referenced as a dependency of an application module.  
 
-- HAR does not support declaring `pages` in configuration files, but it can include `pages` and navigate via the `Navigation` method.  
+- HAR does not support declaring `pages` in configuration files, but it can contain `pages` and navigate via the `Navigation` method.  
 
-- HAR cannot reference resources in the `AppScope` directory. During compilation, content in `AppScope` is not packaged into the HAR, which may cause HAR resource references to fail.  
+- HAR cannot reference resources in the `AppScope` directory. During compilation and building, content in `AppScope` is not packaged into the HAR, which may cause HAR resource references to fail.  
 
-- When multiple packages (HAPs) reference the same HAR, it results in duplicated code and resources across packages, increasing the application size.  
+- When multiple packages (HAPs) reference the same HAR, it results in duplicate copies of code and resources across packages, increasing the application package size.  
 
 - HAR can depend on other HARs, but circular dependencies and transitive dependencies are not supported.  
 
-- When a HAP references a HAR, the system automatically merges their permission configurations during compilation. Developers do not need to redundantly request the same permissions in both HAP and HAR.  
+- When a HAP references a HAR, the system automatically merges their permission configurations during compilation. Therefore, developers do not need to repeatedly request the same permissions in both the HAP and HAR.  
 
-- When integrating a Cangjie binary HAR<!-- add link -->, the project must use the same SDK version as the one used to compile the binary HAR.  
+- When integrating a Cangjie binary HAR, the same SDK version used to compile the HAR must be used for compilation.  
 
-- If a module contains custom macros and needs to expose them to other modules, neither this module nor dependent modules can be compiled into a binary HAR. They must be compiled into a source-code format Cangjie HAR<!-- add link -->.  
+- If a module contains custom macros and needs to be used by other modules, the module and other modules cannot be compiled into a binary HAR and must be compiled into a source-code format Cangjie HAR<!-- add link -->.  
 
-- Binary HAR packages must use `hapTasks` imported from `@ohos/cangjie-build-support` in the `hvigorfile.ts` of the final integrated HAP module. Otherwise, only source-code format Cangjie HARs can be used.  
+- Binary HAR packages require the use of `hapTasks` imported from `@ohos/cangjie-build-support` in the `hvigorfile.ts` of the final integrated HAP module; otherwise, only the source-code format Cangjie HAR can be used.  
 
 > **Note:**  
 >  
-> **Circular Dependency**: For example, with three HARs—HAR-A, HAR-B, and HAR-C—a circular dependency occurs if HAR-A depends on HAR-B, HAR-B depends on HAR-C, and HAR-C depends on HAR-A.  
+> **Circular Dependency**: For example, with three HARs—HAR-A, HAR-B, and HAR-C—a circular dependency occurs if HAR-A depends on HAR-B, HAR-B depends on HAR-C, and HAR-C in turn depends on HAR-A.  
 >  
-> **Transitive Dependency**: For example, with three HARs—HAR-A, HAR-B, and HAR-C—if HAR-A depends on HAR-B and HAR-B depends on HAR-C, HAR-A can use HAR-B's methods and components but cannot directly use HAR-C's methods and components.  
+> **Transitive Dependency**: For example, with three HARs—HAR-A, HAR-B, and HAR-C—the dependency relationship is HAR-A depends on HAR-B, and HAR-B depends on HAR-C. Non-transitive dependency means HAR-A can use methods and components from HAR-B but cannot directly use methods and components from HAR-C.  
 
 ## Creation  
 
-Developers can create a HAR module using DevEco Studio. For details, refer to [Creating a Library Module](#)<!-- add link -->.  
+Developers can create a HAR module using DevEco Studio. For details, see [Creating a Library Module](#)<!-- add link -->.  
 
 ## Development  
 
-This section explains how to export Cangjie components, interfaces, and resources from a HAR for use by other applications or modules within the same application.  
+This section explains how to export Cangjie components, interfaces, and resources from a HAR for use by other applications or other modules within the same application.  
 
-Interfaces and other elements to be exported from a HAR can be marked with the `public` modifier.  
+Interfaces and other elements to be exported from the HAR can be marked with the `public` modifier.  
 
 > **Note:**  
 >  
-> When a HAR is compiled with its host application, the HAR's code is directly compiled into the host application. The HAR package is an intermediate compilation artifact, not a final runtime entity. At runtime, the HAR operates under the identity of its host application, and system behavior is distinguished based on the host application's version. If version-specific behavior differentiation is required within the HAR, developers can call the [`getBundleInfoForSelf`](../../../../API_Reference/source_en/apis/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) interface to retrieve the host application's `targetVersion` and implement logic accordingly.  
+> When a HAR is compiled with its host application, the HAR's code is directly compiled into the host application. The HAR package is an intermediate compilation artifact, not the final runtime entity. At runtime, the HAR operates under the identity of its host application, and the system distinguishes behavior based on the host application's version. If different behaviors are required in the HAR based on the host application's version, developers can call the [`getBundleInfoForSelf`](../../../../API_Reference/source_en/apis/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) interface to obtain the host application's `targetVersion` and implement logic accordingly.  
 
 ### Exporting Cangjie Components  
 
 Use `public` to export Cangjie components. Example:  
+
+<!-- compile -->  
 
 ```cangjie  
 // library/src/main/cangjie/mainPage.cj  
 package ohos_app_cangjie_library  
 
 import ohos.base.*  
-import ohos.component.Text  
-import ohos.component.Column  
-import ohos.component.CustomView  
-import ohos.state_manage.LocalStorage  
-import ohos.state_manage.ObservedProperty  
-import ohos.state_manage.SubscriberManager  
-import ohos.state_manage.ViewStackProcessor  
-import ohos.state_macro_manage.State  
-import ohos.state_macro_manage.Component  
-import ohos.state_macro_manage.r  
-import ohos.component.Flex  
-import ohos.component.Row  
-import ohos.component.FlexParams  
-import ohos.component.FontWeight  
-import ohos.component.ItemAlign  
-import ohos.component.FlexAlign  
-import ohos.component.Image  
+import ohos.arkui.component.Text  
+import ohos.arkui.component.Column  
+import ohos.arkui.component.CustomView  
+import ohos.arkui.state_management.LocalStorage  
+import ohos.arkui.state_management.ObservedProperty  
+import ohos.arkui.state_management.SubscriberManager  
+import ohos.arkui.state_management.ViewStackProcessor  
+import ohos.arkui.state_macro_manage.State  
+import ohos.arkui.state_macro_manage.Component  
+import ohos.arkui.state_macro_manage.r  
+import ohos.arkui.component.Flex  
+import ohos.arkui.component.Row  
+import ohos.arkui.component.FlexParams  
+import ohos.arkui.component.FontWeight  
+import ohos.arkui.component.ItemAlign  
+import ohos.arkui.component.FlexAlign  
+import ohos.arkui.component.Image  
 import ohos.resource_manager.__GenerateResource__  
 
 @Component  
@@ -105,6 +107,8 @@ public class MainPage {
 
 Use `public` to export classes and methods. Multiple classes and methods can be exported. Example:  
 
+<!-- compile -->  
+
 ```cangjie  
 // library/src/main/cangjie/classFunc.cj  
 package ohos_app_cangjie_library  
@@ -126,15 +130,15 @@ public func harFunc2() {
 
 ### Exporting Resources  
 
-When compiling a HAP, DevEco Studio collects resource files from the HAP module and its dependencies. If resource files with the same name conflict across modules, DevEco Studio resolves them based on the following priority (highest to lowest):  
+During HAP compilation, DevEco Studio collects resource files from the HAP module and its dependent modules. If resource files with the same name conflict across modules, DevEco Studio resolves the conflict based on the following priority (from highest to lowest):  
 
-- `AppScope` (supported only in the Stage model).  
+- `AppScope` (only supported in the Stage model).  
 - The HAP module itself.  
-- Dependent HAR modules. If multiple HARs have resource conflicts, the order of dependencies in the project's `oh-package.json5` determines priority (earlier dependencies take precedence). For example, in the snippet below, if `dayjs` and `lottie` contain files with the same name, `dayjs` resources are prioritized.  
+- Dependent HAR modules. If multiple HARs have resource conflicts, the resolution follows the dependency order in the project's `oh-package.json5` file, where earlier dependencies have higher priority. For example, in the following snippet, if `dayjs` and `lottie` contain files with the same name, resources from `dayjs` will be used first.  
 
 > **Note:**  
 >  
-> If resources are configured in the internationalization directories of `AppScope`, HAP modules, or HAR modules, the same priority rules apply under the same locale qualifiers. Additionally, locale-specific configurations take precedence over `base` configurations. For example, if a resource field is configured in `AppScope/base` and the same field is configured in `HAR/en_US`, the HAR's configuration is prioritized in `en_US` contexts.  
+> If resources are configured in the internationalization directories of `AppScope`, HAP modules, or HAR modules, the merging priority under the same internationalization qualifiers follows the above rules. Additionally, configurations under internationalization qualifiers take precedence over those in `base`. For example, if a resource field is configured in `base` of `AppScope` and the same field is configured in `en_US` of a HAR module, the HAR module's configuration will be prioritized in an `en_US` context.  
 
 ```json5  
 // oh-package.json5  
@@ -148,35 +152,37 @@ When compiling a HAP, DevEco Studio collects resource files from the HAP module 
 
 ## Usage  
 
-This section explains how to configure HAR dependencies and reference HAR Cangjie components, interfaces, and resources.  
+This section explains how to configure HAR dependencies and reference Cangjie components, interfaces, and resources from a HAR.  
 
-Before referencing a HAR, configure its dependency. For details, refer to [Referencing HAR Files and Resources](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import).  
+Before referencing a HAR, you must configure the HAR dependency. For details, see [Referencing HAR Files and Resources](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import).  
 
-### Referencing HAR Cangjie Components  
+### Referencing Cangjie Components from a HAR  
 
-After configuring HAR dependencies, you can reference its Cangjie components. Use `import` to reference exported components. Example:  
+After successfully configuring the HAR dependency, you can reference its Cangjie components. Use `import` to reference exported Cangjie components. Example:  
+
+<!-- compile -->  
 
 ```cangjie  
 // entry/src/main/cangjie/index.cj  
 package ohos_app_cangjie_entry  
 
 import ohos.base.LengthProp  
-import ohos.component.Column  
-import ohos.component.Row  
-import ohos.component.CustomView  
-import ohos.component.CJEntry  
-import ohos.component.loadNativeView  
-import ohos.state_manage.ObservedProperty  
-import ohos.state_manage.LocalStorage  
-import ohos.state_macro_manage.Entry  
-import ohos.state_macro_manage.Component  
-import ohos.state_manage.ViewStackProcessor  
-import ohos.state_manage.SubscriberManager  
-import ohos.component.LegalCallCheck  
-import ohos.component.ReuseParams  
-import ohos.component.ViewBuilder  
-import ohos.component.__Recycle__  
-import ohos.component.FakeComponent  
+import ohos.arkui.component.Column  
+import ohos.arkui.component.Row  
+import ohos.arkui.component.CustomView  
+import ohos.arkui.component.CJEntry  
+import ohos.arkui.component.loadNativeView  
+import ohos.arkui.state_management.ObservedProperty  
+import ohos.arkui.state_management.LocalStorage  
+import ohos.arkui.state_macro_manage.Entry  
+import ohos.arkui.state_macro_manage.Component  
+import ohos.arkui.state_management.ViewStackProcessor  
+import ohos.arkui.state_management.SubscriberManager  
+import ohos.arkui.component.LegalCallCheck  
+import ohos.arkui.component.ReuseParams  
+import ohos.arkui.component.ViewBuilder  
+import ohos.arkui.component.__Recycle__  
+import ohos.arkui.component.FakeComponent  
 import ohos_app_cangjie_library.MainPage  
 
 @Entry  
@@ -184,35 +190,37 @@ import ohos_app_cangjie_library.MainPage
 class EntryView {  
     func build() {  
         Row {  
-           // Reference HAR Cangjie component  
+           // Reference the Cangjie component from the HAR  
            MainPage()  
         }.height(100.percent)  
     }  
 }  
 ```  
 
-### Referencing HAR Classes and Methods  
+### Referencing Classes and Methods from a HAR  
 
 Use `import` to reference exported classes and methods. Example:  
+
+<!-- compile -->  
 
 ```cangjie  
 // entry/src/main/cangjie/index2.cj  
 package ohos_app_cangjie_entry  
 
 import ohos.base.LengthProp  
-import ohos.component.Column  
-import ohos.component.Row  
-import ohos.component.Text  
-import ohos.component.CustomView  
-import ohos.component.CJEntry  
-import ohos.component.loadNativeView  
-import ohos.component.FontWeight  
-import ohos.state_manage.SubscriberManager  
-import ohos.state_manage.ObservedProperty  
-import ohos.state_manage.LocalStorage  
-import ohos.state_macro_manage.Entry  
-import ohos.state_macro_manage.Component  
-import ohos.state_macro_manage.State  
+import ohos.arkui.component.Column  
+import ohos.arkui.component.Row  
+import ohos.arkui.component.Text  
+import ohos.arkui.component.CustomView  
+import ohos.arkui.component.CJEntry  
+import ohos.arkui.component.loadNativeView  
+import ohos.arkui.component.FontWeight  
+import ohos.arkui.state_management.SubscriberManager  
+import ohos.arkui.state_management.ObservedProperty  
+import ohos.arkui.state_management.LocalStorage  
+import ohos.arkui.state_macro_manage.Entry  
+import ohos.arkui.state_macro_manage.Component  
+import ohos.arkui.state_macro_manage.State  
 import ohos_app_cangjie_library.Log  
 import ohos_app_cangjie_library.harFunc  
 
@@ -230,7 +238,7 @@ class EntryView2 {
                     .fontWeight(FontWeight.Bold)  
                     .onClick {  
                         evt =>  
-                        // Reference HAR class and method  
+                        // Reference the class and method from the HAR  
                         Log.info("har msg")  
                         this.message = "func return: ${harFunc()}"  
                     }  
@@ -240,34 +248,36 @@ class EntryView2 {
 }  
 ```  
 
-### Referencing HAR Resources  
+### Referencing Resources from a HAR  
 
-Use `@r` to reference HAR resources. For example, if a string resource (`name: hello_har` in `string.json`) and an image resource (`icon_har.png`) are added to `src/main/resources` in the HAR module, they can be referenced in the Entry module as follows:  
+Use `@r` to reference resources from a HAR. For example, if a string resource (defined in `string.json` with `name: hello_har`) and an image resource (`icon_har.png`) are added to the HAR module's `src/main/resources`, they can be referenced in the Entry module as follows:  
+
+<!-- compile -->  
 
 ```cangjie  
 // entry/src/main/cangjie/index3.cj  
 package ohos_app_cangjie_entry  
 
 import ohos.base.LengthProp  
-import ohos.component.Column  
-import ohos.component.Row  
-import ohos.component.Text  
-import ohos.component.CustomView  
-import ohos.component.CJEntry  
-import ohos.component.loadNativeView  
-import ohos.component.FontWeight  
-import ohos.state_manage.SubscriberManager  
-import ohos.state_manage.ObservedProperty  
-import ohos.state_manage.LocalStorage  
-import ohos.state_macro_manage.Entry  
-import ohos.state_macro_manage.Component  
-import ohos.state_macro_manage.State  
-import ohos.state_macro_manage.r  
+import ohos.arkui.component.Column  
+import ohos.arkui.component.Row  
+import ohos.arkui.component.Text  
+import ohos.arkui.component.CustomView  
+import ohos.arkui.component.CJEntry  
+import ohos.arkui.component.loadNativeView  
+import ohos.arkui.component.FontWeight  
+import ohos.arkui.state_management.SubscriberManager  
+import ohos.arkui.state_management.ObservedProperty  
+import ohos.arkui.state_management.LocalStorage  
+import ohos.arkui.state_macro_manage.Entry  
+import ohos.arkui.state_macro_manage.Component  
+import ohos.arkui.state_macro_manage.State  
+import ohos.arkui.state_macro_manage.r  
 import ohos.resource_manager.__GenerateResource__  
-import ohos.component.Image  
-import ohos.component.List  
-import ohos.component.ListItem  
-import ohos.component.ListItemAlign  
+import ohos.arkui.component.Image  
+import ohos.arkui.component.List  
+import ohos.arkui.component.ListItem  
+import ohos.arkui.component.ListItemAlign  
 
 @Entry  
 @Component  
@@ -278,7 +288,7 @@ class EntryView3 {
     func build() {  
         Row {  
             Column {  
-                // Reference HAR string resource  
+                // Reference the string resource from the HAR  
                 Text(@r(app.string.hello_har))  
                     .fontSize(50)  
                     .fontWeight(FontWeight.Bold)  
@@ -287,7 +297,7 @@ class EntryView3 {
                     }  
                 List() {  
                     ListItem() {  
-                        // Reference HAR image resource  
+                        // Reference the image resource from the HAR  
                         Image(@r(app.media.icon_har)).id('iconHar').borderRadius(48.px)  
                     }.margin(5.percent).width(312.px)  
                 }.alignListItem(ListItemAlign.Center)  
@@ -295,12 +305,12 @@ class EntryView3 {
         }.height(100.percent)  
     }  
 }  
-```
+```  
 
-## Compilation
+## Compilation  
 
-HAR can be provided to other applications as a second-party or third-party library.
+HARs can be provided to other applications as second-party or third-party libraries.  
 
-## Release
+## Publishing  
 
-For details, see [Publishing HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-publish).
+For details, see [Publishing a HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-publish).

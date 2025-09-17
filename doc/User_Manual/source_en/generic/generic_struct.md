@@ -1,6 +1,6 @@
-# Generic Structs
+# Generic Struct
 
-Generic structs are similar to generic classes. Below is an example of using a struct to define a binary tuple-like type:
+Generic structs are similar to generic classes. Below is an example of using a struct to define a type similar to a binary tuple:
 
 <!-- verify -->
 
@@ -34,4 +34,4 @@ hello
 0
 ```
 
-The `Pair` struct provides two functions `first` and `second` to retrieve the first and second elements of the tuple respectively.
+The `Pair` provides two functions `first` and `second` to retrieve the first and second elements of the tuple respectively.

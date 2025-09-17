@@ -1,8 +1,8 @@
 # Web Page Content Scrolling
 
-The `Webview.WebviewController` in ArkWeb provides `scrollTo` and `scrollBy` interfaces.
+The Webview.WebviewController in ArkWeb provides the `scrollTo` and `scrollBy` interfaces.
 
-When the displayed content size in Web is significantly larger than the component size, users can use `scrollTo` and `scrollBy` to scroll through the displayed content on the Web page to reveal hidden portions, with the ability to generate animated scrolling effects. Currently, the animation effect does not support gesture interruption, but can be forcibly interrupted by executing another animation with a duration of approximately 0.
+When the displayed content size of a Web page is significantly larger than the component size, users can scroll the displayed content using `scrollTo` and `scrollBy` to reveal hidden portions, with support for animated scrolling effects. Currently, the animation cannot be interrupted by gestures, but can be forcibly stopped by executing another animation with a duration of approximately 0.
 
 > **Note:**
 >
@@ -12,9 +12,9 @@ When the displayed content size in Web is significantly larger than the componen
 
 ```cangjie
 // index.cj
-import ohos.state_macro_manage.*
+import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.WebviewController
-import kit.UIKit.{Web, BusinessException, Button}
+import kit.ArkUI.{Web, BusinessException}
 import kit.LocalizationKit.{__GenerateResource__}
 
 @Entry
@@ -31,7 +31,7 @@ class EntryView {
                 } catch (e: BusinessException) {
                     AppLog.error("scrollTo ErrorCode: ${e.code},  Message: ${e.message}")
                 }
-            }
+            }.margin(10)
             Button("scrollBy").onClick { evt =>
                 try {
                     webController.scrollBy(50.0, 50.0, duration: 500)
@@ -39,7 +39,7 @@ class EntryView {
                 } catch (e: BusinessException) {
                     AppLog.error("scrollBy ErrorCode: ${e.code},  Message: ${e.message}")
                 }
-            }
+            }.margin(10)
             Button("scrollStop").onClick { evt =>
                 try {
                     webController.scrollBy(0.0, 0.0, duration: 1)
@@ -47,7 +47,7 @@ class EntryView {
                 } catch (e: BusinessException) {
                     AppLog.error("scrollStop ErrorCode: ${e.code},  Message: ${e.message}")
                 }
-            }
+            }.margin(10)
             Web(src: @rawfile("index.html"), controller: webController)
         }
     }

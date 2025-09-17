@@ -1,33 +1,33 @@
-# Global Custom Dialog Independent of UI Components (openCustomDialog)
+# UI Component-Independent Global Custom Dialog (openCustomDialog)
 
-Due to the numerous limitations of [CustomDialogController](../../../API_Reference/source_zh_cn/arkui-cj/cj-dialog-customdialog.md/#class-customdialogcontroller), which does not support dynamic creation or dynamic updates.
+The [CustomDialogController](../../../API_Reference/source_en/arkui-cj/cj-dialog-customdialog.md#class-customdialogcontroller) has several limitations in usage, as it does not support dynamic creation or dynamic updates.
 
 > **Note:**
 >
 > The dialog (openCustomDialog) provides two parameter-passing methods for creating custom dialogs:
 >
-> - openCustomDialog (with CustomDialogOptions parameter): Encapsulating content through CustomDialogOptions can decouple it from the UI interface, making calls more flexible and meeting developers' encapsulation needs. It offers greater flexibility, with completely customizable dialog styles, and allows dynamic updates of some dialog parameters using the updateCustomDialog method after the dialog is opened.
+> - openCustomDialog (with CustomDialogOptions parameter): Encapsulating content through CustomDialogOptions enables decoupling from the UI interface, offering more flexible invocation that meets developers' encapsulation requirements. This approach provides greater flexibility, as the dialog style is fully customizable, and the updateCustomDialog method can be used to dynamically update certain dialog parameters after the dialog is opened.
 >
-> - openCustomDialog (lambda expression form): Passing a lambda expression enables users to add callbacks or other component methods within openCustomDialog.
+> - openCustomDialog (with lambda expression): Passing a lambda expression allows users to incorporate callbacks or other component methods within openCustomDialog.
 
 ## Lifecycle
 
-The dialog provides lifecycle functions to notify users of its lifecycle. The lifecycle triggers occur in the following sequence: onWillAppear -> onDidAppear -> onWillDisappear -> onDidDisappear.
+The dialog provides lifecycle functions to notify users about its lifecycle. The lifecycle triggers occur in the following sequence: onWillAppear -> onDidAppear -> onWillDisappear -> onDidDisappear.
 
-| Name            | Type       | Description                       |
-| :----------------- | :---------- | :-------------------------------- |
-| onDidAppear    | () -> Unit  | Callback event when the dialog appears.    |
-| onDidDisappear | () -> Unit  | Callback event when the dialog disappears.    |
-| onWillAppear    | () -> Unit | Callback event before the dialog's display animation. |
-| onWillDisappear | () -> Unit | Callback event before the dialog's exit animation. |
+| Name            | Type       | Description                          |
+| :-------------- | :--------- | :----------------------------------- |
+| onDidAppear     | () -> Unit | Callback when the dialog appears.    |
+| onDidDisappear  | () -> Unit | Callback when the dialog disappears. |
+| onWillAppear    | () -> Unit | Callback before the dialog's display animation. |
+| onWillDisappear | () -> Unit | Callback before the dialog's exit animation. |
 
 ## Opening and Closing Custom Dialogs
 
 > **Note:**
 >
-> For detailed variable definitions, refer to the [Complete Example](#complete-example).
+> For detailed variable definitions, refer to the [Complete Example](#完整示例).
 
-- Create customdialog.
+- Create a customdialog.
 
    Customdialog is used to define the content of the custom dialog.
 
@@ -36,23 +36,26 @@ The dialog provides lifecycle functions to notify users of its lifecycle. The li
     func CustomDialog() {
         Column() {
             Text("Hello").height(50.vp)
-            Button("Close").onClick({
-                => PromptAction.closeCustomDialog(customdialogId)
-            })
+            Button("Close").onClick{
+                evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+            }
         }.margin(10.vp)
     }
     ```
 
 - Open a custom dialog.
 
-   Dialogs opened by calling the openCustomDialog interface have content of type CustomDialogOptions, where this.CustomDialog represents the content of the custom dialog.
+   Dialogs opened via the openCustomDialog interface use content of type CustomDialogOptions, where this.CustomDialog represents the custom dialog content.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
 
-    import kit.ArkUI.*
+    import ohos.base.*
+    import ohos.arkui.component.*
+    import ohos.arkui.ui_context.*
+    import ohos.arkui.state_management.*
     import ohos.arkui.state_macro_manage.*
 
     var customdialogId: Int32 = 0
@@ -65,38 +68,40 @@ The dialog provides lifecycle functions to notify users of its lifecycle. The li
         func CustomDialog() {
             Column() {
                 Text("Hello Content").height(60.vp)
-                Button("Close").onClick({
-                    => PromptAction.closeCustomDialog(customdialogId)
-                })
+                Button("Close").onClick{
+                    evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+                }
             }.margin(10.vp)
         }
 
         func build(){
             Button("open dialog and options")
                 .margin(top: 50)
-                .onClick(
-                {
-                    => PromptAction.openCustomDialog(
+                .onClick {
+                    evt => getUIContext().getPromptAction().openCustomDialog(
                         CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                         {
                             id => customdialogId = id
                         }
                     )
-                })
+                }
         }
     }
     ```
 
-- Close the custom dialog.
+- Close a custom dialog.
 
    The closeCustomDialog interface requires passing the CustomDialogId corresponding to the dialog to be closed.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
 
-    import kit.ArkUI.*
+    import ohos.base.*
+    import ohos.arkui.component.*
+    import ohos.arkui.ui_context.*
+    import ohos.arkui.state_management.*
     import ohos.arkui.state_macro_manage.*
 
     var customdialogId: Int32 = 0
@@ -109,7 +114,7 @@ The dialog provides lifecycle functions to notify users of its lifecycle. The li
             Column() {
                 Text("Hello Content").height(60.vp)
                 Button("Close").onClick({
-                    => PromptAction.closeCustomDialog(customdialogId)
+                    evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
                 })
             }.margin(10.vp)
         }
@@ -119,7 +124,7 @@ The dialog provides lifecycle functions to notify users of its lifecycle. The li
                     .margin(top: 50)
                     .onClick(
                         {
-                            => PromptAction.openCustomDialog(
+                            evt => getUIContext().getPromptAction().openCustomDialog(
                                 CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                                 {
                                     id => customdialogId = id
@@ -138,7 +143,10 @@ The dialog provides lifecycle functions to notify users of its lifecycle. The li
 ```cangjie
 package ohos_app_cangjie_entry
 
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.ui_context.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 var customdialogId: Int32 = 0
@@ -150,45 +158,43 @@ public class EntryView {
     func CustomDialog() {
         Column() {
             Text("Hello ").height(70.vp)
-            Button("Close").onClick({
-                => PromptAction.closeCustomDialog(customdialogId)
-            })
+            Button("Close").onClick{
+                evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+            }
         }.margin(15.vp)
     }
     @Builder
     func CustomDialog1() {
         Column() {
             Text("Hello Content").height(60.vp)
-            Button("Close").onClick({
-                => PromptAction.closeCustomDialog(customdialogId)
-            })
+            Button("Close").onClick{
+               evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
+            }
         }.margin(10.vp)
     }
     func build() {
-        Flex(FlexParams(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)) {
+        Flex(justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
             Column(){
             Button("open dialog and options")
                 .margin(top: 50)
-                .onClick(
-                    {
-                        => PromptAction.openCustomDialog(
+                .onClick {
+                        evt => getUIContext().getPromptAction().openCustomDialog(
                             CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                             {
                                 id => customdialogId = id
                             }
                         )
-                    })
+                    }
             Button("open dialog and content")
                 .margin(top: 50)
-                .onClick(
-                    {
-                        => PromptAction.openCustomDialog(
+                .onClick {
+                        evt => getUIContext().getPromptAction().openCustomDialog(
                             CustomDialogOptions(builder: bind(this.CustomDialog1, this)),
                             {
                                 id => customdialogId = id
                             }
                         )
-                    })
+                    }
         }.width(100.percent).padding(top:5)}
     }
 }

@@ -1,34 +1,34 @@
-# Segment Encryption and Decryption Instructions
+# Segment Encryption/Decryption Instructions
 
-During the encryption and decryption process, the algorithm library does not impose size limits on single or cumulative data input. However, when handling large data volumes (e.g., exceeding 2MB), developers are advised to segment the data and perform segmented encryption/decryption for improved efficiency.
+During the encryption/decryption process, the algorithm library imposes no size restrictions on single or cumulative data input. However, when handling large data volumes (e.g., exceeding 2MB), developers are advised to segment the data and perform segmented encryption/decryption to improve efficiency.
 
-## Symmetric Encryption and Decryption
+## Symmetric Encryption/Decryption
 
 For symmetric key segmented encryption/decryption, implement it by calling the [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) function.
 
-Developers can customize the data volume per input (e.g., `updateLength` in examples) and invoke `update` multiple times for data transmission.
+Developers can customize the data volume for each input (e.g., `updateLength` in the example) by making multiple calls to the `update` interface to pass data.
 
-The current maximum supported single input length is `INT_MAX` (maximum length of Uint8Array type).
+The current maximum supported length for a single input is `INT_MAX` (the maximum length of the `Uint8Array` type).
 
 **Development Example:** [Segmented AES Symmetric Key Encryption/Decryption (GCM Mode)](./cj-crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)
 
 **Development Example:** [Segmented SM4 Symmetric Key Encryption/Decryption (GCM Mode)](./cj-crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
 
-## Asymmetric Encryption and Decryption
+## Asymmetric Encryption/Decryption
 
-Asymmetric encryption/decryption does not support `update` operations. Simply call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to complete the process.
+Asymmetric encryption/decryption does not support the `update` operation. Simply call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to complete the process.
 
-Segmented encryption with asymmetric keys refers to splitting plaintext into appropriately sized segments when it exceeds the single-encryption data length limit (specific lengths are detailed in [Asymmetric Key Encryption/Decryption Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md)). Each segment undergoes encryption by creating a Cipher and invoking the [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) interface.
+Segmented encryption for asymmetric keys refers to cases where the plaintext exceeds the supported data length for single encryption (specific lengths can be found in [Asymmetric Key Encryption/Decryption Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md)). In such scenarios, the data to be encrypted must be divided into appropriately sized segments, with each segment undergoing encryption—i.e., creating a `Cipher` object and then calling the [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) interface.
 
-Technically, this constitutes split-data encryption/decryption, where the single input data length correlates with key specifications:
+Strictly speaking, this involves split-data encryption/decryption, where the length of data per input is related to the key specifications.
 
-- **RSA**: Input data rules vary by padding mode. Refer to [RSA Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md#rsa) for permissible single input lengths.
-- **SM2**: Encryption length must adhere to fixed parameters. See [SM2 Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md#sm2) for details.
+- **RSA**: The rules for input data vary depending on the padding mode. Refer to [RSA Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md#rsa) to determine the permissible data length per input.
+- **SM2**: Encryption length must adhere to fixed specifications. For details, see [SM2 Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md#sm2).
 
 ## Frequently Asked Questions
 
-**Does the data volume per update in segmented encryption/decryption relate to the encryption mode?**
+In segmented encryption/decryption, is the data volume per update related to the encryption mode?
 
-   The data volume per update is developer-defined and independent of encryption modes.
+   The data volume per update is customizable by developers and is unrelated to the encryption mode.
 
-   Different encryption modes only affect cryptographic parameters. Each mode uses distinct parameters, as specified in [ParamsSpec](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
+   Different encryption modes only affect encryption/decryption parameters. Each mode uses distinct parameters; specifics can be found in [ParamsSpec](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).

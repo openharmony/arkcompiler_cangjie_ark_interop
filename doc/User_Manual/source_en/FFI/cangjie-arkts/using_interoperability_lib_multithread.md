@@ -8,7 +8,7 @@ Unrestricted use of multithreading in interoperability scenarios may lead to une
 2. Before entering other threads, all dependent ArkTS data must be converted to Cangjie data.
 3. To use ArkTS interfaces in other threads, switch to the ArkTS thread via `context.postJSTask` for execution.
 
-The following example demonstrates the specific approach. This use case involves an interoperability function that adds two numbers and invokes a callback function to return the sum.
+The following example demonstrates the specific approach. This case involves an interoperability function that adds two numbers and returns the result via a callback function.
 
 1. Define the Cangjie function:
 
@@ -60,19 +60,19 @@ The following example demonstrates the specific approach. This use case involves
     export declare function addNumberAsync(a: number, b: number, callback: (result: number) => void): void;
     ```
 
-3. ArkTS invokes the Cangjie function:
+3. ArkTS calls the Cangjie function:
 
     ```typescript
-    // Import Cangjie dynamic library, whose name matches the Cangjie package name and must be consistent with the package name containing the interoperability interfaces
+    // Import Cangjie dynamic library, whose name should match the Cangjie package name and be consistent with the package containing interoperability interfaces
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
 
-    // Invoke Cangjie function
+    // Call Cangjie function
     addNumberAsync(1, 2, (result) => {
         console.log("1 + 2 = " + result);
     });
     ```
 
-ArkTS includes Promise, which encapsulates the callback mechanism. When combined with async/await syntax, it transforms the callback mechanism into synchronous invocation. For the previous use case, here's how to define and access the interface using Promise:
+ArkTS supports Promise, which encapsulates the callback mechanism. Combined with async/await syntax, it transforms callback mechanisms into synchronous invocation forms. For the previous example, we can define and access interfaces using Promise:
 
 1. Define the Cangjie function:
 
@@ -103,7 +103,7 @@ ArkTS includes Promise, which encapsulates the callback mechanism. When combined
             let result = a + b
             // Switch to ArkTS thread
             context.postJSTask {
-                // Execute resolve in ArkTS thread
+                // Execute resolve on ArkTS thread
                 promise.resolve(context.number(result).toJSValue())
             }
         }
@@ -119,14 +119,14 @@ ArkTS includes Promise, which encapsulates the callback mechanism. When combined
     export declare function addNumberAsync(a: number, b: number): Promise<number>;
     ```
 
-3. ArkTS invokes the Cangjie function:
+3. ArkTS calls the Cangjie function:
 
     ```typescript
-    // Import Cangjie dynamic library, whose name matches the Cangjie package name and must be consistent with the package name containing the interoperability interfaces
+    // Import Cangjie dynamic library, whose name should match the Cangjie package name and be consistent with the package containing interoperability interfaces
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
 
     async function call() {
-        // Invoke Cangjie function
+        // Call Cangjie function
         let result = await addNumberAsync(1, 2);
         console.log("1 + 2 = " + result);
     }

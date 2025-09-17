@@ -1,12 +1,12 @@
-# Basic Custom Dialog (CustomDialog)(Not Recommended)
+# Basic Custom Dialog (CustomDialog) (Not Recommended)
 
-CustomDialog is a customizable popup dialog that can be used for advertisements, prize notifications, warnings, software updates, and other user interaction scenarios. Developers can display custom dialogs using the CustomDialogController class. For specific usage, please refer to [Custom Dialog](../../../API_Reference/source_zh_cn/arkui-cj/cj-dialog-customdialog.md).
+CustomDialog is a customizable popup dialog that can be used for advertisements, prize notifications, warnings, software updates, and other user interaction response operations. Developers can display custom dialogs using the CustomDialogController class. For specific usage, please refer to [Custom Dialog](../../../API_Reference/source_en/arkui-cj/cj-dialog-customdialog.md).
 
 > **Note:**
 >
-> By default, ArkUI dialogs are non-page-level popups. During page routing navigation, if developers do not explicitly call the close method to dismiss them, the dialogs will not automatically close. To achieve scenarios where dialogs should be covered during page navigation, it is recommended to use Navigation. For specific usage, please refer to [Component Navigation Subpage Display Type Dialog](./cj-navigation-navigation.md).
+> By default, ArkUI dialogs are non-page-level popups. During page routing navigation, if the developer does not call the close method to dismiss them, the dialog will not automatically close.
 
-The CustomDialog can be configured as modal or non-modal through the [isModal](../../../API_Reference/source_zh_cn/arkui-cj/cj-dialog-customdialog.md#var-ismodal) property. When isModal is true, the dialog is modal. When isModal is false, the dialog is non-modal.
+The CustomDialog can be configured as either modal or non-modal by setting [isModal](../../../API_Reference/source_en/arkui-cj/cj-dialog-customdialog.md#var-ismodal). When isModal is true, the dialog is modal. When isModal is false, the dialog is non-modal.
 
 ## Creating a Custom Dialog
 
@@ -31,7 +31,7 @@ The CustomDialog can be configured as modal or non-modal through the [isModal](.
 
 2. Create a constructor that corresponds to the macro. Bind the onClick event to a component to trigger the dialog display.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -57,7 +57,7 @@ The CustomDialog can be configured as modal or non-modal through the [isModal](.
             Column {
                 Button("click me")
                     .onClick({evt =>
-                        dialogController.`open`()
+                        dialogController.openDialog()
                     })
             }
         }
@@ -68,33 +68,37 @@ The CustomDialog can be configured as modal or non-modal through the [isModal](.
 
 ## Dialog Interaction
 
-Dialogs can be used for data interaction to complete a series of user response operations.
+The dialog can be used for data interaction to complete a series of user response operations.
 
-1. Add buttons within the @CustomDialog macro and include data functions.
+1. Add buttons and data functions within the @CustomDialog macro.
 
     ```cangjie
+    package ohos_app_cangjie_entry
+    import kit.ArkUI.*
+    import ohos.arkui.state_macro_manage.*
+
     @CustomDialog
     class MyDialog {
         var controller: Option<CustomDialogController> = Option.None
         func build() {
 
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Text("I am the content").fontSize(20)
 
                 Button("cancel").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
                 Button("confirm").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
             }.height(500.px)
         }
     }
     ```
 
-2. The dialog page needs to be received within the constructor, and corresponding function operations should be created.
+2. The dialog page needs to be received in the constructor, and corresponding function operations should be created.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -107,14 +111,14 @@ Dialogs can be used for data interaction to complete a series of user response o
         var controller: Option<CustomDialogController> = Option.None
         func build() {
 
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center) {
                 Text("I am the content").fontSize(20)
 
                 Button("cancel").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
                 Button("confirm").onClick { evt =>
-                    controller?.close()
+                    controller?.closeDialog()
                 }
             }.height(500.px)
         }
@@ -127,7 +131,7 @@ Dialogs can be used for data interaction to complete a series of user response o
         func build() {
             Column {
                 Button("click me").onClick({evt =>
-                    dialogController.`open`()
+                    dialogController.openDialog()
                 })
             }
         }
@@ -138,7 +142,7 @@ Dialogs can be used for data interaction to complete a series of user response o
 
 ## Dialog Styling
 
-Control the dialog appearance by defining parameters such as width, height, background color, and shadow.
+The dialog's appearance can be controlled by defining parameters such as width, height, background color, and shadow.
 
  <!-- run -->
 
@@ -151,7 +155,7 @@ import ohos.arkui.state_macro_manage.*
 class MyDialog {
     var controller: Option<CustomDialogController> = Option.None
     func build() {
-        Row(40) {
+        Row(space: 40) {
             Text("I am the content").fontSize(20).margin(top: 4, right: 4, bottom: 4, left: 4)
         }.height(500.px)
     }
@@ -170,15 +174,15 @@ class EntryView {
     width: 120,
     height: 120,
     borderWidth: 1,
-    borderStyle: EdgeStyle.SOILD, // The borderStyle property must be used with borderWidth
-    borderColor: Color.BLUE, // The borderColor property must be used with borderWidth
+    borderStyle: EdgeStyles(), // The borderStyle property must be used with borderWidth
+    borderColor: Color.Blue, // The borderColor property must be used with borderWidth
     shadow: Option<ShadowOptions>.None,
     ))
     func build() {
         Column {
-            Button("click me").onClick({evt =>
-                dialogController.`open`()
-            })
+            Button("click me").onClick{evt =>
+                dialogController.openDialog()
+            }
         }
     }
 }
@@ -188,7 +192,7 @@ class EntryView {
 
 ## Nested Custom Dialogs
 
-When opening a second dialog from the first dialog, it is recommended to define the second dialog at the parent component of the first dialog. The second dialog can then be opened via a callback passed from the parent component to the first dialog.
+When opening a second dialog from the first dialog, it is recommended to define the second dialog in the parent component of the first dialog and use a callback from the parent component to the first dialog to open the second dialog.
 
  <!-- run -->
 
@@ -214,15 +218,15 @@ class CustomDialogExampleTwo {
                 .fontSize(30)
                 .height(100)
             Button("Create Text")
-                .onClick({=>
+                .onClick{ evt =>
                     this.showIf = true
-                })
+                }
             Button("Close Second Dialog Box")
-                .onClick({=>
+                .onClick{ evt =>
                     if (let Some(v) <- this.controllerTwo) {
-                        v.close()
+                        v.closeDialog()
                     }
-                }).margin(20)
+                }.margin(20)
         }
     }
 }
@@ -232,12 +236,12 @@ class MyDialog {
     var openSecondBox: ()->Unit
     var controller: Option<CustomDialogController> = Option.None
     func build() {
-        Row(600) {
+        Row(space: 600) {
             Button ("Open Second Box")
-                .onClick({=>
-                    this.controller?.close()
+                .onClick{ evt =>
+                    this.controller?.closeDialog()
                     this.openSecondBox()
-                })
+                }
                 .margin(20)
         }.borderRadius(10)
     }
@@ -249,7 +253,7 @@ class EntryView {
     @State var inputValue: String = "Click Me"
     var dialogController: CustomDialogController = CustomDialogController(
         CustomDialogControllerOptions(
-            builder: MyDialog(openSecondBox:{=>this.dialogControllerTwo.open()}),
+            builder: MyDialog(openSecondBox:{=>this.dialogControllerTwo.openDialog()}),
             autoCancel: true,
             alignment: DialogAlignment.Bottom,
             offset: Offset(0, -20),
@@ -269,9 +273,9 @@ class EntryView {
     func build() {
         Column() {
             Button(this.inputValue)
-                .onClick({=>
-                    this.dialogController.`open`()
-                }).backgroundColor(0x317aff)
+                .onClick{ evt =>
+                    this.dialogController.openDialog()
+                }.backgroundColor(0x317aff)
         }.width(100.percent).margin(top:20)
     }
 }
@@ -279,4 +283,4 @@ class EntryView {
 
 ![nestedcustomdailog](figures/nestedcustomdailog.gif)
 
-Due to the parent-child relationship in state management for custom dialogs, if the second dialog is defined within the first dialog, when the parent component (first dialog) is destroyed (closed), new components cannot be created within the child component (second dialog).
+Due to the parent-child relationship in state management for custom dialogs, if the second dialog is defined within the first dialog, when the parent component (the first dialog) is destroyed (closed), new components cannot be created within the child component (the second dialog).
