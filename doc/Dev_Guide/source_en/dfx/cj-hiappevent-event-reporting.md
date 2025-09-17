@@ -1,42 +1,57 @@
-# Event Reporting  
+# Event Reporting
 
-HiAppEvent provides interfaces for handling and reporting events.
+HiAppEvent provides interfaces for processing and reporting events.
 
-## Interface Description  
+## Interface Description
 
-For detailed usage instructions of the API interfaces (parameter constraints, value ranges, etc.), please refer to the [Application Event Tracking API Documentation](../../../API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hiappevent.md).  
+For detailed usage instructions of the API interfaces (parameter usage restrictions, specific value ranges, etc.), please refer to the [Application Event Tracking API Documentation](../../../API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hiappevent.md).
 
-**Data Processor Interface Functions:**  
+**Data Processor Interface Functions:**
 
-| Interface Name                              | Description                                                  |
-| ------------------------------------------- | ------------------------------------------------------------ |
-| addProcessor(processor: Processor): Int64  | Adds a data processor to enable event reporting via predefined processors. |
-| removeProcessor(id: Int64): Unit           | Removes a data processor to disable predefined processors.   |
+| Interface Name                              | Description                                              |
+| ------------------------------------------- | ------------------------------------------------------- |
+| addProcessor(processor: Processor): Int64   | Adds a data processor to enable event reporting through preset processors. |
+| removeProcessor(id: Int64): Unit            | Removes a data processor to cancel preset processors.    |
 
-**User ID Interface Functions:**  
+**User ID Interface Functions:**
 
-| Interface Name                             | Description                                                  |
-| ------------------------------------------ | ------------------------------------------------------------ |
-| setUserId(name: String, value: String): Unit | Sets a user ID, which can be carried by data processors when reporting events. |
-| getUserId(name: String): String            | Retrieves the set user ID.                                   |
+| Interface Name                                 | Description                                            |
+| ---------------------------------------------- | ----------------------------------------------------- |
+| setUserId(name: String, value: String): Unit   | Sets a user ID, which can be carried by data processors when reporting events. |
+| getUserId(name: String): String                | Retrieves the set user ID.                            |
 
-**User Property Interface Functions:**  
+**User Property Interface Functions:**
 
-| Interface Name                                   | Description                                                  |
-| ------------------------------------------------ | ------------------------------------------------------------ |
-| setUserProperty(name: String, value: String): Unit | Sets a user property, which can be carried by data processors when reporting events. |
-| getUserProperty(name: String): String            | Retrieves the set user property.                             |
+| Interface Name                                       | Description                                                |
+| ---------------------------------------------------- | --------------------------------------------------------- |
+| setUserProperty(name: String, value: String): Unit   | Sets a user property, which can be carried by data processors when reporting events. |
+| getUserProperty(name: String): String                | Retrieves the set user property.                          |
 
-## Development Steps  
+## Development Steps
 
-The following example demonstrates how to implement event tracking for user button clicks and report events via processors.  
+Using the example of tracking button click events and reporting them via processors, the development steps are as follows:
 
-1. Edit the `entry > src > main > cangjie > index.cj` file in the project, add a button, and include a data processor in its `onClick` function. The `analytics_demo` is a predefined processor library on the device. The complete sample code is as follows:  
+1. Edit the "entry > src > main > cangjie > index.cj" file in the project, add a button, and include a data processor in its onClick function. The `analytics_demo` is a preset data processor library on the device. The complete sample code is as follows:
 
-   <!--compile-->
-   ```cangjie
-   import kit.BasicServicesKit.*
-   import kit.PerformanceAnalysisKit.*
+    <!-- compile -->
+
+    ```cangjie
+    internal import kit.PerformanceAnalysisKit.{Watcher as hiWatcher, Event as HEvent}
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.BasicServicesKit.*
+    import kit.CoreFileKit.*
+    import kit.AbilityKit.*
+    import ohos.base.*
+    import kit.PerformanceAnalysisKit.*
+    import std.collection.*
+
+    func loggerInfo(str: String) {
+        Hilog.info(0, "CangjieTest", str)
+    }
+
+    func loggerError(str: String) {
+        Hilog.error(0, "CangjieTest", str)
+    }
 
     @Entry
     @Component
@@ -50,98 +65,111 @@ The following example demonstrates how to implement event tracking for user butt
             Row {
                 Column {
                     Button(this.message)
-                        .fontSize(50)
-                        .fontWeight(FontWeight.Bold)
-                        .onClick {
-                            evt => this.message = "Hello Cangjie"
-                            // Add a data processor in the button click function
-                            let eventConfig = AppEventReportConfig(
-                                // Event domain definition
-                                domain: "button",
-                                // Event name definition
-                                name: "click",
-                                // Whether to report events in real time
-                                isRealTime: true
-                            )
-                            let processor = Processor(
-                                'analytics_demo',
-                                debugMode: true,
-                                routeInfo: 'CN',
-                                onStartReport: true,
-                                onBackgroundReport: true,
-                                periodReport: 10,
-                                batchReport: 5,
-                                userIds: ['testUserIdName'],
-                                userProperties: ['testUserPropertyName'],
-                                eventConfigs: [eventConfig]
-                            )
-                            this.processorId = HiAppEvent.addProcessor(processor)
-                        }
-                }.width(100.percent)
-            }.height(100.percent)
+                    .fontSize(50)
+                    .fontWeight(FontWeight.Bold)
+                    .onClick {
+                        evt => this.message = "Hello Cangjie"
+                        // Add a data processor in the button click function
+                        let eventConfig = AppEventReportConfig(
+                            // Event domain definition
+                            domain: "button",
+                            // Event name definition
+                            name: "click",
+                            // Whether to report events in real-time
+                            isRealTime: true
+                        )
+                        let processor = Processor(
+                            'analytics_demo',
+                            debugMode: true,
+                            routeInfo: 'CN',
+                            appId: '111',
+                            onStartReport: true,
+                            onBackgroundReport: true,
+                            periodReport: 10,
+                            batchReport: 5,
+                            userIds: ['testUserIdName'],
+                            userProperties: ['testUserPropertyName'],
+                            eventConfigs: [eventConfig]
+                        )
+                        this.processorId = HiAppEvent.addProcessor(processor)
+                    }
+                }.height(100.percent)
+            }.width(100.percent)
         }
     }
-   ```
+    ```
 
-2. Edit the `entry > src > main > cangjie > index.cj` file, add a button, and include functions to set and retrieve a user ID in its `onClick` function. The complete sample code is as follows:  
+2. Edit the "entry > src > main > cangjie > index.cj" file, add a button, and include functions to set and retrieve a user ID in its onClick function. The complete sample code is as follows:
 
-   ```cangjie
-    Button("userIdTest").onClick {
-        evt =>
-        // Set a user ID in the button click function
-        HiAppEvent.setUserId('testUserIdName', '123456')
+    <!-- compile -->
 
-        // Retrieve the set user ID in the button click function
-        let userId = HiAppEvent.getUserId('testUserIdName')
-    }
-   ```
+    ```cangjie
+        Button("userIdTest").onClick {
+                evt =>
+                // Set a user ID in the button click function
+                HiAppEvent.setUserId('testUserIdName', '123456')
 
-3. Edit the `entry > src > main > cangjie > index.cj` file, add a button, and include functions to set and retrieve a user property in its `onClick` function. The complete sample code is as follows:  
+                // Retrieve the set user ID in the button click function
+                let userId = HiAppEvent.getUserId('testUserIdName')
+                Hilog.info(0x0000, 'testTag', 'userId: ${userId}')
+        }
+    ```
 
-   ```cangjie
-    Button("userPropertyTest").onClick {
-        evt =>
-        // Set a user property in the button click function
-        HiAppEvent.setUserProperty('testUserPropertyName', '123456')
+3. Edit the "entry > src > main > cangjie > index.cj" file, add a button, and include functions to set and retrieve a user property in its onClick function. The complete sample code is as follows:
 
-        // Retrieve the set user property in the button click function
-        let userProperty = HiAppEvent.getUserProperty('testUserPropertyName')
-    }
-   ```
+    <!-- compile -->
 
-4. Edit the `entry > src > main > cangjie > index.cj` file, add a button, and include event tracking in its `onClick` function to record button click events. The complete sample code is as follows:  
+    ```cangjie
+        Button("userPropertyTest").onClick {
+            evt =>
+            // Set a user property in the button click function
+            HiAppEvent.setUserProperty('testUserPropertyName', '123456')
 
-   ```cangjie
-    Button("writeTest").onClick {
-        evt =>
-        let eventParams: Array<Parameters> = [Parameters("click_time", INT(100))]
-        let eventInfo: AppEventInfo = AppEventInfo(
-            // Event domain definition
-            "button",
-            // Event name definition
-            "click",
-            // Event type definition
-            EventType.BEHAVIOR,
-            // Event parameter definition
-            eventParams)
+            // Retrieve the set user property in the button click function
+            let userProperty = HiAppEvent.getUserProperty('testUserPropertyName')
+            Hilog.info(0x0000, 'testTag', 'userProperty: ${userProperty}')
+        }
+    ```
 
-        HiAppEvent.write(eventInfo)
-    }
-   ```
+4. Edit the "entry > src > main > cangjie > index.cj" file, add a button, and include event tracking in its onClick function to record button click events. The complete sample code is as follows:
 
-5. Edit the `entry > src > main > cangjie > index.cj` file, add a button, and include a function to remove the data processor (added in Step 2) in its `onClick` function. The complete sample code is as follows:  
+    <!-- compile -->
 
-   ```cangjie
-    Button("removeProcessorTest").onClick {
-        evt =>
-            // Remove the data processor in the button click function
-            HiAppEvent.removeProcessor(this.processorId)
-    }
-   ```
+    ```cangjie
+        Button("writeTest").onClick {
+            evt =>
+            let eventParams = HashMap<String, EventValueType>([
+                ("click_time", IntValue(100))
+            ])
+            let eventInfo: AppEventInfo = AppEventInfo(
+                // Event domain definition
+                "button",
+                // Event name definition
+                "click",
+                // Event type definition
+                EventType.Behavior,
+                // Event parameter definition
+                eventParams)
 
-6. Click the **Run** button in the IDE to launch the application. Then, sequentially click the buttons **addProcessorTest**, **userIdTest**, **userPropertyTest**, **writeTest**, and **removeProcessorTest** in the app interface. This will successfully report an event via the data processor.  
+            HiAppEvent.write(eventInfo)
+        }
+    ```
 
-   Finally, the event processor will receive the event data, and the following log will appear in the Log window, indicating successful event tracking for the button click:  
+5. Edit the "entry > src > main > cangjie > index.cj" file, add a button, and include the removal of a data processor in its onClick function (the data processor was added in Step 2). The complete sample code is as follows:
+
+    <!-- compile -->
+
+    ```cangjie
+        Button("removeProcessorTest").onClick {
+            evt =>
+                // Remove the data processor in the button click function
+                HiAppEvent.removeProcessor(this.processorId)
+        }
+    ```
+
+6. Click the Run button in the IDE to launch the application. Then, sequentially click the buttons "addProcessorTest", "userIdTest", "userPropertyTest", "writeTest", and "removeProcessorTest" in the application interface to successfully report an event via the data processor.
+
+   Finally, the event processor successfully receives the event data, and the following log indicating successful event tracking appears in the Log window:
 
    ```text
    HiAppEvent success to write event

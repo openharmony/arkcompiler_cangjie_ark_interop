@@ -1,6 +1,6 @@
-# Radio Button
+# Radio Button (Radio)
 
-The Radio button is a component typically used to provide interactive selection options for users, where only one option can be selected within a group of Radio buttons. For specific usage, please refer to [Radio](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-radio.md).
+The Radio button is a component typically used to provide interactive selection options, where only one option within the same group can be selected. For specific usage, please refer to [Radio](../../../API_Reference/source_en/arkui-cj/cj-button-picker-radio.md).
 
 ## Creating a Radio Button
 
@@ -15,9 +15,9 @@ Where:
 - `value` is the name of the radio button
 - `group` is the name of the radio button group
 - `indicatorType` is the selection indicator style
-- `indicatorBuilder` configures a custom component as the selection indicator
+- `indicatorBuilder` represents configuring a custom component as the selection indicator style
 
-The `checked` property sets the radio button's state (`false` or `true`). When set to `true`, the radio button is selected.
+The `checked` property sets the state of the radio button, with `false` and `true` as possible values. When set to `true`, the radio button is selected.
 
 Radio buttons support styling for both selected and unselected states.
 
@@ -32,32 +32,33 @@ Radio(value: 'Radio2', group: 'radioGroup')
 
 ## Adding Events
 
-In addition to supporting [Universal Events](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md), Radio buttons can trigger certain operations upon selection. The `onChange` event can be bound to implement custom behaviors after selection.
+In addition to supporting [Universal Events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md), Radio buttons can trigger certain operations upon selection. You can bind the `onChange` event to respond to custom behaviors after selection.
 
 ```cangjie
 Radio(value: 'Radio1', group: 'radioGroup')
     .onChange{ isChecked =>
         if(isChecked) {
-        // Operations to perform
+        // Operations to be performed
         }
     }
 Radio(value: 'Radio2', group: 'radioGroup')
     .onChange{ isChecked =>
         if(isChecked) {
-        // Operations to perform
+        // Operations to be performed
         }
     }
 ```
 
 ## Usage Example
 
-Switching sound modes by clicking Radio buttons.
+Toggle sound modes by clicking Radio buttons.
 
-<!-- run -->
+ <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohhos.prompt_action.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -73,7 +74,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // Switch to ringing mode
-                            PromptAction.showToast(message: 'Ringing mode.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Ringing mode.'))
                         }
                     }
                 Text('Ringing')
@@ -85,7 +86,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // Switch to vibration mode
-                            PromptAction.showToast(message: 'Vibration mode.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Vibration mode.'))
                         }
                     }
                 Text('Vibration')
@@ -97,7 +98,7 @@ class EntryView {
                     .onChange {
                         isChecked => if (isChecked) {
                             // Switch to silent mode
-                            PromptAction.showToast(message: 'Silent mode.')
+                            getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Silent mode.'))
                         }
                     }
                 Text('Silent')

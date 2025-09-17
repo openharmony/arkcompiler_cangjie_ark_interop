@@ -1,10 +1,10 @@
 # Tabs
 
-When a page contains abundant information, categorizing the content helps users focus on the currently displayed information and improves space utilization. The [Tabs](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-tabs.md) component enables quick content view switching within a single page, enhancing information retrieval efficiency while streamlining the amount of information users receive at once.
+When a page contains a large amount of information, categorizing the content helps users focus on the currently displayed information and improves space utilization. The [Tabs](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-tabs.md) component enables quick switching between views within a single page, enhancing information retrieval efficiency while streamlining the amount of information users receive at once.
 
 ## Basic Layout
 
-The Tabs component consists of two parts: TabContent and TabBar. TabContent represents the content area, while TabBar serves as the navigation tab bar. As shown in the diagram below, layouts vary based on navigation types, which include bottom navigation, top navigation, and sidebar navigation, with their respective navigation bars positioned at the bottom, top, or side.
+The Tabs component consists of two parts: TabContent and TabBar. TabContent represents the content pages, while TabBar serves as the navigation tab bar. As shown in the diagram below, the layout varies based on navigation types, which can be categorized as bottom navigation, top navigation, or sidebar navigation, with their respective navigation bars positioned at the bottom, top, or side.
 
 **Figure 1** Tabs Component Layout Schematic
 
@@ -12,14 +12,14 @@ The Tabs component consists of two parts: TabContent and TabBar. TabContent repr
 
 > **Note:**
 >
-> - The TabContent component does not support generic width properties; its width defaults to filling the parent Tabs component.
-> - The TabContent component does not support generic height properties; its height is determined by the parent Tabs component's height and the TabBar component's height.
+> - The TabContent component does not support setting generic width properties; its width defaults to filling the parent Tabs component.
+> - The TabContent component does not support setting generic height properties; its height is determined by the parent Tabs component's height and the TabBar component's height.
 
-Tabs wrap TabContent with curly braces, as shown in Figure 2, where TabContent displays the corresponding content.
+Tabs wrap TabContent with curly braces, as shown in Figure 2, where TabContent displays the corresponding content pages.
 
 ![tab-2](figures/tab-2.png)
 
-Each TabContent requires a tab, configured via its `tabBar` property. The example below sets the `tabBar` property to define the tab's content:
+Each TabContent requires a corresponding tab, which can be configured via the tabBar property. Setting the tabBar property on a TabContent component defines the content for its corresponding tab.
 
 ```cangjie
  TabContent() {
@@ -28,7 +28,7 @@ Each TabContent requires a tab, configured via its `tabBar` property. The exampl
 .tabBar('Home')
 ```
 
-For multiple content sections, place them sequentially within Tabs:
+When multiple content sections are needed, place them sequentially within the Tabs component.
 
 ```cangjie
 Tabs() {
@@ -56,16 +56,16 @@ Tabs() {
 
 ## Bottom Navigation
 
-Bottom navigation is the most common navigation pattern in applications. Positioned at the bottom of primary pages, it helps users quickly identify functional categories and corresponding content while facilitating one-handed operation. Typically serving as the main navigation, it organizes content by function to align with user habits and streamline switching between modules.
+Bottom navigation is the most common navigation pattern in applications. Positioned at the bottom of primary application pages, it helps users understand the app's functional categories and the content associated with each tab. Its bottom placement also facilitates one-handed operation. Typically serving as the main navigation, bottom navigation organizes content by function to align with user habits and streamline switching between modules.
 
 **Figure 3** Bottom Navigation Bar
 
 ![tab-3](figures/tab-3.gif)
 
-The navigation bar position is set using the `barPosition` parameter of Tabs. By default, `barPosition` is `BarPosition.Start` (top). For bottom navigation, set it to `BarPosition.End`:
+The navigation bar position is set using the Tabs' barPosition parameter. By default, the navigation bar is at the top (BarPosition.Start). For bottom navigation, set barPosition to BarPosition.End.
 
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     // TabContent content, e.g., Home, Discover, Recommend, Mine
     // ...
 }
@@ -73,31 +73,31 @@ Tabs(BarPosition.End) {
 
 ## Top Navigation
 
-When content categories are numerous and users frequently switch between them (e.g., in news or thematic apps), top navigation is preferred. It often subdivides bottom navigation content further, such as categorizing topics into "Follow," "Video," or "Tech."
+When there are numerous content categories with roughly equal browsing frequency requiring frequent switching, top navigation is often used. This design further subdivides bottom navigation content, commonly seen in news apps with categories like Follow, Video, Tech, or theme apps with subdivisions like Images, Videos, Fonts, etc.
 
 **Figure 4** Top Navigation Bar
 
 ![tab-4](figures/tab-4.gif)
 
 ```cangjie
-Tabs(BarPosition.Start) {
-    // TabContent content, e.g., Follow, Video, Game, Tech, Sports, Movies
+Tabs(barPosition: BarPosition.Start) {
+    // TabContent content, e.g., Follow, Video, Games, Tech, Sports, Movies
     // ...
 }
 ```
 
 ## Sidebar Navigation
 
-Sidebar navigation is less common and typically used in landscape layouts. Aligned with left-to-right reading habits, it defaults to the left side.
+Sidebar navigation is less common and typically used in landscape interfaces for app navigation. Given users' left-to-right reading habits, the sidebar defaults to the left side.
 
 **Figure 5** Sidebar Navigation
 
 ![tab-5](figures/tab-5.png)
 
-Enable sidebar navigation by setting the `vertical` property of Tabs to `true` (default is `false` for vertical arrangement):
+To implement sidebar navigation, set the Tabs' vertical property to true (default is false), indicating vertical arrangement of content and navigation.
 
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent content, e.g., Home, Discover, Recommend, Mine
     // ...
 }
@@ -106,19 +106,21 @@ Tabs(BarPosition.Start) {
 
 > **Note:**
 >
-> - When `vertical` is `false`, the TabBar width defaults to full screen width; adjust with `barWidth`.
-> - When `vertical` is `true`, the TabBar height defaults to content height; adjust with `barHeight`.
+> - When vertical is false, the tabBar width defaults to filling the screen width; set barWidth as needed.
+> - When vertical is true, the tabBar height defaults to the actual content height; set barHeight as needed.
 
 ## Disabling Swipe Navigation
 
-By default, navigation bars support swipe switching. However, in multi-level categorization (e.g., combined bottom and top navigation), swiping conflicts may arise. To avoid poor UX, disable swiping via the `scrollable` property (default `true`):
+By default, navigation bars support swipe switching. However, in pages with multi-level categorization (e.g., combining bottom and top navigation), bottom navigation swiping may conflict with top navigation. In such cases, disabling bottom navigation swiping improves user experience.
 
-**Figure 6** Disabled Bottom Navigation Swipe
+**Figure 6** Disabled Bottom Navigation Swiping
 
 ![tab-6](figures/tab-6.gif)
 
+The scrollable property controls swipe switching (default: true). Set it to false to disable swiping.
+
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     TabContent() {
         Column() {
             Tabs() {
@@ -131,7 +133,7 @@ Tabs(BarPosition.End) {
     }
     .tabBar("Home")
 
-    // Other TabContent, e.g., Discover, Recommend, Mine
+    // Other TabContent content, e.g., Discover, Recommend, Mine
     // ...
 }
 .scrollable(false)
@@ -139,16 +141,16 @@ Tabs(BarPosition.End) {
 
 ## Fixed Navigation Bar
 
-For fixed categories (e.g., 3–5 bottom navigation items), use a non-scrollable, fixed navigation bar where tabs evenly distribute width.
+For fixed, non-expandable content categories (e.g., bottom navigation typically has 3-5 fixed tabs), use a fixed navigation bar. Fixed bars cannot scroll or be dragged, with tabs evenly distributed across the bar's width.
 
 **Figure 7** Fixed Navigation Bar
 
 ![tab-7](figures/tab-7.gif)
 
-Set `barMode` to `BarMode.Fixed` (default):
+The Tabs' barMode property controls bar scrolling (default: BarMode.Fixed).
 
 ```cangjie
-Tabs(BarPosition.End) {
+Tabs(barPosition: BarPosition.End) {
     // TabContent content, e.g., Home, Discover, Recommend, Mine
     // ...
 }
@@ -157,14 +159,16 @@ Tabs(BarPosition.End) {
 
 ## Scrollable Navigation Bar
 
-For extensive categories exceeding screen width (top or sidebar navigation), enable scrolling via `barMode` set to `BarMode.Scrollable`:
+Scrollable navigation bars suit top or sidebar navigation when categories exceed screen width. Users can click or swipe to access hidden tabs.
 
 **Figure 8** Scrollable Navigation Bar
 
 ![tab-8](figures/tab-8.gif)
 
+Set barMode to BarMode.Scrollable (default: BarMode.Fixed).
+
 ```cangjie
-Tabs(BarPosition.Start) {
+Tabs(barPosition: BarPosition.Start) {
     // TabContent content, e.g., Home, Discover, Recommend, Mine
     // ...
 }
@@ -173,11 +177,15 @@ Tabs(BarPosition.Start) {
 
 ## Custom Navigation Bar
 
-Enhance UX by combining text and icons in bottom navigation. Customize styles by overriding the default underline indicator with a `tabBuilder` function that toggles active/inactive states.
+For bottom navigation (typically distinguishing primary app functions), combining text and semantic icons enhances UX. This requires custom tab styling.
 
 **Figure 9** Custom Navigation Bar
 
 ![tab-9](figures/tab-9.png)
+
+By default, an underline indicates the active tab. Custom bars must implement styles to distinguish active/inactive tabs.
+
+Use tabBar's CustomBuilder to pass custom function components. For example, tabBuilder accepts parameters like title, index, and image resources for active/inactive states, determining UI display based on currentIndex matching targetIndex.
 
 ```cangjie
 @State var currentIndex: Int32 = 0
@@ -199,7 +207,7 @@ func tabBuilder(title: String, targetIndex: Int32, imgs: Array<AppResource>) {
 }
 ```
 
-Pass the custom component to `tabBar`:
+Pass the custom function component and parameters via TabContent's tabBar property.
 
 ```cangjie
 TabContent(){
@@ -209,13 +217,15 @@ TabContent(){
 })
 ```
 
-## Switching to a Specific Tab
+## Switching to Specific Tabs
 
-Custom navigation bars require manual tab switching logic. Use the `onChange` event to sync the active tab index (`currentIndex`) with content changes.
+With custom navigation bars, Tabs only handle content page switching via swiping or clicking. Tab switching logic must be implemented manually to sync tab bar changes with content.
 
 **Figure 10** Unlinked Content and Tabs
 
 ![tab-10](figures/tab-10.gif)
+
+Use Tabs' onChange event to monitor index changes and update currentIndex for tab synchronization.
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -243,29 +253,29 @@ public class EntryView {
 
     func build() {
         Column() {
-            Tabs(BarPosition.End){
+            Tabs(barPosition: BarPosition.End){
                 TabContent(){
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("Home", 0)
-                }).backgroundColor(Color.GREEN)
+                }).backgroundColor(Color.Green)
                 TabContent() {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("Discover", 1)
-                }).backgroundColor(Color.YELLOW)
+                }).backgroundColor(Color(0xFFFF00))
                 TabContent() {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("Recommend", 2)
-                }).backgroundColor(Color.PINK)
+                }).backgroundColor(0xFEC0CD)
                 TabContent() {
                     // ...
                 }.tabBar({ =>
                     bind(this.tabBuilder, this)("Mine", 3)
-                }).backgroundColor(Color.BLUE)
+                }).backgroundColor(Color.Blue)
             }
-            .animationDuration(0)
+            .animationDuration(0.0)
             .backgroundColor(0xF1F3F5)
             .onChange({index =>
                 this.currentIndex = index
@@ -275,29 +285,12 @@ public class EntryView {
 }
 ```
 
-**Figure 11** Linked Content and Tabs![tab-11](figures/tab-11.gif)
+**Figure 11** Linked Content and Tabs
 
-To achieve content and tab switching without sliding the content page or clicking the tab, you can pass the `currentIndex` to the `index` parameter of the `Tabs` component. By modifying `currentIndex`, you can jump to the `TabContent` corresponding to the specified index value. Alternatively, you can use `TabsController`, which serves as the controller for the `Tabs` component, enabling control over content switching. The `changeIndex` method of `TabsController` can be used to navigate to the `TabContent` associated with the specified index.
+![tab-11](figures/tab-11.gif)
 
-**Figure 12** Switching to a Specified Tab
+To switch tabs without swiping or clicking, pass currentIndex to Tabs' index parameter or use TabsController. TabsController manages Tabs component switching via its changeIndex method.
+
+**Figure 12** Switching to Specific Tab
 
 ![tab-12](figures/tab-12.gif)
-
-Developers can utilize the `onContentWillChange` interface of the `Tabs` component to set a custom interception callback function. This callback function is triggered when the next page is about to be displayed. If the callback returns `true`, the new page will be displayed; if it returns `false`, the new page will not be shown, and the original page will remain visible.
-
-```cangjie
-Tabs(BarPosition.End, this.controller, this.currentIndex){
-  // ...
-}
-.onContentWillChange({currentIndex, commingIndex =>
-    if (commingIndex == 2) {
-        return false
-    } else {
-        return true
-    }
-})
-```
-
-**Figure 13** Supporting Custom Page Switching Interception Events
-
-![tab-13](figures/tab-13.gif)

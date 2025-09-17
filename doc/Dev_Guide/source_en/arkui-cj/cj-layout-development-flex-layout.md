@@ -1,32 +1,32 @@
-# Flexible Layout (Flex)
+# Flex Layout (Flex)
 
 ## Overview
 
-The Flexible Layout ([Flex](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-flex.md)) provides a more efficient way to arrange, align, and distribute remaining space among child elements within a container. It is commonly used for uniform distribution of navigation bars in page headers, building page frameworks, and arranging multi-line data.
+Flex layout ([Flex](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-flex.md)) provides a more efficient way to arrange, align, and distribute remaining space among child elements within a container. It is commonly used for evenly distributing navigation bars in page headers, constructing page frameworks, and arranging multi-line data.
 
-By default, a container has a main axis and a cross axis. Child elements are arranged along the main axis by default. The size of a child element along the main axis is referred to as the main axis size, while the size along the cross axis is called the cross axis size.
+By default, a container has a main axis and a cross axis. Child elements are arranged along the main axis by default. The size of a child element along the main axis is called the main axis size, and the size along the cross axis is called the cross axis size.
 
-**Figure 1** Schematic diagram of a Flex container with a horizontal main axis
+**Figure 1** Flex container with horizontal main axis
 
 ![flex-layout](figures/flex-layout.png)
 
 ## Basic Concepts
 
-- **Main Axis**: The axis along which Flex components are laid out, with child elements arranged along this axis by default. The starting position of the main axis is called the main start, and the ending position is called the main end.
+- **Main Axis**: The axis along which Flex components are laid out. Child elements are arranged along the main axis by default. The starting position of the main axis is called the main start, and the ending position is called the main end.
 
 - **Cross Axis**: The axis perpendicular to the main axis. The starting position of the cross axis is called the cross start, and the ending position is called the cross end.
 
 ## Layout Direction
 
-In flexible layouts, child elements within a container can be arranged in any direction. By setting the `direction` parameter, the main axis direction can be determined, thereby controlling the arrangement direction of child elements.
+In flex layout, child elements within a container can be arranged in any direction. By setting the `direction` parameter, you can determine the direction of the main axis, thereby controlling the arrangement direction of child elements.
 
-The flexible layout direction is illustrated below:
+The flex layout direction is illustrated below:
 
 ![flex-layout-direction](figures/flex-layout-direction.png)
 
 - **FlexDirection.Row** (default): The main axis is horizontal, and child elements are arranged from the start along the horizontal direction.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -37,7 +37,7 @@ The flexible layout direction is illustrated below:
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Row)) {
+            Flex(direction: FlexDirection.Row) {
                 Text('1')
                     .width(33.percent)
                     .height(50)
@@ -63,7 +63,7 @@ The flexible layout direction is illustrated below:
 
 - **FlexDirection.RowReverse**: The main axis is horizontal, and child elements are arranged from the end in the opposite direction of `FlexDirection.Row`.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -74,7 +74,7 @@ The flexible layout direction is illustrated below:
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.RowReverse)) {
+            Flex(direction: FlexDirection.RowReverse) {
                 Text('3')
                     .width(33.percent)
                     .height(50)
@@ -100,7 +100,7 @@ The flexible layout direction is illustrated below:
 
 - **FlexDirection.Column**: The main axis is vertical, and child elements are arranged from the start along the vertical direction.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -111,7 +111,7 @@ The flexible layout direction is illustrated below:
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Column)) {
+            Flex(direction: FlexDirection.Column) {
                 Text('1')
                     .width(100.percent)
                     .height(50)
@@ -137,7 +137,7 @@ The flexible layout direction is illustrated below:
 
 - **FlexDirection.ColumnReverse**: The main axis is vertical, and child elements are arranged from the end in the opposite direction of `FlexDirection.Column`.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -148,7 +148,7 @@ The flexible layout direction is illustrated below:
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.ColumnReverse)) {
+            Flex(direction: FlexDirection.ColumnReverse) {
                 Text('1')
                     .width(100.percent)
                     .height(50)
@@ -174,11 +174,11 @@ The flexible layout direction is illustrated below:
 
 ## Layout Wrapping
 
-Flexible layouts can be single-line or multi-line. By default, all child elements in a Flex container are placed on a single line (also called the "axis"). The `wrap` property controls whether the Flex layout is single-line or multi-line when the sum of the child elements' main axis sizes exceeds the container's main axis size. In multi-line layouts, the cross axis direction determines the arrangement direction of new lines.
+Flex layout can be single-line or multi-line. By default, all child elements in a Flex container are arranged on a single line (also called the "axis"). The `wrap` property controls whether the Flex layout is single-line or multi-line when the sum of the main axis sizes of child elements exceeds the main axis size of the container. In multi-line layout, the direction of new lines is determined by the cross axis.
 
-- **FlexWrap.NoWrap** (default): No wrapping. If the total width of child elements exceeds the parent's width, the child elements' widths will be compressed.
+- **FlexWrap.NoWrap** (default): No wrapping. If the total width of child elements exceeds the parent's width, the child elements will be compressed.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -189,7 +189,7 @@ Flexible layouts can be single-line or multi-line. By default, all child element
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.NoWrap)) {
+            Flex(wrap: FlexWrap.NoWrap) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -212,9 +212,9 @@ Flexible layouts can be single-line or multi-line. By default, all child element
 
     ![Flex3](figures/Flex3.png)
 
-- **FlexWrap.Wrap**: Wrapping enabled. Each line of child elements is arranged along the main axis direction.
+- **FlexWrap.Wrap**: Wrapping enabled. Each line of child elements is arranged along the main axis.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -225,7 +225,7 @@ Flexible layouts can be single-line or multi-line. By default, all child element
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.Wrap)) {
+            Flex(wrap: FlexWrap.Wrap) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -250,7 +250,7 @@ Flexible layouts can be single-line or multi-line. By default, all child element
 
 - **FlexWrap.WrapReverse**: Wrapping enabled. Each line of child elements is arranged in the opposite direction of the main axis.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -261,7 +261,7 @@ Flexible layouts can be single-line or multi-line. By default, all child element
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(wrap: FlexWrap.WrapReverse)) {
+            Flex(wrap: FlexWrap.WrapReverse) {
                 Text('1')
                     .width(50.percent)
                     .height(50)
@@ -286,23 +286,24 @@ Flexible layouts can be single-line or multi-line. By default, all child element
 
 ## Main Axis Alignment
 
-The `justifyContent` parameter sets the alignment of child elements along the main axis.
+Use the `justifyContent` parameter to set the alignment of child elements along the main axis.
 
 ![flex-spindle-alignment](figures/flex-spindle-alignment.png)
 
-- **FlexAlign.Start** (default): Child elements are aligned at the start of the main axis. The first child element aligns with the parent's edge, and subsequent elements align with the previous one.
+- **FlexAlign.Start** (default): Child elements are aligned to the start of the main axis. The first child element aligns with the parent's edge, and other elements align with the previous element.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
     import kit.ArkUI.*
     import ohos.arkui.state_macro_manage.*
+
     @Entry
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.Start)) {
+            Flex(justifyContent: FlexAlign.Start) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -325,9 +326,9 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
 
     ![Flex6](figures/Flex6.png)
 
-- FlexAlign.Center: Child elements are center-aligned along the main axis.
+- **FlexAlign.Center**: Child elements are centered along the main axis.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -338,7 +339,7 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.Center)) {
+            Flex(justifyContent: FlexAlign.Center) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -354,6 +355,7 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
             }
             .width(90.percent)
             .padding(top: 10, bottom: 10)
+    .padding(top: 10, bottom: 10)
             .backgroundColor(0xAFEEEE)
         }
     }
@@ -361,9 +363,9 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
 
     ![Flex7](figures/Flex7.png)
 
-- FlexAlign.End: Child elements are aligned to the end of the main axis, with the last child element aligned to the parent's edge and other elements aligned to the subsequent element.
+- **FlexAlign.End**: Child elements are aligned to the end of the main axis. The last child element aligns with the parent's edge, and other elements align with the next element.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -374,7 +376,7 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.End)) {
+            Flex(justifyContent: FlexAlign.End) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -397,9 +399,9 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
 
     ![Flex8](figures/Flex8.png)
 
-- FlexAlign.SpaceBetween: Flex items are evenly distributed along the main axis, with equal spacing between adjacent child elements. The first and last child elements are aligned to the parent's edges.
+- **FlexAlign.SpaceBetween**: Child elements are evenly distributed along the main axis, with equal spacing between adjacent elements. The first and last elements align with the parent's edges.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -410,7 +412,7 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -433,9 +435,9 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
 
     ![Flex9](figures/Flex9.png)
 
-- FlexAlign.SpaceAround: Flex items are evenly distributed along the main axis with equal spacing between adjacent child elements. The distance from the first child to the main axis start and the last child to the main axis end is half the spacing between adjacent elements.
+- **FlexAlign.SpaceAround**: Child elements are evenly distributed along the main axis, with equal spacing between adjacent elements. The spacing between the first element and the main start, and the last element and the main end, is half the spacing between adjacent elements.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -446,7 +448,7 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceAround)) {
+            Flex(justifyContent: FlexAlign.SpaceAround) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -469,9 +471,9 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
 
     ![Flex11](figures/Flex11.png)
 
-- FlexAlign.SpaceEvenly: Flex items are distributed with equal spacing along the main axis, where the spacing between adjacent child elements, the first child to the main axis start, and the last child to the main axis end are all equal.
+- **FlexAlign.SpaceEvenly**: Child elements are evenly distributed along the main axis, with equal spacing between adjacent elements, between the first element and the main start, and between the last element and the main end.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -482,7 +484,7 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceEvenly)) {
+            Flex(justifyContent: FlexAlign.SpaceEvenly) {
                 Text('1')
                     .width(20.percent)
                     .height(50)
@@ -503,19 +505,17 @@ The `justifyContent` parameter sets the alignment of child elements along the ma
     }
     ```
 
-    ![Flex12](figures/Flex12.png)
+    ![Flex12](figures/Flex12.png)## Cross-Axis Alignment
 
-## Cross-Axis Alignment Methods
-
-Both container and child elements can set cross-axis alignment, with child element settings taking higher priority.
+Both containers and child elements can set cross-axis alignment, with child element alignment settings taking higher priority.
 
 ### Container Component Cross-Axis Alignment
 
-The cross-axis alignment of child elements can be set via the `alignItems` parameter of the Flex component.
+The `alignItems` parameter of the Flex component can be used to set the cross-axis alignment of child elements.
 
-- ItemAlign.Auto: Uses the default configuration in the Flex container.
+- `ItemAlign.Auto`: Uses the default configuration in the Flex container.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -526,7 +526,7 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Auto)) {
+            Flex(alignItems: ItemAlign.Auto) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -549,9 +549,9 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
 
     ![Flex13](figures/Flex13.png)
 
-- ItemAlign.Start: Aligns to the start of the cross-axis.
+- `ItemAlign.Start`: Aligns to the start of the cross-axis direction.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -562,7 +562,7 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Start)) {
+            Flex(alignItems: ItemAlign.Start) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -585,45 +585,9 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
 
     ![Flex14](figures/Flex14.png)
 
-- ItemAlign.Center: Center-aligns along the cross-axis.
+- `ItemAlign.Center`: Centers alignment along the cross-axis direction.
 
-         <!-- run -->
-
-    ```cangjie
-    package ohos_app_cangjie_entry
-    import kit.ArkUI.*
-    import ohos.arkui.state_macro_manage.*
-
-    @Entry
-    @Component
-    class EntryView {
-        func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Center)) {
-                Text('1')
-                    .width(33.percent)
-                    .height(30)
-                    .backgroundColor(0xF5DEB3)
-                Text('2')
-                    .width(33.percent)
-                    .height(40)
-                    .backgroundColor(0xD2B48C)
-                Text('3')
-                    .width(33.percent)
-                    .height(50)
-                    .backgroundColor(0xF5DEB3)
-            }
-            .size(width: 90.percent, height: 80)
-            .padding(10)
-            .backgroundColor(0xAFEEEE)
-        }
-    }
-    ```
-
-    ![Flex14](figures/Flex14.png)
-
-- ItemAlign.Center：Align centered in the cross-axis direction.
-
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -634,7 +598,7 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Center)) {
+            Flex(alignItems: ItemAlign.Center) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -657,9 +621,9 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
 
     ![Flex15](figures/Flex15.png)
 
-- ItemAlign.End: Aligns items to the end of the cross axis.
+- `ItemAlign.End`: Aligns to the end of the cross-axis direction.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -670,7 +634,7 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.End)) {
+            Flex(alignItems: ItemAlign.End) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -693,9 +657,9 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
 
     ![Flex16](figures/Flex16.png)
 
-- ItemAlign.Stretch: Stretches items to fill the cross axis. When dimensions are not set, items stretch to container size.
+- `ItemAlign.Stretch`: Stretches to fill the cross-axis direction, expanding to container size when dimensions are not set.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -706,7 +670,7 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Stretch)) {
+            Flex(alignItems: ItemAlign.Stretch) {
                 Text('1')
                     .width(33.percent)
                     .backgroundColor(0xF5DEB3)
@@ -726,9 +690,9 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
 
     ![Flex17](figures/Flex17.png)
 
-- ItemAlign.Baseline: Aligns items to the text baseline in the cross axis.
+- `ItemAlign.Baseline`: Aligns text baselines along the cross-axis direction.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -739,7 +703,7 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(alignItems: ItemAlign.Baseline)) {
+            Flex(alignItems: ItemAlign.Baseline) {
                 Text('1')
                     .width(33.percent)
                     .height(30)
@@ -762,9 +726,9 @@ The cross-axis alignment of child elements can be set via the `alignItems` param
 
     ![Flex18](figures/Flex18.png)
 
-### Setting Cross Axis Alignment for Child Elements
+### Child Element Cross-Axis Alignment
 
-The [alignSelf](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-alignselfitemalign) attribute of child elements can also set their alignment format in the parent container's cross axis, which will override the alignItems configuration in the Flex container. As shown in the following example:
+The [`alignSelf`](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-alignselfitemalign) attribute of child elements can also set their alignment format along the parent container's cross-axis, overriding the `alignItems` configuration in the Flex layout container. As shown in the following example:
 
  <!-- run -->
 
@@ -777,7 +741,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, alignItems: ItemAlign.Center)) { // Container sets child elements to center
+        Flex(direction: FlexDirection.Row, alignItems: ItemAlign.Center) { // Container sets child elements to center
             Text('alignSelf Start')
                 .width(25.percent)
                 .height(80)
@@ -811,15 +775,15 @@ class EntryView {
 
 ![Flex19](figures/Flex19.png)
 
-In the above example, the Flex container sets alignItems to center child elements along the cross axis. When child elements have their own alignSelf attributes, they override the parent's alignItems value and display according to alignSelf definitions.
+In the above example, the `alignItems` in the Flex container sets the cross-axis alignment of child elements to center. When child elements have their own `alignSelf` attributes, they override the parent component's `alignItems` value, displaying as defined by `alignSelf`.
 
 ### Content Alignment
 
-The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-flex.md#var-aligncontent) parameter can set the alignment of child element rows within the remaining space of the cross axis. This only takes effect in multi-line Flex layouts. Available options include:
+The [`alignContent`](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-flex.md#var-aligncontent) parameter can be used to set the alignment of child element rows within the remaining space of the cross-axis. This only takes effect in multi-line Flex layouts. Optional values include:
 
-- FlexAlign.Start: Aligns child element rows to the start of the cross axis.
+- `FlexAlign.Start`: Aligns child element rows to the start of the cross-axis.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -830,7 +794,7 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Start)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Start) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -861,9 +825,9 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
 
     ![Flex20](figures/Flex20.png)
 
-- FlexAlign.Center: Centers child element rows along the cross axis.
+- `FlexAlign.Center`: Centers child element rows along the cross-axis direction.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -874,7 +838,7 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.Center)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Center) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -905,9 +869,9 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
 
     ![Flex21](figures/Flex21.png)
 
-- FlexAlign.End: Aligns child element rows to the end of the cross axis.
+- `FlexAlign.End`: Aligns child element rows to the end of the cross-axis.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -918,7 +882,7 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.End)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -949,9 +913,9 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
 
     ![Flex22](figures/Flex22.png)
 
-- FlexAlign.SpaceBetween: Align child elements to both ends of the cross axis with equal vertical spacing between rows.
+- `FlexAlign.SpaceBetween`: Aligns child element rows to both ends of the cross-axis, with equal vertical spacing between rows.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -962,7 +926,7 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceBetween)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -993,9 +957,9 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
 
     ![Flex23](figures/Flex23.png)
 
-- FlexAlign.SpaceAround: Equal spacing between child element rows, with twice the distance from the first/last row to the cross axis ends.
+- `FlexAlign.SpaceAround`: Equal spacing between child element rows, with twice the distance between the first/last row and the cross-axis ends.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1006,7 +970,7 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceAround)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceAround) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -1037,9 +1001,9 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
 
     ![Flex24](figures/Flex24.png)
 
-- FlexAlign.SpaceEvenly: Equal spacing between child element rows, with equal distance from first/last rows to cross axis ends.
+- `FlexAlign.SpaceEvenly`: Equal spacing between all child element rows, including the distance between the first/last row and the cross-axis ends.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1050,7 +1014,7 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap,    alignContent: FlexAlign.SpaceEvenly)) {
+            Flex(justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceEvenly) {
                 Text('1')
                     .width(30.percent)
                     .height(20)
@@ -1079,15 +1043,13 @@ The [alignContent](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-st
     }
     ```
 
-    ![Flex25](figures/Flex25.png)
+    ![Flex25](figures/Flex25.png)## Adaptive Stretching
 
-## Adaptive Stretching
+When the size of the flex layout parent component is too small, the following properties of child elements can be set to determine their proportion within the parent container, achieving an adaptive layout.
 
-When the parent container size is too small in flex layout, use the following child element properties to set their proportion in the parent container for adaptive layout.
+- [flexBasis](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexbasislength): Sets the base size of the child element along the main axis of the parent container. If this property is set, the space occupied by the child element will be the value specified by this property. If not set, the space will be determined by the width/height value.
 
-- [flexBasis](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexbasislength): Sets the base size of child elements along the main axis of the parent container. If set, the child occupies space equal to this value; otherwise, it uses width/height values.
-
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1100,23 +1062,23 @@ When the parent container size is too small in flex layout, use the following ch
         func build() {
             Flex() {
                 Text('flexBasis("auto")')
-                    .flexBasis(0) // No width set and flexBasis=0: uses content width
+                    .flexBasis(0) // If width is not set and flexBasis is 0, the width is determined by the content itself
                     .height(100)
                     .backgroundColor(0xF5DEB3)
                 Text('flexBasis("auto")' + ' width("40%")')
                     .width(40.percent)
-                    .flexBasis(0) // Width set and flexBasis=0: uses width value
+                    .flexBasis(0) // If width is set and flexBasis is 0, the width value is used
                     .height(100)
                     .backgroundColor(0xD2B48C)
 
-                Text('flexBasis(100)') // No width set and flexBasis=100: width=100vp
+                Text('flexBasis(100)') // If width is not set and flexBasis is 100, the width is 100.vp
                     .flexBasis(100)
                     .height(100)
                     .backgroundColor(0xF5DEB3)
 
                 Text('flexBasis(100)')
                     .flexBasis(100)
-                    .width(200) // flexBasis=100 overrides width setting: width=100vp
+                    .width(200) // If flexBasis is 100, it overrides the width setting, and the width becomes 100.vp
                     .height(100)
                     .backgroundColor(0xD2B48C)
             }
@@ -1130,9 +1092,9 @@ When the parent container size is too small in flex layout, use the following ch
 
     ![Flex26](figures/Flex26.png)
 
-- [flexGrow](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexgrowfloat64): Sets the proportion of remaining parent container space allocated to this component. Used for distributing remaining space.
+- [flexGrow](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexgrowfloat64): Sets the proportion of the parent container's remaining space allocated to the component with this property. Used to distribute the remaining space of the parent component.
 
-         <!-- run -->
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1170,11 +1132,13 @@ When the parent container size is too small in flex layout, use the following ch
 
     ![Flex27](figures/Flex27.png)
 
-    Parent container width=420vp, three child elements with original width=100vp, padding=20vp, total=320vp. Remaining 100vp space is allocated according to flexGrow ratio (2:3). First element: 100vp + (100vp × 2/5) = 140vp, second element: 100vp + (100vp × 3/5) = 160vp.
+    The parent container width is 420.vp, and the original widths of the three child elements are 100.vp each, with left and right padding totaling 20.vp. The total width is 320.vp, leaving 100.vp of remaining space. This remaining space is distributed among the child elements based on the flexGrow ratio. Child elements without flexGrow set do not participate in the distribution.
 
-- [flexShrink](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64): Compression ratio of child elements when parent container space is insufficient.
+    The first and second elements distribute the remaining 100.vp in a 2:3 ratio. The first element's width becomes 100.vp + (100.vp * 2/5) = 140.vp, and the second element's width becomes 100.vp + (100.vp * 3/5) = 160.vp.
 
-         <!-- run -->
+- [flexShrink](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64): Sets the compression ratio of child elements when the parent container has insufficient space.
+
+    <!-- run -->
 
     ```cangjie
     package ohos_app_cangjie_entry
@@ -1185,7 +1149,7 @@ When the parent container size is too small in flex layout, use the following ch
     @Component
     class EntryView {
         func build() {
-            Flex(FlexParams(direction: FlexDirection.Row)) {
+            Flex(direction: FlexDirection.Row) {
                 Text('flexShrink(3)')
                     .flexShrink(3)
                     .width(200)
@@ -1215,7 +1179,7 @@ When the parent container size is too small in flex layout, use the following ch
 
 ## Usage Example
 
-Using flex layout to achieve horizontal alignment with justified ends, equal spacing between child elements, and vertical centering.
+Using flex layout, you can achieve the following effects: child elements arranged horizontally, justified at both ends, with equal spacing between them, and centered vertically.
 
  <!-- run -->
 
@@ -1229,31 +1193,31 @@ import ohos.arkui.state_macro_manage.*
 class EntryView {
     func build() {
         Column() {
-            Column(5) {
+            Column(space: 5) {
                 Flex(
-FlexParams(direction: FlexDirection.Row, wrap: FlexWrap.NoWrap,
-    justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center)) {
-    Text('1')
-        .width(30.percent)
-        .height(50)
-        .backgroundColor(0xF5DEB3)
-    Text('2')
-        .width(30.percent)
-        .height(50)
-        .backgroundColor(0xD2B48C)
-    Text('3')
-        .width(30.percent)
-        .height(50)
-        .backgroundColor(0xF5DEB3)
-}
-.height(70)
-.width(90.percent)
-.backgroundColor(0xAFEEEE)
-}
-.width(100.percent)
-.margin(top: 5)
-}.width(100.percent)
-}
+                    direction: FlexDirection.Row, wrap: FlexWrap.NoWrap,
+                        justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center) {
+                    Text('1')
+                        .width(30.percent)
+                        .height(50)
+                        .backgroundColor(0xF5DEB3)
+                    Text('2')
+                        .width(30.percent)
+                        .height(50)
+                        .backgroundColor(0xD2B48C)
+                    Text('3')
+                        .width(30.percent)
+                        .height(50)
+                        .backgroundColor(0xF5DEB3)
+                }
+                .height(70)
+                .width(90.percent)
+                .backgroundColor(0xAFEEEE)
+            }
+            .width(100.percent)
+            .margin(top: 5)
+        }.width(100.percent)
+    }
 }
 ```
 

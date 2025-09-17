@@ -6,7 +6,7 @@ The complete process for obtaining video thumbnails includes: creating an AVImag
 
 ## Development Steps and Precautions
 
-For detailed API documentation, refer to [AVImageGenerator API Reference](../../../../API_Reference/source_zh_cn/apis/MediaKit/cj-apis-multimedia_media.md#class-avimagegenerator).
+For detailed API documentation, refer to [AVImageGenerator API Reference](../../../../API_Reference/source_en/apis/MediaKit/cj-apis-multimedia_media.md#class-avimagegenerator).
 
 1. Create an instance using createAVImageGenerator().
 
@@ -16,11 +16,11 @@ For detailed API documentation, refer to [AVImageGenerator API Reference](../../
    >
    > Developers should verify resource validity and set fdSrc according to actual scenarios:
    >
-   > - You can use ResourceManager.getRawFd to open HAP resource file descriptors. For usage, see [ResourceManager API Reference](../../../../API_Reference/source_zh_cn/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring).
+   > - You can use ResourceManager.getRawFd to open HAP resource file descriptors. For usage, see [ResourceManager API Reference](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring).
    >
    > - Alternatively, you can access resources through application sandbox paths (must ensure resource files are available). See [Obtaining Application File Paths](../../file-management/cj-app-sandbox-directory.md#应用文件目录与应用文件路径). For sandbox introduction and file pushing methods, refer to [File Management](../../file-management/cj-app-sandbox-directory.md).
    >
-   > - When different AVImageGenerator or [AVMetadataExtractor](../../../../API_Reference/source_zh_cn/apis/MediaKit/cj-apis-multimedia_media.md#class-avmetadataextractor) instances need to operate on the same resource, open separate file descriptors rather than sharing one.
+   > - When different AVImageGenerator or [AVMetadataExtractor](../../../../API_Reference/source_en/apis/MediaKit/cj-apis-multimedia_media.md#class-avmetadataextractor) instances need to operate on the same resource, open separate file descriptors rather than sharing one.
 
 3. Retrieve frame at specified time: Call fetchFrameByTime() to obtain a PixelMap object, which can be used for image display.
 

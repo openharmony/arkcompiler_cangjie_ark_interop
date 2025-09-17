@@ -1,15 +1,15 @@
-# Key Generation and Conversion Introduction
+# Introduction to Key Generation and Conversion  
 
-The following scenarios often require key generation operations:
+The following scenarios frequently require key generation operations:  
 
-1. Randomly generate cryptographic library key objects. These objects can be used for subsequent encryption/decryption operations.
+1. Randomly generate a cryptographic library key object. This object can be used for subsequent operations such as encryption and decryption.  
 
-2. Generate cryptographic library key objects from specified data (i.e., converting external or stored binary data into cryptographic library key objects). These objects can be used for subsequent encryption/decryption operations.
+2. Generate a cryptographic library key object based on specified data (i.e., converting external or stored binary data into a cryptographic library key object). This object can be used for subsequent operations such as encryption and decryption.  
 
-3. Generate specified cryptographic library key objects based on key parameters. These objects can be used for subsequent encryption/decryption operations.
+3. Generate a specified cryptographic library key object based on key parameters. This object can be used for subsequent operations such as encryption and decryption.  
 
-4. Obtain binary data of cryptographic library key objects for storage or transmission.
+4. Obtain the binary data of a cryptographic library key object for storage or transmission.  
 
-5. For asymmetric keys, obtain parameter attributes of key objects for storage or transportation.
+5. For asymmetric keys, obtain the parameter attributes of the key object for storage or transmission.  
 
-Here, key objects (Key) include symmetric keys (SymKey) and asymmetric keys (public keys PubKey and private keys PriKey), where public and private keys together form a key pair (KeyPair).
+Here, the key object `Key` includes symmetric keys (`SymKey`) and asymmetric keys (public key `PubKey` and private key `PriKey`), where the public and private keys together form a key pair (`KeyPair`).

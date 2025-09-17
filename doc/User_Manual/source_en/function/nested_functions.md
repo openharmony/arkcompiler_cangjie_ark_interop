@@ -14,8 +14,8 @@ Functions defined at the top level of a source file are called global functions.
 **Usage Rules and Considerations**:
 
 - Use nested functions only within their corresponding outer functions.
-- Avoid excessive nesting. This can complicate code structure, making it difficult to understand and maintain. Therefore, avoid excessive nesting that leads to code confusion.
-- Be mindful of closure usage. If a nested function is returned and used as a closure, note that the closure may capture variables from the outer function, causing those variables to remain occupied even after the outer function completes, thereby affecting memory management.
+- Avoid excessive nesting. This can make the code structure complex and difficult to understand and maintain.
+- Be cautious with closures. If a nested function is returned and used as a closure, note that the closure may capture variables from the outer function, causing these variables to remain occupied even after the outer function completes, thereby affecting memory management.
 
 **Example**: The function `foo` defines a nested function `nestAdd` inside it. The nested function `nestAdd` can be called within `foo`, or it can be returned as a value to be called outside `foo`:
 

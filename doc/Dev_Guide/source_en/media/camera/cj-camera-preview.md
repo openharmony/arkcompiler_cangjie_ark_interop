@@ -2,29 +2,32 @@
 
 When developing a camera application, you need to first refer to the [Development Preparation](./cj-camera-preparation.md) to apply for relevant permissions.
 
-Preview refers to the live view displayed after starting the camera, typically executed before taking photos or recording videos.
+The preview is the live view displayed after launching the camera, typically executed before taking photos or recording videos.
 
 ## Development Steps
 
-For detailed API documentation, please refer to the [Camera API Reference](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md).
+For detailed API documentation, please refer to the [Camera API Reference](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md).
 
-1. Import the camera interfaces, which provide camera-related properties and methods. The import method is as follows:
+1. Import the camera interface, which provides camera-related properties and methods. The import method is as follows:
 
     <!-- compile -->
 
     ```cangjie
     import kit.CameraKit.*
-    import kit.BasicServicesKit.*
+    import ohos.hilog.Hilog
+    import ohos.callback_invoke.Callback0Argument
+    import ohos.business_exception.BusinessException
     ```
 
 2. Create a Surface.
 
-    The XComponent provides the Surface for the preview stream (to obtain the surfaceId, see [getXcomponentSurfaceId](../../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-xcomponent.md)). The capabilities of XComponent are provided by the UI. For more details, refer to [XComponent Reference](../../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-xcomponent.md).
+    The XComponent provides the Surface for the preview stream, while the XComponent's capabilities are provided by the UI.
 
     > **Note:**
-    > The aspect ratio of the preview stream and the video output stream resolutions must remain consistent. If the Surface display area aspect ratio in the XComponent is set to 1920:1080 (16:9), the preview stream resolution must also maintain a 16:9 aspect ratio, such as 640:360, 960:540, or 1920:1080, and so on.
+    >
+    > The aspect ratio of the preview stream resolution must match that of the video output stream. If the Surface display area aspect ratio in the XComponent is set to 1920:1080 (16:9), then the preview stream resolution must also maintain a 16:9 aspect ratio, such as 640:360, 960:540, or 1920:1080, and so on.
 
-3. Use the `previewProfiles` property in the [CameraOutputCapability](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability) class to obtain the supported preview capabilities of the current device, which returns a `previewProfilesArray`. Then, use the [createPreviewOutput](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string) method to create a preview output stream. The two parameters of this method are the first item in the `previewProfilesArray` and the `surfaceId` obtained in Step 2.
+3. Use the `previewProfiles` property in the [CameraOutputCapability](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability) class to obtain the device's supported preview capabilities, which returns a `previewProfilesArray`. Then create a preview output stream using the [createPreviewOutput](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string) method. The two parameters for this method are the first item in the `previewProfilesArray` and the `surfaceId` obtained in Step 2.
 
     <!-- compile -->
 
@@ -36,7 +39,7 @@ For detailed API documentation, please refer to the [Camera API Reference](../..
     }
     ```
 
-4. Enable the preview. Use the [Session.start](../../../../API_Reference/source_zh_cn/apis/CameraKit/cj-apis-multimedia-camera.md#func-start) method to output the preview stream. If the API call fails, it returns an error code. For error code types, refer to [Camera Error Codes](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-multimedia-camera.md).
+4. Enable the preview. Use the [Session.start](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-start) method to output the preview stream. If the API call fails, it will return an error code. For error code types, refer to [Camera Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md).
 
     <!-- compile -->
 
@@ -44,14 +47,14 @@ For detailed API documentation, please refer to the [Camera API Reference](../..
     func startPreviewOutput(cameraManager: CameraManager, previewOutput: PreviewOutput): Unit {
         let cameraArray: Array<CameraDevice> = cameraManager.getSupportedCameras()
         if (cameraArray.size == 0) {
-            AppLog.error('no camera.')
+            Hilog.error(0,"",'no camera.')
             return
         }
         // Get supported scene modes.
         let sceneModes: Array<SceneMode> = cameraManager.getSupportedSceneModes(cameraArray[0])
         let isSupportPhotoMode: Bool = sceneModes.indexOf(SceneMode.NormalPhoto).isSome()
         if (!isSupportPhotoMode) {
-            AppLog.error('photo mode not support')
+            Hilog.error(0,"",'photo mode not support')
             return
         }
         let cameraInput: CameraInput = cameraManager.createCameraInput(cameraArray[0])
@@ -76,8 +79,8 @@ During camera application development, you can monitor the preview output stream
 
     ```cangjie
     class FrameStartCallBack <: Callback0Argument {
-        public open func invoke(): Unit {
-            AppLog.info("Preview frame started")
+        public open func invoke(error:?BusinessException): Unit {
+            Hilog.info(0,"","Preview frame started")
         }
     }
 
@@ -92,8 +95,8 @@ During camera application development, you can monitor the preview output stream
 
     ```cangjie
     class FrameEndCallBack <: Callback0Argument {
-        public open func invoke(): Unit {
-            AppLog.info("Preview frame ended")
+        public open func invoke(error:?BusinessException): Unit {
+            Hilog.info(0,"","Preview frame ended")
         }
     }
 
@@ -102,14 +105,16 @@ During camera application development, you can monitor the preview output stream
     }
     ```
 
-- Register a fixed `error` callback function to monitor preview output errors. The callback returns the error code corresponding to issues encountered during preview output usage. For error code types, refer to [Camera Error Codes](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-multimedia-camera.md).
+- Register a fixed `error` callback function to monitor preview output errors. The callback returns the corresponding error code when an error occurs in the preview output API. For error code types, refer to [Camera Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md).
 
     <!-- compile -->
 
     ```cangjie
-    class ErrorCallBack <: Callback1Argument<BusinessException> {
-        public open func invoke(error: BusinessException): Unit {
-            AppLog.error("Preview output error code: ${error.code}")
+    class ErrorCallBack <: Callback0Argument {
+        public open func invoke(error:?BusinessException): Unit {
+            if (let Some(e) <- error) {
+                Hilog.error(0,"","Preview output error code: ${e.code}","")
+            }
         }
     }
 

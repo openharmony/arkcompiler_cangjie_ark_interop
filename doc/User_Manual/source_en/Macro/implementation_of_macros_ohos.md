@@ -1,6 +1,6 @@
-# Macro Implementation
+# Implementation of Macros
 
-This chapter introduces the definition and usage of Cangjie macros, which can be categorized into [Non-attribute Macros](./implementation_of_macros_ohos.md#non-attribute-macros) and [Attribute Macros](./implementation_of_macros_ohos.md#attribute-macros). Additionally, this chapter will cover the behavior when macros are nested.
+This chapter introduces the definition and usage of Cangjie macros, which can be divided into [Non-attribute Macros](./implementation_of_macros_ohos.md#non-attribute-macros) and [Attribute Macros](./implementation_of_macros_ohos.md#attribute-macros). Additionally, this chapter will cover the behavior when macros are nested.
 
 ## Non-attribute Macros
 
@@ -14,7 +14,7 @@ public macro MacroName(args: Tokens): Tokens {
 }
 ```
 
-The macro invocation format is as follows:
+The macro invocation format is:
 
 ```cangjie
 @MacroName(...)
@@ -111,19 +111,19 @@ Below are some typical examples of macro applications.
 
   The compilation process for the above code can be referred to in [Macro Compilation and Usage](./compiling_error_reporting_and_debugging_ohos.md#macro-compilation-and-usage).
 
-  Print statements have been added to the example. The `I'm in macro body` in the macro definition will be output during the compilation of `macro_call.cj`. Meanwhile, the macro invocation point is expanded. For example, compiling the following code:
+  Print statements are added in the example, where `I'm in macro body` in the macro definition will be output during the compilation of `macro_call.cj`. The macro invocation point is expanded, as shown in the following code:
 
   ```cangjie
   let a: Int64 = @testDef(1 + 2)
   ```
 
-  The compiler updates the syntax tree at the invocation point with the `Tokens` returned by the macro, resulting in the following code:
+  The compiler updates the syntax tree at the invocation point with the `Tokens` returned by the macro, resulting in:
 
   ```cangjie
   let a: Int64 = 1 + 2
   ```
 
-  In other words, the actual code in the executable becomes:
+  Thus, the actual code in the executable becomes:
 
   ```cangjie
   main(): Int64 {
@@ -134,7 +134,7 @@ Below are some typical examples of macro applications.
   }
   ```
 
-  The value of `a` is computed as 3, and when printing `a`, the interpolated value is 3. Thus, the output of the above program is:
+  The value of `a` is computed as 3, and when printed, it interpolates to 3. The output of the program is:
 
   <!-- verify -macro6 -->
 
@@ -143,7 +143,7 @@ Below are some typical examples of macro applications.
   a = 3
   ```
 
-Below is a more meaningful example of using a macro to process a function. The `ModifyFunc` macro adds an `id` parameter to `myFunc` and inserts code before and after `counter++`.
+Here is a more meaningful example of using a macro to process a function. The `ModifyFunc` macro adds an `id` parameter to `myFunc` and inserts code before and after `counter++`.
 
 - Example 2
 
@@ -199,7 +199,7 @@ Below is a more meaningful example of using a macro to process a function. The `
   }
   ```
 
-  Similarly, the above two code segments are in different files. First, compile the macro definition file `macro_definition.cj`, then compile the macro invocation file `macro_call.cj` to generate the executable.
+  Similarly, the above code segments are in different files. First, compile the macro definition file `macro_definition.cj`, then compile the macro invocation file `macro_call.cj` to generate the executable.
 
   In this example, the `ModifyFunc` macro takes a function declaration as input, so the parentheses can be omitted:
 
@@ -220,7 +220,7 @@ Below is a more meaningful example of using a macro to process a function. The `
   }
   ```
 
-  `myFunc` is called in `main`, and the actual parameter it receives is also defined in `main`, forming a valid Cangjie program. The runtime output is:
+  `myFunc` is called in `main`, with the argument defined in `main`, forming a valid Cangjie program. The runtime output is:
 
   <!-- verify -macro7 -->
 
@@ -233,7 +233,7 @@ Below is a more meaningful example of using a macro to process a function. The `
 
 ## Attribute Macros
 
-Compared to non-attribute macros, attribute macros include an additional `Tokens` type input parameter. This extra parameter allows developers to input additional information. For example, developers might want to use different macro expansion strategies in different invocation scenarios, which can be achieved by setting flags via this attribute parameter. Additionally, this attribute parameter can accept any `Tokens`, which can be combined or concatenated with the code modified by the macro. Below is a simple example:
+Compared to non-attribute macros, attribute macros have an additional `Tokens` parameter, allowing developers to input extra information. For example, developers might want different expansion strategies for different invocation scenarios, which can be achieved through this attribute parameter. Additionally, this parameter can accept any `Tokens`, which can be combined or concatenated with the code being modified by the macro. Here is a simple example:
 
 <!-- run -macro72 -->
 <!-- cfg="--compile-macro" -->
@@ -247,9 +247,9 @@ public macro Foo(attrTokens: Tokens, inputTokens: Tokens): Tokens {
 }
 ```
 
-As shown in the macro definition above, an attribute macro has two parameters of type `Tokens`. Inside the macro definition, various transformations such as combination or concatenation can be performed on `attrTokens` and `inputTokens`, and the new `Tokens` is returned.
+As shown above, an attribute macro has two parameters of type `Tokens`. Inside the macro definition, `attrTokens` and `inputTokens` can be transformed, combined, or concatenated, and the resulting `Tokens` are returned.
 
-The invocation of an attribute macro is similar to that of a non-attribute macro. The additional `attrTokens` parameter is passed via `[]`, and the invocation form is:
+Attribute macros are invoked similarly to non-attribute macros, with the additional `attrTokens` passed in `[]`. The invocation format is:
 
 <!-- run -macro72 -->
 <!-- cfg="--debug-macro" -->
@@ -269,8 +269,8 @@ struct Data {
 main() {}
 ```
 
-- For the macro `Foo` invocation with parameter `2+3`, it is concatenated with the attribute `1+` inside `[]`. After macro expansion, the result is `var a: Int64 = 1+2+3`.
-- For the macro `Foo` invocation with parameter `struct Data`, it is concatenated with the attribute `public` inside `[]`. After macro expansion, the result is:
+- When the macro `Foo` is invoked with `2+3`, it is concatenated with the attribute `1+` inside `[]`. After expansion, the result is `var a: Int64 = 1+2+3`.
+- When the macro `Foo` is invoked with `struct Data`, it is concatenated with the attribute `public` inside `[]`. After expansion, the result is:
 
   ```cangjie
   public struct Data {
@@ -280,11 +280,11 @@ main() {}
 
 Regarding attribute macros, note the following:
 
-- Compared to non-attribute macros, attribute macros can modify the same AST nodes. Essentially, attribute macros enhance the parameters that can be passed in.
+- Attribute macros can modify the same AST nodes as non-attribute macros, effectively enhancing the input parameters.
 
-- The legality rules for parameters inside the parentheses of attribute macros are the same as those for non-attribute macros.
+- The legality rules for parameters inside parentheses in attribute macros are the same as those for non-attribute macros.
 
-- The legality rules for parameters (attributes) inside the square brackets of attribute macros have the following special notes:
+- Special notes on the legality of attribute parameters inside `[]`:
 
     - The input must be a sequence of valid `Token`s. Symbols like "#", "`", "\\", etc., when used alone, are not valid Cangjie `Token`s and are not supported as input values.
 
@@ -309,13 +309,13 @@ Regarding attribute macros, note the following:
     @MacroName[\@]()
     ```
 
-- The macro definition and invocation types must be consistent: If a macro definition has two parameters (i.e., an attribute macro definition), the invocation must include `[]`, and the content can be empty. If a macro definition has one parameter (i.e., a non-attribute macro definition), the invocation must not use `[]`.
+- The macro definition and invocation types must match: if a macro has two parameters (attribute macro), it must be invoked with `[]`, which can be empty; if a macro has one parameter (non-attribute macro), it cannot be invoked with `[]`.
 
 ## Nested Macros
 
-The Cangjie language does not support nested macro definitions but conditionally supports nested macro invocations within macro definitions and macro invocations.
+Cangjie does not support nested macro definitions but conditionally supports nested macro invocations within macro definitions and invocations.
 
-### Nested Macro Invocations in Macro Definitions
+### Macro Invocations in Macro Definitions
 
 Below is an example of a macro definition containing other macro invocations.
 
@@ -384,7 +384,7 @@ main() {
 }
 ```
 
-Note that, according to the constraint that macro definitions must be compiled before their invocation points, the compilation order for the above three files must be: `pkg1` -> `pkg2` -> `pkg3`. The `Prop` macro definition in `pkg2`:
+Note: Due to the constraint that macro definitions must be compiled before their invocation points, the compilation order for the above files must be: `pkg1` -> `pkg2` -> `pkg3`. The `Prop` macro definition in `pkg2`:
 
 ```cangjie
 public macro Prop(input:Tokens):Tokens {
@@ -421,7 +421,7 @@ public macro Prop(input: Tokens): Tokens {
         }
     )
 }
-```### Nested Macro Invocations within Macro Invocations
+```### Nested Macro Invocations within Macro Calls
 
 A common scenario for nested macros occurs when macro-decorated code blocks contain macro invocations. A concrete example is as follows:
 
@@ -499,9 +499,9 @@ main(): Int64 {
 }
 ```
 
-As shown in the code above, the `Foo` macro decorates `struct Data`, while within `struct Data`, macro invocations `addToMul` and `Bar` appear. In such nested scenarios, the code transformation rule is: expand the innermost macros (`addToMul` and `Bar`) first, then proceed to expand the outer macro (`Foo`). Multi-level macro nesting is allowed, and the code transformation rule always follows an inside-out expansion sequence.
+As shown in the code above, the `Foo` macro decorates `struct Data`, while within `struct Data`, macro invocations `addToMul` and `Bar` appear. In such nested scenarios, the code transformation rule is: expand the innermost macros (`addToMul` and `Bar`) first, then proceed to expand the outer macro (`Foo`). Multi-level macro nesting is allowed, and the code transformation always follows an inside-out expansion order.
 
-Nested macros can appear in both parenthesized and non-parenthesized macro invocations. These can be combined, but developers must ensure there is no ambiguity and clearly define the macro expansion order:
+Nested macros can appear in both parenthesized and non-parenthesized macro invocations, and these can be combined. However, developers must ensure there is no ambiguity and clearly define the macro expansion order:
 
 ```cangjie
 var a = @foo(@foo1(2 * 3)+@foo2(1 + 3))  // foo1, foo2 have to be defined.
@@ -520,7 +520,7 @@ struct Data{
 
 This refers to nested macro invocations.
 
-Inner macros can call the library function `assertParentContext` to ensure the inner macro invocation is nested within a specific outer macro invocation. If the inner macro calls this function without being nested in the given outer macro invocation, the function will throw an error. The library function `InsideParentContext` similarly checks whether an inner macro invocation is nested within a specific outer macro invocation, returning a boolean value. Below is a simple example.
+Inner macros can call the library function `assertParentContext` to ensure they are nested within a specific outer macro invocation. If the inner macro calls this function without being nested within the specified outer macro, the function will throw an error. The library function `InsideParentContext` similarly checks whether an inner macro invocation is nested within a specific outer macro, returning a boolean value. Below is a simple example.
 
 Macro definitions:
 
@@ -550,9 +550,9 @@ Macro invocations:
 @Inner var b = 0 // Error, The macro call 'Inner' should with the surround code contains a call 'Outer'.
 ```
 
-As shown in the code above, the `Inner` macro uses the `assertParentContext` function during definition to check whether its invocation is nested within the `Outer` macro. In the example's invocation scenario, since `Outer` and `Inner` do not exhibit such a nesting relationship during invocation, the compiler will report an error.
+As shown in the code above, the `Inner` macro uses the `assertParentContext` function during definition to check whether it is nested within the `Outer` macro during invocation. In the example, since `Outer` and `Inner` are not nested in the invocation, the compiler reports an error.
 
-Inner macros can also communicate with outer macros by sending key/value pairs. When an inner macro executes, it sends information to the outer macro by calling the standard library function `setItem`. Subsequently, when the outer macro executes, it calls the standard library function `getChildMessages` to receive the information sent by each inner macro (a set of key/value pair mappings). Below is a simple example.
+Inner macros can also communicate with outer macros by sending key/value pairs. When an inner macro executes, it sends information to the outer macro via the standard library function `setItem`. Later, when the outer macro executes, it receives the messages (a set of key/value mappings) from each inner macro by calling the standard library function `getChildMessages`. Below is a simple example.
 
 Macro definitions:
 
@@ -615,7 +615,7 @@ main(): Int64 {
 }
 ```
 
-In the code above, `Outer` receives variable names sent by two `Inner` macros and automatically adds the following content to the class:
+In the above code, `Outer` receives variable names sent by two `Inner` macros and automatically adds the following content to the class:
 
 ```cangjie
 public func getCnt() {
@@ -623,4 +623,4 @@ public func getCnt() {
 }
 ```
 
-The specific workflow is: the inner macro `Inner` sends information to the outer macro via `setItem`; the `Outer` macro receives a set of message objects (multiple `Inner` invocations can occur within `Outer`) via the `getChildMessages` function; finally, the values are retrieved using the `getString` function of the message objects.
+The specific workflow is: the inner macro `Inner` sends information to the outer macro via `setItem`; the `Outer` macro receives a set of message objects (multiple `Inner` invocations can occur within `Outer`) via the `getChildMessages` function; finally, the outer macro retrieves the corresponding values using the `getString` function of the message objects.

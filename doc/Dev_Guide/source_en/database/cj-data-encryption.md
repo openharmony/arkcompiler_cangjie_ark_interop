@@ -2,9 +2,9 @@
 
 ## Scenario Description
 
-To enhance database security, the database provides a secure and applicable encryption capability that effectively protects stored content. Through security methods like database encryption, the confidentiality and integrity requirements of database storage are achieved, enabling the database to store data in ciphertext and operate in an encrypted state, ensuring data security.
+To enhance database security, the database provides a secure and applicable encryption capability that effectively protects stored content. Through security methods like database encryption, it meets the confidentiality and integrity requirements of database storage, ensuring data is stored in ciphertext and operates in an encrypted state, thereby guaranteeing data security.
 
-An encrypted database can only be accessed through interfaces; the database files cannot be opened by other means. The encryption attribute of the database is determined during creation and cannot be modified.
+An encrypted database can only be accessed through interfaces; the database file cannot be opened by other means. The encryption property of a database is determined at creation and cannot be modified.
 
 Both key-value databases and relational databases support encryption operations.
 
@@ -20,10 +20,8 @@ For specific interfaces and functionalities, refer to [Distributed Key-Value Dat
 
     ```cangjie
     // main_ability.cj
-    internal import ohos.base.AppLog
-    internal import ohos.ability.AbilityStage
-    internal import ohos.ability.LaunchReason
-    import kit.AbilityKit.{UIAbility,UIAbilityContext,LaunchParam,Want}
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -34,15 +32,14 @@ For specific interfaces and functionalities, refer to [Distributed Key-Value Dat
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // Obtain the context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
@@ -52,30 +49,31 @@ For specific interfaces and functionalities, refer to [Distributed Key-Value Dat
     <!-- compile -->
 
     ```cangjie
-    // index.cj
-    import kit.ArkData.*
-    import kit.UIKit.BusinessException
+    // xxx.cj
+    import kit.ArkData.{DistributedKVStore, KVManagerConfig}
+    import ohos.business_exception.BusinessException
     import kit.AbilityKit.getStageContext
+    import ohos.data.distributed_kv_store.Options as KVOptions
+    import ohos.data.distributed_kv_store.SecurityLevel as KVSecurityLevel
 
     try {
-        // globalAbilityContext is obtained during Ability onCreate
         let context = globalAbilityContext.getOrThrow()
-        let kvManagerConfig = KVManagerConfig(getStageContext(context), "com.example.datamanagertest")
+        let kvManagerConfig = KVManagerConfig(globalAbilityContext.getOrThrow(), "com.example.datamanagertest")
         // Create a KVManager instance
         let kvManager = DistributedKVStore.createKVManager(kvManagerConfig)
-        AppLog.info("Succeeded in creating KVManager.")
+        Hilog.info(0, "cangjie", "Succeeded in creating KVManager.")
 
         let options = KVOptions(
-            KVSecurityLevel.S3,
+            KVSecurityLevel.S3, // Set security level to S3
             createIfMissing: true,
-            encrypt: true, // Enable database encryption
+            encrypt: true,
             backup: false,
             autoSync: false,
         )
-        let kvStore = kvManager.getSingleKVStore("storeId", options)
-        AppLog.info("getSingleKVStore success")
+        let kvStore = kvManager.getKVStore("storeId", options)
+        Hilog.info(0, "cangjie", "getSingleKVStore success")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     // Perform other database-related operations
     // ...
@@ -93,10 +91,8 @@ For specific interfaces and functionalities, refer to [Relational Database](../.
 
     ```cangjie
     // main_ability.cj
-    internal import ohos.base.AppLog
-    internal import ohos.ability.AbilityStage
-    internal import ohos.ability.LaunchReason
-    import kit.AbilityKit.UIAbilityContext
+    import kit.PerformanceAnalysisKit.Hilog
+    import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason, UIAbilityContext}
 
     var globalAbilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
 
@@ -107,15 +103,14 @@ For specific interfaces and functionalities, refer to [Relational Database](../.
         }
 
         public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-            AppLog.info("MainAbility OnCreated.${want.abilityName}")
             // Obtain the context
             globalAbilityContext = this.context
 
             match (launchParam.launchReason) {
-                case LaunchReason.START_ABILITY => AppLog.info("START_ABILITY")
+                case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
                 case _ => ()
             }
-        }
+        } 
         // ...
     }
     ```
@@ -125,23 +120,21 @@ For specific interfaces and functionalities, refer to [Relational Database](../.
     <!-- compile -->
 
     ```cangjie
-    // index.cj
     import kit.ArkData.{ getRdbStore, StoreConfig, RelationalStoreSecurityLevel }
-    import kit.UIKit.BusinessException
-    import kit.AbilityKit.getStageContext
+    import ohos.business_exception.BusinessException
 
     try {
         // globalAbilityContext is obtained during Ability onCreate
         let context = globalAbilityContext.getOrThrow()
         let storeConfig = StoreConfig(
-            "RdbTest.db", // Database filename
             RelationalStoreSecurityLevel.S3, // Database security level
+            name: "RdbTest.db", // Database filename
             encrypt: true, // Enable database encryption
         )
-        let rdbStore = getRdbStore(getStageContext(context), storeConfig)
-        AppLog.info("getRdbStore success")
+        let rdbStore = getRdbStore(context, storeConfig)
+        Hilog.info(0, "cangjie", "getRdbStore success")
     } catch (e: BusinessException) {
-        AppLog.error("ErrorCode: ${e.code}, Message: ${e.message}")
+        Hilog.error(0, "ErrorCode: ${e.code}", e.message)
     }
     // Perform other database-related operations
     // ...

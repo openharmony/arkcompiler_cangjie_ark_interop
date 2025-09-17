@@ -8,7 +8,7 @@ Before reading the \@State documentation, developers are advised to have a basic
 
 ## Overview
 
-Variables decorated with \@State, like other decorated variables in the declarative paradigm, are private and can only be accessed from within the component. They must specify their type and local initialization upon declaration. Initialization can also be completed using the named parameter mechanism from the parent component.
+Variables decorated with \@State, like other decorated variables in declarative paradigms, are private and can only be accessed from within the component. They must specify their type and local initialization upon declaration. Initialization can also be completed using named parameter mechanisms from the parent component.
 
 Variables decorated with \@State have the following characteristics:
 
@@ -22,24 +22,24 @@ Variables decorated with \@State have the following characteristics:
 |:---|:---|
 |Non-attribute macro|None.|
 |Synchronization type|Does not synchronize with any type of variable in the parent component.|
-|Allowed variable types|Supports basic data types. For String, Int64, Float64, and Bool types, the type can be omitted. Other types must be specified.<br/>Supports Enum, Option types, and struct types, but internal modifications within struct types are not allowed.<br/>Supports class types. To observe internal changes, the class must be decorated with [\@Observed](./cj-macro-observed-and-publish.md) at definition time. Class properties and nested properties must be decorated with [\@Publish](./cj-macro-observed-and-publish.md) to observe changes.<br/>Supports array types. To observe internal changes, use [ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). For custom array items, use [\@Observed](./cj-macro-observed-and-publish.md) and [\@Publish](./cj-macro-observed-and-publish.md) to observe property assignments. Other array and Collection types (e.g., Array, Varray, ArrayList, HashMap, HashSet) support assigning new arrays but cannot observe internal element changes.<br/>Supports [Color](../../../../API_Reference//source_zh_cn/arkui-cj/cj-common-types.md#class-color) type.<br/>For supported scenarios, see [Observing Changes](#observing-changes).<br/>Does not support Any.|
+|Allowed variable types|Supports basic data types. For String, Int64, Float64, and Bool types, the type can be omitted. Other types must be explicitly specified.<br/>Supports Enum, Option types, and struct types, but internal modifications within struct types are not allowed.<br/>Supports class types. To observe internal changes, the class must be decorated with [\@Observed](./cj-macro-observed-and-publish.md) at definition, and class properties and nested properties must be decorated with [\@Publish](./cj-macro-observed-and-publish.md) to observe changes.<br/>Supports array types. To observe internal changes, use [ObservedArray\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist). For arrays of custom types, use [\@Observed](./cj-macro-observed-and-publish.md) and [\@Publish](./cj-macro-observed-and-publish.md) to observe property assignments within array items. Other array and Collection types, such as Array, Varray, ArrayList, HashMap, and HashSet, support assigning new arrays but cannot observe internal element changes.<br/>Supports [Color](../../../../API_Reference//source_en/arkui-cj/cj-common-types.md#class-color) type.<br/>For supported scenarios, see [Observing Changes](#observing-changes).<br/>Does not support Any.|
 |Initial value of decorated variables|Must be initialized locally.|
 
 ## Variable Passing/Access Rules
 
 |Passing/Access|Description|
 |:---|:---|
-|Initialization from parent component|Optional, can be initialized from the parent component or locally. If initialized from the parent component, the passed value will override local initialization.<br/>Supports regular variables in the parent component (assigning to \@State only initializes the value; changes in regular variables do not trigger UI refreshes; only state variables can trigger UI refreshes), \@State, [\@Link](./cj-macro-link.md), [\@Prop](./cj-macro-prop.md), [\@Provide](./cj-macro-provide-and-consume.md), [\@Consume](./cj-macro-provide-and-consume.md), [\@StorageLink](./cj-appstorage.md#storragelink), [\@StorageProp](./cj-appstorage.md#storrageprop) decorated variables to initialize child component's \@State.|
-|Initializing child components|\@State-decorated variables support initializing child component's regular variables, \@State, \@Link, \@Prop, \@Provide.|
+|Initialization from parent component|Optional, can be initialized from the parent component or locally. If initialized from the parent component, the passed value will override local initialization.<br/>Supports initialization from regular variables in the parent component (assigning regular variables to \@State only initializes the value; changes to regular variables do not trigger UI refreshes; only state variables can trigger UI refreshes), \@State, [\@Link](./cj-macro-link.md), [\@Prop](./cj-macro-prop.md), [\@Provide](./cj-macro-provide-and-consume.md), [\@Consume](./cj-macro-provide-and-consume.md), [\@StorageLink](./cj-appstorage.md#storragelink), and [\@StorageProp](./cj-appstorage.md#storrageprop) decorated variables to initialize child component's \@State.|
+|Used to initialize child components|\@State-decorated variables support initializing child component's regular variables, \@State, \@Link, \@Prop, and \@Provide.|
 |Access outside component|Not supported, can only be accessed within the component.|
 
 ## Observing Changes and Behavior
 
-Not all changes to state variables trigger UI refreshes; only modifications observable by the framework will cause UI updates. This section explains what modifications can be observed and how the framework triggers UI refreshes upon detecting changes, i.e., the framework's behavior.
+Not all changes to state variables will trigger UI refreshes; only modifications observable by the framework will cause UI updates. This section explains what modifications can be observed and how the framework triggers UI refreshes upon detecting changes, i.e., the framework's behavior.
 
 ### Observing Changes
 
-- When the decorated data type is a basic type, numerical changes can be observed.
+- When the decorated data type is a basic data type, value changes can be observed.
 
     ```cangjie
     // Simple type
@@ -84,7 +84,7 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
     this.person.id = 3
     ```
 
-- When the decorated data type is a class, it must be decorated with [\@Observed](./cj-macro-observed-and-publish.md), and properties requiring change observation must be decorated with [\@Publish](./cj-macro-observed-and-publish.md). Without [\@Observed](./cj-macro-observed-and-publish.md), internal changes like member variables cannot be observed. See [\@Observed Macro and \@Publish Macro](./cj-macro-observed-and-publish.md).
+- When the decorated data type is a class, it must be decorated with [@Observed](./cj-macro-observed-and-publish.md), and properties requiring change observation must be decorated with [@Publish](./cj-macro-observed-and-publish.md). Without [@Observed](./cj-macro-observed-and-publish.md), internal changes like member variables cannot be observed. For details, see [@Observed Macro and @Publish Macro](./cj-macro-observed-and-publish.md).
 
     Declare Person and Model classes.
 
@@ -123,7 +123,7 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
     this.title.name.value = 'ArkUI'
     ```
 
-- When the decorated object is an array, individual array item changes cannot be observed, but overall changes can. To observe internal changes, use [ObservedArray\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T\>](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist).
+- When the decorated object is an array, individual array item changes cannot be observed, but overall changes can. To observe internal changes, use [ObservedArray\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarray) and [ObservedArrayList\<T>](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md#class-observedarraylist).
 
     When \@State decorates an ArrayList type array.
 
@@ -152,18 +152,18 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
     }
     ```
 
-    \@State decorates an ObservedArray\<Model\> type array.
+    When \@State decorates an ObservedArray\<Model> type array.
 
     ```cangjie
-    // ObservedArray array type
-    @State var title: ObservedArray<Model> = ObservedArray<Model>([Model(value: 11), Model(value: 1)])
+    // ObservedArray type
+    @State var title: ObservedArrayList<Model> = ObservedArrayList<Model>(ArrayList<Model>([Model(value: 11), Model(value: 1)]))
     ```
 
-    Array self-assignments can be observed.
+    Array assignments can be observed.
 
     ```cangjie
     // Array assignment
-    this.title = ObservedArray<Model>([Model(value: 2)])
+    this.title = ObservedArrayList<Model>(ArrayList<Model>([Model(value: 2)]))
     ```
 
     Array item assignments can be observed.
@@ -176,11 +176,11 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
     Property assignments within array items can be observed.
 
     ```cangjie
-    // Nested property assignments can be observed
+    // Nested property assignment can be observed
     this.title[0].value = 6
     ```
 
-    When \@State decorates an ObservedArrayList\<Model\> type array, adding and deleting array items can be observed.
+    When \@State decorates an ObservedArrayList\<Model> type array, adding and deleting array items can be observed.
 
     Deleting array items can be observed.
 
@@ -196,9 +196,9 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
     this.title.append(Model(value: 12))
     ```
 
-- When the decorated variable is other array or Collection types (e.g., Array, Varray, ArrayList, HashMap, HashSet), assigning new arrays is supported, but internal element changes cannot be observed.
+- When the decorated variable is other array or Collection types, such as Array, Varray, ArrayList, HashMap, and HashSet, assigning new arrays is supported, but internal element changes cannot be observed.
 
-    Using HashSet as an example.
+    Example with HashSet.
 
     ```cangjie
     // When \@State decorates a HashSet
@@ -219,9 +219,9 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
 
 ### Framework Behavior
 
-- When a state variable changes, components dependent on it are queried.
+- When a state variable changes, components dependent on that state variable are queried;
 
-- The update methods of components dependent on the state variable are executed, triggering component re-rendering.
+- The update methods of components dependent on the state variable are executed, triggering component updates and rendering;
 
 - Components or UI descriptions unrelated to the state variable will not re-render, achieving on-demand page rendering updates.
 
@@ -241,11 +241,11 @@ Not all changes to state variables trigger UI refreshes; only modifications obse
 
 ## Usage Scenarios
 
-### Decorating Simple-Type Variables
+### Decorating Simple Type Variables
 
-The following example shows a simple type decorated with \@State. `count` becomes a state variable when decorated with \@State, and changes to `count` trigger Button component refreshes:
+The following example shows a simple type decorated with \@State. The variable count becomes a state variable when decorated with \@State, and changes to count trigger Button component refreshes:
 
-- When the state variable `count` changes, only the Button component associated with it is queried.
+- When the state variable count changes, only the Button component associated with it is queried;
 
 - The Button component's update method is executed, achieving on-demand refreshes.
 
@@ -267,13 +267,14 @@ class EntryView {
 
 ![Video-State-simpletype](figures/Video-State-simpletype.gif)
 
-### Decorating Class Object-Type Variables
+### Decorating Class Object Variables
 
-- The custom component `MyComponent` defines state variables `count` and `title` decorated with \@State, where `title` is of the custom class `Model`. If `count` or `title` values change, UI components using these state variables within `MyComponent` are queried and re-rendered.
+- The custom component MyComponent defines state variables count and title decorated with \@State, where title is of the custom class Model. If the values of count or title change, UI components using these state variables within MyComponent are queried and re-rendered.
 
-- `EntryView` contains multiple `MyComponent` instances. Changes to the internal state of the first `MyComponent` do not affect the second `MyComponent`.
+- EntryView contains multiple MyComponent instances. Changes to the internal state of the first MyComponent do not affect the second MyComponent.
 
  <!-- run -->
+
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
@@ -289,7 +290,7 @@ class Model {
 class EntryView {
     func build() {
         Column {
-            // Parameters specified here will override locally defined default values during initial rendering. Not all parameters need to be initialized from the parent component.
+            // Parameters specified here will override locally defined default values during initial rendering; not all parameters need initialization from the parent component
             MyComponent(count: 1, increaseBy: 2)
             MyComponent(title: Model(value: 'Hello World 2'), count: 7)
         }
@@ -305,14 +306,14 @@ class MyComponent {
         Column {
             Text("${this.title.value}").margin(10)
             Button("Click to change title")
-                .onClick({ // Updates to @State variables will trigger content updates in the above Text component
+                .onClick({ // Updates to \@State variables trigger Text component content updates
                     evt => this.title.value = 'Hello ArkUI'
                 })
                 .width(300)
                 .margin(10)
             Button("Click to increase count = ${this.count}")
                 .onClick({
-                    // Updates to @State variables will trigger content updates in this Button component
+                    // Updates to \@State variables trigger Button component content updates
                     evt => this.count += this.increaseBy
                 })
                 .width(300)
@@ -324,31 +325,31 @@ class MyComponent {
 
 ![Video-state](figures/Video-state.gif)
 
-From this example, we can understand the initialization mechanism of @State variables:
+From this example, the initialization mechanism of \@State variables can be understood:
 
-1. When no external values are passed, default values are used for initialization:
+1. Without external input, default values are used for initialization:
 
     ```cangjie
-    // When title is not passed externally, the local value Model(value: 'Hello World') is used for initialization
+    // title is not passed externally; local value Model(value: 'Hello World') is used for initialization
     MyComponent(count: 1, increaseBy: 2)
-    // When increaseBy is not passed externally, the local value 1 is used for initialization
+    // increaseBy is not passed externally; local value 1 is used for initialization
     MyComponent(title: Model(value: 'Hello World 2'), count: 7)
     ```
 
-2. When external values are passed, the passed values are used for initialization:
+2. With external input, external values are used for initialization:
 
     ```cangjie
-    // When both count and increaseBy are passed externally, the passed values 1 and 2 are used for initialization respectively
+    // count and increaseBy are passed externally; 1 and 2 are used for initialization, respectively
     MyComponent(count: 1, increaseBy: 2)
-    // When both title and count are passed externally, the passed values Model(value: 'Hello World 2') and 7 are used for initialization respectively
+    // title and count are passed externally; Model(value: 'Hello World 2') and 7 are used for initialization, respectively
     MyComponent(title: Model(value: 'Hello World 2'), count: 7)
     ```
 
-## Frequently Asked Questions
+## Common Issues
 
-### Arrow function state variable changes not taking effect
+### Arrow Functions Failing to Modify State Variables
 
-The 'this' object inside an arrow function refers to the object where the function was defined, not where it is used. Therefore, you need to pass the current this.vm to call property assignments on proxy state variables.
+The `this` object inside an arrow function refers to the object in the scope where the function is defined, not where it is used. Therefore, the current `this.vm` must be passed in to call property assignments on the proxied state variables.
 
  <!-- run -->
 
@@ -388,9 +389,9 @@ class EntryView {
 
 ![Video-state-PlayDetail](figures/Video-state-PlayDetail.gif)
 
-### State variables only affect UI components directly bound to them
+### State Variables Only Affect Directly Bound UI Component Refreshes
 
-[Example 1]
+【Example 1】
 
  <!-- run -->
 
@@ -426,9 +427,9 @@ class EntryView {
 
 ![Video-State-Ui1](figures/Video-State-Ui1.gif)
 
-In this example, clicking Button('change') will only trigger a refresh of the second Text component because message is a simple string type (value copy). Changing info.address does not affect this.message.
+In the above example, clicking Button('change') only triggers a refresh of the second Text component because `message` is a simple string type, which is passed by value. Thus, changing `info.address` does not affect `this.message`.
 
-[Example 2]
+【Example 2】
 
  <!-- run -->
 
@@ -473,21 +474,23 @@ class EntryView {
 
 ![Video-state-Ui3](figures/Video-State-Ui3.gif)
 
-In this example, clicking Button('change') will only refresh the second Text component. This is because a new Info object is created, and changes to its address don't affect the original Info object.
+In the above example, clicking Button('change') only triggers a refresh of the second Text component. This is because clicking the button first executes `this.user.infomation = Info(address: 'Guangzhou')`, creating a new Info object. Then, `this.user.infomation.address = 'Beijing'` modifies the `address` value of this new Info object, leaving the original Info object's `address` unchanged.### Prohibiting State Variable Modifications Within Build Functions
 
-### Modifying state variables within build is prohibited
+Modifying state variables within the `build` function is strictly prohibited. State management frameworks will log an `Error`-level message during runtime.
 
-Modifying state variables within the build method is not allowed. The state management framework will log Error-level messages during runtime.
+The following example illustrates the rendering process:
 
-The rendering process in the following example is:
+1. Create the `Index` custom component.
 
-1. Create Index custom component.
-
-2. Execute Index's build method:
-    a. Create Column component.
-    b. Create Text component. During Text creation, this.count++ is triggered.
-    c. The count change triggers another Text refresh.
-    d. Final Text rendering.
+2. Execute the `build` method of `Index`:
+   
+   a. Create the `Column` component.
+   
+   b. Create the `Text` component. During the creation of the `Text` component, `this.count++` is triggered.
+   
+   c. The change in `count` triggers a refresh of the `Text` component again.
+   
+   d. The `Text` component is finally rendered.
 
 ```cangjie
 @Entry
@@ -496,7 +499,7 @@ class EntryView {
     @State var count :Int64 = 1
     func build() {
         Column() {
-            // Avoid directly modifying count within the Text component
+            // Avoid directly modifying the value of count within the Text component
             Text("${this.count++}")
                 .width(50)
                 .height(50)
@@ -505,9 +508,9 @@ class EntryView {
 }
 ```
 
-In this example, the erroneous behavior doesn't cause severe consequences.
+In the above example, this erroneous behavior does not cause severe consequences. 
 
-However, this behavior is fundamentally wrong and will become increasingly problematic as project complexity grows. See the next example.
+However, this practice is fundamentally incorrect and will lead to increasingly significant risks as project complexity grows. See the next example.
 
 ```cangjie
 @Entry
@@ -525,20 +528,25 @@ class EntryView {
 }
 ```
 
-Rendering process:
-1. Creating the first Text component triggers this.message change.
-2. The change triggers the second Text component refresh.
-3. The second Text refresh triggers another this.message change, causing the first Text to refresh again.
-4. Infinite rendering loop occurs.
-5. System becomes unresponsive (app freeze).
+The rendering process for the above example:
 
-Therefore, modifying state variables within build is strictly prohibited.
+1. Create the first `Text` component, triggering a change in `this.message`.
 
-### Callback-registered state variable changes require deregistration
+2. The change in `this.message` triggers a refresh of the second `Text` component.
 
-Developers can register arrow functions in onPageShow to modify component state variables. However, it's crucial to nullify these functions in aboutToDisappear. Otherwise, arrow functions capturing the custom component's this instance will prevent component release, causing memory leaks.
+3. The refresh of the second `Text` component triggers another change in `this.message`, which in turn refreshes the first `Text` component.
 
- <!-- run -->
+4. This creates a cyclic re-rendering loop.
+
+5. The system becomes unresponsive for an extended period, resulting in app freeze.
+
+Therefore, modifying state variables within the `build` function is entirely incorrect.
+
+### Deregistering Callbacks for State Variable Modifications
+
+Developers can register arrow functions in `onPageShow` to modify state variables within components. However, it is crucial to nullify the previously registered function in `aboutToDisappear`. Failure to do so may result in memory leaks because the arrow function captures the `this` instance of the custom component, preventing its release.
+
+<!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -585,4 +593,4 @@ class EntryView {
 }
 ```
 
-Alternatively, you can also use the [LocalStorage](./cj-localstorage.md#custom-component-state-variable-modification) approach to modify state variables outside of custom components.
+Alternatively, state variables can be modified outside the custom component using the [LocalStorage](./cj-localstorage.md#custom-component-state-variable-modification) approach.

@@ -8,29 +8,29 @@ Before reading this document, developers are advised to have a basic understandi
 
 ## Overview
 
-@Watch is used to monitor changes in state variables. When a state variable changes, the @Watch callback method will be invoked. Internally, the ArkUI framework uses strict equality (==) to determine whether the value has been updated, following strict equality specifications. When the strict equality check returns false (i.e., not equal), the @Watch callback is triggered.
+@Watch is used to monitor changes in state variables. When a state variable changes, the @Watch callback method will be invoked. Internally, the ArkUI framework uses strict equality (==) to determine whether a value has been updated, adhering to strict equality standards. When the strict equality comparison returns false (indicating inequality), the @Watch callback is triggered.
 
 ## Macro Description
 
 | @Watch Supplemental Variable Macro | Description |
 | :--------------------------------- | :---------- |
-| Macro Parameter                    | Required. Name of the callback method. |
-| Macro Order                        | The order of macros does not affect functionality. Developers can arrange the order as needed. It is recommended to place [@State](./cj-macro-state.md), [@Prop](./cj-macro-prop.md), [@Link](./cj-macro-link.md), etc., before @Watch for consistent styling. |
-| @Watch Trigger Timing              | When using @Watch to monitor state variable changes, the callback is triggered when the variable is actually changed and assigned. |
+| Macro Parameter | Required. Name of the callback method. |
+| Macro Order | The order of macros does not affect functionality. Developers can arrange macro order as needed. It is recommended to place [@State](./cj-macro-state.md), [@Prop](./cj-macro-prop.md), [@Link](./cj-macro-link.md), etc., before @Watch macros for consistent style. |
+| @Watch Trigger Timing | When using @Watch to monitor state variable changes, the callback is triggered at the exact moment the variable is actually changed and assigned. |
 
-## Observation Changes and Behavior
+## Observing Changes and Behavior
 
-1. When a state variable change is observed (including changes to the corresponding keys in two-way bound [AppStorage](./cj-appstorage.md) and [LocalStorage](./cj-localstorage.md)), the corresponding @Watch callback method will be triggered.
-2. The @Watch method is executed synchronously after the custom component's properties are updated.
-3. If other state variables are modified within the @Watch method, this will also trigger state changes and @Watch execution.
-4. During the first initialization, the @Watch-decorated method is not called, as initialization is not considered a state variable change. The @Watch callback is only invoked on subsequent state changes.
+1. When a state variable change is observed (including changes to corresponding keys in two-way bound [AppStorage](./cj-appstorage.md) and [LocalStorage](./cj-localstorage.md)), the corresponding @Watch callback method will be triggered.
+2. @Watch methods are executed synchronously after custom component property updates.
+3. If other state variables are modified within an @Watch method, this will also trigger state changes and @Watch execution.
+4. During initial initialization, @Watch-decorated methods are not invoked, as initialization is not considered a state variable change. @Watch callbacks are only invoked for subsequent state changes.
 
 ## Constraints
 
-- Developers should avoid infinite loops. Loops may occur if the same state variable is directly or indirectly modified within the @Watch callback. To prevent loops, avoid modifying the currently decorated state variable in the @Watch callback.
-- Performance should be considered. Property update functions delay component re-rendering (see behavior above), so callback functions should only perform quick computations.
+- Developers should avoid infinite loops. Loops may occur if the same state variable is directly or indirectly modified within an @Watch callback. To prevent loops, it is recommended not to modify the currently decorated state variable within the @Watch callback.
+- Developers should consider performance. Property value update functions delay component re-rendering (see behavior above), so callback functions should only perform quick computations.
 - Asynchronous operations are not recommended in @Watch functions, as @Watch is designed for rapid calculations. Asynchronous behavior may cause performance issues with re-rendering speed.
-- The @Watch parameter is mandatory and must be the name of a declared method; otherwise, a compilation error will occur.
+- @Watch parameters are mandatory and must be the name of a declared method; otherwise, a compilation error will occur.
 
   ```cangjie
   @State @Watch[] var count : Int64 = 10
@@ -42,7 +42,7 @@ Before reading this document, developers are advised to have a basic understandi
   }
   ```
 
-- The parameter inside @Watch must be the name of a declared method; otherwise, a compilation error will occur.
+- Parameters within @Watch must be the name of a declared method; otherwise, a compilation error will occur.
 
   ```cangjie
   // Incorrect usage: No corresponding function name, compilation error
@@ -107,9 +107,9 @@ class EntryView {
   func build() {
     Column() {
       Button("add to basket")
-        .onClick({ =>
+        .onClick{ e =>
           this.count++
-        })
+        }
       TotalView(count: this.count)
     }
   }
@@ -119,7 +119,7 @@ class EntryView {
 Processing steps:
 
 1. The `Button.onClick` event in the `EntryView` custom component increments `count`.
-2. Due to the @State `count` variable change, the @Link in the child component `TotalView` is updated, and its @Watch("onCountUpdated") method is called, updating the `total` variable in `TotalView`.
+2. Due to the @State `count` variable change, the @Link in the child component `TotalView` is updated, and its @Watch("onCountUpdated") method is invoked, updating the `total` variable in `TotalView`.
 3. The `Text` component in `TotalView` is re-rendered.
 
 ### Combining @Watch with @Link
@@ -139,12 +139,12 @@ import std.random.*
 class BasketViewer{
     @Link @Watch[onBasketUpdated] var shopBasket : ArrayList<Float64>
     @State var totalPurchase: Float64 = 0.0
-    func updateTotal():Float64{
+    func updateTotal(): Float64 {
         var total : Float64 = 0.0
         for(i in shopBasket){
             total += i
         }
-        if(total>=100.0){
+        if (total >= 100.0) {
             total = 0.9 * total
         }
         return total
@@ -156,7 +156,7 @@ class BasketViewer{
     func build() {
         Column(){
             ForEach(this.shopBasket,itemGeneratorFunc:
-                {item: Float64, index : Int64 =>
+                { item: Float64, index : Int64 =>
                     Text("${index}")
                     Text("Price：${item} €")
                     }
@@ -174,10 +174,10 @@ class EntryView {
     func build() {
         Column(){
             Button("Add to basket")
-                .onClick({etv=>
-                var temp = this.shopBasket.clone()
-                temp.add(100.0 * m.nextFloat64())
-                this.shopBasket = temp})
+                .onClick{ etv =>
+                    var temp = this.shopBasket.clone()
+                    temp.add(100.0 * m.nextFloat64())
+                    this.shopBasket = temp }
             BasketViewer(shopBasket : shopBasket)
         }
     }
@@ -186,10 +186,10 @@ class EntryView {
 
 Processing steps:
 
-1. The `Button.onClick` in `BasketModifier` adds an item to `shopBasket`.
+1. The `Button.onClick` in `BasketModifier` adds an entry to `BasketModifier shopBasket`.
 2. The @Link-decorated `BasketViewer shopBasket` value changes.
-3. The state management framework calls the @Watch function `BasketViewer onBasketUpdated` to update `BasketViewer TotalPurchase`.
-4. The change in @Link `shopBasket` adds a new array item, causing the `ForEach` component to execute the item Builder and render a new item. The @State `totalPurchase` change triggers re-rendering of the corresponding `Text` component. Re-rendering occurs asynchronously.
+3. The state management framework invokes the @Watch function `BasketViewer onBasketUpdated` to update the `BasketViewer TotalPurchase` value.
+4. The change in @Link `shopBasket` adds a new array item, causing the `ForEach` component to execute its item Builder and render a new Item. The @State `totalPurchase` change also triggers re-rendering of the corresponding `Text` component. Re-rendering occurs asynchronously.
 
 ### Using changedPropertyName for Different Logic Handling
 
@@ -210,7 +210,7 @@ class EntryView{
     @State var propName :String = "test"
     @State var fruit : Int64 = 0
     func countUpdated(){
-        if(this.propName=="apple"){
+        if (this.propName=="apple") {
             this.fruit = this.apple
         }
     }
@@ -223,11 +223,11 @@ class EntryView{
             Text("Total number of fruits: ${this.fruit.toString()}")
                 .fontSize(30)
             Button("Add apples")
-                .onClick({etv=> this.apple++
-                    this.propName = "apple"})
+                .onClick{etv=> this.apple++
+                    this.propName = "apple"}
             Button("Add cabbages")
-                .onClick({etv=> this.cabbage++
-                    this.propName = "cabbages"})
+                .onClick{etv=> this.cabbage++
+                    this.propName = "cabbages"}
 
         }
     }
@@ -237,8 +237,8 @@ class EntryView{
 Processing steps:
 
 1. When `Button("Add apples")` is clicked, the value of `apple` changes.
-2. The state management framework calls the @Watch function `countUpdated`. The changed state variable name is `apple`, satisfying the `if` condition, so `fruit` is updated.
-3. The `Text` components bound to `apple` and `fruit` are re-rendered.
+2. The state management framework invokes the @Watch function `countUpdated`. The changed state variable name is `apple`, satisfying the `if` condition, so `fruit` is updated.
+3. The `Text` components bound to `apple` and `fruit` state variables are re-rendered.
 4. When `Button("Add cabbages")` is clicked, the value of `cabbage` changes.
-5. The state management framework calls the @Watch function `countUpdated`. The changed state variable name is `cabbage`, which does not satisfy the `if` condition, so `fruit` remains unchanged.
-6. The `Text` component bound to `cabbage` is re-rendered.
+5. The state management framework invokes the @Watch function `countUpdated`. The changed state variable name is `cabbage`, which does not satisfy the `if` condition, so `fruit` remains unchanged.
+6. The `Text` component bound to the `cabbage` state variable is re-rendered.

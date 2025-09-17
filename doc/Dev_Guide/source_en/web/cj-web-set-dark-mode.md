@@ -1,19 +1,18 @@
-# Configuring Dark Mode
+# Setting Dark Mode
 
 The Web component supports dark mode configuration for frontend pages.
 
-- The `darkMode()` interface can be used to configure different dark mode settings, which is disabled by default. When dark mode is enabled, the Web component will apply the dark styles defined in the webpage's `prefers-color-scheme` media query. If no dark styles are defined, the original appearance will be maintained. To enable forced dark mode, it is recommended to use it in conjunction with `forceDarkAccess()`. The `[WebDarkMode.Off](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-webdarkmode)` mode indicates that dark mode is disabled. `[WebDarkMode.On](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-webdarkmode)` enables dark mode and follows the frontend page's settings. `[WebDarkMode.Auto](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-webdarkmode)` enables dark mode and follows the system settings.
+- The [darkMode()](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-darkmodewebdarkmode) interface can be used to configure different dark modes, which is disabled by default. When dark mode is enabled, the Web component will apply the dark styles defined in the webpage's media query `prefers-color-scheme`. If the webpage doesn't define dark styles, it will remain unchanged. To enable forced dark mode, it is recommended to use it in conjunction with [forceDarkAccess()](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-forcedarkaccessbool). The [WebDarkMode.Off](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-webdarkmode) mode indicates that dark mode is disabled. [WebDarkMode.On](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-webdarkmode) indicates that dark mode is enabled and follows the frontend page. [WebDarkMode.Auto](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-webdarkmode) indicates that dark mode is enabled and follows the system.
 
-    In the following example, the `darkMode()` interface is used to configure the page's dark mode to follow the system settings.
+    In the following example, the [darkMode()](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-darkmodewebdarkmode) interface is used to configure the page's dark mode to follow the system.
 
     <!-- compile -->
 
     ```cangjie
     // index.cj
-    import kit.ArkWeb.WebviewController
-    import kit.UIKit.{Web, WebDarkMode}
-    import ohos.state_macro_manage.rawfile
-    import kit.LocalizationKit.{__GenerateResource__}
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{Web, WebDarkMode}
+    import ohos.arkui.state_macro_manage.rawfile
 
     @Entry
     @Component
@@ -29,18 +28,17 @@ The Web component supports dark mode configuration for frontend pages.
     }
     ```
 
-- The `forceDarkAccess()` interface can be used to forcibly configure dark mode for the frontend page. Forced dark mode does not guarantee that all color conversions will meet expectations, and the dark mode will not follow the frontend page or system settings. When configuring this mode, dark mode must be set to `WebDarkMode.On`.
+- The [forceDarkAccess()](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-forcedarkaccessbool) interface can be used to forcibly configure the frontend page to dark mode. Forced dark mode cannot guarantee that all color conversions will meet expectations, and the dark mode does not follow the frontend page or the system. When configuring this mode, the dark mode must be set to `WebDarkMode.On`.
 
-    In the following example, the `forceDarkAccess()` interface is used to forcibly configure the page to dark mode.
+    In the following example, the [forceDarkAccess()](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-forcedarkaccessbool) interface is used to forcibly configure the page to dark mode.
 
     <!-- compile -->
 
     ```cangjie
     // index.cj
-    import kit.ArkWeb.WebviewController
-    import kit.UIKit.{Web, WebDarkMode}
-    import ohos.state_macro_manage.rawfile
-    import kit.LocalizationKit.{__GenerateResource__}
+    import ohos.web.webview.WebviewController
+    import kit.ArkUI.{Web, WebDarkMode}
+    import ohos.arkui.state_macro_manage.rawfile
 
     @Entry
     @Component

@@ -296,17 +296,18 @@ Execute the following commands in hdc shell:
 
 10. Set trace output clock to boot (device system time).
 
-    ```shell
-    hitrace --trace_clock boot -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
-    ``````
-**Usage Example:**
+   ```shell
+   hitrace --trace_clock boot -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
+   ```
 
-```shell
-$ hitrace --trace_clock boot -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
-2024/11/14 12:01:42 Start capture, please wait 10s...
-2024/11/14 12:01:52 Capture done, start to read trace.
-2024/11/14 12:01:52 Trace read done, output: /data/local/tmp/test.ftrace
-```
+   **Example:**
+
+   ```shell
+   $ hitrace --trace_clock boot -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
+   2024/11/14 12:01:42 Start capture, please wait 10s...
+   2024/11/14 12:01:52 Capture done, start to read trace.
+   2024/11/14 12:01:52 Trace read done, output: /data/local/tmp/test.ftrace
+   ```
 
 11. Terminate trace capture and disable trace information printing in the command line window.
 
